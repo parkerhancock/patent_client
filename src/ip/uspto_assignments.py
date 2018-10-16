@@ -10,7 +10,9 @@ from dateutil.parser import parse as parse_date
 from inflection import underscore
 import requests
 
+
 from ip import CACHE_BASE
+from ip.util import BaseSet
 
 # USPTO has a malconfigured SSL connection. Suppress warnings about it.
 import urllib3
@@ -96,7 +98,7 @@ class AssignmentParser():
         return output
 
 
-class AssignmentSet:
+class AssignmentSet(BaseSet):
     parser = AssignmentParser()
     rows = 50
 
@@ -120,19 +122,6 @@ class AssignmentSet:
         if not hasattr(self, "_len"):
             self._get_page(0)
         return self._len
-
-    def aggregate(self, prop, unique=False):
-        output = list()
-        for a in self:
-            value = a.dict[prop]
-            if not value:
-                continue
-            elif type(value) == list:
-                for i in value:
-                    output.append(i)
-            else:
-                output.append(value)
-        return list(set(output)) if unique else output
 
     def _get_page(self, page_no):
         if page_no not in self.pages:

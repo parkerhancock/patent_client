@@ -41,55 +41,20 @@ class TestPatentExaminationData:
             data[4].patent_title
             == "MOBILE, MODULAR, ELECTRICALLY POWERED SYSTEM FOR USE IN FRACTURING UNDERGROUND FORMATIONS"
         )
+        
+        assert list(data.values_list('patent_title', flat=True)) == ['SYSTEM AND METHOD FOR DEDICATED ELECTRIC SOURCE FOR USE IN FRACTURING UNDERGROUND FORMATIONS USING LIQUID PETROLEUM GAS', 'ELECTRIC BLENDER SYSTEM, APPARATUS AND METHOD FOR USE IN FRACTURING UNDERGROUND FORMATIONS USING LIQUID PETROLEUM GAS', 'MOBILE ELECTRIC POWER GENERATION FOR HYDRAULIC FRACTURING OF SUBSURFACE GEOLOGICAL FORMATIONS', 'MOBILE, MODULAR, ELECTRICALLY POWERED SYSTEM  FOR USE IN FRACTURING UNDERGROUND FORMATIONS', 'MOBILE, MODULAR, ELECTRICALLY POWERED SYSTEM FOR USE IN FRACTURING UNDERGROUND FORMATIONS']
+        print(list(data.values('appl_id', 'app_filing_date')))
+        assert list(data.values('appl_id', 'app_filing_date')) == [{'appl_id': '15332709', 'app_filing_date': '2016-10-24T04:00:00Z'}, {'appl_id': '15332765', 'app_filing_date': '2016-10-24T04:00:00Z'}, {'appl_id': '14971450', 'app_filing_date': '2015-12-16T05:00:00Z'}, {'appl_id': '13441334', 'app_filing_date': '2012-04-06T04:00:00Z'}, {'appl_id': '14542000', 'app_filing_date': '2014-11-14T05:00:00Z'}]
 
-    @pytest.mark.skip()
+
     def test_search_patex_by_assignee(self):
         data = USApplication.objects.search(first_named_applicant="Scientific Drilling, Inc.")
-        from pprint import pprint
-
-        pprint(data[:5])
-        assert data[5].dict == {
-            "applicants": [
-                {
-                    "city": "Houston",
-                    "country": "US",
-                    "name": "Scientific Drilling International, Inc.",
-                    "region": "TX",
-                    "region_type": "State",
-                }
-            ],
-
-                "aia_status": "false",
-                "app_attorney_dock_number": "SDI.043002",
-                "app_cls_subcls": "702/006000",
-                "app_cust_number": "100183",
-                "app_early_pub_date": datetime.date(2014, 3, 20),
-                "app_early_pub_number": "US20140081574A1",
-                "app_examiner": "BHAT, ADITYA S",
-                "app_filing_date": datetime.date(2013, 9, 9),
-                "app_group_art_unit": "2863",
-                "app_id": "14021602",
-                "app_status": "Patented Case",
-                "app_status_date": datetime.date(2016, 8, 31),
-                "app_type": "Utility",
-                "entity_status": "UNDISCOUNTED",
-                "file_location": "ELECTRONIC",
-                "patent_issue_date": datetime.date(2016, 9, 20),
-                "patent_number": "9448329",
-                "title": "METHOD TO DETERMINE LOCAL VARIATIONS OF THE EARTH'S "
-                "MAGNETIC FIELD AND LOCATION OF THE SOURCE THEREOF",
-
-            "inventors": [
-                {
-                    "city": "Minneapolis",
-                    "country": "US",
-                    "name": "Jim Hove",
-                    "region": "MN",
-                    "region_type": "State",
-                }
-            ],
-            "transactions": [],
-        }
+        assert data.values_list('patent_title', flat=True)[:5] == ['DOWNHOLE APPARATUS FOR ELECTRICAL POWER GENERATION FROM SHAFT FLEXURE',
+ 'Hybrid Bearings for Downhole Motors',
+ 'DOUBLE SHAFT DRILLING APPARATUS WITH HANGER BEARINGS',
+ 'DRILL BIT FOR A DRILLING APPARATUS',
+ "METHOD TO DETERMINE LOCAL VARIATIONS OF THE EARTH'S MAGNETIC FIELD AND "
+ 'LOCATION OF THE SOURCE THEREOF']
 
     def test_bulk_get_by_publication_number(self):
         nos = [

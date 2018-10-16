@@ -16,6 +16,7 @@ import inflection
 import requests
 
 from ip import CACHE_BASE
+from ip.util import BaseSet
 
 class HttpException(Exception):
     pass
@@ -60,19 +61,17 @@ class USApplicationManager():
     def bulk_get(self, *args, **kwargs):
         if args:
             return self.bulk_get(appl_id=args[0])
-        output = list()
-        for keyword, query_list in kwargs.items():
-            query_string = list()
-            for num in query_list:
-                query_string.append(num)
-            output += self._submit(
-                {
-                    "qf": inflection.camelize(keyword, uppercase_first_letter=False),
-                    "searchText": " ".join(query_string),
-                    "facet": "false",
-                }
-            )
-        return output
+        keywords = list(kwargs.keys())
+        if len(keywords) > 1:
+            raise NotImplementedError('No Support for Mixed Types')
+        keyword = keywords[0]
+        return self._submit(
+            {
+                "qf": inflection.camelize(keyword, uppercase_first_letter=False),
+                "searchText": " ".join(kwargs[keyword]),
+                "facet": "false",
+            }
+        )
 
     def search(self, *args, **kwargs):
         query = self._generate_query(*args, **kwargs)
@@ -243,13 +242,13 @@ class DateEncoder(json.JSONEncoder):
 
 class USApplicationXmlParser():
 
-    def element_to_text(element):
+    def element_to_text(self, element):
         return WHITESPACE_RE.sub(" ", " ".join(element.itertext())).strip()
 
 
-    def parse_element(element, data_dict):
+    def parse_element(self, element, data_dict):
         data = {
-            key: element_to_text(element.find(value, ns))
+            key: self.element_to_text(element.find(value, ns))
             for (key, value) in data_dict.items()
             if element.find(value, ns) is not None
         }
@@ -261,8 +260,8 @@ class USApplicationXmlParser():
         return data
 
 
-    def parse_bib_data(element):
-        data = parse_element(element, bib_data)
+    def parse_bib_data(self, element):
+        data = self.parse_element(element, bib_data)
         pub_no = element.find(
             ".//uspat:PatentPublicationIdentification/pat:PublicationNumber", ns
         )
@@ -286,24 +285,24 @@ class USApplicationXmlParser():
         return data
 
 
-    def parse_transaction_history(element):
+    def parse_transaction_history(self, element):
         output = list()
         for event_el in element.findall(
             "./uspat:PatentRecord/uspat:ProsecutionHistoryData", ns
         ):
-            event = parse_element(event_el, ph_data)
+            event = self.parse_element(event_el, ph_data)
             event["action"], event["code"] = event["action"].rsplit(" , ", 1)
             output.append(event)
         return output
 
 
-    def parse_inventors(element):
+    def parse_inventors(self, element):
         output = list()
         for inv_el in element.findall(
             "./uspat:PatentRecord/uspat:PatentCaseMetadata/pat:PartyBag/pat:InventorBag/pat:Inventor",
             ns,
         ):
-            data = parse_element(inv_el, inv_data)
+            data = self.parse_element(inv_el, inv_data)
             data["region_type"] = inv_el.find(
                 "./com:PublicationContact/com:GeographicRegionName", ns
             ).attrib.get(
@@ -314,13 +313,13 @@ class USApplicationXmlParser():
         return output
 
 
-    def parse_applicants(element):
+    def parse_applicants(self, element):
         output = list()
         for app_el in element.findall(
             "./uspat:PatentRecord/uspat:PatentCaseMetadata/pat:PartyBag/pat:ApplicantBag/pat:Applicant",
             ns,
         ):
-            data = parse_element(app_el, inv_data)
+            data = self.parse_element(app_el, inv_data)
             data["region_type"] = app_el.find(
                 "./com:PublicationContact/com:GeographicRegionName", ns
             ).attrib.get(
@@ -331,18 +330,18 @@ class USApplicationXmlParser():
         return output
 
 
-    def parse_case(element):
+    def case(self, element):
         return {
-            **parse_bib_data(element),
+            **self.parse_bib_data(element),
             **dict(
-                inventors=parse_inventors(element),
-                transactions=parse_transaction_history(element),
-                applicants=parse_applicants(element),
+                inventors=self.parse_inventors(element),
+                transactions=self.parse_transaction_history(element),
+                applicants=self.parse_applicants(element),
             ),
         }
 
 
-    def parse_xml_file(file_obj):
+    def xml_file(self, file_obj):
         try:
             for _, element in ET.iterparse(file_obj):
                 if "PatentRecordBag" in element.tag:
@@ -356,7 +355,7 @@ class USApplicationXmlParser():
             json.dump(state, f, indent=2)
 
 
-class USApplicationJsonSet:
+class USApplicationJsonSet(BaseSet):
     def __init__(self, data, length):
         self.data = data
         self._len = length
@@ -367,7 +366,7 @@ class USApplicationJsonSet:
     def __getitem__(self, key):
         return USApplication(self.data[key])
 
-class USApplicationXmlSet:
+class USApplicationXmlSet(BaseSet):
     parser = USApplicationXmlParser()
 
     def __init__(self, filename, length):
@@ -376,7 +375,7 @@ class USApplicationXmlSet:
         self.cache = dict()
         self.zipfile = ZipFile(self.filename)
         self.files = self.zipfile.namelist()
-        self.open_file = list() 
+        self.open_file = iter(list()) 
         self.counter = 0
 
     def __len__(self):
@@ -392,21 +391,21 @@ class USApplicationXmlSet:
 
             if key not in self.cache:
                 self.parse_item(key)
-            return UsApplication(self.cache[key])
+            return USApplication(self.cache[key])
 
     def parse_item(self, key):
         while self.counter <= key:
             try:
                 tree = next(self.open_file)
-                self.cache[self.counter] = self.parser.case()
+                self.cache[self.counter] = self.parser.case(tree)
                 self.counter += 1
             except StopIteration:
-                self.open_file = parse_xml_file(self.zipfile.open(self.files.pop(0)))
+                self.open_file = self.parser.xml_file(self.zipfile.open(self.files.pop(0)))
 
 class USApplication():
     objects = USApplicationManager()
 
     def __init__(self, data):
-        self.dict = data
-        for k, v in data.items():
-            setattr(self, inflection.underscore(k), v)
+        self.dict = {inflection.underscore(k):v for (k,v) in data.items()}
+        for k, v in self.dict.items():
+            setattr(self, k, v)

@@ -49,21 +49,21 @@ A set of Django-ORM-Style accessors to publicly available intellectual property 
 
 Currently supports:
 
-+---------------------------------------------------+-----------------------+-------------------+
-| Office                                            |  API                  | Status            |
-+===================================================+=======================+===================+
-|European Patent Office (EPO)                       | OPS - INPADOC         | Full Support      |
-|                                                   +-----------------------+-------------------+
-|                                                   | OPS - EPO Register    | Full Support      |
-|                                                   +-----------------------+-------------------+
-|                                                   | OPS - Classification  | No Support        |
-+---------------------------------------------------+-----------------------+-------------------+
-|United States Patent & Trademark Office (USPTO)    | Patent - Bib data     | Planned           |
-|                                                   +-----------------------+-------------------+
-|                                                   | Patent - Assignments  | Support Lookup    |
-|                                                   +-----------------------+-------------------+
-|                                                   | PTAB - Trial Documents| Planned           |
-+---------------------------------------------------+-----------------------+-------------------+
++---------------------------------------------------+---------------------------+-------------------+
+| Office                                            |  API                      | Status            |
++===================================================+===========================+===================+
+|European Patent Office (EPO)                       | OPS - INPADOC             | Full Support      |
+|                                                   +---------------------------+-------------------+
+|                                                   | OPS - EPO Register        | Full Support      |
+|                                                   +---------------------------+-------------------+
+|                                                   | OPS - Classification      | No Support        |
++---------------------------------------------------+---------------------------+-------------------+
+|United States Patent & Trademark Office (USPTO)    | Patent - Exam (Pair-Like) | Full Support      |
+|                                                   +---------------------------+-------------------+
+|                                                   | Patent - Assignments      | Support Lookup    |
+|                                                   +---------------------------+-------------------+
+|                                                   | PTAB - Trial Documents    | Planned           |
++---------------------------------------------------+---------------------------+-------------------+
 
 
 * Free software: Apache Software License 2.0
@@ -83,7 +83,7 @@ To use the project:
 
 .. code-block:: python
 
->>> from ip import Inpadoc, Epo, Assignment
+>>> from ip import Inpadoc, Epo, Assignment, USApplication
 >>> pub = Inpadoc.objects.get('EP3082535A1')
 >>> pub.bib_data
 {'title': 'AUTOMATIC FLUID DISPENSER', 'publication': {'country': 'EP', 'number': '3082535', 'kind': 'A1', 'date': '20161026'}, 'application': {'country': 'EP', 'number': '14833316', 'kind': 'A', 'date': None}, 'intl_class': ['A47K5/12AI', 'A47K5/122AI', 'B05B9/00AI', 'B05B9/08AI', 'B05B12/12AI'], 'cpc_class': ['A47K 5/1211', 'A47K 5/1217', 'A47K 5/122', 'B05B 9/002', 'B05B 9/0838', 'B05B 12/122'], 'priority_claims': ['201314137130', '2014071849'], 'applicants': ['TOASTER LABS, INC'], 'inventors': ['BUCKALTER, Amy, ', 'HADLEY, Jonathan, B, ', 'DIENER, Alexander, M, ', 'WILL, Kristin, M, ', 'MULLER, Lilac, ','SPENCE, Jeanine'], 'abstract': '', 'references_cited': []}
@@ -97,7 +97,9 @@ To use the project:
 ['MULLINS, SCOTT', 'CONNER, BRIAN']
 >>> assignments[0].dict
 {'id': '47086-788', 'display_id': '047086-0788', 'reel_no': '47086', 'frame_no': '788','last_update_date': '2018-10-12', 'purge_indicator': 'N', 'recorded_date': '2018-10-05', 'page_count': '2', 'conveyance_text': 'ASSIGNMENT OF ASSIGNORS INTEREST (SEE DOCUMENT FOR DETAILS).', 'assignment_record_has_images': 'Y', 'attorney_dock_num': '104248-5226-US', 'corr_name': 'DOUGLAS J. CRISMAN', 'corr_address1': 'MORGAN, LEWIS & BOCKIUS', 'corr_address2': '1400 PAGE MILL ROAD', 'corr_address3': 'PALO ALTO, CA 94304', 'pat_assignor_earliest_ex_date': '2018-09-24', 'pat_assignor_name': ['MULLINS, SCOTT', 'CONNER, BRIAN'], 'pat_assignor_ex_date': ['2018-09-24', '2018-10-04'], 'pat_assignor_date_ack': ['0000-01-01T00:00:00Z', '0000-01-01T00:00:00Z'], 'pat_assignee_name': 'GOOGLE LLC', 'pat_assignee_address1': '1600 AMPHITHEATRE PARKWAY', 'pat_assignee_address2': None, 'pat_assignee_city': 'MOUNTAIN VIEW', 'pat_assignee_state': 'CALIFORNIA', 'pat_assignee_country_name': None, 'pat_assignee_postcode': '94043', 'invention_title': 'Camera Assembly with Concave-Shaped Front Face', 'invention_title_lang': 'en', 'appl_num': '15710770', 'filing_date': '2017-09-20', 'intl_publ_date': None, 'intl_reg_num': None, 'inventors': 'Mark Kraz, Kevin Edward Booth, Tyler Scott Wilson, Nicholas Webb, Jason Evans Goulden, William Dong, Jeffrey Law, Rochus Jacob, Adam Duckworth Mittleman, Oliver Mueller, Scott Mullins,Brian Conner', 'issue_date': None, 'pat_num': None, 'pct_num': None, 'publ_date': '2018-07-05', 'publ_num': '20180191929', 'pat_assignor_name_size': 2, 'pat_assignor_name_type_size': 2, 'pat_assignor_ex_date_size': 2, 'pat_assignor_date_ack_size': 2, 'pat_assignee_name_size': 2, 'pat_assignee_name_type_size': 0, 'pat_assignee_address1_size': 1, 'pat_assignee_address2_size': 1, 'pat_assignee_city_size': 1, 'pat_assignee_state_size': 1, 'pat_assignee_country_name_size': 1, 'pat_assignee_postcode_size': 1, 'invention_title_size': 1, 'invention_title_id_size': 1, 'invention_title_lang_size': 1, 'appl_num_size': 1, 'filing_date_size': 1, 'intl_publ_date_size': 1, 'intl_reg_num_size': 1, 'inventors_size': 1, 'issue_date_size': 1, 'pat_num_size': 1, 'pct_num_size': 1, 'publ_date_size': 1, 'publ_num_size': 1, 'invention_title_first': 'Camera Assembly with Concave-Shaped Front Face', 'invention_title_lang_first': 'en', 'appl_num_first': '15710770', 'filing_date_first': '2017-09-20', 'intl_publ_date_first': None, 'intl_reg_num_first': None, 'inventors_first': 'Mark Kraz, Kevin Edward Booth, Tyler Scott Wilson, Nicholas Webb, Jason Evans Goulden, William Dong, Jeffrey Law, Rochus Jacob, Adam Duckworth Mittleman, Oliver Mueller, Scott Mullins, Brian Conner', 'issue_date_first': None, 'pat_num_first': None, 'pct_num_first': None, 'publ_date_first': '2018-07-05', 'publ_num_first': '20180191929', 'pat_assignor_name_first': 'MULLINS, SCOTT', 'pat_assignee_name_first': 'GOOGLE LLC', '_version_': 1614157495418224640, 'image_url': 'http://legacy-assignments.uspto.gov/assignments/assignment-pat-047086-0788.pdf'}
-
+>>> app = USApplicaiton.objects.get('15710770')
+>>> app.patent_title
+'Camera Assembly with Concave-Shaped Front Face'
 
 Development
 ===========
