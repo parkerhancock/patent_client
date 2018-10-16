@@ -409,3 +409,6 @@ class USApplication():
         self.dict = {inflection.underscore(k):v for (k,v) in data.items()}
         for k, v in self.dict.items():
             setattr(self, k, v)
+
+    def __repr__(self):
+        return f'<USApplication(appl_id={self.appl_id})>'

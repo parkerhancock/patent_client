@@ -159,3 +159,6 @@ class Assignment():
         self.dict = data
         for k, v in data.items():
             setattr(self, underscore(k), v)
+    
+    def __repr__(self, data):
+        return f'<Assignment(id={self.id})>'

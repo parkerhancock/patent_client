@@ -14,6 +14,7 @@ class TestInpadoc:
         images = pub.images
         claims = pub.claims
         description = pub.description
+        assert pub.title == "WIRELINE POWER SUPPLY DURING ELECTRIC POWERED FRACTURING OPERATIONS"
         assert bib_data == {
             "title": "WIRELINE POWER SUPPLY DURING ELECTRIC POWERED FRACTURING OPERATIONS",
             "publication": {
@@ -164,13 +165,26 @@ class TestInpadoc:
     def test_can_search_inpadoc(self):
         results = Inpadoc.objects.search('pa="Scientific Drilling"')
         assert len(results) == 206
-        assert results[0].number == "3014061"
+        assert results.values('title')[:10] == [{'title': 'SUB-SURFACE ELECTROMAGNETIC TELEMETRY SYSTEMS AND METHODS'},
+ {'title': 'DEVICE AND METHOD FOR SURVEYING BOREHOLES OR ORIENTING DOWNHOLE '
+           'ASSEMBLIES'},
+ {'title': 'DEVICE AND METHOD FOR SURVEYING BOREHOLES OR ORIENTING DOWNHOLE '
+           'ASSEMBLIES'},
+ {'title': 'METHOD FOR IMPROVING SURVEY MEASUREMENT DENSITY ALONG A BOREHOLE'},
+ {'title': 'LOGGING-WHILE-DRILLING SPECTRAL AND AZIMUTHAL GAMMA RAY APPARATUS '
+           'AND METHODS'},
+ {'title': 'DOWNHOLE MWD SIGNAL ENHANCEMENT, TRACKING, AND DECODING'},
+ {'title': 'LOGGING-WHILE-DRILLING SPECTRAL AND AZIMUTHAL GAMMA RAY APPARATUS '
+           'AND METHODS'},
+ {'title': 'TUMBLE GYRO SURVEYOR'},
+ {'title': 'SURFACE COIL FOR WELLBORE POSITIONING'},
+ {'title': 'COHERENT MEASUREMENT METHOD FOR DOWNHOLE APPLICATIONS'}]
 
 
 class TestEpoRegister:
     def test_can_get_epo_data(self):
         pub = Epo.objects.get("EP3221665A1")
-        assert pub.statuses == [
+        assert pub.status == [
             {
                 "description": "Request for examination was made",
                 "code": "15",

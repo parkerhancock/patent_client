@@ -10,6 +10,8 @@ from hashlib import md5
 from ip import SETTINGS, CACHE_BASE
 from collections import namedtuple
 
+from ip.util import BaseSet
+
 # XML Namespaces for ElementTree
 NS = {
     "ops": "http://ops.epo.org",
@@ -300,9 +302,15 @@ class Inpadoc():
         self.number = doc_db.number
         self.kind = doc_db.kind
         self.date = doc_db.date
+        self.dict = self.bib_data
+        for k, v in self.dict.items():
+            setattr(self, k, v)
 
     def __repr__(self):
         return f'<Inpadoc({self.country}{self.number}, {self.doc_type})>'
+
+    def __iter__(self):
+        return iter(self.dict.items())
 
     @property
     def legal(self):
@@ -324,78 +332,75 @@ class Inpadoc():
         # NOTE: For EP cases with search reports, there is citation data in bib data
         # We just currently are not parsing it
         tree = self.objects.xml_data(self, "biblio")
-        rows = list()
-        docs = tree.findall("./epo:exchange-documents/epo:exchange-document", NS)
-        for document in docs:
-            data = dict()
-            bib_data = document.find("./epo:bibliographic-data", NS)
+        document = tree.find("./epo:exchange-documents/epo:exchange-document", NS)
+        data = dict()
+        bib_data = document.find("./epo:bibliographic-data", NS)
 
-            title = bib_data.find("./epo:invention-title[@lang='en']", NS)
-            if title == None:
-                title = bib_data.find("./epo:invention-title", NS)
-            if title != None:
-                data["title"] = title.text
-            else:
-                data["title"] = ""
-            pub_data = bib_data.find(
-                './epo:publication-reference/epo:document-id[@document-id-type="docdb"]',
+        title = bib_data.find("./epo:invention-title[@lang='en']", NS)
+        if title == None:
+            title = bib_data.find("./epo:invention-title", NS)
+        if title != None:
+            data["title"] = title.text
+        else:
+            data["title"] = ""
+        pub_data = bib_data.find(
+            './epo:publication-reference/epo:document-id[@document-id-type="docdb"]',
+            NS,
+        )
+        data["publication"] = dict(self.objects.parser.docdb_number(pub_data)._asdict())
+
+        app_data = bib_data.find(
+            './epo:application-reference/epo:document-id[@document-id-type="docdb"]',
+            NS,
+        )
+        data["application"] = dict(self.objects.parser.docdb_number(app_data)._asdict())
+
+        intl_class = [
+            whitespace_re.sub("", e.text)
+            for e in bib_data.findall(
+                "./epo:classifications-ipcr/epo:classification-ipcr/epo:text", NS
+            )
+        ]
+        data["intl_class"] = intl_class
+
+        cpc_classes = bib_data.findall(
+            "./epo:patent-classifications/epo:patent-classification", NS
+        )
+        data["cpc_class"] = [self.objects.parser.cpc_class(el) for el in cpc_classes]
+
+        priority_apps = bib_data.findall(
+            './epo:priority-claims/epo:priority-claim/epo:document-id[@document-id-type="original"]/epo:doc-number',
+            NS,
+        )
+        data["priority_claims"] = [e.text for e in priority_apps]
+
+        parties = bib_data.find("./epo:parties", NS)
+        data["applicants"] = [
+            e.text
+            for e in parties.findall(
+                './epo:applicants/epo:applicant[@data-format="original"]/epo:applicant-name/epo:name',
                 NS,
             )
-            data["publication"] = dict(self.objects.parser.docdb_number(pub_data)._asdict())
-
-            app_data = bib_data.find(
-                './epo:application-reference/epo:document-id[@document-id-type="docdb"]',
+        ]
+        data["inventors"] = [
+            e.text
+            for e in parties.findall(
+                './epo:inventors/epo:inventor[@data-format="original"]/epo:inventor-name/epo:name',
                 NS,
             )
-            data["application"] = dict(self.objects.parser.docdb_number(app_data)._asdict())
+        ]
+        abstract = document.find('./epo:abstract[@lang="en"]', NS)
+        data["abstract"] = (
+            "".join(t for t in abstract.itertext()).strip()
+            if abstract is not None
+            else ""
+        )
 
-            intl_class = [
-                whitespace_re.sub("", e.text)
-                for e in bib_data.findall(
-                    "./epo:classifications-ipcr/epo:classification-ipcr/epo:text", NS
-                )
-            ]
-            data["intl_class"] = intl_class
+        refs_cited = bib_data.findall("./epo:references-cited/epo:citation", NS)
+        data["references_cited"] = [self.objects.parser.citation(c) for c in refs_cited]
+        
+        return data
 
-            cpc_classes = bib_data.findall(
-                "./epo:patent-classifications/epo:patent-classification", NS
-            )
-            data["cpc_class"] = [self.objects.parser.cpc_class(el) for el in cpc_classes]
-
-            priority_apps = bib_data.findall(
-                './epo:priority-claims/epo:priority-claim/epo:document-id[@document-id-type="original"]/epo:doc-number',
-                NS,
-            )
-            data["priority_claims"] = [e.text for e in priority_apps]
-
-            parties = bib_data.find("./epo:parties", NS)
-            data["applicants"] = [
-                e.text
-                for e in parties.findall(
-                    './epo:applicants/epo:applicant[@data-format="original"]/epo:applicant-name/epo:name',
-                    NS,
-                )
-            ]
-            data["inventors"] = [
-                e.text
-                for e in parties.findall(
-                    './epo:inventors/epo:inventor[@data-format="original"]/epo:inventor-name/epo:name',
-                    NS,
-                )
-            ]
-            abstract = document.find('./epo:abstract[@lang="en"]', NS)
-            data["abstract"] = (
-                "".join(t for t in abstract.itertext()).strip()
-                if abstract is not None
-                else ""
-            )
-
-            refs_cited = bib_data.findall("./epo:references-cited/epo:citation", NS)
-            data["references_cited"] = [self.objects.parser.citation(c) for c in refs_cited]
-
-            rows.append(data)
-
-        return rows if len(rows) > 1 else rows[0]
 
     @property
     def description(self):
@@ -438,25 +443,21 @@ class Inpadoc():
     @property
     def family(self):
         tree = self.objects.xml_data(self, 'family')
-        family = list()
+        doc_db_list = list()
         for el in tree.findall("./ops:patent-family/ops:family-member", NS):
             pub_ref = el.find(
                 './epo:publication-reference/epo:document-id[@document-id-type="docdb"]',
                 NS,
             )
             if pub_ref is not None:
-                doc_db = self.objects.parser.docdb_number(pub_ref)
-                family.append(Inpadoc(doc_db=doc_db))
+                doc_db_list.append((self.objects.parser.docdb_number(pub_ref), 'publication'))
             else:
                 app_ref = el.find(
                     './epo:application-reference/epo:document-id[@document-id-type="docdb"]',
                     NS
                 )
-                doc_db = self.objects.parser.docdb_number(app_ref)
-                family.append(
-                    Inpadoc(doc_db=doc_db, doc_type="application")
-                )
-        return family
+                doc_db_list.append((self.objects.parser.docdb_number(app_ref), 'application'))
+        return InpadocSet(doc_db_list) 
 
 
     def download_images(self, path="."):
@@ -481,7 +482,32 @@ class Inpadoc():
         )
         out_file.write(out_fname)
 
-class InpadocSearch(OPSManager):
+class InpadocSet(BaseSet):
+    def __init__(self, doc_db_list):
+        self.doc_db_list = doc_db_list
+
+    def __repr__(self):
+        return f'<InpadocSet(len={len(self)})>'
+
+    def __len__(self):
+        return len(self.doc_db_list)
+
+    def __getitem__(self, key):
+        if type(key) == slice:
+            indices = list(range(len(self)))[key.start : key.stop : key.step]
+            return [self.__getitem__(index) for index in indices]
+        else:
+            doc_db, doc_type = self.doc_db_list[key]            
+            return Inpadoc(doc_db=doc_db, doc_type=doc_type)
+
+    def __add__(self, other):
+        return InpadocSet(self.doc_db_list + other.doc_db_list)
+
+    def __iter__(self):
+        return (Inpadoc(doc_db=doc_db, doc_type=doc_type) for (doc_db, doc_type) in self.doc_db_list)
+
+
+class InpadocSearch(OPSManager, BaseSet):
     """ 
     INPADOC Search
 
@@ -641,6 +667,16 @@ class Epo():
             self.doc_type = 'application'
         else:
             self.doc_type = 'publication'
+        
+        self.dict = self.bib_data
+        for k, v in self.dict.items():
+            setattr(self, k, v)
+    
+    def __repr__(self):
+        return f'<Epo(number={self.number}, kind={self.kind}, doc_type={self.doc_type})>'
+
+    def __iter__(self):
+        return self.dict.items()
     
     @property
     def case_number(self):
@@ -648,18 +684,10 @@ class Epo():
         return number
     
     @property
-    def statuses(self):
-        tree = self.objects.xml_data(self, 'events')
-        statuses = tree.findall('.//reg:ep-patent-status', NS)
-        return [self.parse.status(el) for el in statuses]
-    
-    @property
     def procedural_steps(self):
         tree = self.objects.xml_data(self, 'procedural-steps')
         doc = tree.find('.//reg:register-document', NS)
         return [self.parse.step(el) for el in doc.find('./reg:procedural-data', NS)]
-
-
 
     @property
     def bib_data(self):
