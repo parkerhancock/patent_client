@@ -82,6 +82,7 @@ Documentation
 To use the project:
 
 .. code-block:: python
+
 from ip import Inpadoc
 pub = Inpadoc.objects.get('CA2944968')
 

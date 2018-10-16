@@ -41,6 +41,7 @@ class OPSAuthenticationException(OPSException):
 
 
 class OPSParser:
+    """Internal xml parsing class for common tasks"""
     def docdb_number(self, el):
         raw_data = {
             "country": el.find("./epo:country", NS),

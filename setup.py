@@ -26,7 +26,7 @@ setup(
     name="ip",
     version="0.0.1",
     license="Apache Software License 2.0",
-    description="A set of ORM-style clients for publicly available Ppatent data",
+    description="A set of ORM-style clients for publicly available intellectual property data",
     long_description="%s\n%s"
     % (
         re.compile("^.. start-badges.*^.. end-badges", re.M | re.S).sub(
@@ -68,7 +68,7 @@ setup(
     keywords=[
         # eg: 'keyword1', 'keyword2', 'keyword3',
     ],
-    install_requires=["PyPDF2~=1.26", "requests~=2.19", "lxml~=4.2"],
+    install_requires=["PyPDF2~=1.26", "requests~=2.19", "lxml~=4.2", "python-dateutil~=2.7", "inflection~=0.3"],
     extras_require={
         # eg:
         #   'rst': ['docutils>=0.11'],
