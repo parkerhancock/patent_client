@@ -60,7 +60,7 @@ Currently supports:
 +---------------------------------------------------+-----------------------+-------------------+
 |United States Patent & Trademark Office (USPTO)    | Patent - Bib data     | Planned           |
 |                                                   +-----------------------+-------------------+
-|                                                   | Patent - Assignments  | Planned           |
+|                                                   | Patent - Assignments  | Support Lookup    |
 |                                                   +-----------------------+-------------------+
 |                                                   | PTAB - Trial Documents| Planned           |
 +---------------------------------------------------+-----------------------+-------------------+
@@ -83,8 +83,8 @@ To use the project:
 
 .. code-block:: python
 
-from ip import Inpadoc
-pub = Inpadoc.objects.get('CA2944968')
+    from ip import Inpadoc
+    pub = Inpadoc.objects.get('CA2944968')
 
 
 Development
