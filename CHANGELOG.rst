@@ -6,3 +6,4 @@ Changelog
 ------------------
 
 * First release on PyPI.
+* Support for EPO OPS (except Classification data)

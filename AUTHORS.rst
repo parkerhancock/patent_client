@@ -2,4 +2,4 @@
 Authors
 =======
 
-* Parker Douglas Hancock - https://blog.ionelmc.ro
+* Parker Douglas Hancock - https://github.com/parkerhancock

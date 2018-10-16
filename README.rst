@@ -45,7 +45,26 @@ Overview
 
 .. end-badges
 
-A set of ORM-style clients for publicly available Ppatent data
+A set of Django-ORM-Style accessors to publicly available intellectual property data.
+
+Currently supports:
+
++---------------------------------------------------+-----------------------+-------------------+
+| Office                                            |  API                  | Status            |
++===================================================+=======================+===================+
+|European Patent Office (EPO)                       | OPS - INPADOC         | Full Support      |
+|                                                   +-----------------------+-------------------+
+|                                                   | OPS - EPO Register    | Full Support      |
+|                                                   +-----------------------+-------------------+
+|                                                   | OPS - Classification  | No Support        |
++---------------------------------------------------+-----------------------+-------------------+
+|United States Patent & Trademark Office (USPTO)    | Patent - Bib data     | Planned           |
+|                                                   +-----------------------+-------------------+
+|                                                   | Patent - Assignments  | Planned           |
+|                                                   +-----------------------+-------------------+
+|                                                   | PTAB - Trial Documents| Planned           |
++---------------------------------------------------+-----------------------+-------------------+
+
 
 * Free software: Apache Software License 2.0
 
@@ -63,9 +82,8 @@ Documentation
 To use the project:
 
 .. code-block:: python
-
-    import ip
-    ip.longest()
+from ip import Inpadoc
+pub = Inpadoc.objects.get('CA2944968')
 
 
 Development
