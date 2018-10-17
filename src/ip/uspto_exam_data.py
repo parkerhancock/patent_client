@@ -122,13 +122,14 @@ class USApplicationManager():
                     raise HttpException(
                         f"{response.status_code}\n{response.text}\n{response.headers}"
                     )
-            with open(fname, 'w') as f:
-                json.dump(response.json(), f, indent=2)
-
-        data = json.load(open(fname))
+            data = response.json()
+        else:
+            data = json.load(open(fname))
         results = data["queryResults"]["searchResponse"]["response"]
         num_found = results['numFound']
         if num_found <= 20:
+            with open(fname, 'w') as f:
+                json.dump(data, f, indent=2)
             return USApplicationJsonSet(results['docs'], num_found)
         else:
             return self._package_xml(query, data)

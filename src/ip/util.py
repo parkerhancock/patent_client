@@ -1,9 +1,12 @@
-FILTERS = [
+from collections import OrderedDict
+
+FILTERS = {
     #'exact',
     #'iexact',
     #'contains',
     #'icontains',
-    #'in',
+    'in': lambda x, y: x in y,
+    'eq': lambda x, y: x == y,
     #'gt',
     #'gte',
     #'lt',
@@ -27,7 +30,7 @@ FILTERS = [
     #'isnull',
     #'regex',
     #'iregex',
-]
+}
 
 
 def accessor(obj, accessor):
@@ -37,19 +40,37 @@ def accessor(obj, accessor):
     if hasattr(obj, first_key):
         item = getattr(obj, first_key)
     else:
-        item = obj.dict[first_key]
+        item = obj.dict.get(first_key, None)
     while k_list:
         key = k_list.pop(0)
+        if item == None:
+            name_list.append(key)
+            continue
         try:
             key = int(key)
         except ValueError:
             name_list.append(key)
-        item = item[key]
+        if type(item) == list:
+            try:
+                item = item[key]
+            except IndexError:
+                item=None
+        else:
+            item = item.get(key, None)
     key = '_'.join(name_list)
     return (key, item)
 
 
 class BaseSet:
+    def filter(self, **kwargs):
+        for key, value in kwargs.items():
+            selector, operator = key.rsplit('__', 1)
+            if operator not in FILTERS:
+                operator = 'eq'
+                accessor = key
+            selector_lambda = lambda x: accessor(x, accessor)
+            self.objs = filter(lambda x: FILTERS[operator](selector_lambda(x), value), self.objs)
+
     def values(self, *fields):
         return ValuesSet(self, *fields)
     
@@ -57,17 +78,17 @@ class BaseSet:
         return ValuesSet(self, *fields, values_list=True, flat=flat)
     
 class ValuesSet:
-    def __init__(self, obj_set, *fields, values_list=False, flat=False):
-        self.obj_set = obj_set
+    def __init__(self, objs, *fields, values_list=False, flat=False):
+        self.objs = objs
         self.fields = fields
         self.values_list = values_list
         self.flat = flat
 
     def __len__(self):
-        return len(self.obj_set)
+        return len(self.objs)
 
     def __repr__(self):
-        return f'<ValuesSet(obj_set={repr(self.obj_set)})>'
+        return f'<ValuesSet(objs={repr(self.objs)})>'
 
     def __getitem__(self, key):
         if type(key) == slice:
@@ -76,10 +97,10 @@ class ValuesSet:
         else:
             if key < 0:
                 key = len(self) - key
-            obj = self.obj_set[key]
+            obj = self.objs[key]
             data = obj.dict
             if self.fields:
-                fdata = dict()
+                fdata = OrderedDict()
                 for k in self.fields:
                     key, item = accessor(obj, k)
                     fdata[key] = item

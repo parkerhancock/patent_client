@@ -179,6 +179,10 @@ class TestInpadoc:
  {'title': 'TUMBLE GYRO SURVEYOR'},
  {'title': 'SURFACE COIL FOR WELLBORE POSITIONING'},
  {'title': 'COHERENT MEASUREMENT METHOD FOR DOWNHOLE APPLICATIONS'}]
+        #us_cases = results.filter(publication__country='US')[:5]
+        #from pprint import pprint
+        #pprint(us_cases)
+        #assert False
 
 
 class TestEpoRegister:

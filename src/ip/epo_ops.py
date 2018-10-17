@@ -245,7 +245,7 @@ class InpadocManager(OPSManager):
         return Inpadoc(doc_type, doc_db)
     
     def search(self, query):
-        return InpadocSearch(query)
+        return InpadocSet(InpadocSearch(query))
 
     def xml_data(self, pub, data_kind):
         """
@@ -484,30 +484,30 @@ class Inpadoc():
 
 class InpadocSet(BaseSet):
     def __init__(self, doc_db_list):
-        self.doc_db_list = doc_db_list
+        self.objs = doc_db_list
 
     def __repr__(self):
         return f'<InpadocSet(len={len(self)})>'
 
     def __len__(self):
-        return len(self.doc_db_list)
+        return len(self.objs)
 
     def __getitem__(self, key):
         if type(key) == slice:
             indices = list(range(len(self)))[key.start : key.stop : key.step]
             return [self.__getitem__(index) for index in indices]
         else:
-            doc_db, doc_type = self.doc_db_list[key]            
+            doc_db, doc_type = self.objs[key]            
             return Inpadoc(doc_db=doc_db, doc_type=doc_type)
 
     def __add__(self, other):
-        return InpadocSet(self.doc_db_list + other.doc_db_list)
+        return InpadocSet(self.objs + other.objs)
 
     def __iter__(self):
-        return (Inpadoc(doc_db=doc_db, doc_type=doc_type) for (doc_db, doc_type) in self.doc_db_list)
+        return (Inpadoc(doc_db=doc_db, doc_type=doc_type) for (doc_db, doc_type) in self.objs)
 
 
-class InpadocSearch(OPSManager, BaseSet):
+class InpadocSearch(OPSManager):
     """ 
     INPADOC Search
 
@@ -542,7 +542,7 @@ class InpadocSearch(OPSManager, BaseSet):
             page_num = math.floor(key / self.page_size) + 1
             line_num = key % self.page_size
             page = self._get_page(page_num)
-            return Inpadoc(doc_db=page[line_num])
+            return (page[line_num], 'publication')
 
     def _get_page(self, page_num):
         """Internal private method for handling pages of results"""
@@ -550,7 +550,7 @@ class InpadocSearch(OPSManager, BaseSet):
             start = (page_num - 1) * self.page_size + 1
             end = start + self.page_size - 1 
             query = {**self.query, **{'Range': f'{start}-{end}'}}
-            self.pages[page_num] = InpadocSearch.xml_request(self.search_url, query)
+            self.pages[page_num] = self.xml_request(self.search_url, query)
         text = self.pages[page_num]
         tree = ET.fromstring(text.encode('utf-8'))
         results = tree.find('.//ops:search-result', NS)

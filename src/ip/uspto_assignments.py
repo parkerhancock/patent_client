@@ -107,6 +107,9 @@ class AssignmentSet(BaseSet):
         self.query = query
         self.pages = dict()
 
+    def __repr__(self):
+        return f'<AssignmentSet>'
+
     def __getitem__(self, key):
         if type(key) == slice:
             indices = list(range(len(self)))[key.start : key.stop : key.step]
