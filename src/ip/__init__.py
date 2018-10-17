@@ -27,4 +27,5 @@ SETTINGS = json.load(open(SETTINGS_FILE))
 from ip.epo_ops import Inpadoc, Epo
 from ip.uspto_assignments import Assignment
 from ip.uspto_exam_data import USApplication
+from ip.uspto_ptab import PtabDocument, PtabTrial
 

@@ -62,7 +62,7 @@ Currently supports:
 |                                                   +---------------------------+-------------------+
 |                                                   | Patent - Assignments      | Support Lookup    |
 |                                                   +---------------------------+-------------------+
-|                                                   | PTAB - Trial Documents    | Planned           |
+|                                                   | PTAB - Trial Documents    | Full Support      |
 +---------------------------------------------------+---------------------------+-------------------+
 
 

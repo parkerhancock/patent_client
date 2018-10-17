@@ -1,4 +1,10 @@
 from collections import OrderedDict
+from hashlib import md5
+import json
+
+def hash_dict(dictionary):
+    return md5(json.dumps(dictionary, sort_keys=True).encode('utf-8')).hexdigest()
+
 
 FILTERS = {
     #'exact',
