@@ -347,13 +347,19 @@ class Inpadoc():
             './epo:publication-reference/epo:document-id[@document-id-type="docdb"]',
             NS,
         )
-        data["publication"] = dict(self.objects.parser.docdb_number(pub_data)._asdict())
+        pub_data = dict(self.objects.parser.docdb_number(pub_data)._asdict())
+        data["publication"] = pub_data['country'] + pub_data['number'] + pub_data['kind']
+        data["publication_date"] = pub_data.get('date', None)
+        data["country"] = pub_data['country']
+
 
         app_data = bib_data.find(
             './epo:application-reference/epo:document-id[@document-id-type="docdb"]',
             NS,
         )
-        data["application"] = dict(self.objects.parser.docdb_number(app_data)._asdict())
+        app_data = dict(self.objects.parser.docdb_number(app_data)._asdict())
+        data["application"] = app_data['country'] + app_data['number']
+        data["filing_date"] = app_data.get('date', None)
 
         intl_class = [
             whitespace_re.sub("", e.text)
