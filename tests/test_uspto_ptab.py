@@ -10,7 +10,7 @@ class TestPtab:
     def test_can_get_set_of_cases(self):
         cases = PtabTrial.objects.filter(patent_owner_name='Silicon Genesis Corporation').order_by('trial_number')
         assert cases.count() == 3
-        assert cases[0].trial_number == 'IPR2016-00831'
+        assert list(cases.all())[0].trial_number == 'IPR2016-00831'
         assert len(list(cases)) == 3
 
     def test_can_get_case_documents(self):

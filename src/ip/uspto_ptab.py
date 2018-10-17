@@ -53,10 +53,8 @@ class PtabManager(BaseSet):
         kwargs['sort'] += args
         return self.__class__(*self.args, **kwargs)
 
-
     def first(self):
-        data = self.request()
-        return self.obj_class(data['results'][0])
+        return self[0]
 
     def __len__(self):
         return self.count()
@@ -78,14 +76,7 @@ class PtabManager(BaseSet):
         return json.load(open(fname))
 
     def all(self):
-        length = self.count()
-        offset = 0
-        while offset < length:
-            response = self.request(dict(offset=offset))
-            results = response['results']
-            for result in results:
-                yield self.obj_class(r)
-            offset += self.page_size
+        return iter(self)
 
 class PtabObject:
     def __init__(self, data):

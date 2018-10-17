@@ -10,13 +10,14 @@ from datetime import date
 from dateutil.parser import parse as parse_date
 import json
 import re
+from copy import deepcopy
 import os
 
 import inflection
 import requests
 
 from ip import CACHE_BASE
-from ip.util import BaseSet
+from ip.util import BaseSet, hash_dict
 
 class HttpException(Exception):
     pass
@@ -33,6 +34,8 @@ BASE_URL = "https://ped.uspto.gov/api/"
 PACKAGE_URL = "https://ped.uspto.gov/api/queries/{query_id}/package"
 STATUS_URL = "https://ped.uspto.gov/api/queries/{query_id}"
 DOWNLOAD_URL = "https://ped.uspto.gov/api/queries/{query_id}/download"
+QUERY_FIELDS = 'appEarlyPubNumber applId appLocation appType appStatus_txt appConfrNumber appCustNumber appGrpArtNumber appCls appSubCls appEntityStatus_txt patentNumber patentTitle primaryInventor firstNamedApplicant appExamName appExamPrefrdName appAttrDockNumber appPCTNumber appIntlPubNumber wipoEarlyPubNumber pctAppType firstInventorFile appClsSubCls rankAndInventorsList'
+
 CACHE_DIR = CACHE_BASE / 'uspto_examination_data'
 CACHE_DIR.mkdir(exist_ok=True)
 
@@ -40,81 +43,107 @@ session = requests.Session()
 session.headers["User-Agent"] = "python-ip"
 
 
-class USApplicationManager():
-    def is_available():
-        query = {}
-        try:
-            result = PatExData.get_by_application_number(application_number=15145443)
-        except NotAvailableException as e:
-            return False
-        return True
+class USApplicationManager(BaseSet):
+    primary_key = 'appl_id'
+
+    def __init__(self, *args, **kwargs):
+        self.args = args
+        self.kwargs = kwargs
+
+    def filter(self, *args, **kwargs):
+        return self.__class__(*args, *self.args, **{**kwargs, **self.kwargs})
+
+    def order_by(self, *args):
+        kwargs = deepcopy(self.kwargs)
+        if 'sort' not in kwargs:
+            kwargs['sort'] = list()
+        kwargs['sort'] += args
+        return self.__class__(*args, *self.args, **{**kwargs, **self.kwargs})
+
+    def first(self):
+        return self[0]
+
+    def all(self):
+        return iter(self)
+    
+    def __getitem__(self, key):
+        if type(key) == slice:
+            indices = list(range(len(self)))[key.start : key.stop : key.step]
+            return [self.__getitem__(index) for index in indices]
+        else:
+            if not hasattr(self, 'objs'):
+                self.request()
+            return self.objs[key]
+    
+    def __len__(self):
+        if not hasattr(self, '_len'):
+            self.request()
+        return self._len
+
+    def count(self):
+        return len(self)
 
     def get(self, *args, **kwargs):
-        query = self._generate_query(*args, **kwargs)
-        result = self._submit(query)
-        if not result:
-            raise ValueError("No Matches Found!")
-        if len(result) > 1:
-            raise ValueError("Multiple Matches Found!")
-        return result[0]
+        manager = self.__class__(*args, *self.args, **{**kwargs, **self.kwargs})
+        count = manager.count()
+        if count > 1:
+            raise ValueError('More than one result!')
+        elif count == 0:
+            raise ValueError('Object Not Found!')
+        else:
+            return manager.first()
 
-    def bulk_get(self, *args, **kwargs):
-        if args:
-            return self.bulk_get(appl_id=args[0])
-        keywords = list(kwargs.keys())
-        if len(keywords) > 1:
-            raise NotImplementedError('No Support for Mixed Types')
-        keyword = keywords[0]
-        return self._submit(
-            {
-                "qf": inflection.camelize(keyword, uppercase_first_letter=False),
-                "searchText": " ".join(kwargs[keyword]),
-                "facet": "false",
-            }
-        )
+    def get_many(self, *args, **kwargs):
+        manager = self.__class__(*args, *self.args, **{**kwargs, **self.kwargs, **dict(default_connector='OR')})
+        return manager
 
-    def search(self, *args, **kwargs):
-        query = self._generate_query(*args, **kwargs)
-        return self._submit(query)
 
-    def _generate_query(self, *args, **kwargs):
-        if args:
-            kwargs["appl_id"] = args[0]
-        if len(kwargs) > 1:
-            return NotImplementedError("Can't get on more than one field!")
-        if not args and not kwargs:
-            raise TypeError("No Valid Argument Passed!")
 
-        qf = list(kwargs.keys())[0]
-        searchText = kwargs[qf]
-        if type(searchText) == list:
-            searchText = " ".join(str(item) for item in searchText)
+    def _generate_query(self, params=dict()):
+        params = {**{self.primary_key: self.args}, **self.kwargs, **params}
+        default_connector = params.get('default_connector', 'AND')
+        if 'default_connector' in params: del params['default_connector']
+        sort_query = ''
+
+        if 'sort' in params:
+            for s in params['sort']:
+                if s[0] == '-':
+                    sort_query += f'{inflection.camelize(s[1:], uppercase_first_letter=False)} desc '
+                else:
+                    sort_query += f'{inflection.camelize(s, uppercase_first_letter=False)} asc'
+
+            del params['sort']
+
+        query = ''
+        for k, v in params.items():
+            field = inflection.camelize(k, uppercase_first_letter=False)
+            if not v:
+                continue            
+            elif type(v) in (list, tuple):
+                body = f' {default_connector} '.join(v)
+            else:
+                body = v
+            query += f'{field}:({body}) '
+            
+            #import pdb; pdb.set_trace()
+
         return {
-            "qf": inflection.camelize(qf, False),
-            "searchText": searchText,
+            "qf": QUERY_FIELDS,
+            "searchText": query.strip(),
+            "sort": sort_query.strip(),
             "facet": "false",
             "mm": "100%",
         }
 
-    def fields(self):
-        url = "https://ped.uspto.gov/api/search-fields"
-        response = session.get(url)
-        if response.ok:
-            raw = response.json()
-            output = {inflection.underscore(key): value for (key, value) in raw.items()}
-            return output
-        else:
-            raise ValueError("Can't get fields!")
+        
 
-
-
-    def _submit(self, query):
-        qstring = "".join([str(k) + str(query[k]) for k in sorted(query.keys())])
-        fname = str(sha1(qstring.encode("utf-8")).hexdigest()) + ".json"
+    def request(self, params=dict()):
+        query_params = self._generate_query(params)
+        print(json.dumps(query_params))
+        fname = hash_dict(query_params) + '.json'
         fname = os.path.join(CACHE_DIR, fname)
         if not os.path.exists(fname):
-            response = session.post(QUERY_URL, json=query)
-            print(response.request.body.decode("utf-8"))
+            response = session.post(QUERY_URL, json=query_params)
             if not response.ok:
                 if "requested resource is not available" in response.text:
                     raise NotAvailableException("Patent Examination Data is Offline")
@@ -127,16 +156,16 @@ class USApplicationManager():
             data = json.load(open(fname))
         results = data["queryResults"]["searchResponse"]["response"]
         num_found = results['numFound']
+        self._len = num_found
         if num_found <= 20:
             with open(fname, 'w') as f:
                 json.dump(data, f, indent=2)
-            return USApplicationJsonSet(results['docs'], num_found)
+            self.objs = USApplicationJsonSet(results['docs'], num_found)
         else:
-            return self._package_xml(query, data)
+            return self._package_xml(query_params,data)
     
-    def _package_xml(self, query, data):
-        qstring = "".join([str(k) + str(query[k]) for k in sorted(query.keys())])
-        fname = str(sha1(qstring.encode("utf-8")).hexdigest()) + ".zip"
+    def _package_xml(self, query_params, data):
+        fname = hash_dict(query_params) + ".zip"
         fname = os.path.join(CACHE_DIR, fname)
         query_id = data["queryId"]
         results = data["queryResults"]["searchResponse"]["response"]
@@ -177,7 +206,7 @@ class USApplicationManager():
             with open(fname, "wb") as f:
                 for chunk in response.iter_content(1024):
                     f.write(chunk)
-        return USApplicationXmlSet(fname, num_found)
+        self.objs = USApplicationXmlSet(fname, num_found)
 
     def fields(self):
         url = "https://ped.uspto.gov/api/search-fields"
@@ -188,7 +217,6 @@ class USApplicationManager():
             return output
         else:
             raise ValueError("Can't get fields!")
-
 
 
 ns = dict(
@@ -366,6 +394,7 @@ class USApplicationJsonSet(BaseSet):
     
     def __getitem__(self, key):
         return USApplication(self.data[key])
+        
 
 class USApplicationXmlSet(BaseSet):
     parser = USApplicationXmlParser()

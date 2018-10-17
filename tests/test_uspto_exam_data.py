@@ -33,12 +33,13 @@ class TestPatentExaminationData:
             == "Suction and Discharge Lines for a Dual Hydraulic Fracturing Unit"
         )
 
-    def test_bulk_get_by_application_number(self):
+    def test_get_many_by_application_number(self):
         app_nos = ["14971450", "15332765", "13441334", "15332709", "14542000"]
-        data = USApplication.objects.bulk_get(app_nos)
-        assert len(data) == 5
+        data = USApplication.objects.get_many(*app_nos)
+        data_list = list(data)
+        assert len(data_list) == 5
         assert (
-            data[4].patent_title
+            data_list[4].patent_title
             == "MOBILE, MODULAR, ELECTRICALLY POWERED SYSTEM FOR USE IN FRACTURING UNDERGROUND FORMATIONS"
         )
         
@@ -48,7 +49,7 @@ class TestPatentExaminationData:
 
 
     def test_search_patex_by_assignee(self):
-        data = USApplication.objects.search(first_named_applicant="Scientific Drilling, Inc.")
+        data = USApplication.objects.filter(first_named_applicant="Scientific Drilling, Inc.")
         assert data.values_list('patent_title', flat=True)[:5] == ['DOWNHOLE APPARATUS FOR ELECTRICAL POWER GENERATION FROM SHAFT FLEXURE',
  'Hybrid Bearings for Downhole Motors',
  'DOUBLE SHAFT DRILLING APPARATUS WITH HANGER BEARINGS',
@@ -56,7 +57,7 @@ class TestPatentExaminationData:
  "METHOD TO DETERMINE LOCAL VARIATIONS OF THE EARTH'S MAGNETIC FIELD AND "
  'LOCATION OF THE SOURCE THEREOF']
 
-    def test_bulk_get_by_publication_number(self):
+    def test_get_many_by_publication_number(self):
         nos = [
             "US20080034424A1",
             "US20100020700A1",
@@ -64,15 +65,15 @@ class TestPatentExaminationData:
             "US20050120054A1",
             "US20050188423A1",
         ]
-        data = USApplication.objects.bulk_get(app_early_pub_number=nos)
-        assert len(data) == 5
+        data = USApplication.objects.get_many(app_early_pub_number=nos)
+        assert len(list(data)) == 5
 
-    @pytest.mark.skip('This function doesn\'nt work with the ORM Style. Consider dropping it')
-    def test_mixed_bulk_get(self):
-        pats = ["US7627658", "US7551922", "US7359935"]
-        pubs = ["20080034424", "20100020700", "20110225644"]
+    #@pytest.mark.skip('This function doesn\'nt work with the ORM Style. Consider dropping it')
+    def test_mixed_get_many(self):
+        pats = ["7627658", "7551922", "7359935"]
+        pubs = ["US20080034424A1", "US20100020700A1", "US20110225644A1"]
         apps = ["14971450", "15332765", "13441334"]
-        data = USApplication.objects.bulk_get(
+        data = USApplication.objects.get_many(
             app_early_pub_number=pubs, patent_number=pats, appl_id=apps
         )
         assert len(data) == 9
