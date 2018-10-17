@@ -58,7 +58,7 @@ class USApplicationManager(BaseSet):
         if 'sort' not in kwargs:
             kwargs['sort'] = list()
         kwargs['sort'] += args
-        return self.__class__(*args, *self.args, **{**kwargs, **self.kwargs})
+        return self.__class__(*self.args, **{**kwargs, **self.kwargs})
 
     def first(self):
         return self[0]
@@ -139,7 +139,6 @@ class USApplicationManager(BaseSet):
 
     def request(self, params=dict()):
         query_params = self._generate_query(params)
-        print(json.dumps(query_params))
         fname = hash_dict(query_params) + '.json'
         fname = os.path.join(CACHE_DIR, fname)
         if not os.path.exists(fname):

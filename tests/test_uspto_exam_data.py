@@ -50,7 +50,7 @@ class TestPatentExaminationData:
 
     def test_search_patex_by_assignee(self):
         data = USApplication.objects.filter(first_named_applicant="Scientific Drilling, Inc.")
-        assert data.values_list('patent_title', flat=True)[:5] == ['DOWNHOLE APPARATUS FOR ELECTRICAL POWER GENERATION FROM SHAFT FLEXURE',
+        assert data.order_by('appl_id').values_list('patent_title', flat=True)[:5] == ['DOWNHOLE APPARATUS FOR ELECTRICAL POWER GENERATION FROM SHAFT FLEXURE',
  'Hybrid Bearings for Downhole Motors',
  'DOUBLE SHAFT DRILLING APPARATUS WITH HANGER BEARINGS',
  'DRILL BIT FOR A DRILLING APPARATUS',
