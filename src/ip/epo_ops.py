@@ -10,7 +10,7 @@ from hashlib import md5
 from ip import SETTINGS, CACHE_BASE
 from collections import namedtuple
 
-from ip.util import BaseSet
+from ip.util import BaseSet, one_to_many, one_to_one
 
 # XML Namespaces for ElementTree
 NS = {
@@ -90,10 +90,9 @@ class OPSParser:
         # Post-2003 - CCccyynnnnnnW
         if int(year) >= 2004:
             case_number = year + number.rjust(6, "0")
-            return ".".join([country, case_number, "W"])
         else:
             case_number = year[2:] + number.rjust(5, "0")
-            return ".".join([country, case_number, "W"])
+        return DocDB(country, case_number, 'W', None)
 
 
     def citation(self, el):
@@ -161,6 +160,7 @@ class OPSManager:
 
     
     def request(self, url, params=dict(), stream=False):
+        print(url)
         retry = 0
         while retry < 3:
             response = session.get(url, params=params, stream=stream)
@@ -191,17 +191,13 @@ class OPSManager:
         
     
     def convert_to_docdb(self, number, doc_type):
-        if number[:3] == "PCT":
-            country = ""
-            number = number
+        country = country_re.search(number)
+        if country:
+            country = country.group(0)
+            number = number[2:]
         else:
-            country = country_re.search(number)
-            if country:
-                country = country.group(0)
-                number = number[2:]
-            else:
-                country = "US"
-                number = number
+            country = "US"
+            number = number
 
         url = f"http://ops.epo.org/3.2/rest-services/number-service/{doc_type}/original/{country}.({number})/docdb"
         text = self.xml_request(url)
@@ -241,11 +237,18 @@ class InpadocManager(OPSManager):
     """
     def get(self, number=None, doc_type="publication", doc_db=False):
         if not doc_db:
-            doc_db = self.convert_to_docdb(number, doc_type)
+            if 'PCT' in number:
+                doc_type = 'application'
+                doc_db = self.parser.pct_to_docdb(number)
+            else:
+                doc_db = self.convert_to_docdb(number, doc_type)
         return Inpadoc(doc_type, doc_db)
     
     def search(self, query):
         return InpadocSet(InpadocSearch(query))
+    
+    def filter(self, query):
+        return self.search(query)
 
     def xml_data(self, pub, data_kind):
         """
@@ -272,6 +275,7 @@ class InpadocManager(OPSManager):
                 data_kind=data_kind,
             )
         text = self.xml_request(url)
+        print(url)
         tree = ET.fromstring(text.encode("utf-8"))
         return tree
 
@@ -294,6 +298,7 @@ class Inpadoc():
     """
 
     objects = InpadocManager()
+    us_application = one_to_one('ip.USApplication', publication='publication')
 
     def __init__(self, doc_type="publication", doc_db=False):
         self.doc_type = doc_type
@@ -304,7 +309,8 @@ class Inpadoc():
         self.date = doc_db.date
         self.dict = self.bib_data
         for k, v in self.dict.items():
-            setattr(self, k, v)
+            if not hasattr(self, k):
+                setattr(self, k, v)
 
     def __repr__(self):
         return f'<Inpadoc({self.country}{self.number}, {self.doc_type})>'
@@ -340,7 +346,7 @@ class Inpadoc():
         if title == None:
             title = bib_data.find("./epo:invention-title", NS)
         if title != None:
-            data["title"] = title.text
+            data["title"] = title.text.strip()
         else:
             data["title"] = ""
         pub_data = bib_data.find(

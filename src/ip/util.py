@@ -1,6 +1,7 @@
 from collections import OrderedDict
 from hashlib import md5
 import json
+from importlib import import_module
 
 def hash_dict(dictionary):
     return md5(json.dumps(dictionary, sort_keys=True).encode('utf-8')).hexdigest()
@@ -39,34 +40,50 @@ FILTERS = {
 }
 
 
-def accessor(obj, accessor):
-    k_list = accessor.split('__')
-    first_key = k_list.pop(0)
-    name_list = [first_key, ]
-    if hasattr(obj, first_key):
-        item = getattr(obj, first_key)
+def one_to_one(class_name, **mapping):
+    module_name, class_name = class_name.rsplit('.', 1)
+    @property
+    def get(self):
+        klass = getattr(import_module(module_name), class_name)
+        filter_obj = {k: getattr(self, v) for (k, v) in mapping.items()}
+        return klass.objects.get(**filter_obj)
+    return get
+
+def one_to_many(class_name, **mapping):
+    module_name, class_name = class_name.rsplit('.', 1)
+    @property
+    def get(self):
+        klass = getattr(import_module(module_name), class_name)
+        filter_obj = {k: getattr(self, v) for (k, v) in mapping.items()}
+        return klass.objects.filter(**filter_obj)
+    return get
+
+
+def recur_accessor(obj, accessor):
+    if '__' not in accessor:
+        a = accessor
+        rest = None
     else:
-        item = obj.dict.get(first_key, None)
-    while k_list:
-        key = k_list.pop(0)
-        if item == None:
-            name_list.append(key)
-            continue
+        a, rest = accessor.split('__', 1)
+    
+    if hasattr(obj, a):
+        new_obj = getattr(obj, a)
+        if callable(new_obj):
+            new_obj = new_obj()
+    else:
         try:
-            key = int(key)
+            a = int(a)
         except ValueError:
-            name_list.append(key)
-        if type(item) == list:
-            try:
-                item = item[key]
-            except IndexError:
-                item=None
-        else:
-            item = item.get(key, None)
-    key = '_'.join(name_list)
-    return (key, item)
-
-
+            pass
+        try:
+            new_obj = obj[a]
+        except (KeyError, TypeError):
+            new_obj=None
+    if not rest:
+        return new_obj
+    else:
+        return recur_accessor(new_obj, rest)
+    
 class BaseSet:
     def filter(self, **kwargs):
         for key, value in kwargs.items():
@@ -108,8 +125,9 @@ class ValuesSet:
             if self.fields:
                 fdata = OrderedDict()
                 for k in self.fields:
-                    key, item = accessor(obj, k)
-                    fdata[key] = item
+                    key = k.replace('__', '_')
+                    value = recur_accessor(obj, k)
+                    fdata[key] = value 
                 data = fdata
             if self.values_list:
                 data = tuple(data[k] for k, v in data.items())

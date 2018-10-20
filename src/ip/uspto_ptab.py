@@ -2,7 +2,7 @@ import requests
 import json
 from copy import deepcopy
 from ip import CACHE_BASE
-from ip.util import BaseSet, hash_dict
+from ip.util import BaseSet, hash_dict, one_to_one, one_to_many
 import inflection
 import mimetypes
 import os
@@ -95,28 +95,21 @@ class PtabTrialManager(PtabManager):
 
 class PtabTrial(PtabObject):
     objects = PtabTrialManager()
+    us_application = one_to_one('ip.USApplication', appl_id='application_number')
+    documents = one_to_many('ip.PtabDocument', trial_number='trial_number')
 
     def __repr__(self):
         return f'<PtabTrial(trial_number={self.trial_number})>'
     
-    @property
-    def documents(self):
-        return PtabDocument.objects.filter(trial_number=self.trial_number)
-        
 class PtabDocumentManager(PtabManager):
     base_url = 'https://ptabdata.uspto.gov/ptab-api/documents'
     obj_class = 'PtabDocument'
     primary_key = 'id'
 
-    
-
 class PtabDocument(PtabObject):
     objects = PtabDocumentManager()
+    trial = one_to_one('ip.PtabTrial', trial_number='trial_number')
 
-    @property
-    def trial(self):
-        return PtabTrial.objects.get(self.trial_number)
-    
     def download(self, path='.'):
         url = self.links[1]['href']
         extension = mimetypes.guess_extension(self.media_type)

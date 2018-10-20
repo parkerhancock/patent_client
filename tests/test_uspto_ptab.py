@@ -22,7 +22,7 @@ class TestPtab:
     def test_can_get_case_from_document(self):
         doc = PtabDocument.objects.get(230910)
         assert doc.trial.trial_number == 'IPR2016-00831'
-
+    
     def test_can_download_document(self, tmpdir):
         doc = PtabDocument.objects.get(230910)
         doc.download(path=tmpdir)

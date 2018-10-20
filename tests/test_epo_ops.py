@@ -80,9 +80,9 @@ class TestInpadoc:
         assert bib_data == json.load(open(os.path.join(FIXTURES, "epo_ep.json")))
 
     def test_pct(self):
-        bib_data = Inpadoc.objects.get(
-            "PCT/US16/15853", doc_type="application"
-        ).bib_data
+        doc = Inpadoc.objects.get("PCT/US16/15853")
+        print(doc)
+        bib_data = doc.bib_data
         with open(os.path.join(FIXTURES, "epo_pct.json"), 'w') as f:
             json.dump(bib_data, f, indent=2)
         assert bib_data == json.load(open(os.path.join(FIXTURES, "epo_pct.json")))

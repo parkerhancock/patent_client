@@ -7,17 +7,18 @@ from zipfile import ZipFile
 from tempfile import TemporaryDirectory
 import xml.etree.ElementTree as ET
 from datetime import date
-from dateutil.parser import parse as parse_date
+from dateutil.parser import parse as parse_dt
 import json
 import re
 from copy import deepcopy
 import os
+import warnings
 
 import inflection
 import requests
 
 from ip import CACHE_BASE
-from ip.util import BaseSet, hash_dict
+from ip.util import BaseSet, hash_dict, one_to_one, one_to_many
 
 class HttpException(Exception):
     pass
@@ -84,6 +85,13 @@ class USApplicationManager(BaseSet):
         return len(self)
 
     def get(self, *args, **kwargs):
+        if 'publication' in kwargs:
+            if 'A1' in kwargs['publication']:
+                warnings.warn('Lookup by Publication does not work well')
+                kwargs['app_early_pub_number'] = kwargs['publication']
+            else:
+                kwargs['patent_number'] = kwargs['publication'][2:-2]
+            del kwargs['publication']
         manager = self.__class__(*args, *self.args, **{**kwargs, **self.kwargs})
         count = manager.count()
         if count > 1:
@@ -126,13 +134,15 @@ class USApplicationManager(BaseSet):
             query += f'{field}:({body}) '
             
             #import pdb; pdb.set_trace()
+        mm = '100%' if 'appEarlyPubNumber' not in query else '90%'
 
         return {
             "qf": QUERY_FIELDS,
+            "fl": '*',
             "searchText": query.strip(),
             "sort": sort_query.strip(),
             "facet": "false",
-            "mm": "100%",
+            "mm": mm,
         }
 
         
@@ -141,6 +151,7 @@ class USApplicationManager(BaseSet):
         query_params = self._generate_query(params)
         fname = hash_dict(query_params) + '.json'
         fname = os.path.join(CACHE_DIR, fname)
+        print(json.dumps(query_params, indent=2))
         if not os.path.exists(fname):
             response = session.post(QUERY_URL, json=query_params)
             if not response.ok:
@@ -282,7 +293,7 @@ class USApplicationXmlParser():
         }
         for key in data.keys():
             if "date" in key and data.get(key, False) != "-":
-                data[key] = parse_date(data[key]).date()
+                data[key] = parse_dt(data[key]).date()
             elif data.get(key, False) == "-":
                 data[key] = None
         return data
@@ -392,6 +403,9 @@ class USApplicationJsonSet(BaseSet):
         return self._len
     
     def __getitem__(self, key):
+        for k, v in self.data[key].items():
+            if 'date' in k and type(v) == str:
+                self.data[key][k] = parse_dt(v).date()
         return USApplication(self.data[key])
         
 
@@ -433,6 +447,15 @@ class USApplicationXmlSet(BaseSet):
 
 class USApplication():
     objects = USApplicationManager()
+    trials = one_to_many('ip.PtabTrial', patent_number='patent_number')
+    inpadoc = one_to_one('ip.Inpadoc', number='publication')
+
+    @property
+    def publication(self):
+        if self.patent_number:
+            return self.patent_number
+        else:
+            return self.app_early_pub_number
 
     def __init__(self, data):
         self.dict = {inflection.underscore(k):v for (k,v) in data.items()}
