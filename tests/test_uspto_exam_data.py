@@ -46,12 +46,16 @@ class TestPatentExaminationData:
         
         assert list(data.values_list('patent_title', flat=True)) == ['SYSTEM AND METHOD FOR DEDICATED ELECTRIC SOURCE FOR USE IN FRACTURING UNDERGROUND FORMATIONS USING LIQUID PETROLEUM GAS', 'ELECTRIC BLENDER SYSTEM, APPARATUS AND METHOD FOR USE IN FRACTURING UNDERGROUND FORMATIONS USING LIQUID PETROLEUM GAS', 'MOBILE ELECTRIC POWER GENERATION FOR HYDRAULIC FRACTURING OF SUBSURFACE GEOLOGICAL FORMATIONS', 'MOBILE, MODULAR, ELECTRICALLY POWERED SYSTEM  FOR USE IN FRACTURING UNDERGROUND FORMATIONS', 'MOBILE, MODULAR, ELECTRICALLY POWERED SYSTEM FOR USE IN FRACTURING UNDERGROUND FORMATIONS']
         assert list(data.values('appl_id', 'app_filing_date')) == [
-            {'app_filing_date': '2016-10-24T04:00:00Z', 'appl_id': '15332709'},
-            {'app_filing_date': '2016-10-24T04:00:00Z', 'appl_id': '15332765'},
-            {'app_filing_date': '2015-12-16T05:00:00Z', 'appl_id': '14971450'},
-            {'app_filing_date': '2012-04-06T04:00:00Z', 'appl_id': '13441334'},
-            {'app_filing_date': '2014-11-14T05:00:00Z', 'appl_id': '14542000'}
-            ] 
+            OrderedDict([('appl_id', '15332709'),
+             ('app_filing_date', datetime.date(2016, 10, 24))]),
+            OrderedDict([('appl_id', '15332765'),
+            ('app_filing_date', datetime.date(2016, 10, 24))]),
+            OrderedDict([('appl_id', '14971450'),
+            ('app_filing_date', datetime.date(2015, 12, 16))]),
+            OrderedDict([('appl_id', '13441334'),
+            ('app_filing_date', datetime.date(2012, 4, 6))]),
+            OrderedDict([('appl_id', '14542000'),
+            ('app_filing_date', datetime.date(2014, 11, 14))])]
 
     def test_values_many_by_application(self):
         app_nos = ["14971450", "15332765", "13441334", "15332709", "14542000"]

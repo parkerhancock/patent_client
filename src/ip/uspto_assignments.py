@@ -12,7 +12,7 @@ import requests
 
 
 from ip import CACHE_BASE
-from ip.util import BaseSet
+from ip.util import BaseSet, Model
 
 # USPTO has a malconfigured SSL connection. Suppress warnings about it.
 import urllib3
@@ -155,13 +155,8 @@ class AssignmentSet(BaseSet):
         self._len = int(result.attrib['numFound'])
         return [self.parser.doc(doc) for doc in result]
 
-class Assignment():
+class Assignment(Model):
     objects = AssignmentManager()
 
-    def __init__(self, data):
-        self.dict = data
-        for k, v in data.items():
-            setattr(self, underscore(k), v)
-    
     def __repr__(self, data):
         return f'<Assignment(id={self.id})>'

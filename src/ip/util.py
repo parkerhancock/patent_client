@@ -2,6 +2,8 @@ from collections import OrderedDict
 from hashlib import md5
 import json
 from importlib import import_module
+from dateutil.parser import parse as parse_dt
+import inflection
 
 def hash_dict(dictionary):
     return md5(json.dumps(dictionary, sort_keys=True).encode('utf-8')).hexdigest()
@@ -83,7 +85,21 @@ def recur_accessor(obj, accessor):
         return new_obj
     else:
         return recur_accessor(new_obj, rest)
-    
+
+class Model(object):
+    def __init__(self, data):
+        self.dict = {inflection.underscore(k):v for (k,v) in data.items()}
+        for k, v in self.dict.items():
+            try:
+                if 'datetime' in k and type(v) == str:
+                    self.dict[k] = parse_dt(v)
+                elif 'date' in k and type(v) == str:
+                    self.dict[k] = parse_dt(v).date()
+            except ValueError: # Malformed datetimes:
+                self.dict[k] = None
+            setattr(self, k, self.dict[k])
+
+
 class BaseSet:
     def filter(self, **kwargs):
         for key, value in kwargs.items():

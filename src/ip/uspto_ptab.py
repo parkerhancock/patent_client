@@ -2,7 +2,7 @@ import requests
 import json
 from copy import deepcopy
 from ip import CACHE_BASE
-from ip.util import BaseSet, hash_dict, one_to_one, one_to_many
+from ip.util import BaseSet, hash_dict, one_to_one, one_to_many, Model
 import inflection
 import mimetypes
 import os
@@ -77,23 +77,13 @@ class PtabManager(BaseSet):
 
     def all(self):
         return iter(self)
-
-class PtabObject:
-    def __init__(self, data):
-        self.dict = {inflection.underscore(k): v for (k, v) in data.items()}
-        for k, v in self.dict.items():
-            if 'datetime' in k:
-                self.dict[k] = parse_dt(v)
-            elif 'date' in k:
-                self.dict[k] = parse_dt(v).date()
-            setattr(self, k, self.dict[k])
-
+        
 class PtabTrialManager(PtabManager):
     base_url = 'https://ptabdata.uspto.gov/ptab-api/trials'
     obj_class = 'PtabTrial'
     primary_key = 'trial_number'
 
-class PtabTrial(PtabObject):
+class PtabTrial(Model):
     objects = PtabTrialManager()
     us_application = one_to_one('ip.USApplication', appl_id='application_number')
     documents = one_to_many('ip.PtabDocument', trial_number='trial_number')
@@ -106,7 +96,7 @@ class PtabDocumentManager(PtabManager):
     obj_class = 'PtabDocument'
     primary_key = 'id'
 
-class PtabDocument(PtabObject):
+class PtabDocument(Model):
     objects = PtabDocumentManager()
     trial = one_to_one('ip.PtabTrial', trial_number='trial_number')
 

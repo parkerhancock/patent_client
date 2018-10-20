@@ -18,7 +18,7 @@ import inflection
 import requests
 
 from ip import CACHE_BASE
-from ip.util import BaseSet, hash_dict, one_to_one, one_to_many
+from ip.util import BaseSet, hash_dict, one_to_one, one_to_many, Model
 
 class HttpException(Exception):
     pass
@@ -445,7 +445,7 @@ class USApplicationXmlSet(BaseSet):
             except StopIteration:
                 self.open_file = self.parser.xml_file(self.zipfile.open(self.files.pop(0)))
 
-class USApplication():
+class USApplication(Model):
     objects = USApplicationManager()
     trials = one_to_many('ip.PtabTrial', patent_number='patent_number')
     inpadoc = one_to_one('ip.Inpadoc', number='publication')
@@ -456,11 +456,6 @@ class USApplication():
             return self.patent_number
         else:
             return self.app_early_pub_number
-
-    def __init__(self, data):
-        self.dict = {inflection.underscore(k):v for (k,v) in data.items()}
-        for k, v in self.dict.items():
-            setattr(self, k, v)
-
+            
     def __repr__(self):
         return f'<USApplication(appl_id={self.appl_id})>'
