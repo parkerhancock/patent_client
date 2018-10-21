@@ -1,4 +1,4 @@
-__version__ = "0.1.1"
+__version__ = "0.1.2"
 
 import json
 import shutil
@@ -24,7 +24,7 @@ if not SETTINGS_FILE.exists():
 
 SETTINGS = json.load(open(SETTINGS_FILE))
 
-from ip.epo_ops import Inpadoc, Epo
-from ip.uspto_assignments import Assignment
-from ip.uspto_exam_data import USApplication
-from ip.uspto_ptab import PtabDocument, PtabTrial
+from patent_client.epo_ops import Inpadoc, Epo
+from patent_client.uspto_assignments import Assignment
+from patent_client.uspto_exam_data import USApplication
+from patent_client.uspto_ptab import PtabDocument, PtabTrial

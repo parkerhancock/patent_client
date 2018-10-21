@@ -1,8 +1,8 @@
 import requests
 import json
 from copy import deepcopy
-from ip import CACHE_BASE
-from ip.util import BaseSet, hash_dict, one_to_one, one_to_many, Model
+from patent_client import CACHE_BASE
+from patent_client.util import Manager, hash_dict, one_to_one, one_to_many, Model
 import inflection
 import mimetypes
 import os
@@ -14,7 +14,7 @@ CACHE_DIR.mkdir(exist_ok=True)
 
 session = requests.Session()
 
-class PtabManager(BaseSet):
+class PtabManager(Manager):
     page_size = 25
 
     def __init__(self, *args, **kwargs):
@@ -35,16 +35,12 @@ class PtabManager(BaseSet):
         else:
             return manager.first()
 
-    def __getitem__(self, key):
-        if type(key) == slice:
-            indices = list(range(len(self)))[key.start : key.stop : key.step]
-            return [self.__getitem__(index) for index in indices]
-        else:
-            offset = int(key / self.page_size) * self.page_size
-            position = (key % self.page_size)
-            data = self.request(dict(offset=offset))
-            results = data['results']
-            return self.obj_class(results[position])
+    def get_item(self, key):
+        offset = int(key / self.page_size) * self.page_size
+        position = (key % self.page_size)
+        data = self.request(dict(offset=offset))
+        results = data['results']
+        return self.obj_class(results[position])
     
     def order_by(self, *args):
         kwargs = deepcopy(self.kwargs)
@@ -85,8 +81,8 @@ class PtabTrialManager(PtabManager):
 
 class PtabTrial(Model):
     objects = PtabTrialManager()
-    us_application = one_to_one('ip.USApplication', appl_id='application_number')
-    documents = one_to_many('ip.PtabDocument', trial_number='trial_number')
+    us_application = one_to_one('patent_client.USApplication', appl_id='application_number')
+    documents = one_to_many('patent_client.PtabDocument', trial_number='trial_number')
 
     def __repr__(self):
         return f'<PtabTrial(trial_number={self.trial_number})>'
@@ -98,7 +94,7 @@ class PtabDocumentManager(PtabManager):
 
 class PtabDocument(Model):
     objects = PtabDocumentManager()
-    trial = one_to_one('ip.PtabTrial', trial_number='trial_number')
+    trial = one_to_one('patent_client.PtabTrial', trial_number='trial_number')
 
     def download(self, path='.'):
         url = self.links[1]['href']

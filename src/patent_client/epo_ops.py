@@ -7,10 +7,10 @@ from tempfile import TemporaryDirectory
 from PyPDF2 import PdfFileMerger
 import json
 from hashlib import md5
-from ip import SETTINGS, CACHE_BASE
+from patent_client import SETTINGS, CACHE_BASE
 from collections import namedtuple
 
-from ip.util import BaseSet, one_to_many, one_to_one
+from patent_client.util import Manager, one_to_many, one_to_one
 
 # XML Namespaces for ElementTree
 NS = {
@@ -126,7 +126,7 @@ class OPSParser:
         }
 
 
-class OPSManager:
+class OPSManager(Manager):
     """
     Base Class for clients based on the EPO Open Patent Services
     Includes INPADOC and EPO Register
@@ -247,6 +247,10 @@ class InpadocManager(OPSManager):
     def search(self, query):
         return InpadocSet(InpadocSearch(query))
     
+    def get_item(self, key):
+        doc_db, doc_type = self.objs[key]            
+        return Inpadoc(doc_db=doc_db, doc_type=doc_type)
+    
     def filter(self, query):
         return self.search(query)
 
@@ -298,7 +302,7 @@ class Inpadoc():
     """
 
     objects = InpadocManager()
-    us_application = one_to_one('ip.USApplication', publication='publication')
+    us_application = one_to_one('patent_client.USApplication', publication='publication')
 
     def __init__(self, doc_type="publication", doc_db=False):
         self.doc_type = doc_type
@@ -494,8 +498,9 @@ class Inpadoc():
         )
         out_file.write(out_fname)
 
-class InpadocSet(BaseSet):
+class InpadocSet(Manager):
     def __init__(self, doc_db_list):
+        super(InpadocSet, self).__init__(doc_db_list)
         self.objs = doc_db_list
 
     def __repr__(self):
@@ -512,11 +517,6 @@ class InpadocSet(BaseSet):
             doc_db, doc_type = self.objs[key]            
             return Inpadoc(doc_db=doc_db, doc_type=doc_type)
 
-    def __add__(self, other):
-        return InpadocSet(self.objs + other.objs)
-
-    def __iter__(self):
-        return (Inpadoc(doc_db=doc_db, doc_type=doc_type) for (doc_db, doc_type) in self.objs)
 
 
 class InpadocSearch(OPSManager):
@@ -535,6 +535,7 @@ class InpadocSearch(OPSManager):
     page_size=25
 
     def __init__(self, query):
+        
         self.query = dict(q=query)
         text = self.xml_request(self.search_url, self.query)
         tree = ET.fromstring(text.encode("utf-8"))

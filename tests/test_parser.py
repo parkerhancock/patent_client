@@ -1,6 +1,6 @@
 import pytest
 
-from ip.parser import parse
+from patent_client.parser import parse
 
 
 class TestPatentNumberParser:

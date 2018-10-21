@@ -17,8 +17,8 @@ import warnings
 import inflection
 import requests
 
-from ip import CACHE_BASE
-from ip.util import BaseSet, hash_dict, one_to_one, one_to_many, Model
+from patent_client import CACHE_BASE
+from patent_client.util import Manager, hash_dict, one_to_one, one_to_many, Model
 
 class HttpException(Exception):
     pass
@@ -44,7 +44,7 @@ session = requests.Session()
 session.headers["User-Agent"] = "python-ip"
 
 
-class USApplicationManager(BaseSet):
+class USApplicationManager(Manager):
     primary_key = 'appl_id'
 
     def __init__(self, *args, **kwargs):
@@ -61,28 +61,16 @@ class USApplicationManager(BaseSet):
         kwargs['sort'] += args
         return self.__class__(*self.args, **{**kwargs, **self.kwargs})
 
-    def first(self):
-        return self[0]
-
-    def all(self):
-        return iter(self)
     
-    def __getitem__(self, key):
-        if type(key) == slice:
-            indices = list(range(len(self)))[key.start : key.stop : key.step]
-            return [self.__getitem__(index) for index in indices]
-        else:
-            if not hasattr(self, 'objs'):
-                self.request()
-            return self.objs[key]
+    def get_item(self, key):
+        if not hasattr(self, 'objs'):
+            self.request()
+        return self.objs[key]
     
     def __len__(self):
         if not hasattr(self, '_len'):
             self.request()
         return self._len
-
-    def count(self):
-        return len(self)
 
     def get(self, *args, **kwargs):
         if 'publication' in kwargs:
@@ -105,10 +93,9 @@ class USApplicationManager(BaseSet):
         manager = self.__class__(*args, *self.args, **{**kwargs, **self.kwargs, **dict(default_connector='OR')})
         return manager
 
-
-
     def _generate_query(self, params=dict()):
         params = {**{self.primary_key: self.args}, **self.kwargs, **params}
+        params = {k: v for (k, v) in params.items() if '__' not in k}
         default_connector = params.get('default_connector', 'AND')
         if 'default_connector' in params: del params['default_connector']
         sort_query = ''
@@ -144,7 +131,6 @@ class USApplicationManager(BaseSet):
             "facet": "false",
             "mm": mm,
         }
-
         
 
     def request(self, params=dict()):
@@ -394,7 +380,7 @@ class USApplicationXmlParser():
             json.dump(state, f, indent=2)
 
 
-class USApplicationJsonSet(BaseSet):
+class USApplicationJsonSet(Manager):
     def __init__(self, data, length):
         self.data = data
         self._len = length
@@ -409,7 +395,7 @@ class USApplicationJsonSet(BaseSet):
         return USApplication(self.data[key])
         
 
-class USApplicationXmlSet(BaseSet):
+class USApplicationXmlSet(Manager):
     parser = USApplicationXmlParser()
 
     def __init__(self, filename, length):
@@ -447,8 +433,8 @@ class USApplicationXmlSet(BaseSet):
 
 class USApplication(Model):
     objects = USApplicationManager()
-    trials = one_to_many('ip.PtabTrial', patent_number='patent_number')
-    inpadoc = one_to_one('ip.Inpadoc', number='publication')
+    trials = one_to_many('patent_client.PtabTrial', patent_number='patent_number')
+    inpadoc = one_to_one('patent_client.Inpadoc', number='publication')
 
     @property
     def publication(self):

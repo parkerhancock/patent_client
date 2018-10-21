@@ -1,6 +1,6 @@
 import pytest
 
-from ip.uspto_ptab import PtabTrial, PtabDocument
+from patent_client.uspto_ptab import PtabTrial, PtabDocument
 
 class TestPtab:
     def test_can_get_case(self):

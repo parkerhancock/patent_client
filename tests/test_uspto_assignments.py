@@ -3,7 +3,7 @@ from tempfile import TemporaryDirectory
 
 import pytest
 
-from ip.uspto_assignments import Assignment
+from patent_client.uspto_assignments import Assignment
 
 class TestAssignment:
     def test_fetch_assignments_by_assignee(self):

@@ -1,6 +1,6 @@
 import pytest
 
-from ip import USApplication, PtabTrial, Inpadoc, Epo
+from patent_client import USApplication, PtabTrial, Inpadoc, Epo
 from collections import OrderedDict
 
 class TestIntegration():

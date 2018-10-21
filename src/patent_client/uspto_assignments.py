@@ -11,8 +11,8 @@ from inflection import underscore
 import requests
 
 
-from ip import CACHE_BASE
-from ip.util import BaseSet, Model
+from patent_client import CACHE_BASE
+from patent_client.util import Manager, Model
 
 # USPTO has a malconfigured SSL connection. Suppress warnings about it.
 import urllib3
@@ -28,32 +28,6 @@ CACHE_DIR.mkdir(exist_ok=True)
 
 session = requests.Session()
 session.headers = {"Accept": "application/xml"}
-
-class AssignmentManager:
-
-    def filter(self, **kwargs):
-        """Get assignments. 
-        Args:
-            patent: pat no to search
-            application: app no to search
-            assignee: assignee name to search
-        """
-        fields = {
-            "patent": "PatentNumber",
-            "application": "ApplicationNumber",
-            "assignee": "OwnerName",
-            "assignor": "PriorOwnerName",
-            "pct_application": "PCTNumber",
-            "correspondent": "CorrespondentName",
-            "reel_frame": "ReelFrame"
-        }
-        for key, value in kwargs.items():
-            field = fields[key]
-            query = value
-        if field in ["PatentNumber", "ApplicationNumber"]:
-            query = NUMBER_CLEAN_RE.sub("", str(query))
-
-        return AssignmentSet(field, query)
 
 class AssignmentParser():
     def doc(self, element):
@@ -98,28 +72,48 @@ class AssignmentParser():
         return output
 
 
-class AssignmentSet(BaseSet):
+class AssignmentManager(Manager):
     parser = AssignmentParser()
     rows = 50
 
-    def __init__(self, field, query):
-        self.field = field
-        self.query = query
+    def __init__(self, *args, **kwargs):
+        super(AssignmentManager, self).__init__(*args, **kwargs)
         self.pages = dict()
 
     def __repr__(self):
-        return f'<AssignmentSet>'
+        return f'<AssignmentManager>'
 
-    def __getitem__(self, key):
-        if type(key) == slice:
-            indices = list(range(len(self)))[key.start : key.stop : key.step]
-            return [self.__getitem__(index) for index in indices]
-        else:
-            if key < 0:
-                key = len(self) - key
-            page_no = math.floor(key / self.rows)
-            offset = key - page_no * self.rows
-            return Assignment(self._get_page(page_no)[offset])
+    def get_item(self, key):
+        if key < 0:
+            key = len(self) - key
+        page_no = math.floor(key / self.rows)
+        offset = key - page_no * self.rows
+        return Assignment(self._get_page(page_no)[offset])
+
+    def filter(self, **kwargs):
+        """Get assignments. 
+        Args:
+            patent: pat no to search
+            application: app no to search
+            assignee: assignee name to search
+        """
+        fields = {
+            "patent": "PatentNumber",
+            "application": "ApplicationNumber",
+            "assignee": "OwnerName",
+            "assignor": "PriorOwnerName",
+            "pct_application": "PCTNumber",
+            "correspondent": "CorrespondentName",
+            "reel_frame": "ReelFrame"
+        }
+        for key, value in kwargs.items():
+            field = fields[key]
+            query = value
+        if field in ["PatentNumber", "ApplicationNumber"]:
+            query = NUMBER_CLEAN_RE.sub("", str(query))
+
+        return self.__class__(*self.args, **{**self.kwargs, 
+        **dict(filter__query=query, filter__field=field)})
 
     def __len__(self):
         if not hasattr(self, "_len"):
@@ -128,14 +122,16 @@ class AssignmentSet(BaseSet):
 
     def _get_page(self, page_no):
         if page_no not in self.pages:
+            field = self.kwargs['filter__field']
+            query = self.kwargs['filter__query']
             params = {
-                "filter": self.field,
-                "query": self.query,
+                "filter": field,
+                "query": query,
                 "rows": self.rows,
                 "offset": page_no * self.rows,
             }
             filename = "-".join(
-                [self.field, self.query, str(self.rows), str(page_no * self.rows), ".xml"]
+                [field, query, str(self.rows), str(page_no * self.rows), ".xml"]
             ).replace("/", "_")
             filename = CACHE_DIR / filename
             if filename.exists():

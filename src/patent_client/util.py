@@ -88,20 +88,26 @@ def recur_accessor(obj, accessor):
 
 class Model(object):
     def __init__(self, data):
-        self.dict = {inflection.underscore(k):v for (k,v) in data.items()}
-        for k, v in self.dict.items():
+        self.data = {inflection.underscore(k):v for (k,v) in data.items()}
+        for k, v in self.data.items():
             try:
                 if 'datetime' in k and type(v) == str:
-                    self.dict[k] = parse_dt(v)
+                    self.data[k] = parse_dt(v)
                 elif 'date' in k and type(v) == str:
-                    self.dict[k] = parse_dt(v).date()
+                    self.data[k] = parse_dt(v).date()
             except ValueError: # Malformed datetimes:
-                self.dict[k] = None
-            setattr(self, k, self.dict[k])
+                self.data[k] = None
+            setattr(self, k, self.data[k])
 
 
-class BaseSet:
+class Manager:
+    def __init__(self, *args, **kwargs):
+        self.args = args,
+        self.kwargs = kwargs
+
     def filter(self, **kwargs):
+        raise NotImplemented(f'{self.__class__} has no filter method')
+        """ Next step would be to implement application-layer filters
         for key, value in kwargs.items():
             selector, operator = key.rsplit('__', 1)
             if operator not in FILTERS:
@@ -109,44 +115,69 @@ class BaseSet:
                 accessor = key
             selector_lambda = lambda x: accessor(x, accessor)
             self.objs = filter(lambda x: FILTERS[operator](selector_lambda(x), value), self.objs)
+        """
+    def order_by(self, **kwargs):
+        raise NotImplemented(f'{self.__class__} has no order_by method')
 
-    def values(self, *fields):
-        return ValuesSet(self, *fields)
-    
-    def values_list(self, *fields, flat=False):
-        return ValuesSet(self, *fields, values_list=True, flat=flat)
-    
-class ValuesSet:
-    def __init__(self, objs, *fields, values_list=False, flat=False):
-        self.objs = objs
-        self.fields = fields
-        self.values_list = values_list
-        self.flat = flat
+    def exclude(self, **kwargs):
+        raise NotImplemented(f'{self.__class__} has no exclude method')
+
+    def count(self):
+        return len(self)
 
     def __len__(self):
-        return len(self.objs)
+        raise NotImplemented(f'{self.__class__} has no length method')
 
-    def __repr__(self):
-        return f'<ValuesSet(objs={repr(self.objs)})>'
+    def first(self):
+        return self[0]
+
+    def all(self):
+        return iter(self)
+
+    def values(self, *fields):
+        return self.__class__(
+        *self.args, 
+        **{
+            **self.kwargs, 
+            **dict(
+                values__fields=fields,
+                values__list=False)}
+        )
+    
+    def values_list(self, *fields, flat=False):
+        return self.__class__(
+        *self.args, 
+        **{
+            **self.kwargs, 
+            **dict(
+                values__fields=fields,
+                values__list=True,
+                values__flat=flat,
+                )}
+        )
+        self.kwargs['values__fields'] = fields
+        return ValuesSet(self, *fields, values_list=True, flat=flat)
 
     def __getitem__(self, key):
         if type(key) == slice:
             indices = list(range(len(self)))[key.start : key.stop : key.step]
             return [self.__getitem__(index) for index in indices]
         else:
-            if key < 0:
-                key = len(self) - key
-            obj = self.objs[key]
-            data = obj.dict
-            if self.fields:
+            obj = self.get_item(key)
+            #import pdb; pdb.set_trace()
+            if 'values__fields' in self.kwargs:
+                data = obj.data
                 fdata = OrderedDict()
-                for k in self.fields:
+                for k in self.kwargs['values__fields']:
                     key = k.replace('__', '_')
                     value = recur_accessor(obj, k)
                     fdata[key] = value 
                 data = fdata
-            if self.values_list:
-                data = tuple(data[k] for k, v in data.items())
-                if len(self.fields) == 1 and self.flat:
-                    data = data[0]
-            return data
+                if self.kwargs.get('values__list', False):
+                    data = tuple(data[k] for k, v in data.items())
+                    if len(self.kwargs['values__fields']) == 1 and self.kwargs['values__flat']:
+                        data = data[0]
+                return data
+            else:
+                return obj
+                
