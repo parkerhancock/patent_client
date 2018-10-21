@@ -24,7 +24,7 @@ def read(*names, **kwargs):
 
 setup(
     name="ip",
-    version="0.0.1",
+    version="0.1.0",
     license="Apache Software License 2.0",
     description="A set of ORM-style clients for publicly available intellectual property data",
     long_description="%s\n%s"
