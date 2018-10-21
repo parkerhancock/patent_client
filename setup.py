@@ -44,7 +44,7 @@ setup(
     zip_safe=False,
     classifiers=[
         # complete classifier list: http://pypi.python.org/pypi?%3Aaction=list_classifiers
-        #'Development Status :: 5 - Production/Stable',
+        "Development Status :: 4 - Beta",
         "Intended Audience :: Developers",
         "License :: OSI Approved :: Apache Software License",
         "Operating System :: Unix",
@@ -54,7 +54,7 @@ setup(
         #'Programming Language :: Python :: 2.7',
         #'Programming Language :: Python :: 3',
         #'Programming Language :: Python :: 3.4',
-        "Programming Language :: Python :: 3.5",
+        #"Programming Language :: Python :: 3.5",
         "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
         #'Programming Language :: Python :: Implementation :: CPython',
@@ -66,12 +66,9 @@ setup(
         "Topic :: Utilities",
     ],
     keywords=[
-        # eg: 'keyword1', 'keyword2', 'keyword3',
+        'patents', 'uspto', 'epo', 'united states patent office', 'trademark', 'intellectual property',
     ],
     install_requires=["PyPDF2~=1.26", "requests~=2.19", "lxml~=4.2", "python-dateutil~=2.7", "inflection~=0.3"],
     extras_require={
-        # eg:
-        #   'rst': ['docutils>=0.11'],
-        #   ':python_version=="2.6"': ['argparse'],
     },
 )
