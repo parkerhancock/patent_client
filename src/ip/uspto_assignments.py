@@ -31,7 +31,7 @@ session.headers = {"Accept": "application/xml"}
 
 class AssignmentManager:
 
-    def lookup(self, **kwargs):
+    def filter(self, **kwargs):
         """Get assignments. 
         Args:
             patent: pat no to search
@@ -158,5 +158,5 @@ class AssignmentSet(BaseSet):
 class Assignment(Model):
     objects = AssignmentManager()
 
-    def __repr__(self, data):
+    def __repr__(self):
         return f'<Assignment(id={self.id})>'
