@@ -1,22 +1,7 @@
-========
 Overview
 ========
 
 .. start-badges
-
-.. list-table::
-    :stub-columns: 1
-
-    * - docs
-      - |docs|
-    * - tests
-      - |
-        | |codecov|
-    * - package
-      - | |version| |wheel| |supported-versions| |supported-implementations|
-        | |commits-since|
-
-
 
 .. |codecov| image:: https://codecov.io/github/parkerhancock/python-ip/coverage.svg?branch=master
     :alt: Coverage Status
@@ -82,6 +67,7 @@ Documentation
 To use the project:
 
 .. code-block:: python
+
     >>> from ip import Inpadoc, Epo, Assignment, USApplication
     >>> pub = Inpadoc.objects.get('EP3082535A1')
     >>> pub.bib_data
