@@ -1,8 +1,8 @@
-import lxml.etree as ET
 import re
 import os
 import math
 import requests
+from lxml import etree as ET
 from tempfile import TemporaryDirectory
 from PyPDF2 import PdfFileMerger
 import json
@@ -10,7 +10,8 @@ from hashlib import md5
 from patent_client import SETTINGS, CACHE_BASE
 from collections import namedtuple
 
-from patent_client.util import Manager, one_to_many, one_to_one
+from patent_client.util import Manager, one_to_many, one_to_one, Model
+from .parsers import OPSParser, InpadocParser
 
 # XML Namespaces for ElementTree
 NS = {
@@ -32,7 +33,7 @@ country_re = re.compile(r"^[A-Z]{2}")
 ep_case_re = re.compile(r'EP(?P<number>[\d]+)(?P<kind>[A-Z]\d)?')
 
 
-DocDB = namedtuple('DocDB', ['country', 'number', 'kind', 'date'])
+DocDB = namedtuple('DocDB', ['country', 'number', 'kind', 'date', 'doc_type'])
 EpoDoc = namedtuple('EpoDoc', ['number', 'kind', 'date'])
 
 class OPSException(Exception):
@@ -40,91 +41,6 @@ class OPSException(Exception):
 
 class OPSAuthenticationException(OPSException):
     pass
-
-
-class OPSParser:
-    """Internal xml parsing class for common tasks"""
-    def docdb_number(self, el):
-        raw_data = {
-            "country": el.find("./epo:country", NS),
-            "number": el.find("./epo:doc-number", NS),
-            "kind": el.find("./epo:kind", NS),
-            "date": el.find("./epo:date", NS),
-        }
-        for k, v in raw_data.items():
-            if v is not None:
-                raw_data[k] = v.text
-
-        return DocDB(**raw_data)
-    
-    def epodoc_number(self, el):
-        raw_data = {
-            "number": el.find("./epo:doc-number", NS),
-            "kind": el.find("./epo:kind", NS),
-            "date": el.find("./epo:date", NS),
-        }
-        for k, v in raw_data.items():
-            if v is not None:
-                raw_data[k] = v.text
-
-        return EpoDoc(**raw_data)
-
-    def cpc_class(self, el):
-        keys = "section, class, subclass, main-group, subgroup".split(", ")
-        data = {k: el.find("./epo:" + k, NS) for k in keys}
-        data = {k: v.text for (k, v) in data.items() if v is not None}
-        return f"{data.get('section', '')}{data.get('class', '')}{data.get('subclass', '')} {data.get('main-group', '')}/{data.get('subgroup', '')}"
-
-
-    def pct_to_docdb(self, number):
-        _, country_year, number = number.split("/")
-        country, year = country_year[:2], country_year[2:]
-        if len(year) == 2:
-            if int(year) > 50:
-                year = "19" + year
-            else:
-                year = "20" + year
-
-        # DocDB format changed in 2004:
-        # Pre-2003 - CCyynnnnnW
-        # Post-2003 - CCccyynnnnnnW
-        if int(year) >= 2004:
-            case_number = year + number.rjust(6, "0")
-        else:
-            case_number = year[2:] + number.rjust(5, "0")
-        return DocDB(country, case_number, 'W', None)
-
-
-    def citation(self, el):
-        phase = el.attrib["cited-phase"]
-        cited_by = el.attrib["cited-by"]
-        office = el.attrib.get("office", "")
-        pat_cite = el.find("./epo:patcit", NS)
-        if pat_cite is not None:
-            citation = dict(self.docdb_number(
-                pat_cite.find('./epo:document-id[@document-id-type="docdb"]', NS)
-            )._asdict())
-        else:
-            citation = el.find("./epo:nplcit/epo:text", NS).text
-        category = (
-            el.find("./epo:category", NS).text
-            if el.find("./epo:category", NS) is not None
-            else ""
-        )
-        relevant_claims = el.find("./epo:rel-claims", NS)
-        relevant_passages = [
-            e.text for e in el.findall("./epo:rel-passage/epo:passage", NS)
-        ]
-        return {
-            "phase": phase,
-            "cited_by": cited_by,
-            "office": office,
-            "citation": citation,
-            "category": category,
-            "relevant_claims": relevant_claims.text if relevant_claims is not None else "",
-            "relevant_passages": relevant_passages,
-        }
-
 
 class OPSManager(Manager):
     """
@@ -160,7 +76,6 @@ class OPSManager(Manager):
 
     
     def request(self, url, params=dict(), stream=False):
-        print(url)
         retry = 0
         while retry < 3:
             response = session.get(url, params=params, stream=stream)
@@ -172,7 +87,12 @@ class OPSManager(Manager):
                 tree = ET.fromstring(response.text.encode("utf-8"))
                 code = tree.find("./ops:code", NS).text
                 message = tree.find("./ops:message", NS).text
-                raise OPSException(f"{response.status_code} - {code} - {message}")
+                details = tree.find('./ops:details', NS)
+                if details is not None:
+                    details = ''.join(details.itertext())
+                else:
+                    details = '<None>'
+                raise OPSException(f"{response.status_code} - {code} - {message}\nDETAILS: {details} \nURL: {response.request.url}")
             retry += 1
         raise OPSException("Max Retries Exceeded!")
 
@@ -191,6 +111,10 @@ class OPSManager(Manager):
         
     
     def convert_to_docdb(self, number, doc_type):
+
+        if 'PCT' in number:
+            return self.parser.pct_to_docdb(number)
+
         country = country_re.search(number)
         if country:
             country = country.group(0)
@@ -206,10 +130,10 @@ class OPSManager(Manager):
 
         if doc_type == "application":
             app_ref = output.find("./ops:application-reference/epo:document-id", NS)
-            return self.parser.docdb_number(app_ref)
+            return self.parser.docdb_number(app_ref, doc_type)
         elif doc_type == "publication":
             pub_ref = output.find("./ops:publication-reference/epo:document-id", NS)
-            return self.parser.docdb_number(pub_ref)
+            return self.parser.docdb_number(pub_ref, doc_type)
     
     def convert_to_epodoc(self, number, doc_type):
         url = f"http://ops.epo.org/3.2/rest-services/number-service/{doc_type}/original/{number})/epodoc"
@@ -225,24 +149,22 @@ class OPSManager(Manager):
             return self.parser.epodoc_number(pub_ref)
 
 
- 
 
 class InpadocManager(OPSManager):
-    """
-    INPADOC
-
-    This is a manager class. Provides access to:
-    .get => Retrieve an Inpadoc record
-    .search => Search based on various criteria. Similar to Espacenet Smart Search.
-    """
+    def __init__(self, *args, **kwargs):
+        super(InpadocManager, self).__init__(*args, **kwargs)
+        self.parser = InpadocParser(self)
+    
     def get(self, number=None, doc_type="publication", doc_db=False):
-        if not doc_db:
-            if 'PCT' in number:
-                doc_type = 'application'
-                doc_db = self.parser.pct_to_docdb(number)
-            else:
-                doc_db = self.convert_to_docdb(number, doc_type)
-        return Inpadoc(doc_type, doc_db)
+        if doc_db:
+            docs = self.filter(**{doc_type: doc_db})
+        else:
+            docs = self.filter(**{doc_type: number})
+        if len(docs) > 1:
+            doc_nos = '\n'.join([r.publication for r in docs])
+            raise OPSException('More than one document found!\n' + doc_nos)
+        return docs[0]
+        
     
     def search(self, query):
         return InpadocSet(InpadocSearch(query))
@@ -251,7 +173,18 @@ class InpadocManager(OPSManager):
         doc_db, doc_type = self.objs[key]            
         return Inpadoc(doc_db=doc_db, doc_type=doc_type)
     
-    def filter(self, query):
+    def filter(self, *args, **kwargs):
+        if 'application' in kwargs or 'publication' in kwargs:
+            if 'application' in kwargs:
+                doc_type = 'application'
+            elif 'publication' in kwargs:
+                doc_type = 'publication'
+            number = kwargs[doc_type]
+            if type(number) == str:
+                number = self.convert_to_docdb(number, doc_type)
+            bib_data = self.parser.bib_data(number)
+            return list(Inpadoc(d) for d in bib_data)
+
         return self.search(query)
 
     def xml_data(self, pub, data_kind):
@@ -279,244 +212,71 @@ class InpadocManager(OPSManager):
                 data_kind=data_kind,
             )
         text = self.xml_request(url)
-        print(url)
         tree = ET.fromstring(text.encode("utf-8"))
         return tree
 
-class Inpadoc():
-    """
-    INPADOC Publication
+class InpadocFullTextManager(InpadocManager):
+    def get(self, number=None, doc_type="publication", doc_db=False):
+        if not doc_db:
+            if 'PCT' in number:
+                doc_type = 'application'
+                doc_db = self.parser.pct_to_docdb(number)
+            else:
+                doc_db = self.convert_to_docdb(number, doc_type)
+        data = {
+            'description': self.parser.description(doc_db),
+            'claims': self.parser.claims(doc_db),
+            'doc_db': doc_db,
+        }
+        return InpadocFullText(data)
 
-    This is a lazy-loading object that accesses INPADOC data for the associated class.
-    
-    The first time any data is accessed, the result is fetched and then cached on the object.
-
-    Data includes:
-        bib_data => Basic bibliogrpahic information + Abstract
-        description => Full Text Specification
-        claims => Claims text
-        images => Images listing
-        download_images() => download a PDF of the published document
-        legal => Status Information
-
-    """
-
+class Inpadoc(Model):
     objects = InpadocManager()
-    us_application = one_to_one('patent_client.USApplication', publication='publication')
-
-    def __init__(self, doc_type="publication", doc_db=False):
-        self.doc_type = doc_type
-        self.doc_db = doc_db
-        self.country = doc_db.country
-        self.number = doc_db.number
-        self.kind = doc_db.kind
-        self.date = doc_db.date
-        self.dict = self.bib_data
-        for k, v in self.dict.items():
-            if not hasattr(self, k):
-                setattr(self, k, v)
+    full_text = one_to_one('patent_client.epo_ops.models.InpadocFullText', doc_db='doc_db')
+    us_application = one_to_one('patent_client.USApplication', appl_id='application')
 
     def __repr__(self):
-        return f'<Inpadoc({self.country}{self.number}, {self.doc_type})>'
-
-    def __iter__(self):
-        return iter(self.dict.items())
+        return f'<Inpadoc(publication={self.publication})>'
 
     @property
     def legal(self):
-        tree = self.objects.xml_data(self, 'legal')
-        legal_events = tree.findall('.//ops:legal', NS)
-        output=list()
-        for le in legal_events:
-            row = dict()
-            row['description'] = le.attrib['desc']
-            row['explanation'] = le.attrib['infl']
-            row['code'] = le.attrib['code'].strip()
-            row['date'] = le.find('./ops:L007EP', NS).text
-            output.append(row)
-        output = list(sorted(output, key=lambda x: x['date']))
-        return output
-
-    @property
-    def bib_data(self):
-        # NOTE: For EP cases with search reports, there is citation data in bib data
-        # We just currently are not parsing it
-        tree = self.objects.xml_data(self, "biblio")
-        document = tree.find("./epo:exchange-documents/epo:exchange-document", NS)
-        data = dict()
-        bib_data = document.find("./epo:bibliographic-data", NS)
-
-        title = bib_data.find("./epo:invention-title[@lang='en']", NS)
-        if title == None:
-            title = bib_data.find("./epo:invention-title", NS)
-        if title != None:
-            data["title"] = title.text.strip()
-        else:
-            data["title"] = ""
-        pub_data = bib_data.find(
-            './epo:publication-reference/epo:document-id[@document-id-type="docdb"]',
-            NS,
-        )
-        pub_data = dict(self.objects.parser.docdb_number(pub_data)._asdict())
-        data["publication"] = pub_data['country'] + pub_data['number'] + pub_data['kind']
-        data["publication_date"] = pub_data.get('date', None)
-        data["country"] = pub_data['country']
-
-
-        app_data = bib_data.find(
-            './epo:application-reference/epo:document-id[@document-id-type="docdb"]',
-            NS,
-        )
-        app_data = dict(self.objects.parser.docdb_number(app_data)._asdict())
-        data["application"] = app_data['country'] + app_data['number']
-        data["filing_date"] = app_data.get('date', None)
-
-        intl_class = [
-            whitespace_re.sub("", e.text)
-            for e in bib_data.findall(
-                "./epo:classifications-ipcr/epo:classification-ipcr/epo:text", NS
-            )
-        ]
-        data["intl_class"] = intl_class
-
-        cpc_classes = bib_data.findall(
-            "./epo:patent-classifications/epo:patent-classification", NS
-        )
-        data["cpc_class"] = [self.objects.parser.cpc_class(el) for el in cpc_classes]
-
-        priority_apps = bib_data.findall(
-            './epo:priority-claims/epo:priority-claim/epo:document-id[@document-id-type="original"]/epo:doc-number',
-            NS,
-        )
-        data["priority_claims"] = [e.text for e in priority_apps]
-
-        parties = bib_data.find("./epo:parties", NS)
-        data["applicants"] = [
-            e.text
-            for e in parties.findall(
-                './epo:applicants/epo:applicant[@data-format="original"]/epo:applicant-name/epo:name',
-                NS,
-            )
-        ]
-        data["inventors"] = [
-            e.text
-            for e in parties.findall(
-                './epo:inventors/epo:inventor[@data-format="original"]/epo:inventor-name/epo:name',
-                NS,
-            )
-        ]
-        abstract = document.find('./epo:abstract[@lang="en"]', NS)
-        data["abstract"] = (
-            "".join(t for t in abstract.itertext()).strip()
-            if abstract is not None
-            else ""
-        )
-
-        refs_cited = bib_data.findall("./epo:references-cited/epo:citation", NS)
-        data["references_cited"] = [self.objects.parser.citation(c) for c in refs_cited]
-        
-        return data
-
-
-    @property
-    def description(self):
-        tree = self.objects.xml_data(self, "description")
-        description = tree.find(
-            "./ft:fulltext-documents/ft:fulltext-document/ft:description", NS
-        )
-        text = "\n".join(description.itertext()).strip()
-        return text
-
-    @property
-    def claims(self):
-        tree = self.objects.xml_data(self, "claims")
-        claims = [
-            "".join(e.itertext()).strip()
-            for e in tree.findall(
-                './ft:fulltext-documents/ft:fulltext-document/ft:claims[@lang="EN"]/ft:claim/ft:claim-text',
-                NS,
-            )
-        ]
-        return claims
+        if not hasattr(self, '_legal'):
+            data = self.objects.parser.legal(self.doc_db)
+            self._legal = data
+        return self._legal
 
     @property
     def images(self):
-        tree = self.objects.xml_data(self, "images")
-        images = tree.find(
-            './ops:document-inquiry/ops:inquiry-result/ops:document-instance[@desc="FullDocument"]',
-            NS,
-        )
-        data = {
-            "url": "http://ops.epo.org/rest-services/" + images.attrib["link"] + ".pdf",
-            "num_pages": int(images.attrib["number-of-pages"]),
-            "sections": {
-                e.attrib["name"]: int(e.attrib["start-page"])
-                for e in images.findall("./ops:document-section", NS)
-            },
-        }
-        return data
-    
-    @property
-    def family(self):
-        tree = self.objects.xml_data(self, 'family')
-        doc_db_list = list()
-        for el in tree.findall("./ops:patent-family/ops:family-member", NS):
-            pub_ref = el.find(
-                './epo:publication-reference/epo:document-id[@document-id-type="docdb"]',
-                NS,
-            )
-            if pub_ref is not None:
-                doc_db_list.append((self.objects.parser.docdb_number(pub_ref), 'publication'))
-            else:
-                app_ref = el.find(
-                    './epo:application-reference/epo:document-id[@document-id-type="docdb"]',
-                    NS
-                )
-                doc_db_list.append((self.objects.parser.docdb_number(app_ref), 'application'))
-        return InpadocSet(doc_db_list) 
+        if not hasattr(self, '_images'):
+            data = self.objects.parser.images(self.doc_db)
+            data['doc_db'] = self.doc_db
+            self._images = InpadocImages(data)
+        return self._images
 
+class InpadocFullText(Model):
+    objects = InpadocFullTextManager()
 
-    def download_images(self, path="."):
+class InpadocImages(Model):
+    def download(self, path="."):
         """Download each page of images, and then consolidate into a single PDF
         Args:
             path: str(base path for file)
         """
-        img_data = self.images
-        dirname = CACHE_DIR / f'{self.doc_type}-{self.country}{self.number}{self.kind if self.kind else ""}'
+        dirname = CACHE_DIR / f'{self.doc_db.doc_type}-{self.doc_db.country}{self.doc_db.number}{self.doc_db.kind if self.doc_db.kind else ""}'
         dirname.mkdir(exist_ok=True)
-        for i in range(1, img_data["num_pages"] + 1):
+        for i in range(1, self.num_pages + 1):
             fname = dirname / ("page-" + str(i).rjust(6, "0") + ".pdf")
             if not fname.exists():
-                self.objects.pdf_request(fname, img_data['url'], params={"Range": i})
+                self.objects.pdf_request(fname, self.image_url, params={"Range": i})
 
         pages = list(sorted(os.listdir(dirname)))
         out_file = PdfFileMerger()
         for p in pages:
             out_file.append(os.path.join(dirname, p))
         out_fname = os.path.join(
-            path, self.country + self.number + ".pdf"
+            path, self.doc_db.country + self.doc_db.number + ".pdf"
         )
         out_file.write(out_fname)
-
-class InpadocSet(Manager):
-    def __init__(self, doc_db_list):
-        super(InpadocSet, self).__init__(doc_db_list)
-        self.objs = doc_db_list
-
-    def __repr__(self):
-        return f'<InpadocSet(len={len(self)})>'
-
-    def __len__(self):
-        return len(self.objs)
-
-    def __getitem__(self, key):
-        if type(key) == slice:
-            indices = list(range(len(self)))[key.start : key.stop : key.step]
-            return [self.__getitem__(index) for index in indices]
-        else:
-            doc_db, doc_type = self.objs[key]            
-            return Inpadoc(doc_db=doc_db, doc_type=doc_type)
-
 
 
 class InpadocSearch(OPSManager):
@@ -665,7 +425,6 @@ class EpoParser(OPSParser):
             'date': date.text.strip() if date is not None else None,
             'code': el.find('./reg:procedural-step-code', NS).text.strip(),
         }
-
 
 
 class Epo():

@@ -10,53 +10,31 @@ FIXTURES = os.path.join(os.path.dirname(__file__), "fixtures")
 class TestInpadoc:
     def test_can_get_epo_pub(self):
         pub = Inpadoc.objects.get("CA2944968")
-        bib_data = pub.bib_data
-        images = pub.images
-        claims = pub.claims
-        description = pub.description
         assert pub.title == "WIRELINE POWER SUPPLY DURING ELECTRIC POWERED FRACTURING OPERATIONS"
-        assert bib_data == {
-            "title": "WIRELINE POWER SUPPLY DURING ELECTRIC POWERED FRACTURING OPERATIONS",
-            "publication": "CA2944968A1",
-            "application": "CA2944968",
-            'country': 'CA', 'filing_date': None, 'publication_date': '20170213',
-            "intl_class": ["E21B41/00AI", "E21B43/26AI", "H02K7/14AI", "H02K7/18AI"],
-            "cpc_class": [],
-            "priority_claims": ["62/204,842"],
-            "applicants": ["US WELL SERVICES LLC"],
-            "inventors": ["OEHRING, JARED, ", "HINDERLITER, BRANDON"],
-            "references_cited": [],
-            "abstract": "A system and method for supplying electric power to various pieces of fracturing equipment in a fracturing operation with gas powered generators. The system and method also includes switch gears, auxiliary trailers, transformers, power distribution panels, new receptacles, and cables to supply three-phase power to electric fracturing equipment. The switchgear in the power supply system is weatherproof and able to endure the wear and tear of mobilization. The novel system and method provide clean and quiet electricity to all the equipment on site.",
-        }
-        assert len(description) == 35306
-        assert claims[:5] == [
+        assert pub.publication == 'CA2944968A1'
+        assert pub.applicants == ["US WELL SERVICES LLC"]
+        assert pub.inventors == ["OEHRING, JARED, ", "HINDERLITER, BRANDON"]
+        assert len(pub.full_text.description) == 35306
+        assert pub.full_text.claims[:5] == [
             "1. A fracturing system comprising: a turbine generator having an electrical output; an electric motor that is in electrical communication with the electrical output; a fracturing pump that is driven by the electric motor; and a wireline system that is in electrical communication with the electrical output.",
             "2. The system of claim 1, further comprising a variable frequency drive connected to the electric motor to control the speed of the motor, wherein the variable frequency drive frequently performs electric motor diagnostics to prevent damage to the at least one electric motor.",
             "3. The system of claim 1, wherein the wireline system comprises a wireline tool that is disposable in a wellbore that is selected from the group consisting of a perforating gun, a plug, a formation logging tool, a cutting tool, a casing imaging tool, and combinations thereof.",
             "4. The system of claim 1, further comprising trailers that contain at least one power distribution panel that supplies power to the hydraulic fracturing equipment.",
             "5. The system of claim 4, where the trailers further contain receptacles for attaching cable to the hydraulic fracturing equipment and cables that can sustain the power draw of the turbines with three separate plugs for the three phase power.",
         ]
-        assert images == {
-            "url": "http://ops.epo.org/rest-services/published-data/images/CA/2944968/A1/fullimage.pdf",
-            "num_pages": 29,
-            "sections": {"ABSTRACT": 1, "CLAIMS": 22, "DESCRIPTION": 2, "DRAWINGS": 25},
-        }
+        assert pub.images.url == "http://ops.epo.org/rest-services/published-data/images/CA/2944968/A1/fullimage.pdf"
+        assert pub.images.num_pages == 29
+        assert pub.images.sections == {"ABSTRACT": 1, "CLAIMS": 22, "DESCRIPTION": 2, "DRAWINGS": 25}
 
     def test_can_download_full_images(self, tmpdir):
         pub = Inpadoc.objects.get("CA2944968")
-        pub.download_images(path=str(tmpdir))
+        pub.images.download(path=str(tmpdir))
         assert os.listdir(str(tmpdir)) == ["CA2944968.pdf"]
 
     def test_can_handle_russian_cases(self):
         pub = Inpadoc.objects.get("RU2015124071")
-        bib_data = pub.bib_data
-        assert bib_data == {
-            "title": "БУРОВОЕ ДОЛОТО ДЛЯ БУРИЛЬНОГО УСТРОЙСТВА",
-            "publication": "RU2015124071A",
-            "application": "RU2015124071",
-            'country': 'RU', 'filing_date': None, 'publication_date': '20170110',
-            "intl_class": ["E21B7/04AI"],
-            "cpc_class": [
+        assert pub.title == "БУРОВОЕ ДОЛОТО ДЛЯ БУРИЛЬНОГО УСТРОЙСТВА"
+        assert pub.cpc_class ==  [
                 "E21B 7/064",
                 "E21B 17/04",
                 "E21B 47/01",
@@ -64,56 +42,25 @@ class TestInpadoc:
                 "E21B 7/067",
                 "E21B 10/08",
                 "E21B 10/567",
-            ],
-            "priority_claims": ["13/683,540", "US 2013/066560"],
-            "applicants": ["САЙЕНТИФИК ДРИЛЛИНГ ИНТЕРНЭШНЛ, ИНК."],
-            "inventors": ["ХЕЙСИГ Джеральд"],
-            "references_cited": [],
-            "abstract": "",
-        }
+            ]
+        assert pub.priority_claims == ["13/683,540", "US 2013/066560"]
 
     def test_can_get_ep_application(self):
-        pub = Inpadoc.objects.get("EP13844704", doc_type="application")
-        bib_data = pub.bib_data
-        with open(os.path.join(FIXTURES, "epo_ep.json"), 'w') as f:
-            json.dump(bib_data, f, indent=2)
-        assert bib_data == json.load(open(os.path.join(FIXTURES, "epo_ep.json")))
+        pubs = Inpadoc.objects.filter(application="EP13844704")
+        assert len(pubs) == 2
+        assert pubs[0].title == 'ATTITUDE REFERENCE FOR TIEBACK/OVERLAP PROCESSING'
 
     def test_pct(self):
         doc = Inpadoc.objects.get("PCT/US16/15853")
-        print(doc)
-        bib_data = doc.bib_data
-        with open(os.path.join(FIXTURES, "epo_pct.json"), 'w') as f:
-            json.dump(bib_data, f, indent=2)
-        assert bib_data == json.load(open(os.path.join(FIXTURES, "epo_pct.json")))
+        assert doc.title == 'DUAL MODE TELEMETRY'
 
     def test_can_get_us_application(self):
         pub = Inpadoc.objects.get("US15915966", doc_type="application")
-        bib_data = pub.bib_data
-        assert bib_data == {
-            "abstract": "A heading transfer unit may be used to transfer a heading from a "
-            "surface base to a MWD tool. The surface base may have a master "
-            "north finder to determine a heading. The heading may be "
-            "transferred to the heading transfer unit, which is in turn "
-            "transferred to the MWD unit. The heading on the heading transfer "
-            "unit is transferred to the MWD tool.",
-            "applicants": ["Scientific Drilling International, Inc"],
-            "application": "US201815915966",
-            "country": "US",
-            "filing_date": None,
-            'publication_date': '20180913',
-            "cpc_class": ["E21B 47/024", "G01C 17/00"],
-            "intl_class": ["E21B47/022AI", "G01C17/00AI"],
-            "inventors": ["HAWKINSON, Benjamin Curtis, ", "GLEASON, Brian Daniel"],
-            "priority_claims": ["62468889"],
-            "publication": "US2018258752A1",
-            "references_cited": [],
-            "title": "DEVICE AND METHOD FOR SURVEYING BOREHOLES OR ORIENTING DOWNHOLE "
-            "ASSEMBLIES",
-        }
+        assert pub.title  == "DEVICE AND METHOD FOR SURVEYING BOREHOLES OR ORIENTING DOWNHOLE ASSEMBLIES"
+
 
     def test_can_get_inpadoc_family(self):
-        family = Inpadoc.objects.get("EP13844704", doc_type="application").family
+        family = Inpadoc.objects.filter("EP13844704", doc_type="application")[0].family
         cases = [".".join([m.country, m.number, m.kind]) for m in family]
         assert cases == [
             "EP.2906782.A2",
@@ -130,7 +77,7 @@ class TestInpadoc:
         ]
 
     def test_can_get_legal_status(self):
-        pub = Inpadoc.objects.get("CA2300029")
+        pub = Inpadoc.objects.get("CA2300029C")
         print(pub.legal)
         assert pub.legal == [
             {
