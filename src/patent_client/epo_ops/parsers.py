@@ -172,6 +172,10 @@ class InpadocParser(OPSParser):
             data["application"] = app_data['country'] + app_data['number']
             data["filing_date"] = app_data.get('date', None)
 
+            original_app = bib_data.find('./epo:application-reference/epo:document-id[@document-id-type="original"]/epo:doc-number', NS)
+            if original_app is not None:
+                data['original_application_number'] = original_app.text
+
             intl_class = [
                 whitespace_re.sub("", e.text)
                 for e in bib_data.findall(
@@ -256,8 +260,8 @@ class InpadocParser(OPSParser):
         }
         return data
     
-    def family(self):
-        tree = self.manager.xml_data(self, 'family')
+    def family(self, doc_db):
+        tree = self.manager.xml_data(doc_db, 'family')
         doc_db_list = list()
         for el in tree.findall("./ops:patent-family/ops:family-member", NS):
             pub_ref = el.find(
@@ -265,12 +269,12 @@ class InpadocParser(OPSParser):
                 NS,
             )
             if pub_ref is not None:
-                doc_db_list.append((self.manager.parser.docdb_number(pub_ref), 'publication'))
+                doc_db_list.append(self.manager.parser.docdb_number(pub_ref, 'publication'))
             else:
                 app_ref = el.find(
                     './epo:application-reference/epo:document-id[@document-id-type="docdb"]',
                     NS
                 )
-                doc_db_list.append((self.manager.parser.docdb_number(app_ref), 'application'))
-        return InpadocSet(doc_db_list) 
+                doc_db_list.append(self.manager.parser.docdb_number(app_ref, 'application'))
+        return doc_db_list
 

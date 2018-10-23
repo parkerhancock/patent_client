@@ -36,6 +36,39 @@ ep_case_re = re.compile(r'EP(?P<number>[\d]+)(?P<kind>[A-Z]\d)?')
 DocDB = namedtuple('DocDB', ['country', 'number', 'kind', 'date', 'doc_type'])
 EpoDoc = namedtuple('EpoDoc', ['number', 'kind', 'date'])
 
+SEARCH_FIELDS = {
+    'title': 'title',
+    'abstract': 'abstract',
+    'title_and_abstract': 'titleandabstract',
+    'inventor': 'inventor',
+    'applicant': 'applicant',
+    'inventor_or_applicant': 'inventorandapplicant',
+    'publication': 'publicationnumber',
+    'epodoc_publication': 'spn',
+    'application_number': 'applicantnumber',
+    'epodoc_application': 'sap',
+    'priority': 'prioritynumber',
+    'epodoc_priority': 'spr',
+    'number': 'num', # Pub, App, or Priority Number
+    'publication_date': 'publicationdate', # yyyy, yyyyMM, yyyyMMdd, yyyy-MM, yyyy-MM-dd
+    'citation': 'citation',
+    'cited_in_examination': 'ex',
+    'cited_in_opposition': 'op',
+    'cited_by_applicant': 'rf',
+    'other_citation': 'oc',
+    'family': 'famn',
+    'cpc_class' : 'cpc',
+    'ipc_class': 'ipc',
+    'ipc_core_invention_class': 'ci',
+    'ipc_core_additional_class': 'cn',
+    'ipc_advanced_class': 'ai',
+    'ipc_advanced_additional_class': 'an',
+    'ipc_advanced_class': 'a',
+    'ipc_core_class': 'c',
+    'classification': 'cl', #IPC or CPC Class
+    'full_text': 'txt', #title, abstract, inventor and applicant
+}
+
 class OPSException(Exception):
     pass
 
@@ -99,6 +132,7 @@ class OPSManager(Manager):
 
 
     def xml_request(self, url, params=dict()):
+        print(url, params)
         param_hash = md5(json.dumps(params, sort_keys=True).encode('utf-8')).hexdigest()
         fname = os.path.join(CACHE_DIR, f"{url[37:].replace('/', '_')}{param_hash if params else ''}.xml")
         if os.path.exists(fname):
@@ -155,11 +189,11 @@ class InpadocManager(OPSManager):
         super(InpadocManager, self).__init__(*args, **kwargs)
         self.parser = InpadocParser(self)
     
-    def get(self, number=None, doc_type="publication", doc_db=False):
-        if doc_db:
-            docs = self.filter(**{doc_type: doc_db})
+    def get(self, *args, **kwargs):
+        if 'doc_db' in kwargs:
+            docs = self.filter(**{'publication': kwargs['doc_db']})
         else:
-            docs = self.filter(**{doc_type: number})
+            docs = self.filter(*args, **kwargs)
         if len(docs) > 1:
             doc_nos = '\n'.join([r.publication for r in docs])
             raise OPSException('More than one document found!\n' + doc_nos)
@@ -174,6 +208,8 @@ class InpadocManager(OPSManager):
         return Inpadoc(doc_db=doc_db, doc_type=doc_type)
     
     def filter(self, *args, **kwargs):
+        if args:
+            kwargs['publication'] = args[0]
         if 'application' in kwargs or 'publication' in kwargs:
             if 'application' in kwargs:
                 doc_type = 'application'
@@ -184,8 +220,19 @@ class InpadocManager(OPSManager):
                 number = self.convert_to_docdb(number, doc_type)
             bib_data = self.parser.bib_data(number)
             return list(Inpadoc(d) for d in bib_data)
+        
+        if 'family' in kwargs:
+            family = self.parser.family(kwargs['family'])
+            return list(self.get(doc_db=d) for d in family)
 
-        return self.search(query)
+        query = ''
+        for keyword, value in kwargs.items():
+            if len(value.split()) > 1:
+                value = f'"{value}"'
+
+            query += SEARCH_FIELDS[keyword] + '=' + value
+        return InpadocSearch(query=dict(q=query))
+        
 
     def xml_data(self, pub, data_kind):
         """
@@ -233,7 +280,8 @@ class InpadocFullTextManager(InpadocManager):
 class Inpadoc(Model):
     objects = InpadocManager()
     full_text = one_to_one('patent_client.epo_ops.models.InpadocFullText', doc_db='doc_db')
-    us_application = one_to_one('patent_client.USApplication', appl_id='application')
+    us_application = one_to_one('patent_client.USApplication', appl_id='original_application_number')
+    family = one_to_many('patent_client.Inpadoc', family='doc_db')
 
     def __repr__(self):
         return f'<Inpadoc(publication={self.publication})>'
@@ -293,10 +341,11 @@ class InpadocSearch(OPSManager):
     search_url = 'http://ops.epo.org/3.2/rest-services/published-data/search'
     parser = OPSParser()
     page_size=25
+    objects = InpadocManager()
 
-    def __init__(self, query):
-        
-        self.query = dict(q=query)
+    def __init__(self, *args, **kwargs):
+        super(InpadocSearch, self).__init__(*args, **kwargs)
+        self.query = self.kwargs['query'] 
         text = self.xml_request(self.search_url, self.query)
         tree = ET.fromstring(text.encode("utf-8"))
         self.length = tree.find(".//ops:biblio-search", NS).attrib['total-result-count']
@@ -306,16 +355,12 @@ class InpadocSearch(OPSManager):
         """Total number of results"""
         return int(self.length)
 
-    def __getitem__(self, key):
+    def get_item(self, key):
         """Supports indexing and slicing results"""
-        if type(key) == slice:
-            indices = list(range(len(self)))[key.start : key.stop : key.step]
-            return [self.__getitem__(index) for index in indices]
-        else:
-            page_num = math.floor(key / self.page_size) + 1
-            line_num = key % self.page_size
-            page = self._get_page(page_num)
-            return (page[line_num], 'publication')
+        page_num = math.floor(key / self.page_size) + 1
+        line_num = key % self.page_size
+        page = self._get_page(page_num)
+        return self.objects.get(doc_db=page[line_num])
 
     def _get_page(self, page_num):
         """Internal private method for handling pages of results"""
@@ -327,7 +372,7 @@ class InpadocSearch(OPSManager):
         text = self.pages[page_num]
         tree = ET.fromstring(text.encode('utf-8'))
         results = tree.find('.//ops:search-result', NS)
-        return [self.parser.docdb_number(el.find('./epo:document-id', NS)) for el in results]
+        return [self.parser.docdb_number(el.find('./epo:document-id', NS), 'publication') for el in results]
       
 
 class EpoManager(OPSManager):

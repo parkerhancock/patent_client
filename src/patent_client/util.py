@@ -164,7 +164,6 @@ class Manager:
             return [self.__getitem__(index) for index in indices]
         else:
             obj = self.get_item(key)
-            #import pdb; pdb.set_trace()
             if 'values__fields' in self.kwargs:
                 data = obj.data
                 fdata = OrderedDict()

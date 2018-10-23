@@ -433,7 +433,7 @@ class USApplicationXmlSet(Manager):
 class USApplication(Model):
     objects = USApplicationManager()
     trials = one_to_many('patent_client.PtabTrial', patent_number='patent_number')
-    inpadoc = one_to_one('patent_client.Inpadoc', number='publication')
+    inpadoc = one_to_many('patent_client.Inpadoc', number='appl_id')
 
     @property
     def publication(self):
