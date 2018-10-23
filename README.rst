@@ -1,3 +1,9 @@
+
+Warning
+==============
+
+This project is under active development. Please treat this as a rough draft. NOT PRODUCTION READY.
+
 Overview
 ========
 
@@ -29,12 +35,6 @@ Overview
 
 
 .. end-badges
-
-Warning
-==============
-
-This project is under active development. Please treat this as a rough draft. NOT PRODUCTION READY.
-
 
 
 A set of Django-ORM-Style accessors to publicly available intellectual property data.
