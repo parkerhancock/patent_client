@@ -137,7 +137,6 @@ class USApplicationManager(Manager):
         query_params = self._generate_query(params)
         fname = hash_dict(query_params) + '.json'
         fname = os.path.join(CACHE_DIR, fname)
-        print(json.dumps(query_params, indent=2))
         if not os.path.exists(fname):
             response = session.post(QUERY_URL, json=query_params)
             if not response.ok:
