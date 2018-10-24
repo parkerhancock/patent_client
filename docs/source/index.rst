@@ -16,6 +16,7 @@ Welcome to Patent Client's documentation!
    ptab
    epo
    developer/overview
+   developer/design_notes
 
 
 Indices and tables
