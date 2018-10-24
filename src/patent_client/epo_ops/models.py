@@ -202,7 +202,10 @@ class InpadocManager(OPSManager):
         
     def get_by_doc_db(self, doc_db):
         bib_data = self.parser.bib_data(doc_db)
-        return Inpadoc(bib_data[0])
+        if len(bib_data) > 1:
+            return list(Inpadoc(b) for b in bib_data)
+        else:
+            return Inpadoc(bib_data[0])
 
     def __len__(self):
         """Total number of results"""
@@ -212,6 +215,14 @@ class InpadocManager(OPSManager):
         return int(self.length)
 
     def get_item(self, key):
+        # Application Iterator
+        if 'application' in self.kwargs:
+            doc_db = self.convert_to_docdb(self.kwargs['application'], 'application')
+            docs = self.get_by_doc_db(doc_db)
+            if type(docs) == list:
+                return docs[key]
+            return docs
+
         # Search Iterator
         page_num = math.floor(key / self.page_size) + 1
         line_num = key % self.page_size
@@ -238,7 +249,10 @@ class InpadocManager(OPSManager):
 
     def filter(self, *args, **kwargs):
         if len(args) > 0:
-            kwargs['publication'] = args[0]
+            if 'PCT' in args[0]:
+                kwargs['application'] = args[0]
+            else:
+                kwargs['publication'] = args[0]
         return self.__class__(**{**self.kwargs, **kwargs})
 
     def create_query(self):

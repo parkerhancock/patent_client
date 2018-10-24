@@ -50,12 +50,11 @@ class TestInpadoc:
         assert len(pubs) == 1
         assert pubs[0].title == 'ATTITUDE REFERENCE FOR TIEBACK/OVERLAP PROCESSING'
 
-    @pytest.mark.skip("Search doesn't work for PCT apps")
     def test_pct(self):
         doc = Inpadoc.objects.get("PCT/US16/15853")
         assert doc.title == 'DUAL MODE TELEMETRY'
 
-    @pytest.mark.skip("Search doesn't work for US apps")
+    @pytest.mark.skip("doesn't work")
     def test_can_get_us_application(self):
         pub = Inpadoc.objects.get(application="US15915966")
         assert pub.title  == "DEVICE AND METHOD FOR SURVEYING BOREHOLES OR ORIENTING DOWNHOLE ASSEMBLIES"
