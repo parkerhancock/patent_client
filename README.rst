@@ -3,29 +3,29 @@ Overview
 
 .. start-badges
 
-.. |codecov| image:: https://codecov.io/github/parkerhancock/python-ip/coverage.svg?branch=master
+.. |codecov| image:: https://codecov.io/github/parkerhancock/patent_client/coverage.svg?branch=master
     :alt: Coverage Status
-    :target: https://codecov.io/github/parkerhancock/python-ip
+    :target: https://codecov.io/github/parkerhancock/patent_client
 
 .. |version| image:: https://img.shields.io/pypi/v/ip.svg
     :alt: PyPI Package latest release
-    :target: https://pypi.python.org/pypi/ip
+    :target: https://pypi.python.org/pypi/patent_client
 
-.. |commits-since| image:: https://img.shields.io/github/commits-since/parkerhancock/python-ip/v0.0.1.svg
+.. |commits-since| image:: https://img.shields.io/github/commits-since/parkerhancock/patent_client/v0.0.1.svg
     :alt: Commits since latest release
-    :target: https://github.com/parkerhancock/python-ip/compare/v0.0.1...master
+    :target: https://github.com/parkerhancock/patent_client/compare/v0.0.1...master
 
 .. |wheel| image:: https://img.shields.io/pypi/wheel/ip.svg
     :alt: PyPI Wheel
-    :target: https://pypi.python.org/pypi/ip
+    :target: https://pypi.python.org/pypi/patent_client
 
 .. |supported-versions| image:: https://img.shields.io/pypi/pyversions/ip.svg
     :alt: Supported versions
-    :target: https://pypi.python.org/pypi/ip
+    :target: https://pypi.python.org/pypi/patent_client
 
 .. |supported-implementations| image:: https://img.shields.io/pypi/implementation/ip.svg
     :alt: Supported implementations
-    :target: https://pypi.python.org/pypi/ip
+    :target: https://pypi.python.org/pypi/patent_client
 
 
 .. end-badges
