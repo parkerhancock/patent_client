@@ -17,17 +17,12 @@ session = requests.Session()
 class PtabManager(Manager):
     page_size = 25
 
-    def __init__(self, *args, **kwargs):
-        self.args = args 
-        self.kwargs = kwargs
-        self.obj_class = globals().get(self.obj_class)
-    
     def get_item(self, key):
         offset = int(key / self.page_size) * self.page_size
         position = (key % self.page_size)
         data = self.request(dict(offset=offset))
         results = data['results']
-        return self.obj_class(results[position])
+        return self.get_obj_class()(results[position])
     
     def __len__(self):
         response = self.request()
@@ -47,12 +42,12 @@ class PtabManager(Manager):
         
 class PtabTrialManager(PtabManager):
     base_url = 'https://ptabdata.uspto.gov/ptab-api/trials'
-    obj_class = 'PtabTrial'
+    obj_class = 'patent_client.uspto_ptab.PtabTrial'
     primary_key = 'trial_number'
     
 class PtabDocumentManager(PtabManager):
     base_url = 'https://ptabdata.uspto.gov/ptab-api/documents'
-    obj_class = 'PtabDocument'
+    obj_class = 'patent_client.uspto_ptab.PtabDocument'
     primary_key = 'id'
 
 class PtabTrial(Model):

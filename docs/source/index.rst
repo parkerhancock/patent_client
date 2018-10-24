@@ -15,6 +15,7 @@ Welcome to Patent Client's documentation!
    assignments
    ptab
    epo
+   developer/overview
 
 
 Indices and tables

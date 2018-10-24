@@ -1,7 +1,7 @@
 from collections import OrderedDict
 from hashlib import md5
 import json
-from importlib import import_module
+import importlib
 from copy import deepcopy
 from dateutil.parser import parse as parse_dt
 import inflection
@@ -47,7 +47,7 @@ def one_to_one(class_name, **mapping):
     module_name, class_name = class_name.rsplit('.', 1)
     @property
     def get(self):
-        klass = getattr(import_module(module_name), class_name)
+        klass = getattr(importlib.import_module(module_name), class_name)
         filter_obj = {k: getattr(self, v) for (k, v) in mapping.items()}
         return klass.objects.get(**filter_obj)
     return get
@@ -56,7 +56,7 @@ def one_to_many(class_name, **mapping):
     module_name, class_name = class_name.rsplit('.', 1)
     @property
     def get(self):
-        klass = getattr(import_module(module_name), class_name)
+        klass = getattr(importlib.import_module(module_name), class_name)
         filter_obj = {k: getattr(self, v) for (k, v) in mapping.items()}
         return klass.objects.filter(**filter_obj)
     return get
@@ -103,10 +103,17 @@ class Model(object):
 
 class Manager:
     def __init__(self, *args, **kwargs):
-        self.args = args,
+        """Simply store the keyword arguments"""
+        self.args = args
         self.kwargs = kwargs
+    
+    def get_obj_class(self):
+        module, klass = self.obj_class.rsplit('.', 1)
+        mod = importlib.import_module(module)
+        return getattr(mod, klass)
 
     def filter(self, *args, **kwargs):
+        """Return a new Manager with a combination of previous and new keyword arguments"""
         return self.__class__(*args, *self.args, **{**kwargs, **self.kwargs})
 
         """ Next step would be to implement application-layer filters
@@ -119,7 +126,8 @@ class Manager:
             self.objs = filter(lambda x: FILTERS[operator](selector_lambda(x), value), self.objs)
         """
     
-    def order_by(self, *args, **kwargs):
+    def order_by(self, *args):
+        """Take arguments, and store in a special keyword argument called 'sort' """
         kwargs = deepcopy(self.kwargs)
         if 'sort' not in kwargs:
             kwargs['sort'] = list()
@@ -127,6 +135,8 @@ class Manager:
         return self.__class__(*self.args, **{**kwargs, **self.kwargs})
     
     def get(self, *args, **kwargs):
+        """Implement a new manager with the requested keywords, and if the length is 1,
+        return that record, else raise an exception"""
         args = [a for a in args + self.args if a]
         manager = self.__class__().filter(*args, **{**self.kwargs, **kwargs})
         if len(manager) > 1:
@@ -150,6 +160,7 @@ class Manager:
         return iter(self)
 
     def values(self, *fields):
+        """Return new manager with special keywords 'values__fields' and 'values__list'"""
         return self.__class__(
         *self.args, 
         **{
@@ -160,6 +171,7 @@ class Manager:
         )
     
     def values_list(self, *fields, flat=False):
+        """Same as values, but adds an additional parameter for "flat" lists """
         return self.__class__(
         *self.args, 
         **{
@@ -174,6 +186,9 @@ class Manager:
         return ValuesSet(self, *fields, values_list=True, flat=flat)
 
     def __getitem__(self, key):
+        """resolves slices and keys into Model objects. Relies on .get_item(key) to obtain
+        the record itself"""
+
         if type(key) == slice:
             indices = list(range(len(self)))[key.start : key.stop : key.step]
             return [self.__getitem__(index) for index in indices]

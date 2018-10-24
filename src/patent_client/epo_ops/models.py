@@ -186,6 +186,7 @@ class OPSManager(Manager):
 class InpadocManager(OPSManager):
     page_size = 25
     search_url = 'http://ops.epo.org/3.2/rest-services/published-data/search'
+    obj_class = 'patent_client.epo_ops.models.Inpadoc'
 
     def __init__(self, *args, **kwargs):
         super(InpadocManager, self).__init__(*args, **kwargs)
@@ -367,6 +368,8 @@ class EpoManager(OPSManager):
     EPO patents and applications
 
     """
+    obj_class = 'patent_client.epo_ops.models.Epo'
+
     def get(self, number=None, doc_type="publication", doc_db=False):
         epodoc = self.convert_to_epodoc(number, doc_type)
         return Epo(epodoc)

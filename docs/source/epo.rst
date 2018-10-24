@@ -1,3 +1,3 @@
-European Patent Office - INPADOC and the EP Register
+European Patent Office
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Documentation coming soon!
