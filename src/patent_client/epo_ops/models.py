@@ -22,8 +22,12 @@ NS = {
 }
 
 CLIENT_SETTINGS = SETTINGS['EpoOpenPatentServices']
-KEY = CLIENT_SETTINGS['ApiKey']
-SECRET = CLIENT_SETTINGS['Secret']
+if os.environ.get('EPO_KEY', False):
+    KEY = os.environ['EPO_KEY']
+    SECRET = os.environ['EPO_SECRET']
+else:
+    KEY = CLIENT_SETTINGS['ApiKey']
+    SECRET = CLIENT_SETTINGS['Secret']
 CACHE_DIR = CACHE_BASE / 'epo'
 CACHE_DIR.mkdir(exist_ok=True)
 
