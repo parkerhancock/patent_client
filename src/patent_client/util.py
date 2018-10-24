@@ -2,6 +2,7 @@ from collections import OrderedDict
 from hashlib import md5
 import json
 from importlib import import_module
+from copy import deepcopy
 from dateutil.parser import parse as parse_dt
 import inflection
 
@@ -105,8 +106,9 @@ class Manager:
         self.args = args,
         self.kwargs = kwargs
 
-    def filter(self, **kwargs):
-        raise NotImplemented(f'{self.__class__} has no filter method')
+    def filter(self, *args, **kwargs):
+        return self.__class__(*args, *self.args, **{**kwargs, **self.kwargs})
+
         """ Next step would be to implement application-layer filters
         for key, value in kwargs.items():
             selector, operator = key.rsplit('__', 1)
@@ -116,8 +118,21 @@ class Manager:
             selector_lambda = lambda x: accessor(x, accessor)
             self.objs = filter(lambda x: FILTERS[operator](selector_lambda(x), value), self.objs)
         """
-    def order_by(self, **kwargs):
-        raise NotImplemented(f'{self.__class__} has no order_by method')
+    
+    def order_by(self, *args, **kwargs):
+        kwargs = deepcopy(self.kwargs)
+        if 'sort' not in kwargs:
+            kwargs['sort'] = list()
+        kwargs['sort'] += args
+        return self.__class__(*self.args, **{**kwargs, **self.kwargs})
+    
+    def get(self, *args, **kwargs):
+        args = [a for a in args + self.args if a]
+        manager = self.__class__().filter(*args, **{**self.kwargs, **kwargs})
+        if len(manager) > 1:
+            doc_nos = '\n'.join([str(r) for r in manager])
+            raise ValueError('More than one document found!\n' + doc_nos)
+        return manager.first()
 
     def exclude(self, **kwargs):
         raise NotImplemented(f'{self.__class__} has no exclude method')

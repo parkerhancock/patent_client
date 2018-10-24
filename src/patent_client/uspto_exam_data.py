@@ -54,14 +54,7 @@ class USApplicationManager(Manager):
     def filter(self, *args, **kwargs):
         return self.__class__(*args, *self.args, **{**kwargs, **self.kwargs})
 
-    def order_by(self, *args):
-        kwargs = deepcopy(self.kwargs)
-        if 'sort' not in kwargs:
-            kwargs['sort'] = list()
-        kwargs['sort'] += args
-        return self.__class__(*self.args, **{**kwargs, **self.kwargs})
 
-    
     def get_item(self, key):
         if not hasattr(self, 'objs'):
             self.request()
