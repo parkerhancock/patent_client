@@ -144,6 +144,7 @@ class InpadocParser(OPSParser):
         data_items = list()
         for document in documents:
             data = dict()
+            data['family_id'] = document.attrib['family-id']
             bib_data = document.find("./epo:bibliographic-data", NS)
 
             title = bib_data.find("./epo:invention-title[@lang='en']", NS)
@@ -178,6 +179,10 @@ class InpadocParser(OPSParser):
             if original_app_data is not None:
                 data['original_application_number'] = original_app_data.find("./epo:doc-number", NS).text
 
+
+            original_app = bib_data.find('./epo:application-reference/epo:document-id[@document-id-type="original"]/epo:doc-number', NS)
+            if original_app is not None:
+                data['original_application_number'] = original_app.text
 
             intl_class = [
                 whitespace_re.sub("", e.text)

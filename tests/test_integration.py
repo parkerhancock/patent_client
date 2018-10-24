@@ -20,7 +20,7 @@ class TestIntegration():
         print(app.inpadoc.title)
         assert app.inpadoc.title == 'DATA STORAGE AND ACCESS SYSTEMS'
 
+
     def test_can_get_us_app_from_inpadoc(self):
         app = Inpadoc.objects.get('US9231827B2')
-        print(app.us_application.patent_title)
         assert app.us_application.patent_title == 'FORMALIZING, DIFFUSING AND ENFORCING POLICY ADVISORIES AND MONITORING POLICY COMPLIANCE IN THE MANAGEMENT OF NETWORKS'

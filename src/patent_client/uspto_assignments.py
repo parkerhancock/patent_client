@@ -75,6 +75,7 @@ class AssignmentParser():
 class AssignmentManager(Manager):
     parser = AssignmentParser()
     rows = 50
+    obj_class = 'patent_client.uspto_assignments.Assignment'
 
     def __init__(self, *args, **kwargs):
         super(AssignmentManager, self).__init__(*args, **kwargs)

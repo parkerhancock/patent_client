@@ -54,14 +54,7 @@ class USApplicationManager(Manager):
     def filter(self, *args, **kwargs):
         return self.__class__(*args, *self.args, **{**kwargs, **self.kwargs})
 
-    def order_by(self, *args):
-        kwargs = deepcopy(self.kwargs)
-        if 'sort' not in kwargs:
-            kwargs['sort'] = list()
-        kwargs['sort'] += args
-        return self.__class__(*self.args, **{**kwargs, **self.kwargs})
 
-    
     def get_item(self, key):
         if not hasattr(self, 'objs'):
             self.request()
@@ -433,7 +426,7 @@ class USApplicationXmlSet(Manager):
 class USApplication(Model):
     objects = USApplicationManager()
     trials = one_to_many('patent_client.PtabTrial', patent_number='patent_number')
-    inpadoc = one_to_one('patent_client.Inpadoc', number='publication')
+    inpadoc = one_to_many('patent_client.Inpadoc', number='appl_id')
 
     @property
     def publication(self):
