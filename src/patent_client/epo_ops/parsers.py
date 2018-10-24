@@ -144,6 +144,7 @@ class InpadocParser(OPSParser):
         data_items = list()
         for document in documents:
             data = dict()
+            data['family_id'] = document.attrib['family-id']
             bib_data = document.find("./epo:bibliographic-data", NS)
 
             title = bib_data.find("./epo:invention-title[@lang='en']", NS)
