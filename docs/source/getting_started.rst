@@ -13,7 +13,10 @@ To install
 If you are only interested in using the USPTO API's, no further setup is necessary. Skip ahead to the next section.
 
 If you want to take advantage of the European Patent Office's Open Patent Services, 
-which supports Inpadoc and Epo Register documents, you will need to set up your API key.
+which supports Inpadoc and Epo Register documents, you will need to set up your API key. You can do this in one of two ways:
+
+System Wide Configuration (Recommended)
+---------------------------------------
 
 **Step 1:** Go to `EPO Open Patent Services <https://www.epo.org/searching-for-patents/data/web-services/ops.html#tab-1>`_ and 
 register a new account (Free up to 4GB of data / month, which is more than sufficient).
@@ -42,6 +45,17 @@ This will set up an empty settings file, located at **~/.iprc**. The IPRC file i
     }
 
 **Step 5:** PROFIT! Every time you import a model that requires EPO OPS access, you will automatically be logged on using that key and secret.
+
+Environment Variables (Less Recommended)
+----------------------------------------
+
+Alternatively, you can set the environment variables as:
+
+.. code-block:: console
+
+    EPO_KEY="<Consumer Key Here>"
+    EPO_SECRET="<Consumer Key Secret Here>"
+
 
 Basic Use
 =========
@@ -116,7 +130,12 @@ The data can also be accessed in other ways. Just like the Django QuerySet API, 
         'DOUBLE SHAFT DRILLING APPARATUS WITH HANGER BEARINGS'
     ]
 
-This is particularly useful in combination with the `Pandas <https://pandas.pydata.org/>`_ library, as a .values() manager can be used to create dataframes quickly and easily.
+Pandas Integration
+==================
+
+The models provided by Patent Client are also very useful with the `Pandas <https://pandas.pydata.org/>`_ library.
+Because the .values() manager produces OrderedDict objects, dataframes can be created quickly and easily. Just 
+specify the columns you want to .values, and feed that into pd.DataFrame.from_records.
 
 .. code-block:: python
 
@@ -134,6 +153,28 @@ This is particularly useful in combination with the `Pandas <https://pandas.pyda
     1  13660608       9045941                Hybrid Bearings for Downhole Motors
     2  13672932       9309720  DOUBLE SHAFT DRILLING APPARATUS WITH HANGER BE...
     
+Caching
+=======
+
+Patent Client uses a file-based cache for all API requests. For the time being, it is a fairly naiive cache, and 
+will only return results from the cache if the "filter" and "order by" criteria are exactly the same. 
+
+Because patent data changes over time, cache entries are only good for 1 week by default. After the cache file is
+older than that, it will be deleted the next time the library is imported. Or they can be manually deleted whenever.
+
+The individual cache files are also given human-readable names, to the extent practicable, so they can be inspected,
+if you wish.
+
+You can see the
+cache in your home directory at "~/.patent_client":
+::
+    $HOME
+    |-/.patent_client
+      |-epo
+      |-uspto_assignments
+      |-uspto_examination_data
+      |-ptab
+
 
 
 

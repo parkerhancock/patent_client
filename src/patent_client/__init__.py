@@ -6,7 +6,7 @@ import os
 import time
 from pathlib import Path
 
-CACHE_BASE = Path("~/.ip").expanduser()
+CACHE_BASE = Path("~/.patent_client").expanduser()
 CACHE_BASE.mkdir(exist_ok=True)
 CACHE_MAX_AGE = 60 * 60 * 24 * 7  # 1 week
 now = time.time()

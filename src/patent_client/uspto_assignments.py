@@ -101,6 +101,7 @@ class AssignmentManager(Manager):
         fields = {
             "patent": "PatentNumber",
             "application": "ApplicationNumber",
+            "publication": "PublicationNumber",
             "assignee": "OwnerName",
             "assignor": "PriorOwnerName",
             "pct_application": "PCTNumber",

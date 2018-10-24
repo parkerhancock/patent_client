@@ -1,5 +1,8 @@
 Patent Trial & Appeal Board
 ^^^^^^^^^^^
+.. note::
+    Only publicly accessible documents are available. Any document that is marked confidential is not accessible.
+    
 Patent Client provides an interface to the PTAB Public API.
 
 .. code-block:: python
@@ -26,7 +29,7 @@ Patent Client also provides individual documents as related objects.
     # Downloads pdf entitled "303' Patent File History.pdf" to current directory
 
 Supported Fields - PtabTrial
-============================
+----------------------------
 
 =========================   ===========================================       ===============     ================
 Field Name                  Examples                                          Filterable          Sortable
@@ -44,7 +47,8 @@ last_modified_datetime      YYYY-mm-dd                                        YE
 =========================   ===========================================       ===============     ================
 
 Supported Fields - PtabDocument
-===============================
+-------------------------------
+
 =========================   ===========================================       ===============     ================
 Field Name                  Examples                                          Filterable          Sortable
 =========================   ===========================================       ===============     ================
@@ -57,7 +61,6 @@ filing_datetime             YYYY-mm-dd                                        YE
 last_modified_datetime      YYYY-mm-dd                                        YES                 YES
 =========================   ===========================================       ===============     ================
 
-**NOTE** Only publicly accessible documents are available. Any document that is marked confidential is not accessible.
 
 Original API URL: https://developer.uspto.gov/api-catalog/ptab-api
 
