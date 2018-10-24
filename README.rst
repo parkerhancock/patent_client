@@ -1,12 +1,3 @@
-
-Warning
-==============
-
-This project is under active development. Please treat this as a rough draft. NOT PRODUCTION READY.
-
-Overview
-========
-
 .. image:: https://travis-ci.org/parkerhancock/patent_client.svg?branch=master
     :target: https://travis-ci.org/parkerhancock/patent_client
 
@@ -22,6 +13,13 @@ Overview
     :alt: Supported versions
     :target: https://pypi.python.org/pypi/patent_client
 
+Warning
+==============
+
+This project is under active development. Please treat this as a rough draft. NOT PRODUCTION READY.
+
+Overview
+========
 
 A set of Django-ORM-Style accessors to publicly available intellectual property data.
 
