@@ -1,6 +1,9 @@
 .. image:: https://travis-ci.org/parkerhancock/patent_client.svg?branch=master
     :target: https://travis-ci.org/parkerhancock/patent_client
 
+.. image:: https://codecov.io/gh/codecov/example-python/branch/master/graph/badge.svg
+  :target: https://codecov.io/gh/codecov/example-python
+
 .. image:: https://img.shields.io/pypi/v/patent_client.svg
     :alt: PyPI Package latest release
     :target: https://pypi.python.org/pypi/patent_client
