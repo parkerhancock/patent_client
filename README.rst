@@ -7,6 +7,9 @@ This project is under active development. Please treat this as a rough draft. NO
 Overview
 ========
 
+.. image:: https://travis-ci.org/parkerhancock/patent_client.svg?branch=master
+    :target: https://travis-ci.org/parkerhancock/patent_client
+
 .. start-badges
 
 .. |codecov| image:: https://codecov.io/github/parkerhancock/patent_client/coverage.svg?branch=master
