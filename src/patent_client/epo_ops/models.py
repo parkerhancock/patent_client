@@ -36,6 +36,39 @@ ep_case_re = re.compile(r'EP(?P<number>[\d]+)(?P<kind>[A-Z]\d)?')
 DocDB = namedtuple('DocDB', ['country', 'number', 'kind', 'date', 'doc_type'])
 EpoDoc = namedtuple('EpoDoc', ['number', 'kind', 'date'])
 
+SEARCH_FIELDS = {
+    'title': 'title',
+    'abstract': 'abstract',
+    'title_and_abstract': 'titleandabstract',
+    'inventor': 'inventor',
+    'applicant': 'applicant',
+    'inventor_or_applicant': 'inventorandapplicant',
+    'publication': 'publicationnumber',
+    'epodoc_publication': 'spn',
+    'application': 'applicationnumber',
+    'epodoc_application': 'sap',
+    'priority': 'prioritynumber',
+    'epodoc_priority': 'spr',
+    'number': 'num', # Pub, App, or Priority Number
+    'publication_date': 'publicationdate', # yyyy, yyyyMM, yyyyMMdd, yyyy-MM, yyyy-MM-dd
+    'citation': 'citation',
+    'cited_in_examination': 'ex',
+    'cited_in_opposition': 'op',
+    'cited_by_applicant': 'rf',
+    'other_citation': 'oc',
+    'family': 'famn',
+    'cpc_class' : 'cpc',
+    'ipc_class': 'ipc',
+    'ipc_core_invention_class': 'ci',
+    'ipc_core_additional_class': 'cn',
+    'ipc_advanced_class': 'ai',
+    'ipc_advanced_additional_class': 'an',
+    'ipc_advanced_class': 'a',
+    'ipc_core_class': 'c',
+    'classification': 'cl', #IPC or CPC Class
+    'full_text': 'txt', #title, abstract, inventor and applicant
+}
+
 class OPSException(Exception):
     pass
 
@@ -99,6 +132,7 @@ class OPSManager(Manager):
 
 
     def xml_request(self, url, params=dict()):
+        print(url, params)
         param_hash = md5(json.dumps(params, sort_keys=True).encode('utf-8')).hexdigest()
         fname = os.path.join(CACHE_DIR, f"{url[37:].replace('/', '_')}{param_hash if params else ''}.xml")
         if os.path.exists(fname):
@@ -111,7 +145,6 @@ class OPSManager(Manager):
         
     
     def convert_to_docdb(self, number, doc_type):
-
         if 'PCT' in number:
             return self.parser.pct_to_docdb(number)
 
@@ -151,41 +184,87 @@ class OPSManager(Manager):
 
 
 class InpadocManager(OPSManager):
+    page_size = 25
+    search_url = 'http://ops.epo.org/3.2/rest-services/published-data/search'
+
     def __init__(self, *args, **kwargs):
         super(InpadocManager, self).__init__(*args, **kwargs)
         self.parser = InpadocParser(self)
+        self.pages = dict()
     
-    def get(self, number=None, doc_type="publication", doc_db=False):
-        if doc_db:
-            docs = self.filter(**{doc_type: doc_db})
-        else:
-            docs = self.filter(**{doc_type: number})
-        if len(docs) > 1:
-            doc_nos = '\n'.join([r.publication for r in docs])
+    def get(self, *args, **kwargs):
+        args = [a for a in args + self.args if a]
+        manager = self.filter(*args, **{**self.kwargs, **kwargs})
+        if len(manager) > 1:
+            doc_nos = '\n'.join([r.publication for r in manager])
             raise OPSException('More than one document found!\n' + doc_nos)
-        return docs[0]
+        return manager.first()
         
-    
-    def search(self, query):
-        return InpadocSet(InpadocSearch(query))
-    
-    def get_item(self, key):
-        doc_db, doc_type = self.objs[key]            
-        return Inpadoc(doc_db=doc_db, doc_type=doc_type)
-    
-    def filter(self, *args, **kwargs):
-        if 'application' in kwargs or 'publication' in kwargs:
-            if 'application' in kwargs:
-                doc_type = 'application'
-            elif 'publication' in kwargs:
-                doc_type = 'publication'
-            number = kwargs[doc_type]
-            if type(number) == str:
-                number = self.convert_to_docdb(number, doc_type)
-            bib_data = self.parser.bib_data(number)
-            return list(Inpadoc(d) for d in bib_data)
+    def get_by_doc_db(self, doc_db):
+        bib_data = self.parser.bib_data(doc_db)
+        if len(bib_data) > 1:
+            return list(Inpadoc(b) for b in bib_data)
+        else:
+            return Inpadoc(bib_data[0])
 
-        return self.search(query)
+    def __len__(self):
+        """Total number of results"""
+        if not hasattr(self, 'length'):
+            self._get_page(1)
+
+        return int(self.length)
+
+    def get_item(self, key):
+        # Application Iterator
+        if 'application' in self.kwargs:
+            doc_db = self.convert_to_docdb(self.kwargs['application'], 'application')
+            docs = self.get_by_doc_db(doc_db)
+            if type(docs) == list:
+                return docs[key]
+            return docs
+
+        # Search Iterator
+        page_num = math.floor(key / self.page_size) + 1
+        line_num = key % self.page_size
+        page = self._get_page(page_num)
+        return self.get_by_doc_db(page[line_num])
+
+    def _get_page(self, page_num):
+        """Internal private method for handling pages of results"""
+        if page_num not in self.pages:
+            start = (page_num - 1) * self.page_size + 1
+            end = start + self.page_size - 1 
+            query = {**self.create_query(), **{'Range': f'{start}-{end}'}}
+            self.pages[page_num] = self.xml_request(self.search_url, query)
+        text = self.pages[page_num]
+        tree = ET.fromstring(text.encode('utf-8'))
+        self.length = int(tree.find('.//ops:biblio-search', NS).attrib['total-result-count'])
+        results = tree.find('.//ops:search-result', NS)
+        return [self.parser.docdb_number(el.find('./epo:document-id', NS), 'publication') for el in results]
+    
+    def get_family(self, doc_db):
+        family = self.parser.family(doc_db)
+        return list(self.get_by_doc_db(doc_db=d) for d in family)
+
+
+    def filter(self, *args, **kwargs):
+        if len(args) > 0:
+            if 'PCT' in args[0]:
+                kwargs['application'] = args[0]
+            else:
+                kwargs['publication'] = args[0]
+        return self.__class__(**{**self.kwargs, **kwargs})
+
+    def create_query(self):
+        query = ''
+        for keyword, value in self.kwargs.items():
+            if "values__" in keyword:
+                continue
+            if len(value.split()) > 1:
+                value = f'"{value}"'
+            query += SEARCH_FIELDS[keyword] + '=' + value
+        return dict(q=query)
+        
 
     def xml_data(self, pub, data_kind):
         """
@@ -216,13 +295,7 @@ class InpadocManager(OPSManager):
         return tree
 
 class InpadocFullTextManager(InpadocManager):
-    def get(self, number=None, doc_type="publication", doc_db=False):
-        if not doc_db:
-            if 'PCT' in number:
-                doc_type = 'application'
-                doc_db = self.parser.pct_to_docdb(number)
-            else:
-                doc_db = self.convert_to_docdb(number, doc_type)
+    def get(self, doc_db):
         data = {
             'description': self.parser.description(doc_db),
             'claims': self.parser.claims(doc_db),
@@ -233,7 +306,7 @@ class InpadocFullTextManager(InpadocManager):
 class Inpadoc(Model):
     objects = InpadocManager()
     full_text = one_to_one('patent_client.epo_ops.models.InpadocFullText', doc_db='doc_db')
-    us_application = one_to_one('patent_client.USApplication', appl_id='application')
+    us_application = one_to_one('patent_client.USApplication', appl_id='original_application_number')
 
     def __repr__(self):
         return f'<Inpadoc(publication={self.publication})>'
@@ -253,10 +326,15 @@ class Inpadoc(Model):
             self._images = InpadocImages(data)
         return self._images
 
+    @property
+    def family(self):
+        return self.objects.get_family(self.doc_db)
+    
 class InpadocFullText(Model):
     objects = InpadocFullTextManager()
 
 class InpadocImages(Model):
+    objects = InpadocManager()
     def download(self, path="."):
         """Download each page of images, and then consolidate into a single PDF
         Args:
@@ -267,7 +345,7 @@ class InpadocImages(Model):
         for i in range(1, self.num_pages + 1):
             fname = dirname / ("page-" + str(i).rjust(6, "0") + ".pdf")
             if not fname.exists():
-                self.objects.pdf_request(fname, self.image_url, params={"Range": i})
+                self.objects.pdf_request(fname, self.url, params={"Range": i})
 
         pages = list(sorted(os.listdir(dirname)))
         out_file = PdfFileMerger()
@@ -279,55 +357,6 @@ class InpadocImages(Model):
         out_file.write(out_fname)
 
 
-class InpadocSearch(OPSManager):
-    """ 
-    INPADOC Search
-
-    This provides an interface to the EPO's INPADOC search functionality.
-    This class is effectively a generator for accesssing paginated search results.
-    This is accessed through the Inpadoc interface class.
-    
-    Query is in the CQL format, explained in the OPS documentation appendix
-    http://documents.epo.org/projects/babylon/eponet.nsf/0/F3ECDCC915C9BCD8C1258060003AA712/$File/ops_v3.2_documentation_-_version_1.3.6_en.pdf
-    """
-    search_url = 'http://ops.epo.org/3.2/rest-services/published-data/search'
-    parser = OPSParser()
-    page_size=25
-
-    def __init__(self, query):
-        
-        self.query = dict(q=query)
-        text = self.xml_request(self.search_url, self.query)
-        tree = ET.fromstring(text.encode("utf-8"))
-        self.length = tree.find(".//ops:biblio-search", NS).attrib['total-result-count']
-        self.pages = {1: text}
-    
-    def __len__(self):
-        """Total number of results"""
-        return int(self.length)
-
-    def __getitem__(self, key):
-        """Supports indexing and slicing results"""
-        if type(key) == slice:
-            indices = list(range(len(self)))[key.start : key.stop : key.step]
-            return [self.__getitem__(index) for index in indices]
-        else:
-            page_num = math.floor(key / self.page_size) + 1
-            line_num = key % self.page_size
-            page = self._get_page(page_num)
-            return (page[line_num], 'publication')
-
-    def _get_page(self, page_num):
-        """Internal private method for handling pages of results"""
-        if page_num not in self.pages:
-            start = (page_num - 1) * self.page_size + 1
-            end = start + self.page_size - 1 
-            query = {**self.query, **{'Range': f'{start}-{end}'}}
-            self.pages[page_num] = self.xml_request(self.search_url, query)
-        text = self.pages[page_num]
-        tree = ET.fromstring(text.encode('utf-8'))
-        results = tree.find('.//ops:search-result', NS)
-        return [self.parser.docdb_number(el.find('./epo:document-id', NS)) for el in results]
       
 
 class EpoManager(OPSManager):

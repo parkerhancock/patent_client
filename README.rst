@@ -1,3 +1,9 @@
+
+Warning
+==============
+
+This project is under active development. Please treat this as a rough draft. NOT PRODUCTION READY.
+
 Overview
 ========
 
@@ -30,12 +36,6 @@ Overview
 
 .. end-badges
 
-Warning
-==============
-
-This project is under active development. Please treat this as a rough draft. NOT PRODUCTION READY.
-
-
 
 A set of Django-ORM-Style accessors to publicly available intellectual property data.
 
@@ -67,9 +67,16 @@ Installation
 
     pip install patent_client
 
+If you only want access to USPTO resources, you're done!
+However, additional setup is necessary to access EPO Inpadoc and EPO Register resources. See the `Docs <http://patent-client.readthedocs.io>`_.
+
 Documentation
 =============
 
+Docs, including a fulsome Getting Started are available on `Read the Docs <http://patent-client.readthedocs.io>`_.
+
+SUPER QUICK START
+-----------------
 
 To use the project:
 

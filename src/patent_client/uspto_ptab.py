@@ -22,19 +22,6 @@ class PtabManager(Manager):
         self.kwargs = kwargs
         self.obj_class = globals().get(self.obj_class)
     
-    def filter(self, *args, **kwargs):
-        return self.__class__(*args, *self.args, **{**kwargs, **self.kwargs})
-    
-    def get(self, *args, **kwargs):
-        manager = self.filter(*args, **kwargs)
-        count = manager.count()
-        if count > 1:
-            raise ValueError('More than one result!')
-        elif count == 0:
-            raise ValueError('Object Not Found!')
-        else:
-            return manager.first()
-
     def get_item(self, key):
         offset = int(key / self.page_size) * self.page_size
         position = (key % self.page_size)
@@ -42,20 +29,7 @@ class PtabManager(Manager):
         results = data['results']
         return self.obj_class(results[position])
     
-    def order_by(self, *args):
-        kwargs = deepcopy(self.kwargs)
-        if 'sort' not in kwargs:
-            kwargs['sort'] = list()
-        kwargs['sort'] += args
-        return self.__class__(*self.args, **kwargs)
-
-    def first(self):
-        return self[0]
-
     def __len__(self):
-        return self.count()
-
-    def count(self):
         response = self.request()
         response_data = response
         count = response_data['metadata']['count']
@@ -70,14 +44,16 @@ class PtabManager(Manager):
             with open(fname, 'w') as f:
                 json.dump(response.json(), f, indent=True)
         return json.load(open(fname))
-
-    def all(self):
-        return iter(self)
         
 class PtabTrialManager(PtabManager):
     base_url = 'https://ptabdata.uspto.gov/ptab-api/trials'
     obj_class = 'PtabTrial'
     primary_key = 'trial_number'
+    
+class PtabDocumentManager(PtabManager):
+    base_url = 'https://ptabdata.uspto.gov/ptab-api/documents'
+    obj_class = 'PtabDocument'
+    primary_key = 'id'
 
 class PtabTrial(Model):
     objects = PtabTrialManager()
@@ -86,11 +62,6 @@ class PtabTrial(Model):
 
     def __repr__(self):
         return f'<PtabTrial(trial_number={self.trial_number})>'
-    
-class PtabDocumentManager(PtabManager):
-    base_url = 'https://ptabdata.uspto.gov/ptab-api/documents'
-    obj_class = 'PtabDocument'
-    primary_key = 'id'
 
 class PtabDocument(Model):
     objects = PtabDocumentManager()
@@ -112,5 +83,5 @@ class PtabDocument(Model):
         shutil.copy(cname, oname)
 
     def __repr__(self):
-        return f'<PtabDocument>'
+        return f'<PtabDocument(title={self.title})>'
 
