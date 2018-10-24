@@ -10,34 +10,17 @@ Overview
 .. image:: https://travis-ci.org/parkerhancock/patent_client.svg?branch=master
     :target: https://travis-ci.org/parkerhancock/patent_client
 
-.. start-badges
-
-.. |codecov| image:: https://codecov.io/github/parkerhancock/patent_client/coverage.svg?branch=master
-    :alt: Coverage Status
-    :target: https://codecov.io/github/parkerhancock/patent_client
-
-.. |version| image:: https://img.shields.io/pypi/v/patent_client.svg
+.. image:: https://img.shields.io/pypi/v/patent_client.svg
     :alt: PyPI Package latest release
     :target: https://pypi.python.org/pypi/patent_client
 
-.. |commits-since| image:: https://img.shields.io/github/commits-since/parkerhancock/patent_client/v0.0.1.svg
-    :alt: Commits since latest release
-    :target: https://github.com/parkerhancock/patent_client/compare/v0.0.1...master
-
-.. |wheel| image:: https://img.shields.io/pypi/wheel/patent_client.svg
+.. image:: https://img.shields.io/pypi/wheel/patent_client.svg
     :alt: PyPI Wheel
     :target: https://pypi.python.org/pypi/patent_client
 
-.. |supported-versions| image:: https://img.shields.io/pypi/pyversions/patent_client.svg
+.. image:: https://img.shields.io/pypi/pyversions/patent_client.svg
     :alt: Supported versions
     :target: https://pypi.python.org/pypi/patent_client
-
-.. |supported-implementations| image:: https://img.shields.io/pypi/implementation/patent_client.svg
-    :alt: Supported implementations
-    :target: https://pypi.python.org/pypi/patent_client
-
-
-.. end-badges
 
 
 A set of Django-ORM-Style accessors to publicly available intellectual property data.
