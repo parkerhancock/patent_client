@@ -1,4 +1,4 @@
-Ptab Trials
+Patent Trial & Appeal Board
 ^^^^^^^^^^^
 Patent Client provides an interface to the PTAB Public API.
 

@@ -1,3 +1,3 @@
-Assignments - USPTO Assignment API
+USPTO Assignments
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Documentation coming soon!

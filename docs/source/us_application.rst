@@ -1,2 +1,2 @@
-US Applications - USPTO Patent Examination Data
+US Applications
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
