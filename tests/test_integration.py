@@ -18,7 +18,7 @@ class TestIntegration():
         pat_no = '8118221'
         app = USApplication.objects.get(patent_number=pat_no)
         print(app.inpadoc.title)
-        assert app.inpadoc.title == 'Data storage and access systems'
+        assert app.inpadoc.title == 'DATA STORAGE AND ACCESS SYSTEMS'
 
     def test_can_get_us_app_from_inpadoc(self):
         app = Inpadoc.objects.get('US9231827B2')

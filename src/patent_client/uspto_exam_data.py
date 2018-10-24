@@ -438,9 +438,10 @@ class USApplication(Model):
     @property
     def publication(self):
         if self.patent_number:
-            return self.patent_number
+            return 'US' + self.patent_number
         else:
             return self.app_early_pub_number
+    
             
     def __repr__(self):
         return f'<USApplication(appl_id={self.appl_id})>'
