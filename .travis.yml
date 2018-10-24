@@ -4,9 +4,9 @@ python:
     - 3.6-dev
     - 3.7-dev
 install:
-    - pip install -r requirements.txt
     - pip install .
 script:
+    - pip install -r requirements.txt
     - pytest --cov=./
     - codecov
 env:
