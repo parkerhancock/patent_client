@@ -83,5 +83,5 @@ class PtabDocument(Model):
         shutil.copy(cname, oname)
 
     def __repr__(self):
-        return f'<PtabDocument>'
+        return f'<PtabDocument(title={self.title})>'
 

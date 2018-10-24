@@ -67,9 +67,16 @@ Installation
 
     pip install patent_client
 
+If you only want access to USPTO resources, you're done!
+However, additional setup is necessary to access EPO Inpadoc and EPO Register resources. See the `Docs <http://patent-client.readthedocs.io>`_.
+
 Documentation
 =============
 
+Docs, including a fulsome Getting Started are available on `Read the Docs <http://patent-client.readthedocs.io>`_.
+
+SUPER QUICK START
+-----------------
 
 To use the project:
 
