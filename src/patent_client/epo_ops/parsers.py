@@ -172,6 +172,13 @@ class InpadocParser(OPSParser):
             app_data = dict(self.manager.parser.docdb_number(app_data, 'application')._asdict())
             data["application"] = app_data['country'] + app_data['number']
             data["filing_date"] = app_data.get('date', None)
+            original_app_data = bib_data.find(
+                './epo:application-reference/epo:document-id[@document-id-type="original"]',
+                NS,
+            )
+            if original_app_data is not None:
+                data['original_application_number'] = original_app_data.find("./epo:doc-number", NS).text
+
 
             original_app = bib_data.find('./epo:application-reference/epo:document-id[@document-id-type="original"]/epo:doc-number', NS)
             if original_app is not None:

@@ -22,8 +22,12 @@ NS = {
 }
 
 CLIENT_SETTINGS = SETTINGS['EpoOpenPatentServices']
-KEY = CLIENT_SETTINGS['ApiKey']
-SECRET = CLIENT_SETTINGS['Secret']
+if os.environ.get('EPO_KEY', False):
+    KEY = os.environ['EPO_KEY']
+    SECRET = os.environ['EPO_SECRET']
+else:
+    KEY = CLIENT_SETTINGS['ApiKey']
+    SECRET = CLIENT_SETTINGS['Secret']
 CACHE_DIR = CACHE_BASE / 'epo'
 CACHE_DIR.mkdir(exist_ok=True)
 
@@ -187,6 +191,7 @@ class InpadocManager(OPSManager):
     page_size = 25
     search_url = 'http://ops.epo.org/3.2/rest-services/published-data/search'
     obj_class = 'patent_client.epo_ops.models.Inpadoc'
+
 
     def __init__(self, *args, **kwargs):
         super(InpadocManager, self).__init__(*args, **kwargs)
@@ -363,10 +368,8 @@ class InpadocImages(Model):
 class EpoManager(OPSManager):
     """
     EPO Manager
-
     This is a manager class to the EPO register. Retrieves information about
     EPO patents and applications
-
     """
     obj_class = 'patent_client.epo_ops.models.Epo'
 

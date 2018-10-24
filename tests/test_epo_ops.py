@@ -54,7 +54,9 @@ class TestInpadoc:
         doc = Inpadoc.objects.get("PCT/US16/15853")
         assert doc.title == 'DUAL MODE TELEMETRY'
 
-    @pytest.mark.skip("doesn't work")
+
+    @pytest.mark.skip('Special case needed special handling')
+
     def test_can_get_us_application(self):
         pub = Inpadoc.objects.get(application="US15915966")
         assert pub.title  == "DEVICE AND METHOD FOR SURVEYING BOREHOLES OR ORIENTING DOWNHOLE ASSEMBLIES"
@@ -115,6 +117,15 @@ class TestInpadoc:
 class TestEpoRegister:
     def test_can_get_epo_data(self):
         pub = Epo.objects.get("EP3221665A1")
-        assert pub.status[0] == {'code': '15', 'date': '20170825', 'description': 'Request for examination was made'}
-        assert pub.title == 'INERTIAL CAROUSEL POSITIONING'
-        assert pub.procedural_steps[0] == {'code': 'RFEE', 'date': '20171113', 'description': 'Renewal fee payment - 03', 'phase': 'undefined'}
+        assert pub.status[0] == {
+                "description": "Request for examination was made",
+                "code": "15",
+                "date": "20170825",
+            }
+        assert pub.title == "INERTIAL CAROUSEL POSITIONING"
+        assert pub.procedural_steps[0] == {'code': 'RFEE',
+            'date': '20171113',
+            'description': 'Renewal fee payment - 03',
+            'phase': 'undefined'}
+
+
