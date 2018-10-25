@@ -6,11 +6,6 @@ import shutil
 import time
 from pathlib import Path
 
-from patent_client.epo_ops.models import Inpadoc
-from patent_client.uspto_assignments import Assignment
-from patent_client.uspto_exam_data import USApplication
-from patent_client.uspto_ptab import PtabDocument
-from patent_client.uspto_ptab import PtabTrial
 
 CACHE_BASE = Path("~/.patent_client").expanduser()
 CACHE_BASE.mkdir(exist_ok=True)
@@ -29,3 +24,10 @@ if not SETTINGS_FILE.exists():
     shutil.copy(str(DEFAULT_SETTINGS), SETTINGS_FILE)
 
 SETTINGS = json.load(open(SETTINGS_FILE))
+
+from patent_client.epo_ops.models import Inpadoc  # isort:skip
+from patent_client.uspto_assignments import Assignment  # isort:skip
+from patent_client.uspto_exam_data import USApplication  # isort:skip
+from patent_client.uspto_ptab import PtabDocument  # isort:skip
+from patent_client.uspto_ptab import PtabTrial  # isort:skip
+

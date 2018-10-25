@@ -340,6 +340,7 @@ class InpadocConnector(OpenPatentServicesConnector):
         for document in documents:
             data = dict()
             data["family_id"] = document.attrib["family-id"]
+            
             bib_data = document.find("./epo:bibliographic-data", NS)
 
             title = bib_data.find("./epo:invention-title[@lang='en']", NS)
@@ -349,6 +350,8 @@ class InpadocConnector(OpenPatentServicesConnector):
                 data["title"] = title.text.strip()
             else:
                 data["title"] = ""
+
+            
             pub_data = bib_data.find(
                 './epo:publication-reference/epo:document-id[@document-id-type="docdb"]',
                 NS,
@@ -366,6 +369,7 @@ class InpadocConnector(OpenPatentServicesConnector):
             app_data = dict(self.docdb_number(app_data, "application")._asdict())
             data["application"] = app_data["country"] + app_data["number"]
             data["filing_date"] = app_data.get("date", None)
+
             original_app_data = bib_data.find(
                 './epo:application-reference/epo:document-id[@document-id-type="original"]',
                 NS,
@@ -375,33 +379,23 @@ class InpadocConnector(OpenPatentServicesConnector):
                     "./epo:doc-number", NS
                 ).text
 
-            original_app = bib_data.find(
-                './epo:application-reference/epo:document-id[@document-id-type="original"]/epo:doc-number',
-                NS,
-            )
-            if original_app is not None:
-                data["original_application_number"] = original_app.text
-
-            intl_class = [
+            data['intl_class'] = [
                 whitespace_re.sub("", e.text)
                 for e in bib_data.findall(
                     "./epo:classifications-ipcr/epo:classification-ipcr/epo:text", NS
                 )
             ]
-            data["intl_class"] = intl_class
 
-            cpc_classes = bib_data.findall(
+            data['cpc_class'] = [self.cpc_class(el)
+            for el in bib_data.findall(
                 "./epo:patent-classifications/epo:patent-classification", NS
-            )
-            data["cpc_class"] = [
-                self.cpc_class(el) for el in cpc_classes
-            ]
+            )]
 
-            priority_apps = bib_data.findall(
+            data["priority_claims"] = [e.text for e in 
+            bib_data.findall(
                 './epo:priority-claims/epo:priority-claim/epo:document-id[@document-id-type="original"]/epo:doc-number',
-                NS,
-            )
-            data["priority_claims"] = [e.text for e in priority_apps]
+                NS)
+            ]
 
             parties = bib_data.find("./epo:parties", NS)
             data["applicants"] = [
@@ -440,14 +434,13 @@ class InpadocConnector(OpenPatentServicesConnector):
 
     def claims(self, doc_db):
         tree = self.xml_data(doc_db, "claims")
-        claims = [
+        return [
             "".join(e.itertext()).strip()
             for e in tree.findall(
                 './ft:fulltext-documents/ft:fulltext-document/ft:claims[@lang="EN"]/ft:claim/ft:claim-text',
                 NS,
             )
         ]
-        return claims
 
     def images(self, doc_db):
         if doc_db.doc_type == "application":
@@ -457,7 +450,7 @@ class InpadocConnector(OpenPatentServicesConnector):
             './ops:document-inquiry/ops:inquiry-result/ops:document-instance[@desc="FullDocument"]',
             NS,
         )
-        data = {
+        return  {
             "url": "http://ops.epo.org/rest-services/" + images.attrib["link"] + ".pdf",
             "num_pages": int(images.attrib["number-of-pages"]),
             "sections": {
@@ -465,7 +458,6 @@ class InpadocConnector(OpenPatentServicesConnector):
                 for e in images.findall("./ops:document-section", NS)
             },
         }
-        return data
 
     def family(self, doc_db):
         tree = self.xml_data(doc_db, "family")

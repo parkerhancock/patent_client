@@ -65,14 +65,6 @@ class TestInpadoc:
         doc = Inpadoc.objects.get("PCT/US16/15853")
         assert doc.title == "DUAL MODE TELEMETRY"
 
-    @pytest.mark.skip("Special case needed special handling")
-    def test_can_get_us_application(self):
-        pub = Inpadoc.objects.get(application="US15915966")
-        assert (
-            pub.title
-            == "DEVICE AND METHOD FOR SURVEYING BOREHOLES OR ORIENTING DOWNHOLE ASSEMBLIES"
-        )
-
     def test_can_get_inpadoc_family(self):
         family = Inpadoc.objects.filter(application="EP13844704")[0].family
         cases = [m.publication for m in family]

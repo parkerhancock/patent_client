@@ -1,5 +1,9 @@
 US Assignments
 ^^^^^^^^^^^^^^^^^
+.. warning::
+    The SSL configuration on the Assignments API is broken. SSL verification has therefore been turned off
+    for the Assignment object. This means that the client is potentially vulnerable to man-in-the-middle 
+    attacks. When the SSL configuration is fixed, an update will be pushed, and this warning removed
 
 .. warning::
     Some publicly available assignments are not available through this interface. Due to a PTO technical issue,
