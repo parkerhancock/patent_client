@@ -111,7 +111,7 @@ full_text		                txt                     title, abstract, inventor and
 .. _here: https://worldwide.espacenet.com/help?locale=en_EP&topic=smartsearch&method=handleHelpTopic
 
 EPO Register
--------------
+=============
 
 Patent Client can also retrive bibliographic and status information from the EP register.
 
