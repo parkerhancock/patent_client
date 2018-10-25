@@ -4,10 +4,7 @@ import re
 import time
 import warnings
 import xml.etree.ElementTree as ET
-from copy import deepcopy
 from datetime import date
-from hashlib import sha1
-from tempfile import TemporaryDirectory
 from zipfile import ZipFile
 
 import inflection
@@ -18,7 +15,6 @@ from patent_client.util import Manager
 from patent_client.util import Model
 from patent_client.util import hash_dict
 from patent_client.util import one_to_many
-from patent_client.util import one_to_one
 
 
 class HttpException(Exception):

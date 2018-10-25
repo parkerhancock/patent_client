@@ -2,11 +2,9 @@ import json
 import mimetypes
 import os
 import shutil
-from copy import deepcopy
 
 import inflection
 import requests
-from dateutil.parser import parse as parse_dt
 from patent_client import CACHE_BASE
 from patent_client.util import Manager
 from patent_client.util import Model

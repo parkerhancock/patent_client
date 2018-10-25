@@ -1,13 +1,9 @@
 import math
-import os
 import re
-import time
-import warnings
 import xml.etree.ElementTree as ET
-from datetime import date as date_obj
-from itertools import chain
 
 import requests
+
 # USPTO has a malconfigured SSL connection. Suppress warnings about it.
 import urllib3
 from dateutil.parser import parse as parse_date
