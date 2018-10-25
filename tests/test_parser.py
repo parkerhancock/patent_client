@@ -156,7 +156,7 @@ class TestPatentNumberParser:
         assert app.display(style="new") == "PCT/US2017/036577"
         assert app.display() == "PCT/US17/36577"
         assert str(app) == "PCTUS2017036577"
-    
+
     def test_can_handle_canadian_patents(self):
         app = parse("CA2967774A")
         assert app.type == "application"
@@ -166,7 +166,7 @@ class TestPatentNumberParser:
         assert app.display() == "CA 2967774 A"
         assert str(app) == "CA2967774A"
 
-        app = parse("2967774", country='CA')
+        app = parse("2967774", country="CA")
         assert app.type == "application"
         assert app.country == "CA"
         assert app.number == "2967774"

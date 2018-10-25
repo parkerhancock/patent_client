@@ -15,37 +15,41 @@ from .ops import InpadocConnector
 
 whitespace_re = re.compile(" +")
 country_re = re.compile(r"^[A-Z]{2}")
-ep_case_re = re.compile(r'EP(?P<number>[\d]+)(?P<kind>[A-Z]\d)?')
+ep_case_re = re.compile(r"EP(?P<number>[\d]+)(?P<kind>[A-Z]\d)?")
 
 
-EpoDoc = namedtuple('EpoDoc', ['number', 'kind', 'date'])
+EpoDoc = namedtuple("EpoDoc", ["number", "kind", "date"])
 
 
 class InpadocManager(Manager):
-    obj_class = 'patent_client.epo_ops.models.Inpadoc'
-    primary_key = 'publication'
+    obj_class = "patent_client.epo_ops.models.Inpadoc"
+    primary_key = "publication"
     connector = InpadocConnector()
 
     def __init__(self, *args, **kwargs):
         super(InpadocManager, self).__init__(*args, **kwargs)
         self.pages = dict()
-    
+
     def __len__(self):
         """Total number of results"""
-        if not hasattr(self, 'length'):
+        if not hasattr(self, "length"):
             self._get_page(1)
 
         return int(self.length)
 
     def get_item(self, key):
-        if 'publication' in self.kwargs:
-            doc_db = self.connector.convert_to_docdb(self.kwargs['publication'], 'publication')
+        if "publication" in self.kwargs:
+            doc_db = self.connector.convert_to_docdb(
+                self.kwargs["publication"], "publication"
+            )
             docs = self.get_by_doc_db(doc_db)
             if type(docs) == list:
                 return docs[key]
             return docs
-        elif 'application' in self.kwargs:
-            doc_db = self.connector.convert_to_docdb(self.kwargs['application'], 'application')
+        elif "application" in self.kwargs:
+            doc_db = self.connector.convert_to_docdb(
+                self.kwargs["application"], "application"
+            )
             docs = self.get_by_doc_db(doc_db)
             if type(docs) == list:
                 return docs[key]
@@ -61,50 +65,61 @@ class InpadocManager(Manager):
 class InpadocFullTextManager(InpadocManager):
     def get(self, doc_db):
         data = {
-            'description': self.parser.description(doc_db),
-            'claims': self.parser.claims(doc_db),
-            'doc_db': doc_db,
+            "description": self.parser.description(doc_db),
+            "claims": self.parser.claims(doc_db),
+            "doc_db": doc_db,
         }
         return InpadocFullText(data)
 
+
 class Inpadoc(Model):
     objects = InpadocManager()
-    full_text = one_to_one('patent_client.epo_ops.models.InpadocFullText', doc_db='doc_db')
-    us_application = one_to_one('patent_client.USApplication', appl_id='original_application_number')
+    full_text = one_to_one(
+        "patent_client.epo_ops.models.InpadocFullText", doc_db="doc_db"
+    )
+    us_application = one_to_one(
+        "patent_client.USApplication", appl_id="original_application_number"
+    )
 
     def __repr__(self):
-        return f'<Inpadoc(publication={self.publication})>'
+        return f"<Inpadoc(publication={self.publication})>"
 
     @property
     def legal(self):
-        if not hasattr(self, '_legal'):
+        if not hasattr(self, "_legal"):
             data = self.objects.parser.legal(self.doc_db)
             self._legal = data
         return self._legal
 
     @property
     def images(self):
-        if not hasattr(self, '_images'):
+        if not hasattr(self, "_images"):
             data = self.objects.parser.images(self.doc_db)
-            data['doc_db'] = self.doc_db
+            data["doc_db"] = self.doc_db
             self._images = InpadocImages(data)
         return self._images
 
     @property
     def family(self):
         return self.objects.get_family(self.doc_db)
-    
+
+
 class InpadocFullText(Model):
     objects = InpadocFullTextManager()
 
+
 class InpadocImages(Model):
     objects = InpadocManager()
+
     def download(self, path="."):
         """Download each page of images, and then consolidate into a single PDF
         Args:
             path: str(base path for file)
         """
-        dirname = CACHE_DIR / f'{self.doc_db.doc_type}-{self.doc_db.country}{self.doc_db.number}{self.doc_db.kind if self.doc_db.kind else ""}'
+        dirname = (
+            CACHE_DIR
+            / f'{self.doc_db.doc_type}-{self.doc_db.country}{self.doc_db.number}{self.doc_db.kind if self.doc_db.kind else ""}'
+        )
         dirname.mkdir(exist_ok=True)
         for i in range(1, self.num_pages + 1):
             fname = dirname / ("page-" + str(i).rjust(6, "0") + ".pdf")
@@ -120,13 +135,15 @@ class InpadocImages(Model):
         )
         out_file.write(out_fname)
 
+
 class EpoManager(Manager):
     """
     EPO Manager
     This is a manager class to the EPO register. Retrieves information about
     EPO patents and applications
     """
-    obj_class = 'patent_client.epo_ops.models.Epo'
+
+    obj_class = "patent_client.epo_ops.models.Epo"
 
     def get(self, number=None, doc_type="publication", doc_db=False):
         epodoc = self.convert_to_epodoc(number, doc_type)
@@ -144,8 +161,9 @@ class EpoManager(Manager):
             + data_kind
         )
         text = self.xml_request(url)
-        tree = ET.fromstring(text.encode('utf-8'))
+        tree = ET.fromstring(text.encode("utf-8"))
         return tree
+
 
 """
 class EpoParser(OPSParser):

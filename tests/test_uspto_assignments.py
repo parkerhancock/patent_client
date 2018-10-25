@@ -5,6 +5,7 @@ import pytest
 
 from patent_client.uspto_assignments import Assignment
 
+
 class TestAssignment:
     def test_fetch_assignments_by_assignee(self):
         assignments = Assignment.objects.filter(assignee="US Well Services")
@@ -48,13 +49,37 @@ class TestAssignment:
         assignments = Assignment.objects.filter(assignee="US Well Services")
         assignment_list = [assignment.display_id for assignment in assignments]
         assert len(assignment_list) == len(assignments)
-    
+
     def test_get_aggregates(self):
-        assignments = Assignment.objects.filter(assignee='Covar Applied')
-        assert list(assignments.values_list('appl_num', flat=True)) == ['15274746', '15251940', '15251994', '15252319', '14938523', '14938467', '14938962', '14939089', '14284013', '14284013']
-        #assert list(assignments.values_list('pat_num', flat=True)) == ['9908148', '9708898', '9708898']
-        assert list(assignments.values_list('publ_num', flat=True)) == ['20170081931', '20170058620', '20170056928', '20170056929', '20160130917', '20160134843', '20160130928', '20160130889', '20140345940', '20140345940']
-        #assert list(assignments.pct_applications) == []
-        assert list(set(assignments.values_list('pat_assignee_name', flat=True))) == ['COVAR APPLIED TECHNOLOGIES, INC.']
-        #assert list(assignments.aggregate('pat_assignor_name')) == False
-        #assert False
+        assignments = Assignment.objects.filter(assignee="Covar Applied")
+        assert list(assignments.values_list("appl_num", flat=True)) == [
+            "15274746",
+            "15251940",
+            "15251994",
+            "15252319",
+            "14938523",
+            "14938467",
+            "14938962",
+            "14939089",
+            "14284013",
+            "14284013",
+        ]
+        # assert list(assignments.values_list('pat_num', flat=True)) == ['9908148', '9708898', '9708898']
+        assert list(assignments.values_list("publ_num", flat=True)) == [
+            "20170081931",
+            "20170058620",
+            "20170056928",
+            "20170056929",
+            "20160130917",
+            "20160134843",
+            "20160130928",
+            "20160130889",
+            "20140345940",
+            "20140345940",
+        ]
+        # assert list(assignments.pct_applications) == []
+        assert list(set(assignments.values_list("pat_assignee_name", flat=True))) == [
+            "COVAR APPLIED TECHNOLOGIES, INC."
+        ]
+        # assert list(assignments.aggregate('pat_assignor_name')) == False
+        # assert False

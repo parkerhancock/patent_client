@@ -29,10 +29,13 @@ CACHE_DIR.mkdir(exist_ok=True)
 session = requests.Session()
 session.headers = {"Accept": "application/xml"}
 
-class AssignmentParser():
+
+class AssignmentParser:
     def doc(self, element):
         data = self.xml_to_dict(element)
-        data['image_url'] = f'http://legacy-assignments.uspto.gov/assignments/assignment-pat-{data["display_id"]}.pdf'
+        data[
+            "image_url"
+        ] = f'http://legacy-assignments.uspto.gov/assignments/assignment-pat-{data["display_id"]}.pdf'
         return data
 
     def xml_to_list(self, element):
@@ -42,7 +45,6 @@ class AssignmentParser():
         if len(output) == 1:
             output = output[0]
         return output
-
 
     def xml_to_pytype(self, element):
         if element.text == "NULL":
@@ -57,7 +59,6 @@ class AssignmentParser():
             return date.isoformat()
         elif element.tag == "int" or element.tag == "long":
             return int(element.text)
-
 
     def xml_to_dict(self, element):
         output = dict()
@@ -75,14 +76,14 @@ class AssignmentParser():
 class AssignmentManager(Manager):
     parser = AssignmentParser()
     rows = 50
-    obj_class = 'patent_client.uspto_assignments.Assignment'
+    obj_class = "patent_client.uspto_assignments.Assignment"
 
     def __init__(self, *args, **kwargs):
         super(AssignmentManager, self).__init__(*args, **kwargs)
         self.pages = dict()
 
     def __repr__(self):
-        return f'<AssignmentManager>'
+        return f"<AssignmentManager>"
 
     def get_item(self, key):
         if key < 0:
@@ -106,7 +107,7 @@ class AssignmentManager(Manager):
             "assignor": "PriorOwnerName",
             "pct_application": "PCTNumber",
             "correspondent": "CorrespondentName",
-            "reel_frame": "ReelFrame"
+            "reel_frame": "ReelFrame",
         }
         for key, value in kwargs.items():
             field = fields[key]
@@ -114,8 +115,10 @@ class AssignmentManager(Manager):
         if field in ["PatentNumber", "ApplicationNumber"]:
             query = NUMBER_CLEAN_RE.sub("", str(query))
 
-        return self.__class__(*self.args, **{**self.kwargs, 
-        **dict(filter__query=query, filter__field=field)})
+        return self.__class__(
+            *self.args,
+            **{**self.kwargs, **dict(filter__query=query, filter__field=field)},
+        )
 
     def __len__(self):
         if not hasattr(self, "_len"):
@@ -124,8 +127,8 @@ class AssignmentManager(Manager):
 
     def _get_page(self, page_no):
         if page_no not in self.pages:
-            field = self.kwargs['filter__field']
-            query = self.kwargs['filter__query']
+            field = self.kwargs["filter__field"]
+            query = self.kwargs["filter__query"]
             params = {
                 "filter": field,
                 "query": query,
@@ -146,15 +149,16 @@ class AssignmentManager(Manager):
 
             self.pages[page_no] = self._parse_page(text)
         return self.pages[page_no]
-    
+
     def _parse_page(self, text):
-        tree = ET.fromstring(text.encode('utf-8'))
-        result = tree.find('./result')
-        self._len = int(result.attrib['numFound'])
+        tree = ET.fromstring(text.encode("utf-8"))
+        result = tree.find("./result")
+        self._len = int(result.attrib["numFound"])
         return [self.parser.doc(doc) for doc in result]
+
 
 class Assignment(Model):
     objects = AssignmentManager()
 
     def __repr__(self):
-        return f'<Assignment(id={self.id})>'
+        return f"<Assignment(id={self.id})>"

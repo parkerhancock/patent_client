@@ -5,7 +5,7 @@ NUMBER_CLEAN_RE = re.compile(r"[^\d]+")
 PUNCTUATION_AND_WHITESPACE_CLEAN_RE = re.compile("\W+")
 COUNTRY_CODE_RE = re.compile(r"^[A-Z]{2,3}")
 KIND_CODE_RE = re.compile(r"[A-Z]\d?$")
-COUNTRY_CODES = ["US", "EP", "PCT", "WO", 'CA']
+COUNTRY_CODES = ["US", "EP", "PCT", "WO", "CA"]
 
 """
 RESOURCES:
@@ -17,11 +17,13 @@ Kind Codes: http://www.wipo.int/export/sites/www/standards/en/pdf/07-03-02.pdf
 
 """
 
+
 def parse(number, *args, **kwargs):
     if type(number) == str and "PCT" in number:
         return PCTApplication(number, *args, **kwargs)
     else:
         return PatentNumber(number, *args, **kwargs)
+
 
 class PatentNumber:
     def __init__(self, number, country=None):
@@ -29,7 +31,6 @@ class PatentNumber:
         self.kind_code = None
         self.country = country
         self.number = number
-
 
         if type(number) == str:
             number = number.strip().upper()
@@ -49,9 +50,9 @@ class PatentNumber:
                     self.country = country_code
                     number = SERIAL_RE.search(number).group()
                     self.number = PUNCTUATION_AND_WHITESPACE_CLEAN_RE.sub("", number)
-            if self.country == 'US':
+            if self.country == "US":
                 self._handle_us_number()
-            elif self.country == 'CA':
+            elif self.country == "CA":
                 self._handle_ca_number()
             else:
                 self.number = NUMBER_CLEAN_RE.sub("", number)
@@ -69,11 +70,11 @@ class PatentNumber:
             self.country = "US"
             self.type = "patent"
             self.kind_code = "E1"
-        elif int(self.number) > 90000000:
+        elif int(self.number) > 90_000_000:
             self.country = "US"
             self.type = "pre-grant publication"
             self.kind_code = "A1"
-        elif int(self.number) < 11000000:
+        elif int(self.number) < 11_000_000:
             self.country = "US"
             self.type = "patent"
             self.kind_code = "B2"
@@ -81,18 +82,18 @@ class PatentNumber:
             self.country = "US"
             self.type = "application"
             self.kind_code = ""
-    
+
     def _handle_ca_number(self):
         if not self.kind_code:
-            self.kind_code = 'A'
+            self.kind_code = "A"
 
         ca_kind_codes = {
-            'A': 'application',
-            'A1': 'publication',
-            'B': 'patent',
-            'C': 'patent',
-            'E': 'reissue patent',
-            'F': 'reexamined patent',
+            "A": "application",
+            "A1": "publication",
+            "B": "patent",
+            "C": "patent",
+            "E": "reissue patent",
+            "F": "reexamined patent",
         }
         self.type = ca_kind_codes[self.kind_code]
 
@@ -110,7 +111,7 @@ class PatentNumber:
                 )
             return f"US {formatted_number} {self.kind_code}".strip()
         elif self.country == "CA":
-            return f'CA {self.number} {self.kind_code}'
+            return f"CA {self.number} {self.kind_code}"
 
     def abbreviation(self):
         if self.type == "pre-grant publication":
