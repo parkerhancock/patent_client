@@ -1,24 +1,21 @@
 import json
 import os
+import re
 import time
-from hashlib import sha1
-
-from zipfile import ZipFile
-from tempfile import TemporaryDirectory
+import warnings
 import xml.etree.ElementTree as ET
 from datetime import date
-from dateutil.parser import parse as parse_dt
-import json
-import re
-from copy import deepcopy
-import os
-import warnings
+from zipfile import ZipFile
 
 import inflection
 import requests
-
+from dateutil.parser import parse as parse_dt
 from patent_client import CACHE_BASE
-from patent_client.util import Manager, hash_dict, one_to_one, one_to_many, Model
+from patent_client.util import Manager
+from patent_client.util import Model
+from patent_client.util import hash_dict
+from patent_client.util import one_to_many
+
 
 class HttpException(Exception):
     pass
@@ -28,16 +25,15 @@ class NotAvailableException(Exception):
     pass
 
 
-
 CHUNK_SIZE = 25
 QUERY_URL = "https://ped.uspto.gov/api/queries"
 BASE_URL = "https://ped.uspto.gov/api/"
 PACKAGE_URL = "https://ped.uspto.gov/api/queries/{query_id}/package"
 STATUS_URL = "https://ped.uspto.gov/api/queries/{query_id}"
 DOWNLOAD_URL = "https://ped.uspto.gov/api/queries/{query_id}/download"
-QUERY_FIELDS = 'appEarlyPubNumber applId appLocation appType appStatus_txt appConfrNumber appCustNumber appGrpArtNumber appCls appSubCls appEntityStatus_txt patentNumber patentTitle primaryInventor firstNamedApplicant appExamName appExamPrefrdName appAttrDockNumber appPCTNumber appIntlPubNumber wipoEarlyPubNumber pctAppType firstInventorFile appClsSubCls rankAndInventorsList'
+QUERY_FIELDS = "appEarlyPubNumber applId appLocation appType appStatus_txt appConfrNumber appCustNumber appGrpArtNumber appCls appSubCls appEntityStatus_txt patentNumber patentTitle primaryInventor firstNamedApplicant appExamName appExamPrefrdName appAttrDockNumber appPCTNumber appIntlPubNumber wipoEarlyPubNumber pctAppType firstInventorFile appClsSubCls rankAndInventorsList"
 
-CACHE_DIR = CACHE_BASE / 'uspto_examination_data'
+CACHE_DIR = CACHE_BASE / "uspto_examination_data"
 CACHE_DIR.mkdir(exist_ok=True)
 
 session = requests.Session()
@@ -45,90 +41,85 @@ session.headers["User-Agent"] = "python-ip"
 
 
 class USApplicationManager(Manager):
-    primary_key = 'appl_id'
-
-    def __init__(self, *args, **kwargs):
-        self.args = args
-        self.kwargs = kwargs
-
-    def filter(self, *args, **kwargs):
-        return self.__class__(*args, *self.args, **{**kwargs, **self.kwargs})
-
+    primary_key = "appl_id"
 
     def get_item(self, key):
-        if not hasattr(self, 'objs'):
+        if not hasattr(self, "objs"):
             self.request()
         return self.objs[key]
-    
+
     def __len__(self):
-        if not hasattr(self, '_len'):
+        if not hasattr(self, "_len"):
             self.request()
         return self._len
 
     def get(self, *args, **kwargs):
-        if 'publication' in kwargs:
-            if 'A1' in kwargs['publication']:
-                warnings.warn('Lookup by Publication does not work well')
-                kwargs['app_early_pub_number'] = kwargs['publication']
+        if "publication" in kwargs:
+            if "A1" in kwargs["publication"]:
+                warnings.warn("Lookup by Publication does not work well")
+                kwargs["app_early_pub_number"] = kwargs["publication"]
             else:
-                kwargs['patent_number'] = kwargs['publication'][2:-2]
-            del kwargs['publication']
-        manager = self.__class__(*args, *self.args, **{**kwargs, **self.kwargs})
+                kwargs["patent_number"] = kwargs["publication"][2:-2]
+            del kwargs["publication"]
+        manager = self.__class__(*args, **{**kwargs, **self.kwargs})
         count = manager.count()
         if count > 1:
-            raise ValueError('More than one result!')
+            raise ValueError("More than one result!")
         elif count == 0:
-            raise ValueError('Object Not Found!')
+            raise ValueError("Object Not Found!")
         else:
             return manager.first()
 
     def get_many(self, *args, **kwargs):
-        manager = self.__class__(*args, *self.args, **{**kwargs, **self.kwargs, **dict(default_connector='OR')})
+        manager = self.__class__(
+            *args,
+            **{**kwargs, **self.kwargs, **dict(default_connector="OR")},
+        )
         return manager
 
     def _generate_query(self, params=dict()):
-        params = {**{self.primary_key: self.args}, **self.kwargs, **params}
-        params = {k: v for (k, v) in params.items() if '__' not in k}
-        default_connector = params.get('default_connector', 'AND')
-        if 'default_connector' in params: del params['default_connector']
-        sort_query = ''
+        params = {**self.filter_params, **dict(sort=self.sort_params), **params}
+        default_connector = params.get("default_connector", "AND")
+        if "default_connector" in params:
+            del params["default_connector"]
+        sort_query = ""
 
-        if 'sort' in params:
-            for s in params['sort']:
-                if s[0] == '-':
-                    sort_query += f'{inflection.camelize(s[1:], uppercase_first_letter=False)} desc '
+        if "sort" in params:
+            for s in params["sort"]:
+                if s[0] == "-":
+                    sort_query += f"{inflection.camelize(s[1:], uppercase_first_letter=False)} desc "
                 else:
-                    sort_query += f'{inflection.camelize(s, uppercase_first_letter=False)} asc'
+                    sort_query += (
+                        f"{inflection.camelize(s, uppercase_first_letter=False)} asc"
+                    )
 
-            del params['sort']
+            del params["sort"]
 
-        query = ''
+        query = ""
         for k, v in params.items():
             field = inflection.camelize(k, uppercase_first_letter=False)
             if not v:
-                continue            
+                continue
             elif type(v) in (list, tuple):
-                body = f' {default_connector} '.join(v)
+                body = f" OR ".join(v)
             else:
                 body = v
-            query += f'{field}:({body}) '
-            
-            #import pdb; pdb.set_trace()
-        mm = '100%' if 'appEarlyPubNumber' not in query else '90%'
+            query += f"{field}:({body}) "
+
+        mm = "100%" if "appEarlyPubNumber" not in query else "90%"
 
         return {
             "qf": QUERY_FIELDS,
-            "fl": '*',
+            "fl": "*",
             "searchText": query.strip(),
             "sort": sort_query.strip(),
             "facet": "false",
             "mm": mm,
         }
-        
 
     def request(self, params=dict()):
         query_params = self._generate_query(params)
-        fname = hash_dict(query_params) + '.json'
+        fname = hash_dict(query_params) + ".json"
         fname = os.path.join(CACHE_DIR, fname)
         if not os.path.exists(fname):
             response = session.post(QUERY_URL, json=query_params)
@@ -143,21 +134,21 @@ class USApplicationManager(Manager):
         else:
             data = json.load(open(fname))
         results = data["queryResults"]["searchResponse"]["response"]
-        num_found = results['numFound']
+        num_found = results["numFound"]
         self._len = num_found
         if num_found <= 20:
-            with open(fname, 'w') as f:
+            with open(fname, "w") as f:
                 json.dump(data, f, indent=2)
-            self.objs = USApplicationJsonSet(results['docs'], num_found)
+            self.objs = USApplicationJsonSet(results["docs"], num_found)
         else:
-            return self._package_xml(query_params,data)
-    
+            return self._package_xml(query_params, data)
+
     def _package_xml(self, query_params, data):
         fname = hash_dict(query_params) + ".zip"
         fname = os.path.join(CACHE_DIR, fname)
         query_id = data["queryId"]
         results = data["queryResults"]["searchResponse"]["response"]
-        num_found = results['numFound']
+        num_found = results["numFound"]
         if not os.path.exists(fname):
             time.sleep(0.5)
             response = session.put(
@@ -247,7 +238,7 @@ inv_data = dict(
 
 ph_data = dict(date="./uspat:RecordedDate", action="./uspat:CaseActionDescriptionText")
 
-WHITESPACE_RE = re.compile("\s+")
+WHITESPACE_RE = re.compile(r"\s+")
 
 
 class DateEncoder(json.JSONEncoder):
@@ -257,11 +248,10 @@ class DateEncoder(json.JSONEncoder):
 
         return json.JSONEncoder.default(self, o)
 
-class USApplicationXmlParser():
 
+class USApplicationXmlParser:
     def element_to_text(self, element):
         return WHITESPACE_RE.sub(" ", " ".join(element.itertext())).strip()
-
 
     def parse_element(self, element, data_dict):
         data = {
@@ -275,7 +265,6 @@ class USApplicationXmlParser():
             elif data.get(key, False) == "-":
                 data[key] = None
         return data
-
 
     def parse_bib_data(self, element):
         data = self.parse_element(element, bib_data)
@@ -292,7 +281,8 @@ class USApplicationXmlParser():
                 pub_no = pub_no[:4] + pub_no[4:].rjust(7, "0")
 
             kind_code = element.find(
-                ".//uspat:PatentPublicationIdentification/com:PatentDocumentKindCode", ns
+                ".//uspat:PatentPublicationIdentification/com:PatentDocumentKindCode",
+                ns,
             )
             if kind_code is None:
                 kind_code = ""
@@ -300,7 +290,6 @@ class USApplicationXmlParser():
                 kind_code = kind_code.text
             data["app_early_pub_number"] = pub_no + kind_code
         return data
-
 
     def parse_transaction_history(self, element):
         output = list()
@@ -311,7 +300,6 @@ class USApplicationXmlParser():
             event["action"], event["code"] = event["action"].rsplit(" , ", 1)
             output.append(event)
         return output
-
 
     def parse_inventors(self, element):
         output = list()
@@ -329,7 +317,6 @@ class USApplicationXmlParser():
             output.append(data)
         return output
 
-
     def parse_applicants(self, element):
         output = list()
         for app_el in element.findall(
@@ -346,7 +333,6 @@ class USApplicationXmlParser():
             output.append(data)
         return output
 
-
     def case(self, element):
         return {
             **self.parse_bib_data(element),
@@ -357,7 +343,6 @@ class USApplicationXmlParser():
             ),
         }
 
-
     def xml_file(self, file_obj):
         try:
             for _, element in ET.iterparse(file_obj):
@@ -365,7 +350,6 @@ class USApplicationXmlParser():
                     yield element
         except ET.ParseError as e:
             print(e)
-
 
     def save_state(state):
         with open("pdb_state.json", "w") as f:
@@ -376,16 +360,16 @@ class USApplicationJsonSet(Manager):
     def __init__(self, data, length):
         self.data = data
         self._len = length
-    
+
     def __len__(self):
         return self._len
-    
+
     def __getitem__(self, key):
         for k, v in self.data[key].items():
-            if 'date' in k and type(v) == str:
+            if "date" in k and type(v) == str:
                 self.data[key][k] = parse_dt(v).date()
         return USApplication(self.data[key])
-        
+
 
 class USApplicationXmlSet(Manager):
     parser = USApplicationXmlParser()
@@ -396,7 +380,7 @@ class USApplicationXmlSet(Manager):
         self.cache = dict()
         self.zipfile = ZipFile(self.filename)
         self.files = self.zipfile.namelist()
-        self.open_file = iter(list()) 
+        self.open_file = iter(list())
         self.counter = 0
 
     def __len__(self):
@@ -421,20 +405,22 @@ class USApplicationXmlSet(Manager):
                 self.cache[self.counter] = self.parser.case(tree)
                 self.counter += 1
             except StopIteration:
-                self.open_file = self.parser.xml_file(self.zipfile.open(self.files.pop(0)))
+                self.open_file = self.parser.xml_file(
+                    self.zipfile.open(self.files.pop(0))
+                )
+
 
 class USApplication(Model):
     objects = USApplicationManager()
-    trials = one_to_many('patent_client.PtabTrial', patent_number='patent_number')
-    inpadoc = one_to_many('patent_client.Inpadoc', number='appl_id')
+    trials = one_to_many("patent_client.PtabTrial", patent_number="patent_number")
+    inpadoc = one_to_many("patent_client.Inpadoc", number="appl_id")
 
     @property
     def publication(self):
         if self.patent_number:
-            return 'US' + self.patent_number
+            return "US" + self.patent_number
         else:
             return self.app_early_pub_number
-    
-            
+
     def __repr__(self):
-        return f'<USApplication(appl_id={self.appl_id})>'
+        return f"<USApplication(appl_id={self.appl_id})>"

@@ -1,8 +1,8 @@
-import pytest
-import os
 import json
+import os
 
-from patent_client.epo_ops import Epo, Inpadoc
+import pytest
+from patent_client import Inpadoc, Epo
 
 FIXTURES = os.path.join(os.path.dirname(__file__), "fixtures")
 
@@ -10,8 +10,11 @@ FIXTURES = os.path.join(os.path.dirname(__file__), "fixtures")
 class TestInpadoc:
     def test_can_get_epo_pub(self):
         pub = Inpadoc.objects.get("CA2944968")
-        assert pub.title == "WIRELINE POWER SUPPLY DURING ELECTRIC POWERED FRACTURING OPERATIONS"
-        assert pub.publication == 'CA2944968A1'
+        assert (
+            pub.title
+            == "WIRELINE POWER SUPPLY DURING ELECTRIC POWERED FRACTURING OPERATIONS"
+        )
+        assert pub.publication == "CA2944968A1"
         assert pub.applicants == ["US WELL SERVICES LLC"]
         assert pub.inventors == ["OEHRING, JARED, ", "HINDERLITER, BRANDON"]
         assert len(pub.full_text.description) == 35306
@@ -22,9 +25,17 @@ class TestInpadoc:
             "4. The system of claim 1, further comprising trailers that contain at least one power distribution panel that supplies power to the hydraulic fracturing equipment.",
             "5. The system of claim 4, where the trailers further contain receptacles for attaching cable to the hydraulic fracturing equipment and cables that can sustain the power draw of the turbines with three separate plugs for the three phase power.",
         ]
-        assert pub.images.url == "http://ops.epo.org/rest-services/published-data/images/CA/2944968/A1/fullimage.pdf"
+        assert (
+            pub.images.url
+            == "http://ops.epo.org/rest-services/published-data/images/CA/2944968/A1/fullimage.pdf"
+        )
         assert pub.images.num_pages == 29
-        assert pub.images.sections == {"ABSTRACT": 1, "CLAIMS": 22, "DESCRIPTION": 2, "DRAWINGS": 25}
+        assert pub.images.sections == {
+            "ABSTRACT": 1,
+            "CLAIMS": 22,
+            "DESCRIPTION": 2,
+            "DRAWINGS": 25,
+        }
 
     def test_can_download_full_images(self, tmpdir):
         pub = Inpadoc.objects.get("CA2944968")
@@ -34,33 +45,25 @@ class TestInpadoc:
     def test_can_handle_russian_cases(self):
         pub = Inpadoc.objects.get("RU2015124071")
         assert pub.title == "БУРОВОЕ ДОЛОТО ДЛЯ БУРИЛЬНОГО УСТРОЙСТВА"
-        assert pub.cpc_class ==  [
-                "E21B 7/064",
-                "E21B 17/04",
-                "E21B 47/01",
-                "E21B 47/12",
-                "E21B 7/067",
-                "E21B 10/08",
-                "E21B 10/567",
-            ]
+        assert pub.cpc_class == [
+            "E21B 7/064",
+            "E21B 17/04",
+            "E21B 47/01",
+            "E21B 47/12",
+            "E21B 7/067",
+            "E21B 10/08",
+            "E21B 10/567",
+        ]
         assert pub.priority_claims == ["13/683,540", "US 2013/066560"]
 
     def test_can_get_ep_application(self):
         pubs = Inpadoc.objects.filter(application="EP13844704")
-        assert len(pubs) == 1
-        assert pubs[0].title == 'ATTITUDE REFERENCE FOR TIEBACK/OVERLAP PROCESSING'
+        assert len(pubs) == 2
+        assert pubs[0].title == "ATTITUDE REFERENCE FOR TIEBACK/OVERLAP PROCESSING"
 
     def test_pct(self):
         doc = Inpadoc.objects.get("PCT/US16/15853")
-        assert doc.title == 'DUAL MODE TELEMETRY'
-
-
-    @pytest.mark.skip('Special case needed special handling')
-
-    def test_can_get_us_application(self):
-        pub = Inpadoc.objects.get(application="US15915966")
-        assert pub.title  == "DEVICE AND METHOD FOR SURVEYING BOREHOLES OR ORIENTING DOWNHOLE ASSEMBLIES"
-
+        assert doc.title == "DUAL MODE TELEMETRY"
 
     def test_can_get_inpadoc_family(self):
         family = Inpadoc.objects.filter(application="EP13844704")[0].family
@@ -94,38 +97,54 @@ class TestInpadoc:
     def test_can_search_inpadoc(self):
         results = Inpadoc.objects.filter(applicant="Scientific Drilling")
         assert len(results) == 206
-        assert results.values('title')[:10] == [{'title': 'SUB-SURFACE ELECTROMAGNETIC TELEMETRY SYSTEMS AND METHODS'},
- {'title': 'DEVICE AND METHOD FOR SURVEYING BOREHOLES OR ORIENTING DOWNHOLE '
-           'ASSEMBLIES'},
- {'title': 'DEVICE AND METHOD FOR SURVEYING BOREHOLES OR ORIENTING DOWNHOLE '
-           'ASSEMBLIES'},
- {'title': 'METHOD FOR IMPROVING SURVEY MEASUREMENT DENSITY ALONG A BOREHOLE'},
- {'title': 'LOGGING-WHILE-DRILLING SPECTRAL AND AZIMUTHAL GAMMA RAY APPARATUS '
-           'AND METHODS'},
- {'title': 'DOWNHOLE MWD SIGNAL ENHANCEMENT, TRACKING, AND DECODING'},
- {'title': 'LOGGING-WHILE-DRILLING SPECTRAL AND AZIMUTHAL GAMMA RAY APPARATUS '
-           'AND METHODS'},
- {'title': 'TUMBLE GYRO SURVEYOR'},
- {'title': 'SURFACE COIL FOR WELLBORE POSITIONING'},
- {'title': 'COHERENT MEASUREMENT METHOD FOR DOWNHOLE APPLICATIONS'}]
-        #us_cases = results.filter(publication__country='US')[:5]
-        #from pprint import pprint
-        #pprint(us_cases)
-        #assert False
+        assert results.values("title")[:10] == [
+            {"title": "SUB-SURFACE ELECTROMAGNETIC TELEMETRY SYSTEMS AND METHODS"},
+            {
+                "title": "DEVICE AND METHOD FOR SURVEYING BOREHOLES OR ORIENTING DOWNHOLE "
+                "ASSEMBLIES"
+            },
+            {
+                "title": "DEVICE AND METHOD FOR SURVEYING BOREHOLES OR ORIENTING DOWNHOLE "
+                "ASSEMBLIES"
+            },
+            {
+                "title": "METHOD FOR IMPROVING SURVEY MEASUREMENT DENSITY ALONG A BOREHOLE"
+            },
+            {
+                "title": "LOGGING-WHILE-DRILLING SPECTRAL AND AZIMUTHAL GAMMA RAY APPARATUS "
+                "AND METHODS"
+            },
+            {"title": "DOWNHOLE MWD SIGNAL ENHANCEMENT, TRACKING, AND DECODING"},
+            {
+                "title": "LOGGING-WHILE-DRILLING SPECTRAL AND AZIMUTHAL GAMMA RAY APPARATUS "
+                "AND METHODS"
+            },
+            {"title": "TUMBLE GYRO SURVEYOR"},
+            {"title": "SURFACE COIL FOR WELLBORE POSITIONING"},
+            {"title": "COHERENT MEASUREMENT METHOD FOR DOWNHOLE APPLICATIONS"},
+        ]
+        # us_cases = results.filter(publication__country='US')[:5]
+        # from pprint import pprint
+        # pprint(us_cases)
+        # assert False
+
+    def test_can_take_raw_cql_query(self):
+        results = Inpadoc.objects.filter(cql_query='pa="Scientific Drilling"')
+        assert len(results) == 206
 
 
 class TestEpoRegister:
     def test_can_get_epo_data(self):
         pub = Epo.objects.get("EP3221665A1")
         assert pub.status[0] == {
-                "description": "Request for examination was made",
-                "code": "15",
-                "date": "20170825",
-            }
+            "description": "Request for examination was made",
+            "code": "15",
+            "date": "20170825",
+        }
         assert pub.title == "INERTIAL CAROUSEL POSITIONING"
-        assert pub.procedural_steps[0] == {'code': 'RFEE',
-            'date': '20171113',
-            'description': 'Renewal fee payment - 03',
-            'phase': 'undefined'}
-
-
+        assert pub.procedural_steps[0] == {
+            "code": "RFEE",
+            "date": "20171113",
+            "description": "Renewal fee payment - 03",
+            "phase": "undefined",
+        }

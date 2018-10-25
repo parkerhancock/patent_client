@@ -47,8 +47,11 @@ portfolio analysis. For example:
         <USApplication(appl_id=06212294)>
     ]
 
-Supported Fields - US Application
----------------------------------
+US Application
+==============
+
+Supported Fields
+----------------
 
 =========================   ===========================================       ===============     ================
 Field Name                  Examples                                          Filterable          Sortable
@@ -81,5 +84,17 @@ primary_inventor            Yechezkal Evan Spero                              Ye
 wipo_early_pub_date         YYYY-mm-dd                                        Yes                 Yes
 wipo_early_pub_number       WO20121231234                                     Yes                 Yes
 =========================   ===========================================       ===============     ================
+
+Relationships
+-------------
+
+============    =================   ============    ===========================================
+Attribute       Relationship Type   Object          Join Condition
+============    =================   ============    ===========================================
+trials          one-to-many         PtabTrial       patent_number=patent_number
+assignments     one-to-many         Assignment      appl_id=app_num
+inpadoc_pub     one-to-one          Inpadoc         app_early_pub_number=publication_number        
+inpadoc_pat     one-to-one          Inpadoc         patent_number=publication_number
+============    =================   ============    ===========================================
 
 Original API URL: https://ped.uspto.gov/peds/

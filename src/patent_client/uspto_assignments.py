@@ -1,38 +1,34 @@
 import math
-import os
-import time
 import re
-import warnings
 import xml.etree.ElementTree as ET
-from datetime import date as date_obj
-from itertools import chain
+
+import requests
+import urllib3
 from dateutil.parser import parse as parse_date
 from inflection import underscore
-import requests
-
-
 from patent_client import CACHE_BASE
-from patent_client.util import Manager, Model
+from patent_client.util import Manager
+from patent_client.util import Model
 
 # USPTO has a malconfigured SSL connection. Suppress warnings about it.
-import urllib3
-
-
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 LOOKUP_URL = "https://assignment-api.uspto.gov/patent/lookup"
 
-NUMBER_CLEAN_RE = re.compile("[^\d]")
+NUMBER_CLEAN_RE = re.compile(r"[^\d]")
 CACHE_DIR = CACHE_BASE / "uspto_assignment"
 CACHE_DIR.mkdir(exist_ok=True)
 
 session = requests.Session()
 session.headers = {"Accept": "application/xml"}
 
-class AssignmentParser():
+
+class AssignmentParser:
     def doc(self, element):
         data = self.xml_to_dict(element)
-        data['image_url'] = f'http://legacy-assignments.uspto.gov/assignments/assignment-pat-{data["display_id"]}.pdf'
+        data[
+            "image_url"
+        ] = f'http://legacy-assignments.uspto.gov/assignments/assignment-pat-{data["display_id"]}.pdf'
         return data
 
     def xml_to_list(self, element):
@@ -42,7 +38,6 @@ class AssignmentParser():
         if len(output) == 1:
             output = output[0]
         return output
-
 
     def xml_to_pytype(self, element):
         if element.text == "NULL":
@@ -57,7 +52,6 @@ class AssignmentParser():
             return date.isoformat()
         elif element.tag == "int" or element.tag == "long":
             return int(element.text)
-
 
     def xml_to_dict(self, element):
         output = dict()
@@ -75,14 +69,14 @@ class AssignmentParser():
 class AssignmentManager(Manager):
     parser = AssignmentParser()
     rows = 50
-    obj_class = 'patent_client.uspto_assignments.Assignment'
+    obj_class = "patent_client.uspto_assignments.Assignment"
 
     def __init__(self, *args, **kwargs):
         super(AssignmentManager, self).__init__(*args, **kwargs)
         self.pages = dict()
 
     def __repr__(self):
-        return f'<AssignmentManager>'
+        return f"<AssignmentManager>"
 
     def get_item(self, key):
         if key < 0:
@@ -91,7 +85,7 @@ class AssignmentManager(Manager):
         offset = key - page_no * self.rows
         return Assignment(self._get_page(page_no)[offset])
 
-    def filter(self, **kwargs):
+    def get_query(self, page_no):
         """Get assignments. 
         Args:
             patent: pat no to search
@@ -106,16 +100,28 @@ class AssignmentManager(Manager):
             "assignor": "PriorOwnerName",
             "pct_application": "PCTNumber",
             "correspondent": "CorrespondentName",
-            "reel_frame": "ReelFrame"
+            "reel_frame": "ReelFrame",
         }
-        for key, value in kwargs.items():
+        for key, value in self.filter_params.items():
             field = fields[key]
             query = value
         if field in ["PatentNumber", "ApplicationNumber"]:
             query = NUMBER_CLEAN_RE.sub("", str(query))
 
-        return self.__class__(*self.args, **{**self.kwargs, 
-        **dict(filter__query=query, filter__field=field)})
+        sort = list()
+        for p in self.sort_params:
+            if sort[0] == "-":
+                sort.append(p[1:] + "+desc")
+            else:
+                sort.append(p + "+asc")
+
+        return {
+            "filter": field,
+            "query": query,
+            "rows": self.rows,
+            "offset": page_no * self.rows,
+            "sort": " ".join(sort),
+        }
 
     def __len__(self):
         if not hasattr(self, "_len"):
@@ -124,16 +130,17 @@ class AssignmentManager(Manager):
 
     def _get_page(self, page_no):
         if page_no not in self.pages:
-            field = self.kwargs['filter__field']
-            query = self.kwargs['filter__query']
-            params = {
-                "filter": field,
-                "query": query,
-                "rows": self.rows,
-                "offset": page_no * self.rows,
-            }
+            params = self.get_query(page_no)
+
             filename = "-".join(
-                [field, query, str(self.rows), str(page_no * self.rows), ".xml"]
+                [
+                    params["filter"],
+                    params["query"],
+                    params["sort"],
+                    str(self.rows),
+                    str(page_no * self.rows),
+                    ".xml",
+                ]
             ).replace("/", "_")
             filename = CACHE_DIR / filename
             if filename.exists():
@@ -146,15 +153,16 @@ class AssignmentManager(Manager):
 
             self.pages[page_no] = self._parse_page(text)
         return self.pages[page_no]
-    
+
     def _parse_page(self, text):
-        tree = ET.fromstring(text.encode('utf-8'))
-        result = tree.find('./result')
-        self._len = int(result.attrib['numFound'])
+        tree = ET.fromstring(text.encode("utf-8"))
+        result = tree.find("./result")
+        self._len = int(result.attrib["numFound"])
         return [self.parser.doc(doc) for doc in result]
+
 
 class Assignment(Model):
     objects = AssignmentManager()
 
     def __repr__(self):
-        return f'<Assignment(id={self.id})>'
+        return f"<Assignment(id={self.id})>"

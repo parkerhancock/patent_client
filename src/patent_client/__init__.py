@@ -1,10 +1,11 @@
-__version__ = "0.1.3"
+__version__ = "0.1.5"
 
 import json
-import shutil
 import os
+import shutil
 import time
 from pathlib import Path
+
 
 CACHE_BASE = Path("~/.patent_client").expanduser()
 CACHE_BASE.mkdir(exist_ok=True)
@@ -24,7 +25,9 @@ if not SETTINGS_FILE.exists():
 
 SETTINGS = json.load(open(SETTINGS_FILE))
 
-from patent_client.epo_ops import Inpadoc, Epo
-from patent_client.uspto_assignments import Assignment
-from patent_client.uspto_exam_data import USApplication
-from patent_client.uspto_ptab import PtabDocument, PtabTrial
+from patent_client.epo_ops.models import Inpadoc, Epo  # isort:skip
+from patent_client.uspto_assignments import Assignment  # isort:skip
+from patent_client.uspto_exam_data import USApplication  # isort:skip
+from patent_client.uspto_ptab import PtabDocument  # isort:skip
+from patent_client.uspto_ptab import PtabTrial  # isort:skip
+

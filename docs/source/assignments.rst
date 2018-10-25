@@ -1,5 +1,9 @@
 US Assignments
 ^^^^^^^^^^^^^^^^^
+.. warning::
+    The SSL configuration on the Assignments API is broken. SSL verification has therefore been turned off
+    for the Assignment object. This means that the client is potentially vulnerable to man-in-the-middle 
+    attacks. When the SSL configuration is fixed, an update will be pushed, and this warning removed
 
 .. warning::
     Some publicly available assignments are not available through this interface. Due to a PTO technical issue,
@@ -30,9 +34,11 @@ Patent Client provides an interface to the USPTO's patent assignment database. Y
     >>> len(assignments)
     23932
 
+USPTO Assignments
+=================
 
-Supported Fields - USPTO Assignments
-------------------------------------
+Supported Fields
+----------------
 
 =========================   ===========================================       ===============     ================
 Field Name                  Examples                                          Filterable          Sortable
@@ -47,6 +53,13 @@ correspondent               MORGAN, LEWIS & BOCKIUS                           YE
 reel_frame                  047086-0788                                       YES                 YES
 =========================   ===========================================       ===============     ================
 
+Relationships
+-------------
 
+=============== =================   ==============  =================
+Attribute       Relationship Type   Object          Join Condition
+=============== =================   ==============  =================
+us_applications one-to-many         USApplication   app_num=appl_id
+=============== =================   ==============  =================
 
 Original API URL: https://assignment-api.uspto.gov/documentation-patent/

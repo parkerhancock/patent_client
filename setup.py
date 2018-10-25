@@ -24,7 +24,7 @@ def read(*names, **kwargs):
 
 setup(
     name="patent_client",
-    version="0.1.4.post2",
+    version="0.1.5",
     license="Apache Software License 2.0",
     description="A set of ORM-style clients for publicly available intellectual property data",
     long_description="%s\n%s"
@@ -49,12 +49,12 @@ setup(
         "License :: OSI Approved :: Apache Software License",
         "Operating System :: Unix",
         "Operating System :: POSIX",
-        #"Operating System :: Microsoft :: Windows",
+        # "Operating System :: Microsoft :: Windows",
         "Programming Language :: Python",
         #'Programming Language :: Python :: 2.7',
         #'Programming Language :: Python :: 3',
         #'Programming Language :: Python :: 3.4',
-        #"Programming Language :: Python :: 3.5",
+        # "Programming Language :: Python :: 3.5",
         "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
         #'Programming Language :: Python :: Implementation :: CPython',
@@ -66,9 +66,21 @@ setup(
         "Topic :: Utilities",
     ],
     keywords=[
-        'patents', 'uspto', 'epo', 'united states patent office', 'trademark', 'intellectual property', 'inpadoc', 'open patent services'
+        "patents",
+        "uspto",
+        "epo",
+        "united states patent office",
+        "trademark",
+        "intellectual property",
+        "inpadoc",
+        "open patent services",
     ],
-    install_requires=["PyPDF2~=1.26", "requests~=2.19", "lxml~=4.2", "python-dateutil~=2.7", "inflection~=0.3"],
-    extras_require={
-    },
+    install_requires=[
+        "PyPDF2~=1.26",
+        "requests~=2.19",
+        "lxml~=4.2",
+        "python-dateutil~=2.7",
+        "inflection~=0.3",
+    ],
+    extras_require={},
 )
