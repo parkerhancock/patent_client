@@ -51,7 +51,7 @@ class InpadocManager(Manager):
             return Inpadoc(docs[key])
         else:
             # Search Iterator
-            doc_db = self.connector.get_search_item(self.filter_params, key)
+            doc_db = self.connector.get_search_item(key, self.filter_params)
             return Inpadoc(self.connector.bib_data(doc_db)[0])
 
 
@@ -144,13 +144,16 @@ class EpoManager(Manager):
         bib_data = epo_connector.bib_data(epodoc)
         return Epo(bib_data)
 
+
 class Epo(Model):
     objects = EpoManager()
 
     def __repr__(self):
-        return f'<Epo(number={self.number}, kind={self.kind}, doc_type={self.doc_type})>'
+        return (
+            f"<Epo(number={self.number}, kind={self.kind}, doc_type={self.doc_type})>"
+        )
 
     @property
     def procedural_steps(self):
-        return epo_connector.procedural_steps(self.epodoc) 
-    
+        return epo_connector.procedural_steps(self.epodoc)
+

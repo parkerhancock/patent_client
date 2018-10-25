@@ -128,6 +128,10 @@ class TestInpadoc:
         # pprint(us_cases)
         # assert False
 
+    def test_can_take_raw_cql_query(self):
+        results = Inpadoc.objects.filter(cql_query='pa="Scientific Drilling"')
+        assert len(results) == 206
+
 
 class TestEpoRegister:
     def test_can_get_epo_data(self):

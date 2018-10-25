@@ -259,11 +259,11 @@ class InpadocConnector(OpenPatentServicesConnector):
         tree = ET.fromstring(text.encode("utf-8"))
         return tree
 
-    def get_search_page(self, query_dict, page_number):
+    def get_search_page(self, page_number, query):
         start = (page_number - 1) * self.page_size + 1
         end = start + self.page_size - 1
-        query = {**self.create_query(query_dict), **{"Range": f"{start}-{end}"}}
-        text = self.xml_request(self.search_url, query)
+        params = {**query, **{"Range": f"{start}-{end}"}}
+        text = self.xml_request(self.search_url, params)
         tree = ET.fromstring(text.encode("utf-8"))
         results = tree.find(".//ops:search-result", NS)
         return [
@@ -271,21 +271,25 @@ class InpadocConnector(OpenPatentServicesConnector):
             for el in results
         ]
     
-    def get_search_item(self, query_dict, key):
+    def get_search_item(self, key, query_dict=None):
+        query = self.create_query(query_dict)
         page_num = math.floor(key / self.page_size) + 1
         line_num = key % self.page_size
-        page = self.get_search_page(query_dict, page_num)
+        page = self.get_search_page(page_num, query)
         return page[line_num]
 
     
-    def get_search_length(self, query_dict):
-        query = {**self.create_query(query_dict), **{"Range": f"1-{self.page_size}"}}
-        text = self.xml_request(self.search_url, query)
+    def get_search_length(self, query_dict=None):
+        query = self.create_query(query_dict)
+        params = {**query, **{"Range": f"1-{self.page_size}"}}
+        text = self.xml_request(self.search_url, params)
         tree = ET.fromstring(text.encode("utf-8"))
         return int(tree.find(".//ops:biblio-search", NS).attrib["total-result-count"])
 
 
     def create_query(self, query_dict):
+        if 'cql_query' in query_dict:
+            return dict(q=query_dict['cql_query'])
         query = ""
         for keyword, value in query_dict.items():
             if len(value.split()) > 1:

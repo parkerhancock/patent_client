@@ -100,21 +100,11 @@ Development
 
 To run the all tests run::
 
-    tox
+    pytest
 
-Note, to combine the coverage data from all the tox environments run:
+A developer guide is provided in the `Documentation <http://patent-client.readthedocs.io>`_. 
+This project is narrowly scoped to only public documented API's available without charge
+(at least for moderate usage). Scrapers of HTML websites are not permitted. But PR's to
+add support for new API's are more than welcome. 
 
-.. list-table::
-    :widths: 10 90
-    :stub-columns: 1
-
-    - - Windows
-      - ::
-
-            set PYTEST_ADDOPTS=--cov-append
-            tox
-
-    - - Other
-      - ::
-
-            PYTEST_ADDOPTS=--cov-append tox
+Pull requests welcome!
