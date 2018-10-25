@@ -84,7 +84,7 @@ class TestPatentExaminationData:
 
     def test_values_many_by_application(self):
         app_nos = ["14971450", "15332765", "13441334", "15332709", "14542000"]
-        data = USApplication.objects.get_many(*app_nos)
+        data = USApplication.objects.filter(*app_nos)
         print(list(data.values("inventors__0__nameLineOne")))
         assert list(data.values("inventors__0__nameLineOne")) == [
             OrderedDict([("inventors_0_nameLineOne", "Todd  Coli")]),
@@ -115,7 +115,7 @@ class TestPatentExaminationData:
             "US20050120054A1",
             "US20050188423A1",
         ]
-        data = USApplication.objects.get_many(app_early_pub_number=nos)
+        data = USApplication.objects.filter(app_early_pub_number=nos)
         assert len(list(data)) == 5
 
     # @pytest.mark.skip('This function doesn\'nt work with the ORM Style. Consider dropping it')

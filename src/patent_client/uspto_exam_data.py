@@ -101,12 +101,11 @@ class USApplicationManager(Manager):
             if not v:
                 continue
             elif type(v) in (list, tuple):
-                body = f" {default_connector} ".join(v)
+                body = f" OR ".join(v)
             else:
                 body = v
             query += f"{field}:({body}) "
 
-            # import pdb; pdb.set_trace()
         mm = "100%" if "appEarlyPubNumber" not in query else "90%"
 
         return {
@@ -239,7 +238,7 @@ inv_data = dict(
 
 ph_data = dict(date="./uspat:RecordedDate", action="./uspat:CaseActionDescriptionText")
 
-WHITESPACE_RE = re.compile("\s+")
+WHITESPACE_RE = re.compile(r"\s+")
 
 
 class DateEncoder(json.JSONEncoder):

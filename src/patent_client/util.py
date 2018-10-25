@@ -113,7 +113,7 @@ class Manager:
     def __init__(self, *args, **kwargs):
         """Simply store the keyword arguments"""
         if args:
-            kwargs[self.primary_key] = args[0]
+            kwargs[self.primary_key] = args
         self.values_params = dict()
         self.filter_params = dict()
         self.sort_params = list()

@@ -32,13 +32,15 @@ class InpadocManager(Manager):
 
     def get_by_number(self):
         if "publication" in self.kwargs:
-            doc_db = self.connector.original_to_docdb(
-                self.kwargs["publication"], "publication"
-            )
+            number = self.kwargs["publication"]
+            if not isinstance(number, list):
+                number = number[0]
+            doc_db = self.connector.original_to_docdb(number, "publication")
         elif "application" in self.kwargs:
-            doc_db = self.connector.original_to_docdb(
-                self.kwargs["application"], "application"
-            )
+            number = self.kwargs["application"]
+            if isinstance(number, list):
+                number = number[0]
+            doc_db = self.connector.original_to_docdb(number, "application")
         docs = self.connector.bib_data(doc_db)
         return docs
 

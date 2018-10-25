@@ -142,7 +142,6 @@ class OpenPatentServicesConnector:
     def original_to_docdb(self, number, doc_type):
         if "PCT" in number:
             return self.pct_to_docdb(number)
-
         country = country_re.search(number)
         if country:
             country = country.group(0)
