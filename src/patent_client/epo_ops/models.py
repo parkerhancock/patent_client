@@ -1,16 +1,21 @@
-import re
-import os
+import json
 import math
+import os
+import re
+from collections import namedtuple
+from hashlib import md5
+from tempfile import TemporaryDirectory
+
 import requests
 from lxml import etree as ET
-from tempfile import TemporaryDirectory
+from patent_client import CACHE_BASE
+from patent_client import SETTINGS
+from patent_client.util import Manager
+from patent_client.util import Model
+from patent_client.util import one_to_many
+from patent_client.util import one_to_one
 from PyPDF2 import PdfFileMerger
-import json
-from hashlib import md5
-from patent_client import SETTINGS, CACHE_BASE
-from collections import namedtuple
 
-from patent_client.util import Manager, one_to_many, one_to_one, Model
 from .ops import InpadocConnector
 
 whitespace_re = re.compile(" +")

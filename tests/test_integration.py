@@ -1,7 +1,9 @@
-import pytest
-
-from patent_client import USApplication, PtabTrial, Inpadoc, Epo
 from collections import OrderedDict
+
+import pytest
+from patent_client import Inpadoc
+from patent_client import PtabTrial
+from patent_client import USApplication
 
 
 class TestIntegration:

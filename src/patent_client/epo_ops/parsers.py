@@ -1,6 +1,7 @@
-from lxml import etree as ET
 import re
 from collections import namedtuple
+
+from lxml import etree as ET
 
 # XML Namespaces for ElementTree
 NS = {

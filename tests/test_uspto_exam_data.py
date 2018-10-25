@@ -1,9 +1,8 @@
-import json
-
-import pytest
 import datetime
+import json
 from collections import OrderedDict
 
+import pytest
 from patent_client.uspto_exam_data import USApplication
 
 

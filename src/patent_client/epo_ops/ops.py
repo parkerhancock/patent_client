@@ -1,12 +1,14 @@
-import requests
-import re
-import os
-import math
-from patent_client import SETTINGS, CACHE_BASE
-from lxml import etree as ET
 import json
-from hashlib import md5
+import math
+import os
+import re
 from collections import namedtuple
+from hashlib import md5
+
+import requests
+from lxml import etree as ET
+from patent_client import CACHE_BASE
+from patent_client import SETTINGS
 
 session = requests.Session()
 

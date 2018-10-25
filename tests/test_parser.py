@@ -1,5 +1,4 @@
 import pytest
-
 from patent_client.parser import parse
 
 

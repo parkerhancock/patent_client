@@ -1,22 +1,20 @@
 import math
 import os
-import time
 import re
+import time
 import warnings
 import xml.etree.ElementTree as ET
 from datetime import date as date_obj
 from itertools import chain
-from dateutil.parser import parse as parse_date
-from inflection import underscore
+
 import requests
-
-
-from patent_client import CACHE_BASE
-from patent_client.util import Manager, Model
-
 # USPTO has a malconfigured SSL connection. Suppress warnings about it.
 import urllib3
-
+from dateutil.parser import parse as parse_date
+from inflection import underscore
+from patent_client import CACHE_BASE
+from patent_client.util import Manager
+from patent_client.util import Model
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 

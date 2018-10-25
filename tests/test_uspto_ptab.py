@@ -1,6 +1,6 @@
 import pytest
-
-from patent_client.uspto_ptab import PtabTrial, PtabDocument
+from patent_client.uspto_ptab import PtabDocument
+from patent_client.uspto_ptab import PtabTrial
 
 
 class TestPtab:

@@ -1,13 +1,18 @@
-import requests
 import json
-from copy import deepcopy
-from patent_client import CACHE_BASE
-from patent_client.util import Manager, hash_dict, one_to_one, one_to_many, Model
-import inflection
 import mimetypes
 import os
 import shutil
+from copy import deepcopy
+
+import inflection
+import requests
 from dateutil.parser import parse as parse_dt
+from patent_client import CACHE_BASE
+from patent_client.util import Manager
+from patent_client.util import Model
+from patent_client.util import hash_dict
+from patent_client.util import one_to_many
+from patent_client.util import one_to_one
 
 CACHE_DIR = CACHE_BASE / "ptab"
 CACHE_DIR.mkdir(exist_ok=True)

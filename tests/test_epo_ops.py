@@ -1,8 +1,8 @@
-import pytest
-import os
 import json
+import os
 
-from patent_client.epo_ops import Epo, Inpadoc
+import pytest
+from patent_client.epo_ops import Inpadoc
 
 FIXTURES = os.path.join(os.path.dirname(__file__), "fixtures")
 

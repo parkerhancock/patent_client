@@ -1,24 +1,24 @@
 import json
 import os
-import time
-from hashlib import sha1
-
-from zipfile import ZipFile
-from tempfile import TemporaryDirectory
-import xml.etree.ElementTree as ET
-from datetime import date
-from dateutil.parser import parse as parse_dt
-import json
 import re
-from copy import deepcopy
-import os
+import time
 import warnings
+import xml.etree.ElementTree as ET
+from copy import deepcopy
+from datetime import date
+from hashlib import sha1
+from tempfile import TemporaryDirectory
+from zipfile import ZipFile
 
 import inflection
 import requests
-
+from dateutil.parser import parse as parse_dt
 from patent_client import CACHE_BASE
-from patent_client.util import Manager, hash_dict, one_to_one, one_to_many, Model
+from patent_client.util import Manager
+from patent_client.util import Model
+from patent_client.util import hash_dict
+from patent_client.util import one_to_many
+from patent_client.util import one_to_one
 
 
 class HttpException(Exception):

@@ -2,7 +2,6 @@ import os
 from tempfile import TemporaryDirectory
 
 import pytest
-
 from patent_client.uspto_assignments import Assignment
 
 
