@@ -28,8 +28,11 @@ Patent Client also provides individual documents as related objects.
     >>> doc.download()
     # Downloads pdf entitled "303' Patent File History.pdf" to current directory
 
-Supported Fields - PtabTrial
-----------------------------
+PtabTrial
+============================
+
+Supported Fields
+-----------------
 
 =========================   ===========================================       ===============     ================
 Field Name                  Examples                                          Filterable          Sortable
@@ -46,8 +49,21 @@ institution_decision_date   YYYY-mm-dd                                        YE
 last_modified_datetime      YYYY-mm-dd                                        YES                 YES
 =========================   ===========================================       ===============     ================
 
-Supported Fields - PtabDocument
--------------------------------
+Related Objects
+----------------
+
+=============== =================   =============   ============================
+Attribute       Relationship Type   Object          Join Condition
+=============== =================   =============   ============================
+document        one-to-many         PtabDocument    trial_number=trial_number
+us_application  one-to-one          USApplication   application_number=appl_id
+=============== =================   =============   ============================
+
+PtabDocument
+===============================
+
+Supported Fields
+-----------------
 
 =========================   ===========================================       ===============     ================
 Field Name                  Examples                                          Filterable          Sortable
@@ -60,6 +76,15 @@ filing_party                petitioner, patent_owner, board                   YE
 filing_datetime             YYYY-mm-dd                                        YES                 YES
 last_modified_datetime      YYYY-mm-dd                                        YES                 YES
 =========================   ===========================================       ===============     ================
+
+Related Objects
+----------------
+
+============    =================   ============    ===========================
+Attribute       Relationship Type   Object          Join Condition
+============    =================   ============    ===========================
+trial           one-to-one          PtabTrial       trial_number=trial_number
+============    =================   ============    ===========================
 
 
 Original API URL: https://developer.uspto.gov/api-catalog/ptab-api
