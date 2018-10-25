@@ -35,10 +35,9 @@ class PtabManager(Manager):
         return count
 
     def request(self, params=dict()):
-        params = {**{self.primary_key: self.args}, **self.kwargs, **params}
         params = {
             inflection.camelize(k, uppercase_first_letter=False): v
-            for (k, v) in params.items()
+            for (k, v) in {**self.filter_params, **dict(sort=self.sort_params)}.items()
         }
         fname = CACHE_DIR / f"{self.__class__}-{hash_dict(params)}.json"
         if not fname.exists():

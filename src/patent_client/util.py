@@ -114,23 +114,23 @@ class Manager:
         """Simply store the keyword arguments"""
         if args:
             kwargs[self.primary_key] = args[0]
-        self.values = dict()
-        self.filter = dict()
-        self.sort = list()
+        self.values_params = dict()
+        self.filter_params = dict()
+        self.sort_params = list()
 
         for key, value in kwargs.items():
             if "values__" in key:
                 *_, new_key = key.split("__")
-                self.values[new_key] = value
+                self.values_params[new_key] = value
             elif key == "sort":
-                self.sort = value
+                self.sort_params = value
             else:
-                self.filter[key] = value
+                self.filter_params[key] = value
 
     @property
     def kwargs(self):
-        kwargs = {**self.filter, **dict(sort=self.sort)}
-        for key, value in self.values.items():
+        kwargs = {**self.filter_params, **dict(sort=self.sort_params)}
+        for key, value in self.values_params.items():
             kwargs["values__" + key] = value
         return kwargs
 
@@ -156,29 +156,26 @@ class Manager:
     def order_by(self, *args):
         """Take arguments, and store in a special keyword argument called 'sort' """
         kwargs = deepcopy(self.kwargs)
-        if "sort" not in kwargs:
-            kwargs["sort"] = list()
         kwargs["sort"] += args
         return self.__class__(**kwargs)
 
     def get(self, *args, **kwargs):
         """Implement a new manager with the requested keywords, and if the length is 1,
         return that record, else raise an exception"""
-        args = [a for a in args + self.args if a]
-        manager = self.__class__().filter(*args, **{**self.kwargs, **kwargs})
+        manager = self.__class__(*args, **{**self.kwargs, **kwargs})
         if len(manager) > 1:
             doc_nos = "\n".join([str(r) for r in manager])
             raise ValueError("More than one document found!\n" + doc_nos)
         return manager.first()
 
     def exclude(self, **kwargs):
-        raise NotImplemented(f"{self.__class__} has no exclude method")
+        raise NotImplementedError(f"{self.__class__} has no exclude method")
 
     def count(self):
         return len(self)
 
     def __len__(self):
-        raise NotImplemented(f"{self.__class__} has no length method")
+        raise NotImplementedError(f"{self.__class__} has no length method")
 
     def first(self):
         return self[0]
@@ -189,21 +186,20 @@ class Manager:
     def values(self, *fields):
         """Return new manager with special keywords 'values__fields' and 'values__list'"""
         return self.__class__(
-            *self.args,
-            **{**self.kwargs, **dict(values__fields=fields, values__list=False)},
+            **{**self.kwargs, **dict(values__fields=fields, values__list=False)}
         )
 
     def values_list(self, *fields, flat=False):
         """Same as values, but adds an additional parameter for "flat" lists """
         return self.__class__(
-            *self.args,
             **{
                 **self.kwargs,
                 **dict(values__fields=fields, values__list=True, values__flat=flat),
-            },
+            }
         )
-        self.kwargs["values__fields"] = fields
-        return ValuesSet(self, *fields, values_list=True, flat=flat)
+
+    def get_item(self, key):
+        raise NotImplementedError(f"{self.__class__} has no get_item method")
 
     def __getitem__(self, key):
         """resolves slices and keys into Model objects. Relies on .get_item(key) to obtain
@@ -214,17 +210,20 @@ class Manager:
             return [self.__getitem__(index) for index in indices]
         else:
             obj = self.get_item(key)
-            if "fields" in self.values:
+            if "fields" in self.values_params:
                 data = obj.data
                 fdata = OrderedDict()
-                for k in self.values["fields"]:
+                for k in self.values_params["fields"]:
                     key = k.replace("__", "_")
                     value = recur_accessor(obj, k)
                     fdata[key] = value
                 data = fdata
-                if self.values.get("list", False):
+                if self.values_params.get("list", False):
                     data = tuple(data[k] for k, v in data.items())
-                    if len(self.values["fields"]) == 1 and self.values["flat"]:
+                    if (
+                        len(self.values_params["fields"]) == 1
+                        and self.values_params["flat"]
+                    ):
                         data = data[0]
                 return data
             else:

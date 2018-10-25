@@ -61,7 +61,7 @@ class USApplicationManager(Manager):
             else:
                 kwargs["patent_number"] = kwargs["publication"][2:-2]
             del kwargs["publication"]
-        manager = self.__class__(*args, *self.args, **{**kwargs, **self.kwargs})
+        manager = self.__class__(*args, **{**kwargs, **self.kwargs})
         count = manager.count()
         if count > 1:
             raise ValueError("More than one result!")
@@ -73,14 +73,12 @@ class USApplicationManager(Manager):
     def get_many(self, *args, **kwargs):
         manager = self.__class__(
             *args,
-            *self.args,
             **{**kwargs, **self.kwargs, **dict(default_connector="OR")},
         )
         return manager
 
     def _generate_query(self, params=dict()):
-        params = {**{self.primary_key: self.args}, **self.kwargs, **params}
-        params = {k: v for (k, v) in params.items() if "__" not in k}
+        params = {**self.filter_params, **dict(sort=self.sort_params), **params}
         default_connector = params.get("default_connector", "AND")
         if "default_connector" in params:
             del params["default_connector"]

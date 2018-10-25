@@ -16,7 +16,7 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 LOOKUP_URL = "https://assignment-api.uspto.gov/patent/lookup"
 
-NUMBER_CLEAN_RE = re.compile("[^\d]")
+NUMBER_CLEAN_RE = re.compile(r"[^\d]")
 CACHE_DIR = CACHE_BASE / "uspto_assignment"
 CACHE_DIR.mkdir(exist_ok=True)
 
@@ -86,7 +86,7 @@ class AssignmentManager(Manager):
         offset = key - page_no * self.rows
         return Assignment(self._get_page(page_no)[offset])
 
-    def filter(self, **kwargs):
+    def get_query(self, page_no):
         """Get assignments. 
         Args:
             patent: pat no to search
@@ -103,16 +103,26 @@ class AssignmentManager(Manager):
             "correspondent": "CorrespondentName",
             "reel_frame": "ReelFrame",
         }
-        for key, value in kwargs.items():
+        for key, value in self.filter_params.items():
             field = fields[key]
             query = value
         if field in ["PatentNumber", "ApplicationNumber"]:
             query = NUMBER_CLEAN_RE.sub("", str(query))
 
-        return self.__class__(
-            *self.args,
-            **{**self.kwargs, **dict(filter__query=query, filter__field=field)},
-        )
+        sort = list()
+        for p in self.sort_params:
+            if sort[0] == "-":
+                sort.append(p[1:] + "+desc")
+            else:
+                sort.append(p + "+asc")
+
+        return {
+            "filter": field,
+            "query": query,
+            "rows": self.rows,
+            "offset": page_no * self.rows,
+            "sort": " ".join(sort),
+        }
 
     def __len__(self):
         if not hasattr(self, "_len"):
@@ -121,16 +131,17 @@ class AssignmentManager(Manager):
 
     def _get_page(self, page_no):
         if page_no not in self.pages:
-            field = self.kwargs["filter__field"]
-            query = self.kwargs["filter__query"]
-            params = {
-                "filter": field,
-                "query": query,
-                "rows": self.rows,
-                "offset": page_no * self.rows,
-            }
+            params = self.get_query(page_no)
+
             filename = "-".join(
-                [field, query, str(self.rows), str(page_no * self.rows), ".xml"]
+                [
+                    params["filter"],
+                    params["query"],
+                    params["sort"],
+                    str(self.rows),
+                    str(page_no * self.rows),
+                    ".xml",
+                ]
             ).replace("/", "_")
             filename = CACHE_DIR / filename
             if filename.exists():
