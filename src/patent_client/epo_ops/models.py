@@ -118,7 +118,7 @@ class InpadocImages(Model):
         for i in range(1, self.num_pages + 1):
             fname = dirname / ("page-" + str(i).rjust(6, "0") + ".pdf")
             if not fname.exists():
-                self.objects.pdf_request(fname, self.url, params={"Range": i})
+                inpadoc_connector.pdf_request(fname, self.url, params={"Range": i})
 
         pages = list(sorted(os.listdir(dirname)))
         out_file = PdfFileMerger()

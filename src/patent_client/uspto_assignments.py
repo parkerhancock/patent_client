@@ -3,7 +3,6 @@ import re
 import xml.etree.ElementTree as ET
 
 import requests
-# USPTO has a malconfigured SSL connection. Suppress warnings about it.
 import urllib3
 from dateutil.parser import parse as parse_date
 from inflection import underscore
@@ -11,6 +10,7 @@ from patent_client import CACHE_BASE
 from patent_client.util import Manager
 from patent_client.util import Model
 
+# USPTO has a malconfigured SSL connection. Suppress warnings about it.
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 LOOKUP_URL = "https://assignment-api.uspto.gov/patent/lookup"

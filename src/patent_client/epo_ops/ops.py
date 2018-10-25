@@ -126,7 +126,6 @@ class OpenPatentServicesConnector:
         raise OPSException("Max Retries Exceeded!")
 
     def xml_request(self, url, params=dict()):
-        print(url, params)
         param_hash = md5(json.dumps(params, sort_keys=True).encode("utf-8")).hexdigest()
         fname = os.path.join(
             CACHE_DIR, f"{url[37:].replace('/', '_')}{param_hash if params else ''}.xml"
