@@ -1,1 +1,1 @@
-from .models import Inpadoc, Epo
+from .models import Inpadoc

@@ -30,9 +30,11 @@ Patent Client provides an interface to the USPTO's patent assignment database. Y
     >>> len(assignments)
     23932
 
+USPTO Assignments
+=================
 
-Supported Fields - USPTO Assignments
-------------------------------------
+Supported Fields
+----------------
 
 =========================   ===========================================       ===============     ================
 Field Name                  Examples                                          Filterable          Sortable
@@ -47,6 +49,13 @@ correspondent               MORGAN, LEWIS & BOCKIUS                           YE
 reel_frame                  047086-0788                                       YES                 YES
 =========================   ===========================================       ===============     ================
 
+Relationships
+-------------
 
+=============== =================   ==============  =================
+Attribute       Relationship Type   Object          Join Condition
+=============== =================   ==============  =================
+us_applications one-to-many         USApplication   app_num=appl_id
+=============== =================   ==============  =================
 
 Original API URL: https://assignment-api.uspto.gov/documentation-patent/

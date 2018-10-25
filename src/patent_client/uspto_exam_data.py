@@ -47,14 +47,6 @@ session.headers["User-Agent"] = "python-ip"
 class USApplicationManager(Manager):
     primary_key = 'appl_id'
 
-    def __init__(self, *args, **kwargs):
-        self.args = args
-        self.kwargs = kwargs
-
-    def filter(self, *args, **kwargs):
-        return self.__class__(*args, *self.args, **{**kwargs, **self.kwargs})
-
-
     def get_item(self, key):
         if not hasattr(self, 'objs'):
             self.request()

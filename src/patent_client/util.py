@@ -104,8 +104,27 @@ class Model(object):
 class Manager:
     def __init__(self, *args, **kwargs):
         """Simply store the keyword arguments"""
-        self.args = args
-        self.kwargs = kwargs
+        if args:
+            kwargs[self.primary_key] = args[0]
+        self.values = dict()
+        self.filter = dict()
+        self.sort = list()
+
+        for key, value in kwargs.items():
+            if 'values__' in key:
+                *_, new_key = key.split('__')
+                self.values[new_key] = value
+            elif key == 'sort':
+                self.sort = value
+            else:
+                self.filter[key] = value
+    
+    @property
+    def kwargs(self):
+        kwargs = {**self.filter, **dict(sort=self.sort)}
+        for key, value in self.values.items():
+            kwargs['values__' + key] = value
+        return kwargs
     
     def get_obj_class(self):
         module, klass = self.obj_class.rsplit('.', 1)
@@ -114,7 +133,7 @@ class Manager:
 
     def filter(self, *args, **kwargs):
         """Return a new Manager with a combination of previous and new keyword arguments"""
-        return self.__class__(*args, *self.args, **{**kwargs, **self.kwargs})
+        return self.__class__(*args, **{**self.kwargs, **kwargs})
 
         """ Next step would be to implement application-layer filters
         for key, value in kwargs.items():
@@ -132,7 +151,7 @@ class Manager:
         if 'sort' not in kwargs:
             kwargs['sort'] = list()
         kwargs['sort'] += args
-        return self.__class__(*self.args, **{**kwargs, **self.kwargs})
+        return self.__class__(**kwargs)
     
     def get(self, *args, **kwargs):
         """Implement a new manager with the requested keywords, and if the length is 1,
@@ -194,17 +213,17 @@ class Manager:
             return [self.__getitem__(index) for index in indices]
         else:
             obj = self.get_item(key)
-            if 'values__fields' in self.kwargs:
+            if 'fields' in self.values:
                 data = obj.data
                 fdata = OrderedDict()
-                for k in self.kwargs['values__fields']:
+                for k in self.values['fields']:
                     key = k.replace('__', '_')
                     value = recur_accessor(obj, k)
                     fdata[key] = value 
                 data = fdata
-                if self.kwargs.get('values__list', False):
+                if self.values.get('list', False):
                     data = tuple(data[k] for k, v in data.items())
-                    if len(self.kwargs['values__fields']) == 1 and self.kwargs['values__flat']:
+                    if len(self.values['fields']) == 1 and self.values['flat']:
                         data = data[0]
                 return data
             else:
