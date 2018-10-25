@@ -3,7 +3,6 @@ import re
 import xml.etree.ElementTree as ET
 
 import requests
-
 # USPTO has a malconfigured SSL connection. Suppress warnings about it.
 import urllib3
 from dateutil.parser import parse as parse_date

@@ -1,7 +1,7 @@
 import json
+import math
 import os
 import re
-import math
 from collections import namedtuple
 from hashlib import md5
 
@@ -61,6 +61,7 @@ SEARCH_FIELDS = {
     "full_text": "txt",  # title, abstract, inventor and applicant
 }
 
+EpoDoc = namedtuple("EpoDoc", ["number", "kind", "date"])
 DocDB = namedtuple("DocDB", ["country", "number", "kind", "date", "doc_type"])
 whitespace_re = re.compile(" +")
 country_re = re.compile(r"^[A-Z]{2}")

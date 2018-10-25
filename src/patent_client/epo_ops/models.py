@@ -3,20 +3,13 @@ import re
 from collections import namedtuple
 
 from lxml import etree as ET
+from patent_client.epo_ops import CACHE_DIR
 from patent_client.util import Manager
 from patent_client.util import Model
 from patent_client.util import one_to_one
 from PyPDF2 import PdfFileMerger
 
 from .ops import InpadocConnector
-from patent_client.epo_ops import CACHE_DIR
-
-whitespace_re = re.compile(" +")
-country_re = re.compile(r"^[A-Z]{2}")
-ep_case_re = re.compile(r"EP(?P<number>[\d]+)(?P<kind>[A-Z]\d)?")
-
-
-EpoDoc = namedtuple("EpoDoc", ["number", "kind", "date"])
 
 inpadoc_connector = InpadocConnector()
 
