@@ -9,9 +9,10 @@ from patent_client.util import Model
 from patent_client.util import one_to_one
 from PyPDF2 import PdfFileMerger
 
-from .ops import InpadocConnector
+from .ops import InpadocConnector, EpoConnector
 
 inpadoc_connector = InpadocConnector()
+epo_connector = EpoConnector()
 
 
 class InpadocManager(Manager):
@@ -138,146 +139,18 @@ class EpoManager(Manager):
 
     obj_class = "patent_client.epo_ops.models.Epo"
 
-    def get(self, number=None, doc_type="publication", doc_db=False):
-        epodoc = self.convert_to_epodoc(number, doc_type)
-        return Epo(epodoc)
+    def get(self, number=None, doc_type="publication"):
+        epodoc = epo_connector.original_to_epodoc(number, doc_type)
+        bib_data = epo_connector.bib_data(epodoc)
+        return Epo(bib_data)
 
-    def xml_data(self, pub, data_kind):
-        """
-        Acceptable kinds are "biblio", "events", "procedural-steps"
-        """
-        register_url = "http://ops.epo.org/3.2/rest-services/register/{doc_type}/epodoc/{case_number}/"
-        if data_kind not in ("biblio", "events", "procedural-steps"):
-            raise ValueError(data_kind + " is not a valid data kind")
-        url = (
-            register_url.format(case_number=pub.case_number, doc_type=pub.doc_type)
-            + data_kind
-        )
-        text = self.xml_request(url)
-        tree = ET.fromstring(text.encode("utf-8"))
-        return tree
-
-
-"""
-class EpoParser(OPSParser):
-
-    def status(self, el):
-        return {
-                'description': el.text,
-                'code': el.attrib['status-code'],
-                'date': el.attrib['change-date'],
-            }
-
-    def priority_claim(self, el):
-        return {
-            'kind': el.attrib['kind'],
-            'number': el.find('./reg:doc-number', NS).text,
-            'date': el.find('./reg:date', NS).text,
-        }
-
-
-    def docid(self, el):
-        doc_id = el.find('.//reg:document-id', NS)
-        raw = {
-            'country': doc_id.find('./reg:country', NS),
-            'number': doc_id.find('./reg:doc-number', NS),
-            'kind': doc_id.find('./reg:kind', NS),
-            'date': doc_id.find('./reg:date', NS),
-        }
-        return {k:v.text for (k,v) in raw.items() if v is not None}
-
-    def party(self, el):
-        addr_book = el.find('./reg:addressbook', NS)
-        name = addr_book.find('./reg:name', NS)
-        address = addr_book.find('./reg:address', NS)
-        return {
-            'name': name.text,
-            'address': '\n'.join([t.strip() for t in address.itertext() if t.strip()]).strip()
-        }
-    
-    def citation(self, el):
-        phase = el.attrib["cited-phase"]
-        office = el.attrib.get("office", "")
-        pat_cite = el.find("./reg:patcit", NS)
-        if pat_cite is not None:
-            citation = self.docid(
-                pat_cite
-            )
-        else:
-            citation = el.find("./reg:nplcit/reg:text", NS).text
-        category = (
-            el.find("./reg:category", NS).text
-            if el.find("./reg:category", NS) is not None
-            else ""
-        )
-        relevant_passages = pat_cite.find('./reg:text', NS).text
-        return {
-            "phase": phase,
-            "office": office,
-            "citation": citation,
-            "category": category,
-            "relevant_passages": relevant_passages
-        }
-    
-    def step(self, el):
-        date = el.find('./reg:procedural-step-date/reg:date', NS)
-        return {
-            'phase': el.attrib['procedure-step-phase'],
-            'description': ' - '.join([e.text for e in el.findall('./reg:procedural-step-text', NS)]),
-            'date': date.text.strip() if date is not None else None,
-            'code': el.find('./reg:procedural-step-code', NS).text.strip(),
-        }
-
-class Epo():
+class Epo(Model):
     objects = EpoManager()
 
-    def __init__(self, epodoc):
-        self.epodoc = epodoc
-        self.number = epodoc.number
-        self.kind = epodoc.kind
-        if self.kind == 'A':
-            self.doc_type = 'application'
-        else:
-            self.doc_type = 'publication'
-        
-        self.dict = self.bib_data
-        for k, v in self.dict.items():
-            setattr(self, k, v)
-    
     def __repr__(self):
         return f'<Epo(number={self.number}, kind={self.kind}, doc_type={self.doc_type})>'
 
-    def __iter__(self):
-        return self.dict.items()
-    
-    @property
-    def case_number(self):
-        number = f'{self.number}{"." + self.kind if self.kind else ""}'
-        return number
-    
     @property
     def procedural_steps(self):
-        tree = self.objects.xml_data(self, 'procedural-steps')
-        doc = tree.find('.//reg:register-document', NS)
-        return [self.parse.step(el) for el in doc.find('./reg:procedural-data', NS)]
-
-    @property
-    def bib_data(self):
-        tree = self.objects.xml_data(self, 'biblio')
-        doc = tree.find('.//reg:register-document', NS)
-        bib = doc.find('./reg:bibliographic-data', NS)
-        parties = bib.find('./reg:parties', NS)
-        output = dict()
-        output['status'] = [self.parse.status(el) for el in doc.find('./reg:ep-patent-statuses', NS)]
-        output['publications'] = [self.parse.docid(el) for el in bib.findall('./reg:publication-reference', NS)]
-        output['intl_class'] = [''.join(el.itertext()).strip() for el in bib.find('./reg:classifications-ipcr', NS)]
-        output['applications'] = [self.parse.docid(el) for el in bib.findall('./reg:application-reference', NS)]
-        output['filing_language'] = bib.find('./reg:language-of-filing', NS).text
-        output['priority_claims'] = [self.parse.priority_claim(el) for el in bib.find('reg:priority-claims', NS)]
-        output['applicants'] = [self.parse.party(el) for el in parties.find('./reg:applicants', NS)]
-        output['inventors'] = [self.parse.party(el) for el in parties.find('./reg:inventors', NS)]
-        output['designated_states'] = [c.strip() for c in bib.find('./reg:designation-of-states', NS).itertext() if c.strip()]
-        output['title'] = bib.find('./reg:invention-title[@lang="en"]', NS).text
-        output['citations'] = [self.parse.citation(el) for el in bib.find('./reg:references-cited', NS)]
-        return output
-"""
+        return epo_connector.procedural_steps(self.epodoc) 
+    
