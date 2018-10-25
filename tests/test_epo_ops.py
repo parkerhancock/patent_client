@@ -2,7 +2,7 @@ import json
 import os
 
 import pytest
-from patent_client.epo_ops import Inpadoc
+from patent_client import Inpadoc
 
 FIXTURES = os.path.join(os.path.dirname(__file__), "fixtures")
 
@@ -58,7 +58,7 @@ class TestInpadoc:
 
     def test_can_get_ep_application(self):
         pubs = Inpadoc.objects.filter(application="EP13844704")
-        assert len(pubs) == 1
+        assert len(pubs) == 2
         assert pubs[0].title == "ATTITUDE REFERENCE FOR TIEBACK/OVERLAP PROCESSING"
 
     def test_pct(self):

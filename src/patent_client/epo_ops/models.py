@@ -1,4 +1,3 @@
-import math
 import os
 import re
 from collections import namedtuple
@@ -10,6 +9,7 @@ from patent_client.util import one_to_one
 from PyPDF2 import PdfFileMerger
 
 from .ops import InpadocConnector
+from patent_client.epo_ops import CACHE_DIR
 
 whitespace_re = re.compile(" +")
 country_re = re.compile(r"^[A-Z]{2}")
@@ -18,11 +18,13 @@ ep_case_re = re.compile(r"EP(?P<number>[\d]+)(?P<kind>[A-Z]\d)?")
 
 EpoDoc = namedtuple("EpoDoc", ["number", "kind", "date"])
 
+inpadoc_connector = InpadocConnector()
+
 
 class InpadocManager(Manager):
     obj_class = "patent_client.epo_ops.models.Inpadoc"
     primary_key = "publication"
-    connector = InpadocConnector()
+    connector = inpadoc_connector
 
     def __init__(self, *args, **kwargs):
         super(InpadocManager, self).__init__(*args, **kwargs)
@@ -30,41 +32,38 @@ class InpadocManager(Manager):
 
     def __len__(self):
         """Total number of results"""
-        if not hasattr(self, "length"):
-            self._get_page(1)
+        if "application" in self.filter_params or "publication" in self.filter_params:
+            return len(self.get_by_number())
+        else:
+            return self.connector.get_search_length(self.filter_params)
 
-        return int(self.length)
-
-    def get_item(self, key):
+    def get_by_number(self):
         if "publication" in self.kwargs:
-            doc_db = self.connector.convert_to_docdb(
+            doc_db = self.connector.original_to_docdb(
                 self.kwargs["publication"], "publication"
             )
-            docs = self.get_by_doc_db(doc_db)
-            if type(docs) == list:
-                return docs[key]
-            return docs
         elif "application" in self.kwargs:
-            doc_db = self.connector.convert_to_docdb(
+            doc_db = self.connector.original_to_docdb(
                 self.kwargs["application"], "application"
             )
-            docs = self.get_by_doc_db(doc_db)
-            if type(docs) == list:
-                return docs[key]
-            return docs
+        docs = self.connector.bib_data(doc_db)
+        return docs
+
+    def get_item(self, key):
+        if "publication" in self.kwargs or "application" in self.kwargs:
+            docs = self.get_by_number()
+            return Inpadoc(docs[key])
         else:
             # Search Iterator
-            page_num = math.floor(key / self.page_size) + 1
-            line_num = key % self.page_size
-            page = self.connector.get_search_page(self.filter, page_num)
-            return self.get_by_doc_db(page[line_num])
+            doc_db = self.connector.get_search_item(self.filter_params, key)
+            return Inpadoc(self.connector.bib_data(doc_db)[0])
 
 
 class InpadocFullTextManager(InpadocManager):
     def get(self, doc_db):
         data = {
-            "description": self.parser.description(doc_db),
-            "claims": self.parser.claims(doc_db),
+            "description": self.connector.description(doc_db),
+            "claims": self.connector.claims(doc_db),
             "doc_db": doc_db,
         }
         return InpadocFullText(data)
@@ -85,21 +84,22 @@ class Inpadoc(Model):
     @property
     def legal(self):
         if not hasattr(self, "_legal"):
-            data = self.objects.parser.legal(self.doc_db)
+            data = inpadoc_connector.legal(self.doc_db)
             self._legal = data
         return self._legal
 
     @property
     def images(self):
         if not hasattr(self, "_images"):
-            data = self.objects.parser.images(self.doc_db)
+            data = inpadoc_connector.images(self.doc_db)
             data["doc_db"] = self.doc_db
             self._images = InpadocImages(data)
         return self._images
 
     @property
     def family(self):
-        return self.objects.get_family(self.doc_db)
+        for doc_db in inpadoc_connector.family(self.doc_db):
+            yield Inpadoc(inpadoc_connector.bib_data(doc_db)[0])
 
 
 class InpadocFullText(Model):

@@ -1,13 +1,14 @@
 import json
 import os
 import re
+import math
 from collections import namedtuple
 from hashlib import md5
 
 import requests
 from lxml import etree as ET
-from patent_client import CACHE_BASE
 from patent_client import SETTINGS
+from patent_client.epo_ops import CACHE_DIR
 
 session = requests.Session()
 
@@ -18,8 +19,6 @@ if os.environ.get("EPO_KEY", False):
 else:
     KEY = CLIENT_SETTINGS["ApiKey"]
     SECRET = CLIENT_SETTINGS["Secret"]
-CACHE_DIR = CACHE_BASE / "epo"
-CACHE_DIR.mkdir(exist_ok=True)
 
 # XML Namespaces for ElementTree
 NS = {
@@ -63,6 +62,9 @@ SEARCH_FIELDS = {
 }
 
 DocDB = namedtuple("DocDB", ["country", "number", "kind", "date", "doc_type"])
+whitespace_re = re.compile(" +")
+country_re = re.compile(r"^[A-Z]{2}")
+ep_case_re = re.compile(r"EP(?P<number>[\d]+)(?P<kind>[A-Z]\d)?")
 
 
 class OPSException(Exception):
@@ -138,7 +140,7 @@ class OpenPatentServicesConnector:
 
     def original_to_docdb(self, number, doc_type):
         if "PCT" in number:
-            return self.parser.pct_to_docdb(number)
+            return self.pct_to_docdb(number)
 
         country = country_re.search(number)
         if country:
@@ -155,10 +157,10 @@ class OpenPatentServicesConnector:
 
         if doc_type == "application":
             app_ref = output.find("./ops:application-reference/epo:document-id", NS)
-            return self.parser.docdb_number(app_ref, doc_type)
+            return self.docdb_number(app_ref, doc_type)
         elif doc_type == "publication":
             pub_ref = output.find("./ops:publication-reference/epo:document-id", NS)
-            return self.parser.docdb_number(pub_ref, doc_type)
+            return self.docdb_number(pub_ref, doc_type)
 
     def original_to_epodoc(self, number, doc_type):
         url = f"http://ops.epo.org/3.2/rest-services/number-service/{doc_type}/original/{number})/epodoc"
@@ -168,10 +170,10 @@ class OpenPatentServicesConnector:
 
         if doc_type == "application":
             app_ref = output.find("./ops:application-reference/epo:document-id", NS)
-            return self.parser.epodoc_number(app_ref)
+            return self.epodoc_number(app_ref)
         elif doc_type == "publication":
             pub_ref = output.find("./ops:publication-reference/epo:document-id", NS)
-            return self.parser.epodoc_number(pub_ref)
+            return self.epodoc_number(pub_ref)
 
     def pct_to_docdb(self, number):
         _, country_year, number = number.split("/")
@@ -190,6 +192,27 @@ class OpenPatentServicesConnector:
         else:
             case_number = year[2:] + number.rjust(5, "0")
         return DocDB(country, case_number, "W", None, "application")
+
+    def docdb_number(self, el, doc_type):
+        raw_data = {
+            "country": el.find("./epo:country", NS),
+            "number": el.find("./epo:doc-number", NS),
+            "kind": el.find("./epo:kind", NS),
+            "date": el.find("./epo:date", NS),
+        }
+        for k, v in raw_data.items():
+            if v is not None:
+                raw_data[k] = v.text
+
+        raw_data["doc_type"] = doc_type
+
+        return DocDB(**raw_data)
+
+    def cpc_class(self, el):
+        keys = "section, class, subclass, main-group, subgroup".split(", ")
+        data = {k: el.find("./epo:" + k, NS) for k in keys}
+        data = {k: v.text for (k, v) in data.items() if v is not None}
+        return f"{data.get('section', '')}{data.get('class', '')}{data.get('subclass', '')} {data.get('main-group', '')}/{data.get('subgroup', '')}"
 
 
 class InpadocConnector(OpenPatentServicesConnector):
@@ -223,42 +246,39 @@ class InpadocConnector(OpenPatentServicesConnector):
         return tree
 
     def get_search_page(self, query_dict, page_number):
-        start = (page_num - 1) * self.page_size + 1
+        start = (page_number - 1) * self.page_size + 1
         end = start + self.page_size - 1
         query = {**self.create_query(query_dict), **{"Range": f"{start}-{end}"}}
         text = self.xml_request(self.search_url, query)
         tree = ET.fromstring(text.encode("utf-8"))
-        length = int(tree.find(".//ops:biblio-search", NS).attrib["total-result-count"])
         results = tree.find(".//ops:search-result", NS)
         return [
-            self.parse_docdb_number(el.find("./epo:document-id", NS), "publication")
+            self.docdb_number(el.find("./epo:document-id", NS), "publication")
             for el in results
         ]
+    
+    def get_search_item(self, query_dict, key):
+        page_num = math.floor(key / self.page_size) + 1
+        line_num = key % self.page_size
+        page = self.get_search_page(query_dict, page_num)
+        return page[line_num]
+
+    
+    def get_search_length(self, query_dict):
+        query = {**self.create_query(query_dict), **{"Range": f"1-{self.page_size}"}}
+        text = self.xml_request(self.search_url, query)
+        tree = ET.fromstring(text.encode("utf-8"))
+        return int(tree.find(".//ops:biblio-search", NS).attrib["total-result-count"])
+
 
     def create_query(self, query_dict):
         query = ""
-        for keyword, value in query_dict:
-            if "values__" in keyword:
-                continue
+        for keyword, value in query_dict.items():
             if len(value.split()) > 1:
                 value = f'"{value}"'
             query += SEARCH_FIELDS[keyword] + "=" + value
         return dict(q=query)
 
-    def parse_docdb_number(self, el, doc_type):
-        raw_data = {
-            "country": el.find("./epo:country", NS),
-            "number": el.find("./epo:doc-number", NS),
-            "kind": el.find("./epo:kind", NS),
-            "date": el.find("./epo:date", NS),
-        }
-        for k, v in raw_data.items():
-            if v is not None:
-                raw_data[k] = v.text
-
-        raw_data["doc_type"] = doc_type
-
-        return DocDB(**raw_data)
 
     def parse_citation(self, el):
         phase = el.attrib["cited-phase"]
@@ -312,7 +332,7 @@ class InpadocConnector(OpenPatentServicesConnector):
     def bib_data(self, doc_db):
         # NOTE: For EP cases with search reports, there is citation data in bib data
         # We just currently are not parsing it
-        tree = self.manager.xml_data(doc_db, "biblio")
+        tree = self.xml_data(doc_db, "biblio")
         documents = tree.findall("./epo:exchange-documents/epo:exchange-document", NS)
 
         data_items = list()
@@ -332,7 +352,7 @@ class InpadocConnector(OpenPatentServicesConnector):
                 './epo:publication-reference/epo:document-id[@document-id-type="docdb"]',
                 NS,
             )
-            pub_data = self.parse_docdb_number(pub_data, "publication")
+            pub_data = self.docdb_number(pub_data, "publication")
             data["doc_db"] = pub_data
             data["publication"] = pub_data.country + pub_data.number + pub_data.kind
             data["publication_date"] = pub_data.date
@@ -342,7 +362,7 @@ class InpadocConnector(OpenPatentServicesConnector):
                 './epo:application-reference/epo:document-id[@document-id-type="docdb"]',
                 NS,
             )
-            app_data = dict(self.parse_docdb_number(app_data, "application")._asdict())
+            app_data = dict(self.docdb_number(app_data, "application")._asdict())
             data["application"] = app_data["country"] + app_data["number"]
             data["filing_date"] = app_data.get("date", None)
             original_app_data = bib_data.find(
@@ -373,7 +393,7 @@ class InpadocConnector(OpenPatentServicesConnector):
                 "./epo:patent-classifications/epo:patent-classification", NS
             )
             data["cpc_class"] = [
-                self.manager.parser.cpc_class(el) for el in cpc_classes
+                self.cpc_class(el) for el in cpc_classes
             ]
 
             priority_apps = bib_data.findall(
@@ -410,7 +430,7 @@ class InpadocConnector(OpenPatentServicesConnector):
         return data_items
 
     def description(self, doc_db):
-        tree = self.manager.xml_data(doc_db, "description")
+        tree = self.xml_data(doc_db, "description")
         description = tree.find(
             "./ft:fulltext-documents/ft:fulltext-document/ft:description", NS
         )
@@ -418,7 +438,7 @@ class InpadocConnector(OpenPatentServicesConnector):
         return text
 
     def claims(self, doc_db):
-        tree = self.manager.xml_data(doc_db, "claims")
+        tree = self.xml_data(doc_db, "claims")
         claims = [
             "".join(e.itertext()).strip()
             for e in tree.findall(
@@ -431,7 +451,7 @@ class InpadocConnector(OpenPatentServicesConnector):
     def images(self, doc_db):
         if doc_db.doc_type == "application":
             return dict()
-        tree = self.manager.xml_data(doc_db, "images")
+        tree = self.xml_data(doc_db, "images")
         images = tree.find(
             './ops:document-inquiry/ops:inquiry-result/ops:document-instance[@desc="FullDocument"]',
             NS,
@@ -447,7 +467,7 @@ class InpadocConnector(OpenPatentServicesConnector):
         return data
 
     def family(self, doc_db):
-        tree = self.manager.xml_data(doc_db, "family")
+        tree = self.xml_data(doc_db, "family")
         doc_db_list = list()
         for el in tree.findall("./ops:patent-family/ops:family-member", NS):
             pub_ref = el.find(
@@ -456,7 +476,7 @@ class InpadocConnector(OpenPatentServicesConnector):
             )
             if pub_ref is not None:
                 doc_db_list.append(
-                    self.manager.parser.docdb_number(pub_ref, "publication")
+                    self.docdb_number(pub_ref, "publication")
                 )
             else:
                 app_ref = el.find(
@@ -464,6 +484,6 @@ class InpadocConnector(OpenPatentServicesConnector):
                     NS,
                 )
                 doc_db_list.append(
-                    self.manager.parser.docdb_number(app_ref, "application")
+                    self.docdb_number(app_ref, "application")
                 )
         return doc_db_list
