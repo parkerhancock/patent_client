@@ -10,6 +10,7 @@ Welcome to Patent Client's documentation!
    :maxdepth: 2
    :caption: Contents:
 
+   motivation
    getting_started
    us_application
    assignments
