@@ -28,22 +28,23 @@ A set of Django-ORM-Style accessors to publicly available intellectual property 
 
 Currently supports:
 
-+---------------------------------------------------+---------------------------+-------------------+
-| Office                                            |  API                      | Status            |
-+===================================================+===========================+===================+
-|European Patent Office (EPO)                       | OPS - INPADOC             | Partial Support   |
-|                                                   +---------------------------+-------------------+
-|                                                   | OPS - EPO Register        | Partial Support   |
-|                                                   +---------------------------+-------------------+
-|                                                   | OPS - Classification      | No Support        |
-+---------------------------------------------------+---------------------------+-------------------+
-|United States Patent & Trademark Office (USPTO)    | Patent - Exam (Pair-Like) | Full Support      |
-|                                                   +---------------------------+-------------------+
-|                                                   | Patent - Assignments      | Support Lookup    |
-|                                                   +---------------------------+-------------------+
-|                                                   | PTAB - Trial Documents    | Full Support      |
-+---------------------------------------------------+---------------------------+-------------------+
+* `European Patent Office - Open Patent Services <OPS>`_
 
+    * Inpadoc - Full Support
+    * EPO Register - Full Support
+    * Classification - No Support
+
+* `United States Patent & Trademark Office <USPTO>`_
+
+    * `Patent Examination Data <PEDS>`_ - Full Support
+    * `Patent Assignment Data <Assignment>`_ - Lookup Support
+    * `Patent Trial & Appeal Board API <PTAB>`_ - Full Support
+
+.. _OPS: http://ops.epo.org
+.. _USPTO: http://developer.uspto.gov
+.. _PEDS: https://developer.uspto.gov/api-catalog/ped
+.. _Assignment: https://developer.uspto.gov/api-catalog/patent-assignment-search-beta
+.. _PTAB: https://developer.uspto.gov/api-catalog/ptab-api
 
 * Free software: Apache Software License 2.0
 
@@ -108,3 +109,9 @@ This project is narrowly scoped to only public documented API's available withou
 add support for new API's are more than welcome. 
 
 Pull requests welcome!
+
+Related projects
+================
+
+* `Python EPO OPS Client <https://github.com/55minutes/python-epo-ops-client>`_
+* `Google Public Patent Data <https://github.com/google/patents-public-data>`_
