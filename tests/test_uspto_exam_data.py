@@ -96,16 +96,14 @@ class TestPatentExaminationData:
 
     def test_search_patex_by_assignee(self):
         data = USApplication.objects.filter(
-            first_named_applicant="Scientific Drilling, Inc."
+            first_named_applicant="LogicBlox"
         )
         assert data.order_by("appl_id").values_list("patent_title", flat=True)[:5] == [
-            "DOWNHOLE APPARATUS FOR ELECTRICAL POWER GENERATION FROM SHAFT FLEXURE",
-            "Hybrid Bearings for Downhole Motors",
-            "DOUBLE SHAFT DRILLING APPARATUS WITH HANGER BEARINGS",
-            "DRILL BIT FOR A DRILLING APPARATUS",
-            "METHOD TO DETERMINE LOCAL VARIATIONS OF THE EARTH'S MAGNETIC FIELD AND "
-            "LOCATION OF THE SOURCE THEREOF",
-        ]
+            'MAINTENANCE OF ACTIVE DATABASE QUERIES', 'LEAPFROG TREE-JOIN', 
+            'SALIENT SAMPLING FOR QUERY SIZE ESTIMATION', 
+            'TRANSACTION REPAIR', 
+            'LEAPFROG TREE-JOIN'
+            ]
 
     def test_get_many_by_publication_number(self):
         nos = [
