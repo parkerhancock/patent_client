@@ -3,8 +3,11 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to Patent Client's documentation!
+Patent Client Documentation
 =========================================
+
+* `Code on GitHub <https://github.com/parkerhancock/patent_client>`_
+* `Package on PyPI <https://pypi.org/project/patent-client/>`_
 
 .. toctree::
    :maxdepth: 2
