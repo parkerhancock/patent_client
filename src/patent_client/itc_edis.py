@@ -126,7 +126,7 @@ class ITCDocumentsManager(Manager):
         )
         data = dict()
         for key, value in attribute_dict.items():
-            data[key] = element.find(value).text.strip()
+            data[key] = element.find(value).text
         return data
 
     def get_item(self, key):
@@ -190,7 +190,7 @@ class ITCAttachmentManager(Manager):
             for element in tree.findall(".//attachment"):
                 row = dict()
                 for k, value in attribute_dict.items():
-                    row[k] = element.find(value).text.strip()
+                    row[k] = element.find(value).text
                 data.append(row)
             with open(fname, "w") as f:
                 json.dump(data, f, indent=2)

@@ -18,6 +18,7 @@ Patent Client Documentation
    us_application
    assignments
    ptab
+   usitc
    epo
    developer/overview
    developer/design_notes
