@@ -24,9 +24,9 @@ copyright = "2018, Parker Hancock"
 author = "Parker Hancock"
 
 # The short X.Y version
-version = ""
+version = "0.1"
 # The full version, including alpha/beta/rc tags
-release = "version = release = '0.1.7'"
+release = "0.1.7"
 
 
 # -- General configuration ---------------------------------------------------
