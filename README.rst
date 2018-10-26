@@ -25,15 +25,15 @@ Currently supports:
 
 * `European Patent Office - Open Patent Services <OPS>`_
 
-    * Inpadoc - Full Support
-    * EPO Register - Full Support
-    * Classification - No Support
+  * Inpadoc - Full Support
+  * EPO Register - Full Support
+  * Classification - No Support
 
 * `United States Patent & Trademark Office <USPTO>`_
 
-    * `Patent Examination Data <PEDS>`_ - Full Support
-    * `Patent Assignment Data <Assignment>`_ - Lookup Support
-    * `Patent Trial & Appeal Board API <PTAB>`_ - Full Support
+  * `Patent Examination Data <PEDS>`_ - Full Support
+  * `Patent Assignment Data <Assignment>`_ - Lookup Support
+  * `Patent Trial & Appeal Board API <PTAB>`_ - Full Support
 
 .. _OPS: http://ops.epo.org
 .. _USPTO: http://developer.uspto.gov
