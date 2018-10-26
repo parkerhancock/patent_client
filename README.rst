@@ -36,6 +36,7 @@ Currently supports:
   * `Patent Trial & Appeal Board API <PTAB>`_ - Full Support
 
 * `United States International Trade Commission <ITC>`_
+
   * `Electronic Document Information System (EDIS) API <EDIS>`_ - Full Support
 
 .. _OPS: http://ops.epo.org
