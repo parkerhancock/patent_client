@@ -35,11 +35,16 @@ Currently supports:
   * `Patent Assignment Data <Assignment>`_ - Lookup Support
   * `Patent Trial & Appeal Board API <PTAB>`_ - Full Support
 
+* `United States International Trade Commission <ITC>`_
+  * `Electronic Document Information System (EDIS) API <EDIS>`_ - Full Support
+
 .. _OPS: http://ops.epo.org
 .. _USPTO: http://developer.uspto.gov
 .. _PEDS: https://developer.uspto.gov/api-catalog/ped
 .. _Assignment: https://developer.uspto.gov/api-catalog/patent-assignment-search-beta
 .. _PTAB: https://developer.uspto.gov/api-catalog/ptab-api
+.. _ITC: https://www.usitc.gov/
+.. _EDIS: https://edis.usitc.gov/external/
 
 * Free software: Apache Software License 2.0
 
@@ -98,10 +103,10 @@ To run the all tests run::
 
     pytest
 
-A developer guide is provided in the `Documentation <http://patent-client.readthedocs.io>`_. 
+A developer guide is provided in the `Documentation <http://patent-client.readthedocs.io>`_.
 This project is narrowly scoped to only public documented API's available without charge
 (at least for moderate usage). Scrapers of HTML websites are not permitted. But PR's to
-add support for new API's are more than welcome. 
+add support for new API's are more than welcome.
 
 Pull requests welcome!
 
