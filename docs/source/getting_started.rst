@@ -62,7 +62,7 @@ Basic Use
 
 All data is accessible through an `Active Record <https://en.wikipedia.org/wiki/Active_record_pattern>`_ model 
 inspired by the `Django ORM Query API <https://docs.djangoproject.com/en/2.1/topics/db/queries/>`_. In particular, the API to Patent Client is a subset
-of the official `Djanog QuerySet API <https://docs.djangoproject.com/en/2.1/ref/models/querysets/>`_. To access data, first import the model
+of the official `Django QuerySet API <https://docs.djangoproject.com/en/2.1/ref/models/querysets/>`_. To access data, first import the model
 representing the data you want. E.g. 
 
 .. code-block:: python

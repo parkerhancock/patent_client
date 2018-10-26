@@ -55,7 +55,6 @@ SEARCH_FIELDS = {
     "ipc_core_additional_class": "cn",
     "ipc_advanced_class": "ai",
     "ipc_advanced_additional_class": "an",
-    "ipc_advanced_class": "a",
     "ipc_core_class": "c",
     "classification": "cl",  # IPC or CPC Class
     "full_text": "txt",  # title, abstract, inventor and applicant
@@ -269,7 +268,7 @@ class InpadocConnector(OpenPatentServicesConnector):
             self.docdb_number(el.find("./epo:document-id", NS), "publication")
             for el in results
         ]
-    
+
     def get_search_item(self, key, query_dict=None):
         query = self.create_query(query_dict)
         page_num = math.floor(key / self.page_size) + 1
@@ -277,7 +276,6 @@ class InpadocConnector(OpenPatentServicesConnector):
         page = self.get_search_page(page_num, query)
         return page[line_num]
 
-    
     def get_search_length(self, query_dict=None):
         query = self.create_query(query_dict)
         params = {**query, **{"Range": f"1-{self.page_size}"}}
@@ -285,17 +283,15 @@ class InpadocConnector(OpenPatentServicesConnector):
         tree = ET.fromstring(text.encode("utf-8"))
         return int(tree.find(".//ops:biblio-search", NS).attrib["total-result-count"])
 
-
     def create_query(self, query_dict):
-        if 'cql_query' in query_dict:
-            return dict(q=query_dict['cql_query'])
+        if "cql_query" in query_dict:
+            return dict(q=query_dict["cql_query"])
         query = ""
         for keyword, value in query_dict.items():
             if len(value.split()) > 1:
                 value = f'"{value}"'
             query += SEARCH_FIELDS[keyword] + "=" + value
         return dict(q=query)
-
 
     def parse_citation(self, el):
         phase = el.attrib["cited-phase"]
@@ -356,18 +352,17 @@ class InpadocConnector(OpenPatentServicesConnector):
         for document in documents:
             data = dict()
             data["family_id"] = document.attrib["family-id"]
-            
+
             bib_data = document.find("./epo:bibliographic-data", NS)
 
             title = bib_data.find("./epo:invention-title[@lang='en']", NS)
-            if title == None:
+            if title is None:
                 title = bib_data.find("./epo:invention-title", NS)
-            if title != None:
+            if title is not None:
                 data["title"] = title.text.strip()
             else:
                 data["title"] = ""
 
-            
             pub_data = bib_data.find(
                 './epo:publication-reference/epo:document-id[@document-id-type="docdb"]',
                 NS,
@@ -395,22 +390,26 @@ class InpadocConnector(OpenPatentServicesConnector):
                     "./epo:doc-number", NS
                 ).text
 
-            data['intl_class'] = [
+            data["intl_class"] = [
                 whitespace_re.sub("", e.text)
                 for e in bib_data.findall(
                     "./epo:classifications-ipcr/epo:classification-ipcr/epo:text", NS
                 )
             ]
 
-            data['cpc_class'] = [self.cpc_class(el)
-            for el in bib_data.findall(
-                "./epo:patent-classifications/epo:patent-classification", NS
-            )]
+            data["cpc_class"] = [
+                self.cpc_class(el)
+                for el in bib_data.findall(
+                    "./epo:patent-classifications/epo:patent-classification", NS
+                )
+            ]
 
-            data["priority_claims"] = [e.text for e in 
-            bib_data.findall(
-                './epo:priority-claims/epo:priority-claim/epo:document-id[@document-id-type="original"]/epo:doc-number',
-                NS)
+            data["priority_claims"] = [
+                e.text
+                for e in bib_data.findall(
+                    './epo:priority-claims/epo:priority-claim/epo:document-id[@document-id-type="original"]/epo:doc-number',
+                    NS,
+                )
             ]
 
             parties = bib_data.find("./epo:parties", NS)
@@ -466,7 +465,7 @@ class InpadocConnector(OpenPatentServicesConnector):
             './ops:document-inquiry/ops:inquiry-result/ops:document-instance[@desc="FullDocument"]',
             NS,
         )
-        return  {
+        return {
             "url": "http://ops.epo.org/rest-services/" + images.attrib["link"] + ".pdf",
             "num_pages": int(images.attrib["number-of-pages"]),
             "sections": {
@@ -484,30 +483,25 @@ class InpadocConnector(OpenPatentServicesConnector):
                 NS,
             )
             if pub_ref is not None:
-                doc_db_list.append(
-                    self.docdb_number(pub_ref, "publication")
-                )
+                doc_db_list.append(self.docdb_number(pub_ref, "publication"))
             else:
                 app_ref = el.find(
                     './epo:application-reference/epo:document-id[@document-id-type="docdb"]',
                     NS,
                 )
-                doc_db_list.append(
-                    self.docdb_number(app_ref, "application")
-                )
+                doc_db_list.append(self.docdb_number(app_ref, "application"))
         return doc_db_list
 
 
 class EpoConnector(OpenPatentServicesConnector):
-
     def xml_data(self, pub, data_kind):
         """
         Acceptable kinds are "biblio", "events", "procedural-steps"
         """
-        case_number = f'EP.{pub.number[2:]}'
+        case_number = f"EP.{pub.number[2:]}"
         if pub.kind:
-            case_number += '.' + pub.kind
-        
+            case_number += "." + pub.kind
+
         register_url = "http://ops.epo.org/3.2/rest-services/register/{doc_type}/epodoc/{case_number}/"
         if data_kind not in ("biblio", "events", "procedural-steps"):
             raise ValueError(data_kind + " is not a valid data kind")
@@ -521,46 +515,45 @@ class EpoConnector(OpenPatentServicesConnector):
 
     def status(self, el):
         return {
-                'description': el.text,
-                'code': el.attrib['status-code'],
-                'date': el.attrib['change-date'],
-            }
+            "description": el.text,
+            "code": el.attrib["status-code"],
+            "date": el.attrib["change-date"],
+        }
 
     def priority_claim(self, el):
         return {
-            'kind': el.attrib['kind'],
-            'number': el.find('./reg:doc-number', NS).text,
-            'date': el.find('./reg:date', NS).text,
+            "kind": el.attrib["kind"],
+            "number": el.find("./reg:doc-number", NS).text,
+            "date": el.find("./reg:date", NS).text,
         }
-
 
     def docid(self, el):
-        doc_id = el.find('.//reg:document-id', NS)
+        doc_id = el.find(".//reg:document-id", NS)
         raw = {
-            'country': doc_id.find('./reg:country', NS),
-            'number': doc_id.find('./reg:doc-number', NS),
-            'kind': doc_id.find('./reg:kind', NS),
-            'date': doc_id.find('./reg:date', NS),
+            "country": doc_id.find("./reg:country", NS),
+            "number": doc_id.find("./reg:doc-number", NS),
+            "kind": doc_id.find("./reg:kind", NS),
+            "date": doc_id.find("./reg:date", NS),
         }
-        return {k:v.text for (k,v) in raw.items() if v is not None}
+        return {k: v.text for (k, v) in raw.items() if v is not None}
 
     def party(self, el):
-        addr_book = el.find('./reg:addressbook', NS)
-        name = addr_book.find('./reg:name', NS)
-        address = addr_book.find('./reg:address', NS)
+        addr_book = el.find("./reg:addressbook", NS)
+        name = addr_book.find("./reg:name", NS)
+        address = addr_book.find("./reg:address", NS)
         return {
-            'name': name.text,
-            'address': '\n'.join([t.strip() for t in address.itertext() if t.strip()]).strip()
+            "name": name.text,
+            "address": "\n".join(
+                [t.strip() for t in address.itertext() if t.strip()]
+            ).strip(),
         }
-    
+
     def citation(self, el):
         phase = el.attrib["cited-phase"]
         office = el.attrib.get("office", "")
         pat_cite = el.find("./reg:patcit", NS)
         if pat_cite is not None:
-            citation = self.docid(
-                pat_cite
-            )
+            citation = self.docid(pat_cite)
         else:
             citation = el.find("./reg:nplcit/reg:text", NS).text
         category = (
@@ -568,49 +561,72 @@ class EpoConnector(OpenPatentServicesConnector):
             if el.find("./reg:category", NS) is not None
             else ""
         )
-        relevant_passages = pat_cite.find('./reg:text', NS).text
+        relevant_passages = pat_cite.find("./reg:text", NS).text
         return {
             "phase": phase,
             "office": office,
             "citation": citation,
             "category": category,
-            "relevant_passages": relevant_passages
+            "relevant_passages": relevant_passages,
         }
-    
+
     def step(self, el):
-        date = el.find('./reg:procedural-step-date/reg:date', NS)
+        date = el.find("./reg:procedural-step-date/reg:date", NS)
         return {
-            'phase': el.attrib['procedure-step-phase'],
-            'description': ' - '.join([e.text for e in el.findall('./reg:procedural-step-text', NS)]),
-            'date': date.text.strip() if date is not None else None,
-            'code': el.find('./reg:procedural-step-code', NS).text.strip(),
+            "phase": el.attrib["procedure-step-phase"],
+            "description": " - ".join(
+                [e.text for e in el.findall("./reg:procedural-step-text", NS)]
+            ),
+            "date": date.text.strip() if date is not None else None,
+            "code": el.find("./reg:procedural-step-code", NS).text.strip(),
         }
 
     def procedural_steps(self, epodoc):
-        tree = self.xml_data(epodoc, 'procedural-steps')
-        doc = tree.find('.//reg:register-document', NS)
-        return [self.step(el) for el in doc.find('./reg:procedural-data', NS)]
+        tree = self.xml_data(epodoc, "procedural-steps")
+        doc = tree.find(".//reg:register-document", NS)
+        return [self.step(el) for el in doc.find("./reg:procedural-data", NS)]
 
     def bib_data(self, epodoc):
-        tree = self.xml_data(epodoc, 'biblio')
-        doc = tree.find('.//reg:register-document', NS)
-        bib = doc.find('./reg:bibliographic-data', NS)
-        parties = bib.find('./reg:parties', NS)
+        tree = self.xml_data(epodoc, "biblio")
+        doc = tree.find(".//reg:register-document", NS)
+        bib = doc.find("./reg:bibliographic-data", NS)
+        parties = bib.find("./reg:parties", NS)
         output = dict()
-        output['number'] = epodoc.number
-        output['kind'] = epodoc.kind
-        output['case_number'] = epodoc.number + epodoc.kind
-        output['epodoc'] = epodoc
-        output['doc_type'] = epodoc.doc_type
-        output['status'] = [self.status(el) for el in doc.find('./reg:ep-patent-statuses', NS)]
-        output['publications'] = [self.docid(el) for el in bib.findall('./reg:publication-reference', NS)]
-        output['intl_class'] = [''.join(el.itertext()).strip() for el in bib.find('./reg:classifications-ipcr', NS)]
-        output['applications'] = [self.docid(el) for el in bib.findall('./reg:application-reference', NS)]
-        output['filing_language'] = bib.find('./reg:language-of-filing', NS).text
-        output['priority_claims'] = [self.priority_claim(el) for el in bib.find('reg:priority-claims', NS)]
-        output['applicants'] = [self.party(el) for el in parties.find('./reg:applicants', NS)]
-        output['inventors'] = [self.party(el) for el in parties.find('./reg:inventors', NS)]
-        output['designated_states'] = [c.strip() for c in bib.find('./reg:designation-of-states', NS).itertext() if c.strip()]
-        output['title'] = bib.find('./reg:invention-title[@lang="en"]', NS).text
-        output['citations'] = [self.citation(el) for el in bib.find('./reg:references-cited', NS)]
+        output["number"] = epodoc.number
+        output["kind"] = epodoc.kind
+        output["case_number"] = epodoc.number + epodoc.kind
+        output["epodoc"] = epodoc
+        output["doc_type"] = epodoc.doc_type
+        output["status"] = [
+            self.status(el) for el in doc.find("./reg:ep-patent-statuses", NS)
+        ]
+        output["publications"] = [
+            self.docid(el) for el in bib.findall("./reg:publication-reference", NS)
+        ]
+        output["intl_class"] = [
+            "".join(el.itertext()).strip()
+            for el in bib.find("./reg:classifications-ipcr", NS)
+        ]
+        output["applications"] = [
+            self.docid(el) for el in bib.findall("./reg:application-reference", NS)
+        ]
+        output["filing_language"] = bib.find("./reg:language-of-filing", NS).text
+        output["priority_claims"] = [
+            self.priority_claim(el) for el in bib.find("reg:priority-claims", NS)
+        ]
+        output["applicants"] = [
+            self.party(el) for el in parties.find("./reg:applicants", NS)
+        ]
+        output["inventors"] = [
+            self.party(el) for el in parties.find("./reg:inventors", NS)
+        ]
+        output["designated_states"] = [
+            c.strip()
+            for c in bib.find("./reg:designation-of-states", NS).itertext()
+            if c.strip()
+        ]
+        output["title"] = bib.find('./reg:invention-title[@lang="en"]', NS).text
+        output["citations"] = [
+            self.citation(el) for el in bib.find("./reg:references-cited", NS)
+        ]
         return output

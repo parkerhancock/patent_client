@@ -1,15 +1,13 @@
 import os
-import re
-from collections import namedtuple
 
-from lxml import etree as ET
 from patent_client.epo_ops import CACHE_DIR
 from patent_client.util import Manager
 from patent_client.util import Model
 from patent_client.util import one_to_one
 from PyPDF2 import PdfFileMerger
 
-from .ops import InpadocConnector, EpoConnector
+from .ops import EpoConnector
+from .ops import InpadocConnector
 
 inpadoc_connector = InpadocConnector()
 epo_connector = EpoConnector()
@@ -156,4 +154,3 @@ class Epo(Model):
     @property
     def procedural_steps(self):
         return epo_connector.procedural_steps(self.epodoc)
-

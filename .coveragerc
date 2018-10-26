@@ -6,11 +6,13 @@ source =
 [run]
 branch = true
 source =
-    patent_client 
-    tests
+    src/patent_client
 parallel = true
 
 [report]
 show_missing = true
 precision = 2
-omit = *migrations*
+omit = 
+    *migrations*
+    *tests*
+    *setup*
