@@ -16,11 +16,6 @@
     :alt: Supported versions
     :target: https://pypi.python.org/pypi/patent_client
 
-Warning
-==============
-
-This project is under active development. Please treat this as a rough draft. NOT PRODUCTION READY.
-
 Overview
 ========
 
