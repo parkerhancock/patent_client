@@ -1,8 +1,6 @@
 import datetime
-import json
 from collections import OrderedDict
 
-import pytest
 from patent_client.uspto_exam_data import USApplication
 
 
@@ -95,15 +93,14 @@ class TestPatentExaminationData:
         ]
 
     def test_search_patex_by_assignee(self):
-        data = USApplication.objects.filter(
-            first_named_applicant="LogicBlox"
-        )
+        data = USApplication.objects.filter(first_named_applicant="LogicBlox")
         assert data.order_by("appl_id").values_list("patent_title", flat=True)[:5] == [
-            'MAINTENANCE OF ACTIVE DATABASE QUERIES', 'LEAPFROG TREE-JOIN', 
-            'SALIENT SAMPLING FOR QUERY SIZE ESTIMATION', 
-            'TRANSACTION REPAIR', 
-            'LEAPFROG TREE-JOIN'
-            ]
+            "MAINTENANCE OF ACTIVE DATABASE QUERIES",
+            "LEAPFROG TREE-JOIN",
+            "SALIENT SAMPLING FOR QUERY SIZE ESTIMATION",
+            "TRANSACTION REPAIR",
+            "LEAPFROG TREE-JOIN",
+        ]
 
     def test_get_many_by_publication_number(self):
         nos = [

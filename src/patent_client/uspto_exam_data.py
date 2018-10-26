@@ -11,9 +11,9 @@ import inflection
 import requests
 from dateutil.parser import parse as parse_dt
 from patent_client import CACHE_BASE
+from patent_client.util import hash_dict
 from patent_client.util import Manager
 from patent_client.util import Model
-from patent_client.util import hash_dict
 from patent_client.util import one_to_many
 
 
@@ -72,14 +72,12 @@ class USApplicationManager(Manager):
 
     def get_many(self, *args, **kwargs):
         manager = self.__class__(
-            *args,
-            **{**kwargs, **self.kwargs, **dict(default_connector="OR")},
+            *args, **{**kwargs, **self.kwargs, **dict(default_connector="OR")}
         )
         return manager
 
     def _generate_query(self, params=dict()):
         params = {**self.filter_params, **dict(sort=self.sort_params), **params}
-        default_connector = params.get("default_connector", "AND")
         if "default_connector" in params:
             del params["default_connector"]
         sort_query = ""
