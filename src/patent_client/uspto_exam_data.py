@@ -414,6 +414,7 @@ class USApplication(Model):
     objects = USApplicationManager()
     trials = one_to_many("patent_client.PtabTrial", patent_number="patent_number")
     inpadoc = one_to_many("patent_client.Inpadoc", number="appl_id")
+    assignments = one_to_many("patent_client.Assignment", application="appl_id")
 
     @property
     def publication(self):

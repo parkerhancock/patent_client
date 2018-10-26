@@ -2,6 +2,10 @@
 Changelog
 =========
 
+0.1.5 (2018-10-25)
+------------------
+* Massive refactor of OPS client
+
 0.1.4 (2018-10-24)
 ------------------
 * Support for USPTO Applications, Assignments, and PTAB documents
