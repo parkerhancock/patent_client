@@ -24,7 +24,7 @@ def read(*names, **kwargs):
 
 setup(
     name="patent_client",
-    version="0.1.5",
+    version="version='0.1.6'",
     license="Apache Software License 2.0",
     description="A set of ORM-style clients for publicly available intellectual property data",
     long_description="%s\n%s"
