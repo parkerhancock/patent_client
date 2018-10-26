@@ -4,12 +4,14 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-patent_client = {editable = true, path = "."}
+pytest = "*"
+patent-client = {editable = true, path = "."}
 
 [dev-packages]
 codecov = "*"
 pytest = "*"
 pytest-cov = "*"
+bumpversion = "*"
 
 [requires]
 python_version = "3.6"
