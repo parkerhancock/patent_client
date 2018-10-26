@@ -2,7 +2,8 @@ language: python
 python:
     - "3.6"
 install:
-    - pip install .
+  - 'pip install pipenv'
+  - 'pipenv sync'
 script:
     - pip install -r requirements.txt
     - pytest --cov=./

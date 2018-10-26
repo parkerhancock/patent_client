@@ -1,4 +1,5 @@
-__version__ = "0.1.7"
+# flake8: noqa
+__version__ = "0.1.10"
 
 import json
 import os
@@ -30,4 +31,3 @@ from patent_client.uspto_assignments import Assignment  # isort:skip
 from patent_client.uspto_exam_data import USApplication  # isort:skip
 from patent_client.uspto_ptab import PtabDocument  # isort:skip
 from patent_client.uspto_ptab import PtabTrial  # isort:skip
-
