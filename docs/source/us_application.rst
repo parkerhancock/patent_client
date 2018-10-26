@@ -92,7 +92,7 @@ Relationships
 Attribute       Relationship Type   Object          Join Condition
 ============    =================   ============    ===========================================
 trials          one-to-many         PtabTrial       patent_number=patent_number
-assignments     one-to-many         Assignment      appl_id=app_num
+assignments     one-to-many         Assignment      appl_id=application
 inpadoc_pub     one-to-one          Inpadoc         app_early_pub_number=publication_number        
 inpadoc_pat     one-to-one          Inpadoc         patent_number=publication_number
 ============    =================   ============    ===========================================
