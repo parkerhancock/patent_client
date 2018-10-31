@@ -117,6 +117,7 @@ class Manager:
         self.values_params = dict()
         self.filter_params = dict()
         self.sort_params = list()
+        self.items = list()
 
         for key, value in kwargs.items():
             if "values__" in key:
@@ -124,6 +125,10 @@ class Manager:
                 self.values_params[new_key] = value
             elif key == "sort":
                 self.sort_params = value
+            elif (
+                key == "items"
+            ):  # if you want to include actual items rather than generator parameters
+                self.items = value
             else:
                 self.filter_params[key] = value
 
