@@ -20,7 +20,7 @@ copyright = "2018, Parker Hancock"
 author = "Parker Hancock"
 
 # The full version, including alpha/beta/rc tags
-version = release = "0.2.0"
+version = release = "0.2.1"
 
 
 # -- General configuration ---------------------------------------------------
