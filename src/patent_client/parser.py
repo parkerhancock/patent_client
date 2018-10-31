@@ -2,7 +2,7 @@ import re
 
 SERIAL_RE = re.compile(r"[\d\-\/\,]{2,}")
 NUMBER_CLEAN_RE = re.compile(r"[^\d]+")
-PUNCTUATION_AND_WHITESPACE_CLEAN_RE = re.compile("\W+")
+PUNCTUATION_AND_WHITESPACE_CLEAN_RE = re.compile(r"\W+")
 COUNTRY_CODE_RE = re.compile(r"^[A-Z]{2,3}")
 KIND_CODE_RE = re.compile(r"[A-Z]\d?$")
 COUNTRY_CODES = ["US", "EP", "PCT", "WO", "CA"]
@@ -146,7 +146,7 @@ class PCTApplication:
         elif style == "new":
             return f"PCT/{self.country}{self.year}/{self.number}"
         else:
-            raise ArgumentError()
+            raise ValueError()
 
     def __str__(self):
         return f"PCT{self.country}{self.year}{self.number}"
