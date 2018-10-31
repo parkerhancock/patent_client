@@ -134,7 +134,7 @@ class Manager:
 
     @property
     def kwargs(self):
-        kwargs = {**self.filter_params, **dict(sort=self.sort_params)}
+        kwargs = {**self.filter_params, **dict(sort=self.sort_params, items=self.items)}
         for key, value in self.values_params.items():
             kwargs["values__" + key] = value
         return kwargs
