@@ -65,6 +65,62 @@ DocDB = namedtuple("DocDB", ["country", "number", "kind", "date", "doc_type"])
 whitespace_re = re.compile(" +")
 country_re = re.compile(r"^[A-Z]{2}")
 ep_case_re = re.compile(r"EP(?P<number>[\d]+)(?P<kind>[A-Z]\d)?")
+Claim = namedtuple("Claim", ["number", "text", "limitations"])
+cn_re = re.compile(r"^\d+")
+
+
+def clean_claims(claims):
+    def parse_claim(limitations, counter):
+        preamble = limitations[0]
+        if preamble[0].isupper():
+            claim_number = counter
+            limitations = [f"{str(claim_number)}. {preamble}", *limitations[1:]]
+            counter += 1
+        elif cn_re.search(preamble):
+            claim_number = int(cn_re.search(preamble).group(0))
+            counter = claim_number + 1
+        return (
+            Claim(
+                number=claim_number,
+                text="\n".join(limitations),
+                limitations=limitations,
+            ),
+            counter,
+        )
+
+    lines = claims.split("\n")
+
+    preambles = ["i claim", "we claim", "what is claimed", "claims"]
+    c_preambles = ["a", "an", "the"]
+
+    if any(pa in lines[0].lower().replace(" ", "") for pa in preambles):
+        lines = lines[1:]
+
+    new_lines = list()
+
+    for line in lines:
+        segments = re.split(r"(?<=[^\d]\.) ", line)
+        new_lines += segments
+
+    claims = list()
+    counter = 1
+    limitations = list()
+    while new_lines:
+        line = new_lines.pop(0)
+        if limitations and (
+            any(cp in line[0].split()[0].lower() for cp in c_preambles)
+            or cn_re.search(line)
+            or not new_lines
+        ):
+            claim, counter = parse_claim(limitations, counter)
+            claims.append(claim)
+            limitations = [line]
+        else:
+            limitations.append(line)
+
+    claim, counter = parse_claim(limitations, counter)
+    claims.append(claim)
+    return claims
 
 
 class OPSException(Exception):
@@ -449,13 +505,17 @@ class InpadocConnector(OpenPatentServicesConnector):
 
     def claims(self, doc_db):
         tree = self.xml_data(doc_db, "claims")
-        return [
+        claim_text = [
             "".join(e.itertext()).strip()
             for e in tree.findall(
                 './ft:fulltext-documents/ft:fulltext-document/ft:claims[@lang="EN"]/ft:claim/ft:claim-text',
                 NS,
             )
         ]
+        if len(claim_text) == 1:
+            return clean_claims(claim_text[0])
+        else:
+            return claim_text
 
     def images(self, doc_db):
         if doc_db.doc_type == "application":

@@ -131,6 +131,16 @@ class TestInpadoc:
         results = Inpadoc.objects.filter(cql_query='pa="Scientific Drilling"')
         assert len(results) == 206
 
+    def test_can_separate_claims(self):
+        doc = Inpadoc.objects.get("WO2018148832A1")
+        claims = doc.full_text.claims
+        assert len(claims) == 45
+        print(claims[5].text)
+        assert (
+            claims[5].text
+            == "6. The method of claim 5, wherein the rock transporter is a haul truck and the rock crusher is a primary rock crusher."
+        )
+
 
 class TestEpoRegister:
     def test_can_get_epo_data(self):
