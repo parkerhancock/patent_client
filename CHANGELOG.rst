@@ -2,6 +2,10 @@
 Changelog
 =========
 
+0.2.3 (2018-11-02)
+------------------
+* Added parser for Inpadoc claims so they have an object repesentation
+
 0.1.5 (2018-10-25)
 ------------------
 * Massive refactor of OPS client
@@ -17,4 +21,3 @@ Changelog
 
 * First release on PyPI.
 * Support for EPO OPS (except Classification data)
-

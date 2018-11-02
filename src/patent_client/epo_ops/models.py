@@ -95,6 +95,14 @@ class Inpadoc(Model):
         for doc_db in inpadoc_connector.family(self.doc_db):
             yield Inpadoc(inpadoc_connector.bib_data(doc_db)[0])
 
+    @property
+    def specification(self):
+        return self.full_text.description
+
+    @property
+    def claims(self):
+        return self.full_text.claims
+
 
 class InpadocFullText(Model):
     objects = InpadocFullTextManager()

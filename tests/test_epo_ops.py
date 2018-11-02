@@ -17,8 +17,9 @@ class TestInpadoc:
         assert pub.applicants == ["US WELL SERVICES LLC"]
         assert pub.inventors == ["OEHRING, JARED, ", "HINDERLITER, BRANDON"]
         assert len(pub.full_text.description) == 35306
-        assert pub.full_text.claims[:5] == [
-            "1. A fracturing system comprising: a turbine generator having an electrical output; an electric motor that is in electrical communication with the electrical output; a fracturing pump that is driven by the electric motor; and a wireline system that is in electrical communication with the electrical output.",
+        print(pub.full_text.claims[0].text)
+        assert [c.text for c in pub.full_text.claims[:5]] == [
+            "1. A fracturing system comprising:\na turbine generator having an electrical output;\nan electric motor that is in electrical communication with the electrical output;\na fracturing pump that is driven by the electric motor; and\na wireline system that is in electrical communication with the electrical output.",
             "2. The system of claim 1, further comprising a variable frequency drive connected to the electric motor to control the speed of the motor, wherein the variable frequency drive frequently performs electric motor diagnostics to prevent damage to the at least one electric motor.",
             "3. The system of claim 1, wherein the wireline system comprises a wireline tool that is disposable in a wellbore that is selected from the group consisting of a perforating gun, a plug, a formation logging tool, a cutting tool, a casing imaging tool, and combinations thereof.",
             "4. The system of claim 1, further comprising trailers that contain at least one power distribution panel that supplies power to the hydraulic fracturing equipment.",
@@ -130,6 +131,16 @@ class TestInpadoc:
     def test_can_take_raw_cql_query(self):
         results = Inpadoc.objects.filter(cql_query='pa="Scientific Drilling"')
         assert len(results) == 206
+
+    def test_can_separate_claims(self):
+        doc = Inpadoc.objects.get("WO2018148832A1")
+        claims = doc.full_text.claims
+        assert len(claims) == 45
+        print(claims[5].text)
+        assert (
+            claims[5].text
+            == "6. The method of claim 5, wherein the rock transporter is a haul truck and the rock crusher is a primary rock crusher."
+        )
 
 
 class TestEpoRegister:
