@@ -82,3 +82,9 @@ class TestAssignment:
         ]
         # assert list(assignments.aggregate('pat_assignor_name')) == False
         # assert False
+
+    def test_bug_scidrill(self):
+        assignments = Assignment.objects.filter(assignee="Scientific Drilling")
+        assignment_list = list(assignments.values_list('appl_num', flat=True))
+        assert len(assignment_list) == 58
+

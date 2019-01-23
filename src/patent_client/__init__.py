@@ -1,5 +1,5 @@
 # flake8: noqa
-__version__ = "0.2.3"
+__version__ = "0.3.0"
 
 
 import json
@@ -8,11 +8,11 @@ import shutil
 import time
 from pathlib import Path
 
-__version__ = "0.2.3"
+__version__ = "0.3.0"
 
 CACHE_BASE = Path("~/.patent_client").expanduser()
 CACHE_BASE.mkdir(exist_ok=True)
-CACHE_MAX_AGE = 60 * 60 * 24 * 7  # 1 week
+CACHE_MAX_AGE = 60 * 60 * 24 * 3  # 3 days 
 now = time.time()
 # Clear old files out of cache
 for path, folders, files in os.walk(CACHE_BASE):

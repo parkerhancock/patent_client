@@ -73,8 +73,8 @@ lim_re = re.compile(r"([:;])")
 def clean_claims(claims):
     def parse_claim(limitations, counter):
         preamble = limitations[0]
+        claim_number = counter
         if preamble[0].isupper():
-            claim_number = counter
             limitations = [f"{str(claim_number)}. {preamble}", *limitations[1:]]
             counter += 1
         elif cn_re.search(preamble):

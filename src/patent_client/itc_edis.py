@@ -9,10 +9,7 @@ import requests
 from patent_client import CACHE_BASE
 from patent_client import SETTINGS
 
-from .util import Manager
-from .util import Model
-from .util import one_to_many
-from .util import one_to_one
+from .util import Manager, Model, one_to_many, one_to_one
 
 CLIENT_SETTINGS = SETTINGS["ItcEdis"]
 if os.environ.get("EDIS_USER", False):

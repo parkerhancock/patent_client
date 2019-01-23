@@ -87,7 +87,7 @@ def recur_accessor(obj, accessor):
             pass
         try:
             new_obj = obj[a]
-        except (KeyError, TypeError):
+        except (KeyError, TypeError, IndexError):
             new_obj = None
     if not rest:
         return new_obj
@@ -107,6 +107,10 @@ class Model(object):
             except ValueError:  # Malformed datetimes:
                 self.data[k] = None
             setattr(self, k, self.data[k])
+    
+    def dict(self):
+        return {key: getattr(self, key) for key in self.attrs if hasattr(self, key)}
+
 
 
 class Manager:
@@ -209,11 +213,12 @@ class Manager:
     def __getitem__(self, key):
         """resolves slices and keys into Model objects. Relies on .get_item(key) to obtain
         the record itself"""
-
         if type(key) == slice:
             indices = list(range(len(self)))[key.start : key.stop : key.step]
             return [self.__getitem__(index) for index in indices]
         else:
+            if key >= len(self):
+                raise StopIteration
             obj = self.get_item(key)
             if "fields" in self.values_params:
                 data = obj.data
