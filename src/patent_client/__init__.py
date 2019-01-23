@@ -12,7 +12,7 @@ __version__ = "0.2.3"
 
 CACHE_BASE = Path("~/.patent_client").expanduser()
 CACHE_BASE.mkdir(exist_ok=True)
-CACHE_MAX_AGE = 60 * 60 * 24 * 7  # 1 week
+CACHE_MAX_AGE = 60 * 60 * 24 * 3  # 3 days 
 now = time.time()
 # Clear old files out of cache
 for path, folders, files in os.walk(CACHE_BASE):

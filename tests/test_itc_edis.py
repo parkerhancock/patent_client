@@ -2,7 +2,9 @@ import datetime
 
 from patent_client import ITCInvestigation
 
+import pytest
 
+@pytest.mark.skip('Authentication Issue')
 class TestItcEdis:
     def test_can_get_investigation(self):
         inv = ITCInvestigation.objects.get("337-TA-1025")

@@ -5,12 +5,11 @@ from patent_client.uspto_exam_data import USApplication
 
 
 class TestPatentExaminationData:
-    """
+    
     def test_search_by_customer_number(self):
-        result = USApplication.objects.search(app_cust_number="70155")
-        print(json.dumps(result))
-        assert False
-    """
+        result = USApplication.objects.filter(app_cust_number="70155")
+        assert len(result) > 1
+    
 
     def test_get_by_pub_number(self):
         pub_no = "US20060127129A1"
@@ -85,11 +84,11 @@ class TestPatentExaminationData:
         data = USApplication.objects.filter(*app_nos)
         print(list(data.values("inventors__0__nameLineOne")))
         assert list(data.values("inventors__0__nameLineOne")) == [
-            OrderedDict([("inventors_0_nameLineOne", "Todd  Coli")]),
-            OrderedDict([("inventors_0_nameLineOne", "Schelske, Eldon")]),
-            OrderedDict([("inventors_0_nameLineOne", "Jeffrey G. Morris")]),
-            OrderedDict([("inventors_0_nameLineOne", "Todd  Coli")]),
-            OrderedDict([("inventors_0_nameLineOne", "Todd  Coli")]),
+            OrderedDict([("inventors_0_nameLineOne", "Coli")]),
+            OrderedDict([("inventors_0_nameLineOne", "Schelske")]),
+            OrderedDict([("inventors_0_nameLineOne", "Morris")]),
+            OrderedDict([("inventors_0_nameLineOne", "Coli")]),
+            OrderedDict([("inventors_0_nameLineOne", "Coli")]),
         ]
 
     def test_search_patex_by_assignee(self):
@@ -113,7 +112,6 @@ class TestPatentExaminationData:
         data = USApplication.objects.filter(app_early_pub_number=nos)
         assert len(list(data)) == 5
 
-    # @pytest.mark.skip('This function doesn\'nt work with the ORM Style. Consider dropping it')
     def test_mixed_get_many(self):
         pats = ["7627658", "7551922", "7359935"]
         pubs = ["US20080034424A1", "US20100020700A1", "US20110225644A1"]
@@ -124,7 +122,98 @@ class TestPatentExaminationData:
         assert len(data) == 9
 
     def test_get_search_fields(self):
-        result = USApplication.objects.fields()
+        result = USApplication.objects.fields
         assert "patent_number" in result
         assert "appl_id" in result
         assert "app_early_pub_number" in result
+    
+    def test_get_child_data(self):
+        parent = USApplication.objects.get('14018930')
+        child = parent.children[0]
+        assert child.appl_id == '14919159'
+        assert child.filing_date == datetime.date(2015, 10, 21)
+        assert child.aia == False
+        assert child.patent_number == '10120906'
+        assert child.status == 'Patented'
+        assert child.relationship == 'claims the benefit of'
+        assert child.application.patent_title == 'LEAPFROG TREE-JOIN'
+        assert child.dict() == {
+            'aia': False,
+            'appl_id': '14919159',
+            'filing_date': datetime.date(2015, 10, 21),
+            'patent_number': '10120906',
+            'relationship': 'claims the benefit of',
+            'status': 'Patented'
+        }
+    
+    def test_get_parent_data(self):
+        child = USApplication.objects.get('14018930')
+        parent = child.parents[0]
+        assert parent.appl_id == '61706484'
+        assert parent.filing_date == datetime.date(2012,9,27)
+        assert parent.aia == False
+        assert parent.patent_number == None
+        assert parent.status == 'Expired'
+        assert parent.relationship == 'Claims Priority from Provisional Application'
+        assert parent.application.patent_title == 'Leapfrog Tree-Join'
+        assert parent.dict() == {
+            'aia': False,
+            'appl_id': '61706484',
+            'filing_date': datetime.date(2012,9,27),
+            'patent_number': None,
+            'relationship': 'Claims Priority from Provisional Application',
+            'status': 'Expired'
+        }
+
+    def test_pta_history(self):
+        app = USApplication.objects.get('14095073')
+        pta_history = app.pta_pte_history
+        assert len(pta_history) > 10
+        entry = pta_history[0]
+        assert entry.number == 0.5
+        assert entry.date == datetime.date(2013,12,3)
+        assert entry.description == 'Filing date'
+        assert entry.pto_days == 0
+        assert entry.applicant_days == 0
+        assert entry.start == 0.0
+
+    def test_pta_summary(self):
+        app = USApplication.objects.get('14095073')
+        assert app.pta_pte_summary.dict() == {
+            'type': 'PTA', 
+            'a_delay': 169, 
+            'b_delay': 0, 
+            'c_delay': 0, 
+            'overlap_delay': 0, 
+            'pto_delay': 169, 
+            'applicant_delay': 10, 
+            'pto_adjustments': 0, 
+            'total_days': 159}
+
+    def test_transactions(self):
+        app = USApplication.objects.get('14095073')
+        assert len(app.transaction_history) > 70
+        assert app.transaction_history[0].dict() == {
+            'code': 'C602',
+            'date': datetime.date(2013, 12, 3),
+            'description': 'Oath or Declaration Filed (Including Supplemental)'
+        }
+
+    def test_correspondent(self):
+        app = USApplication.objects.get('14095073')
+        assert app.correspondent.dict() == {
+            'name_line_one': 'VINSON & ELKINS L.L.P.', 
+            'cust_no': '22892', 
+            'street_line_one': 'First City Tower, 1001 Fannin Street', 
+            'street_line_two': 'Suite 2500', 
+            'city': 'HOUSTON', 
+            'geo_region_code': 'TX', 
+            'postal_code': '77002-6760'
+        }
+
+    def test_attorneys(self):
+        app = USApplication.objects.get('14095073')
+        assert len(app.attorneys) > 1
+        print(app.attorneys[0].dict())
+        assert app.attorneys[0].dict() == {'registration_no': '32429', 'full_name': 'Mims, Peter  ', 'phone_num': '713-758-2732', 'reg_status': 'ACTIVE'}
+        

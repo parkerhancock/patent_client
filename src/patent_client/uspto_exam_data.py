@@ -4,7 +4,7 @@ import re
 import time
 import warnings
 import xml.etree.ElementTree as ET
-from datetime import date
+from datetime import date, datetime
 from zipfile import ZipFile
 
 import inflection
@@ -14,7 +14,7 @@ from patent_client import CACHE_BASE
 from patent_client.util import hash_dict
 from patent_client.util import Manager
 from patent_client.util import Model
-from patent_client.util import one_to_many
+from patent_client.util import one_to_many, one_to_one
 
 
 class HttpException(Exception):
@@ -37,7 +37,7 @@ CACHE_DIR = CACHE_BASE / "uspto_examination_data"
 CACHE_DIR.mkdir(exist_ok=True)
 
 session = requests.Session()
-session.headers["User-Agent"] = "python-ip"
+session.headers["User-Agent"] = "python_patent_client"
 
 
 class USApplicationManager(Manager):
@@ -94,19 +94,21 @@ class USApplicationManager(Manager):
             del params["sort"]
 
         query = ""
+        mm_active = True
         for k, v in params.items():
             field = inflection.camelize(k, uppercase_first_letter=False)
             if not v:
                 continue
             elif type(v) in (list, tuple):
                 body = f" OR ".join(v)
+                mm_active = False
             else:
                 body = v
             query += f"{field}:({body}) "
 
         mm = "100%" if "appEarlyPubNumber" not in query else "90%"
 
-        return {
+        query = {
             "qf": QUERY_FIELDS,
             "fl": "*",
             "searchText": query.strip(),
@@ -114,9 +116,13 @@ class USApplicationManager(Manager):
             "facet": "false",
             "mm": mm,
         }
+        if not mm_active:
+            del query['mm']
+        return query
 
     def request(self, params=dict()):
         query_params = self._generate_query(params)
+        print(json.dumps(query_params))
         fname = hash_dict(query_params) + ".json"
         fname = os.path.join(CACHE_DIR, fname)
         if not os.path.exists(fname):
@@ -159,7 +165,7 @@ class USApplicationManager(Manager):
                 raise HttpException("Packaging Request Failed!")
 
             start = time.time()
-            while time.time() - start < 60:
+            while time.time() - start < 600:
                 response = session.get(STATUS_URL.format(query_id=query_id))
                 if not response.ok:
                     raise HttpException("Status Request Failed!")
@@ -185,6 +191,7 @@ class USApplicationManager(Manager):
                     f.write(chunk)
         self.objs = USApplicationXmlSet(fname, num_found)
 
+    @property
     def fields(self):
         url = "https://ped.uspto.gov/api/search-fields"
         response = session.get(url)
@@ -413,6 +420,12 @@ class USApplication(Model):
     trials = one_to_many("patent_client.PtabTrial", patent_number="patent_number")
     inpadoc = one_to_many("patent_client.Inpadoc", number="appl_id")
     assignments = one_to_many("patent_client.Assignment", application="appl_id")
+    attrs =['appl_id', 'applicants', 'app_filing_date', 'app_exam_name', 
+    'inventor_name', 'inventors', 'app_early_pub_number', 'app_early_pub_date', 
+    'app_location', 'app_grp_art_number', 'patent_number', 'patent_issue_date', 
+    'app_status', 'app_status_date', 'patent_title', 'app_attr_dock_number', 
+    'first_inventor_file', 'app_type', 'app_cust_number', 'app_cls_sub_cls', 
+    'corr_addr_cust_no', 'app_entity_status', 'app_confr_number']
 
     @property
     def publication(self):
@@ -421,5 +434,95 @@ class USApplication(Model):
         else:
             return self.app_early_pub_number
 
+    @property
+    def transaction_history(self):
+       return list(sorted((Transaction(d) for d in self.data.get('transactions', list())), key=lambda x: x.date)) 
+
+    @property
+    def children(self):
+        return [Relationship(d) for d in self.data.get('child_continuity', list())]
+    
+    @property
+    def parents(self):
+        return [Relationship(d) for d in self.data.get('parent_continuity', list())]
+
+    @property
+    def pta_pte_history(self):
+        return list(sorted((PtaPteHistory(d) for d in self.data.get('pta_pte_tran_history', list())), key=lambda x: x.number))
+
+    @property
+    def pta_pte_summary(self):
+        return PtaPteSummary(self.data)
+
+    @property
+    def correspondent(self):
+        return Correspondent(self.data)
+
+    @property
+    def attorneys(self):
+        return list(Attorney(d) for d in self.data.get('attrny_addr', list()))
+
     def __repr__(self):
         return f"<USApplication(appl_id={self.appl_id})>"
+
+class Relationship(Model):
+    application = one_to_one("patent_client.USApplication", appl_id='appl_id')
+    attrs = ['appl_id', 'filing_date', 'patent_number', 'status', 'relationship', 'aia']
+
+    def __init__(self, *args, **kwargs):
+        super(Relationship, self).__init__(*args, **kwargs)
+        data = self.data
+        self.appl_id = data['claim_application_number_text']
+        self.filing_date = data['filing_date']
+        self.patent_number = data.get('patent_number_text', None) or None
+        self.status = data['application_status']
+        self.relationship = data['application_status_description'].replace('This application ', '')
+        self.aia = data['aia_indicator'] == 'Y'
+
+class PtaPteHistory(Model):
+    attrs = ['number', 'date', 'description', 'pto_days', 'applicant_days', 'start']
+
+    def __init__(self, *args, **kwargs):
+        super(PtaPteHistory, self).__init__(*args, **kwargs)
+        data = self.data
+        self.number = float(data['number'])
+        self.date = data['pta_or_pte_date']
+        self.description = data['contents_description']
+        self.pto_days = float(data['pto_days'] or 0)
+        self.applicant_days = float(data['appl_days'] or 0)
+        self.start = float(data['start'])
+
+class PtaPteSummary(Model):
+    attrs = ['type', 'a_delay', 'b_delay', 'c_delay', 'overlap_delay', 'pto_delay', 'applicant_delay', 'pto_adjustments', 'total_days']
+
+    def __init__(self, data):
+        self.type = data['pta_pte_ind']
+        self.pto_adjustments = int(data['pto_adjustments'])
+        self.overlap_delay = int(data['overlap_delay'])
+        self.a_delay = int(data['a_delay'])
+        self.b_delay = int(data['b_delay'])
+        self.c_delay = int(data['c_delay'])
+        self.pto_delay = int(data['pto_delay'])
+        self.applicant_delay = int(data['appl_delay'])
+        self.total_days = int(data['total_pto_days'])
+
+class Transaction(Model):
+    attrs = ['date', 'code', 'description']
+
+    def __init__(self, data):
+        self.date = datetime.strptime(data['recordDate'][:10], '%Y-%m-%d').date()
+        self.code = data['code']
+        self.description = data['description']
+
+class Correspondent(Model):
+    attrs = ['name_line_one', 'name_line_two', 'cust_no', 'street_line_one', 'street_line_two', 'street_line_three', 'city', 'geo_region_code', 'postal_code']
+
+    def __init__(self, data):
+        for k, v in data.items():
+            if 'corr' == k[:4]:
+                key = k.replace('corr_addr_', '')
+                setattr(self, key, v)
+
+class Attorney(Model):
+    attrs = ['registration_no', 'full_name', 'phone_num', 'reg_status']
+
