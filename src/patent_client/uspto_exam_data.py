@@ -202,6 +202,13 @@ class USApplicationManager(Manager):
         else:
             raise ValueError("Can't get fields!")
 
+    @property
+    def query_fields(self):
+        fields = self.fields
+        for k in sorted(fields.keys()):
+            if 'facet' in k:
+                continue
+            print(f"{k} ({fields[k]})")
 
 ns = dict(
     uspat="urn:us:gov:doc:uspto:patent",
@@ -416,10 +423,73 @@ class USApplicationXmlSet(Manager):
 
 
 class USApplication(Model):
+    """
+    US Application
+    ==============
+    This object wraps a US Application obtained from the Patent Examination Data System (https://peds.uspto.gov)
+    
+    -------------------------
+    To Fetch a US Application
+    -------------------------
+    The main way to create a US Application is by querying the US Application manager at USApplication.objects
+
+        USApplication.objects.filter(query) -> obtains multiple matching applications
+        USApplication.objects.get(query) -> obtains a single matching application, errors if more than one is retreived
+
+    The query can either be a single number, which is treated like an application number, or a keyword argument:
+    
+        USApplication.objects.get("15123456") -> Retreives US Application # 15123456
+        USApplication.objects.get(patent_number="6103599") -> Retreives the US Application which issued as US Patent 6103599
+
+    All arguments can be specified multiple times:
+    
+        USApplication.objects.get("15123456", "15123457") -> Retreives US Applications 15123456 and 15123457
+        USApplication.objects.get(patent_number=['6103599', '6103600']) -> Retreives the US Applications which issued as US Patents 6103599 and 6103600
+
+    NOTE: All keyword arguments are repeated by placing them in a list, but application numbers can be repeated as non-keyword arguments
+
+    Date queries are made as strings in ISO format - YYYY-MM-DD (e.g. 2019-02-01 for Feb. 1, 2019)
+    
+    The complete list of available query fields is at USApplication.objects.fields
+
+    --------------
+    Using the Data
+    --------------
+    Data retreived from the US Patent Examination Data System is populated as attributes on the US Application object.
+    A complete list of available fields is at USApplication.attrs. All the data can be retreived as a Python dictionary
+    by calling USApplication.dict()
+
+    There are also several composite data types available from a US Application, including:
+
+        app.transaction_history -> list of transactions (filings, USPTO actions, etc.) involving the application
+        app.children -> list of child applications
+        app.parents -> list of parent applications
+        app.pta_pte_history -> Patent Term Adjustment / Extension Event History
+        app.pta_pte_summary -> Patent Term Adjustment / Extension Results, including total term extension
+        app.correspondent -> Contact information for prosecuting law firm
+        app.attorneys -> List of attorneys authorized to take action in the case
+
+    Each of these also attaches data as attributes to the objects, and implements a .dict() method.
+
+    ------------
+    Related Data
+    ------------
+    A US Application is also linked to other resources avaialble through patent_client, including:
+    
+        app.trials -> list of PTAB trials involving this application
+        app.inpadoc -> list to corresponding INPADOC objects (1 for each publication)
+            HINT: inpadoc family can be found at app.inpadoc[0].family
+        app.assignments -> list of assignments that mention this application
+
+    Also, related US Applications can be obtained through their relationship:
+
+    app.children[0].application -> a new USApplication object for the first child. 
+
+    """
     objects = USApplicationManager()
     trials = one_to_many("patent_client.PtabTrial", patent_number="patent_number")
     inpadoc = one_to_many("patent_client.Inpadoc", number="appl_id")
-    assignments = one_to_many("patent_client.Assignment", application="appl_id")
+    assignments = one_to_many("patent_client.Assignment", appl_id="appl_id")
     attrs =['appl_id', 'applicants', 'app_filing_date', 'app_exam_name', 
     'inventor_name', 'inventors', 'app_early_pub_number', 'app_early_pub_date', 
     'app_location', 'app_grp_art_number', 'patent_number', 'patent_issue_date', 

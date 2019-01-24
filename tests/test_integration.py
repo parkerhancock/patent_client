@@ -3,7 +3,7 @@ from collections import OrderedDict
 import pytest
 from patent_client import Inpadoc
 from patent_client import PtabTrial
-from patent_client import USApplication
+from patent_client import USApplication, Assignment
 
 
 class TestIntegration:
@@ -45,3 +45,8 @@ class TestIntegration:
             "36408-10",
             "37418-226",
         ]
+    
+    def test_can_get_applications_from_assignment(self):
+        assignments = Assignment.objects.filter(assignee="Covar Applied")
+        assignment = assignments[0]
+        assert assignment.us_applications[0].appl_id == '15274746'

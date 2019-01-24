@@ -14,11 +14,12 @@ class TestAssignment:
         assert len(assignments) >= 9
 
     def test_fetch_assignments_by_patent(self):
-        assignments = Assignment.objects.filter(patent="8,789,601")
+        assignments = Assignment.objects.filter(patent_number="8,789,601")
         assert len(assignments) >= 1
+        assert assignments[0].dict()['id'] == '48041-605'
 
     def test_fetch_assignments_by_application(self):
-        assignments = Assignment.objects.filter(application="14/190,982")
+        assignments = Assignment.objects.filter(appl_id="14/190,982")
         assert len(assignments) >= 1
 
     def test_fetch_assignee_with_greater_than_500_assignments(self):
@@ -26,7 +27,7 @@ class TestAssignment:
         assert len(assignments) >= 1268
 
     def test_get_assignment_image(self):
-        assignments = Assignment.objects.filter(patent=6095661)
+        assignments = Assignment.objects.filter(patent_number=6095661)
         assignment = assignments[0]
         assert (
             assignment.image_url
@@ -87,4 +88,4 @@ class TestAssignment:
         assignments = Assignment.objects.filter(assignee="Scientific Drilling")
         assignment_list = list(assignments.values_list('appl_num', flat=True))
         assert len(assignment_list) == 58
-
+    
