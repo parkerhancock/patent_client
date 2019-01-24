@@ -172,7 +172,6 @@ class OpenPatentServicesConnector:
         response = session.post(
             auth_url, auth=(KEY, SECRET), data={"grant_type": "client_credentials"}
         )
-
         if not response.ok:
             raise OPSAuthenticationException()
 
@@ -216,10 +215,10 @@ class OpenPatentServicesConnector:
             CACHE_DIR, f"{url[37:].replace('/', '_')}{param_hash if params else ''}.xml"
         )
         if os.path.exists(fname):
-            return open(fname).read()
+            return open(fname, encoding='utf-8').read()
         response = self.request(url, params)
         text = response.text
-        with open(fname, "w") as f:
+        with open(fname, "w", encoding='utf-8') as f:
             f.write(text)
         return text
 

@@ -39,7 +39,7 @@ class PtabManager(Manager):
             inflection.camelize(k, uppercase_first_letter=False): v
             for (k, v) in {**self.filter_params, **dict(sort=self.sort_params)}.items()
         }
-        fname = CACHE_DIR / f"{self.__class__}-{hash_dict(params)}.json"
+        fname = CACHE_DIR / f"{self.__class__.__name__}-{hash_dict(params)}.json"
         if not fname.exists():
             response = session.get(self.base_url, params=params)
             with open(fname, "w") as f:
