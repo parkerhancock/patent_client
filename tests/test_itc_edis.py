@@ -4,7 +4,7 @@ from patent_client import ITCInvestigation
 
 import pytest
 
-@pytest.mark.skip('Authentication Issue')
+@pytest.mark.skip('Due to the government shutdown, EDIS is offline')
 class TestItcEdis:
     def test_can_get_investigation(self):
         inv = ITCInvestigation.objects.get("337-TA-1025")

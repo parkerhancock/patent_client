@@ -8,7 +8,8 @@ from dateutil.parser import parse as parse_date
 from inflection import underscore
 from patent_client import CACHE_BASE
 from patent_client.util import Manager
-from patent_client.util import Model
+from patent_client.util import Model, one_to_many, one_to_one
+import datetime
 
 # USPTO has a malconfigured SSL connection. Suppress warnings about it.
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
@@ -67,6 +68,16 @@ class AssignmentParser:
 
 
 class AssignmentManager(Manager):
+    fields = {
+            "patent_number": "PatentNumber",
+            "appl_id": "ApplicationNumber",
+            "app_early_pub_number": "PublicationNumber",
+            "assignee": "OwnerName",
+            "assignor": "PriorOwnerName",
+            "pct_number": "PCTNumber",
+            "correspondent": "CorrespondentName",
+            "reel_frame": "ReelFrame",
+        }
     parser = AssignmentParser()
     rows = 50
     obj_class = "patent_client.uspto_assignments.Assignment"
@@ -92,18 +103,9 @@ class AssignmentManager(Manager):
             application: app no to search
             assignee: assignee name to search
         """
-        fields = {
-            "patent": "PatentNumber",
-            "application": "ApplicationNumber",
-            "publication": "PublicationNumber",
-            "assignee": "OwnerName",
-            "assignor": "PriorOwnerName",
-            "pct_application": "PCTNumber",
-            "correspondent": "CorrespondentName",
-            "reel_frame": "ReelFrame",
-        }
+
         for key, value in self.filter_params.items():
-            field = fields[key]
+            field = self.fields[key]
             query = value
         if field in ["PatentNumber", "ApplicationNumber"]:
             query = NUMBER_CLEAN_RE.sub("", str(query))
@@ -160,9 +162,155 @@ class AssignmentManager(Manager):
         self._len = int(result.attrib["numFound"])
         return [self.parser.doc(doc) for doc in result]
 
+    @property
+    def query_fields(self):
+        fields = self.fields
+        for k in sorted(fields.keys()):
+            print(k)
+
 
 class Assignment(Model):
+    """
+    Assignments
+    ===========
+    This object wraps the USPTO Assignment API (https://assignments.uspto.gov)
+
+    ----------------------
+    To Fetch an Assignment
+    ----------------------
+    The main way to create an Assignment is by querying the Assignment manager at Assignment.objects
+
+    Assignment.objects.filter(query) -> obtains multiple matching applications
+    Assignment.objects.get(query) -> obtains a single matching application, errors if more than one is retreived
+
+    The query can either be a single number, which is treated as a reel/frame number (e.g. "123-1321"), or a keyword.
+    Available query types are: 
+        patent_number, 
+        appl_id (application #), 
+        app_early_pub_number (publication #), 
+        assignee,
+        assignor,
+        pct_number (PCT application #),
+        correspondent,
+        reel_frame
+
+    --------------
+    Using the Data
+    --------------
+    An Assignment object has the following properties:
+        id (reel/frame #)
+        attorney_dock_num
+        conveyance_text
+        last_update_date
+        page_count
+        recorded_date
+        correspondent
+        assignees
+        assignors
+        properties
+
+    Additionally, the original assignment document can be downloaded to the working directory by calling:
+
+    assignment.download()
+    
+    ------------
+    Related Data
+    ------------
+    An Assignment is also linked to other resources available through patent_client. 
+    A list of all assigned applications is available at:
+
+    assignment.us_applications
+
+    Additionally, each property entry in properties links to the corresponding application at:
+
+    assignment.properties[0].us_application
+
+
+    """
+    primary_key='reel_frame'
+    attrs = ['id', 'attorney_dock_num', 'conveyance_text', 
+    'last_update_date', 'page_count', 'recorded_date', 
+    'correspondent', 'assignors', 'assignees', 'properties', 'image_url']
     objects = AssignmentManager()
+    us_applications = one_to_many('patent_client.USApplication', appl_id='appl_num')
 
     def __repr__(self):
         return f"<Assignment(id={self.id})>"
+
+    @property
+    def properties(self):
+        data = self.data
+        properties = list()
+        for i in range(len(data['appl_num'])):
+            properties.append({
+                'appl_id': data['appl_num'][i],
+                'app_filing_date': data['filing_date'][i],
+                'patent_number': data['pat_num'][i],
+                'pct_number': data['pct_num'][i],
+                'intl_publ_date': datetime.datetime.strptime(data['intl_publ_date'][i], '%Y-%m-%d').date() if data['intl_publ_date'][i] else None,
+                'intl_reg_num': data['intl_reg_num'][i],
+                'app_early_pub_date': datetime.datetime.strptime(data['publ_date'][i], '%Y-%m-%d').date() if data['publ_date'][i] else None,
+                'app_early_pub_number': data['publ_num'][i],
+                'patent_issue_date': data['issue_date'][i],
+                'patent_title': data['invention_title'][i],
+                'patent_title_lang': data['invention_title_lang'][i],
+                'inventors': data['inventors'][i],
+            })
+        return [Property(p) for p in properties]
+
+    @property
+    def correspondent(self):
+        data = self.data
+        correspondent_keys = filter(lambda x: 'corr_' in x and 'size' not in x, data.keys())
+        return repartition({k:data[k] for k in correspondent_keys})[0]
+    
+    @property
+    def assignees(self):
+        data = self.data
+        assignee_keys = filter(lambda x: 'pat_assignee_' in x and 'size' not in x, data.keys())
+        return repartition({k:data[k] for k in assignee_keys})
+
+    @property
+    def assignors(self):
+        data = self.data
+        assignor_keys = filter(lambda x: 'pat_assignor_' in x and 'size' not in x, data.keys())
+        return repartition({k:data[k] for k in assignor_keys})
+
+    def download(self):
+        response = session.get(self.image_url, stream=True)
+        with open(f"{self.id}.pdf", 'wb') as f:
+            f.write(response.raw.read())
+
+
+class Property(Model):
+    attrs = ['appl_id', 'app_filing_date', 'pct_number', 'intl_publ_date', 
+    'app_early_pub_number', 'app_early_pub_date', 'patent_number', 'patent_title', 
+    'inventors', 'patent_issue_date']
+    primary_key = 'appl_id'
+    us_application = one_to_one('patent_client.USApplication', appl_id='appl_id')
+
+def repartition(dictionary):
+    types = [type(v) for v in dictionary.values()]
+    keys = list(dictionary.keys())
+    print(dictionary)
+    for i in range(min(len(k) for k in keys)):
+        if not all(keys[0][i] == k[i] for k in keys):
+            break
+
+    
+    if all(t == list() for t in types):
+        lens = [len(v) for v in dictionary.values()]
+        if not all(l == lens[0] for l in lens):
+            raise ValueError('Not all keys have the same length!')
+    
+        output = list()
+        for i in range(len(dictionary[keys[0]])):
+            item = dict()
+            for k in keys:
+                new_key = k[i:]
+                item[new_key] = dictionary[k][i]
+            output.append(item)
+        return output
+
+    else:
+        return [{k[i:]:dictionary[k] for k in keys}]

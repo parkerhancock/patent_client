@@ -41,6 +41,7 @@ class ITCInvestigationManager(Manager):
         ):
             path = "/secretKey/" + USERNAME
             response = session.get(BASE_URL + path, params={"password": PASSWORD})
+            import pdb; pdb.set_trace()
             tree = ET.fromstring(response.text)
             key = tree.find("secretKey").text
             session.auth = (USERNAME, key)
