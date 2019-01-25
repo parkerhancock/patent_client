@@ -84,7 +84,7 @@ class InpadocManager(Manager):
             return Inpadoc(docs[key])
         else:
             # Search Iterator
-            doc_db = self.connector.get_search_item(key, self.filter_params)
+            doc_db = self.connector.get_search_item(key, self.config['filter'])
             return Inpadoc(self.connector.bib_data(doc_db)[0])
 
     @property
