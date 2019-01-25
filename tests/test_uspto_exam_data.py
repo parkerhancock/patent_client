@@ -1,7 +1,7 @@
 import datetime
 from collections import OrderedDict
 
-from patent_client.uspto_exam_data import USApplication
+from patent_client import USApplication
 
 
 class TestPatentExaminationData:

@@ -3,7 +3,7 @@ import os
 import re
 import time
 import warnings
-import xml.etree.ElementTree as ET
+
 from datetime import date, datetime
 from zipfile import ZipFile
 
@@ -15,6 +15,7 @@ from patent_client.util import hash_dict
 from patent_client.util import Manager
 from patent_client.util import Model
 from patent_client.util import one_to_many, one_to_one
+from .xml_parser import USApplicationXmlParser
 
 
 class HttpException(Exception):
@@ -117,12 +118,11 @@ class USApplicationManager(Manager):
             "mm": mm,
         }
         if not mm_active:
-            del query["mm"]
+            del query['mm']
         return query
 
     def request(self, params=dict()):
         query_params = self._generate_query(params)
-        print(json.dumps(query_params))
         fname = hash_dict(query_params) + ".json"
         fname = os.path.join(CACHE_DIR, fname)
         if not os.path.exists(fname):
@@ -159,10 +159,7 @@ class USApplicationManager(Manager):
                 PACKAGE_URL.format(query_id=query_id), params={"format": "XML"}
             )
             if not response.ok:
-                print(response.request.url)
-                print(response.status_code)
-                print(response.text)
-                raise HttpException("Packaging Request Failed!")
+                raise HttpException(f"Packaging Request Failed!\n{response.request.url}\n{response.status_code}\n{response.text}")
 
             start = time.time()
             while time.time() - start < 600:
@@ -181,10 +178,7 @@ class USApplicationManager(Manager):
                 stream=True,
             )
             if not response.ok:
-                print(response.request.url)
-                print(response.status_code)
-                print(response.text)
-                raise HttpException("XML Download Failed!")
+                raise HttpException(f"XML Download Failed!\n{response.request.url}\n{response.status_code}\n{response.text}")
 
             with open(fname, "wb") as f:
                 for chunk in response.iter_content(1024):
@@ -206,222 +200,9 @@ class USApplicationManager(Manager):
     def query_fields(self):
         fields = self.fields
         for k in sorted(fields.keys()):
-            if "facet" in k:
+            if 'facet' in k:
                 continue
             print(f"{k} ({fields[k]})")
-
-
-ns = dict(
-    uspat="urn:us:gov:doc:uspto:patent",
-    pat="http://www.wipo.int/standards/XMLSchema/ST96/Patent",
-    uscom="urn:us:gov:doc:uspto:common",
-    com="http://www.wipo.int/standards/XMLSchema/ST96/Common",
-    xsi="http://www.w3.org/2001/XMLSchema-instance",
-)
-
-
-bib_data = dict(
-    appl_id=".//uscom:ApplicationNumberText",
-    app_filing_date=".//pat:FilingDate",
-    app_type=".//uscom:ApplicationTypeCategory",
-    app_cust_number=".//com:ContactText",
-    app_group_art_unit=".//uscom:GroupArtUnitNumber",
-    app_atty_dock_number=".//com:ApplicantFileReference",
-    patent_title=".//pat:InventionTitle",
-    app_status=".//uscom:ApplicationStatusCategory",
-    app_status_date=".//uscom:ApplicationStatusDate",
-    app_cls_subcls=".//pat:NationalSubclass",
-    app_early_pub_date=".//uspat:PatentPublicationIdentification/com:PublicationDate",
-    patent_number=".//uspat:PatentGrantIdentification/pat:PatentNumber",
-    patent_issue_date=".//uspat:PatentGrantIdentification/pat:GrantDate",
-    aia_status=".//uspat:FirstInventorToFileIndicator",
-    app_entity_status=".//uscom:BusinessEntityStatusCategory",
-    file_location=".//uscom:OfficialFileLocationCategory",
-    file_location_date=".//uscom:OfficialFileLocationDate",
-    app_examiner=".//pat:PrimaryExaminer//com:PersonFullName",
-)
-
-
-inv_data = dict(
-    name="./com:PublicationContact/com:Name/com:PersonName",
-    city="./com:PublicationContact/com:CityName",
-    country="./com:PublicationContact/com:CountryCode",
-    region="./com:PublicationContact/com:GeographicRegionName",
-)
-
-ph_data = dict(date="./uspat:RecordedDate", action="./uspat:CaseActionDescriptionText")
-
-WHITESPACE_RE = re.compile(r"\s+")
-
-
-class DateEncoder(json.JSONEncoder):
-    def default(self, o):
-        if isinstance(o, date):
-            return o.isoformat()
-
-        return json.JSONEncoder.default(self, o)
-
-
-class USApplicationXmlParser:
-    def element_to_text(self, element):
-        return WHITESPACE_RE.sub(" ", " ".join(element.itertext())).strip()
-
-    def parse_element(self, element, data_dict):
-        data = {
-            key: self.element_to_text(element.find(value, ns))
-            for (key, value) in data_dict.items()
-            if element.find(value, ns) is not None
-        }
-        for key in data.keys():
-            if "date" in key and data.get(key, False) != "-":
-                data[key] = parse_dt(data[key]).date()
-            elif data.get(key, False) == "-":
-                data[key] = None
-        return data
-
-    def parse_bib_data(self, element):
-        data = self.parse_element(element, bib_data)
-        pub_no = element.find(
-            ".//uspat:PatentPublicationIdentification/pat:PublicationNumber", ns
-        )
-        if pub_no is not None:
-            if len(pub_no.text) > 7:
-                pub_no = pub_no.text
-            else:
-                pub_no = str(data["app_early_pub_date"].year) + pub_no.text
-
-            if len(pub_no) < 11:
-                pub_no = pub_no[:4] + pub_no[4:].rjust(7, "0")
-
-            kind_code = element.find(
-                ".//uspat:PatentPublicationIdentification/com:PatentDocumentKindCode",
-                ns,
-            )
-            if kind_code is None:
-                kind_code = ""
-            else:
-                kind_code = kind_code.text
-            data["app_early_pub_number"] = pub_no + kind_code
-        return data
-
-    def parse_transaction_history(self, element):
-        output = list()
-        for event_el in element.findall(
-            "./uspat:PatentRecord/uspat:ProsecutionHistoryData", ns
-        ):
-            event = self.parse_element(event_el, ph_data)
-            event["action"], event["code"] = event["action"].rsplit(" , ", 1)
-            output.append(event)
-        return output
-
-    def parse_inventors(self, element):
-        output = list()
-        for inv_el in element.findall(
-            "./uspat:PatentRecord/uspat:PatentCaseMetadata/pat:PartyBag/pat:InventorBag/pat:Inventor",
-            ns,
-        ):
-            data = self.parse_element(inv_el, inv_data)
-            data["region_type"] = inv_el.find(
-                "./com:PublicationContact/com:GeographicRegionName", ns
-            ).attrib.get(
-                "{http://www.wipo.int/standards/XMLSchema/ST96/Common}geographicRegionCategory",
-                "",
-            )
-            output.append(data)
-        return output
-
-    def parse_applicants(self, element):
-        output = list()
-        for app_el in element.findall(
-            "./uspat:PatentRecord/uspat:PatentCaseMetadata/pat:PartyBag/pat:ApplicantBag/pat:Applicant",
-            ns,
-        ):
-            data = self.parse_element(app_el, inv_data)
-            data["region_type"] = app_el.find(
-                "./com:PublicationContact/com:GeographicRegionName", ns
-            ).attrib.get(
-                "{http://www.wipo.int/standards/XMLSchema/ST96/Common}geographicRegionCategory",
-                "",
-            )
-            output.append(data)
-        return output
-
-    def case(self, element):
-        return {
-            **self.parse_bib_data(element),
-            **dict(
-                inventors=self.parse_inventors(element),
-                transactions=self.parse_transaction_history(element),
-                applicants=self.parse_applicants(element),
-            ),
-        }
-
-    def xml_file(self, file_obj):
-        try:
-            for _, element in ET.iterparse(file_obj):
-                if "PatentRecordBag" in element.tag:
-                    yield element
-        except ET.ParseError as e:
-            print(e)
-
-    def save_state(state):
-        with open("pdb_state.json", "w") as f:
-            json.dump(state, f, indent=2)
-
-
-class USApplicationJsonSet(Manager):
-    def __init__(self, data, length):
-        self.data = data
-        self._len = length
-
-    def __len__(self):
-        return self._len
-
-    def __getitem__(self, key):
-        for k, v in self.data[key].items():
-            if "date" in k and type(v) == str:
-                self.data[key][k] = parse_dt(v).date()
-        return USApplication(self.data[key])
-
-
-class USApplicationXmlSet(Manager):
-    parser = USApplicationXmlParser()
-
-    def __init__(self, filename, length):
-        self.filename = filename
-        self._len = length
-        self.cache = dict()
-        self.zipfile = ZipFile(self.filename)
-        self.files = self.zipfile.namelist()
-        self.open_file = iter(list())
-        self.counter = 0
-
-    def __len__(self):
-        return self._len
-
-    def __getitem__(self, key):
-        if type(key) == slice:
-            indices = list(range(len(self)))[key.start : key.stop : key.step]
-            return [self.__getitem__(index) for index in indices]
-        else:
-            if key < 0:
-                key = len(self) - key
-
-            if key not in self.cache:
-                self.parse_item(key)
-            return USApplication(self.cache[key])
-
-    def parse_item(self, key):
-        while self.counter <= key:
-            try:
-                tree = next(self.open_file)
-                self.cache[self.counter] = self.parser.case(tree)
-                self.counter += 1
-            except StopIteration:
-                self.open_file = self.parser.xml_file(
-                    self.zipfile.open(self.files.pop(0))
-                )
-
 
 class USApplication(Model):
     """
@@ -487,36 +268,16 @@ class USApplication(Model):
     app.children[0].application -> a new USApplication object for the first child. 
 
     """
-
     objects = USApplicationManager()
     trials = one_to_many("patent_client.PtabTrial", patent_number="patent_number")
     inpadoc = one_to_many("patent_client.Inpadoc", number="appl_id")
     assignments = one_to_many("patent_client.Assignment", appl_id="appl_id")
-    attrs = [
-        "appl_id",
-        "applicants",
-        "app_filing_date",
-        "app_exam_name",
-        "inventor_name",
-        "inventors",
-        "app_early_pub_number",
-        "app_early_pub_date",
-        "app_location",
-        "app_grp_art_number",
-        "patent_number",
-        "patent_issue_date",
-        "app_status",
-        "app_status_date",
-        "patent_title",
-        "app_attr_dock_number",
-        "first_inventor_file",
-        "app_type",
-        "app_cust_number",
-        "app_cls_sub_cls",
-        "corr_addr_cust_no",
-        "app_entity_status",
-        "app_confr_number",
-    ]
+    attrs =['appl_id', 'applicants', 'app_filing_date', 'app_exam_name', 
+    'inventor_name', 'inventors', 'app_early_pub_number', 'app_early_pub_date', 
+    'app_location', 'app_grp_art_number', 'patent_number', 'patent_issue_date', 
+    'app_status', 'app_status_date', 'patent_title', 'app_attr_dock_number', 
+    'first_inventor_file', 'app_type', 'app_cust_number', 'app_cls_sub_cls', 
+    'corr_addr_cust_no', 'app_entity_status', 'app_confr_number']
 
     @property
     def publication(self):
@@ -527,32 +288,19 @@ class USApplication(Model):
 
     @property
     def transaction_history(self):
-        return list(
-            sorted(
-                (Transaction(d) for d in self.data.get("transactions", list())),
-                key=lambda x: x.date,
-            )
-        )
+       return list(sorted((Transaction(d) for d in self.data.get('transactions', list())), key=lambda x: x.date)) 
 
     @property
     def children(self):
-        return [Relationship(d) for d in self.data.get("child_continuity", list())]
-
+        return [Relationship(d) for d in self.data.get('child_continuity', list())]
+    
     @property
     def parents(self):
-        return [Relationship(d) for d in self.data.get("parent_continuity", list())]
+        return [Relationship(d) for d in self.data.get('parent_continuity', list())]
 
     @property
     def pta_pte_history(self):
-        return list(
-            sorted(
-                (
-                    PtaPteHistory(d)
-                    for d in self.data.get("pta_pte_tran_history", list())
-                ),
-                key=lambda x: x.number,
-            )
-        )
+        return list(sorted((PtaPteHistory(d) for d in self.data.get('pta_pte_tran_history', list())), key=lambda x: x.number))
 
     @property
     def pta_pte_summary(self):
@@ -564,96 +312,127 @@ class USApplication(Model):
 
     @property
     def attorneys(self):
-        return list(Attorney(d) for d in self.data.get("attrny_addr", list()))
+        return list(Attorney(d) for d in self.data.get('attrny_addr', list()))
 
     def __repr__(self):
         return f"<USApplication(appl_id={self.appl_id})>"
 
-
 class Relationship(Model):
-    application = one_to_one("patent_client.USApplication", appl_id="appl_id")
-    attrs = ["appl_id", "filing_date", "patent_number", "status", "relationship", "aia"]
+    application = one_to_one("patent_client.USApplication", appl_id='appl_id')
+    attrs = ['appl_id', 'filing_date', 'patent_number', 'status', 'relationship', 'aia']
 
     def __init__(self, *args, **kwargs):
         super(Relationship, self).__init__(*args, **kwargs)
         data = self.data
-        self.appl_id = data["claim_application_number_text"]
-        self.filing_date = data["filing_date"]
-        self.patent_number = data.get("patent_number_text", None) or None
-        self.status = data["application_status"]
-        self.relationship = data["application_status_description"].replace(
-            "This application ", ""
-        )
-        self.aia = data["aia_indicator"] == "Y"
-
+        self.appl_id = data['claim_application_number_text']
+        self.filing_date = data['filing_date']
+        self.patent_number = data.get('patent_number_text', None) or None
+        self.status = data['application_status']
+        self.relationship = data['application_status_description'].replace('This application ', '')
+        self.aia = data['aia_indicator'] == 'Y'
 
 class PtaPteHistory(Model):
-    attrs = ["number", "date", "description", "pto_days", "applicant_days", "start"]
+    attrs = ['number', 'date', 'description', 'pto_days', 'applicant_days', 'start']
 
     def __init__(self, *args, **kwargs):
         super(PtaPteHistory, self).__init__(*args, **kwargs)
         data = self.data
-        self.number = float(data["number"])
-        self.date = data["pta_or_pte_date"]
-        self.description = data["contents_description"]
-        self.pto_days = float(data["pto_days"] or 0)
-        self.applicant_days = float(data["appl_days"] or 0)
-        self.start = float(data["start"])
-
+        self.number = float(data['number'])
+        self.date = data['pta_or_pte_date']
+        self.description = data['contents_description']
+        self.pto_days = float(data['pto_days'] or 0)
+        self.applicant_days = float(data['appl_days'] or 0)
+        self.start = float(data['start'])
 
 class PtaPteSummary(Model):
-    attrs = [
-        "type",
-        "a_delay",
-        "b_delay",
-        "c_delay",
-        "overlap_delay",
-        "pto_delay",
-        "applicant_delay",
-        "pto_adjustments",
-        "total_days",
-    ]
+    attrs = ['type', 'a_delay', 'b_delay', 'c_delay', 'overlap_delay', 'pto_delay', 'applicant_delay', 'pto_adjustments', 'total_days']
 
     def __init__(self, data):
-        self.type = data["pta_pte_ind"]
-        self.pto_adjustments = int(data["pto_adjustments"])
-        self.overlap_delay = int(data["overlap_delay"])
-        self.a_delay = int(data["a_delay"])
-        self.b_delay = int(data["b_delay"])
-        self.c_delay = int(data["c_delay"])
-        self.pto_delay = int(data["pto_delay"])
-        self.applicant_delay = int(data["appl_delay"])
-        self.total_days = int(data["total_pto_days"])
-
+        self.type = data['pta_pte_ind']
+        self.pto_adjustments = int(data['pto_adjustments'])
+        self.overlap_delay = int(data['overlap_delay'])
+        self.a_delay = int(data['a_delay'])
+        self.b_delay = int(data['b_delay'])
+        self.c_delay = int(data['c_delay'])
+        self.pto_delay = int(data['pto_delay'])
+        self.applicant_delay = int(data['appl_delay'])
+        self.total_days = int(data['total_pto_days'])
 
 class Transaction(Model):
-    attrs = ["date", "code", "description"]
+    attrs = ['date', 'code', 'description']
 
     def __init__(self, data):
-        self.date = datetime.strptime(data["recordDate"][:10], "%Y-%m-%d").date()
-        self.code = data["code"]
-        self.description = data["description"]
-
+        self.date = datetime.strptime(data['recordDate'][:10], '%Y-%m-%d').date()
+        self.code = data['code']
+        self.description = data['description']
 
 class Correspondent(Model):
-    attrs = [
-        "name_line_one",
-        "name_line_two",
-        "cust_no",
-        "street_line_one",
-        "street_line_two",
-        "street_line_three",
-        "city",
-        "geo_region_code",
-        "postal_code",
-    ]
+    attrs = ['name_line_one', 'name_line_two', 'cust_no', 'street_line_one', 'street_line_two', 'street_line_three', 'city', 'geo_region_code', 'postal_code']
 
     def __init__(self, data):
         for k, v in data.items():
-            if "corr" == k[:4]:
-                key = k.replace("corr_addr_", "")
+            if 'corr' == k[:4]:
+                key = k.replace('corr_addr_', '')
                 setattr(self, key, v)
 
-
 class Attorney(Model):
-    attrs = ["registration_no", "full_name", "phone_num", "reg_status"]
+    attrs = ['registration_no', 'full_name', 'phone_num', 'reg_status']
+
+class USApplicationXmlSet(Manager):
+    parser = USApplicationXmlParser()
+
+    def __init__(self, filename, length):
+        self.filename = filename
+        self._len = length
+        self.cache = dict()
+        self.zipfile = ZipFile(self.filename)
+        self.files = self.zipfile.namelist()
+        self.open_file = iter(list())
+        self.counter = 0
+
+    def __len__(self):
+        return self._len
+
+    def __getitem__(self, key):
+        if type(key) == slice:
+            indices = list(range(len(self)))[key.start : key.stop : key.step]
+            return [self.__getitem__(index) for index in indices]
+        else:
+            if key < 0:
+                key = len(self) - key
+
+            if key not in self.cache:
+                self.parse_item(key)
+            return USApplication(self.cache[key])
+
+    def parse_item(self, key):
+        while self.counter <= key:
+            try:
+                tree = next(self.open_file)
+                self.cache[self.counter] = self.parser.case(tree)
+                self.counter += 1
+            except StopIteration:
+                self.open_file = self.parser.xml_file(
+                    self.zipfile.open(self.files.pop(0))
+                )
+
+class DateEncoder(json.JSONEncoder):
+    def default(self, o):
+        if isinstance(o, date):
+            return o.isoformat()
+
+        return json.JSONEncoder.default(self, o)
+
+class USApplicationJsonSet(Manager):
+    def __init__(self, data, length):
+        self.data = data
+        self._len = length
+
+    def __len__(self):
+        return self._len
+
+    def __getitem__(self, key):
+        for k, v in self.data[key].items():
+            if "date" in k and type(v) == str:
+                self.data[key][k] = parse_dt(v).date()
+        return USApplication(self.data[key])
