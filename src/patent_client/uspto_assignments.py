@@ -69,15 +69,15 @@ class AssignmentParser:
 
 class AssignmentManager(Manager):
     fields = {
-            "patent_number": "PatentNumber",
-            "appl_id": "ApplicationNumber",
-            "app_early_pub_number": "PublicationNumber",
-            "assignee": "OwnerName",
-            "assignor": "PriorOwnerName",
-            "pct_number": "PCTNumber",
-            "correspondent": "CorrespondentName",
-            "reel_frame": "ReelFrame",
-        }
+        "patent_number": "PatentNumber",
+        "appl_id": "ApplicationNumber",
+        "app_early_pub_number": "PublicationNumber",
+        "assignee": "OwnerName",
+        "assignor": "PriorOwnerName",
+        "pct_number": "PCTNumber",
+        "correspondent": "CorrespondentName",
+        "reel_frame": "ReelFrame",
+    }
     parser = AssignmentParser()
     rows = 50
     obj_class = "patent_client.uspto_assignments.Assignment"
@@ -227,12 +227,23 @@ class Assignment(Model):
 
 
     """
-    primary_key='reel_frame'
-    attrs = ['id', 'attorney_dock_num', 'conveyance_text', 
-    'last_update_date', 'page_count', 'recorded_date', 
-    'correspondent', 'assignors', 'assignees', 'properties', 'image_url']
+
+    primary_key = "reel_frame"
+    attrs = [
+        "id",
+        "attorney_dock_num",
+        "conveyance_text",
+        "last_update_date",
+        "page_count",
+        "recorded_date",
+        "correspondent",
+        "assignors",
+        "assignees",
+        "properties",
+        "image_url",
+    ]
     objects = AssignmentManager()
-    us_applications = one_to_many('patent_client.USApplication', appl_id='appl_num')
+    us_applications = one_to_many("patent_client.USApplication", appl_id="appl_num")
 
     def __repr__(self):
         return f"<Assignment(id={self.id})>"
@@ -241,53 +252,79 @@ class Assignment(Model):
     def properties(self):
         data = self.data
         properties = list()
-        for i in range(len(data['appl_num'])):
-            properties.append({
-                'appl_id': data['appl_num'][i],
-                'app_filing_date': data['filing_date'][i],
-                'patent_number': data['pat_num'][i],
-                'pct_number': data['pct_num'][i],
-                'intl_publ_date': datetime.datetime.strptime(data['intl_publ_date'][i], '%Y-%m-%d').date() if data['intl_publ_date'][i] else None,
-                'intl_reg_num': data['intl_reg_num'][i],
-                'app_early_pub_date': datetime.datetime.strptime(data['publ_date'][i], '%Y-%m-%d').date() if data['publ_date'][i] else None,
-                'app_early_pub_number': data['publ_num'][i],
-                'patent_issue_date': data['issue_date'][i],
-                'patent_title': data['invention_title'][i],
-                'patent_title_lang': data['invention_title_lang'][i],
-                'inventors': data['inventors'][i],
-            })
+        for i in range(len(data["appl_num"])):
+            properties.append(
+                {
+                    "appl_id": data["appl_num"][i],
+                    "app_filing_date": data["filing_date"][i],
+                    "patent_number": data["pat_num"][i],
+                    "pct_number": data["pct_num"][i],
+                    "intl_publ_date": datetime.datetime.strptime(
+                        data["intl_publ_date"][i], "%Y-%m-%d"
+                    ).date()
+                    if data["intl_publ_date"][i]
+                    else None,
+                    "intl_reg_num": data["intl_reg_num"][i],
+                    "app_early_pub_date": datetime.datetime.strptime(
+                        data["publ_date"][i], "%Y-%m-%d"
+                    ).date()
+                    if data["publ_date"][i]
+                    else None,
+                    "app_early_pub_number": data["publ_num"][i],
+                    "patent_issue_date": data["issue_date"][i],
+                    "patent_title": data["invention_title"][i],
+                    "patent_title_lang": data["invention_title_lang"][i],
+                    "inventors": data["inventors"][i],
+                }
+            )
         return [Property(p) for p in properties]
 
     @property
     def correspondent(self):
         data = self.data
-        correspondent_keys = filter(lambda x: 'corr_' in x and 'size' not in x, data.keys())
-        return repartition({k:data[k] for k in correspondent_keys})[0]
-    
+        correspondent_keys = filter(
+            lambda x: "corr_" in x and "size" not in x, data.keys()
+        )
+        return repartition({k: data[k] for k in correspondent_keys})[0]
+
     @property
     def assignees(self):
         data = self.data
-        assignee_keys = filter(lambda x: 'pat_assignee_' in x and 'size' not in x, data.keys())
-        return repartition({k:data[k] for k in assignee_keys})
+        assignee_keys = filter(
+            lambda x: "pat_assignee_" in x and "size" not in x, data.keys()
+        )
+        return repartition({k: data[k] for k in assignee_keys})
 
     @property
     def assignors(self):
         data = self.data
-        assignor_keys = filter(lambda x: 'pat_assignor_' in x and 'size' not in x, data.keys())
-        return repartition({k:data[k] for k in assignor_keys})
+        assignor_keys = filter(
+            lambda x: "pat_assignor_" in x and "size" not in x, data.keys()
+        )
+        return repartition({k: data[k] for k in assignor_keys})
 
     def download(self):
         response = session.get(self.image_url, stream=True)
-        with open(f"{self.id}.pdf", 'wb') as f:
+        with open(f"{self.id}.pdf", "wb") as f:
             f.write(response.raw.read())
 
 
 class Property(Model):
-    attrs = ['appl_id', 'app_filing_date', 'pct_number', 'intl_publ_date', 
-    'app_early_pub_number', 'app_early_pub_date', 'patent_number', 'patent_title', 
-    'inventors', 'patent_issue_date']
-    primary_key = 'appl_id'
-    us_application = one_to_one('patent_client.USApplication', appl_id='appl_id')
+    attrs = [
+        "appl_id",
+        "app_filing_date",
+        "pct_number",
+        "intl_publ_date",
+        "app_early_pub_number",
+        "app_early_pub_date",
+        "patent_number",
+        "patent_title",
+        "inventors",
+        "patent_issue_date",
+    ]
+    primary_key = "appl_id"
+    us_application = one_to_one("patent_client.USApplication", appl_id="appl_id")
+
 
 def repartition(dictionary):
     types = [type(v) for v in dictionary.values()]
@@ -297,12 +334,11 @@ def repartition(dictionary):
         if not all(keys[0][i] == k[i] for k in keys):
             break
 
-    
     if all(t == list() for t in types):
         lens = [len(v) for v in dictionary.values()]
         if not all(l == lens[0] for l in lens):
-            raise ValueError('Not all keys have the same length!')
-    
+            raise ValueError("Not all keys have the same length!")
+
         output = list()
         for i in range(len(dictionary[keys[0]])):
             item = dict()
@@ -313,4 +349,4 @@ def repartition(dictionary):
         return output
 
     else:
-        return [{k[i:]:dictionary[k] for k in keys}]
+        return [{k[i:]: dictionary[k] for k in keys}]

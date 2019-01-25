@@ -69,8 +69,6 @@ def one_to_many(class_name, **mapping):
     return get
 
 
-
-
 def recur_accessor(obj, accessor):
     if "__" not in accessor:
         a = accessor
@@ -109,23 +107,22 @@ class Model(object):
             except ValueError:  # Malformed datetimes:
                 self.data[k] = None
             setattr(self, k, self.data[k])
-    
+
     def dict(self):
         output = {key: getattr(self, key) for key in self.attrs if hasattr(self, key)}
         for k, v in output.items():
             if isinstance(v, list):
-                output[k] = [i.dict() if hasattr(i, 'dict') else i for i in v]
-            if hasattr(v, 'dict'):
+                output[k] = [i.dict() if hasattr(i, "dict") else i for i in v]
+            if hasattr(v, "dict"):
                 output[k] = v.dict()
         return output
 
     def __repr__(self):
-        if hasattr(self, 'primary_key'):
-            primary_key = getattr(self, 'primary_key')
+        if hasattr(self, "primary_key"):
+            primary_key = getattr(self, "primary_key")
             return f"<{self.__class__.__name__} {primary_key}={getattr(self, primary_key)}>"
         else:
             return f"<{self.__class__.__name__}>"
-
 
 
 class Manager:

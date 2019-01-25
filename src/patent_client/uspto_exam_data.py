@@ -117,7 +117,7 @@ class USApplicationManager(Manager):
             "mm": mm,
         }
         if not mm_active:
-            del query['mm']
+            del query["mm"]
         return query
 
     def request(self, params=dict()):
@@ -206,9 +206,10 @@ class USApplicationManager(Manager):
     def query_fields(self):
         fields = self.fields
         for k in sorted(fields.keys()):
-            if 'facet' in k:
+            if "facet" in k:
                 continue
             print(f"{k} ({fields[k]})")
+
 
 ns = dict(
     uspat="urn:us:gov:doc:uspto:patent",
@@ -486,16 +487,36 @@ class USApplication(Model):
     app.children[0].application -> a new USApplication object for the first child. 
 
     """
+
     objects = USApplicationManager()
     trials = one_to_many("patent_client.PtabTrial", patent_number="patent_number")
     inpadoc = one_to_many("patent_client.Inpadoc", number="appl_id")
     assignments = one_to_many("patent_client.Assignment", appl_id="appl_id")
-    attrs =['appl_id', 'applicants', 'app_filing_date', 'app_exam_name', 
-    'inventor_name', 'inventors', 'app_early_pub_number', 'app_early_pub_date', 
-    'app_location', 'app_grp_art_number', 'patent_number', 'patent_issue_date', 
-    'app_status', 'app_status_date', 'patent_title', 'app_attr_dock_number', 
-    'first_inventor_file', 'app_type', 'app_cust_number', 'app_cls_sub_cls', 
-    'corr_addr_cust_no', 'app_entity_status', 'app_confr_number']
+    attrs = [
+        "appl_id",
+        "applicants",
+        "app_filing_date",
+        "app_exam_name",
+        "inventor_name",
+        "inventors",
+        "app_early_pub_number",
+        "app_early_pub_date",
+        "app_location",
+        "app_grp_art_number",
+        "patent_number",
+        "patent_issue_date",
+        "app_status",
+        "app_status_date",
+        "patent_title",
+        "app_attr_dock_number",
+        "first_inventor_file",
+        "app_type",
+        "app_cust_number",
+        "app_cls_sub_cls",
+        "corr_addr_cust_no",
+        "app_entity_status",
+        "app_confr_number",
+    ]
 
     @property
     def publication(self):
@@ -506,19 +527,32 @@ class USApplication(Model):
 
     @property
     def transaction_history(self):
-       return list(sorted((Transaction(d) for d in self.data.get('transactions', list())), key=lambda x: x.date)) 
+        return list(
+            sorted(
+                (Transaction(d) for d in self.data.get("transactions", list())),
+                key=lambda x: x.date,
+            )
+        )
 
     @property
     def children(self):
-        return [Relationship(d) for d in self.data.get('child_continuity', list())]
-    
+        return [Relationship(d) for d in self.data.get("child_continuity", list())]
+
     @property
     def parents(self):
-        return [Relationship(d) for d in self.data.get('parent_continuity', list())]
+        return [Relationship(d) for d in self.data.get("parent_continuity", list())]
 
     @property
     def pta_pte_history(self):
-        return list(sorted((PtaPteHistory(d) for d in self.data.get('pta_pte_tran_history', list())), key=lambda x: x.number))
+        return list(
+            sorted(
+                (
+                    PtaPteHistory(d)
+                    for d in self.data.get("pta_pte_tran_history", list())
+                ),
+                key=lambda x: x.number,
+            )
+        )
 
     @property
     def pta_pte_summary(self):
@@ -530,69 +564,96 @@ class USApplication(Model):
 
     @property
     def attorneys(self):
-        return list(Attorney(d) for d in self.data.get('attrny_addr', list()))
+        return list(Attorney(d) for d in self.data.get("attrny_addr", list()))
 
     def __repr__(self):
         return f"<USApplication(appl_id={self.appl_id})>"
 
+
 class Relationship(Model):
-    application = one_to_one("patent_client.USApplication", appl_id='appl_id')
-    attrs = ['appl_id', 'filing_date', 'patent_number', 'status', 'relationship', 'aia']
+    application = one_to_one("patent_client.USApplication", appl_id="appl_id")
+    attrs = ["appl_id", "filing_date", "patent_number", "status", "relationship", "aia"]
 
     def __init__(self, *args, **kwargs):
         super(Relationship, self).__init__(*args, **kwargs)
         data = self.data
-        self.appl_id = data['claim_application_number_text']
-        self.filing_date = data['filing_date']
-        self.patent_number = data.get('patent_number_text', None) or None
-        self.status = data['application_status']
-        self.relationship = data['application_status_description'].replace('This application ', '')
-        self.aia = data['aia_indicator'] == 'Y'
+        self.appl_id = data["claim_application_number_text"]
+        self.filing_date = data["filing_date"]
+        self.patent_number = data.get("patent_number_text", None) or None
+        self.status = data["application_status"]
+        self.relationship = data["application_status_description"].replace(
+            "This application ", ""
+        )
+        self.aia = data["aia_indicator"] == "Y"
+
 
 class PtaPteHistory(Model):
-    attrs = ['number', 'date', 'description', 'pto_days', 'applicant_days', 'start']
+    attrs = ["number", "date", "description", "pto_days", "applicant_days", "start"]
 
     def __init__(self, *args, **kwargs):
         super(PtaPteHistory, self).__init__(*args, **kwargs)
         data = self.data
-        self.number = float(data['number'])
-        self.date = data['pta_or_pte_date']
-        self.description = data['contents_description']
-        self.pto_days = float(data['pto_days'] or 0)
-        self.applicant_days = float(data['appl_days'] or 0)
-        self.start = float(data['start'])
+        self.number = float(data["number"])
+        self.date = data["pta_or_pte_date"]
+        self.description = data["contents_description"]
+        self.pto_days = float(data["pto_days"] or 0)
+        self.applicant_days = float(data["appl_days"] or 0)
+        self.start = float(data["start"])
+
 
 class PtaPteSummary(Model):
-    attrs = ['type', 'a_delay', 'b_delay', 'c_delay', 'overlap_delay', 'pto_delay', 'applicant_delay', 'pto_adjustments', 'total_days']
+    attrs = [
+        "type",
+        "a_delay",
+        "b_delay",
+        "c_delay",
+        "overlap_delay",
+        "pto_delay",
+        "applicant_delay",
+        "pto_adjustments",
+        "total_days",
+    ]
 
     def __init__(self, data):
-        self.type = data['pta_pte_ind']
-        self.pto_adjustments = int(data['pto_adjustments'])
-        self.overlap_delay = int(data['overlap_delay'])
-        self.a_delay = int(data['a_delay'])
-        self.b_delay = int(data['b_delay'])
-        self.c_delay = int(data['c_delay'])
-        self.pto_delay = int(data['pto_delay'])
-        self.applicant_delay = int(data['appl_delay'])
-        self.total_days = int(data['total_pto_days'])
+        self.type = data["pta_pte_ind"]
+        self.pto_adjustments = int(data["pto_adjustments"])
+        self.overlap_delay = int(data["overlap_delay"])
+        self.a_delay = int(data["a_delay"])
+        self.b_delay = int(data["b_delay"])
+        self.c_delay = int(data["c_delay"])
+        self.pto_delay = int(data["pto_delay"])
+        self.applicant_delay = int(data["appl_delay"])
+        self.total_days = int(data["total_pto_days"])
+
 
 class Transaction(Model):
-    attrs = ['date', 'code', 'description']
+    attrs = ["date", "code", "description"]
 
     def __init__(self, data):
-        self.date = datetime.strptime(data['recordDate'][:10], '%Y-%m-%d').date()
-        self.code = data['code']
-        self.description = data['description']
+        self.date = datetime.strptime(data["recordDate"][:10], "%Y-%m-%d").date()
+        self.code = data["code"]
+        self.description = data["description"]
+
 
 class Correspondent(Model):
-    attrs = ['name_line_one', 'name_line_two', 'cust_no', 'street_line_one', 'street_line_two', 'street_line_three', 'city', 'geo_region_code', 'postal_code']
+    attrs = [
+        "name_line_one",
+        "name_line_two",
+        "cust_no",
+        "street_line_one",
+        "street_line_two",
+        "street_line_three",
+        "city",
+        "geo_region_code",
+        "postal_code",
+    ]
 
     def __init__(self, data):
         for k, v in data.items():
-            if 'corr' == k[:4]:
-                key = k.replace('corr_addr_', '')
+            if "corr" == k[:4]:
+                key = k.replace("corr_addr_", "")
                 setattr(self, key, v)
 
-class Attorney(Model):
-    attrs = ['registration_no', 'full_name', 'phone_num', 'reg_status']
 
+class Attorney(Model):
+    attrs = ["registration_no", "full_name", "phone_num", "reg_status"]
