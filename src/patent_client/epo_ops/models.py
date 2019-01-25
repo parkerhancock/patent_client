@@ -12,11 +12,46 @@ from .ops import InpadocConnector
 inpadoc_connector = InpadocConnector()
 epo_connector = EpoConnector()
 
+SEARCH_FIELDS = {
+    "title": "title",
+    "abstract": "abstract",
+    "title_and_abstract": "titleandabstract",
+    "inventor": "inventor",
+    "applicant": "applicant",
+    "inventor_or_applicant": "inventorandapplicant",
+    "publication": "publicationnumber",
+    "epodoc_publication": "spn",
+    "application": "applicationnumber",
+    "epodoc_application": "sap",
+    "priority": "prioritynumber",
+    "epodoc_priority": "spr",
+    "number": "num",  # Pub, App, or Priority Number
+    "publication_date": "publicationdate",  # yyyy, yyyyMM, yyyyMMdd, yyyy-MM, yyyy-MM-dd
+    "citation": "citation",
+    "cited_in_examination": "ex",
+    "cited_in_opposition": "op",
+    "cited_by_applicant": "rf",
+    "other_citation": "oc",
+    "family": "famn",
+    "cpc_class": "cpc",
+    "ipc_class": "ipc",
+    "ipc_core_invention_class": "ci",
+    "ipc_core_additional_class": "cn",
+    "ipc_advanced_class": "ai",
+    "ipc_advanced_additional_class": "an",
+    "ipc_core_class": "c",
+    "classification": "cl",  # IPC or CPC Class
+    "full_text": "txt",  # title, abstract, inventor and applicant
+}
 
 class InpadocManager(Manager):
     obj_class = "patent_client.epo_ops.models.Inpadoc"
     primary_key = "publication"
     connector = inpadoc_connector
+    
+    @property
+    def allowed_filters(self):
+        return list(SEARCH_FIELDS.keys()) + list(SEARCH_FIELDS.values()) + ['cql_query']
 
     def __init__(self, *args, **kwargs):
         super(InpadocManager, self).__init__(*args, **kwargs)
@@ -24,19 +59,19 @@ class InpadocManager(Manager):
 
     def __len__(self):
         """Total number of results"""
-        if "application" in self.filter_params or "publication" in self.filter_params:
+        if "application" in self.config['filter'] or "publication" in self.config['filter']:
             return len(self.get_by_number())
         else:
-            return self.connector.get_search_length(self.filter_params)
+            return self.connector.get_search_length(self.config['filter'])
 
     def get_by_number(self):
-        if "publication" in self.kwargs:
-            number = self.kwargs["publication"]
+        if "publication" in self.config['filter']:
+            number = self.config['filter']["publication"]
             if not isinstance(number, list):
                 number = number[0]
             doc_db = self.connector.original_to_docdb(number, "publication")
-        elif "application" in self.kwargs:
-            number = self.kwargs["application"]
+        elif "application" in self.config['filter']:
+            number = self.config['filter']["application"]
             if isinstance(number, list):
                 number = number[0]
             doc_db = self.connector.original_to_docdb(number, "application")
@@ -44,13 +79,18 @@ class InpadocManager(Manager):
         return docs
 
     def get_item(self, key):
-        if "publication" in self.kwargs or "application" in self.kwargs:
+        if "publication" in self.config['filter'] or "application" in self.config['filter']:
             docs = self.get_by_number()
             return Inpadoc(docs[key])
         else:
             # Search Iterator
             doc_db = self.connector.get_search_item(key, self.filter_params)
             return Inpadoc(self.connector.bib_data(doc_db)[0])
+
+    @property
+    def query_fields(self):
+        for k, v in SEARCH_FIELDS.items():
+            print(f"{k} (short form: {v})")
 
 
 class InpadocFullTextManager(InpadocManager):

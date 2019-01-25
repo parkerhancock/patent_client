@@ -2,6 +2,7 @@ import json
 import mimetypes
 import os
 import shutil
+import importlib
 
 import inflection
 import requests
@@ -37,7 +38,7 @@ class PtabManager(Manager):
     def request(self, params=dict()):
         params = {
             inflection.camelize(k, uppercase_first_letter=False): v
-            for (k, v) in {**self.filter_params, **dict(sort=self.sort_params)}.items()
+            for (k, v) in {**self.config['filter'], **dict(sort=self.config['order_by'])}.items()
         }
         fname = CACHE_DIR / f"{self.__class__.__name__}-{hash_dict(params)}.json"
         if not fname.exists():
@@ -45,6 +46,16 @@ class PtabManager(Manager):
             with open(fname, "w") as f:
                 json.dump(response.json(), f, indent=True)
         return json.load(open(fname))
+
+    @property
+    def allowed_filters(self):
+        return self.query_fields
+
+    
+    def get_obj_class(self):
+        module, klass = self.obj_class.rsplit(".", 1)
+        mod = importlib.import_module(module)
+        return getattr(mod, klass)
 
 
 class PtabTrialManager(PtabManager):
@@ -71,6 +82,7 @@ class PtabTrialManager(PtabManager):
         "last_modified_datetime",
         "last_modified_datetime_from",
         "last_modified_datetime_to",
+        "patent_owner_name"
     ]
 
 

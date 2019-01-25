@@ -16,7 +16,7 @@ class TestAssignment:
     def test_fetch_assignments_by_patent(self):
         assignments = Assignment.objects.filter(patent_number="8,789,601")
         assert len(assignments) >= 1
-        assert assignments[0].dict()['id'] == '48041-605'
+        assert assignments[0].as_dict()['id'] == '48041-605'
 
     def test_fetch_assignments_by_application(self):
         assignments = Assignment.objects.filter(appl_id="14/190,982")

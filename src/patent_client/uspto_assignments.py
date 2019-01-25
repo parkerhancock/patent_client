@@ -89,6 +89,10 @@ class AssignmentManager(Manager):
     def __repr__(self):
         return f"<AssignmentManager>"
 
+    @property
+    def allowed_filters(self):
+        return list(self.fields.keys())
+
     def get_item(self, key):
         if key < 0:
             key = len(self) - key
@@ -104,14 +108,14 @@ class AssignmentManager(Manager):
             assignee: assignee name to search
         """
 
-        for key, value in self.filter_params.items():
+        for key, value in self.config['filter'].items():
             field = self.fields[key]
             query = value
         if field in ["PatentNumber", "ApplicationNumber"]:
             query = NUMBER_CLEAN_RE.sub("", str(query))
 
         sort = list()
-        for p in self.sort_params:
+        for p in self.config['order_by']:
             if sort[0] == "-":
                 sort.append(p[1:] + "+desc")
             else:

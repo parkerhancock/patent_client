@@ -54,49 +54,20 @@ class USApplicationManager(Manager):
             self.request()
         return self._len
 
-    def get(self, *args, **kwargs):
-        if "publication" in kwargs:
-            if "A1" in kwargs["publication"]:
-                warnings.warn("Lookup by Publication does not work well")
-                kwargs["app_early_pub_number"] = kwargs["publication"]
-            else:
-                kwargs["patent_number"] = kwargs["publication"][2:-2]
-            del kwargs["publication"]
-        manager = self.__class__(*args, **{**kwargs, **self.kwargs})
-        count = manager.count()
-        if count > 1:
-            raise ValueError("More than one result!")
-        elif count == 0:
-            raise ValueError("Object Not Found!")
-        else:
-            return manager.first()
-
-    def get_many(self, *args, **kwargs):
-        manager = self.__class__(
-            *args, **{**kwargs, **self.kwargs, **dict(default_connector="OR")}
-        )
-        return manager
-
-    def _generate_query(self, params=dict()):
-        params = {**self.filter_params, **dict(sort=self.sort_params), **params}
-        if "default_connector" in params:
-            del params["default_connector"]
+    @property
+    def query_params(self):
         sort_query = ""
-
-        if "sort" in params:
-            for s in params["sort"]:
-                if s[0] == "-":
-                    sort_query += f"{inflection.camelize(s[1:], uppercase_first_letter=False)} desc "
-                else:
-                    sort_query += (
-                        f"{inflection.camelize(s, uppercase_first_letter=False)} asc"
-                    )
-
-            del params["sort"]
+        for s in self.config['order_by']:
+            if s[0] == "-":
+                sort_query += f"{inflection.camelize(s[1:], uppercase_first_letter=False)} desc "
+            else:
+                sort_query += (
+                    f"{inflection.camelize(s, uppercase_first_letter=False)} asc"
+                )
 
         query = ""
         mm_active = True
-        for k, v in params.items():
+        for k, v in self.config['filter'].items():
             field = inflection.camelize(k, uppercase_first_letter=False)
             if not v:
                 continue
@@ -121,8 +92,8 @@ class USApplicationManager(Manager):
             del query['mm']
         return query
 
-    def request(self, params=dict()):
-        query_params = self._generate_query(params)
+    def request(self):
+        query_params = self.query_params
         fname = hash_dict(query_params) + ".json"
         fname = os.path.join(CACHE_DIR, fname)
         if not os.path.exists(fname):
@@ -140,12 +111,13 @@ class USApplicationManager(Manager):
         results = data["queryResults"]["searchResponse"]["response"]
         num_found = results["numFound"]
         self._len = num_found
-        if num_found <= 20:
-            with open(fname, "w") as f:
-                json.dump(data, f, indent=2)
-            self.objs = USApplicationJsonSet(results["docs"], num_found)
-        else:
+        if num_found > 20 or self.config['options'].get('force_xml', True):
             return self._package_xml(query_params, data)
+        
+        with open(fname, "w") as f:
+            json.dump(data, f, indent=2)
+        self.objs = USApplicationJsonSet(results["docs"], num_found)
+            
 
     def _package_xml(self, query_params, data):
         fname = hash_dict(query_params) + ".zip"
@@ -186,19 +158,27 @@ class USApplicationManager(Manager):
         self.objs = USApplicationXmlSet(fname, num_found)
 
     @property
+    def allowed_filters(self):
+        fields = self.fields()
+        return list(fields.keys())
+
+
     def fields(self):
-        url = "https://ped.uspto.gov/api/search-fields"
-        response = session.get(url)
-        if response.ok:
+        if not hasattr(self.__class__, '_fields'):
+            url = "https://ped.uspto.gov/api/search-fields"
+            response = session.get(url)
+            if not response.ok:
+                raise ValueError("Can't get fields!")
+            
             raw = response.json()
             output = {inflection.underscore(key): value for (key, value) in raw.items()}
-            return output
-        else:
-            raise ValueError("Can't get fields!")
+            self.__class__._fields = output
+        return self.__class__._fields
+
 
     @property
     def query_fields(self):
-        fields = self.fields
+        fields = self.fields()
         for k in sorted(fields.keys()):
             if 'facet' in k:
                 continue
@@ -273,11 +253,13 @@ class USApplication(Model):
     inpadoc = one_to_many("patent_client.Inpadoc", number="appl_id")
     assignments = one_to_many("patent_client.Assignment", appl_id="appl_id")
     attrs =['appl_id', 'applicants', 'app_filing_date', 'app_exam_name', 
-    'inventor_name', 'inventors', 'app_early_pub_number', 'app_early_pub_date', 
+    'inventors', 'app_early_pub_number', 'app_early_pub_date', 
     'app_location', 'app_grp_art_number', 'patent_number', 'patent_issue_date', 
     'app_status', 'app_status_date', 'patent_title', 'app_attr_dock_number', 
     'first_inventor_file', 'app_type', 'app_cust_number', 'app_cls_sub_cls', 
-    'corr_addr_cust_no', 'app_entity_status', 'app_confr_number']
+    'corr_addr_cust_no', 'app_entity_status', 'app_confr_number', 'transaction_history',
+    'children', 'parents', 'foreign_priority_applications', 'pta_pte_history', 'pta_pte_summary', 'correspondent', 
+    'attorneys']
 
     @property
     def publication(self):
@@ -297,6 +279,10 @@ class USApplication(Model):
     @property
     def parents(self):
         return [Relationship(d) for d in self.data.get('parent_continuity', list())]
+
+    @property
+    def foreign_priority_applications(self):
+        return [ForeignPriority(d) for d in self.data.get('foreign_priority', list())]
 
     @property
     def pta_pte_history(self):
@@ -319,7 +305,7 @@ class USApplication(Model):
 
 class Relationship(Model):
     application = one_to_one("patent_client.USApplication", appl_id='appl_id')
-    attrs = ['appl_id', 'filing_date', 'patent_number', 'status', 'relationship', 'aia']
+    attrs = ['appl_id', 'filing_date', 'patent_number', 'status', 'relationship']
 
     def __init__(self, *args, **kwargs):
         super(Relationship, self).__init__(*args, **kwargs)
@@ -327,9 +313,19 @@ class Relationship(Model):
         self.appl_id = data['claim_application_number_text']
         self.filing_date = data['filing_date']
         self.patent_number = data.get('patent_number_text', None) or None
-        self.status = data['application_status']
+        self.status = data.get('application_status', None)
         self.relationship = data['application_status_description'].replace('This application ', '')
-        self.aia = data['aia_indicator'] == 'Y'
+        #self.aia = data['aia_indicator'] == 'Y'
+        # XML data does not include the AIA indicator
+
+    def __repr__(self):
+        return f"<Relationship(appl_id={self.appl_id}, relationship={self.relationship})>"
+
+class ForeignPriority(Model):
+    attrs = ['country_name', 'application_number_text', 'filing_date']
+
+    def __repr__(self):
+        return f"<ForeignPriority(country_name={self.country_name}, application_number_text={self.application_number_text})"
 
 class PtaPteHistory(Model):
     attrs = ['number', 'date', 'description', 'pto_days', 'applicant_days', 'start']
@@ -392,6 +388,10 @@ class USApplicationXmlSet(Manager):
 
     def __len__(self):
         return self._len
+
+    def __iter__(self):
+        for i in range(len(self)):
+            return self[i]
 
     def __getitem__(self, key):
         if type(key) == slice:
