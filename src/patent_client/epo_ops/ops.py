@@ -215,10 +215,10 @@ class OpenPatentServicesConnector:
             CACHE_DIR, f"{url[37:].replace('/', '_')}{param_hash if params else ''}.xml"
         )
         if os.path.exists(fname):
-            return open(fname, encoding='utf-8').read()
+            return open(fname, encoding="utf-8").read()
         response = self.request(url, params)
         text = response.text
-        with open(fname, "w", encoding='utf-8') as f:
+        with open(fname, "w", encoding="utf-8") as f:
             f.write(text)
         return text
 

@@ -69,8 +69,6 @@ def one_to_many(class_name, **mapping):
     return get
 
 
-
-
 def recur_accessor(obj, accessor):
     if "__" not in accessor:
         a = accessor
@@ -98,6 +96,15 @@ def recur_accessor(obj, accessor):
 
 
 class Model(object):
+    """
+    Model Base Class
+
+    Takes in a dictionary of data and :
+    1. Automatically inflects all keys to underscore_case
+    2. Converts any value that has "date" or "datetime" into the appropriate type
+    3. Appends all keys in the dictionary as attributes on the object
+    4. Attaches the original inflected data dictionary as Model.data
+    """
     def __init__(self, data):
         self.data = {inflection.underscore(k): v for (k, v) in data.items()}
         for k, v in self.data.items():
@@ -109,91 +116,90 @@ class Model(object):
             except ValueError:  # Malformed datetimes:
                 self.data[k] = None
             setattr(self, k, self.data[k])
-    
-    def dict(self):
+
+    def as_dict(self):
+        """Convert object to dictionary, recursively converting any objects to dictionaries themselves"""
         output = {key: getattr(self, key) for key in self.attrs if hasattr(self, key)}
         for k, v in output.items():
             if isinstance(v, list):
-                output[k] = [i.dict() if hasattr(i, 'dict') else i for i in v]
-            if hasattr(v, 'dict'):
-                output[k] = v.dict()
+                output[k] = [i.asdict() if hasattr(i, "asdict") else i for i in v]
+            if hasattr(v, "asdict"):
+                output[k] = v.asdict()
         return output
 
     def __repr__(self):
-        if hasattr(self, 'primary_key'):
-            primary_key = getattr(self, 'primary_key')
+        """Default representation"""
+        if hasattr(self, "primary_key"):
+            primary_key = getattr(self, "primary_key")
             return f"<{self.__class__.__name__} {primary_key}={getattr(self, primary_key)}>"
         else:
             return f"<{self.__class__.__name__}>"
 
 
-
 class Manager:
-    def __init__(self, *args, **kwargs):
-        """Simply store the keyword arguments"""
-        if args:
-            kwargs[self.primary_key] = args
-        self.values_params = dict()
-        self.filter_params = dict()
-        self.sort_params = list()
-        self.items = list()
+    """
+    Manager Base Class
 
-        for key, value in kwargs.items():
-            if "values__" in key:
-                *_, new_key = key.split("__")
-                self.values_params[new_key] = value
-            elif key == "sort":
-                self.sort_params = value
-            elif (
-                key == "items"
-            ):  # if you want to include actual items rather than generator parameters
-                self.items = value
-            else:
-                self.filter_params[key] = value
+    This class is essentially a configurable generator. It is intended to be initialized 
+    as an empty object at Model.objects. Users can then modify the manager by calling either:
+        
+        Manager.filter -> adds filter criteria
+        Manager.sort -> adds sorting criteria
+        Manager.options -> adds key:value options
 
-    @property
-    def kwargs(self):
-        kwargs = {**self.filter_params, **dict(sort=self.sort_params, items=self.items)}
-        for key, value in self.values_params.items():
-            kwargs["values__" + key] = value
-        return kwargs
+    All methods should return a brand-new manager with the appropriate parameters re-set. The 
+    Manager also has a special method to fetch a single matching object:
 
-    def get_obj_class(self):
-        module, klass = self.obj_class.rsplit(".", 1)
-        mod = importlib.import_module(module)
-        return getattr(mod, klass)
+        Manager.get -> adds filter critera, and returns the first object if only one object is found, else raises an Exception
+
+    The manager's attributes are stored in a dictionary at Manager.config. Config has the following structure:
+
+        {
+            'filter': {
+                key: value,
+                key: value,
+            },
+            'order_by': [value, value, value],
+            'values': [value, value, value]
+            'options': {
+                key: value
+            }
+        }
+
+    """
+    def __init__(self, config=dict(filter=dict(), order_by=list(), options=dict()), values=list()):
+        self.config = config
 
     def filter(self, *args, **kwargs):
-        """Return a new Manager with a combination of previous and new keyword arguments"""
-        return self.__class__(*args, **{**self.kwargs, **kwargs})
+        if args:
+            kwargs[self.primary_key] = args
+        for k in kwargs.keys():
+            if k not in self.allowed_filters:
+                raise ValueError(f'{k} is not a permitted filter parameter')
 
-        """ Next step would be to implement application-layer filters
-        for key, value in kwargs.items():
-            selector, operator = key.rsplit('__', 1)
-            if operator not in FILTERS:
-                operator = 'eq'
-                accessor = key
-            selector_lambda = lambda x: accessor(x, accessor)
-            self.objs = filter(lambda x: FILTERS[operator](selector_lambda(x), value), self.objs)
-        """
+        new_config = deepcopy(self.config)
+        new_config['filter'] = {**new_config['filter'], **kwargs}
+        return self.__class__(new_config)
 
     def order_by(self, *args):
         """Take arguments, and store in a special keyword argument called 'sort' """
-        kwargs = deepcopy(self.kwargs)
-        kwargs["sort"] += args
-        return self.__class__(**kwargs)
+        new_config = deepcopy(self.config)
+        new_config['order_by'] = list(new_config['order_by']) + list(args)
+        return self.__class__(new_config)
+
+    def set_options(self, **kwargs):
+        new_config = deepcopy(self.config)
+        new_config['options'] = {**new_config['options'], **kwargs}
+        return self.__class__(new_config)
 
     def get(self, *args, **kwargs):
         """Implement a new manager with the requested keywords, and if the length is 1,
         return that record, else raise an exception"""
-        manager = self.__class__(*args, **{**self.kwargs, **kwargs})
+        manager = self.filter(*args, **kwargs)
         if len(manager) > 1:
             doc_nos = "\n".join([str(r) for r in manager])
             raise ValueError("More than one document found!\n" + doc_nos)
         return manager.first()
-
-    def exclude(self, **kwargs):
-        raise NotImplementedError(f"{self.__class__} has no exclude method")
 
     def count(self):
         return len(self)
@@ -209,45 +215,53 @@ class Manager:
 
     def values(self, *fields):
         """Return new manager with special keywords 'values__fields' and 'values__list'"""
-        return self.__class__(
-            **{**self.kwargs, **dict(values__fields=fields, values__list=False)}
-        )
+        new_config = deepcopy(self.config)
+        new_config['values'] = fields
+        new_config['options']['values_iterator'] = True
+        new_config['options']['values_list'] = False
+        return self.__class__(new_config)
 
     def values_list(self, *fields, flat=False):
         """Same as values, but adds an additional parameter for "flat" lists """
-        return self.__class__(
-            **{
-                **self.kwargs,
-                **dict(values__fields=fields, values__list=True, values__flat=flat),
-            }
-        )
+        new_config = deepcopy(self.config)
+        new_config['values'] = fields
+        new_config['options']['values_iterator'] = True
+        new_config['options']['values_list'] = True
+        new_config['options']['values_list_flat'] = flat
+        return self.__class__(new_config)
+
 
     def get_item(self, key):
         raise NotImplementedError(f"{self.__class__} has no get_item method")
+
+    #def __iter__(self):
+    #    """Returns a generator for items from this manager"""
+    #    raise NotImplementedError(f"{self.__class__} has no iterator method!")
 
     def __getitem__(self, key):
         """resolves slices and keys into Model objects. Relies on .get_item(key) to obtain
         the record itself"""
         if type(key) == slice:
-            indices = list(range(len(self)))[key.start : key.stop : key.step]
+            indices = list(range(len(self)))[key.start : key.stop: key.step]
             return [self.__getitem__(index) for index in indices]
         else:
             if key >= len(self):
                 raise StopIteration
             obj = self.get_item(key)
-            if "fields" in self.values_params:
+            options = self.config['options']
+
+            if options.get('values_iterator') == True:
                 data = obj.data
                 fdata = OrderedDict()
-                for k in self.values_params["fields"]:
-                    key = k.replace("__", "_")
+                for k in self.config["values"]:
                     value = recur_accessor(obj, k)
-                    fdata[key] = value
+                    fdata[k] = value
                 data = fdata
-                if self.values_params.get("list", False):
+                if options.get('values_list', False):
                     data = tuple(data[k] for k, v in data.items())
                     if (
-                        len(self.values_params["fields"]) == 1
-                        and self.values_params["flat"]
+                        len(self.config['values']) == 1
+                        and options.get('values_list_flat', False)
                     ):
                         data = data[0]
                 return data

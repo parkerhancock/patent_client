@@ -2,6 +2,7 @@ import json
 import mimetypes
 import os
 import shutil
+import importlib
 
 import inflection
 import requests
@@ -37,7 +38,7 @@ class PtabManager(Manager):
     def request(self, params=dict()):
         params = {
             inflection.camelize(k, uppercase_first_letter=False): v
-            for (k, v) in {**self.filter_params, **dict(sort=self.sort_params)}.items()
+            for (k, v) in {**self.config['filter'], **dict(sort=self.config['order_by'])}.items()
         }
         fname = CACHE_DIR / f"{self.__class__.__name__}-{hash_dict(params)}.json"
         if not fname.exists():
@@ -46,28 +47,65 @@ class PtabManager(Manager):
                 json.dump(response.json(), f, indent=True)
         return json.load(open(fname))
 
+    @property
+    def allowed_filters(self):
+        return self.query_fields
+
+    
+    def get_obj_class(self):
+        module, klass = self.obj_class.rsplit(".", 1)
+        mod = importlib.import_module(module)
+        return getattr(mod, klass)
+
 
 class PtabTrialManager(PtabManager):
     base_url = "https://ptabdata.uspto.gov/ptab-api/trials"
     obj_class = "patent_client.uspto_ptab.PtabTrial"
     primary_key = "trial_number"
-    query_fields = ['trial_number', 'prosecution_status', 'application_number', 
-    'patent_number', 'filing_date', 'filing_date_from', 'filing_date_to', 
-    'accorded_filing_date', 'accorded_filing_date_from', 'accorded_filing_date_to', 
-    'institution_decision_date', 'institution_decision_date_from', 'institution_decision_date_to', 
-    'final_decision_date', 'final_decision_date_from', 'final_decision_date_to', 'last_modified_datetime', 
-    'last_modified_datetime_from', 'last_modified_datetime_to']
+    query_fields = [
+        "trial_number",
+        "prosecution_status",
+        "application_number",
+        "patent_number",
+        "filing_date",
+        "filing_date_from",
+        "filing_date_to",
+        "accorded_filing_date",
+        "accorded_filing_date_from",
+        "accorded_filing_date_to",
+        "institution_decision_date",
+        "institution_decision_date_from",
+        "institution_decision_date_to",
+        "final_decision_date",
+        "final_decision_date_from",
+        "final_decision_date_to",
+        "last_modified_datetime",
+        "last_modified_datetime_from",
+        "last_modified_datetime_to",
+        "patent_owner_name"
+    ]
 
 
 class PtabDocumentManager(PtabManager):
     base_url = "https://ptabdata.uspto.gov/ptab-api/documents"
     obj_class = "patent_client.uspto_ptab.PtabDocument"
     primary_key = "id"
-    query_fields = ['id', 'title', 'filing_datetime', 'filing_datetime_from', 
-    'filing_datetime_to', 'filing_party', 'document_number', 'size_in_bytes', 
-    'trial_number', 'media_type', 'type', 'last_modified_datetime', 
-    'last_modified_datetime_from', 'last_modified_datetime_to']
-    
+    query_fields = [
+        "id",
+        "title",
+        "filing_datetime",
+        "filing_datetime_from",
+        "filing_datetime_to",
+        "filing_party",
+        "document_number",
+        "size_in_bytes",
+        "trial_number",
+        "media_type",
+        "type",
+        "last_modified_datetime",
+        "last_modified_datetime_from",
+        "last_modified_datetime_to",
+    ]
 
 
 class PtabTrial(Model):
@@ -121,15 +159,25 @@ class PtabTrial(Model):
     """
 
     objects = PtabTrialManager()
-    attrs = ['trial_number', 'application_number', 'patent_number', 
-    'petitioner_party_name', 'patent_owner_name', 'inventor_name', 
-    'prosecution_status', 'filing_date', 'accorded_filing_date', 'institution_decision_date', 
-    'last_modified_datetime', 'documents']
+    attrs = [
+        "trial_number",
+        "application_number",
+        "patent_number",
+        "petitioner_party_name",
+        "patent_owner_name",
+        "inventor_name",
+        "prosecution_status",
+        "filing_date",
+        "accorded_filing_date",
+        "institution_decision_date",
+        "last_modified_datetime",
+        "documents",
+    ]
     us_application = one_to_one(
         "patent_client.USApplication", appl_id="application_number"
     )
     documents = one_to_many("patent_client.PtabDocument", trial_number="trial_number")
-    
+
     def __repr__(self):
         return f"<PtabTrial(trial_number={self.trial_number})>"
 
@@ -176,9 +224,20 @@ class PtabDocument(Model):
     A document can also be downloaded to your working directory by running document.download()
 
     """
+
     objects = PtabDocumentManager()
-    attrs = ['trial_number', 'size_in_bytes', 'filing_party', 'filing_datetime', 
-    'last_modified_datetime', 'document_number', 'title', 'media_type', 'id', 'type']
+    attrs = [
+        "trial_number",
+        "size_in_bytes",
+        "filing_party",
+        "filing_datetime",
+        "last_modified_datetime",
+        "document_number",
+        "title",
+        "media_type",
+        "id",
+        "type",
+    ]
     trial = one_to_one("patent_client.PtabTrial", trial_number="trial_number")
 
     def download(self, path="."):

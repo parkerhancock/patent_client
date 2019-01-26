@@ -12,7 +12,7 @@ __version__ = "0.3.2"
 
 CACHE_BASE = Path("~/.patent_client").expanduser()
 CACHE_BASE.mkdir(exist_ok=True)
-CACHE_MAX_AGE = 60 * 60 * 24 * 3  # 3 days 
+CACHE_MAX_AGE = 60 * 60 * 24 * 3  # 3 days
 now = time.time()
 # Clear old files out of cache
 for path, folders, files in os.walk(CACHE_BASE):
@@ -30,7 +30,7 @@ SETTINGS = json.load(open(SETTINGS_FILE))
 
 from patent_client.epo_ops.models import Inpadoc, Epo  # isort:skip
 from patent_client.uspto_assignments import Assignment  # isort:skip
-from patent_client.uspto_exam_data import USApplication  # isort:skip
+from patent_client.uspto_exam_data.main import USApplication  # isort:skip
 from patent_client.uspto_ptab import PtabDocument  # isort:skip
 from patent_client.uspto_ptab import PtabTrial  # isort:skip
 from patent_client.itc_edis import (
