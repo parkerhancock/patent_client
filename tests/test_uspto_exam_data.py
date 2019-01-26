@@ -183,5 +183,5 @@ class TestPatentExaminationData:
         counter = 0
         for a in apps:
             counter += 1
-        assert len(apps) == counter + 1
+        assert len(apps) == counter
     

@@ -89,3 +89,7 @@ class TestAssignment:
         assignment_list = list(assignments.values_list('appl_num', flat=True))
         assert len(assignment_list) == 58
     
+class TestAssignmentBugs():
+    def test_id_43433-231(self):
+        assignment = Assignment.objects.get('43433-231')
+        assert assignment.properties[0]['app_filing_date'] == None
