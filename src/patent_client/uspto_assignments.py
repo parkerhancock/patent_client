@@ -9,7 +9,9 @@ from inflection import underscore
 from patent_client import CACHE_BASE
 from patent_client.util import Manager
 from patent_client.util import Model, one_to_many, one_to_one
+from patent_client.util import hash_dict
 import datetime
+
 
 # USPTO has a malconfigured SSL connection. Suppress warnings about it.
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
@@ -76,11 +78,12 @@ class AssignmentManager(Manager):
         "assignor": "PriorOwnerName",
         "pct_number": "PCTNumber",
         "correspondent": "CorrespondentName",
-        "reel_frame": "ReelFrame",
+        "id": "ReelFrame",
     }
     parser = AssignmentParser()
     rows = 50
     obj_class = "patent_client.uspto_assignments.Assignment"
+    primary_key = "id"
 
     def __init__(self, *args, **kwargs):
         super(AssignmentManager, self).__init__(*args, **kwargs)
@@ -137,12 +140,10 @@ class AssignmentManager(Manager):
     def _get_page(self, page_no):
         if page_no not in self.pages:
             params = self.get_query(page_no)
-
+            #import pdb; pdb.set_trace()
             filename = "-".join(
                 [
-                    params["filter"],
-                    params["query"],
-                    params["sort"],
+                    hash_dict(params),
                     str(self.rows),
                     str(page_no * self.rows),
                     ".xml",
@@ -256,31 +257,50 @@ class Assignment(Model):
     def properties(self):
         data = self.data
         properties = list()
-        for i in range(len(data["appl_num"])):
+        if isinstance(data['appl_num'], list):
+            for i in range(len(data["appl_num"])):
+                properties.append(
+                    {
+                        "appl_id": data["appl_num"][i],
+                        "app_filing_date": data["filing_date"][i],
+                        "patent_number": data["pat_num"][i],
+                        "pct_number": data["pct_num"][i],
+                        "intl_publ_date": datetime.datetime.strptime(
+                            data["intl_publ_date"][i], "%Y-%m-%d"
+                        ).date()
+                        if data["intl_publ_date"][i]
+                        else None,
+                        "intl_reg_num": data["intl_reg_num"][i],
+                        "app_early_pub_date": datetime.datetime.strptime(
+                            data["publ_date"][i], "%Y-%m-%d"
+                        ).date()
+                        if data["publ_date"][i]
+                        else None,
+                        "app_early_pub_number": data["publ_num"][i],
+                        "patent_issue_date": data["issue_date"][i],
+                        "patent_title": data["invention_title"][i],
+                        "patent_title_lang": data["invention_title_lang"][i],
+                        "inventors": data["inventors"][i],
+                    }
+                )
+        else:
             properties.append(
                 {
-                    "appl_id": data["appl_num"][i],
-                    "app_filing_date": data["filing_date"][i],
-                    "patent_number": data["pat_num"][i],
-                    "pct_number": data["pct_num"][i],
-                    "intl_publ_date": datetime.datetime.strptime(
-                        data["intl_publ_date"][i], "%Y-%m-%d"
-                    ).date()
-                    if data["intl_publ_date"][i]
-                    else None,
-                    "intl_reg_num": data["intl_reg_num"][i],
-                    "app_early_pub_date": datetime.datetime.strptime(
-                        data["publ_date"][i], "%Y-%m-%d"
-                    ).date()
-                    if data["publ_date"][i]
-                    else None,
-                    "app_early_pub_number": data["publ_num"][i],
-                    "patent_issue_date": data["issue_date"][i],
-                    "patent_title": data["invention_title"][i],
-                    "patent_title_lang": data["invention_title_lang"][i],
-                    "inventors": data["inventors"][i],
+                    "appl_id": data["appl_num"],
+                    "app_filing_date": data["filing_date"],
+                    "patent_number": data["pat_num"],
+                    "pct_number": data["pct_num"],
+                    "intl_publ_date": data["intl_publ_date"] if data["intl_publ_date"] else None,
+                    "intl_reg_num": data["intl_reg_num"],
+                    "app_early_pub_date": data["publ_date"] if data["publ_date"] else None,
+                    "app_early_pub_number": data["publ_num"],
+                    "patent_issue_date": data["issue_date"],
+                    "patent_title": data["invention_title"],
+                    "patent_title_lang": data["invention_title_lang"],
+                    "inventors": data["inventors"],
                 }
             )
+
         return [Property(p) for p in properties]
 
     @property

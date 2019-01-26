@@ -1,6 +1,6 @@
 import os
 from tempfile import TemporaryDirectory
-
+import datetime
 import pytest
 from patent_client.uspto_assignments import Assignment
 
@@ -90,6 +90,6 @@ class TestAssignment:
         assert len(assignment_list) == 58
     
 class TestAssignmentBugs():
-    def test_id_43433-231(self):
+    def test_id_43433_231(self):
         assignment = Assignment.objects.get('43433-231')
-        assert assignment.properties[0]['app_filing_date'] == None
+        assert assignment.properties[0].app_filing_date == datetime.date(2016,10,25)
