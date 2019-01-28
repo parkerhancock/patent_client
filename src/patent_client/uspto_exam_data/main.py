@@ -305,11 +305,12 @@ class USApplication(Model):
 
 class Relationship(Model):
     application = one_to_one("patent_client.USApplication", appl_id='appl_id')
-    attrs = ['appl_id', 'filing_date', 'patent_number', 'status', 'relationship']
+    attrs = ['appl_id', 'related_to_appl_id', 'filing_date', 'patent_number', 'status', 'relationship']
 
     def __init__(self, *args, **kwargs):
         super(Relationship, self).__init__(*args, **kwargs)
         data = self.data
+        self.related_to_appl_id = data.get('application_number_text', None)
         self.appl_id = data['claim_application_number_text']
         self.filing_date = data['filing_date']
         self.patent_number = data.get('patent_number_text', None) or None
@@ -344,7 +345,20 @@ class PtaPteSummary(Model):
     attrs = ['type', 'a_delay', 'b_delay', 'c_delay', 'overlap_delay', 'pto_delay', 'applicant_delay', 'pto_adjustments', 'total_days']
 
     def __init__(self, data):
-        self.type = data['pta_pte_ind']
+        try:
+            self.total_days = int(data['total_pto_days'])
+        except KeyError:
+            self.total_days = 0
+            self.type = None
+            self.pto_adjustments = 0
+            self.overlap_delay = 0
+            self.a_delay = 0
+            self.b_delay = 0
+            self.c_delay = 0
+            self.pto_delay = 0
+            self.applicant_delay = 0
+            return
+        self.type = data.get('pta_pte_ind', None)
         self.pto_adjustments = int(data['pto_adjustments'])
         self.overlap_delay = int(data['overlap_delay'])
         self.a_delay = int(data['a_delay'])
@@ -352,15 +366,18 @@ class PtaPteSummary(Model):
         self.c_delay = int(data['c_delay'])
         self.pto_delay = int(data['pto_delay'])
         self.applicant_delay = int(data['appl_delay'])
-        self.total_days = int(data['total_pto_days'])
+        
 
 class Transaction(Model):
     attrs = ['date', 'code', 'description']
 
     def __init__(self, data):
-        self.date = datetime.strptime(data['recordDate'][:10], '%Y-%m-%d').date()
+        self.date = data['record_date']
         self.code = data['code']
         self.description = data['description']
+
+    def __repr__(self):
+        return f'<Transaction(date={self.date.isoformat()}, description={self.description})>'
 
 class Correspondent(Model):
     attrs = ['name_line_one', 'name_line_two', 'cust_no', 'street_line_one', 'street_line_two', 'street_line_three', 'city', 'geo_region_code', 'postal_code']

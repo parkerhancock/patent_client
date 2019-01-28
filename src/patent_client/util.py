@@ -106,17 +106,36 @@ class Model(object):
     4. Attaches the original inflected data dictionary as Model.data
     """
     def __init__(self, data):
-        self.data = {inflection.underscore(k): v for (k, v) in data.items()}
+        #self.data = {inflection.underscore(k): v for (k, v) in data.items()}
+        self.data = self._convert_data(data)
         for k, v in self.data.items():
-            try:
-                if "datetime" in k and type(v) == str:
-                    self.data[k] = parse_dt(v)
-                elif "date" in k and type(v) == str:
-                    self.data[k] = parse_dt(v).date()
-            except ValueError:  # Malformed datetimes:
-                self.data[k] = None
+        #    try:
+        #        if "datetime" in k and type(v) == str:
+        #            self.data[k] = parse_dt(v)
+        #        elif "date" in k and type(v) == str:
+        #            self.data[k] = parse_dt(v).date()
+        #    except ValueError:  # Malformed datetimes:
+        #        self.data[k] = None
             setattr(self, k, self.data[k])
+    
+    def _convert_data(self, data):
+        if isinstance(data, list):
+            return [self._convert_data(a) for a in data]
+        elif isinstance(data, dict):
+            dictionary = {inflection.underscore(k): self._convert_data(v) for (k, v) in data.items()}
+            for k, v in dictionary.items():
+                try:
+                    if "datetime" in k and type(v) == str:
+                        dictionary[k] = parse_dt(v)
+                    elif "date" in k and type(v) == str:
+                        dictionary[k] = parse_dt(v).date()
+                except ValueError:  # Malformed datetimes:
+                    dictionary[k] = None
+            return dictionary
+        else:
+            return data
 
+    
     def as_dict(self):
         """Convert object to dictionary, recursively converting any objects to dictionaries themselves"""
         output = {key: getattr(self, key) for key in self.attrs if hasattr(self, key)}
@@ -134,6 +153,7 @@ class Model(object):
             return f"<{self.__class__.__name__} {primary_key}={getattr(self, primary_key)}>"
         else:
             return f"<{self.__class__.__name__}>"
+
 
 
 class Manager:
@@ -165,7 +185,7 @@ class Manager:
                 key: value
             }
         }
-
+        
     """
     def __init__(self, config=dict(filter=dict(), order_by=list(), options=dict()), values=list()):
         self.config = config
@@ -208,7 +228,10 @@ class Manager:
         raise NotImplementedError(f"{self.__class__} has no length method")
 
     def first(self):
-        return self[0]
+        try:
+            return self[0]
+        except StopIteration:
+            raise ValueError('No matching records found!')
 
     def all(self):
         return iter(self)

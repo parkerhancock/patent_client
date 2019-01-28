@@ -85,6 +85,7 @@ class TestPatentExaminationData:
         assert child.application.patent_title == 'LEAPFROG TREE-JOIN'
         assert child.as_dict() == {
             'appl_id': '14919159',
+            'related_to_appl_id': None,
             'filing_date': datetime.date(2015, 10, 21),
             'patent_number': '10120906',
             'relationship': 'claims the benefit of',
@@ -102,6 +103,7 @@ class TestPatentExaminationData:
         assert parent.application.patent_title == 'Leapfrog Tree-Join'
         assert parent.as_dict() == {
             'appl_id': '61706484',
+            'related_to_appl_id': None,
             'filing_date': datetime.date(2012,9,27),
             'patent_number': None,
             'relationship': 'Claims Priority from Provisional Application',
