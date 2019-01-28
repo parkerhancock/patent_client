@@ -62,7 +62,7 @@ However, additional setup is necessary to access EPO Inpadoc and EPO Register re
 Documentation
 =============
 
-The easiest way to get started is with `Patent Client Examples <https://github.com/parkerhancock/patent_client_examples`_. The examples repository has
+The easiest way to get started is with `Patent Client Examples <https://github.com/parkerhancock/patent_client_examples>`_. The examples repository has
 a list of Jupyter notebooks showing application examples of the patent_client library.
 
 Docs, including a fulsome Getting Started are available on `Read the Docs <http://patent-client.readthedocs.io>`_.
