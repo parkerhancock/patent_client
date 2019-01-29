@@ -231,6 +231,7 @@ class USApplication(Model):
         app.pta_pte_summary -> Patent Term Adjustment / Extension Results, including total term extension
         app.correspondent -> Contact information for prosecuting law firm
         app.attorneys -> List of attorneys authorized to take action in the case
+        app.expiration -> Patent Expiration Data (earliest non-provisional US parent + 20 years + extension and a flag for the presnce of a Terminal Disclaimer)
 
     Each of these also attaches data as attributes to the objects, and implements a .dict() method.
 
