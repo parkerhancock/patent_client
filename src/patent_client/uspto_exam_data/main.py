@@ -6,6 +6,7 @@ import warnings
 
 from datetime import date, datetime
 from zipfile import ZipFile
+from dateutil.relativedelta import relativedelta
 
 import inflection
 import requests
@@ -269,6 +270,35 @@ class USApplication(Model):
             return self.app_early_pub_number
 
     @property
+    def expiration(self):
+        expiration_data = dict()
+        term_parents = [p for p in self.parents 
+                    if p.relationship not in [
+                        'Claims Priority from Provisional Application',
+                        'is a Reissue of'
+                    ]]
+        if term_parents:
+            term_parent = sorted(term_parents, key=lambda x: x.filing_date)[0]
+        else:
+            term_parent = self
+        
+        expiration_data['parent_appl_id'] = term_parent.appl_id 
+        expiration_data['parent_app_filing_date'] = term_parent.app_filing_date
+        expiration_data['parent_relationship'] = getattr(term_parent, 'relationship', 'self')
+        expiration_data['20_year_term'] = term_parent.app_filing_date + relativedelta(years=20)
+        expiration_data['pta_or_pte'] = self.pta_pte_summary.total_days
+        expiration_data['extended_term'] = expiration_data['20_year_term'] + relativedelta(days=expiration_data['pta_or_pte'])
+
+        transactions = self.transaction_history
+        try:
+            disclaimer = next(t for t in transactions if t.code == 'DIST')
+            expiration_data['terminal_disclaimer_filed'] = True
+        except StopIteration:
+            expiration_data['terminal_disclaimer_filed'] = False 
+
+        return expiration_data
+
+    @property
     def transaction_history(self):
        return list(sorted((Transaction(d) for d in self.data.get('transactions', list())), key=lambda x: x.date)) 
 
@@ -311,7 +341,7 @@ class Relationship(Model):
         super(Relationship, self).__init__(*args, **kwargs)
         data = self.data
         self.appl_id = data['claim_application_number_text']
-        self.filing_date = data['filing_date']
+        self.app_filing_date = data['filing_date']
         self.patent_number = data.get('patent_number_text', None) or None
         self.status = data.get('application_status', None)
         self.relationship = data['application_status_description'].replace('This application ', '')

@@ -185,3 +185,25 @@ class TestPatentExaminationData:
             counter += 1
         assert len(apps) == counter
     
+    def test_expiration_date(self):
+        app = USApplication.objects.get('15384723')
+        assert app.expiration == {
+            'parent_appl_id': '12322218', 
+            'parent_app_filing_date': datetime.date(2009, 1, 29), 
+            'parent_relationship': 'is a Continuation in part of', 
+            '20_year_term': datetime.date(2029, 1, 29), 
+            'pta_or_pte': 0, 
+            'extended_term': datetime.date(2029, 1, 29), 
+            'terminal_disclaimer_filed': True
+            }
+        app = USApplication.objects.get('14865625')
+        assert app.expiration == {
+            'parent_appl_id': '14865625', 
+            'parent_app_filing_date': datetime.date(2015, 9, 25), 
+            'parent_relationship': 'self', 
+            '20_year_term': datetime.date(2035, 9, 25), 
+            'pta_or_pte': 752, 
+            'extended_term': datetime.date(2037, 10, 16), 
+            'terminal_disclaimer_filed': False
+            }
+    
