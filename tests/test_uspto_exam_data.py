@@ -88,7 +88,8 @@ class TestPatentExaminationData:
             'filing_date': datetime.date(2015, 10, 21),
             'patent_number': '10120906',
             'relationship': 'claims the benefit of',
-            'status': 'Patented'
+            'status': 'Patented',
+            'related_to_appl_id': '14018930',
         }
     
     def test_get_parent_data(self):
@@ -106,6 +107,7 @@ class TestPatentExaminationData:
             'patent_number': None,
             'relationship': 'Claims Priority from Provisional Application',
             'status': None,
+            'related_to_appl_id': '14018930',
         }
 
     def test_pta_history(self):
@@ -162,7 +164,7 @@ class TestPatentExaminationData:
         assert app.attorneys[0].as_dict() == {'registration_no': '32429', 'full_name': 'Peter Mims', 'phone_num': '713-758-2732', 'reg_status': 'ACTIVE'}
         
     def test_xml_packaging(self):
-        test_apps = ['13629348', 'PCT/US03/31405', '11510020']
+        test_apps = ['13629348', 'PCT/US03/31405',]
         for app in test_apps:
             json_app = USApplication.objects.set_options(force_xml=False).get(app)
             xml_app = USApplication.objects.get(app)

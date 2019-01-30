@@ -305,11 +305,11 @@ class USApplication(Model):
 
     @property
     def children(self):
-        return [Relationship(d) for d in self.data.get('child_continuity', list())]
+        return [Relationship(d, base_app=self) for d in self.data.get('child_continuity', list())]
     
     @property
     def parents(self):
-        return [Relationship(d) for d in self.data.get('parent_continuity', list())]
+        return [Relationship(d, base_app=self) for d in self.data.get('parent_continuity', list())]
 
     @property
     def foreign_priority_applications(self):
@@ -336,12 +336,13 @@ class USApplication(Model):
 
 class Relationship(Model):
     application = one_to_one("patent_client.USApplication", appl_id='appl_id')
-    attrs = ['appl_id', 'filing_date', 'patent_number', 'status', 'relationship']
+    attrs = ['appl_id', 'filing_date', 'patent_number', 'status', 'relationship', 'related_to_appl_id']
 
     def __init__(self, *args, **kwargs):
         super(Relationship, self).__init__(*args, **kwargs)
         data = self.data
         self.appl_id = data['claim_application_number_text']
+        self.related_to_appl_id = kwargs['base_app'].appl_id
         self.app_filing_date = data['filing_date']
         self.patent_number = data.get('patent_number_text', None) or None
         self.status = data.get('application_status', None)
@@ -375,7 +376,10 @@ class PtaPteSummary(Model):
     attrs = ['type', 'a_delay', 'b_delay', 'c_delay', 'overlap_delay', 'pto_delay', 'applicant_delay', 'pto_adjustments', 'total_days']
 
     def __init__(self, data):
-        self.type = data['pta_pte_ind']
+        try:
+            self.type = data['pta_pte_ind']
+        except KeyError:
+            return
         self.pto_adjustments = int(data['pto_adjustments'])
         self.overlap_delay = int(data['overlap_delay'])
         self.a_delay = int(data['a_delay'])

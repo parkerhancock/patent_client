@@ -2,6 +2,12 @@
 Changelog
 =========
 
+0.4.0 (2019-01-30)
+------------------
+* Renewed commitment to adhere to semantic versioning
+* Added several new synthetic data attributes, including expiration date calculations
+* General updates and improvements, including an overhaul of the base Manager and Model classes
+
 0.2.3 (2018-11-02)
 ------------------
 * Added parser for Inpadoc claims so they have an object repesentation
