@@ -173,6 +173,7 @@ class PtabTrial(Model):
         "last_modified_datetime",
         "documents",
     ]
+
     us_application = one_to_one(
         "patent_client.USApplication", appl_id="application_number"
     )
