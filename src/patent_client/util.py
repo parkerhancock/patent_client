@@ -105,9 +105,11 @@ class Model(object):
     3. Appends all keys in the dictionary as attributes on the object
     4. Attaches the original inflected data dictionary as Model.data
     """
-    def __init__(self, data):
+
+    def __init__(self, data, **kwargs):
         #self.data = {inflection.underscore(k): v for (k, v) in data.items()}
         self.data = self._convert_data(data)
+
         for k, v in self.data.items():
         #    try:
         #        if "datetime" in k and type(v) == str:

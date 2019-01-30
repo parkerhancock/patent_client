@@ -85,6 +85,22 @@ wipo_early_pub_date         YYYY-mm-dd                                        Ye
 wipo_early_pub_number       WO20121231234                                     Yes                 Yes
 =========================   ===========================================       ===============     ================
 
+Compound Data Objects
+---------------------
+
+===================  ========================================================================================================================================
+Field Name           Description
+===================  ========================================================================================================================================
+transaction_history  list of transactions (filings, USPTO actions, etc.) involving the application
+children             list of child application Relationship objects
+parents              list of parent application Relationship objects
+pta_pte_history      Patent Term Adjustment / Extension Event History
+pta_pte_summary      Patent Term Adjustment / Extension Results, including total term extension
+correspondent        Contact information for the prosecuting law firm
+attorneys            List of attorneys authorized to take action in the case
+expiration           Patent Expiration Data (earliest non-provisional US parent + 20 years + extension and a flag for the presence of a Terminal Disclaimer)
+===================  ========================================================================================================================================
+
 Relationships
 -------------
 

@@ -89,7 +89,8 @@ class TestPatentExaminationData:
             'filing_date': datetime.date(2015, 10, 21),
             'patent_number': '10120906',
             'relationship': 'claims the benefit of',
-            'status': 'Patented'
+            'status': 'Patented',
+            'related_to_appl_id': '14018930',
         }
     
     def test_get_parent_data(self):
@@ -108,6 +109,7 @@ class TestPatentExaminationData:
             'patent_number': None,
             'relationship': 'Claims Priority from Provisional Application',
             'status': None,
+            'related_to_appl_id': '14018930',
         }
 
     def test_pta_history(self):
@@ -164,7 +166,7 @@ class TestPatentExaminationData:
         assert app.attorneys[0].as_dict() == {'registration_no': '32429', 'full_name': 'Peter Mims', 'phone_num': '713-758-2732', 'reg_status': 'ACTIVE'}
         
     def test_xml_packaging(self):
-        test_apps = ['13629348', 'PCT/US03/31405', '11510020']
+        test_apps = ['13629348', 'PCT/US03/31405',]
         for app in test_apps:
             json_app = USApplication.objects.set_options(force_xml=False).get(app)
             xml_app = USApplication.objects.get(app)
@@ -186,4 +188,26 @@ class TestPatentExaminationData:
         for a in apps:
             counter += 1
         assert len(apps) == counter
+    
+    def test_expiration_date(self):
+        app = USApplication.objects.get('15384723')
+        assert app.expiration == {
+            'parent_appl_id': '12322218', 
+            'parent_app_filing_date': datetime.date(2009, 1, 29), 
+            'parent_relationship': 'is a Continuation in part of', 
+            '20_year_term': datetime.date(2029, 1, 29), 
+            'pta_or_pte': 0, 
+            'extended_term': datetime.date(2029, 1, 29), 
+            'terminal_disclaimer_filed': True
+            }
+        app = USApplication.objects.get('14865625')
+        assert app.expiration == {
+            'parent_appl_id': '14865625', 
+            'parent_app_filing_date': datetime.date(2015, 9, 25), 
+            'parent_relationship': 'self', 
+            '20_year_term': datetime.date(2035, 9, 25), 
+            'pta_or_pte': 752, 
+            'extended_term': datetime.date(2037, 10, 16), 
+            'terminal_disclaimer_filed': False
+            }
     
