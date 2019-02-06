@@ -61,7 +61,7 @@ SEARCH_FIELDS = {
 }
 
 EpoDoc = namedtuple("EpoDoc", ["number", "kind", "date", "doc_type"])
-DocDB = namedtuple("DocDB", ["country", "number", "kind", "date", "doc_type"])
+DocDB = namedtuple("DocDB", ["country", "number", "kind", "date", "doc_type", "family_id"])
 whitespace_re = re.compile(" +")
 country_re = re.compile(r"^[A-Z]{2}")
 ep_case_re = re.compile(r"EP(?P<number>[\d]+)(?P<kind>[A-Z]\d)?")
@@ -281,14 +281,14 @@ class OpenPatentServicesConnector:
             "country": el.find("./epo:country", NS),
             "number": el.find("./epo:doc-number", NS),
             "kind": el.find("./epo:kind", NS),
-            "date": el.find("./epo:date", NS),
+            "date": el.find(".//epo:date", NS),
         }
         for k, v in raw_data.items():
             if v is not None:
                 raw_data[k] = v.text
 
         raw_data["doc_type"] = doc_type
-
+        raw_data["family_id"] = el.attrib.get('family-id', None)
         return DocDB(**raw_data)
 
     def epodoc_number(self, el, doc_type):
@@ -302,7 +302,6 @@ class OpenPatentServicesConnector:
                 raw_data[k] = v.text
 
         raw_data["doc_type"] = doc_type
-
         return EpoDoc(**raw_data)
 
     def cpc_class(self, el):
@@ -313,7 +312,7 @@ class OpenPatentServicesConnector:
 
 
 class InpadocConnector(OpenPatentServicesConnector):
-    page_size = 25
+    page_size = 100
     search_url = "http://ops.epo.org/3.2/rest-services/published-data/search"
 
     def xml_data(self, pub, data_kind):
@@ -348,9 +347,9 @@ class InpadocConnector(OpenPatentServicesConnector):
         params = {**query, **{"Range": f"{start}-{end}"}}
         text = self.xml_request(self.search_url, params)
         tree = ET.fromstring(text.encode("utf-8"))
-        results = tree.find(".//ops:search-result", NS)
+        results = tree.findall(".//ops:publication-reference", NS)
         return [
-            self.docdb_number(el.find("./epo:document-id", NS), "publication")
+            self.docdb_number(el, "publication")
             for el in results
         ]
 
@@ -375,7 +374,7 @@ class InpadocConnector(OpenPatentServicesConnector):
         for keyword, value in query_dict.items():
             if len(value.split()) > 1:
                 value = f'"{value}"'
-            query += SEARCH_FIELDS[keyword] + "=" + value
+            query += SEARCH_FIELDS[keyword] + "=" + value + ' '
         return dict(q=query)
 
     def parse_citation(self, el):
