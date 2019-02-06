@@ -274,7 +274,7 @@ class OpenPatentServicesConnector:
             case_number = year + number.rjust(6, "0")
         else:
             case_number = year[2:] + number.rjust(5, "0")
-        return DocDB(country, case_number, "W", None, "application")
+        return DocDB(country, case_number, "W", None, "application", None)
 
     def docdb_number(self, el, doc_type):
         raw_data = {
@@ -347,7 +347,7 @@ class InpadocConnector(OpenPatentServicesConnector):
         params = {**query, **{"Range": f"{start}-{end}"}}
         text = self.xml_request(self.search_url, params)
         tree = ET.fromstring(text.encode("utf-8"))
-        results = tree.findall(".//ops:publication-reference", NS)
+        results = tree.findall(".//ops:publication-reference/epo:document-id", NS)
         return [
             self.docdb_number(el, "publication")
             for el in results

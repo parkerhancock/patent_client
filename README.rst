@@ -73,12 +73,15 @@ SUPER QUICK START
 To use the project:
 
 .. code-block:: python
-
+    
+    # Import the model classes you need
     >>> from patent_client import Inpadoc, Epo, Assignment, USApplication
+    
     # Fetch US Applications
     >>> app = USApplication.objects.get('15710770')
     >>> app.patent_title
     'Camera Assembly with Concave-Shaped Front Face'
+    
     # Fetch from USPTO Assignments
     >>> assignments = Assignment.objects.filter(assignee='Google')
     >>> len(assignments)
@@ -87,12 +90,14 @@ To use the project:
     '47086-788'
     >>> assignments[0].conveyance_text
     'ASSIGNMENT OF ASSIGNORS INTEREST (SEE DOCUMENT FOR DETAILS).'
+    
     # Fetch from INPADOC
     >>> pub = Inpadoc.objects.get('EP3082535A1')
     >>> pub.title
     'AUTOMATIC FLUID DISPENSER'
     >>> pub.priority_claims
     ['201314137130', '2014071849']
+    
     # Fetch from EPO Register
     >>> epo = Epo.objects.get('EP3082535A1')
     >>> epo.title
