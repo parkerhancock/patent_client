@@ -1,15 +1,11 @@
 # flake8: noqa
-__version__ = "0.4.0"
-
-
-
 import json
 import os
 import shutil
 import time
 from pathlib import Path
 
-__version__ = "0.4.0"
+__version__ = "0.4.1"
 
 
 CACHE_BASE = Path("~/.patent_client").expanduser()
