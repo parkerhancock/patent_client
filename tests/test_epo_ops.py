@@ -3,6 +3,8 @@ import os
 from patent_client import Epo
 from patent_client import Inpadoc
 
+from datetime import date
+
 FIXTURES = os.path.join(os.path.dirname(__file__), "fixtures")
 
 
@@ -31,10 +33,10 @@ class TestInpadoc:
         )
         assert pub.images.num_pages == 29
         assert pub.images.sections == {
-            "ABSTRACT": 1,
-            "CLAIMS": 22,
-            "DESCRIPTION": 2,
-            "DRAWINGS": 25,
+            "abstract": 1,
+            "claims": 22,
+            "description": 2,
+            "drawings": 25,
         }
 
     def test_can_download_full_images(self, tmpdir):
@@ -119,12 +121,12 @@ class TestEpoRegister:
         assert pub.status[0] == {
             "description": "Request for examination was made",
             "code": "15",
-            "date": "20170825",
+            "date": date(2017,8, 25),
         }
         assert pub.title == "INERTIAL CAROUSEL POSITIONING"
         assert pub.procedural_steps[0] == {
             "code": "RFEE",
-            "date": "20171113",
+            "date": '20171113',
             "description": "Renewal fee payment - 03",
             "phase": "undefined",
         }

@@ -62,7 +62,10 @@ class InpadocManager(Manager):
         if "application" in self.config['filter'] or "publication" in self.config['filter']:
             return len(self.get_by_number())
         else:
-            return self.connector.get_search_length(self.config['filter'])
+            try:
+                return self.connector.get_search_length(self.config['filter'])
+            except Exception:
+                return 0
 
     def get_by_number(self):
         if "publication" in self.config['filter']:
@@ -85,13 +88,23 @@ class InpadocManager(Manager):
         else:
             # Search Iterator
             doc_db = self.connector.get_search_item(key, self.config['filter'])
-            return Inpadoc(self.connector.bib_data(doc_db)[0])
+            #return Inpadoc(self.connector.bib_data(doc_db)[0])
+            return InpadocResult({**doc_db._asdict(), 'doc_db': doc_db})
 
     @property
     def query_fields(self):
         for k, v in SEARCH_FIELDS.items():
             print(f"{k} (short form: {v})")
 
+class InpadocResult(Model):
+    connector = inpadoc_connector
+    
+    def __repr__(self):
+        return f'<InpadocResult({self.country}{self.number}{self.kind})>'
+
+    @property
+    def document(self):
+        return Inpadoc(self.connector.bib_data(self.doc_db)[0])
 
 class InpadocFullTextManager(InpadocManager):
     def get(self, doc_db):
