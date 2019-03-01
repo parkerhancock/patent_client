@@ -209,3 +209,12 @@ class TestPatentExaminationData:
             'terminal_disclaimer_filed': False
             }
     
+    def test_issue_25(self):
+        company_name = 'Tesla'
+        records = list(USApplication.objects
+                .filter(first_named_applicant=company_name)
+                .values('app_filing_date', 'patent_number', 'patent_title')[:]
+            )
+        assert len(records) >= 400
+        assert False
+    

@@ -111,6 +111,9 @@ WHITESPACE_RE = re.compile(r"\s+")
 child_status_re = re.compile(r'^which is ([^\s]+) ')
 reference_re = re.compile(r' \d+$')
 
+class XMLParsingException(Exception):
+    pass
+
 class USApplicationXmlParser:
     def element_to_text(self, element):
         return WHITESPACE_RE.sub(" ", " ".join(element.itertext())).strip()
@@ -119,7 +122,7 @@ class USApplicationXmlParser:
         data = {
             key: self.element_to_text(element.find(value, ns))
             for (key, value) in data_dict.items()
-            if element.find(value, ns) is not None
+            if element and element.find(value, ns) is not None
         }
         for key in data.keys():
             if "date" in key and data.get(key, False) != "-":
@@ -136,6 +139,8 @@ class USApplicationXmlParser:
 
     def parse_correspondent(self, element):
         el = element.find('.//com:CorrespondenceAddress', ns)
+        if not el:
+            return dict()
         cor_data = self.parse_element(el, correspondent_data)
         address_lines = el.findall('./com:Contact/com:PostalAddressBag/com:PostalAddress/com:PostalStructuredAddress/com:AddressLineText', ns)
         line_nos = 'one, two, three'.split(', ')
@@ -200,9 +205,10 @@ class USApplicationXmlParser:
 
         classification_data = element.find('./uspat:PatentRecord/uspat:PatentCaseMetadata/pat:PatentClassificationBag/pat:NationalClassification/pat:MainNationalClassification', ns)
         if classification_data:
-            us_class = classification_data.find('./pat:NationalClass', ns).text
-            us_sub_class = classification_data.find('./pat:NationalSubclass', ns).text
-            data['app_cls_sub_cls'] = f'{us_class}/{us_sub_class}'
+            us_class = classification_data.find('./pat:NationalClass', ns)
+            us_sub_class = classification_data.find('./pat:NationalSubclass', ns)
+            if us_class and us_sub_class:
+                data['app_cls_sub_cls'] = f'{us_class.text}/{us_sub_class.text}'
         else:
             data['app_cls_sub_cls'] = None
         return data
@@ -281,21 +287,24 @@ class USApplicationXmlParser:
         return output
 
     def case(self, element):
-        return {
-            **self.parse_bib_data(element),
-            **dict(
-                inventors=self.parse_inventors(element),
-                transactions=self.parse_transaction_history(element),
-                applicants=self.parse_applicants(element),
-                parent_continuity=self.parse_parents(element),
-                child_continuity=self.parse_children(element),
-                foreign_priority=self.parse_foreign_priority(element),
-                pta_pte_tran_history=self.parse_pta_history(element),
-                attrny_addr=self.parse_attorneys(element),
-            ),
-            **self.parse_pta_summary(element),
-            **self.parse_correspondent(element),
-        }
+        try:
+            return {
+                **self.parse_bib_data(element),
+                **dict(
+                    inventors=self.parse_inventors(element),
+                    transactions=self.parse_transaction_history(element),
+                    applicants=self.parse_applicants(element),
+                    parent_continuity=self.parse_parents(element),
+                    child_continuity=self.parse_children(element),
+                    foreign_priority=self.parse_foreign_priority(element),
+                    pta_pte_tran_history=self.parse_pta_history(element),
+                    attrny_addr=self.parse_attorneys(element),
+                ),
+                **self.parse_pta_summary(element),
+                **self.parse_correspondent(element),
+            }
+        except Exception as e:
+            raise XMLParsingException('XML Parsing Error!')
 
     def xml_file(self, file_obj):
         try:
