@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="/3.2/style/pub-ftxt-claims.xsl"?>
+<ops:world-patent-data xmlns="http://www.epo.org/exchange" xmlns:ops="http://ops.epo.org" xmlns:xlink="http://www.w3.org/1999/xlink"><ftxt:fulltext-documents xmlns="http://www.epo.org/fulltext" xmlns:ftxt="http://www.epo.org/fulltext"><ftxt:fulltext-document system="ops.epo.org" fulltext-format="text-only"><bibliographic-data><publication-reference data-format="docdb"><document-id><country>WO</country><doc-number>2018148832</doc-number><kind>A1</kind></document-id></publication-reference></bibliographic-data><claims lang="EN"><claim><claim-text>CLAI MS
+1. A method for measuring the size distribution of falling rock pieces comprising:
+(a) projecting at least one laser line on the falling rock pieces by a laser device;
+(b) capturing images of the falling rock pieces at an angle from the at least one laser line by at least one camera; and
+(c) obtaining size distribution data of the falling rock pieces based on data obtained from a topographical map generated from captured images resulting from step (b).
+2. The method of claim 1, wherein step (c) comprises:
+(i) producing a topographical map of the falling rock pieces from the images captu red in step (b);
+(ii) obtaining at least one of the volume and area of individual rock pieces from the topographical map;
+(iii) conducting a data analysis on at least one of the volume and area measurements of the rock pieces to reduce at least one of sampling and measurement errors; and
+(iv) obtaining size distribution data of the falling rock pieces based on the data analysis in step (iii).
+3. The method of claim 1 or 2, wherein the rock pieces are at least 1 cm in diameter.
+4. The method of any one of claims 1 - 3, wherein the falling rock pieces are from a blasting operation.
+5. The method of any one of claims 1 - 4, wherein the method measures the falling rock pieces in free fall as the rock pieces are transferred from a rock transporter to a rock crusher.
+6. The method of claim 5, wherein the rock transporter is a haul truck and the rock crusher is a primary rock crusher.
+7. The method of any one of claims 1 - 6, wherein two cameras capture images of the laser line.
+8. The method of any one of claims 1 - 7, wherein the method comprises projecting two side-by-side laser lines on the falling rock pieces by two laser devices.
+9. The method of any one of claims 1 - 8, wherein volume and area measurements are obtained from the topographical map and the data analysis is conducted on the volume and/or area of the rock pieces.
+10. The method of any one of claims 1 - 9, wherein the falling rock pieces are from a load of rocks in a vehicle and wherein the method additionally comprises measuring a rock hardness index of the load of rocks in the vehicle, which measurement is obtained from the obtained rock size distribution, operating data of a crusher and a measured weight of rock pieces in the load of the vehicle.
+11. The method of any one of claims 1 - 10, wherein the method is a computer- implemented method.
+12. The method of any one of claims 1 - 11, wherein the method additionally comprises correcting measurement and/or sampling error in the topographical map generated from the captured images.
+13. The method of claim 12, wherein correcting measurement and/or sampling error comprises the steps of: (1) correcting the size of the falling rock pieces obtained from data in the topographical map by reducing or eliminating error due to rock overlap, rock sample heterogeneity, or a combination thereof, thereby producing a corrected topographical map;
+(2) measuring, in the corrected topographic map, a smallest area of a side of the rock pieces;
+(3) estimating a rock free-falling speed variance from a light intensity map of the falling rock pieces and correcting rock surface and volume;
+(4) filtering rock size measurements from the corrected rock surface and volume using a model, thereby producing model adjusted data;
+(5) producing an output of corrected size distribution of the rock pieces based on the model adjusted data.
+14. The method of claim 13, wherein the step of correcting the size of the falling rock pieces comprises measuring the size of coarse and fine rock fragments from the falling rock pieces separately.
+15. The method of claim 13 or 14, wherein the step of measuring a smallest area of a side of the rock pieces comprises measuring the smallest side area of rock pieces that have been corrected.
+16. A computer implemented method for correcting measurement and/or sampling error in a topographical map obtained from images captured by a camera of falling rock pieces, the method comprising executing programmable instructions for the computer to carry out the steps of:
+(a) correcting the size of the falling rock pieces obtained from data in the topographical map by reducing or eliminating error due to rock overlap, rock sample heterogeneity, or a combination thereof, thereby producing a corrected topographical map;
+(b) measuring, in the corrected topographic map resulting from step (a), a smallest area of a side of the rock pieces;
+(c) estimating a rock free-falling speed variance from a light intensity map of the falling rock pieces and correcting rock surface and volume;
+(d) filtering rock size measurements obtained in step (c) using a model, thereby producing model adjusted data;
+(e) producing an output of particle size distribution of the rock pieces in computer readable format based on the model adjusted data from step (d) of filtering; and
+(f) determining a hardness index for rock pieces from at least the size distribution data determined in step (e).
+17. The method of claim 16, wherein step (a) comprises measuring the size of coarse and fine rock fragments from the falling rock pieces separately.
+18. The method of claim 16, wherein step (b) comprises measuring the smallest side area of rock pieces that have been corrected in step (a).
+19. The method of claim 16, wherein the step (c) comprises performing a 2D fourier transform of the light intensity map and evaluating the rock fall speed variance using an average power spectrum calculated in both a vertical and horizontal direction.
+20. The method of claim 16, wherein the model in step (d) is a Rosin Rammler model.
+21. A computer implemented method for measuring the volume of falling rock pieces, the method comprising executing programmable instructions for a computer to carry out the steps of:
+(a) determining a minimum rock weight of the falling rock pieces from a sampling model to eliminate or reduce sampling error;
+(b) capturing images of the falling rock pieces fed in a stream between at least two laser scanners, wherein the falling rock pieces are fed in a layer so that at least a substantial volume of the falling rock pieces can be visualized and measured;
+(c) producing two topographical maps of the falling rock pieces from the captured images from step (b); and
+(d) obtaining the volume of individual rock pieces from the topographical map by adding half-volumes measured from each of the two topographical maps.
+22. The method of claim 21, wherein the minimum rock weight is measured from a P. Gy sampling model to eliminate or reduce the sampling error.
+23. The method of claim 21 or 22, wherein the falling rock pieces are fed in a monolayer.
+24. The method of any one of claims 21 to 23, wherein the falling rock pieces are fed by a vibrating feeder.
+25. The method of any one of claims 21 to 24, wherein step (d) comprises using an image synchronisation algorithm to match the images collected by each of the two cameras.
+26. The method of any one of claims 21 to 25, wherein step (d) comprises automated calibration of the horizontal and depth measurements data from the topographical maps.
+27. The method of any one of claims 21 to 26, wherein step (d) comprises a method for adjusting the half-volumes measured by each camera as a function of a plane, which is defined on-line for each measurement test based on camera&apos;s depth reading intercept.
+28. An apparatus comprising a non-transitory computer-readable storage medium storing a computer-executable program for implementing a method for measuring size distribution of falling rock pieces, the method comprising:
+(a) projecting a laser line on the falling rock pieces by a laser device in
+communication with said apparatus;
+(b) capturing images at an angle from the laser line by at least one camera in communication with said apparatus;
+(c) generating a topographical map from captured images resulting from step (b); and
+(d) obtaining size distribution data of the falling rock pieces based on data obtained from the topographical map.
+29. The apparatus of claim 28, wherein step (c) of the method comprises:
+(i) producing a topographical map of the falling rock pieces from the images captured in step (b);
+(ii) obtaining at least one of the volume and area of individual rock pieces from the topographical map;
+(iii) conducting a data analysis on at least one of the volume and area measurements of the rock pieces to reduce at least one of sampling and measurement errors; and (iv) obtaining size distribution data of the falling rock pieces based on the data analysis in step (iii).
+30. The apparatus of claim 28 or 29, wherein the rock pieces are at least 3 mm in diameter.
+31. The apparatus of any one of claims 28 to 30, wherein the falling rock pieces are from a blasting operation.
+32. The apparatus of any one of claims 28 to 31, wherein the method measures the falling rock pieces in free fall as the rock pieces are transferred from a rock transporter to a rock crusher.
+33. The apparatus of claim 32, wherein the rock transporter is a haul truck and the rock crusher is a primary rock crusher.
+34. The apparatus of any one of claims 28 to 33, wherein two cameras capture images of the laser line.
+35. The apparatus of any one of claims 28 to 34, wherein the method comprises projecting two side-by-side laser lines on the falling rock pieces by two laser devices.
+36. The apparatus of any one of claims 28 to 35, wherein volume and area measurements are obtained from the topographical map and the data analysis is conducted on the volume and/or area of the rock pieces.
+37. The apparatus of any one of claims 28 to 36, wherein the falling rock pieces are from a load of rocks in a vehicle and wherein the method additionally comprises measuring a rock hardness index of the load of rocks in the vehicle, which measurement is obtained from the obtained rock size distribution, operating data of a crusher and a measured weight of rock pieces in the load of the vehicle.
+38. The apparatus of any one of claims 28 to 37, wherein the method additionally comprises correcting measurement and/or sampling error in the topographical map generated from the captured images.
+39. An apparatus comprising a non-transitory computer-readable storage medium storing a computer-executable program for implementing a method for measuring the volume of falling rock pieces, the method comprising executing programmable instructions for a computer to carry out the steps of:
+(a) determining a minimum rock weight of the falling rock pieces from a sampling model to eliminate or reduce sampling error;
+(b) capturing images of the falling rock pieces fed in a stream between at least two laser scanners, wherein the falling rock pieces are fed in a layer so that at least a substantial volume of the falling rock pieces can be visualized and measured;
+(c) producing two topographical maps of the falling rock pieces from the captured images from step (b); and
+(d) obtaining the volume of individual rock pieces from the topographical map by adding half-volumes measured from each of the two topographical maps.
+40. The apparatus of claim 39, wherein the minimum rock weight is measured from a P. Gy sampling model to eliminate or reduce the sampling error.
+41. The apparatus of claim 39 or 40, wherein the falling rock pieces are fed in a monolayer.
+42. The apparatus of any one of claims 39 to 41, wherein the falling rock pieces are fed by a vibrating feeder.
+43. The apparatus of any one of claims 39 to 42, wherein step (d) comprises using an image synchronisation algorithm to match the images collected by each of the two cameras.
+44. The apparatus of any one of claims 39 to 43, wherein step (d) comprises automated calibration of the horizontal and depth measurements data from the topographical maps.
+45. The apparatus of any one of claims 39 to 44, wherein step (d) comprises a method for adjusting the half-volumes measured by each camera as a function of a plane, which is defined on-line for each measurement test based on camera&apos;s depth reading intercept.</claim-text></claim></claims></ftxt:fulltext-document></ftxt:fulltext-documents></ops:world-patent-data>

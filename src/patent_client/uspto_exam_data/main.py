@@ -11,7 +11,7 @@ from dateutil.relativedelta import relativedelta
 import inflection
 import requests
 from dateutil.parser import parse as parse_dt
-from patent_client import CACHE_BASE
+from patent_client import CACHE_BASE, TEST_BASE
 from patent_client.util import hash_dict
 from patent_client.util import Manager
 from patent_client.util import Model
@@ -37,6 +37,9 @@ QUERY_FIELDS = "appEarlyPubNumber applId appLocation appType appStatus_txt appCo
 
 CACHE_DIR = CACHE_BASE / "uspto_examination_data"
 CACHE_DIR.mkdir(exist_ok=True)
+
+TEST_DIR = TEST_BASE / "uspto_examination_data"
+TEST_DIR.mkdir(exist_ok=True)
 
 session = requests.Session()
 session.headers["User-Agent"] = "python_patent_client"
@@ -96,7 +99,10 @@ class USApplicationManager(Manager):
     def request(self):
         query_params = self.query_params
         fname = hash_dict(query_params) + ".json"
-        fname = os.path.join(CACHE_DIR, fname)
+        if self.test_mode:
+            fname = os.path.join(TEST_DIR, fname)
+        else:
+            fname = os.path.join(CACHE_DIR, fname)
         if not os.path.exists(fname):
             response = session.post(QUERY_URL, json=query_params)
             if not response.ok:
@@ -122,7 +128,11 @@ class USApplicationManager(Manager):
 
     def _package_xml(self, query_params, data):
         fname = hash_dict(query_params) + ".zip"
-        fname = os.path.join(CACHE_DIR, fname)
+        if self.test_mode:
+            fname = os.path.join(TEST_DIR, fname)
+        else:
+            fname = os.path.join(CACHE_DIR, fname)
+        print(fname)
         query_id = data["queryId"]
         results = data["queryResults"]["searchResponse"]["response"]
         num_found = results["numFound"]

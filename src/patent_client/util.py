@@ -189,6 +189,8 @@ class Manager:
         }
         
     """
+    test_mode = False
+    
     def __init__(self, config=dict(filter=dict(), order_by=list(), options=dict()), values=list()):
         self.config = config
 
@@ -292,3 +294,4 @@ class Manager:
                 return data
             else:
                 return obj
+    

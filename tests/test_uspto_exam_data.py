@@ -2,14 +2,14 @@ import datetime
 from collections import OrderedDict
 
 from patent_client import USApplication
-
+from patent_client.util import Manager
+Manager.test_mode = True
 
 class TestPatentExaminationData:
     
     def test_search_by_customer_number(self):
         result = USApplication.objects.filter(app_cust_number="70155")
         assert len(result) > 1
-    
 
     def test_get_by_pub_number(self):
         pub_no = "US20060127129A1"
@@ -173,7 +173,7 @@ class TestPatentExaminationData:
             attrs = ['app_filing_date', 'app_exam_name',  
             'app_grp_art_number', 'patent_number', 'patent_issue_date', 
             'app_status_date', 'patent_title', 'app_attr_dock_number', 
-            'app_type', 'app_cust_number', 'app_cls_sub_cls', 
+            'app_type', 'app_cust_number',  
             'corr_addr_cust_no', 'app_entity_status', 'app_confr_number', 'transaction_history',
             'children', 'parents', 'foreign_priority_applications', 'pta_pte_history', 'pta_pte_summary', 'correspondent', 
             'attorneys']
@@ -210,4 +210,12 @@ class TestPatentExaminationData:
             'extended_term': datetime.date(2037, 10, 16), 
             'terminal_disclaimer_filed': False
             }
+    
+    def test_issue_25(self):
+        company_name = 'Tesla'
+        records = list(USApplication.objects
+                .filter(first_named_applicant=company_name)
+                .values('app_filing_date', 'patent_number', 'patent_title')[:]
+            )
+        assert len(records) >= 400
     

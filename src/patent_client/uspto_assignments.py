@@ -6,7 +6,7 @@ import requests
 import urllib3
 from dateutil.parser import parse as parse_date
 from inflection import underscore
-from patent_client import CACHE_BASE
+from patent_client import CACHE_BASE, TEST_BASE
 from patent_client.util import Manager
 from patent_client.util import Model, one_to_many, one_to_one
 from patent_client.util import hash_dict
@@ -21,6 +21,9 @@ LOOKUP_URL = "https://assignment-api.uspto.gov/patent/lookup"
 NUMBER_CLEAN_RE = re.compile(r"[^\d]")
 CACHE_DIR = CACHE_BASE / "uspto_assignment"
 CACHE_DIR.mkdir(exist_ok=True)
+TEST_DIR = TEST_BASE / "uspto_assignment"
+TEST_DIR.mkdir(exist_ok=True)
+
 
 session = requests.Session()
 session.headers = {"Accept": "application/xml"}
@@ -149,7 +152,10 @@ class AssignmentManager(Manager):
                     ".xml",
                 ]
             ).replace("/", "_")
-            filename = CACHE_DIR / filename
+            if self.test_mode:
+                filename = TEST_DIR / filename
+            else:
+                filename = CACHE_DIR / filename
             if filename.exists():
                 text = open(filename).read()
             else:

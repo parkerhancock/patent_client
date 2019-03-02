@@ -2,6 +2,8 @@ import pytest
 import datetime
 
 from patent_client import Inpadoc, Epo, Assignment, USApplication
+from patent_client.util import Manager
+Manager.test_mode = True
 
 class TestReadmeExamples():
 
