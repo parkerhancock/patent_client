@@ -1,7 +1,7 @@
 import pytest
-from patent_client.uspto_ptab import PtabDocument
+from patent_client.uspto_ptab import PtabDocument, PtabManager
 from patent_client.uspto_ptab import PtabTrial
-
+PtabManager.test_mode = True
 
 class TestPtab:
     def test_can_get_case(self):

@@ -6,7 +6,7 @@ import importlib
 
 import inflection
 import requests
-from patent_client import CACHE_BASE
+from patent_client import CACHE_BASE, TEST_BASE
 from patent_client.util import Manager
 from patent_client.util import Model
 from patent_client.util import hash_dict
@@ -15,6 +15,8 @@ from patent_client.util import one_to_one
 
 CACHE_DIR = CACHE_BASE / "ptab"
 CACHE_DIR.mkdir(exist_ok=True)
+TEST_DIR = TEST_BASE / "ptab"
+TEST_DIR.mkdir(exist_ok=True)
 
 session = requests.Session()
 
@@ -40,7 +42,10 @@ class PtabManager(Manager):
             inflection.camelize(k, uppercase_first_letter=False): v
             for (k, v) in {**self.config['filter'], **dict(sort=self.config['order_by'])}.items()
         }
-        fname = CACHE_DIR / f"{self.__class__.__name__}-{hash_dict(params)}.json"
+        if self.test_mode:
+            fname = TEST_DIR / f"{self.__class__.__name__}-{hash_dict(params)}.json"
+        else:
+            fname = CACHE_DIR / f"{self.__class__.__name__}-{hash_dict(params)}.json"
         if not fname.exists():
             response = session.get(self.base_url, params=params)
             with open(fname, "w") as f:
@@ -245,7 +250,10 @@ class PtabDocument(Model):
         url = self.links[1]["href"]
         extension = mimetypes.guess_extension(self.media_type)
         base_name = self.title.replace("/", "_") + extension
-        cdir = os.path.join(CACHE_DIR, self.trial_number)
+        if self.objects.test_mode:
+            cdir = os.path.join(TEST_DIR, self.trial_number)
+        else:
+            cdir = os.path.join(CACHE_DIR, self.trial_number)
         os.makedirs(cdir, exist_ok=True)
         cname = os.path.join(cdir, base_name)
         oname = os.path.join(path, base_name)

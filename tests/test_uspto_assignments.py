@@ -2,7 +2,10 @@ import os
 from tempfile import TemporaryDirectory
 import datetime
 import pytest
-from patent_client.uspto_assignments import Assignment
+from patent_client import Assignment
+from patent_client.util import Manager
+Manager.test_mode = True
+
 
 
 class TestAssignment:

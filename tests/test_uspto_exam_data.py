@@ -2,14 +2,14 @@ import datetime
 from collections import OrderedDict
 
 from patent_client import USApplication
-
+from patent_client.util import Manager
+Manager.test_mode = True
 
 class TestPatentExaminationData:
     
     def test_search_by_customer_number(self):
         result = USApplication.objects.filter(app_cust_number="70155")
         assert len(result) > 1
-    
 
     def test_get_by_pub_number(self):
         pub_no = "US20060127129A1"

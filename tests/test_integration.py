@@ -5,6 +5,18 @@ from patent_client import Inpadoc
 from patent_client import PtabTrial
 from patent_client import USApplication, Assignment
 
+from patent_client.epo_ops.ops import OpenPatentServicesConnector
+from patent_client.epo_ops.models import InpadocImages
+from patent_client.uspto_exam_data.main import USApplicationManager
+from patent_client.uspto_ptab import PtabManager
+from patent_client.uspto_assignments import Assignment, AssignmentManager
+PtabManager.test_mode = True
+USApplicationManager.test_mode = True
+InpadocImages.test_mode = True
+OpenPatentServicesConnector.test_mode = True
+AssignmentManager.test_mode = True
+
+
 
 class TestIntegration:
     def test_can_get_trials(self):

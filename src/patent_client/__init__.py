@@ -10,6 +10,7 @@ from pathlib import Path
 
 CACHE_BASE = Path("~/.patent_client").expanduser()
 CACHE_BASE.mkdir(exist_ok=True)
+TEST_BASE = Path(os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "tests", "fixtures"))
 CACHE_MAX_AGE = 60 * 60 * 24 * 3  # 3 days
 now = time.time()
 # Clear old files out of cache

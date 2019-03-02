@@ -1,6 +1,6 @@
 import os
 
-from patent_client.epo_ops import CACHE_DIR
+from patent_client.epo_ops import CACHE_DIR, TEST_DIR
 from patent_client.util import Manager
 from patent_client.util import Model
 from patent_client.util import one_to_one
@@ -56,6 +56,7 @@ class InpadocManager(Manager):
     def __init__(self, *args, **kwargs):
         super(InpadocManager, self).__init__(*args, **kwargs)
         self.pages = dict()
+        self.connector.test_mode = self.test_mode
 
     def __len__(self):
         """Total number of results"""
@@ -169,10 +170,17 @@ class InpadocImages(Model):
         Args:
             path: str(base path for file)
         """
-        dirname = (
-            CACHE_DIR
-            / f'{self.doc_db.doc_type}-{self.doc_db.country}{self.doc_db.number}{self.doc_db.kind if self.doc_db.kind else ""}'
-        )
+        if self.test_mode:
+            dirname = (
+                TEST_DIR
+                / f'{self.doc_db.doc_type}-{self.doc_db.country}{self.doc_db.number}{self.doc_db.kind if self.doc_db.kind else ""}'
+            )
+        else:
+
+            dirname = (
+                CACHE_DIR
+                / f'{self.doc_db.doc_type}-{self.doc_db.country}{self.doc_db.number}{self.doc_db.kind if self.doc_db.kind else ""}'
+            )
         dirname.mkdir(exist_ok=True)
         for i in range(1, self.num_pages + 1):
             fname = dirname / ("page-" + str(i).rjust(6, "0") + ".pdf")

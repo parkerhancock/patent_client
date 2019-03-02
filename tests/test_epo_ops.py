@@ -2,6 +2,8 @@ import os
 
 from patent_client import Epo
 from patent_client import Inpadoc
+from patent_client.util import Manager
+Manager.test_mode = True
 
 from datetime import date
 
@@ -19,7 +21,6 @@ class TestInpadoc:
         assert pub.applicants == ["US WELL SERVICES LLC"]
         assert pub.inventors == ["OEHRING, JARED, ", "HINDERLITER, BRANDON"]
         assert len(pub.full_text.description) == 35306
-        print(pub.full_text.claims[0].text)
         assert [c.text for c in pub.full_text.claims[:5]] == [
             "1. A fracturing system comprising:\na turbine generator having an electrical output;\nan electric motor that is in electrical communication with the electrical output;\na fracturing pump that is driven by the electric motor; and\na wireline system that is in electrical communication with the electrical output.",
             "2. The system of claim 1, further comprising a variable frequency drive connected to the electric motor to control the speed of the motor, wherein the variable frequency drive frequently performs electric motor diagnostics to prevent damage to the at least one electric motor.",

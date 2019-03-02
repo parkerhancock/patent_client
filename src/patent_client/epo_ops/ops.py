@@ -8,7 +8,7 @@ from hashlib import md5
 import requests
 from lxml import etree as ET
 from patent_client import SETTINGS
-from patent_client.epo_ops import CACHE_DIR
+from patent_client.epo_ops import CACHE_DIR, TEST_DIR
 
 session = requests.Session()
 
@@ -211,9 +211,16 @@ class OpenPatentServicesConnector:
 
     def xml_request(self, url, params=dict()):
         param_hash = md5(json.dumps(params, sort_keys=True).encode("utf-8")).hexdigest()
-        fname = os.path.join(
-            CACHE_DIR, f"{url[37:].replace('/', '_')}{param_hash if params else ''}.xml"
-        )
+        if self.test_mode:
+            fname = os.path.join(
+                TEST_DIR, f"{url[37:].replace('/', '_')}{param_hash if params else ''}.xml"
+            )
+
+        else:
+            fname = os.path.join(
+                CACHE_DIR, f"{url[37:].replace('/', '_')}{param_hash if params else ''}.xml"
+            )
+        print(fname)
         if os.path.exists(fname):
             return open(fname, encoding="utf-8").read()
         response = self.request(url, params)
