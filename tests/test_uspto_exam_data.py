@@ -173,7 +173,7 @@ class TestPatentExaminationData:
             attrs = ['app_filing_date', 'app_exam_name',  
             'app_grp_art_number', 'patent_number', 'patent_issue_date', 
             'app_status_date', 'patent_title', 'app_attr_dock_number', 
-            'app_type', 'app_cust_number', 'app_cls_sub_cls', 
+            'app_type', 'app_cust_number',  
             'corr_addr_cust_no', 'app_entity_status', 'app_confr_number', 'transaction_history',
             'children', 'parents', 'foreign_priority_applications', 'pta_pte_history', 'pta_pte_summary', 'correspondent', 
             'attorneys']
@@ -218,5 +218,4 @@ class TestPatentExaminationData:
                 .values('app_filing_date', 'patent_number', 'patent_title')[:]
             )
         assert len(records) >= 400
-        assert False
     
