@@ -105,6 +105,22 @@ To use the project:
     >>> epo.status
     [{'description': 'Examination is in progress', 'code': '14', 'date': '20180615'}]
 
+Other Languages
+===============
+
+Merely as a way to explore other languages and technologies, I have built a few (partial) ports of this
+library to other languages:
+
+* `patent_client_js <pc_js>`_ - ES6 Javascript (Ptab API only)
+* `patent_client_java <pc_j>`_ - Java (Ptab API only)
+* `patent_client_scala <pc_sc>`_ - Scala (Ptab API only)
+* `patent_client_ruby <pc_r>`_ - Ruby (Nothing Works Yet)
+
+.. _pc_js: https://github.com/parkerhancock/patent_client_js
+.. _pc_j: https://github.com/parkerhancock/patent_client_java
+.. _pc_sc: https://github.com/parkerhancock/patent_client_scala
+.. _pc_r: https://github.com/parkerhancock/patent_client_ruby
+
 Development
 ===========
 
