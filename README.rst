@@ -111,15 +111,10 @@ Other Languages
 Merely as a way to explore other languages and technologies, I have built a few (partial) ports of this
 library to other languages:
 
-* `patent_client_js <pcjs>`_ - ES6 Javascript (Ptab API only)
-* `patent_client_java <pcj>`_ - Java (Ptab API only)
-* `patent_client_scala <pcsc>`_ - Scala (Ptab API only)
-* `patent_client_ruby <pcr>`_ - Ruby (Nothing Works Yet)
-
-.. _pcjs: https://github.com/parkerhancock/patent_client_js
-.. _pcj: https://github.com/parkerhancock/patent_client_java
-.. _pcsc: https://github.com/parkerhancock/patent_client_scala
-.. _pcr: https://github.com/parkerhancock/patent_client_ruby
+* `patent_client_js <https://github.com/parkerhancock/patent_client_js>`_ - ES6 Javascript (Ptab API only)
+* `patent_client_java <https://github.com/parkerhancock/patent_client_java>`_ - Java (Ptab API only)
+* `patent_client_scala <https://github.com/parkerhancock/patent_client_scala>`_ - Scala (Ptab API only)
+* `patent_client_ruby <https://github.com/parkerhancock/patent_client_ruby>`_ - Ruby (Nothing Works Yet)
 
 Development
 ===========
