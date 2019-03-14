@@ -113,6 +113,8 @@ class USApplicationManager(Manager):
                         f"{response.status_code}\n{response.text}\n{response.headers}"
                     )
             data = response.json()
+            with open(fname, "w") as f:
+                json.dump(data, f, indent=2)
         else:
             data = json.load(open(fname))
         results = data["queryResults"]["searchResponse"]["response"]
@@ -120,9 +122,6 @@ class USApplicationManager(Manager):
         self._len = num_found
         if num_found > 20 or self.config['options'].get('force_xml', True):
             return self._package_xml(query_params, data)
-        
-        with open(fname, "w") as f:
-            json.dump(data, f, indent=2)
         self.objs = USApplicationJsonSet(results["docs"], num_found)
             
 
@@ -460,8 +459,9 @@ class USApplicationXmlSet(Manager):
         else:
             if key < 0:
                 key = len(self) - key
-
-            if key not in self.cache:
+            elif key > len(self):
+                return IndexError
+            elif key not in self.cache:
                 self.parse_item(key)
             return USApplication(self.cache[key])
 
@@ -472,6 +472,8 @@ class USApplicationXmlSet(Manager):
                 self.cache[self.counter] = self.parser.case(tree)
                 self.counter += 1
             except StopIteration:
+                if not self.files:
+                    return IndexError(f"No Object at {key}")
                 self.open_file = self.parser.xml_file(
                     self.zipfile.open(self.files.pop(0))
                 )
