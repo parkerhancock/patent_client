@@ -45,6 +45,10 @@ session.headers["User-Agent"] = "python_patent_client"
 
 class USApplicationManager(Manager):
     primary_key = "appl_id"
+
+    def __init__(self, *args, **kwargs):
+        super(USApplicationManager, self).__init__(*args, **kwargs)
+        self.pages = dict()
     
     def get_item(self, key):
         page_number = int(key / 20)
@@ -55,27 +59,29 @@ class USApplicationManager(Manager):
         return self.get_page(0)["numFound"]
     
     def get_page(self, page_number):
-        query_params = self.query_params(page_number)
-        fname = hash_dict(query_params) + ".json"
-        if self.test_mode:
-            fname = os.path.join(TEST_DIR, fname)
-        else:
-            fname = os.path.join(CACHE_DIR, fname)
-        if not os.path.exists(fname):
-            response = session.post(QUERY_URL, json=query_params)
-            if not response.ok:
-                if "requested resource is not available" in response.text:
-                    raise NotAvailableException("Patent Examination Data is Offline")
-                else:
-                    raise HttpException(
-                        f"{response.status_code}\n{response.text}\n{response.headers}"
-                    )
-            data = response.json()
-            with open(fname, "w") as f:
-                json.dump(data, f, indent=2)
-        else:
-            data = json.load(open(fname))
-        return data["queryResults"]["searchResponse"]["response"]
+        if page_number not in self.pages:
+            query_params = self.query_params(page_number)
+            fname = hash_dict(query_params) + ".json"
+            if self.test_mode:
+                fname = os.path.join(TEST_DIR, fname)
+            else:
+                fname = os.path.join(CACHE_DIR, fname)
+            if not os.path.exists(fname):
+                response = session.post(QUERY_URL, json=query_params)
+                if not response.ok:
+                    if "requested resource is not available" in response.text:
+                        raise NotAvailableException("Patent Examination Data is Offline")
+                    else:
+                        raise HttpException(
+                            f"{response.status_code}\n{response.text}\n{response.headers}"
+                        )
+                data = response.json()
+                with open(fname, "w") as f:
+                    json.dump(data, f, indent=2)
+            else:
+                data = json.load(open(fname))
+            self.pages[page_number] = data["queryResults"]["searchResponse"]["response"]
+        return self.pages[page_number]
         #num_found = results["numFound"]
         #self._len = num_found
         #if num_found > 20 or self.config['options'].get('force_xml', True):
