@@ -7,7 +7,7 @@ from patent_client import USApplication, Assignment
 
 from patent_client.epo_ops.ops import OpenPatentServicesConnector
 from patent_client.epo_ops.models import InpadocImages
-from patent_client.uspto_exam_data.main import USApplicationManager
+from patent_client.uspto_peds import USApplicationManager
 from patent_client.uspto_ptab import PtabManager
 from patent_client.uspto_assignments import Assignment, AssignmentManager
 PtabManager.test_mode = True
