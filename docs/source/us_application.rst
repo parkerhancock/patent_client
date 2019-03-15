@@ -1,11 +1,5 @@
 US Applications
 ^^^^^^^^^^^^^^^
-.. note::
-    The PEDS interface can be slow if more than 20 records are requested. When a query is
-    submitted, the top 20 results are immediately returned. Beyond 20 results, the Client
-    must ask for all results to be packaged as a .zip file and downloaded. That process is
-    a bit slow, and can take a few minutes for very large requests.
-
 .. warning::
     The PEDS interface is under active development by the USPTO. Occasionally documented filtering
     and ordering criteria will fail. Failed filters return no results. Failed ordering critera just
