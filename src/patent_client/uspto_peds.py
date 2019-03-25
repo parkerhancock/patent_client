@@ -239,6 +239,14 @@ class USApplication(Model):
             return self.app_early_pub_number
 
     @property
+    def kind(self):
+        if "PCT" in self.appl_id:
+            return "PCT"
+        if self.appl_id[0] == "6":
+            return "Provisional"
+        return "Nonprovisional"
+
+    @property
     def expiration(self):
         expiration_data = dict()
         term_parents = [p for p in self.parents 
@@ -303,25 +311,33 @@ class USApplication(Model):
         return f"<USApplication(appl_id={self.appl_id})>"
 
 class Relationship(Model):
-    application = one_to_one("patent_client.USApplication", appl_id='appl_id')
+    parent = one_to_one("patent_client.USApplication", appl_id='parent_appl_id')
+    child = one_to_one("patent_client.USApplication", appl_id='child_appl_id')
     attrs = ['appl_id', 'filing_date', 'patent_number', 'status', 'relationship', 'related_to_appl_id']
 
 
     def __init__(self, *args, **kwargs):
         super(Relationship, self).__init__(*args, **kwargs)
         data = self.data
-        self.related_to_appl_id = data.get('application_number_text', None)
-        self.appl_id = data['claim_application_number_text']
-        self.related_to_appl_id = kwargs['base_app'].appl_id
-        self.app_filing_date = data['filing_date']
-        self.patent_number = data.get('patent_number_text', None) or None
-        self.status = data.get('application_status', None)
         self.relationship = data['application_status_description'].replace('This application ', '')
-        #self.aia = data['aia_indicator'] == 'Y'
-        # XML data does not include the AIA indicator
+        if self.relationship == "claims the benefit of":
+            self.parent_appl_id = data.get('application_number_text', None)
+            self.child_appl_id = data['claim_application_number_text']
+        else:
+            self.child_appl_id = data.get('application_number_text', None)
+            self.parent_appl_id = data['claim_application_number_text']
+            
+            # Following attibutes removed in the switch to clearly identifyign a parent and child
+            #self.related_to_appl_id = kwargs['base_app'].appl_id
+            #self.parent_app_filing_date = data['filing_date']
+            #self.parent_patent_number = data.get('patent_number_text', None) or None
+            #self.parent_status = data.get('application_status', None)
+            #self.relationship = data['application_status_description'].replace('This application ', '')
+            #self.aia = data['aia_indicator'] == 'Y'
 
     def __repr__(self):
-        return f"<Relationship(appl_id={self.appl_id}, relationship={self.relationship})>"
+        return f"<Relationship(child={self.child_appl_id}, relationship={self.relationship}, parent={self.parent_appl_id})>"
+
 
 class ForeignPriority(Model):
     attrs = ['country_name', 'application_number_text', 'filing_date']
