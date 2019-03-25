@@ -77,41 +77,16 @@ class TestPatentExaminationData:
     def test_get_child_data(self):
         parent = USApplication.objects.get('14018930')
         child = parent.children[0]
-        assert child.appl_id == '14919159'
-        assert child.filing_date == datetime.date(2015, 10, 21)
-        assert child.patent_number == '10120906'
-        assert child.status == 'Patented'
+        assert child.child_appl_id == '14919159'
         assert child.relationship == 'claims the benefit of'
-        assert child.application.patent_title == 'LEAPFROG TREE-JOIN'
-        assert child.as_dict() == {
-            'appl_id': '14919159',
-            'related_to_appl_id': None,
-            'filing_date': datetime.date(2015, 10, 21),
-            'patent_number': '10120906',
-            'relationship': 'claims the benefit of',
-            'status': 'Patented',
-            'related_to_appl_id': '14018930',
-        }
+        assert child.child.patent_title == 'LEAPFROG TREE-JOIN'
     
     def test_get_parent_data(self):
         child = USApplication.objects.get('14018930')
         parent = child.parents[0]
-        assert parent.appl_id == '61706484'
-        assert parent.filing_date == datetime.date(2012,9,27)
-        assert parent.patent_number == None
-        #assert parent.status == 'Expired'
+        assert parent.parent_appl_id == '61706484'
         assert parent.relationship == 'Claims Priority from Provisional Application'
-        assert parent.application.patent_title == 'Leapfrog Tree-Join'
-        assert parent.as_dict() == {
-            'appl_id': '61706484',
-            'related_to_appl_id': None,
-            'filing_date': datetime.date(2012,9,27),
-            'patent_number': None,
-            'relationship': 'Claims Priority from Provisional Application',
-            'status': "Expired",
-            'related_to_appl_id': '14018930',
-        }
-
+        assert parent.parent.patent_title == 'Leapfrog Tree-Join'
     def test_pta_history(self):
         app = USApplication.objects.get('14095073')
         pta_history = app.pta_pte_history
