@@ -107,17 +107,9 @@ class Model(object):
     """
 
     def __init__(self, data, **kwargs):
-        #self.data = {inflection.underscore(k): v for (k, v) in data.items()}
         self.data = self._convert_data(data)
 
         for k, v in self.data.items():
-        #    try:
-        #        if "datetime" in k and type(v) == str:
-        #            self.data[k] = parse_dt(v)
-        #        elif "date" in k and type(v) == str:
-        #            self.data[k] = parse_dt(v).date()
-        #    except ValueError:  # Malformed datetimes:
-        #        self.data[k] = None
             setattr(self, k, self.data[k])
     
     def _convert_data(self, data):
@@ -150,11 +142,20 @@ class Model(object):
 
     def __repr__(self):
         """Default representation"""
-        if hasattr(self, "primary_key"):
-            primary_key = getattr(self, "primary_key")
-            return f"<{self.__class__.__name__} {primary_key}={getattr(self, primary_key)}>"
-        else:
-            return f"<{self.__class__.__name__}>"
+        primary_key = getattr(self, "primary_key")
+        return f"<{self.__class__.__name__} {primary_key}={getattr(self, primary_key)}>"
+
+    
+    def __hash__(self):
+        return hash(self.__repr__())
+        
+
+    def __eq__(self, other):
+        return ((self.__class__ == other.__class__)
+        and (hash(self) == hash(other)))
+    
+    def __ne__(self, other):
+        return not self.__eq__(other)
 
 
 
