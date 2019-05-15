@@ -198,9 +198,9 @@ class Manager:
     def filter(self, *args, **kwargs):
         if args:
             kwargs[self.primary_key] = args
-        for k in kwargs.keys():
-            if k not in self.allowed_filters:
-                raise ValueError(f'{k} is not a permitted filter parameter')
+        #for k in kwargs.keys():
+        #    if k not in self.allowed_filters:
+        #        raise ValueError(f'{k} is not a permitted filter parameter')
 
         new_config = deepcopy(self.config)
         new_config['filter'] = {**new_config['filter'], **kwargs}

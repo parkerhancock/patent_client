@@ -1,6 +1,6 @@
 import re
 
-SERIAL_RE = re.compile(r"[\d\-\/\,]{2,}")
+SERIAL_RE = re.compile(r"(D|RE)?[\d\-\/\,]{2,}")
 NUMBER_CLEAN_RE = re.compile(r"[^\d]+")
 PUNCTUATION_AND_WHITESPACE_CLEAN_RE = re.compile(r"\W+")
 COUNTRY_CODE_RE = re.compile(r"^[A-Z]{2,3}")
@@ -50,13 +50,15 @@ class PatentNumber:
                     self.country = country_code
                     number = SERIAL_RE.search(number).group()
                     self.number = PUNCTUATION_AND_WHITESPACE_CLEAN_RE.sub("", number)
-            if self.country == "US":
+            if not self.country or "US" in self.country:
+                self.number = PUNCTUATION_AND_WHITESPACE_CLEAN_RE.sub("", number)
+                self.country = "US"
                 self._handle_us_number()
             elif self.country == "CA":
                 self._handle_ca_number()
             else:
                 self.number = NUMBER_CLEAN_RE.sub("", number)
-                self._handle_us_number()
+                self._handle_default_number()
 
         if type(number) == int:
             self.number = str(number)
@@ -65,12 +67,19 @@ class PatentNumber:
     def __repr__(self):
         return f"<PatentNumber(type={self.type}, country={self.country}, number={self.number}, kind={self.kind_code})>"
 
+    def _handle_default_number(self):
+        self.type = "UNKNOWN"
+        self.kind_code = ""
+
     def _handle_us_number(self):
         if "RE" in self.number:
             self.country = "US"
             self.type = "patent"
             self.kind_code = "E1"
-        elif int(self.number) > 90_000_000:
+        elif "D" in self.number:
+            self.type = "patent"
+            self.kind_code = ""
+        elif int(self.number) > 100_000_000:
             self.country = "US"
             self.type = "pre-grant publication"
             self.kind_code = "A1"
@@ -103,15 +112,19 @@ class PatentNumber:
                 formatted_number = self.number[:4] + "/" + self.number[4:]
             elif self.type == "patent" and self.number.isdigit():
                 formatted_number = "{:,}".format(int(self.number))
+            elif self.type == "design patent":
+                formatted_number = self.number
             elif self.type == "patent":
                 formatted_number = self.number
             elif self.type == "application":
                 formatted_number = (
-                    self.number[:2] + "/" + "{:,}".format(int(self.number[2:]))
+                    self.number[:2] + "/" + self.number[2:5] + ',' + self.number[5:]
                 )
             return f"US {formatted_number} {self.kind_code}".strip()
         elif self.country == "CA":
             return f"CA {self.number} {self.kind_code}"
+        else:
+            return f"{self.country} {self.number}"
 
     def abbreviation(self):
         if self.type == "pre-grant publication":

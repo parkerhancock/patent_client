@@ -78,9 +78,11 @@ setup(
     install_requires=[
         "PyPDF2~=1.26",
         "requests~=2.19",
+        "requests-cache~=0.4",
         "lxml~=4.2",
         "python-dateutil~=2.7",
         "inflection~=0.3",
+        "dataclasses~=0.6",
     ],
     extras_require={},
 )
