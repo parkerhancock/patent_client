@@ -2,6 +2,7 @@ import datetime
 from collections import OrderedDict
 
 from patent_client import USApplication
+#from patent_client.uspto_peds_new import USApplication
 from patent_client.util import Manager
 Manager.test_mode = True
 
@@ -127,7 +128,7 @@ class TestPatentExaminationData:
         assert app.correspondent.as_dict() == {
             'name_line_one': 'VINSON & ELKINS L.L.P.', 
             'cust_no': '22892', 
-            'street_line_one': 'First City Tower, 1001 Fannin Street', 
+            'street_line_one': '1001 Fannin Street', 
             'street_line_two': 'Suite 2500', 
             'city': 'HOUSTON', 
             'geo_region_code': 'TX', 

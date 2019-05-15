@@ -8,6 +8,15 @@ import shutil
 import time
 from pathlib import Path
 
+import requests
+#import requests_cache
+
+#requests_cache.install_cache(
+#    expire_after=3 * 24 * 60 * 60 # 3 days
+#ß)
+
+session = requests.Session()
+
 CACHE_BASE = Path("~/.patent_client").expanduser()
 CACHE_BASE.mkdir(exist_ok=True)
 TEST_BASE = Path(os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "tests", "fixtures"))

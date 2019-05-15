@@ -59,6 +59,7 @@ class USApplicationManager(Manager):
         return self.get_page(0)["numFound"]
     
     def get_page(self, page_number):
+        import json
         if page_number not in self.pages:
             query_params = self.query_params(page_number)
             fname = hash_dict(query_params) + ".json"
@@ -67,6 +68,7 @@ class USApplicationManager(Manager):
             else:
                 fname = os.path.join(CACHE_DIR, fname)
             if not os.path.exists(fname):
+                print(json.dumps(query_params))
                 response = session.post(QUERY_URL, json=query_params)
                 if not response.ok:
                     if "requested resource is not available" in response.text:
@@ -121,7 +123,7 @@ class USApplicationManager(Manager):
             "facet": "false",
             "mm": mm,
             "start": page_no * 20,
-            "rows": 20,
+            #"rows": 20,
         }
         if not mm_active:
             del query['mm']
@@ -200,6 +202,7 @@ class USApplication(Model):
         app.correspondent -> Contact information for prosecuting law firm
         app.attorneys -> List of attorneys authorized to take action in the case
         app.expiration -> Patent Expiration Data (earliest non-provisional US parent + 20 years + extension and a flag for the presnce of a Terminal Disclaimer)
+        app.assignments -> list of assignments that mention this application
 
     Each of these also attaches data as attributes to the objects, and implements a .dict() method.
 
@@ -211,7 +214,7 @@ class USApplication(Model):
         app.trials -> list of PTAB trials involving this application
         app.inpadoc -> list to corresponding INPADOC objects (1 for each publication)
             HINT: inpadoc family can be found at app.inpadoc[0].family
-        app.assignments -> list of assignments that mention this application
+        
 
     Also, related US Applications can be obtained through their relationship:
 
@@ -221,7 +224,7 @@ class USApplication(Model):
     objects = USApplicationManager()
     trials = one_to_many("patent_client.PtabTrial", patent_number="patent_number")
     inpadoc = one_to_many("patent_client.Inpadoc", number="appl_id")
-    assignments = one_to_many("patent_client.Assignment", appl_id="appl_id")
+    #assignments = one_to_many("patent_client.Assignment", appl_id="appl_id")
     attrs =['appl_id', 'applicants', 'app_filing_date', 'app_exam_name', 
     'inventors', 'app_early_pub_number', 'app_early_pub_date', 
     'app_location', 'app_grp_art_number', 'patent_number', 'patent_issue_date', 

@@ -78,6 +78,14 @@ class TestPatentNumberParser:
         assert app.display() == "US 2015/0012345 A1"
         assert str(app) == "US20150012345A1"
 
+    def test_can_handle_us_design_patents(self):
+        app = parse("USD645062")
+        assert app.number == "D645062"
+        assert app.country == "US"
+        assert app.display() == "US D645062"
+        assert str(app) == "USD645062"
+
+
     def test_can_handle_us_application_number(self):
         app = parse("14123456")
         assert app.number == "14123456"
@@ -120,6 +128,22 @@ class TestPatentNumberParser:
         assert app.kind_code == ""
         assert app.display() == "US 14/123,456"
         assert str(app) == "US14123456"
+    
+    def test_can_handle_us_application_number_with_leading_zeroes(self):
+        app = parse(16034678)
+        assert app.number == "16034678"
+        assert app.country == "US"
+        assert app.kind_code == ""
+        assert app.display() == "US 16/034,678"
+        assert str(app) == "US16034678"
+    
+    def test_can_handle_reexam_cases(self):
+        app = parse(95000486)
+        assert app.number == "95000486"
+        assert app.country == "US"
+        assert app.kind_code == ""
+        assert app.display() == "US 95/000,486"
+        assert str(app) == "US95000486"
 
     def test_can_handle_reissue_applications(self):
         app = parse("RE43633")
@@ -155,6 +179,15 @@ class TestPatentNumberParser:
         assert app.display(style="new") == "PCT/US2017/036577"
         assert app.display() == "PCT/US17/36577"
         assert str(app) == "PCTUS2017036577"
+
+    def test_can_handle_wipo_publications(self):
+        app = parse("WO2009029879")
+        #assert app.type == "international publication"
+        assert app.country == "WO"
+        assert app.number == "2009029879"
+        assert app.kind_code == ""
+        assert app.display() == "WO 2009029879"
+        assert str(app) == "WO2009029879"
 
     def test_can_handle_canadian_patents(self):
         app = parse("CA2967774A")

@@ -1,71 +1,90 @@
-import json
+import datetime
 import mimetypes
-import os
-import shutil
-import importlib
-
+from pathlib import Path
+from functools import partial
+from dataclasses import dataclass, field
 import inflection
+from dateutil.parser import parse as parse_dt
 import requests
-from patent_client import CACHE_BASE, TEST_BASE
-from patent_client.util import Manager
-from patent_client.util import Model
-from patent_client.util import hash_dict
-from patent_client.util import one_to_many
-from patent_client.util import one_to_one
 
-CACHE_DIR = CACHE_BASE / "ptab"
-CACHE_DIR.mkdir(exist_ok=True)
-TEST_DIR = TEST_BASE / "ptab"
-TEST_DIR.mkdir(exist_ok=True)
+from .util import one_to_many, one_to_one
+
+# Utility Functions
+def apply_dict(func, dictionary):
+    return {func(k): v if not isinstance(v, dict) else apply_dict(func, v)
+            for (k, v) in dictionary.items()}
+
+camelize = partial(inflection.camelize, uppercase_first_letter=False)
+camelize_dict = partial(apply_dict, camelize)
+underscore_dict = partial(apply_dict, inflection.underscore)
+
+def parse_date(k, v):
+    if "datetime" in k.lower():
+        return parse_dt(v)
+    elif "date" in k.lower():
+        return parse_dt(v).date()
+    else:
+        return v
+
+def json_decoder(dictionary):
+    return {k: parse_date(k, v) for (k, v) in dictionary.items()}
 
 session = requests.Session()
 
-
-class PtabManager(Manager):
-    page_size = 25
-
-    def get_item(self, key):
-        offset = int(key / self.page_size) * self.page_size
-        position = key % self.page_size
-        data = self.request(dict(offset=offset))
-        results = data["results"]
-        return self.get_obj_class()(results[position])
-
-    def __len__(self):
-        response = self.request()
-        response_data = response
-        count = response_data["metadata"]["count"]
-        return count
-
-    def request(self, params=dict()):
-        params = {
-            inflection.camelize(k, uppercase_first_letter=False): v
-            for (k, v) in {**self.config['filter'], **dict(sort=self.config['order_by'])}.items()
-        }
-        if self.test_mode:
-            fname = TEST_DIR / f"{self.__class__.__name__}-{hash_dict(params)}.json"
-        else:
-            fname = CACHE_DIR / f"{self.__class__.__name__}-{hash_dict(params)}.json"
-        if not fname.exists():
-            response = session.get(self.base_url, params=params)
-            with open(fname, "w") as f:
-                json.dump(response.json(), f, indent=True)
-        return json.load(open(fname))
-
-    @property
-    def allowed_filters(self):
-        return self.query_fields
-
+@dataclass
+class PtabManager():
+    params: dict = field(default_factory=dict)
     
-    def get_obj_class(self):
-        module, klass = self.obj_class.rsplit(".", 1)
-        mod = importlib.import_module(module)
-        return getattr(mod, klass)
+    def filter(self, *args, **kwargs):
+        if args:
+            kwargs[self.primary_key] = args[0]
+        return self.__class__({**self.params, **kwargs})
+    
+    def get(self, *args, **kwargs):
+        manager = self.filter(*args, **kwargs)
+        if len(manager) != 1:
+            raise ValueError(f"Expected 1 record, found {len(manager)} instead!")
+        return next(iter(manager))
 
+    def __iter__(self):
+        offset = 0
+        limit = 20
+        while offset < len(self):
+            params = {**self.params, **dict(offset=offset, limit=limit)}
+            response = session.get(self.url, params=camelize_dict(params))
+            for case_data in response.json(object_hook=json_decoder)["results"]:
+                yield globals()[self.model_class](**underscore_dict(case_data))
+            offset += limit
+    
+    def __len__(self):
+        response = session.get(self.url, params=camelize_dict(self.params))
+        print(self.params)
+        return response.json()['metadata']['count']
+
+    # utility functions
+    def count(self):
+        return len(self)
+
+    def order_by(self, field):
+        return self.filter(sort=field)
+
+    def first(self):
+        return next(iter(self))
+
+    def values(self, *args):
+        for obj in iter(self):
+            yield {k: getattr(obj, k, None) for k in args}
+    
+    def values_list(self, *args, flat=False):
+        for dictionary in self.values(*args):
+            if flat:
+                yield tuple(dictionary.values())[0]
+            else:
+                yield tuple(dictionary.values())
 
 class PtabTrialManager(PtabManager):
-    base_url = "https://ptabdata.uspto.gov/ptab-api/trials"
-    obj_class = "patent_client.uspto_ptab.PtabTrial"
+    url = "https://ptabdata.uspto.gov/ptab-api/trials"
+    model_class = "PtabTrial"
     primary_key = "trial_number"
     query_fields = [
         "trial_number",
@@ -90,11 +109,10 @@ class PtabTrialManager(PtabManager):
         "patent_owner_name"
     ]
 
-
 class PtabDocumentManager(PtabManager):
-    base_url = "https://ptabdata.uspto.gov/ptab-api/documents"
-    obj_class = "patent_client.uspto_ptab.PtabDocument"
-    primary_key = "id"
+    url = "https://ptabdata.uspto.gov/ptab-api/documents"
+    model_class = "PtabDocument"
+    primary_key = "trial_number"
     query_fields = [
         "id",
         "title",
@@ -112,8 +130,8 @@ class PtabDocumentManager(PtabManager):
         "last_modified_datetime_to",
     ]
 
-
-class PtabTrial(Model):
+@dataclass
+class PtabTrial():
     """
     Ptab Trial
     ==========
@@ -138,19 +156,7 @@ class PtabTrial(Model):
     --------------
     Using the Data
     --------------
-    A PtabTrial object has the following attributes:
-
-        trial_number
-        application_number
-        patent_number
-        petitioner_party_name
-        patent_owner_name
-        inventor_name
-        prosecution_status
-        filing_date
-        accorded_filing_date
-        institution_decision_date
-        last_modified_datetime
+    A list of available attributes is provided at PtabTrial.__dataclass_fields__
 
     A PtabTrial also has access to the related documents, available at trial.documents
 
@@ -162,107 +168,57 @@ class PtabTrial(Model):
         trial.us_application -> application which granted as the challenged patent
 
     """
-
+    # Class Property
     objects = PtabTrialManager()
-    attrs = [
-        "trial_number",
-        "application_number",
-        "patent_number",
-        "petitioner_party_name",
-        "patent_owner_name",
-        "inventor_name",
-        "prosecution_status",
-        "filing_date",
-        "accorded_filing_date",
-        "institution_decision_date",
-        "last_modified_datetime",
-        "documents",
-    ]
+    # Dataclass Attributes
+    trial_number: str
+    application_number: str
+    patent_number: str
+    petitioner_party_name: str
+    patent_owner_name: str
+    inventor_name: str
+    prosecution_status: str
+    filing_date: datetime.date
+    accorded_filing_date: datetime.date
+    institution_decision_date: datetime.date
+    last_modified_datetime: datetime.datetime
+    links: dict
 
+    @property
+    def documents(self):
+        return PtabDocument.objects.filter(self.trial_number)
+    
     us_application = one_to_one(
         "patent_client.USApplication", appl_id="application_number"
     )
-    documents = one_to_many("patent_client.PtabDocument", trial_number="trial_number")
 
-    def __repr__(self):
-        return f"<PtabTrial(trial_number={self.trial_number})>"
-
-
-class PtabDocument(Model):
-    """
-    Ptab Document
-    ==========
-    This object wraps documents obtained from PTAB's public API (https://ptabdata.uspto.gov)
-
-    ---------------------
-    To Fetch a PTAB Document
-    ---------------------
-
-    There are two ways to get a PTAB Document. First, you can fetch a PtabTrial, and then get a list of document
-    objects:
-    
-        PtabTrial.objects.get('IPR2016-00831').documents -> a list of Ptab Document objects
-
-    Or, you can search and filter for specific documents by various critera (e.g. date ranges, filing party, etc.)
-
-        PtabDocumemt.objects.filter(trial_number='IPR2016-00831', filing_party='board') -> retreives all documents from Trial IPR2016-00831 filed by the Board
-
-    A complete list of query fields is available at PtabDocument.objects.query_fields
-
-    --------------
-    Using the Data
-    --------------
-    A PtabTrial object has the following attributes:
-
-        trial_number
-        size_in_bytes
-        filing_party
-        filing_datetime
-        last_modified_datetime
-        document_number
-        title
-        media_type
-        id
-        type
-
-    A PtabTrial also has access to the trial object it is associated with at document.trial
-
-    A document can also be downloaded to your working directory by running document.download()
-
-    """
-
+@dataclass
+class PtabDocument():
+    # Class Property
     objects = PtabDocumentManager()
-    attrs = [
-        "trial_number",
-        "size_in_bytes",
-        "filing_party",
-        "filing_datetime",
-        "last_modified_datetime",
-        "document_number",
-        "title",
-        "media_type",
-        "id",
-        "type",
-    ]
-    trial = one_to_one("patent_client.PtabTrial", trial_number="trial_number")
+    # Dataclass Attributes
+    trial_number: str 
+    size_in_bytes: int
+    filing_party: str
+    filing_datetime: datetime.datetime
+    last_modified_datetime: datetime.datetime
+    document_number: str
+    title: str
+    media_type: str
+    id: int
+    type: str
+    links: dict
 
+    @property
+    def trial(self):
+        return PtabTrial.objects.get(self.trial_number)
+    
     def download(self, path="."):
         url = self.links[1]["href"]
         extension = mimetypes.guess_extension(self.media_type)
         base_name = self.title.replace("/", "_") + extension
-        if self.objects.test_mode:
-            cdir = os.path.join(TEST_DIR, self.trial_number)
-        else:
-            cdir = os.path.join(CACHE_DIR, self.trial_number)
-        os.makedirs(cdir, exist_ok=True)
-        cname = os.path.join(cdir, base_name)
-        oname = os.path.join(path, base_name)
-        if not os.path.exists(cname):
-            response = session.get(url, stream=True)
-            with open(cname, "wb") as f:
-                for chunk in response.iter_content(1024):
-                    f.write(chunk)
-        shutil.copy(cname, oname)
-
-    def __repr__(self):
-        return f"<PtabDocument(title={self.title})>"
+        fpath = Path(path) / base_name
+        response = session.get(url, stream=True)
+        with open(fpath, "wb") as f:
+            for chunk in response.iter_content(1024):
+                f.write(chunk)
