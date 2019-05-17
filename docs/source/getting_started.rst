@@ -156,25 +156,12 @@ specify the columns you want to .values, and feed that into pd.DataFrame.from_re
 Caching
 =======
 
-Patent Client uses a file-based cache for all API requests. For the time being, it is a fairly naiive cache, and 
-will only return results from the cache if the "filter" and "order by" criteria are exactly the same. 
+Patent Client uses `requests_cache <https://requests-cache.readthedocs.io/>`_ to provide caching support. By default, it stores
+cached responses for 3 days, and stores them to a SQLite database at:
 
-Because patent data changes over time, cache entries are only good for 1 week by default. After the cache file is
-older than that, it will be deleted the next time the library is imported. Or they can be manually deleted whenever.
+.. code-block:: bash
 
-The individual cache files are also given human-readable names, to the extent practicable, so they can be inspected,
-if you wish.
-
-You can see the
-cache in your home directory at "~/.patent_client":
-::
-    $HOME
-    |-/.patent_client
-      |-epo
-      |-uspto_assignments
-      |-uspto_examination_data
-      |-ptab
-
+    ~/patent_client/requests_cache.sqlite
 
 
 
