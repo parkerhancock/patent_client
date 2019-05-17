@@ -5,8 +5,8 @@ from functools import partial
 from dataclasses import dataclass, field
 import inflection
 from dateutil.parser import parse as parse_dt
-import requests
 
+from patent_client import session
 from .util import one_to_many, one_to_one
 
 # Utility Functions
@@ -29,7 +29,6 @@ def parse_date(k, v):
 def json_decoder(dictionary):
     return {k: parse_date(k, v) for (k, v) in dictionary.items()}
 
-session = requests.Session()
 
 @dataclass
 class PtabManager():

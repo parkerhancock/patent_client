@@ -17,7 +17,6 @@ OpenPatentServicesConnector.test_mode = True
 AssignmentManager.test_mode = True
 
 
-
 class TestIntegration:
     def test_can_get_trials(self):
         pat_no = "8118221"
@@ -50,10 +49,9 @@ class TestIntegration:
             == "FORMALIZING, DIFFUSING AND ENFORCING POLICY ADVISORIES AND MONITORING POLICY COMPLIANCE IN THE MANAGEMENT OF NETWORKS"
         )
 
-    @pytest.mark.skip("Assignments are now provided as part of the PEDS interface")
     def test_can_get_assignments_from_application(self):
         app = USApplication.objects.get("13842218")
-        assert list(app.assignments.values_list("id", flat=True)) == [
+        assert list(app.related_assignments.values_list("id", flat=True)) == [
             "36385-377",
             "36408-10",
             "37418-226",

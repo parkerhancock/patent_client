@@ -2,9 +2,6 @@ import datetime
 from collections import OrderedDict
 
 from patent_client import USApplication
-#from patent_client.uspto_peds_new import USApplication
-from patent_client.util import Manager
-Manager.test_mode = True
 
 class TestPatentExaminationData:
     

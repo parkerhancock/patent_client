@@ -1,6 +1,7 @@
 import os
+import tempfile
+from pathlib import Path
 
-from patent_client.epo_ops import CACHE_DIR, TEST_DIR
 from patent_client.util import Manager
 from patent_client.util import Model
 from patent_client.util import one_to_one
@@ -56,7 +57,6 @@ class InpadocManager(Manager):
     def __init__(self, *args, **kwargs):
         super(InpadocManager, self).__init__(*args, **kwargs)
         self.pages = dict()
-        self.connector.test_mode = self.test_mode
 
     def __len__(self):
         """Total number of results"""
@@ -170,31 +170,21 @@ class InpadocImages(Model):
         Args:
             path: str(base path for file)
         """
-        if self.test_mode:
-            dirname = (
-                TEST_DIR
-                / f'{self.doc_db.doc_type}-{self.doc_db.country}{self.doc_db.number}{self.doc_db.kind if self.doc_db.kind else ""}'
-            )
-        else:
-
-            dirname = (
-                CACHE_DIR
-                / f'{self.doc_db.doc_type}-{self.doc_db.country}{self.doc_db.number}{self.doc_db.kind if self.doc_db.kind else ""}'
-            )
-        dirname.mkdir(exist_ok=True)
-        for i in range(1, self.num_pages + 1):
-            fname = dirname / ("page-" + str(i).rjust(6, "0") + ".pdf")
-            if not fname.exists():
-                inpadoc_connector.pdf_request(fname, self.url, params={"Range": i})
-
-        pages = list(sorted(os.listdir(dirname)))
-        out_file = PdfFileMerger()
-        for p in pages:
-            out_file.append(os.path.join(dirname, p))
         out_fname = os.path.join(
             path, self.doc_db.country + self.doc_db.number + ".pdf"
         )
+        if os.path.exists(out_fname):
+            return out_fname
+        pages = [
+            inpadoc_connector.pdf_request(self.url, params={"Range": i})
+            for i in range(1, self.num_pages + 1)
+        ]
+        out_file = PdfFileMerger()
+        for p in pages:
+            out_file.append(p)
+        
         out_file.write(out_fname)
+        return out_fname
 
 
 class EpoManager(Manager):

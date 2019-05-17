@@ -1,34 +1,34 @@
 # flake8: noqa
-
-__version__ = "1.1.3"
+__version__ = "1.1.4"
 
 import json
 import os
+import sys
+import platform
 import shutil
 import time
 from pathlib import Path
 
-import requests
-#import requests_cache
+import requests_cache
+import datetime
 
-#requests_cache.install_cache(
-#    expire_after=3 * 24 * 60 * 60 # 3 days
-#ß)
 
-session = requests.Session()
+# Set Up Requests Cache
+cache_max_age = datetime.timedelta(days=3)
+cache_dir = "~/.patent_client"
 
-CACHE_BASE = Path("~/.patent_client").expanduser()
+
+CACHE_BASE = Path(cache_dir).expanduser()
 CACHE_BASE.mkdir(exist_ok=True)
-TEST_BASE = Path(os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "tests", "fixtures"))
-os.makedirs(TEST_BASE, exist_ok = True)
-CACHE_MAX_AGE = 60 * 60 * 24 * 3  # 3 days
-now = time.time()
-# Clear old files out of cache
-for path, folders, files in os.walk(CACHE_BASE):
-    for f in files:
-        fname = os.path.join(path, f)
-        if now - os.path.getmtime(fname) > CACHE_MAX_AGE:
-            os.remove(fname)
+session = requests_cache.CachedSession(
+    expire_after=cache_max_age,
+    backend=requests_cache.backends.sqlite.DbCache(
+        location=str(CACHE_BASE / "requests_cache")
+    )
+)
+session.cache.remove_old_entries(datetime.datetime.utcnow() - cache_max_age)
+#print(f"python patent_client-v.{__version__}(Python-v{sys.version};OS{platform.platform()})(pypatent2018@gmail.com)")
+session.headers["User-Agent"] = f"Python Patent Clientbot/{__version__} (pypatent2018@gmail.com)"
 
 SETTINGS_FILE = Path("~/.iprc").expanduser()
 if not SETTINGS_FILE.exists():

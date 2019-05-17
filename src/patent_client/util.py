@@ -3,6 +3,7 @@ import json
 from collections import OrderedDict
 from copy import deepcopy
 from hashlib import md5
+import warnings
 
 import inflection
 from dateutil.parser import parse as parse_dt
@@ -157,9 +158,7 @@ class Model(object):
     def __ne__(self, other):
         return not self.__eq__(other)
 
-
-
-class Manager:
+class BaseManager:
     """
     Manager Base Class
 
@@ -190,18 +189,12 @@ class Manager:
         }
         
     """
-    test_mode = False
-    
     def __init__(self, config=dict(filter=dict(), order_by=list(), options=dict()), values=list()):
         self.config = config
 
     def filter(self, *args, **kwargs):
         if args:
             kwargs[self.primary_key] = args
-        #for k in kwargs.keys():
-        #    if k not in self.allowed_filters:
-        #        raise ValueError(f'{k} is not a permitted filter parameter')
-
         new_config = deepcopy(self.config)
         new_config['filter'] = {**new_config['filter'], **kwargs}
         return self.__class__(new_config)
@@ -226,21 +219,6 @@ class Manager:
             raise ValueError("More than one document found!\n" + doc_nos)
         return manager.first()
 
-    def count(self):
-        return len(self)
-
-    def __len__(self):
-        raise NotImplementedError(f"{self.__class__} has no length method")
-
-    def first(self):
-        try:
-            return self[0]
-        except StopIteration:
-            raise ValueError('No matching records found!')
-
-    def all(self):
-        return iter(self)
-
     def values(self, *fields):
         """Return new manager with special keywords 'values__fields' and 'values__list'"""
         new_config = deepcopy(self.config)
@@ -259,12 +237,46 @@ class Manager:
         return self.__class__(new_config)
 
 
+
+
+class IterableManager(BaseManager):
+    """
+    Iterable Manager Base Class
+
+    This class extends BaseManager for iterable managers. This requires that the extending manager
+    implement __iter__. 
+
+    This is used for all managers that are not container-like - i.e. does not provide a definite length
+
+    """
+
+    def first(self):
+        return next(iter(self))
+
+
+class Manager(BaseManager):
+    """
+    Standard Manager Base Class
+
+    This class extends BaseManager by adding support for the __getitem__ method for iteration
+    This is used for all managers that behave like containers, rather than pure iterators
+
+    """
+
+    def count(self):
+        return len(self)
+
+    def first(self):
+        try:
+            return self[0]
+        except StopIteration:
+            raise ValueError('No matching records found!')
+
+    def all(self):
+        return iter(self)
+
     def get_item(self, key):
         raise NotImplementedError(f"{self.__class__} has no get_item method")
-
-    #def __iter__(self):
-    #    """Returns a generator for items from this manager"""
-    #    raise NotImplementedError(f"{self.__class__} has no iterator method!")
 
     def __getitem__(self, key):
         """resolves slices and keys into Model objects. Relies on .get_item(key) to obtain

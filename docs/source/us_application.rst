@@ -93,18 +93,19 @@ pta_pte_summary      Patent Term Adjustment / Extension Results, including total
 correspondent        Contact information for the prosecuting law firm
 attorneys            List of attorneys authorized to take action in the case
 expiration           Patent Expiration Data (earliest non-provisional US parent + 20 years + extension and a flag for the presence of a Terminal Disclaimer)
+assignments          list of assignments involving this application (NOTE: this is a PEDS field, use related_assignments to get Assignment objects)
 ===================  ========================================================================================================================================
 
 Relationships
 -------------
 
-============    =================   ============    ===========================================
-Attribute       Relationship Type   Object          Join Condition
-============    =================   ============    ===========================================
-trials          one-to-many         PtabTrial       patent_number=patent_number
-assignments     one-to-many         Assignment      appl_id=application
-inpadoc_pub     one-to-one          Inpadoc         app_early_pub_number=publication_number        
-inpadoc_pat     one-to-one          Inpadoc         patent_number=publication_number
-============    =================   ============    ===========================================
+============        =================   ============    ===========================================
+Attribute           Relationship Type   Object          Join Condition
+============        =================   ============    ===========================================
+trials              one-to-many         PtabTrial       patent_number=patent_number
+related_assignments one-to-many         Assignment      appl_id=application
+inpadoc_pub         one-to-one          Inpadoc         app_early_pub_number=publication_number        
+inpadoc_pat         one-to-one          Inpadoc         patent_number=publication_number
+============        =================   ============    ===========================================
 
 Original API URL: https://ped.uspto.gov/peds/
