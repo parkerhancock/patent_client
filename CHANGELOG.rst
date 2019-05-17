@@ -8,6 +8,7 @@ Changelog
 * As part of the above, all API's now re-use the same requests.Session() object
 * USApplication.assignments are now natively provided by the PEDS api, so related Assignment objects moved to USApplication.related_assignments
 * EDIS updated and now has better test coverage
+* Deleted a ton of unnecessary code (Deleted code == debugged code)
 
 0.4.0 (2019-01-30)
 ------------------
