@@ -26,6 +26,9 @@ BASE_URL = "https://edis.usitc.gov/data"
 
 SECRET_KEY = None
 
+class AuthenticationException(Exception):
+    pass
+
 class ITCInvestigationManager(IterableManager):
     max_retries = 3
     auth_time = 10 * 60  # Re-authenticate every # seconds
@@ -40,6 +43,9 @@ class ITCInvestigationManager(IterableManager):
             path = "/secretKey/" + USERNAME
             with session.cache_disabled():
                 response = session.get(BASE_URL + path, params={"password": PASSWORD})
+            if not response.ok:
+                import pdb; pdb.set_trace()
+                raise AuthenticationException("EDIS Authentication Failed! Did you provide the correct username and password?")
             tree = ET.fromstring(response.text)
             SECRET_KEY = tree.find("secretKey").text
 
