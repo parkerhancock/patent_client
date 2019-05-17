@@ -6,7 +6,7 @@ import requests
 import urllib3
 from dateutil.parser import parse as parse_date
 from inflection import underscore
-from patent_client import CACHE_BASE, TEST_BASE
+from patent_client import session
 from patent_client.util import Manager
 from patent_client.util import Model, one_to_many, one_to_one
 from patent_client.util import hash_dict
@@ -19,15 +19,6 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 LOOKUP_URL = "https://assignment-api.uspto.gov/patent/lookup"
 
 NUMBER_CLEAN_RE = re.compile(r"[^\d]")
-CACHE_DIR = CACHE_BASE / "uspto_assignment"
-CACHE_DIR.mkdir(exist_ok=True)
-TEST_DIR = TEST_BASE / "uspto_assignment"
-TEST_DIR.mkdir(exist_ok=True)
-
-
-session = requests.Session()
-session.headers = {"Accept": "application/xml"}
-
 
 class AssignmentParser:
     def doc(self, element):
@@ -143,7 +134,6 @@ class AssignmentManager(Manager):
     def _get_page(self, page_no):
         if page_no not in self.pages:
             params = self.get_query(page_no)
-            #import pdb; pdb.set_trace()
             filename = "-".join(
                 [
                     hash_dict(params),
@@ -152,18 +142,8 @@ class AssignmentManager(Manager):
                     ".xml",
                 ]
             ).replace("/", "_")
-            if self.test_mode:
-                filename = TEST_DIR / filename
-            else:
-                filename = CACHE_DIR / filename
-            if filename.exists():
-                text = open(filename).read()
-            else:
-                response = session.get(LOOKUP_URL, params=params, verify=False)
-                text = response.text
-                with open(filename, "w") as f:
-                    f.write(text)
-
+            response = session.get(LOOKUP_URL, params=params, verify=False, headers={"Accept": "application/xml"})
+            text = response.text
             self.pages[page_no] = self._parse_page(text)
         return self.pages[page_no]
 

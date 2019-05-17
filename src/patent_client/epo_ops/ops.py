@@ -2,15 +2,12 @@ import json
 import math
 import os
 import re
+import io
 from collections import namedtuple
-from hashlib import md5
 
 import requests
 from lxml import etree as ET
-from patent_client import SETTINGS
-from patent_client.epo_ops import CACHE_DIR, TEST_DIR
-
-session = requests.Session()
+from patent_client import SETTINGS, session
 
 CLIENT_SETTINGS = SETTINGS["EpoOpenPatentServices"]
 if os.environ.get("EPO_KEY", False):
@@ -160,6 +157,14 @@ class OPSException(Exception):
 class OPSAuthenticationException(OPSException):
     pass
 
+class OPSAuth(requests.auth.AuthBase):
+    def __init__(self, access_token):
+        self.access_token = access_token
+
+    def __call__(self, r):
+        # modify and return the request
+        r.headers['Authorization'] = "Bearer " + self.access_token
+        return r
 
 class OpenPatentServicesConnector:
     def authenticate(self, key=None, secret=None):
@@ -175,21 +180,21 @@ class OpenPatentServicesConnector:
         if not response.ok:
             raise OPSAuthenticationException()
 
-        access_token = response.json()["access_token"]
-        session.headers["Authorization"] = "Bearer " + access_token
+        self.access_token = response.json()["access_token"]
 
-    def pdf_request(self, fname, url, params=dict()):
-        if os.path.exists(fname):
-            return
-        else:
-            with open(fname, "wb") as f:
-                response = self.request(url, params, stream=True)
-                f.write(response.raw.read())
+    def pdf_request(self, url, params=dict()):
+        result = io.BytesIO()
+        with session.cache_disabled():
+            response = self.request(url, params, stream=True)
+            result.write(response.raw.read())
+        return result
 
     def request(self, url, params=dict(), stream=False):
+        if not hasattr(self, 'access_token'):
+            self.authenticate()
         retry = 0
         while retry < 3:
-            response = session.get(url, params=params, stream=stream)
+            response = session.get(url, params=params, stream=stream, auth=OPSAuth(self.access_token))
             if response.ok:
                 return response
             elif response.status_code in (400, 403):
@@ -210,24 +215,8 @@ class OpenPatentServicesConnector:
         raise OPSException("Max Retries Exceeded!")
 
     def xml_request(self, url, params=dict()):
-        param_hash = md5(json.dumps(params, sort_keys=True).encode("utf-8")).hexdigest()
-        if self.test_mode:
-            fname = os.path.join(
-                TEST_DIR, f"{url[37:].replace('/', '_')}{param_hash if params else ''}.xml"
-            )
-
-        else:
-            fname = os.path.join(
-                CACHE_DIR, f"{url[37:].replace('/', '_')}{param_hash if params else ''}.xml"
-            )
-        print(fname)
-        if os.path.exists(fname):
-            return open(fname, encoding="utf-8").read()
         response = self.request(url, params)
-        text = response.text
-        with open(fname, "w", encoding="utf-8") as f:
-            f.write(text)
-        return text
+        return response.text
 
     def original_to_docdb(self, number, doc_type):
         if "PCT" in number:

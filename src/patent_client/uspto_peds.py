@@ -9,14 +9,12 @@ from zipfile import ZipFile
 from dateutil.relativedelta import relativedelta
 
 import inflection
-import requests
 from dateutil.parser import parse as parse_dt
-from patent_client import CACHE_BASE, TEST_BASE
 from patent_client.util import hash_dict
 from patent_client.util import Manager
 from patent_client.util import Model
 from patent_client.util import one_to_many, one_to_one
-
+from patent_client import session
 
 class HttpException(Exception):
     pass
@@ -34,15 +32,6 @@ STATUS_URL = "https://ped.uspto.gov/api/queries/{query_id}"
 DOWNLOAD_URL = "https://ped.uspto.gov/api/queries/{query_id}/download"
 QUERY_FIELDS = "appEarlyPubNumber applId appLocation appType appStatus_txt appConfrNumber appCustNumber appGrpArtNumber appCls appSubCls appEntityStatus_txt patentNumber patentTitle primaryInventor firstNamedApplicant appExamName appExamPrefrdName appAttrDockNumber appPCTNumber appIntlPubNumber wipoEarlyPubNumber pctAppType firstInventorFile appClsSubCls rankAndInventorsList"
 
-CACHE_DIR = CACHE_BASE / "uspto_examination_data"
-CACHE_DIR.mkdir(exist_ok=True)
-
-TEST_DIR = TEST_BASE / "uspto_examination_data"
-TEST_DIR.mkdir(exist_ok=True)
-
-session = requests.Session()
-session.headers["User-Agent"] = "python_patent_client"
-
 class USApplicationManager(Manager):
     primary_key = "appl_id"
 
@@ -59,36 +48,17 @@ class USApplicationManager(Manager):
         return self.get_page(0)["numFound"]
     
     def get_page(self, page_number):
-        import json
         if page_number not in self.pages:
             query_params = self.query_params(page_number)
-            fname = hash_dict(query_params) + ".json"
-            if self.test_mode:
-                fname = os.path.join(TEST_DIR, fname)
-            else:
-                fname = os.path.join(CACHE_DIR, fname)
-            if not os.path.exists(fname):
-                print(json.dumps(query_params))
-                response = session.post(QUERY_URL, json=query_params)
-                if not response.ok:
-                    if "requested resource is not available" in response.text:
-                        raise NotAvailableException("Patent Examination Data is Offline")
-                    else:
-                        raise HttpException(
-                            f"{response.status_code}\n{response.text}\n{response.headers}"
-                        )
-                data = response.json()
-                with open(fname, "w") as f:
-                    json.dump(data, f, indent=2)
-            else:
-                data = json.load(open(fname))
+            response = session.post(QUERY_URL, json=query_params)
+            if not response.ok:
+                if self.is_online():
+                    raise HttpException(
+                        f"{response.status_code}\n{response.text}\n{response.headers}"
+                    )
+            data = response.json()
             self.pages[page_number] = data["queryResults"]["searchResponse"]["response"]
         return self.pages[page_number]
-        #num_found = results["numFound"]
-        #self._len = num_found
-        #if num_found > 20 or self.config['options'].get('force_xml', True):
-        #    return self._package_xml(query_params, data)
-        #self.objs = USApplicationJsonSet(results["docs"], num_found)
 
     def query_params(self, page_no):
         sort_query = ""
@@ -140,12 +110,24 @@ class USApplicationManager(Manager):
             response = session.get(url)
             if not response.ok:
                 raise ValueError("Can't get fields!")
-            
             raw = response.json()
             output = {inflection.underscore(key): value for (key, value) in raw.items()}
             self.__class__._fields = output
         return self.__class__._fields
-    
+
+    def is_online(self):
+        with session.cache_disabled():
+            response = session.get("https://ped.uspto.gov/api/search-fields")
+            if response.ok:
+                return True
+            elif "requested resource is not available" in response.text:
+                raise NotAvailableException("Patent Examination Data is Offline - this is a USPTO problem")
+            elif "attempt failed or the origin closed the connection" in response.text:
+                raise NotAvailableException("The Patent Examination Data API is Broken! - this is a USPTO problem")
+            else:
+                import pdb; pdb.set_trace()
+                raise NotAvailableException("There is a USPTO problem")
+
     @property
     def query_fields(self):
         fields = self.fields()
@@ -212,6 +194,7 @@ class USApplication(Model):
     A US Application is also linked to other resources avaialble through patent_client, including:
     
         app.trials -> list of PTAB trials involving this application
+        app.related_assigments -> list of Assignment objections listing this case
         app.inpadoc -> list to corresponding INPADOC objects (1 for each publication)
             HINT: inpadoc family can be found at app.inpadoc[0].family
         
@@ -224,7 +207,7 @@ class USApplication(Model):
     objects = USApplicationManager()
     trials = one_to_many("patent_client.PtabTrial", patent_number="patent_number")
     inpadoc = one_to_many("patent_client.Inpadoc", number="appl_id")
-    #assignments = one_to_many("patent_client.Assignment", appl_id="appl_id")
+    related_assignments = one_to_many("patent_client.Assignment", appl_id="appl_id")
     attrs =['appl_id', 'applicants', 'app_filing_date', 'app_exam_name', 
     'inventors', 'app_early_pub_number', 'app_early_pub_date', 
     'app_location', 'app_grp_art_number', 'patent_number', 'patent_issue_date', 

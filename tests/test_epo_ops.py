@@ -1,9 +1,8 @@
 import os
+import pytest
 
 from patent_client import Epo
 from patent_client import Inpadoc
-from patent_client.util import Manager
-Manager.test_mode = True
 
 from datetime import date
 
