@@ -7,9 +7,9 @@ import urllib3
 from dateutil.parser import parse as parse_date
 from inflection import underscore
 from patent_client import session
-from patent_client.util import Manager
-from patent_client.util import Model, one_to_many, one_to_one
-from patent_client.util import hash_dict
+from patent_client.util.manager import Manager
+from patent_client.util.model import Model
+from patent_client.util.related import one_to_many, one_to_one
 import datetime
 
 
@@ -19,6 +19,7 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 LOOKUP_URL = "https://assignment-api.uspto.gov/patent/lookup"
 
 NUMBER_CLEAN_RE = re.compile(r"[^\d]")
+
 
 class AssignmentParser:
     def doc(self, element):
@@ -105,14 +106,14 @@ class AssignmentManager(Manager):
             assignee: assignee name to search
         """
 
-        for key, value in self.config['filter'].items():
+        for key, value in self.config["filter"].items():
             field = self.fields[key]
             query = value
         if field in ["PatentNumber", "ApplicationNumber"]:
             query = NUMBER_CLEAN_RE.sub("", str(query))
 
         sort = list()
-        for p in self.config['order_by']:
+        for p in self.config["order_by"]:
             if sort[0] == "-":
                 sort.append(p[1:] + "+desc")
             else:
@@ -134,15 +135,12 @@ class AssignmentManager(Manager):
     def _get_page(self, page_no):
         if page_no not in self.pages:
             params = self.get_query(page_no)
-            filename = "-".join(
-                [
-                    hash_dict(params),
-                    str(self.rows),
-                    str(page_no * self.rows),
-                    ".xml",
-                ]
-            ).replace("/", "_")
-            response = session.get(LOOKUP_URL, params=params, verify=False, headers={"Accept": "application/xml"})
+            response = session.get(
+                LOOKUP_URL,
+                params=params,
+                verify=False,
+                headers={"Accept": "application/xml"},
+            )
             text = response.text
             self.pages[page_no] = self._parse_page(text)
         return self.pages[page_no]
@@ -243,7 +241,7 @@ class Assignment(Model):
     def properties(self):
         data = self.data
         properties = list()
-        if isinstance(data['appl_num'], list):
+        if isinstance(data["appl_num"], list):
             for i in range(len(data["appl_num"])):
                 properties.append(
                     {
@@ -276,9 +274,13 @@ class Assignment(Model):
                     "app_filing_date": data["filing_date"],
                     "patent_number": data["pat_num"],
                     "pct_number": data["pct_num"],
-                    "intl_publ_date": data["intl_publ_date"] if data["intl_publ_date"] else None,
+                    "intl_publ_date": data["intl_publ_date"]
+                    if data["intl_publ_date"]
+                    else None,
                     "intl_reg_num": data["intl_reg_num"],
-                    "app_early_pub_date": data["publ_date"] if data["publ_date"] else None,
+                    "app_early_pub_date": data["publ_date"]
+                    if data["publ_date"]
+                    else None,
                     "app_early_pub_number": data["publ_num"],
                     "patent_issue_date": data["issue_date"],
                     "patent_title": data["invention_title"],
@@ -339,7 +341,6 @@ class Property(Model):
 def repartition(dictionary):
     types = [type(v) for v in dictionary.values()]
     keys = list(dictionary.keys())
-    print(dictionary)
     for i in range(min(len(k) for k in keys)):
         if not all(keys[0][i] == k[i] for k in keys):
             break

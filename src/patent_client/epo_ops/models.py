@@ -45,14 +45,15 @@ SEARCH_FIELDS = {
     "full_text": "txt",  # title, abstract, inventor and applicant
 }
 
+
 class InpadocManager(Manager):
     obj_class = "patent_client.epo_ops.models.Inpadoc"
     primary_key = "publication"
     connector = inpadoc_connector
-    
+
     @property
     def allowed_filters(self):
-        return list(SEARCH_FIELDS.keys()) + list(SEARCH_FIELDS.values()) + ['cql_query']
+        return list(SEARCH_FIELDS.keys()) + list(SEARCH_FIELDS.values()) + ["cql_query"]
 
     def __init__(self, *args, **kwargs):
         super(InpadocManager, self).__init__(*args, **kwargs)
@@ -60,22 +61,25 @@ class InpadocManager(Manager):
 
     def __len__(self):
         """Total number of results"""
-        if "application" in self.config['filter'] or "publication" in self.config['filter']:
+        if (
+            "application" in self.config["filter"]
+            or "publication" in self.config["filter"]
+        ):
             return len(self.get_by_number())
         else:
             try:
-                return self.connector.get_search_length(self.config['filter'])
+                return self.connector.get_search_length(self.config["filter"])
             except Exception:
                 return 0
 
     def get_by_number(self):
-        if "publication" in self.config['filter']:
-            number = self.config['filter']["publication"]
+        if "publication" in self.config["filter"]:
+            number = self.config["filter"]["publication"]
             if not isinstance(number, list):
                 number = number[0]
             doc_db = self.connector.original_to_docdb(number, "publication")
-        elif "application" in self.config['filter']:
-            number = self.config['filter']["application"]
+        elif "application" in self.config["filter"]:
+            number = self.config["filter"]["application"]
             if isinstance(number, list):
                 number = number[0]
             doc_db = self.connector.original_to_docdb(number, "application")
@@ -83,29 +87,34 @@ class InpadocManager(Manager):
         return docs
 
     def get_item(self, key):
-        if "publication" in self.config['filter'] or "application" in self.config['filter']:
+        if (
+            "publication" in self.config["filter"]
+            or "application" in self.config["filter"]
+        ):
             docs = self.get_by_number()
             return Inpadoc(docs[key])
         else:
             # Search Iterator
-            doc_db = self.connector.get_search_item(key, self.config['filter'])
-            #return Inpadoc(self.connector.bib_data(doc_db)[0])
-            return InpadocResult({**doc_db._asdict(), 'doc_db': doc_db})
+            doc_db = self.connector.get_search_item(key, self.config["filter"])
+            # return Inpadoc(self.connector.bib_data(doc_db)[0])
+            return InpadocResult({**doc_db._asdict(), "doc_db": doc_db})
 
     @property
     def query_fields(self):
         for k, v in SEARCH_FIELDS.items():
             print(f"{k} (short form: {v})")
 
+
 class InpadocResult(Model):
     connector = inpadoc_connector
-    
+
     def __repr__(self):
-        return f'<InpadocResult({self.country}{self.number}{self.kind})>'
+        return f"<InpadocResult({self.country}{self.number}{self.kind})>"
 
     @property
     def document(self):
         return Inpadoc(self.connector.bib_data(self.doc_db)[0])
+
 
 class InpadocFullTextManager(InpadocManager):
     def get(self, doc_db):
@@ -182,7 +191,7 @@ class InpadocImages(Model):
         out_file = PdfFileMerger()
         for p in pages:
             out_file.append(p)
-        
+
         out_file.write(out_fname)
         return out_fname
 

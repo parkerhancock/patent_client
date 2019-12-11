@@ -26,8 +26,10 @@ BASE_URL = "https://edis.usitc.gov/data"
 
 SECRET_KEY = None
 
+
 class AuthenticationException(Exception):
     pass
+
 
 class ITCInvestigationManager(IterableManager):
     max_retries = 3
@@ -44,8 +46,12 @@ class ITCInvestigationManager(IterableManager):
             with session.cache_disabled():
                 response = session.get(BASE_URL + path, params={"password": PASSWORD})
             if not response.ok:
-                import pdb; pdb.set_trace()
-                raise AuthenticationException("EDIS Authentication Failed! Did you provide the correct username and password?")
+                import pdb
+
+                pdb.set_trace()
+                raise AuthenticationException(
+                    "EDIS Authentication Failed! Did you provide the correct username and password?"
+                )
             tree = ET.fromstring(response.text)
             SECRET_KEY = tree.find("secretKey").text
 
@@ -91,7 +97,9 @@ class ITCDocumentsManager(IterableManager):
 
     def get(self, document_id):
         ITCInvestigationManager.authenticate()
-        response = session.get(f"{self.base_url}/{document_id}", auth=(USERNAME, SECRET_KEY))
+        response = session.get(
+            f"{self.base_url}/{document_id}", auth=(USERNAME, SECRET_KEY)
+        )
         tree = ET.fromstring(response.text)
         doc_el = tree.find(".//document")
         data = self.parse_doc(doc_el)
@@ -119,14 +127,18 @@ class ITCDocumentsManager(IterableManager):
         return data
 
     def __iter__(self):
-        query = {self.allowed_filters[k]: v for (k, v) in self.config['filter'].items()}
+        query = {self.allowed_filters[k]: v for (k, v) in self.config["filter"].items()}
         page = 1
         page_length = None
         while not page_length or page_length >= 100:
             query["pagenumber"] = page
-            q_string = re.sub(r'[\{\}":, ]+', "-", json.dumps(query, sort_keys=True)[1:-1])
+            q_string = re.sub(
+                r'[\{\}":, ]+', "-", json.dumps(query, sort_keys=True)[1:-1]
+            )
             ITCInvestigationManager.authenticate()
-            response = session.get(self.base_url, params=query, auth=(USERNAME, SECRET_KEY))
+            response = session.get(
+                self.base_url, params=query, auth=(USERNAME, SECRET_KEY)
+            )
             tree = ET.fromstring(response.text)[0]
             page_length = len(tree.findall("document"))
             docs = map(self.parse_doc, tree.findall("document"))
@@ -152,7 +164,7 @@ class ITCAttachmentManager(IterableManager):
     allowed_filters = ["document_id"]
 
     def __iter__(self):
-        doc_id = self.config['filter']["document_id"]
+        doc_id = self.config["filter"]["document_id"]
         ITCInvestigationManager.authenticate()
         response = session.get(self.base_url + doc_id, auth=(USERNAME, SECRET_KEY))
         tree = ET.fromstring(response.text)
@@ -186,7 +198,9 @@ class ITCAttachment(Model):
         filename = f"{self.document.title.strip()} - {self.title}.{ext}"
         oname = os.path.join(path, filename)
         if not os.path.exists(oname):
-            response = session.get(self.download_url, auth=(USERNAME, SECRET_KEY), stream=True)
+            response = session.get(
+                self.download_url, auth=(USERNAME, SECRET_KEY), stream=True
+            )
             with open(oname, "wb") as f:
                 for chunk in response.iter_content(1024):
                     f.write(chunk)

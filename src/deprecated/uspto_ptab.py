@@ -11,12 +11,16 @@ from .util import one_to_many, one_to_one
 
 # Utility Functions
 def apply_dict(func, dictionary):
-    return {func(k): v if not isinstance(v, dict) else apply_dict(func, v)
-            for (k, v) in dictionary.items()}
+    return {
+        func(k): v if not isinstance(v, dict) else apply_dict(func, v)
+        for (k, v) in dictionary.items()
+    }
+
 
 camelize = partial(inflection.camelize, uppercase_first_letter=False)
 camelize_dict = partial(apply_dict, camelize)
 underscore_dict = partial(apply_dict, inflection.underscore)
+
 
 def parse_date(k, v):
     if "datetime" in k.lower():
@@ -26,19 +30,20 @@ def parse_date(k, v):
     else:
         return v
 
+
 def json_decoder(dictionary):
     return {k: parse_date(k, v) for (k, v) in dictionary.items()}
 
 
 @dataclass
-class PtabManager():
+class PtabManager:
     params: dict = field(default_factory=dict)
-    
+
     def filter(self, *args, **kwargs):
         if args:
             kwargs[self.primary_key] = args[0]
         return self.__class__({**self.params, **kwargs})
-    
+
     def get(self, *args, **kwargs):
         manager = self.filter(*args, **kwargs)
         if len(manager) != 1:
@@ -54,11 +59,11 @@ class PtabManager():
             for case_data in response.json(object_hook=json_decoder)["results"]:
                 yield globals()[self.model_class](**underscore_dict(case_data))
             offset += limit
-    
+
     def __len__(self):
         response = session.get(self.url, params=camelize_dict(self.params))
         print(self.params)
-        return response.json()['metadata']['count']
+        return response.json()["metadata"]["count"]
 
     # utility functions
     def count(self):
@@ -73,13 +78,14 @@ class PtabManager():
     def values(self, *args):
         for obj in iter(self):
             yield {k: getattr(obj, k, None) for k in args}
-    
+
     def values_list(self, *args, flat=False):
         for dictionary in self.values(*args):
             if flat:
                 yield tuple(dictionary.values())[0]
             else:
                 yield tuple(dictionary.values())
+
 
 class PtabTrialManager(PtabManager):
     url = "https://ptabdata.uspto.gov/ptab-api/trials"
@@ -105,8 +111,9 @@ class PtabTrialManager(PtabManager):
         "last_modified_datetime",
         "last_modified_datetime_from",
         "last_modified_datetime_to",
-        "patent_owner_name"
+        "patent_owner_name",
     ]
+
 
 class PtabDocumentManager(PtabManager):
     url = "https://ptabdata.uspto.gov/ptab-api/documents"
@@ -129,8 +136,9 @@ class PtabDocumentManager(PtabManager):
         "last_modified_datetime_to",
     ]
 
+
 @dataclass
-class PtabTrial():
+class PtabTrial:
     """
     Ptab Trial
     ==========
@@ -167,6 +175,7 @@ class PtabTrial():
         trial.us_application -> application which granted as the challenged patent
 
     """
+
     # Class Property
     objects = PtabTrialManager()
     # Dataclass Attributes
@@ -186,17 +195,18 @@ class PtabTrial():
     @property
     def documents(self):
         return PtabDocument.objects.filter(self.trial_number)
-    
+
     us_application = one_to_one(
         "patent_client.USApplication", appl_id="application_number"
     )
 
+
 @dataclass
-class PtabDocument():
+class PtabDocument:
     # Class Property
     objects = PtabDocumentManager()
     # Dataclass Attributes
-    trial_number: str 
+    trial_number: str
     size_in_bytes: int
     filing_party: str
     filing_datetime: datetime.datetime
@@ -211,7 +221,7 @@ class PtabDocument():
     @property
     def trial(self):
         return PtabTrial.objects.get(self.trial_number)
-    
+
     def download(self, path="."):
         url = self.links[1]["href"]
         extension = mimetypes.guess_extension(self.media_type)

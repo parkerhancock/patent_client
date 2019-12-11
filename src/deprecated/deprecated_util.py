@@ -4,6 +4,7 @@ from collections import OrderedDict
 from copy import deepcopy
 from hashlib import md5
 import warnings
+import itertools
 
 import inflection
 from dateutil.parser import parse as parse_dt
@@ -51,9 +52,12 @@ def one_to_one(class_name, **mapping):
 
     @property
     def get(self):
-        klass = getattr(importlib.import_module(module_name), class_name)
-        filter_obj = {k: getattr(self, v) for (k, v) in mapping.items()}
-        return klass.objects.get(**filter_obj)
+        try:
+            klass = getattr(importlib.import_module(module_name), class_name)
+            filter_obj = {k: getattr(self, v) for (k, v) in mapping.items()}
+            return klass.objects.get(**filter_obj)
+        except AttributeError:
+            return None
 
     return get
 
@@ -68,6 +72,14 @@ def one_to_many(class_name, **mapping):
         return klass.objects.filter(**filter_obj)
 
     return get
+
+
+def values_iterator(iterator, *keys, tuples=False):
+    for v in iterator:
+        if tuples:
+            yield tuple(recur_accessor(v, k) for k in keys)
+        else:
+            yield {k: recur_accessor(v, k) for k in keys}
 
 
 def recur_accessor(obj, accessor):
@@ -107,17 +119,24 @@ class Model(object):
     4. Attaches the original inflected data dictionary as Model.data
     """
 
-    def __init__(self, data, **kwargs):
-        self.data = self._convert_data(data)
+    def __init__(self, data, backref=None, **kwargs):
+        try:
+            self.data = self._convert_data(data)
 
-        for k, v in self.data.items():
-            setattr(self, k, self.data[k])
-    
+            for k, v in self.data.items():
+                setattr(self, k, self.data[k])
+        except Exception as e:
+            self.error = e
+        self.backref = backref
+
     def _convert_data(self, data):
         if isinstance(data, list):
             return [self._convert_data(a) for a in data]
         elif isinstance(data, dict):
-            dictionary = {inflection.underscore(k): self._convert_data(v) for (k, v) in data.items()}
+            dictionary = {
+                inflection.underscore(k): self._convert_data(v)
+                for (k, v) in data.items()
+            }
             for k, v in dictionary.items():
                 try:
                     if "datetime" in k and type(v) == str:
@@ -130,7 +149,6 @@ class Model(object):
         else:
             return data
 
-    
     def as_dict(self):
         """Convert object to dictionary, recursively converting any objects to dictionaries themselves"""
         output = {key: getattr(self, key) for key in self.attrs if hasattr(self, key)}
@@ -143,20 +161,23 @@ class Model(object):
 
     def __repr__(self):
         """Default representation"""
-        primary_key = getattr(self, "primary_key")
-        return f"<{self.__class__.__name__} {primary_key}={getattr(self, primary_key)}>"
+        primary_key = getattr(self, "primary_key", self.attrs[0])
+        repr_string = (
+            f"<{self.__class__.__name__} {primary_key}={getattr(self, primary_key)}"
+        )
+        if hasattr(self, "error"):
+            repr_string += f" error={self.error}"
+        return repr_string + ">"
 
-    
     def __hash__(self):
         return hash(self.__repr__())
-        
 
     def __eq__(self, other):
-        return ((self.__class__ == other.__class__)
-        and (hash(self) == hash(other)))
-    
+        return (self.__class__ == other.__class__) and (hash(self) == hash(other))
+
     def __ne__(self, other):
         return not self.__eq__(other)
+
 
 class BaseManager:
     """
@@ -189,25 +210,38 @@ class BaseManager:
         }
         
     """
-    def __init__(self, config=dict(filter=dict(), order_by=list(), options=dict()), values=list()):
+
+    def __init__(
+        self, config=dict(filter=dict(), order_by=list(), options=dict()), values=list()
+    ):
         self.config = config
+
+    def __add__(self, other):
+        return QuerySet(itertools.chain(self, other))
 
     def filter(self, *args, **kwargs):
         if args:
             kwargs[self.primary_key] = args
+        for k, v in kwargs.items():
+            if not isinstance(v, str):
+                try:
+                    kwargs[k] = list(str(i) for i in v)
+                except TypeError:
+                    kwargs[k] = str(v)
+
         new_config = deepcopy(self.config)
-        new_config['filter'] = {**new_config['filter'], **kwargs}
+        new_config["filter"] = {**new_config["filter"], **kwargs}
         return self.__class__(new_config)
 
     def order_by(self, *args):
         """Take arguments, and store in a special keyword argument called 'sort' """
         new_config = deepcopy(self.config)
-        new_config['order_by'] = list(new_config['order_by']) + list(args)
+        new_config["order_by"] = list(new_config["order_by"]) + list(args)
         return self.__class__(new_config)
 
     def set_options(self, **kwargs):
         new_config = deepcopy(self.config)
-        new_config['options'] = {**new_config['options'], **kwargs}
+        new_config["options"] = {**new_config["options"], **kwargs}
         return self.__class__(new_config)
 
     def get(self, *args, **kwargs):
@@ -222,21 +256,51 @@ class BaseManager:
     def values(self, *fields):
         """Return new manager with special keywords 'values__fields' and 'values__list'"""
         new_config = deepcopy(self.config)
-        new_config['values'] = fields
-        new_config['options']['values_iterator'] = True
-        new_config['options']['values_list'] = False
+        new_config["values"] = fields
+        new_config["options"]["values_iterator"] = True
+        new_config["options"]["values_list"] = False
         return self.__class__(new_config)
 
     def values_list(self, *fields, flat=False):
         """Same as values, but adds an additional parameter for "flat" lists """
         new_config = deepcopy(self.config)
-        new_config['values'] = fields
-        new_config['options']['values_iterator'] = True
-        new_config['options']['values_list'] = True
-        new_config['options']['values_list_flat'] = flat
+        new_config["values"] = fields
+        new_config["options"]["values_iterator"] = True
+        new_config["options"]["values_list"] = True
+        new_config["options"]["values_list_flat"] = flat
         return self.__class__(new_config)
 
+    def to_pandas(self, limit=50):
+        import pandas as pd
 
+        objects = list(self)
+        return pd.DataFrame.from_records(
+            {k: getattr(r, k, None) for k in objects[0].attrs} for r in objects
+        )
+
+    def explode(self, attribute):
+        from itertools import chain
+
+        return QuerySet(chain.from_iterable(getattr(r, attribute, None) for r in self))
+
+
+class QuerySet(BaseManager):
+    """
+    Utility class that extends the Manager helper function to 
+    any collection of Patent Client objects
+    """
+
+    def __init__(self, iterable):
+        self.iterable = iterable
+
+    def __getitem__(self, key):
+        return self.iterable[key]
+
+    def __iter__(self):
+        return iter(self.iterable)
+
+    def __repr__(self):
+        return f"<QuerySet({repr(self.iterable)})>"
 
 
 class IterableManager(BaseManager):
@@ -270,7 +334,7 @@ class Manager(BaseManager):
         try:
             return self[0]
         except StopIteration:
-            raise ValueError('No matching records found!')
+            raise ValueError("No matching records found!")
 
     def all(self):
         return iter(self)
@@ -282,29 +346,27 @@ class Manager(BaseManager):
         """resolves slices and keys into Model objects. Relies on .get_item(key) to obtain
         the record itself"""
         if type(key) == slice:
-            indices = list(range(len(self)))[key.start : key.stop: key.step]
+            indices = list(range(len(self)))[key.start : key.stop : key.step]
             return [self.__getitem__(index) for index in indices]
         else:
             if key >= len(self):
                 raise StopIteration
             obj = self.get_item(key)
-            options = self.config['options']
+            options = self.config["options"]
 
-            if options.get('values_iterator') == True:
+            if options.get("values_iterator") == True:
                 data = obj.data
                 fdata = OrderedDict()
                 for k in self.config["values"]:
                     value = recur_accessor(obj, k)
                     fdata[k] = value
                 data = fdata
-                if options.get('values_list', False):
+                if options.get("values_list", False):
                     data = tuple(data[k] for k, v in data.items())
-                    if (
-                        len(self.config['values']) == 1
-                        and options.get('values_list_flat', False)
+                    if len(self.config["values"]) == 1 and options.get(
+                        "values_list_flat", False
                     ):
                         data = data[0]
                 return data
             else:
                 return obj
-    

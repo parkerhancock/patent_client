@@ -24,11 +24,12 @@ session = requests_cache.CachedSession(
     expire_after=cache_max_age,
     backend=requests_cache.backends.sqlite.DbCache(
         location=str(CACHE_BASE / "requests_cache")
-    )
+    ),
+    allowable_methods=("GET", "POST"),
 )
 session.cache.remove_old_entries(datetime.datetime.utcnow() - cache_max_age)
-#print(f"python patent_client-v.{__version__}(Python-v{sys.version};OS{platform.platform()})(pypatent2018@gmail.com)")
-session.headers["User-Agent"] = f"Python Patent Clientbot/{__version__} (pypatent2018@gmail.com)"
+# print(f"python patent_client-v.{__version__}(Python-v{sys.version};OS{platform.platform()})(pypatent2018@gmail.com)")
+# session.headers["User-Agent"] = f"Python Patent Clientbot/{__version__} (pypatent2018@gmail.com)"
 
 SETTINGS_FILE = Path("~/.iprc").expanduser()
 if not SETTINGS_FILE.exists():
@@ -37,13 +38,17 @@ if not SETTINGS_FILE.exists():
 
 SETTINGS = json.load(open(SETTINGS_FILE))
 
-from patent_client.epo_ops.models import Inpadoc, Epo  # isort:skip
-from patent_client.uspto_assignments import Assignment  # isort:skip
-from patent_client.uspto_peds import USApplication  # isort:skip
-from patent_client.uspto_ptab import PtabDocument  # isort:skip
-from patent_client.uspto_ptab import PtabTrial  # isort:skip
-from patent_client.itc_edis import (
-    ITCInvestigation,
-    ITCDocument,
-    ITCAttachment,
-)  # isort:skip
+# from patent_client.epo_ops.models import Inpadoc, Epo  # isort:skip
+# from patent_client.uspto_assignments import Assignment  # isort:skip
+# from patent_client.uspto_peds import USApplication  # isort:skip
+# from patent_client.uspto_ptab import PtabDocument  # isort:skip
+# from patent_client.uspto_ptab import PtabTrial  # isort:skip
+# from patent_client.itc_edis import (
+#    ITCInvestigation,
+#    ITCDocument,
+#    ITCAttachment,
+# )  # isort:skip
+
+from patent_client.uspto.ptab import PtabProceeding, PtabDocument, PtabDecision
+from patent_client.uspto.assignments import Assignment
+from patent_client.uspto.peds import USApplication

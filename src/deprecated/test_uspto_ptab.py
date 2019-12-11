@@ -1,8 +1,11 @@
 import pytest
 from patent_client.uspto_ptab import PtabDocument, PtabManager
 from patent_client.uspto_ptab import PtabTrial
+
 PtabManager.test_mode = True
 
+
+@pytest.mark.skip("PTAB API 1.0 Has Been Deprecated")
 class TestPtab:
     def test_can_get_case(self):
         case = PtabTrial.objects.get("IPR2016-00831")

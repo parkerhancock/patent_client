@@ -58,7 +58,9 @@ SEARCH_FIELDS = {
 }
 
 EpoDoc = namedtuple("EpoDoc", ["number", "kind", "date", "doc_type"])
-DocDB = namedtuple("DocDB", ["country", "number", "kind", "date", "doc_type", "family_id"])
+DocDB = namedtuple(
+    "DocDB", ["country", "number", "kind", "date", "doc_type", "family_id"]
+)
 whitespace_re = re.compile(" +")
 country_re = re.compile(r"^[A-Z]{2}")
 ep_case_re = re.compile(r"EP(?P<number>[\d]+)(?P<kind>[A-Z]\d)?")
@@ -157,14 +159,16 @@ class OPSException(Exception):
 class OPSAuthenticationException(OPSException):
     pass
 
+
 class OPSAuth(requests.auth.AuthBase):
     def __init__(self, access_token):
         self.access_token = access_token
 
     def __call__(self, r):
         # modify and return the request
-        r.headers['Authorization'] = "Bearer " + self.access_token
+        r.headers["Authorization"] = "Bearer " + self.access_token
         return r
+
 
 class OpenPatentServicesConnector:
     def authenticate(self, key=None, secret=None):
@@ -190,11 +194,13 @@ class OpenPatentServicesConnector:
         return result
 
     def request(self, url, params=dict(), stream=False):
-        if not hasattr(self, 'access_token'):
+        if not hasattr(self, "access_token"):
             self.authenticate()
         retry = 0
         while retry < 3:
-            response = session.get(url, params=params, stream=stream, auth=OPSAuth(self.access_token))
+            response = session.get(
+                url, params=params, stream=stream, auth=OPSAuth(self.access_token)
+            )
             if response.ok:
                 return response
             elif response.status_code in (400, 403):
@@ -284,7 +290,7 @@ class OpenPatentServicesConnector:
                 raw_data[k] = v.text
 
         raw_data["doc_type"] = doc_type
-        raw_data["family_id"] = el.attrib.get('family-id', None)
+        raw_data["family_id"] = el.attrib.get("family-id", None)
         return DocDB(**raw_data)
 
     def epodoc_number(self, el, doc_type):
@@ -344,10 +350,7 @@ class InpadocConnector(OpenPatentServicesConnector):
         text = self.xml_request(self.search_url, params)
         tree = ET.fromstring(text.encode("utf-8"))
         results = tree.findall(".//ops:publication-reference/epo:document-id", NS)
-        return [
-            self.docdb_number(el, "publication")
-            for el in results
-        ]
+        return [self.docdb_number(el, "publication") for el in results]
 
     def get_search_item(self, key, query_dict=None):
         query = self.create_query(query_dict)
@@ -370,7 +373,7 @@ class InpadocConnector(OpenPatentServicesConnector):
         for keyword, value in query_dict.items():
             if len(value.split()) > 1:
                 value = f'"{value}"'
-            query += SEARCH_FIELDS[keyword] + "=" + value + ' '
+            query += SEARCH_FIELDS[keyword] + "=" + value + " "
         return dict(q=query)
 
     def parse_citation(self, el):

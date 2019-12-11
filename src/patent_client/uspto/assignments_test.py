@@ -4,8 +4,8 @@ import datetime
 import pytest
 from patent_client import Assignment
 from patent_client.util import Manager
-Manager.test_mode = True
 
+Manager.test_mode = True
 
 
 class TestAssignment:
@@ -19,7 +19,7 @@ class TestAssignment:
     def test_fetch_assignments_by_patent(self):
         assignments = Assignment.objects.filter(patent_number="8,789,601")
         assert len(assignments) >= 1
-        assert '48041-605' in [a.as_dict()['id'] for a in assignments] 
+        assert "48041-605" in [a.as_dict()["id"] for a in assignments]
 
     def test_fetch_assignments_by_application(self):
         assignments = Assignment.objects.filter(appl_id="14/190,982")
@@ -91,10 +91,11 @@ class TestAssignment:
 
     def test_bug_scidrill(self):
         assignments = Assignment.objects.filter(assignee="Scientific Drilling")
-        assignment_list = list(assignments.values_list('appl_num', flat=True))
+        assignment_list = list(assignments.values_list("appl_num", flat=True))
         assert len(assignment_list) == 58
-    
-class TestAssignmentBugs():
+
+
+class TestAssignmentBugs:
     def test_id_43433_231(self):
-        assignment = Assignment.objects.get('43433-231')
-        assert assignment.properties[0].app_filing_date == datetime.date(2016,10,25)
+        assignment = Assignment.objects.get("43433-231")
+        assert assignment.properties[0].app_filing_date == datetime.date(2016, 10, 25)

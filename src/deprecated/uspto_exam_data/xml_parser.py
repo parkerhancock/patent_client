@@ -1,4 +1,3 @@
-
 import re
 from zipfile import ZipFile
 import xml.etree.ElementTree as ET
@@ -16,7 +15,7 @@ ns = dict(
 
 bib_data = dict(
     appl_id=".//uscom:ApplicationNumberText",
-    app_confr_number = ".//uspat:ApplicationConfirmationNumber",
+    app_confr_number=".//uspat:ApplicationConfirmationNumber",
     app_filing_date=".//pat:FilingDate",
     app_type=".//uscom:ApplicationTypeCategory",
     app_cust_number="./uspat:PatentRecord/uspat:PatentCaseMetadata/uspat:PartyBag/com:CorrespondenceAddress/com:PartyIdentifier",
@@ -26,7 +25,7 @@ bib_data = dict(
     patent_title=".//pat:InventionTitle",
     app_status=".//uscom:ApplicationStatusCategory",
     app_status_date=".//uscom:ApplicationStatusDate",
-    #app_cls_subcls=".//pat:PatentClassificationBag/pat:NationalClassification/pat:MainNationalClassification",
+    # app_cls_subcls=".//pat:PatentClassificationBag/pat:NationalClassification/pat:MainNationalClassification",
     app_early_pub_date=".//uspat:PatentPublicationIdentification/com:PublicationDate",
     patent_number=".//uspat:PatentGrantIdentification/pat:PatentNumber",
     patent_issue_date=".//uspat:PatentGrantIdentification/pat:GrantDate",
@@ -38,10 +37,10 @@ bib_data = dict(
 )
 
 correspondent_data = dict(
-    corr_addr_name_line_one='./com:Contact/com:Name/com:PersonName/com:PersonStructuredName/com:LastName',
-    corr_addr_city='./com:Contact/com:PostalAddressBag/com:PostalAddress/com:PostalStructuredAddress/com:CityName',
-    corr_addr_geo_region_code='./com:Contact/com:PostalAddressBag/com:PostalAddress/com:PostalStructuredAddress/com:GeographicRegionName',
-    corr_addr_postal_code='./com:Contact/com:PostalAddressBag/com:PostalAddress/com:PostalStructuredAddress/com:PostalCode',
+    corr_addr_name_line_one="./com:Contact/com:Name/com:PersonName/com:PersonStructuredName/com:LastName",
+    corr_addr_city="./com:Contact/com:PostalAddressBag/com:PostalAddress/com:PostalStructuredAddress/com:CityName",
+    corr_addr_geo_region_code="./com:Contact/com:PostalAddressBag/com:PostalAddress/com:PostalStructuredAddress/com:GeographicRegionName",
+    corr_addr_postal_code="./com:Contact/com:PostalAddressBag/com:PostalAddress/com:PostalStructuredAddress/com:PostalCode",
 )
 
 inv_data = dict(
@@ -53,9 +52,9 @@ inv_data = dict(
 
 applicant_data = dict(
     nameLineOne="./com:Name/com:PersonName/com:PersonStructuredName/com:LastName",
-    city = "./com:CityName",
-    geoCode = "./com:GeographicRegionName",
-    country = "./com:CountryCode"
+    city="./com:CityName",
+    geoCode="./com:GeographicRegionName",
+    country="./com:CountryCode",
 )
 
 ph_data = dict(recordDate="./uspat:EventDate", action="./uspat:EventDescriptionText")
@@ -70,21 +69,21 @@ child_data = dict(
 
 
 parent_data = deepcopy(child_data)
-parent_data['application_status'] = "./uspat:ParentDocumentStatusCode"
+parent_data["application_status"] = "./uspat:ParentDocumentStatusCode"
 
 foreign_priority_data = dict(
-    countryName='./uscom:IPOfficeName',
-    applicationNumberText='./com:ApplicationNumber/com:ApplicationNumberText',
-    filingDate='./pat:FilingDate',
+    countryName="./uscom:IPOfficeName",
+    applicationNumberText="./com:ApplicationNumber/com:ApplicationNumberText",
+    filingDate="./pat:FilingDate",
 )
 
 pta_history_data = dict(
-    number='./uspat:EventSequenceNumber',
-    pta_or_pte_date='./uspat:EventDate',
-    contents_description='./uspat:EventDescriptionText',
-    pto_days='uspat:IPOfficeDayDelayQuantity',
-    appl_days='uspat:ApplicantDayDelayQuantity',
-    start='uspat:OriginatingEventSequenceNumber',
+    number="./uspat:EventSequenceNumber",
+    pta_or_pte_date="./uspat:EventDate",
+    contents_description="./uspat:EventDescriptionText",
+    pto_days="uspat:IPOfficeDayDelayQuantity",
+    appl_days="uspat:ApplicantDayDelayQuantity",
+    start="uspat:OriginatingEventSequenceNumber",
 )
 
 pta_summary_data = dict(
@@ -99,20 +98,22 @@ pta_summary_data = dict(
 )
 
 attorney_data = dict(
-    registration_no='./pat:RegisteredPractitionerRegistrationNumber',
-    category='./pat:RegisteredPractitionerCategory',
-    first_name='./com:Contact/com:Name/com:PersonName/com:PersonStructuredName/com:FirstName',
-    middle_name='./com:Contact/com:Name/com:PersonName/com:PersonStructuredName/com:MiddleName',
-    last_name='./com:Contact/com:Name/com:PersonName/com:PersonStructuredName/com:LastName',
-    phone_num='./com:Contact/com:PhoneNumberBag/com:PhoneNumber',
+    registration_no="./pat:RegisteredPractitionerRegistrationNumber",
+    category="./pat:RegisteredPractitionerCategory",
+    first_name="./com:Contact/com:Name/com:PersonName/com:PersonStructuredName/com:FirstName",
+    middle_name="./com:Contact/com:Name/com:PersonName/com:PersonStructuredName/com:MiddleName",
+    last_name="./com:Contact/com:Name/com:PersonName/com:PersonStructuredName/com:LastName",
+    phone_num="./com:Contact/com:PhoneNumberBag/com:PhoneNumber",
 )
 
 WHITESPACE_RE = re.compile(r"\s+")
-child_status_re = re.compile(r'^which is ([^\s]+) ')
-reference_re = re.compile(r' \d+$')
+child_status_re = re.compile(r"^which is ([^\s]+) ")
+reference_re = re.compile(r" \d+$")
+
 
 class XMLParsingException(Exception):
     pass
+
 
 class USApplicationXmlParser:
     def element_to_text(self, element):
@@ -133,48 +134,56 @@ class USApplicationXmlParser:
 
     def parse_pta_history(self, element):
         output = list()
-        for row in element.findall('.//uspat:PatentTermAdjustmentHistoryData', ns):
+        for row in element.findall(".//uspat:PatentTermAdjustmentHistoryData", ns):
             output.append(self.parse_element(row, pta_history_data))
         return output
 
     def parse_correspondent(self, element):
-        el = element.find('.//com:CorrespondenceAddress', ns)
+        el = element.find(".//com:CorrespondenceAddress", ns)
         if not el:
             return dict()
         cor_data = self.parse_element(el, correspondent_data)
-        address_lines = el.findall('./com:Contact/com:PostalAddressBag/com:PostalAddress/com:PostalStructuredAddress/com:AddressLineText', ns)
-        line_nos = 'one, two, three'.split(', ')
+        address_lines = el.findall(
+            "./com:Contact/com:PostalAddressBag/com:PostalAddress/com:PostalStructuredAddress/com:AddressLineText",
+            ns,
+        )
+        line_nos = "one, two, three".split(", ")
         for i, a in enumerate(address_lines):
-            cor_data['corr_addr_street_line_' + line_nos[i]] = a.text
+            cor_data["corr_addr_street_line_" + line_nos[i]] = a.text
         return cor_data
 
     def parse_pta_summary(self, element):
-        summary = element.find('.//uspat:PatentTermAdjustmentData', ns)
+        summary = element.find(".//uspat:PatentTermAdjustmentData", ns)
         if not summary:
             return dict()
         data = self.parse_element(summary, pta_summary_data)
-        data['pta_pte_ind'] = 'PTA'
+        data["pta_pte_ind"] = "PTA"
         return data
 
     def parse_attorneys(self, element):
-        attorneys = element.findall('.//uspat:RegisteredPractitioner', ns)
+        attorneys = element.findall(".//uspat:RegisteredPractitioner", ns)
         output = list()
         for a in attorneys:
             a_data = self.parse_element(a, attorney_data)
-            full_name = [a_data[k] for k in 'first_name, middle_name, last_name'.split(', ') if a_data[k]]
-            status_indicator = a.get('{urn:us:gov:doc:uspto:common}activeIndicator')
-            if status_indicator == 'true':
-                status = 'ACTIVE'
+            full_name = [
+                a_data[k]
+                for k in "first_name, middle_name, last_name".split(", ")
+                if a_data[k]
+            ]
+            status_indicator = a.get("{urn:us:gov:doc:uspto:common}activeIndicator")
+            if status_indicator == "true":
+                status = "ACTIVE"
             else:
-                status = 'INACTIVE'
-            output.append({
-                'registration_no': a_data.get('registration_no', None),
-                'full_name': ' '.join(full_name),
-                'phone_num': a_data.get('phone_num', None),
-                'reg_status': status,
-            })
+                status = "INACTIVE"
+            output.append(
+                {
+                    "registration_no": a_data.get("registration_no", None),
+                    "full_name": " ".join(full_name),
+                    "phone_num": a_data.get("phone_num", None),
+                    "reg_status": status,
+                }
+            )
         return output
-
 
     def parse_bib_data(self, element):
         data = self.parse_element(element, bib_data)
@@ -198,29 +207,33 @@ class USApplicationXmlParser:
                 kind_code = ""
             else:
                 kind_code = kind_code.text
-            if 'PCT' in data['appl_id']:
+            if "PCT" in data["appl_id"]:
                 data["app_early_pub_number"] = f"WO/{pub_no[:4]}/{pub_no[4:]}"
             else:
                 data["app_early_pub_number"] = pub_no + kind_code
 
-        classification_data = element.find('./uspat:PatentRecord/uspat:PatentCaseMetadata/pat:PatentClassificationBag/pat:NationalClassification/pat:MainNationalClassification', ns)
+        classification_data = element.find(
+            "./uspat:PatentRecord/uspat:PatentCaseMetadata/pat:PatentClassificationBag/pat:NationalClassification/pat:MainNationalClassification",
+            ns,
+        )
         if classification_data:
-            us_class = classification_data.find('./pat:NationalClass', ns)
-            us_sub_class = classification_data.find('./pat:NationalSubclass', ns)
+            us_class = classification_data.find("./pat:NationalClass", ns)
+            us_sub_class = classification_data.find("./pat:NationalSubclass", ns)
             if us_class and us_sub_class:
-                data['app_cls_sub_cls'] = f'{us_class.text}/{us_sub_class.text}'
+                data["app_cls_sub_cls"] = f"{us_class.text}/{us_sub_class.text}"
         else:
-            data['app_cls_sub_cls'] = None
+            data["app_cls_sub_cls"] = None
         return data
 
     def parse_transaction_history(self, element):
         output = list()
         for event_el in element.findall(
-            "./uspat:PatentRecord/uspat:ProsecutionHistoryDataBag/uspat:ProsecutionHistoryData", ns
+            "./uspat:PatentRecord/uspat:ProsecutionHistoryDataBag/uspat:ProsecutionHistoryData",
+            ns,
         ):
             event = self.parse_element(event_el, ph_data)
             event["description"], event["code"] = event["action"].rsplit(" , ", 1)
-            del event['action']
+            del event["action"]
             output.append(event)
         return output
 
@@ -246,43 +259,49 @@ class USApplicationXmlParser:
             "./uspat:PatentRecord/uspat:PatentCaseMetadata/uspat:PartyBag/pat:ApplicantBag/pat:Applicant/com:PublicationContact",
             ns,
         ):
-            expected_els = 'city, country, geoCode, nameLineOne, nameLineTwo, rankNo, streetOne, streetTwo, suffix'.split(', ')
-            expected_data = {k: '' for k in expected_els}
+            expected_els = "city, country, geoCode, nameLineOne, nameLineTwo, rankNo, streetOne, streetTwo, suffix".split(
+                ", "
+            )
+            expected_data = {k: "" for k in expected_els}
             data = {**expected_data, **self.parse_element(app_el, applicant_data)}
-            
+
             output.append(data)
         return output
 
-    
     def parse_children(self, element):
-        output=list()
-        for child in element.findall("./uspat:PatentRecord/uspat:PatentCaseMetadata/uspat:RelatedDocumentData/uspat:ChildDocumentData",
+        output = list()
+        for child in element.findall(
+            "./uspat:PatentRecord/uspat:PatentCaseMetadata/uspat:RelatedDocumentData/uspat:ChildDocumentData",
             ns,
-            ):
+        ):
             child_record = self.parse_element(child, child_data)
-            description = child_record.get('application_status_description', '')
+            description = child_record.get("application_status_description", "")
             if description:
                 child_status_match = child_status_re.search(description)
                 if child_status_match:
-                    child_record['application_status'] = child_status_match.group(1)
-                new_description = child_status_re.sub('', description)
-                new_description = reference_re.sub('', new_description)
-                child_record['application_status_description'] = new_description 
+                    child_record["application_status"] = child_status_match.group(1)
+                new_description = child_status_re.sub("", description)
+                new_description = reference_re.sub("", new_description)
+                child_record["application_status_description"] = new_description
             output.append(child_record)
 
         return output
 
     def parse_parents(self, element):
-        output=list()
-        for child in element.findall("./uspat:PatentRecord/uspat:PatentCaseMetadata/uspat:RelatedDocumentData/uspat:ParentDocumentData",
+        output = list()
+        for child in element.findall(
+            "./uspat:PatentRecord/uspat:PatentCaseMetadata/uspat:RelatedDocumentData/uspat:ParentDocumentData",
             ns,
-            ):
+        ):
             output.append(self.parse_element(child, child_data))
         return output
 
     def parse_foreign_priority(self, element):
         output = list()
-        for case in element.findall("./uspat:PatentRecord/uspat:PatentCaseMetadata/uspat:PriorityClaimBag/uspat:PriorityClaim", ns):
+        for case in element.findall(
+            "./uspat:PatentRecord/uspat:PatentCaseMetadata/uspat:PriorityClaimBag/uspat:PriorityClaim",
+            ns,
+        ):
             output.append(self.parse_element(case, foreign_priority_data))
         return output
 
@@ -304,7 +323,7 @@ class USApplicationXmlParser:
                 **self.parse_correspondent(element),
             }
         except Exception as e:
-            raise XMLParsingException('XML Parsing Error!')
+            raise XMLParsingException("XML Parsing Error!")
 
     def xml_file(self, file_obj):
         try:
@@ -317,4 +336,3 @@ class USApplicationXmlParser:
     def save_state(state):
         with open("pdb_state.json", "w") as f:
             json.dump(state, f, indent=2)
-
