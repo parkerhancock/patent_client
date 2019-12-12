@@ -270,11 +270,12 @@ class USApplication(Model):
     ]
 
     @property
-    def publication(self):
-        if hasattr(self, "patent_number"):
+    def publication_number(self):
+        if self.patent_number:
             return "US" + self.patent_number
-        else:
+        elif self.app_early_pub_number:
             return self.app_early_pub_number
+        return None
 
     @property
     def kind(self):

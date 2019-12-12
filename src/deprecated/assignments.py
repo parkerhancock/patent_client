@@ -2,8 +2,7 @@ import math
 import re
 import xml.etree.ElementTree as ET
 
-import requests
-import urllib3
+#import urllib3
 from dateutil.parser import parse as parse_date
 from inflection import underscore
 from patent_client import session
@@ -14,7 +13,7 @@ import datetime
 
 
 # USPTO has a malconfigured SSL connection. Suppress warnings about it.
-urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+#urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 LOOKUP_URL = "https://assignment-api.uspto.gov/patent/lookup"
 
@@ -76,7 +75,7 @@ class AssignmentManager(Manager):
         "id": "ReelFrame",
     }
     parser = AssignmentParser()
-    rows = 50
+    page_size = 20 
     obj_class = "patent_client.uspto_assignments.Assignment"
     primary_key = "id"
 
@@ -91,12 +90,17 @@ class AssignmentManager(Manager):
     def allowed_filters(self):
         return list(self.fields.keys())
 
-    def get_item(self, key):
-        if key < 0:
-            key = len(self) - key
-        page_no = math.floor(key / self.rows)
-        offset = key - page_no * self.rows
-        return Assignment(self._get_page(page_no)[offset])
+    def __iter__(self):
+        num_pages = math.ceil(len(self) / self.page_size)
+        page_num = 0
+        counter = 0
+        while page_num < num_pages:
+            for item in self.get_page(page_num):
+                if not self.config["limit"] or counter < self.config["limit"]:
+                    yield Assignment(item)
+                counter += 1
+            page_num += 1
+
 
     def get_query(self, page_no):
         """Get assignments. 
@@ -122,17 +126,17 @@ class AssignmentManager(Manager):
         return {
             "filter": field,
             "query": query,
-            "rows": self.rows,
-            "offset": page_no * self.rows,
+            "rows": self.page_size,
+            "offset": page_no * self.page_size,
             "sort": " ".join(sort),
         }
 
     def __len__(self):
         if not hasattr(self, "_len"):
-            self._get_page(0)
+            self.get_page(0)
         return self._len
 
-    def _get_page(self, page_no):
+    def get_page(self, page_no):
         if page_no not in self.pages:
             params = self.get_query(page_no)
             response = session.get(
@@ -142,10 +146,10 @@ class AssignmentManager(Manager):
                 headers={"Accept": "application/xml"},
             )
             text = response.text
-            self.pages[page_no] = self._parse_page(text)
+            self.pages[page_no] = self.parse_page(text)
         return self.pages[page_no]
 
-    def _parse_page(self, text):
+    def parse_page(self, text):
         tree = ET.fromstring(text.encode("utf-8"))
         result = tree.find("./result")
         self._len = int(result.attrib["numFound"])
@@ -305,15 +309,21 @@ class Assignment(Model):
         assignee_keys = filter(
             lambda x: "pat_assignee_" in x and "size" not in x, data.keys()
         )
-        return repartition({k: data[k] for k in assignee_keys})
+        return [Person(d) for d in repartition({k: data[k] for k in assignee_keys})]
 
     @property
     def assignors(self):
-        data = self.data
-        assignor_keys = filter(
-            lambda x: "pat_assignor_" in x and "size" not in x, data.keys()
-        )
-        return repartition({k: data[k] for k in assignor_keys})
+        attrs = [
+            'name',
+            'name_first',
+            'ex_date',
+            'date_ack',
+        ]
+        prefix = 'pat_assignor_'
+        count = self.data['pat_assignor_name_size']
+        data = [{k:self.data[prefix+k][i] for k in attrs} 
+                for i in range(count)]
+        return [Assignor(d) for d in data]
 
     def download(self):
         response = session.get(self.image_url, stream=True)
@@ -334,9 +344,23 @@ class Property(Model):
         "inventors",
         "patent_issue_date",
     ]
-    primary_key = "appl_id"
     us_application = one_to_one("patent_client.USApplication", appl_id="appl_id")
 
+class Person(Model):
+    attrs = [
+        'name',
+        'name_first',
+        'name_last',
+        'address1',
+        'address2',
+        'city',
+        'state',
+        'post_code',
+        'country_name',
+    ]
+
+class Assignor(Person):
+    attrs = Person.attrs + ['ex_date',]
 
 def repartition(dictionary):
     types = [type(v) for v in dictionary.values()]

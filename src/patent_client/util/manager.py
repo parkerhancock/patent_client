@@ -52,12 +52,15 @@ class Manager:
         return self.config == other.config
 
     def __getitem__(self, key):
-        print(key)
         if isinstance(key, slice):
             if key.step != None:
                 raise AttributeError("Step is not supported")
-            mger = self.offset(key.start + self.config["offset"])
-            mger = mger.limit(key.stop - key.start)
+            start = key.start if key.start else 0
+            start = len(self) + start if start < 0 else start
+            stop = key.stop if key.stop else len(self)
+            stop = len(self) + stop if stop < 0 else stop
+            mger = self.offset(start + self.config["offset"])
+            mger = mger.limit(stop - start)
             return mger
         return self.offset(key).first()
 

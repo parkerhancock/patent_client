@@ -72,3 +72,7 @@ class Model(object):
 
     def as_dict(self):
         return OrderedDict(self)
+    
+    def to_pandas(self):
+        import pandas as pd
+        return pd.Series(self.as_dict())

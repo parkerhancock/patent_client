@@ -1,5 +1,5 @@
-from .ptab import PtabProceeding, PtabDocument, PtabDecision
-
+import pytest
+from . import PtabProceeding, PtabDocument, PtabDecision
 
 class TestPtabProceeding:
     def test_get_by_proceeding_number(self):
@@ -24,7 +24,6 @@ class TestPtabProceeding:
         assert result.offset(1).first() == objects[1]
         assert result.offset(1).offset(1).first() == objects[2]
 
-
 class TestPtabDocument:
     def test_filter_by_proceeding(self):
         result = PtabDocument.objects.filter(proceeding_number="IPR2016-00831")
@@ -40,7 +39,6 @@ class TestPtabDocument:
         assert len(result) == 3
         objects = list(result)
         assert objects == list(sorted(objects))
-
 
 class TestPtabDecision:
     def test_get_by_proceeding(self):

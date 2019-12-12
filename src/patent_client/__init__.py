@@ -50,5 +50,5 @@ SETTINGS = json.load(open(SETTINGS_FILE))
 # )  # isort:skip
 
 from patent_client.uspto.ptab import PtabProceeding, PtabDocument, PtabDecision
-from patent_client.uspto.assignments import Assignment
+from patent_client.uspto.assignment import Assignment
 from patent_client.uspto.peds import USApplication

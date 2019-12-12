@@ -2,24 +2,21 @@ import os
 from tempfile import TemporaryDirectory
 import datetime
 import pytest
-from patent_client import Assignment
-from patent_client.util import Manager
-
-Manager.test_mode = True
+from . import Assignment
 
 
 class TestAssignment:
     def test_fetch_assignments_by_assignee(self):
         assignments = Assignment.objects.filter(assignee="US Well Services")
         assert len(assignments) >= 22
-        assert assignments[5].pat_assignor_name_first == "OEHRING, JARED"
+        assert assignments[5].assignors[0].name == "OEHRING, JARED"
         assignments = Assignment.objects.filter(assignee="LogicBlox")
         assert len(assignments) >= 9
 
     def test_fetch_assignments_by_patent(self):
         assignments = Assignment.objects.filter(patent_number="8,789,601")
         assert len(assignments) >= 1
-        assert "48041-605" in [a.as_dict()["id"] for a in assignments]
+        assert "48041-605" in [a.id for a in assignments]
 
     def test_fetch_assignments_by_application(self):
         assignments = Assignment.objects.filter(appl_id="14/190,982")
@@ -39,55 +36,20 @@ class TestAssignment:
 
     def test_slice_assignments(self):
         assignments = Assignment.objects.filter(assignee="US Well Services")
-        assignment_list1 = [assignment.display_id for assignment in assignments[0:5]]
+        assignment_list1 = [assignment.id for assignment in assignments[0:5]]
         assert len(assignment_list1) == 5
 
-        assignment_list2 = [assignment.display_id for assignment in assignments[:5]]
+        assignment_list2 = [assignment.id for assignment in assignments[:5]]
         assert len(assignment_list2) == 5
 
-        assignment_list3 = [assignment.display_id for assignment in assignments[-5:]]
+        assignment_list3 = [assignment.id for assignment in assignments[-5:]]
         assert len(assignment_list3) == 5
 
     def test_iterate_assignments(self):
         assignments = Assignment.objects.filter(assignee="US Well Services")
-        assignment_list = [assignment.display_id for assignment in assignments]
+        assignment_list = [assignment.id for assignment in assignments]
+        #import pdb; pdb.set_trace()
         assert len(assignment_list) == len(assignments)
-
-    def test_get_aggregates(self):
-        assignments = Assignment.objects.filter(assignee="Covar Applied")
-        expected_apps = [
-            "15274746",
-            "15251940",
-            "15251994",
-            "15252319",
-            "14938523",
-            "14938467",
-            "14938962",
-            "14939089",
-            "14284013",
-            "14284013",
-        ]
-        actual_apps = list(assignments.values_list("appl_num", flat=True))
-        for app in expected_apps:
-            assert app in actual_apps
-        expected_pubs = [
-            "20170081931",
-            "20170058620",
-            "20170056928",
-            "20170056929",
-            "20160130917",
-            "20160134843",
-            "20160130928",
-            "20160130889",
-            "20140345940",
-            "20140345940",
-        ]
-        actual_pubs = list(assignments.values_list("publ_num", flat=True))
-        for pub in expected_pubs:
-            assert pub in actual_pubs
-        assert list(set(assignments.values_list("pat_assignee_name", flat=True))) == [
-            "COVAR APPLIED TECHNOLOGIES, INC."
-        ]
 
     def test_bug_scidrill(self):
         assignments = Assignment.objects.filter(assignee="Scientific Drilling")
@@ -98,4 +60,4 @@ class TestAssignment:
 class TestAssignmentBugs:
     def test_id_43433_231(self):
         assignment = Assignment.objects.get("43433-231")
-        assert assignment.properties[0].app_filing_date == datetime.date(2016, 10, 25)
+        assert assignment.properties[0].filing_date == datetime.date(2016, 10, 25)
