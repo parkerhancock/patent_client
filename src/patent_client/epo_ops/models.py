@@ -2,8 +2,8 @@ import os
 import tempfile
 from pathlib import Path
 
-from patent_client.util import Manager
-from patent_client.util import Model
+from patent_client.util.deprecated import Manager
+from patent_client.util.deprecated import Model
 from patent_client.util import one_to_one
 from PyPDF2 import PdfFileMerger
 

@@ -1,4 +1,7 @@
 import importlib
+import logging
+
+logger = logging.getLogger(__name__)
 
 from .manager import QuerySet
 
@@ -11,6 +14,7 @@ def one_to_one(class_name, **mapping):
         try:
             klass = getattr(importlib.import_module(module_name), class_name)
             filter_obj = {k: getattr(self, v) for (k, v) in mapping.items()}
+            logger.debug(f'Fetching related {klass} using filter {filter_obj}')
             return klass.objects.get(**filter_obj)
         except AttributeError:
             return None

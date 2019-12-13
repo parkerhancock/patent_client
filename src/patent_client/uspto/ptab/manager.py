@@ -1,15 +1,15 @@
 import math
-from abc import ABC
-from typing import Iterable
+from typing import Iterable, Generic
 import inflection
 
-from patent_client.util import Manager
+from patent_client.util import Manager, ModelType
 from patent_client import session
 
 from .schema import PtabProceedingSchema, PtabDocumentSchema, PtabDecisionSchema
 from .model import PtabProceeding, PtabDocument, PtabDecision
+from .util import conversions, peds_to_ptab
 
-class PtabManager(ABC, Manager):
+class PtabManager(Manager, Generic[ModelType]):
     page_size = 25
     instance_schema = None
 
@@ -56,7 +56,10 @@ class PtabManager(ABC, Manager):
     def query(self):
         query = dict()
         for k, v in self.config["filter"].items():
-            query[inflection.camelize(k, uppercase_first_letter=False)] = " ".join(v)
+            key = k if k not in peds_to_ptab else peds_to_ptab[k]
+            key = inflection.camelize(key, uppercase_first_letter=False)
+            query[key] = " ".join(v)
+        if 'applId' in query: import pdb; pdb.set_trace()
         query["recordTotalQuantity"] = self.page_size
         query["sortOrderCategory"] = " ".join(
             inflection.camelize(o, uppercase_first_letter=False)
@@ -64,18 +67,18 @@ class PtabManager(ABC, Manager):
         )
         return query
 
-class PtabProceedingManager(PtabManager):
+class PtabProceedingManager(PtabManager[PtabProceeding]):
     query_url = "https://developer.uspto.gov/ptab-api/proceedings"
     primary_key = "proceeding_number"
     __schema__ = PtabProceedingSchema()
 
 
-class PtabDocumentManager(PtabManager):
+class PtabDocumentManager(PtabManager[PtabDocument]):
     query_url = "https://developer.uspto.gov/ptab-api/documents"
     primary_key = "document_identifier"
     __schema__ = PtabDocumentSchema()
 
-class PtabDecisionManager(PtabManager):
+class PtabDecisionManager(PtabManager[PtabDecision]):
     query_url = "https://developer.uspto.gov/ptab-api/decisions"
     primary_key = "identifier"
     __schema__ = PtabDecisionSchema()

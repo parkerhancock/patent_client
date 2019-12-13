@@ -1,27 +1,17 @@
 from dataclasses import dataclass
-from typing import List
+from typing import List, Optional
 import datetime
 from collections import OrderedDict
 
 from patent_client import session
-from patent_client.util import one_to_one, one_to_many
+from patent_client.util import one_to_one, one_to_many, Model
 
-@dataclass
-class Model(object):
-    def __eq__(self, other):
-        return (self.__class__ == other.__class__) and dict(self) == dict(other)
-    
-    def to_pandas(self):
-        import pandas as pd
-        return pd.Series(OrderedDict(self))
-
-
-@dataclass
+@dataclass(frozen=True)
 class Property(Model):
     invention_title: str
     inventors: str
     # Numbers
-    appl_num: str
+    appl_id: str
     pct_num: str
     intl_reg_num: str
     publ_num: str
@@ -128,8 +118,8 @@ class Assignment(Model):
     assignees: List[Assignee]
     properties: List[Property]
     assignment_record_has_images: bool
-    transaction_date: datetime.date = None
-    date_produced: datetime.date = None
+    transaction_date: Optional[datetime.date] = None
+    date_produced: Optional[datetime.date] = None
 
     us_applications = one_to_many("patent_client.USApplication", appl_id="appl_num")
 

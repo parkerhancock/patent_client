@@ -1,5 +1,6 @@
 from marshmallow import Schema, fields, EXCLUDE, pre_load, post_load, ValidationError
 from .model import Assignment, Property, Assignee, Assignor
+from patent_client.util import QuerySetField
 
 # Utility Functions  
 def separate_dicts_by_prefix(prefix, data):
@@ -38,7 +39,7 @@ class YesNoField(fields.Field):
     as a yes or no
     """
     
-    def _deserialize(self, value, attr, obj, **kwargs):
+    def _deserialize(self, value, *args, **kwargs) -> bool:
         if value not in ('Y', 'N'): raise ValidationError('YesNo must be a Y or N')
         return value == 'Y'
 
@@ -48,13 +49,13 @@ class BaseSchema(Schema):
     @post_load
     def make_object(self, data, **kwargs):
         return self.__model__(**data)
-    
+
 class PropertySchema(BaseSchema):
     __model__ = Property
     invention_title = fields.Str(allow_none=True)
     inventors = fields.Str(allow_none=True)
     # Numbers
-    appl_num = fields.Str(allow_none=True)
+    appl_id = fields.Str(allow_none=True, data_key='appl_num')
     pct_num = fields.Str(allow_none=True)
     intl_reg_num = fields.Str(allow_none=True)
     publ_num = fields.Str(allow_none=True)
@@ -99,15 +100,16 @@ class AssignmentSchema(BaseSchema):
     last_update_date = fields.Raw(required=True)
     recorded_date = fields.Raw(required=True)
     assignment_record_has_images = fields.Boolean(required=True)
-    properties = fields.List(fields.Nested(PropertySchema))
-    assignors = fields.List(fields.Nested(AssignorSchema))
-    assignees = fields.List(fields.Nested(AssigneeSchema))
+    properties = QuerySetField(fields.Nested(PropertySchema))
+    assignors = QuerySetField(fields.Nested(AssignorSchema))
+    assignees = QuerySetField(fields.Nested(AssigneeSchema))
     
     @pre_load
     def pre_load(self, input_data, **kwargs):
         input_data['assignors'] = separate_dicts_by_prefix('pat_assignor', input_data)
         input_data['assignees'] = separate_dicts_by_prefix('pat_assignee', input_data)
-        input_data['properties'] = separate_dicts(PropertySchema().fields, input_data)
+        property_fields = [f.data_key or f.name for f in PropertySchema().fields.values()]
+        input_data['properties'] = separate_dicts(property_fields, input_data)
         input_data['corr_address'] = combine_strings('corr_address', input_data)
         input_data['conveyance_text'] = input_data['conveyance_text'].replace('(SEE DOCUMENT FOR DETAILS).', '').strip()
         return input_data

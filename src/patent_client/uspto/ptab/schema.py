@@ -1,12 +1,28 @@
 from marshmallow import Schema, fields, EXCLUDE, pre_load, post_load, ValidationError
 from .model import PtabProceeding, PtabDocument, PtabDecision
+from .util import conversions
+
+from patent_client.util import QuerySetField
 import inflection
+
+def create_subset(data, name, keys):
+    subset = {k: data.pop(k) for k in keys if k in data}
+    if subset:
+        data[name] = subset
+    return data
+
+def create_subset_from_prefix(data, prefix):
+    keys = [k for k in data.keys() if k.startswith(prefix)]
+    return create_subset(data, prefix, keys)
 
 class BaseSchema(Schema):
     @pre_load
     def pre_load(self, input_data, **kwargs):
-        print(input_data)
-        return {inflection.underscore(k): v for k, v in input_data.items()}
+        input_data = {inflection.underscore(k): v for k, v in input_data.items()}
+        for k, v in conversions.items():
+            if k in input_data:
+                input_data[conversions[k]] = input_data.pop(k)
+        return input_data
 
     @post_load
     def make_object(self, data, **kwargs):
@@ -14,11 +30,14 @@ class BaseSchema(Schema):
 
 class PtabProceedingSchema(BaseSchema):
     __model__ = PtabProceeding
+    appl_id = fields.Str(data_key='respondent_application_number_text')
+    patent_number = fields.Str(data_key='respondent_patent_number')
     accorded_filing_date = fields.Date()
     decision_date = fields.Date()
     institution_decision_date = fields.Date()
     proceeding_filing_date = fields.Date()
     respondent_grant_date = fields.Date()
+    respondent_party_name = fields.Str(allow_none=True)
 
     class Meta:
         unknown = EXCLUDE
@@ -37,9 +56,8 @@ class PtabProceedingSchema(BaseSchema):
             'respondent_patent_owner_name',
 
             # Application Information
-            'respondent_application_number_text',
-            'respondent_inventor_name',
-            'respondent_patent_number',
+            'inventor',
+            'patent_number',
             'respondent_technology_center_number',
         )
 
@@ -62,12 +80,12 @@ class PtabDocumentSchema(BaseSchema):
 class PtabDecisionSchema(BaseSchema):
     __model__ = PtabDecision
     proceeding_number = fields.Str()
-    board_rulings = fields.List(fields.Str())
+    board_rulings = QuerySetField(fields.Str())
     decision_type_category = fields.Str()
     document_identifier = fields.Str()
     document_name = fields.Str()
     identifier = fields.Str()
-    issue_type = fields.List(fields.Str())
+    issue_type = QuerySetField(fields.Str())
     object_uu_id = fields.Str()
     petitioner_technology_center_number = fields.Str()
     subdecision_type_category = fields.Str()

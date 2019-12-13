@@ -6,11 +6,12 @@ from patent_client.util import Manager
 
 from .parser import AssignmentParser
 from .schema import AssignmentSchema
+from .model import Assignment
 
 NUMBER_CLEAN_RE = re.compile(r"[^\d]")
 clean_number = lambda x: NUMBER_CLEAN_RE.sub("", str(x)) 
 
-class AssignmentManager(Manager):
+class AssignmentManager(Manager[Assignment]):
     fields = {
         "patent_number": "PatentNumber",
         "appl_id": "ApplicationNumber",
@@ -30,9 +31,6 @@ class AssignmentManager(Manager):
     def __init__(self, *args, **kwargs):
         super(AssignmentManager, self).__init__(*args, **kwargs)
         self.pages = dict()
-
-    def __repr__(self):
-        return f"<AssignmentManager>"
 
     @property
     def allowed_filters(self):
@@ -92,7 +90,6 @@ class AssignmentManager(Manager):
 
     def get_page(self, page_no):
         params = self.get_query(page_no)
-        print(params)
         response = session.get(
             self.url,
             params=params,

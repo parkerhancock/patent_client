@@ -10,7 +10,7 @@ import requests
 from patent_client import SETTINGS
 from patent_client import session
 
-from .util import IterableManager, Model, one_to_many, one_to_one
+from .util.deprecated import IterableManager, Model, one_to_many, one_to_one
 
 CLIENT_SETTINGS = SETTINGS["ItcEdis"]
 if os.environ.get("EDIS_USER", False):

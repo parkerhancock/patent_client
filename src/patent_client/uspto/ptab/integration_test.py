@@ -4,7 +4,15 @@ from . import PtabProceeding, PtabDocument, PtabDecision
 class TestPtabProceeding:
     def test_get_by_proceeding_number(self):
         result = PtabProceeding.objects.get("IPR2016-00831")
-        assert result.respondent_patent_number == "6162705"
+        assert result.patent_number == "6162705"
+    
+    def test_get_by_patent_number(self):
+        result = PtabProceeding.objects.get(patent_number='6103599')
+        assert result.proceeding_number == "IPR2016-00833"
+
+    def test_get_by_application_number(self):
+        result = PtabProceeding.objects.get(appl_id='09089931')
+        assert result.proceeding_number == "IPR2016-00833"
 
     def test_filter_by_party(self):
         result = PtabProceeding.objects.filter(party_name="Apple")
