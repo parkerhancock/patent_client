@@ -47,7 +47,7 @@ class TestInpadoc:
     def test_can_handle_russian_cases(self):
         pub = Inpadoc.objects.get("RU2015124071")
         assert pub.title == "БУРОВОЕ ДОЛОТО ДЛЯ БУРИЛЬНОГО УСТРОЙСТВА"
-        assert pub.cpc_class == [
+        assert all(c in pub.cpc_class for c in [
             "E21B 7/064",
             "E21B 17/04",
             "E21B 47/01",
@@ -55,12 +55,12 @@ class TestInpadoc:
             "E21B 7/067",
             "E21B 10/08",
             "E21B 10/567",
-        ]
+        ])
         assert pub.priority_claims == ["13/683,540", "US 2013/066560"]
 
     def test_can_get_ep_application(self):
         pubs = Inpadoc.objects.filter(application="EP13844704")
-        assert len(pubs) == 2
+        assert len(pubs) >= 2
         assert pubs[0].title == "ATTITUDE REFERENCE FOR TIEBACK/OVERLAP PROCESSING"
 
     def test_pct(self):
@@ -70,7 +70,7 @@ class TestInpadoc:
     def test_can_get_inpadoc_family(self):
         family = Inpadoc.objects.filter(application="EP13844704")[0].family
         cases = [m.publication for m in family]
-        assert cases == [
+        assert all(c in cases for c in [
             "EP2906782A2",
             "EP2906782A4",
             "CA2887530A1",
@@ -82,7 +82,7 @@ class TestInpadoc:
             "US10047600B2",
             "WO2014059282A2",
             "WO2014059282A3",
-        ]
+        ])
 
     def test_can_get_legal_status(self):
         pub = Inpadoc.objects.get("CA2300029C")

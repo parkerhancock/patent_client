@@ -15,7 +15,7 @@ class TestReadmeExamples():
         assignments = Assignment.objects.filter(assignee='Google')
         assert len(assignments) >= 23860
         assignment = Assignment.objects.get('47086-788')
-        assert assignment.conveyance_text == 'ASSIGNMENT OF ASSIGNORS INTEREST (SEE DOCUMENT FOR DETAILS).'
+        assert assignment.conveyance_text == 'ASSIGNMENT OF ASSIGNORS INTEREST'
 
     def test_inpadoc(self):
         pub = Inpadoc.objects.get('EP3082535A1')

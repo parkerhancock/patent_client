@@ -75,7 +75,7 @@ class InpadocManager(Manager):
     def get_by_number(self):
         if "publication" in self.config["filter"]:
             number = self.config["filter"]["publication"]
-            if not isinstance(number, list):
+            if isinstance(number, list):
                 number = number[0]
             doc_db = self.connector.original_to_docdb(number, "publication")
         elif "application" in self.config["filter"]:

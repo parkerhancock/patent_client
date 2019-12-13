@@ -177,12 +177,12 @@ class OpenPatentServicesConnector:
         if key:
             KEY = key
             SECRET = secret
-
-        response = session.post(
-            auth_url, auth=(KEY, SECRET), data={"grant_type": "client_credentials"}
-        )
-        if not response.ok:
-            raise OPSAuthenticationException()
+        with session.cache_disabled():
+            response = session.post(
+                auth_url, auth=(KEY, SECRET), data={"grant_type": "client_credentials"}
+            )
+            if not response.ok:
+                raise OPSAuthenticationException()
 
         self.access_token = response.json()["access_token"]
 
