@@ -13,7 +13,7 @@ class PtabManager(Manager, Generic[ModelType]):
     page_size = 25
     instance_schema = None
 
-    def __iter__(self):
+    def _get_results(self):
         total = self._len()
         offset = self.config["offset"]
         limit = self.config["limit"]

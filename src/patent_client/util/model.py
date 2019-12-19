@@ -11,7 +11,7 @@ class Model():
             if isinstance(v, Model):
                 output[k] = v.as_dict()
             elif isinstance(v, (list, QuerySet)):
-                output[k] = [i.as_dict() for i in v]
+                output[k] = [i.as_dict() if hasattr(i, 'as_dict') else i for i in v]
             else:
                 output[k] = v
         return output

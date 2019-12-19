@@ -1,0 +1,123 @@
+import os
+import xmltodict
+import math
+from patent_client.util import Manager
+from patent_client.util.manager import resolve
+from patent_client import CACHE_CONFIG, SETTINGS
+
+from .session import session, NS 
+from .schema import InpadocResultSchema, InpadocBiblioSchema
+
+SEARCH_FIELDS = {
+    "title": "title",
+    "abstract": "abstract",
+    "title_and_abstract": "titleandabstract",
+    "inventor": "inventor",
+    "applicant": "applicant",
+    "inventor_or_applicant": "inventorandapplicant",
+    "publication": "publicationnumber",
+    "epodoc_publication": "spn",
+    "application": "applicationnumber",
+    "epodoc_application": "sap",
+    "priority": "prioritynumber",
+    "epodoc_priority": "spr",
+    "number": "num",  # Pub, App, or Priority Number
+    "publication_date": "publicationdate",  # yyyy, yyyyMM, yyyyMMdd, yyyy-MM, yyyy-MM-dd
+    "citation": "citation",
+    "cited_in_examination": "ex",
+    "cited_in_opposition": "op",
+    "cited_by_applicant": "rf",
+    "other_citation": "oc",
+    "family": "famn",
+    "cpc_class": "cpc",
+    "ipc_class": "ipc",
+    "ipc_core_invention_class": "ci",
+    "ipc_core_additional_class": "cn",
+    "ipc_advanced_class": "ai",
+    "ipc_advanced_additional_class": "an",
+    "ipc_core_class": "c",
+    "classification": "cl",  # IPC or CPC Class
+    "full_text": "txt",  # title, abstract, inventor and applicant
+}
+
+class OPSException(Exception):
+    pass
+
+class InpadocManager(Manager):
+    page_size = 20
+
+    def __init__(self, *args, **kwargs):
+        super(InpadocManager, self).__init__(*args, **kwargs)
+        self.pages = dict()
+
+    def __len__(self):
+        page = self.get_page(0)
+        max_length = int(resolve(page, '@total-result-count'))
+        limit = self.config['limit']
+        if limit:
+            return limit if limit < max_length else max_length 
+        else:
+            return max_length
+
+    def _get_results(self):
+        num_pages = math.ceil(len(self) / self.page_size)
+        page_num = 0
+        counter = 0
+        while page_num < num_pages:
+            page_data = self.get_page(page_num)
+            data = resolve(page_data, self.item_path)
+            if not isinstance(data, list):
+                yield self.schema.load(data)
+            else:
+                for item in data:
+                    if not self.config["limit"] or counter < self.config["limit"]:
+                        yield self.schema.load(item)
+                    counter += 1
+            page_num += 1
+    
+    @property
+    def constituent(self):
+        return self.config['options'].get('constituent', None)
+
+    @property
+    def search_url(self):
+        if self.constituent:
+            return f'http://ops.epo.org/3.2/rest-services/published-data/search/{self.constituent}'
+        return 'http://ops.epo.org/3.2/rest-services/published-data/search' 
+
+    @property
+    def item_path(self):
+        if self.constituent:
+            return 'search-result.exchange-documents'
+        else:
+            return 'search-result.publication-reference'
+
+    @property
+    def schema(self):
+        if self.constituent == 'biblio':
+            return InpadocBiblioSchema()
+        elif self.constituent is None:
+            return InpadocResultSchema()
+
+    def get_page(self, page_number):
+        if page_number not in self.pages:
+            query_params = self.query_params(page_number)
+            response = session.get(self.search_url, params=query_params, timeout=10)
+            data = xmltodict.parse(response.text, process_namespaces=True, namespaces=NS)
+            self.pages[page_number] = resolve(data, 'world-patent-data.biblio-search')
+        return self.pages[page_number]
+
+    def query_params(self, page_number):
+        query_dict = self.config['filter']
+        start = page_number * self.page_size + 1
+        range_q = f"{start}-{start + self.page_size}"
+        if "cql_query" in query_dict:
+            query = dict(q=query_dict["cql_query"], Range=range_q)
+        query = ""
+        for keyword, values in query_dict.items():
+            for value in values:
+                query += f'{SEARCH_FIELDS[keyword]}="{value}",'
+        query = dict(q=query, Range=range_q)
+        return query
+
+    

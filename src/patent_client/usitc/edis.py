@@ -10,7 +10,7 @@ import requests
 from patent_client import SETTINGS
 from patent_client import session
 
-from .util.deprecated import IterableManager, Model, one_to_many, one_to_one
+from patent_client.util.deprecated import IterableManager, Model, one_to_many, one_to_one
 
 CLIENT_SETTINGS = SETTINGS["ItcEdis"]
 if os.environ.get("EDIS_USER", False):
@@ -46,9 +46,6 @@ class ITCInvestigationManager(IterableManager):
             with session.cache_disabled():
                 response = session.get(BASE_URL + path, params={"password": PASSWORD})
             if not response.ok:
-                import pdb
-
-                pdb.set_trace()
                 raise AuthenticationException(
                     "EDIS Authentication Failed! Did you provide the correct username and password?"
                 )

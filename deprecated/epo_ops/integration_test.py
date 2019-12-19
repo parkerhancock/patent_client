@@ -1,8 +1,9 @@
 import os
 import pytest
 
+
 from patent_client import Epo
-from patent_client import Inpadoc
+from .models import Inpadoc
 
 from datetime import date
 
@@ -10,6 +11,12 @@ FIXTURES = os.path.join(os.path.dirname(__file__), "fixtures")
 
 
 class TestInpadoc:
+    def test_can_get_us_patent(self):
+        pat = Inpadoc.objects.get("US8199407")
+        print(patent.data)
+        assert False
+
+
     def test_can_get_epo_pub(self):
         pub = Inpadoc.objects.get("CA2944968")
         assert (
@@ -113,6 +120,10 @@ class TestInpadoc:
             claims[5].text
             == "6. The method of claim 5, wherein the rock transporter is a haul truck and the rock crusher is a primary rock crusher."
         )
+    
+    def test_can_parse_citations(self):
+        doc = Inpadoc.objects.get('US6103599')
+        assert False
 
 
 class TestEpoRegister:

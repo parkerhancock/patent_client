@@ -1,7 +1,7 @@
 import pytest
 import datetime
 
-from patent_client import Inpadoc, Epo, Assignment, USApplication
+from patent_client import Inpadoc, Assignment, USApplication
 from patent_client.util.deprecated import Manager
 Manager.test_mode = True
 
@@ -22,6 +22,7 @@ class TestReadmeExamples():
         assert pub.title == 'AUTOMATIC FLUID DISPENSER'
         assert pub.priority_claims == ['201314137130', '2014071849']
 
+    @pytest.mark.skip('re-implementing EPO')
     def test_epo(self):
         epo = Epo.objects.get('EP3082535A1')
         assert epo.title == 'AUTOMATIC FLUID DISPENSER'

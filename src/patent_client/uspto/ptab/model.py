@@ -54,8 +54,8 @@ class PtabDecision(Model):
     document_identifier: str
     document_name: str
     identifier: str
-    issue_type: str
     subdecision_type_category: str
+    issue_type: str = None
     object_uu_id: Optional[str] = None
     petitioner_technology_center_number: Optional[str] = None
     proceeding = one_to_one('patent_client.uspto.ptab.PtabProceeding', proceeding_number='proceeding_number')

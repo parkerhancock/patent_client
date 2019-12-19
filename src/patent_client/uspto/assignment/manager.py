@@ -1,5 +1,6 @@
 import re
 import math
+import typing
 
 from patent_client import session
 from patent_client.util import Manager
@@ -36,7 +37,7 @@ class AssignmentManager(Manager[Assignment]):
     def allowed_filters(self):
         return list(self.fields.keys())
 
-    def __iter__(self):
+    def _get_results(self) -> typing.Iterator[Assignment]:
         num_pages = math.ceil(len(self) / self.page_size)
         page_num = 0
         counter = 0
@@ -77,7 +78,7 @@ class AssignmentManager(Manager[Assignment]):
             "sort": " ".join(sort),
         }
 
-    def __len__(self):
+    def __len__(self) -> int:
         if not hasattr(self, "_len"):
             self.get_page(0)
         max_length = self._len - self.config["offset"]

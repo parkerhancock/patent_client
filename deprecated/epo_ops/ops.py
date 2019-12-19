@@ -62,99 +62,9 @@ DocDB = namedtuple(
     "DocDB", ["country", "number", "kind", "date", "doc_type", "family_id"]
 )
 whitespace_re = re.compile(" +")
-country_re = re.compile(r"^[A-Z]{2}")
-ep_case_re = re.compile(r"EP(?P<number>[\d]+)(?P<kind>[A-Z]\d)?")
-Claim = namedtuple("Claim", ["number", "text", "limitations"])
-cn_re = re.compile(r"^\d+")
-lim_re = re.compile(r"([:;])")
-
-
-def clean_claims(claims):
-    def parse_claim(limitations, counter):
-        preamble = limitations[0]
-        claim_number = counter
-        if preamble[0].isupper():
-            limitations = [f"{str(claim_number)}. {preamble}", *limitations[1:]]
-            counter += 1
-        elif cn_re.search(preamble):
-            claim_number = int(cn_re.search(preamble).group(0))
-            counter = claim_number + 1
-
-        # Fix trailing "ands" in the claim language
-        clean_limitations = list()
-        for i, lim in enumerate(limitations):
-            try:
-                if limitations[i + 1].split()[0].lower() == "and":
-                    lim = lim + " and"
-                    limitations[i + 1] = " ".join(limitations[i + 1].split()[1:])
-            except IndexError:
-                pass
-            clean_limitations.append(lim.strip())
-        return (
-            Claim(
-                number=claim_number,
-                text="\n".join(clean_limitations),
-                limitations=clean_limitations,
-            ),
-            counter,
-        )
-
-    if len(claims) > 1:
-        counter = 1
-        claim_list = list()
-        for claim in claims:
-            segments = iter(lim_re.split(claim))
-            limitations = list()
-            while True:
-                try:
-                    phrase = next(segments)
-                    delimiter = next(segments)
-                    limitations.append(phrase + delimiter)
-                except StopIteration:
-                    limitations.append(phrase)
-                    break
-            claim, counter = parse_claim(limitations, counter)
-            claim_list.append(claim)
-        return claim_list
-
-    lines = claims[0].split("\n")
-
-    preambles = ["i claim", "we claim", "what is claimed", "claims"]
-    c_preambles = ["a", "an", "the"]
-
-    if any(pa in lines[0].lower().replace(" ", "") for pa in preambles):
-        lines = lines[1:]
-
-    new_lines = list()
-
-    for line in lines:
-        segments = re.split(r"(?<=[^\d]\.) ", line)
-        new_lines += segments
-
-    claims = list()
-    counter = 1
-    limitations = list()
-    while new_lines:
-        line = new_lines.pop(0)
-        if limitations and (
-            any(cp in line[0].split()[0].lower() for cp in c_preambles)
-            or cn_re.search(line)
-            or not new_lines
-        ):
-            claim, counter = parse_claim(limitations, counter)
-            claims.append(claim)
-            limitations = [line]
-        else:
-            limitations.append(line)
-
-    claim, counter = parse_claim(limitations, counter)
-    claims.append(claim)
-    return claims
-
 
 class OPSException(Exception):
     pass
-
 
 class OPSAuthenticationException(OPSException):
     pass
@@ -206,46 +116,39 @@ class OpenPatentServicesConnector:
             elif response.status_code in (400, 403):
                 self.authenticate()
             elif not response.ok:
-                tree = ET.fromstring(response.text.encode("utf-8"))
-                code = tree.find("./ops:code", NS).text
-                message = tree.find("./ops:message", NS).text
-                details = tree.find("./ops:details", NS)
-                if details is not None:
-                    details = "".join(details.itertext())
-                else:
-                    details = "<None>"
-                raise OPSException(
-                    f"{response.status_code} - {code} - {message}\nDETAILS: {details} \nURL: {response.request.url}"
-                )
+                self.raise_bad_response(response)
             retry += 1
         raise OPSException("Max Retries Exceeded!")
 
+    def raise_bad_response(self, bad_response):
+        tree = ET.fromstring(bad_response.text.encode("utf-8"))
+        code = tree.find("./ops:code", NS).text
+        message = tree.find("./ops:message", NS).text
+        details = tree.find("./ops:details", NS)
+        if details is not None:
+            details = "".join(details.itertext())
+        else:
+            details = "<None>"
+        raise OPSException(
+            f"{bad_response.status_code} - {code} - {message}\nDETAILS: {details} \nURL: {bad_response.request.url}"
+        )
+
     def xml_request(self, url, params=dict()):
         response = self.request(url, params)
-        return response.text
+        return ET.fromstring(response.text.encode('utf-8'))
 
     def original_to_docdb(self, number, doc_type):
         if "PCT" in number:
             return self.pct_to_docdb(number)
-        country = country_re.search(number)
-        if country:
-            country = country.group(0)
-            number = number[2:]
+        if number[:2].isdigit(): # no leading country code
+            country, number = 'US', number
         else:
-            country = "US"
-            number = number
+            country, number = number[:2], number[2:]
 
         url = f"http://ops.epo.org/3.2/rest-services/number-service/{doc_type}/original/{country}.({number})/docdb"
-        text = self.xml_request(url)
-        tree = ET.fromstring(text.encode("utf-8"))
-        output = tree.find("./ops:standardization/ops:output", NS)
-
-        if doc_type == "application":
-            app_ref = output.find("./ops:application-reference/epo:document-id", NS)
-            return self.docdb_number(app_ref, doc_type)
-        elif doc_type == "publication":
-            pub_ref = output.find("./ops:publication-reference/epo:document-id", NS)
-            return self.docdb_number(pub_ref, doc_type)
+        tree = self.xml_request(url)
+        app_ref = tree.find(f"./ops:standardization/ops:output/ops:{doc_type}-reference/epo:document-id", NS)
+        return self.docdb_number(app_ref, doc_type)
 
     def original_to_epodoc(self, number, doc_type):
         url = f"http://ops.epo.org/3.2/rest-services/number-service/{doc_type}/original/{number})/epodoc"
@@ -339,8 +242,7 @@ class InpadocConnector(OpenPatentServicesConnector):
             url = data_url.format(
                 case_number=case_number, doc_type=pub.doc_type, data_kind=data_kind
             )
-        text = self.xml_request(url)
-        tree = ET.fromstring(text.encode("utf-8"))
+        tree = self.xml_request(url)
         return tree
 
     def get_search_page(self, page_number, query):
@@ -382,12 +284,13 @@ class InpadocConnector(OpenPatentServicesConnector):
         office = el.attrib.get("office", "")
         pat_cite = el.find("./epo:patcit", NS)
         if pat_cite is not None:
-            citation = dict(
-                self.docdb_number(
-                    pat_cite.find('./epo:document-id[@document-id-type="docdb"]', NS),
-                    "publication",
-                )._asdict()
-            )
+            #citation = dict(
+            #    self.docdb_number(
+            #        pat_cite.find('./epo:document-id[@document-id-type="docdb"]', NS),
+            #        "publication",
+            #    )._asdict()
+            #)
+            citation = pat_cite.find('./epo:document-id[@document-id-type="epodoc"]/epo:doc-number', NS).text.strip()
         else:
             citation = el.find("./epo:nplcit/epo:text", NS).text
         category = (

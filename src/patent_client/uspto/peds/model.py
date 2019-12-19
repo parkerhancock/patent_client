@@ -5,13 +5,15 @@ import datetime
 from dateutil.relativedelta import relativedelta
 from patent_client.util import one_to_many, one_to_one, Model, QuerySet
 
-@dataclass
+@dataclass(frozen=True)
 class Relationship(Model):
     parent_appl_id: str
     child_appl_id: str
     relationship: str
     child_app_filing_date: Optional[datetime.date] = None
     parent_app_filing_date: Optional[datetime.date] = None
+    parent = one_to_one('patent_client.uspto.peds.USApplication', appl_id='parent_appl_id')
+    child = one_to_one('patent_client.uspto.peds.USApplication', appl_id='child_appl_id')
 
 @dataclass
 class PtaPteHistory(Model):
@@ -69,6 +71,17 @@ class Applicant(Model):
     rank_no: Optional[int] = None
 
 @dataclass
+class Inventor(Model):
+    name: Optional[str] = None
+    street: Optional[str] = None
+    city: Optional[str] = None
+    geo_code: Optional[str] = None
+    postal_code: Optional[str] = None
+    country: Optional[str] = None
+    rank_no: Optional[int] = None
+    
+
+@dataclass
 class Expiration(Model):
     parent_appl_id: str
     parent_app_filing_date: datetime.date
@@ -81,6 +94,7 @@ class Expiration(Model):
 @dataclass
 class USApplication(Model):
     appl_id: str
+    inventors: List[str] = None
     app_filing_date: Optional[datetime.date] = None
     app_location: Optional[str] = None
     patent_title: Optional[str] = None
@@ -113,6 +127,23 @@ class USApplication(Model):
 
     assignments = one_to_many('patent_client.uspto.assignment.Assignment', appl_id='appl_id')
     trials = one_to_many('patent_client.uspto.ptab.PtabProceeding', appl_id='appl_id')
+
+    @property
+    def family(self) -> QuerySet:
+        return QuerySet([
+            self.child_continuity.values_list('child', flat=True),
+            [self, ],
+            self.parent_continuity.values_list('parent', flat=True),
+        ])
+
+    @property
+    def kind(self) -> str:
+        if "PCT" in self.appl_id:
+            return "PCT"
+        if self.appl_id[0] == "6":
+            return "Provisional"
+        return "Nonprovisional"
+
 
     @property
     def expiration(self) -> Optional[Expiration]:

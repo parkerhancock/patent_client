@@ -38,7 +38,7 @@ class NotAvailableException(Exception):
 QUERY_FIELDS = "appEarlyPubNumber applId appLocation appType appStatus_txt appConfrNumber appCustNumber appGrpArtNumber appCls appSubCls appEntityStatus_txt patentNumber patentTitle primaryInventor firstNamedApplicant appExamName appExamPrefrdName appAttrDockNumber appPCTNumber appIntlPubNumber wipoEarlyPubNumber pctAppType firstInventorFile appClsSubCls rankAndInventorsList"
 
 
-class USApplicationManager(Manager):
+class USApplicationManager(Manager[USApplication]):
     primary_key = "appl_id"
     query_url = "https://ped.uspto.gov/api/queries"
     page_size = 20
@@ -56,7 +56,7 @@ class USApplicationManager(Manager):
         else:
             return limit if limit < max_length else max_length
 
-    def __iter__(self) -> Iterator[USApplication]:
+    def _get_results(self) -> Iterator[USApplication]:
         num_pages = math.ceil(len(self) / self.page_size)
         page_num = 0
         counter = 0
@@ -67,6 +67,7 @@ class USApplicationManager(Manager):
                     yield self.__schema__.load(item)
                 counter += 1
             page_num += 1
+
 
     def get_page(self, page_number):
         if page_number not in self.pages:

@@ -2,7 +2,7 @@ from __future__ import annotations
 import itertools
 from copy import deepcopy
 from collections import OrderedDict
-from typing import Iterable, Iterator, TypeVar, Generic, Union, Sized, List
+from typing import Iterable, Iterator, TypeVar, Generic, Union, Sized, List, Any
 
 ModelType = TypeVar('ModelType')
 
@@ -16,6 +16,8 @@ def resolve(item, key):
                 item = item[accessor]
             else:
                 item = getattr(item, accessor)
+            if callable(item):
+                item = item()
     except Exception as e:
         return None 
     return item
@@ -62,7 +64,24 @@ class Manager(Sized, Iterable, Generic[ModelType]):
     ):
         self.config = config
 
+
     def __iter__(self) -> Iterator[ModelType]:
+        if self.config.get('disable_cache', False):
+            for item in self._get_results():
+                yield item
+
+        else:
+            if not hasattr(self, '__result_iterator__'):
+                self.__result_iterator__ = self._get_results()
+            if not hasattr(self, '__cache__'):
+                self.__cache__ = list()
+            for item in self.__cache__:
+                yield item
+            for item in self.__result_iterator__:
+                self.__cache__.append(item)
+                yield item
+
+    def _get_results(self) -> Iterator[ModelType]:
         raise NotImplementedError('Must be implemented by subclass')
 
     def __len__(self) -> int:
@@ -136,7 +155,7 @@ class Manager(Sized, Iterable, Generic[ModelType]):
     def count(self) -> int:
         return len(self)
 
-    def first(self) -> ModelType: # type:ignore 
+    def first(self) -> ModelType:
         return next(iter(self))
 
     def all(self) -> Manager[ModelType]:
@@ -160,23 +179,27 @@ class Manager(Sized, Iterable, Generic[ModelType]):
     def to_records(self) -> Iterator[OrderedDict]:
         for i in self:
             yield i.as_dict()
-
+    
+    def to_list(self) -> List[ModelType]:
+        return list(self)
+    
     # Values
-    def values(self, *fields) -> ValuesQuerySet:
-        return ValuesQuerySet([self], fields)
+    def values(self, *fields, **kw_fields) -> ValuesQuerySet:
+        return ValuesQuerySet([self], fields, **kw_fields)
 
-    def values_list(self, *fields, flat=False) -> ValuesListQuerySet:
-        return ValuesListQuerySet([self], fields, flat)
+    def values_list(self, *fields, flat=False, **kw_fields) -> ValuesListQuerySet:
+        return ValuesListQuerySet([self], fields, flat, **kw_fields)
 
 
-class QuerySet(Manager):
+class QuerySet(Manager[Any]):
     """
     Utility class that extends the Manager helper function to 
     any collection of Patent Client objects
     """
 
     def __init__(self, iterables, drop_duplicates=False):
-        self.iterables = iterables
+        self.iterables = [i.set_options(disable_cache=True) if isinstance(i, Manager) else i for i in iterables]
+
 
     def __getitem__(self, key):
         if isinstance(key, slice):
@@ -209,19 +232,22 @@ class QuerySet(Manager):
 
 
 class ValuesQuerySet(QuerySet):
-    def __init__(self, iterables, fields):
+    def __init__(self, iterables, fields, **kw_fields):
         super(ValuesQuerySet, self).__init__(iterables)
-        self.fields = fields
+        self.fields = {
+            **{k:k for k in fields},
+            **kw_fields
+        }
 
     def __iter__(self) -> Iterator[OrderedDict]:
         for iterable in self.iterables:
             for item in iterable:
-                yield OrderedDict((f, resolve(item, f)) for f in self.fields)
+                yield OrderedDict((k, resolve(item, v)) for k, v in self.fields.items())
 
 
 class ValuesListQuerySet(ValuesQuerySet):
-    def __init__(self, iterable, fields, flat=False):
-        super(ValuesListQuerySet, self).__init__(iterable, fields)
+    def __init__(self, iterable, fields, flat=False, **kw_fields):
+        super(ValuesListQuerySet, self).__init__(iterable, fields, **kw_fields)
         self.flat = flat
 
     def __iter__(self):

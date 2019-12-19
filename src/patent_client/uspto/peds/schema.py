@@ -1,7 +1,7 @@
 from pprint import pprint
 from collections import OrderedDict
 from marshmallow import Schema, fields, EXCLUDE, pre_load, post_load, ValidationError
-from .model import USApplication, Relationship, PtaPteHistory, PtaPteSummary, Transaction, Correspondent, Attorney, Applicant 
+from .model import USApplication, Relationship, PtaPteHistory, PtaPteSummary, Transaction, Correspondent, Attorney, Applicant, Inventor 
 import inflection
 from dateutil.parser import parse as parse_date
 
@@ -17,11 +17,11 @@ def create_subset_from_prefix(data, prefix):
     keys = [k for k in data.keys() if k.startswith(prefix)]
     return create_subset(data, prefix, keys)
 
-def group_lines(data, prefix):
+def group_lines(data, prefix, delimiter='\n'):
     words = ('one', 'two', 'three', 'four')
     subset = list(k for k in tuple(data.keys()) if k.startswith(prefix) and '_line_' in k)
     ordered_keys = tuple(sorted(subset, key=lambda x: words.index(x.split('_')[-1])))
-    data[prefix] = "\n".join(data[k] for k in ordered_keys).strip()
+    data[prefix] = delimiter.join(data[k] for k in ordered_keys).strip()
     for k in subset:
         del data[k]
     return data
@@ -161,6 +161,23 @@ class ApplicantSchema(BaseSchema):
         input_data = group_lines(input_data, 'street')
         return input_data
 
+class InventorSchema(BaseSchema):
+    __model__ = Inventor
+    name = fields.Str()
+    street = fields.Str()
+    rank_no = fields.Int()
+    city = fields.Str()
+    geo_code = fields.Str()
+    postal_code = fields.Str()
+    country = fields.Str(data_key='country_cd')
+
+    @pre_load
+    def pre_load(self, input_data, **kwargs):
+        input_data = super(InventorSchema, self).pre_load(input_data, **kwargs)
+        input_data = group_lines(input_data, 'name', delimiter='; ')
+        input_data = group_lines(input_data, 'street')
+        return input_data
+
 
 class USApplicationSchema(BaseSchema):
     __model__ = USApplication
@@ -194,6 +211,7 @@ class USApplicationSchema(BaseSchema):
     correspondent = fields.Nested(CorrespondentSchema(), data_key='corr_addr')
     attorneys = QuerySetField(fields.Nested(AttorneySchema()), data_key='attrny_addr')
     applicants = QuerySetField(fields.Nested(ApplicantSchema()))
+    inventors = fields.List(fields.Nested(InventorSchema()))
 
 
 

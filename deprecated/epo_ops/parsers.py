@@ -77,12 +77,13 @@ class OPSParser:
         office = el.attrib.get("office", "")
         pat_cite = el.find("./epo:patcit", NS)
         if pat_cite is not None:
-            citation = dict(
-                self.docdb_number(
-                    pat_cite.find('./epo:document-id[@document-id-type="docdb"]', NS),
-                    "publication",
-                )._asdict()
-            )
+            #citation = dict(
+            #    self.docdb_number(
+            #        pat_cite.find('./epo:document-id[@document-id-type="docdb"]', NS),
+            #        "publication",
+            #    )._asdict()
+            #)
+            citation = pat_cite.find('./epo:document-id[@document-id-type="epodoc"]/doc-number').text.strip()
         else:
             citation = el.find("./epo:nplcit/epo:text", NS).text
         category = (

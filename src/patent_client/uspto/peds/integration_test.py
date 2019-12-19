@@ -9,6 +9,14 @@ logger = logging.getLogger(__name__)
 
 
 class TestPatentExaminationData:
+    def test_get_inventors(self):
+        inventors = USApplication.objects.get(12721698).inventors
+        assert len(inventors) == 1
+        inventor = inventors[0]
+        assert inventor.name == 'Thind; Deepinder Singh'
+        assert inventor.city == 'Mankato, '
+        assert inventor.geo_code == 'MN'
+
     def test_search_by_customer_number(self):
         result = USApplication.objects.filter(app_cust_number="70155")
         assert len(result) > 1
@@ -201,4 +209,6 @@ class TestPatentExaminationData:
 
     def test_get_applicant(self):
         applicants = USApplication.objects.filter(first_named_applicant="Tesla").first().applicants
-        assert applicants[0].name == 'Tesla, Inc.'
+        assert applicants[0].name == 'TESLA GROHMANN AUTOMATION GMBH'
+    
+
