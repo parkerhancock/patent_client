@@ -198,7 +198,7 @@ class QuerySet(Manager[Any]):
     """
 
     def __init__(self, iterables, drop_duplicates=False):
-        self.iterables = [i.set_options(disable_cache=True) if isinstance(i, Manager) else i for i in iterables]
+        self.iterables = [i.set_options(disable_cache=True) if isinstance(i, Manager) and not isinstance(i, QuerySet) else i for i in iterables]
 
 
     def __getitem__(self, key):
