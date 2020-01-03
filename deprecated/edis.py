@@ -8,57 +8,24 @@ import xml.etree.ElementTree as ET
 import requests
 
 from patent_client import SETTINGS
-from patent_client import session
-
 from patent_client.util.deprecated import IterableManager, Model, one_to_many, one_to_one
 
-CLIENT_SETTINGS = SETTINGS["ItcEdis"]
-if os.environ.get("EDIS_USER", False):
-    USERNAME = os.environ["EDIS_USER"]
-    PASSWORD = os.environ["EDIS_PASS"]
-else:
-    USERNAME = CLIENT_SETTINGS["Username"]
-    PASSWORD = CLIENT_SETTINGS["Password"]
+from .session import session
 
 BASE_URL = "https://edis.usitc.gov/data"
 
 # API Guide at: https://www.usitc.gov/docket_services/documents/EDIS3WebServiceGuide.pdf
 
-SECRET_KEY = None
-
-
-class AuthenticationException(Exception):
-    pass
-
-
 class ITCInvestigationManager(IterableManager):
     max_retries = 3
-    auth_time = 10 * 60  # Re-authenticate every # seconds
-    last_auth = 0
     base_url = BASE_URL + "/investigation/"
-
-    def authenticate():
-        if (
-            time.time() - ITCInvestigationManager.last_auth
-            > ITCInvestigationManager.auth_time
-        ):
-            path = "/secretKey/" + USERNAME
-            with session.cache_disabled():
-                response = session.get(BASE_URL + path, params={"password": PASSWORD})
-            if not response.ok:
-                raise AuthenticationException(
-                    "EDIS Authentication Failed! Did you provide the correct username and password?"
-                )
-            tree = ET.fromstring(response.text)
-            SECRET_KEY = tree.find("secretKey").text
 
     def filter(self):
         raise NotImplementedError("EDIS Api does not have a search function!")
 
     def get(self, investigation_number):
-        ITCInvestigationManager.authenticate()
         url = self.base_url + investigation_number
-        response = session.get(url, auth=(USERNAME, SECRET_KEY))
+        response = session.get(url)
         tree = ET.fromstring(response.text)
         tree = tree[0][0]
         data = {
@@ -80,7 +47,6 @@ class ITCInvestigation(Model):
     def __repr__(self):
         return f"<ITCInvestigation(number={self.number})>"
 
-
 class ITCDocumentsManager(IterableManager):
     primary_key = "investigation_number"
     base_url = BASE_URL + "/document"
@@ -93,9 +59,8 @@ class ITCDocumentsManager(IterableManager):
     }
 
     def get(self, document_id):
-        ITCInvestigationManager.authenticate()
         response = session.get(
-            f"{self.base_url}/{document_id}", auth=(USERNAME, SECRET_KEY)
+            f"{self.base_url}/{document_id}"
         )
         tree = ET.fromstring(response.text)
         doc_el = tree.find(".//document")
@@ -132,9 +97,8 @@ class ITCDocumentsManager(IterableManager):
             q_string = re.sub(
                 r'[\{\}":, ]+', "-", json.dumps(query, sort_keys=True)[1:-1]
             )
-            ITCInvestigationManager.authenticate()
             response = session.get(
-                self.base_url, params=query, auth=(USERNAME, SECRET_KEY)
+                self.base_url, params=query
             )
             tree = ET.fromstring(response.text)[0]
             page_length = len(tree.findall("document"))
@@ -162,8 +126,7 @@ class ITCAttachmentManager(IterableManager):
 
     def __iter__(self):
         doc_id = self.config["filter"]["document_id"]
-        ITCInvestigationManager.authenticate()
-        response = session.get(self.base_url + doc_id, auth=(USERNAME, SECRET_KEY))
+        response = session.get(self.base_url + doc_id)
         tree = ET.fromstring(response.text)
         attribute_dict = dict(
             id="id",
@@ -196,7 +159,7 @@ class ITCAttachment(Model):
         oname = os.path.join(path, filename)
         if not os.path.exists(oname):
             response = session.get(
-                self.download_url, auth=(USERNAME, SECRET_KEY), stream=True
+                self.download_url, stream=True
             )
             with open(oname, "wb") as f:
                 for chunk in response.iter_content(1024):

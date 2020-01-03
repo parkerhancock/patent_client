@@ -33,6 +33,15 @@ def one_to_many(class_name, **mapping):
 
     return get
 
+def get_manager(class_name):
+    module_name, class_name = class_name.rsplit(".", 1)
+    @property
+    def objects(self):
+        klass = getattr(importlib.import_module(module_name), class_name)
+        return klass()
+    return objects
+
+
 
 def recur_accessor(obj, accessor):
     if "__" not in accessor:

@@ -16,8 +16,8 @@ class TestPtabProceeding:
 
     def test_filter_by_party(self):
         result = PtabProceeding.objects.filter(party_name="Apple")
-        assert len(result) >= 444
-        assert result.count() >= 444
+        assert len(result) >= 400
+        assert result.count() >= 400
 
     def test_filter_with_limit(self):
         result = PtabProceeding.objects.filter(party_name="Apple").limit(26)

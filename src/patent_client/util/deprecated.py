@@ -54,10 +54,10 @@ def one_to_one(class_name, **mapping):
     def get(self):
         try:
             klass = getattr(importlib.import_module(module_name), class_name)
-            filter_obj = {k: getattr(self, v) for (k, v) in mapping.items()}
-            return klass.objects.get(**filter_obj)
         except AttributeError:
             return None
+        filter_obj = {k: getattr(self, v) for (k, v) in mapping.items()}
+        return klass.objects.get(**filter_obj)
 
     return get
 

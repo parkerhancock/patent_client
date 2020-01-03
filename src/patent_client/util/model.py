@@ -1,10 +1,14 @@
 from collections import OrderedDict
 from dataclasses import dataclass, fields
+from importlib import import_module
+import typing
 
 from .manager import QuerySet
 
+ManagerType = typing.TypeVar('ManagerType')
+
 @dataclass
-class Model():
+class Model(typing.Generic[ManagerType]):
     def as_dict(self):
         output = OrderedDict()
         for k, v in self:
