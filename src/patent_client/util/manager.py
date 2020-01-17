@@ -143,15 +143,18 @@ class Manager(Generic[ModelType]):
         new_config["options"] = {**new_config["options"], **kwargs}
         return self.__class__(new_config)
 
+    def _clone(self):
+        return self.__class__(deepcopy(self.config))
+
     def limit(self, limit) -> Manager[ModelType]:
-        new_config = deepcopy(self.config)
-        new_config["limit"] = limit
-        return self.__class__(new_config)
+        clone = self._clone()
+        clone.config['limit'] = limit
+        return clone
 
     def offset(self, offset) -> Manager[ModelType]:
-        new_config = deepcopy(self.config)
-        new_config["offset"] += offset
-        return self.__class__(new_config)
+        clone = self._clone()
+        clone.config['offset'] = self.config['offset'] + offset
+        return clone
 
     def get(self, *args, **kwargs) -> ModelType: 
         """Implement a new manager with the requested keywords, and if the length is 1,
@@ -195,13 +198,28 @@ class Manager(Generic[ModelType]):
     
     # Values
     def values(self, *fields, **kw_fields) -> ValuesQuerySet:
-        return ValuesQuerySet(self, fields, **kw_fields)
+        return ValuesQuerySet(self, *fields, **kw_fields)
 
     def values_list(self, *fields, flat=False, **kw_fields) -> ValuesListQuerySet:
-        return ValuesListQuerySet(self, fields, flat, **kw_fields)
+        return ValuesListQuerySet(self, *fields, flat=flat, **kw_fields)
 
 class ListManager(list, Manager[ModelType]):
-    pass
+    
+    def _clone(self):
+        return self
+
+    def limit(self, limit):
+        return ListManager(self[:limit])
+
+    def offset(self, offset):
+        return ListManager(self[offset:])
+
+    def __getitem__(self, sl):
+        result = list(self)[sl]
+        if isinstance(sl, slice):
+            return ListManager(result)
+        else:
+            return result
 
 class QuerySet(Manager[ModelType]):
     """
@@ -209,15 +227,48 @@ class QuerySet(Manager[ModelType]):
     any collection of Patent Client objects
     """
 
-    def __init__(self, managers):
+    def __init__(self, managers, limit=None, offset=0):
         if isinstance(managers, Manager):
-            self.managers = [managers,]
+            self.managers = [managers._clone(),]
         else:
-            self.managers = managers
+            self.managers = [m._clone() for m in managers]
+        self._limit = limit
+        self._offset = offset
+
+    def __getitem__(self, key:Union[slice, int]) -> Union[Manager[ModelType], ModelType]:
+        if isinstance(key, slice):
+            if key.step != None:
+                raise AttributeError("Step is not supported")
+            start = key.start if key.start else 0
+            start = len(self) + start if start < 0 else start
+            stop = key.stop if key.stop else len(self)
+            stop = len(self) + stop if stop < 0 else stop
+            mger = self.offset(start + self._offset)
+            mger = mger.limit(stop - start)
+            return mger
+        return self.offset(key).first()
 
     def __iter__(self):
-        for manager in self.managers:
-            yield from iter(manager)
+        if self.offset == 0 and self.limit == None:
+            for manager in self.managers:
+                yield from iter(manager)
+        else:
+            counter = 0
+            max_items = self._offset + self._limit if self._limit else None
+            for manager in self.managers:
+                if counter + len(manager) < self._offset or (self._limit and counter >= self._limit):
+                    """In these circumstances, don't yield objects"""
+                    counter += len(manager)
+                    continue
+                else:
+                    offset = max(self._offset - counter, 0)
+                    manager = manager.offset(offset)
+                    if self._limit:
+                        limit = self._limit - counter
+                        print(limit)
+                        manager = manager.limit(limit)
+                    yield from manager
+                    counter += len(manager)
 
     def __len__(self):
         return sum(len(i) for i in self.managers)
@@ -225,26 +276,45 @@ class QuerySet(Manager[ModelType]):
     def __repr__(self):
         return f"<QuerySet({self.managers})>"
 
+    def _clone(self):
+        return self.__class__(self.managers)
+
+    def limit(self, limit):
+        clone = self._clone()
+        clone._limit = limit
+        return clone
+    
+    def offset(self, offset):
+        clone = self._clone()
+        clone._offset = clone._offset + offset
+        return clone
+
     @classmethod
     def empty(cls) -> QuerySet:
         return cls(list())
 
 class ValuesQuerySet(QuerySet):
-    def __init__(self, iterable, fields, **kw_fields):
-        super(ValuesQuerySet, self).__init__(iterable)
+    def __init__(self, managers, *fields, **kw_fields):
+        super(ValuesQuerySet, self).__init__(managers)
         self.fields = {
             **{k:k for k in fields},
             **kw_fields
         }
+    
+    def _clone(self):
+        return self.__class__(self.managers, **self.fields)
 
     def __iter__(self) -> Iterator[OrderedDict]:
         for item in super(ValuesQuerySet, self).__iter__():
             yield OrderedDict((k, resolve(item, v)) for k, v in self.fields.items())
 
 class ValuesListQuerySet(ValuesQuerySet):
-    def __init__(self, iterable, fields, flat=False, **kw_fields):
-        super(ValuesListQuerySet, self).__init__(iterable, fields, **kw_fields)
+    def __init__(self, managers, *fields, flat=False, **kw_fields):
+        super(ValuesListQuerySet, self).__init__(managers, *fields, **kw_fields)
         self.flat = flat
+    
+    def _clone(self):
+        return self.__class__(self.managers, flat=self.flat, **deepcopy(self.fields))
 
     def __iter__(self):
         if self.flat and len(self.fields) > 1:

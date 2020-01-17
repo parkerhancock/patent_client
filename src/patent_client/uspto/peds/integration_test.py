@@ -209,6 +209,6 @@ class TestPatentExaminationData:
 
     def test_get_applicant(self):
         applicants = USApplication.objects.filter(first_named_applicant="Tesla").first().applicants
-        assert applicants[0].name == 'TESLA GROHMANN AUTOMATION GMBH'
+        assert applicants[0].name == 'Tesla Laboratories, LLC'
     
 

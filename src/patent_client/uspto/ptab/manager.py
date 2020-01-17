@@ -59,7 +59,6 @@ class PtabManager(Manager, Generic[ModelType]):
             key = k if k not in peds_to_ptab else peds_to_ptab[k]
             key = inflection.camelize(key, uppercase_first_letter=False)
             query[key] = " ".join(v)
-        if 'applId' in query: import pdb; pdb.set_trace()
         query["recordTotalQuantity"] = self.page_size
         query["sortOrderCategory"] = " ".join(
             inflection.camelize(o, uppercase_first_letter=False)

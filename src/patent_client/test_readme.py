@@ -20,7 +20,7 @@ class TestReadmeExamples():
     def test_inpadoc(self):
         pub = Inpadoc.objects.get('EP3082535A1')
         assert pub.biblio.title == 'AUTOMATIC FLUID DISPENSER'
-        assert pub.biblio.priority_claims.values_list('number', flat=True) == ['201314137130', '2014071849']
+        assert pub.biblio.priority_claims.values_list('number', flat=True).to_list() == ['US201314137130', 'WO2014US71849']
 
     @pytest.mark.skip('re-implementing EPO')
     def test_epo(self):

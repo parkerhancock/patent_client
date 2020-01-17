@@ -1,6 +1,6 @@
 from marshmallow import Schema, fields, EXCLUDE, pre_load, post_load
 from patent_client.util.manager import resolve
-from patent_client.util import QuerySet
+from patent_client.util import QuerySet, ListField
 
 from .model import Inpadoc, CpcClass, InpadocBiblio, InpadocApplication, InpadocPublication, InpadocPriorityClaim
 
@@ -93,12 +93,12 @@ class InpadocBiblioSchema(BaseSchema):
     abstract = fields.Method(deserialize='get_abstract')
     inventors = fields.Method(deserialize='get_inventors')
     applicants = fields.Method(deserialize='get_applicants')
-    publications = fields.List(fields.Nested(InpadocPublicationSchema))
-    ipc_classes = fields.List(fields.Str(), allow_none=True)
-    cpc_classes = fields.List(fields.Nested(CpcClassSchema), allow_none=True)
-    us_classes = fields.List(fields.Nested(UsClassSchema), allow_none=True)
-    applications = fields.List(fields.Nested(InpadocApplicationSchema))
-    priority_claims = fields.List(fields.Nested(PriorityClaimSchema))
+    publications = ListField(fields.Nested(InpadocPublicationSchema))
+    ipc_classes = ListField(fields.Str(), allow_none=True)
+    cpc_classes = ListField(fields.Nested(CpcClassSchema), allow_none=True)
+    us_classes = ListField(fields.Nested(UsClassSchema), allow_none=True)
+    applications = ListField(fields.Nested(InpadocApplicationSchema))
+    priority_claims = ListField(fields.Nested(PriorityClaimSchema))
     title = fields.Str()
 
     def get_abstract(self, data):

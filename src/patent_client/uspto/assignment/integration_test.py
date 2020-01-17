@@ -48,7 +48,6 @@ class TestAssignment:
     def test_iterate_assignments(self):
         assignments = Assignment.objects.filter(assignee="US Well Services")
         assignment_list = [assignment.id for assignment in assignments]
-        #import pdb; pdb.set_trace()
         assert len(assignment_list) == len(assignments)
 
     def test_bug_scidrill(self):
