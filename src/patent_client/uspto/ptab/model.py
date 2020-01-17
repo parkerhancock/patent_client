@@ -5,7 +5,7 @@ from patent_client.util import Model, one_to_many, one_to_one
 
 @dataclass
 class PtabProceeding(Model):
-    
+    __manager__ = 'patent_client.uspto.ptab.manager.PtabProceedingManager'
     subproceeding_type_category: str
     proceeding_number: str
     proceeding_status_category: str
@@ -34,6 +34,7 @@ class PtabProceeding(Model):
 
 @dataclass
 class PtabDocument(Model):
+    __manager__ = 'patent_client.uspto.ptab.manager.PtabDocumentManager'
     document_identifier: str
     document_category: str
     document_type_name: str
@@ -48,6 +49,7 @@ class PtabDocument(Model):
 
 @dataclass
 class PtabDecision(Model):
+    __manager__ = 'patent_client.uspto.ptab.manager.PtabDecisionManager' 
     proceeding_number: str
     board_rulings: List[str]
     decision_type_category: str
@@ -55,7 +57,7 @@ class PtabDecision(Model):
     document_name: str
     identifier: str
     subdecision_type_category: str
-    issue_type: str = None
+    issue_type: Optional[str] = None
     object_uu_id: Optional[str] = None
     petitioner_technology_center_number: Optional[str] = None
     proceeding = one_to_one('patent_client.uspto.ptab.PtabProceeding', proceeding_number='proceeding_number')

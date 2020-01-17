@@ -1,6 +1,6 @@
 from marshmallow import Schema, fields, EXCLUDE, pre_load, post_load, ValidationError
 from .model import Assignment, Property, Assignee, Assignor
-from patent_client.util import QuerySetField
+from patent_client.util.schema import ListField
 
 # Utility Functions  
 def separate_dicts_by_prefix(prefix, data):
@@ -49,6 +49,7 @@ class BaseSchema(Schema):
     @post_load
     def make_object(self, data, **kwargs):
         return self.__model__(**data)
+    pass
 
 class PropertySchema(BaseSchema):
     __model__ = Property
@@ -72,6 +73,7 @@ class AssignorSchema(BaseSchema):
     ex_date = fields.Raw()
     date_ack = fields.Raw()
 
+
     class Meta:
         unknown = EXCLUDE
 
@@ -89,6 +91,7 @@ class AssigneeSchema(BaseSchema):
         input_data['address'] = combine_strings('corr_address', input_data)
         return input_data 
     
+    
     class Meta:
         unknown = EXCLUDE
 
@@ -100,9 +103,9 @@ class AssignmentSchema(BaseSchema):
     last_update_date = fields.Raw(required=True)
     recorded_date = fields.Raw(required=True)
     assignment_record_has_images = fields.Boolean(required=True)
-    properties = QuerySetField(fields.Nested(PropertySchema))
-    assignors = QuerySetField(fields.Nested(AssignorSchema))
-    assignees = QuerySetField(fields.Nested(AssigneeSchema))
+    properties = ListField(fields.Nested(PropertySchema))
+    assignors = ListField(fields.Nested(AssignorSchema))
+    assignees = ListField(fields.Nested(AssigneeSchema))
     
     @pre_load
     def pre_load(self, input_data, **kwargs):
@@ -113,6 +116,7 @@ class AssignmentSchema(BaseSchema):
         input_data['corr_address'] = combine_strings('corr_address', input_data)
         input_data['conveyance_text'] = input_data['conveyance_text'].replace('(SEE DOCUMENT FOR DETAILS).', '').strip()
         return input_data
+    
    
     class Meta:
         unknown = EXCLUDE

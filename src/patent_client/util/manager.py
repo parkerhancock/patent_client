@@ -1,7 +1,9 @@
 from __future__ import annotations
 import itertools
+import importlib
 from copy import deepcopy
 from collections import OrderedDict
+import collections.abc
 from typing import Iterable, Iterator, TypeVar, Generic, Union, Sized, List, Any
 
 ModelType = TypeVar('ModelType')
@@ -22,7 +24,7 @@ def resolve(item, key):
         return None 
     return item
 
-class Manager(Sized, Iterable, Generic[ModelType]):
+class Manager(Generic[ModelType]):
     """
     Manager Base Class
 
@@ -53,7 +55,6 @@ class Manager(Sized, Iterable, Generic[ModelType]):
         }
         
     """
-
     primary_key: str = ''
 
     def __init__(
@@ -66,17 +67,24 @@ class Manager(Sized, Iterable, Generic[ModelType]):
 
 
     def __iter__(self) -> Iterator[ModelType]:
+        """This function implements application-level caching
+        The cache is held in the __cache__ attribute,
+        The un-finished iterator/generator is held in the __result_iterator__ attribute
+        The method it expects to call to get the iterator is self._get_results()
+        """
         if self.config.get('disable_cache', False):
+            # Caching can be disabled via option
             for item in self._get_results():
                 yield item
-
         else:
             if not hasattr(self, '__result_iterator__'):
+                # Create a new iterator and cache if the iterator doesn't exist
                 self.__result_iterator__ = self._get_results()
-            if not hasattr(self, '__cache__'):
-                self.__cache__ = list()
+                self.__cache__: List[ModelType] = list()
+            # Yield out of the cache
             for item in self.__cache__:
                 yield item
+            # Yield out of the iterator, expanding the cache as you go.
             for item in self.__result_iterator__:
                 self.__cache__.append(item)
                 yield item
@@ -85,13 +93,16 @@ class Manager(Sized, Iterable, Generic[ModelType]):
         raise NotImplementedError('Must be implemented by subclass')
 
     def __len__(self) -> int:
-        raise NotImplementedError('Must be implemented by subclass')
+        # The default len function runs the iterator and counts. There may be 
+        # more efficient ways to do it for any given subclass, but this is the
+        # basic way
+        return len(list(self))
 
     def __add__(self, other: Manager) -> QuerySet:
-        return QuerySet((self, other))
+        return QuerySet([self, other])
 
     def __eq__(self, other) -> bool:
-        return bool(self.config == other.config)
+        return bool(self.config == other.config and type(self) == type(other))
 
     def __getitem__(self, key:Union[slice, int]) -> Union[Manager[ModelType], ModelType]:
         if isinstance(key, slice):
@@ -173,8 +184,7 @@ class Manager(Sized, Iterable, Generic[ModelType]):
 
     def explode(self, attribute) -> QuerySet:
         from itertools import chain
-        iterator = (getattr(r, attribute, None) for r in self)
-        return QuerySet([iterator])
+        return ListManager(chain.from_iterable(getattr(r, attribute, None) for r in self))
 
     def to_records(self) -> Iterator[OrderedDict]:
         for i in self:
@@ -185,65 +195,51 @@ class Manager(Sized, Iterable, Generic[ModelType]):
     
     # Values
     def values(self, *fields, **kw_fields) -> ValuesQuerySet:
-        return ValuesQuerySet([self], fields, **kw_fields)
+        return ValuesQuerySet(self, fields, **kw_fields)
 
     def values_list(self, *fields, flat=False, **kw_fields) -> ValuesListQuerySet:
-        return ValuesListQuerySet([self], fields, flat, **kw_fields)
+        return ValuesListQuerySet(self, fields, flat, **kw_fields)
 
+class ListManager(list, Manager[ModelType]):
+    pass
 
-class QuerySet(Manager[Any]):
+class QuerySet(Manager[ModelType]):
     """
     Utility class that extends the Manager helper function to 
     any collection of Patent Client objects
     """
 
-    def __init__(self, iterables, drop_duplicates=False):
-        self.iterables = [i.set_options(disable_cache=True) if isinstance(i, Manager) and not isinstance(i, QuerySet) else i for i in iterables]
-
-
-    def __getitem__(self, key):
-        if isinstance(key, slice):
-            return [
-                self[k]
-                for k in range(key.start or 0, key.stop or len(self), key.step or 1)
-            ]
+    def __init__(self, managers):
+        if isinstance(managers, Manager):
+            self.managers = [managers,]
         else:
-            offset = 0
-            for iterable in self.iterables:
-                if offset + len(iterable) > key:
-                    return iterable[key - offset]
+            self.managers = managers
 
     def __iter__(self):
-        for item in itertools.chain(*self.iterables):
-            if isinstance(item, (list, tuple, QuerySet)):
-                for sub_item in item:
-                    yield sub_item 
-            else:
-                yield item
+        for manager in self.managers:
+            yield from iter(manager)
 
     def __len__(self):
-        return sum(len(i) for i in self.iterables)
+        return sum(len(i) for i in self.managers)
 
     def __repr__(self):
-        return f"<QuerySet({self.iterables})>"
+        return f"<QuerySet({self.managers})>"
 
-
-
-
+    @classmethod
+    def empty(cls) -> QuerySet:
+        return cls(list())
 
 class ValuesQuerySet(QuerySet):
-    def __init__(self, iterables, fields, **kw_fields):
-        super(ValuesQuerySet, self).__init__(iterables)
+    def __init__(self, iterable, fields, **kw_fields):
+        super(ValuesQuerySet, self).__init__(iterable)
         self.fields = {
             **{k:k for k in fields},
             **kw_fields
         }
 
     def __iter__(self) -> Iterator[OrderedDict]:
-        for iterable in self.iterables:
-            for item in iterable:
-                yield OrderedDict((k, resolve(item, v)) for k, v in self.fields.items())
-
+        for item in super(ValuesQuerySet, self).__iter__():
+            yield OrderedDict((k, resolve(item, v)) for k, v in self.fields.items())
 
 class ValuesListQuerySet(ValuesQuerySet):
     def __init__(self, iterable, fields, flat=False, **kw_fields):

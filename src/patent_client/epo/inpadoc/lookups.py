@@ -12,7 +12,7 @@ NS = {
     'ex': 'http://www.epo.org/exchange'
 }
 
-def etree_els_to_text(els):
+def etree_els_to_text(els) -> str:
     segments = [' '.join(e.itertext()) for e in els]
     return "\n".join(segments)
 

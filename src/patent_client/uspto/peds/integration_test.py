@@ -2,7 +2,7 @@ import pytest
 import datetime
 from collections import OrderedDict
 
-from . import USApplication
+from .model import USApplication
 import logging
 
 logger = logging.getLogger(__name__)

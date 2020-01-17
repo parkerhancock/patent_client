@@ -1,5 +1,6 @@
 from marshmallow import Schema, fields, EXCLUDE, pre_load, post_load
 from patent_client.util.manager import resolve
+from patent_client.util import QuerySet
 
 from .model import Inpadoc, CpcClass, InpadocBiblio, InpadocApplication, InpadocPublication, InpadocPriorityClaim
 
@@ -140,7 +141,11 @@ class InpadocBiblioSchema(BaseSchema):
         data['priority_claims'] = self.pre_load_priority_claims(bib)
         data['applicants'] = resolve(bib, 'parties.applicants.applicant')
         data['inventors'] = resolve(bib, 'parties.inventors.inventor')
-        data['title'] = resolve(bib, 'invention-title')['#text']
+        titles = resolve(bib, 'invention-title')
+        if isinstance(titles, list):
+            data['title'] = next(t['#text'] for t in titles if t['@lang'] == 'en') 
+        else:
+            data['title'] = titles['#text']
         return data
 
     class Meta:

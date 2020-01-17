@@ -1,18 +1,25 @@
 import xml.etree.ElementTree as ET
+import importlib
 from marshmallow import Schema, fields, EXCLUDE, pre_load, post_load
 from patent_client.util.manager import resolve
 
-from .model import ITCInvestigation, ITCDocument, ITCAttachment
+#from .model import ITCInvestigation, ITCDocument, ITCAttachment
 
 class BaseSchema(Schema):
+    def __init__(self, *args, **kwargs):
+        super(BaseSchema, self).__init__(*args, **kwargs)
+        parent_module = __name__.rsplit('.', 1)[0]
+        models = importlib.import_module('.model', parent_module)
+        self.__model__ = getattr(models, self.__class__.__name__.replace('Schema', ''))
+
     @post_load
     def make_object(self, data, **kwargs):
         if hasattr(self, '__model__'):
             return self.__model__(**data)
         return data
+    
 
 class ITCInvestigationSchema(BaseSchema):
-    __model__ = ITCInvestigation
     number = fields.Str()
     phase = fields.Str()
     status = fields.Str()
@@ -33,7 +40,6 @@ class ITCInvestigationSchema(BaseSchema):
         }
 
 class ITCDocumentSchema(BaseSchema):
-    __model__ = ITCDocument
     id = fields.Int()
     investigation_number = fields.Str()
     type = fields.Str()
@@ -74,7 +80,6 @@ class ITCDocumentSchema(BaseSchema):
         datetimeformat = "%Y/%m/%d %H:%M:%S"
 
 class ITCAttachmentSchema(BaseSchema):
-    __model__ = ITCAttachment
     id = fields.Int()
     document_id = fields.Int()
     title = fields.Str()

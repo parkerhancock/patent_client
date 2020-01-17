@@ -5,14 +5,12 @@ import json
 
 from patent_client.util import Manager
 from .session import session
-from .model import ITCInvestigation, ITCDocument, ITCAttachment
 from .schema import ITCInvestigationSchema, ITCDocumentSchema, ITCAttachmentSchema
 
 BASE_URL = "https://edis.usitc.gov/data"
 
 class ITCInvestigationManager(Manager['ITCInvestigation']):
     base_url = BASE_URL + "/investigation/"
-    schema = ITCInvestigationSchema()
 
     def _get_results(self):
         raise NotImplementedError("EDIS API does not have a search function!")
@@ -20,7 +18,7 @@ class ITCInvestigationManager(Manager['ITCInvestigation']):
     def get(self, investigation_number):
         url = self.base_url + investigation_number
         response = session.get(url)
-        return self.schema.load(response.text)
+        return ITCInvestigationSchema().load(response.text)
 
 class ITCDocumentManager(Manager['ITCDocument']):
     primary_key = "document_id"
@@ -33,7 +31,6 @@ class ITCDocumentManager(Manager['ITCDocument']):
         "security": "securityLevel",
         "document_id": "document_id"
     }
-    schema = ITCDocumentSchema()
 
     def get_document_by_id(self, document_id):
         response = session.get(
@@ -41,7 +38,7 @@ class ITCDocumentManager(Manager['ITCDocument']):
         )
         tree = ET.fromstring(response.text)
         doc_el = tree.find(".//document")
-        return schema.load(doc_el)
+        return ITCDocumentSchema().load(doc_el)
 
     def _get_results(self):
         if "document_id" in self.config['filter']:
@@ -61,18 +58,17 @@ class ITCDocumentManager(Manager['ITCDocument']):
                 tree = ET.fromstring(response.text)[0]
                 page_length = len(tree.findall("document"))
                 for doc in tree.findall("document"):
-                    yield self.schema.load(doc)
+                    yield ITCDocumentSchema().load(doc)
                 page += 1
 
 class ITCAttachmentManager(Manager['ITCAttachment']):
     primary_key = "id"
     base_url = BASE_URL + "/attachment/"
     allowed_filters = ["document_id"]
-    schema = ITCAttachmentSchema()
 
     def _get_results(self):
         doc_id = self.config["filter"]["document_id"][0]
         response = session.get(self.base_url + doc_id)
         tree = ET.fromstring(response.text)
         for element in tree.findall(".//attachment"):
-            yield self.schema.load(row)
+            yield ITCAttachmentSchema().load(row)

@@ -1,14 +1,29 @@
 from collections import OrderedDict
 from dataclasses import dataclass, fields
-from importlib import import_module
+import importlib
 import typing
 
 from .manager import QuerySet
 
 ManagerType = typing.TypeVar('ManagerType')
 
+class ModelMeta(type):
+    def __new__(cls, name, bases, dct):
+        klass = super().__new__(cls, name, bases, dct)
+        return klass
+    
+    @property
+    def objects(cls):
+        if cls.__manager__ is None:
+            return None
+        obj_module, obj_class = cls.__manager__.rsplit('.', 1)
+        return getattr(importlib.import_module(obj_module), obj_class)()
+
+class ModelABC(object):
+    __manager__ = None
+
 @dataclass
-class Model(typing.Generic[ManagerType]):
+class Model(ModelABC, metaclass=ModelMeta):
     def as_dict(self):
         output = OrderedDict()
         for k, v in self:

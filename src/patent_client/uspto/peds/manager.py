@@ -68,6 +68,8 @@ class USApplicationManager(Manager[USApplication]):
                 counter += 1
             page_num += 1
 
+    def __iter__(self) -> Iterator[USApplication]:
+        return super(USApplicationManager, self).__iter__()
 
     def get_page(self, page_number):
         if page_number not in self.pages:

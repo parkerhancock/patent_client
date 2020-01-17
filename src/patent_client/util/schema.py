@@ -1,7 +1,7 @@
 from marshmallow import fields
-from .manager import QuerySet
+from .manager import ListManager 
 
-class QuerySetField(fields.List):
+class ListField(fields.List):
     def _deserialize(self, *args, **kwargs):
-        out = super(QuerySetField, self)._deserialize(*args, **kwargs)
-        return QuerySet((out,))
+        out = super(ListField, self)._deserialize(*args, **kwargs)
+        return ListManager(out)

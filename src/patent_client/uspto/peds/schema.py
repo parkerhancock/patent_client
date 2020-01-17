@@ -5,7 +5,7 @@ from .model import USApplication, Relationship, PtaPteHistory, PtaPteSummary, Tr
 import inflection
 from dateutil.parser import parse as parse_date
 
-from patent_client.util import QuerySet, QuerySetField
+from patent_client.util import QuerySet, ListField
 
 def create_subset(data, name, keys):
     subset = {k: data.pop(k) for k in keys if k in data}
@@ -203,15 +203,15 @@ class USApplicationSchema(BaseSchema):
     app_confr_number = fields.Str()
     wipo_early_pub_number = fields.Str()
     wipo_early_pub_date = ParsedDate()
-    child_continuity = QuerySetField(fields.Nested(ChildSchema()))
-    parent_continuity = QuerySetField(fields.Nested(ParentSchema()))
-    pta_pte_tran_history = QuerySetField(fields.Nested(PtaPteHistorySchema()))
+    child_continuity = ListField(fields.Nested(ChildSchema()))
+    parent_continuity = ListField(fields.Nested(ParentSchema()))
+    pta_pte_tran_history = ListField(fields.Nested(PtaPteHistorySchema()))
     pta_pte_summary = fields.Nested(PtaPteSummarySchema(), allow_none=True)
-    transactions = QuerySetField(fields.Nested(TransactionSchema()))
+    transactions = ListField(fields.Nested(TransactionSchema()))
     correspondent = fields.Nested(CorrespondentSchema(), data_key='corr_addr')
-    attorneys = QuerySetField(fields.Nested(AttorneySchema()), data_key='attrny_addr')
-    applicants = QuerySetField(fields.Nested(ApplicantSchema()))
-    inventors = fields.List(fields.Nested(InventorSchema()))
+    attorneys = ListField(fields.Nested(AttorneySchema()), data_key='attrny_addr')
+    applicants = ListField(fields.Nested(ApplicantSchema()))
+    inventors = ListField(fields.Nested(InventorSchema()))
 
 
 

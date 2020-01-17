@@ -45,6 +45,8 @@ class OPSException(Exception):
 
 class InpadocManager(Manager):
     page_size = 20
+    primary_key = 'publication'
+    constituent = None
 
     def __init__(self, *args, **kwargs):
         super(InpadocManager, self).__init__(*args, **kwargs)
@@ -75,10 +77,6 @@ class InpadocManager(Manager):
                     counter += 1
             page_num += 1
     
-    @property
-    def constituent(self):
-        return self.config['options'].get('constituent', None)
-
     @property
     def search_url(self):
         if self.constituent:
@@ -116,8 +114,10 @@ class InpadocManager(Manager):
         query = ""
         for keyword, values in query_dict.items():
             for value in values:
-                query += f'{SEARCH_FIELDS[keyword]}="{value}",'
+                if keyword:
+                    query += f'{SEARCH_FIELDS[keyword]}="{value}",'
         query = dict(q=query, Range=range_q)
         return query
 
-    
+class InpadocBiblioManager(InpadocManager):
+    constituent = 'biblio'

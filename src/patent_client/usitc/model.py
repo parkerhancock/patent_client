@@ -7,7 +7,8 @@ from pathlib import Path
 from patent_client.util import Model, one_to_many, one_to_one
 
 @dc.dataclass
-class ITCInvestigation(Model['ITCInvestigationManager']):
+class ITCInvestigation(Model):
+    __manager__ = 'patent_client.usitc.manager.ITCInvestigationManager'
     number: str
     phase: str
     status: str
@@ -18,7 +19,8 @@ class ITCInvestigation(Model['ITCInvestigationManager']):
         
 
 @dc.dataclass
-class ITCDocument(Model['ITCDocumentManager']):
+class ITCDocument(Model):
+    __manager__ = 'patent_client.usitc.manager.ITCDocumentManager'
     id: int
     investigation_number: str
     type: str
@@ -38,7 +40,8 @@ class ITCDocument(Model['ITCDocumentManager']):
     attachments = one_to_many("patent_client.ITCAttachment", document_id="id")
 
 @dc.dataclass
-class ITCAttachment(Model['ITCAttachmentManager']):
+class ITCAttachment(Model):
+    __manager__ = 'patent_client.usitc.manager.ITCAttachmentManager' 
     id: int
     document_id: int
     title: str

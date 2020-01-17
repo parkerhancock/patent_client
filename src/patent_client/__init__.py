@@ -44,8 +44,8 @@ if not SETTINGS_FILE.exists():
 
 SETTINGS = json.load(open(SETTINGS_FILE))
 
-from patent_client.epo.inpadoc import Inpadoc  # isort:skip
-from patent_client.usitc import ITCInvestigation, ITCDocument, ITCAttachment
-from patent_client.uspto.ptab import PtabProceeding, PtabDocument, PtabDecision
-from patent_client.uspto.assignment import Assignment
-from patent_client.uspto.peds import USApplication
+from patent_client.epo.inpadoc.model import Inpadoc  # isort:skip
+from patent_client.usitc.model import ITCInvestigation, ITCDocument, ITCAttachment
+from patent_client.uspto.ptab.model import PtabProceeding, PtabDocument, PtabDecision
+from patent_client.uspto.assignment.model import Assignment
+from patent_client.uspto.peds.model import USApplication

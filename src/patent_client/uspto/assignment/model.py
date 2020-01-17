@@ -4,9 +4,9 @@ import datetime
 from collections import OrderedDict
 
 from patent_client import session
-from patent_client.util import one_to_one, one_to_many, Model
+from patent_client.util import one_to_one, one_to_many, Model, QuerySet
 
-@dataclass(frozen=True)
+@dataclass
 class Property(Model):
     invention_title: str
     inventors: str
@@ -107,6 +107,7 @@ class Assignment(Model):
 
 
     """
+    __manager__ = "patent_client.uspto.assignment.manager.AssignmentManager"
     id: str
     conveyance_text: str
     last_update_date: str
@@ -114,9 +115,9 @@ class Assignment(Model):
     recorded_date: datetime.date
     corr_name: str
     corr_address: str
-    assignors: List[Assignor]
-    assignees: List[Assignee]
-    properties: List[Property]
+    assignors: QuerySet[Assignor]
+    assignees: QuerySet[Assignee]
+    properties: QuerySet[Property]
     assignment_record_has_images: bool
     transaction_date: Optional[datetime.date] = None
     date_produced: Optional[datetime.date] = None

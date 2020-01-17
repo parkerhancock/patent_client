@@ -1,5 +1,5 @@
 import pytest
-from . import PtabProceeding, PtabDocument, PtabDecision
+from .model import PtabProceeding, PtabDocument, PtabDecision
 
 class TestPtabProceeding:
     def test_get_by_proceeding_number(self):

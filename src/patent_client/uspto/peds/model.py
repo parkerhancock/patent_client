@@ -93,8 +93,9 @@ class Expiration(Model):
 
 @dataclass
 class USApplication(Model):
+    __manager__ = 'patent_client.uspto.peds.manager.USApplicationManager'
     appl_id: str
-    inventors: List[str] = None
+    inventors: Optional[List[str]] = None
     app_filing_date: Optional[datetime.date] = None
     app_location: Optional[str] = None
     patent_title: Optional[str] = None
@@ -103,8 +104,8 @@ class USApplication(Model):
     app_entity_status: Optional[str] = None
     app_confr_number: Optional[str] = None
     transactions: List[Transaction] = field(default_factory=list, repr=False)
-    child_continuity: List[Relationship] = field(default_factory=list, repr=False)
-    parent_continuity: List[Relationship] = field(default_factory=list, repr=False)
+    child_continuity: QuerySet[Relationship] = field(default_factory=QuerySet.empty, repr=False)
+    parent_continuity: QuerySet[Relationship] = field(default_factory=QuerySet.empty, repr=False)
     pta_pte_tran_history: List[PtaPteHistory] = field(default_factory=list, repr=False)
     attorneys: List[Attorney] = field(default_factory=list, repr=False)
     applicants: List[Applicant] = field(default_factory=list, repr=False)
@@ -136,6 +137,9 @@ class USApplication(Model):
             self.parent_continuity.values_list('parent', flat=True),
         ])
 
+    def __hash__(self):
+        return hash(self.appl_id)
+
     @property
     def kind(self) -> str:
         if "PCT" in self.appl_id:
@@ -144,6 +148,12 @@ class USApplication(Model):
             return "Provisional"
         return "Nonprovisional"
 
+    @property
+    def priority_date(self) -> datetime.date:
+        if self.parent_continuity is None:
+            return self.app_filing_date
+        else:
+            return sorted(p.parent_app_filing_date for p in self.parent_continuity)[0]
 
     @property
     def expiration(self) -> Optional[Expiration]:
@@ -174,7 +184,7 @@ class USApplication(Model):
         expiration_data["parent_app_filing_date"] = parent_filing_date
         expiration_data["parent_relationship"] = relationship
         expiration_data["initial_term"] = parent_filing_date + relativedelta(years=20) #type: ignore
-        expiration_data["pta_or_pte"] = self.pta_pte_summary.total_days # type: ignore
+        expiration_data["pta_or_pte"] = self.pta_pte_summary.total_days if self.pta_pte_summary else 0# type: ignore
         expiration_data["extended_term"] = expiration_data[
             "initial_term"
         ] + relativedelta(days=expiration_data["pta_or_pte"]) # type: ignore

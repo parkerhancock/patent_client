@@ -1,5 +1,5 @@
 from pprint import pprint
-from patent_client.epo.inpadoc import Inpadoc, InpadocBiblio
+from patent_client.epo.inpadoc.model import Inpadoc, InpadocBiblio
 
 
 class TestInpadoc():

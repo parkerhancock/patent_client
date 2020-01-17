@@ -2,7 +2,7 @@ import os
 from tempfile import TemporaryDirectory
 import datetime
 import pytest
-from . import Assignment
+from .model import Assignment
 
 
 class TestAssignment:

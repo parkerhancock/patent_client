@@ -4,21 +4,22 @@ import typing
 import importlib
 
 import datetime as dt
-from patent_client.util import Model, one_to_one, one_to_many
+from patent_client.util import Model, one_to_one, one_to_many, QuerySet
 from .lookups import lookup_claims, lookup_description, lookup_family
 
 # Core INPADOC Models
 
 @dataclass
 class Inpadoc(Model):
+    __manager__ = 'patent_client.epo.inpadoc.manager.InpadocManager'
     number: str
     doc_type: str
-    kind_code: str = None
-    country: str = None
-    family_id: str = None
+    kind_code: typing.Optional[str] = None
+    country: typing.Optional[str] = None
+    family_id: typing.Optional[str] = None
     date: typing.Optional[dt.date] = None
 
-    biblio = one_to_one('patent_client.epo.inpadoc.InpadocBiblio', publication='num')
+    biblio = one_to_one('patent_client.epo.inpadoc.model.InpadocBiblio', publication='num')
     claims = lookup_claims()
     description = lookup_description()
     family = lookup_family()
@@ -29,7 +30,7 @@ class Inpadoc(Model):
     
     @property
     def us_application(self):
-        klass = getattr(importlib.import_module('patent_client.uspto.peds'), 'USApplication')
+        klass = getattr(importlib.import_module('patent_client.uspto.peds.model'), 'USApplication')
         if self.kind_code == 'A1':
             pub_num = self.country + self.number[:4] + self.number[4:].rjust(7, '0') + self.kind_code
             return klass.objects.get(app_early_pub_number=pub_num)
@@ -38,21 +39,22 @@ class Inpadoc(Model):
         
 @dataclass
 class InpadocPublication(Inpadoc):
-    biblio = one_to_one('patent_client.epo.inpadoc.InpadocBiblio', publication='num')
+    biblio = one_to_one('patent_client.epo.inpadoc.model.InpadocBiblio', publication='num')
 
 @dataclass
 class InpadocApplication(Inpadoc):
-    biblio = one_to_one('patent_client.epo.inpadoc.InpadocBiblio', application='num') 
+    biblio = one_to_one('patent_client.epo.inpadoc.model.InpadocBiblio', application='num') 
 
 # INPADOC Detail Models
 
 @dataclass
 class InpadocPriorityClaim(Inpadoc):
-    children = one_to_many('patent_client.epo.inpadoc.Inpadoc', priority_claim='num')
-    biblio = one_to_one('patent_client.epo.inpadoc.InpadocBiblio', application='num')  
+    children = one_to_many('patent_client.epo.inpadoc.model.Inpadoc', priority_claim='num')
+    biblio = one_to_one('patent_client.epo.inpadoc.model.InpadocBiblio', application='num')  
 
 @dataclass
 class InpadocBiblio(Model):
+    __manager__ = 'patent_client.epo.inpadoc.manager.InpadocBiblioManager'
     family_id: str
     title: str
     number: str
@@ -66,7 +68,7 @@ class InpadocBiblio(Model):
     ipc_classes: typing.List[str] = field(default_factory=list)
     cpc_classes: typing.List[CpcClass] = field(default_factory=list)
     us_classes: typing.List[str] = field(default_factory=list)
-    priority_claims: typing.List[InpadocPriorityClaim] = field(default_factory=list)
+    priority_claims: QuerySet[InpadocPriorityClaim] = field(default_factory=list)
 
     @property
     def num(self):

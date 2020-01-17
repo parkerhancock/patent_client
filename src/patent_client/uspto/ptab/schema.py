@@ -1,8 +1,8 @@
 from marshmallow import Schema, fields, EXCLUDE, pre_load, post_load, ValidationError
 from .model import PtabProceeding, PtabDocument, PtabDecision
 from .util import conversions
+from patent_client.util import ListField
 
-from patent_client.util import QuerySetField
 import inflection
 
 def create_subset(data, name, keys):
@@ -80,12 +80,12 @@ class PtabDocumentSchema(BaseSchema):
 class PtabDecisionSchema(BaseSchema):
     __model__ = PtabDecision
     proceeding_number = fields.Str()
-    board_rulings = QuerySetField(fields.Str())
+    board_rulings = ListField(fields.Str())
     decision_type_category = fields.Str()
     document_identifier = fields.Str()
     document_name = fields.Str()
     identifier = fields.Str()
-    issue_type = QuerySetField(fields.Str())
+    issue_type = ListField(fields.Str())
     object_uu_id = fields.Str()
     petitioner_technology_center_number = fields.Str()
     subdecision_type_category = fields.Str()

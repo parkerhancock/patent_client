@@ -24,9 +24,9 @@ class EdisSession(requests_cache.CachedSession):
         self.secret_key = key_file.read_text() if key_file.exists() else ''
         self.auth = (self.username, self.secret_key)
         # Setup Retries
-        retry = Retry(total=2, backoff_factor=0.2)
-        self.mount('https://', HTTPAdapter(max_retries=retry))
-        self.mount('http://', HTTPAdapter(max_retries=retry))
+        #retry = Retry(total=1, backoff_factor=0.2)
+        #self.mount('https://', HTTPAdapter(max_retries=retry))
+        #self.mount('http://', HTTPAdapter(max_retries=retry))
 
     def request(self, *args, **kwargs):
         response = super(EdisSession, self).request(*args, **kwargs)
@@ -38,12 +38,13 @@ class EdisSession(requests_cache.CachedSession):
 
     def authenticate(self):
         with self.cache_disabled():
+            self.auth = None
             response = super(EdisSession, self).request(
                 "POST",
                 f"{self.auth_url}{self.username}",
-                params={"password": self.password}
+                data={"password": self.password}
                 )
-        import pdb; pdb.set_trace()
+        breakpoint()
         if not response.ok:
             raise AuthenticationException(
                 "EDIS Authentication Failed! Did you provide the correct username and password?"
