@@ -32,7 +32,6 @@ class EdisSession(requests_cache.CachedSession):
         response = super(EdisSession, self).request(*args, **kwargs)
         if not response.ok:
             self.authenticate()
-            breakpoint()
             response = super(EdisSession, self).request(*args, **kwargs)
         return response
 
@@ -44,7 +43,6 @@ class EdisSession(requests_cache.CachedSession):
                 f"{self.auth_url}{self.username}",
                 data={"password": self.password}
                 )
-        breakpoint()
         if not response.ok:
             raise AuthenticationException(
                 "EDIS Authentication Failed! Did you provide the correct username and password?"

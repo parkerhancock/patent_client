@@ -94,7 +94,7 @@ class Expiration(Model):
 @dataclass
 class USApplication(Model):
     __manager__ = 'patent_client.uspto.peds.manager.USApplicationManager'
-    appl_id: str
+    appl_id: str = field(compare=True)
     inventors: Optional[List[str]] = None
     app_filing_date: Optional[datetime.date] = None
     app_location: Optional[str] = None
@@ -150,7 +150,7 @@ class USApplication(Model):
 
     @property
     def priority_date(self) -> datetime.date:
-        if self.parent_continuity is None:
+        if not self.parent_continuity:
             return self.app_filing_date
         else:
             return sorted(p.parent_app_filing_date for p in self.parent_continuity)[0]

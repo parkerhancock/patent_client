@@ -79,6 +79,10 @@ class PatentNumber:
         elif "D" in self.number:
             self.type = "patent"
             self.kind_code = ""
+        elif self.number.startswith('0'):
+            self.type='application'
+            self.kind_code = ""
+            self.country = 'US'
         elif int(self.number) > 100_000_000:
             self.country = "US"
             self.type = "pre-grant publication"
@@ -86,7 +90,7 @@ class PatentNumber:
         elif int(self.number) < 11_000_000:
             self.country = "US"
             self.type = "patent"
-            self.kind_code = "B2"
+            self.kind_code = "B1/B2"
         else:
             self.country = "US"
             self.type = "application"

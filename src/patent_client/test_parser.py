@@ -7,9 +7,9 @@ class TestPatentNumberParser:
         pat = parse(6013599)
         assert pat.number == "6013599"
         assert pat.country == "US"
-        assert pat.kind_code == "B2"
-        assert pat.display() == "US 6,013,599 B2"
-        assert str(pat) == "US6013599B2"
+        assert pat.kind_code == "B1/B2"
+        assert pat.display() == "US 6,013,599 B1/B2"
+        assert str(pat) == "US6013599B1/B2"
 
         app = parse(20150012345)
         assert app.number == "20150012345"
@@ -22,9 +22,9 @@ class TestPatentNumberParser:
         pat = parse("6013599")
         assert pat.number == "6013599"
         assert pat.country == "US"
-        assert pat.kind_code == "B2"
-        assert pat.display() == "US 6,013,599 B2"
-        assert str(pat) == "US6013599B2"
+        assert pat.kind_code == "B1/B2"
+        assert pat.display() == "US 6,013,599 B1/B2"
+        assert str(pat) == "US6013599B1/B2"
 
         app = parse("20150012345")
         assert app.number == "20150012345"
@@ -37,9 +37,9 @@ class TestPatentNumberParser:
         pat = parse("US6013599")
         assert pat.number == "6013599"
         assert pat.country == "US"
-        assert pat.kind_code == "B2"
-        assert pat.display() == "US 6,013,599 B2"
-        assert str(pat) == "US6013599B2"
+        assert pat.kind_code == "B1/B2"
+        assert pat.display() == "US 6,013,599 B1/B2"
+        assert str(pat) == "US6013599B1/B2"
 
         app = parse("US20150012345")
         assert app.number == "20150012345"
@@ -49,12 +49,12 @@ class TestPatentNumberParser:
         assert str(app) == "US20150012345A1"
 
     def test_can_handle_us_with_kind_codes(self):
-        pat = parse("US6013599B2")
+        pat = parse("US6013599B1/B2")
         assert pat.number == "6013599"
         assert pat.country == "US"
-        assert pat.kind_code == "B2"
-        assert pat.display() == "US 6,013,599 B2"
-        assert str(pat) == "US6013599B2"
+        assert pat.kind_code == "B1/B2"
+        assert pat.display() == "US 6,013,599 B1/B2"
+        assert str(pat) == "US6013599B1/B2"
 
         app = parse("US20150012345A1")
         assert app.number == "20150012345"
@@ -64,12 +64,12 @@ class TestPatentNumberParser:
         assert str(app) == "US20150012345A1"
 
     def test_can_handle_us_in_display_form(self):
-        pat = parse("US 6,013,599 B2")
+        pat = parse("US 6,013,599 B1/B2")
         assert pat.number == "6013599"
         assert pat.country == "US"
-        assert pat.kind_code == "B2"
-        assert pat.display() == "US 6,013,599 B2"
-        assert str(pat) == "US6013599B2"
+        assert pat.kind_code == "B1/B2"
+        assert pat.display() == "US 6,013,599 B1/B2"
+        assert str(pat) == "US6013599B1/B2"
 
         app = parse("US 2015/0012345 A1")
         assert app.number == "20150012345"
@@ -130,12 +130,12 @@ class TestPatentNumberParser:
         assert str(app) == "US14123456"
     
     def test_can_handle_us_application_number_with_leading_zeroes(self):
-        app = parse(16034678)
-        assert app.number == "16034678"
+        app = parse('09054439')
+        assert app.number == "09054439"
         assert app.country == "US"
         assert app.kind_code == ""
-        assert app.display() == "US 16/034,678"
-        assert str(app) == "US16034678"
+        assert app.display() == "US 09/054,439"
+        assert str(app) == "US09054439"
     
     def test_can_handle_reexam_cases(self):
         app = parse(95000486)
