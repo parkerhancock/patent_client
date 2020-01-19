@@ -3,7 +3,7 @@ from collections import OrderedDict
 from typing import List, Dict, Optional
 import datetime
 from dateutil.relativedelta import relativedelta
-from patent_client.util import one_to_many, one_to_one, Model, QuerySet
+from patent_client.util import one_to_many, one_to_one, Model, QuerySet, ListManager
 
 @dataclass(frozen=True)
 class Relationship(Model):
@@ -95,36 +95,37 @@ class Expiration(Model):
 class USApplication(Model):
     __manager__ = 'patent_client.uspto.peds.manager.USApplicationManager'
     appl_id: str = field(compare=True)
-    inventors: Optional[List[str]] = None
-    app_filing_date: Optional[datetime.date] = None
-    app_location: Optional[str] = None
-    patent_title: Optional[str] = None
-    first_inventor_file: Optional[str] = None
-    app_type: Optional[str] = None
-    app_entity_status: Optional[str] = None
-    app_confr_number: Optional[str] = None
-    transactions: List[Transaction] = field(default_factory=list, repr=False)
-    child_continuity: QuerySet[Relationship] = field(default_factory=QuerySet.empty, repr=False)
-    parent_continuity: QuerySet[Relationship] = field(default_factory=QuerySet.empty, repr=False)
-    pta_pte_tran_history: List[PtaPteHistory] = field(default_factory=list, repr=False)
-    attorneys: List[Attorney] = field(default_factory=list, repr=False)
+    patent_title: Optional[str] = None 
+    app_status: Optional[str] = field(default=None, repr=True) 
+    inventors: Optional[List[str]] = field(default=None, repr=False) 
+    app_filing_date: Optional[datetime.date] = field(default=None, repr=False) 
+    app_location: Optional[str] = field(default=None, repr=False) 
+    first_inventor_file: Optional[str] = field(default=None, repr=False) 
+    app_type: Optional[str] = field(default=None, repr=False) 
+    app_entity_status: Optional[str] = field(default=None, repr=False) 
+    app_confr_number: Optional[str] = field(default=None, repr=False) 
     applicants: List[Applicant] = field(default_factory=list, repr=False)
-    app_status: Optional[str] = None
-    app_status_date: Optional[datetime.date] = None
-    app_cls_sub_cls: Optional[str] = None
-    app_grp_art_number: Optional[str] = None
-    correspondent: Optional[Correspondent] = field(default=None, repr=False)
+    app_status_date: Optional[datetime.date] = field(default=None, repr=False) 
+    app_cls_sub_cls: Optional[str] = field(default=None, repr=False) 
+    app_grp_art_number: Optional[str] = field(default=None, repr=False) 
+    corr_addr_cust_no: Optional[str] = field(default=None, repr=False) 
+    app_cust_number: Optional[str] = field(default=None, repr=False) 
+    app_attr_dock_number: Optional[str] = field(default=None, repr=False) 
+    patent_number: Optional[str] = field(default=None, repr=False) 
+    patent_issue_date: Optional[datetime.date] = field(default=None, repr=False) 
+    app_early_pub_number: Optional[str] = field(default=None, repr=False) 
+    app_early_pub_date: Optional[datetime.date] = field(default=None, repr=False) 
+    app_exam_name: Optional[str] = field(default=None, repr=False) 
+    wipo_early_pub_number: Optional[str] = field(default=None, repr=False) 
+    wipo_early_pub_date: Optional[datetime.date] = field(default=None, repr=False) 
+
+    transactions: List[Transaction] = field(default_factory=list, repr=False)
+    child_continuity: ListManager[Relationship] = field(default_factory=ListManager.empty, repr=False)
+    parent_continuity: ListManager[Relationship] = field(default_factory=ListManager.empty, repr=False)
+    pta_pte_tran_history: List[PtaPteHistory] = field(default_factory=list, repr=False)
     pta_pte_summary: Optional[PtaPteSummary] = field(default=None, repr=False)
-    corr_addr_cust_no: Optional[str] = None
-    app_cust_number: Optional[str] = None
-    app_attr_dock_number: Optional[str] = None
-    patent_number: Optional[str] = None
-    patent_issue_date: Optional[datetime.date] = None
-    app_early_pub_number: Optional[str] = None
-    app_early_pub_date: Optional[datetime.date] = None
-    app_exam_name: Optional[str] = None
-    wipo_early_pub_number: Optional[str] = None
-    wipo_early_pub_date: Optional[datetime.date] = None
+    correspondent: Optional[Correspondent] = field(default=None, repr=False)
+    attorneys: List[Attorney] = field(default_factory=list, repr=False)
 
     assignments = one_to_many('patent_client.uspto.assignment.Assignment', appl_id='appl_id')
     trials = one_to_many('patent_client.uspto.ptab.PtabProceeding', appl_id='appl_id')

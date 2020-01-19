@@ -221,6 +221,10 @@ class ListManager(list, Manager[ModelType]):
         else:
             return result
 
+    @classmethod
+    def empty(cls) -> ListManager:
+        return cls(list())
+
 class QuerySet(Manager[ModelType]):
     """
     Utility class that extends the Manager helper function to 

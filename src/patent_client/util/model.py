@@ -1,5 +1,5 @@
 from collections import OrderedDict
-from dataclasses import dataclass, fields
+from dataclasses import dataclass, fields, make_dataclass, fields
 import importlib
 import typing
 

@@ -8,7 +8,7 @@ US Applications
 Patent Client provides an interface to the USPTO Patent Examination Data System (PEDS).
 
 PEDS is a REST-ful API that contains some - but not all - of the application data available
-through PAIR. Notably, it is missing continuity information, and file history documents.
+through PAIR. Notably, it is missing file history documents.
 
 Nevertheless, it provides a wealth of bibliographic information on pending and issued US 
 Patent applications. Use it like this:
@@ -32,13 +32,13 @@ portfolio analysis. For example:
     >>> apps = USApplication.objects.filter(first_named_applicant='Caterpillar')
     >>> len(apps)
     4817
-    >>> apps[:5]
+    >>> apps[:5].to_list()
     [
-        <USApplication(appl_id=06167089)>, 
-        <USApplication(appl_id=06183677)>, 
-        <USApplication(appl_id=06202386)>, 
-        <USApplication(appl_id=06204964)>, 
-        <USApplication(appl_id=06212294)>
+        USApplication(appl_id='15985170', patent_title='FUEL INJECTOR AND FUEL SYSTEM WITH VALVE TRAIN NOISE SUPPRESSOR', app_status='Response to Non-Final Office Action Entered and Forwarded to Examiner'), 
+        USApplication(appl_id='15837079', patent_title='SYSTEM AND METHOD FOR REDUCING CLUTCH FILL TIME', app_status='Patented Case'), 
+        USApplication(appl_id='15850772', patent_title='System And Method Of Determining Remaining Useful Life Of An Air Filter', app_status='Patented Case'), 
+        USApplication(appl_id='15953752', patent_title='FUEL INJECTOR ASSEMBLY HAVING A CASE DESIGNED FOR SOLENOID COOLING', app_status='Patented Case'), 
+        USApplication(appl_id='15840316', patent_title='AIR INTAKE SYSTEM FOR ENGINES', app_status='Patented Case')]
     ]
 
 US Application
@@ -85,15 +85,14 @@ Compound Data Objects
 ===================  ========================================================================================================================================
 Field Name           Description
 ===================  ========================================================================================================================================
-transaction_history  list of transactions (filings, USPTO actions, etc.) involving the application
-children             list of child application Relationship objects
-parents              list of parent application Relationship objects
+transactions         list of transactions (filings, USPTO actions, etc.) involving the application
+child_continuity     list of child application Relationship objects
+parent_continuity    list of parent application Relationship objects
 pta_pte_history      Patent Term Adjustment / Extension Event History
 pta_pte_summary      Patent Term Adjustment / Extension Results, including total term extension
 correspondent        Contact information for the prosecuting law firm
 attorneys            List of attorneys authorized to take action in the case
 expiration           Patent Expiration Data (earliest non-provisional US parent + 20 years + extension and a flag for the presence of a Terminal Disclaimer)
-assignments          list of assignments involving this application (NOTE: this is a PEDS field, use related_assignments to get Assignment objects)
 ===================  ========================================================================================================================================
 
 Relationships
@@ -103,7 +102,7 @@ Relationships
 Attribute           Relationship Type   Object          Join Condition
 ============        =================   ============    ===========================================
 trials              one-to-many         PtabTrial       patent_number=patent_number
-related_assignments one-to-many         Assignment      appl_id=application
+assignments         one-to-many         Assignment      appl_id=application
 inpadoc_pub         one-to-one          Inpadoc         app_early_pub_number=publication_number        
 inpadoc_pat         one-to-one          Inpadoc         patent_number=publication_number
 ============        =================   ============    ===========================================

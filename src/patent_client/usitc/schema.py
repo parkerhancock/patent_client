@@ -86,8 +86,8 @@ class ITCAttachmentSchema(BaseSchema):
     file_size = fields.Int()
     file_name = fields.Str()
     pages = fields.Int()
-    created_date = fields.Date()
-    last_modified_date = fields.Date()
+    created_date = fields.DateTime(format='%Y/%m/%d %H:%M:%S')
+    last_modified_date = fields.DateTime(format='%Y/%m/%d %H:%M:%S')
 
     @pre_load
     def pre_load(self, etree_el, *args, **kwargs):
@@ -103,5 +103,5 @@ class ITCAttachmentSchema(BaseSchema):
         )
         data = dict()
         for k, value in attribute_dict.items():
-            row[k] = etree_el.find(value).text
+            data[k] = etree_el.find(value).text
         return data

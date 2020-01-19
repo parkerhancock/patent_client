@@ -1,8 +1,10 @@
 from __future__ import annotations
 import dataclasses as dc
+import tempfile
 import typing as tp
 import datetime as dt
 from pathlib import Path
+from .session import session
 
 from patent_client.util import Model, one_to_many, one_to_one
 
@@ -56,14 +58,14 @@ class ITCAttachment(Model):
     def download_url(self):
         return f"https://edis.usitc.gov/data/download/{self.document_id}/{self.id}"
 
-    def download(self, path="."):
+    def download(self, file_obj=None):
         *_, ext = self.file_name.split(".")
-        out_file = Path(path) / f"{self.document.title.strip()} - {self.title}.{ext}"
-        if not out_file.exists():
-            response = session.get(
-                self.download_url, stream=True
-            )
-            with out_file.open("wb") as f:
-                for chunk in response.iter_content(1024):
-                    f.write(chunk)
-        return out_file
+        if file_obj is None:
+            file_obj = tempfile.NamedTemporaryFile(suffix=ext)
+        response = session.get(
+            self.download_url, stream=True
+        )
+        with file_obj.open("wb") as f:
+            for chunk in response.iter_content(1024):
+                f.write(chunk)
+        return file_obj

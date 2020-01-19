@@ -50,8 +50,8 @@ class TestItcEdis:
             "file_size": 70956,
             "file_name": "/var/edis/data/sibyl/605365/605365.pdf",
             "pages": 3,
-            "created_date": datetime.date(2017, 3, 13),
-            "last_modified_date": datetime.date(2017, 3, 13),
+            "created_date": datetime.datetime(2017, 3, 13, 14, 57, 45),
+            "last_modified_date": datetime.datetime(2017, 3, 13, 15, 26, 17),
             "download_url": "https://edis.usitc.gov/data/download/605365/1163223",
         }
         for k, v in expected.items():

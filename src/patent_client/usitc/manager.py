@@ -33,6 +33,7 @@ class ITCDocumentManager(Manager['ITCDocument']):
     }
 
     def get_document_by_id(self, document_id):
+        breakpoint()
         response = session.get(
             f"{self.base_url}/{document_id}"
         )
@@ -67,8 +68,8 @@ class ITCAttachmentManager(Manager['ITCAttachment']):
     allowed_filters = ["document_id"]
 
     def _get_results(self):
-        doc_id = self.config["filter"]["document_id"][0]
+        doc_id = self.config["filter"]["document_id"]
         response = session.get(self.base_url + doc_id)
         tree = ET.fromstring(response.text)
         for element in tree.findall(".//attachment"):
-            yield ITCAttachmentSchema().load(row)
+            yield ITCAttachmentSchema().load(element)

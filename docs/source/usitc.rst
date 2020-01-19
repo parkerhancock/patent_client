@@ -15,9 +15,9 @@ the original file is the first-named attachment.
     >>> inv = ITCInvestigation.objects.get('337-971')
     >>> inv.documents[5].title
     "Sizewise's Initial Comments Supporting Vacatur"
-    >>> inv.documents[5].attachments[0]
-    <ITCAttachment(title=Sizewise Brief Supporting Vacatur)>
+    >>> inv.documents[5].attachments[0].title
+    "Sizewise Brief Supporting Vacatur"
     >>> inv.documents[5].attachments[0].download()
-    # Downloads the attachment to the current directory
+    # returns a tempfile.NamedTemporaryFile object with the download
 
 Original API URL: https://www.usitc.gov/docket_services/documents/EDIS3WebServiceGuide.pdf
