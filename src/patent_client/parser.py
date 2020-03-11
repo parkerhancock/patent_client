@@ -79,6 +79,10 @@ class PatentNumber:
         elif "D" in self.number:
             self.type = "patent"
             self.kind_code = ""
+        elif self.number.startswith('0'):
+            self.type='application'
+            self.kind_code = ""
+            self.country = 'US'
         elif int(self.number) > 100_000_000:
             self.country = "US"
             self.type = "pre-grant publication"
@@ -118,7 +122,7 @@ class PatentNumber:
                 formatted_number = self.number
             elif self.type == "application":
                 formatted_number = (
-                    self.number[:2] + "/" + self.number[2:5] + ',' + self.number[5:]
+                    self.number[:2] + "/" + self.number[2:5] + "," + self.number[5:]
                 )
             return f"US {formatted_number} {self.kind_code}".strip()
         elif self.country == "CA":

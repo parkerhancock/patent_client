@@ -24,7 +24,7 @@ def read(*names, **kwargs):
 
 setup(
     name="patent_client",
-    version="1.1.4",
+    version="2.0.0",
     license="Apache Software License 2.0",
     description="A set of ORM-style clients for publicly available intellectual property data",
     long_description="%s\n%s"
@@ -35,8 +35,8 @@ setup(
         re.sub(":[a-z]+:`~?(.*?)`", r"``\1``", read("CHANGELOG.rst")),
     ),
     author="Parker Douglas Hancock",
-    author_email="pypatent2018@gmail.com",
-    url="https://github.com/parkerhancock/python-ip",
+    author_email="parker.hancock@protonmail.com",
+    url="https://github.com/parkerhancock/patent_client",
     packages=find_packages("src"),
     package_dir={"": "src"},
     py_modules=[splitext(basename(path))[0] for path in glob("src/*.py")],
@@ -83,6 +83,8 @@ setup(
         "python-dateutil~=2.7",
         "inflection~=0.3",
         "dataclasses~=0.6",
+        "marshmallow~=3.3",
+        "xmltodict~=0.12"
     ],
     extras_require={},
 )

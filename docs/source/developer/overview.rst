@@ -15,99 +15,44 @@ functions.
 Managers
 --------
 
-When filtering, ordering, or values methods are called on a Manager, it returns a new Manager object with a combination of the arguments to the old manager and the new arguments. In this way, any given Manager is *immutable*.
+When filtering, ordering, or values methods are called on a Manager, it returns a new Manager object with a combination of the arguments to the old manager and the new arguments. In this way, any given Manager is *immutable*. A base, blank manager (that would return all records), is attached to searchable models as Model.objects. Most searches will begin with a call to Model.objects.filter, which adds filtering critera to the manager. Like Django managers, they support .order_by, .limit, and .offset (and, in fact, slicing just passes the start and end on to those methods). Managers also support .values and .values_list.  Unlike Django, managers also support additional conveinence functions, including:
 
-When slicing, the Manager resolves its keyword arguments, and returns Model objects populated with data.
+    - Manager.to_list - converts a manger to a list of models
+    - Manager.to_pandas - converts a manager to a Pandas dataframe (if pandas is available), with all model attributes as columns
 
-The PTAB client is a particularly clean implementation using the base Manager and Model. Because there is significant overlap between the 
-PTAB Trials and Documents endpoints, a common manager is built called PtabManager:
-
-.. code-block:: python
-
-    class PtabManager(Manager):
-        page_size = 25
-
-        def get_item(self, key):
-            offset = int(key / self.page_size) * self.page_size
-            position = (key % self.page_size)
-            data = self.request(dict(offset=offset))
-            results = data['results']
-            return self.get_obj_class()(results[position])
-        
-        def __len__(self):
-            response = self.request()
-            response_data = response
-            return response_data['metadata']['count']
-            
-        def request(self, params=dict()):
-            params = {**{self.primary_key: self.args}, **self.kwargs, **params}
-            params = {inflection.camelize(k, uppercase_first_letter=False): v for (k, v) in params.items()}
-            response = session.get(self.base_url, params=params)
-            return response.json()
-
-The only methods that must be implemented are "__len__" and "get_item." 
-
-Get_item is just a version of __getitem__ that only returns the record at a specific integer position. The 
-generic __getitem__ on Manager simply calls get_item for each item in a slice. The get_item method should return a Model object.
-
-Request is a custom method added to support actually hitting the endpoint. Different custom methods can be added to support
-functionality like this. Then, to customize it for Ptab Trials, all we need to do is:
+Managers also support addition operations. For example, to create an application list with all applications naming two assignees, you could do this:
 
 .. code-block:: python
 
-    class PtabTrialManager(PtabManager):
-        base_url = 'https://ptabdata.uspto.gov/ptab-api/trials'
-        obj_class = 'patent_client.uspto_ptab.PtabTrial'
-        primary_key = 'trial_number'
-
-The only two required attributes are "obj_class," which is a string pointing to the class used for specific records, and 
-"primary_key" which is used to convert positional arguments into keyword arguments. For example, the call ::
-
-    PtabTrial.objects.get('IPR2016-00800')
-    # is effectively converted to
-    PtabTrial.objects.get(trial_number='IPR2016-00800')
-
-The "base_url" attribute is used by the request method of the base manager to identify the endpoint. 
+    >> apps = USApplication.objects.filter(first_named_applicant='Company A') + USApplication.objects.filter(first_named_applicant='Company B')
 
 Models
 ------
 
-Because PTABTrials have no special methods (such as downloading a file), the model is simply:
+Models are special dataclasses, with some additional functionality baked-in. Fields are present as attributes on the Model. Additionally:
 
-.. code-block:: python
+-   The Model.objects holds a manager that would retreive every Model in data source
+-   The Model supports a .to_dict() method to convert it to a dictionary, and a to_pandas() method to convert it to a Pandas series.
 
-    class PtabTrial(Model):
-        objects = PtabDocumentManager()
-        def __repr__(self):
-            return f'<PtabTrial(trial_number={self.trial_number})>'
+Models can also have custom functions and properties attached to them. These vary from model to model, but consist of:
 
-The base model takes in its constructor a dictionary of data, and attaches an attribute to the object for each key, containing its value. 
-Additional methods can be added in order to add new functionality to the model. For example, the PtabDocument object provides a .download method.
-The download method looks like this:
+-   Transformer methods - that calculate some property based on one or more Fields
+-   Relationships - that traverse a relationship to a related model
+-   Downloaders - that download some sort of content related to the model
 
-.. code-block:: python
+Downloaders always return a tempfile.NamedTemporaryFile with the downloaded file contained therein.
 
-    class PtabDocument(Model):
-        objects = PtabDocumentManager()
+Schemas
+-------
 
-        def download(self, path='.'):
-            url = self.links[1]['href']
-            extension = mimetypes.guess_extension(self.media_type)
-            base_name = self.title.replace('/', '_') + extension
-            name = os.path.join(path, base_name)
-            response = session.get(url, stream=True)
-            with open(name, 'wb') as f:
-                for chunk in response.iter_content(1024):
-                    f.write(chunk)
-
-        def __repr__(self):
-            return f'<PtabDocument(title={self.title})>'
+Each data source also has a module called a "Schema," which is a deserialization layer that converts raw data obtained by the manager into
+models. In general, the data sources accessed by patent_client are either JSON or XML documents. Both use the Marshmallow library to apply
+formatting corrections, renaming conventions, etc. 
 
 Relationships
 -------------
 
-What would also be great is if the Trial and Document models could talk to each other. That is, can we fetch PtabDocuments from
-a PtabTrial object, and can we fetch the corresponding PtabTrial object from a PtabDocument? Why yes, yes we can.
+In some circumstances, it would be nice to get information related to a model class, even if it resides on another system supported by patent_client. Relationships are how you get there. For example, if you retreive a PtabTrial object from the PTAB API, it has an attribute .us_application that will return a USApplication object from the PEDS API.
 
 The .util package also has two functions that make this possible - 'one_to_one' and 'one_to_many'. Both functions work the same way - 
 they take a first argument, which is a string locating the other object, and then a keyword argument, where the keyword is a filter criteria,
