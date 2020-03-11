@@ -2,13 +2,14 @@
 Changelog
 =========
 
-1.1.4 (2019-05-17)
+2.0.0 (2020-03-11)
 ------------------
+* Major update with breaking API changes
 * Refactored all API's to use requests_cache rather than custom caching scheme
+* Uses Marshmallow for data validation, and memory-efficient dataclasses for all objects
 * As part of the above, all API's now re-use the same requests.Session() object
-* USApplication.assignments are now natively provided by the PEDS api, so related Assignment objects moved to USApplication.related_assignments
-* EDIS updated and now has better test coverage
 * Deleted a ton of unnecessary code (Deleted code == debugged code)
+* NOTE: Documentation not yet up-to-date. That is the next project
 
 0.4.0 (2019-01-30)
 ------------------
