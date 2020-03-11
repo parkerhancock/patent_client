@@ -1,7 +1,10 @@
 import re
 import math
+import warnings
 import typing
 from collections.abc import Iterable
+
+from urllib3.connectionpool import InsecureRequestWarning
 
 from patent_client import session
 from patent_client.util import Manager
@@ -9,6 +12,8 @@ from patent_client.util import Manager
 from .parser import AssignmentParser
 from .schema import AssignmentSchema
 from .model import Assignment
+
+warnings.filterwarnings('ignore', category=InsecureRequestWarning)
 
 NUMBER_CLEAN_RE = re.compile(r"[^\d]")
 clean_number = lambda x: NUMBER_CLEAN_RE.sub("", str(x)) 
