@@ -3,10 +3,10 @@ import logging
 
 logger = logging.getLogger(__name__)
 
-from .manager import QuerySet
+from .manager import QuerySet, resolve
 
 
-def one_to_one(class_name, **mapping):
+def one_to_one(class_name, attribute=None, **mapping):
     module_name, class_name = class_name.rsplit(".", 1)
 
     @property
@@ -15,7 +15,7 @@ def one_to_one(class_name, **mapping):
             klass = getattr(importlib.import_module(module_name), class_name)
             filter_obj = {k: getattr(self, v) for (k, v) in mapping.items()}
             logger.debug(f'Fetching related {klass} using filter {filter_obj}')
-            return klass.objects.get(**filter_obj)
+            return resolve(klass.objects.get(**filter_obj), attribute)
         except AttributeError:
             return None
 

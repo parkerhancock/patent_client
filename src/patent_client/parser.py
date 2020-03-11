@@ -90,7 +90,7 @@ class PatentNumber:
         elif int(self.number) < 11_000_000:
             self.country = "US"
             self.type = "patent"
-            self.kind_code = "B1/B2"
+            self.kind_code = "B2"
         else:
             self.country = "US"
             self.type = "application"

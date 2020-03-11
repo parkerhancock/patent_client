@@ -38,6 +38,7 @@ class TestItcEdis:
             assert getattr(document, k) == v
         assert inv.documents.first().investigation.number == "337-966"
 
+    @pytest.mark.skip('EDIS Attachment API not working')
     def test_can_get_attachments(self, tmpdir):
         inv = ITCInvestigation.objects.get("337-TA-1025")
         doc_iterator = iter(inv.documents)

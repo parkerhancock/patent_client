@@ -50,13 +50,18 @@ class TestAssignment:
         assignment_list = [assignment.id for assignment in assignments]
         assert len(assignment_list) == len(assignments)
 
-    def test_bug_scidrill(self):
-        assignments = Assignment.objects.filter(assignee="Scientific Drilling")
-        assignment_list = list(assignments.values_list("appl_num", flat=True))
-        assert len(assignment_list) == 58
+    @pytest.mark.skip("Lookup api does not support multiple inputs")
+    def test_can_fetch_multiple(self):
+        assignments = Assignment.objects.filter(appl_id=['13089872', '15216946'])
+        assert assignments.count() == 5
 
 
 class TestAssignmentBugs:
     def test_id_43433_231(self):
         assignment = Assignment.objects.get("43433-231")
         assert assignment.properties[0].filing_date == datetime.date(2016, 10, 25)
+
+    def test_bug_scidrill(self):
+        assignments = Assignment.objects.filter(assignee="Scientific Drilling")
+        assignment_list = list(assignments.values_list("appl_num", flat=True))
+        assert len(assignment_list) == 58

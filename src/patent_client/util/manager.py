@@ -9,6 +9,8 @@ from typing import Iterable, Iterator, TypeVar, Generic, Union, Sized, List, Any
 ModelType = TypeVar('ModelType')
 
 def resolve(item, key):
+    if key is None:
+        return item
     accessors = key.split(".")
     try:
         for accessor in accessors:
