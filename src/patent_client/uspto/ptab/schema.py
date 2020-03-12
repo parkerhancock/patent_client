@@ -52,7 +52,6 @@ class PtabProceedingSchema(BaseSchema):
             'petitioner_counsel_name',
             'petitioner_party_name',
             'respondent_counsel_name',
-            'respondent_party_name',
             'respondent_patent_owner_name',
 
             # Application Information

@@ -102,7 +102,11 @@ class InpadocBiblioSchema(BaseSchema):
     title = fields.Str()
 
     def get_abstract(self, data):
-        return data['p']
+        if isinstance(data, dict):
+            return data['p']
+        else:
+            abstract = next((d for d in data if d['@lang'] == 'en'), data[0])
+            return abstract['p']
 
     def get_inventors(self, data):
         return [ i['inventor-name']['name'] for i in data if i['@data-format'] == 'original']

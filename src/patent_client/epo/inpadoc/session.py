@@ -43,7 +43,6 @@ class OpsSession(requests_cache.CachedSession):
     def request(self, *args, **kwargs):
         response = super(OpsSession, self).request(*args, **kwargs)
         if response.status_code in (403, 400):
-            print('Reauthorizing!')
             auth_response = self.get_token()
             response = super(OpsSession, self).request(*args, **kwargs)
         return response
