@@ -27,8 +27,7 @@ class TestInpadoc():
 
     def test_get_biblio_from_wo(self):
         result = Inpadoc.objects.get(publication="WO2009085664A2").biblio
-        breakpoint()
-        assert result == True
+        assert result.abstract is not None 
 
 
     def test_can_index_inpadoc_result(self):
