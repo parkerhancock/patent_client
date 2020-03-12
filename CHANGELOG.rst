@@ -2,6 +2,10 @@
 Changelog
 =========
 
+2.0.1 (2020-03-12)
+------------------
+* Fixed problem where Inpadoc was indexing improperly
+
 2.0.0 (2020-03-11)
 ------------------
 * Major update with breaking API changes

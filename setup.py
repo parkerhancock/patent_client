@@ -24,7 +24,7 @@ def read(*names, **kwargs):
 
 setup(
     name="patent_client",
-    version="2.0.0",
+    version="2.0.1",
     license="Apache Software License 2.0",
     description="A set of ORM-style clients for publicly available intellectual property data",
     long_description="%s\n%s"
@@ -55,7 +55,7 @@ setup(
         #'Programming Language :: Python :: 3',
         #'Programming Language :: Python :: 3.4',
         # "Programming Language :: Python :: 3.5",
-        "Programming Language :: Python :: 3.6",
+        #"Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
         #'Programming Language :: Python :: Implementation :: CPython',
         #'Programming Language :: Python :: Implementation :: PyPy',

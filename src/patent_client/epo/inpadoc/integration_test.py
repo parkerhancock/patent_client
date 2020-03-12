@@ -25,6 +25,15 @@ class TestInpadoc():
         result = Inpadoc.objects.get(publication="WO2009085664A2")
         assert len(result.family) >= 20
 
+    def test_get_biblio_from_wo(self):
+        result = Inpadoc.objects.get(publication="WO2009085664A2").biblio
+        assert result.abstract is not None 
+
+
+    def test_can_index_inpadoc_result(self):
+        result = Inpadoc.objects.filter(applicant='Tesla')
+        assert result[0] != result[1]
+
 
 class TestInpadocBiblio():
     def test_inpadoc_biblio_manager(self):

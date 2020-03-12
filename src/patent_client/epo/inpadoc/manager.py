@@ -62,20 +62,32 @@ class InpadocManager(Manager):
             return max_length
 
     def _get_results(self):
-        num_pages = math.ceil(len(self) / self.page_size)
-        page_num = 0
-        counter = 0
-        while page_num < num_pages:
-            page_data = self.get_page(page_num)
-            data = resolve(page_data, self.item_path)
-            if not isinstance(data, list):
-                yield self.schema.load(data)
-            else:
-                for item in data:
-                    if not self.config["limit"] or counter < self.config["limit"]:
-                        yield self.schema.load(item)
+        offset = self.config['offset']
+        limit = self.config['limit']
+
+        def result_gen(offset, limit):
+            num_pages = math.ceil(len(self) / self.page_size)
+            page_num = int(offset / self.page_size)
+            counter = page_num * self.page_size
+            while page_num < num_pages:
+                page_data = self.get_page(page_num)
+                data = resolve(page_data, self.item_path)
+                if not isinstance(data, list):
+                    yield counter, data
                     counter += 1
-            page_num += 1
+                else:
+                    for item in data:
+                        if not self.config["limit"] or counter < self.config["limit"]:
+                            yield counter, item
+                        counter += 1
+                page_num += 1
+
+        # Implement limit and offset
+        for counter, item in result_gen(offset, limit):
+            if limit is not None and counter - offset > limit:
+                break
+            if counter >= offset:
+                yield self.schema.load(item)
     
     @property
     def search_url(self):

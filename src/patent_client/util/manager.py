@@ -196,7 +196,10 @@ class Manager(Generic[ModelType]):
             yield i.as_dict()
     
     def to_list(self) -> List[ModelType]:
-        return list(self)
+        return ListManager(self)
+
+    def to_set(self) -> List[SetType]:
+        return set(self)
     
     # Values
     def values(self, *fields, **kw_fields) -> ValuesQuerySet:
