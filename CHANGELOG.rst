@@ -1,6 +1,10 @@
 
 Changelog
 =========
+2.0.2 (TBA)
+-----------
+* Added foreign priority support back to PEDS API
+* Revised documentation to match v.2
 
 2.0.1 (2020-03-12)
 ------------------
