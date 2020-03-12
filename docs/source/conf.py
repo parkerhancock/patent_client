@@ -21,7 +21,7 @@ author = "Parker Hancock"
 
 # The full version, including alpha/beta/rc tags
 
-version = release = "2.0.0"
+version = release = "2.0.1"
 
 
 
