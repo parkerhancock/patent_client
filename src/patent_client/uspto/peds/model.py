@@ -16,6 +16,12 @@ class Relationship(Model):
     child = one_to_one('patent_client.uspto.peds.USApplication', appl_id='child_appl_id')
 
 @dataclass
+class ForeignPriority(Model):
+    priority_claim: str
+    country_name: str
+    filing_date: datetime.date
+
+@dataclass
 class PtaPteHistory(Model):
     number: float
     date: datetime.date
@@ -126,6 +132,7 @@ class USApplication(Model):
     pta_pte_summary: Optional[PtaPteSummary] = field(default=None, repr=False)
     correspondent: Optional[Correspondent] = field(default=None, repr=False)
     attorneys: List[Attorney] = field(default_factory=list, repr=False)
+    foreign_priority: List[ForeignPriority] = field(default_factory=list, repr=False)
 
     assignments = one_to_many('patent_client.uspto.assignment.Assignment', appl_id='appl_id')
     trials = one_to_many('patent_client.uspto.ptab.PtabProceeding', appl_id='appl_id')

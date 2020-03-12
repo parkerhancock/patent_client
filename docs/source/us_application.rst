@@ -88,6 +88,7 @@ Field Name           Description
 transactions         list of transactions (filings, USPTO actions, etc.) involving the application
 child_continuity     list of child application Relationship objects
 parent_continuity    list of parent application Relationship objects
+foreign_priority     list of foreign applications from which the application claims priority
 pta_pte_history      Patent Term Adjustment / Extension Event History
 pta_pte_summary      Patent Term Adjustment / Extension Results, including total term extension
 correspondent        Contact information for the prosecuting law firm

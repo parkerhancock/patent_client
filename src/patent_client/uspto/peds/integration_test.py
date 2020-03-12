@@ -210,5 +210,13 @@ class TestPatentExaminationData:
     def test_get_applicant(self):
         applicants = USApplication.objects.filter(first_named_applicant="Tesla").first().applicants
         assert 'tesla' in applicants[0].name.lower()
+
+    def test_foreign_priority(self):
+        fp = USApplication.objects.get(patent_number=10544653).foreign_priority
+        assert isinstance(fp, list)
+        app = fp[0]
+        assert app.country_name == 'NORWAY'
+        assert app.filing_date == datetime.date(2017, 2, 15)
+        assert app.priority_claim == '20170229'
     
 

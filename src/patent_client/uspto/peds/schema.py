@@ -1,7 +1,7 @@
 from pprint import pprint
 from collections import OrderedDict
 from marshmallow import Schema, fields, EXCLUDE, pre_load, post_load, ValidationError
-from .model import USApplication, Relationship, PtaPteHistory, PtaPteSummary, Transaction, Correspondent, Attorney, Applicant, Inventor 
+from .model import USApplication, Relationship, PtaPteHistory, PtaPteSummary, Transaction, Correspondent, Attorney, Applicant, Inventor, ForeignPriority
 import inflection
 from dateutil.parser import parse as parse_date
 
@@ -178,6 +178,11 @@ class InventorSchema(BaseSchema):
         input_data = group_lines(input_data, 'street')
         return input_data
 
+class ForeignPrioritySchema(BaseSchema):
+    __model__ = ForeignPriority
+    priority_claim = fields.Str()
+    country_name = fields.Str()
+    filing_date = fields.Date(format="%m-%d-%Y")
 
 class USApplicationSchema(BaseSchema):
     __model__ = USApplication
@@ -212,6 +217,7 @@ class USApplicationSchema(BaseSchema):
     attorneys = ListField(fields.Nested(AttorneySchema()), data_key='attrny_addr')
     applicants = ListField(fields.Nested(ApplicantSchema()))
     inventors = ListField(fields.Nested(InventorSchema()))
+    foreign_priority = ListField(fields.Nested(ForeignPrioritySchema))
 
 
 

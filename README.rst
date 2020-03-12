@@ -26,7 +26,7 @@ Currently supports:
 * `European Patent Office - Open Patent Services <OPS>`_
 
   * Inpadoc - Full Support
-  * EPO Register - Full Support
+  * EPO Register - No Support (in progress)
   * Classification - No Support
 
 * `United States Patent & Trademark Office <USPTO>`_
@@ -37,7 +37,7 @@ Currently supports:
 
 * `United States International Trade Commission <ITC>`_
 
-  * `Electronic Document Information System (EDIS) API <EDIS>`_ - Full Support
+  * `Electronic Document Information System (EDIS) API <EDIS>`_ - Partial Support (no document downloads)
 
 .. _OPS: http://ops.epo.org
 .. _USPTO: http://developer.uspto.gov
@@ -98,7 +98,7 @@ To use the project:
     >>> pub.priority_claims
     ['201314137130', '2014071849']
     
-    # Fetch from EPO Register
+    # Fetch from EPO Register (NOTE: This is broken right now :( )
     >>> epo = Epo.objects.get('EP3082535A1')
     >>> epo.title
     'AUTOMATIC FLUID DISPENSER'

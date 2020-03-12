@@ -134,25 +134,25 @@ Pandas Integration
 ==================
 
 The models provided by Patent Client are also very useful with the `Pandas <https://pandas.pydata.org/>`_ library.
-Because the .values() manager produces OrderedDict objects, dataframes can be created quickly and easily. Just 
-specify the columns you want to .values, and feed that into pd.DataFrame.from_records.
+All patent_client collections and objects have a .to_pandas() method that will convert them to a Pandas representation.
+Collection-like objects (managers, QuerySets, lists of results, list attributes) will be converted to DataFrames, and model objects will be converted to Series.
 
 .. code-block:: python
 
-    import pandas as pd
-    from patent_client import USApplication
+from patent_client import USApplication
 
-    pd.DataFrame.from_records(
-        (USApplication.objects
-            .filter(first_named_applicant='Microsoft')
-            .values('appl_id', 'patent_number', 'patent_title')[:3]
-        )
+(USApplication.objects
+        .filter(first_named_applicant='Microsoft')
+        .values('appl_id', 'patent_number', 'patent_title')[:3]
+        .to_pandas()
     )
-        appl_id patent_number                                       patent_title
-    0  13656185       9093875  DOWNHOLE APPARATUS FOR ELECTRICAL POWER GENERA...
-    1  13660608       9045941                Hybrid Bearings for Downhole Motors
-    2  13672932       9309720  DOUBLE SHAFT DRILLING APPARATUS WITH HANGER BE...
     
+       appl_id patent_number                                       patent_title
+    0  15085832          None  MODULAR ELECTRONIC DATA ANALYSIS COMPUTING SYSTEM
+    1  14685688          None                  CONTEXTUAL TABS IN MOBILE RIBBONS
+    2  14751765          None  SYSTEM AND METHOD FOR IMPLEMENTING SHARED DOCU... 
+
+
 Caching
 =======
 
