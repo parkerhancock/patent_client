@@ -1,12 +1,22 @@
 from __future__ import annotations
-import itertools
-import importlib
-from copy import deepcopy
-from collections import OrderedDict
-import collections.abc
-from typing import Iterable, Iterator, TypeVar, Generic, Union, Sized, List, Any
 
-ModelType = TypeVar('ModelType')
+import collections.abc
+import importlib
+import itertools
+from collections import OrderedDict
+from copy import deepcopy
+from typing import Any
+from typing import Generic
+from typing import Iterable
+from typing import Iterator
+from typing import List
+from typing import SetType
+from typing import Sized
+from typing import TypeVar
+from typing import Union
+
+ModelType = TypeVar("ModelType")
+
 
 def resolve(item, key):
     if key is None:
@@ -23,21 +33,22 @@ def resolve(item, key):
             if callable(item):
                 item = item()
     except Exception as e:
-        return None 
+        return None
     return item
+
 
 class Manager(Generic[ModelType]):
     """
     Manager Base Class
 
-    This class is essentially a configurable generator. It is intended to be initialized 
+    This class is essentially a configurable generator. It is intended to be initialized
     as an empty object at Model.objects. Users can then modify the manager by calling either:
-        
+
         Manager.filter -> adds filter criteria
         Manager.sort -> adds sorting criteria
         Manager.options -> adds key:value options
 
-    All methods should return a brand-new manager with the appropriate parameters re-set. The 
+    All methods should return a brand-new manager with the appropriate parameters re-set. The
     Manager also has a special method to fetch a single matching object:
 
         Manager.get -> adds filter critera, and returns the first object if only one object is found, else raises an Exception
@@ -55,18 +66,23 @@ class Manager(Generic[ModelType]):
                 key: value
             }
         }
-        
+
     """
-    primary_key: str = ''
+
+    primary_key: str = ""
 
     def __init__(
         self,
         config=dict(
-            filter=dict(), order_by=list(), options=dict(), limit=None, offset=0, annotations=list()
+            filter=dict(),
+            order_by=list(),
+            options=dict(),
+            limit=None,
+            offset=0,
+            annotations=list(),
         ),
     ):
         self.config = config
-
 
     def __iter__(self) -> Iterator[ModelType]:
         """This function implements application-level caching
@@ -74,12 +90,12 @@ class Manager(Generic[ModelType]):
         The un-finished iterator/generator is held in the __result_iterator__ attribute
         The method it expects to call to get the iterator is self._get_results()
         """
-        if self.config.get('disable_cache', False):
+        if self.config.get("disable_cache", False):
             # Caching can be disabled via option
             for item in self._get_results():
                 yield item
         else:
-            if not hasattr(self, '__result_iterator__'):
+            if not hasattr(self, "__result_iterator__"):
                 # Create a new iterator and cache if the iterator doesn't exist
                 self.__result_iterator__ = self._get_results()
                 self.__cache__: List[ModelType] = list()
@@ -92,10 +108,10 @@ class Manager(Generic[ModelType]):
                 yield item
 
     def _get_results(self) -> Iterator[ModelType]:
-        raise NotImplementedError('Must be implemented by subclass')
+        raise NotImplementedError("Must be implemented by subclass")
 
     def __len__(self) -> int:
-        # The default len function runs the iterator and counts. There may be 
+        # The default len function runs the iterator and counts. There may be
         # more efficient ways to do it for any given subclass, but this is the
         # basic way
         return len(list(self))
@@ -106,7 +122,9 @@ class Manager(Generic[ModelType]):
     def __eq__(self, other) -> bool:
         return bool(self.config == other.config and type(self) == type(other))
 
-    def __getitem__(self, key:Union[slice, int]) -> Union[Manager[ModelType], ModelType]:
+    def __getitem__(
+        self, key: Union[slice, int]
+    ) -> Union[Manager[ModelType], ModelType]:
         if isinstance(key, slice):
             if key.step != None:
                 raise AttributeError("Step is not supported")
@@ -150,21 +168,21 @@ class Manager(Generic[ModelType]):
 
     def limit(self, limit) -> Manager[ModelType]:
         clone = self._clone()
-        clone.config['limit'] = limit
+        clone.config["limit"] = limit
         return clone
 
     def offset(self, offset) -> Manager[ModelType]:
         clone = self._clone()
-        clone.config['offset'] = self.config['offset'] + offset
+        clone.config["offset"] = self.config["offset"] + offset
         return clone
 
-    def get(self, *args, **kwargs) -> ModelType: 
+    def get(self, *args, **kwargs) -> ModelType:
         """Implement a new manager with the requested keywords, and if the length is 1,
         return that record, else raise an exception"""
         manager = self.filter(*args, **kwargs)
         if len(manager) > 1:
             raise ValueError("More than one document found!")
-        return manager[0] # type: ignore
+        return manager[0]  # type: ignore
 
     # Manager Functions
 
@@ -179,28 +197,32 @@ class Manager(Generic[ModelType]):
 
     def to_pandas(self, annotate=list()):
         import pandas as pd
-        dicts = list()
+
+        list_of_series = list()
         for i in iter(self):
-            ordered_dict = OrderedDict(i)
+            series = i.to_pandas()
             for a in annotate:
-                ordered_dict[a] = resolve(i, a)
-            dicts.append(ordered_dict)
-        return pd.DataFrame.from_records(dicts)
+                series[a] = resolve(i, a)
+            list_of_series.append(series)
+        return pd.DataFrame(list_of_series)
 
     def explode(self, attribute) -> QuerySet:
         from itertools import chain
-        return ListManager(chain.from_iterable(getattr(r, attribute, None) for r in self))
+
+        return ListManager(
+            chain.from_iterable(getattr(r, attribute, None) for r in self)
+        )
 
     def to_records(self) -> Iterator[OrderedDict]:
         for i in self:
             yield i.as_dict()
-    
+
     def to_list(self) -> List[ModelType]:
         return ListManager(self)
 
     def to_set(self) -> List[SetType]:
         return set(self)
-    
+
     # Values
     def values(self, *fields, **kw_fields) -> ValuesQuerySet:
         return ValuesQuerySet(self, *fields, **kw_fields)
@@ -208,8 +230,8 @@ class Manager(Generic[ModelType]):
     def values_list(self, *fields, flat=False, **kw_fields) -> ValuesListQuerySet:
         return ValuesListQuerySet(self, *fields, flat=flat, **kw_fields)
 
+
 class ListManager(list, Manager[ModelType]):
-    
     def _clone(self):
         return self
 
@@ -230,21 +252,26 @@ class ListManager(list, Manager[ModelType]):
     def empty(cls) -> ListManager:
         return cls(list())
 
+
 class QuerySet(Manager[ModelType]):
     """
-    Utility class that extends the Manager helper function to 
+    Utility class that extends the Manager helper function to
     any collection of Patent Client objects
     """
 
     def __init__(self, managers, limit=None, offset=0):
         if isinstance(managers, Manager):
-            self.managers = [managers._clone(),]
+            self.managers = [
+                managers._clone(),
+            ]
         else:
             self.managers = [m._clone() for m in managers]
         self._limit = limit
         self._offset = offset
 
-    def __getitem__(self, key:Union[slice, int]) -> Union[Manager[ModelType], ModelType]:
+    def __getitem__(
+        self, key: Union[slice, int]
+    ) -> Union[Manager[ModelType], ModelType]:
         if isinstance(key, slice):
             if key.step != None:
                 raise AttributeError("Step is not supported")
@@ -265,7 +292,9 @@ class QuerySet(Manager[ModelType]):
             counter = 0
             max_items = self._offset + self._limit if self._limit else None
             for manager in self.managers:
-                if counter + len(manager) < self._offset or (self._limit and counter >= self._limit):
+                if counter + len(manager) < self._offset or (
+                    self._limit and counter >= self._limit
+                ):
                     """In these circumstances, don't yield objects"""
                     counter += len(manager)
                     continue
@@ -292,7 +321,7 @@ class QuerySet(Manager[ModelType]):
         clone = self._clone()
         clone._limit = limit
         return clone
-    
+
     def offset(self, offset):
         clone = self._clone()
         clone._offset = clone._offset + offset
@@ -302,14 +331,12 @@ class QuerySet(Manager[ModelType]):
     def empty(cls) -> QuerySet:
         return cls(list())
 
+
 class ValuesQuerySet(QuerySet):
     def __init__(self, managers, *fields, **kw_fields):
         super(ValuesQuerySet, self).__init__(managers)
-        self.fields = {
-            **{k:k for k in fields},
-            **kw_fields
-        }
-    
+        self.fields = {**{k: k for k in fields}, **kw_fields}
+
     def _clone(self):
         return self.__class__(self.managers, **self.fields)
 
@@ -317,11 +344,12 @@ class ValuesQuerySet(QuerySet):
         for item in super(ValuesQuerySet, self).__iter__():
             yield OrderedDict((k, resolve(item, v)) for k, v in self.fields.items())
 
+
 class ValuesListQuerySet(ValuesQuerySet):
     def __init__(self, managers, *fields, flat=False, **kw_fields):
         super(ValuesListQuerySet, self).__init__(managers, *fields, **kw_fields)
         self.flat = flat
-    
+
     def _clone(self):
         return self.__class__(self.managers, flat=self.flat, **deepcopy(self.fields))
 
