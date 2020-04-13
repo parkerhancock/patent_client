@@ -1,9 +1,10 @@
-import pytest
 import datetime
+import logging
 from collections import OrderedDict
 
+import pytest
+
 from .model import USApplication
-import logging
 
 logger = logging.getLogger(__name__)
 
@@ -13,9 +14,9 @@ class TestPatentExaminationData:
         inventors = USApplication.objects.get(12721698).inventors
         assert len(inventors) == 1
         inventor = inventors[0]
-        assert inventor.name == 'Thind; Deepinder Singh'
-        assert inventor.city == 'Mankato, '
-        assert inventor.geo_code == 'MN'
+        assert inventor.name == "Thind; Deepinder Singh"
+        assert inventor.city == "Mankato, "
+        assert inventor.geo_code == "MN"
 
     def test_search_by_customer_number(self):
         result = USApplication.objects.filter(app_cust_number="70155")
@@ -72,15 +73,6 @@ class TestPatentExaminationData:
         data = USApplication.objects.filter(app_early_pub_number=nos)
         assert len(list(data)) == 5
 
-    def test_mixed_get_many(self):
-        pats = ["7627658", "7551922", "7359935"]
-        pubs = ["US20080034424A1", "US20100020700A1", "US20110225644A1"]
-        apps = ["14971450", "15332765", "13441334"]
-        data = USApplication.objects.filter(
-            app_early_pub_number=pubs, patent_number=pats, appl_id=apps
-        )
-        assert len(data) == 9
-
     def test_get_search_fields(self):
         result = USApplication.objects.allowed_filters
         assert "patent_number" in result
@@ -92,7 +84,7 @@ class TestPatentExaminationData:
         child = parent.child_continuity[0]
         assert child.child_appl_id == "14919159"
         assert child.relationship == "claims the benefit of"
-        #assert child.child.patent_title == "LEAPFROG TREE-JOIN"
+        # assert child.child.patent_title == "LEAPFROG TREE-JOIN"
 
     def test_get_parent_data(self):
         child = USApplication.objects.get("14018930")
@@ -100,7 +92,7 @@ class TestPatentExaminationData:
         assert parent.parent_appl_id == "61706484"
         assert parent.relationship == "Claims Priority from Provisional Application"
         assert parent.parent_app_filing_date is not None
-        #assert parent.parent.patent_title == "Leapfrog Tree-Join"
+        # assert parent.parent.patent_title == "Leapfrog Tree-Join"
 
     def test_pta_history(self):
         app = USApplication.objects.get("14095073")
@@ -143,7 +135,7 @@ class TestPatentExaminationData:
     def test_attorneys(self):
         app = USApplication.objects.get("14095073")
         assert len(app.attorneys) > 1
-        actual = app.attorneys[0].as_dict() 
+        actual = app.attorneys[0].as_dict()
         expected = {
             "registration_no": "32429",
             "full_name": "Mims, Peter  ",
@@ -179,7 +171,7 @@ class TestPatentExaminationData:
             assert expected[k] == actual[k]
 
         app = USApplication.objects.get("14865625")
-        expected =  {
+        expected = {
             "parent_appl_id": "14865625",
             "parent_app_filing_date": datetime.date(2015, 9, 25),
             "parent_relationship": "self",
@@ -208,15 +200,17 @@ class TestPatentExaminationData:
         assert len(records) >= 4
 
     def test_get_applicant(self):
-        applicants = USApplication.objects.filter(first_named_applicant="Tesla").first().applicants
-        assert 'tesla' in applicants[0].name.lower()
+        applicants = (
+            USApplication.objects.filter(first_named_applicant="Tesla")
+            .first()
+            .applicants
+        )
+        assert "tesla" in applicants[0].name.lower()
 
     def test_foreign_priority(self):
         fp = USApplication.objects.get(patent_number=10544653).foreign_priority
         assert isinstance(fp, list)
         app = fp[0]
-        assert app.country_name == 'NORWAY'
+        assert app.country_name == "NORWAY"
         assert app.filing_date == datetime.date(2017, 2, 15)
-        assert app.priority_claim == '20170229'
-    
-
+        assert app.priority_claim == "20170229"

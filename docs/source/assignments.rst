@@ -1,8 +1,10 @@
 US Assignments
-^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^
+Original API URL: https://assignment-api.uspto.gov/documentation-patent/^
+
 .. warning::
     The SSL configuration on the Assignments API is broken. SSL verification has therefore been turned off
-    for the Assignment object. This means that the client is potentially vulnerable to man-in-the-middle 
+    for the Assignment object. This means that the client is potentially vulnerable to man-in-the-middle
     attacks. When the SSL configuration is fixed, an update will be pushed, and this warning removed
 
 .. warning::
@@ -20,46 +22,24 @@ Patent Client provides an interface to the USPTO's patent assignment database. Y
 .. code-block:: python
 
     >>> from patent_client import Assignment
-    >>> assignments = Assignment.objects.filter(patent='9534285')
-    >>> len(assignments)
-    1
-    >>> assignments.first()
-    <Assignment(id=34894-25)>
-    >>> assignments.first().pat_assignor_name
-    'ADVANCED TECHNOLOGY MATERIALS, INC.'
-    >>> assignments.first().pat_assignee_name
-    'ENTEGRIS, INC.'
+    >>> assignments = Assignment.objects.filter(patent_number='9534285')
+    >>> len(assignments) >= 1
+    True
+    >>> assignments.first().id
+    '50965-35'
+    >>> assignments.first().assignors[0].name
+    'GOLDMAN SACHS BANK USA'
+    >>> assignments.first().assignees[0].name
+    'MORGAN STANLEY SENIOR FUNDING, INC.'
 
-    >>> assignments = Assignment.objects.filter(assignee='Google')
-    >>> len(assignments)
-    23932
+    >>> assignments = Assignment.objects.filter(assignee='Google') # doctest:+SKIP
+    >>> len(assignments) > 20000 # doctest:+SKIP
+    True
 
-USPTO Assignments
-=================
+Models
+======
 
-Supported Fields
-----------------
-
-=========================   ===========================================       ===============     ================
-Field Name                  Examples                                          Filterable          Sortable
-=========================   ===========================================       ===============     ================
-patent                      9534285                                           YES                 YES
-application                 15710770                                          YES                 YES 
-publication                 20180191929                                       YES                 YES
-assignee                    GOOGLE LLC                                        YES                 YES
-assignor                    MULLINS, SCOTT                                    YES                 YES
-pct_application             PCT/US2005/012345                                 YES                 YES
-correspondent               MORGAN, LEWIS & BOCKIUS                           YES                 YES
-reel_frame                  047086-0788                                       YES                 YES
-=========================   ===========================================       ===============     ================
-
-Relationships
--------------
-
-=============== =================   ==============  =================
-Attribute       Relationship Type   Object          Join Condition
-=============== =================   ==============  =================
-us_applications one-to-many         USApplication   app_num=appl_id
-=============== =================   ==============  =================
-
-Original API URL: https://assignment-api.uspto.gov/documentation-patent/
+.. automodule:: patent_client.uspto.assignment.model
+    :members:
+    :undoc-members:
+    :exclude-members: Person

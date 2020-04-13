@@ -1,12 +1,16 @@
-import os
-import xmltodict
 import math
+import os
+
+import xmltodict
+from patent_client import CACHE_CONFIG
+from patent_client import SETTINGS
 from patent_client.util import Manager
 from patent_client.util.manager import resolve
-from patent_client import CACHE_CONFIG, SETTINGS
 
-from .session import session, NS 
-from .schema import InpadocResultSchema, InpadocBiblioSchema
+from .schema import InpadocBiblioSchema
+from .schema import InpadocResultSchema
+from .session import NS
+from .session import session
 
 SEARCH_FIELDS = {
     "title": "title",
@@ -40,12 +44,14 @@ SEARCH_FIELDS = {
     "full_text": "txt",  # title, abstract, inventor and applicant
 }
 
+
 class OPSException(Exception):
     pass
 
+
 class InpadocManager(Manager):
     page_size = 20
-    primary_key = 'publication'
+    primary_key = "publication"
     constituent = None
 
     def __init__(self, *args, **kwargs):
@@ -54,16 +60,16 @@ class InpadocManager(Manager):
 
     def __len__(self):
         page = self.get_page(0)
-        max_length = int(resolve(page, '@total-result-count'))
-        limit = self.config['limit']
+        max_length = int(resolve(page, "@total-result-count"))
+        limit = self.config["limit"]
         if limit:
-            return limit if limit < max_length else max_length 
+            return limit if limit < max_length else max_length
         else:
             return max_length
 
     def _get_results(self):
-        offset = self.config['offset']
-        limit = self.config['limit']
+        offset = self.config["offset"]
+        limit = self.config["limit"]
 
         def result_gen(offset, limit):
             num_pages = math.ceil(len(self) / self.page_size)
@@ -88,23 +94,23 @@ class InpadocManager(Manager):
                 break
             if counter >= offset:
                 yield self.schema.load(item)
-    
+
     @property
     def search_url(self):
         if self.constituent:
-            return f'http://ops.epo.org/3.2/rest-services/published-data/search/{self.constituent}'
-        return 'http://ops.epo.org/3.2/rest-services/published-data/search' 
+            return f"http://ops.epo.org/3.2/rest-services/published-data/search/{self.constituent}"
+        return "http://ops.epo.org/3.2/rest-services/published-data/search"
 
     @property
     def item_path(self):
         if self.constituent:
-            return 'search-result.exchange-documents'
+            return "search-result.exchange-documents"
         else:
-            return 'search-result.publication-reference'
+            return "search-result.publication-reference"
 
     @property
     def schema(self):
-        if self.constituent == 'biblio':
+        if self.constituent == "biblio":
             return InpadocBiblioSchema()
         elif self.constituent is None:
             return InpadocResultSchema()
@@ -113,16 +119,18 @@ class InpadocManager(Manager):
         if page_number not in self.pages:
             query_params = self.query_params(page_number)
             response = session.get(self.search_url, params=query_params, timeout=10)
-            data = xmltodict.parse(response.text, process_namespaces=True, namespaces=NS)
-            self.pages[page_number] = resolve(data, 'world-patent-data.biblio-search')
+            data = xmltodict.parse(
+                response.text, process_namespaces=True, namespaces=NS
+            )
+            self.pages[page_number] = resolve(data, "world-patent-data.biblio-search")
         return self.pages[page_number]
 
     def query_params(self, page_number):
-        query_dict = self.config['filter']
+        query_dict = self.config["filter"]
         start = page_number * self.page_size + 1
         range_q = f"{start}-{start + self.page_size}"
         if "cql_query" in query_dict:
-            query = dict(q=query_dict["cql_query"], Range=range_q)
+            return dict(q=query_dict["cql_query"], Range=range_q)
         query = ""
         for keyword, values in query_dict.items():
             for value in values:
@@ -131,5 +139,6 @@ class InpadocManager(Manager):
         query = dict(q=query, Range=range_q)
         return query
 
+
 class InpadocBiblioManager(InpadocManager):
-    constituent = 'biblio'
+    constituent = "biblio"

@@ -24,7 +24,6 @@ author = "Parker Hancock"
 version = release = "2.0.1"
 
 
-
 # -- General configuration ---------------------------------------------------
 
 # If your documentation needs a minimal Sphinx version, state it here.
@@ -184,6 +183,8 @@ epub_exclude_files = ["search.html"]
 
 
 # -- Extension configuration -------------------------------------------------
+
+autodoc_member_order = "bysource"
 
 # -- Options for intersphinx extension ---------------------------------------
 

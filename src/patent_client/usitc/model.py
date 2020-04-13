@@ -1,28 +1,33 @@
 from __future__ import annotations
+
 import dataclasses as dc
+import datetime as dt
 import tempfile
 import typing as tp
-import datetime as dt
 from pathlib import Path
+
+from patent_client.util import Model
+from patent_client.util import one_to_many
+from patent_client.util import one_to_one
+
 from .session import session
 
-from patent_client.util import Model, one_to_many, one_to_one
 
 @dc.dataclass
 class ITCInvestigation(Model):
-    __manager__ = 'patent_client.usitc.manager.ITCInvestigationManager'
+    __manager__ = "patent_client.usitc.manager.ITCInvestigationManager"
     number: str
     phase: str
     status: str
     title: str
     type: str
-    docket_number: str
+    docket_number: str = dc.field(default=None)
     documents = one_to_many("patent_client.ITCDocument", investigation_number="number")
-        
+
 
 @dc.dataclass
 class ITCDocument(Model):
-    __manager__ = 'patent_client.usitc.manager.ITCDocumentManager'
+    __manager__ = "patent_client.usitc.manager.ITCDocumentManager"
     id: int
     investigation_number: str
     type: str
@@ -41,9 +46,10 @@ class ITCDocument(Model):
     )
     attachments = one_to_many("patent_client.ITCAttachment", document_id="id")
 
+
 @dc.dataclass
 class ITCAttachment(Model):
-    __manager__ = 'patent_client.usitc.manager.ITCAttachmentManager' 
+    __manager__ = "patent_client.usitc.manager.ITCAttachmentManager"
     id: int
     document_id: int
     title: str
@@ -62,9 +68,7 @@ class ITCAttachment(Model):
         *_, ext = self.file_name.split(".")
         if file_obj is None:
             file_obj = tempfile.NamedTemporaryFile(suffix=ext)
-        response = session.get(
-            self.download_url, stream=True
-        )
+        response = session.get(self.download_url, stream=True)
         with file_obj.open("wb") as f:
             for chunk in response.iter_content(1024):
                 f.write(chunk)

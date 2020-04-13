@@ -10,7 +10,7 @@ from typing import Generic
 from typing import Iterable
 from typing import Iterator
 from typing import List
-from typing import SetType
+from typing import Set
 from typing import Sized
 from typing import TypeVar
 from typing import Union
@@ -42,30 +42,9 @@ class Manager(Generic[ModelType]):
     Manager Base Class
 
     This class is essentially a configurable generator. It is intended to be initialized
-    as an empty object at Model.objects. Users can then modify the manager by calling either:
-
-        Manager.filter -> adds filter criteria
-        Manager.sort -> adds sorting criteria
-        Manager.options -> adds key:value options
-
-    All methods should return a brand-new manager with the appropriate parameters re-set. The
-    Manager also has a special method to fetch a single matching object:
-
-        Manager.get -> adds filter critera, and returns the first object if only one object is found, else raises an Exception
-
-    The manager's attributes are stored in a dictionary at Manager.config. Config has the following structure:
-
-        {
-            'filter': {
-                key: value,
-                key: value,
-            },
-            'order_by': [value, value, value],
-            'values': [value, value, value]
-            'options': {
-                key: value
-            }
-        }
+    as an empty object at Model.objects. Users can then call methods to modify the manager.
+    All methods should return a brand-new manager with the appropriate parameters re-set.
+    The manager's attributes are stored in a dictionary at Manager.config.
 
     """
 
@@ -138,6 +117,7 @@ class Manager(Generic[ModelType]):
         return self.offset(key).first()
 
     def filter(self, *args, **kwargs) -> Manager[ModelType]:
+        """Apply a new filtering condition"""
         if args:
             kwargs[self.primary_key] = args
         for k, v in kwargs.items():
@@ -153,12 +133,13 @@ class Manager(Generic[ModelType]):
         return self.__class__(new_config)
 
     def order_by(self, *args) -> Manager[ModelType]:
-        """Take arguments, and store in a special keyword argument called 'sort' """
+        """Specify the order that argument should be returned in"""
         new_config = deepcopy(self.config)
         new_config["order_by"] = list(new_config["order_by"]) + list(args)
         return self.__class__(new_config)
 
-    def set_options(self, **kwargs) -> Manager[ModelType]:
+    def option(self, **kwargs) -> Manager[ModelType]:
+        """Set a key:value option on the manater"""
         new_config = deepcopy(self.config)
         new_config["options"] = {**new_config["options"], **kwargs}
         return self.__class__(new_config)
@@ -167,18 +148,19 @@ class Manager(Generic[ModelType]):
         return self.__class__(deepcopy(self.config))
 
     def limit(self, limit) -> Manager[ModelType]:
+        """Limit the number of records that are returned"""
         clone = self._clone()
         clone.config["limit"] = limit
         return clone
 
     def offset(self, offset) -> Manager[ModelType]:
+        """Specify the number of records from the beginning from which to apply an offset"""
         clone = self._clone()
         clone.config["offset"] = self.config["offset"] + offset
         return clone
 
     def get(self, *args, **kwargs) -> ModelType:
-        """Implement a new manager with the requested keywords, and if the length is 1,
-        return that record, else raise an exception"""
+        """If the critera results in a single record, return it, else raise an exception"""
         manager = self.filter(*args, **kwargs)
         if len(manager) > 1:
             raise ValueError("More than one document found!")
@@ -187,26 +169,34 @@ class Manager(Generic[ModelType]):
     # Manager Functions
 
     def count(self) -> int:
+        """Returns number of records in the QuerySet. Alias for len(self)"""
         return len(self)
 
     def first(self) -> ModelType:
+        """Get the first object in the manager"""
         return next(iter(self))
 
     def all(self) -> Manager[ModelType]:
+        """Return self. Does nothing"""
         return self
 
     def to_pandas(self, annotate=list()):
+        """Convert Manager into a Pandas DataFrame"""
         import pandas as pd
 
         list_of_series = list()
         for i in iter(self):
-            series = i.to_pandas()
+            try:
+                series = i.to_pandas()
+            except AttributeError:
+                series = pd.Series(i)
             for a in annotate:
                 series[a] = resolve(i, a)
             list_of_series.append(series)
         return pd.DataFrame(list_of_series)
 
     def explode(self, attribute) -> QuerySet:
+        """Implement an "explode" function for related objects."""
         from itertools import chain
 
         return ListManager(
@@ -214,20 +204,31 @@ class Manager(Generic[ModelType]):
         )
 
     def to_records(self) -> Iterator[OrderedDict]:
+        """Return a list of dictionaries containing model data in ordinary Python types
+        Useful for generating JSON representations of model data, or ingesting into NoSQL databases
+        """
         for i in self:
             yield i.as_dict()
 
     def to_list(self) -> List[ModelType]:
+        """Return a list of model objects from the Manager"""
         return ListManager(self)
 
-    def to_set(self) -> List[SetType]:
+    def to_set(self) -> List[Set]:
+        """Return a set of model objects from the Manager"""
         return set(self)
 
     # Values
     def values(self, *fields, **kw_fields) -> ValuesQuerySet:
+        """Return a Manager that will return an OrderedDict for each model with a subset of attributes
+        positional arguments will result in OrderedDicts where the fields match the field names on the model,
+        keyword arguments can be used to rename attributes. When passed as key=field, the resulting dictionary will have key: model[field]
+        """
         return ValuesQuerySet(self, *fields, **kw_fields)
 
     def values_list(self, *fields, flat=False, **kw_fields) -> ValuesListQuerySet:
+        """Return a Manager that will return tuples for each model with a subset of attributes.
+        If only a single field is passed, the keyword argument "flat" can be passed to return a simple list"""
         return ValuesListQuerySet(self, *fields, flat=flat, **kw_fields)
 
 

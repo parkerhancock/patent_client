@@ -23,27 +23,27 @@ A set of Django-ORM-Style accessors to publicly available intellectual property 
 
 Currently supports:
 
+* `United States Patent & Trademark Office <USPTO>`_
+
+  * `Patent Examination Data <PEDS>`_ - Full Support
+  * `Patent Assignment Data <Assignment>`_ - Lookup Support
+  * `Patent Trial & Appeal Board API v2 <PTAB>`_ - Supports Proceedings, Decisions, and Documents
+
+* `United States International Trade Commission <ITC>`_
+
+  * `Electronic Document Information System (EDIS) API <EDIS>`_ - Partial Support (no document downloads)
+
 * `European Patent Office - Open Patent Services <OPS>`_
 
   * Inpadoc - Full Support
   * EPO Register - No Support (in progress)
   * Classification - No Support
 
-* `United States Patent & Trademark Office <USPTO>`_
-
-  * `Patent Examination Data <PEDS>`_ - Full Support
-  * `Patent Assignment Data <Assignment>`_ - Lookup Support
-  * `Patent Trial & Appeal Board API <PTAB>`_ - Full Support
-
-* `United States International Trade Commission <ITC>`_
-
-  * `Electronic Document Information System (EDIS) API <EDIS>`_ - Partial Support (no document downloads)
-
 .. _OPS: http://ops.epo.org
 .. _USPTO: http://developer.uspto.gov
 .. _PEDS: https://developer.uspto.gov/api-catalog/ped
 .. _Assignment: https://developer.uspto.gov/api-catalog/patent-assignment-search-beta
-.. _PTAB: https://developer.uspto.gov/api-catalog/ptab-api
+.. _PTAB: https://developer.uspto.gov/api-catalog/ptab-api-v2
 .. _ITC: https://www.usitc.gov/
 .. _EDIS: https://edis.usitc.gov/external/
 
@@ -73,37 +73,34 @@ SUPER QUICK START
 To use the project:
 
 .. code-block:: python
-    
+
     # Import the model classes you need
-    >>> from patent_client import Inpadoc, Epo, Assignment, USApplication
-    
+    >>> from patent_client import Inpadoc, Assignment, USApplication
+
     # Fetch US Applications
     >>> app = USApplication.objects.get('15710770')
     >>> app.patent_title
     'Camera Assembly with Concave-Shaped Front Face'
-    
+
     # Fetch from USPTO Assignments
     >>> assignments = Assignment.objects.filter(assignee='Google')
-    >>> len(assignments)
-    23860
-    >>> assignments[0].id
-    '47086-788'
-    >>> assignments[0].conveyance_text
-    'ASSIGNMENT OF ASSIGNORS INTEREST (SEE DOCUMENT FOR DETAILS).'
-    
+    >>> len(assignments) > 23000
+    True
+    >>> assignment = Assignment.objects.get('47086-788')
+    >>> assignment.conveyance_text
+    'ASSIGNMENT OF ASSIGNORS INTEREST'
+
     # Fetch from INPADOC
     >>> pub = Inpadoc.objects.get('EP3082535A1')
-    >>> pub.title
+    >>> pub.biblio.title
     'AUTOMATIC FLUID DISPENSER'
-    >>> pub.priority_claims
-    ['201314137130', '2014071849']
-    
+
     # Fetch from EPO Register (NOTE: This is broken right now :( )
-    >>> epo = Epo.objects.get('EP3082535A1')
-    >>> epo.title
-    'AUTOMATIC FLUID DISPENSER'
-    >>> epo.status
-    [{'description': 'Examination is in progress', 'code': '14', 'date': '20180615'}]
+    #>>> epo = Epo.objects.get('EP3082535A1')
+    #>>> epo.title
+    #'AUTOMATIC FLUID DISPENSER'
+    #>>> epo.status
+    #[{'description': 'Examination is in progress', 'code': '14', 'date': '20180615'}]
 
 Other Languages
 ===============

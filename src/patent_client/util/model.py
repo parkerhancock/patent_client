@@ -30,6 +30,7 @@ class ModelABC(object):
 @dataclass
 class Model(ModelABC, metaclass=ModelMeta):
     def as_dict(self):
+        """Convert model to a dictionary representation"""
         output = OrderedDict()
         for k, v in self:
             if isinstance(v, Model):
@@ -42,6 +43,7 @@ class Model(ModelABC, metaclass=ModelMeta):
         return output
 
     def fields(self):
+        """Return list of fields"""
         return fields(self)
 
     def __iter__(self):
@@ -50,6 +52,7 @@ class Model(ModelABC, metaclass=ModelMeta):
                 yield (f.name, getattr(self, f.name))
 
     def to_pandas(self):
+        """Convert object to Pandas Series"""
         import pandas as pd
 
         dictionary = self.as_dict()
