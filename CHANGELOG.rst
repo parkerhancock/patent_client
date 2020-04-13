@@ -1,10 +1,14 @@
 
 Changelog
 =========
-2.0.2 (TBA)
------------
+
+2.0.2 (2020-04-13)
+------------------
 * Added foreign priority support back to PEDS API
-* Revised documentation to match v.2
+* Revised and simplified documentation to match v.2, including using Sphinx Autodoc
+* Added doctest support to documentation to confirm examples still work
+* Added docstrings throughout
+* Labeled some broken things as broken
 
 2.0.1 (2020-03-12)
 ------------------
