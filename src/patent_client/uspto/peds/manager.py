@@ -1,28 +1,19 @@
 import json
-import os
-import re
-import time
-import warnings
-import math
 import logging
-from typing import Union, Iterator
-
-logger = logging.getLogger(__name__)
-
-from datetime import date, datetime
-from zipfile import ZipFile
-from dateutil.relativedelta import relativedelta
+import math
+from datetime import date
+from datetime import datetime
+from typing import Iterator
+from typing import Union
 
 import inflection
-from dateutil.parser import parse as parse_dt
-from patent_client.util.manager import Manager
-from patent_client.util.model import Model
-from patent_client.util.related import one_to_many, one_to_one, QuerySet
 from patent_client import session
-from .schema import USApplicationSchema
+from patent_client.util.manager import Manager
+
 from .model import USApplication
+from .schema import USApplicationSchema
 
-
+logger = logging.getLogger(__name__)
 
 
 class HttpException(Exception):
@@ -31,8 +22,6 @@ class HttpException(Exception):
 
 class NotAvailableException(Exception):
     pass
-
-
 
 
 QUERY_FIELDS = "appEarlyPubNumber applId appLocation appType appStatus_txt appConfrNumber appCustNumber appGrpArtNumber appCls appSubCls appEntityStatus_txt patentNumber patentTitle primaryInventor firstNamedApplicant appExamName appExamPrefrdName appAttrDockNumber appPCTNumber appIntlPubNumber wipoEarlyPubNumber pctAppType firstInventorFile appClsSubCls rankAndInventorsList"
@@ -96,7 +85,7 @@ class USApplicationManager(Manager[USApplication]):
         if not sort_query:
             sort_query = None
 
-        query = ""
+        query = list()
         mm_active = True
         for k, v in self.config["filter"].items():
             field = inflection.camelize(k, uppercase_first_letter=False)
@@ -109,14 +98,14 @@ class USApplicationManager(Manager[USApplication]):
                 mm_active = False
             else:
                 body = v
-            query += f"{field}:({body}) "
+            query.append(f"{field}:({body})")
 
         mm = "100%" if "appEarlyPubNumber" not in query else "90%"
 
         query = {
             "qf": QUERY_FIELDS,
             "fl": "*",  # ",".join(inflection.camelize(f, uppercase_first_letter=False) for f in RETURN_FIELDS),#"*",
-            "searchText": query.strip(),
+            "searchText": " AND ".join(query).strip(),
             "sort": sort_query,
             "facet": "false",
             "mm": mm,
@@ -166,6 +155,7 @@ class USApplicationManager(Manager[USApplication]):
             if "facet" in k:
                 continue
             print(f"{k} ({fields[k]})")
+
 
 class DateEncoder(json.JSONEncoder):
     def default(self, o):

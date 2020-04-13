@@ -3,8 +3,7 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Patent Client Documentation
-=========================================
+.. include:: ../../README.rst
 
 * `Code on GitHub <https://github.com/parkerhancock/patent_client>`_
 * `Package on PyPI <https://pypi.org/project/patent-client/>`_
@@ -20,6 +19,7 @@ Patent Client Documentation
    ptab
    usitc
    epo
+   api
    developer/overview
    developer/design_notes
 

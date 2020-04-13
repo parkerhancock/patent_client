@@ -4,16 +4,13 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-pytest = "*"
 patent-client = {editable = true,path = "."}
 inflection = "*"
 lxml = "*"
 requests = "*"
 python-dateutil = "*"
-pyyaml = ">=4.2b1"
 requests-cache = "*"
 dataclasses = "*"
-bravado = "*"
 marshmallow = "*"
 xmltodict = "*"
 
@@ -28,6 +25,11 @@ mypy = "*"
 jedi = "*"
 ptpython = "*"
 v = {editable = true,version = "*"}
+pandas = "*"
 
 [requires]
 python_version = "3.7"
+
+[scripts]
+test = "pytest"
+render_docs = "make -f docs/Makefile html"

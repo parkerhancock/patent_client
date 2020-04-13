@@ -1,0 +1,1690 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "Public information regarding the Patent Trial and Appeal Board's (PTAB) America Invents Act (AIA) Trials, Appeals & Inteferences and associated documents.",
+        "version": "1.0",
+        "title": "PTAB Proceedings and Documents REST API"
+    },
+    "host": "developer.uspto.gov",
+    "basePath": "/ptab-api",
+    "tags": [
+        {
+            "name": "decisions",
+            "description": "PTAB Decision Outcomes"
+        },
+        {
+            "name": "documents",
+            "description": "PTAB Documents"
+        },
+        {
+            "name": "proceedings",
+            "description": "PTAB Proceedings"
+        }
+    ],
+    "paths": {
+        "/decisions": {
+            "get": {
+                "tags": [
+                    "decisions"
+                ],
+                "summary": "Provides Decision Outcomes information on AIA Trials, Appeals and Intereferences based on filter inputs",
+                "description": "Return Outcome Records for given search input. No required parameter. By default all outcome metadata would return. Filters are optional parameters that can be used to reduce the number of result.\t",
+                "operationId": "getDecisionsUsingGET",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "applicationNumberText",
+                        "in": "query",
+                        "description": "Filters by the Application Number",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "decisionDate",
+                        "in": "query",
+                        "description": "Filters by the decisionDate of document in yyyy-mm-dd format",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "decisionFromDate",
+                        "in": "query",
+                        "description": "Filters by the decisionDate of document on and after (in yyyy-mm-dd format). If this date is given then lastModifiedDateTo is mandatory to provide to get the results",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "decisionToDate",
+                        "in": "query",
+                        "description": "Filters by the decisionDate of document on and before (in yyyy-mm-dd format)",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "decisionTypeCategory",
+                        "in": "query",
+                        "description": "Filters by the decision Type",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "documentIdentifier",
+                        "in": "query",
+                        "description": "Filters by the Document Id",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "documentName",
+                        "in": "query",
+                        "description": "Filters by the Document Name",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "grantDate",
+                        "in": "query",
+                        "description": "Filters by the grantDate of document in yyyy-mm-dd format",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "grantFromDate",
+                        "in": "query",
+                        "description": "Filters by the grantDate of document on and after (in yyyy-mm-dd format). If this date is given then lastModifiedDateTo is mandatory to provide to get the results",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "grantToDate",
+                        "in": "query",
+                        "description": "Filters by the grantDate of document on and before (in yyyy-mm-dd format)",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "partyName",
+                        "in": "query",
+                        "description": "Filters by the Petitioner Party Name",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "patentNumber",
+                        "in": "query",
+                        "description": "Filters by the Patent Number",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "patentOwnerName",
+                        "in": "query",
+                        "description": "Filters by the Patent Owner Name",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "proceedingNumber",
+                        "in": "query",
+                        "description": "Filters by the Proceeding Number",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "proceedingTypeCategory",
+                        "in": "query",
+                        "description": "Filters by the Proceeding Type",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "recordStartNumber",
+                        "in": "query",
+                        "description": "Filters the documents from the start point e.g 0 / 4 / 6",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "recordTotalQuantity",
+                        "in": "query",
+                        "description": "Filters according to the size of the document like 10,20",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "searchText",
+                        "in": "query",
+                        "description": "Filters by Search Text",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "sortOrderCategory",
+                        "in": "query",
+                        "description": "Dictates how the result set is to be sorted. The value of the parameter may be any property name of the Document model. The parameter value may be prefixed with a - to sort descendingly or with a + to sort ascendingly. Ascendingly is the default direction if no prefix is specified.Multiple sort parameters are applied in the order specified within the query string. For example, sort=documentNumber&sort=-filingDate means \"first sort by document number asecndingly, then by filing date, from most recent to least recent.\"",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "subdecisionTypeCategory",
+                        "in": "query",
+                        "description": "Filters by the sub decision Type",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "subproceedingTypeCategory",
+                        "in": "query",
+                        "description": "Filters by the sub Proceeding Type",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "technologyCenterNumber",
+                        "in": "query",
+                        "description": "Filters by the Tech center Number",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/DecisionSearchRecord"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "Resouce not found"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/decisions/json": {
+            "post": {
+                "tags": [
+                    "decisions"
+                ],
+                "summary": "Provides Decision Outcomes information on AIA Trials, Appeals and Intereferences",
+                "description": "Return Outcome Records for given search input. Here are some examples of input format:\n E.g. 1. \n {\r\n  \"facetMap\": {\"filingParty\": [\"board\"]},\r\n  \"paramMap\": {},\r\n  \"rows\": 0,\r\n  \"sortByColumn\": \"string\",\r\n  \"sortOrder\": \"string\",\r\n  \"start\": 0\r\n}\n E.g. 2. \n{\r\n  \"facetMap\": {\"filingParty\": [\"board\", \"petitioner\"], \"type\": [\"notice\"]},\r\n  \"paramMap\": {\"documentNumber\":\"73\", \"title\":\"power of attorney\"},\r\n  \"rows\": 20,\r\n  \"sortByColumn\": \"type\",\r\n  \"sortOrder\": \"desc\",\r\n  \"start\": 0\r\n}\n E.g. 3. {}\n <em><strong>Please DO NOT copy/paste, rather type in.</strong></em> For more filter values, refer to the response of above GET (/documents) end point for the documents",
+                "operationId": "searchDecisionsWithFiltersUsingPOST",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "searchInput",
+                        "description": "Searches Decision Outcomes.",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/SearchInput"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/DecisionSearchRecord"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Requestor must authenticate in order to access resource"
+                    },
+                    "404": {
+                        "description": "Resouce not found or query did not return any data"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/documents": {
+            "get": {
+                "tags": [
+                    "documents"
+                ],
+                "summary": "Return PTAB Public Documents",
+                "description": "Returns PTAB Public Documents for given search input. No required parameters. Parameters may be provided to filter the result set. Repeated filter query parameters will be logical \"OR\" rather than logical \"AND\" Invalid query parameter values will be ignored.",
+                "operationId": "getDocumentParametersUsingGET",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "applicationNumberText",
+                        "in": "query",
+                        "description": "Filters by the application Number",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "documentFilingDate",
+                        "in": "query",
+                        "description": "Filters by the date (YYYY-MM-DD) a document was filed.",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "documentFilingFromDate",
+                        "in": "query",
+                        "description": "Filters by documents filed on or before the given date (YYYY-MM-DD). If this date is given then documentFilingDateTo is mandatory to provide to get the results",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "documentFilingToDate",
+                        "in": "query",
+                        "description": "Filters by documents filed on or after the given date (YYYY-MM-DD).",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "documentIdentifier",
+                        "in": "query",
+                        "description": "Filters by the Document Id",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "documentName",
+                        "in": "query",
+                        "description": "Filters by the Document Name",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "documentNumber",
+                        "in": "query",
+                        "description": "Filters by the document Number",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "documentTitleText",
+                        "in": "query",
+                        "description": "Filters by Document title",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "documentTypeName",
+                        "in": "query",
+                        "description": "Filters by the document Type such as notice, Mandatory Notice, motion, opposition, power of attorney, rehearing request, order, Judge Working File, Petion, etc.",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "filingPartyCategory",
+                        "in": "query",
+                        "description": "Filters by the party who filed the document. Values are petitioner, patent_owner, board, or potential_patent_owner",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "partyName",
+                        "in": "query",
+                        "description": "Filters by the Petitioner Party Name",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "patentOwnerName",
+                        "in": "query",
+                        "description": "Filters by the patent Owner Name",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "proceedingNumber",
+                        "in": "query",
+                        "description": "Filters by the proceeding NUmber",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "proceedingTypeCategory",
+                        "in": "query",
+                        "description": "Filters by the proceeding Type",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "recordStartNumber",
+                        "in": "query",
+                        "description": "Filters the documents from the start point e.g 0 / 4 / 6",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "recordTotalQuantity",
+                        "in": "query",
+                        "description": "Filters according to the size of the document like 10,20",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "sortOrderCategory",
+                        "in": "query",
+                        "description": "Dictates how the result set is to be sorted. The value of the parameter may be any property name of the Document model. The parameter value may be prefixed with a - to sort descendingly or with a + to sort ascendingly. Ascendingly is the default direction if no prefix is specified.Multiple sort parameters are applied in the order specified within the query string. For example, sort=documentNumber&sort=-filingDate means \"first sort by document number asecndingly, then by filing date, from most recent to least recent.\"",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/DocumentSearchRecord"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "Resouce not found"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/documents.zip/{proceedingNumber}/download": {
+            "get": {
+                "tags": [
+                    "documents"
+                ],
+                "summary": "Download all documents of certain proceeding number in one zip file",
+                "description": "Download all documents in one zip file for a given proceeding number\n",
+                "operationId": "downloadTrialDocumentsUsingGET",
+                "produces": [
+                    "application/octet-stream"
+                ],
+                "parameters": [
+                    {
+                        "name": "proceedingNumber",
+                        "in": "path",
+                        "description": "Proceeding Number",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "array",
+                                "items": {
+                                    "type": "integer",
+                                    "format": "int32",
+                                    "minimum": -128,
+                                    "maximum": 127
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Requestor must authenticate in order to access resource"
+                    },
+                    "404": {
+                        "description": "Resouce not found or query did not return any data"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/documents/json": {
+            "post": {
+                "tags": [
+                    "documents"
+                ],
+                "summary": "Return PTAB Public Documents",
+                "description": "Returns PTAB Public Documents for given search input. Here are some examples of input format:\n\n E.g. 1.\n{\r\n  \"facetMap\": {\"filingParty\": [\"board\"]},\r\n  \"paramMap\": {},\r\n  \"rows\": 10,\r\n  \"start\": 2\r\n}\n\n E.g. 2. \n{\r\n  \"facetMap\": {\"filingParty\": [\"board\", \"petitioner\"], \"type\": [\"notice\"]},\r\n  \"paramMap\": {\"documentNumber\":\"73\", \"title\":\"power of attorney\"},\r\n  \"rows\": 20,\r\n  \"sortByColumn\": \"type\",\r\n  \"sortOrder\": \"desc\",\r\n  \"start\": 0\r\n}\n\n E.g. 3. {}\n\n E.g. 4. \n{\r\n\"dateRangeMap\": {\"filingDatetime\": {\"start\": \"2014-03-12\", \"end\": \"2014-03-15\"}},\r\n  \"sortMapArray\": [\r\n    {\"type\":\"asc\"}, {\"title\":\"desc\"}\r\n  ],\r\n  \"rows\": 15,\r\n  \"start\": 6\r\n}\n\n <em><strong>Please DO NOT copy/paste, rather type in to avoid ascii chars issue or something else.</strong></em>\n\nFor more filter/param values for Documents, refer to the response of above GET (/documents) end point.",
+                "operationId": "searchDocumentsWithFiltersUsingPOST",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "searchInput",
+                        "description": "Searches Documents.",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/SearchInput"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/DocumentSearchRecord"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Requestor must authenticate in order to access resource"
+                    },
+                    "404": {
+                        "description": "Resouce not found or query did not return any data"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/documents/{documentIdentifier}/download": {
+            "get": {
+                "tags": [
+                    "documents"
+                ],
+                "summary": "Download a single document of certain document id",
+                "description": "Download a single document for a given document id\n",
+                "operationId": "downloadSingleDocumentUsingGET",
+                "produces": [
+                    "application/octet-stream"
+                ],
+                "parameters": [
+                    {
+                        "name": "documentIdentifier",
+                        "in": "path",
+                        "description": "document Id",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "array",
+                                "items": {
+                                    "type": "integer",
+                                    "format": "int32",
+                                    "minimum": -128,
+                                    "maximum": 127
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Requestor must authenticate in order to access resource"
+                    },
+                    "404": {
+                        "description": "Resouce not found or query did not return any data"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/proceedingAggregationData": {
+            "get": {
+                "tags": [
+                    "proceedings"
+                ],
+                "summary": "Return aggregations for Public PTAB Proceedings",
+                "description": "Return aggregations for Public PTAB Proceedings",
+                "operationId": "proceedingAggregationDataUsingGET",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "proceedingFilingFromDate",
+                        "in": "query",
+                        "description": "Filters by the proceedingFilingFromDate of document on and after (in yyyy-mm format). If this date is given then lastModifiedDateTo is mandatory to provide to get the results",
+                        "required": true,
+                        "type": "string",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "proceedingFilingToDate",
+                        "in": "query",
+                        "description": "Filters by the proceedingFilingToDate of document on and before (in yyyy-mm format)",
+                        "required": true,
+                        "type": "string",
+                        "allowEmptyValue": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/ProceedingSearchRecord"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Requestor must authenticate in order to access resource"
+                    },
+                    "404": {
+                        "description": "Resouce not found or query did not return any data"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/proceedings": {
+            "get": {
+                "tags": [
+                    "proceedings"
+                ],
+                "summary": "Return Public PTAB Proceeding Information based on filter input",
+                "description": "No required parameter. By default all trials metadata would return. Filters are optional parameters that can be used to reduce the number of result.",
+                "operationId": "getProceedingsUsingGET",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "accordedFilingDate",
+                        "in": "query",
+                        "description": "Filters by the accordedFilingDate of document in yyyy-mm-dd format",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "accordedFilingFromDate",
+                        "in": "query",
+                        "description": "Filters by the accordedFilingDate of document on and after (in yyyy-mm-dd format). If this date is given then lastModifiedDateTo is mandatory to provide to get the results",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "accordedFilingToDate",
+                        "in": "query",
+                        "description": "Filters by the accordedFilingDate of document on and before (in yyyy-mm-dd format)",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "applicationNumberText",
+                        "in": "query",
+                        "description": "Filters by the Application Number",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "grantDate",
+                        "in": "query",
+                        "description": "Filters by the grantDate of document in yyyy-mm-dd format",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "grantFromDate",
+                        "in": "query",
+                        "description": "Filters by the grantDate of document on and after (in yyyy-mm-dd format). If this date is given then lastModifiedDateTo is mandatory to provide to get the results",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "grantToDate",
+                        "in": "query",
+                        "description": "Filters by the grantDate of document on and before (in yyyy-mm-dd format)",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "institutionDecisionDate",
+                        "in": "query",
+                        "description": "Filters by the institutionDecisionDate of document in yyyy-mm-dd format",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "institutionDecisionFromDate",
+                        "in": "query",
+                        "description": "Filters by the institutionDecisionDate of document on and after (in yyyy-mm-dd format). If this date is given then lastModifiedDateTo is mandatory to provide to get the results",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "institutionDecisionToDate",
+                        "in": "query",
+                        "description": "Filters by the institutionDecisionDate of document on and before (in yyyy-mm-dd format)",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "inventorName",
+                        "in": "query",
+                        "description": "Filters by the Inventor  Name",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "partyName",
+                        "in": "query",
+                        "description": "Filters by the Petitioner Name",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "patentNumber",
+                        "in": "query",
+                        "description": "Filters by the Patent Number",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "patentOwnerName",
+                        "in": "query",
+                        "description": "Filters by the Patent Owner Name",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "proceedingFilingDate",
+                        "in": "query",
+                        "description": "Filters by the proceedingFilingDate of document in yyyy-mm-dd format",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "proceedingFilingFromDate",
+                        "in": "query",
+                        "description": "Filters by the proceedingFilingDate of document on and after (in yyyy-mm-dd format). If this date is given then lastModifiedDateTo is mandatory to provide to get the results",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "proceedingFilingToDate",
+                        "in": "query",
+                        "description": "Filters by the proceedingFilingDate of document on and before (in yyyy-mm-dd format)",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "proceedingLastModifiedDate",
+                        "in": "query",
+                        "description": "Filters by the proceedingLastModifiedDate of document in yyyy-mm-dd format",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "proceedingLastModifiedFromDate",
+                        "in": "query",
+                        "description": "Filters by the proceedingLastModifiedDate of document on and after (in yyyy-mm-dd format). If this date is given then lastModifiedDateTo is mandatory to provide to get the results",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "proceedingLastModifiedToDate",
+                        "in": "query",
+                        "description": "Filters by the proceedingLastModifiedDate of document on and before (in yyyy-mm-dd format)",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "proceedingNumber",
+                        "in": "query",
+                        "description": "Filters by the proceeding Number",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "proceedingStatusCategory",
+                        "in": "query",
+                        "description": "Filters by the Proceeding status",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "proceedingTypeCategory",
+                        "in": "query",
+                        "description": "Filters by the proceeding Type",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "recordStartNumber",
+                        "in": "query",
+                        "description": "Filters the documents from the start point e.g 0 / 4 / 6",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "recordTotalQuantity",
+                        "in": "query",
+                        "description": "recordTotalQuantity",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "sortOrderCategory",
+                        "in": "query",
+                        "description": "Dictates how the result set is to be sorted. The value of the parameter may be any property name of the Document model. The parameter value may be prefixed with a - to sort descendingly or with a + to sort ascendingly. Ascendingly is the default direction if no prefix is specified.Multiple sort parameters are applied in the order specified within the query string. For example, sort=documentNumber&sort=-filingDate means \"first sort by document number asecndingly, then by filing date, from most recent to least recent.\"",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "subproceedingTypeCategory",
+                        "in": "query",
+                        "description": "Filters by the sub proceeding Type",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": false
+                    },
+                    {
+                        "name": "technologyCenterNumber",
+                        "in": "query",
+                        "description": "Filters by the Tech center Number",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/ProceedingSearchRecord"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "Resouce not found"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/proceedings/json": {
+            "post": {
+                "tags": [
+                    "proceedings"
+                ],
+                "summary": "Return Public PTAB Proceedings Information",
+                "description": "Return PTAB Proceedings Information for given search input. Here are some examples of input format:\n E.g. 1. \n {\r\n  \"facetMap\": {\"prosecutionStatus\": [\"FWD Entered\"]},\r\n  \"paramMap\": {},\r\n  \"rows\": 0,\r\n  \"sortByColumn\": \"string\",\r\n  \"sortOrder\": \"string\",\r\n  \"start\": 0\r\n}\n E.g. 2. \n{\r\n  \"facetMap\": {\"petitionerName\": [\"Liberty Mutual Insurance Company\", \"SAP America, Inc.\"]},\r\n  \"paramMap\": {\"proceedingNumber\":\"CBM2012-00001\", \"patentNumber\":\"6553350\"},\r\n  \"rows\": 20,\r\n  \"sortByColumn\": \"patentNumber\",\r\n  \"sortOrder\": \"desc\",\r\n  \"start\": 0\r\n}\n E.g. 3. {}\n <em><strong>Please DO NOT copy/paste, rather type in.</strong></em> For more filter values, refer to the response of above GET (/trials) end point for the trials",
+                "operationId": "searchProceedingsWithFiltersUsingPOST",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "searchInput",
+                        "description": "Searches Public Ptab Proceedings.",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/SearchInput"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/ProceedingSearchRecord"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Requestor must authenticate in order to access resource"
+                    },
+                    "404": {
+                        "description": "Resouce not found or query did not return any data"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                },
+                "deprecated": false
+            }
+        }
+    },
+    "definitions": {
+        "AggregationInfo": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "nestedFacetBag": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/AggregationInfo"
+                    }
+                },
+                "nestedFacetTypeName": {
+                    "type": "string"
+                },
+                "quantity": {
+                    "type": "integer",
+                    "format": "int64"
+                }
+            },
+            "title": "AggregationInfo"
+        },
+        "DecisionSearchRecord": {
+            "type": "object",
+            "properties": {
+                "additionalRespondentPartyData": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/PartyRecord"
+                    }
+                },
+                "appellantApplicationNumberText": {
+                    "type": "string"
+                },
+                "appellantCounselName": {
+                    "type": "string"
+                },
+                "appellantGrantDate": {
+                    "type": "string"
+                },
+                "appellantGroupArtUnitNumber": {
+                    "type": "string"
+                },
+                "appellantInventorName": {
+                    "type": "string"
+                },
+                "appellantPartyName": {
+                    "type": "string"
+                },
+                "appellantPatentNumber": {
+                    "type": "string"
+                },
+                "appellantPatentOwnerName": {
+                    "type": "string"
+                },
+                "appellantPublicationDate": {
+                    "type": "string"
+                },
+                "appellantPublicationNumber": {
+                    "type": "string"
+                },
+                "appellantTechnologyCenterNumber": {
+                    "type": "string"
+                },
+                "boardRulings": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "decisionDate": {
+                    "type": "string"
+                },
+                "decisionTypeCategory": {
+                    "type": "string"
+                },
+                "documentIdentifier": {
+                    "type": "string"
+                },
+                "documentName": {
+                    "type": "string"
+                },
+                "identifier": {
+                    "type": "string"
+                },
+                "issueType": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "lastModifiedDate": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "lastModifiedUserId": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "objectUuId": {
+                    "type": "string"
+                },
+                "ocrSearchText": {
+                    "type": "string"
+                },
+                "petitionerApplicationNumberText": {
+                    "type": "string"
+                },
+                "petitionerCounselName": {
+                    "type": "string"
+                },
+                "petitionerGrantDate": {
+                    "type": "string"
+                },
+                "petitionerGroupArtUnitNumber": {
+                    "type": "string"
+                },
+                "petitionerInventorName": {
+                    "type": "string"
+                },
+                "petitionerPartyName": {
+                    "type": "string"
+                },
+                "petitionerPatentNumber": {
+                    "type": "string"
+                },
+                "petitionerPatentOwnerName": {
+                    "type": "string"
+                },
+                "petitionerTechnologyCenterNumber": {
+                    "type": "string"
+                },
+                "proceedingNumber": {
+                    "type": "string"
+                },
+                "proceedingTypeCategory": {
+                    "type": "string"
+                },
+                "respondentApplicationNumberText": {
+                    "type": "string"
+                },
+                "respondentCounselName": {
+                    "type": "string"
+                },
+                "respondentGrantDate": {
+                    "type": "string"
+                },
+                "respondentGroupArtUnitNumber": {
+                    "type": "string"
+                },
+                "respondentInventorName": {
+                    "type": "string"
+                },
+                "respondentPartyName": {
+                    "type": "string"
+                },
+                "respondentPatentNumber": {
+                    "type": "string"
+                },
+                "respondentPatentOwnerName": {
+                    "type": "string"
+                },
+                "respondentPublicationDate": {
+                    "type": "string"
+                },
+                "respondentPublicationNumber": {
+                    "type": "string"
+                },
+                "respondentTechnologyCenterNumber": {
+                    "type": "string"
+                },
+                "secondRespondentApplNumberText": {
+                    "type": "string"
+                },
+                "secondRespondentCounselName": {
+                    "type": "string"
+                },
+                "secondRespondentGAUNumber": {
+                    "type": "string"
+                },
+                "secondRespondentGrantDate": {
+                    "type": "string"
+                },
+                "secondRespondentInventorName": {
+                    "type": "string"
+                },
+                "secondRespondentPartyName": {
+                    "type": "string"
+                },
+                "secondRespondentPatentNumber": {
+                    "type": "string"
+                },
+                "secondRespondentPatentOwnerName": {
+                    "type": "string"
+                },
+                "secondRespondentPubNumber": {
+                    "type": "string"
+                },
+                "secondRespondentPublicationDate": {
+                    "type": "string"
+                },
+                "secondRespondentTechCenterNumber": {
+                    "type": "string"
+                },
+                "styleNameText": {
+                    "type": "string"
+                },
+                "subdecisionTypeCategory": {
+                    "type": "string"
+                },
+                "subproceedingTypeCategory": {
+                    "type": "string"
+                },
+                "thirdPartyName": {
+                    "type": "string"
+                }
+            },
+            "title": "DecisionSearchRecord"
+        },
+        "DocumentSearchRecord": {
+            "type": "object",
+            "properties": {
+                "additionalRespondentPartyData": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/PartyRecord"
+                    }
+                },
+                "appellantApplicationNumberText": {
+                    "type": "string"
+                },
+                "appellantCounselName": {
+                    "type": "string"
+                },
+                "appellantGrantDate": {
+                    "type": "string"
+                },
+                "appellantGroupArtUnitNumber": {
+                    "type": "string"
+                },
+                "appellantInventorName": {
+                    "type": "string"
+                },
+                "appellantPartyName": {
+                    "type": "string"
+                },
+                "appellantPatentNumber": {
+                    "type": "string"
+                },
+                "appellantPatentOwnerName": {
+                    "type": "string"
+                },
+                "appellantPublicationDate": {
+                    "type": "string"
+                },
+                "appellantPublicationNumber": {
+                    "type": "string"
+                },
+                "appellantTechnologyCenterNumber": {
+                    "type": "string"
+                },
+                "documentCategory": {
+                    "type": "string"
+                },
+                "documentFilingDate": {
+                    "type": "string"
+                },
+                "documentIdentifier": {
+                    "type": "string"
+                },
+                "documentName": {
+                    "type": "string"
+                },
+                "documentNumber": {
+                    "type": "string"
+                },
+                "documentSize": {
+                    "type": "string"
+                },
+                "documentTitleText": {
+                    "type": "string"
+                },
+                "documentTypeName": {
+                    "type": "string"
+                },
+                "filingPartyCategory": {
+                    "type": "string"
+                },
+                "lastModifiedDate": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "lastModifiedUserId": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "mediaTypeCategory": {
+                    "type": "string"
+                },
+                "objectUuId": {
+                    "type": "string"
+                },
+                "petitionerApplicationNumberText": {
+                    "type": "string"
+                },
+                "petitionerCounselName": {
+                    "type": "string"
+                },
+                "petitionerGrantDate": {
+                    "type": "string"
+                },
+                "petitionerGroupArtUnitNumber": {
+                    "type": "string"
+                },
+                "petitionerInventorName": {
+                    "type": "string"
+                },
+                "petitionerPartyName": {
+                    "type": "string"
+                },
+                "petitionerPatentNumber": {
+                    "type": "string"
+                },
+                "petitionerPatentOwnerName": {
+                    "type": "string"
+                },
+                "petitionerTechnologyCenterNumber": {
+                    "type": "string"
+                },
+                "proceedingNumber": {
+                    "type": "string"
+                },
+                "proceedingTypeCategory": {
+                    "type": "string"
+                },
+                "respondentApplicationNumberText": {
+                    "type": "string"
+                },
+                "respondentCounselName": {
+                    "type": "string"
+                },
+                "respondentGrantDate": {
+                    "type": "string"
+                },
+                "respondentGroupArtUnitNumber": {
+                    "type": "string"
+                },
+                "respondentInventorName": {
+                    "type": "string"
+                },
+                "respondentPartyName": {
+                    "type": "string"
+                },
+                "respondentPatentNumber": {
+                    "type": "string"
+                },
+                "respondentPatentOwnerName": {
+                    "type": "string"
+                },
+                "respondentPublicationDate": {
+                    "type": "string"
+                },
+                "respondentPublicationNumber": {
+                    "type": "string"
+                },
+                "respondentTechnologyCenterNumber": {
+                    "type": "string"
+                },
+                "secondRespondentApplNumberText": {
+                    "type": "string"
+                },
+                "secondRespondentCounselName": {
+                    "type": "string"
+                },
+                "secondRespondentGAUNumber": {
+                    "type": "string"
+                },
+                "secondRespondentGrantDate": {
+                    "type": "string"
+                },
+                "secondRespondentInventorName": {
+                    "type": "string"
+                },
+                "secondRespondentPartyName": {
+                    "type": "string"
+                },
+                "secondRespondentPatentNumber": {
+                    "type": "string"
+                },
+                "secondRespondentPatentOwnerName": {
+                    "type": "string"
+                },
+                "secondRespondentPubNumber": {
+                    "type": "string"
+                },
+                "secondRespondentPublicationDate": {
+                    "type": "string"
+                },
+                "secondRespondentTechCenterNumber": {
+                    "type": "string"
+                },
+                "styleNameText": {
+                    "type": "string"
+                },
+                "subproceedingTypeCategory": {
+                    "type": "string"
+                },
+                "thirdPartyName": {
+                    "type": "string"
+                }
+            },
+            "title": "DocumentSearchRecord"
+        },
+        "FacetMapInput": {
+            "type": "object",
+            "properties": {
+                "nestedFacetNameBag": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "nestedFacetTypeName": {
+                    "type": "string"
+                },
+                "value": {
+                    "type": "string"
+                }
+            },
+            "title": "FacetMapInput"
+        },
+        "Map«string,string»": {
+            "type": "object",
+            "title": "Map«string,string»",
+            "additionalProperties": {
+                "type": "string"
+            }
+        },
+        "PartyRecord": {
+            "type": "object",
+            "properties": {
+                "inventorName": {
+                    "type": "string"
+                },
+                "partyName": {
+                    "type": "string"
+                },
+                "patentApplicationNumber": {
+                    "type": "string"
+                },
+                "patentNumber": {
+                    "type": "string"
+                }
+            },
+            "title": "PartyRecord"
+        },
+        "ProceedingSearchRecord": {
+            "type": "object",
+            "properties": {
+                "accordedFilingDate": {
+                    "type": "string"
+                },
+                "additionalRespondentPartyData": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/PartyRecord"
+                    }
+                },
+                "appellantApplicationNumberText": {
+                    "type": "string"
+                },
+                "appellantCounselName": {
+                    "type": "string"
+                },
+                "appellantGrantDate": {
+                    "type": "string"
+                },
+                "appellantGroupArtUnitNumber": {
+                    "type": "string"
+                },
+                "appellantInventorName": {
+                    "type": "string"
+                },
+                "appellantPartyName": {
+                    "type": "string"
+                },
+                "appellantPatentNumber": {
+                    "type": "string"
+                },
+                "appellantPatentOwnerName": {
+                    "type": "string"
+                },
+                "appellantPublicationDate": {
+                    "type": "string"
+                },
+                "appellantPublicationNumber": {
+                    "type": "string"
+                },
+                "appellantTechnologyCenterNumber": {
+                    "type": "string"
+                },
+                "decisionDate": {
+                    "type": "string"
+                },
+                "declarationDate": {
+                    "type": "string"
+                },
+                "docketNoticeMailDate": {
+                    "type": "string"
+                },
+                "documents": {
+                    "type": "string"
+                },
+                "institutionDecisionDate": {
+                    "type": "string"
+                },
+                "lastModifiedDate": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "lastModifiedUserId": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "petitionerApplicationNumberText": {
+                    "type": "string"
+                },
+                "petitionerCounselName": {
+                    "type": "string"
+                },
+                "petitionerGrantDate": {
+                    "type": "string"
+                },
+                "petitionerGroupArtUnitNumber": {
+                    "type": "string"
+                },
+                "petitionerInventorName": {
+                    "type": "string"
+                },
+                "petitionerPartyName": {
+                    "type": "string"
+                },
+                "petitionerPatentNumber": {
+                    "type": "string"
+                },
+                "petitionerPatentOwnerName": {
+                    "type": "string"
+                },
+                "petitionerTechnologyCenterNumber": {
+                    "type": "string"
+                },
+                "proceedingFilingDate": {
+                    "type": "string"
+                },
+                "proceedingLastModifiedDate": {
+                    "type": "string"
+                },
+                "proceedingNumber": {
+                    "type": "string"
+                },
+                "proceedingStatusCategory": {
+                    "type": "string"
+                },
+                "proceedingTypeCategory": {
+                    "type": "string"
+                },
+                "respondentApplicationNumberText": {
+                    "type": "string"
+                },
+                "respondentCounselName": {
+                    "type": "string"
+                },
+                "respondentGrantDate": {
+                    "type": "string"
+                },
+                "respondentGroupArtUnitNumber": {
+                    "type": "string"
+                },
+                "respondentInventorName": {
+                    "type": "string"
+                },
+                "respondentPartyName": {
+                    "type": "string"
+                },
+                "respondentPatentNumber": {
+                    "type": "string"
+                },
+                "respondentPatentOwnerName": {
+                    "type": "string"
+                },
+                "respondentPublicationDate": {
+                    "type": "string"
+                },
+                "respondentPublicationNumber": {
+                    "type": "string"
+                },
+                "respondentTechnologyCenterNumber": {
+                    "type": "string"
+                },
+                "secondRespondentApplNumberText": {
+                    "type": "string"
+                },
+                "secondRespondentCounselName": {
+                    "type": "string"
+                },
+                "secondRespondentGAUNumber": {
+                    "type": "string"
+                },
+                "secondRespondentGrantDate": {
+                    "type": "string"
+                },
+                "secondRespondentInventorName": {
+                    "type": "string"
+                },
+                "secondRespondentPartyName": {
+                    "type": "string"
+                },
+                "secondRespondentPatentNumber": {
+                    "type": "string"
+                },
+                "secondRespondentPatentOwnerName": {
+                    "type": "string"
+                },
+                "secondRespondentPubNumber": {
+                    "type": "string"
+                },
+                "secondRespondentPublicationDate": {
+                    "type": "string"
+                },
+                "secondRespondentTechCenterNumber": {
+                    "type": "string"
+                },
+                "styleNameText": {
+                    "type": "string"
+                },
+                "subproceedingTypeCategory": {
+                    "type": "string"
+                },
+                "thirdPartyName": {
+                    "type": "string"
+                }
+            },
+            "title": "ProceedingSearchRecord"
+        },
+        "SearchInput": {
+            "type": "object",
+            "properties": {
+                "actionDownload": {
+                    "type": "boolean"
+                },
+                "dateRangeData": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "facetData": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/definitions/FacetMapInput"
+                        }
+                    }
+                },
+                "parameterData": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    }
+                },
+                "recordStartNumber": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "recordTotalQuantity": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "searchText": {
+                    "type": "string"
+                },
+                "sortDataBag": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Map«string,string»"
+                    }
+                }
+            },
+            "title": "SearchInput"
+        },
+        "SearchOutput": {
+            "type": "object",
+            "properties": {
+                "aggregationData": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/definitions/AggregationInfo"
+                        }
+                    }
+                },
+                "recordTotalQuantity": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "responseMessage": {
+                    "type": "string"
+                },
+                "results": {
+                    "type": "object"
+                }
+            },
+            "title": "SearchOutput"
+        }
+    }
+}

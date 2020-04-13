@@ -1,15 +1,25 @@
 import math
-from typing import Iterable, Generic
+from typing import Generic
+from typing import Iterable
+
 import inflection
-
-from patent_client.util import Manager, ModelType
 from patent_client import session
+from patent_client.util import Manager
+from patent_client.util import ModelType
 
-from .schema import PtabProceedingSchema, PtabDocumentSchema, PtabDecisionSchema
-from .model import PtabProceeding, PtabDocument, PtabDecision
-from .util import conversions, peds_to_ptab
+from . import schema_doc
+from .model import PtabDecision
+from .model import PtabDocument
+from .model import PtabProceeding
+from .schema import PtabDecisionSchema
+from .schema import PtabDocumentSchema
+from .schema import PtabProceedingSchema
+from .util import conversions
+from .util import peds_to_ptab
+
 
 class PtabManager(Manager, Generic[ModelType]):
+    url = "https://developer.uspto.gov/ptab-api"
     page_size = 25
     instance_schema = None
 
@@ -39,7 +49,7 @@ class PtabManager(Manager, Generic[ModelType]):
     def get_page(self, page_no):
         query = self.query()
         query["recordStartNumber"] = page_no * self.page_size
-        response = session.get(self.query_url, params=query)
+        response = session.get(self.url + self.path, params=query)
         return response.json()["results"]
 
     def __len__(self):
@@ -50,7 +60,7 @@ class PtabManager(Manager, Generic[ModelType]):
             return length
 
     def _len(self):
-        response = session.get(self.query_url, params=self.query())
+        response = session.get(self.url + self.path, params=self.query())
         return response.json()["recordTotalQuantity"]
 
     def query(self):
@@ -66,18 +76,24 @@ class PtabManager(Manager, Generic[ModelType]):
         )
         return query
 
+    def allowed_filters(self):
+        params = schema_doc["paths"][self.path]["get"]["parameters"]
+        return {inflection.underscore(p["name"]): p["description"] for p in params}
+
+
 class PtabProceedingManager(PtabManager[PtabProceeding]):
-    query_url = "https://developer.uspto.gov/ptab-api/proceedings"
+    path = "/proceedings"
     primary_key = "proceeding_number"
     __schema__ = PtabProceedingSchema()
 
 
 class PtabDocumentManager(PtabManager[PtabDocument]):
-    query_url = "https://developer.uspto.gov/ptab-api/documents"
+    path = "/documents"
     primary_key = "document_identifier"
     __schema__ = PtabDocumentSchema()
 
+
 class PtabDecisionManager(PtabManager[PtabDecision]):
-    query_url = "https://developer.uspto.gov/ptab-api/decisions"
+    path = "/decisions"
     primary_key = "identifier"
     __schema__ = PtabDecisionSchema()

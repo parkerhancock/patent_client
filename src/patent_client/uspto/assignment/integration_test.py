@@ -1,7 +1,9 @@
+import datetime
 import os
 from tempfile import TemporaryDirectory
-import datetime
+
 import pytest
+
 from .model import Assignment
 
 
@@ -30,7 +32,7 @@ class TestAssignment:
         assignments = Assignment.objects.filter(patent_number=6095661)
         assignment = assignments[0]
         assert (
-            assignment.image_url
+            assignment._image_url
             == "http://legacy-assignments.uspto.gov/assignments/assignment-pat-038505-0128.pdf"
         )
 
@@ -52,7 +54,7 @@ class TestAssignment:
 
     @pytest.mark.skip("Lookup api does not support multiple inputs")
     def test_can_fetch_multiple(self):
-        assignments = Assignment.objects.filter(appl_id=['13089872', '15216946'])
+        assignments = Assignment.objects.filter(appl_id=["13089872", "15216946"])
         assert assignments.count() == 5
 
 

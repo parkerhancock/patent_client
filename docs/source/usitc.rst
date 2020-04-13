@@ -1,7 +1,12 @@
 USITC EDIS
 ^^^^^^^^^^
+API URL: https://www.usitc.gov/docket_services/documents/EDIS3WebServiceGuide.pdf
+
 .. note::
     Only publicly accessible documents are available. Any document that is marked confidential is not accessible.
+
+.. warning::
+    The document download feature is currently inoperative.
 
 Patent Client provides an interface to the USITC EDIS API. Note that this is a very restricted subset
 of the overall EDIS system, and does not permit searching - only direct lookups. The data is structured
@@ -12,12 +17,13 @@ the original file is the first-named attachment.
 .. code-block:: python
 
     >>> from patent_client import ITCInvestigation
-    >>> inv = ITCInvestigation.objects.get('337-971')
+    >>> inv = ITCInvestigation.objects.get('337-TA-971')
     >>> inv.documents[5].title
-    "Sizewise's Initial Comments Supporting Vacatur"
-    >>> inv.documents[5].attachments[0].title
-    "Sizewise Brief Supporting Vacatur"
-    >>> inv.documents[5].attachments[0].download()
-    # returns a tempfile.NamedTemporaryFile object with the download
+    'Commission Opinion'
 
-Original API URL: https://www.usitc.gov/docket_services/documents/EDIS3WebServiceGuide.pdf
+Models
+======
+
+.. automodule:: patent_client.usitc.model
+    :members:
+    :undoc-members:

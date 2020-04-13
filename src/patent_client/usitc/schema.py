@@ -1,23 +1,29 @@
-import xml.etree.ElementTree as ET
 import importlib
-from marshmallow import Schema, fields, EXCLUDE, pre_load, post_load
+import xml.etree.ElementTree as ET
+
+from marshmallow import EXCLUDE
+from marshmallow import fields
+from marshmallow import post_load
+from marshmallow import pre_load
+from marshmallow import Schema
 from patent_client.util.manager import resolve
 
-#from .model import ITCInvestigation, ITCDocument, ITCAttachment
+# from .model import ITCInvestigation, ITCDocument, ITCAttachment
+
 
 class BaseSchema(Schema):
     def __init__(self, *args, **kwargs):
         super(BaseSchema, self).__init__(*args, **kwargs)
-        parent_module = __name__.rsplit('.', 1)[0]
-        models = importlib.import_module('.model', parent_module)
-        self.__model__ = getattr(models, self.__class__.__name__.replace('Schema', ''))
+        parent_module = __name__.rsplit(".", 1)[0]
+        models = importlib.import_module(".model", parent_module)
+        self.__model__ = getattr(models, self.__class__.__name__.replace("Schema", ""))
 
     @post_load
     def make_object(self, data, **kwargs):
-        if hasattr(self, '__model__'):
+        if hasattr(self, "__model__"):
             return self.__model__(**data)
         return data
-    
+
 
 class ITCInvestigationSchema(BaseSchema):
     number = fields.Str()
@@ -25,7 +31,7 @@ class ITCInvestigationSchema(BaseSchema):
     status = fields.Str()
     title = fields.Str()
     type = fields.Str()
-    docket_number = fields.Str()
+    docket_number = fields.Str(allow_none=True)
 
     @pre_load
     def pre_load(self, xml_string, *args, **kwargs):
@@ -38,6 +44,7 @@ class ITCInvestigationSchema(BaseSchema):
             "type": tree.find("investigationType").text,
             "docket_number": tree.find("docketNumber").text,
         }
+
 
 class ITCDocumentSchema(BaseSchema):
     id = fields.Int()
@@ -52,7 +59,6 @@ class ITCDocumentSchema(BaseSchema):
     memorandum_control_number = fields.Str(allow_none=True)
     date = fields.Date()
     last_modified = fields.DateTime()
-
 
     @pre_load
     def pre_load(self, etree_el, *args, **kwargs):
@@ -75,9 +81,10 @@ class ITCDocumentSchema(BaseSchema):
             data[key] = etree_el.find(value).text
         return data
 
-    class Meta():
+    class Meta:
         dateformat = "%Y/%m/%d 00:00:00"
         datetimeformat = "%Y/%m/%d %H:%M:%S"
+
 
 class ITCAttachmentSchema(BaseSchema):
     id = fields.Int()
@@ -86,8 +93,8 @@ class ITCAttachmentSchema(BaseSchema):
     file_size = fields.Int()
     file_name = fields.Str()
     pages = fields.Int()
-    created_date = fields.DateTime(format='%Y/%m/%d %H:%M:%S')
-    last_modified_date = fields.DateTime(format='%Y/%m/%d %H:%M:%S')
+    created_date = fields.DateTime(format="%Y/%m/%d %H:%M:%S")
+    last_modified_date = fields.DateTime(format="%Y/%m/%d %H:%M:%S")
 
     @pre_load
     def pre_load(self, etree_el, *args, **kwargs):

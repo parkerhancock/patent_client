@@ -21,8 +21,7 @@ author = "Parker Hancock"
 
 # The full version, including alpha/beta/rc tags
 
-version = release = "2.0.1"
-
+version = release = "2.0.2"
 
 
 # -- General configuration ---------------------------------------------------
@@ -184,6 +183,8 @@ epub_exclude_files = ["search.html"]
 
 
 # -- Extension configuration -------------------------------------------------
+
+autodoc_member_order = "bysource"
 
 # -- Options for intersphinx extension ---------------------------------------
 
