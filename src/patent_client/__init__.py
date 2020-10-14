@@ -30,7 +30,7 @@ CACHE_CONFIG = dict(
 
 session = requests_cache.CachedSession(**CACHE_CONFIG)
 session.cache.remove_old_entries(datetime.datetime.utcnow() - cache_max_age)
-session.headers["User-Agent"] = f"Python Patent Clientbot/{__version__} (pypatent2018@gmail.com)"
+session.headers["User-Agent"] = f"Python Patent Clientbot/{__version__} (parkerhancock@users.noreply.github.com)"
 
 # Install a default retry on the session using urrlib3
 retry = Retry(total=5, backoff_factor=0.2)

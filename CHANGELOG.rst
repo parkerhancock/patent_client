@@ -2,6 +2,11 @@
 Changelog
 =========
 
+2.0.3 (2020-10-14)
+------------------
+* Merge pull request ensuring that INPADOC produces consistent typing (PR #37)
+* Update dev dependencies in Pipfile
+
 2.0.2 (2020-04-13)
 ------------------
 * Added foreign priority support back to PEDS API
