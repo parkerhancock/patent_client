@@ -35,7 +35,7 @@ setup(
         re.sub(":[a-z]+:`~?(.*?)`", r"``\1``", read("CHANGELOG.rst")),
     ),
     author="Parker Douglas Hancock",
-    author_email="parker.hancock@protonmail.com",
+    author_email="parkerhancock@users.noreply.github.com",
     url="https://github.com/parkerhancock/patent_client",
     packages=find_packages("src"),
     package_dir={"": "src"},
