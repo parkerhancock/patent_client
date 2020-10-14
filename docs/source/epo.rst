@@ -32,6 +32,7 @@ Each case can also access Full Text, Images, and Inpadoc Families
      InpadocFamilyMember(publication=CA2887530C),
      InpadocFamilyMember(publication=CN104968889A),
      InpadocFamilyMember(publication=CN104968889B),
+     InpadocFamilyMember(publication=EP3640426A1),
      InpadocFamilyMember(publication=RU2015117646A),
      InpadocFamilyMember(publication=US2014102795A1),
      InpadocFamilyMember(publication=US9291047B2),

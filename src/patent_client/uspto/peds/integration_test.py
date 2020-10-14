@@ -123,7 +123,7 @@ class TestPatentExaminationData:
         correspondent = app.correspondent.as_dict()
         expected = {
             "name": "VINSON & ELKINS L.L.P.",
-            "cust_no": "22892",
+            "cust_no": "20350",
             "street": "1001 Fannin Street\nSuite 2500",
             "city": "HOUSTON",
             "geo_region_code": "TX",
