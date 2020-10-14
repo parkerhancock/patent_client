@@ -5,7 +5,7 @@ from marshmallow import pre_load
 from marshmallow import Schema
 from patent_client.util import ListField
 from patent_client.util import QuerySet
-from patent_client.util.manager import resolve
+from patent_client.util.manager import resolve, resolve_list
 
 from .model import CpcClass
 from .model import Inpadoc
@@ -33,6 +33,9 @@ class InpadocResultSchema(BaseSchema):
 
     @pre_load
     def pre_load(self, data, *args, **kwargs):
+        if data["document-id"] is None:
+            return data
+        
         for k, v in data["document-id"].items():
             data[k] = v
         del data["document-id"]
@@ -160,11 +163,10 @@ class InpadocBiblioSchema(BaseSchema):
         data = data["exchange-document"]
         bib = data["bibliographic-data"]
         del data["bibliographic-data"]
-        data["publications"] = resolve(bib, "publication-reference.document-id")
-        ipc_class = resolve(bib, "classifications-ipcr.classification-ipcr")
-        if ipc_class:
-            data["ipc_classes"] = [c["text"] for c in ipc_class]
-        classifications = resolve(bib, "patent-classifications.patent-classification")
+        data["publications"] = resolve_list(bib, "publication-reference.document-id")
+        ipc_class = resolve_list(bib, "classifications-ipcr.classification-ipcr")
+        data["ipc_classes"] = [c["text"] for c in ipc_class]
+        classifications = resolve_list(bib, "patent-classifications.patent-classification")
         if classifications:
             data["cpc_classes"] = [
                 c
@@ -176,10 +178,10 @@ class InpadocBiblioSchema(BaseSchema):
                 for c in classifications
                 if resolve(c, "classification-scheme.@scheme") == "UC"
             ]
-        data["applications"] = resolve(bib, "application-reference.document-id")
+        data["applications"] = resolve_list(bib, "application-reference.document-id")
         data["priority_claims"] = self.pre_load_priority_claims(bib)
-        data["applicants"] = resolve(bib, "parties.applicants.applicant")
-        data["inventors"] = resolve(bib, "parties.inventors.inventor")
+        data["applicants"] = resolve_list(bib, "parties.applicants.applicant")
+        data["inventors"] = resolve_list(bib, "parties.inventors.inventor")
         titles = resolve(bib, "invention-title")
         if isinstance(titles, list):
             data["title"] = next(t["#text"] for t in titles if t["@lang"] == "en")
