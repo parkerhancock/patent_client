@@ -84,7 +84,8 @@ setup(
         "inflection~=0.3",
         "dataclasses~=0.6",
         "marshmallow~=3.3",
-        "xmltodict~=0.12"
+        "xmltodict~=0.12",
+        "beautifulsoup4~=4.9"
     ],
     extras_require={},
 )
