@@ -14,6 +14,7 @@
 
    motivation
    getting_started
+   fulltext
    us_application
    assignments
    ptab

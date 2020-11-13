@@ -25,6 +25,7 @@ Currently supports:
 
 * `United States Patent & Trademark Office <USPTO>`_
 
+  * `Patent Full Text Databases <PATFT>`_ - Full Support
   * `Patent Examination Data <PEDS>`_ - Full Support
   * `Patent Assignment Data <Assignment>`_ - Lookup Support
   * `Patent Trial & Appeal Board API v2 <PTAB>`_ - Supports Proceedings, Decisions, and Documents
@@ -41,6 +42,7 @@ Currently supports:
 
 .. _OPS: http://ops.epo.org
 .. _USPTO: http://developer.uspto.gov
+.. _PATFT: http://http://patft.uspto.gov/
 .. _PEDS: https://developer.uspto.gov/api-catalog/ped
 .. _Assignment: https://developer.uspto.gov/api-catalog/patent-assignment-search-beta
 .. _PTAB: https://developer.uspto.gov/api-catalog/ptab-api-v2
@@ -75,7 +77,16 @@ To use the project:
 .. code-block:: python
 
     # Import the model classes you need
-    >>> from patent_client import Inpadoc, Assignment, USApplication
+    >>> from patent_client import Inpadoc, Assignment, USApplication, Patent
+
+    # Fetch US Patents with the word "tennis" in their title
+    >>> pats = Patent.objects.filter(title="tennis")
+    >>> len(pats) > 1000
+    True
+    
+    # Look at the first one
+    >>> pats[0].publication
+    Patent(publication_number=10814188, publication_date=2020-10-27, title=Tennis racket)
 
     # Fetch US Applications
     >>> app = USApplication.objects.get('15710770')
@@ -121,10 +132,6 @@ To run the all tests run::
     pytest
 
 A developer guide is provided in the `Documentation <http://patent-client.readthedocs.io>`_.
-This project is narrowly scoped to only public documented API's available without charge
-(at least for moderate usage). Scrapers of HTML websites are not permitted. But PR's to
-add support for new API's are more than welcome.
-
 Pull requests welcome!
 
 Related projects

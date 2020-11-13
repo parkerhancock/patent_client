@@ -143,14 +143,26 @@ class USApplication(Model):
 
         return Expiration(**expiration_data)  # type: ignore
 
-        assignments = one_to_many(
-            "patent_client.uspto.assignment.Assignment", appl_id="appl_id"
-        )
-        """Related Assignments from the Assignments API"""
-        trials = one_to_many(
-            "patent_client.uspto.ptab.PtabProceeding", appl_id="appl_id"
-        )
-        """Related PtabProceedings for this application"""
+    assignments = one_to_many(
+        "patent_client.uspto.assignment.Assignment", appl_id="appl_id"
+    )
+    """Related Assignments from the Assignments API"""
+    trials = one_to_many(
+        "patent_client.uspto.ptab.PtabProceeding", appl_id="appl_id"
+    )
+    """Related PtabProceedings for this application"""
+    patent = one_to_one(
+        "patent_client.uspto.fulltext.Patent", publication_number="patent_number"
+    )
+    """Fulltext Patent - If Available"""
+
+    @property
+    def publication_number(self):
+        return self.app_early_pub_number[2:-2]
+
+    publication = one_to_one(
+        "patent_client.uspto.fulltext.PublishedApplication", publication_number="publication_number"
+    )
 
 
 @dataclass

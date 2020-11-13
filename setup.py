@@ -24,7 +24,7 @@ def read(*names, **kwargs):
 
 setup(
     name="patent_client",
-    version="2.0.3",
+    version="2.1.3",
     license="Apache Software License 2.0",
     description="A set of ORM-style clients for publicly available intellectual property data",
     long_description="%s\n%s"
@@ -84,7 +84,8 @@ setup(
         "inflection~=0.3",
         "dataclasses~=0.6",
         "marshmallow~=3.3",
-        "xmltodict~=0.12"
+        "xmltodict~=0.12",
+        "beautifulsoup4~=4.9"
     ],
     extras_require={},
 )

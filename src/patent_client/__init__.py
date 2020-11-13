@@ -1,5 +1,5 @@
 # flake8: noqa
-__version__ = "2.0.3"
+__version__ = "2.1.3"
 
 import json
 import os
@@ -49,3 +49,5 @@ from patent_client.usitc.model import ITCInvestigation, ITCDocument, ITCAttachme
 from patent_client.uspto.ptab.model import PtabProceeding, PtabDocument, PtabDecision
 from patent_client.uspto.assignment.model import Assignment
 from patent_client.uspto.peds.model import USApplication
+from patent_client.uspto.fulltext.patent.model import Patent
+from patent_client.uspto.fulltext.published_application.model import PublishedApplication

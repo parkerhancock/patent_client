@@ -2,6 +2,11 @@
 Changelog
 =========
 
+2.1.3 (2020-11-12)
+------------------
+* Added support for USPTO's Full Text databases
+* Added corresponding documentation
+
 2.0.3 (2020-10-14)
 ------------------
 * Merge pull request ensuring that INPADOC produces consistent typing (PR #37)
