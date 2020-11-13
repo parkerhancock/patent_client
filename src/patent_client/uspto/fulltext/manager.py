@@ -15,8 +15,14 @@ from .schema import PublicationSchema
 from .parser import FullTextParser
 from .session import session
 
-
-standardize_date = lambda string: parse_dt(string).date().strftime("%Y%m%d")
+def standardize_date(input):
+    if isinstance(input, datetime.date):
+        return input.strftime("%Y%m%d")
+    elif isinstance(input, datetime.datetime):
+        return input.date().strftime("%Y%m%d")
+    else:
+        return parse_dt(input).date().strftime("%Y%m%d")
+    
 clean_text = lambda string: re.sub(r"\s+", " ", string).strip()
 clean_number = lambda string: re.sub(r"[^\d]", "", string).strip()
 
@@ -58,7 +64,7 @@ class FullTextManager(Manager):
                     
     def generate_query(self, query):
         if "query" in query:
-            return query['query']
+            return query['query'][0]
         query_segments = list()
         date_queries = defaultdict(dict)
         

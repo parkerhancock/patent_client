@@ -1,5 +1,9 @@
 US Full Text Patents & Published Applications
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. role:: python(code)
+   :language: python
+
 Original API URL: http://patft.uspto.gov/netahtml/PTO/index.html
 
 .. warning::
@@ -47,16 +51,32 @@ The associated keyword is just the underscored verison of the full name in the t
 .. _PATS: http://patft.uspto.gov/netahtml/PTO/search-adv.htm
 .. _PUBS: http://appft.uspto.gov/netahtml/PTO/search-adv.html
 
-However, Patent Client currently does not have any built-in for advanced boolean queries. 
+
+Date Ranges
+-----------
+
+Patent Client also supports **date range** features in a few flavors. 
+
+* If you want to search for a specific date, just use :code:`issue_date="2020-01-01"`.
+* If you want to search for dates *before* a certain date, use :code:`issue_date_lt="2020-01-01"`
+* If you want to search for dates *after* a certain date, use :code:`issue_date_gt="2020-01-01"`
+* If you want to seach for a date range, use :code:`issue_date_range=("2019-01-01", "2020-01-01")`, you can also just use the "_gt" and "_lt" together.
+
+All the above will accept Python dates, datetimes, or any string understandable by python's dateutil.parser, and work
+for any date-like field (e.g. issue date, filing date, etc.)
+
+Advanced Searching
+------------------
+
+Patent Client currently does not have any built-in syntax for advanced boolean queries. 
 Patent Client assumes that all critera are simply "AND"ed together. 
 
-If this doesn't work for you, just use the *query* keyword, and pass whatever query you
+If this doesn't work for you, just use the **query** keyword, and pass whatever query you
 want. Patent Client will return the results as if you had entered that into the web interface:
-
 .. code-block:: python
 
     >>> from patent_client import Patent
-    >>> tennis_patents = Patent.objects.filter(query="TTL\tennis OR AN\wilson")
+    >>> tennis_patents = Patent.objects.filter(query="TTL/tennis OR AN/wilson")
     >>> len(tennis_patents) > 100
     True
 
