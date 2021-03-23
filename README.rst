@@ -79,14 +79,14 @@ To use the project:
     # Import the model classes you need
     >>> from patent_client import Inpadoc, Assignment, USApplication, Patent
 
-    # Fetch US Patents with the word "tennis" in their title
-    >>> pats = Patent.objects.filter(title="tennis")
-    >>> len(pats) > 1000
+    # Fetch US Patents with the word "tennis" in their title issued in 2010
+    >>> pats = Patent.objects.filter(title="tennis", issue_date="2010-01-01->2010-12-31")
+    >>> len(pats) > 10
     True
     
     # Look at the first one
     >>> pats[0].publication
-    Patent(publication_number=10814188, publication_date=2020-10-27, title=Tennis racket)
+    Patent(publication_number=7841958, publication_date=2010-11-30, title=Modular table tennis game)
 
     # Fetch US Applications
     >>> app = USApplication.objects.get('15710770')
