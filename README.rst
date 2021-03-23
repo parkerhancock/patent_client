@@ -25,7 +25,7 @@ Currently supports:
 
 * `United States Patent & Trademark Office <USPTO>`_
 
-  * `Patent Examination Data <PEDS>`_ - Full Support
+  * `Patent Examination Data <PEDS>`_ - Full Support (**Including File History Documents!**)
   * `Patent Assignment Data <Assignment>`_ - Lookup Support
   * `Patent Trial & Appeal Board API v2 <PTAB>`_ - Supports Proceedings, Decisions, and Documents
 
