@@ -9,11 +9,11 @@ inflection = "*"
 lxml = "*"
 requests = "*"
 python-dateutil = "*"
-requests-cache = "*"
 dataclasses = "*"
 marshmallow = "*"
 xmltodict = "*"
 beautifulsoup4 = "*"
+requests-cache = "*"
 
 [dev-packages]
 codecov = "*"
@@ -23,14 +23,11 @@ bumpversion = "*"
 pre-commit = "*"
 pytest-xdist = "*"
 mypy = "*"
-jedi = "*"
-ptpython = "*"
 pandas = "*"
-pylint = "*"
 
 [requires]
-python_version = "3.7"
+python_version = "3.9"
 
 [scripts]
-test = "pytest"
+test = "pytest --basetemp=tmp"
 render_docs = "make -f docs/Makefile html"

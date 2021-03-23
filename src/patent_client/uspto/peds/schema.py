@@ -1,7 +1,7 @@
 from pprint import pprint
 from collections import OrderedDict
 from marshmallow import Schema, fields, EXCLUDE, pre_load, post_load, ValidationError
-from .model import USApplication, Relationship, PtaPteHistory, PtaPteSummary, Transaction, Correspondent, Attorney, Applicant, Inventor, ForeignPriority
+from .model import USApplication, Relationship, PtaPteHistory, PtaPteSummary, Transaction, Correspondent, Attorney, Applicant, Inventor, ForeignPriority, Document
 import inflection
 from dateutil.parser import parse as parse_date
 
@@ -221,6 +221,14 @@ class USApplicationSchema(BaseSchema):
 
 
 
-
-
-
+class DocumentSchema(BaseSchema):
+    __model__ = Document
+    access_level_category= fields.Str()
+    appl_id= fields.Str(data_key="application_number_text")
+    category= fields.Str(data_key="document_category")
+    code = fields.Str(data_key="document_code")
+    description = fields.Str(data_key="document_description")
+    identifier = fields.Str(data_key="document_identifier")
+    mail_room_date = ParsedDate()
+    page_count = fields.Int()
+    url = fields.Str(data_key="pdf_url", allow_none=True)

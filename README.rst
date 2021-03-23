@@ -26,7 +26,7 @@ Currently supports:
 * `United States Patent & Trademark Office <USPTO>`_
 
   * `Patent Full Text Databases <PATFT>`_ - Full Support
-  * `Patent Examination Data <PEDS>`_ - Full Support
+  * `Patent Examination Data <PEDS>`_ - Full Support (**Including File History Documents!**)
   * `Patent Assignment Data <Assignment>`_ - Lookup Support
   * `Patent Trial & Appeal Board API v2 <PTAB>`_ - Supports Proceedings, Decisions, and Documents
 
@@ -102,9 +102,9 @@ To use the project:
     'ASSIGNMENT OF ASSIGNORS INTEREST'
 
     # Fetch from INPADOC
-    >>> pub = Inpadoc.objects.get('EP3082535A1')
-    >>> pub.biblio.title
-    'AUTOMATIC FLUID DISPENSER'
+    # >>> pub = Inpadoc.objects.get('EP3082535A1')
+    # >>> pub.biblio.title
+    # 'AUTOMATIC FLUID DISPENSER'
 
     # Fetch from EPO Register (NOTE: This is broken right now :( )
     #>>> epo = Epo.objects.get('EP3082535A1')

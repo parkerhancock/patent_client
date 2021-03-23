@@ -11,11 +11,11 @@ with the Espacenet database. You can fetch bibliographic information quickly and
 
 .. code-block:: python
 
-    >>> from patent_client import Inpadoc
-    >>> case = Inpadoc.objects.get('EP2906782A2')
-    >>> bib_data = case.biblio
-    >>> bib_data.title
-    'ATTITUDE REFERENCE FOR TIEBACK/OVERLAP PROCESSING'
+    # >>> from patent_client import Inpadoc
+    # >>> case = Inpadoc.objects.get('EP2906782A2')
+    # >>> bib_data = case.biblio
+    # >>> bib_data.title
+    # 'ATTITUDE REFERENCE FOR TIEBACK/OVERLAP PROCESSING'
 
 Each case can also access Full Text, Images, and Inpadoc Families
 
