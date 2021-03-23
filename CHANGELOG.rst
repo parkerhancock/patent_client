@@ -2,6 +2,12 @@
 Changelog
 =========
 
+2.1.0 (2021-03-23)
+------------------
+* Add support for document downloads from the USPTO PEDS interface
+* Fix flakey tests
+* Update dependencies
+
 2.0.3 (2020-10-14)
 ------------------
 * Merge pull request ensuring that INPADOC produces consistent typing (PR #37)
