@@ -5,13 +5,16 @@ from datetime import date
 from datetime import datetime
 from typing import Iterator
 from typing import Union
+from pathlib import Path
+from tempfile import TemporaryDirectory
+from PyPDF2 import PdfFileReader, PdfFileMerger
 
 import inflection
 from patent_client import session
 from patent_client.util.manager import Manager
 
 from .model import USApplication
-from .schema import USApplicationSchema
+from .schema import USApplicationSchema, DocumentSchema
 
 logger = logging.getLogger(__name__)
 
@@ -163,3 +166,47 @@ class DateEncoder(json.JSONEncoder):
             return o.isoformat()
 
         return json.JSONEncoder.default(self, o)
+
+
+class DocumentManager(Manager):
+    query_url = "https://ped.uspto.gov/api/queries/cms/"
+    __schema__ = DocumentSchema()
+
+    def __len__(self):
+        url = self.query_url + self.config['filter']['appl_id'][0]
+        response = session.get(url)
+        return len(response.json())
+
+    def _get_results(self) -> Iterator[USApplication]:
+        url = self.query_url + self.config['filter']['appl_id'][0]
+        response = session.get(url)
+        for item in response.json():
+            yield self.__schema__.load(item)
+
+    def download(self, docs, path="."):
+        if str(path)[-4:].lower() == '.pdf':
+            # If we've been given a specific filename, use it
+            out_file = Path(path)
+        else:
+            out_file = Path(path) / "package.pdf"
+
+        files = list()
+        try:
+            with TemporaryDirectory() as tmpdir:
+                for doc in docs:
+                    if doc.access_level_category == "PUBLIC":
+                        files.append((doc.download(tmpdir), doc))
+            
+                out_pdf = PdfFileMerger()
+                page=0
+                for f, doc in files:
+                    bookmark = f"{doc.mail_room_date} - {doc.code} - {doc.description}"
+                    out_pdf.append(str(f), bookmark=bookmark, import_bookmarks=False)
+                    page += doc.page_count
+
+                out_pdf.write(str(out_file))
+        except (PermissionError, NotADirectoryError):
+            # This is needed due to a bug in Windows that prevents cleanup of the tmpdir
+            pass
+        return out_file
+        

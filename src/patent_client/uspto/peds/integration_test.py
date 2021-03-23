@@ -3,6 +3,7 @@ import logging
 from collections import OrderedDict
 
 import pytest
+from PyPDF2 import PdfFileReader
 
 from .model import USApplication
 
@@ -218,4 +219,37 @@ class TestPatentExaminationData:
         assert app.priority_claim == "20170229"
 
 class TestPEDSDocuments():
-    pass
+    def test_can_get_document_listing(self):
+        app = USApplication.objects.get(patent_number=10000000)
+        docs = app.documents
+        assert len(docs) > 50
+
+    def test_can_get_application_from_document(self):
+        app = USApplication.objects.get(patent_number=10000000)
+        docs = app.documents
+        backref_app = docs[5].application
+        assert app.appl_id == backref_app.appl_id
+
+    def test_can_download_document(self, tmp_path):
+        app = USApplication.objects.get(patent_number=10000000)
+        doc = app.documents.to_list()[-1]
+        result = doc.download(path=tmp_path)
+        assert "14643719 - 2015-03-09 - IDS" in str(result)
+        assert result.exists()
+        assert len(list(tmp_path.glob("*.pdf"))) == 1
+
+    def test_can_download_document_without_appl_id(self, tmp_path):
+        app = USApplication.objects.get(patent_number=10000000)
+        doc = app.documents.to_list()[-1]
+        result = doc.download(path=tmp_path, include_appl_id=False)
+        assert "2015-03-09 - IDS" in str(result)
+        assert "14643719" not in str(result)
+        assert result.exists()
+        assert len(list(tmp_path.glob("*.pdf"))) == 1
+
+    def test_multiple_document_download(self, tmp_path):
+        app = USApplication.objects.get(patent_number=10000000)
+        docs = app.documents.to_list()[-2:]
+        result = app.documents.download(docs, path=tmp_path)
+        reader = PdfFileReader(str(result))
+        assert reader.numPages == 8

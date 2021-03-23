@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import datetime
+from pathlib import Path
 from collections import OrderedDict
 from dataclasses import asdict
 from dataclasses import dataclass
@@ -16,6 +17,8 @@ from patent_client.util import Model
 from patent_client.util import one_to_many
 from patent_client.util import one_to_one
 from patent_client.util import QuerySet
+
+from patent_client import session
 
 
 @dataclass
@@ -58,6 +61,10 @@ class USApplication(Model):
     correspondent: Optional[Correspondent] = field(default=None, repr=False)
     attorneys: List[Attorney] = field(default_factory=list, repr=False)
     foreign_priority: List[ForeignPriority] = field(default_factory=list, repr=False)
+
+    documents = one_to_many(
+        "patent_client.uspto.peds.model.Document", appl_id="appl_id"
+    )
 
     @property
     def continuity(self) -> QuerySet:
@@ -275,3 +282,38 @@ class Inventor(Model):
     postal_code: Optional[str] = None
     country: Optional[str] = None
     rank_no: Optional[int] = None
+
+@dataclass
+class Document(Model):
+    __manager__ = "patent_client.uspto.peds.manager.DocumentManager"
+    base_url = "https://ped.uspto.gov/api/queries/cms/"
+    access_level_category: str
+    appl_id: str
+    category: str
+    code: str
+    description: str
+    identifier: str
+    mail_room_date: datetime.date
+    page_count: int
+    url: Optional[str] = None
+
+    application = one_to_one("patent_client.uspto.peds.model.USApplication", appl_id="appl_id")
+
+    def __repr__(self):
+        return f"Document(appl_id={self.appl_id}, mail_room_date={self.mail_room_date}, description={self.description})"
+    
+    def download(self, path=".", include_appl_id=True):
+        if str(path)[-4:].lower() == '.pdf':
+            # If we've been given a specific filename, use it
+            out_file = Path(path)
+        elif include_appl_id:
+            out_file = Path(path) / f"{self.appl_id} - {self.mail_room_date} - {self.code} - {self.description[:40]}.pdf"
+        else:
+            out_file = Path(path) / f"{self.mail_room_date} - {self.code} - {self.description[:40]}.pdf"
+        
+        with session.get(self.base_url + self.url, stream=True) as r:
+            r.raise_for_status()
+            with out_file.open('wb') as f:
+                for chunk in r.iter_content(chunk_size=8192): 
+                    f.write(chunk)
+        return out_file
