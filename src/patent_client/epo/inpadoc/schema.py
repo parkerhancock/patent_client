@@ -188,7 +188,7 @@ class InpadocBiblioSchema(BaseSchema):
         elif isinstance(titles, str):
             data["title"] = titles
         else:
-            data["title"] = titles["#text"]
+            data["title"] = titles.get("#text", None)
         return data
 
     class Meta:

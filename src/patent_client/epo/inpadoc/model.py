@@ -29,7 +29,7 @@ class Inpadoc(Model):
     date: typing.Optional[dt.date] = None
 
     biblio = one_to_one(
-        "patent_client.epo.inpadoc.model.InpadocBiblio", publication="num"
+        "patent_client.epo.inpadoc.model.InpadocBiblio", publication="number"
     )
     claims = lookup_claims()
     description = lookup_description()
