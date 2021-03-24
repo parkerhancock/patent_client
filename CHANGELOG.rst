@@ -6,8 +6,8 @@ Changelog
 ------------------
 * Added support for USPTO's Full Text databases
 * Added corresponding documentation
-2.1.0 (2021-03-23)
 
+2.1.0 (2021-03-23)
 ------------------
 * Add support for document downloads from the USPTO PEDS interface
 * Fix flakey tests
