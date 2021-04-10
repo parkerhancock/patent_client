@@ -22,14 +22,13 @@ CACHE_BASE = Path(cache_dir).expanduser()
 CACHE_BASE.mkdir(exist_ok=True)
 CACHE_CONFIG = dict(
     expire_after=cache_max_age,
-    backend=requests_cache.backends.sqlite.DbCache(
-        location=str(CACHE_BASE / "requests_cache")
-    ),
+    db_path=str(CACHE_BASE / "requests_cache"),
+    backend="sqlite",
     allowable_methods=("GET", "POST"),
     )
 
 session = requests_cache.CachedSession(**CACHE_CONFIG)
-session.cache.remove_old_entries(datetime.datetime.utcnow() - cache_max_age)
+session.remove_expired_responses(expire_after=cache_max_age)
 session.headers["User-Agent"] = f"Python Patent Clientbot/{__version__} (parkerhancock@users.noreply.github.com)"
 
 # Install a default retry on the session using urrlib3
