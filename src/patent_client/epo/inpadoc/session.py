@@ -38,10 +38,11 @@ class OpsSession(requests_cache.CachedSession):
         
     def get_token(self):
         auth_url = "https://ops.epo.org/3.2/auth/accesstoken"
-        response = super(OpsSession, self).request(
-            'post',
-            auth_url, auth=(self.key, self.secret), data={"grant_type": "client_credentials"}
-        )
+        with self.cache_disabled():
+            response = super(OpsSession, self).request(
+                'post',
+                auth_url, auth=(self.key, self.secret), data={"grant_type": "client_credentials"}
+            )
         data = response.json()
         self.expires = dt.datetime.fromtimestamp(int(data['issued_at']) / 1000) + dt.timedelta(seconds=int(data['expires_in']))
         self.headers['Authorization'] = f"Bearer {data['access_token']}"
