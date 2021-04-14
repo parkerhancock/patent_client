@@ -88,9 +88,9 @@ If you want the full document, you can access it at the "publication" attribute:
     >>> from patent_client import Patent
     >>> basketball_patents = Patent.objects.filter(title="basketball")
     >>> basketball_patents[0]
-    PatentResult(publication_number='10953298', title='Basketball trainer device')
+    PatentResult(publication_number='10974117', title='Basketball training aid')
     >>> basketball_patents[0].publication
-    Patent(publication_number=10953298, publication_date=2021-03-23, title=Basketball trainer device)
+    Patent(publication_number=10974117, publication_date=2021-04-13, title=Basketball training aid)
 
 Models
 ======
