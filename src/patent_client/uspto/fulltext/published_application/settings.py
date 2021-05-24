@@ -50,10 +50,10 @@ SEARCH_FIELDS = {
     "assignee_country": "ACN",
 }
 
-SEARCH_URL = "http://appft.uspto.gov/netacgi/nph-Parser"
+SEARCH_URL = "https://appft.uspto.gov/netacgi/nph-Parser"
 
 PUBLICATION_URL = (
-    "http://appft.uspto.gov/netacgi/nph-Parser?Sect1=PTO1&"
+    "https://appft.uspto.gov/netacgi/nph-Parser?Sect1=PTO1&"
     "Sect2=HITOFF&d=PG01&p=1&u=%2Fnetahtml%2FPTO%2Fsrchnum.html&r=1&f=G&l=50&"
     "s1=%22{publication_number}%22.PGNR.&OS=DN/{publication_number}&RS=DN/{publication_number}"
 )
