@@ -24,7 +24,7 @@ def standardize_date(input):
         return parse_dt(input).date().strftime("%Y%m%d")
     
 clean_text = lambda string: re.sub(r"\s+", " ", string).strip()
-clean_number = lambda string: re.sub(r"[^\d]", "", string).strip()
+clean_number = lambda string: re.sub(r"[^DREP\d]", "", string).strip()
 
 class FullTextManager(Manager):
     __schema__ = PublicationSchema

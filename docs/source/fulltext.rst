@@ -51,6 +51,17 @@ The associated keyword is just the underscored verison of the full name in the t
 .. _PATS: http://patft.uspto.gov/netahtml/PTO/search-adv.htm
 .. _PUBS: http://appft.uspto.gov/netahtml/PTO/search-adv.html
 
+Queries only return **stub records** that only contain the publication number and title.
+If you want the full document, you can access it at the "publication" attribute:
+
+.. code-block:: python
+
+    >>> from patent_client import Patent
+    >>> basketball_patents = Patent.objects.filter(title="basketball", issue_date_gt="2019-01-01")
+    >>> basketball_patents[0]
+    PatentResult(publication_number='D920344', title='Display screen with graphical user interface for a basketball practice device')
+    >>> basketball_patents[0].publication
+    Patent(publication_number=D920344, publication_date=2021-05-25, title=Display screen with graphical user interface for a basketball practice device)
 
 Date Ranges
 -----------
@@ -79,18 +90,6 @@ want. Patent Client will return the results as if you had entered that into the 
     >>> tennis_patents = Patent.objects.filter(query="TTL/tennis OR AN/wilson")
     >>> len(tennis_patents) > 100
     True
-
-Queries only return **stub records** that only contain the publication number and title.
-If you want the full document, you can access it at the "publication" attribute:
-
-.. code-block:: python
-
-    >>> from patent_client import Patent
-    >>> basketball_patents = Patent.objects.filter(title="basketball")
-    >>> basketball_patents[0]
-    PatentResult(publication_number='10953298', title='Basketball trainer device')
-    >>> basketball_patents[0].publication
-    Patent(publication_number=10953298, publication_date=2021-03-23, title=Basketball trainer device)
 
 Models
 ======
