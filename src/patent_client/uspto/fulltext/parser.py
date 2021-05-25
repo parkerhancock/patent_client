@@ -11,7 +11,10 @@ clean_key = lambda string: WHITESPACE_RE.sub("_", ALPHA_RE.sub("", string).strip
 
 class FullTextParser(object):
     def parse(self, html_text):
-        text = html_text.replace("\n", " ").replace("<BR>", "\n")
+        # r"\n\s*<BR>": avoiding possible intermediate tail whitespaces from r"\n\s*"
+        # r"\n\s*": \s* is only for extra heading spaces in appft
+        # r"<BR>\s*": \s is only for extra heading spaces in patft
+        text = re.sub(r"<BR>\s*", "\n", re.sub(r"\n\s*", " ", re.sub(r"\n\s*<BR>", "<BR>", html_text)))
         sections = text.split("<HR>")
         parsed_sections = [bs(section.replace("&nbsp", " "), "lxml") for section in sections]
         
