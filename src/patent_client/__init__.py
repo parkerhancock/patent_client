@@ -1,5 +1,5 @@
 # flake8: noqa
-__version__ = "2.2.0"
+__version__ = "2.2.1"
 
 import json
 import os
