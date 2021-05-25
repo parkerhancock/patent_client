@@ -30,9 +30,9 @@ def test_can_parse_pre_aia_patent():
     assert result.kind_code == 'B1'
     assert result.publication_date == datetime.date(2000, 8, 1)
     assert result.title == 'Method and apparatus for an L.E.D. flashlight'
-    assert len(result.description) == 55384
+    assert len(result.description) == 55314
     assert len(result.abstract) == 1543
-    assert len(result.claims) == 18088
+    assert len(result.claims) == 17969
     assert result.appl_id == '09044559'
     assert result.filing_date == datetime.date(1998, 3, 19)
     assert result.family_id == '21933046'
@@ -56,9 +56,9 @@ def test_can_parse_published_app():
     assert result.kind_code == 'A1'
     assert result.publication_date == datetime.date(2017, 12, 28)
     assert result.title == 'SYSTEMS AND METHODS TO CONTROL DIRECTIONAL DRILLING FOR HYDROCARBON WELLS'
-    assert len(result.description) == 111800
+    assert len(result.description) == 99084
     assert len(result.abstract) == 814
-    assert len(result.claims) == 10390
+    assert len(result.claims) == 9208
     assert result.appl_id == '15540593'
     assert result.filing_date == datetime.date(2015, 12, 29)
     assert result.family_id == '56163586'
