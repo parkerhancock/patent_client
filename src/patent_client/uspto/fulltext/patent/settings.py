@@ -80,10 +80,10 @@ SEARCH_PARAMS = {
     "d": "PTXT",
 }
 
-SEARCH_URL = "http://patft.uspto.gov/netacgi/nph-Parser"
+SEARCH_URL = "https://patft.uspto.gov/netacgi/nph-Parser"
 
 PUBLICATION_URL = (
-    "http://patft.uspto.gov/netacgi/nph-Parser?"
+    "https://patft.uspto.gov/netacgi/nph-Parser?"
     "Sect1=PTO1&Sect2=HITOFF&d=PALL&p=1&"
     "u=%2Fnetahtml%2FPTO%2Fsrchnum.htm&r=1&f=G&l=50&s1={publication_number}.PN.&"
     "OS=PN/{publication_number}&RS=PN/{publication_number}"
