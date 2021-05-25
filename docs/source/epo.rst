@@ -11,20 +11,20 @@ with the Espacenet database. You can fetch bibliographic information quickly and
 
 .. code-block:: python
 
-    # >>> from patent_client import Inpadoc
-    # >>> case = Inpadoc.objects.get('EP2906782A2')
-    # >>> bib_data = case.biblio
-    # >>> bib_data.title
-    # 'ATTITUDE REFERENCE FOR TIEBACK/OVERLAP PROCESSING'
+    >>> from patent_client import Inpadoc # doctest: +SKIP
+    >>> case = Inpadoc.objects.get('EP2906782A2') # doctest: +SKIP
+    >>> bib_data = case.biblio # doctest: +SKIP
+    >>> bib_data.title # doctest: +SKIP
+    'ATTITUDE REFERENCE FOR TIEBACK/OVERLAP PROCESSING'
 
 Each case can also access Full Text, Images, and Inpadoc Families
 
 .. code-block:: python
 
-    >>> from patent_client import Inpadoc
-    >>> from pprint import pprint
-    >>> case = Inpadoc.objects.get('EP2906782A2')
-    >>> pprint(list(case.family))
+    >>> from patent_client import Inpadoc # doctest: +SKIP
+    >>> from pprint import pprint # doctest: +SKIP
+    >>> case = Inpadoc.objects.get('EP2906782A2') # doctest: +SKIP
+    >>> pprint(list(case.family)) # doctest: +SKIP
     [InpadocFamilyMember(publication=EP2906782A2),
      InpadocFamilyMember(publication=EP2906782A4),
      InpadocFamilyMember(publication=EP2906782B1),
@@ -42,10 +42,10 @@ Each case can also access Full Text, Images, and Inpadoc Families
      InpadocFamilyMember(publication=WO2014059282A3)]
 
     # Work in Progress
-    # >>> ca_equivalent.images.sections
-    # {'ABSTRACT': 1, 'BIBLIOGRAPHY': 1, 'CLAIMS': 2, 'DESCRIPTION': 6, 'DRAWINGS': 13}
-    # >>> ca_equivalent.images.download()
-    # Downloads a .pdf of the document to the current directory
+    >>> ca_equivalent.images.sections # doctest: +SKIP
+    {'ABSTRACT': 1, 'BIBLIOGRAPHY': 1, 'CLAIMS': 2, 'DESCRIPTION': 6, 'DRAWINGS': 13}
+    >>> ca_equivalent.images.download() # doctest: +SKIP
+    Downloads a .pdf of the document to the current directory
 
 Filter (Search)
 ----------------
@@ -57,8 +57,8 @@ raw CQL query, just pass it as a 'cql_query' keyword argument to the filter. e.g
 
 .. code-block:: python
 
-    >>> results = Inpadoc.objects.filter(cql_query='pa="Google LLC"')
-    >>> len(results) > 500
+    >>> results = Inpadoc.objects.filter(cql_query='pa="Google LLC"') # doctest: +SKIP
+    >>> len(results) > 500 # doctest: +SKIP
     True
 
 
@@ -123,15 +123,15 @@ Patent Client can also retrive bibliographic and status information from the EP 
 
 .. code-block:: python
 
-    >>> from patent_client import Epo # doctest:+SKIP
-    >>> pub = Epo.objects.get("EP3221665A1") # doctest:+SKIP
+    >>> from patent_client import Epo # doctest: +SKIP
+    >>> pub = Epo.objects.get("EP3221665A1") # doctest: +SKIP
     http://ops.epo.org/3.2/rest-services/number-service/publication/original/EP3221665A1)/epodoc {}
     http://ops.epo.org/3.2/rest-services/register/publication/epodoc/EP.3221665.A1/biblio {}
-    >>> pub.status[0] # doctest:+SKIP
+    >>> pub.status[0] # doctest: +SKIP
     {'description': 'Request for examination was made', 'code': '15', 'date': '20170825'}
-    >>> pub.title # doctest:+SKIP
+    >>> pub.title # doctest: +SKIP
     'INERTIAL CAROUSEL POSITIONING'
-    >>> pub.procedural_steps[0] # doctest:+SKIP
+    >>> pub.procedural_steps[0] # doctest: +SKIP
     http://ops.epo.org/3.2/rest-services/register/publication/epodoc/EP.3221665.A1/procedural-steps {}
     {'phase': 'undefined', 'description': 'Renewal fee payment - 03', 'date': '20171113', 'code': 'RFEE'}
 

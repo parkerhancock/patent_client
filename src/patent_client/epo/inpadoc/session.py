@@ -4,19 +4,8 @@ import datetime as dt
 import xmltodict
 from pathlib import Path
 
-from patent_client import SETTINGS
+from patent_client import SETTINGS, CACHE_CONFIG
 
-cache_max_age = dt.timedelta(days=3)
-cache_dir = "~/.patent_client"
-CACHE_BASE = Path(cache_dir).expanduser()
-CACHE_BASE.mkdir(exist_ok=True)
-
-CACHE_CONFIG = dict(
-    expire_after=cache_max_age,
-    backend=requests_cache.backends.sqlite.DbCache(
-        location=str(CACHE_BASE / "requests_cache")
-    ),
-    )
 
 CLIENT_SETTINGS = SETTINGS["EpoOpenPatentServices"]
 if os.environ.get("EPO_KEY", False):
@@ -49,10 +38,11 @@ class OpsSession(requests_cache.CachedSession):
         
     def get_token(self):
         auth_url = "https://ops.epo.org/3.2/auth/accesstoken"
-        response = super(OpsSession, self).request(
-            'post',
-            auth_url, auth=(self.key, self.secret), data={"grant_type": "client_credentials"}
-        )
+        with self.cache_disabled():
+            response = super(OpsSession, self).request(
+                'post',
+                auth_url, auth=(self.key, self.secret), data={"grant_type": "client_credentials"}
+            )
         data = response.json()
         self.expires = dt.datetime.fromtimestamp(int(data['issued_at']) / 1000) + dt.timedelta(seconds=int(data['expires_in']))
         self.headers['Authorization'] = f"Bearer {data['access_token']}"

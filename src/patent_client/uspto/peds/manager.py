@@ -169,7 +169,7 @@ class DateEncoder(json.JSONEncoder):
 
 
 class DocumentManager(Manager):
-    query_url = "https://ped.uspto.gov/api/queries/cms/"
+    query_url = "https://ped.uspto.gov/api/queries/cms/public/"
     __schema__ = DocumentSchema()
 
     def __len__(self):

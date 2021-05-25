@@ -24,7 +24,7 @@ def read(*names, **kwargs):
 
 setup(
     name="patent_client",
-    version="2.2.0",
+    version="2.2.1",
     license="Apache Software License 2.0",
     description="A set of ORM-style clients for publicly available intellectual property data",
     long_description="%s\n%s"
@@ -78,7 +78,7 @@ setup(
     install_requires=[
         "PyPDF2~=1.26",
         "requests~=2.19",
-        "requests-cache~=0.4",
+        "requests-cache~=0.6.0",
         "lxml~=4.2",
         "python-dateutil~=2.7",
         "inflection~=0.3",
