@@ -123,7 +123,7 @@ class InpadocBiblioSchema(BaseSchema):
     us_classes = ListField(fields.Nested(UsClassSchema), allow_none=True)
     applications = ListField(fields.Nested(InpadocApplicationSchema))
     priority_claims = ListField(fields.Nested(PriorityClaimSchema))
-    title = fields.Str()
+    title = fields.Str(allow_none=True)
 
     def get_abstract(self, data):
         if isinstance(data, dict):
@@ -183,6 +183,8 @@ class InpadocBiblioSchema(BaseSchema):
         data["applicants"] = resolve_list(bib, "parties.applicants.applicant")
         data["inventors"] = resolve_list(bib, "parties.inventors.inventor")
         titles = resolve(bib, "invention-title")
+        if titles is None:
+            return data
         if isinstance(titles, list):
             data["title"] = next(t["#text"] for t in titles if t["@lang"] == "en")
         elif isinstance(titles, str):

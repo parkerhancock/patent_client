@@ -25,6 +25,7 @@ CACHE_CONFIG = dict(
     db_path=str(CACHE_BASE / "requests_cache"),
     backend="sqlite",
     allowable_methods=("GET", "POST"),
+    ignored_parameters=["Authorization",]
     )
 
 session = requests_cache.CachedSession(**CACHE_CONFIG)

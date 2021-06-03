@@ -102,9 +102,9 @@ To use the project:
     'ASSIGNMENT OF ASSIGNORS INTEREST'
 
     # Fetch from INPADOC
-    # >>> pub = Inpadoc.objects.get('EP3082535A1')
-    # >>> pub.biblio.title
-    # 'AUTOMATIC FLUID DISPENSER'
+    >>> pub = Inpadoc.objects.get('EP3082535A1')
+    >>> pub.biblio.title
+    'AUTOMATIC FLUID DISPENSER'
 
     # Fetch from EPO Register (NOTE: This is broken right now :( )
     #>>> epo = Epo.objects.get('EP3082535A1')
