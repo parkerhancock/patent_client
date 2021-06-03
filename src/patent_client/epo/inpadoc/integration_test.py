@@ -3,7 +3,6 @@ from pprint import pprint
 from patent_client.epo.inpadoc.model import Inpadoc, InpadocBiblio
 
 
-@pytest.mark.skip("Needs additional maintenance - Travis CI Builds Failing")
 class TestInpadoc():
     def test_inpadoc_manager(self):
         result = Inpadoc.objects.filter(applicant="Microsoft")
@@ -11,7 +10,6 @@ class TestInpadoc():
         countries = list(result.limit(20).values_list('country', flat=True))
         assert sum(1 for c in countries if c == 'US') >= 1
        
-    @pytest.mark.skip("Error to be fixed")
     def test_get_biblio_from_result(self):
         result = Inpadoc.objects.filter(applicant="Google").first().biblio
         assert result.title is not None
@@ -36,11 +34,15 @@ class TestInpadoc():
         result = Inpadoc.objects.filter(applicant='Tesla')
         assert result[0] != result[1]
 
-    #def test_can_handle_single_item_ipc_classes(self):
-        #result = Inpadoc.objects.get(publication="WO2020081771").biblio
-        #assert result.ipc_classes is not None
+    def test_can_handle_single_item_ipc_classes(self):
+        result = Inpadoc.objects.get(publication="WO2020081771").biblio
+        assert result.ipc_classes is not None
+    
+    def test_issue_41(self):
+        result = Inpadoc.objects.get('JP2005533465A').biblio
+        assert result.title == None
 
-@pytest.mark.skip("Needs additional maintenance - Travis CI Builds Failing")
+
 class TestInpadocBiblio():
     def test_inpadoc_biblio_manager(self):
         result = InpadocBiblio.objects.get(publication="USD870008")
@@ -48,7 +50,6 @@ class TestInpadocBiblio():
         assert result.number == 'D870008'
         assert result.country == 'US'
 
-@pytest.mark.skip("Needs additional maintenance - Travis CI Builds Failing")
 class TestInpadocLinks():
     def test_get_us_application_from_result(self):
         result = Inpadoc.objects.get(publication="US8131731B2")

@@ -9,8 +9,8 @@ from patent_client.util.manager import resolve
 
 from .schema import InpadocBiblioSchema
 from .schema import InpadocResultSchema
-from .session import NS
-from .session import session
+from ..session import NS
+from ..session import session
 
 SEARCH_FIELDS = {
     "title": "title",

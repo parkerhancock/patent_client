@@ -2,7 +2,7 @@
 import importlib
 import datetime as dt
 import xml.etree.ElementTree as ET
-from .session import session
+from ..session import session
 
 # Utility Objects and Functions
 

@@ -28,8 +28,12 @@ class Inpadoc(Model):
     family_id: typing.Optional[str] = None
     date: typing.Optional[dt.date] = None
 
+    @property
+    def pub_number(self):
+        return f"{self.country}{self.number}{self.kind_code}"
+
     biblio = one_to_one(
-        "patent_client.epo.inpadoc.model.InpadocBiblio", publication="number"
+        "patent_client.epo.inpadoc.model.InpadocBiblio", publication="pub_number"
     )
     claims = lookup_claims()
     description = lookup_description()
@@ -87,7 +91,6 @@ class InpadocPriorityClaim(Inpadoc):
 class InpadocBiblio(Model):
     __manager__ = "patent_client.epo.inpadoc.manager.InpadocBiblioManager"
     family_id: str
-    title: str
     number: str
     kind_code: str
     country: str
@@ -95,6 +98,7 @@ class InpadocBiblio(Model):
     publications: typing.List["InpadocPublication"]
     applicants: typing.List[str]
     inventors: typing.List[str]
+    title: str = None
     abstract: str = None
     ipc_classes: typing.List[str] = field(default_factory=list)
     cpc_classes: typing.List[CpcClass] = field(default_factory=list)
