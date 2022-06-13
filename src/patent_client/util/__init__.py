@@ -1,4 +1,9 @@
-from .manager import Manager, ModelType, QuerySet, ListManager
-from .related import one_to_many, one_to_one, get_manager
+from .manager import ListManager
+from .manager import Manager
+from .manager import ModelType
+from .manager import QuerySet
 from .model import Model
+from .related import get_manager
+from .related import one_to_many
+from .related import one_to_one
 from .schema import ListField

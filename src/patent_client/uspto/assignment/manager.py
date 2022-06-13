@@ -1,7 +1,7 @@
-import re
 import math
-import warnings
+import re
 import typing
+import warnings
 from collections.abc import Iterable
 
 from urllib3.connectionpool import InsecureRequestWarning
@@ -9,14 +9,15 @@ from urllib3.connectionpool import InsecureRequestWarning
 from patent_client import session
 from patent_client.util import Manager
 
+from .model import Assignment
 from .parser import AssignmentParser
 from .schema import AssignmentSchema
-from .model import Assignment
 
-warnings.filterwarnings('ignore', category=InsecureRequestWarning)
+warnings.filterwarnings("ignore", category=InsecureRequestWarning)
 
 NUMBER_CLEAN_RE = re.compile(r"[^\d]")
-clean_number = lambda x: NUMBER_CLEAN_RE.sub("", str(x)) 
+clean_number = lambda x: NUMBER_CLEAN_RE.sub("", str(x))
+
 
 class AssignmentManager(Manager[Assignment]):
     fields = {
@@ -31,7 +32,7 @@ class AssignmentManager(Manager[Assignment]):
     }
     parser = AssignmentParser()
     url = "https://assignment-api.uspto.gov/patent/lookup"
-    page_size = 20 
+    page_size = 20
     obj_class = "patent_client.uspto_assignments.Assignment"
     primary_key = "id"
 
@@ -54,9 +55,8 @@ class AssignmentManager(Manager[Assignment]):
                 counter += 1
             page_num += 1
 
-
     def get_query(self, page_no):
-        """Get assignments. 
+        """Get assignments.
         Args:
             patent: pat no to search
             application: app no to search
@@ -96,7 +96,6 @@ class AssignmentManager(Manager[Assignment]):
             return max_length
         else:
             return limit if limit < max_length else max_length
-
 
     def get_page(self, page_no):
         params = self.get_query(page_no)

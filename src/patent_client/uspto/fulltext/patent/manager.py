@@ -1,7 +1,13 @@
-from ..manager import FullTextManager, ImageManager
-from .settings import SEARCH_FIELDS, SEARCH_PARAMS, SEARCH_URL, PUBLICATION_URL
-from .schema import PatentSchema, PatentImageSchema
+from ..manager import FullTextManager
+from ..manager import ImageManager
 from .model import PatentResult
+from .schema import PatentImageSchema
+from .schema import PatentSchema
+from .settings import PUBLICATION_URL
+from .settings import SEARCH_FIELDS
+from .settings import SEARCH_PARAMS
+from .settings import SEARCH_URL
+
 
 class PatentManager(FullTextManager):
     __schema__ = PatentSchema
@@ -11,7 +17,7 @@ class PatentManager(FullTextManager):
     pub_base_url = PUBLICATION_URL
     result_model = PatentResult
 
+
 class PatentImageManager(ImageManager):
     __schema__ = PatentImageSchema
     BASE_URL = "https://pdfpiw.uspto.gov/.piw"
-

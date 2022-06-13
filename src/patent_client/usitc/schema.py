@@ -2,10 +2,11 @@ import importlib
 import xml.etree.ElementTree as ET
 
 from marshmallow import EXCLUDE
+from marshmallow import Schema
 from marshmallow import fields
 from marshmallow import post_load
 from marshmallow import pre_load
-from marshmallow import Schema
+
 from patent_client.util.manager import resolve
 
 # from .model import ITCInvestigation, ITCDocument, ITCAttachment

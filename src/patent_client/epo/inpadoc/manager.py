@@ -2,15 +2,16 @@ import math
 import os
 
 import xmltodict
+
 from patent_client import CACHE_CONFIG
 from patent_client import SETTINGS
 from patent_client.util import Manager
 from patent_client.util.manager import resolve
 
-from .schema import InpadocBiblioSchema
-from .schema import InpadocResultSchema
 from ..session import NS
 from ..session import session
+from .schema import InpadocBiblioSchema
+from .schema import InpadocResultSchema
 
 SEARCH_FIELDS = {
     "title": "title",

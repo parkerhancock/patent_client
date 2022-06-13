@@ -3,18 +3,21 @@ import logging
 import math
 from datetime import date
 from datetime import datetime
-from typing import Iterator
-from typing import Union
 from pathlib import Path
 from tempfile import TemporaryDirectory
-from PyPDF2 import PdfFileReader, PdfFileMerger
+from typing import Iterator
+from typing import Union
 
 import inflection
+from PyPDF2 import PdfFileMerger
+from PyPDF2 import PdfFileReader
+
 from patent_client import session
 from patent_client.util.manager import Manager
 
 from .model import USApplication
-from .schema import USApplicationSchema, DocumentSchema
+from .schema import DocumentSchema
+from .schema import USApplicationSchema
 
 logger = logging.getLogger(__name__)
 
@@ -174,18 +177,18 @@ class DocumentManager(Manager):
     __schema__ = DocumentSchema()
 
     def __len__(self):
-        url = self.query_url + self.config['filter']['appl_id'][0]
+        url = self.query_url + self.config["filter"]["appl_id"][0]
         response = session.get(url)
         return len(response.json())
 
     def _get_results(self) -> Iterator[USApplication]:
-        url = self.query_url + self.config['filter']['appl_id'][0]
+        url = self.query_url + self.config["filter"]["appl_id"][0]
         response = session.get(url)
         for item in response.json():
             yield self.__schema__.load(item)
 
     def download(self, docs, path="."):
-        if str(path)[-4:].lower() == '.pdf':
+        if str(path)[-4:].lower() == ".pdf":
             # If we've been given a specific filename, use it
             out_file = Path(path)
         else:
@@ -197,9 +200,9 @@ class DocumentManager(Manager):
                 for doc in docs:
                     if doc.access_level_category == "PUBLIC":
                         files.append((doc.download(tmpdir), doc))
-            
+
                 out_pdf = PdfFileMerger()
-                page=0
+                page = 0
                 for f, doc in files:
                     bookmark = f"{doc.mail_room_date} - {doc.code} - {doc.description}"
                     out_pdf.append(str(f), bookmark=bookmark, import_bookmarks=False)
@@ -210,4 +213,3 @@ class DocumentManager(Manager):
             # This is needed due to a bug in Windows that prevents cleanup of the tmpdir
             pass
         return out_file
-        

@@ -1,1 +1,3 @@
-from .model import ITCInvestigation, ITCDocument, ITCAttachment
+from .model import ITCAttachment
+from .model import ITCDocument
+from .model import ITCInvestigation

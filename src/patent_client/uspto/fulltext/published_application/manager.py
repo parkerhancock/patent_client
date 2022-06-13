@@ -1,7 +1,13 @@
-from ..manager import FullTextManager, ImageManager
-from .settings import SEARCH_PARAMS, SEARCH_FIELDS, SEARCH_URL, PUBLICATION_URL
-from .schema import PublishedApplicationSchema, PublishedApplicationImageSchema
+from ..manager import FullTextManager
+from ..manager import ImageManager
 from .model import PublishedApplicationResult
+from .schema import PublishedApplicationImageSchema
+from .schema import PublishedApplicationSchema
+from .settings import PUBLICATION_URL
+from .settings import SEARCH_FIELDS
+from .settings import SEARCH_PARAMS
+from .settings import SEARCH_URL
+
 
 class PublishedApplicationManager(FullTextManager):
     __schema__ = PublishedApplicationSchema
@@ -10,6 +16,7 @@ class PublishedApplicationManager(FullTextManager):
     search_url = SEARCH_URL
     pub_base_url = PUBLICATION_URL
     result_model = PublishedApplicationResult
+
 
 class PublishedApplicationImageManager(ImageManager):
     __schema__ = PublishedApplicationImageSchema

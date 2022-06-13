@@ -36,16 +36,18 @@ def resolve(item, key):
         return None
     return item
 
+
 def resolve_list(item, key):
-    item_list = resolve(item,key)
-    
+    item_list = resolve(item, key)
+
     if item_list is None:
         return []
-    
+
     if isinstance(item_list, list):
         return item_list
-    
+
     return [item_list]
+
 
 class Manager(Generic[ModelType]):
     """

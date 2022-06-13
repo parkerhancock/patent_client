@@ -1,4 +1,5 @@
 import pytest
+
 from patent_client.parser import parse
 
 
@@ -85,7 +86,6 @@ class TestPatentNumberParser:
         assert app.display() == "US D645062"
         assert str(app) == "USD645062"
 
-
     def test_can_handle_us_application_number(self):
         app = parse("14123456")
         assert app.number == "14123456"
@@ -128,15 +128,15 @@ class TestPatentNumberParser:
         assert app.kind_code == ""
         assert app.display() == "US 14/123,456"
         assert str(app) == "US14123456"
-    
+
     def test_can_handle_us_application_number_with_leading_zeroes(self):
-        app = parse('09054439')
+        app = parse("09054439")
         assert app.number == "09054439"
         assert app.country == "US"
         assert app.kind_code == ""
         assert app.display() == "US 09/054,439"
         assert str(app) == "US09054439"
-    
+
     def test_can_handle_reexam_cases(self):
         app = parse(95000486)
         assert app.number == "95000486"
@@ -182,7 +182,7 @@ class TestPatentNumberParser:
 
     def test_can_handle_wipo_publications(self):
         app = parse("WO2009029879")
-        #assert app.type == "international publication"
+        # assert app.type == "international publication"
         assert app.country == "WO"
         assert app.number == "2009029879"
         assert app.kind_code == ""

@@ -1,11 +1,13 @@
 from marshmallow import EXCLUDE
+from marshmallow import Schema
 from marshmallow import fields
 from marshmallow import post_load
 from marshmallow import pre_load
-from marshmallow import Schema
+
 from patent_client.util import ListField
 from patent_client.util import QuerySet
-from patent_client.util.manager import resolve, resolve_list
+from patent_client.util.manager import resolve
+from patent_client.util.manager import resolve_list
 
 from .model import CpcClass
 from .model import Inpadoc
@@ -35,7 +37,7 @@ class InpadocResultSchema(BaseSchema):
     def pre_load(self, data, *args, **kwargs):
         if data["document-id"] is None:
             return data
-        
+
         for k, v in data["document-id"].items():
             data[k] = v
         del data["document-id"]
@@ -146,7 +148,11 @@ class InpadocBiblioSchema(BaseSchema):
         pcs = resolve(bib, "priority-claims.priority-claim")
         out = list()
         pcs = (
-            pcs if isinstance(pcs, list) else [pcs,]
+            pcs
+            if isinstance(pcs, list)
+            else [
+                pcs,
+            ]
         )
         for pc in pcs:
             if isinstance(pc["document-id"], list):
@@ -166,7 +172,9 @@ class InpadocBiblioSchema(BaseSchema):
         data["publications"] = resolve_list(bib, "publication-reference.document-id")
         ipc_class = resolve_list(bib, "classifications-ipcr.classification-ipcr")
         data["ipc_classes"] = [c["text"] for c in ipc_class]
-        classifications = resolve_list(bib, "patent-classifications.patent-classification")
+        classifications = resolve_list(
+            bib, "patent-classifications.patent-classification"
+        )
         if classifications:
             data["cpc_classes"] = [
                 c

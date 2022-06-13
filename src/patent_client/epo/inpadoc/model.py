@@ -7,9 +7,9 @@ from dataclasses import dataclass
 from dataclasses import field
 
 from patent_client.util import Model
+from patent_client.util import QuerySet
 from patent_client.util import one_to_many
 from patent_client.util import one_to_one
-from patent_client.util import QuerySet
 
 from .lookups import lookup_claims
 from .lookups import lookup_description

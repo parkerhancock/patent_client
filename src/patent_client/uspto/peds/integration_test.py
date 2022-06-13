@@ -128,7 +128,7 @@ class TestPatentExaminationData:
             "street",
             "city",
             "geo_region_code",
-            "postal_code"
+            "postal_code",
         ]
 
         for k in expected_keys:
@@ -138,7 +138,7 @@ class TestPatentExaminationData:
         app = USApplication.objects.get("14095073")
         assert len(app.attorneys) > 1
         actual = app.attorneys[0].as_dict()
-        assert int(actual['registration_no']) > 1000
+        assert int(actual["registration_no"]) > 1000
         expected_keys = [
             "registration_no",
             "full_name",
@@ -218,7 +218,8 @@ class TestPatentExaminationData:
         assert app.filing_date == datetime.date(2017, 2, 15)
         assert app.priority_claim == "20170229"
 
-class TestPEDSDocuments():
+
+class TestPEDSDocuments:
     def test_can_get_document_listing(self):
         app = USApplication.objects.get(patent_number=10000000)
         docs = app.documents

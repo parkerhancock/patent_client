@@ -1,10 +1,24 @@
 import re
-from patent_client.util.schema import *
+
 from dateutil.parser import parse as parse_dt
 
-from .model import Publication, Inventor, Applicant, Assignee, RelatedPatentDocument, PriorPublication, USReference, ForeignReference, NPLReference, CpcClass, USClass, ForeignPriority
+from patent_client.util.schema import *
+
+from .model import Applicant
+from .model import Assignee
+from .model import CpcClass
+from .model import ForeignPriority
+from .model import ForeignReference
+from .model import Inventor
+from .model import NPLReference
+from .model import PriorPublication
+from .model import Publication
+from .model import RelatedPatentDocument
+from .model import USClass
+from .model import USReference
 
 # Related People
+
 
 class InventorSchema(Schema):
     __model__ = Inventor
@@ -12,6 +26,7 @@ class InventorSchema(Schema):
     first_name = StringField()
     last_name = StringField()
     region = StringField()
+
 
 class ApplicantSchema(Schema):
     __model__ = Applicant
@@ -21,28 +36,35 @@ class ApplicantSchema(Schema):
     state = StringField()
     type = StringField()
 
+
 class AssigneeSchema(Schema):
     __model__ = Assignee
     name = StringField()
     city = StringField(required=False)
     region = StringField(required=False)
 
+
 # Classification Types
+
 
 class CpcClassSchema(Schema):
     __model__ = CpcClass
     classification = StringField("class")
     version = StringField()
 
+
 class IntlClassSchema(CpcClassSchema):
     pass
+
 
 class USClassSchema(Schema):
     __model__ = USClass
     classification = StringField("class")
     subclassification = StringField("subclass")
 
+
 # Foreign Priority
+
 
 class ForeignPrioritySchema(Schema):
     __model__ = ForeignPriority
@@ -50,7 +72,9 @@ class ForeignPrioritySchema(Schema):
     country_code = StringField()
     number = StringField()
 
+
 # Cited Reference Types
+
 
 class USReferenceSchema(Schema):
     __model__ = USReference
@@ -58,28 +82,34 @@ class USReferenceSchema(Schema):
     name = StringField()
     publication_number = StringField()
 
+
 class ForeignReferenceSchema(Schema):
     __model__ = ForeignReference
     publication_number = StringField()
     name = StringField()
     country_code = StringField()
 
+
 class NPLReferenceSchema(Schema):
     __model__ = NPLReference
     citation = StringField()
 
+
 # Related Document Types
+
 
 class PriorPublicationSchema(Schema):
     __model__ = PriorPublication
     publication_number = StringField()
     publication_date = DateField()
 
+
 class RelatedPatentDocumentSchema(Schema):
     __model__ = RelatedPatentDocument
     appl_id = StringField()
     filing_date = DateField(required=False)
     patent_number = StringField(required=False)
+
 
 class PublicationSchema(Schema):
     publication_number = StringField()
@@ -90,8 +120,12 @@ class PublicationSchema(Schema):
     description = StringField()
     abstract = StringField()
     claims = StringField()
-    
-    appl_id = StringField("appl_no", formatter=lambda x: re.sub(r"[^\d]", "", x.replace("D", "29")), required=False)
+
+    appl_id = StringField(
+        "appl_no",
+        formatter=lambda x: re.sub(r"[^\d]", "", x.replace("D", "29")),
+        required=False,
+    )
     filing_date = DateField("filed")
     family_id = StringField(required=False)
 
@@ -108,15 +142,22 @@ class PublicationSchema(Schema):
 
     prior_publications = Nested(PriorPublicationSchema(), many=True)
     related_us_applications = Nested(RelatedPatentDocumentSchema(), many=True)
-    
-    cpc_classes = Nested(CpcClassSchema(), data_key="current_cpc_class", many=True, required=False)
-    intl_classes = Nested(IntlClassSchema(), data_key="current_international_class", many=True)
-    us_classes = Nested(USClassSchema(), many=True, data_key="current_us_class")   
-    field_of_search = Nested(USClassSchema(), many=True, data_key="field_of_search", required=False)
-    
+
+    cpc_classes = Nested(
+        CpcClassSchema(), data_key="current_cpc_class", many=True, required=False
+    )
+    intl_classes = Nested(
+        IntlClassSchema(), data_key="current_international_class", many=True
+    )
+    us_classes = Nested(USClassSchema(), many=True, data_key="current_us_class")
+    field_of_search = Nested(
+        USClassSchema(), many=True, data_key="field_of_search", required=False
+    )
+
     us_references = Nested(USReferenceSchema(), many=True, required=False)
     foreign_references = Nested(ForeignReferenceSchema(), many=True, required=False)
     npl_references = Nested(NPLReferenceSchema(), many=True, required=False)
+
 
 class ImageSchema(Schema):
     publication_number = StringField()

@@ -1,15 +1,18 @@
-import pytest
 from pprint import pprint
-from patent_client.epo.inpadoc.model import Inpadoc, InpadocBiblio
+
+import pytest
+
+from patent_client.epo.inpadoc.model import Inpadoc
+from patent_client.epo.inpadoc.model import InpadocBiblio
 
 
-class TestInpadoc():
+class TestInpadoc:
     def test_inpadoc_manager(self):
         result = Inpadoc.objects.filter(applicant="Microsoft")
         assert len(result) > 20
-        countries = list(result.limit(20).values_list('country', flat=True))
-        assert sum(1 for c in countries if c == 'US') >= 1
-       
+        countries = list(result.limit(20).values_list("country", flat=True))
+        assert sum(1 for c in countries if c == "US") >= 1
+
     def test_get_biblio_from_result(self):
         result = Inpadoc.objects.filter(applicant="Google").first().biblio
         assert result.title is not None
@@ -28,29 +31,33 @@ class TestInpadoc():
 
     def test_get_biblio_from_wo(self):
         result = Inpadoc.objects.get(publication="WO2009085664A2").biblio
-        assert result.abstract is not None 
+        assert result.abstract is not None
 
     def test_can_index_inpadoc_result(self):
-        result = Inpadoc.objects.filter(applicant='Tesla')
+        result = Inpadoc.objects.filter(applicant="Tesla")
         assert result[0] != result[1]
 
     def test_can_handle_single_item_ipc_classes(self):
         result = Inpadoc.objects.get(publication="WO2020081771").biblio
         assert result.ipc_classes is not None
-    
+
     def test_issue_41(self):
-        result = Inpadoc.objects.get('JP2005533465A').biblio
+        result = Inpadoc.objects.get("JP2005533465A").biblio
         assert result.title == None
 
 
-class TestInpadocBiblio():
+class TestInpadocBiblio:
     def test_inpadoc_biblio_manager(self):
         result = InpadocBiblio.objects.get(publication="USD870008")
         assert result.title == "Vehicle side skirt"
-        assert result.number == 'D870008'
-        assert result.country == 'US'
+        assert result.number == "D870008"
+        assert result.country == "US"
 
-class TestInpadocLinks():
+
+class TestInpadocLinks:
     def test_get_us_application_from_result(self):
         result = Inpadoc.objects.get(publication="US8131731B2")
-        assert result.us_application.patent_title == "RELEVANCY SORTING OF USER'S BROWSER HISTORY"
+        assert (
+            result.us_application.patent_title
+            == "RELEVANCY SORTING OF USER'S BROWSER HISTORY"
+        )

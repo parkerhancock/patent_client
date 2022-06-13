@@ -1,19 +1,18 @@
 # flake8: noqa
 __version__ = "2.2.1"
 
+import datetime
 import json
 import os
-import sys
 import platform
 import shutil
+import sys
 import time
 from pathlib import Path
 
 import requests_cache
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
-import datetime
-
 
 # Set Up Requests Cache
 cache_max_age = datetime.timedelta(days=3)
@@ -25,17 +24,21 @@ CACHE_CONFIG = dict(
     db_path=str(CACHE_BASE / "requests_cache"),
     backend="sqlite",
     allowable_methods=("GET", "POST"),
-    ignored_parameters=["Authorization",]
-    )
+    ignored_parameters=[
+        "Authorization",
+    ],
+)
 
 session = requests_cache.CachedSession(**CACHE_CONFIG)
 session.remove_expired_responses(expire_after=cache_max_age)
-session.headers["User-Agent"] = f"Python Patent Clientbot/{__version__} (parkerhancock@users.noreply.github.com)"
+session.headers[
+    "User-Agent"
+] = f"Python Patent Clientbot/{__version__} (parkerhancock@users.noreply.github.com)"
 
 # Install a default retry on the session using urrlib3
 retry = Retry(total=5, backoff_factor=0.2)
-session.mount('https://', HTTPAdapter(max_retries=retry))
-session.mount('http://', HTTPAdapter(max_retries=retry))
+session.mount("https://", HTTPAdapter(max_retries=retry))
+session.mount("http://", HTTPAdapter(max_retries=retry))
 
 SETTINGS_FILE = Path("~/.iprc").expanduser()
 if not SETTINGS_FILE.exists():
@@ -45,9 +48,13 @@ if not SETTINGS_FILE.exists():
 SETTINGS = json.load(open(SETTINGS_FILE))
 
 from patent_client.epo.inpadoc.model import Inpadoc  # isort:skip
-from patent_client.usitc.model import ITCInvestigation, ITCDocument, ITCAttachment
-from patent_client.uspto.ptab.model import PtabProceeding, PtabDocument, PtabDecision
+from patent_client.usitc.model import ITCAttachment
+from patent_client.usitc.model import ITCDocument
+from patent_client.usitc.model import ITCInvestigation
 from patent_client.uspto.assignment.model import Assignment
-from patent_client.uspto.peds.model import USApplication
 from patent_client.uspto.fulltext.patent.model import Patent
 from patent_client.uspto.fulltext.published_application.model import PublishedApplication
+from patent_client.uspto.peds.model import USApplication
+from patent_client.uspto.ptab.model import PtabDecision
+from patent_client.uspto.ptab.model import PtabDocument
+from patent_client.uspto.ptab.model import PtabProceeding

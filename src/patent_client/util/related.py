@@ -3,7 +3,8 @@ import logging
 
 logger = logging.getLogger(__name__)
 
-from .manager import QuerySet, resolve
+from .manager import QuerySet
+from .manager import resolve
 
 
 def one_to_one(class_name, attribute=None, **mapping):
@@ -14,7 +15,7 @@ def one_to_one(class_name, attribute=None, **mapping):
         try:
             klass = getattr(importlib.import_module(module_name), class_name)
             filter_obj = {k: getattr(self, v) for (k, v) in mapping.items()}
-            logger.debug(f'Fetching related {klass} using filter {filter_obj}')
+            logger.debug(f"Fetching related {klass} using filter {filter_obj}")
             return resolve(klass.objects.get(**filter_obj), attribute)
         except AttributeError:
             return None
@@ -33,14 +34,16 @@ def one_to_many(class_name, **mapping):
 
     return get
 
+
 def get_manager(class_name):
     module_name, class_name = class_name.rsplit(".", 1)
+
     @property
     def objects(self):
         klass = getattr(importlib.import_module(module_name), class_name)
         return klass()
-    return objects
 
+    return objects
 
 
 def recur_accessor(obj, accessor):

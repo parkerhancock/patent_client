@@ -1,6 +1,7 @@
 from collections import OrderedDict
 
 import pytest
+
 from .model import PublishedApplication
 
 
@@ -62,10 +63,17 @@ class TestPublishedApplicationFullText:
 
     def test_nonstandard_claim_format(self):
         obj = PublishedApplication.objects.get("20170260839")
-        assert obj.parsed_claims[0].text[:39] == "1. A method of well ranging comprising:"
+        assert (
+            obj.parsed_claims[0].text[:39] == "1. A method of well ranging comprising:"
+        )
 
     def test_can_get_images(self):
         pat = PublishedApplication.objects.get("20090150362")
         images = pat.images
-        assert images.pdf_url == 'https://pdfaiw.uspto.gov/fdd/62/2009/03/015/0.pdf'
-        assert images.sections == {'Front Page': (1, 1), 'Drawings': (2, 12), 'Specifications': (13, 23), 'Claims': (24, 24)}
+        assert images.pdf_url == "https://pdfaiw.uspto.gov/fdd/62/2009/03/015/0.pdf"
+        assert images.sections == {
+            "Front Page": (1, 1),
+            "Drawings": (2, 12),
+            "Specifications": (13, 23),
+            "Claims": (24, 24),
+        }

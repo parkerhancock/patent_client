@@ -1,9 +1,11 @@
+import datetime
 import math
 import re
-import datetime
 import xml.etree.ElementTree as ET
+
 from dateutil.parser import parse as parse_date
 from inflection import underscore
+
 
 class AssignmentParser:
     def parse(self, text):

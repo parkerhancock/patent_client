@@ -1,13 +1,15 @@
+import datetime
 import json
 import os
 from collections import OrderedDict
-import datetime
 
 import pytest
-from .model import Patent
+
 from ..exceptions import FullTextNotAvailable
+from .model import Patent
 
 HERE = os.path.dirname(__file__)
+
 
 class TestPatentFullText:
     def test_fetch_patent(self):
@@ -60,7 +62,7 @@ class TestPatentFullText:
         pat_no = "8832265"
         pat = Patent.objects.get(pat_no)
         assert len(pat.field_of_search) == 7
- 
+
     def test_shows_error_for_old_patents(self):
         pat_no = "3,113,620"
         with pytest.raises(FullTextNotAvailable) as exception:

@@ -1,8 +1,9 @@
 import datetime
 
+import pytest
+
 from .model import ITCInvestigation
 
-import pytest
 
 class TestItcEdis:
     def test_can_get_investigation(self):
@@ -38,7 +39,7 @@ class TestItcEdis:
             assert getattr(document, k) == v
         assert inv.documents.first().investigation.number == "337-966"
 
-    @pytest.mark.skip('EDIS Attachment API not working')
+    @pytest.mark.skip("EDIS Attachment API not working")
     def test_can_get_attachments(self, tmpdir):
         inv = ITCInvestigation.objects.get("337-TA-1025")
         doc_iterator = iter(inv.documents)
@@ -56,7 +57,7 @@ class TestItcEdis:
             "download_url": "https://edis.usitc.gov/data/download/605365/1163223",
         }
         for k, v in expected.items():
-            assert getattr(attachment, k) == v 
+            assert getattr(attachment, k) == v
 
         docs[15].attachments.first().download(tmpdir)
         expected_doc = (

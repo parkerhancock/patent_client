@@ -9,9 +9,9 @@ from typing import Optional
 
 from patent_client import session
 from patent_client.util import Model
+from patent_client.util import QuerySet
 from patent_client.util import one_to_many
 from patent_client.util import one_to_one
-from patent_client.util import QuerySet
 
 
 @dataclass

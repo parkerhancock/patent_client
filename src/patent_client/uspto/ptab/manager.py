@@ -3,6 +3,7 @@ from typing import Generic
 from typing import Iterable
 
 import inflection
+
 from patent_client import session
 from patent_client.util import Manager
 from patent_client.util import ModelType
