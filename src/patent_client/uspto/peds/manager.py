@@ -108,6 +108,7 @@ class USApplicationManager(Manager[USApplication]):
         query = {
             "qf": QUERY_FIELDS,
             "fl": "*",  # ",".join(inflection.camelize(f, uppercase_first_letter=False) for f in RETURN_FIELDS),#"*",
+            "fq": list(),
             "searchText": " AND ".join(query).strip(),
             "sort": sort_query,
             "facet": "false",

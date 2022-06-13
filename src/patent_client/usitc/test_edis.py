@@ -10,7 +10,7 @@ class TestItcEdis:
         expected = {
             "phase": "Violation",
             "number": "337-1025",
-            "status": "Active",
+            "status": "Inactive",
             "title": "Certain Silicon-on-Insulator Wafers; Inv. No. 337-TA-1025",
             "type": "Sec 337",
             "docket_number": "3153",

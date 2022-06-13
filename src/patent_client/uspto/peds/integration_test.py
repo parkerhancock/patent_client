@@ -188,7 +188,7 @@ class TestPatentExaminationData:
             assert expected[k] == actual[k]
 
     def test_expiration_date_for_pct_apps(self):
-        app = USApplication.objects.get("PCT/CA02/01413")
+        app = USApplication.objects.get("PCT/US2014/020588")
         with pytest.raises(Exception) as exc:
             expiration_data = app.expiration
         assert exc.match("Expiration date not supported for PCT Applications")
@@ -234,7 +234,7 @@ class TestPEDSDocuments():
         app = USApplication.objects.get(patent_number=10000000)
         doc = app.documents.to_list()[-1]
         result = doc.download(path=tmp_path)
-        assert "14643719 - 2015-03-09 - IDS" in str(result)
+        assert "14643719 - 2015-03-10 - IDS" in str(result)
         assert result.exists()
         assert len(list(tmp_path.glob("*.pdf"))) == 1
 
@@ -242,7 +242,7 @@ class TestPEDSDocuments():
         app = USApplication.objects.get(patent_number=10000000)
         doc = app.documents.to_list()[-1]
         result = doc.download(path=tmp_path, include_appl_id=False)
-        assert "2015-03-09 - IDS" in str(result)
+        assert "2015-03-10 - IDS" in str(result)
         assert "14643719" not in str(result)
         assert result.exists()
         assert len(list(tmp_path.glob("*.pdf"))) == 1

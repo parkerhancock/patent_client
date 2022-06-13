@@ -57,7 +57,7 @@ If you want the full document, you can access it at the "publication" attribute:
 .. code-block:: python
 
     >>> from patent_client import Patent
-    >>> basketball_patents = Patent.objects.filter(title="basketball", issue_date_gt="2019-01-01")
+    >>> basketball_patents = Patent.objects.filter(title="basketball", issue_date="2021-05-25").order_by("patent_number")
     >>> basketball_patents[0]
     PatentResult(publication_number='D920344', title='Display screen with graphical user interface for a basketball practice device')
     >>> basketball_patents[0].publication
