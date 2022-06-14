@@ -3,7 +3,6 @@ import typing
 from collections import OrderedDict
 from dataclasses import dataclass
 from dataclasses import fields
-from dataclasses import make_dataclass
 
 from .manager import QuerySet
 

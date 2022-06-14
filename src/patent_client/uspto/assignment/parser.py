@@ -11,15 +11,29 @@ class AssignmentParser:
     def parse(self, text):
         tree = ET.fromstring(text.encode("utf-8"))
         result = tree.find("./result")
+        docs = [self.parse_doc(e) for e in result]
         num_found = int(result.attrib["numFound"])
-        return num_found, [self.doc(doc) for doc in result]
+        return {
+            "num_found": num_found,
+            "docs": docs
+        }
 
-    def doc(self, element):
-        data = self.xml_to_dict(element)
-        data[
+    def parse_doc(self, element):
+        doc = self.xml_to_dict(element)
+        doc[
             "image_url"
-        ] = f'http://legacy-assignments.uspto.gov/assignments/assignment-pat-{data["display_id"]}.pdf'
-        return data
+        ] = f'http://legacy-assignments.uspto.gov/assignments/assignment-pat-{doc["display_id"]}.pdf'
+        doc['assignors'] = self.lists_to_records(doc, ["patAssignorName", "patAssignorExDate", "patAssignorDateAck"])
+        doc['assignees'] = self.lists_to_records(doc, ["patAssigneeName", "patAssigneeAddress1", "patAssigneeAddress2", "patAssigneeCity", "patAssigneeState", "patAssigneeCountryName", "patAssigneePostcode"])
+        doc['properties'] = self.lists_to_records(doc, ["inventionTitle", "inventionTitleLang", "applNum", "filingDate", "intlPubDate", "intlRegNum", "inventors", "issueDate", "patNum", "pctNum", "publDate", "publNum"])
+        return doc
+
+    def lists_to_records(self, doc, fields):
+        lists = [doc[f] for f in fields]
+        records = [dict(zip(fields, v)) for v in zip(*lists)]
+        for f in fields:
+            del doc[f]
+        return records
 
     def xml_to_list(self, element):
         output = list()

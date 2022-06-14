@@ -595,10 +595,22 @@ category = "main"
 optional = false
 python-versions = ">=3.4"
 
+[[package]]
+name = "yankee"
+version = "0.1.4"
+description = "lightweight, simple, and fast declarative XML and JSON data extraction"
+category = "main"
+optional = false
+python-versions = ">=3.7,<4.0"
+
+[package.dependencies]
+lxml = ">=4.8.0,<5.0.0"
+python-dateutil = ">=2.8.2,<3.0.0"
+
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "eb1e35c9ccfb7d4476f9692c2826a189b42f075d97d5dce5bdda40086ebf2712"
+content-hash = "d8c9fe3a9810fd1d2d47cc862454d82e076bb22cd82a9214116da351ec45d02a"
 
 [metadata.files]
 appdirs = [
@@ -995,4 +1007,8 @@ virtualenv = [
 xmltodict = [
     {file = "xmltodict-0.13.0-py2.py3-none-any.whl", hash = "sha256:aa89e8fd76320154a40d19a0df04a4695fb9dc5ba977cbb68ab3e4eb225e7852"},
     {file = "xmltodict-0.13.0.tar.gz", hash = "sha256:341595a488e3e01a85a9d8911d8912fd922ede5fecc4dce437eb4b6c8d037e56"},
+]
+yankee = [
+    {file = "yankee-0.1.4-py3-none-any.whl", hash = "sha256:a3bf870432295b263732f480d2049b76b27e471ace1a0d33c57de94e2fe5acb7"},
+    {file = "yankee-0.1.4.tar.gz", hash = "sha256:532a8b6ea94cf05e7fdcf6caeabd0672dd775dbaf23870665c1d2aa75a232d3f"},
 ]

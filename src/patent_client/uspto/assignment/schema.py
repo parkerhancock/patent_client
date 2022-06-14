@@ -1,9 +1,5 @@
-from marshmallow import EXCLUDE
-from marshmallow import Schema
-from marshmallow import ValidationError
-from marshmallow import fields
-from marshmallow import post_load
-from marshmallow import pre_load
+from yankee import fields
+from yankee import Schema
 
 from patent_client.util.schema import ListField
 
@@ -51,20 +47,6 @@ def combine_strings(prefix, data):
     return "\n".join(filtered_data[k] for k in sorted(filtered_data.keys()))
 
 
-# Custom Fields
-
-
-class YesNoField(fields.Field):
-    """Converts to and from boolean values represented
-    as a yes or no
-    """
-
-    def _deserialize(self, value, *args, **kwargs) -> bool:
-        if value not in ("Y", "N"):
-            raise ValidationError("YesNo must be a Y or N")
-        return value == "Y"
-
-
 # Schemas
 
 
@@ -78,57 +60,67 @@ class BaseSchema(Schema):
 
 class PropertySchema(BaseSchema):
     __model__ = Property
-    invention_title = fields.Str(allow_none=True)
-    inventors = fields.Str(allow_none=True)
+    invention_title = fields.Str()
+    inventors = fields.Str()
     # Numbers
-    appl_id = fields.Str(allow_none=True, data_key="appl_num")
-    pct_num = fields.Str(allow_none=True)
-    intl_reg_num = fields.Str(allow_none=True)
-    publ_num = fields.Str(allow_none=True)
-    pat_num = fields.Str(allow_none=True)
+    appl_id = fields.Str(data_key="appl_num")
+    pct_num = fields.Str()
+    intl_reg_num = fields.Str()
+    publ_num = fields.Str()
+    pat_num = fields.Str()
     # Dates
-    filing_date = fields.Date(allow_none=True)
-    intl_publ_date = fields.Date(allow_none=True)
-    issue_date = fields.Date(allow_none=True)
-    publ_date = fields.Date(allow_none=True)
+    filing_date = fields.Date()
+    intl_publ_date = fields.Date()
+    issue_date = fields.Date()
+    publ_date = fields.Date()
 
 
 class AssignorSchema(BaseSchema):
     __model__ = Assignor
     name = fields.Str()
-    ex_date = fields.Raw()
-    date_ack = fields.Raw()
-
-    class Meta:
-        unknown = EXCLUDE
+    ex_date = fields.Date()
+    date_ack = fields.Date()
 
 
 class AssigneeSchema(BaseSchema):
     __model__ = Assignee
     name = fields.Str()
     address = fields.Str()
-    city = fields.Str(allow_none=True)
-    state = fields.Str(allow_none=True)
-    country_name = fields.Str(allow_none=True)
-    postcode = fields.Str(allow_none=True)
+    city = fields.Str()
+    state = fields.Str()
+    country_name = fields.Str()
+    postcode = fields.Str()
 
     @pre_load
     def pre_load(self, input_data, **kwargs):
         input_data["address"] = combine_strings("corr_address", input_data)
         return input_data
 
-    class Meta:
-        unknown = EXCLUDE
 
+class CorrespondentAddressField(fields.Combine):
+    corrAddress1 = fields.Str()
+    corrAddress2 = fields.Str()
+    corrAddress3 = fields.Str()
+    corrAddress4 = fields.Str()
+    
+    def combine_func(self, obj):
+        out = str()
+        for i in range(1, 5):
+            out += obj.get(f"corrAddress{i}", '') + "\n"
+        return out.strip()
 
 class AssignmentSchema(BaseSchema):
     __model__ = Assignment
-    assignment_record_has_images = YesNoField()
+    id = fields.Str()
+    conveyance_text = fields.Str(formatter=lambda s: s.replace("(SEE DOCUMENT FOR DETAILS).", "").strip())
+    date_produced = fields.Date()
+    corr_name = fields.Str()
+    corr_address = fields.Str()
+    assignment_record_has_images = fields.Bool(true_value="Y")
     page_count = fields.Int()
-    transaction_date = fields.Raw(allow_none=True)
-    last_update_date = fields.Raw(required=True)
-    recorded_date = fields.Raw(required=True)
-    assignment_record_has_images = fields.Boolean(required=True)
+    transaction_date = fields.Date()
+    last_update_date = fields.Date()
+    recorded_date = fields.Date()
     properties = ListField(fields.Nested(PropertySchema))
     assignors = ListField(fields.Nested(AssignorSchema))
     assignees = ListField(fields.Nested(AssigneeSchema))
@@ -142,22 +134,4 @@ class AssignmentSchema(BaseSchema):
         ]
         input_data["properties"] = separate_dicts(property_fields, input_data)
         input_data["corr_address"] = combine_strings("corr_address", input_data)
-        input_data["conveyance_text"] = (
-            input_data["conveyance_text"]
-            .replace("(SEE DOCUMENT FOR DETAILS).", "")
-            .strip()
-        )
         return input_data
-
-    class Meta:
-        unknown = EXCLUDE
-        additional = (
-            "id",
-            "conveyance_text",
-            "date_produced",
-            "assignment_record_has_images",
-            "corr_name",
-            "corr_address",
-            "assignor",
-            "assignee",
-        )

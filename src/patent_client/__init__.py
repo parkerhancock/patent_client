@@ -3,11 +3,7 @@ __version__ = "2.2.1"
 
 import datetime
 import json
-import os
-import platform
 import shutil
-import sys
-import time
 from pathlib import Path
 
 import requests_cache
