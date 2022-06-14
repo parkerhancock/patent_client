@@ -20,6 +20,7 @@ clean_number = lambda x: NUMBER_CLEAN_RE.sub("", str(x))
 
 
 class AssignmentManager(Manager[Assignment]):
+    schema = AssignmentSchema()
     fields = {
         "patent_number": "PatentNumber",
         "appl_id": "ApplicationNumber",
@@ -51,7 +52,7 @@ class AssignmentManager(Manager[Assignment]):
         for page_num in range(num_pages):
             for item in self.get_page(page_num):
                 if not self.config["limit"] or counter < self.config["limit"]:
-                    yield AssignmentSchema().load(item)
+                    yield self.schema.load(item)
                 counter += 1
             page_num += 1
 
@@ -106,8 +107,9 @@ class AssignmentManager(Manager[Assignment]):
             headers={"Accept": "application/xml"},
         )
         text = response.text
-        self._len, page = self.parser.parse(text)
-        return page
+        result = self.parser.parse(text)
+        self._len = result['numFound']
+        return result['docs']
 
     @property
     def query_fields(self):
