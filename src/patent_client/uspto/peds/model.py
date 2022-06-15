@@ -286,6 +286,8 @@ class Inventor(Model):
     address: "Optional[str]" = None
     rank_no: Optional[int] = None
 
+class PedsError(Exception):
+    pass
 
 @dataclass
 class Document(Model):
@@ -324,6 +326,8 @@ class Document(Model):
             )
 
         with session.get(self.base_url + self.url, stream=True) as r:
+            if r.status_code == 403:
+                raise PedsError("File history document downloading is broken. This is a USPTO problem :(")
             r.raise_for_status()
             with out_file.open("wb") as f:
                 for chunk in r.iter_content(chunk_size=8192):

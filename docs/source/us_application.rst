@@ -7,6 +7,10 @@ Original API URL: https://ped.uspto.gov/peds/
     and ordering criteria will fail. Failed filters return no results. Failed ordering critera just
     have no effect.
 
+.. warning::
+    Downloading file history documents currently doesn't work. The downloader now raises an appropriate
+    error to indicate this problem. This warning will be removed when downloading works reliably again
+
 Patent Client provides an interface to the USPTO Patent Examination Data System (PEDS).
 
 PEDS is a REST-ful API that contains some - but not all - of the application data available
