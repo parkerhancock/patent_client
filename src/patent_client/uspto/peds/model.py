@@ -25,28 +25,28 @@ from patent_client.util import one_to_one
 class USApplication(Model):
     __manager__ = "patent_client.uspto.peds.manager.USApplicationManager"
     appl_id: str = field(compare=True)
-    patent_title: Optional[str] = None
-    app_status: Optional[str] = field(default=None, repr=True)
+    patent_title: "Optional[str]" = None
+    app_status: "Optional[str]" = field(default=None, repr=True)
     inventors: Optional[List[str]] = field(default=None, repr=False)
     app_filing_date: Optional[datetime.date] = field(default=None, repr=False)
-    app_location: Optional[str] = field(default=None, repr=False)
-    first_inventor_file: Optional[str] = field(default=None, repr=False)
-    app_type: Optional[str] = field(default=None, repr=False)
-    app_entity_status: Optional[str] = field(default=None, repr=False)
-    app_confr_number: Optional[str] = field(default=None, repr=False)
+    app_location: "Optional[str]" = field(default=None, repr=False)
+    first_inventor_file: "Optional[str]" = field(default=None, repr=False)
+    app_type: "Optional[str]" = field(default=None, repr=False)
+    app_entity_status: "Optional[str]" = field(default=None, repr=False)
+    app_confr_number: "Optional[str]" = field(default=None, repr=False)
     applicants: List[Applicant] = field(default_factory=list, repr=False)
     app_status_date: Optional[datetime.date] = field(default=None, repr=False)
-    app_cls_sub_cls: Optional[str] = field(default=None, repr=False)
-    app_grp_art_number: Optional[str] = field(default=None, repr=False)
-    corr_addr_cust_no: Optional[str] = field(default=None, repr=False)
-    app_cust_number: Optional[str] = field(default=None, repr=False)
-    app_attr_dock_number: Optional[str] = field(default=None, repr=False)
-    patent_number: Optional[str] = field(default=None, repr=False)
+    app_cls_sub_cls: "Optional[str]" = field(default=None, repr=False)
+    app_grp_art_number: "Optional[str]" = field(default=None, repr=False)
+    corr_addr_cust_no: "Optional[str]" = field(default=None, repr=False)
+    app_cust_number: "Optional[str]" = field(default=None, repr=False)
+    app_attr_dock_number: "Optional[str]" = field(default=None, repr=False)
+    patent_number: "Optional[str]" = field(default=None, repr=False)
     patent_issue_date: Optional[datetime.date] = field(default=None, repr=False)
-    app_early_pub_number: Optional[str] = field(default=None, repr=False)
+    app_early_pub_number: "Optional[str]" = field(default=None, repr=False)
     app_early_pub_date: Optional[datetime.date] = field(default=None, repr=False)
-    app_exam_name: Optional[str] = field(default=None, repr=False)
-    wipo_early_pub_number: Optional[str] = field(default=None, repr=False)
+    app_exam_name: "Optional[str]" = field(default=None, repr=False)
+    wipo_early_pub_number: "Optional[str]" = field(default=None, repr=False)
     wipo_early_pub_date: Optional[datetime.date] = field(default=None, repr=False)
 
     transactions: List[Transaction] = field(default_factory=list, repr=False)
@@ -210,6 +210,8 @@ class Relationship(Model):
     relationship: str
     child_app_filing_date: Optional[datetime.date] = None
     parent_app_filing_date: Optional[datetime.date] = None
+    parent_app_status: "Optional[str]" = None
+    child_app_status: "Optional[str]" = None
     parent = one_to_one(
         "patent_client.uspto.peds.USApplication", appl_id="parent_appl_id"
     )
@@ -230,9 +232,9 @@ class PtaPteHistory(Model):
     number: float
     date: datetime.date
     description: str
-    pto_days: int
-    applicant_days: int
-    start: float
+    pto_days: "Optional[float]" = None
+    applicant_days: "Optional[float]" = None
+    start: "Optional[float]" = None
 
 
 @dataclass
@@ -245,7 +247,7 @@ class PtaPteSummary(Model):
     applicant_delay: int
     pto_adjustments: int
     total_days: int
-    kind: Optional[str] = None
+    kind: "Optional[str]" = None
 
 
 @dataclass
@@ -258,49 +260,37 @@ class Transaction(Model):
 @dataclass
 class Correspondent(Model):
     name: str
-    street: Optional[str] = None
-    city: Optional[str] = None
-    geo_region_code: Optional[str] = None
-    postal_code: Optional[str] = None
-    country: Optional[str] = None
-    cust_no: Optional[str] = None
+    address: "Optional[str]" = None
+    cust_no: "Optional[str]" = None
 
 
 @dataclass
 class Attorney(Model):
-    full_name: str
+    name: str
     phone_num: str
-    reg_status: Optional[str] = None
+    reg_status: "Optional[str]" = None
     registration_no: Optional[int] = None
 
 
 @dataclass
 class Applicant(Model):
-    name: Optional[str] = None
-    cust_no: Optional[str] = None
-    street: Optional[str] = None
-    city: Optional[str] = None
-    geo_region_code: Optional[str] = None
-    postal_code: Optional[str] = None
-    country: Optional[str] = None
+    name: "Optional[str]" = None
+    cust_no: "Optional[str]" = None
+    address: "Optional[str]" = None
     rank_no: Optional[int] = None
 
 
 @dataclass
 class Inventor(Model):
-    name: Optional[str] = None
-    street: Optional[str] = None
-    city: Optional[str] = None
-    geo_code: Optional[str] = None
-    postal_code: Optional[str] = None
-    country: Optional[str] = None
+    name: "Optional[str]" = None
+    address: "Optional[str]" = None
     rank_no: Optional[int] = None
 
 
 @dataclass
 class Document(Model):
     __manager__ = "patent_client.uspto.peds.manager.DocumentManager"
-    base_url = "https://ped.uspto.gov/api/queries/cms/"
+    base_url = "https://ped.uspto.gov/api/queries/cms/public/"
     access_level_category: str
     appl_id: str
     category: str
@@ -309,7 +299,7 @@ class Document(Model):
     identifier: str
     mail_room_date: datetime.date
     page_count: int
-    url: Optional[str] = None
+    url: "Optional[str]" = None
 
     application = one_to_one(
         "patent_client.uspto.peds.model.USApplication", appl_id="appl_id"

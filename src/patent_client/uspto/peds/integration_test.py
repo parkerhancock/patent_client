@@ -16,8 +16,7 @@ class TestPatentExaminationData:
         assert len(inventors) == 1
         inventor = inventors[0]
         assert inventor.name == "Thind; Deepinder Singh"
-        assert inventor.city == "Mankato, "
-        assert inventor.geo_code == "MN"
+        assert inventor.address == "Mankato, MN (US)"
 
     def test_search_by_customer_number(self):
         result = USApplication.objects.filter(app_cust_number="70155")
@@ -125,10 +124,7 @@ class TestPatentExaminationData:
         expected_keys = [
             "name",
             "cust_no",
-            "street",
-            "city",
-            "geo_region_code",
-            "postal_code",
+            "address",
         ]
 
         for k in expected_keys:
@@ -141,7 +137,7 @@ class TestPatentExaminationData:
         assert int(actual["registration_no"]) > 1000
         expected_keys = [
             "registration_no",
-            "full_name",
+            "name",
             "phone_num",
             "reg_status",
         ]
