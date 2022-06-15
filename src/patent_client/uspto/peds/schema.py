@@ -1,41 +1,8 @@
-import re
-from importlib import import_module
-from yankee.json.schema import Schema, fields as f
+from yankee.json.schema import fields as f
 
-whitespace_except_newlines_re = re.compile(r"[ \t\r\f\v]+")
-newlines_re = re.compile(r"\n+")
-
-def clean_whitespace(string, preserve_newlines=False):
-    string = string.strip()
-    string = whitespace_except_newlines_re.sub(" ", string)
-    if preserve_newlines:
-        string = newlines_re.sub("\n", string)
-    else:
-        string = newlines_re.sub(" ", string)
-    return string
-
-class Default(dict):
-    def __init__(self, *args, default=None, **kwargs):
-        self.default = default
-        super().__init__(*args, **kwargs)
-
-    def __missing__(self, key):
-        return self.default
-
-class PedsSchema(Schema):
-    __model_name__ = None
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        model_name = self.__model_name__ or self.__class__.__name__.replace("Schema", "")
-        model_module = import_module("..model", __name__)
-        self.__model__ = getattr(model_module, model_name)
-
-    def post_load(self, obj):
-        if obj:
-            return self.__model__(**obj)
-        else:
-            return None
+from patent_client.util.format import clean_whitespace
+from patent_client.util import DefaultDict
+from patent_client.util.json import Schema
 
 class InventorNameField(f.Combine):
     name_line_one = f.Str()
@@ -54,14 +21,14 @@ class InventorAddressField(f.Combine):
     country = f.Str()
 
     def combine_func(self, obj):
-        obj = Default(**obj, default='')
+        obj = DefaultDict(**obj, default='')
         return clean_whitespace(
             "{street_1}\n{street_2}\n{city}, {geo_code} {postal_code} {country}".format_map(obj),
             preserve_newlines=True
         )
 
 
-class InventorSchema(PedsSchema):
+class InventorSchema(Schema):
     name = InventorNameField(data_key=False)
     address = InventorAddressField(data_key=False)
     rank_no = f.Int()
@@ -69,12 +36,12 @@ class InventorSchema(PedsSchema):
 class ApplicantSchema(InventorSchema):
     cust_no = f.Str()
 
-class TransactionSchema(PedsSchema):
+class TransactionSchema(Schema):
     date = f.Date("recordDate")
     code = f.Str()
     description = f.Str()
 
-class ChildSchema(PedsSchema):
+class ChildSchema(Schema):
     __model_name__ = "Relationship"
     parent_appl_id = f.Str('applicationNumberText')
     child_app_filing_date = f.Date('filingDate')
@@ -83,7 +50,7 @@ class ChildSchema(PedsSchema):
     relationship = f.Str('applicationStatusDescription',
         formatter=lambda x: x.replace('This application ', ''))
 
-class ParentSchema(PedsSchema):
+class ParentSchema(Schema):
     __model_name__ = "Relationship"
     parent_appl_id = f.Str('claimApplicationNumberText')
     child_appl_id = f.Str('applicationNumberText')
@@ -99,7 +66,7 @@ class OptionalFloat(f.Int):
         except ValueError:
             return None
 
-class PtaPteHistorySchema(PedsSchema):
+class PtaPteHistorySchema(Schema):
     date = f.Date("ptaOrPteDate")
     description = f.String("contentsDescription")
     number = f.Float()
@@ -107,7 +74,7 @@ class PtaPteHistorySchema(PedsSchema):
     applicant_days = OptionalFloat()
     start = f.Float()
     
-class PtaPteSummarySchema(PedsSchema):
+class PtaPteSummarySchema(Schema):
     a_delay = f.Int()
     b_delay = f.Int()
     c_delay = f.Int()
@@ -123,7 +90,7 @@ class CorrespondentNameSchema(f.Combine):
     line_two = f.Str("corrAddrNameLineTwo")
 
     def combine_func(self, obj):
-        obj = Default(**obj, default='')
+        obj = DefaultDict(**obj, default='')
         return "{line_one}\n{line_two}".format_map(obj)
 
 class CorrespondentAddressSchema(f.Combine):
@@ -135,29 +102,29 @@ class CorrespondentAddressSchema(f.Combine):
     country = f.Str(data_key="corrAddrCountryCd")
 
     def combine_func(self, obj):
-        obj = Default(**obj, default='')
+        obj = DefaultDict(**obj, default='')
         return clean_whitespace(
             "{street_1}\n{street_2}\n{city}, {geo_code} {postal_code} {country}".format_map(obj),
             preserve_newlines=True
             )
 
-class CorrespondentSchema(PedsSchema):
+class CorrespondentSchema(Schema):
     name = CorrespondentNameSchema(data_key=False)
     address = CorrespondentAddressSchema(data_key=False)
     cust_no = f.Str("corrAddrCustNo")
 
-class AttorneySchema(PedsSchema):
+class AttorneySchema(Schema):
     registration_no = f.Str()
     name = f.Str("fullName")
     phone_num = f.Str()
     reg_status = f.Str()
 
-class ForeignPrioritySchema(PedsSchema):
+class ForeignPrioritySchema(Schema):
     priority_claim = f.Str()
     country_name = f.Str()
     filing_date = f.Date(dt_format="%m-%d-%Y")
 
-class USApplicationSchema(PedsSchema):
+class USApplicationSchema(Schema):
     # Basic Bibliographic Data
     appl_id = f.Str()
     app_confr_number = f.Str()
@@ -197,7 +164,7 @@ class USApplicationSchema(PedsSchema):
     attorneys = f.List(AttorneySchema, data_key="attrnyAddr")
     foreign_priority = f.List(ForeignPrioritySchema)
 
-class DocumentSchema(PedsSchema):
+class DocumentSchema(Schema):
     access_level_category = f.Str()
     appl_id = f.Str("applicationNumberText")
     category = f.Str("documentCategory")
