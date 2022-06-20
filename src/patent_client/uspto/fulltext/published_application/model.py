@@ -28,7 +28,7 @@ class PublishedApplication(Publication):
     )
     images = one_to_one(
         "patent_client.uspto.fulltext.published_application.model.PublishedApplicationImage",
-        publication_number="publication_number",
+        pdf_url="pdf_url",
     )
 
     def __repr__(self):

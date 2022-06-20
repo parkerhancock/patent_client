@@ -174,7 +174,7 @@ class PublicationSchema(BaseSchema):
         return ETH.fromstring(obj.encode("utf-8"))
 
 import re
-pdf_id_re = re.compile("(\d+/\d+\d+/\d+)/1.pdf")
+pdf_id_re = re.compile("/([\d/]+)/1.pdf")
 def pdf_url_id_formatter(text):
     match = pdf_id_re.search(text)
     if match is None:
@@ -183,8 +183,8 @@ def pdf_url_id_formatter(text):
 
 class ImageHtmlSchema(Schema):
     pdf_url_id = f.Str(".//embed/@src", formatter=pdf_url_id_formatter)
-    start_page = f.Str("//comment()[1]", formatter=lambda s: int(s.split("=")[1]))
-    num_pages = f.Str("//comment()[2]", formatter=lambda s: int(s.split("=")[1]))
+    start_page = f.Str('//comment()[contains(., "PageNum")]', formatter=lambda s: int(s.split("=")[1]))
+    num_pages = f.Str('//comment()[contains(., "NumPages")]', formatter=lambda s: int(s.split("=")[1]))
     sections = f.Dict(
         './/img[@src="/templates/redball.gif"]/parent::a',
         key=f.Str(),

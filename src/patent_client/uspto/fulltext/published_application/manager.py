@@ -19,6 +19,6 @@ class PublishedApplicationManager(FullTextManager):
 
 
 class PublishedApplicationImageManager(ImageManager):
-    __schema__ = PublishedApplicationImageSchema
+    __schema__ = PublishedApplicationImageSchema()
     BASE_URL = "https://pdfaiw.uspto.gov"
     DL_URL = "https://pdfaiw.uspto.gov/fdd/{pdf_id}/0.pdf"

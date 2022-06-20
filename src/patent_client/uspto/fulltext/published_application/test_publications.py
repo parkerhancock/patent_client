@@ -41,7 +41,6 @@ class TestPublishedApplicationFullText:
             in pub.parsed_claims[6].text
         )
 
-    @pytest.mark.skip("There seems to be a problem with search")
     def test_search_classification(self):
         query = "CCL/166/308.1 AND APD/19000101->20121005"
         results = PublishedApplication.objects.filter(query=query)
@@ -53,7 +52,6 @@ class TestPublishedApplicationFullText:
             counter += 1
         assert counter == 493
 
-    @pytest.mark.skip("problem with search interface")
     def test_empty_search_result(self):
         query = "CCL/726/22 AND APD/19000101->20000619"
         results = PublishedApplication.objects.filter(query=query)
@@ -69,14 +67,13 @@ class TestPublishedApplicationFullText:
             obj.parsed_claims[0].text[:39] == "1. A method of well ranging comprising:"
         )
 
-    @pytest.mark.skip("This needs fixing")
     def test_can_get_images(self):
         pat = PublishedApplication.objects.get("20090150362")
         images = pat.images
         assert images.pdf_url == "https://pdfaiw.uspto.gov/fdd/62/2009/03/015/0.pdf"
-        assert images.sections == {
-            "Front Page": (1, 1),
-            "Drawings": (2, 12),
-            "Specifications": (13, 23),
-            "Claims": (24, 24),
-        }
+        assert images.sections == [
+            {'name': 'Front Page', 'start': 1, 'end': 1}, 
+            {'name': 'Drawings', 'start': 2, 'end': 12}, 
+            {'name': 'Specifications', 'start': 13, 'end': 23}, 
+            {'name': 'Claims', 'start': 24, 'end': 24}
+            ]

@@ -67,7 +67,7 @@ attrs = ">=20"
 
 [[package]]
 name = "certifi"
-version = "2022.5.18.1"
+version = "2022.6.15"
 description = "Python package for providing Mozilla's CA Bundle."
 category = "main"
 optional = false
@@ -106,7 +106,7 @@ requests = ">=2.7.9"
 
 [[package]]
 name = "colorama"
-version = "0.4.4"
+version = "0.4.5"
 description = "Cross-platform colored terminal text."
 category = "dev"
 optional = false
@@ -358,7 +358,7 @@ diagrams = ["railroad-diagrams", "jinja2"]
 
 [[package]]
 name = "pypdf2"
-version = "2.2.0"
+version = "2.3.1"
 description = "A pure-python PDF library capable of splitting, merging, cropping, and transforming PDF files"
 category = "main"
 optional = false
@@ -366,6 +366,9 @@ python-versions = ">=3.6"
 
 [package.dependencies]
 typing-extensions = {version = "*", markers = "python_version < \"3.10\""}
+
+[package.extras]
+crypto = ["pycryptodome"]
 
 [[package]]
 name = "pytest"
@@ -597,7 +600,7 @@ python-versions = ">=3.4"
 
 [[package]]
 name = "yankee"
-version = "0.1.24"
+version = "0.1.25"
 description = "lightweight, simple, and fast declarative XML and JSON data extraction"
 category = "main"
 optional = false
@@ -610,7 +613,7 @@ python-dateutil = ">=2.8.2,<3.0.0"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "183a298a93e18091aca49aae1b38aaef85ca6ce20ecc5ccbff5f8fd3f2dc827d"
+content-hash = "30951cd2fc043c7c9309f52c0c97570371057c417d5c1d37ccb5b60e3c340242"
 
 [metadata.files]
 appdirs = [
@@ -637,8 +640,8 @@ cattrs = [
     {file = "cattrs-1.10.0.tar.gz", hash = "sha256:211800f725cdecedcbcf4c753bbd22d248312b37d130f06045434acb7d9b34e1"},
 ]
 certifi = [
-    {file = "certifi-2022.5.18.1-py3-none-any.whl", hash = "sha256:f1d53542ee8cbedbe2118b5686372fb33c297fcd6379b050cca0ef13a597382a"},
-    {file = "certifi-2022.5.18.1.tar.gz", hash = "sha256:9c5705e395cd70084351dd8ad5c41e65655e08ce46f2ec9cf6c2c08390f71eb7"},
+    {file = "certifi-2022.6.15-py3-none-any.whl", hash = "sha256:fe86415d55e84719d75f8b69414f6438ac3547d2078ab91b67e779ef69378412"},
+    {file = "certifi-2022.6.15.tar.gz", hash = "sha256:84c85a9078b11105f04f3036a9482ae10e4621616db313fe045dd24743a0820d"},
 ]
 cfgv = [
     {file = "cfgv-3.3.1-py2.py3-none-any.whl", hash = "sha256:c6a0883f3917a037485059700b9e75da2464e6c27051014ad85ba6aaa5884426"},
@@ -654,8 +657,8 @@ codecov = [
     {file = "codecov-2.1.12.tar.gz", hash = "sha256:a0da46bb5025426da895af90938def8ee12d37fcbcbbbc15b6dc64cf7ebc51c1"},
 ]
 colorama = [
-    {file = "colorama-0.4.4-py2.py3-none-any.whl", hash = "sha256:9f47eda37229f68eee03b24b9748937c7dc3868f906e8ba69fbcbdd3bc5dc3e2"},
-    {file = "colorama-0.4.4.tar.gz", hash = "sha256:5941b2b48a20143d2267e95b1c2a7603ce057ee39fd88e7329b0c292aa16869b"},
+    {file = "colorama-0.4.5-py2.py3-none-any.whl", hash = "sha256:854bf444933e37f5824ae7bfc1e98d5bce2ebe4160d46b5edf346a89358e99da"},
+    {file = "colorama-0.4.5.tar.gz", hash = "sha256:e6c6b4334fc50988a639d9b98aa429a0b57da6e17b9a44f0451f930b6967b7a4"},
 ]
 coverage = [
     {file = "coverage-6.4.1-cp310-cp310-macosx_10_9_x86_64.whl", hash = "sha256:f1d5aa2703e1dab4ae6cf416eb0095304f49d004c39e9db1d86f57924f43006b"},
@@ -902,8 +905,8 @@ pyparsing = [
     {file = "pyparsing-3.0.9.tar.gz", hash = "sha256:2b020ecf7d21b687f219b71ecad3631f644a47f01403fa1d1036b0c6416d70fb"},
 ]
 pypdf2 = [
-    {file = "PyPDF2-2.2.0-py3-none-any.whl", hash = "sha256:6167a965a2b44f6e763f0bb2028810898bace2caae5ddd5040a8b57e1c6aaa5a"},
-    {file = "PyPDF2-2.2.0.tar.gz", hash = "sha256:12a289d7be1cac0b066b05854ebc40dfaaeea31244ec45ea02682e51deefb7e8"},
+    {file = "PyPDF2-2.3.1-py3-none-any.whl", hash = "sha256:ece703357ea839bb50833a32de885fa7cc8e19f89d419101c3fee7f8aba4f5fc"},
+    {file = "PyPDF2-2.3.1.tar.gz", hash = "sha256:af95279993a0310108052d16f8117989f50e2331590f4fa6bb8db3c1faa36024"},
 ]
 pytest = [
     {file = "pytest-7.1.2-py3-none-any.whl", hash = "sha256:13d0e3ccfc2b6e26be000cb6568c832ba67ba32e719443bfe725814d3c42433c"},
@@ -1009,6 +1012,6 @@ xmltodict = [
     {file = "xmltodict-0.13.0.tar.gz", hash = "sha256:341595a488e3e01a85a9d8911d8912fd922ede5fecc4dce437eb4b6c8d037e56"},
 ]
 yankee = [
-    {file = "yankee-0.1.24-py3-none-any.whl", hash = "sha256:15b9e61bc882d3d4959ab807daf0469f26967a0d22951296bca9d6a85785f7bf"},
-    {file = "yankee-0.1.24.tar.gz", hash = "sha256:acf4112c69adadf1170c3a270f838df26b8b6125476fa2a6952725ad4e238b1a"},
+    {file = "yankee-0.1.25-py3-none-any.whl", hash = "sha256:84797980a398df4467deeff325d0d8f7a59d6e086115288172719c35f0b4ddd2"},
+    {file = "yankee-0.1.25.tar.gz", hash = "sha256:2188692b13c7ea215020559e9da068a5867c7b8028ba99ebee867b8bb67df860"},
 ]
