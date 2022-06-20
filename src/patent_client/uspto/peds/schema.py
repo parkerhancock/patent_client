@@ -142,9 +142,9 @@ class USApplicationSchema(Schema):
     app_status_date = f.Date()
     # Publication Information
     app_early_pub_number = f.Str()
-    app_early_pub_date = f.Str()
+    app_early_pub_date = f.Date()
     patent_number = f.Str()
-    patent_issue_date = f.Str()
+    patent_issue_date = f.Date()
     wipo_early_pub_number = f.Str()
     wipo_early_pub_date = f.Date()
     # Correspondent / Attorney Information

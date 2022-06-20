@@ -10,7 +10,7 @@ from .settings import SEARCH_URL
 
 
 class PublishedApplicationManager(FullTextManager):
-    __schema__ = PublishedApplicationSchema
+    __schema__ = PublishedApplicationSchema()
     search_fields = SEARCH_FIELDS
     search_params = SEARCH_PARAMS
     search_url = SEARCH_URL
@@ -20,4 +20,5 @@ class PublishedApplicationManager(FullTextManager):
 
 class PublishedApplicationImageManager(ImageManager):
     __schema__ = PublishedApplicationImageSchema
-    BASE_URL = "https://pdfaiw.uspto.gov/.aiw"
+    BASE_URL = "https://pdfaiw.uspto.gov"
+    DL_URL = "https://pdfaiw.uspto.gov/fdd/{pdf_id}/0.pdf"

@@ -36,12 +36,16 @@ class Assignee(Model):
     name: str = None
     region: str = None
 
+@dataclass
+class Examiner(Model):
+    first_name: str = None
+    last_name: str = None
 
 @dataclass
 class RelatedPatentDocument(Model):
     appl_id: str
-    filing_date: datetime.date
-    patent_number: str
+    filing_date: datetime.date = None
+    patent_number: str = None
 
 
 @dataclass
@@ -53,14 +57,14 @@ class PriorPublication(Model):
 @dataclass
 class USReference(Model):
     date: str
-    name: str
+    first_named_inventor: str
     publication_number: str
 
 
 @dataclass
 class ForeignReference(Model):
     publication_number: str
-    name: str
+    date: str
     country_code: str
 
 
@@ -94,16 +98,19 @@ class Publication(Model):
     publication_number: str
     kind_code: str
     publication_date: str
-    title: str
+    title: str = None
+    
+    description: str = None
+    abstract: str = None
+    claims: str = None
 
-    description: str
-    abstract: str
-    claims: str
-
-    appl_id: str
-    filing_date: datetime.date
+    appl_id: str = None
+    filing_date: datetime.date = None
     family_id: str = None
+    app_early_pub_number: str = None
+    app_early_pub_date: datetime.date = None
 
+    parent_case_text: str = None
     pct_filing_date: datetime.date = None
     pct_number: str = None
     national_stage_entry_date: datetime.date = None
@@ -112,8 +119,10 @@ class Publication(Model):
     inventors: list = field(default_factory=list)
     applicants: list = field(default_factory=list)
     assignees: list = field(default_factory=list)
-    examiner: str = None
+    primary_examiner: str = None
+    assistant_examiner: str = None
     agent: str = None
+    pdf_url: str = None
 
     related_us_applications: "List[RelatedPatentDocument]" = field(default_factory=list)
     prior_publications: "List[PriorPublication]" = field(default_factory=list)

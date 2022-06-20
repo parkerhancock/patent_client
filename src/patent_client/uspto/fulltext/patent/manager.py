@@ -10,7 +10,7 @@ from .settings import SEARCH_URL
 
 
 class PatentManager(FullTextManager):
-    __schema__ = PatentSchema
+    __schema__ = PatentSchema()
     search_fields = SEARCH_FIELDS
     search_params = SEARCH_PARAMS
     search_url = SEARCH_URL
@@ -19,5 +19,6 @@ class PatentManager(FullTextManager):
 
 
 class PatentImageManager(ImageManager):
-    __schema__ = PatentImageSchema
-    BASE_URL = "https://pdfpiw.uspto.gov/.piw"
+    __schema__ = PatentImageSchema()
+    BASE_URL = "https://pdfpiw.uspto.gov"
+    DL_URL = "https://pdfpiw.uspto.gov/fdd/{pdf_id}/0.pdf"

@@ -63,6 +63,7 @@ class TestPatentFullText:
         pat = Patent.objects.get(pat_no)
         assert len(pat.field_of_search) == 7
 
+    @pytest.mark.skip("Unknown if we need to keep this exception")
     def test_shows_error_for_old_patents(self):
         pat_no = "3,113,620"
         with pytest.raises(FullTextNotAvailable) as exception:

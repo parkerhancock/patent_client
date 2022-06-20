@@ -6,8 +6,12 @@ class PatentSchemaMixin(object):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         model_name = self.__model_name__ or self.__class__.__name__.replace("Schema", "")
-        model_module = import_module("..model", self.__module__)
-        self.__model__ = getattr(model_module, model_name)
+        try:
+            model_module = import_module("..model", self.__module__)
+            self.__model__ = getattr(model_module, model_name)
+        except ModuleNotFoundError:
+            model_module = import_module("...model", self.__module__)
+            self.__model__ = getattr(model_module, model_name)
 
     def post_load(self, obj):
         if obj:

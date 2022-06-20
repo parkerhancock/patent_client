@@ -219,6 +219,14 @@ class Relationship(Model):
         "patent_client.uspto.peds.USApplication", appl_id="child_appl_id"
     )
 
+    def __eq__(self, other):
+        return (self.parent_appl_id == other.parent_appl_id
+                and self.child_appl_id == other.child_appl_id
+                and self.relationship == other.relationship)
+
+    def __hash__(self):
+        return hash((self.parent_appl_id, self.child_appl_id, self.relationship))
+
 
 @dataclass
 class ForeignPriority(Model):

@@ -11,6 +11,7 @@ DEPENDENCY_RE = re.compile(r"(c|C)laim (?P<number>\d+)")
 LIMITATION_RE = re.compile(r"(\s*[:;]\s*and|\s*[:;]\s*)", flags=re.IGNORECASE)
 NUMBER_RE = re.compile(r"(?P<number>\d+)[\)\.]\s+")
 WHITESPACE_RE = re.compile(r"\s+")
+CLAIM_INTRO_RE = re.compile(r"^[^\d\.\[]+")
 
 clean_text = lambda text: WHITESPACE_RE.sub(" ", text).strip()
 
@@ -36,6 +37,7 @@ class ClaimsParser(object):
         return claims
 
     def split_and_clean_claims(self, claim_text):
+        claim_text = CLAIM_INTRO_RE.sub("", claim_text)
         claim_strs = [claim.strip() for claim in SPLIT_RE.split(claim_text)]
         # Remove preamble - e.g. "We Claim:"
         while not NUMERIC_RE.search(claim_strs[0]):

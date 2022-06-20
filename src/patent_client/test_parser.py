@@ -221,3 +221,12 @@ class TestPatentNumberParser:
         assert app.type == "reissue patent"
         assert app.display() == "CA 2967774 E"
         assert str(app) == "CA2967774E"
+
+    def test_can_handle_8_digit_patent_numbers(self):
+        pat = parse("11123123")
+        assert pat.country == "US"
+        assert pat.number == "11123123"
+        assert pat.kind_code == "B2"
+        assert pat.type == "patent"
+        assert pat.display() == "US 11,123,123 B2"
+        assert str(pat) == "US11123123B2"

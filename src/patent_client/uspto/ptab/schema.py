@@ -1,106 +1,102 @@
-import inflection
-from marshmallow import EXCLUDE
-from marshmallow import Schema
-from marshmallow import ValidationError
-from marshmallow import fields
-from marshmallow import post_load
-from marshmallow import pre_load
+from yankee.json import fields as f
+from patent_client.util.json import Schema
 
-from patent_client.util import ListField
+class AdditionalRespondentSchema(Schema):
+    application_number_text = f.Str()
+    inventor_name = f.Str()
+    patent_number = f.Str()
+    party_name = f.Str()
 
-from .model import PtabDecision
-from .model import PtabDocument
-from .model import PtabProceeding
-from .util import conversions
+class PtabProceedingSchema(Schema):
+    # Proceeding Metadata
+    last_modified_date = f.DateTime()
+    last_modified_user_id = f.DateTime()
+    institution_decision_date = f.Str()
+    proceeding_filing_date = f.Str()
+    accorded_filing_date = f.Str()
+    proceeding_status_category = f.Str()
+    proceeding_number = f.Str()
+    proceeding_last_modified_date = f.Str()
+    proceeding_type_category = f.Str()
+    subproceeding_type_category = f.Str()
+    decision_date = f.Str()
+    docket_notice_mail_date = f.Str()
+    declaration_date = f.Str()
+    style_name_text = f.Str()
 
+    # Respondent Information
+    respondent_technology_center_number = f.Str()
+    respondent_patent_owner_name = f.Str()
+    respondent_party_name = f.Str()
+    respondent_group_art_unit_number = f.Str()
+    respondent_inventor_name = f.Str()
+    respondent_counsel_name = f.Str()
+    respondent_grant_date = f.Str()
+    respondent_patent_number = f.Str()
+    respondent_application_number_text = f.Str()
+    respondent_publication_number = f.Str()
+    respondent_publication_date = f.Str()
 
-def create_subset(data, name, keys):
-    subset = {k: data.pop(k) for k in keys if k in data}
-    if subset:
-        data[name] = subset
-    return data
+    # Petitioner Information
+    petitioner_technology_center_number = f.Str()
+    petitioner_patent_owner_name = f.Str()
+    petitioner_party_name = f.Str()
+    petitioner_group_art_unit_number = f.Str()
+    petitioner_inventor_name = f.Str()
+    petitioner_counsel_name = f.Str()
+    petitioner_grant_date = f.Str()
+    petitioner_patent_number = f.Str()
+    petitioner_application_number_text = f.Str()
 
+    # Appellant Information
+    appellant_technology_center_number = f.Str()
+    appellant_patent_owner_name = f.Str()
+    appellant_party_name = f.Str()
+    appellant_group_art_unit_number = f.Str()
+    appellant_inventor_name = f.Str()
+    appellant_counsel_name = f.Str()
+    appellant_grant_date = f.Str()
+    appellant_patent_number = f.Str()
+    appellant_application_number_text = f.Str()
+    appellant_publication_date = f.Str()
+    appellant_publication_number = f.Str()
+    third_party_name = f.Str()
 
-def create_subset_from_prefix(data, prefix):
-    keys = [k for k in data.keys() if k.startswith(prefix)]
-    return create_subset(data, prefix, keys)
+    # Second Respondent (if any)
+    second_respondent_party_name = f.Str()
+    second_respondent_appl_number_text = f.Str()
+    second_respondent_patent_number = f.Str()
+    second_respondent_grant_date = f.Str()
+    second_respondent_patent_owner_name = f.Str()
+    second_respondent_inventor_name = f.Str()
+    second_respondent_counsel_name = f.Str()
+    second_respondent_g_a_u_number = f.Str()
+    second_respondent_tech_center_number = f.Str()
+    second_respondent_pub_number = f.Str()
+    second_respondent_publication_date = f.Str()   
+    
+    additional_respondents = f.List(AdditionalRespondentSchema, data_key="additionalRespondentPartyDataBag")
 
+class PtabDocumentSchema(Schema):
+    document_identifier = f.Str()
+    document_category = f.Str()
+    document_type_name = f.Str()
+    document_number = f.Int()
+    document_name = f.Str()
+    document_filing_date = f.Date()
+    document_title = f.Str()
+    proceeding_number = f.Str()
+    proceeding_type_category = f.Str()
 
-class BaseSchema(Schema):
-    @pre_load
-    def pre_load(self, input_data, **kwargs):
-        input_data = {inflection.underscore(k): v for k, v in input_data.items()}
-        for k, v in conversions.items():
-            if k in input_data:
-                input_data[conversions[k]] = input_data.pop(k)
-        return input_data
+class PtabDecisionSchema(Schema):
+    proceeding_number = f.Str()
+    board_rulings = f.List(f.Str())
+    decision_type_category = f.Str()
+    document_identifier = f.Str()
+    document_name = f.Str()
+    identifier = f.Str()
+    issue_type = f.List(f.Str())
+    object_uu_id = f.Str()
+    petitioner_technology_center_number = f.Str()
+    subdecision_type_category = f.Str()
 
-    @post_load
-    def make_object(self, data, **kwargs):
-        return self.__model__(**data)
-
-
-class PtabProceedingSchema(BaseSchema):
-    __model__ = PtabProceeding
-    appl_id = fields.Str(data_key="respondent_application_number_text")
-    patent_number = fields.Str(data_key="respondent_patent_number")
-    accorded_filing_date = fields.Date()
-    decision_date = fields.Date()
-    institution_decision_date = fields.Date()
-    proceeding_filing_date = fields.Date()
-    respondent_grant_date = fields.Date()
-    respondent_party_name = fields.Str(allow_none=True)
-
-    class Meta:
-        unknown = EXCLUDE
-        dateformat = "%m-%d-%Y"
-        additional = (
-            "subproceeding_type_category",
-            "proceeding_number",
-            "proceeding_status_category",
-            "proceeding_type_category",
-            # Party Information
-            "petitioner_counsel_name",
-            "petitioner_party_name",
-            "respondent_counsel_name",
-            "respondent_patent_owner_name",
-            # Application Information
-            "inventor",
-            "patent_number",
-            "respondent_technology_center_number",
-        )
-
-
-class PtabDocumentSchema(BaseSchema):
-    __model__ = PtabDocument
-    document_identifier = fields.Str()
-    document_category = fields.Str()
-    document_type_name = fields.Str()
-    document_number = fields.Int()
-    document_name = fields.Str()
-    document_filing_date = fields.Date()
-    document_title = fields.Str()
-    proceeding_number = fields.Str()
-    proceeding_type_category = fields.Str()
-
-    class Meta:
-        unknown = EXCLUDE
-        dateformat = "%m-%d-%Y"
-
-
-class PtabDecisionSchema(BaseSchema):
-    __model__ = PtabDecision
-    proceeding_number = fields.Str()
-    board_rulings = ListField(fields.Str())
-    decision_type_category = fields.Str()
-    document_identifier = fields.Str()
-    document_name = fields.Str()
-    identifier = fields.Str()
-    issue_type = ListField(fields.Str())
-    object_uu_id = fields.Str()
-    petitioner_technology_center_number = fields.Str()
-    subdecision_type_category = fields.Str()
-
-    class Meta:
-        unknown = EXCLUDE
-        dateformat = "%m-%d-%Y"

@@ -1,6 +1,7 @@
 import datetime
 import math
 import re
+import time
 from collections import defaultdict
 from urllib.parse import urljoin
 from urllib.parse import urlparse
@@ -11,9 +12,20 @@ from dateutil.parser import parse as parse_dt
 
 from patent_client.util import Manager
 
-from .parser import FullTextParser
-from .schema import PublicationSchema
+#from .schema import PublicationSchema
 from .session import session
+from .schema.new_schema import ImageHtmlSchema, PublicationSchema
+from .schema.image_schema import ImageSchema
+
+
+def rate_limit(func, delay=0.001):
+    last_call = time.time()
+    def limited_func(*args, **kwargs):
+        wait = delay - (time.time() - last_call)
+        if wait > 0: time.sleep(wait)
+        last_call = time.time()
+        func(*args, **kwargs)
+    return limited_func
 
 
 def standardize_date(input):
@@ -30,12 +42,13 @@ clean_number = lambda string: re.sub(r"[^DREP\d]", "", string).strip()
 
 
 class FullTextManager(Manager):
-    __schema__ = PublicationSchema
+    __schema__ = PublicationSchema()
     search_fields = None
     search_params = None
     search_url = None
     pub_base_url = None
     result_model = None
+
 
     def __init__(self, *args, **kwargs):
         super(FullTextManager, self).__init__(*args, **kwargs)
@@ -127,7 +140,10 @@ class FullTextManager(Manager):
         params["p"] = str(page_no + 1)
         response = session.get(self.search_url, params=params)
         if response.text.startswith("Error"):
-            raise ValueError("The USPTO Search Interface threw an error!")
+            if response.from_cache:
+                session.cache.delete(response.cache_key)
+            raise ValueError(f"The USPTO Search Interface threw an error!\n{response.request.url}\n{response.text}")
+
         response.raise_for_status()
         response_text = response.text
         results = self.parse_page(response_text)
@@ -170,70 +186,33 @@ class FullTextManager(Manager):
             url = self.pub_base_url.format(publication_number=publication_number)
             response = session.get(url)
             response.raise_for_status()
-            parsed = FullTextParser().parse(response.text)
-            return self.__schema__().deserialize(parsed)
+            return self.__schema__.load(response.text)
         else:
             return super(FullTextManager, self).get(*args, **kwargs)
 
 
 class ImageManager(Manager):
-    def get(self, publication_number):
-        query = {"PageNum": 0, "docid": publication_number, "IDKey": None}
-        response = session.get(self.BASE_URL, params=query)
+    __schema__ = ImageSchema()
+    html_schema = ImageHtmlSchema()
+
+    def get(self, pdf_url):
+        full_doc = self.get_image_data(pdf_url)
+        full_doc.pdf_url = self.DL_URL.format(pdf_id=full_doc.pdf_url_id)
+        full_doc['sections'] = [
+            {"name": name, **self.get_image_data(self.BASE_URL + url)} for name, url in full_doc.sections.items()
+        ]
+        last_page = full_doc.num_pages
+        for section in reversed(full_doc.sections):
+            section['end_page'] = last_page
+            last_page = section['start_page'] - 1
+
+        return self.__schema__.load(full_doc)
+
+    def get_image_data(self, url, params=dict()):
+        response = session.get(url, params=params)
         response.raise_for_status()
-        soup = bs(response.text, "lxml")
-        return self.__schema__().deserialize(
-            {
-                "publication_number": publication_number,
-                "pdf_url": self.get_pdf_url(soup),
-                "sections": self.get_section_data(soup),
-            }
-        )
+        if not response.text:
+            return dict()
+        data = self.html_schema.load(response.text)
+        return data
 
-    def get_pdf_url(self, page_soup):
-        pdf_path_string = page_soup.find("embed", attrs={"type": "application/pdf"})[
-            "src"
-        ]
-        # Get and edit path
-        pdf_path = urlparse(pdf_path_string).path
-        base, _ = pdf_path.rsplit("/", 1)
-        pdf_path = "/".join((base, "0.pdf"))
-        # Generate final url
-        pdf_url = urljoin(self.BASE_URL, pdf_path)
-        return pdf_url
-
-    def get_page_data(self, section_url):
-        response = session.get(section_url)
-        response.raise_for_status()
-        page_soup = bs(response.text, "lxml")
-        # Get last two top-level comments
-        page_data = page_soup.find_all(
-            string=lambda x: isinstance(x, Comment), recursive=False
-        )[-2:]
-        # They're in the format of "PageNum=#" and "NumPages=#". So we convert to dictionary
-        data = (i.strip().split("=") for i in page_data)
-        data_dict = {d[0]: int(d[1]) for d in data}
-        return data_dict
-
-    def get_section_data(self, page_soup):
-        section_tags = [
-            i.find_parent("a")
-            for i in page_soup.find_all("img", src="/templates/redball.gif")
-        ]
-        links = {
-            i.text.strip(): urljoin(self.BASE_URL, i["href"]) for i in section_tags
-        }
-        data = [
-            {"name": section_name, **self.get_page_data(section_url)}
-            for section_name, section_url in links.items()
-        ]
-        # Calculate Page Breaks
-        total_pages = data[0]["NumPages"]
-        section_starts = [d["PageNum"] for d in data]
-        section_ends = [p - 1 for p in section_starts[1:]] + [
-            total_pages,
-        ]
-        sections = list(zip(section_starts, section_ends))
-        section_names = [d["name"] for d in data]
-        result = dict(zip(section_names, sections))
-        return result
