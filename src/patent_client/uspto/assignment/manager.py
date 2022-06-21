@@ -11,7 +11,7 @@ from patent_client.util import Manager
 
 from .model import Assignment
 from .parser import AssignmentParser
-from .schema import AssignmentSchema
+from .xml_schema import AssignmentPageSchema
 
 warnings.filterwarnings("ignore", category=InsecureRequestWarning)
 
@@ -20,7 +20,7 @@ clean_number = lambda x: NUMBER_CLEAN_RE.sub("", str(x))
 
 
 class AssignmentManager(Manager[Assignment]):
-    schema = AssignmentSchema()
+    schema = AssignmentPageSchema()
     fields = {
         "patent_number": "PatentNumber",
         "appl_id": "ApplicationNumber",
@@ -107,8 +107,9 @@ class AssignmentManager(Manager[Assignment]):
             headers={"Accept": "application/xml"},
         )
         text = response.text
-        result = self.parser.parse(text)
-        self._len = result['numFound']
+        result = self.schema.load(text)
+        breakpoint()
+        self._len = result['num_found']
         return result['docs']
 
     @property

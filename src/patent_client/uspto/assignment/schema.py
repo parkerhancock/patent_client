@@ -1,5 +1,5 @@
-from yankee.json import fields
-from yankee.json import Schema
+from yankee.xml import fields
+from yankee.xml import Schema
 
 from .model import Assignee
 from .model import Assignment
