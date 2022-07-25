@@ -1,3 +1,5 @@
+import json
+
 from yankee.json.schema import fields as f
 
 from patent_client.util.format import clean_whitespace
@@ -124,6 +126,17 @@ class ForeignPrioritySchema(Schema):
     country_name = f.Str()
     filing_date = f.Date(dt_format="%m-%d-%Y")
 
+class DocumentSchema(Schema):
+    access_level_category = f.Str()
+    appl_id = f.Str("applicationNumberText")
+    category = f.Str("documentCategory")
+    code = f.Str(data_key="documentCode")
+    description = f.Str("documentDescription")
+    identifier = f.Str("documentIdentifier")
+    mail_room_date = f.Date()
+    page_count = f.Int()
+    url = f.Str(data_key="pdf_url")
+
 class USApplicationSchema(Schema):
     # Basic Bibliographic Data
     appl_id = f.Str()
@@ -164,13 +177,10 @@ class USApplicationSchema(Schema):
     attorneys = f.List(AttorneySchema, data_key="attrnyAddr")
     foreign_priority = f.List(ForeignPrioritySchema)
 
-class DocumentSchema(Schema):
-    access_level_category = f.Str()
-    appl_id = f.Str("applicationNumberText")
-    category = f.Str("documentCategory")
-    code = f.Str(data_key="documentCode")
-    description = f.Str("documentDescription")
-    identifier = f.Str("documentIdentifier")
-    mail_room_date = f.Date()
-    page_count = f.Int()
-    url = f.Str(data_key="pdf_url")
+class PedsPageSchema(Schema):
+    index_last_updated = f.Date("queryResults.indexLastUpdatedDate")
+    num_found = f.Str("queryResults.searchResponse.numFound")
+    applications = f.List(USApplicationSchema, "queryResults.searchResponse.response.docs")
+
+    def pre_load(self, obj):
+        return json.loads(obj)

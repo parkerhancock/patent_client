@@ -341,3 +341,9 @@ class Document(Model):
                 for chunk in r.iter_content(chunk_size=8192):
                     f.write(chunk)
         return out_file
+
+@dataclass
+class PedsPage():
+    index_last_updated: datetime.date
+    num_found: int
+    applications: "List[USApplication]" = field(default_factory=list)

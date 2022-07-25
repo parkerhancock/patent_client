@@ -28,6 +28,12 @@ class ModelABC(object):
 
 @dataclass
 class Model(ModelABC, metaclass=ModelMeta):
+    def __init__(self, *args, **kwargs):
+        try:
+            return super().__init__(*args, **kwargs)
+        except TypeError as e:
+            raise TypeError(f"{e.args[0]}\nargs:{args}\nkwargs:{kwargs}")
+
     def as_dict(self):
         """Convert model to a dictionary representation"""
         output = OrderedDict()

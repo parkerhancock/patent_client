@@ -8,6 +8,35 @@ from .model import Assignment
 
 
 class TestAssignment:
+    def test_get_assignment(self):
+        a = Assignment.objects.get("18247-405")
+        assert a.id == "18247-405"
+        assert a.conveyance_text == "NUNC PRO TUNC ASSIGNMENT"
+        assert a.last_update_date <= datetime.date.fromisoformat("2008-01-22")
+        assert a.transaction_date.isoformat() == "2019-07-11"
+        assert a.recorded_date.isoformat() == "2006-09-14"
+        assert a.corr_name == "JEFFREY H. INGERMAN"
+        assert a.corr_address == "FISH & NEAVE IP GROUP, ROPES & GRAY LLP\n1251 AVENUE OF THE AMERICAS C3\nNEW YORK, NY 10020-1105"
+        assert len(a.assignors) == 1
+        assert a.assignors[0].name == "REALTIME DATA COMPRESSION SYSTEMS, INC."
+        assert a.assignors[0].ex_date.isoformat() == "2006-09-14"
+        assert len(a.assignees) == 1
+        assert a.assignees[0].name == "REALTIME DATA LLC"
+        assert a.assignees[0].address == "15 WEST 36TH STREET\nNEW YORK, NEW YORK 10018"
+        assert len(a.properties) == 5
+        assert a.properties[0].invention_title == "SYSTEM AND METHODS FOR ACCELERATED DATA STORAGE AND RETRIEVAL"
+        assert a.properties[0].appl_id == "10628795"
+        assert a.properties[0].filing_date.isoformat() == "2003-07-28"
+        assert a.properties[0].intl_publ_date == None
+        assert a.properties[0].intl_reg_num == None
+        assert a.properties[0].inventors == "James J. Fallon"
+        assert a.properties[0].issue_date.isoformat() == "2006-10-31"
+        assert a.properties[0].pat_num == "7130913"
+        assert a.properties[0].pct_num == None
+        assert a.properties[0].publ_date.isoformat() == "2004-04-15"
+        assert a.properties[0].publ_num == "20040073746"
+        
+
     def test_fetch_assignments_by_assignee(self):
         assignments = Assignment.objects.filter(assignee="US Well Services")
         assert len(assignments) >= 22
@@ -65,5 +94,4 @@ class TestAssignmentBugs:
 
     def test_bug_scidrill(self):
         assignments = Assignment.objects.filter(assignee="Scientific Drilling")
-        assignment_list = list(assignments.values_list("appl_num", flat=True))
-        assert len(assignment_list) == 58
+        assert len(assignments) == 58

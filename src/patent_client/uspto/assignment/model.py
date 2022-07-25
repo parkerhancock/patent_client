@@ -10,6 +10,10 @@ from patent_client.util import QuerySet
 from patent_client.util import one_to_many
 from patent_client.util import one_to_one
 
+@dataclass
+class AssignmentPage():
+    num_found: int
+    docs: "List[Assignment]" = field(default_factory=list)
 
 @dataclass
 class Assignment(Model):
@@ -19,13 +23,13 @@ class Assignment(Model):
     last_update_date: str
     page_count: int
     recorded_date: datetime.date
-    corr_name: str
-    corr_address: str
-    assignors: "QuerySet[Assignor]"
-    assignees: "QuerySet[Assignee]"
-    properties: "QuerySet[Property]" = field(repr=False)
+    corr_name: str = None
+    corr_address: str = None
+    assignors: "QuerySet[Assignor]" = field(default_factory=list)
+    assignees: "QuerySet[Assignee]" = field(default_factory=list)
+    properties: "QuerySet[Property]" = field(repr=False, default_factory=list)
     """Properties objects associated with this Assignment"""
-    assignment_record_has_images: bool
+    assignment_record_has_images: bool = False
     transaction_date: "Optional[datetime.date]" = None
     date_produced: "Optional[datetime.date]" = None
 
@@ -62,22 +66,11 @@ class Property(Model):
     us_application = one_to_one("patent_client.USApplication", appl_id="appl_id")
     """A USApplication object related to the property"""
 
-
-@dataclass
-class Person(Model):
-    name: str
-    address: str
-    city: str
-    state: str
-    post_code: str
-    country_name: str
-
-
 @dataclass
 class Assignor(Model):
     name: str
     ex_date: datetime.date
-    date_ack: datetime.datetime
+    date_ack: datetime.datetime = None
 
 
 @dataclass

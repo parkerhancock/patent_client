@@ -10,14 +10,15 @@ from patent_client import session
 from patent_client.util import Manager
 
 from .model import Assignment
-from .parser import AssignmentParser
-from .xml_schema import AssignmentPageSchema
+from .schema import AssignmentPageSchema
 
 warnings.filterwarnings("ignore", category=InsecureRequestWarning)
 
 NUMBER_CLEAN_RE = re.compile(r"[^\d]")
 clean_number = lambda x: NUMBER_CLEAN_RE.sub("", str(x))
 
+import logging
+logger = logging.getLogger(__name__)
 
 class AssignmentManager(Manager[Assignment]):
     schema = AssignmentPageSchema()
@@ -31,7 +32,6 @@ class AssignmentManager(Manager[Assignment]):
         "correspondent": "CorrespondentName",
         "id": "ReelFrame",
     }
-    parser = AssignmentParser()
     url = "https://assignment-api.uspto.gov/patent/lookup"
     page_size = 20
     obj_class = "patent_client.uspto_assignments.Assignment"
@@ -52,7 +52,7 @@ class AssignmentManager(Manager[Assignment]):
         for page_num in range(num_pages):
             for item in self.get_page(page_num):
                 if not self.config["limit"] or counter < self.config["limit"]:
-                    yield self.schema.load(item)
+                    yield item
                 counter += 1
             page_num += 1
 
@@ -80,13 +80,15 @@ class AssignmentManager(Manager[Assignment]):
             else:
                 sort.append(p + "+asc")
 
-        return {
+        query = {
             "filter": field,
             "query": " OR ".join(query) if isinstance(query, list) else query,
             "rows": self.page_size,
             "start": page_no * self.page_size,
             "sort": " ".join(sort),
         }
+        logger.info(f"Assignment Manager executed query {query}")
+        return query
 
     def __len__(self) -> int:
         if not hasattr(self, "_len"):
@@ -108,9 +110,8 @@ class AssignmentManager(Manager[Assignment]):
         )
         text = response.text
         result = self.schema.load(text)
-        breakpoint()
-        self._len = result['num_found']
-        return result['docs']
+        self._len = result.num_found
+        return result.docs
 
     @property
     def query_fields(self):
