@@ -50,7 +50,7 @@ class PtabManager(Manager, Generic[ModelType]):
     def get_page(self, page_no):
         query = self.query()
         query["recordStartNumber"] = page_no * self.page_size
-        response = session.get(self.url + self.path, params=query)
+        response = session.get(self.url + self.path, params=query, verify=False)
         return response.json()["results"]
 
     def __len__(self):
@@ -61,7 +61,7 @@ class PtabManager(Manager, Generic[ModelType]):
             return length
 
     def _len(self):
-        response = session.get(self.url + self.path, params=self.query())
+        response = session.get(self.url + self.path, params=self.query(), verify=False)
         return response.json()["recordTotalQuantity"]
 
     def query(self):

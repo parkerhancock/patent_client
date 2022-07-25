@@ -42,15 +42,15 @@ class TestPublishedApplicationFullText:
         )
 
     def test_search_classification(self):
-        query = "CCL/166/308.1 AND APD/19000101->20121005"
+        query = "CCL/166/308.1 AND APD/1/$/2015->1/$/2021"
         results = PublishedApplication.objects.filter(query=query)
-        assert len(results) == 493
-        assert results[50].publication_number == "20130199782"
+        assert len(results) == 41
+        assert results[25].publication_number == "20150354314"
         assert len(list(results[:15])) == 15
         counter = 0
         for i in results:
             counter += 1
-        assert counter == 493
+        assert counter == 41
 
     def test_empty_search_result(self):
         query = "CCL/726/22 AND APD/19000101->20000619"

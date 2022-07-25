@@ -8,7 +8,7 @@ from .model import PtabProceeding
 class TestPtabProceeding:
     def test_get_by_proceeding_number(self):
         result = PtabProceeding.objects.get("IPR2016-00831")
-        assert result.patent_number == "6162705"
+        assert result.respondent_patent_number == "6162705"
 
     def test_get_by_patent_number(self):
         result = PtabProceeding.objects.get(patent_number="6103599")

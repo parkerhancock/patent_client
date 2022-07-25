@@ -6,7 +6,6 @@ from .model import Model
 from .related import get_manager
 from .related import one_to_many
 from .related import one_to_one
-from .schema import ListField
 
 class DefaultDict(dict):
     def __init__(self, *args, default=None, **kwargs):
