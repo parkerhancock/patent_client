@@ -39,5 +39,5 @@ def test_us_app_12721698():
     data = (test_dir / "app_12721698.json").read_text()
     parser = PedsPageSchema()
     result = json.loads(parser.load(data).to_json())
-    answer = json.loads((test_dir / "result.json").read_text())
-    compare_dicts(answer, result)
+    expected = json.loads((test_dir / "expected.json").read_text())
+    compare_dicts(expected, result)
