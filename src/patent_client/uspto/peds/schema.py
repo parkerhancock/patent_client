@@ -179,7 +179,7 @@ class USApplicationSchema(Schema):
 
 class PedsPageSchema(Schema):
     index_last_updated = f.Date("queryResults.indexLastUpdatedDate")
-    num_found = f.Str("queryResults.searchResponse.numFound")
+    num_found = f.Int("queryResults.searchResponse.response.numFound")
     applications = f.List(USApplicationSchema, "queryResults.searchResponse.response.docs")
 
     def pre_load(self, obj):

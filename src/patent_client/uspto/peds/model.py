@@ -343,7 +343,7 @@ class Document(Model):
         return out_file
 
 @dataclass
-class PedsPage():
+class PedsPage(Model):
     index_last_updated: datetime.date
     num_found: int
     applications: "List[USApplication]" = field(default_factory=list)
