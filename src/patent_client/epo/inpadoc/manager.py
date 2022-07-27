@@ -8,8 +8,8 @@ from patent_client import SETTINGS
 from patent_client.util import Manager
 from patent_client.util.manager import resolve
 
-from ..session import NS
-from ..session import session
+from ..ops.session import NS
+from ..ops.session import session
 from .schema import InpadocBiblioSchema
 from .schema import InpadocResultSchema
 

@@ -1,9 +1,7 @@
 import datetime as dt
 import os
-from pathlib import Path
 
 import requests_cache
-import xmltodict
 
 from patent_client import CACHE_CONFIG
 from patent_client import SETTINGS
