@@ -10,10 +10,10 @@ class PatentSchemaMixin(object):
             try:
                 model_module = import_module("..model", self.__module__)
                 self.__model__ = getattr(model_module, model_name)
-            except ModuleNotFoundError:
+            except (ModuleNotFoundError, AttributeError):
                 model_module = import_module("...model", self.__module__)
                 self.__model__ = getattr(model_module, model_name)
-        except ModuleNotFoundError:
+        except (ModuleNotFoundError, ImportError, AttributeError):
             self.__model__ = None
 
     def post_load(self, obj):

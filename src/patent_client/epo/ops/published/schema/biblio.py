@@ -37,7 +37,7 @@ class DocDbNumberField(f.Combine):
     def combine_func(self, obj):
         if not obj:
             return None
-        return f"{obj.country}{obj.number}{obj.kind}"
+        return f"{obj.get('country', '')}{obj.number}{obj.get('kind', '')}"
 
 
 class ExchangeDocumentSchema(Schema):

@@ -169,6 +169,14 @@ optional = false
 python-versions = "*"
 
 [[package]]
+name = "et-xmlfile"
+version = "1.1.0"
+description = "An implementation of lxml.xmlfile for the standard library"
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[[package]]
 name = "exceptiongroup"
 version = "1.0.0rc8"
 description = "Backport of PEP 654 (exception groups)"
@@ -309,6 +317,17 @@ description = "NumPy is the fundamental package for array computing with Python.
 category = "dev"
 optional = false
 python-versions = ">=3.8"
+
+[[package]]
+name = "openpyxl"
+version = "3.0.10"
+description = "A Python library to read/write Excel 2010 xlsx/xlsm files"
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[package.dependencies]
+et-xmlfile = "*"
 
 [[package]]
 name = "packaging"
@@ -672,7 +691,7 @@ url = "../sugar"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "bed143c23e850df69cb2f236a4c50aafbeb2f649e7206f6f0529d1e2b70c0eee"
+content-hash = "a334c6ebb25a195b17e0ae496262047810e91ef43f4cd7e4a32c898b4c941d43"
 
 [metadata.files]
 appdirs = []
@@ -690,6 +709,7 @@ codecov = []
 colorama = []
 coverage = []
 distlib = []
+et-xmlfile = []
 exceptiongroup = []
 execnet = []
 filelock = []
@@ -703,6 +723,7 @@ mypy = []
 mypy-extensions = []
 nodeenv = []
 numpy = []
+openpyxl = []
 packaging = []
 pandas = []
 pathspec = []
