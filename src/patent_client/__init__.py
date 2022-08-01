@@ -43,14 +43,41 @@ if not SETTINGS_FILE.exists():
 
 SETTINGS = json.load(open(SETTINGS_FILE))
 
-from patent_client.epo.inpadoc.model import Inpadoc  # isort:skip
-from patent_client.usitc.model import ITCAttachment
-from patent_client.usitc.model import ITCDocument
-from patent_client.usitc.model import ITCInvestigation
-from patent_client.uspto.assignment.model import Assignment
-from patent_client.uspto.fulltext.patent.model import Patent
-from patent_client.uspto.fulltext.published_application.model import PublishedApplication
-from patent_client.uspto.peds.model import USApplication
-from patent_client.uspto.ptab.model import PtabDecision
-from patent_client.uspto.ptab.model import PtabDocument
-from patent_client.uspto.ptab.model import PtabProceeding
+#from patent_client.epo.inpadoc.model import Inpadoc  # isort:skip
+#from patent_client.usitc.model import ITCAttachment
+#from patent_client.usitc.model import ITCDocument
+#from patent_client.usitc.model import ITCInvestigation
+#from patent_client.uspto.assignment.model import Assignment
+#from patent_client.uspto.fulltext.patent.model import Patent
+#from patent_client.uspto.fulltext.published_application.model import PublishedApplication
+#from patent_client.uspto.peds.model import USApplication
+#from patent_client.uspto.ptab.model import PtabDecision
+#from patent_client.uspto.ptab.model import PtabDocument
+#from patent_client.uspto.ptab.model import PtabProceeding
+
+import logging
+import logging.handlers
+
+LOG_FILENAME = "cloud_patent.log"
+
+# Set up a specific logger with our desired output level
+logger = logging.getLogger()
+logger.setLevel("INFO")
+
+
+# Add the log message handler to the logger
+handler = logging.FileHandler(LOG_FILENAME)
+logger.addHandler(handler)
+
+
+import colorlog
+
+handler = colorlog.StreamHandler()
+handler.setFormatter(
+    colorlog.ColoredFormatter("%(log_color)s%(levelname)s:%(name)s:%(message)s")
+)
+
+logger = colorlog.getLogger()
+logger.addHandler(handler)
+
+logging.getLogger("smart_open").setLevel(logging.INFO)

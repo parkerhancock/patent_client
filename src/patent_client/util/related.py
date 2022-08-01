@@ -16,7 +16,8 @@ def one_to_one(class_name, attribute=None, **mapping):
             klass = getattr(importlib.import_module(module_name), class_name)
             filter_obj = {k: getattr(self, v) for (k, v) in mapping.items()}
             logger.debug(f"Fetching related {klass} using filter {filter_obj}")
-            return resolve(klass.objects.get(**filter_obj), attribute)
+            result = resolve(klass.objects.get(**filter_obj), attribute)
+            return result
         except AttributeError:
             return None
 

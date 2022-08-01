@@ -1,7 +1,7 @@
 import re
 
 from yankee.xml import fields as f
-from ..util import Schema
+from ...util import Schema
 
 class FTDocumentIdSchema(Schema):
     country = f.Str("./ft:country")

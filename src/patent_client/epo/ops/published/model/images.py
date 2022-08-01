@@ -1,25 +1,56 @@
+from typing import List
+from pathlib import Path
 from dataclasses import dataclass, field
+
+from PyPDF2 import PdfMerger, PdfReader, PdfWriter
 
 from patent_client.util import Model
 
-from patent_client.epo.ops.number_service.model import DocumentId
+from ...number_service.model import DocumentId
 
 @dataclass
 class Section(Model):
     name: str = None
-    start_page: str = None
+    start_page: int = None
 
 @dataclass
 class ImageDocument(Model):
     num_pages: int = None
     description: str = None
     link: str = None
-    formats: list = field(default_factory=list)
-    sections: list = field(default_factory=list)
+    formats: List[str] = field(default_factory=list)
+    sections: List[Section] = field(default_factory=list)
+    doc_number: str = None
+
+    def download(self, path="."):
+        from ..api import PublishedImagesApi
+        out_file = Path(path) / f"{self.doc_number}.pdf"
+        writer = PdfWriter()
+        for i in range(1, self.num_pages+1):
+            page_data = PublishedImagesApi.get_page_image_from_link(self.link, page_number=i)
+            page = PdfReader(page_data).pages[0]
+            if page['/Rotate'] == 90:
+                page.rotate_clockwise(-90)
+            writer.add_page(page)
+
+        for section in self.sections:
+            writer.add_outline_item(section.name.capitalize(), section.start_page)
+
+        with out_file.open("wb") as f:
+            writer.write(f)
 
 @dataclass
 class Images(Model):
+    __manager__ = "patent_client.epo.ops.published.manager.ImageManager"
     search_reference: DocumentId = None
     publication_reference: DocumentId = None
-    documents: list = field(default_factory=list)
+    documents: List[ImageDocument] = field(default_factory=list)
+
+    @property
+    def full_document(self):
+        return next(d for d in self.documents if d.description == "FullDocument")
+
+    @property
+    def first_page(self):
+        return next(d for d in self.documents if d.description == "FirstPageClipping")
 

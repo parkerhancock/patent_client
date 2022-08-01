@@ -15,6 +15,8 @@ class JsonEncoder(json.JSONEncoder):
     def default(self, o: "Any") -> "Any":
         if isinstance(o, (datetime.date, datetime.datetime)):
             return o.isoformat()
+        elif isinstance(o, Model):
+            return o.as_dict()
         return json.JSONEncoder.default(self, o)
 
 class ModelMeta(type):
@@ -36,6 +38,7 @@ class ModelABC(object):
 
 @dataclass
 class Model(ModelABC, metaclass=ModelMeta):
+    __exclude__ = list()
     def __init__(self, *args, **kwargs):
         try:
             return super().__init__(*args, **kwargs)
@@ -46,10 +49,12 @@ class Model(ModelABC, metaclass=ModelMeta):
         """Convert model to a dictionary representation"""
         output = OrderedDict()
         for k, v in self:
-            if isinstance(v, Model):
+            if k in self.__exclude__:
+                continue
+            elif isinstance(v, Model):
                 output[k] = v.as_dict()
             elif isinstance(v, (list, QuerySet)):
-                output[k] = [i.as_dict() if hasattr(i, "as_dict") else i for i in v]
+                output[k] = [i.as_dict() if isinstance(v, Model) else i for i in v]
             else:
                 output[k] = v
 

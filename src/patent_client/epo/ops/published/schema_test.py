@@ -25,10 +25,9 @@ def test_biblio():
 def test_claims():
     tree = ET.parse(test_dir / "claims_example.xml")
     result = ClaimsSchema().load(tree)
-    assert result.document_id.country == "EP"
-    assert result.document_id.doc_number == "1000000"
-    assert result.document_id.kind == "A1"
-    assert len(result.claims) == 11
+    expected = json.loads((expected_dir / "claims_example.json").read_text())
+    compare_dicts(json.loads(result.to_json()), expected)
+
 
 def test_description():
     tree = ET.parse(test_dir / "description_example.xml")

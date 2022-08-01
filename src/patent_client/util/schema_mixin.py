@@ -1,4 +1,5 @@
 from importlib import import_module
+from .manager import ListManager
 
 class PatentSchemaMixin(object):
     __model_name__ = None
@@ -23,3 +24,8 @@ class PatentSchemaMixin(object):
             return obj
         else:
             return None
+
+class ListManagerMixin(object):
+    def deserialize(self, obj):
+        obj = super().deserialize(obj)
+        return ListManager(obj)

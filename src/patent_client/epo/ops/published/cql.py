@@ -30,7 +30,8 @@ SEARCH_FIELDS = {
     "full_text": "txt",  # title, abstract, inventor and applicant
 }
 
-def generate_query(*kwargs):
+def generate_query(**kwargs):
+    query = ""
     for keyword, values in kwargs.items():
         for value in values:
             if keyword:

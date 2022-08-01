@@ -1,18 +1,19 @@
 import textwrap
+from dataclasses import dataclass, field
 
-from attr import Factory
-from attr import attrib
-from attr import attrs
+from ..model import Model
 
 
-@attrs(auto_attribs=True, repr=False)
-class Claim(object):
+@dataclass
+class Claim(Model):
+    __exclude__ = ["depends_on_claim", "dependent_claims"]
+
     number: int
     # text: str
     limitations: "List[str]"
     depends_on: "Optional[int]"
-    depends_on_claim: "Optional[int]" = attrib(default=None)
-    dependent_claims: "List[Claim]" = Factory(list)
+    depends_on_claim: "Optional[int]" = None
+    dependent_claims: "List[Claim]" = field(default_factory=list)
 
     def __repr__(self):
         return f"Claim(number={self.number}, depends_on={self.depends_on}, text={textwrap.shorten(self.text, width=40, placeholder='...')})"

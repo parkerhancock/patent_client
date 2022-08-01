@@ -1,10 +1,9 @@
-import re
-
 from yankee.xml import fields as f
 from yankee.util import clean_whitespace
 from patent_client.epo.ops.util import Schema
 
 from patent_client.epo.ops.number_service.schema import DocumentIdSchema
+from patent_client.util.xml import ListField
 
 class CpcClassificationSchema(f.Combine):
     section = f.Str("./epo:section")
@@ -53,18 +52,18 @@ class ExchangeDocumentSchema(Schema):
     application_reference_docdb = DocumentIdSchema('.//epo:application-reference/epo:document-id[@document-id-type="docdb"]')
     application_reference_epodoc = DocumentIdSchema('.//epo:application-reference/epo:document-id[@document-id-type="epodoc"]')
     application_reference_original = DocumentIdSchema('.//epo:application-reference/epo:document-id[@document-id-type="original"]')
-    intl_class = f.List(f.Str(formatter=clean_whitespace), "./epo:bibliographic-data/epo:classifications-ipcr/epo:classification-ipcr")
-    cpc_class = f.List(CpcClassificationSchema, './/epo:classification-scheme[@scheme="CPCI"]/ancestor::epo:patent-classification')
-    us_class = f.List(f.Str(), './/epo:classification-scheme[@scheme="UC"]/following-sibling::epo:classification-symbol')
-    priority_claims = f.List(DocumentIdSchema, ".//epo:priority-claim/epo:document-id")
+    intl_class = ListField(f.Str(formatter=clean_whitespace), "./epo:bibliographic-data/epo:classifications-ipcr/epo:classification-ipcr")
+    cpc_class = ListField(CpcClassificationSchema, './/epo:classification-scheme[@scheme="CPCI"]/ancestor::epo:patent-classification')
+    us_class = ListField(f.Str(), './/epo:classification-scheme[@scheme="UC"]/following-sibling::epo:classification-symbol')
+    priority_claims = ListField(DocumentIdSchema, ".//epo:priority-claim/epo:document-id")
     title = f.Str('.//epo:invention-title[@lang="en"]')
-    titles = f.List(TitleSchema, ".//epo:invention-title")
+    titles = ListField(TitleSchema, ".//epo:invention-title")
     abstract = f.Str('.//epo:abstract[@lang="en"]')
-    citations = f.List(CitationSchema, ".//epo:citation")
-    applicants_epodoc = f.List(f.Str(), './/epo:applicant[@data-format="epodoc"]//epo:name')
-    applicants_original = f.List(f.Str(), './/epo:applicant[@data-format="original"]//epo:name')
-    inventors_epodoc = f.List(f.Str(), './/epo:inventor[@data-format="epodoc"]')
-    inventors_original = f.List(f.Str(), './/epo:inventor[@data-format="original"]')
+    citations = ListField(CitationSchema, ".//epo:citation")
+    applicants_epodoc = ListField(f.Str(), './/epo:applicant[@data-format="epodoc"]//epo:name')
+    applicants_original = ListField(f.Str(), './/epo:applicant[@data-format="original"]//epo:name')
+    inventors_epodoc = ListField(f.Str(), './/epo:inventor[@data-format="epodoc"]')
+    inventors_original = ListField(f.Str(), './/epo:inventor[@data-format="original"]')
 
 class BiblioResultSchema(Schema):
-    documents = f.List(ExchangeDocumentSchema, ".//epo:exchange-document")
+    documents = ListField(ExchangeDocumentSchema, ".//epo:exchange-document")

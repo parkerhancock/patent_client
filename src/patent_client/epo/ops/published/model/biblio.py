@@ -1,3 +1,4 @@
+from typing import List
 from dataclasses import dataclass, field
 
 from patent_client.util import Model
@@ -25,6 +26,7 @@ def limit_text(string, limit=30):
 
 @dataclass
 class ExchangeDocument(Model):
+    __manager__ = "patent_client.epo.ops.published.manager.BiblioManager"
     country: str = None
     doc_number: str = None
     kind: str = None
@@ -37,18 +39,18 @@ class ExchangeDocument(Model):
     application_reference_docdb: DocumentId = None
     application_reference_epodoc: DocumentId = None
     application_reference_original: DocumentId = None
-    intl_class: list = field(default_factory=list)
-    cpc_class: list = field(default_factory=list)
-    us_class: list = field(default_factory=list)
-    priority_claims: list = field(default_factory=list)
+    intl_class: List[str] = field(default_factory=list)
+    cpc_class: List[str] = field(default_factory=list)
+    us_class: List[str] = field(default_factory=list)
+    priority_claims: List[str] = field(default_factory=list)
     title: str = None
-    titles: list = field(default_factory=list)
+    titles: List[Title] = field(default_factory=list)
     abstract: str = None
-    citations: list = field(default_factory=list)
-    applicants_epodoc: list = field(default_factory=list)
-    applicants_original: list = field(default_factory=list)
-    inventors_epodoc: list = field(default_factory=list)
-    inventors_original: list = field(default_factory=list)
+    citations: List[Citation] = field(default_factory=list)
+    applicants_epodoc: List[str] = field(default_factory=list)
+    applicants_original: List[str] = field(default_factory=list)
+    inventors_epodoc: List[str] = field(default_factory=list)
+    inventors_original: List[str] = field(default_factory=list)
     # TODO: NPL citations
 
     def __repr__(self):

@@ -1,6 +1,10 @@
-from yankee.xml import Schema as Schema
+from yankee.xml import Schema as BaseSchema
+from yankee.xml.schema.fields import List as BaseListField
 
-from .schema_mixin import PatentSchemaMixin
+from .schema_mixin import PatentSchemaMixin, ListManagerMixin
 
-class Schema(PatentSchemaMixin, Schema):
+class Schema(PatentSchemaMixin, BaseSchema):
+    pass
+
+class ListField(ListManagerMixin, BaseListField):
     pass
