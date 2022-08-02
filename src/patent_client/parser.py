@@ -121,9 +121,7 @@ class PatentNumber:
             elif self.type == "patent":
                 formatted_number = self.number
             elif self.type == "application":
-                formatted_number = (
-                    self.number[:2] + "/" + self.number[2:5] + "," + self.number[5:]
-                )
+                formatted_number = self.number[:2] + "/" + self.number[2:5] + "," + self.number[5:]
             return f"US {formatted_number} {self.kind_code}".strip()
         elif self.country == "CA":
             return f"CA {self.number} {self.kind_code}"

@@ -1,10 +1,12 @@
-from pathlib import Path
 import datetime
+from pathlib import Path
+
 import lxml.etree as ET
 
 from .schema import AssignmentPageSchema
 
 test_dir = Path(__file__).parent / "test"
+
 
 def test_assignment_1():
     xml_file = test_dir / "assignment_1.xml"
@@ -17,7 +19,10 @@ def test_assignment_1():
     assert a.transaction_date.isoformat() == "2019-07-11"
     assert a.recorded_date.isoformat() == "2006-09-14"
     assert a.corr_name == "JEFFREY H. INGERMAN"
-    assert a.corr_address == "FISH & NEAVE IP GROUP, ROPES & GRAY LLP\n1251 AVENUE OF THE AMERICAS C3\nNEW YORK, NY 10020-1105"
+    assert (
+        a.corr_address
+        == "FISH & NEAVE IP GROUP, ROPES & GRAY LLP\n1251 AVENUE OF THE AMERICAS C3\nNEW YORK, NY 10020-1105"
+    )
     assert len(a.assignors) == 1
     assert a.assignors[0].name == "REALTIME DATA COMPRESSION SYSTEMS, INC."
     assert a.assignors[0].ex_date.isoformat() == "2006-09-14"
@@ -37,12 +42,14 @@ def test_assignment_1():
     assert a.properties[0].publ_date.isoformat() == "2004-04-15"
     assert a.properties[0].publ_num == "20040073746"
 
+
 def test_assignment_2():
     xml_file = test_dir / "assignment_2.xml"
     parser = AssignmentPageSchema()
     page = parser.load(xml_file.read_text())
     a = page.docs[0]
     assert len(a.assignors) == 5
+
 
 def test_assignment_3():
     xml_file = test_dir / "assignment_3.xml"

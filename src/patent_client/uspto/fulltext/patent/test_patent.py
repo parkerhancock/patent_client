@@ -32,7 +32,9 @@ class TestPatentFullText:
         assert pat.parsed_claims[30].depends_on == list()
         assert pat.parsed_claims[31].dependent
         assert not pat.parsed_claims[31].independent
-        assert pat.parsed_claims[31].depends_on == [31,]
+        assert pat.parsed_claims[31].depends_on == [
+            31,
+        ]
 
     def test_us8645300(self):
         pat_no = 8645300
@@ -49,10 +51,7 @@ class TestPatentFullText:
     def test_can_fetch_reissue_applications(self):
         pat_no = "RE43633"
         pat = Patent.objects.get(pat_no)
-        assert (
-            pat.title
-            == "System and method for linking streams of multimedia data to reference material for display"
-        )
+        assert pat.title == "System and method for linking streams of multimedia data to reference material for display"
         assert pat.parsed_claims[0].text[:25] == "1. .[.A system for linkin"
 
     def test_can_get_field_of_search(self):

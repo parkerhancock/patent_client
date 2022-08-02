@@ -1,6 +1,8 @@
-from dataclasses import dataclass, field
+from dataclasses import dataclass
+from dataclasses import field
 
 from patent_client.util.model import Model
+
 
 @dataclass
 class DocumentId(Model):
@@ -15,10 +17,10 @@ class DocumentId(Model):
     def __str__(self):
         return f"{self.country}{self.number}{self.kind}"
 
+
 @dataclass
 class NumberServiceResult(Model):
     input_doc: DocumentId
     output_doc: DocumentId
     service_version: str = None
     messages: list = field(default_factory=list)
-

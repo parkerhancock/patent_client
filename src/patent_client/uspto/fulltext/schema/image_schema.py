@@ -1,4 +1,6 @@
-from yankee import Schema, fields as f
+from yankee import Schema
+from yankee import fields as f
+
 
 class SectionSchema(Schema):
     name = f.Str("name")

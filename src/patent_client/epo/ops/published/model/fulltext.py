@@ -1,11 +1,11 @@
+from dataclasses import dataclass
+from dataclasses import field
 from typing import List
-from dataclasses import dataclass, field
-
-from patent_client.util import Model
-
-from patent_client.util.claims.model import Claim
 
 from patent_client.epo.ops.util import InpadocModel
+from patent_client.util import Model
+from patent_client.util.claims.model import Claim
+
 
 @dataclass
 class FTDocumentId(Model):
@@ -15,6 +15,7 @@ class FTDocumentId(Model):
 
     def __str__(self):
         return f"{self.country}{self.doc_number}{self.kind}"
+
 
 @dataclass
 class Claims(Model):
@@ -29,6 +30,7 @@ class Claims(Model):
 
     def __repr__(self):
         return f"Claims(document_id={str(self.document_id)})"
+
 
 @dataclass
 class Description(InpadocModel):

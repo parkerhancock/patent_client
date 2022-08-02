@@ -1,13 +1,13 @@
 import re
 from itertools import zip_longest
+
 from yankee.util import AttrDict
 
-from .model import Claim
 from patent_client.util import ListManager
 
-SPLIT_RE = re.compile(
-    r"^\s*([\d\-\.]+[\)\.]|\.Iadd\.[\d\-\.]+\.|\.\[[\d\-\.]+\.)", flags=re.MULTILINE
-)
+from .model import Claim
+
+SPLIT_RE = re.compile(r"^\s*([\d\-\.]+[\)\.]|\.Iadd\.[\d\-\.]+\.|\.\[[\d\-\.]+\.)", flags=re.MULTILINE)
 NUMERIC_RE = re.compile(r"\d")
 
 LIMITATION_RE = re.compile(r"(\s*[:;]\s*and|\s*[:;]\s*)", flags=re.IGNORECASE)
@@ -66,27 +66,23 @@ class ClaimsParser(object):
     def parse_claim_string(self, text):
         number = int(NUMBER_RE.search(text).group("number"))
         text = NUMBER_RE.sub("", text)
-        return AttrDict.convert({
-            "number": number,
-            # "text": NUMBER_RE.sub("", text),
-            "limitations": [
-                clean_text("".join(lim))
-                for lim in list(grouper(LIMITATION_RE.split(text), 2, ""))
-            ],
-            "depends_on": self.parse_dependency(text, number),
-            "dependent_claims": list()
-        })
-
+        return AttrDict.convert(
+            {
+                "number": number,
+                # "text": NUMBER_RE.sub("", text),
+                "limitations": [clean_text("".join(lim)) for lim in list(grouper(LIMITATION_RE.split(text), 2, ""))],
+                "depends_on": self.parse_dependency(text, number),
+                "dependent_claims": list(),
+            }
+        )
 
     def parse_dependency(self, text, number):
         dependency = DEPENDENCY_RE.search(text)
         if dependency is not None:
-            claims = dependency.groupdict()['number']
-            claim_numbers = [int(m.groupdict()['number']) for m in 
-            DEPENDENT_CLAIMS_RE.finditer(claims)]
+            claims = dependency.groupdict()["number"]
+            claim_numbers = [int(m.groupdict()["number"]) for m in DEPENDENT_CLAIMS_RE.finditer(claims)]
             return claim_numbers
         elif DEPEND_ALL_RE.search(text):
             return list(range(1, number))
         else:
             return list()
-        

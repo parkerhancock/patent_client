@@ -85,9 +85,7 @@ class USApplicationManager(Manager[USApplication]):
             if s[0] == "-":
                 sort_query += f"{inflection.camelize(s[1:], uppercase_first_letter=False)} desc ".strip()
             else:
-                sort_query += (
-                    f"{inflection.camelize(s, uppercase_first_letter=False)} asc"
-                ).strip()
+                sort_query += (f"{inflection.camelize(s, uppercase_first_letter=False)} asc").strip()
         if not sort_query:
             sort_query = None
 
@@ -98,9 +96,7 @@ class USApplicationManager(Manager[USApplication]):
             if not v:
                 continue
             elif type(v) in (list, tuple):
-                body = f" OR ".join(
-                    f'"{value}"' if " " in value else value for value in v
-                )
+                body = f" OR ".join(f'"{value}"' if " " in value else value for value in v)
                 mm_active = False
             else:
                 body = v
@@ -145,13 +141,9 @@ class USApplicationManager(Manager[USApplication]):
             if response.ok:
                 return True
             elif "requested resource is not available" in response.text:
-                raise NotAvailableException(
-                    "Patent Examination Data is Offline - this is a USPTO problem"
-                )
+                raise NotAvailableException("Patent Examination Data is Offline - this is a USPTO problem")
             elif "attempt failed or the origin closed the connection" in response.text:
-                raise NotAvailableException(
-                    "The Patent Examination Data API is Broken! - this is a USPTO problem"
-                )
+                raise NotAvailableException("The Patent Examination Data API is Broken! - this is a USPTO problem")
             else:
                 raise NotAvailableException("There is a USPTO problem")
 

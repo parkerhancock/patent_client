@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import json
-
 from collections import OrderedDict
 from copy import deepcopy
 from typing import Generic
@@ -111,9 +110,7 @@ class Manager(Generic[ModelType]):
     def __eq__(self, other) -> bool:
         return bool(self.config == other.config and type(self) == type(other))
 
-    def __getitem__(
-        self, key: Union[slice, int]
-    ) -> Union[Manager[ModelType], ModelType]:
+    def __getitem__(self, key: Union[slice, int]) -> Union[Manager[ModelType], ModelType]:
         if isinstance(key, slice):
             if key.step != None:
                 raise AttributeError("Step is not supported")
@@ -209,9 +206,7 @@ class Manager(Generic[ModelType]):
         """Implement an "explode" function for related objects."""
         from itertools import chain
 
-        return ListManager(
-            chain.from_iterable(getattr(r, attribute, None) for r in self)
-        )
+        return ListManager(chain.from_iterable(getattr(r, attribute, None) for r in self))
 
     def to_records(self) -> Iterator[OrderedDict]:
         """Return a list of dictionaries containing model data in ordinary Python types
@@ -283,9 +278,7 @@ class QuerySet(Manager[ModelType]):
         self._limit = limit
         self._offset = offset
 
-    def __getitem__(
-        self, key: Union[slice, int]
-    ) -> Union[Manager[ModelType], ModelType]:
+    def __getitem__(self, key: Union[slice, int]) -> Union[Manager[ModelType], ModelType]:
         if isinstance(key, slice):
             if key.step != None:
                 raise AttributeError("Step is not supported")
@@ -306,9 +299,7 @@ class QuerySet(Manager[ModelType]):
             counter = 0
             max_items = self._offset + self._limit if self._limit else None
             for manager in self.managers:
-                if counter + len(manager) < self._offset or (
-                    self._limit and counter >= self._limit
-                ):
+                if counter + len(manager) < self._offset or (self._limit and counter >= self._limit):
                     """In these circumstances, don't yield objects"""
                     counter += len(manager)
                     continue

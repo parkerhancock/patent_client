@@ -2,9 +2,10 @@ import json
 
 from yankee.json.schema import fields as f
 
-from patent_client.util.format import clean_whitespace
 from patent_client.util import DefaultDict
+from patent_client.util.format import clean_whitespace
 from patent_client.util.json import Schema
+
 
 class InventorNameField(f.Combine):
     name_line_one = f.Str()
@@ -12,7 +13,10 @@ class InventorNameField(f.Combine):
     suffix = f.Str()
 
     def combine_func(self, obj):
-        return clean_whitespace(f"{obj.get('name_line_one', '')}; {obj.get('name_line_two', '')} {obj.get('suffix', '')}")
+        return clean_whitespace(
+            f"{obj.get('name_line_one', '')}; {obj.get('name_line_two', '')} {obj.get('suffix', '')}"
+        )
+
 
 class InventorAddressField(f.Combine):
     street_one = f.Str()
@@ -23,10 +27,9 @@ class InventorAddressField(f.Combine):
     country = f.Str()
 
     def combine_func(self, obj):
-        obj = DefaultDict(**obj, default='')
+        obj = DefaultDict(**obj, default="")
         return clean_whitespace(
-            "{street_1}\n{street_2}\n{city}, {geo_code} {postal_code} {country}".format_map(obj),
-            preserve_newlines=True
+            "{street_1}\n{street_2}\n{city}, {geo_code} {postal_code} {country}".format_map(obj), preserve_newlines=True
         )
 
 
@@ -35,31 +38,34 @@ class InventorSchema(Schema):
     address = InventorAddressField(data_key=False)
     rank_no = f.Int()
 
+
 class ApplicantSchema(InventorSchema):
     cust_no = f.Str()
+
 
 class TransactionSchema(Schema):
     date = f.Date("recordDate")
     code = f.Str()
     description = f.Str()
 
+
 class ChildSchema(Schema):
     __model_name__ = "Relationship"
-    parent_appl_id = f.Str('applicationNumberText')
-    child_app_filing_date = f.Date('filingDate')
-    child_app_status = f.Str('applicationStatus')
-    child_appl_id = f.Str('claimApplicationNumberText')
-    relationship = f.Str('applicationStatusDescription',
-        formatter=lambda x: x.replace('This application ', ''))
+    parent_appl_id = f.Str("applicationNumberText")
+    child_app_filing_date = f.Date("filingDate")
+    child_app_status = f.Str("applicationStatus")
+    child_appl_id = f.Str("claimApplicationNumberText")
+    relationship = f.Str("applicationStatusDescription", formatter=lambda x: x.replace("This application ", ""))
+
 
 class ParentSchema(Schema):
     __model_name__ = "Relationship"
-    parent_appl_id = f.Str('claimApplicationNumberText')
-    child_appl_id = f.Str('applicationNumberText')
-    parent_app_filing_date = f.Date('filingDate')
-    parent_app_status = f.Str('applicationStatus')
-    relationship = f.Str('applicationStatusDescription',
-        formatter=lambda x: x.replace('This application ', ''))
+    parent_appl_id = f.Str("claimApplicationNumberText")
+    child_appl_id = f.Str("applicationNumberText")
+    parent_app_filing_date = f.Date("filingDate")
+    parent_app_status = f.Str("applicationStatus")
+    relationship = f.Str("applicationStatusDescription", formatter=lambda x: x.replace("This application ", ""))
+
 
 class OptionalFloat(f.Int):
     def deserialize(self, elem) -> "Optional[int]":
@@ -68,6 +74,7 @@ class OptionalFloat(f.Int):
         except ValueError:
             return None
 
+
 class PtaPteHistorySchema(Schema):
     date = f.Date("ptaOrPteDate")
     description = f.String("contentsDescription")
@@ -75,7 +82,8 @@ class PtaPteHistorySchema(Schema):
     pto_days = OptionalFloat()
     applicant_days = OptionalFloat()
     start = f.Float()
-    
+
+
 class PtaPteSummarySchema(Schema):
     a_delay = f.Int()
     b_delay = f.Int()
@@ -87,13 +95,15 @@ class PtaPteSummarySchema(Schema):
     total_days = f.Int("totalPtoDays")
     kind = f.Str("ptaPteInd")
 
+
 class CorrespondentNameSchema(f.Combine):
     line_one = f.Str("corrAddrNameLineOne")
     line_two = f.Str("corrAddrNameLineTwo")
 
     def combine_func(self, obj):
-        obj = DefaultDict(**obj, default='')
+        obj = DefaultDict(**obj, default="")
         return "{line_one}\n{line_two}".format_map(obj)
+
 
 class CorrespondentAddressSchema(f.Combine):
     street_1 = f.Str("corrAddrStreetLineOne")
@@ -104,16 +114,17 @@ class CorrespondentAddressSchema(f.Combine):
     country = f.Str(data_key="corrAddrCountryCd")
 
     def combine_func(self, obj):
-        obj = DefaultDict(**obj, default='')
+        obj = DefaultDict(**obj, default="")
         return clean_whitespace(
-            "{street_1}\n{street_2}\n{city}, {geo_code} {postal_code} {country}".format_map(obj),
-            preserve_newlines=True
-            )
+            "{street_1}\n{street_2}\n{city}, {geo_code} {postal_code} {country}".format_map(obj), preserve_newlines=True
+        )
+
 
 class CorrespondentSchema(Schema):
     name = CorrespondentNameSchema(data_key=False)
     address = CorrespondentAddressSchema(data_key=False)
     cust_no = f.Str("corrAddrCustNo")
+
 
 class AttorneySchema(Schema):
     registration_no = f.Str()
@@ -121,10 +132,12 @@ class AttorneySchema(Schema):
     phone_num = f.Str()
     reg_status = f.Str()
 
+
 class ForeignPrioritySchema(Schema):
     priority_claim = f.Str()
     country_name = f.Str()
     filing_date = f.Date(dt_format="%m-%d-%Y")
+
 
 class DocumentSchema(Schema):
     access_level_category = f.Str()
@@ -136,6 +149,7 @@ class DocumentSchema(Schema):
     mail_room_date = f.Date()
     page_count = f.Int()
     url = f.Str(data_key="pdf_url")
+
 
 class USApplicationSchema(Schema):
     # Basic Bibliographic Data
@@ -150,7 +164,7 @@ class USApplicationSchema(Schema):
     app_exam_name = f.Str()
     first_inventor_file = f.Bool(true_value="Yes")
     patent_title = f.Str()
-    # Status Information    
+    # Status Information
     app_status = f.Str()
     app_status_date = f.Date()
     # Publication Information
@@ -163,7 +177,7 @@ class USApplicationSchema(Schema):
     # Correspondent / Attorney Information
     corr_addr_cust_no = f.Str()
     app_cust_number = f.Str()
-    app_attr_dock_number= f.Str()
+    app_attr_dock_number = f.Str()
 
     # Parties
     inventors = f.List(InventorSchema)
@@ -176,6 +190,7 @@ class USApplicationSchema(Schema):
     correspondent = CorrespondentSchema(data_key=False)
     attorneys = f.List(AttorneySchema, data_key="attrnyAddr")
     foreign_priority = f.List(ForeignPrioritySchema)
+
 
 class PedsPageSchema(Schema):
     index_last_updated = f.Date("queryResults.indexLastUpdatedDate")

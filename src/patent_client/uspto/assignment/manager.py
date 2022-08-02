@@ -18,7 +18,9 @@ NUMBER_CLEAN_RE = re.compile(r"[^\d]")
 clean_number = lambda x: NUMBER_CLEAN_RE.sub("", str(x))
 
 import logging
+
 logger = logging.getLogger(__name__)
+
 
 class AssignmentManager(Manager[Assignment]):
     schema = AssignmentPageSchema()

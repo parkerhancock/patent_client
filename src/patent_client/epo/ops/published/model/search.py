@@ -1,7 +1,9 @@
+from dataclasses import dataclass
+from dataclasses import field
 from typing import List
-from dataclasses import dataclass, field
 
 from patent_client.util import Model
+
 from ...util import InpadocModel
 
 

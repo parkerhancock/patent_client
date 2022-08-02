@@ -12,19 +12,23 @@ from dateutil.parser import parse as parse_dt
 
 from patent_client.util import Manager
 
-#from .schema import PublicationSchema
-from .session import session
-from .schema.new_schema import ImageHtmlSchema, PublicationSchema
 from .schema.image_schema import ImageSchema
+from .schema.new_schema import ImageHtmlSchema
+from .schema.new_schema import PublicationSchema
+# from .schema import PublicationSchema
+from .session import session
 
 
 def rate_limit(func, delay=0.001):
     last_call = time.time()
+
     def limited_func(*args, **kwargs):
         wait = delay - (time.time() - last_call)
-        if wait > 0: time.sleep(wait)
+        if wait > 0:
+            time.sleep(wait)
         last_call = time.time()
         func(*args, **kwargs)
+
     return limited_func
 
 
@@ -48,7 +52,6 @@ class FullTextManager(Manager):
     search_url = None
     pub_base_url = None
     result_model = None
-
 
     def __init__(self, *args, **kwargs):
         super(FullTextManager, self).__init__(*args, **kwargs)
@@ -116,17 +119,13 @@ class FullTextManager(Manager):
             if k not in self.search_fields:
                 raise ValueError(f"{k} is not a supported search field!")
             if "exact" in v:
-                query_segments.append(
-                    f"{self.search_fields[k]}/{standardize_date(v['exact'])}"
-                )
+                query_segments.append(f"{self.search_fields[k]}/{standardize_date(v['exact'])}")
             elif "range" in v:
                 r = tuple(standardize_date(d) for d in v["range"])
                 query_segments.append(f"{self.search_fields[k]}/{r[0]}->{r[1]}")
             elif "gt" or "lt" in v:
                 gt = standardize_date(v.get("gt", standardize_date("19000101")))
-                lt = standardize_date(
-                    v.get("lt", datetime.datetime.now().date().strftime("%Y%m%d"))
-                )
+                lt = standardize_date(v.get("lt", datetime.datetime.now().date().strftime("%Y%m%d")))
                 query_segments.append(f"{self.search_fields[k]}/{gt}->{lt}")
 
         return " AND ".join(query_segments)
@@ -198,13 +197,13 @@ class ImageManager(Manager):
     def get(self, pdf_url):
         full_doc = self.get_image_data(pdf_url)
         full_doc.pdf_url = self.DL_URL.format(pdf_id=full_doc.pdf_url_id)
-        full_doc['sections'] = [
+        full_doc["sections"] = [
             {"name": name, **self.get_image_data(self.BASE_URL + url)} for name, url in full_doc.sections.items()
         ]
         last_page = full_doc.num_pages
         for section in reversed(full_doc.sections):
-            section['end_page'] = last_page
-            last_page = section['start_page'] - 1
+            section["end_page"] = last_page
+            last_page = section["start_page"] - 1
 
         return self.__schema__.load(full_doc)
 
@@ -215,4 +214,3 @@ class ImageManager(Manager):
             return dict()
         data = self.html_schema.load(response.text)
         return data
-

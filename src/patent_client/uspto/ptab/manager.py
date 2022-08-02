@@ -72,8 +72,7 @@ class PtabManager(Manager, Generic[ModelType]):
             query[key] = " ".join(v)
         query["recordTotalQuantity"] = self.page_size
         query["sortOrderCategory"] = " ".join(
-            inflection.camelize(o, uppercase_first_letter=False)
-            for o in self.config["order_by"]
+            inflection.camelize(o, uppercase_first_letter=False) for o in self.config["order_by"]
         )
         return query
 

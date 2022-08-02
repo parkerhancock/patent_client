@@ -57,7 +57,4 @@ class TestPtabDocument:
 class TestPtabDecision:
     def test_get_by_proceeding(self):
         result = PtabDecision.objects.get(proceeding_number="IPR2016-00831")
-        assert (
-            result.identifier
-            == "a44c5f1557b7b60d00e66604d3668ce442d53f964aa597011cc476b4"
-        )
+        assert result.identifier == "a44c5f1557b7b60d00e66604d3668ce442d53f964aa597011cc476b4"

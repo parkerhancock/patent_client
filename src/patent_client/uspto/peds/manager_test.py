@@ -35,10 +35,7 @@ class TestPatentExaminationData:
     def test_get_by_application_number(self):
         app_no = "15145443"
         app = USApplication.objects.get(app_no)
-        assert (
-            app.patent_title
-            == "Suction and Discharge Lines for a Dual Hydraulic Fracturing Unit"
-        )
+        assert app.patent_title == "Suction and Discharge Lines for a Dual Hydraulic Fracturing Unit"
 
     def test_get_many_by_application_number(self):
         app_nos = ["14971450", "15332765", "13441334", "15332709", "14542000"]
@@ -46,11 +43,7 @@ class TestPatentExaminationData:
         assert len(data) == 5
 
     def test_search_patex_by_assignee(self):
-        data = (
-            USApplication.objects.filter(first_named_applicant="LogicBlox")
-            .order_by("appl_id")
-            .limit(4)
-        )
+        data = USApplication.objects.filter(first_named_applicant="LogicBlox").order_by("appl_id").limit(4)
         expected_titles = [
             "MAINTENANCE OF ACTIVE DATABASE QUERIES",
             "SALIENT SAMPLING FOR QUERY SIZE ESTIMATION",
@@ -199,11 +192,7 @@ class TestPatentExaminationData:
         assert len(records) >= 4
 
     def test_get_applicant(self):
-        applicants = (
-            USApplication.objects.filter(first_named_applicant="Tesla")
-            .first()
-            .applicants
-        )
+        applicants = USApplication.objects.filter(first_named_applicant="Tesla").first().applicants
         assert "tesla" in applicants[0].name.lower()
 
     def test_foreign_priority(self):

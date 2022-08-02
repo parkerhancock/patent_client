@@ -4,7 +4,6 @@ from patent_client.util import Model
 from patent_client.util import one_to_many
 from patent_client.util import one_to_one
 
-
 from ..model import Image
 from ..model import Publication
 from ..model import PublicationResult

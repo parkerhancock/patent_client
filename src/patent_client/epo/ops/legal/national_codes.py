@@ -1,18 +1,20 @@
-from pathlib import Path
 import sqlite3
+from pathlib import Path
 from venv import create
-from openpyxl import load_workbook
 
 import lxml.etree as ET
+from openpyxl import load_workbook
 
 from patent_client.epo.ops.session import session
 
 dir = Path(__file__).parent
 db_location = dir / "legal_codes.sqlite"
 
+
 def generate_legal_code_db():
     path = get_spreadsheet()
     create_code_database(path)
+
 
 def get_spreadsheet():
     url = "https://www.epo.org/searching-for-patents/data/coverage/weekly.html"
@@ -37,7 +39,8 @@ def create_code_database(excel_path):
     con = sqlite3.connect(db_location)
     cur = con.cursor()
     cur.execute("""DROP TABLE IF EXISTS legal_codes""")
-    cur.execute("""CREATE TABLE legal_codes (
+    cur.execute(
+        """CREATE TABLE legal_codes (
     country_code text, 
     event_code text, 
     date_created text, 
@@ -47,12 +50,14 @@ def create_code_database(excel_path):
     description_orig text, 
     last_update_orig text, 
     event_class text, 
-    event_class_description text)""")
+    event_class_description text)"""
+    )
     cur.execute("""CREATE INDEX country_event_code ON legal_codes (country_code, event_code)""")
     cur.executemany("INSERT INTO legal_codes values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", rows)
     con.commit()
 
-class LegalCodes():
+
+class LegalCodes:
     def __init__(self):
         self.connection = sqlite3.connect(db_location)
         self.connection.row_factory = sqlite3.Row
@@ -60,6 +65,10 @@ class LegalCodes():
     def get_code_data(self, country_code, legal_code):
         cur = self.connection.cursor()
         try:
-            return dict(cur.execute("SELECT * FROM legal_codes WHERE country_code = ? AND event_code = ?", (country_code, legal_code)).fetchone())
+            return dict(
+                cur.execute(
+                    "SELECT * FROM legal_codes WHERE country_code = ? AND event_code = ?", (country_code, legal_code)
+                ).fetchone()
+            )
         except TypeError:
             raise Exception(f"No Event Data found for {country_code} - {legal_code}")

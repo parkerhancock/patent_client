@@ -9,7 +9,6 @@ from patent_client import session
 from patent_client.util import Model
 from patent_client.util import one_to_many
 from patent_client.util import one_to_one
-
 from patent_client.util.claims.parser import ClaimsParser
 
 
@@ -36,10 +35,12 @@ class Assignee(Model):
     name: str = None
     region: str = None
 
+
 @dataclass
 class Examiner(Model):
     first_name: str = None
     last_name: str = None
+
 
 @dataclass
 class RelatedPatentDocument(Model):
@@ -99,7 +100,7 @@ class Publication(Model):
     kind_code: str
     publication_date: str
     title: str = None
-    
+
     description: str = None
     abstract: str = None
     claims: str = None
@@ -143,9 +144,7 @@ class Publication(Model):
     def parsed_claims(self):
         return ClaimsParser().parse(self.claims)
 
-    application = one_to_one(
-        "patent_client.uspto.peds.model.USApplication", appl_id="appl_id"
-    )
+    application = one_to_one("patent_client.uspto.peds.model.USApplication", appl_id="appl_id")
 
 
 @dataclass

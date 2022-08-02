@@ -1,11 +1,14 @@
 from yankee.json import fields as f
+
 from patent_client.util.json import Schema
+
 
 class AdditionalRespondentSchema(Schema):
     application_number_text = f.Str()
     inventor_name = f.Str()
     patent_number = f.Str()
     party_name = f.Str()
+
 
 class PtabProceedingSchema(Schema):
     # Proceeding Metadata
@@ -73,9 +76,10 @@ class PtabProceedingSchema(Schema):
     second_respondent_g_a_u_number = f.Str()
     second_respondent_tech_center_number = f.Str()
     second_respondent_pub_number = f.Str()
-    second_respondent_publication_date = f.Date()   
-    
+    second_respondent_publication_date = f.Date()
+
     additional_respondents = f.List(AdditionalRespondentSchema, data_key="additionalRespondentPartyDataBag")
+
 
 class PtabDocumentSchema(Schema):
     document_identifier = f.Str()
@@ -88,6 +92,7 @@ class PtabDocumentSchema(Schema):
     proceeding_number = f.Str()
     proceeding_type_category = f.Str()
 
+
 class PtabDecisionSchema(Schema):
     proceeding_number = f.Str()
     board_rulings = f.List(f.Str())
@@ -99,4 +104,3 @@ class PtabDecisionSchema(Schema):
     object_uu_id = f.Str()
     petitioner_technology_center_number = f.Str()
     subdecision_type_category = f.Str()
-

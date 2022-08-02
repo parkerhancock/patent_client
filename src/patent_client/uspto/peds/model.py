@@ -50,21 +50,15 @@ class USApplication(Model):
     wipo_early_pub_date: Optional[datetime.date] = field(default=None, repr=False)
 
     transactions: List[Transaction] = field(default_factory=list, repr=False)
-    child_continuity: ListManager[Relationship] = field(
-        default_factory=ListManager.empty, repr=False
-    )
-    parent_continuity: ListManager[Relationship] = field(
-        default_factory=ListManager.empty, repr=False
-    )
+    child_continuity: ListManager[Relationship] = field(default_factory=ListManager.empty, repr=False)
+    parent_continuity: ListManager[Relationship] = field(default_factory=ListManager.empty, repr=False)
     pta_pte_tran_history: List[PtaPteHistory] = field(default_factory=list, repr=False)
     pta_pte_summary: Optional[PtaPteSummary] = field(default=None, repr=False)
     correspondent: Optional[Correspondent] = field(default=None, repr=False)
     attorneys: List[Attorney] = field(default_factory=list, repr=False)
     foreign_priority: List[ForeignPriority] = field(default_factory=list, repr=False)
 
-    documents = one_to_many(
-        "patent_client.uspto.peds.model.Document", appl_id="appl_id"
-    )
+    documents = one_to_many("patent_client.uspto.peds.model.Document", appl_id="appl_id")
 
     @property
     def continuity(self) -> QuerySet:
@@ -108,22 +102,17 @@ class USApplication(Model):
         help information for the resulting Expiration model.
         """
         if "PCT" in self.appl_id:
-            raise NotImplementedError(
-                "Expiration date not supported for PCT Applications"
-            )
+            raise NotImplementedError("Expiration date not supported for PCT Applications")
         if not self.patent_number:
             return None
         expiration_data = dict()
         term_parents = [
             p
             for p in self.parent_continuity
-            if p.relationship
-            not in ["Claims Priority from Provisional Application", "is a Reissue of"]
+            if p.relationship not in ["Claims Priority from Provisional Application", "is a Reissue of"]
         ]
         if term_parents:
-            term_parent = sorted(term_parents, key=lambda x: x.parent_app_filing_date)[
-                0
-            ]
+            term_parent = sorted(term_parents, key=lambda x: x.parent_app_filing_date)[0]
             relationship = term_parent.relationship
             parent_filing_date = term_parent.parent_app_filing_date
             parent_appl_id = term_parent.parent_appl_id
@@ -137,9 +126,7 @@ class USApplication(Model):
         expiration_data["parent_relationship"] = relationship
         expiration_data["initial_term"] = parent_filing_date + relativedelta(years=20)  # type: ignore
         expiration_data["pta_or_pte"] = self.pta_pte_summary.total_days if self.pta_pte_summary else 0  # type: ignore
-        expiration_data["extended_term"] = expiration_data[
-            "initial_term"
-        ] + relativedelta(
+        expiration_data["extended_term"] = expiration_data["initial_term"] + relativedelta(
             days=expiration_data["pta_or_pte"]
         )  # type: ignore
 
@@ -152,15 +139,11 @@ class USApplication(Model):
 
         return Expiration(**expiration_data)  # type: ignore
 
-    assignments = one_to_many(
-        "patent_client.uspto.assignment.Assignment", appl_id="appl_id"
-    )
+    assignments = one_to_many("patent_client.uspto.assignment.Assignment", appl_id="appl_id")
     """Related Assignments from the Assignments API"""
     trials = one_to_many("patent_client.uspto.ptab.PtabProceeding", appl_id="appl_id")
     """Related PtabProceedings for this application"""
-    patent = one_to_one(
-        "patent_client.uspto.fulltext.Patent", publication_number="patent_number"
-    )
+    patent = one_to_one("patent_client.uspto.fulltext.Patent", publication_number="patent_number")
     """Fulltext Patent - If Available"""
 
     @property
@@ -212,17 +195,15 @@ class Relationship(Model):
     parent_app_filing_date: Optional[datetime.date] = None
     parent_app_status: "Optional[str]" = None
     child_app_status: "Optional[str]" = None
-    parent = one_to_one(
-        "patent_client.uspto.peds.USApplication", appl_id="parent_appl_id"
-    )
-    child = one_to_one(
-        "patent_client.uspto.peds.USApplication", appl_id="child_appl_id"
-    )
+    parent = one_to_one("patent_client.uspto.peds.USApplication", appl_id="parent_appl_id")
+    child = one_to_one("patent_client.uspto.peds.USApplication", appl_id="child_appl_id")
 
     def __eq__(self, other):
-        return (self.parent_appl_id == other.parent_appl_id
-                and self.child_appl_id == other.child_appl_id
-                and self.relationship == other.relationship)
+        return (
+            self.parent_appl_id == other.parent_appl_id
+            and self.child_appl_id == other.child_appl_id
+            and self.relationship == other.relationship
+        )
 
     def __hash__(self):
         return hash((self.parent_appl_id, self.child_appl_id, self.relationship))
@@ -294,8 +275,10 @@ class Inventor(Model):
     address: "Optional[str]" = None
     rank_no: Optional[int] = None
 
+
 class PedsError(Exception):
     pass
+
 
 @dataclass
 class Document(Model):
@@ -311,9 +294,7 @@ class Document(Model):
     page_count: int
     url: "Optional[str]" = None
 
-    application = one_to_one(
-        "patent_client.uspto.peds.model.USApplication", appl_id="appl_id"
-    )
+    application = one_to_one("patent_client.uspto.peds.model.USApplication", appl_id="appl_id")
 
     def __repr__(self):
         return f"Document(appl_id={self.appl_id}, mail_room_date={self.mail_room_date}, description={self.description})"
@@ -324,14 +305,10 @@ class Document(Model):
             out_file = Path(path)
         elif include_appl_id:
             out_file = (
-                Path(path)
-                / f"{self.appl_id} - {self.mail_room_date} - {self.code} - {self.description[:40]}.pdf"
+                Path(path) / f"{self.appl_id} - {self.mail_room_date} - {self.code} - {self.description[:40]}.pdf"
             )
         else:
-            out_file = (
-                Path(path)
-                / f"{self.mail_room_date} - {self.code} - {self.description[:40]}.pdf"
-            )
+            out_file = Path(path) / f"{self.mail_room_date} - {self.code} - {self.description[:40]}.pdf"
 
         with session.get(self.base_url + self.url, stream=True) as r:
             if r.status_code == 403:
@@ -341,6 +318,7 @@ class Document(Model):
                 for chunk in r.iter_content(chunk_size=8192):
                     f.write(chunk)
         return out_file
+
 
 @dataclass
 class PedsPage(Model):

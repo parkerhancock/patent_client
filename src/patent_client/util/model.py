@@ -1,13 +1,13 @@
-import importlib
-import typing
 import datetime
+import importlib
+import json
+import typing
 from collections import OrderedDict
 from dataclasses import dataclass
 from dataclasses import fields
-import json
 
-from .manager import QuerySet
 from .json_encoder import JsonEncoder
+from .manager import QuerySet
 
 ManagerType = typing.TypeVar("ManagerType")
 
@@ -33,6 +33,7 @@ class ModelABC(object):
 class Model(ModelABC, metaclass=ModelMeta):
     __exclude__ = list()
     __default_fields__ = False
+
     def __init__(self, *args, **kwargs):
         try:
             return super().__init__(*args, **kwargs)

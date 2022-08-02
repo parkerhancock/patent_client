@@ -1,14 +1,15 @@
+from dataclasses import dataclass
+from dataclasses import field
 from typing import List
-from dataclasses import dataclass, field
 
+from patent_client.epo.ops.number_service.model import DocumentId
+from patent_client.epo.ops.util import InpadocModel
 from patent_client.util import Model
 
-from patent_client.epo.ops.util import InpadocModel
-from patent_client.epo.ops.number_service.model import DocumentId
 
 @dataclass
 class Citation(InpadocModel):
-    cited_phase:str = None
+    cited_phase: str = None
     cited_by: str = None
     epodoc: DocumentId = None
     docdb: DocumentId = None
@@ -21,19 +22,22 @@ class Citation(InpadocModel):
     def docdb_number(self):
         return str(self.docdb)
 
+
 @dataclass
 class Title(Model):
-    lang: str 
+    lang: str
     text: str
 
     def __repr__(self):
         return f"Title(lang={self.lang}, text={self.text})"
+
 
 def limit_text(string, limit=30):
     if len(string) < limit:
         return string
     else:
         return f"{string[:limit]}..."
+
 
 @dataclass
 class InpadocBiblio(InpadocModel):
@@ -70,6 +74,7 @@ class InpadocBiblio(InpadocModel):
     @property
     def docdb_number(self):
         return str(self.publication_reference_docdb)
+
 
 @dataclass
 class BiblioResult(Model):

@@ -16,7 +16,10 @@ class TestAssignment:
         assert a.transaction_date.isoformat() == "2019-07-11"
         assert a.recorded_date.isoformat() == "2006-09-14"
         assert a.corr_name == "JEFFREY H. INGERMAN"
-        assert a.corr_address == "FISH & NEAVE IP GROUP, ROPES & GRAY LLP\n1251 AVENUE OF THE AMERICAS C3\nNEW YORK, NY 10020-1105"
+        assert (
+            a.corr_address
+            == "FISH & NEAVE IP GROUP, ROPES & GRAY LLP\n1251 AVENUE OF THE AMERICAS C3\nNEW YORK, NY 10020-1105"
+        )
         assert len(a.assignors) == 1
         assert a.assignors[0].name == "REALTIME DATA COMPRESSION SYSTEMS, INC."
         assert a.assignors[0].ex_date.isoformat() == "2006-09-14"
@@ -35,7 +38,6 @@ class TestAssignment:
         assert a.properties[0].pct_num == None
         assert a.properties[0].publ_date.isoformat() == "2004-04-15"
         assert a.properties[0].publ_num == "20040073746"
-        
 
     def test_fetch_assignments_by_assignee(self):
         assignments = Assignment.objects.filter(assignee="US Well Services")
@@ -60,10 +62,7 @@ class TestAssignment:
     def test_get_assignment_image(self):
         assignments = Assignment.objects.filter(patent_number=6095661)
         assignment = assignments[0]
-        assert (
-            assignment._image_url
-            == "http://legacy-assignments.uspto.gov/assignments/assignment-pat-038505-0128.pdf"
-        )
+        assert assignment._image_url == "http://legacy-assignments.uspto.gov/assignments/assignment-pat-038505-0128.pdf"
 
     def test_slice_assignments(self):
         assignments = Assignment.objects.filter(assignee="US Well Services")

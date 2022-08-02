@@ -7,6 +7,7 @@ def compare_lists(list_1, list_2, key=""):
         else:
             assert item == list_2[i], f"At key {key}.{i}, {item} != {list_2[i]}"
 
+
 def compare_dicts(dict_1, dict_2, key=""):
     dict_1_keys = set(dict_1.keys())
     dict_2_keys = set(dict_2.keys())

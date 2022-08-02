@@ -1,7 +1,11 @@
+from dataclasses import dataclass
+from dataclasses import field
 from typing import List
-from dataclasses import dataclass, field
-from patent_client.util import Model, one_to_one
+
 from patent_client.epo.ops.number_service.model import DocumentId
+from patent_client.util import Model
+from patent_client.util import one_to_one
+
 
 @dataclass
 class PriorityClaim(Model):
@@ -10,6 +14,7 @@ class PriorityClaim(Model):
     sequence: int = None
     kind: str = None
     active: bool = None
+
 
 @dataclass
 class FamilyMember(Model):

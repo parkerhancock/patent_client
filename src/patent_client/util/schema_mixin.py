@@ -1,5 +1,7 @@
 from importlib import import_module
+
 from .manager import ListManager
+
 
 class PatentSchemaMixin(object):
     __model_name__ = None
@@ -27,6 +29,7 @@ class PatentSchemaMixin(object):
                 return None
         except AttributeError:
             breakpoint()
+
 
 class ListManagerMixin(object):
     def deserialize(self, obj):

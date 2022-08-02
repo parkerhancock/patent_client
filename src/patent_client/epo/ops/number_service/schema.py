@@ -1,13 +1,17 @@
 from yankee.xml import fields as f
+
 from patent_client.epo.ops.util import Schema
+
 from . import error_dir
+
 
 class TagField(f.Field):
     def deserialize(self, obj):
         obj = super().deserialize(obj)
         if obj is None:
             return None
-        return obj.tag.split("}")[1].split('-')[0]
+        return obj.tag.split("}")[1].split("-")[0]
+
 
 class DocumentIdSchema(Schema):
     doc_type = TagField("./*")
@@ -17,9 +21,11 @@ class DocumentIdSchema(Schema):
     kind = f.Str(".//epo:kind")
     date = f.Date(".//epo:date")
     name = f.Str(".//epo:name")
-    
+
+
 def get_messages(text):
     return [error_dir[k] for k in text.split() if k != "SUCCESS"]
+
 
 class NumberServiceResultSchema(Schema):
     input_doc = DocumentIdSchema(".//ops:input")

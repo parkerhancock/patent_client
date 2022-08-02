@@ -1,8 +1,10 @@
 import re
 
 from yankee.xml import fields as f
+
 from patent_client.epo.ops.util import Schema
 from patent_client.util.xml import ListField
+
 
 class InpadocSchema(Schema):
     family_id = f.Str("./@family-id")
@@ -10,6 +12,7 @@ class InpadocSchema(Schema):
     country = f.Str(".//epo:document-id/epo:country")
     doc_number = f.Str(".//epo:document-id/epo:doc-number")
     kind = f.Str(".//epo:document-id/epo:kind")
+
 
 class SearchSchema(Schema):
     query = f.Str(".//ops:query")

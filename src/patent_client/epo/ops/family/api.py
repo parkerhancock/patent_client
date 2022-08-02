@@ -1,9 +1,11 @@
 import lxml.etree as ET
 
 from patent_client.epo.ops.session import session
+
 from .schema import FamilySchema
 
-class FamilyApi():
+
+class FamilyApi:
     schema = FamilySchema()
 
     @classmethod

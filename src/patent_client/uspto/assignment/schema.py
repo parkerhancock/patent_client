@@ -1,16 +1,18 @@
-import lxml.etree as ET
 import datetime
 
-from yankee.xml import fields as f
-from yankee.xml import Schema
+import lxml.etree as ET
 from yankee.util import unzip_records
+from yankee.xml import Schema
+from yankee.xml import fields as f
 
-from .model import Assignee, AssignmentPage
+from .model import Assignee
 from .model import Assignment
+from .model import AssignmentPage
 from .model import Assignor
 from .model import Property
 
 # Schemas
+
 
 class BaseSchema(Schema):
     def post_load(self, obj):
@@ -21,6 +23,7 @@ class BaseSchema(Schema):
         except TypeError as e:
             raise TypeError(f"{e.args[0]}\nInput Data: {obj}")
 
+
 class BaseZipSchema(BaseSchema):
     def deserialize(self, obj):
         obj = super().deserialize(obj)
@@ -29,26 +32,29 @@ class BaseZipSchema(BaseSchema):
     def post_load(self, obj):
         return [self.__model__(**o) for o in obj]
 
+
 class Str(f.String):
     def deserialize(self, elem) -> "Optional[str]":
         result = super().deserialize(elem)
         return result if result != "NULL" else None
+
 
 class Date(f.Date):
     def deserialize(self, elem) -> "Optional[datetime.date]":
         result = super().deserialize(elem)
         return result if result != datetime.date(1, 1, 1) else None
 
+
 class PropertySchema(BaseZipSchema):
     __model__ = Property
-    invention_title = f.List(Str(),".//inventionTitle/str")
-    inventors = f.List(Str(),".//inventors/str")
+    invention_title = f.List(Str(), ".//inventionTitle/str")
+    inventors = f.List(Str(), ".//inventors/str")
     # Numbers
-    appl_id = f.List(Str(),".//applNum/str")
-    pct_num = f.List(Str(),".//pctNum/str")
-    intl_reg_num = f.List(Str(),".//intlRegNum/str")
-    publ_num = f.List(Str(),".//publNum/str")
-    pat_num = f.List(Str(),".//patNum/str")
+    appl_id = f.List(Str(), ".//applNum/str")
+    pct_num = f.List(Str(), ".//pctNum/str")
+    intl_reg_num = f.List(Str(), ".//intlRegNum/str")
+    publ_num = f.List(Str(), ".//publNum/str")
+    pat_num = f.List(Str(), ".//patNum/str")
     # Dates
     filing_date = f.List(Date(), ".//filingDate/date")
     intl_publ_date = f.List(Date(), ".//intlPublDate/date")
@@ -60,7 +66,7 @@ class AssignorSchema(BaseZipSchema):
     __model__ = Assignor
     name = f.List(Str(), ".//patAssignorName/str")
     ex_date = f.List(Date(), ".//patAssignorExDate/date")
-    date_ack = f.List(Date(), ".//patAssignorDateAck/date")  
+    date_ack = f.List(Date(), ".//patAssignorDateAck/date")
 
 
 class AssigneeSchema(BaseZipSchema):
@@ -72,18 +78,15 @@ class AssigneeSchema(BaseZipSchema):
     state = f.List(Str(), ".//patAssigneeState/str")
     post_code = f.List(Str(), ".//patAssigneePostcode/str")
     country = f.List(Str(), ".//patAssigneeCountryName/str")
-    
+
     def deserialize(self, obj):
-        return [ {
-            "name": o.name,
-            "address": self.combine_func(o)
-        } for o in super().deserialize(obj)]
+        return [{"name": o.name, "address": self.combine_func(o)} for o in super().deserialize(obj)]
 
     def combine_func(self, obj):
         address = f"{obj.get('line_1', '')}\n{obj.get('line_2', '')}".strip()
-        if 'city' in obj:
+        if "city" in obj:
             address += f"\n{obj.get('city', '')}, {obj.get('state', '')} {obj.get('post_code', '')}".rstrip()
-        if 'country' in obj:
+        if "country" in obj:
             address += f" ({obj.get('country', '')})"
         return address
 
@@ -97,8 +100,9 @@ class CorrespondentAddressField(f.Combine):
     def combine_func(self, obj):
         out = str()
         for i in range(1, 5):
-            out += obj.get(f"corrAddress{i}", '') + "\n"
+            out += obj.get(f"corrAddress{i}", "") + "\n"
         return out.strip()
+
 
 class AssignmentSchema(BaseSchema):
     __model__ = Assignment
@@ -115,6 +119,7 @@ class AssignmentSchema(BaseSchema):
     properties = PropertySchema()
     assignors = AssignorSchema()
     assignees = AssigneeSchema()
+
 
 class AssignmentPageSchema(BaseSchema):
     __model__ = AssignmentPage

@@ -27,9 +27,7 @@ CACHE_CONFIG = dict(
 
 session = requests_cache.CachedSession(**CACHE_CONFIG)
 session.remove_expired_responses(expire_after=cache_max_age)
-session.headers[
-    "User-Agent"
-] = f"Python Patent Clientbot/{__version__} (parkerhancock@users.noreply.github.com)"
+session.headers["User-Agent"] = f"Python Patent Clientbot/{__version__} (parkerhancock@users.noreply.github.com)"
 
 # Install a default retry on the session using urrlib3
 retry = Retry(total=5, backoff_factor=0.2)
@@ -43,17 +41,17 @@ if not SETTINGS_FILE.exists():
 
 SETTINGS = json.load(open(SETTINGS_FILE))
 
-#from patent_client.epo.inpadoc.model import Inpadoc  # isort:skip
-#from patent_client.usitc.model import ITCAttachment
-#from patent_client.usitc.model import ITCDocument
-#from patent_client.usitc.model import ITCInvestigation
-#from patent_client.uspto.assignment.model import Assignment
-#from patent_client.uspto.fulltext.patent.model import Patent
-#from patent_client.uspto.fulltext.published_application.model import PublishedApplication
-#from patent_client.uspto.peds.model import USApplication
-#from patent_client.uspto.ptab.model import PtabDecision
-#from patent_client.uspto.ptab.model import PtabDocument
-#from patent_client.uspto.ptab.model import PtabProceeding
+# from patent_client.epo.inpadoc.model import Inpadoc  # isort:skip
+# from patent_client.usitc.model import ITCAttachment
+# from patent_client.usitc.model import ITCDocument
+# from patent_client.usitc.model import ITCInvestigation
+# from patent_client.uspto.assignment.model import Assignment
+# from patent_client.uspto.fulltext.patent.model import Patent
+# from patent_client.uspto.fulltext.published_application.model import PublishedApplication
+# from patent_client.uspto.peds.model import USApplication
+# from patent_client.uspto.ptab.model import PtabDecision
+# from patent_client.uspto.ptab.model import PtabDocument
+# from patent_client.uspto.ptab.model import PtabProceeding
 
 import logging
 import logging.handlers
@@ -73,9 +71,7 @@ logger.addHandler(handler)
 import colorlog
 
 handler = colorlog.StreamHandler()
-handler.setFormatter(
-    colorlog.ColoredFormatter("%(log_color)s%(levelname)s:%(name)s:%(message)s")
-)
+handler.setFormatter(colorlog.ColoredFormatter("%(log_color)s%(levelname)s:%(name)s:%(message)s"))
 
 logger = colorlog.getLogger()
 logger.addHandler(handler)

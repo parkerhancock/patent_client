@@ -1,6 +1,7 @@
 import datetime
 import json
 
+
 class JsonEncoder(json.JSONEncoder):
     def default(self, o: "Any") -> "Any":
         if isinstance(o, (datetime.date, datetime.datetime)):

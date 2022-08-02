@@ -1,18 +1,24 @@
-from typing import List
+from dataclasses import dataclass
+from dataclasses import field
 from pathlib import Path
-from dataclasses import dataclass, field
+from typing import List
 
-from PyPDF2 import PdfMerger, PdfReader, PdfWriter
+from PyPDF2 import PdfMerger
+from PyPDF2 import PdfReader
+from PyPDF2 import PdfWriter
 
-from patent_client.util import Model, one_to_one
+from patent_client.epo.ops.util import InpadocModel
+from patent_client.util import Model
+from patent_client.util import one_to_one
 
 from ...number_service.model import DocumentId
-from patent_client.epo.ops.util import InpadocModel
+
 
 @dataclass
 class Section(Model):
     name: str = None
     start_page: int = None
+
 
 @dataclass
 class ImageDocument(Model):
@@ -25,12 +31,13 @@ class ImageDocument(Model):
 
     def download(self, path="."):
         from ..api import PublishedImagesApi
+
         out_file = Path(path) / f"{self.doc_number}.pdf"
         writer = PdfWriter()
-        for i in range(1, self.num_pages+1):
+        for i in range(1, self.num_pages + 1):
             page_data = PublishedImagesApi.get_page_image_from_link(self.link, page_number=i)
             page = PdfReader(page_data).pages[0]
-            if page['/Rotate'] == 90:
+            if page["/Rotate"] == 90:
                 page.rotate_clockwise(-90)
             writer.add_page(page)
 
@@ -39,6 +46,7 @@ class ImageDocument(Model):
 
         with out_file.open("wb") as f:
             writer.write(f)
+
 
 @dataclass
 class Images(InpadocModel):
@@ -58,4 +66,3 @@ class Images(InpadocModel):
     @property
     def first_page(self):
         return next(d for d in self.documents if d.description == "FirstPageClipping")
-

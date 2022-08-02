@@ -1,9 +1,8 @@
-
 from yankee.json import Schema as Schema
 
-from .schema_mixin import PatentSchemaMixin
 from .model import Model
+from .schema_mixin import PatentSchemaMixin
+
 
 class Schema(PatentSchemaMixin, Schema):
     pass
-

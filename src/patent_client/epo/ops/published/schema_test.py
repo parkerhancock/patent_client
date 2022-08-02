@@ -1,13 +1,19 @@
-from pathlib import Path
 import json
+from pathlib import Path
+
 import lxml.etree as ET
 
 from patent_client.util.test import compare_dicts
 
-from .schema import ClaimsSchema, DescriptionSchema, BiblioResultSchema, SearchSchema, ImagesSchema
+from .schema import BiblioResultSchema
+from .schema import ClaimsSchema
+from .schema import DescriptionSchema
+from .schema import ImagesSchema
+from .schema import SearchSchema
 
 test_dir = Path(__file__).parent / "test"
 expected_dir = Path(__file__).parent / "test" / "expected"
+
 
 def test_biblio():
     tree = ET.parse(test_dir / "biblio_example.xml")
@@ -18,9 +24,16 @@ def test_biblio():
     assert d.country == "US"
     assert d.doc_number == "2006142694"
     assert d.family_id == "35840242"
-    for f in ("publication_reference_docdb", "publication_reference_epodoc", "application_reference_docdb", "application_reference_epodoc", "application_reference_original"):
+    for f in (
+        "publication_reference_docdb",
+        "publication_reference_epodoc",
+        "application_reference_docdb",
+        "application_reference_epodoc",
+        "application_reference_original",
+    ):
         assert hasattr(d, f)
     assert len(d.citations) == 99
+
 
 def test_claims():
     tree = ET.parse(test_dir / "claims_example.xml")
@@ -39,6 +52,7 @@ def test_description():
     assert result.document_id.kind == "A1"
     assert len(result.description) == 10544
 
+
 def test_search():
     tree = ET.parse(test_dir / "search_example.xml")
     result = SearchSchema().load(tree)
@@ -48,16 +62,16 @@ def test_search():
     assert result.end == 25
     assert len(result.results) == 15
     r = result.results[3]
-    assert r.family_id == '70280448'
-    assert r.id_type == 'docdb'
-    assert r.country == 'US'
+    assert r.family_id == "70280448"
+    assert r.id_type == "docdb"
+    assert r.country == "US"
+
 
 def test_images():
     tree = ET.parse(test_dir / "image_example.xml")
     result = ImagesSchema().load(tree)
     expected = json.loads((expected_dir / "image_example.json").read_text())
     compare_dicts(json.loads(result.to_json()), expected)
-
 
 
 def test_full_cycle():

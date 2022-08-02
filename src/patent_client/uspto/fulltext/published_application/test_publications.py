@@ -9,10 +9,7 @@ class TestPublishedApplicationFullText:
     def test_fetch_publication(self):
         pub_no = 20_160_009_839
         pub = PublishedApplication.objects.get(pub_no)
-        assert (
-            pub.title
-            == "POLYMER PRODUCTS AND MULTI-STAGE POLYMERIZATION PROCESSES FOR THE PRODUCTION THEREOF"
-        )
+        assert pub.title == "POLYMER PRODUCTS AND MULTI-STAGE POLYMERIZATION PROCESSES FOR THE PRODUCTION THEREOF"
         assert len(pub.abstract) == 651
 
     def test_publication_claims(self):
@@ -35,10 +32,7 @@ class TestPublishedApplicationFullText:
         pub = PublishedApplication.objects.get(pub_no)
         for i in range(6):
             assert pub.parsed_claims[i].text == f"{i+1}. (canceled)"
-        assert (
-            "A system to control directional drilling in borehole drilling for"
-            in pub.parsed_claims[6].text
-        )
+        assert "A system to control directional drilling in borehole drilling for" in pub.parsed_claims[6].text
 
     def test_search_classification(self):
         query = "CCL/166/308.1 AND APD/1/$/2015->1/$/2021"
@@ -62,17 +56,15 @@ class TestPublishedApplicationFullText:
 
     def test_nonstandard_claim_format(self):
         obj = PublishedApplication.objects.get("20170260839")
-        assert (
-            obj.parsed_claims[0].text[:39] == "1. A method of well ranging comprising:"
-        )
+        assert obj.parsed_claims[0].text[:39] == "1. A method of well ranging comprising:"
 
     def test_can_get_images(self):
         pat = PublishedApplication.objects.get("20090150362")
         images = pat.images
         assert images.pdf_url == "https://pdfaiw.uspto.gov/fdd/62/2009/03/015/0.pdf"
         assert images.sections == [
-            {'name': 'Front Page', 'start': 1, 'end': 1}, 
-            {'name': 'Drawings', 'start': 2, 'end': 12}, 
-            {'name': 'Specifications', 'start': 13, 'end': 23}, 
-            {'name': 'Claims', 'start': 24, 'end': 24}
-            ]
+            {"name": "Front Page", "start": 1, "end": 1},
+            {"name": "Drawings", "start": 2, "end": 12},
+            {"name": "Specifications", "start": 13, "end": 23},
+            {"name": "Claims", "start": 24, "end": 24},
+        ]

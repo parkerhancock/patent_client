@@ -10,10 +10,12 @@ from patent_client.util import QuerySet
 from patent_client.util import one_to_many
 from patent_client.util import one_to_one
 
+
 @dataclass
-class AssignmentPage():
+class AssignmentPage:
     num_found: int
     docs: "List[Assignment]" = field(default_factory=list)
+
 
 @dataclass
 class Assignment(Model):
@@ -65,6 +67,7 @@ class Property(Model):
 
     us_application = one_to_one("patent_client.USApplication", appl_id="appl_id")
     """A USApplication object related to the property"""
+
 
 @dataclass
 class Assignor(Model):

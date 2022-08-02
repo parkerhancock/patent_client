@@ -1,9 +1,11 @@
 import lxml.etree as ET
 
 from patent_client.epo.ops.session import session
+
 from .schema import LegalSchema
 
-class LegalApi():
+
+class LegalApi:
     schema = LegalSchema()
 
     @classmethod
