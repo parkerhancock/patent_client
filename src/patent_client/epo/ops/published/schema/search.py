@@ -4,7 +4,7 @@ from yankee.xml import fields as f
 from patent_client.epo.ops.util import Schema
 from patent_client.util.xml import ListField
 
-class SearchResultSchema(Schema):
+class InpadocSchema(Schema):
     family_id = f.Str("./@family-id")
     id_type = f.Str(".//epo:document-id/@document-id-type")
     country = f.Str(".//epo:document-id/epo:country")
@@ -16,4 +16,4 @@ class SearchSchema(Schema):
     num_results = f.Int(".//ops:biblio-search/@total-result-count")
     begin = f.Int(".//ops:range/@begin")
     end = f.Int(".//ops:range/@end")
-    results = ListField(SearchResultSchema, ".//ops:search-result/ops:publication-reference")
+    results = ListField(InpadocSchema, ".//ops:search-result/ops:publication-reference")

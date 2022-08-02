@@ -4,9 +4,10 @@ from dataclasses import dataclass, field
 
 from PyPDF2 import PdfMerger, PdfReader, PdfWriter
 
-from patent_client.util import Model
+from patent_client.util import Model, one_to_one
 
 from ...number_service.model import DocumentId
+from patent_client.epo.ops.util import InpadocModel
 
 @dataclass
 class Section(Model):
@@ -40,11 +41,15 @@ class ImageDocument(Model):
             writer.write(f)
 
 @dataclass
-class Images(Model):
+class Images(InpadocModel):
     __manager__ = "patent_client.epo.ops.published.manager.ImageManager"
     search_reference: DocumentId = None
     publication_reference: DocumentId = None
     documents: List[ImageDocument] = field(default_factory=list)
+
+    @property
+    def docdb_number(self):
+        return str(self.publication_reference)
 
     @property
     def full_document(self):

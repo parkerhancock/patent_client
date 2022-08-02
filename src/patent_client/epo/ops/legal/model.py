@@ -16,11 +16,14 @@ class LegalEvent(Model):
     Field descriptions are here:
     https://documents.epo.org/projects/babylon/eponot.nsf/0/EF223017D933B30AC1257B50005A042E/$File/14.11_User_Documentation_3.1_en.pdf
 
-    """    
+    """
+
     filing_or_publication:str =  None
     document_number:str =  None
     ip_type:str =  None
     metadata: MetaData = None
+    country_code: str = None
+    text_record:str = None
 
     event_date:"datetime.date" =  None
     event_code:str =  None
@@ -56,5 +59,6 @@ class LegalEvent(Model):
     
 @dataclass
 class Legal(Model):
+    __manager__ = "patent_client.epo.ops.legal.manager.LegalManager"
     publication_reference: "DocumentId" = None
     events: list = field(default_factory=list)

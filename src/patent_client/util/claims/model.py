@@ -11,9 +11,8 @@ class Claim(Model):
     number: int
     # text: str
     limitations: "List[str]"
-    depends_on: "Optional[int]"
-    depends_on_claim: "Optional[int]" = None
-    dependent_claims: "List[Claim]" = field(default_factory=list)
+    depends_on: "List[int]" = field(default_factory=list)
+    dependent_claims: "List[int]" = field(default_factory=list)
 
     def __repr__(self):
         return f"Claim(number={self.number}, depends_on={self.depends_on}, text={textwrap.shorten(self.text, width=40, placeholder='...')})"
@@ -24,8 +23,8 @@ class Claim(Model):
 
     @property
     def independent(self):
-        return self.depends_on is None
+        return not bool(self.depends_on)
 
     @property
     def dependent(self):
-        return self.depends_on is not None
+        return bool(self.depends_on)

@@ -12,6 +12,9 @@ class DocumentId(Model):
     date: "datetime.date" = None
     name: str = None
 
+    def __str__(self):
+        return f"{self.country}{self.number}{self.kind}"
+
 @dataclass
 class NumberServiceResult(Model):
     input_doc: DocumentId

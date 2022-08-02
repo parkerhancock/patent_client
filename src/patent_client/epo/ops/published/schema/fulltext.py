@@ -12,8 +12,8 @@ class FTDocumentIdSchema(Schema):
 
 class ClaimsSchema(Schema):
     document_id = FTDocumentIdSchema(".//ft:document-id")
-    claim_text = f.Str(".//ft:claims", formatter=lambda text: text)
     claims = f.Str(".//ft:claims", formatter=ClaimsParser().parse)
+    claim_text = f.Str(".//ft:claims", formatter=lambda text: text)
 
 class DescriptionField(f.Field):
     format_re = re.compile(r"\s+\n+\s+")

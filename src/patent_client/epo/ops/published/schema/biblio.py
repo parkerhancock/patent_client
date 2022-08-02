@@ -39,7 +39,7 @@ class DocDbNumberField(f.Combine):
         return f"{obj.get('country', '')}{obj.number}{obj.get('kind', '')}"
 
 
-class ExchangeDocumentSchema(Schema):
+class InpadocBiblioSchema(Schema):
     country = f.Str("./@country")
     doc_number = f.Str("./@doc-number")
     kind = f.Str("./@kind")
@@ -66,4 +66,4 @@ class ExchangeDocumentSchema(Schema):
     inventors_original = ListField(f.Str(), './/epo:inventor[@data-format="original"]')
 
 class BiblioResultSchema(Schema):
-    documents = ListField(ExchangeDocumentSchema, ".//epo:exchange-document")
+    documents = ListField(InpadocBiblioSchema, ".//epo:exchange-document")

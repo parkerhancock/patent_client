@@ -1,17 +1,23 @@
 import re
 from itertools import zip_longest
+from yankee.util import AttrDict
 
 from .model import Claim
+from patent_client.util import ListManager
 
 SPLIT_RE = re.compile(
     r"^\s*([\d\-\.]+[\)\.]|\.Iadd\.[\d\-\.]+\.|\.\[[\d\-\.]+\.)", flags=re.MULTILINE
 )
 NUMERIC_RE = re.compile(r"\d")
-DEPENDENCY_RE = re.compile(r"(c|C)laim (?P<number>\d+)")
+
 LIMITATION_RE = re.compile(r"(\s*[:;]\s*and|\s*[:;]\s*)", flags=re.IGNORECASE)
 NUMBER_RE = re.compile(r"(?P<number>\d+)[\)\.]\s+")
 WHITESPACE_RE = re.compile(r"\s+")
 CLAIM_INTRO_RE = re.compile(r"^[^\d\.\[]+")
+
+DEPENDENCY_RE = re.compile(r"claims? (?P<number>[\d,or ]+)", flags=re.IGNORECASE)
+DEPENDENT_CLAIMS_RE = re.compile(r"(?P<number>\d+)([^\d]|$)")
+DEPEND_ALL_RE = re.compile(r"(any of the foregoing claims|any of the previous claims)", flags=re.IGNORECASE)
 
 clean_text = lambda text: WHITESPACE_RE.sub(" ", text).strip()
 
@@ -27,14 +33,11 @@ class ClaimsParser(object):
     def parse(self, claim_text):
         claim_strings = self.split_and_clean_claims(claim_text)
         claim_data = [self.parse_claim_string(string) for string in claim_strings]
-        claims = [Claim(**d) for d in claim_data]
-        claim_dictionary = {c.number: c for c in claims}
-        for claim in claims:
-            if claim.depends_on is not None:
-                depends_on = claim_dictionary[claim.depends_on]
-                claim.depends_on_claim = depends_on
-                depends_on.dependent_claims.append(claim)
-        return claims
+        claim_dictionary = {c.number: c for c in claim_data}
+        for claim in claim_data:
+            for d in claim.depends_on:
+                claim_dictionary[d].dependent_claims.append(d)
+        return ListManager(Claim(**d) for d in claim_data)
 
     def split_and_clean_claims(self, claim_text):
         claim_text = CLAIM_INTRO_RE.sub("", claim_text)
@@ -61,18 +64,29 @@ class ClaimsParser(object):
         return claims
 
     def parse_claim_string(self, text):
-        def get_dependency(text):
-            dependency = DEPENDENCY_RE.search(text)
-            return None if dependency is None else int(dependency.group("number"))
-
         number = int(NUMBER_RE.search(text).group("number"))
         text = NUMBER_RE.sub("", text)
-        return {
+        return AttrDict.convert({
             "number": number,
             # "text": NUMBER_RE.sub("", text),
             "limitations": [
                 clean_text("".join(lim))
                 for lim in list(grouper(LIMITATION_RE.split(text), 2, ""))
             ],
-            "depends_on": get_dependency(text),
-        }
+            "depends_on": self.parse_dependency(text, number),
+            "dependent_claims": list()
+        })
+
+
+    def parse_dependency(self, text, number):
+        dependency = DEPENDENCY_RE.search(text)
+        if dependency is not None:
+            claims = dependency.groupdict()['number']
+            claim_numbers = [int(m.groupdict()['number']) for m in 
+            DEPENDENT_CLAIMS_RE.finditer(claims)]
+            return claim_numbers
+        elif DEPEND_ALL_RE.search(text):
+            return list(range(1, number))
+        else:
+            return list()
+        

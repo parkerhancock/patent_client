@@ -10,7 +10,7 @@ from patent_client.util import Model
 from patent_client.util import one_to_many
 from patent_client.util import one_to_one
 
-from .claims.parser import ClaimsParser
+from patent_client.util.claims.parser import ClaimsParser
 
 
 @dataclass

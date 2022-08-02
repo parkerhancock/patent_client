@@ -7,17 +7,10 @@ from dataclasses import fields
 import json
 
 from .manager import QuerySet
+from .json_encoder import JsonEncoder
 
 ManagerType = typing.TypeVar("ManagerType")
 
-
-class JsonEncoder(json.JSONEncoder):
-    def default(self, o: "Any") -> "Any":
-        if isinstance(o, (datetime.date, datetime.datetime)):
-            return o.isoformat()
-        elif isinstance(o, Model):
-            return o.as_dict()
-        return json.JSONEncoder.default(self, o)
 
 class ModelMeta(type):
     def __new__(cls, name, bases, dct):
@@ -39,6 +32,7 @@ class ModelABC(object):
 @dataclass
 class Model(ModelABC, metaclass=ModelMeta):
     __exclude__ = list()
+    __default_fields__ = False
     def __init__(self, *args, **kwargs):
         try:
             return super().__init__(*args, **kwargs)
@@ -48,7 +42,9 @@ class Model(ModelABC, metaclass=ModelMeta):
     def as_dict(self):
         """Convert model to a dictionary representation"""
         output = OrderedDict()
-        for k, v in self:
+        iterator = self
+
+        for k, v in iterator:
             if k in self.__exclude__:
                 continue
             elif isinstance(v, Model):
@@ -74,7 +70,6 @@ class Model(ModelABC, metaclass=ModelMeta):
         import pandas as pd
 
         dictionary = self.as_dict()
-        dictionary["obj"] = self
         return pd.Series(dictionary)
 
     def to_json(self, *args, **kwargs):

@@ -46,5 +46,7 @@ def test_description():
 
 def test_claims():
     result = PublishedApi.fulltext.get_claims("EP1000000.A1", format="epodoc") 
-    expected = json.loads((expected_dir / "ep1000000_claims_result.json").read_text())
+    example_file = expected_dir / "ep1000000_claims_result.json"
+    example_file.write_text(result.to_json(indent=2))
+    expected = json.loads(example_file.read_text())
     compare_dicts(json.loads(result.to_json()), expected)

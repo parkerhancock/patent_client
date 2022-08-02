@@ -12,5 +12,14 @@ expected_dir = Path(__file__).parent / "test" / "expected"
 def test_example():
     tree = ET.parse(test_dir / "example.xml")
     result = LegalSchema().load(tree)
-    expected = json.loads((expected_dir / "example.json").read_text())
+    expected_file = (expected_dir / "example.json")
+    expected = json.loads(expected_file.read_text())
+    compare_dicts(json.loads(result.to_json()), expected)
+
+
+def test_us_example():
+    tree = ET.parse(test_dir / "us_example.xml")
+    result = LegalSchema().load(tree)
+    expected_file = (expected_dir / "us_example.json")
+    expected = json.loads(expected_file.read_text())
     compare_dicts(json.loads(result.to_json()), expected)

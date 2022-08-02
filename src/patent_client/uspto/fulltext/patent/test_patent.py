@@ -29,10 +29,10 @@ class TestPatentFullText:
         assert len(pat.parsed_claims[30].limitations) == 4
         assert not pat.parsed_claims[30].dependent
         assert pat.parsed_claims[30].independent
-        assert pat.parsed_claims[30].depends_on == None
+        assert pat.parsed_claims[30].depends_on == list()
         assert pat.parsed_claims[31].dependent
         assert not pat.parsed_claims[31].independent
-        assert pat.parsed_claims[31].depends_on == 31
+        assert pat.parsed_claims[31].depends_on == [31,]
 
     def test_us8645300(self):
         pat_no = 8645300

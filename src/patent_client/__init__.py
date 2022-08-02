@@ -79,5 +79,3 @@ handler.setFormatter(
 
 logger = colorlog.getLogger()
 logger.addHandler(handler)
-
-logging.getLogger("smart_open").setLevel(logging.INFO)

@@ -1,19 +1,17 @@
 from __future__ import annotations
 
-import collections.abc
-import importlib
-import itertools
+import json
+
 from collections import OrderedDict
 from copy import deepcopy
-from typing import Any
 from typing import Generic
-from typing import Iterable
 from typing import Iterator
 from typing import List
 from typing import Set
-from typing import Sized
 from typing import TypeVar
 from typing import Union
+
+from .json_encoder import JsonEncoder
 
 ModelType = TypeVar("ModelType")
 
@@ -217,7 +215,7 @@ class Manager(Generic[ModelType]):
 
     def to_records(self) -> Iterator[OrderedDict]:
         """Return a list of dictionaries containing model data in ordinary Python types
-        Useful for generating JSON representations of model data, or ingesting into NoSQL databases
+        Useful for ingesting into NoSQL databases
         """
         for i in self:
             yield i.as_dict()
@@ -229,6 +227,9 @@ class Manager(Generic[ModelType]):
     def to_set(self) -> List[Set]:
         """Return a set of model objects from the Manager"""
         return set(self)
+
+    def to_json(self, *args, **kwargs) -> str:
+        return json.dumps(list(self.to_records()), *args, cls=JsonEncoder, **kwargs)
 
     # Values
     def values(self, *fields, **kw_fields) -> ValuesQuerySet:

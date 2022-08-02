@@ -21,7 +21,6 @@ class TestPublishedApplicationFullText:
         assert len(pub.parsed_claims) == 25
         # Test Claim 1
         claim_1 = pub.parsed_claims[0]
-        print(claim_1.text)
         assert claim_1.number == 1
         assert len(claim_1.text) == 487
         assert len(claim_1.limitations) == 3

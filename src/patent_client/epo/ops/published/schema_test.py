@@ -25,7 +25,9 @@ def test_biblio():
 def test_claims():
     tree = ET.parse(test_dir / "claims_example.xml")
     result = ClaimsSchema().load(tree)
-    expected = json.loads((expected_dir / "claims_example.json").read_text())
+    example_file = expected_dir / "claims_example.json"
+    example_file.write_text(result.to_json(indent=2))
+    expected = json.loads(example_file.read_text())
     compare_dicts(json.loads(result.to_json()), expected)
 
 

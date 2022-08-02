@@ -94,4 +94,4 @@ class TestAssignmentBugs:
 
     def test_bug_scidrill(self):
         assignments = Assignment.objects.filter(assignee="Scientific Drilling")
-        assert len(assignments) == 58
+        assert len(assignments) >= 61

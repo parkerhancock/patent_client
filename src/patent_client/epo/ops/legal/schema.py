@@ -1,8 +1,10 @@
 from yankee.xml import fields as f
+from yankee.util import clean_whitespace
 
 from patent_client.epo.ops.util import Schema
 from patent_client.epo.ops.number_service.schema import DocumentIdSchema
-from patent_client.epo.ops.published.schema.biblio import DocDbNumberField
+
+from patent_client.util.xml import ListField
 
 from .national_codes import LegalCodes
 
@@ -49,6 +51,12 @@ class MetaDataSchema(Schema):
     epo_created_date = f.Date(".//ops:L018EP")
     docdb_integer = f.Int(".//ops:L020EP")
 
+class TextRecord(f.Combine):
+    lines = f.List(f.Str(formatter=clean_whitespace), ".//ops:pre")
+    
+    def combine_func(self, obj):
+        return "\n".join(obj.lines)
+
 class LegalEventSchema(Schema):
     """
     Field descriptions are here:
@@ -59,10 +67,12 @@ class LegalEventSchema(Schema):
     document_number = DocumentNumberField()
     ip_type = f.Str(".//ops:L005EP", formatter=ip_type_formatter)
     metadata = MetaDataSchema()
+    text_record = TextRecord()
 
     event_date = f.Date(".//ops:L007EP")
     event_code = f.Str(".//ops:L008EP")
-    event_country = f.Str(".//ops:L501EP", default="EP")  
+    event_country = f.Str(".//ops:L501EP")
+    country_code = f.Str(".//ops:L001EP")  
     regional_event_code = f.Str(".//ops:L502EP")
      
     corresponding_patent = CorrespondingPatentField()
@@ -92,16 +102,14 @@ class LegalEventSchema(Schema):
         obj = super().deserialize(obj)
         if obj.event_code == "REG":
             code_data = code_db.get_code_data(obj.event_country, obj.regional_event_code)
-            obj['event_description'] = code_data['description']
             obj['event_code'] = obj.event_country + "." + obj.regional_event_code
         else:
-            code_data = code_db.get_code_data("EP", obj.event_code)
-            obj['event_description'] = code_data['description']
-            obj['event_code'] = "EP." + obj.event_code
-
+            code_data = code_db.get_code_data(obj.country_code, obj.event_code)
+            obj['event_code'] = obj.country_code + "." + obj.event_code  
+        obj['event_description'] = code_data['description']
         return obj
     
 
 class LegalSchema(Schema):
     publication_reference = DocumentIdSchema(".//ops:patent-family/ops:publication-reference")
-    events = f.List(LegalEventSchema, ".//ops:legal")
+    events = ListField(LegalEventSchema, ".//ops:legal")

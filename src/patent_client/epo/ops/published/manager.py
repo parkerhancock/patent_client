@@ -39,6 +39,12 @@ class SearchManager(Manager):
                 break
             range = (range[0] + self.result_size, min(range[1]+self.result_size, max_position))
 
+    def get(self, number, doc_type="publication", format="docdb"):
+        result = PublishedApi.biblio.get_biblio(number, doc_type, format)
+        if len(result.documents) > 1:
+            raise Exception("More than one result found! Try another query")
+        return result.documents[0]
+
 class BiblioManager(Manager):
     def get(self, doc_number):
         result = PublishedApi.biblio.get_biblio(doc_number)

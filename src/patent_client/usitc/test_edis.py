@@ -4,7 +4,7 @@ import pytest
 
 from .model import ITCInvestigation
 
-
+@pytest.mark.skip("EDIS out of scope for now")
 class TestItcEdis:
     def test_can_get_investigation(self):
         inv = ITCInvestigation.objects.get("337-TA-1025")
