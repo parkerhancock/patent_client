@@ -1,7 +1,7 @@
 Images
 ======
 
-.. automodule:: patent_client.epo.ops.published.schema.images
+.. automodule:: patent_client.epo.published.schema.images
    :members:
    :undoc-members:
    :inherited-members:

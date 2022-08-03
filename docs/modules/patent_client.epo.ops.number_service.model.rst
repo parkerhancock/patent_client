@@ -1,7 +1,7 @@
 Model
 =====
 
-.. automodule:: patent_client.epo.ops.number_service.model
+.. automodule:: patent_client.epo.number_service.model
    :members:
    :undoc-members:
    :inherited-members:

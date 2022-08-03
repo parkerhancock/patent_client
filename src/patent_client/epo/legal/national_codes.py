@@ -5,7 +5,7 @@ from venv import create
 import lxml.etree as ET
 from openpyxl import load_workbook
 
-from patent_client.epo.ops.session import session
+from patent_client.epo.session import session
 
 dir = Path(__file__).parent
 db_location = dir / "legal_codes.sqlite"

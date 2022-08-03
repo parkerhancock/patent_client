@@ -1,7 +1,7 @@
 Errors
 ======
 
-.. automodule:: patent_client.epo.ops.number_service.errors
+.. automodule:: patent_client.epo.number_service.errors
    :members:
    :undoc-members:
    :inherited-members:

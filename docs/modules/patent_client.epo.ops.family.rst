@@ -1,15 +1,15 @@
 Family
 ======
-.. automodule:: patent_client.epo.ops.family
+.. automodule:: patent_client.epo.family
 
-Modules in ``patent_client.epo.ops.family`` package:
+Modules in ``patent_client.epo.family`` package:
 
 .. toctree::
    :maxdepth: 1
 
-   patent_client.epo.ops.family.api
-   patent_client.epo.ops.family.api_test
-   patent_client.epo.ops.family.manager
-   patent_client.epo.ops.family.model
-   patent_client.epo.ops.family.schema
-   patent_client.epo.ops.family.schema_test
+   patent_client.epo.family.api
+   patent_client.epo.family.api_test
+   patent_client.epo.family.manager
+   patent_client.epo.family.model
+   patent_client.epo.family.schema
+   patent_client.epo.family.schema_test

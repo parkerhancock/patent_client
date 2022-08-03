@@ -9,7 +9,7 @@ from ...util import InpadocModel
 
 @dataclass
 class Inpadoc(InpadocModel):
-    __manager__ = "patent_client.epo.ops.published.manager.SearchManager"
+    __manager__ = "patent_client.epo.published.manager.SearchManager"
     family_id: str = None
     id_type: str = None
     country: str = None

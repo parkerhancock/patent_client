@@ -1,7 +1,7 @@
 Api Test
 ========
 
-.. automodule:: patent_client.epo.ops.family.api_test
+.. automodule:: patent_client.epo.family.api_test
    :members:
    :undoc-members:
    :inherited-members:

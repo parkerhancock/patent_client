@@ -1,7 +1,7 @@
 Search
 ======
 
-.. automodule:: patent_client.epo.ops.published.schema.search
+.. automodule:: patent_client.epo.published.schema.search
    :members:
    :undoc-members:
    :inherited-members:

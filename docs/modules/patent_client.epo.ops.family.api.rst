@@ -1,7 +1,7 @@
 Api
 ===
 
-.. automodule:: patent_client.epo.ops.family.api
+.. automodule:: patent_client.epo.family.api
    :members:
    :undoc-members:
    :inherited-members:

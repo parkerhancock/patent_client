@@ -2,8 +2,8 @@ from dataclasses import dataclass
 from dataclasses import field
 from typing import List
 
-from patent_client.epo.ops.number_service.model import DocumentId
-from patent_client.epo.ops.util import InpadocModel
+from patent_client.epo.number_service.model import DocumentId
+from patent_client.epo.util import InpadocModel
 from patent_client.util import Model
 
 
@@ -41,7 +41,7 @@ def limit_text(string, limit=30):
 
 @dataclass
 class InpadocBiblio(InpadocModel):
-    __manager__ = "patent_client.epo.ops.published.manager.BiblioManager"
+    __manager__ = "patent_client.epo.published.manager.BiblioManager"
     country: str = None
     doc_number: str = None
     kind: str = None

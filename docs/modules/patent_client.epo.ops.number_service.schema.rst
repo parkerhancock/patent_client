@@ -1,7 +1,7 @@
 Schema
 ======
 
-.. automodule:: patent_client.epo.ops.number_service.schema
+.. automodule:: patent_client.epo.number_service.schema
    :members:
    :undoc-members:
    :inherited-members:

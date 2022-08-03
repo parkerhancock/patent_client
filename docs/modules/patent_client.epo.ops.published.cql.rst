@@ -1,7 +1,7 @@
 Cql
 ===
 
-.. automodule:: patent_client.epo.ops.published.cql
+.. automodule:: patent_client.epo.published.cql
    :members:
    :undoc-members:
    :inherited-members:

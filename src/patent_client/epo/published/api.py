@@ -4,7 +4,7 @@ from warnings import warn
 
 import lxml.etree as ET
 
-from patent_client.epo.ops.session import session
+from patent_client.epo.session import session
 
 from .model import BiblioResult
 from .model import Claims

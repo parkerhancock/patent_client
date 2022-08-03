@@ -1,7 +1,7 @@
 National Codes
 ==============
 
-.. automodule:: patent_client.epo.ops.legal.national_codes
+.. automodule:: patent_client.epo.legal.national_codes
    :members:
    :undoc-members:
    :inherited-members:

@@ -1,8 +1,8 @@
 from yankee.util import clean_whitespace
 from yankee.xml import fields as f
 
-from patent_client.epo.ops.number_service.schema import DocumentIdSchema
-from patent_client.epo.ops.util import Schema
+from patent_client.epo.number_service.schema import DocumentIdSchema
+from patent_client.epo.util import Schema
 from patent_client.util.xml import ListField
 
 

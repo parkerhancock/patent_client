@@ -7,7 +7,7 @@ from PyPDF2 import PdfMerger
 from PyPDF2 import PdfReader
 from PyPDF2 import PdfWriter
 
-from patent_client.epo.ops.util import InpadocModel
+from patent_client.epo.util import InpadocModel
 from patent_client.util import Model
 from patent_client.util import one_to_one
 
@@ -50,7 +50,7 @@ class ImageDocument(Model):
 
 @dataclass
 class Images(InpadocModel):
-    __manager__ = "patent_client.epo.ops.published.manager.ImageManager"
+    __manager__ = "patent_client.epo.published.manager.ImageManager"
     search_reference: DocumentId = None
     publication_reference: DocumentId = None
     documents: List[ImageDocument] = field(default_factory=list)

@@ -1,7 +1,7 @@
 Integration Test
 ================
 
-.. automodule:: patent_client.epo.ops.published.integration_test
+.. automodule:: patent_client.epo.published.integration_test
    :members:
    :undoc-members:
    :inherited-members:

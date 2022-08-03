@@ -1,7 +1,7 @@
 Fulltext
 ========
 
-.. automodule:: patent_client.epo.ops.published.schema.fulltext
+.. automodule:: patent_client.epo.published.schema.fulltext
    :members:
    :undoc-members:
    :inherited-members:

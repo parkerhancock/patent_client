@@ -1,7 +1,7 @@
 Biblio
 ======
 
-.. automodule:: patent_client.epo.ops.published.schema.biblio
+.. automodule:: patent_client.epo.published.schema.biblio
    :members:
    :undoc-members:
    :inherited-members:

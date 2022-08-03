@@ -1,7 +1,7 @@
 Manager
 =======
 
-.. automodule:: patent_client.epo.ops.family.manager
+.. automodule:: patent_client.epo.family.manager
    :members:
    :undoc-members:
    :inherited-members:

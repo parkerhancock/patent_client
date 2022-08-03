@@ -1,7 +1,7 @@
 Model
 =====
 
-.. automodule:: patent_client.epo.ops.family.model
+.. automodule:: patent_client.epo.family.model
    :members:
    :undoc-members:
    :inherited-members:

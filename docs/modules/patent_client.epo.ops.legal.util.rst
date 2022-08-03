@@ -1,7 +1,7 @@
 Util
 ====
 
-.. automodule:: patent_client.epo.ops.legal.util
+.. automodule:: patent_client.epo.legal.util
    :members:
    :undoc-members:
    :inherited-members:

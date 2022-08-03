@@ -1,7 +1,7 @@
 Session
 =======
 
-.. automodule:: patent_client.epo.ops.session
+.. automodule:: patent_client.epo.session
    :members:
    :undoc-members:
    :inherited-members:

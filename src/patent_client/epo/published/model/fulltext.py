@@ -2,7 +2,7 @@ from dataclasses import dataclass
 from dataclasses import field
 from typing import List
 
-from patent_client.epo.ops.util import InpadocModel
+from patent_client.epo.util import InpadocModel
 from patent_client.util import Model
 from patent_client.util.claims.model import Claim
 
@@ -19,7 +19,7 @@ class FTDocumentId(Model):
 
 @dataclass
 class Claims(Model):
-    __manager__ = "patent_client.epo.ops.published.manager.ClaimsManager"
+    __manager__ = "patent_client.epo.published.manager.ClaimsManager"
     document_id: FTDocumentId
     claims: List[Claim] = field(default_factory=list)
     claim_text: str = None
@@ -34,7 +34,7 @@ class Claims(Model):
 
 @dataclass
 class Description(InpadocModel):
-    __manager__ = "patent_client.epo.ops.published.manager.DescriptionManager"
+    __manager__ = "patent_client.epo.published.manager.DescriptionManager"
     document_id: FTDocumentId = None
     description: str = None
 

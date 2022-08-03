@@ -1,7 +1,7 @@
 Schema Test
 ===========
 
-.. automodule:: patent_client.epo.ops.family.schema_test
+.. automodule:: patent_client.epo.family.schema_test
    :members:
    :undoc-members:
    :inherited-members:
