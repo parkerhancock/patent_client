@@ -1,3 +1,4 @@
+from ast import Add
 import json
 
 from yankee.json.schema import fields as f
@@ -33,13 +34,16 @@ class InventorAddressField(f.Combine):
         )
 
 
-class InventorSchema(Schema):
+class PersonSchema(Schema):
     name = InventorNameField(data_key=False)
     address = InventorAddressField(data_key=False)
     rank_no = f.Int()
 
+class InventorSchema(PersonSchema):
+    pass
 
-class ApplicantSchema(InventorSchema):
+
+class ApplicantSchema(PersonSchema):
     cust_no = f.Str()
 
 
@@ -150,6 +154,58 @@ class DocumentSchema(Schema):
     page_count = f.Int()
     url = f.Str(data_key="pdf_url")
 
+class ReelFrameField(f.Combine):
+    reel_number = f.Str()
+    frame_number = f.Str()
+    def combine_func(self, obj):
+        return f"{obj.reel_number}/{obj.frame_number}"
+
+class AddressField(f.Combine):
+    line_1 = f.Str("addressLineOneText", null_value="null")
+    line_2 = f.Str("addressLineTwoText", null_value="null")
+    line_3 = f.Str("addressLineThreeText", null_value="null")
+    line_4 = f.Str("addressLineFourText", null_value="null")
+
+    def combine_func(self, obj):
+        return clean_whitespace(
+            f"{obj.get('line_1', '')}\n{obj.get('line_2', '')}\n{obj.get('line_3', '')}\n{obj.get('line_4', '')}".strip(),
+            preserve_newlines=True
+        )
+
+class AssignorSchema(Schema):
+    name = f.Str("assignorName")
+    exec_date = f.Date()
+
+class AssigneeAddressField(f.Combine):
+    line_1 = f.Str("streetLineOneText", null_value="null")
+    line_2 = f.Str("streetLineTwoText", null_value="null")
+    city = f.Str("cityName")
+    country = f.Str("countryCode")
+    postal_code = f.Str("postalCode")
+
+    def combine_func(self, obj):
+        return clean_whitespace(
+            f"{obj.get('line_1', '')}\n{obj.get('line_2', '')}\n{obj.get('city', '')}, {obj.get('country', '')} {obj.get('postal_code', '')}",
+            preserve_newlines=True
+        )
+
+class AssigneeSchema(Schema):
+    name = f.Str("assigneeName")
+    address = AssigneeAddressField(data_key=False)
+
+class AssignmentSchema(Schema):
+    id = ReelFrameField(data_key=False)
+    correspondent = f.Str("addressNameText")
+    correspondent_address = AddressField(data_key=False)
+    mail_date = f.Date()
+    received_date = f.Date()
+    recorded_date = f.Date()
+    pages = f.Int("pagesCount")
+    conveyance_text = f.Str("converyanceName", formatter=lambda x: x.replace(" (SEE DOCUMENT FOR DETAILS).", ""))
+    sequence_number = f.Int()
+    assignors = f.List(AssignorSchema, "assignors")
+    assignees = f.List(AssigneeSchema, "assignee")
+
 
 class USApplicationSchema(Schema):
     # Basic Bibliographic Data
@@ -178,6 +234,9 @@ class USApplicationSchema(Schema):
     corr_addr_cust_no = f.Str()
     app_cust_number = f.Str()
     app_attr_dock_number = f.Str()
+
+    # Assignments
+    assignments = f.List(AssignmentSchema)
 
     # Parties
     inventors = f.List(InventorSchema)

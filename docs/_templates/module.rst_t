@@ -1,0 +1,15 @@
+{{- basename.split('.')[-1]
+   | replace("_", " ")
+   | title
+   | replace("Sql", "SQL")
+   | replace("db", "DB")
+   | replace("fs", "FS")
+   | e | heading
+}}
+
+.. automodule:: {{ qualname }}
+   :members:
+   :undoc-members:
+   :inherited-members:
+   :show-inheritance:
+   :ignore-module-all:

@@ -80,3 +80,13 @@ def test_full_cycle():
     assert len(result.documents) == 2
     d = result.documents[0]
     assert d.title == "Apparatus for manufacturing green bricks for the brick manufacturing industry"
+
+
+def test_biblio_2():
+    filename = "biblio_example_4"
+    input = test_dir / f"{filename}.xml"
+    tree = ET.parse(input)
+    result = BiblioResultSchema().load(tree)
+    expected_file = expected_dir / f"{filename}.json"
+    expected_file.write_text(result.to_json(indent=2))
+    compare_dicts(json.loads(result.to_json()), json.loads(expected_file.read_text()))

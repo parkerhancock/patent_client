@@ -72,7 +72,7 @@ class InpadocBiblioSchema(Schema):
         f.Str(formatter=clean_whitespace), "./epo:bibliographic-data/epo:classifications-ipcr/epo:classification-ipcr"
     )
     cpc_class = ListField(
-        CpcClassificationSchema, './/epo:classification-scheme[@scheme="CPCI"]/ancestor::epo:patent-classification'
+        CpcClassificationSchema, './/epo:patent-classifications/epo:patent-classification/epo:classification-scheme[@scheme="CPCI"]/ancestor::epo:patent-classification'
     )
     us_class = ListField(
         f.Str(), './/epo:classification-scheme[@scheme="UC"]/following-sibling::epo:classification-symbol'

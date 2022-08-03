@@ -2,7 +2,7 @@ from dataclasses import dataclass
 from dataclasses import field
 
 from patent_client.epo.ops.number_service.model import DocumentId
-from patent_client.util import Model
+from patent_client.util import Model, ListManager
 from patent_client.util import one_to_one
 
 
@@ -67,4 +67,4 @@ class LegalEvent(Model):
 class Legal(Model):
     __manager__ = "patent_client.epo.ops.legal.manager.LegalManager"
     publication_reference: "DocumentId" = None
-    events: list = field(default_factory=list)
+    events: list = field(default_factory=ListManager)

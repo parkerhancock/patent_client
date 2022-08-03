@@ -57,8 +57,7 @@ class USApplication(Model):
     correspondent: Optional[Correspondent] = field(default=None, repr=False)
     attorneys: List[Attorney] = field(default_factory=list, repr=False)
     foreign_priority: List[ForeignPriority] = field(default_factory=list, repr=False)
-
-    documents = one_to_many("patent_client.uspto.peds.model.Document", appl_id="appl_id")
+    assignments: "ListManager" = field(default_factory=ListManager, repr=False)
 
     @property
     def continuity(self) -> QuerySet:
@@ -139,7 +138,9 @@ class USApplication(Model):
 
         return Expiration(**expiration_data)  # type: ignore
 
-    assignments = one_to_many("patent_client.uspto.assignment.Assignment", appl_id="appl_id")
+    documents = one_to_many("patent_client.uspto.peds.model.Document", appl_id="appl_id")
+    """File History Documents from PEDS CMS"""
+    related_assignments = one_to_many("patent_client.uspto.assignment.Assignment", appl_id="appl_id")
     """Related Assignments from the Assignments API"""
     trials = one_to_many("patent_client.uspto.ptab.PtabProceeding", appl_id="appl_id")
     """Related PtabProceedings for this application"""
@@ -154,6 +155,7 @@ class USApplication(Model):
         "patent_client.uspto.fulltext.PublishedApplication",
         publication_number="publication_number",
     )
+    """Fulltext Publication - If Available"""
 
 
 @dataclass
@@ -318,6 +320,31 @@ class Document(Model):
                 for chunk in r.iter_content(chunk_size=8192):
                     f.write(chunk)
         return out_file
+
+@dataclass
+class Assignee(Model):
+    name: str = None
+    address: str = None
+
+@dataclass
+class Assignor(Model):
+    name: str = None
+    exec_date: "datetime.date" = None
+
+
+@dataclass
+class Assignment(Model):
+    id: str
+    correspondent: str = None
+    correspondent_address: str = None
+    mail_date: "datetime.date" = None
+    received_date: "datetime.date" = None
+    recorded_date: "datetime.date" = None
+    pages: int = None
+    conveyance_text:str = None
+    sequence_number: int = None
+    assignors: "ListManager" = field(default_factory=ListManager)
+    assignees: "ListManager" = field(default_factory=ListManager)
 
 
 @dataclass

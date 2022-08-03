@@ -6,7 +6,7 @@ from dataclasses import field
 
 from patent_client import session
 from patent_client.util import Model
-from patent_client.util import QuerySet
+from patent_client.util import QuerySet, ListManager
 from patent_client.util import one_to_many
 from patent_client.util import one_to_one
 
@@ -14,7 +14,7 @@ from patent_client.util import one_to_one
 @dataclass
 class AssignmentPage:
     num_found: int
-    docs: "List[Assignment]" = field(default_factory=list)
+    docs: "List[Assignment]" = field(default_factory=ListManager)
 
 
 @dataclass
@@ -27,9 +27,9 @@ class Assignment(Model):
     recorded_date: datetime.date
     corr_name: str = None
     corr_address: str = None
-    assignors: "QuerySet[Assignor]" = field(default_factory=list)
-    assignees: "QuerySet[Assignee]" = field(default_factory=list)
-    properties: "QuerySet[Property]" = field(repr=False, default_factory=list)
+    assignors: "QuerySet[Assignor]" = field(default_factory=ListManager)
+    assignees: "QuerySet[Assignee]" = field(default_factory=ListManager)
+    properties: "QuerySet[Property]" = field(repr=False, default_factory=ListManager)
     """Properties objects associated with this Assignment"""
     assignment_record_has_images: bool = False
     transaction_date: "Optional[datetime.date]" = None
