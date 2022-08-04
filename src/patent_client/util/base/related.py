@@ -3,7 +3,7 @@ import logging
 
 logger = logging.getLogger(__name__)
 
-from .manager import resolve
+from .util import resolve
 
 
 def one_to_one(class_name, attribute=None, **mapping):

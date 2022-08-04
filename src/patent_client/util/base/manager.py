@@ -1,18 +1,12 @@
 from __future__ import annotations
+from itertools import chain
 
-import json
-from collections import OrderedDict
 from copy import deepcopy
 from typing import Generic
 from typing import Iterator
-from typing import List
-from typing import Set
 from typing import TypeVar
 from typing import Union
 
-from ..json_encoder import JsonEncoder
-from .row import Row 
-from .util import resolve
 from .collections import Collection
 
 ModelType = TypeVar("ModelType")
@@ -90,6 +84,9 @@ class Manager(Collection, Generic[ModelType]):
 
     def __eq__(self, other) -> bool:
         return bool(self.config == other.config and type(self) == type(other))
+
+    def __add__(self, other):
+        return Collection(chain(self, other))
 
     # Manager Modification Functions
 

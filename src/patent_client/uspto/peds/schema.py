@@ -206,7 +206,6 @@ class AssignmentSchema(Schema):
     assignors = f.List(AssignorSchema, "assignors")
     assignees = f.List(AssigneeSchema, "assignee")
 
-
 class USApplicationSchema(Schema):
     # Basic Bibliographic Data
     appl_id = f.Str()

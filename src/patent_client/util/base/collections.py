@@ -12,8 +12,13 @@ class Collection():
     def __iter__(self):
         return iter(self.iterable)
 
-    def __len__(self):
-        return len(self.iterable)
+    #def __len__(self):
+    #    return len(self.iterable)
+
+    def __repr__(self):
+        if hasattr(self, "iterable"):
+            return f"Collection({repr(self.iterable)})"
+        return super().__repr__()
 
     def to_list(self):
         """Return a list of item objects from the Manager"""
@@ -50,9 +55,9 @@ class Collection():
         """Implement an "explode" function for nested listed objects."""
         return ExplodedManager(self, attribute)
 
-    def unpack(self, attribute):
+    def unpack(self, attribute, connector=".", prefix=True):
         """Implement an "unpack" function for nested single objects"""
-        return UnpackedManager(self, attribute)
+        return UnpackedManager(self, attribute, connector, prefix)
 
     # Values
     def values(self, *fields, **kw_fields):
@@ -74,23 +79,31 @@ class ExplodedManager(Collection):
 
     def __iter__(self):
         for row in self.iterable:
-            explode_field = row[self.attribute]
+            explode_field = resolve(row, self.attribute)
             for item in explode_field:
                 new_row = row.to_dict()
                 new_row[self.attribute] = item
                 yield new_row
 
 class UnpackedManager(Collection):
-    def __init__(self, iterable, attribute, connector="."):
+    def __init__(self, iterable, attribute, connector=".", prefix=True):
         self.iterable = iterable
         self.attribute = attribute
         self.connector = connector
+        self.prefix=prefix
+
+    def item_key(self, k):
+        if not self.prefix:
+            return k
+        else:
+            return f"{self.attribute}{self.connector}{k}"
+        
 
     def __iter__(self):
         for row in self.iterable:
             unpack_field = {
-                f"{self.attribute}{self.connector}{k}": v
-                for k, v in row[self.attribute].items()
+                self.item_key(k): v
+                for k, v in resolve(row, self.attribute).items()
             }
             new_row = Row({**row, **unpack_field})
             del new_row[self.attribute]

@@ -1,20 +1,28 @@
 from collections import abc
 import dataclasses
 
+
+def resolve_attribute(obj, key):
+    if isinstance(obj, abc.Mapping):
+        obj = obj[key]
+    else:
+        obj = getattr(obj, key)
+    if callable(obj):
+        obj = obj()
+    return obj
+    
 def resolve(item, key):
     if key is None:
         return item
     accessors = key.split(".")
     try:
         for accessor in accessors:
-            if accessor.isdigit():
+            if isinstance(item, abc.Sequence) and accessor.isdigit():
                 item = item[int(accessor)]
-            elif isinstance(item, dict):
-                item = item[accessor]
+            elif isinstance(item, abc.Sequence) and not accessor.isdigit():
+                item = [resolve_attribute(i, accessor) for i in item]
             else:
-                item = getattr(item, accessor)
-            if callable(item):
-                item = item()
+                item = resolve_attribute(item, accessor)
     except Exception as e:
         return None
     return item

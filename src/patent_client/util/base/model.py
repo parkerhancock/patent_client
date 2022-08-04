@@ -9,7 +9,7 @@ from dataclasses import fields
 from ..json_encoder import JsonEncoder
 from .row import Row
 from .util import to_dict
-from .collections import Collection
+from .collections import ListManager
 
 ManagerType = typing.TypeVar("ManagerType")
 
@@ -52,6 +52,9 @@ class Model(ModelABC, metaclass=ModelMeta):
         return fields(self)
 
     def __iter__(self):
+        pass
+
+    def items(self):
         if self.__default_fields__:
             fields = self.__default_fields__
         else:
@@ -63,9 +66,10 @@ class Model(ModelABC, metaclass=ModelMeta):
             if value:
                 yield (f, value)
 
+
     # Data Conversion Functions
 
-    def to_dict(self, item_class=Row, collection_class=Collection):
+    def to_dict(self, item_class=Row, collection_class=ListManager):
         """Convert model to a dictionary representation"""
         return to_dict(self, item_class, collection_class)
 

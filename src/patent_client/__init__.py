@@ -52,7 +52,7 @@ from patent_client.uspto.peds.model import USApplication # isort:skip
 # from patent_client.uspto.ptab.model import PtabDecision
 # from patent_client.uspto.ptab.model import PtabDocument
 # from patent_client.uspto.ptab.model import PtabProceeding
-
+"""
 import logging
 import logging.handlers
 
@@ -75,3 +75,4 @@ handler.setFormatter(colorlog.ColoredFormatter("%(log_color)s%(levelname)s:%(nam
 
 logger = colorlog.getLogger()
 logger.addHandler(handler)
+"""
