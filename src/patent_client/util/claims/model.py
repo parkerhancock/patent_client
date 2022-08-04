@@ -2,7 +2,7 @@ import textwrap
 from dataclasses import dataclass
 from dataclasses import field
 
-from ..model import Model
+from ..base.model import Model
 
 
 @dataclass

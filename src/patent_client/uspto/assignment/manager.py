@@ -53,7 +53,7 @@ class AssignmentManager(Manager[Assignment]):
         counter = 0
         for page_num in range(num_pages):
             for item in self.get_page(page_num):
-                if not self.config["limit"] or counter < self.config["limit"]:
+                if not self.config.limit or counter < self.config.limit:
                     yield item
                 counter += 1
             page_num += 1
@@ -66,7 +66,7 @@ class AssignmentManager(Manager[Assignment]):
             assignee: assignee name to search
         """
 
-        for key, value in self.config["filter"].items():
+        for key, value in self.config.filter.items():
             field = self.fields[key]
             query = value
         if field in ["PatentNumber", "ApplicationNumber"]:
@@ -76,11 +76,14 @@ class AssignmentManager(Manager[Assignment]):
                 query = clean_number(query)
 
         sort = list()
-        for p in self.config["order_by"]:
+        for p in self.config.order_by:
             if sort[0] == "-":
                 sort.append(p[1:] + "+desc")
             else:
                 sort.append(p + "+asc")
+
+        if isinstance(query, list):
+            query = [f'"{q}"' for q in query]
 
         query = {
             "filter": field,
@@ -95,8 +98,8 @@ class AssignmentManager(Manager[Assignment]):
     def __len__(self) -> int:
         if not hasattr(self, "_len"):
             self.get_page(0)
-        max_length = self._len - self.config["offset"]
-        limit = self.config["limit"]
+        max_length = self._len - self.config.offset
+        limit = self.config.limit
         if not limit:
             return max_length
         else:

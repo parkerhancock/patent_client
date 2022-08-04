@@ -7,7 +7,7 @@ from marshmallow import fields
 from marshmallow import post_load
 from marshmallow import pre_load
 
-from patent_client.util.manager import resolve
+from patent_client.util.base.manager import resolve
 
 # from .model import ITCInvestigation, ITCDocument, ITCAttachment
 

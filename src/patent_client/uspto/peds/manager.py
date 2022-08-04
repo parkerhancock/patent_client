@@ -13,7 +13,7 @@ from PyPDF2 import PdfFileMerger
 from PyPDF2 import PdfFileReader
 
 from patent_client import session
-from patent_client.util.manager import Manager
+from patent_client.util.base.manager import Manager
 
 from .model import USApplication
 from .schema import DocumentSchema
@@ -44,8 +44,8 @@ class USApplicationManager(Manager[USApplication]):
         self.pages = dict()
 
     def __len__(self):
-        max_length = self.get_page(0)["numFound"] - self.config["offset"]
-        limit = self.config["limit"]
+        max_length = self.get_page(0)["numFound"] - self.config.offset
+        limit = self.config.limit
         if not limit:
             return max_length
         else:
@@ -58,7 +58,7 @@ class USApplicationManager(Manager[USApplication]):
         while page_num < num_pages:
             page_data = self.get_page(page_num)
             for item in page_data["docs"]:
-                if not self.config["limit"] or counter < self.config["limit"]:
+                if not self.config.limit or counter < self.config.limit:
                     yield self.__schema__.load(item)
                 counter += 1
             page_num += 1
@@ -81,7 +81,7 @@ class USApplicationManager(Manager[USApplication]):
 
     def query_params(self, page_no):
         sort_query = ""
-        for s in self.config["order_by"]:
+        for s in self.config.order_by:
             if s[0] == "-":
                 sort_query += f"{inflection.camelize(s[1:], uppercase_first_letter=False)} desc ".strip()
             else:
@@ -91,7 +91,7 @@ class USApplicationManager(Manager[USApplication]):
 
         query = list()
         mm_active = True
-        for k, v in self.config["filter"].items():
+        for k, v in self.config.filter.items():
             field = inflection.camelize(k, uppercase_first_letter=False)
             if not v:
                 continue
@@ -112,7 +112,7 @@ class USApplicationManager(Manager[USApplication]):
             "sort": sort_query,
             "facet": "false",
             "mm": mm,
-            "start": page_no * self.page_size + self.config["offset"],
+            "start": page_no * self.page_size + self.config.offset,
             # "rows": self.page_size,
         }
         if not mm_active:
@@ -169,12 +169,12 @@ class DocumentManager(Manager):
     __schema__ = DocumentSchema()
 
     def __len__(self):
-        url = self.query_url + self.config["filter"]["appl_id"][0]
+        url = self.query_url + self.config.filter["appl_id"][0]
         response = session.get(url)
         return len(response.json())
 
     def _get_results(self) -> Iterator[USApplication]:
-        url = self.query_url + self.config["filter"]["appl_id"][0]
+        url = self.query_url + self.config.filter["appl_id"][0]
         response = session.get(url)
         for item in response.json():
             yield self.__schema__.load(item)

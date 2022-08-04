@@ -6,7 +6,7 @@ from dataclasses import field
 
 from patent_client import session
 from patent_client.util import Model
-from patent_client.util import QuerySet, ListManager
+from patent_client.util import ListManager
 from patent_client.util import one_to_many
 from patent_client.util import one_to_one
 
@@ -64,6 +64,9 @@ class Property(Model):
     intl_publ_date: "Optional[datetime.date]" = None
     issue_date: "Optional[datetime.date]" = None
     publ_date: "Optional[datetime.date]" = None
+
+    def __repr__(self):
+        return f"Property(appl_id={self.appl_id}, invention_title={self.invention_title})"
 
     us_application = one_to_one("patent_client.USApplication", appl_id="appl_id")
     """A USApplication object related to the property"""

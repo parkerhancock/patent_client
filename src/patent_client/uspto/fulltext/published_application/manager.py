@@ -1,7 +1,7 @@
 from ..manager import FullTextManager
 from ..manager import ImageManager
 from .model import PublishedApplicationResult
-from .schema import PublishedApplicationImageSchema
+from .schema import PublishedApplicationImageSchema, PublishedApplicationResultPageSchema
 from .schema import PublishedApplicationSchema
 from .settings import PUBLICATION_URL
 from .settings import SEARCH_FIELDS
@@ -16,6 +16,7 @@ class PublishedApplicationManager(FullTextManager):
     search_url = SEARCH_URL
     pub_base_url = PUBLICATION_URL
     result_model = PublishedApplicationResult
+    result_page_parser = PublishedApplicationResultPageSchema()
 
 
 class PublishedApplicationImageManager(ImageManager):

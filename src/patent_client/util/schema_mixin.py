@@ -1,6 +1,6 @@
 from importlib import import_module
 
-from .manager import ListManager
+from .base.collections import ListManager
 
 
 class PatentSchemaMixin(object):

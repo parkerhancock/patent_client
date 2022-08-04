@@ -16,7 +16,7 @@ from dateutil.relativedelta import relativedelta
 from patent_client import session
 from patent_client.util import ListManager
 from patent_client.util import Model
-from patent_client.util import QuerySet
+from patent_client.util.base.collections import Collection
 from patent_client.util import one_to_many
 from patent_client.util import one_to_one
 
@@ -50,8 +50,8 @@ class USApplication(Model):
     wipo_early_pub_date: Optional[datetime.date] = field(default=None, repr=False)
 
     transactions: List[Transaction] = field(default_factory=list, repr=False)
-    child_continuity: ListManager[Relationship] = field(default_factory=ListManager.empty, repr=False)
-    parent_continuity: ListManager[Relationship] = field(default_factory=ListManager.empty, repr=False)
+    child_continuity: ListManager[Relationship] = field(default_factory=ListManager, repr=False)
+    parent_continuity: ListManager[Relationship] = field(default_factory=ListManager, repr=False)
     pta_pte_tran_history: List[PtaPteHistory] = field(default_factory=list, repr=False)
     pta_pte_summary: Optional[PtaPteSummary] = field(default=None, repr=False)
     correspondent: Optional[Correspondent] = field(default=None, repr=False)
@@ -60,9 +60,9 @@ class USApplication(Model):
     assignments: "ListManager" = field(default_factory=ListManager, repr=False)
 
     @property
-    def continuity(self) -> QuerySet:
+    def continuity(self) -> Collection:
         """Returns a complete set of parents, self, and children"""
-        return QuerySet(
+        return Collection(
             [
                 self.child_continuity.values_list("child", flat=True),
                 [

@@ -26,8 +26,8 @@ class PtabManager(Manager, Generic[ModelType]):
 
     def _get_results(self):
         total = self._len()
-        offset = self.config["offset"]
-        limit = self.config["limit"]
+        offset = self.config.offset
+        limit = self.config.limit
         if limit:
             max_item = total if total - offset < limit else offset + limit
         else:
@@ -54,9 +54,9 @@ class PtabManager(Manager, Generic[ModelType]):
         return response.json()["results"]
 
     def __len__(self):
-        length = self._len() - self.config["offset"]
-        if self.config["limit"]:
-            return length if length < self.config["limit"] else self.config["limit"]
+        length = self._len() - self.config.offset
+        if self.config.limit:
+            return length if length < self.config.limit else self.config.limit
         else:
             return length
 
@@ -66,13 +66,13 @@ class PtabManager(Manager, Generic[ModelType]):
 
     def query(self):
         query = dict()
-        for k, v in self.config["filter"].items():
+        for k, v in self.config.filter.items():
             key = k if k not in peds_to_ptab else peds_to_ptab[k]
             key = inflection.camelize(key, uppercase_first_letter=False)
             query[key] = " ".join(v)
         query["recordTotalQuantity"] = self.page_size
         query["sortOrderCategory"] = " ".join(
-            inflection.camelize(o, uppercase_first_letter=False) for o in self.config["order_by"]
+            inflection.camelize(o, uppercase_first_letter=False) for o in self.config.order_by
         )
         return query
 

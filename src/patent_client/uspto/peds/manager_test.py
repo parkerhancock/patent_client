@@ -103,7 +103,7 @@ class TestPatentExaminationData:
                 ("total_days", 159),
             ]
         )
-        actual = app.pta_pte_summary.as_dict()
+        actual = app.pta_pte_summary.to_dict()
         for k, v in expected.items():
             assert actual[k] == v
 
@@ -113,7 +113,7 @@ class TestPatentExaminationData:
 
     def test_correspondent(self):
         app = USApplication.objects.get("14095073")
-        correspondent = app.correspondent.as_dict()
+        correspondent = app.correspondent.to_dict()
         expected_keys = [
             "name",
             "cust_no",
@@ -126,7 +126,7 @@ class TestPatentExaminationData:
     def test_attorneys(self):
         app = USApplication.objects.get("14095073")
         assert len(app.attorneys) > 1
-        actual = app.attorneys[0].as_dict()
+        actual = app.attorneys[0].to_dict()
         assert int(actual["registration_no"]) > 1000
         expected_keys = [
             "registration_no",

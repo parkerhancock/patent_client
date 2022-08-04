@@ -149,6 +149,7 @@ class Publication(Model):
 
 @dataclass
 class PublicationResult(Model):
+    seq: int
     publication_number: str
     title: str
     publication = one_to_one(

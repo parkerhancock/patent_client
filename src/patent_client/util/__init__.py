@@ -1,11 +1,10 @@
-from .manager import ListManager
-from .manager import Manager
-from .manager import ModelType
-from .manager import QuerySet
-from .model import Model
-from .related import get_manager
-from .related import one_to_many
-from .related import one_to_one
+from .base.collections import ListManager
+from .base.manager import Manager
+from .base.manager import ModelType
+from .base.model import Model
+from .base.related import get_manager
+from .base.related import one_to_many
+from .base.related import one_to_one
 
 
 class DefaultDict(dict):

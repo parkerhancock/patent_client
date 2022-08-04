@@ -1,8 +1,7 @@
 from ..manager import FullTextManager
 from ..manager import ImageManager
 from .model import PatentResult
-from .schema import PatentImageSchema
-from .schema import PatentSchema
+from .schema import PatentImageSchema, PatentResultPageSchema, PatentSchema
 from .settings import PUBLICATION_URL
 from .settings import SEARCH_FIELDS
 from .settings import SEARCH_PARAMS
@@ -16,6 +15,7 @@ class PatentManager(FullTextManager):
     search_url = SEARCH_URL
     pub_base_url = PUBLICATION_URL
     result_model = PatentResult
+    result_page_parser = PatentResultPageSchema()
 
 
 class PatentImageManager(ImageManager):

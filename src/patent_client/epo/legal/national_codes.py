@@ -33,11 +33,20 @@ def get_spreadsheet():
 
 
 def create_code_database(excel_path):
+    con = sqlite3.connect(db_location)
+    cur = con.cursor()
+    try:
+        meta = cur.execute("SELECT * FROM meta").fetchone()[0]
+        if meta == excel_path.name:
+            return
+    except sqlite3.OperationalError:
+        pass
+
+    cur.execute("CREATE TABLE meta (file_name text)")
+    cur.execute("INSERT INTO meta values (?)", (excel_path.name,))
     wb = load_workbook(excel_path)
     data = list(tuple(i.strip() for i in r) for r in wb[wb.sheetnames[0]].iter_rows(values_only=True))
     rows = data[1:]
-    con = sqlite3.connect(db_location)
-    cur = con.cursor()
     cur.execute("""DROP TABLE IF EXISTS legal_codes""")
     cur.execute(
         """CREATE TABLE legal_codes (

@@ -3,11 +3,8 @@ import math
 import re
 import time
 from collections import defaultdict
-from urllib.parse import urljoin
-from urllib.parse import urlparse
+import lxml.etree as ET
 
-from bs4 import BeautifulSoup as bs
-from bs4 import Comment
 from dateutil.parser import parse as parse_dt
 
 from patent_client.util import Manager
@@ -52,10 +49,10 @@ class FullTextManager(Manager):
     search_url = None
     pub_base_url = None
     result_model = None
+    result_page_parser = None
 
     def __init__(self, *args, **kwargs):
         super(FullTextManager, self).__init__(*args, **kwargs)
-        self.query = self.generate_query(self.config["filter"])
         self.pages = dict()
 
     def __len__(self):
@@ -63,8 +60,8 @@ class FullTextManager(Manager):
         return self.num_results
 
     def _get_results(self):
-        limit = self.config["limit"]
-        offset = self.config["offset"] or 0
+        limit = self.config.limit
+        offset = self.config.offset or 0
         starting_page = int(offset / 50)
         starting_offset = offset - starting_page * 50
         num_pages = math.ceil(len(self) / 50)
@@ -81,9 +78,13 @@ class FullTextManager(Manager):
                     return
                 yield item
 
+    @property
+    def query(self):
+        return self.generate_query(self.config.filter)
+        
     def generate_query(self, query):
         if "query" in query:
-            return query["query"][0]
+            return query["query"]
         query_segments = list()
         date_queries = defaultdict(dict)
 
@@ -156,27 +157,12 @@ class FullTextManager(Manager):
         ):
             self.num_results = 0
             return list()
-        soup = bs(response_text, "lxml")
-        self.num_results = int(soup.find_all("i")[1].find_all("strong")[-1].text)
-        try:
-            results = soup.find_all("table")[1].find_all("tr")[1:]
-            return [
-                self.result_model(
-                    publication_number=clean_number(r.find_all("td")[1].text),
-                    title=clean_text(r.find_all("td")[3].text),
-                )
-                for r in results
-            ]
 
-        except IndexError:  # Publications and Patents are formatted slightly differently:
-            results = soup.find_all("table")[0].find_all("tr")[1:]
-            return [
-                self.result_model(
-                    publication_number=clean_number(r.find_all("td")[1].text),
-                    title=clean_text(r.find_all("td")[2].text),
-                )
-                for r in results
-            ]
+        tree = ET.HTML(response_text)
+        result = self.result_page_parser.load(tree)
+        self.num_results = result.num_results
+        return result.results
+        
 
     def get(self, *args, **kwargs):
         # Short-circuit this method to fetch a specific patent if only publication_number is passed

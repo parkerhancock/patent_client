@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from dataclasses import field
 
-from patent_client.util.model import Model
+from patent_client.util.base.model import Model
 
 
 @dataclass
