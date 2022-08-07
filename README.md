@@ -1,5 +1,5 @@
 
-![patent_client_Logo](patent_client_logo.svg)
+![patent_client_logo](old_docs/source/_static/patent_client_logo.svg)
 
 # Overview
 
