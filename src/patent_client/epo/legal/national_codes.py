@@ -41,8 +41,8 @@ def create_code_database(excel_path):
             return
     except sqlite3.OperationalError:
         pass
-
-    cur.execute("CREATE TABLE meta (file_name text)")
+    
+    cur.execute("CREATE TABLE IF NOT EXISTS meta (file_name text)")
     cur.execute("INSERT INTO meta values (?)", (excel_path.name,))
     wb = load_workbook(excel_path)
     data = list(tuple(i.strip() for i in r) for r in wb[wb.sheetnames[0]].iter_rows(values_only=True))

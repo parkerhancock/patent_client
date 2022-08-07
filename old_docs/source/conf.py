@@ -1,3 +1,5 @@
+from os.path import join
+
 # -*- coding: utf-8 -*-
 #
 # Configuration file for the Sphinx documentation builder.
@@ -18,6 +20,7 @@
 project = "Patent Client"
 copyright = "2018, Parker Hancock"
 author = "Parker Hancock"
+
 
 # The full version, including alpha/beta/rc tags
 
@@ -43,6 +46,8 @@ extensions = [
     "sphinx.ext.ifconfig",
     "sphinx.ext.viewcode",
     "sphinx.ext.githubpages",
+    'sphinx.ext.napoleon', # Google & NumPy Style Autodocs
+    "myst_parser", # Myst-Style Markdown parser
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -52,7 +57,7 @@ templates_path = ["_templates"]
 # You can specify multiple suffix as a list of string:
 #
 # source_suffix = ['.rst', '.md']
-source_suffix = ".rst"
+source_suffix = [".rst", ".md"]
 
 # The master toctree document.
 master_doc = "index"
@@ -62,7 +67,7 @@ master_doc = "index"
 #
 # This is also used if you do content translation via gettext catalogs.
 # Usually you set "language" from the command line for these cases.
-language = None
+language = "en"
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
@@ -73,23 +78,49 @@ exclude_patterns = []
 pygments_style = None
 
 
+# -- Options for MyST Parsing ------------------------------------------------
+
+myst_enable_extensions = [
+    'colon_fence',
+    'html_image',
+    'linkify',
+    'replacements',
+    'smartquotes',
+]
+
+# -- Options for Napoleon ----------------------------------------------------
+
+# Enable Google-style docstrings
+napoleon_google_docstring = True
+napoleon_include_private_with_doc = False
+napoleon_include_special_with_doc = False
+
 # -- Options for HTML output -------------------------------------------------
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-html_theme = "alabaster"
-
-# Theme options are theme-specific and customize the look and feel of a theme
-# further.  For a list of options available for each theme, see the
-# documentation.
-#
-# html_theme_options = {}
+html_static_path = ["_static"]
+html_theme = 'furo'
+html_logo = join('_static', "patent_client_compact_logo.svg")
+html_theme_options = {
+    #'light_logo': 'requests-cache-logo-light.webp',
+    #'dark_logo': 'requests-cache-logo-dark.webp',
+    'sidebar_hide_name': True,
+    'light_css_variables': {
+        'color-brand-primary': '#0288d1',
+        'color-brand-content': '#2a5adf',
+    },
+    'dark_css_variables': {
+        'color-brand-primary': '#5eb8ff',
+        'color-brand-content': '#368ce2',
+    },
+}
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = ["_static"]
+
 
 # Custom sidebar templates, must be a dictionary that maps document names
 # to template names.
@@ -101,6 +132,7 @@ html_static_path = ["_static"]
 #
 # html_sidebars = {}
 
+html_favicon = join('_static', 'favicon.ico')
 
 # -- Options for HTMLHelp output ---------------------------------------------
 

@@ -3,7 +3,7 @@ name = "alabaster"
 version = "0.7.12"
 description = "A configurable sidebar-enabled Sphinx theme"
 category = "dev"
-optional = true
+optional = false
 python-versions = "*"
 
 [[package]]
@@ -41,7 +41,7 @@ name = "babel"
 version = "2.10.3"
 description = "Internationalization utilities"
 category = "dev"
-optional = true
+optional = false
 python-versions = ">=3.6"
 
 [package.dependencies]
@@ -52,7 +52,7 @@ name = "beautifulsoup4"
 version = "4.11.1"
 description = "Screen-scraping library"
 category = "dev"
-optional = true
+optional = false
 python-versions = ">=3.6.0"
 
 [package.dependencies]
@@ -195,7 +195,7 @@ name = "docutils"
 version = "0.18.1"
 description = "Docutils -- Python Documentation Utilities"
 category = "dev"
-optional = true
+optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
 
 [[package]]
@@ -245,7 +245,7 @@ name = "furo"
 version = "2022.6.21"
 description = "A clean customisable Sphinx documentation theme."
 category = "dev"
-optional = true
+optional = false
 python-versions = ">=3.7"
 
 [package.dependencies]
@@ -278,7 +278,7 @@ name = "imagesize"
 version = "1.4.1"
 description = "Getting image size from png/jpeg/jpeg2000/gif file"
 category = "dev"
-optional = true
+optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
 
 [[package]]
@@ -286,7 +286,7 @@ name = "importlib-metadata"
 version = "4.12.0"
 description = "Read metadata from Python packages"
 category = "dev"
-optional = true
+optional = false
 python-versions = ">=3.7"
 
 [package.dependencies]
@@ -318,7 +318,7 @@ name = "jinja2"
 version = "3.1.2"
 description = "A very fast and expressive template engine."
 category = "dev"
-optional = true
+optional = false
 python-versions = ">=3.7"
 
 [package.dependencies]
@@ -332,7 +332,7 @@ name = "linkify-it-py"
 version = "2.0.0"
 description = "Links recognition library with FULL unicode support."
 category = "dev"
-optional = true
+optional = false
 python-versions = ">=3.6"
 
 [package.dependencies]
@@ -343,6 +343,18 @@ test = ["pytest-cov", "pytest", "coverage"]
 doc = ["myst-parser", "sphinx-book-theme", "sphinx"]
 dev = ["black", "flake8", "isort", "pre-commit"]
 benchmark = ["pytest-benchmark", "pytest"]
+
+[[package]]
+name = "livereload"
+version = "2.6.3"
+description = "Python LiveReload is an awesome tool for web developers"
+category = "dev"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+six = "*"
+tornado = {version = "*", markers = "python_version > \"2.7\""}
 
 [[package]]
 name = "lxml"
@@ -363,7 +375,7 @@ name = "markdown-it-py"
 version = "2.1.0"
 description = "Python port of markdown-it. Markdown parsing, done right!"
 category = "dev"
-optional = true
+optional = false
 python-versions = ">=3.7"
 
 [package.dependencies]
@@ -384,7 +396,7 @@ name = "markupsafe"
 version = "2.1.1"
 description = "Safely add untrusted strings to HTML/XML markup."
 category = "dev"
-optional = true
+optional = false
 python-versions = ">=3.7"
 
 [[package]]
@@ -392,7 +404,7 @@ name = "mdit-py-plugins"
 version = "0.3.0"
 description = "Collection of plugins for markdown-it-py"
 category = "dev"
-optional = true
+optional = false
 python-versions = "~=3.6"
 
 [package.dependencies]
@@ -408,7 +420,7 @@ name = "mdurl"
 version = "0.1.1"
 description = "Markdown URL utilities"
 category = "dev"
-optional = true
+optional = false
 python-versions = ">=3.7"
 
 [[package]]
@@ -442,7 +454,7 @@ name = "myst-parser"
 version = "0.18.0"
 description = "An extended commonmark compliant parser, with bridges to docutils & sphinx."
 category = "dev"
-optional = true
+optional = false
 python-versions = ">=3.7"
 
 [package.dependencies]
@@ -532,7 +544,7 @@ name = "pbr"
 version = "5.9.0"
 description = "Python Build Reasonableness"
 category = "dev"
-optional = true
+optional = false
 python-versions = ">=2.6"
 
 [[package]]
@@ -588,7 +600,7 @@ name = "pygments"
 version = "2.12.0"
 description = "Pygments is a syntax highlighting package written in Python."
 category = "dev"
-optional = true
+optional = false
 python-versions = ">=3.6"
 
 [[package]]
@@ -768,7 +780,7 @@ name = "snowballstemmer"
 version = "2.2.0"
 description = "This package provides 29 stemmers for 28 languages generated from Snowball algorithms."
 category = "dev"
-optional = true
+optional = false
 python-versions = "*"
 
 [[package]]
@@ -776,7 +788,7 @@ name = "soupsieve"
 version = "2.3.2.post1"
 description = "A modern CSS selector implementation for Beautiful Soup."
 category = "dev"
-optional = true
+optional = false
 python-versions = ">=3.6"
 
 [[package]]
@@ -784,7 +796,7 @@ name = "sphinx"
 version = "5.1.1"
 description = "Python documentation generator"
 category = "dev"
-optional = true
+optional = false
 python-versions = ">=3.6"
 
 [package.dependencies]
@@ -812,11 +824,27 @@ lint = ["flake8 (>=3.5.0)", "flake8-comprehensions", "flake8-bugbear", "isort", 
 test = ["pytest (>=4.6)", "html5lib", "cython", "typed-ast"]
 
 [[package]]
+name = "sphinx-autobuild"
+version = "2021.3.14"
+description = "Rebuild Sphinx documentation on changes, with live-reload in the browser."
+category = "dev"
+optional = false
+python-versions = ">=3.6"
+
+[package.dependencies]
+colorama = "*"
+livereload = "*"
+sphinx = "*"
+
+[package.extras]
+test = ["pytest", "pytest-cov"]
+
+[[package]]
 name = "sphinx-autodoc-typehints"
 version = "1.19.1"
 description = "Type hints (PEP 484) support for the Sphinx autodoc extension"
 category = "dev"
-optional = true
+optional = false
 python-versions = ">=3.7"
 
 [package.dependencies]
@@ -831,7 +859,7 @@ name = "sphinx-automodapi"
 version = "0.14.1"
 description = "Sphinx extension for auto-generating API documentation for entire modules"
 category = "dev"
-optional = true
+optional = false
 python-versions = ">=3.7"
 
 [package.dependencies]
@@ -845,7 +873,7 @@ name = "sphinx-basic-ng"
 version = "0.0.1a12"
 description = "A modern skeleton for Sphinx themes."
 category = "dev"
-optional = true
+optional = false
 python-versions = ">=3.7"
 
 [package.dependencies]
@@ -859,7 +887,7 @@ name = "sphinx-copybutton"
 version = "0.5.0"
 description = "Add a copy button to each of your code cells."
 category = "dev"
-optional = true
+optional = false
 python-versions = ">=3.6"
 
 [package.dependencies]
@@ -874,7 +902,7 @@ name = "sphinx-design"
 version = "0.2.0"
 description = "A sphinx extension for designing beautiful, view size responsive web components."
 category = "dev"
-optional = true
+optional = false
 python-versions = ">=3.7"
 
 [package.dependencies]
@@ -894,7 +922,7 @@ name = "sphinx-notfound-page"
 version = "0.8.3"
 description = "Sphinx extension to build a 404 page with absolute URLs"
 category = "dev"
-optional = true
+optional = false
 python-versions = "*"
 
 [package.dependencies]
@@ -909,7 +937,7 @@ name = "sphinxcontrib-apidoc"
 version = "0.3.0"
 description = "A Sphinx extension for running 'sphinx-apidoc' on each build"
 category = "dev"
-optional = true
+optional = false
 python-versions = "*"
 
 [package.dependencies]
@@ -921,7 +949,7 @@ name = "sphinxcontrib-applehelp"
 version = "1.0.2"
 description = "sphinxcontrib-applehelp is a sphinx extension which outputs Apple help books"
 category = "dev"
-optional = true
+optional = false
 python-versions = ">=3.5"
 
 [package.extras]
@@ -933,7 +961,7 @@ name = "sphinxcontrib-devhelp"
 version = "1.0.2"
 description = "sphinxcontrib-devhelp is a sphinx extension which outputs Devhelp document."
 category = "dev"
-optional = true
+optional = false
 python-versions = ">=3.5"
 
 [package.extras]
@@ -945,7 +973,7 @@ name = "sphinxcontrib-htmlhelp"
 version = "2.0.0"
 description = "sphinxcontrib-htmlhelp is a sphinx extension which renders HTML help files"
 category = "dev"
-optional = true
+optional = false
 python-versions = ">=3.6"
 
 [package.extras]
@@ -957,7 +985,7 @@ name = "sphinxcontrib-jsmath"
 version = "1.0.1"
 description = "A sphinx extension which renders display math in HTML via JavaScript"
 category = "dev"
-optional = true
+optional = false
 python-versions = ">=3.5"
 
 [package.extras]
@@ -968,7 +996,7 @@ name = "sphinxcontrib-qthelp"
 version = "1.0.3"
 description = "sphinxcontrib-qthelp is a sphinx extension which outputs QtHelp document."
 category = "dev"
-optional = true
+optional = false
 python-versions = ">=3.5"
 
 [package.extras]
@@ -980,7 +1008,7 @@ name = "sphinxcontrib-serializinghtml"
 version = "1.1.5"
 description = "sphinxcontrib-serializinghtml is a sphinx extension which outputs \"serialized\" HTML files (json and pickle)."
 category = "dev"
-optional = true
+optional = false
 python-versions = ">=3.5"
 
 [package.extras]
@@ -992,7 +1020,7 @@ name = "sphinxext-opengraph"
 version = "0.6.3"
 description = "Sphinx Extension to enable OGP support"
 category = "dev"
-optional = true
+optional = false
 python-versions = ">=3.6"
 
 [package.dependencies]
@@ -1015,6 +1043,14 @@ optional = false
 python-versions = ">=3.7"
 
 [[package]]
+name = "tornado"
+version = "6.2"
+description = "Tornado is a Python web framework and asynchronous networking library, originally developed at FriendFeed."
+category = "dev"
+optional = false
+python-versions = ">= 3.7"
+
+[[package]]
 name = "typing-extensions"
 version = "4.3.0"
 description = "Backported and Experimental Type Hints for Python 3.7+"
@@ -1027,7 +1063,7 @@ name = "uc-micro-py"
 version = "1.0.1"
 description = "Micro subset of unicode data files for linkify-it-py projects."
 category = "dev"
-optional = true
+optional = false
 python-versions = ">=3.6"
 
 [package.extras]
@@ -1096,7 +1132,7 @@ name = "zipp"
 version = "3.8.1"
 description = "Backport of pathlib-compatible object wrapper for zip files"
 category = "dev"
-optional = true
+optional = false
 python-versions = ">=3.7"
 
 [package.extras]
@@ -1106,7 +1142,7 @@ testing = ["pytest (>=6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytest-
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "68e05d1353fe399514b925cb15faa57660be47a1d761ccebec79fb3edec11cbb"
+content-hash = "0422fa66cac723d615bdcd59f2d94ce468389c7f9b854ac0de817fc20e762651"
 
 [metadata.files]
 alabaster = []
@@ -1140,6 +1176,7 @@ inflection = []
 iniconfig = []
 jinja2 = []
 linkify-it-py = []
+livereload = []
 lxml = []
 markdown-it-py = []
 markupsafe = []
@@ -1175,6 +1212,7 @@ six = []
 snowballstemmer = []
 soupsieve = []
 sphinx = []
+sphinx-autobuild = []
 sphinx-autodoc-typehints = []
 sphinx-automodapi = []
 sphinx-basic-ng = []
@@ -1191,6 +1229,7 @@ sphinxcontrib-serializinghtml = []
 sphinxext-opengraph = []
 toml = []
 tomli = []
+tornado = []
 typing-extensions = []
 uc-micro-py = []
 url-normalize = []

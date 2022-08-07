@@ -1,6 +1,4 @@
-##########
-Motivation
-##########
+# Motivation
 
 This library was conceived as a way to standardize interfaces between
 APIs that I use on a regular basis. I found myself building custom-tailored
@@ -17,7 +15,7 @@ read operations.
 
 So, which ORM should I copy? SQLAlchemy is popular, but I often find it too
 tedious to deal with a session object. Django's ORM isn't as full-featured,
-but it can do everything I want to, and only requires importing a single object - 
+but it can do everything I want to, and only requires importing a single object -
 the model. So, that's when I came up with this solution:
 
 *Build API client libraries that act like Django*
