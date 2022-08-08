@@ -46,19 +46,15 @@ class ITCDocumentManager(Manager["ITCDocument"]):
         return ITCDocumentSchema().load(doc_el)
 
     def _get_results(self):
-        if "document_id" in self.config["filter"]:
-            yield self.get_document_by_id(self.config["document_id"])
+        if "document_id" in self.config.filter:
+            yield self.get_document_by_id(self.config.document_id)
         else:
-            query = {
-                self.allowed_filters[k]: v for (k, v) in self.config["filter"].items()
-            }
+            query = {self.allowed_filters[k]: v for (k, v) in self.config.filter.items()}
             page = 1
             page_length = None
             while not page_length or page_length >= 100:
                 query["pagenumber"] = page
-                q_string = re.sub(
-                    r'[\{\}":, ]+', "-", json.dumps(query, sort_keys=True)[1:-1]
-                )
+                q_string = re.sub(r'[\{\}":, ]+', "-", json.dumps(query, sort_keys=True)[1:-1])
                 response = session.get(self.base_url, params=query)
                 tree = ET.fromstring(response.text)[0]
                 page_length = len(tree.findall("document"))
@@ -73,7 +69,7 @@ class ITCAttachmentManager(Manager["ITCAttachment"]):
     allowed_filters = ["document_id"]
 
     def _get_results(self):
-        doc_id = self.config["filter"]["document_id"]
+        doc_id = self.config.filter["document_id"]
         response = session.get(self.base_url + doc_id)
         tree = ET.fromstring(response.text)
         for element in tree.findall(".//attachment"):

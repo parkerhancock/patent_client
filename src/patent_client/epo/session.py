@@ -1,9 +1,7 @@
 import datetime as dt
 import os
-from pathlib import Path
 
 import requests_cache
-import xmltodict
 
 from patent_client import CACHE_CONFIG
 from patent_client import SETTINGS
@@ -48,9 +46,9 @@ class OpsSession(requests_cache.CachedSession):
                 data={"grant_type": "client_credentials"},
             )
         data = response.json()
-        self.expires = dt.datetime.fromtimestamp(
-            int(data["issued_at"]) / 1000
-        ) + dt.timedelta(seconds=int(data["expires_in"]))
+        self.expires = dt.datetime.fromtimestamp(int(data["issued_at"]) / 1000) + dt.timedelta(
+            seconds=int(data["expires_in"])
+        )
         self.headers["Authorization"] = f"Bearer {data['access_token']}"
         return response
 

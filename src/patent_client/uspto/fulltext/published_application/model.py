@@ -3,8 +3,6 @@ from dataclasses import dataclass
 from patent_client.util import Model
 from patent_client.util import one_to_many
 from patent_client.util import one_to_one
-from patent_client.util.schema import Field
-from patent_client.util.schema import StringField
 
 from ..model import Image
 from ..model import Publication
@@ -28,7 +26,7 @@ class PublishedApplication(Publication):
     )
     images = one_to_one(
         "patent_client.uspto.fulltext.published_application.model.PublishedApplicationImage",
-        publication_number="publication_number",
+        pdf_url="pdf_url",
     )
 
     def __repr__(self):

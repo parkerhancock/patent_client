@@ -1,284 +1,259 @@
-from collections import OrderedDict
-from pprint import pprint
+from ast import Add
+import json
 
-import inflection
-from dateutil.parser import parse as parse_date
-from marshmallow import EXCLUDE
-from marshmallow import Schema
-from marshmallow import ValidationError
-from marshmallow import fields
-from marshmallow import post_load
-from marshmallow import pre_load
+from yankee.json.schema import fields as f
 
-from patent_client.util import ListField
-from patent_client.util import QuerySet
-
-from .model import Applicant
-from .model import Attorney
-from .model import Correspondent
-from .model import Document
-from .model import ForeignPriority
-from .model import Inventor
-from .model import PtaPteHistory
-from .model import PtaPteSummary
-from .model import Relationship
-from .model import Transaction
-from .model import USApplication
+from patent_client.util import DefaultDict
+from patent_client.util.format import clean_whitespace
+from patent_client.util.json import Schema
 
 
-def create_subset(data, name, keys):
-    subset = {k: data.pop(k) for k in keys if k in data}
-    if subset:
-        data[name] = subset
-    return data
+class InventorNameField(f.Combine):
+    name_line_one = f.Str()
+    name_line_two = f.Str()
+    suffix = f.Str()
+
+    def combine_func(self, obj):
+        return clean_whitespace(
+            f"{obj.get('name_line_one', '')}; {obj.get('name_line_two', '')} {obj.get('suffix', '')}"
+        )
 
 
-def create_subset_from_prefix(data, prefix):
-    keys = [k for k in data.keys() if k.startswith(prefix)]
-    return create_subset(data, prefix, keys)
+class InventorAddressField(f.Combine):
+    street_one = f.Str()
+    street_two = f.Str()
+    city = f.Str()
+    geo_code = f.Str()
+    postal_code = f.Str()
+    country = f.Str()
+
+    def combine_func(self, obj):
+        obj = DefaultDict(**obj, default="")
+        return clean_whitespace(
+            "{street_1}\n{street_2}\n{city}, {geo_code} {postal_code} {country}".format_map(obj), preserve_newlines=True
+        )
 
 
-def group_lines(data, prefix, delimiter="\n"):
-    words = ("one", "two", "three", "four")
-    subset = list(
-        k for k in tuple(data.keys()) if k.startswith(prefix) and "_line_" in k
-    )
-    ordered_keys = tuple(sorted(subset, key=lambda x: words.index(x.split("_")[-1])))
-    data[prefix] = delimiter.join(data[k] for k in ordered_keys).strip()
-    for k in subset:
-        del data[k]
-    return data
+class PersonSchema(Schema):
+    name = InventorNameField(data_key=False)
+    address = InventorAddressField(data_key=False)
+    rank_no = f.Int()
+
+class InventorSchema(PersonSchema):
+    pass
 
 
-pta_pte_summary_keys = (
-    "a_delay",
-    "b_delay",
-    "c_delay",
-    "overlap_delay",
-    "pto_delay",
-    "appl_delay",
-    "pto_adjustments",
-    "total_pto_days",
-    "pta_pte_ind",
-)
+class ApplicantSchema(PersonSchema):
+    cust_no = f.Str()
 
 
-class ParsedDate(fields.Field):
-    def _deserialize(self, value, attr, obj, **kwargs):
+class TransactionSchema(Schema):
+    date = f.Date("recordDate")
+    code = f.Str()
+    description = f.Str()
+
+
+class ChildSchema(Schema):
+    __model_name__ = "Relationship"
+    parent_appl_id = f.Str("applicationNumberText")
+    child_app_filing_date = f.Date("filingDate")
+    child_app_status = f.Str("applicationStatus")
+    child_appl_id = f.Str("claimApplicationNumberText")
+    relationship = f.Str("applicationStatusDescription", formatter=lambda x: x.replace("This application ", ""))
+
+
+class ParentSchema(Schema):
+    __model_name__ = "Relationship"
+    parent_appl_id = f.Str("claimApplicationNumberText")
+    child_appl_id = f.Str("applicationNumberText")
+    parent_app_filing_date = f.Date("filingDate")
+    parent_app_status = f.Str("applicationStatus")
+    relationship = f.Str("applicationStatusDescription", formatter=lambda x: x.replace("This application ", ""))
+
+
+class OptionalFloat(f.Int):
+    def deserialize(self, elem) -> "Optional[int]":
         try:
-            return parse_date(value).date()
-        except Exception as e:
+            return super().deserialize(elem)
+        except ValueError:
             return None
 
 
-class BaseSchema(Schema):
-    pr = False
-
-    @pre_load
-    def pre_load(self, input_data, **kwargs):
-        input_data = {inflection.underscore(k): v for k, v in input_data.items()}
-        input_data = create_subset(input_data, "pta_pte_summary", pta_pte_summary_keys)
-        input_data = create_subset_from_prefix(input_data, "corr_addr")
-
-        if self.pr:
-            pprint(input_data)
-        return input_data
-
-    @post_load
-    def make_object(self, data, **kwargs):
-        return self.__model__(**data)
-
-    class Meta:
-        unknown = EXCLUDE
-        dateformat = "%m-%d-%Y"
+class PtaPteHistorySchema(Schema):
+    date = f.Date("ptaOrPteDate")
+    description = f.String("contentsDescription")
+    number = f.Float()
+    pto_days = OptionalFloat()
+    applicant_days = OptionalFloat()
+    start = f.Float()
 
 
-class ChildSchema(BaseSchema):
-    __model__ = Relationship
-    parent_appl_id = fields.Str(data_key="application_number_text")
-    child_appl_id = fields.Str(data_key="claim_application_number_text")
-    parent_app_filing_date = fields.Date(allow_none=True)
-    relationship = fields.Function(
-        deserialize=lambda x: x.replace("This application ", ""),
-        data_key="application_status_description",
-    )
+class PtaPteSummarySchema(Schema):
+    a_delay = f.Int()
+    b_delay = f.Int()
+    c_delay = f.Int()
+    overlap_delay = f.Int()
+    pto_delay = f.Int()
+    applicant_delay = f.Int("applDelay")
+    pto_adjustments = f.Int()
+    total_days = f.Int("totalPtoDays")
+    kind = f.Str("ptaPteInd")
 
 
-class ParentSchema(BaseSchema):
-    __model__ = Relationship
-    parent_appl_id = fields.Str(data_key="claim_application_number_text")
-    child_appl_id = fields.Str(data_key="application_number_text")
-    parent_app_filing_date = fields.Date(data_key="filing_date")
-    relationship = fields.Function(
-        deserialize=lambda x: x.replace("This application ", ""),
-        data_key="application_status_description",
-    )
+class CorrespondentNameSchema(f.Combine):
+    line_one = f.Str("corrAddrNameLineOne")
+    line_two = f.Str("corrAddrNameLineTwo")
+
+    def combine_func(self, obj):
+        obj = DefaultDict(**obj, default="")
+        return "{line_one}\n{line_two}".format_map(obj)
 
 
-class PtaPteHistorySchema(BaseSchema):
-    __model__ = PtaPteHistory
-    number = fields.Float()
-    date = fields.Date(data_key="pta_or_pte_date")
-    description = fields.Str(data_key="contents_description")
-    pto_days = fields.Int(allow_none=True)
-    applicant_days = fields.Int(allow_none=True, data_key="appl_days")
-    start = fields.Float()
+class CorrespondentAddressSchema(f.Combine):
+    street_1 = f.Str("corrAddrStreetLineOne")
+    street_2 = f.Str("corrAddrStreetLineTwo")
+    city = f.Str("corrAddrCity")
+    geo_code = f.Str("corrAddrGeoRegionCode")
+    postal_code = f.Str("corrAddrPostalCode")
+    country = f.Str(data_key="corrAddrCountryCd")
 
-    @pre_load
-    def pre_load(self, input_data, **kwargs):
-        input_data = super(PtaPteHistorySchema, self).pre_load(input_data, **kwargs)
-        input_data = {k: v if v else None for k, v in input_data.items()}
-        return input_data
-
-
-class PtaPteSummarySchema(BaseSchema):
-    __model__ = PtaPteSummary
-    a_delay = fields.Int()
-    b_delay = fields.Int()
-    c_delay = fields.Int()
-    overlap_delay = fields.Int()
-    pto_delay = fields.Int()
-    applicant_delay = fields.Int(data_key="appl_delay")
-    pto_adjustments = fields.Int()
-    total_days = fields.Int(data_key="total_pto_days")
-    kind = fields.Str(data_key="pta_pte_ind")
-
-    @pre_load
-    def pre_load(self, input_data, **kwargs):
-        input_data = super(PtaPteSummarySchema, self).pre_load(input_data, **kwargs)
-        input_data = input_data["pta_pte_summary"]
-        from pprint import pprint
-
-        return input_data
+    def combine_func(self, obj):
+        obj = DefaultDict(**obj, default="")
+        return clean_whitespace(
+            "{street_1}\n{street_2}\n{city}, {geo_code} {postal_code} {country}".format_map(obj), preserve_newlines=True
+        )
 
 
-class TransactionSchema(BaseSchema):
-    __model__ = Transaction
-    date = ParsedDate(data_key="record_date")
-    code = fields.Str()
-    description = fields.Str()
-
-    class Meta:
-        unknown = EXCLUDE
-        dateformat = "%m-%d-%Y"
+class CorrespondentSchema(Schema):
+    name = CorrespondentNameSchema(data_key=False)
+    address = CorrespondentAddressSchema(data_key=False)
+    cust_no = f.Str("corrAddrCustNo")
 
 
-class AttorneySchema(BaseSchema):
-    __model__ = Attorney
-    registration_no = fields.Str(allow_none=True)
-    full_name = fields.Str()
-    phone_num = fields.Str()
-    reg_status = fields.Str(allow_none=True)
+class AttorneySchema(Schema):
+    registration_no = f.Str()
+    name = f.Str("fullName")
+    phone_num = f.Str()
+    reg_status = f.Str()
 
 
-class CorrespondentSchema(BaseSchema):
-    __model__ = Correspondent
-    name = fields.Str()
-    cust_no = fields.Str()
-    street = fields.Str()
-    city = fields.Str()
-    geo_region_code = fields.Str()
-    postal_code = fields.Str()
-    country = fields.Str(data_key="country_cd")
-
-    @pre_load
-    def pre_load(self, input_data, **kwargs):
-        input_data = super(CorrespondentSchema, self).pre_load(input_data, **kwargs)
-        input_data = input_data["corr_addr"]
-        input_data = {k[len("corr_addr_") :]: v for k, v in input_data.items()}
-        input_data = group_lines(input_data, "name")
-        input_data = group_lines(input_data, "street")
-        return input_data
+class ForeignPrioritySchema(Schema):
+    priority_claim = f.Str()
+    country_name = f.Str()
+    filing_date = f.Date(dt_format="%m-%d-%Y")
 
 
-class ApplicantSchema(BaseSchema):
-    __model__ = Applicant
-    name = fields.Str()
-    cust_no = fields.Str()
-    street = fields.Str()
-    city = fields.Str()
-    geo_region_code = fields.Str()
-    postal_code = fields.Str()
-    country = fields.Str(data_key="country_cd")
-    rank_no = fields.Int()
+class DocumentSchema(Schema):
+    access_level_category = f.Str()
+    appl_id = f.Str("applicationNumberText")
+    category = f.Str("documentCategory")
+    code = f.Str(data_key="documentCode")
+    description = f.Str("documentDescription")
+    identifier = f.Str("documentIdentifier")
+    mail_room_date = f.Date()
+    page_count = f.Int()
+    url = f.Str(data_key="pdf_url")
 
-    @pre_load
-    def pre_load(self, input_data, **kwargs):
-        input_data = super(ApplicantSchema, self).pre_load(input_data, **kwargs)
-        input_data = group_lines(input_data, "name")
-        input_data = group_lines(input_data, "street")
-        return input_data
+class ReelFrameField(f.Combine):
+    reel_number = f.Str()
+    frame_number = f.Str()
+    def combine_func(self, obj):
+        return f"{obj.reel_number}/{obj.frame_number}"
+
+class AddressField(f.Combine):
+    line_1 = f.Str("addressLineOneText", null_value="null")
+    line_2 = f.Str("addressLineTwoText", null_value="null")
+    line_3 = f.Str("addressLineThreeText", null_value="null")
+    line_4 = f.Str("addressLineFourText", null_value="null")
+
+    def combine_func(self, obj):
+        return clean_whitespace(
+            f"{obj.get('line_1', '')}\n{obj.get('line_2', '')}\n{obj.get('line_3', '')}\n{obj.get('line_4', '')}".strip(),
+            preserve_newlines=True
+        )
+
+class AssignorSchema(Schema):
+    name = f.Str("assignorName")
+    exec_date = f.Date()
+
+class AssigneeAddressField(f.Combine):
+    line_1 = f.Str("streetLineOneText", null_value="null")
+    line_2 = f.Str("streetLineTwoText", null_value="null")
+    city = f.Str("cityName")
+    country = f.Str("countryCode")
+    postal_code = f.Str("postalCode")
+
+    def combine_func(self, obj):
+        return clean_whitespace(
+            f"{obj.get('line_1', '')}\n{obj.get('line_2', '')}\n{obj.get('city', '')}, {obj.get('country', '')} {obj.get('postal_code', '')}",
+            preserve_newlines=True
+        )
+
+class AssigneeSchema(Schema):
+    name = f.Str("assigneeName")
+    address = AssigneeAddressField(data_key=False)
+
+class AssignmentSchema(Schema):
+    id = ReelFrameField(data_key=False)
+    correspondent = f.Str("addressNameText")
+    correspondent_address = AddressField(data_key=False)
+    mail_date = f.Date()
+    received_date = f.Date()
+    recorded_date = f.Date()
+    pages = f.Int("pagesCount")
+    conveyance_text = f.Str("converyanceName", formatter=lambda x: x.replace(" (SEE DOCUMENT FOR DETAILS).", ""))
+    sequence_number = f.Int()
+    assignors = f.List(AssignorSchema, "assignors")
+    assignees = f.List(AssigneeSchema, "assignee")
+
+class USApplicationSchema(Schema):
+    # Basic Bibliographic Data
+    appl_id = f.Str()
+    app_confr_number = f.Str()
+    app_filing_date = f.Date()
+    app_location = f.Str()
+    app_type = f.Str()
+    app_entity_status = f.Str()
+    app_cls_sub_cls = f.Str()
+    app_grp_art_number = f.Str()
+    app_exam_name = f.Str()
+    first_inventor_file = f.Bool(true_value="Yes")
+    patent_title = f.Str()
+    # Status Information
+    app_status = f.Str()
+    app_status_date = f.Date()
+    # Publication Information
+    app_early_pub_number = f.Str()
+    app_early_pub_date = f.Date()
+    patent_number = f.Str()
+    patent_issue_date = f.Date()
+    wipo_early_pub_number = f.Str()
+    wipo_early_pub_date = f.Date()
+    # Correspondent / Attorney Information
+    corr_addr_cust_no = f.Str()
+    app_cust_number = f.Str()
+    app_attr_dock_number = f.Str()
+
+    # Assignments
+    assignments = f.List(AssignmentSchema)
+
+    # Parties
+    inventors = f.List(InventorSchema)
+    applicants = f.List(ApplicantSchema)
+    transactions = f.List(TransactionSchema)
+    child_continuity = f.List(ChildSchema)
+    parent_continuity = f.List(ParentSchema)
+    pta_pte_tran_history = f.List(PtaPteHistorySchema)
+    pta_pte_summary = PtaPteSummarySchema(data_key=False)
+    correspondent = CorrespondentSchema(data_key=False)
+    attorneys = f.List(AttorneySchema, data_key="attrnyAddr")
+    foreign_priority = f.List(ForeignPrioritySchema)
 
 
-class InventorSchema(BaseSchema):
-    __model__ = Inventor
-    name = fields.Str()
-    street = fields.Str()
-    rank_no = fields.Int()
-    city = fields.Str()
-    geo_code = fields.Str()
-    postal_code = fields.Str()
-    country = fields.Str(data_key="country_cd")
+class PedsPageSchema(Schema):
+    index_last_updated = f.Date("queryResults.indexLastUpdatedDate")
+    num_found = f.Int("queryResults.searchResponse.response.numFound")
+    applications = f.List(USApplicationSchema, "queryResults.searchResponse.response.docs")
 
-    @pre_load
-    def pre_load(self, input_data, **kwargs):
-        input_data = super(InventorSchema, self).pre_load(input_data, **kwargs)
-        input_data = group_lines(input_data, "name", delimiter="; ")
-        input_data = group_lines(input_data, "street")
-        return input_data
-
-
-class ForeignPrioritySchema(BaseSchema):
-    __model__ = ForeignPriority
-    priority_claim = fields.Str()
-    country_name = fields.Str()
-    filing_date = fields.Date(format="%m-%d-%Y")
-
-
-class USApplicationSchema(BaseSchema):
-    __model__ = USApplication
-    appl_id = fields.Str()
-    app_filing_date = ParsedDate()
-    app_exam_name = fields.Str()
-    app_early_pub_number = fields.Str(allow_none=True)
-    app_early_pub_date = ParsedDate(allow_none=True)
-    app_location = fields.Str()
-    app_grp_art_number = fields.Str()
-    patent_number = fields.Str(allow_none=True)
-    patent_issue_date = ParsedDate(allow_none=True)
-    app_status = fields.Str()
-    app_status_date = ParsedDate()
-    patent_title = fields.Str()
-    app_attr_dock_number = fields.Str(allow_none=True)
-    first_inventor_file = fields.Str()
-    app_type = fields.Str()
-    app_cust_number = fields.Str(allow_none=True)
-    app_cls_sub_cls = fields.Str()
-    corr_addr_cust_no = fields.Str(allow_none=True)
-    app_entity_status = fields.Str()
-    app_confr_number = fields.Str()
-    wipo_early_pub_number = fields.Str()
-    wipo_early_pub_date = ParsedDate()
-    child_continuity = ListField(fields.Nested(ChildSchema()))
-    parent_continuity = ListField(fields.Nested(ParentSchema()))
-    pta_pte_tran_history = ListField(fields.Nested(PtaPteHistorySchema()))
-    pta_pte_summary = fields.Nested(PtaPteSummarySchema(), allow_none=True)
-    transactions = ListField(fields.Nested(TransactionSchema()))
-    correspondent = fields.Nested(CorrespondentSchema(), data_key="corr_addr")
-    attorneys = ListField(fields.Nested(AttorneySchema()), data_key="attrny_addr")
-    applicants = ListField(fields.Nested(ApplicantSchema()))
-    inventors = ListField(fields.Nested(InventorSchema()))
-    foreign_priority = ListField(fields.Nested(ForeignPrioritySchema))
-
-
-class DocumentSchema(BaseSchema):
-    __model__ = Document
-    access_level_category = fields.Str()
-    appl_id = fields.Str(data_key="application_number_text")
-    category = fields.Str(data_key="document_category")
-    code = fields.Str(data_key="document_code")
-    description = fields.Str(data_key="document_description")
-    identifier = fields.Str(data_key="document_identifier")
-    mail_room_date = ParsedDate()
-    page_count = fields.Int()
-    url = fields.Str(data_key="pdf_url", allow_none=True)
+    def pre_load(self, obj):
+        return json.loads(obj)

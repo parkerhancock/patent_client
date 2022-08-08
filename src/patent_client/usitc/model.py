@@ -41,9 +41,7 @@ class ITCDocument(Model):
     date: dt.date
     last_modified: dt.date
 
-    investigation = one_to_one(
-        "patent_client.ITCInvestigation", investigation_number="investigation_number"
-    )
+    investigation = one_to_one("patent_client.ITCInvestigation", investigation_number="investigation_number")
     attachments = one_to_many("patent_client.ITCAttachment", document_id="id")
 
 

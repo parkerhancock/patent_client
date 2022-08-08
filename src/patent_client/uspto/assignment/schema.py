@@ -1,163 +1,135 @@
-from marshmallow import EXCLUDE
-from marshmallow import Schema
-from marshmallow import ValidationError
-from marshmallow import fields
-from marshmallow import post_load
-from marshmallow import pre_load
+import datetime
 
-from patent_client.util.schema import ListField
+import lxml.etree as ET
+from yankee.util import unzip_records
+from yankee.xml import Schema
+from yankee.xml import fields as f
 
 from .model import Assignee
 from .model import Assignment
+from .model import AssignmentPage
 from .model import Assignor
 from .model import Property
-
-
-# Utility Functions
-def separate_dicts_by_prefix(prefix, data):
-    keys = [k for k in data.keys() if k.startswith(prefix) and not k.endswith("size")]
-    if not any(isinstance(data[k], (tuple, list)) for k in keys):
-        filtered_data = [
-            {k[len(prefix) + 1 :]: v for k, v in data.items() if k in keys},
-        ]
-        return filtered_data
-    filtered_data = {
-        k: v for k, v in data.items() if k in keys and isinstance(v, (tuple, list))
-    }
-    count = len(next(iter(filtered_data.values())))
-    list_of_dicts = [
-        {k[len(prefix) + 1 :]: v[i] for k, v in filtered_data.items()}
-        for i in range(count)
-    ]
-    return list_of_dicts
-
-
-def separate_dicts(keys, data):
-    if not any(isinstance(data[k], (tuple, list)) for k in keys):
-        filtered_data = [
-            {k: v for k, v in data.items() if k in keys},
-        ]
-        return filtered_data
-    filtered_data = {
-        k: v for k, v in data.items() if k in keys and isinstance(v, (tuple, list))
-    }
-    count = len(next(iter(filtered_data.values())))
-    list_of_dicts = [{k: v[i] for k, v in filtered_data.items()} for i in range(count)]
-    return list_of_dicts
-
-
-def combine_strings(prefix, data):
-    filtered_data = {k: v for k, v in data.items() if k.startswith(prefix)}
-    return "\n".join(filtered_data[k] for k in sorted(filtered_data.keys()))
-
-
-# Custom Fields
-
-
-class YesNoField(fields.Field):
-    """Converts to and from boolean values represented
-    as a yes or no
-    """
-
-    def _deserialize(self, value, *args, **kwargs) -> bool:
-        if value not in ("Y", "N"):
-            raise ValidationError("YesNo must be a Y or N")
-        return value == "Y"
-
 
 # Schemas
 
 
 class BaseSchema(Schema):
-    @post_load
-    def make_object(self, data, **kwargs):
-        return self.__model__(**data)
+    def post_load(self, obj):
+        if not obj:
+            return None
+        try:
+            return self.__model__(**obj)
+        except TypeError as e:
+            raise TypeError(f"{e.args[0]}\nInput Data: {obj}")
 
-    pass
+
+class BaseZipSchema(BaseSchema):
+    def deserialize(self, obj):
+        obj = super().deserialize(obj)
+        return unzip_records(obj)
+
+    def post_load(self, obj):
+        return [self.__model__(**o) for o in obj]
 
 
-class PropertySchema(BaseSchema):
+class Str(f.String):
+    def deserialize(self, elem) -> "Optional[str]":
+        result = super().deserialize(elem)
+        return result if result != "NULL" else None
+
+
+class Date(f.Date):
+    def deserialize(self, elem) -> "Optional[datetime.date]":
+        result = super().deserialize(elem)
+        return result if result != datetime.date(1, 1, 1) else None
+
+
+class PropertySchema(BaseZipSchema):
     __model__ = Property
-    invention_title = fields.Str(allow_none=True)
-    inventors = fields.Str(allow_none=True)
+    invention_title = f.List(Str(), ".//inventionTitle/str")
+    inventors = f.List(Str(), ".//inventors/str")
     # Numbers
-    appl_id = fields.Str(allow_none=True, data_key="appl_num")
-    pct_num = fields.Str(allow_none=True)
-    intl_reg_num = fields.Str(allow_none=True)
-    publ_num = fields.Str(allow_none=True)
-    pat_num = fields.Str(allow_none=True)
+    appl_id = f.List(Str(), ".//applNum/str")
+    pct_num = f.List(Str(), ".//pctNum/str")
+    intl_reg_num = f.List(Str(), ".//intlRegNum/str")
+    publ_num = f.List(Str(), ".//publNum/str")
+    pat_num = f.List(Str(), ".//patNum/str")
     # Dates
-    filing_date = fields.Date(allow_none=True)
-    intl_publ_date = fields.Date(allow_none=True)
-    issue_date = fields.Date(allow_none=True)
-    publ_date = fields.Date(allow_none=True)
+    filing_date = f.List(Date(), ".//filingDate/date")
+    intl_publ_date = f.List(Date(), ".//intlPublDate/date")
+    issue_date = f.List(Date(), ".//issueDate/date")
+    publ_date = f.List(Date(), ".//publDate/date")
 
 
-class AssignorSchema(BaseSchema):
+class AssignorSchema(BaseZipSchema):
     __model__ = Assignor
-    name = fields.Str()
-    ex_date = fields.Raw()
-    date_ack = fields.Raw()
-
-    class Meta:
-        unknown = EXCLUDE
+    name = f.List(Str(), ".//patAssignorName/str")
+    ex_date = f.List(Date(), ".//patAssignorExDate/date")
+    date_ack = f.List(Date(), ".//patAssignorDateAck/date")
 
 
-class AssigneeSchema(BaseSchema):
+class AssigneeSchema(BaseZipSchema):
     __model__ = Assignee
-    name = fields.Str()
-    address = fields.Str()
-    city = fields.Str(allow_none=True)
-    state = fields.Str(allow_none=True)
-    country_name = fields.Str(allow_none=True)
-    postcode = fields.Str(allow_none=True)
+    name = f.List(Str(), ".//patAssigneeName/str")
+    line_1 = f.List(Str(), ".//patAssigneeAddress1/str")
+    line_2 = f.List(Str(), ".//patAssigneeAddress2/str")
+    city = f.List(Str(), ".//patAssigneeCity/str")
+    state = f.List(Str(), ".//patAssigneeState/str")
+    post_code = f.List(Str(), ".//patAssigneePostcode/str")
+    country = f.List(Str(), ".//patAssigneeCountryName/str")
 
-    @pre_load
-    def pre_load(self, input_data, **kwargs):
-        input_data["address"] = combine_strings("corr_address", input_data)
-        return input_data
+    def deserialize(self, obj):
+        return [{"name": o.name, "address": self.combine_func(o)} for o in super().deserialize(obj)]
 
-    class Meta:
-        unknown = EXCLUDE
+    def combine_func(self, obj):
+        address = f"{obj.get('line_1', '')}\n{obj.get('line_2', '')}".strip()
+        if "city" in obj:
+            address += f"\n{obj.get('city', '')}, {obj.get('state', '')} {obj.get('post_code', '')}".rstrip()
+        if "country" in obj:
+            address += f" ({obj.get('country', '')})"
+        return address
+
+
+class CorrespondentAddressField(f.Combine):
+    corrAddress1 = Str(".//corrAddress1")
+    corrAddress2 = Str(".//corrAddress2")
+    corrAddress3 = Str(".//corrAddress3")
+    corrAddress4 = Str(".//corrAddress4")
+
+    def combine_func(self, obj):
+        out = str()
+        for i in range(1, 5):
+            out += obj.get(f"corrAddress{i}", "") + "\n"
+        return out.strip()
 
 
 class AssignmentSchema(BaseSchema):
     __model__ = Assignment
-    assignment_record_has_images = YesNoField()
-    page_count = fields.Int()
-    transaction_date = fields.Raw(allow_none=True)
-    last_update_date = fields.Raw(required=True)
-    recorded_date = fields.Raw(required=True)
-    assignment_record_has_images = fields.Boolean(required=True)
-    properties = ListField(fields.Nested(PropertySchema))
-    assignors = ListField(fields.Nested(AssignorSchema))
-    assignees = ListField(fields.Nested(AssigneeSchema))
+    id = Str(".//id")
+    conveyance_text = Str(".//conveyanceText", formatter=lambda s: s.replace("(SEE DOCUMENT FOR DETAILS).", "").strip())
+    date_produced = Date(".//dateProduced")
+    corr_name = Str(".//corrName")
+    corr_address = CorrespondentAddressField()
+    assignment_record_has_images = f.Bool(".//assignmentRecordHasImages", true_value="Y")
+    page_count = f.Int(".//pageCount")
+    transaction_date = Date(".//transactionDate")
+    last_update_date = Date(".//lastUpdateDate")
+    recorded_date = Date(".//recordedDate")
+    properties = PropertySchema()
+    assignors = AssignorSchema()
+    assignees = AssigneeSchema()
 
-    @pre_load
-    def pre_load(self, input_data, **kwargs):
-        input_data["assignors"] = separate_dicts_by_prefix("pat_assignor", input_data)
-        input_data["assignees"] = separate_dicts_by_prefix("pat_assignee", input_data)
-        property_fields = [
-            f.data_key or f.name for f in PropertySchema().fields.values()
-        ]
-        input_data["properties"] = separate_dicts(property_fields, input_data)
-        input_data["corr_address"] = combine_strings("corr_address", input_data)
-        input_data["conveyance_text"] = (
-            input_data["conveyance_text"]
-            .replace("(SEE DOCUMENT FOR DETAILS).", "")
-            .strip()
-        )
-        return input_data
 
-    class Meta:
-        unknown = EXCLUDE
-        additional = (
-            "id",
-            "conveyance_text",
-            "date_produced",
-            "assignment_record_has_images",
-            "corr_name",
-            "corr_address",
-            "assignor",
-            "assignee",
-        )
+class AssignmentPageSchema(BaseSchema):
+    __model__ = AssignmentPage
+    num_found = f.Int(".//response/@numFound")
+    docs = f.List(AssignmentSchema, ".//response/doc")
+
+    def pre_load(self, text):
+        tree = ET.fromstring(text.encode())
+        for e in tree.find(".//result").iter():
+            if "name" in e.attrib:
+                e.tag = e.attrib["name"]
+                del e.attrib["name"]
+        return tree

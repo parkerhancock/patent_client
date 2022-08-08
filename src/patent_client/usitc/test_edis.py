@@ -5,6 +5,7 @@ import pytest
 from .model import ITCInvestigation
 
 
+@pytest.mark.skip("EDIS out of scope for now")
 class TestItcEdis:
     def test_can_get_investigation(self):
         inv = ITCInvestigation.objects.get("337-TA-1025")
@@ -61,8 +62,7 @@ class TestItcEdis:
 
         docs[15].attachments.first().download(tmpdir)
         expected_doc = (
-            tmpdir
-            / "Granting Respondent's Unopposed Motion for Leave to Designate a Substitute Expert - 605365.pdf"
+            tmpdir / "Granting Respondent's Unopposed Motion for Leave to Designate a Substitute Expert - 605365.pdf"
         )
         exists = expected_doc.exists()
         assert exists

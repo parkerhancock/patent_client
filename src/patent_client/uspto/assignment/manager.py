@@ -10,16 +10,20 @@ from patent_client import session
 from patent_client.util import Manager
 
 from .model import Assignment
-from .parser import AssignmentParser
-from .schema import AssignmentSchema
+from .schema import AssignmentPageSchema
 
 warnings.filterwarnings("ignore", category=InsecureRequestWarning)
 
 NUMBER_CLEAN_RE = re.compile(r"[^\d]")
 clean_number = lambda x: NUMBER_CLEAN_RE.sub("", str(x))
 
+import logging
+
+logger = logging.getLogger(__name__)
+
 
 class AssignmentManager(Manager[Assignment]):
+    schema = AssignmentPageSchema()
     fields = {
         "patent_number": "PatentNumber",
         "appl_id": "ApplicationNumber",
@@ -30,7 +34,6 @@ class AssignmentManager(Manager[Assignment]):
         "correspondent": "CorrespondentName",
         "id": "ReelFrame",
     }
-    parser = AssignmentParser()
     url = "https://assignment-api.uspto.gov/patent/lookup"
     page_size = 20
     obj_class = "patent_client.uspto_assignments.Assignment"
@@ -50,8 +53,8 @@ class AssignmentManager(Manager[Assignment]):
         counter = 0
         for page_num in range(num_pages):
             for item in self.get_page(page_num):
-                if not self.config["limit"] or counter < self.config["limit"]:
-                    yield AssignmentSchema().load(item)
+                if not self.config.limit or counter < self.config.limit:
+                    yield item
                 counter += 1
             page_num += 1
 
@@ -63,7 +66,7 @@ class AssignmentManager(Manager[Assignment]):
             assignee: assignee name to search
         """
 
-        for key, value in self.config["filter"].items():
+        for key, value in self.config.filter.items():
             field = self.fields[key]
             query = value
         if field in ["PatentNumber", "ApplicationNumber"]:
@@ -73,25 +76,30 @@ class AssignmentManager(Manager[Assignment]):
                 query = clean_number(query)
 
         sort = list()
-        for p in self.config["order_by"]:
+        for p in self.config.order_by:
             if sort[0] == "-":
                 sort.append(p[1:] + "+desc")
             else:
                 sort.append(p + "+asc")
 
-        return {
+        if isinstance(query, list):
+            query = [f'"{q}"' for q in query]
+
+        query = {
             "filter": field,
             "query": " OR ".join(query) if isinstance(query, list) else query,
             "rows": self.page_size,
             "start": page_no * self.page_size,
             "sort": " ".join(sort),
         }
+        logger.info(f"Assignment Manager executed query {query}")
+        return query
 
     def __len__(self) -> int:
         if not hasattr(self, "_len"):
             self.get_page(0)
-        max_length = self._len - self.config["offset"]
-        limit = self.config["limit"]
+        max_length = self._len - self.config.offset
+        limit = self.config.limit
         if not limit:
             return max_length
         else:
@@ -106,8 +114,9 @@ class AssignmentManager(Manager[Assignment]):
             headers={"Accept": "application/xml"},
         )
         text = response.text
-        self._len, page = self.parser.parse(text)
-        return page
+        result = self.schema.load(text)
+        self._len = result.num_found
+        return result.docs
 
     @property
     def query_fields(self):

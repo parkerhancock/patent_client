@@ -13,7 +13,7 @@ from PyPDF2 import PdfFileMerger
 from PyPDF2 import PdfFileReader
 
 from patent_client import session
-from patent_client.util.manager import Manager
+from patent_client.util.base.manager import Manager
 
 from .model import USApplication
 from .schema import DocumentSchema
@@ -44,8 +44,8 @@ class USApplicationManager(Manager[USApplication]):
         self.pages = dict()
 
     def __len__(self):
-        max_length = self.get_page(0)["numFound"] - self.config["offset"]
-        limit = self.config["limit"]
+        max_length = self.get_page(0)["numFound"] - self.config.offset
+        limit = self.config.limit
         if not limit:
             return max_length
         else:
@@ -58,7 +58,7 @@ class USApplicationManager(Manager[USApplication]):
         while page_num < num_pages:
             page_data = self.get_page(page_num)
             for item in page_data["docs"]:
-                if not self.config["limit"] or counter < self.config["limit"]:
+                if not self.config.limit or counter < self.config.limit:
                     yield self.__schema__.load(item)
                 counter += 1
             page_num += 1
@@ -81,26 +81,22 @@ class USApplicationManager(Manager[USApplication]):
 
     def query_params(self, page_no):
         sort_query = ""
-        for s in self.config["order_by"]:
+        for s in self.config.order_by:
             if s[0] == "-":
                 sort_query += f"{inflection.camelize(s[1:], uppercase_first_letter=False)} desc ".strip()
             else:
-                sort_query += (
-                    f"{inflection.camelize(s, uppercase_first_letter=False)} asc"
-                ).strip()
+                sort_query += (f"{inflection.camelize(s, uppercase_first_letter=False)} asc").strip()
         if not sort_query:
             sort_query = None
 
         query = list()
         mm_active = True
-        for k, v in self.config["filter"].items():
+        for k, v in self.config.filter.items():
             field = inflection.camelize(k, uppercase_first_letter=False)
             if not v:
                 continue
             elif type(v) in (list, tuple):
-                body = f" OR ".join(
-                    f'"{value}"' if " " in value else value for value in v
-                )
+                body = f" OR ".join(f'"{value}"' if " " in value else value for value in v)
                 mm_active = False
             else:
                 body = v
@@ -116,7 +112,7 @@ class USApplicationManager(Manager[USApplication]):
             "sort": sort_query,
             "facet": "false",
             "mm": mm,
-            "start": page_no * self.page_size + self.config["offset"],
+            "start": page_no * self.page_size + self.config.offset,
             # "rows": self.page_size,
         }
         if not mm_active:
@@ -129,6 +125,7 @@ class USApplicationManager(Manager[USApplication]):
         return list(fields.keys())
 
     def fields(self):
+        """List of fields available to the API"""
         if not hasattr(self.__class__, "_fields"):
             url = "https://ped.uspto.gov/api/search-fields"
             response = session.get(url)
@@ -145,13 +142,9 @@ class USApplicationManager(Manager[USApplication]):
             if response.ok:
                 return True
             elif "requested resource is not available" in response.text:
-                raise NotAvailableException(
-                    "Patent Examination Data is Offline - this is a USPTO problem"
-                )
+                raise NotAvailableException("Patent Examination Data is Offline - this is a USPTO problem")
             elif "attempt failed or the origin closed the connection" in response.text:
-                raise NotAvailableException(
-                    "The Patent Examination Data API is Broken! - this is a USPTO problem"
-                )
+                raise NotAvailableException("The Patent Examination Data API is Broken! - this is a USPTO problem")
             else:
                 raise NotAvailableException("There is a USPTO problem")
 
@@ -177,12 +170,12 @@ class DocumentManager(Manager):
     __schema__ = DocumentSchema()
 
     def __len__(self):
-        url = self.query_url + self.config["filter"]["appl_id"][0]
+        url = self.query_url + self.config.filter["appl_id"][0]
         response = session.get(url)
         return len(response.json())
 
     def _get_results(self) -> Iterator[USApplication]:
-        url = self.query_url + self.config["filter"]["appl_id"][0]
+        url = self.query_url + self.config.filter["appl_id"][0]
         response = session.get(url)
         for item in response.json():
             yield self.__schema__.load(item)
