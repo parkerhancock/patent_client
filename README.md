@@ -1,4 +1,4 @@
-![patent_client_logo](docs/_static/patent_client_logo.svg)
+[![patent_client_logo](docs/_static/patent_client_logo.svg)](https://patent-client.readthedocs.io)
 
 [![Build](https://travis-ci.org/parkerhancock/patent_client.svg?branch=master)](https://travis-ci.org/parkerhancock/patent_client)
 [![Codecov](https://codecov.io/gh/parkerhancock/patent-client/branch/main/graph/badge.svg)](https://codecov.io/gh/parkerhancock/patent-client)
