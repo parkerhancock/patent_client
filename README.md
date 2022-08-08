@@ -93,8 +93,6 @@ True
 
 Docs, including a fulsome Getting Started are available on [Read the Docs](http://patent-client.readthedocs.io).
 
-Additionally, ther
-
 # Development
 
 To run the all tests run:

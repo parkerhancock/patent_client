@@ -1,4 +1,4 @@
-# Patent Trial & Appeal Board
+# PTAB Trials & Proceedings
 
 API URL: <https://developer.uspto.gov/api-catalog/ptab-api-v2>
 

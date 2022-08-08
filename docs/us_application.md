@@ -1,4 +1,4 @@
-# US Applications - Patent Examination Data System
+# US Patent Applications
 
 Original API URL: <https://ped.uspto.gov/peds/>
 

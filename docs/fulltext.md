@@ -1,4 +1,4 @@
-# US Full Text Patents & Published Applications
+# US Patents & Published Applications
 
 ```{eval-rst}
 .. role:: python(code)
