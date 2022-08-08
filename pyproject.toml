@@ -4,9 +4,27 @@ version = "3.0.0"
 description = "A set of ORM-style clients for publicly available intellectual property data"
 authors = ["Parker Hancock <633163+parkerhancock@users.noreply.github.com>"]
 license = "Apache Software License 2.0"
+readme = "README.md"
+documentation = "https://patent-client.readthedocs.io"
+homepage = "https://github.com/parkerhancock/patent_client"
+repository = "https://github.com/parkerhancock/patent_client"
+
+keywords = ["patent", "intellectual property", "usitc" "epo", "ops", 
+"trademark", "inpadoc", "337"]
+
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: End Users/Desktop",
+    "Intended Audience :: Legal Industry",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: Apache Software License",
+    "Topic :: Scientific/Engineering",
+]
 
 [tool.poetry.dependencies]
-python = "^3.8"
+python = "^3.7"
+
+# Required Dependencies
 lxml = "^4.9.0"
 requests = "^2.28.0"
 python-dateutil = "^2.8.2"
@@ -58,3 +76,8 @@ render_docs = "make -f docs/Makefile html"
 
 [tool.pycln]
 all = true
+
+[tool.isort]
+profile = 'black'
+line_length = 100
+skip_gitignore = true
