@@ -43,6 +43,12 @@ pandas = "^1.4.2"
 mypy = "^0.961"
 black = {version = "^22.6.0", allow-prereleases = true}
 
+[tool.poetry.extras]
+# Documentation
+docs     = ["furo", "linkify-it-py", "myst-parser", "sphinx", "sphinx-autodoc-typehints",
+            "sphinx-automodapi", "sphinx-copybutton", "sphinx-design", "sphinx-notfound-page",
+            "sphinxcontrib-apidoc", "sphinxext-opengraph", "sphinxcontrib-mermaid"]
+
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
