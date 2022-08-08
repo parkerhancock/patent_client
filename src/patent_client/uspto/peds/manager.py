@@ -125,6 +125,7 @@ class USApplicationManager(Manager[USApplication]):
         return list(fields.keys())
 
     def fields(self):
+        """List of fields available to the API"""
         if not hasattr(self.__class__, "_fields"):
             url = "https://ped.uspto.gov/api/search-fields"
             response = session.get(url)

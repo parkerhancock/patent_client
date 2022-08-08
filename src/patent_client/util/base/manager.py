@@ -2,6 +2,7 @@ from __future__ import annotations
 from itertools import chain
 
 from copy import deepcopy
+from multiprocessing.sharedctypes import Value
 from typing import Generic
 from typing import Iterator
 from typing import TypeVar
@@ -127,6 +128,8 @@ class Manager(Collection, Generic[ModelType]):
         mger = self.filter(*args, **kwargs)
         if len(mger) > 1:
             raise ValueError("More than one document found!")
+        if len(mger) == 0:
+            raise ValueError("No documents found!")
         return mger[0]  # type: ignore
 
     # Basic Manager Fetching

@@ -23,41 +23,77 @@ from patent_client.util import one_to_one
 
 @dataclass
 class USApplication(Model):
+    """A U.S. Patent Application retrieved from the Patent Examination Data 
+    System (PEDS)
+    """
+
     __manager__ = "patent_client.uspto.peds.manager.USApplicationManager"
     appl_id: str = field(compare=True)
-    patent_title: "Optional[str]" = None
-    app_status: "Optional[str]" = field(default=None, repr=True)
-    inventors: Optional[List[str]] = field(default=None, repr=False)
+    """The application number. U.S. Applications are digits only. 
+    PCT numbers are in the format PCT/CCYY/#####"""
     app_filing_date: Optional[datetime.date] = field(default=None, repr=False)
+    """The filing date or 371(c) date"""
+    patent_title: "Optional[str]" = None
+    """Title of the invention"""
+    app_status: "Optional[str]" = field(default=None, repr=True)
+    """Status of the Application"""
+    app_status_date: Optional[datetime.date] = field(default=None, repr=False)
+    """The date of the applicable status (the app_status attribute)"""
+    app_early_pub_number: "Optional[str]" = field(default=None, repr=False)
+    """The published patent application number in the format USYYYY#######A1
+    Note: this does not include subsequent or corrected publications, or publications
+    of PCT applications."""
+    app_early_pub_date: Optional[datetime.date] = field(default=None, repr=False)
+    """The publication date of the publication mentioned in app_early_pub_number"""
+    patent_number: "Optional[str]" = field(default=None, repr=False)
+    """The issued patent number, if any. Digits only"""
+    patent_issue_date: Optional[datetime.date] = field(default=None, repr=False)
+    """The date the patent issued"""
+    wipo_early_pub_number: "Optional[str]" = field(default=None, repr=False)
+    """If the application was published by WIPO (i.e. a PCT application),
+    the publication number is here. Format is YYYY######"""
+    wipo_early_pub_date: Optional[datetime.date] = field(default=None, repr=False)
+    """Publication date by WIPO"""
+
+    # Parties
+    inventors: Optional[List[str]] = field(default=None, repr=False)
+    applicants: List[Applicant] = field(default_factory=list, repr=False)
+    correspondent: Optional[Correspondent] = field(default=None, repr=False)
+    attorneys: List[Attorney] = field(default_factory=list, repr=False)
+
+    corr_addr_cust_no: "Optional[str]" = field(default=None, repr=False)
+    app_cust_number: "Optional[str]" = field(default=None, repr=False)
+    app_attr_dock_number: "Optional[str]" = field(default=None, repr=False)
+
     app_location: "Optional[str]" = field(default=None, repr=False)
     first_inventor_file: "Optional[str]" = field(default=None, repr=False)
     app_type: "Optional[str]" = field(default=None, repr=False)
     app_entity_status: "Optional[str]" = field(default=None, repr=False)
     app_confr_number: "Optional[str]" = field(default=None, repr=False)
-    applicants: List[Applicant] = field(default_factory=list, repr=False)
-    app_status_date: Optional[datetime.date] = field(default=None, repr=False)
+    
+    
     app_cls_sub_cls: "Optional[str]" = field(default=None, repr=False)
     app_grp_art_number: "Optional[str]" = field(default=None, repr=False)
-    corr_addr_cust_no: "Optional[str]" = field(default=None, repr=False)
-    app_cust_number: "Optional[str]" = field(default=None, repr=False)
-    app_attr_dock_number: "Optional[str]" = field(default=None, repr=False)
-    patent_number: "Optional[str]" = field(default=None, repr=False)
-    patent_issue_date: Optional[datetime.date] = field(default=None, repr=False)
-    app_early_pub_number: "Optional[str]" = field(default=None, repr=False)
-    app_early_pub_date: Optional[datetime.date] = field(default=None, repr=False)
-    app_exam_name: "Optional[str]" = field(default=None, repr=False)
-    wipo_early_pub_number: "Optional[str]" = field(default=None, repr=False)
-    wipo_early_pub_date: Optional[datetime.date] = field(default=None, repr=False)
 
+    app_exam_name: "Optional[str]" = field(default=None, repr=False)
+   
     transactions: List[Transaction] = field(default_factory=list, repr=False)
+    """List of transactions relating to this application. Identical to the "Transactions" tab on
+    Patent Center or Private PAIR"""
     child_continuity: ListManager[Relationship] = field(default_factory=ListManager, repr=False)
+    """List of related Applications which claim priority to this application. Note that
+    this does not include continuity type (e.g. CON/CIP/DIV)"""
     parent_continuity: ListManager[Relationship] = field(default_factory=ListManager, repr=False)
-    pta_pte_tran_history: List[PtaPteHistory] = field(default_factory=list, repr=False)
-    pta_pte_summary: Optional[PtaPteSummary] = field(default=None, repr=False)
-    correspondent: Optional[Correspondent] = field(default=None, repr=False)
-    attorneys: List[Attorney] = field(default_factory=list, repr=False)
+    """List of related Applications that this application claims priority to, including
+    continuity type. Does not include foreign priority claims"""
     foreign_priority: List[ForeignPriority] = field(default_factory=list, repr=False)
+    """List of foreign patent applications to which this application claims priority"""
+    pta_pte_tran_history: List[PtaPteHistory] = field(default_factory=list, repr=False)
+    """List of transactions relevant to calculating a Patent Term Extension or Adjustment"""
+    pta_pte_summary: Optional[PtaPteSummary] = field(default=None, repr=False)
+    """A related object containing the PTA/PTE analysis"""
     assignments: "ListManager" = field(default_factory=ListManager, repr=False)
+    """List of Assignments that include this application"""
 
     @property
     def continuity(self) -> Collection:
@@ -83,12 +119,16 @@ class USApplication(Model):
         if self.appl_id[0] == "6":
             return "Provisional"
         return "Nonprovisional"
+    
+    @property
+    def publication_number(self):
+        return self.app_early_pub_number[2:-2]
 
     @property
     def priority_date(self) -> datetime.date:
         """Attempts to return the priority date of the application, calculated as
         the earliest application filing date among the application's parents, or
-        its own filing date if it has no parents
+        its own filing date if it has no parents. Does not include foreign priority
         """
         if not self.parent_continuity:
             return self.app_filing_date
@@ -138,6 +178,7 @@ class USApplication(Model):
 
         return Expiration(**expiration_data)  # type: ignore
 
+    # Related objects that require an additional query
     documents = one_to_many("patent_client.uspto.peds.model.Document", appl_id="appl_id")
     """File History Documents from PEDS CMS"""
     related_assignments = one_to_many("patent_client.uspto.assignment.Assignment", appl_id="appl_id")
@@ -145,17 +186,13 @@ class USApplication(Model):
     trials = one_to_many("patent_client.uspto.ptab.PtabProceeding", appl_id="appl_id")
     """Related PtabProceedings for this application"""
     patent = one_to_one("patent_client.uspto.fulltext.Patent", publication_number="patent_number")
-    """Fulltext Patent - If Available"""
-
-    @property
-    def publication_number(self):
-        return self.app_early_pub_number[2:-2]
+    """Fulltext version of the patent - If Available"""
 
     publication = one_to_one(
         "patent_client.uspto.fulltext.PublishedApplication",
         publication_number="publication_number",
     )
-    """Fulltext Publication - If Available"""
+    """Fulltext version of the Publication - If Available"""
 
 
 @dataclass

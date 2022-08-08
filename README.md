@@ -1,24 +1,40 @@
+![patent_client_logo](docs/_static/patent_client_logo.svg)
 
-![patent_client_logo](old_docs/source/_static/patent_client_logo.svg)
+[![Build](https://travis-ci.org/parkerhancock/patent_client.svg?branch=master)](https://travis-ci.org/parkerhancock/patent_client)
+[![Codecov](https://codecov.io/gh/parkerhancock/patent-client/branch/main/graph/badge.svg)](https://codecov.io/gh/parkerhancock/patent-client)
+[![Documentation](https://img.shields.io/readthedocs/patent-client/stable)](https://patent-client.readthedocs.io/en/stable/)
 
-# Overview
 
-A set of Django-ORM-Style accessors to publicly available intellectual property data.
+[![PyPI](https://img.shields.io/pypi/v/patent-client?color=blue)](https://pypi.org/project/patent-client)
+[![Conda](https://img.shields.io/conda/vn/conda-forge/patent-client?color=blue)](https://anaconda.org/conda-forge/patent-client)
+[![PyPI - Python Versions](https://img.shields.io/pypi/pyversions/patent-client)](https://pypi.org/project/patent-client)
+[![PyPI - Downloads](https://img.shields.io/pypi/dm/patent-client?color=blue)](https://pypi.org/project/patent-client)
 
-Currently supports:
+# Summary
 
-- [United States Patent & Trademark Office](USPTO)
+A powerful library for accessing intellectual property, featuring:
 
-  - [Patent Full Text Databases](PATFT) - Full Support
-  - [Patent Examination Data](PEDS) - Full Support (**Including File History Documents!**)
-  - [Patent Assignment Data](Assignment) - Lookup Support
-  - [Patent Trial & Appeal Board API v2](PTAB) - Supports Proceedings, Decisions, and Documents
+- 🍰 **Ease of use:** All sources use a simple unified API inspired by [Django-ORM][DORM]. 
+- 🐼 **Pandas Integration:** Results are easily castable to [Pandas Dataframes and Series][PANDAS].
+- 🚀 **Performance:** Fetched data is cached using the excellent [requests-cache] library for super-fast queries.
 
-- [United States International Trade Commission](ITC)
+Docs, including a fulsome Getting Started and User Guide are available on [Read the Docs](http://patent-client.readthedocs.io). The Examples folder includes examples of using `patent_client` for 
+many common IP tasks
 
-  - [Electronic Document Information System (EDIS) API](EDIS) - Partial Support (no document downloads)
+## Coverage
 
-- [European Patent Office - Open Patent Services](OPS)
+- [United States Patent & Trademark Office][USPTO]
+
+  - [Patent Full Text Databases][PATFT] - Full Support
+  - [Patent Examination Data][PEDS] - Full Support
+  - [Patent Assignment Data][Assignment] - Lookup Support
+  - [Patent Trial & Appeal Board API v2][PTAB] - Supports Proceedings, Decisions, and Documents
+
+- [United States International Trade Commission][ITC]
+
+  - [Electronic Document Information System (EDIS) API][EDIS] - Partial Support (no document downloads)
+
+- [European Patent Office - Open Patent Services][OPS]
 
   - Inpadoc - Full Support
   - EPO Register - No Support (in progress)
@@ -26,7 +42,7 @@ Currently supports:
 
 * Free software: Apache Software License 2.0
 
-# Installation
+## Installation
 
 ```
 pip install patent_client
@@ -35,14 +51,8 @@ pip install patent_client
 If you only want access to USPTO resources, you're done!
 However, additional setup is necessary to access EPO Inpadoc and EPO Register resources. See the [Docs](http://patent-client.readthedocs.io).
 
-# Documentation
 
-The easiest way to get started is with [Patent Client Examples](https://github.com/parkerhancock/patent_client_examples). The examples repository has
-a list of Jupyter notebooks showing application examples of the patent_client library.
-
-Docs, including a fulsome Getting Started are available on [Read the Docs](http://patent-client.readthedocs.io).
-
-## SUPER QUICK START
+## Quick Start
 
 To use the project:
 
@@ -77,23 +87,13 @@ True
 >>> pub.biblio.title
 'AUTOMATIC FLUID DISPENSER'
 
-# Fetch from EPO Register (NOTE: This is broken right now :( )
-#>>> epo = Epo.objects.get('EP3082535A1')
-#>>> epo.title
-#'AUTOMATIC FLUID DISPENSER'
-#>>> epo.status
-#[{'description': 'Examination is in progress', 'code': '14', 'date': '20180615'}]
 ```
 
-# Other Languages
+## Documentation
 
-Merely as a way to explore other languages and technologies, I have built a few (partial) ports of this
-library to other languages:
+Docs, including a fulsome Getting Started are available on [Read the Docs](http://patent-client.readthedocs.io).
 
-- [patent_client_js](https://github.com/parkerhancock/patent_client_js) - ES6 Javascript (PEDS / PTAB / Assignments support (ASYNC!))
-- [patent_client_java](https://github.com/parkerhancock/patent_client_java) - Java (Ptab API only)
-- [patent_client_scala](https://github.com/parkerhancock/patent_client_scala) - Scala (Ptab API only)
-- [patent_client_ruby](https://github.com/parkerhancock/patent_client_ruby) - Ruby (Nothing Works Yet)
+Additionally, ther
 
 # Development
 
@@ -111,11 +111,14 @@ Pull requests welcome!
 - [Python EPO OPS Client](https://github.com/55minutes/python-epo-ops-client)
 - [Google Public Patent Data](https://github.com/google/patents-public-data)
 
-[assignment]: https://developer.uspto.gov/api-catalog/patent-assignment-search-beta
-[edis]: https://edis.usitc.gov/external/
-[itc]: https://www.usitc.gov/
-[ops]: http://ops.epo.org
-[patft]: http://http://patft.uspto.gov/
-[peds]: https://developer.uspto.gov/api-catalog/ped
-[ptab]: https://developer.uspto.gov/api-catalog/ptab-api-v2
-[uspto]: http://developer.uspto.gov
+[DORM]: https://docs.djangoproject.com/en/4.0/topics/db/queries/
+[PANDAS]: https://pandas.pydata.org/docs/
+[requests-cache]: https://github.com/requests-cache/requests-cache
+[Assignment]: https://developer.uspto.gov/api-catalog/patent-assignment-search-beta
+[EDIS]: https://edis.usitc.gov/external/
+[ITC]: https://www.usitc.gov/
+[OPS]: http://ops.epo.org
+[PATFT]: http://http://patft.uspto.gov/
+[PEDS]: https://developer.uspto.gov/api-catalog/ped
+[PTAB]: https://developer.uspto.gov/api-catalog/ptab-api-v2
+[USPTO]: http://developer.uspto.gov

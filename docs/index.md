@@ -1,38 +1,37 @@
-<!--
-Pre-release warning to reduce confusion on what '/latest' means;
-TODO: add script to make this conditional
--->
-<!--
-  :::{dropdown} Note
-  :animate: fade-in-slide-down
-  :color: primary
-  :icon: alert
+% Patent Client documentation master file, created by
+% sphinx-quickstart on Wed Oct 24 10:48:07 2018.
+% You can adapt this file completely to your liking, but it should at least
+% contain the root `toctree` directive.
 
-  You are viewing the pre-release documentation, which may describe features that are still in development.
-  Documentation for the latest stable release can be found at [requests-cache.readthedocs.io](https://requests-cache.readthedocs.io)
-  ```
--->
-
-(index-page)=
-# Requests-Cache
 <!-- Include Readme contents, except for the links to readthedocs, which would be redundant here -->
 ```{include} ../README.md
-:start-line: 2
-:end-before: <!-- RTD-IGNORE -->
-```
-```{include} ../README.md
-:start-after: <!-- END-RTD-IGNORE -->
-:end-before: <!-- RTD-IGNORE -->
 :relative-docs: docs/
 :relative-images:
 ```
 
-# Contents
+- [Code on GitHub](https://github.com/parkerhancock/patent_client)
+- [Package on PyPI](https://pypi.org/project/patent-client/)
+
+# Table of Contents
 ```{toctree}
 :maxdepth: 2
 
+motivation
+getting_started
 user_guide
-examples
-reference
-project_info
-````
+us_application
+fulltext
+assignments
+ptab
+usitc
+epo
+api
+developer/overview
+developer/design_notes
+```
+
+# Indices and tables
+
+- {ref}`genindex`
+- {ref}`modindex`
+- {ref}`search`
