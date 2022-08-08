@@ -1,14 +1,87 @@
-name: Deploy to PyPI
+name: Deploy
 
 on:
   push:
-    tags:
-      - 'v*'
+    tags: ['v*']
+  workflow_dispatch:
+    inputs:
+      pre-release-suffix:
+        description: 'Version suffix for pre-releases ("a", "b", "rc", etc.)'
+        required: false
+        default: 'dev'
+      pre-release-version:
+        description: 'Version number for pre-releases; defaults to build number'
+        required: false
+        default: ''
+
+env:
+  LATEST_PY_VERSION: '3.10'
+  PYTEST_VERBOSE: 'true'
 
 jobs:
-  deploy:
+  # Run tests for all supported requests versions and minimum supported python version
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.7]
+        # Run tests for most recent python versions
+        include:
+          - python-version: '3.10'
+            requests-version: latest
+      fail-fast: false
 
-  runs-on: ubuntu-latest
+    steps:
+      # Set up python + poetry
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+      - uses: snok/install-poetry@v1.3
+        with:
+          version: 1.2.0b1
+          virtualenvs-in-project: true
 
-  steps:
-    
+      # Cache packages per python version, and reuse until lockfile changes
+      - name: Cache python packages
+        id: cache
+        uses: actions/cache@v3
+        with:
+          path: .venv
+          key: venv-${{ matrix.python-version }}-${{ matrix.requests-version }}-${{ hashFiles('poetry.lock') }}
+      - name: Install dependencies
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: |
+          poetry add requests@${{ matrix.requests-version }} --lock
+          poetry install -v -E all
+      # Run unit + integration tests, with additional stress tests
+      - name: Run tests
+        run: |
+          source $VENV
+          nox -e test-current
+  # Deploy stable builds on tags only, and pre-release builds from manual trigger ("workflow_dispatch")
+  release:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: ${{ env.LATEST_PY_VERSION }}
+      - uses: snok/install-poetry@v1.3
+        with:
+          version: 1.2.0b1
+          virtualenvs-in-project: true
+
+      - name: Set pre-release version
+        if: ${{ !startsWith(github.ref, 'refs/tags/v') }}
+        env:
+          pre-release-suffix: ${{ github.event.inputs.pre-release-suffix || 'dev' }}
+          pre-release-version: ${{ github.event.inputs.pre-release-version || github.run_number }}
+        run: |
+          poetry version $(poetry version -s).${{ env.pre-release-suffix }}${{ env.pre-release-version }}
+          poetry version
+      - name: Build and publish to pypi
+        run: |
+          poetry build
+          poetry publish -u  __token__ -p ${{ secrets.PYPI_TOKEN }}
