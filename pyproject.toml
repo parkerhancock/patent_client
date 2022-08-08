@@ -46,7 +46,6 @@ sphinx-design              = {optional=true, version=">=0.2"}
 sphinx-notfound-page       = {optional=true, version=">=0.8"}
 sphinxcontrib-apidoc       = {optional=true, version="^0.3"}
 sphinxext-opengraph        = {optional=true, version=">=0.6"}
-sphinx-autobuild           = {optional=true, version="^2021.3.14"}
 sphinxcontrib-mermaid      = {optional=true, version="^0.7.1"}
 
 [tool.poetry.dev-dependencies]
@@ -58,6 +57,12 @@ pytest-xdist = "^2.5.0"
 mypy = "^0.961"
 black = {version = "^22.6.0", allow-prereleases = true}
 pandas = "^1.4"
+
+# For convenience in local development
+nox                   = "^2022.1.7"
+nox-poetry            = "^1.0.0"
+rich                  = ">=10.0"
+sphinx-autobuild      = "^2021.3.14"
 
 
 [tool.poetry.extras]

@@ -7,8 +7,8 @@ from patent_client.util.test import compare_dicts
 
 from .api import FamilyApi
 
-test_dir = Path(__file__).parent / "test"
-expected_dir = Path(__file__).parent / "test" / "expected"
+test_dir = Path(__file__).parent / "fixtures" / "examples"
+expected_dir = Path(__file__).parent / "fixtures" / "expected"
 
 
 def test_example():
