@@ -1,0 +1,64 @@
+name: Build
+
+on:
+  push:
+    branches: [main]
+    tags: ['v*']
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+env:
+  LATEST_PY_VERSION: '3.10'
+  PYTEST_VERBOSE: 'true'
+
+jobs:
+  # Run tests for each supported python version
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.7, 3.8, 3.9, '3.10', 3.11.0-beta.4]
+      fail-fast: false
+
+    steps:
+      # Set up python + poetry
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+      - uses: snok/install-poetry@v1.3
+        with:
+          version: 1.2.0b1
+          virtualenvs-in-project: true
+
+      # Cache packages per python version, and reuse until lockfile changes
+      - name: Cache python packages
+        id: cache
+        uses: actions/cache@v3
+        with:
+          path: .venv
+          key: venv-${{ matrix.python-version }}-latest-${{ hashFiles('poetry.lock') }}
+      - name: Install dependencies
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: poetry install -v -E all
+
+      # Run tests with coverage report
+      - name: Run tests
+        run: |
+          source $VENV
+          nox -e cov -- xml
+      # Latest python version: send coverage report to codecov
+      - name: "Upload coverage report to Codecov"
+        if: ${{ matrix.python-version == env.LATEST_PY_VERSION }}
+        uses: codecov/codecov-action@v3
+
+  # Run code analysis checks via pre-commit hooks
+  analyze:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: ${{ env.LATEST_PY_VERSION }}
+      - name: Run style checks & linting
+        uses: pre-commit/action@v3.0.0
