@@ -9,7 +9,6 @@ def test_collection():
         Row(a=4, b=5, c=6)
     ]
     collection = Collection(rows)
-    assert len(collection) == 3
     assert list(collection) == rows
     assert collection.to_list() == rows
     assert type(collection.to_list()) == ListManager

@@ -20,6 +20,9 @@ classifiers = [
     "Topic :: Scientific/Engineering",
 ]
 
+exclude = ["./**/cassettes/**/*",]
+
+
 [tool.poetry.dependencies]
 python = "^3.8"
 
@@ -47,9 +50,15 @@ sphinx-notfound-page       = {optional=true, version=">=0.8"}
 sphinxcontrib-apidoc       = {optional=true, version="^0.3"}
 sphinxext-opengraph        = {optional=true, version=">=0.6"}
 sphinxcontrib-mermaid      = {optional=true, version="^0.7.1"}
+PyYAML = "^6.0"
+ujson = "^5.4.0"
+
 
 [tool.poetry.dev-dependencies]
+
+# PyTest and Plugins
 pytest = "^7.1.2"
+vcrpy = "^4.2.0"
 codecov = "^2.1.12"
 pytest-cov = "^3.0.0"
 pre-commit = "^2.19.0"
@@ -63,6 +72,8 @@ nox                   = "^2022.1.7"
 nox-poetry            = "^1.0.0"
 rich                  = ">=10.0"
 sphinx-autobuild      = "^2021.3.14"
+pytest-recording = "^0.12.1"
+
 
 
 [tool.poetry.extras]

@@ -15,6 +15,6 @@ def test_example():
     tree = ET.parse(test_dir / "example.xml")
     result = FamilySchema().load(tree)
     expected_file = expected_dir / "example.json"
-    expected_file.write_text(result.to_json(indent=2))
+    #expected_file.write_text(result.to_json(indent=2))
     expected = json.loads(expected_file.read_text())
     compare_dicts(json.loads(result.to_json()), expected)

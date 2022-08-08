@@ -69,7 +69,10 @@ class PtabManager(Manager, Generic[ModelType]):
         for k, v in self.config.filter.items():
             key = k if k not in peds_to_ptab else peds_to_ptab[k]
             key = inflection.camelize(key, uppercase_first_letter=False)
-            query[key] = " ".join(v)
+            if isinstance(v, list):
+                query[key] = " ".join(v)
+            else:
+                query[key] = v
         query["recordTotalQuantity"] = self.page_size
         query["sortOrderCategory"] = " ".join(
             inflection.camelize(o, uppercase_first_letter=False) for o in self.config.order_by

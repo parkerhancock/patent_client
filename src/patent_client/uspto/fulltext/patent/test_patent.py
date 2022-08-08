@@ -1,7 +1,5 @@
-import datetime
-import json
 import os
-from collections import OrderedDict
+
 
 import pytest
 
@@ -9,7 +7,6 @@ from ..exceptions import FullTextNotAvailable
 from .model import Patent
 
 HERE = os.path.dirname(__file__)
-
 
 class TestPatentFullText:
     def test_fetch_patent(self):

@@ -96,6 +96,7 @@ class USApplicationManager(Manager[USApplication]):
             if not v:
                 continue
             elif type(v) in (list, tuple):
+                v = (str(i) for i in v)
                 body = f" OR ".join(f'"{value}"' if " " in value else value for value in v)
                 mm_active = False
             else:
@@ -170,12 +171,13 @@ class DocumentManager(Manager):
     __schema__ = DocumentSchema()
 
     def __len__(self):
-        url = self.query_url + self.config.filter["appl_id"][0]
+        url = self.query_url + self.config.filter["appl_id"]
         response = session.get(url)
+        response.raise_for_status()
         return len(response.json())
 
     def _get_results(self) -> Iterator[USApplication]:
-        url = self.query_url + self.config.filter["appl_id"][0]
+        url = self.query_url + self.config.filter["appl_id"]
         response = session.get(url)
         for item in response.json():
             yield self.__schema__.load(item)

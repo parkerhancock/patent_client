@@ -34,7 +34,11 @@ SEARCH_FIELDS = {
 def generate_query(**kwargs):
     query = ""
     for keyword, values in kwargs.items():
-        for value in values:
+        if isinstance(values, list):
+            for value in values:
+                if keyword:
+                    query += f'{SEARCH_FIELDS[keyword]}="{value}",'
+        else:
             if keyword:
-                query += f'{SEARCH_FIELDS[keyword]}="{value}",'
+                query += f'{SEARCH_FIELDS[keyword]}="{values}",'
     return query

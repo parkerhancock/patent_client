@@ -1,8 +1,6 @@
-import datetime
 import importlib
 import json
 import typing
-from collections import OrderedDict
 from dataclasses import dataclass
 from dataclasses import fields
 
@@ -10,6 +8,8 @@ from ..json_encoder import JsonEncoder
 from .row import Row
 from .util import to_dict
 from .collections import ListManager
+
+from yankee.util import is_valid
 
 ManagerType = typing.TypeVar("ManagerType")
 
@@ -52,7 +52,7 @@ class Model(ModelABC, metaclass=ModelMeta):
         return fields(self)
 
     def __iter__(self):
-        pass
+        return self.items()
 
     def items(self):
         if self.__default_fields__:
@@ -63,7 +63,7 @@ class Model(ModelABC, metaclass=ModelMeta):
             if f in self.__exclude_fields__:
                 continue
             value = getattr(self, f, None)
-            if value:
+            if is_valid(value):
                 yield (f, value)
 
 

@@ -1,0 +1,100 @@
+{
+    "version": 1,
+    "interactions": [
+        {
+            "request": {
+                "method": "GET",
+                "uri": "http://ops.epo.org/3.2/rest-services/number-service/application/original/JP.(2006-147056).A.20060526/docdb",
+                "body": null,
+                "headers": {
+                    "User-Agent": [
+                        "Python Patent Clientbot/3.0.0 (parkerhancock@users.noreply.github.com)"
+                    ],
+                    "Accept-Encoding": [
+                        "gzip, deflate"
+                    ],
+                    "Accept": [
+                        "*/*"
+                    ],
+                    "Connection": [
+                        "keep-alive"
+                    ],
+                    "Authorization": [
+                        "REDACTED"
+                    ]
+                }
+            },
+            "response": {
+                "status": {
+                    "code": 200,
+                    "message": "OK"
+                },
+                "headers": {
+                    "Strict-Transport-Security": [
+                        "max-age=31536000; includeSubDomains"
+                    ],
+                    "Vary": [
+                        "Accept"
+                    ],
+                    "Access-Control-Allow-Methods": [
+                        "POST"
+                    ],
+                    "X-Elapsed-Time": [
+                        "34"
+                    ],
+                    "X-API": [
+                        "ops-v3.2"
+                    ],
+                    "Cache-Control": [
+                        "no-cache"
+                    ],
+                    "Pragma": [
+                        "no-cache"
+                    ],
+                    "Content-Length": [
+                        "1224"
+                    ],
+                    "Connection": [
+                        "keep-alive"
+                    ],
+                    "Content-Type": [
+                        "application/xml;charset=utf-8"
+                    ],
+                    "Access-Control-Allow-Headers": [
+                        "Authorization"
+                    ],
+                    "Server": [
+                        "Apache"
+                    ],
+                    "X-EPO-Client-IP": [
+                        "104.54.160.230"
+                    ],
+                    "ETag": [
+                        "\"013ae5887ff2e6621ab43a4ab3d3a91ac\""
+                    ],
+                    "X-EPO-Forwarded": [
+                        "[104.54.160.230]"
+                    ],
+                    "X-RegisteredQuotaPerWeek-Used": [
+                        "199826"
+                    ],
+                    "Access-Control-Allow-Origin": [
+                        "*"
+                    ],
+                    "Date": [
+                        "Mon, 08 Aug 2022 21:49:17 GMT"
+                    ],
+                    "X-Throttling-Control": [
+                        "idle (images=green:200, inpadoc=green:60, other=green:1000, retrieval=green:200, search=green:30)"
+                    ],
+                    "X-IndividualQuotaPerHour-Used": [
+                        "87359"
+                    ]
+                },
+                "body": {
+                    "string": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><?xml-stylesheet type=\"text/xsl\" href=\"/3.2/style/numbers.xsl\"?>\n<ops:world-patent-data xmlns=\"http://www.epo.org/exchange\" xmlns:ops=\"http://ops.epo.org\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">\n    <ops:meta name=\"status\" value=\"SUCCESS\"/>\n    <ops:meta name=\"version\" value=\"11.07.65\"/>\n    <ops:standardization inputFormat=\"original\" outputFormat=\"docdb\">\n        <ops:input>\n            <ops:application-reference>\n                <document-id document-id-type=\"original\">\n                    <country>JP</country>\n                    <doc-number>2006-147056</doc-number>\n                    <kind>A</kind>\n                    <date>20060526</date>\n                </document-id>\n            </ops:application-reference>\n        </ops:input>\n        <ops:output>\n            <ops:application-reference>\n                <document-id document-id-type=\"docdb\">\n                    <country>JP</country>\n                    <doc-number>2006147056</doc-number>\n                    <kind>A</kind>\n                    <date>20060526</date>\n                </document-id>\n            </ops:application-reference>\n        </ops:output>\n    </ops:standardization>\n</ops:world-patent-data>"
+                }
+            }
+        }
+    ]
+}

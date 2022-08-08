@@ -1,18 +1,6 @@
 import datetime as dt
-import os
-
-import requests_cache
-
-from patent_client import CACHE_CONFIG
 from patent_client import SETTINGS
-
-CLIENT_SETTINGS = SETTINGS["EpoOpenPatentServices"]
-if os.environ.get("EPO_KEY", False):
-    KEY = os.environ["EPO_KEY"]
-    SECRET = os.environ["EPO_SECRET"]
-else:
-    KEY = CLIENT_SETTINGS["ApiKey"]
-    SECRET = CLIENT_SETTINGS["Secret"]
+from patent_client.session import PatentClientSession
 
 NS = {
     "http://ops.epo.org": None,
@@ -21,8 +9,7 @@ NS = {
     "http://www.epo.org/register": None,
 }
 
-
-class OpsSession(requests_cache.CachedSession):
+class OpsSession(PatentClientSession):
     def __init__(self, *args, key=None, secret=None, **kwargs):
         super(OpsSession, self).__init__(*args, **kwargs)
         self.key: str = key
@@ -53,4 +40,4 @@ class OpsSession(requests_cache.CachedSession):
         return response
 
 
-session = OpsSession(key=KEY, secret=SECRET, **CACHE_CONFIG)
+session = OpsSession(key=SETTINGS.EPO.API_KEY, secret=SETTINGS.EPO.API_SECRET)

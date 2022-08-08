@@ -17,10 +17,12 @@ def test_autogen_tests():
     d = AttrDict.convert(d)
     result = autogen_tests("d", d)
     assert result == """assert d.a == 1
-assert d.b == name
+assert d.b == 'name'
+assert len(d.c) == 3
 assert d.c[0] == 5
-assert d.d.fname == Parker
-assert d.d.lname == Hancock
+assert d.d.fname == 'Parker'
+assert d.d.lname == 'Hancock'
+assert len(d.e) == 3
 assert d.e[2].x == 7
 assert d.e[2].y == 8
 assert d.e[2].z == 9"""

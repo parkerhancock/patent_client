@@ -1,3 +1,4 @@
+from copy import deepcopy
 import json
 
 from .row import Row
@@ -127,6 +128,11 @@ class ValuesManager(Collection):
     def __iter__(self):
         for item in self.manager:
             yield Row((k, resolve(item, v)) for k, v in self.fields.items())
+
+    def __getitem__(self, sl):
+        mger = deepcopy(self)
+        new_mgr = mger.manager.__getitem__(sl)
+        return new_mgr
 
 
 class ValuesListManager(ValuesManager):

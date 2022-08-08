@@ -11,5 +11,7 @@ expected_dir = Path(__file__).parent / "test" / "expected"
 
 def test_example():
     result = LegalApi.get_legal("EP1000000A1")
-    expected = json.loads((expected_dir / "example.json").read_text())
+    expected_file = (expected_dir / "example.json")
+    #expected_file.write_text(result.to_json(indent=2))
+    expected = json.loads(expected_file.read_text())
     compare_dicts(json.loads(result.to_json()), expected)

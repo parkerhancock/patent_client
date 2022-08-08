@@ -36,7 +36,7 @@ class ClaimsParser(object):
         claim_dictionary = {c.number: c for c in claim_data}
         for claim in claim_data:
             for d in claim.depends_on:
-                claim_dictionary[d].dependent_claims.append(d)
+                claim_dictionary[d].dependent_claims.append(claim['number'])
         return ListManager(Claim(**d) for d in claim_data)
 
     def split_and_clean_claims(self, claim_text):

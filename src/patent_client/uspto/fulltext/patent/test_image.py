@@ -1,6 +1,6 @@
+import pytest
 from .manager import PatentImageManager
 from .model import Patent
-
 
 def test_can_get_images():
     pat = Patent.objects.get(6103599)

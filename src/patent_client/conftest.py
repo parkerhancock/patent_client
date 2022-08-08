@@ -1,19 +1,26 @@
-from pathlib import Path
-
 import pytest
-from requests_cache.backends.sqlite import DbCache
+from vcr import VCR
 
-import patent_client
+from patent_client import session as pc_session
+from patent_client.epo import session as epo_session
+from patent_client.uspto.fulltext.session import session as ft_session
 
-# from .session import make_session
-
-# test_db = Path(__file__).parent.parent.parent / "test_db.sqlite"
-
-# test_session = make_session(db_path=test_db)
-
-# @pytest.fixture(autouse=True)
+@pytest.fixture(autouse=True, scope="session")
 def use_test_session():
-    sess = patent_client.session
-    patent_client.session = test_session
-    yield
-    patent_client.session = sess
+    with pc_session.cache_disabled(), epo_session.cache_disabled(), ft_session.cache_disabled():
+        yield
+
+@pytest.fixture(scope='module')
+def vcr_config():
+    return {
+        # Replace the Authorization request header with "DUMMY" in cassettes
+        "filter_headers": [('Authorization', 'REDACTED')],
+        "serializer": "json",
+        "path_transformer": VCR.ensure_suffix(".json"),
+        "record_mode": "once"
+    }
+
+def pytest_collection_modifyitems(items):
+    for item in items:
+        item.add_marker(pytest.mark.vcr)
+        item.add_marker(pytest.mark.block_network)

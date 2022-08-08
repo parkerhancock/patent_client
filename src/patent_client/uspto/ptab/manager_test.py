@@ -48,6 +48,7 @@ class TestPtabDocument:
             .order_by("document_number")
             .limit(3)
             .values_list("document_number", flat=True)
+            .to_list()
         )
         assert len(result) == 3
         objects = list(result)

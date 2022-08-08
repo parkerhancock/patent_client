@@ -164,7 +164,7 @@ class USApplication(Model):
         expiration_data["parent_app_filing_date"] = parent_filing_date
         expiration_data["parent_relationship"] = relationship
         expiration_data["initial_term"] = parent_filing_date + relativedelta(years=20)  # type: ignore
-        expiration_data["pta_or_pte"] = self.pta_pte_summary.total_days if self.pta_pte_summary else 0  # type: ignore
+        expiration_data["pta_or_pte"] = self.pta_pte_summary.total_days or 0  # type: ignore
         expiration_data["extended_term"] = expiration_data["initial_term"] + relativedelta(
             days=expiration_data["pta_or_pte"]
         )  # type: ignore
