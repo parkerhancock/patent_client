@@ -76,7 +76,6 @@ mypy-extensions = ">=0.4.3"
 pathspec = ">=0.9.0"
 platformdirs = ">=2"
 tomli = {version = ">=1.1.0", markers = "python_full_version < \"3.11.0a7\""}
-typed-ast = {version = ">=1.4.2", markers = "python_version < \"3.8\" and implementation_name == \"cpython\""}
 typing-extensions = {version = ">=3.10.0.0", markers = "python_version < \"3.10\""}
 
 [package.extras]
@@ -96,7 +95,6 @@ python-versions = ">=3.7,<4.0"
 [package.dependencies]
 attrs = ">=20"
 exceptiongroup = {version = "*", markers = "python_version <= \"3.10\""}
-typing_extensions = {version = "*", markers = "python_version >= \"3.7\" and python_version < \"3.8\""}
 
 [[package]]
 name = "certifi"
@@ -135,7 +133,6 @@ python-versions = ">=3.7"
 
 [package.dependencies]
 colorama = {version = "*", markers = "platform_system == \"Windows\""}
-importlib-metadata = {version = "*", markers = "python_version < \"3.8\""}
 
 [[package]]
 name = "codecov"
@@ -289,11 +286,10 @@ name = "importlib-metadata"
 version = "4.12.0"
 description = "Read metadata from Python packages"
 category = "main"
-optional = false
+optional = true
 python-versions = ">=3.7"
 
 [package.dependencies]
-typing-extensions = {version = ">=3.6.4", markers = "python_version < \"3.8\""}
 zipp = ">=0.5"
 
 [package.extras]
@@ -384,7 +380,6 @@ python-versions = ">=3.7"
 
 [package.dependencies]
 mdurl = ">=0.1,<1.0"
-typing_extensions = {version = ">=3.7.4", markers = "python_version < \"3.8\""}
 
 [package.extras]
 testing = ["pytest-regressions", "pytest-cov", "pytest", "coverage"]
@@ -439,7 +434,6 @@ python-versions = ">=3.6"
 [package.dependencies]
 mypy-extensions = ">=0.4.3"
 tomli = {version = ">=1.1.0", markers = "python_version < \"3.11\""}
-typed-ast = {version = ">=1.4.0,<2", markers = "python_version < \"3.8\""}
 typing-extensions = ">=3.10"
 
 [package.extras]
@@ -488,14 +482,6 @@ python-versions = ">=2.7,!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*,!=3.5.*,!=3.6.*
 
 [[package]]
 name = "numpy"
-version = "1.21.6"
-description = "NumPy is the fundamental package for array computing with Python."
-category = "dev"
-optional = false
-python-versions = ">=3.7,<3.11"
-
-[[package]]
-name = "numpy"
 version = "1.23.1"
 description = "NumPy is the fundamental package for array computing with Python."
 category = "dev"
@@ -526,24 +512,24 @@ pyparsing = ">=2.0.2,<3.0.5 || >3.0.5"
 
 [[package]]
 name = "pandas"
-version = "1.3.5"
+version = "1.4.3"
 description = "Powerful data structures for data analysis, time series, and statistics"
 category = "dev"
 optional = false
-python-versions = ">=3.7.1"
+python-versions = ">=3.8"
 
 [package.dependencies]
 numpy = [
-    {version = ">=1.17.3", markers = "platform_machine != \"aarch64\" and platform_machine != \"arm64\" and python_version < \"3.10\""},
+    {version = ">=1.18.5", markers = "platform_machine != \"aarch64\" and platform_machine != \"arm64\" and python_version < \"3.10\""},
     {version = ">=1.19.2", markers = "platform_machine == \"aarch64\" and python_version < \"3.10\""},
     {version = ">=1.20.0", markers = "platform_machine == \"arm64\" and python_version < \"3.10\""},
     {version = ">=1.21.0", markers = "python_version >= \"3.10\""},
 ]
-python-dateutil = ">=2.7.3"
-pytz = ">=2017.3"
+python-dateutil = ">=2.8.1"
+pytz = ">=2020.1"
 
 [package.extras]
-test = ["hypothesis (>=3.58)", "pytest (>=6.0)", "pytest-xdist"]
+test = ["hypothesis (>=5.5.3)", "pytest (>=6.0)", "pytest-xdist (>=1.31)"]
 
 [[package]]
 name = "pathspec"
@@ -581,9 +567,6 @@ category = "dev"
 optional = false
 python-versions = ">=3.6"
 
-[package.dependencies]
-importlib-metadata = {version = ">=0.12", markers = "python_version < \"3.8\""}
-
 [package.extras]
 dev = ["pre-commit", "tox"]
 testing = ["pytest", "pytest-benchmark"]
@@ -599,7 +582,6 @@ python-versions = ">=3.7"
 [package.dependencies]
 cfgv = ">=2.0.0"
 identify = ">=1.0.0"
-importlib-metadata = {version = "*", markers = "python_version < \"3.8\""}
 nodeenv = ">=0.11.1"
 pyyaml = ">=5.1"
 toml = "*"
@@ -658,7 +640,6 @@ python-versions = ">=3.7"
 atomicwrites = {version = ">=1.0", markers = "sys_platform == \"win32\""}
 attrs = ">=19.2.0"
 colorama = {version = "*", markers = "sys_platform == \"win32\""}
-importlib-metadata = {version = ">=0.12", markers = "python_version < \"3.8\""}
 iniconfig = "*"
 packaging = "*"
 pluggy = ">=0.12,<2.0"
@@ -1078,14 +1059,6 @@ optional = true
 python-versions = ">= 3.7"
 
 [[package]]
-name = "typed-ast"
-version = "1.5.4"
-description = "a fork of Python 2 and 3 ast modules with type comment support"
-category = "dev"
-optional = false
-python-versions = ">=3.6"
-
-[[package]]
 name = "typing-extensions"
 version = "4.3.0"
 description = "Backported and Experimental Type Hints for Python 3.7+"
@@ -1139,7 +1112,6 @@ python-versions = ">=3.6"
 [package.dependencies]
 distlib = ">=0.3.5,<1"
 filelock = ">=3.4.1,<4"
-importlib-metadata = {version = ">=4.8.3", markers = "python_version < \"3.8\""}
 platformdirs = ">=2.4,<3"
 
 [package.extras]
@@ -1163,7 +1135,7 @@ name = "zipp"
 version = "3.8.1"
 description = "Backport of pathlib-compatible object wrapper for zip files"
 category = "main"
-optional = false
+optional = true
 python-versions = ">=3.7"
 
 [package.extras]
@@ -1175,8 +1147,8 @@ docs = ["furo", "linkify-it-py", "myst-parser", "sphinx", "sphinx-autodoc-typehi
 
 [metadata]
 lock-version = "1.1"
-python-versions = "^3.7.1"
-content-hash = "b69167b374c6fc629c0833d13ea401ddca8a3f9094ecb623f41e574678e253d8"
+python-versions = "^3.8"
+content-hash = "5a21dea0fab4290b0e4c30963228424185efd4ae2a91cdfef41c6c056c9db657"
 
 [metadata.files]
 alabaster = []
@@ -1265,7 +1237,6 @@ sphinxext-opengraph = []
 toml = []
 tomli = []
 tornado = []
-typed-ast = []
 typing-extensions = []
 uc-micro-py = []
 url-normalize = []
