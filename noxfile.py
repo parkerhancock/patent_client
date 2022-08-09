@@ -36,6 +36,7 @@ XDIST_ARGS = "--numprocesses=auto"
 def test(session):
     """Run tests in a separate virtualenv per python version"""
     test_paths = session.posargs or SOURCE_FILES
+    """
     session.install(
         ".",
         "pandas",
@@ -48,7 +49,7 @@ def test(session):
         "timeout-decorator",
         "pyparsing",
     )
-
+    """
     cmd = f"pytest -rs {XDIST_ARGS}"
     session.run(*cmd.split(" "), *test_paths)
 
