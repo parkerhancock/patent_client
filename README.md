@@ -1,12 +1,11 @@
 [![patent_client_logo](docs/_static/patent_client_logo.svg)](https://patent-client.readthedocs.io)
 
-[![Build](https://travis-ci.org/parkerhancock/patent_client.svg?branch=master)](https://travis-ci.org/parkerhancock/patent_client)
-[![Codecov](https://codecov.io/gh/parkerhancock/patent-client/branch/main/graph/badge.svg)](https://codecov.io/gh/parkerhancock/patent-client)
+[![Build](https://github.com/parkerhancock/patent-client/actions/workflows/build.yml/badge.svg)](https://github.com/parkerhancock/patent-client/actions/workflows/build.yml)
+[![codecov](https://codecov.io/gh/parkerhancock/patent_client/branch/master/graph/badge.svg?token=pWsiQLHi6r)](https://codecov.io/gh/parkerhancock/patent_client)
 [![Documentation](https://img.shields.io/readthedocs/patent-client/stable)](https://patent-client.readthedocs.io/en/stable/)
 
 
 [![PyPI](https://img.shields.io/pypi/v/patent-client?color=blue)](https://pypi.org/project/patent-client)
-[![Conda](https://img.shields.io/conda/vn/conda-forge/patent-client?color=blue)](https://anaconda.org/conda-forge/patent-client)
 [![PyPI - Python Versions](https://img.shields.io/pypi/pyversions/patent-client)](https://pypi.org/project/patent-client)
 [![PyPI - Downloads](https://img.shields.io/pypi/dm/patent-client?color=blue)](https://pypi.org/project/patent-client)
 
