@@ -48,7 +48,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: .venv
-          key: venv-${{ matrix.python-version }}-${{ matrix.requests-version }}-${{ hashFiles('poetry.lock') }}
+          key: venv-${{ matrix.python-version }}-${{ hashFiles('poetry.lock') }}
       - name: Install dependencies
         if: steps.cache.outputs.cache-hit != 'true'
         run: |
@@ -59,7 +59,7 @@ jobs:
           source $VENV
           nox -e test-current
         env:
-          PATENT_CLIENT_BASE_DIR: "."
+          PATENT_CLIENT_BASE_DIR: ./${{ matrix.python-version }}
 
   # Deploy stable builds on tags only, and pre-release builds from manual trigger ("workflow_dispatch")
   release:

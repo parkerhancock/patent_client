@@ -49,7 +49,7 @@ jobs:
           source $VENV
           nox -e cov -- xml
         env:
-          PATENT_CLIENT_BASE_DIR: "."
+          PATENT_CLIENT_BASE_DIR: ./${{ matrix.python-version }}
       # Latest python version: send coverage report to codecov
       - name: "Upload coverage report to Codecov"
         if: ${{ matrix.python-version == env.LATEST_PY_VERSION }}
