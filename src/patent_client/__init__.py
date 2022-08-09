@@ -1,5 +1,4 @@
 # flake8: noqa
-import os
 import time
 
 start = time.time()
@@ -15,9 +14,11 @@ import logging.handlers
 # Revert base directory to local if there's an access problem
 
 BASE_DIR = Path(SETTINGS.DEFAULT.BASE_DIR).expanduser()
-if not os.access(BASE_DIR, os.W_OK):
+try:
+    BASE_DIR.mkdir(exist_ok=True, parents=True)
+except OSError:
     BASE_DIR = Path(__file__).parent.parent.parent / "_build"
-    BASE_DIR.mkdir(exist_ok=True)
+    BASE_DIR.mkdir(exist_ok=True, parents=True)
     SETTINGS.DEFAULT.BASE_DIR = str(BASE_DIR)
 
 LOG_FILENAME = BASE_DIR / SETTINGS.DEFAULT.LOG_FILE
