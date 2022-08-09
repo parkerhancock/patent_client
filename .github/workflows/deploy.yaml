@@ -58,6 +58,8 @@ jobs:
         run: |
           source $VENV
           nox -e test-current
+        env:
+          PATENT_CLIENT_BASE_DIR: "."
 
   # Deploy stable builds on tags only, and pre-release builds from manual trigger ("workflow_dispatch")
   release:
