@@ -25,7 +25,10 @@ class FamilyMember(Model):
     application_reference: list = field(default_factory=list)
     priority_claims: List[PriorityClaim] = field(default_factory=list)
 
-    biblio = one_to_one("patent_client.epo.published.model.InpadocBiblio", doc_number="publication_number")
+    biblio = one_to_one(
+        "patent_client.epo.published.model.InpadocBiblio",
+        doc_number="publication_number",
+    )
 
 
 @dataclass

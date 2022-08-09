@@ -1,5 +1,6 @@
 # flake8: noqa
 import time
+
 start = time.time()
 from pathlib import Path
 from .version import __version__
@@ -31,22 +32,26 @@ logger.addHandler(handler)
 
 logger.info(f"Starting Patent Client with log level {SETTINGS.DEFAULT.LOG_LEVEL}")
 
-from .session import PatentClientSession # isort:skip
-from .util.datetime.date_parse import parse_duration # isort:skip
+from .session import PatentClientSession  # isort:skip
+from .util.datetime.date_parse import parse_duration  # isort:skip
+
 session = PatentClientSession()
 session.remove_expired_responses(expire_after=parse_duration(SETTINGS.CACHE.MAX_AGE))
 
 from patent_client.epo.published.model import Inpadoc  # isort:skip
+
 # from patent_client.usitc.model import ITCAttachment
 # from patent_client.usitc.model import ITCDocument
 # from patent_client.usitc.model import ITCInvestigation
-from patent_client.uspto.assignment.model import Assignment # isort:skip
-from patent_client.uspto.fulltext.patent.model import Patent # isort:skip
-from patent_client.uspto.fulltext.published_application.model import PublishedApplication # isort:skip
-from patent_client.uspto.peds.model import USApplication # isort:skip 
-from patent_client.uspto.ptab.model import PtabDecision # isort:skip
-from patent_client.uspto.ptab.model import PtabDocument # isort:skip
-from patent_client.uspto.ptab.model import PtabProceeding # isort:skip
+from patent_client.uspto.assignment.model import Assignment  # isort:skip
+from patent_client.uspto.fulltext.patent.model import Patent  # isort:skip
+from patent_client.uspto.fulltext.published_application.model import (
+    PublishedApplication,
+)  # isort:skip
+from patent_client.uspto.peds.model import USApplication  # isort:skip
+from patent_client.uspto.ptab.model import PtabDecision  # isort:skip
+from patent_client.uspto.ptab.model import PtabDocument  # isort:skip
+from patent_client.uspto.ptab.model import PtabProceeding  # isort:skip
 
 elapsed = time.time() - start
 logger.debug(f"Startup Complete!, took {elapsed:.3f} seconds")

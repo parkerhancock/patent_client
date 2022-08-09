@@ -4,19 +4,19 @@ import typing
 from dataclasses import dataclass
 from dataclasses import fields
 
+from yankee.util import is_valid
+
 from ..json_encoder import JsonEncoder
+from .collections import ListManager
 from .row import Row
 from .util import to_dict
-from .collections import ListManager
-
-from yankee.util import is_valid
 
 ManagerType = typing.TypeVar("ManagerType")
 
 
 class ModelMeta(type):
     """Metaclass for automatically appending the .objects attriburte to Model
-    classes """
+    classes"""
 
     def __new__(cls, name, bases, dct):
         klass = super().__new__(cls, name, bases, dct)
@@ -65,7 +65,6 @@ class Model(ModelABC, metaclass=ModelMeta):
             value = getattr(self, f, None)
             if is_valid(value):
                 yield (f, value)
-
 
     # Data Conversion Functions
 

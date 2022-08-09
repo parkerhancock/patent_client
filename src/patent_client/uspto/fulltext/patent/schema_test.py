@@ -1,9 +1,11 @@
 from pathlib import Path
+
 import lxml.etree as ET
 
 from .schema import PatentResultPageSchema
 
 example_dir = Path(__file__).parent / "test"
+
 
 def test_patent_result_schema():
     text = (example_dir / "pat_search.html").read_text()

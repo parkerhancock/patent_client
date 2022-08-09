@@ -1,6 +1,5 @@
 from dataclasses import dataclass
 
-from patent_client.util import Model
 from patent_client.util import one_to_many
 from patent_client.util import one_to_one
 

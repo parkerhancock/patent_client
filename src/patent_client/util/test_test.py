@@ -1,12 +1,13 @@
 from yankee.util import AttrDict
+
 from .test import autogen_tests
 
 
 def test_autogen_tests():
     d = {
         "a": 1,
-        "b": "name", 
-        "c": [5, 6, 7], 
+        "b": "name",
+        "c": [5, 6, 7],
         "d": {"fname": "Parker", "lname": "Hancock"},
         "e": [
             {"x": 1, "y": 2, "z": 3},
@@ -16,7 +17,9 @@ def test_autogen_tests():
     }
     d = AttrDict.convert(d)
     result = autogen_tests("d", d)
-    assert result == """assert d.a == 1
+    assert (
+        result
+        == """assert d.a == 1
 assert d.b == 'name'
 assert len(d.c) == 3
 assert d.c[0] == 5
@@ -26,3 +29,4 @@ assert len(d.e) == 3
 assert d.e[2].x == 7
 assert d.e[2].y == 8
 assert d.e[2].z == 9"""
+    )

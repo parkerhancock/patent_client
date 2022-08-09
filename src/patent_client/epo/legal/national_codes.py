@@ -1,23 +1,25 @@
+import datetime
+import logging
+import re
 import sqlite3
 from pathlib import Path
-import datetime
-import re
 
 import lxml.etree as ET
 from openpyxl import load_workbook
-
-from patent_client.epo.session import session
 from patent_client import SETTINGS
+from patent_client.epo.session import session
 
 dir = Path(SETTINGS.DEFAULT.BASE_DIR).expanduser() / "epo"
 dir.mkdir(exist_ok=True, parents=True)
 db_location = dir / "legal_codes.sqlite"
 
-import logging
+
 logger = logging.getLogger(__name__)
+
 
 def current_date():
     return datetime.datetime.now().date()
+
 
 def generate_legal_code_db():
     current = has_current_spreadsheet()
@@ -27,6 +29,7 @@ def generate_legal_code_db():
         logger.debug("Legal Code Database is out of date - creating legal code database")
         path = get_spreadsheet()
         create_code_database(path)
+
 
 def has_current_spreadsheet():
     con = sqlite3.connect(db_location)
@@ -68,7 +71,7 @@ def create_code_database(excel_path):
             return
     except sqlite3.OperationalError:
         pass
-    
+
     cur.execute("CREATE TABLE IF NOT EXISTS meta (file_name text)")
     cur.execute("INSERT INTO meta values (?)", (excel_path.name,))
     wb = load_workbook(excel_path)
@@ -76,15 +79,15 @@ def create_code_database(excel_path):
     rows = data[1:]
     cur.execute(
         """CREATE TABLE legal_codes (
-    country_code text, 
-    event_code text, 
-    date_created text, 
-    influence text, 
-    description text, 
-    last_update text, 
-    description_orig text, 
-    last_update_orig text, 
-    event_class text, 
+    country_code text,
+    event_code text,
+    date_created text,
+    influence text,
+    description text,
+    last_update text,
+    description_orig text,
+    last_update_orig text,
+    event_class text,
     event_class_description text)"""
     )
     cur.execute("""CREATE INDEX country_event_code ON legal_codes (country_code, event_code)""")
@@ -102,7 +105,8 @@ class LegalCodes:
         try:
             return dict(
                 cur.execute(
-                    "SELECT * FROM legal_codes WHERE country_code = ? AND event_code = ?", (country_code, legal_code)
+                    "SELECT * FROM legal_codes WHERE country_code = ? AND event_code = ?",
+                    (country_code, legal_code),
                 ).fetchone()
             )
         except TypeError:

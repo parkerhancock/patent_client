@@ -1,8 +1,6 @@
 import datetime
 from pathlib import Path
 
-import lxml.etree as ET
-
 from .schema import AssignmentPageSchema
 
 test_dir = Path(__file__).parent / "test"

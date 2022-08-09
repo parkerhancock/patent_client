@@ -1,13 +1,12 @@
 import os
 from collections import defaultdict
 from pathlib import Path
+
 import yaml
 from yankee.util import AttrDict
 
 DEFAULT_SETTINGS_FILE = Path(__file__).parent / "default_settings.yml"
-DEFAULT_SETTINGS = AttrDict.convert(
-    yaml.safe_load(DEFAULT_SETTINGS_FILE.read_text())
-)
+DEFAULT_SETTINGS = AttrDict.convert(yaml.safe_load(DEFAULT_SETTINGS_FILE.read_text()))
 
 
 def load_settings_from_env():
@@ -23,6 +22,7 @@ def load_settings_from_env():
         settings[section][k] = v
     return settings
 
+
 def load_user_settings():
     file = Path("~/.patent_client_config.yaml").expanduser()
     if file.exists():
@@ -31,6 +31,7 @@ def load_user_settings():
         file.write_text(DEFAULT_SETTINGS_FILE.read_text())
         return dict()
 
+
 def merge_settings(*settings):
     output = defaultdict(dict)
     for s in settings:
@@ -38,9 +39,12 @@ def merge_settings(*settings):
             output[section] = {**output[section], **values}
     return output
 
+
 def load_settings():
-    return AttrDict.convert(merge_settings(
-        DEFAULT_SETTINGS,
-        load_user_settings(),
-        load_settings_from_env(),
-    ))
+    return AttrDict.convert(
+        merge_settings(
+            DEFAULT_SETTINGS,
+            load_user_settings(),
+            load_settings_from_env(),
+        )
+    )

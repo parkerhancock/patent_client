@@ -1,5 +1,3 @@
-import pytest
-
 from .model import PtabDecision
 from .model import PtabDocument
 from .model import PtabProceeding

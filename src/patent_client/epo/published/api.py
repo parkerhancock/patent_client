@@ -3,7 +3,6 @@ from io import BytesIO
 from warnings import warn
 
 import lxml.etree as ET
-
 from patent_client.epo.session import session
 
 from .model import BiblioResult
@@ -133,7 +132,9 @@ class PublishedImagesApi:
     @classmethod
     def get_page_image_from_link(cls, link, page_number, image_format="pdf"):
         response = session.get(
-            f"https://ops.epo.org/3.2/rest-services/{link}.{image_format}", params={"Range": page_number}, stream=True
+            f"https://ops.epo.org/3.2/rest-services/{link}.{image_format}",
+            params={"Range": page_number},
+            stream=True,
         )
         response.raise_for_status()
         return BytesIO(response.raw.read())

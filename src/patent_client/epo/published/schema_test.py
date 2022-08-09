@@ -2,7 +2,6 @@ import json
 from pathlib import Path
 
 import lxml.etree as ET
-
 from patent_client.util.test import compare_dicts
 
 from .schema import BiblioResultSchema
@@ -88,5 +87,5 @@ def test_biblio_2():
     tree = ET.parse(input)
     result = BiblioResultSchema().load(tree)
     expected_file = expected_dir / f"{filename}.json"
-    #expected_file.write_text(result.to_json(indent=2))
+    # expected_file.write_text(result.to_json(indent=2))
     compare_dicts(json.loads(result.to_json()), json.loads(expected_file.read_text()))

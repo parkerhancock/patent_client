@@ -14,11 +14,11 @@
 
 A powerful library for accessing intellectual property, featuring:
 
-- 🍰 **Ease of use:** All sources use a simple unified API inspired by [Django-ORM][DORM]. 
+- 🍰 **Ease of use:** All sources use a simple unified API inspired by [Django-ORM][DORM].
 - 🐼 **Pandas Integration:** Results are easily castable to [Pandas Dataframes and Series][PANDAS].
 - 🚀 **Performance:** Fetched data is cached using the excellent [requests-cache] library for super-fast queries.
 
-Docs, including a fulsome Getting Started and User Guide are available on [Read the Docs](http://patent-client.readthedocs.io). The Examples folder includes examples of using `patent_client` for 
+Docs, including a fulsome Getting Started and User Guide are available on [Read the Docs](http://patent-client.readthedocs.io). The Examples folder includes examples of using `patent_client` for
 many common IP tasks
 
 ## Coverage

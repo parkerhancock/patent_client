@@ -1,19 +1,21 @@
 import unittest
-from datetime import date, datetime, time, timedelta
+from datetime import date
+from datetime import datetime
+from datetime import time
+from datetime import timedelta
 
-from .date_parse import (
-    parse_date,
-    parse_datetime,
-    parse_duration,
-    parse_time,
-    get_fixed_timezone
-)
+from .date_parse import get_fixed_timezone
+from .date_parse import parse_date
+from .date_parse import parse_datetime
+from .date_parse import parse_duration
+from .date_parse import parse_time
+
 
 class DateParseTests(unittest.TestCase):
     def test_parse_date(self):
         # Valid inputs
         self.assertEqual(parse_date("2012-04-23"), date(2012, 4, 23))
-        self.assertEqual(parse_date("2012-4-9"), date(2012, 4, 9)) 
+        self.assertEqual(parse_date("2012-4-9"), date(2012, 4, 9))
         # Invalid inputs
         self.assertIsNone(parse_date("2012423"))
         with self.assertRaises(ValueError):
@@ -92,9 +94,7 @@ class DateParseTests(unittest.TestCase):
 class DurationParseTests(unittest.TestCase):
     def test_parse_python_format(self):
         timedeltas = [
-            timedelta(
-                days=4, minutes=15, seconds=30, milliseconds=100
-            ),  # fractions of seconds
+            timedelta(days=4, minutes=15, seconds=30, milliseconds=100),  # fractions of seconds
             timedelta(hours=10, minutes=15, seconds=30),  # hours, minutes, seconds
             timedelta(days=4, minutes=15, seconds=30),  # multiple days
             timedelta(days=1, minutes=00, seconds=00),  # single day
@@ -136,21 +136,15 @@ class DurationParseTests(unittest.TestCase):
         self.assertEqual(parse_duration("5:30"), timedelta(minutes=5, seconds=30))
 
     def test_hours_minutes_seconds(self):
-        self.assertEqual(
-            parse_duration("10:15:30"), timedelta(hours=10, minutes=15, seconds=30)
-        )
-        self.assertEqual(
-            parse_duration("1:15:30"), timedelta(hours=1, minutes=15, seconds=30)
-        )
+        self.assertEqual(parse_duration("10:15:30"), timedelta(hours=10, minutes=15, seconds=30))
+        self.assertEqual(parse_duration("1:15:30"), timedelta(hours=1, minutes=15, seconds=30))
         self.assertEqual(
             parse_duration("100:200:300"),
             timedelta(hours=100, minutes=200, seconds=300),
         )
 
     def test_days(self):
-        self.assertEqual(
-            parse_duration("4 15:30"), timedelta(days=4, minutes=15, seconds=30)
-        )
+        self.assertEqual(parse_duration("4 15:30"), timedelta(days=4, minutes=15, seconds=30))
         self.assertEqual(
             parse_duration("4 10:15:30"),
             timedelta(days=4, hours=10, minutes=15, seconds=30),

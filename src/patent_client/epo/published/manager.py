@@ -1,5 +1,3 @@
-from warnings import warn
-
 from patent_client.util import Manager
 
 from .api import PublishedApi
@@ -39,7 +37,10 @@ class SearchManager(Manager):
                 yield result
             if range[1] == max_position:
                 break
-            range = (range[0] + self.result_size, min(range[1] + self.result_size, max_position))
+            range = (
+                range[0] + self.result_size,
+                min(range[1] + self.result_size, max_position),
+            )
 
     def get(self, number, doc_type="publication", format="docdb"):
         result = PublishedApi.biblio.get_biblio(number, doc_type, format)

@@ -1,9 +1,9 @@
 import importlib
 import logging
 
-logger = logging.getLogger(__name__)
-
 from .util import resolve
+
+logger = logging.getLogger(__name__)
 
 
 def one_to_one(class_name, attribute=None, **mapping):

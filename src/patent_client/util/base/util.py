@@ -1,5 +1,5 @@
-from collections import abc
 import dataclasses
+from collections import abc
 
 
 def resolve_attribute(obj, key):
@@ -10,7 +10,8 @@ def resolve_attribute(obj, key):
     if callable(obj):
         obj = obj()
     return obj
-    
+
+
 def resolve(item, key):
     if key is None:
         return item
@@ -39,17 +40,18 @@ def resolve_list(item, key):
 
     return [item_list]
 
+
 def to_dict(obj, item_class=dict, collection_class=list):
-    #print(f"Obj is {obj}")
+    # print(f"Obj is {obj}")
     if isinstance(obj, abc.Mapping):
-        #print(f"Casting as Mapping with class {item_class}")
+        # print(f"Casting as Mapping with class {item_class}")
         return item_class((k, to_dict(v, item_class, collection_class)) for k, v in obj.items())
     elif dataclasses.is_dataclass(obj):
-        #print("Converting Dataclass")
+        # print("Converting Dataclass")
         return to_dict(item_class(obj), item_class, collection_class)
     elif isinstance(obj, abc.Iterable) and not isinstance(obj, (str, bytes)):
-        #print(f"Casting as Collection with {collection_class}")
+        # print(f"Casting as Collection with {collection_class}")
         return collection_class(to_dict(i, item_class, collection_class) for i in obj)
     else:
-        #print("No cast - passing through")
+        # print("No cast - passing through")
         return obj

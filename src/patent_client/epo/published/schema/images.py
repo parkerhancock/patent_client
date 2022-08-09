@@ -1,10 +1,9 @@
 import re
 
-from yankee.xml import fields as f
-
 from patent_client.epo.number_service.schema import DocumentIdSchema
 from patent_client.epo.util import Schema
 from patent_client.util.xml import ListField
+from yankee.xml import fields as f
 
 doc_number_re = re.compile(r"published-data/images/(?P<country>[^/]+)/(?P<doc_number>[^/]+)/(?P<kind_code>[^/]+)/")
 

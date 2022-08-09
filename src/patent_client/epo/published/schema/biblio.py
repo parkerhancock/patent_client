@@ -1,9 +1,8 @@
-from yankee.util import clean_whitespace
-from yankee.xml import fields as f
-
 from patent_client.epo.number_service.schema import DocumentIdSchema
 from patent_client.epo.util import Schema
 from patent_client.util.xml import ListField
+from yankee.util import clean_whitespace
+from yankee.xml import fields as f
 
 
 class CpcClassificationSchema(f.Combine):
@@ -69,13 +68,16 @@ class InpadocBiblioSchema(Schema):
         './/epo:application-reference/epo:document-id[@document-id-type="original"]'
     )
     intl_class = ListField(
-        f.Str(formatter=clean_whitespace), "./epo:bibliographic-data/epo:classifications-ipcr/epo:classification-ipcr"
+        f.Str(formatter=clean_whitespace),
+        "./epo:bibliographic-data/epo:classifications-ipcr/epo:classification-ipcr",
     )
     cpc_class = ListField(
-        CpcClassificationSchema, './/epo:patent-classifications/epo:patent-classification/epo:classification-scheme[@scheme="CPCI"]/ancestor::epo:patent-classification'
+        CpcClassificationSchema,
+        './/epo:patent-classifications/epo:patent-classification/epo:classification-scheme[@scheme="CPCI"]/ancestor::epo:patent-classification',
     )
     us_class = ListField(
-        f.Str(), './/epo:classification-scheme[@scheme="UC"]/following-sibling::epo:classification-symbol'
+        f.Str(),
+        './/epo:classification-scheme[@scheme="UC"]/following-sibling::epo:classification-symbol',
     )
     priority_claims = ListField(DocumentIdSchema, ".//epo:priority-claim/epo:document-id")
     title = f.Str('.//epo:invention-title[@lang="en"]')

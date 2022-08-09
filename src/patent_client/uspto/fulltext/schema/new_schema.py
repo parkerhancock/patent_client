@@ -1,12 +1,11 @@
 import re
 
 import lxml.html as ETH
+from patent_client.util.schema_mixin import PatentSchemaMixin
 from yankee.util import clean_whitespace
+from yankee.xml import fields as f
 from yankee.xml import RegexSchema
 from yankee.xml import Schema
-from yankee.xml import fields as f
-
-from patent_client.util.schema_mixin import PatentSchemaMixin
 
 
 class BaseSchema(PatentSchemaMixin, Schema):
@@ -167,11 +166,15 @@ class ForeignPrioritySchema(BaseSchema):
 class PublicationSchema(BaseSchema):
     publication_number = f.Str(".//hr[1]/following::table[1]//tr[1]/td[2]")
     publication_date = f.Date(
-        ".//hr[1]/following::table[1]//tr[last()]/td[2]", formatter=lambda s: s.replace("*", "").strip()
+        ".//hr[1]/following::table[1]//tr[last()]/td[2]",
+        formatter=lambda s: s.replace("*", "").strip(),
     )
     kind_code = KindCode()
     title = f.Str(".//hr[2]/following::font")
-    appl_id = f.Str('.//*[contains(text(), "Appl. No.")]/following-sibling::td', formatter=clean_appl_id)
+    appl_id = f.Str(
+        './/*[contains(text(), "Appl. No.")]/following-sibling::td',
+        formatter=clean_appl_id,
+    )
 
     abstract = f.Str('.//b[contains(text(), "Abstract")]/parent::center/following-sibling::p')
     inventors = f.DelimitedString(
@@ -180,9 +183,14 @@ class PublicationSchema(BaseSchema):
         delimeter=re.compile(r"(?<=\))[,;]\s*"),
     )
     applicants = f.List(
-        ApplicantSchema, './/th[contains(text(), "Applicant:")]/following-sibling::td//tr[position()>1]', many=True
+        ApplicantSchema,
+        './/th[contains(text(), "Applicant:")]/following-sibling::td//tr[position()>1]',
+        many=True,
     )
-    assignees = f.List(AssigneeSchema, data_key='.//th[contains(text(), "Assignee:")]/following-sibling::td')
+    assignees = f.List(
+        AssigneeSchema,
+        data_key='.//th[contains(text(), "Assignee:")]/following-sibling::td',
+    )
     family_id = f.Str(data_key='.//*[contains(text(), "Family ID:")]/following-sibling::td')
     filing_date = f.Date(data_key='.//*[contains(text(), "Filed:")]/following-sibling::td')
     app_early_pub_number = f.Str(
@@ -196,14 +204,16 @@ class PublicationSchema(BaseSchema):
     intl_classes = CpcClassField('.//b[contains(text(), "Current International Class")]/ancestor::tr/td[2]')
     field_of_search = FieldOfSearchField('.//b[contains(text(), "Field of Search")]/ancestor::tr/td[2]')
     us_references = f.List(
-        USReferenceSchema, './/center/b[text()="U.S. Patent Documents"]/parent::center/following-sibling::table[1]//tr'
+        USReferenceSchema,
+        './/center/b[text()="U.S. Patent Documents"]/parent::center/following-sibling::table[1]//tr',
     )
     foreign_references = f.List(
         ForeignReferenceSchema,
         './/center/b[contains(text(), "Foreign Patent Documents")]/parent::center/following-sibling::table[1]//tr',
     )
     npl_references = f.List(
-        f.Field(), './/center/b[contains(text(), "Other References")]/ancestor::table//br/following-sibling::text()'
+        f.Field(),
+        './/center/b[contains(text(), "Other References")]/ancestor::table//br/following-sibling::text()',
     )
     primary_examiner = ExaminerSchema('//i[contains(text(), "Primary Examiner")]/following-sibling::text()')
     assistant_examiner = ExaminerSchema('//i[contains(text(), "Assistant Examiner")]/following-sibling::text()')
@@ -216,7 +226,8 @@ class PublicationSchema(BaseSchema):
         './/*[contains(text(), "Related U.S. Patent Documents")]/ancestor::center/following::table[1]//tr[position() > 2]',
     )
     foreign_priority = f.List(
-        ForeignPrioritySchema, data_key='.//b[text()="Foreign Application Priority Data"]/following::table[1]//tr'
+        ForeignPrioritySchema,
+        data_key='.//b[text()="Foreign Application Priority Data"]/following::table[1]//tr',
     )
     pdf_url = f.Str('.//img[@alt="[Image]"]/parent::a/@href')
 
@@ -224,9 +235,7 @@ class PublicationSchema(BaseSchema):
         return ETH.fromstring(obj.encode("utf-8"))
 
 
-import re
-
-pdf_id_re = re.compile("/([\d/]+)/1.pdf")
+pdf_id_re = re.compile(r"/([\d/]+)/1.pdf")
 
 
 def pdf_url_id_formatter(text):

@@ -20,15 +20,12 @@ class PatentSchemaMixin(object):
             self.__model__ = None
 
     def post_load(self, obj):
-        try:
-            if obj and self.__model__:
-                return self.__model__(**obj)
-            elif obj:
-                return obj
-            else:
-                return None
-        except AttributeError:
-            breakpoint()
+        if obj and self.__model__:
+            return self.__model__(**obj)
+        elif obj:
+            return obj
+        else:
+            return None
 
 
 class ListManagerMixin(object):

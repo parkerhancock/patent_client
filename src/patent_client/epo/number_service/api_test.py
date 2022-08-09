@@ -1,5 +1,3 @@
-import datetime
-
 from .api import convert_number
 
 

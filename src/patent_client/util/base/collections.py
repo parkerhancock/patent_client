@@ -1,19 +1,20 @@
-from copy import deepcopy
 import json
+from copy import deepcopy
 
-from .row import Row
-from .util import resolve, to_dict
 from ..json_encoder import JsonEncoder
+from .row import Row
+from .util import resolve
+from .util import to_dict
 
 
-class Collection():
+class Collection:
     def __init__(self, iterable):
         self.iterable = iterable
 
     def __iter__(self):
         return iter(self.iterable)
 
-    #def __len__(self):
+    # def __len__(self):
     #    return len(self.iterable)
 
     def __repr__(self):
@@ -72,7 +73,8 @@ class Collection():
         """Return a Manager that will return tuples for each item with a subset of attributes.
         If only a single field is passed, the keyword argument "flat" can be passed to return a simple list"""
         return ValuesListManager(self, *fields, flat=flat, **kw_fields)
-    
+
+
 class ExplodedManager(Collection):
     def __init__(self, iterable, attribute):
         self.iterable = iterable
@@ -86,26 +88,23 @@ class ExplodedManager(Collection):
                 new_row[self.attribute] = item
                 yield new_row
 
+
 class UnpackedManager(Collection):
     def __init__(self, iterable, attribute, connector=".", prefix=True):
         self.iterable = iterable
         self.attribute = attribute
         self.connector = connector
-        self.prefix=prefix
+        self.prefix = prefix
 
     def item_key(self, k):
         if not self.prefix:
             return k
         else:
             return f"{self.attribute}{self.connector}{k}"
-        
 
     def __iter__(self):
         for row in self.iterable:
-            unpack_field = {
-                self.item_key(k): v
-                for k, v in resolve(row, self.attribute).items()
-            }
+            unpack_field = {self.item_key(k): v for k, v in resolve(row, self.attribute).items()}
             new_row = Row({**row, **unpack_field})
             del new_row[self.attribute]
             yield new_row
@@ -119,7 +118,7 @@ class ListManager(list, Collection):
         else:
             return result
 
-    
+
 class ValuesManager(Collection):
     def __init__(self, manager, *fields, **kw_fields):
         self.manager = manager

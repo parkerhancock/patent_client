@@ -1,7 +1,5 @@
 import datetime
-from pprint import pprint
 
-from .model import Publication
 from .patent.manager import PatentManager
 
 today = datetime.datetime.now().date().strftime("%Y%m%d")
@@ -18,7 +16,7 @@ def test_can_generate_query():
             "issue_date_range": ("1995-01-01", "20130101"),
         }
     )
-    assert query == f'AN/"National Oilwell Varco" AND ISD/19950101->20130101'
+    assert query == 'AN/"National Oilwell Varco" AND ISD/19950101->20130101'
     query = search.generate_query(
         {
             "assignee_name": "National Oilwell Varco",
@@ -32,11 +30,11 @@ def test_can_generate_query():
             "issue_date_lt": "2020-10-26",
         }
     )
-    assert query == f'AN/"National Oilwell Varco" AND ISD/19000101->20201026'
+    assert query == 'AN/"National Oilwell Varco" AND ISD/19000101->20201026'
     query = search.generate_query(
         {
             "assignee_name": "National Oilwell Varco",
             "issue_date": "2020-10-26",
         }
     )
-    assert query == f'AN/"National Oilwell Varco" AND ISD/20201026'
+    assert query == 'AN/"National Oilwell Varco" AND ISD/20201026'

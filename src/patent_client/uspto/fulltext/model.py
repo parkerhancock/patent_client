@@ -4,10 +4,10 @@ import datetime
 from dataclasses import dataclass
 from dataclasses import field
 from pathlib import Path
+from typing import *
 
 from patent_client import session
 from patent_client.util import Model
-from patent_client.util import one_to_many
 from patent_client.util import one_to_one
 from patent_client.util.claims.parser import ClaimsParser
 

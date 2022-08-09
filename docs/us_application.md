@@ -16,8 +16,8 @@ error to indicate this problem. This warning will be removed when downloading wo
 Patent Client provides an interface to the USPTO Patent Examination Data System (PEDS).
 
 
-PEDS is a REST-ful API that contains all the publicly available data in Patent Center (formerly PAIR). 
-It provides a wealth of bibliographic information on pending and issued US Patent applications, as well as PCT 
+PEDS is a REST-ful API that contains all the publicly available data in Patent Center (formerly PAIR).
+It provides a wealth of bibliographic information on pending and issued US Patent applications, as well as PCT
 applications filed with the USPTO as the Receiving oFfice. Because of this, the models returned by the USApplications API are quite complex with lots of nested data fields (e.g. transaction data, continuity data, inventors, etc.)
 Use it like this:
 

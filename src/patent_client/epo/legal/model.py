@@ -1,9 +1,10 @@
+import datetime
 from dataclasses import dataclass
 from dataclasses import field
 
 from patent_client.epo.number_service.model import DocumentId
-from patent_client.util import Model, ListManager
-from patent_client.util import one_to_one
+from patent_client.util import ListManager
+from patent_client.util import Model
 
 
 @dataclass

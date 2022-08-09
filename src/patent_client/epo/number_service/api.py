@@ -1,5 +1,4 @@
 import lxml.etree as ET
-
 from patent_client.epo.session import session
 
 from .schema import NumberServiceResultSchema

@@ -1,35 +1,30 @@
 from __future__ import annotations
 
 import datetime
-from collections import OrderedDict
-from dataclasses import asdict
 from dataclasses import dataclass
 from dataclasses import field
-from dataclasses import fields
 from pathlib import Path
-from typing import Dict
 from typing import List
 from typing import Optional
 
 from dateutil.relativedelta import relativedelta
-
 from patent_client import session
 from patent_client.util import ListManager
 from patent_client.util import Model
-from patent_client.util.base.collections import Collection
 from patent_client.util import one_to_many
 from patent_client.util import one_to_one
+from patent_client.util.base.collections import Collection
 
 
 @dataclass
 class USApplication(Model):
-    """A U.S. Patent Application retrieved from the Patent Examination Data 
+    """A U.S. Patent Application retrieved from the Patent Examination Data
     System (PEDS)
     """
 
     __manager__ = "patent_client.uspto.peds.manager.USApplicationManager"
     appl_id: str = field(compare=True)
-    """The application number. U.S. Applications are digits only. 
+    """The application number. U.S. Applications are digits only.
     PCT numbers are in the format PCT/CCYY/#####"""
     app_filing_date: Optional[datetime.date] = field(default=None, repr=False)
     """The filing date or 371(c) date"""
@@ -70,13 +65,12 @@ class USApplication(Model):
     app_type: "Optional[str]" = field(default=None, repr=False)
     app_entity_status: "Optional[str]" = field(default=None, repr=False)
     app_confr_number: "Optional[str]" = field(default=None, repr=False)
-    
-    
+
     app_cls_sub_cls: "Optional[str]" = field(default=None, repr=False)
     app_grp_art_number: "Optional[str]" = field(default=None, repr=False)
 
     app_exam_name: "Optional[str]" = field(default=None, repr=False)
-   
+
     transactions: List[Transaction] = field(default_factory=list, repr=False)
     """List of transactions relating to this application. Identical to the "Transactions" tab on
     Patent Center or Private PAIR"""
@@ -119,7 +113,7 @@ class USApplication(Model):
         if self.appl_id[0] == "6":
             return "Provisional"
         return "Nonprovisional"
-    
+
     @property
     def publication_number(self):
         return self.app_early_pub_number[2:-2]
@@ -358,10 +352,12 @@ class Document(Model):
                     f.write(chunk)
         return out_file
 
+
 @dataclass
 class Assignee(Model):
     name: str = None
     address: str = None
+
 
 @dataclass
 class Assignor(Model):
@@ -378,7 +374,7 @@ class Assignment(Model):
     received_date: "datetime.date" = None
     recorded_date: "datetime.date" = None
     pages: int = None
-    conveyance_text:str = None
+    conveyance_text: str = None
     sequence_number: int = None
     assignors: "ListManager" = field(default_factory=ListManager)
     assignees: "ListManager" = field(default_factory=ListManager)

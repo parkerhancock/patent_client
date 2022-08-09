@@ -1,7 +1,9 @@
 from ..manager import FullTextManager
 from ..manager import ImageManager
 from .model import PatentResult
-from .schema import PatentImageSchema, PatentResultPageSchema, PatentSchema
+from .schema import PatentImageSchema
+from .schema import PatentResultPageSchema
+from .schema import PatentSchema
 from .settings import PUBLICATION_URL
 from .settings import SEARCH_FIELDS
 from .settings import SEARCH_PARAMS

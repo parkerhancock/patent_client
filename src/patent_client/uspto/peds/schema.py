@@ -1,11 +1,10 @@
-from ast import Add
 import json
-
-from yankee.json.schema import fields as f
+from typing import *
 
 from patent_client.util import DefaultDict
 from patent_client.util.format import clean_whitespace
 from patent_client.util.json import Schema
+from yankee.json.schema import fields as f
 
 
 class InventorNameField(f.Combine):
@@ -30,7 +29,8 @@ class InventorAddressField(f.Combine):
     def combine_func(self, obj):
         obj = DefaultDict(**obj, default="")
         return clean_whitespace(
-            "{street_1}\n{street_2}\n{city}, {geo_code} {postal_code} {country}".format_map(obj), preserve_newlines=True
+            "{street_1}\n{street_2}\n{city}, {geo_code} {postal_code} {country}".format_map(obj),
+            preserve_newlines=True,
         )
 
 
@@ -38,6 +38,7 @@ class PersonSchema(Schema):
     name = InventorNameField(data_key=False)
     address = InventorAddressField(data_key=False)
     rank_no = f.Int()
+
 
 class InventorSchema(PersonSchema):
     pass
@@ -59,7 +60,10 @@ class ChildSchema(Schema):
     child_app_filing_date = f.Date("filingDate")
     child_app_status = f.Str("applicationStatus")
     child_appl_id = f.Str("claimApplicationNumberText")
-    relationship = f.Str("applicationStatusDescription", formatter=lambda x: x.replace("This application ", ""))
+    relationship = f.Str(
+        "applicationStatusDescription",
+        formatter=lambda x: x.replace("This application ", ""),
+    )
 
 
 class ParentSchema(Schema):
@@ -68,7 +72,10 @@ class ParentSchema(Schema):
     child_appl_id = f.Str("applicationNumberText")
     parent_app_filing_date = f.Date("filingDate")
     parent_app_status = f.Str("applicationStatus")
-    relationship = f.Str("applicationStatusDescription", formatter=lambda x: x.replace("This application ", ""))
+    relationship = f.Str(
+        "applicationStatusDescription",
+        formatter=lambda x: x.replace("This application ", ""),
+    )
 
 
 class OptionalFloat(f.Int):
@@ -120,7 +127,8 @@ class CorrespondentAddressSchema(f.Combine):
     def combine_func(self, obj):
         obj = DefaultDict(**obj, default="")
         return clean_whitespace(
-            "{street_1}\n{street_2}\n{city}, {geo_code} {postal_code} {country}".format_map(obj), preserve_newlines=True
+            "{street_1}\n{street_2}\n{city}, {geo_code} {postal_code} {country}".format_map(obj),
+            preserve_newlines=True,
         )
 
 
@@ -154,11 +162,14 @@ class DocumentSchema(Schema):
     page_count = f.Int()
     url = f.Str(data_key="pdf_url")
 
+
 class ReelFrameField(f.Combine):
     reel_number = f.Str()
     frame_number = f.Str()
+
     def combine_func(self, obj):
         return f"{obj.reel_number}/{obj.frame_number}"
+
 
 class AddressField(f.Combine):
     line_1 = f.Str("addressLineOneText", null_value="null")
@@ -169,12 +180,14 @@ class AddressField(f.Combine):
     def combine_func(self, obj):
         return clean_whitespace(
             f"{obj.get('line_1', '')}\n{obj.get('line_2', '')}\n{obj.get('line_3', '')}\n{obj.get('line_4', '')}".strip(),
-            preserve_newlines=True
+            preserve_newlines=True,
         )
+
 
 class AssignorSchema(Schema):
     name = f.Str("assignorName")
     exec_date = f.Date()
+
 
 class AssigneeAddressField(f.Combine):
     line_1 = f.Str("streetLineOneText", null_value="null")
@@ -186,12 +199,14 @@ class AssigneeAddressField(f.Combine):
     def combine_func(self, obj):
         return clean_whitespace(
             f"{obj.get('line_1', '')}\n{obj.get('line_2', '')}\n{obj.get('city', '')}, {obj.get('country', '')} {obj.get('postal_code', '')}",
-            preserve_newlines=True
+            preserve_newlines=True,
         )
+
 
 class AssigneeSchema(Schema):
     name = f.Str("assigneeName")
     address = AssigneeAddressField(data_key=False)
+
 
 class AssignmentSchema(Schema):
     id = ReelFrameField(data_key=False)
@@ -201,10 +216,14 @@ class AssignmentSchema(Schema):
     received_date = f.Date(null_value="NONE")
     recorded_date = f.Date(null_value="NONE")
     pages = f.Int("pagesCount")
-    conveyance_text = f.Str("converyanceName", formatter=lambda x: x.replace(" (SEE DOCUMENT FOR DETAILS).", ""))
+    conveyance_text = f.Str(
+        "converyanceName",
+        formatter=lambda x: x.replace(" (SEE DOCUMENT FOR DETAILS).", ""),
+    )
     sequence_number = f.Int()
     assignors = f.List(AssignorSchema, "assignors")
     assignees = f.List(AssigneeSchema, "assignee")
+
 
 class USApplicationSchema(Schema):
     # Basic Bibliographic Data

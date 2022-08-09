@@ -1,6 +1,5 @@
-from yankee.xml import fields as f
-
 from patent_client.epo.util import Schema
+from yankee.xml import fields as f
 
 from . import error_dir
 

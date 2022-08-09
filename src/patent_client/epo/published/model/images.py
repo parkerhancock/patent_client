@@ -3,13 +3,10 @@ from dataclasses import field
 from pathlib import Path
 from typing import List
 
-from PyPDF2 import PdfMerger
-from PyPDF2 import PdfReader
-from PyPDF2 import PdfWriter
-
 from patent_client.epo.util import InpadocModel
 from patent_client.util import Model
-from patent_client.util import one_to_one
+from PyPDF2 import PdfReader
+from PyPDF2 import PdfWriter
 
 from ...number_service.model import DocumentId
 

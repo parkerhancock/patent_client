@@ -1,12 +1,13 @@
 import os
 
-
 import pytest
 
 from ..exceptions import FullTextNotAvailable
+from ..exceptions import ThrottleException
 from .model import Patent
 
 HERE = os.path.dirname(__file__)
+
 
 class TestPatentFullText:
     def test_fetch_patent(self):

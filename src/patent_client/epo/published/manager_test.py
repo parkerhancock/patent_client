@@ -1,7 +1,3 @@
-from pprint import pprint
-
-import pytest
-
 from .model.search import Inpadoc
 
 

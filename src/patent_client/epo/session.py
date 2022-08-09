@@ -1,4 +1,5 @@
 import datetime as dt
+
 from patent_client import SETTINGS
 from patent_client.session import PatentClientSession
 
@@ -8,6 +9,7 @@ NS = {
     "http://www.epo.org/fulltext": None,
     "http://www.epo.org/register": None,
 }
+
 
 class OpsSession(PatentClientSession):
     def __init__(self, *args, key=None, secret=None, **kwargs):

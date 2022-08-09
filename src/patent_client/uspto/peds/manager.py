@@ -2,18 +2,14 @@ import json
 import logging
 import math
 from datetime import date
-from datetime import datetime
 from pathlib import Path
 from tempfile import TemporaryDirectory
 from typing import Iterator
-from typing import Union
 
 import inflection
-from PyPDF2 import PdfFileMerger
-from PyPDF2 import PdfFileReader
-
 from patent_client import session
 from patent_client.util.base.manager import Manager
+from PyPDF2 import PdfFileMerger
 
 from .model import USApplication
 from .schema import DocumentSchema
@@ -97,7 +93,7 @@ class USApplicationManager(Manager[USApplication]):
                 continue
             elif type(v) in (list, tuple):
                 v = (str(i) for i in v)
-                body = f" OR ".join(f'"{value}"' if " " in value else value for value in v)
+                body = " OR ".join(f'"{value}"' if " " in value else value for value in v)
                 mm_active = False
             else:
                 body = v

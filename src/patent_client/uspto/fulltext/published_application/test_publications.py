@@ -1,7 +1,3 @@
-from collections import OrderedDict
-
-import pytest
-
 from .model import PublishedApplication
 
 

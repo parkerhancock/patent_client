@@ -27,7 +27,7 @@ apps = (USApplication.objects
 :::
 
 This is step 1 - querying the data. Consult the documentation for further details on
-available filtering critera. This creates a problem, though. While it 
+available filtering critera. This creates a problem, though. While it
 fetches the relevant data, but probably provides too much to be useful.
 At least for a single report. So let's reshape the result!
 
@@ -59,7 +59,7 @@ apps = (USApplication.objects
         )
 :::
 
-So, now we've reshaped the data into a convenient format. With this, we can convert to a 
+So, now we've reshaped the data into a convenient format. With this, we can convert to a
 pandas dataframe, a list, ingest it into a database, iterate over the results, etc.
 
 #### 3. Process the Data
@@ -92,7 +92,7 @@ Reshaping can be done using three methods on a manager: `.values`, `.unpack`, an
 ### The Values Function
 
 The `.values` method on a manager is perhaps the most powerful and complex feature of `patent_client`. When `.values` is called, the manager becomes an iterator of `Row` objects, a `dict`-like container
-object with flexible contents. 
+object with flexible contents.
 
 **Simple Attribute Fetching & Renaming:** Each argument becomes a field in the result, and each keyword argument can be used to create a renamed result. Additionally, you can pass a dictionary using the keyword `fields` to rename fields things that
 can't be keyword arguments. Using USApplication as an example, you can do this:
@@ -109,7 +109,7 @@ apps = (USApplication.objects
 
 **Complex Attribute Fetching:** When resolving fields for a `Row`, you can select properties of the model
 that aren't actually fields, including related objects from other API's. Patent client will automate
-the retrieval of the related items. Additionally, you can use dotted notation to fetch fields on 
+the retrieval of the related items. Additionally, you can use dotted notation to fetch fields on
 related objects:
 
 :::python
@@ -143,7 +143,7 @@ apps = (USApplication.objects
 
 ### Unpack and Explode
 
-The other two key data reshaping functions are `.unpack` and `.explode`. 
+The other two key data reshaping functions are `.unpack` and `.explode`.
 
 **Unpacking Data:** The `.unpack` method allows nested structured data to be "unpacked" into columns of a row. For example, if you wanted the name and address of the first named inventor, you could do this:
 

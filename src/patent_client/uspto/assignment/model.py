@@ -3,11 +3,11 @@ from __future__ import annotations
 import datetime
 from dataclasses import dataclass
 from dataclasses import field
+from typing import *
 
 from patent_client import session
-from patent_client.util import Model
 from patent_client.util import ListManager
-from patent_client.util import one_to_many
+from patent_client.util import Model
 from patent_client.util import one_to_one
 
 

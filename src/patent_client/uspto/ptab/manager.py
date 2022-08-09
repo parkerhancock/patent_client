@@ -1,9 +1,7 @@
 import math
 from typing import Generic
-from typing import Iterable
 
 import inflection
-
 from patent_client import session
 from patent_client.util import Manager
 from patent_client.util import ModelType
@@ -15,7 +13,6 @@ from .model import PtabProceeding
 from .schema import PtabDecisionSchema
 from .schema import PtabDocumentSchema
 from .schema import PtabProceedingSchema
-from .util import conversions
 from .util import peds_to_ptab
 
 

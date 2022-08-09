@@ -1,13 +1,13 @@
+import logging
 import math
 import re
 import typing
 import warnings
 from collections.abc import Iterable
 
-from urllib3.connectionpool import InsecureRequestWarning
-
 from patent_client import session
 from patent_client.util import Manager
+from urllib3.connectionpool import InsecureRequestWarning
 
 from .model import Assignment
 from .schema import AssignmentPageSchema
@@ -17,7 +17,6 @@ warnings.filterwarnings("ignore", category=InsecureRequestWarning)
 NUMBER_CLEAN_RE = re.compile(r"[^\d]")
 clean_number = lambda x: NUMBER_CLEAN_RE.sub("", str(x))
 
-import logging
 
 logger = logging.getLogger(__name__)
 

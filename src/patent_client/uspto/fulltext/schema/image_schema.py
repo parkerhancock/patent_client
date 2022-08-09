@@ -1,5 +1,5 @@
-from yankee import Schema
 from yankee import fields as f
+from yankee import Schema
 
 
 class SectionSchema(Schema):

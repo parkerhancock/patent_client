@@ -2,7 +2,8 @@ import copy
 import itertools
 import operator
 import warnings
-from functools import total_ordering, wraps
+from functools import total_ordering
+from functools import wraps
 
 
 class cached_property:
@@ -18,18 +19,14 @@ class cached_property:
 
     @staticmethod
     def func(instance):
-        raise TypeError(
-            "Cannot use cached_property instance without calling "
-            "__set_name__() on it."
-        )
+        raise TypeError("Cannot use cached_property instance without calling " "__set_name__() on it.")
 
     def __init__(self, func, name=None):
         from django.utils.deprecation import RemovedInDjango50Warning
 
         if name is not None:
             warnings.warn(
-                "The name argument is deprecated as it's unnecessary as of "
-                "Python 3.6.",
+                "The name argument is deprecated as it's unnecessary as of " "Python 3.6.",
                 RemovedInDjango50Warning,
                 stacklevel=2,
             )
@@ -42,8 +39,7 @@ class cached_property:
             self.func = self.real_func
         elif name != self.name:
             raise TypeError(
-                "Cannot assign the same cached_property to two different names "
-                "(%r and %r)." % (self.name, name)
+                "Cannot assign the same cached_property to two different names " "(%r and %r)." % (self.name, name)
             )
 
     def __get__(self, instance, cls=None):
@@ -132,9 +128,7 @@ def lazy(func, *resultclasses):
             cls._delegate_bytes = bytes in resultclasses
             cls._delegate_text = str in resultclasses
             if cls._delegate_bytes and cls._delegate_text:
-                raise ValueError(
-                    "Cannot call lazy() with both bytes and text return types."
-                )
+                raise ValueError("Cannot call lazy() with both bytes and text return types.")
             if cls._delegate_text:
                 cls.__str__ = cls.__text_cast
             elif cls._delegate_bytes:
@@ -238,10 +232,7 @@ def keep_lazy(*resultclasses):
 
         @wraps(func)
         def wrapper(*args, **kwargs):
-            if any(
-                isinstance(arg, Promise)
-                for arg in itertools.chain(args, kwargs.values())
-            ):
+            if any(isinstance(arg, Promise) for arg in itertools.chain(args, kwargs.values())):
                 return lazy_func(*args, **kwargs)
             return func(*args, **kwargs)
 
@@ -322,9 +313,7 @@ class LazyObject:
         """
         Must be implemented by subclasses to initialize the wrapped object.
         """
-        raise NotImplementedError(
-            "subclasses of LazyObject must provide a _setup() method"
-        )
+        raise NotImplementedError("subclasses of LazyObject must provide a _setup() method")
 
     # Because we have messed with __class__ below, we confuse pickle as to what
     # class we are pickling. We're going to have to initialize the wrapped

@@ -1,6 +1,7 @@
 import textwrap
 from dataclasses import dataclass
 from dataclasses import field
+from typing import *
 
 from ..base.model import Model
 

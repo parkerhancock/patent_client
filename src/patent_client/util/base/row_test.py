@@ -1,8 +1,10 @@
 from dataclasses import dataclass
-from .row import Row
-from .model import Model
 
 import pandas as pd
+
+from .model import Model
+from .row import Row
+
 
 def test_row():
     row = Row((("first_name", "John"), ("age", 25)))
@@ -19,6 +21,7 @@ def test_row():
     assert row.age == 25
     j = row.to_json()
     assert j == '{"first_name": "John", "age": 25}'
+
 
 def test_row_from_dataclass():
     @dataclass

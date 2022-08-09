@@ -1,9 +1,10 @@
-from yankee.util import clean_whitespace
-from yankee.xml import fields as f
+from typing import *
 
 from patent_client.epo.number_service.schema import DocumentIdSchema
 from patent_client.epo.util import Schema
 from patent_client.util.xml import ListField
+from yankee.util import clean_whitespace
+from yankee.xml import fields as f
 
 from .national_codes import LegalCodes
 
@@ -38,7 +39,7 @@ class CorrespondingPatentField(f.Combine):
     kind_code = f.Str(".//ops:L506EP")
 
     def combine_func(self, obj):
-        if not "country" in obj and not "doc_number" in obj:
+        if "country" not in obj and "doc_number" not in obj:
             return None
         return f"{obj.country}{obj.doc_number}{obj.get('kind_code', '')}"
 

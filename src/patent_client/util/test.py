@@ -1,8 +1,10 @@
-from collections import abc
 import random
-random.seed(1)
+from collections import abc
 
 from patent_client.util import Model
+
+random.seed(1)
+
 
 def compare_lists(list_1, list_2, key=""):
     for i, item in enumerate(list_1):
@@ -32,12 +34,13 @@ def compare_dicts(dict_1, dict_2, key=""):
         else:
             assert v == dict_2[k], f"At key {key}.{k}, {v} != {dict_2[k]}"
 
-def autogen_list_tests(name, l):
+
+def autogen_list_tests(name, lst):
     output = list()
-    idx = random.randint(0, len(l) - 1)
-    subel_name = f'{name}[{idx}]'
-    subel = l[idx]
-    output.append(f"assert len({name}) == {len(l)}")
+    idx = random.randint(0, len(lst) - 1)
+    subel_name = f"{name}[{idx}]"
+    subel = lst[idx]
+    output.append(f"assert len({name}) == {len(lst)}")
     if isinstance(subel, (abc.Mapping, Model)):
         output += autogen_dict_tests(subel_name, subel)
     elif isinstance(subel, abc.Sequence) and not isinstance(subel, str):
@@ -45,6 +48,7 @@ def autogen_list_tests(name, l):
     else:
         output.append(f"assert {subel_name} == {repr(subel)}")
     return output
+
 
 def autogen_dict_tests(name, d):
     output = list()
@@ -56,8 +60,9 @@ def autogen_dict_tests(name, d):
         elif isinstance(subel, abc.Sequence) and not isinstance(subel, str):
             output += autogen_list_tests(subel_name, subel)
         else:
-            output.append(f'assert {name}.{k} == {repr(v)}')
+            output.append(f"assert {name}.{k} == {repr(v)}")
     return output
+
 
 def autogen_tests(name, obj):
     if isinstance(obj, (abc.Mapping, Model)):

@@ -3,16 +3,14 @@ import math
 import re
 import time
 from collections import defaultdict
+
 import lxml.etree as ET
-
 from dateutil.parser import parse as parse_dt
-
 from patent_client.util import Manager
 
 from .schema.image_schema import ImageSchema
 from .schema.new_schema import ImageHtmlSchema
 from .schema.new_schema import PublicationSchema
-# from .schema import PublicationSchema
 from .session import session
 
 
@@ -20,7 +18,7 @@ def rate_limit(func, delay=0.001):
     last_call = time.time()
 
     def limited_func(*args, **kwargs):
-        wait = delay - (time.time() - last_call)
+        wait = delay - (time.time() - last_call)  # noqa: F823
         if wait > 0:
             time.sleep(wait)
         last_call = time.time()
@@ -81,7 +79,7 @@ class FullTextManager(Manager):
     @property
     def query(self):
         return self.generate_query(self.config.filter)
-        
+
     def generate_query(self, query):
         if "query" in query:
             return query["query"]
@@ -162,7 +160,6 @@ class FullTextManager(Manager):
         result = self.result_page_parser.load(tree)
         self.num_results = result.num_results
         return result.results
-        
 
     def get(self, *args, **kwargs):
         # Short-circuit this method to fetch a specific patent if only publication_number is passed

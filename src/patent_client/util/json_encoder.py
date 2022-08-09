@@ -1,5 +1,6 @@
 import datetime
 import json
+from typing import *
 
 
 class JsonEncoder(json.JSONEncoder):

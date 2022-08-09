@@ -1,8 +1,7 @@
 from __future__ import annotations
-from itertools import chain
 
 from copy import deepcopy
-from multiprocessing.sharedctypes import Value
+from itertools import chain
 from typing import Generic
 from typing import Iterator
 from typing import TypeVar
@@ -13,12 +12,13 @@ from .collections import Collection
 ModelType = TypeVar("ModelType")
 
 
-class ManagerConfig():
+class ManagerConfig:
     """
     Manager Configuration Class
 
     This class holds configuration information for a manager
     """
+
     def __init__(self):
         self.filter = dict()
         self.order_by = list()
@@ -28,12 +28,13 @@ class ManagerConfig():
         self.annotations = list()
 
     def __eq__(self, other):
-        return (self.filter == other.filter
-        and self.order_by == other.order_by
-        and self.options == other.options
-        and self.limit == other.limit
-        and self.offset == other.offset
-        and self.annotations == other.annotations
+        return (
+            self.filter == other.filter
+            and self.order_by == other.order_by
+            and self.options == other.options
+            and self.limit == other.limit
+            and self.offset == other.offset
+            and self.annotations == other.annotations
         )
 
 

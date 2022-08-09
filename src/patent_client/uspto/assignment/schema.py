@@ -1,9 +1,10 @@
 import datetime
+from typing import *
 
 import lxml.etree as ET
 from yankee.util import unzip_records
-from yankee.xml import Schema
 from yankee.xml import fields as f
+from yankee.xml import Schema
 
 from .model import Assignee
 from .model import Assignment
@@ -107,7 +108,10 @@ class CorrespondentAddressField(f.Combine):
 class AssignmentSchema(BaseSchema):
     __model__ = Assignment
     id = Str(".//id")
-    conveyance_text = Str(".//conveyanceText", formatter=lambda s: s.replace("(SEE DOCUMENT FOR DETAILS).", "").strip())
+    conveyance_text = Str(
+        ".//conveyanceText",
+        formatter=lambda s: s.replace("(SEE DOCUMENT FOR DETAILS).", "").strip(),
+    )
     date_produced = Date(".//dateProduced")
     corr_name = Str(".//corrName")
     corr_address = CorrespondentAddressField()

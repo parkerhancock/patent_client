@@ -4,15 +4,14 @@ COPIED FROM django.utils.date_parse
 https://github.com/django/django/blob/main/django/utils/date_parse.py
 
 """
-
 # We're using regular expressions rather than time.strptime because:
 # - They provide both validation and parsing.
 # - They're more flexible for datetimes.
 # - The date/datetime/time constructors produce friendlier error messages.
-
 import datetime
 
 from .regex_helper import _lazy_re_compile
+
 
 def get_fixed_timezone(offset):
     """Return a tzinfo instance with a fixed offset from UTC."""
@@ -23,11 +22,11 @@ def get_fixed_timezone(offset):
     name = sign + hhmm
     return datetime.timezone(datetime.timedelta(minutes=offset), name)
 
+
 date_re = _lazy_re_compile(r"(?P<year>\d{4})-(?P<month>\d{1,2})-(?P<day>\d{1,2})$")
 
 time_re = _lazy_re_compile(
-    r"(?P<hour>\d{1,2}):(?P<minute>\d{1,2})"
-    r"(?::(?P<second>\d{1,2})(?:[\.,](?P<microsecond>\d{1,6})\d{0,6})?)?$"
+    r"(?P<hour>\d{1,2}):(?P<minute>\d{1,2})" r"(?::(?P<second>\d{1,2})(?:[\.,](?P<microsecond>\d{1,6})\d{0,6})?)?$"
 )
 
 datetime_re = _lazy_re_compile(
@@ -146,11 +145,7 @@ def parse_duration(value):
     Also supports ISO 8601 representation and PostgreSQL's day-time interval
     format.
     """
-    match = (
-        standard_duration_re.match(value)
-        or iso8601_duration_re.match(value)
-        or postgres_interval_re.match(value)
-    )
+    match = standard_duration_re.match(value) or iso8601_duration_re.match(value) or postgres_interval_re.match(value)
     if match:
         kw = match.groupdict()
         sign = -1 if kw.pop("sign", "+") == "-" else 1

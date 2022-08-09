@@ -1,9 +1,8 @@
-from yankee.xml import fields as f
-
 from patent_client.epo.number_service.schema import DocumentIdSchema
 from patent_client.epo.published.schema.biblio import DocDbNumberField
 from patent_client.epo.util import Schema
 from patent_client.util.xml import ListField
+from yankee.xml import fields as f
 
 
 class PriorityClaimSchema(Schema):

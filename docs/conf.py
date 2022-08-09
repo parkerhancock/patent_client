@@ -40,16 +40,16 @@ extensions = [
     "sphinx.ext.autodoc",
     "sphinx.ext.doctest",
     "sphinx.ext.intersphinx",
-    #"sphinx.ext.todo",
+    # "sphinx.ext.todo",
     "sphinx_copybutton",
     "sphinx.ext.coverage",
     "sphinx.ext.mathjax",
     "sphinx.ext.ifconfig",
     "sphinx.ext.viewcode",
     "sphinx.ext.githubpages",
-    'sphinx.ext.napoleon', # Google & NumPy Style Autodocs
-    "myst_parser", # Myst-Style Markdown parser
-    "sphinxcontrib.mermaid", # Mermaid addon for MyST
+    "sphinx.ext.napoleon",  # Google & NumPy Style Autodocs
+    "myst_parser",  # Myst-Style Markdown parser
+    "sphinxcontrib.mermaid",  # Mermaid addon for MyST
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -83,11 +83,11 @@ pygments_style = None
 # -- Options for MyST Parsing ------------------------------------------------
 
 myst_enable_extensions = [
-    'colon_fence',
-    'html_image',
-    'linkify',
-    'replacements',
-    'smartquotes',
+    "colon_fence",
+    "html_image",
+    "linkify",
+    "replacements",
+    "smartquotes",
 ]
 
 # -- Options for Napoleon ----------------------------------------------------
@@ -102,20 +102,22 @@ napoleon_include_special_with_doc = False
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-html_static_path = ["_static",]
-html_theme = 'furo'
-html_logo = join('_static', "patent_client_compact_logo.svg")
+html_static_path = [
+    "_static",
+]
+html_theme = "furo"
+html_logo = join("_static", "patent_client_compact_logo.svg")
 html_theme_options = {
     #'light_logo': 'requests-cache-logo-light.webp',
     #'dark_logo': 'requests-cache-logo-dark.webp',
-    'sidebar_hide_name': True,
-    'light_css_variables': {
-        'color-brand-primary': '#0288d1',
-        'color-brand-content': '#2a5adf',
+    "sidebar_hide_name": True,
+    "light_css_variables": {
+        "color-brand-primary": "#0288d1",
+        "color-brand-content": "#2a5adf",
     },
-    'dark_css_variables': {
-        'color-brand-primary': '#5eb8ff',
-        'color-brand-content': '#368ce2',
+    "dark_css_variables": {
+        "color-brand-primary": "#5eb8ff",
+        "color-brand-content": "#368ce2",
     },
 }
 
@@ -134,7 +136,7 @@ html_theme_options = {
 #
 # html_sidebars = {}
 
-html_favicon = join('_static', 'favicon.ico')
+html_favicon = join("_static", "favicon.ico")
 
 # -- Options for HTMLHelp output ---------------------------------------------
 

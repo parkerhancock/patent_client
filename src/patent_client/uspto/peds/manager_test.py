@@ -1,5 +1,3 @@
-
-import pytest
 import datetime
 from collections import OrderedDict
 
@@ -7,6 +5,7 @@ import pytest
 from PyPDF2 import PdfFileReader
 
 from .model import USApplication
+
 
 class TestPatentExaminationData:
     def test_get_inventors(self):

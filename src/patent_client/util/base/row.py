@@ -1,21 +1,18 @@
 import importlib
-from collections import OrderedDict
-from collections import abc
-
 import json
-
+from collections import OrderedDict
 
 from ..json_encoder import JsonEncoder
 from .util import to_dict
 
 
 class Row(OrderedDict):
-    def __getattr__(self,  name):
+    def __getattr__(self, name):
         try:
             return self[name]
         except KeyError:
             raise AttributeError(name)
-    
+
     def __setattr__(self, name, value):
         self[name] = value
 

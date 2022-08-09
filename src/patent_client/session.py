@@ -1,12 +1,11 @@
-import datetime
-import requests_cache
-import requests
 from pathlib import Path
+
+import requests_cache
+from patent_client import SETTINGS
+from patent_client.version import __version__
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 
-from patent_client import SETTINGS
-from patent_client.version import __version__
 
 class PatentClientSession(requests_cache.CachedSession):
     def __init__(self):
