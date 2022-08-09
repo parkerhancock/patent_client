@@ -3,8 +3,7 @@ import time
 
 start = time.time()
 from pathlib import Path
-from .version import __version__
-from .settings import load_settings, DEFAULT_SETTINGS
+from .settings import load_settings
 
 SETTINGS = load_settings()
 
@@ -55,3 +54,14 @@ from patent_client.uspto.ptab.model import PtabProceeding  # isort:skip
 
 elapsed = time.time() - start
 logger.debug(f"Startup Complete!, took {elapsed:.3f} seconds")
+
+__all__ = [
+    "Inpadoc",
+    "Assignment",
+    "Patent",
+    "PublishedApplication",
+    "USApplication",
+    "PtabDecision",
+    "PtabDocument",
+    "PtabProceeding",
+]

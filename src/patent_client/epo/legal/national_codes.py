@@ -69,7 +69,7 @@ def create_code_database(excel_path):
         if meta == excel_path.name:
             logger.debug(f"Excel file {excel_path.name} already loaded. Skipping!")
             return
-    except sqlite3.OperationalError:
+    except (sqlite3.OperationalError, TypeError):
         pass
 
     cur.execute("CREATE TABLE IF NOT EXISTS meta (file_name text)")

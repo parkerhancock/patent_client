@@ -3,3 +3,5 @@ from .legal.model import Legal
 from .published.model import Images
 from .published.model import Inpadoc
 from .session import session
+
+__all__ = ["Family", "Legal", "Images", "Inpadoc", "session"]
