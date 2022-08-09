@@ -1,0 +1,171 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - Python Patent Clientbot/3.0.0 (parkerhancock@users.noreply.github.com)
+    method: GET
+    uri: http://ops.epo.org/3.2/rest-services/number-service/application/original/JP.(2006-147056).A.20060526/docdb
+  response:
+    body:
+      string: "<error><code>403</code><message>This request has been rejected due
+        to the violation of Fair Use policy</message><moreInfo>http://www.epo.org/searching/free/espacenet/fair-use.html</moreInfo>\n\t\t\t\t</error>\n\t\t\t"
+    headers:
+      Access-Control-Allow-Headers:
+      - Authorization
+      Access-Control-Allow-Methods:
+      - POST
+      Access-Control-Allow-Origin:
+      - '*'
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '207'
+      Content-Type:
+      - application/xml
+      Date:
+      - Tue, 09 Aug 2022 16:24:56 GMT
+      X-EPO-Client-IP:
+      - 170.55.186.235
+      X-EPO-Forwarded:
+      - '[170.55.186.235]'
+      X-Rejection-Reason:
+      - AnonymousQuotaPerDay
+    status:
+      code: 403
+      message: Forbidden
+- request:
+    body: grant_type=client_credentials
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Authorization:
+      - REDACTED
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '29'
+      Content-Type:
+      - application/x-www-form-urlencoded
+      User-Agent:
+      - Python Patent Clientbot/3.0.0 (parkerhancock@users.noreply.github.com)
+    method: POST
+    uri: https://ops.epo.org/3.2/auth/accesstoken
+  response:
+    body:
+      string: "{\n  \"refresh_token_expires_in\": \"0\",\n  \"api_product_list\":
+        \"[ops-prod]\",\n  \"api_product_list_json\": [\n    \"ops-prod\"\n  ],\n
+        \ \"organization_name\": \"epo\",\n  \"developer.email\": \"parker.hancock@protonmail.com\",\n
+        \ \"token_type\": \"BearerToken\",\n  \"issued_at\": \"1660062297333\",\n
+        \ \"client_id\": \"XRSKXZUZjTWDfOHvig79oYUn4IqMf2bt\",\n  \"access_token\":
+        \"AC7ju7cWVscGZHh06AqEPSEnQgdr\",\n  \"application_name\": \"a2dd7045-d0a4-4046-be5f-4be39eb8a7ec\",\n
+        \ \"scope\": \"core\",\n  \"expires_in\": \"1199\",\n  \"refresh_count\":
+        \"0\",\n  \"status\": \"approved\"\n}"
+    headers:
+      Access-Control-Allow-Headers:
+      - Authorization
+      Access-Control-Allow-Methods:
+      - POST
+      Access-Control-Allow-Origin:
+      - '*'
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '523'
+      Content-Type:
+      - application/json
+      Date:
+      - Tue, 09 Aug 2022 16:24:57 GMT
+      X-EPO-Client-IP:
+      - 170.55.186.235
+      X-EPO-Forwarded:
+      - '[170.55.186.235]'
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Authorization:
+      - REDACTED
+      Connection:
+      - keep-alive
+      User-Agent:
+      - Python Patent Clientbot/3.0.0 (parkerhancock@users.noreply.github.com)
+    method: GET
+    uri: http://ops.epo.org/3.2/rest-services/number-service/application/original/JP.(2006-147056).A.20060526/docdb
+  response:
+    body:
+      string: "<?xml version=\"1.0\" encoding=\"UTF-8\"?><?xml-stylesheet type=\"text/xsl\"
+        href=\"/3.2/style/numbers.xsl\"?>\n<ops:world-patent-data xmlns=\"http://www.epo.org/exchange\"
+        xmlns:ops=\"http://ops.epo.org\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">\n
+        \   <ops:meta name=\"status\" value=\"SUCCESS\"/>\n    <ops:meta name=\"version\"
+        value=\"11.07.65\"/>\n    <ops:standardization inputFormat=\"original\" outputFormat=\"docdb\">\n
+        \       <ops:input>\n            <ops:application-reference>\n                <document-id
+        document-id-type=\"original\">\n                    <country>JP</country>\n
+        \                   <doc-number>2006-147056</doc-number>\n                    <kind>A</kind>\n
+        \                   <date>20060526</date>\n                </document-id>\n
+        \           </ops:application-reference>\n        </ops:input>\n        <ops:output>\n
+        \           <ops:application-reference>\n                <document-id document-id-type=\"docdb\">\n
+        \                   <country>JP</country>\n                    <doc-number>2006147056</doc-number>\n
+        \                   <kind>A</kind>\n                    <date>20060526</date>\n
+        \               </document-id>\n            </ops:application-reference>\n
+        \       </ops:output>\n    </ops:standardization>\n</ops:world-patent-data>"
+    headers:
+      Access-Control-Allow-Headers:
+      - Authorization
+      Access-Control-Allow-Methods:
+      - POST
+      Access-Control-Allow-Origin:
+      - '*'
+      Cache-Control:
+      - no-cache
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1224'
+      Content-Type:
+      - application/xml;charset=utf-8
+      Date:
+      - Tue, 09 Aug 2022 16:24:57 GMT
+      ETag:
+      - '"013ae5887ff2e6621ab43a4ab3d3a91ac"'
+      Pragma:
+      - no-cache
+      Server:
+      - Apache
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      Vary:
+      - Accept
+      X-API:
+      - ops-v3.2
+      X-EPO-Client-IP:
+      - 170.55.186.235
+      X-EPO-Forwarded:
+      - '[170.55.186.235]'
+      X-Elapsed-Time:
+      - '37'
+      X-IndividualQuotaPerHour-Used:
+      - '96258'
+      X-RegisteredQuotaPerWeek-Used:
+      - '809562'
+      X-Throttling-Control:
+      - busy (images=green:100, inpadoc=green:45, other=green:1000, retrieval=green:100,
+        search=green:15)
+    status:
+      code: 200
+      message: OK
+version: 1

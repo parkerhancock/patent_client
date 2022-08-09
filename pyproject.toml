@@ -24,7 +24,7 @@ exclude = ["./**/cassettes/**/*",]
 
 
 [tool.poetry.dependencies]
-python = "^3.8"
+python = "^3.7.1"
 
 # Required Dependencies
 lxml = "^4.9.0"
@@ -36,6 +36,8 @@ inflection = "^0.5.1"
 openpyxl = "^3.0.10"
 colorlog = "^6.6.0"
 yankee = "^0.1.30"
+PyYAML = "^6.0"
+ujson = "^5.4.0"
 
 # Documentation Dependencies
 furo                       = {optional=true, version="^2022.6"}
@@ -48,10 +50,7 @@ sphinx-copybutton          = {optional=true, version=">=0.5"}
 sphinx-design              = {optional=true, version=">=0.2"}
 sphinx-notfound-page       = {optional=true, version=">=0.8"}
 sphinxcontrib-apidoc       = {optional=true, version="^0.3"}
-sphinxext-opengraph        = {optional=true, version=">=0.6"}
 sphinxcontrib-mermaid      = {optional=true, version="^0.7.1"}
-PyYAML = "^6.0"
-ujson = "^5.4.0"
 
 
 [tool.poetry.dev-dependencies]
@@ -64,8 +63,7 @@ pytest-cov = "^3.0.0"
 pre-commit = "^2.19.0"
 pytest-xdist = "^2.5.0"
 mypy = "^0.961"
-black = {version = "^22.6.0", allow-prereleases = true}
-pandas = "^1.4"
+black = {version = "^22.6.0", allow-prereleases = true} 
 
 # For convenience in local development
 nox                   = "^2022.1.7"

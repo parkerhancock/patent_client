@@ -85,7 +85,8 @@ def parse_date(value):
     try:
         return datetime.date.fromisoformat(value)
     except ValueError:
-        if match := date_re.match(value):
+        match = date_re.match(value)
+        if match:
             kw = {k: int(v) for k, v in match.groupdict().items()}
             return datetime.date(**kw)
 
@@ -104,7 +105,8 @@ def parse_time(value):
         # remove the time zone offset.
         return datetime.time.fromisoformat(value).replace(tzinfo=None)
     except ValueError:
-        if match := time_re.match(value):
+        match = time_re.match(value)
+        if match:
             kw = match.groupdict()
             kw["microsecond"] = kw["microsecond"] and kw["microsecond"].ljust(6, "0")
             kw = {k: int(v) for k, v in kw.items() if v is not None}
@@ -121,7 +123,8 @@ def parse_datetime(value):
     try:
         return datetime.datetime.fromisoformat(value)
     except ValueError:
-        if match := datetime_re.match(value):
+        match = datetime_re.match(value)
+        if match:
             kw = match.groupdict()
             kw["microsecond"] = kw["microsecond"] and kw["microsecond"].ljust(6, "0")
             tzinfo = kw.pop("tzinfo")

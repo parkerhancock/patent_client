@@ -1,0 +1,78 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Authorization:
+      - REDACTED
+      Connection:
+      - keep-alive
+      User-Agent:
+      - Python Patent Clientbot/3.0.0 (parkerhancock@users.noreply.github.com)
+    method: GET
+    uri: http://ops.epo.org/3.2/rest-services/number-service/application/docdb/JP.2006147056.A.20060526/original
+  response:
+    body:
+      string: "<?xml version=\"1.0\" encoding=\"UTF-8\"?><?xml-stylesheet type=\"text/xsl\"
+        href=\"/3.2/style/numbers.xsl\"?>\n<ops:world-patent-data xmlns=\"http://www.epo.org/exchange\"
+        xmlns:ops=\"http://ops.epo.org\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">\n
+        \   <ops:meta name=\"status\" value=\"SUCCESS\"/>\n    <ops:meta name=\"version\"
+        value=\"11.07.65\"/>\n    <ops:standardization inputFormat=\"docdb\" outputFormat=\"original\">\n
+        \       <ops:input>\n            <ops:application-reference>\n                <document-id
+        document-id-type=\"docdb\">\n                    <country>JP</country>\n                    <doc-number>2006147056</doc-number>\n
+        \                   <kind>A</kind>\n                    <date>20060526</date>\n
+        \               </document-id>\n            </ops:application-reference>\n
+        \       </ops:input>\n        <ops:output>\n            <ops:application-reference>\n
+        \               <document-id document-id-type=\"original\">\n                    <country>JP</country>\n
+        \                   <doc-number>2006147056</doc-number>\n                    <kind>A</kind>\n
+        \                   <date>20060526</date>\n                </document-id>\n
+        \           </ops:application-reference>\n        </ops:output>\n    </ops:standardization>\n</ops:world-patent-data>"
+    headers:
+      Access-Control-Allow-Headers:
+      - Authorization
+      Access-Control-Allow-Methods:
+      - POST
+      Access-Control-Allow-Origin:
+      - '*'
+      Cache-Control:
+      - no-cache
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1223'
+      Content-Type:
+      - application/xml;charset=utf-8
+      Date:
+      - Tue, 09 Aug 2022 16:24:58 GMT
+      ETag:
+      - '"0eabd73c986de512181a1280ca0bf37e5"'
+      Pragma:
+      - no-cache
+      Server:
+      - Apache
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      Vary:
+      - Accept
+      X-API:
+      - ops-v3.2
+      X-EPO-Client-IP:
+      - 170.55.186.235
+      X-EPO-Forwarded:
+      - '[170.55.186.235]'
+      X-Elapsed-Time:
+      - '42'
+      X-IndividualQuotaPerHour-Used:
+      - '176696'
+      X-RegisteredQuotaPerWeek-Used:
+      - '890000'
+      X-Throttling-Control:
+      - busy (images=green:100, inpadoc=green:45, other=green:1000, retrieval=green:100,
+        search=green:15)
+    status:
+      code: 200
+      message: OK
+version: 1

@@ -15,12 +15,12 @@ def vcr_config():
     return {
         # Replace the Authorization request header with "DUMMY" in cassettes
         "filter_headers": [('Authorization', 'REDACTED')],
-        "serializer": "json",
-        "path_transformer": VCR.ensure_suffix(".json"),
+        #"serializer": "json",
+        #"path_transformer": VCR.ensure_suffix(".json"),
         "record_mode": "once"
     }
 
 def pytest_collection_modifyitems(items):
     for item in items:
         item.add_marker(pytest.mark.vcr)
-        item.add_marker(pytest.mark.block_network)
+        #item.add_marker(pytest.mark.block_network)

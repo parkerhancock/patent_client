@@ -1,19 +1,45 @@
 import sqlite3
 from pathlib import Path
-from venv import create
+import datetime
+import re
 
 import lxml.etree as ET
 from openpyxl import load_workbook
 
 from patent_client.epo.session import session
+from patent_client import SETTINGS
 
-dir = Path(__file__).parent
+dir = Path(SETTINGS.DEFAULT.BASE_DIR).expanduser() / "epo"
+dir.mkdir(exist_ok=True, parents=True)
 db_location = dir / "legal_codes.sqlite"
 
+import logging
+logger = logging.getLogger(__name__)
+
+def current_date():
+    return datetime.datetime.now().date()
 
 def generate_legal_code_db():
-    path = get_spreadsheet()
-    create_code_database(path)
+    current = has_current_spreadsheet()
+    if current:
+        logger.debug("Legal Code Database is Current - skipping database creation")
+    else:
+        logger.debug("Legal Code Database is out of date - creating legal code database")
+        path = get_spreadsheet()
+        create_code_database(path)
+
+def has_current_spreadsheet():
+    con = sqlite3.connect(db_location)
+    cur = con.cursor()
+    try:
+        fname = cur.execute("SELECT * FROM meta").fetchone()[0]
+        date_string = re.search(r"legal_code_descriptions_(\d+)\.xlsx", fname).group(1)
+        date = datetime.datetime.strptime(date_string, "%Y%m%d").date()
+        age = datetime.datetime.now().date() - date
+        logger.debug(f"Legal Code Database is {age} days old")
+        return age.days <= 7
+    except (sqlite3.OperationalError, TypeError):
+        return False
 
 
 def get_spreadsheet():
@@ -38,6 +64,7 @@ def create_code_database(excel_path):
     try:
         meta = cur.execute("SELECT * FROM meta").fetchone()[0]
         if meta == excel_path.name:
+            logger.debug(f"Excel file {excel_path.name} already loaded. Skipping!")
             return
     except sqlite3.OperationalError:
         pass
@@ -47,7 +74,6 @@ def create_code_database(excel_path):
     wb = load_workbook(excel_path)
     data = list(tuple(i.strip() for i in r) for r in wb[wb.sheetnames[0]].iter_rows(values_only=True))
     rows = data[1:]
-    cur.execute("""DROP TABLE IF EXISTS legal_codes""")
     cur.execute(
         """CREATE TABLE legal_codes (
     country_code text, 

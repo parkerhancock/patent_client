@@ -9,6 +9,7 @@ Notes:
 from os import getenv
 from os.path import join
 from shutil import rmtree
+from pathlib import Path
 
 import nox
 from nox_poetry import session
@@ -21,20 +22,19 @@ LIVE_DOCS_IGNORE = ['*.pyc', '*.tmp', join('**', 'modules', '*')]
 LIVE_DOCS_WATCH = ['requests_cache', 'examples']
 CLEAN_DIRS = ['dist', 'build', join('docs', '_build'), join('docs', 'modules')]
 
-PYTHON_VERSIONS = ['3.8', '3.9', '3.10']
+PYTHON_VERSIONS = ['3.7', '3.8', '3.9', '3.10']
 SOURCE_FILES = ["src",]
 INTEGRATION_TESTS = join('tests', 'integration')
-STRESS_TEST_MULTIPLIER = 10
 DEFAULT_COVERAGE_FORMATS = ['html', 'term']
 # Run tests in parallel, grouped by test module
-XDIST_ARGS = '--numprocesses=3'
+XDIST_ARGS = '--numprocesses=auto'
 
 
 @session(python=PYTHON_VERSIONS)
 def test(session):
     """Run tests in a separate virtualenv per python version"""
     test_paths = session.posargs or SOURCE_FILES
-    session.install('.', 'pytest', 'pytest-xdist', 'requests-mock', 'rich', 'timeout-decorator')
+    session.install('.', 'pandas', 'vcrpy', 'pytest', 'pytest-xdist', 'pytest-recording', 'rich', 'timeout-decorator')
 
     cmd = f'pytest -rs {XDIST_ARGS}'
     session.run(*cmd.split(' '), *test_paths)
@@ -52,12 +52,18 @@ def clean(session):
     for dir in CLEAN_DIRS:
         print(f'Removing {dir}')
         rmtree(dir, ignore_errors=True)
-
+    
+@session(python=False)
+def clean_cassettes(session):
+    """Clean up VCR cassettes"""
+    for dir in Path(__file__).parent.glob("**/cassettes/*"):
+        print(f'Removing {dir}')
+        rmtree(dir, ignore_errors=True)
 
 @session(python=False, name='cov')
 def coverage(session):
     """Run tests and generate coverage report"""
-    cmd = f'pytest {UNIT_TESTS} {INTEGRATION_TESTS} -rs {XDIST_ARGS} --cov'.split(' ')
+    cmd = f'pytest {INTEGRATION_TESTS} -rs {XDIST_ARGS} --cov'.split(' ')
 
     # Add coverage formats
     cov_formats = session.posargs or DEFAULT_COVERAGE_FORMATS

@@ -1,0 +1,253 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - Python Patent Clientbot/3.0.0 (parkerhancock@users.noreply.github.com)
+    method: GET
+    uri: http://ops.epo.org/3.2/rest-services/family/publication/docdb/EP1000000A1
+  response:
+    body:
+      string: "<error><code>403</code><message>This request has been rejected due
+        to the violation of Fair Use policy</message><moreInfo>http://www.epo.org/searching/free/espacenet/fair-use.html</moreInfo>\n\t\t\t\t</error>\n\t\t\t"
+    headers:
+      Access-Control-Allow-Headers:
+      - Authorization
+      Access-Control-Allow-Methods:
+      - POST
+      Access-Control-Allow-Origin:
+      - '*'
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '207'
+      Content-Type:
+      - application/xml
+      Date:
+      - Tue, 09 Aug 2022 16:24:56 GMT
+      X-EPO-Client-IP:
+      - 170.55.186.235
+      X-EPO-Forwarded:
+      - '[170.55.186.235]'
+      X-Rejection-Reason:
+      - AnonymousQuotaPerDay
+    status:
+      code: 403
+      message: Forbidden
+- request:
+    body: grant_type=client_credentials
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Authorization:
+      - REDACTED
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '29'
+      Content-Type:
+      - application/x-www-form-urlencoded
+      User-Agent:
+      - Python Patent Clientbot/3.0.0 (parkerhancock@users.noreply.github.com)
+    method: POST
+    uri: https://ops.epo.org/3.2/auth/accesstoken
+  response:
+    body:
+      string: "{\n  \"refresh_token_expires_in\": \"0\",\n  \"api_product_list\":
+        \"[ops-prod]\",\n  \"api_product_list_json\": [\n    \"ops-prod\"\n  ],\n
+        \ \"organization_name\": \"epo\",\n  \"developer.email\": \"parker.hancock@protonmail.com\",\n
+        \ \"token_type\": \"BearerToken\",\n  \"issued_at\": \"1660062297315\",\n
+        \ \"client_id\": \"XRSKXZUZjTWDfOHvig79oYUn4IqMf2bt\",\n  \"access_token\":
+        \"MTPrufMtCDGEqjZ1zgQDNO6AV38j\",\n  \"application_name\": \"a2dd7045-d0a4-4046-be5f-4be39eb8a7ec\",\n
+        \ \"scope\": \"core\",\n  \"expires_in\": \"1199\",\n  \"refresh_count\":
+        \"0\",\n  \"status\": \"approved\"\n}"
+    headers:
+      Access-Control-Allow-Headers:
+      - Authorization
+      Access-Control-Allow-Methods:
+      - POST
+      Access-Control-Allow-Origin:
+      - '*'
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '523'
+      Content-Type:
+      - application/json
+      Date:
+      - Tue, 09 Aug 2022 16:24:57 GMT
+      X-EPO-Client-IP:
+      - 170.55.186.235
+      X-EPO-Forwarded:
+      - '[170.55.186.235]'
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Authorization:
+      - REDACTED
+      Connection:
+      - keep-alive
+      User-Agent:
+      - Python Patent Clientbot/3.0.0 (parkerhancock@users.noreply.github.com)
+    method: GET
+    uri: http://ops.epo.org/3.2/rest-services/family/publication/docdb/EP1000000A1
+  response:
+    body:
+      string: "<?xml version=\"1.0\" encoding=\"UTF-8\"?><?xml-stylesheet type=\"text/xsl\"
+        href=\"/3.2/style/family.xsl\"?>\n<ops:world-patent-data xmlns=\"http://www.epo.org/exchange\"
+        xmlns:ops=\"http://ops.epo.org\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">\n
+        \   <ops:patent-family legal=\"false\" total-result-count=\"6\">\n        <ops:publication-reference>\n
+        \           <document-id document-id-type=\"docdb\">\n                <country>EP</country>\n
+        \               <doc-number>1000000</doc-number>\n                <kind>A1</kind>\n
+        \           </document-id>\n        </ops:publication-reference>\n        <ops:family-member
+        family-id=\"19768124\">\n            <publication-reference>\n                <document-id
+        document-id-type=\"docdb\">\n                    <country>EP</country>\n                    <doc-number>1000000</doc-number>\n
+        \                   <kind>A1</kind>\n                    <date>20000517</date>\n
+        \               </document-id>\n                <document-id document-id-type=\"epodoc\">\n
+        \                   <doc-number>EP1000000</doc-number>\n                    <date>20000517</date>\n
+        \               </document-id>\n            </publication-reference>\n            <application-reference
+        doc-id=\"17397285\" is-representative=\"YES\">\n                <document-id
+        document-id-type=\"docdb\">\n                    <country>EP</country>\n                    <doc-number>99203729</doc-number>\n
+        \                   <kind>A</kind>\n                    <date>19991108</date>\n
+        \               </document-id>\n            </application-reference>\n            <priority-claim
+        sequence=\"1\" kind=\"national\">\n                <document-id document-id-type=\"docdb\">\n
+        \                   <country>NL</country>\n                    <doc-number>1010536</doc-number>\n
+        \                   <kind>A</kind>\n                    <date>19981112</date>\n
+        \               </document-id>\n                <priority-active-indicator>YES</priority-active-indicator>\n
+        \           </priority-claim>\n        </ops:family-member>\n        <ops:family-member
+        family-id=\"19768124\">\n            <publication-reference>\n                <document-id
+        document-id-type=\"docdb\">\n                    <country>EP</country>\n                    <doc-number>1000000</doc-number>\n
+        \                   <kind>B1</kind>\n                    <date>20030212</date>\n
+        \               </document-id>\n                <document-id document-id-type=\"epodoc\">\n
+        \                   <doc-number>EP1000000</doc-number>\n                    <date>20030212</date>\n
+        \               </document-id>\n            </publication-reference>\n            <application-reference
+        doc-id=\"17397285\" is-representative=\"YES\">\n                <document-id
+        document-id-type=\"docdb\">\n                    <country>EP</country>\n                    <doc-number>99203729</doc-number>\n
+        \                   <kind>A</kind>\n                    <date>19991108</date>\n
+        \               </document-id>\n            </application-reference>\n            <priority-claim
+        sequence=\"1\" kind=\"national\">\n                <document-id document-id-type=\"docdb\">\n
+        \                   <country>NL</country>\n                    <doc-number>1010536</doc-number>\n
+        \                   <kind>A</kind>\n                    <date>19981112</date>\n
+        \               </document-id>\n                <priority-active-indicator>YES</priority-active-indicator>\n
+        \           </priority-claim>\n        </ops:family-member>\n        <ops:family-member
+        family-id=\"19768124\">\n            <publication-reference>\n                <document-id
+        document-id-type=\"docdb\">\n                    <country>AT</country>\n                    <doc-number>232441</doc-number>\n
+        \                   <kind>T</kind>\n                    <date>20030215</date>\n
+        \               </document-id>\n                <document-id document-id-type=\"epodoc\">\n
+        \                   <doc-number>AT232441</doc-number>\n                    <date>20030215</date>\n
+        \               </document-id>\n            </publication-reference>\n            <application-reference
+        doc-id=\"1370469\">\n                <document-id document-id-type=\"docdb\">\n
+        \                   <country>AT</country>\n                    <doc-number>99203729</doc-number>\n
+        \                   <kind>T</kind>\n                    <date>19991108</date>\n
+        \               </document-id>\n            </application-reference>\n            <priority-claim
+        sequence=\"1\" kind=\"national\">\n                <document-id document-id-type=\"docdb\">\n
+        \                   <country>NL</country>\n                    <doc-number>1010536</doc-number>\n
+        \                   <kind>A</kind>\n                    <date>19981112</date>\n
+        \               </document-id>\n                <priority-active-indicator>YES</priority-active-indicator>\n
+        \           </priority-claim>\n        </ops:family-member>\n        <ops:family-member
+        family-id=\"19768124\">\n            <publication-reference>\n                <document-id
+        document-id-type=\"docdb\">\n                    <country>DE</country>\n                    <doc-number>69905327</doc-number>\n
+        \                   <kind>D1</kind>\n                    <date>20030320</date>\n
+        \               </document-id>\n                <document-id document-id-type=\"epodoc\">\n
+        \                   <doc-number>DE69905327D1</doc-number>\n                    <date>20030320</date>\n
+        \               </document-id>\n            </publication-reference>\n            <application-reference
+        doc-id=\"14768233\">\n                <document-id document-id-type=\"docdb\">\n
+        \                   <country>DE</country>\n                    <doc-number>69905327</doc-number>\n
+        \                   <kind>T</kind>\n                    <date>19991108</date>\n
+        \               </document-id>\n            </application-reference>\n            <priority-claim
+        sequence=\"1\" kind=\"national\">\n                <document-id document-id-type=\"docdb\">\n
+        \                   <country>NL</country>\n                    <doc-number>1010536</doc-number>\n
+        \                   <kind>A</kind>\n                    <date>19981112</date>\n
+        \               </document-id>\n                <priority-active-indicator>YES</priority-active-indicator>\n
+        \           </priority-claim>\n        </ops:family-member>\n        <ops:family-member
+        family-id=\"19768124\">\n            <publication-reference>\n                <document-id
+        document-id-type=\"docdb\">\n                    <country>NL</country>\n                    <doc-number>1010536</doc-number>\n
+        \                   <kind>C2</kind>\n                    <date>20000515</date>\n
+        \               </document-id>\n                <document-id document-id-type=\"epodoc\">\n
+        \                   <doc-number>NL1010536C</doc-number>\n                    <date>20000515</date>\n
+        \               </document-id>\n            </publication-reference>\n            <application-reference
+        doc-id=\"41488391\">\n                <document-id document-id-type=\"docdb\">\n
+        \                   <country>NL</country>\n                    <doc-number>1010536</doc-number>\n
+        \                   <kind>A</kind>\n                    <date>19981112</date>\n
+        \               </document-id>\n            </application-reference>\n            <priority-claim
+        sequence=\"1\" kind=\"national\">\n                <document-id document-id-type=\"docdb\">\n
+        \                   <country>NL</country>\n                    <doc-number>1010536</doc-number>\n
+        \                   <kind>A</kind>\n                    <date>19981112</date>\n
+        \               </document-id>\n                <priority-active-indicator>YES</priority-active-indicator>\n
+        \           </priority-claim>\n        </ops:family-member>\n        <ops:family-member
+        family-id=\"19768124\">\n            <publication-reference>\n                <document-id
+        document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>6093011</doc-number>\n
+        \                   <kind>A</kind>\n                    <date>20000725</date>\n
+        \               </document-id>\n                <document-id document-id-type=\"epodoc\">\n
+        \                   <doc-number>US6093011</doc-number>\n                    <date>20000725</date>\n
+        \               </document-id>\n            </publication-reference>\n            <application-reference
+        doc-id=\"48654472\">\n                <document-id document-id-type=\"docdb\">\n
+        \                   <country>US</country>\n                    <doc-number>20685698</doc-number>\n
+        \                   <kind>A</kind>\n                    <date>19981208</date>\n
+        \               </document-id>\n            </application-reference>\n            <priority-claim
+        sequence=\"1\" kind=\"national\">\n                <document-id document-id-type=\"docdb\">\n
+        \                   <country>NL</country>\n                    <doc-number>1010536</doc-number>\n
+        \                   <kind>A</kind>\n                    <date>19981112</date>\n
+        \               </document-id>\n                <priority-active-indicator>YES</priority-active-indicator>\n
+        \           </priority-claim>\n        </ops:family-member>\n    </ops:patent-family>\n</ops:world-patent-data>"
+    headers:
+      Access-Control-Allow-Headers:
+      - Authorization
+      Access-Control-Allow-Methods:
+      - POST
+      Access-Control-Allow-Origin:
+      - '*'
+      Cache-Control:
+      - no-cache
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '8853'
+      Content-Type:
+      - application/xml;charset=utf-8
+      Date:
+      - Tue, 09 Aug 2022 16:24:57 GMT
+      ETag:
+      - '"040f886b3fa3aa7f21e5ba45a36bbb04e"'
+      Pragma:
+      - no-cache
+      Server:
+      - Apache
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      Vary:
+      - Accept
+      X-API:
+      - ops-v3.2
+      X-EPO-Client-IP:
+      - 170.55.186.235
+      X-EPO-Forwarded:
+      - '[170.55.186.235]'
+      X-Elapsed-Time:
+      - '1'
+      X-IndividualQuotaPerHour-Used:
+      - '95034'
+      X-RegisteredQuotaPerWeek-Used:
+      - '808338'
+      X-Throttling-Control:
+      - busy (images=green:100, inpadoc=green:45, other=green:1000, retrieval=green:100,
+        search=green:15)
+    status:
+      code: 200
+      message: OK
+version: 1
