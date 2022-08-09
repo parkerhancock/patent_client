@@ -14,7 +14,7 @@ def load_settings_from_env():
     for k, v in os.environ.items():
         if not k.startswith("PATENT_CLIENT_"):
             continue
-        k = k.replace("PATENT_CLIENT_", "")
+        k = k.replace("PATENT_CLIENT_")
         if "__" in k:
             section, k = k.split("__")
         else:

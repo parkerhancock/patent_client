@@ -18,19 +18,16 @@ class NumberServiceError:
 error_re = re.compile(r"(?P<code>pBRE\d{3,}) (?P<message>.*) (?P<kind>WARNING|ERROR)$")
 message_re = re.compile(r"(?P<code>BR(E|W)\d{3,}) (?P<message>.*)$")
 
-
 def get_errors(string):
     match = error_re.search(string)
     return match.groupdict() if match else None
-
 
 def get_messages(string):
     match = message_re.search(string)
     return match.groupdict() if match else None
 
-
 def build_error_dir():
-
+    
     error_text = (base_dir / "errors.txt").read_text()
     errors = [get_errors(err) for err in error_text.split("\n")]
     message_text = (base_dir / "messages.txt").read_text()
