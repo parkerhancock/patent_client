@@ -78,7 +78,7 @@ def create_code_database(excel_path):
     data = list(tuple(i.strip() for i in r) for r in wb[wb.sheetnames[0]].iter_rows(values_only=True))
     rows = data[1:]
     cur.execute(
-        """CREATE TABLE legal_codes (
+        """CREATE TABLE legal_codes IF NOT EXISTS (
     country_code text,
     event_code text,
     date_created text,
