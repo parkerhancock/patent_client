@@ -32,7 +32,7 @@ def generate_legal_code_db():
 
 
 def has_current_spreadsheet():
-    con = sqlite3.connect(db_location)
+    con = sqlite3.connect(db_location, timeout=30)
     cur = con.cursor()
     try:
         fname = cur.execute("SELECT * FROM meta").fetchone()[0]
@@ -62,14 +62,14 @@ def get_spreadsheet():
 
 
 def create_code_database(excel_path):
-    con = sqlite3.connect(db_location)
+    con = sqlite3.connect(db_location, timeout=30)
     cur = con.cursor()
     try:
         meta = cur.execute("SELECT * FROM meta").fetchone()[0]
         if meta == excel_path.name:
             logger.debug(f"Excel file {excel_path.name} already loaded. Skipping!")
             return
-    except sqlite3.OperationalError:
+    except (sqlite3.OperationalError, TypeError):
         pass
 
     cur.execute("CREATE TABLE IF NOT EXISTS meta (file_name text)")
@@ -78,7 +78,7 @@ def create_code_database(excel_path):
     data = list(tuple(i.strip() for i in r) for r in wb[wb.sheetnames[0]].iter_rows(values_only=True))
     rows = data[1:]
     cur.execute(
-        """CREATE TABLE legal_codes (
+        """CREATE TABLE IF NOT EXISTS legal_codes (
     country_code text,
     event_code text,
     date_created text,
@@ -90,14 +90,14 @@ def create_code_database(excel_path):
     event_class text,
     event_class_description text)"""
     )
-    cur.execute("""CREATE INDEX country_event_code ON legal_codes (country_code, event_code)""")
+    cur.execute("""CREATE INDEX IF NOT EXISTS country_event_code ON legal_codes (country_code, event_code)""")
     cur.executemany("INSERT INTO legal_codes values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", rows)
     con.commit()
 
 
 class LegalCodes:
     def __init__(self):
-        self.connection = sqlite3.connect(db_location)
+        self.connection = sqlite3.connect(db_location, timeout=30)
         self.connection.row_factory = sqlite3.Row
 
     def get_code_data(self, country_code, legal_code):

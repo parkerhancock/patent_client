@@ -5,3 +5,13 @@ from .peds import USApplication
 from .ptab import PtabDecision
 from .ptab import PtabDocument
 from .ptab import PtabProceeding
+
+__all__ = [
+    "Assignment",
+    "Patent",
+    "PublishedApplication",
+    "USApplication",
+    "PtabDecision",
+    "PtabDocument",
+    "PtabProceeding",
+]

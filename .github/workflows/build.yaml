@@ -38,15 +38,18 @@ jobs:
         with:
           path: .venv
           key: venv-${{ matrix.python-version }}-latest-${{ hashFiles('poetry.lock') }}
+          restore-keys: venv-${{ matrix.python-version }}-latest-
       - name: Install dependencies
         if: steps.cache.outputs.cache-hit != 'true'
-        run: poetry install -v
+        run: poetry install -v && poetry run pip install pandas
 
       # Run tests with coverage report
       - name: Run tests
         run: |
           source $VENV
           nox -e cov -- xml
+        env:
+          PATENT_CLIENT_BASE_DIR: "."
       # Latest python version: send coverage report to codecov
       - name: "Upload coverage report to Codecov"
         if: ${{ matrix.python-version == env.LATEST_PY_VERSION }}
