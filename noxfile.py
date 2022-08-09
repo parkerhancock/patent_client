@@ -78,7 +78,7 @@ def clean_cassettes(session):
 @session(python=False, name="cov")
 def coverage(session):
     """Run tests and generate coverage report"""
-    cmd = f"pytest {SOURCE_FILES} --cov".split(" ")
+    cmd = f"pytest ./src -rs {XDIST_ARGS} --cov".split(" ")
 
     # Add coverage formats
     cov_formats = session.posargs or DEFAULT_COVERAGE_FORMATS
