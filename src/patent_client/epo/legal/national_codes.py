@@ -90,7 +90,7 @@ def create_code_database(excel_path):
     event_class text,
     event_class_description text)"""
     )
-    cur.execute("""CREATE INDEX country_event_code ON legal_codes (country_code, event_code)""")
+    cur.execute("""CREATE INDEX IF NOT EXISTS country_event_code ON legal_codes (country_code, event_code)""")
     cur.executemany("INSERT INTO legal_codes values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", rows)
     con.commit()
 
