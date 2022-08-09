@@ -32,7 +32,7 @@ def generate_legal_code_db():
 
 
 def has_current_spreadsheet():
-    con = sqlite3.connect(db_location)
+    con = sqlite3.connect(db_location, timeout=30)
     cur = con.cursor()
     try:
         fname = cur.execute("SELECT * FROM meta").fetchone()[0]
@@ -62,7 +62,7 @@ def get_spreadsheet():
 
 
 def create_code_database(excel_path):
-    con = sqlite3.connect(db_location)
+    con = sqlite3.connect(db_location, timeout=30)
     cur = con.cursor()
     try:
         meta = cur.execute("SELECT * FROM meta").fetchone()[0]
@@ -97,7 +97,7 @@ def create_code_database(excel_path):
 
 class LegalCodes:
     def __init__(self):
-        self.connection = sqlite3.connect(db_location)
+        self.connection = sqlite3.connect(db_location, timeout=30)
         self.connection.row_factory = sqlite3.Row
 
     def get_code_data(self, country_code, legal_code):
