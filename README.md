@@ -1,6 +1,6 @@
 [![patent_client_logo](docs/_static/patent_client_logo.svg)](https://patent-client.readthedocs.io)
 
-[![Build](https://github.com/parkerhancock/patent-client/actions/workflows/build.yml/badge.svg)](https://github.com/parkerhancock/patent-client/actions/workflows/build.yml)
+[![Build](https://github.com/parkerhancock/patent_client/actions/workflows/build.yaml/badge.svg)](https://github.com/parkerhancock/patent_client/actions/workflows/build.yaml)
 [![codecov](https://codecov.io/gh/parkerhancock/patent_client/branch/master/graph/badge.svg?token=pWsiQLHi6r)](https://codecov.io/gh/parkerhancock/patent_client)
 [![Documentation](https://img.shields.io/readthedocs/patent-client/stable)](https://patent-client.readthedocs.io/en/stable/)
 
