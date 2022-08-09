@@ -38,6 +38,7 @@ jobs:
         with:
           path: .venv
           key: venv-${{ matrix.python-version }}-latest-${{ hashFiles('poetry.lock') }}
+          restore-keys: venv-${{ matrix.python-version }}-latest-
       - name: Install dependencies
         if: steps.cache.outputs.cache-hit != 'true'
         run: poetry install -v && poetry run pip install pandas
