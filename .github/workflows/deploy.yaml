@@ -53,7 +53,7 @@ jobs:
         if: steps.cache.outputs.cache-hit != 'true'
         run: |
           poetry add requests@${{ matrix.requests-version }} --lock
-          poetry install -v -E all
+          poetry install -v && poetry run pip install pandas
       # Run unit + integration tests, with additional stress tests
       - name: Run tests
         run: |
