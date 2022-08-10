@@ -10,8 +10,8 @@ import lxml.etree as ET
 from dateutil.parser import parse as parse_dt
 from patent_client.util import Manager
 
-from .schema import ImageSchema
-from .schema import ImageHtmlSchema
+from .schema.images import ImageSchema
+from .schema.images import ImageHtmlSchema
 from .session import session
 
 
