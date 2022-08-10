@@ -98,7 +98,7 @@ class Publication(Model):
     __manager__ = "patent_client.uspto.fulltext.base.manager.FullTextManager"
     publication_number: str
     kind_code: str
-    publication_date: str
+    publication_date: str = None
     title: str = None
 
     description: str = None

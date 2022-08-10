@@ -2,13 +2,12 @@ from yankee.xml import fields as f
 from yankee.xml import RegexSchema
 from yankee.xml import Schema
 
-from ..schema.image_schema import ImageSchema
-from ..schema.new_schema import PublicationSchema
+from ..schema import ImageSchema
 from .model import PublishedApplication
 from .model import PublishedApplicationImage
 
 
-class PublishedApplicationSchema(PublicationSchema):
+class PublishedApplicationSchema(Schema):
     __model__ = PublishedApplication
 
 
