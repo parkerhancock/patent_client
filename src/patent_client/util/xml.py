@@ -1,5 +1,6 @@
 from yankee.util import clean_whitespace
 from yankee.util import unzip_records
+from yankee.xml import fields  # nopycln: import
 from yankee.xml import fields as f
 from yankee.xml import RegexSchema as BaseRegexSchema
 from yankee.xml import Schema as BaseSchema

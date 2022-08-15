@@ -1,5 +1,7 @@
 import lxml.html as ETH
-from patent_client.util.xml import Schema as BaseSchema
+from patent_client.util.xml import RegexSchema  # nopycln: import
+from patent_client.util.xml import Schema as BaseSchema  # nopycln: import
+from patent_client.util.xml import ZipSchema  # nopycln: import
 
 
 class Schema(BaseSchema):

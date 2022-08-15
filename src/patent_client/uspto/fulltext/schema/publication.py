@@ -2,19 +2,12 @@ import re
 
 from patent_client.uspto.fulltext.schema.base import RegexSchema
 from patent_client.uspto.fulltext.schema.base import Schema
+from patent_client.uspto.fulltext.schema.base import ZipSchema
 from patent_client.uspto.fulltext.util import text_section_xpath
 from patent_client.uspto.fulltext.util import TextField
 from patent_client.util.format import clean_appl_id
 from patent_client.util.xml import TailField
 from yankee.xml import fields as f
-
-
-class ApplicantSchema(Schema):
-    name = f.Str(".//td[1]")
-    city = f.Str(".//td[2]")
-    state = f.Str(".//td[3]")
-    country = f.Str(".//td[4]")
-    type = f.Str(".//td[5]")
 
 
 class USReferenceSchema(Schema):
@@ -119,6 +112,13 @@ class ForeignPriorityDateSchema(RegexSchema):
 class ForeignPrioritySchema(Schema):
     left_col = ForeignPriorityDateSchema(".//td[1]", flatten=True)
     number = f.Str(".//td[4]")
+
+
+class ApplicantSchema(ZipSchema):
+    name = TailField("//td[1]/b/br")
+    city = TailField(".//td[2]/br")
+    state = TailField(".//td[3]/br")
+    country = TailField(".//td[4]/br")
 
 
 class PublicationDate(f.Alternative):
