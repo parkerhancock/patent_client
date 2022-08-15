@@ -39,7 +39,7 @@ from .session import PatentClientSession  # isort:skip
 from .util.datetime.date_parse import parse_duration  # isort:skip
 
 session = PatentClientSession()
-session.remove_expired_responses(expire_after=parse_duration(SETTINGS.CACHE.MAX_AGE))
+#session.remove_expired_responses(expire_after=parse_duration(SETTINGS.CACHE.MAX_AGE))
 
 from patent_client.epo.ops.published.model import Inpadoc  # isort:skip
 

@@ -14,20 +14,14 @@
 
 # Table of Contents
 ```{toctree}
-:maxdepth: 2
+:maxdepth: 3
 
 motivation
 getting_started
 user_guide
-us_application
-fulltext
-assignments
-ptab
-usitc
-epo
 api
-developer/overview
-developer/design_notes
+developer
+
 ```
 
 # Indices and tables
