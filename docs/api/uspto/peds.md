@@ -1,6 +1,6 @@
-## Patent Examination Data System API
+# Patent Examination Data System API
 
-### Manager
+## Manager
 
 ```{eval-rst}
 .. autoclass:: patent_client.uspto.peds.manager.USApplicationManager
@@ -8,7 +8,7 @@
     :undoc-members:
 ```
 
-### Models
+## Models
 
 ```{eval-rst}
 .. automodule:: patent_client.uspto.peds.model

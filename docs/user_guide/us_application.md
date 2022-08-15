@@ -51,11 +51,3 @@ True
 ```
 
 A complete list of available filters can be found by calling `USApplication.objects.fields`.
-
-## Models
-
-```{eval-rst}
-.. autoclass:: patent_client.uspto.peds.model.USApplication
-    :members:
-    :undoc-members:
-```

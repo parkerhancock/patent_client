@@ -23,10 +23,3 @@ the original file is the first-named attachment.
 'Commission Opinion'
 ```
 
-## Models
-
-```{eval-rst}
-.. automodule:: patent_client.usitc.model
-    :members:
-    :undoc-members:
-```

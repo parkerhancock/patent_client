@@ -105,6 +105,6 @@ want. Patent Client will return the results as if you had entered that into the 
     :undoc-members:
 ```
 
-[gpat]: https://console.cloud.google.com/marketplace/partners/patents-public-data
-[pats]: http://patft.uspto.gov/netahtml/PTO/search-adv.htm
-[pubs]: http://appft.uspto.gov/netahtml/PTO/search-adv.html
+[GPAT]: https://console.cloud.google.com/marketplace/partners/patents-public-data
+[PATS]: http://patft.uspto.gov/netahtml/PTO/search-adv.htm
+[PUBS]: http://appft.uspto.gov/netahtml/PTO/search-adv.html

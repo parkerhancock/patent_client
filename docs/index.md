@@ -3,14 +3,18 @@
 % You can adapt this file completely to your liking, but it should at least
 % contain the root `toctree` directive.
 
+# Requests-Cache
 <!-- Include Readme contents, except for the links to readthedocs, which would be redundant here -->
 ```{include} ../README.md
+:start-line: 2
+:end-before: <!-- RTD-IGNORE -->
+```
+```{include} ../README.md
+:start-after: <!-- END-RTD-IGNORE -->
+:end-before: <!-- RTD-IGNORE -->
 :relative-docs: docs/
 :relative-images:
 ```
-
-- [Code on GitHub](https://github.com/parkerhancock/patent_client)
-- [Package on PyPI](https://pypi.org/project/patent-client/)
 
 # Table of Contents
 ```{toctree}
