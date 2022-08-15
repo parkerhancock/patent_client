@@ -46,6 +46,7 @@ raw CQL query, just pass it as a 'cql_query' keyword argument to the filter. e.g
 >>> results = Inpadoc.objects.filter(cql_query='pa="Google LLC"') 
 >>> len(results) > 500 
 True
+
 ```
 
 Most of the CQL filters are available through the following convenience keyword arguments:
@@ -95,21 +96,21 @@ cql_query.
 ## EPO Register
 
 :::{warning}
-EPO register is still a work in progress, and is currently not working in v.2.
+EPO register is still a work in progress, and is currently not working in v.3.
 :::
 
 Patent Client can also retrive bibliographic and status information from the EP register.
 
 ```python
->>> from patent_client import Epo 
->>> pub = Epo.objects.get("EP3221665A1") 
+>>> from patent_client import Epo #doctest:+SKIP
+>>> pub = Epo.objects.get("EP3221665A1") #doctest:+SKIP
 http://ops.epo.org/3.2/rest-services/number-service/publication/original/EP3221665A1)/epodoc {}
 http://ops.epo.org/3.2/rest-services/register/publication/epodoc/EP.3221665.A1/biblio {}
->>> pub.status[0] 
+>>> pub.status[0] #doctest:+SKIP
 {'description': 'Request for examination was made', 'code': '15', 'date': '20170825'}
->>> pub.title 
+>>> pub.title #doctest:+SKIP
 'INERTIAL CAROUSEL POSITIONING'
->>> pub.procedural_steps[0] 
+>>> pub.procedural_steps[0] #doctest:+SKIP
 http://ops.epo.org/3.2/rest-services/register/publication/epodoc/EP.3221665.A1/procedural-steps {}
 {'phase': 'undefined', 'description': 'Renewal fee payment - 03', 'date': '20171113', 'code': 'RFEE'}
 ```

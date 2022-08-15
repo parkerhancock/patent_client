@@ -559,8 +559,6 @@ interactions:
         Path=/; Domain=.patft.uspto.gov
       Strict-Transport-Security:
       - max-age=31536000
-      Transfer-Encoding:
-      - chunked
     status:
       code: 200
       message: Script results follow
@@ -2678,6 +2676,1111 @@ interactions:
       Set-Cookie:
       - TS01eb4aff=01874167c7c1b95786abae3251d61781b23eb89b3e8b92bfa96f3b3b79dd1d22146b041b24f690c104169eaa931f701f2ca8000646;
         Path=/; Domain=.appft.uspto.gov
+      Strict-Transport-Security:
+      - max-age=31536000
+      Transfer-Encoding:
+      - chunked
+    status:
+      code: 200
+      message: Script results follow
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Cookie:
+      - TS01a6c8e4=01874167c7fb67d1b8f7b95728fd7c3cdff80dcc38dc93662134c05ebb4924f379fc23c1c5f3c153869cf9c73dd20917e0888e29f3
+      User-Agent:
+      - Python Patent Clientbot/3.0.3 (parkerhancock@users.noreply.github.com)
+    method: GET
+    uri: https://patft.uspto.gov/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=0&p=1&f=S&l=50&Query=TTL%2Ftennis+AND+AN%2Fwilson&d=PTXT
+  response:
+    body:
+      string: "<HTML>\n<HEAD>\n<BASE TARGET=\"_top\">\n<TITLE>Patent Database Search
+        Results: TTL/tennis AND AN/wilson in US Patent Collection</TITLE>\n<script
+        language=\"javascript\">\nvar clicked = false;\n// Shamelessly adapted from
+        http://www.randomsnippets.com/2008/02/21/how-to-dynamically-add-form-elements-via-javascript/
+        09-04-14. jh\nfunction addInput(divName,btnName,btnLabel) {\n   var newdiv
+        = document.createElement('div');\n   newdiv.innerHTML = \"<input type='hidden'
+        name='\" + btnName +\n\t\t\t\"' value='\" + btnLabel + \"'>\";\n   divName.appendChild(newdiv);\n}\n//
+        -- 09-04-14.\nfunction check(form1,formBtn) {\n   // if submitted by <enter>
+        key, add a submit button lookalike to prevent\n   // 1003 errs from BRS. 9-4-14
+        jh\n   if (!clicked)\n      addInput (form1,formBtn.name,formBtn.value);\n
+        \  return true;\n}\nfunction unesc(){\n   srchForm.Srch1.value = unescape(srchForm.Srch1.value);\n
+        \  if (srchForm.Srch2)\n      srchForm.Srch2.value = unescape(srchForm.Srch2.value);\n}\nfunction
+        unesc2(){\n   srchForm2.Srch1.value = unescape(srchForm2.Srch1.value);\n   if
+        (srchForm2.Srch2)\n      srchForm2.Srch2.value = unescape(srchForm2.Srch2.value);\n}\nfunction
+        decod(){\n   document.title = decodeURIComponent(document.title);\n   refine.Query.value
+        = decodeURIComponent(refine.Query.value);\n   var x = document.getElementById(\"srchtext\").childNodes[0];\n
+        \  x.data = decodeURIComponent(x.data);\n}\n</script>\n</HEAD>\n<BODY BGCOLOR=\"#FFFFFF\"
+        onload=\"decod()\">\n<center>\n<IMG SRC=\"/netaicon/PTO/patfthdr.gif\" alt=\"[US
+        Patent & Trademark Office, Patent Full Text and Image Database]\">\n<br>\n<a
+        name=\"top\">\n<table>\n<tr><td>\n<a href=\"/netahtml/PTO/index.html\"><img
+        src=\"/netaicon/PTO/home.gif\" alt=\"[Home]\" border=\"0\"></a>\n<a href=\"/netahtml/PTO/search-bool.html\"><img
+        src=\"/netaicon/PTO/boolean.gif\" alt=\"[Boolean Search]\" border=\"0\"></a>\n<A
+        HREF=\"/netahtml/PTO/search-adv.htm\"><img src=\"/netaicon/PTO/manual.gif\"
+        alt=\"[Manual Search]\" border=\"0\"></A>\n<a href=\"/netahtml/PTO/srchnum.htm\"><img
+        src=\"/netaicon/PTO/number.gif\" alt=\"[Number Search]\" border=\"0\"></a>\n<A
+        HREF=\"/netahtml/PTO/help/help.htm\"><IMG BORDER=\"0\"SRC=\"/netaicon/PTO/help.gif\"
+        ALT=\"[Help]\"></A>\n</td></tr>\n</table>\n<a href=\"#bottom\"><img src=\"/netaicon/PTO/bottom.gif\"
+        alt=\"[Bottom]\" align=middle border=\"0\"></a>\n<A HREF=\"https://certifiedcopycenter.uspto.gov/other/patft/view.html?backUrl1=http%3A//patft.uspto.gov/netacgi/nph-Parser?Sect1%3DPTO2%26Sect2%3DHITOFF%26u%3D%252Fnetahtml%252FPTO%252Fsearch-adv.htm%26r%3D0%26p%3D1%26f%3DS%26l%3D50%26Query%3DTTL%252Ftennis%252BAND%252BAN%252Fwilson%26d%3DPTXT&backLabel1=Back%20to%20Document%3A%20TTL/tennis
+        AND AN/wilson\"><img src=\"/netaicon/PTO/cart.gif\" align=middle border=0
+        alt=\"[View Shopping Cart]\"></A>\n</center>\n<p>\n<i>Searching US Patent
+        Collection...</i><BR></p>\n<B>Results of Search in US Patent Collection db
+        for:<BR> <span id=\"srchtext\">(TTL/tennis AND AN/wilson)</span></B>: 18 patents.\n<BR><I>Hits
+        <strong>1</strong> through <strong>18\n</strong> out of <strong>18</strong>\n</I><p>\n\n<BR>\n<form
+        name=\"srchForm\" action=\"/netacgi/nph-Parser\" method=\"GET\" onsubmit=\"unesc()\">\n
+        \   <INPUT TYPE=\"HIDDEN\" NAME=\"Sect1\" VALUE=\"PTO2\">\n    <INPUT TYPE=\"HIDDEN\"
+        NAME=\"Sect2\" VALUE=\"HITOFF\">\n    <INPUT TYPE=\"HIDDEN\" NAME=\"u\" VALUE=\"/netahtml/PTO/search-adv.htm\">\n
+        \   <INPUT TYPE=\"HIDDEN\" NAME=\"r\" VALUE=\"0\">\n    <INPUT TYPE=\"HIDDEN\"
+        NAME=\"f\" VALUE=\"S\">\n    <INPUT TYPE=\"HIDDEN\" NAME=\"l\" VALUE=\"50\">\n
+        \   <INPUT TYPE=\"HIDDEN\" NAME=\"d\" VALUE=\"PTXT\">\n    <INPUT TYPE=\"HIDDEN\"
+        NAME=\"OS\" VALUE=\"TTL/tennis AND AN/wilson\">\n    <INPUT TYPE=\"HIDDEN\"
+        NAME=\"RS\" VALUE=\"(TTL/tennis AND AN/wilson)\">\n    <INPUT TYPE=\"HIDDEN\"
+        NAME=\"Query\" VALUE=\"TTL/tennis AND AN/wilson\">\n\n<INPUT TYPE=\"HIDDEN\"
+        NAME=\"TD\" VALUE=\"18\">\n<INPUT TYPE=\"HIDDEN\" NAME=\"Srch1\" VALUE=\"(tennis.TI.
+        AND wilson.ASNM.)\">\n\n</FORM>\n<form name=\"srchForm2\" action=\"/netacgi/nph-Parser\"
+        method=\"GET\"\n\tonsubmit=\"unesc2();check(this,this.StartAt)\">\n    <INPUT
+        TYPE=\"HIDDEN\" NAME=\"Sect1\" VALUE=\"PTO2\">\n    <INPUT TYPE=\"HIDDEN\"
+        NAME=\"Sect2\" VALUE=\"HITOFF\">\n    <INPUT TYPE=\"HIDDEN\" NAME=\"u\" VALUE=\"/netahtml/PTO/search-adv.htm\">\n
+        \   <INPUT TYPE=\"HIDDEN\" NAME=\"r\" VALUE=\"0\">\n    <INPUT TYPE=\"HIDDEN\"
+        NAME=\"f\" VALUE=\"S\">\n    <INPUT TYPE=\"HIDDEN\" NAME=\"l\" VALUE=\"50\">\n
+        \   <INPUT TYPE=\"HIDDEN\" NAME=\"d\" VALUE=\"PTXT\">\n    <INPUT TYPE=\"HIDDEN\"
+        NAME=\"RS\" VALUE=\"(TTL/tennis AND AN/wilson)\">\n    <INPUT TYPE=\"HIDDEN\"
+        NAME=\"Query\" VALUE=\"TTL/tennis AND AN/wilson\">\n<INPUT TYPE=\"HIDDEN\"
+        NAME=\"TD\" VALUE=\"18\">\n<INPUT TYPE=\"HIDDEN\" NAME=\"Srch1\" VALUE=\"(tennis.TI.
+        AND wilson.ASNM.)\">\n\n<INPUT TYPE=submit name=StartAt VALUE=\"Jump To\"
+        onclick=\"clicked=true;\">\n&nbsp;\n<INPUT size=6 name=\"StartNum\" title=\"Record
+        Number\">\t<!-- 2/21/14 508 -->\n</form>\n<BR><BR>\n<form name=\"refine\"
+        action=\"/netacgi/nph-Parser\" method=\"GET\" onsubmit=\"check(this,this.Refine)\">\n
+        \   <INPUT TYPE=\"HIDDEN\" NAME=\"Sect1\" VALUE=\"PTO2\">\n    <INPUT TYPE=\"HIDDEN\"
+        NAME=\"Sect2\" VALUE=\"HITOFF\">\n    <INPUT TYPE=\"HIDDEN\" NAME=\"u\" VALUE=\"/netahtml/PTO/search-adv.htm\">\n
+        \   <INPUT TYPE=\"HIDDEN\" NAME=\"r\" VALUE=\"0\">\n    <INPUT TYPE=\"HIDDEN\"
+        NAME=\"f\" VALUE=\"S\">\n    <INPUT TYPE=\"HIDDEN\" NAME=\"l\" VALUE=\"50\">\n
+        \   <INPUT TYPE=\"HIDDEN\" NAME=\"d\" VALUE=\"PTXT\">\n    <INPUT TYPE=\"HIDDEN\"
+        NAME=\"RS\" VALUE=\"(TTL/tennis AND AN/wilson)\">\n<INPUT type=\"submit\"
+        name=\"Refine\" value=\"Refine Search\" onclick=\"clicked=true;\">\n<INPUT
+        size=50 name=\"Query\" value=\"TTL/tennis AND AN/wilson\" title=\"Query\">\t<!--
+        2/21/14 508 -->\n</FORM>\n<TABLE><TR><TD></TD><TH scope=\"col\">PAT. NO.</TH><TD></TD><TH
+        scope=\"col\">Title</TH></TR>\n<TR><TD valign=top>1</TD>\n<TD valign=top><A
+        \ HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=1&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+AND+wilson.ASNM.)&OS=TTL/tennis+AND+AN/wilson&RS=(TTL/tennis+AND+AN/wilson)>D952,464</A></TD>\n
+        \    <TD valign=baseline><IMG border=0 src=\"/netaicon/PTO/ftext.gif\" alt=\"Full-Text\"></TD>\n
+        \    <TD valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=1&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+AND+wilson.ASNM.)&OS=TTL/tennis+AND+AN/wilson&RS=(TTL/tennis+AND+AN/wilson)>Tennis
+        ball container overcap\n</A></TD>\n<DOCS: 18>\n<TR><TD valign=top>2</TD>\n<TD
+        valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=2&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+AND+wilson.ASNM.)&OS=TTL/tennis+AND+AN/wilson&RS=(TTL/tennis+AND+AN/wilson)>11,247,103</A></TD>\n
+        \    <TD valign=baseline><IMG border=0 src=\"/netaicon/PTO/ftext.gif\" alt=\"Full-Text\"></TD>\n
+        \    <TD valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=2&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+AND+wilson.ASNM.)&OS=TTL/tennis+AND+AN/wilson&RS=(TTL/tennis+AND+AN/wilson)>Tennis
+        ball having a thermoplastic core\n</A></TD>\n<DOCS: 18>\n<TR><TD valign=top>3</TD>\n<TD
+        valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=3&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+AND+wilson.ASNM.)&OS=TTL/tennis+AND+AN/wilson&RS=(TTL/tennis+AND+AN/wilson)>11,192,001</A></TD>\n
+        \    <TD valign=baseline><IMG border=0 src=\"/netaicon/PTO/ftext.gif\" alt=\"Full-Text\"></TD>\n
+        \    <TD valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=3&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+AND+wilson.ASNM.)&OS=TTL/tennis+AND+AN/wilson&RS=(TTL/tennis+AND+AN/wilson)>Tennis
+        ball having a thermoplastic core\n</A></TD>\n<DOCS: 18>\n<TR><TD valign=top>4</TD>\n<TD
+        valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=4&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+AND+wilson.ASNM.)&OS=TTL/tennis+AND+AN/wilson&RS=(TTL/tennis+AND+AN/wilson)>10,918,913</A></TD>\n
+        \    <TD valign=baseline><IMG border=0 src=\"/netaicon/PTO/ftext.gif\" alt=\"Full-Text\"></TD>\n
+        \    <TD valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=4&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+AND+wilson.ASNM.)&OS=TTL/tennis+AND+AN/wilson&RS=(TTL/tennis+AND+AN/wilson)>Tennis
+        ball\n</A></TD>\n<DOCS: 18>\n<TR><TD valign=top>5</TD>\n<TD valign=top><A
+        \ HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=5&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+AND+wilson.ASNM.)&OS=TTL/tennis+AND+AN/wilson&RS=(TTL/tennis+AND+AN/wilson)>D893,997</A></TD>\n
+        \    <TD valign=baseline><IMG border=0 src=\"/netaicon/PTO/ftext.gif\" alt=\"Full-Text\"></TD>\n
+        \    <TD valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=5&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+AND+wilson.ASNM.)&OS=TTL/tennis+AND+AN/wilson&RS=(TTL/tennis+AND+AN/wilson)>Tennis
+        ball container\n</A></TD>\n<DOCS: 18>\n<TR><TD valign=top>6</TD>\n<TD valign=top><A
+        \ HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=6&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+AND+wilson.ASNM.)&OS=TTL/tennis+AND+AN/wilson&RS=(TTL/tennis+AND+AN/wilson)>10,549,159</A></TD>\n
+        \    <TD valign=baseline><IMG border=0 src=\"/netaicon/PTO/ftext.gif\" alt=\"Full-Text\"></TD>\n
+        \    <TD valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=6&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+AND+wilson.ASNM.)&OS=TTL/tennis+AND+AN/wilson&RS=(TTL/tennis+AND+AN/wilson)>Tennis
+        ball having a core with aerodynamic patterns\n</A></TD>\n<DOCS: 18>\n<TR><TD
+        valign=top>7</TD>\n<TD valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=7&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+AND+wilson.ASNM.)&OS=TTL/tennis+AND+AN/wilson&RS=(TTL/tennis+AND+AN/wilson)>10,493,327</A></TD>\n
+        \    <TD valign=baseline><IMG border=0 src=\"/netaicon/PTO/ftext.gif\" alt=\"Full-Text\"></TD>\n
+        \    <TD valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=7&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+AND+wilson.ASNM.)&OS=TTL/tennis+AND+AN/wilson&RS=(TTL/tennis+AND+AN/wilson)>Tennis
+        ball having a core with internal material shift lines\n</A></TD>\n<DOCS: 18>\n<TR><TD
+        valign=top>8</TD>\n<TD valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=8&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+AND+wilson.ASNM.)&OS=TTL/tennis+AND+AN/wilson&RS=(TTL/tennis+AND+AN/wilson)>D719,227</A></TD>\n
+        \    <TD valign=baseline><IMG border=0 src=\"/netaicon/PTO/ftext.gif\" alt=\"Full-Text\"></TD>\n
+        \    <TD valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=8&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+AND+wilson.ASNM.)&OS=TTL/tennis+AND+AN/wilson&RS=(TTL/tennis+AND+AN/wilson)>Tennis
+        racquet\n</A></TD>\n<DOCS: 18>\n<TR><TD valign=top>9</TD>\n<TD valign=top><A
+        \ HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=9&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+AND+wilson.ASNM.)&OS=TTL/tennis+AND+AN/wilson&RS=(TTL/tennis+AND+AN/wilson)>D555,473</A></TD>\n
+        \    <TD valign=baseline><IMG border=0 src=\"/netaicon/PTO/ftext.gif\" alt=\"Full-Text\"></TD>\n
+        \    <TD valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=9&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+AND+wilson.ASNM.)&OS=TTL/tennis+AND+AN/wilson&RS=(TTL/tennis+AND+AN/wilson)>Covering
+        for a container of three tennis balls\n</A></TD>\n<DOCS: 18>\n<TR><TD valign=top>10</TD>\n<TD
+        valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=10&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+AND+wilson.ASNM.)&OS=TTL/tennis+AND+AN/wilson&RS=(TTL/tennis+AND+AN/wilson)>6,383,099</A></TD>\n
+        \    <TD valign=baseline><IMG border=0 src=\"/netaicon/PTO/ftext.gif\" alt=\"Full-Text\"></TD>\n
+        \    <TD valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=10&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+AND+wilson.ASNM.)&OS=TTL/tennis+AND+AN/wilson&RS=(TTL/tennis+AND+AN/wilson)>
+        Tennis racquet\n</A></TD>\n<DOCS: 18>\n<TR><TD valign=top>11</TD>\n<TD valign=top><A
+        \ HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=11&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+AND+wilson.ASNM.)&OS=TTL/tennis+AND+AN/wilson&RS=(TTL/tennis+AND+AN/wilson)>6,030,304</A></TD>\n
+        \    <TD valign=baseline><IMG border=0 src=\"/netaicon/PTO/ftext.gif\" alt=\"Full-Text\"></TD>\n
+        \    <TD valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=11&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+AND+wilson.ASNM.)&OS=TTL/tennis+AND+AN/wilson&RS=(TTL/tennis+AND+AN/wilson)>
+        Pressureless tennis ball\n</A></TD>\n<DOCS: 18>\n<TR><TD valign=top>12</TD>\n<TD
+        valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=12&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+AND+wilson.ASNM.)&OS=TTL/tennis+AND+AN/wilson&RS=(TTL/tennis+AND+AN/wilson)>5,848,690</A></TD>\n
+        \    <TD valign=baseline><IMG border=0 src=\"/netaicon/PTO/ftext.gif\" alt=\"Full-Text\"></TD>\n
+        \    <TD valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=12&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+AND+wilson.ASNM.)&OS=TTL/tennis+AND+AN/wilson&RS=(TTL/tennis+AND+AN/wilson)>
+        Tennis ball container with pressure seal and screw-on cap\n</A></TD>\n<DOCS:
+        18>\n<TR><TD valign=top>13</TD>\n<TD valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=13&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+AND+wilson.ASNM.)&OS=TTL/tennis+AND+AN/wilson&RS=(TTL/tennis+AND+AN/wilson)>5,749,798</A></TD>\n
+        \    <TD valign=baseline><IMG border=0 src=\"/netaicon/PTO/ftext.gif\" alt=\"Full-Text\"></TD>\n
+        \    <TD valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=13&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+AND+wilson.ASNM.)&OS=TTL/tennis+AND+AN/wilson&RS=(TTL/tennis+AND+AN/wilson)>
+        Racket for tennis or the like games\n</A></TD>\n<DOCS: 18>\n<TR><TD valign=top>14</TD>\n<TD
+        valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=14&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+AND+wilson.ASNM.)&OS=TTL/tennis+AND+AN/wilson&RS=(TTL/tennis+AND+AN/wilson)>5,551,688</A></TD>\n
+        \    <TD valign=baseline><IMG border=0 src=\"/netaicon/PTO/ftext.gif\" alt=\"Full-Text\"></TD>\n
+        \    <TD valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=14&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+AND+wilson.ASNM.)&OS=TTL/tennis+AND+AN/wilson&RS=(TTL/tennis+AND+AN/wilson)>
+        Magnetically detectable tennis ball\n</A></TD>\n<DOCS: 18>\n<TR><TD valign=top>15</TD>\n<TD
+        valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=15&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+AND+wilson.ASNM.)&OS=TTL/tennis+AND+AN/wilson&RS=(TTL/tennis+AND+AN/wilson)>5,540,434</A></TD>\n
+        \    <TD valign=baseline><IMG border=0 src=\"/netaicon/PTO/ftext.gif\" alt=\"Full-Text\"></TD>\n
+        \    <TD valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=15&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+AND+wilson.ASNM.)&OS=TTL/tennis+AND+AN/wilson&RS=(TTL/tennis+AND+AN/wilson)>
+        Tennis racket\n</A></TD>\n<DOCS: 18>\n<TR><TD valign=top>16</TD>\n<TD valign=top><A
+        \ HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=16&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+AND+wilson.ASNM.)&OS=TTL/tennis+AND+AN/wilson&RS=(TTL/tennis+AND+AN/wilson)>D369,194</A></TD>\n
+        \    <TD valign=baseline><IMG border=0 src=\"/netaicon/PTO/ftext.gif\" alt=\"Full-Text\"></TD>\n
+        \    <TD valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=16&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+AND+wilson.ASNM.)&OS=TTL/tennis+AND+AN/wilson&RS=(TTL/tennis+AND+AN/wilson)>
+        Tennis racquet\n</A></TD>\n<DOCS: 18>\n<TR><TD valign=top>17</TD>\n<TD valign=top><A
+        \ HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=17&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+AND+wilson.ASNM.)&OS=TTL/tennis+AND+AN/wilson&RS=(TTL/tennis+AND+AN/wilson)>5,368,295</A></TD>\n
+        \    <TD valign=baseline><IMG border=0 src=\"/netaicon/PTO/ftext.gif\" alt=\"Full-Text\"></TD>\n
+        \    <TD valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=17&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+AND+wilson.ASNM.)&OS=TTL/tennis+AND+AN/wilson&RS=(TTL/tennis+AND+AN/wilson)>
+        Tennis racket\n</A></TD>\n<DOCS: 18>\n<TR><TD valign=top>18</TD>\n<TD valign=top><A
+        \ HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=18&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+AND+wilson.ASNM.)&OS=TTL/tennis+AND+AN/wilson&RS=(TTL/tennis+AND+AN/wilson)>5,071,126</A></TD>\n
+        \    <TD valign=baseline><IMG border=0 src=\"/netaicon/PTO/ftext.gif\" alt=\"Full-Text\"></TD>\n
+        \    <TD valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=18&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+AND+wilson.ASNM.)&OS=TTL/tennis+AND+AN/wilson&RS=(TTL/tennis+AND+AN/wilson)>
+        Tennis racket cover and bag with measuring strap\n</A></TD>\n   </TABLE><HR><br>\n
+        \  <center>\n   <table>\n   <tr><td><a name=\"bottom\"><a href=\"#top\"><img
+        src=\"/netaicon/PTO/top.gif\" alt=\"[Top]\" border=\"0\" align=middle></a>\n
+        \  <A HREF=\"https://certifiedcopycenter.uspto.gov/other/patft/view.html?backUrl1=http%3A//patft.uspto.gov/netacgi/nph-Parser?Sect1%3DPTO2%26Sect2%3DHITOFF%26u%3D%252Fnetahtml%252FPTO%252Fsearch-adv.htm%26r%3D0%26p%3D1%26f%3DS%26l%3D50%26Query%3DTTL%252Ftennis%252BAND%252BAN%252Fwilson%26d%3DPTXT&backLabel1=Back%20to%20Document%3A%20TTL/tennis
+        AND AN/wilson\"><img border=0 src=\"/netaicon/PTO/cart.gif\" alt=\"[View Shopping
+        Cart]\" border = \"0\" align\n=middle></A>\n   </td></tr>\n   </table>\n   <a
+        href=\"/netahtml/PTO/index.html\"><img src=\"/netaicon/PTO/home.gif\" alt=\"[Home]\"
+        border=\"0\" valign=baseline></a>\n   <a href=\"/netahtml/PTO/search-bool.html\"><img
+        src=\"/netaicon/PTO/boolean.gif\" alt=\"[Boolean Search]\" border=\"0\" valign=baseline></a>\n
+        \  <A HREF=\"/netahtml/PTO/search-adv.htm\"><img src=\"/netaicon/PTO/manual.gif\"
+        alt=\"[Manual Search]\" border=\"0\" valign=baseline></A>\n   <a href=\"/netahtml/PTO/srchnum.htm\"><img
+        src=\"/netaicon/PTO/number.gif\" alt=\"[Number Search]\" border=\"0\" valign=baseline></a>\n
+        \  <A HREF=\"/netahtml/PTO/help/help.htm\"><img border=\"0\" src=\"/netaicon/PTO/help.gif\"
+        ALT=\"[Help]\" border=\"0\" valign=baseline></A>\n   </center>\n   </HTML>"
+    headers:
+      Content-Type:
+      - text/html
+      Set-Cookie:
+      - TS01a6c8e4=01874167c7af639ee8ce243ab4d664f75a91a2146f7f1a79fba669660ae453a791b830a623ed53b4751ddcb6fcf4c614a24c7d1015;
+        Path=/; Domain=.patft.uspto.gov
+      Strict-Transport-Security:
+      - max-age=31536000
+    status:
+      code: 200
+      message: Script results follow
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Cookie:
+      - TS01a6c8e4=01874167c7af639ee8ce243ab4d664f75a91a2146f7f1a79fba669660ae453a791b830a623ed53b4751ddcb6fcf4c614a24c7d1015
+      User-Agent:
+      - Python Patent Clientbot/3.0.3 (parkerhancock@users.noreply.github.com)
+    method: GET
+    uri: https://patft.uspto.gov/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=0&p=1&f=S&l=50&Query=TTL%2Fbasketball+AND+ISD%2F20210525&d=PTXT
+  response:
+    body:
+      string: "<HTML>\n<HEAD>\n<BASE TARGET=\"_top\">\n<TITLE>Patent Database Search
+        Results: TTL/basketball AND ISD/20210525 in US Patent Collection</TITLE>\n<script
+        language=\"javascript\">\nvar clicked = false;\n// Shamelessly adapted from
+        http://www.randomsnippets.com/2008/02/21/how-to-dynamically-add-form-elements-via-javascript/
+        09-04-14. jh\nfunction addInput(divName,btnName,btnLabel) {\n   var newdiv
+        = document.createElement('div');\n   newdiv.innerHTML = \"<input type='hidden'
+        name='\" + btnName +\n\t\t\t\"' value='\" + btnLabel + \"'>\";\n   divName.appendChild(newdiv);\n}\n//
+        -- 09-04-14.\nfunction check(form1,formBtn) {\n   // if submitted by <enter>
+        key, add a submit button lookalike to prevent\n   // 1003 errs from BRS. 9-4-14
+        jh\n   if (!clicked)\n      addInput (form1,formBtn.name,formBtn.value);\n
+        \  return true;\n}\nfunction unesc(){\n   srchForm.Srch1.value = unescape(srchForm.Srch1.value);\n
+        \  if (srchForm.Srch2)\n      srchForm.Srch2.value = unescape(srchForm.Srch2.value);\n}\nfunction
+        unesc2(){\n   srchForm2.Srch1.value = unescape(srchForm2.Srch1.value);\n   if
+        (srchForm2.Srch2)\n      srchForm2.Srch2.value = unescape(srchForm2.Srch2.value);\n}\nfunction
+        decod(){\n   document.title = decodeURIComponent(document.title);\n   refine.Query.value
+        = decodeURIComponent(refine.Query.value);\n   var x = document.getElementById(\"srchtext\").childNodes[0];\n
+        \  x.data = decodeURIComponent(x.data);\n}\n</script>\n</HEAD>\n<BODY BGCOLOR=\"#FFFFFF\"
+        onload=\"decod()\">\n<center>\n<IMG SRC=\"/netaicon/PTO/patfthdr.gif\" alt=\"[US
+        Patent & Trademark Office, Patent Full Text and Image Database]\">\n<br>\n<a
+        name=\"top\">\n<table>\n<tr><td>\n<a href=\"/netahtml/PTO/index.html\"><img
+        src=\"/netaicon/PTO/home.gif\" alt=\"[Home]\" border=\"0\"></a>\n<a href=\"/netahtml/PTO/search-bool.html\"><img
+        src=\"/netaicon/PTO/boolean.gif\" alt=\"[Boolean Search]\" border=\"0\"></a>\n<A
+        HREF=\"/netahtml/PTO/search-adv.htm\"><img src=\"/netaicon/PTO/manual.gif\"
+        alt=\"[Manual Search]\" border=\"0\"></A>\n<a href=\"/netahtml/PTO/srchnum.htm\"><img
+        src=\"/netaicon/PTO/number.gif\" alt=\"[Number Search]\" border=\"0\"></a>\n<A
+        HREF=\"/netahtml/PTO/help/help.htm\"><IMG BORDER=\"0\"SRC=\"/netaicon/PTO/help.gif\"
+        ALT=\"[Help]\"></A>\n</td></tr>\n</table>\n<a href=\"#bottom\"><img src=\"/netaicon/PTO/bottom.gif\"
+        alt=\"[Bottom]\" align=middle border=\"0\"></a>\n<A HREF=\"https://certifiedcopycenter.uspto.gov/other/patft/view.html?backUrl1=http%3A//patft.uspto.gov/netacgi/nph-Parser?Sect1%3DPTO2%26Sect2%3DHITOFF%26u%3D%252Fnetahtml%252FPTO%252Fsearch-adv.htm%26r%3D0%26p%3D1%26f%3DS%26l%3D50%26Query%3DTTL%252Fbasketball%252BAND%252BISD%252F20210525%26d%3DPTXT&backLabel1=Back%20to%20Document%3A%20TTL/basketball
+        AND ISD/20210525\"><img src=\"/netaicon/PTO/cart.gif\" align=middle border=0
+        alt=\"[View Shopping Cart]\"></A>\n</center>\n<p>\n<i>Searching US Patent
+        Collection...</i><BR></p>\n<B>Results of Search in US Patent Collection db
+        for:<BR> <span id=\"srchtext\">(TTL/basketball AND ISD/20210525)</span></B>:
+        2 patents.\n<BR><I>Hits <strong>1</strong> through <strong>2\n</strong> out
+        of <strong>2</strong>\n</I><p>\n\n<BR>\n<form name=\"srchForm\" action=\"/netacgi/nph-Parser\"
+        method=\"GET\" onsubmit=\"unesc()\">\n    <INPUT TYPE=\"HIDDEN\" NAME=\"Sect1\"
+        VALUE=\"PTO2\">\n    <INPUT TYPE=\"HIDDEN\" NAME=\"Sect2\" VALUE=\"HITOFF\">\n
+        \   <INPUT TYPE=\"HIDDEN\" NAME=\"u\" VALUE=\"/netahtml/PTO/search-adv.htm\">\n
+        \   <INPUT TYPE=\"HIDDEN\" NAME=\"r\" VALUE=\"0\">\n    <INPUT TYPE=\"HIDDEN\"
+        NAME=\"f\" VALUE=\"S\">\n    <INPUT TYPE=\"HIDDEN\" NAME=\"l\" VALUE=\"50\">\n
+        \   <INPUT TYPE=\"HIDDEN\" NAME=\"d\" VALUE=\"PTXT\">\n    <INPUT TYPE=\"HIDDEN\"
+        NAME=\"OS\" VALUE=\"TTL/basketball AND ISD/20210525\">\n    <INPUT TYPE=\"HIDDEN\"
+        NAME=\"RS\" VALUE=\"(TTL/basketball AND ISD/20210525)\">\n    <INPUT TYPE=\"HIDDEN\"
+        NAME=\"Query\" VALUE=\"TTL/basketball AND ISD/20210525\">\n\n<INPUT TYPE=\"HIDDEN\"
+        NAME=\"TD\" VALUE=\"2\">\n<INPUT TYPE=\"HIDDEN\" NAME=\"Srch1\" VALUE=\"(basketball.TI.
+        AND 20210525.PD.)\">\n\n</FORM>\n<form name=\"srchForm2\" action=\"/netacgi/nph-Parser\"
+        method=\"GET\"\n\tonsubmit=\"unesc2();check(this,this.StartAt)\">\n    <INPUT
+        TYPE=\"HIDDEN\" NAME=\"Sect1\" VALUE=\"PTO2\">\n    <INPUT TYPE=\"HIDDEN\"
+        NAME=\"Sect2\" VALUE=\"HITOFF\">\n    <INPUT TYPE=\"HIDDEN\" NAME=\"u\" VALUE=\"/netahtml/PTO/search-adv.htm\">\n
+        \   <INPUT TYPE=\"HIDDEN\" NAME=\"r\" VALUE=\"0\">\n    <INPUT TYPE=\"HIDDEN\"
+        NAME=\"f\" VALUE=\"S\">\n    <INPUT TYPE=\"HIDDEN\" NAME=\"l\" VALUE=\"50\">\n
+        \   <INPUT TYPE=\"HIDDEN\" NAME=\"d\" VALUE=\"PTXT\">\n    <INPUT TYPE=\"HIDDEN\"
+        NAME=\"RS\" VALUE=\"(TTL/basketball AND ISD/20210525)\">\n    <INPUT TYPE=\"HIDDEN\"
+        NAME=\"Query\" VALUE=\"TTL/basketball AND ISD/20210525\">\n<INPUT TYPE=\"HIDDEN\"
+        NAME=\"TD\" VALUE=\"2\">\n<INPUT TYPE=\"HIDDEN\" NAME=\"Srch1\" VALUE=\"(basketball.TI.
+        AND 20210525.PD.)\">\n\n<INPUT TYPE=submit name=StartAt VALUE=\"Jump To\"
+        onclick=\"clicked=true;\">\n&nbsp;\n<INPUT size=6 name=\"StartNum\" title=\"Record
+        Number\">\t<!-- 2/21/14 508 -->\n</form>\n<BR><BR>\n<form name=\"refine\"
+        action=\"/netacgi/nph-Parser\" method=\"GET\" onsubmit=\"check(this,this.Refine)\">\n
+        \   <INPUT TYPE=\"HIDDEN\" NAME=\"Sect1\" VALUE=\"PTO2\">\n    <INPUT TYPE=\"HIDDEN\"
+        NAME=\"Sect2\" VALUE=\"HITOFF\">\n    <INPUT TYPE=\"HIDDEN\" NAME=\"u\" VALUE=\"/netahtml/PTO/search-adv.htm\">\n
+        \   <INPUT TYPE=\"HIDDEN\" NAME=\"r\" VALUE=\"0\">\n    <INPUT TYPE=\"HIDDEN\"
+        NAME=\"f\" VALUE=\"S\">\n    <INPUT TYPE=\"HIDDEN\" NAME=\"l\" VALUE=\"50\">\n
+        \   <INPUT TYPE=\"HIDDEN\" NAME=\"d\" VALUE=\"PTXT\">\n    <INPUT TYPE=\"HIDDEN\"
+        NAME=\"RS\" VALUE=\"(TTL/basketball AND ISD/20210525)\">\n<INPUT type=\"submit\"
+        name=\"Refine\" value=\"Refine Search\" onclick=\"clicked=true;\">\n<INPUT
+        size=50 name=\"Query\" value=\"TTL/basketball AND ISD/20210525\" title=\"Query\">\t<!--
+        2/21/14 508 -->\n</FORM>\n<TABLE><TR><TD></TD><TH scope=\"col\">PAT. NO.</TH><TD></TD><TH
+        scope=\"col\">Title</TH></TR>\n<TR><TD valign=top>1</TD>\n<TD valign=top><A
+        \ HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=1&p=1&f=G&l=50&d=PTXT&S1=(basketball.TI.+AND+20210525.PD.)&OS=TTL/basketball+AND+ISD/20210525&RS=(TTL/basketball+AND+ISD/20210525)>D920,344</A></TD>\n
+        \    <TD valign=baseline><IMG border=0 src=\"/netaicon/PTO/ftext.gif\" alt=\"Full-Text\"></TD>\n
+        \    <TD valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=1&p=1&f=G&l=50&d=PTXT&S1=(basketball.TI.+AND+20210525.PD.)&OS=TTL/basketball+AND+ISD/20210525&RS=(TTL/basketball+AND+ISD/20210525)>Display
+        screen with graphical user interface for a basketball practice\n     device\n</A></TD>\n<DOCS:
+        2>\n<TR><TD valign=top>2</TD>\n<TD valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=2&p=1&f=G&l=50&d=PTXT&S1=(basketball.TI.+AND+20210525.PD.)&OS=TTL/basketball+AND+ISD/20210525&RS=(TTL/basketball+AND+ISD/20210525)>D919,934</A></TD>\n
+        \    <TD valign=baseline><IMG border=0 src=\"/netaicon/PTO/ftext.gif\" alt=\"Full-Text\"></TD>\n
+        \    <TD valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=2&p=1&f=G&l=50&d=PTXT&S1=(basketball.TI.+AND+20210525.PD.)&OS=TTL/basketball+AND+ISD/20210525&RS=(TTL/basketball+AND+ISD/20210525)>Basketball
+        pants with knee pads\n</A></TD>\n   </TABLE><HR><br>\n   <center>\n   <table>\n
+        \  <tr><td><a name=\"bottom\"><a href=\"#top\"><img src=\"/netaicon/PTO/top.gif\"
+        alt=\"[Top]\" border=\"0\" align=middle></a>\n   <A HREF=\"https://certifiedcopycenter.uspto.gov/other/patft/view.html?backUrl1=http%3A//patft.uspto.gov/netacgi/nph-Parser?Sect1%3DPTO2%26Sect2%3DHITOFF%26u%3D%252Fnetahtml%252FPTO%252Fsearch-adv.htm%26r%3D0%26p%3D1%26f%3DS%26l%3D50%26Query%3DTTL%252Fbasketball%252BAND%252BISD%252F20210525%26d%3DPTXT&backLabel1=Back%20to%20Document%3A%20TTL/basketball
+        AND ISD/20210525\"><img border=0 src=\"/netaicon/PTO/cart.gif\" alt=\"[View
+        Shopping Cart]\" border = \"0\" align\n=middle></A>\n   </td></tr>\n   </table>\n
+        \  <a href=\"/netahtml/PTO/index.html\"><img src=\"/netaicon/PTO/home.gif\"
+        alt=\"[Home]\" border=\"0\" valign=baseline></a>\n   <a href=\"/netahtml/PTO/search-bool.html\"><img
+        src=\"/netaicon/PTO/boolean.gif\" alt=\"[Boolean Search]\" border=\"0\" valign=baseline></a>\n
+        \  <A HREF=\"/netahtml/PTO/search-adv.htm\"><img src=\"/netaicon/PTO/manual.gif\"
+        alt=\"[Manual Search]\" border=\"0\" valign=baseline></A>\n   <a href=\"/netahtml/PTO/srchnum.htm\"><img
+        src=\"/netaicon/PTO/number.gif\" alt=\"[Number Search]\" border=\"0\" valign=baseline></a>\n
+        \  <A HREF=\"/netahtml/PTO/help/help.htm\"><img border=\"0\" src=\"/netaicon/PTO/help.gif\"
+        ALT=\"[Help]\" border=\"0\" valign=baseline></A>\n   </center>\n   </HTML>"
+    headers:
+      Content-Type:
+      - text/html
+      Set-Cookie:
+      - TS01a6c8e4=01874167c7af639ee8ce243ab4d664f75a91a2146f7f1a79fba669660ae453a791b830a623ed53b4751ddcb6fcf4c614a24c7d1015;
+        Path=/; Domain=.patft.uspto.gov
+      Strict-Transport-Security:
+      - max-age=31536000
+    status:
+      code: 200
+      message: Script results follow
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Cookie:
+      - TS01a6c8e4=01874167c7af639ee8ce243ab4d664f75a91a2146f7f1a79fba669660ae453a791b830a623ed53b4751ddcb6fcf4c614a24c7d1015
+      User-Agent:
+      - Python Patent Clientbot/3.0.3 (parkerhancock@users.noreply.github.com)
+    method: GET
+    uri: https://patft.uspto.gov/netacgi/nph-Parser?Sect1=PTO1&Sect2=HITOFF&d=PALL&p=1&u=%2Fnetahtml%2FPTO%2Fsrchnum.htm&r=1&f=G&l=50&s1=D920344.PN.&OS=PN/D920344&RS=PN/D920344
+  response:
+    body:
+      string: "<HTML>\n<HEAD>\n<BASE target=\"_top\">\n<TITLE>United States Patent:
+        D920344</TITLE></HEAD>\n<!-BUF1=D920344\nBUF7=2021\nBUF8=26801\nBUF9=/1/\nBUF51=D\n-->\n<BODY
+        bgcolor=\"#FFFFFF\">\n<A name=\"top\"></A>\n<CENTER>\n<IMG src=\"/netaicon/PTO/patfthdr.gif\"
+        alt=\"[US Patent & Trademark Office, Patent Full Text and Image Database]\">\n<BR>\n<TABLE>\n<TR><TD
+        align=\"center\">\n<A href=\"/netahtml/PTO/index.html\"><IMG src=\"/netaicon/PTO/home.gif\"
+        alt=\"[Home]\" border=\"0\" valign=\"middle\"></A>\n<A href=\"/netahtml/PTO/search-bool.html\"><IMG
+        src=\"/netaicon/PTO/boolean.gif\" alt=\"[Boolean Search]\" border=\"0\" valign=\"middle\"></A>\n<A
+        href=\"/netahtml/PTO/search-adv.htm\"><IMG border=\"0\" src=\"/netaicon/PTO/manual.gif\"
+        ALT=\"[Manual Search]\" valign=\"middle\"></A>\n<A href=\"/netahtml/PTO/srchnum.htm\"><IMG
+        src=\"/netaicon/PTO/number.gif\" alt=\"[Number Search]\" border=\"0\" valign=\"middle\"></A>\n<A
+        href=\"/netahtml/PTO/help/help.htm\"><IMG border=\"0\" valign=\"middle\" src=\"/netaicon/PTO/help.gif\"
+        ALT=\"[Help]\"></A>\n</TD></TR>\n<TR><TD align=\"center\">\n<A href=\"#bottom\"><IMG
+        src=\"/netaicon/PTO/bottom.gif\" alt=\"[Bottom]\" valign=\"middle\" border=\"0\"></A>\n</TD></TR>\n
+        \  <TR><TD align=\"center\">\n   <A href=\"https://certifiedcopycenter.uspto.gov/other/patft/view.html?backUrl1=http%3A//patft.uspto.gov/netacgi/nph-Parser?Sect1%3DPTO1%26Sect2%3DHITOFF%26d%3DPALL%26p%3D1%26u%3D%25252Fnetahtml%25252FPTO%25252Fsrchnum.htm%26r%3D1%26f%3DG%26l%3D50%26s1%3DD920344.PN.%26OS%3DPN%2FD920344&backLabel1=Back%20to%20Document%3A%20D920344\"><IMG
+        border=\"0\" src=\"/netaicon/PTO/cart.gif\" border=\"0\" valign=\"middle\"
+        alt=\"[View Shopp\ning Cart]\"></A>\n   <A href=\"https://certifiedcopycenter.uspto.gov/other/patft/order.html?docNumber=D920344&backUrl1=http%3A//patft.uspto.gov/netacgi/nph-Parser?Sect1%3DPTO1%26Sect2%3DHITOFF%26d%3DPALL%26p%3D1%26u%3D%25252Fnetahtml%25252FPTO%25252Fsrchnum.htm%26r%3D1%26f%3DG%26l%3D50%26s1%3DD920344.PN.%26OS%3DPN%2FD920344&backLabel1=Back%20to%20Document%3A%20D920344\">\n
+        \  <IMG border=\"0\" src=\"/netaicon/PTO/order.gif\" valign=\"middle\" alt=\"[Add
+        to Shopping Cart]\"></A>\n   </TD></TR>\n   <TR><TD align=\"center\">\n   <a
+        href=http://pdfpiw.uspto.gov/.piw?Docid=D0920344&homeurl=http%3A%2F%2Fpatft.uspto.gov%2Fnetacgi%2Fnph-Parser%3FSect1%3DPTO1%2526Sect2%3DHITOFF%2526d%3DPALL%2526p%3D1%2526u%3D%25252Fnetahtml%25252FPTO%25252Fsrchnum.htm%2526r%3D1%2526f%3DG%2526l%3D50%2526s1%3DD920344.PN.%2526OS%3DPN%2FD920344%2526RS%3DPN%2FD920344&PageNum=&Rtype=&SectionNum=&idkey=NONE&Input=View+first+page><img
+        src=\"/netaicon/PTO/image.gif\" alt=\"[Image]\" border=\"0\" valign=\"middle\"></A>\n\n
+        \  </TD></TR>\n</TABLE>\n</CENTER>\n<TABLE width=\"100%\">\n<TR><TD align=\"left\"
+        width=\"50%\">&nbsp;</TD>\n<TD align=\"right\" valign=\"bottom\" width=\"50%\"><FONT
+        size=\"-1\">( <STRONG>1</STRONG></FONT> <FONT size=-2>of</FONT> <STRONG><FONT
+        size=-1>1</STRONG> )</FONT></TD></TR></TABLE>\n<HR>\n   <TABLE width=\"100%\">\n
+        \  <TR>\t<TD align=\"left\" width=\"50%\"><b>United States Patent </b></TD>\n
+        \  <TD align=\"right\" width=\"50%\"><b><A Name=h1 HREF=#h0></A><A  HREF=#h2></A><B><I></I></B>D920,344</b></TD>\n
+        \  </TR>\n     <TR><TD align=\"left\" width=\"50%\"><b>\n         Joseph\n
+        </b>\n     </TD>\n     <TD align=\"right\" width=\"50%\"> <b>\n     May 25,
+        2021\n</b></TD>\n     </TR>\n     </TABLE>\n       <HR>\n       <FONT size=\"+1\">Display
+        screen with graphical user interface for a basketball practice\n     device\n</FONT><BR>\n
+        \        <HR>\n         <CENTER><b>Claims</b></CENTER><HR>\n         CLAIM\n
+        \         The ornamental design for a display screen with graphical user interface\n
+        \    for a basketball practice device, as shown and described.\n                  <HR>\n<TABLE
+        width=\"100%\"> <TR> <TH scope=\"row\" valign=\"top\" align=\"left\" width=\"10%\">Inventors:</TH>
+        <TD align=\"left\" width=\"90%\">\n <B>Joseph; John G.</B> (Upper Sandusky,
+        OH) </TD> </TR>\n<TR><TH scope=\"row\" valign=\"top\" align=\"left\" width=\"10%\">Applicant:
+        </TH><TD align=\"left\" width=\"90%\"> <TABLE> <TR> <TH scope=\"column\" align=\"center\">Name</TH>
+        <TH scope=\"column\" align=\"center\">City</TH> <TH scope=\"column\" align=\"center\">State</TH>
+        <TH\nscope=\"column\" align=\"center\">Country</TH> <TH scope=\"column\" align=\"center\">Type</TH>
+        </TR> <TR> <TD> <b><BR>Shoot-A-Way, Inc.</b> </TD><TD> <BR>Upper Sandusky
+        </TD><TD align=\"center\"> <BR>OH </TD><TD align=\"center\"> <BR>US </TD>
+        </TD><TD align=\"left\">\n</TD> </TR> </TABLE>\n<!-- AANM>\n~AANM Shoot-A-Way,
+        Inc.\n~AACI Upper Sandusky\n~AAST OH\n~AACO US\n</AANM -->\n</TD></TR>\n<TR>
+        <TH scope=\"row\" valign=\"top\" align=\"left\" width=\"10%\">Assignee:</TH>\n<TD
+        align=\"left\" width=\"90%\">\n\n<B>SHOOT-A-WAY, INC.</B>\n (Upper Sandusky,
+        \nOH)\n<BR>\n\n</TD>\n</TR>\n       <TR><TH scope=\"row\" valign=\"top\" align=\"left\"
+        width=\"10%\" nowrap>Family ID:\n       </TD><TD align=\"left\" width=\"90%\">\n
+        \      <b>47391212\n</b></TD></TR>\n       <TR><TH scope=\"row\" valign=\"top\"
+        align=\"left\" width=\"10%\" nowrap>Appl. No.:\n       </TH><TD align=\"left\"
+        width=\"90%\">\n       <b>D/678,032</b></TD></TR>\n       <TR><TH scope=\"row\"
+        valign=\"top\" align=\"left\" width=\"10%\">Filed:\n       </TH><TD align=\"left\"
+        width=\"90%\">\n       <b>January 25, 2019</b></TD></TR>\n     </TABLE>\n<HR>
+        <CENTER><b>Related U.S. Patent Documents</b></CENTER> <HR> <TABLE width=\"100%\">
+        <TR><TH scope=\"col\" width=\"7%\"></TH><TH scope=\"col\"></TH><TH scope=\"col\"></TH>
+        <TH scope=\"col\"></TH><TH scope=\"col\"></TH><TD></TD></TR> <TR><TD align=\"left\">\n</TD><TH
+        scope='col' align=center><B><U>Application Number</U></B></TH><TH scope='col'
+        align=center><B><U>Filing Date</U></B></TH><TH scope='col' align=center><B><U>Patent
+        Number</U></B></TH><TH scope='col' align=center><B><U>Issue Date</U></B></TH><TD</TD></TR><TR><TD
+        align=center> </TD><TD align=center>14688354</TD><TD align=center>Apr 16,
+        2015</TD><TD align=center>10737162</TD><TD align=center></TD><TD</TD></TR><TR><TD
+        align=center> </TD><TD align=center>13529917</TD><TD align=center>Jun 21,
+        2012</TD><TD align=center>9017188</TD><TD align=center></TD><TD</TD></TR><TR><TD
+        align=center> </TD><TD align=center>13529903</TD><TD align=center>Jun 21,
+        2012</TD><TD align=center>9233292</TD><TD align=center></TD><TD</TD></TR><TR><TD
+        align=center> </TD><TD align=center>12420122</TD><TD align=center>Apr 8, 2009</TD><TD
+        align=center>8206246</TD><TD align=center></TD><TD</TD></TR><TR><TD align=center>
+        </TD><TD align=center>12420122</TD><TD align=center>Apr 8, 2009</TD><TD align=center>8206246</TD><TD
+        align=center></TD><TD</TD></TR><TR><TD align=center> \n</TD>\n</TR> </TABLE>
+        \    <HR>\n<p> <TABLE width=\"100%\"> <TR><TD valign=\"top\" align=\"left\"
+        width=\"30%\"><b>Current U.S. Class:</b></TD> <TD valign=\"top\" align=\"right\"
+        width=\"70%\"><b>D14/485</b> </TD></TR> \n       <TR><TD valign=\"top\" align=\"left\"
+        width=\"30%\"><b>Current CPC Class: </b></TD>\n       <TD valign=\"top\" align=\"right\"
+        width=\"70%\">A63B69/40 20130101; A63B69/0071 20130101; A63B47/02 20130101;
+        G01S13/66 20130101; A63B24/0087 20130101; A63B71/0619 20130101; A63B24/0062
+        20130101; G09B19/0038 20130101; G01S13/88 20130101; G01S13/522 20130101; A63B24/0075
+        20130101; A63B24/0021 20130101; A63B2024/0034 20130101; A63B2220/802 20130101;
+        A63B2024/0056 20130101; A63B2024/0028 20130101; A63B2071/0694 20130101; A63B2063/001
+        20130101; A63B2225/20 20130101; A63B2220/805 20130101; A63B2208/0204 20130101;
+        A63B2024/0037 20130101; A63B2024/0093 20130101; A63B2220/13 20130101; A63B2220/17
+        20130101</TD></TR>\n         <TR><TD valign=\"top\" align=\"left\" width=\"30%\"><b>Current
+        International Class: </b></TD>\n         <TD valign=\"top\" align=\"right\"
+        width=\"70%\">\n1404</TD></TR>\n       <TR><TD valign=\"top\" align=\"left\"
+        width=\"30%\"><b>Field of Search: </b></TD>\n       <TD align=\"right\" valign=\"top\"
+        width=\"70%\">\n       \n ;D14/485-495\n       </TD></TR>\n     </TABLE>\n<HR><CENTER><b>References
+        Cited  <A href=\"/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&p=1&u=%2Fnetahtml%2Fsearch-adv.htm&r=0&f=S&l=50&d=PALL&Query=ref/D920344\">[Referenced
+        By]</A></b></CENTER>       <HR>\n       <CENTER><b>U.S. Patent Documents</b></CENTER>\n<TABLE
+        width=\"100%\"> <TR><TH scope=\"col\" width=\"33%\"></TH> <TH scope=\"col\"
+        width=\"33%\"></TH> <TH scope=\"col\" width=\"34%\"></TH></TR> <TR> <TD align=\"left\">\n<a
+        href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2F0435964\">435964</a></TD><TD
+        align =left>\nSeptember 1890</TD><TD align=left>\nCompton</TD></TR><TR><TD
+        align=left>\n<a href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2F1223386\">1223386</a></TD><TD
+        align =left>\nApril 1917</TD><TD align=left>\nHandelan</TD></TR><TR><TD align=left>\n<a
+        href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2FD174027\">D174027</a></TD><TD
+        align =left>\nFebruary 1955</TD><TD align=left>\nFarkas</TD></TR><TR><TD align=left>\n<a
+        href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2F2908266\">2908266</a></TD><TD
+        align =left>\nOctober 1959</TD><TD align=left>\nCooper</TD></TR><TR><TD align=left>\n<a
+        href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2FD204309\">D204309</a></TD><TD
+        align =left>\nApril 1966</TD><TD align=left>\nMurray</TD></TR><TR><TD align=left>\n<a
+        href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2F3776550\">3776550</a></TD><TD
+        align =left>\nDecember 1973</TD><TD align=left>\nMcNabb</TD></TR><TR><TD align=left>\n<a
+        href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2F3802703\">3802703</a></TD><TD
+        align =left>\nApril 1974</TD><TD align=left>\nVan Tassel</TD></TR><TR><TD
+        align=left>\n<a href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2F3878828\">3878828</a></TD><TD
+        align =left>\nApril 1975</TD><TD align=left>\nFrancesco</TD></TR><TR><TD align=left>\n<a
+        href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2F4168695\">4168695</a></TD><TD
+        align =left>\nSeptember 1979</TD><TD align=left>\nHaller</TD></TR><TR><TD
+        align=left>\n<a href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2F4262648\">4262648</a></TD><TD
+        align =left>\nApril 1981</TD><TD align=left>\nWegener et al.</TD></TR><TR><TD
+        align=left>\n<a href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2F4269163\">4269163</a></TD><TD
+        align =left>\nMay 1981</TD><TD align=left>\nFeith</TD></TR><TR><TD align=left>\n<a
+        href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2F4471746\">4471746</a></TD><TD
+        align =left>\nSeptember 1984</TD><TD align=left>\nAndo</TD></TR><TR><TD align=left>\n<a
+        href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2F4579340\">4579340</a></TD><TD
+        align =left>\nApril 1986</TD><TD align=left>\nJenkins et al.</TD></TR><TR><TD
+        align=left>\n<a href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2FD287854\">D287854</a></TD><TD
+        align =left>\nJanuary 1987</TD><TD align=left>\nCrews</TD></TR><TR><TD align=left>\n<a
+        href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2F4667957\">4667957</a></TD><TD
+        align =left>\nMay 1987</TD><TD align=left>\nJoseph</TD></TR><TR><TD align=left>\n<a
+        href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2F4678189\">4678189</a></TD><TD
+        align =left>\nJuly 1987</TD><TD align=left>\nKoss</TD></TR><TR><TD align=left>\n<a
+        href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2F4714248\">4714248</a></TD><TD
+        align =left>\nDecember 1987</TD><TD align=left>\nKoss</TD></TR><TR><TD align=left>\n<a
+        href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2F4717149\">4717149</a></TD><TD
+        align =left>\nJanuary 1988</TD><TD align=left>\nJuhl</TD></TR><TR><TD align=left>\n<a
+        href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2F4913431\">4913431</a></TD><TD
+        align =left>\nApril 1990</TD><TD align=left>\nJakobs</TD></TR><TR><TD align=left>\n<a
+        href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2F4936577\">4936577</a></TD><TD
+        align =left>\nJune 1990</TD><TD align=left>\nKington et al.</TD></TR><TR><TD
+        align=left>\n<a href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2F4940231\">4940231</a></TD><TD
+        align =left>\nJuly 1990</TD><TD align=left>\nEhler</TD></TR><TR><TD align=left>\n<a
+        href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2F4955605\">4955605</a></TD><TD
+        align =left>\nSeptember 1990</TD><TD align=left>\nGoldfarb</TD></TR><TR><TD
+        align=left>\n<a href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2F5016875\">5016875</a></TD><TD
+        align =left>\nMay 1991</TD><TD align=left>\nJoseph</TD></TR><TR><TD align=left>\n<a
+        href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2F5125651\">5125651</a></TD><TD
+        align =left>\nJune 1992</TD><TD align=left>\nKeeling et al.</TD></TR><TR><TD
+        align=left>\n<a href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2F5312099\">5312099</a></TD><TD
+        align =left>\nMay 1994</TD><TD align=left>\nOliver, Sr.</TD></TR><TR><TD align=left>\n<a
+        href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2F5342041\">5342041</a></TD><TD
+        align =left>\nAugust 1994</TD><TD align=left>\nAguinek et al.</TD></TR><TR><TD
+        align=left>\n<a href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2F5365427\">5365427</a></TD><TD
+        align =left>\nNovember 1994</TD><TD align=left>\nSoignet et al.</TD></TR><TR><TD
+        align=left>\n<a href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2F5393049\">5393049</a></TD><TD
+        align =left>\nFebruary 1995</TD><TD align=left>\nNelson</TD></TR><TR><TD align=left>\n<a
+        href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2F5409211\">5409211</a></TD><TD
+        align =left>\nApril 1995</TD><TD align=left>\nAdamek</TD></TR><TR><TD align=left>\n<a
+        href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2F5417196\">5417196</a></TD><TD
+        align =left>\nMay 1995</TD><TD align=left>\nMorrison et al.</TD></TR><TR><TD
+        align=left>\n<a href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2F5450540\">5450540</a></TD><TD
+        align =left>\nSeptember 1995</TD><TD align=left>\nSpohrer</TD></TR><TR><TD
+        align=left>\n<a href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2F5540428\">5540428</a></TD><TD
+        align =left>\nJuly 1996</TD><TD align=left>\nJoseph</TD></TR><TR><TD align=left>\n<a
+        href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2F5647747\">5647747</a></TD><TD
+        align =left>\nJuly 1997</TD><TD align=left>\nMacri et al.</TD></TR><TR><TD
+        align=left>\n<a href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2F5676120\">5676120</a></TD><TD
+        align =left>\nOctober 1997</TD><TD align=left>\nJoseph</TD></TR><TR><TD align=left>\n<a
+        href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2F5681230\">5681230</a></TD><TD
+        align =left>\nOctober 1997</TD><TD align=left>\nKrings</TD></TR><TR><TD align=left>\n<a
+        href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2F5746668\">5746668</a></TD><TD
+        align =left>\nMay 1998</TD><TD align=left>\nOchs</TD></TR><TR><TD align=left>\n<a
+        href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2F5768151\">5768151</a></TD><TD
+        align =left>\nJune 1998</TD><TD align=left>\nLowy et al.</TD></TR><TR><TD
+        align=left>\n<a href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2F5776018\">5776018</a></TD><TD
+        align =left>\nJuly 1998</TD><TD align=left>\nSimpson et al.</TD></TR><TR><TD
+        align=left>\n<a href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2F5813926\">5813926</a></TD><TD
+        align =left>\nSeptember 1998</TD><TD align=left>\nVance</TD></TR><TR><TD align=left>\n<a
+        href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2F5842699\">5842699</a></TD><TD
+        align =left>\nDecember 1998</TD><TD align=left>\nMirando et al.</TD></TR><TR><TD
+        align=left>\n<a href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2F6224503\">6224503</a></TD><TD
+        align =left>\nMay 2001</TD><TD align=left>\nJoseph</TD></TR><TR><TD align=left>\n<a
+        href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2F6241628\">6241628</a></TD><TD
+        align =left>\nJune 2001</TD><TD align=left>\nJenkins et al.</TD></TR><TR><TD
+        align=left>\n<a href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2FD445426\">D445426</a></TD><TD
+        align =left>\nJuly 2001</TD><TD align=left>\nWang et al.</TD></TR><TR><TD
+        align=left>\n<a href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2F6389368\">6389368</a></TD><TD
+        align =left>\nMay 2002</TD><TD align=left>\nHampton</TD></TR><TR><TD align=left>\n<a
+        href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2F6707487\">6707487</a></TD><TD
+        align =left>\nMarch 2004</TD><TD align=left>\nAman et al.</TD></TR><TR><TD
+        align=left>\n<a href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2F6731316\">6731316</a></TD><TD
+        align =left>\nMay 2004</TD><TD align=left>\nHerigstad et al.</TD></TR><TR><TD
+        align=left>\n<a href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2F6746397\">6746397</a></TD><TD
+        align =left>\nJune 2004</TD><TD align=left>\nLee et al.</TD></TR><TR><TD align=left>\n<a
+        href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2F7094164\">7094164</a></TD><TD
+        align =left>\nAugust 2006</TD><TD align=left>\nMarty et al.</TD></TR><TR><TD
+        align=left>\n<a href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2FD554661\">D554661</a></TD><TD
+        align =left>\nNovember 2007</TD><TD align=left>\nHoover</TD></TR><TR><TD align=left>\n<a
+        href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2FD554662\">D554662</a></TD><TD
+        align =left>\nNovember 2007</TD><TD align=left>\nHoover</TD></TR><TR><TD align=left>\n<a
+        href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2FD591305\">D591305</a></TD><TD
+        align =left>\nApril 2009</TD><TD align=left>\nShimoda</TD></TR><TR><TD align=left>\n<a
+        href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2F7850552\">7850552</a></TD><TD
+        align =left>\nDecember 2010</TD><TD align=left>\nMarty et al.</TD></TR><TR><TD
+        align=left>\n<a href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2F7854669\">7854669</a></TD><TD
+        align =left>\nDecember 2010</TD><TD align=left>\nMarty et al.</TD></TR><TR><TD
+        align=left>\n<a href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2F7927237\">7927237</a></TD><TD
+        align =left>\nApril 2011</TD><TD align=left>\nJenkins et al.</TD></TR><TR><TD
+        align=left>\n<a href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2FD637199\">D637199</a></TD><TD
+        align =left>\nMay 2011</TD><TD align=left>\nBrinda et al.</TD></TR><TR><TD
+        align=left>\n<a href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2F7938746\">7938746</a></TD><TD
+        align =left>\nMay 2011</TD><TD align=left>\nChipperfield</TD></TR><TR><TD
+        align=left>\n<a href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2F8016687\">8016687</a></TD><TD
+        align =left>\nSeptember 2011</TD><TD align=left>\nMartin et al.</TD></TR><TR><TD
+        align=left>\n<a href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2F8123634\">8123634</a></TD><TD
+        align =left>\nFebruary 2012</TD><TD align=left>\nLovett</TD></TR><TR><TD align=left>\n<a
+        href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2F8147356\">8147356</a></TD><TD
+        align =left>\nApril 2012</TD><TD align=left>\nCampbell et al.</TD></TR><TR><TD
+        align=left>\n<a href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2F8206246\">8206246</a></TD><TD
+        align =left>\nJune 2012</TD><TD align=left>\nJoseph et al.</TD></TR><TR><TD
+        align=left>\n<a href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2F8408982\">8408982</a></TD><TD
+        align =left>\nApril 2013</TD><TD align=left>\nMarty et al.</TD></TR><TR><TD
+        align=left>\n<a href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2F8409024\">8409024</a></TD><TD
+        align =left>\nApril 2013</TD><TD align=left>\nMarty et al.</TD></TR><TR><TD
+        align=left>\n<a href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2FD681662\">D681662</a></TD><TD
+        align =left>\nMay 2013</TD><TD align=left>\nFletcher</TD></TR><TR><TD align=left>\n<a
+        href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2FD687845\">D687845</a></TD><TD
+        align =left>\nAugust 2013</TD><TD align=left>\nLee</TD></TR><TR><TD align=left>\n<a
+        href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2F8540560\">8540560</a></TD><TD
+        align =left>\nSeptember 2013</TD><TD align=left>\nCrowley et al.</TD></TR><TR><TD
+        align=left>\n<a href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2FD690728\">D690728</a></TD><TD
+        align =left>\nOctober 2013</TD><TD align=left>\nBrinda</TD></TR><TR><TD align=left>\n<a
+        href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2F8579632\">8579632</a></TD><TD
+        align =left>\nNovember 2013</TD><TD align=left>\nCrowley</TD></TR><TR><TD
+        align=left>\n<a href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2F8617008\">8617008</a></TD><TD
+        align =left>\nDecember 2013</TD><TD align=left>\nMarty et al.</TD></TR><TR><TD
+        align=left>\n<a href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2F8622832\">8622832</a></TD><TD
+        align =left>\nJanuary 2014</TD><TD align=left>\nMarty et al.</TD></TR><TR><TD
+        align=left>\n<a href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2FD704734\">D704734</a></TD><TD
+        align =left>\nMay 2014</TD><TD align=left>\nWafapoor</TD></TR><TR><TD align=left>\n<a
+        href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2F8727784\">8727784</a></TD><TD
+        align =left>\nMay 2014</TD><TD align=left>\nWolf</TD></TR><TR><TD align=left>\n<a
+        href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2FD714321\">D714321</a></TD><TD
+        align =left>\nSeptember 2014</TD><TD align=left>\nPereira</TD></TR><TR><TD
+        align=left>\n<a href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2FD714325\">D714325</a></TD><TD
+        align =left>\nSeptember 2014</TD><TD align=left>\nPereira</TD></TR><TR><TD
+        align=left>\n<a href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2F8852030\">8852030</a></TD><TD
+        align =left>\nOctober 2014</TD><TD align=left>\nCampbell et al.</TD></TR><TR><TD
+        align=left>\n<a href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2F8908922\">8908922</a></TD><TD
+        align =left>\nDecember 2014</TD><TD align=left>\nMarty et al.</TD></TR><TR><TD
+        align=left>\n<a href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2F8948457\">8948457</a></TD><TD
+        align =left>\nFebruary 2015</TD><TD align=left>\nMarty et al.</TD></TR><TR><TD
+        align=left>\n<a href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2F9010309\">9010309</a></TD><TD
+        align =left>\nApril 2015</TD><TD align=left>\nLewis et al.</TD></TR><TR><TD
+        align=left>\n<a href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2F9015627\">9015627</a></TD><TD
+        align =left>\nApril 2015</TD><TD align=left>\nLal</TD></TR><TR><TD align=left>\n<a
+        href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2F9017188\">9017188</a></TD><TD
+        align =left>\nApril 2015</TD><TD align=left>\nJoseph et al.</TD></TR><TR><TD
+        align=left>\n<a href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2FD737278\">D737278</a></TD><TD
+        align =left>\nAugust 2015</TD><TD align=left>\nShin</TD></TR><TR><TD align=left>\n<a
+        href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2FD745533\">D745533</a></TD><TD
+        align =left>\nDecember 2015</TD><TD align=left>\nLuo</TD></TR><TR><TD align=left>\n<a
+        href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2FD746855\">D746855</a></TD><TD
+        align =left>\nJanuary 2016</TD><TD align=left>\nChoi</TD></TR><TR><TD align=left>\n<a
+        href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2F9233292\">9233292</a></TD><TD
+        align =left>\nJanuary 2016</TD><TD align=left>\nJoseph et al.</TD></TR><TR><TD
+        align=left>\n<a href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2F9248368\">9248368</a></TD><TD
+        align =left>\nFebruary 2016</TD><TD align=left>\nStimac</TD></TR><TR><TD align=left>\n<a
+        href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2F9283432\">9283432</a></TD><TD
+        align =left>\nMarch 2016</TD><TD align=left>\nMarty et al.</TD></TR><TR><TD
+        align=left>\n<a href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2F9345929\">9345929</a></TD><TD
+        align =left>\nMay 2016</TD><TD align=left>\nMarty et al.</TD></TR><TR><TD
+        align=left>\n<a href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2F9370704\">9370704</a></TD><TD
+        align =left>\nJune 2016</TD><TD align=left>\nMarty</TD></TR><TR><TD align=left>\n<a
+        href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2FD760769\">D760769</a></TD><TD
+        align =left>\nJuly 2016</TD><TD align=left>\nIshii</TD></TR><TR><TD align=left>\n<a
+        href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2FD761840\">D761840</a></TD><TD
+        align =left>\nJuly 2016</TD><TD align=left>\nPatterson</TD></TR><TR><TD align=left>\n<a
+        href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2F9390501\">9390501</a></TD><TD
+        align =left>\nJuly 2016</TD><TD align=left>\nMarty et al.</TD></TR><TR><TD
+        align=left>\n<a href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2FD762709\">D762709</a></TD><TD
+        align =left>\nAugust 2016</TD><TD align=left>\nHsieh</TD></TR><TR><TD align=left>\n<a
+        href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2FD767596\">D767596</a></TD><TD
+        align =left>\nSeptember 2016</TD><TD align=left>\nShi</TD></TR><TR><TD align=left>\n<a
+        href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2F9452339\">9452339</a></TD><TD
+        align =left>\nSeptember 2016</TD><TD align=left>\nShah et al.</TD></TR><TR><TD
+        align=left>\n<a href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2FD768143\">D768143</a></TD><TD
+        align =left>\nOctober 2016</TD><TD align=left>\nDrozd</TD></TR><TR><TD align=left>\n<a
+        href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2FD768148\">D768148</a></TD><TD
+        align =left>\nOctober 2016</TD><TD align=left>\nJung</TD></TR><TR><TD align=left>\n<a
+        href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2F9474953\">9474953</a></TD><TD
+        align =left>\nOctober 2016</TD><TD align=left>\nDuke</TD></TR><TR><TD align=left>\n<a
+        href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2FD774518\">D774518</a></TD><TD
+        align =left>\nDecember 2016</TD><TD align=left>\nLv</TD></TR><TR><TD align=left>\n<a
+        href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2FD776676\">D776676</a></TD><TD
+        align =left>\nJanuary 2017</TD><TD align=left>\nShi</TD></TR><TR><TD align=left>\n<a
+        href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2FD778314\">D778314</a></TD><TD
+        align =left>\nFebruary 2017</TD><TD align=left>\nLi</TD></TR><TR><TD align=left>\n<a
+        href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2FD783659\">D783659</a></TD><TD
+        align =left>\nApril 2017</TD><TD align=left>\nPark</TD></TR><TR><TD align=left>\n<a
+        href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2FD786269\">D786269</a></TD><TD
+        align =left>\nMay 2017</TD><TD align=left>\nLin</TD></TR><TR><TD align=left>\n<a
+        href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2FD789393\">D789393</a></TD><TD
+        align =left>\nJune 2017</TD><TD align=left>\nJaini</TD></TR><TR><TD align=left>\n<a
+        href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2FD790585\">D790585</a></TD><TD
+        align =left>\nJune 2017</TD><TD align=left>\nKim</TD></TR><TR><TD align=left>\n<a
+        href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2FD791786\">D791786</a></TD><TD
+        align =left>\nJuly 2017</TD><TD align=left>\nChaudhri et al.</TD></TR><TR><TD
+        align=left>\n<a href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2F9697617\">9697617</a></TD><TD
+        align =left>\nJuly 2017</TD><TD align=left>\nMarty et al.</TD></TR><TR><TD
+        align=left>\n<a href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2F9724584\">9724584</a></TD><TD
+        align =left>\nAugust 2017</TD><TD align=left>\nCampbell et al.</TD></TR><TR><TD
+        align=left>\n<a href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2F9734405\">9734405</a></TD><TD
+        align =left>\nAugust 2017</TD><TD align=left>\nMarty et al.</TD></TR><TR><TD
+        align=left>\n<a href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2F9808696\">9808696</a></TD><TD
+        align =left>\nNovember 2017</TD><TD align=left>\nCampbell et al.</TD></TR><TR><TD
+        align=left>\n<a href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2FD808976\">D808976</a></TD><TD
+        align =left>\nJanuary 2018</TD><TD align=left>\nShi</TD></TR><TR><TD align=left>\n<a
+        href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2F9886624\">9886624</a></TD><TD
+        align =left>\nFebruary 2018</TD><TD align=left>\nMarty et al.</TD></TR><TR><TD
+        align=left>\n<a href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2FD817348\">D817348</a></TD><TD
+        align =left>\nMay 2018</TD><TD align=left>\nIshikawa</TD></TR><TR><TD align=left>\n<a
+        href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2FD818488\">D818488</a></TD><TD
+        align =left>\nMay 2018</TD><TD align=left>\nFrazier</TD></TR><TR><TD align=left>\n<a
+        href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2F10004949\">10004949</a></TD><TD
+        align =left>\nJune 2018</TD><TD align=left>\nBrothers et al.</TD></TR><TR><TD
+        align=left>\n<a href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2FD824955\">D824955</a></TD><TD
+        align =left>\nAugust 2018</TD><TD align=left>\nLee</TD></TR><TR><TD align=left>\n<a
+        href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2FD838729\">D838729</a></TD><TD
+        align =left>\nJanuary 2019</TD><TD align=left>\nGuerrieri</TD></TR><TR><TD
+        align=left>\n<a href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2FD861720\">D861720</a></TD><TD
+        align =left>\nOctober 2019</TD><TD align=left>\nKoller</TD></TR><TR><TD align=left>\n<a
+        href=\"http://appft.uspto.gov/netacgi/nph-Parser?TERM1=20020010032&Sect1=PTO1&Sect2=HITOFF&d=PG01&p=1&u=%2Fnetahtml%2FPTO%2Fsrchnum.html&r=0&f=S&l=50\"
+        target=\"_blank\">2002/0010032</a></TD><TD align =left>\nJanuary 2002</TD><TD
+        align=left>\nStiteler</TD></TR><TR><TD align=left>\n<a href=\"http://appft.uspto.gov/netacgi/nph-Parser?TERM1=20030023145&Sect1=PTO1&Sect2=HITOFF&d=PG01&p=1&u=%2Fnetahtml%2FPTO%2Fsrchnum.html&r=0&f=S&l=50\"
+        target=\"_blank\">2003/0023145</a></TD><TD align =left>\nJanuary 2003</TD><TD
+        align=left>\nLee et al.</TD></TR><TR><TD align=left>\n<a href=\"http://appft.uspto.gov/netacgi/nph-Parser?TERM1=20060068945&Sect1=PTO1&Sect2=HITOFF&d=PG01&p=1&u=%2Fnetahtml%2FPTO%2Fsrchnum.html&r=0&f=S&l=50\"
+        target=\"_blank\">2006/0068945</a></TD><TD align =left>\nMarch 2006</TD><TD
+        align=left>\nMurchison, III</TD></TR><TR><TD align=left>\n<a href=\"http://appft.uspto.gov/netacgi/nph-Parser?TERM1=20060160639&Sect1=PTO1&Sect2=HITOFF&d=PG01&p=1&u=%2Fnetahtml%2FPTO%2Fsrchnum.html&r=0&f=S&l=50\"
+        target=\"_blank\">2006/0160639</a></TD><TD align =left>\nJuly 2006</TD><TD
+        align=left>\nKlein</TD></TR><TR><TD align=left>\n<a href=\"http://appft.uspto.gov/netacgi/nph-Parser?TERM1=20070173355&Sect1=PTO1&Sect2=HITOFF&d=PG01&p=1&u=%2Fnetahtml%2FPTO%2Fsrchnum.html&r=0&f=S&l=50\"
+        target=\"_blank\">2007/0173355</a></TD><TD align =left>\nJuly 2007</TD><TD
+        align=left>\nKlein</TD></TR><TR><TD align=left>\n<a href=\"http://appft.uspto.gov/netacgi/nph-Parser?TERM1=20080015061&Sect1=PTO1&Sect2=HITOFF&d=PG01&p=1&u=%2Fnetahtml%2FPTO%2Fsrchnum.html&r=0&f=S&l=50\"
+        target=\"_blank\">2008/0015061</a></TD><TD align =left>\nJanuary 2008</TD><TD
+        align=left>\nKlein</TD></TR><TR><TD align=left>\n<a href=\"http://appft.uspto.gov/netacgi/nph-Parser?TERM1=20080200287&Sect1=PTO1&Sect2=HITOFF&d=PG01&p=1&u=%2Fnetahtml%2FPTO%2Fsrchnum.html&r=0&f=S&l=50\"
+        target=\"_blank\">2008/0200287</a></TD><TD align =left>\nAugust 2008</TD><TD
+        align=left>\nMarty et al.</TD></TR><TR><TD align=left>\n<a href=\"http://appft.uspto.gov/netacgi/nph-Parser?TERM1=20080254866&Sect1=PTO1&Sect2=HITOFF&d=PG01&p=1&u=%2Fnetahtml%2FPTO%2Fsrchnum.html&r=0&f=S&l=50\"
+        target=\"_blank\">2008/0254866</a></TD><TD align =left>\nOctober 2008</TD><TD
+        align=left>\nYoung et al.</TD></TR><TR><TD align=left>\n<a href=\"http://appft.uspto.gov/netacgi/nph-Parser?TERM1=20080261726&Sect1=PTO1&Sect2=HITOFF&d=PG01&p=1&u=%2Fnetahtml%2FPTO%2Fsrchnum.html&r=0&f=S&l=50\"
+        target=\"_blank\">2008/0261726</a></TD><TD align =left>\nOctober 2008</TD><TD
+        align=left>\nChipperfield</TD></TR><TR><TD align=left>\n<a href=\"http://appft.uspto.gov/netacgi/nph-Parser?TERM1=20080312010&Sect1=PTO1&Sect2=HITOFF&d=PG01&p=1&u=%2Fnetahtml%2FPTO%2Fsrchnum.html&r=0&f=S&l=50\"
+        target=\"_blank\">2008/0312010</a></TD><TD align =left>\nDecember 2008</TD><TD
+        align=left>\nMarty et al.</TD></TR><TR><TD align=left>\n<a href=\"http://appft.uspto.gov/netacgi/nph-Parser?TERM1=20090042672&Sect1=PTO1&Sect2=HITOFF&d=PG01&p=1&u=%2Fnetahtml%2FPTO%2Fsrchnum.html&r=0&f=S&l=50\"
+        target=\"_blank\">2009/0042672</a></TD><TD align =left>\nFebruary 2009</TD><TD
+        align=left>\nRadice</TD></TR><TR><TD align=left>\n<a href=\"http://appft.uspto.gov/netacgi/nph-Parser?TERM1=20090137347&Sect1=PTO1&Sect2=HITOFF&d=PG01&p=1&u=%2Fnetahtml%2FPTO%2Fsrchnum.html&r=0&f=S&l=50\"
+        target=\"_blank\">2009/0137347</a></TD><TD align =left>\nMay 2009</TD><TD
+        align=left>\nJenkins</TD></TR><TR><TD align=left>\n<a href=\"http://appft.uspto.gov/netacgi/nph-Parser?TERM1=20100259412&Sect1=PTO1&Sect2=HITOFF&d=PG01&p=1&u=%2Fnetahtml%2FPTO%2Fsrchnum.html&r=0&f=S&l=50\"
+        target=\"_blank\">2010/0259412</a></TD><TD align =left>\nOctober 2010</TD><TD
+        align=left>\nPagonakis</TD></TR><TR><TD align=left>\n<a href=\"http://appft.uspto.gov/netacgi/nph-Parser?TERM1=20110013087&Sect1=PTO1&Sect2=HITOFF&d=PG01&p=1&u=%2Fnetahtml%2FPTO%2Fsrchnum.html&r=0&f=S&l=50\"
+        target=\"_blank\">2011/0013087</a></TD><TD align =left>\nJanuary 2011</TD><TD
+        align=left>\nHouse et al.</TD></TR><TR><TD align=left>\n<a href=\"http://appft.uspto.gov/netacgi/nph-Parser?TERM1=20110071818&Sect1=PTO1&Sect2=HITOFF&d=PG01&p=1&u=%2Fnetahtml%2FPTO%2Fsrchnum.html&r=0&f=S&l=50\"
+        target=\"_blank\">2011/0071818</a></TD><TD align =left>\nMarch 2011</TD><TD
+        align=left>\nJiang</TD></TR><TR><TD align=left>\n<a href=\"http://appft.uspto.gov/netacgi/nph-Parser?TERM1=20110294585&Sect1=PTO1&Sect2=HITOFF&d=PG01&p=1&u=%2Fnetahtml%2FPTO%2Fsrchnum.html&r=0&f=S&l=50\"
+        target=\"_blank\">2011/0294585</a></TD><TD align =left>\nDecember 2011</TD><TD
+        align=left>\nPenna</TD></TR><TR><TD align=left>\n<a href=\"http://appft.uspto.gov/netacgi/nph-Parser?TERM1=20120115651&Sect1=PTO1&Sect2=HITOFF&d=PG01&p=1&u=%2Fnetahtml%2FPTO%2Fsrchnum.html&r=0&f=S&l=50\"
+        target=\"_blank\">2012/0115651</a></TD><TD align =left>\nMay 2012</TD><TD
+        align=left>\nChipperfield</TD></TR><TR><TD align=left>\n<a href=\"http://appft.uspto.gov/netacgi/nph-Parser?TERM1=20130095959&Sect1=PTO1&Sect2=HITOFF&d=PG01&p=1&u=%2Fnetahtml%2FPTO%2Fsrchnum.html&r=0&f=S&l=50\"
+        target=\"_blank\">2013/0095959</a></TD><TD align =left>\nApril 2013</TD><TD
+        align=left>\nMarty et al.</TD></TR><TR><TD align=left>\n<a href=\"http://appft.uspto.gov/netacgi/nph-Parser?TERM1=20130130845&Sect1=PTO1&Sect2=HITOFF&d=PG01&p=1&u=%2Fnetahtml%2FPTO%2Fsrchnum.html&r=0&f=S&l=50\"
+        target=\"_blank\">2013/0130845</a></TD><TD align =left>\nMay 2013</TD><TD
+        align=left>\nMarty et al.</TD></TR><TR><TD align=left>\n<a href=\"http://appft.uspto.gov/netacgi/nph-Parser?TERM1=20130172058&Sect1=PTO1&Sect2=HITOFF&d=PG01&p=1&u=%2Fnetahtml%2FPTO%2Fsrchnum.html&r=0&f=S&l=50\"
+        target=\"_blank\">2013/0172058</a></TD><TD align =left>\nJuly 2013</TD><TD
+        align=left>\nMarty et al.</TD></TR><TR><TD align=left>\n<a href=\"http://appft.uspto.gov/netacgi/nph-Parser?TERM1=20140092253&Sect1=PTO1&Sect2=HITOFF&d=PG01&p=1&u=%2Fnetahtml%2FPTO%2Fsrchnum.html&r=0&f=S&l=50\"
+        target=\"_blank\">2014/0092253</a></TD><TD align =left>\nApril 2014</TD><TD
+        align=left>\nMarty et al.</TD></TR><TR><TD align=left>\n<a href=\"http://appft.uspto.gov/netacgi/nph-Parser?TERM1=20140135956&Sect1=PTO1&Sect2=HITOFF&d=PG01&p=1&u=%2Fnetahtml%2FPTO%2Fsrchnum.html&r=0&f=S&l=50\"
+        target=\"_blank\">2014/0135956</a></TD><TD align =left>\nMay 2014</TD><TD
+        align=left>\nThurman et al.</TD></TR><TR><TD align=left>\n<a href=\"http://appft.uspto.gov/netacgi/nph-Parser?TERM1=20140195022&Sect1=PTO1&Sect2=HITOFF&d=PG01&p=1&u=%2Fnetahtml%2FPTO%2Fsrchnum.html&r=0&f=S&l=50\"
+        target=\"_blank\">2014/0195022</a></TD><TD align =left>\nJuly 2014</TD><TD
+        align=left>\nThurman et al.</TD></TR><TR><TD align=left>\n<a href=\"http://appft.uspto.gov/netacgi/nph-Parser?TERM1=20140200692&Sect1=PTO1&Sect2=HITOFF&d=PG01&p=1&u=%2Fnetahtml%2FPTO%2Fsrchnum.html&r=0&f=S&l=50\"
+        target=\"_blank\">2014/0200692</a></TD><TD align =left>\nJuly 2014</TD><TD
+        align=left>\nThurman et al.</TD></TR><TR><TD align=left>\n<a href=\"http://appft.uspto.gov/netacgi/nph-Parser?TERM1=20140283142&Sect1=PTO1&Sect2=HITOFF&d=PG01&p=1&u=%2Fnetahtml%2FPTO%2Fsrchnum.html&r=0&f=S&l=50\"
+        target=\"_blank\">2014/0283142</a></TD><TD align =left>\nSeptember 2014</TD><TD
+        align=left>\nShepherd et al.</TD></TR><TR><TD align=left>\n<a href=\"http://appft.uspto.gov/netacgi/nph-Parser?TERM1=20140301601&Sect1=PTO1&Sect2=HITOFF&d=PG01&p=1&u=%2Fnetahtml%2FPTO%2Fsrchnum.html&r=0&f=S&l=50\"
+        target=\"_blank\">2014/0301601</a></TD><TD align =left>\nOctober 2014</TD><TD
+        align=left>\nMarty et al.</TD></TR><TR><TD align=left>\n<a href=\"http://appft.uspto.gov/netacgi/nph-Parser?TERM1=20150028541&Sect1=PTO1&Sect2=HITOFF&d=PG01&p=1&u=%2Fnetahtml%2FPTO%2Fsrchnum.html&r=0&f=S&l=50\"
+        target=\"_blank\">2015/0028541</a></TD><TD align =left>\nJanuary 2015</TD><TD
+        align=left>\nMurakami et al.</TD></TR><TR><TD align=left>\n<a href=\"http://appft.uspto.gov/netacgi/nph-Parser?TERM1=20150141144&Sect1=PTO1&Sect2=HITOFF&d=PG01&p=1&u=%2Fnetahtml%2FPTO%2Fsrchnum.html&r=0&f=S&l=50\"
+        target=\"_blank\">2015/0141144</a></TD><TD align =left>\nMay 2015</TD><TD
+        align=left>\nSprague et al.</TD></TR><TR><TD align=left>\n<a href=\"http://appft.uspto.gov/netacgi/nph-Parser?TERM1=20150265897&Sect1=PTO1&Sect2=HITOFF&d=PG01&p=1&u=%2Fnetahtml%2FPTO%2Fsrchnum.html&r=0&f=S&l=50\"
+        target=\"_blank\">2015/0265897</a></TD><TD align =left>\nSeptember 2015</TD><TD
+        align=left>\nGordon et al.</TD></TR><TR><TD align=left>\n<a href=\"http://appft.uspto.gov/netacgi/nph-Parser?TERM1=20150290516&Sect1=PTO1&Sect2=HITOFF&d=PG01&p=1&u=%2Fnetahtml%2FPTO%2Fsrchnum.html&r=0&f=S&l=50\"
+        target=\"_blank\">2015/0290516</a></TD><TD align =left>\nOctober 2015</TD><TD
+        align=left>\nJoseph et al.</TD></TR><TR><TD align=left>\n<a href=\"http://appft.uspto.gov/netacgi/nph-Parser?TERM1=20160121193&Sect1=PTO1&Sect2=HITOFF&d=PG01&p=1&u=%2Fnetahtml%2FPTO%2Fsrchnum.html&r=0&f=S&l=50\"
+        target=\"_blank\">2016/0121193</a></TD><TD align =left>\nMay 2016</TD><TD
+        align=left>\nMarty et al.</TD></TR><TR><TD align=left>\n<a href=\"http://appft.uspto.gov/netacgi/nph-Parser?TERM1=20160166907&Sect1=PTO1&Sect2=HITOFF&d=PG01&p=1&u=%2Fnetahtml%2FPTO%2Fsrchnum.html&r=0&f=S&l=50\"
+        target=\"_blank\">2016/0166907</a></TD><TD align =left>\nJune 2016</TD><TD
+        align=left>\nJoseph et al.</TD></TR><TR><TD align=left>\n<a href=\"http://appft.uspto.gov/netacgi/nph-Parser?TERM1=20160250540&Sect1=PTO1&Sect2=HITOFF&d=PG01&p=1&u=%2Fnetahtml%2FPTO%2Fsrchnum.html&r=0&f=S&l=50\"
+        target=\"_blank\">2016/0250540</a></TD><TD align =left>\nSeptember 2016</TD><TD
+        align=left>\nJoseph et al.</TD></TR><TR><TD align=left>\n<a href=\"http://appft.uspto.gov/netacgi/nph-Parser?TERM1=20160310814&Sect1=PTO1&Sect2=HITOFF&d=PG01&p=1&u=%2Fnetahtml%2FPTO%2Fsrchnum.html&r=0&f=S&l=50\"
+        target=\"_blank\">2016/0310814</a></TD><TD align =left>\nOctober 2016</TD><TD
+        align=left>\nJoseph et al.</TD></TR><TR><TD align=left>\n<a href=\"http://appft.uspto.gov/netacgi/nph-Parser?TERM1=20160325168&Sect1=PTO1&Sect2=HITOFF&d=PG01&p=1&u=%2Fnetahtml%2FPTO%2Fsrchnum.html&r=0&f=S&l=50\"
+        target=\"_blank\">2016/0325168</a></TD><TD align =left>\nNovember 2016</TD><TD
+        align=left>\nCampbell et al.</TD></TR><TR><TD align=left>\n<a href=\"http://appft.uspto.gov/netacgi/nph-Parser?TERM1=20170007921&Sect1=PTO1&Sect2=HITOFF&d=PG01&p=1&u=%2Fnetahtml%2FPTO%2Fsrchnum.html&r=0&f=S&l=50\"
+        target=\"_blank\">2017/0007921</a></TD><TD align =left>\nJanuary 2017</TD><TD
+        align=left>\nBaba et al.</TD></TR><TR><TD align=left>\n<a href=\"http://appft.uspto.gov/netacgi/nph-Parser?TERM1=20170136333&Sect1=PTO1&Sect2=HITOFF&d=PG01&p=1&u=%2Fnetahtml%2FPTO%2Fsrchnum.html&r=0&f=S&l=50\"
+        target=\"_blank\">2017/0136333</a></TD><TD align =left>\nMay 2017</TD><TD
+        align=left>\nJoseph et al.</TD></TR><TR><TD align=left>\n<a href=\"http://appft.uspto.gov/netacgi/nph-Parser?TERM1=20170161561&Sect1=PTO1&Sect2=HITOFF&d=PG01&p=1&u=%2Fnetahtml%2FPTO%2Fsrchnum.html&r=0&f=S&l=50\"
+        target=\"_blank\">2017/0161561</a></TD><TD align =left>\nJune 2017</TD><TD
+        align=left>\nMarty et al.</TD></TR><TR><TD align=left>\n<a href=\"http://appft.uspto.gov/netacgi/nph-Parser?TERM1=20170232298&Sect1=PTO1&Sect2=HITOFF&d=PG01&p=1&u=%2Fnetahtml%2FPTO%2Fsrchnum.html&r=0&f=S&l=50\"
+        target=\"_blank\">2017/0232298</a></TD><TD align =left>\nAugust 2017</TD><TD
+        align=left>\nJoseph et al.</TD></TR><TR><TD align=left>\n<a href=\"http://appft.uspto.gov/netacgi/nph-Parser?TERM1=20170282044&Sect1=PTO1&Sect2=HITOFF&d=PG01&p=1&u=%2Fnetahtml%2FPTO%2Fsrchnum.html&r=0&f=S&l=50\"
+        target=\"_blank\">2017/0282044</a></TD><TD align =left>\nOctober 2017</TD><TD
+        align=left>\nMoore et al.</TD></TR><TR><TD align=left>\n<a href=\"http://appft.uspto.gov/netacgi/nph-Parser?TERM1=20180056124&Sect1=PTO1&Sect2=HITOFF&d=PG01&p=1&u=%2Fnetahtml%2FPTO%2Fsrchnum.html&r=0&f=S&l=50\"
+        target=\"_blank\">2018/0056124</a></TD><TD align =left>\nMarch 2018</TD><TD
+        align=left>\nMarty et al.</TD></TR><TR><TD align=left>\n\n</TD>\n</TR> </TABLE>\n
+        \      <CENTER><b>Foreign Patent Documents</b></CENTER>\n<TABLE width=\"100%\">
+        <TR><TD></TD><TH scope=\"col\"></TH> <TD></TD><TH scope=\"col\"></TH> <TD></TD><TH
+        scope=\"col\"></TH></TR> <TR> <TD align=\"left\">\n</TD><TD align=left>303127130</TD><TD></TD><TD
+        align=left>\nMar 2015</TD><TD></TD><TD align=left>\nCN</TD></TR><TR><TD align=left>\n</TD><TD
+        align=left>303207615</TD><TD></TD><TD align=left>\nMay 2015</TD><TD></TD><TD
+        align=left>\nCN</TD></TR><TR><TD align=left>\n</TD><TD align=left>2271414</TD><TD></TD><TD
+        align=left>\nJun 2014</TD><TD></TD><TD align=left>\nEP</TD></TR><TR><TD align=left>\n</TD><TD
+        align=left>2026104</TD><TD></TD><TD align=left>\nJan 1995</TD><TD></TD><TD
+        align=left>\nRU</TD></TR><TR><TD align=left>\n</TD><TD align=left>9530872</TD><TD></TD><TD
+        align=left>\nNov 1995</TD><TD></TD><TD align=left>\nWO</TD></TR><TR><TD align=left>\n</TD><TD
+        align=left>9532033</TD><TD></TD><TD align=left>\nNov 1995</TD><TD></TD><TD
+        align=left>\nWO</TD></TR><TR><TD align=left>\n</TD><TD align=left>2005062841</TD><TD></TD><TD
+        align=left>\nJul 2005</TD><TD></TD><TD align=left>\nWO</TD></TR><TR><TD align=left>\n</TD><TD
+        align=left>2009126982</TD><TD></TD><TD align=left>\nOct 2009</TD><TD></TD><TD
+        align=left>\nWO</TD></TR><TR><TD align=left>\n\n</TD>\n</TR> </TABLE>\n<TABLE
+        width=\"90%\"> <BR> <CENTER><b>Other References</b></CENTER> <TR><TD><align=\"left\"><BR>The
+        Gun 6000 Series, Shoot-A-Way, Inc. Upper Sandusky, Ohio, http://www.shootaway.com/Gun1.htm/,
+        at least as early as Jun. 2000. cited by applicant\n.<BR>Dr. Dish.TM., Airborne
+        Athletics Inc., Belle Plaine, Minnesota, http://www.drdishbasketball.com/,
+        at least as early as Jul. 29, 2003. cited by applicant\n.<BR>iMake.TM., Airborne
+        Athletics Inc., Belle Plaine, Minnesota, www.imakebasketball.com. (The iMake
+        has a menu drive programming board allowing the user to select a shooting
+        range by selecting a left and a right limit. The user is given the ability
+        to\nselect spots between said shotting range in spaced increments for the
+        machine to fire balls in that direction. ) At least as early as Jun. 2008.
+        cited by applicant\n.<BR>Vorelco, The Sniper Basketball Training System, https://www.youtube.com/watch?v=X9SqMy8xdf4,
+        Uploaded on Jul. 5, 2008. cited by applicant\n.<BR>Brochure entitled \"Sniper:
+        The Ultimate Basketball Trainer.\" before Oct. 22, 1995, 5 pages including
+        the cover letter. cited by applicant\n.<BR>Airborne Athletics, Inc., www.imakebasketball.com/training_features.html,
+        Jun. 2008, visited Feb. 3, 2016 via http://web.archive.org/web/20080608033916/http://www.imakebasketball.com/-
+        training_features.html. cited by applicant\n.<BR>Airborne Athletics, Inc.,
+        www.airborneathletics.com/imake-basketball-machine.php, Feb. 2011, visited
+        Feb. 3, 2016 via http://web.archive.org/web/20110213020947http://www.airborneathletics.com-
+        /imake-basketball-machine.php. cited by applicant\n.<BR>Airborne Athletics,
+        Inc., www.drdishbasketball.com, visited Mar. 1, 2016. cited by applicant\n.<BR>Shoot-A-Way,
+        Inc., www.shootaway.com, visited Mar. 1, 2016. cited by applicant\n.<BR>Control
+        Panel shown on webpage: https://web.archive.org/web/20131011040129/https://www.winners-choice.net-
+        /gun-8000.html, Web Archive Capture date: Oct. 11, 2013 [acessed on Feb. 24,
+        2018] (Year: 2013). cited by applicant\n.<BR>Airborne Athletics, Inc., Dr.
+        Dish Display, Available Apr. 2015. cited by applicant. </TD></TR> </TABLE>
+        <BR>\n       <i>Primary Examiner:</i> Domino; Daniel J\n<BR>\n       <i>Attorney,
+        Agent or Firm:</i> <coma>Standley Law Group LLP\n<BR>\n       <HR>\n       <CENTER><b><i>Description</b></i></CENTER>\n
+        \      <HR>\n       \n         <BR><BR> The FIGURE is a front view of a display
+        screen with graphical user\n     interface for a basketball practice device.\n<BR><BR>
+        The broken lines are for illustrating environmental features and form no\n
+        \    part of the claimed design.\n<BR><BR><CENTER><b>* * * * *</b></CENTER>\n<HR>\n
+        \  <CENTER>\n   <a href=http://pdfpiw.uspto.gov/.piw?Docid=D0920344&homeurl=http%3A%2F%2Fpatft.uspto.gov%2Fnetacgi%2Fnph-Parser%3FSect1%3DPTO1%2526Sect2%3DHITOFF%2526d%3DPALL%2526p%3D1%2526u%3D%25252Fnetahtml%25252FPTO%25252Fsrchnum.htm%2526r%3D1%2526f%3DG%2526l%3D50%2526s1%3DD920344.PN.%2526OS%3DPN%2FD920344%2526RS%3DPN%2FD920344&PageNum=&Rtype=&SectionNum=&idkey=NONE&Input=View+first+page><img
+        src=\"/netaicon/PTO/image.gif\" alt=\"[Image]\" border=\"0\" valign=\"middle\"></A>\n
+        \  <TABLE>\n   <TR><TD align=\"center\"><A href=\"https://certifiedcopycenter.uspto.gov/other/patft/view.html?backUrl1=http%3A//patft.uspto.gov/netacgi/nph-Parser?Sect1%3DPTO1%26Sect2%3DHITOFF%26d%3DPALL%26p%3D1%26u%3D%25252Fnetahtml%25252FPTO%25252Fsrchnum.htm%26r%3D1%26f%3DG%26l%3D50%26s1%3DD920344.PN.%26OS%3DPN%2FD920344&backLabel1=Back%20to%20Document%3A%20D920344\"><IMG
+        border=\"0\" src=\"/netaicon/PTO/cart.gif\" border=\"0\" valign=\"m\niddle\"
+        alt=\"[View Shopping Cart]\"></A>\n   <A href=\"https://certifiedcopycenter.uspto.gov/other/patft/order.html?docNumber=D920344&backUrl1=http%3A//patft.uspto.gov/netacgi/nph-Parser?Sect1%3DPTO1%26Sect2%3DHITOFF%26d%3DPALL%26p%3D1%26u%3D%25252Fnetahtml%25252FPTO%25252Fsrchnum.htm%26r%3D1%26f%3DG%26l%3D50%26s1%3DD920344.PN.%26OS%3DPN%2FD920344&backLabel1=Back%20to%20Document%3A%20D920344\">\n
+        \  <IMG border=\"0\" src=\"/netaicon/PTO/order.gif\" valign=\"middle\" alt=\"[Add
+        to Shopping Cart]\"></A>\n   </TD></TR>\n   <TR><TD align=\"center\">\n   <A
+        href=\"#top\"><IMG valign=\"middle\" src=\"/netaicon/PTO/top.gif\" border=\"0\"
+        alt=\"[Top]\"></A>\n   </TD></TR>\n   </TABLE>\n   <A name=\"bottom\"></A>\n
+        \  <A href=\"/netahtml/PTO/index.html\"><IMG src=\"/netaicon/PTO/home.gif\"
+        alt=\"[Home]\" border=\"0\" valign=\"middle\"></A>\n   <A href=\"/netahtml/PTO/search-bool.html\"><IMG
+        src=\"/netaicon/PTO/boolean.gif\" alt=\"[Boolean Search]\" border=\"0\" valign=\"middle\"></A>\n
+        \  <A href=\"/netahtml/PTO/search-adv.htm\"><IMG border=\"0\" src=\"/netaicon/PTO/manual.gif\"
+        alt=\"[Manual Search]\" valign=\"middle\"></A>\n   <A href=\"/netahtml/PTO/srchnum.htm\"><IMG
+        src=\"/netaicon/PTO/number.gif\" alt=\"[Number Search]\" border=\"0\" valign=\"middle\"></A>\n
+        \  <A href=\"/netahtml/PTO/help/help.htm\"><IMG border=\"0\" src=\"/netaicon/PTO/help.gif\"
+        alt=\"[Help]\" valign=\"middle\"></A>\n   </CENTER>\n</BODY>\n</HTML>"
+    headers:
+      Content-Type:
+      - text/html
+      Set-Cookie:
+      - TS01a6c8e4=01874167c7af639ee8ce243ab4d664f75a91a2146f7f1a79fba669660ae453a791b830a623ed53b4751ddcb6fcf4c614a24c7d1015;
+        Path=/; Domain=.patft.uspto.gov
+      Strict-Transport-Security:
+      - max-age=31536000
+      Transfer-Encoding:
+      - chunked
+    status:
+      code: 200
+      message: Script results follow
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Cookie:
+      - TS01a6c8e4=01874167c7af639ee8ce243ab4d664f75a91a2146f7f1a79fba669660ae453a791b830a623ed53b4751ddcb6fcf4c614a24c7d1015
+      User-Agent:
+      - Python Patent Clientbot/3.0.3 (parkerhancock@users.noreply.github.com)
+    method: GET
+    uri: https://patft.uspto.gov/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=0&p=1&f=S&l=50&Query=TTL%2Ftennis+OR+AN%2Fwilson&d=PTXT
+  response:
+    body:
+      string: "<HTML>\n<HEAD>\n<BASE TARGET=\"_top\">\n<TITLE>Patent Database Search
+        Results: TTL/tennis OR AN/wilson in US Patent Collection</TITLE>\n<script
+        language=\"javascript\">\nvar clicked = false;\n// Shamelessly adapted from
+        http://www.randomsnippets.com/2008/02/21/how-to-dynamically-add-form-elements-via-javascript/
+        09-04-14. jh\nfunction addInput(divName,btnName,btnLabel) {\n   var newdiv
+        = document.createElement('div');\n   newdiv.innerHTML = \"<input type='hidden'
+        name='\" + btnName +\n\t\t\t\"' value='\" + btnLabel + \"'>\";\n   divName.appendChild(newdiv);\n}\n//
+        -- 09-04-14.\nfunction check(form1,formBtn) {\n   // if submitted by <enter>
+        key, add a submit button lookalike to prevent\n   // 1003 errs from BRS. 9-4-14
+        jh\n   if (!clicked)\n      addInput (form1,formBtn.name,formBtn.value);\n
+        \  return true;\n}\nfunction unesc(){\n   srchForm.Srch1.value = unescape(srchForm.Srch1.value);\n
+        \  if (srchForm.Srch2)\n      srchForm.Srch2.value = unescape(srchForm.Srch2.value);\n}\nfunction
+        unesc2(){\n   srchForm2.Srch1.value = unescape(srchForm2.Srch1.value);\n   if
+        (srchForm2.Srch2)\n      srchForm2.Srch2.value = unescape(srchForm2.Srch2.value);\n}\nfunction
+        decod(){\n   document.title = decodeURIComponent(document.title);\n   refine.Query.value
+        = decodeURIComponent(refine.Query.value);\n   var x = document.getElementById(\"srchtext\").childNodes[0];\n
+        \  x.data = decodeURIComponent(x.data);\n}\n</script>\n</HEAD>\n<BODY BGCOLOR=\"#FFFFFF\"
+        onload=\"decod()\">\n<center>\n<IMG SRC=\"/netaicon/PTO/patfthdr.gif\" alt=\"[US
+        Patent & Trademark Office, Patent Full Text and Image Database]\">\n<br>\n<a
+        name=\"top\">\n<table>\n<tr><td>\n<a href=\"/netahtml/PTO/index.html\"><img
+        src=\"/netaicon/PTO/home.gif\" alt=\"[Home]\" border=\"0\"></a>\n<a href=\"/netahtml/PTO/search-bool.html\"><img
+        src=\"/netaicon/PTO/boolean.gif\" alt=\"[Boolean Search]\" border=\"0\"></a>\n<A
+        HREF=\"/netahtml/PTO/search-adv.htm\"><img src=\"/netaicon/PTO/manual.gif\"
+        alt=\"[Manual Search]\" border=\"0\"></A>\n<a href=\"/netahtml/PTO/srchnum.htm\"><img
+        src=\"/netaicon/PTO/number.gif\" alt=\"[Number Search]\" border=\"0\"></a>\n<A
+        HREF=\"/netahtml/PTO/help/help.htm\"><IMG BORDER=\"0\"SRC=\"/netaicon/PTO/help.gif\"
+        ALT=\"[Help]\"></A>\n</td></tr>\n</table>\n<A HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=0&p=2&f=S&l=50&d=PTXT&S1=(tennis.TI.+OR+wilson.ASNM.)&Page=Next&OS=TTL/tennis+OR+AN/wilson&RS=(TTL/tennis+OR+AN/wilson)><IMG
+        ALIGN=MIDDLE SRC=/netaicon/PTO/nextlist.gif border=0 ALT=[NEXT_LIST]></A>\n<a
+        href=\"#bottom\"><img src=\"/netaicon/PTO/bottom.gif\" alt=\"[Bottom]\" align=middle
+        border=\"0\"></a>\n<A HREF=\"https://certifiedcopycenter.uspto.gov/other/patft/view.html?backUrl1=http%3A//patft.uspto.gov/netacgi/nph-Parser?Sect1%3DPTO2%26Sect2%3DHITOFF%26u%3D%252Fnetahtml%252FPTO%252Fsearch-adv.htm%26r%3D0%26p%3D1%26f%3DS%26l%3D50%26Query%3DTTL%252Ftennis%252BOR%252BAN%252Fwilson%26d%3DPTXT&backLabel1=Back%20to%20Document%3A%20TTL/tennis
+        OR AN/wilson\"><img src=\"/netaicon/PTO/cart.gif\" align=middle border=0 alt=\"[View
+        Shopping Cart]\"></A>\n</center>\n<p>\n<i>Searching US Patent Collection...</i><BR></p>\n<B>Results
+        of Search in US Patent Collection db for:<BR> <span id=\"srchtext\">(TTL/tennis
+        OR AN/wilson)</span></B>: 2862 patents.\n<BR><I>Hits <strong>1</strong> through
+        <strong>50\n</strong> out of <strong>2862</strong>\n</I><p>\n\n<BR>\n<form
+        name=\"srchForm\" action=\"/netacgi/nph-Parser\" method=\"GET\" onsubmit=\"unesc()\">\n
+        \   <INPUT TYPE=\"HIDDEN\" NAME=\"Sect1\" VALUE=\"PTO2\">\n    <INPUT TYPE=\"HIDDEN\"
+        NAME=\"Sect2\" VALUE=\"HITOFF\">\n    <INPUT TYPE=\"HIDDEN\" NAME=\"u\" VALUE=\"/netahtml/PTO/search-adv.htm\">\n
+        \   <INPUT TYPE=\"HIDDEN\" NAME=\"r\" VALUE=\"0\">\n    <INPUT TYPE=\"HIDDEN\"
+        NAME=\"f\" VALUE=\"S\">\n    <INPUT TYPE=\"HIDDEN\" NAME=\"l\" VALUE=\"50\">\n
+        \   <INPUT TYPE=\"HIDDEN\" NAME=\"d\" VALUE=\"PTXT\">\n    <INPUT TYPE=\"HIDDEN\"
+        NAME=\"OS\" VALUE=\"TTL/tennis OR AN/wilson\">\n    <INPUT TYPE=\"HIDDEN\"
+        NAME=\"RS\" VALUE=\"(TTL/tennis OR AN/wilson)\">\n    <INPUT TYPE=\"HIDDEN\"
+        NAME=\"Query\" VALUE=\"TTL/tennis OR AN/wilson\">\n\n<INPUT TYPE=\"HIDDEN\"
+        NAME=\"TD\" VALUE=\"2862\">\n<INPUT TYPE=\"HIDDEN\" NAME=\"Srch1\" VALUE=\"(tennis.TI.
+        OR wilson.ASNM.)\">\n<INPUT TYPE=submit NAME=NextList2 VALUE=\"Next 50 Hits\"><BR><BR>\n</FORM>\n<form
+        name=\"srchForm2\" action=\"/netacgi/nph-Parser\" method=\"GET\"\n\tonsubmit=\"unesc2();check(this,this.StartAt)\">\n
+        \   <INPUT TYPE=\"HIDDEN\" NAME=\"Sect1\" VALUE=\"PTO2\">\n    <INPUT TYPE=\"HIDDEN\"
+        NAME=\"Sect2\" VALUE=\"HITOFF\">\n    <INPUT TYPE=\"HIDDEN\" NAME=\"u\" VALUE=\"/netahtml/PTO/search-adv.htm\">\n
+        \   <INPUT TYPE=\"HIDDEN\" NAME=\"r\" VALUE=\"0\">\n    <INPUT TYPE=\"HIDDEN\"
+        NAME=\"f\" VALUE=\"S\">\n    <INPUT TYPE=\"HIDDEN\" NAME=\"l\" VALUE=\"50\">\n
+        \   <INPUT TYPE=\"HIDDEN\" NAME=\"d\" VALUE=\"PTXT\">\n    <INPUT TYPE=\"HIDDEN\"
+        NAME=\"RS\" VALUE=\"(TTL/tennis OR AN/wilson)\">\n    <INPUT TYPE=\"HIDDEN\"
+        NAME=\"Query\" VALUE=\"TTL/tennis OR AN/wilson\">\n<INPUT TYPE=\"HIDDEN\"
+        NAME=\"TD\" VALUE=\"2862\">\n<INPUT TYPE=\"HIDDEN\" NAME=\"Srch1\" VALUE=\"(tennis.TI.
+        OR wilson.ASNM.)\">\n\n<INPUT TYPE=submit name=StartAt VALUE=\"Jump To\" onclick=\"clicked=true;\">\n&nbsp;\n<INPUT
+        size=6 name=\"StartNum\" title=\"Record Number\">\t<!-- 2/21/14 508 -->\n</form>\n<BR><BR>\n<form
+        name=\"refine\" action=\"/netacgi/nph-Parser\" method=\"GET\" onsubmit=\"check(this,this.Refine)\">\n
+        \   <INPUT TYPE=\"HIDDEN\" NAME=\"Sect1\" VALUE=\"PTO2\">\n    <INPUT TYPE=\"HIDDEN\"
+        NAME=\"Sect2\" VALUE=\"HITOFF\">\n    <INPUT TYPE=\"HIDDEN\" NAME=\"u\" VALUE=\"/netahtml/PTO/search-adv.htm\">\n
+        \   <INPUT TYPE=\"HIDDEN\" NAME=\"r\" VALUE=\"0\">\n    <INPUT TYPE=\"HIDDEN\"
+        NAME=\"f\" VALUE=\"S\">\n    <INPUT TYPE=\"HIDDEN\" NAME=\"l\" VALUE=\"50\">\n
+        \   <INPUT TYPE=\"HIDDEN\" NAME=\"d\" VALUE=\"PTXT\">\n    <INPUT TYPE=\"HIDDEN\"
+        NAME=\"RS\" VALUE=\"(TTL/tennis OR AN/wilson)\">\n<INPUT type=\"submit\" name=\"Refine\"
+        value=\"Refine Search\" onclick=\"clicked=true;\">\n<INPUT size=50 name=\"Query\"
+        value=\"TTL/tennis OR AN/wilson\" title=\"Query\">\t<!-- 2/21/14 508 -->\n</FORM>\n<TABLE><TR><TD></TD><TH
+        scope=\"col\">PAT. NO.</TH><TD></TD><TH scope=\"col\">Title</TH></TR>\n<TR><TD
+        valign=top>1</TD>\n<TD valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=1&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+OR+wilson.ASNM.)&OS=TTL/tennis+OR+AN/wilson&RS=(TTL/tennis+OR+AN/wilson)>11,401,503</A></TD>\n
+        \    <TD valign=baseline><IMG border=0 src=\"/netaicon/PTO/ftext.gif\" alt=\"Full-Text\"></TD>\n
+        \    <TD valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=1&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+OR+wilson.ASNM.)&OS=TTL/tennis+OR+AN/wilson&RS=(TTL/tennis+OR+AN/wilson)>Methods
+        of growing tumor infiltrating lymphocytes in gas-permeable\n     containers\n</A></TD>\n<DOCS:
+        2862>\n<TR><TD valign=top>2</TD>\n<TD valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=2&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+OR+wilson.ASNM.)&OS=TTL/tennis+OR+AN/wilson&RS=(TTL/tennis+OR+AN/wilson)>D958,280</A></TD>\n
+        \    <TD valign=baseline><IMG border=0 src=\"/netaicon/PTO/ftext.gif\" alt=\"Full-Text\"></TD>\n
+        \    <TD valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=2&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+OR+wilson.ASNM.)&OS=TTL/tennis+OR+AN/wilson&RS=(TTL/tennis+OR+AN/wilson)>Table
+        tennis table\n</A></TD>\n<DOCS: 2862>\n<TR><TD valign=top>3</TD>\n<TD valign=top><A
+        \ HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=3&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+OR+wilson.ASNM.)&OS=TTL/tennis+OR+AN/wilson&RS=(TTL/tennis+OR+AN/wilson)>11,394,453</A></TD>\n
+        \    <TD valign=baseline><IMG border=0 src=\"/netaicon/PTO/ftext.gif\" alt=\"Full-Text\"></TD>\n
+        \    <TD valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=3&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+OR+wilson.ASNM.)&OS=TTL/tennis+OR+AN/wilson&RS=(TTL/tennis+OR+AN/wilson)>Multiple-input
+        multiple-output (MIMO) repeater system\n</A></TD>\n<DOCS: 2862>\n<TR><TD valign=top>4</TD>\n<TD
+        valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=4&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+OR+wilson.ASNM.)&OS=TTL/tennis+OR+AN/wilson&RS=(TTL/tennis+OR+AN/wilson)>11,389,708</A></TD>\n
+        \    <TD valign=baseline><IMG border=0 src=\"/netaicon/PTO/ftext.gif\" alt=\"Full-Text\"></TD>\n
+        \    <TD valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=4&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+OR+wilson.ASNM.)&OS=TTL/tennis+OR+AN/wilson&RS=(TTL/tennis+OR+AN/wilson)>Swing
+        training assembly for swing sports including golf, baseball, tennis\n     or
+        hockey\n</A></TD>\n<DOCS: 2862>\n<TR><TD valign=top>5</TD>\n<TD valign=top><A
+        \ HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=5&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+OR+wilson.ASNM.)&OS=TTL/tennis+OR+AN/wilson&RS=(TTL/tennis+OR+AN/wilson)>11,389,707</A></TD>\n
+        \    <TD valign=baseline><IMG border=0 src=\"/netaicon/PTO/ftext.gif\" alt=\"Full-Text\"></TD>\n
+        \    <TD valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=5&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+OR+wilson.ASNM.)&OS=TTL/tennis+OR+AN/wilson&RS=(TTL/tennis+OR+AN/wilson)>Swing
+        training assembly for swing sports including golf, baseball, tennis\n     or
+        hockey\n</A></TD>\n<DOCS: 2862>\n<TR><TD valign=top>6</TD>\n<TD valign=top><A
+        \ HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=6&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+OR+wilson.ASNM.)&OS=TTL/tennis+OR+AN/wilson&RS=(TTL/tennis+OR+AN/wilson)>11,387,893</A></TD>\n
+        \    <TD valign=baseline><IMG border=0 src=\"/netaicon/PTO/ftext.gif\" alt=\"Full-Text\"></TD>\n
+        \    <TD valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=6&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+OR+wilson.ASNM.)&OS=TTL/tennis+OR+AN/wilson&RS=(TTL/tennis+OR+AN/wilson)>Repeater
+        with carrier-specific information\n</A></TD>\n<DOCS: 2862>\n<TR><TD valign=top>7</TD>\n<TD
+        valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=7&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+OR+wilson.ASNM.)&OS=TTL/tennis+OR+AN/wilson&RS=(TTL/tennis+OR+AN/wilson)>11,377,635</A></TD>\n
+        \    <TD valign=baseline><IMG border=0 src=\"/netaicon/PTO/ftext.gif\" alt=\"Full-Text\"></TD>\n
+        \    <TD valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=7&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+OR+wilson.ASNM.)&OS=TTL/tennis+OR+AN/wilson&RS=(TTL/tennis+OR+AN/wilson)>Highly
+        efficient gas permeable devices and methods for culturing cells\n</A></TD>\n<DOCS:
+        2862>\n<TR><TD valign=top>8</TD>\n<TD valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=8&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+OR+wilson.ASNM.)&OS=TTL/tennis+OR+AN/wilson&RS=(TTL/tennis+OR+AN/wilson)>11,364,429</A></TD>\n
+        \    <TD valign=baseline><IMG border=0 src=\"/netaicon/PTO/ftext.gif\" alt=\"Full-Text\"></TD>\n
+        \    <TD valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=8&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+OR+wilson.ASNM.)&OS=TTL/tennis+OR+AN/wilson&RS=(TTL/tennis+OR+AN/wilson)>Tennis
+        wall\n</A></TD>\n<DOCS: 2862>\n<TR><TD valign=top>9</TD>\n<TD valign=top><A
+        \ HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=9&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+OR+wilson.ASNM.)&OS=TTL/tennis+OR+AN/wilson&RS=(TTL/tennis+OR+AN/wilson)>11,362,798</A></TD>\n
+        \    <TD valign=baseline><IMG border=0 src=\"/netaicon/PTO/ftext.gif\" alt=\"Full-Text\"></TD>\n
+        \    <TD valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=9&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+OR+wilson.ASNM.)&OS=TTL/tennis+OR+AN/wilson&RS=(TTL/tennis+OR+AN/wilson)>Channelization
+        options for reducing network sensitivity\n</A></TD>\n<DOCS: 2862>\n<TR><TD
+        valign=top>10</TD>\n<TD valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=10&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+OR+wilson.ASNM.)&OS=TTL/tennis+OR+AN/wilson&RS=(TTL/tennis+OR+AN/wilson)>11,362,729</A></TD>\n
+        \    <TD valign=baseline><IMG border=0 src=\"/netaicon/PTO/ftext.gif\" alt=\"Full-Text\"></TD>\n
+        \    <TD valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=10&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+OR+wilson.ASNM.)&OS=TTL/tennis+OR+AN/wilson&RS=(TTL/tennis+OR+AN/wilson)>Pre-amplifier
+        for a modem\n</A></TD>\n<DOCS: 2862>\n<TR><TD valign=top>11</TD>\n<TD valign=top><A
+        \ HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=11&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+OR+wilson.ASNM.)&OS=TTL/tennis+OR+AN/wilson&RS=(TTL/tennis+OR+AN/wilson)>11,361,859</A></TD>\n
+        \    <TD valign=baseline><IMG border=0 src=\"/netaicon/PTO/ftext.gif\" alt=\"Full-Text\"></TD>\n
+        \    <TD valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=11&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+OR+wilson.ASNM.)&OS=TTL/tennis+OR+AN/wilson&RS=(TTL/tennis+OR+AN/wilson)>Tennis
+        racket sensor system and coaching device\n</A></TD>\n<DOCS: 2862>\n<TR><TD
+        valign=top>12</TD>\n<TD valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=12&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+OR+wilson.ASNM.)&OS=TTL/tennis+OR+AN/wilson&RS=(TTL/tennis+OR+AN/wilson)>D952,783</A></TD>\n
+        \    <TD valign=baseline><IMG border=0 src=\"/netaicon/PTO/ftext.gif\" alt=\"Full-Text\"></TD>\n
+        \    <TD valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=12&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+OR+wilson.ASNM.)&OS=TTL/tennis+OR+AN/wilson&RS=(TTL/tennis+OR+AN/wilson)>Table
+        tennis table\n</A></TD>\n<DOCS: 2862>\n<TR><TD valign=top>13</TD>\n<TD valign=top><A
+        \ HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=13&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+OR+wilson.ASNM.)&OS=TTL/tennis+OR+AN/wilson&RS=(TTL/tennis+OR+AN/wilson)>D952,782</A></TD>\n
+        \    <TD valign=baseline><IMG border=0 src=\"/netaicon/PTO/ftext.gif\" alt=\"Full-Text\"></TD>\n
+        \    <TD valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=13&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+OR+wilson.ASNM.)&OS=TTL/tennis+OR+AN/wilson&RS=(TTL/tennis+OR+AN/wilson)>Table
+        tennis table leg\n</A></TD>\n<DOCS: 2862>\n<TR><TD valign=top>14</TD>\n<TD
+        valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=14&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+OR+wilson.ASNM.)&OS=TTL/tennis+OR+AN/wilson&RS=(TTL/tennis+OR+AN/wilson)>D952,780</A></TD>\n
+        \    <TD valign=baseline><IMG border=0 src=\"/netaicon/PTO/ftext.gif\" alt=\"Full-Text\"></TD>\n
+        \    <TD valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=14&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+OR+wilson.ASNM.)&OS=TTL/tennis+OR+AN/wilson&RS=(TTL/tennis+OR+AN/wilson)>Beach
+        tennis paddle with a circular neck hole\n</A></TD>\n<DOCS: 2862>\n<TR><TD
+        valign=top>15</TD>\n<TD valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=15&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+OR+wilson.ASNM.)&OS=TTL/tennis+OR+AN/wilson&RS=(TTL/tennis+OR+AN/wilson)>D952,464</A></TD>\n
+        \    <TD valign=baseline><IMG border=0 src=\"/netaicon/PTO/ftext.gif\" alt=\"Full-Text\"></TD>\n
+        \    <TD valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=15&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+OR+wilson.ASNM.)&OS=TTL/tennis+OR+AN/wilson&RS=(TTL/tennis+OR+AN/wilson)>Tennis
+        ball container overcap\n</A></TD>\n<DOCS: 2862>\n<TR><TD valign=top>16</TD>\n<TD
+        valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=16&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+OR+wilson.ASNM.)&OS=TTL/tennis+OR+AN/wilson&RS=(TTL/tennis+OR+AN/wilson)>11,325,327</A></TD>\n
+        \    <TD valign=baseline><IMG border=0 src=\"/netaicon/PTO/ftext.gif\" alt=\"Full-Text\"></TD>\n
+        \    <TD valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=16&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+OR+wilson.ASNM.)&OS=TTL/tennis+OR+AN/wilson&RS=(TTL/tennis+OR+AN/wilson)>Ball
+        bat with one-piece multi-wall barrel portion\n</A></TD>\n<DOCS: 2862>\n<TR><TD
+        valign=top>17</TD>\n<TD valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=17&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+OR+wilson.ASNM.)&OS=TTL/tennis+OR+AN/wilson&RS=(TTL/tennis+OR+AN/wilson)>D950,662</A></TD>\n
+        \    <TD valign=baseline><IMG border=0 src=\"/netaicon/PTO/ftext.gif\" alt=\"Full-Text\"></TD>\n
+        \    <TD valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=17&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+OR+wilson.ASNM.)&OS=TTL/tennis+OR+AN/wilson&RS=(TTL/tennis+OR+AN/wilson)>Ball
+        holder for table tennis table\n</A></TD>\n<DOCS: 2862>\n<TR><TD valign=top>18</TD>\n<TD
+        valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=18&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+OR+wilson.ASNM.)&OS=TTL/tennis+OR+AN/wilson&RS=(TTL/tennis+OR+AN/wilson)>11,318,362</A></TD>\n
+        \    <TD valign=baseline><IMG border=0 src=\"/netaicon/PTO/ftext.gif\" alt=\"Full-Text\"></TD>\n
+        \    <TD valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=18&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+OR+wilson.ASNM.)&OS=TTL/tennis+OR+AN/wilson&RS=(TTL/tennis+OR+AN/wilson)>Tennis
+        net tension system including service let indication feature\n</A></TD>\n<DOCS:
+        2862>\n<TR><TD valign=top>19</TD>\n<TD valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=19&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+OR+wilson.ASNM.)&OS=TTL/tennis+OR+AN/wilson&RS=(TTL/tennis+OR+AN/wilson)>11,305,166</A></TD>\n
+        \    <TD valign=baseline><IMG border=0 src=\"/netaicon/PTO/ftext.gif\" alt=\"Full-Text\"></TD>\n
+        \    <TD valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=19&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+OR+wilson.ASNM.)&OS=TTL/tennis+OR+AN/wilson&RS=(TTL/tennis+OR+AN/wilson)>Turf
+        base\n</A></TD>\n<DOCS: 2862>\n<TR><TD valign=top>20</TD>\n<TD valign=top><A
+        \ HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=20&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+OR+wilson.ASNM.)&OS=TTL/tennis+OR+AN/wilson&RS=(TTL/tennis+OR+AN/wilson)>11,303,369</A></TD>\n
+        \    <TD valign=baseline><IMG border=0 src=\"/netaicon/PTO/ftext.gif\" alt=\"Full-Text\"></TD>\n
+        \    <TD valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=20&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+OR+wilson.ASNM.)&OS=TTL/tennis+OR+AN/wilson&RS=(TTL/tennis+OR+AN/wilson)>Booster
+        gain adjustment based on user equipment (UE) need\n</A></TD>\n<DOCS: 2862>\n<TR><TD
+        valign=top>21</TD>\n<TD valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=21&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+OR+wilson.ASNM.)&OS=TTL/tennis+OR+AN/wilson&RS=(TTL/tennis+OR+AN/wilson)>11,298,603</A></TD>\n
+        \    <TD valign=baseline><IMG border=0 src=\"/netaicon/PTO/ftext.gif\" alt=\"Full-Text\"></TD>\n
+        \    <TD valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=21&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+OR+wilson.ASNM.)&OS=TTL/tennis+OR+AN/wilson&RS=(TTL/tennis+OR+AN/wilson)>Tennis
+        training device and tennis training system\n</A></TD>\n<DOCS: 2862>\n<TR><TD
+        valign=top>22</TD>\n<TD valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=22&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+OR+wilson.ASNM.)&OS=TTL/tennis+OR+AN/wilson&RS=(TTL/tennis+OR+AN/wilson)>D947,301</A></TD>\n
+        \    <TD valign=baseline><IMG border=0 src=\"/netaicon/PTO/ftext.gif\" alt=\"Full-Text\"></TD>\n
+        \    <TD valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=22&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+OR+wilson.ASNM.)&OS=TTL/tennis+OR+AN/wilson&RS=(TTL/tennis+OR+AN/wilson)>Paddle
+        tennis court\n</A></TD>\n<DOCS: 2862>\n<TR><TD valign=top>23</TD>\n<TD valign=top><A
+        \ HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=23&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+OR+wilson.ASNM.)&OS=TTL/tennis+OR+AN/wilson&RS=(TTL/tennis+OR+AN/wilson)>11,285,374</A></TD>\n
+        \    <TD valign=baseline><IMG border=0 src=\"/netaicon/PTO/ftext.gif\" alt=\"Full-Text\"></TD>\n
+        \    <TD valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=23&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+OR+wilson.ASNM.)&OS=TTL/tennis+OR+AN/wilson&RS=(TTL/tennis+OR+AN/wilson)>Batting
+        tee\n</A></TD>\n<DOCS: 2862>\n<TR><TD valign=top>24</TD>\n<TD valign=top><A
+        \ HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=24&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+OR+wilson.ASNM.)&OS=TTL/tennis+OR+AN/wilson&RS=(TTL/tennis+OR+AN/wilson)>D946,104</A></TD>\n
+        \    <TD valign=baseline><IMG border=0 src=\"/netaicon/PTO/ftext.gif\" alt=\"Full-Text\"></TD>\n
+        \    <TD valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=24&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+OR+wilson.ASNM.)&OS=TTL/tennis+OR+AN/wilson&RS=(TTL/tennis+OR+AN/wilson)>Collapsible
+        table tennis table\n</A></TD>\n<DOCS: 2862>\n<TR><TD valign=top>25</TD>\n<TD
+        valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=25&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+OR+wilson.ASNM.)&OS=TTL/tennis+OR+AN/wilson&RS=(TTL/tennis+OR+AN/wilson)>11,273,351</A></TD>\n
+        \    <TD valign=baseline><IMG border=0 src=\"/netaicon/PTO/ftext.gif\" alt=\"Full-Text\"></TD>\n
+        \    <TD valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=25&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+OR+wilson.ASNM.)&OS=TTL/tennis+OR+AN/wilson&RS=(TTL/tennis+OR+AN/wilson)>Interactive
+        electronic table tennis game\n</A></TD>\n<DOCS: 2862>\n<TR><TD valign=top>26</TD>\n<TD
+        valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=26&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+OR+wilson.ASNM.)&OS=TTL/tennis+OR+AN/wilson&RS=(TTL/tennis+OR+AN/wilson)>11,268,778</A></TD>\n
+        \    <TD valign=baseline><IMG border=0 src=\"/netaicon/PTO/ftext.gif\" alt=\"Full-Text\"></TD>\n
+        \    <TD valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=26&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+OR+wilson.ASNM.)&OS=TTL/tennis+OR+AN/wilson&RS=(TTL/tennis+OR+AN/wilson)>Suppressor
+        for a gun\n</A></TD>\n<DOCS: 2862>\n<TR><TD valign=top>27</TD>\n<TD valign=top><A
+        \ HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=27&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+OR+wilson.ASNM.)&OS=TTL/tennis+OR+AN/wilson&RS=(TTL/tennis+OR+AN/wilson)>11,268,066</A></TD>\n
+        \    <TD valign=baseline><IMG border=0 src=\"/netaicon/PTO/ftext.gif\" alt=\"Full-Text\"></TD>\n
+        \    <TD valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=27&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+OR+wilson.ASNM.)&OS=TTL/tennis+OR+AN/wilson&RS=(TTL/tennis+OR+AN/wilson)>Methods
+        of cell culture for adoptive cell therapy\n</A></TD>\n<DOCS: 2862>\n<TR><TD
+        valign=top>28</TD>\n<TD valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=28&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+OR+wilson.ASNM.)&OS=TTL/tennis+OR+AN/wilson&RS=(TTL/tennis+OR+AN/wilson)>11,266,895</A></TD>\n
+        \    <TD valign=baseline><IMG border=0 src=\"/netaicon/PTO/ftext.gif\" alt=\"Full-Text\"></TD>\n
+        \    <TD valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=28&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+OR+wilson.ASNM.)&OS=TTL/tennis+OR+AN/wilson&RS=(TTL/tennis+OR+AN/wilson)>Device
+        for measuring speed of tennis ball\n</A></TD>\n<DOCS: 2862>\n<TR><TD valign=top>29</TD>\n<TD
+        valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=29&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+OR+wilson.ASNM.)&OS=TTL/tennis+OR+AN/wilson&RS=(TTL/tennis+OR+AN/wilson)>11,253,753</A></TD>\n
+        \    <TD valign=baseline><IMG border=0 src=\"/netaicon/PTO/ftext.gif\" alt=\"Full-Text\"></TD>\n
+        \    <TD valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=29&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+OR+wilson.ASNM.)&OS=TTL/tennis+OR+AN/wilson&RS=(TTL/tennis+OR+AN/wilson)>Tennis
+        racket with a more-responsive string configuration\n</A></TD>\n<DOCS: 2862>\n<TR><TD
+        valign=top>30</TD>\n<TD valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=30&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+OR+wilson.ASNM.)&OS=TTL/tennis+OR+AN/wilson&RS=(TTL/tennis+OR+AN/wilson)>11,253,752</A></TD>\n
+        \    <TD valign=baseline><IMG border=0 src=\"/netaicon/PTO/ftext.gif\" alt=\"Full-Text\"></TD>\n
+        \    <TD valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=30&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+OR+wilson.ASNM.)&OS=TTL/tennis+OR+AN/wilson&RS=(TTL/tennis+OR+AN/wilson)>Tennis
+        ball retrieval system and method\n</A></TD>\n<DOCS: 2862>\n<TR><TD valign=top>31</TD>\n<TD
+        valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=31&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+OR+wilson.ASNM.)&OS=TTL/tennis+OR+AN/wilson&RS=(TTL/tennis+OR+AN/wilson)>D943,562</A></TD>\n
+        \    <TD valign=baseline><IMG border=0 src=\"/netaicon/PTO/ftext.gif\" alt=\"Full-Text\"></TD>\n
+        \    <TD valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=31&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+OR+wilson.ASNM.)&OS=TTL/tennis+OR+AN/wilson&RS=(TTL/tennis+OR+AN/wilson)>Mobile
+        device signal booster\n</A></TD>\n<DOCS: 2862>\n<TR><TD valign=top>32</TD>\n<TD
+        valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=32&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+OR+wilson.ASNM.)&OS=TTL/tennis+OR+AN/wilson&RS=(TTL/tennis+OR+AN/wilson)>11,247,103</A></TD>\n
+        \    <TD valign=baseline><IMG border=0 src=\"/netaicon/PTO/ftext.gif\" alt=\"Full-Text\"></TD>\n
+        \    <TD valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=32&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+OR+wilson.ASNM.)&OS=TTL/tennis+OR+AN/wilson&RS=(TTL/tennis+OR+AN/wilson)>Tennis
+        ball having a thermoplastic core\n</A></TD>\n<DOCS: 2862>\n<TR><TD valign=top>33</TD>\n<TD
+        valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=33&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+OR+wilson.ASNM.)&OS=TTL/tennis+OR+AN/wilson&RS=(TTL/tennis+OR+AN/wilson)>11,235,220</A></TD>\n
+        \    <TD valign=baseline><IMG border=0 src=\"/netaicon/PTO/ftext.gif\" alt=\"Full-Text\"></TD>\n
+        \    <TD valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=33&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+OR+wilson.ASNM.)&OS=TTL/tennis+OR+AN/wilson&RS=(TTL/tennis+OR+AN/wilson)>Advanced
+        and versatile tennis backboard utilizing flex technology\n</A></TD>\n<DOCS:
+        2862>\n<TR><TD valign=top>34</TD>\n<TD valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=34&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+OR+wilson.ASNM.)&OS=TTL/tennis+OR+AN/wilson&RS=(TTL/tennis+OR+AN/wilson)>11,233,492</A></TD>\n
+        \    <TD valign=baseline><IMG border=0 src=\"/netaicon/PTO/ftext.gif\" alt=\"Full-Text\"></TD>\n
+        \    <TD valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=34&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+OR+wilson.ASNM.)&OS=TTL/tennis+OR+AN/wilson&RS=(TTL/tennis+OR+AN/wilson)>Power
+        amplifier (PA)-filter output power tuning\n</A></TD>\n<DOCS: 2862>\n<TR><TD
+        valign=top>35</TD>\n<TD valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=35&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+OR+wilson.ASNM.)&OS=TTL/tennis+OR+AN/wilson&RS=(TTL/tennis+OR+AN/wilson)>11,224,790</A></TD>\n
+        \    <TD valign=baseline><IMG border=0 src=\"/netaicon/PTO/ftext.gif\" alt=\"Full-Text\"></TD>\n
+        \    <TD valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=35&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+OR+wilson.ASNM.)&OS=TTL/tennis+OR+AN/wilson&RS=(TTL/tennis+OR+AN/wilson)>Table
+        tennis top and material\n</A></TD>\n<DOCS: 2862>\n<TR><TD valign=top>36</TD>\n<TD
+        valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=36&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+OR+wilson.ASNM.)&OS=TTL/tennis+OR+AN/wilson&RS=(TTL/tennis+OR+AN/wilson)>11,223,415</A></TD>\n
+        \    <TD valign=baseline><IMG border=0 src=\"/netaicon/PTO/ftext.gif\" alt=\"Full-Text\"></TD>\n
+        \    <TD valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=36&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+OR+wilson.ASNM.)&OS=TTL/tennis+OR+AN/wilson&RS=(TTL/tennis+OR+AN/wilson)>Repeater
+        with low power mode for mobile operations\n</A></TD>\n<DOCS: 2862>\n<TR><TD
+        valign=top>37</TD>\n<TD valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=37&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+OR+wilson.ASNM.)&OS=TTL/tennis+OR+AN/wilson&RS=(TTL/tennis+OR+AN/wilson)>11,223,384</A></TD>\n
+        \    <TD valign=baseline><IMG border=0 src=\"/netaicon/PTO/ftext.gif\" alt=\"Full-Text\"></TD>\n
+        \    <TD valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=37&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+OR+wilson.ASNM.)&OS=TTL/tennis+OR+AN/wilson&RS=(TTL/tennis+OR+AN/wilson)>Low
+        noise signal chain architecture\n</A></TD>\n<DOCS: 2862>\n<TR><TD valign=top>38</TD>\n<TD
+        valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=38&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+OR+wilson.ASNM.)&OS=TTL/tennis+OR+AN/wilson&RS=(TTL/tennis+OR+AN/wilson)>11,219,812</A></TD>\n
+        \    <TD valign=baseline><IMG border=0 src=\"/netaicon/PTO/ftext.gif\" alt=\"Full-Text\"></TD>\n
+        \    <TD valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=38&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+OR+wilson.ASNM.)&OS=TTL/tennis+OR+AN/wilson&RS=(TTL/tennis+OR+AN/wilson)>Systems
+        and devices for training a tennis serve\n</A></TD>\n<DOCS: 2862>\n<TR><TD
+        valign=top>39</TD>\n<TD valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=39&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+OR+wilson.ASNM.)&OS=TTL/tennis+OR+AN/wilson&RS=(TTL/tennis+OR+AN/wilson)>11,218,237</A></TD>\n
+        \    <TD valign=baseline><IMG border=0 src=\"/netaicon/PTO/ftext.gif\" alt=\"Full-Text\"></TD>\n
+        \    <TD valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=39&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+OR+wilson.ASNM.)&OS=TTL/tennis+OR+AN/wilson&RS=(TTL/tennis+OR+AN/wilson)>Intermediate
+        frequency (IF) filtering for enhanced crossover attenuation\n     in a repeater\n</A></TD>\n<DOCS:
+        2862>\n<TR><TD valign=top>40</TD>\n<TD valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=40&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+OR+wilson.ASNM.)&OS=TTL/tennis+OR+AN/wilson&RS=(TTL/tennis+OR+AN/wilson)>11,204,596</A></TD>\n
+        \    <TD valign=baseline><IMG border=0 src=\"/netaicon/PTO/ftext.gif\" alt=\"Full-Text\"></TD>\n
+        \    <TD valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=40&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+OR+wilson.ASNM.)&OS=TTL/tennis+OR+AN/wilson&RS=(TTL/tennis+OR+AN/wilson)>Tool
+        tracking and data collection assembly\n</A></TD>\n<DOCS: 2862>\n<TR><TD valign=top>41</TD>\n<TD
+        valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=41&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+OR+wilson.ASNM.)&OS=TTL/tennis+OR+AN/wilson&RS=(TTL/tennis+OR+AN/wilson)>11,201,664</A></TD>\n
+        \    <TD valign=baseline><IMG border=0 src=\"/netaicon/PTO/ftext.gif\" alt=\"Full-Text\"></TD>\n
+        \    <TD valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=41&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+OR+wilson.ASNM.)&OS=TTL/tennis+OR+AN/wilson&RS=(TTL/tennis+OR+AN/wilson)>Adjusting
+        repeater gain based on antenna feedback path loss\n</A></TD>\n<DOCS: 2862>\n<TR><TD
+        valign=top>42</TD>\n<TD valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=42&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+OR+wilson.ASNM.)&OS=TTL/tennis+OR+AN/wilson&RS=(TTL/tennis+OR+AN/wilson)>11,192,001</A></TD>\n
+        \    <TD valign=baseline><IMG border=0 src=\"/netaicon/PTO/ftext.gif\" alt=\"Full-Text\"></TD>\n
+        \    <TD valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=42&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+OR+wilson.ASNM.)&OS=TTL/tennis+OR+AN/wilson&RS=(TTL/tennis+OR+AN/wilson)>Tennis
+        ball having a thermoplastic core\n</A></TD>\n<DOCS: 2862>\n<TR><TD valign=top>43</TD>\n<TD
+        valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=43&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+OR+wilson.ASNM.)&OS=TTL/tennis+OR+AN/wilson&RS=(TTL/tennis+OR+AN/wilson)>D936,966</A></TD>\n
+        \    <TD valign=baseline><IMG border=0 src=\"/netaicon/PTO/ftext.gif\" alt=\"Full-Text\"></TD>\n
+        \    <TD valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=43&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+OR+wilson.ASNM.)&OS=TTL/tennis+OR+AN/wilson&RS=(TTL/tennis+OR+AN/wilson)>Tennis
+        ball launch bag\n</A></TD>\n<DOCS: 2862>\n<TR><TD valign=top>44</TD>\n<TD
+        valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=44&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+OR+wilson.ASNM.)&OS=TTL/tennis+OR+AN/wilson&RS=(TTL/tennis+OR+AN/wilson)>D934,845</A></TD>\n
+        \    <TD valign=baseline><IMG border=0 src=\"/netaicon/PTO/ftext.gif\" alt=\"Full-Text\"></TD>\n
+        \    <TD valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=44&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+OR+wilson.ASNM.)&OS=TTL/tennis+OR+AN/wilson&RS=(TTL/tennis+OR+AN/wilson)>Signal
+        booster case\n</A></TD>\n<DOCS: 2862>\n<TR><TD valign=top>45</TD>\n<TD valign=top><A
+        \ HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=45&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+OR+wilson.ASNM.)&OS=TTL/tennis+OR+AN/wilson&RS=(TTL/tennis+OR+AN/wilson)>D934,211</A></TD>\n
+        \    <TD valign=baseline><IMG border=0 src=\"/netaicon/PTO/ftext.gif\" alt=\"Full-Text\"></TD>\n
+        \    <TD valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=45&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+OR+wilson.ASNM.)&OS=TTL/tennis+OR+AN/wilson&RS=(TTL/tennis+OR+AN/wilson)>Signal
+        booster case\n</A></TD>\n<DOCS: 2862>\n<TR><TD valign=top>46</TD>\n<TD valign=top><A
+        \ HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=46&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+OR+wilson.ASNM.)&OS=TTL/tennis+OR+AN/wilson&RS=(TTL/tennis+OR+AN/wilson)>11,155,778</A></TD>\n
+        \    <TD valign=baseline><IMG border=0 src=\"/netaicon/PTO/ftext.gif\" alt=\"Full-Text\"></TD>\n
+        \    <TD valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=46&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+OR+wilson.ASNM.)&OS=TTL/tennis+OR+AN/wilson&RS=(TTL/tennis+OR+AN/wilson)>Closed
+        system device and methods for gas permeable cell culture process\n</A></TD>\n<DOCS:
+        2862>\n<TR><TD valign=top>47</TD>\n<TD valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=47&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+OR+wilson.ASNM.)&OS=TTL/tennis+OR+AN/wilson&RS=(TTL/tennis+OR+AN/wilson)>11,143,480</A></TD>\n
+        \    <TD valign=baseline><IMG border=0 src=\"/netaicon/PTO/ftext.gif\" alt=\"Full-Text\"></TD>\n
+        \    <TD valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=47&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+OR+wilson.ASNM.)&OS=TTL/tennis+OR+AN/wilson&RS=(TTL/tennis+OR+AN/wilson)>Arms
+        power cleaning lubrication coupler and method\n</A></TD>\n<DOCS: 2862>\n<TR><TD
+        valign=top>48</TD>\n<TD valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=48&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+OR+wilson.ASNM.)&OS=TTL/tennis+OR+AN/wilson&RS=(TTL/tennis+OR+AN/wilson)>11,141,630</A></TD>\n
+        \    <TD valign=baseline><IMG border=0 src=\"/netaicon/PTO/ftext.gif\" alt=\"Full-Text\"></TD>\n
+        \    <TD valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=48&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+OR+wilson.ASNM.)&OS=TTL/tennis+OR+AN/wilson&RS=(TTL/tennis+OR+AN/wilson)>Tennis
+        racquet with adjustable frame isolation\n</A></TD>\n<DOCS: 2862>\n<TR><TD
+        valign=top>49</TD>\n<TD valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=49&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+OR+wilson.ASNM.)&OS=TTL/tennis+OR+AN/wilson&RS=(TTL/tennis+OR+AN/wilson)>D931,965</A></TD>\n
+        \    <TD valign=baseline><IMG border=0 src=\"/netaicon/PTO/ftext.gif\" alt=\"Full-Text\"></TD>\n
+        \    <TD valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=49&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+OR+wilson.ASNM.)&OS=TTL/tennis+OR+AN/wilson&RS=(TTL/tennis+OR+AN/wilson)>Tennis
+        racquet\n</A></TD>\n<DOCS: 2862>\n<TR><TD valign=top>50</TD>\n<TD valign=top><A
+        \ HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=50&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+OR+wilson.ASNM.)&OS=TTL/tennis+OR+AN/wilson&RS=(TTL/tennis+OR+AN/wilson)>D931,964</A></TD>\n
+        \    <TD valign=baseline><IMG border=0 src=\"/netaicon/PTO/ftext.gif\" alt=\"Full-Text\"></TD>\n
+        \    <TD valign=top><A  HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=50&p=1&f=G&l=50&d=PTXT&S1=(tennis.TI.+OR+wilson.ASNM.)&OS=TTL/tennis+OR+AN/wilson&RS=(TTL/tennis+OR+AN/wilson)>Tennis
+        racquet\n</A></TD>\n   </TABLE><HR><br>\n   <center>\n   <table>\n   <tr><td><A
+        HREF=/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.htm&r=0&p=2&f=S&l=50&d=PTXT&S1=(tennis.TI.+OR+wilson.ASNM.)&Page=Next&OS=TTL/tennis+OR+AN/wilson&RS=(TTL/tennis+OR+AN/wilson)><IMG
+        ALIGN=MIDDLE SRC=/netaicon/PTO/nextlist.gif border=0 ALT=[NEXT_LIST]></A>\n<a
+        name=\"bottom\"><a href=\"#top\"><img src=\"/netaicon/PTO/top.gif\" alt=\"[Top]\"
+        border=\"0\" align=middle></a>\n   <A HREF=\"https://certifiedcopycenter.uspto.gov/other/patft/view.html?backUrl1=http%3A//patft.uspto.gov/netacgi/nph-Parser?Sect1%3DPTO2%26Sect2%3DHITOFF%26u%3D%252Fnetahtml%252FPTO%252Fsearch-adv.htm%26r%3D0%26p%3D1%26f%3DS%26l%3D50%26Query%3DTTL%252Ftennis%252BOR%252BAN%252Fwilson%26d%3DPTXT&backLabel1=Back%20to%20Document%3A%20TTL/tennis
+        OR AN/wilson\"><img border=0 src=\"/netaicon/PTO/cart.gif\" alt=\"[View Shopping
+        Cart]\" border = \"0\" align\n=middle></A>\n   </td></tr>\n   </table>\n   <a
+        href=\"/netahtml/PTO/index.html\"><img src=\"/netaicon/PTO/home.gif\" alt=\"[Home]\"
+        border=\"0\" valign=baseline></a>\n   <a href=\"/netahtml/PTO/search-bool.html\"><img
+        src=\"/netaicon/PTO/boolean.gif\" alt=\"[Boolean Search]\" border=\"0\" valign=baseline></a>\n
+        \  <A HREF=\"/netahtml/PTO/search-adv.htm\"><img src=\"/netaicon/PTO/manual.gif\"
+        alt=\"[Manual Search]\" border=\"0\" valign=baseline></A>\n   <a href=\"/netahtml/PTO/srchnum.htm\"><img
+        src=\"/netaicon/PTO/number.gif\" alt=\"[Number Search]\" border=\"0\" valign=baseline></a>\n
+        \  <A HREF=\"/netahtml/PTO/help/help.htm\"><img border=\"0\" src=\"/netaicon/PTO/help.gif\"
+        ALT=\"[Help]\" border=\"0\" valign=baseline></A>\n   </center>\n   </HTML>"
+    headers:
+      Content-Type:
+      - text/html
+      Set-Cookie:
+      - TS01a6c8e4=01874167c7af639ee8ce243ab4d664f75a91a2146f7f1a79fba669660ae453a791b830a623ed53b4751ddcb6fcf4c614a24c7d1015;
+        Path=/; Domain=.patft.uspto.gov
       Strict-Transport-Security:
       - max-age=31536000
       Transfer-Encoding:

@@ -26,15 +26,15 @@ Patent Client provides an interface to the USPTO's patent assignment database. Y
 >>> assignments = Assignment.objects.filter(patent_number='9534285')
 >>> len(assignments) >= 1
 True
->>> assignments.first().id
-'60613-72'
->>> assignments.first().assignors[0].name
+>>> assignments.first().id # doctest:+SKIP
+'60613-72' 
+>>> assignments.first().assignors[0].name # doctest:+SKIP
 'ENTEGRIS, INC.'
->>> assignments.first().assignees[0].name
-'TRUIST BANK, AS NOTES COLLATERAL AGENT'
+>>> assignments.first().assignees[0].name # doctest:+SKIP
+'TRUIST BANK, AS NOTES COLLATERAL AGENT' 
 
 >>> assignments = Assignment.objects.filter(assignee='Google') # doctest:+SKIP
->>> len(assignments) > 20000 # doctest:+SKIP
+>>> len(assignments) > 200 # doctest:+SKIP
 True
 ```
 

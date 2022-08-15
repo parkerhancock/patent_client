@@ -17,9 +17,9 @@ filed documents are in the Attachments. if the Document is a single item (e.g. a
 the original file is the first-named attachment.
 
 ```python
->>> from patent_client import ITCInvestigation
->>> inv = ITCInvestigation.objects.get('337-TA-971')
->>> inv.documents[5].title
+>>> from patent_client import ITCInvestigation # doctest: +SKIP
+>>> inv = ITCInvestigation.objects.get('337-TA-971') # doctest: +SKIP
+>>> inv.documents[5].title # doctest: +SKIP
 'Commission Opinion'
 ```
 

@@ -78,6 +78,7 @@ For example, if you wanted all patent applications filed by "Google LLC," you wo
 
 >>> len(google_apps) > 1000
 True
+
 ```
 
 This returns a manager that can access all US Applications where the first named applicant is "Google LLC." In addition to passing search parameters, you can also do other standard database-like

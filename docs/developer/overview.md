@@ -79,4 +79,5 @@ PtabDocument(document_category='Paper', document_type_name='Notice of Appeal', d
 
 >>> a.documents[0].proceeding
 PtabProceeding(subproceeding_type_category='IPR', proceeding_number='IPR2017-00001', proceeding_status_category='FWD Entered', proceeding_type_category='AIA Trial', respondent_party_name='SIPCO, LLC')
+
 ```

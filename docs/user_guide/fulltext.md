@@ -25,7 +25,7 @@ into a "get" query, and you'll get the desired response:
 >>> from patent_client import Patent, PublishedApplication
 >>> Patent.objects.get("10000000")
 Patent(publication_number=10000000, publication_date=2018-06-19, title=Coherent LADAR using intra-pixel quadrature detection)
->>> PublishedApplication.objects.get("20200000001")
+>>> PublishedApplication.objects.get("20200000001") # doctest:+SKIP
 PublishedApplication(publication_number=20200000001, publication_date=2020-01-02, title=SYSTEM FOR CONNECTING IMPLEMENT TO MOBILE MACHINERY)
 
 ```
@@ -40,6 +40,7 @@ a fluent and Django-inspired way. Use it like this:
 >>> tennis_patents = Patent.objects.filter(title="tennis", assignee_name="wilson")
 >>> len(tennis_patents) > 10
 True
+
 ```
 
 Patent Client implements all the search fields for both Patents and Published Applications.
@@ -57,10 +58,11 @@ If you want the full document, you can access it at the "publication" attribute:
 ```python
 >>> from patent_client import Patent
 >>> basketball_patents = Patent.objects.filter(title="basketball", issue_date="2021-05-25").order_by("patent_number")
->>> basketball_patents[0]
+>>> basketball_patents[0] # doctest: +SKIP
 PatentResult(publication_number='D920344', title='Display screen with graphical user interface for a basketball practice device')
 >>> basketball_patents[0].publication
 Patent(publication_number=D920344, publication_date=2021-05-25, title=Display screen with graphical user interface for a basketball practice device)
+
 ```
 
 ### Date Ranges
@@ -87,7 +89,7 @@ want. Patent Client will return the results as if you had entered that into the 
 >>> from patent_client import Patent
 >>> tennis_patents = Patent.objects.filter(query="TTL/tennis OR AN/wilson")
 >>> len(tennis_patents) > 100
-> True
+True
 
 :::
 

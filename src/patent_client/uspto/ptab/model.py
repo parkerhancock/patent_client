@@ -97,6 +97,9 @@ class PtabProceeding(Model):
 
     additional_respondents: "ListManager[str]" = field(default_factory=list)
 
+    def __repr__(self):
+        return f"PtabProceeding(subproceeding_type_category='{self.subproceeding_type_category}', proceeding_number='{self.proceeding_number}', proceeding_status_category='{self.proceeding_status_category}', proceeding_type_category='{self.proceeding_type_category}', respondent_party_name='{self.respondent_party_name}')"
+
     @property
     def documents(self) -> "ListManager[patent_client.uspto.ptab.model.PtabDocument]":
         """Documents associated with the Proceeding"""
