@@ -4,7 +4,8 @@ import datetime
 from dataclasses import dataclass
 from dataclasses import field
 from pathlib import Path
-from typing import Iterable, List
+from typing import Iterable
+from typing import List
 from typing import Optional
 
 from dateutil.relativedelta import relativedelta
@@ -99,8 +100,6 @@ class USApplication(Model):
     correspondent: Optional[Correspondent] = field(default=None, repr=False)
     """Correspondent for the Application"""
 
-    
-
     # List Properties
     inventors: ListManager[Inventor] = field(default=None, repr=False)
     """List of named inventors"""
@@ -150,7 +149,7 @@ class USApplication(Model):
             return f"https://patents.google.com/patent/{self.app_early_pub_number}/en"
         else:
             return None
-    
+
     @property
     def continuity(self) -> ListManager[USApplication]:
         """Returns a complete set of parents, self, and children"""
@@ -164,8 +163,6 @@ class USApplication(Model):
             ]
         )
 
-
-
     @property
     def kind(self) -> str:
         """Differentiates provisional, PCT, and nonprovisional applications"""
@@ -174,7 +171,7 @@ class USApplication(Model):
         if self.appl_id[0] == "6":
             return "Provisional"
         return "Nonprovisional"
-    
+
     @property
     def publication_number(self):
         return self.app_early_pub_number[2:-2]
@@ -232,19 +229,18 @@ class USApplication(Model):
             expiration_data["terminal_disclaimer_filed"] = False
 
         return Expiration(**expiration_data)  # type: ignore
-    
+
     # Related objects
     @property
     def documents(self) -> "Iterable[patent_client.uspto.peds.model.Document]":
         """File History Documents from PEDS CMS"""
         return get_model("patent_client.uspto.peds.model.Document").objects.filter(appl_id=self.appl_id)
-    
 
     @property
     def related_assignments(self) -> "Iterable[patent_client.uspto.assignment.model.Assignment]":
         """Related Assignments from the Assignments API"""
         return get_model("patent_client.uspto.assignment.model.Assignment").objects.filter(appl_id=self.appl_id)
-    
+
     @property
     def ptab_proceedings(self) -> "Iterable[patent_client.uspto.ptab.model.PtabProceeding]":
         """Related PtabProceedings for this application"""
@@ -254,22 +250,29 @@ class USApplication(Model):
     def patent(self) -> "Optional[patent_client.uspto.fulltext.patent.model.Patent]":
         """Fulltext version of the patent - If Available"""
         return get_model("patent_client.uspto.fulltext.patent.model.Patent", publication_number=self.patent_number)
-    
+
     @property
     def publication(self) -> "Optional[patent_client.uspto.fulltext.published_application.model.PublishedApplication]":
         """Fulltext version of the Publication - If Available"""
-        return get_model("patent_client.uspto.fulltext.published_application.model.PublishedApplication", publication_number=self.publication_number)
+        return get_model(
+            "patent_client.uspto.fulltext.published_application.model.PublishedApplication",
+            publication_number=self.publication_number,
+        )
 
     @property
     def inpadoc_patent(self) -> "Optional[patent_client.epo.ops.published.model.InpadocBiblio]":
         """Fulltext version of the patent - If Available"""
-        return get_model("patent_client.epo.ops.published.model.InpadocBiblio", publication_number=f"US{self.patent_number}")
+        return get_model(
+            "patent_client.epo.ops.published.model.InpadocBiblio", publication_number=f"US{self.patent_number}"
+        )
 
     @property
     def inpadoc_publication(self) -> "Optional[patent_client.epo.ops.published.model.InpadocBiblio]":
         """Fulltext version of the patent - If Available"""
-        return get_model("patent_client.epo.ops.published.model.InpadocBiblio", publication_number=self.app_early_pub_number)
-    
+        return get_model(
+            "patent_client.epo.ops.published.model.InpadocBiblio", publication_number=self.app_early_pub_number
+        )
+
 
 @dataclass
 class Expiration(Model):

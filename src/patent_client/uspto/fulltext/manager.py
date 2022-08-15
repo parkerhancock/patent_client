@@ -1,18 +1,19 @@
 import datetime
+import logging
 import math
 import re
 import time
 from collections import defaultdict
-import logging
-logger = logging.getLogger(__name__)
 
 import lxml.etree as ET
 from dateutil.parser import parse as parse_dt
 from patent_client.util import Manager
 
-from .schema.images import ImageSchema
 from .schema.images import ImageHtmlSchema
+from .schema.images import ImageSchema
 from .session import session
+
+logger = logging.getLogger(__name__)
 
 
 def rate_limit(func, delay=0.001):

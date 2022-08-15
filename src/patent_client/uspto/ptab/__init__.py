@@ -1,5 +1,6 @@
 import json
 from pathlib import Path
+
 __api_name__ = "PTAB API v2"
 base_dir = Path(__file__).parent
 schema_path = base_dir / "ptabApiV2.json"

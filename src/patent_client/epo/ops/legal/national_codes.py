@@ -44,7 +44,6 @@ def has_current_spreadsheet():
     except (sqlite3.OperationalError, TypeError):
         return False
 
-from types import GenericAlias
 
 def get_spreadsheet():
     url = "https://www.epo.org/searching-for-patents/data/coverage/weekly.html"

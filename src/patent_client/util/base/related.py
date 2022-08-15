@@ -5,11 +5,13 @@ from .util import resolve
 
 logger = logging.getLogger(__name__)
 
+
 def get_model(model_name):
     module_name, class_name = model_name.rsplit(".", 1)
     return getattr(importlib.import_module(module_name), class_name)
 
-class OneToOne():
+
+class OneToOne:
     def __init__(self, related_class_name, attribute=None, **mapping):
         self.many = False
         self.related_class_name = related_class_name
@@ -23,21 +25,21 @@ class OneToOne():
         return resolve(related_class.objects.get(**filter_obj), self.attribute)
 
 
-class OneToMany():
+class OneToMany:
     def __init__(self, related_class_name, **mapping):
         self.many = False
         self.related_class_name = related_class_name
         self.mapping = mapping
-       
-    
+
     def __call__(self):
         module_name, class_name = self.related_class_name.rsplit(".", 1)
         related_class = getattr(importlib.import_module(module_name), class_name)
         filter_obj = {k: getattr(self, v) for (k, v) in self.mapping.items()}
         return related_class.objects.filter(**filter_obj)
 
+
 def one_to_one(related_class_name, attribute=None, **mapping):
-    many = False # For use in introspection with inspect.getclosurevars
+    many = False  # For use in introspection with inspect.getclosurevars
     module_name, class_name = related_class_name.rsplit(".", 1)
 
     @property
@@ -52,7 +54,7 @@ def one_to_one(related_class_name, attribute=None, **mapping):
 
 
 def one_to_many(related_class_name, **mapping):
-    many = True # For use in introspection with inspect.getclosurevars
+    many = True  # For use in introspection with inspect.getclosurevars
     module_name, class_name = related_class_name.rsplit(".", 1)
 
     @property

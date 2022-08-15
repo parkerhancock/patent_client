@@ -1,10 +1,13 @@
 import re
-from yankee.xml import fields as f
 
-from patent_client.uspto.fulltext.util import text_section_xpath, TextField
-from patent_client.uspto.fulltext.schema.base import Schema, RegexSchema, ZipSchema
+from patent_client.uspto.fulltext.schema.base import RegexSchema
+from patent_client.uspto.fulltext.schema.base import Schema
+from patent_client.uspto.fulltext.util import text_section_xpath
+from patent_client.uspto.fulltext.util import TextField
 from patent_client.util.format import clean_appl_id
 from patent_client.util.xml import TailField
+from yankee.xml import fields as f
+
 
 class ApplicantSchema(Schema):
     name = f.Str(".//td[1]")
@@ -16,13 +19,13 @@ class ApplicantSchema(Schema):
 
 class USReferenceSchema(Schema):
     publication_number = f.Str(".//td[1]")
-    #date = f.Date(".//td[2]") # Removed due to ambiguous day - references only give month and year
+    # date = f.Date(".//td[2]") # Removed due to ambiguous day - references only give month and year
     first_named_inventor = f.Str(".//td[3]")
 
 
 class ForeignReferenceSchema(Schema):
     publication_number = f.Str(".//td[2]")
-    #date = f.Date(".//td[4]") # Removed due to ambiguous day - references only give month and year
+    # date = f.Date(".//td[4]") # Removed due to ambiguous day - references only give month and year
     country_code = f.Str(".//td[6]")
 
 
@@ -68,6 +71,7 @@ class FieldOfSearchField(f.String):
             cl, *subcls = re.split("[,/]", group)
             output += [f"{cl}/{subcl}" for subcl in subcls]
         return output
+
 
 class USClassField(f.String):
     def post_load(self, obj):
@@ -116,15 +120,16 @@ class ForeignPrioritySchema(Schema):
     left_col = ForeignPriorityDateSchema(".//td[1]", flatten=True)
     number = f.Str(".//td[4]")
 
-class ApplicantSchema(ZipSchema):
-    name = TailField('//td[1]/b/br')
-    city = TailField('.//td[2]/br')
-    state = TailField('.//td[3]/br')
-    country = TailField('.//td[4]/br')
 
 class PublicationDate(f.Alternative):
-    date_1 = f.Date('.//b[contains(text(), "Issue Date:")]/ancestor::tr/td[2]', formatter=lambda s: s.replace("*", "").strip())
-    date_2 = f.Date('.//b[contains(text(), "United States Patent")]/ancestor::table//tr[last()]/td[2]', formatter=lambda s: s.replace("*", "").strip())
+    date_1 = f.Date(
+        './/b[contains(text(), "Issue Date:")]/ancestor::tr/td[2]', formatter=lambda s: s.replace("*", "").strip()
+    )
+    date_2 = f.Date(
+        './/b[contains(text(), "United States Patent")]/ancestor::table//tr[last()]/td[2]',
+        formatter=lambda s: s.replace("*", "").strip(),
+    )
+
 
 class PublicationSchema(Schema):
     publication_number = f.Str(".//hr[1]/following::table[1]//tr[1]/td[2]", formatter=lambda s: s.replace(",", ""))

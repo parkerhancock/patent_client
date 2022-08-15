@@ -3,8 +3,8 @@
 Original API URL: <http://patft.uspto.gov/netahtml/PTO/index.html>
 
 :::{warning}
-This interface has a limited capacity and occasionally throws errors because the server is 
-over capacity. Some rudimentary retrying is baked into this API, but sometimes even that 
+This interface has a limited capacity and occasionally throws errors because the server is
+over capacity. Some rudimentary retrying is baked into this API, but sometimes even that
 isn't enough. Sometimes you just have to retry later :(
 :::
 

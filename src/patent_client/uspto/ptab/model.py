@@ -4,9 +4,8 @@ from dataclasses import field
 from typing import *
 
 from patent_client.util import Model
-from patent_client.util import one_to_many
-from patent_client.util import one_to_one
 from patent_client.util.base.collections import ListManager
+
 from ...util.base.related import get_model
 
 
@@ -103,12 +102,16 @@ class PtabProceeding(Model):
     @property
     def documents(self) -> "ListManager[patent_client.uspto.ptab.model.PtabDocument]":
         """Documents associated with the Proceeding"""
-        return get_model("patent_client.uspto.ptab.model.PtabDocument").objects.filter(proceeding_number=self.proceeding_number)
+        return get_model("patent_client.uspto.ptab.model.PtabDocument").objects.filter(
+            proceeding_number=self.proceeding_number
+        )
 
     @property
     def decisions(self) -> "ListManager[patent_client.uspto.ptab.model.PtabDecision]":
         """Decisions associated with the Proceeding"""
-        return get_model("patent_client.uspto.ptab.model.PtabDecision").objects.filter(proceeding_number=self.proceeding_number)
+        return get_model("patent_client.uspto.ptab.model.PtabDecision").objects.filter(
+            proceeding_number=self.proceeding_number
+        )
 
     @property
     def us_application(self) -> "ListManager[patent_client.uspto.peds.model.USApplication]":
@@ -132,8 +135,9 @@ class PtabDocument(Model):
     @property
     def proceeding(self) -> "patent_client.uspto.ptab.model.PtabProceeding":
         """The PTAB proceeding associated with the document"""
-        return get_model("patent_client.uspto.ptab.model.PtabProceeding").objects.get(proceeding_number=self.proceeding_number)
-    
+        return get_model("patent_client.uspto.ptab.model.PtabProceeding").objects.get(
+            proceeding_number=self.proceeding_number
+        )
 
 
 @dataclass
@@ -153,4 +157,6 @@ class PtabDecision(Model):
     @property
     def proceeding(self) -> "patent_client.uspto.ptab.model.PtabProceeding":
         """The PTAB proceeding associated with the document"""
-        return get_model("patent_client.uspto.ptab.model.PtabProceeding").objects.get(proceeding_number=self.proceeding_number)
+        return get_model("patent_client.uspto.ptab.model.PtabProceeding").objects.get(
+            proceeding_number=self.proceeding_number
+        )

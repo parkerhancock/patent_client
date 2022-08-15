@@ -1,15 +1,16 @@
 import re
 
-from patent_client.epo.ops.number_service.schema import DocumentIdSchema
 from patent_client.epo.ops.util import Schema
 from patent_client.util.xml import ListField
 from yankee.xml import fields as f
 
 doc_number_re = re.compile(r"published-data/images/(?P<country>[^/]+)/(?P<doc_number>[^/]+)/(?P<kind_code>[^/]+)/")
 
+
 def get_doc_number(string):
     data = doc_number_re.search(string).groupdict()
     return f"{data['country']}{data['doc_number']}{data['kind_code']}"
+
 
 class DocDbSchema(f.Combine):
     country = f.Str('.//epo:document-id[@document-id-type="docdb"]/epo:country')
@@ -18,6 +19,7 @@ class DocDbSchema(f.Combine):
 
     def combine_func(self, obj):
         return f"{obj.country}{obj.doc_number}{obj.kind}"
+
 
 class SectionSchema(Schema):
     name = f.Str("./@name")
@@ -34,7 +36,7 @@ class ImageDocumentSchema(Schema):
 
 
 class ImagesSchema(Schema):
-    #search_reference = DocumentIdSchema(".//ops:document-inquiry/ops:publication-reference")
+    # search_reference = DocumentIdSchema(".//ops:document-inquiry/ops:publication-reference")
     publication_number = DocDbSchema(".//ops:inquiry-result/epo:publication-reference")
     full_document = ImageDocumentSchema('.//ops:document-instance[@desc="FullDocument"]')
     drawing = ImageDocumentSchema('.//ops:document-instance[@desc="Drawing"]')

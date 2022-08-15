@@ -8,9 +8,9 @@ from typing import *
 
 from patent_client import session
 from patent_client.util import Model
-from patent_client.util import one_to_one
-from ...util.base.related import get_model
 from patent_client.util.claims.parser import ClaimsParser
+
+from ...util.base.related import get_model
 
 
 @dataclass
@@ -58,7 +58,7 @@ class PriorPublication(Model):
 
 @dataclass
 class USReference(Model):
-    #date: str
+    # date: str
     first_named_inventor: str
     publication_number: str
 
@@ -66,7 +66,7 @@ class USReference(Model):
 @dataclass
 class ForeignReference(Model):
     publication_number: str
-    #date: str
+    # date: str
     country_code: str
 
 
@@ -158,7 +158,9 @@ class PublicationResult(Model):
 
     @property
     def publication(self) -> "patent_client.uspto.fulltext.base.model.Publication":
-        return get_model("patent_client.uspto.fulltext.base.model.Publication").objects.get(publication_number=self.publication_number)
+        return get_model("patent_client.uspto.fulltext.base.model.Publication").objects.get(
+            publication_number=self.publication_number
+        )
 
 
 @dataclass

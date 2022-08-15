@@ -13,10 +13,13 @@ def clean_whitespace(string, preserve_newlines=False):
         string = newlines_re.sub(" ", string)
     return string
 
+
 non_digit_re = re.compile(r"[^\d]+")
+
 
 def clean_number(string):
     return non_digit_re.sub("", string)
+
 
 def clean_appl_id(string):
     return string.replace(",", "").replace("/", "").replace("D", "29").strip()

@@ -2,11 +2,10 @@ import logging
 from io import BytesIO
 from warnings import warn
 
-from yankee.util import AttrDict
-
 import lxml.etree as ET
 from patent_client.epo.ops.session import session
 from patent_client.util.base.collections import ListManager
+from yankee.util import AttrDict
 
 from .model import BiblioResult
 from .model import Claims
@@ -104,13 +103,15 @@ class PublishedSearchApi:
         logger.debug(f"OPS Search Endpoint - Query: {query}\nRange: {start}-{end}")
         response = session.get(base_url, params={"Range": range, "q": query})
         if response.status_code == 404:
-            return AttrDict.convert({
-                "query": "query",
-                "num_results": 0,
-                "begin": start,
-                "end": end,
-                "results": ListManager(),
-            })
+            return AttrDict.convert(
+                {
+                    "query": "query",
+                    "num_results": 0,
+                    "begin": start,
+                    "end": end,
+                    "results": ListManager(),
+                }
+            )
         response.raise_for_status()
         tree = ET.fromstring(response.text.encode())
         result = cls.schema.load(tree)

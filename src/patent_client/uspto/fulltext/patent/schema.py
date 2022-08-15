@@ -1,14 +1,16 @@
-import re
-from ..schema.images import ImageSchema
-from .model import PatentImage, Patent
+from patent_client.uspto.fulltext.schema.base import RegexSchema
+from patent_client.uspto.fulltext.schema.base import Schema
+from patent_client.uspto.fulltext.schema.images import ImageSchema
+from patent_client.uspto.fulltext.schema.publication import PublicationSchema
 from yankee.xml import fields as f
 
-from patent_client.uspto.fulltext.schema.base import Schema, RegexSchema
-from patent_client.uspto.fulltext.schema.publication import PublicationSchema
-from patent_client.uspto.fulltext.schema.images import ImageSchema
+from .model import Patent
+from .model import PatentImage
+
 
 class PatentSchema(PublicationSchema):
     __model__ = Patent
+
 
 class PatentImageSchema(ImageSchema):
     __model__ = PatentImage

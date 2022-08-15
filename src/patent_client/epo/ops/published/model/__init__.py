@@ -1,4 +1,5 @@
-from .biblio import BiblioResult, InpadocBiblio, Title, Citation
+from .biblio import BiblioResult
+from .biblio import InpadocBiblio
 from .fulltext import Claims
 from .fulltext import Description
 from .images import ImageDocument

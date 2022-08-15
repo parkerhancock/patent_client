@@ -8,8 +8,8 @@ The EPO provides access to the Inpadoc database, which is roughly commensurate
 with the Espacenet database. You can fetch bibliographic information quickly and easily as:
 
 ```python
->>> from patent_client import Inpadoc 
->>> case = Inpadoc.objects.get("EP1000000A1") 
+>>> from patent_client import Inpadoc
+>>> case = Inpadoc.objects.get("EP1000000A1")
 >>> case.title
 'Apparatus for manufacturing green bricks for the brick manufacturing industry'
 
@@ -19,9 +19,9 @@ Each case can also access Full Text, Images, and Inpadoc Families
 
 ```python
 >>> from patent_client import Inpadoc
->>> from pprint import pprint 
+>>> from pprint import pprint
 >>> case = Inpadoc.objects.get("EP1000000A1")
->>> pprint(list(case.family)) 
+>>> pprint(list(case.family))
 [FamilyMember(publication_number=EP1000000A1),
  FamilyMember(publication_number=EP1000000B1),
  FamilyMember(publication_number=AT232441T),
@@ -43,8 +43,8 @@ CQL query, which is documented fully [here]. If you wish to pass through a
 raw CQL query, just pass it as a 'cql_query' keyword argument to the filter. e.g.:
 
 ```python
->>> results = Inpadoc.objects.filter(cql_query='pa="Google LLC"') 
->>> len(results) > 500 
+>>> results = Inpadoc.objects.filter(cql_query='pa="Google LLC"')
+>>> len(results) > 500
 True
 
 ```

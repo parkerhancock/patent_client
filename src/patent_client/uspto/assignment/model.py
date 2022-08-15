@@ -76,12 +76,16 @@ class Property(Model):
     @property
     def patent(self) -> "patent_client.uspto.fulltext.patent.model.Patent":
         """The related US Patent, if any"""
-        return get_model("patent_client.uspto.peds.fulltext.patent.model.Patent").objects.get(publication_number=self.pat_num)
+        return get_model("patent_client.uspto.peds.fulltext.patent.model.Patent").objects.get(
+            publication_number=self.pat_num
+        )
 
     @property
     def publication(self) -> "patent_client.uspto.fulltext.published_application.model.PublishedApplication":
         """The related US Publication, if any"""
-        return get_model("patent_client.uspto.peds.fulltext.patent.model.PublishedApplication").objects.get(publication_number=self.publ_num)
+        return get_model("patent_client.uspto.peds.fulltext.patent.model.PublishedApplication").objects.get(
+            publication_number=self.publ_num
+        )
 
 
 @dataclass

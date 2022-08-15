@@ -1,6 +1,5 @@
 # flake8: noqa
 import time
-from .version import __version__
 
 start = time.time()
 from pathlib import Path
@@ -36,10 +35,9 @@ logger.addHandler(handler)
 logger.info(f"Starting Patent Client with log level {SETTINGS.DEFAULT.LOG_LEVEL}")
 
 from .session import PatentClientSession  # isort:skip
-from .util.datetime.date_parse import parse_duration  # isort:skip
 
 session = PatentClientSession()
-#session.remove_expired_responses(expire_after=parse_duration(SETTINGS.CACHE.MAX_AGE))
+# session.remove_expired_responses(expire_after=parse_duration(SETTINGS.CACHE.MAX_AGE))
 
 from patent_client.epo.ops.published.model import Inpadoc  # isort:skip
 

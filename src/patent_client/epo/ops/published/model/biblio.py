@@ -1,11 +1,11 @@
 from dataclasses import dataclass
 from dataclasses import field
-from typing import List
 
 from patent_client.epo.ops.number_service.model import DocumentId
 from patent_client.epo.ops.util import InpadocModel
 from patent_client.util import Model
 from patent_client.util.base.collections import ListManager
+
 
 @dataclass
 class Citation(InpadocModel):
@@ -74,6 +74,7 @@ class InpadocBiblio(InpadocModel):
     @property
     def docdb_number(self):
         return str(self.publication_reference_docdb)
+
 
 @dataclass
 class BiblioResult(Model):

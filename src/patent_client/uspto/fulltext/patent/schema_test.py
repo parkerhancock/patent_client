@@ -1,8 +1,8 @@
-import pytest
 import json
 from pathlib import Path
 
 import lxml.etree as ET
+import pytest
 
 from .schema import PatentResultPageSchema
 from .schema import PatentSchema
@@ -25,6 +25,7 @@ def test_patent_result_schema():
     assert record.publication_number == "8875790"
     assert record.title == "Method and system for fracking and completing wells"
 
+
 locked = [
     "pat_3113620",
     "pat_5439055",
@@ -40,6 +41,7 @@ locked = [
     "pat_D645062",
     "pat_RE43663",
 ]
+
 
 @pytest.mark.parametrize("patent_file", sorted(fixture_dir.glob("patents/*.html")), ids=lambda p: p.stem)
 def test_patent_schema(patent_file):

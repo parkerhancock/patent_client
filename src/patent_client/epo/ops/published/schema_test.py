@@ -69,7 +69,7 @@ def test_search():
 def test_images():
     tree = ET.parse(test_dir / "image_example.xml")
     result = ImagesSchema().load(tree)
-    expected_file = (expected_dir / "image_example.json")
+    expected_file = expected_dir / "image_example.json"
     expected_file.write_text(result.to_json())
     expected = json.loads(expected_file.read_text())
     compare_dicts(json.loads(result.to_json()), expected)

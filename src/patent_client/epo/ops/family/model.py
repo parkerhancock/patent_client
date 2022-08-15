@@ -4,7 +4,6 @@ from typing import List
 
 from patent_client.epo.ops.number_service.model import DocumentId
 from patent_client.util import Model
-from patent_client.util import one_to_one
 
 
 @dataclass
@@ -24,7 +23,6 @@ class FamilyMember(Model):
     publication_reference: list = field(default_factory=list)
     application_reference: list = field(default_factory=list)
     priority_claims: List[PriorityClaim] = field(default_factory=list)
-
 
     @property
     def docdb_number(self):

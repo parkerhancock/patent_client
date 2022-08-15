@@ -8,8 +8,6 @@ from patent_client.util import Model
 from PyPDF2 import PdfReader
 from PyPDF2 import PdfWriter
 
-from ...number_service.model import DocumentId
-
 
 @dataclass
 class Section(Model):

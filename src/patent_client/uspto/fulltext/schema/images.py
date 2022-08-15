@@ -1,7 +1,11 @@
 import re
+
+from yankee.base import fields as jf
+from yankee.base import Schema as JsonSchema
 from yankee.xml import fields as f
+
 from .base import Schema as HtmlSchema
-from yankee.base import Schema as JsonSchema, fields as jf
+
 
 class SectionSchema(JsonSchema):
     name = jf.Str("name")
@@ -13,6 +17,7 @@ class SectionSchema(JsonSchema):
 class ImageSchema(JsonSchema):
     pdf_url = jf.Str()
     sections = jf.List(SectionSchema, "sections")
+
 
 pdf_id_re = re.compile(r"/([\d/]+)/1.pdf")
 
