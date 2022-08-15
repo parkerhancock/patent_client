@@ -1,17 +1,18 @@
 import re
 from yankee.xml import fields as f
-from .base import Schema
+from .base import Schema as HtmlSchema
+from yankee.base import Schema as JsonSchema, fields as jf
 
-class SectionSchema(Schema):
-    name = f.Str("name")
-    start = f.Int("start_page")
-    end = f.Int("end_page")
-    pdf_url = f.Str("pdf_url")
+class SectionSchema(JsonSchema):
+    name = jf.Str("name")
+    start = jf.Int("start_page")
+    end = jf.Int("end_page")
+    pdf_url = jf.Str("pdf_url")
 
 
-class ImageSchema(Schema):
-    pdf_url = f.Str()
-    sections = f.List(SectionSchema, "sections")
+class ImageSchema(JsonSchema):
+    pdf_url = jf.Str()
+    sections = jf.List(SectionSchema, "sections")
 
 pdf_id_re = re.compile(r"/([\d/]+)/1.pdf")
 
@@ -23,7 +24,7 @@ def pdf_url_id_formatter(text):
     return match.group(1)
 
 
-class ImageHtmlSchema(Schema):
+class ImageHtmlSchema(HtmlSchema):
     pdf_url_id = f.Str(".//embed/@src", formatter=pdf_url_id_formatter)
     start_page = f.Str('//comment()[contains(., "PageNum")]', formatter=lambda s: int(s.split("=")[1]))
     num_pages = f.Str('//comment()[contains(., "NumPages")]', formatter=lambda s: int(s.split("=")[1]))

@@ -1,11 +1,12 @@
 # US Patents & Published Applications
 
-```{eval-rst}
-.. role:: python(code)
-   :language: python
-```
-
 Original API URL: <http://patft.uspto.gov/netahtml/PTO/index.html>
+
+:::{warning}
+This interface has a limited capacity and occasionally throws errors because the server is 
+over capacity. Some rudimentary retrying is baked into this API, but sometimes even that 
+isn't enough. Sometimes you just have to retry later :(
+:::
 
 :::{warning}
 The USPTO's Full Text interface IS NOT for bulk downloads. Please limit retrievals to 10's
@@ -26,6 +27,7 @@ into a "get" query, and you'll get the desired response:
 Patent(publication_number=10000000, publication_date=2018-06-19, title=Coherent LADAR using intra-pixel quadrature detection)
 >>> PublishedApplication.objects.get("20200000001")
 PublishedApplication(publication_number=20200000001, publication_date=2020-01-02, title=SYSTEM FOR CONNECTING IMPLEMENT TO MOBILE MACHINERY)
+
 ```
 
 ## Searching

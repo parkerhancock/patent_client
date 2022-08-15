@@ -19,7 +19,9 @@ All fields are query-able. Date fields can be queried by range by including "to"
 For example, fetching all proceedings decided after a date would look like this:
 
 ```python
+
 PtabProceeding.objects.filter(accorded_filing_from_date="2020-01-01")
+
 ```
 
 The syntax is a little odd, but this is how the underlying API works.

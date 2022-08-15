@@ -1,5 +1,6 @@
 # flake8: noqa
 import time
+from .version import __version__
 
 start = time.time()
 from pathlib import Path
@@ -7,7 +8,6 @@ from .settings import load_settings
 
 SETTINGS = load_settings()
 
-import colorlog
 import logging
 import logging.handlers
 
@@ -24,19 +24,13 @@ except OSError:
 LOG_FILENAME = BASE_DIR / SETTINGS.DEFAULT.LOG_FILE
 
 # Set up a specific logger with our desired output level
-logger = logging.getLogger()
+logger = logging.getLogger(__name__)
 logger.setLevel(SETTINGS.DEFAULT.LOG_LEVEL)
 
 
 # Add the log message handler to the logger
 handler = logging.FileHandler(LOG_FILENAME)
 handler.setFormatter(logging.Formatter("%(asctime)s:%(levelname)s:%(name)s:%(message)s"))
-logger.addHandler(handler)
-
-handler = colorlog.StreamHandler()
-handler.setFormatter(colorlog.ColoredFormatter("%(log_color)s%(levelname)s:%(name)s:%(message)s"))
-
-logger = colorlog.getLogger()
 logger.addHandler(handler)
 
 logger.info(f"Starting Patent Client with log level {SETTINGS.DEFAULT.LOG_LEVEL}")
@@ -47,7 +41,7 @@ from .util.datetime.date_parse import parse_duration  # isort:skip
 session = PatentClientSession()
 session.remove_expired_responses(expire_after=parse_duration(SETTINGS.CACHE.MAX_AGE))
 
-from patent_client.epo.published.model import Inpadoc  # isort:skip
+from patent_client.epo.ops.published.model import Inpadoc  # isort:skip
 
 # from patent_client.usitc.model import ITCAttachment
 # from patent_client.usitc.model import ITCDocument

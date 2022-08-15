@@ -6,6 +6,8 @@ from typing import *
 from patent_client.util import Model
 from patent_client.util import one_to_many
 from patent_client.util import one_to_one
+from patent_client.util.base.collections import ListManager
+from ...util.base.related import get_model
 
 
 @dataclass
@@ -93,14 +95,22 @@ class PtabProceeding(Model):
     second_respondent_pub_number: str = None
     second_respondent_publication_date: "datetime.date" = None
 
-    additional_respondents: "List" = field(default_factory=list)
+    additional_respondents: "ListManager[str]" = field(default_factory=list)
 
-    documents = one_to_many("patent_client.uspto.ptab.PtabDocument", proceeding_number="proceeding_number")
-    """Documents associated with the Proceeding"""
-    decisions = one_to_many("patent_client.uspto.ptab.PtabDecision", proceeding_number="proceeding_number")
-    """Decisions associated with the Proceeding"""
-    us_application = one_to_one("patent_client.uspto.peds.Application", appl_id="appl_id")
-    """The US Application provided by PEDS associated with the Proceeding"""
+    @property
+    def documents(self) -> "ListManager[patent_client.uspto.ptab.model.PtabDocument]":
+        """Documents associated with the Proceeding"""
+        return get_model("patent_client.uspto.ptab.model.PtabDocument").objects.filter(proceeding_number=self.proceeding_number)
+
+    @property
+    def decisions(self) -> "ListManager[patent_client.uspto.ptab.model.PtabDecision]":
+        """Decisions associated with the Proceeding"""
+        return get_model("patent_client.uspto.ptab.model.PtabDecision").objects.filter(proceeding_number=self.proceeding_number)
+
+    @property
+    def us_application(self) -> "ListManager[patent_client.uspto.peds.model.USApplication]":
+        """The US Application provided by PEDS associated with the Proceeding"""
+        return get_model("patent_client.uspto.peds.model.USApplication").objects.get(appl_id=self.appl_id)
 
 
 @dataclass
@@ -116,8 +126,11 @@ class PtabDocument(Model):
     proceeding_type_category: str = field(repr=False)
     title: "Optional[str]" = None
 
-    proceeding = one_to_one("patent_client.uspto.ptab.PtabProceeding", proceeding_number="proceeding_number")
-    """The PTAB proceeding associated with the document"""
+    @property
+    def proceeding(self) -> "patent_client.uspto.ptab.model.PtabProceeding":
+        """The PTAB proceeding associated with the document"""
+        return get_model("patent_client.uspto.ptab.model.PtabProceeding").objects.get(proceeding_number=self.proceeding_number)
+    
 
 
 @dataclass
@@ -134,5 +147,7 @@ class PtabDecision(Model):
     object_uu_id: "Optional[str]" = None
     petitioner_technology_center_number: "Optional[str]" = None
 
-    proceeding = one_to_one("patent_client.uspto.ptab.PtabProceeding", proceeding_number="proceeding_number")
-    """The PTAB proceeding associated with the document"""
+    @property
+    def proceeding(self) -> "patent_client.uspto.ptab.model.PtabProceeding":
+        """The PTAB proceeding associated with the document"""
+        return get_model("patent_client.uspto.ptab.model.PtabProceeding").objects.get(proceeding_number=self.proceeding_number)

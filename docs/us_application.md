@@ -29,6 +29,7 @@ Use it like this:
 'Integrated Docking System for Intelligent Devices'
 >>> app.app_filing_date
 datetime.date(2015, 1, 7)
+
 ```
 
 ## Querying
@@ -42,10 +43,11 @@ portfolio analysis. For example:
 True
 >>> pprint(apps[:5].to_list())
 [USApplication(appl_id='...', patent_title='...', app_status='...'),
- USApplication(appl_id='..., patent_title='...', app_status='...'),
+ USApplication(appl_id='...', patent_title='...', app_status='...'),
  USApplication(appl_id='...', patent_title='...', app_status='...'),
  USApplication(appl_id='...', patent_title='...', app_status='...'),
  USApplication(appl_id='...', patent_title='...', app_status='...')]
+
 ```
 
 A complete list of available filters can be found by calling `USApplication.objects.fields`.

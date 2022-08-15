@@ -60,7 +60,7 @@ class TestAssignment:
     def test_get_assignment_image(self):
         assignments = Assignment.objects.filter(patent_number=6095661)
         assignment = assignments[0]
-        assert assignment._image_url == "http://legacy-assignments.uspto.gov/assignments/assignment-pat-038505-0128.pdf"
+        assert assignment.image_url == "http://legacy-assignments.uspto.gov/assignments/assignment-pat-038505-0128.pdf"
 
     def test_slice_assignments(self):
         assignments = Assignment.objects.filter(assignee="US Well Services")

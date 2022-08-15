@@ -8,40 +8,30 @@ The EPO provides access to the Inpadoc database, which is roughly commensurate
 with the Espacenet database. You can fetch bibliographic information quickly and easily as:
 
 ```python
->>> from patent_client import Inpadoc # doctest: +SKIP
->>> case = Inpadoc.objects.get('EP2906782A2') # doctest: +SKIP
->>> bib_data = case.biblio # doctest: +SKIP
->>> bib_data.title # doctest: +SKIP
-'ATTITUDE REFERENCE FOR TIEBACK/OVERLAP PROCESSING'
+>>> from patent_client import Inpadoc 
+>>> case = Inpadoc.objects.get("EP1000000A1") 
+>>> case.title
+'Apparatus for manufacturing green bricks for the brick manufacturing industry'
+
 ```
 
 Each case can also access Full Text, Images, and Inpadoc Families
 
 ```python
->>> from patent_client import Inpadoc # doctest: +SKIP
->>> from pprint import pprint # doctest: +SKIP
->>> case = Inpadoc.objects.get('EP2906782A2') # doctest: +SKIP
->>> pprint(list(case.family)) # doctest: +SKIP
-[InpadocFamilyMember(publication=EP2906782A2),
- InpadocFamilyMember(publication=EP2906782A4),
- InpadocFamilyMember(publication=EP2906782B1),
- InpadocFamilyMember(publication=CA2887530A1),
- InpadocFamilyMember(publication=CA2887530C),
- InpadocFamilyMember(publication=CN104968889A),
- InpadocFamilyMember(publication=CN104968889B),
- InpadocFamilyMember(publication=EP3640426A1),
- InpadocFamilyMember(publication=RU2015117646A),
- InpadocFamilyMember(publication=US2014102795A1),
- InpadocFamilyMember(publication=US9291047B2),
- InpadocFamilyMember(publication=US2016245070A1),
- InpadocFamilyMember(publication=US10047600B2),
- InpadocFamilyMember(publication=WO2014059282A2),
- InpadocFamilyMember(publication=WO2014059282A3)]
+>>> from patent_client import Inpadoc
+>>> from pprint import pprint 
+>>> case = Inpadoc.objects.get("EP1000000A1")
+>>> pprint(list(case.family)) 
+[FamilyMember(publication_number=EP1000000A1),
+ FamilyMember(publication_number=EP1000000B1),
+ FamilyMember(publication_number=AT232441T),
+ FamilyMember(publication_number=DE69905327D1),
+ FamilyMember(publication_number=NL1010536C2),
+ FamilyMember(publication_number=US6093011A)]
 
-# Work in Progress
->>> ca_equivalent.images.sections # doctest: +SKIP
-{'ABSTRACT': 1, 'BIBLIOGRAPHY': 1, 'CLAIMS': 2, 'DESCRIPTION': 6, 'DRAWINGS': 13}
->>> ca_equivalent.images.download() # doctest: +SKIP
+>>> case.images.full_document.sections
+[{'name': 'ABSTRACT', 'start_page': 1}, {'name': 'BIBLIOGRAPHY', 'start_page': 1}, {'name': 'CLAIMS', 'start_page': 3}, {'name': 'DESCRIPTION', 'start_page': 2}, {'name': 'DRAWINGS', 'start_page': 5}, {'name': 'SEARCH_REPORT', 'start_page': 11}]
+>>> case.images.full_document.download() # doctest: +SKIP
 Downloads a .pdf of the document to the current directory
 ```
 
@@ -53,8 +43,8 @@ CQL query, which is documented fully [here]. If you wish to pass through a
 raw CQL query, just pass it as a 'cql_query' keyword argument to the filter. e.g.:
 
 ```python
->>> results = Inpadoc.objects.filter(cql_query='pa="Google LLC"') # doctest: +SKIP
->>> len(results) > 500 # doctest: +SKIP
+>>> results = Inpadoc.objects.filter(cql_query='pa="Google LLC"') 
+>>> len(results) > 500 
 True
 ```
 
@@ -111,15 +101,15 @@ EPO register is still a work in progress, and is currently not working in v.2.
 Patent Client can also retrive bibliographic and status information from the EP register.
 
 ```python
->>> from patent_client import Epo # doctest: +SKIP
->>> pub = Epo.objects.get("EP3221665A1") # doctest: +SKIP
+>>> from patent_client import Epo 
+>>> pub = Epo.objects.get("EP3221665A1") 
 http://ops.epo.org/3.2/rest-services/number-service/publication/original/EP3221665A1)/epodoc {}
 http://ops.epo.org/3.2/rest-services/register/publication/epodoc/EP.3221665.A1/biblio {}
->>> pub.status[0] # doctest: +SKIP
+>>> pub.status[0] 
 {'description': 'Request for examination was made', 'code': '15', 'date': '20170825'}
->>> pub.title # doctest: +SKIP
+>>> pub.title 
 'INERTIAL CAROUSEL POSITIONING'
->>> pub.procedural_steps[0] # doctest: +SKIP
+>>> pub.procedural_steps[0] 
 http://ops.epo.org/3.2/rest-services/register/publication/epodoc/EP.3221665.A1/procedural-steps {}
 {'phase': 'undefined', 'description': 'Renewal fee payment - 03', 'date': '20171113', 'code': 'RFEE'}
 ```

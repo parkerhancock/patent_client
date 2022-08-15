@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 
-from patent_client.util import one_to_many
-from patent_client.util import one_to_one
+from patent_client.util.base.related import get_model
+from patent_client.util.base.collections import ListManager
 
 from ..model import Image
 from ..model import Publication
@@ -10,23 +10,23 @@ from ..model import PublicationResult
 
 @dataclass
 class PatentResult(PublicationResult):
-    publication = one_to_one(
-        "patent_client.uspto.fulltext.patent.model.Patent",
-        publication_number="publication_number",
-    )
+
+    @property
+    def publication(self) -> "patent_client.uspto.fulltext.patent.model.Patent":
+        return get_model("patent_client.uspto.fulltext.patent.model.Patent").objects.get(publication_number=self.publication_number)
 
 
 @dataclass
 class Patent(Publication):
     __manager__ = "patent_client.uspto.fulltext.patent.manager.PatentManager"
-    forward_citations = one_to_many(
-        "patent_client.uspto.fulltext.patent.model.Patent",
-        referenced_by="publication_number",
-    )
-    images = one_to_one(
-        "patent_client.uspto.fulltext.patent.model.PatentImage",
-        pdf_url="pdf_url",
-    )
+    @property
+    def forward_citations(self) -> "ListManager[patent_client.uspto.fulltext.patent.model.Patent]":
+        return get_model("patent_client.uspto.fulltext.patent.model.Patent").objects.filter(referenced_by=self.publication_number)
+
+    @property
+    def images(self) -> "patent_client.uspto.fulltext.patent.model.PatentImage":
+        return get_model("patent_client.uspto.fulltext.patent.model.PatentImage").objects.get(pdf_url=self.pdf_url)
+
 
     def __repr__(self):
         return f"{self.__class__.__name__}(publication_number={self.publication_number}, publication_date={self.publication_date.isoformat()}, title={self.title})"

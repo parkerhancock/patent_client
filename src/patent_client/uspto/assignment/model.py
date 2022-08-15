@@ -8,7 +8,7 @@ from typing import *
 from patent_client import session
 from patent_client.util import ListManager
 from patent_client.util import Model
-from patent_client.util import one_to_one
+from patent_client.util.base.related import get_model
 
 
 @dataclass
@@ -27,16 +27,16 @@ class Assignment(Model):
     recorded_date: datetime.date
     corr_name: str = None
     corr_address: str = None
-    assignors: "QuerySet[Assignor]" = field(default_factory=ListManager)
-    assignees: "QuerySet[Assignee]" = field(default_factory=ListManager)
-    properties: "QuerySet[Property]" = field(repr=False, default_factory=ListManager)
+    assignors: "ListManager[Assignor]" = field(default_factory=ListManager)
+    assignees: "ListManager[Assignee]" = field(default_factory=ListManager)
+    properties: "ListManager[Property]" = field(repr=False, default_factory=ListManager)
     """Properties objects associated with this Assignment"""
     assignment_record_has_images: bool = False
     transaction_date: "Optional[datetime.date]" = None
     date_produced: "Optional[datetime.date]" = None
 
     @property
-    def _image_url(self):
+    def image_url(self) -> str:
         reel, frame = self.id.split("-")
         reel = reel.rjust(6, "0")
         frame = frame.rjust(4, "0")
@@ -44,7 +44,7 @@ class Assignment(Model):
 
     def download(self):
         """downloads the PDF associated with the assignment to the current working directory"""
-        response = session.get(self._image_url, stream=True)
+        response = session.get(self.image_url, stream=True)
         with open(f"{self.id}.pdf", "wb") as f:
             f.write(response.raw.read())
 
@@ -68,8 +68,20 @@ class Property(Model):
     def __repr__(self):
         return f"Property(appl_id={self.appl_id}, invention_title={self.invention_title})"
 
-    us_application = one_to_one("patent_client.USApplication", appl_id="appl_id")
-    """A USApplication object related to the property"""
+    @property
+    def application(self) -> "patent_client.uspto.peds.model.USApplication":
+        """The related US Application"""
+        return get_model("patent_client.uspto.peds.model.USApplication").objects.get(appl_id=self.appl_id)
+
+    @property
+    def patent(self) -> "patent_client.uspto.fulltext.patent.model.Patent":
+        """The related US Patent, if any"""
+        return get_model("patent_client.uspto.peds.fulltext.patent.model.Patent").objects.get(publication_number=self.pat_num)
+
+    @property
+    def publication(self) -> "patent_client.uspto.fulltext.published_application.model.PublishedApplication":
+        """The related US Publication, if any"""
+        return get_model("patent_client.uspto.peds.fulltext.patent.model.PublishedApplication").objects.get(publication_number=self.publ_num)
 
 
 @dataclass

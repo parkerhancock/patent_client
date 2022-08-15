@@ -90,6 +90,7 @@ class AssignmentManager(Manager[Assignment]):
             "rows": self.page_size,
             "start": page_no * self.page_size,
             "sort": " ".join(sort),
+            "facet": False,
         }
         logger.info(f"Assignment Manager executed query {query}")
         return query

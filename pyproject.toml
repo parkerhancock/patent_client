@@ -99,3 +99,16 @@ all = true
 profile = 'black'
 line_length = 100
 skip_gitignore = true
+
+[tool.pytest.ini_options]
+python_files = [
+    "test_*.py",
+    "*_test.py",
+    "tests.py",
+]
+addopts = '-ra --strict --doctest-modules --doctest-glob="*.md" --tb=short'
+doctest_optionflags= [
+    "NORMALIZE_WHITESPACE",
+    "IGNORE_EXCEPTION_DETAIL",
+    "ELLIPSIS"
+]

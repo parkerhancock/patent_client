@@ -190,7 +190,6 @@ class ImageManager(Manager):
         for section in reversed(full_doc.sections):
             section["end_page"] = last_page
             last_page = section["start_page"] - 1
-
         return self.__schema__.load(full_doc)
 
     def get_image_data(self, url, params=dict()):

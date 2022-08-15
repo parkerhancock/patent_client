@@ -16,13 +16,13 @@ class ApplicantSchema(Schema):
 
 class USReferenceSchema(Schema):
     publication_number = f.Str(".//td[1]")
-    date = f.Date(".//td[2]")
+    #date = f.Date(".//td[2]") # Removed due to ambiguous day - references only give month and year
     first_named_inventor = f.Str(".//td[3]")
 
 
 class ForeignReferenceSchema(Schema):
     publication_number = f.Str(".//td[2]")
-    date = f.Date(".//td[4]")
+    #date = f.Date(".//td[4]") # Removed due to ambiguous day - references only give month and year
     country_code = f.Str(".//td[6]")
 
 
@@ -122,12 +122,13 @@ class ApplicantSchema(ZipSchema):
     state = TailField('.//td[3]/br')
     country = TailField('.//td[4]/br')
 
+class PublicationDate(f.Alternative):
+    date_1 = f.Date('.//b[contains(text(), "Issue Date:")]/ancestor::tr/td[2]', formatter=lambda s: s.replace("*", "").strip())
+    date_2 = f.Date('.//b[contains(text(), "United States Patent")]/ancestor::table//tr[last()]/td[2]', formatter=lambda s: s.replace("*", "").strip())
+
 class PublicationSchema(Schema):
     publication_number = f.Str(".//hr[1]/following::table[1]//tr[1]/td[2]", formatter=lambda s: s.replace(",", ""))
-    publication_date = f.Date(
-        './/b[contains(text(), "Issue Date:")]/ancestor::tr/td[2]',
-        formatter=lambda s: s.replace("*", "").strip(),
-    )
+    publication_date = PublicationDate()
     kind_code = KindCode()
     title = f.Str(".//hr[2]/following::font")
     appl_id = f.Str(
