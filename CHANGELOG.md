@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.0.1 (2022-08-09)
+
+- Released new major version. Will try to keep this somewhat updated!
+
 ## 2.1.3 (2020-11-12)
 
 - Added support for USPTO's Full Text databases

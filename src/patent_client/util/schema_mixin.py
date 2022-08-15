@@ -21,7 +21,10 @@ class PatentSchemaMixin(object):
 
     def post_load(self, obj):
         if obj and self.__model__:
-            return self.__model__(**obj)
+            if isinstance(obj, list):
+                return ListManager(self.__model__(**o) for o in obj)
+            else:
+                return self.__model__(**obj)
         elif obj:
             return obj
         else:

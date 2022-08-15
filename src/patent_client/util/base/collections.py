@@ -1,5 +1,6 @@
 import json
 from copy import deepcopy
+from itertools import chain
 
 from ..json_encoder import JsonEncoder
 from .row import Row
@@ -21,6 +22,9 @@ class Collection:
         if hasattr(self, "iterable"):
             return f"Collection({repr(self.iterable)})"
         return super().__repr__()
+
+    def __add__(self, other):
+        return Collection(chain(self, other))
 
     def to_list(self):
         """Return a list of item objects from the Manager"""

@@ -1,16 +1,11 @@
-from yankee.xml import fields as f
-from yankee.xml import RegexSchema
-from yankee.xml import Schema
+from .model import PublishedApplication, PublishedApplicationImage, PublishedApplicationResult
+from ..schema.publication import PublicationSchema
+from ..schema.images import ImageSchema
 
-from ..schema.image_schema import ImageSchema
-from ..schema.new_schema import PublicationSchema
-from .model import PublishedApplication
-from .model import PublishedApplicationImage
-
+from patent_client.util.xml import Schema, RegexSchema, fields as f
 
 class PublishedApplicationSchema(PublicationSchema):
     __model__ = PublishedApplication
-
 
 class PublishedApplicationImageSchema(ImageSchema):
     __model__ = PublishedApplicationImage

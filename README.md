@@ -15,7 +15,7 @@ A powerful library for accessing intellectual property, featuring:
 
 - 🍰 **Ease of use:** All sources use a simple unified API inspired by [Django-ORM][DORM].
 - 🐼 **Pandas Integration:** Results are easily castable to [Pandas Dataframes and Series][PANDAS].
-- 🚀 **Performance:** Fetched data is cached using the excellent [requests-cache] library for super-fast queries.
+- 🚀 **Performance:** Fetched data is cached using the excellent [requests-cache][requests-cache] library for super-fast queries.
 
 Docs, including a fulsome Getting Started and User Guide are available on [Read the Docs](http://patent-client.readthedocs.io). The Examples folder includes examples of using `patent_client` for
 many common IP tasks
@@ -29,9 +29,6 @@ many common IP tasks
   - [Patent Assignment Data][Assignment] - Lookup Support
   - [Patent Trial & Appeal Board API v2][PTAB] - Supports Proceedings, Decisions, and Documents
 
-- [United States International Trade Commission][ITC]
-
-  - [Electronic Document Information System (EDIS) API][EDIS] - Partial Support (no document downloads)
 
 - [European Patent Office - Open Patent Services][OPS]
 
@@ -87,10 +84,13 @@ True
 'AUTOMATIC FLUID DISPENSER'
 
 ```
+<!-- RTD-IGNORE -->
 
 ## Documentation
 
 Docs, including a fulsome Getting Started are available on [Read the Docs](http://patent-client.readthedocs.io).
+
+<!-- END-RTD-IGNORE -->
 
 # Development
 
@@ -112,8 +112,6 @@ Pull requests welcome!
 [PANDAS]: https://pandas.pydata.org/docs/
 [requests-cache]: https://github.com/requests-cache/requests-cache
 [Assignment]: https://developer.uspto.gov/api-catalog/patent-assignment-search-beta
-[EDIS]: https://edis.usitc.gov/external/
-[ITC]: https://www.usitc.gov/
 [OPS]: http://ops.epo.org
 [PATFT]: http://http://patft.uspto.gov/
 [PEDS]: https://developer.uspto.gov/api-catalog/ped

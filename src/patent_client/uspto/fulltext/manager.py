@@ -3,14 +3,15 @@ import math
 import re
 import time
 from collections import defaultdict
+import logging
+logger = logging.getLogger(__name__)
 
 import lxml.etree as ET
 from dateutil.parser import parse as parse_dt
 from patent_client.util import Manager
 
-from .schema.image_schema import ImageSchema
-from .schema.new_schema import ImageHtmlSchema
-from .schema.new_schema import PublicationSchema
+from .schema.images import ImageSchema
+from .schema.images import ImageHtmlSchema
 from .session import session
 
 
@@ -41,7 +42,7 @@ clean_number = lambda string: re.sub(r"[^DREP\d]", "", string).strip()
 
 
 class FullTextManager(Manager):
-    __schema__ = PublicationSchema()
+    __schema__ = None
     search_fields = None
     search_params = None
     search_url = None
@@ -127,7 +128,9 @@ class FullTextManager(Manager):
                 lt = standardize_date(v.get("lt", datetime.datetime.now().date().strftime("%Y%m%d")))
                 query_segments.append(f"{self.search_fields[k]}/{gt}->{lt}")
 
-        return " AND ".join(query_segments)
+        query = " AND ".join(query_segments)
+        logging.debug(f"FullText Manager Generated Query: {query}")
+        return query
 
     def get_page(self, page_no):
         """pages here are zero-indexed, which means they have to
@@ -187,7 +190,6 @@ class ImageManager(Manager):
         for section in reversed(full_doc.sections):
             section["end_page"] = last_page
             last_page = section["start_page"] - 1
-
         return self.__schema__.load(full_doc)
 
     def get_image_data(self, url, params=dict()):

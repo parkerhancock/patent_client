@@ -72,11 +72,12 @@ Once these relationships are in place, we can move from one record to the other 
 
 ```python
 >>> from patent_client import PtabProceeding
->>> a = PtabProceeding.objects.get('IPR2017-00001')
+>>> a = PtabProceeding.objects.get('IPR2017-00001') # doctest +SKIP
 
 >>> a.documents[0]
 PtabDocument(document_category='Paper', document_type_name='Notice of Appeal', document_number=50, document_name='IPR2017-00001NOAFWD.pdf', document_filing_date=datetime.date(2018, 5, 16), title=None)
 
 >>> a.documents[0].proceeding
 PtabProceeding(subproceeding_type_category='IPR', proceeding_number='IPR2017-00001', proceeding_status_category='FWD Entered', proceeding_type_category='AIA Trial', respondent_party_name='SIPCO, LLC')
+
 ```

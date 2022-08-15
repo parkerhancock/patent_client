@@ -26,6 +26,7 @@ register a new account (Free up to 4GB of data / month, which is usually more th
 $ python
 Python 3.6.5 (default, Jul 12 2018, 11:37:09)
 >>> import patent_client
+
 ```
 
 This will set up an empty settings file, located at **~/.iprc**. The IPRC file is a JSON object containing settings for the project.
@@ -77,6 +78,7 @@ For example, if you wanted all patent applications filed by "Google LLC," you wo
 
 >>> len(google_apps) > 1000
 True
+
 ```
 
 This returns a manager that can access all US Applications where the first named applicant is "Google LLC." In addition to passing search parameters, you can also do other standard database-like

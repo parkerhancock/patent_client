@@ -1,11 +1,8 @@
-# Manager and Model API
+# API Documentation
+This section covers the detailed API
 
-```{eval-rst}
-.. autoclass:: patent_client.util.manager.Manager
-    :members:
-```
-
-```{eval-rst}
-.. autoclass:: patent_client.util.model.Model
-    :members:
+```{toctree}
+api/base
+api/uspto
+api/epo
 ```

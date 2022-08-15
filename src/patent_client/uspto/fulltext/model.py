@@ -9,6 +9,7 @@ from typing import *
 from patent_client import session
 from patent_client.util import Model
 from patent_client.util import one_to_one
+from ...util.base.related import get_model
 from patent_client.util.claims.parser import ClaimsParser
 
 
@@ -57,7 +58,7 @@ class PriorPublication(Model):
 
 @dataclass
 class USReference(Model):
-    date: str
+    #date: str
     first_named_inventor: str
     publication_number: str
 
@@ -65,7 +66,7 @@ class USReference(Model):
 @dataclass
 class ForeignReference(Model):
     publication_number: str
-    date: str
+    #date: str
     country_code: str
 
 
@@ -98,7 +99,7 @@ class Publication(Model):
     __manager__ = "patent_client.uspto.fulltext.base.manager.FullTextManager"
     publication_number: str
     kind_code: str
-    publication_date: str
+    publication_date: str = None
     title: str = None
 
     description: str = None
@@ -144,7 +145,9 @@ class Publication(Model):
     def parsed_claims(self):
         return ClaimsParser().parse(self.claims)
 
-    application = one_to_one("patent_client.uspto.peds.model.USApplication", appl_id="appl_id")
+    @property
+    def application(self) -> "patent_client.uspto.peds.model.USApplication":
+        return get_model("patent_client.uspto.peds.model.USApplication").objects.get(appl_id=self.appl_id)
 
 
 @dataclass
@@ -152,10 +155,10 @@ class PublicationResult(Model):
     seq: int
     publication_number: str
     title: str
-    publication = one_to_one(
-        "patent_client.uspto.fulltext.base.model.Publication",
-        publication_number="publication_number",
-    )
+
+    @property
+    def publication(self) -> "patent_client.uspto.fulltext.base.model.Publication":
+        return get_model("patent_client.uspto.fulltext.base.model.Publication").objects.get(publication_number=self.publication_number)
 
 
 @dataclass
