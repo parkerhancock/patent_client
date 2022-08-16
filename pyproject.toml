@@ -53,7 +53,8 @@ sphinx-design              = {optional=true, version=">=0.2"}
 sphinx-notfound-page       = {optional=true, version=">=0.8"}
 sphinxcontrib-apidoc       = {optional=true, version="^0.3"}
 sphinxcontrib-mermaid      = {optional=true, version="^0.7.1"}
-
+nbsphinx                   = {optional=true, version="^0.8.9"}
+IPython                    = {optional=true, version="^7.17.0"}
 
 
 [tool.poetry.dev-dependencies]
@@ -82,7 +83,7 @@ bump2version = "^1.0.1"
 # Documentation
 docs     = ["furo", "linkify-it-py", "myst-parser", "sphinx", "sphinx-autodoc-typehints",
             "sphinx-automodapi", "sphinx-copybutton", "sphinx-design", "sphinx-notfound-page",
-            "sphinxcontrib-apidoc", "sphinxext-opengraph", "sphinxcontrib-mermaid"]
+            "sphinxcontrib-apidoc", "sphinxext-opengraph", "sphinxcontrib-mermaid", "nbsphinx", "IPython"]
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
