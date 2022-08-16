@@ -116,7 +116,9 @@ class PtabProceeding(Model):
     @property
     def us_application(self) -> "ListManager[patent_client.uspto.peds.model.USApplication]":
         """The US Application provided by PEDS associated with the Proceeding"""
-        return get_model("patent_client.uspto.peds.model.USApplication").objects.get(appl_id=self.appl_id)
+        return get_model("patent_client.uspto.peds.model.USApplication").objects.get(
+            patent_number=self.respondent_patent_number
+        )
 
 
 @dataclass

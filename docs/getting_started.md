@@ -29,17 +29,27 @@ Python 3.6.5 (default, Jul 12 2018, 11:37:09)
 
 ```
 
-This will set up an empty settings file, located at **~/.iprc**. The IPRC file is a JSON object containing settings for the project.
+This will set up an empty settings file, located at **~/.patent_client_config.yaml**. The config file is a YAML file containing settings for the project.
 
-**Step 4:** Edit the IPRC file to contain your user key and secret. E.g.
+**Step 4:** Edit the config file to contain your user key and secret. E.g.
 
-```json
-{
-    "EpoOpenPatentServices": {
-        "ApiKey": "<Consumer Key Here>",
-        "Secret": "<Consumer Key Secret Here>"
-    }
-}
+```yaml
+DEFAULT:
+    BASE_DIR: ~/.patent_client
+    LOG_FILE: patent_client.log
+    LOG_LEVEL: INFO
+
+CACHE:
+    PATH: requests_cache.sqlite
+    MAX_AGE: "3 days"
+
+EPO:
+    API_KEY: <Key Here>
+    API_SECRET: <Secret Here>
+ITC:
+    USERNAME:
+    PASSWORD:
+
 ```
 
 **Step 5:** PROFIT! Every time you import a model that requires EPO OPS access, you will automatically be logged on using that key and secret.
@@ -49,8 +59,8 @@ This will set up an empty settings file, located at **~/.iprc**. The IPRC file i
 Alternatively, you can set the environment variables as:
 
 ```console
-EPO_KEY="<Consumer Key Here>"
-EPO_SECRET="<Consumer Key Secret Here>"
+PATENT_CLIENT__EPO_API_KEY="<Consumer Key Here>"
+PATENT_CLIENT__EPO_SECRET="<Consumer Key Secret Here>"
 ```
 
 ## Basic Use

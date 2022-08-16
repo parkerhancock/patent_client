@@ -3,6 +3,7 @@ from typing import *
 
 from patent_client.util import DefaultDict
 from patent_client.util.format import clean_whitespace
+from patent_client.util.json import ListField
 from patent_client.util.json import Schema
 from yankee.json.schema import fields as f
 
@@ -221,8 +222,8 @@ class AssignmentSchema(Schema):
         formatter=lambda x: x.replace(" (SEE DOCUMENT FOR DETAILS).", ""),
     )
     sequence_number = f.Int()
-    assignors = f.List(AssignorSchema, "assignors")
-    assignees = f.List(AssigneeSchema, "assignee")
+    assignors = ListField(AssignorSchema, "assignors")
+    assignees = ListField(AssigneeSchema, "assignee")
 
 
 class USApplicationSchema(Schema):
@@ -254,25 +255,25 @@ class USApplicationSchema(Schema):
     app_attr_dock_number = f.Str()
 
     # Assignments
-    assignments = f.List(AssignmentSchema)
+    assignments = ListField(AssignmentSchema)
 
     # Parties
-    inventors = f.List(InventorSchema)
-    applicants = f.List(ApplicantSchema)
-    transactions = f.List(TransactionSchema)
-    child_continuity = f.List(ChildSchema)
-    parent_continuity = f.List(ParentSchema)
-    pta_pte_tran_history = f.List(PtaPteHistorySchema)
+    inventors = ListField(InventorSchema)
+    applicants = ListField(ApplicantSchema)
+    transactions = ListField(TransactionSchema)
+    child_continuity = ListField(ChildSchema)
+    parent_continuity = ListField(ParentSchema)
+    pta_pte_tran_history = ListField(PtaPteHistorySchema)
     pta_pte_summary = PtaPteSummarySchema(data_key=False)
     correspondent = CorrespondentSchema(data_key=False)
-    attorneys = f.List(AttorneySchema, data_key="attrnyAddr")
-    foreign_priority = f.List(ForeignPrioritySchema)
+    attorneys = ListField(AttorneySchema, data_key="attrnyAddr")
+    foreign_priority = ListField(ForeignPrioritySchema)
 
 
 class PedsPageSchema(Schema):
     index_last_updated = f.Date("queryResults.indexLastUpdatedDate")
     num_found = f.Int("queryResults.searchResponse.response.numFound")
-    applications = f.List(USApplicationSchema, "queryResults.searchResponse.response.docs")
+    applications = ListField(USApplicationSchema, "queryResults.searchResponse.response.docs")
 
     def pre_load(self, obj):
         return json.loads(obj)

@@ -14,6 +14,8 @@ of documents. That will also prevent any issues with distributing this code. If 
 want hundreds or thousands of documents, please use [Google's Public Patents Data Sets](GPAT).
 :::
 
+[GPAT]: https://console.cloud.google.com/marketplace/partners/patents-public-data
+
 Patent Client provides an interface to the USPTO's Full Text databases.
 
 ## Basic Lookups
@@ -107,6 +109,6 @@ True
     :undoc-members:
 ```
 
-[GPAT]: https://console.cloud.google.com/marketplace/partners/patents-public-data
+
 [PATS]: http://patft.uspto.gov/netahtml/PTO/search-adv.htm
 [PUBS]: http://appft.uspto.gov/netahtml/PTO/search-adv.html
