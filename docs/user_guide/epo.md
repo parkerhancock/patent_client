@@ -1,6 +1,6 @@
 # European Patent Office
 
-First, read the [Introduction](/docs/user_guide/introduction.md) page to set up EPO OPS access.
+First, read the {doc}`/user_guide/introduction` page to set up EPO OPS access.
 
 ## Inpadoc
 
