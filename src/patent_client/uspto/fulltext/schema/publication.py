@@ -96,7 +96,7 @@ class KindCode(Schema):
     )
 
     def post_load(self, obj):
-        if obj["kind_code_label"] == "Kind Code":
+        if obj.get("kind_code_label", None) == "Kind Code":
             return obj["kind_code"]
         elif "pub_number" in obj:
             return "B2"

@@ -132,3 +132,11 @@ wherein the control system is configured to determine whether the predetermined 
         pat = Patent.objects.get("D645062")
         assert pat.title == "Gripping arm"
         assert pat.appl_id == "29380046"
+
+    def test_search_that_has_single_patent(self):
+        result = Patent.objects.filter(title="tennis", issue_date="2010-01-01->2010-02-27")
+        assert len(result) == 1
+        obj = result.first()
+        assert obj.seq == 1
+        assert obj.publication_number == "7658211"
+        assert obj.title == "Tennis ball recharging apparatus method"
