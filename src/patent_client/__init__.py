@@ -1,6 +1,8 @@
 # flake8: noqa
 import time
-from .version import __version__ # noqa
+
+from .version import __version__  # noqa
+
 start = time.time()
 from pathlib import Path
 from .settings import load_settings
