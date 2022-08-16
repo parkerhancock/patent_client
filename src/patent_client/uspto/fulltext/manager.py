@@ -5,9 +5,11 @@ import re
 import time
 from collections import defaultdict
 
+
 import lxml.etree as ET
 from dateutil.parser import parse as parse_dt
 from patent_client.util import Manager
+from patent_client.util.base.collections import ListManager
 
 from .schema.images import ImageHtmlSchema
 from .schema.images import ImageSchema
@@ -31,11 +33,12 @@ def rate_limit(func, delay=0.001):
 
 def standardize_date(input):
     if isinstance(input, datetime.date):
-        return input.strftime("%Y%m%d")
+        date = input
     elif isinstance(input, datetime.datetime):
-        return input.date().strftime("%Y%m%d")
+        date = input.date()
     else:
-        return parse_dt(input).date().strftime("%Y%m%d")
+        date = parse_dt(input).date()
+    return f"{date.month}/{date.day}/{date.year}"
 
 
 clean_text = lambda string: re.sub(r"\s+", " ", string).strip()
@@ -161,6 +164,14 @@ class FullTextManager(Manager):
             return list()
 
         tree = ET.HTML(response_text)
+        search_box = tree.xpath('.//form[@name="refine"]|.//input[@name="Refine"]')
+        if not search_box:
+            # The query resulted in a single match, which redirected to the document
+            result = self.__schema__.load(tree)
+            result_stub = self.result_model(seq=1, publication_number=result.publication_number, title=result.title)
+            self.num_results = 1
+            return ListManager([result_stub,])
+
         result = self.result_page_parser.load(tree)
         self.num_results = result.num_results
         return result.results
