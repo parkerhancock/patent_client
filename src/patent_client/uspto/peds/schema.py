@@ -3,7 +3,8 @@ from typing import *
 
 from patent_client.util import DefaultDict
 from patent_client.util.format import clean_whitespace
-from patent_client.util.json import Schema, ListField
+from patent_client.util.json import ListField
+from patent_client.util.json import Schema
 from yankee.json.schema import fields as f
 
 

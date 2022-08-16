@@ -5,7 +5,6 @@ import re
 import time
 from collections import defaultdict
 
-
 import lxml.etree as ET
 from dateutil.parser import parse as parse_dt
 from patent_client.util import Manager
@@ -170,7 +169,11 @@ class FullTextManager(Manager):
             result = self.__schema__.load(tree)
             result_stub = self.result_model(seq=1, publication_number=result.publication_number, title=result.title)
             self.num_results = 1
-            return ListManager([result_stub,])
+            return ListManager(
+                [
+                    result_stub,
+                ]
+            )
 
         result = self.result_page_parser.load(tree)
         self.num_results = result.num_results
