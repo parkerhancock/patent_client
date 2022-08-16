@@ -26,11 +26,3 @@ PtabProceeding.objects.filter(accorded_filing_from_date="2020-01-01")
 
 The syntax is a little odd, but this is how the underlying API works.
 This is a band-aid until [Django-style keyword accessors](https://docs.djangoproject.com/en/dev/ref/models/querysets/#id4). can be implemented.
-
-## Models
-
-```{eval-rst}
-.. automodule:: patent_client.uspto.ptab.model
-    :members:
-    :undoc-members:
-```

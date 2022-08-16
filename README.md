@@ -38,6 +38,17 @@ many common IP tasks
 
 * Free software: Apache Software License 2.0
 
+[DORM]: https://docs.djangoproject.com/en/4.0/topics/db/queries/
+[PANDAS]: https://pandas.pydata.org/docs/
+[requests-cache]: https://github.com/requests-cache/requests-cache
+[Assignment]: https://developer.uspto.gov/api-catalog/patent-assignment-search-beta
+[OPS]: http://ops.epo.org
+[PATFT]: http://http://patft.uspto.gov/
+[PEDS]: https://developer.uspto.gov/api-catalog/ped
+[PTAB]: https://developer.uspto.gov/api-catalog/ptab-api-v2
+[USPTO]: http://developer.uspto.gov
+
+
 ## Installation
 
 ```
@@ -108,12 +119,3 @@ Pull requests welcome!
 - [Python EPO OPS Client](https://github.com/55minutes/python-epo-ops-client)
 - [Google Public Patent Data](https://github.com/google/patents-public-data)
 
-[DORM]: https://docs.djangoproject.com/en/4.0/topics/db/queries/
-[PANDAS]: https://pandas.pydata.org/docs/
-[requests-cache]: https://github.com/requests-cache/requests-cache
-[Assignment]: https://developer.uspto.gov/api-catalog/patent-assignment-search-beta
-[OPS]: http://ops.epo.org
-[PATFT]: http://http://patft.uspto.gov/
-[PEDS]: https://developer.uspto.gov/api-catalog/ped
-[PTAB]: https://developer.uspto.gov/api-catalog/ptab-api-v2
-[USPTO]: http://developer.uspto.gov
