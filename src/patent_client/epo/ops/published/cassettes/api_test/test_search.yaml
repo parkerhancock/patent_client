@@ -11,9 +11,9 @@ interactions:
       Connection:
       - keep-alive
       User-Agent:
-      - Python Patent Clientbot/3.0.0 (parkerhancock@users.noreply.github.com)
+      - Python Patent Clientbot/3.0.3 (parkerhancock@users.noreply.github.com)
     method: GET
-    uri: http://ops.epo.org/3.2/rest-services/published-data/search?q=ti%3Dplastic&Range=1-100
+    uri: http://ops.epo.org/3.2/rest-services/published-data/search?Range=1-100&q=ti%3Dplastic
   response:
     body:
       string: "<?xml version=\"1.0\" encoding=\"UTF-8\"?><?xml-stylesheet type=\"text/xsl\"
@@ -21,6 +21,58 @@ interactions:
         xmlns:ops=\"http://ops.epo.org\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">\n
         \   <ops:biblio-search total-result-count=\"10000\">\n        <ops:query syntax=\"CQL\">ti
         = plastic</ops:query>\n        <ops:range begin=\"1\" end=\"100\"/>\n        <ops:search-result>\n
+        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"80865367\">\n
+        \               <document-id document-id-type=\"docdb\">\n                    <country>WO</country>\n
+        \                   <doc-number>2022166343</doc-number>\n                    <kind>A1</kind>\n
+        \               </document-id>\n            </ops:publication-reference>\n
+        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"75862064\">\n
+        \               <document-id document-id-type=\"docdb\">\n                    <country>WO</country>\n
+        \                   <doc-number>2022165995</doc-number>\n                    <kind>A1</kind>\n
+        \               </document-id>\n            </ops:publication-reference>\n
+        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"82740577\">\n
+        \               <document-id document-id-type=\"docdb\">\n                    <country>WO</country>\n
+        \                   <doc-number>2022165598</doc-number>\n                    <kind>A1</kind>\n
+        \               </document-id>\n            </ops:publication-reference>\n
+        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"74229716\">\n
+        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+        \                   <doc-number>2022251371</doc-number>\n                    <kind>A1</kind>\n
+        \               </document-id>\n            </ops:publication-reference>\n
+        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"81535380\">\n
+        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+        \                   <doc-number>2022250365</doc-number>\n                    <kind>A1</kind>\n
+        \               </document-id>\n            </ops:publication-reference>\n
+        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"81453654\">\n
+        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+        \                   <doc-number>2022255299</doc-number>\n                    <kind>A1</kind>\n
+        \               </document-id>\n            </ops:publication-reference>\n
+        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"71950697\">\n
+        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+        \                   <doc-number>2022251389</doc-number>\n                    <kind>A1</kind>\n
+        \               </document-id>\n            </ops:publication-reference>\n
+        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"74040061\">\n
+        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+        \                   <doc-number>2022251276</doc-number>\n                    <kind>A1</kind>\n
+        \               </document-id>\n            </ops:publication-reference>\n
+        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"82703559\">\n
+        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+        \                   <doc-number>2022250793</doc-number>\n                    <kind>A1</kind>\n
+        \               </document-id>\n            </ops:publication-reference>\n
+        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"81455270\">\n
+        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+        \                   <doc-number>2022250332</doc-number>\n                    <kind>A1</kind>\n
+        \               </document-id>\n            </ops:publication-reference>\n
+        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"76687403\">\n
+        \               <document-id document-id-type=\"docdb\">\n                    <country>AU</country>\n
+        \                   <doc-number>2020417058</doc-number>\n                    <kind>A1</kind>\n
+        \               </document-id>\n            </ops:publication-reference>\n
+        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"57965942\">\n
+        \               <document-id document-id-type=\"docdb\">\n                    <country>RS</country>\n
+        \                   <doc-number>63369</doc-number>\n                    <kind>B1</kind>\n
+        \               </document-id>\n            </ops:publication-reference>\n
+        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"69410921\">\n
+        \               <document-id document-id-type=\"docdb\">\n                    <country>CA</country>\n
+        \                   <doc-number>3159993</doc-number>\n                    <kind>A1</kind>\n
+        \               </document-id>\n            </ops:publication-reference>\n
         \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"82654750\">\n
         \               <document-id document-id-type=\"docdb\">\n                    <country>WO</country>\n
         \                   <doc-number>2022164460</doc-number>\n                    <kind>A1</kind>\n
@@ -369,58 +421,6 @@ interactions:
         \               <document-id document-id-type=\"docdb\">\n                    <country>GR</country>\n
         \                   <doc-number>1002842</doc-number>\n                    <kind>B</kind>\n
         \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"10942862\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>GR</country>\n
-        \                   <doc-number>1002959</doc-number>\n                    <kind>B</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"10942861\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>GR</country>\n
-        \                   <doc-number>1002872</doc-number>\n                    <kind>B</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"10942860\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>GR</country>\n
-        \                   <doc-number>1002871</doc-number>\n                    <kind>B</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"10942546\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>GR</country>\n
-        \                   <doc-number>960100386</doc-number>\n                    <kind>A</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"10942465\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>GR</country>\n
-        \                   <doc-number>1002745</doc-number>\n                    <kind>B</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"10942039\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>GR</country>\n
-        \                   <doc-number>1002542</doc-number>\n                    <kind>B</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"10942038\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>GR</country>\n
-        \                   <doc-number>1002528</doc-number>\n                    <kind>B</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"10942037\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>GR</country>\n
-        \                   <doc-number>1002816</doc-number>\n                    <kind>B</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"10941899\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>GR</country>\n
-        \                   <doc-number>1002267</doc-number>\n                    <kind>B</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"10941827\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>GR</country>\n
-        \                   <doc-number>950100098</doc-number>\n                    <kind>A</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"10941604\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>GR</country>\n
-        \                   <doc-number>940100463</doc-number>\n                    <kind>A</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"10941571\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>GR</country>\n
-        \                   <doc-number>1002447</doc-number>\n                    <kind>B</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"10941569\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>GR</country>\n
-        \                   <doc-number>1002627</doc-number>\n                    <kind>B</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
         \       </ops:search-result>\n    </ops:biblio-search>\n</ops:world-patent-data>"
     headers:
       Access-Control-Allow-Headers:
@@ -434,13 +434,13 @@ interactions:
       Connection:
       - keep-alive
       Content-Length:
-      - '34625'
+      - '34663'
       Content-Type:
       - application/xml;charset=utf-8
       Date:
-      - Tue, 09 Aug 2022 16:24:59 GMT
+      - Tue, 16 Aug 2022 02:12:08 GMT
       ETag:
-      - '"0055fc24370a8903fe47dcd3bcd018ff5"'
+      - '"07ebcccb92866540584cd215961b71dfd"'
       Pragma:
       - no-cache
       Server:
@@ -452,113 +452,18 @@ interactions:
       X-API:
       - ops-v3.2
       X-EPO-Client-IP:
-      - 170.55.186.235
-      X-EPO-Forwarded:
-      - '[170.55.186.235]'
-      X-Elapsed-Time:
-      - '62'
-      X-IndividualQuotaPerHour-Used:
-      - '274880'
-      X-RegisteredQuotaPerWeek-Used:
-      - '988184'
-      X-Throttling-Control:
-      - busy (images=green:100, inpadoc=green:45, other=green:1000, retrieval=green:100,
-        search=green:15)
-    status:
-      code: 200
-      message: OK
-- request:
-    body: q=ti%3Dplastic&Range=1-100
-    headers:
-      Accept:
-      - '*/*'
-      Accept-Encoding:
-      - gzip, deflate
-      Authorization:
-      - REDACTED
-      Connection:
-      - keep-alive
-      Content-Length:
-      - '26'
-      Content-Type:
-      - application/x-www-form-urlencoded
-      User-Agent:
-      - Python Patent Clientbot/3.0.2 (parkerhancock@users.noreply.github.com)
-    method: POST
-    uri: http://ops.epo.org/3.2/rest-services/published-data/search
-  response:
-    body:
-      string: "<error><code>400</code><message>invalid_access_token</message><description>Access
-        token is invalid</description>\n\t\t\t\t</error>\n\t\t\t"
-    headers:
-      Access-Control-Allow-Headers:
-      - Authorization
-      Access-Control-Allow-Methods:
-      - POST
-      Access-Control-Allow-Origin:
-      - '*'
-      Connection:
-      - keep-alive
-      Content-Length:
-      - '129'
-      Content-Type:
-      - application/xml
-      Date:
-      - Mon, 15 Aug 2022 19:24:24 GMT
-      WWW-Authenticate:
-      - 'Bearer realm="null",error="invalid_token",error_description="keymanagement.service.invalid_access_token:
-        Invalid Access Token"'
-    status:
-      code: 400
-      message: Bad Request
-- request:
-    body: grant_type=client_credentials
-    headers:
-      Accept:
-      - '*/*'
-      Accept-Encoding:
-      - gzip, deflate
-      Authorization:
-      - REDACTED
-      Connection:
-      - keep-alive
-      Content-Length:
-      - '29'
-      Content-Type:
-      - application/x-www-form-urlencoded
-      User-Agent:
-      - Python Patent Clientbot/3.0.2 (parkerhancock@users.noreply.github.com)
-    method: POST
-    uri: https://ops.epo.org/3.2/auth/accesstoken
-  response:
-    body:
-      string: "{\n  \"refresh_token_expires_in\": \"0\",\n  \"api_product_list\":
-        \"[ops-prod]\",\n  \"api_product_list_json\": [\n    \"ops-prod\"\n  ],\n
-        \ \"organization_name\": \"epo\",\n  \"developer.email\": \"parker.hancock@protonmail.com\",\n
-        \ \"token_type\": \"BearerToken\",\n  \"issued_at\": \"1660591465633\",\n
-        \ \"client_id\": \"XRSKXZUZjTWDfOHvig79oYUn4IqMf2bt\",\n  \"access_token\":
-        \"atsY6earGoOmCuST2HUoGL7s9KGM\",\n  \"application_name\": \"a2dd7045-d0a4-4046-be5f-4be39eb8a7ec\",\n
-        \ \"scope\": \"core\",\n  \"expires_in\": \"1199\",\n  \"refresh_count\":
-        \"0\",\n  \"status\": \"approved\"\n}"
-    headers:
-      Access-Control-Allow-Headers:
-      - Authorization
-      Access-Control-Allow-Methods:
-      - POST
-      Access-Control-Allow-Origin:
-      - '*'
-      Connection:
-      - keep-alive
-      Content-Length:
-      - '523'
-      Content-Type:
-      - application/json
-      Date:
-      - Mon, 15 Aug 2022 19:24:25 GMT
-      X-EPO-Client-IP:
       - 104.54.160.230
       X-EPO-Forwarded:
       - '[104.54.160.230]'
+      X-Elapsed-Time:
+      - '118'
+      X-IndividualQuotaPerHour-Used:
+      - '234454'
+      X-RegisteredQuotaPerWeek-Used:
+      - '1303544'
+      X-Throttling-Control:
+      - overloaded (images=green:50, inpadoc=green:30, other=green:1000, retrieval=green:50,
+        search=green:5)
     status:
       code: 200
       message: OK

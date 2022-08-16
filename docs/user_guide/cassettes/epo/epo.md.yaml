@@ -6,12 +6,104 @@ interactions:
       - '*/*'
       Accept-Encoding:
       - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - Python Patent Clientbot/3.0.3 (parkerhancock@users.noreply.github.com)
+    method: GET
+    uri: http://ops.epo.org/3.2/rest-services/published-data/publication/docdb/EP1000000A1/biblio
+  response:
+    body:
+      string: "<error><code>403</code><message>This request has been rejected due
+        to the violation of Fair Use policy</message><moreInfo>http://www.epo.org/searching/free/espacenet/fair-use.html</moreInfo>\n\t\t\t\t</error>\n\t\t\t"
+    headers:
+      Access-Control-Allow-Headers:
+      - Authorization
+      Access-Control-Allow-Methods:
+      - POST
+      Access-Control-Allow-Origin:
+      - '*'
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '207'
+      Content-Type:
+      - application/xml
+      Date:
+      - Tue, 16 Aug 2022 02:11:13 GMT
+      X-EPO-Client-IP:
+      - 104.54.160.230
+      X-EPO-Forwarded:
+      - '[104.54.160.230]'
+      X-Rejection-Reason:
+      - AnonymousQuotaPerDay
+    status:
+      code: 403
+      message: Forbidden
+- request:
+    body: grant_type=client_credentials
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Authorization:
+      - REDACTED
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '29'
+      Content-Type:
+      - application/x-www-form-urlencoded
+      User-Agent:
+      - Python Patent Clientbot/3.0.3 (parkerhancock@users.noreply.github.com)
+    method: POST
+    uri: https://ops.epo.org/3.2/auth/accesstoken
+  response:
+    body:
+      string: "{\n  \"refresh_token_expires_in\": \"0\",\n  \"api_product_list\":
+        \"[ops-prod]\",\n  \"api_product_list_json\": [\n    \"ops-prod\"\n  ],\n
+        \ \"organization_name\": \"epo\",\n  \"developer.email\": \"parker.hancock@protonmail.com\",\n
+        \ \"token_type\": \"BearerToken\",\n  \"issued_at\": \"1660615874093\",\n
+        \ \"client_id\": \"XRSKXZUZjTWDfOHvig79oYUn4IqMf2bt\",\n  \"access_token\":
+        \"4FW4Ge5QWxG3utfmu4zzBnxXt5E3\",\n  \"application_name\": \"a2dd7045-d0a4-4046-be5f-4be39eb8a7ec\",\n
+        \ \"scope\": \"core\",\n  \"expires_in\": \"1199\",\n  \"refresh_count\":
+        \"0\",\n  \"status\": \"approved\"\n}"
+    headers:
+      Access-Control-Allow-Headers:
+      - Authorization
+      Access-Control-Allow-Methods:
+      - POST
+      Access-Control-Allow-Origin:
+      - '*'
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '523'
+      Content-Type:
+      - application/json
+      Date:
+      - Tue, 16 Aug 2022 02:11:14 GMT
+      X-EPO-Client-IP:
+      - 104.54.160.230
+      X-EPO-Forwarded:
+      - '[104.54.160.230]'
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
       Authorization:
       - REDACTED
       Connection:
       - keep-alive
       User-Agent:
-      - Python Patent Clientbot/3.0.2 (parkerhancock@users.noreply.github.com)
+      - Python Patent Clientbot/3.0.3 (parkerhancock@users.noreply.github.com)
     method: GET
     uri: http://ops.epo.org/3.2/rest-services/published-data/publication/docdb/EP1000000A1/biblio
   response:
@@ -176,7 +268,7 @@ interactions:
       Content-Type:
       - application/xml;charset=utf-8
       Date:
-      - Mon, 15 Aug 2022 21:37:06 GMT
+      - Tue, 16 Aug 2022 02:11:14 GMT
       ETag:
       - '"0b35c4dc8a4aec55f54681e64f7b7edf6"'
       Pragma:
@@ -194,14 +286,14 @@ interactions:
       X-EPO-Forwarded:
       - '[104.54.160.230]'
       X-Elapsed-Time:
-      - '2'
+      - '4'
       X-IndividualQuotaPerHour-Used:
-      - '31406'
+      - '13035'
       X-RegisteredQuotaPerWeek-Used:
-      - '972702'
+      - '1082125'
       X-Throttling-Control:
-      - busy (images=green:100, inpadoc=green:45, other=green:1000, retrieval=green:100,
-        search=green:15)
+      - overloaded (images=green:50, inpadoc=green:30, other=green:1000, retrieval=green:50,
+        search=green:5)
     status:
       code: 200
       message: OK
@@ -217,7 +309,7 @@ interactions:
       Connection:
       - keep-alive
       User-Agent:
-      - Python Patent Clientbot/3.0.2 (parkerhancock@users.noreply.github.com)
+      - Python Patent Clientbot/3.0.3 (parkerhancock@users.noreply.github.com)
     method: GET
     uri: http://ops.epo.org/3.2/rest-services/published-data/publication/docdb/EP1000000A1/biblio
   response:
@@ -382,7 +474,7 @@ interactions:
       Content-Type:
       - application/xml;charset=utf-8
       Date:
-      - Mon, 15 Aug 2022 21:37:07 GMT
+      - Tue, 16 Aug 2022 02:11:14 GMT
       ETag:
       - '"0b35c4dc8a4aec55f54681e64f7b7edf6"'
       Pragma:
@@ -400,14 +492,14 @@ interactions:
       X-EPO-Forwarded:
       - '[104.54.160.230]'
       X-Elapsed-Time:
-      - '0'
+      - '3'
       X-IndividualQuotaPerHour-Used:
-      - '44441'
+      - '26070'
       X-RegisteredQuotaPerWeek-Used:
-      - '985737'
+      - '1095160'
       X-Throttling-Control:
-      - busy (images=green:100, inpadoc=green:45, other=green:1000, retrieval=green:100,
-        search=green:15)
+      - overloaded (images=green:50, inpadoc=green:30, other=green:1000, retrieval=green:50,
+        search=green:5)
     status:
       code: 200
       message: OK
@@ -423,7 +515,7 @@ interactions:
       Connection:
       - keep-alive
       User-Agent:
-      - Python Patent Clientbot/3.0.2 (parkerhancock@users.noreply.github.com)
+      - Python Patent Clientbot/3.0.3 (parkerhancock@users.noreply.github.com)
     method: GET
     uri: http://ops.epo.org/3.2/rest-services/family/publication/docdb/EP1000000A1
   response:
@@ -541,7 +633,7 @@ interactions:
       Content-Type:
       - application/xml;charset=utf-8
       Date:
-      - Mon, 15 Aug 2022 21:37:07 GMT
+      - Tue, 16 Aug 2022 02:11:14 GMT
       ETag:
       - '"040f886b3fa3aa7f21e5ba45a36bbb04e"'
       Pragma:
@@ -559,14 +651,14 @@ interactions:
       X-EPO-Forwarded:
       - '[104.54.160.230]'
       X-Elapsed-Time:
-      - '276'
+      - '0'
       X-IndividualQuotaPerHour-Used:
-      - '53294'
+      - '34923'
       X-RegisteredQuotaPerWeek-Used:
-      - '994590'
+      - '1104013'
       X-Throttling-Control:
-      - busy (images=green:100, inpadoc=green:45, other=green:1000, retrieval=green:100,
-        search=green:15)
+      - overloaded (images=green:50, inpadoc=green:30, other=green:1000, retrieval=green:50,
+        search=green:5)
     status:
       code: 200
       message: OK
@@ -582,7 +674,7 @@ interactions:
       Connection:
       - keep-alive
       User-Agent:
-      - Python Patent Clientbot/3.0.2 (parkerhancock@users.noreply.github.com)
+      - Python Patent Clientbot/3.0.3 (parkerhancock@users.noreply.github.com)
     method: GET
     uri: http://ops.epo.org/3.2/rest-services/published-data/publication/docdb/EP1000000A1/images
   response:
@@ -639,7 +731,7 @@ interactions:
       Content-Type:
       - application/xml;charset=utf-8
       Date:
-      - Mon, 15 Aug 2022 21:37:08 GMT
+      - Tue, 16 Aug 2022 02:11:15 GMT
       ETag:
       - '"00c801fe5e95e5d7ed2c3d1b4c9f5d360"'
       Pragma:
@@ -657,14 +749,14 @@ interactions:
       X-EPO-Forwarded:
       - '[104.54.160.230]'
       X-Elapsed-Time:
-      - '339'
+      - '0'
       X-IndividualQuotaPerHour-Used:
-      - '56352'
+      - '37981'
       X-RegisteredQuotaPerWeek-Used:
-      - '997648'
+      - '1107071'
       X-Throttling-Control:
-      - busy (images=green:100, inpadoc=green:45, other=green:1000, retrieval=green:100,
-        search=green:15)
+      - overloaded (images=green:50, inpadoc=green:30, other=green:1000, retrieval=green:50,
+        search=green:5)
     status:
       code: 200
       message: OK
@@ -680,7 +772,7 @@ interactions:
       Connection:
       - keep-alive
       User-Agent:
-      - Python Patent Clientbot/3.0.2 (parkerhancock@users.noreply.github.com)
+      - Python Patent Clientbot/3.0.3 (parkerhancock@users.noreply.github.com)
     method: GET
     uri: http://ops.epo.org/3.2/rest-services/published-data/search?Range=1-100&q=pa%3D%22Google+LLC%22
   response:
@@ -1107,7 +1199,7 @@ interactions:
       Content-Type:
       - application/xml;charset=utf-8
       Date:
-      - Mon, 15 Aug 2022 21:37:08 GMT
+      - Tue, 16 Aug 2022 02:11:15 GMT
       ETag:
       - '"0cabe3d3eb91d671d2970f0e779598085"'
       Pragma:
@@ -1125,14 +1217,14 @@ interactions:
       X-EPO-Forwarded:
       - '[104.54.160.230]'
       X-Elapsed-Time:
-      - '141'
+      - '152'
       X-IndividualQuotaPerHour-Used:
-      - '91052'
+      - '72681'
       X-RegisteredQuotaPerWeek-Used:
-      - '1032348'
+      - '1141771'
       X-Throttling-Control:
-      - busy (images=green:100, inpadoc=green:45, other=green:1000, retrieval=green:100,
-        search=green:15)
+      - overloaded (images=green:50, inpadoc=green:30, other=green:1000, retrieval=green:50,
+        search=green:5)
     status:
       code: 200
       message: OK
