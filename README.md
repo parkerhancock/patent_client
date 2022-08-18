@@ -119,4 +119,5 @@ Pull requests welcome!
 - [Python EPO OPS Client](https://github.com/55minutes/python-epo-ops-client)
 - [Google Public Patent Data](https://github.com/google/patents-public-data)
 - [PatentsView API Wrapper](https://github.com/mikeym88/PatentsView-API-Wrapper)
+- [USPTO Scrapy Scraper](https://github.com/blazers08/USPTO)
 
