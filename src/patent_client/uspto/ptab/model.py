@@ -1,13 +1,16 @@
 import datetime
 from dataclasses import dataclass
 from dataclasses import field
+from fileinput import filename
 from typing import *
 
 from patent_client.util import Model
 from patent_client.util.base.collections import ListManager
 
 from ...util.base.related import get_model
-
+from patent_client import session
+from pathlib import Path
+import re
 
 @dataclass
 class AdditionalRespondent(Model):
@@ -120,6 +123,7 @@ class PtabProceeding(Model):
             patent_number=self.respondent_patent_number
         )
 
+fname_re = re.compile(r"[<>:\"/\|?*]")
 
 @dataclass
 class PtabDocument(Model):
@@ -140,6 +144,20 @@ class PtabDocument(Model):
         return get_model("patent_client.uspto.ptab.model.PtabProceeding").objects.get(
             proceeding_number=self.proceeding_number
         )
+
+    def download(self, path="."):
+        name, ext = self.document_name.rsplit(".", 1)
+        name = name[:40] + ext
+        filename = f"[{self.document_number}] {self.document_filing_date.isoformat()} - {name}"
+        filename = filename.encode(encoding="ascii", errors="ignore").decode("ascii")
+        filename = fname_re.sub(filename, "")
+        out_path = Path(path) / filename
+        with session.get(f"https://developer.uspto.gov/ptab-api/documents/{self.document_identifier}/download") as r:
+            r.raise_for_status()
+            with out_path.open("wb") as f:
+                for chunk in r.iter_content(chunk_size=8192):
+                    f.write(chunk)
+    
 
 
 @dataclass
