@@ -5,7 +5,7 @@ little bit helps, and credit will always be given.
 
 ## Bug reports
 
-When [reporting a bug](https://github.com/parkerhancock/python-ip/issues) please include:
+When [reporting a bug](https://github.com/parkerhancock/patent_client/issues) please include:
 
 > - Your operating system name and version.
 > - Any details about your local setup that might be helpful in troubleshooting.
@@ -19,7 +19,7 @@ articles, and such.
 
 ## Feature requests and feedback
 
-The best way to send feedback is to file an issue at <https://github.com/parkerhancock/python-ip/issues>.
+The best way to send feedback is to file an issue at <https://github.com/parkerhancock/patent_client/issues>.
 
 If you are proposing a feature:
 
@@ -29,18 +29,44 @@ If you are proposing a feature:
 
 ## Development
 
-To set up `python-ip` for local development:
+To set up `patent_client` for local development:
 
-1. Fork [python-ip](https://github.com/parkerhancock/python-ip)
+1. Fork [patent_client](https://github.com/parkerhancock/patent_client)
    (look for the "Fork" button).
 
 2. Clone your fork locally:
 
    ```
-   git clone git@github.com:your_name_here/python-ip.git
+   git clone git@github.com:your_name_here/patent_client.git
    ```
 
-3. Create a branch for local development:
+3. Install [Poetry](https://python-poetry.org/docs/#installation) if you don't have it already, and 
+   then create a virtual environment / install dependencies by running:
+
+   ```
+   poetry install
+   ```
+
+   If you want to develop the docs, add the optional documentation dependencies:
+
+   ```
+   poetry install -E docs
+   ```
+
+4. Install [pre-commit](https://pre-commit.com/) if you don't have it already, and install the 
+   pre-commit hooks with:
+
+   ```
+   pre-commit install
+   ```
+
+5. Run the test suite to confirm everything is working with:
+
+   ```
+   poetry run pytest
+   ```
+
+6. Create a branch for local development:
 
    ```
    git checkout -b name-of-your-bugfix-or-feature
@@ -48,13 +74,7 @@ To set up `python-ip` for local development:
 
    Now you can make your changes locally.
 
-4. When you're done making changes, run all the checks, doc builder and spell checker with [tox](http://tox.readthedocs.io/en/latest/install.html) one command:
-
-   ```
-   tox
-   ```
-
-5. Commit your changes and push your branch to GitHub:
+7. Commit your changes and push your branch to GitHub:
 
    ```
    git add .
@@ -62,7 +82,7 @@ To set up `python-ip` for local development:
    git push origin name-of-your-bugfix-or-feature
    ```
 
-6. Submit a pull request through the GitHub website.
+8. Submit a pull request through the GitHub website.
 
 ### Pull Request Guidelines
 
@@ -70,26 +90,26 @@ If you need some code review or feedback while you're developing the code just m
 
 For merging, you should:
 
-1. Include passing tests (run `tox`) [^id2].
-2. Update documentation when there's new API, functionality etc.
-3. Add a note to `CHANGELOG.rst` about the changes.
-4. Add yourself to `AUTHORS.rst`.
-
-[^id2]: If you don't have all the necessary python versions available locally you can rely on Travis - it will
-    [run the tests](https://travis-ci.org/parkerhancock/python-ip/pull_requests) for each change you add in the pull request.
-
-    It will be slower though ...
+1. Update documentation when there's new API, functionality etc.
+2. Add a note to `CHANGELOG.rst` about the changes.
+3. Add yourself to `AUTHORS.rst`.
 
 ### Tips
 
-To run a subset of tests:
+To avoid having to prefix commands with `poetry run`, create a shell inside the virtualenv with:
 
 ```
-tox -e envname -- pytest -k test_myfeature
+poetry shell
 ```
 
-To run all the test environments in *parallel* (you need to `pip install detox`):
+To run a subset of tests, either call pytest with the test file, or use a keyword:
 
 ```
-detox
+poetry run pytest /path/to/test/file.py
+```
+
+OR
+
+```
+poetry run pytest -k "class or function name"
 ```
