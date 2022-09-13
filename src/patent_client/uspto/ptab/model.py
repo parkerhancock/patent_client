@@ -148,7 +148,7 @@ class PtabDocument(Model):
     def download(self, path="."):
         name, ext = self.document_name.rsplit(".", 1)
         name = name[:100] + "." + ext
-        filename = f"[{self.document_number}] {self.document_filing_date.isoformat()} - {name}"
+        filename = f"[{int(self.document_number).rjust(4, '0')}] {self.document_filing_date.isoformat()} - {name}"
         filename = filename.encode(encoding="ascii", errors="ignore").decode("ascii")
         filename = fname_re.sub("", filename)
         out_path = Path(path) / filename
