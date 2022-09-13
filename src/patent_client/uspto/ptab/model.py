@@ -147,10 +147,10 @@ class PtabDocument(Model):
 
     def download(self, path="."):
         name, ext = self.document_name.rsplit(".", 1)
-        name = name[:40] + ext
+        name = name[:100] + "." + ext
         filename = f"[{self.document_number}] {self.document_filing_date.isoformat()} - {name}"
         filename = filename.encode(encoding="ascii", errors="ignore").decode("ascii")
-        filename = fname_re.sub(filename, "")
+        filename = fname_re.sub("", filename)
         out_path = Path(path) / filename
         with session.get(f"https://developer.uspto.gov/ptab-api/documents/{self.document_identifier}/download") as r:
             r.raise_for_status()
