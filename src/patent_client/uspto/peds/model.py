@@ -249,7 +249,7 @@ class USApplication(Model):
     @property
     def patent(self) -> "Optional[patent_client.uspto.fulltext.patent.model.Patent]":
         """Fulltext version of the patent - If Available"""
-        return get_model("patent_client.uspto.fulltext.patent.model.Patent", publication_number=self.patent_number)
+        return get_model("patent_client.uspto.fulltext.patent.model.Patent").objects.get(publication_number=self.patent_number)
 
     @property
     def publication(self) -> "Optional[patent_client.uspto.fulltext.published_application.model.PublishedApplication]":
