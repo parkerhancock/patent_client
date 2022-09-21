@@ -18,6 +18,12 @@ class Collection:
     # def __len__(self):
     #    return len(self.iterable)
 
+    def len(self):
+        return len(self)
+
+    def count(self):
+        return len(self)
+
     def __repr__(self):
         if hasattr(self, "iterable"):
             return f"Collection({repr(self.iterable)})"
