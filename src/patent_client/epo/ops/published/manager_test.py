@@ -1,5 +1,7 @@
+import pytest
 from .model.search import Inpadoc
-
+from ..session import OpsAuthenticationError, session
+from patent_client import SETTINGS
 
 class TestPublished:
     def test_inpadoc_manager(self):
@@ -41,6 +43,13 @@ class TestPublished:
         result = Inpadoc.objects.get("JP2005533465A").biblio
         assert result.title == None
 
-    def test_issue_76(self):
+    def test_issue_76_no_credential(self):
+        key = session.key
+        session.key = None
+        with pytest.raises(OpsAuthenticationError):
+            pub = Inpadoc.objects.get('EP3082535A1')
+        session.key = key
+
+    def test_issue_76_with_credential(self):
         pub = Inpadoc.objects.get('EP3082535A1')
-        breakpoint()
+        assert pub.biblio.title == "AUTOMATIC FLUID DISPENSER"
