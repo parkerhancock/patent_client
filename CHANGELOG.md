@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.0.5 (2022-11-17)
+
+- Remedied issue where EPO occasionally can't find the legal code database by including a fallback code file
+
 ## 3.0.1 (2022-08-09)
 
 - Released new major version. Will try to keep this somewhat updated!
