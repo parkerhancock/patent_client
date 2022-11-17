@@ -25,6 +25,7 @@ def generate_legal_code_db():
     current = has_current_spreadsheet()
     if current:
         logger.debug("Legal Code Database is Current - skipping database creation")
+        return
     else:
         logger.debug("Legal Code Database is out of date - creating legal code database")
         path = get_spreadsheet()
@@ -50,15 +51,19 @@ def get_spreadsheet():
     response = session.get(url)
     response.raise_for_status()
     tree = ET.HTML(response.text)
-    excel_url = tree.xpath('.//a[contains(@href, "legal_code_descriptions")]/@href')[0]
-    out_path = dir / excel_url.split("/")[-1]
-    if out_path.exists():
+    try:
+        excel_url = tree.xpath('.//*[contains(@href, "legal_code_descriptions")][1]/@href')[0]
+        out_path = dir / excel_url.split("/")[-1]
+        if out_path.exists():
+            return out_path
+        response = session.get(excel_url, stream=True)
+        with out_path.open("wb") as f:
+            for chunk in response.iter_content(chunk_size=8192):
+                f.write(chunk)
         return out_path
-    response = session.get(excel_url, stream=True)
-    with out_path.open("wb") as f:
-        for chunk in response.iter_content(chunk_size=8192):
-            f.write(chunk)
-    return out_path
+    except IndexError:
+        logger.debug("Could not find live code file - falling back to default dated 2022-11-12")
+        return Path(__file__).parent / "legal_code_descriptions_20221112.xlsx"
 
 
 def create_code_database(excel_path):

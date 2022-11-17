@@ -124,9 +124,9 @@ class ListManager(list, Collection):
 
 
 class ValuesManager(Collection):
-    def __init__(self, manager, *fields, **kw_fields):
+    def __init__(self, manager, *arg_fields, fields=dict(), **kw_fields):
         self.manager = manager
-        self.fields = {**{k: k for k in fields}, **kw_fields}
+        self.fields = {**{k: k for k in arg_fields}, **kw_fields, **fields}
 
     def __iter__(self):
         for item in self.manager:

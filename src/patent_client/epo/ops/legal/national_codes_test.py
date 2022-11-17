@@ -10,5 +10,4 @@ def stub_date():
 def test_legal_codes():
     dt = national_codes.current_date
     national_codes.current_date = stub_date
-    national_codes.generate_legal_code_db()
     national_codes.current_date = dt
