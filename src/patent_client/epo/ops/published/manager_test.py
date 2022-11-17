@@ -40,3 +40,7 @@ class TestPublished:
     def test_issue_41(self):
         result = Inpadoc.objects.get("JP2005533465A").biblio
         assert result.title == None
+
+    def test_issue_76(self):
+        pub = Inpadoc.objects.get('EP3082535A1')
+        breakpoint()
