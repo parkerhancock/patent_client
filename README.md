@@ -43,7 +43,7 @@ many common IP tasks
 [requests-cache]: https://github.com/requests-cache/requests-cache
 [Assignment]: https://developer.uspto.gov/api-catalog/patent-assignment-search-beta
 [OPS]: http://ops.epo.org
-[PATFT]: http://http://patft.uspto.gov/
+[PATFT]: http://patft.uspto.gov/
 [PEDS]: https://developer.uspto.gov/api-catalog/ped
 [PTAB]: https://developer.uspto.gov/api-catalog/ptab-api-v2
 [USPTO]: http://developer.uspto.gov
