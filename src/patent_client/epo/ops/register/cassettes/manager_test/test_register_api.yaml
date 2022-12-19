@@ -1,0 +1,195 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - Python Patent Clientbot/3.0.5 (parkerhancock@users.noreply.github.com)
+    method: GET
+    uri: http://ops.epo.org/3.2/rest-services/register/search?Range=1-100&q=EP1000000
+  response:
+    body:
+      string: "<error><code>403</code><message>This request has been rejected due
+        to the violation of Fair Use policy</message><moreInfo>https://www.epo.org/service-support/ordering/fair-use.html</moreInfo>\n\t\t\t\t</error>\n\t\t\t"
+    headers:
+      Access-Control-Allow-Headers:
+      - Authorization
+      Access-Control-Allow-Methods:
+      - POST
+      Access-Control-Allow-Origin:
+      - '*'
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '208'
+      Content-Type:
+      - application/xml
+      Date:
+      - Thu, 17 Nov 2022 16:49:54 GMT
+      X-EPO-Client-IP:
+      - 104.54.160.230
+      X-EPO-Forwarded:
+      - '[104.54.160.230]'
+      X-Rejection-Reason:
+      - AnonymousQuotaPerDay
+    status:
+      code: 403
+      message: Forbidden
+- request:
+    body: grant_type=client_credentials
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Authorization:
+      - REDACTED
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '29'
+      Content-Type:
+      - application/x-www-form-urlencoded
+      User-Agent:
+      - Python Patent Clientbot/3.0.5 (parkerhancock@users.noreply.github.com)
+    method: POST
+    uri: https://ops.epo.org/3.2/auth/accesstoken
+  response:
+    body:
+      string: "{\n  \"refresh_token_expires_in\": \"0\",\n  \"api_product_list\":
+        \"[ops-prod]\",\n  \"api_product_list_json\": [\n    \"ops-prod\"\n  ],\n
+        \ \"organization_name\": \"epo\",\n  \"developer.email\": \"parker.hancock@protonmail.com\",\n
+        \ \"token_type\": \"BearerToken\",\n  \"issued_at\": \"1668703795496\",\n
+        \ \"client_id\": \"wVi6ni5GUZZ3BJqAfLGJb4KPGcYxRktw\",\n  \"access_token\":
+        \"iawiyQlpxhXtCUI1MH5QfaFRt7YA\",\n  \"application_name\": \"8654da0d-5e44-4ea3-addc-e555eff4aee6\",\n
+        \ \"scope\": \"core\",\n  \"expires_in\": \"1199\",\n  \"refresh_count\":
+        \"0\",\n  \"status\": \"approved\"\n}"
+    headers:
+      Access-Control-Allow-Headers:
+      - Authorization
+      Access-Control-Allow-Methods:
+      - POST
+      Access-Control-Allow-Origin:
+      - '*'
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '523'
+      Content-Type:
+      - application/json
+      Date:
+      - Thu, 17 Nov 2022 16:49:55 GMT
+      X-EPO-Client-IP:
+      - 104.54.160.230
+      X-EPO-Forwarded:
+      - '[104.54.160.230]'
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Authorization:
+      - REDACTED
+      Connection:
+      - keep-alive
+      User-Agent:
+      - Python Patent Clientbot/3.0.5 (parkerhancock@users.noreply.github.com)
+    method: GET
+    uri: http://ops.epo.org/3.2/rest-services/register/search?Range=1-100&q=EP1000000
+  response:
+    body:
+      string: "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><?xml-stylesheet
+        type='text/xsl' href='/3.2/style/rplus.xsl' ?>\n<ops:world-patent-data xmlns:ops=\"http://ops.epo.org\"
+        xmlns:reg=\"http://www.epo.org/register\" xmlns:xlink=\"http://www.w3.org/1999/xlink\"
+        xmlns:cpc=\"http://www.epo.org/cpcexport\" xmlns:cpcdef=\"http://www.epo.org/cpcdefinition\">\n
+        \   <ops:register-search total-result-count=\"1\">\n        <ops:query syntax=\"CQL\">EP1000000</ops:query>\n
+        \       <ops:range begin=\"1\" end=\"100\"/>\n        <reg:register-documents
+        produced-by=\"RO\">\n            <reg:register-document produced-by=\"RO\">\n
+        \               <reg:ep-patent-statuses>\n                    <reg:ep-patent-status
+        change-date=\"\" status-code=\"\"/>\n                </reg:ep-patent-statuses>\n
+        \               <reg:bibliographic-data>\n                    <reg:publication-reference>\n
+        \                       <reg:document-id>\n                            <reg:country>EP</reg:country>\n
+        \                           <reg:doc-number>1000000</reg:doc-number>\n                            <reg:date>20000517</reg:date>\n
+        \                       </reg:document-id>\n                    </reg:publication-reference>\n
+        \                   <reg:classifications-ipcr>\n                        <reg:classification-ipcr
+        sequence=\"CLASSIFICATION_1\">\n                            <reg:text>B28B5/02;;
+        B28B7/00;; B28B1/29</reg:text>\n                        </reg:classification-ipcr>\n
+        \                   </reg:classifications-ipcr>\n                    <reg:application-reference>\n
+        \                       <reg:document-id>\n                            <reg:country>EP</reg:country>\n
+        \                           <reg:doc-number>99203729</reg:doc-number>\n                        </reg:document-id>\n
+        \                   </reg:application-reference>\n                    <reg:parties>\n
+        \                       <reg:applicants>\n                            <reg:applicant
+        app-type=\"applicant\" designation=\"all\" sequence=\"1\">\n<reg:addressbook>\n
+        \   <reg:name>Beheermaatschappij De Boer Nijmegen B.V.</reg:name>\n    <reg:address>\n
+        \       <reg:country/>\n    </reg:address>\n</reg:addressbook>\n<reg:nationality>\n
+        \   <reg:country></reg:country>\n</reg:nationality>\n<reg:residence>\n    <reg:country></reg:country>\n</reg:residence>\n
+        \                           </reg:applicant>\n                        </reg:applicants>\n
+        \                       <reg:agents>\n                            <reg:agent
+        rep-type=\"agent\" sequence=\"1\">\n<reg:addressbook>\n    <reg:name>'t Jong,
+        Bastiaan Jacobus, et al</reg:name>\n    <reg:address>\n        <reg:country/>\n
+        \   </reg:address>\n</reg:addressbook>\n                            </reg:agent>\n
+        \                       </reg:agents>\n                    </reg:parties>\n
+        \                   <reg:invention-title lang=\"de\">Vorrichtung zur Herstellung
+        von Steinformlingen f\xFCr die Ziegelindustrie</reg:invention-title>\n                    <reg:invention-title
+        lang=\"en\">Apparatus for manufacturing green bricks for the brick manufacturing
+        industry</reg:invention-title>\n                    <reg:invention-title lang=\"fr\">Dispositif
+        pour la fabrication de briques crues utilis\xE9es dans l'industrie manufacturi\xE8re
+        des briques</reg:invention-title>\n                </reg:bibliographic-data>\n
+        \           </reg:register-document>\n        </reg:register-documents>\n
+        \   </ops:register-search>\n</ops:world-patent-data>\n"
+    headers:
+      Access-Control-Allow-Headers:
+      - Authorization
+      Access-Control-Allow-Methods:
+      - POST
+      Access-Control-Allow-Origin:
+      - '*'
+      Cache-Control:
+      - no-cache
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '3342'
+      Content-Type:
+      - application/xml;charset=utf-8
+      Date:
+      - Thu, 17 Nov 2022 16:49:55 GMT
+      ETag:
+      - '"0f70060e165594765a777fee8c3132a3b"'
+      Pragma:
+      - no-cache
+      Server:
+      - Apache
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      Vary:
+      - Accept
+      X-API:
+      - ops-v3.2
+      X-EPO-Client-IP:
+      - 104.54.160.230
+      X-EPO-Forwarded:
+      - '[104.54.160.230]'
+      X-Elapsed-Time:
+      - '4'
+      X-IndividualQuotaPerHour-Used:
+      - '153652'
+      X-RegisteredQuotaPerWeek-Used:
+      - '135281'
+      X-Throttling-Control:
+      - busy (images=green:100, inpadoc=green:45, other=green:1000, retrieval=green:100,
+        search=green:15)
+    status:
+      code: 200
+      message: OK
+version: 1
