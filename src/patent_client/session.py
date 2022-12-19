@@ -23,3 +23,4 @@ class PatentClientSession(requests_cache.CachedSession):
         retry = Retry(total=5, backoff_factor=0.2)
         self.mount("https://", HTTPAdapter(max_retries=retry))
         self.mount("http://", HTTPAdapter(max_retries=retry))
+

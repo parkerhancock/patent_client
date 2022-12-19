@@ -2,11 +2,11 @@ import math
 from typing import Generic
 
 import inflection
-from patent_client import session
+
 from patent_client.util import Manager
 from patent_client.util import ModelType
 
-from . import schema_doc
+from . import schema_doc, session
 from .model import PtabDecision
 from .model import PtabDocument
 from .model import PtabProceeding
@@ -47,7 +47,7 @@ class PtabManager(Manager, Generic[ModelType]):
     def get_page(self, page_no):
         query = self.query()
         query["recordStartNumber"] = page_no * self.page_size
-        response = session.get(self.url + self.path, params=query, verify=False)
+        response = session.get(self.url + self.path, params=query)
         return response.json()["results"]
 
     def __len__(self):
@@ -58,7 +58,7 @@ class PtabManager(Manager, Generic[ModelType]):
             return length
 
     def _len(self):
-        response = session.get(self.url + self.path, params=self.query(), verify=False)
+        response = session.get(self.url + self.path, params=self.query())
         return response.json()["recordTotalQuantity"]
 
     def query(self):

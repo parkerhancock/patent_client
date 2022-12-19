@@ -38,6 +38,11 @@ class Collection:
         collection_class = collection_class or self.__class__
         return to_dict(self, item_class, collection_class)
 
+    def to_mongo(self):
+        """Return a list of dictionaries containing MongoDB compatible datatypes
+        """
+        return to_dict(self, dict, list, convert_dates=True)
+
     def to_json(self, *args, **kwargs) -> str:
         """Convert objects to JSON format"""
         return json.dumps(list(self.to_records()), *args, cls=JsonEncoder, **kwargs)

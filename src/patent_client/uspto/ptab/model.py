@@ -152,7 +152,7 @@ class PtabDocument(Model):
         filename = filename.encode(encoding="ascii", errors="ignore").decode("ascii")
         filename = fname_re.sub("", filename)
         out_path = Path(path) / filename
-        with session.get(f"https://developer.uspto.gov/ptab-api/documents/{self.document_identifier}/download") as r:
+        with session.get(f"https://developer.uspto.gov/ptab-api/documents/{self.document_identifier}/download", verify=False) as r:
             r.raise_for_status()
             with out_path.open("wb") as f:
                 for chunk in r.iter_content(chunk_size=8192):
@@ -164,12 +164,12 @@ class PtabDocument(Model):
 class PtabDecision(Model):
     __manager__ = "patent_client.uspto.ptab.manager.PtabDecisionManager"
     proceeding_number: str
-    board_rulings: "List[str]"
-    decision_type_category: str
-    document_identifier: str
-    document_name: str
-    identifier: str
-    subdecision_type_category: str
+    board_rulings: "List[str]" = field(default_factory=ListManager)
+    decision_type_category: str = None
+    document_identifier: str = None
+    document_name: str = None
+    identifier: str = None
+    subdecision_type_category: str = None
     issue_type: "Optional[str]" = None
     object_uu_id: "Optional[str]" = None
     petitioner_technology_center_number: "Optional[str]" = None

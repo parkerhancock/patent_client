@@ -35,7 +35,6 @@ class ModelMeta(type):
 class ModelABC(object):
     __manager__ = None
 
-
 @dataclass
 class Model(ModelABC, metaclass=ModelMeta):
     __exclude_fields__ = list()
@@ -71,6 +70,10 @@ class Model(ModelABC, metaclass=ModelMeta):
     def to_dict(self, item_class=Row, collection_class=ListManager):
         """Convert model to a dictionary representation"""
         return to_dict(self, item_class, collection_class)
+
+    def to_mongo(self):
+        """Convert model to a MongoDB-compatible dict"""
+        return to_dict(self, item_class=dict, collection_class=list, convert_dates=True)
 
     def to_pandas(self):
         """Convert object to Pandas Series"""

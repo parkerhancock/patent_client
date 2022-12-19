@@ -1,5 +1,6 @@
 import dataclasses
 from collections import abc
+import datetime
 
 
 def resolve_attribute(obj, key):
@@ -41,17 +42,19 @@ def resolve_list(item, key):
     return [item_list]
 
 
-def to_dict(obj, item_class=dict, collection_class=list):
+def to_dict(obj, item_class=dict, collection_class=list, convert_dates=False):
     # print(f"Obj is {obj}")
     if isinstance(obj, abc.Mapping):
         # print(f"Casting as Mapping with class {item_class}")
-        return item_class((k, to_dict(v, item_class, collection_class)) for k, v in obj.items())
+        return item_class((k, to_dict(v, item_class, collection_class, convert_dates)) for k, v in obj.items())
     elif dataclasses.is_dataclass(obj):
         # print("Converting Dataclass")
-        return to_dict(item_class(obj), item_class, collection_class)
+        return to_dict(item_class(obj), item_class, collection_class, convert_dates)
     elif isinstance(obj, abc.Iterable) and not isinstance(obj, (str, bytes)):
         # print(f"Casting as Collection with {collection_class}")
-        return collection_class(to_dict(i, item_class, collection_class) for i in obj)
+        return collection_class(to_dict(i, item_class, collection_class, convert_dates) for i in obj)
+    elif convert_dates and isinstance(obj, datetime.date):
+        return datetime.datetime.combine(obj, datetime.datetime.min.time())
     else:
         # print("No cast - passing through")
         return obj
