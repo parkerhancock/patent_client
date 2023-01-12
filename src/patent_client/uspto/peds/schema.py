@@ -1,12 +1,9 @@
 import json
 from typing import *
 
-from patent_client.util import DefaultDict
-from patent_client.util.format import clean_whitespace
-from patent_client.util.json import ListField
-from patent_client.util.json import Schema
-from yankee.json.schema import fields as f
-
+from yankee.util import clean_whitespace
+from yankee.json.schema import Schema, fields as f
+from collections import defaultdict
 
 class InventorNameField(f.Combine):
     name_line_one = f.Str()
@@ -28,9 +25,9 @@ class InventorAddressField(f.Combine):
     country = f.Str()
 
     def combine_func(self, obj):
-        obj = DefaultDict(**obj, default="")
+        obj = defaultdict(lambda: "", obj.to_dict())
         return clean_whitespace(
-            "{street_1}\n{street_2}\n{city}, {geo_code} {postal_code} {country}".format_map(obj),
+            "{street_one}\n{street_two}\n{city}, {geo_code} {postal_code} {country}".format_map(obj),
             preserve_newlines=True,
         )
 
@@ -113,7 +110,7 @@ class CorrespondentNameSchema(f.Combine):
     line_two = f.Str("corrAddrNameLineTwo")
 
     def combine_func(self, obj):
-        obj = DefaultDict(**obj, default="")
+        obj = defaultdict(lambda: "", obj.to_dict())
         return "{line_one}\n{line_two}".format_map(obj)
 
 
@@ -126,7 +123,7 @@ class CorrespondentAddressSchema(f.Combine):
     country = f.Str(data_key="corrAddrCountryCd")
 
     def combine_func(self, obj):
-        obj = DefaultDict(**obj, default="")
+        obj = defaultdict(lambda: "", obj.to_dict())
         return clean_whitespace(
             "{street_1}\n{street_2}\n{city}, {geo_code} {postal_code} {country}".format_map(obj),
             preserve_newlines=True,
@@ -222,8 +219,8 @@ class AssignmentSchema(Schema):
         formatter=lambda x: x.replace(" (SEE DOCUMENT FOR DETAILS).", ""),
     )
     sequence_number = f.Int()
-    assignors = ListField(AssignorSchema, "assignors")
-    assignees = ListField(AssigneeSchema, "assignee")
+    assignors = f.List(AssignorSchema, "assignors")
+    assignees = f.List(AssigneeSchema, "assignee")
 
 
 class USApplicationSchema(Schema):
@@ -255,25 +252,22 @@ class USApplicationSchema(Schema):
     app_attr_dock_number = f.Str()
 
     # Assignments
-    assignments = ListField(AssignmentSchema)
+    assignments = f.List(AssignmentSchema)
 
     # Parties
-    inventors = ListField(InventorSchema)
-    applicants = ListField(ApplicantSchema)
-    transactions = ListField(TransactionSchema)
-    child_continuity = ListField(ChildSchema)
-    parent_continuity = ListField(ParentSchema)
-    pta_pte_tran_history = ListField(PtaPteHistorySchema)
+    inventors = f.List(InventorSchema)
+    applicants = f.List(ApplicantSchema)
+    transactions = f.List(TransactionSchema)
+    child_continuity = f.List(ChildSchema)
+    parent_continuity = f.List(ParentSchema)
+    pta_pte_tran_history = f.List(PtaPteHistorySchema)
     pta_pte_summary = PtaPteSummarySchema(data_key=False)
     correspondent = CorrespondentSchema(data_key=False)
-    attorneys = ListField(AttorneySchema, data_key="attrnyAddr")
-    foreign_priority = ListField(ForeignPrioritySchema)
+    attorneys = f.List(AttorneySchema, data_key="attrnyAddr")
+    foreign_priority = f.List(ForeignPrioritySchema)
 
 
 class PedsPageSchema(Schema):
     index_last_updated = f.Date("queryResults.indexLastUpdatedDate")
     num_found = f.Int("queryResults.searchResponse.response.numFound")
-    applications = ListField(USApplicationSchema, "queryResults.searchResponse.response.docs")
-
-    def pre_load(self, obj):
-        return json.loads(obj)
+    applications = f.List(USApplicationSchema, "queryResults.searchResponse.response.docs")

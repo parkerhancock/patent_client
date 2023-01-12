@@ -1,5 +1,4 @@
-from patent_client.util.json import Schema
-from yankee.json import fields as f
+from yankee.json.schema import Schema, fields as f
 
 
 class AdditionalRespondentSchema(Schema):

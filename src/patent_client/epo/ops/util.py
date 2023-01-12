@@ -1,10 +1,9 @@
 from patent_client.util import Model
-from patent_client.util.base.collections import ListManager
 from patent_client.util.base.related import get_model
-from patent_client.util.xml import Schema as XmlSchema
+from yankee.xml.schema import Schema as BaseSchema
+from yankee.data import ListCollection
 
-
-class Schema(XmlSchema):
+class Schema(BaseSchema):
     class Meta:
         namespaces = {
             "ops": "http://ops.epo.org",
@@ -31,9 +30,9 @@ class InpadocModel(Model):
         return get_model("patent_client.epo.ops.published.model.Claims").objects.get(self.docdb_number)
 
     @property
-    def legal(self) -> "ListManager[patent_client.epo.ops.legal.model.LegalEvent]":
+    def legal(self) -> "ListCollection[patent_client.epo.ops.legal.model.LegalEvent]":
         return get_model("patent_client.epo.ops.legal.model.Legal").objects.get(self.docdb_number).events
 
     @property
-    def family(self) -> "ListManager[patent_client.epo.ops.family.model.FamilyMember]":
+    def family(self) -> "ListCollection[patent_client.epo.ops.family.model.FamilyMember]":
         return get_model("patent_client.epo.ops.family.model.Family").objects.get(self.docdb_number).family_members

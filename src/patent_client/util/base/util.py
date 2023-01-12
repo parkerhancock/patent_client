@@ -2,6 +2,16 @@ import dataclasses
 from collections import abc
 import datetime
 
+def resolve_list(item, key):
+    item_list = resolve(item, key)
+
+    if item_list is None:
+        return []
+
+    if isinstance(item_list, list):
+        return item_list
+
+    return [item_list]
 
 def resolve_attribute(obj, key):
     if isinstance(obj, abc.Mapping):
@@ -30,16 +40,7 @@ def resolve(item, key):
     return item
 
 
-def resolve_list(item, key):
-    item_list = resolve(item, key)
 
-    if item_list is None:
-        return []
-
-    if isinstance(item_list, list):
-        return item_list
-
-    return [item_list]
 
 
 def to_dict(obj, item_class=dict, collection_class=list, convert_dates=False):

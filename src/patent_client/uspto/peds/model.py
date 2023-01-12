@@ -10,7 +10,7 @@ from typing import Optional
 
 from dateutil.relativedelta import relativedelta
 from patent_client import session
-from patent_client.util import ListManager
+from yankee.data import ListCollection
 from patent_client.util import Model
 from patent_client.util.base.related import get_model
 
@@ -101,35 +101,35 @@ class USApplication(Model):
     """Correspondent for the Application"""
 
     # List Properties
-    inventors: ListManager[Inventor] = field(default=None, repr=False)
+    inventors: ListCollection[Inventor] = field(default=None, repr=False)
     """List of named inventors"""
 
-    applicants: ListManager[Applicant] = field(default_factory=list, repr=False)
+    applicants: ListCollection[Applicant] = field(default_factory=list, repr=False)
     """List of named applicants"""
 
-    attorneys: ListManager[Attorney] = field(default_factory=list, repr=False)
+    attorneys: ListCollection[Attorney] = field(default_factory=list, repr=False)
     """List of attorneys authorized to act in this application, associated with
     the indicated customer number"""
 
-    transactions: ListManager[Transaction] = field(default_factory=list, repr=False)
+    transactions: ListCollection[Transaction] = field(default_factory=list, repr=False)
     """List of transactions relating to this application. Identical to the "Transactions" tab on
     Patent Center or Private PAIR"""
 
-    child_continuity: ListManager[Relationship] = field(default_factory=ListManager, repr=False)
+    child_continuity: ListCollection[Relationship] = field(default_factory=ListCollection, repr=False)
     """List of related Applications which claim priority to this application. Note that
     this does not include continuity type (e.g. CON/CIP/DIV)"""
 
-    parent_continuity: ListManager[Relationship] = field(default_factory=ListManager, repr=False)
+    parent_continuity: ListCollection[Relationship] = field(default_factory=ListCollection, repr=False)
     """List of related Applications that this application claims priority to, including
     continuity type. Does not include foreign priority claims"""
 
-    foreign_priority: ListManager[ForeignPriority] = field(default_factory=list, repr=False)
+    foreign_priority: ListCollection[ForeignPriority] = field(default_factory=list, repr=False)
     """List of foreign patent applications to which this application claims priority"""
 
-    pta_pte_tran_history: ListManager[PtaPteHistory] = field(default_factory=list, repr=False)
+    pta_pte_tran_history: ListCollection[PtaPteHistory] = field(default_factory=list, repr=False)
     """List of transactions relevant to calculating a Patent Term Extension or Adjustment"""
 
-    assignments: ListManager[Assignment] = field(default_factory=ListManager, repr=False)
+    assignments: ListCollection[Assignment] = field(default_factory=ListCollection, repr=False)
     """List of Assignments that include this application"""
 
     def __hash__(self):
@@ -151,9 +151,9 @@ class USApplication(Model):
             return None
 
     @property
-    def continuity(self) -> ListManager[USApplication]:
+    def continuity(self) -> ListCollection[USApplication]:
         """Returns a complete set of parents, self, and children"""
-        return ListManager(
+        return ListCollection(
             [
                 self.child_continuity.values_list("child", flat=True),
                 [
@@ -482,8 +482,8 @@ class Assignment(Model):
     pages: int = None
     conveyance_text: str = None
     sequence_number: int = None
-    assignors: "ListManager[Assignor]" = field(default_factory=ListManager)
-    assignees: "ListManager[Assignee]" = field(default_factory=ListManager)
+    assignors: "ListCollection[Assignor]" = field(default_factory=ListCollection)
+    assignees: "ListCollection[Assignee]" = field(default_factory=ListCollection)
 
 
 @dataclass

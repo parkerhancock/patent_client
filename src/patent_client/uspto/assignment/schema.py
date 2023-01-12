@@ -1,38 +1,7 @@
 import datetime
 from typing import *
 
-import lxml.etree as ET
-from yankee.util import unzip_records
-from yankee.xml import fields as f
-from yankee.xml import Schema
-
-from .model import Assignee
-from .model import Assignment
-from .model import AssignmentPage
-from .model import Assignor
-from .model import Property
-
-# Schemas
-
-
-class BaseSchema(Schema):
-    def post_load(self, obj):
-        if not obj:
-            return None
-        try:
-            return self.__model__(**obj)
-        except TypeError as e:
-            raise TypeError(f"{e.args[0]}\nInput Data: {obj}")
-
-
-class BaseZipSchema(BaseSchema):
-    def deserialize(self, obj):
-        obj = super().deserialize(obj)
-        return unzip_records(obj)
-
-    def post_load(self, obj):
-        return [self.__model__(**o) for o in obj]
-
+from yankee.xml.schema import Schema, ZipSchema, fields as f
 
 class Str(f.String):
     def deserialize(self, elem) -> "Optional[str]":
@@ -46,39 +15,36 @@ class Date(f.Date):
         return result if result != datetime.date(1, 1, 1) else None
 
 
-class PropertySchema(BaseZipSchema):
-    __model__ = Property
-    invention_title = f.List(Str(), ".//inventionTitle/str")
-    inventors = f.List(Str(), ".//inventors/str")
+class PropertySchema(ZipSchema):
+    invention_title = Str(".//inventionTitle/str")
+    inventors = Str(".//inventors/str")
     # Numbers
-    appl_id = f.List(Str(), ".//applNum/str")
-    pct_num = f.List(Str(), ".//pctNum/str")
-    intl_reg_num = f.List(Str(), ".//intlRegNum/str")
-    publ_num = f.List(Str(), ".//publNum/str")
-    pat_num = f.List(Str(), ".//patNum/str")
+    appl_id = Str(".//applNum/str")
+    pct_num = Str(".//pctNum/str")
+    intl_reg_num = Str(".//intlRegNum/str")
+    publ_num = Str(".//publNum/str")
+    pat_num = Str(".//patNum/str")
     # Dates
-    filing_date = f.List(Date(), ".//filingDate/date")
-    intl_publ_date = f.List(Date(), ".//intlPublDate/date")
-    issue_date = f.List(Date(), ".//issueDate/date")
-    publ_date = f.List(Date(), ".//publDate/date")
+    filing_date = Date(".//filingDate/date")
+    intl_publ_date = Date(".//intlPublDate/date")
+    issue_date = Date(".//issueDate/date")
+    publ_date = Date(".//publDate/date")
 
 
-class AssignorSchema(BaseZipSchema):
-    __model__ = Assignor
-    name = f.List(Str(), ".//patAssignorName/str")
-    ex_date = f.List(Date(), ".//patAssignorExDate/date")
-    date_ack = f.List(Date(), ".//patAssignorDateAck/date")
+class AssignorSchema(ZipSchema):
+    name = Str(".//patAssignorName/str")
+    ex_date = Date(".//patAssignorExDate/date")
+    date_ack = Date(".//patAssignorDateAck/date")
 
 
-class AssigneeSchema(BaseZipSchema):
-    __model__ = Assignee
-    name = f.List(Str(), ".//patAssigneeName/str")
-    line_1 = f.List(Str(), ".//patAssigneeAddress1/str")
-    line_2 = f.List(Str(), ".//patAssigneeAddress2/str")
-    city = f.List(Str(), ".//patAssigneeCity/str")
-    state = f.List(Str(), ".//patAssigneeState/str")
-    post_code = f.List(Str(), ".//patAssigneePostcode/str")
-    country = f.List(Str(), ".//patAssigneeCountryName/str")
+class AssigneeSchema(ZipSchema):
+    name = Str(".//patAssigneeName/str")
+    line_1 = Str(".//patAssigneeAddress1/str")
+    line_2 = Str(".//patAssigneeAddress2/str")
+    city = Str(".//patAssigneeCity/str")
+    state = Str(".//patAssigneeState/str")
+    post_code = Str(".//patAssigneePostcode/str")
+    country = Str(".//patAssigneeCountryName/str")
 
     def deserialize(self, obj):
         return [{"name": o.name, "address": self.combine_func(o)} for o in super().deserialize(obj)]
@@ -105,8 +71,7 @@ class CorrespondentAddressField(f.Combine):
         return out.strip()
 
 
-class AssignmentSchema(BaseSchema):
-    __model__ = Assignment
+class AssignmentSchema(Schema):
     id = Str(".//id")
     conveyance_text = Str(
         ".//conveyanceText",
@@ -125,13 +90,11 @@ class AssignmentSchema(BaseSchema):
     assignees = AssigneeSchema()
 
 
-class AssignmentPageSchema(BaseSchema):
-    __model__ = AssignmentPage
+class AssignmentPageSchema(Schema):
     num_found = f.Int(".//response/@numFound")
     docs = f.List(AssignmentSchema, ".//response/doc")
 
-    def pre_load(self, text):
-        tree = ET.fromstring(text.encode())
+    def pre_load(self, tree):
         for e in tree.find(".//result").iter():
             if "name" in e.attrib:
                 e.tag = e.attrib["name"]

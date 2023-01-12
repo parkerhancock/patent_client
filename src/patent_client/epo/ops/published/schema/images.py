@@ -1,7 +1,6 @@
 import re
 
 from patent_client.epo.ops.util import Schema
-from patent_client.util.xml import ListField
 from yankee.xml import fields as f
 
 doc_number_re = re.compile(r"published-data/images/(?P<country>[^/]+)/(?P<doc_number>[^/]+)/(?P<kind_code>[^/]+)/")
@@ -30,8 +29,8 @@ class ImageDocumentSchema(Schema):
     num_pages = f.Int("./@number-of-pages")
     description = f.Str("./@desc")
     link = f.Str("./@link")
-    formats = ListField(f.Str(), "./ops:document-format-options/ops:document-format")
-    sections = ListField(SectionSchema, "./ops:document-section")
+    formats = f.List(f.Str(), "./ops:document-format-options/ops:document-format")
+    sections = f.List(SectionSchema, "./ops:document-section")
     doc_number = f.Str("./@link", formatter=get_doc_number)
 
 

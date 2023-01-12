@@ -4,7 +4,7 @@ from warnings import warn
 
 import lxml.etree as ET
 from patent_client.epo.ops.session import session
-from patent_client.util.base.collections import ListManager
+from yankee.data import ListCollection
 from yankee.util import AttrDict
 
 from .model import BiblioResult
@@ -109,7 +109,7 @@ class PublishedSearchApi:
                     "num_results": 0,
                     "begin": start,
                     "end": end,
-                    "results": ListManager(),
+                    "results": ListCollection(),
                 }
             )
         response.raise_for_status()
