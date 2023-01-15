@@ -1,5 +1,6 @@
 from pathlib import Path
 
+import datetime
 import requests_cache
 from patent_client import SETTINGS
 from patent_client.version import __version__
@@ -11,7 +12,7 @@ class PatentClientSession(requests_cache.CachedSession):
     def __init__(self):
         super().__init__(
             Path(SETTINGS.DEFAULT.BASE_DIR).expanduser() / SETTINGS.CACHE.PATH,
-            expire_after=SETTINGS.CACHE.MAX_AGE,
+            expire_after=datetime.timedelta(days=SETTINGS.CACHE.MAX_AGE),
             backend="sqlite",
             allowable_methods=("GET", "POST"),
             ignored_parameters=[
