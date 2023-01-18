@@ -1,4 +1,6 @@
-from .model import PublicSearch, Patent, PublishedApplication
+from .model import Patent
+from .model import PublicSearch
+from .model import PublishedApplication
 
 
 def test_simple_lookup():
@@ -6,6 +8,7 @@ def test_simple_lookup():
     assert app.appl_id == "09089931"
     assert app.guid == "US-6103599-A"
     assert app.patent_title == "Planarizing technique for multilayered substrates"
+
 
 class TestPatents:
     def test_fetch_patent(self):
@@ -16,7 +19,6 @@ class TestPatents:
     def test_government_interest(self):
         pat = Patent.objects.get(11555621)
         assert pat.document.government_interest is not None
-
 
     def test_claims(self):
         pat_no = 6095661
@@ -51,7 +53,10 @@ class TestPatents:
     def test_can_fetch_reissue_applications(self):
         pat_no = "RE43633"
         pat = Patent.objects.get(pat_no)
-        assert pat.patent_title == "System and method for linking streams of multimedia data to reference material for display"
+        assert (
+            pat.patent_title
+            == "System and method for linking streams of multimedia data to reference material for display"
+        )
         assert pat.claims[0].text[:25] == "1. .[.A system for linkin"
 
     def test_can_get_field_of_search(self):
@@ -104,11 +109,14 @@ class TestPatents:
         pat.download_images(path=tmp_path)
         assert (tmp_path / "US-6103599-A.pdf").exists()
 
+
 class TestPublishedApplicationFullText:
     def test_fetch_publication(self):
         pub_no = 20_160_009_839
         pub = PublishedApplication.objects.get(pub_no)
-        assert pub.patent_title == "POLYMER PRODUCTS AND MULTI-STAGE POLYMERIZATION PROCESSES FOR THE PRODUCTION THEREOF"
+        assert (
+            pub.patent_title == "POLYMER PRODUCTS AND MULTI-STAGE POLYMERIZATION PROCESSES FOR THE PRODUCTION THEREOF"
+        )
         assert len(pub.abstract) == 651
 
     def test_publication_claims(self):
@@ -142,7 +150,6 @@ class TestPublishedApplicationFullText:
         for _ in results:
             counter += 1
         assert counter == 41
-
 
     def test_nonstandard_claim_format(self):
         obj = PublishedApplication.objects.get("20170260839")

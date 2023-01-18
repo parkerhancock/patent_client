@@ -2,7 +2,12 @@ from patent_client.util import Manager
 
 from .api import PublishedApi
 from .cql import generate_query
-from .schema import SearchSchema, BiblioResultSchema, ClaimsSchema, DescriptionSchema, ImagesSchema, InpadocSchema
+from .schema import BiblioResultSchema
+from .schema import ClaimsSchema
+from .schema import DescriptionSchema
+from .schema import ImagesSchema
+from .schema import SearchSchema
+
 
 class SearchManager(Manager):
     result_size = 100
@@ -59,6 +64,7 @@ class SearchManager(Manager):
 
 class BiblioManager(Manager):
     __schema__ = BiblioResultSchema
+
     def get(self, doc_number):
         result = self.__schema__.load(PublishedApi.biblio.get_biblio(doc_number))
         if len(result.documents) > 1:
@@ -68,17 +74,20 @@ class BiblioManager(Manager):
 
 class ClaimsManager(Manager):
     __schema__ = ClaimsSchema
+
     def get(self, doc_number):
         return self.__schema__.load(PublishedApi.fulltext.get_claims(doc_number))
 
 
 class DescriptionManager(Manager):
     __schema__ = DescriptionSchema
+
     def get(self, doc_number):
         return self.__schema__.load(PublishedApi.fulltext.get_description(doc_number))
 
 
 class ImageManager(Manager):
     __schema__ = ImagesSchema
+
     def get(self, doc_number):
         return self.__schema__.load(PublishedApi.images.get_images(doc_number))

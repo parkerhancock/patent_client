@@ -1,16 +1,22 @@
-import lxml.html as ETH
-import re
 import datetime
+import re
 from collections.abc import Sequence
-from yankee.json.schema import Schema, ZipSchema, RegexSchema, fields as f
+
+import lxml.html as ETH
+from yankee.json.schema import fields as f
+from yankee.json.schema import RegexSchema
+from yankee.json.schema import Schema
+from yankee.json.schema import ZipSchema
 
 newline_re = re.compile(r"<br />\s*")
 bad_break_re = re.compile(r"<br />\s+")
 
+
 def html_to_text(html):
     html = newline_re.sub("\n\n", html)
-    #html = bad_break_re.sub(" ", html)
+    # html = bad_break_re.sub(" ", html)
     return "".join(ETH.fromstring(html).itertext())
+
 
 class HtmlField(f.Field):
     def deserialize(self, obj):
@@ -22,10 +28,12 @@ class HtmlField(f.Field):
         else:
             return html_to_text(obj)
 
+
 def format_appl_id(string):
     if string.startswith("D"):
         string = "29" + string[1:]
     return string.replace("/", "")
+
 
 class DocumentStructureSchema(Schema):
     number_of_claims = f.Integer("numberOfClaims")
@@ -59,12 +67,13 @@ class DocumentStructureSchema(Schema):
     supplemental_start = f.Integer("supplementalStart")
     supplemental_end = f.Integer("supplementalEnd")
 
+
 class PublicSearchSchema(Schema):
     class Meta:
         use_model = True
-        
+
     guid = f.String("guid")
-    
+
     appl_id = f.String("applicationNumber", formatter=format_appl_id)
     app_filing_date = f.Date("applicationFilingDate.0")
     related_appl_filing_date = f.List(f.Date, "relatedApplFilingDate")
@@ -72,7 +81,7 @@ class PublicSearchSchema(Schema):
     kind_code = f.String("kindCode.0")
     date_published = f.Date("datePublished")
     patent_title = HtmlField("inventionTitle")
-    
+
     inventors_short = f.String("inventorsShort")
     applicant_name = f.List(f.String, "applicantName")
     assignee_name = f.List(f.String, "assigneeName")
@@ -85,7 +94,7 @@ class PublicSearchSchema(Schema):
     cpc_inventive = f.DelimitedString(f.Str(), "cpcInventiveFlattened", delimeter=";")
     ipc_code = f.DelimitedString(f.Str(), "ipcCodeFlattened", delimeter=";")
     uspc_full_classification = f.DelimitedString(f.Str(), "uspcFullClassificationFlattened", delimeter=";")
-    
+
     image_file_name = f.String("imageFileName")
     image_location = f.String("imageLocation")
     document_structure = DocumentStructureSchema(data_key=False)
@@ -100,8 +109,10 @@ class PublicSearchSchema(Schema):
 
     score = f.Float("score")
 
+
 class SpecificationField(f.Combine):
-    pass    
+    pass
+
 
 class DocumentSchema(Schema):
     abstract = HtmlField("abstractHtml")
@@ -115,26 +126,33 @@ class DocumentSchema(Schema):
 
 class UsReferenceSchema(ZipSchema):
     publication_number = f.String("urpn")
-    #us_class = f.String("usRefClassification")
-    #cpc_class = f.String("usRefCpcClassification")
-    #group = f.String("usRefGroup")
-    pub_month = f.Date("usRefIssueDate", dt_converter=lambda s: datetime.datetime(year=int(s[:4]), month=int(s[4:6]), day=1))
+    # us_class = f.String("usRefClassification")
+    # cpc_class = f.String("usRefCpcClassification")
+    # group = f.String("usRefGroup")
+    pub_month = f.Date(
+        "usRefIssueDate", dt_converter=lambda s: datetime.datetime(year=int(s[:4]), month=int(s[4:6]), day=1)
+    )
     patentee_name = f.String("usRefPatenteeName")
     cited_by_examiner = f.Boolean("usRefGroup", true_func=lambda s: "examiner" in s)
+
 
 class ForeignReferenceSchema(ZipSchema):
     citation_classification = f.String("foreignRefCitationClassification")
     citation_cpc = f.String("foreignRefCitationCpc")
     country_code = f.String("foreignRefCountryCode")
-    #group = f.String("foreignRefGroup")
+    # group = f.String("foreignRefGroup")
     patent_number = f.String("foreignRefPatentNumber")
-    pub_month = f.Date("foreignRefPubDate", dt_converter=lambda s: datetime.datetime(year=int(s[:4]), month=int(s[4:6]), day=1))
+    pub_month = f.Date(
+        "foreignRefPubDate", dt_converter=lambda s: datetime.datetime(year=int(s[:4]), month=int(s[4:6]), day=1)
+    )
     cited_by_examiner = f.Boolean("foreignRefGroup", true_func=lambda s: "examiner" in s)
+
 
 class NplReferenceSchema(RegexSchema):
     __regex__ = r"(?P<citation>.*)(?P<cited_by_examiner>cited by (applicant|examiner).?$)"
     citation = f.String()
     cited_by_examiner = f.Bool(true_func=lambda s: "examiner" in s)
+
 
 class RelatedApplicationSchema(ZipSchema):
     child_patent_country = f.String("relatedApplChildPatentCountry")
@@ -146,6 +164,7 @@ class RelatedApplicationSchema(ZipSchema):
     patent_issue_date = f.Date("relatedApplPatentIssueDate")
     patent_number = f.String("relatedApplPatentNumber")
 
+
 class InventorSchema(ZipSchema):
     name = f.String("inventorsName")
     city = f.String("inventorCity")
@@ -153,14 +172,16 @@ class InventorSchema(ZipSchema):
     postal_code = f.String("inventorPostalCode")
     state = f.String("inventorState")
 
+
 class ApplicantSchema(ZipSchema):
     city = f.String("applicantCity")
     country = f.String("applicantCountry")
-    #group = f.String("applicantGroup")
+    # group = f.String("applicantGroup")
     name = f.String("applicantName")
     state = f.String("applicantState")
     zip_code = f.String("applicantZipCode")
     authority_type = f.String("applicantAuthorityType")
+
 
 class AssigneeSchema(ZipSchema):
     city = f.String("assigneeCity")
@@ -169,6 +190,7 @@ class AssigneeSchema(ZipSchema):
     postal_code = f.String("assigneePostalCode")
     state = f.String("assigneeState")
     type_code = f.String("assigneeTypeCode")
+
 
 class CpcCodeSchema(RegexSchema):
     __regex__ = r"(?P<cpc_class>.{4})(?P<cpc_subclass>[^ ]+) (?P<version>\d{8})"
@@ -183,14 +205,17 @@ class IntlCodeSchema(RegexSchema):
     intl_subclass = f.Str()
     version = f.Date()
 
+
 class ForeignPriorityApplicationSchema(ZipSchema):
     country = f.Str("priorityClaimsCountry")
     app_filing_date = f.Date("priorityClaimsDate")
     app_number = f.Str("priorityClaimsDocNumber")
 
+
 class PublicSearchDocumentSchema(Schema):
     class Meta:
         use_model = True
+
     guid = f.String("guid")
     publication_number = f.String("pubRefDocNumber")
     publication_date = f.Date("datePublished")
@@ -246,18 +271,4 @@ class PublicSearchDocumentSchema(Schema):
     us_class_issued = f.List(f.Str, "issuedUsClassificationFull")
 
     field_of_search_us = f.List(f.Str(), "fieldOfSearchClassSubclassHighlights")
-    field_of_search_cpc = f.List(f.Str(), "fieldOfSearchCpcClassification")   
-
-      
-
-    
-
-    
-
-
-    
-
-
-
-    
-
+    field_of_search_cpc = f.List(f.Str(), "fieldOfSearchCpcClassification")

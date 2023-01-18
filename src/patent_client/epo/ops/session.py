@@ -11,13 +11,17 @@ NS = {
 }
 
 import logging
+
 logger = logging.getLogger(__name__)
+
 
 class OpsAuthenticationError(Exception):
     pass
 
+
 class OpsForbiddenError(Exception):
     pass
+
 
 class OpsSession(PatentClientSession):
     def __init__(self, *args, key=None, secret=None, **kwargs):
@@ -44,7 +48,9 @@ class OpsSession(PatentClientSession):
             )
         if response.status_code == 401:
             logger.debug(f"EPO Authentication Error!\n{response.text}")
-            raise OpsAuthenticationError("Failed to authenticate with EPO OPS! Please check your credentials. See the setup instructions at https://patent-client.readthedocs.io/en/stable/getting_started.html")
+            raise OpsAuthenticationError(
+                "Failed to authenticate with EPO OPS! Please check your credentials. See the setup instructions at https://patent-client.readthedocs.io/en/stable/getting_started.html"
+            )
         elif response.status_code == 403:
             logger.debug(f"EPO Forbidden Error\n{response.text}")
             raise OpsForbiddenError("Your EPO Request Failed - Quota Exceeded / Blacklisted / Blocked")

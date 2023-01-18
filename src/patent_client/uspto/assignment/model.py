@@ -6,9 +6,9 @@ from dataclasses import field
 from typing import *
 
 from patent_client import session
-from yankee.data import ListCollection
 from patent_client.util import Model
 from patent_client.util.base.related import get_model
+from yankee.data import ListCollection
 
 
 @dataclass

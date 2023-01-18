@@ -1,5 +1,5 @@
-import lxml.etree as ET
 from patent_client.epo.ops.session import session
+
 
 class FamilyApi:
     @classmethod

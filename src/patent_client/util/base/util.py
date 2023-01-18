@@ -1,6 +1,6 @@
 import dataclasses
-from collections import abc
 import datetime
+from collections import abc
 
 
 def resolve_attribute(obj, key):

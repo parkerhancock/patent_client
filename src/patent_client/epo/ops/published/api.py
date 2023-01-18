@@ -1,8 +1,6 @@
 import logging
 from io import BytesIO
-from warnings import warn
 
-import lxml.etree as ET
 from patent_client.epo.ops.session import session
 from yankee.data import AttrDict
 
@@ -67,7 +65,6 @@ class PublishedFulltextApi:
     @classmethod
     def get_description(cls, number, doc_type="publication", format="docdb"):
         return cls.get_fulltext_result(number, doc_type="publication", format="docdb", inquiry="description")
-
 
     @classmethod
     def get_claims(cls, number, doc_type="publication", format="docdb"):

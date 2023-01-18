@@ -1,9 +1,9 @@
-import json
 from typing import *
 
 from patent_client.util import DefaultDict
 from patent_client.util.format import clean_whitespace
-from yankee.json.schema import Schema, fields as f
+from yankee.json.schema import fields as f
+from yankee.json.schema import Schema
 
 
 class InventorNameField(f.Combine):
@@ -153,7 +153,7 @@ class ForeignPrioritySchema(Schema):
 class DocumentSchema(Schema):
     class Meta:
         use_model = True
-        
+
     access_level_category = f.Str()
     appl_id = f.Str("applicationNumberText")
     category = f.Str("documentCategory")
