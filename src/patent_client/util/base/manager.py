@@ -53,6 +53,8 @@ class Manager(Collection, Generic[ModelType]):
 
     def __init__(self, config=None):
         self.config = config or ManagerConfig()
+        if callable(self.__schema__):
+            self.__schema__ = self.__schema__()
 
     # Manager Iteration / Slicing
 

@@ -2,11 +2,13 @@ from patent_client.util.base.manager import Manager
 import math
 from .api import PublicSearchApi
 from .keywords import keywords
+from .schema import PatentBiblioSchema, PatentDocumentSchema
 
 class QueryException(Exception):
     pass
 
-class PublicPatentSearchManager(Manager):
+class PatentBiblioManager(Manager):
+    __schema__ = PatentBiblioSchema
     page_size = 500
 
     def _get_results(self):
@@ -16,7 +18,7 @@ class PublicPatentSearchManager(Manager):
         page_no = 0
         obj_counter = 0
         while True:
-            page = PublicSearchApi(
+            page = PublicSearchApi.run_query(
                 query=query, 
                 start=page_no * self.page_size,
                 limit=self.page_size,
@@ -38,7 +40,7 @@ class PublicPatentSearchManager(Manager):
         query = self._get_query()
         order_by = self._get_order_by()
         sources = self.config.options.get("sources", ["US-PGPUB", "USPAT", "USOCR"])
-        page = PublicSearchApi(
+        page = PublicSearchApi.run_query(
                     query=query, 
                     start=0,
                     limit=self.page_size,
@@ -79,3 +81,11 @@ class PublicPatentSearchManager(Manager):
                 raise QueryException(f"{key} is not a valid search field!")
             query_components.append(f'("{value}")[{keywords[key]}]')
         return " AND ".join(query_components)
+
+class PatentDocumentManager(PatentBiblioManager):
+    __doc_schema__ = PatentDocumentSchema()
+
+    def _get_results(self):
+        for obj in super()._get_results():
+            doc = PublicSearchApi.get_document(obj)
+            yield self.__doc_schema__.load(doc)
