@@ -29,6 +29,7 @@ def get_messages(text):
 class NumberServiceResultSchema(Schema):
     class Meta:
         use_model = True
+
     input_doc = DocumentIdSchema(".//ops:input")
     output_doc = DocumentIdSchema(".//ops:output")
     service_version = f.Str('.//ops:meta[@name="version"]/@value')

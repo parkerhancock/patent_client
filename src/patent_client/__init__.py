@@ -43,6 +43,7 @@ session = PatentClientSession()
 
 # Set up yankee
 import yankee
+
 yankee.use_model = True
 
 

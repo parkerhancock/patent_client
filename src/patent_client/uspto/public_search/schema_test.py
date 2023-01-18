@@ -3,7 +3,8 @@ from pathlib import Path
 
 from patent_client.util.test import compare_dicts
 
-from .schema import PublicSearchSchema, PublicSearchDocumentSchema
+from .schema import PublicSearchDocumentSchema
+from .schema import PublicSearchSchema
 
 test_dir = Path(__file__).parent / "test"
 
@@ -18,6 +19,7 @@ def test_biblio():
     result_json = json.loads(result.to_json())
     for i in range(len(expected)):
         compare_dicts(expected[i], result_json[i])
+
 
 def test_docs():
     data = (test_dir / "docs.json").read_text()

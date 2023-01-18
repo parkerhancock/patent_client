@@ -1,17 +1,20 @@
 import datetime
 import time
+from dataclasses import dataclass
+from dataclasses import field
 from pathlib import Path
-from dataclasses import dataclass, field
+
+import requests
+from patent_client import session
 from patent_client.util.base.model import Model
-from yankee.data import ListCollection
 from patent_client.util.base.related import get_model
 from patent_client.util.claims.parser import ClaimsParser
+from yankee.data import ListCollection
 
 from .api import PublicSearchApi
-from patent_client import session
-import requests
 
 claim_parser = ClaimsParser()
+
 
 @dataclass
 class DocumentStructure(Model):
@@ -51,7 +54,7 @@ class DocumentStructure(Model):
 class PublicSearch(Model):
     __manager__ = "patent_client.uspto.public_search.manager.PublicSearchManager"
     guid: "Optional[str]" = None
-    
+
     appl_id: "Optional[str]" = None
     app_filing_date: "Optional[datetime.date]" = None
     related_appl_filing_date: "ListCollection" = field(default_factory=ListCollection)
@@ -59,7 +62,7 @@ class PublicSearch(Model):
     kind_code: "Optional[str]" = None
     date_published: "Optional[datetime.date]" = None
     patent_title: "Optional[str]" = None
-    
+
     inventors_short: "Optional[str]" = None
     applicant_name: "ListCollection" = field(default_factory=ListCollection)
     assignee_name: "ListCollection" = field(default_factory=ListCollection)
@@ -72,7 +75,7 @@ class PublicSearch(Model):
     cpc_inventive: "Optional[str]" = None
     ipc_code: "Optional[str]" = None
     uspc_full_classification: "Optional[str]" = None
-    
+
     image_file_name: "Optional[str]" = None
     image_location: "Optional[str]" = None
     document_structure: "Optional[DocumentStructure]" = None
@@ -93,7 +96,10 @@ class PublicSearch(Model):
 
     @property
     def forward_citations(self):
-        return get_model("patent_client.uspto.public_search.model.PublicSearch").objects.filter(us_reference=self.publication_number)
+        return get_model("patent_client.uspto.public_search.model.PublicSearch").objects.filter(
+            us_reference=self.publication_number
+        )
+
 
 @dataclass
 class Document(Model):
@@ -105,12 +111,14 @@ class Document(Model):
     claim_statement: "Optional[str]" = None
     claims: "Optional[str]" = None
 
+
 @dataclass
 class UsReference(Model):
     publication_number: "Optional[str]" = None
     pub_month: "Optional[datetime.date]" = None
     patentee_name: "Optional[str]" = None
     cited_by_examiner: "Optional[bool]" = None
+
 
 @dataclass
 class ForeignReference(Model):
@@ -121,10 +129,12 @@ class ForeignReference(Model):
     pub_month: "Optional[datetime.date]" = None
     cited_by_examiner: "Optional[bool]" = None
 
+
 @dataclass
 class NplReference(Model):
     citation: "Optional[str]" = None
     cited_by_examiner: "Optional[bool]" = None
+
 
 @dataclass
 class RelatedApplication(Model):
@@ -137,6 +147,7 @@ class RelatedApplication(Model):
     patent_issue_date: "Optional[datetime.date]" = None
     patent_number: "Optional[str]" = None
 
+
 @dataclass
 class Inventor(Model):
     name: "Optional[str]" = None
@@ -145,15 +156,17 @@ class Inventor(Model):
     postal_code: "Optional[str]" = None
     state: "Optional[str]" = None
 
+
 @dataclass
 class Applicant(Model):
     city: "Optional[str]" = None
     country: "Optional[str]" = None
-    #group: "Optional[str]" = None
+    # group: "Optional[str]" = None
     name: "Optional[str]" = None
     state: "Optional[str]" = None
     zip_code: "Optional[str]" = None
     authority_type: "Optional[str]" = None
+
 
 @dataclass
 class Assignee(Model):
@@ -163,6 +176,7 @@ class Assignee(Model):
     postal_code: "Optional[str]" = None
     state: "Optional[str]" = None
     type_code: "Optional[str]" = None
+
 
 @dataclass
 class CpcCode(Model):
@@ -177,11 +191,13 @@ class IntlCode(Model):
     intl_subclass: "Optional[str]" = None
     version: "Optional[datetime.date]" = None
 
+
 @dataclass
 class ForeignPriorityApplication(Model):
     country: "Optional[str]" = None
     app_filing_date: "Optional[datetime.date]" = None
     app_number: "Optional[str]" = None
+
 
 @dataclass
 class PublicSearchDocument(Model):
@@ -199,10 +215,10 @@ class PublicSearchDocument(Model):
     type: "Optional[str]" = None
 
     # Parties
-    inventors: "ListCollection[Inventor]"= field(default_factory=ListCollection)
+    inventors: "ListCollection[Inventor]" = field(default_factory=ListCollection)
     inventors_short: "Optional[str]" = None
-    applicants: "ListCollection[Applicant]"= field(default_factory=ListCollection)
-    assignees: "ListCollection[Assignee]"= field(default_factory=ListCollection)
+    applicants: "ListCollection[Applicant]" = field(default_factory=ListCollection)
+    assignees: "ListCollection[Assignee]" = field(default_factory=ListCollection)
 
     group_art_unit: "Optional[str]" = None
     primary_examiner: "Optional[str]" = None
@@ -241,7 +257,7 @@ class PublicSearchDocument(Model):
 
     field_of_search_us: "ListCollection" = field(default_factory=ListCollection)
     field_of_search_cpc: "ListCollection" = field(default_factory=ListCollection)
-    
+
     @property
     def abstract(self):
         return self.document.abstract
@@ -267,7 +283,9 @@ class PublicSearchDocument(Model):
 
     @property
     def forward_citations(self):
-        return get_model("patent_client.uspto.public_search.model.PublicSearch").objects.filter(us_reference=self.publication_number)
+        return get_model("patent_client.uspto.public_search.model.PublicSearch").objects.filter(
+            us_reference=self.publication_number
+        )
 
     def download_images(self, path="."):
         out_path = Path(path).expanduser() / f"{self.guid}.pdf"
@@ -277,74 +295,77 @@ class PublicSearchDocument(Model):
             if not hasattr(PublicSearchApi, "session"):
                 PublicSearchApi.get_session()
             try:
-                case_id = PublicSearchApi.session['userCase']['caseId']
-                page_keys = [f"{self.image_location}/{i:0>8}.tif" for i in range(1, self.document_structure.page_count+1)]
-                response = session.post("https://ppubs.uspto.gov/dirsearch-public/print/imageviewer",
+                case_id = PublicSearchApi.session["userCase"]["caseId"]
+                page_keys = [
+                    f"{self.image_location}/{i:0>8}.tif" for i in range(1, self.document_structure.page_count + 1)
+                ]
+                response = session.post(
+                    "https://ppubs.uspto.gov/dirsearch-public/print/imageviewer",
                     json={
                         "caseId": case_id,
                         "pageKeys": page_keys,
                         "patentGuid": self.guid,
                         "saveOrPrint": "save",
-                        "source": self.type
-                    }
+                        "source": self.type,
+                    },
                 )
                 response.raise_for_status()
             except requests.exceptions.HTTPError:
                 PublicSearchApi.get_session()
-                case_id = PublicSearchApi.session['userCase']['caseId']
-                page_keys = [f"{self.image_location}/{i:0>8}.tif" for i in range(1, self.document_structure.page_count+1)]
-                response = session.post("https://ppubs.uspto.gov/dirsearch-public/print/imageviewer",
+                case_id = PublicSearchApi.session["userCase"]["caseId"]
+                page_keys = [
+                    f"{self.image_location}/{i:0>8}.tif" for i in range(1, self.document_structure.page_count + 1)
+                ]
+                response = session.post(
+                    "https://ppubs.uspto.gov/dirsearch-public/print/imageviewer",
                     json={
                         "caseId": case_id,
                         "pageKeys": page_keys,
                         "patentGuid": self.guid,
                         "saveOrPrint": "save",
-                        "source": self.type
-                    }
+                        "source": self.type,
+                    },
                 )
                 response.raise_for_status()
 
             print_job_id = response.text
             while True:
-                response = session.post("https://ppubs.uspto.gov/dirsearch-public/print/print-process", json=[print_job_id,])
+                response = session.post(
+                    "https://ppubs.uspto.gov/dirsearch-public/print/print-process",
+                    json=[
+                        print_job_id,
+                    ],
+                )
                 response.raise_for_status()
                 print_data = response.json()
                 if print_data[0]["printStatus"] == "COMPLETED":
                     break
                 time.sleep(1)
-            response = session.get(f"https://ppubs.uspto.gov/dirsearch-public/print/save/{print_data[0]['pdfName']}", stream=True)
+            response = session.get(
+                f"https://ppubs.uspto.gov/dirsearch-public/print/save/{print_data[0]['pdfName']}", stream=True
+            )
             response.raise_for_status()
             with out_path.open("wb") as f:
-                for chunk in response.iter_content(chunk_size=8192): 
-                    if chunk: 
+                for chunk in response.iter_content(chunk_size=8192):
+                    if chunk:
                         f.write(chunk)
-
 
 
 @dataclass
 class PatentBiblio(PublicSearch):
     __manager__ = "patent_client.uspto.public_search.manager.PatentBiblioManager"
 
+
 @dataclass
 class Patent(PublicSearchDocument):
     __manager__ = "patent_client.uspto.public_search.manager.PatentManager"
+
 
 @dataclass
 class PublishedApplicationBiblio(PublicSearch):
     __manager__ = "patent_client.uspto.public_search.manager.PublishedApplicationBiblioManager"
 
+
 @dataclass
 class PublishedApplication(PublicSearchDocument):
     __manager__ = "patent_client.uspto.public_search.manager.PublishedApplicationManager"
-
-    
-
-    
-
-
-    
-
-
-
-    
-

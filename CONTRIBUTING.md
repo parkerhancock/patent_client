@@ -40,7 +40,7 @@ To set up `patent_client` for local development:
    git clone git@github.com:your_name_here/patent_client.git
    ```
 
-3. Install [Poetry](https://python-poetry.org/docs/#installation) if you don't have it already, and 
+3. Install [Poetry](https://python-poetry.org/docs/#installation) if you don't have it already, and
    then create a virtual environment / install dependencies by running:
 
    ```
@@ -53,7 +53,7 @@ To set up `patent_client` for local development:
    poetry install -E docs
    ```
 
-4. Install [pre-commit](https://pre-commit.com/) if you don't have it already, and install the 
+4. Install [pre-commit](https://pre-commit.com/) if you don't have it already, and install the
    pre-commit hooks with:
 
    ```

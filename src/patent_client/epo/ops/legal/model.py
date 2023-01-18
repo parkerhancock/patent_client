@@ -3,9 +3,9 @@ from dataclasses import dataclass
 from dataclasses import field
 
 from patent_client.epo.ops.number_service.model import DocumentId
-from yankee.data import ListCollection
 from patent_client.util import Model
 from yankee.data import ListCollection
+
 
 @dataclass
 class MetaData(Model):

@@ -1,10 +1,13 @@
 import datetime
 from typing import *
 
-from yankee.xml.schema import Schema, ZipSchema, fields as f
+from yankee.xml.schema import fields as f
+from yankee.xml.schema import Schema
+from yankee.xml.schema import ZipSchema
 
 
 # Schemas
+
 
 class Str(f.String):
     def deserialize(self, elem) -> "Optional[str]":
@@ -38,6 +41,7 @@ class AssignorSchema(ZipSchema):
     name = Str(".//patAssignorName/str")
     ex_date = Date(".//patAssignorExDate/date")
     date_ack = Date(".//patAssignorDateAck/date")
+
 
 class AssigneeSchema(ZipSchema):
     name = Str(".//patAssigneeName/str")

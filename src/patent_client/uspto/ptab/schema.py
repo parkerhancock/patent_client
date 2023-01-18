@@ -1,4 +1,5 @@
-from yankee.json import Schema, fields as f
+from yankee.json import fields as f
+from yankee.json import Schema
 
 
 class AdditionalRespondentSchema(Schema):

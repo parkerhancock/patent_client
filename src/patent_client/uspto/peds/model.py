@@ -10,9 +10,9 @@ from typing import Optional
 
 from dateutil.relativedelta import relativedelta
 from patent_client import session
-from yankee.data import ListCollection
 from patent_client.util import Model
 from patent_client.util.base.related import get_model
+from yankee.data import ListCollection
 
 
 @dataclass
@@ -249,7 +249,9 @@ class USApplication(Model):
     @property
     def patent(self) -> "Optional[patent_client.uspto.fulltext.patent.model.Patent]":
         """Fulltext version of the patent - If Available"""
-        return get_model("patent_client.uspto.fulltext.patent.model.Patent").objects.get(publication_number=self.patent_number)
+        return get_model("patent_client.uspto.fulltext.patent.model.Patent").objects.get(
+            publication_number=self.patent_number
+        )
 
     @property
     def publication(self) -> "Optional[patent_client.uspto.fulltext.published_application.model.PublishedApplication]":

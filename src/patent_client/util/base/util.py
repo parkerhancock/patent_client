@@ -1,6 +1,6 @@
 import dataclasses
-from collections import abc
 import datetime
+from collections import abc
 
 def resolve_list(item, key):
     item_list = resolve(item, key)

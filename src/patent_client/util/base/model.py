@@ -2,8 +2,8 @@ import importlib
 import typing
 from dataclasses import dataclass
 
-from yankee.util import is_valid
 from yankee.data.util import DataConversion
+from yankee.util import is_valid
 
 ManagerType = typing.TypeVar("ManagerType")
 
@@ -28,6 +28,7 @@ class ModelMeta(type):
 
 class ModelABC(object):
     __manager__ = None
+
 
 @dataclass
 class Model(ModelABC, DataConversion, metaclass=ModelMeta):

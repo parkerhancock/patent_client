@@ -1,18 +1,22 @@
+from collections.abc import Sequence
+
+from dateutil.parser import parse as parse_dt
 from patent_client.util.base.manager import Manager
-import math
+
 from .api import PublicSearchApi
 from .keywords import keywords
-from .schema import PublicSearchDocumentSchema, PublicSearchSchema
-from dateutil.parser import parse as parse_dt
-from collections.abc import Sequence
+from .schema import PublicSearchDocumentSchema
+from .schema import PublicSearchSchema
+
 
 class QueryException(Exception):
     pass
 
+
 class PublicSearchManager(Manager):
     __schema__ = PublicSearchSchema
     page_size = 500
-    primary_key="patent_number"
+    primary_key = "patent_number"
 
     def _get_results(self):
         query = self._get_query()
@@ -22,19 +26,15 @@ class PublicSearchManager(Manager):
         obj_counter = 0
         while True:
             page = PublicSearchApi.run_query(
-                query=query, 
-                start=page_no * self.page_size,
-                limit=self.page_size,
-                sort=order_by,
-                sources=sources
-                )
+                query=query, start=page_no * self.page_size, limit=self.page_size, sort=order_by, sources=sources
+            )
             for obj in page["patents"]:
                 if self.config.limit and obj_counter >= self.config.limit:
                     break
                 yield self.__schema__.load(obj)
                 obj_counter += 1
             page_no += 1
-            if len(page['patents']) < self.page_size:
+            if len(page["patents"]) < self.page_size:
                 break
 
     def __len__(self):
@@ -43,22 +43,15 @@ class PublicSearchManager(Manager):
         query = self._get_query()
         order_by = self._get_order_by()
         sources = self.config.options.get("sources", ["US-PGPUB", "USPAT", "USOCR"])
-        page = PublicSearchApi.run_query(
-                    query=query, 
-                    start=0,
-                    limit=self.page_size,
-                    sort=order_by,
-                    sources=sources
-                    )
+        page = PublicSearchApi.run_query(query=query, start=0, limit=self.page_size, sort=order_by, sources=sources)
 
-        total_results = page['totalResults']
+        total_results = page["totalResults"]
         total_results -= self.config.offset
         if self.config.limit:
             self._len = min(self.config.limit, total_results)
         else:
             self._len = total_results
         return self._len
-
 
     def _get_order_by(self):
         if not self.config.order_by:
@@ -70,7 +63,7 @@ class PublicSearchManager(Manager):
             elif value.startswith("-"):
                 order_str.append(f"{value[1:]} desc")
             else:
-                order_str.append(f'{value} asc')
+                order_str.append(f"{value} asc")
         return " ".join(order_str)
 
     def _query_value(self, key, value):
@@ -80,10 +73,9 @@ class PublicSearchManager(Manager):
         else:
             return f'("{value}")[{keywords[key]}]'
 
-
     def _get_query(self):
         if "query" in self.config.filter:
-            return self.config.filter['query']
+            return self.config.filter["query"]
         query_components = list()
         for key, value in self.config.filter.items():
             if key not in keywords:
@@ -95,6 +87,7 @@ class PublicSearchManager(Manager):
         default_operator = self.config.options.get("default_operator", "AND")
         return f" {default_operator} ".join(query_components)
 
+
 class PublicSearchDocumentManager(PublicSearchManager):
     __doc_schema__ = PublicSearchDocumentSchema()
 
@@ -103,18 +96,26 @@ class PublicSearchDocumentManager(PublicSearchManager):
             doc = PublicSearchApi.get_document(obj)
             yield self.__doc_schema__.load(doc)
 
+
 class PatentBiblioManager(PublicSearchManager):
     def __init__(self, config=None):
         super().__init__(config=config)
-        self.config.options['sources'] = ["USPAT", ]
+        self.config.options["sources"] = [
+            "USPAT",
+        ]
+
 
 class PatentManager(PublicSearchDocumentManager, PatentBiblioManager):
     pass
 
+
 class PublishedApplicationBiblioManager(PublicSearchManager):
     def __init__(self, config=None):
         super().__init__(config=config)
-        self.config.options['sources'] = ["US-PGPUB", ]
+        self.config.options["sources"] = [
+            "US-PGPUB",
+        ]
+
 
 class PublishedApplicationManager(PublicSearchDocumentManager, PublishedApplicationBiblioManager):
     pass
