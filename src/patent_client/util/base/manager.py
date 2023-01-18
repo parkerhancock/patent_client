@@ -7,7 +7,7 @@ from typing import Iterator
 from typing import TypeVar
 from typing import Union
 
-from .collections import Collection
+from yankee.data import Collection
 
 ModelType = TypeVar("ModelType")
 

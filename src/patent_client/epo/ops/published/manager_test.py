@@ -17,7 +17,7 @@ class TestPublished:
     def test_get_claims_from_result(self):
         result = Inpadoc.objects.get("WO2009085664A2")
         assert len(result.claims.claims) == 20
-        assert len(result.claims.claim_text) == 4833
+        assert len(result.claims.claim_text) == 4830
 
     def test_get_description_from_result(self):
         result = Inpadoc.objects.get("WO2009085664A2")

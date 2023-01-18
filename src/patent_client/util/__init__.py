@@ -1,4 +1,3 @@
-from .base.collections import ListManager
 from .base.manager import Manager
 from .base.manager import ModelType
 from .base.model import Model
@@ -18,7 +17,6 @@ class DefaultDict(dict):
 
 __all__ = [
     "DefaultDict",
-    "ListManager",
     "Manager",
     "ModelType",
     "Model",

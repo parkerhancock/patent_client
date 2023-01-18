@@ -1,7 +1,7 @@
 import re
 from itertools import zip_longest
 
-from patent_client.util import ListManager
+from yankee.data import ListCollection
 from yankee.util import AttrDict
 
 from .model import Claim
@@ -36,7 +36,7 @@ class ClaimsParser(object):
         for claim in claim_data:
             for d in claim.depends_on:
                 claim_dictionary[d].dependent_claims.append(claim["number"])
-        return ListManager(Claim(**d) for d in claim_data)
+        return ListCollection(Claim(**d) for d in claim_data)
 
     def split_and_clean_claims(self, claim_text):
         claim_text = CLAIM_INTRO_RE.sub("", claim_text)

@@ -3,7 +3,7 @@ from dataclasses import dataclass
 from dataclasses import field
 
 from patent_client.epo.ops.number_service.model import DocumentId
-from patent_client.util import ListManager
+from yankee.data import ListCollection
 from patent_client.util import Model
 
 
@@ -68,4 +68,4 @@ class LegalEvent(Model):
 class Legal(Model):
     __manager__ = "patent_client.epo.ops.legal.manager.LegalManager"
     publication_reference: "DocumentId" = None
-    events: list = field(default_factory=ListManager)
+    events: list = field(default_factory=ListCollection)

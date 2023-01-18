@@ -42,7 +42,7 @@ def resolve_list(item, key):
     return [item_list]
 
 
-def to_dict(obj, item_class=dict, collection_class=list, convert_dates=False):
+def to_dict(obj, item_class=dict, collection_class=list):
     # print(f"Obj is {obj}")
     if isinstance(obj, abc.Mapping):
         # print(f"Casting as Mapping with class {item_class}")

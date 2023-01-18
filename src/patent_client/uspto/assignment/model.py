@@ -6,7 +6,7 @@ from dataclasses import field
 from typing import *
 
 from patent_client import session
-from patent_client.util import ListManager
+from yankee.data import ListCollection
 from patent_client.util import Model
 from patent_client.util.base.related import get_model
 
@@ -14,7 +14,7 @@ from patent_client.util.base.related import get_model
 @dataclass
 class AssignmentPage:
     num_found: int
-    docs: "List[Assignment]" = field(default_factory=ListManager)
+    docs: "List[Assignment]" = field(default_factory=ListCollection)
 
 
 @dataclass
@@ -27,9 +27,9 @@ class Assignment(Model):
     recorded_date: datetime.date
     corr_name: str = None
     corr_address: str = None
-    assignors: "ListManager[Assignor]" = field(default_factory=ListManager)
-    assignees: "ListManager[Assignee]" = field(default_factory=ListManager)
-    properties: "ListManager[Property]" = field(repr=False, default_factory=ListManager)
+    assignors: "ListCollection[Assignor]" = field(default_factory=ListCollection)
+    assignees: "ListCollection[Assignee]" = field(default_factory=ListCollection)
+    properties: "ListCollection[Property]" = field(repr=False, default_factory=ListCollection)
     """Properties objects associated with this Assignment"""
     assignment_record_has_images: bool = False
     transaction_date: "Optional[datetime.date]" = None

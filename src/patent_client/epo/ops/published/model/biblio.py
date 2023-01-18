@@ -4,7 +4,7 @@ from dataclasses import field
 from patent_client.epo.ops.number_service.model import DocumentId
 from patent_client.epo.ops.util import InpadocModel
 from patent_client.util import Model
-from patent_client.util.base.collections import ListManager
+from yankee.data import ListCollection
 
 
 @dataclass
@@ -54,18 +54,18 @@ class InpadocBiblio(InpadocModel):
     application_reference_docdb: DocumentId = None
     application_reference_epodoc: DocumentId = None
     application_reference_original: DocumentId = None
-    intl_class: "ListManager[str]" = field(default_factory=list)
-    cpc_class: "ListManager[str]" = field(default_factory=list)
-    us_class: "ListManager[str]" = field(default_factory=list)
-    priority_claims: "ListManager[str]" = field(default_factory=list)
+    intl_class: "ListCollection[str]" = field(default_factory=list)
+    cpc_class: "ListCollection[str]" = field(default_factory=list)
+    us_class: "ListCollection[str]" = field(default_factory=list)
+    priority_claims: "ListCollection[str]" = field(default_factory=list)
     title: str = None
-    titles: "ListManager[Title]" = field(default_factory=list)
+    titles: "ListCollection[Title]" = field(default_factory=list)
     abstract: str = None
-    citations: "ListManager[Citation]" = field(default_factory=list)
-    applicants_epodoc: "ListManager[str]" = field(default_factory=list)
-    applicants_original: "ListManager[str]" = field(default_factory=list)
-    inventors_epodoc: "ListManager[str]" = field(default_factory=list)
-    inventors_original: "ListManager[str]" = field(default_factory=list)
+    citations: "ListCollection[Citation]" = field(default_factory=list)
+    applicants_epodoc: "ListCollection[str]" = field(default_factory=list)
+    applicants_original: "ListCollection[str]" = field(default_factory=list)
+    inventors_epodoc: "ListCollection[str]" = field(default_factory=list)
+    inventors_original: "ListCollection[str]" = field(default_factory=list)
     # TODO: NPL citations
 
     def __repr__(self):

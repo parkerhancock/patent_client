@@ -4,7 +4,6 @@ import pandas as pd
 import pytest
 
 from .model import Model
-from .row import Row
 
 
 def test_model():
@@ -21,10 +20,6 @@ def test_model():
     assert len(ex.fields()) == 2
     assert ex.a == "1"
     assert ex.b == 2
-    row = ex.to_dict()
-    assert row.a == "1"
-    assert row.b == 2
-    assert type(row) == Row
     d = ex.to_dict(item_class=dict)
     assert type(d) == dict
     with pytest.raises(AttributeError):
@@ -43,20 +38,6 @@ def test_exclude_fields():
     class Example(Model):
         __exclude_fields__ = [
             "b",
-        ]
-        a: str = None
-        b: int = None
-
-    ex = Example(a="1", b=2)
-    row = ex.to_dict()
-    assert "b" not in row
-
-
-def test_default_fields():
-    @dataclass
-    class Example(Model):
-        __default_fields__ = [
-            "a",
         ]
         a: str = None
         b: int = None

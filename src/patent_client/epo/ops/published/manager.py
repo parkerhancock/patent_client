@@ -2,19 +2,25 @@ from patent_client.util import Manager
 
 from .api import PublishedApi
 from .cql import generate_query
-
+from .schema import SearchSchema, BiblioResultSchema, ClaimsSchema, DescriptionSchema, ImagesSchema, InpadocSchema
 
 class SearchManager(Manager):
     result_size = 100
     primary_key = "publication"
-    __schema__ = None
+    __schema__ = SearchSchema
+    __item_schema__ = BiblioResultSchema
+
+    def __init__(self, config=None):
+        super().__init__(config=None)
+        if callable(self.__item_schema__):
+            self.__item_schema__ = self.__item_schema__()
 
     def _get_search_results_range(self, start=1, end=100):
         if "cql_query" in self.config.filter:
             query = self.config.filter["cql_query"]
         else:
             query = generate_query(**self.config.filter)
-        return PublishedApi.search.search(query, start, end)
+        return self.__schema__.load(PublishedApi.search.search(query, start, end))
 
     def __len__(self):
         page = self._get_search_results_range(1, 100)
@@ -45,30 +51,34 @@ class SearchManager(Manager):
             )
 
     def get(self, number, doc_type="publication", format="docdb"):
-        result = PublishedApi.biblio.get_biblio(number, doc_type, format)
+        result = self.__item_schema__.load(PublishedApi.biblio.get_biblio(number, doc_type, format))
         if len(result.documents) > 1:
             raise Exception("More than one result found! Try another query")
         return result.documents[0]
 
 
 class BiblioManager(Manager):
+    __schema__ = BiblioResultSchema
     def get(self, doc_number):
-        result = PublishedApi.biblio.get_biblio(doc_number)
+        result = self.__schema__.load(PublishedApi.biblio.get_biblio(doc_number))
         if len(result.documents) > 1:
             raise ValueError(f"More than one result found for {doc_number}!")
         return result.documents[0]
 
 
 class ClaimsManager(Manager):
+    __schema__ = ClaimsSchema
     def get(self, doc_number):
-        return PublishedApi.fulltext.get_claims(doc_number)
+        return self.__schema__.load(PublishedApi.fulltext.get_claims(doc_number))
 
 
 class DescriptionManager(Manager):
+    __schema__ = DescriptionSchema
     def get(self, doc_number):
-        return PublishedApi.fulltext.get_description(doc_number)
+        return self.__schema__.load(PublishedApi.fulltext.get_description(doc_number))
 
 
 class ImageManager(Manager):
+    __schema__ = ImagesSchema
     def get(self, doc_number):
-        return PublishedApi.images.get_images(doc_number)
+        return self.__schema__.load(PublishedApi.images.get_images(doc_number))

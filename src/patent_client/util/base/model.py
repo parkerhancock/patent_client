@@ -5,11 +5,7 @@ from dataclasses import dataclass
 from dataclasses import fields
 
 from yankee.util import is_valid
-
-from ..json_encoder import JsonEncoder
-from .collections import ListManager
-from .row import Row
-from .util import to_dict
+from yankee.data.util import DataConversion
 
 ManagerType = typing.TypeVar("ManagerType")
 
@@ -36,7 +32,7 @@ class ModelABC(object):
     __manager__ = None
 
 @dataclass
-class Model(ModelABC, metaclass=ModelMeta):
+class Model(ModelABC, DataConversion, metaclass=ModelMeta):
     __exclude_fields__ = list()
     __default_fields__ = False
 
@@ -64,23 +60,3 @@ class Model(ModelABC, metaclass=ModelMeta):
             value = getattr(self, f, None)
             if is_valid(value):
                 yield (f, value)
-
-    # Data Conversion Functions
-
-    def to_dict(self, item_class=Row, collection_class=ListManager):
-        """Convert model to a dictionary representation"""
-        return to_dict(self, item_class, collection_class)
-
-    def to_mongo(self):
-        """Convert model to a MongoDB-compatible dict"""
-        return to_dict(self, item_class=dict, collection_class=list, convert_dates=True)
-
-    def to_pandas(self):
-        """Convert object to Pandas Series"""
-        import pandas as pd
-
-        dictionary = self.to_dict()
-        return pd.Series(dictionary)
-
-    def to_json(self, *args, **kwargs):
-        return json.dumps(self.to_dict(), *args, cls=JsonEncoder, **kwargs)

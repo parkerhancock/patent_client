@@ -5,7 +5,7 @@ from fileinput import filename
 from typing import *
 
 from patent_client.util import Model
-from patent_client.util.base.collections import ListManager
+from yankee.data import ListCollection
 
 from ...util.base.related import get_model
 from patent_client import session
@@ -97,27 +97,27 @@ class PtabProceeding(Model):
     second_respondent_pub_number: str = None
     second_respondent_publication_date: "datetime.date" = None
 
-    additional_respondents: "ListManager[str]" = field(default_factory=list)
+    additional_respondents: "ListCollection[str]" = field(default_factory=list)
 
     def __repr__(self):
         return f"PtabProceeding(subproceeding_type_category='{self.subproceeding_type_category}', proceeding_number='{self.proceeding_number}', proceeding_status_category='{self.proceeding_status_category}', proceeding_type_category='{self.proceeding_type_category}', respondent_party_name='{self.respondent_party_name}')"
 
     @property
-    def documents(self) -> "ListManager[patent_client.uspto.ptab.model.PtabDocument]":
+    def documents(self) -> "ListCollection[patent_client.uspto.ptab.model.PtabDocument]":
         """Documents associated with the Proceeding"""
         return get_model("patent_client.uspto.ptab.model.PtabDocument").objects.filter(
             proceeding_number=self.proceeding_number
         )
 
     @property
-    def decisions(self) -> "ListManager[patent_client.uspto.ptab.model.PtabDecision]":
+    def decisions(self) -> "ListCollection[patent_client.uspto.ptab.model.PtabDecision]":
         """Decisions associated with the Proceeding"""
         return get_model("patent_client.uspto.ptab.model.PtabDecision").objects.filter(
             proceeding_number=self.proceeding_number
         )
 
     @property
-    def us_application(self) -> "ListManager[patent_client.uspto.peds.model.USApplication]":
+    def us_application(self) -> "ListCollection[patent_client.uspto.peds.model.USApplication]":
         """The US Application provided by PEDS associated with the Proceeding"""
         return get_model("patent_client.uspto.peds.model.USApplication").objects.get(
             patent_number=self.respondent_patent_number
@@ -164,7 +164,7 @@ class PtabDocument(Model):
 class PtabDecision(Model):
     __manager__ = "patent_client.uspto.ptab.manager.PtabDecisionManager"
     proceeding_number: str
-    board_rulings: "List[str]" = field(default_factory=ListManager)
+    board_rulings: "List[str]" = field(default_factory=ListCollection)
     decision_type_category: str = None
     document_identifier: str = None
     document_name: str = None

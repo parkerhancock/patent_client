@@ -41,6 +41,11 @@ from .session import PatentClientSession  # isort:skip
 session = PatentClientSession()
 # session.remove_expired_responses(expire_after=parse_duration(SETTINGS.CACHE.MAX_AGE))
 
+# Set up yankee
+import yankee
+yankee.use_model = True
+
+
 from patent_client.epo.ops.published.model import Inpadoc  # isort:skip
 
 # from patent_client.usitc.model import ITCAttachment
