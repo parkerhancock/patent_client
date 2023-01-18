@@ -3,9 +3,7 @@ from typing import *
 
 from patent_client.util import DefaultDict
 from patent_client.util.format import clean_whitespace
-from patent_client.util.json import ListField
-from patent_client.util.json import Schema
-from yankee.json.schema import fields as f
+from yankee.json.schema import Schema, fields as f
 
 
 class InventorNameField(f.Combine):
@@ -28,7 +26,7 @@ class InventorAddressField(f.Combine):
     country = f.Str()
 
     def combine_func(self, obj):
-        obj = DefaultDict(**obj, default="")
+        obj = DefaultDict(**{k: v for k, v in obj.items() if v}, default="")
         return clean_whitespace(
             "{street_1}\n{street_2}\n{city}, {geo_code} {postal_code} {country}".format_map(obj),
             preserve_newlines=True,
@@ -153,6 +151,9 @@ class ForeignPrioritySchema(Schema):
 
 
 class DocumentSchema(Schema):
+    class Meta:
+        use_model = True
+        
     access_level_category = f.Str()
     appl_id = f.Str("applicationNumberText")
     category = f.Str("documentCategory")
@@ -222,11 +223,14 @@ class AssignmentSchema(Schema):
         formatter=lambda x: x.replace(" (SEE DOCUMENT FOR DETAILS).", ""),
     )
     sequence_number = f.Int()
-    assignors = ListField(AssignorSchema, "assignors")
-    assignees = ListField(AssigneeSchema, "assignee")
+    assignors = f.List(AssignorSchema, "assignors")
+    assignees = f.List(AssigneeSchema, "assignee")
 
 
 class USApplicationSchema(Schema):
+    class Meta:
+        use_model = True
+
     # Basic Bibliographic Data
     appl_id = f.Str()
     app_confr_number = f.Str()
@@ -255,25 +259,25 @@ class USApplicationSchema(Schema):
     app_attr_dock_number = f.Str()
 
     # Assignments
-    assignments = ListField(AssignmentSchema)
+    assignments = f.List(AssignmentSchema)
 
     # Parties
-    inventors = ListField(InventorSchema)
-    applicants = ListField(ApplicantSchema)
-    transactions = ListField(TransactionSchema)
-    child_continuity = ListField(ChildSchema)
-    parent_continuity = ListField(ParentSchema)
-    pta_pte_tran_history = ListField(PtaPteHistorySchema)
+    inventors = f.List(InventorSchema)
+    applicants = f.List(ApplicantSchema)
+    transactions = f.List(TransactionSchema)
+    child_continuity = f.List(ChildSchema)
+    parent_continuity = f.List(ParentSchema)
+    pta_pte_tran_history = f.List(PtaPteHistorySchema)
     pta_pte_summary = PtaPteSummarySchema(data_key=False)
     correspondent = CorrespondentSchema(data_key=False)
-    attorneys = ListField(AttorneySchema, data_key="attrnyAddr")
-    foreign_priority = ListField(ForeignPrioritySchema)
+    attorneys = f.List(AttorneySchema, data_key="attrnyAddr")
+    foreign_priority = f.List(ForeignPrioritySchema)
 
 
 class PedsPageSchema(Schema):
+    class Meta:
+        use_model = True
+
     index_last_updated = f.Date("queryResults.indexLastUpdatedDate")
     num_found = f.Int("queryResults.searchResponse.response.numFound")
-    applications = ListField(USApplicationSchema, "queryResults.searchResponse.response.docs")
-
-    def pre_load(self, obj):
-        return json.loads(obj)
+    applications = f.List(USApplicationSchema, "queryResults.searchResponse.response.docs")

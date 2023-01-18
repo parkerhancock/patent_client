@@ -2,14 +2,17 @@ from patent_client.util.base.manager import Manager
 import math
 from .api import PublicSearchApi
 from .keywords import keywords
-from .schema import PatentBiblioSchema, PatentDocumentSchema
+from .schema import PublicSearchDocumentSchema, PublicSearchSchema
+from dateutil.parser import parse as parse_dt
+from collections.abc import Sequence
 
 class QueryException(Exception):
     pass
 
-class PatentBiblioManager(Manager):
-    __schema__ = PatentBiblioSchema
+class PublicSearchManager(Manager):
+    __schema__ = PublicSearchSchema
     page_size = 500
+    primary_key="patent_number"
 
     def _get_results(self):
         query = self._get_query()
@@ -26,7 +29,7 @@ class PatentBiblioManager(Manager):
                 sources=sources
                 )
             for obj in page["patents"]:
-                if self.config.limit and obj_counter > self.config.limit:
+                if self.config.limit and obj_counter >= self.config.limit:
                     break
                 yield self.__schema__.load(obj)
                 obj_counter += 1
@@ -69,8 +72,14 @@ class PatentBiblioManager(Manager):
             else:
                 order_str.append(f'{value} asc')
         return " ".join(order_str)
-            
-        
+
+    def _query_value(self, key, value):
+        if isinstance(value, str) and "->" in value:
+            start, end = value.split("->")
+            return f"@{keywords[key]}>={parse_dt(start).strftime('%Y%m%d')}<={parse_dt(end).strftime('%Y%m%d')}"
+        else:
+            return f'("{value}")[{keywords[key]}]'
+
 
     def _get_query(self):
         if "query" in self.config.filter:
@@ -79,13 +88,33 @@ class PatentBiblioManager(Manager):
         for key, value in self.config.filter.items():
             if key not in keywords:
                 raise QueryException(f"{key} is not a valid search field!")
-            query_components.append(f'("{value}")[{keywords[key]}]')
-        return " AND ".join(query_components)
+            if isinstance(value, Sequence) and not isinstance(value, str):
+                query_components += [self._query_value(key, v) for v in value]
+            else:
+                query_components.append(self._query_value(key, value))
+        default_operator = self.config.options.get("default_operator", "AND")
+        return f" {default_operator} ".join(query_components)
 
-class PatentDocumentManager(PatentBiblioManager):
-    __doc_schema__ = PatentDocumentSchema()
+class PublicSearchDocumentManager(PublicSearchManager):
+    __doc_schema__ = PublicSearchDocumentSchema()
 
     def _get_results(self):
         for obj in super()._get_results():
             doc = PublicSearchApi.get_document(obj)
             yield self.__doc_schema__.load(doc)
+
+class PatentBiblioManager(PublicSearchManager):
+    def __init__(self, config=None):
+        super().__init__(config=config)
+        self.config.options['sources'] = ["USPAT", ]
+
+class PatentManager(PublicSearchDocumentManager, PatentBiblioManager):
+    pass
+
+class PublishedApplicationBiblioManager(PublicSearchManager):
+    def __init__(self, config=None):
+        super().__init__(config=config)
+        self.config.options['sources'] = ["US-PGPUB", ]
+
+class PublishedApplicationManager(PublicSearchDocumentManager, PublishedApplicationBiblioManager):
+    pass

@@ -1,7 +1,7 @@
 from patent_client.util import Model
 from patent_client.util.base.collections import ListManager
 from patent_client.util.base.related import get_model
-from patent_client.util.xml import Schema as XmlSchema
+from yankee.xml.schema import Schema as XmlSchema
 
 
 class Schema(XmlSchema):

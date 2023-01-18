@@ -1,7 +1,6 @@
 from patent_client.epo.ops.number_service.schema import DocumentIdSchema
 from patent_client.epo.ops.published.schema.biblio import DocDbNumberField
 from patent_client.epo.ops.util import Schema
-from patent_client.util.xml import ListField
 from yankee.xml import fields as f
 
 
@@ -17,9 +16,9 @@ class FamilyMemberSchema(Schema):
     publication_number = DocDbNumberField('.//epo:publication-reference/epo:document-id[@document-id-type="docdb"]')
     application_number = DocDbNumberField('.//epo:application-reference/epo:document-id[@document-id-type="docdb"]')
     family_id = f.Str("./@family-id")
-    publication_reference = ListField(DocumentIdSchema, ".//epo:publication-reference/epo:document-id")
-    application_reference = ListField(DocumentIdSchema, ".//epo:application-reference/epo:document-id")
-    priority_claims = ListField(PriorityClaimSchema, ".//epo:priority-claim")
+    publication_reference = f.List(DocumentIdSchema, ".//epo:publication-reference/epo:document-id")
+    application_reference = f.List(DocumentIdSchema, ".//epo:application-reference/epo:document-id")
+    priority_claims = f.List(PriorityClaimSchema, ".//epo:priority-claim")
 
 
 class FamilySchema(Schema):
@@ -28,4 +27,4 @@ class FamilySchema(Schema):
     publication_number = DocDbNumberField(
         './/ops:patent-family/ops:publication-reference/epo:document-id[@document-id-type="docdb"]'
     )
-    family_members = ListField(FamilyMemberSchema, ".//ops:family-member")
+    family_members = f.List(FamilyMemberSchema, ".//ops:family-member")

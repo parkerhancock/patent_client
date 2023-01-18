@@ -1,0 +1,49 @@
+interactions:
+- request:
+    body: '{"start": 0, "pageCount": 500, "sort": "date_publ desc", "docFamilyFiltering":
+      "familyIdFiltering", "searchType": 1, "familyIdEnglishOnly": true, "familyIdFirstPreferred":
+      "US-PGPUB", "familyIdSecondPreferred": "USPAT", "familyIdThirdPreferred": "FPRS",
+      "showDocPerFamilyPref": "showEnglish", "queryId": 0, "tagDocSearch": false,
+      "query": {"caseId": 1, "hl_snippets": "2", "op": "OR", "q": "\"379/56\".CCLS.
+      AND @APD>=19700101<=19950928", "queryName": "\"379/56\".CCLS. AND @APD>=19700101<=19950928",
+      "highlights": "0", "qt": "brs", "spellCheck": false, "viewName": "tile", "plurals":
+      true, "britishEquivalents": true, "databaseFilters": [{"databaseName": "USPAT",
+      "countryCodes": []}], "searchType": 1, "ignorePersist": true, "userEnteredQuery":
+      "\"379/56\".CCLS. AND @APD>=19700101<=19950928"}}'
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '796'
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Python Patent Clientbot/3.0.5 (parkerhancock@users.noreply.github.com)
+    method: POST
+    uri: https://ppubs.uspto.gov/dirsearch-public/searches/searchWithBeFamily
+  response:
+    body:
+      string: '{"numFound":0,"perPage":500,"page":0,"totalPages":0,"hlSnippets":0,"sort":null,"query":{"id":null,"caseId":1,"numResults":0,"ignorePersist":true,"fq":null,"databaseFilters":[{"databaseName":"USPAT","countryCodes":[]}],"q":"\"379/56\".CCLS.
+        AND @APD>=19700101<=19950928","queryName":"\"379/56\".CCLS. AND @APD>=19700101<=19950928","userEnteredQuery":"\"379/56\".CCLS.
+        AND @APD>=19700101<=19950928","viewName":"tile","op":"OR","highlights":"0","plurals":true,"britishEquivalents":true,"searchType":1,"excludeResultsAfter":null,"dateCreated":null,"deleteIn":false,"expand":true,"expandSort":"group_sort_date
+        asc, id desc ","expandRows":"100","expandTrackDocScores":true,"expandTrackMaxScore":true,"termGraph":null,"hl":false,"fl":null,"originalQuery":"\"379/56\".CCLS.
+        AND @APD>=19700101<=19950928","error":null,"terms":["@apd","\"379/56\""],"facets":[],"pNumber":null,"hl_fl":null},"duration":174,"highlightingTime":0,"cursorMarker":"*","totalResults":0,"numberOfFamilies":0,"error":null,"patents":[],"qtime":171}'
+    headers:
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 18 Jan 2023 17:25:43 GMT
+      Server-Timing:
+      - intid;desc=bf5ff0b7c65eead5
+      Transfer-Encoding:
+      - chunked
+    status:
+      code: 200
+      message: ''
+version: 1

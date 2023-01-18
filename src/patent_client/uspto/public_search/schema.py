@@ -1,11 +1,31 @@
 import lxml.html as ETH
+import re
 import datetime
+from collections.abc import Sequence
 from yankee.json.schema import Schema, ZipSchema, RegexSchema, fields as f
+
+newline_re = re.compile(r"<br />\s*")
+bad_break_re = re.compile(r"<br />\s+")
+
+def html_to_text(html):
+    html = newline_re.sub("\n\n", html)
+    #html = bad_break_re.sub(" ", html)
+    return "".join(ETH.fromstring(html).itertext())
 
 class HtmlField(f.Field):
     def deserialize(self, obj):
         obj = super().deserialize(obj)
-        return "".join(ETH.fromstring(obj).itertext()) if obj else None
+        if obj is None:
+            return None
+        elif isinstance(obj, Sequence) and not isinstance(obj, str):
+            return "\n\n".join(html_to_text(s) for s in obj)
+        else:
+            return html_to_text(obj)
+
+def format_appl_id(string):
+    if string.startswith("D"):
+        string = "29" + string[1:]
+    return string.replace("/", "")
 
 class DocumentStructureSchema(Schema):
     number_of_claims = f.Integer("numberOfClaims")
@@ -39,19 +59,19 @@ class DocumentStructureSchema(Schema):
     supplemental_start = f.Integer("supplementalStart")
     supplemental_end = f.Integer("supplementalEnd")
 
-
-class PatentBiblioSchema(Schema):
+class PublicSearchSchema(Schema):
     class Meta:
         use_model = True
+        
     guid = f.String("guid")
     
-    application_number = f.String("applicationNumber")
-    application_filing_date = f.Date("applicationFilingDate.0")
+    appl_id = f.String("applicationNumber", formatter=format_appl_id)
+    app_filing_date = f.Date("applicationFilingDate.0")
     related_appl_filing_date = f.List(f.Date, "relatedApplFilingDate")
     publication_reference_document_number = f.String("publicationReferenceDocumentNumber")
     kind_code = f.String("kindCode.0")
     date_published = f.Date("datePublished")
-    invention_title = HtmlField("inventionTitle")
+    patent_title = HtmlField("inventionTitle")
     
     inventors_short = f.String("inventorsShort")
     applicant_name = f.List(f.String, "applicantName")
@@ -80,13 +100,18 @@ class PatentBiblioSchema(Schema):
 
     score = f.Float("score")
 
+class SpecificationField(f.Combine):
+    pass    
+
 class DocumentSchema(Schema):
     abstract = HtmlField("abstractHtml")
+    government_interest = HtmlField("governmentInterest")
     background = HtmlField("backgroundTextHtml")
-    description = HtmlField("descriptionHtml")
     brief = HtmlField("briefHtml")
+    description = HtmlField("descriptionHtml")
     claim_statement = f.String("claimStatement")
     claims = HtmlField("claimsHtml")
+
 
 class UsReferenceSchema(ZipSchema):
     publication_number = f.String("urpn")
@@ -158,19 +183,25 @@ class IntlCodeSchema(RegexSchema):
     intl_subclass = f.Str()
     version = f.Date()
 
-class PatentDocumentSchema(Schema):
+class ForeignPriorityApplicationSchema(ZipSchema):
+    country = f.Str("priorityClaimsCountry")
+    app_filing_date = f.Date("priorityClaimsDate")
+    app_number = f.Str("priorityClaimsDocNumber")
+
+class PublicSearchDocumentSchema(Schema):
     class Meta:
         use_model = True
     guid = f.String("guid")
     publication_number = f.String("pubRefDocNumber")
     publication_date = f.Date("datePublished")
 
-    appl_id = f.String("applicationNumber", formatter=lambda s: s.replace("/", ""))
-    invention_title = HtmlField("inventionTitle")
+    appl_id = f.String("applicationNumber", formatter=format_appl_id)
+    patent_title = HtmlField("inventionTitle")
     app_filing_date = f.Date("applicationFilingDate.0")
     application_type = f.String("applicationRefFilingType")
     family_identifier_cur = f.Integer("familyIdentifierCur")
     related_apps = RelatedApplicationSchema(data_key=False)
+    foreign_priority = ForeignPriorityApplicationSchema(data_key=False)
     type = f.String("type")
 
     # Parties

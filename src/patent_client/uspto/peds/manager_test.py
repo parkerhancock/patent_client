@@ -210,7 +210,8 @@ class TestPEDSDocuments:
     def test_can_get_application_from_document(self):
         app = USApplication.objects.get(patent_number=10000000)
         docs = app.documents
-        backref_app = docs[5].application
+        doc = docs[5]
+        backref_app = doc.application
         assert app.appl_id == backref_app.appl_id
 
     @pytest.mark.skip("Downloading currently doesn't work")
