@@ -4,28 +4,15 @@ from warnings import warn
 
 import lxml.etree as ET
 from patent_client.epo.ops.session import session
-from yankee.data import ListCollection
-from yankee.util import AttrDict
+from yankee.data import AttrDict
 
-from .model import BiblioResult
-from .model import Claims
-from .model import Description
-from .model import Images
-from .model import Search
-from .schema import BiblioResultSchema
-from .schema import ClaimsSchema
-from .schema import DescriptionSchema
-from .schema import ImagesSchema
-from .schema import SearchSchema
 
 logger = logging.getLogger(__name__)
 
 
 class PublishedBiblioApi:
-    schema = BiblioResultSchema()
-
     @classmethod
-    def get_constituents(cls, number, doc_type="publication", format="docdb", constituents=("biblio",)) -> BiblioResult:
+    def get_constituents(cls, number, doc_type="publication", format="docdb", constituents=("biblio",)):
         """Published Data Constituents API
         number: document number to search
         doc_type: document type (application / publication)
@@ -39,19 +26,18 @@ class PublishedBiblioApi:
         url = base_url + ",".join(constituents)
         response = session.get(url)
         response.raise_for_status()
-        tree = ET.fromstring(response.text.encode())
-        return cls.schema.load(tree)
+        return response.text
 
     @classmethod
-    def get_biblio(cls, number, doc_type="publication", format="docdb") -> BiblioResult:
+    def get_biblio(cls, number, doc_type="publication", format="docdb"):
         return cls.get_constituents(number, doc_type, format, constituents="biblio")
 
     @classmethod
-    def get_abstract(cls, number, doc_type="publication", format="docdb") -> BiblioResult:
+    def get_abstract(cls, number, doc_type="publication", format="docdb"):
         return cls.get_constituents(number, doc_type, format, constituents="abstract")
 
     @classmethod
-    def get_full_cycle(cls, number, doc_type="publication", format="docdb") -> BiblioResult:
+    def get_full_cycle(cls, number, doc_type="publication", format="docdb"):
         return cls.get_constituents(number, doc_type, format, constituents="full-cycle")
 
 
@@ -59,8 +45,6 @@ class PublishedFulltextApi:
     fulltext_jurisdictions = "EP, WO, AT, BE, BG, CA, CH, CY, CZ, DK, EE, ES, FR, GB, GR, HR, IE, IT, LT, LU, MC, MD, ME, NO, PL, PT, RO, RS, SE, SK".split(
         ", "
     )
-    desciption_schema = DescriptionSchema()
-    claims_schema = ClaimsSchema()
 
     @classmethod
     def get_fulltext_result(cls, number, doc_type="publication", format="docdb", inquiry="fulltext"):
@@ -81,23 +65,18 @@ class PublishedFulltextApi:
         return response.text
 
     @classmethod
-    def get_description(cls, number, doc_type="publication", format="docdb") -> Description:
-        text = cls.get_fulltext_result(number, doc_type="publication", format="docdb", inquiry="description")
-        tree = ET.fromstring(text.encode())
-        return cls.desciption_schema.load(tree)
+    def get_description(cls, number, doc_type="publication", format="docdb"):
+        return cls.get_fulltext_result(number, doc_type="publication", format="docdb", inquiry="description")
+
 
     @classmethod
-    def get_claims(cls, number, doc_type="publication", format="docdb") -> Claims:
-        text = cls.get_fulltext_result(number, doc_type="publication", format="docdb", inquiry="claims")
-        tree = ET.fromstring(text.encode())
-        return cls.claims_schema.load(tree)
+    def get_claims(cls, number, doc_type="publication", format="docdb"):
+        return cls.get_fulltext_result(number, doc_type="publication", format="docdb", inquiry="claims")
 
 
 class PublishedSearchApi:
-    schema = SearchSchema()
-
     @classmethod
-    def search(cls, query, start=1, end=100) -> Search:
+    def search(cls, query, start=1, end=100):
         base_url = "http://ops.epo.org/3.2/rest-services/published-data/search"
         range = f"{start}-{end}"
         logger.debug(f"OPS Search Endpoint - Query: {query}\nRange: {start}-{end}")
@@ -109,27 +88,20 @@ class PublishedSearchApi:
                     "num_results": 0,
                     "begin": start,
                     "end": end,
-                    "results": ListCollection(),
+                    "results": list(),
                 }
             )
         response.raise_for_status()
-        tree = ET.fromstring(response.text.encode())
-        result = cls.schema.load(tree)
-        if result.num_results == 10000:
-            warn("Actual Number of Results is Greater Than 10,000 - OPS stops counting after 10,000")
-        return result
+        return response.text
 
 
 class PublishedImagesApi:
-    schema = ImagesSchema()
-
     @classmethod
-    def get_images(cls, number, doc_type="publication", format="docdb") -> Images:
+    def get_images(cls, number, doc_type="publication", format="docdb"):
         base_url = f"http://ops.epo.org/3.2/rest-services/published-data/{doc_type}/{format}/{number}/images"
         response = session.get(base_url)
         response.raise_for_status()
-        tree = ET.fromstring(response.text.encode())
-        return cls.schema.load(tree)
+        return response.text
 
     @classmethod
     def get_page_image(cls, country, number, kind, image_type, page_number, image_format="pdf"):

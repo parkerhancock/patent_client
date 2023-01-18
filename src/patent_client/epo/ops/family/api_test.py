@@ -11,5 +11,7 @@ expected_dir = Path(__file__).parent / "fixtures" / "expected"
 
 def test_example():
     result = FamilyApi.get_family("EP1000000A1")
-    expected = json.loads((expected_dir / "example.json").read_text())
-    compare_dicts(json.loads(result.to_json()), expected)
+    expected_file = (expected_dir / "example.xml")
+    # expected_file.write_text(result)
+    expected = expected_file.read_text()
+    assert expected == result

@@ -2,7 +2,7 @@ from .biblio import BiblioResultSchema
 from .fulltext import ClaimsSchema
 from .fulltext import DescriptionSchema
 from .images import ImagesSchema
-from .search import SearchSchema
+from .search import SearchSchema, InpadocSchema
 
 __all__ = [
     "BiblioResultSchema",
