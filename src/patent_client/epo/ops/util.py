@@ -1,7 +1,6 @@
 from patent_client.util import Model
 from patent_client.util.base.related import get_model
-from yankee.xml.schema import Schema as BaseSchema
-from yankee.data import ListCollection
+from yankee.xml.schema import Schema as XmlSchema
 
 class Schema(BaseSchema):
     class Meta:

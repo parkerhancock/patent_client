@@ -3,14 +3,14 @@ from pathlib import Path
 
 from patent_client.util.test import compare_dicts
 
-from .schema import PatentBiblioSchema, PatentDocumentSchema
+from .schema import PublicSearchSchema, PublicSearchDocumentSchema
 
 test_dir = Path(__file__).parent / "test"
 
 
 def test_biblio():
     data = (test_dir / "biblio.json").read_text()
-    parser = PatentBiblioSchema()
+    parser = PublicSearchSchema()
     result = parser.load_batch(data)
     expected_file = test_dir / "biblio_expected.json"
     expected_file.write_text(result.to_json(indent=2))
@@ -21,7 +21,7 @@ def test_biblio():
 
 def test_docs():
     data = (test_dir / "docs.json").read_text()
-    parser = PatentDocumentSchema()
+    parser = PublicSearchDocumentSchema()
     result = parser.load_batch(data)
     expected_file = test_dir / "docs_expected.json"
     expected_file.write_text(result.to_json(indent=2))

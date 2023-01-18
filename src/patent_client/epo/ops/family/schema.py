@@ -1,3 +1,7 @@
+from patent_client.epo.ops.number_service.schema import DocumentIdSchema
+from patent_client.epo.ops.published.schema.biblio import DocDbNumberField
+from patent_client.epo.ops.util import Schema
+from yankee.xml import fields as f
 
 from yankee.xml.schema import fields as f
 from patent_client.epo.ops.published.schema.biblio import DocDbNumberField

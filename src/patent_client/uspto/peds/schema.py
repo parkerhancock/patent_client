@@ -1,9 +1,10 @@
 import json
 from typing import *
 
-from yankee.util import clean_whitespace
+from patent_client.util import DefaultDict
+from patent_client.util.format import clean_whitespace
 from yankee.json.schema import Schema, fields as f
-from collections import defaultdict
+
 
 class InventorNameField(f.Combine):
     name_line_one = f.Str()
@@ -25,7 +26,7 @@ class InventorAddressField(f.Combine):
     country = f.Str()
 
     def combine_func(self, obj):
-        obj = defaultdict(lambda: "", obj.to_dict())
+        obj = DefaultDict(**{k: v for k, v in obj.items() if v}, default="")
         return clean_whitespace(
             "{street_one}\n{street_two}\n{city}, {geo_code} {postal_code} {country}".format_map(obj),
             preserve_newlines=True,
@@ -150,6 +151,9 @@ class ForeignPrioritySchema(Schema):
 
 
 class DocumentSchema(Schema):
+    class Meta:
+        use_model = True
+        
     access_level_category = f.Str()
     appl_id = f.Str("applicationNumberText")
     category = f.Str("documentCategory")
@@ -224,6 +228,9 @@ class AssignmentSchema(Schema):
 
 
 class USApplicationSchema(Schema):
+    class Meta:
+        use_model = True
+
     # Basic Bibliographic Data
     appl_id = f.Str()
     app_confr_number = f.Str()
@@ -268,6 +275,9 @@ class USApplicationSchema(Schema):
 
 
 class PedsPageSchema(Schema):
+    class Meta:
+        use_model = True
+
     index_last_updated = f.Date("queryResults.indexLastUpdatedDate")
     num_found = f.Int("queryResults.searchResponse.response.numFound")
     applications = f.List(USApplicationSchema, "queryResults.searchResponse.response.docs")

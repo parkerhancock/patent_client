@@ -3,6 +3,9 @@ from typing import *
 
 from yankee.xml.schema import Schema, ZipSchema, fields as f
 
+
+# Schemas
+
 class Str(f.String):
     def deserialize(self, elem) -> "Optional[str]":
         result = super().deserialize(elem)
@@ -36,7 +39,6 @@ class AssignorSchema(ZipSchema):
     ex_date = Date(".//patAssignorExDate/date")
     date_ack = Date(".//patAssignorDateAck/date")
 
-
 class AssigneeSchema(ZipSchema):
     name = Str(".//patAssigneeName/str")
     line_1 = Str(".//patAssigneeAddress1/str")
@@ -46,8 +48,8 @@ class AssigneeSchema(ZipSchema):
     post_code = Str(".//patAssigneePostcode/str")
     country = Str(".//patAssigneeCountryName/str")
 
-    def deserialize(self, obj):
-        return [{"name": o.name, "address": self.combine_func(o)} for o in super().deserialize(obj)]
+    def post_load(self, obj):
+        return [{"name": o.name, "address": self.combine_func(o)} for o in obj]
 
     def combine_func(self, obj):
         address = f"{obj.get('line_1', '')}\n{obj.get('line_2', '')}".strip()
@@ -91,12 +93,15 @@ class AssignmentSchema(Schema):
 
 
 class AssignmentPageSchema(Schema):
+    class Meta:
+        use_model = True
+
     num_found = f.Int(".//response/@numFound")
     docs = f.List(AssignmentSchema, ".//response/doc")
 
-    def pre_load(self, tree):
-        for e in tree.find(".//result").iter():
+    def pre_load(self, obj):
+        for e in obj.find(".//result").iter():
             if "name" in e.attrib:
                 e.tag = e.attrib["name"]
                 del e.attrib["name"]
-        return tree
+        return obj

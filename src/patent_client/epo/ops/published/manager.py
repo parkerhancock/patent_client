@@ -7,6 +7,7 @@ from .cql import generate_query
 class SearchManager(Manager):
     result_size = 100
     primary_key = "publication"
+    __schema__ = None
 
     def _get_search_results_range(self, start=1, end=100):
         if "cql_query" in self.config.filter:

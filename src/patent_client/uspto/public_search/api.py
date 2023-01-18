@@ -1,4 +1,5 @@
 from patent_client import session
+import random
 
 class UsptoException(Exception):
     pass
@@ -58,8 +59,9 @@ class PublicSearchApi():
                 {"databaseName": s, "countryCodes":[]}
             )
         query_response = session.post(url, json=data)
+        query_response.raise_for_status()
         result = query_response.json()
-        if result['error'] is not None:
+        if result.get('error', None) is not None:
             raise UsptoException(f"Error #{result['error']['errorCode']}\n{result['error']['errorMessage']}")
         return result
 
@@ -73,4 +75,12 @@ class PublicSearchApi():
             "uniqueId": None,
         }
         response = session.get(url, params=params)
+        response.raise_for_status()
         return response.json()
+
+    @classmethod
+    def get_session(cls):
+        url = "https://ppubs.uspto.gov/dirsearch-public/users/me/session"
+        response = session.post(url, json=str(random.randint(10000, 99999)))
+        cls.session = response.json()
+        return cls.session

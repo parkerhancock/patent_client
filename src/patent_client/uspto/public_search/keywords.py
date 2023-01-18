@@ -22,7 +22,7 @@ keywords = {
 
     # Cited References
     "cited_reference": "RFNR",
-    "us_reference": "UREF",
+    "us_reference": "URPN",
     "foreign_reference":" FREF",
 
     # Additional Bibliographic Data

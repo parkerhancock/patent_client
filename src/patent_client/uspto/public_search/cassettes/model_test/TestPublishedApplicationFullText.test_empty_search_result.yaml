@@ -1,0 +1,47 @@
+interactions:
+- request:
+    body: '{"start": 0, "pageCount": 500, "sort": "date_publ desc", "docFamilyFiltering":
+      "familyIdFiltering", "searchType": 1, "familyIdEnglishOnly": true, "familyIdFirstPreferred":
+      "US-PGPUB", "familyIdSecondPreferred": "USPAT", "familyIdThirdPreferred": "FPRS",
+      "showDocPerFamilyPref": "showEnglish", "queryId": 0, "tagDocSearch": false,
+      "query": {"caseId": 1, "hl_snippets": "2", "op": "OR", "q": "CCL/726/22 AND
+      APD/19000101->20000619", "queryName": "CCL/726/22 AND APD/19000101->20000619",
+      "highlights": "0", "qt": "brs", "spellCheck": false, "viewName": "tile", "plurals":
+      true, "britishEquivalents": true, "databaseFilters": [{"databaseName": "US-PGPUB",
+      "countryCodes": []}], "searchType": 1, "ignorePersist": true, "userEnteredQuery":
+      "CCL/726/22 AND APD/19000101->20000619"}}'
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '775'
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Python Patent Clientbot/3.0.5 (parkerhancock@users.noreply.github.com)
+    method: POST
+    uri: https://ppubs.uspto.gov/dirsearch-public/searches/searchWithBeFamily
+  response:
+    body:
+      string: '{"numFound":0,"perPage":0,"page":0,"totalPages":0,"hlSnippets":0,"sort":null,"query":null,"duration":0,"highlightingTime":0,"cursorMarker":null,"totalResults":0,"numberOfFamilies":0,"error":{"errorCode":101,"errorMessage":"Cannot
+        have date operators without a date field preceding it. Please use @ in front
+        of the field name to specify a date field: "},"patents":null,"qtime":0}'
+    headers:
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 18 Jan 2023 18:11:26 GMT
+      Server-Timing:
+      - intid;desc=b6f2cc0a8da24fad
+      Transfer-Encoding:
+      - chunked
+    status:
+      code: 200
+      message: ''
+version: 1
