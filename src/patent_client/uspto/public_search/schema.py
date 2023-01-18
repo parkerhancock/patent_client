@@ -41,6 +41,8 @@ class DocumentStructureSchema(Schema):
 
 
 class PatentBiblioSchema(Schema):
+    class Meta:
+        use_model = True
     guid = f.String("guid")
     
     application_number = f.String("applicationNumber")
@@ -62,8 +64,6 @@ class PatentBiblioSchema(Schema):
     cpc_additional = f.DelimitedString(f.Str(), "cpcAdditionalFlattened", delimeter=";")
     cpc_inventive = f.DelimitedString(f.Str(), "cpcInventiveFlattened", delimeter=";")
     ipc_code = f.DelimitedString(f.Str(), "ipcCodeFlattened", delimeter=";")
-    urpn = f.List(f.String, "urpn")
-    urpn_code = f.List(f.String, "urpnCode")
     uspc_full_classification = f.DelimitedString(f.Str(), "uspcFullClassificationFlattened", delimeter=";")
     
     image_file_name = f.String("imageFileName")
@@ -90,8 +90,8 @@ class DocumentSchema(Schema):
 
 class UsReferenceSchema(ZipSchema):
     publication_number = f.String("urpn")
-    us_class = f.String("usRefClassification")
-    cpc_class = f.String("usRefCpcClassification")
+    #us_class = f.String("usRefClassification")
+    #cpc_class = f.String("usRefCpcClassification")
     #group = f.String("usRefGroup")
     pub_month = f.Date("usRefIssueDate", dt_converter=lambda s: datetime.datetime(year=int(s[:4]), month=int(s[4:6]), day=1))
     patentee_name = f.String("usRefPatenteeName")
@@ -105,7 +105,6 @@ class ForeignReferenceSchema(ZipSchema):
     patent_number = f.String("foreignRefPatentNumber")
     pub_month = f.Date("foreignRefPubDate", dt_converter=lambda s: datetime.datetime(year=int(s[:4]), month=int(s[4:6]), day=1))
     cited_by_examiner = f.Boolean("foreignRefGroup", true_func=lambda s: "examiner" in s)
-
 
 class NplReferenceSchema(RegexSchema):
     __regex__ = r"(?P<citation>.*)(?P<cited_by_examiner>cited by (applicant|examiner).?$)"
@@ -152,22 +151,38 @@ class CpcCodeSchema(RegexSchema):
     cpc_subclass = f.Str()
     version = f.Date()
 
+
+class IntlCodeSchema(RegexSchema):
+    __regex__ = r"(?P<intl_class>.{4})(?P<intl_subclass>[^ ]+) (?P<version>\d{8})"
+    intl_class = f.Str()
+    intl_subclass = f.Str()
+    version = f.Date()
+
 class PatentDocumentSchema(Schema):
+    class Meta:
+        use_model = True
     guid = f.String("guid")
+    publication_number = f.String("pubRefDocNumber")
     publication_date = f.Date("datePublished")
 
     appl_id = f.String("applicationNumber", formatter=lambda s: s.replace("/", ""))
+    invention_title = HtmlField("inventionTitle")
     app_filing_date = f.Date("applicationFilingDate.0")
     application_type = f.String("applicationRefFilingType")
     family_identifier_cur = f.Integer("familyIdentifierCur")
     related_apps = RelatedApplicationSchema(data_key=False)
+    type = f.String("type")
 
     # Parties
     inventors = InventorSchema(data_key=False)
     inventors_short = f.String("inventorsShort")
     applicants = ApplicantSchema(data_key=False)
     assignees = AssigneeSchema(data_key=False)
+
+    group_art_unit = f.String("examinerGroup")
+    primary_examiner = f.String("primaryExaminer")
     assistant_examiner = f.List(f.String, "assistantExaminer")
+    legal_firm_name = f.List(f.String, "legalFirmName")
     attorney_name = f.List(f.String, "attorneyName")
 
     # Text Data
@@ -178,15 +193,10 @@ class PatentDocumentSchema(Schema):
     image_file_name = f.String("imageFileName")
     image_location = f.String("imageLocation")
 
-    cert_of_correction_flag = f.Bool("certOfCorrectionFlag", true_value="yes")
-
-    
+    # Metadata
     composite_id = f.String("compositeId")
     database_name = f.String("databaseName")
     derwent_week_int = f.Integer("derwentWeekInt")
-
-    continuity_data = f.List(f.String, "continuityData")
-    country = f.String("country")
 
     # References Cited
     us_references = UsReferenceSchema(data_key=False)
@@ -196,73 +206,27 @@ class PatentDocumentSchema(Schema):
     # Classifications
     cpc_inventive = f.List(CpcCodeSchema)
     cpc_additional = f.List(CpcCodeSchema)
-    """
-    cpc_additional = f.List(f.String, "cpcAdditional")
-    cpc_additional_flattened = f.String("cpcAdditionalFlattened")
-    cpc_combination_classification_cur = f.List(f.String, "cpcCombinationClassificationCur")
-    cpc_combination_sets_cur_highlights = f.List(f.String, "cpcCombinationSetsCurHighlights")
-    cpc_combination_tally_cur = f.List(f.String, "cpcCombinationTallyCur")
-    cpc_cur_additional_class = f.List(f.String, "cpcCurAdditionalClass")
-    cpc_cur_classification_group = f.List(f.String, "cpcCurClassificationGroup")
-    cpc_cur_inventive_class = f.List(f.String, "cpcCurInventiveClass")
-    cpc_inventive = f.DelimitedString(f.String(), "cpcInventiveFlattened", delimiter=";")
 
-    cur_cpc_classification_full = f.List(f.String, "curCpcClassificationFull")
-    cur_cpc_subclass_full = f.List(f.String, "curCpcSubclassFull")
-    cur_intl_patent_classification_noninvention = f.List(f.String, "curIntlPatentClassificationNoninvention")
-    cur_intl_patent_classification_primary = f.List(f.String, "curIntlPatentClassificationPrimary")
-    cur_intl_patent_classification_secondary = f.List(f.String, "curIntlPatentClassificationSecondary")
-    cur_us_classification_us_primary_class = f.String("curUsClassificationUsPrimaryClass")
-    current_us_cross_reference_classification = f.List(f.String, "currentUsCrossReferenceClassification")
-    current_us_original_classification = f.String("currentUsOriginalClassification")
-    current_us_patent_class = f.List(f.String, "currentUsPatentClass")
+    intl_class_issued = f.DelimitedString(f.String, "ipcCodeFlattened", delimeter=";")
+    intl_class_current_primary = f.List(IntlCodeSchema, "curIntlPatentClassificationPrimary")
+    intl_class_currrent_secondary = f.List(IntlCodeSchema, "curIntlPatentClassificationSecondary")
 
+    us_class_current = f.DelimitedString(f.Str(), "uspcFullClassificationFlattened", delimeter=";")
+    us_class_issued = f.List(f.Str, "issuedUsClassificationFull")
 
-    document_id = f.String("documentId")
-    document_size = f.Integer("documentSize")
-    group_art_unit = f.String("examinerGroup")
+    field_of_search_us = f.List(f.Str(), "fieldOfSearchClassSubclassHighlights")
+    field_of_search_cpc = f.List(f.Str(), "fieldOfSearchCpcClassification")   
+
+      
 
     
 
-    field_of_search = f.List(f.String, "fieldOfSearchClassSubclassHighlights")
-    field_of_search_cpc = f.List(f.String, "fieldOfSearchCpcClassification")
     
-    government_interest = f.List(f.String, "governmentInterest")
-
-
-
-
-    intl_further_classification = f.List(f.String, "intlFurtherClassification")
-    intl_pub_classification_class = f.List(f.String, "intlPubClassificationClass")
-    intl_pub_classification_group = f.List(f.String, "intlPubClassificationGroup")
-    intl_pub_classification_non_invention = f.List(f.String, "intlPubClassificationNonInvention")
-    intl_pub_classification_primary = f.List(f.String, "intlPubClassificationPrimary")
-    intl_pub_classification_secondary = f.List(f.String, "intlPubClassificationSecondary")
-    invention_title = f.String("inventionTitle")
-    
-    ipc_class = f.DelimitedString(f.String, "ipcCodeFlattened", delimeter=";")
-
-    kind_code = f.String("kindCode.0")
-    language_indicator = f.String("languageIndicator")
-    legal_firm_name = f.List(f.String, "legalFirmName")
-    legal_representative_country = f.String("legalRepresentativeCountry")
-    main_classification_code = f.String("mainClassificationCode")
-    object_contents = f.String("objectContents")
-    object_description = f.String("objectDescription")
-    
-
-    primary_examiner = f.String("primaryExaminer")
-    primary_examiner_highlights = f.String("primaryExaminerHighlights")
-    principal_attorney_name = f.List(f.String, "principalAttorneyName")
-    pub_ref_country_code = f.String("pubRefCountryCode")
-    publication_number = f.String("pubRefDocNumber")
 
 
     
 
 
-    score = f.Float("score")
-    term_of_extension = f.Int("termOfExtension")
-    type = f.String("type")
-    us_class = f.DelimitedString(f.String, "uspcFullClassificationFlattened", delimeter=";")
-    """
+
+    
+

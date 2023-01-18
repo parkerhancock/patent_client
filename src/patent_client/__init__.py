@@ -47,10 +47,6 @@ from patent_client.epo.ops.published.model import Inpadoc  # isort:skip
 # from patent_client.usitc.model import ITCDocument
 # from patent_client.usitc.model import ITCInvestigation
 from patent_client.uspto.assignment.model import Assignment  # isort:skip
-from patent_client.uspto.fulltext.patent.model import Patent  # isort:skip
-from patent_client.uspto.fulltext.published_application.model import (
-    PublishedApplication,
-)  # isort:skip
 from patent_client.uspto.peds.model import USApplication  # isort:skip
 from patent_client.uspto.ptab.model import PtabDecision  # isort:skip
 from patent_client.uspto.ptab.model import PtabDocument  # isort:skip

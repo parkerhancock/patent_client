@@ -64,11 +64,11 @@ class PublicSearchApi():
         return result
 
     @classmethod
-    def get_document(cls, guid):
-        url = f"https://ppubs.uspto.gov/dirsearch-public/patents/{guid}/highlight"
+    def get_document(cls, bib):
+        url = f"https://ppubs.uspto.gov/dirsearch-public/patents/{bib.guid}/highlight"
         params = {
             "queryId": 1,
-            "source": pat['type'],
+            "source": bib.type,
             "includeSections": True,
             "uniqueId": None,
         }
