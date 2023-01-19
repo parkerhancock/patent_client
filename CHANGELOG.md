@@ -1,5 +1,14 @@
 # Changelog
 
+## 3.1.0 (2023-01-19)
+
+- Added support for USPTO's Public Search feature and related documentation
+- Continue adjusting cache configuration
+
+## 3.0.6 (2023-01-14)
+
+- Adjust cache configuration to prevent unexpected failures
+
 ## 3.0.5 (2022-11-17)
 
 - Remedied issue where EPO occasionally can't find the legal code database by including a fallback code file
