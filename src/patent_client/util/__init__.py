@@ -17,7 +17,6 @@ class DefaultDict(dict):
 
 __all__ = [
     "DefaultDict",
-    "ListCollection",
     "Manager",
     "ModelType",
     "Model",

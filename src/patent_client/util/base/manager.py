@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from collections import OrderedDict
 from copy import deepcopy
 from itertools import chain
 from typing import Generic
@@ -20,7 +21,7 @@ class ManagerConfig:
     """
 
     def __init__(self):
-        self.filter = dict()
+        self.filter = OrderedDict()
         self.order_by = list()
         self.options = dict()
         self.limit = None
@@ -53,6 +54,8 @@ class Manager(Collection, Generic[ModelType]):
 
     def __init__(self, config=None):
         self.config = config or ManagerConfig()
+        if callable(self.__schema__):
+            self.__schema__ = self.__schema__()
 
     # Manager Iteration / Slicing
 
@@ -97,7 +100,10 @@ class Manager(Collection, Generic[ModelType]):
         mger = deepcopy(self)
         if args:
             kwargs[self.primary_key] = args
-        mger.config.filter = {**mger.config.filter, **kwargs}
+        update_values = OrderedDict()
+        for key in sorted(kwargs.keys()):
+            update_values[key] = kwargs[key]
+        mger.config.filter.update(update_values)
         return mger
 
     def order_by(self, *args) -> Manager[ModelType]:

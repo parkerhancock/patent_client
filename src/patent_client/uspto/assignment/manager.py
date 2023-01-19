@@ -22,7 +22,7 @@ logger = logging.getLogger(__name__)
 
 
 class AssignmentManager(Manager[Assignment]):
-    schema = AssignmentPageSchema()
+    __schema__ = AssignmentPageSchema()
     fields = {
         "patent_number": "PatentNumber",
         "appl_id": "ApplicationNumber",
@@ -114,7 +114,7 @@ class AssignmentManager(Manager[Assignment]):
             headers={"Accept": "application/xml"},
         )
         text = response.text
-        result = self.schema.load(text)
+        result = self.__schema__.load(text)
         self._len = result.num_found
         return result.docs
 

@@ -2,11 +2,11 @@ import math
 from typing import Generic
 
 import inflection
-
 from patent_client.util import Manager
 from patent_client.util import ModelType
 
-from . import schema_doc, session
+from . import schema_doc
+from . import session
 from .model import PtabDecision
 from .model import PtabDocument
 from .model import PtabProceeding

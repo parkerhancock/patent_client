@@ -1,4 +1,5 @@
 # flake8: noqa
+# nopycln: file
 import time
 
 from .version import __version__  # noqa
@@ -41,6 +42,12 @@ from .session import PatentClientSession  # isort:skip
 session = PatentClientSession()
 # session.remove_expired_responses(expire_after=parse_duration(SETTINGS.CACHE.MAX_AGE))
 
+# Set up yankee
+import yankee
+
+yankee.use_model = True
+
+
 from patent_client.epo.ops.published.model import Inpadoc  # isort:skip
 
 # from patent_client.usitc.model import ITCAttachment
@@ -51,6 +58,14 @@ from patent_client.uspto.peds.model import USApplication  # isort:skip
 from patent_client.uspto.ptab.model import PtabDecision  # isort:skip
 from patent_client.uspto.ptab.model import PtabDocument  # isort:skip
 from patent_client.uspto.ptab.model import PtabProceeding  # isort:skip
+from patent_client.uspto.public_search.model import (
+    PublicSearch,
+    PublicSearchDocument,
+    Patent,
+    PatentBiblio,
+    PublishedApplication,
+    PublishedApplicationBiblio,
+)  # isort:skip
 
 elapsed = time.time() - start
 logger.debug(f"Startup Complete!, took {elapsed:.3f} seconds")
@@ -58,8 +73,12 @@ logger.debug(f"Startup Complete!, took {elapsed:.3f} seconds")
 __all__ = [
     "Inpadoc",
     "Assignment",
+    "PublicSearch",
+    "PublicSearchDocument",
     "Patent",
+    "PatentBiblio",
     "PublishedApplication",
+    "PublishedApplicationBiblio",
     "USApplication",
     "PtabDecision",
     "PtabDocument",

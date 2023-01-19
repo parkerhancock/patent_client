@@ -24,7 +24,7 @@ many common IP tasks
 
 - [United States Patent & Trademark Office][USPTO]
 
-  - [Patent Full Text Databases][PATFT] - Full Support
+  - [Patent Public Search][PPS] - Full Support
   - [Patent Examination Data][PEDS] - Full Support
   - [Patent Assignment Data][Assignment] - Lookup Support
   - [Patent Trial & Appeal Board API v2][PTAB] - Supports Proceedings, Decisions, and Documents
@@ -43,7 +43,7 @@ many common IP tasks
 [requests-cache]: https://github.com/requests-cache/requests-cache
 [Assignment]: https://developer.uspto.gov/api-catalog/patent-assignment-search-beta
 [OPS]: http://ops.epo.org
-[PATFT]: http://http://patft.uspto.gov/
+[PPS]:  https://ppubs.uspto.gov/pubwebapp/static/pages/landing.html
 [PEDS]: https://developer.uspto.gov/api-catalog/ped
 [PTAB]: https://developer.uspto.gov/api-catalog/ptab-api-v2
 [USPTO]: http://developer.uspto.gov
@@ -65,16 +65,16 @@ To use the project:
 
 ```python
 # Import the model classes you need
->>> from patent_client import Inpadoc, Assignment, USApplication, Patent
+>>> from patent_client import Inpadoc, Assignment, USApplication, PatentBiblio
 
 # Fetch US Patents with the word "tennis" in their title issued in 2010
->>> pats = Patent.objects.filter(title="tennis", issue_date="2010-01-01->2010-12-31")
+>>> pats = PatentBiblio.objects.filter(title="tennis", issue_date="2010-01-01->2010-12-31")
 >>> len(pats) > 10
 True
 
 # Look at the first one
->>> pats[0].publication
-Patent(publication_number=7841958, publication_date=2010-11-30, title=Modular table tennis game)
+>>> pats[0]
+PublicationBiblio(publication_number=7841958, publication_date=2010-11-30, patent_title=Modular table tennis game)
 
 # Fetch US Applications
 >>> app = USApplication.objects.get('15710770')
