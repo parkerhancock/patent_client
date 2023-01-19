@@ -1,4 +1,5 @@
 # flake8: noqa
+# nopycln: file
 import time
 
 from .version import __version__  # noqa
@@ -61,8 +62,10 @@ from patent_client.uspto.public_search.model import (
     PublicSearch,
     PublicSearchDocument,
     Patent,
+    PatentBiblio,
     PublishedApplication,
-)
+    PublishedApplicationBiblio,
+)  # isort:skip
 
 elapsed = time.time() - start
 logger.debug(f"Startup Complete!, took {elapsed:.3f} seconds")
@@ -73,7 +76,9 @@ __all__ = [
     "PublicSearch",
     "PublicSearchDocument",
     "Patent",
+    "PatentBiblio",
     "PublishedApplication",
+    "PublishedApplicationBiblio",
     "USApplication",
     "PtabDecision",
     "PtabDocument",
