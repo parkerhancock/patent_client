@@ -3,7 +3,6 @@ from dataclasses import field
 from typing import List
 
 from patent_client.util import Model
-from patent_client.util.base.related import get_model
 
 from ...util import InpadocModel
 
@@ -23,6 +22,7 @@ class Inpadoc(InpadocModel):
 
     def download(self, path="."):
         return self.images.full_document.download(path)
+
 
 @dataclass
 class Search(Model):

@@ -2,6 +2,7 @@ import dataclasses
 import datetime
 from collections import abc
 
+
 def resolve_list(item, key):
     item_list = resolve(item, key)
 
@@ -12,6 +13,7 @@ def resolve_list(item, key):
         return item_list
 
     return [item_list]
+
 
 def resolve_attribute(obj, key):
     if isinstance(obj, abc.Mapping):
@@ -38,9 +40,6 @@ def resolve(item, key):
     except Exception as e:
         return None
     return item
-
-
-
 
 
 def to_dict(obj, item_class=dict, collection_class=list):
