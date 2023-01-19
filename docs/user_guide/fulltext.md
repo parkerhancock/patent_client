@@ -1,24 +1,37 @@
 # US Patents & Published Applications
 
-Original API URL: <http://patft.uspto.gov/netahtml/PTO/index.html>
+Original API URL: <https://ppubs.uspto.gov/pubwebapp>
 
 :::{warning}
-This interface has a limited capacity and occasionally throws errors because the server is
-over capacity. Some rudimentary retrying is baked into this API, but sometimes even that
-isn't enough. Sometimes you just have to retry later :(
-:::
-
-:::{warning}
-The USPTO's Full Text interface IS NOT for bulk downloads. Please limit retrievals to 10's
+The USPTO's Public Search interface IS NOT for bulk downloads. Please limit retrievals to 10's
 of documents. That will also prevent any issues with distributing this code. If you really
 want hundreds or thousands of documents, please use [Google's Public Patents Data Sets](GPAT).
 :::
 
 [GPAT]: https://console.cloud.google.com/marketplace/partners/patents-public-data
 
-Patent Client provides an interface to the USPTO's Full Text databases.
+Patent Client provides an interface to the USPTO's [Public Search] databases.
 
-## Basic Lookups
+[Public Search]: https://ppubs.uspto.gov/pubwebapp/static/pages/landing.html
+
+## Api Structure
+
+There are two general types of objects returned from this API - bibliographic records, and full documents. Bibliographic records
+contain all the basic information about the patent. Full documents include the full specification text, references cited, and other data.
+To be nice to the USPTO, please use bibliographic record endpoints whenever possible, falling back to the full documents only when absolutely necessary.
+Forr that reason, the bibliographic record search is unrestricted, however
+to prevent abuse, I have limited searches of full documents to queries that produce 20 or fewer results.
+
+There are a few classes for accessing this API:
+
+- `PublicSearch` - Search bibliographic records across all databases
+- `PublicSearchDocument` - Search full documents across all databases
+- `PatentBiblio` - Search patent bibliographic records since ~1979
+- `Patent` - Search full documents for patents since ~1979
+- `PublishedApplicationBiblio` - Search published application bibliographic records
+- `PublishedApplication` - Search published application full documents
+
+## Document Retrieval
 
 If you just want to fetch a patent or published application, just pass the publication number
 into a "get" query, and you'll get the desired response:
@@ -26,46 +39,49 @@ into a "get" query, and you'll get the desired response:
 ```python
 >>> from patent_client import Patent, PublishedApplication
 >>> Patent.objects.get("10000000")
-Patent(publication_number=10000000, publication_date=2018-06-19, title=Coherent LADAR using intra-pixel quadrature detection)
->>> PublishedApplication.objects.get("20200000001") # doctest:+SKIP
-PublishedApplication(publication_number=20200000001, publication_date=2020-01-02, title=SYSTEM FOR CONNECTING IMPLEMENT TO MOBILE MACHINERY)
+Publication(publication_number=10000000, publication_date=2018-06-19, patent_title=Coherent LADAR using intra-pixel quadrature detection)
+>>> PublishedApplication.objects.get("20200000001")
+Publication(publication_number=20200000001, publication_date=2020-01-02, patent_title=SYSTEM FOR CONNECTING IMPLEMENT TO MOBILE MACHINERY)
 
 ```
 
 ## Searching
 
-Patent Client mostly implements the advanced search features of the Full Text database in
-a fluent and Django-inspired way. Use it like this:
+The full Public Search query language is available for use by passing the special keyword "query" with a string:
 
 ```python
->>> from patent_client import Patent
->>> tennis_patents = Patent.objects.filter(title="tennis", assignee_name="wilson")
+>>> from patent_client import PublicSearch
+>>> result = PublicSearch.objects.filter(query='"6103599".PN. OR @APD=20210101')
+
+```
+
+Documentation on this query language is here:
+ - [Training Document On Query Syntax (PDF)](QUERY_SYNTAX)
+ - [Available Search Fields](SEARCH_FIELDS)
+
+[QUERY_SYNTAX]: https://ppubs.uspto.gov/pubwebapp/static/assets/files/Search%20overview%20QRG%20-%20Patent%20Public%20Search.pdf
+[SEARCH_FIELDS]: https://ppubs.uspto.gov/pubwebapp/static/pages/searchable-indexes.html
+
+Patent Client also implements a subset of the searchable indexes in a fluent and Django-inspired way. Use it like this:
+
+```python
+>>> from patent_client import PatentBiblio
+>>> tennis_patents = PatentBiblio.objects.filter(patent_title="tennis", assignee="wilson")
 >>> len(tennis_patents) > 10
 True
 
 ```
 
-Patent Client implements all the search fields for both Patents and Published Applications.
-The associated keyword is just the underscored verison of the full name in the tables here:
+Below are the supported fields:
 
-- [Patent Full Text Advanced Search][PATS]
-- [Published Application Full Text Advanced Search][PUBS]
+### Public Search Supported Fields
+```{eval-rst}
 
-[PATS]: https://patft.uspto.gov/netahtml/PTO/search-adv.htm
-[PUBS]: https://appft.uspto.gov/netahtml/PTO/search-adv.html
-
-Queries only return **stub records** that only contain the publication number and title.
-If you want the full document, you can access it at the "publication" attribute:
-
-```python
->>> from patent_client import Patent
->>> basketball_patents = Patent.objects.filter(title="basketball", issue_date="2021-05-25").order_by("patent_number")
->>> basketball_patents[0] # doctest: +SKIP
-PatentResult(publication_number='D920344', title='Display screen with graphical user interface for a basketball practice device')
->>> basketball_patents[0].publication
-Patent(publication_number=D920344, publication_date=2021-05-25, title=Display screen with graphical user interface for a basketball practice device)
-
+.. csv-table::
+    :file: ../../src/patent_client/uspto/public_search/query_config.csv
+    :header-rows: 1
 ```
+
 
 ### Date Ranges
 
@@ -79,36 +95,38 @@ Patent Client also supports **date range** features in a few flavors.
 All the above will accept Python dates, datetimes, or any string understandable by python's dateutil.parser, and work
 for any date-like field (e.g. issue date, filing date, etc.)
 
-### Advanced Searching
 
-Patent Client currently does not have any built-in syntax for advanced boolean queries.
-Patent Client assumes that all critera are simply "AND"ed together.
+## Image Downloads
 
-If this doesn't work for you, just use the **query** keyword, and pass whatever query you
-want. Patent Client will return the results as if you had entered that into the web interface:
-:::python
+Any object can be downloaded locally as a pdf by calling `.download_images`.
 
->>> from patent_client import Patent
->>> tennis_patents = Patent.objects.filter(query="TTL/tennis OR AN/wilson")
->>> len(tennis_patents) > 100
-True
-
-:::
 
 ## Models
 
 ```{eval-rst}
-.. automodule:: patent_client.uspto.fulltext.patent.model
+.. autoclass:: patent_client.uspto.public_search.model.PublicSearch
     :members:
     :undoc-members:
-```
 
-```{eval-rst}
-.. automodule:: patent_client.uspto.fulltext.published_application.model
+.. autoclass:: patent_client.uspto.public_search.model.PublicSearchDocument
     :members:
     :undoc-members:
+
+.. autoclass:: patent_client.uspto.public_search.model.PatentBiblio
+    :members:
+    :undoc-members:
+
+.. autoclass:: patent_client.uspto.public_search.model.Patent
+    :members:
+    :undoc-members:
+
+.. autoclass:: patent_client.uspto.public_search.model.PublishedApplication
+    :members:
+    :undoc-members:
+
+.. autoclass:: patent_client.uspto.public_search.model.PublishedApplicationBiblio
+    :members:
+    :undoc-members:
+
 ```
 
-
-[PATS]: http://patft.uspto.gov/netahtml/PTO/search-adv.htm
-[PUBS]: http://appft.uspto.gov/netahtml/PTO/search-adv.html

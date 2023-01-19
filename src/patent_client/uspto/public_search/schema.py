@@ -77,9 +77,9 @@ class PublicSearchSchema(Schema):
     appl_id = f.String("applicationNumber", formatter=format_appl_id)
     app_filing_date = f.Date("applicationFilingDate.0")
     related_appl_filing_date = f.List(f.Date, "relatedApplFilingDate")
-    publication_reference_document_number = f.String("publicationReferenceDocumentNumber")
+    publication_number = f.String("publicationReferenceDocumentNumber")
     kind_code = f.String("kindCode.0")
-    date_published = f.Date("datePublished")
+    publication_date = f.Date("datePublished")
     patent_title = HtmlField("inventionTitle")
 
     inventors_short = f.String("inventorsShort")

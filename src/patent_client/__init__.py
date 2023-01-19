@@ -57,6 +57,12 @@ from patent_client.uspto.peds.model import USApplication  # isort:skip
 from patent_client.uspto.ptab.model import PtabDecision  # isort:skip
 from patent_client.uspto.ptab.model import PtabDocument  # isort:skip
 from patent_client.uspto.ptab.model import PtabProceeding  # isort:skip
+from patent_client.uspto.public_search.model import (
+    PublicSearch,
+    PublicSearchDocument,
+    Patent,
+    PublishedApplication,
+)
 
 elapsed = time.time() - start
 logger.debug(f"Startup Complete!, took {elapsed:.3f} seconds")
@@ -64,6 +70,8 @@ logger.debug(f"Startup Complete!, took {elapsed:.3f} seconds")
 __all__ = [
     "Inpadoc",
     "Assignment",
+    "PublicSearch",
+    "PublicSearchDocument",
     "Patent",
     "PublishedApplication",
     "USApplication",

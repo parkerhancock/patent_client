@@ -1,6 +1,6 @@
+from collections import defaultdict
 from typing import *
 
-from patent_client.util import DefaultDict
 from patent_client.util.format import clean_whitespace
 from yankee.json.schema import fields as f
 from yankee.json.schema import Schema
@@ -26,9 +26,8 @@ class InventorAddressField(f.Combine):
     country = f.Str()
 
     def combine_func(self, obj):
-        obj = DefaultDict(**{k: v for k, v in obj.items() if v}, default="")
         return clean_whitespace(
-            "{street_one}\n{street_two}\n{city}, {geo_code} {postal_code} {country}".format_map(obj),
+            f'{obj.street_one or ""}\n{obj.street_two or ""}\n{obj.city or ""}, {obj.geo_code or ""} {obj.postal_code or ""} {obj.country or ""}',
             preserve_newlines=True,
         )
 

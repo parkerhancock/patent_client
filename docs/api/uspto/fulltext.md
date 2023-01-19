@@ -1,9 +1,9 @@
-# Fulltext Patents API
+# Public Search API
 
-## Manager
+## Managers
 
 ```{eval-rst}
-.. autoclass:: patent_client.uspto.fulltext.patent.manager.PatentManager
+.. automodule:: patent_client.uspto.public_search.manager
     :members:
     :undoc-members:
 ```
@@ -11,27 +11,7 @@
 ## Models
 
 ```{eval-rst}
-.. automodule:: patent_client.uspto.fulltext.patent.model
+.. automodule:: patent_client.uspto.public_search.model
     :members:
     :undoc-members:
-    :exclude-members: PedsPage
-```
-
-# Fulltext Published Applications API
-
-## Manager
-
-```{eval-rst}
-.. autoclass:: patent_client.uspto.fulltext.published_application.manager.PublishedApplicationManager
-    :members:
-    :undoc-members:
-```
-
-## Models
-
-```{eval-rst}
-.. automodule:: patent_client.uspto.fulltext.published_application.model
-    :members:
-    :undoc-members:
-    :exclude-members: PedsPage
 ```

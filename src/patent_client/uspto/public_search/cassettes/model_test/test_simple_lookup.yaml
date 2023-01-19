@@ -43,8 +43,6 @@ interactions:
       - Wed, 18 Jan 2023 17:16:14 GMT
       Server-Timing:
       - intid;desc=d3f0a9b50a5427e1
-      Transfer-Encoding:
-      - chunked
     status:
       code: 200
       message: ''
@@ -92,6 +90,40 @@ interactions:
       - Wed, 18 Jan 2023 17:16:14 GMT
       Server-Timing:
       - intid;desc=6aa1891579048303
+    status:
+      code: 200
+      message: ''
+- request:
+    body: '"27611"'
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '7'
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Python Patent Clientbot/3.0.6 (parkerhancock@users.noreply.github.com)
+    method: POST
+    uri: https://ppubs.uspto.gov/dirsearch-public/users/me/session
+  response:
+    body:
+      string: '{"userSessionId":2159462,"ipAddress":null,"displayName":"anonymous","deleteIn":false,"userCase":{"caseId":2159640,"userId":2159462,"caseName":"Untitled
+        Case","applicationNumber":null},"userPreferences":{},"hostURLs":{"image_server_host":"https://pasr-img.pvt.uspto.gov"},"versions":[{"product":"API","releaseNumber":"2.0.0.1","date":"13.12.2022
+        @ 15:09:41 UTC","commitId":"801fde86","collectionName":""},{"product":"SOLR","releaseNumber":"7.6.0","date":"5-4-0","commitId":"","collectionName":"us_patent_grant"}],"documentsLimitInQuery":1000,"sessionTimeOutTime":1800}'
+    headers:
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Date:
+      - Thu, 19 Jan 2023 18:38:03 GMT
+      Server-Timing:
+      - intid;desc=d692e43854a68317
       Transfer-Encoding:
       - chunked
     status:

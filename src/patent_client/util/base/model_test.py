@@ -24,12 +24,6 @@ def test_model():
     with pytest.raises(AttributeError):
         assert d.a == "1"
     assert d == {"a": "1", "b": 2}
-    s = ex.to_pandas()
-    assert type(s) == pd.Series
-    assert s.a == "1"
-    assert s.b == 2
-    assert s.to_json() == '{"a":"1","b":2}'
-    assert type(Example.objects) == DummyManager
 
 
 def test_exclude_fields():

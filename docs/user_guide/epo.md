@@ -30,7 +30,7 @@ Each case can also access Full Text, Images, and Inpadoc Families
  FamilyMember(publication_number=US6093011A)]
 
 >>> case.images.full_document.sections
-[{'name': 'ABSTRACT', 'start_page': 1}, {'name': 'BIBLIOGRAPHY', 'start_page': 1}, {'name': 'CLAIMS', 'start_page': 3}, {'name': 'DESCRIPTION', 'start_page': 2}, {'name': 'DRAWINGS', 'start_page': 5}, {'name': 'SEARCH_REPORT', 'start_page': 11}]
+[Section(name='ABSTRACT', start_page=1), Section(name='BIBLIOGRAPHY', start_page=1), Section(name='CLAIMS', start_page=3), Section(name='DESCRIPTION', start_page=2), Section(name='DRAWINGS', start_page=5), Section(name='SEARCH_REPORT', start_page=11)]
 >>> case.images.full_document.download() # doctest: +SKIP
 Downloads a .pdf of the document to the current directory
 ```

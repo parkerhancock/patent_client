@@ -1,6 +1,7 @@
 import importlib
 import typing
 from dataclasses import dataclass
+from dataclasses import fields
 
 from yankee.data.util import DataConversion
 from yankee.util import is_valid

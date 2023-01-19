@@ -1,6 +1,7 @@
 from .model import Patent
 from .model import PublicSearch
 from .model import PublishedApplication
+from .model import PublishedApplicationBiblio
 
 
 def test_simple_lookup():
@@ -11,6 +12,10 @@ def test_simple_lookup():
 
 
 class TestPatents:
+    def test_tennis_patents(self):
+        tennis_patents = Patent.objects.filter(title="tennis", assignee_name="wilson")
+        assert len(tennis_patents) > 10
+
     def test_fetch_patent(self):
         pat = Patent.objects.get(6095661)
         assert pat.patent_title == "Method and apparatus for an L.E.D. flashlight"
@@ -143,7 +148,7 @@ class TestPublishedApplicationFullText:
 
     def test_search_classification(self):
         query = '"166/308.1".CCLS. AND @APD>=20150101<=20210101'
-        results = PublishedApplication.objects.filter(query=query)
+        results = PublishedApplicationBiblio.objects.filter(query=query)
         assert len(results) == 41
         assert len(list(results[:15])) == 15
         counter = 0

@@ -1,17 +1,13 @@
 import datetime
-import time
 from dataclasses import dataclass
 from dataclasses import field
-from pathlib import Path
 
-import requests
-from patent_client import session
 from patent_client.util.base.model import Model
 from patent_client.util.base.related import get_model
 from patent_client.util.claims.parser import ClaimsParser
 from yankee.data import ListCollection
 
-from .api import PublicSearchApi
+from . import public_search_api
 
 claim_parser = ClaimsParser()
 
@@ -58,9 +54,9 @@ class PublicSearch(Model):
     appl_id: "Optional[str]" = None
     app_filing_date: "Optional[datetime.date]" = None
     related_appl_filing_date: "ListCollection" = field(default_factory=ListCollection)
-    publication_reference_document_number: "Optional[str]" = None
+    publication_number: "Optional[str]" = None
     kind_code: "Optional[str]" = None
-    date_published: "Optional[datetime.date]" = None
+    publication_date: "Optional[datetime.date]" = None
     patent_title: "Optional[str]" = None
 
     inventors_short: "Optional[str]" = None
@@ -90,6 +86,9 @@ class PublicSearch(Model):
 
     score: "Optional[float]" = None
 
+    def __repr__(self):
+        return f"PublicationBiblio(publication_number={self.publication_number}, publication_date={self.publication_date.isoformat()}, patent_title={self.patent_title})"
+
     @property
     def document(self):
         return get_model("patent_client.uspto.public_search.model.PatentDocument").objects.get(guid=self.guid)
@@ -99,6 +98,9 @@ class PublicSearch(Model):
         return get_model("patent_client.uspto.public_search.model.PublicSearch").objects.filter(
             us_reference=self.publication_number
         )
+
+    def download_images(self, path="."):
+        public_search_api.download_image(self, path)
 
 
 @dataclass
@@ -258,6 +260,9 @@ class PublicSearchDocument(Model):
     field_of_search_us: "ListCollection" = field(default_factory=ListCollection)
     field_of_search_cpc: "ListCollection" = field(default_factory=ListCollection)
 
+    def __repr__(self):
+        return f"Publication(publication_number={self.publication_number}, publication_date={self.publication_date.isoformat()}, patent_title={self.patent_title})"
+
     @property
     def abstract(self):
         return self.document.abstract
@@ -288,67 +293,7 @@ class PublicSearchDocument(Model):
         )
 
     def download_images(self, path="."):
-        out_path = Path(path).expanduser() / f"{self.guid}.pdf"
-        if out_path.exists():
-            return out_path
-        with session.cache_disabled():
-            if not hasattr(PublicSearchApi, "session"):
-                PublicSearchApi.get_session()
-            try:
-                case_id = PublicSearchApi.session["userCase"]["caseId"]
-                page_keys = [
-                    f"{self.image_location}/{i:0>8}.tif" for i in range(1, self.document_structure.page_count + 1)
-                ]
-                response = session.post(
-                    "https://ppubs.uspto.gov/dirsearch-public/print/imageviewer",
-                    json={
-                        "caseId": case_id,
-                        "pageKeys": page_keys,
-                        "patentGuid": self.guid,
-                        "saveOrPrint": "save",
-                        "source": self.type,
-                    },
-                )
-                response.raise_for_status()
-            except requests.exceptions.HTTPError:
-                PublicSearchApi.get_session()
-                case_id = PublicSearchApi.session["userCase"]["caseId"]
-                page_keys = [
-                    f"{self.image_location}/{i:0>8}.tif" for i in range(1, self.document_structure.page_count + 1)
-                ]
-                response = session.post(
-                    "https://ppubs.uspto.gov/dirsearch-public/print/imageviewer",
-                    json={
-                        "caseId": case_id,
-                        "pageKeys": page_keys,
-                        "patentGuid": self.guid,
-                        "saveOrPrint": "save",
-                        "source": self.type,
-                    },
-                )
-                response.raise_for_status()
-
-            print_job_id = response.text
-            while True:
-                response = session.post(
-                    "https://ppubs.uspto.gov/dirsearch-public/print/print-process",
-                    json=[
-                        print_job_id,
-                    ],
-                )
-                response.raise_for_status()
-                print_data = response.json()
-                if print_data[0]["printStatus"] == "COMPLETED":
-                    break
-                time.sleep(1)
-            response = session.get(
-                f"https://ppubs.uspto.gov/dirsearch-public/print/save/{print_data[0]['pdfName']}", stream=True
-            )
-            response.raise_for_status()
-            with out_path.open("wb") as f:
-                for chunk in response.iter_content(chunk_size=8192):
-                    if chunk:
-                        f.write(chunk)
+        public_search_api.download_image(self, path)
 
 
 @dataclass
