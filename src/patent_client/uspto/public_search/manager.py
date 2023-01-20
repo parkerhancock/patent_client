@@ -10,6 +10,10 @@ class CapacityException(Exception):
     pass
 
 
+class FinishedException(Exception):
+    pass
+
+
 class PublicSearchManager(Manager):
     __schema__ = PublicSearchSchema
     page_size = 500
@@ -22,18 +26,22 @@ class PublicSearchManager(Manager):
         sources = self.config.options.get("sources", ["US-PGPUB", "USPAT", "USOCR"])
         page_no = 0
         obj_counter = 0
-        while True:
-            page = public_search_api.run_query(
-                query=query, start=page_no * self.page_size, limit=self.page_size, sort=order_by, sources=sources
-            )
-            for obj in page["patents"]:
-                if self.config.limit and obj_counter >= self.config.limit:
-                    break
-                yield self.__schema__.load(obj)
-                obj_counter += 1
-            page_no += 1
-            if len(page["patents"]) < self.page_size:
-                break
+        try:
+            while True:
+                page = public_search_api.run_query(
+                    query=query, start=page_no * self.page_size, limit=self.page_size, sort=order_by, sources=sources
+                )
+                for obj in page["patents"]:
+                    if self.config.limit and obj_counter >= self.config.limit + self.config.offset:
+                        raise FinishedException()
+                    if obj_counter >= self.config.offset:
+                        yield self.__schema__.load(obj)
+                    obj_counter += 1
+                page_no += 1
+                if len(page["patents"]) < self.page_size:
+                    raise FinishedException
+        except FinishedException:
+            pass
 
     @property
     def _query(self):

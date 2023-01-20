@@ -173,3 +173,17 @@ class TestPublishedApplicationFullText:
         assert pat.global_dossier.app_num == "09089931"
         assert pat.assignments[0].id == "9218-376"
         assert pat.inpadoc.title == "Planarizing technique for multilayered substrates"
+
+    def test_slices(self):
+        pats = PatentBiblio.objects.filter(title="tennis", issue_date="2010-01-01->2010-12-31")
+        assert pats[15] != pats[20]
+        assert pats[0] != pats[1]
+
+    def test_pages(self):
+        pats = PatentBiblio.objects.filter(title="system").limit(525)
+        old_p = None
+        counter = 0
+        for p in pats:
+            counter += 1
+            assert p != old_p
+        assert counter == 525
