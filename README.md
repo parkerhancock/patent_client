@@ -26,6 +26,7 @@ many common IP tasks
 
   - [Patent Public Search][PPS] - Full Support
   - [Patent Examination Data][PEDS] - Full Support
+  - [Global Dossier][GD] - Full Support
   - [Patent Assignment Data][Assignment] - Lookup Support
   - [Patent Trial & Appeal Board API v2][PTAB] - Supports Proceedings, Decisions, and Documents
 
@@ -47,6 +48,7 @@ many common IP tasks
 [PEDS]: https://developer.uspto.gov/api-catalog/ped
 [PTAB]: https://developer.uspto.gov/api-catalog/ptab-api-v2
 [USPTO]: http://developer.uspto.gov
+[GD]: https://globaldossier.uspto.gov
 
 
 ## Installation

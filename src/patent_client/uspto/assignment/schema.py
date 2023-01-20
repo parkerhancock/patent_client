@@ -7,8 +7,6 @@ from yankee.xml.schema import ZipSchema
 
 
 # Schemas
-
-
 class Str(f.String):
     def deserialize(self, elem) -> "Optional[str]":
         result = super().deserialize(elem)
@@ -97,9 +95,6 @@ class AssignmentSchema(Schema):
 
 
 class AssignmentPageSchema(Schema):
-    class Meta:
-        use_model = True
-
     num_found = f.Int(".//response/@numFound")
     docs = f.List(AssignmentSchema, ".//response/doc")
 

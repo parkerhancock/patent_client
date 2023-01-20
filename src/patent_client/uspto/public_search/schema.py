@@ -69,9 +69,6 @@ class DocumentStructureSchema(Schema):
 
 
 class PublicSearchSchema(Schema):
-    class Meta:
-        use_model = True
-
     guid = f.String("guid")
 
     appl_id = f.String("applicationNumber", formatter=format_appl_id)
@@ -213,9 +210,6 @@ class ForeignPriorityApplicationSchema(ZipSchema):
 
 
 class PublicSearchDocumentSchema(Schema):
-    class Meta:
-        use_model = True
-
     guid = f.String("guid")
     publication_number = f.String("pubRefDocNumber")
     publication_date = f.Date("datePublished")

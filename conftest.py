@@ -1,11 +1,12 @@
 import pytest
 from patent_client import session as pc_session
 from patent_client.epo.ops import session as epo_session
+from patent_client.uspto.global_dossier import session as gd_session
 
 
 @pytest.fixture(autouse=True, scope="session")
 def use_test_session():
-    with pc_session.cache_disabled(), epo_session.cache_disabled():
+    with pc_session.cache_disabled(), epo_session.cache_disabled(), gd_session.cache_disabled():
         yield
 
 

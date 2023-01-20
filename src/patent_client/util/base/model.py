@@ -36,11 +36,11 @@ class Model(ModelABC, DataConversion, metaclass=ModelMeta):
     __exclude_fields__ = list()
     __default_fields__ = False
 
-    def __init__(self, *args, **kwargs):
-        try:
-            return super().__init__(*args, **kwargs)
-        except TypeError as e:
-            raise TypeError(f"{e.args[0]}\nargs:{args}\nkwargs:{kwargs}")
+    # def __init__(self, *args, **kwargs):
+    #    try:
+    #        return super().__init__(*args, **kwargs)
+    #    except TypeError as e:
+    #        raise TypeError(f"{e.args[0]}\nargs:{args}\nkwargs:{kwargs}")
 
     def fields(self):
         """Return list of fields"""
