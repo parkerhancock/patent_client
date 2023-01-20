@@ -99,8 +99,24 @@ class PublicSearch(Model):
             us_reference=self.publication_number
         )
 
+    @property
+    def application(self):
+        return get_model("patent_client.uspto.peds.model.USApplication").objects.get(self.appl_id)
+
+    @property
+    def global_dossier(self):
+        return get_model("patent_client.uspto.global_dossier.model.GlobalDossierApplication").objects.get(self.appl_id)
+
+    @property
+    def assignments(self):
+        return get_model("patent_client.uspto.assignment.model.Assignment").objects.filter(appl_id=self.appl_id)
+
+    @property
+    def inpadoc(self):
+        return get_model("patent_client.epo.ops.published.model.Inpadoc").objects.get("US" + self.publication_number)
+
     def download_images(self, path="."):
-        public_search_api.download_image(self, path)
+        return public_search_api.download_image(self, path)
 
 
 @dataclass
@@ -293,7 +309,23 @@ class PublicSearchDocument(Model):
         )
 
     def download_images(self, path="."):
-        public_search_api.download_image(self, path)
+        return public_search_api.download_image(self, path)
+
+    @property
+    def application(self):
+        return get_model("patent_client.uspto.peds.model.USApplication").objects.get(self.appl_id)
+
+    @property
+    def global_dossier(self):
+        return get_model("patent_client.uspto.global_dossier.model.GlobalDossierApplication").objects.get(self.appl_id)
+
+    @property
+    def assignments(self):
+        return get_model("patent_client.uspto.assignment.model.Assignment").objects.filter(appl_id=self.appl_id)
+
+    @property
+    def inpadoc(self):
+        return get_model("patent_client.epo.ops.published.model.Inpadoc").objects.get("US" + self.publication_number)
 
 
 @dataclass

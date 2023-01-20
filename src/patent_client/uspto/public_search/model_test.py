@@ -1,4 +1,5 @@
 from .model import Patent
+from .model import PatentBiblio
 from .model import PublicSearch
 from .model import PublishedApplication
 from .model import PublishedApplicationBiblio
@@ -111,8 +112,9 @@ class TestPatents:
 
     def test_can_get_images(self, tmp_path):
         pat = Patent.objects.get("6103599")
-        pat.download_images(path=tmp_path)
-        assert (tmp_path / "US-6103599-A.pdf").exists()
+        path = pat.download_images(path=tmp_path)
+        assert path == tmp_path / "US-6103599-A.pdf"
+        assert path.exists()
 
 
 class TestPublishedApplicationFullText:
@@ -164,3 +166,10 @@ class TestPublishedApplicationFullText:
         pat = PublishedApplication.objects.get("20090150362")
         pat.download_images(path=tmp_path)
         assert (tmp_path / "US-20090150362-A1.pdf").exists()
+
+    def test_links(self):
+        pat = PatentBiblio.objects.get("6103599")
+        assert pat.application.patent_number == "6103599"
+        assert pat.global_dossier.app_num == "09089931"
+        assert pat.assignments[0].id == "9218-376"
+        assert pat.inpadoc.title == "Planarizing technique for multilayered substrates"
