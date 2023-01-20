@@ -3,7 +3,7 @@ import math
 import re
 import typing
 import warnings
-from collections.abc import Iterable
+from collections.abc import Sequence
 
 from patent_client import session
 from patent_client.util import Manager
@@ -69,7 +69,7 @@ class AssignmentManager(Manager[Assignment]):
             field = self.fields[key]
             query = value
         if field in ["PatentNumber", "ApplicationNumber"]:
-            if isinstance(query, Iterable) and not isinstance(query, str):
+            if isinstance(query, Sequence) and not isinstance(query, str):
                 query = [clean_number(q) for q in query]
             else:
                 query = clean_number(query)
@@ -86,7 +86,7 @@ class AssignmentManager(Manager[Assignment]):
 
         query = {
             "filter": field,
-            "query": " OR ".join(query) if isinstance(query, list) else query,
+            "query": " OR ".join(query) if isinstance(query, Sequence) and not isinstance(query, str) else query,
             "rows": self.page_size,
             "start": page_no * self.page_size,
             "sort": " ".join(sort),

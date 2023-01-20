@@ -4549,4 +4549,75 @@ interactions:
     status:
       code: 200
       message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - application/xml
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - Python Patent Clientbot/3.1.0 (parkerhancock@users.noreply.github.com)
+    method: GET
+    uri: https://assignment-api.uspto.gov/patent/lookup?filter=OwnerName&query=U+OR+S+OR+++OR+W+OR+e+OR+l+OR+l+OR+++OR+S+OR+e+OR+r+OR+v+OR+i+OR+c+OR+e+OR+s&rows=20&start=0&sort=&facet=False
+  response:
+    body:
+      string: "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<response>\n\n<lst name=\"responseHeader\">\n
+        \ <bool name=\"zkConnected\">true</bool>\n  <int name=\"status\">0</int>\n
+        \ <int name=\"QTime\">11215</int>\n  <lst name=\"params\">\n    <str name=\"q\">patAssigneeName:(U
+        OR S OR   OR W OR e OR l OR l OR   OR S OR e OR r OR v OR i OR c OR e OR s)</str>\n
+        \   <str name=\"qt\">/apisearch</str>\n    <str name=\"start\">0</str>\n    <str
+        name=\"sort\">patAssignorEarliestExDate desc</str>\n    <str name=\"rows\">20</str>\n
+        \   <str name=\"wt\">javabin</str>\n    <str name=\"version\">2</str>\n  </lst>\n</lst>\n<result
+        name=\"response\" numFound=\"0\" start=\"0\">\n</result>\n<lst name=\"facet_counts\">\n
+        \ <lst name=\"facet_queries\">\n    <int name=\"conveyanceText:&quot;ASSIGNMENT
+        OF ASSIGNORS INTEREST&quot;\">0</int>\n    <int name=\"conveyanceText:&quot;SECURITY
+        INTEREST&quot;\">0</int>\n    <int name=\"conveyanceText:&quot;NUNC PRO TUNC
+        ASSIGNMENT&quot;\">0</int>\n    <int name=\"conveyanceText:&quot;RELEASE BY
+        SECURED PARTY&quot;\">0</int>\n    <int name=\"conveyanceText:&quot;MERGER&quot;\">0</int>\n
+        \   <int name=\"conveyanceText:&quot;CHANGE OF NAME&quot;\">0</int>\n    <int
+        name=\"conveyanceText:&quot;MERGER AND CHANGE OF NAME&quot;\">0</int>\n    <int
+        name=\"conveyanceText:&quot;LICENSE&quot;\">0</int>\n    <int name=\"conveyanceText:&quot;LIEN&quot;\">0</int>\n
+        \   <int name=\"conveyanceText:&quot;MORTGAGE&quot;\">0</int>\n    <int name=\"conveyanceText:&quot;OPTION&quot;\">0</int>\n
+        \   <int name=\"conveyanceText:&quot;DECREE OF DISTRIBUTION&quot;\">0</int>\n
+        \   <int name=\"conveyanceText:&quot;LETTERS OF TESTAMENTARY&quot;\">0</int>\n
+        \   <int name=\"conveyanceText:&quot;LETTERS OF ADMINISTRATION&quot;\">0</int>\n
+        \   <int name=\"conveyanceText:&quot;COURT APPOINTMENT&quot;\">0</int>\n    <int
+        name=\"conveyanceText:&quot;CONDITIONAL ASSIGNMENT&quot;\">0</int>\n    <int
+        name=\"conveyanceText:&quot;COURT ORDER&quot;\">0</int>\n  </lst>\n  <lst
+        name=\"facet_fields\">\n    <lst name=\"patAssigneeCityFacet\"/>\n    <lst
+        name=\"patAssigneeStateFacet\"/>\n    <lst name=\"patAssigneePostcodeFacet\"/>\n
+        \   <lst name=\"patAssigneeCountryNameFacet\"/>\n    <lst name=\"patAssigneeNameFacet\"/>\n
+        \   <lst name=\"corrNameFacet\"/>\n    <lst name=\"patAssignorNameFacet\"/>\n
+        \   <lst name=\"applNum\"/>\n    <lst name=\"patNum\"/>\n    <lst name=\"publNum\"/>\n
+        \   <lst name=\"intlRegNum\"/>\n  </lst>\n  <lst name=\"facet_ranges\">\n
+        \   <lst name=\"patAssignorEarliestExDate\">\n      <lst name=\"counts\"/>\n
+        \     <str name=\"gap\">+1YEAR</str>\n      <int name=\"before\">0</int>\n
+        \     <date name=\"start\">1898-01-01T00:00:00Z</date>\n      <date name=\"end\">2024-01-01T00:00:00Z</date>\n
+        \   </lst>\n  </lst>\n  <lst name=\"facet_intervals\"/>\n  <lst name=\"facet_heatmaps\"/>\n</lst>\n<lst
+        name=\"highlighting\"/>\n</response>\n"
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '2668'
+      Content-Type:
+      - application/xml
+      Date:
+      - Fri, 20 Jan 2023 17:29:03 GMT
+      Server:
+      - Apache-Coyote/1.1
+      Strict-Transport-Security:
+      - max-age=31536000;includeSubDomains
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - DENY
+      X-XSS-Protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: OK
 version: 1

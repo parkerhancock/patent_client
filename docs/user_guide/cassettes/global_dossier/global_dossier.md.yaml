@@ -1,0 +1,260 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Authorization:
+      - REDACTED
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '0'
+      User-Agent:
+      - Python Patent Clientbot/3.1.0 (parkerhancock@users.noreply.github.com)
+    method: OPTIONS
+    uri: https://gd-api2.uspto.gov/patent-family/svc/family/publication/EP/1000000
+  response:
+    body:
+      string: ''
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '0'
+      Date:
+      - Fri, 20 Jan 2023 17:21:17 GMT
+      apigw-requestid:
+      - fDUOMjQSIAMEPSw=
+    status:
+      code: 204
+      message: No Content
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Authorization:
+      - REDACTED
+      Connection:
+      - keep-alive
+      User-Agent:
+      - Python Patent Clientbot/3.1.0 (parkerhancock@users.noreply.github.com)
+    method: GET
+    uri: https://gd-api2.uspto.gov/patent-family/svc/family/publication/EP/1000000
+  response:
+    body:
+      string: '{"country":"EP","internal":"false","corrAppNum":"1000000","id":"1000000","type":"publication","list":[{"appNum":"1010536","appDate":910828800000,"pubList":[{"pubCountry":"NL","pubNum":"1010536","pubDate":958348800000,"kindCode":"C2","pubDateStr":"05/15/2000"}],"countryCode":"NL","docList":null,"kindCode":"A","priorityClaimList":[{"country":"NL","docNumber":"1010536","kindCode":"A"}],"appDateStr":"11/12/1998","docListMsg":null,"docNum":{"country":"NL","docNumber":"1010536","format":null,"date":"11/12/1998","kindCode":"A"},"title":null,"applicantNames":null,"ip5":false},{"appNum":"20685698","appDate":913075200000,"pubList":[{"pubCountry":"US","pubNum":"6093011","pubDate":964483200000,"kindCode":"A","pubDateStr":"07/25/2000"}],"countryCode":"US","docList":null,"kindCode":"A","priorityClaimList":[{"country":"NL","docNumber":"1010536","kindCode":"A"}],"appDateStr":"12/08/1998","docListMsg":"org.springframework.web.client.HttpClientErrorException$NotFound:
+        404 : \"{\"inputDocNum\":null,\"outputDocNum\":null,\"output-number-type\":null,\"output-number-format\":null,\"numberConversionError\":{\"appId\":null,\"message\":\"Unable
+        to convert DocDb Number: US.20685698.A\"}}\"","docNum":{"country":"US","docNumber":"20685698","format":null,"date":"12/08/1998","kindCode":"A"},"title":null,"applicantNames":null,"ip5":true},{"appNum":"99203729","appDate":942019200000,"pubList":[{"pubCountry":"AT","pubNum":"232441","pubDate":1045267200000,"kindCode":"T","pubDateStr":"02/15/2003"}],"countryCode":"AT","docList":{"title":"Apparatus
+        for manufacturing green bricks for the brick manufacturing industry","docs":[{"docCode":"1001","docDesc":"Request
+        for grant of a European patent","docId":"EA2JRLI1DHXBS08","legalDate":942019200000,"docFormat":"PDF","numberOfPages":6,"docCodeDesc":"Application
+        Documents","docGroupCode":"1","legalDateStr":"11/08/1999","shareable":false},{"docCode":"1002","docDesc":"Designation
+        of inventor","docId":"EA2JRLJNDHXBS08","legalDate":942019200000,"docFormat":"PDF","numberOfPages":1,"docCodeDesc":"Written
+        Arguments, Opinions, Incoming amendments, Papers received from applicants","docGroupCode":"4","legalDateStr":"11/08/1999","shareable":false},{"docCode":"SRCH","docDesc":"Letter
+        concerning search matters","docId":"EA2JRLJ0DHXBS08","legalDate":942019200000,"docFormat":"PDF","numberOfPages":3,"docCodeDesc":"No
+        document group defined for this document","docGroupCode":"unknown","legalDateStr":"11/08/1999","shareable":false},{"docCode":"SPEC","docDesc":"Specification
+        filed by fax and/or in non-official language","docId":"EA2JRLKBDHXBS08","legalDate":942019200000,"docFormat":"PDF","numberOfPages":10,"docCodeDesc":"Application
+        Documents","docGroupCode":"1","legalDateStr":"11/08/1999","shareable":false},{"docCode":"DESC","docDesc":"Description","docId":"EA2JRLKODHXBS08","legalDate":942019200000,"docFormat":"PDF","numberOfPages":6,"docCodeDesc":"Application
+        Documents","docGroupCode":"1,4","legalDateStr":"11/08/1999","shareable":false},{"docCode":"CLMS","docDesc":"Claims","docId":"EA2JRLKZDHXBS08","legalDate":942019200000,"docFormat":"PDF","numberOfPages":2,"docCodeDesc":"Application
+        Documents","docGroupCode":"1,4","legalDateStr":"11/08/1999","shareable":false},{"docCode":"ABST","docDesc":"Abstract","docId":"EA2JRLLBDHXBS08","legalDate":942019200000,"docFormat":"PDF","numberOfPages":1,"docCodeDesc":"Application
+        Documents","docGroupCode":"1","legalDateStr":"11/08/1999","shareable":false},{"docCode":"DRAW","docDesc":"Drawings","docId":"EA2JRLLRDHXBS08","legalDate":942019200000,"docFormat":"PDF","numberOfPages":6,"docCodeDesc":"Application
+        Documents","docGroupCode":"1,4","legalDateStr":"11/08/1999","shareable":false},{"docCode":"APPL","docDesc":"Matter
+        concerning the application","docId":"EA4ZMR1TDHXBS04","legalDate":944006400000,"docFormat":"PDF","numberOfPages":1,"docCodeDesc":"Written
+        Arguments, Opinions, Incoming amendments, Papers received from applicants","docGroupCode":"4","legalDateStr":"12/01/1999","shareable":false},{"docCode":"FREP","docDesc":"Document
+        concerning representation","docId":"EA4ZMR2ADHXBS04","legalDate":944006400000,"docFormat":"PDF","numberOfPages":1,"docCodeDesc":"No
+        document group defined for this document","docGroupCode":"unknown","legalDateStr":"12/01/1999","shareable":false},{"docCode":"PRIODOC","docDesc":"Priority
+        document","docId":"EA4ZMR24DHXBS04","legalDate":944006400000,"docFormat":"PDF","numberOfPages":17,"docCodeDesc":"No
+        document group defined for this document","docGroupCode":"unknown","legalDateStr":"12/01/1999","shareable":false},{"docCode":"PRIOTRAN","docDesc":"Translation
+        of priority document","docId":"EA4ZMR3HDHXBS04","legalDate":944006400000,"docFormat":"PDF","numberOfPages":10,"docCodeDesc":"No
+        document group defined for this document","docGroupCode":"unknown","legalDateStr":"12/01/1999","shareable":false},{"docCode":"ABST","docDesc":"Abstract","docId":"EBHJF58CDHXBS05","legalDate":951696000000,"docFormat":"PDF","numberOfPages":1,"docCodeDesc":"Application
+        Documents","docGroupCode":"1","legalDateStr":"02/28/2000","shareable":false},{"docCode":"1507","docDesc":"Communication
+        regarding the transmission of the European search report","docId":"EBH7YL38INPPHIB","legalDate":952560000000,"docFormat":"PDF","numberOfPages":1,"docCodeDesc":"Office
+        Actions Communications","docGroupCode":"2","legalDateStr":"03/09/2000","shareable":false},{"docCode":"P0459","docDesc":"Annex
+        to European Search report","docId":"EBH7YMIVINPPHID","legalDate":952560000000,"docFormat":"PDF","numberOfPages":1,"docCodeDesc":"Documents
+        including citations","docGroupCode":"101","legalDateStr":"03/09/2000","shareable":false},{"docCode":"1503","docDesc":"European
+        search report","docId":"EBH7YMLSINPPHIB","legalDate":952560000000,"docFormat":"PDF","numberOfPages":1,"docCodeDesc":"Office
+        Actions Communications","docGroupCode":"2,101,102,5","legalDateStr":"03/09/2000","shareable":false},{"docCode":"1133","docDesc":"Notification
+        of forthcoming publication","docId":"EBL2KXTXINPPHIB","legalDate":954892800000,"docFormat":"PDF","numberOfPages":1,"docCodeDesc":"Office
+        Actions Communications","docGroupCode":"2","legalDateStr":"04/05/2000","shareable":false},{"docCode":"FREP","docDesc":"Document
+        concerning representation","docId":"EBNZTATODHXBS04","legalDate":955411200000,"docFormat":"PDF","numberOfPages":1,"docCodeDesc":"No
+        document group defined for this document","docGroupCode":"unknown","legalDateStr":"04/11/2000","shareable":false},{"docCode":"FREP","docDesc":"Document
+        concerning representation","docId":"EBOJJXREDHXBS13","legalDate":955324800000,"docFormat":"PDF","numberOfPages":1,"docCodeDesc":"No
+        document group defined for this document","docGroupCode":"unknown","legalDateStr":"04/10/2000","shareable":false},{"docCode":"1081","docDesc":"Reminder
+        period for payment of examination fee/designation fee and correction of deficiencies
+        in Written Opinion/amendment","docId":"EBSXC9T8INPPHIB","legalDate":959040000000,"docFormat":"PDF","numberOfPages":2,"docCodeDesc":"Office
+        Actions Communications","docGroupCode":"2","legalDateStr":"05/23/2000","shareable":false},{"docCode":"FREP","docDesc":"Document
+        concerning representation","docId":"ECGJQI6ADHXBS16","legalDate":972604800000,"docFormat":"PDF","numberOfPages":1,"docCodeDesc":"No
+        document group defined for this document","docGroupCode":"unknown","legalDateStr":"10/27/2000","shareable":false},{"docCode":"2004","docDesc":"Communication
+        about intention to grant a European patent","docId":"EEJVG18WMH21264","legalDate":1019520000000,"docFormat":"PDF","numberOfPages":2,"docCodeDesc":"Office
+        Actions Communications","docGroupCode":"23,2","legalDateStr":"04/23/2002","shareable":false},{"docCode":"2056","docDesc":"Bibliographic
+        data of the European patent application","docId":"EEJVG2ABMH21264","legalDate":1019520000000,"docFormat":"PDF","numberOfPages":1,"docCodeDesc":"Office
+        Actions Communications","docGroupCode":"2,102","legalDateStr":"04/23/2002","shareable":false},{"docCode":"DREX","docDesc":"Text
+        intended for grant","docId":"EEJVG2CDMH21264","legalDate":1019520000000,"docFormat":"PDF","numberOfPages":14,"docCodeDesc":"Office
+        Actions Communications","docGroupCode":"2","legalDateStr":"04/23/2002","shareable":false},{"docCode":"AGRA31","docDesc":"Approval
+        to announcement of intention to grant a European patent","docId":"EEZUDRHUDHXBS02","legalDate":1027900800000,"docFormat":"PDF","numberOfPages":1,"docCodeDesc":"Written
+        Arguments, Opinions, Incoming amendments, Papers received from applicants","docGroupCode":"4","legalDateStr":"07/29/2002","shareable":false},{"docCode":"2005","docDesc":"Invitation
+        to pay the fees for intended grant","docId":"EEZ471NBDHEPLEI","legalDate":1028678400000,"docFormat":"PDF","numberOfPages":3,"docCodeDesc":"Office
+        Actions Communications","docGroupCode":"2","legalDateStr":"08/07/2002","shareable":false},{"docCode":"IGRA7","docDesc":"Filing
+        of the translations of the claims","docId":"EE8ZV40RDHXBS03","legalDate":1033430400000,"docFormat":"PDF","numberOfPages":1,"docCodeDesc":"Written
+        Arguments, Opinions, Incoming amendments, Papers received from applicants","docGroupCode":"4","legalDateStr":"10/01/2002","shareable":false},{"docCode":"CLMS","docDesc":"Claims","docId":"EE8ZV40WDHXBS03","legalDate":1033430400000,"docFormat":"PDF","numberOfPages":2,"docCodeDesc":"Application
+        Documents","docGroupCode":"1,4","legalDateStr":"10/01/2002","shareable":false},{"docCode":"CLMS","docDesc":"Claims","docId":"EE8ZV40ZDHXBS03","legalDate":1033430400000,"docFormat":"PDF","numberOfPages":2,"docCodeDesc":"Application
+        Documents","docGroupCode":"1,4","legalDateStr":"10/01/2002","shareable":false},{"docCode":"2006","docDesc":"Decision
+        to grant a European patent","docId":"EFK9EIOKDHEPLEI","legalDate":1041897600000,"docFormat":"PDF","numberOfPages":2,"docCodeDesc":"Office
+        Actions Communications","docGroupCode":"23,2","legalDateStr":"01/07/2003","shareable":false},{"docCode":"2057","docDesc":"Communication
+        regarding the expiry of opposition period","docId":"EGY4W09VDHEPLEI","legalDate":1071619200000,"docFormat":"PDF","numberOfPages":1,"docCodeDesc":"Office
+        Actions Communications","docGroupCode":"23,2","legalDateStr":"12/17/2003","shareable":false}],"country":"EP","docNumber":"99203729.A","message":null,"applicantNames":["Beheermaatschappij
+        De Boer Nijmegen B.V., "],"oaIndCount":3,"officeActionDocs":[{"docCode":"2004","docDesc":"Communication
+        about intention to grant a European patent","docId":"EEJVG18WMH21264","legalDate":1019520000000,"docFormat":"PDF","numberOfPages":2,"docCodeDesc":"Office
+        Actions Communications","docGroupCode":"23,2","legalDateStr":"04/23/2002","shareable":false},{"docCode":"2006","docDesc":"Decision
+        to grant a European patent","docId":"EFK9EIOKDHEPLEI","legalDate":1041897600000,"docFormat":"PDF","numberOfPages":2,"docCodeDesc":"Office
+        Actions Communications","docGroupCode":"23,2","legalDateStr":"01/07/2003","shareable":false},{"docCode":"2057","docDesc":"Communication
+        regarding the expiry of opposition period","docId":"EGY4W09VDHEPLEI","legalDate":1071619200000,"docFormat":"PDF","numberOfPages":1,"docCodeDesc":"Office
+        Actions Communications","docGroupCode":"23,2","legalDateStr":"12/17/2003","shareable":false}]},"kindCode":"T","priorityClaimList":[{"country":"NL","docNumber":"1010536","kindCode":"A"}],"appDateStr":"11/08/1999","docListMsg":null,"docNum":{"country":"AT","docNumber":"99203729","format":null,"date":"11/08/1999","kindCode":"T"},"title":null,"applicantNames":null,"ip5":false},{"appNum":"69905327","appDate":942019200000,"pubList":[{"pubCountry":"DE","pubNum":"69905327","pubDate":1048118400000,"kindCode":"D1","pubDateStr":"03/20/2003"}],"countryCode":"DE","docList":null,"kindCode":"T","priorityClaimList":[{"country":"NL","docNumber":"1010536","kindCode":"A"}],"appDateStr":"11/08/1999","docListMsg":null,"docNum":{"country":"DE","docNumber":"69905327","format":null,"date":"11/08/1999","kindCode":"T"},"title":null,"applicantNames":null,"ip5":false},{"appNum":"99203729","appDate":942019200000,"pubList":[{"pubCountry":"EP","pubNum":"1000000","pubDate":958521600000,"kindCode":"A1","pubDateStr":"05/17/2000"},{"pubCountry":"EP","pubNum":"1000000","pubDate":1045008000000,"kindCode":"B1","pubDateStr":"02/12/2003"}],"countryCode":"EP","docList":{"title":"Apparatus
+        for manufacturing green bricks for the brick manufacturing industry","docs":[{"docCode":"1001","docDesc":"Request
+        for grant of a European patent","docId":"EA2JRLI1DHXBS08","legalDate":942019200000,"docFormat":"PDF","numberOfPages":6,"docCodeDesc":"Application
+        Documents","docGroupCode":"1","legalDateStr":"11/08/1999","shareable":false},{"docCode":"1002","docDesc":"Designation
+        of inventor","docId":"EA2JRLJNDHXBS08","legalDate":942019200000,"docFormat":"PDF","numberOfPages":1,"docCodeDesc":"Written
+        Arguments, Opinions, Incoming amendments, Papers received from applicants","docGroupCode":"4","legalDateStr":"11/08/1999","shareable":false},{"docCode":"SRCH","docDesc":"Letter
+        concerning search matters","docId":"EA2JRLJ0DHXBS08","legalDate":942019200000,"docFormat":"PDF","numberOfPages":3,"docCodeDesc":"No
+        document group defined for this document","docGroupCode":"unknown","legalDateStr":"11/08/1999","shareable":false},{"docCode":"SPEC","docDesc":"Specification
+        filed by fax and/or in non-official language","docId":"EA2JRLKBDHXBS08","legalDate":942019200000,"docFormat":"PDF","numberOfPages":10,"docCodeDesc":"Application
+        Documents","docGroupCode":"1","legalDateStr":"11/08/1999","shareable":false},{"docCode":"DESC","docDesc":"Description","docId":"EA2JRLKODHXBS08","legalDate":942019200000,"docFormat":"PDF","numberOfPages":6,"docCodeDesc":"Application
+        Documents","docGroupCode":"1,4","legalDateStr":"11/08/1999","shareable":false},{"docCode":"CLMS","docDesc":"Claims","docId":"EA2JRLKZDHXBS08","legalDate":942019200000,"docFormat":"PDF","numberOfPages":2,"docCodeDesc":"Application
+        Documents","docGroupCode":"1,4","legalDateStr":"11/08/1999","shareable":false},{"docCode":"ABST","docDesc":"Abstract","docId":"EA2JRLLBDHXBS08","legalDate":942019200000,"docFormat":"PDF","numberOfPages":1,"docCodeDesc":"Application
+        Documents","docGroupCode":"1","legalDateStr":"11/08/1999","shareable":false},{"docCode":"DRAW","docDesc":"Drawings","docId":"EA2JRLLRDHXBS08","legalDate":942019200000,"docFormat":"PDF","numberOfPages":6,"docCodeDesc":"Application
+        Documents","docGroupCode":"1,4","legalDateStr":"11/08/1999","shareable":false},{"docCode":"APPL","docDesc":"Matter
+        concerning the application","docId":"EA4ZMR1TDHXBS04","legalDate":944006400000,"docFormat":"PDF","numberOfPages":1,"docCodeDesc":"Written
+        Arguments, Opinions, Incoming amendments, Papers received from applicants","docGroupCode":"4","legalDateStr":"12/01/1999","shareable":false},{"docCode":"FREP","docDesc":"Document
+        concerning representation","docId":"EA4ZMR2ADHXBS04","legalDate":944006400000,"docFormat":"PDF","numberOfPages":1,"docCodeDesc":"No
+        document group defined for this document","docGroupCode":"unknown","legalDateStr":"12/01/1999","shareable":false},{"docCode":"PRIODOC","docDesc":"Priority
+        document","docId":"EA4ZMR24DHXBS04","legalDate":944006400000,"docFormat":"PDF","numberOfPages":17,"docCodeDesc":"No
+        document group defined for this document","docGroupCode":"unknown","legalDateStr":"12/01/1999","shareable":false},{"docCode":"PRIOTRAN","docDesc":"Translation
+        of priority document","docId":"EA4ZMR3HDHXBS04","legalDate":944006400000,"docFormat":"PDF","numberOfPages":10,"docCodeDesc":"No
+        document group defined for this document","docGroupCode":"unknown","legalDateStr":"12/01/1999","shareable":false},{"docCode":"ABST","docDesc":"Abstract","docId":"EBHJF58CDHXBS05","legalDate":951696000000,"docFormat":"PDF","numberOfPages":1,"docCodeDesc":"Application
+        Documents","docGroupCode":"1","legalDateStr":"02/28/2000","shareable":false},{"docCode":"1507","docDesc":"Communication
+        regarding the transmission of the European search report","docId":"EBH7YL38INPPHIB","legalDate":952560000000,"docFormat":"PDF","numberOfPages":1,"docCodeDesc":"Office
+        Actions Communications","docGroupCode":"2","legalDateStr":"03/09/2000","shareable":false},{"docCode":"P0459","docDesc":"Annex
+        to European Search report","docId":"EBH7YMIVINPPHID","legalDate":952560000000,"docFormat":"PDF","numberOfPages":1,"docCodeDesc":"Documents
+        including citations","docGroupCode":"101","legalDateStr":"03/09/2000","shareable":false},{"docCode":"1503","docDesc":"European
+        search report","docId":"EBH7YMLSINPPHIB","legalDate":952560000000,"docFormat":"PDF","numberOfPages":1,"docCodeDesc":"Office
+        Actions Communications","docGroupCode":"2,101,102,5","legalDateStr":"03/09/2000","shareable":false},{"docCode":"1133","docDesc":"Notification
+        of forthcoming publication","docId":"EBL2KXTXINPPHIB","legalDate":954892800000,"docFormat":"PDF","numberOfPages":1,"docCodeDesc":"Office
+        Actions Communications","docGroupCode":"2","legalDateStr":"04/05/2000","shareable":false},{"docCode":"FREP","docDesc":"Document
+        concerning representation","docId":"EBNZTATODHXBS04","legalDate":955411200000,"docFormat":"PDF","numberOfPages":1,"docCodeDesc":"No
+        document group defined for this document","docGroupCode":"unknown","legalDateStr":"04/11/2000","shareable":false},{"docCode":"FREP","docDesc":"Document
+        concerning representation","docId":"EBOJJXREDHXBS13","legalDate":955324800000,"docFormat":"PDF","numberOfPages":1,"docCodeDesc":"No
+        document group defined for this document","docGroupCode":"unknown","legalDateStr":"04/10/2000","shareable":false},{"docCode":"1081","docDesc":"Reminder
+        period for payment of examination fee/designation fee and correction of deficiencies
+        in Written Opinion/amendment","docId":"EBSXC9T8INPPHIB","legalDate":959040000000,"docFormat":"PDF","numberOfPages":2,"docCodeDesc":"Office
+        Actions Communications","docGroupCode":"2","legalDateStr":"05/23/2000","shareable":false},{"docCode":"FREP","docDesc":"Document
+        concerning representation","docId":"ECGJQI6ADHXBS16","legalDate":972604800000,"docFormat":"PDF","numberOfPages":1,"docCodeDesc":"No
+        document group defined for this document","docGroupCode":"unknown","legalDateStr":"10/27/2000","shareable":false},{"docCode":"2004","docDesc":"Communication
+        about intention to grant a European patent","docId":"EEJVG18WMH21264","legalDate":1019520000000,"docFormat":"PDF","numberOfPages":2,"docCodeDesc":"Office
+        Actions Communications","docGroupCode":"23,2","legalDateStr":"04/23/2002","shareable":false},{"docCode":"2056","docDesc":"Bibliographic
+        data of the European patent application","docId":"EEJVG2ABMH21264","legalDate":1019520000000,"docFormat":"PDF","numberOfPages":1,"docCodeDesc":"Office
+        Actions Communications","docGroupCode":"2,102","legalDateStr":"04/23/2002","shareable":false},{"docCode":"DREX","docDesc":"Text
+        intended for grant","docId":"EEJVG2CDMH21264","legalDate":1019520000000,"docFormat":"PDF","numberOfPages":14,"docCodeDesc":"Office
+        Actions Communications","docGroupCode":"2","legalDateStr":"04/23/2002","shareable":false},{"docCode":"AGRA31","docDesc":"Approval
+        to announcement of intention to grant a European patent","docId":"EEZUDRHUDHXBS02","legalDate":1027900800000,"docFormat":"PDF","numberOfPages":1,"docCodeDesc":"Written
+        Arguments, Opinions, Incoming amendments, Papers received from applicants","docGroupCode":"4","legalDateStr":"07/29/2002","shareable":false},{"docCode":"2005","docDesc":"Invitation
+        to pay the fees for intended grant","docId":"EEZ471NBDHEPLEI","legalDate":1028678400000,"docFormat":"PDF","numberOfPages":3,"docCodeDesc":"Office
+        Actions Communications","docGroupCode":"2","legalDateStr":"08/07/2002","shareable":false},{"docCode":"IGRA7","docDesc":"Filing
+        of the translations of the claims","docId":"EE8ZV40RDHXBS03","legalDate":1033430400000,"docFormat":"PDF","numberOfPages":1,"docCodeDesc":"Written
+        Arguments, Opinions, Incoming amendments, Papers received from applicants","docGroupCode":"4","legalDateStr":"10/01/2002","shareable":false},{"docCode":"CLMS","docDesc":"Claims","docId":"EE8ZV40WDHXBS03","legalDate":1033430400000,"docFormat":"PDF","numberOfPages":2,"docCodeDesc":"Application
+        Documents","docGroupCode":"1,4","legalDateStr":"10/01/2002","shareable":false},{"docCode":"CLMS","docDesc":"Claims","docId":"EE8ZV40ZDHXBS03","legalDate":1033430400000,"docFormat":"PDF","numberOfPages":2,"docCodeDesc":"Application
+        Documents","docGroupCode":"1,4","legalDateStr":"10/01/2002","shareable":false},{"docCode":"2006","docDesc":"Decision
+        to grant a European patent","docId":"EFK9EIOKDHEPLEI","legalDate":1041897600000,"docFormat":"PDF","numberOfPages":2,"docCodeDesc":"Office
+        Actions Communications","docGroupCode":"23,2","legalDateStr":"01/07/2003","shareable":false},{"docCode":"2057","docDesc":"Communication
+        regarding the expiry of opposition period","docId":"EGY4W09VDHEPLEI","legalDate":1071619200000,"docFormat":"PDF","numberOfPages":1,"docCodeDesc":"Office
+        Actions Communications","docGroupCode":"23,2","legalDateStr":"12/17/2003","shareable":false}],"country":"EP","docNumber":"99203729.A","message":null,"applicantNames":["Beheermaatschappij
+        De Boer Nijmegen B.V., "],"oaIndCount":3,"officeActionDocs":[{"docCode":"2004","docDesc":"Communication
+        about intention to grant a European patent","docId":"EEJVG18WMH21264","legalDate":1019520000000,"docFormat":"PDF","numberOfPages":2,"docCodeDesc":"Office
+        Actions Communications","docGroupCode":"23,2","legalDateStr":"04/23/2002","shareable":false},{"docCode":"2006","docDesc":"Decision
+        to grant a European patent","docId":"EFK9EIOKDHEPLEI","legalDate":1041897600000,"docFormat":"PDF","numberOfPages":2,"docCodeDesc":"Office
+        Actions Communications","docGroupCode":"23,2","legalDateStr":"01/07/2003","shareable":false},{"docCode":"2057","docDesc":"Communication
+        regarding the expiry of opposition period","docId":"EGY4W09VDHEPLEI","legalDate":1071619200000,"docFormat":"PDF","numberOfPages":1,"docCodeDesc":"Office
+        Actions Communications","docGroupCode":"23,2","legalDateStr":"12/17/2003","shareable":false}]},"kindCode":"A","priorityClaimList":[{"country":"NL","docNumber":"1010536","kindCode":"A"}],"appDateStr":"11/08/1999","docListMsg":null,"docNum":{"country":"EP","docNumber":"99203729","format":null,"date":"11/08/1999","kindCode":"A"},"title":null,"applicantNames":null,"ip5":true}]}'
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '22140'
+      Content-Type:
+      - application/json
+      Date:
+      - Fri, 20 Jan 2023 17:21:18 GMT
+      apigw-requestid:
+      - fDUONi34oAMEP3A=
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Authorization:
+      - REDACTED
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '0'
+      User-Agent:
+      - Python Patent Clientbot/3.1.0 (parkerhancock@users.noreply.github.com)
+    method: OPTIONS
+    uri: https://gd-api2.uspto.gov/patent-family/svc/family/application/US/16123456
+  response:
+    body:
+      string: ''
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '0'
+      Date:
+      - Fri, 20 Jan 2023 17:34:15 GMT
+      apigw-requestid:
+      - fDWHxiTSoAMEPFw=
+    status:
+      code: 204
+      message: No Content
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Authorization:
+      - REDACTED
+      Connection:
+      - keep-alive
+      User-Agent:
+      - Python Patent Clientbot/3.1.0 (parkerhancock@users.noreply.github.com)
+    method: GET
+    uri: https://gd-api2.uspto.gov/patent-family/svc/family/application/US/16123456
+  response:
+    body:
+      string: '{"country":"US","internal":"false","corrAppNum":"16123456","id":"16123456","type":"application","list":[{"appNum":"2017187096","appDate":1506470400000,"pubList":[{"pubCountry":"JP","pubNum":"2019061579","pubDate":1555545600000,"kindCode":"A","pubDateStr":"04/18/2019"},{"pubCountry":"JP","pubNum":"6768620","pubDate":1602633600000,"kindCode":"B2","pubDateStr":"10/14/2020"}],"countryCode":"JP","docList":null,"kindCode":"A","priorityClaimList":[{"country":"JP","docNumber":"2017187096","kindCode":"A"}],"appDateStr":"09/27/2017","docListMsg":null,"docNum":{"country":"JP","docNumber":"2017187096","format":null,"date":"09/27/2017","kindCode":"A"},"title":null,"applicantNames":null,"ip5":true},{"appNum":"16123456","appDate":1536192000000,"pubList":[{"pubCountry":"US","pubNum":"20190095759","pubDate":1553731200000,"kindCode":"A1","pubDateStr":"03/28/2019"},{"pubCountry":"US","pubNum":"10902286","pubDate":1611619200000,"kindCode":"B2","pubDateStr":"01/26/2021"}],"countryCode":"US","docList":null,"kindCode":"A","priorityClaimList":[{"country":"JP","docNumber":"2017187096","kindCode":"A"}],"appDateStr":"09/06/2018","docListMsg":null,"docNum":{"country":"US","docNumber":"201816123456","format":null,"date":"09/06/2018","kindCode":"A"},"title":null,"applicantNames":null,"ip5":true},{"appNum":"17130468","appDate":1608595200000,"pubList":[{"pubCountry":"US","pubNum":"20210110206","pubDate":1618444800000,"kindCode":"A1","pubDateStr":"04/15/2021"}],"countryCode":"US","docList":null,"kindCode":"A","priorityClaimList":[{"country":"US","docNumber":"16123456","kindCode":"A"},{"country":"US","docNumber":"17130468","kindCode":"A"},{"country":"JP","docNumber":"2017187096","kindCode":"A"}],"appDateStr":"12/22/2020","docListMsg":null,"docNum":{"country":"US","docNumber":"202017130468","format":null,"date":"12/22/2020","kindCode":"A"},"title":null,"applicantNames":null,"ip5":true}]}'
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1885'
+      Content-Type:
+      - application/json
+      Date:
+      - Fri, 20 Jan 2023 17:34:16 GMT
+      apigw-requestid:
+      - fDWHyjugoAMEPiw=
+    status:
+      code: 200
+      message: OK
+version: 1

@@ -4,6 +4,7 @@
 
 uspto/peds
 uspto/fulltext
+uspto/global_dossier
 uspto/assignment
 uspto/ptab
 

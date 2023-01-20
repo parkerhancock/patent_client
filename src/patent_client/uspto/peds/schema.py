@@ -150,9 +150,6 @@ class ForeignPrioritySchema(Schema):
 
 
 class DocumentSchema(Schema):
-    class Meta:
-        use_model = True
-
     access_level_category = f.Str()
     appl_id = f.Str("applicationNumberText")
     category = f.Str("documentCategory")
@@ -227,9 +224,6 @@ class AssignmentSchema(Schema):
 
 
 class USApplicationSchema(Schema):
-    class Meta:
-        use_model = True
-
     # Basic Bibliographic Data
     appl_id = f.Str()
     app_confr_number = f.Str()
@@ -274,9 +268,6 @@ class USApplicationSchema(Schema):
 
 
 class PedsPageSchema(Schema):
-    class Meta:
-        use_model = True
-
     index_last_updated = f.Date("queryResults.indexLastUpdatedDate")
     num_found = f.Int("queryResults.searchResponse.response.numFound")
     applications = f.List(USApplicationSchema, "queryResults.searchResponse.response.docs")
