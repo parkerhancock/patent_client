@@ -134,8 +134,8 @@ class Document(Model):
     doc_group_code: "str" = None
     shareable: "bool" = None
 
-    def download(self, path="."):
-        out_path = Path(path).expanduser() / f'{self.date.isoformat()} - {self.doc_desc.replace("/", "_")}'
+    def download(self, filename="", path="."):
+        out_path = Path(path).expanduser() / (f'{self.date.isoformat()} - {self.doc_desc.replace("/", "_")}' if not filename else filename)
         return global_dossier_api.get_document(self.country, self.doc_number, self.doc_id, out_path=out_path)
 
 
