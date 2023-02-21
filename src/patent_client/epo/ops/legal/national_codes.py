@@ -38,7 +38,7 @@ def has_current_spreadsheet():
     try:
         fname = cur.execute("SELECT * FROM meta").fetchone()[0]
         date_string = re.search(r"legal_code_descriptions_(\d+)\.xlsx", fname).group(1)
-        date = datetime.datetime.strptime(date_string, "%Y%m%d").date()
+        date = datetime.datetime.strptime(date_string, "%Y%W").date()
         age = datetime.datetime.now().date() - date
         logger.debug(f"Legal Code Database is {age} days old")
         return age.days <= 30
