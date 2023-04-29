@@ -8,24 +8,24 @@ expected_dir = Path(__file__).parent / "test" / "expected"
 def test_doc_example_biblio():
     result = PublishedApi.biblio.get_biblio("EP1000000.A1", format="epodoc")
     expected_file = expected_dir / "ep1000000_biblio_result.xml"
-    # expected_file.write_text(result)
-    expected = expected_file.read_text()
+    expected_file.write_text(result, encoding="utf8")
+    expected = expected_file.read_text(encoding="utf8")
     assert result == expected
 
 
 def test_doc_example_full_cycle():
     result = PublishedApi.biblio.get_full_cycle("EP1000000.A1", format="epodoc")
     expected_file = expected_dir / "ep1000000_full_cycle_result.xml"
-    # expected_file.write_text(result)
-    expected = expected_file.read_text()
+    expected_file.write_text(result, encoding="utf8")
+    expected = expected_file.read_text(encoding="utf8")
     assert result == expected
 
 
 def test_doc_example_abstract():
     result = PublishedApi.biblio.get_abstract("EP1000000.A1", format="epodoc")
     expected_file = expected_dir / "ep1000000_abstract_result.xml"
-    # expected_file.write_text(result)
-    expected = expected_file.read_text()
+    expected_file.write_text(result, encoding="utf8")
+    expected = expected_file.read_text(encoding="utf8")
     assert result == expected
 
 
