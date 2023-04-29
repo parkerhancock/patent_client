@@ -30,7 +30,7 @@ class GlobalDossierApplicationSchema(Schema):
     kind_code = f.Str()
     doc_num = GlobalDossierDocumentNumberSchema("docNum")
     title = f.Str()
-    applicantNames = f.Str()
+    applicant_names = f.Str()
     ip_5 = f.Bool("ip5")
     priority_claim_list = f.List(GlobalDossierPriorityClaimSchema)
     pub_list = f.List(GlobalDossierPublicationSchema)

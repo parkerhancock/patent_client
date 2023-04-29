@@ -45,7 +45,7 @@ class GlobalDossierApplication(Model):
     kind_code: "str" = None
     doc_num: "GlobalDossierDocumentNumber" = None
     title: "str" = None
-    applicantNames: "str" = None
+    applicant_names: "str" = None
     ip_5: "bool" = None
     priority_claim_list: "ListCollection[GlobalDossierPriorityClaim]" = field(default_factory=ListCollection)
     pub_list: "ListCollection[GlobalDossierPublication]" = field(default_factory=ListCollection)
