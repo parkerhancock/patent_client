@@ -24,11 +24,11 @@ many common IP tasks
 
 - [United States Patent & Trademark Office][USPTO]
 
-  - [Patent Public Search][PPS] - Full Support
   - [Patent Examination Data][PEDS] - Full Support
   - [Global Dossier][GD] - Full Support
   - [Patent Assignment Data][Assignment] - Lookup Support
   - [Patent Trial & Appeal Board API v2][PTAB] - Supports Proceedings, Decisions, and Documents
+  - ~~[Patent Public Search][PPS] - Full Support~~ (Broken due to USPTO WAF)
 
 
 - [European Patent Office - Open Patent Services][OPS]
@@ -68,16 +68,7 @@ To use the project:
 
 ```python
 # Import the model classes you need
->>> from patent_client import Inpadoc, Assignment, USApplication, PatentBiblio
-
-# Fetch US Patents with the word "tennis" in their title issued in 2010
->>> pats = PatentBiblio.objects.filter(title="tennis", issue_date="2010-01-01->2010-12-31")
->>> len(pats) > 10
-True
-
-# Look at the first one
->>> pats[0]
-PublicationBiblio(publication_number=7841958, publication_date=2010-11-30, patent_title=Modular table tennis game)
+>>> from patent_client import Inpadoc, Assignment, USApplication
 
 # Fetch US Applications
 >>> app = USApplication.objects.get('15710770')
