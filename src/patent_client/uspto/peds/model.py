@@ -347,11 +347,11 @@ class Relationship(Model):
 
 @dataclass
 class ForeignPriority(Model):
-    priority_claim: str
+    priority_claim: str = None
     """The application number of the foreign priority application"""
-    country_name: str
+    country_name: str = None
     """The country in which the foreign priorty application was filed"""
-    filing_date: datetime.date
+    filing_date: datetime.date = None
     """The filing date of the foreign priority application"""
 
 

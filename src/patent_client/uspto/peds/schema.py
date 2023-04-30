@@ -1,9 +1,19 @@
+import datetime
 from collections import defaultdict
 from typing import *
 
+from dateutil.parser import ParserError
 from patent_client.util.format import clean_whitespace
 from yankee.json.schema import fields as f
 from yankee.json.schema import Schema
+
+
+class UsptoDate(f.Date):
+    def deserialize(self, elem) -> "Optional[datetime.date]":
+        try:
+            return super().deserialize(elem)
+        except ParserError:
+            return datetime.datetime(1900, 1, 1).date()
 
 
 class InventorNameField(f.Combine):
@@ -47,7 +57,7 @@ class ApplicantSchema(PersonSchema):
 
 
 class TransactionSchema(Schema):
-    date = f.Date("recordDate")
+    date = UsptoDate("recordDate")
     code = f.Str()
     description = f.Str()
 
@@ -55,7 +65,7 @@ class TransactionSchema(Schema):
 class ChildSchema(Schema):
     __model_name__ = "Relationship"
     parent_appl_id = f.Str("applicationNumberText")
-    child_app_filing_date = f.Date("filingDate")
+    child_app_filing_date = UsptoDate("filingDate")
     child_app_status = f.Str("applicationStatus")
     child_appl_id = f.Str("claimApplicationNumberText")
     relationship = f.Str(
@@ -68,7 +78,7 @@ class ParentSchema(Schema):
     __model_name__ = "Relationship"
     parent_appl_id = f.Str("claimApplicationNumberText")
     child_appl_id = f.Str("applicationNumberText")
-    parent_app_filing_date = f.Date("filingDate")
+    parent_app_filing_date = UsptoDate("filingDate")
     parent_app_status = f.Str("applicationStatus")
     relationship = f.Str(
         "applicationStatusDescription",
@@ -85,7 +95,7 @@ class OptionalFloat(f.Int):
 
 
 class PtaPteHistorySchema(Schema):
-    date = f.Date("ptaOrPteDate")
+    date = UsptoDate("ptaOrPteDate")
     description = f.String("contentsDescription")
     number = f.Float()
     pto_days = OptionalFloat()
@@ -146,7 +156,7 @@ class AttorneySchema(Schema):
 class ForeignPrioritySchema(Schema):
     priority_claim = f.Str()
     country_name = f.Str()
-    filing_date = f.Date(dt_format="%m-%d-%Y")
+    filing_date = UsptoDate(dt_format="%m-%d-%Y")
 
 
 class DocumentSchema(Schema):
@@ -156,7 +166,7 @@ class DocumentSchema(Schema):
     code = f.Str(data_key="documentCode")
     description = f.Str("documentDescription")
     identifier = f.Str("documentIdentifier")
-    mail_room_date = f.Date()
+    mail_room_date = UsptoDate()
     page_count = f.Int()
     url = f.Str(data_key="pdf_url")
 
@@ -184,7 +194,7 @@ class AddressField(f.Combine):
 
 class AssignorSchema(Schema):
     name = f.Str("assignorName")
-    exec_date = f.Date()
+    exec_date = UsptoDate()
 
 
 class AssigneeAddressField(f.Combine):
@@ -210,9 +220,9 @@ class AssignmentSchema(Schema):
     id = ReelFrameField(data_key=False)
     correspondent = f.Str("addressNameText")
     correspondent_address = AddressField(data_key=False)
-    mail_date = f.Date(null_value="NONE")
-    received_date = f.Date(null_value="NONE")
-    recorded_date = f.Date(null_value="NONE")
+    mail_date = UsptoDate(null_value="NONE")
+    received_date = UsptoDate(null_value="NONE")
+    recorded_date = UsptoDate(null_value="NONE")
     pages = f.Int("pagesCount")
     conveyance_text = f.Str(
         "converyanceName",
@@ -227,7 +237,7 @@ class USApplicationSchema(Schema):
     # Basic Bibliographic Data
     appl_id = f.Str()
     app_confr_number = f.Str()
-    app_filing_date = f.Date()
+    app_filing_date = UsptoDate()
     app_location = f.Str()
     app_type = f.Str()
     app_entity_status = f.Str()
@@ -238,14 +248,14 @@ class USApplicationSchema(Schema):
     patent_title = f.Str()
     # Status Information
     app_status = f.Str()
-    app_status_date = f.Date()
+    app_status_date = UsptoDate()
     # Publication Information
     app_early_pub_number = f.Str()
-    app_early_pub_date = f.Date()
+    app_early_pub_date = UsptoDate()
     patent_number = f.Str()
-    patent_issue_date = f.Date()
+    patent_issue_date = UsptoDate()
     wipo_early_pub_number = f.Str()
-    wipo_early_pub_date = f.Date()
+    wipo_early_pub_date = UsptoDate()
     # Correspondent / Attorney Information
     corr_addr_cust_no = f.Str()
     app_cust_number = f.Str()
@@ -268,6 +278,6 @@ class USApplicationSchema(Schema):
 
 
 class PedsPageSchema(Schema):
-    index_last_updated = f.Date("queryResults.indexLastUpdatedDate")
+    index_last_updated = UsptoDate("queryResults.indexLastUpdatedDate")
     num_found = f.Int("queryResults.searchResponse.response.numFound")
     applications = f.List(USApplicationSchema, "queryResults.searchResponse.response.docs")
