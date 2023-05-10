@@ -24,7 +24,9 @@ class PatentClientSession(requests_cache.CachedSession):
                 "Authorization",
             ],
         )
-        self.headers["User-Agent"] = f"Python Patent Clientbot/{__version__} (parkerhancock@users.noreply.github.com)"
+        self.headers[
+            "User-Agent"
+        ] = f"Mozilla/5.0 Python Patent Clientbot/{__version__} (parkerhancock@users.noreply.github.com)"
         # Install a default retry on the session using urrlib3
         retry = Retry(total=5, backoff_factor=0.2)
         self.mount("https://", HTTPAdapter(max_retries=retry))

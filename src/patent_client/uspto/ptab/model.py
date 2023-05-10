@@ -132,13 +132,13 @@ fname_re = re.compile(r"[<>:\"/\|?*]")
 class PtabDocument(Model):
     __manager__ = "patent_client.uspto.ptab.manager.PtabDocumentManager"
     document_identifier: str = field(repr=False)
-    document_category: str
-    document_type_name: str
-    document_number: int
-    document_name: str
-    document_filing_date: datetime.date
-    proceeding_number: str = field(repr=False)
-    proceeding_type_category: str = field(repr=False)
+    document_category: "Optional[str]" = None
+    document_type_name: "Optional[str]" = None
+    document_number: "Optional[int]" = None
+    document_name: "Optional[str]" = None
+    document_filing_date: "Optional[datetime.date]" = None
+    proceeding_number: "Optional[str]" = field(repr=False, default=None)
+    proceeding_type_category: "Optional[str]" = field(repr=False, default=None)
     title: "Optional[str]" = None
 
     @property

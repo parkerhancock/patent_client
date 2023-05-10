@@ -59,6 +59,7 @@ class PtabManager(Manager, Generic[ModelType]):
 
     def _len(self):
         response = session.get(self.url + self.path, params=self.query())
+        response.raise_for_status()
         return response.json()["recordTotalQuantity"]
 
     def query(self):
