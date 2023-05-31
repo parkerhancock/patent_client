@@ -64,7 +64,7 @@ def get_spreadsheet():
             for chunk in response.iter_content(chunk_size=8192):
                 f.write(chunk)
         return out_path
-    except IndexError:
+    except Exception:
         logger.debug("Could not find live code file - falling back to default dated 2022-11-12")
         return Path(__file__).parent / "legal_code_descriptions_20221112.xlsx"
 
