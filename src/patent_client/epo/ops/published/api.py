@@ -1,7 +1,7 @@
 import logging
 from io import BytesIO
 
-from patent_client.epo.ops.session import session
+from patent_client.epo.ops.session_manager import session
 from yankee.data import AttrDict
 
 

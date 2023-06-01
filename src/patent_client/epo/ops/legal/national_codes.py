@@ -7,7 +7,7 @@ from pathlib import Path
 import lxml.etree as ET
 from openpyxl import load_workbook
 from patent_client import SETTINGS
-from patent_client.epo.ops.session import session
+from patent_client.epo.ops.session_manager import session
 
 dir = Path(SETTINGS.DEFAULT.BASE_DIR).expanduser() / "epo"
 dir.mkdir(exist_ok=True, parents=True)

@@ -1,4 +1,4 @@
-from patent_client.epo.ops.session import session
+from patent_client.epo.ops.session_manager import session
 
 
 class LegalApi:
