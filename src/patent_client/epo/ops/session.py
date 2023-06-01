@@ -26,8 +26,6 @@ class OpsForbiddenError(Exception):
 class OpsSession(PatentClientSession):
     def __init__(self, *args, **kwargs):
         super(OpsSession, self).__init__(*args, **kwargs)
-        self.key: str = SETTINGS.EPO.API_KEY
-        self.secret: str = SETTINGS.EPO.API_SECRET
         self.expires: dt.datetime = dt.datetime.utcnow()
 
     def request(self, *args, **kwargs):
@@ -43,7 +41,7 @@ class OpsSession(PatentClientSession):
             response = super(OpsSession, self).request(
                 "post",
                 auth_url,
-                auth=(self.key, self.secret),
+                auth=(SETTINGS.EPO.API_KEY, SETTINGS.EPO.API_SECRET),
                 data={"grant_type": "client_credentials"},
             )
         if response.status_code == 401:
