@@ -24,10 +24,10 @@ class OpsForbiddenError(Exception):
 
 
 class OpsSession(PatentClientSession):
-    def __init__(self, *args, key=None, secret=None, **kwargs):
+    def __init__(self, *args, **kwargs):
         super(OpsSession, self).__init__(*args, **kwargs)
-        self.key: str = key
-        self.secret: str = secret
+        self.key: str = SETTINGS.EPO.API_KEY
+        self.secret: str = SETTINGS.EPO.API_SECRET
         self.expires: dt.datetime = dt.datetime.utcnow()
 
     def request(self, *args, **kwargs):
@@ -64,4 +64,4 @@ class OpsSession(PatentClientSession):
         return response
 
 
-session = OpsSession(key=SETTINGS.EPO.API_KEY, secret=SETTINGS.EPO.API_SECRET)
+session = OpsSession()
