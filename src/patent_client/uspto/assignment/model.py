@@ -51,7 +51,7 @@ class Assignment(Model):
 
 @dataclass
 class Property(Model):
-    appl_id: str
+    appl_id: "Optional[str]" = None
     invention_title: "Optional[str]" = None
     inventors: "Optional[str]" = None
     # Numbers
