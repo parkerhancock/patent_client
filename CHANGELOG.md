@@ -1,6 +1,6 @@
 # Changelog
 
-## 3.2.4 (2023-06-12)
+## 3.2.6 (2023-06-12)
 - Fixed issue where Assignments would fail if a property was missing an appl_id
 - Run pre-commit hooks
 
