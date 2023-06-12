@@ -78,9 +78,9 @@ class USApplicationManager(Manager[USApplication]):
     def query_params(self, page_no):
         if "query" in self.config.filter:
             query = self.config.filter["query"]
-            query['start'] = page_no * self.page_size + self.config.offset
+            query["start"] = page_no * self.page_size + self.config.offset
             return query
-            
+
         sort_query = ""
         for s in self.config.order_by:
             if s[0] == "-":
