@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import datetime
+import warnings
 from dataclasses import dataclass
 from dataclasses import field
 from typing import *
@@ -71,7 +72,25 @@ class Property(Model):
     @property
     def application(self) -> "patent_client.uspto.peds.model.USApplication":
         """The related US Application"""
-        return get_model("patent_client.uspto.peds.model.USApplication").objects.get(appl_id=self.appl_id)
+        try:
+            appl_id = getattr(self, "appl_id", None)
+            if appl_id is not None:
+                return get_model("patent_client.uspto.peds.model.USApplication").objects.get(appl_id=appl_id)
+            appl_id = getattr(self, "pct_num", None)
+            if appl_id is not None:
+                return get_model("patent_client.uspto.peds.model.USApplication").objects.get(appl_id=appl_id)
+            pub_num = getattr(self, "publ_num", None)
+            if pub_num is not None:
+                return get_model("patent_client.uspto.peds.model.USApplication").objects.get(
+                    app_early_pub_number=pub_num
+                )
+            pat_num = getattr(self, "pat_num", None)
+            if pat_num is not None:
+                return get_model("patent_client.uspto.peds.model.USApplication").objects.get(patent_number=pat_num)
+        except Exception:
+            pass
+        warnings.warn(f"Unable to find application for {self}")
+        return None
 
     @property
     def patent(self) -> "patent_client.uspto.fulltext.patent.model.Patent":

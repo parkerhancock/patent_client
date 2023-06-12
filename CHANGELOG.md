@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.2.4 (2023-06-12)
+- Fixed issue where Assignments would fail if a property was missing an appl_id
+- Run pre-commit hooks
+
 ## 3.1.0 (2023-01-19)
 
 - Added support for USPTO's Public Search feature and related documentation
