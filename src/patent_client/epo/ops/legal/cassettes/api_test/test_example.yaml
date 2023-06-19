@@ -11,7 +11,98 @@ interactions:
       Connection:
       - keep-alive
       User-Agent:
-      - Python Patent Clientbot/3.0.3 (parkerhancock@users.noreply.github.com)
+      - Python Patent Clientbot/3.2.2 (parkerhancock@users.noreply.github.com)
+    method: GET
+    uri: http://ops.epo.org/3.2/rest-services/legal/publication/docdb/EP1000000A1
+  response:
+    body:
+      string: "<error><code>400</code><message>invalid_access_token</message><description>Access
+        token is invalid</description>\n\t\t\t\t</error>\n\t\t\t"
+    headers:
+      Access-Control-Allow-Headers:
+      - Authorization
+      Access-Control-Allow-Methods:
+      - POST
+      Access-Control-Allow-Origin:
+      - '*'
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '129'
+      Content-Type:
+      - application/xml
+      Date:
+      - Thu, 20 Apr 2023 18:56:13 GMT
+      WWW-Authenticate:
+      - 'Bearer realm="null",error="invalid_token",error_description="keymanagement.service.invalid_access_token:
+        Invalid Access Token"'
+    status:
+      code: 400
+      message: Bad Request
+- request:
+    body: grant_type=client_credentials
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Authorization:
+      - REDACTED
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '29'
+      Content-Type:
+      - application/x-www-form-urlencoded
+      User-Agent:
+      - Python Patent Clientbot/3.2.2 (parkerhancock@users.noreply.github.com)
+    method: POST
+    uri: https://ops.epo.org/3.2/auth/accesstoken
+  response:
+    body:
+      string: "{\n  \"refresh_token_expires_in\": \"0\",\n  \"api_product_list\":
+        \"[ops-prod]\",\n  \"api_product_list_json\": [\n    \"ops-prod\"\n  ],\n
+        \ \"organization_name\": \"epo\",\n  \"developer.email\": \"parker.hancock@protonmail.com\",\n
+        \ \"token_type\": \"BearerToken\",\n  \"issued_at\": \"1682016973667\",\n
+        \ \"client_id\": \"XRSKXZUZjTWDfOHvig79oYUn4IqMf2bt\",\n  \"access_token\":
+        \"RcXHrKU8zNpws0p2sA9Zhh7z7XLL\",\n  \"application_name\": \"a2dd7045-d0a4-4046-be5f-4be39eb8a7ec\",\n
+        \ \"scope\": \"core\",\n  \"expires_in\": \"1199\",\n  \"refresh_count\":
+        \"0\",\n  \"status\": \"approved\"\n}"
+    headers:
+      Access-Control-Allow-Headers:
+      - Authorization
+      Access-Control-Allow-Methods:
+      - POST
+      Access-Control-Allow-Origin:
+      - '*'
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '523'
+      Content-Type:
+      - application/json
+      Date:
+      - Thu, 20 Apr 2023 18:56:13 GMT
+      X-EPO-Client-IP:
+      - 38.104.48.227
+      X-EPO-Forwarded:
+      - '[38.104.48.227]'
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Authorization:
+      - REDACTED
+      Connection:
+      - keep-alive
+      User-Agent:
+      - Python Patent Clientbot/3.2.2 (parkerhancock@users.noreply.github.com)
     method: GET
     uri: http://ops.epo.org/3.2/rest-services/legal/publication/docdb/EP1000000A1
   response:
@@ -986,6 +1077,35 @@ interactions:
         \               <ops:L019EP desc=\"DATE first created\">2022-02-02</ops:L019EP>\n
         \               <ops:L500EP>\n                    <ops:L510EP desc=\"Free
         Format Text\">ORIGINAL CODE: 0009261</ops:L510EP>\n                </ops:L500EP>\n
+        \           </ops:legal>\n            <ops:legal code=\"REG \" desc=\"REFERENCE
+        TO A NATIONAL CODE\" infl=\" \" dateMigr=\"00010101\">\n                <ops:pre
+        line=\"00001\">EP    99203729A 2022-09-27REG  REFERENCE TO A NATIONAL CODE
+        Ref Country Code BE</ops:pre>\n                <ops:pre line=\"00002\">EP
+        \   99203729A 2022-09-27REG  REFERENCE TO A NATIONAL CODE Ref Legal Event
+        Code SPCF</ops:pre>\n                <ops:pre line=\"00003\">EP    99203729A
+        2022-09-27REG  REFERENCE TO A NATIONAL CODE Free Format Text PRODUCT NAME:
+        DELAMANIDE; AUTHORISATION NUMBER AND DATE:</ops:pre>\n                <ops:pre
+        line=\"00004\">EP    99203729A 2022-09-27REG  REFERENCE TO A NATIONAL CODE
+        SPC Suppl Protection Certif 2014C/053</ops:pre>\n                <ops:pre
+        line=\"00005\">EP    99203729A 2022-09-27REG  REFERENCE TO A NATIONAL CODE
+        Filing DATE 20140909</ops:pre>\n                <ops:pre line=\"00006\">EP
+        \   99203729A 2022-09-27REG  REFERENCE TO A NATIONAL CODE Expiry DATE 20231010</ops:pre>\n
+        \               <ops:L001EP desc=\"Country Code\">EP</ops:L001EP>\n                <ops:L002EP
+        desc=\"Filing / Published Document\">F</ops:L002EP>\n                <ops:L003EP
+        desc=\"Document Number\">    99203729</ops:L003EP>\n                <ops:L004EP
+        desc=\"Kind Code\">A</ops:L004EP>\n                <ops:L005EP desc=\"IPR
+        Type\">PI</ops:L005EP>\n                <ops:L007EP desc=\"Gazette DATE\">2022-09-27</ops:L007EP>\n
+        \               <ops:L008EP desc=\"Legal Event Code 1\">REG</ops:L008EP>\n
+        \               <ops:L018EP desc=\"DATE last exchanged\">2022-10-22</ops:L018EP>\n
+        \               <ops:L019EP desc=\"DATE first created\">2022-10-17</ops:L019EP>\n
+        \               <ops:L500EP>\n                    <ops:L501EP desc=\"Ref Country
+        Code\">BE</ops:L501EP>\n                    <ops:L502EP desc=\"Ref Legal Event
+        Code\" descData=\"SUPPLEMENTARY PROTECTION CERTIFICATE FILED\" infl=\" \">SPCF</ops:L502EP>\n
+        \                   <ops:L510EP desc=\"Free Format Text\">PRODUCT NAME: DELAMANIDE;
+        AUTHORISATION NUMBER AND DATE:</ops:L510EP>\n                    <ops:L511EP
+        desc=\"SPC Suppl Protection Certif\">2014C/053</ops:L511EP>\n                    <ops:L512EP
+        desc=\"Filing DATE\">20140909</ops:L512EP>\n                    <ops:L513EP
+        desc=\"Expiry DATE\">20231010</ops:L513EP>\n                </ops:L500EP>\n
         \           </ops:legal>\n        </ops:family-member>\n    </ops:patent-family>\n</ops:world-patent-data>"
     headers:
       Access-Control-Allow-Headers:
@@ -999,13 +1119,13 @@ interactions:
       Connection:
       - keep-alive
       Content-Length:
-      - '76104'
+      - '78351'
       Content-Type:
       - application/xml;charset=utf-8
       Date:
-      - Tue, 16 Aug 2022 02:12:04 GMT
+      - Thu, 20 Apr 2023 18:56:14 GMT
       ETag:
-      - '"0b77e1d409b28fa602fd922d8c6e46226"'
+      - '"08854d63fe552f6ebf630d701df47f60f"'
       Pragma:
       - no-cache
       Server:
@@ -1017,18 +1137,18 @@ interactions:
       X-API:
       - ops-v3.2
       X-EPO-Client-IP:
-      - 104.54.160.230
+      - 38.104.48.227
       X-EPO-Forwarded:
-      - '[104.54.160.230]'
+      - '[38.104.48.227]'
       X-Elapsed-Time:
-      - '1646'
+      - '568'
       X-IndividualQuotaPerHour-Used:
-      - '157638'
+      - '78351'
       X-RegisteredQuotaPerWeek-Used:
-      - '1226728'
+      - '78351'
       X-Throttling-Control:
-      - overloaded (images=green:50, inpadoc=green:30, other=green:1000, retrieval=green:50,
-        search=green:5)
+      - busy (images=green:100, inpadoc=green:45, other=green:1000, retrieval=green:100,
+        search=green:15)
     status:
       code: 200
       message: OK

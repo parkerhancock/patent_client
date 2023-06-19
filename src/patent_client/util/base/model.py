@@ -42,9 +42,10 @@ class Model(ModelABC, DataConversion, metaclass=ModelMeta):
     #    except TypeError as e:
     #        raise TypeError(f"{e.args[0]}\nargs:{args}\nkwargs:{kwargs}")
 
-    def fields(self):
+    @classmethod
+    def fields(cls):
         """Return list of fields"""
-        return fields(self)
+        return fields(cls)
 
     def __iter__(self):
         return self.items()
