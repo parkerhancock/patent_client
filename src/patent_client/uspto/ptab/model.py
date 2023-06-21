@@ -162,6 +162,7 @@ class PtabDocument(Model):
             with out_path.open("wb") as f:
                 for chunk in r.iter_content(chunk_size=8192):
                     f.write(chunk)
+        return out_path
 
 
 @dataclass
