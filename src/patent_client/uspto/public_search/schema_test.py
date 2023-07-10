@@ -1,7 +1,6 @@
 import json
 from pathlib import Path
 
-import pytest
 from patent_client.util.test import compare_dicts
 
 from .schema import PublicSearchDocumentSchema
@@ -10,9 +9,8 @@ from .schema import PublicSearchSchema
 test_dir = Path(__file__).parent / "test"
 
 
-@pytest.mark.skip("PPS API currently broken :(")
 class TestSchema:
-    def test_biblio():
+    def test_biblio(self):
         data = (test_dir / "biblio.json").read_text()
         parser = PublicSearchSchema()
         result = parser.load_batch(data)
@@ -23,7 +21,7 @@ class TestSchema:
         for i in range(len(expected)):
             compare_dicts(expected[i], result_json[i])
 
-    def test_docs():
+    def test_docs(self):
         data = (test_dir / "docs.json").read_text()
         parser = PublicSearchDocumentSchema()
         result = parser.load_batch(data)

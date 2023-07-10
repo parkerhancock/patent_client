@@ -1,9 +1,7 @@
-import random
 import time
 from pathlib import Path
 
-import requests
-from patent_client import session
+from .session import client
 
 
 class UsptoException(Exception):
@@ -70,10 +68,10 @@ class PublicSearchApi:
         }
         for s in force_list(sources):
             data["query"]["databaseFilters"].append({"databaseName": s, "countryCodes": []})
-        query_response = session.post(url, json=data)
+        query_response = client.post(url, json=data)
         if query_response.status_code in (500, 415):
             time.sleep(5)
-            query_response = session.post(url, json=data)
+            query_response = client.post(url, json=data)
         query_response.raise_for_status()
         result = query_response.json()
         if result.get("error", None) is not None:
@@ -88,20 +86,20 @@ class PublicSearchApi:
             "includeSections": True,
             "uniqueId": None,
         }
-        response = session.get(url, params=params)
+        response = client.get(url, params=params)
         response.raise_for_status()
         return response.json()
 
     def get_session(self):
         url = "https://ppubs.uspto.gov/dirsearch-public/users/me/session"
-        response = session.post(url, json=str(random.randint(10000, 99999)))
+        response = client.post(url, json=-1)  # json=str(random.randint(10000, 99999)))
         self.session = response.json()
         self.case_id = self.session["userCase"]["caseId"]
         return self.session
 
     def _request_save(self, obj):
         page_keys = [f"{obj.image_location}/{i:0>8}.tif" for i in range(1, obj.document_structure.page_count + 1)]
-        response = session.post(
+        response = client.post(
             "https://ppubs.uspto.gov/dirsearch-public/print/imageviewer",
             json={
                 "caseId": self.case_id,
@@ -126,7 +124,7 @@ class PublicSearchApi:
             self.get_session()
             print_job_id = self._request_save(obj)
         while True:
-            response = session.post(
+            response = client.post(
                 "https://ppubs.uspto.gov/dirsearch-public/print/print-process",
                 json=[
                     print_job_id,
@@ -137,12 +135,11 @@ class PublicSearchApi:
             if print_data[0]["printStatus"] == "COMPLETED":
                 break
             time.sleep(1)
-        response = session.get(
-            f"https://ppubs.uspto.gov/dirsearch-public/print/save/{print_data[0]['pdfName']}", stream=True
-        )
-        response.raise_for_status()
-        with out_path.open("wb") as f:
-            for chunk in response.iter_content(chunk_size=8192):
+        pdf_name = print_data[0]["pdfName"]
+        with client.stream(
+            "GET", f"https://ppubs.uspto.gov/dirsearch-public/print/save/{pdf_name}"
+        ) as response, out_path.open("wb") as f:
+            for chunk in response.iter_bytes(chunk_size=8192):
                 if chunk:
                     f.write(chunk)
         return out_path

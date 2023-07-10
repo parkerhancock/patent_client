@@ -28,7 +28,7 @@ many common IP tasks
   - [Global Dossier][GD] - Full Support
   - [Patent Assignment Data][Assignment] - Lookup Support
   - [Patent Trial & Appeal Board API v2][PTAB] - Supports Proceedings, Decisions, and Documents
-  - ~~[Patent Public Search][PPS] - Full Support~~ (Broken due to USPTO WAF)
+  - [Patent Public Search][PPS] - Full Support
 
 
 - [European Patent Office - Open Patent Services][OPS]
