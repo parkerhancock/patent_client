@@ -1,5 +1,8 @@
 # Changelog
 
+## 3.2.7 (2023-07-10)
+- Used HTTPX for Public Patent Search and removed references in documentation suggesting it no longer works.
+
 ## 3.2.6 (2023-06-12)
 - Fixed issue where Assignments would fail if a property was missing an appl_id
 - Run pre-commit hooks
