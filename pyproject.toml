@@ -57,6 +57,7 @@ sphinxcontrib-mermaid      = {optional=true, version="^0.7.1"}
 nbsphinx                   = {optional=true, version="^0.8.9"}
 IPython                    = {optional=true, version="^7.17.0"}
 httpx = {extras = ["http2"], version = "^0.24.1"}
+pytest-recording = {git = "https://github.com/parkerhancock/pytest-recording"}
 
 
 [tool.poetry.dev-dependencies]
@@ -75,7 +76,6 @@ nox                   = "^2022.1.7"
 nox-poetry            = "^1.0.0"
 rich                  = ">=10.0"
 sphinx-autobuild      = "^2021.3.14"
-pytest-recording = "^0.12.1"
 bump2version = "^1.0.1"
 
 
@@ -88,6 +88,7 @@ docs     = ["furo", "linkify-it-py", "myst-parser", "sphinx", "sphinx-autodoc-ty
 
 [tool.poetry.group.dev.dependencies]
 vcrpy = {git = "https://github.com/parkerhancock/vcrpy"}
+pytest-recording = {git = "https://github.com/parkerhancock/pytest-recording"}
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
