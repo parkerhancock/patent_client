@@ -154,7 +154,13 @@ class PtabDocument(Model):
         filename = f"[{str(self.document_number).rjust(4, '0')}] {self.document_filing_date.isoformat()} - {name}"
         filename = filename.encode(encoding="ascii", errors="ignore").decode("ascii")
         filename = fname_re.sub("", filename)
-        out_path = Path(path) / filename
+        out_path = Path(path)
+        if out_path.is_dir():
+            out_path = Path(path) / filename
+        else:
+            out_path = out_path
+        if out_path.exists():
+            return out_path
         with session.get(
             f"https://developer.uspto.gov/ptab-api/documents/{self.document_identifier}/download", verify=False
         ) as r:
