@@ -24,13 +24,14 @@ class ImageDocument(Model):
     sections: List[Section] = field(default_factory=list)
     doc_number: str = None
 
-    def download(self, path="."):
+    def download(self, path=".", filename='', extension='.pdf', no_store=False):
         from ..api import PublishedImagesApi
-
-        out_file = Path(path) / f"{self.doc_number}.pdf"
+        if len(filename) == 0:
+            filename = self.doc_number
+        out_file = Path(path) / f"{filename}{extension}"
         writer = PdfWriter()
         for i in range(1, self.num_pages + 1):
-            page_data = PublishedImagesApi.get_page_image_from_link(self.link, page_number=i)
+            page_data = PublishedImagesApi.get_page_image_from_link(self.link, page_number=i, no_store=no_store)
             page = PdfReader(page_data).pages[0]
             if page["/Rotate"] == 90:
                 page.rotate_clockwise(-90)
@@ -41,6 +42,7 @@ class ImageDocument(Model):
 
         with out_file.open("wb") as f:
             writer.write(f)
+        return Path(path) / f"{filename}{extension}"
 
 
 @dataclass

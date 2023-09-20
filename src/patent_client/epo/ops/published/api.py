@@ -111,10 +111,15 @@ class PublishedImagesApi:
         return BytesIO(response.raw.read())
 
     @classmethod
-    def get_page_image_from_link(cls, link, page_number, image_format="pdf"):
+    def get_page_image_from_link(cls, link, page_number, image_format="pdf", no_store=False):
+        user_header = None
+        if no_store == True:
+            user_header = {'Cache-Control':'no-store'}
+                    
         response = session.get(
             f"https://ops.epo.org/3.2/rest-services/{link}.{image_format}",
             params={"Range": page_number},
+            headers=user_header,
             stream=True,
         )
         response.raise_for_status()
