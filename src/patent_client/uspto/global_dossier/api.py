@@ -15,12 +15,16 @@ class GlobalDossierApi:
         response.raise_for_status()
         return response.json()
 
-    def get_document(self, country, doc_number, document_id, out_path):
+    def get_document(self, country, doc_number, document_id, out_path, no_store=False):
         if out_path.exists():
             return out_path
+        
+        user_header = None
+        if no_store == True:
+            user_header = {'Cache-Control':'no-store'}
 
         url = f"https://gd-api2.uspto.gov/doc-content/svc/doccontent/{country}/{doc_number}/{document_id}/1/PDF"
-        response = session.get(url, stream=True)
+        response = session.get(url, headers=user_header, stream=True)
         response.raise_for_status()
         with out_path.open("wb") as f:
             for chunk in response.iter_content(chunk_size=8192):
