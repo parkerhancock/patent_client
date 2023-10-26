@@ -127,7 +127,8 @@ class UsReferenceSchema(ZipSchema):
     # cpc_class = f.String("usRefCpcClassification")
     # group = f.String("usRefGroup")
     pub_month = f.Date(
-        "usRefIssueDate", dt_converter=lambda s: datetime.datetime(year=int(s[:4]), month=int(s[4:6]), day=1)
+        "usRefIssueDate",
+        dt_converter=lambda s: datetime.datetime(year=int(s[:4]), month=int(s[4:6]), day=1),
     )
     patentee_name = f.String("usRefPatenteeName")
     cited_by_examiner = f.Boolean("usRefGroup", true_func=lambda s: "examiner" in s)
@@ -140,7 +141,8 @@ class ForeignReferenceSchema(ZipSchema):
     # group = f.String("foreignRefGroup")
     patent_number = f.String("foreignRefPatentNumber")
     pub_month = f.Date(
-        "foreignRefPubDate", dt_converter=lambda s: datetime.datetime(year=int(s[:4]), month=int(s[4:6]), day=1)
+        "foreignRefPubDate",
+        dt_converter=lambda s: datetime.datetime(year=int(s[:4]), month=int(s[4:6]), day=1),
     )
     cited_by_examiner = f.Boolean("foreignRefGroup", true_func=lambda s: "examiner" in s)
 

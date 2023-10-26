@@ -88,7 +88,7 @@ class Manager(Collection, Generic[ModelType]):
         return len(list(self))
 
     def __eq__(self, other) -> bool:
-        return bool(self.config == other.config and type(self) == type(other))
+        return bool(self.config == other.config and isinstance(self, type(other)))
 
     def __add__(self, other):
         return Collection(chain(self, other))

@@ -93,7 +93,13 @@ class TestAssignmentBugs:
         assignments = Assignment.objects.filter(assignee="Scientific Drilling")
         assert len(assignments) >= 61
 
+
 class TestAssignmentAnalysis:
     def test_get_apps_from_assignments(self):
-        app_ids = Assignment.objects.filter(assignee="US Well Services").explode("properties", unpack=True, prefix=False).values_list("appl_id", flat=True).to_list()
+        app_ids = (
+            Assignment.objects.filter(assignee="US Well Services")
+            .explode("properties", unpack=True, prefix=False)
+            .values_list("appl_id", flat=True)
+            .to_list()
+        )
         assert len(app_ids) > 10

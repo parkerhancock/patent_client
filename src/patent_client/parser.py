@@ -19,7 +19,7 @@ Kind Codes: http://www.wipo.int/export/sites/www/standards/en/pdf/07-03-02.pdf
 
 
 def parse(number, *args, **kwargs):
-    if type(number) == str and "PCT" in number:
+    if isinstance(number, str) and "PCT" in number:
         return PCTApplication(number, *args, **kwargs)
     else:
         return PatentNumber(number, *args, **kwargs)
@@ -32,7 +32,7 @@ class PatentNumber:
         self.country = country
         self.number = number
 
-        if type(number) == str:
+        if isinstance(number, str):
             number = number.strip().upper()
             if "RE" in number:
                 number = number.replace("US", "")
@@ -60,7 +60,7 @@ class PatentNumber:
                 self.number = NUMBER_CLEAN_RE.sub("", number)
                 self._handle_default_number()
 
-        if type(number) == int:
+        if isinstance(number, int):
             self.number = str(number)
             self._handle_us_number()
 

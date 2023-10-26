@@ -104,21 +104,27 @@ class PtabProceeding(Model):
         return f"PtabProceeding(subproceeding_type_category='{self.subproceeding_type_category}', proceeding_number='{self.proceeding_number}', proceeding_status_category='{self.proceeding_status_category}', proceeding_type_category='{self.proceeding_type_category}', respondent_party_name='{self.respondent_party_name}')"
 
     @property
-    def documents(self) -> "ListCollection[patent_client.uspto.ptab.model.PtabDocument]":
+    def documents(
+        self,
+    ) -> "ListCollection[patent_client.uspto.ptab.model.PtabDocument]":
         """Documents associated with the Proceeding"""
         return get_model("patent_client.uspto.ptab.model.PtabDocument").objects.filter(
             proceeding_number=self.proceeding_number
         )
 
     @property
-    def decisions(self) -> "ListCollection[patent_client.uspto.ptab.model.PtabDecision]":
+    def decisions(
+        self,
+    ) -> "ListCollection[patent_client.uspto.ptab.model.PtabDecision]":
         """Decisions associated with the Proceeding"""
         return get_model("patent_client.uspto.ptab.model.PtabDecision").objects.filter(
             proceeding_number=self.proceeding_number
         )
 
     @property
-    def us_application(self) -> "ListCollection[patent_client.uspto.peds.model.USApplication]":
+    def us_application(
+        self,
+    ) -> "ListCollection[patent_client.uspto.peds.model.USApplication]":
         """The US Application provided by PEDS associated with the Proceeding"""
         return get_model("patent_client.uspto.peds.model.USApplication").objects.get(
             patent_number=self.respondent_patent_number
@@ -162,7 +168,8 @@ class PtabDocument(Model):
         if out_path.exists():
             return out_path
         with session.get(
-            f"https://developer.uspto.gov/ptab-api/documents/{self.document_identifier}/download", verify=False
+            f"https://developer.uspto.gov/ptab-api/documents/{self.document_identifier}/download",
+            verify=False,
         ) as r:
             r.raise_for_status()
             with out_path.open("wb") as f:

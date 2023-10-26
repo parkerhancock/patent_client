@@ -20,8 +20,16 @@ def test_default():
 
 
 def test_us_string_queries():
-    assert builder.build_query("RE12345") == {"doc_number": "RE12345", "type_code": "patent", "office_code": "US"}
-    assert builder.build_query("1234567") == {"doc_number": "1234567", "type_code": "patent", "office_code": "US"}
+    assert builder.build_query("RE12345") == {
+        "doc_number": "RE12345",
+        "type_code": "patent",
+        "office_code": "US",
+    }
+    assert builder.build_query("1234567") == {
+        "doc_number": "1234567",
+        "type_code": "patent",
+        "office_code": "US",
+    }
     assert builder.build_query("1234567123456") == {
         "doc_number": "1234567123456",
         "type_code": "patent",
@@ -30,8 +38,16 @@ def test_us_string_queries():
 
 
 def test_us_string_queries_with_country():
-    assert builder.build_query("USRE12345") == {"doc_number": "RE12345", "type_code": "patent", "office_code": "US"}
-    assert builder.build_query("US1234567") == {"doc_number": "1234567", "type_code": "patent", "office_code": "US"}
+    assert builder.build_query("USRE12345") == {
+        "doc_number": "RE12345",
+        "type_code": "patent",
+        "office_code": "US",
+    }
+    assert builder.build_query("US1234567") == {
+        "doc_number": "1234567",
+        "type_code": "patent",
+        "office_code": "US",
+    }
     assert builder.build_query("US1234567123456") == {
         "doc_number": "1234567123456",
         "type_code": "patent",

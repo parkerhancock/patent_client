@@ -43,7 +43,11 @@ class QueryBuilder:
                 country = arg[:2]
                 number = arg[2:]
                 if "type" in kwargs:
-                    return {"office_code": country, "type_code": kwargs["type"], "doc_number": number}
+                    return {
+                        "office_code": country,
+                        "type_code": kwargs["type"],
+                        "doc_number": number,
+                    }
                 candidates = [
                     r for r in self.input_schema if r["office_code"] == country and r["pattern"].fullmatch(number)
                 ]
@@ -55,14 +59,30 @@ class QueryBuilder:
                     raise QueryException(
                         f"Cannot determine number type. Possible types are {[c['type_name'] for c in candidates]}"
                     )
-                return {"office_code": country, "doc_number": number, "type_code": candidates[0]["type_code"]}
+                return {
+                    "office_code": country,
+                    "doc_number": number,
+                    "type_code": candidates[0]["type_code"],
+                }
             elif arg[:3] == "PCT":
-                return {"office_code": "WIPO", "type_code": "application", "doc_number": arg}
+                return {
+                    "office_code": "WIPO",
+                    "type_code": "application",
+                    "doc_number": arg,
+                }
             elif arg[:2] == "WO":
-                return {"office_code": "WIPO", "type_code": "publication", "doc_number": arg}
+                return {
+                    "office_code": "WIPO",
+                    "type_code": "publication",
+                    "doc_number": arg,
+                }
             elif arg[:2] == "AU":
                 if "type" in kwargs:
-                    return {"office_code": "CASE", "type_code": kwargs["type"], "doc_number": arg}
+                    return {
+                        "office_code": "CASE",
+                        "type_code": kwargs["type"],
+                        "doc_number": arg,
+                    }
                 else:
                     raise QueryException(
                         "While country was detected as AU, no type can be inferred. Please pass a 'type' keyword to specify application/publication"
@@ -79,9 +99,17 @@ class QueryBuilder:
                 if len(candidates) > 1:
                     types = [c["type_name"] for c in candidates]
                     if "Application" in types and office_code == "US":
-                        return {"office_code": office_code, "doc_number": arg, "type_code": "application"}
+                        return {
+                            "office_code": office_code,
+                            "doc_number": arg,
+                            "type_code": "application",
+                        }
                     raise QueryException(f"Cannot determine number type. Possible types are {types}")
-                return {"office_code": office_code, "doc_number": arg, "type_code": candidates[0]["type_code"]}
+                return {
+                    "office_code": office_code,
+                    "doc_number": arg,
+                    "type_code": candidates[0]["type_code"],
+                }
 
         elif kwargs:
             numbers = {k: v for k, v in kwargs.items() if k in ("publication", "application", "patent")}
@@ -91,11 +119,19 @@ class QueryBuilder:
                 raise QueryException("No number passed! Please pass a valid number")
             key, value = list(numbers.items())[0]
             if value[:2] in ["US", "CN", "EP", "KR", "JP"]:
-                return {"office_code": value[:2], "type_code": key, "doc_number": value[2:]}
+                return {
+                    "office_code": value[:2],
+                    "type_code": key,
+                    "doc_number": value[2:],
+                }
             elif value[:2] == "WO" or value[:3] == "PCT":
                 return {"office_code": "WIPO", "type_code": key, "doc_number": value}
             elif value[:2] == "AU":
                 return {"office_code": "CASE", "type_code": key, "doc_number": value}
             else:
                 office_code = kwargs.get("office", "US")
-                return {"office_code": office_code, "type_code": key, "doc_number": value}
+                return {
+                    "office_code": office_code,
+                    "type_code": key,
+                    "doc_number": value,
+                }

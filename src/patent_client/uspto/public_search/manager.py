@@ -29,7 +29,11 @@ class PublicSearchManager(Manager):
         try:
             while True:
                 page = public_search_api.run_query(
-                    query=query, start=page_no * self.page_size, limit=self.page_size, sort=order_by, sources=sources
+                    query=query,
+                    start=page_no * self.page_size,
+                    limit=self.page_size,
+                    sort=order_by,
+                    sources=sources,
                 )
                 for obj in page["patents"]:
                     if self.config.limit and obj_counter >= self.config.limit + self.config.offset:

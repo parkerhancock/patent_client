@@ -237,12 +237,16 @@ class USApplication(Model):
         return get_model("patent_client.uspto.peds.model.Document").objects.filter(appl_id=self.appl_id)
 
     @property
-    def related_assignments(self) -> "Iterable[patent_client.uspto.assignment.model.Assignment]":
+    def related_assignments(
+        self,
+    ) -> "Iterable[patent_client.uspto.assignment.model.Assignment]":
         """Related Assignments from the Assignments API"""
         return get_model("patent_client.uspto.assignment.model.Assignment").objects.filter(appl_id=self.appl_id)
 
     @property
-    def ptab_proceedings(self) -> "Iterable[patent_client.uspto.ptab.model.PtabProceeding]":
+    def ptab_proceedings(
+        self,
+    ) -> "Iterable[patent_client.uspto.ptab.model.PtabProceeding]":
         """Related PtabProceedings for this application"""
         return get_model("patent_client.uspto.ptab.model.PtabProceeding").objects.filter(appl_id=self.appl_id)
 
@@ -254,7 +258,9 @@ class USApplication(Model):
         )
 
     @property
-    def publication(self) -> "Optional[patent_client.uspto.fulltext.published_application.model.PublishedApplication]":
+    def publication(
+        self,
+    ) -> "Optional[patent_client.uspto.fulltext.published_application.model.PublishedApplication]":
         """Fulltext version of the Publication - If Available"""
         return get_model(
             "patent_client.uspto.fulltext.published_application.model.PublishedApplication",
@@ -262,17 +268,23 @@ class USApplication(Model):
         )
 
     @property
-    def inpadoc_patent(self) -> "Optional[patent_client.epo.ops.published.model.InpadocBiblio]":
+    def inpadoc_patent(
+        self,
+    ) -> "Optional[patent_client.epo.ops.published.model.InpadocBiblio]":
         """Fulltext version of the patent - If Available"""
         return get_model(
-            "patent_client.epo.ops.published.model.InpadocBiblio", publication_number=f"US{self.patent_number}"
+            "patent_client.epo.ops.published.model.InpadocBiblio",
+            publication_number=f"US{self.patent_number}",
         )
 
     @property
-    def inpadoc_publication(self) -> "Optional[patent_client.epo.ops.published.model.InpadocBiblio]":
+    def inpadoc_publication(
+        self,
+    ) -> "Optional[patent_client.epo.ops.published.model.InpadocBiblio]":
         """Fulltext version of the patent - If Available"""
         return get_model(
-            "patent_client.epo.ops.published.model.InpadocBiblio", publication_number=self.app_early_pub_number
+            "patent_client.epo.ops.published.model.InpadocBiblio",
+            publication_number=self.app_early_pub_number,
         )
 
 

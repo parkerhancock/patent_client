@@ -35,5 +35,7 @@ class InpadocModel(Model):
         return get_model("patent_client.epo.ops.legal.model.Legal").objects.get(self.docdb_number).events
 
     @property
-    def family(self) -> "ListCollection[patent_client.epo.ops.family.model.FamilyMember]":
+    def family(
+        self,
+    ) -> "ListCollection[patent_client.epo.ops.family.model.FamilyMember]":
         return get_model("patent_client.epo.ops.family.model.Family").objects.get(self.docdb_number).family_members

@@ -58,7 +58,10 @@ from patent_client.uspto.peds.model import USApplication  # isort:skip
 from patent_client.uspto.ptab.model import PtabDecision  # isort:skip
 from patent_client.uspto.ptab.model import PtabDocument  # isort:skip
 from patent_client.uspto.ptab.model import PtabProceeding  # isort:skip
-from patent_client.uspto.global_dossier.model import GlobalDossier, GlobalDossierApplication  # isort:skip
+from patent_client.uspto.global_dossier.model import (
+    GlobalDossier,
+    GlobalDossierApplication,
+)  # isort:skip
 from patent_client.uspto.public_search.model import (
     PublicSearch,
     PublicSearchDocument,
