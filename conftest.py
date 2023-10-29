@@ -1,3 +1,5 @@
+import asyncio
+
 import pytest
 from patent_client import session as pc_session
 from patent_client.epo.ops import session as epo_session
@@ -25,3 +27,13 @@ def pytest_collection_modifyitems(items):
     for item in items:
         item.add_marker(pytest.mark.vcr)
         # item.add_marker(pytest.mark.block_network)
+
+
+@pytest.fixture(scope="session")
+def event_loop():
+    try:
+        loop = asyncio.get_running_loop()
+    except RuntimeError:
+        loop = asyncio.new_event_loop()
+    yield loop
+    loop.close()

@@ -35,8 +35,8 @@ PyPDF2 = "^2.2.0"
 inflection = "^0.5.1"
 openpyxl = "^3.0.10"
 colorlog = "^6.6.0"
-#yankee = {path="../yankee", develop=true}
-yankee = "^0.1.40"
+yankee = {path="../yankee", develop=true}
+#yankee = "^0.1.40"
 PyYAML = "^6.0"
 ujson = "^5.4.0"
 pyparsing = "^3.0.9"
@@ -87,6 +87,7 @@ docs     = ["furo", "linkify-it-py", "myst-parser", "sphinx", "sphinx-autodoc-ty
 [tool.poetry.group.dev.dependencies]
 vcrpy = {git = "https://github.com/parkerhancock/vcrpy"}
 pytest-recording = {git = "https://github.com/parkerhancock/pytest-recording"}
+pytest-asyncio = "^0.21.1"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

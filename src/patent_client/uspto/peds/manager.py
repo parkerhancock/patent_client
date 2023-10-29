@@ -4,9 +4,11 @@ import math
 from datetime import date
 from pathlib import Path
 from tempfile import TemporaryDirectory
+from typing import AsyncIterator
 from typing import Iterator
 
 import inflection
+from patent_client import asession
 from patent_client import session
 from patent_client.util.base.manager import Manager
 from PyPDF2 import PdfFileMerger
@@ -47,6 +49,14 @@ class USApplicationManager(Manager[USApplication]):
         else:
             return limit if limit < max_length else max_length
 
+    async def alen(self):
+        max_length = (await self.aget_page(0))["numFound"] - self.config.offset
+        limit = self.config.limit
+        if not limit:
+            return max_length
+        else:
+            return limit if limit < max_length else max_length
+
     def _get_results(self) -> Iterator[USApplication]:
         num_pages = math.ceil(len(self) / self.page_size)
         page_num = 0
@@ -61,6 +71,34 @@ class USApplicationManager(Manager[USApplication]):
 
     def __iter__(self) -> Iterator[USApplication]:
         return super(USApplicationManager, self).__iter__()
+
+    def __aiter__(self) -> AsyncIterator[USApplication]:
+        return super(USApplicationManager, self).__aiter__()
+
+    async def _aget_results(self) -> AsyncIterator[USApplication]:
+        num_pages = math.ceil(len(self) / self.page_size)
+        page_num = 0
+        counter = 0
+        while page_num < num_pages:
+            page_data = self.get_page(page_num)
+            for item in page_data["docs"]:
+                if not self.config.limit or counter < self.config.limit:
+                    yield self.__schema__.load(item)
+                counter += 1
+            page_num += 1
+
+    async def aget_page(self, page_number):
+        if page_number not in self.pages:
+            query_params = self.query_params(page_number)
+            response = await asession.post(self.query_url, json=query_params, timeout=10)
+            if not response.status_code == 200:
+                if self.is_online():
+                    raise HttpException(
+                        f"{response.status_code}\n{response.text}\n{response.headers}\n{json.dumps(query_params)}"
+                    )
+            data = response.json()
+            self.pages[page_number] = data["queryResults"]["searchResponse"]["response"]
+        return self.pages[page_number]
 
     def get_page(self, page_number):
         if page_number not in self.pages:

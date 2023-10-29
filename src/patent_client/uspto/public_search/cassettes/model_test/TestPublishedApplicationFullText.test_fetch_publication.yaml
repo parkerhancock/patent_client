@@ -1,14 +1,6 @@
 interactions:
 - request:
-    body: '{"start": 0, "pageCount": 500, "sort": "date_publ desc", "docFamilyFiltering":
-      "familyIdFiltering", "searchType": 1, "familyIdEnglishOnly": true, "familyIdFirstPreferred":
-      "US-PGPUB", "familyIdSecondPreferred": "USPAT", "familyIdThirdPreferred": "FPRS",
-      "showDocPerFamilyPref": "showEnglish", "queryId": 0, "tagDocSearch": false,
-      "query": {"caseId": 23045014, "hl_snippets": "2", "op": "OR", "q": "\"20160009839\".PN.",
-      "queryName": "\"20160009839\".PN.", "highlights": "1", "qt": "brs", "spellCheck":
-      false, "viewName": "tile", "plurals": true, "britishEquivalents": true, "databaseFilters":
-      [{"databaseName": "US-PGPUB", "countryCodes": []}], "searchType": 1, "ignorePersist":
-      true, "userEnteredQuery": "\"20160009839\".PN."}}'
+    body: '-1'
     headers:
       accept:
       - '*/*'
@@ -17,7 +9,7 @@ interactions:
       connection:
       - keep-alive
       content-length:
-      - '728'
+      - '2'
       content-type:
       - application/json
       host:
@@ -28,21 +20,18 @@ interactions:
       x-requested-with:
       - XMLHttpRequest
     method: POST
-    uri: https://ppubs.uspto.gov/dirsearch-public/searches/searchWithBeFamily
+    uri: https://ppubs.uspto.gov/dirsearch-public/users/me/session
   response:
-    content: '{"numFound":1,"perPage":500,"page":0,"totalPages":0,"hlSnippets":0,"sort":null,"query":{"id":null,"caseId":23045014,"numResults":1,"ignorePersist":true,"fq":null,"databaseFilters":[{"databaseName":"US-PGPUB","countryCodes":[]}],"q":"\"20160009839\".PN.","queryName":"\"20160009839\".PN.","userEnteredQuery":"\"20160009839\".PN.","viewName":"tile","op":"OR","highlights":"1","plurals":true,"britishEquivalents":true,"searchType":1,"excludeResultsAfter":null,"dateCreated":null,"deleteIn":false,"expand":true,"expandSort":"group_sort_date
-      asc, id desc ","expandRows":"100","expandTrackDocScores":true,"expandTrackMaxScore":true,"termGraph":null,"hl":false,"fl":null,"originalQuery":"\"20160009839\".PN.","error":null,"terms":["\"20160009839\""],"facets":[],"pNumber":null,"hl_fl":null},"duration":36,"highlightingTime":0,"cursorMarker":"AoJwgNHbntICOjUwMjQwMDM2IVBHLVVTLTIwMTYwMDA5ODM5","totalResults":1,"numberOfFamilies":1,"error":null,"patents":[{"guid":"US-20160009839-A1","publicationReferenceDocumentNumber":"20160009839","compositeId":"50240036!PG-US-20160009839","publicationReferenceDocumentNumber1":"20160009839","datePublishedKwicHits":null,"datePublished":"2016-01-14T00:00:00Z","inventionTitle":"POLYMER
-      PRODUCTS AND MULTI-STAGE POLYMERIZATION PROCESSES FOR THE PRODUCTION THEREOF","type":"US-PGPUB","mainClassificationCode":"526/64","applicantName":["UNIVATION
-      TECHNOLOGIES, LLC"],"assigneeName":["Univation Technologies, LLC"],"uspcFullClassificationFlattened":"526/89","ipcCodeFlattened":"C08F210/16","cpcInventiveFlattened":"C08F210/16;C08F210/16;C08F2/001","cpcAdditionalFlattened":"C08F210/16;C08F210/14;C08F2500/05;C08F2500/08;C08F2500/12;C08F2500/26","applicationFilingDate":["2014-02-21T00:00:00Z"],"applicationFilingDateKwicHits":null,"relatedApplFilingDate":["2013-03-15T00:00:00Z"],"primaryExaminer":null,"assistantExaminer":null,"applicationNumber":"14/775837","frontPageStart":1,"frontPageEnd":1,"drawingsStart":2,"drawingsEnd":6,"specificationStart":7,"specificationEnd":16,"claimsStart":16,"claimsEnd":17,"abstractStart":1,"abstractEnd":1,"bibStart":1,"bibEnd":1,"certCorrectionStart":0,"certCorrectionEnd":0,"certReexaminationStart":0,"certReexaminationEnd":0,"supplementalStart":0,"supplementalEnd":0,"ptabStart":0,"ptabEnd":0,"amendStart":0,"amendEnd":0,"searchReportStart":0,"searchReportEnd":0,"pageCount":17,"pageCountDisplay":"17","previouslyViewed":false,"unused":false,"imageLocation":"us-pgpub/US/2016/0009/839","imageFileName":"00000001.tif","cpcCodes":null,"queryId":null,"tags":null,"inventorsShort":"PANNELL;
-      Richard B.","familyIdentifierCur":50240036,"familyIdentifierCurStr":null,"languageIndicator":"EN","databaseName":"PGPB","dwImageDoctypeList":null,"dwImageLocList":null,"dwPageCountList":null,"dwImageDocidList":null,"patentFamilyMembers":null,"patentFamilyCountry":null,"patentFamilySerialNumber":null,"documentIdWithDashesDw":null,"pfPublDate":null,"pfPublDateKwicHits":null,"priorityClaimsDate":null,"priorityClaimsDateKwicHits":null,"pfApplicationSerialNumber":null,"pfApplicationDescriptor":null,"pfLanguage":null,"pfApplicationDate":null,"pfApplicationDateKwicHits":null,"clippedUri":null,"source":null,"documentId":"US
-      20160009839 A1","derwentAccessionNumber":null,"documentSize":85270,"score":14.660738,"governmentInterest":null,"kindCode":["A1"],"urpn":null,"urpnCode":null,"descriptionStart":7,"descriptionEnd":16,"publicationReferenceDocumentNumberOne":"20160009839"}],"qtime":18}'
+    content: '{"userSessionId":23822217,"ipAddress":null,"displayName":"anonymous","deleteIn":false,"userCase":{"caseId":23822386,"userId":23822217,"caseName":"Untitled
+      Case","applicationNumber":null},"userPreferences":{},"hostURLs":{"image_server_host":"https://pasr-img.pvt.uspto.gov"},"versions":[{"product":"API","releaseNumber":"2.1.0.3","date":"10.04.2023
+      @ 21:20:10 UTC","commitId":"6d029659","collectionName":""},{"product":"SOLR","releaseNumber":"7.6.0","date":"5-4-0","commitId":"","collectionName":"us_patent_grant"}],"documentsLimitInQuery":1000,"sessionTimeOutTime":1800}'
     headers:
       content-type:
       - application/json
       date:
-      - Mon, 10 Jul 2023 18:07:22 GMT
+      - Sun, 29 Oct 2023 02:41:46 GMT
       server-timing:
-      - intid;desc=b7451db8682ac82d
+      - intid;desc=4d5a7448c61704f1
     http_version: HTTP/2
     status_code: 200
 - request:
@@ -50,7 +39,7 @@ interactions:
       "familyIdFiltering", "searchType": 1, "familyIdEnglishOnly": true, "familyIdFirstPreferred":
       "US-PGPUB", "familyIdSecondPreferred": "USPAT", "familyIdThirdPreferred": "FPRS",
       "showDocPerFamilyPref": "showEnglish", "queryId": 0, "tagDocSearch": false,
-      "query": {"caseId": 23045014, "hl_snippets": "2", "op": "OR", "q": "\"20160009839\".PN.",
+      "query": {"caseId": 23822386, "hl_snippets": "2", "op": "OR", "q": "\"20160009839\".PN.",
       "queryName": "\"20160009839\".PN.", "highlights": "1", "qt": "brs", "spellCheck":
       false, "viewName": "tile", "plurals": true, "britishEquivalents": true, "databaseFilters":
       [{"databaseName": "US-PGPUB", "countryCodes": []}], "searchType": 1, "ignorePersist":
@@ -76,19 +65,100 @@ interactions:
     method: POST
     uri: https://ppubs.uspto.gov/dirsearch-public/searches/searchWithBeFamily
   response:
-    content: '{"numFound":1,"perPage":500,"page":0,"totalPages":0,"hlSnippets":0,"sort":null,"query":{"id":null,"caseId":23045014,"numResults":1,"ignorePersist":true,"fq":null,"databaseFilters":[{"databaseName":"US-PGPUB","countryCodes":[]}],"q":"\"20160009839\".PN.","queryName":"\"20160009839\".PN.","userEnteredQuery":"\"20160009839\".PN.","viewName":"tile","op":"OR","highlights":"1","plurals":true,"britishEquivalents":true,"searchType":1,"excludeResultsAfter":null,"dateCreated":null,"deleteIn":false,"expand":true,"expandSort":"group_sort_date
-      asc, id desc ","expandRows":"100","expandTrackDocScores":true,"expandTrackMaxScore":true,"termGraph":null,"hl":false,"fl":null,"originalQuery":"\"20160009839\".PN.","error":null,"terms":["\"20160009839\""],"facets":[],"pNumber":null,"hl_fl":null},"duration":52,"highlightingTime":0,"cursorMarker":"AoJwgNHbntICOjUwMjQwMDM2IVBHLVVTLTIwMTYwMDA5ODM5","totalResults":1,"numberOfFamilies":1,"error":null,"patents":[{"guid":"US-20160009839-A1","publicationReferenceDocumentNumber":"20160009839","compositeId":"50240036!PG-US-20160009839","publicationReferenceDocumentNumber1":"20160009839","datePublishedKwicHits":null,"datePublished":"2016-01-14T00:00:00Z","inventionTitle":"POLYMER
+    content: '{"numFound":1,"perPage":500,"page":0,"totalPages":0,"hlSnippets":0,"sort":null,"query":{"id":null,"caseId":23822386,"numResults":1,"ignorePersist":true,"fq":null,"databaseFilters":[{"databaseName":"US-PGPUB","countryCodes":[]}],"q":"\"20160009839\".PN.","queryName":"\"20160009839\".PN.","userEnteredQuery":"\"20160009839\".PN.","viewName":"tile","op":"OR","highlights":"1","plurals":true,"britishEquivalents":true,"searchType":1,"excludeResultsAfter":null,"dateCreated":null,"deleteIn":false,"expand":true,"expandSort":"group_sort_date
+      asc, id desc ","expandRows":"100","expandTrackDocScores":true,"expandTrackMaxScore":true,"termGraph":null,"hl":false,"fl":null,"originalQuery":"\"20160009839\".PN.","error":null,"terms":["\"20160009839\""],"facets":[],"pNumber":null,"hl_fl":null},"duration":36,"highlightingTime":0,"cursorMarker":"AoJwgNHbntICOjUwMjQwMDM2IVBHLVVTLTIwMTYwMDA5ODM5","totalResults":1,"numberOfFamilies":1,"error":null,"patents":[{"guid":"US-20160009839-A1","publicationReferenceDocumentNumber":"20160009839","compositeId":"50240036!PG-US-20160009839","publicationReferenceDocumentNumber1":"20160009839","datePublishedKwicHits":null,"datePublished":"2016-01-14T00:00:00Z","inventionTitle":"POLYMER
       PRODUCTS AND MULTI-STAGE POLYMERIZATION PROCESSES FOR THE PRODUCTION THEREOF","type":"US-PGPUB","mainClassificationCode":"526/64","applicantName":["UNIVATION
       TECHNOLOGIES, LLC"],"assigneeName":["Univation Technologies, LLC"],"uspcFullClassificationFlattened":"526/89","ipcCodeFlattened":"C08F210/16","cpcInventiveFlattened":"C08F210/16;C08F210/16;C08F2/001","cpcAdditionalFlattened":"C08F210/16;C08F210/14;C08F2500/05;C08F2500/08;C08F2500/12;C08F2500/26","applicationFilingDate":["2014-02-21T00:00:00Z"],"applicationFilingDateKwicHits":null,"relatedApplFilingDate":["2013-03-15T00:00:00Z"],"primaryExaminer":null,"assistantExaminer":null,"applicationNumber":"14/775837","frontPageStart":1,"frontPageEnd":1,"drawingsStart":2,"drawingsEnd":6,"specificationStart":7,"specificationEnd":16,"claimsStart":16,"claimsEnd":17,"abstractStart":1,"abstractEnd":1,"bibStart":1,"bibEnd":1,"certCorrectionStart":0,"certCorrectionEnd":0,"certReexaminationStart":0,"certReexaminationEnd":0,"supplementalStart":0,"supplementalEnd":0,"ptabStart":0,"ptabEnd":0,"amendStart":0,"amendEnd":0,"searchReportStart":0,"searchReportEnd":0,"pageCount":17,"pageCountDisplay":"17","previouslyViewed":false,"unused":false,"imageLocation":"us-pgpub/US/2016/0009/839","imageFileName":"00000001.tif","cpcCodes":null,"queryId":null,"tags":null,"inventorsShort":"PANNELL;
       Richard B.","familyIdentifierCur":50240036,"familyIdentifierCurStr":null,"languageIndicator":"EN","databaseName":"PGPB","dwImageDoctypeList":null,"dwImageLocList":null,"dwPageCountList":null,"dwImageDocidList":null,"patentFamilyMembers":null,"patentFamilyCountry":null,"patentFamilySerialNumber":null,"documentIdWithDashesDw":null,"pfPublDate":null,"pfPublDateKwicHits":null,"priorityClaimsDate":null,"priorityClaimsDateKwicHits":null,"pfApplicationSerialNumber":null,"pfApplicationDescriptor":null,"pfLanguage":null,"pfApplicationDate":null,"pfApplicationDateKwicHits":null,"clippedUri":null,"source":null,"documentId":"US
-      20160009839 A1","derwentAccessionNumber":null,"documentSize":85270,"score":14.659733,"governmentInterest":null,"kindCode":["A1"],"urpn":null,"urpnCode":null,"descriptionStart":7,"descriptionEnd":16,"publicationReferenceDocumentNumberOne":"20160009839"}],"qtime":34}'
+      20160009839 A1","derwentAccessionNumber":null,"documentSize":85270,"score":14.669778,"governmentInterest":null,"kindCode":["A1"],"urpn":null,"urpnCode":null,"descriptionStart":7,"descriptionEnd":16,"publicationReferenceDocumentNumberOne":"20160009839"}],"qtime":14}'
     headers:
       content-type:
       - application/json
       date:
-      - Mon, 10 Jul 2023 18:07:22 GMT
+      - Sun, 29 Oct 2023 02:41:46 GMT
       server-timing:
-      - intid;desc=80429f3f1b9c904f
+      - intid;desc=d90ea52a2ac27817
+    http_version: HTTP/2
+    status_code: 200
+- request:
+    body: '-1'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '2'
+      content-type:
+      - application/json
+      host:
+      - ppubs.uspto.gov
+      user-agent:
+      - Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/114.0.0.0 Safari/537.36
+      x-requested-with:
+      - XMLHttpRequest
+    method: POST
+    uri: https://ppubs.uspto.gov/dirsearch-public/users/me/session
+  response:
+    content: '{"userSessionId":23822218,"ipAddress":null,"displayName":"anonymous","deleteIn":false,"userCase":{"caseId":23822387,"userId":23822218,"caseName":"Untitled
+      Case","applicationNumber":null},"userPreferences":{},"hostURLs":{"image_server_host":"https://pasr-img.pvt.uspto.gov"},"versions":[{"product":"API","releaseNumber":"2.1.0.3","date":"10.04.2023
+      @ 21:20:10 UTC","commitId":"6d029659","collectionName":""},{"product":"SOLR","releaseNumber":"7.6.0","date":"5-4-0","commitId":"","collectionName":"us_patent_grant"}],"documentsLimitInQuery":1000,"sessionTimeOutTime":1800}'
+    headers:
+      content-type:
+      - application/json
+      date:
+      - Sun, 29 Oct 2023 02:41:46 GMT
+      server-timing:
+      - intid;desc=c27feb699e75cd5b
+    http_version: HTTP/2
+    status_code: 200
+- request:
+    body: '{"start": 0, "pageCount": 500, "sort": "date_publ desc", "docFamilyFiltering":
+      "familyIdFiltering", "searchType": 1, "familyIdEnglishOnly": true, "familyIdFirstPreferred":
+      "US-PGPUB", "familyIdSecondPreferred": "USPAT", "familyIdThirdPreferred": "FPRS",
+      "showDocPerFamilyPref": "showEnglish", "queryId": 0, "tagDocSearch": false,
+      "query": {"caseId": 23822387, "hl_snippets": "2", "op": "OR", "q": "\"20160009839\".PN.",
+      "queryName": "\"20160009839\".PN.", "highlights": "1", "qt": "brs", "spellCheck":
+      false, "viewName": "tile", "plurals": true, "britishEquivalents": true, "databaseFilters":
+      [{"databaseName": "US-PGPUB", "countryCodes": []}], "searchType": 1, "ignorePersist":
+      true, "userEnteredQuery": "\"20160009839\".PN."}}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '728'
+      content-type:
+      - application/json
+      host:
+      - ppubs.uspto.gov
+      user-agent:
+      - Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/114.0.0.0 Safari/537.36
+      x-requested-with:
+      - XMLHttpRequest
+    method: POST
+    uri: https://ppubs.uspto.gov/dirsearch-public/searches/searchWithBeFamily
+  response:
+    content: '{"numFound":1,"perPage":500,"page":0,"totalPages":0,"hlSnippets":0,"sort":null,"query":{"id":null,"caseId":23822387,"numResults":1,"ignorePersist":true,"fq":null,"databaseFilters":[{"databaseName":"US-PGPUB","countryCodes":[]}],"q":"\"20160009839\".PN.","queryName":"\"20160009839\".PN.","userEnteredQuery":"\"20160009839\".PN.","viewName":"tile","op":"OR","highlights":"1","plurals":true,"britishEquivalents":true,"searchType":1,"excludeResultsAfter":null,"dateCreated":null,"deleteIn":false,"expand":true,"expandSort":"group_sort_date
+      asc, id desc ","expandRows":"100","expandTrackDocScores":true,"expandTrackMaxScore":true,"termGraph":null,"hl":false,"fl":null,"originalQuery":"\"20160009839\".PN.","error":null,"terms":["\"20160009839\""],"facets":[],"pNumber":null,"hl_fl":null},"duration":60,"highlightingTime":0,"cursorMarker":"AoJwgNHbntICOjUwMjQwMDM2IVBHLVVTLTIwMTYwMDA5ODM5","totalResults":1,"numberOfFamilies":1,"error":null,"patents":[{"guid":"US-20160009839-A1","publicationReferenceDocumentNumber":"20160009839","compositeId":"50240036!PG-US-20160009839","publicationReferenceDocumentNumber1":"20160009839","datePublishedKwicHits":null,"datePublished":"2016-01-14T00:00:00Z","inventionTitle":"POLYMER
+      PRODUCTS AND MULTI-STAGE POLYMERIZATION PROCESSES FOR THE PRODUCTION THEREOF","type":"US-PGPUB","mainClassificationCode":"526/64","applicantName":["UNIVATION
+      TECHNOLOGIES, LLC"],"assigneeName":["Univation Technologies, LLC"],"uspcFullClassificationFlattened":"526/89","ipcCodeFlattened":"C08F210/16","cpcInventiveFlattened":"C08F210/16;C08F210/16;C08F2/001","cpcAdditionalFlattened":"C08F210/16;C08F210/14;C08F2500/05;C08F2500/08;C08F2500/12;C08F2500/26","applicationFilingDate":["2014-02-21T00:00:00Z"],"applicationFilingDateKwicHits":null,"relatedApplFilingDate":["2013-03-15T00:00:00Z"],"primaryExaminer":null,"assistantExaminer":null,"applicationNumber":"14/775837","frontPageStart":1,"frontPageEnd":1,"drawingsStart":2,"drawingsEnd":6,"specificationStart":7,"specificationEnd":16,"claimsStart":16,"claimsEnd":17,"abstractStart":1,"abstractEnd":1,"bibStart":1,"bibEnd":1,"certCorrectionStart":0,"certCorrectionEnd":0,"certReexaminationStart":0,"certReexaminationEnd":0,"supplementalStart":0,"supplementalEnd":0,"ptabStart":0,"ptabEnd":0,"amendStart":0,"amendEnd":0,"searchReportStart":0,"searchReportEnd":0,"pageCount":17,"pageCountDisplay":"17","previouslyViewed":false,"unused":false,"imageLocation":"us-pgpub/US/2016/0009/839","imageFileName":"00000001.tif","cpcCodes":null,"queryId":null,"tags":null,"inventorsShort":"PANNELL;
+      Richard B.","familyIdentifierCur":50240036,"familyIdentifierCurStr":null,"languageIndicator":"EN","databaseName":"PGPB","dwImageDoctypeList":null,"dwImageLocList":null,"dwPageCountList":null,"dwImageDocidList":null,"patentFamilyMembers":null,"patentFamilyCountry":null,"patentFamilySerialNumber":null,"documentIdWithDashesDw":null,"pfPublDate":null,"pfPublDateKwicHits":null,"priorityClaimsDate":null,"priorityClaimsDateKwicHits":null,"pfApplicationSerialNumber":null,"pfApplicationDescriptor":null,"pfLanguage":null,"pfApplicationDate":null,"pfApplicationDateKwicHits":null,"clippedUri":null,"source":null,"documentId":"US
+      20160009839 A1","derwentAccessionNumber":null,"documentSize":85270,"score":14.670461,"governmentInterest":null,"kindCode":["A1"],"urpn":null,"urpnCode":null,"descriptionStart":7,"descriptionEnd":16,"publicationReferenceDocumentNumberOne":"20160009839"}],"qtime":41}'
+    headers:
+      content-type:
+      - application/json
+      date:
+      - Sun, 29 Oct 2023 02:41:47 GMT
+      server-timing:
+      - intid;desc=51f4668ac761f61f
     http_version: HTTP/2
     status_code: 200
 - request:
@@ -1098,50 +1168,15 @@ interactions:
       2 C C08F C08F210/14 20130101 L A B H 20141021 US\",\"2 3 C C08F C08F2500/05
       20130101 L A B H 20141021 US\",\"2 4 C C08F C08F2500/08 20130101 L A B H 20141021
       US\",\"2 5 C C08F C08F2500/12 20130101 L A B H 20141021 US\",\"2 6 C C08F C08F2500/26
-      20130101 L A B H 20141021 US\"],\"cpcCombinationTallyCur\":[\"C08F210/16\",\"C08F2/001\",\"C08F210/16\",\"C08F210/14\",\"C08F2500/05\",\"C08F2500/08\",\"C08F2500/12\",\"C08F2500/26\"],\"intlFurtherClassification\":[\"C08F210/16\",\"C08F2/001\",\"C08F210/16\",\"C08F210/14\",\"C08F2500/05\",\"C08F2500/08\",\"C08F2500/12\",\"C08F2500/26\"],\"currentUsPatentClass\":[\"526\"],\"curIntlPatentClssifSecHlights\":null,\"idWithoutSolrPartition\":\"PG-US-20160009839\",\"cpcOrigInventvClssifHlghts\":[\"C08F210/16
-      20130101\"],\"internationalClassificationInfom\":null,\"curIntlPatentClassifictionPrimaryDateKwicHits\":null,\"descriptionStart\":7,\"descriptionEnd\":16,\"publicationReferenceDocumentNumberOne\":\"20160009839\"}"
+      20130101 L A B H 20141021 US\"],\"cpcCombinationTallyCur\":[\"C08F210/16\",\"C08F2/001\",\"C08F210/16\",\"C08F210/14\",\"C08F2500/05\",\"C08F2500/08\",\"C08F2500/12\",\"C08F2500/26\"],\"intlFurtherClassification\":[\"C08F210/16\",\"C08F2/001\",\"C08F210/16\",\"C08F210/14\",\"C08F2500/05\",\"C08F2500/08\",\"C08F2500/12\",\"C08F2500/26\"],\"currentUsPatentClass\":[\"526\"],\"idWithoutSolrPartition\":\"PG-US-20160009839\",\"curIntlPatentClassifictionPrimaryDateKwicHits\":null,\"curIntlPatentClssifSecHlights\":null,\"internationalClassificationInfom\":null,\"cpcOrigInventvClssifHlghts\":[\"C08F210/16
+      20130101\"],\"descriptionStart\":7,\"descriptionEnd\":16,\"publicationReferenceDocumentNumberOne\":\"20160009839\"}"
     headers:
       content-type:
       - application/json
       date:
-      - Mon, 10 Jul 2023 18:07:22 GMT
+      - Sun, 29 Oct 2023 02:41:47 GMT
       server-timing:
-      - intid;desc=df34f818153bc769
-    http_version: HTTP/2
-    status_code: 200
-- request:
-    body: '-1'
-    headers:
-      accept:
-      - '*/*'
-      accept-encoding:
-      - gzip, deflate
-      connection:
-      - keep-alive
-      content-length:
-      - '2'
-      content-type:
-      - application/json
-      host:
-      - ppubs.uspto.gov
-      user-agent:
-      - Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML,
-        like Gecko) Chrome/114.0.0.0 Safari/537.36
-      x-requested-with:
-      - XMLHttpRequest
-    method: POST
-    uri: https://ppubs.uspto.gov/dirsearch-public/users/me/session
-  response:
-    content: '{"userSessionId":23045390,"ipAddress":null,"displayName":"anonymous","deleteIn":false,"userCase":{"caseId":23045559,"userId":23045390,"caseName":"Untitled
-      Case","applicationNumber":null},"userPreferences":{},"hostURLs":{"image_server_host":"https://pasr-img.pvt.uspto.gov"},"versions":[{"product":"API","releaseNumber":"2.1.0.3","date":"10.04.2023
-      @ 21:20:10 UTC","commitId":"6d029659","collectionName":""},{"product":"SOLR","releaseNumber":"7.6.0","date":"5-4-0","commitId":"","collectionName":"us_patent_grant"}],"documentsLimitInQuery":1000,"sessionTimeOutTime":1800}'
-    headers:
-      content-type:
-      - application/json
-      date:
-      - Mon, 10 Jul 2023 18:24:23 GMT
-      server-timing:
-      - intid;desc=dc22b739cfe2ba9f
+      - intid;desc=9c71966df20f0fe1
     http_version: HTTP/2
     status_code: 200
 version: 1

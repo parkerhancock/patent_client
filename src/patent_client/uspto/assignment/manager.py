@@ -1,16 +1,20 @@
 import logging
 import math
 import re
-import typing
 import warnings
 from collections.abc import Sequence
+from pathlib import Path
+from typing import AsyncIterator
+from typing import Iterator
 
+import httpx
 from patent_client import session
 from patent_client.util import Manager
 from urllib3.connectionpool import InsecureRequestWarning
 
 from .model import Assignment
 from .schema import AssignmentPageSchema
+
 
 warnings.filterwarnings("ignore", category=InsecureRequestWarning)
 
@@ -19,6 +23,8 @@ clean_number = lambda x: NUMBER_CLEAN_RE.sub("", str(x))
 
 
 logger = logging.getLogger(__name__)
+assignment_cert = Path(__file__).parent.parent / "uspto.cer"
+asession = httpx.AsyncClient(verify=assignment_cert)
 
 
 class AssignmentManager(Manager[Assignment]):
@@ -42,16 +48,33 @@ class AssignmentManager(Manager[Assignment]):
         super(AssignmentManager, self).__init__(*args, **kwargs)
         self.pages = dict()
 
+    def __iter__(self) -> Iterator[Assignment]:
+        return super(AssignmentManager, self).__iter__()
+
+    def __aiter__(self) -> AsyncIterator[Assignment]:
+        return super(AssignmentManager, self).__aiter__()
+
     @property
     def allowed_filters(self):
         return list(self.fields.keys())
 
-    def _get_results(self) -> typing.Iterator[Assignment]:
+    def _get_results(self) -> Iterator[Assignment]:
         num_pages = math.ceil(len(self) / self.page_size)
         page_num = 0
         counter = 0
         for page_num in range(num_pages):
             for item in self.get_page(page_num):
+                if not self.config.limit or counter < self.config.limit:
+                    yield item
+                counter += 1
+            page_num += 1
+
+    async def _aget_results(self) -> AsyncIterator[Assignment]:
+        num_pages = math.ceil(len(self) / self.page_size)
+        page_num = 0
+        counter = 0
+        for page_num in range(num_pages):
+            for item in await self.aget_page(page_num):
                 if not self.config.limit or counter < self.config.limit:
                     yield item
                 counter += 1
@@ -105,12 +128,34 @@ class AssignmentManager(Manager[Assignment]):
         else:
             return limit if limit < max_length else max_length
 
+    async def alen(self) -> int:
+        if not hasattr(self, "_len"):
+            await self.aget_page(0)
+        max_length = self._len - self.config.offset
+        limit = self.config.limit
+        if not limit:
+            return max_length
+        else:
+            return limit if limit < max_length else max_length
+
     def get_page(self, page_no):
         params = self.get_query(page_no)
         response = session.get(
             self.url,
             params=params,
             verify=False,
+            headers={"Accept": "application/xml"},
+        )
+        text = response.text
+        result = self.__schema__.load(text)
+        self._len = result.num_found
+        return result.docs
+
+    async def aget_page(self, page_no):
+        params = self.get_query(page_no)
+        response = await asession.get(
+            self.url,
+            params=params,
             headers={"Accept": "application/xml"},
         )
         text = response.text

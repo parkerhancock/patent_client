@@ -8,6 +8,7 @@ from patent_client.util.claims.parser import ClaimsParser
 from yankee.data import ListCollection
 
 from . import public_search_api
+from . import public_search_async_api
 
 claim_parser = ClaimsParser()
 
@@ -117,6 +118,9 @@ class PublicSearch(Model):
 
     def download_images(self, path="."):
         return public_search_api.download_image(self, path)
+
+    async def adownload_images(self, path="."):
+        return await public_search_async_api.download_image(self, path)
 
 
 @dataclass
@@ -310,6 +314,9 @@ class PublicSearchDocument(Model):
 
     def download_images(self, path="."):
         return public_search_api.download_image(self, path)
+
+    async def adownload_images(self, path="."):
+        return await public_search_async_api.download_image(self, path)
 
     @property
     def application(self):

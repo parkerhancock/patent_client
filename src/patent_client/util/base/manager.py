@@ -3,6 +3,7 @@ from __future__ import annotations
 from collections import OrderedDict
 from copy import deepcopy
 from itertools import chain
+from typing import AsyncIterator
 from typing import Generic
 from typing import Iterator
 from typing import TypeVar
@@ -62,6 +63,9 @@ class Manager(Collection, Generic[ModelType]):
     def __iter__(self) -> Iterator[ModelType]:
         for item in self._get_results():
             yield item
+
+    def __aiter__(self) -> AsyncIterator[ModelType]:
+        return self._aget_results()
 
     def _get_results(self) -> Iterator[ModelType]:
         raise NotImplementedError("Must be implemented by subclass")
@@ -138,6 +142,20 @@ class Manager(Collection, Generic[ModelType]):
         if len(mger) == 0:
             raise ValueError("No documents found!")
         return mger[0]  # type: ignore
+
+    async def afirst(self) -> ModelType:
+        """Get the first object in the manager"""
+        return await anext(self.__aiter__())
+
+    async def aget(self, *args, **kwargs) -> ModelType:
+        """If the critera results in a single record, return it, else raise an exception"""
+        mger = self.filter(*args, **kwargs)
+        length = await mger.alen()
+        if length > 1:
+            raise ValueError("More than one document found!")
+        if length == 0:
+            raise ValueError("No documents found!")
+        return await mger.afirst()
 
     # Basic Manager Fetching
 

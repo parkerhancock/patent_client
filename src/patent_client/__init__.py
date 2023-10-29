@@ -40,6 +40,10 @@ logger.info(f"Starting Patent Client with log level {SETTINGS.DEFAULT.LOG_LEVEL}
 from .session import PatentClientSession  # isort:skip
 
 session = PatentClientSession()
+
+import httpx
+
+asession = httpx.AsyncClient()
 # session.remove_expired_responses(expire_after=parse_duration(SETTINGS.CACHE.MAX_AGE))
 
 # Set up yankee

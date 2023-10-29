@@ -1,0 +1,48 @@
+interactions:
+- request:
+    body: '{"start": 0, "pageCount": 500, "sort": "date_publ desc", "docFamilyFiltering":
+      "familyIdFiltering", "searchType": 1, "familyIdEnglishOnly": true, "familyIdFirstPreferred":
+      "US-PGPUB", "familyIdSecondPreferred": "USPAT", "familyIdThirdPreferred": "FPRS",
+      "showDocPerFamilyPref": "showEnglish", "queryId": 0, "tagDocSearch": false,
+      "query": {"caseId": 23822386, "hl_snippets": "2", "op": "OR", "q": "\"379/56\".CCLS.
+      AND @APD>=19700101<=19950928", "queryName": "\"379/56\".CCLS. AND @APD>=19700101<=19950928",
+      "highlights": "1", "qt": "brs", "spellCheck": false, "viewName": "tile", "plurals":
+      true, "britishEquivalents": true, "databaseFilters": [{"databaseName": "USPAT",
+      "countryCodes": []}], "searchType": 1, "ignorePersist": true, "userEnteredQuery":
+      "\"379/56\".CCLS. AND @APD>=19700101<=19950928"}}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '803'
+      content-type:
+      - application/json
+      host:
+      - ppubs.uspto.gov
+      user-agent:
+      - Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/114.0.0.0 Safari/537.36
+      x-requested-with:
+      - XMLHttpRequest
+    method: POST
+    uri: https://ppubs.uspto.gov/dirsearch-public/searches/searchWithBeFamily
+  response:
+    content: '{"numFound":0,"perPage":500,"page":0,"totalPages":0,"hlSnippets":0,"sort":null,"query":{"id":null,"caseId":23822386,"numResults":0,"ignorePersist":true,"fq":null,"databaseFilters":[{"databaseName":"USPAT","countryCodes":[]}],"q":"\"379/56\".CCLS.
+      AND @APD>=19700101<=19950928","queryName":"\"379/56\".CCLS. AND @APD>=19700101<=19950928","userEnteredQuery":"\"379/56\".CCLS.
+      AND @APD>=19700101<=19950928","viewName":"tile","op":"OR","highlights":"1","plurals":true,"britishEquivalents":true,"searchType":1,"excludeResultsAfter":null,"dateCreated":null,"deleteIn":false,"expand":true,"expandSort":"group_sort_date
+      asc, id desc ","expandRows":"100","expandTrackDocScores":true,"expandTrackMaxScore":true,"termGraph":null,"hl":false,"fl":null,"originalQuery":"\"379/56\".CCLS.
+      AND @APD>=19700101<=19950928","error":null,"terms":["@apd","\"379/56\""],"facets":[],"pNumber":null,"hl_fl":null},"duration":62,"highlightingTime":0,"cursorMarker":"*","totalResults":0,"numberOfFamilies":0,"error":null,"patents":[],"qtime":38}'
+    headers:
+      content-type:
+      - application/json
+      date:
+      - Sun, 29 Oct 2023 02:41:53 GMT
+      server-timing:
+      - intid;desc=037882899278bba9
+    http_version: HTTP/2
+    status_code: 200
+version: 1

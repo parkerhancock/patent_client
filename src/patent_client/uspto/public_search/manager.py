@@ -1,6 +1,7 @@
 from patent_client.util.base.manager import Manager
 
 from . import public_search_api
+from . import public_search_async_api
 from .query import QueryBuilder
 from .schema import PublicSearchDocumentSchema
 from .schema import PublicSearchSchema
@@ -43,7 +44,34 @@ class PublicSearchManager(Manager):
                     obj_counter += 1
                 page_no += 1
                 if len(page["patents"]) < self.page_size:
-                    raise FinishedException
+                    raise FinishedException()
+        except FinishedException:
+            pass
+
+    async def _aget_results(self):
+        query = self._query
+        order_by = self._order_by
+        sources = self.config.options.get("sources", ["US-PGPUB", "USPAT", "USOCR"])
+        page_no = 0
+        obj_counter = 0
+        try:
+            while True:
+                page = await public_search_async_api.run_query(
+                    query=query,
+                    start=page_no * self.page_size,
+                    limit=self.page_size,
+                    sort=order_by,
+                    sources=sources,
+                )
+                for obj in page["patents"]:
+                    if self.config.limit and obj_counter >= self.config.limit + self.config.offset:
+                        raise FinishedException()
+                    if obj_counter >= self.config.offset:
+                        yield self.__schema__.load(obj)
+                    obj_counter += 1
+                page_no += 1
+                if len(page["patents"]) < self.page_size:
+                    raise FinishedException()
         except FinishedException:
             pass
 
@@ -79,6 +107,24 @@ class PublicSearchManager(Manager):
             self._len = total_results
         return self._len
 
+    async def alen(self):
+        if hasattr(self, "_len"):
+            return self._len
+        query = self._query
+        order_by = self._order_by
+        sources = self.config.options.get("sources", ["US-PGPUB", "USPAT", "USOCR"])
+        page = await public_search_async_api.run_query(
+            query=query, start=0, limit=self.page_size, sort=order_by, sources=sources
+        )
+
+        total_results = page["totalResults"]
+        total_results -= self.config.offset
+        if self.config.limit:
+            self._len = min(self.config.limit, total_results)
+        else:
+            self._len = total_results
+        return self._len
+
 
 class PublicSearchDocumentManager(PublicSearchManager):
     __doc_schema__ = PublicSearchDocumentSchema()
@@ -92,6 +138,17 @@ class PublicSearchDocumentManager(PublicSearchManager):
 
         for obj in super()._get_results():
             doc = public_search_api.get_document(obj)
+            yield self.__doc_schema__.load(doc)
+
+    async def _aget_results(self):
+        result_count = super().__len__()
+        if result_count > 20:
+            raise CapacityException(
+                f"Query would result in more than 20 results! ({result_count} > 20).\nPlease use the associated Biblio method to reduce load on the API (PublicSearch / PatentBiblio / PublishedApplicationBiblio"
+            )
+
+        for obj in super()._get_results():
+            doc = await public_search_async_api.get_document(obj)
             yield self.__doc_schema__.load(doc)
 
 
