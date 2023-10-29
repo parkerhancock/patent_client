@@ -24,7 +24,7 @@ exclude = ["./**/cassettes/**/*",]
 
 
 [tool.poetry.dependencies]
-python = "^3.8"
+python = ">=3.9,<3.13"
 
 # Required Dependencies
 lxml = "^4.9.0"
@@ -35,8 +35,8 @@ PyPDF2 = "^2.2.0"
 inflection = "^0.5.1"
 openpyxl = "^3.0.10"
 colorlog = "^6.6.0"
-yankee = {path="../yankee", develop=true}
-#yankee = "^0.1.40"
+#yankee = {path="../yankee", develop=true}
+yankee = "^0.1.40"
 PyYAML = "^6.0"
 ujson = "^5.4.0"
 pyparsing = "^3.0.9"
@@ -57,6 +57,7 @@ sphinxcontrib-mermaid      = {optional=true, version="^0.7.1"}
 nbsphinx                   = {optional=true, version="^0.8.9"}
 IPython                    = {optional=true, version="^7.17.0"}
 httpx = {extras = ["http2"], version = "^0.24.1"}
+hishel = "^0.0.16"
 
 [tool.poetry.dev-dependencies]
 

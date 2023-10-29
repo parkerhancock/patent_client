@@ -24,7 +24,7 @@ clean_number = lambda x: NUMBER_CLEAN_RE.sub("", str(x))
 
 logger = logging.getLogger(__name__)
 assignment_cert = Path(__file__).parent.parent / "uspto.cer"
-asession = httpx.AsyncClient(verify=assignment_cert)
+asession = httpx.AsyncClient(verify=False)
 
 
 class AssignmentManager(Manager[Assignment]):
