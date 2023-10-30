@@ -1,20 +1,17 @@
 interactions:
 - request:
-    body: '{"qf": "appEarlyPubNumber applId appLocation appType appStatus_txt appConfrNumber
-      appCustNumber appGrpArtNumber appCls appSubCls appEntityStatus_txt patentNumber
-      patentTitle primaryInventor firstNamedApplicant appExamName appExamPrefrdName
-      appAttrDockNumber appPCTNumber appIntlPubNumber wipoEarlyPubNumber pctAppType
-      firstInventorFile appClsSubCls rankAndInventorsList", "fl": "*", "fq": [], "searchText":
-      "applId:(15145443)", "sort": null, "facet": "false", "start": 0}'
+    body: '{"df": "patentTitle", "qf": "applId", "fl": "*", "fq": [], "searchText":
+      "applId:(15145443)", "sort": "applId asc", "facet": "false", "mm": "0%", "start":
+      "0"}'
     headers:
       accept:
-      - '*/*'
+      - application/json
       accept-encoding:
       - gzip, deflate
       connection:
       - keep-alive
       content-length:
-      - '471'
+      - '159'
       content-type:
       - application/json
       host:
@@ -24,7 +21,7 @@ interactions:
     method: POST
     uri: https://ped.uspto.gov/api/queries
   response:
-    content: '{"queryResults":{"indexLastUpdatedDate":"Sun Oct 29 22:00:28 EDT 2023","searchResponse":{"responseHeader":{"zkConnected":true,"status":0,"QTime":785},"response":{"numFound":1,"start":0,"numFoundExact":true,"docs":[{"corrAddrCountryName":"UNITED
+    content: '{"queryResults":{"indexLastUpdatedDate":"Mon Oct 30 15:56:29 EDT 2023","searchResponse":{"responseHeader":{"zkConnected":true,"status":0,"QTime":1386},"response":{"numFound":1,"start":0,"numFoundExact":true,"docs":[{"corrAddrCountryName":"UNITED
       STATES","applId":"15145443","assignments":[{"reelNumber":"39569","frameNumber":"974","addressNameText":"BRACEWELL
       LLP","addressLineOneText":"P.O. BOX 61389","addressLineTwoText":"HOUSTON, TX
       77208-1389","addressLineThreeText":"null","addressLineFourText":"null","mailDate":"08-30-2016","receivedDate":"08-29-2016","recordedDate":"08-29-2016","pagesCount":"4","converyanceName":"ASSIGNMENT
@@ -95,7 +92,7 @@ interactions:
       Well Services LLC","nameLineTwo":" ","suffix":"","streetOne":"","streetTwo":"","city":"Houston,
       ","geoCode":"TX","country":"(US)","rankNo":"1"}],"applicantsFacet":"{||US Well
       Services LLC||||Houston|TX|US|ORG|1}","appFilingDate":"2016-05-03T00:00:00Z","appExamName":"MACDONALD,
-      STEVEN A","appExamNameFacet":"MACDONALD, STEVEN A","publicInd":"Y","APP_IND":"5","inventorName":"Robert  Kurtz","inventorNameFacet":"Robert  Kurtz","appEarlyPubDate":"2016-11-03T00:00:00Z","corrAddrGeoRegionCode":"TX","appLocation":"ELECTRONIC","appEarlyPubNumber":"US20160319650A1","id":"15145443","appGrpArtNumber":"3674","appGrpArtNumberFacet":"3674","applIdStr":"15145443","appl_id_txt":"15145443","appSubCls":"065100","LAST_MOD_TS":"2023-10-23T22:52:10Z","transactions":[{"recordDate":"2023-05-22
+      STEVEN A","appExamNameFacet":"MACDONALD, STEVEN A","publicInd":"Y","APP_IND":"5","inventorName":"Robert  Kurtz","inventorNameFacet":"Robert  Kurtz","appEarlyPubDate":"2016-11-03T00:00:00Z","corrAddrGeoRegionCode":"TX","appLocation":"ELECTRONIC","appEarlyPubNumber":"US20160319650A1","id":"15145443","appGrpArtNumber":"3674","appGrpArtNumberFacet":"3674","applIdStr":"15145443","appl_id_txt":"15145443","appSubCls":"065100","LAST_MOD_TS":"2023-10-29T06:54:00Z","transactions":[{"recordDate":"2023-05-22
       00:00:00","code":"ELC_RVW","description":"Electronic Review"},{"recordDate":"2023-05-22
       00:00:00","code":"EML_NTF","description":"Email Notification"},{"recordDate":"2023-05-22
       00:00:00","code":"MCTFR","description":"Mail Final Rejection (PTOL - 326)"},{"recordDate":"2023-05-17
@@ -321,7 +318,7 @@ interactions:
       00:00:00","code":"SCAN","description":"IFW Scan & PACR Auto Security Review"},{"recordDate":"2016-05-03
       00:00:00","code":"BIG.","description":"Entity Status Set To Undiscounted (Initial
       Default Setting or Status Change)"},{"recordDate":"2016-05-03 00:00:00","code":"IEXX","description":"Initial
-      Exam Team nn"}],"LAST_INSERT_TIME":"2023-10-24T05:40:03Z","appCls":"166","appStatus":"Final
+      Exam Team nn"}],"LAST_INSERT_TIME":"2023-10-29T07:25:04Z","appCls":"166","appStatus":"Final
       Rejection Mailed","appStatusFacet":"Final Rejection Mailed","appStatus_txt":"Final
       Rejection Mailed","corrAddrStreetLineTwo":"Suite 4200","patentTitle":"Suction
       and Discharge Lines for a Dual Hydraulic Fracturing Unit","appStatusDate":"2023-05-18T00:00:00Z","appAttrDockNumber":"047158.100016","inventors":[{"nameLineOne":"Kurtz","nameLineTwo":"Robert
@@ -348,7 +345,7 @@ interactions:
       Kevin  ","phoneNum":"713-632-1453","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"46089","fullName":"Schwaller,
       Melissa  ","phoneNum":"713-632-1449","regStatus":"ACTIVE"}],"parentContinuity":[{"claimApplicationNumberText":"62156301","applicationNumberText":"15145443","filingDate":"05-03-2015","aiaIndicator":"","patentNumberText":"","applicationStatus":"Expired","applicationStatusDescription":"This
       application Claims Priority from Provisional Application"},{"claimApplicationNumberText":"13679689","applicationNumberText":"15145443","filingDate":"11-16-2012","aiaIndicator":"N","patentNumberText":"9410410","applicationStatus":"Patented","applicationStatusDescription":"This
-      application is a Continuation in part of"}],"corrAddrCustNo":"132858","corrAddrCountryCd":"US","corrAddrCity":"Houston","appEntityStatus":"UNDISCOUNTED","appConfrNumber":"1871","lastUpdatedTimestamp":"2023-10-25T01:11:58.810Z","cmsData":["{15145443|2023-05-21
+      application is a Continuation in part of"}],"corrAddrCustNo":"132858","corrAddrCountryCd":"US","corrAddrCity":"Houston","appEntityStatus":"UNDISCOUNTED","appConfrNumber":"1871","lastUpdatedTimestamp":"2023-10-30T02:29:58.597Z","cmsData":["{15145443|2023-05-21
       20:00:00|PROSECUTION|Final Rejection|CTFR|17|LHTGKY71GREENX1},{15145443|2023-05-21
       20:00:00|PROSECUTION|Examiner''s search strategy and results|SRNT|1|LHTGKY74GREENX1},{15145443|2023-05-21
       20:00:00|PROSECUTION|Search information including classification, databases
@@ -815,17 +812,9 @@ interactions:
       20:00:00|PROSECUTION|Specification|SPEC|17|INRWK6DCRXEAPX4},{15145443|2016-05-02
       20:00:00|PROSECUTION|Claims|CLM|5|INUHS6N3PXXIFW1},{15145443|2016-05-02 20:00:00|PROSECUTION|Drawings-other
       than black and white line drawings|DRW.NONBW|3|INRWK6DBRXEAPX4},{15145443|2016-05-02
-      20:00:00|PROSECUTION|Abstract|ABST|1|INUHS6NEPXXIFW1}"],"appAttrDockNumberFacet":"047158.100016","appEntityStatusFacet":"UNDISCOUNTED","appCustNumberFacet":"132858","_version_":1780687906948513792,"firstInventorFileFacet":"No","appLocationFacet":"ELECTRONIC","appEarlyPubNumberFacet":"US20160319650A1"}]}},"queryId":"4686a747-61dc-4a89-8112-8ee895a6ff59"},"jobStatus":null,"queryId":"4686a747-61dc-4a89-8112-8ee895a6ff59","page":1,"count":0,"errorMessage":null,"createQueryRequest":{"searchText":"applId:(15145443)","facet":"false","facetField":null,"facetLimit":null,"facetMissing":null,"facetDate":null,"facetDateGap":null,"facetDateStart":null,"facetDateEnd":null,"facetDateOther":null,"facetDateInclude":null,"mm":null,"sort":null,"qf":"appEarlyPubNumber
-      applId appLocation appType appStatus_txt appConfrNumber appCustNumber appGrpArtNumber
-      appCls appSubCls appEntityStatus_txt patentNumber patentTitle primaryInventor
-      firstNamedApplicant appExamName appExamPrefrdName appAttrDockNumber appPCTNumber
-      appIntlPubNumber wipoEarlyPubNumber pctAppType firstInventorFile appClsSubCls
-      rankAndInventorsList","wt":null,"df":null,"fl":"*","start":"0","fq":[],"rows":null,"parameters":{"qf":"appEarlyPubNumber
-      applId appLocation appType appStatus_txt appConfrNumber appCustNumber appGrpArtNumber
-      appCls appSubCls appEntityStatus_txt patentNumber patentTitle primaryInventor
-      firstNamedApplicant appExamName appExamPrefrdName appAttrDockNumber appPCTNumber
-      appIntlPubNumber wipoEarlyPubNumber pctAppType firstInventorFile appClsSubCls
-      rankAndInventorsList","fl":["*"],"start":"0","fq":[],"rows":"25","facet":"false"}},"links":[{"rel":"self","href":"https://ped.uspto.gov/api/queries/4686a747-61dc-4a89-8112-8ee895a6ff59?format=XML"},{"rel":"results","href":"https://ped.uspto.gov/api/queries/4686a747-61dc-4a89-8112-8ee895a6ff59/results?page=1"},{"rel":"package","href":"https://ped.uspto.gov/api/queries/4686a747-61dc-4a89-8112-8ee895a6ff59/package?format=XML"},{"rel":"first","href":"https://ped.uspto.gov/api/queries/4686a747-61dc-4a89-8112-8ee895a6ff59/results?page=1"},{"rel":"next","href":"https://ped.uspto.gov/api/queries/4686a747-61dc-4a89-8112-8ee895a6ff59/results?page=2"},{"rel":"self","href":"https://ped.uspto.gov/api/queries/4686a747-61dc-4a89-8112-8ee895a6ff59?format=JSON"},{"rel":"results","href":"https://ped.uspto.gov/api/queries/4686a747-61dc-4a89-8112-8ee895a6ff59/results?page=1"},{"rel":"package","href":"https://ped.uspto.gov/api/queries/4686a747-61dc-4a89-8112-8ee895a6ff59/package?format=JSON"},{"rel":"first","href":"https://ped.uspto.gov/api/queries/4686a747-61dc-4a89-8112-8ee895a6ff59/results?page=1"},{"rel":"next","href":"https://ped.uspto.gov/api/queries/4686a747-61dc-4a89-8112-8ee895a6ff59/results?page=2"}]}'
+      20:00:00|PROSECUTION|Abstract|ABST|1|INUHS6NEPXXIFW1}"],"appAttrDockNumberFacet":"047158.100016","appEntityStatusFacet":"UNDISCOUNTED","appCustNumberFacet":"132858","_version_":1781146004247019520,"firstInventorFileFacet":"No","appLocationFacet":"ELECTRONIC","appEarlyPubNumberFacet":"US20160319650A1"}]}},"queryId":"4092c36d-2876-422b-b9be-0e225e512c1a"},"jobStatus":null,"queryId":"4092c36d-2876-422b-b9be-0e225e512c1a","page":1,"count":0,"errorMessage":null,"createQueryRequest":{"searchText":"applId:(15145443)","facet":"false","facetField":null,"facetLimit":null,"facetMissing":null,"facetDate":null,"facetDateGap":null,"facetDateStart":null,"facetDateEnd":null,"facetDateOther":null,"facetDateInclude":null,"mm":"0%","sort":"applId
+      asc","qf":"applId","wt":null,"df":"patentTitle","fl":"*","start":"0","fq":[],"rows":null,"parameters":{"mm":"0%","df":"patentTitle","qf":"applId","fl":["*"],"start":"0","sort":"applId
+      asc","fq":[],"rows":"25","facet":"false"}},"links":[{"rel":"self","href":"https://ped.uspto.gov/api/queries/4092c36d-2876-422b-b9be-0e225e512c1a?format=XML"},{"rel":"results","href":"https://ped.uspto.gov/api/queries/4092c36d-2876-422b-b9be-0e225e512c1a/results?page=1"},{"rel":"package","href":"https://ped.uspto.gov/api/queries/4092c36d-2876-422b-b9be-0e225e512c1a/package?format=XML"},{"rel":"first","href":"https://ped.uspto.gov/api/queries/4092c36d-2876-422b-b9be-0e225e512c1a/results?page=1"},{"rel":"next","href":"https://ped.uspto.gov/api/queries/4092c36d-2876-422b-b9be-0e225e512c1a/results?page=2"},{"rel":"self","href":"https://ped.uspto.gov/api/queries/4092c36d-2876-422b-b9be-0e225e512c1a?format=JSON"},{"rel":"results","href":"https://ped.uspto.gov/api/queries/4092c36d-2876-422b-b9be-0e225e512c1a/results?page=1"},{"rel":"package","href":"https://ped.uspto.gov/api/queries/4092c36d-2876-422b-b9be-0e225e512c1a/package?format=JSON"},{"rel":"first","href":"https://ped.uspto.gov/api/queries/4092c36d-2876-422b-b9be-0e225e512c1a/results?page=1"},{"rel":"next","href":"https://ped.uspto.gov/api/queries/4092c36d-2876-422b-b9be-0e225e512c1a/results?page=2"}]}'
     headers:
       Cache-Control:
       - no-cache, no-store, max-age=0, must-revalidate
@@ -834,21 +823,872 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Mon, 30 Oct 2023 02:29:17 GMT
+      - Mon, 30 Oct 2023 20:38:28 GMT
       Expires:
       - '0'
       Pragma:
       - no-cache
       Server-Timing:
-      - intid;desc=d734e7e55411d3d5
+      - intid;desc=6e77da3cafe76e85
       Strict-Transport-Security:
       - max-age=31536000;includeSubDomains
       Transfer-Encoding:
       - chunked
       Via:
-      - 1.1 050fafda3999de306a6c7916e4c777bc.cloudfront.net (CloudFront)
+      - 1.1 438aef39b75efc64fcdb19b1f96ff258.cloudfront.net (CloudFront)
       X-Amz-Cf-Id:
-      - dy80AMY4jfSpYJmMkaLFKll43wlsViJZoTimwWw3OgoA0Ypzl2UR3w==
+      - PxxTsAy1u_7Ygpx-0llpqiVT0xLYy7-RgT1Fx7VjklwKL5AWXEyU0A==
+      X-Amz-Cf-Pop:
+      - IAH50-C1
+      X-Cache:
+      - Miss from cloudfront
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - DENY
+      X-XSS-Protection:
+      - 1; mode=block
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: '{"df": "patentTitle", "qf": "applId", "fl": "*", "fq": [], "searchText":
+      "applId:(15145443)", "sort": "applId asc", "facet": "false", "mm": "0%", "start":
+      "0", "rows": 20}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '171'
+      content-type:
+      - application/json
+      host:
+      - ped.uspto.gov
+      user-agent:
+      - python-httpx/0.24.1
+    method: POST
+    uri: https://ped.uspto.gov/api/queries
+  response:
+    content: '{"queryResults":{"indexLastUpdatedDate":"Mon Oct 30 15:56:19 EDT 2023","searchResponse":{"responseHeader":{"zkConnected":true,"status":0,"QTime":2509},"response":{"numFound":1,"start":0,"numFoundExact":true,"docs":[{"corrAddrCountryName":"UNITED
+      STATES","applId":"15145443","assignments":[{"reelNumber":"39569","frameNumber":"974","addressNameText":"BRACEWELL
+      LLP","addressLineOneText":"P.O. BOX 61389","addressLineTwoText":"HOUSTON, TX
+      77208-1389","addressLineThreeText":"null","addressLineFourText":"null","mailDate":"08-30-2016","receivedDate":"08-29-2016","recordedDate":"08-29-2016","pagesCount":"4","converyanceName":"ASSIGNMENT
+      OF ASSIGNORS INTEREST (SEE DOCUMENT FOR DETAILS).","sequenceNumber":"1","assignors":[{"assignorName":"OEHRING,
+      JARED","execDate":"08-09-2016"}],"assignee":[{"assigneeName":"US WELL SERVICES
+      LLC","streetLineOneText":"770 SOUTH POST OAK LANE","streetLineTwoText":"SUITE
+      405","cityName":"HOUSTON","countryCode":"TEXAS","postalCode":"77056"}]},{"reelNumber":"42085","frameNumber":"55","addressNameText":"HOGAN
+      LOVELLS US LLP BANK OF AMERICA CEN","addressLineOneText":"700 LOUISIANA STREET","addressLineTwoText":"SUITE
+      4300","addressLineThreeText":"HOUSTON, TX 77002","addressLineFourText":"null","mailDate":"04-21-2017","receivedDate":"04-20-2017","recordedDate":"04-20-2017","pagesCount":"3","converyanceName":"ASSIGNMENT
+      OF ASSIGNORS INTEREST (SEE DOCUMENT FOR DETAILS).","sequenceNumber":"1","assignors":[{"assignorName":"KURTZ,
+      ROBERT","execDate":"04-16-2017"}],"assignee":[{"assigneeName":"US WELL SERVICES
+      LLC","streetLineOneText":"770 SOUTH POST OAK LANE","streetLineTwoText":"SUITE
+      405","cityName":"HOUSTON","countryCode":"TEXAS","postalCode":"77056"}]},{"reelNumber":"61875","frameNumber":"1","addressNameText":"KE
+      YANG XIA","addressLineOneText":"PROSKAUER ROSE LLP","addressLineTwoText":"ELEVEN
+      TIMES SQUARE","addressLineThreeText":"NEW YORK, NY 10036-8299","addressLineFourText":"null","mailDate":"11-28-2022","receivedDate":"11-02-2022","recordedDate":"11-02-2022","pagesCount":"21","converyanceName":"SECURITY
+      INTEREST (SEE DOCUMENT FOR DETAILS).","sequenceNumber":"2","assignors":null,"assignee":null},{"reelNumber":"62142","frameNumber":"927","addressNameText":"SHANNON
+      SPAINHOUR","addressLineOneText":"2001 ROSS AVENUE, SUITE 3900","addressLineTwoText":"C/O
+      VINSON & ELKINS L.L.P.","addressLineThreeText":"DALLAS, TX 75201","addressLineFourText":"null","mailDate":"NONE","receivedDate":"12-16-2022","recordedDate":"12-16-2022","pagesCount":"18","converyanceName":"SECURITY
+      INTEREST (SEE DOCUMENT FOR DETAILS).","sequenceNumber":"2","assignors":null,"assignee":null},{"reelNumber":"49107","frameNumber":"392","addressNameText":"WHITE
+      & CASE LLP","addressLineOneText":"75 STATE STREET","addressLineTwoText":"BOSTON,
+      MA 02109","addressLineThreeText":"null","addressLineFourText":"null","mailDate":"05-09-2019","receivedDate":"05-07-2019","recordedDate":"05-07-2019","pagesCount":"16","converyanceName":"SECURITY
+      INTEREST (SEE DOCUMENT FOR DETAILS).","sequenceNumber":"4","assignors":[{"assignorName":"U.S.
+      WELL SERVICES, LLC","execDate":"05-07-2019"}],"assignee":[{"assigneeName":"CLMG
+      CORP.","streetLineOneText":"7195 DALLAS PKWY","streetLineTwoText":"null","cityName":"PLANO","countryCode":"TEXAS","postalCode":"75024-4922"}]},{"reelNumber":"57434","frameNumber":"429","addressNameText":"ALSTON
+      & BIRD LLP","addressLineOneText":"ONE SOUTH AT THE PLAZA","addressLineTwoText":"101
+      SOUTH TRYON STREET, SUITE 4000","addressLineThreeText":"CHARLOTTE, NC 28280-4000","addressLineFourText":"null","mailDate":"09-14-2021","receivedDate":"06-30-2021","recordedDate":"06-30-2021","pagesCount":"19","converyanceName":"SECURITY
+      INTEREST (SEE DOCUMENT FOR DETAILS).","sequenceNumber":"4","assignors":[{"assignorName":"U.S.
+      WELL SERVICES, LLC","execDate":"06-24-2021"}],"assignee":[{"assigneeName":"WILMINGTON
+      SAVINGS FUND SOCIETY, FSB","streetLineOneText":"500 DELAWARE AVENUE, 11TH FLOOR","streetLineTwoText":"null","cityName":"WILMINGTON","countryCode":"DELAWARE","postalCode":"19801"}]},{"reelNumber":"48041","frameNumber":"605","addressNameText":"ELANA
+      D. BENSOUL","addressLineOneText":"PAUL WEISS RIFKIND WHARTON &GARRISON LLP","addressLineTwoText":"1285
+      AVENUE OF THE AMERICAS","addressLineThreeText":"NEW YORK, NY 10019-6064","addressLineFourText":"null","mailDate":"01-18-2019","receivedDate":"01-09-2019","recordedDate":"01-09-2019","pagesCount":"12","converyanceName":"SECURITY
+      INTEREST (SEE DOCUMENT FOR DETAILS).","sequenceNumber":"5","assignors":[{"assignorName":"U.S.
+      WELL SERVICES, LLC","execDate":"01-09-2019"}],"assignee":[{"assigneeName":"PIPER
+      JAFFRAY FINANCE, LLC","streetLineOneText":"345 PARK AVENUE 12TH FLOOR","streetLineTwoText":"ATTN:
+      AMRIT AGRAWAL","cityName":"NEW YORK","countryCode":"NEW YORK","postalCode":"10154"}]},{"reelNumber":"48818","frameNumber":"520","addressNameText":"WILMER
+      CUTLER PICKERING HALE AND DORR LLP","addressLineOneText":"1875 PENNSYLVANIA
+      AVENUE NW","addressLineTwoText":"WASHINGTON, DC 20006","addressLineThreeText":"null","addressLineFourText":"null","mailDate":"04-09-2019","receivedDate":"04-08-2019","recordedDate":"04-08-2019","pagesCount":"12","converyanceName":"SECURITY
+      INTEREST (SEE DOCUMENT FOR DETAILS).","sequenceNumber":"5","assignors":[{"assignorName":"U.S.
+      WELL SERVICES, LLC","execDate":"01-07-2019"}],"assignee":[{"assigneeName":"U.S.
+      BANK NATIONAL ASSOCIATION, AS ADMINISTRATIVE AGENT","streetLineOneText":"214
+      N. TRYON STREET, 26TH FLOOR","streetLineTwoText":"ATTN: CDO TRUST SERVICES/
+      JAMES HANLEY","cityName":"CHARLOTTE","countryCode":"NORTH CAROLINA","postalCode":"28202"}]},{"reelNumber":"49109","frameNumber":"610","addressNameText":"STEPHANIE
+      KANN","addressLineOneText":"3161 MICHELSON DRIVE","addressLineTwoText":"GIBSON,
+      DUNN & CRUTCHER LLP","addressLineThreeText":"IRVINE, CA 92612","addressLineFourText":"null","mailDate":"05-09-2019","receivedDate":"05-07-2019","recordedDate":"05-07-2019","pagesCount":"11","converyanceName":"TERMINATION
+      AND RELEASE OF PATENT SECURITY AGREEMENT RECORDED AT REEL 048818/FRAME 0520","sequenceNumber":"5","assignors":[{"assignorName":"U.S.
+      BANK NATIONAL ASSOCIATION","execDate":"05-07-2019"}],"assignee":[{"assigneeName":"U.S.
+      WELL SERVICES, LLC","streetLineOneText":"770 SOUTH POST OAK LANE, SUITE 405","streetLineTwoText":"null","cityName":"HOUSTON","countryCode":"TEXAS","postalCode":"77056"}]},{"reelNumber":"49110","frameNumber":"319","addressNameText":"STEPHANIE
+      KANN","addressLineOneText":"3161 MICHELSON DRIVE","addressLineTwoText":"GIBSON,
+      DUNN & CRUTCHER LLP","addressLineThreeText":"IRVINE, CA 92612","addressLineFourText":"null","mailDate":"05-09-2019","receivedDate":"05-07-2019","recordedDate":"05-07-2019","pagesCount":"11","converyanceName":"TERMINATION
+      AND RELEASE OF PATENT SECURITY AGREEMENT RECORDED AT REEL 048041/FRAME 0605","sequenceNumber":"5","assignors":[{"assignorName":"PIPER
+      JAFFRAY FINANCE, LLC","execDate":"05-07-2019"}],"assignee":[{"assigneeName":"U.S.
+      WELL SERVICES, LLC","streetLineOneText":"770 SOUTH POST OAK LANE, SUITE 405","streetLineTwoText":"null","cityName":"HOUSTON","countryCode":"TEXAS","postalCode":"77056"}]},{"reelNumber":"49111","frameNumber":"583","addressNameText":"MCGUIREWOODS
+      LLP","addressLineOneText":"355 S. GRAND AVENUE, SUITE 4200","addressLineTwoText":"ATTENTION:
+      HAMID R. NAMAZIE, ESQ.","addressLineThreeText":"LOS ANGELES, CA 90071","addressLineFourText":"null","mailDate":"05-09-2019","receivedDate":"05-08-2019","recordedDate":"05-08-2019","pagesCount":"15","converyanceName":"SECURITY
+      INTEREST (SEE DOCUMENT FOR DETAILS).","sequenceNumber":"5","assignors":[{"assignorName":"U.S.
+      WELL SERVICES, LLC","execDate":"05-07-2019"}],"assignee":[{"assigneeName":"BANK
+      OF AMERICA, N.A., AS ADMINISTRATIVE AGENT","streetLineOneText":"901 MAIN STREET","streetLineTwoText":"null","cityName":"DALLAS","countryCode":"TEXAS","postalCode":"75202"}]},{"reelNumber":"49342","frameNumber":"819","addressNameText":"WILMER
+      CUTLER PICKERING HALE AND DORR LLP","addressLineOneText":"1875 PENNSYLVANIA
+      AVENUE NW","addressLineTwoText":"WASHINGTON, DC 20006","addressLineThreeText":"null","addressLineFourText":"null","mailDate":"06-04-2019","receivedDate":"01-08-2019","recordedDate":"01-08-2019","pagesCount":"12","converyanceName":"SECURITY
+      INTEREST (SEE DOCUMENT FOR DETAILS).","sequenceNumber":"5","assignors":[{"assignorName":"U.S.
+      WELL SERVICES, LLC","execDate":"01-07-2019"}],"assignee":[{"assigneeName":"U.S.
+      BANK NATIONAL ASSOCIATION, AS ADMINSTRATIVE AGENT","streetLineOneText":"214
+      N. TRYON STREET, 26TH FLOOR","streetLineTwoText":"ATTN: CDO TRUST SERVICES /
+      JAMES HANLEY","cityName":"CHARLOTTE","countryCode":"NORTH CAROLINA","postalCode":"28202"}]},{"reelNumber":"61875","frameNumber":"260","addressNameText":"KE
+      YANG XIA","addressLineOneText":"PROSKAUER ROSE LLP","addressLineTwoText":"ELEVEN
+      TIMES SQUARE","addressLineThreeText":"NEW YORK, NY 10036-8299","addressLineFourText":"null","mailDate":"11-28-2022","receivedDate":"11-02-2022","recordedDate":"11-02-2022","pagesCount":"11","converyanceName":"RELEASE
+      OF SECURITY INTEREST AT REEL/FRAME NO. 49111/0583","sequenceNumber":"5","assignors":null,"assignee":null}],"applicants":[{"nameLineOne":"US
+      Well Services LLC","nameLineTwo":" ","suffix":"","streetOne":"","streetTwo":"","city":"Houston,
+      ","geoCode":"TX","country":"(US)","rankNo":"1"}],"applicantsFacet":"{||US Well
+      Services LLC||||Houston|TX|US|ORG|1}","appFilingDate":"2016-05-03T00:00:00Z","appExamName":"MACDONALD,
+      STEVEN A","appExamNameFacet":"MACDONALD, STEVEN A","publicInd":"Y","APP_IND":"5","inventorName":"Robert  Kurtz","inventorNameFacet":"Robert  Kurtz","appEarlyPubDate":"2016-11-03T00:00:00Z","corrAddrGeoRegionCode":"TX","appLocation":"ELECTRONIC","appEarlyPubNumber":"US20160319650A1","id":"15145443","appGrpArtNumber":"3674","appGrpArtNumberFacet":"3674","applIdStr":"15145443","appl_id_txt":"15145443","appSubCls":"065100","LAST_MOD_TS":"2023-10-29T06:54:00Z","transactions":[{"recordDate":"2023-05-22
+      00:00:00","code":"ELC_RVW","description":"Electronic Review"},{"recordDate":"2023-05-22
+      00:00:00","code":"EML_NTF","description":"Email Notification"},{"recordDate":"2023-05-22
+      00:00:00","code":"MCTFR","description":"Mail Final Rejection (PTOL - 326)"},{"recordDate":"2023-05-17
+      00:00:00","code":"CTFR","description":"Final Rejection"},{"recordDate":"2023-05-08
+      00:00:00","code":"FWDX","description":"Date Forwarded to Examiner"},{"recordDate":"2023-04-24
+      00:00:00","code":"A...","description":"Response after Non-Final Action"},{"recordDate":"2023-04-24
+      00:00:00","code":"XT/G","description":"Request for Extension of Time - Granted"},{"recordDate":"2022-10-28
+      00:00:00","code":"ELC_RVW","description":"Electronic Review"},{"recordDate":"2022-10-24
+      00:00:00","code":"EML_NTF","description":"Email Notification"},{"recordDate":"2022-10-24
+      00:00:00","code":"MCTNF","description":"Mail Non-Final Rejection"},{"recordDate":"2022-10-19
+      00:00:00","code":"CTNF","description":"Non-Final Rejection"},{"recordDate":"2022-10-18
+      00:00:00","code":"FWDX","description":"Date Forwarded to Examiner"},{"recordDate":"2022-10-11
+      00:00:00","code":"RCEX","description":"Request for Continued Examination (RCE)"},{"recordDate":"2022-10-18
+      00:00:00","code":"ABN9","description":"Disposal for a RCE / CPA / R129"},{"recordDate":"2022-10-11
+      00:00:00","code":"XT/G","description":"Request for Extension of Time - Granted"},{"recordDate":"2022-10-11
+      00:00:00","code":"BRCE","description":"Workflow - Request for RCE - Begin"},{"recordDate":"2022-04-08
+      00:00:00","code":"ELC_RVW","description":"Electronic Review"},{"recordDate":"2022-04-08
+      00:00:00","code":"EML_NTF","description":"Email Notification"},{"recordDate":"2022-04-08
+      00:00:00","code":"MCTFR","description":"Mail Final Rejection (PTOL - 326)"},{"recordDate":"2022-04-05
+      00:00:00","code":"CTFR","description":"Final Rejection"},{"recordDate":"2022-04-05
+      00:00:00","code":"IDSC","description":"Information Disclosure Statement considered"},{"recordDate":"2022-04-05
+      00:00:00","code":"IDSC","description":"Information Disclosure Statement considered"},{"recordDate":"2022-03-25
+      00:00:00","code":"FWDX","description":"Date Forwarded to Examiner"},{"recordDate":"2022-03-21
+      00:00:00","code":"A...","description":"Response after Non-Final Action"},{"recordDate":"2022-03-21
+      00:00:00","code":"XT/G","description":"Request for Extension of Time - Granted"},{"recordDate":"2021-12-23
+      00:00:00","code":"M844","description":"Information Disclosure Statement (IDS)
+      Filed"},{"recordDate":"2021-12-23 00:00:00","code":"WIDS","description":"Information
+      Disclosure Statement (IDS) Filed"},{"recordDate":"2021-09-27 00:00:00","code":"EIDS.","description":"Electronic
+      Information Disclosure Statement"},{"recordDate":"2021-09-27 00:00:00","code":"WIDS","description":"Information
+      Disclosure Statement (IDS) Filed"},{"recordDate":"2021-09-20 00:00:00","code":"ELC_RVW","description":"Electronic
+      Review"},{"recordDate":"2021-09-20 00:00:00","code":"EML_NTF","description":"Email
+      Notification"},{"recordDate":"2021-09-20 00:00:00","code":"MCTNF","description":"Mail
+      Non-Final Rejection"},{"recordDate":"2021-09-15 00:00:00","code":"CTNF","description":"Non-Final
+      Rejection"},{"recordDate":"2021-09-14 00:00:00","code":"IDSC","description":"Information
+      Disclosure Statement considered"},{"recordDate":"2021-09-14 00:00:00","code":"IDSC","description":"Information
+      Disclosure Statement considered"},{"recordDate":"2021-09-14 00:00:00","code":"IDSC","description":"Information
+      Disclosure Statement considered"},{"recordDate":"2021-09-11 00:00:00","code":"FWDX","description":"Date
+      Forwarded to Examiner"},{"recordDate":"2021-08-09 00:00:00","code":"RCEX","description":"Request
+      for Continued Examination (RCE)"},{"recordDate":"2021-09-11 00:00:00","code":"ABN9","description":"Disposal
+      for a RCE / CPA / R129"},{"recordDate":"2021-08-09 00:00:00","code":"XT/G","description":"Request
+      for Extension of Time - Granted"},{"recordDate":"2021-08-09 00:00:00","code":"BRCE","description":"Workflow
+      - Request for RCE - Begin"},{"recordDate":"2021-06-08 00:00:00","code":"M844","description":"Information
+      Disclosure Statement (IDS) Filed"},{"recordDate":"2021-06-08 00:00:00","code":"WIDS","description":"Information
+      Disclosure Statement (IDS) Filed"},{"recordDate":"2021-03-08 00:00:00","code":"EIDS.","description":"Electronic
+      Information Disclosure Statement"},{"recordDate":"2021-03-08 00:00:00","code":"EIDS.","description":"Electronic
+      Information Disclosure Statement"},{"recordDate":"2021-03-08 00:00:00","code":"WIDS","description":"Information
+      Disclosure Statement (IDS) Filed"},{"recordDate":"2021-03-08 00:00:00","code":"EIDS.","description":"Electronic
+      Information Disclosure Statement"},{"recordDate":"2021-03-08 00:00:00","code":"WIDS","description":"Information
+      Disclosure Statement (IDS) Filed"},{"recordDate":"2021-02-08 00:00:00","code":"ELC_RVW","description":"Electronic
+      Review"},{"recordDate":"2021-02-08 00:00:00","code":"EML_NTF","description":"Email
+      Notification"},{"recordDate":"2021-02-08 00:00:00","code":"MCTFR","description":"Mail
+      Final Rejection (PTOL - 326)"},{"recordDate":"2021-02-03 00:00:00","code":"CTFR","description":"Final
+      Rejection"},{"recordDate":"2021-02-03 00:00:00","code":"IDSC","description":"Information
+      Disclosure Statement considered"},{"recordDate":"2021-02-03 00:00:00","code":"IDSC","description":"Information
+      Disclosure Statement considered"},{"recordDate":"2021-02-03 00:00:00","code":"IDSC","description":"Information
+      Disclosure Statement considered"},{"recordDate":"2020-11-30 00:00:00","code":"IDSC","description":"Information
+      Disclosure Statement considered"},{"recordDate":"2020-11-30 00:00:00","code":"IDSC","description":"Information
+      Disclosure Statement considered"},{"recordDate":"2020-11-18 00:00:00","code":"EIDS.","description":"Electronic
+      Information Disclosure Statement"},{"recordDate":"2020-09-01 00:00:00","code":"EIDS.","description":"Electronic
+      Information Disclosure Statement"},{"recordDate":"2020-11-18 00:00:00","code":"WIDS","description":"Information
+      Disclosure Statement (IDS) Filed"},{"recordDate":"2020-11-10 00:00:00","code":"FWDX","description":"Date
+      Forwarded to Examiner"},{"recordDate":"2020-11-09 00:00:00","code":"A...","description":"Response
+      after Non-Final Action"},{"recordDate":"2020-11-09 00:00:00","code":"XT/G","description":"Request
+      for Extension of Time - Granted"},{"recordDate":"2020-09-01 00:00:00","code":"WIDS","description":"Information
+      Disclosure Statement (IDS) Filed"},{"recordDate":"2020-06-18 00:00:00","code":"EIDS.","description":"Electronic
+      Information Disclosure Statement"},{"recordDate":"2020-05-05 00:00:00","code":"EIDS.","description":"Electronic
+      Information Disclosure Statement"},{"recordDate":"2020-05-05 00:00:00","code":"EIDS.","description":"Electronic
+      Information Disclosure Statement"},{"recordDate":"2020-06-18 00:00:00","code":"WIDS","description":"Information
+      Disclosure Statement (IDS) Filed"},{"recordDate":"2020-05-08 00:00:00","code":"ELC_RVW","description":"Electronic
+      Review"},{"recordDate":"2020-05-08 00:00:00","code":"EML_NTF","description":"Email
+      Notification"},{"recordDate":"2020-05-08 00:00:00","code":"MCTNF","description":"Mail
+      Non-Final Rejection"},{"recordDate":"2020-05-05 00:00:00","code":"WIDS","description":"Information
+      Disclosure Statement (IDS) Filed"},{"recordDate":"2020-05-05 00:00:00","code":"WIDS","description":"Information
+      Disclosure Statement (IDS) Filed"},{"recordDate":"2020-05-05 00:00:00","code":"CTNF","description":"Non-Final
+      Rejection"},{"recordDate":"2020-04-28 00:00:00","code":"IDSC","description":"Information
+      Disclosure Statement considered"},{"recordDate":"2020-04-19 00:00:00","code":"FWDX","description":"Date
+      Forwarded to Examiner"},{"recordDate":"2020-04-15 00:00:00","code":"RCEX","description":"Request
+      for Continued Examination (RCE)"},{"recordDate":"2020-04-19 00:00:00","code":"ABN9","description":"Disposal
+      for a RCE / CPA / R129"},{"recordDate":"2020-04-15 00:00:00","code":"XT/G","description":"Request
+      for Extension of Time - Granted"},{"recordDate":"2020-04-15 00:00:00","code":"BRCE","description":"Workflow
+      - Request for RCE - Begin"},{"recordDate":"2019-10-15 00:00:00","code":"ELC_RVW","description":"Electronic
+      Review"},{"recordDate":"2019-10-15 00:00:00","code":"EML_NTF","description":"Email
+      Notification"},{"recordDate":"2019-10-15 00:00:00","code":"MCTFR","description":"Mail
+      Final Rejection (PTOL - 326)"},{"recordDate":"2019-10-09 00:00:00","code":"CTFR","description":"Final
+      Rejection"},{"recordDate":"2019-10-08 00:00:00","code":"IDSC","description":"Information
+      Disclosure Statement considered"},{"recordDate":"2019-10-08 00:00:00","code":"IDSC","description":"Information
+      Disclosure Statement considered"},{"recordDate":"2019-09-20 00:00:00","code":"FWDX","description":"Date
+      Forwarded to Examiner"},{"recordDate":"2019-09-16 00:00:00","code":"A...","description":"Response
+      after Non-Final Action"},{"recordDate":"2019-09-16 00:00:00","code":"XT/G","description":"Request
+      for Extension of Time - Granted"},{"recordDate":"2019-05-28 00:00:00","code":"EIDS.","description":"Electronic
+      Information Disclosure Statement"},{"recordDate":"2019-03-15 00:00:00","code":"EIDS.","description":"Electronic
+      Information Disclosure Statement"},{"recordDate":"2019-05-28 00:00:00","code":"WIDS","description":"Information
+      Disclosure Statement (IDS) Filed"},{"recordDate":"2019-03-15 00:00:00","code":"WIDS","description":"Information
+      Disclosure Statement (IDS) Filed"},{"recordDate":"2019-03-14 00:00:00","code":"ELC_RVW","description":"Electronic
+      Review"},{"recordDate":"2019-03-14 00:00:00","code":"EML_NTF","description":"Email
+      Notification"},{"recordDate":"2019-03-14 00:00:00","code":"MCTNF","description":"Mail
+      Non-Final Rejection"},{"recordDate":"2019-03-08 00:00:00","code":"CTNF","description":"Non-Final
+      Rejection"},{"recordDate":"2019-03-08 00:00:00","code":"IDSC","description":"Information
+      Disclosure Statement considered"},{"recordDate":"2019-03-08 00:00:00","code":"IDSC","description":"Information
+      Disclosure Statement considered"},{"recordDate":"2019-03-08 00:00:00","code":"IDSC","description":"Information
+      Disclosure Statement considered"},{"recordDate":"2019-03-08 00:00:00","code":"IDSC","description":"Information
+      Disclosure Statement considered"},{"recordDate":"2019-02-22 00:00:00","code":"FWDX","description":"Date
+      Forwarded to Examiner"},{"recordDate":"2019-02-14 00:00:00","code":"RCEX","description":"Request
+      for Continued Examination (RCE)"},{"recordDate":"2019-02-22 00:00:00","code":"ABN9","description":"Disposal
+      for a RCE / CPA / R129"},{"recordDate":"2019-02-14 00:00:00","code":"XT/G","description":"Request
+      for Extension of Time - Granted"},{"recordDate":"2019-02-14 00:00:00","code":"BRCE","description":"Workflow
+      - Request for RCE - Begin"},{"recordDate":"2019-01-18 00:00:00","code":"EIDS.","description":"Electronic
+      Information Disclosure Statement"},{"recordDate":"2018-12-06 00:00:00","code":"EIDS.","description":"Electronic
+      Information Disclosure Statement"},{"recordDate":"2019-01-18 00:00:00","code":"WIDS","description":"Information
+      Disclosure Statement (IDS) Filed"},{"recordDate":"2018-12-06 00:00:00","code":"WIDS","description":"Information
+      Disclosure Statement (IDS) Filed"},{"recordDate":"2018-09-18 00:00:00","code":"EIDS.","description":"Electronic
+      Information Disclosure Statement"},{"recordDate":"2018-09-18 00:00:00","code":"EIDS.","description":"Electronic
+      Information Disclosure Statement"},{"recordDate":"2018-09-18 00:00:00","code":"WIDS","description":"Information
+      Disclosure Statement (IDS) Filed"},{"recordDate":"2018-09-18 00:00:00","code":"WIDS","description":"Information
+      Disclosure Statement (IDS) Filed"},{"recordDate":"2018-09-14 00:00:00","code":"ELC_RVW","description":"Electronic
+      Review"},{"recordDate":"2018-09-14 00:00:00","code":"EML_NTF","description":"Email
+      Notification"},{"recordDate":"2018-09-14 00:00:00","code":"MCTFR","description":"Mail
+      Final Rejection (PTOL - 326)"},{"recordDate":"2018-09-10 00:00:00","code":"CTFR","description":"Final
+      Rejection"},{"recordDate":"2018-09-06 00:00:00","code":"IDSC","description":"Information
+      Disclosure Statement considered"},{"recordDate":"2018-09-06 00:00:00","code":"IDSC","description":"Information
+      Disclosure Statement considered"},{"recordDate":"2018-08-28 00:00:00","code":"FWDX","description":"Date
+      Forwarded to Examiner"},{"recordDate":"2018-08-01 00:00:00","code":"A...","description":"Response
+      after Non-Final Action"},{"recordDate":"2018-08-01 00:00:00","code":"XT/G","description":"Request
+      for Extension of Time - Granted"},{"recordDate":"2018-06-01 00:00:00","code":"EIDS.","description":"Electronic
+      Information Disclosure Statement"},{"recordDate":"2018-03-23 00:00:00","code":"EIDS.","description":"Electronic
+      Information Disclosure Statement"},{"recordDate":"2018-06-01 00:00:00","code":"WIDS","description":"Information
+      Disclosure Statement (IDS) Filed"},{"recordDate":"2018-03-23 00:00:00","code":"WIDS","description":"Information
+      Disclosure Statement (IDS) Filed"},{"recordDate":"2017-12-29 00:00:00","code":"EIDS.","description":"Electronic
+      Information Disclosure Statement"},{"recordDate":"2018-02-01 00:00:00","code":"ELC_RVW","description":"Electronic
+      Review"},{"recordDate":"2018-02-01 00:00:00","code":"EML_NTF","description":"Email
+      Notification"},{"recordDate":"2018-02-01 00:00:00","code":"MCTNF","description":"Mail
+      Non-Final Rejection"},{"recordDate":"2018-01-23 00:00:00","code":"CTNF","description":"Non-Final
+      Rejection"},{"recordDate":"2018-01-23 00:00:00","code":"IDSC","description":"Information
+      Disclosure Statement considered"},{"recordDate":"2018-01-23 00:00:00","code":"IDSC","description":"Information
+      Disclosure Statement considered"},{"recordDate":"2017-12-29 00:00:00","code":"WIDS","description":"Information
+      Disclosure Statement (IDS) Filed"},{"recordDate":"2017-09-14 00:00:00","code":"EIDS.","description":"Electronic
+      Information Disclosure Statement"},{"recordDate":"2017-10-23 00:00:00","code":"RCEX","description":"Request
+      for Continued Examination (RCE)"},{"recordDate":"2017-10-26 00:00:00","code":"ABN9","description":"Disposal
+      for a RCE / CPA / R129"},{"recordDate":"2017-10-23 00:00:00","code":"XT/G","description":"Request
+      for Extension of Time - Granted"},{"recordDate":"2017-10-23 00:00:00","code":"BRCE","description":"Workflow
+      - Request for RCE - Begin"},{"recordDate":"2017-10-05 00:00:00","code":"FWDX","description":"Date
+      Forwarded to Examiner"},{"recordDate":"2017-10-03 00:00:00","code":"SA..","description":"Supplemental
+      Response"},{"recordDate":"2017-10-03 00:00:00","code":"EML_NTR","description":"Email
+      Notification"},{"recordDate":"2017-10-03 00:00:00","code":"MCTAV","description":"Mail
+      Advisory Action (PTOL - 303)"},{"recordDate":"2017-09-29 00:00:00","code":"CTAV","description":"Advisory
+      Action (PTOL-303)"},{"recordDate":"2017-09-28 00:00:00","code":"FWDX","description":"Date
+      Forwarded to Examiner"},{"recordDate":"2017-09-26 00:00:00","code":"A.NE","description":"Response
+      after Final Action"},{"recordDate":"2017-09-26 00:00:00","code":"XT/G","description":"Request
+      for Extension of Time - Granted"},{"recordDate":"2017-09-19 00:00:00","code":"EML_NTR","description":"Email
+      Notification"},{"recordDate":"2017-09-14 00:00:00","code":"WIDS","description":"Information
+      Disclosure Statement (IDS) Filed"},{"recordDate":"2017-09-19 00:00:00","code":"MCTAV","description":"Mail
+      Advisory Action (PTOL - 303)"},{"recordDate":"2017-09-11 00:00:00","code":"EXAT","description":"Interview
+      Summary - Applicant Initiated - Telephonic"},{"recordDate":"2017-09-14 00:00:00","code":"AFAC","description":"After
+      Final Consideration Program Additional Consideration and/or updated search"},{"recordDate":"2017-09-14
+      00:00:00","code":"CTAV","description":"Advisory Action (PTOL-303)"},{"recordDate":"2017-08-25
+      00:00:00","code":"RAFC","description":"PILOT- Request for After Final Consideration
+      Program"},{"recordDate":"2017-08-28 00:00:00","code":"FWDX","description":"Date
+      Forwarded to Examiner"},{"recordDate":"2017-08-25 00:00:00","code":"A.NE","description":"Response
+      after Final Action"},{"recordDate":"2017-05-26 00:00:00","code":"EIDS.","description":"Electronic
+      Information Disclosure Statement"},{"recordDate":"2017-05-26 00:00:00","code":"WIDS","description":"Information
+      Disclosure Statement (IDS) Filed"},{"recordDate":"2017-05-26 00:00:00","code":"ELC_RVW","description":"Electronic
+      Review"},{"recordDate":"2017-05-26 00:00:00","code":"EML_NTF","description":"Email
+      Notification"},{"recordDate":"2017-05-26 00:00:00","code":"MCTFR","description":"Mail
+      Final Rejection (PTOL - 326)"},{"recordDate":"2017-05-22 00:00:00","code":"CTFR","description":"Final
+      Rejection"},{"recordDate":"2017-05-12 00:00:00","code":"IDSC","description":"Information
+      Disclosure Statement considered"},{"recordDate":"2017-05-12 00:00:00","code":"IDSC","description":"Information
+      Disclosure Statement considered"},{"recordDate":"2017-05-10 00:00:00","code":"FWDX","description":"Date
+      Forwarded to Examiner"},{"recordDate":"2017-05-02 00:00:00","code":"A...","description":"Response
+      after Non-Final Action"},{"recordDate":"2017-01-25 00:00:00","code":"EIDS.","description":"Electronic
+      Information Disclosure Statement"},{"recordDate":"2017-03-30 00:00:00","code":"EIDS.","description":"Electronic
+      Information Disclosure Statement"},{"recordDate":"2017-03-30 00:00:00","code":"WIDS","description":"Information
+      Disclosure Statement (IDS) Filed"},{"recordDate":"2017-02-07 00:00:00","code":"ELC_RVW","description":"Electronic
+      Review"},{"recordDate":"2017-02-07 00:00:00","code":"EML_NTF","description":"Email
+      Notification"},{"recordDate":"2017-02-07 00:00:00","code":"MCTNF","description":"Mail
+      Non-Final Rejection"},{"recordDate":"2017-01-25 00:00:00","code":"WIDS","description":"Information
+      Disclosure Statement (IDS) Filed"},{"recordDate":"2017-01-25 00:00:00","code":"CTNF","description":"Non-Final
+      Rejection"},{"recordDate":"2017-01-12 00:00:00","code":"T1ON","description":"track
+      1 ON "},{"recordDate":"2017-01-12 00:00:00","code":"FWDX","description":"Date
+      Forwarded to Examiner"},{"recordDate":"2016-12-29 00:00:00","code":"ELC.","description":"Response
+      to Election / Restriction Filed"},{"recordDate":"2016-11-04 00:00:00","code":"EML_NTR","description":"Email
+      Notification"},{"recordDate":"2016-11-03 00:00:00","code":"PG-ISSUE","description":"PG-Pub
+      Issue Notification"},{"recordDate":"2016-11-01 00:00:00","code":"ELC_RVW","description":"Electronic
+      Review"},{"recordDate":"2016-11-01 00:00:00","code":"EML_NTF","description":"Email
+      Notification"},{"recordDate":"2016-11-01 00:00:00","code":"MCTRS","description":"Mail
+      Restriction Requirement"},{"recordDate":"2016-10-28 00:00:00","code":"EML_NTR","description":"Email
+      Notification"},{"recordDate":"2016-10-28 00:00:00","code":"PA..","description":"Change
+      in Power of Attorney (May Include Associate POA)"},{"recordDate":"2016-10-26
+      00:00:00","code":"C.AD","description":"Correspondence Address Change"},{"recordDate":"2016-10-26
+      00:00:00","code":"CTRS","description":"Restriction/Election Requirement"},{"recordDate":"2016-10-11
+      00:00:00","code":"C.ADB","description":"Correspondence Address Change"},{"recordDate":"2016-10-07
+      00:00:00","code":"DOCK","description":"Case Docketed to Examiner in GAU"},{"recordDate":"2016-09-20
+      00:00:00","code":"EML_NTR","description":"Email Notification"},{"recordDate":"2016-09-13
+      00:00:00","code":"T1GR","description":"Track 1 Request Granted"},{"recordDate":"2016-09-13
+      00:00:00","code":"MP003","description":"Mail-Record Petition Decision of Granted
+      to Make Special"},{"recordDate":"2016-09-12 00:00:00","code":"P003","description":"Record
+      Petition Decision of Granted to Make Special"},{"recordDate":"2016-09-08 00:00:00","code":"EML_NTR","description":"Email
+      Notification"},{"recordDate":"2016-09-08 00:00:00","code":"PA..","description":"Change
+      in Power of Attorney (May Include Associate POA)"},{"recordDate":"2016-08-26
+      00:00:00","code":"DOCK","description":"Case Docketed to Examiner in GAU"},{"recordDate":"2016-08-23
+      00:00:00","code":"OIPE","description":"Application Dispatched from OIPE"},{"recordDate":"2016-07-28
+      00:00:00","code":"EML_NTR","description":"Email Notification"},{"recordDate":"2016-07-27
+      00:00:00","code":"PGPC","description":"Sent to Classification Contractor"},{"recordDate":"2016-07-27
+      00:00:00","code":"FTFI","description":"FITF set to NO - revise initial setting"},{"recordDate":"2016-07-18
+      00:00:00","code":"PTA.RFE","description":"Patent Term Adjustment - Ready for
+      Examination"},{"recordDate":"2016-07-28 00:00:00","code":"COMP","description":"Application
+      Is Now Complete"},{"recordDate":"2016-07-28 00:00:00","code":"COMP","description":"Application
+      Is Now Complete"},{"recordDate":"2016-07-28 00:00:00","code":"FLRCPT.U","description":"Filing
+      Receipt - Updated"},{"recordDate":"2016-07-18 00:00:00","code":"ADDFLFEE","description":"Additional
+      Application Filing Fees"},{"recordDate":"2016-07-18 00:00:00","code":"CORRDRW","description":"Applicant
+      has submitted new drawings to correct Corrected Papers problems"},{"recordDate":"2016-05-21
+      00:00:00","code":"ELC_RVW","description":"Electronic Review"},{"recordDate":"2016-05-18
+      00:00:00","code":"EML_NTF","description":"Email Notification"},{"recordDate":"2016-05-18
+      00:00:00","code":"EML_NTR","description":"Email Notification"},{"recordDate":"2016-05-18
+      00:00:00","code":"CCRDY","description":"Application ready for PDX access by
+      participating foreign offices"},{"recordDate":"2016-05-18 00:00:00","code":"CPAP","description":"Corrected
+      Paper"},{"recordDate":"2016-05-18 00:00:00","code":"FLRCPT.O","description":"Filing
+      Receipt"},{"recordDate":"2016-05-03 00:00:00","code":"SREXR141","description":"PTO/SB/69-Authorize
+      EPO Access to Search Results"},{"recordDate":"2016-05-03 00:00:00","code":"APPERMS","description":"Applicants
+      have given acceptable permission for participating foreign "},{"recordDate":"2016-05-06
+      00:00:00","code":"L194","description":"Cleared by OIPE CSR"},{"recordDate":"2016-05-03
+      00:00:00","code":"TK1R","description":"Track 1 Request"},{"recordDate":"2016-05-03
+      00:00:00","code":"PET.","description":"Petition Entered"},{"recordDate":"2016-05-03
+      00:00:00","code":"SCAN","description":"IFW Scan & PACR Auto Security Review"},{"recordDate":"2016-05-03
+      00:00:00","code":"BIG.","description":"Entity Status Set To Undiscounted (Initial
+      Default Setting or Status Change)"},{"recordDate":"2016-05-03 00:00:00","code":"IEXX","description":"Initial
+      Exam Team nn"}],"LAST_INSERT_TIME":"2023-10-29T07:25:04Z","appCls":"166","appStatus":"Final
+      Rejection Mailed","appStatusFacet":"Final Rejection Mailed","appStatus_txt":"Final
+      Rejection Mailed","corrAddrStreetLineTwo":"Suite 4200","patentTitle":"Suction
+      and Discharge Lines for a Dual Hydraulic Fracturing Unit","appStatusDate":"2023-05-18T00:00:00Z","appAttrDockNumber":"047158.100016","inventors":[{"nameLineOne":"Kurtz","nameLineTwo":"Robert
+      ","suffix":"","streetOne":"","streetTwo":"","city":"Houston, ","geoCode":"TX","country":"(US)","rankNo":"2"},{"nameLineOne":"Oehring","nameLineTwo":"Jared
+      ","suffix":"","streetOne":"","streetTwo":"","city":"Houston, ","geoCode":"TX","country":"(US)","rankNo":"1"}],"inventorsFacet":"{Robert||Kurtz||||Houston|TX|US|IND|2},{Jared||Oehring||||Houston|TX|US|IND|1}","corrAddrStreetLineOne":"609
+      Main Street","firstInventorFile":"No","appType":"Utility","appTypeFacet":"Utility","corrAddrPostalCode":"77002","appCustNumber":"132858","appClsSubCls":"166/065100","appClsSubClsFacet":"166/065100","corrAddrNameLineOne":"Hogan
+      Lovells US LLP","firstNamedApplicant":["  US Well Services LLC"],"firstNamedApplicantFacet":"  US
+      Well Services LLC","attrnyAddr":[{"applicationId":null,"registrationNo":"40357","fullName":"Crowson,
+      Celine  ","phoneNum":"202-637-5600","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"47737","fullName":"Lavenue,
+      Teresa  ","phoneNum":"202-637-6459","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"48163","fullName":"Lohr,
+      Jason  ","phoneNum":"415-374-2300","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"60506","fullName":"Evans,
+      Taylor  ","phoneNum":"713-632-1400","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"65250","fullName":"Trac,
+      Helen  ","phoneNum":"248-495-0021","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"66218","fullName":"Raffetto,
+      Joseph  ","phoneNum":"202-637-5514","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"68385","fullName":"Hughes,
+      Scott  ","phoneNum":"202-637-3659","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"69244","fullName":"Du,
+      Sharon  ","phoneNum":"713-632-1400","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"70017","fullName":"Leggett,
+      Corey  ","phoneNum":"303-899-7300","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"70816","fullName":"Reddy,
+      Sanjiva  ","phoneNum":"212-918-3209","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"71636","fullName":"Sims,
+      Polly  ","phoneNum":"713-632-1400","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"72224","fullName":"Grdinovac,
+      Joe  ","phoneNum":"713-632-1400","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"72851","fullName":"Morris,
+      Joseph  ","phoneNum":"502-625-2812","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"72847","fullName":"Jamshidi,
+      Amir  ","phoneNum":"713-632-1400","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"73532","fullName":"Oakley,
+      Aaron  ","phoneNum":"720-771-4697","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"79645","fullName":"Jazdzyk,
+      Kevin  ","phoneNum":"713-632-1453","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"46089","fullName":"Schwaller,
+      Melissa  ","phoneNum":"713-632-1449","regStatus":"ACTIVE"}],"parentContinuity":[{"claimApplicationNumberText":"62156301","applicationNumberText":"15145443","filingDate":"05-03-2015","aiaIndicator":"","patentNumberText":"","applicationStatus":"Expired","applicationStatusDescription":"This
+      application Claims Priority from Provisional Application"},{"claimApplicationNumberText":"13679689","applicationNumberText":"15145443","filingDate":"11-16-2012","aiaIndicator":"N","patentNumberText":"9410410","applicationStatus":"Patented","applicationStatusDescription":"This
+      application is a Continuation in part of"}],"corrAddrCustNo":"132858","corrAddrCountryCd":"US","corrAddrCity":"Houston","appEntityStatus":"UNDISCOUNTED","appConfrNumber":"1871","lastUpdatedTimestamp":"2023-10-30T02:32:34.021Z","cmsData":["{15145443|2023-05-21
+      20:00:00|PROSECUTION|Final Rejection|CTFR|17|LHTGKY71GREENX1},{15145443|2023-05-21
+      20:00:00|PROSECUTION|Examiner''s search strategy and results|SRNT|1|LHTGKY74GREENX1},{15145443|2023-05-21
+      20:00:00|PROSECUTION|Search information including classification, databases
+      and other search related notes|SRFW|2|LHTGKY73GREENX1},{15145443|2023-04-24
+      11:59:58|PROSECUTION|Fee Worksheet (SB06)|WFEE|2|LGV9ILENXBLUEX3},{15145443|2023-04-24
+      11:59:58|PROSECUTION|Amendment/Request for Reconsideration-After Non-Final Rejection|A...|1|LGV9ILEKXBLUEX3},{15145443|2023-04-24
+      11:59:58|PROSECUTION|Applicant Arguments/Remarks Made in an Amendment|REM|3|LGV9ILEMXBLUEX3},{15145443|2023-04-24
+      11:59:58|PROSECUTION|Electronic Filing System(EFS) Acknowledgment Receipt|N417|3|LGV9ILEPXBLUEX3},{15145443|2023-04-23
+      20:00:00|PROSECUTION|Fee Worksheet (SB06)|WFEE|1|LHFHYZYXGREENX2},{15145443|2022-10-23
+      20:00:00|PROSECUTION|Non-Final Rejection|CTNF|16|L9HBIP75XBLUEX5},{15145443|2022-10-23
+      20:00:00|PROSECUTION|Examiner''s search strategy and results|SRNT|1|L9HBIP77XBLUEX5},{15145443|2022-10-23
+      20:00:00|PROSECUTION|Search information including classification, databases
+      and other search related notes|SRFW|2|L9HBIP76XBLUEX5},{15145443|2022-10-11
+      12:47:08|PROSECUTION|Amendment Submitted/Entered with Filing of Continued Prosecution
+      Application (CPA)/Request for Continued Examination(RCE)|AMSB|1|L94OC53AXBLUEX4},{15145443|2022-10-11
+      12:47:08|PROSECUTION|Fee Worksheet (SB06)|WFEE|2|L94OC53DXBLUEX4},{15145443|2022-10-11
+      12:47:08|PROSECUTION|Request for Continued Examination (RCE)|RCEX|3|L94OC539XBLUEX4},{15145443|2022-10-11
+      12:47:08|PROSECUTION|Applicant Arguments/Remarks Made in an Amendment|REM|2|L94OC53CXBLUEX4},{15145443|2022-10-11
+      12:47:08|PROSECUTION|Electronic Filing System(EFS) Acknowledgment Receipt|N417|3|L94OC53EXBLUEX4},{15145443|2022-10-11
+      12:47:08|PROSECUTION|Claims|CLM|2|L94OC53BXBLUEX4},{15145443|2022-10-10 20:00:00|PROSECUTION|Fee
+      Worksheet (SB06)|WFEE|1|L9EHI01PGREENX4},{15145443|2022-04-08 11:08:12|PROSECUTION|List
+      of References cited by applicant and considered by examiner|1449|7|L1NY0V4KGREENX5},{15145443|2022-04-08
+      11:08:12|PROSECUTION|Examiner''s search strategy and results|SRNT|2|L1NY0V4JGREENX5},{15145443|2022-04-08
+      11:08:12|PROSECUTION|Search information including classification, databases
+      and other search related notes|SRFW|2|L1NY0V4HGREENX5},{15145443|2022-04-08
+      11:08:12|PROSECUTION|Final Rejection|CTFR|8|L1NY0V4GGREENX5},{15145443|2022-04-08
+      11:08:12|PROSECUTION|List of References cited by applicant and considered by
+      examiner|1449|5|L1NY0V4IGREENX5},{15145443|2022-03-21 10:24:14|PROSECUTION|Applicant
+      Arguments/Remarks Made in an Amendment|REM|3|L111EL7MXBLUEX1},{15145443|2022-03-21
+      10:24:14|PROSECUTION|Amendment/Request for Reconsideration-After Non-Final Rejection|A...|1|L111EL7KXBLUEX1},{15145443|2022-03-21
+      10:24:14|PROSECUTION|Electronic Filing System(EFS) Acknowledgment Receipt|N417|3|L111EL7OXBLUEX1},{15145443|2022-03-21
+      10:24:14|PROSECUTION|Fee Worksheet (SB06)|WFEE|2|L111EL7NXBLUEX1},{15145443|2022-03-21
+      10:24:14|PROSECUTION|Claims|CLM|2|L111EL7LXBLUEX1},{15145443|2022-03-21 01:22:31|PROSECUTION|Fee
+      Worksheet (SB06)|WFEE|1|L167TCDIXBLUEX1},{15145443|2021-12-23 14:19:52|PROSECUTION|Foreign
+      Reference|FOR|53|KMQAL0N5LDFLYM5},{15145443|2021-12-23 14:19:52|PROSECUTION|Non
+      Patent Literature|NPL|12|KXJNDC33LDFLYX9},{15145443|2021-12-23 14:19:52|PROSECUTION|Non
+      Patent Literature|NPL|5|KXJNDC2VLDFLYX9},{15145443|2021-12-23 14:19:52|PROSECUTION|Fee
+      Worksheet (SB06)|WFEE|2|KXJNDC3ALDFLYX9},{15145443|2021-12-23 14:19:52|PROSECUTION|Non
+      Patent Literature|NPL|6|KXJNDC31LDFLYX9},{15145443|2021-12-23 14:19:52|PROSECUTION|Foreign
+      Reference|FOR|27|KXJNDC39LDFLYX9},{15145443|2021-12-23 14:19:52|PROSECUTION|Foreign
+      Reference|FOR|25|KXJNDC36LDFLYX9},{15145443|2021-12-23 14:19:52|PROSECUTION|Electronic
+      Filing System(EFS) Acknowledgment Receipt|N417|4|KXJNDC3BLDFLYX9},{15145443|2021-12-23
+      14:19:52|PROSECUTION|Information Disclosure Statement (IDS) Form (SB08)|IDS|7|KXJNDC2ULDFLYX9},{15145443|2021-12-23
+      14:19:52|PROSECUTION|Non Patent Literature|NPL|7|KXJNDC35LDFLYX9},{15145443|2021-12-23
+      14:19:52|PROSECUTION|Non Patent Literature|NPL|9|KXJNDC30LDFLYX9},{15145443|2021-12-23
+      14:19:52|PROSECUTION|Non Patent Literature|NPL|11|KXJNDC2ZLDFLYX9},{15145443|2021-12-23
+      14:19:52|PROSECUTION|Non Patent Literature|NPL|12|KXJNDC34LDFLYX9},{15145443|2021-12-23
+      14:19:52|PROSECUTION|Non Patent Literature|NPL|7|KXJNDC2XLDFLYX9},{15145443|2021-12-23
+      14:19:52|PROSECUTION|Foreign Reference|FOR|26|KXJNDC38LDFLYX9},{15145443|2021-12-23
+      14:19:52|PROSECUTION|Non Patent Literature|NPL|7|KXJNDC2WLDFLYX9},{15145443|2021-12-23
+      14:19:52|PROSECUTION|Non Patent Literature|NPL|8|KXJNDC32LDFLYX9},{15145443|2021-12-23
+      14:19:52|PROSECUTION|Foreign Reference|FOR|36|KXJNDC37LDFLYX9},{15145443|2021-09-27
+      15:00:42|PROSECUTION|Non Patent Literature|NPL|11|KU39833XLDFLYX7},{15145443|2021-09-27
+      15:00:42|PROSECUTION|Non Patent Literature|NPL|8|KU39833WLDFLYX7},{15145443|2021-09-27
+      15:00:42|PROSECUTION|Electronic Filing System(EFS) Acknowledgment Receipt|N417|3|KU39833YLDFLYX7},{15145443|2021-09-27
+      15:00:42|PROSECUTION|Non Patent Literature|NPL|9|KU39833ULDFLYX7},{15145443|2021-09-27
+      15:00:42|PROSECUTION|Information Disclosure Statement (IDS) Form (SB08)|IDS|5|KU39833QLDFLYX7},{15145443|2021-09-27
+      15:00:42|PROSECUTION|Non Patent Literature|NPL|13|KU39833VLDFLYX7},{15145443|2021-09-27
+      15:00:42|PROSECUTION|Non Patent Literature|NPL|6|KU39833TLDFLYX7},{15145443|2021-09-27
+      15:00:42|PROSECUTION|Non Patent Literature|NPL|10|KU39833RLDFLYX7},{15145443|2021-09-20
+      08:21:21|PROSECUTION|Search information including classification, databases
+      and other search related notes|SRFW|2|KTN5459ODFLYX11},{15145443|2021-09-20
+      08:21:21|PROSECUTION|Examiner''s search strategy and results|SRNT|5|KTN5459SDFLYX11},{15145443|2021-09-20
+      08:21:21|PROSECUTION|Non-Final Rejection|CTNF|13|KTN5459NDFLYX11},{15145443|2021-09-20
+      08:21:21|PROSECUTION|List of References cited by applicant and considered by
+      examiner|1449|7|KTN5459QDFLYX11},{15145443|2021-09-20 08:21:21|PROSECUTION|List
+      of References cited by applicant and considered by examiner|1449|7|KTN5459TDFLYX11},{15145443|2021-09-20
+      08:21:21|PROSECUTION|List of References cited by applicant and considered by
+      examiner|1449|6|KTN5459RDFLYX11},{15145443|2021-08-09 12:42:51|PROSECUTION|Applicant
+      Arguments/Remarks Made in an Amendment|REM|3|KS6C76NLLDFLYM4},{15145443|2021-08-09
+      12:42:51|PROSECUTION|Amendment Submitted/Entered with Filing of Continued Prosecution
+      Application (CPA)/Request for Continued Examination(RCE)|AMSB|1|KS6C76NJLDFLYM4},{15145443|2021-08-09
+      12:42:51|PROSECUTION|Claims|CLM|2|KS6C76NKLDFLYM4},{15145443|2021-08-09 12:42:51|PROSECUTION|Request
+      for Continued Examination (RCE)|RCEX|3|KS53Q18KLDFLYX9},{15145443|2021-08-09
+      12:42:51|PROSECUTION|Amendment Submitted/Entered with Filing of Continued Prosecution
+      Application (CPA)/Request for Continued Examination(RCE)|AMSB|6|KS53Q18LLDFLYX9},{15145443|2021-08-09
+      12:42:51|PROSECUTION|Fee Worksheet (SB06)|WFEE|2|KS53Q18MLDFLYX9},{15145443|2021-08-09
+      12:42:51|PROSECUTION|Electronic Filing System(EFS) Acknowledgment Receipt|N417|2|KS53Q18OLDFLYX9},{15145443|2021-06-08
+      07:42:15|PROSECUTION|Foreign Reference|FOR|6|KPPK5GAOLDFLYM0},{15145443|2021-06-08
+      07:42:15|PROSECUTION|Information Disclosure Statement (IDS) Form (SB08)|IDS|6|KPO7OSLMLDFLYX7},{15145443|2021-06-08
+      07:42:15|PROSECUTION|Other reference-Patent/Application/Search Documents|REF.OTHER|8|KPO7OSLULDFLYX7},{15145443|2021-06-08
+      07:42:15|PROSECUTION|Foreign Reference|FOR|2|KPO7OSLXLDFLYX7},{15145443|2021-06-08
+      07:42:15|PROSECUTION|Other reference-Patent/Application/Search Documents|REF.OTHER|9|KPO7OSLTLDFLYX7},{15145443|2021-06-08
+      07:42:15|PROSECUTION|Other reference-Patent/Application/Search Documents|REF.OTHER|8|KPO7OSLSLDFLYX7},{15145443|2021-06-08
+      07:42:15|PROSECUTION|Other reference-Patent/Application/Search Documents|REF.OTHER|7|KPO7OSLVLDFLYX7},{15145443|2021-06-08
+      07:42:15|PROSECUTION|Other reference-Patent/Application/Search Documents|REF.OTHER|9|KPO7OSLQLDFLYX7},{15145443|2021-06-08
+      07:42:15|PROSECUTION|Foreign Reference|FOR|5|KPO7OSLNLDFLYX7},{15145443|2021-06-08
+      07:42:15|PROSECUTION|Electronic Filing System(EFS) Acknowledgment Receipt|N417|4|KPO7OSLZLDFLYX7},{15145443|2021-06-08
+      07:42:15|PROSECUTION|Foreign Reference|FOR|10|KPO7OSLOLDFLYX7},{15145443|2021-06-08
+      07:42:15|PROSECUTION|Fee Worksheet (SB06)|WFEE|2|KPO7OSLYLDFLYX7},{15145443|2021-06-08
+      07:42:15|PROSECUTION|Other reference-Patent/Application/Search Documents|REF.OTHER|10|KPO7OSLPLDFLYX7},{15145443|2021-06-08
+      07:42:15|PROSECUTION|Foreign Reference|FOR|1|KPO7OSLWLDFLYX7},{15145443|2021-06-08
+      07:42:15|PROSECUTION|Foreign Reference|FOR|12|KPPK53HHLDFLYM1},{15145443|2021-03-08
+      17:21:39|PROSECUTION|Foreign Reference|FOR|11|KNKBCI9ZLDFLYM5},{15145443|2021-03-08
+      17:21:39|PROSECUTION|Other reference-Patent/Application/Search Documents|REF.OTHER|8|KNJORBOKLDFLYX5},{15145443|2021-03-08
+      17:21:39|PROSECUTION|Non Patent Literature|NPL|20|KNJORBOELDFLYX5},{15145443|2021-03-08
+      17:21:39|PROSECUTION|Information Disclosure Statement (IDS) Form (SB08)|IDS|7|KNJORBOALDFLYX5},{15145443|2021-03-08
+      17:21:39|PROSECUTION|Non Patent Literature|NPL|6|KNJORBONLDFLYX5},{15145443|2021-03-08
+      17:21:39|PROSECUTION|Non Patent Literature|NPL|14|KNJORBOGLDFLYX5},{15145443|2021-03-08
+      17:21:39|PROSECUTION|Foreign Reference|FOR|55|KNJORBOPLDFLYX5},{15145443|2021-03-08
+      17:21:39|PROSECUTION|Other reference-Patent/Application/Search Documents|REF.OTHER|10|KNJORBOILDFLYX5},{15145443|2021-03-08
+      17:21:39|PROSECUTION|Foreign Reference|FOR|30|KNJORBOQLDFLYX5},{15145443|2021-03-08
+      17:21:39|PROSECUTION|Other reference-Patent/Application/Search Documents|REF.OTHER|8|KNJORBOJLDFLYX5},{15145443|2021-03-08
+      17:21:39|PROSECUTION|Non Patent Literature|NPL|7|KNJORBOMLDFLYX5},{15145443|2021-03-08
+      17:21:39|PROSECUTION|Other reference-Patent/Application/Search Documents|REF.OTHER|8|KNJORBOHLDFLYX5},{15145443|2021-03-08
+      17:21:39|PROSECUTION|Foreign Reference|FOR|1|KNJORBOCLDFLYX5},{15145443|2021-03-08
+      17:21:39|PROSECUTION|Foreign Reference|FOR|10|KNJORBOBLDFLYX5},{15145443|2021-03-08
+      17:21:39|PROSECUTION|Electronic Filing System(EFS) Acknowledgment Receipt|N417|4|KNJORBOSLDFLYX5},{15145443|2021-03-08
+      17:21:39|PROSECUTION|Fee Worksheet (SB06)|WFEE|2|KNJORBORLDFLYX5},{15145443|2021-03-08
+      17:21:39|PROSECUTION|Non Patent Literature|NPL|18|KNJORBOLLDFLYX5},{15145443|2021-03-08
+      17:21:39|PROSECUTION|Non Patent Literature|NPL|8|KNJORBOFLDFLYX5},{15145443|2021-03-08
+      09:56:25|PROSECUTION|Non Patent Literature|NPL|6|KM109BDVLDFLYX7},{15145443|2021-03-08
+      09:56:25|PROSECUTION|Non Patent Literature|NPL|14|KM109BDOLDFLYX7},{15145443|2021-03-08
+      09:56:25|PROSECUTION|Other reference-Patent/Application/Search Documents|REF.OTHER|10|KM109BDQLDFLYX7},{15145443|2021-03-08
+      09:56:25|PROSECUTION|Non Patent Literature|NPL|18|KM109BDTLDFLYX7},{15145443|2021-03-08
+      09:56:25|PROSECUTION|Other reference-Patent/Application/Search Documents|REF.OTHER|8|KM109BDRLDFLYX7},{15145443|2021-03-08
+      09:56:25|PROSECUTION|Foreign Reference|FOR|55|KM109BDWLDFLYX7},{15145443|2021-03-08
+      09:56:25|PROSECUTION|Fee Worksheet (SB06)|WFEE|2|KM109BDYLDFLYX7},{15145443|2021-03-08
+      09:56:25|PROSECUTION|Non Patent Literature|NPL|8|KM109BDNLDFLYX7},{15145443|2021-03-08
+      09:56:25|PROSECUTION|Other reference-Patent/Application/Search Documents|REF.OTHER|8|KM109BDPLDFLYX7},{15145443|2021-03-08
+      09:56:25|PROSECUTION|Foreign Reference|FOR|10|KM109BDJLDFLYX7},{15145443|2021-03-08
+      09:56:25|PROSECUTION|Foreign Reference|FOR|1|KM109BDLLDFLYX7},{15145443|2021-03-08
+      09:56:25|PROSECUTION|Non Patent Literature|NPL|7|KM109BDULDFLYX7},{15145443|2021-03-08
+      09:56:25|PROSECUTION|Electronic Filing System(EFS) Acknowledgment Receipt|N417|4|KM109BE0LDFLYX7},{15145443|2021-03-08
+      09:56:25|PROSECUTION|Non Patent Literature|NPL|20|KM109BDMLDFLYX7},{15145443|2021-03-08
+      09:56:25|PROSECUTION|Other reference-Patent/Application/Search Documents|REF.OTHER|8|KM109BDSLDFLYX7},{15145443|2021-03-08
+      09:56:25|PROSECUTION|Information Disclosure Statement (IDS) Form (SB08)|IDS|7|KM109BDILDFLYX7},{15145443|2021-03-08
+      09:56:25|PROSECUTION|Foreign Reference|FOR|30|KM109BDXLDFLYX7},{15145443|2021-02-08
+      07:17:14|PROSECUTION|List of References cited by applicant and considered by
+      examiner|1449|5|KKR4H7KSLDFLYX7},{15145443|2021-02-08 07:17:14|PROSECUTION|List
+      of References cited by applicant and considered by examiner|1449|9|KKR4H7KNLDFLYX7},{15145443|2021-02-08
+      07:17:14|PROSECUTION|List of References cited by applicant and considered by
+      examiner|1449|9|KKR4H7KPLDFLYX7},{15145443|2021-02-08 07:17:14|PROSECUTION|List
+      of References cited by applicant and considered by examiner|1449|7|KKR4H7KOLDFLYX7},{15145443|2021-02-08
+      07:17:14|PROSECUTION|Search information including classification, databases
+      and other search related notes|SRFW|2|KKR4H7KMLDFLYX7},{15145443|2021-02-08
+      07:17:14|PROSECUTION|Examiner''s search strategy and results|SRNT|9|KKR4H7KQLDFLYX7},{15145443|2021-02-08
+      07:17:14|PROSECUTION|Final Rejection|CTFR|15|KKR4H7KLLDFLYX7},{15145443|2021-02-08
+      07:17:14|PROSECUTION|List of References cited by applicant and considered by
+      examiner|1449|12|KKR4H7KRLDFLYX7},{15145443|2020-11-18 11:24:46|PROSECUTION|Non
+      Patent Literature|NPL|1|KHNWZ77QLDFLYX4},{15145443|2020-11-18 11:24:46|PROSECUTION|Non
+      Patent Literature|NPL|10|KHNWZ77JLDFLYX4},{15145443|2020-11-18 11:24:46|PROSECUTION|Foreign
+      Reference|FOR|5|KHNWZ77XLDFLYX4},{15145443|2020-11-18 11:24:46|PROSECUTION|Non
+      Patent Literature|NPL|16|KHNWZ77NLDFLYX4},{15145443|2020-11-18 11:24:46|PROSECUTION|Foreign
+      Reference|FOR|57|KHNWZ77ULDFLYX4},{15145443|2020-11-18 11:24:46|PROSECUTION|Non
+      Patent Literature|NPL|17|KHNWZ77MLDFLYX4},{15145443|2020-11-18 11:24:46|PROSECUTION|Non
+      Patent Literature|NPL|21|KHNWZ77YLDFLYX4},{15145443|2020-11-18 11:24:46|PROSECUTION|Non
+      Patent Literature|NPL|8|KHNWZ77OLDFLYX4},{15145443|2020-11-18 11:24:46|PROSECUTION|Non
+      Patent Literature|NPL|4|KHNWZ77RLDFLYX4},{15145443|2020-11-18 11:24:46|PROSECUTION|Non
+      Patent Literature|NPL|1|KHNWZ780LDFLYX4},{15145443|2020-11-18 11:24:46|PROSECUTION|Non
+      Patent Literature|NPL|3|KHNWZ77SLDFLYX4},{15145443|2020-11-18 11:24:46|PROSECUTION|Information
+      Disclosure Statement (IDS) Form (SB08)|IDS|7|KHNWZ77ILDFLYX4},{15145443|2020-11-18
+      11:24:46|PROSECUTION|Electronic Filing System(EFS) Acknowledgment Receipt|N417|4|KHNWZ781LDFLYX4},{15145443|2020-11-18
+      11:24:46|PROSECUTION|Foreign Reference|FOR|1|KHNWZ77WLDFLYX4},{15145443|2020-11-18
+      11:24:46|PROSECUTION|Non Patent Literature|NPL|4|KHNWZ77ZLDFLYX4},{15145443|2020-11-18
+      11:24:46|PROSECUTION|Foreign Reference|FOR|10|KHNWZ77VLDFLYX4},{15145443|2020-11-18
+      11:24:46|PROSECUTION|Non Patent Literature|NPL|23|KHNWZ77KLDFLYX4},{15145443|2020-11-18
+      11:24:46|PROSECUTION|Non Patent Literature|NPL|13|KHNWZ77LLDFLYX4},{15145443|2020-11-18
+      11:24:46|PROSECUTION|Other reference-Patent/Application/Search Documents|REF.OTHER|17|KHNWZ77TLDFLYX4},{15145443|2020-11-09
+      16:34:52|PROSECUTION|Fee Worksheet (SB06)|WFEE|1|KHCSJ16ILDFLYX5},{15145443|2020-11-09
+      09:41:19|PROSECUTION|Amendment/Request for Reconsideration-After Non-Final Rejection|A...|1|KHAYBD19DFLYX10},{15145443|2020-11-09
+      09:41:19|PROSECUTION|Fee Worksheet (SB06)|WFEE|2|KHAYBD1ADFLYX10},{15145443|2020-11-09
+      09:41:19|PROSECUTION|Electronic Filing System(EFS) Acknowledgment Receipt|N417|3|KHAYBD1BDFLYX10},{15145443|2020-11-09
+      09:41:19|PROSECUTION|Claims|CLM|2|KHAYBD1EDFLYX10},{15145443|2020-11-09 09:41:19|PROSECUTION|Applicant
+      Arguments/Remarks Made in an Amendment|REM|4|KHAYBD1CDFLYX10},{15145443|2020-09-01
+      11:57:47|PROSECUTION|Non Patent Literature|NPL|9|KEKDITJ3RXEAPX1},{15145443|2020-09-01
+      11:57:47|PROSECUTION|Non Patent Literature|NPL|4|KEKDITJ9RXEAPX1},{15145443|2020-09-01
+      11:57:47|PROSECUTION|Other reference-Patent/Application/Search Documents|REF.OTHER|17|KEKDITJ5RXEAPX1},{15145443|2020-09-01
+      11:57:47|PROSECUTION|Other reference-Patent/Application/Search Documents|REF.OTHER|18|KEKDITJ6RXEAPX1},{15145443|2020-09-01
+      11:57:47|PROSECUTION|Electronic Filing System(EFS) Acknowledgment Receipt|N417|3|KEKDITJBRXEAPX1},{15145443|2020-09-01
+      11:57:47|PROSECUTION|Information Disclosure Statement (IDS) Form (SB08)|IDS|9|KEKDITJ0RXEAPX1},{15145443|2020-09-01
+      11:57:47|PROSECUTION|Non Patent Literature|NPL|8|KEKDITJ4RXEAPX1},{15145443|2020-09-01
+      11:57:47|PROSECUTION|Non Patent Literature|NPL|4|KEKDITJARXEAPX1},{15145443|2020-09-01
+      11:57:47|PROSECUTION|Non Patent Literature|NPL|8|KEKDITJ1RXEAPX1},{15145443|2020-09-01
+      11:57:47|PROSECUTION|Non Patent Literature|NPL|8|KEKDITJ2RXEAPX1},{15145443|2020-09-01
+      11:57:47|PROSECUTION|Other reference-Patent/Application/Search Documents|REF.OTHER|13|KEKDITJ8RXEAPX1},{15145443|2020-06-18
+      11:26:33|PROSECUTION|Non Patent Literature|NPL|13|KBL6DRSKRXEAPX0},{15145443|2020-06-18
+      11:26:33|PROSECUTION|Non Patent Literature|NPL|15|KBL6DRSJRXEAPX0},{15145443|2020-06-18
+      11:26:33|PROSECUTION|Non Patent Literature|NPL|23|KBL6DRSNRXEAPX0},{15145443|2020-06-18
+      11:26:33|PROSECUTION|Non Patent Literature|NPL|10|KBL6DRSMRXEAPX0},{15145443|2020-06-18
+      11:26:33|PROSECUTION|Electronic Filing System(EFS) Acknowledgment Receipt|N417|3|KBL6DRSPRXEAPX0},{15145443|2020-06-18
+      11:26:33|PROSECUTION|Information Disclosure Statement (IDS) Form (SB08)|IDS|5|KBL6DRSHRXEAPX0},{15145443|2020-06-18
+      11:26:33|PROSECUTION|Non Patent Literature|NPL|17|KBL6DRSLRXEAPX0},{15145443|2020-06-18
+      11:26:33|PROSECUTION|Non Patent Literature|NPL|13|KBL6DRSIRXEAPX0},{15145443|2020-05-08
+      03:52:56|PROSECUTION|Search information including classification, databases
+      and other search related notes|SRFW|2|K9VA8V5JRXEAPX5},{15145443|2020-05-08
+      03:52:56|PROSECUTION|List of References cited by applicant and considered by
+      examiner|1449|4|K9VA8V5LRXEAPX5},{15145443|2020-05-08 03:52:56|PROSECUTION|Non-Final
+      Rejection|CTNF|14|K9VA8V5HRXEAPX5},{15145443|2020-05-08 03:52:56|PROSECUTION|List
+      of references cited by examiner|892|1|K9VA8V5IRXEAPX5},{15145443|2020-05-08
+      03:52:56|PROSECUTION|Examiner''s search strategy and results|SRNT|2|K9VA8V5NRXEAPX5},{15145443|2020-05-08
+      03:52:56|PROSECUTION|List of References cited by applicant and considered by
+      examiner|1449|4|K9VA8V5MRXEAPX5},{15145443|2020-05-05 13:32:40|PROSECUTION|Foreign
+      Reference|FOR|43|K9UFIVMORXEAPX3},{15145443|2020-05-05 13:32:40|PROSECUTION|Other
+      reference-Patent/Application/Search Documents|REF.OTHER|10|K9UFIVMARXEAPX3},{15145443|2020-05-05
+      13:32:40|PROSECUTION|Non Patent Literature|NPL|21|K9UFIVMBRXEAPX3},{15145443|2020-05-05
+      13:32:40|PROSECUTION|Electronic Filing System(EFS) Acknowledgment Receipt|N417|5|K9UFIVMTRXEAPX3},{15145443|2020-05-05
+      13:32:40|PROSECUTION|Foreign Reference|FOR|23|K9UFIVMQRXEAPX3},{15145443|2020-05-05
+      13:32:40|PROSECUTION|Foreign Reference|FOR|131|K9UFIVMJRXEAPX3},{15145443|2020-05-05
+      13:32:40|PROSECUTION|Foreign Reference|FOR|25|K9UFIVMLRXEAPX3},{15145443|2020-05-05
+      13:32:40|PROSECUTION|Foreign Reference|FOR|140|K9UFIVMKRXEAPX3},{15145443|2020-05-05
+      13:32:40|PROSECUTION|Non Patent Literature|NPL|11|K9UFIVMCRXEAPX3},{15145443|2020-05-05
+      13:32:40|PROSECUTION|Foreign Reference|FOR|42|K9UFIVMPRXEAPX3},{15145443|2020-05-05
+      13:32:40|PROSECUTION|Foreign Reference|FOR|57|K9UFIVMNRXEAPX3},{15145443|2020-05-05
+      13:32:40|PROSECUTION|Other reference-Patent/Application/Search Documents|REF.OTHER|11|K9UFIVM8RXEAPX3},{15145443|2020-05-05
+      13:32:40|PROSECUTION|Other reference-Patent/Application/Search Documents|REF.OTHER|11|K9UFIVM9RXEAPX3},{15145443|2020-05-05
+      13:32:40|PROSECUTION|Foreign Reference|FOR|68|K9UFIVMRRXEAPX3},{15145443|2020-05-05
+      13:32:40|PROSECUTION|Non Patent Literature|NPL|9|K9UFIVM4RXEAPX3},{15145443|2020-05-05
+      13:32:40|PROSECUTION|Foreign Reference|FOR|12|K9UFIVMFRXEAPX3},{15145443|2020-05-05
+      13:32:40|PROSECUTION|Foreign Reference|FOR|66|K9UFIVMHRXEAPX3},{15145443|2020-05-05
+      13:32:40|PROSECUTION|Non Patent Literature|NPL|15|K9UFIVM5RXEAPX3},{15145443|2020-05-05
+      13:32:40|PROSECUTION|Non Patent Literature|NPL|12|K9UFIVM6RXEAPX3},{15145443|2020-05-05
+      13:32:40|PROSECUTION|Foreign Reference|FOR|30|K9UFIVMMRXEAPX3},{15145443|2020-05-05
+      13:32:40|PROSECUTION|Foreign Reference|FOR|33|K9UFIVMGRXEAPX3},{15145443|2020-05-05
+      13:32:40|PROSECUTION|Foreign Reference|FOR|48|K9UFIVMIRXEAPX3},{15145443|2020-05-05
+      13:32:40|PROSECUTION|Foreign Reference|FOR|101|K9UFIVMDRXEAPX3},{15145443|2020-05-05
+      13:32:40|PROSECUTION|Information Disclosure Statement (IDS) Form (SB08)|IDS|12|K9UFIVM3RXEAPX3},{15145443|2020-05-05
+      13:32:40|PROSECUTION|Non Patent Literature|NPL|10|K9UFIVM7RXEAPX3},{15145443|2020-05-05
+      13:27:30|PROSECUTION|Information Disclosure Statement (IDS) Form (SB08)|IDS|9|K9UFBW0RRXEAPX5},{15145443|2020-05-05
+      13:27:30|PROSECUTION|Non Patent Literature|NPL|19|K9UFBW0XRXEAPX5},{15145443|2020-05-05
+      13:27:30|PROSECUTION|Foreign Reference|FOR|106|K9UFBW14RXEAPX5},{15145443|2020-05-05
+      13:27:30|PROSECUTION|Non Patent Literature|NPL|16|K9UFBW10RXEAPX5},{15145443|2020-05-05
+      13:27:30|PROSECUTION|Non Patent Literature|NPL|3|K9UFBW15RXEAPX5},{15145443|2020-05-05
+      13:27:30|PROSECUTION|Non Patent Literature|NPL|11|K9UFBW13RXEAPX5},{15145443|2020-05-05
+      13:27:30|PROSECUTION|Non Patent Literature|NPL|11|K9UFBW0WRXEAPX5},{15145443|2020-05-05
+      13:27:30|PROSECUTION|Non Patent Literature|NPL|7|K9UFBW12RXEAPX5},{15145443|2020-05-05
+      13:27:30|PROSECUTION|Electronic Filing System(EFS) Acknowledgment Receipt|N417|4|K9UFBW18RXEAPX5},{15145443|2020-05-05
+      13:27:30|PROSECUTION|Non Patent Literature|NPL|4|K9UFBW17RXEAPX5},{15145443|2020-05-05
+      13:27:30|PROSECUTION|Non Patent Literature|NPL|22|K9UFBW0URXEAPX5},{15145443|2020-05-05
+      13:27:30|PROSECUTION|Non Patent Literature|NPL|10|K9UFBW0ZRXEAPX5},{15145443|2020-05-05
+      13:27:30|PROSECUTION|Non Patent Literature|NPL|9|K9UFBW0VRXEAPX5},{15145443|2020-05-05
+      13:27:30|PROSECUTION|Non Patent Literature|NPL|5|K9UFBW16RXEAPX5},{15145443|2020-05-05
+      13:27:30|PROSECUTION|Non Patent Literature|NPL|18|K9UFBW11RXEAPX5},{15145443|2020-05-05
+      13:27:30|PROSECUTION|Other reference-Patent/Application/Search Documents|REF.OTHER|11|K9UFBW0TRXEAPX5},{15145443|2020-05-05
+      13:27:30|PROSECUTION|Other reference-Patent/Application/Search Documents|REF.OTHER|10|K9UFBW0SRXEAPX5},{15145443|2020-04-15
+      12:12:44|PROSECUTION|Amendment Submitted/Entered with Filing of Continued Prosecution
+      Application (CPA)/Request for Continued Examination(RCE)|AMSB|1|K91RULLRRXEAPX4},{15145443|2020-04-15
+      12:12:44|PROSECUTION|Fee Worksheet (SB06)|WFEE|2|K91RULLURXEAPX4},{15145443|2020-04-15
+      12:12:44|PROSECUTION|Electronic Filing System(EFS) Acknowledgment Receipt|N417|3|K91RULLVRXEAPX4},{15145443|2020-04-15
+      12:12:44|PROSECUTION|Request for Continued Examination (RCE)|RCEX|3|K91RULLQRXEAPX4},{15145443|2020-04-15
+      12:12:44|PROSECUTION|Applicant Arguments/Remarks Made in an Amendment|REM|5|K91RULLTRXEAPX4},{15145443|2020-04-15
+      12:12:44|PROSECUTION|Claims|CLM|2|K91RULLSRXEAPX4},{15145443|2020-04-15 05:47:48|PROSECUTION|Fee
+      Worksheet (SB06)|WFEE|1|K973UY8QRXEAPX0},{15145443|2019-10-15 02:28:33|PROSECUTION|List
+      of References cited by applicant and considered by examiner|1449|6|K1NF30GRRXEAPX1},{15145443|2019-10-15
+      02:28:33|PROSECUTION|List of References cited by applicant and considered by
+      examiner|1449|6|K1NF30GTRXEAPX1},{15145443|2019-10-15 02:28:33|PROSECUTION|Final
+      Rejection|CTFR|14|K1NF30GORXEAPX1},{15145443|2019-10-15 02:28:33|PROSECUTION|Search
+      information including classification, databases and other search related notes|SRFW|1|K1NF30GPRXEAPX1},{15145443|2019-10-15
+      02:28:33|PROSECUTION|Examiner''s search strategy and results|SRNT|1|K1NF30GSRXEAPX1},{15145443|2019-09-16
+      13:14:52|PROSECUTION|Fee Worksheet (SB06)|WFEE|1|K0SMHA2HRXEAPX4},{15145443|2019-09-16
+      10:41:44|PROSECUTION|Applicant Arguments/Remarks Made in an Amendment|REM|3|K0MR8YJJRXEAPX3},{15145443|2019-09-16
+      10:41:44|PROSECUTION|Fee Worksheet (SB06)|WFEE|2|K0MR8YJKRXEAPX3},{15145443|2019-09-16
+      10:41:44|PROSECUTION|Electronic Filing System(EFS) Acknowledgment Receipt|N417|3|K0MR8YJLRXEAPX3},{15145443|2019-09-16
+      10:41:44|PROSECUTION|Amendment/Request for Reconsideration-After Non-Final Rejection|A...|1|K0MR8YJHRXEAPX3},{15145443|2019-09-16
+      10:41:44|PROSECUTION|Claims|CLM|2|K0MR8YJIRXEAPX3},{15145443|2019-05-28 10:50:01|PROSECUTION|Non
+      Patent Literature|NPL|60|JW85O8M0RXEAPX5},{15145443|2019-05-28 10:50:01|PROSECUTION|Foreign
+      Reference|FOR|22|JW85O8LRRXEAPX5},{15145443|2019-05-28 10:50:01|PROSECUTION|Non
+      Patent Literature|NPL|68|JW85O8LXRXEAPX5},{15145443|2019-05-28 10:50:01|PROSECUTION|Foreign
+      Reference|FOR|49|JW85O8LQRXEAPX5},{15145443|2019-05-28 10:50:01|PROSECUTION|Information
+      Disclosure Statement (IDS) Form (SB08)|IDS|6|JW85O8LORXEAPX5},{15145443|2019-05-28
+      10:50:01|PROSECUTION|Foreign Reference|FOR|8|JW85O8LTRXEAPX5},{15145443|2019-05-28
+      10:50:01|PROSECUTION|Non Patent Literature|NPL|20|JW85O8LYRXEAPX5},{15145443|2019-05-28
+      10:50:01|PROSECUTION|Other reference-Patent/Application/Search Documents|REF.OTHER|12|JW85O8LURXEAPX5},{15145443|2019-05-28
+      10:50:01|PROSECUTION|Non Patent Literature|NPL|5|JW85O8M1RXEAPX5},{15145443|2019-05-28
+      10:50:01|PROSECUTION|Foreign Reference|FOR|9|JW85O8LSRXEAPX5},{15145443|2019-05-28
+      10:50:01|PROSECUTION|Foreign Reference|FOR|38|JW85O8LPRXEAPX5},{15145443|2019-05-28
+      10:50:01|PROSECUTION|Non Patent Literature|NPL|5|JW85O8LZRXEAPX5},{15145443|2019-05-28
+      10:50:01|PROSECUTION|Non Patent Literature|NPL|9|JW85O8LWRXEAPX5},{15145443|2019-05-28
+      10:50:01|PROSECUTION|Electronic Filing System(EFS) Acknowledgment Receipt|N417|4|JW85O8M2RXEAPX5},{15145443|2019-03-15
+      12:28:52|PROSECUTION|Electronic Filing System(EFS) Acknowledgment Receipt|N417|3|JTAIM6J8RXEAPX4},{15145443|2019-03-15
+      12:28:52|PROSECUTION|Non Patent Literature|NPL|8|JTAIM6J5RXEAPX4},{15145443|2019-03-15
+      12:28:52|PROSECUTION|Non Patent Literature|NPL|4|JTAIM6J6RXEAPX4},{15145443|2019-03-15
+      12:28:52|PROSECUTION|Other reference-Patent/Application/Search Documents|REF.OTHER|11|JTAIM6J4RXEAPX4},{15145443|2019-03-15
+      12:28:52|PROSECUTION|Foreign Reference|FOR|46|JTAIM6IZRXEAPX4},{15145443|2019-03-15
+      12:28:52|PROSECUTION|Non Patent Literature|NPL|9|JTAIM6J3RXEAPX4},{15145443|2019-03-15
+      12:28:52|PROSECUTION|Foreign Reference|FOR|24|JTAIM6IYRXEAPX4},{15145443|2019-03-15
+      12:28:52|PROSECUTION|Non Patent Literature|NPL|16|JTAIM6J1RXEAPX4},{15145443|2019-03-15
+      12:28:52|PROSECUTION|Information Disclosure Statement (IDS) Form (SB08)|IDS|6|JTAIM6IXRXEAPX4},{15145443|2019-03-15
+      12:28:52|PROSECUTION|Non Patent Literature|NPL|3|JTAIM6J7RXEAPX4},{15145443|2019-03-15
+      12:28:52|PROSECUTION|Other reference-Patent/Application/Search Documents|REF.OTHER|13|JTAIM6J2RXEAPX4},{15145443|2019-03-14
+      09:17:07|PROSECUTION|List of References cited by applicant and considered by
+      examiner|1449|4|JT61FZSWRXEAPX3},{15145443|2019-03-14 09:17:07|PROSECUTION|List
+      of References cited by applicant and considered by examiner|1449|4|JT61FZSXRXEAPX3},{15145443|2019-03-14
+      09:17:07|PROSECUTION|List of References cited by applicant and considered by
+      examiner|1449|6|JT61FZSYRXEAPX3},{15145443|2019-03-14 09:17:07|PROSECUTION|List
+      of References cited by applicant and considered by examiner|1449|4|JT61FZSZRXEAPX3},{15145443|2019-03-14
+      09:17:07|PROSECUTION|Examiner''s search strategy and results|SRNT|2|JT61FZT0RXEAPX3},{15145443|2019-03-14
+      09:17:07|PROSECUTION|Non-Final Rejection|CTNF|14|JT61FZSURXEAPX3},{15145443|2019-03-14
+      09:17:07|PROSECUTION|Search information including classification, databases
+      and other search related notes|SRFW|1|JT61FZSVRXEAPX3},{15145443|2019-02-14
+      12:50:38|PROSECUTION|Request for Continued Examination (RCE)|RCEX|3|JS57WQSWRXEAPX4},{15145443|2019-02-14
+      12:50:38|PROSECUTION|Fee Worksheet (SB06)|WFEE|2|JS57WQT0RXEAPX4},{15145443|2019-02-14
+      12:50:38|PROSECUTION|Claims|CLM|5|JS57WQSYRXEAPX4},{15145443|2019-02-14 12:50:38|PROSECUTION|Amendment
+      Submitted/Entered with Filing of Continued Prosecution Application (CPA)/Request
+      for Continued Examination(RCE)|AMSB|1|JS57WQSZRXEAPX4},{15145443|2019-02-14
+      12:50:38|PROSECUTION|Applicant Arguments/Remarks Made in an Amendment|REM|5|JS57WQSXRXEAPX4},{15145443|2019-02-14
+      12:50:38|PROSECUTION|Electronic Filing System(EFS) Acknowledgment Receipt|N417|3|JS57WQT1RXEAPX4},{15145443|2019-02-14
+      10:41:34|PROSECUTION|Fee Worksheet (SB06)|WFEE|1|JSGITKBJRXEAPX4},{15145443|2019-01-18
+      06:35:13|PROSECUTION|Electronic Filing System(EFS) Acknowledgment Receipt|N417|3|JR29M21BRXEAPX5},{15145443|2019-01-18
+      06:35:13|PROSECUTION|Foreign Reference|FOR|51|JR29M214RXEAPX5},{15145443|2019-01-18
+      06:35:13|PROSECUTION|Information Disclosure Statement (IDS) Form (SB08)|IDS|6|JR29M211RXEAPX5},{15145443|2019-01-18
+      06:35:13|PROSECUTION|Other reference-Patent/Application/Search Documents|REF.OTHER|15|JR29M219RXEAPX5},{15145443|2019-01-18
+      06:35:13|PROSECUTION|Non Patent Literature|NPL|7|JR29M213RXEAPX5},{15145443|2019-01-18
+      06:35:13|PROSECUTION|Other reference-Patent/Application/Search Documents|REF.OTHER|14|JR29M218RXEAPX5},{15145443|2019-01-18
+      06:35:13|PROSECUTION|Other reference-Patent/Application/Search Documents|REF.OTHER|13|JR29M217RXEAPX5},{15145443|2019-01-18
+      06:35:13|PROSECUTION|Fee Worksheet (SB06)|WFEE|2|JR29M21ARXEAPX5},{15145443|2019-01-18
+      06:35:13|PROSECUTION|Foreign Reference|FOR|57|JR29M215RXEAPX5},{15145443|2019-01-18
+      06:35:13|PROSECUTION|Other reference-Patent/Application/Search Documents|REF.OTHER|13|JR29M216RXEAPX5},{15145443|2018-12-06
+      08:02:27|PROSECUTION|Fee Worksheet (SB06)|WFEE|2|JPCWSIN4RXEAPX2},{15145443|2018-12-06
+      08:02:27|PROSECUTION|Other reference-Patent/Application/Search Documents|REF.OTHER|9|JPCWSIN2RXEAPX2},{15145443|2018-12-06
+      08:02:27|PROSECUTION|Non Patent Literature|NPL|9|JPCWSIN1RXEAPX2},{15145443|2018-12-06
+      08:02:27|PROSECUTION|Information Disclosure Statement (IDS) Form (SB08)|IDS|4|JPCWSIMZRXEAPX2},{15145443|2018-12-06
+      08:02:27|PROSECUTION|Electronic Filing System(EFS) Acknowledgment Receipt|N417|3|JPCWSIN5RXEAPX2},{15145443|2018-12-06
+      08:02:27|PROSECUTION|Non Patent Literature|NPL|3|JPCWSIN3RXEAPX2},{15145443|2018-09-17
+      20:00:00|PROSECUTION|Information Disclosure Statement (IDS) Form (SB08)|IDS|4|JM7WJ620RXEAPX1},{15145443|2018-09-17
+      20:00:00|PROSECUTION|Fee Worksheet (SB06)|WFEE|2|JM7WJ6NURXEAPX3},{15145443|2018-09-17
+      20:00:00|PROSECUTION|Information Disclosure Statement (IDS) Form (SB08)|IDS|4|JM7WJ6NRRXEAPX3},{15145443|2018-09-17
+      20:00:00|PROSECUTION|Non Patent Literature|NPL|4|JM7WJ6NSRXEAPX3},{15145443|2018-09-17
+      20:00:00|PROSECUTION|Non Patent Literature|NPL|7|JM7WJ6NTRXEAPX3},{15145443|2018-09-17
+      20:00:00|PROSECUTION|Electronic Filing System(EFS) Acknowledgment Receipt|N417|3|JM7WJ6NWRXEAPX3},{15145443|2018-09-13
+      20:00:00|PROSECUTION|List of References cited by applicant and considered by
+      examiner|1449|5|JLZ46EZ2RXEAPX3},{15145443|2018-09-13 20:00:00|PROSECUTION|List
+      of References cited by applicant and considered by examiner|1449|5|JLZ46EZ1RXEAPX3},{15145443|2018-09-13
+      20:00:00|PROSECUTION|Search information including classification, databases
+      and other search related notes|SRFW|1|JLZ46EZ0RXEAPX3},{15145443|2018-09-13
+      20:00:00|PROSECUTION|Examiner''s search strategy and results|SRNT|2|JLZ46EZ3RXEAPX3},{15145443|2018-09-13
+      20:00:00|PROSECUTION|Final Rejection|CTFR|20|JLZ46EYZRXEAPX3},{15145443|2018-07-31
+      20:00:00|PROSECUTION|Applicant Arguments/Remarks Made in an Amendment|REM|7|JKBJPRIPRXEAPX5},{15145443|2018-07-31
+      20:00:00|PROSECUTION|Amendment/Request for Reconsideration-After Non-Final Rejection|A...|1|JKBJPRIMRXEAPX5},{15145443|2018-07-31
+      20:00:00|PROSECUTION|Fee Worksheet (SB06)|WFEE|2|JKBJPRINRXEAPX5},{15145443|2018-07-31
+      20:00:00|PROSECUTION|Claims|CLM|5|JKBJPRIQRXEAPX5},{15145443|2018-07-31 20:00:00|PROSECUTION|Electronic
+      Filing System(EFS) Acknowledgment Receipt|N417|3|JKBJPRIORXEAPX5},{15145443|2018-07-31
+      20:00:00|PROSECUTION|Fee Worksheet (SB06)|WFEE|1|JLE12HGBRXEAPX1},{15145443|2018-05-31
+      20:00:00|PROSECUTION|Non Patent Literature|NPL|8|JHW51ETFRXEAPX5},{15145443|2018-05-31
+      20:00:00|PROSECUTION|Non Patent Literature|NPL|14|JHW51ETDRXEAPX5},{15145443|2018-05-31
+      20:00:00|PROSECUTION|Information Disclosure Statement (IDS) Form (SB08)|IDS|5|JHW51ET5RXEAPX5},{15145443|2018-05-31
+      20:00:00|PROSECUTION|Non Patent Literature|NPL|4|JHW51ET9RXEAPX5},{15145443|2018-05-31
+      20:00:00|PROSECUTION|Non Patent Literature|NPL|6|JHW51ETHRXEAPX5},{15145443|2018-05-31
+      20:00:00|PROSECUTION|Foreign Reference|FOR|48|JHW51ET7RXEAPX5},{15145443|2018-05-31
+      20:00:00|PROSECUTION|Non Patent Literature|NPL|7|JHW51ETGRXEAPX5},{15145443|2018-05-31
+      20:00:00|PROSECUTION|Foreign Reference|FOR|16|JHW51ET8RXEAPX5},{15145443|2018-05-31
+      20:00:00|PROSECUTION|Electronic Filing System(EFS) Acknowledgment Receipt|N417|3|JHW51ETIRXEAPX5},{15145443|2018-03-22
+      20:00:00|PROSECUTION|Electronic Filing System(EFS) Acknowledgment Receipt|N417|2|JF48AEUWRXEAPX0},{15145443|2018-03-22
+      20:00:00|PROSECUTION|Information Disclosure Statement (IDS) Form (SB08)|IDS|5|JF48AEUURXEAPX0},{15145443|2018-01-31
+      19:00:00|PROSECUTION|Examiner''s search strategy and results|SRNT|4|JD1YXUQDRXEAPX5},{15145443|2018-01-31
+      19:00:00|PROSECUTION|List of References cited by applicant and considered by
+      examiner|1449|7|JD1YXUQBRXEAPX5},{15145443|2018-01-31 19:00:00|PROSECUTION|Non-Final
+      Rejection|CTNF|19|JD1YXUQARXEAPX5},{15145443|2018-01-31 19:00:00|PROSECUTION|Search
+      information including classification, databases and other search related notes|SRFW|1|JD1YXUQ9RXEAPX5},{15145443|2018-01-31
+      19:00:00|PROSECUTION|List of References cited by applicant and considered by
+      examiner|1449|5|JD1YXUQCRXEAPX5},{15145443|2017-12-28 19:00:00|PROSECUTION|Non
+      Patent Literature|NPL|8|JBS439O2RXEAPX1},{15145443|2017-12-28 19:00:00|PROSECUTION|Non
+      Patent Literature|NPL|14|JBS439O1RXEAPX1},{15145443|2017-12-28 19:00:00|PROSECUTION|Information
+      Disclosure Statement (IDS) Form (SB08)|IDS|5|JBS439O0RXEAPX1},{15145443|2017-12-28
+      19:00:00|PROSECUTION|Electronic Filing System(EFS) Acknowledgment Receipt|N417|2|JBS439O5RXEAPX1},{15145443|2017-12-28
+      19:00:00|PROSECUTION|Non Patent Literature|NPL|7|JBS439O3RXEAPX1},{15145443|2017-10-22
+      20:00:00|PROSECUTION|Fee Worksheet (SB06)|WFEE|2|J94AOS6CRXEAPX4},{15145443|2017-10-22
+      20:00:00|PROSECUTION|Electronic Filing System(EFS) Acknowledgment Receipt|N417|2|J94AOS6DRXEAPX4},{15145443|2017-10-22
+      20:00:00|PROSECUTION|Request for Continued Examination (RCE)|RCEX|3|J94AOS6BRXEAPX4},{15145443|2017-10-02
+      20:00:00|PROSECUTION|Advisory Action (PTOL-303)|CTAV|2|J866H13PRXEAPX5},{15145443|2017-10-02
+      20:00:00|PROSECUTION|Supplemental Response or Supplemental Amendment|SA..|1|J866H13ORXEAPX5},{15145443|2017-09-25
+      20:00:00|PROSECUTION|Fee Worksheet (SB06)|WFEE|1|J84XU271RXEAPX4},{15145443|2017-09-25
+      20:00:00|PROSECUTION|Electronic Filing System(EFS) Acknowledgment Receipt|N417|3|J821K1F2RXEAPX5},{15145443|2017-09-25
+      20:00:00|PROSECUTION|Claims|CLM|5|J821K1EZRXEAPX5},{15145443|2017-09-25 20:00:00|PROSECUTION|Fee
+      Worksheet (SB06)|WFEE|2|J821K1F1RXEAPX5},{15145443|2017-09-25 20:00:00|PROSECUTION|Supplemental
+      Response or Supplemental Amendment|SA..|1|J821K1EYRXEAPX5},{15145443|2017-09-25
+      20:00:00|PROSECUTION|Applicant Arguments/Remarks Made in an Amendment|REM|5|J821K1F0RXEAPX5},{15145443|2017-09-18
+      20:00:00|PROSECUTION|Applicant Initiated Interview Summary (PTOL-413)|INTV.SUM.APP|2|J7LWMN2LRXEAPX2},{15145443|2017-09-18
+      20:00:00|PROSECUTION|Amendment After Final or under 37CFR 1.312, initialed by
+      the examiner.|ANE.I|1|J7LWMN2MRXEAPX2},{15145443|2017-09-18 20:00:00|PROSECUTION|After
+      Final Consideration Program Decision|A.NE.AFCP.D|1|J7LWMN2NRXEAPX2},{15145443|2017-09-18
+      20:00:00|PROSECUTION|Advisory Action (PTOL-303)|CTAV|5|J7LWMN2KRXEAPX2},{15145443|2017-09-13
+      20:00:00|PROSECUTION|Non Patent Literature|NPL|26|J7KYKLHARXEAPX2},{15145443|2017-09-13
+      20:00:00|PROSECUTION|Non Patent Literature|NPL|10|J7KYKLH7RXEAPX2},{15145443|2017-09-13
+      20:00:00|PROSECUTION|Electronic Filing System(EFS) Acknowledgment Receipt|N417|3|J7KYKLHCRXEAPX2},{15145443|2017-09-13
+      20:00:00|PROSECUTION|Information Disclosure Statement (IDS) Form (SB08)|IDS|7|J7KYKLH3RXEAPX2},{15145443|2017-09-13
+      20:00:00|PROSECUTION|Fee Worksheet (SB06)|WFEE|2|J7KYKLHBRXEAPX2},{15145443|2017-09-13
+      20:00:00|PROSECUTION|Non Patent Literature|NPL|29|J7KYKLH6RXEAPX2},{15145443|2017-09-13
+      20:00:00|PROSECUTION|Non Patent Literature|NPL|23|J7KYKLH5RXEAPX2},{15145443|2017-09-13
+      20:00:00|PROSECUTION|Non Patent Literature|NPL|27|J7KYKLH8RXEAPX2},{15145443|2017-09-13
+      20:00:00|PROSECUTION|Non Patent Literature|NPL|28|J7KYKLH9RXEAPX2},{15145443|2017-08-24
+      20:00:00|PROSECUTION|Fee Worksheet (SB06)|WFEE|1|J6WJ0MY0RXEAPX2},{15145443|2017-08-24
+      20:00:00|PROSECUTION|Electronic Filing System(EFS) Acknowledgment Receipt|N417|2|J6S7OPTLRXEAPX4},{15145443|2017-08-24
+      20:00:00|PROSECUTION|Response After Final Action|A.NE|1|J6S7OPTJRXEAPX4},{15145443|2017-08-24
+      20:00:00|PROSECUTION|Claims|CLM|5|J6S7OPTNRXEAPX4},{15145443|2017-08-24 20:00:00|PROSECUTION|After
+      Final Consideration Program Request|A.NE.AFCP|2|J6S7OPTKRXEAPX4},{15145443|2017-08-24
+      20:00:00|PROSECUTION|Applicant Arguments/Remarks Made in an Amendment|REM|5|J6S7OPTMRXEAPX4},{15145443|2017-05-25
+      20:00:00|PROSECUTION|Non Patent Literature|NPL|10|J36B5IPURXEAPX1},{15145443|2017-05-25
+      20:00:00|PROSECUTION|Information Disclosure Statement (IDS) Form (SB08)|IDS|4|J36B5IPTRXEAPX1},{15145443|2017-05-25
+      20:00:00|PROSECUTION|Fee Worksheet (SB06)|WFEE|2|J36B5IPWRXEAPX1},{15145443|2017-05-25
+      20:00:00|PROSECUTION|Electronic Filing System(EFS) Acknowledgment Receipt|N417|2|J36B5IPXRXEAPX1},{15145443|2017-05-25
+      20:00:00|PROSECUTION|List of References cited by applicant and considered by
+      examiner|1449|16|J333I50URXEAPX1},{15145443|2017-05-25 20:00:00|PROSECUTION|List
+      of References cited by applicant and considered by examiner|1449|6|J333I50TRXEAPX1},{15145443|2017-05-25
+      20:00:00|PROSECUTION|Examiner''s search strategy and results|SRNT|2|J333I50VRXEAPX1},{15145443|2017-05-25
+      20:00:00|PROSECUTION|Search information including classification, databases
+      and other search related notes|SRFW|1|J333I50WRXEAPX1},{15145443|2017-05-25
+      20:00:00|PROSECUTION|Final Rejection|CTFR|10|J333I50SRXEAPX1},{15145443|2017-05-01
+      20:00:00|PROSECUTION|Fee Worksheet (SB06)|WFEE|1|J2JAHRZMRXEAPX4},{15145443|2017-05-01
+      20:00:00|PROSECUTION|Amendment/Request for Reconsideration-After Non-Final Rejection|A...|1|J27VXRCVRXEAPX3},{15145443|2017-05-01
+      20:00:00|PROSECUTION|Electronic Filing System(EFS) Acknowledgment Receipt|N417|2|J27VXRCYRXEAPX3},{15145443|2017-05-01
+      20:00:00|PROSECUTION|Claims|CLM|5|J27VXRCWRXEAPX3},{15145443|2017-05-01 20:00:00|PROSECUTION|Applicant
+      Arguments/Remarks Made in an Amendment|REM|3|J27VXRCXRXEAPX3},{15145443|2017-04-19
+      20:00:00|PROSECUTION|Electronic Filing System(EFS) Acknowledgment Receipt|N417|2|J1QX53DTRXEAPX4},{15145443|2017-04-19
+      20:00:00|PROSECUTION|Oath or Declaration filed|OATH|2|J1QX53DSRXEAPX4},{15145443|2017-03-29
+      20:00:00|PROSECUTION|Non Patent Literature|NPL|15|J0X2X5OKRXEAPX2},{15145443|2017-03-29
+      20:00:00|PROSECUTION|Non Patent Literature|NPL|16|J0X2X5OMRXEAPX2},{15145443|2017-03-29
+      20:00:00|PROSECUTION|Non Patent Literature|NPL|5|J0X2X5OPRXEAPX2},{15145443|2017-03-29
+      20:00:00|PROSECUTION|Non Patent Literature|NPL|8|J0X2X5OORXEAPX2},{15145443|2017-03-29
+      20:00:00|PROSECUTION|Electronic Filing System(EFS) Acknowledgment Receipt|N417|3|J0X2X5ORRXEAPX2},{15145443|2017-03-29
+      20:00:00|PROSECUTION|Non Patent Literature|NPL|13|J0X2X5OQRXEAPX2},{15145443|2017-03-29
+      20:00:00|PROSECUTION|Information Disclosure Statement (IDS) Form (SB08)|IDS|6|J0X2X5OJRXEAPX2},{15145443|2017-03-29
+      20:00:00|PROSECUTION|Non Patent Literature|NPL|10|J0X2X5OLRXEAPX2},{15145443|2017-02-06
+      19:00:00|PROSECUTION|Examiner''s search strategy and results|SRNT|2|IYPTZKPTRXEAPX4},{15145443|2017-02-06
+      19:00:00|PROSECUTION|List of references cited by examiner|892|1|IYPTZKPRRXEAPX4},{15145443|2017-02-06
+      19:00:00|PROSECUTION|Non-Final Rejection|CTNF|8|IYPTZKPQRXEAPX4},{15145443|2017-02-06
+      19:00:00|PROSECUTION|Search information including classification, databases
+      and other search related notes|SRFW|1|IYPTZKPSRXEAPX4},{15145443|2017-02-06
+      19:00:00|PROSECUTION|List of References cited by applicant and considered by
+      examiner|1449|4|IYPTZKPVRXEAPX4},{15145443|2017-01-24 19:00:00|PROSECUTION|Foreign
+      Reference|FOR|3|IYDJMUZERXEAPX0},{15145443|2017-01-24 19:00:00|PROSECUTION|Information
+      Disclosure Statement (IDS) Form (SB08)|IDS|16|IYDJMUZCRXEAPX0},{15145443|2017-01-24
+      19:00:00|PROSECUTION|Electronic Filing System(EFS) Acknowledgment Receipt|N417|2|IYDJMUZGRXEAPX0},{15145443|2017-01-24
+      19:00:00|PROSECUTION|Non Patent Literature|NPL|2|IYDJMUZFRXEAPX0},{15145443|2016-12-28
+      19:00:00|PROSECUTION|Response to Election / Restriction Filed|ELC.|2|IXAR78PORXEAPX1},{15145443|2016-12-28
+      19:00:00|PROSECUTION|Electronic Filing System(EFS) Acknowledgment Receipt|N417|2|IXAR78PPRXEAPX1},{15145443|2016-11-02
+      20:00:00|PROSECUTION|Notice of Publication|NTC.PUB|1|IV2FZOSFRXEAPX5},{15145443|2016-10-31
+      20:00:00|PROSECUTION|Requirement for Restriction/Election|CTRS|6|IUU1807BRXEAPX0},{15145443|2016-10-27
+      20:00:00|PROSECUTION|Communication - Re:  Power of Attorney (PTOL-308)|N570|1|IUSBCRSRRXEAPX5},{15145443|2016-10-27
+      20:00:00|PROSECUTION|Communication - Re:  Power of Attorney (PTOL-308)|N570|1|IUSBCS3BRXEAPX2},{15145443|2016-10-19
+      20:00:00|PROSECUTION|Electronic Filing System(EFS) Acknowledgment Receipt|N417|2|IUIKU57FRXEAPX0},{15145443|2016-10-19
+      20:00:00|PROSECUTION|Power of Attorney|PA..|1|IUIKU57DRXEAPX0},{15145443|2016-10-19
+      20:00:00|PROSECUTION|Assignee showing of ownership per 37 CFR 3.73|R3.73|3|IUIKU57ERXEAPX0},{15145443|2016-10-11
+      20:00:00|PROSECUTION|Electronic Filing System(EFS) Acknowledgment Receipt|N417|2|IU71HIF2RXEAPX3},{15145443|2016-10-11
+      20:00:00|PROSECUTION|Request for withdrawal as attorney or agent|PET.POA.WDRW|3|IU71HIF1RXEAPX3},{15145443|2016-10-10
+      20:00:00|PROSECUTION|Change of Address via Patent Application Information Retrieval
+      (PAIR)|C.AD.PAIR|1|IU61IG8URXEAPX4},{15145443|2016-09-12 20:00:00|PROSECUTION|Track
+      One request Granted|TRACK1.GRANT|1|ITA76SHARXEAPX0},{15145443|2016-09-07 20:00:00|PROSECUTION|Communication
+      - Re:  Power of Attorney (PTOL-308)|N570|1|ISSZAM1GRXEAPX5},{15145443|2016-08-28
+      20:00:00|PROSECUTION|Oath or Declaration filed|OATH|4|ISGSHHQRRXEAPX5},{15145443|2016-08-28
+      20:00:00|PROSECUTION|Fee Worksheet (SB06)|WFEE|2|ISGSHHQTRXEAPX5},{15145443|2016-08-28
+      20:00:00|PROSECUTION|Electronic Filing System(EFS) Acknowledgment Receipt|N417|3|ISGSHHQURXEAPX5},{15145443|2016-08-28
+      20:00:00|PROSECUTION|Assignee showing of ownership per 37 CFR 3.73|R3.73|3|ISGSHHQSRXEAPX5},{15145443|2016-08-28
+      20:00:00|PROSECUTION|Power of Attorney|PA..|1|ISGSHHQQRXEAPX5},{15145443|2016-07-27
+      20:00:00|PROSECUTION|Fee Worksheet (SB06)|WFEE|1|IR4R851NRXEAPX5},{15145443|2016-07-27
+      20:00:00|PROSECUTION|Filing Receipt|APP.FILE.REC|3|IR4R82QURXEAPX2},{15145443|2016-07-27
+      20:00:00|PROSECUTION|Miscellaneous Communication to Applicant - No Action Count|M327|1|IR4R83KWRXEAPX0},{15145443|2016-07-17
+      20:00:00|PROSECUTION|Applicant Response to Pre-Exam Formalities Notice|PEFR|1|IQS6D3C0RXEAPX4},{15145443|2016-07-17
+      20:00:00|PROSECUTION|Electronic Filing System(EFS) Acknowledgment Receipt|N417|3|IQS6D3YFRXEAPX4},{15145443|2016-07-17
+      20:00:00|PROSECUTION|Applicant Response to Pre-Exam Formalities Notice|PEFR|2|IQS6D3YBRXEAPX4},{15145443|2016-07-17
+      20:00:00|PROSECUTION|Information Disclosure Statement (IDS) Form (SB08)|IDS|4|IQS6D3YDRXEAPX4},{15145443|2016-07-17
+      20:00:00|PROSECUTION|Fee Worksheet (SB06)|WFEE|2|IQS6D3YERXEAPX4},{15145443|2016-07-17
+      20:00:00|PROSECUTION|Drawings-only black and white line drawings|DRW|4|IQS6D3YCRXEAPX4},{15145443|2016-07-17
+      20:00:00|PROSECUTION|Electronic Filing System(EFS) Acknowledgment Receipt (Corrected)|N417.CORR|3|IZHU0TM0RXEAPX5},{15145443|2016-05-17
+      20:00:00|PROSECUTION|Notice to File Corrected Application Papers|NT.CR.APP.PA|2|IOBR4DLQRXEAPX2},{15145443|2016-05-17
+      20:00:00|PROSECUTION|Fee Worksheet (SB06)|WFEE|1|IOBR7LUORXEAPX5},{15145443|2016-05-17
+      20:00:00|PROSECUTION|Filing Receipt|APP.FILE.REC|3|IOBR4DA1RXEAPX4},{15145443|2016-05-02
+      20:00:00|PROSECUTION|Placeholder sheet indicating presence of supplemental content
+      in Supplemental Complex Repository for Examiners(SCORE)|SCORE|1|IO6M3PMORXEAPX3},{15145443|2016-05-02
+      20:00:00|PROSECUTION|Electronic Filing System(EFS) Acknowledgment Receipt|N417|3|INRWK6D7RXEAPX4},{15145443|2016-05-02
+      20:00:00|PROSECUTION|Application Data Sheet|ADS|8|INRWK6DARXEAPX4},{15145443|2016-05-02
+      20:00:00|PROSECUTION|Fee Worksheet (SB06)|WFEE|2|INRWK6D6RXEAPX4},{15145443|2016-05-02
+      20:00:00|PROSECUTION|Track One Request|TRACK1.REQ|2|INRWK6D8RXEAPX4},{15145443|2016-05-02
+      20:00:00|PROSECUTION|Specification|SPEC|17|INRWK6DCRXEAPX4},{15145443|2016-05-02
+      20:00:00|PROSECUTION|Claims|CLM|5|INUHS6N3PXXIFW1},{15145443|2016-05-02 20:00:00|PROSECUTION|Drawings-other
+      than black and white line drawings|DRW.NONBW|3|INRWK6DBRXEAPX4},{15145443|2016-05-02
+      20:00:00|PROSECUTION|Abstract|ABST|1|INUHS6NEPXXIFW1}"],"appAttrDockNumberFacet":"047158.100016","appEntityStatusFacet":"UNDISCOUNTED","appCustNumberFacet":"132858","_version_":1781146004247019520,"firstInventorFileFacet":"No","appLocationFacet":"ELECTRONIC","appEarlyPubNumberFacet":"US20160319650A1"}]}},"queryId":"0bf5f70c-bfeb-4f18-948b-3208f763266e"},"jobStatus":null,"queryId":"0bf5f70c-bfeb-4f18-948b-3208f763266e","page":1,"count":0,"errorMessage":null,"createQueryRequest":{"searchText":"applId:(15145443)","facet":"false","facetField":null,"facetLimit":null,"facetMissing":null,"facetDate":null,"facetDateGap":null,"facetDateStart":null,"facetDateEnd":null,"facetDateOther":null,"facetDateInclude":null,"mm":"0%","sort":"applId
+      asc","qf":"applId","wt":null,"df":"patentTitle","fl":"*","start":"0","fq":[],"rows":"20","parameters":{"mm":"0%","df":"patentTitle","qf":"applId","fl":["*"],"start":"0","sort":"applId
+      asc","fq":[],"rows":"20","facet":"false"}},"links":[{"rel":"self","href":"https://ped.uspto.gov/api/queries/0bf5f70c-bfeb-4f18-948b-3208f763266e?format=XML"},{"rel":"results","href":"https://ped.uspto.gov/api/queries/0bf5f70c-bfeb-4f18-948b-3208f763266e/results?page=1"},{"rel":"package","href":"https://ped.uspto.gov/api/queries/0bf5f70c-bfeb-4f18-948b-3208f763266e/package?format=XML"},{"rel":"first","href":"https://ped.uspto.gov/api/queries/0bf5f70c-bfeb-4f18-948b-3208f763266e/results?page=1"},{"rel":"next","href":"https://ped.uspto.gov/api/queries/0bf5f70c-bfeb-4f18-948b-3208f763266e/results?page=2"},{"rel":"self","href":"https://ped.uspto.gov/api/queries/0bf5f70c-bfeb-4f18-948b-3208f763266e?format=JSON"},{"rel":"results","href":"https://ped.uspto.gov/api/queries/0bf5f70c-bfeb-4f18-948b-3208f763266e/results?page=1"},{"rel":"package","href":"https://ped.uspto.gov/api/queries/0bf5f70c-bfeb-4f18-948b-3208f763266e/package?format=JSON"},{"rel":"first","href":"https://ped.uspto.gov/api/queries/0bf5f70c-bfeb-4f18-948b-3208f763266e/results?page=1"},{"rel":"next","href":"https://ped.uspto.gov/api/queries/0bf5f70c-bfeb-4f18-948b-3208f763266e/results?page=2"}]}'
+    headers:
+      Cache-Control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Date:
+      - Mon, 30 Oct 2023 20:38:31 GMT
+      Expires:
+      - '0'
+      Pragma:
+      - no-cache
+      Server-Timing:
+      - intid;desc=7803775d88b1dde7
+      Strict-Transport-Security:
+      - max-age=31536000;includeSubDomains
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 438aef39b75efc64fcdb19b1f96ff258.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - IJR1oi4FUMQGK9FaUqOAidB3HDXXmh96FFlAsYJNUnvN3fm89_4Oag==
       X-Amz-Cf-Pop:
       - IAH50-C1
       X-Cache:

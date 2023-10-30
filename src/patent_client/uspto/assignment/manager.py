@@ -1,20 +1,17 @@
 import logging
-import math
 import re
 import warnings
 from collections.abc import Sequence
 from pathlib import Path
 from typing import AsyncIterator
-from typing import Iterator
 
 import httpx
-from patent_client import session
 from patent_client.util import Manager
+from patent_client.util.request_util import get_start_and_row_count
 from urllib3.connectionpool import InsecureRequestWarning
 
+from .api import AssignmentApi
 from .model import Assignment
-from .schema import AssignmentPageSchema
-
 
 warnings.filterwarnings("ignore", category=InsecureRequestWarning)
 
@@ -28,7 +25,6 @@ asession = httpx.AsyncClient(verify=False)
 
 
 class AssignmentManager(Manager[Assignment]):
-    __schema__ = AssignmentPageSchema()
     fields = {
         "patent_number": "PatentNumber",
         "appl_id": "ApplicationNumber",
@@ -39,48 +35,26 @@ class AssignmentManager(Manager[Assignment]):
         "correspondent": "CorrespondentName",
         "id": "ReelFrame",
     }
-    url = "https://assignment-api.uspto.gov/patent/lookup"
-    page_size = 20
+    page_size = 100
     obj_class = "patent_client.uspto_assignments.Assignment"
     primary_key = "id"
 
     def __init__(self, *args, **kwargs):
         super(AssignmentManager, self).__init__(*args, **kwargs)
-        self.pages = dict()
-
-    def __iter__(self) -> Iterator[Assignment]:
-        return super(AssignmentManager, self).__iter__()
-
-    def __aiter__(self) -> AsyncIterator[Assignment]:
-        return super(AssignmentManager, self).__aiter__()
 
     @property
     def allowed_filters(self):
         return list(self.fields.keys())
 
-    def _get_results(self) -> Iterator[Assignment]:
-        num_pages = math.ceil(len(self) / self.page_size)
-        page_num = 0
-        counter = 0
-        for page_num in range(num_pages):
-            for item in self.get_page(page_num):
-                if not self.config.limit or counter < self.config.limit:
-                    yield item
-                counter += 1
-            page_num += 1
-
     async def _aget_results(self) -> AsyncIterator[Assignment]:
-        num_pages = math.ceil(len(self) / self.page_size)
-        page_num = 0
-        counter = 0
-        for page_num in range(num_pages):
-            for item in await self.aget_page(page_num):
-                if not self.config.limit or counter < self.config.limit:
-                    yield item
-                counter += 1
-            page_num += 1
+        for start, rows in get_start_and_row_count(self.config.limit, self.config.offset, self.page_size):
+            response = await AssignmentApi.alookup(**{**self.get_query(), "start": start, "rows": rows})
+            for doc in response.docs:
+                yield doc
+            if len(response.docs) < rows:
+                break
 
-    def get_query(self, page_no):
+    def get_query(self):
         """Get assignments.
         Args:
             patent: pat no to search
@@ -96,13 +70,14 @@ class AssignmentManager(Manager[Assignment]):
                 query = [clean_number(q) for q in query]
             else:
                 query = clean_number(query)
-
-        sort = list()
-        for p in self.config.order_by:
-            if sort[0] == "-":
-                sort.append(p[1:] + "+desc")
-            else:
-                sort.append(p + "+asc")
+        # Handle Ordering
+        order_map = {"execution_date": "ExecutionDate+asc", "-execution_date": "ExecutionDate+desc"}
+        if len(self.config.order_by) > 1:
+            raise ValueError("Assignment API does not support multiple sort parameters!")
+        elif len(self.config.order_by) == 1:
+            sort = order_map[self.config.order_by[0]]
+        else:
+            sort = "ExecutionDate+desc"
 
         if isinstance(query, list):
             query = [f'"{q}"' for q in query]
@@ -110,58 +85,14 @@ class AssignmentManager(Manager[Assignment]):
         query = {
             "filter": field,
             "query": " OR ".join(query) if isinstance(query, Sequence) and not isinstance(query, str) else query,
-            "rows": self.page_size,
-            "start": page_no * self.page_size,
-            "sort": " ".join(sort),
-            "facet": False,
+            "sort": sort,
         }
-        logger.info(f"Assignment Manager executed query {query}")
         return query
 
-    def __len__(self) -> int:
-        if not hasattr(self, "_len"):
-            self.get_page(0)
-        max_length = self._len - self.config.offset
-        limit = self.config.limit
-        if not limit:
-            return max_length
-        else:
-            return limit if limit < max_length else max_length
-
     async def alen(self) -> int:
-        if not hasattr(self, "_len"):
-            await self.aget_page(0)
-        max_length = self._len - self.config.offset
-        limit = self.config.limit
-        if not limit:
-            return max_length
-        else:
-            return limit if limit < max_length else max_length
-
-    def get_page(self, page_no):
-        params = self.get_query(page_no)
-        response = session.get(
-            self.url,
-            params=params,
-            verify=False,
-            headers={"Accept": "application/xml"},
-        )
-        text = response.text
-        result = self.__schema__.load(text)
-        self._len = result.num_found
-        return result.docs
-
-    async def aget_page(self, page_no):
-        params = self.get_query(page_no)
-        response = await asession.get(
-            self.url,
-            params=params,
-            headers={"Accept": "application/xml"},
-        )
-        text = response.text
-        result = self.__schema__.load(text)
-        self._len = result.num_found
-        return result.docs
+        response = await AssignmentApi.alookup(**self.get_query())
+        max_len = response.num_found
+        return min(max_len, self.config.limit) if self.config.limit else max_len
 
     @property
     def query_fields(self):

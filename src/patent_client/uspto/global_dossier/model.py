@@ -3,13 +3,14 @@ from dataclasses import dataclass
 from dataclasses import field
 from pathlib import Path
 
+from patent_client.util.asyncio_util import run_sync
 from patent_client.util.base.model import Model
 from patent_client.util.base.related import get_model
 from yankee.data import ListCollection
 
-from .api import GlobalDossierApi
+from .api import GlobalDossierAsyncApi
 
-global_dossier_api = GlobalDossierApi()
+global_dossier_async_api = GlobalDossierAsyncApi()
 
 
 @dataclass
@@ -135,10 +136,15 @@ class Document(Model):
     shareable: "bool" = None
 
     def download(self, filename="", path="."):
+        return run_sync(self.adownload(filename, path))
+
+    async def adownload(self, filename="", path="."):
         out_path = Path(path).expanduser() / (
             f'{self.date.isoformat()} - {self.doc_desc.replace("/", "_")}.pdf' if not filename else filename
         )
-        return global_dossier_api.get_document(self.country, self.doc_number, self.doc_id, out_path=out_path)
+        return await global_dossier_async_api.get_document(
+            self.country, self.doc_number, self.doc_id, out_path=out_path
+        )
 
 
 @dataclass

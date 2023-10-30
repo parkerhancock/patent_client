@@ -2,6 +2,8 @@ interactions:
 - request:
     body: ''
     headers:
+      Authorization:
+      - REDACTED
       accept:
       - '*/*'
       accept-encoding:
@@ -15,8 +17,8 @@ interactions:
     method: GET
     uri: http://ops.epo.org/3.2/rest-services/published-data/publication/epodoc/EP1000000.A1/biblio
   response:
-    content: "<error><code>403</code><message>This request has been rejected due to
-      the violation of Fair Use policy</message><moreInfo>https://www.epo.org/service-support/ordering/fair-use.html</moreInfo>\n\t\t\t\t</error>\n\t\t\t"
+    content: "<error><code>400</code><message>invalid_access_token</message><description>Access
+      token has expired</description>\n\t\t\t\t</error>\n\t\t\t"
     headers:
       Access-Control-Allow-Headers:
       - Authorization
@@ -27,22 +29,21 @@ interactions:
       Connection:
       - keep-alive
       Content-Length:
-      - '208'
+      - '130'
       Content-Type:
       - application/xml
       Date:
-      - Mon, 30 Oct 2023 01:40:13 GMT
-      X-EPO-Client-IP:
-      - 104.54.160.230
-      X-EPO-Forwarded:
-      - '[104.54.160.230]'
-      X-Rejection-Reason:
-      - AnonymousQuotaPerDay
+      - Mon, 30 Oct 2023 16:20:20 GMT
+      WWW-Authenticate:
+      - 'Bearer realm="null",error="invalid_token",error_description="keymanagement.service.access_token_expired:
+        Access Token expired"'
     http_version: HTTP/1.1
-    status_code: 403
+    status_code: 400
 - request:
     body: grant_type=client_credentials
     headers:
+      Authorization:
+      - REDACTED
       accept:
       - '*/*'
       accept-encoding:
@@ -63,8 +64,8 @@ interactions:
     content: "{\n  \"refresh_token_expires_in\": \"0\",\n  \"api_product_list\": \"[ops-prod]\",\n
       \ \"api_product_list_json\": [\n    \"ops-prod\"\n  ],\n  \"organization_name\":
       \"epo\",\n  \"developer.email\": \"parker.hancock@protonmail.com\",\n  \"token_type\":
-      \"BearerToken\",\n  \"issued_at\": \"1698630014046\",\n  \"client_id\": \"wVi6ni5GUZZ3BJqAfLGJb4KPGcYxRktw\",\n
-      \ \"access_token\": \"5PFN0F1ISKAVtj951gsEWCLQIdeE\",\n  \"application_name\":
+      \"BearerToken\",\n  \"issued_at\": \"1698682820554\",\n  \"client_id\": \"wVi6ni5GUZZ3BJqAfLGJb4KPGcYxRktw\",\n
+      \ \"access_token\": \"fGdv2L6UpJHE8qtc4QZcgSZrv0Lm\",\n  \"application_name\":
       \"8654da0d-5e44-4ea3-addc-e555eff4aee6\",\n  \"scope\": \"core\",\n  \"expires_in\":
       \"1199\",\n  \"refresh_count\": \"0\",\n  \"status\": \"approved\"\n}"
     headers:
@@ -81,11 +82,11 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Mon, 30 Oct 2023 01:40:14 GMT
+      - Mon, 30 Oct 2023 16:20:20 GMT
       X-EPO-Client-IP:
-      - 104.54.160.230
+      - 38.104.255.66
       X-EPO-Forwarded:
-      - '[104.54.160.230]'
+      - '[38.104.255.66]'
     http_version: HTTP/1.1
     status_code: 200
 - request:
@@ -264,7 +265,7 @@ interactions:
       Content-Type:
       - application/xml;charset=utf-8
       Date:
-      - Mon, 30 Oct 2023 01:40:14 GMT
+      - Mon, 30 Oct 2023 16:20:20 GMT
       ETag:
       - '"0b35c4dc8a4aec55f54681e64f7b7edf6"'
       Pragma:
@@ -278,15 +279,15 @@ interactions:
       X-API:
       - ops-v3.2
       X-EPO-Client-IP:
-      - 104.54.160.230
+      - 38.104.255.66
       X-EPO-Forwarded:
-      - '[104.54.160.230]'
+      - '[38.104.255.66]'
       X-Elapsed-Time:
       - '0'
       X-IndividualQuotaPerHour-Used:
-      - '675695'
+      - '925304'
       X-RegisteredQuotaPerWeek-Used:
-      - '662660'
+      - '2665324'
       X-Throttling-Control:
       - idle (images=green:200, inpadoc=green:60, other=green:1000, retrieval=green:200,
         search=green:30)

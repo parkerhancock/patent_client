@@ -5,6 +5,11 @@ import time
 from .version import __version__  # noqa
 
 start = time.time()
+
+import nest_asyncio
+
+nest_asyncio.apply()
+
 from pathlib import Path
 from .settings import load_settings
 
@@ -43,7 +48,7 @@ session = PatentClientSession()
 
 import httpx
 
-asession = httpx.AsyncClient()
+asession = httpx.AsyncClient(timeout=5 * 60)
 # session.remove_expired_responses(expire_after=parse_duration(SETTINGS.CACHE.MAX_AGE))
 
 # Set up yankee
@@ -77,6 +82,9 @@ from patent_client.uspto.public_search.model import (
 
 elapsed = time.time() - start
 logger.debug(f"Startup Complete!, took {elapsed:.3f} seconds")
+
+cache_dir = Path("~/.patent_client/cache").expanduser()
+cache_dir.parent.mkdir(exist_ok=True, parents=True)
 
 __all__ = [
     "Inpadoc",

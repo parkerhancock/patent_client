@@ -11,98 +11,7 @@ interactions:
       Connection:
       - keep-alive
       User-Agent:
-      - Python Patent Clientbot/3.2.2 (parkerhancock@users.noreply.github.com)
-    method: GET
-    uri: http://ops.epo.org/3.2/rest-services/legal/publication/docdb/EP1000000A1
-  response:
-    body:
-      string: "<error><code>400</code><message>invalid_access_token</message><description>Access
-        token is invalid</description>\n\t\t\t\t</error>\n\t\t\t"
-    headers:
-      Access-Control-Allow-Headers:
-      - Authorization
-      Access-Control-Allow-Methods:
-      - POST
-      Access-Control-Allow-Origin:
-      - '*'
-      Connection:
-      - keep-alive
-      Content-Length:
-      - '129'
-      Content-Type:
-      - application/xml
-      Date:
-      - Thu, 20 Apr 2023 18:56:13 GMT
-      WWW-Authenticate:
-      - 'Bearer realm="null",error="invalid_token",error_description="keymanagement.service.invalid_access_token:
-        Invalid Access Token"'
-    status:
-      code: 400
-      message: Bad Request
-- request:
-    body: grant_type=client_credentials
-    headers:
-      Accept:
-      - '*/*'
-      Accept-Encoding:
-      - gzip, deflate
-      Authorization:
-      - REDACTED
-      Connection:
-      - keep-alive
-      Content-Length:
-      - '29'
-      Content-Type:
-      - application/x-www-form-urlencoded
-      User-Agent:
-      - Python Patent Clientbot/3.2.2 (parkerhancock@users.noreply.github.com)
-    method: POST
-    uri: https://ops.epo.org/3.2/auth/accesstoken
-  response:
-    body:
-      string: "{\n  \"refresh_token_expires_in\": \"0\",\n  \"api_product_list\":
-        \"[ops-prod]\",\n  \"api_product_list_json\": [\n    \"ops-prod\"\n  ],\n
-        \ \"organization_name\": \"epo\",\n  \"developer.email\": \"parker.hancock@protonmail.com\",\n
-        \ \"token_type\": \"BearerToken\",\n  \"issued_at\": \"1682016973667\",\n
-        \ \"client_id\": \"XRSKXZUZjTWDfOHvig79oYUn4IqMf2bt\",\n  \"access_token\":
-        \"RcXHrKU8zNpws0p2sA9Zhh7z7XLL\",\n  \"application_name\": \"a2dd7045-d0a4-4046-be5f-4be39eb8a7ec\",\n
-        \ \"scope\": \"core\",\n  \"expires_in\": \"1199\",\n  \"refresh_count\":
-        \"0\",\n  \"status\": \"approved\"\n}"
-    headers:
-      Access-Control-Allow-Headers:
-      - Authorization
-      Access-Control-Allow-Methods:
-      - POST
-      Access-Control-Allow-Origin:
-      - '*'
-      Connection:
-      - keep-alive
-      Content-Length:
-      - '523'
-      Content-Type:
-      - application/json
-      Date:
-      - Thu, 20 Apr 2023 18:56:13 GMT
-      X-EPO-Client-IP:
-      - 38.104.48.227
-      X-EPO-Forwarded:
-      - '[38.104.48.227]'
-    status:
-      code: 200
-      message: OK
-- request:
-    body: null
-    headers:
-      Accept:
-      - '*/*'
-      Accept-Encoding:
-      - gzip, deflate
-      Authorization:
-      - REDACTED
-      Connection:
-      - keep-alive
-      User-Agent:
-      - Python Patent Clientbot/3.2.2 (parkerhancock@users.noreply.github.com)
+      - Mozilla/5.0 Python Patent Clientbot/3.2.8 (parkerhancock@users.noreply.github.com)
     method: GET
     uri: http://ops.epo.org/3.2/rest-services/legal/publication/docdb/EP1000000A1
   response:
@@ -1123,7 +1032,7 @@ interactions:
       Content-Type:
       - application/xml;charset=utf-8
       Date:
-      - Thu, 20 Apr 2023 18:56:14 GMT
+      - Mon, 30 Oct 2023 15:32:14 GMT
       ETag:
       - '"08854d63fe552f6ebf630d701df47f60f"'
       Pragma:
@@ -1137,15 +1046,15 @@ interactions:
       X-API:
       - ops-v3.2
       X-EPO-Client-IP:
-      - 38.104.48.227
+      - 38.104.255.66
       X-EPO-Forwarded:
-      - '[38.104.48.227]'
+      - '[38.104.255.66]'
       X-Elapsed-Time:
-      - '568'
+      - '413'
       X-IndividualQuotaPerHour-Used:
-      - '78351'
+      - '145842'
       X-RegisteredQuotaPerWeek-Used:
-      - '78351'
+      - '1849120'
       X-Throttling-Control:
       - busy (images=green:100, inpadoc=green:45, other=green:1000, retrieval=green:100,
         search=green:15)

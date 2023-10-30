@@ -1,165 +1,164 @@
 interactions:
 - request:
-    body: null
+    body: ''
     headers:
-      Accept:
+      accept:
       - application/xml
-      Accept-Encoding:
+      accept-encoding:
       - gzip, deflate
-      Connection:
+      connection:
       - keep-alive
-      User-Agent:
-      - Python Patent Clientbot/3.0.3 (parkerhancock@users.noreply.github.com)
+      host:
+      - assignment-api.uspto.gov
+      user-agent:
+      - python-httpx/0.24.1
     method: GET
-    uri: https://assignment-api.uspto.gov/patent/lookup?filter=ReelFrame&query=18247-405&rows=20&start=0&sort=&facet=False
+    uri: https://assignment-api.uspto.gov/patent/lookup?filter=ReelFrame&query=18247-405&rows=20&start=0&sort=&facet=false
   response:
-    body:
-      string: "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<response>\n\n<lst name=\"responseHeader\">\n
-        \ <bool name=\"zkConnected\">true</bool>\n  <int name=\"status\">0</int>\n
-        \ <int name=\"QTime\">79</int>\n  <lst name=\"params\">\n    <str name=\"q\">*:*</str>\n
-        \   <str name=\"qt\">/apisearch</str>\n    <str name=\"start\">0</str>\n    <str
-        name=\"sort\">patAssignorEarliestExDate desc</str>\n    <str name=\"fq\">id:18247-405</str>\n
-        \   <str name=\"rows\">20</str>\n    <str name=\"wt\">javabin</str>\n    <str
-        name=\"version\">2</str>\n  </lst>\n</lst>\n<result name=\"response\" numFound=\"1\"
-        start=\"0\">\n  <doc>\n    <str name=\"id\">18247-405</str>\n    <str name=\"displayId\">018247-0405</str>\n
-        \   <str name=\"dtdVersion\">1.0</str>\n    <str name=\"dateProduced\">20140916</str>\n
-        \   <str name=\"actionKeyCode\">DA</str>\n    <str name=\"transactionDate\">2019-07-11T17:29:13Z</str>\n
-        \   <str name=\"reelNo\">18247</str>\n    <str name=\"frameNo\">405</str>\n
-        \   <date name=\"lastUpdateDate\">2008-01-22T11:00:55Z</date>\n    <str name=\"purgeIndicator\">N</str>\n
-        \   <date name=\"recordedDate\">2006-09-14T04:00:00Z</date>\n    <str name=\"pageCount\">6</str>\n
-        \   <str name=\"conveyanceText\">NUNC PRO TUNC ASSIGNMENT (SEE DOCUMENT FOR
-        DETAILS).</str>\n    <str name=\"assignmentRecordHasImages\">Y</str>\n    <str
-        name=\"attorneyDockNum\">103532-0002</str>\n    <str name=\"corrName\">JEFFREY
-        H. INGERMAN</str>\n    <str name=\"corrAddress1\">FISH &amp; NEAVE IP GROUP,
-        ROPES &amp; GRAY LLP</str>\n    <str name=\"corrAddress2\">1251 AVENUE OF
-        THE AMERICAS C3</str>\n    <str name=\"corrAddress3\">NEW YORK, NY 10020-1105</str>\n
-        \   <date name=\"patAssignorEarliestExDate\">2006-09-14T04:00:00Z</date>\n
-        \   <arr name=\"patAssignorName\">\n      <str>REALTIME DATA COMPRESSION SYSTEMS,
-        INC.</str>\n    </arr>\n    <arr name=\"patAssignorExDate\">\n      <date>2006-09-14T04:00:00Z</date>\n
-        \   </arr>\n    <arr name=\"patAssignorDateAck\">\n      <str>0001-01-01T00:00:00Z</str>\n
-        \   </arr>\n    <arr name=\"patAssigneeName\">\n      <str>REALTIME DATA LLC</str>\n
-        \   </arr>\n    <arr name=\"patAssigneeAddress1\">\n      <str>15 WEST 36TH
-        STREET</str>\n    </arr>\n    <arr name=\"patAssigneeAddress2\">\n      <str>NULL</str>\n
-        \   </arr>\n    <arr name=\"patAssigneeCity\">\n      <str>NEW YORK</str>\n
-        \   </arr>\n    <arr name=\"patAssigneeState\">\n      <str>NEW YORK</str>\n
-        \   </arr>\n    <arr name=\"patAssigneeCountryName\">\n      <str>NULL</str>\n
-        \   </arr>\n    <arr name=\"patAssigneePostcode\">\n      <str>10018</str>\n
-        \   </arr>\n    <arr name=\"inventionTitle\">\n      <str>SYSTEM AND METHODS
-        FOR ACCELERATED DATA STORAGE AND RETRIEVAL</str>\n      <str>SYSTEM AND METHODS
-        FOR ACCELERATED DATA STORAGE AND RETRIEVAL</str>\n      <str>CONTENT INDEPENDENT
-        DATA COMPRESSION METHOD AND SYSTEM</str>\n      <str>Content independent data
-        compression method and system</str>\n      <str>SYSTEM AND METHODS FOR ACCELERATED
-        DATA STORAGE AND RETRIEVAL</str>\n    </arr>\n    <arr name=\"inventionTitleLang\">\n
-        \     <str>en</str>\n      <str>en</str>\n      <str>en</str>\n      <str>en</str>\n
-        \     <str>en</str>\n    </arr>\n    <arr name=\"applNum\">\n      <str>10628795</str>\n
-        \     <str>11400674</str>\n      <str>09210491</str>\n      <str>09705446</str>\n
-        \     <str>09266394</str>\n    </arr>\n    <arr name=\"filingDate\">\n      <date>2003-07-28T04:00:00Z</date>\n
-        \     <date>2006-04-08T04:00:00Z</date>\n      <date>1998-12-11T04:00:00Z</date>\n
-        \     <date>2000-11-03T04:00:00Z</date>\n      <date>1999-03-11T04:00:00Z</date>\n
-        \   </arr>\n    <arr name=\"intlPublDate\">\n      <date>0001-01-01T00:00:00Z</date>\n
-        \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
-        \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
-        \   </arr>\n    <arr name=\"intlRegNum\">\n      <str>NULL</str>\n      <str>NULL</str>\n
-        \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n    </arr>\n
-        \   <arr name=\"inventors\">\n      <str>James J. Fallon</str>\n      <str>James
-        J. Fallon</str>\n      <str>JAMES J. FALLON</str>\n      <str>James J. Fallon</str>\n
-        \     <str>JAMES J. FALLON</str>\n    </arr>\n    <arr name=\"issueDate\">\n
-        \     <date>2006-10-31T04:00:00Z</date>\n      <date>2008-01-22T04:00:00Z</date>\n
-        \     <date>2001-02-27T04:00:00Z</date>\n      <date>2001-10-30T04:00:00Z</date>\n
-        \     <date>2003-07-29T04:00:00Z</date>\n    </arr>\n    <arr name=\"patNum\">\n
-        \     <str>7130913</str>\n      <str>7321937</str>\n      <str>6195024</str>\n
-        \     <str>6309424</str>\n      <str>6601104</str>\n    </arr>\n    <arr name=\"pctNum\">\n
-        \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
-        \     <str>NULL</str>\n    </arr>\n    <arr name=\"publDate\">\n      <date>2004-04-15T04:00:00Z</date>\n
-        \     <date>2006-08-17T04:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
-        \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
-        \   </arr>\n    <arr name=\"publNum\">\n      <str>20040073746</str>\n      <str>20060184687</str>\n
-        \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n    </arr>\n
-        \   <int name=\"patAssignorNameSize\">1</int>\n    <int name=\"patAssignorNameTypeSize\">1</int>\n
-        \   <int name=\"patAssignorExDateSize\">1</int>\n    <int name=\"patAssignorDateAckSize\">1</int>\n
-        \   <int name=\"patAssigneeNameSize\">2</int>\n    <int name=\"patAssigneeNameTypeSize\">0</int>\n
-        \   <int name=\"patAssigneeAddress1Size\">1</int>\n    <int name=\"patAssigneeAddress2Size\">1</int>\n
-        \   <int name=\"patAssigneeCitySize\">1</int>\n    <int name=\"patAssigneeStateSize\">1</int>\n
-        \   <int name=\"patAssigneeCountryNameSize\">1</int>\n    <int name=\"patAssigneePostcodeSize\">1</int>\n
-        \   <int name=\"inventionTitleSize\">5</int>\n    <int name=\"inventionTitleIdSize\">5</int>\n
-        \   <int name=\"inventionTitleLangSize\">5</int>\n    <int name=\"applNumSize\">5</int>\n
-        \   <int name=\"filingDateSize\">5</int>\n    <int name=\"intlPublDateSize\">5</int>\n
-        \   <int name=\"intlRegNumSize\">5</int>\n    <int name=\"inventorsSize\">5</int>\n
-        \   <int name=\"issueDateSize\">5</int>\n    <int name=\"patNumSize\">5</int>\n
-        \   <int name=\"pctNumSize\">5</int>\n    <int name=\"publDateSize\">5</int>\n
-        \   <int name=\"publNumSize\">5</int>\n    <str name=\"inventionTitleFirst\">SYSTEM
-        AND METHODS FOR ACCELERATED DATA STORAGE AND RETRIEVAL</str>\n    <str name=\"inventionTitleLangFirst\">en</str>\n
-        \   <str name=\"applNumFirst\">10628795</str>\n    <date name=\"filingDateFirst\">2003-07-28T04:00:00Z</date>\n
-        \   <date name=\"intlPublDateFirst\">0001-01-01T00:00:00Z</date>\n    <str
-        name=\"intlRegNumFirst\">NULL</str>\n    <str name=\"inventorsFirst\">James
-        J. Fallon</str>\n    <date name=\"issueDateFirst\">2006-10-31T04:00:00Z</date>\n
-        \   <str name=\"patNumFirst\">7130913</str>\n    <str name=\"pctNumFirst\">NULL</str>\n
-        \   <date name=\"publDateFirst\">2004-04-15T04:00:00Z</date>\n    <str name=\"publNumFirst\">20040073746</str>\n
-        \   <str name=\"patAssignorNameFirst\">REALTIME DATA COMPRESSION SYSTEMS,
-        INC.</str>\n    <str name=\"patAssigneeNameFirst\">REALTIME DATA LLC</str>\n
-        \   <arr name=\"patAssigneePostcodeFacet\">\n      <str>10018</str>\n    </arr>\n
-        \   <arr name=\"patAssignorNameFacet\">\n      <str>REALTIME DATA COMPRESSION
-        SYSTEMS, INC.</str>\n    </arr>\n    <str name=\"corrNameFacet\">JEFFREY H.
-        INGERMAN</str>\n    <long name=\"_version_\">1638871081216376832</long>\n
-        \   <arr name=\"patAssigneeNameFacet\">\n      <str>REALTIME DATA LLC</str>\n
-        \   </arr>\n    <arr name=\"patAssigneeCityFacet\">\n      <str>NEW YORK</str>\n
-        \   </arr>\n    <arr name=\"patAssigneeCountryNameFacet\">\n      <str>NULL</str>\n
-        \   </arr>\n    <arr name=\"patAssigneeStateFacet\">\n      <str>NEW YORK</str>\n
-        \   </arr>\n    <str name=\"corrNameString\">JEFFREY H. INGERMAN</str></doc>\n</result>\n<lst
-        name=\"facet_counts\">\n  <lst name=\"facet_queries\">\n    <int name=\"conveyanceText:&quot;ASSIGNMENT
-        OF ASSIGNORS INTEREST&quot;\">0</int>\n    <int name=\"conveyanceText:&quot;SECURITY
-        INTEREST&quot;\">0</int>\n    <int name=\"conveyanceText:&quot;NUNC PRO TUNC
-        ASSIGNMENT&quot;\">1</int>\n    <int name=\"conveyanceText:&quot;RELEASE BY
-        SECURED PARTY&quot;\">0</int>\n    <int name=\"conveyanceText:&quot;MERGER&quot;\">0</int>\n
-        \   <int name=\"conveyanceText:&quot;CHANGE OF NAME&quot;\">0</int>\n    <int
-        name=\"conveyanceText:&quot;MERGER AND CHANGE OF NAME&quot;\">0</int>\n    <int
-        name=\"conveyanceText:&quot;LICENSE&quot;\">0</int>\n    <int name=\"conveyanceText:&quot;LIEN&quot;\">0</int>\n
-        \   <int name=\"conveyanceText:&quot;MORTGAGE&quot;\">0</int>\n    <int name=\"conveyanceText:&quot;OPTION&quot;\">0</int>\n
-        \   <int name=\"conveyanceText:&quot;DECREE OF DISTRIBUTION&quot;\">0</int>\n
-        \   <int name=\"conveyanceText:&quot;LETTERS OF TESTAMENTARY&quot;\">0</int>\n
-        \   <int name=\"conveyanceText:&quot;LETTERS OF ADMINISTRATION&quot;\">0</int>\n
-        \   <int name=\"conveyanceText:&quot;COURT APPOINTMENT&quot;\">0</int>\n    <int
-        name=\"conveyanceText:&quot;CONDITIONAL ASSIGNMENT&quot;\">0</int>\n    <int
-        name=\"conveyanceText:&quot;COURT ORDER&quot;\">0</int>\n  </lst>\n  <lst
-        name=\"facet_fields\">\n    <lst name=\"patAssigneeCityFacet\">\n      <int
-        name=\"NEW YORK\">1</int>\n    </lst>\n    <lst name=\"patAssigneeStateFacet\">\n
-        \     <int name=\"NEW YORK\">1</int>\n    </lst>\n    <lst name=\"patAssigneePostcodeFacet\">\n
-        \     <int name=\"10018\">1</int>\n    </lst>\n    <lst name=\"patAssigneeCountryNameFacet\">\n
-        \     <int name=\"NULL\">1</int>\n    </lst>\n    <lst name=\"patAssigneeNameFacet\">\n
-        \     <int name=\"REALTIME DATA LLC\">1</int>\n    </lst>\n    <lst name=\"corrNameFacet\">\n
-        \     <int name=\"JEFFREY H. INGERMAN\">1</int>\n    </lst>\n    <lst name=\"patAssignorNameFacet\">\n
-        \     <int name=\"REALTIME DATA COMPRESSION SYSTEMS, INC.\">1</int>\n    </lst>\n
-        \   <lst name=\"applNum\">\n      <int name=\"09210491\">1</int>\n      <int
-        name=\"09266394\">1</int>\n      <int name=\"09705446\">1</int>\n      <int
-        name=\"10628795\">1</int>\n      <int name=\"11400674\">1</int>\n    </lst>\n
-        \   <lst name=\"patNum\">\n      <int name=\"6195024\">1</int>\n      <int
-        name=\"6309424\">1</int>\n      <int name=\"6601104\">1</int>\n      <int
-        name=\"7130913\">1</int>\n      <int name=\"7321937\">1</int>\n    </lst>\n
-        \   <lst name=\"publNum\">\n      <int name=\"20040073746\">1</int>\n      <int
-        name=\"20060184687\">1</int>\n      <int name=\"NULL\">1</int>\n    </lst>\n
-        \   <lst name=\"intlRegNum\">\n      <int name=\"NULL\">1</int>\n    </lst>\n
-        \ </lst>\n  <lst name=\"facet_ranges\">\n    <lst name=\"patAssignorEarliestExDate\">\n
-        \     <lst name=\"counts\">\n        <int name=\"2006-01-01T00:00:00Z\">1</int>\n
-        \     </lst>\n      <str name=\"gap\">+1YEAR</str>\n      <int name=\"before\">0</int>\n
-        \     <date name=\"start\">1897-01-01T00:00:00Z</date>\n      <date name=\"end\">2023-01-01T00:00:00Z</date>\n
-        \   </lst>\n  </lst>\n  <lst name=\"facet_intervals\"/>\n  <lst name=\"facet_heatmaps\"/>\n</lst>\n<lst
-        name=\"highlighting\">\n  <lst name=\"18247-405\">\n    <arr name=\"frameNo\"/>\n
-        \   <arr name=\"patAssigneeCity\"/>\n    <arr name=\"pctNum\"/>\n    <arr
-        name=\"patAssigneePostcode\"/>\n    <arr name=\"filingDate\"/>\n    <arr name=\"conveyanceText\"/>\n
-        \   <arr name=\"patNum\"/>\n    <arr name=\"patAssignorName\"/>\n    <arr
-        name=\"corrAddress1\"/>\n    <arr name=\"corrAddress2\"/>\n    <arr name=\"corrAddress3\"/>\n
-        \   <arr name=\"corrName\"/>\n    <arr name=\"applNum\"/>\n    <arr name=\"inventionTitle\"/>\n
-        \   <arr name=\"publNum\"/>\n    <arr name=\"patAssigneeAddress\"/>\n    <arr
-        name=\"intlRegNum\"/>\n    <arr name=\"publDate\"/>\n    <arr name=\"patAssigneeCountryName\"/>\n
-        \   <arr name=\"intlPublDate\"/>\n    <arr name=\"id\"/>\n    <arr name=\"patAssigneeName\"/>\n
-        \   <arr name=\"issueDate\"/>\n    <arr name=\"reelNo\"/>\n  </lst>\n</lst>\n</response>\n"
+    content: "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<response>\n\n<lst name=\"responseHeader\">\n
+      \ <bool name=\"zkConnected\">true</bool>\n  <int name=\"status\">0</int>\n  <int
+      name=\"QTime\">125</int>\n  <lst name=\"params\">\n    <str name=\"q\">*:*</str>\n
+      \   <str name=\"qt\">/apisearch</str>\n    <str name=\"start\">0</str>\n    <str
+      name=\"sort\">patAssignorEarliestExDate desc</str>\n    <str name=\"fq\">id:18247-405</str>\n
+      \   <str name=\"rows\">20</str>\n    <str name=\"wt\">javabin</str>\n    <str
+      name=\"version\">2</str>\n  </lst>\n</lst>\n<result name=\"response\" numFound=\"1\"
+      start=\"0\">\n  <doc>\n    <str name=\"id\">18247-405</str>\n    <str name=\"displayId\">018247-0405</str>\n
+      \   <str name=\"dtdVersion\">1.0</str>\n    <str name=\"dateProduced\">20140916</str>\n
+      \   <str name=\"actionKeyCode\">DA</str>\n    <str name=\"transactionDate\">2019-07-11T17:29:13Z</str>\n
+      \   <str name=\"reelNo\">18247</str>\n    <str name=\"frameNo\">405</str>\n
+      \   <date name=\"lastUpdateDate\">2008-01-22T11:00:55Z</date>\n    <str name=\"purgeIndicator\">N</str>\n
+      \   <date name=\"recordedDate\">2006-09-14T04:00:00Z</date>\n    <str name=\"pageCount\">6</str>\n
+      \   <str name=\"conveyanceText\">NUNC PRO TUNC ASSIGNMENT (SEE DOCUMENT FOR
+      DETAILS).</str>\n    <str name=\"assignmentRecordHasImages\">Y</str>\n    <str
+      name=\"attorneyDockNum\">103532-0002</str>\n    <str name=\"corrName\">JEFFREY
+      H. INGERMAN</str>\n    <str name=\"corrAddress1\">FISH &amp; NEAVE IP GROUP,
+      ROPES &amp; GRAY LLP</str>\n    <str name=\"corrAddress2\">1251 AVENUE OF THE
+      AMERICAS C3</str>\n    <str name=\"corrAddress3\">NEW YORK, NY 10020-1105</str>\n
+      \   <date name=\"patAssignorEarliestExDate\">2006-09-14T04:00:00Z</date>\n    <arr
+      name=\"patAssignorName\">\n      <str>REALTIME DATA COMPRESSION SYSTEMS, INC.</str>\n
+      \   </arr>\n    <arr name=\"patAssignorExDate\">\n      <date>2006-09-14T04:00:00Z</date>\n
+      \   </arr>\n    <arr name=\"patAssignorDateAck\">\n      <str>0001-01-01T00:00:00Z</str>\n
+      \   </arr>\n    <arr name=\"patAssigneeName\">\n      <str>REALTIME DATA LLC</str>\n
+      \   </arr>\n    <arr name=\"patAssigneeAddress1\">\n      <str>15 WEST 36TH
+      STREET</str>\n    </arr>\n    <arr name=\"patAssigneeAddress2\">\n      <str>NULL</str>\n
+      \   </arr>\n    <arr name=\"patAssigneeCity\">\n      <str>NEW YORK</str>\n
+      \   </arr>\n    <arr name=\"patAssigneeState\">\n      <str>NEW YORK</str>\n
+      \   </arr>\n    <arr name=\"patAssigneeCountryName\">\n      <str>NULL</str>\n
+      \   </arr>\n    <arr name=\"patAssigneePostcode\">\n      <str>10018</str>\n
+      \   </arr>\n    <arr name=\"inventionTitle\">\n      <str>SYSTEM AND METHODS
+      FOR ACCELERATED DATA STORAGE AND RETRIEVAL</str>\n      <str>SYSTEM AND METHODS
+      FOR ACCELERATED DATA STORAGE AND RETRIEVAL</str>\n      <str>CONTENT INDEPENDENT
+      DATA COMPRESSION METHOD AND SYSTEM</str>\n      <str>Content independent data
+      compression method and system</str>\n      <str>SYSTEM AND METHODS FOR ACCELERATED
+      DATA STORAGE AND RETRIEVAL</str>\n    </arr>\n    <arr name=\"inventionTitleLang\">\n
+      \     <str>en</str>\n      <str>en</str>\n      <str>en</str>\n      <str>en</str>\n
+      \     <str>en</str>\n    </arr>\n    <arr name=\"applNum\">\n      <str>10628795</str>\n
+      \     <str>11400674</str>\n      <str>09210491</str>\n      <str>09705446</str>\n
+      \     <str>09266394</str>\n    </arr>\n    <arr name=\"filingDate\">\n      <date>2003-07-28T04:00:00Z</date>\n
+      \     <date>2006-04-08T04:00:00Z</date>\n      <date>1998-12-11T04:00:00Z</date>\n
+      \     <date>2000-11-03T04:00:00Z</date>\n      <date>1999-03-11T04:00:00Z</date>\n
+      \   </arr>\n    <arr name=\"intlPublDate\">\n      <date>0001-01-01T00:00:00Z</date>\n
+      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
+      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
+      \   </arr>\n    <arr name=\"intlRegNum\">\n      <str>NULL</str>\n      <str>NULL</str>\n
+      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n    </arr>\n
+      \   <arr name=\"inventors\">\n      <str>James J. Fallon</str>\n      <str>James
+      J. Fallon</str>\n      <str>JAMES J. FALLON</str>\n      <str>James J. Fallon</str>\n
+      \     <str>JAMES J. FALLON</str>\n    </arr>\n    <arr name=\"issueDate\">\n
+      \     <date>2006-10-31T04:00:00Z</date>\n      <date>2008-01-22T04:00:00Z</date>\n
+      \     <date>2001-02-27T04:00:00Z</date>\n      <date>2001-10-30T04:00:00Z</date>\n
+      \     <date>2003-07-29T04:00:00Z</date>\n    </arr>\n    <arr name=\"patNum\">\n
+      \     <str>7130913</str>\n      <str>7321937</str>\n      <str>6195024</str>\n
+      \     <str>6309424</str>\n      <str>6601104</str>\n    </arr>\n    <arr name=\"pctNum\">\n
+      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
+      \     <str>NULL</str>\n    </arr>\n    <arr name=\"publDate\">\n      <date>2004-04-15T04:00:00Z</date>\n
+      \     <date>2006-08-17T04:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
+      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
+      \   </arr>\n    <arr name=\"publNum\">\n      <str>20040073746</str>\n      <str>20060184687</str>\n
+      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n    </arr>\n
+      \   <int name=\"patAssignorNameSize\">1</int>\n    <int name=\"patAssignorNameTypeSize\">1</int>\n
+      \   <int name=\"patAssignorExDateSize\">1</int>\n    <int name=\"patAssignorDateAckSize\">1</int>\n
+      \   <int name=\"patAssigneeNameSize\">2</int>\n    <int name=\"patAssigneeNameTypeSize\">0</int>\n
+      \   <int name=\"patAssigneeAddress1Size\">1</int>\n    <int name=\"patAssigneeAddress2Size\">1</int>\n
+      \   <int name=\"patAssigneeCitySize\">1</int>\n    <int name=\"patAssigneeStateSize\">1</int>\n
+      \   <int name=\"patAssigneeCountryNameSize\">1</int>\n    <int name=\"patAssigneePostcodeSize\">1</int>\n
+      \   <int name=\"inventionTitleSize\">5</int>\n    <int name=\"inventionTitleIdSize\">5</int>\n
+      \   <int name=\"inventionTitleLangSize\">5</int>\n    <int name=\"applNumSize\">5</int>\n
+      \   <int name=\"filingDateSize\">5</int>\n    <int name=\"intlPublDateSize\">5</int>\n
+      \   <int name=\"intlRegNumSize\">5</int>\n    <int name=\"inventorsSize\">5</int>\n
+      \   <int name=\"issueDateSize\">5</int>\n    <int name=\"patNumSize\">5</int>\n
+      \   <int name=\"pctNumSize\">5</int>\n    <int name=\"publDateSize\">5</int>\n
+      \   <int name=\"publNumSize\">5</int>\n    <str name=\"inventionTitleFirst\">SYSTEM
+      AND METHODS FOR ACCELERATED DATA STORAGE AND RETRIEVAL</str>\n    <str name=\"inventionTitleLangFirst\">en</str>\n
+      \   <str name=\"applNumFirst\">10628795</str>\n    <date name=\"filingDateFirst\">2003-07-28T04:00:00Z</date>\n
+      \   <date name=\"intlPublDateFirst\">0001-01-01T00:00:00Z</date>\n    <str name=\"intlRegNumFirst\">NULL</str>\n
+      \   <str name=\"inventorsFirst\">James J. Fallon</str>\n    <date name=\"issueDateFirst\">2006-10-31T04:00:00Z</date>\n
+      \   <str name=\"patNumFirst\">7130913</str>\n    <str name=\"pctNumFirst\">NULL</str>\n
+      \   <date name=\"publDateFirst\">2004-04-15T04:00:00Z</date>\n    <str name=\"publNumFirst\">20040073746</str>\n
+      \   <str name=\"patAssignorNameFirst\">REALTIME DATA COMPRESSION SYSTEMS, INC.</str>\n
+      \   <str name=\"patAssigneeNameFirst\">REALTIME DATA LLC</str>\n    <arr name=\"patAssigneePostcodeFacet\">\n
+      \     <str>10018</str>\n    </arr>\n    <arr name=\"patAssignorNameFacet\">\n
+      \     <str>REALTIME DATA COMPRESSION SYSTEMS, INC.</str>\n    </arr>\n    <str
+      name=\"corrNameFacet\">JEFFREY H. INGERMAN</str>\n    <long name=\"_version_\">1638871081216376832</long>\n
+      \   <arr name=\"patAssigneeNameFacet\">\n      <str>REALTIME DATA LLC</str>\n
+      \   </arr>\n    <arr name=\"patAssigneeCityFacet\">\n      <str>NEW YORK</str>\n
+      \   </arr>\n    <arr name=\"patAssigneeCountryNameFacet\">\n      <str>NULL</str>\n
+      \   </arr>\n    <arr name=\"patAssigneeStateFacet\">\n      <str>NEW YORK</str>\n
+      \   </arr>\n    <str name=\"corrNameString\">JEFFREY H. INGERMAN</str></doc>\n</result>\n<lst
+      name=\"facet_counts\">\n  <lst name=\"facet_queries\">\n    <int name=\"conveyanceText:&quot;ASSIGNMENT
+      OF ASSIGNORS INTEREST&quot;\">0</int>\n    <int name=\"conveyanceText:&quot;SECURITY
+      INTEREST&quot;\">0</int>\n    <int name=\"conveyanceText:&quot;NUNC PRO TUNC
+      ASSIGNMENT&quot;\">1</int>\n    <int name=\"conveyanceText:&quot;RELEASE BY
+      SECURED PARTY&quot;\">0</int>\n    <int name=\"conveyanceText:&quot;MERGER&quot;\">0</int>\n
+      \   <int name=\"conveyanceText:&quot;CHANGE OF NAME&quot;\">0</int>\n    <int
+      name=\"conveyanceText:&quot;MERGER AND CHANGE OF NAME&quot;\">0</int>\n    <int
+      name=\"conveyanceText:&quot;LICENSE&quot;\">0</int>\n    <int name=\"conveyanceText:&quot;LIEN&quot;\">0</int>\n
+      \   <int name=\"conveyanceText:&quot;MORTGAGE&quot;\">0</int>\n    <int name=\"conveyanceText:&quot;OPTION&quot;\">0</int>\n
+      \   <int name=\"conveyanceText:&quot;DECREE OF DISTRIBUTION&quot;\">0</int>\n
+      \   <int name=\"conveyanceText:&quot;LETTERS OF TESTAMENTARY&quot;\">0</int>\n
+      \   <int name=\"conveyanceText:&quot;LETTERS OF ADMINISTRATION&quot;\">0</int>\n
+      \   <int name=\"conveyanceText:&quot;COURT APPOINTMENT&quot;\">0</int>\n    <int
+      name=\"conveyanceText:&quot;CONDITIONAL ASSIGNMENT&quot;\">0</int>\n    <int
+      name=\"conveyanceText:&quot;COURT ORDER&quot;\">0</int>\n  </lst>\n  <lst name=\"facet_fields\">\n
+      \   <lst name=\"patAssigneeCityFacet\">\n      <int name=\"NEW YORK\">1</int>\n
+      \   </lst>\n    <lst name=\"patAssigneeStateFacet\">\n      <int name=\"NEW
+      YORK\">1</int>\n    </lst>\n    <lst name=\"patAssigneePostcodeFacet\">\n      <int
+      name=\"10018\">1</int>\n    </lst>\n    <lst name=\"patAssigneeCountryNameFacet\">\n
+      \     <int name=\"NULL\">1</int>\n    </lst>\n    <lst name=\"patAssigneeNameFacet\">\n
+      \     <int name=\"REALTIME DATA LLC\">1</int>\n    </lst>\n    <lst name=\"corrNameFacet\">\n
+      \     <int name=\"JEFFREY H. INGERMAN\">1</int>\n    </lst>\n    <lst name=\"patAssignorNameFacet\">\n
+      \     <int name=\"REALTIME DATA COMPRESSION SYSTEMS, INC.\">1</int>\n    </lst>\n
+      \   <lst name=\"applNum\">\n      <int name=\"09210491\">1</int>\n      <int
+      name=\"09266394\">1</int>\n      <int name=\"09705446\">1</int>\n      <int
+      name=\"10628795\">1</int>\n      <int name=\"11400674\">1</int>\n    </lst>\n
+      \   <lst name=\"patNum\">\n      <int name=\"6195024\">1</int>\n      <int name=\"6309424\">1</int>\n
+      \     <int name=\"6601104\">1</int>\n      <int name=\"7130913\">1</int>\n      <int
+      name=\"7321937\">1</int>\n    </lst>\n    <lst name=\"publNum\">\n      <int
+      name=\"20040073746\">1</int>\n      <int name=\"20060184687\">1</int>\n      <int
+      name=\"NULL\">1</int>\n    </lst>\n    <lst name=\"intlRegNum\">\n      <int
+      name=\"NULL\">1</int>\n    </lst>\n  </lst>\n  <lst name=\"facet_ranges\">\n
+      \   <lst name=\"patAssignorEarliestExDate\">\n      <lst name=\"counts\">\n
+      \       <int name=\"2006-01-01T00:00:00Z\">1</int>\n      </lst>\n      <str
+      name=\"gap\">+1YEAR</str>\n      <int name=\"before\">0</int>\n      <date name=\"start\">1898-01-01T00:00:00Z</date>\n
+      \     <date name=\"end\">2024-01-01T00:00:00Z</date>\n    </lst>\n  </lst>\n
+      \ <lst name=\"facet_intervals\"/>\n  <lst name=\"facet_heatmaps\"/>\n</lst>\n<lst
+      name=\"highlighting\">\n  <lst name=\"18247-405\">\n    <arr name=\"frameNo\"/>\n
+      \   <arr name=\"patAssigneeCity\"/>\n    <arr name=\"pctNum\"/>\n    <arr name=\"patAssigneePostcode\"/>\n
+      \   <arr name=\"filingDate\"/>\n    <arr name=\"conveyanceText\"/>\n    <arr
+      name=\"patNum\"/>\n    <arr name=\"patAssignorName\"/>\n    <arr name=\"corrAddress1\"/>\n
+      \   <arr name=\"corrAddress2\"/>\n    <arr name=\"corrAddress3\"/>\n    <arr
+      name=\"corrName\"/>\n    <arr name=\"applNum\"/>\n    <arr name=\"inventionTitle\"/>\n
+      \   <arr name=\"publNum\"/>\n    <arr name=\"patAssigneeAddress\"/>\n    <arr
+      name=\"intlRegNum\"/>\n    <arr name=\"publDate\"/>\n    <arr name=\"patAssigneeCountryName\"/>\n
+      \   <arr name=\"intlPublDate\"/>\n    <arr name=\"id\"/>\n    <arr name=\"patAssigneeName\"/>\n
+      \   <arr name=\"issueDate\"/>\n    <arr name=\"reelNo\"/>\n  </lst>\n</lst>\n</response>\n"
     headers:
       Connection:
       - keep-alive
       Content-Type:
       - application/xml
       Date:
-      - Tue, 16 Aug 2022 02:12:20 GMT
+      - Mon, 30 Oct 2023 15:35:37 GMT
       Server:
       - Apache-Coyote/1.1
       Strict-Transport-Security:
@@ -172,170 +171,168 @@ interactions:
       - DENY
       X-XSS-Protection:
       - 1; mode=block
-    status:
-      code: 200
-      message: OK
+    http_version: HTTP/1.1
+    status_code: 200
 - request:
-    body: null
+    body: ''
     headers:
-      Accept:
+      accept:
       - application/xml
-      Accept-Encoding:
+      accept-encoding:
       - gzip, deflate
-      Connection:
+      connection:
       - keep-alive
-      User-Agent:
-      - Python Patent Clientbot/3.0.3 (parkerhancock@users.noreply.github.com)
+      host:
+      - assignment-api.uspto.gov
+      user-agent:
+      - python-httpx/0.24.1
     method: GET
-    uri: https://assignment-api.uspto.gov/patent/lookup?filter=ReelFrame&query=18247-405&rows=20&start=0&sort=&facet=False
+    uri: https://assignment-api.uspto.gov/patent/lookup?filter=ReelFrame&query=18247-405&rows=20&start=0&sort=&facet=false
   response:
-    body:
-      string: "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<response>\n\n<lst name=\"responseHeader\">\n
-        \ <bool name=\"zkConnected\">true</bool>\n  <int name=\"status\">0</int>\n
-        \ <int name=\"QTime\">88</int>\n  <lst name=\"params\">\n    <str name=\"q\">*:*</str>\n
-        \   <str name=\"qt\">/apisearch</str>\n    <str name=\"start\">0</str>\n    <str
-        name=\"sort\">patAssignorEarliestExDate desc</str>\n    <str name=\"fq\">id:18247-405</str>\n
-        \   <str name=\"rows\">20</str>\n    <str name=\"wt\">javabin</str>\n    <str
-        name=\"version\">2</str>\n  </lst>\n</lst>\n<result name=\"response\" numFound=\"1\"
-        start=\"0\">\n  <doc>\n    <str name=\"id\">18247-405</str>\n    <str name=\"displayId\">018247-0405</str>\n
-        \   <str name=\"dtdVersion\">1.0</str>\n    <str name=\"dateProduced\">20140916</str>\n
-        \   <str name=\"actionKeyCode\">DA</str>\n    <str name=\"transactionDate\">2019-07-11T17:29:13Z</str>\n
-        \   <str name=\"reelNo\">18247</str>\n    <str name=\"frameNo\">405</str>\n
-        \   <date name=\"lastUpdateDate\">2008-01-22T11:00:55Z</date>\n    <str name=\"purgeIndicator\">N</str>\n
-        \   <date name=\"recordedDate\">2006-09-14T04:00:00Z</date>\n    <str name=\"pageCount\">6</str>\n
-        \   <str name=\"conveyanceText\">NUNC PRO TUNC ASSIGNMENT (SEE DOCUMENT FOR
-        DETAILS).</str>\n    <str name=\"assignmentRecordHasImages\">Y</str>\n    <str
-        name=\"attorneyDockNum\">103532-0002</str>\n    <str name=\"corrName\">JEFFREY
-        H. INGERMAN</str>\n    <str name=\"corrAddress1\">FISH &amp; NEAVE IP GROUP,
-        ROPES &amp; GRAY LLP</str>\n    <str name=\"corrAddress2\">1251 AVENUE OF
-        THE AMERICAS C3</str>\n    <str name=\"corrAddress3\">NEW YORK, NY 10020-1105</str>\n
-        \   <date name=\"patAssignorEarliestExDate\">2006-09-14T04:00:00Z</date>\n
-        \   <arr name=\"patAssignorName\">\n      <str>REALTIME DATA COMPRESSION SYSTEMS,
-        INC.</str>\n    </arr>\n    <arr name=\"patAssignorExDate\">\n      <date>2006-09-14T04:00:00Z</date>\n
-        \   </arr>\n    <arr name=\"patAssignorDateAck\">\n      <str>0001-01-01T00:00:00Z</str>\n
-        \   </arr>\n    <arr name=\"patAssigneeName\">\n      <str>REALTIME DATA LLC</str>\n
-        \   </arr>\n    <arr name=\"patAssigneeAddress1\">\n      <str>15 WEST 36TH
-        STREET</str>\n    </arr>\n    <arr name=\"patAssigneeAddress2\">\n      <str>NULL</str>\n
-        \   </arr>\n    <arr name=\"patAssigneeCity\">\n      <str>NEW YORK</str>\n
-        \   </arr>\n    <arr name=\"patAssigneeState\">\n      <str>NEW YORK</str>\n
-        \   </arr>\n    <arr name=\"patAssigneeCountryName\">\n      <str>NULL</str>\n
-        \   </arr>\n    <arr name=\"patAssigneePostcode\">\n      <str>10018</str>\n
-        \   </arr>\n    <arr name=\"inventionTitle\">\n      <str>SYSTEM AND METHODS
-        FOR ACCELERATED DATA STORAGE AND RETRIEVAL</str>\n      <str>SYSTEM AND METHODS
-        FOR ACCELERATED DATA STORAGE AND RETRIEVAL</str>\n      <str>CONTENT INDEPENDENT
-        DATA COMPRESSION METHOD AND SYSTEM</str>\n      <str>Content independent data
-        compression method and system</str>\n      <str>SYSTEM AND METHODS FOR ACCELERATED
-        DATA STORAGE AND RETRIEVAL</str>\n    </arr>\n    <arr name=\"inventionTitleLang\">\n
-        \     <str>en</str>\n      <str>en</str>\n      <str>en</str>\n      <str>en</str>\n
-        \     <str>en</str>\n    </arr>\n    <arr name=\"applNum\">\n      <str>10628795</str>\n
-        \     <str>11400674</str>\n      <str>09210491</str>\n      <str>09705446</str>\n
-        \     <str>09266394</str>\n    </arr>\n    <arr name=\"filingDate\">\n      <date>2003-07-28T04:00:00Z</date>\n
-        \     <date>2006-04-08T04:00:00Z</date>\n      <date>1998-12-11T04:00:00Z</date>\n
-        \     <date>2000-11-03T04:00:00Z</date>\n      <date>1999-03-11T04:00:00Z</date>\n
-        \   </arr>\n    <arr name=\"intlPublDate\">\n      <date>0001-01-01T00:00:00Z</date>\n
-        \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
-        \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
-        \   </arr>\n    <arr name=\"intlRegNum\">\n      <str>NULL</str>\n      <str>NULL</str>\n
-        \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n    </arr>\n
-        \   <arr name=\"inventors\">\n      <str>James J. Fallon</str>\n      <str>James
-        J. Fallon</str>\n      <str>JAMES J. FALLON</str>\n      <str>James J. Fallon</str>\n
-        \     <str>JAMES J. FALLON</str>\n    </arr>\n    <arr name=\"issueDate\">\n
-        \     <date>2006-10-31T04:00:00Z</date>\n      <date>2008-01-22T04:00:00Z</date>\n
-        \     <date>2001-02-27T04:00:00Z</date>\n      <date>2001-10-30T04:00:00Z</date>\n
-        \     <date>2003-07-29T04:00:00Z</date>\n    </arr>\n    <arr name=\"patNum\">\n
-        \     <str>7130913</str>\n      <str>7321937</str>\n      <str>6195024</str>\n
-        \     <str>6309424</str>\n      <str>6601104</str>\n    </arr>\n    <arr name=\"pctNum\">\n
-        \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
-        \     <str>NULL</str>\n    </arr>\n    <arr name=\"publDate\">\n      <date>2004-04-15T04:00:00Z</date>\n
-        \     <date>2006-08-17T04:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
-        \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
-        \   </arr>\n    <arr name=\"publNum\">\n      <str>20040073746</str>\n      <str>20060184687</str>\n
-        \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n    </arr>\n
-        \   <int name=\"patAssignorNameSize\">1</int>\n    <int name=\"patAssignorNameTypeSize\">1</int>\n
-        \   <int name=\"patAssignorExDateSize\">1</int>\n    <int name=\"patAssignorDateAckSize\">1</int>\n
-        \   <int name=\"patAssigneeNameSize\">2</int>\n    <int name=\"patAssigneeNameTypeSize\">0</int>\n
-        \   <int name=\"patAssigneeAddress1Size\">1</int>\n    <int name=\"patAssigneeAddress2Size\">1</int>\n
-        \   <int name=\"patAssigneeCitySize\">1</int>\n    <int name=\"patAssigneeStateSize\">1</int>\n
-        \   <int name=\"patAssigneeCountryNameSize\">1</int>\n    <int name=\"patAssigneePostcodeSize\">1</int>\n
-        \   <int name=\"inventionTitleSize\">5</int>\n    <int name=\"inventionTitleIdSize\">5</int>\n
-        \   <int name=\"inventionTitleLangSize\">5</int>\n    <int name=\"applNumSize\">5</int>\n
-        \   <int name=\"filingDateSize\">5</int>\n    <int name=\"intlPublDateSize\">5</int>\n
-        \   <int name=\"intlRegNumSize\">5</int>\n    <int name=\"inventorsSize\">5</int>\n
-        \   <int name=\"issueDateSize\">5</int>\n    <int name=\"patNumSize\">5</int>\n
-        \   <int name=\"pctNumSize\">5</int>\n    <int name=\"publDateSize\">5</int>\n
-        \   <int name=\"publNumSize\">5</int>\n    <str name=\"inventionTitleFirst\">SYSTEM
-        AND METHODS FOR ACCELERATED DATA STORAGE AND RETRIEVAL</str>\n    <str name=\"inventionTitleLangFirst\">en</str>\n
-        \   <str name=\"applNumFirst\">10628795</str>\n    <date name=\"filingDateFirst\">2003-07-28T04:00:00Z</date>\n
-        \   <date name=\"intlPublDateFirst\">0001-01-01T00:00:00Z</date>\n    <str
-        name=\"intlRegNumFirst\">NULL</str>\n    <str name=\"inventorsFirst\">James
-        J. Fallon</str>\n    <date name=\"issueDateFirst\">2006-10-31T04:00:00Z</date>\n
-        \   <str name=\"patNumFirst\">7130913</str>\n    <str name=\"pctNumFirst\">NULL</str>\n
-        \   <date name=\"publDateFirst\">2004-04-15T04:00:00Z</date>\n    <str name=\"publNumFirst\">20040073746</str>\n
-        \   <str name=\"patAssignorNameFirst\">REALTIME DATA COMPRESSION SYSTEMS,
-        INC.</str>\n    <str name=\"patAssigneeNameFirst\">REALTIME DATA LLC</str>\n
-        \   <arr name=\"patAssigneePostcodeFacet\">\n      <str>10018</str>\n    </arr>\n
-        \   <arr name=\"patAssignorNameFacet\">\n      <str>REALTIME DATA COMPRESSION
-        SYSTEMS, INC.</str>\n    </arr>\n    <str name=\"corrNameFacet\">JEFFREY H.
-        INGERMAN</str>\n    <long name=\"_version_\">1638871081216376832</long>\n
-        \   <arr name=\"patAssigneeNameFacet\">\n      <str>REALTIME DATA LLC</str>\n
-        \   </arr>\n    <arr name=\"patAssigneeCityFacet\">\n      <str>NEW YORK</str>\n
-        \   </arr>\n    <arr name=\"patAssigneeCountryNameFacet\">\n      <str>NULL</str>\n
-        \   </arr>\n    <arr name=\"patAssigneeStateFacet\">\n      <str>NEW YORK</str>\n
-        \   </arr>\n    <str name=\"corrNameString\">JEFFREY H. INGERMAN</str></doc>\n</result>\n<lst
-        name=\"facet_counts\">\n  <lst name=\"facet_queries\">\n    <int name=\"conveyanceText:&quot;ASSIGNMENT
-        OF ASSIGNORS INTEREST&quot;\">0</int>\n    <int name=\"conveyanceText:&quot;SECURITY
-        INTEREST&quot;\">0</int>\n    <int name=\"conveyanceText:&quot;NUNC PRO TUNC
-        ASSIGNMENT&quot;\">1</int>\n    <int name=\"conveyanceText:&quot;RELEASE BY
-        SECURED PARTY&quot;\">0</int>\n    <int name=\"conveyanceText:&quot;MERGER&quot;\">0</int>\n
-        \   <int name=\"conveyanceText:&quot;CHANGE OF NAME&quot;\">0</int>\n    <int
-        name=\"conveyanceText:&quot;MERGER AND CHANGE OF NAME&quot;\">0</int>\n    <int
-        name=\"conveyanceText:&quot;LICENSE&quot;\">0</int>\n    <int name=\"conveyanceText:&quot;LIEN&quot;\">0</int>\n
-        \   <int name=\"conveyanceText:&quot;MORTGAGE&quot;\">0</int>\n    <int name=\"conveyanceText:&quot;OPTION&quot;\">0</int>\n
-        \   <int name=\"conveyanceText:&quot;DECREE OF DISTRIBUTION&quot;\">0</int>\n
-        \   <int name=\"conveyanceText:&quot;LETTERS OF TESTAMENTARY&quot;\">0</int>\n
-        \   <int name=\"conveyanceText:&quot;LETTERS OF ADMINISTRATION&quot;\">0</int>\n
-        \   <int name=\"conveyanceText:&quot;COURT APPOINTMENT&quot;\">0</int>\n    <int
-        name=\"conveyanceText:&quot;CONDITIONAL ASSIGNMENT&quot;\">0</int>\n    <int
-        name=\"conveyanceText:&quot;COURT ORDER&quot;\">0</int>\n  </lst>\n  <lst
-        name=\"facet_fields\">\n    <lst name=\"patAssigneeCityFacet\">\n      <int
-        name=\"NEW YORK\">1</int>\n    </lst>\n    <lst name=\"patAssigneeStateFacet\">\n
-        \     <int name=\"NEW YORK\">1</int>\n    </lst>\n    <lst name=\"patAssigneePostcodeFacet\">\n
-        \     <int name=\"10018\">1</int>\n    </lst>\n    <lst name=\"patAssigneeCountryNameFacet\">\n
-        \     <int name=\"NULL\">1</int>\n    </lst>\n    <lst name=\"patAssigneeNameFacet\">\n
-        \     <int name=\"REALTIME DATA LLC\">1</int>\n    </lst>\n    <lst name=\"corrNameFacet\">\n
-        \     <int name=\"JEFFREY H. INGERMAN\">1</int>\n    </lst>\n    <lst name=\"patAssignorNameFacet\">\n
-        \     <int name=\"REALTIME DATA COMPRESSION SYSTEMS, INC.\">1</int>\n    </lst>\n
-        \   <lst name=\"applNum\">\n      <int name=\"09210491\">1</int>\n      <int
-        name=\"09266394\">1</int>\n      <int name=\"09705446\">1</int>\n      <int
-        name=\"10628795\">1</int>\n      <int name=\"11400674\">1</int>\n    </lst>\n
-        \   <lst name=\"patNum\">\n      <int name=\"6195024\">1</int>\n      <int
-        name=\"6309424\">1</int>\n      <int name=\"6601104\">1</int>\n      <int
-        name=\"7130913\">1</int>\n      <int name=\"7321937\">1</int>\n    </lst>\n
-        \   <lst name=\"publNum\">\n      <int name=\"20040073746\">1</int>\n      <int
-        name=\"20060184687\">1</int>\n      <int name=\"NULL\">1</int>\n    </lst>\n
-        \   <lst name=\"intlRegNum\">\n      <int name=\"NULL\">1</int>\n    </lst>\n
-        \ </lst>\n  <lst name=\"facet_ranges\">\n    <lst name=\"patAssignorEarliestExDate\">\n
-        \     <lst name=\"counts\">\n        <int name=\"2006-01-01T00:00:00Z\">1</int>\n
-        \     </lst>\n      <str name=\"gap\">+1YEAR</str>\n      <int name=\"before\">0</int>\n
-        \     <date name=\"start\">1897-01-01T00:00:00Z</date>\n      <date name=\"end\">2023-01-01T00:00:00Z</date>\n
-        \   </lst>\n  </lst>\n  <lst name=\"facet_intervals\"/>\n  <lst name=\"facet_heatmaps\"/>\n</lst>\n<lst
-        name=\"highlighting\">\n  <lst name=\"18247-405\">\n    <arr name=\"frameNo\"/>\n
-        \   <arr name=\"patAssigneeCity\"/>\n    <arr name=\"pctNum\"/>\n    <arr
-        name=\"patAssigneePostcode\"/>\n    <arr name=\"filingDate\"/>\n    <arr name=\"conveyanceText\"/>\n
-        \   <arr name=\"patNum\"/>\n    <arr name=\"patAssignorName\"/>\n    <arr
-        name=\"corrAddress1\"/>\n    <arr name=\"corrAddress2\"/>\n    <arr name=\"corrAddress3\"/>\n
-        \   <arr name=\"corrName\"/>\n    <arr name=\"applNum\"/>\n    <arr name=\"inventionTitle\"/>\n
-        \   <arr name=\"publNum\"/>\n    <arr name=\"patAssigneeAddress\"/>\n    <arr
-        name=\"intlRegNum\"/>\n    <arr name=\"publDate\"/>\n    <arr name=\"patAssigneeCountryName\"/>\n
-        \   <arr name=\"intlPublDate\"/>\n    <arr name=\"id\"/>\n    <arr name=\"patAssigneeName\"/>\n
-        \   <arr name=\"issueDate\"/>\n    <arr name=\"reelNo\"/>\n  </lst>\n</lst>\n</response>\n"
+    content: "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<response>\n\n<lst name=\"responseHeader\">\n
+      \ <bool name=\"zkConnected\">true</bool>\n  <int name=\"status\">0</int>\n  <int
+      name=\"QTime\">140</int>\n  <lst name=\"params\">\n    <str name=\"q\">*:*</str>\n
+      \   <str name=\"qt\">/apisearch</str>\n    <str name=\"start\">0</str>\n    <str
+      name=\"sort\">patAssignorEarliestExDate desc</str>\n    <str name=\"fq\">id:18247-405</str>\n
+      \   <str name=\"rows\">20</str>\n    <str name=\"wt\">javabin</str>\n    <str
+      name=\"version\">2</str>\n  </lst>\n</lst>\n<result name=\"response\" numFound=\"1\"
+      start=\"0\">\n  <doc>\n    <str name=\"id\">18247-405</str>\n    <str name=\"displayId\">018247-0405</str>\n
+      \   <str name=\"dtdVersion\">1.0</str>\n    <str name=\"dateProduced\">20140916</str>\n
+      \   <str name=\"actionKeyCode\">DA</str>\n    <str name=\"transactionDate\">2019-07-11T17:29:13Z</str>\n
+      \   <str name=\"reelNo\">18247</str>\n    <str name=\"frameNo\">405</str>\n
+      \   <date name=\"lastUpdateDate\">2008-01-22T11:00:55Z</date>\n    <str name=\"purgeIndicator\">N</str>\n
+      \   <date name=\"recordedDate\">2006-09-14T04:00:00Z</date>\n    <str name=\"pageCount\">6</str>\n
+      \   <str name=\"conveyanceText\">NUNC PRO TUNC ASSIGNMENT (SEE DOCUMENT FOR
+      DETAILS).</str>\n    <str name=\"assignmentRecordHasImages\">Y</str>\n    <str
+      name=\"attorneyDockNum\">103532-0002</str>\n    <str name=\"corrName\">JEFFREY
+      H. INGERMAN</str>\n    <str name=\"corrAddress1\">FISH &amp; NEAVE IP GROUP,
+      ROPES &amp; GRAY LLP</str>\n    <str name=\"corrAddress2\">1251 AVENUE OF THE
+      AMERICAS C3</str>\n    <str name=\"corrAddress3\">NEW YORK, NY 10020-1105</str>\n
+      \   <date name=\"patAssignorEarliestExDate\">2006-09-14T04:00:00Z</date>\n    <arr
+      name=\"patAssignorName\">\n      <str>REALTIME DATA COMPRESSION SYSTEMS, INC.</str>\n
+      \   </arr>\n    <arr name=\"patAssignorExDate\">\n      <date>2006-09-14T04:00:00Z</date>\n
+      \   </arr>\n    <arr name=\"patAssignorDateAck\">\n      <str>0001-01-01T00:00:00Z</str>\n
+      \   </arr>\n    <arr name=\"patAssigneeName\">\n      <str>REALTIME DATA LLC</str>\n
+      \   </arr>\n    <arr name=\"patAssigneeAddress1\">\n      <str>15 WEST 36TH
+      STREET</str>\n    </arr>\n    <arr name=\"patAssigneeAddress2\">\n      <str>NULL</str>\n
+      \   </arr>\n    <arr name=\"patAssigneeCity\">\n      <str>NEW YORK</str>\n
+      \   </arr>\n    <arr name=\"patAssigneeState\">\n      <str>NEW YORK</str>\n
+      \   </arr>\n    <arr name=\"patAssigneeCountryName\">\n      <str>NULL</str>\n
+      \   </arr>\n    <arr name=\"patAssigneePostcode\">\n      <str>10018</str>\n
+      \   </arr>\n    <arr name=\"inventionTitle\">\n      <str>SYSTEM AND METHODS
+      FOR ACCELERATED DATA STORAGE AND RETRIEVAL</str>\n      <str>SYSTEM AND METHODS
+      FOR ACCELERATED DATA STORAGE AND RETRIEVAL</str>\n      <str>CONTENT INDEPENDENT
+      DATA COMPRESSION METHOD AND SYSTEM</str>\n      <str>Content independent data
+      compression method and system</str>\n      <str>SYSTEM AND METHODS FOR ACCELERATED
+      DATA STORAGE AND RETRIEVAL</str>\n    </arr>\n    <arr name=\"inventionTitleLang\">\n
+      \     <str>en</str>\n      <str>en</str>\n      <str>en</str>\n      <str>en</str>\n
+      \     <str>en</str>\n    </arr>\n    <arr name=\"applNum\">\n      <str>10628795</str>\n
+      \     <str>11400674</str>\n      <str>09210491</str>\n      <str>09705446</str>\n
+      \     <str>09266394</str>\n    </arr>\n    <arr name=\"filingDate\">\n      <date>2003-07-28T04:00:00Z</date>\n
+      \     <date>2006-04-08T04:00:00Z</date>\n      <date>1998-12-11T04:00:00Z</date>\n
+      \     <date>2000-11-03T04:00:00Z</date>\n      <date>1999-03-11T04:00:00Z</date>\n
+      \   </arr>\n    <arr name=\"intlPublDate\">\n      <date>0001-01-01T00:00:00Z</date>\n
+      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
+      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
+      \   </arr>\n    <arr name=\"intlRegNum\">\n      <str>NULL</str>\n      <str>NULL</str>\n
+      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n    </arr>\n
+      \   <arr name=\"inventors\">\n      <str>James J. Fallon</str>\n      <str>James
+      J. Fallon</str>\n      <str>JAMES J. FALLON</str>\n      <str>James J. Fallon</str>\n
+      \     <str>JAMES J. FALLON</str>\n    </arr>\n    <arr name=\"issueDate\">\n
+      \     <date>2006-10-31T04:00:00Z</date>\n      <date>2008-01-22T04:00:00Z</date>\n
+      \     <date>2001-02-27T04:00:00Z</date>\n      <date>2001-10-30T04:00:00Z</date>\n
+      \     <date>2003-07-29T04:00:00Z</date>\n    </arr>\n    <arr name=\"patNum\">\n
+      \     <str>7130913</str>\n      <str>7321937</str>\n      <str>6195024</str>\n
+      \     <str>6309424</str>\n      <str>6601104</str>\n    </arr>\n    <arr name=\"pctNum\">\n
+      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
+      \     <str>NULL</str>\n    </arr>\n    <arr name=\"publDate\">\n      <date>2004-04-15T04:00:00Z</date>\n
+      \     <date>2006-08-17T04:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
+      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
+      \   </arr>\n    <arr name=\"publNum\">\n      <str>20040073746</str>\n      <str>20060184687</str>\n
+      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n    </arr>\n
+      \   <int name=\"patAssignorNameSize\">1</int>\n    <int name=\"patAssignorNameTypeSize\">1</int>\n
+      \   <int name=\"patAssignorExDateSize\">1</int>\n    <int name=\"patAssignorDateAckSize\">1</int>\n
+      \   <int name=\"patAssigneeNameSize\">2</int>\n    <int name=\"patAssigneeNameTypeSize\">0</int>\n
+      \   <int name=\"patAssigneeAddress1Size\">1</int>\n    <int name=\"patAssigneeAddress2Size\">1</int>\n
+      \   <int name=\"patAssigneeCitySize\">1</int>\n    <int name=\"patAssigneeStateSize\">1</int>\n
+      \   <int name=\"patAssigneeCountryNameSize\">1</int>\n    <int name=\"patAssigneePostcodeSize\">1</int>\n
+      \   <int name=\"inventionTitleSize\">5</int>\n    <int name=\"inventionTitleIdSize\">5</int>\n
+      \   <int name=\"inventionTitleLangSize\">5</int>\n    <int name=\"applNumSize\">5</int>\n
+      \   <int name=\"filingDateSize\">5</int>\n    <int name=\"intlPublDateSize\">5</int>\n
+      \   <int name=\"intlRegNumSize\">5</int>\n    <int name=\"inventorsSize\">5</int>\n
+      \   <int name=\"issueDateSize\">5</int>\n    <int name=\"patNumSize\">5</int>\n
+      \   <int name=\"pctNumSize\">5</int>\n    <int name=\"publDateSize\">5</int>\n
+      \   <int name=\"publNumSize\">5</int>\n    <str name=\"inventionTitleFirst\">SYSTEM
+      AND METHODS FOR ACCELERATED DATA STORAGE AND RETRIEVAL</str>\n    <str name=\"inventionTitleLangFirst\">en</str>\n
+      \   <str name=\"applNumFirst\">10628795</str>\n    <date name=\"filingDateFirst\">2003-07-28T04:00:00Z</date>\n
+      \   <date name=\"intlPublDateFirst\">0001-01-01T00:00:00Z</date>\n    <str name=\"intlRegNumFirst\">NULL</str>\n
+      \   <str name=\"inventorsFirst\">James J. Fallon</str>\n    <date name=\"issueDateFirst\">2006-10-31T04:00:00Z</date>\n
+      \   <str name=\"patNumFirst\">7130913</str>\n    <str name=\"pctNumFirst\">NULL</str>\n
+      \   <date name=\"publDateFirst\">2004-04-15T04:00:00Z</date>\n    <str name=\"publNumFirst\">20040073746</str>\n
+      \   <str name=\"patAssignorNameFirst\">REALTIME DATA COMPRESSION SYSTEMS, INC.</str>\n
+      \   <str name=\"patAssigneeNameFirst\">REALTIME DATA LLC</str>\n    <arr name=\"patAssigneePostcodeFacet\">\n
+      \     <str>10018</str>\n    </arr>\n    <arr name=\"patAssignorNameFacet\">\n
+      \     <str>REALTIME DATA COMPRESSION SYSTEMS, INC.</str>\n    </arr>\n    <str
+      name=\"corrNameFacet\">JEFFREY H. INGERMAN</str>\n    <long name=\"_version_\">1638871081216376832</long>\n
+      \   <arr name=\"patAssigneeNameFacet\">\n      <str>REALTIME DATA LLC</str>\n
+      \   </arr>\n    <arr name=\"patAssigneeCityFacet\">\n      <str>NEW YORK</str>\n
+      \   </arr>\n    <arr name=\"patAssigneeCountryNameFacet\">\n      <str>NULL</str>\n
+      \   </arr>\n    <arr name=\"patAssigneeStateFacet\">\n      <str>NEW YORK</str>\n
+      \   </arr>\n    <str name=\"corrNameString\">JEFFREY H. INGERMAN</str></doc>\n</result>\n<lst
+      name=\"facet_counts\">\n  <lst name=\"facet_queries\">\n    <int name=\"conveyanceText:&quot;ASSIGNMENT
+      OF ASSIGNORS INTEREST&quot;\">0</int>\n    <int name=\"conveyanceText:&quot;SECURITY
+      INTEREST&quot;\">0</int>\n    <int name=\"conveyanceText:&quot;NUNC PRO TUNC
+      ASSIGNMENT&quot;\">1</int>\n    <int name=\"conveyanceText:&quot;RELEASE BY
+      SECURED PARTY&quot;\">0</int>\n    <int name=\"conveyanceText:&quot;MERGER&quot;\">0</int>\n
+      \   <int name=\"conveyanceText:&quot;CHANGE OF NAME&quot;\">0</int>\n    <int
+      name=\"conveyanceText:&quot;MERGER AND CHANGE OF NAME&quot;\">0</int>\n    <int
+      name=\"conveyanceText:&quot;LICENSE&quot;\">0</int>\n    <int name=\"conveyanceText:&quot;LIEN&quot;\">0</int>\n
+      \   <int name=\"conveyanceText:&quot;MORTGAGE&quot;\">0</int>\n    <int name=\"conveyanceText:&quot;OPTION&quot;\">0</int>\n
+      \   <int name=\"conveyanceText:&quot;DECREE OF DISTRIBUTION&quot;\">0</int>\n
+      \   <int name=\"conveyanceText:&quot;LETTERS OF TESTAMENTARY&quot;\">0</int>\n
+      \   <int name=\"conveyanceText:&quot;LETTERS OF ADMINISTRATION&quot;\">0</int>\n
+      \   <int name=\"conveyanceText:&quot;COURT APPOINTMENT&quot;\">0</int>\n    <int
+      name=\"conveyanceText:&quot;CONDITIONAL ASSIGNMENT&quot;\">0</int>\n    <int
+      name=\"conveyanceText:&quot;COURT ORDER&quot;\">0</int>\n  </lst>\n  <lst name=\"facet_fields\">\n
+      \   <lst name=\"patAssigneeCityFacet\">\n      <int name=\"NEW YORK\">1</int>\n
+      \   </lst>\n    <lst name=\"patAssigneeStateFacet\">\n      <int name=\"NEW
+      YORK\">1</int>\n    </lst>\n    <lst name=\"patAssigneePostcodeFacet\">\n      <int
+      name=\"10018\">1</int>\n    </lst>\n    <lst name=\"patAssigneeCountryNameFacet\">\n
+      \     <int name=\"NULL\">1</int>\n    </lst>\n    <lst name=\"patAssigneeNameFacet\">\n
+      \     <int name=\"REALTIME DATA LLC\">1</int>\n    </lst>\n    <lst name=\"corrNameFacet\">\n
+      \     <int name=\"JEFFREY H. INGERMAN\">1</int>\n    </lst>\n    <lst name=\"patAssignorNameFacet\">\n
+      \     <int name=\"REALTIME DATA COMPRESSION SYSTEMS, INC.\">1</int>\n    </lst>\n
+      \   <lst name=\"applNum\">\n      <int name=\"09210491\">1</int>\n      <int
+      name=\"09266394\">1</int>\n      <int name=\"09705446\">1</int>\n      <int
+      name=\"10628795\">1</int>\n      <int name=\"11400674\">1</int>\n    </lst>\n
+      \   <lst name=\"patNum\">\n      <int name=\"6195024\">1</int>\n      <int name=\"6309424\">1</int>\n
+      \     <int name=\"6601104\">1</int>\n      <int name=\"7130913\">1</int>\n      <int
+      name=\"7321937\">1</int>\n    </lst>\n    <lst name=\"publNum\">\n      <int
+      name=\"20040073746\">1</int>\n      <int name=\"20060184687\">1</int>\n      <int
+      name=\"NULL\">1</int>\n    </lst>\n    <lst name=\"intlRegNum\">\n      <int
+      name=\"NULL\">1</int>\n    </lst>\n  </lst>\n  <lst name=\"facet_ranges\">\n
+      \   <lst name=\"patAssignorEarliestExDate\">\n      <lst name=\"counts\">\n
+      \       <int name=\"2006-01-01T00:00:00Z\">1</int>\n      </lst>\n      <str
+      name=\"gap\">+1YEAR</str>\n      <int name=\"before\">0</int>\n      <date name=\"start\">1898-01-01T00:00:00Z</date>\n
+      \     <date name=\"end\">2024-01-01T00:00:00Z</date>\n    </lst>\n  </lst>\n
+      \ <lst name=\"facet_intervals\"/>\n  <lst name=\"facet_heatmaps\"/>\n</lst>\n<lst
+      name=\"highlighting\">\n  <lst name=\"18247-405\">\n    <arr name=\"frameNo\"/>\n
+      \   <arr name=\"patAssigneeCity\"/>\n    <arr name=\"pctNum\"/>\n    <arr name=\"patAssigneePostcode\"/>\n
+      \   <arr name=\"filingDate\"/>\n    <arr name=\"conveyanceText\"/>\n    <arr
+      name=\"patNum\"/>\n    <arr name=\"patAssignorName\"/>\n    <arr name=\"corrAddress1\"/>\n
+      \   <arr name=\"corrAddress2\"/>\n    <arr name=\"corrAddress3\"/>\n    <arr
+      name=\"corrName\"/>\n    <arr name=\"applNum\"/>\n    <arr name=\"inventionTitle\"/>\n
+      \   <arr name=\"publNum\"/>\n    <arr name=\"patAssigneeAddress\"/>\n    <arr
+      name=\"intlRegNum\"/>\n    <arr name=\"publDate\"/>\n    <arr name=\"patAssigneeCountryName\"/>\n
+      \   <arr name=\"intlPublDate\"/>\n    <arr name=\"id\"/>\n    <arr name=\"patAssigneeName\"/>\n
+      \   <arr name=\"issueDate\"/>\n    <arr name=\"reelNo\"/>\n  </lst>\n</lst>\n</response>\n"
     headers:
       Connection:
       - keep-alive
       Content-Type:
       - application/xml
       Date:
-      - Tue, 16 Aug 2022 02:12:20 GMT
+      - Mon, 30 Oct 2023 15:35:37 GMT
       Server:
       - Apache-Coyote/1.1
       Strict-Transport-Security:
@@ -348,7 +345,354 @@ interactions:
       - DENY
       X-XSS-Protection:
       - 1; mode=block
-    status:
-      code: 200
-      message: OK
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: ''
+    headers:
+      accept:
+      - application/xml
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - assignment-api.uspto.gov
+      user-agent:
+      - python-httpx/0.24.1
+    method: GET
+    uri: https://assignment-api.uspto.gov/patent/lookup?filter=ReelFrame&query=18247-405&rows=8&start=0&sort=ExecutionDate%2Bdesc&facet=false
+  response:
+    content: "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<response>\n\n<lst name=\"responseHeader\">\n
+      \ <bool name=\"zkConnected\">true</bool>\n  <int name=\"status\">0</int>\n  <int
+      name=\"QTime\">125</int>\n  <lst name=\"params\">\n    <str name=\"q\">*:*</str>\n
+      \   <str name=\"qt\">/apisearch</str>\n    <str name=\"start\">0</str>\n    <str
+      name=\"sort\">patAssignorEarliestExDate desc</str>\n    <str name=\"fq\">id:18247-405</str>\n
+      \   <str name=\"rows\">8</str>\n    <str name=\"wt\">javabin</str>\n    <str
+      name=\"version\">2</str>\n  </lst>\n</lst>\n<result name=\"response\" numFound=\"1\"
+      start=\"0\">\n  <doc>\n    <str name=\"id\">18247-405</str>\n    <str name=\"displayId\">018247-0405</str>\n
+      \   <str name=\"dtdVersion\">1.0</str>\n    <str name=\"dateProduced\">20140916</str>\n
+      \   <str name=\"actionKeyCode\">DA</str>\n    <str name=\"transactionDate\">2019-07-11T17:29:13Z</str>\n
+      \   <str name=\"reelNo\">18247</str>\n    <str name=\"frameNo\">405</str>\n
+      \   <date name=\"lastUpdateDate\">2008-01-22T11:00:55Z</date>\n    <str name=\"purgeIndicator\">N</str>\n
+      \   <date name=\"recordedDate\">2006-09-14T04:00:00Z</date>\n    <str name=\"pageCount\">6</str>\n
+      \   <str name=\"conveyanceText\">NUNC PRO TUNC ASSIGNMENT (SEE DOCUMENT FOR
+      DETAILS).</str>\n    <str name=\"assignmentRecordHasImages\">Y</str>\n    <str
+      name=\"attorneyDockNum\">103532-0002</str>\n    <str name=\"corrName\">JEFFREY
+      H. INGERMAN</str>\n    <str name=\"corrAddress1\">FISH &amp; NEAVE IP GROUP,
+      ROPES &amp; GRAY LLP</str>\n    <str name=\"corrAddress2\">1251 AVENUE OF THE
+      AMERICAS C3</str>\n    <str name=\"corrAddress3\">NEW YORK, NY 10020-1105</str>\n
+      \   <date name=\"patAssignorEarliestExDate\">2006-09-14T04:00:00Z</date>\n    <arr
+      name=\"patAssignorName\">\n      <str>REALTIME DATA COMPRESSION SYSTEMS, INC.</str>\n
+      \   </arr>\n    <arr name=\"patAssignorExDate\">\n      <date>2006-09-14T04:00:00Z</date>\n
+      \   </arr>\n    <arr name=\"patAssignorDateAck\">\n      <str>0001-01-01T00:00:00Z</str>\n
+      \   </arr>\n    <arr name=\"patAssigneeName\">\n      <str>REALTIME DATA LLC</str>\n
+      \   </arr>\n    <arr name=\"patAssigneeAddress1\">\n      <str>15 WEST 36TH
+      STREET</str>\n    </arr>\n    <arr name=\"patAssigneeAddress2\">\n      <str>NULL</str>\n
+      \   </arr>\n    <arr name=\"patAssigneeCity\">\n      <str>NEW YORK</str>\n
+      \   </arr>\n    <arr name=\"patAssigneeState\">\n      <str>NEW YORK</str>\n
+      \   </arr>\n    <arr name=\"patAssigneeCountryName\">\n      <str>NULL</str>\n
+      \   </arr>\n    <arr name=\"patAssigneePostcode\">\n      <str>10018</str>\n
+      \   </arr>\n    <arr name=\"inventionTitle\">\n      <str>SYSTEM AND METHODS
+      FOR ACCELERATED DATA STORAGE AND RETRIEVAL</str>\n      <str>SYSTEM AND METHODS
+      FOR ACCELERATED DATA STORAGE AND RETRIEVAL</str>\n      <str>CONTENT INDEPENDENT
+      DATA COMPRESSION METHOD AND SYSTEM</str>\n      <str>Content independent data
+      compression method and system</str>\n      <str>SYSTEM AND METHODS FOR ACCELERATED
+      DATA STORAGE AND RETRIEVAL</str>\n    </arr>\n    <arr name=\"inventionTitleLang\">\n
+      \     <str>en</str>\n      <str>en</str>\n      <str>en</str>\n      <str>en</str>\n
+      \     <str>en</str>\n    </arr>\n    <arr name=\"applNum\">\n      <str>10628795</str>\n
+      \     <str>11400674</str>\n      <str>09210491</str>\n      <str>09705446</str>\n
+      \     <str>09266394</str>\n    </arr>\n    <arr name=\"filingDate\">\n      <date>2003-07-28T04:00:00Z</date>\n
+      \     <date>2006-04-08T04:00:00Z</date>\n      <date>1998-12-11T04:00:00Z</date>\n
+      \     <date>2000-11-03T04:00:00Z</date>\n      <date>1999-03-11T04:00:00Z</date>\n
+      \   </arr>\n    <arr name=\"intlPublDate\">\n      <date>0001-01-01T00:00:00Z</date>\n
+      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
+      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
+      \   </arr>\n    <arr name=\"intlRegNum\">\n      <str>NULL</str>\n      <str>NULL</str>\n
+      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n    </arr>\n
+      \   <arr name=\"inventors\">\n      <str>James J. Fallon</str>\n      <str>James
+      J. Fallon</str>\n      <str>JAMES J. FALLON</str>\n      <str>James J. Fallon</str>\n
+      \     <str>JAMES J. FALLON</str>\n    </arr>\n    <arr name=\"issueDate\">\n
+      \     <date>2006-10-31T04:00:00Z</date>\n      <date>2008-01-22T04:00:00Z</date>\n
+      \     <date>2001-02-27T04:00:00Z</date>\n      <date>2001-10-30T04:00:00Z</date>\n
+      \     <date>2003-07-29T04:00:00Z</date>\n    </arr>\n    <arr name=\"patNum\">\n
+      \     <str>7130913</str>\n      <str>7321937</str>\n      <str>6195024</str>\n
+      \     <str>6309424</str>\n      <str>6601104</str>\n    </arr>\n    <arr name=\"pctNum\">\n
+      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
+      \     <str>NULL</str>\n    </arr>\n    <arr name=\"publDate\">\n      <date>2004-04-15T04:00:00Z</date>\n
+      \     <date>2006-08-17T04:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
+      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
+      \   </arr>\n    <arr name=\"publNum\">\n      <str>20040073746</str>\n      <str>20060184687</str>\n
+      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n    </arr>\n
+      \   <int name=\"patAssignorNameSize\">1</int>\n    <int name=\"patAssignorNameTypeSize\">1</int>\n
+      \   <int name=\"patAssignorExDateSize\">1</int>\n    <int name=\"patAssignorDateAckSize\">1</int>\n
+      \   <int name=\"patAssigneeNameSize\">2</int>\n    <int name=\"patAssigneeNameTypeSize\">0</int>\n
+      \   <int name=\"patAssigneeAddress1Size\">1</int>\n    <int name=\"patAssigneeAddress2Size\">1</int>\n
+      \   <int name=\"patAssigneeCitySize\">1</int>\n    <int name=\"patAssigneeStateSize\">1</int>\n
+      \   <int name=\"patAssigneeCountryNameSize\">1</int>\n    <int name=\"patAssigneePostcodeSize\">1</int>\n
+      \   <int name=\"inventionTitleSize\">5</int>\n    <int name=\"inventionTitleIdSize\">5</int>\n
+      \   <int name=\"inventionTitleLangSize\">5</int>\n    <int name=\"applNumSize\">5</int>\n
+      \   <int name=\"filingDateSize\">5</int>\n    <int name=\"intlPublDateSize\">5</int>\n
+      \   <int name=\"intlRegNumSize\">5</int>\n    <int name=\"inventorsSize\">5</int>\n
+      \   <int name=\"issueDateSize\">5</int>\n    <int name=\"patNumSize\">5</int>\n
+      \   <int name=\"pctNumSize\">5</int>\n    <int name=\"publDateSize\">5</int>\n
+      \   <int name=\"publNumSize\">5</int>\n    <str name=\"inventionTitleFirst\">SYSTEM
+      AND METHODS FOR ACCELERATED DATA STORAGE AND RETRIEVAL</str>\n    <str name=\"inventionTitleLangFirst\">en</str>\n
+      \   <str name=\"applNumFirst\">10628795</str>\n    <date name=\"filingDateFirst\">2003-07-28T04:00:00Z</date>\n
+      \   <date name=\"intlPublDateFirst\">0001-01-01T00:00:00Z</date>\n    <str name=\"intlRegNumFirst\">NULL</str>\n
+      \   <str name=\"inventorsFirst\">James J. Fallon</str>\n    <date name=\"issueDateFirst\">2006-10-31T04:00:00Z</date>\n
+      \   <str name=\"patNumFirst\">7130913</str>\n    <str name=\"pctNumFirst\">NULL</str>\n
+      \   <date name=\"publDateFirst\">2004-04-15T04:00:00Z</date>\n    <str name=\"publNumFirst\">20040073746</str>\n
+      \   <str name=\"patAssignorNameFirst\">REALTIME DATA COMPRESSION SYSTEMS, INC.</str>\n
+      \   <str name=\"patAssigneeNameFirst\">REALTIME DATA LLC</str>\n    <arr name=\"patAssigneePostcodeFacet\">\n
+      \     <str>10018</str>\n    </arr>\n    <arr name=\"patAssignorNameFacet\">\n
+      \     <str>REALTIME DATA COMPRESSION SYSTEMS, INC.</str>\n    </arr>\n    <str
+      name=\"corrNameFacet\">JEFFREY H. INGERMAN</str>\n    <long name=\"_version_\">1638871081216376832</long>\n
+      \   <arr name=\"patAssigneeNameFacet\">\n      <str>REALTIME DATA LLC</str>\n
+      \   </arr>\n    <arr name=\"patAssigneeCityFacet\">\n      <str>NEW YORK</str>\n
+      \   </arr>\n    <arr name=\"patAssigneeCountryNameFacet\">\n      <str>NULL</str>\n
+      \   </arr>\n    <arr name=\"patAssigneeStateFacet\">\n      <str>NEW YORK</str>\n
+      \   </arr>\n    <str name=\"corrNameString\">JEFFREY H. INGERMAN</str></doc>\n</result>\n<lst
+      name=\"facet_counts\">\n  <lst name=\"facet_queries\">\n    <int name=\"conveyanceText:&quot;ASSIGNMENT
+      OF ASSIGNORS INTEREST&quot;\">0</int>\n    <int name=\"conveyanceText:&quot;SECURITY
+      INTEREST&quot;\">0</int>\n    <int name=\"conveyanceText:&quot;NUNC PRO TUNC
+      ASSIGNMENT&quot;\">1</int>\n    <int name=\"conveyanceText:&quot;RELEASE BY
+      SECURED PARTY&quot;\">0</int>\n    <int name=\"conveyanceText:&quot;MERGER&quot;\">0</int>\n
+      \   <int name=\"conveyanceText:&quot;CHANGE OF NAME&quot;\">0</int>\n    <int
+      name=\"conveyanceText:&quot;MERGER AND CHANGE OF NAME&quot;\">0</int>\n    <int
+      name=\"conveyanceText:&quot;LICENSE&quot;\">0</int>\n    <int name=\"conveyanceText:&quot;LIEN&quot;\">0</int>\n
+      \   <int name=\"conveyanceText:&quot;MORTGAGE&quot;\">0</int>\n    <int name=\"conveyanceText:&quot;OPTION&quot;\">0</int>\n
+      \   <int name=\"conveyanceText:&quot;DECREE OF DISTRIBUTION&quot;\">0</int>\n
+      \   <int name=\"conveyanceText:&quot;LETTERS OF TESTAMENTARY&quot;\">0</int>\n
+      \   <int name=\"conveyanceText:&quot;LETTERS OF ADMINISTRATION&quot;\">0</int>\n
+      \   <int name=\"conveyanceText:&quot;COURT APPOINTMENT&quot;\">0</int>\n    <int
+      name=\"conveyanceText:&quot;CONDITIONAL ASSIGNMENT&quot;\">0</int>\n    <int
+      name=\"conveyanceText:&quot;COURT ORDER&quot;\">0</int>\n  </lst>\n  <lst name=\"facet_fields\">\n
+      \   <lst name=\"patAssigneeCityFacet\">\n      <int name=\"NEW YORK\">1</int>\n
+      \   </lst>\n    <lst name=\"patAssigneeStateFacet\">\n      <int name=\"NEW
+      YORK\">1</int>\n    </lst>\n    <lst name=\"patAssigneePostcodeFacet\">\n      <int
+      name=\"10018\">1</int>\n    </lst>\n    <lst name=\"patAssigneeCountryNameFacet\">\n
+      \     <int name=\"NULL\">1</int>\n    </lst>\n    <lst name=\"patAssigneeNameFacet\">\n
+      \     <int name=\"REALTIME DATA LLC\">1</int>\n    </lst>\n    <lst name=\"corrNameFacet\">\n
+      \     <int name=\"JEFFREY H. INGERMAN\">1</int>\n    </lst>\n    <lst name=\"patAssignorNameFacet\">\n
+      \     <int name=\"REALTIME DATA COMPRESSION SYSTEMS, INC.\">1</int>\n    </lst>\n
+      \   <lst name=\"applNum\">\n      <int name=\"09210491\">1</int>\n      <int
+      name=\"09266394\">1</int>\n      <int name=\"09705446\">1</int>\n      <int
+      name=\"10628795\">1</int>\n      <int name=\"11400674\">1</int>\n    </lst>\n
+      \   <lst name=\"patNum\">\n      <int name=\"6195024\">1</int>\n      <int name=\"6309424\">1</int>\n
+      \     <int name=\"6601104\">1</int>\n      <int name=\"7130913\">1</int>\n      <int
+      name=\"7321937\">1</int>\n    </lst>\n    <lst name=\"publNum\">\n      <int
+      name=\"20040073746\">1</int>\n      <int name=\"20060184687\">1</int>\n      <int
+      name=\"NULL\">1</int>\n    </lst>\n    <lst name=\"intlRegNum\">\n      <int
+      name=\"NULL\">1</int>\n    </lst>\n  </lst>\n  <lst name=\"facet_ranges\">\n
+      \   <lst name=\"patAssignorEarliestExDate\">\n      <lst name=\"counts\">\n
+      \       <int name=\"2006-01-01T00:00:00Z\">1</int>\n      </lst>\n      <str
+      name=\"gap\">+1YEAR</str>\n      <int name=\"before\">0</int>\n      <date name=\"start\">1898-01-01T00:00:00Z</date>\n
+      \     <date name=\"end\">2024-01-01T00:00:00Z</date>\n    </lst>\n  </lst>\n
+      \ <lst name=\"facet_intervals\"/>\n  <lst name=\"facet_heatmaps\"/>\n</lst>\n<lst
+      name=\"highlighting\">\n  <lst name=\"18247-405\">\n    <arr name=\"frameNo\"/>\n
+      \   <arr name=\"patAssigneeCity\"/>\n    <arr name=\"pctNum\"/>\n    <arr name=\"patAssigneePostcode\"/>\n
+      \   <arr name=\"filingDate\"/>\n    <arr name=\"conveyanceText\"/>\n    <arr
+      name=\"patNum\"/>\n    <arr name=\"patAssignorName\"/>\n    <arr name=\"corrAddress1\"/>\n
+      \   <arr name=\"corrAddress2\"/>\n    <arr name=\"corrAddress3\"/>\n    <arr
+      name=\"corrName\"/>\n    <arr name=\"applNum\"/>\n    <arr name=\"inventionTitle\"/>\n
+      \   <arr name=\"publNum\"/>\n    <arr name=\"patAssigneeAddress\"/>\n    <arr
+      name=\"intlRegNum\"/>\n    <arr name=\"publDate\"/>\n    <arr name=\"patAssigneeCountryName\"/>\n
+      \   <arr name=\"intlPublDate\"/>\n    <arr name=\"id\"/>\n    <arr name=\"patAssigneeName\"/>\n
+      \   <arr name=\"issueDate\"/>\n    <arr name=\"reelNo\"/>\n  </lst>\n</lst>\n</response>\n"
+    headers:
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/xml
+      Date:
+      - Mon, 30 Oct 2023 17:05:01 GMT
+      Server:
+      - Apache-Coyote/1.1
+      Strict-Transport-Security:
+      - max-age=31536000;includeSubDomains
+      Transfer-Encoding:
+      - chunked
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - DENY
+      X-XSS-Protection:
+      - 1; mode=block
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: ''
+    headers:
+      accept:
+      - application/xml
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - assignment-api.uspto.gov
+      user-agent:
+      - python-httpx/0.24.1
+    method: GET
+    uri: https://assignment-api.uspto.gov/patent/lookup?filter=ReelFrame&query=18247-405&rows=100&start=0&sort=ExecutionDate%2Bdesc&facet=false
+  response:
+    content: "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<response>\n\n<lst name=\"responseHeader\">\n
+      \ <bool name=\"zkConnected\">true</bool>\n  <int name=\"status\">0</int>\n  <int
+      name=\"QTime\">281</int>\n  <lst name=\"params\">\n    <str name=\"q\">*:*</str>\n
+      \   <str name=\"qt\">/apisearch</str>\n    <str name=\"start\">0</str>\n    <str
+      name=\"sort\">patAssignorEarliestExDate desc</str>\n    <str name=\"fq\">id:18247-405</str>\n
+      \   <str name=\"rows\">100</str>\n    <str name=\"wt\">javabin</str>\n    <str
+      name=\"version\">2</str>\n  </lst>\n</lst>\n<result name=\"response\" numFound=\"1\"
+      start=\"0\">\n  <doc>\n    <str name=\"id\">18247-405</str>\n    <str name=\"displayId\">018247-0405</str>\n
+      \   <str name=\"dtdVersion\">1.0</str>\n    <str name=\"dateProduced\">20140916</str>\n
+      \   <str name=\"actionKeyCode\">DA</str>\n    <str name=\"transactionDate\">2019-07-11T17:29:13Z</str>\n
+      \   <str name=\"reelNo\">18247</str>\n    <str name=\"frameNo\">405</str>\n
+      \   <date name=\"lastUpdateDate\">2008-01-22T11:00:55Z</date>\n    <str name=\"purgeIndicator\">N</str>\n
+      \   <date name=\"recordedDate\">2006-09-14T04:00:00Z</date>\n    <str name=\"pageCount\">6</str>\n
+      \   <str name=\"conveyanceText\">NUNC PRO TUNC ASSIGNMENT (SEE DOCUMENT FOR
+      DETAILS).</str>\n    <str name=\"assignmentRecordHasImages\">Y</str>\n    <str
+      name=\"attorneyDockNum\">103532-0002</str>\n    <str name=\"corrName\">JEFFREY
+      H. INGERMAN</str>\n    <str name=\"corrAddress1\">FISH &amp; NEAVE IP GROUP,
+      ROPES &amp; GRAY LLP</str>\n    <str name=\"corrAddress2\">1251 AVENUE OF THE
+      AMERICAS C3</str>\n    <str name=\"corrAddress3\">NEW YORK, NY 10020-1105</str>\n
+      \   <date name=\"patAssignorEarliestExDate\">2006-09-14T04:00:00Z</date>\n    <arr
+      name=\"patAssignorName\">\n      <str>REALTIME DATA COMPRESSION SYSTEMS, INC.</str>\n
+      \   </arr>\n    <arr name=\"patAssignorExDate\">\n      <date>2006-09-14T04:00:00Z</date>\n
+      \   </arr>\n    <arr name=\"patAssignorDateAck\">\n      <str>0001-01-01T00:00:00Z</str>\n
+      \   </arr>\n    <arr name=\"patAssigneeName\">\n      <str>REALTIME DATA LLC</str>\n
+      \   </arr>\n    <arr name=\"patAssigneeAddress1\">\n      <str>15 WEST 36TH
+      STREET</str>\n    </arr>\n    <arr name=\"patAssigneeAddress2\">\n      <str>NULL</str>\n
+      \   </arr>\n    <arr name=\"patAssigneeCity\">\n      <str>NEW YORK</str>\n
+      \   </arr>\n    <arr name=\"patAssigneeState\">\n      <str>NEW YORK</str>\n
+      \   </arr>\n    <arr name=\"patAssigneeCountryName\">\n      <str>NULL</str>\n
+      \   </arr>\n    <arr name=\"patAssigneePostcode\">\n      <str>10018</str>\n
+      \   </arr>\n    <arr name=\"inventionTitle\">\n      <str>SYSTEM AND METHODS
+      FOR ACCELERATED DATA STORAGE AND RETRIEVAL</str>\n      <str>SYSTEM AND METHODS
+      FOR ACCELERATED DATA STORAGE AND RETRIEVAL</str>\n      <str>CONTENT INDEPENDENT
+      DATA COMPRESSION METHOD AND SYSTEM</str>\n      <str>Content independent data
+      compression method and system</str>\n      <str>SYSTEM AND METHODS FOR ACCELERATED
+      DATA STORAGE AND RETRIEVAL</str>\n    </arr>\n    <arr name=\"inventionTitleLang\">\n
+      \     <str>en</str>\n      <str>en</str>\n      <str>en</str>\n      <str>en</str>\n
+      \     <str>en</str>\n    </arr>\n    <arr name=\"applNum\">\n      <str>10628795</str>\n
+      \     <str>11400674</str>\n      <str>09210491</str>\n      <str>09705446</str>\n
+      \     <str>09266394</str>\n    </arr>\n    <arr name=\"filingDate\">\n      <date>2003-07-28T04:00:00Z</date>\n
+      \     <date>2006-04-08T04:00:00Z</date>\n      <date>1998-12-11T04:00:00Z</date>\n
+      \     <date>2000-11-03T04:00:00Z</date>\n      <date>1999-03-11T04:00:00Z</date>\n
+      \   </arr>\n    <arr name=\"intlPublDate\">\n      <date>0001-01-01T00:00:00Z</date>\n
+      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
+      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
+      \   </arr>\n    <arr name=\"intlRegNum\">\n      <str>NULL</str>\n      <str>NULL</str>\n
+      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n    </arr>\n
+      \   <arr name=\"inventors\">\n      <str>James J. Fallon</str>\n      <str>James
+      J. Fallon</str>\n      <str>JAMES J. FALLON</str>\n      <str>James J. Fallon</str>\n
+      \     <str>JAMES J. FALLON</str>\n    </arr>\n    <arr name=\"issueDate\">\n
+      \     <date>2006-10-31T04:00:00Z</date>\n      <date>2008-01-22T04:00:00Z</date>\n
+      \     <date>2001-02-27T04:00:00Z</date>\n      <date>2001-10-30T04:00:00Z</date>\n
+      \     <date>2003-07-29T04:00:00Z</date>\n    </arr>\n    <arr name=\"patNum\">\n
+      \     <str>7130913</str>\n      <str>7321937</str>\n      <str>6195024</str>\n
+      \     <str>6309424</str>\n      <str>6601104</str>\n    </arr>\n    <arr name=\"pctNum\">\n
+      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
+      \     <str>NULL</str>\n    </arr>\n    <arr name=\"publDate\">\n      <date>2004-04-15T04:00:00Z</date>\n
+      \     <date>2006-08-17T04:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
+      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
+      \   </arr>\n    <arr name=\"publNum\">\n      <str>20040073746</str>\n      <str>20060184687</str>\n
+      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n    </arr>\n
+      \   <int name=\"patAssignorNameSize\">1</int>\n    <int name=\"patAssignorNameTypeSize\">1</int>\n
+      \   <int name=\"patAssignorExDateSize\">1</int>\n    <int name=\"patAssignorDateAckSize\">1</int>\n
+      \   <int name=\"patAssigneeNameSize\">2</int>\n    <int name=\"patAssigneeNameTypeSize\">0</int>\n
+      \   <int name=\"patAssigneeAddress1Size\">1</int>\n    <int name=\"patAssigneeAddress2Size\">1</int>\n
+      \   <int name=\"patAssigneeCitySize\">1</int>\n    <int name=\"patAssigneeStateSize\">1</int>\n
+      \   <int name=\"patAssigneeCountryNameSize\">1</int>\n    <int name=\"patAssigneePostcodeSize\">1</int>\n
+      \   <int name=\"inventionTitleSize\">5</int>\n    <int name=\"inventionTitleIdSize\">5</int>\n
+      \   <int name=\"inventionTitleLangSize\">5</int>\n    <int name=\"applNumSize\">5</int>\n
+      \   <int name=\"filingDateSize\">5</int>\n    <int name=\"intlPublDateSize\">5</int>\n
+      \   <int name=\"intlRegNumSize\">5</int>\n    <int name=\"inventorsSize\">5</int>\n
+      \   <int name=\"issueDateSize\">5</int>\n    <int name=\"patNumSize\">5</int>\n
+      \   <int name=\"pctNumSize\">5</int>\n    <int name=\"publDateSize\">5</int>\n
+      \   <int name=\"publNumSize\">5</int>\n    <str name=\"inventionTitleFirst\">SYSTEM
+      AND METHODS FOR ACCELERATED DATA STORAGE AND RETRIEVAL</str>\n    <str name=\"inventionTitleLangFirst\">en</str>\n
+      \   <str name=\"applNumFirst\">10628795</str>\n    <date name=\"filingDateFirst\">2003-07-28T04:00:00Z</date>\n
+      \   <date name=\"intlPublDateFirst\">0001-01-01T00:00:00Z</date>\n    <str name=\"intlRegNumFirst\">NULL</str>\n
+      \   <str name=\"inventorsFirst\">James J. Fallon</str>\n    <date name=\"issueDateFirst\">2006-10-31T04:00:00Z</date>\n
+      \   <str name=\"patNumFirst\">7130913</str>\n    <str name=\"pctNumFirst\">NULL</str>\n
+      \   <date name=\"publDateFirst\">2004-04-15T04:00:00Z</date>\n    <str name=\"publNumFirst\">20040073746</str>\n
+      \   <str name=\"patAssignorNameFirst\">REALTIME DATA COMPRESSION SYSTEMS, INC.</str>\n
+      \   <str name=\"patAssigneeNameFirst\">REALTIME DATA LLC</str>\n    <arr name=\"patAssigneePostcodeFacet\">\n
+      \     <str>10018</str>\n    </arr>\n    <arr name=\"patAssignorNameFacet\">\n
+      \     <str>REALTIME DATA COMPRESSION SYSTEMS, INC.</str>\n    </arr>\n    <str
+      name=\"corrNameFacet\">JEFFREY H. INGERMAN</str>\n    <long name=\"_version_\">1638871081216376832</long>\n
+      \   <arr name=\"patAssigneeNameFacet\">\n      <str>REALTIME DATA LLC</str>\n
+      \   </arr>\n    <arr name=\"patAssigneeCityFacet\">\n      <str>NEW YORK</str>\n
+      \   </arr>\n    <arr name=\"patAssigneeCountryNameFacet\">\n      <str>NULL</str>\n
+      \   </arr>\n    <arr name=\"patAssigneeStateFacet\">\n      <str>NEW YORK</str>\n
+      \   </arr>\n    <str name=\"corrNameString\">JEFFREY H. INGERMAN</str></doc>\n</result>\n<lst
+      name=\"facet_counts\">\n  <lst name=\"facet_queries\">\n    <int name=\"conveyanceText:&quot;ASSIGNMENT
+      OF ASSIGNORS INTEREST&quot;\">0</int>\n    <int name=\"conveyanceText:&quot;SECURITY
+      INTEREST&quot;\">0</int>\n    <int name=\"conveyanceText:&quot;NUNC PRO TUNC
+      ASSIGNMENT&quot;\">1</int>\n    <int name=\"conveyanceText:&quot;RELEASE BY
+      SECURED PARTY&quot;\">0</int>\n    <int name=\"conveyanceText:&quot;MERGER&quot;\">0</int>\n
+      \   <int name=\"conveyanceText:&quot;CHANGE OF NAME&quot;\">0</int>\n    <int
+      name=\"conveyanceText:&quot;MERGER AND CHANGE OF NAME&quot;\">0</int>\n    <int
+      name=\"conveyanceText:&quot;LICENSE&quot;\">0</int>\n    <int name=\"conveyanceText:&quot;LIEN&quot;\">0</int>\n
+      \   <int name=\"conveyanceText:&quot;MORTGAGE&quot;\">0</int>\n    <int name=\"conveyanceText:&quot;OPTION&quot;\">0</int>\n
+      \   <int name=\"conveyanceText:&quot;DECREE OF DISTRIBUTION&quot;\">0</int>\n
+      \   <int name=\"conveyanceText:&quot;LETTERS OF TESTAMENTARY&quot;\">0</int>\n
+      \   <int name=\"conveyanceText:&quot;LETTERS OF ADMINISTRATION&quot;\">0</int>\n
+      \   <int name=\"conveyanceText:&quot;COURT APPOINTMENT&quot;\">0</int>\n    <int
+      name=\"conveyanceText:&quot;CONDITIONAL ASSIGNMENT&quot;\">0</int>\n    <int
+      name=\"conveyanceText:&quot;COURT ORDER&quot;\">0</int>\n  </lst>\n  <lst name=\"facet_fields\">\n
+      \   <lst name=\"patAssigneeCityFacet\">\n      <int name=\"NEW YORK\">1</int>\n
+      \   </lst>\n    <lst name=\"patAssigneeStateFacet\">\n      <int name=\"NEW
+      YORK\">1</int>\n    </lst>\n    <lst name=\"patAssigneePostcodeFacet\">\n      <int
+      name=\"10018\">1</int>\n    </lst>\n    <lst name=\"patAssigneeCountryNameFacet\">\n
+      \     <int name=\"NULL\">1</int>\n    </lst>\n    <lst name=\"patAssigneeNameFacet\">\n
+      \     <int name=\"REALTIME DATA LLC\">1</int>\n    </lst>\n    <lst name=\"corrNameFacet\">\n
+      \     <int name=\"JEFFREY H. INGERMAN\">1</int>\n    </lst>\n    <lst name=\"patAssignorNameFacet\">\n
+      \     <int name=\"REALTIME DATA COMPRESSION SYSTEMS, INC.\">1</int>\n    </lst>\n
+      \   <lst name=\"applNum\">\n      <int name=\"09210491\">1</int>\n      <int
+      name=\"09266394\">1</int>\n      <int name=\"09705446\">1</int>\n      <int
+      name=\"10628795\">1</int>\n      <int name=\"11400674\">1</int>\n    </lst>\n
+      \   <lst name=\"patNum\">\n      <int name=\"6195024\">1</int>\n      <int name=\"6309424\">1</int>\n
+      \     <int name=\"6601104\">1</int>\n      <int name=\"7130913\">1</int>\n      <int
+      name=\"7321937\">1</int>\n    </lst>\n    <lst name=\"publNum\">\n      <int
+      name=\"20040073746\">1</int>\n      <int name=\"20060184687\">1</int>\n      <int
+      name=\"NULL\">1</int>\n    </lst>\n    <lst name=\"intlRegNum\">\n      <int
+      name=\"NULL\">1</int>\n    </lst>\n  </lst>\n  <lst name=\"facet_ranges\">\n
+      \   <lst name=\"patAssignorEarliestExDate\">\n      <lst name=\"counts\">\n
+      \       <int name=\"2006-01-01T00:00:00Z\">1</int>\n      </lst>\n      <str
+      name=\"gap\">+1YEAR</str>\n      <int name=\"before\">0</int>\n      <date name=\"start\">1898-01-01T00:00:00Z</date>\n
+      \     <date name=\"end\">2024-01-01T00:00:00Z</date>\n    </lst>\n  </lst>\n
+      \ <lst name=\"facet_intervals\"/>\n  <lst name=\"facet_heatmaps\"/>\n</lst>\n<lst
+      name=\"highlighting\">\n  <lst name=\"18247-405\">\n    <arr name=\"frameNo\"/>\n
+      \   <arr name=\"patAssigneeCity\"/>\n    <arr name=\"pctNum\"/>\n    <arr name=\"patAssigneePostcode\"/>\n
+      \   <arr name=\"filingDate\"/>\n    <arr name=\"conveyanceText\"/>\n    <arr
+      name=\"patNum\"/>\n    <arr name=\"patAssignorName\"/>\n    <arr name=\"corrAddress1\"/>\n
+      \   <arr name=\"corrAddress2\"/>\n    <arr name=\"corrAddress3\"/>\n    <arr
+      name=\"corrName\"/>\n    <arr name=\"applNum\"/>\n    <arr name=\"inventionTitle\"/>\n
+      \   <arr name=\"publNum\"/>\n    <arr name=\"patAssigneeAddress\"/>\n    <arr
+      name=\"intlRegNum\"/>\n    <arr name=\"publDate\"/>\n    <arr name=\"patAssigneeCountryName\"/>\n
+      \   <arr name=\"intlPublDate\"/>\n    <arr name=\"id\"/>\n    <arr name=\"patAssigneeName\"/>\n
+      \   <arr name=\"issueDate\"/>\n    <arr name=\"reelNo\"/>\n  </lst>\n</lst>\n</response>\n"
+    headers:
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/xml
+      Date:
+      - Mon, 30 Oct 2023 17:05:23 GMT
+      Server:
+      - Apache-Coyote/1.1
+      Strict-Transport-Security:
+      - max-age=31536000;includeSubDomains
+      Transfer-Encoding:
+      - chunked
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - DENY
+      X-XSS-Protection:
+      - 1; mode=block
+    http_version: HTTP/1.1
+    status_code: 200
 version: 1

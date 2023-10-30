@@ -12,6 +12,7 @@ from typing import Union
 from yankee.data import Collection
 
 from ..asyncio_util import run_async_iterator
+from ..asyncio_util import run_sync
 
 ModelType = TypeVar("ModelType")
 
@@ -57,7 +58,7 @@ class Manager(Collection, Generic[ModelType]):
 
     def __init__(self, config=None):
         self.config = config or ManagerConfig()
-        if callable(self.__schema__):
+        if hasattr(self, "__schema__") and callable(self.__schema__):
             self.__schema__ = self.__schema__()
 
     # Manager Iteration / Slicing
@@ -68,9 +69,6 @@ class Manager(Collection, Generic[ModelType]):
 
     def __aiter__(self) -> AsyncIterator[ModelType]:
         return self._aget_results()
-
-    def _get_results(self) -> Iterator[ModelType]:
-        raise NotImplementedError("Must be implemented by subclass")
 
     def __getitem__(self, key: Union[slice, int]) -> Union[Manager[ModelType], ModelType]:
         if isinstance(key, slice):
@@ -91,7 +89,7 @@ class Manager(Collection, Generic[ModelType]):
         # The default len function runs the iterator and counts. There may be
         # more efficient ways to do it for any given subclass, but this is the
         # basic way
-        return len(list(self))
+        return run_sync(self.alen())
 
     def __eq__(self, other) -> bool:
         return bool(self.config == other.config and isinstance(self, type(other)))
@@ -136,18 +134,13 @@ class Manager(Collection, Generic[ModelType]):
         mger.config.offset = self.config.offset + offset
         return mger
 
-    def get(self, *args, **kwargs) -> ModelType:
-        """If the critera results in a single record, return it, else raise an exception"""
-        mger = self.filter(*args, **kwargs)
-        if len(mger) > 1:
-            raise ValueError("More than one document found!")
-        if len(mger) == 0:
-            raise ValueError("No documents found!")
-        return mger[0]  # type: ignore
-
     async def afirst(self) -> ModelType:
         """Get the first object in the manager"""
         return await anext(self.__aiter__())
+
+    def first(self) -> ModelType:
+        """Get the first object in the manager"""
+        return run_sync(self.afirst())
 
     async def aget(self, *args, **kwargs) -> ModelType:
         """If the critera results in a single record, return it, else raise an exception"""
@@ -159,15 +152,14 @@ class Manager(Collection, Generic[ModelType]):
             raise ValueError("No documents found!")
         return await mger.afirst()
 
+    def get(self, *args, **kwargs) -> ModelType:
+        return run_sync(self.aget(*args, **kwargs))
+
     # Basic Manager Fetching
 
     def count(self) -> int:
         """Returns number of records in the QuerySet. Alias for len(self)"""
         return len(self)
-
-    def first(self) -> ModelType:
-        """Get the first object in the manager"""
-        return next(iter(self))
 
     def all(self) -> Manager[ModelType]:
         """Return self. Does nothing"""

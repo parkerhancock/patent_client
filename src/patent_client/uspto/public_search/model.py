@@ -2,12 +2,12 @@ import datetime
 from dataclasses import dataclass
 from dataclasses import field
 
+from patent_client.util.asyncio_util import run_sync
 from patent_client.util.base.model import Model
 from patent_client.util.base.related import get_model
 from patent_client.util.claims.parser import ClaimsParser
 from yankee.data import ListCollection
 
-from . import public_search_api
 from . import public_search_async_api
 
 claim_parser = ClaimsParser()
@@ -313,7 +313,7 @@ class PublicSearchDocument(Model):
         )
 
     def download_images(self, path="."):
-        return public_search_api.download_image(self, path)
+        run_sync(self.adownload_images(path))
 
     async def adownload_images(self, path="."):
         return await public_search_async_api.download_image(self, path)

@@ -198,3 +198,24 @@ class PtabDecision(Model):
         return get_model("patent_client.uspto.ptab.model.PtabProceeding").objects.get(
             proceeding_number=self.proceeding_number
         )
+
+
+@dataclass
+class PtabDocumentPage(Model):
+    __manager__ = "patent_client.uspto.ptab.manager.PtabDocumentManager"
+    num_found: int = None
+    docs: ListCollection[PtabDocument] = field(default_factory=ListCollection)
+
+
+@dataclass
+class PtabProceedingPage(Model):
+    __manager__ = "patent_client.uspto.ptab.manager.PtabDocumentManager"
+    num_found: int = None
+    docs: ListCollection[PtabDocument] = field(default_factory=ListCollection)
+
+
+@dataclass
+class PtabDecisionPage(Model):
+    __manager__ = "patent_client.uspto.ptab.manager.PtabDocumentManager"
+    num_found: int = None
+    docs: ListCollection[PtabDocument] = field(default_factory=ListCollection)

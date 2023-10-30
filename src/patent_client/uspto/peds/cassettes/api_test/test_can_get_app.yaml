@@ -1,0 +1,354 @@
+interactions:
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - ped.uspto.gov
+      user-agent:
+      - python-httpx/0.24.1
+    method: GET
+    uri: https://ped.uspto.gov/api/search-fields
+  response:
+    content: '{"appTypeFacet":"string","applId":"string","totalPtoDays":"string","appFilingDate":"date","firstNamedApplicantAddress":"text_general","appLocationFacet":"string","appLocationDate":"date","inventorName":"text_general","appEarlyPubDate":"date","intlFilingYear":"int","appExamMdlName":"text_general","ptaPteType":"string","corrAddrNameLineTwo":"string","appLocation":"text_general","appEarlyPubNumber":"text_general","wipoEarlyPubDate":"date","id":"string","text":"text_general","appTransHistoryDate":"date","primaryInventorCity":"text_general","appExamLastName":"text_general","firstNamedApplicantNameList":"string","appPubyear":"text_general","appSubCls":"string","primaryInventorCountry":"text_general","patentNumberFacet":"string","appStatus":"string","corrAddrStreetLineTwo":"string","ptaPteInd":"string","corrAddrGeoRegionNA":"string","firstNamedApplicantAddressList":"string","firstInventorFileFacet":"string","cDelay":"string","appStatusDate":"date","appControlNumber":"string","ptoAdjustments":"string","firstInventorFile":"string","appGrpArtNumberFacet":"string","overlapDelay":"string","appType":"text_general","rankAndInventorsList":"text_general","appStatusYear":"int","primaryInventorMiddleName":"text_general","pctAppType":"text_general","appCustNumber":"int","lastUpdatedTimestamp":"date","firstNamedApplicantFacet":"string","wipoEarlyPubNumber":"text_general","appClsSubCls":"text_general","bDelay":"string","corrAddrNameLineOne":"string","firstNamedApplicant":"text_general","appExamFirstName":"text_general","patentNumberStr":"string","appPCTNumber":"text_general","corrAddrCountryCd":"string","ptoDelay":"string","appTransHistoryDesc":"text_general","appEntityStatus":"string","appLocationYear":"int","corrAddrCountryName":"string","appEarlyPubYear":"int","appExamName":"text_general","publicInd":"string","appClsSubClsFacet":"string","appExamNameFacet":"string","primaryInventorFirstName":"text_general","pctAppTypeFacet":"string","intlFilingDate":"date","primaryInventorFacet":"string","appEntityStatus_txt":"text_general","appGrpArtNumber":"text_ws","patentKindCode":"string","appFilingYear":"int","appAttrDockNumberFacet":"string","primaryInventorRegion":"text_general","firstNamedApplicantName":"text_general","appl_id_txt":"text_general","patentTermJson":"text_general","patentNumber":"text_general","LAST_MOD_TS_UTC":"date","appCls":"string","LAST_INSERT_TIME":"date","patentIssueYear":"int","appStatus_txt":"text_general","appCustNumberFacet":"string","appIntlPubDate":"date","appEarlyPubNumberFacet":"string","patentTitle":"text_general","applDelay":"string","applIdStr":"string","appPCTNumberFacet":"string","appAttrDockNumber":"text_general","primaryInventor":"text_general","appPubSeqNumber":"text_general","corrAddrStreetLineOne":"string","ipOfficeCode":"text_general","aDelay":"string","rankAndInventorsList_str":"string","appIntlPubNumberFacet":"string","publishDocJson":"text_general","rankAndInventorsAddressList":"string","corrAddrPostalCode":"string","appIntlPubYear":"int","primaryInventorLastName":"text_general","patentIssueDate":"date","appIntlPubNumber":"text_general","appControlNumberFacet":"string","corrAddrCustNo":"string","corrAddrCity":"string","appExamPrefrdName":"text_general","appConfrNumber":"int"}'
+    headers:
+      Cache-Control:
+      - private
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Date:
+      - Mon, 30 Oct 2023 20:03:12 GMT
+      Server-Timing:
+      - intid;desc=727ddb8d4ef6abd7
+      Strict-Transport-Security:
+      - max-age=31536000;includeSubDomains
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 7dfbfeea200bdd11da4db1cf0ddcb718.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - qJuzS0I9UBzBSC48ZtsQJJxxPKRY97iA4x4MKQDNhtu4F6p4f45cIw==
+      X-Amz-Cf-Pop:
+      - IAH50-C1
+      X-Cache:
+      - Miss from cloudfront
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - DENY
+      X-XSS-Protection:
+      - 1; mode=block
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: '{"df": "patentTitle", "qf": "applId", "fl": "*", "fq": [], "searchText":
+      "applId:(16123456)", "sort": "applId asc", "facet": "false", "mm": "100%", "start":
+      "0"}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '161'
+      content-type:
+      - application/json
+      host:
+      - ped.uspto.gov
+      user-agent:
+      - python-httpx/0.24.1
+    method: POST
+    uri: https://ped.uspto.gov/api/queries
+  response:
+    content: '{"queryResults":{"indexLastUpdatedDate":"Mon Oct 30 15:56:29 EDT 2023","searchResponse":{"responseHeader":{"zkConnected":true,"status":0,"QTime":425},"response":{"numFound":1,"start":0,"numFoundExact":true,"docs":[{"corrAddrCountryName":"UNITED
+      STATES","applId":"16123456","totalPtoDays":"127","assignments":[{"reelNumber":"46816","frameNumber":"108","addressNameText":"BIRCH,
+      STEWART, KOLASCH & BIRCH, LLP","addressLineOneText":"8110 GATEHOUSE ROAD, SUITE
+      100E","addressLineTwoText":"FALLS CHURCH, VA 22042","addressLineThreeText":"null","addressLineFourText":"null","mailDate":"09-10-2018","receivedDate":"09-07-2018","recordedDate":"09-07-2018","pagesCount":"3","converyanceName":"ASSIGNMENT
+      OF ASSIGNORS INTEREST (SEE DOCUMENT FOR DETAILS).","sequenceNumber":"1","assignors":[{"assignorName":"KANADA,
+      SHOJI","execDate":"07-11-2018"}],"assignee":[{"assigneeName":"FUJIFILM CORPORATION","streetLineOneText":"26-30,
+      NISHIAZABU 2-CHOME, MINATO-KU","streetLineTwoText":"null","cityName":"TOKYO","countryCode":"JAPAN","postalCode":"106-8620"}]}],"applicants":[{"nameLineOne":"FUJIFILM
+      Corporation","nameLineTwo":" ","suffix":"","streetOne":"","streetTwo":"","city":"Tokyo,
+      ","geoCode":"","country":"(JP)","rankNo":"1"}],"applicantsFacet":"{||FUJIFILM
+      Corporation||||Tokyo||JP|ORG|1}","appFilingDate":"2018-09-06T00:00:00Z","appExamName":"SABOURI,
+      MAZDA","appExamNameFacet":"SABOURI, MAZDA","publicInd":"Y","APP_IND":"5","inventorName":"Shoji  KANADA","inventorNameFacet":"Shoji  KANADA","appEarlyPubDate":"2019-03-28T00:00:00Z","corrAddrGeoRegionCode":"VA","appLocation":"ELECTRONIC","appEarlyPubNumber":"US20190095759A1","id":"16123456","appGrpArtNumber":"2641","appGrpArtNumberFacet":"2641","applIdStr":"16123456","appl_id_txt":"16123456","appSubCls":"159000","patentNumber":"10902286","LAST_MOD_TS":"2023-10-29T06:21:20Z","transactions":[{"recordDate":"2018-09-06
+      00:00:00","code":"IDSC","description":"Information Disclosure Statement considered"},{"recordDate":"2021-07-09
+      00:00:00","code":"IDSC","description":"Information Disclosure Statement considered"},{"recordDate":"2021-01-26
+      00:00:00","code":"PGM/","description":"Recordation of Patent Grant Mailed"},{"recordDate":"2021-01-07
+      00:00:00","code":"EML_NTR","description":"Email Notification"},{"recordDate":"2021-01-06
+      00:00:00","code":"WPIR","description":"Issue Notification Mailed"},{"recordDate":"2021-01-26
+      00:00:00","code":"PTAC","description":"Patent Issue Date Used in PTA Calculation"},{"recordDate":"2020-12-26
+      00:00:00","code":"D1935","description":"Dispatch to FDC"},{"recordDate":"2020-12-23
+      00:00:00","code":"PILS","description":"Application Is Considered Ready for Issue"},{"recordDate":"2020-12-22
+      00:00:00","code":"N084","description":"Issue Fee Payment Verified"},{"recordDate":"2020-12-22
+      00:00:00","code":"IFEE","description":"Issue Fee Payment Received"},{"recordDate":"2020-10-20
+      00:00:00","code":"EML_NTR","description":"Email Notification"},{"recordDate":"2020-10-19
+      00:00:00","code":"EML_NTR","description":"Email Notification"},{"recordDate":"2020-10-20
+      00:00:00","code":"TCPB","description":"Printer Rush- No mailing"},{"recordDate":"2020-10-20
+      00:00:00","code":"MCNOA","description":"Mailing Corrected Notice of Allowability"},{"recordDate":"2020-10-15
+      00:00:00","code":"CNOA","description":"Corrected Notice of Allowability"},{"recordDate":"2020-10-19
+      00:00:00","code":"TCPB","description":"Printer Rush- No mailing"},{"recordDate":"2020-10-19
+      00:00:00","code":"MM327","description":"Mail Miscellaneous Communication to
+      Applicant"},{"recordDate":"2020-10-13 00:00:00","code":"M327","description":"Miscellaneous
+      Communication to Applicant - No Action Count"},{"recordDate":"2020-10-07 00:00:00","code":"PUBTC","description":"Pubs
+      Case Remand to TC"},{"recordDate":"2020-10-05 00:00:00","code":"M844","description":"Information
+      Disclosure Statement (IDS) Filed"},{"recordDate":"2020-10-05 00:00:00","code":"WIDS","description":"Information
+      Disclosure Statement (IDS) Filed"},{"recordDate":"2020-09-23 00:00:00","code":"ELC_RVW","description":"Electronic
+      Review"},{"recordDate":"2020-09-23 00:00:00","code":"EML_NTF","description":"Email
+      Notification"},{"recordDate":"2020-09-23 00:00:00","code":"MN/=.","description":"Mail
+      Notice of Allowance"},{"recordDate":"2020-09-20 00:00:00","code":"N/=.","description":"Notice
+      of Allowance Data Verification Completed"},{"recordDate":"2020-09-18 00:00:00","code":"EX.A","description":"Examiner''s
+      Amendment Communication"},{"recordDate":"2020-07-02 00:00:00","code":"FWDX","description":"Date
+      Forwarded to Examiner"},{"recordDate":"2020-06-26 00:00:00","code":"A...","description":"Response
+      after Non-Final Action"},{"recordDate":"2020-06-09 00:00:00","code":"EML_NTR","description":"Email
+      Notification"},{"recordDate":"2020-06-09 00:00:00","code":"MEXIA","description":"Mail
+      Applicant Initiated Interview Summary"},{"recordDate":"2020-06-03 00:00:00","code":"EXAT","description":"Interview
+      Summary - Applicant Initiated - Telephonic"},{"recordDate":"2020-06-03 00:00:00","code":"EXIA","description":"Interview
+      Summary- Applicant Initiated"},{"recordDate":"2020-05-22 00:00:00","code":"DOCK","description":"Case
+      Docketed to Examiner in GAU"},{"recordDate":"2020-05-21 00:00:00","code":"DOCK","description":"Case
+      Docketed to Examiner in GAU"},{"recordDate":"2020-03-27 00:00:00","code":"ELC_RVW","description":"Electronic
+      Review"},{"recordDate":"2020-03-27 00:00:00","code":"EML_NTF","description":"Email
+      Notification"},{"recordDate":"2020-03-27 00:00:00","code":"MCTNF","description":"Mail
+      Non-Final Rejection"},{"recordDate":"2020-03-23 00:00:00","code":"CTNF","description":"Non-Final
+      Rejection"},{"recordDate":"2020-01-08 00:00:00","code":"DOCK","description":"Case
+      Docketed to Examiner in GAU"},{"recordDate":"2019-12-09 00:00:00","code":"DOCK","description":"Case
+      Docketed to Examiner in GAU"},{"recordDate":"2019-03-29 00:00:00","code":"EML_NTR","description":"Email
+      Notification"},{"recordDate":"2019-03-28 00:00:00","code":"CCRDY","description":"Application
+      ready for PDX access by participating foreign offices"},{"recordDate":"2019-03-28
+      00:00:00","code":"PG-ISSUE","description":"PG-Pub Issue Notification"},{"recordDate":"2018-10-23
+      00:00:00","code":"PD.RECVD","description":"Priority document has successfully
+      retrieved via PDX/DAS"},{"recordDate":"2018-09-06 00:00:00","code":"M844","description":"Information
+      Disclosure Statement (IDS) Filed"},{"recordDate":"2018-10-19 00:00:00","code":"DOCK","description":"Case
+      Docketed to Examiner in GAU"},{"recordDate":"2018-10-18 00:00:00","code":"OIPE","description":"Application
+      Dispatched from OIPE"},{"recordDate":"2018-10-12 00:00:00","code":"EML_NTR","description":"Email
+      Notification"},{"recordDate":"2018-10-11 00:00:00","code":"PGPC","description":"Sent
+      to Classification Contractor"},{"recordDate":"2018-10-11 00:00:00","code":"FTFS","description":"FITF
+      set to YES - revise initial setting"},{"recordDate":"2018-09-06 00:00:00","code":"PTA.RFE","description":"Patent
+      Term Adjustment - Ready for Examination"},{"recordDate":"2018-10-12 00:00:00","code":"COMP","description":"Application
+      Is Now Complete"},{"recordDate":"2018-10-12 00:00:00","code":"FLRCPT.O","description":"Filing
+      Receipt"},{"recordDate":"2018-09-06 00:00:00","code":"APPERMS","description":"Applicants
+      have given acceptable permission for participating foreign "},{"recordDate":"2018-09-06
+      00:00:00","code":"PDREQUST","description":"Request from applicant for the USPTO
+      to retrieve the Priority Document"},{"recordDate":"2018-09-26 00:00:00","code":"L128","description":"Cleared
+      by L&R (LARS)"},{"recordDate":"2018-09-14 00:00:00","code":"L198","description":"Referred
+      to Level 2 (LARS) by OIPE CSR"},{"recordDate":"2018-09-06 00:00:00","code":"WIDS","description":"Information
+      Disclosure Statement (IDS) Filed"},{"recordDate":"2018-09-06 00:00:00","code":"SCAN","description":"IFW
+      Scan & PACR Auto Security Review"},{"recordDate":"2018-09-06 00:00:00","code":"BIG.","description":"Entity
+      Status Set To Undiscounted (Initial Default Setting or Status Change)"},{"recordDate":"2018-09-06
+      00:00:00","code":"IEXX","description":"Initial Exam Team nn"}],"LAST_INSERT_TIME":"2023-10-29T07:25:04Z","appCls":"382","appStatus":"Patented
+      Case","appStatusFacet":"Patented Case","appStatus_txt":"Patented Case","corrAddrStreetLineTwo":"Suite
+      100 East","ptaPteInd":"PTA","ptaPteTranHistory":[{"number":"74.5","ptaOrPteDate":"01-26-2021","contentsDescription":"PTA
+      36 Months","ptoDays":"","applDays":"","start":"0.5"},{"number":"74","ptaOrPteDate":"01-26-2021","contentsDescription":"Patent
+      Issue Date Used in PTA Calculation","ptoDays":"","applDays":"","start":"0"},{"number":"72","ptaOrPteDate":"12-26-2020","contentsDescription":"Dispatch
+      to FDC","ptoDays":"","applDays":"","start":"0"},{"number":"71","ptaOrPteDate":"12-23-2020","contentsDescription":"Application
+      Is Considered Ready for Issue","ptoDays":"","applDays":"","start":"0"},{"number":"70","ptaOrPteDate":"12-22-2020","contentsDescription":"Issue
+      Fee Payment Verified","ptoDays":"","applDays":"","start":"0"},{"number":"69","ptaOrPteDate":"12-22-2020","contentsDescription":"Issue
+      Fee Payment Received","ptoDays":"","applDays":"","start":"0"},{"number":"67","ptaOrPteDate":"10-20-2020","contentsDescription":"Email
+      Notification","ptoDays":"","applDays":"","start":"0"},{"number":"66","ptaOrPteDate":"10-19-2020","contentsDescription":"Email
+      Notification","ptoDays":"","applDays":"","start":"0"},{"number":"65","ptaOrPteDate":"10-20-2020","contentsDescription":"Printer
+      Rush- No mailing","ptoDays":"","applDays":"","start":"0"},{"number":"64","ptaOrPteDate":"10-20-2020","contentsDescription":"Mailing
+      Corrected Notice of Allowability","ptoDays":"","applDays":"","start":"0"},{"number":"62","ptaOrPteDate":"10-15-2020","contentsDescription":"Corrected
+      Notice of Allowability","ptoDays":"","applDays":"","start":"0"},{"number":"61","ptaOrPteDate":"10-19-2020","contentsDescription":"Printer
+      Rush- No mailing","ptoDays":"","applDays":"","start":"0"},{"number":"60","ptaOrPteDate":"10-19-2020","contentsDescription":"Mail
+      Miscellaneous Communication to Applicant","ptoDays":"","applDays":"15","start":"55"},{"number":"59","ptaOrPteDate":"10-13-2020","contentsDescription":"Miscellaneous
+      Communication to Applicant - No Action Count","ptoDays":"","applDays":"","start":"0"},{"number":"58","ptaOrPteDate":"10-13-2020","contentsDescription":"Information
+      Disclosure Statement considered","ptoDays":"","applDays":"","start":"0"},{"number":"57","ptaOrPteDate":"10-07-2020","contentsDescription":"Pubs
+      Case Remand to TC","ptoDays":"","applDays":"","start":"0"},{"number":"56","ptaOrPteDate":"10-05-2020","contentsDescription":"Information
+      Disclosure Statement (IDS) Filed","ptoDays":"","applDays":"","start":"0"},{"number":"55","ptaOrPteDate":"10-05-2020","contentsDescription":"Information
+      Disclosure Statement (IDS) Filed","ptoDays":"","applDays":"","start":"0"},{"number":"53","ptaOrPteDate":"09-23-2020","contentsDescription":"Electronic
+      Review","ptoDays":"","applDays":"","start":"0"},{"number":"52","ptaOrPteDate":"09-23-2020","contentsDescription":"Email
+      Notification","ptoDays":"","applDays":"","start":"0"},{"number":"51","ptaOrPteDate":"09-23-2020","contentsDescription":"Mail
+      Notice of Allowance","ptoDays":"","applDays":"","start":"0"},{"number":"47","ptaOrPteDate":"09-20-2020","contentsDescription":"Notice
+      of Allowance Data Verification Completed","ptoDays":"","applDays":"","start":"0"},{"number":"45","ptaOrPteDate":"09-18-2020","contentsDescription":"Examiner''s
+      Amendment Communication","ptoDays":"","applDays":"","start":"0"},{"number":"43","ptaOrPteDate":"07-02-2020","contentsDescription":"Date
+      Forwarded to Examiner","ptoDays":"","applDays":"","start":"0"},{"number":"42","ptaOrPteDate":"06-26-2020","contentsDescription":"Response
+      after Non-Final Action","ptoDays":"","applDays":"","start":"0"},{"number":"40","ptaOrPteDate":"06-09-2020","contentsDescription":"Email
+      Notification","ptoDays":"","applDays":"","start":"0"},{"number":"39","ptaOrPteDate":"06-09-2020","contentsDescription":"Mail
+      Applicant Initiated Interview Summary","ptoDays":"","applDays":"","start":"0"},{"number":"38","ptaOrPteDate":"06-03-2020","contentsDescription":"Interview
+      Summary - Applicant Initiated - Telephonic","ptoDays":"","applDays":"","start":"0"},{"number":"37","ptaOrPteDate":"06-03-2020","contentsDescription":"Interview
+      Summary- Applicant Initiated","ptoDays":"","applDays":"","start":"0"},{"number":"35","ptaOrPteDate":"05-22-2020","contentsDescription":"Case
+      Docketed to Examiner in GAU","ptoDays":"","applDays":"","start":"0"},{"number":"33","ptaOrPteDate":"05-21-2020","contentsDescription":"Case
+      Docketed to Examiner in GAU","ptoDays":"","applDays":"","start":"0"},{"number":"32","ptaOrPteDate":"03-27-2020","contentsDescription":"Electronic
+      Review","ptoDays":"","applDays":"","start":"0"},{"number":"31","ptaOrPteDate":"03-27-2020","contentsDescription":"Email
+      Notification","ptoDays":"","applDays":"","start":"0"},{"number":"29","ptaOrPteDate":"03-27-2020","contentsDescription":"Mail
+      Non-Final Rejection","ptoDays":"142","applDays":"","start":"0.5"},{"number":"28","ptaOrPteDate":"03-23-2020","contentsDescription":"Non-Final
+      Rejection","ptoDays":"","applDays":"","start":"0"},{"number":"27","ptaOrPteDate":"03-23-2020","contentsDescription":"Information
+      Disclosure Statement considered","ptoDays":"","applDays":"","start":"0"},{"number":"26","ptaOrPteDate":"01-08-2020","contentsDescription":"Case
+      Docketed to Examiner in GAU","ptoDays":"","applDays":"","start":"0"},{"number":"25","ptaOrPteDate":"12-09-2019","contentsDescription":"Case
+      Docketed to Examiner in GAU","ptoDays":"","applDays":"","start":"0"},{"number":"21","ptaOrPteDate":"03-29-2019","contentsDescription":"Email
+      Notification","ptoDays":"","applDays":"","start":"0"},{"number":"20","ptaOrPteDate":"03-28-2019","contentsDescription":"Application
+      ready for PDX access by participating foreign offices","ptoDays":"","applDays":"","start":"0"},{"number":"19","ptaOrPteDate":"03-28-2019","contentsDescription":"PG-Pub
+      Issue Notification","ptoDays":"","applDays":"","start":"0"},{"number":"18","ptaOrPteDate":"10-23-2018","contentsDescription":"Priority
+      document has successfully retrieved via PDX/DAS","ptoDays":"","applDays":"","start":"0"},{"number":"17","ptaOrPteDate":"09-06-2018","contentsDescription":"Information
+      Disclosure Statement (IDS) Filed","ptoDays":"","applDays":"","start":"0"},{"number":"16","ptaOrPteDate":"10-19-2018","contentsDescription":"Case
+      Docketed to Examiner in GAU","ptoDays":"","applDays":"","start":"0"},{"number":"15","ptaOrPteDate":"10-18-2018","contentsDescription":"Application
+      Dispatched from OIPE","ptoDays":"","applDays":"","start":"0"},{"number":"14","ptaOrPteDate":"10-12-2018","contentsDescription":"Email
+      Notification","ptoDays":"","applDays":"","start":"0"},{"number":"13","ptaOrPteDate":"10-11-2018","contentsDescription":"Sent
+      to Classification Contractor","ptoDays":"","applDays":"","start":"0"},{"number":"12","ptaOrPteDate":"10-11-2018","contentsDescription":"FITF
+      set to YES - revise initial setting","ptoDays":"","applDays":"","start":"0"},{"number":"11","ptaOrPteDate":"09-06-2018","contentsDescription":"Patent
+      Term Adjustment - Ready for Examination","ptoDays":"","applDays":"","start":"0"},{"number":"10","ptaOrPteDate":"10-12-2018","contentsDescription":"Application
+      Is Now Complete","ptoDays":"","applDays":"","start":"0"},{"number":"9","ptaOrPteDate":"10-12-2018","contentsDescription":"Filing
+      Receipt","ptoDays":"","applDays":"","start":"0"},{"number":"8","ptaOrPteDate":"09-06-2018","contentsDescription":"Applicants
+      have given acceptable permission for participating foreign ","ptoDays":"","applDays":"","start":"0"},{"number":"7","ptaOrPteDate":"09-06-2018","contentsDescription":"Request
+      from applicant for the USPTO to retrieve the Priority Document","ptoDays":"","applDays":"","start":"0"},{"number":"6","ptaOrPteDate":"09-26-2018","contentsDescription":"Cleared
+      by L&R (LARS)","ptoDays":"","applDays":"","start":"0"},{"number":"5","ptaOrPteDate":"09-14-2018","contentsDescription":"Referred
+      to Level 2 (LARS) by OIPE CSR","ptoDays":"","applDays":"","start":"0"},{"number":"4","ptaOrPteDate":"09-06-2018","contentsDescription":"Information
+      Disclosure Statement (IDS) Filed","ptoDays":"","applDays":"","start":"0"},{"number":"3","ptaOrPteDate":"09-06-2018","contentsDescription":"IFW
+      Scan & PACR Auto Security Review","ptoDays":"","applDays":"","start":"0"},{"number":"2","ptaOrPteDate":"09-06-2018","contentsDescription":"Entity
+      Status Set To Undiscounted (Initial Default Setting or Status Change)","ptoDays":"","applDays":"","start":"0"},{"number":"1","ptaOrPteDate":"09-06-2018","contentsDescription":"Initial
+      Exam Team nn","ptoDays":"","applDays":"","start":"0"},{"number":"0.5","ptaOrPteDate":"09-06-2018","contentsDescription":"Filing
+      date","ptoDays":"","applDays":"","start":"0"}],"foreignPriority":[{"applicationNumberText":"16123456","priorityClaim":"2017-187096","countryName":"JAPAN","filingDate":"09-27-2017"}],"patentTitle":"LEARNING
+      ASSISTANCE DEVICE, METHOD OF OPERATING LEARNING ASSISTANCE DEVICE, LEARNING
+      ASSISTANCE PROGRAM, LEARNING ASSISTANCE SYSTEM, AND TERMINAL DEVICE","applDelay":"15","cDelay":"0","appStatusDate":"2021-01-06T00:00:00Z","appAttrDockNumber":"1982-1042PUS1","inventors":[{"nameLineOne":"KANADA","nameLineTwo":"Shoji
+      ","suffix":"","streetOne":"","streetTwo":"","city":"Tokyo, ","geoCode":"","country":"(JP)","rankNo":"1"}],"inventorsFacet":"{Shoji||KANADA||||Tokyo||JP|IND|1}","ptoAdjustments":"0","corrAddrStreetLineOne":"8110
+      Gatehouse Road","firstInventorFile":"Yes","childContinuity":[{"claimApplicationNumberText":"17130468","applicationNumberText":"16123456","filingDate":"12-22-2020","aiaIndicator":"Y","patentNumberText":"11797846","applicationStatus":"Patented","applicationStatusDescription":"claims
+      the benefit of"}],"overlapDelay":"0","aDelay":"142","appType":"Utility","appTypeFacet":"Utility","corrAddrPostalCode":"22042-1248","appCustNumber":"2292","appClsSubCls":"382/159000","appClsSubClsFacet":"382/159000","patentIssueDate":"2021-01-26T00:00:00Z","bDelay":"0","corrAddrNameLineOne":"BIRCH
+      STEWART KOLASCH & BIRCH, LLP","firstNamedApplicant":["  FUJIFILM Corporation"],"firstNamedApplicantFacet":"  FUJIFILM
+      Corporation","attrnyAddr":[{"applicationId":null,"registrationNo":"19382","fullName":"Birch,
+      Terrell  ","phoneNum":"703-205-8000","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"22463","fullName":"Kolasch,
+      Joseph  ","phoneNum":"703-205-8000","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"28380","fullName":"Slattery,
+      James  ","phoneNum":"703-205-8000","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"28977","fullName":"Murphy,
+      Gerald  Jr","phoneNum":"703-205-8000","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"29271","fullName":"Gorenstein,
+      Charles  ","phoneNum":"703-205-8000","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"29680","fullName":"Mutter,
+      Michael  ","phoneNum":"703-205-8000","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"30330","fullName":"Svensson,
+      Leonard  ","phoneNum":"858-792-8855","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"32181","fullName":"Weiner,
+      Marc  ","phoneNum":"703-205-8000","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"32868","fullName":"Meikle,
+      Andrew  ","phoneNum":"703-205-8000","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"32881","fullName":"Bailey,
+      Johnny  ","phoneNum":"703-205-8000","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"39538","fullName":"Eller,
+      James  Jr","phoneNum":"703-205-8000","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"40069","fullName":"Armstrong,
+      Mary Anne  ","phoneNum":"703-205-8000","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"40417","fullName":"Hatsumi,
+      Maki  ","phoneNum":"703-205-8000","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"40439","fullName":"Anderson,
+      David  Jr","phoneNum":"703-205-8000","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"40953","fullName":"Chong,
+      Esther  ","phoneNum":"703-205-8000","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"41533","fullName":"McDonald,
+      Christopher  ","phoneNum":"703-205-8000","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"42325","fullName":"Bilodeau,
+      David  ","phoneNum":"703-205-8072","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"42874","fullName":"McRobbie,
+      Craig  ","phoneNum":"703-208-4002","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"43368","fullName":"Lewis,
+      Paul  ","phoneNum":"703-205-8000","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"43451","fullName":"Lutz,
+      Laura  ","phoneNum":"703-205-8000","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"47099","fullName":"Smith,
+      Michael  ","phoneNum":"304-624-8000","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"46607","fullName":"Caudle,
+      Penny  ","phoneNum":"--","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"47305","fullName":"Rhodes,
+      Jason  ","phoneNum":"703-205-8000","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"48501","fullName":"Perez,
+      Eugene  ","phoneNum":"703-205-8000","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"48917","fullName":"Billings,
+      Chad  ","phoneNum":"703-205-8000","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"50875","fullName":"Wells,
+      Chad  ","phoneNum":"703-205-8000","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"52327","fullName":"Voisinet,
+      Catherine  ","phoneNum":"703-205-8000","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"54577","fullName":"Kim,
+      Seth  ","phoneNum":"703-205-8000","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"58258","fullName":"Rink,
+      Chad  ","phoneNum":"703-205-8000","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"58565","fullName":"Larsen,
+      James  ","phoneNum":"425-298-6846","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"59981","fullName":"Remily,
+      Whitney  ","phoneNum":"703-205-8083","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"61007","fullName":"Hsu,
+      Cheng Kang  ","phoneNum":"703-205-8000","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"61158","fullName":"Perez-Ramos,
+      Vanessa  ","phoneNum":"703-205-8053","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"63406","fullName":"Fritz,
+      Bradford  ","phoneNum":"703-836-6505","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"67246","fullName":"Liou,
+      Eric  ","phoneNum":"703-205-8000","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"68859","fullName":"Konno,
+      Toyohiko  ","phoneNum":"703-205-8000","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"75257","fullName":"Taousakis,
+      Alexander  ","phoneNum":"703-205-8090","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"76455","fullName":"Lin,
+      Qing  ","phoneNum":"703-205-8085","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"77520","fullName":"Bureau,
+      Hailey  ","phoneNum":"703-205-8038","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"78391","fullName":"Kwon,
+      Hyuk Jung  ","phoneNum":"703-205-8000","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"78681","fullName":"Nakamura,
+      Atsushi  ","phoneNum":"703-205-8000","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"79417","fullName":"Gustilo,
+      Estella  ","phoneNum":"202-739-5727","regStatus":"ACTIVE"}],"corrAddrCustNo":"2292","corrAddrCountryCd":"US","ptoDelay":"142","corrAddrCity":"Falls
+      Church","appEntityStatus":"UNDISCOUNTED","appConfrNumber":"7051","lastUpdatedTimestamp":"2023-10-30T02:29:52.201Z","cmsData":["{16123456|2022-08-26
+      04:51:27|PROSECUTION|Examiner''s search strategy and results|SRNT|1|L7AH385RGREENX5},{16123456|2021-01-06
+      13:47:08|PROSECUTION|Issue Notification|ISSUE.NTF|1|KJM2MWIEDFLYX10},{16123456|2020-12-22
+      09:15:20|PROSECUTION|Electronic Filing System(EFS) Acknowledgment Receipt|N417|2|KJ0DBK1TLDFLYX5},{16123456|2020-12-22
+      09:15:20|PROSECUTION|Fee Worksheet (SB06)|WFEE|2|KJ0DBK1SLDFLYX5},{16123456|2020-12-22
+      09:15:20|PROSECUTION|Issue Fee Payment (PTO-85B)|IFEE|1|KJ0DBK1RLDFLYX5},{16123456|2020-10-20
+      03:19:47|PROSECUTION|Notice of Allowance and Fees Due (PTOL-85)|NOA|2|KGC5TXULLDFLYX9},{16123456|2020-10-20
+      03:19:47|PROSECUTION|List of References cited by applicant and considered by
+      examiner|1449|2|KGC5TXUNLDFLYX9},{16123456|2020-10-19 07:19:45|PROSECUTION|Miscellaneous
+      Communication to Applicant - No Action Count|M327|2|KGAYYNY3LDFLYX5},{16123456|2020-10-19
+      07:19:45|PROSECUTION|List of References cited by applicant and considered by
+      examiner|1449|2|KGAYYNY5LDFLYX5},{16123456|2020-10-05 13:19:17|PROSECUTION|Non
+      Patent Literature|NPL|5|KFX1ELATLDFLYX7},{16123456|2020-10-05 13:19:17|PROSECUTION|Information
+      Disclosure Statement (IDS) Form (SB08)|IDS|2|KFX1ELAPLDFLYX7},{16123456|2020-10-05
+      13:19:17|PROSECUTION|Transmittal Letter|TRAN.LET|5|KFX1ELAVLDFLYX7},{16123456|2020-10-05
+      13:19:17|PROSECUTION|Foreign Reference|FOR|6|KFX1ELASLDFLYX7},{16123456|2020-10-05
+      13:19:17|PROSECUTION|Fee Worksheet (SB06)|WFEE|2|KFX1ELAQLDFLYX7},{16123456|2020-10-05
+      13:19:17|PROSECUTION|Electronic Filing System(EFS) Acknowledgment Receipt|N417|3|KFX1ELARLDFLYX7},{16123456|2020-10-05
+      13:19:17|PROSECUTION|Transmittal Letter|TRAN.LET|1|KFX1ELAULDFLYX7},{16123456|2020-09-23
+      06:47:08|PROSECUTION|Issue Information including classification, examiner, name,
+      claim, renumbering, etc.|IIFW|3|KFCN8CLCRXEAPX3},{16123456|2020-09-23 06:47:08|PROSECUTION|Examiner''s
+      search strategy and results|SRNT|1|KFCN8CLFRXEAPX3},{16123456|2020-09-23 06:47:08|PROSECUTION|Search
+      information including classification, databases and other search related notes|SRFW|1|KFCN8CLERXEAPX3},{16123456|2020-09-23
+      06:47:08|PROSECUTION|Notice of Allowance and Fees Due (PTOL-85)|NOA|7|KFCN8CLBRXEAPX3},{16123456|2020-06-26
+      11:13:35|PROSECUTION|Applicant Arguments/Remarks Made in an Amendment|REM|6|KBWLFU3VRXEAPX2},{16123456|2020-06-26
+      11:13:35|PROSECUTION|Electronic Filing System(EFS) Acknowledgment Receipt|N417|2|KBWLFU3WRXEAPX2},{16123456|2020-06-26
+      11:13:35|PROSECUTION|Claims|CLM|7|KBWLFU3URXEAPX2},{16123456|2020-06-26 11:13:35|PROSECUTION|Amendment/Request
+      for Reconsideration-After Non-Final Rejection|A...|1|KBWLFU3TRXEAPX2},{16123456|2020-06-26
+      11:13:35|PROSECUTION|Transmittal Letter|TRAN.LET|1|KBWLFU3XRXEAPX2},{16123456|2020-06-26
+      03:39:52|PROSECUTION|Fee Worksheet (SB06)|WFEE|1|KC4PVGZURXEAPX2},{16123456|2020-06-08
+      21:28:00|PROSECUTION|Applicant Initiated Interview Summary (PTOL-413)|INTV.SUM.APP|3|KB3753VDRXEAPX1},{16123456|2020-03-27
+      04:15:37|PROSECUTION|List of References cited by applicant and considered by
+      examiner|1449|1|K87AK41MRXEAPX5},{16123456|2020-03-27 04:15:37|PROSECUTION|Search
+      information including classification, databases and other search related notes|SRFW|1|K87AK41IRXEAPX5},{16123456|2020-03-27
+      04:15:37|PROSECUTION|Index of Claims|FWCLM|1|K87AK41JRXEAPX5},{16123456|2020-03-27
+      04:15:37|PROSECUTION|List of references cited by examiner|892|1|K87AK41HRXEAPX5},{16123456|2020-03-27
+      04:15:37|PROSECUTION|Examiner''s search strategy and results|SRNT|2|K87AK41KRXEAPX5},{16123456|2020-03-27
+      04:15:37|PROSECUTION|Bibliographic Data Sheet|BIB|1|K87AK41LRXEAPX5},{16123456|2020-03-27
+      04:15:37|PROSECUTION|Non-Final Rejection|CTNF|9|K87AK41FRXEAPX5},{16123456|2019-03-28
+      05:59:47|PROSECUTION|Notice of Publication|NTC.PUB|1|JTSPFUAFRXEAPX4},{16123456|2018-10-23
+      03:43:21|PROSECUTION|Priority Documents electronically retrieved by USPTO from
+      a participating IP Office|PD.FILED.E|30|JNLNVIHARXEAPX1},{16123456|2018-10-12
+      13:34:10|PROSECUTION|Fee Worksheet (SB06)|WFEE|1|JN53P2IURXEAPX0},{16123456|2018-10-12
+      03:10:24|PROSECUTION|Filing Receipt|APP.FILE.REC|4|JN4HEWH3RXEAPX5},{16123456|2018-09-06
+      11:08:26|PROSECUTION|Electronic Filing System(EFS) Acknowledgment Receipt|N417|3|JLQY2WZMRXEAPX4},{16123456|2018-09-06
+      11:08:26|PROSECUTION|Fee Worksheet (SB06)|WFEE|2|JLQY2WZLRXEAPX4},{16123456|2018-09-06
+      11:08:26|PROSECUTION|Drawings-other than black and white line drawings|DRW.NONBW|9|JLQY2WZSRXEAPX4},{16123456|2018-09-06
+      11:08:26|PROSECUTION|Oath or Declaration filed|OATH|2|JLQY2WZRRXEAPX4},{16123456|2018-09-06
+      11:08:26|PROSECUTION|Specification|SPEC|22|JLQY2WZORXEAPX4},{16123456|2018-09-06
+      11:08:26|PROSECUTION|Abstract|ABST|1|JLQY2WZQRXEAPX4},{16123456|2018-09-06 11:08:26|PROSECUTION|Information
+      Disclosure Statement (IDS) Form (SB08)|IDS|1|JLQY2WZKRXEAPX4},{16123456|2018-09-06
+      11:08:26|PROSECUTION|Foreign Reference|FOR|13|JLQY2WZTRXEAPX4},{16123456|2018-09-06
+      11:08:26|PROSECUTION|Claims|CLM|5|JLQY2WZPRXEAPX4},{16123456|2018-09-06 11:08:26|PROSECUTION|Application
+      Data Sheet|ADS|8|JLQY2WZNRXEAPX4},{16123456|2018-09-06 11:08:25|PROSECUTION|Power
+      of Attorney|PA..|2|JLQY2TUNRXEAPX0},{16123456|2018-09-06 11:08:25|PROSECUTION|Transmittal
+      Letter|TRAN.LET|5|JLQY2TUORXEAPX0},{16123456|2018-09-06 11:08:25|PROSECUTION|Transmittal
+      of New Application|TRNA|2|JLXS0Y2CLXEAPX3},{16123456|2018-09-06 03:55:43|PROSECUTION|Placeholder
+      sheet indicating presence of supplemental content in Supplemental Complex Repository
+      for Examiners(SCORE)|SCORE|1|JMT3ID42RXEAPX1}"],"appAttrDockNumberFacet":"1982-1042PUS1","appEntityStatusFacet":"UNDISCOUNTED","appCustNumberFacet":"2292","_version_":1781145993815785473,"firstInventorFileFacet":"Yes","appLocationFacet":"ELECTRONIC","appEarlyPubNumberFacet":"US20190095759A1","patentNumberFacet":"10902286"}]}},"queryId":"8bc5403d-78f4-48b3-abef-35bb2dc38fb3"},"jobStatus":null,"queryId":"8bc5403d-78f4-48b3-abef-35bb2dc38fb3","page":1,"count":0,"errorMessage":null,"createQueryRequest":{"searchText":"applId:(16123456)","facet":"false","facetField":null,"facetLimit":null,"facetMissing":null,"facetDate":null,"facetDateGap":null,"facetDateStart":null,"facetDateEnd":null,"facetDateOther":null,"facetDateInclude":null,"mm":"100%","sort":"applId
+      asc","qf":"applId","wt":null,"df":"patentTitle","fl":"*","start":"0","fq":[],"rows":null,"parameters":{"mm":"100%","df":"patentTitle","qf":"applId","fl":["*"],"start":"0","sort":"applId
+      asc","fq":[],"rows":"25","facet":"false"}},"links":[{"rel":"self","href":"https://ped.uspto.gov/api/queries/8bc5403d-78f4-48b3-abef-35bb2dc38fb3?format=XML"},{"rel":"results","href":"https://ped.uspto.gov/api/queries/8bc5403d-78f4-48b3-abef-35bb2dc38fb3/results?page=1"},{"rel":"package","href":"https://ped.uspto.gov/api/queries/8bc5403d-78f4-48b3-abef-35bb2dc38fb3/package?format=XML"},{"rel":"first","href":"https://ped.uspto.gov/api/queries/8bc5403d-78f4-48b3-abef-35bb2dc38fb3/results?page=1"},{"rel":"next","href":"https://ped.uspto.gov/api/queries/8bc5403d-78f4-48b3-abef-35bb2dc38fb3/results?page=2"},{"rel":"self","href":"https://ped.uspto.gov/api/queries/8bc5403d-78f4-48b3-abef-35bb2dc38fb3?format=JSON"},{"rel":"results","href":"https://ped.uspto.gov/api/queries/8bc5403d-78f4-48b3-abef-35bb2dc38fb3/results?page=1"},{"rel":"package","href":"https://ped.uspto.gov/api/queries/8bc5403d-78f4-48b3-abef-35bb2dc38fb3/package?format=JSON"},{"rel":"first","href":"https://ped.uspto.gov/api/queries/8bc5403d-78f4-48b3-abef-35bb2dc38fb3/results?page=1"},{"rel":"next","href":"https://ped.uspto.gov/api/queries/8bc5403d-78f4-48b3-abef-35bb2dc38fb3/results?page=2"}]}'
+    headers:
+      Cache-Control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Date:
+      - Mon, 30 Oct 2023 20:03:12 GMT
+      Expires:
+      - '0'
+      Pragma:
+      - no-cache
+      Server-Timing:
+      - intid;desc=696a0999d4aa6505
+      Strict-Transport-Security:
+      - max-age=31536000;includeSubDomains
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 7dfbfeea200bdd11da4db1cf0ddcb718.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - V4lYP5PRGV7m6f0MsO-SmSYnCXMbnQSNEPh3bC0BALbSxE4ZQg8fAQ==
+      X-Amz-Cf-Pop:
+      - IAH50-C1
+      X-Cache:
+      - Miss from cloudfront
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - DENY
+      X-XSS-Protection:
+      - 1; mode=block
+    http_version: HTTP/1.1
+    status_code: 200
+version: 1

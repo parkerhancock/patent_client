@@ -389,7 +389,7 @@ interactions:
       Content-Type:
       - application/xml;charset=utf-8
       Date:
-      - Mon, 30 Oct 2023 01:40:17 GMT
+      - Mon, 30 Oct 2023 16:20:22 GMT
       ETag:
       - '"02a313fb786165f58f7c25fd3c4769243"'
       Pragma:
@@ -403,443 +403,394 @@ interactions:
       X-API:
       - ops-v3.2
       X-EPO-Client-IP:
-      - 104.54.160.230
+      - 38.104.255.66
       X-EPO-Forwarded:
-      - '[104.54.160.230]'
+      - '[38.104.255.66]'
       X-Elapsed-Time:
-      - '15'
+      - '77'
       X-IndividualQuotaPerHour-Used:
-      - '798084'
+      - '1032813'
       X-RegisteredQuotaPerWeek-Used:
-      - '785049'
+      - '2772833'
       X-Throttling-Control:
       - idle (images=green:200, inpadoc=green:60, other=green:1000, retrieval=green:200,
         search=green:30)
     http_version: HTTP/1.1
     status_code: 200
 - request:
-    body: null
+    body: ''
     headers:
-      Accept:
-      - '*/*'
-      Accept-Encoding:
-      - gzip, deflate
       Authorization:
       - REDACTED
-      Connection:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
       - keep-alive
-      User-Agent:
-      - Mozilla/5.0 Python Patent Clientbot/3.2.8 (parkerhancock@users.noreply.github.com)
+      host:
+      - ops.epo.org
+      user-agent:
+      - python-httpx/0.24.1
     method: GET
     uri: http://ops.epo.org/3.2/rest-services/published-data/search?Range=1-100&q=applicant%3D%22Microsoft%22
   response:
-    body:
-      string: "<?xml version=\"1.0\" encoding=\"UTF-8\"?><?xml-stylesheet type=\"text/xsl\"
-        href=\"/3.2/style/exchange.xsl\"?>\n<ops:world-patent-data xmlns=\"http://www.epo.org/exchange\"
-        xmlns:ops=\"http://ops.epo.org\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">\n
-        \   <ops:biblio-search total-result-count=\"10000\">\n        <ops:query syntax=\"CQL\">applicant
-        = Microsoft</ops:query>\n        <ops:range begin=\"1\" end=\"100\"/>\n        <ops:search-result>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"86332190\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>11799814</doc-number>\n                    <kind>B1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"86771440\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>11799951</doc-number>\n                    <kind>B1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"46727712\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>ES</country>\n
-        \                   <doc-number>2951865</doc-number>\n                    <kind>T3</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"85775950\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023338948</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"88416420\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023341822</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"85511187\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023343136</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"85476235\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023343718</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"86053831\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023343072</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"88415791\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023343039</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"85476174\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023343374</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"88415717\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023343329</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"88415715\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023343330</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"85641053\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023343254</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"86054256\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023342661</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"88415655\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023342657</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"88415629\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023342629</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"71409235\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023342623</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"77365276\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023342359</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"85510835\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023342379</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"85476075\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023342375</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"72453862\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023342396</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"70614503\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023342282</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"85415247\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023342291</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"83283248\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023342287</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"80118820\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023342320</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"86054153\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023342278</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"85511061\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023342188</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"85873717\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023341910</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"85505755\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023341924</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"80284819\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023342410</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"85476189\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023342192</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"77249898\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023342121</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"83598337\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023342088</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"86053640\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023342116</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"85476205\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023345687</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"84362517\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023342123</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"72802049\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023342028</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"85156780\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023341974</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"85985060\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023345673</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"85477798\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023345618</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"86100090\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023345627</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"55629261\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023345013</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"85476077\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023344714</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"85979855\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023344860</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"85980807\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023344700</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"81750448\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023344849</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"76217892\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>AU</country>\n
-        \                   <doc-number>2022276663</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"81387373\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>AU</country>\n
-        \                   <doc-number>2022274680</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"81846270\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>AU</country>\n
-        \                   <doc-number>2022286253</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"87517176\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>11792279</doc-number>\n                    <kind>B1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"87570981\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>11792088</doc-number>\n                    <kind>B1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"86558891\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>11792084</doc-number>\n                    <kind>B1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"88309383\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>11790099</doc-number>\n                    <kind>B1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"88309376\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>11790037</doc-number>\n                    <kind>B1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"87520010\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>11790955</doc-number>\n                    <kind>B1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"85640998\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>11789821</doc-number>\n                    <kind>B1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"86099993\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023332208</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"51686521\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023332886</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"88308054\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023334395</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"75687447\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023334322</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"88308000\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023334350</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"73699461\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023334127</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"48980366\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023334112</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"85476347\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023334018</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"76438163\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023334085</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"84329842\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023335048</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"85462453\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023334073</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"85381262\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023335031</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"70739148\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023333975</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"70005830\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023333955</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"81927467\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023333724</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"55237689\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023333676</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"86054078\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023334514</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"83283430\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023334636</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"85382629\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023334320</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"64734843\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023334313</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"85873913\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023334308</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"88307716\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023334284</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"85328600\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023334290</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"64563435\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023334235</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"88307660\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023334144</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"76284157\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023334146</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"62683417\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023333854</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"88307600\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023333827</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"85461992\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023333821</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"84901470\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023333739</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"81392782\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023337396</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"40159838\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023336730</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"40159838\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023336729</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"88307389\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023336510</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"88307388\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023336509</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"85476187\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023336530</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"85510933\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023336504</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"85873603\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023336503</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"85781643\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023336465</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"40159838\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023336731</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"86007016\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023336696</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"85641173\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023336415</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"88307276\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023336547</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"86052416\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023336228</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \       </ops:search-result>\n    </ops:biblio-search>\n</ops:world-patent-data>"
+    content: "<?xml version=\"1.0\" encoding=\"UTF-8\"?><?xml-stylesheet type=\"text/xsl\"
+      href=\"/3.2/style/exchange.xsl\"?>\n<ops:world-patent-data xmlns=\"http://www.epo.org/exchange\"
+      xmlns:ops=\"http://ops.epo.org\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">\n
+      \   <ops:biblio-search total-result-count=\"10000\">\n        <ops:query syntax=\"CQL\">applicant
+      = Microsoft</ops:query>\n        <ops:range begin=\"1\" end=\"100\"/>\n        <ops:search-result>\n
+      \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"86332190\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+      \                   <doc-number>11799814</doc-number>\n                    <kind>B1</kind>\n
+      \               </document-id>\n            </ops:publication-reference>\n            <ops:publication-reference
+      system=\"ops.epo.org\" family-id=\"86771440\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>11799951</doc-number>\n
+      \                   <kind>B1</kind>\n                </document-id>\n            </ops:publication-reference>\n
+      \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"46727712\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>ES</country>\n
+      \                   <doc-number>2951865</doc-number>\n                    <kind>T3</kind>\n
+      \               </document-id>\n            </ops:publication-reference>\n            <ops:publication-reference
+      system=\"ops.epo.org\" family-id=\"85775950\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>2023338948</doc-number>\n
+      \                   <kind>A1</kind>\n                </document-id>\n            </ops:publication-reference>\n
+      \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"88416420\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+      \                   <doc-number>2023341822</doc-number>\n                    <kind>A1</kind>\n
+      \               </document-id>\n            </ops:publication-reference>\n            <ops:publication-reference
+      system=\"ops.epo.org\" family-id=\"85511187\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>2023343136</doc-number>\n
+      \                   <kind>A1</kind>\n                </document-id>\n            </ops:publication-reference>\n
+      \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"85476235\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+      \                   <doc-number>2023343718</doc-number>\n                    <kind>A1</kind>\n
+      \               </document-id>\n            </ops:publication-reference>\n            <ops:publication-reference
+      system=\"ops.epo.org\" family-id=\"86053831\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>2023343072</doc-number>\n
+      \                   <kind>A1</kind>\n                </document-id>\n            </ops:publication-reference>\n
+      \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"88415791\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+      \                   <doc-number>2023343039</doc-number>\n                    <kind>A1</kind>\n
+      \               </document-id>\n            </ops:publication-reference>\n            <ops:publication-reference
+      system=\"ops.epo.org\" family-id=\"85476174\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>2023343374</doc-number>\n
+      \                   <kind>A1</kind>\n                </document-id>\n            </ops:publication-reference>\n
+      \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"88415717\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+      \                   <doc-number>2023343329</doc-number>\n                    <kind>A1</kind>\n
+      \               </document-id>\n            </ops:publication-reference>\n            <ops:publication-reference
+      system=\"ops.epo.org\" family-id=\"88415715\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>2023343330</doc-number>\n
+      \                   <kind>A1</kind>\n                </document-id>\n            </ops:publication-reference>\n
+      \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"85641053\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+      \                   <doc-number>2023343254</doc-number>\n                    <kind>A1</kind>\n
+      \               </document-id>\n            </ops:publication-reference>\n            <ops:publication-reference
+      system=\"ops.epo.org\" family-id=\"86054256\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>2023342661</doc-number>\n
+      \                   <kind>A1</kind>\n                </document-id>\n            </ops:publication-reference>\n
+      \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"88415655\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+      \                   <doc-number>2023342657</doc-number>\n                    <kind>A1</kind>\n
+      \               </document-id>\n            </ops:publication-reference>\n            <ops:publication-reference
+      system=\"ops.epo.org\" family-id=\"88415629\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>2023342629</doc-number>\n
+      \                   <kind>A1</kind>\n                </document-id>\n            </ops:publication-reference>\n
+      \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"71409235\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+      \                   <doc-number>2023342623</doc-number>\n                    <kind>A1</kind>\n
+      \               </document-id>\n            </ops:publication-reference>\n            <ops:publication-reference
+      system=\"ops.epo.org\" family-id=\"77365276\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>2023342359</doc-number>\n
+      \                   <kind>A1</kind>\n                </document-id>\n            </ops:publication-reference>\n
+      \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"85510835\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+      \                   <doc-number>2023342379</doc-number>\n                    <kind>A1</kind>\n
+      \               </document-id>\n            </ops:publication-reference>\n            <ops:publication-reference
+      system=\"ops.epo.org\" family-id=\"85476075\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>2023342375</doc-number>\n
+      \                   <kind>A1</kind>\n                </document-id>\n            </ops:publication-reference>\n
+      \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"72453862\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+      \                   <doc-number>2023342396</doc-number>\n                    <kind>A1</kind>\n
+      \               </document-id>\n            </ops:publication-reference>\n            <ops:publication-reference
+      system=\"ops.epo.org\" family-id=\"70614503\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>2023342282</doc-number>\n
+      \                   <kind>A1</kind>\n                </document-id>\n            </ops:publication-reference>\n
+      \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"85415247\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+      \                   <doc-number>2023342291</doc-number>\n                    <kind>A1</kind>\n
+      \               </document-id>\n            </ops:publication-reference>\n            <ops:publication-reference
+      system=\"ops.epo.org\" family-id=\"83283248\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>2023342287</doc-number>\n
+      \                   <kind>A1</kind>\n                </document-id>\n            </ops:publication-reference>\n
+      \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"80118820\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+      \                   <doc-number>2023342320</doc-number>\n                    <kind>A1</kind>\n
+      \               </document-id>\n            </ops:publication-reference>\n            <ops:publication-reference
+      system=\"ops.epo.org\" family-id=\"86054153\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>2023342278</doc-number>\n
+      \                   <kind>A1</kind>\n                </document-id>\n            </ops:publication-reference>\n
+      \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"85511061\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+      \                   <doc-number>2023342188</doc-number>\n                    <kind>A1</kind>\n
+      \               </document-id>\n            </ops:publication-reference>\n            <ops:publication-reference
+      system=\"ops.epo.org\" family-id=\"85873717\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>2023341910</doc-number>\n
+      \                   <kind>A1</kind>\n                </document-id>\n            </ops:publication-reference>\n
+      \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"85505755\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+      \                   <doc-number>2023341924</doc-number>\n                    <kind>A1</kind>\n
+      \               </document-id>\n            </ops:publication-reference>\n            <ops:publication-reference
+      system=\"ops.epo.org\" family-id=\"80284819\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>2023342410</doc-number>\n
+      \                   <kind>A1</kind>\n                </document-id>\n            </ops:publication-reference>\n
+      \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"85476189\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+      \                   <doc-number>2023342192</doc-number>\n                    <kind>A1</kind>\n
+      \               </document-id>\n            </ops:publication-reference>\n            <ops:publication-reference
+      system=\"ops.epo.org\" family-id=\"77249898\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>2023342121</doc-number>\n
+      \                   <kind>A1</kind>\n                </document-id>\n            </ops:publication-reference>\n
+      \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"83598337\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+      \                   <doc-number>2023342088</doc-number>\n                    <kind>A1</kind>\n
+      \               </document-id>\n            </ops:publication-reference>\n            <ops:publication-reference
+      system=\"ops.epo.org\" family-id=\"86053640\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>2023342116</doc-number>\n
+      \                   <kind>A1</kind>\n                </document-id>\n            </ops:publication-reference>\n
+      \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"85476205\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+      \                   <doc-number>2023345687</doc-number>\n                    <kind>A1</kind>\n
+      \               </document-id>\n            </ops:publication-reference>\n            <ops:publication-reference
+      system=\"ops.epo.org\" family-id=\"84362517\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>2023342123</doc-number>\n
+      \                   <kind>A1</kind>\n                </document-id>\n            </ops:publication-reference>\n
+      \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"72802049\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+      \                   <doc-number>2023342028</doc-number>\n                    <kind>A1</kind>\n
+      \               </document-id>\n            </ops:publication-reference>\n            <ops:publication-reference
+      system=\"ops.epo.org\" family-id=\"85156780\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>2023341974</doc-number>\n
+      \                   <kind>A1</kind>\n                </document-id>\n            </ops:publication-reference>\n
+      \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"85985060\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+      \                   <doc-number>2023345673</doc-number>\n                    <kind>A1</kind>\n
+      \               </document-id>\n            </ops:publication-reference>\n            <ops:publication-reference
+      system=\"ops.epo.org\" family-id=\"85477798\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>2023345618</doc-number>\n
+      \                   <kind>A1</kind>\n                </document-id>\n            </ops:publication-reference>\n
+      \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"86100090\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+      \                   <doc-number>2023345627</doc-number>\n                    <kind>A1</kind>\n
+      \               </document-id>\n            </ops:publication-reference>\n            <ops:publication-reference
+      system=\"ops.epo.org\" family-id=\"55629261\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>2023345013</doc-number>\n
+      \                   <kind>A1</kind>\n                </document-id>\n            </ops:publication-reference>\n
+      \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"85476077\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+      \                   <doc-number>2023344714</doc-number>\n                    <kind>A1</kind>\n
+      \               </document-id>\n            </ops:publication-reference>\n            <ops:publication-reference
+      system=\"ops.epo.org\" family-id=\"85979855\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>2023344860</doc-number>\n
+      \                   <kind>A1</kind>\n                </document-id>\n            </ops:publication-reference>\n
+      \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"85980807\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+      \                   <doc-number>2023344700</doc-number>\n                    <kind>A1</kind>\n
+      \               </document-id>\n            </ops:publication-reference>\n            <ops:publication-reference
+      system=\"ops.epo.org\" family-id=\"81750448\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>2023344849</doc-number>\n
+      \                   <kind>A1</kind>\n                </document-id>\n            </ops:publication-reference>\n
+      \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"76217892\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>AU</country>\n
+      \                   <doc-number>2022276663</doc-number>\n                    <kind>A1</kind>\n
+      \               </document-id>\n            </ops:publication-reference>\n            <ops:publication-reference
+      system=\"ops.epo.org\" family-id=\"81387373\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>AU</country>\n                    <doc-number>2022274680</doc-number>\n
+      \                   <kind>A1</kind>\n                </document-id>\n            </ops:publication-reference>\n
+      \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"81846270\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>AU</country>\n
+      \                   <doc-number>2022286253</doc-number>\n                    <kind>A1</kind>\n
+      \               </document-id>\n            </ops:publication-reference>\n            <ops:publication-reference
+      system=\"ops.epo.org\" family-id=\"87517176\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>11792279</doc-number>\n
+      \                   <kind>B1</kind>\n                </document-id>\n            </ops:publication-reference>\n
+      \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"87570981\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+      \                   <doc-number>11792088</doc-number>\n                    <kind>B1</kind>\n
+      \               </document-id>\n            </ops:publication-reference>\n            <ops:publication-reference
+      system=\"ops.epo.org\" family-id=\"86558891\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>11792084</doc-number>\n
+      \                   <kind>B1</kind>\n                </document-id>\n            </ops:publication-reference>\n
+      \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"88309383\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+      \                   <doc-number>11790099</doc-number>\n                    <kind>B1</kind>\n
+      \               </document-id>\n            </ops:publication-reference>\n            <ops:publication-reference
+      system=\"ops.epo.org\" family-id=\"88309376\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>11790037</doc-number>\n
+      \                   <kind>B1</kind>\n                </document-id>\n            </ops:publication-reference>\n
+      \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"87520010\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+      \                   <doc-number>11790955</doc-number>\n                    <kind>B1</kind>\n
+      \               </document-id>\n            </ops:publication-reference>\n            <ops:publication-reference
+      system=\"ops.epo.org\" family-id=\"85640998\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>11789821</doc-number>\n
+      \                   <kind>B1</kind>\n                </document-id>\n            </ops:publication-reference>\n
+      \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"86099993\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+      \                   <doc-number>2023332208</doc-number>\n                    <kind>A1</kind>\n
+      \               </document-id>\n            </ops:publication-reference>\n            <ops:publication-reference
+      system=\"ops.epo.org\" family-id=\"51686521\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>2023332886</doc-number>\n
+      \                   <kind>A1</kind>\n                </document-id>\n            </ops:publication-reference>\n
+      \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"88308054\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+      \                   <doc-number>2023334395</doc-number>\n                    <kind>A1</kind>\n
+      \               </document-id>\n            </ops:publication-reference>\n            <ops:publication-reference
+      system=\"ops.epo.org\" family-id=\"75687447\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>2023334322</doc-number>\n
+      \                   <kind>A1</kind>\n                </document-id>\n            </ops:publication-reference>\n
+      \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"88308000\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+      \                   <doc-number>2023334350</doc-number>\n                    <kind>A1</kind>\n
+      \               </document-id>\n            </ops:publication-reference>\n            <ops:publication-reference
+      system=\"ops.epo.org\" family-id=\"73699461\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>2023334127</doc-number>\n
+      \                   <kind>A1</kind>\n                </document-id>\n            </ops:publication-reference>\n
+      \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"48980366\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+      \                   <doc-number>2023334112</doc-number>\n                    <kind>A1</kind>\n
+      \               </document-id>\n            </ops:publication-reference>\n            <ops:publication-reference
+      system=\"ops.epo.org\" family-id=\"85476347\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>2023334018</doc-number>\n
+      \                   <kind>A1</kind>\n                </document-id>\n            </ops:publication-reference>\n
+      \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"76438163\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+      \                   <doc-number>2023334085</doc-number>\n                    <kind>A1</kind>\n
+      \               </document-id>\n            </ops:publication-reference>\n            <ops:publication-reference
+      system=\"ops.epo.org\" family-id=\"84329842\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>2023335048</doc-number>\n
+      \                   <kind>A1</kind>\n                </document-id>\n            </ops:publication-reference>\n
+      \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"85462453\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+      \                   <doc-number>2023334073</doc-number>\n                    <kind>A1</kind>\n
+      \               </document-id>\n            </ops:publication-reference>\n            <ops:publication-reference
+      system=\"ops.epo.org\" family-id=\"85381262\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>2023335031</doc-number>\n
+      \                   <kind>A1</kind>\n                </document-id>\n            </ops:publication-reference>\n
+      \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"70739148\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+      \                   <doc-number>2023333975</doc-number>\n                    <kind>A1</kind>\n
+      \               </document-id>\n            </ops:publication-reference>\n            <ops:publication-reference
+      system=\"ops.epo.org\" family-id=\"70005830\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>2023333955</doc-number>\n
+      \                   <kind>A1</kind>\n                </document-id>\n            </ops:publication-reference>\n
+      \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"81927467\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+      \                   <doc-number>2023333724</doc-number>\n                    <kind>A1</kind>\n
+      \               </document-id>\n            </ops:publication-reference>\n            <ops:publication-reference
+      system=\"ops.epo.org\" family-id=\"55237689\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>2023333676</doc-number>\n
+      \                   <kind>A1</kind>\n                </document-id>\n            </ops:publication-reference>\n
+      \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"86054078\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+      \                   <doc-number>2023334514</doc-number>\n                    <kind>A1</kind>\n
+      \               </document-id>\n            </ops:publication-reference>\n            <ops:publication-reference
+      system=\"ops.epo.org\" family-id=\"83283430\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>2023334636</doc-number>\n
+      \                   <kind>A1</kind>\n                </document-id>\n            </ops:publication-reference>\n
+      \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"85382629\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+      \                   <doc-number>2023334320</doc-number>\n                    <kind>A1</kind>\n
+      \               </document-id>\n            </ops:publication-reference>\n            <ops:publication-reference
+      system=\"ops.epo.org\" family-id=\"64734843\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>2023334313</doc-number>\n
+      \                   <kind>A1</kind>\n                </document-id>\n            </ops:publication-reference>\n
+      \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"85873913\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+      \                   <doc-number>2023334308</doc-number>\n                    <kind>A1</kind>\n
+      \               </document-id>\n            </ops:publication-reference>\n            <ops:publication-reference
+      system=\"ops.epo.org\" family-id=\"88307716\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>2023334284</doc-number>\n
+      \                   <kind>A1</kind>\n                </document-id>\n            </ops:publication-reference>\n
+      \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"85328600\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+      \                   <doc-number>2023334290</doc-number>\n                    <kind>A1</kind>\n
+      \               </document-id>\n            </ops:publication-reference>\n            <ops:publication-reference
+      system=\"ops.epo.org\" family-id=\"64563435\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>2023334235</doc-number>\n
+      \                   <kind>A1</kind>\n                </document-id>\n            </ops:publication-reference>\n
+      \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"88307660\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+      \                   <doc-number>2023334144</doc-number>\n                    <kind>A1</kind>\n
+      \               </document-id>\n            </ops:publication-reference>\n            <ops:publication-reference
+      system=\"ops.epo.org\" family-id=\"76284157\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>2023334146</doc-number>\n
+      \                   <kind>A1</kind>\n                </document-id>\n            </ops:publication-reference>\n
+      \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"62683417\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+      \                   <doc-number>2023333854</doc-number>\n                    <kind>A1</kind>\n
+      \               </document-id>\n            </ops:publication-reference>\n            <ops:publication-reference
+      system=\"ops.epo.org\" family-id=\"88307600\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>2023333827</doc-number>\n
+      \                   <kind>A1</kind>\n                </document-id>\n            </ops:publication-reference>\n
+      \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"85461992\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+      \                   <doc-number>2023333821</doc-number>\n                    <kind>A1</kind>\n
+      \               </document-id>\n            </ops:publication-reference>\n            <ops:publication-reference
+      system=\"ops.epo.org\" family-id=\"84901470\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>2023333739</doc-number>\n
+      \                   <kind>A1</kind>\n                </document-id>\n            </ops:publication-reference>\n
+      \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"81392782\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+      \                   <doc-number>2023337396</doc-number>\n                    <kind>A1</kind>\n
+      \               </document-id>\n            </ops:publication-reference>\n            <ops:publication-reference
+      system=\"ops.epo.org\" family-id=\"40159838\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>2023336730</doc-number>\n
+      \                   <kind>A1</kind>\n                </document-id>\n            </ops:publication-reference>\n
+      \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"40159838\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+      \                   <doc-number>2023336729</doc-number>\n                    <kind>A1</kind>\n
+      \               </document-id>\n            </ops:publication-reference>\n            <ops:publication-reference
+      system=\"ops.epo.org\" family-id=\"88307389\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>2023336510</doc-number>\n
+      \                   <kind>A1</kind>\n                </document-id>\n            </ops:publication-reference>\n
+      \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"88307388\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+      \                   <doc-number>2023336509</doc-number>\n                    <kind>A1</kind>\n
+      \               </document-id>\n            </ops:publication-reference>\n            <ops:publication-reference
+      system=\"ops.epo.org\" family-id=\"85476187\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>2023336530</doc-number>\n
+      \                   <kind>A1</kind>\n                </document-id>\n            </ops:publication-reference>\n
+      \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"85510933\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+      \                   <doc-number>2023336504</doc-number>\n                    <kind>A1</kind>\n
+      \               </document-id>\n            </ops:publication-reference>\n            <ops:publication-reference
+      system=\"ops.epo.org\" family-id=\"85873603\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>2023336503</doc-number>\n
+      \                   <kind>A1</kind>\n                </document-id>\n            </ops:publication-reference>\n
+      \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"85781643\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+      \                   <doc-number>2023336465</doc-number>\n                    <kind>A1</kind>\n
+      \               </document-id>\n            </ops:publication-reference>\n            <ops:publication-reference
+      system=\"ops.epo.org\" family-id=\"40159838\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>2023336731</doc-number>\n
+      \                   <kind>A1</kind>\n                </document-id>\n            </ops:publication-reference>\n
+      \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"86007016\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+      \                   <doc-number>2023336696</doc-number>\n                    <kind>A1</kind>\n
+      \               </document-id>\n            </ops:publication-reference>\n            <ops:publication-reference
+      system=\"ops.epo.org\" family-id=\"85641173\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>2023336415</doc-number>\n
+      \                   <kind>A1</kind>\n                </document-id>\n            </ops:publication-reference>\n
+      \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"88307276\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+      \                   <doc-number>2023336547</doc-number>\n                    <kind>A1</kind>\n
+      \               </document-id>\n            </ops:publication-reference>\n            <ops:publication-reference
+      system=\"ops.epo.org\" family-id=\"86052416\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>2023336228</doc-number>\n
+      \                   <kind>A1</kind>\n                </document-id>\n            </ops:publication-reference>\n
+      \       </ops:search-result>\n    </ops:biblio-search>\n</ops:world-patent-data>"
     headers:
       Access-Control-Allow-Headers:
       - Authorization
@@ -856,7 +807,7 @@ interactions:
       Content-Type:
       - application/xml;charset=utf-8
       Date:
-      - Mon, 30 Oct 2023 01:40:17 GMT
+      - Mon, 30 Oct 2023 16:20:22 GMT
       ETag:
       - '"02a313fb786165f58f7c25fd3c4769243"'
       Pragma:
@@ -870,444 +821,394 @@ interactions:
       X-API:
       - ops-v3.2
       X-EPO-Client-IP:
-      - 104.54.160.230
+      - 38.104.255.66
       X-EPO-Forwarded:
-      - '[104.54.160.230]'
+      - '[38.104.255.66]'
       X-Elapsed-Time:
-      - '23'
+      - '74'
       X-IndividualQuotaPerHour-Used:
-      - '832865'
+      - '1067594'
       X-RegisteredQuotaPerWeek-Used:
-      - '819830'
+      - '2807614'
       X-Throttling-Control:
-      - idle (images=green:200, inpadoc=green:60, other=green:1000, retrieval=green:200,
-        search=green:30)
-    status:
-      code: 200
-      message: OK
+      - busy (images=green:100, inpadoc=green:45, other=green:1000, retrieval=green:100,
+        search=green:15)
+    http_version: HTTP/1.1
+    status_code: 200
 - request:
-    body: null
+    body: ''
     headers:
-      Accept:
-      - '*/*'
-      Accept-Encoding:
-      - gzip, deflate
       Authorization:
       - REDACTED
-      Connection:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
       - keep-alive
-      User-Agent:
-      - Mozilla/5.0 Python Patent Clientbot/3.2.8 (parkerhancock@users.noreply.github.com)
+      host:
+      - ops.epo.org
+      user-agent:
+      - python-httpx/0.24.1
     method: GET
     uri: http://ops.epo.org/3.2/rest-services/published-data/search?Range=1-100&q=applicant%3D%22Microsoft%22
   response:
-    body:
-      string: "<?xml version=\"1.0\" encoding=\"UTF-8\"?><?xml-stylesheet type=\"text/xsl\"
-        href=\"/3.2/style/exchange.xsl\"?>\n<ops:world-patent-data xmlns=\"http://www.epo.org/exchange\"
-        xmlns:ops=\"http://ops.epo.org\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">\n
-        \   <ops:biblio-search total-result-count=\"10000\">\n        <ops:query syntax=\"CQL\">applicant
-        = Microsoft</ops:query>\n        <ops:range begin=\"1\" end=\"100\"/>\n        <ops:search-result>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"86332190\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>11799814</doc-number>\n                    <kind>B1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"86771440\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>11799951</doc-number>\n                    <kind>B1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"46727712\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>ES</country>\n
-        \                   <doc-number>2951865</doc-number>\n                    <kind>T3</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"85775950\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023338948</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"88416420\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023341822</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"85511187\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023343136</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"85476235\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023343718</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"86053831\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023343072</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"88415791\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023343039</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"85476174\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023343374</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"88415717\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023343329</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"88415715\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023343330</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"85641053\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023343254</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"86054256\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023342661</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"88415655\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023342657</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"88415629\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023342629</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"71409235\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023342623</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"77365276\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023342359</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"85510835\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023342379</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"85476075\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023342375</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"72453862\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023342396</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"70614503\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023342282</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"85415247\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023342291</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"83283248\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023342287</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"80118820\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023342320</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"86054153\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023342278</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"85511061\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023342188</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"85873717\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023341910</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"85505755\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023341924</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"80284819\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023342410</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"85476189\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023342192</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"77249898\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023342121</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"83598337\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023342088</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"86053640\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023342116</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"85476205\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023345687</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"84362517\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023342123</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"72802049\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023342028</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"85156780\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023341974</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"85985060\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023345673</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"85477798\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023345618</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"86100090\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023345627</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"55629261\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023345013</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"85476077\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023344714</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"85979855\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023344860</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"85980807\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023344700</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"81750448\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023344849</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"76217892\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>AU</country>\n
-        \                   <doc-number>2022276663</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"81387373\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>AU</country>\n
-        \                   <doc-number>2022274680</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"81846270\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>AU</country>\n
-        \                   <doc-number>2022286253</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"87517176\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>11792279</doc-number>\n                    <kind>B1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"87570981\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>11792088</doc-number>\n                    <kind>B1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"86558891\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>11792084</doc-number>\n                    <kind>B1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"88309383\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>11790099</doc-number>\n                    <kind>B1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"88309376\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>11790037</doc-number>\n                    <kind>B1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"87520010\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>11790955</doc-number>\n                    <kind>B1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"85640998\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>11789821</doc-number>\n                    <kind>B1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"86099993\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023332208</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"51686521\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023332886</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"88308054\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023334395</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"75687447\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023334322</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"88308000\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023334350</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"73699461\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023334127</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"48980366\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023334112</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"85476347\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023334018</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"76438163\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023334085</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"84329842\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023335048</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"85462453\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023334073</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"85381262\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023335031</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"70739148\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023333975</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"70005830\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023333955</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"81927467\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023333724</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"55237689\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023333676</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"86054078\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023334514</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"83283430\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023334636</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"85382629\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023334320</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"64734843\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023334313</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"85873913\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023334308</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"88307716\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023334284</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"85328600\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023334290</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"64563435\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023334235</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"88307660\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023334144</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"76284157\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023334146</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"62683417\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023333854</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"88307600\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023333827</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"85461992\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023333821</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"84901470\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023333739</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"81392782\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023337396</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"40159838\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023336730</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"40159838\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023336729</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"88307389\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023336510</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"88307388\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023336509</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"85476187\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023336530</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"85510933\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023336504</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"85873603\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023336503</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"85781643\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023336465</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"40159838\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023336731</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"86007016\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023336696</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"85641173\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023336415</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"88307276\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023336547</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"86052416\">\n
-        \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
-        \                   <doc-number>2023336228</doc-number>\n                    <kind>A1</kind>\n
-        \               </document-id>\n            </ops:publication-reference>\n
-        \       </ops:search-result>\n    </ops:biblio-search>\n</ops:world-patent-data>"
+    content: "<?xml version=\"1.0\" encoding=\"UTF-8\"?><?xml-stylesheet type=\"text/xsl\"
+      href=\"/3.2/style/exchange.xsl\"?>\n<ops:world-patent-data xmlns=\"http://www.epo.org/exchange\"
+      xmlns:ops=\"http://ops.epo.org\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">\n
+      \   <ops:biblio-search total-result-count=\"10000\">\n        <ops:query syntax=\"CQL\">applicant
+      = Microsoft</ops:query>\n        <ops:range begin=\"1\" end=\"100\"/>\n        <ops:search-result>\n
+      \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"86332190\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+      \                   <doc-number>11799814</doc-number>\n                    <kind>B1</kind>\n
+      \               </document-id>\n            </ops:publication-reference>\n            <ops:publication-reference
+      system=\"ops.epo.org\" family-id=\"86771440\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>11799951</doc-number>\n
+      \                   <kind>B1</kind>\n                </document-id>\n            </ops:publication-reference>\n
+      \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"46727712\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>ES</country>\n
+      \                   <doc-number>2951865</doc-number>\n                    <kind>T3</kind>\n
+      \               </document-id>\n            </ops:publication-reference>\n            <ops:publication-reference
+      system=\"ops.epo.org\" family-id=\"85775950\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>2023338948</doc-number>\n
+      \                   <kind>A1</kind>\n                </document-id>\n            </ops:publication-reference>\n
+      \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"88416420\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+      \                   <doc-number>2023341822</doc-number>\n                    <kind>A1</kind>\n
+      \               </document-id>\n            </ops:publication-reference>\n            <ops:publication-reference
+      system=\"ops.epo.org\" family-id=\"85511187\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>2023343136</doc-number>\n
+      \                   <kind>A1</kind>\n                </document-id>\n            </ops:publication-reference>\n
+      \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"85476235\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+      \                   <doc-number>2023343718</doc-number>\n                    <kind>A1</kind>\n
+      \               </document-id>\n            </ops:publication-reference>\n            <ops:publication-reference
+      system=\"ops.epo.org\" family-id=\"86053831\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>2023343072</doc-number>\n
+      \                   <kind>A1</kind>\n                </document-id>\n            </ops:publication-reference>\n
+      \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"88415791\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+      \                   <doc-number>2023343039</doc-number>\n                    <kind>A1</kind>\n
+      \               </document-id>\n            </ops:publication-reference>\n            <ops:publication-reference
+      system=\"ops.epo.org\" family-id=\"85476174\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>2023343374</doc-number>\n
+      \                   <kind>A1</kind>\n                </document-id>\n            </ops:publication-reference>\n
+      \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"88415717\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+      \                   <doc-number>2023343329</doc-number>\n                    <kind>A1</kind>\n
+      \               </document-id>\n            </ops:publication-reference>\n            <ops:publication-reference
+      system=\"ops.epo.org\" family-id=\"88415715\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>2023343330</doc-number>\n
+      \                   <kind>A1</kind>\n                </document-id>\n            </ops:publication-reference>\n
+      \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"85641053\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+      \                   <doc-number>2023343254</doc-number>\n                    <kind>A1</kind>\n
+      \               </document-id>\n            </ops:publication-reference>\n            <ops:publication-reference
+      system=\"ops.epo.org\" family-id=\"86054256\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>2023342661</doc-number>\n
+      \                   <kind>A1</kind>\n                </document-id>\n            </ops:publication-reference>\n
+      \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"88415655\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+      \                   <doc-number>2023342657</doc-number>\n                    <kind>A1</kind>\n
+      \               </document-id>\n            </ops:publication-reference>\n            <ops:publication-reference
+      system=\"ops.epo.org\" family-id=\"88415629\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>2023342629</doc-number>\n
+      \                   <kind>A1</kind>\n                </document-id>\n            </ops:publication-reference>\n
+      \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"71409235\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+      \                   <doc-number>2023342623</doc-number>\n                    <kind>A1</kind>\n
+      \               </document-id>\n            </ops:publication-reference>\n            <ops:publication-reference
+      system=\"ops.epo.org\" family-id=\"77365276\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>2023342359</doc-number>\n
+      \                   <kind>A1</kind>\n                </document-id>\n            </ops:publication-reference>\n
+      \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"85510835\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+      \                   <doc-number>2023342379</doc-number>\n                    <kind>A1</kind>\n
+      \               </document-id>\n            </ops:publication-reference>\n            <ops:publication-reference
+      system=\"ops.epo.org\" family-id=\"85476075\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>2023342375</doc-number>\n
+      \                   <kind>A1</kind>\n                </document-id>\n            </ops:publication-reference>\n
+      \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"72453862\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+      \                   <doc-number>2023342396</doc-number>\n                    <kind>A1</kind>\n
+      \               </document-id>\n            </ops:publication-reference>\n            <ops:publication-reference
+      system=\"ops.epo.org\" family-id=\"70614503\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>2023342282</doc-number>\n
+      \                   <kind>A1</kind>\n                </document-id>\n            </ops:publication-reference>\n
+      \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"85415247\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+      \                   <doc-number>2023342291</doc-number>\n                    <kind>A1</kind>\n
+      \               </document-id>\n            </ops:publication-reference>\n            <ops:publication-reference
+      system=\"ops.epo.org\" family-id=\"83283248\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>2023342287</doc-number>\n
+      \                   <kind>A1</kind>\n                </document-id>\n            </ops:publication-reference>\n
+      \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"80118820\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+      \                   <doc-number>2023342320</doc-number>\n                    <kind>A1</kind>\n
+      \               </document-id>\n            </ops:publication-reference>\n            <ops:publication-reference
+      system=\"ops.epo.org\" family-id=\"86054153\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>2023342278</doc-number>\n
+      \                   <kind>A1</kind>\n                </document-id>\n            </ops:publication-reference>\n
+      \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"85511061\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+      \                   <doc-number>2023342188</doc-number>\n                    <kind>A1</kind>\n
+      \               </document-id>\n            </ops:publication-reference>\n            <ops:publication-reference
+      system=\"ops.epo.org\" family-id=\"85873717\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>2023341910</doc-number>\n
+      \                   <kind>A1</kind>\n                </document-id>\n            </ops:publication-reference>\n
+      \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"85505755\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+      \                   <doc-number>2023341924</doc-number>\n                    <kind>A1</kind>\n
+      \               </document-id>\n            </ops:publication-reference>\n            <ops:publication-reference
+      system=\"ops.epo.org\" family-id=\"80284819\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>2023342410</doc-number>\n
+      \                   <kind>A1</kind>\n                </document-id>\n            </ops:publication-reference>\n
+      \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"85476189\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+      \                   <doc-number>2023342192</doc-number>\n                    <kind>A1</kind>\n
+      \               </document-id>\n            </ops:publication-reference>\n            <ops:publication-reference
+      system=\"ops.epo.org\" family-id=\"77249898\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>2023342121</doc-number>\n
+      \                   <kind>A1</kind>\n                </document-id>\n            </ops:publication-reference>\n
+      \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"83598337\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+      \                   <doc-number>2023342088</doc-number>\n                    <kind>A1</kind>\n
+      \               </document-id>\n            </ops:publication-reference>\n            <ops:publication-reference
+      system=\"ops.epo.org\" family-id=\"86053640\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>2023342116</doc-number>\n
+      \                   <kind>A1</kind>\n                </document-id>\n            </ops:publication-reference>\n
+      \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"85476205\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+      \                   <doc-number>2023345687</doc-number>\n                    <kind>A1</kind>\n
+      \               </document-id>\n            </ops:publication-reference>\n            <ops:publication-reference
+      system=\"ops.epo.org\" family-id=\"84362517\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>2023342123</doc-number>\n
+      \                   <kind>A1</kind>\n                </document-id>\n            </ops:publication-reference>\n
+      \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"72802049\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+      \                   <doc-number>2023342028</doc-number>\n                    <kind>A1</kind>\n
+      \               </document-id>\n            </ops:publication-reference>\n            <ops:publication-reference
+      system=\"ops.epo.org\" family-id=\"85156780\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>2023341974</doc-number>\n
+      \                   <kind>A1</kind>\n                </document-id>\n            </ops:publication-reference>\n
+      \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"85985060\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+      \                   <doc-number>2023345673</doc-number>\n                    <kind>A1</kind>\n
+      \               </document-id>\n            </ops:publication-reference>\n            <ops:publication-reference
+      system=\"ops.epo.org\" family-id=\"85477798\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>2023345618</doc-number>\n
+      \                   <kind>A1</kind>\n                </document-id>\n            </ops:publication-reference>\n
+      \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"86100090\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+      \                   <doc-number>2023345627</doc-number>\n                    <kind>A1</kind>\n
+      \               </document-id>\n            </ops:publication-reference>\n            <ops:publication-reference
+      system=\"ops.epo.org\" family-id=\"55629261\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>2023345013</doc-number>\n
+      \                   <kind>A1</kind>\n                </document-id>\n            </ops:publication-reference>\n
+      \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"85476077\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+      \                   <doc-number>2023344714</doc-number>\n                    <kind>A1</kind>\n
+      \               </document-id>\n            </ops:publication-reference>\n            <ops:publication-reference
+      system=\"ops.epo.org\" family-id=\"85979855\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>2023344860</doc-number>\n
+      \                   <kind>A1</kind>\n                </document-id>\n            </ops:publication-reference>\n
+      \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"85980807\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+      \                   <doc-number>2023344700</doc-number>\n                    <kind>A1</kind>\n
+      \               </document-id>\n            </ops:publication-reference>\n            <ops:publication-reference
+      system=\"ops.epo.org\" family-id=\"81750448\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>2023344849</doc-number>\n
+      \                   <kind>A1</kind>\n                </document-id>\n            </ops:publication-reference>\n
+      \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"76217892\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>AU</country>\n
+      \                   <doc-number>2022276663</doc-number>\n                    <kind>A1</kind>\n
+      \               </document-id>\n            </ops:publication-reference>\n            <ops:publication-reference
+      system=\"ops.epo.org\" family-id=\"81387373\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>AU</country>\n                    <doc-number>2022274680</doc-number>\n
+      \                   <kind>A1</kind>\n                </document-id>\n            </ops:publication-reference>\n
+      \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"81846270\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>AU</country>\n
+      \                   <doc-number>2022286253</doc-number>\n                    <kind>A1</kind>\n
+      \               </document-id>\n            </ops:publication-reference>\n            <ops:publication-reference
+      system=\"ops.epo.org\" family-id=\"87517176\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>11792279</doc-number>\n
+      \                   <kind>B1</kind>\n                </document-id>\n            </ops:publication-reference>\n
+      \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"87570981\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+      \                   <doc-number>11792088</doc-number>\n                    <kind>B1</kind>\n
+      \               </document-id>\n            </ops:publication-reference>\n            <ops:publication-reference
+      system=\"ops.epo.org\" family-id=\"86558891\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>11792084</doc-number>\n
+      \                   <kind>B1</kind>\n                </document-id>\n            </ops:publication-reference>\n
+      \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"88309383\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+      \                   <doc-number>11790099</doc-number>\n                    <kind>B1</kind>\n
+      \               </document-id>\n            </ops:publication-reference>\n            <ops:publication-reference
+      system=\"ops.epo.org\" family-id=\"88309376\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>11790037</doc-number>\n
+      \                   <kind>B1</kind>\n                </document-id>\n            </ops:publication-reference>\n
+      \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"87520010\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+      \                   <doc-number>11790955</doc-number>\n                    <kind>B1</kind>\n
+      \               </document-id>\n            </ops:publication-reference>\n            <ops:publication-reference
+      system=\"ops.epo.org\" family-id=\"85640998\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>11789821</doc-number>\n
+      \                   <kind>B1</kind>\n                </document-id>\n            </ops:publication-reference>\n
+      \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"86099993\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+      \                   <doc-number>2023332208</doc-number>\n                    <kind>A1</kind>\n
+      \               </document-id>\n            </ops:publication-reference>\n            <ops:publication-reference
+      system=\"ops.epo.org\" family-id=\"51686521\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>2023332886</doc-number>\n
+      \                   <kind>A1</kind>\n                </document-id>\n            </ops:publication-reference>\n
+      \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"88308054\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+      \                   <doc-number>2023334395</doc-number>\n                    <kind>A1</kind>\n
+      \               </document-id>\n            </ops:publication-reference>\n            <ops:publication-reference
+      system=\"ops.epo.org\" family-id=\"75687447\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>2023334322</doc-number>\n
+      \                   <kind>A1</kind>\n                </document-id>\n            </ops:publication-reference>\n
+      \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"88308000\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+      \                   <doc-number>2023334350</doc-number>\n                    <kind>A1</kind>\n
+      \               </document-id>\n            </ops:publication-reference>\n            <ops:publication-reference
+      system=\"ops.epo.org\" family-id=\"73699461\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>2023334127</doc-number>\n
+      \                   <kind>A1</kind>\n                </document-id>\n            </ops:publication-reference>\n
+      \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"48980366\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+      \                   <doc-number>2023334112</doc-number>\n                    <kind>A1</kind>\n
+      \               </document-id>\n            </ops:publication-reference>\n            <ops:publication-reference
+      system=\"ops.epo.org\" family-id=\"85476347\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>2023334018</doc-number>\n
+      \                   <kind>A1</kind>\n                </document-id>\n            </ops:publication-reference>\n
+      \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"76438163\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+      \                   <doc-number>2023334085</doc-number>\n                    <kind>A1</kind>\n
+      \               </document-id>\n            </ops:publication-reference>\n            <ops:publication-reference
+      system=\"ops.epo.org\" family-id=\"84329842\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>2023335048</doc-number>\n
+      \                   <kind>A1</kind>\n                </document-id>\n            </ops:publication-reference>\n
+      \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"85462453\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+      \                   <doc-number>2023334073</doc-number>\n                    <kind>A1</kind>\n
+      \               </document-id>\n            </ops:publication-reference>\n            <ops:publication-reference
+      system=\"ops.epo.org\" family-id=\"85381262\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>2023335031</doc-number>\n
+      \                   <kind>A1</kind>\n                </document-id>\n            </ops:publication-reference>\n
+      \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"70739148\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+      \                   <doc-number>2023333975</doc-number>\n                    <kind>A1</kind>\n
+      \               </document-id>\n            </ops:publication-reference>\n            <ops:publication-reference
+      system=\"ops.epo.org\" family-id=\"70005830\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>2023333955</doc-number>\n
+      \                   <kind>A1</kind>\n                </document-id>\n            </ops:publication-reference>\n
+      \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"81927467\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+      \                   <doc-number>2023333724</doc-number>\n                    <kind>A1</kind>\n
+      \               </document-id>\n            </ops:publication-reference>\n            <ops:publication-reference
+      system=\"ops.epo.org\" family-id=\"55237689\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>2023333676</doc-number>\n
+      \                   <kind>A1</kind>\n                </document-id>\n            </ops:publication-reference>\n
+      \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"86054078\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+      \                   <doc-number>2023334514</doc-number>\n                    <kind>A1</kind>\n
+      \               </document-id>\n            </ops:publication-reference>\n            <ops:publication-reference
+      system=\"ops.epo.org\" family-id=\"83283430\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>2023334636</doc-number>\n
+      \                   <kind>A1</kind>\n                </document-id>\n            </ops:publication-reference>\n
+      \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"85382629\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+      \                   <doc-number>2023334320</doc-number>\n                    <kind>A1</kind>\n
+      \               </document-id>\n            </ops:publication-reference>\n            <ops:publication-reference
+      system=\"ops.epo.org\" family-id=\"64734843\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>2023334313</doc-number>\n
+      \                   <kind>A1</kind>\n                </document-id>\n            </ops:publication-reference>\n
+      \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"85873913\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+      \                   <doc-number>2023334308</doc-number>\n                    <kind>A1</kind>\n
+      \               </document-id>\n            </ops:publication-reference>\n            <ops:publication-reference
+      system=\"ops.epo.org\" family-id=\"88307716\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>2023334284</doc-number>\n
+      \                   <kind>A1</kind>\n                </document-id>\n            </ops:publication-reference>\n
+      \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"85328600\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+      \                   <doc-number>2023334290</doc-number>\n                    <kind>A1</kind>\n
+      \               </document-id>\n            </ops:publication-reference>\n            <ops:publication-reference
+      system=\"ops.epo.org\" family-id=\"64563435\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>2023334235</doc-number>\n
+      \                   <kind>A1</kind>\n                </document-id>\n            </ops:publication-reference>\n
+      \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"88307660\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+      \                   <doc-number>2023334144</doc-number>\n                    <kind>A1</kind>\n
+      \               </document-id>\n            </ops:publication-reference>\n            <ops:publication-reference
+      system=\"ops.epo.org\" family-id=\"76284157\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>2023334146</doc-number>\n
+      \                   <kind>A1</kind>\n                </document-id>\n            </ops:publication-reference>\n
+      \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"62683417\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+      \                   <doc-number>2023333854</doc-number>\n                    <kind>A1</kind>\n
+      \               </document-id>\n            </ops:publication-reference>\n            <ops:publication-reference
+      system=\"ops.epo.org\" family-id=\"88307600\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>2023333827</doc-number>\n
+      \                   <kind>A1</kind>\n                </document-id>\n            </ops:publication-reference>\n
+      \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"85461992\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+      \                   <doc-number>2023333821</doc-number>\n                    <kind>A1</kind>\n
+      \               </document-id>\n            </ops:publication-reference>\n            <ops:publication-reference
+      system=\"ops.epo.org\" family-id=\"84901470\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>2023333739</doc-number>\n
+      \                   <kind>A1</kind>\n                </document-id>\n            </ops:publication-reference>\n
+      \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"81392782\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+      \                   <doc-number>2023337396</doc-number>\n                    <kind>A1</kind>\n
+      \               </document-id>\n            </ops:publication-reference>\n            <ops:publication-reference
+      system=\"ops.epo.org\" family-id=\"40159838\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>2023336730</doc-number>\n
+      \                   <kind>A1</kind>\n                </document-id>\n            </ops:publication-reference>\n
+      \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"40159838\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+      \                   <doc-number>2023336729</doc-number>\n                    <kind>A1</kind>\n
+      \               </document-id>\n            </ops:publication-reference>\n            <ops:publication-reference
+      system=\"ops.epo.org\" family-id=\"88307389\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>2023336510</doc-number>\n
+      \                   <kind>A1</kind>\n                </document-id>\n            </ops:publication-reference>\n
+      \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"88307388\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+      \                   <doc-number>2023336509</doc-number>\n                    <kind>A1</kind>\n
+      \               </document-id>\n            </ops:publication-reference>\n            <ops:publication-reference
+      system=\"ops.epo.org\" family-id=\"85476187\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>2023336530</doc-number>\n
+      \                   <kind>A1</kind>\n                </document-id>\n            </ops:publication-reference>\n
+      \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"85510933\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+      \                   <doc-number>2023336504</doc-number>\n                    <kind>A1</kind>\n
+      \               </document-id>\n            </ops:publication-reference>\n            <ops:publication-reference
+      system=\"ops.epo.org\" family-id=\"85873603\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>2023336503</doc-number>\n
+      \                   <kind>A1</kind>\n                </document-id>\n            </ops:publication-reference>\n
+      \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"85781643\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+      \                   <doc-number>2023336465</doc-number>\n                    <kind>A1</kind>\n
+      \               </document-id>\n            </ops:publication-reference>\n            <ops:publication-reference
+      system=\"ops.epo.org\" family-id=\"40159838\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>2023336731</doc-number>\n
+      \                   <kind>A1</kind>\n                </document-id>\n            </ops:publication-reference>\n
+      \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"86007016\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+      \                   <doc-number>2023336696</doc-number>\n                    <kind>A1</kind>\n
+      \               </document-id>\n            </ops:publication-reference>\n            <ops:publication-reference
+      system=\"ops.epo.org\" family-id=\"85641173\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>2023336415</doc-number>\n
+      \                   <kind>A1</kind>\n                </document-id>\n            </ops:publication-reference>\n
+      \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"88307276\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+      \                   <doc-number>2023336547</doc-number>\n                    <kind>A1</kind>\n
+      \               </document-id>\n            </ops:publication-reference>\n            <ops:publication-reference
+      system=\"ops.epo.org\" family-id=\"86052416\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>2023336228</doc-number>\n
+      \                   <kind>A1</kind>\n                </document-id>\n            </ops:publication-reference>\n
+      \       </ops:search-result>\n    </ops:biblio-search>\n</ops:world-patent-data>"
     headers:
       Access-Control-Allow-Headers:
       - Authorization
@@ -1324,7 +1225,7 @@ interactions:
       Content-Type:
       - application/xml;charset=utf-8
       Date:
-      - Mon, 30 Oct 2023 01:40:18 GMT
+      - Mon, 30 Oct 2023 16:20:22 GMT
       ETag:
       - '"02a313fb786165f58f7c25fd3c4769243"'
       Pragma:
@@ -1338,21 +1239,20 @@ interactions:
       X-API:
       - ops-v3.2
       X-EPO-Client-IP:
-      - 104.54.160.230
+      - 38.104.255.66
       X-EPO-Forwarded:
-      - '[104.54.160.230]'
+      - '[38.104.255.66]'
       X-Elapsed-Time:
-      - '20'
+      - '16'
       X-IndividualQuotaPerHour-Used:
-      - '867646'
+      - '1102375'
       X-RegisteredQuotaPerWeek-Used:
-      - '854611'
+      - '2842395'
       X-Throttling-Control:
-      - idle (images=green:200, inpadoc=green:60, other=green:1000, retrieval=green:200,
-        search=green:30)
-    status:
-      code: 200
-      message: OK
+      - busy (images=green:100, inpadoc=green:45, other=green:1000, retrieval=green:100,
+        search=green:15)
+    http_version: HTTP/1.1
+    status_code: 200
 - request:
     body: ''
     headers:
@@ -1463,7 +1363,7 @@ interactions:
       Content-Type:
       - application/xml;charset=utf-8
       Date:
-      - Mon, 30 Oct 2023 01:40:18 GMT
+      - Mon, 30 Oct 2023 16:20:22 GMT
       ETag:
       - '"0388e9991a7aff01e35f96a73b72ae1e8"'
       Pragma:
@@ -1477,18 +1377,18 @@ interactions:
       X-API:
       - ops-v3.2
       X-EPO-Client-IP:
-      - 104.54.160.230
+      - 38.104.255.66
       X-EPO-Forwarded:
-      - '[104.54.160.230]'
+      - '[38.104.255.66]'
       X-Elapsed-Time:
-      - '21'
+      - '20'
       X-IndividualQuotaPerHour-Used:
-      - '875000'
+      - '1109729'
       X-RegisteredQuotaPerWeek-Used:
-      - '861965'
+      - '2849749'
       X-Throttling-Control:
-      - idle (images=green:200, inpadoc=green:60, other=green:1000, retrieval=green:200,
-        search=green:30)
+      - busy (images=green:100, inpadoc=green:45, other=green:1000, retrieval=green:100,
+        search=green:15)
     http_version: HTTP/1.1
     status_code: 200
 version: 1

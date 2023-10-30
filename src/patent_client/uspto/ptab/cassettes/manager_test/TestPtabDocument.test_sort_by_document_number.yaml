@@ -207,7 +207,7 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Sat, 28 Oct 2023 19:20:07 GMT
+      - Mon, 30 Oct 2023 16:23:36 GMT
       Strict-Transport-Security:
       - max-age=31536000;
       Transfer-Encoding:
@@ -219,196 +219,197 @@ interactions:
     http_version: HTTP/1.1
     status_code: 200
 - request:
-    body: null
+    body: ''
     headers:
-      Accept:
+      accept:
       - '*/*'
-      Accept-Encoding:
+      accept-encoding:
       - gzip, deflate
-      Connection:
+      connection:
       - keep-alive
-      User-Agent:
-      - Mozilla/5.0 Python Patent Clientbot/3.2.8 (parkerhancock@users.noreply.github.com)
+      host:
+      - developer.uspto.gov
+      user-agent:
+      - python-httpx/0.24.1
     method: GET
     uri: https://developer.uspto.gov/ptab-api/documents?proceedingNumber=IPR2016-00831&recordTotalQuantity=25&sortOrderCategory=documentNumber&recordStartNumber=0
   response:
-    body:
-      string: "{\"aggregationData\":{},\"results\":[{\"filingPartyCategory\":\"PETITIONER\",\"documentNumber\":\"1\",\"documentName\":\"705
-        Petition FINAL.pdf\",\"documentCategory\":\"Paper\",\"documentTitleText\":\"Petition
-        for Inter Partes Review of U.S. Patent No. 6,162,705\",\"proceedingNumber\":\"IPR2016-00831\",\"documentFilingDate\":\"04-01-2016\",\"documentTypeName\":\"Petition\",\"proceedingTypeCategory\":\"AIA
-        Trial\",\"subproceedingTypeCategory\":\"IPR\",\"documentIdentifier\":\"169264136\",\"objectUuId\":\"workspace://SpacesStore/eb6c3f1a-a327-43d0-9cde-ddeb5080a8f8;1.0\",\"respondentTechnologyCenterNumber\":\"2800\",\"respondentPatentOwnerName\":\"Silicon
-        Genesis Corporation\",\"respondentPartyName\":\"Silicon Genesis Corporation\",\"respondentInventorName\":\"FRANCOIS
-        HENLEY\",\"respondentCounselName\":\"Margaux Nair\",\"respondentGrantDate\":\"12-19-2000\",\"respondentPatentNumber\":\"6162705\",\"respondentApplicationNumberText\":\"09026118\",\"petitionerPartyName\":\"Commissariat
-        a l\u2019Energie Atomique et aux Energies Alternatives\",\"petitionerCounselName\":\"Paul
-        McGowan\",\"additionalRespondentPartyDataBag\":[]},{\"filingPartyCategory\":\"PETITIONER\",\"documentNumber\":\"1001\",\"documentName\":\"1001-
-        US6162705.pdf\",\"documentCategory\":\"Exhibits\",\"documentTitleText\":\"U.S.
-        Patent No. 6,162,705\",\"proceedingNumber\":\"IPR2016-00831\",\"documentFilingDate\":\"04-01-2016\",\"documentTypeName\":\"EXHIBIT\",\"proceedingTypeCategory\":\"AIA
-        Trial\",\"subproceedingTypeCategory\":\"IPR\",\"documentIdentifier\":\"169264152\",\"objectUuId\":\"workspace://SpacesStore/9b33f11d-8a5b-4973-9cbb-707aaf8d1d5c;1.0\",\"respondentTechnologyCenterNumber\":\"2800\",\"respondentPatentOwnerName\":\"Silicon
-        Genesis Corporation\",\"respondentPartyName\":\"Silicon Genesis Corporation\",\"respondentInventorName\":\"FRANCOIS
-        HENLEY\",\"respondentCounselName\":\"Margaux Nair\",\"respondentGrantDate\":\"12-19-2000\",\"respondentPatentNumber\":\"6162705\",\"respondentApplicationNumberText\":\"09026118\",\"petitionerPartyName\":\"Commissariat
-        a l\u2019Energie Atomique et aux Energies Alternatives\",\"petitionerCounselName\":\"Paul
-        McGowan\",\"additionalRespondentPartyDataBag\":[]},{\"filingPartyCategory\":\"PETITIONER\",\"documentNumber\":\"1002\",\"documentName\":\"1002
-        - 705 Corrected Bravman Declaration.pdf\",\"documentCategory\":\"Exhibits\",\"documentTitleText\":\"Corrected
-        Declaration of John Bravman\",\"proceedingNumber\":\"IPR2016-00831\",\"documentFilingDate\":\"06-23-2016\",\"documentTypeName\":\"EXHIBIT\",\"proceedingTypeCategory\":\"AIA
-        Trial\",\"subproceedingTypeCategory\":\"IPR\",\"documentIdentifier\":\"169264156\",\"objectUuId\":\"workspace://SpacesStore/dd974644-b6b1-4934-bcae-5c6431f2b017;1.0\",\"respondentTechnologyCenterNumber\":\"2800\",\"respondentPatentOwnerName\":\"Silicon
-        Genesis Corporation\",\"respondentPartyName\":\"Silicon Genesis Corporation\",\"respondentInventorName\":\"FRANCOIS
-        HENLEY\",\"respondentCounselName\":\"Margaux Nair\",\"respondentGrantDate\":\"12-19-2000\",\"respondentPatentNumber\":\"6162705\",\"respondentApplicationNumberText\":\"09026118\",\"petitionerPartyName\":\"Commissariat
-        a l\u2019Energie Atomique et aux Energies Alternatives\",\"petitionerCounselName\":\"Paul
-        McGowan\",\"additionalRespondentPartyDataBag\":[]},{\"filingPartyCategory\":\"PETITIONER\",\"documentNumber\":\"1002\",\"documentName\":\"1002
-        - 705 Bravman Declaration FINAL.pdf\",\"documentCategory\":\"Exhibits\",\"documentTitleText\":\"Expunged\",\"proceedingNumber\":\"IPR2016-00831\",\"documentFilingDate\":\"04-01-2016\",\"documentTypeName\":\"EXHIBIT\",\"proceedingTypeCategory\":\"AIA
-        Trial\",\"subproceedingTypeCategory\":\"IPR\",\"documentIdentifier\":\"169264154\",\"objectUuId\":\"workspace://SpacesStore/3949171b-5e3c-4646-a22b-50e767f8ff27;1.0\",\"respondentTechnologyCenterNumber\":\"2800\",\"respondentPatentOwnerName\":\"Silicon
-        Genesis Corporation\",\"respondentPartyName\":\"Silicon Genesis Corporation\",\"respondentInventorName\":\"FRANCOIS
-        HENLEY\",\"respondentCounselName\":\"Margaux Nair\",\"respondentGrantDate\":\"12-19-2000\",\"respondentPatentNumber\":\"6162705\",\"respondentApplicationNumberText\":\"09026118\",\"petitionerPartyName\":\"Commissariat
-        a l\u2019Energie Atomique et aux Energies Alternatives\",\"petitionerCounselName\":\"Paul
-        McGowan\",\"additionalRespondentPartyDataBag\":[]},{\"filingPartyCategory\":\"PETITIONER\",\"documentNumber\":\"1003\",\"documentName\":\"1003
-        - US5854123.pdf\",\"documentCategory\":\"Exhibits\",\"documentTitleText\":\"U.S.
-        Patent No. 5,854,123\",\"proceedingNumber\":\"IPR2016-00831\",\"documentFilingDate\":\"04-01-2016\",\"documentTypeName\":\"EXHIBIT\",\"proceedingTypeCategory\":\"AIA
-        Trial\",\"subproceedingTypeCategory\":\"IPR\",\"documentIdentifier\":\"169264158\",\"objectUuId\":\"workspace://SpacesStore/fee45c79-bbcf-4e95-a97d-a226e5cee45a;1.0\",\"respondentTechnologyCenterNumber\":\"2800\",\"respondentPatentOwnerName\":\"Silicon
-        Genesis Corporation\",\"respondentPartyName\":\"Silicon Genesis Corporation\",\"respondentInventorName\":\"FRANCOIS
-        HENLEY\",\"respondentCounselName\":\"Margaux Nair\",\"respondentGrantDate\":\"12-19-2000\",\"respondentPatentNumber\":\"6162705\",\"respondentApplicationNumberText\":\"09026118\",\"petitionerPartyName\":\"Commissariat
-        a l\u2019Energie Atomique et aux Energies Alternatives\",\"petitionerCounselName\":\"Paul
-        McGowan\",\"additionalRespondentPartyDataBag\":[]},{\"filingPartyCategory\":\"PETITIONER\",\"documentNumber\":\"1004\",\"documentName\":\"1004
-        - US5559043.pdf\",\"documentCategory\":\"Exhibits\",\"documentTitleText\":\"U.S.
-        Patent No. 5,559,043\",\"proceedingNumber\":\"IPR2016-00831\",\"documentFilingDate\":\"04-01-2016\",\"documentTypeName\":\"EXHIBIT\",\"proceedingTypeCategory\":\"AIA
-        Trial\",\"subproceedingTypeCategory\":\"IPR\",\"documentIdentifier\":\"169264162\",\"objectUuId\":\"workspace://SpacesStore/39e491af-077f-4bd0-8606-b237c7cbc8c7;1.0\",\"respondentTechnologyCenterNumber\":\"2800\",\"respondentPatentOwnerName\":\"Silicon
-        Genesis Corporation\",\"respondentPartyName\":\"Silicon Genesis Corporation\",\"respondentInventorName\":\"FRANCOIS
-        HENLEY\",\"respondentCounselName\":\"Margaux Nair\",\"respondentGrantDate\":\"12-19-2000\",\"respondentPatentNumber\":\"6162705\",\"respondentApplicationNumberText\":\"09026118\",\"petitionerPartyName\":\"Commissariat
-        a l\u2019Energie Atomique et aux Energies Alternatives\",\"petitionerCounselName\":\"Paul
-        McGowan\",\"additionalRespondentPartyDataBag\":[]},{\"filingPartyCategory\":\"PETITIONER\",\"documentNumber\":\"1004\",\"documentName\":\"1004
-        - US5559043.pdf\",\"documentCategory\":\"Exhibits\",\"documentTitleText\":\"U.S.
-        Patent No. 5,559,043\",\"proceedingNumber\":\"IPR2016-00831\",\"documentFilingDate\":\"04-06-2016\",\"documentTypeName\":\"EXHIBIT\",\"proceedingTypeCategory\":\"AIA
-        Trial\",\"subproceedingTypeCategory\":\"IPR\",\"documentIdentifier\":\"169264160\",\"objectUuId\":\"workspace://SpacesStore/371296b9-46a1-4030-bde4-d219d211b433;1.0\",\"respondentTechnologyCenterNumber\":\"2800\",\"respondentPatentOwnerName\":\"Silicon
-        Genesis Corporation\",\"respondentPartyName\":\"Silicon Genesis Corporation\",\"respondentInventorName\":\"FRANCOIS
-        HENLEY\",\"respondentCounselName\":\"Margaux Nair\",\"respondentGrantDate\":\"12-19-2000\",\"respondentPatentNumber\":\"6162705\",\"respondentApplicationNumberText\":\"09026118\",\"petitionerPartyName\":\"Commissariat
-        a l\u2019Energie Atomique et aux Energies Alternatives\",\"petitionerCounselName\":\"Paul
-        McGowan\",\"additionalRespondentPartyDataBag\":[]},{\"filingPartyCategory\":\"PETITIONER\",\"documentNumber\":\"1005\",\"documentName\":\"1005
-        - US3901423.pdf\",\"documentCategory\":\"Exhibits\",\"documentTitleText\":\"U.S.
-        Patent No. 3,901,423\",\"proceedingNumber\":\"IPR2016-00831\",\"documentFilingDate\":\"04-01-2016\",\"documentTypeName\":\"EXHIBIT\",\"proceedingTypeCategory\":\"AIA
-        Trial\",\"subproceedingTypeCategory\":\"IPR\",\"documentIdentifier\":\"169264164\",\"objectUuId\":\"workspace://SpacesStore/58a61b3e-5b60-44b9-b785-3d54d62adbac;1.0\",\"respondentTechnologyCenterNumber\":\"2800\",\"respondentPatentOwnerName\":\"Silicon
-        Genesis Corporation\",\"respondentPartyName\":\"Silicon Genesis Corporation\",\"respondentInventorName\":\"FRANCOIS
-        HENLEY\",\"respondentCounselName\":\"Margaux Nair\",\"respondentGrantDate\":\"12-19-2000\",\"respondentPatentNumber\":\"6162705\",\"respondentApplicationNumberText\":\"09026118\",\"petitionerPartyName\":\"Commissariat
-        a l\u2019Energie Atomique et aux Energies Alternatives\",\"petitionerCounselName\":\"Paul
-        McGowan\",\"additionalRespondentPartyDataBag\":[]},{\"filingPartyCategory\":\"PETITIONER\",\"documentNumber\":\"1006\",\"documentName\":\"1006
-        - Bruel Article.pdf\",\"documentCategory\":\"Exhibits\",\"documentTitleText\":\"Smart
-        Cut A Promising New SOI Material Technology, M. Bruel, et al.\",\"proceedingNumber\":\"IPR2016-00831\",\"documentFilingDate\":\"04-01-2016\",\"documentTypeName\":\"EXHIBIT\",\"proceedingTypeCategory\":\"AIA
-        Trial\",\"subproceedingTypeCategory\":\"IPR\",\"documentIdentifier\":\"169264168\",\"objectUuId\":\"workspace://SpacesStore/dfdb94d7-17a3-4236-9c73-e2bbc78b28ff;1.0\",\"respondentTechnologyCenterNumber\":\"2800\",\"respondentPatentOwnerName\":\"Silicon
-        Genesis Corporation\",\"respondentPartyName\":\"Silicon Genesis Corporation\",\"respondentInventorName\":\"FRANCOIS
-        HENLEY\",\"respondentCounselName\":\"Margaux Nair\",\"respondentGrantDate\":\"12-19-2000\",\"respondentPatentNumber\":\"6162705\",\"respondentApplicationNumberText\":\"09026118\",\"petitionerPartyName\":\"Commissariat
-        a l\u2019Energie Atomique et aux Energies Alternatives\",\"petitionerCounselName\":\"Paul
-        McGowan\",\"additionalRespondentPartyDataBag\":[]},{\"filingPartyCategory\":\"PETITIONER\",\"documentNumber\":\"1006\",\"documentName\":\"1006
-        - Bruel Article.pdf\",\"documentCategory\":\"Exhibits\",\"documentTitleText\":\"Smart
-        Cut A Promising New SOI Material Technology, M. Bruel, et al. (Oct. 1995)\",\"proceedingNumber\":\"IPR2016-00831\",\"documentFilingDate\":\"04-06-2016\",\"documentTypeName\":\"EXHIBIT\",\"proceedingTypeCategory\":\"AIA
-        Trial\",\"subproceedingTypeCategory\":\"IPR\",\"documentIdentifier\":\"169264166\",\"objectUuId\":\"workspace://SpacesStore/7d4e6796-b27a-42b2-9eb1-53ca5c937d7a;1.0\",\"respondentTechnologyCenterNumber\":\"2800\",\"respondentPatentOwnerName\":\"Silicon
-        Genesis Corporation\",\"respondentPartyName\":\"Silicon Genesis Corporation\",\"respondentInventorName\":\"FRANCOIS
-        HENLEY\",\"respondentCounselName\":\"Margaux Nair\",\"respondentGrantDate\":\"12-19-2000\",\"respondentPatentNumber\":\"6162705\",\"respondentApplicationNumberText\":\"09026118\",\"petitionerPartyName\":\"Commissariat
-        a l\u2019Energie Atomique et aux Energies Alternatives\",\"petitionerCounselName\":\"Paul
-        McGowan\",\"additionalRespondentPartyDataBag\":[]},{\"filingPartyCategory\":\"PETITIONER\",\"documentNumber\":\"1007\",\"documentName\":\"1007
-        - US5374564.pdf\",\"documentCategory\":\"Exhibits\",\"documentTitleText\":\"U.S.
-        Patent No. 5,374,564\",\"proceedingNumber\":\"IPR2016-00831\",\"documentFilingDate\":\"04-06-2016\",\"documentTypeName\":\"EXHIBIT\",\"proceedingTypeCategory\":\"AIA
-        Trial\",\"subproceedingTypeCategory\":\"IPR\",\"documentIdentifier\":\"169264170\",\"objectUuId\":\"workspace://SpacesStore/9d835faf-8bbc-4ef5-b389-9567acfc42b9;1.0\",\"respondentTechnologyCenterNumber\":\"2800\",\"respondentPatentOwnerName\":\"Silicon
-        Genesis Corporation\",\"respondentPartyName\":\"Silicon Genesis Corporation\",\"respondentInventorName\":\"FRANCOIS
-        HENLEY\",\"respondentCounselName\":\"Margaux Nair\",\"respondentGrantDate\":\"12-19-2000\",\"respondentPatentNumber\":\"6162705\",\"respondentApplicationNumberText\":\"09026118\",\"petitionerPartyName\":\"Commissariat
-        a l\u2019Energie Atomique et aux Energies Alternatives\",\"petitionerCounselName\":\"Paul
-        McGowan\",\"additionalRespondentPartyDataBag\":[]},{\"filingPartyCategory\":\"PETITIONER\",\"documentNumber\":\"1007\",\"documentName\":\"1007
-        - US5374564.pdf\",\"documentCategory\":\"Exhibits\",\"documentTitleText\":\"U.S.
-        Patent No. 5,374,564\",\"proceedingNumber\":\"IPR2016-00831\",\"documentFilingDate\":\"04-01-2016\",\"documentTypeName\":\"EXHIBIT\",\"proceedingTypeCategory\":\"AIA
-        Trial\",\"subproceedingTypeCategory\":\"IPR\",\"documentIdentifier\":\"169264172\",\"objectUuId\":\"workspace://SpacesStore/de594a26-f081-4437-83c1-9a3327d3f324;1.0\",\"respondentTechnologyCenterNumber\":\"2800\",\"respondentPatentOwnerName\":\"Silicon
-        Genesis Corporation\",\"respondentPartyName\":\"Silicon Genesis Corporation\",\"respondentInventorName\":\"FRANCOIS
-        HENLEY\",\"respondentCounselName\":\"Margaux Nair\",\"respondentGrantDate\":\"12-19-2000\",\"respondentPatentNumber\":\"6162705\",\"respondentApplicationNumberText\":\"09026118\",\"petitionerPartyName\":\"Commissariat
-        a l\u2019Energie Atomique et aux Energies Alternatives\",\"petitionerCounselName\":\"Paul
-        McGowan\",\"additionalRespondentPartyDataBag\":[]},{\"filingPartyCategory\":\"PETITIONER\",\"documentNumber\":\"1008\",\"documentName\":\"1008
-        - 705 File History.pdf\",\"documentCategory\":\"Exhibits\",\"documentTitleText\":\"Prosecution
-        History of U.S. Patent No. 6,162,705\",\"proceedingNumber\":\"IPR2016-00831\",\"documentFilingDate\":\"04-01-2016\",\"documentTypeName\":\"EXHIBIT\",\"proceedingTypeCategory\":\"AIA
-        Trial\",\"subproceedingTypeCategory\":\"IPR\",\"documentIdentifier\":\"169264174\",\"objectUuId\":\"workspace://SpacesStore/34f7cde2-7e68-49b4-9a3d-bfc89cb9fb59;1.0\",\"respondentTechnologyCenterNumber\":\"2800\",\"respondentPatentOwnerName\":\"Silicon
-        Genesis Corporation\",\"respondentPartyName\":\"Silicon Genesis Corporation\",\"respondentInventorName\":\"FRANCOIS
-        HENLEY\",\"respondentCounselName\":\"Margaux Nair\",\"respondentGrantDate\":\"12-19-2000\",\"respondentPatentNumber\":\"6162705\",\"respondentApplicationNumberText\":\"09026118\",\"petitionerPartyName\":\"Commissariat
-        a l\u2019Energie Atomique et aux Energies Alternatives\",\"petitionerCounselName\":\"Paul
-        McGowan\",\"additionalRespondentPartyDataBag\":[]},{\"filingPartyCategory\":\"PETITIONER\",\"documentNumber\":\"1009\",\"documentName\":\"1009
-        - 60046276 (Provisional Application).pdf\",\"documentCategory\":\"Exhibits\",\"documentTitleText\":\"U.S.
-        Provisional Application No. 60/046,276\",\"proceedingNumber\":\"IPR2016-00831\",\"documentFilingDate\":\"04-01-2016\",\"documentTypeName\":\"EXHIBIT\",\"proceedingTypeCategory\":\"AIA
-        Trial\",\"subproceedingTypeCategory\":\"IPR\",\"documentIdentifier\":\"169264176\",\"objectUuId\":\"workspace://SpacesStore/1142a153-5f99-47b9-b0dd-ea134729bafd;1.0\",\"respondentTechnologyCenterNumber\":\"2800\",\"respondentPatentOwnerName\":\"Silicon
-        Genesis Corporation\",\"respondentPartyName\":\"Silicon Genesis Corporation\",\"respondentInventorName\":\"FRANCOIS
-        HENLEY\",\"respondentCounselName\":\"Margaux Nair\",\"respondentGrantDate\":\"12-19-2000\",\"respondentPatentNumber\":\"6162705\",\"respondentApplicationNumberText\":\"09026118\",\"petitionerPartyName\":\"Commissariat
-        a l\u2019Energie Atomique et aux Energies Alternatives\",\"petitionerCounselName\":\"Paul
-        McGowan\",\"additionalRespondentPartyDataBag\":[]},{\"filingPartyCategory\":\"PETITIONER\",\"documentNumber\":\"1010\",\"documentName\":\"1010
-        - Wegmann.pdf\",\"documentCategory\":\"Exhibits\",\"documentTitleText\":\"L.
-        Wegmann, Historical Perspective and Future Trends for Ion Implantation Systems
-        (1981)\",\"proceedingNumber\":\"IPR2016-00831\",\"documentFilingDate\":\"04-01-2016\",\"documentTypeName\":\"EXHIBIT\",\"proceedingTypeCategory\":\"AIA
-        Trial\",\"subproceedingTypeCategory\":\"IPR\",\"documentIdentifier\":\"169264178\",\"objectUuId\":\"workspace://SpacesStore/fcdcc9a1-8025-42e1-a6d4-72a9edd2a13e;1.0\",\"respondentTechnologyCenterNumber\":\"2800\",\"respondentPatentOwnerName\":\"Silicon
-        Genesis Corporation\",\"respondentPartyName\":\"Silicon Genesis Corporation\",\"respondentInventorName\":\"FRANCOIS
-        HENLEY\",\"respondentCounselName\":\"Margaux Nair\",\"respondentGrantDate\":\"12-19-2000\",\"respondentPatentNumber\":\"6162705\",\"respondentApplicationNumberText\":\"09026118\",\"petitionerPartyName\":\"Commissariat
-        a l\u2019Energie Atomique et aux Energies Alternatives\",\"petitionerCounselName\":\"Paul
-        McGowan\",\"additionalRespondentPartyDataBag\":[]},{\"documentNumber\":\"1011\",\"documentName\":\"CEA
-        705 Hall Declaration for Pro Hac Vice.pdf\",\"documentCategory\":\"Exhibits\",\"documentTitleText\":\"Declaration
-        of Marcus T. Hall ISO Motion for Admission Pro Hac Vice\",\"proceedingNumber\":\"IPR2016-00831\",\"documentFilingDate\":\"09-12-2016\",\"documentTypeName\":\"EXHIBIT\",\"proceedingTypeCategory\":\"AIA
-        Trial\",\"subproceedingTypeCategory\":\"IPR\",\"documentIdentifier\":\"169345959\",\"objectUuId\":\"workspace://SpacesStore/2e641c62-320e-4732-acce-1b69ed1114df;1.0\",\"respondentTechnologyCenterNumber\":\"2800\",\"respondentPatentOwnerName\":\"Silicon
-        Genesis Corporation\",\"respondentPartyName\":\"Silicon Genesis Corporation\",\"respondentInventorName\":\"FRANCOIS
-        HENLEY\",\"respondentCounselName\":\"Margaux Nair\",\"respondentGrantDate\":\"12-19-2000\",\"respondentPatentNumber\":\"6162705\",\"respondentApplicationNumberText\":\"09026118\",\"petitionerPartyName\":\"Commissariat
-        a l\u2019Energie Atomique et aux Energies Alternatives\",\"petitionerCounselName\":\"Paul
-        McGowan\",\"additionalRespondentPartyDataBag\":[]},{\"documentNumber\":\"1012\",\"documentName\":\"CEA
-        705 Salyers Declaration for Pro Hac Vice.pdf\",\"documentCategory\":\"Exhibits\",\"documentTitleText\":\"Declaration
-        of Douglas D. Salyers ISO Motion for Admission Pro Hac Vice\",\"proceedingNumber\":\"IPR2016-00831\",\"documentFilingDate\":\"09-12-2016\",\"documentTypeName\":\"EXHIBIT\",\"proceedingTypeCategory\":\"AIA
-        Trial\",\"subproceedingTypeCategory\":\"IPR\",\"documentIdentifier\":\"169345961\",\"objectUuId\":\"workspace://SpacesStore/2bdc55f7-0023-4dbf-b2a6-dee257a141ea;1.0\",\"respondentTechnologyCenterNumber\":\"2800\",\"respondentPatentOwnerName\":\"Silicon
-        Genesis Corporation\",\"respondentPartyName\":\"Silicon Genesis Corporation\",\"respondentInventorName\":\"FRANCOIS
-        HENLEY\",\"respondentCounselName\":\"Margaux Nair\",\"respondentGrantDate\":\"12-19-2000\",\"respondentPatentNumber\":\"6162705\",\"respondentApplicationNumberText\":\"09026118\",\"petitionerPartyName\":\"Commissariat
-        a l\u2019Energie Atomique et aux Energies Alternatives\",\"petitionerCounselName\":\"Paul
-        McGowan\",\"additionalRespondentPartyDataBag\":[]},{\"documentNumber\":\"1013\",\"documentName\":\"Exhibit
-        1013 ('705) 2017-01-19 Henley Francois CEA Deposition.PDF\",\"documentCategory\":\"Exhibits\",\"documentTitleText\":\"Deposition
-        Transcript of Francois Henley\",\"proceedingNumber\":\"IPR2016-00831\",\"documentFilingDate\":\"03-13-2017\",\"documentTypeName\":\"EXHIBIT\",\"proceedingTypeCategory\":\"AIA
-        Trial\",\"subproceedingTypeCategory\":\"IPR\",\"documentIdentifier\":\"169451532\",\"objectUuId\":\"workspace://SpacesStore/6ea51ced-1687-4b27-bd47-625057af117b;1.0\",\"respondentTechnologyCenterNumber\":\"2800\",\"respondentPatentOwnerName\":\"Silicon
-        Genesis Corporation\",\"respondentPartyName\":\"Silicon Genesis Corporation\",\"respondentInventorName\":\"FRANCOIS
-        HENLEY\",\"respondentCounselName\":\"Margaux Nair\",\"respondentGrantDate\":\"12-19-2000\",\"respondentPatentNumber\":\"6162705\",\"respondentApplicationNumberText\":\"09026118\",\"petitionerPartyName\":\"Commissariat
-        a l\u2019Energie Atomique et aux Energies Alternatives\",\"petitionerCounselName\":\"Paul
-        McGowan\",\"additionalRespondentPartyDataBag\":[]},{\"documentNumber\":\"1014\",\"documentName\":\"Jack
-        Lee Dep.PDF\",\"documentCategory\":\"Exhibits\",\"documentTitleText\":\"Deposition
-        Transcript of Jack Lee\",\"proceedingNumber\":\"IPR2016-00831\",\"documentFilingDate\":\"03-13-2017\",\"documentTypeName\":\"EXHIBIT\",\"proceedingTypeCategory\":\"AIA
-        Trial\",\"subproceedingTypeCategory\":\"IPR\",\"documentIdentifier\":\"169451533\",\"objectUuId\":\"workspace://SpacesStore/cf7fd58a-78eb-4580-8a7e-390f17a8e38c;1.0\",\"respondentTechnologyCenterNumber\":\"2800\",\"respondentPatentOwnerName\":\"Silicon
-        Genesis Corporation\",\"respondentPartyName\":\"Silicon Genesis Corporation\",\"respondentInventorName\":\"FRANCOIS
-        HENLEY\",\"respondentCounselName\":\"Margaux Nair\",\"respondentGrantDate\":\"12-19-2000\",\"respondentPatentNumber\":\"6162705\",\"respondentApplicationNumberText\":\"09026118\",\"petitionerPartyName\":\"Commissariat
-        a l\u2019Energie Atomique et aux Energies Alternatives\",\"petitionerCounselName\":\"Paul
-        McGowan\",\"additionalRespondentPartyDataBag\":[]},{\"documentNumber\":\"1015\",\"documentName\":\"Exhibit
-        1015 ('705) - Bravman Declaration.PDF\",\"documentCategory\":\"Exhibits\",\"documentTitleText\":\"Declaration
-        of John Bravman In Support of Petitioner's Reply\",\"proceedingNumber\":\"IPR2016-00831\",\"documentFilingDate\":\"03-13-2017\",\"documentTypeName\":\"EXHIBIT\",\"proceedingTypeCategory\":\"AIA
-        Trial\",\"subproceedingTypeCategory\":\"IPR\",\"documentIdentifier\":\"169451518\",\"objectUuId\":\"workspace://SpacesStore/4034de91-c6db-4296-8caf-b28767b4363e;1.0\",\"respondentTechnologyCenterNumber\":\"2800\",\"respondentPatentOwnerName\":\"Silicon
-        Genesis Corporation\",\"respondentPartyName\":\"Silicon Genesis Corporation\",\"respondentInventorName\":\"FRANCOIS
-        HENLEY\",\"respondentCounselName\":\"Margaux Nair\",\"respondentGrantDate\":\"12-19-2000\",\"respondentPatentNumber\":\"6162705\",\"respondentApplicationNumberText\":\"09026118\",\"petitionerPartyName\":\"Commissariat
-        a l\u2019Energie Atomique et aux Energies Alternatives\",\"petitionerCounselName\":\"Paul
-        McGowan\",\"additionalRespondentPartyDataBag\":[]},{\"documentNumber\":\"11\",\"documentName\":\"IPR2016-00831
-        Joint Stipulation.pdf\",\"documentCategory\":\"Paper\",\"documentTitleText\":\"Joint
-        Stipulation\",\"proceedingNumber\":\"IPR2016-00831\",\"documentFilingDate\":\"09-06-2016\",\"documentTypeName\":\"Motion\",\"proceedingTypeCategory\":\"AIA
-        Trial\",\"subproceedingTypeCategory\":\"IPR\",\"documentIdentifier\":\"169342429\",\"objectUuId\":\"workspace://SpacesStore/09f43161-cb8d-4dfb-a8d9-0ba3d11a2a66;1.0\",\"respondentTechnologyCenterNumber\":\"2800\",\"respondentPatentOwnerName\":\"Silicon
-        Genesis Corporation\",\"respondentPartyName\":\"Silicon Genesis Corporation\",\"respondentInventorName\":\"FRANCOIS
-        HENLEY\",\"respondentCounselName\":\"Margaux Nair\",\"respondentGrantDate\":\"12-19-2000\",\"respondentPatentNumber\":\"6162705\",\"respondentApplicationNumberText\":\"09026118\",\"petitionerPartyName\":\"Commissariat
-        a l\u2019Energie Atomique et aux Energies Alternatives\",\"petitionerCounselName\":\"Paul
-        McGowan\",\"additionalRespondentPartyDataBag\":[]},{\"documentNumber\":\"12\",\"documentName\":\"CEA
-        705 Hall Motion Pro Hac Vice.pdf\",\"documentCategory\":\"Paper\",\"documentTitleText\":\"Motion
-        for Admission Pro Hac Vice of Marcus T. Hall\",\"proceedingNumber\":\"IPR2016-00831\",\"documentFilingDate\":\"09-12-2016\",\"documentTypeName\":\"Motion\",\"proceedingTypeCategory\":\"AIA
-        Trial\",\"subproceedingTypeCategory\":\"IPR\",\"documentIdentifier\":\"169345958\",\"objectUuId\":\"workspace://SpacesStore/56154bab-565b-4efa-a54a-1065d8061ac1;1.0\",\"respondentTechnologyCenterNumber\":\"2800\",\"respondentPatentOwnerName\":\"Silicon
-        Genesis Corporation\",\"respondentPartyName\":\"Silicon Genesis Corporation\",\"respondentInventorName\":\"FRANCOIS
-        HENLEY\",\"respondentCounselName\":\"Margaux Nair\",\"respondentGrantDate\":\"12-19-2000\",\"respondentPatentNumber\":\"6162705\",\"respondentApplicationNumberText\":\"09026118\",\"petitionerPartyName\":\"Commissariat
-        a l\u2019Energie Atomique et aux Energies Alternatives\",\"petitionerCounselName\":\"Paul
-        McGowan\",\"additionalRespondentPartyDataBag\":[]},{\"documentNumber\":\"13\",\"documentName\":\"CEA
-        705 Salyers Motion Pro Hac Vice.pdf\",\"documentCategory\":\"Paper\",\"documentTitleText\":\"Motion
-        for Admission Pro Hac Vice of Douglas D. Salyers\",\"proceedingNumber\":\"IPR2016-00831\",\"documentFilingDate\":\"09-12-2016\",\"documentTypeName\":\"Motion\",\"proceedingTypeCategory\":\"AIA
-        Trial\",\"subproceedingTypeCategory\":\"IPR\",\"documentIdentifier\":\"169345960\",\"objectUuId\":\"workspace://SpacesStore/69892f1d-19f1-46db-a6a7-e12aa895b4fc;1.0\",\"respondentTechnologyCenterNumber\":\"2800\",\"respondentPatentOwnerName\":\"Silicon
-        Genesis Corporation\",\"respondentPartyName\":\"Silicon Genesis Corporation\",\"respondentInventorName\":\"FRANCOIS
-        HENLEY\",\"respondentCounselName\":\"Margaux Nair\",\"respondentGrantDate\":\"12-19-2000\",\"respondentPatentNumber\":\"6162705\",\"respondentApplicationNumberText\":\"09026118\",\"petitionerPartyName\":\"Commissariat
-        a l\u2019Energie Atomique et aux Energies Alternatives\",\"petitionerCounselName\":\"Paul
-        McGowan\",\"additionalRespondentPartyDataBag\":[]},{\"documentNumber\":\"14\",\"documentName\":\"IPR2016-00831
-        Decision on Institution.pdf\",\"documentCategory\":\"Paper\",\"documentTitleText\":\"Trial
-        Instituted Document\",\"proceedingNumber\":\"IPR2016-00831\",\"documentFilingDate\":\"09-28-2016\",\"documentTypeName\":\"Institution
-        Decision\",\"proceedingTypeCategory\":\"AIA Trial\",\"subproceedingTypeCategory\":\"IPR\",\"documentIdentifier\":\"169355259\",\"objectUuId\":\"workspace://SpacesStore/72393ea9-8b5f-46ce-a28f-e7a3f103801e;1.0\",\"respondentTechnologyCenterNumber\":\"2800\",\"respondentPatentOwnerName\":\"Silicon
-        Genesis Corporation\",\"respondentPartyName\":\"Silicon Genesis Corporation\",\"respondentInventorName\":\"FRANCOIS
-        HENLEY\",\"respondentCounselName\":\"Margaux Nair\",\"respondentGrantDate\":\"12-19-2000\",\"respondentPatentNumber\":\"6162705\",\"respondentApplicationNumberText\":\"09026118\",\"petitionerPartyName\":\"Commissariat
-        a l\u2019Energie Atomique et aux Energies Alternatives\",\"petitionerCounselName\":\"Paul
-        McGowan\",\"additionalRespondentPartyDataBag\":[]},{\"documentNumber\":\"15\",\"documentName\":\"IPR2016-00831
-        Scheduling Order.pdf\",\"documentCategory\":\"Paper\",\"documentTitleText\":\"Scheduling
-        Order\",\"proceedingNumber\":\"IPR2016-00831\",\"documentFilingDate\":\"09-28-2016\",\"documentTypeName\":\"Order\",\"proceedingTypeCategory\":\"AIA
-        Trial\",\"subproceedingTypeCategory\":\"IPR\",\"documentIdentifier\":\"169355317\",\"objectUuId\":\"workspace://SpacesStore/80e8c605-2194-486d-9135-933b68ff83d6;1.0\",\"respondentTechnologyCenterNumber\":\"2800\",\"respondentPatentOwnerName\":\"Silicon
-        Genesis Corporation\",\"respondentPartyName\":\"Silicon Genesis Corporation\",\"respondentInventorName\":\"FRANCOIS
-        HENLEY\",\"respondentCounselName\":\"Margaux Nair\",\"respondentGrantDate\":\"12-19-2000\",\"respondentPatentNumber\":\"6162705\",\"respondentApplicationNumberText\":\"09026118\",\"petitionerPartyName\":\"Commissariat
-        a l\u2019Energie Atomique et aux Energies Alternatives\",\"petitionerCounselName\":\"Paul
-        McGowan\",\"additionalRespondentPartyDataBag\":[]}],\"recordTotalQuantity\":77}"
+    content: "{\"aggregationData\":{},\"results\":[{\"filingPartyCategory\":\"PETITIONER\",\"documentNumber\":\"1\",\"documentName\":\"705
+      Petition FINAL.pdf\",\"documentCategory\":\"Paper\",\"documentTitleText\":\"Petition
+      for Inter Partes Review of U.S. Patent No. 6,162,705\",\"proceedingNumber\":\"IPR2016-00831\",\"documentFilingDate\":\"04-01-2016\",\"documentTypeName\":\"Petition\",\"proceedingTypeCategory\":\"AIA
+      Trial\",\"subproceedingTypeCategory\":\"IPR\",\"documentIdentifier\":\"169264136\",\"objectUuId\":\"workspace://SpacesStore/eb6c3f1a-a327-43d0-9cde-ddeb5080a8f8;1.0\",\"respondentTechnologyCenterNumber\":\"2800\",\"respondentPatentOwnerName\":\"Silicon
+      Genesis Corporation\",\"respondentPartyName\":\"Silicon Genesis Corporation\",\"respondentInventorName\":\"FRANCOIS
+      HENLEY\",\"respondentCounselName\":\"Margaux Nair\",\"respondentGrantDate\":\"12-19-2000\",\"respondentPatentNumber\":\"6162705\",\"respondentApplicationNumberText\":\"09026118\",\"petitionerPartyName\":\"Commissariat
+      a l\u2019Energie Atomique et aux Energies Alternatives\",\"petitionerCounselName\":\"Paul
+      McGowan\",\"additionalRespondentPartyDataBag\":[]},{\"filingPartyCategory\":\"PETITIONER\",\"documentNumber\":\"1001\",\"documentName\":\"1001-
+      US6162705.pdf\",\"documentCategory\":\"Exhibits\",\"documentTitleText\":\"U.S.
+      Patent No. 6,162,705\",\"proceedingNumber\":\"IPR2016-00831\",\"documentFilingDate\":\"04-01-2016\",\"documentTypeName\":\"EXHIBIT\",\"proceedingTypeCategory\":\"AIA
+      Trial\",\"subproceedingTypeCategory\":\"IPR\",\"documentIdentifier\":\"169264152\",\"objectUuId\":\"workspace://SpacesStore/9b33f11d-8a5b-4973-9cbb-707aaf8d1d5c;1.0\",\"respondentTechnologyCenterNumber\":\"2800\",\"respondentPatentOwnerName\":\"Silicon
+      Genesis Corporation\",\"respondentPartyName\":\"Silicon Genesis Corporation\",\"respondentInventorName\":\"FRANCOIS
+      HENLEY\",\"respondentCounselName\":\"Margaux Nair\",\"respondentGrantDate\":\"12-19-2000\",\"respondentPatentNumber\":\"6162705\",\"respondentApplicationNumberText\":\"09026118\",\"petitionerPartyName\":\"Commissariat
+      a l\u2019Energie Atomique et aux Energies Alternatives\",\"petitionerCounselName\":\"Paul
+      McGowan\",\"additionalRespondentPartyDataBag\":[]},{\"filingPartyCategory\":\"PETITIONER\",\"documentNumber\":\"1002\",\"documentName\":\"1002
+      - 705 Corrected Bravman Declaration.pdf\",\"documentCategory\":\"Exhibits\",\"documentTitleText\":\"Corrected
+      Declaration of John Bravman\",\"proceedingNumber\":\"IPR2016-00831\",\"documentFilingDate\":\"06-23-2016\",\"documentTypeName\":\"EXHIBIT\",\"proceedingTypeCategory\":\"AIA
+      Trial\",\"subproceedingTypeCategory\":\"IPR\",\"documentIdentifier\":\"169264156\",\"objectUuId\":\"workspace://SpacesStore/dd974644-b6b1-4934-bcae-5c6431f2b017;1.0\",\"respondentTechnologyCenterNumber\":\"2800\",\"respondentPatentOwnerName\":\"Silicon
+      Genesis Corporation\",\"respondentPartyName\":\"Silicon Genesis Corporation\",\"respondentInventorName\":\"FRANCOIS
+      HENLEY\",\"respondentCounselName\":\"Margaux Nair\",\"respondentGrantDate\":\"12-19-2000\",\"respondentPatentNumber\":\"6162705\",\"respondentApplicationNumberText\":\"09026118\",\"petitionerPartyName\":\"Commissariat
+      a l\u2019Energie Atomique et aux Energies Alternatives\",\"petitionerCounselName\":\"Paul
+      McGowan\",\"additionalRespondentPartyDataBag\":[]},{\"filingPartyCategory\":\"PETITIONER\",\"documentNumber\":\"1002\",\"documentName\":\"1002
+      - 705 Bravman Declaration FINAL.pdf\",\"documentCategory\":\"Exhibits\",\"documentTitleText\":\"Expunged\",\"proceedingNumber\":\"IPR2016-00831\",\"documentFilingDate\":\"04-01-2016\",\"documentTypeName\":\"EXHIBIT\",\"proceedingTypeCategory\":\"AIA
+      Trial\",\"subproceedingTypeCategory\":\"IPR\",\"documentIdentifier\":\"169264154\",\"objectUuId\":\"workspace://SpacesStore/3949171b-5e3c-4646-a22b-50e767f8ff27;1.0\",\"respondentTechnologyCenterNumber\":\"2800\",\"respondentPatentOwnerName\":\"Silicon
+      Genesis Corporation\",\"respondentPartyName\":\"Silicon Genesis Corporation\",\"respondentInventorName\":\"FRANCOIS
+      HENLEY\",\"respondentCounselName\":\"Margaux Nair\",\"respondentGrantDate\":\"12-19-2000\",\"respondentPatentNumber\":\"6162705\",\"respondentApplicationNumberText\":\"09026118\",\"petitionerPartyName\":\"Commissariat
+      a l\u2019Energie Atomique et aux Energies Alternatives\",\"petitionerCounselName\":\"Paul
+      McGowan\",\"additionalRespondentPartyDataBag\":[]},{\"filingPartyCategory\":\"PETITIONER\",\"documentNumber\":\"1003\",\"documentName\":\"1003
+      - US5854123.pdf\",\"documentCategory\":\"Exhibits\",\"documentTitleText\":\"U.S.
+      Patent No. 5,854,123\",\"proceedingNumber\":\"IPR2016-00831\",\"documentFilingDate\":\"04-01-2016\",\"documentTypeName\":\"EXHIBIT\",\"proceedingTypeCategory\":\"AIA
+      Trial\",\"subproceedingTypeCategory\":\"IPR\",\"documentIdentifier\":\"169264158\",\"objectUuId\":\"workspace://SpacesStore/fee45c79-bbcf-4e95-a97d-a226e5cee45a;1.0\",\"respondentTechnologyCenterNumber\":\"2800\",\"respondentPatentOwnerName\":\"Silicon
+      Genesis Corporation\",\"respondentPartyName\":\"Silicon Genesis Corporation\",\"respondentInventorName\":\"FRANCOIS
+      HENLEY\",\"respondentCounselName\":\"Margaux Nair\",\"respondentGrantDate\":\"12-19-2000\",\"respondentPatentNumber\":\"6162705\",\"respondentApplicationNumberText\":\"09026118\",\"petitionerPartyName\":\"Commissariat
+      a l\u2019Energie Atomique et aux Energies Alternatives\",\"petitionerCounselName\":\"Paul
+      McGowan\",\"additionalRespondentPartyDataBag\":[]},{\"filingPartyCategory\":\"PETITIONER\",\"documentNumber\":\"1004\",\"documentName\":\"1004
+      - US5559043.pdf\",\"documentCategory\":\"Exhibits\",\"documentTitleText\":\"U.S.
+      Patent No. 5,559,043\",\"proceedingNumber\":\"IPR2016-00831\",\"documentFilingDate\":\"04-01-2016\",\"documentTypeName\":\"EXHIBIT\",\"proceedingTypeCategory\":\"AIA
+      Trial\",\"subproceedingTypeCategory\":\"IPR\",\"documentIdentifier\":\"169264162\",\"objectUuId\":\"workspace://SpacesStore/39e491af-077f-4bd0-8606-b237c7cbc8c7;1.0\",\"respondentTechnologyCenterNumber\":\"2800\",\"respondentPatentOwnerName\":\"Silicon
+      Genesis Corporation\",\"respondentPartyName\":\"Silicon Genesis Corporation\",\"respondentInventorName\":\"FRANCOIS
+      HENLEY\",\"respondentCounselName\":\"Margaux Nair\",\"respondentGrantDate\":\"12-19-2000\",\"respondentPatentNumber\":\"6162705\",\"respondentApplicationNumberText\":\"09026118\",\"petitionerPartyName\":\"Commissariat
+      a l\u2019Energie Atomique et aux Energies Alternatives\",\"petitionerCounselName\":\"Paul
+      McGowan\",\"additionalRespondentPartyDataBag\":[]},{\"filingPartyCategory\":\"PETITIONER\",\"documentNumber\":\"1004\",\"documentName\":\"1004
+      - US5559043.pdf\",\"documentCategory\":\"Exhibits\",\"documentTitleText\":\"U.S.
+      Patent No. 5,559,043\",\"proceedingNumber\":\"IPR2016-00831\",\"documentFilingDate\":\"04-06-2016\",\"documentTypeName\":\"EXHIBIT\",\"proceedingTypeCategory\":\"AIA
+      Trial\",\"subproceedingTypeCategory\":\"IPR\",\"documentIdentifier\":\"169264160\",\"objectUuId\":\"workspace://SpacesStore/371296b9-46a1-4030-bde4-d219d211b433;1.0\",\"respondentTechnologyCenterNumber\":\"2800\",\"respondentPatentOwnerName\":\"Silicon
+      Genesis Corporation\",\"respondentPartyName\":\"Silicon Genesis Corporation\",\"respondentInventorName\":\"FRANCOIS
+      HENLEY\",\"respondentCounselName\":\"Margaux Nair\",\"respondentGrantDate\":\"12-19-2000\",\"respondentPatentNumber\":\"6162705\",\"respondentApplicationNumberText\":\"09026118\",\"petitionerPartyName\":\"Commissariat
+      a l\u2019Energie Atomique et aux Energies Alternatives\",\"petitionerCounselName\":\"Paul
+      McGowan\",\"additionalRespondentPartyDataBag\":[]},{\"filingPartyCategory\":\"PETITIONER\",\"documentNumber\":\"1005\",\"documentName\":\"1005
+      - US3901423.pdf\",\"documentCategory\":\"Exhibits\",\"documentTitleText\":\"U.S.
+      Patent No. 3,901,423\",\"proceedingNumber\":\"IPR2016-00831\",\"documentFilingDate\":\"04-01-2016\",\"documentTypeName\":\"EXHIBIT\",\"proceedingTypeCategory\":\"AIA
+      Trial\",\"subproceedingTypeCategory\":\"IPR\",\"documentIdentifier\":\"169264164\",\"objectUuId\":\"workspace://SpacesStore/58a61b3e-5b60-44b9-b785-3d54d62adbac;1.0\",\"respondentTechnologyCenterNumber\":\"2800\",\"respondentPatentOwnerName\":\"Silicon
+      Genesis Corporation\",\"respondentPartyName\":\"Silicon Genesis Corporation\",\"respondentInventorName\":\"FRANCOIS
+      HENLEY\",\"respondentCounselName\":\"Margaux Nair\",\"respondentGrantDate\":\"12-19-2000\",\"respondentPatentNumber\":\"6162705\",\"respondentApplicationNumberText\":\"09026118\",\"petitionerPartyName\":\"Commissariat
+      a l\u2019Energie Atomique et aux Energies Alternatives\",\"petitionerCounselName\":\"Paul
+      McGowan\",\"additionalRespondentPartyDataBag\":[]},{\"filingPartyCategory\":\"PETITIONER\",\"documentNumber\":\"1006\",\"documentName\":\"1006
+      - Bruel Article.pdf\",\"documentCategory\":\"Exhibits\",\"documentTitleText\":\"Smart
+      Cut A Promising New SOI Material Technology, M. Bruel, et al.\",\"proceedingNumber\":\"IPR2016-00831\",\"documentFilingDate\":\"04-01-2016\",\"documentTypeName\":\"EXHIBIT\",\"proceedingTypeCategory\":\"AIA
+      Trial\",\"subproceedingTypeCategory\":\"IPR\",\"documentIdentifier\":\"169264168\",\"objectUuId\":\"workspace://SpacesStore/dfdb94d7-17a3-4236-9c73-e2bbc78b28ff;1.0\",\"respondentTechnologyCenterNumber\":\"2800\",\"respondentPatentOwnerName\":\"Silicon
+      Genesis Corporation\",\"respondentPartyName\":\"Silicon Genesis Corporation\",\"respondentInventorName\":\"FRANCOIS
+      HENLEY\",\"respondentCounselName\":\"Margaux Nair\",\"respondentGrantDate\":\"12-19-2000\",\"respondentPatentNumber\":\"6162705\",\"respondentApplicationNumberText\":\"09026118\",\"petitionerPartyName\":\"Commissariat
+      a l\u2019Energie Atomique et aux Energies Alternatives\",\"petitionerCounselName\":\"Paul
+      McGowan\",\"additionalRespondentPartyDataBag\":[]},{\"filingPartyCategory\":\"PETITIONER\",\"documentNumber\":\"1006\",\"documentName\":\"1006
+      - Bruel Article.pdf\",\"documentCategory\":\"Exhibits\",\"documentTitleText\":\"Smart
+      Cut A Promising New SOI Material Technology, M. Bruel, et al. (Oct. 1995)\",\"proceedingNumber\":\"IPR2016-00831\",\"documentFilingDate\":\"04-06-2016\",\"documentTypeName\":\"EXHIBIT\",\"proceedingTypeCategory\":\"AIA
+      Trial\",\"subproceedingTypeCategory\":\"IPR\",\"documentIdentifier\":\"169264166\",\"objectUuId\":\"workspace://SpacesStore/7d4e6796-b27a-42b2-9eb1-53ca5c937d7a;1.0\",\"respondentTechnologyCenterNumber\":\"2800\",\"respondentPatentOwnerName\":\"Silicon
+      Genesis Corporation\",\"respondentPartyName\":\"Silicon Genesis Corporation\",\"respondentInventorName\":\"FRANCOIS
+      HENLEY\",\"respondentCounselName\":\"Margaux Nair\",\"respondentGrantDate\":\"12-19-2000\",\"respondentPatentNumber\":\"6162705\",\"respondentApplicationNumberText\":\"09026118\",\"petitionerPartyName\":\"Commissariat
+      a l\u2019Energie Atomique et aux Energies Alternatives\",\"petitionerCounselName\":\"Paul
+      McGowan\",\"additionalRespondentPartyDataBag\":[]},{\"filingPartyCategory\":\"PETITIONER\",\"documentNumber\":\"1007\",\"documentName\":\"1007
+      - US5374564.pdf\",\"documentCategory\":\"Exhibits\",\"documentTitleText\":\"U.S.
+      Patent No. 5,374,564\",\"proceedingNumber\":\"IPR2016-00831\",\"documentFilingDate\":\"04-06-2016\",\"documentTypeName\":\"EXHIBIT\",\"proceedingTypeCategory\":\"AIA
+      Trial\",\"subproceedingTypeCategory\":\"IPR\",\"documentIdentifier\":\"169264170\",\"objectUuId\":\"workspace://SpacesStore/9d835faf-8bbc-4ef5-b389-9567acfc42b9;1.0\",\"respondentTechnologyCenterNumber\":\"2800\",\"respondentPatentOwnerName\":\"Silicon
+      Genesis Corporation\",\"respondentPartyName\":\"Silicon Genesis Corporation\",\"respondentInventorName\":\"FRANCOIS
+      HENLEY\",\"respondentCounselName\":\"Margaux Nair\",\"respondentGrantDate\":\"12-19-2000\",\"respondentPatentNumber\":\"6162705\",\"respondentApplicationNumberText\":\"09026118\",\"petitionerPartyName\":\"Commissariat
+      a l\u2019Energie Atomique et aux Energies Alternatives\",\"petitionerCounselName\":\"Paul
+      McGowan\",\"additionalRespondentPartyDataBag\":[]},{\"filingPartyCategory\":\"PETITIONER\",\"documentNumber\":\"1007\",\"documentName\":\"1007
+      - US5374564.pdf\",\"documentCategory\":\"Exhibits\",\"documentTitleText\":\"U.S.
+      Patent No. 5,374,564\",\"proceedingNumber\":\"IPR2016-00831\",\"documentFilingDate\":\"04-01-2016\",\"documentTypeName\":\"EXHIBIT\",\"proceedingTypeCategory\":\"AIA
+      Trial\",\"subproceedingTypeCategory\":\"IPR\",\"documentIdentifier\":\"169264172\",\"objectUuId\":\"workspace://SpacesStore/de594a26-f081-4437-83c1-9a3327d3f324;1.0\",\"respondentTechnologyCenterNumber\":\"2800\",\"respondentPatentOwnerName\":\"Silicon
+      Genesis Corporation\",\"respondentPartyName\":\"Silicon Genesis Corporation\",\"respondentInventorName\":\"FRANCOIS
+      HENLEY\",\"respondentCounselName\":\"Margaux Nair\",\"respondentGrantDate\":\"12-19-2000\",\"respondentPatentNumber\":\"6162705\",\"respondentApplicationNumberText\":\"09026118\",\"petitionerPartyName\":\"Commissariat
+      a l\u2019Energie Atomique et aux Energies Alternatives\",\"petitionerCounselName\":\"Paul
+      McGowan\",\"additionalRespondentPartyDataBag\":[]},{\"filingPartyCategory\":\"PETITIONER\",\"documentNumber\":\"1008\",\"documentName\":\"1008
+      - 705 File History.pdf\",\"documentCategory\":\"Exhibits\",\"documentTitleText\":\"Prosecution
+      History of U.S. Patent No. 6,162,705\",\"proceedingNumber\":\"IPR2016-00831\",\"documentFilingDate\":\"04-01-2016\",\"documentTypeName\":\"EXHIBIT\",\"proceedingTypeCategory\":\"AIA
+      Trial\",\"subproceedingTypeCategory\":\"IPR\",\"documentIdentifier\":\"169264174\",\"objectUuId\":\"workspace://SpacesStore/34f7cde2-7e68-49b4-9a3d-bfc89cb9fb59;1.0\",\"respondentTechnologyCenterNumber\":\"2800\",\"respondentPatentOwnerName\":\"Silicon
+      Genesis Corporation\",\"respondentPartyName\":\"Silicon Genesis Corporation\",\"respondentInventorName\":\"FRANCOIS
+      HENLEY\",\"respondentCounselName\":\"Margaux Nair\",\"respondentGrantDate\":\"12-19-2000\",\"respondentPatentNumber\":\"6162705\",\"respondentApplicationNumberText\":\"09026118\",\"petitionerPartyName\":\"Commissariat
+      a l\u2019Energie Atomique et aux Energies Alternatives\",\"petitionerCounselName\":\"Paul
+      McGowan\",\"additionalRespondentPartyDataBag\":[]},{\"filingPartyCategory\":\"PETITIONER\",\"documentNumber\":\"1009\",\"documentName\":\"1009
+      - 60046276 (Provisional Application).pdf\",\"documentCategory\":\"Exhibits\",\"documentTitleText\":\"U.S.
+      Provisional Application No. 60/046,276\",\"proceedingNumber\":\"IPR2016-00831\",\"documentFilingDate\":\"04-01-2016\",\"documentTypeName\":\"EXHIBIT\",\"proceedingTypeCategory\":\"AIA
+      Trial\",\"subproceedingTypeCategory\":\"IPR\",\"documentIdentifier\":\"169264176\",\"objectUuId\":\"workspace://SpacesStore/1142a153-5f99-47b9-b0dd-ea134729bafd;1.0\",\"respondentTechnologyCenterNumber\":\"2800\",\"respondentPatentOwnerName\":\"Silicon
+      Genesis Corporation\",\"respondentPartyName\":\"Silicon Genesis Corporation\",\"respondentInventorName\":\"FRANCOIS
+      HENLEY\",\"respondentCounselName\":\"Margaux Nair\",\"respondentGrantDate\":\"12-19-2000\",\"respondentPatentNumber\":\"6162705\",\"respondentApplicationNumberText\":\"09026118\",\"petitionerPartyName\":\"Commissariat
+      a l\u2019Energie Atomique et aux Energies Alternatives\",\"petitionerCounselName\":\"Paul
+      McGowan\",\"additionalRespondentPartyDataBag\":[]},{\"filingPartyCategory\":\"PETITIONER\",\"documentNumber\":\"1010\",\"documentName\":\"1010
+      - Wegmann.pdf\",\"documentCategory\":\"Exhibits\",\"documentTitleText\":\"L.
+      Wegmann, Historical Perspective and Future Trends for Ion Implantation Systems
+      (1981)\",\"proceedingNumber\":\"IPR2016-00831\",\"documentFilingDate\":\"04-01-2016\",\"documentTypeName\":\"EXHIBIT\",\"proceedingTypeCategory\":\"AIA
+      Trial\",\"subproceedingTypeCategory\":\"IPR\",\"documentIdentifier\":\"169264178\",\"objectUuId\":\"workspace://SpacesStore/fcdcc9a1-8025-42e1-a6d4-72a9edd2a13e;1.0\",\"respondentTechnologyCenterNumber\":\"2800\",\"respondentPatentOwnerName\":\"Silicon
+      Genesis Corporation\",\"respondentPartyName\":\"Silicon Genesis Corporation\",\"respondentInventorName\":\"FRANCOIS
+      HENLEY\",\"respondentCounselName\":\"Margaux Nair\",\"respondentGrantDate\":\"12-19-2000\",\"respondentPatentNumber\":\"6162705\",\"respondentApplicationNumberText\":\"09026118\",\"petitionerPartyName\":\"Commissariat
+      a l\u2019Energie Atomique et aux Energies Alternatives\",\"petitionerCounselName\":\"Paul
+      McGowan\",\"additionalRespondentPartyDataBag\":[]},{\"documentNumber\":\"1011\",\"documentName\":\"CEA
+      705 Hall Declaration for Pro Hac Vice.pdf\",\"documentCategory\":\"Exhibits\",\"documentTitleText\":\"Declaration
+      of Marcus T. Hall ISO Motion for Admission Pro Hac Vice\",\"proceedingNumber\":\"IPR2016-00831\",\"documentFilingDate\":\"09-12-2016\",\"documentTypeName\":\"EXHIBIT\",\"proceedingTypeCategory\":\"AIA
+      Trial\",\"subproceedingTypeCategory\":\"IPR\",\"documentIdentifier\":\"169345959\",\"objectUuId\":\"workspace://SpacesStore/2e641c62-320e-4732-acce-1b69ed1114df;1.0\",\"respondentTechnologyCenterNumber\":\"2800\",\"respondentPatentOwnerName\":\"Silicon
+      Genesis Corporation\",\"respondentPartyName\":\"Silicon Genesis Corporation\",\"respondentInventorName\":\"FRANCOIS
+      HENLEY\",\"respondentCounselName\":\"Margaux Nair\",\"respondentGrantDate\":\"12-19-2000\",\"respondentPatentNumber\":\"6162705\",\"respondentApplicationNumberText\":\"09026118\",\"petitionerPartyName\":\"Commissariat
+      a l\u2019Energie Atomique et aux Energies Alternatives\",\"petitionerCounselName\":\"Paul
+      McGowan\",\"additionalRespondentPartyDataBag\":[]},{\"documentNumber\":\"1012\",\"documentName\":\"CEA
+      705 Salyers Declaration for Pro Hac Vice.pdf\",\"documentCategory\":\"Exhibits\",\"documentTitleText\":\"Declaration
+      of Douglas D. Salyers ISO Motion for Admission Pro Hac Vice\",\"proceedingNumber\":\"IPR2016-00831\",\"documentFilingDate\":\"09-12-2016\",\"documentTypeName\":\"EXHIBIT\",\"proceedingTypeCategory\":\"AIA
+      Trial\",\"subproceedingTypeCategory\":\"IPR\",\"documentIdentifier\":\"169345961\",\"objectUuId\":\"workspace://SpacesStore/2bdc55f7-0023-4dbf-b2a6-dee257a141ea;1.0\",\"respondentTechnologyCenterNumber\":\"2800\",\"respondentPatentOwnerName\":\"Silicon
+      Genesis Corporation\",\"respondentPartyName\":\"Silicon Genesis Corporation\",\"respondentInventorName\":\"FRANCOIS
+      HENLEY\",\"respondentCounselName\":\"Margaux Nair\",\"respondentGrantDate\":\"12-19-2000\",\"respondentPatentNumber\":\"6162705\",\"respondentApplicationNumberText\":\"09026118\",\"petitionerPartyName\":\"Commissariat
+      a l\u2019Energie Atomique et aux Energies Alternatives\",\"petitionerCounselName\":\"Paul
+      McGowan\",\"additionalRespondentPartyDataBag\":[]},{\"documentNumber\":\"1013\",\"documentName\":\"Exhibit
+      1013 ('705) 2017-01-19 Henley Francois CEA Deposition.PDF\",\"documentCategory\":\"Exhibits\",\"documentTitleText\":\"Deposition
+      Transcript of Francois Henley\",\"proceedingNumber\":\"IPR2016-00831\",\"documentFilingDate\":\"03-13-2017\",\"documentTypeName\":\"EXHIBIT\",\"proceedingTypeCategory\":\"AIA
+      Trial\",\"subproceedingTypeCategory\":\"IPR\",\"documentIdentifier\":\"169451532\",\"objectUuId\":\"workspace://SpacesStore/6ea51ced-1687-4b27-bd47-625057af117b;1.0\",\"respondentTechnologyCenterNumber\":\"2800\",\"respondentPatentOwnerName\":\"Silicon
+      Genesis Corporation\",\"respondentPartyName\":\"Silicon Genesis Corporation\",\"respondentInventorName\":\"FRANCOIS
+      HENLEY\",\"respondentCounselName\":\"Margaux Nair\",\"respondentGrantDate\":\"12-19-2000\",\"respondentPatentNumber\":\"6162705\",\"respondentApplicationNumberText\":\"09026118\",\"petitionerPartyName\":\"Commissariat
+      a l\u2019Energie Atomique et aux Energies Alternatives\",\"petitionerCounselName\":\"Paul
+      McGowan\",\"additionalRespondentPartyDataBag\":[]},{\"documentNumber\":\"1014\",\"documentName\":\"Jack
+      Lee Dep.PDF\",\"documentCategory\":\"Exhibits\",\"documentTitleText\":\"Deposition
+      Transcript of Jack Lee\",\"proceedingNumber\":\"IPR2016-00831\",\"documentFilingDate\":\"03-13-2017\",\"documentTypeName\":\"EXHIBIT\",\"proceedingTypeCategory\":\"AIA
+      Trial\",\"subproceedingTypeCategory\":\"IPR\",\"documentIdentifier\":\"169451533\",\"objectUuId\":\"workspace://SpacesStore/cf7fd58a-78eb-4580-8a7e-390f17a8e38c;1.0\",\"respondentTechnologyCenterNumber\":\"2800\",\"respondentPatentOwnerName\":\"Silicon
+      Genesis Corporation\",\"respondentPartyName\":\"Silicon Genesis Corporation\",\"respondentInventorName\":\"FRANCOIS
+      HENLEY\",\"respondentCounselName\":\"Margaux Nair\",\"respondentGrantDate\":\"12-19-2000\",\"respondentPatentNumber\":\"6162705\",\"respondentApplicationNumberText\":\"09026118\",\"petitionerPartyName\":\"Commissariat
+      a l\u2019Energie Atomique et aux Energies Alternatives\",\"petitionerCounselName\":\"Paul
+      McGowan\",\"additionalRespondentPartyDataBag\":[]},{\"documentNumber\":\"1015\",\"documentName\":\"Exhibit
+      1015 ('705) - Bravman Declaration.PDF\",\"documentCategory\":\"Exhibits\",\"documentTitleText\":\"Declaration
+      of John Bravman In Support of Petitioner's Reply\",\"proceedingNumber\":\"IPR2016-00831\",\"documentFilingDate\":\"03-13-2017\",\"documentTypeName\":\"EXHIBIT\",\"proceedingTypeCategory\":\"AIA
+      Trial\",\"subproceedingTypeCategory\":\"IPR\",\"documentIdentifier\":\"169451518\",\"objectUuId\":\"workspace://SpacesStore/4034de91-c6db-4296-8caf-b28767b4363e;1.0\",\"respondentTechnologyCenterNumber\":\"2800\",\"respondentPatentOwnerName\":\"Silicon
+      Genesis Corporation\",\"respondentPartyName\":\"Silicon Genesis Corporation\",\"respondentInventorName\":\"FRANCOIS
+      HENLEY\",\"respondentCounselName\":\"Margaux Nair\",\"respondentGrantDate\":\"12-19-2000\",\"respondentPatentNumber\":\"6162705\",\"respondentApplicationNumberText\":\"09026118\",\"petitionerPartyName\":\"Commissariat
+      a l\u2019Energie Atomique et aux Energies Alternatives\",\"petitionerCounselName\":\"Paul
+      McGowan\",\"additionalRespondentPartyDataBag\":[]},{\"documentNumber\":\"11\",\"documentName\":\"IPR2016-00831
+      Joint Stipulation.pdf\",\"documentCategory\":\"Paper\",\"documentTitleText\":\"Joint
+      Stipulation\",\"proceedingNumber\":\"IPR2016-00831\",\"documentFilingDate\":\"09-06-2016\",\"documentTypeName\":\"Motion\",\"proceedingTypeCategory\":\"AIA
+      Trial\",\"subproceedingTypeCategory\":\"IPR\",\"documentIdentifier\":\"169342429\",\"objectUuId\":\"workspace://SpacesStore/09f43161-cb8d-4dfb-a8d9-0ba3d11a2a66;1.0\",\"respondentTechnologyCenterNumber\":\"2800\",\"respondentPatentOwnerName\":\"Silicon
+      Genesis Corporation\",\"respondentPartyName\":\"Silicon Genesis Corporation\",\"respondentInventorName\":\"FRANCOIS
+      HENLEY\",\"respondentCounselName\":\"Margaux Nair\",\"respondentGrantDate\":\"12-19-2000\",\"respondentPatentNumber\":\"6162705\",\"respondentApplicationNumberText\":\"09026118\",\"petitionerPartyName\":\"Commissariat
+      a l\u2019Energie Atomique et aux Energies Alternatives\",\"petitionerCounselName\":\"Paul
+      McGowan\",\"additionalRespondentPartyDataBag\":[]},{\"documentNumber\":\"12\",\"documentName\":\"CEA
+      705 Hall Motion Pro Hac Vice.pdf\",\"documentCategory\":\"Paper\",\"documentTitleText\":\"Motion
+      for Admission Pro Hac Vice of Marcus T. Hall\",\"proceedingNumber\":\"IPR2016-00831\",\"documentFilingDate\":\"09-12-2016\",\"documentTypeName\":\"Motion\",\"proceedingTypeCategory\":\"AIA
+      Trial\",\"subproceedingTypeCategory\":\"IPR\",\"documentIdentifier\":\"169345958\",\"objectUuId\":\"workspace://SpacesStore/56154bab-565b-4efa-a54a-1065d8061ac1;1.0\",\"respondentTechnologyCenterNumber\":\"2800\",\"respondentPatentOwnerName\":\"Silicon
+      Genesis Corporation\",\"respondentPartyName\":\"Silicon Genesis Corporation\",\"respondentInventorName\":\"FRANCOIS
+      HENLEY\",\"respondentCounselName\":\"Margaux Nair\",\"respondentGrantDate\":\"12-19-2000\",\"respondentPatentNumber\":\"6162705\",\"respondentApplicationNumberText\":\"09026118\",\"petitionerPartyName\":\"Commissariat
+      a l\u2019Energie Atomique et aux Energies Alternatives\",\"petitionerCounselName\":\"Paul
+      McGowan\",\"additionalRespondentPartyDataBag\":[]},{\"documentNumber\":\"13\",\"documentName\":\"CEA
+      705 Salyers Motion Pro Hac Vice.pdf\",\"documentCategory\":\"Paper\",\"documentTitleText\":\"Motion
+      for Admission Pro Hac Vice of Douglas D. Salyers\",\"proceedingNumber\":\"IPR2016-00831\",\"documentFilingDate\":\"09-12-2016\",\"documentTypeName\":\"Motion\",\"proceedingTypeCategory\":\"AIA
+      Trial\",\"subproceedingTypeCategory\":\"IPR\",\"documentIdentifier\":\"169345960\",\"objectUuId\":\"workspace://SpacesStore/69892f1d-19f1-46db-a6a7-e12aa895b4fc;1.0\",\"respondentTechnologyCenterNumber\":\"2800\",\"respondentPatentOwnerName\":\"Silicon
+      Genesis Corporation\",\"respondentPartyName\":\"Silicon Genesis Corporation\",\"respondentInventorName\":\"FRANCOIS
+      HENLEY\",\"respondentCounselName\":\"Margaux Nair\",\"respondentGrantDate\":\"12-19-2000\",\"respondentPatentNumber\":\"6162705\",\"respondentApplicationNumberText\":\"09026118\",\"petitionerPartyName\":\"Commissariat
+      a l\u2019Energie Atomique et aux Energies Alternatives\",\"petitionerCounselName\":\"Paul
+      McGowan\",\"additionalRespondentPartyDataBag\":[]},{\"documentNumber\":\"14\",\"documentName\":\"IPR2016-00831
+      Decision on Institution.pdf\",\"documentCategory\":\"Paper\",\"documentTitleText\":\"Trial
+      Instituted Document\",\"proceedingNumber\":\"IPR2016-00831\",\"documentFilingDate\":\"09-28-2016\",\"documentTypeName\":\"Institution
+      Decision\",\"proceedingTypeCategory\":\"AIA Trial\",\"subproceedingTypeCategory\":\"IPR\",\"documentIdentifier\":\"169355259\",\"objectUuId\":\"workspace://SpacesStore/72393ea9-8b5f-46ce-a28f-e7a3f103801e;1.0\",\"respondentTechnologyCenterNumber\":\"2800\",\"respondentPatentOwnerName\":\"Silicon
+      Genesis Corporation\",\"respondentPartyName\":\"Silicon Genesis Corporation\",\"respondentInventorName\":\"FRANCOIS
+      HENLEY\",\"respondentCounselName\":\"Margaux Nair\",\"respondentGrantDate\":\"12-19-2000\",\"respondentPatentNumber\":\"6162705\",\"respondentApplicationNumberText\":\"09026118\",\"petitionerPartyName\":\"Commissariat
+      a l\u2019Energie Atomique et aux Energies Alternatives\",\"petitionerCounselName\":\"Paul
+      McGowan\",\"additionalRespondentPartyDataBag\":[]},{\"documentNumber\":\"15\",\"documentName\":\"IPR2016-00831
+      Scheduling Order.pdf\",\"documentCategory\":\"Paper\",\"documentTitleText\":\"Scheduling
+      Order\",\"proceedingNumber\":\"IPR2016-00831\",\"documentFilingDate\":\"09-28-2016\",\"documentTypeName\":\"Order\",\"proceedingTypeCategory\":\"AIA
+      Trial\",\"subproceedingTypeCategory\":\"IPR\",\"documentIdentifier\":\"169355317\",\"objectUuId\":\"workspace://SpacesStore/80e8c605-2194-486d-9135-933b68ff83d6;1.0\",\"respondentTechnologyCenterNumber\":\"2800\",\"respondentPatentOwnerName\":\"Silicon
+      Genesis Corporation\",\"respondentPartyName\":\"Silicon Genesis Corporation\",\"respondentInventorName\":\"FRANCOIS
+      HENLEY\",\"respondentCounselName\":\"Margaux Nair\",\"respondentGrantDate\":\"12-19-2000\",\"respondentPatentNumber\":\"6162705\",\"respondentApplicationNumberText\":\"09026118\",\"petitionerPartyName\":\"Commissariat
+      a l\u2019Energie Atomique et aux Energies Alternatives\",\"petitionerCounselName\":\"Paul
+      McGowan\",\"additionalRespondentPartyDataBag\":[]}],\"recordTotalQuantity\":77}"
     headers:
       Access-Control-Allow-Credentials:
       - 'true'
@@ -425,7 +426,7 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Sun, 29 Oct 2023 02:51:57 GMT
+      - Mon, 30 Oct 2023 16:23:36 GMT
       Strict-Transport-Security:
       - max-age=31536000;
       Transfer-Encoding:
@@ -434,7 +435,71 @@ interactions:
       - Origin
       - Access-Control-Request-Method
       - Access-Control-Request-Headers
-    status:
-      code: 200
-      message: OK
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - developer.uspto.gov
+      user-agent:
+      - python-httpx/0.24.1
+    method: GET
+    uri: https://developer.uspto.gov/ptab-api/documents?proceedingNumber=IPR2016-00831&recordStartNumber=0&recordTotalQuantity=3&sortOrderCategory=documentNumber
+  response:
+    content: "{\"aggregationData\":{},\"results\":[{\"filingPartyCategory\":\"PETITIONER\",\"documentNumber\":\"1\",\"documentName\":\"705
+      Petition FINAL.pdf\",\"documentCategory\":\"Paper\",\"documentTitleText\":\"Petition
+      for Inter Partes Review of U.S. Patent No. 6,162,705\",\"proceedingNumber\":\"IPR2016-00831\",\"documentFilingDate\":\"04-01-2016\",\"documentTypeName\":\"Petition\",\"proceedingTypeCategory\":\"AIA
+      Trial\",\"subproceedingTypeCategory\":\"IPR\",\"documentIdentifier\":\"169264136\",\"objectUuId\":\"workspace://SpacesStore/eb6c3f1a-a327-43d0-9cde-ddeb5080a8f8;1.0\",\"respondentTechnologyCenterNumber\":\"2800\",\"respondentPatentOwnerName\":\"Silicon
+      Genesis Corporation\",\"respondentPartyName\":\"Silicon Genesis Corporation\",\"respondentInventorName\":\"FRANCOIS
+      HENLEY\",\"respondentCounselName\":\"Margaux Nair\",\"respondentGrantDate\":\"12-19-2000\",\"respondentPatentNumber\":\"6162705\",\"respondentApplicationNumberText\":\"09026118\",\"petitionerPartyName\":\"Commissariat
+      a l\u2019Energie Atomique et aux Energies Alternatives\",\"petitionerCounselName\":\"Paul
+      McGowan\",\"additionalRespondentPartyDataBag\":[]},{\"filingPartyCategory\":\"PETITIONER\",\"documentNumber\":\"1001\",\"documentName\":\"1001-
+      US6162705.pdf\",\"documentCategory\":\"Exhibits\",\"documentTitleText\":\"U.S.
+      Patent No. 6,162,705\",\"proceedingNumber\":\"IPR2016-00831\",\"documentFilingDate\":\"04-01-2016\",\"documentTypeName\":\"EXHIBIT\",\"proceedingTypeCategory\":\"AIA
+      Trial\",\"subproceedingTypeCategory\":\"IPR\",\"documentIdentifier\":\"169264152\",\"objectUuId\":\"workspace://SpacesStore/9b33f11d-8a5b-4973-9cbb-707aaf8d1d5c;1.0\",\"respondentTechnologyCenterNumber\":\"2800\",\"respondentPatentOwnerName\":\"Silicon
+      Genesis Corporation\",\"respondentPartyName\":\"Silicon Genesis Corporation\",\"respondentInventorName\":\"FRANCOIS
+      HENLEY\",\"respondentCounselName\":\"Margaux Nair\",\"respondentGrantDate\":\"12-19-2000\",\"respondentPatentNumber\":\"6162705\",\"respondentApplicationNumberText\":\"09026118\",\"petitionerPartyName\":\"Commissariat
+      a l\u2019Energie Atomique et aux Energies Alternatives\",\"petitionerCounselName\":\"Paul
+      McGowan\",\"additionalRespondentPartyDataBag\":[]},{\"filingPartyCategory\":\"PETITIONER\",\"documentNumber\":\"1002\",\"documentName\":\"1002
+      - 705 Corrected Bravman Declaration.pdf\",\"documentCategory\":\"Exhibits\",\"documentTitleText\":\"Corrected
+      Declaration of John Bravman\",\"proceedingNumber\":\"IPR2016-00831\",\"documentFilingDate\":\"06-23-2016\",\"documentTypeName\":\"EXHIBIT\",\"proceedingTypeCategory\":\"AIA
+      Trial\",\"subproceedingTypeCategory\":\"IPR\",\"documentIdentifier\":\"169264156\",\"objectUuId\":\"workspace://SpacesStore/dd974644-b6b1-4934-bcae-5c6431f2b017;1.0\",\"respondentTechnologyCenterNumber\":\"2800\",\"respondentPatentOwnerName\":\"Silicon
+      Genesis Corporation\",\"respondentPartyName\":\"Silicon Genesis Corporation\",\"respondentInventorName\":\"FRANCOIS
+      HENLEY\",\"respondentCounselName\":\"Margaux Nair\",\"respondentGrantDate\":\"12-19-2000\",\"respondentPatentNumber\":\"6162705\",\"respondentApplicationNumberText\":\"09026118\",\"petitionerPartyName\":\"Commissariat
+      a l\u2019Energie Atomique et aux Energies Alternatives\",\"petitionerCounselName\":\"Paul
+      McGowan\",\"additionalRespondentPartyDataBag\":[]}],\"recordTotalQuantity\":77}"
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Headers:
+      - accept, authorization, content-type, x-requested-with
+      Access-Control-Allow-Methods:
+      - GET, POST, OPTIONS, PUT
+      Access-Control-Allow-Origin:
+      - '*'
+      Access-Control-Max-Age:
+      - '1'
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Date:
+      - Mon, 30 Oct 2023 21:58:01 GMT
+      Strict-Transport-Security:
+      - max-age=31536000;
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Origin
+      - Access-Control-Request-Method
+      - Access-Control-Request-Headers
+    http_version: HTTP/1.1
+    status_code: 200
 version: 1

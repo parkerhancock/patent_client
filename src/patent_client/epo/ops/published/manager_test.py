@@ -1,7 +1,7 @@
 import pytest
 
+from ..session import asession
 from ..session import OpsAuthenticationError
-from ..session import session
 from .model.search import Inpadoc
 
 
@@ -47,11 +47,11 @@ class TestPublished:
         assert result.title == None
 
     def test_issue_76_no_credential(self):
-        key = session.key
-        session.key = None
+        key = asession.key
+        asession.key = None
         with pytest.raises(OpsAuthenticationError):
             pub = Inpadoc.objects.get("EP3082535A1")
-        session.key = key
+        asession.key = key
 
     def test_issue_76_with_credential(self):
         pub = Inpadoc.objects.get("EP3082535A1")

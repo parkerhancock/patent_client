@@ -1,22 +1,18 @@
 interactions:
 - request:
-    body: '{"qf": "appEarlyPubNumber applId appLocation appType appStatus_txt appConfrNumber
-      appCustNumber appGrpArtNumber appCls appSubCls appEntityStatus_txt patentNumber
-      patentTitle primaryInventor firstNamedApplicant appExamName appExamPrefrdName
-      appAttrDockNumber appPCTNumber appIntlPubNumber wipoEarlyPubNumber pctAppType
-      firstInventorFile appClsSubCls rankAndInventorsList", "fl": "*", "fq": [], "searchText":
+    body: '{"df": "patentTitle", "qf": "appEarlyPubNumber", "fl": "*", "fq": [], "searchText":
       "appEarlyPubNumber:(US20080034424A1 OR US20100020700A1 OR US20110225644A1 OR
-      US20050120054A1 OR US20050188423A1)", "sort": null, "facet": "false", "start":
-      0}'
+      US20050120054A1 OR US20050188423A1)", "sort": "applId asc", "facet": "false",
+      "mm": "0%", "start": "0"}'
     headers:
       accept:
-      - '*/*'
+      - application/json
       accept-encoding:
       - gzip, deflate
       connection:
       - keep-alive
       content-length:
-      - '565'
+      - '264'
       content-type:
       - application/json
       host:
@@ -26,199 +22,519 @@ interactions:
     method: POST
     uri: https://ped.uspto.gov/api/queries
   response:
-    content: '{"queryResults":{"indexLastUpdatedDate":"Sun Oct 29 22:21:09 EDT 2023","searchResponse":{"responseHeader":{"zkConnected":true,"status":0,"QTime":1085},"response":{"numFound":5,"start":0,"numFoundExact":true,"docs":[{"corrAddrCountryName":"UNITED
-      STATES","applId":"12720264","totalPtoDays":"446","assignments":[{"reelNumber":"24293","frameNumber":"536","addressNameText":"WOLF,
-      GREENFIELD & SACKS, P.C.","addressLineOneText":"600 ATLANTIC AVENUE","addressLineTwoText":"BOSTON,
-      MA 02210","addressLineThreeText":"null","addressLineFourText":"null","mailDate":"04-27-2010","receivedDate":"04-27-2010","recordedDate":"04-27-2010","pagesCount":"2","converyanceName":"ASSIGNMENT
-      OF ASSIGNORS INTEREST (SEE DOCUMENT FOR DETAILS).","sequenceNumber":"1","assignors":[{"assignorName":"PULLIKOTTIL,
-      JACK","execDate":"03-08-2010"},{"assignorName":"MANU, MITICA","execDate":"03-08-2010"}],"assignee":[{"assigneeName":"MICROSOFT
-      CORPORATION","streetLineOneText":"ONE MICROSOFT WAY","streetLineTwoText":"null","cityName":"REDMOND","countryCode":"WASHINGTON","postalCode":"98052"}]},{"reelNumber":"34564","frameNumber":"1","addressNameText":"CPA
-      GLOBAL LIMITED","addressLineOneText":"LIBERATION HOUSE","addressLineTwoText":"CASTLE
-      STREET","addressLineThreeText":"ST HELIER, JE1 1BL JERSEY","addressLineFourText":"null","mailDate":"12-23-2014","receivedDate":"12-09-2014","recordedDate":"12-09-2014","pagesCount":"451","converyanceName":"ASSIGNMENT
-      OF ASSIGNORS INTEREST (SEE DOCUMENT FOR DETAILS).","sequenceNumber":"4549","assignors":[{"assignorName":"MICROSOFT
-      CORPORATION","execDate":"10-14-2014"}],"assignee":[{"assigneeName":"MICROSOFT
-      TECHNOLOGY LICENSING, LLC","streetLineOneText":"ONE MICROSOFT WAY","streetLineTwoText":"null","cityName":"REDMOND","countryCode":"WASHINGTON","postalCode":"98052"}]}],"appFilingDate":"2010-03-09T00:00:00Z","appExamName":"MEHEDI,
-      MORSHED","appExamNameFacet":"MEHEDI, MORSHED","publicInd":"Y","APP_IND":"5","inventorName":"Jack  Pullikottil","inventorNameFacet":"Jack  Pullikottil","appEarlyPubDate":"2011-09-15T00:00:00Z","corrAddrGeoRegionCode":"WA","appLocation":"ELECTRONIC","appEarlyPubNumber":"US20110225644A1","id":"12720264","appGrpArtNumber":"2438","appGrpArtNumberFacet":"2438","applIdStr":"12720264","appl_id_txt":"12720264","appSubCls":"007000","patentNumber":"8424072","LAST_MOD_TS":"2023-10-28T06:41:47Z","transactions":[{"recordDate":"2020-09-30
-      00:00:00","code":"M1552","description":"Payment of Maintenance Fee, 8th Year,
-      Large Entity"},{"recordDate":"2013-04-16 00:00:00","code":"PGM/","description":"Recordation
-      of Patent Grant Mailed"},{"recordDate":"2013-03-28 00:00:00","code":"EML_NTR","description":"Email
-      Notification"},{"recordDate":"2013-03-27 00:00:00","code":"WPIR","description":"Issue
-      Notification Mailed"},{"recordDate":"2013-04-16 00:00:00","code":"PTAC","description":"Patent
-      Issue Date Used in PTA Calculation"},{"recordDate":"2013-03-22 00:00:00","code":"D1935","description":"Dispatch
-      to FDC"},{"recordDate":"2013-02-25 00:00:00","code":"D1935","description":"Dispatch
-      to FDC"},{"recordDate":"2013-02-25 00:00:00","code":"PILS","description":"Application
-      Is Considered Ready for Issue"},{"recordDate":"2013-02-22 00:00:00","code":"N084","description":"Issue
-      Fee Payment Verified"},{"recordDate":"2013-02-22 00:00:00","code":"IFEE","description":"Issue
-      Fee Payment Received"},{"recordDate":"2012-11-29 00:00:00","code":"ELC_RVW","description":"Electronic
-      Review"},{"recordDate":"2012-11-27 00:00:00","code":"EML_NTF","description":"Email
-      Notification"},{"recordDate":"2012-11-27 00:00:00","code":"MN/=.","description":"Mail
-      Notice of Allowance"},{"recordDate":"2012-11-17 00:00:00","code":"N/=.","description":"Notice
-      of Allowance Data Verification Completed"},{"recordDate":"2012-11-17 00:00:00","code":"DOCK","description":"Case
-      Docketed to Examiner in GAU"},{"recordDate":"2012-11-16 00:00:00","code":"EX.R","description":"Reasons
-      for Allowance"},{"recordDate":"2012-11-16 00:00:00","code":"EX.A","description":"Examiner''s
-      Amendment Communication"},{"recordDate":"2012-11-13 00:00:00","code":"EXIE","description":"Interview
-      Summary - Examiner Initiated"},{"recordDate":"2012-09-12 00:00:00","code":"IDSC","description":"Information
-      Disclosure Statement considered"},{"recordDate":"2012-09-20 00:00:00","code":"MEXAT","description":"Mail
-      Interview Summary - Applicant Initiated - Telephonic"},{"recordDate":"2012-09-12
-      00:00:00","code":"EIDS.","description":"Electronic Information Disclosure Statement"},{"recordDate":"2012-09-15
-      00:00:00","code":"FWDX","description":"Date Forwarded to Examiner"},{"recordDate":"2012-09-12
-      00:00:00","code":"A...","description":"Response after Non-Final Action"},{"recordDate":"2012-09-10
-      00:00:00","code":"EXIA","description":"Interview Summary- Applicant Initiated"},{"recordDate":"2012-09-10
-      00:00:00","code":"EXAT","description":"Interview Summary - Applicant Initiated
-      - Telephonic"},{"recordDate":"2012-09-12 00:00:00","code":"WIDS","description":"Information
-      Disclosure Statement (IDS) Filed"},{"recordDate":"2012-06-21 00:00:00","code":"ELC_RVW","description":"Electronic
-      Review"},{"recordDate":"2012-06-20 00:00:00","code":"EML_NTF","description":"Email
-      Notification"},{"recordDate":"2012-06-20 00:00:00","code":"MCTNF","description":"Mail
-      Non-Final Rejection"},{"recordDate":"2012-06-14 00:00:00","code":"CTNF","description":"Non-Final
-      Rejection"},{"recordDate":"2010-03-09 00:00:00","code":"IDSC","description":"Information
-      Disclosure Statement considered"},{"recordDate":"2012-03-12 00:00:00","code":"C.ADB","description":"Correspondence
-      Address Change"},{"recordDate":"2012-01-24 00:00:00","code":"DOCK","description":"Case
-      Docketed to Examiner in GAU"},{"recordDate":"2011-09-16 00:00:00","code":"EML_NTR","description":"Email
-      Notification"},{"recordDate":"2011-09-15 00:00:00","code":"PG-ISSUE","description":"PG-Pub
-      Issue Notification"},{"recordDate":"2011-06-30 00:00:00","code":"DOCK","description":"Case
-      Docketed to Examiner in GAU"},{"recordDate":"2010-03-09 00:00:00","code":"RCAP","description":"Reference
-      capture on IDS"},{"recordDate":"2010-03-09 00:00:00","code":"M844","description":"Information
-      Disclosure Statement (IDS) Filed"},{"recordDate":"2010-04-14 00:00:00","code":"OIPE","description":"Application
-      Dispatched from OIPE"},{"recordDate":"2010-03-23 00:00:00","code":"PGPC","description":"Sent
-      to Classification Contractor"},{"recordDate":"2010-03-24 00:00:00","code":"FLRCPT.O","description":"Filing
-      Receipt"},{"recordDate":"2010-03-11 00:00:00","code":"L128","description":"Cleared
-      by L&R (LARS)"},{"recordDate":"2010-03-09 00:00:00","code":"WIDS","description":"Information
-      Disclosure Statement (IDS) Filed"},{"recordDate":"2010-03-10 00:00:00","code":"L198","description":"Referred
-      to Level 2 (LARS) by OIPE CSR"},{"recordDate":"2010-03-09 00:00:00","code":"SCAN","description":"IFW
-      Scan & PACR Auto Security Review"},{"recordDate":"2010-03-09 00:00:00","code":"IEXX","description":"Initial
+    content: '{"queryResults":{"indexLastUpdatedDate":"Mon Oct 30 15:56:19 EDT 2023","searchResponse":{"responseHeader":{"zkConnected":true,"status":0,"QTime":864},"response":{"numFound":5,"start":0,"numFoundExact":true,"docs":[{"corrAddrCountryName":"UNITED
+      STATES","applId":"10785132","totalPtoDays":"629","assignments":[{"reelNumber":"14924","frameNumber":"477","addressNameText":"JENKINS,
+      WILSON & TAYLOR, P.A.","addressLineOneText":"JEFFREY L. WILSON","addressLineTwoText":"UNIVERSITY
+      TOWER, SUITE 1400","addressLineThreeText":"3100 TOWER BOULEVARD","addressLineFourText":"DURHAM,
+      NC  27707","mailDate":"07-31-2004","receivedDate":"07-29-2004","recordedDate":"07-29-2004","pagesCount":"8","converyanceName":"ASSIGNMENT
+      OF ASSIGNORS INTEREST (SEE DOCUMENT FOR DETAILS).","sequenceNumber":"1","assignors":[{"assignorName":"MOTSINGER,
+      DAVID LEE","execDate":"07-09-2004"},{"assignorName":"LOGAN, DAVID BYRON","execDate":"07-09-2004"},{"assignorName":"GRAMLEY,
+      KENNETH ROBERT","execDate":"07-09-2004"},{"assignorName":"SOMERVILLE, GARTH
+      DOUGLAS","execDate":"07-09-2004"},{"assignorName":"HESTER, DOUGLAS WAYNE","execDate":"07-09-2004"},{"assignorName":"HARGETT,
+      BYRON LEE","execDate":"07-09-2004"},{"assignorName":"CHOY, ALBERT MING","execDate":"07-09-2004"},{"assignorName":"WALL,
+      VIRGIL MONTGOMERY WALL JR.","execDate":"07-09-2004"}],"assignee":[{"assigneeName":"COVELIGHT
+      SYSTEMS, INC.","streetLineOneText":"6501 WESTON PARKWAY, SUITE 355","streetLineTwoText":"null","cityName":"CARY","countryCode":"NORTH
+      CAROLINA","postalCode":"27516"}]},{"reelNumber":"61214","frameNumber":"590","addressNameText":"LATHAM
+      & WATKINS LLP C/O ANGELA M. AMARU","addressLineOneText":"1271 AVENUE OF THE
+      AMERICAS","addressLineTwoText":"NEW YORK, NY 10020","addressLineThreeText":"null","addressLineFourText":"null","mailDate":"09-27-2022","receivedDate":"09-26-2022","recordedDate":"08-09-2022","pagesCount":"6","converyanceName":"AFFIDAVIT
+      TO AFFIRM THE RELEASE OF SECURITY INTEREST RECORDED AT R/F 015699/0355","sequenceNumber":"1","assignors":[{"assignorName":"AURORA
+      VENTURES IV, L.L.C.","execDate":"07-25-2022"},{"assignorName":"INTERSOUTH PARTNERS
+      VI, L.P.","execDate":"07-25-2022"},{"assignorName":"NEXTPOINT PARTNERS, L.P.","execDate":"07-25-2022"}],"assignee":[{"assigneeName":"RADWARE,
+      INC. (SUCCESSOR BY MERGER TO COVELIGHT SYSTEMS, INC.)","streetLineOneText":"575
+      CORPORATE DRIVE","streetLineTwoText":"null","cityName":"MAHWAH","countryCode":"NEW
+      JERSEY","postalCode":"07430"}]},{"reelNumber":"15699","frameNumber":"355","addressNameText":"ROBERT
+      T. JONES, JR.","addressLineOneText":"4101 LAKE BOONE TRAIL, SUITE 300","addressLineTwoText":"RALEIGH,
+      NC 27607","addressLineThreeText":"null","addressLineFourText":"null","mailDate":"02-24-2005","receivedDate":"02-22-2005","recordedDate":"02-22-2005","pagesCount":"16","converyanceName":"SECURITY
+      AGREEMENT","sequenceNumber":"2","assignors":[{"assignorName":"COVELIGHT SYSTEMS,
+      INC.","execDate":"02-17-2005"}],"assignee":[{"assigneeName":"AURORA VENTURES
+      IV, LLC","streetLineOneText":"2525 MERIDIAN PARKWAY, SUITE 220","streetLineTwoText":"null","cityName":"DURHAM","countryCode":"NORTH
+      CAROLINA","postalCode":"27713"},{"assigneeName":"INTERSOUTH PARTNERS VI, L.P.","streetLineOneText":"406
+      BLACKWELL STREET, SUITE 200","streetLineTwoText":"null","cityName":"DURHAM","countryCode":"NORTH
+      CAROLINA","postalCode":"27701"},{"assigneeName":"NEXTPOINT PARTNERS, L.P.","streetLineOneText":"701
+      PENNSYLVANIA AVENUE, SUITE 900","streetLineTwoText":"null","cityName":"WASHINGTON","countryCode":"DISTRICT
+      OF COLUMBIA","postalCode":"20004"}]}],"appFilingDate":"2004-02-24T00:00:00Z","appExamName":"PEESO,
+      THOMAS R","appExamNameFacet":"PEESO, THOMAS R","publicInd":"Y","APP_IND":"5","inventorName":"David
+      Lee Motsinger","inventorNameFacet":"David Lee Motsinger","appEarlyPubDate":"2005-08-25T00:00:00Z","corrAddrGeoRegionCode":"NJ","appLocation":"ELECTRONIC","appEarlyPubNumber":"US20050188423A1","id":"10785132","appGrpArtNumber":"2132","appGrpArtNumberFacet":"2132","applIdStr":"10785132","appl_id_txt":"10785132","appSubCls":"023000","patentNumber":"7373524","LAST_MOD_TS":"2023-10-28T06:41:47Z","transactions":[{"recordDate":"2019-11-13
+      00:00:00","code":"M1553","description":"Payment of Maintenance Fee, 12th Year,
+      Large Entity"},{"recordDate":"2015-02-06 00:00:00","code":"EML_NTR","description":"Email
+      Notification"},{"recordDate":"2015-02-06 00:00:00","code":"PA..","description":"Change
+      in Power of Attorney (May Include Associate POA)"},{"recordDate":"2015-02-03
+      00:00:00","code":"C.AD","description":"Correspondence Address Change"},{"recordDate":"2008-05-13
+      00:00:00","code":"PGM/","description":"Recordation of Patent Grant Mailed"},{"recordDate":"2008-04-23
+      00:00:00","code":"WPIR","description":"Issue Notification Mailed"},{"recordDate":"2008-05-13
+      00:00:00","code":"PTAC","description":"Patent Issue Date Used in PTA Calculation"},{"recordDate":"2008-04-14
+      00:00:00","code":"D1935","description":"Dispatch to FDC"},{"recordDate":"2008-04-11
+      00:00:00","code":"PILS","description":"Application Is Considered Ready for Issue"},{"recordDate":"2008-04-08
+      00:00:00","code":"N084","description":"Issue Fee Payment Verified"},{"recordDate":"2008-04-08
+      00:00:00","code":"IFEE","description":"Issue Fee Payment Received"},{"recordDate":"2008-01-11
+      00:00:00","code":"MN/=.","description":"Mail Notice of Allowance"},{"recordDate":"2008-01-09
+      00:00:00","code":"N/=.","description":"Notice of Allowance Data Verification
+      Completed"},{"recordDate":"2007-10-24 00:00:00","code":"BIG.","description":"Entity
+      Status Set To Undiscounted (Initial Default Setting or Status Change)"},{"recordDate":"2007-11-05
+      00:00:00","code":"FWDX","description":"Date Forwarded to Examiner"},{"recordDate":"2007-10-24
+      00:00:00","code":"A...","description":"Response after Non-Final Action"},{"recordDate":"2007-10-24
+      00:00:00","code":"XT/G","description":"Request for Extension of Time - Granted"},{"recordDate":"2007-05-09
+      00:00:00","code":"MCTNF","description":"Mail Non-Final Rejection"},{"recordDate":"2007-05-07
+      00:00:00","code":"CTNF","description":"Non-Final Rejection"},{"recordDate":"2004-08-12
+      00:00:00","code":"IDSC","description":"Information Disclosure Statement considered"},{"recordDate":"2007-04-19
+      00:00:00","code":"DOCK","description":"Case Docketed to Examiner in GAU"},{"recordDate":"2006-02-17
+      00:00:00","code":"DOCK","description":"Case Docketed to Examiner in GAU"},{"recordDate":"2005-06-01
+      00:00:00","code":"TSSCOMP","description":"IFW TSS Processing by Tech Center
+      Complete"},{"recordDate":"2005-06-01 00:00:00","code":"DOCK","description":"Case
+      Docketed to Examiner in GAU"},{"recordDate":"2004-08-12 00:00:00","code":"RCAP","description":"Reference
+      capture on IDS"},{"recordDate":"2004-08-12 00:00:00","code":"M844","description":"Information
+      Disclosure Statement (IDS) Filed"},{"recordDate":"2004-08-12 00:00:00","code":"WIDS","description":"Information
+      Disclosure Statement (IDS) Filed"},{"recordDate":"2004-10-18 00:00:00","code":"WROIPE","description":"Application
+      Return from OIPE"},{"recordDate":"2004-10-18 00:00:00","code":"ROIPE","description":"Application
+      Return TO OIPE"},{"recordDate":"2004-10-18 00:00:00","code":"OIPE","description":"Application
+      Dispatched from OIPE"},{"recordDate":"2004-10-18 00:00:00","code":"COMP","description":"Application
+      Is Now Complete"},{"recordDate":"2004-09-27 00:00:00","code":"ADDFLFEE","description":"Additional
+      Application Filing Fees"},{"recordDate":"2004-09-27 00:00:00","code":"CORRDRW","description":"Applicant
+      has submitted new drawings to correct Corrected Papers problems"},{"recordDate":"2004-09-03
+      00:00:00","code":"CPAP","description":"Corrected Paper"},{"recordDate":"2004-08-11
+      00:00:00","code":"ADDFLFEE","description":"Additional Application Filing Fees"},{"recordDate":"2004-02-24
+      00:00:00","code":"DRAWING","description":"Drawing Preliminary Amendment"},{"recordDate":"2004-08-11
+      00:00:00","code":"OATHDECL","description":"A statement by one or more inventors
+      satisfying the requirement under 35 USC 115, Oath of the Applic"},{"recordDate":"2004-05-18
+      00:00:00","code":"W/OA","description":"Pre-Exam Office Action Withdrawn"},{"recordDate":"2004-05-18
+      00:00:00","code":"INCD","description":"Notice Mailed--Application Incomplete--Filing
+      Date Assigned "},{"recordDate":"2004-03-26 00:00:00","code":"L194","description":"Cleared
+      by OIPE CSR"},{"recordDate":"2004-03-08 00:00:00","code":"SCAN","description":"IFW
+      Scan & PACR Auto Security Review"},{"recordDate":"2004-02-24 00:00:00","code":"IEXX","description":"Initial
       Exam Team nn"}],"LAST_INSERT_TIME":"2023-10-28T11:05:04Z","appCls":"726","appStatus":"Patented
-      Case","appStatusFacet":"Patented Case","appStatus_txt":"Patented Case","ptaPteInd":"PTA","ptaPteTranHistory":[{"number":"58.5","ptaOrPteDate":"04-16-2013","contentsDescription":"PTA
-      36 Months","ptoDays":"38","applDays":"","start":"0.5"},{"number":"58","ptaOrPteDate":"04-16-2013","contentsDescription":"Patent
-      Issue Date Used in PTA Calculation","ptoDays":"","applDays":"","start":"0"},{"number":"57","ptaOrPteDate":"03-22-2013","contentsDescription":"Dispatch
-      to FDC","ptoDays":"","applDays":"","start":"0"},{"number":"56","ptaOrPteDate":"02-25-2013","contentsDescription":"Dispatch
-      to FDC","ptoDays":"","applDays":"","start":"0"},{"number":"55","ptaOrPteDate":"02-25-2013","contentsDescription":"Application
-      Is Considered Ready for Issue","ptoDays":"","applDays":"","start":"0"},{"number":"54","ptaOrPteDate":"02-22-2013","contentsDescription":"Issue
-      Fee Payment Verified","ptoDays":"","applDays":"","start":"0"},{"number":"53","ptaOrPteDate":"02-22-2013","contentsDescription":"Issue
-      Fee Payment Received","ptoDays":"","applDays":"","start":"0"},{"number":"50","ptaOrPteDate":"11-29-2012","contentsDescription":"Electronic
-      Review","ptoDays":"","applDays":"","start":"0"},{"number":"48","ptaOrPteDate":"11-27-2012","contentsDescription":"Mail
-      Notice of Allowance","ptoDays":"","applDays":"","start":"0"},{"number":"41","ptaOrPteDate":"11-17-2012","contentsDescription":"Notice
-      of Allowance Data Verification Completed","ptoDays":"","applDays":"","start":"0"},{"number":"40","ptaOrPteDate":"11-17-2012","contentsDescription":"Case
-      Docketed to Examiner in GAU","ptoDays":"","applDays":"","start":"0"},{"number":"39","ptaOrPteDate":"11-16-2012","contentsDescription":"Reasons
-      for Allowance","ptoDays":"","applDays":"","start":"0"},{"number":"38","ptaOrPteDate":"11-16-2012","contentsDescription":"Examiner''s
-      Amendment Communication","ptoDays":"","applDays":"","start":"0"},{"number":"37","ptaOrPteDate":"11-13-2012","contentsDescription":"Interview
-      Summary - Examiner Initiated","ptoDays":"","applDays":"","start":"0"},{"number":"35","ptaOrPteDate":"09-12-2012","contentsDescription":"Information
-      Disclosure Statement considered","ptoDays":"","applDays":"","start":"0"},{"number":"34","ptaOrPteDate":"09-20-2012","contentsDescription":"Mail
-      Interview Summary - Applicant Initiated - Telephonic","ptoDays":"","applDays":"","start":"0"},{"number":"31","ptaOrPteDate":"09-12-2012","contentsDescription":"Electronic
-      Information Disclosure Statement","ptoDays":"","applDays":"0","start":"29"},{"number":"30","ptaOrPteDate":"09-15-2012","contentsDescription":"Date
-      Forwarded to Examiner","ptoDays":"","applDays":"","start":"0"},{"number":"29","ptaOrPteDate":"09-12-2012","contentsDescription":"Response
-      after Non-Final Action","ptoDays":"","applDays":"","start":"0"},{"number":"28","ptaOrPteDate":"09-10-2012","contentsDescription":"Interview
-      Summary- Applicant Initiated","ptoDays":"","applDays":"","start":"0"},{"number":"27","ptaOrPteDate":"09-10-2012","contentsDescription":"Interview
-      Summary - Applicant Initiated - Telephonic","ptoDays":"","applDays":"","start":"0"},{"number":"26","ptaOrPteDate":"09-12-2012","contentsDescription":"Information
-      Disclosure Statement (IDS) Filed","ptoDays":"","applDays":"","start":"0"},{"number":"25","ptaOrPteDate":"06-21-2012","contentsDescription":"Electronic
-      Review","ptoDays":"","applDays":"","start":"0"},{"number":"24","ptaOrPteDate":"06-20-2012","contentsDescription":"Email
-      Notification","ptoDays":"","applDays":"","start":"0"},{"number":"23","ptaOrPteDate":"06-20-2012","contentsDescription":"Mail
-      Non-Final Rejection","ptoDays":"408","applDays":"","start":"0.5"},{"number":"21","ptaOrPteDate":"06-14-2012","contentsDescription":"Non-Final
-      Rejection","ptoDays":"","applDays":"","start":"0"},{"number":"19","ptaOrPteDate":"03-09-2010","contentsDescription":"Information
-      Disclosure Statement considered","ptoDays":"","applDays":"","start":"0"},{"number":"15","ptaOrPteDate":"03-12-2012","contentsDescription":"Correspondence
-      Address Change","ptoDays":"","applDays":"","start":"0"},{"number":"14","ptaOrPteDate":"01-24-2012","contentsDescription":"Case
-      Docketed to Examiner in GAU","ptoDays":"","applDays":"","start":"0"},{"number":"13","ptaOrPteDate":"09-16-2011","contentsDescription":"Email
-      Notification","ptoDays":"","applDays":"","start":"0"},{"number":"12","ptaOrPteDate":"09-15-2011","contentsDescription":"PG-Pub
-      Issue Notification","ptoDays":"","applDays":"","start":"0"},{"number":"11","ptaOrPteDate":"06-30-2011","contentsDescription":"Case
-      Docketed to Examiner in GAU","ptoDays":"","applDays":"","start":"0"},{"number":"10","ptaOrPteDate":"03-09-2010","contentsDescription":"Reference
-      capture on IDS","ptoDays":"","applDays":"","start":"0"},{"number":"9","ptaOrPteDate":"03-09-2010","contentsDescription":"Information
-      Disclosure Statement (IDS) Filed","ptoDays":"","applDays":"","start":"0"},{"number":"8","ptaOrPteDate":"04-14-2010","contentsDescription":"Application
-      Dispatched from OIPE","ptoDays":"","applDays":"","start":"0"},{"number":"7","ptaOrPteDate":"03-23-2010","contentsDescription":"Sent
-      to Classification Contractor","ptoDays":"","applDays":"","start":"0"},{"number":"6","ptaOrPteDate":"03-24-2010","contentsDescription":"Filing
-      Receipt","ptoDays":"","applDays":"","start":"0"},{"number":"5","ptaOrPteDate":"03-11-2010","contentsDescription":"Cleared
-      by L&R (LARS)","ptoDays":"","applDays":"","start":"0"},{"number":"4","ptaOrPteDate":"03-09-2010","contentsDescription":"Information
-      Disclosure Statement (IDS) Filed","ptoDays":"","applDays":"","start":"0"},{"number":"3","ptaOrPteDate":"03-10-2010","contentsDescription":"Referred
-      to Level 2 (LARS) by OIPE CSR","ptoDays":"","applDays":"","start":"0"},{"number":"2","ptaOrPteDate":"03-09-2010","contentsDescription":"IFW
-      Scan & PACR Auto Security Review","ptoDays":"","applDays":"","start":"0"},{"number":"1","ptaOrPteDate":"03-09-2010","contentsDescription":"Initial
-      Exam Team nn","ptoDays":"","applDays":"","start":"0"},{"number":"0.5","ptaOrPteDate":"03-09-2010","contentsDescription":"Filing
-      date","ptoDays":"","applDays":"","start":"0"}],"corrAddrGeoRegionNA":"WASHINGTON","patentTitle":"BEHAVIOR-BASED
-      SECURITY SYSTEM","applDelay":"0","cDelay":"0","appStatusDate":"2013-03-27T00:00:00Z","appAttrDockNumber":"328841.01","inventors":[{"nameLineOne":"Pullikottil","nameLineTwo":"Jack
-      ","suffix":"","streetOne":"","streetTwo":"","city":"Bothell, ","geoCode":"WA","country":"(US)","rankNo":"1"},{"nameLineOne":"Manu","nameLineTwo":"Mitica
-      ","suffix":"","streetOne":"","streetTwo":"","city":"Sammamish, ","geoCode":"WA","country":"(US)","rankNo":"2"}],"inventorsFacet":"{Jack||Pullikottil||||Bothell|WA|US|IND|1},{Mitica||Manu||||Sammamish|WA|US|IND|2}","ptoAdjustments":"0","corrAddrStreetLineOne":"ONE
-      MICROSOFT WAY","firstInventorFile":"No","childContinuity":[{"claimApplicationNumberText":"PCT/US11/27302","applicationNumberText":"12720264","filingDate":"03-04-2011","aiaIndicator":"N","patentNumberText":"","applicationStatus":"Published","applicationStatusDescription":"claims
-      the benefit of"}],"overlapDelay":"0","aDelay":"408","appType":"Utility","appTypeFacet":"Utility","corrAddrPostalCode":"98052","appCustNumber":"69316","appClsSubCls":"726/007000","appClsSubClsFacet":"726/007000","patentIssueDate":"2013-04-16T00:00:00Z","bDelay":"38","corrAddrNameLineOne":"MICROSOFT
-      CORPORATION","attrnyAddr":[{"applicationId":null,"registrationNo":"32332","fullName":"Weresh,
-      John  ","phoneNum":"206-435-9722","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"35499","fullName":"Eppenauer,
-      D  ","phoneNum":"206-334-7600","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"35333","fullName":"Ream,
-      Michael  ","phoneNum":"425-999-5289","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"37004","fullName":"Luo,
-      Kevin  ","phoneNum":"425-882-8080","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"37090","fullName":"Belush,
-      Thomas  ","phoneNum":"503-913-7671","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"39104","fullName":"Bawel,
-      Paul  ","phoneNum":"949-480-8335","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"39525","fullName":"Johnson,
-      William  ","phoneNum":"206-201-2112","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"41762","fullName":"Francissen,
-      Vernon  ","phoneNum":"312-493-2064","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"42588","fullName":"Gnuschke,
-      Jerald  ","phoneNum":"425-208-0428","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"45398","fullName":"Kim,
-      Sung  ","phoneNum":"240-228-5632","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"43875","fullName":"Rao,
-      Pradhan  ","phoneNum":"408-536-3298","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"45278","fullName":"Dyor,
-      Matthew  ","phoneNum":"425-503-3871","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"47809","fullName":"Mulgrew,
-      John  ","phoneNum":"425-707-8077","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"48958","fullName":"Boelitz,
-      Carole  ","phoneNum":"425-722-6035","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"48250","fullName":"Key,
-      Maclane  ","phoneNum":"310-871-8503","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"52291","fullName":"Tom,
-      Lisa  ","phoneNum":"425-533-0298","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"53479","fullName":"Powell,
-      Tracy  ","phoneNum":"206-250-0944","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"55747","fullName":"Xiang,
-      Joy  ","phoneNum":"505-847-6808","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"57329","fullName":"Fashokun,
-      Folashade  ","phoneNum":"512-920-2570","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"57921","fullName":"Jones,
-      Lucinda  ","phoneNum":"206-344-7600","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"57646","fullName":"Collins,
-      L.  ","phoneNum":"425-894-8721","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"58641","fullName":"Andrews,
-      David  ","phoneNum":"425-703-5019","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"60395","fullName":"Harris,
-      Derek  ","phoneNum":"425-704-7399","regStatus":"ACTIVE"}],"corrAddrCustNo":"69316","corrAddrCountryCd":"US","ptoDelay":"446","corrAddrCity":"REDMOND","appEntityStatus":"UNDISCOUNTED","appConfrNumber":"8684","lastUpdatedTimestamp":"2023-10-29T08:56:06.849Z","cmsData":["{12720264|2013-03-26
-      20:00:00|PROSECUTION|Issue Notification|ISSUE.NTF|1|HET6TR83PXXIFW4},{12720264|2013-02-21
-      19:00:00|PROSECUTION|Issue Fee Payment (PTO-85B)|IFEE|1|HDHGYCIHPXXIFW3},{12720264|2013-02-21
-      19:00:00|PROSECUTION|Transmittal Letter|TRAN.LET|1|HDHGYCKRPXXIFW3},{12720264|2013-02-21
-      19:00:00|PROSECUTION|Fee Worksheet (SB06)|WFEE|2|HDHGYCK7PXXIFW3},{12720264|2013-02-21
-      19:00:00|PROSECUTION|Electronic Filing System(EFS) Acknowledgment Receipt|N417|2|HDHGYCKGPXXIFW3},{12720264|2012-11-26
+      Case","appStatusFacet":"Patented Case","appStatus_txt":"Patented Case","corrAddrStreetLineTwo":"Suite
+      205","ptaPteInd":"PTA","ptaPteTranHistory":[{"number":"44.5","ptaOrPteDate":"04-23-2008","contentsDescription":"PTA
+      36 Months","ptoDays":"0","applDays":"","start":"0"},{"number":"44","ptaOrPteDate":"05-13-2008","contentsDescription":"Patent
+      Issue Date Used in PTA Calculation","ptoDays":"","applDays":"","start":"0"},{"number":"42","ptaOrPteDate":"04-14-2008","contentsDescription":"Dispatch
+      to FDC","ptoDays":"","applDays":"","start":"0"},{"number":"41","ptaOrPteDate":"04-11-2008","contentsDescription":"Application
+      Is Considered Ready for Issue","ptoDays":"","applDays":"","start":"0"},{"number":"40","ptaOrPteDate":"04-08-2008","contentsDescription":"Issue
+      Fee Payment Verified","ptoDays":"","applDays":"","start":"0"},{"number":"39","ptaOrPteDate":"04-08-2008","contentsDescription":"Issue
+      Fee Payment Received","ptoDays":"","applDays":"","start":"0"},{"number":"36","ptaOrPteDate":"01-11-2008","contentsDescription":"Mail
+      Notice of Allowance","ptoDays":"","applDays":"","start":"0"},{"number":"35","ptaOrPteDate":"01-09-2008","contentsDescription":"Notice
+      of Allowance Data Verification Completed","ptoDays":"","applDays":"","start":"0"},{"number":"31","ptaOrPteDate":"10-24-2007","contentsDescription":"Entity
+      Status Set To Undiscounted (Initial Default Setting or Status Change)","ptoDays":"","applDays":"","start":"0"},{"number":"30","ptaOrPteDate":"11-05-2007","contentsDescription":"Date
+      Forwarded to Examiner","ptoDays":"","applDays":"","start":"0"},{"number":"29","ptaOrPteDate":"10-24-2007","contentsDescription":"Response
+      after Non-Final Action","ptoDays":"","applDays":"76","start":"27"},{"number":"28","ptaOrPteDate":"10-24-2007","contentsDescription":"Request
+      for Extension of Time - Granted","ptoDays":"","applDays":"","start":"0"},{"number":"27","ptaOrPteDate":"05-09-2007","contentsDescription":"Mail
+      Non-Final Rejection","ptoDays":"745","applDays":"","start":"-1"},{"number":"26","ptaOrPteDate":"05-07-2007","contentsDescription":"Non-Final
+      Rejection","ptoDays":"","applDays":"","start":"0"},{"number":"25","ptaOrPteDate":"08-12-2004","contentsDescription":"Information
+      Disclosure Statement considered","ptoDays":"","applDays":"","start":"0"},{"number":"24","ptaOrPteDate":"04-19-2007","contentsDescription":"Case
+      Docketed to Examiner in GAU","ptoDays":"","applDays":"","start":"0"},{"number":"23","ptaOrPteDate":"02-17-2006","contentsDescription":"Case
+      Docketed to Examiner in GAU","ptoDays":"","applDays":"","start":"0"},{"number":"22","ptaOrPteDate":"06-01-2005","contentsDescription":"IFW
+      TSS Processing by Tech Center Complete","ptoDays":"","applDays":"","start":"0"},{"number":"21","ptaOrPteDate":"06-01-2005","contentsDescription":"Case
+      Docketed to Examiner in GAU","ptoDays":"","applDays":"","start":"0"},{"number":"20","ptaOrPteDate":"08-12-2004","contentsDescription":"Reference
+      capture on IDS","ptoDays":"","applDays":"","start":"0"},{"number":"19.7","ptaOrPteDate":"08-12-2004","contentsDescription":"Information
+      Disclosure Statement (IDS) Filed","ptoDays":"","applDays":"","start":"0"},{"number":"19","ptaOrPteDate":"08-12-2004","contentsDescription":"Information
+      Disclosure Statement (IDS) Filed","ptoDays":"","applDays":"","start":"0"},{"number":"18","ptaOrPteDate":"10-18-2004","contentsDescription":"Application
+      Return from OIPE","ptoDays":"","applDays":"","start":"0"},{"number":"17","ptaOrPteDate":"10-18-2004","contentsDescription":"Application
+      Return TO OIPE","ptoDays":"","applDays":"","start":"0"},{"number":"16","ptaOrPteDate":"10-18-2004","contentsDescription":"Application
+      Dispatched from OIPE","ptoDays":"","applDays":"","start":"0"},{"number":"15","ptaOrPteDate":"10-18-2004","contentsDescription":"Application
+      Is Now Complete","ptoDays":"","applDays":"","start":"0"},{"number":"14","ptaOrPteDate":"09-27-2004","contentsDescription":"Additional
+      Application Filing Fees","ptoDays":"","applDays":"40","start":"6"},{"number":"13","ptaOrPteDate":"09-27-2004","contentsDescription":"Applicant
+      has submitted new drawings to correct Corrected Papers problems","ptoDays":"","applDays":"","start":"0"},{"number":"12","ptaOrPteDate":"09-03-2004","contentsDescription":"Corrected
+      Paper","ptoDays":"","applDays":"","start":"0"},{"number":"10","ptaOrPteDate":"08-11-2004","contentsDescription":"Additional
+      Application Filing Fees","ptoDays":"","applDays":"","start":"0"},{"number":"9","ptaOrPteDate":"02-24-2004","contentsDescription":"Drawing
+      Preliminary Amendment","ptoDays":"","applDays":"","start":"0"},{"number":"8","ptaOrPteDate":"08-11-2004","contentsDescription":"A
+      statement by one or more inventors satisfying the requirement under 35 USC 115,
+      Oath of the Applic","ptoDays":"","applDays":"","start":"0"},{"number":"7","ptaOrPteDate":"05-18-2004","contentsDescription":"Pre-Exam
+      Office Action Withdrawn","ptoDays":"","applDays":"","start":"0"},{"number":"6","ptaOrPteDate":"05-18-2004","contentsDescription":"Notice
+      Mailed--Application Incomplete--Filing Date Assigned ","ptoDays":"","applDays":"","start":"0"},{"number":"4","ptaOrPteDate":"03-26-2004","contentsDescription":"Cleared
+      by OIPE CSR","ptoDays":"","applDays":"","start":"0"},{"number":"2","ptaOrPteDate":"03-08-2004","contentsDescription":"IFW
+      Scan & PACR Auto Security Review","ptoDays":"","applDays":"","start":"0"},{"number":"1","ptaOrPteDate":"02-24-2004","contentsDescription":"Initial
+      Exam Team nn","ptoDays":"","applDays":"","start":"0"}],"corrAddrGeoRegionNA":"NEW
+      JERSEY","patentTitle":"METHODS, SYSTEMS AND COMPUTER PROGRAM PRODUCTS FOR MONITORING
+      USER BEHAVIOR FOR A SERVER APPLICATION","applDelay":"116","cDelay":"0","appStatusDate":"2008-04-23T00:00:00Z","appAttrDockNumber":"RADW  P0373","inventors":[{"nameLineOne":"Motsinger","nameLineTwo":"David
+      Lee","suffix":"","streetOne":"","streetTwo":"","city":"Raleigh, ","geoCode":"NC","country":"()","rankNo":"1"},{"nameLineOne":"Logan","nameLineTwo":"David
+      Byron","suffix":"","streetOne":"","streetTwo":"","city":"Chapel Hill, ","geoCode":"NC","country":"()","rankNo":"2"},{"nameLineOne":"Gramley","nameLineTwo":"Kenneth
+      Robert","suffix":"","streetOne":"","streetTwo":"","city":"Cary, ","geoCode":"NC","country":"()","rankNo":"3"},{"nameLineOne":"Somerville","nameLineTwo":"Garth
+      Douglas","suffix":"","streetOne":"","streetTwo":"","city":"Cary, ","geoCode":"NC","country":"()","rankNo":"4"},{"nameLineOne":"Choy","nameLineTwo":"Albert
+      Ming","suffix":"","streetOne":"","streetTwo":"","city":"Raleigh, ","geoCode":"NC","country":"()","rankNo":"5"},{"nameLineOne":"Hester","nameLineTwo":"Douglas
+      Wayne","suffix":"","streetOne":"","streetTwo":"","city":"Cary, ","geoCode":"NC","country":"()","rankNo":"6"},{"nameLineOne":"Wall","nameLineTwo":"Virgil
+      Montgomery","suffix":"JR.","streetOne":"","streetTwo":"","city":"Apex, ","geoCode":"NC","country":"()","rankNo":"7"},{"nameLineOne":"Hargett","nameLineTwo":"Byron
+      Lee","suffix":"","streetOne":"","streetTwo":"","city":"Apex, ","geoCode":"NC","country":"()","rankNo":"8"}],"inventorsFacet":"{David|Lee|Motsinger||||Raleigh|NC||IND|1},{David|Byron|Logan||||Chapel
+      Hill|NC||IND|2},{Kenneth|Robert|Gramley||||Cary|NC||IND|3},{Garth|Douglas|Somerville||||Cary|NC||IND|4},{Albert|Ming|Choy||||Raleigh|NC||IND|5},{Douglas|Wayne|Hester||||Cary|NC||IND|6},{Virgil|Montgomery|Wall|JR.|||Apex|NC||IND|7},{Byron|Lee|Hargett||||Apex|NC||IND|8}","ptoAdjustments":"0","corrAddrStreetLineOne":"150
+      Morristown Road","firstInventorFile":"No","overlapDelay":"0","aDelay":"745","appType":"Utility","appTypeFacet":"Utility","corrAddrPostalCode":"07924-2626","appCustNumber":"122066","appClsSubCls":"726/023000","appClsSubClsFacet":"726/023000","patentIssueDate":"2008-05-13T00:00:00Z","bDelay":"0","corrAddrNameLineOne":"M&B
+      IP Analysts, LLC","attrnyAddr":[{"applicationId":null,"registrationNo":"36658","fullName":"Rosenthal,
+      Eugene  ","phoneNum":"732-996-7171","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"56032","fullName":"Lin,
+      Jeoyuh  ","phoneNum":"202-588-5614","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"69610","fullName":"Ben
+      Shimon, Michael  ","phoneNum":"908-274-3123","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"73188","fullName":"McCormick,
+      Ryan  ","phoneNum":"908-274-3111","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"79330","fullName":"Moon,
+      Chung Hee  ","phoneNum":"908-274-3111","regStatus":"ACTIVE"}],"corrAddrCustNo":"122066","corrAddrCountryCd":"US","ptoDelay":"745","corrAddrCity":"Bernardsville","appEntityStatus":"UNDISCOUNTED","appConfrNumber":"1643","lastUpdatedTimestamp":"2023-10-29T10:53:40.980Z","cmsData":["{10785132|2015-02-05
+      19:00:00|PROSECUTION|Communication - Re:  Power of Attorney (PTOL-308)|N570|1|I5SIVCPGPXXIFW4},{10785132|2015-01-27
+      19:00:00|PROSECUTION|Power of Attorney|PA..|2|I5H661MUPXXIFW3},{10785132|2015-01-27
+      19:00:00|PROSECUTION|Electronic Filing System(EFS) Acknowledgment Receipt|N417|2|I5H661P8PXXIFW3},{10785132|2008-04-22
+      20:00:00|PROSECUTION|Issue Notification|ISSUE.NTF|1|FFG3KNUTPPOPPY5},{10785132|2008-04-07
+      20:00:00|PROSECUTION|Issue Fee Payment (PTO-85B)|IFEE|2|FEVPEMWZPPOPPY5},{10785132|2008-01-10
       19:00:00|PROSECUTION|Search information including classification, databases
-      and other search related notes|SRFW|2|H9VB15U2PXXIFW4},{12720264|2012-11-26
-      19:00:00|PROSECUTION|Examiner''s search strategy and results|SRNT|5|H9VB15TUPXXIFW4},{12720264|2012-11-26
-      19:00:00|PROSECUTION|Non Patent Literature|NPL|10|H9VB15T1PXXIFW4},{12720264|2012-11-26
-      19:00:00|PROSECUTION|Examiner initiated interview summary (PTOL-413B)|INTV.SUM.EX|2|H9VB15RAPXXIFW4},{12720264|2012-11-26
-      19:00:00|PROSECUTION|List of references cited by examiner|892|1|H9VB15STPXXIFW4},{12720264|2012-11-26
-      19:00:00|PROSECUTION|Index of Claims|FWCLM|1|H9VB15TMPXXIFW4},{12720264|2012-11-26
-      19:00:00|PROSECUTION|List of References cited by applicant and considered by
-      examiner|1449|2|H9VB15T7PXXIFW4},{12720264|2012-11-26 19:00:00|PROSECUTION|Notice
-      of Allowance and Fees Due (PTOL-85)|NOA|15|H9VB15SCPXXIFW4},{12720264|2012-11-26
+      and other search related notes|SRFW|1|FBFJUBU1PPOPPY5},{10785132|2008-01-10
+      19:00:00|PROSECUTION|Notice of Allowance and Fees Due (PTOL-85)|NOA|3|FBFJUBS8PPOPPY5},{10785132|2008-01-10
+      19:00:00|PROSECUTION|Notice of Allowance and Fees Due (PTOL-85)|NOA|1|FBFJUBT4PPOPPY5},{10785132|2008-01-10
       19:00:00|PROSECUTION|Issue Information including classification, examiner, name,
-      claim, renumbering, etc.|IIFW|1|H9VB15TFPXXIFW4},{12720264|2012-09-19 20:00:00|PROSECUTION|Applicant
-      Initiated Interview Summary (PTOL-413)|INTV.SUM.APP|3|H793AHCIPXXIFW4},{12720264|2012-09-19
-      20:00:00|PROSECUTION|Amendment After Final or under 37CFR 1.312, initialed by
-      the examiner.|ANE.I|4|H793AHE8PXXIFW4},{12720264|2012-09-11 20:00:00|PROSECUTION|Transmittal
-      Letter|TRAN.LET|2|H70PELIOPXXIFW3},{12720264|2012-09-11 20:00:00|PROSECUTION|Information
-      Disclosure Statement (IDS) Form (SB08)|IDS|4|H70PELIEPXXIFW3},{12720264|2012-09-11
-      20:00:00|PROSECUTION|Other reference-Patent/Application/Search Documents|REF.OTHER|9|H70PELIWPXXIFW3},{12720264|2012-09-11
-      20:00:00|PROSECUTION|Fee Worksheet (SB06)|WFEE|1|H74WZ8ZSPXXIFW4},{12720264|2012-09-11
-      20:00:00|PROSECUTION|Amendment/Request for Reconsideration-After Non-Final Rejection|A...|1|H70PEL9UPXXIFW3},{12720264|2012-09-11
-      20:00:00|PROSECUTION|Claims|CLM|6|H70PELAOPXXIFW3},{12720264|2012-09-11 20:00:00|PROSECUTION|Electronic
-      Filing System(EFS) Acknowledgment Receipt|N417|3|H70PELCBPXXIFW3},{12720264|2012-09-11
-      20:00:00|PROSECUTION|Applicant Arguments/Remarks Made in an Amendment|REM|9|H70PELBEPXXIFW3},{12720264|2012-09-11
-      20:00:00|PROSECUTION|Fee Worksheet (SB06)|WFEE|2|H70PELBVPXXIFW3},{12720264|2012-09-11
-      20:00:00|PROSECUTION|Transmittal Letter|TRAN.LET|1|H70PELCOPXXIFW3},{12720264|2012-06-19
-      20:00:00|PROSECUTION|Examiner''s search strategy and results|SRNT|2|H3LMIK11PXXIFW4},{12720264|2012-06-19
-      20:00:00|PROSECUTION|Index of Claims|FWCLM|1|H3LMIK0CPXXIFW4},{12720264|2012-06-19
-      20:00:00|PROSECUTION|List of references cited by examiner|892|1|H3LMIJZQPXXIFW4},{12720264|2012-06-19
-      20:00:00|PROSECUTION|Bibliographic Data Sheet|BIB|1|H3LMIK0UPXXIFW4},{12720264|2012-06-19
+      claim, renumbering, etc.|IIFW|1|FBFJUBTQPPOPPY5},{10785132|2007-10-23 20:00:00|PROSECUTION|Fee
+      Worksheet (SB06)|WFEE|1|F8N848E6PPOPPY5},{10785132|2007-10-23 20:00:00|PROSECUTION|Claims|CLM|11|F8DHCPCNPPOPPY5},{10785132|2007-10-23
+      20:00:00|PROSECUTION|Extension of Time|XT/|1|F8DHCPEAPPOPPY5},{10785132|2007-10-23
+      20:00:00|PROSECUTION|Miscellaneous Incoming Letter|LET.|1|F8DHCPFBPPOPPY5},{10785132|2007-10-23
+      20:00:00|PROSECUTION|Applicant Arguments/Remarks Made in an Amendment|REM|6|F8DHCPDGPPOPPY5},{10785132|2007-10-23
+      20:00:00|PROSECUTION|Amendment/Request for Reconsideration-After Non-Final Rejection|A...|5|F8DHCPAVPPOPPY5},{10785132|2007-10-23
+      20:00:00|PROSECUTION|Specification|SPEC|1|F8DHCPBWPPOPPY5},{10785132|2007-05-08
+      20:00:00|PROSECUTION|Bibliographic Data Sheet|BIB|1|F1OSRAD0PPOPPY5},{10785132|2007-05-08
+      20:00:00|PROSECUTION|Search information including classification, databases
+      and other search related notes|SRFW|1|F1OSRADYPPOPPY5},{10785132|2007-05-08
+      20:00:00|PROSECUTION|Index of Claims|FWCLM|1|F1OSRADFPPOPPY5},{10785132|2007-05-08
       20:00:00|PROSECUTION|List of References cited by applicant and considered by
-      examiner|1449|1|H3LMIK04PXXIFW4},{12720264|2012-06-19 20:00:00|PROSECUTION|Non-Final
-      Rejection|CTNF|16|H3LMIJYOPXXIFW4},{12720264|2012-06-19 20:00:00|PROSECUTION|Search
-      information including classification, databases and other search related notes|SRFW|1|H3LMIJZXPXXIFW4},{12720264|2012-03-12
-      20:00:00|PROSECUTION|Notice of Change of Address Place in File Wrapper Due to
-      Electronic Business Center(EBC) Customer Number Update|EBCC.AD|1|GZQZ1UIBPXXIFW4},{12720264|2011-09-14
-      20:00:00|PROSECUTION|Notice of Publication|NTC.PUB|1|GSLWEWEQPPOPPY5},{12720264|2010-03-23
-      20:00:00|PROSECUTION|Filing Receipt|APP.FILE.REC|3|G7511TSZPPOPPY5},{12720264|2010-03-08
-      19:00:00|PROSECUTION|Fee Worksheet (SB06)|WFEE|1|G7EWAV5WPPOPPY5},{12720264|2010-03-08
-      19:00:00|PROSECUTION|Fee Worksheet (SB06)|WFEE|2|G6L6GEZGPPOPPY2},{12720264|2010-03-08
-      19:00:00|PROSECUTION|Non Patent Literature|NPL|6|G6L6GEYSPPOPPY2},{12720264|2010-03-08
-      19:00:00|PROSECUTION|Non Patent Literature|NPL|11|G6L6GEH6PPOPPY2},{12720264|2010-03-08
-      19:00:00|PROSECUTION|Electronic Filing System(EFS) Acknowledgment Receipt|N417|4|G6L6GF04PPOPPY2},{12720264|2010-03-08
-      19:00:00|PROSECUTION|Non Patent Literature|NPL|11|G6L6GEYEPPOPPY2},{12720264|2010-03-08
-      19:00:00|PROSECUTION|Non Patent Literature|NPL|4|G6L6GEN1PPOPPY2},{12720264|2010-03-08
-      19:00:00|PROSECUTION|Non Patent Literature|NPL|10|G6L6GESKPPOPPY2},{12720264|2010-03-08
-      19:00:00|PROSECUTION|Information Disclosure Statement (IDS) Form (SB08)|IDS|1|G6L6GECBPPOPPY2},{12720264|2010-03-08
-      19:00:00|PROSECUTION|Transmittal Letter|TRAN.LET|2|G6L6GEA1PPOPPY2},{12720264|2010-03-08
-      19:00:00|PROSECUTION|Transmittal of New Application|TRNA|1|G6L6GE60PPOPPY2},{12720264|2010-03-08
-      19:00:00|PROSECUTION|Application Data Sheet|ADS|3|G6L6GE6SPPOPPY2},{12720264|2010-03-08
-      19:00:00|PROSECUTION|Claims|CLM|4|G6L6GE84PPOPPY2},{12720264|2010-03-08 19:00:00|PROSECUTION|Abstract|ABST|1|G6L6GE8SPPOPPY2},{12720264|2010-03-08
-      19:00:00|PROSECUTION|Fee Worksheet (SB06)|WFEE|1|G6L6GE6EPPOPPY2},{12720264|2010-03-08
-      19:00:00|PROSECUTION|Drawings-only black and white line drawings|DRW|9|G6L6GE95PPOPPY2},{12720264|2010-03-08
-      19:00:00|PROSECUTION|Specification|SPEC|29|G6L6GE7GPPOPPY2},{12720264|2010-03-08
-      19:00:00|PROSECUTION|Oath or Declaration filed|OATH|2|G6L6GE9KPPOPPY2}"],"appAttrDockNumberFacet":"328841.01","appEntityStatusFacet":"UNDISCOUNTED","appCustNumberFacet":"69316","_version_":1781079675810873344,"firstInventorFileFacet":"No","appLocationFacet":"ELECTRONIC","appEarlyPubNumberFacet":"US20110225644A1","patentNumberFacet":"8424072"},{"corrAddrCountryName":"UNITED
+      examiner|1449|6|F1OSRACAPPOPPY5},{10785132|2007-05-08 20:00:00|PROSECUTION|Non-Final
+      Rejection|CTNF|5|F1OSRAAUPPOPPY5},{10785132|2005-03-10 19:00:00|PROSECUTION|Request
+      for status of Application|STATUS.LET|3|E6FTOVANPP1GUI2},{10785132|2004-09-26
+      20:00:00|PROSECUTION|Drawings-only black and white line drawings|DRW|99|DZR5JMGOPP1GUI4},{10785132|2004-09-26
+      20:00:00|PROSECUTION|Applicant Response to Pre-Exam Formalities Notice|PEFR|4|DZR5JMF1PP1GUI4},{10785132|2004-09-02
+      20:00:00|PROSECUTION|Pre-Exam Formalities Notice|PEFN|1|DZ2TDOK1PP2GUI1},{10785132|2004-09-02
+      20:00:00|PROSECUTION|Miscellaneous Action with shortened statutory period (SSP)|CTMS|1|DZ2TDOLAPP2GUI1},{10785132|2004-08-11
+      20:00:00|PROSECUTION|Foreign Reference|FOR|11|DY97YIVBPPOPPY2},{10785132|2004-08-11
+      20:00:00|PROSECUTION|Foreign Reference|FOR|29|DY97YIWHPPOPPY2},{10785132|2004-08-11
+      20:00:00|PROSECUTION|Foreign Reference|FOR|27|DY97YIUSPPOPPY2},{10785132|2004-08-11
+      20:00:00|PROSECUTION|Foreign Reference|FOR|12|DY97YINTPPOPPY2},{10785132|2004-08-11
+      20:00:00|PROSECUTION|Information Disclosure Statement (IDS) Form (SB08)|IDS|9|DY97YIM3PPOPPY2},{10785132|2004-08-11
+      20:00:00|PROSECUTION|Foreign Reference|FOR|53|DY97YIXXPPOPPY2},{10785132|2004-08-11
+      20:00:00|PROSECUTION|Foreign Reference|FOR|14|DY97YIN9PPOPPY2},{10785132|2004-08-11
+      20:00:00|PROSECUTION|Foreign Reference|FOR|11|DY97YIXCPPOPPY2},{10785132|2004-08-11
+      20:00:00|PROSECUTION|Foreign Reference|FOR|46|DY97YITFPPOPPY2},{10785132|2004-08-11
+      20:00:00|PROSECUTION|Foreign Reference|FOR|10|DY97YIRGPPOPPY2},{10785132|2004-08-11
+      20:00:00|PROSECUTION|Foreign Reference|FOR|40|DY97YIP7PPOPPY2},{10785132|2004-08-11
+      20:00:00|PROSECUTION|Foreign Reference|FOR|55|DY97YIONPPOPPY2},{10785132|2004-08-11
+      20:00:00|PROSECUTION|Foreign Reference|FOR|16|DY97YIU1PPOPPY2},{10785132|2004-08-11
+      20:00:00|PROSECUTION|Foreign Reference|FOR|19|DY97YISKPPOPPY2},{10785132|2004-08-11
+      20:00:00|PROSECUTION|Foreign Reference|FOR|102|DY97YIVVPPOPPY2},{10785132|2004-08-11
+      20:00:00|PROSECUTION|Foreign Reference|FOR|38|DY97YIQVPPOPPY2},{10785132|2004-08-11
+      20:00:00|PROSECUTION|Foreign Reference|FOR|10|DY97YIPRPPOPPY2},{10785132|2004-08-11
+      20:00:00|PROSECUTION|Foreign Reference|FOR|9|DY97YIQBPPOPPY2},{10785132|2004-08-11
+      20:00:00|PROSECUTION|Foreign Reference|FOR|29|DY98IVFCPPOPPY2},{10785132|2004-08-11
+      20:00:00|PROSECUTION|Foreign Reference|FOR|29|DY98IVRQPPOPPY2},{10785132|2004-08-11
+      20:00:00|PROSECUTION|Foreign Reference|FOR|27|DY98IVGJPPOPPY2},{10785132|2004-08-11
+      20:00:00|PROSECUTION|Foreign Reference|FOR|70|DY98IVQ1PPOPPY2},{10785132|2004-08-11
+      20:00:00|PROSECUTION|Foreign Reference|FOR|14|DY98IVHTPPOPPY2},{10785132|2004-08-11
+      20:00:00|PROSECUTION|Foreign Reference|FOR|7|DY98IVSAPPOPPY2},{10785132|2004-08-11
+      20:00:00|PROSECUTION|Foreign Reference|FOR|14|DY98IVOWPPOPPY2},{10785132|2004-08-11
+      20:00:00|PROSECUTION|Foreign Reference|FOR|26|DY98IVR4PPOPPY2},{10785132|2004-08-11
+      20:00:00|PROSECUTION|Foreign Reference|FOR|31|DY98IVIGPPOPPY2},{10785132|2004-08-11
+      20:00:00|PROSECUTION|Foreign Reference|FOR|12|DY98IVH6PPOPPY2},{10785132|2004-08-11
+      20:00:00|PROSECUTION|Foreign Reference|FOR|3|DY98IVEOPPOPPY2},{10785132|2004-08-11
+      20:00:00|PROSECUTION|Foreign Reference|FOR|9|DY98IVN0PPOPPY2},{10785132|2004-08-11
+      20:00:00|PROSECUTION|Foreign Reference|FOR|56|DY98IVDGPPOPPY2},{10785132|2004-08-11
+      20:00:00|PROSECUTION|Foreign Reference|FOR|14|DY98IVJHPPOPPY2},{10785132|2004-08-11
+      20:00:00|PROSECUTION|Foreign Reference|FOR|30|DY98IVMFPPOPPY2},{10785132|2004-08-11
+      20:00:00|PROSECUTION|Foreign Reference|FOR|14|DY98IVKJPPOPPY2},{10785132|2004-08-11
+      20:00:00|PROSECUTION|Foreign Reference|FOR|12|DY98IVNKPPOPPY2},{10785132|2004-08-11
+      20:00:00|PROSECUTION|Foreign Reference|FOR|18|DY98IVFYPPOPPY2},{10785132|2004-08-11
+      20:00:00|PROSECUTION|Foreign Reference|FOR|13|DY98IVPHPPOPPY2},{10785132|2004-08-11
+      20:00:00|PROSECUTION|Foreign Reference|FOR|9|DY98IVO8PPOPPY2},{10785132|2004-08-11
+      20:00:00|PROSECUTION|Foreign Reference|FOR|16|DY98IVL2PPOPPY2},{10785132|2004-08-11
+      20:00:00|PROSECUTION|Foreign Reference|FOR|14|DY98IVQLPPOPPY2},{10785132|2004-08-11
+      20:00:00|PROSECUTION|Foreign Reference|FOR|24|DY98IVE3PPOPPY2},{10785132|2004-08-11
+      20:00:00|PROSECUTION|Foreign Reference|FOR|10|DY98IVLMPPOPPY2},{10785132|2004-08-11
+      20:00:00|PROSECUTION|Foreign Reference|FOR|14|DY9BE036PPOPPY2},{10785132|2004-08-11
+      20:00:00|PROSECUTION|Foreign Reference|FOR|22|DY9BE04EPPOPPY2},{10785132|2004-08-11
+      20:00:00|PROSECUTION|Non Patent Literature|NPL|8|DY9BE06JPPOPPY2},{10785132|2004-08-11
+      20:00:00|PROSECUTION|Non Patent Literature|NPL|4|DY9BE0AZPPOPPY2},{10785132|2004-08-11
+      20:00:00|PROSECUTION|Foreign Reference|FOR|17|DY9BE02EPPOPPY2},{10785132|2004-08-11
+      20:00:00|PROSECUTION|Non Patent Literature|NPL|10|DY9BE07VPPOPPY2},{10785132|2004-08-11
+      20:00:00|PROSECUTION|Non Patent Literature|NPL|6|DY9BE0D6PPOPPY2},{10785132|2004-08-11
+      20:00:00|PROSECUTION|Non Patent Literature|NPL|6|DY9BE08IPPOPPY2},{10785132|2004-08-11
+      20:00:00|PROSECUTION|Non Patent Literature|NPL|6|DY9BE0BIPPOPPY2},{10785132|2004-08-11
+      20:00:00|PROSECUTION|Non Patent Literature|NPL|6|DY9BE0C2PPOPPY2},{10785132|2004-08-11
+      20:00:00|PROSECUTION|Non Patent Literature|NPL|7|DY9BE0AFPPOPPY2},{10785132|2004-08-11
+      20:00:00|PROSECUTION|Non Patent Literature|NPL|6|DY9BE09LPPOPPY2},{10785132|2004-08-11
+      20:00:00|PROSECUTION|Non Patent Literature|NPL|13|DY9BE075PPOPPY2},{10785132|2004-08-11
+      20:00:00|PROSECUTION|Non Patent Literature|NPL|6|DY9BE092PPOPPY2},{10785132|2004-08-11
+      20:00:00|PROSECUTION|Foreign Reference|FOR|1|DY9BE03QPPOPPY2},{10785132|2004-08-11
+      20:00:00|PROSECUTION|Non Patent Literature|NPL|17|DY9BE05VPPOPPY2},{10785132|2004-08-11
+      20:00:00|PROSECUTION|Non Patent Literature|NPL|9|DY9BE050PPOPPY2},{10785132|2004-08-10
+      20:00:00|PROSECUTION|Extension of Time|XT/|1|DYCTNHECPPOPPY2},{10785132|2004-08-10
+      20:00:00|PROSECUTION|Applicant Response to Pre-Exam Formalities Notice|PEFR|7|DYCTNH6DPPOPPY2},{10785132|2004-08-10
+      20:00:00|PROSECUTION|Oath or Declaration filed|OATH|4|DYCTNH7PPPOPPY2},{10785132|2004-05-17
+      20:00:00|PROSECUTION|Pre-Exam Formalities Notice|PEFN|2|DVI2YKHFPPOPPY2},{10785132|2004-02-23
+      19:00:00|PROSECUTION|Fee Worksheet (SB06)|WFEE|1|DRDMDG51PHOENIX},{10785132|2004-02-23
+      19:00:00|PROSECUTION|Fee Worksheet (SB06)|WFEE|1|DRDMDG2XPHOENIX},{10785132|2004-02-23
+      19:00:00|PROSECUTION|Transmittal of New Application|TRNA|5|DRDMDFULPHOENIX},{10785132|2004-02-23
+      19:00:00|PROSECUTION|Specification|SPEC|101|DRDMDFWBPHOENIX},{10785132|2004-02-23
+      19:00:00|PROSECUTION|Abstract|ABST|1|DRDMDFZEPHOENIX},{10785132|2004-02-23 19:00:00|PROSECUTION|Claims|CLM|9|DRDMDFXUPHOENIX},{10785132|2004-02-23
+      19:00:00|PROSECUTION|Drawings-only black and white line drawings|DRW|84|DRDMDG0ZPHOENIX}"],"appAttrDockNumberFacet":"RADW  P0373","appEntityStatusFacet":"UNDISCOUNTED","appCustNumberFacet":"122066","_version_":1781086894459715584,"firstInventorFileFacet":"No","appLocationFacet":"ELECTRONIC","appEarlyPubNumberFacet":"US20050188423A1","patentNumberFacet":"7373524"},{"corrAddrCountryName":"UNITED
+      STATES","applId":"10991467","totalPtoDays":"1321","assignments":[{"reelNumber":"16012","frameNumber":"465","addressNameText":"SUGHRUE
+      MION, PLLC","addressLineOneText":"2100 PENNSYLVANIA AVENUE, N.W.","addressLineTwoText":"SUITE
+      800","addressLineThreeText":"WASHINGTON, DC 20037","addressLineFourText":"null","mailDate":"05-13-2005","receivedDate":"11-29-2004","recordedDate":"11-19-2004","pagesCount":"2","converyanceName":"ASSIGNMENT
+      OF ASSIGNORS INTEREST (SEE DOCUMENT FOR DETAILS).","sequenceNumber":"1","assignors":[{"assignorName":"SHULMAN,
+      AMICHAI","execDate":"11-14-2004"},{"assignorName":"BOODAEI, MICHAEL","execDate":"11-14-2004"},{"assignorName":"KREMER,
+      SHLOMO","execDate":"11-14-2004"}],"assignee":[{"assigneeName":"IMPERVA, INC.","streetLineOneText":"1065
+      EAST HILLSDALE BLVD.","streetLineTwoText":"SUITE 109","cityName":"FOSTER CITY","countryCode":"CALIFORNIA","postalCode":"94404"}]},{"reelNumber":"48077","frameNumber":"672","addressNameText":"LATHAM
+      & WATKINS LLP","addressLineOneText":"355 SOUTH GRAND AVENUE","addressLineTwoText":"LOS
+      ANGELES, CA 90071-1560","addressLineThreeText":"null","addressLineFourText":"null","mailDate":"01-23-2019","receivedDate":"01-15-2019","recordedDate":"01-15-2019","pagesCount":"16","converyanceName":"FIRST
+      LIEN INTELLECTUAL PROPERTY SECURITY AGREEMENT","sequenceNumber":"29","assignors":[{"assignorName":"IMPERVA,
+      INC.","execDate":"01-10-2019"}],"assignee":[{"assigneeName":"BANK OF AMERICA,
+      N.A., AS COLLATERAL AGENT","streetLineOneText":"MAIL CODE: NC1-001-05-45, 101
+      NORTH TRYON STREET, 5TH FLOOR","streetLineTwoText":"null","cityName":"CHARLOTTE","countryCode":"NORTH
+      CAROLINA","postalCode":"28255"}]},{"reelNumber":"49676","frameNumber":"451","addressNameText":"LATHAM
+      & WATKINS LLP","addressLineOneText":"355 SOUTH GRAND AVENUE","addressLineTwoText":"LOS
+      ANGELES, CA 90071-1560","addressLineThreeText":"null","addressLineFourText":"null","mailDate":"07-08-2019","receivedDate":"01-15-2019","recordedDate":"01-15-2019","pagesCount":"15","converyanceName":"SECOND
+      LIEN INTELLECTUAL PROPERTY SECURITY AGREEMENT","sequenceNumber":"29","assignors":[{"assignorName":"IMPERVA,
+      INC.","execDate":"01-10-2019"}],"assignee":[{"assigneeName":"GOLDMAN SACHS BANK
+      USA, AS COLLATERAL AGENT","streetLineOneText":"200 WEST STREET","streetLineTwoText":"null","cityName":"NEW
+      YORK","countryCode":"NEW YORK","postalCode":"10282"}]}],"appFilingDate":"2004-11-19T00:00:00Z","appExamName":"PALIWAL,
+      YOGESH","appExamNameFacet":"PALIWAL, YOGESH","publicInd":"Y","APP_IND":"5","inventorName":"Amichai  Shulman","inventorNameFacet":"Amichai  Shulman","appEarlyPubDate":"2005-06-02T00:00:00Z","corrAddrGeoRegionCode":"CA","appLocation":"ELECTRONIC","appEarlyPubNumber":"US20050120054A1","id":"10991467","appGrpArtNumber":"2435","appGrpArtNumberFacet":"2435","applIdStr":"10991467","appl_id_txt":"10991467","appSubCls":"025000","patentNumber":"7743420","LAST_MOD_TS":"2023-10-28T06:41:47Z","transactions":[{"recordDate":"2021-12-22
+      00:00:00","code":"M1553","description":"Payment of Maintenance Fee, 12th Year,
+      Large Entity"},{"recordDate":"2017-12-22 00:00:00","code":"M1552","description":"Payment
+      of Maintenance Fee, 8th Year, Large Entity"},{"recordDate":"2015-04-08 00:00:00","code":"EML_NTR","description":"Email
+      Notification"},{"recordDate":"2015-04-08 00:00:00","code":"PA..","description":"Change
+      in Power of Attorney (May Include Associate POA)"},{"recordDate":"2015-04-06
+      00:00:00","code":"C.AD","description":"Correspondence Address Change"},{"recordDate":"2013-08-21
+      00:00:00","code":"BIG.","description":"Entity Status Set To Undiscounted (Initial
+      Default Setting or Status Change)"},{"recordDate":"2010-10-04 00:00:00","code":"PA..","description":"Change
+      in Power of Attorney (May Include Associate POA)"},{"recordDate":"2010-09-27
+      00:00:00","code":"C.AD","description":"Correspondence Address Change"},{"recordDate":"2010-06-22
+      00:00:00","code":"PGM/","description":"Recordation of Patent Grant Mailed"},{"recordDate":"2010-06-03
+      00:00:00","code":"EML_NTR","description":"Email Notification"},{"recordDate":"2010-06-02
+      00:00:00","code":"WPIR","description":"Issue Notification Mailed"},{"recordDate":"2010-06-22
+      00:00:00","code":"PTAC","description":"Patent Issue Date Used in PTA Calculation"},{"recordDate":"2010-05-17
+      00:00:00","code":"D1935","description":"Dispatch to FDC"},{"recordDate":"2010-05-10
+      00:00:00","code":"PILS","description":"Application Is Considered Ready for Issue"},{"recordDate":"2010-05-07
+      00:00:00","code":"N084","description":"Issue Fee Payment Verified"},{"recordDate":"2010-05-07
+      00:00:00","code":"IFEE","description":"Issue Fee Payment Received"},{"recordDate":"2010-04-06
+      00:00:00","code":"ELC_RVW","description":"Electronic Review"},{"recordDate":"2010-04-06
+      00:00:00","code":"EML_NTR","description":"Email Notification"},{"recordDate":"2010-04-06
+      00:00:00","code":"EML_NTF","description":"Email Notification"},{"recordDate":"2010-04-06
+      00:00:00","code":"MEX.A","description":"Mail Examiner''s Amendment"},{"recordDate":"2010-04-06
+      00:00:00","code":"MN/=.","description":"Mail Notice of Allowance"},{"recordDate":"2010-03-29
+      00:00:00","code":"N/=.","description":"Notice of Allowance Data Verification
+      Completed"},{"recordDate":"2010-03-29 00:00:00","code":"DOCK","description":"Case
+      Docketed to Examiner in GAU"},{"recordDate":"2010-03-24 00:00:00","code":"EXIN","description":"Interview
+      Summary Record"},{"recordDate":"2010-03-29 00:00:00","code":"EX.A","description":"Examiner''s
+      Amendment Communication"},{"recordDate":"2010-01-05 00:00:00","code":"FWDX","description":"Date
+      Forwarded to Examiner"},{"recordDate":"2010-01-04 00:00:00","code":"RCEX","description":"Request
+      for Continued Examination (RCE)"},{"recordDate":"2010-01-05 00:00:00","code":"ABN9","description":"Disposal
+      for a RCE / CPA / R129"},{"recordDate":"2010-01-04 00:00:00","code":"XT/G","description":"Request
+      for Extension of Time - Granted"},{"recordDate":"2010-01-04 00:00:00","code":"BRCE","description":"Workflow
+      - Request for RCE - Begin"},{"recordDate":"2009-09-01 00:00:00","code":"MCTFR","description":"Mail
+      Final Rejection (PTOL - 326)"},{"recordDate":"2009-08-31 00:00:00","code":"CTFR","description":"Final
+      Rejection"},{"recordDate":"2009-06-17 00:00:00","code":"FWDX","description":"Date
+      Forwarded to Examiner"},{"recordDate":"2009-04-28 00:00:00","code":"A...","description":"Response
+      after Non-Final Action"},{"recordDate":"2009-04-28 00:00:00","code":"XT/G","description":"Request
+      for Extension of Time - Granted"},{"recordDate":"2008-10-28 00:00:00","code":"MCTNF","description":"Mail
+      Non-Final Rejection"},{"recordDate":"2008-10-27 00:00:00","code":"CTNF","description":"Non-Final
+      Rejection"},{"recordDate":"2008-10-14 00:00:00","code":"DOCK","description":"Case
+      Docketed to Examiner in GAU"},{"recordDate":"2008-08-13 00:00:00","code":"FWDX","description":"Date
+      Forwarded to Examiner"},{"recordDate":"2008-07-24 00:00:00","code":"ELC.","description":"Response
+      to Election / Restriction Filed"},{"recordDate":"2008-07-10 00:00:00","code":"MCTRS","description":"Mail
+      Restriction Requirement"},{"recordDate":"2008-07-07 00:00:00","code":"CTRS","description":"Restriction/Election
+      Requirement"},{"recordDate":"2008-05-01 00:00:00","code":"FWDX","description":"Date
+      Forwarded to Examiner"},{"recordDate":"2008-03-31 00:00:00","code":"A...","description":"Response
+      after Non-Final Action"},{"recordDate":"2008-02-06 00:00:00","code":"DOCK","description":"Case
+      Docketed to Examiner in GAU"},{"recordDate":"2007-12-31 00:00:00","code":"MCTNF","description":"Mail
+      Non-Final Rejection"},{"recordDate":"2007-12-26 00:00:00","code":"CTNF","description":"Non-Final
+      Rejection"},{"recordDate":"2004-11-19 00:00:00","code":"IDSC","description":"Information
+      Disclosure Statement considered"},{"recordDate":"2007-10-17 00:00:00","code":"W525","description":"Withdraw
+      Flagged for 5/25"},{"recordDate":"2007-10-16 00:00:00","code":"F525","description":"Flagged
+      for 5/25"},{"recordDate":"2007-10-02 00:00:00","code":"DOCK","description":"Case
+      Docketed to Examiner in GAU"},{"recordDate":"2006-07-10 00:00:00","code":"C.ADB","description":"Correspondence
+      Address Change"},{"recordDate":"2006-01-27 00:00:00","code":"TSSCOMP","description":"IFW
+      TSS Processing by Tech Center Complete"},{"recordDate":"2004-11-19 00:00:00","code":"RCAP","description":"Reference
+      capture on IDS"},{"recordDate":"2004-11-19 00:00:00","code":"M844","description":"Information
+      Disclosure Statement (IDS) Filed"},{"recordDate":"2004-11-19 00:00:00","code":"WIDS","description":"Information
+      Disclosure Statement (IDS) Filed"},{"recordDate":"2006-01-27 00:00:00","code":"DOCK","description":"Case
+      Docketed to Examiner in GAU"},{"recordDate":"2005-11-29 00:00:00","code":"TI1050","description":"Transfer
+      Inquiry to GAU"},{"recordDate":"2005-02-07 00:00:00","code":"WROIPE","description":"Application
+      Return from OIPE"},{"recordDate":"2005-02-07 00:00:00","code":"COMP","description":"Application
+      Is Now Complete"},{"recordDate":"2005-02-07 00:00:00","code":"ROIPE","description":"Application
+      Return TO OIPE"},{"recordDate":"2005-02-07 00:00:00","code":"WROIPE","description":"Application
+      Return from OIPE"},{"recordDate":"2005-02-07 00:00:00","code":"ROIPE","description":"Application
+      Return TO OIPE"},{"recordDate":"2005-02-07 00:00:00","code":"OIPE","description":"Application
+      Dispatched from OIPE"},{"recordDate":"2005-02-07 00:00:00","code":"COMP","description":"Application
+      Is Now Complete"},{"recordDate":"2005-01-19 00:00:00","code":"L128","description":"Cleared
+      by L&R (LARS)"},{"recordDate":"2004-12-21 00:00:00","code":"L198","description":"Referred
+      to Level 2 (LARS) by OIPE CSR"},{"recordDate":"2004-12-15 00:00:00","code":"SCAN","description":"IFW
+      Scan & PACR Auto Security Review"},{"recordDate":"2004-11-19 00:00:00","code":"IEXX","description":"Initial
+      Exam Team nn"}],"LAST_INSERT_TIME":"2023-10-28T11:05:04Z","appCls":"726","appStatus":"Patented
+      Case","appStatusFacet":"Patented Case","appStatus_txt":"Patented Case","corrAddrStreetLineTwo":"Suite
+      575","ptaPteInd":"PTA","ptaPteTranHistory":[{"number":"72.5","ptaOrPteDate":"01-03-2010","contentsDescription":"PTA
+      36 Months","ptoDays":"776","applDays":"","start":"0"},{"number":"72","ptaOrPteDate":"06-22-2010","contentsDescription":"Patent
+      Issue Date Used in PTA Calculation","ptoDays":"","applDays":"","start":"0"},{"number":"69","ptaOrPteDate":"05-17-2010","contentsDescription":"Dispatch
+      to FDC","ptoDays":"","applDays":"","start":"0"},{"number":"68","ptaOrPteDate":"05-10-2010","contentsDescription":"Application
+      Is Considered Ready for Issue","ptoDays":"","applDays":"","start":"0"},{"number":"67","ptaOrPteDate":"05-07-2010","contentsDescription":"Issue
+      Fee Payment Verified","ptoDays":"","applDays":"","start":"0"},{"number":"66","ptaOrPteDate":"05-07-2010","contentsDescription":"Issue
+      Fee Payment Received","ptoDays":"","applDays":"","start":"0"},{"number":"60","ptaOrPteDate":"04-06-2010","contentsDescription":"Mail
+      Notice of Allowance","ptoDays":"","applDays":"","start":"0"},{"number":"57","ptaOrPteDate":"03-29-2010","contentsDescription":"Notice
+      of Allowance Data Verification Completed","ptoDays":"","applDays":"","start":"0"},{"number":"56","ptaOrPteDate":"03-29-2010","contentsDescription":"Case
+      Docketed to Examiner in GAU","ptoDays":"","applDays":"","start":"0"},{"number":"55","ptaOrPteDate":"03-24-2010","contentsDescription":"Interview
+      Summary Record","ptoDays":"","applDays":"","start":"0"},{"number":"54","ptaOrPteDate":"03-29-2010","contentsDescription":"Examiner''s
+      Amendment Communication","ptoDays":"","applDays":"","start":"0"},{"number":"49","ptaOrPteDate":"01-05-2010","contentsDescription":"Date
+      Forwarded to Examiner","ptoDays":"","applDays":"","start":"0"},{"number":"47","ptaOrPteDate":"01-04-2010","contentsDescription":"Request
+      for Continued Examination (RCE)","ptoDays":"","applDays":"34","start":"43"},{"number":"46","ptaOrPteDate":"01-05-2010","contentsDescription":"Disposal
+      for a RCE / CPA / R129","ptoDays":"","applDays":"","start":"0"},{"number":"45","ptaOrPteDate":"01-04-2010","contentsDescription":"Request
+      for Extension of Time - Granted","ptoDays":"","applDays":"","start":"0"},{"number":"44","ptaOrPteDate":"01-04-2010","contentsDescription":"Workflow
+      - Request for RCE - Begin","ptoDays":"","applDays":"","start":"0"},{"number":"43","ptaOrPteDate":"09-01-2009","contentsDescription":"Mail
+      Final Rejection (PTOL - 326)","ptoDays":"0","applDays":"","start":"40"},{"number":"42","ptaOrPteDate":"08-31-2009","contentsDescription":"Final
+      Rejection","ptoDays":"","applDays":"","start":"0"},{"number":"41","ptaOrPteDate":"06-17-2009","contentsDescription":"Date
+      Forwarded to Examiner","ptoDays":"","applDays":"","start":"0"},{"number":"40","ptaOrPteDate":"04-28-2009","contentsDescription":"Response
+      after Non-Final Action","ptoDays":"","applDays":"90","start":"38"},{"number":"39","ptaOrPteDate":"04-28-2009","contentsDescription":"Request
+      for Extension of Time - Granted","ptoDays":"","applDays":"","start":"0"},{"number":"38","ptaOrPteDate":"10-28-2008","contentsDescription":"Mail
+      Non-Final Rejection","ptoDays":"","applDays":"","start":"0"},{"number":"37","ptaOrPteDate":"10-27-2008","contentsDescription":"Non-Final
+      Rejection","ptoDays":"","applDays":"","start":"0"},{"number":"36","ptaOrPteDate":"10-14-2008","contentsDescription":"Case
+      Docketed to Examiner in GAU","ptoDays":"","applDays":"","start":"0"},{"number":"35","ptaOrPteDate":"08-13-2008","contentsDescription":"Date
+      Forwarded to Examiner","ptoDays":"","applDays":"","start":"0"},{"number":"34","ptaOrPteDate":"07-24-2008","contentsDescription":"Response
+      to Election / Restriction Filed","ptoDays":"","applDays":"","start":"0"},{"number":"33","ptaOrPteDate":"07-10-2008","contentsDescription":"Mail
+      Restriction Requirement","ptoDays":"","applDays":"","start":"0"},{"number":"32","ptaOrPteDate":"07-07-2008","contentsDescription":"Restriction/Election
+      Requirement","ptoDays":"","applDays":"","start":"0"},{"number":"30","ptaOrPteDate":"05-01-2008","contentsDescription":"Date
+      Forwarded to Examiner","ptoDays":"","applDays":"","start":"0"},{"number":"29","ptaOrPteDate":"03-31-2008","contentsDescription":"Response
+      after Non-Final Action","ptoDays":"","applDays":"","start":"0"},{"number":"28","ptaOrPteDate":"02-06-2008","contentsDescription":"Case
+      Docketed to Examiner in GAU","ptoDays":"","applDays":"","start":"0"},{"number":"27","ptaOrPteDate":"12-31-2007","contentsDescription":"Mail
+      Non-Final Rejection","ptoDays":"669","applDays":"","start":"-1"},{"number":"26","ptaOrPteDate":"12-26-2007","contentsDescription":"Non-Final
+      Rejection","ptoDays":"","applDays":"","start":"0"},{"number":"22","ptaOrPteDate":"11-19-2004","contentsDescription":"Information
+      Disclosure Statement considered","ptoDays":"","applDays":"","start":"0"},{"number":"21","ptaOrPteDate":"10-17-2007","contentsDescription":"Withdraw
+      Flagged for 5/25","ptoDays":"","applDays":"","start":"0"},{"number":"20","ptaOrPteDate":"10-16-2007","contentsDescription":"Flagged
+      for 5/25","ptoDays":"","applDays":"","start":"0"},{"number":"19","ptaOrPteDate":"10-02-2007","contentsDescription":"Case
+      Docketed to Examiner in GAU","ptoDays":"","applDays":"","start":"0"},{"number":"18","ptaOrPteDate":"07-10-2006","contentsDescription":"Correspondence
+      Address Change","ptoDays":"","applDays":"","start":"0"},{"number":"17","ptaOrPteDate":"01-27-2006","contentsDescription":"IFW
+      TSS Processing by Tech Center Complete","ptoDays":"","applDays":"","start":"0"},{"number":"16","ptaOrPteDate":"11-19-2004","contentsDescription":"Reference
+      capture on IDS","ptoDays":"","applDays":"","start":"0"},{"number":"15.7","ptaOrPteDate":"11-19-2004","contentsDescription":"Information
+      Disclosure Statement (IDS) Filed","ptoDays":"","applDays":"","start":"0"},{"number":"15","ptaOrPteDate":"11-19-2004","contentsDescription":"Information
+      Disclosure Statement (IDS) Filed","ptoDays":"","applDays":"","start":"0"},{"number":"14","ptaOrPteDate":"01-27-2006","contentsDescription":"Case
+      Docketed to Examiner in GAU","ptoDays":"","applDays":"","start":"0"},{"number":"13","ptaOrPteDate":"11-29-2005","contentsDescription":"Transfer
+      Inquiry to GAU","ptoDays":"","applDays":"","start":"0"},{"number":"12","ptaOrPteDate":"02-07-2005","contentsDescription":"Application
+      Return from OIPE","ptoDays":"","applDays":"","start":"0"},{"number":"11","ptaOrPteDate":"02-07-2005","contentsDescription":"Application
+      Is Now Complete","ptoDays":"","applDays":"","start":"0"},{"number":"10","ptaOrPteDate":"02-07-2005","contentsDescription":"Application
+      Return TO OIPE","ptoDays":"","applDays":"","start":"0"},{"number":"9","ptaOrPteDate":"02-07-2005","contentsDescription":"Application
+      Return from OIPE","ptoDays":"","applDays":"","start":"0"},{"number":"8","ptaOrPteDate":"02-07-2005","contentsDescription":"Application
+      Return TO OIPE","ptoDays":"","applDays":"","start":"0"},{"number":"7","ptaOrPteDate":"02-07-2005","contentsDescription":"Application
+      Dispatched from OIPE","ptoDays":"","applDays":"","start":"0"},{"number":"6","ptaOrPteDate":"02-07-2005","contentsDescription":"Application
+      Is Now Complete","ptoDays":"","applDays":"","start":"0"},{"number":"5","ptaOrPteDate":"01-19-2005","contentsDescription":"Cleared
+      by L&R (LARS)","ptoDays":"","applDays":"","start":"0"},{"number":"4","ptaOrPteDate":"12-21-2004","contentsDescription":"Referred
+      to Level 2 (LARS) by OIPE CSR","ptoDays":"","applDays":"","start":"0"},{"number":"2","ptaOrPteDate":"12-15-2004","contentsDescription":"IFW
+      Scan & PACR Auto Security Review","ptoDays":"","applDays":"","start":"0"},{"number":"1","ptaOrPteDate":"11-19-2004","contentsDescription":"Initial
+      Exam Team nn","ptoDays":"","applDays":"","start":"0"}],"corrAddrGeoRegionNA":"CALIFORNIA","patentTitle":"DYNAMIC
+      LEARNING METHOD AND ADAPTIVE NORMAL BEHAVIOR PROFILE (NBP) ARCHITECTURE FOR
+      PROVIDING FAST PROTECTION OF ENTERPRISE APPLICATIONS","applDelay":"124","cDelay":"0","appStatusDate":"2010-06-02T00:00:00Z","appAttrDockNumber":"9034P001","inventors":[{"nameLineOne":"Shulman","nameLineTwo":"Amichai
+      ","suffix":"","streetOne":"","streetTwo":"","city":"Givataim, ","geoCode":"","country":"(IL)","rankNo":"1"},{"nameLineOne":"Boodaei","nameLineTwo":"Michael
+      ","suffix":"","streetOne":"","streetTwo":"","city":"Givatalm, ","geoCode":"","country":"(IL)","rankNo":"2"},{"nameLineOne":"Kremer","nameLineTwo":"Shlomo
+      ","suffix":"","streetOne":"","streetTwo":"","city":"Tel-Aviv, ","geoCode":"","country":"(IL)","rankNo":"3"}],"inventorsFacet":"{Amichai||Shulman||||Givataim||IL|IND|1},{Michael||Boodaei||||Givatalm||IL|IND|2},{Shlomo||Kremer||||Tel-Aviv||IL|IND|3}","ptoAdjustments":"0","corrAddrStreetLineOne":"99
+      Almaden Boulevard","firstInventorFile":"No","childContinuity":[{"claimApplicationNumberText":"12814753","applicationNumberText":"10991467","filingDate":"06-14-2010","aiaIndicator":"N","patentNumberText":"8713682","applicationStatus":"Patented","applicationStatusDescription":"claims
+      the benefit of"},{"claimApplicationNumberText":"14254564","applicationNumberText":"10991467","filingDate":"04-16-2014","aiaIndicator":"N","patentNumberText":"9781133","applicationStatus":"Patented","applicationStatusDescription":"claims
+      the benefit of"},{"claimApplicationNumberText":"15696100","applicationNumberText":"10991467","filingDate":"09-05-2017","aiaIndicator":"N","patentNumberText":"10104095","applicationStatus":"Patented","applicationStatusDescription":"claims
+      the benefit of"}],"overlapDelay":"46","aDelay":"715","appType":"Utility","appTypeFacet":"Utility","corrAddrPostalCode":"95113","appCustNumber":"130093","appClsSubCls":"726/025000","appClsSubClsFacet":"726/025000","patentIssueDate":"2010-06-22T00:00:00Z","bDelay":"776","corrAddrNameLineOne":"Nicholson
+      De Vos Webster & Elliott LLP","attrnyAddr":[{"applicationId":null,"registrationNo":"31772","fullName":"Kidd,
+      William  ","phoneNum":"512-809-7001","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"37813","fullName":"De
+      Vos, Daniel  ","phoneNum":"408--67-5-0441","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"39393","fullName":"Szepesi,
+      Judith  ","phoneNum":"408-675-0441","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"39973","fullName":"Faatz,
+      Cynthia  ","phoneNum":"408-684-6374","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"42781","fullName":"Lane,
+      Thomas  ","phoneNum":"302-651-3186","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"46154","fullName":"Webster,
+      Thomas  ","phoneNum":"--","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"48011","fullName":"Vecchia,
+      Brent  ","phoneNum":"720-496-4277","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"48534","fullName":"Miller,
+      Jonathan  ","phoneNum":"408-675-0441","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"59725","fullName":"Feld,
+      Nathan  ","phoneNum":"408-471-3057","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"60206","fullName":"Simmons,
+      Scott  ","phoneNum":"408-675-0441","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"60156","fullName":"Elliott,
+      Ryan  ","phoneNum":"408-675-0441","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"62889","fullName":"Nicholson,
+      Matthew  ","phoneNum":"408-675-0441","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"62888","fullName":"Nicholson,
+      David  ","phoneNum":"408-675-0441","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"63360","fullName":"Wang,
+      Hui  ","phoneNum":"408-412-3021","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"64901","fullName":"Leege,
+      Brian  ","phoneNum":"408-664-9267","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"65658","fullName":"Rojanakiathavorn,
+      Matthew  ","phoneNum":"510-396-0584","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"68065","fullName":"Sellars,
+      Eric  ","phoneNum":"408-610-4563","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"71309","fullName":"Lee,
+      Daniel  ","phoneNum":"408-675-0441","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"71487","fullName":"Kirimis,
+      Dimitri  ","phoneNum":"949-390-7163","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"72092","fullName":"Shieh,
+      Wei-Jun  ","phoneNum":"408-981-5412","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"73922","fullName":"Debbih,
+      Meriem  ","phoneNum":"408-664-9266","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"70028","fullName":"Zinsli,
+      Cameron  ","phoneNum":"408-275-2557","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"33417","fullName":"Majerus,
+      Laura  ","phoneNum":"650-906-8839","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"53360","fullName":"Murray,
+      Scott  ","phoneNum":"408-675-0441","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"44987","fullName":"Orich,
+      Christine  ","phoneNum":"408-214-9684","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"76932","fullName":"Hawkins,
+      David  ","phoneNum":"404-685-6705","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"60531","fullName":"Stone,
+      Adam  ","phoneNum":"408-414-1231","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"77226","fullName":"Moreton,
+      Michael  ","phoneNum":"609-330-4584","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"80238","fullName":"Hagler,
+      Mark  ","phoneNum":"408-684-6383","regStatus":"ACTIVE"}],"parentContinuity":[{"claimApplicationNumberText":"60526098","applicationNumberText":"10991467","filingDate":"12-02-2003","aiaIndicator":"","patentNumberText":"","applicationStatus":"Expired","applicationStatusDescription":"This
+      application Claims Priority from Provisional Application"}],"corrAddrCustNo":"130093","corrAddrCountryCd":"US","ptoDelay":"1445","corrAddrCity":"San
+      Jose","appEntityStatus":"UNDISCOUNTED","appConfrNumber":"9375","lastUpdatedTimestamp":"2023-10-29T11:29:52.263Z","cmsData":["{10991467|2015-04-07
+      20:00:00|PROSECUTION|Communication - Re:  Power of Attorney (PTOL-308)|N570|1|I87BP69WPXXIFW4},{10991467|2015-04-07
+      20:00:00|PROSECUTION|Communication - Re:  Power of Attorney (PTOL-308)|N570|1|I87BVXX1PXXIFW4},{10991467|2015-03-31
+      20:00:00|PROSECUTION|Assignee showing of ownership per 37 CFR 3.73|R3.73|2|I7ZBG4KFPXXIFW3},{10991467|2015-03-31
+      20:00:00|PROSECUTION|Electronic Filing System(EFS) Acknowledgment Receipt|N417|2|I7ZBG4KMPXXIFW3},{10991467|2015-03-31
+      20:00:00|PROSECUTION|Power of Attorney|PA..|2|I7ZBG4J4PXXIFW3},{10991467|2013-08-19
+      20:00:00|PROSECUTION|Miscellaneous Internal Document|IMIS|2|HLS0AFKVPXXIFW4},{10991467|2010-10-03
+      20:00:00|PROSECUTION|Communication - Re:  Power of Attorney (PTOL-308)|N570|1|GEVBA73ZPPOPPY5},{10991467|2010-10-03
+      20:00:00|PROSECUTION|Communication - Re:  Power of Attorney (PTOL-308)|N570|1|GEVBA6V7PPOPPY5},{10991467|2010-09-21
+      20:00:00|PROSECUTION|Assignee showing of ownership per 37 CFR 3.73|R3.73|2|GEEQGHBIPPOPPY2},{10991467|2010-09-21
+      20:00:00|PROSECUTION|Electronic Filing System(EFS) Acknowledgment Receipt|N417|2|GEEQGHBYPPOPPY2},{10991467|2010-09-21
+      20:00:00|PROSECUTION|Power of Attorney|PA..|2|GEEQGH9WPPOPPY2},{10991467|2010-06-01
+      20:00:00|PROSECUTION|Issue Notification|ISSUE.NTF|1|G9YXYTLYPPOPPY5},{10991467|2010-05-24
+      20:00:00|PROSECUTION|List of References cited by applicant and considered by
+      examiner|1449|1|G9O6X7J9PPOPPY5},{10991467|2010-05-06 20:00:00|PROSECUTION|Issue
+      Fee Payment (PTO-85B)|IFEE|1|G8XKQ53NPPOPPY2},{10991467|2010-05-06 20:00:00|PROSECUTION|Fee
+      Worksheet (SB06)|WFEE|2|G8XKQ54LPPOPPY2},{10991467|2010-05-06 20:00:00|PROSECUTION|Electronic
+      Filing System(EFS) Acknowledgment Receipt|N417|2|G8XKQ57YPPOPPY2},{10991467|2010-04-05
+      20:00:00|PROSECUTION|Issue Information including classification, examiner, name,
+      claim, renumbering, etc.|IIFW|1|G7K3V8BKPPOPPY5},{10991467|2010-04-05 20:00:00|PROSECUTION|Examiner''s
+      search strategy and results|SRNT|2|G7K3V85KPPOPPY5},{10991467|2010-04-05 20:00:00|PROSECUTION|Notice
+      of Allowance and Fees Due (PTOL-85)|NOA|6|G7K3V7THPPOPPY5},{10991467|2010-04-05
+      20:00:00|PROSECUTION|Examiner Interview Summary Record (PTOL - 413)|EXIN|1|G7K3V7T5PPOPPY5},{10991467|2010-04-05
+      20:00:00|PROSECUTION|Index of Claims|FWCLM|2|G7K3V867PPOPPY5},{10991467|2010-04-05
+      20:00:00|PROSECUTION|Notice of Allowance and Fees Due (PTOL-85)|NOA|4|G7K3V7SEPPOPPY5},{10991467|2010-04-05
+      20:00:00|PROSECUTION|Search information including classification, databases
+      and other search related notes|SRFW|1|G7K3V8HEPPOPPY5},{10991467|2010-04-05
+      20:00:00|PROSECUTION|Examiner''s search strategy and results|SRNT|5|G7K3V7U4PPOPPY5},{10991467|2010-04-05
+      20:00:00|PROSECUTION|Bibliographic Data Sheet|BIB|1|G7K3V7TSPPOPPY5},{10991467|2010-01-03
+      19:00:00|PROSECUTION|Request for Continued Examination (RCE)|RCEX|1|G41SE49VPPOPPY2},{10991467|2010-01-03
+      19:00:00|PROSECUTION|Extension of Time|XT/|1|G41SE4S5PPOPPY2},{10991467|2010-01-03
+      19:00:00|PROSECUTION|Electronic Filing System(EFS) Acknowledgment Receipt|N417|2|G41SE4LJPPOPPY2},{10991467|2010-01-03
+      19:00:00|PROSECUTION|Amendment Submitted/Entered with Filing of Continued Prosecution
+      Application (CPA)/Request for Continued Examination(RCE)|AMSB|1|G41SE4RDPPOPPY2},{10991467|2010-01-03
+      19:00:00|PROSECUTION|Applicant Arguments/Remarks Made in an Amendment|REM|4|G41SE4RSPPOPPY2},{10991467|2010-01-03
+      19:00:00|PROSECUTION|Fee Worksheet (SB06)|WFEE|2|G41SE4FQPPOPPY2},{10991467|2010-01-03
+      19:00:00|PROSECUTION|Fee Worksheet (SB06)|WFEE|1|G467UIRXPPOPPY5},{10991467|2009-08-31
+      20:00:00|PROSECUTION|Index of Claims|FWCLM|2|FZ2AHZY3PPOPPY5},{10991467|2009-08-31
+      20:00:00|PROSECUTION|Examiner''s search strategy and results|SRNT|4|FZ2AHZYSPPOPPY5},{10991467|2009-08-31
+      20:00:00|PROSECUTION|List of references cited by examiner|892|1|FZ2AHZXSPPOPPY5},{10991467|2009-08-31
+      20:00:00|PROSECUTION|Final Rejection|CTFR|14|FZ2AHZWIPPOPPY5},{10991467|2009-08-31
+      20:00:00|PROSECUTION|Search information including classification, databases
+      and other search related notes|SRFW|1|FZ2AHZYFPPOPPY5},{10991467|2009-04-27
+      20:00:00|PROSECUTION|Fee Worksheet (SB06)|WFEE|1|FW2IFRR1PPOPPY5},{10991467|2009-04-27
+      20:00:00|PROSECUTION|Electronic Filing System(EFS) Acknowledgment Receipt|N417|2|FU2NB5JCPPOPPY4},{10991467|2009-04-27
+      20:00:00|PROSECUTION|Amendment/Request for Reconsideration-After Non-Final Rejection|A...|1|FU2NB56LPPOPPY4},{10991467|2009-04-27
+      20:00:00|PROSECUTION|Specification|SPEC|1|FU2NB58APPOPPY4},{10991467|2009-04-27
+      20:00:00|PROSECUTION|Applicant Arguments/Remarks Made in an Amendment|REM|4|FU2NB5CGPPOPPY4},{10991467|2009-04-27
+      20:00:00|PROSECUTION|Extension of Time|XT/|1|FU2NB5ICPPOPPY4},{10991467|2009-04-27
+      20:00:00|PROSECUTION|Fee Worksheet (SB06)|WFEE|2|FU2NB5ITPPOPPY4},{10991467|2009-04-27
+      20:00:00|PROSECUTION|Claims|CLM|13|FU2NB59DPPOPPY4},{10991467|2008-10-27 20:00:00|PROSECUTION|Index
+      of Claims|FWCLM|2|FMVORQJCPPOPPY5},{10991467|2008-10-27 20:00:00|PROSECUTION|List
+      of references cited by examiner|892|1|FMVORQG4PPOPPY5},{10991467|2008-10-27
+      20:00:00|PROSECUTION|Search information including classification, databases
+      and other search related notes|SRFW|1|FMVORQJWPPOPPY5},{10991467|2008-10-27
+      20:00:00|PROSECUTION|Examiner''s search strategy and results|SRNT|2|FMVORQIRPPOPPY5},{10991467|2008-10-27
+      20:00:00|PROSECUTION|Non-Final Rejection|CTNF|14|FMVORQE6PPOPPY5},{10991467|2008-07-23
+      20:00:00|PROSECUTION|Response to Election / Restriction Filed|ELC.|2|FJ1IMFRYPPOPPY4},{10991467|2008-07-23
+      20:00:00|PROSECUTION|Electronic Filing System(EFS) Acknowledgment Receipt|N417|2|FJ1IMFTDPPOPPY4},{10991467|2008-07-09
+      20:00:00|PROSECUTION|Requirement for Restriction/Election|CTRS|7|FII8EMBLPPOPPY5},{10991467|2008-03-30
+      20:00:00|PROSECUTION|Fee Worksheet (SB06)|WFEE|1|FFPFCZEYPPOPPY5},{10991467|2008-03-30
+      20:00:00|PROSECUTION|Applicant Arguments/Remarks Made in an Amendment|REM|9|FEHBTQXEPPOPPY4},{10991467|2008-03-30
+      20:00:00|PROSECUTION|Claims|CLM|11|FEHBTQUFPPOPPY4},{10991467|2008-03-30 20:00:00|PROSECUTION|Specification|SPEC|1|FEHBTQTWPPOPPY4},{10991467|2008-03-30
+      20:00:00|PROSECUTION|Electronic Filing System(EFS) Acknowledgment Receipt|N417|2|FEHBTQXWPPOPPY4},{10991467|2008-03-30
+      20:00:00|PROSECUTION|Amendment/Request for Reconsideration-After Non-Final Rejection|A...|1|FEHBTQSIPPOPPY4},{10991467|2007-12-30
+      19:00:00|PROSECUTION|Index of Claims|FWCLM|2|FAVRQVJNPPOPPY5},{10991467|2007-12-30
+      19:00:00|PROSECUTION|Non Patent Literature|NPL|12|FAVRQVIQPPOPPY5},{10991467|2007-12-30
+      19:00:00|PROSECUTION|Search information including classification, databases
+      and other search related notes|SRFW|1|FAVRQVK9PPOPPY5},{10991467|2007-12-30
+      19:00:00|PROSECUTION|List of references cited by examiner|892|1|FAVRQVI4PPOPPY5},{10991467|2007-12-30
+      19:00:00|PROSECUTION|Non-Final Rejection|CTNF|18|FAVRQVF4PPOPPY5},{10991467|2007-12-30
+      19:00:00|PROSECUTION|Non Patent Literature|NPL|8|FAVRQVJBPPOPPY5},{10991467|2007-12-30
+      19:00:00|PROSECUTION|Non Patent Literature|NPL|12|FAVRQVIFPPOPPY5},{10991467|2007-12-30
+      19:00:00|PROSECUTION|List of References cited by applicant and considered by
+      examiner|1449|1|FAVRQVGSPPOPPY5},{10991467|2007-12-30 19:00:00|PROSECUTION|Bibliographic
+      Data Sheet|BIB|2|FAVRQVKUPPOPPY5},{10991467|2006-07-10 20:00:00|PROSECUTION|Notice
+      of Change of Address Place in File Wrapper Due to Electronic Business Center(EBC)
+      Customer Number Update|EBCC.AD|1|EPHT6RUFPPOPPY5},{10991467|2004-11-18 19:00:00|PROSECUTION|Fee
+      Worksheet (SB06)|WFEE|1|E2HLUNXPPP1GUI1},{10991467|2004-11-18 19:00:00|PROSECUTION|Authorization
+      for Extension of Time all replies|136A|1|EIYR84SOPP2GUI1},{10991467|2004-11-18
+      19:00:00|PROSECUTION|Fee Worksheet (SB06)|WFEE|1|E2HLUNYLPP1GUI1},{10991467|2004-11-18
+      19:00:00|PROSECUTION|Claims|CLM|16|E2HLUNUOPP1GUI1},{10991467|2004-11-18 19:00:00|PROSECUTION|Transmittal
+      of New Application|TRNA|1|E2HLUNTAPP1GUI1},{10991467|2004-11-18 19:00:00|PROSECUTION|Specification|SPEC|30|E2HLUNU1PP1GUI1},{10991467|2004-11-18
+      19:00:00|PROSECUTION|Drawings-only black and white line drawings|DRW|6|E2HLUNW6PP1GUI1},{10991467|2004-11-18
+      19:00:00|PROSECUTION|Information Disclosure Statement (IDS) Form (SB08)|IDS|3|E2HLUNZ7PP1GUI1},{10991467|2004-11-18
+      19:00:00|PROSECUTION|Oath or Declaration filed|OATH|2|E2HLUNWUPP1GUI1},{10991467|2004-11-18
+      19:00:00|PROSECUTION|Abstract|ABST|1|E2HLUNVIPP1GUI1}"],"appAttrDockNumberFacet":"9034P001","appEntityStatusFacet":"UNDISCOUNTED","appCustNumberFacet":"130093","_version_":1781089776435200000,"firstInventorFileFacet":"No","appLocationFacet":"ELECTRONIC","appEarlyPubNumberFacet":"US20050120054A1","patentNumberFacet":"7743420"},{"corrAddrCountryName":"UNITED
       STATES","applId":"11532058","assignments":[{"reelNumber":"18703","frameNumber":"253","addressNameText":"PROCOPIO,
       CORY, HARGREAVES & SAVITCH LLP","addressLineOneText":"530 B. STREET","addressLineTwoText":"SUITE
       2100","addressLineThreeText":"SAN DIEGO, CA 92101","addressLineFourText":"null","mailDate":"01-04-2007","receivedDate":"01-03-2007","recordedDate":"01-03-2007","pagesCount":"4","converyanceName":"ASSIGNMENT
@@ -411,7 +727,7 @@ interactions:
       Syed  ","phoneNum":"312-580-1020","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"78555","fullName":"Varrenti,
       Andrew  ","phoneNum":"312-580-1020","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"79246","fullName":"Pilipchuk,
       Sophia  ","phoneNum":"312-676-1737","regStatus":"ACTIVE"}],"parentContinuity":[{"claimApplicationNumberText":"60807919","applicationNumberText":"11532058","filingDate":"07-20-2006","aiaIndicator":"","patentNumberText":"","applicationStatus":"Expired","applicationStatusDescription":"This
-      application Claims Priority from Provisional Application"}],"corrAddrCustNo":"34431","corrAddrCountryCd":"US","corrAddrCity":"CHICAGO","appEntityStatus":"SMALL","appConfrNumber":"2187","lastUpdatedTimestamp":"2023-10-29T08:11:52.603Z","cmsData":["{11532058|2012-06-12
+      application Claims Priority from Provisional Application"}],"corrAddrCustNo":"34431","corrAddrCountryCd":"US","corrAddrCity":"CHICAGO","appEntityStatus":"SMALL","appConfrNumber":"2187","lastUpdatedTimestamp":"2023-10-29T08:08:03.098Z","cmsData":["{11532058|2012-06-12
       20:00:00|PROSECUTION|Notice of Change of Address Place in File Wrapper Due to
       Electronic Business Center(EBC) Customer Number Update|EBCC.AD|1|H3EERMHVPXXIFW4},{11532058|2012-05-09
       20:00:00|PROSECUTION|Abandonment|ABN|2|H1YXRU75PXXIFW4},{11532058|2012-04-29
@@ -631,7 +947,7 @@ interactions:
       Lawrence  Jr.","phoneNum":"704-790-3600","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"59893","fullName":"Knight,
       Jennifer  ","phoneNum":"704-931-5333","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"68574","fullName":"Beers,
       Jacob  ","phoneNum":"704-790-3600","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"79951","fullName":"Odessa,
-      Ryan  ","phoneNum":"704-576-8885","regStatus":"ACTIVE"}],"corrAddrCustNo":"177790","corrAddrCountryCd":"US","ptoDelay":"201","corrAddrCity":"Charlotte","appEntityStatus":"UNDISCOUNTED","appConfrNumber":"7202","lastUpdatedTimestamp":"2023-10-29T08:59:46.563Z","cmsData":["{12178911|2023-03-13
+      Ryan  ","phoneNum":"704-576-8885","regStatus":"ACTIVE"}],"corrAddrCustNo":"177790","corrAddrCountryCd":"US","ptoDelay":"201","corrAddrCity":"Charlotte","appEntityStatus":"UNDISCOUNTED","appConfrNumber":"7202","lastUpdatedTimestamp":"2023-10-29T08:51:55.457Z","cmsData":["{12178911|2023-03-13
       10:39:18|PROSECUTION|Electronic Filing System(EFS) Acknowledgment Receipt|N417|2|LF765ELIXBLUEX1},{12178911|2023-03-13
       10:39:18|PROSECUTION|Assignee showing of ownership per 37 CFR 3.73|R3.73|3|LF765ELHXBLUEX1},{12178911|2023-03-13
       10:39:18|PROSECUTION|Power of Attorney|PA..|2|LF765ELFXBLUEX1},{12178911|2018-03-06
@@ -693,529 +1009,201 @@ interactions:
       20:00:00|PROSECUTION|Drawings-only black and white line drawings|DRW|3|FJ1P29D8PPOPPY4},{12178911|2008-07-23
       20:00:00|PROSECUTION|Application Data Sheet|ADS|4|FJ1P2948PPOPPY4},{12178911|2008-07-23
       20:00:00|PROSECUTION|Fee Worksheet (SB06)|WFEE|1|FKR1TASZPPOPPY5}"],"appAttrDockNumberFacet":"5190","appEntityStatusFacet":"UNDISCOUNTED","appCustNumberFacet":"177790","_version_":1781079737881329664,"firstInventorFileFacet":"No","appLocationFacet":"ELECTRONIC","appEarlyPubNumberFacet":"US20100020700A1","patentNumberFacet":"7894350"},{"corrAddrCountryName":"UNITED
-      STATES","applId":"10991467","totalPtoDays":"1321","assignments":[{"reelNumber":"16012","frameNumber":"465","addressNameText":"SUGHRUE
-      MION, PLLC","addressLineOneText":"2100 PENNSYLVANIA AVENUE, N.W.","addressLineTwoText":"SUITE
-      800","addressLineThreeText":"WASHINGTON, DC 20037","addressLineFourText":"null","mailDate":"05-13-2005","receivedDate":"11-29-2004","recordedDate":"11-19-2004","pagesCount":"2","converyanceName":"ASSIGNMENT
-      OF ASSIGNORS INTEREST (SEE DOCUMENT FOR DETAILS).","sequenceNumber":"1","assignors":[{"assignorName":"SHULMAN,
-      AMICHAI","execDate":"11-14-2004"},{"assignorName":"BOODAEI, MICHAEL","execDate":"11-14-2004"},{"assignorName":"KREMER,
-      SHLOMO","execDate":"11-14-2004"}],"assignee":[{"assigneeName":"IMPERVA, INC.","streetLineOneText":"1065
-      EAST HILLSDALE BLVD.","streetLineTwoText":"SUITE 109","cityName":"FOSTER CITY","countryCode":"CALIFORNIA","postalCode":"94404"}]},{"reelNumber":"48077","frameNumber":"672","addressNameText":"LATHAM
-      & WATKINS LLP","addressLineOneText":"355 SOUTH GRAND AVENUE","addressLineTwoText":"LOS
-      ANGELES, CA 90071-1560","addressLineThreeText":"null","addressLineFourText":"null","mailDate":"01-23-2019","receivedDate":"01-15-2019","recordedDate":"01-15-2019","pagesCount":"16","converyanceName":"FIRST
-      LIEN INTELLECTUAL PROPERTY SECURITY AGREEMENT","sequenceNumber":"29","assignors":[{"assignorName":"IMPERVA,
-      INC.","execDate":"01-10-2019"}],"assignee":[{"assigneeName":"BANK OF AMERICA,
-      N.A., AS COLLATERAL AGENT","streetLineOneText":"MAIL CODE: NC1-001-05-45, 101
-      NORTH TRYON STREET, 5TH FLOOR","streetLineTwoText":"null","cityName":"CHARLOTTE","countryCode":"NORTH
-      CAROLINA","postalCode":"28255"}]},{"reelNumber":"49676","frameNumber":"451","addressNameText":"LATHAM
-      & WATKINS LLP","addressLineOneText":"355 SOUTH GRAND AVENUE","addressLineTwoText":"LOS
-      ANGELES, CA 90071-1560","addressLineThreeText":"null","addressLineFourText":"null","mailDate":"07-08-2019","receivedDate":"01-15-2019","recordedDate":"01-15-2019","pagesCount":"15","converyanceName":"SECOND
-      LIEN INTELLECTUAL PROPERTY SECURITY AGREEMENT","sequenceNumber":"29","assignors":[{"assignorName":"IMPERVA,
-      INC.","execDate":"01-10-2019"}],"assignee":[{"assigneeName":"GOLDMAN SACHS BANK
-      USA, AS COLLATERAL AGENT","streetLineOneText":"200 WEST STREET","streetLineTwoText":"null","cityName":"NEW
-      YORK","countryCode":"NEW YORK","postalCode":"10282"}]}],"appFilingDate":"2004-11-19T00:00:00Z","appExamName":"PALIWAL,
-      YOGESH","appExamNameFacet":"PALIWAL, YOGESH","publicInd":"Y","APP_IND":"5","inventorName":"Amichai  Shulman","inventorNameFacet":"Amichai  Shulman","appEarlyPubDate":"2005-06-02T00:00:00Z","corrAddrGeoRegionCode":"CA","appLocation":"ELECTRONIC","appEarlyPubNumber":"US20050120054A1","id":"10991467","appGrpArtNumber":"2435","appGrpArtNumberFacet":"2435","applIdStr":"10991467","appl_id_txt":"10991467","appSubCls":"025000","patentNumber":"7743420","LAST_MOD_TS":"2023-10-28T06:41:47Z","transactions":[{"recordDate":"2021-12-22
-      00:00:00","code":"M1553","description":"Payment of Maintenance Fee, 12th Year,
-      Large Entity"},{"recordDate":"2017-12-22 00:00:00","code":"M1552","description":"Payment
-      of Maintenance Fee, 8th Year, Large Entity"},{"recordDate":"2015-04-08 00:00:00","code":"EML_NTR","description":"Email
-      Notification"},{"recordDate":"2015-04-08 00:00:00","code":"PA..","description":"Change
-      in Power of Attorney (May Include Associate POA)"},{"recordDate":"2015-04-06
-      00:00:00","code":"C.AD","description":"Correspondence Address Change"},{"recordDate":"2013-08-21
-      00:00:00","code":"BIG.","description":"Entity Status Set To Undiscounted (Initial
-      Default Setting or Status Change)"},{"recordDate":"2010-10-04 00:00:00","code":"PA..","description":"Change
-      in Power of Attorney (May Include Associate POA)"},{"recordDate":"2010-09-27
-      00:00:00","code":"C.AD","description":"Correspondence Address Change"},{"recordDate":"2010-06-22
-      00:00:00","code":"PGM/","description":"Recordation of Patent Grant Mailed"},{"recordDate":"2010-06-03
-      00:00:00","code":"EML_NTR","description":"Email Notification"},{"recordDate":"2010-06-02
-      00:00:00","code":"WPIR","description":"Issue Notification Mailed"},{"recordDate":"2010-06-22
-      00:00:00","code":"PTAC","description":"Patent Issue Date Used in PTA Calculation"},{"recordDate":"2010-05-17
-      00:00:00","code":"D1935","description":"Dispatch to FDC"},{"recordDate":"2010-05-10
-      00:00:00","code":"PILS","description":"Application Is Considered Ready for Issue"},{"recordDate":"2010-05-07
-      00:00:00","code":"N084","description":"Issue Fee Payment Verified"},{"recordDate":"2010-05-07
-      00:00:00","code":"IFEE","description":"Issue Fee Payment Received"},{"recordDate":"2010-04-06
-      00:00:00","code":"ELC_RVW","description":"Electronic Review"},{"recordDate":"2010-04-06
-      00:00:00","code":"EML_NTR","description":"Email Notification"},{"recordDate":"2010-04-06
-      00:00:00","code":"EML_NTF","description":"Email Notification"},{"recordDate":"2010-04-06
-      00:00:00","code":"MEX.A","description":"Mail Examiner''s Amendment"},{"recordDate":"2010-04-06
-      00:00:00","code":"MN/=.","description":"Mail Notice of Allowance"},{"recordDate":"2010-03-29
-      00:00:00","code":"N/=.","description":"Notice of Allowance Data Verification
-      Completed"},{"recordDate":"2010-03-29 00:00:00","code":"DOCK","description":"Case
-      Docketed to Examiner in GAU"},{"recordDate":"2010-03-24 00:00:00","code":"EXIN","description":"Interview
-      Summary Record"},{"recordDate":"2010-03-29 00:00:00","code":"EX.A","description":"Examiner''s
-      Amendment Communication"},{"recordDate":"2010-01-05 00:00:00","code":"FWDX","description":"Date
-      Forwarded to Examiner"},{"recordDate":"2010-01-04 00:00:00","code":"RCEX","description":"Request
-      for Continued Examination (RCE)"},{"recordDate":"2010-01-05 00:00:00","code":"ABN9","description":"Disposal
-      for a RCE / CPA / R129"},{"recordDate":"2010-01-04 00:00:00","code":"XT/G","description":"Request
-      for Extension of Time - Granted"},{"recordDate":"2010-01-04 00:00:00","code":"BRCE","description":"Workflow
-      - Request for RCE - Begin"},{"recordDate":"2009-09-01 00:00:00","code":"MCTFR","description":"Mail
-      Final Rejection (PTOL - 326)"},{"recordDate":"2009-08-31 00:00:00","code":"CTFR","description":"Final
-      Rejection"},{"recordDate":"2009-06-17 00:00:00","code":"FWDX","description":"Date
-      Forwarded to Examiner"},{"recordDate":"2009-04-28 00:00:00","code":"A...","description":"Response
-      after Non-Final Action"},{"recordDate":"2009-04-28 00:00:00","code":"XT/G","description":"Request
-      for Extension of Time - Granted"},{"recordDate":"2008-10-28 00:00:00","code":"MCTNF","description":"Mail
-      Non-Final Rejection"},{"recordDate":"2008-10-27 00:00:00","code":"CTNF","description":"Non-Final
-      Rejection"},{"recordDate":"2008-10-14 00:00:00","code":"DOCK","description":"Case
-      Docketed to Examiner in GAU"},{"recordDate":"2008-08-13 00:00:00","code":"FWDX","description":"Date
-      Forwarded to Examiner"},{"recordDate":"2008-07-24 00:00:00","code":"ELC.","description":"Response
-      to Election / Restriction Filed"},{"recordDate":"2008-07-10 00:00:00","code":"MCTRS","description":"Mail
-      Restriction Requirement"},{"recordDate":"2008-07-07 00:00:00","code":"CTRS","description":"Restriction/Election
-      Requirement"},{"recordDate":"2008-05-01 00:00:00","code":"FWDX","description":"Date
-      Forwarded to Examiner"},{"recordDate":"2008-03-31 00:00:00","code":"A...","description":"Response
-      after Non-Final Action"},{"recordDate":"2008-02-06 00:00:00","code":"DOCK","description":"Case
-      Docketed to Examiner in GAU"},{"recordDate":"2007-12-31 00:00:00","code":"MCTNF","description":"Mail
-      Non-Final Rejection"},{"recordDate":"2007-12-26 00:00:00","code":"CTNF","description":"Non-Final
-      Rejection"},{"recordDate":"2004-11-19 00:00:00","code":"IDSC","description":"Information
-      Disclosure Statement considered"},{"recordDate":"2007-10-17 00:00:00","code":"W525","description":"Withdraw
-      Flagged for 5/25"},{"recordDate":"2007-10-16 00:00:00","code":"F525","description":"Flagged
-      for 5/25"},{"recordDate":"2007-10-02 00:00:00","code":"DOCK","description":"Case
-      Docketed to Examiner in GAU"},{"recordDate":"2006-07-10 00:00:00","code":"C.ADB","description":"Correspondence
-      Address Change"},{"recordDate":"2006-01-27 00:00:00","code":"TSSCOMP","description":"IFW
-      TSS Processing by Tech Center Complete"},{"recordDate":"2004-11-19 00:00:00","code":"RCAP","description":"Reference
-      capture on IDS"},{"recordDate":"2004-11-19 00:00:00","code":"M844","description":"Information
-      Disclosure Statement (IDS) Filed"},{"recordDate":"2004-11-19 00:00:00","code":"WIDS","description":"Information
-      Disclosure Statement (IDS) Filed"},{"recordDate":"2006-01-27 00:00:00","code":"DOCK","description":"Case
-      Docketed to Examiner in GAU"},{"recordDate":"2005-11-29 00:00:00","code":"TI1050","description":"Transfer
-      Inquiry to GAU"},{"recordDate":"2005-02-07 00:00:00","code":"WROIPE","description":"Application
-      Return from OIPE"},{"recordDate":"2005-02-07 00:00:00","code":"COMP","description":"Application
-      Is Now Complete"},{"recordDate":"2005-02-07 00:00:00","code":"ROIPE","description":"Application
-      Return TO OIPE"},{"recordDate":"2005-02-07 00:00:00","code":"WROIPE","description":"Application
-      Return from OIPE"},{"recordDate":"2005-02-07 00:00:00","code":"ROIPE","description":"Application
-      Return TO OIPE"},{"recordDate":"2005-02-07 00:00:00","code":"OIPE","description":"Application
-      Dispatched from OIPE"},{"recordDate":"2005-02-07 00:00:00","code":"COMP","description":"Application
-      Is Now Complete"},{"recordDate":"2005-01-19 00:00:00","code":"L128","description":"Cleared
-      by L&R (LARS)"},{"recordDate":"2004-12-21 00:00:00","code":"L198","description":"Referred
-      to Level 2 (LARS) by OIPE CSR"},{"recordDate":"2004-12-15 00:00:00","code":"SCAN","description":"IFW
-      Scan & PACR Auto Security Review"},{"recordDate":"2004-11-19 00:00:00","code":"IEXX","description":"Initial
+      STATES","applId":"12720264","totalPtoDays":"446","assignments":[{"reelNumber":"24293","frameNumber":"536","addressNameText":"WOLF,
+      GREENFIELD & SACKS, P.C.","addressLineOneText":"600 ATLANTIC AVENUE","addressLineTwoText":"BOSTON,
+      MA 02210","addressLineThreeText":"null","addressLineFourText":"null","mailDate":"04-27-2010","receivedDate":"04-27-2010","recordedDate":"04-27-2010","pagesCount":"2","converyanceName":"ASSIGNMENT
+      OF ASSIGNORS INTEREST (SEE DOCUMENT FOR DETAILS).","sequenceNumber":"1","assignors":[{"assignorName":"PULLIKOTTIL,
+      JACK","execDate":"03-08-2010"},{"assignorName":"MANU, MITICA","execDate":"03-08-2010"}],"assignee":[{"assigneeName":"MICROSOFT
+      CORPORATION","streetLineOneText":"ONE MICROSOFT WAY","streetLineTwoText":"null","cityName":"REDMOND","countryCode":"WASHINGTON","postalCode":"98052"}]},{"reelNumber":"34564","frameNumber":"1","addressNameText":"CPA
+      GLOBAL LIMITED","addressLineOneText":"LIBERATION HOUSE","addressLineTwoText":"CASTLE
+      STREET","addressLineThreeText":"ST HELIER, JE1 1BL JERSEY","addressLineFourText":"null","mailDate":"12-23-2014","receivedDate":"12-09-2014","recordedDate":"12-09-2014","pagesCount":"451","converyanceName":"ASSIGNMENT
+      OF ASSIGNORS INTEREST (SEE DOCUMENT FOR DETAILS).","sequenceNumber":"4549","assignors":[{"assignorName":"MICROSOFT
+      CORPORATION","execDate":"10-14-2014"}],"assignee":[{"assigneeName":"MICROSOFT
+      TECHNOLOGY LICENSING, LLC","streetLineOneText":"ONE MICROSOFT WAY","streetLineTwoText":"null","cityName":"REDMOND","countryCode":"WASHINGTON","postalCode":"98052"}]}],"appFilingDate":"2010-03-09T00:00:00Z","appExamName":"MEHEDI,
+      MORSHED","appExamNameFacet":"MEHEDI, MORSHED","publicInd":"Y","APP_IND":"5","inventorName":"Jack  Pullikottil","inventorNameFacet":"Jack  Pullikottil","appEarlyPubDate":"2011-09-15T00:00:00Z","corrAddrGeoRegionCode":"WA","appLocation":"ELECTRONIC","appEarlyPubNumber":"US20110225644A1","id":"12720264","appGrpArtNumber":"2438","appGrpArtNumberFacet":"2438","applIdStr":"12720264","appl_id_txt":"12720264","appSubCls":"007000","patentNumber":"8424072","LAST_MOD_TS":"2023-10-28T06:41:47Z","transactions":[{"recordDate":"2020-09-30
+      00:00:00","code":"M1552","description":"Payment of Maintenance Fee, 8th Year,
+      Large Entity"},{"recordDate":"2013-04-16 00:00:00","code":"PGM/","description":"Recordation
+      of Patent Grant Mailed"},{"recordDate":"2013-03-28 00:00:00","code":"EML_NTR","description":"Email
+      Notification"},{"recordDate":"2013-03-27 00:00:00","code":"WPIR","description":"Issue
+      Notification Mailed"},{"recordDate":"2013-04-16 00:00:00","code":"PTAC","description":"Patent
+      Issue Date Used in PTA Calculation"},{"recordDate":"2013-03-22 00:00:00","code":"D1935","description":"Dispatch
+      to FDC"},{"recordDate":"2013-02-25 00:00:00","code":"D1935","description":"Dispatch
+      to FDC"},{"recordDate":"2013-02-25 00:00:00","code":"PILS","description":"Application
+      Is Considered Ready for Issue"},{"recordDate":"2013-02-22 00:00:00","code":"N084","description":"Issue
+      Fee Payment Verified"},{"recordDate":"2013-02-22 00:00:00","code":"IFEE","description":"Issue
+      Fee Payment Received"},{"recordDate":"2012-11-29 00:00:00","code":"ELC_RVW","description":"Electronic
+      Review"},{"recordDate":"2012-11-27 00:00:00","code":"EML_NTF","description":"Email
+      Notification"},{"recordDate":"2012-11-27 00:00:00","code":"MN/=.","description":"Mail
+      Notice of Allowance"},{"recordDate":"2012-11-17 00:00:00","code":"N/=.","description":"Notice
+      of Allowance Data Verification Completed"},{"recordDate":"2012-11-17 00:00:00","code":"DOCK","description":"Case
+      Docketed to Examiner in GAU"},{"recordDate":"2012-11-16 00:00:00","code":"EX.R","description":"Reasons
+      for Allowance"},{"recordDate":"2012-11-16 00:00:00","code":"EX.A","description":"Examiner''s
+      Amendment Communication"},{"recordDate":"2012-11-13 00:00:00","code":"EXIE","description":"Interview
+      Summary - Examiner Initiated"},{"recordDate":"2012-09-12 00:00:00","code":"IDSC","description":"Information
+      Disclosure Statement considered"},{"recordDate":"2012-09-20 00:00:00","code":"MEXAT","description":"Mail
+      Interview Summary - Applicant Initiated - Telephonic"},{"recordDate":"2012-09-12
+      00:00:00","code":"EIDS.","description":"Electronic Information Disclosure Statement"},{"recordDate":"2012-09-15
+      00:00:00","code":"FWDX","description":"Date Forwarded to Examiner"},{"recordDate":"2012-09-12
+      00:00:00","code":"A...","description":"Response after Non-Final Action"},{"recordDate":"2012-09-10
+      00:00:00","code":"EXIA","description":"Interview Summary- Applicant Initiated"},{"recordDate":"2012-09-10
+      00:00:00","code":"EXAT","description":"Interview Summary - Applicant Initiated
+      - Telephonic"},{"recordDate":"2012-09-12 00:00:00","code":"WIDS","description":"Information
+      Disclosure Statement (IDS) Filed"},{"recordDate":"2012-06-21 00:00:00","code":"ELC_RVW","description":"Electronic
+      Review"},{"recordDate":"2012-06-20 00:00:00","code":"EML_NTF","description":"Email
+      Notification"},{"recordDate":"2012-06-20 00:00:00","code":"MCTNF","description":"Mail
+      Non-Final Rejection"},{"recordDate":"2012-06-14 00:00:00","code":"CTNF","description":"Non-Final
+      Rejection"},{"recordDate":"2010-03-09 00:00:00","code":"IDSC","description":"Information
+      Disclosure Statement considered"},{"recordDate":"2012-03-12 00:00:00","code":"C.ADB","description":"Correspondence
+      Address Change"},{"recordDate":"2012-01-24 00:00:00","code":"DOCK","description":"Case
+      Docketed to Examiner in GAU"},{"recordDate":"2011-09-16 00:00:00","code":"EML_NTR","description":"Email
+      Notification"},{"recordDate":"2011-09-15 00:00:00","code":"PG-ISSUE","description":"PG-Pub
+      Issue Notification"},{"recordDate":"2011-06-30 00:00:00","code":"DOCK","description":"Case
+      Docketed to Examiner in GAU"},{"recordDate":"2010-03-09 00:00:00","code":"RCAP","description":"Reference
+      capture on IDS"},{"recordDate":"2010-03-09 00:00:00","code":"M844","description":"Information
+      Disclosure Statement (IDS) Filed"},{"recordDate":"2010-04-14 00:00:00","code":"OIPE","description":"Application
+      Dispatched from OIPE"},{"recordDate":"2010-03-23 00:00:00","code":"PGPC","description":"Sent
+      to Classification Contractor"},{"recordDate":"2010-03-24 00:00:00","code":"FLRCPT.O","description":"Filing
+      Receipt"},{"recordDate":"2010-03-11 00:00:00","code":"L128","description":"Cleared
+      by L&R (LARS)"},{"recordDate":"2010-03-09 00:00:00","code":"WIDS","description":"Information
+      Disclosure Statement (IDS) Filed"},{"recordDate":"2010-03-10 00:00:00","code":"L198","description":"Referred
+      to Level 2 (LARS) by OIPE CSR"},{"recordDate":"2010-03-09 00:00:00","code":"SCAN","description":"IFW
+      Scan & PACR Auto Security Review"},{"recordDate":"2010-03-09 00:00:00","code":"IEXX","description":"Initial
       Exam Team nn"}],"LAST_INSERT_TIME":"2023-10-28T11:05:04Z","appCls":"726","appStatus":"Patented
-      Case","appStatusFacet":"Patented Case","appStatus_txt":"Patented Case","corrAddrStreetLineTwo":"Suite
-      575","ptaPteInd":"PTA","ptaPteTranHistory":[{"number":"72.5","ptaOrPteDate":"01-03-2010","contentsDescription":"PTA
-      36 Months","ptoDays":"776","applDays":"","start":"0"},{"number":"72","ptaOrPteDate":"06-22-2010","contentsDescription":"Patent
-      Issue Date Used in PTA Calculation","ptoDays":"","applDays":"","start":"0"},{"number":"69","ptaOrPteDate":"05-17-2010","contentsDescription":"Dispatch
-      to FDC","ptoDays":"","applDays":"","start":"0"},{"number":"68","ptaOrPteDate":"05-10-2010","contentsDescription":"Application
-      Is Considered Ready for Issue","ptoDays":"","applDays":"","start":"0"},{"number":"67","ptaOrPteDate":"05-07-2010","contentsDescription":"Issue
-      Fee Payment Verified","ptoDays":"","applDays":"","start":"0"},{"number":"66","ptaOrPteDate":"05-07-2010","contentsDescription":"Issue
-      Fee Payment Received","ptoDays":"","applDays":"","start":"0"},{"number":"60","ptaOrPteDate":"04-06-2010","contentsDescription":"Mail
-      Notice of Allowance","ptoDays":"","applDays":"","start":"0"},{"number":"57","ptaOrPteDate":"03-29-2010","contentsDescription":"Notice
-      of Allowance Data Verification Completed","ptoDays":"","applDays":"","start":"0"},{"number":"56","ptaOrPteDate":"03-29-2010","contentsDescription":"Case
-      Docketed to Examiner in GAU","ptoDays":"","applDays":"","start":"0"},{"number":"55","ptaOrPteDate":"03-24-2010","contentsDescription":"Interview
-      Summary Record","ptoDays":"","applDays":"","start":"0"},{"number":"54","ptaOrPteDate":"03-29-2010","contentsDescription":"Examiner''s
-      Amendment Communication","ptoDays":"","applDays":"","start":"0"},{"number":"49","ptaOrPteDate":"01-05-2010","contentsDescription":"Date
-      Forwarded to Examiner","ptoDays":"","applDays":"","start":"0"},{"number":"47","ptaOrPteDate":"01-04-2010","contentsDescription":"Request
-      for Continued Examination (RCE)","ptoDays":"","applDays":"34","start":"43"},{"number":"46","ptaOrPteDate":"01-05-2010","contentsDescription":"Disposal
-      for a RCE / CPA / R129","ptoDays":"","applDays":"","start":"0"},{"number":"45","ptaOrPteDate":"01-04-2010","contentsDescription":"Request
-      for Extension of Time - Granted","ptoDays":"","applDays":"","start":"0"},{"number":"44","ptaOrPteDate":"01-04-2010","contentsDescription":"Workflow
-      - Request for RCE - Begin","ptoDays":"","applDays":"","start":"0"},{"number":"43","ptaOrPteDate":"09-01-2009","contentsDescription":"Mail
-      Final Rejection (PTOL - 326)","ptoDays":"0","applDays":"","start":"40"},{"number":"42","ptaOrPteDate":"08-31-2009","contentsDescription":"Final
-      Rejection","ptoDays":"","applDays":"","start":"0"},{"number":"41","ptaOrPteDate":"06-17-2009","contentsDescription":"Date
-      Forwarded to Examiner","ptoDays":"","applDays":"","start":"0"},{"number":"40","ptaOrPteDate":"04-28-2009","contentsDescription":"Response
-      after Non-Final Action","ptoDays":"","applDays":"90","start":"38"},{"number":"39","ptaOrPteDate":"04-28-2009","contentsDescription":"Request
-      for Extension of Time - Granted","ptoDays":"","applDays":"","start":"0"},{"number":"38","ptaOrPteDate":"10-28-2008","contentsDescription":"Mail
-      Non-Final Rejection","ptoDays":"","applDays":"","start":"0"},{"number":"37","ptaOrPteDate":"10-27-2008","contentsDescription":"Non-Final
-      Rejection","ptoDays":"","applDays":"","start":"0"},{"number":"36","ptaOrPteDate":"10-14-2008","contentsDescription":"Case
-      Docketed to Examiner in GAU","ptoDays":"","applDays":"","start":"0"},{"number":"35","ptaOrPteDate":"08-13-2008","contentsDescription":"Date
-      Forwarded to Examiner","ptoDays":"","applDays":"","start":"0"},{"number":"34","ptaOrPteDate":"07-24-2008","contentsDescription":"Response
-      to Election / Restriction Filed","ptoDays":"","applDays":"","start":"0"},{"number":"33","ptaOrPteDate":"07-10-2008","contentsDescription":"Mail
-      Restriction Requirement","ptoDays":"","applDays":"","start":"0"},{"number":"32","ptaOrPteDate":"07-07-2008","contentsDescription":"Restriction/Election
-      Requirement","ptoDays":"","applDays":"","start":"0"},{"number":"30","ptaOrPteDate":"05-01-2008","contentsDescription":"Date
-      Forwarded to Examiner","ptoDays":"","applDays":"","start":"0"},{"number":"29","ptaOrPteDate":"03-31-2008","contentsDescription":"Response
-      after Non-Final Action","ptoDays":"","applDays":"","start":"0"},{"number":"28","ptaOrPteDate":"02-06-2008","contentsDescription":"Case
-      Docketed to Examiner in GAU","ptoDays":"","applDays":"","start":"0"},{"number":"27","ptaOrPteDate":"12-31-2007","contentsDescription":"Mail
-      Non-Final Rejection","ptoDays":"669","applDays":"","start":"-1"},{"number":"26","ptaOrPteDate":"12-26-2007","contentsDescription":"Non-Final
-      Rejection","ptoDays":"","applDays":"","start":"0"},{"number":"22","ptaOrPteDate":"11-19-2004","contentsDescription":"Information
-      Disclosure Statement considered","ptoDays":"","applDays":"","start":"0"},{"number":"21","ptaOrPteDate":"10-17-2007","contentsDescription":"Withdraw
-      Flagged for 5/25","ptoDays":"","applDays":"","start":"0"},{"number":"20","ptaOrPteDate":"10-16-2007","contentsDescription":"Flagged
-      for 5/25","ptoDays":"","applDays":"","start":"0"},{"number":"19","ptaOrPteDate":"10-02-2007","contentsDescription":"Case
-      Docketed to Examiner in GAU","ptoDays":"","applDays":"","start":"0"},{"number":"18","ptaOrPteDate":"07-10-2006","contentsDescription":"Correspondence
-      Address Change","ptoDays":"","applDays":"","start":"0"},{"number":"17","ptaOrPteDate":"01-27-2006","contentsDescription":"IFW
-      TSS Processing by Tech Center Complete","ptoDays":"","applDays":"","start":"0"},{"number":"16","ptaOrPteDate":"11-19-2004","contentsDescription":"Reference
-      capture on IDS","ptoDays":"","applDays":"","start":"0"},{"number":"15.7","ptaOrPteDate":"11-19-2004","contentsDescription":"Information
-      Disclosure Statement (IDS) Filed","ptoDays":"","applDays":"","start":"0"},{"number":"15","ptaOrPteDate":"11-19-2004","contentsDescription":"Information
-      Disclosure Statement (IDS) Filed","ptoDays":"","applDays":"","start":"0"},{"number":"14","ptaOrPteDate":"01-27-2006","contentsDescription":"Case
-      Docketed to Examiner in GAU","ptoDays":"","applDays":"","start":"0"},{"number":"13","ptaOrPteDate":"11-29-2005","contentsDescription":"Transfer
-      Inquiry to GAU","ptoDays":"","applDays":"","start":"0"},{"number":"12","ptaOrPteDate":"02-07-2005","contentsDescription":"Application
-      Return from OIPE","ptoDays":"","applDays":"","start":"0"},{"number":"11","ptaOrPteDate":"02-07-2005","contentsDescription":"Application
-      Is Now Complete","ptoDays":"","applDays":"","start":"0"},{"number":"10","ptaOrPteDate":"02-07-2005","contentsDescription":"Application
-      Return TO OIPE","ptoDays":"","applDays":"","start":"0"},{"number":"9","ptaOrPteDate":"02-07-2005","contentsDescription":"Application
-      Return from OIPE","ptoDays":"","applDays":"","start":"0"},{"number":"8","ptaOrPteDate":"02-07-2005","contentsDescription":"Application
-      Return TO OIPE","ptoDays":"","applDays":"","start":"0"},{"number":"7","ptaOrPteDate":"02-07-2005","contentsDescription":"Application
-      Dispatched from OIPE","ptoDays":"","applDays":"","start":"0"},{"number":"6","ptaOrPteDate":"02-07-2005","contentsDescription":"Application
-      Is Now Complete","ptoDays":"","applDays":"","start":"0"},{"number":"5","ptaOrPteDate":"01-19-2005","contentsDescription":"Cleared
-      by L&R (LARS)","ptoDays":"","applDays":"","start":"0"},{"number":"4","ptaOrPteDate":"12-21-2004","contentsDescription":"Referred
-      to Level 2 (LARS) by OIPE CSR","ptoDays":"","applDays":"","start":"0"},{"number":"2","ptaOrPteDate":"12-15-2004","contentsDescription":"IFW
-      Scan & PACR Auto Security Review","ptoDays":"","applDays":"","start":"0"},{"number":"1","ptaOrPteDate":"11-19-2004","contentsDescription":"Initial
-      Exam Team nn","ptoDays":"","applDays":"","start":"0"}],"corrAddrGeoRegionNA":"CALIFORNIA","patentTitle":"DYNAMIC
-      LEARNING METHOD AND ADAPTIVE NORMAL BEHAVIOR PROFILE (NBP) ARCHITECTURE FOR
-      PROVIDING FAST PROTECTION OF ENTERPRISE APPLICATIONS","applDelay":"124","cDelay":"0","appStatusDate":"2010-06-02T00:00:00Z","appAttrDockNumber":"9034P001","inventors":[{"nameLineOne":"Shulman","nameLineTwo":"Amichai
-      ","suffix":"","streetOne":"","streetTwo":"","city":"Givataim, ","geoCode":"","country":"(IL)","rankNo":"1"},{"nameLineOne":"Boodaei","nameLineTwo":"Michael
-      ","suffix":"","streetOne":"","streetTwo":"","city":"Givatalm, ","geoCode":"","country":"(IL)","rankNo":"2"},{"nameLineOne":"Kremer","nameLineTwo":"Shlomo
-      ","suffix":"","streetOne":"","streetTwo":"","city":"Tel-Aviv, ","geoCode":"","country":"(IL)","rankNo":"3"}],"inventorsFacet":"{Amichai||Shulman||||Givataim||IL|IND|1},{Michael||Boodaei||||Givatalm||IL|IND|2},{Shlomo||Kremer||||Tel-Aviv||IL|IND|3}","ptoAdjustments":"0","corrAddrStreetLineOne":"99
-      Almaden Boulevard","firstInventorFile":"No","childContinuity":[{"claimApplicationNumberText":"12814753","applicationNumberText":"10991467","filingDate":"06-14-2010","aiaIndicator":"N","patentNumberText":"8713682","applicationStatus":"Patented","applicationStatusDescription":"claims
-      the benefit of"},{"claimApplicationNumberText":"14254564","applicationNumberText":"10991467","filingDate":"04-16-2014","aiaIndicator":"N","patentNumberText":"9781133","applicationStatus":"Patented","applicationStatusDescription":"claims
-      the benefit of"},{"claimApplicationNumberText":"15696100","applicationNumberText":"10991467","filingDate":"09-05-2017","aiaIndicator":"N","patentNumberText":"10104095","applicationStatus":"Patented","applicationStatusDescription":"claims
-      the benefit of"}],"overlapDelay":"46","aDelay":"715","appType":"Utility","appTypeFacet":"Utility","corrAddrPostalCode":"95113","appCustNumber":"130093","appClsSubCls":"726/025000","appClsSubClsFacet":"726/025000","patentIssueDate":"2010-06-22T00:00:00Z","bDelay":"776","corrAddrNameLineOne":"Nicholson
-      De Vos Webster & Elliott LLP","attrnyAddr":[{"applicationId":null,"registrationNo":"31772","fullName":"Kidd,
-      William  ","phoneNum":"512-809-7001","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"37813","fullName":"De
-      Vos, Daniel  ","phoneNum":"408--67-5-0441","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"39393","fullName":"Szepesi,
-      Judith  ","phoneNum":"408-675-0441","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"39973","fullName":"Faatz,
-      Cynthia  ","phoneNum":"408-684-6374","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"42781","fullName":"Lane,
-      Thomas  ","phoneNum":"302-651-3186","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"46154","fullName":"Webster,
-      Thomas  ","phoneNum":"--","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"48011","fullName":"Vecchia,
-      Brent  ","phoneNum":"720-496-4277","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"48534","fullName":"Miller,
-      Jonathan  ","phoneNum":"408-675-0441","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"59725","fullName":"Feld,
-      Nathan  ","phoneNum":"408-471-3057","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"60206","fullName":"Simmons,
-      Scott  ","phoneNum":"408-675-0441","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"60156","fullName":"Elliott,
-      Ryan  ","phoneNum":"408-675-0441","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"62889","fullName":"Nicholson,
-      Matthew  ","phoneNum":"408-675-0441","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"62888","fullName":"Nicholson,
-      David  ","phoneNum":"408-675-0441","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"63360","fullName":"Wang,
-      Hui  ","phoneNum":"408-412-3021","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"64901","fullName":"Leege,
-      Brian  ","phoneNum":"408-664-9267","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"65658","fullName":"Rojanakiathavorn,
-      Matthew  ","phoneNum":"510-396-0584","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"68065","fullName":"Sellars,
-      Eric  ","phoneNum":"408-610-4563","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"71309","fullName":"Lee,
-      Daniel  ","phoneNum":"408-675-0441","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"71487","fullName":"Kirimis,
-      Dimitri  ","phoneNum":"949-390-7163","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"72092","fullName":"Shieh,
-      Wei-Jun  ","phoneNum":"408-981-5412","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"73922","fullName":"Debbih,
-      Meriem  ","phoneNum":"408-664-9266","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"70028","fullName":"Zinsli,
-      Cameron  ","phoneNum":"408-275-2557","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"33417","fullName":"Majerus,
-      Laura  ","phoneNum":"650-906-8839","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"53360","fullName":"Murray,
-      Scott  ","phoneNum":"408-675-0441","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"44987","fullName":"Orich,
-      Christine  ","phoneNum":"408-214-9684","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"76932","fullName":"Hawkins,
-      David  ","phoneNum":"404-685-6705","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"60531","fullName":"Stone,
-      Adam  ","phoneNum":"408-414-1231","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"77226","fullName":"Moreton,
-      Michael  ","phoneNum":"609-330-4584","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"80238","fullName":"Hagler,
-      Mark  ","phoneNum":"408-684-6383","regStatus":"ACTIVE"}],"parentContinuity":[{"claimApplicationNumberText":"60526098","applicationNumberText":"10991467","filingDate":"12-02-2003","aiaIndicator":"","patentNumberText":"","applicationStatus":"Expired","applicationStatusDescription":"This
-      application Claims Priority from Provisional Application"}],"corrAddrCustNo":"130093","corrAddrCountryCd":"US","ptoDelay":"1445","corrAddrCity":"San
-      Jose","appEntityStatus":"UNDISCOUNTED","appConfrNumber":"9375","lastUpdatedTimestamp":"2023-10-29T11:38:35.059Z","cmsData":["{10991467|2015-04-07
-      20:00:00|PROSECUTION|Communication - Re:  Power of Attorney (PTOL-308)|N570|1|I87BP69WPXXIFW4},{10991467|2015-04-07
-      20:00:00|PROSECUTION|Communication - Re:  Power of Attorney (PTOL-308)|N570|1|I87BVXX1PXXIFW4},{10991467|2015-03-31
-      20:00:00|PROSECUTION|Assignee showing of ownership per 37 CFR 3.73|R3.73|2|I7ZBG4KFPXXIFW3},{10991467|2015-03-31
-      20:00:00|PROSECUTION|Electronic Filing System(EFS) Acknowledgment Receipt|N417|2|I7ZBG4KMPXXIFW3},{10991467|2015-03-31
-      20:00:00|PROSECUTION|Power of Attorney|PA..|2|I7ZBG4J4PXXIFW3},{10991467|2013-08-19
-      20:00:00|PROSECUTION|Miscellaneous Internal Document|IMIS|2|HLS0AFKVPXXIFW4},{10991467|2010-10-03
-      20:00:00|PROSECUTION|Communication - Re:  Power of Attorney (PTOL-308)|N570|1|GEVBA73ZPPOPPY5},{10991467|2010-10-03
-      20:00:00|PROSECUTION|Communication - Re:  Power of Attorney (PTOL-308)|N570|1|GEVBA6V7PPOPPY5},{10991467|2010-09-21
-      20:00:00|PROSECUTION|Assignee showing of ownership per 37 CFR 3.73|R3.73|2|GEEQGHBIPPOPPY2},{10991467|2010-09-21
-      20:00:00|PROSECUTION|Electronic Filing System(EFS) Acknowledgment Receipt|N417|2|GEEQGHBYPPOPPY2},{10991467|2010-09-21
-      20:00:00|PROSECUTION|Power of Attorney|PA..|2|GEEQGH9WPPOPPY2},{10991467|2010-06-01
-      20:00:00|PROSECUTION|Issue Notification|ISSUE.NTF|1|G9YXYTLYPPOPPY5},{10991467|2010-05-24
-      20:00:00|PROSECUTION|List of References cited by applicant and considered by
-      examiner|1449|1|G9O6X7J9PPOPPY5},{10991467|2010-05-06 20:00:00|PROSECUTION|Issue
-      Fee Payment (PTO-85B)|IFEE|1|G8XKQ53NPPOPPY2},{10991467|2010-05-06 20:00:00|PROSECUTION|Fee
-      Worksheet (SB06)|WFEE|2|G8XKQ54LPPOPPY2},{10991467|2010-05-06 20:00:00|PROSECUTION|Electronic
-      Filing System(EFS) Acknowledgment Receipt|N417|2|G8XKQ57YPPOPPY2},{10991467|2010-04-05
-      20:00:00|PROSECUTION|Issue Information including classification, examiner, name,
-      claim, renumbering, etc.|IIFW|1|G7K3V8BKPPOPPY5},{10991467|2010-04-05 20:00:00|PROSECUTION|Examiner''s
-      search strategy and results|SRNT|2|G7K3V85KPPOPPY5},{10991467|2010-04-05 20:00:00|PROSECUTION|Notice
-      of Allowance and Fees Due (PTOL-85)|NOA|6|G7K3V7THPPOPPY5},{10991467|2010-04-05
-      20:00:00|PROSECUTION|Examiner Interview Summary Record (PTOL - 413)|EXIN|1|G7K3V7T5PPOPPY5},{10991467|2010-04-05
-      20:00:00|PROSECUTION|Index of Claims|FWCLM|2|G7K3V867PPOPPY5},{10991467|2010-04-05
-      20:00:00|PROSECUTION|Notice of Allowance and Fees Due (PTOL-85)|NOA|4|G7K3V7SEPPOPPY5},{10991467|2010-04-05
-      20:00:00|PROSECUTION|Search information including classification, databases
-      and other search related notes|SRFW|1|G7K3V8HEPPOPPY5},{10991467|2010-04-05
-      20:00:00|PROSECUTION|Examiner''s search strategy and results|SRNT|5|G7K3V7U4PPOPPY5},{10991467|2010-04-05
-      20:00:00|PROSECUTION|Bibliographic Data Sheet|BIB|1|G7K3V7TSPPOPPY5},{10991467|2010-01-03
-      19:00:00|PROSECUTION|Request for Continued Examination (RCE)|RCEX|1|G41SE49VPPOPPY2},{10991467|2010-01-03
-      19:00:00|PROSECUTION|Extension of Time|XT/|1|G41SE4S5PPOPPY2},{10991467|2010-01-03
-      19:00:00|PROSECUTION|Electronic Filing System(EFS) Acknowledgment Receipt|N417|2|G41SE4LJPPOPPY2},{10991467|2010-01-03
-      19:00:00|PROSECUTION|Amendment Submitted/Entered with Filing of Continued Prosecution
-      Application (CPA)/Request for Continued Examination(RCE)|AMSB|1|G41SE4RDPPOPPY2},{10991467|2010-01-03
-      19:00:00|PROSECUTION|Applicant Arguments/Remarks Made in an Amendment|REM|4|G41SE4RSPPOPPY2},{10991467|2010-01-03
-      19:00:00|PROSECUTION|Fee Worksheet (SB06)|WFEE|2|G41SE4FQPPOPPY2},{10991467|2010-01-03
-      19:00:00|PROSECUTION|Fee Worksheet (SB06)|WFEE|1|G467UIRXPPOPPY5},{10991467|2009-08-31
-      20:00:00|PROSECUTION|Index of Claims|FWCLM|2|FZ2AHZY3PPOPPY5},{10991467|2009-08-31
-      20:00:00|PROSECUTION|Examiner''s search strategy and results|SRNT|4|FZ2AHZYSPPOPPY5},{10991467|2009-08-31
-      20:00:00|PROSECUTION|List of references cited by examiner|892|1|FZ2AHZXSPPOPPY5},{10991467|2009-08-31
-      20:00:00|PROSECUTION|Final Rejection|CTFR|14|FZ2AHZWIPPOPPY5},{10991467|2009-08-31
-      20:00:00|PROSECUTION|Search information including classification, databases
-      and other search related notes|SRFW|1|FZ2AHZYFPPOPPY5},{10991467|2009-04-27
-      20:00:00|PROSECUTION|Fee Worksheet (SB06)|WFEE|1|FW2IFRR1PPOPPY5},{10991467|2009-04-27
-      20:00:00|PROSECUTION|Electronic Filing System(EFS) Acknowledgment Receipt|N417|2|FU2NB5JCPPOPPY4},{10991467|2009-04-27
-      20:00:00|PROSECUTION|Amendment/Request for Reconsideration-After Non-Final Rejection|A...|1|FU2NB56LPPOPPY4},{10991467|2009-04-27
-      20:00:00|PROSECUTION|Specification|SPEC|1|FU2NB58APPOPPY4},{10991467|2009-04-27
-      20:00:00|PROSECUTION|Applicant Arguments/Remarks Made in an Amendment|REM|4|FU2NB5CGPPOPPY4},{10991467|2009-04-27
-      20:00:00|PROSECUTION|Extension of Time|XT/|1|FU2NB5ICPPOPPY4},{10991467|2009-04-27
-      20:00:00|PROSECUTION|Fee Worksheet (SB06)|WFEE|2|FU2NB5ITPPOPPY4},{10991467|2009-04-27
-      20:00:00|PROSECUTION|Claims|CLM|13|FU2NB59DPPOPPY4},{10991467|2008-10-27 20:00:00|PROSECUTION|Index
-      of Claims|FWCLM|2|FMVORQJCPPOPPY5},{10991467|2008-10-27 20:00:00|PROSECUTION|List
-      of references cited by examiner|892|1|FMVORQG4PPOPPY5},{10991467|2008-10-27
-      20:00:00|PROSECUTION|Search information including classification, databases
-      and other search related notes|SRFW|1|FMVORQJWPPOPPY5},{10991467|2008-10-27
-      20:00:00|PROSECUTION|Examiner''s search strategy and results|SRNT|2|FMVORQIRPPOPPY5},{10991467|2008-10-27
-      20:00:00|PROSECUTION|Non-Final Rejection|CTNF|14|FMVORQE6PPOPPY5},{10991467|2008-07-23
-      20:00:00|PROSECUTION|Response to Election / Restriction Filed|ELC.|2|FJ1IMFRYPPOPPY4},{10991467|2008-07-23
-      20:00:00|PROSECUTION|Electronic Filing System(EFS) Acknowledgment Receipt|N417|2|FJ1IMFTDPPOPPY4},{10991467|2008-07-09
-      20:00:00|PROSECUTION|Requirement for Restriction/Election|CTRS|7|FII8EMBLPPOPPY5},{10991467|2008-03-30
-      20:00:00|PROSECUTION|Fee Worksheet (SB06)|WFEE|1|FFPFCZEYPPOPPY5},{10991467|2008-03-30
-      20:00:00|PROSECUTION|Applicant Arguments/Remarks Made in an Amendment|REM|9|FEHBTQXEPPOPPY4},{10991467|2008-03-30
-      20:00:00|PROSECUTION|Claims|CLM|11|FEHBTQUFPPOPPY4},{10991467|2008-03-30 20:00:00|PROSECUTION|Specification|SPEC|1|FEHBTQTWPPOPPY4},{10991467|2008-03-30
-      20:00:00|PROSECUTION|Electronic Filing System(EFS) Acknowledgment Receipt|N417|2|FEHBTQXWPPOPPY4},{10991467|2008-03-30
-      20:00:00|PROSECUTION|Amendment/Request for Reconsideration-After Non-Final Rejection|A...|1|FEHBTQSIPPOPPY4},{10991467|2007-12-30
-      19:00:00|PROSECUTION|Index of Claims|FWCLM|2|FAVRQVJNPPOPPY5},{10991467|2007-12-30
-      19:00:00|PROSECUTION|Non Patent Literature|NPL|12|FAVRQVIQPPOPPY5},{10991467|2007-12-30
+      Case","appStatusFacet":"Patented Case","appStatus_txt":"Patented Case","ptaPteInd":"PTA","ptaPteTranHistory":[{"number":"58.5","ptaOrPteDate":"04-16-2013","contentsDescription":"PTA
+      36 Months","ptoDays":"38","applDays":"","start":"0.5"},{"number":"58","ptaOrPteDate":"04-16-2013","contentsDescription":"Patent
+      Issue Date Used in PTA Calculation","ptoDays":"","applDays":"","start":"0"},{"number":"57","ptaOrPteDate":"03-22-2013","contentsDescription":"Dispatch
+      to FDC","ptoDays":"","applDays":"","start":"0"},{"number":"56","ptaOrPteDate":"02-25-2013","contentsDescription":"Dispatch
+      to FDC","ptoDays":"","applDays":"","start":"0"},{"number":"55","ptaOrPteDate":"02-25-2013","contentsDescription":"Application
+      Is Considered Ready for Issue","ptoDays":"","applDays":"","start":"0"},{"number":"54","ptaOrPteDate":"02-22-2013","contentsDescription":"Issue
+      Fee Payment Verified","ptoDays":"","applDays":"","start":"0"},{"number":"53","ptaOrPteDate":"02-22-2013","contentsDescription":"Issue
+      Fee Payment Received","ptoDays":"","applDays":"","start":"0"},{"number":"50","ptaOrPteDate":"11-29-2012","contentsDescription":"Electronic
+      Review","ptoDays":"","applDays":"","start":"0"},{"number":"48","ptaOrPteDate":"11-27-2012","contentsDescription":"Mail
+      Notice of Allowance","ptoDays":"","applDays":"","start":"0"},{"number":"41","ptaOrPteDate":"11-17-2012","contentsDescription":"Notice
+      of Allowance Data Verification Completed","ptoDays":"","applDays":"","start":"0"},{"number":"40","ptaOrPteDate":"11-17-2012","contentsDescription":"Case
+      Docketed to Examiner in GAU","ptoDays":"","applDays":"","start":"0"},{"number":"39","ptaOrPteDate":"11-16-2012","contentsDescription":"Reasons
+      for Allowance","ptoDays":"","applDays":"","start":"0"},{"number":"38","ptaOrPteDate":"11-16-2012","contentsDescription":"Examiner''s
+      Amendment Communication","ptoDays":"","applDays":"","start":"0"},{"number":"37","ptaOrPteDate":"11-13-2012","contentsDescription":"Interview
+      Summary - Examiner Initiated","ptoDays":"","applDays":"","start":"0"},{"number":"35","ptaOrPteDate":"09-12-2012","contentsDescription":"Information
+      Disclosure Statement considered","ptoDays":"","applDays":"","start":"0"},{"number":"34","ptaOrPteDate":"09-20-2012","contentsDescription":"Mail
+      Interview Summary - Applicant Initiated - Telephonic","ptoDays":"","applDays":"","start":"0"},{"number":"31","ptaOrPteDate":"09-12-2012","contentsDescription":"Electronic
+      Information Disclosure Statement","ptoDays":"","applDays":"0","start":"29"},{"number":"30","ptaOrPteDate":"09-15-2012","contentsDescription":"Date
+      Forwarded to Examiner","ptoDays":"","applDays":"","start":"0"},{"number":"29","ptaOrPteDate":"09-12-2012","contentsDescription":"Response
+      after Non-Final Action","ptoDays":"","applDays":"","start":"0"},{"number":"28","ptaOrPteDate":"09-10-2012","contentsDescription":"Interview
+      Summary- Applicant Initiated","ptoDays":"","applDays":"","start":"0"},{"number":"27","ptaOrPteDate":"09-10-2012","contentsDescription":"Interview
+      Summary - Applicant Initiated - Telephonic","ptoDays":"","applDays":"","start":"0"},{"number":"26","ptaOrPteDate":"09-12-2012","contentsDescription":"Information
+      Disclosure Statement (IDS) Filed","ptoDays":"","applDays":"","start":"0"},{"number":"25","ptaOrPteDate":"06-21-2012","contentsDescription":"Electronic
+      Review","ptoDays":"","applDays":"","start":"0"},{"number":"24","ptaOrPteDate":"06-20-2012","contentsDescription":"Email
+      Notification","ptoDays":"","applDays":"","start":"0"},{"number":"23","ptaOrPteDate":"06-20-2012","contentsDescription":"Mail
+      Non-Final Rejection","ptoDays":"408","applDays":"","start":"0.5"},{"number":"21","ptaOrPteDate":"06-14-2012","contentsDescription":"Non-Final
+      Rejection","ptoDays":"","applDays":"","start":"0"},{"number":"19","ptaOrPteDate":"03-09-2010","contentsDescription":"Information
+      Disclosure Statement considered","ptoDays":"","applDays":"","start":"0"},{"number":"15","ptaOrPteDate":"03-12-2012","contentsDescription":"Correspondence
+      Address Change","ptoDays":"","applDays":"","start":"0"},{"number":"14","ptaOrPteDate":"01-24-2012","contentsDescription":"Case
+      Docketed to Examiner in GAU","ptoDays":"","applDays":"","start":"0"},{"number":"13","ptaOrPteDate":"09-16-2011","contentsDescription":"Email
+      Notification","ptoDays":"","applDays":"","start":"0"},{"number":"12","ptaOrPteDate":"09-15-2011","contentsDescription":"PG-Pub
+      Issue Notification","ptoDays":"","applDays":"","start":"0"},{"number":"11","ptaOrPteDate":"06-30-2011","contentsDescription":"Case
+      Docketed to Examiner in GAU","ptoDays":"","applDays":"","start":"0"},{"number":"10","ptaOrPteDate":"03-09-2010","contentsDescription":"Reference
+      capture on IDS","ptoDays":"","applDays":"","start":"0"},{"number":"9","ptaOrPteDate":"03-09-2010","contentsDescription":"Information
+      Disclosure Statement (IDS) Filed","ptoDays":"","applDays":"","start":"0"},{"number":"8","ptaOrPteDate":"04-14-2010","contentsDescription":"Application
+      Dispatched from OIPE","ptoDays":"","applDays":"","start":"0"},{"number":"7","ptaOrPteDate":"03-23-2010","contentsDescription":"Sent
+      to Classification Contractor","ptoDays":"","applDays":"","start":"0"},{"number":"6","ptaOrPteDate":"03-24-2010","contentsDescription":"Filing
+      Receipt","ptoDays":"","applDays":"","start":"0"},{"number":"5","ptaOrPteDate":"03-11-2010","contentsDescription":"Cleared
+      by L&R (LARS)","ptoDays":"","applDays":"","start":"0"},{"number":"4","ptaOrPteDate":"03-09-2010","contentsDescription":"Information
+      Disclosure Statement (IDS) Filed","ptoDays":"","applDays":"","start":"0"},{"number":"3","ptaOrPteDate":"03-10-2010","contentsDescription":"Referred
+      to Level 2 (LARS) by OIPE CSR","ptoDays":"","applDays":"","start":"0"},{"number":"2","ptaOrPteDate":"03-09-2010","contentsDescription":"IFW
+      Scan & PACR Auto Security Review","ptoDays":"","applDays":"","start":"0"},{"number":"1","ptaOrPteDate":"03-09-2010","contentsDescription":"Initial
+      Exam Team nn","ptoDays":"","applDays":"","start":"0"},{"number":"0.5","ptaOrPteDate":"03-09-2010","contentsDescription":"Filing
+      date","ptoDays":"","applDays":"","start":"0"}],"corrAddrGeoRegionNA":"WASHINGTON","patentTitle":"BEHAVIOR-BASED
+      SECURITY SYSTEM","applDelay":"0","cDelay":"0","appStatusDate":"2013-03-27T00:00:00Z","appAttrDockNumber":"328841.01","inventors":[{"nameLineOne":"Pullikottil","nameLineTwo":"Jack
+      ","suffix":"","streetOne":"","streetTwo":"","city":"Bothell, ","geoCode":"WA","country":"(US)","rankNo":"1"},{"nameLineOne":"Manu","nameLineTwo":"Mitica
+      ","suffix":"","streetOne":"","streetTwo":"","city":"Sammamish, ","geoCode":"WA","country":"(US)","rankNo":"2"}],"inventorsFacet":"{Jack||Pullikottil||||Bothell|WA|US|IND|1},{Mitica||Manu||||Sammamish|WA|US|IND|2}","ptoAdjustments":"0","corrAddrStreetLineOne":"ONE
+      MICROSOFT WAY","firstInventorFile":"No","childContinuity":[{"claimApplicationNumberText":"PCT/US11/27302","applicationNumberText":"12720264","filingDate":"03-04-2011","aiaIndicator":"N","patentNumberText":"","applicationStatus":"Published","applicationStatusDescription":"claims
+      the benefit of"}],"overlapDelay":"0","aDelay":"408","appType":"Utility","appTypeFacet":"Utility","corrAddrPostalCode":"98052","appCustNumber":"69316","appClsSubCls":"726/007000","appClsSubClsFacet":"726/007000","patentIssueDate":"2013-04-16T00:00:00Z","bDelay":"38","corrAddrNameLineOne":"MICROSOFT
+      CORPORATION","attrnyAddr":[{"applicationId":null,"registrationNo":"32332","fullName":"Weresh,
+      John  ","phoneNum":"206-435-9722","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"35499","fullName":"Eppenauer,
+      D  ","phoneNum":"206-334-7600","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"35333","fullName":"Ream,
+      Michael  ","phoneNum":"425-999-5289","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"37004","fullName":"Luo,
+      Kevin  ","phoneNum":"425-882-8080","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"37090","fullName":"Belush,
+      Thomas  ","phoneNum":"503-913-7671","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"39104","fullName":"Bawel,
+      Paul  ","phoneNum":"949-480-8335","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"39525","fullName":"Johnson,
+      William  ","phoneNum":"206-201-2112","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"41762","fullName":"Francissen,
+      Vernon  ","phoneNum":"312-493-2064","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"42588","fullName":"Gnuschke,
+      Jerald  ","phoneNum":"425-208-0428","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"45398","fullName":"Kim,
+      Sung  ","phoneNum":"240-228-5632","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"43875","fullName":"Rao,
+      Pradhan  ","phoneNum":"408-536-3298","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"45278","fullName":"Dyor,
+      Matthew  ","phoneNum":"425-503-3871","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"47809","fullName":"Mulgrew,
+      John  ","phoneNum":"425-707-8077","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"48958","fullName":"Boelitz,
+      Carole  ","phoneNum":"425-722-6035","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"48250","fullName":"Key,
+      Maclane  ","phoneNum":"310-871-8503","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"52291","fullName":"Tom,
+      Lisa  ","phoneNum":"425-533-0298","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"53479","fullName":"Powell,
+      Tracy  ","phoneNum":"206-250-0944","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"55747","fullName":"Xiang,
+      Joy  ","phoneNum":"505-847-6808","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"57329","fullName":"Fashokun,
+      Folashade  ","phoneNum":"512-920-2570","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"57921","fullName":"Jones,
+      Lucinda  ","phoneNum":"206-344-7600","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"57646","fullName":"Collins,
+      L.  ","phoneNum":"425-894-8721","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"58641","fullName":"Andrews,
+      David  ","phoneNum":"425-703-5019","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"60395","fullName":"Harris,
+      Derek  ","phoneNum":"425-704-7399","regStatus":"ACTIVE"}],"corrAddrCustNo":"69316","corrAddrCountryCd":"US","ptoDelay":"446","corrAddrCity":"REDMOND","appEntityStatus":"UNDISCOUNTED","appConfrNumber":"8684","lastUpdatedTimestamp":"2023-10-29T08:56:06.849Z","cmsData":["{12720264|2013-03-26
+      20:00:00|PROSECUTION|Issue Notification|ISSUE.NTF|1|HET6TR83PXXIFW4},{12720264|2013-02-21
+      19:00:00|PROSECUTION|Issue Fee Payment (PTO-85B)|IFEE|1|HDHGYCIHPXXIFW3},{12720264|2013-02-21
+      19:00:00|PROSECUTION|Transmittal Letter|TRAN.LET|1|HDHGYCKRPXXIFW3},{12720264|2013-02-21
+      19:00:00|PROSECUTION|Fee Worksheet (SB06)|WFEE|2|HDHGYCK7PXXIFW3},{12720264|2013-02-21
+      19:00:00|PROSECUTION|Electronic Filing System(EFS) Acknowledgment Receipt|N417|2|HDHGYCKGPXXIFW3},{12720264|2012-11-26
       19:00:00|PROSECUTION|Search information including classification, databases
-      and other search related notes|SRFW|1|FAVRQVK9PPOPPY5},{10991467|2007-12-30
-      19:00:00|PROSECUTION|List of references cited by examiner|892|1|FAVRQVI4PPOPPY5},{10991467|2007-12-30
-      19:00:00|PROSECUTION|Non-Final Rejection|CTNF|18|FAVRQVF4PPOPPY5},{10991467|2007-12-30
-      19:00:00|PROSECUTION|Non Patent Literature|NPL|8|FAVRQVJBPPOPPY5},{10991467|2007-12-30
-      19:00:00|PROSECUTION|Non Patent Literature|NPL|12|FAVRQVIFPPOPPY5},{10991467|2007-12-30
+      and other search related notes|SRFW|2|H9VB15U2PXXIFW4},{12720264|2012-11-26
+      19:00:00|PROSECUTION|Examiner''s search strategy and results|SRNT|5|H9VB15TUPXXIFW4},{12720264|2012-11-26
+      19:00:00|PROSECUTION|Non Patent Literature|NPL|10|H9VB15T1PXXIFW4},{12720264|2012-11-26
+      19:00:00|PROSECUTION|Examiner initiated interview summary (PTOL-413B)|INTV.SUM.EX|2|H9VB15RAPXXIFW4},{12720264|2012-11-26
+      19:00:00|PROSECUTION|List of references cited by examiner|892|1|H9VB15STPXXIFW4},{12720264|2012-11-26
+      19:00:00|PROSECUTION|Index of Claims|FWCLM|1|H9VB15TMPXXIFW4},{12720264|2012-11-26
       19:00:00|PROSECUTION|List of References cited by applicant and considered by
-      examiner|1449|1|FAVRQVGSPPOPPY5},{10991467|2007-12-30 19:00:00|PROSECUTION|Bibliographic
-      Data Sheet|BIB|2|FAVRQVKUPPOPPY5},{10991467|2006-07-10 20:00:00|PROSECUTION|Notice
-      of Change of Address Place in File Wrapper Due to Electronic Business Center(EBC)
-      Customer Number Update|EBCC.AD|1|EPHT6RUFPPOPPY5},{10991467|2004-11-18 19:00:00|PROSECUTION|Fee
-      Worksheet (SB06)|WFEE|1|E2HLUNXPPP1GUI1},{10991467|2004-11-18 19:00:00|PROSECUTION|Authorization
-      for Extension of Time all replies|136A|1|EIYR84SOPP2GUI1},{10991467|2004-11-18
-      19:00:00|PROSECUTION|Fee Worksheet (SB06)|WFEE|1|E2HLUNYLPP1GUI1},{10991467|2004-11-18
-      19:00:00|PROSECUTION|Claims|CLM|16|E2HLUNUOPP1GUI1},{10991467|2004-11-18 19:00:00|PROSECUTION|Transmittal
-      of New Application|TRNA|1|E2HLUNTAPP1GUI1},{10991467|2004-11-18 19:00:00|PROSECUTION|Specification|SPEC|30|E2HLUNU1PP1GUI1},{10991467|2004-11-18
-      19:00:00|PROSECUTION|Drawings-only black and white line drawings|DRW|6|E2HLUNW6PP1GUI1},{10991467|2004-11-18
-      19:00:00|PROSECUTION|Information Disclosure Statement (IDS) Form (SB08)|IDS|3|E2HLUNZ7PP1GUI1},{10991467|2004-11-18
-      19:00:00|PROSECUTION|Oath or Declaration filed|OATH|2|E2HLUNWUPP1GUI1},{10991467|2004-11-18
-      19:00:00|PROSECUTION|Abstract|ABST|1|E2HLUNVIPP1GUI1}"],"appAttrDockNumberFacet":"9034P001","appEntityStatusFacet":"UNDISCOUNTED","appCustNumberFacet":"130093","_version_":1781089776435200000,"firstInventorFileFacet":"No","appLocationFacet":"ELECTRONIC","appEarlyPubNumberFacet":"US20050120054A1","patentNumberFacet":"7743420"},{"corrAddrCountryName":"UNITED
-      STATES","applId":"10785132","totalPtoDays":"629","assignments":[{"reelNumber":"14924","frameNumber":"477","addressNameText":"JENKINS,
-      WILSON & TAYLOR, P.A.","addressLineOneText":"JEFFREY L. WILSON","addressLineTwoText":"UNIVERSITY
-      TOWER, SUITE 1400","addressLineThreeText":"3100 TOWER BOULEVARD","addressLineFourText":"DURHAM,
-      NC  27707","mailDate":"07-31-2004","receivedDate":"07-29-2004","recordedDate":"07-29-2004","pagesCount":"8","converyanceName":"ASSIGNMENT
-      OF ASSIGNORS INTEREST (SEE DOCUMENT FOR DETAILS).","sequenceNumber":"1","assignors":[{"assignorName":"MOTSINGER,
-      DAVID LEE","execDate":"07-09-2004"},{"assignorName":"LOGAN, DAVID BYRON","execDate":"07-09-2004"},{"assignorName":"GRAMLEY,
-      KENNETH ROBERT","execDate":"07-09-2004"},{"assignorName":"SOMERVILLE, GARTH
-      DOUGLAS","execDate":"07-09-2004"},{"assignorName":"HESTER, DOUGLAS WAYNE","execDate":"07-09-2004"},{"assignorName":"HARGETT,
-      BYRON LEE","execDate":"07-09-2004"},{"assignorName":"CHOY, ALBERT MING","execDate":"07-09-2004"},{"assignorName":"WALL,
-      VIRGIL MONTGOMERY WALL JR.","execDate":"07-09-2004"}],"assignee":[{"assigneeName":"COVELIGHT
-      SYSTEMS, INC.","streetLineOneText":"6501 WESTON PARKWAY, SUITE 355","streetLineTwoText":"null","cityName":"CARY","countryCode":"NORTH
-      CAROLINA","postalCode":"27516"}]},{"reelNumber":"61214","frameNumber":"590","addressNameText":"LATHAM
-      & WATKINS LLP C/O ANGELA M. AMARU","addressLineOneText":"1271 AVENUE OF THE
-      AMERICAS","addressLineTwoText":"NEW YORK, NY 10020","addressLineThreeText":"null","addressLineFourText":"null","mailDate":"09-27-2022","receivedDate":"09-26-2022","recordedDate":"08-09-2022","pagesCount":"6","converyanceName":"AFFIDAVIT
-      TO AFFIRM THE RELEASE OF SECURITY INTEREST RECORDED AT R/F 015699/0355","sequenceNumber":"1","assignors":[{"assignorName":"AURORA
-      VENTURES IV, L.L.C.","execDate":"07-25-2022"},{"assignorName":"INTERSOUTH PARTNERS
-      VI, L.P.","execDate":"07-25-2022"},{"assignorName":"NEXTPOINT PARTNERS, L.P.","execDate":"07-25-2022"}],"assignee":[{"assigneeName":"RADWARE,
-      INC. (SUCCESSOR BY MERGER TO COVELIGHT SYSTEMS, INC.)","streetLineOneText":"575
-      CORPORATE DRIVE","streetLineTwoText":"null","cityName":"MAHWAH","countryCode":"NEW
-      JERSEY","postalCode":"07430"}]},{"reelNumber":"15699","frameNumber":"355","addressNameText":"ROBERT
-      T. JONES, JR.","addressLineOneText":"4101 LAKE BOONE TRAIL, SUITE 300","addressLineTwoText":"RALEIGH,
-      NC 27607","addressLineThreeText":"null","addressLineFourText":"null","mailDate":"02-24-2005","receivedDate":"02-22-2005","recordedDate":"02-22-2005","pagesCount":"16","converyanceName":"SECURITY
-      AGREEMENT","sequenceNumber":"2","assignors":[{"assignorName":"COVELIGHT SYSTEMS,
-      INC.","execDate":"02-17-2005"}],"assignee":[{"assigneeName":"AURORA VENTURES
-      IV, LLC","streetLineOneText":"2525 MERIDIAN PARKWAY, SUITE 220","streetLineTwoText":"null","cityName":"DURHAM","countryCode":"NORTH
-      CAROLINA","postalCode":"27713"},{"assigneeName":"INTERSOUTH PARTNERS VI, L.P.","streetLineOneText":"406
-      BLACKWELL STREET, SUITE 200","streetLineTwoText":"null","cityName":"DURHAM","countryCode":"NORTH
-      CAROLINA","postalCode":"27701"},{"assigneeName":"NEXTPOINT PARTNERS, L.P.","streetLineOneText":"701
-      PENNSYLVANIA AVENUE, SUITE 900","streetLineTwoText":"null","cityName":"WASHINGTON","countryCode":"DISTRICT
-      OF COLUMBIA","postalCode":"20004"}]}],"appFilingDate":"2004-02-24T00:00:00Z","appExamName":"PEESO,
-      THOMAS R","appExamNameFacet":"PEESO, THOMAS R","publicInd":"Y","APP_IND":"5","inventorName":"David
-      Lee Motsinger","inventorNameFacet":"David Lee Motsinger","appEarlyPubDate":"2005-08-25T00:00:00Z","corrAddrGeoRegionCode":"NJ","appLocation":"ELECTRONIC","appEarlyPubNumber":"US20050188423A1","id":"10785132","appGrpArtNumber":"2132","appGrpArtNumberFacet":"2132","applIdStr":"10785132","appl_id_txt":"10785132","appSubCls":"023000","patentNumber":"7373524","LAST_MOD_TS":"2023-10-28T06:41:47Z","transactions":[{"recordDate":"2019-11-13
-      00:00:00","code":"M1553","description":"Payment of Maintenance Fee, 12th Year,
-      Large Entity"},{"recordDate":"2015-02-06 00:00:00","code":"EML_NTR","description":"Email
-      Notification"},{"recordDate":"2015-02-06 00:00:00","code":"PA..","description":"Change
-      in Power of Attorney (May Include Associate POA)"},{"recordDate":"2015-02-03
-      00:00:00","code":"C.AD","description":"Correspondence Address Change"},{"recordDate":"2008-05-13
-      00:00:00","code":"PGM/","description":"Recordation of Patent Grant Mailed"},{"recordDate":"2008-04-23
-      00:00:00","code":"WPIR","description":"Issue Notification Mailed"},{"recordDate":"2008-05-13
-      00:00:00","code":"PTAC","description":"Patent Issue Date Used in PTA Calculation"},{"recordDate":"2008-04-14
-      00:00:00","code":"D1935","description":"Dispatch to FDC"},{"recordDate":"2008-04-11
-      00:00:00","code":"PILS","description":"Application Is Considered Ready for Issue"},{"recordDate":"2008-04-08
-      00:00:00","code":"N084","description":"Issue Fee Payment Verified"},{"recordDate":"2008-04-08
-      00:00:00","code":"IFEE","description":"Issue Fee Payment Received"},{"recordDate":"2008-01-11
-      00:00:00","code":"MN/=.","description":"Mail Notice of Allowance"},{"recordDate":"2008-01-09
-      00:00:00","code":"N/=.","description":"Notice of Allowance Data Verification
-      Completed"},{"recordDate":"2007-10-24 00:00:00","code":"BIG.","description":"Entity
-      Status Set To Undiscounted (Initial Default Setting or Status Change)"},{"recordDate":"2007-11-05
-      00:00:00","code":"FWDX","description":"Date Forwarded to Examiner"},{"recordDate":"2007-10-24
-      00:00:00","code":"A...","description":"Response after Non-Final Action"},{"recordDate":"2007-10-24
-      00:00:00","code":"XT/G","description":"Request for Extension of Time - Granted"},{"recordDate":"2007-05-09
-      00:00:00","code":"MCTNF","description":"Mail Non-Final Rejection"},{"recordDate":"2007-05-07
-      00:00:00","code":"CTNF","description":"Non-Final Rejection"},{"recordDate":"2004-08-12
-      00:00:00","code":"IDSC","description":"Information Disclosure Statement considered"},{"recordDate":"2007-04-19
-      00:00:00","code":"DOCK","description":"Case Docketed to Examiner in GAU"},{"recordDate":"2006-02-17
-      00:00:00","code":"DOCK","description":"Case Docketed to Examiner in GAU"},{"recordDate":"2005-06-01
-      00:00:00","code":"TSSCOMP","description":"IFW TSS Processing by Tech Center
-      Complete"},{"recordDate":"2005-06-01 00:00:00","code":"DOCK","description":"Case
-      Docketed to Examiner in GAU"},{"recordDate":"2004-08-12 00:00:00","code":"RCAP","description":"Reference
-      capture on IDS"},{"recordDate":"2004-08-12 00:00:00","code":"M844","description":"Information
-      Disclosure Statement (IDS) Filed"},{"recordDate":"2004-08-12 00:00:00","code":"WIDS","description":"Information
-      Disclosure Statement (IDS) Filed"},{"recordDate":"2004-10-18 00:00:00","code":"WROIPE","description":"Application
-      Return from OIPE"},{"recordDate":"2004-10-18 00:00:00","code":"ROIPE","description":"Application
-      Return TO OIPE"},{"recordDate":"2004-10-18 00:00:00","code":"OIPE","description":"Application
-      Dispatched from OIPE"},{"recordDate":"2004-10-18 00:00:00","code":"COMP","description":"Application
-      Is Now Complete"},{"recordDate":"2004-09-27 00:00:00","code":"ADDFLFEE","description":"Additional
-      Application Filing Fees"},{"recordDate":"2004-09-27 00:00:00","code":"CORRDRW","description":"Applicant
-      has submitted new drawings to correct Corrected Papers problems"},{"recordDate":"2004-09-03
-      00:00:00","code":"CPAP","description":"Corrected Paper"},{"recordDate":"2004-08-11
-      00:00:00","code":"ADDFLFEE","description":"Additional Application Filing Fees"},{"recordDate":"2004-02-24
-      00:00:00","code":"DRAWING","description":"Drawing Preliminary Amendment"},{"recordDate":"2004-08-11
-      00:00:00","code":"OATHDECL","description":"A statement by one or more inventors
-      satisfying the requirement under 35 USC 115, Oath of the Applic"},{"recordDate":"2004-05-18
-      00:00:00","code":"W/OA","description":"Pre-Exam Office Action Withdrawn"},{"recordDate":"2004-05-18
-      00:00:00","code":"INCD","description":"Notice Mailed--Application Incomplete--Filing
-      Date Assigned "},{"recordDate":"2004-03-26 00:00:00","code":"L194","description":"Cleared
-      by OIPE CSR"},{"recordDate":"2004-03-08 00:00:00","code":"SCAN","description":"IFW
-      Scan & PACR Auto Security Review"},{"recordDate":"2004-02-24 00:00:00","code":"IEXX","description":"Initial
-      Exam Team nn"}],"LAST_INSERT_TIME":"2023-10-28T11:05:04Z","appCls":"726","appStatus":"Patented
-      Case","appStatusFacet":"Patented Case","appStatus_txt":"Patented Case","corrAddrStreetLineTwo":"Suite
-      205","ptaPteInd":"PTA","ptaPteTranHistory":[{"number":"44.5","ptaOrPteDate":"04-23-2008","contentsDescription":"PTA
-      36 Months","ptoDays":"0","applDays":"","start":"0"},{"number":"44","ptaOrPteDate":"05-13-2008","contentsDescription":"Patent
-      Issue Date Used in PTA Calculation","ptoDays":"","applDays":"","start":"0"},{"number":"42","ptaOrPteDate":"04-14-2008","contentsDescription":"Dispatch
-      to FDC","ptoDays":"","applDays":"","start":"0"},{"number":"41","ptaOrPteDate":"04-11-2008","contentsDescription":"Application
-      Is Considered Ready for Issue","ptoDays":"","applDays":"","start":"0"},{"number":"40","ptaOrPteDate":"04-08-2008","contentsDescription":"Issue
-      Fee Payment Verified","ptoDays":"","applDays":"","start":"0"},{"number":"39","ptaOrPteDate":"04-08-2008","contentsDescription":"Issue
-      Fee Payment Received","ptoDays":"","applDays":"","start":"0"},{"number":"36","ptaOrPteDate":"01-11-2008","contentsDescription":"Mail
-      Notice of Allowance","ptoDays":"","applDays":"","start":"0"},{"number":"35","ptaOrPteDate":"01-09-2008","contentsDescription":"Notice
-      of Allowance Data Verification Completed","ptoDays":"","applDays":"","start":"0"},{"number":"31","ptaOrPteDate":"10-24-2007","contentsDescription":"Entity
-      Status Set To Undiscounted (Initial Default Setting or Status Change)","ptoDays":"","applDays":"","start":"0"},{"number":"30","ptaOrPteDate":"11-05-2007","contentsDescription":"Date
-      Forwarded to Examiner","ptoDays":"","applDays":"","start":"0"},{"number":"29","ptaOrPteDate":"10-24-2007","contentsDescription":"Response
-      after Non-Final Action","ptoDays":"","applDays":"76","start":"27"},{"number":"28","ptaOrPteDate":"10-24-2007","contentsDescription":"Request
-      for Extension of Time - Granted","ptoDays":"","applDays":"","start":"0"},{"number":"27","ptaOrPteDate":"05-09-2007","contentsDescription":"Mail
-      Non-Final Rejection","ptoDays":"745","applDays":"","start":"-1"},{"number":"26","ptaOrPteDate":"05-07-2007","contentsDescription":"Non-Final
-      Rejection","ptoDays":"","applDays":"","start":"0"},{"number":"25","ptaOrPteDate":"08-12-2004","contentsDescription":"Information
-      Disclosure Statement considered","ptoDays":"","applDays":"","start":"0"},{"number":"24","ptaOrPteDate":"04-19-2007","contentsDescription":"Case
-      Docketed to Examiner in GAU","ptoDays":"","applDays":"","start":"0"},{"number":"23","ptaOrPteDate":"02-17-2006","contentsDescription":"Case
-      Docketed to Examiner in GAU","ptoDays":"","applDays":"","start":"0"},{"number":"22","ptaOrPteDate":"06-01-2005","contentsDescription":"IFW
-      TSS Processing by Tech Center Complete","ptoDays":"","applDays":"","start":"0"},{"number":"21","ptaOrPteDate":"06-01-2005","contentsDescription":"Case
-      Docketed to Examiner in GAU","ptoDays":"","applDays":"","start":"0"},{"number":"20","ptaOrPteDate":"08-12-2004","contentsDescription":"Reference
-      capture on IDS","ptoDays":"","applDays":"","start":"0"},{"number":"19.7","ptaOrPteDate":"08-12-2004","contentsDescription":"Information
-      Disclosure Statement (IDS) Filed","ptoDays":"","applDays":"","start":"0"},{"number":"19","ptaOrPteDate":"08-12-2004","contentsDescription":"Information
-      Disclosure Statement (IDS) Filed","ptoDays":"","applDays":"","start":"0"},{"number":"18","ptaOrPteDate":"10-18-2004","contentsDescription":"Application
-      Return from OIPE","ptoDays":"","applDays":"","start":"0"},{"number":"17","ptaOrPteDate":"10-18-2004","contentsDescription":"Application
-      Return TO OIPE","ptoDays":"","applDays":"","start":"0"},{"number":"16","ptaOrPteDate":"10-18-2004","contentsDescription":"Application
-      Dispatched from OIPE","ptoDays":"","applDays":"","start":"0"},{"number":"15","ptaOrPteDate":"10-18-2004","contentsDescription":"Application
-      Is Now Complete","ptoDays":"","applDays":"","start":"0"},{"number":"14","ptaOrPteDate":"09-27-2004","contentsDescription":"Additional
-      Application Filing Fees","ptoDays":"","applDays":"40","start":"6"},{"number":"13","ptaOrPteDate":"09-27-2004","contentsDescription":"Applicant
-      has submitted new drawings to correct Corrected Papers problems","ptoDays":"","applDays":"","start":"0"},{"number":"12","ptaOrPteDate":"09-03-2004","contentsDescription":"Corrected
-      Paper","ptoDays":"","applDays":"","start":"0"},{"number":"10","ptaOrPteDate":"08-11-2004","contentsDescription":"Additional
-      Application Filing Fees","ptoDays":"","applDays":"","start":"0"},{"number":"9","ptaOrPteDate":"02-24-2004","contentsDescription":"Drawing
-      Preliminary Amendment","ptoDays":"","applDays":"","start":"0"},{"number":"8","ptaOrPteDate":"08-11-2004","contentsDescription":"A
-      statement by one or more inventors satisfying the requirement under 35 USC 115,
-      Oath of the Applic","ptoDays":"","applDays":"","start":"0"},{"number":"7","ptaOrPteDate":"05-18-2004","contentsDescription":"Pre-Exam
-      Office Action Withdrawn","ptoDays":"","applDays":"","start":"0"},{"number":"6","ptaOrPteDate":"05-18-2004","contentsDescription":"Notice
-      Mailed--Application Incomplete--Filing Date Assigned ","ptoDays":"","applDays":"","start":"0"},{"number":"4","ptaOrPteDate":"03-26-2004","contentsDescription":"Cleared
-      by OIPE CSR","ptoDays":"","applDays":"","start":"0"},{"number":"2","ptaOrPteDate":"03-08-2004","contentsDescription":"IFW
-      Scan & PACR Auto Security Review","ptoDays":"","applDays":"","start":"0"},{"number":"1","ptaOrPteDate":"02-24-2004","contentsDescription":"Initial
-      Exam Team nn","ptoDays":"","applDays":"","start":"0"}],"corrAddrGeoRegionNA":"NEW
-      JERSEY","patentTitle":"METHODS, SYSTEMS AND COMPUTER PROGRAM PRODUCTS FOR MONITORING
-      USER BEHAVIOR FOR A SERVER APPLICATION","applDelay":"116","cDelay":"0","appStatusDate":"2008-04-23T00:00:00Z","appAttrDockNumber":"RADW  P0373","inventors":[{"nameLineOne":"Motsinger","nameLineTwo":"David
-      Lee","suffix":"","streetOne":"","streetTwo":"","city":"Raleigh, ","geoCode":"NC","country":"()","rankNo":"1"},{"nameLineOne":"Logan","nameLineTwo":"David
-      Byron","suffix":"","streetOne":"","streetTwo":"","city":"Chapel Hill, ","geoCode":"NC","country":"()","rankNo":"2"},{"nameLineOne":"Gramley","nameLineTwo":"Kenneth
-      Robert","suffix":"","streetOne":"","streetTwo":"","city":"Cary, ","geoCode":"NC","country":"()","rankNo":"3"},{"nameLineOne":"Somerville","nameLineTwo":"Garth
-      Douglas","suffix":"","streetOne":"","streetTwo":"","city":"Cary, ","geoCode":"NC","country":"()","rankNo":"4"},{"nameLineOne":"Choy","nameLineTwo":"Albert
-      Ming","suffix":"","streetOne":"","streetTwo":"","city":"Raleigh, ","geoCode":"NC","country":"()","rankNo":"5"},{"nameLineOne":"Hester","nameLineTwo":"Douglas
-      Wayne","suffix":"","streetOne":"","streetTwo":"","city":"Cary, ","geoCode":"NC","country":"()","rankNo":"6"},{"nameLineOne":"Wall","nameLineTwo":"Virgil
-      Montgomery","suffix":"JR.","streetOne":"","streetTwo":"","city":"Apex, ","geoCode":"NC","country":"()","rankNo":"7"},{"nameLineOne":"Hargett","nameLineTwo":"Byron
-      Lee","suffix":"","streetOne":"","streetTwo":"","city":"Apex, ","geoCode":"NC","country":"()","rankNo":"8"}],"inventorsFacet":"{David|Lee|Motsinger||||Raleigh|NC||IND|1},{David|Byron|Logan||||Chapel
-      Hill|NC||IND|2},{Kenneth|Robert|Gramley||||Cary|NC||IND|3},{Garth|Douglas|Somerville||||Cary|NC||IND|4},{Albert|Ming|Choy||||Raleigh|NC||IND|5},{Douglas|Wayne|Hester||||Cary|NC||IND|6},{Virgil|Montgomery|Wall|JR.|||Apex|NC||IND|7},{Byron|Lee|Hargett||||Apex|NC||IND|8}","ptoAdjustments":"0","corrAddrStreetLineOne":"150
-      Morristown Road","firstInventorFile":"No","overlapDelay":"0","aDelay":"745","appType":"Utility","appTypeFacet":"Utility","corrAddrPostalCode":"07924-2626","appCustNumber":"122066","appClsSubCls":"726/023000","appClsSubClsFacet":"726/023000","patentIssueDate":"2008-05-13T00:00:00Z","bDelay":"0","corrAddrNameLineOne":"M&B
-      IP Analysts, LLC","attrnyAddr":[{"applicationId":null,"registrationNo":"36658","fullName":"Rosenthal,
-      Eugene  ","phoneNum":"732-996-7171","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"56032","fullName":"Lin,
-      Jeoyuh  ","phoneNum":"202-588-5614","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"69610","fullName":"Ben
-      Shimon, Michael  ","phoneNum":"908-274-3123","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"73188","fullName":"McCormick,
-      Ryan  ","phoneNum":"908-274-3111","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"79330","fullName":"Moon,
-      Chung Hee  ","phoneNum":"908-274-3111","regStatus":"ACTIVE"}],"corrAddrCustNo":"122066","corrAddrCountryCd":"US","ptoDelay":"745","corrAddrCity":"Bernardsville","appEntityStatus":"UNDISCOUNTED","appConfrNumber":"1643","lastUpdatedTimestamp":"2023-10-29T10:53:41.020Z","cmsData":["{10785132|2015-02-05
-      19:00:00|PROSECUTION|Communication - Re:  Power of Attorney (PTOL-308)|N570|1|I5SIVCPGPXXIFW4},{10785132|2015-01-27
-      19:00:00|PROSECUTION|Power of Attorney|PA..|2|I5H661MUPXXIFW3},{10785132|2015-01-27
-      19:00:00|PROSECUTION|Electronic Filing System(EFS) Acknowledgment Receipt|N417|2|I5H661P8PXXIFW3},{10785132|2008-04-22
-      20:00:00|PROSECUTION|Issue Notification|ISSUE.NTF|1|FFG3KNUTPPOPPY5},{10785132|2008-04-07
-      20:00:00|PROSECUTION|Issue Fee Payment (PTO-85B)|IFEE|2|FEVPEMWZPPOPPY5},{10785132|2008-01-10
-      19:00:00|PROSECUTION|Search information including classification, databases
-      and other search related notes|SRFW|1|FBFJUBU1PPOPPY5},{10785132|2008-01-10
-      19:00:00|PROSECUTION|Notice of Allowance and Fees Due (PTOL-85)|NOA|3|FBFJUBS8PPOPPY5},{10785132|2008-01-10
-      19:00:00|PROSECUTION|Notice of Allowance and Fees Due (PTOL-85)|NOA|1|FBFJUBT4PPOPPY5},{10785132|2008-01-10
+      examiner|1449|2|H9VB15T7PXXIFW4},{12720264|2012-11-26 19:00:00|PROSECUTION|Notice
+      of Allowance and Fees Due (PTOL-85)|NOA|15|H9VB15SCPXXIFW4},{12720264|2012-11-26
       19:00:00|PROSECUTION|Issue Information including classification, examiner, name,
-      claim, renumbering, etc.|IIFW|1|FBFJUBTQPPOPPY5},{10785132|2007-10-23 20:00:00|PROSECUTION|Fee
-      Worksheet (SB06)|WFEE|1|F8N848E6PPOPPY5},{10785132|2007-10-23 20:00:00|PROSECUTION|Claims|CLM|11|F8DHCPCNPPOPPY5},{10785132|2007-10-23
-      20:00:00|PROSECUTION|Extension of Time|XT/|1|F8DHCPEAPPOPPY5},{10785132|2007-10-23
-      20:00:00|PROSECUTION|Miscellaneous Incoming Letter|LET.|1|F8DHCPFBPPOPPY5},{10785132|2007-10-23
-      20:00:00|PROSECUTION|Applicant Arguments/Remarks Made in an Amendment|REM|6|F8DHCPDGPPOPPY5},{10785132|2007-10-23
-      20:00:00|PROSECUTION|Amendment/Request for Reconsideration-After Non-Final Rejection|A...|5|F8DHCPAVPPOPPY5},{10785132|2007-10-23
-      20:00:00|PROSECUTION|Specification|SPEC|1|F8DHCPBWPPOPPY5},{10785132|2007-05-08
-      20:00:00|PROSECUTION|Bibliographic Data Sheet|BIB|1|F1OSRAD0PPOPPY5},{10785132|2007-05-08
-      20:00:00|PROSECUTION|Search information including classification, databases
-      and other search related notes|SRFW|1|F1OSRADYPPOPPY5},{10785132|2007-05-08
-      20:00:00|PROSECUTION|Index of Claims|FWCLM|1|F1OSRADFPPOPPY5},{10785132|2007-05-08
+      claim, renumbering, etc.|IIFW|1|H9VB15TFPXXIFW4},{12720264|2012-09-19 20:00:00|PROSECUTION|Applicant
+      Initiated Interview Summary (PTOL-413)|INTV.SUM.APP|3|H793AHCIPXXIFW4},{12720264|2012-09-19
+      20:00:00|PROSECUTION|Amendment After Final or under 37CFR 1.312, initialed by
+      the examiner.|ANE.I|4|H793AHE8PXXIFW4},{12720264|2012-09-11 20:00:00|PROSECUTION|Transmittal
+      Letter|TRAN.LET|2|H70PELIOPXXIFW3},{12720264|2012-09-11 20:00:00|PROSECUTION|Information
+      Disclosure Statement (IDS) Form (SB08)|IDS|4|H70PELIEPXXIFW3},{12720264|2012-09-11
+      20:00:00|PROSECUTION|Other reference-Patent/Application/Search Documents|REF.OTHER|9|H70PELIWPXXIFW3},{12720264|2012-09-11
+      20:00:00|PROSECUTION|Fee Worksheet (SB06)|WFEE|1|H74WZ8ZSPXXIFW4},{12720264|2012-09-11
+      20:00:00|PROSECUTION|Amendment/Request for Reconsideration-After Non-Final Rejection|A...|1|H70PEL9UPXXIFW3},{12720264|2012-09-11
+      20:00:00|PROSECUTION|Claims|CLM|6|H70PELAOPXXIFW3},{12720264|2012-09-11 20:00:00|PROSECUTION|Electronic
+      Filing System(EFS) Acknowledgment Receipt|N417|3|H70PELCBPXXIFW3},{12720264|2012-09-11
+      20:00:00|PROSECUTION|Applicant Arguments/Remarks Made in an Amendment|REM|9|H70PELBEPXXIFW3},{12720264|2012-09-11
+      20:00:00|PROSECUTION|Fee Worksheet (SB06)|WFEE|2|H70PELBVPXXIFW3},{12720264|2012-09-11
+      20:00:00|PROSECUTION|Transmittal Letter|TRAN.LET|1|H70PELCOPXXIFW3},{12720264|2012-06-19
+      20:00:00|PROSECUTION|Examiner''s search strategy and results|SRNT|2|H3LMIK11PXXIFW4},{12720264|2012-06-19
+      20:00:00|PROSECUTION|Index of Claims|FWCLM|1|H3LMIK0CPXXIFW4},{12720264|2012-06-19
+      20:00:00|PROSECUTION|List of references cited by examiner|892|1|H3LMIJZQPXXIFW4},{12720264|2012-06-19
+      20:00:00|PROSECUTION|Bibliographic Data Sheet|BIB|1|H3LMIK0UPXXIFW4},{12720264|2012-06-19
       20:00:00|PROSECUTION|List of References cited by applicant and considered by
-      examiner|1449|6|F1OSRACAPPOPPY5},{10785132|2007-05-08 20:00:00|PROSECUTION|Non-Final
-      Rejection|CTNF|5|F1OSRAAUPPOPPY5},{10785132|2005-03-10 19:00:00|PROSECUTION|Request
-      for status of Application|STATUS.LET|3|E6FTOVANPP1GUI2},{10785132|2004-09-26
-      20:00:00|PROSECUTION|Drawings-only black and white line drawings|DRW|99|DZR5JMGOPP1GUI4},{10785132|2004-09-26
-      20:00:00|PROSECUTION|Applicant Response to Pre-Exam Formalities Notice|PEFR|4|DZR5JMF1PP1GUI4},{10785132|2004-09-02
-      20:00:00|PROSECUTION|Pre-Exam Formalities Notice|PEFN|1|DZ2TDOK1PP2GUI1},{10785132|2004-09-02
-      20:00:00|PROSECUTION|Miscellaneous Action with shortened statutory period (SSP)|CTMS|1|DZ2TDOLAPP2GUI1},{10785132|2004-08-11
-      20:00:00|PROSECUTION|Foreign Reference|FOR|11|DY97YIVBPPOPPY2},{10785132|2004-08-11
-      20:00:00|PROSECUTION|Foreign Reference|FOR|29|DY97YIWHPPOPPY2},{10785132|2004-08-11
-      20:00:00|PROSECUTION|Foreign Reference|FOR|27|DY97YIUSPPOPPY2},{10785132|2004-08-11
-      20:00:00|PROSECUTION|Foreign Reference|FOR|12|DY97YINTPPOPPY2},{10785132|2004-08-11
-      20:00:00|PROSECUTION|Information Disclosure Statement (IDS) Form (SB08)|IDS|9|DY97YIM3PPOPPY2},{10785132|2004-08-11
-      20:00:00|PROSECUTION|Foreign Reference|FOR|53|DY97YIXXPPOPPY2},{10785132|2004-08-11
-      20:00:00|PROSECUTION|Foreign Reference|FOR|14|DY97YIN9PPOPPY2},{10785132|2004-08-11
-      20:00:00|PROSECUTION|Foreign Reference|FOR|11|DY97YIXCPPOPPY2},{10785132|2004-08-11
-      20:00:00|PROSECUTION|Foreign Reference|FOR|46|DY97YITFPPOPPY2},{10785132|2004-08-11
-      20:00:00|PROSECUTION|Foreign Reference|FOR|10|DY97YIRGPPOPPY2},{10785132|2004-08-11
-      20:00:00|PROSECUTION|Foreign Reference|FOR|40|DY97YIP7PPOPPY2},{10785132|2004-08-11
-      20:00:00|PROSECUTION|Foreign Reference|FOR|55|DY97YIONPPOPPY2},{10785132|2004-08-11
-      20:00:00|PROSECUTION|Foreign Reference|FOR|16|DY97YIU1PPOPPY2},{10785132|2004-08-11
-      20:00:00|PROSECUTION|Foreign Reference|FOR|19|DY97YISKPPOPPY2},{10785132|2004-08-11
-      20:00:00|PROSECUTION|Foreign Reference|FOR|102|DY97YIVVPPOPPY2},{10785132|2004-08-11
-      20:00:00|PROSECUTION|Foreign Reference|FOR|38|DY97YIQVPPOPPY2},{10785132|2004-08-11
-      20:00:00|PROSECUTION|Foreign Reference|FOR|10|DY97YIPRPPOPPY2},{10785132|2004-08-11
-      20:00:00|PROSECUTION|Foreign Reference|FOR|9|DY97YIQBPPOPPY2},{10785132|2004-08-11
-      20:00:00|PROSECUTION|Foreign Reference|FOR|29|DY98IVFCPPOPPY2},{10785132|2004-08-11
-      20:00:00|PROSECUTION|Foreign Reference|FOR|29|DY98IVRQPPOPPY2},{10785132|2004-08-11
-      20:00:00|PROSECUTION|Foreign Reference|FOR|27|DY98IVGJPPOPPY2},{10785132|2004-08-11
-      20:00:00|PROSECUTION|Foreign Reference|FOR|70|DY98IVQ1PPOPPY2},{10785132|2004-08-11
-      20:00:00|PROSECUTION|Foreign Reference|FOR|14|DY98IVHTPPOPPY2},{10785132|2004-08-11
-      20:00:00|PROSECUTION|Foreign Reference|FOR|7|DY98IVSAPPOPPY2},{10785132|2004-08-11
-      20:00:00|PROSECUTION|Foreign Reference|FOR|14|DY98IVOWPPOPPY2},{10785132|2004-08-11
-      20:00:00|PROSECUTION|Foreign Reference|FOR|26|DY98IVR4PPOPPY2},{10785132|2004-08-11
-      20:00:00|PROSECUTION|Foreign Reference|FOR|31|DY98IVIGPPOPPY2},{10785132|2004-08-11
-      20:00:00|PROSECUTION|Foreign Reference|FOR|12|DY98IVH6PPOPPY2},{10785132|2004-08-11
-      20:00:00|PROSECUTION|Foreign Reference|FOR|3|DY98IVEOPPOPPY2},{10785132|2004-08-11
-      20:00:00|PROSECUTION|Foreign Reference|FOR|9|DY98IVN0PPOPPY2},{10785132|2004-08-11
-      20:00:00|PROSECUTION|Foreign Reference|FOR|56|DY98IVDGPPOPPY2},{10785132|2004-08-11
-      20:00:00|PROSECUTION|Foreign Reference|FOR|14|DY98IVJHPPOPPY2},{10785132|2004-08-11
-      20:00:00|PROSECUTION|Foreign Reference|FOR|30|DY98IVMFPPOPPY2},{10785132|2004-08-11
-      20:00:00|PROSECUTION|Foreign Reference|FOR|14|DY98IVKJPPOPPY2},{10785132|2004-08-11
-      20:00:00|PROSECUTION|Foreign Reference|FOR|12|DY98IVNKPPOPPY2},{10785132|2004-08-11
-      20:00:00|PROSECUTION|Foreign Reference|FOR|18|DY98IVFYPPOPPY2},{10785132|2004-08-11
-      20:00:00|PROSECUTION|Foreign Reference|FOR|13|DY98IVPHPPOPPY2},{10785132|2004-08-11
-      20:00:00|PROSECUTION|Foreign Reference|FOR|9|DY98IVO8PPOPPY2},{10785132|2004-08-11
-      20:00:00|PROSECUTION|Foreign Reference|FOR|16|DY98IVL2PPOPPY2},{10785132|2004-08-11
-      20:00:00|PROSECUTION|Foreign Reference|FOR|14|DY98IVQLPPOPPY2},{10785132|2004-08-11
-      20:00:00|PROSECUTION|Foreign Reference|FOR|24|DY98IVE3PPOPPY2},{10785132|2004-08-11
-      20:00:00|PROSECUTION|Foreign Reference|FOR|10|DY98IVLMPPOPPY2},{10785132|2004-08-11
-      20:00:00|PROSECUTION|Foreign Reference|FOR|14|DY9BE036PPOPPY2},{10785132|2004-08-11
-      20:00:00|PROSECUTION|Foreign Reference|FOR|22|DY9BE04EPPOPPY2},{10785132|2004-08-11
-      20:00:00|PROSECUTION|Non Patent Literature|NPL|8|DY9BE06JPPOPPY2},{10785132|2004-08-11
-      20:00:00|PROSECUTION|Non Patent Literature|NPL|4|DY9BE0AZPPOPPY2},{10785132|2004-08-11
-      20:00:00|PROSECUTION|Foreign Reference|FOR|17|DY9BE02EPPOPPY2},{10785132|2004-08-11
-      20:00:00|PROSECUTION|Non Patent Literature|NPL|10|DY9BE07VPPOPPY2},{10785132|2004-08-11
-      20:00:00|PROSECUTION|Non Patent Literature|NPL|6|DY9BE0D6PPOPPY2},{10785132|2004-08-11
-      20:00:00|PROSECUTION|Non Patent Literature|NPL|6|DY9BE08IPPOPPY2},{10785132|2004-08-11
-      20:00:00|PROSECUTION|Non Patent Literature|NPL|6|DY9BE0BIPPOPPY2},{10785132|2004-08-11
-      20:00:00|PROSECUTION|Non Patent Literature|NPL|6|DY9BE0C2PPOPPY2},{10785132|2004-08-11
-      20:00:00|PROSECUTION|Non Patent Literature|NPL|7|DY9BE0AFPPOPPY2},{10785132|2004-08-11
-      20:00:00|PROSECUTION|Non Patent Literature|NPL|6|DY9BE09LPPOPPY2},{10785132|2004-08-11
-      20:00:00|PROSECUTION|Non Patent Literature|NPL|13|DY9BE075PPOPPY2},{10785132|2004-08-11
-      20:00:00|PROSECUTION|Non Patent Literature|NPL|6|DY9BE092PPOPPY2},{10785132|2004-08-11
-      20:00:00|PROSECUTION|Foreign Reference|FOR|1|DY9BE03QPPOPPY2},{10785132|2004-08-11
-      20:00:00|PROSECUTION|Non Patent Literature|NPL|17|DY9BE05VPPOPPY2},{10785132|2004-08-11
-      20:00:00|PROSECUTION|Non Patent Literature|NPL|9|DY9BE050PPOPPY2},{10785132|2004-08-10
-      20:00:00|PROSECUTION|Extension of Time|XT/|1|DYCTNHECPPOPPY2},{10785132|2004-08-10
-      20:00:00|PROSECUTION|Applicant Response to Pre-Exam Formalities Notice|PEFR|7|DYCTNH6DPPOPPY2},{10785132|2004-08-10
-      20:00:00|PROSECUTION|Oath or Declaration filed|OATH|4|DYCTNH7PPPOPPY2},{10785132|2004-05-17
-      20:00:00|PROSECUTION|Pre-Exam Formalities Notice|PEFN|2|DVI2YKHFPPOPPY2},{10785132|2004-02-23
-      19:00:00|PROSECUTION|Fee Worksheet (SB06)|WFEE|1|DRDMDG51PHOENIX},{10785132|2004-02-23
-      19:00:00|PROSECUTION|Fee Worksheet (SB06)|WFEE|1|DRDMDG2XPHOENIX},{10785132|2004-02-23
-      19:00:00|PROSECUTION|Transmittal of New Application|TRNA|5|DRDMDFULPHOENIX},{10785132|2004-02-23
-      19:00:00|PROSECUTION|Specification|SPEC|101|DRDMDFWBPHOENIX},{10785132|2004-02-23
-      19:00:00|PROSECUTION|Abstract|ABST|1|DRDMDFZEPHOENIX},{10785132|2004-02-23 19:00:00|PROSECUTION|Claims|CLM|9|DRDMDFXUPHOENIX},{10785132|2004-02-23
-      19:00:00|PROSECUTION|Drawings-only black and white line drawings|DRW|84|DRDMDG0ZPHOENIX}"],"appAttrDockNumberFacet":"RADW  P0373","appEntityStatusFacet":"UNDISCOUNTED","appCustNumberFacet":"122066","_version_":1781086894459715584,"firstInventorFileFacet":"No","appLocationFacet":"ELECTRONIC","appEarlyPubNumberFacet":"US20050188423A1","patentNumberFacet":"7373524"}]}},"queryId":"8e7972bb-b587-4814-848e-46217e1c2f44"},"jobStatus":null,"queryId":"8e7972bb-b587-4814-848e-46217e1c2f44","page":1,"count":0,"errorMessage":null,"createQueryRequest":{"searchText":"appEarlyPubNumber:(US20080034424A1
-      OR US20100020700A1 OR US20110225644A1 OR US20050120054A1 OR US20050188423A1)","facet":"false","facetField":null,"facetLimit":null,"facetMissing":null,"facetDate":null,"facetDateGap":null,"facetDateStart":null,"facetDateEnd":null,"facetDateOther":null,"facetDateInclude":null,"mm":null,"sort":null,"qf":"appEarlyPubNumber
-      applId appLocation appType appStatus_txt appConfrNumber appCustNumber appGrpArtNumber
-      appCls appSubCls appEntityStatus_txt patentNumber patentTitle primaryInventor
-      firstNamedApplicant appExamName appExamPrefrdName appAttrDockNumber appPCTNumber
-      appIntlPubNumber wipoEarlyPubNumber pctAppType firstInventorFile appClsSubCls
-      rankAndInventorsList","wt":null,"df":null,"fl":"*","start":"0","fq":[],"rows":null,"parameters":{"qf":"appEarlyPubNumber
-      applId appLocation appType appStatus_txt appConfrNumber appCustNumber appGrpArtNumber
-      appCls appSubCls appEntityStatus_txt patentNumber patentTitle primaryInventor
-      firstNamedApplicant appExamName appExamPrefrdName appAttrDockNumber appPCTNumber
-      appIntlPubNumber wipoEarlyPubNumber pctAppType firstInventorFile appClsSubCls
-      rankAndInventorsList","fl":["*"],"start":"0","fq":[],"rows":"25","facet":"false"}},"links":[{"rel":"self","href":"https://ped.uspto.gov/api/queries/8e7972bb-b587-4814-848e-46217e1c2f44?format=XML"},{"rel":"results","href":"https://ped.uspto.gov/api/queries/8e7972bb-b587-4814-848e-46217e1c2f44/results?page=1"},{"rel":"package","href":"https://ped.uspto.gov/api/queries/8e7972bb-b587-4814-848e-46217e1c2f44/package?format=XML"},{"rel":"first","href":"https://ped.uspto.gov/api/queries/8e7972bb-b587-4814-848e-46217e1c2f44/results?page=1"},{"rel":"next","href":"https://ped.uspto.gov/api/queries/8e7972bb-b587-4814-848e-46217e1c2f44/results?page=2"},{"rel":"self","href":"https://ped.uspto.gov/api/queries/8e7972bb-b587-4814-848e-46217e1c2f44?format=JSON"},{"rel":"results","href":"https://ped.uspto.gov/api/queries/8e7972bb-b587-4814-848e-46217e1c2f44/results?page=1"},{"rel":"package","href":"https://ped.uspto.gov/api/queries/8e7972bb-b587-4814-848e-46217e1c2f44/package?format=JSON"},{"rel":"first","href":"https://ped.uspto.gov/api/queries/8e7972bb-b587-4814-848e-46217e1c2f44/results?page=1"},{"rel":"next","href":"https://ped.uspto.gov/api/queries/8e7972bb-b587-4814-848e-46217e1c2f44/results?page=2"}]}'
+      examiner|1449|1|H3LMIK04PXXIFW4},{12720264|2012-06-19 20:00:00|PROSECUTION|Non-Final
+      Rejection|CTNF|16|H3LMIJYOPXXIFW4},{12720264|2012-06-19 20:00:00|PROSECUTION|Search
+      information including classification, databases and other search related notes|SRFW|1|H3LMIJZXPXXIFW4},{12720264|2012-03-12
+      20:00:00|PROSECUTION|Notice of Change of Address Place in File Wrapper Due to
+      Electronic Business Center(EBC) Customer Number Update|EBCC.AD|1|GZQZ1UIBPXXIFW4},{12720264|2011-09-14
+      20:00:00|PROSECUTION|Notice of Publication|NTC.PUB|1|GSLWEWEQPPOPPY5},{12720264|2010-03-23
+      20:00:00|PROSECUTION|Filing Receipt|APP.FILE.REC|3|G7511TSZPPOPPY5},{12720264|2010-03-08
+      19:00:00|PROSECUTION|Fee Worksheet (SB06)|WFEE|1|G7EWAV5WPPOPPY5},{12720264|2010-03-08
+      19:00:00|PROSECUTION|Fee Worksheet (SB06)|WFEE|2|G6L6GEZGPPOPPY2},{12720264|2010-03-08
+      19:00:00|PROSECUTION|Non Patent Literature|NPL|6|G6L6GEYSPPOPPY2},{12720264|2010-03-08
+      19:00:00|PROSECUTION|Non Patent Literature|NPL|11|G6L6GEH6PPOPPY2},{12720264|2010-03-08
+      19:00:00|PROSECUTION|Electronic Filing System(EFS) Acknowledgment Receipt|N417|4|G6L6GF04PPOPPY2},{12720264|2010-03-08
+      19:00:00|PROSECUTION|Non Patent Literature|NPL|11|G6L6GEYEPPOPPY2},{12720264|2010-03-08
+      19:00:00|PROSECUTION|Non Patent Literature|NPL|4|G6L6GEN1PPOPPY2},{12720264|2010-03-08
+      19:00:00|PROSECUTION|Non Patent Literature|NPL|10|G6L6GESKPPOPPY2},{12720264|2010-03-08
+      19:00:00|PROSECUTION|Information Disclosure Statement (IDS) Form (SB08)|IDS|1|G6L6GECBPPOPPY2},{12720264|2010-03-08
+      19:00:00|PROSECUTION|Transmittal Letter|TRAN.LET|2|G6L6GEA1PPOPPY2},{12720264|2010-03-08
+      19:00:00|PROSECUTION|Transmittal of New Application|TRNA|1|G6L6GE60PPOPPY2},{12720264|2010-03-08
+      19:00:00|PROSECUTION|Application Data Sheet|ADS|3|G6L6GE6SPPOPPY2},{12720264|2010-03-08
+      19:00:00|PROSECUTION|Claims|CLM|4|G6L6GE84PPOPPY2},{12720264|2010-03-08 19:00:00|PROSECUTION|Abstract|ABST|1|G6L6GE8SPPOPPY2},{12720264|2010-03-08
+      19:00:00|PROSECUTION|Fee Worksheet (SB06)|WFEE|1|G6L6GE6EPPOPPY2},{12720264|2010-03-08
+      19:00:00|PROSECUTION|Drawings-only black and white line drawings|DRW|9|G6L6GE95PPOPPY2},{12720264|2010-03-08
+      19:00:00|PROSECUTION|Specification|SPEC|29|G6L6GE7GPPOPPY2},{12720264|2010-03-08
+      19:00:00|PROSECUTION|Oath or Declaration filed|OATH|2|G6L6GE9KPPOPPY2}"],"appAttrDockNumberFacet":"328841.01","appEntityStatusFacet":"UNDISCOUNTED","appCustNumberFacet":"69316","_version_":1781079675810873344,"firstInventorFileFacet":"No","appLocationFacet":"ELECTRONIC","appEarlyPubNumberFacet":"US20110225644A1","patentNumberFacet":"8424072"}]}},"queryId":"04793ca7-d3f9-4d49-81e6-b6f6e2f182fe"},"jobStatus":null,"queryId":"04793ca7-d3f9-4d49-81e6-b6f6e2f182fe","page":1,"count":0,"errorMessage":null,"createQueryRequest":{"searchText":"appEarlyPubNumber:(US20080034424A1
+      OR US20100020700A1 OR US20110225644A1 OR US20050120054A1 OR US20050188423A1)","facet":"false","facetField":null,"facetLimit":null,"facetMissing":null,"facetDate":null,"facetDateGap":null,"facetDateStart":null,"facetDateEnd":null,"facetDateOther":null,"facetDateInclude":null,"mm":"0%","sort":"applId
+      asc","qf":"appEarlyPubNumber","wt":null,"df":"patentTitle","fl":"*","start":"0","fq":[],"rows":null,"parameters":{"mm":"0%","df":"patentTitle","qf":"appEarlyPubNumber","fl":["*"],"start":"0","sort":"applId
+      asc","fq":[],"rows":"25","facet":"false"}},"links":[{"rel":"self","href":"https://ped.uspto.gov/api/queries/04793ca7-d3f9-4d49-81e6-b6f6e2f182fe?format=XML"},{"rel":"results","href":"https://ped.uspto.gov/api/queries/04793ca7-d3f9-4d49-81e6-b6f6e2f182fe/results?page=1"},{"rel":"package","href":"https://ped.uspto.gov/api/queries/04793ca7-d3f9-4d49-81e6-b6f6e2f182fe/package?format=XML"},{"rel":"first","href":"https://ped.uspto.gov/api/queries/04793ca7-d3f9-4d49-81e6-b6f6e2f182fe/results?page=1"},{"rel":"next","href":"https://ped.uspto.gov/api/queries/04793ca7-d3f9-4d49-81e6-b6f6e2f182fe/results?page=2"},{"rel":"self","href":"https://ped.uspto.gov/api/queries/04793ca7-d3f9-4d49-81e6-b6f6e2f182fe?format=JSON"},{"rel":"results","href":"https://ped.uspto.gov/api/queries/04793ca7-d3f9-4d49-81e6-b6f6e2f182fe/results?page=1"},{"rel":"package","href":"https://ped.uspto.gov/api/queries/04793ca7-d3f9-4d49-81e6-b6f6e2f182fe/package?format=JSON"},{"rel":"first","href":"https://ped.uspto.gov/api/queries/04793ca7-d3f9-4d49-81e6-b6f6e2f182fe/results?page=1"},{"rel":"next","href":"https://ped.uspto.gov/api/queries/04793ca7-d3f9-4d49-81e6-b6f6e2f182fe/results?page=2"}]}'
     headers:
       Cache-Control:
       - no-cache, no-store, max-age=0, must-revalidate
@@ -1224,21 +1212,21 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Mon, 30 Oct 2023 02:29:19 GMT
+      - Mon, 30 Oct 2023 20:38:34 GMT
       Expires:
       - '0'
       Pragma:
       - no-cache
       Server-Timing:
-      - intid;desc=30082c12ede9e909
+      - intid;desc=9a8f5c52d8e69b75
       Strict-Transport-Security:
       - max-age=31536000;includeSubDomains
       Transfer-Encoding:
       - chunked
       Via:
-      - 1.1 050fafda3999de306a6c7916e4c777bc.cloudfront.net (CloudFront)
+      - 1.1 438aef39b75efc64fcdb19b1f96ff258.cloudfront.net (CloudFront)
       X-Amz-Cf-Id:
-      - k1OBnQ2OiAbJcMBEHe7p7GA2UkkoamXZgAAX_8CYe4ghnTBQugX5HA==
+      - HmaHxo4e49rfhzf5t6wo8yGG0qYQ-jec_JQuKDuYdMEBXErLzOIuHg==
       X-Amz-Cf-Pop:
       - IAH50-C1
       X-Cache:

@@ -24,7 +24,7 @@ Each case can also access Full Text, Images, and Inpadoc Families
 >>> pprint(list(case.family))
 [FamilyMember(publication_number=EP1000000A1),
  FamilyMember(publication_number=EP1000000B1),
- FamilyMember(publication_number=AT232441T),
+ FamilyMember(publication_number=ATE232441T1),
  FamilyMember(publication_number=DE69905327D1),
  FamilyMember(publication_number=NL1010536C2),
  FamilyMember(publication_number=US6093011A)]

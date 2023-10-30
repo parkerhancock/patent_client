@@ -103,3 +103,18 @@ class PtabDecisionSchema(Schema):
     object_uu_id = f.Str()
     petitioner_technology_center_number = f.Str()
     subdecision_type_category = f.Str()
+
+
+class PtabDocumentPageSchema(Schema):
+    num_found = f.Int(data_key="recordTotalQuantity")
+    docs = f.List(PtabDocumentSchema, data_key="results")
+
+
+class PtabProceedingPageSchema(Schema):
+    num_found = f.Int(data_key="recordTotalQuantity")
+    docs = f.List(PtabProceedingSchema, data_key="results")
+
+
+class PtabDecisionPageSchema(Schema):
+    num_found = f.Int(data_key="recordTotalQuantity")
+    docs = f.List(PtabDecisionSchema, data_key="results")

@@ -7,7 +7,7 @@ from pathlib import Path
 import lxml.etree as ET
 from openpyxl import load_workbook
 from patent_client import SETTINGS
-from patent_client.epo.ops.session import session
+from patent_client.epo.ops.session import asession
 
 dir = Path(SETTINGS.DEFAULT.BASE_DIR).expanduser() / "epo"
 dir.mkdir(exist_ok=True, parents=True)
@@ -51,7 +51,7 @@ def has_current_spreadsheet():
 
 def get_spreadsheet():
     url = "https://www.epo.org/searching-for-patents/data/coverage/weekly.html"
-    response = session.get(url)
+    response = asession.sync.get(url)
     response.raise_for_status()
     tree = ET.HTML(response.text)
     try:
@@ -59,7 +59,7 @@ def get_spreadsheet():
         out_path = dir / excel_url.split("/")[-1]
         if out_path.exists():
             return out_path
-        response = session.get(excel_url, stream=True)
+        response = asession.sync.get(excel_url, stream=True)
         with out_path.open("wb") as f:
             for chunk in response.iter_content(chunk_size=8192):
                 f.write(chunk)

@@ -2,95 +2,6 @@ interactions:
 - request:
     body: ''
     headers:
-      accept:
-      - '*/*'
-      accept-encoding:
-      - gzip, deflate
-      connection:
-      - keep-alive
-      host:
-      - ops.epo.org
-      user-agent:
-      - python-httpx/0.24.1
-    method: GET
-    uri: http://ops.epo.org/3.2/rest-services/number-service/application/docdb/MD.20050130.A.20050130/epodoc
-  response:
-    content: "<error><code>403</code><message>This request has been rejected due to
-      the violation of Fair Use policy</message><moreInfo>https://www.epo.org/service-support/ordering/fair-use.html</moreInfo>\n\t\t\t\t</error>\n\t\t\t"
-    headers:
-      Access-Control-Allow-Headers:
-      - Authorization
-      Access-Control-Allow-Methods:
-      - POST
-      Access-Control-Allow-Origin:
-      - '*'
-      Connection:
-      - keep-alive
-      Content-Length:
-      - '208'
-      Content-Type:
-      - application/xml
-      Date:
-      - Mon, 30 Oct 2023 01:58:55 GMT
-      X-EPO-Client-IP:
-      - 104.54.160.230
-      X-EPO-Forwarded:
-      - '[104.54.160.230]'
-      X-Rejection-Reason:
-      - AnonymousQuotaPerDay
-    http_version: HTTP/1.1
-    status_code: 403
-- request:
-    body: grant_type=client_credentials
-    headers:
-      accept:
-      - '*/*'
-      accept-encoding:
-      - gzip, deflate
-      connection:
-      - keep-alive
-      content-length:
-      - '29'
-      content-type:
-      - application/x-www-form-urlencoded
-      host:
-      - ops.epo.org
-      user-agent:
-      - python-httpx/0.24.1
-    method: POST
-    uri: https://ops.epo.org/3.2/auth/accesstoken
-  response:
-    content: "{\n  \"refresh_token_expires_in\": \"0\",\n  \"api_product_list\": \"[ops-prod]\",\n
-      \ \"api_product_list_json\": [\n    \"ops-prod\"\n  ],\n  \"organization_name\":
-      \"epo\",\n  \"developer.email\": \"parker.hancock@protonmail.com\",\n  \"token_type\":
-      \"BearerToken\",\n  \"issued_at\": \"1698631136493\",\n  \"client_id\": \"wVi6ni5GUZZ3BJqAfLGJb4KPGcYxRktw\",\n
-      \ \"access_token\": \"Nv3liXtNHavutn9jJVwaO3WC46qD\",\n  \"application_name\":
-      \"8654da0d-5e44-4ea3-addc-e555eff4aee6\",\n  \"scope\": \"core\",\n  \"expires_in\":
-      \"1199\",\n  \"refresh_count\": \"0\",\n  \"status\": \"approved\"\n}"
-    headers:
-      Access-Control-Allow-Headers:
-      - Authorization
-      Access-Control-Allow-Methods:
-      - POST
-      Access-Control-Allow-Origin:
-      - '*'
-      Connection:
-      - keep-alive
-      Content-Length:
-      - '523'
-      Content-Type:
-      - application/json
-      Date:
-      - Mon, 30 Oct 2023 01:58:56 GMT
-      X-EPO-Client-IP:
-      - 104.54.160.230
-      X-EPO-Forwarded:
-      - '[104.54.160.230]'
-    http_version: HTTP/1.1
-    status_code: 200
-- request:
-    body: ''
-    headers:
       Authorization:
       - REDACTED
       accept:
@@ -136,7 +47,7 @@ interactions:
       Content-Type:
       - application/xml;charset=utf-8
       Date:
-      - Mon, 30 Oct 2023 01:58:56 GMT
+      - Mon, 30 Oct 2023 15:32:17 GMT
       ETag:
       - '"03f3f239201110a231bf9266616b0a3f8"'
       Pragma:
@@ -150,18 +61,18 @@ interactions:
       X-API:
       - ops-v3.2
       X-EPO-Client-IP:
-      - 104.54.160.230
+      - 38.104.255.66
       X-EPO-Forwarded:
-      - '[104.54.160.230]'
+      - '[38.104.255.66]'
       X-Elapsed-Time:
-      - '34'
+      - '147'
       X-IndividualQuotaPerHour-Used:
-      - '1642688'
+      - '231337'
       X-RegisteredQuotaPerWeek-Used:
-      - '1629653'
+      - '1934615'
       X-Throttling-Control:
-      - idle (images=green:200, inpadoc=green:60, other=green:1000, retrieval=green:200,
-        search=green:30)
+      - busy (images=green:100, inpadoc=green:45, other=green:1000, retrieval=green:100,
+        search=green:15)
     http_version: HTTP/1.1
     status_code: 200
 version: 1

@@ -2,22 +2,37 @@ import asyncio
 
 
 def run_sync(coroutine):
-    try:
-        loop = asyncio.get_event_loop()
-    except RuntimeError:
-        return asyncio.run(coroutine)
-    else:
-        return loop.run_until_complete(coroutine)
+    return asyncio.run(coroutine)
 
 
 def run_async_iterator(async_iterator):
-    try:
-        loop = asyncio.get_event_loop()
-    except RuntimeError:
-        loop = asyncio.new_event_loop()
-
     while True:
         try:
-            yield loop.run_until_complete(async_iterator.__anext__())
+            yield run_sync(async_iterator.__anext__())
         except StopAsyncIteration:
             break
+
+
+def run_sync_decorator(func):
+    def wrapper(*args, **kwargs):
+        return run_sync(func(*args, **kwargs))
+
+    return wrapper
+
+
+def run_sync_iterator_decorator(func):
+    def wrapper(*args, **kwargs):
+        return run_async_iterator(func(*args, **kwargs))
+
+    return wrapper
+
+
+class SyncProxy:
+    def __init__(self, async_obj):
+        self.async_obj = async_obj
+
+    def __getattr__(self, name):
+        return run_sync_decorator(getattr(self.async_obj, name))
+
+    def __iter__(self):
+        return run_sync_iterator_decorator(self.async_obj.__aiter__())

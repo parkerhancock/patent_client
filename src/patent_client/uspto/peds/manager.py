@@ -1,34 +1,29 @@
 import json
 import logging
-import math
 from datetime import date
 from pathlib import Path
 from tempfile import TemporaryDirectory
 from typing import AsyncIterator
-from typing import Iterator
 
 import inflection
 from patent_client import asession
 from patent_client import session
+from patent_client.util.asyncio_util import run_sync
 from patent_client.util.base.manager import Manager
+from patent_client.util.request_util import get_start_and_row_count
 from PyPDF2 import PdfFileMerger
 
+from .api import PatentExaminationDataSystemApi
 from .model import USApplication
 from .schema import DocumentSchema
 from .schema import USApplicationSchema
+
 
 logger = logging.getLogger(__name__)
 
 
 class HttpException(Exception):
     pass
-
-
-class NotAvailableException(Exception):
-    pass
-
-
-QUERY_FIELDS = "appEarlyPubNumber applId appLocation appType appStatus_txt appConfrNumber appCustNumber appGrpArtNumber appCls appSubCls appEntityStatus_txt patentNumber patentTitle primaryInventor firstNamedApplicant appExamName appExamPrefrdName appAttrDockNumber appPCTNumber appIntlPubNumber wipoEarlyPubNumber pctAppType firstInventorFile appClsSubCls rankAndInventorsList"
 
 
 class USApplicationManager(Manager[USApplication]):
@@ -41,117 +36,57 @@ class USApplicationManager(Manager[USApplication]):
         super(USApplicationManager, self).__init__(*args, **kwargs)
         self.pages = dict()
 
-    def __len__(self):
-        max_length = self.get_page(0)["numFound"] - self.config.offset
-        limit = self.config.limit
-        if not limit:
-            return max_length
-        else:
-            return limit if limit < max_length else max_length
-
     async def alen(self):
-        max_length = (await self.aget_page(0))["numFound"] - self.config.offset
-        limit = self.config.limit
-        if not limit:
-            return max_length
-        else:
-            return limit if limit < max_length else max_length
-
-    def _get_results(self) -> Iterator[USApplication]:
-        num_pages = math.ceil(len(self) / self.page_size)
-        page_num = 0
-        counter = 0
-        while page_num < num_pages:
-            page_data = self.get_page(page_num)
-            for item in page_data["docs"]:
-                if not self.config.limit or counter < self.config.limit:
-                    yield self.__schema__.load(item)
-                counter += 1
-            page_num += 1
+        api = PatentExaminationDataSystemApi()
+        max_length = (await api.create_query(**self.get_query_params())).num_found
+        return min(max_length, self.config.limit) if self.config.limit else max_length
 
     async def _aget_results(self) -> AsyncIterator[USApplication]:
-        num_pages = math.ceil(len(self) / self.page_size)
-        page_num = 0
-        counter = 0
-        while page_num < num_pages:
-            page_data = self.get_page(page_num)
-            for item in page_data["docs"]:
-                if not self.config.limit or counter < self.config.limit:
-                    yield self.__schema__.load(item)
-                counter += 1
-            page_num += 1
+        query_params = self.get_query_params()
+        api = PatentExaminationDataSystemApi()
+        for start, rows in get_start_and_row_count(self.config.limit, self.config.offset, self.page_size):
+            page = await api.create_query(**{**query_params, "start": start, "rows": rows})
+            for app in page.applications:
+                yield app
+            if len(page.applications) < rows:
+                break
 
-    async def aget_page(self, page_number):
-        if page_number not in self.pages:
-            query_params = self.query_params(page_number)
-            response = await asession.post(self.query_url, json=query_params, timeout=10)
-            if not response.status_code == 200:
-                if self.is_online():
-                    raise HttpException(
-                        f"{response.status_code}\n{response.text}\n{response.headers}\n{json.dumps(query_params)}"
-                    )
-            data = response.json()
-            self.pages[page_number] = data["queryResults"]["searchResponse"]["response"]
-        return self.pages[page_number]
-
-    def get_page(self, page_number):
-        if page_number not in self.pages:
-            query_params = self.query_params(page_number)
-            response = session.post(self.query_url, json=query_params, timeout=10)
-            if not response.ok:
-                if self.is_online():
-                    raise HttpException(
-                        f"{response.status_code}\n{response.text}\n{response.headers}\n{json.dumps(query_params)}"
-                    )
-            data = response.json()
-            self.pages[page_number] = data["queryResults"]["searchResponse"]["response"]
-        return self.pages[page_number]
-
-    def query_params(self, page_no):
+    def get_query_params(self):
         if "query" in self.config.filter:
-            query = self.config.filter["query"]
-            query["start"] = page_no * self.page_size + self.config.offset
-            return query
-
-        sort_query = ""
-        for s in self.config.order_by:
-            if s[0] == "-":
-                sort_query += f"{inflection.camelize(s[1:], uppercase_first_letter=False)} desc ".strip()
-            else:
-                sort_query += (f"{inflection.camelize(s, uppercase_first_letter=False)} asc").strip()
-        if not sort_query:
+            query_text = self.config.filter["query"]
+        else:
+            query = list()
+            for k, v in self.config.filter.items():
+                field = inflection.camelize(k, uppercase_first_letter=False)
+                if not v:
+                    continue
+                elif type(v) in (list, tuple):
+                    v = (str(i) for i in v)
+                    body = " OR ".join(f'"{value}"' if " " in value else value for value in v)
+                else:
+                    body = v
+                query.append(f"{field}:({body})")
+            query_text = " AND ".join(query).strip()
+        if self.config.order_by:
+            sort_query = ""
+            for s in self.config.order_by:
+                if s[0] == "-":
+                    sort_query += f"{inflection.camelize(s[1:], uppercase_first_letter=False)} desc ".strip()
+                else:
+                    sort_query += (f"{inflection.camelize(s, uppercase_first_letter=False)} asc").strip()
+        else:
             sort_query = None
 
-        query = list()
-        mm_active = True
-        for k, v in self.config.filter.items():
-            field = inflection.camelize(k, uppercase_first_letter=False)
-            if not v:
-                continue
-            elif type(v) in (list, tuple):
-                v = (str(i) for i in v)
-                body = " OR ".join(f'"{value}"' if " " in value else value for value in v)
-                mm_active = False
-            else:
-                body = v
-            query.append(f"{field}:({body})")
+        mm = "0%" if "appEarlyPubNumber" not in query else "90%"
 
-        mm = "100%" if "appEarlyPubNumber" not in query else "90%"
-
-        query = {
-            "qf": QUERY_FIELDS,
-            "fl": "*",  # ",".join(inflection.camelize(f, uppercase_first_letter=False) for f in RETURN_FIELDS),#"*",
-            "fq": list(),
-            "searchText": " AND ".join(query).strip(),
-            "sort": sort_query,
-            "facet": "false",
-            "mm": mm,
-            "start": page_no * self.page_size + self.config.offset,
-            # "rows": self.page_size,
+        query_data = {
+            "query": query_text,
+            "facet": False,
+            "minimum_match": mm,
         }
-        if not mm_active:
-            del query["mm"]
-        return query
+        if sort_query:
+            query_data["sort"] = sort_query
+        return query_data
 
     @property
     def allowed_filters(self):
@@ -171,16 +106,7 @@ class USApplicationManager(Manager[USApplication]):
         return self.__class__._fields
 
     def is_online(self):
-        with session.cache_disabled():
-            response = session.get("https://ped.uspto.gov/api/search-fields")
-            if response.ok:
-                return True
-            elif "requested resource is not available" in response.text:
-                raise NotAvailableException("Patent Examination Data is Offline - this is a USPTO problem")
-            elif "attempt failed or the origin closed the connection" in response.text:
-                raise NotAvailableException("The Patent Examination Data API is Broken! - this is a USPTO problem")
-            else:
-                raise NotAvailableException("There is a USPTO problem")
+        return run_sync(PatentExaminationDataSystemApi.is_online)
 
     @property
     def query_fields(self):
@@ -195,7 +121,6 @@ class DateEncoder(json.JSONEncoder):
     def default(self, o):
         if isinstance(o, date):
             return o.isoformat()
-
         return json.JSONEncoder.default(self, o)
 
 
@@ -203,17 +128,11 @@ class DocumentManager(Manager):
     query_url = "https://ped.uspto.gov/api/queries/cms/public/"
     __schema__ = DocumentSchema()
 
-    def __len__(self):
+    async def alen(self):
         url = self.query_url + self.config.filter["appl_id"]
-        response = session.get(url)
+        response = await asession.get(url)
         response.raise_for_status()
         return len(response.json())
-
-    def _get_results(self) -> Iterator[USApplication]:
-        url = self.query_url + self.config.filter["appl_id"]
-        response = session.get(url)
-        for item in response.json():
-            yield self.__schema__.load(item)
 
     async def _aget_results(self) -> AsyncIterator[USApplication]:
         url = self.query_url + self.config.filter["appl_id"]
@@ -222,6 +141,9 @@ class DocumentManager(Manager):
             yield self.__schema__.load(item)
 
     def download(self, docs, path="."):
+        run_sync(self.adownload(docs, path))
+
+    async def adownload(self, docs, path="."):
         if str(path)[-4:].lower() == ".pdf":
             # If we've been given a specific filename, use it
             out_file = Path(path)
@@ -233,7 +155,7 @@ class DocumentManager(Manager):
             with TemporaryDirectory() as tmpdir:
                 for doc in docs:
                     if doc.access_level_category == "PUBLIC":
-                        files.append((doc.download(tmpdir), doc))
+                        files.append((await doc.adownload(tmpdir), doc))
 
                 out_pdf = PdfFileMerger()
                 page = 0

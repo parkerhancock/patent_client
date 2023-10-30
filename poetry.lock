@@ -33,6 +33,20 @@ test = ["anyio[trio]", "coverage[toml] (>=7)", "hypothesis (>=4.0)", "psutil (>=
 trio = ["trio (>=0.22)"]
 
 [[package]]
+name = "anysqlite"
+version = "0.0.5"
+description = ""
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "anysqlite-0.0.5-py3-none-any.whl", hash = "sha256:cb345dc4f76f6b37f768d7a0b3e9cf5c700dfcb7a6356af8ab46a11f666edbe7"},
+    {file = "anysqlite-0.0.5.tar.gz", hash = "sha256:9dfcf87baf6b93426ad1d9118088c41dbf24ef01b445eea4a5d486bac2755cce"},
+]
+
+[package.dependencies]
+anyio = ">3.4.0"
+
+[[package]]
 name = "appdirs"
 version = "1.4.4"
 description = "A small Python module for determining appropriate platform-specific dirs, e.g. a \"user data dir\"."
@@ -741,6 +755,7 @@ files = [
 ]
 
 [package.dependencies]
+anysqlite = {version = ">=0.0.5", optional = true, markers = "extra == \"sqlite\""}
 httpx = ">=0.22.0"
 
 [package.extras]
@@ -2752,7 +2767,7 @@ docs = ["furo", "ipython", "myst-parser", "sphinx-copybutton", "sphinx-inline-ta
 name = "sphinx-copybutton"
 version = "0.5.2"
 description = "Add a copy button to each of your code cells."
-optional = true
+optional = false
 python-versions = ">=3.7"
 files = [
     {file = "sphinx-copybutton-0.5.2.tar.gz", hash = "sha256:4cf17c82fb9646d1bc9ca92ac280813a3b605d8c421225fd9913154103ee1fbd"},
@@ -3150,25 +3165,20 @@ socks = ["PySocks (>=1.5.6,!=1.5.7,<2.0)"]
 
 [[package]]
 name = "vcrpy"
-version = "5.0.0"
+version = "5.1.0"
 description = "Automatically mock your HTTP interactions to simplify and speed up testing"
 optional = false
 python-versions = ">=3.8"
-files = []
-develop = false
+files = [
+    {file = "vcrpy-5.1.0-py2.py3-none-any.whl", hash = "sha256:605e7b7a63dcd940db1df3ab2697ca7faf0e835c0852882142bafb19649d599e"},
+    {file = "vcrpy-5.1.0.tar.gz", hash = "sha256:bbf1532f2618a04f11bce2a99af3a9647a32c880957293ff91e0a5f187b6b3d2"},
+]
 
 [package.dependencies]
 PyYAML = "*"
-six = ">=1.5"
 urllib3 = {version = "<2", markers = "python_version < \"3.10\""}
 wrapt = "*"
 yarl = "*"
-
-[package.source]
-type = "git"
-url = "https://github.com/parkerhancock/vcrpy"
-reference = "HEAD"
-resolved_reference = "d6c25e47185c710b837c394b2b673a5f9397a3f2"
 
 [[package]]
 name = "virtualenv"
@@ -3298,27 +3308,26 @@ files = [
 
 [[package]]
 name = "yankee"
-version = "0.1.41"
+version = "0.1.42"
 description = "lightweight, simple, and fast declarative XML and JSON data extraction"
 optional = false
 python-versions = ">=3.9,<3.13"
-files = []
-develop = true
+files = [
+    {file = "yankee-0.1.42-py3-none-any.whl", hash = "sha256:971957e6eef187427c04fc251a11cf1dca18e84daacd7c825a2e259116fe1406"},
+    {file = "yankee-0.1.42.tar.gz", hash = "sha256:1889b52a8db5e6491c3defb4aac2c870a38ba08582bb3563ec7d74fc2632f3a5"},
+]
 
 [package.dependencies]
-cssselect = "^1.2.0"
-jsonpath-ng = "^1.5.3"
-lxml = "^4.8.0"
-python-dateutil = "^2.8.2"
-toolz = "^0.12.0"
-ujson = "^5.7.0"
+cssselect = ">=1.2.0,<2.0.0"
+jsonpath-ng = ">=1.5.3,<2.0.0"
+lxml = ">=4.8.0,<5.0.0"
+python-dateutil = ">=2.8.2,<3.0.0"
+sphinx-copybutton = ">=0.5"
+toolz = ">=0.12.0,<0.13.0"
+ujson = ">=5.7.0,<6.0.0"
 
 [package.extras]
 docs = ["IPython (>=7.17.0,<8.0.0)", "furo (>=2022.6,<2023.0)", "linkify-it-py (>=2.0,<3.0)", "myst-parser (>=0.17)", "nbsphinx (>=0.8.9,<0.9.0)", "sphinx (>=5.0.2,<6.0.0)", "sphinx-autodoc-typehints (>=1.19,<2.0)", "sphinx-automodapi (>=0.14)", "sphinx-design (>=0.2)", "sphinx-notfound-page (>=0.8)", "sphinxcontrib-apidoc (>=0.3,<0.4)", "sphinxcontrib-mermaid (>=0.7.1,<0.8.0)"]
-
-[package.source]
-type = "directory"
-url = "../yankee"
 
 [[package]]
 name = "yarl"
@@ -3428,4 +3437,4 @@ docs = ["IPython", "furo", "linkify-it-py", "myst-parser", "nbsphinx", "sphinx",
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.9,<3.13"
-content-hash = "1eea81c72a34007bb9296e269921d67e2d247bccee499814b0ce9fa408bdb805"
+content-hash = "c378230c79e46dd0ad204fa9fd0217e19ab17f89c1a7dc61b16f91bf086b6a6f"
