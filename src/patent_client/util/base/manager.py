@@ -11,6 +11,8 @@ from typing import Union
 
 from yankee.data import Collection
 
+from ..asyncio_util import run_async_iterator
+
 ModelType = TypeVar("ModelType")
 
 
@@ -61,7 +63,7 @@ class Manager(Collection, Generic[ModelType]):
     # Manager Iteration / Slicing
 
     def __iter__(self) -> Iterator[ModelType]:
-        for item in self._get_results():
+        for item in run_async_iterator(self.__aiter__()):
             yield item
 
     def __aiter__(self) -> AsyncIterator[ModelType]:

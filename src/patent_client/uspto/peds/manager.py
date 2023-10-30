@@ -69,12 +69,6 @@ class USApplicationManager(Manager[USApplication]):
                 counter += 1
             page_num += 1
 
-    def __iter__(self) -> Iterator[USApplication]:
-        return super(USApplicationManager, self).__iter__()
-
-    def __aiter__(self) -> AsyncIterator[USApplication]:
-        return super(USApplicationManager, self).__aiter__()
-
     async def _aget_results(self) -> AsyncIterator[USApplication]:
         num_pages = math.ceil(len(self) / self.page_size)
         page_num = 0
@@ -218,6 +212,12 @@ class DocumentManager(Manager):
     def _get_results(self) -> Iterator[USApplication]:
         url = self.query_url + self.config.filter["appl_id"]
         response = session.get(url)
+        for item in response.json():
+            yield self.__schema__.load(item)
+
+    async def _aget_results(self) -> AsyncIterator[USApplication]:
+        url = self.query_url + self.config.filter["appl_id"]
+        response = await asession.get(url)
         for item in response.json():
             yield self.__schema__.load(item)
 

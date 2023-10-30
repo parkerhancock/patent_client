@@ -72,16 +72,16 @@ class OpsAsyncSession(hishel.AsyncCacheClient):
         self.secret: str = secret
         self.expires: dt.datetime = dt.datetime.utcnow()
 
-    async def handle_request(self, *args, **kwargs):
-        response = await super(OpsAsyncSession, self).handle_request(*args, **kwargs)
+    async def request(self, *args, **kwargs):
+        response = await super(OpsAsyncSession, self).request(*args, **kwargs)
         if response.status_code in (403, 400):
             auth_response = await self.get_token()
-            response = super(OpsSession, self).handle_request(*args, **kwargs)
+            response = await super(OpsAsyncSession, self).request(*args, **kwargs)
         return response
 
     async def get_token(self):
         auth_url = "https://ops.epo.org/3.2/auth/accesstoken"
-        response = super(OpsSession, self).request(
+        response = await super(OpsAsyncSession, self).request(
             "post",
             auth_url,
             auth=(self.key, self.secret),
@@ -106,4 +106,4 @@ class OpsAsyncSession(hishel.AsyncCacheClient):
 
 
 session = OpsSession(key=SETTINGS.EPO.API_KEY, secret=SETTINGS.EPO.API_SECRET)
-asession = OpsAsyncSession(key=SETTINGS.EPO.API_KEY, secret=SETTINGS.EPO.API_SECRET)
+asession = OpsAsyncSession(key=SETTINGS.EPO.API_KEY, secret=SETTINGS.EPO.API_SECRET, follow_redirects=True)

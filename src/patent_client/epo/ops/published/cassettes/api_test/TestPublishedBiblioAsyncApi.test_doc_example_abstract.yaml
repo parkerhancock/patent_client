@@ -1,0 +1,87 @@
+interactions:
+- request:
+    body: ''
+    headers:
+      Authorization:
+      - REDACTED
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - ops.epo.org
+      user-agent:
+      - python-httpx/0.24.1
+    method: GET
+    uri: http://ops.epo.org/3.2/rest-services/published-data/publication/epodoc/EP1000000.A1/abstract
+  response:
+    content: "<?xml version=\"1.0\" encoding=\"UTF-8\"?><?xml-stylesheet type=\"text/xsl\"
+      href=\"/3.2/style/exchange.xsl\"?>\n<ops:world-patent-data xmlns=\"http://www.epo.org/exchange\"
+      xmlns:ops=\"http://ops.epo.org\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">\n
+      \   <exchange-documents>\n        <exchange-document country=\"EP\" doc-number=\"1000000\"
+      kind=\"A1\">\n            <bibliographic-data>\n                <publication-reference>\n
+      \                   <document-id document-id-type=\"docdb\">\n                        <country>EP</country>\n
+      \                       <doc-number>1000000</doc-number>\n                        <kind>A1</kind>\n
+      \                       <date>20000517</date>\n                    </document-id>\n
+      \                   <document-id document-id-type=\"epodoc\">\n                        <doc-number>EP1000000</doc-number>\n
+      \                       <date>20000517</date>\n                    </document-id>\n
+      \               </publication-reference>\n                <parties/>\n            </bibliographic-data>\n
+      \           <abstract lang=\"en\">\n                <p>The invention relates
+      to an apparatus (1) for manufacturing green bricks from clay for the brick manufacturing
+      industry, comprising a circulating conveyor (3) carrying mould containers combined
+      to mould container parts (4), a reservoir (5) for clay arranged above the mould
+      containers, means for carrying clay out of the reservoir (5) into the mould
+      containers, means (9) for pressing and trimming clay in the mould containers,
+      means (11) for supplying and placing take-off plates for the green bricks (13)
+      and means for discharging green bricks released from the mould containers, characterized
+      in that the apparatus further comprises means (22) for moving the mould container
+      parts (4) filled with green bricks such that a protruding edge is formed on
+      at least one side of the green bricks. &lt;IMAGE></p>\n            </abstract>\n
+      \       </exchange-document>\n    </exchange-documents>\n</ops:world-patent-data>"
+    headers:
+      Access-Control-Allow-Headers:
+      - Authorization
+      Access-Control-Allow-Methods:
+      - POST
+      Access-Control-Allow-Origin:
+      - '*'
+      Cache-Control:
+      - no-cache
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1956'
+      Content-Type:
+      - application/xml;charset=utf-8
+      Date:
+      - Mon, 30 Oct 2023 01:40:15 GMT
+      ETag:
+      - '"01b47348cdaaf828a7a067eaf79212527"'
+      Pragma:
+      - no-cache
+      Server:
+      - Apache
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      Vary:
+      - Accept
+      X-API:
+      - ops-v3.2
+      X-EPO-Client-IP:
+      - 104.54.160.230
+      X-EPO-Forwarded:
+      - '[104.54.160.230]'
+      X-Elapsed-Time:
+      - '0'
+      X-IndividualQuotaPerHour-Used:
+      - '698847'
+      X-RegisteredQuotaPerWeek-Used:
+      - '685812'
+      X-Throttling-Control:
+      - idle (images=green:200, inpadoc=green:60, other=green:1000, retrieval=green:200,
+        search=green:30)
+    http_version: HTTP/1.1
+    status_code: 200
+version: 1

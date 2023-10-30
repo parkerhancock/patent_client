@@ -11,23 +11,24 @@ interactions:
       Connection:
       - keep-alive
       User-Agent:
-      - Python Patent Clientbot/3.0.3 (parkerhancock@users.noreply.github.com)
+      - Mozilla/5.0 Python Patent Clientbot/3.2.8 (parkerhancock@users.noreply.github.com)
     method: GET
-    uri: http://ops.epo.org/3.2/rest-services/number-service/application/original/PCT/GB02/04635.20021011/docdb
+    uri: http://ops.epo.org/3.2/rest-services/number-service/application/original/JP.(2006-147056).A.20060526/docdb
   response:
     body:
       string: "<?xml version=\"1.0\" encoding=\"UTF-8\"?><?xml-stylesheet type=\"text/xsl\"
         href=\"/3.2/style/numbers.xsl\"?>\n<ops:world-patent-data xmlns=\"http://www.epo.org/exchange\"
         xmlns:ops=\"http://ops.epo.org\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">\n
-        \   <ops:meta name=\"status\" value=\"pBRE002 pBRE015\"/>\n    <ops:meta name=\"version\"
+        \   <ops:meta name=\"status\" value=\"SUCCESS\"/>\n    <ops:meta name=\"version\"
         value=\"11.07.65\"/>\n    <ops:standardization inputFormat=\"original\" outputFormat=\"docdb\">\n
         \       <ops:input>\n            <ops:application-reference>\n                <document-id
-        document-id-type=\"original\">\n                    <doc-number>PCT/GB02/04635</doc-number>\n
-        \                   <date>20021011</date>\n                </document-id>\n
+        document-id-type=\"original\">\n                    <country>JP</country>\n
+        \                   <doc-number>2006-147056</doc-number>\n                    <kind>A</kind>\n
+        \                   <date>20060526</date>\n                </document-id>\n
         \           </ops:application-reference>\n        </ops:input>\n        <ops:output>\n
         \           <ops:application-reference>\n                <document-id document-id-type=\"docdb\">\n
-        \                   <country>GB</country>\n                    <doc-number>0204635</doc-number>\n
-        \                   <kind>W</kind>\n                    <date>20021011</date>\n
+        \                   <country>JP</country>\n                    <doc-number>2006147056</doc-number>\n
+        \                   <kind>A</kind>\n                    <date>20060526</date>\n
         \               </document-id>\n            </ops:application-reference>\n
         \       </ops:output>\n    </ops:standardization>\n</ops:world-patent-data>"
     headers:
@@ -42,13 +43,13 @@ interactions:
       Connection:
       - keep-alive
       Content-Length:
-      - '1155'
+      - '1224'
       Content-Type:
       - application/xml;charset=utf-8
       Date:
-      - Tue, 16 Aug 2022 02:12:07 GMT
+      - Mon, 30 Oct 2023 01:58:54 GMT
       ETag:
-      - '"02cf72625e86337d41a30675253a35cf8"'
+      - '"013ae5887ff2e6621ab43a4ab3d3a91ac"'
       Pragma:
       - no-cache
       Server:
@@ -64,14 +65,14 @@ interactions:
       X-EPO-Forwarded:
       - '[104.54.160.230]'
       X-Elapsed-Time:
-      - '49'
+      - '37'
       X-IndividualQuotaPerHour-Used:
-      - '163604'
+      - '1637946'
       X-RegisteredQuotaPerWeek-Used:
-      - '1232694'
+      - '1624911'
       X-Throttling-Control:
-      - overloaded (images=green:50, inpadoc=green:30, other=green:1000, retrieval=green:50,
-        search=green:5)
+      - idle (images=green:200, inpadoc=green:60, other=green:1000, retrieval=green:200,
+        search=green:30)
     status:
       code: 200
       message: OK
