@@ -1,0 +1,43 @@
+interactions:
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - developer.uspto.gov
+      user-agent:
+      - python-httpx/0.24.1
+    method: GET
+    uri: https://developer.uspto.gov/ds-api/oa_rejections/v2/fields
+  response:
+    content: '{"apiKey":"oa_rejections","apiVersionNumber":"v2","apiUrl":"https://developer.uspto.gov/ds-api/oa_rejections/v2/fields","apiDocumentationUrl":"https://developer.uspto.gov/ds-api-docs/index.html?url=https://developer.uspto.gov/ds-api/swagger/docs/oa_rejections.json","apiStatus":"PUBLISHED","fieldCount":34,"fields":["actionTypeCategory","aliceIndicator","allowedClaimIndicator","bilskiIndicator","cite102GT1","cite103EQ1","cite103GT3","cite103Max","claimNumberArrayDocument","closingMissing","createDateTime","createUserIdentifier","formParagraphMissing","groupArtUnitNumber","hasObjection","hasRej101","hasRej102","hasRej103","hasRej112","hasRejDP","headerMissing","id","legacyDocumentCodeIdentifier","legalSectionCode","mayoIndicator","myriadIndicator","nationalClass","nationalSubclass","obsoleteDocumentIdentifier","paragraphNumber","patentApplicationNumber","rejectFormMissmatch","signatureType","submissionDate"],"lastDataUpdatedDate":"2021-05-26
+      12:17:45.0"}'
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Headers:
+      - accept, authorization, content-type, x-requested-with
+      Access-Control-Allow-Methods:
+      - GET, POST, OPTIONS, PUT
+      Access-Control-Allow-Origin:
+      - '*'
+      Access-Control-Max-Age:
+      - '1'
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '965'
+      Content-Type:
+      - application/json
+      Date:
+      - Tue, 31 Oct 2023 17:45:06 GMT
+      Strict-Transport-Security:
+      - max-age=31536000;
+    http_version: HTTP/1.1
+    status_code: 200
+version: 1
