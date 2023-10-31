@@ -117,7 +117,7 @@ class PublicSearch(Model):
         return get_model("patent_client.epo.ops.published.model.Inpadoc").objects.get("US" + self.publication_number)
 
     def download_images(self, path="."):
-        return public_search_api.download_image(self, path)
+        return run_sync(public_search_async_api.download_image(self, path))
 
     async def adownload_images(self, path="."):
         return await public_search_async_api.download_image(self, path)
@@ -313,7 +313,7 @@ class PublicSearchDocument(Model):
         )
 
     def download_images(self, path="."):
-        run_sync(self.adownload_images(path))
+        return run_sync(self.adownload_images(path))
 
     async def adownload_images(self, path="."):
         return await public_search_async_api.download_image(self, path)

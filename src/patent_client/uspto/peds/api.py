@@ -1,5 +1,4 @@
 import datetime
-import json
 from typing import List
 from typing import Optional
 
@@ -94,7 +93,6 @@ class PatentExaminationDataSystemApi:
             params["rows"] = rows
 
         url = "https://ped.uspto.gov/api/queries"
-        print(json.dumps(params))
         response = await session.post(
             url,
             json=params,

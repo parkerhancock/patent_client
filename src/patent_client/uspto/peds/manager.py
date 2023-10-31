@@ -6,8 +6,6 @@ from tempfile import TemporaryDirectory
 from typing import AsyncIterator
 
 import inflection
-from patent_client import asession
-from patent_client import session
 from patent_client.util.asyncio_util import run_sync
 from patent_client.util.base.manager import Manager
 from patent_client.util.request_util import get_start_and_row_count
@@ -17,6 +15,7 @@ from .api import PatentExaminationDataSystemApi
 from .model import USApplication
 from .schema import DocumentSchema
 from .schema import USApplicationSchema
+from .session import session
 
 
 logger = logging.getLogger(__name__)
@@ -97,8 +96,8 @@ class USApplicationManager(Manager[USApplication]):
         """List of fields available to the API"""
         if not hasattr(self.__class__, "_fields"):
             url = "https://ped.uspto.gov/api/search-fields"
-            response = session.get(url)
-            if not response.ok:
+            response = run_sync(session.get(url))
+            if not response.status_code == 200:
                 raise ValueError("Can't get fields!")
             raw = response.json()
             output = {inflection.underscore(key): value for (key, value) in raw.items()}
@@ -130,13 +129,13 @@ class DocumentManager(Manager):
 
     async def alen(self):
         url = self.query_url + self.config.filter["appl_id"]
-        response = await asession.get(url)
+        response = await session.get(url)
         response.raise_for_status()
         return len(response.json())
 
     async def _aget_results(self) -> AsyncIterator[USApplication]:
         url = self.query_url + self.config.filter["appl_id"]
-        response = await asession.get(url)
+        response = await session.get(url)
         for item in response.json():
             yield self.__schema__.load(item)
 

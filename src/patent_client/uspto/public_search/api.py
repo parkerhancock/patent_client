@@ -1,9 +1,10 @@
 import asyncio
 from pathlib import Path
 
-import requests
+import httpx
+import tenacity
 
-from .session import aclient
+from .session import session
 
 
 class UsptoException(Exception):
@@ -23,6 +24,7 @@ class PublicSearchAsyncApi:
         self.session = dict()
         self.case_id = None
 
+    @tenacity.retry(stop=tenacity.stop_after_attempt(3), wait=tenacity.wait_random(min=1, max=5))
     async def run_query(
         self,
         query,
@@ -70,16 +72,17 @@ class PublicSearchAsyncApi:
         }
         for s in force_list(sources):
             data["query"]["databaseFilters"].append({"databaseName": s, "countryCodes": []})
-        query_response = await aclient.post(url, json=data)
+        query_response = await session.post(url, json=data)
         if query_response.status_code in (500, 415):
             await asyncio.sleep(5)
-            query_response = await aclient.post(url, json=data)
+            query_response = await session.post(url, json=data)
         query_response.raise_for_status()
         result = query_response.json()
         if result.get("error", None) is not None:
             raise UsptoException(f"Error #{result['error']['errorCode']}\n{result['error']['errorMessage']}")
         return result
 
+    @tenacity.retry(stop=tenacity.stop_after_attempt(3), wait=tenacity.wait_random(min=1, max=5))
     async def get_document(self, bib):
         url = f"https://ppubs.uspto.gov/dirsearch-public/patents/{bib.guid}/highlight"
         params = {
@@ -88,20 +91,22 @@ class PublicSearchAsyncApi:
             "includeSections": True,
             "uniqueId": None,
         }
-        response = await aclient.get(url, params=params)
+        response = await session.get(url, params=params)
         response.raise_for_status()
         return response.json()
 
+    @tenacity.retry(stop=tenacity.stop_after_attempt(3), wait=tenacity.wait_random(min=1, max=5))
     async def get_session(self):
         url = "https://ppubs.uspto.gov/dirsearch-public/users/me/session"
-        response = await aclient.post(url, json=-1)  # json=str(random.randint(10000, 99999)))
+        response = await session.post(url, json=-1)  # json=str(random.randint(10000, 99999)))
         self.session = response.json()
         self.case_id = self.session["userCase"]["caseId"]
         return self.session
 
+    @tenacity.retry(stop=tenacity.stop_after_attempt(3), wait=tenacity.wait_random(min=1, max=5))
     async def _request_save(self, obj):
         page_keys = [f"{obj.image_location}/{i:0>8}.tif" for i in range(1, obj.document_structure.page_count + 1)]
-        response = await aclient.post(
+        response = await session.post(
             "https://ppubs.uspto.gov/dirsearch-public/print/imageviewer",
             json={
                 "caseId": self.case_id,
@@ -114,7 +119,9 @@ class PublicSearchAsyncApi:
         response.raise_for_status()
         return response.text
 
+    @tenacity.retry(stop=tenacity.stop_after_attempt(3), wait=tenacity.wait_random(min=1, max=5))
     async def download_image(self, obj, path="."):
+        print("Trying!")
         out_path = Path(path).expanduser() / f"{obj.guid}.pdf"
         if out_path.exists():
             return out_path
@@ -122,11 +129,11 @@ class PublicSearchAsyncApi:
             await self.get_session()
         try:
             print_job_id = await self._request_save(obj)
-        except requests.exceptions.HTTPError:
+        except httpx.HTTPStatusError:
             await self.get_session()
             print_job_id = await self._request_save(obj)
         while True:
-            response = await aclient.post(
+            response = await session.post(
                 "https://ppubs.uspto.gov/dirsearch-public/print/print-process",
                 json=[
                     print_job_id,
@@ -138,9 +145,17 @@ class PublicSearchAsyncApi:
                 break
             await asyncio.sleep(1)
         pdf_name = print_data[0]["pdfName"]
-        async with aclient.stream("GET", f"https://ppubs.uspto.gov/dirsearch-public/print/save/{pdf_name}") as response:
-            with out_path.open("wb") as f:
-                async for chunk in response.aiter_bytes(chunk_size=8192):
+        with out_path.open("wb") as f:
+            try:
+                request = session.build_request(
+                    "GET", f"https://ppubs.uspto.gov/dirsearch-public/print/save/{pdf_name}"
+                )
+                response = await session.send(request, stream=True)
+                response.raise_for_status()
+                async for chunk in response.aiter_bytes():
                     if chunk:
                         f.write(chunk)
+            except httpx.HTTPStatusError as e:
+                await response.aclose()
+                raise e
         return out_path

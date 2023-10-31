@@ -3,10 +3,6 @@
 Original API URL: <https://ppubs.uspto.gov/pubwebapp>
 
 :::{warning}
-This API is currently broken due to changes on the USPTO website to discourage automated tools from accessing Public Patents Search
-:::
-
-:::{warning}
 The USPTO's Public Search interface IS NOT for bulk downloads. Please limit retrievals to 10's
 of documents. That will also prevent any issues with distributing this code. If you really
 want hundreds or thousands of documents, please use [Google's Public Patents Data Sets](GPAT).

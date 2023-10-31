@@ -111,6 +111,7 @@ class TestPatents:
         assert obj.publication_number == "7658211"
         assert obj.patent_title == "Tennis ball recharging apparatus method"
 
+    @pytest.mark.no_vcr
     def test_can_get_images(self, tmp_path):
         pat = Patent.objects.get("6103599")
         path = pat.download_images(path=tmp_path)
@@ -163,6 +164,7 @@ class TestPublishedApplicationFullText:
         obj = PublishedApplication.objects.get("20170260839")
         assert obj.claims[0].text[:39] == "1. A method of well ranging comprising:"
 
+    @pytest.mark.no_vcr
     def test_can_get_images(self, tmp_path):
         pat = PublishedApplication.objects.get("20090150362")
         pat.download_images(path=tmp_path)
@@ -311,6 +313,7 @@ class TestPatentsAsync:
         assert obj.publication_number == "7658211"
         assert obj.patent_title == "Tennis ball recharging apparatus method"
 
+    @pytest.mark.no_vcr
     @pytest.mark.asyncio
     async def test_can_get_images(self, tmp_path):
         pat = await Patent.objects.aget("6103599")
@@ -319,7 +322,7 @@ class TestPatentsAsync:
         assert path.exists()
 
 
-class TestPublishedApplicationFullText:
+class TestPublishedApplicationFullTextAsync:
     @pytest.mark.asyncio
     async def test_fetch_publication(self):
         pub_no = 20_160_009_839
@@ -368,7 +371,7 @@ class TestPublishedApplicationFullText:
         obj = await PublishedApplication.objects.aget("20170260839")
         assert obj.claims[0].text[:39] == "1. A method of well ranging comprising:"
 
-    @pytest.mark.skip("not working?")
+    @pytest.mark.no_vcr
     @pytest.mark.asyncio
     async def test_can_get_images(self, tmp_path):
         pat = await PublishedApplication.objects.aget("20090150362")

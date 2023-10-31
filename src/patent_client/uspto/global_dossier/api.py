@@ -1,19 +1,17 @@
-import httpx
-
-asession = httpx.AsyncClient(headers={"Authorization": "OQmPwAN1QD4OXe25jpmMD27zmnM21gIL0lg85G6j"})
+from .session import session
 
 
 class GlobalDossierAsyncApi:
     async def get_file(self, doc_number, type_code="application", office_code="US"):
         url = f"https://gd-api2.uspto.gov/patent-family/svc/family/{type_code}/{office_code}/{doc_number}"
-        pre_flight = await asession.options(url)
-        response = await asession.get(url)
+        pre_flight = await session.options(url)
+        response = await session.get(url)
         response.raise_for_status()
         return response.json()
 
     async def get_doc_list(self, country, doc_number, kind_code):
         url = f"https://gd-api2.uspto.gov/doc-list/svc/doclist/{country}/{doc_number}/{kind_code}"
-        response = await asession.get(url)
+        response = await session.get(url)
         response.raise_for_status()
         return response.json()
 

@@ -13,7 +13,7 @@ interactions:
       host:
       - gd-api2.uspto.gov
       user-agent:
-      - python-httpx/0.24.1
+      - Mozilla/5.0 Python Patent Clientbot/3.2.8 (parkerhancock@users.noreply.github.com)
     method: OPTIONS
     uri: https://gd-api2.uspto.gov/patent-family/svc/family/publication/EP/1000000
   response:
@@ -24,9 +24,9 @@ interactions:
       Content-Length:
       - '0'
       Date:
-      - Mon, 30 Oct 2023 15:32:09 GMT
+      - Tue, 31 Oct 2023 15:44:20 GMT
       apigw-requestid:
-      - NnzjEgL5oAMEaYg=
+      - NrIROjdAoAMEMPQ=
     http_version: HTTP/1.1
     status_code: 204
 - request:
@@ -43,32 +43,22 @@ interactions:
       host:
       - gd-api2.uspto.gov
       user-agent:
-      - python-httpx/0.24.1
+      - Mozilla/5.0 Python Patent Clientbot/3.2.8 (parkerhancock@users.noreply.github.com)
     method: GET
     uri: https://gd-api2.uspto.gov/patent-family/svc/family/publication/EP/1000000
   response:
-    content: "{\"country\":\"EP\",\"internal\":\"true\",\"corrAppNum\":null,\"id\":\"1000000\",\"type\":\"publication\",\"list\":[{\"appNum\":\"99203729\",\"appDate\":942019200000,\"pubList\":[{\"pubCountry\":\"EP\",\"pubNum\":\"1000000\",\"pubDate\":958521600000,\"kindCode\":\"A1\",\"pubDateStr\":\"05/17/2000\"},{\"pubCountry\":\"EP\",\"pubNum\":\"1000000\",\"pubDate\":1045008000000,\"kindCode\":\"B1\",\"pubDateStr\":\"02/12/2003\"}],\"countryCode\":\"EP\",\"docList\":null,\"kindCode\":\"A\",\"priorityClaimList\":[{\"country\":\"NL\",\"docNumber\":\"1010536\",\"kindCode\":\"A\"}],\"appDateStr\":\"11/08/1999\",\"docListMsg\":null,\"docNum\":{\"country\":\"EP\",\"docNumber\":\"99203729\",\"format\":\"docdb\",\"date\":\"11/08/1999\",\"kindCode\":\"A\"},\"title\":\"Apparatus
-      for manufacturing green bricks for the brick manufacturing industry\",\"applicantNames\":[\"BOER
-      BEHEER NIJMEGEN BV DE\"],\"ip5\":true},{\"appNum\":\"20685698\",\"appDate\":913075200000,\"pubList\":[{\"pubCountry\":\"US\",\"pubNum\":\"6093011\",\"pubDate\":964483200000,\"kindCode\":\"A\",\"pubDateStr\":\"07/25/2000\"}],\"countryCode\":\"US\",\"docList\":null,\"kindCode\":\"A\",\"priorityClaimList\":[{\"country\":\"NL\",\"docNumber\":\"1010536\",\"kindCode\":\"A\"}],\"appDateStr\":\"12/08/1998\",\"docListMsg\":null,\"docNum\":{\"country\":\"US\",\"docNumber\":\"20685698\",\"format\":\"original\",\"date\":\"12/08/1998\",\"kindCode\":\"A\"},\"title\":\"Apparatus
-      for manufacturing green bricks for the brick manufacturing industry\",\"applicantNames\":[\"BOER
-      BEHEER NIJMEGEN BV DE\"],\"ip5\":true},{\"appNum\":\"69905327\",\"appDate\":942019200000,\"pubList\":[{\"pubCountry\":\"DE\",\"pubNum\":\"69905327\",\"pubDate\":1048118400000,\"kindCode\":\"D1\",\"pubDateStr\":\"03/20/2003\"}],\"countryCode\":\"DE\",\"docList\":null,\"kindCode\":\"T\",\"priorityClaimList\":[{\"country\":\"NL\",\"docNumber\":\"1010536\",\"kindCode\":\"A\"}],\"appDateStr\":\"11/08/1999\",\"docListMsg\":null,\"docNum\":{\"country\":\"DE\",\"docNumber\":\"69905327\",\"format\":\"docdb\",\"date\":\"11/08/1999\",\"kindCode\":\"T\"},\"title\":\"Vorrichtung
-      zur Herstellung von Steinformlingen f\xFCr die Ziegelindustrie\",\"applicantNames\":[\"BEHEERMIJ
-      DE BOER NIJMEGEN BV\"],\"ip5\":false},{\"appNum\":\"99203729\",\"appDate\":942019200000,\"pubList\":[{\"pubCountry\":\"AT\",\"pubNum\":\"232441\",\"pubDate\":1045267200000,\"kindCode\":\"T\",\"pubDateStr\":\"02/15/2003\"}],\"countryCode\":\"AT\",\"docList\":null,\"kindCode\":\"T\",\"priorityClaimList\":[{\"country\":\"NL\",\"docNumber\":\"1010536\",\"kindCode\":\"A\"}],\"appDateStr\":\"11/08/1999\",\"docListMsg\":null,\"docNum\":{\"country\":\"AT\",\"docNumber\":\"99203729\",\"format\":\"docdb\",\"date\":\"11/08/1999\",\"kindCode\":\"T\"},\"title\":\"VORRICHTUNG
-      ZUR HERSTELLUNG VON STEINFORMLINGEN F\xDCR DIE ZIEGELINDUSTRIE\",\"applicantNames\":[\"BEHEERMIJ
-      DE BOER NIJMEGEN BV\"],\"ip5\":false},{\"appNum\":\"1010536\",\"appDate\":910828800000,\"pubList\":[{\"pubCountry\":\"NL\",\"pubNum\":\"1010536\",\"pubDate\":958348800000,\"kindCode\":\"C2\",\"pubDateStr\":\"05/15/2000\"}],\"countryCode\":\"NL\",\"docList\":null,\"kindCode\":\"A\",\"priorityClaimList\":[{\"country\":\"NL\",\"docNumber\":\"1010536\",\"kindCode\":\"A\"}],\"appDateStr\":\"11/12/1998\",\"docListMsg\":null,\"docNum\":{\"country\":\"NL\",\"docNumber\":\"1010536\",\"format\":\"docdb\",\"date\":\"11/12/1998\",\"kindCode\":\"A\"},\"title\":\"Inrichting
-      voor het vervaardigen van vormlingen voor de steenindustrie.\",\"applicantNames\":[\"BOER
-      BEHEER NIJMEGEN BV DE\"],\"ip5\":false}]}"
+    content: '{"country":"EP","internal":"false","corrAppNum":"99203729","id":"1000000","type":"publication","list":[{"appNum":"1010536","appDate":910828800000,"pubList":[{"pubCountry":"NL","pubNum":"1010536","pubDate":958348800000,"kindCode":"C2","pubDateStr":"05/15/2000"}],"countryCode":"NL","docList":null,"kindCode":"A","priorityClaimList":[{"country":"NL","docNumber":"1010536","kindCode":"A"}],"appDateStr":"11/12/1998","docListMsg":null,"docNum":{"country":"NL","docNumber":"1010536","format":null,"date":"11/12/1998","kindCode":"A"},"title":null,"applicantNames":null,"ip5":false},{"appNum":"20685698","appDate":913075200000,"pubList":[{"pubCountry":"US","pubNum":"6093011","pubDate":964483200000,"kindCode":"A","pubDateStr":"07/25/2000"}],"countryCode":"US","docList":null,"kindCode":"A","priorityClaimList":[{"country":"NL","docNumber":"1010536","kindCode":"A"}],"appDateStr":"12/08/1998","docListMsg":null,"docNum":{"country":"US","docNumber":"20685698","format":null,"date":"12/08/1998","kindCode":"A"},"title":null,"applicantNames":null,"ip5":true},{"appNum":"99203729","appDate":942019200000,"pubList":[{"pubCountry":"AT","pubNum":"E232441","pubDate":1045267200000,"kindCode":"T1","pubDateStr":"02/15/2003"}],"countryCode":"AT","docList":null,"kindCode":"T","priorityClaimList":[{"country":"NL","docNumber":"1010536","kindCode":"A"}],"appDateStr":"11/08/1999","docListMsg":null,"docNum":{"country":"AT","docNumber":"99203729","format":null,"date":"11/08/1999","kindCode":"T"},"title":null,"applicantNames":null,"ip5":false},{"appNum":"69905327","appDate":942019200000,"pubList":[{"pubCountry":"DE","pubNum":"69905327","pubDate":1048118400000,"kindCode":"D1","pubDateStr":"03/20/2003"}],"countryCode":"DE","docList":null,"kindCode":"T","priorityClaimList":[{"country":"NL","docNumber":"1010536","kindCode":"A"}],"appDateStr":"11/08/1999","docListMsg":null,"docNum":{"country":"DE","docNumber":"69905327","format":null,"date":"11/08/1999","kindCode":"T"},"title":null,"applicantNames":null,"ip5":false},{"appNum":"99203729","appDate":942019200000,"pubList":[{"pubCountry":"EP","pubNum":"1000000","pubDate":958521600000,"kindCode":"A1","pubDateStr":"05/17/2000"},{"pubCountry":"EP","pubNum":"1000000","pubDate":1045008000000,"kindCode":"B1","pubDateStr":"02/12/2003"}],"countryCode":"EP","docList":null,"kindCode":"A","priorityClaimList":[{"country":"NL","docNumber":"1010536","kindCode":"A"}],"appDateStr":"11/08/1999","docListMsg":null,"docNum":{"country":"EP","docNumber":"99203729","format":null,"date":"11/08/1999","kindCode":"A"},"title":null,"applicantNames":null,"ip5":true}]}'
     headers:
       Connection:
       - keep-alive
       Content-Length:
-      - '3086'
+      - '2582'
       Content-Type:
       - application/json
       Date:
-      - Mon, 30 Oct 2023 15:32:09 GMT
+      - Tue, 31 Oct 2023 15:44:20 GMT
       apigw-requestid:
-      - NnzjEg5iIAMEasg=
+      - NrIRPgFGoAMEMkg=
     http_version: HTTP/1.1
     status_code: 200
 - request:
@@ -85,7 +75,7 @@ interactions:
       host:
       - gd-api2.uspto.gov
       user-agent:
-      - python-httpx/0.24.1
+      - Mozilla/5.0 Python Patent Clientbot/3.2.8 (parkerhancock@users.noreply.github.com)
     method: OPTIONS
     uri: https://gd-api2.uspto.gov/patent-family/svc/family/application/US/16123456
   response:
@@ -96,9 +86,9 @@ interactions:
       Content-Length:
       - '0'
       Date:
-      - Mon, 30 Oct 2023 15:32:10 GMT
+      - Tue, 31 Oct 2023 15:44:20 GMT
       apigw-requestid:
-      - NnzjHgt4IAMESFQ=
+      - NrIRRjM2IAMEY3A=
     http_version: HTTP/1.1
     status_code: 204
 - request:
@@ -115,7 +105,7 @@ interactions:
       host:
       - gd-api2.uspto.gov
       user-agent:
-      - python-httpx/0.24.1
+      - Mozilla/5.0 Python Patent Clientbot/3.2.8 (parkerhancock@users.noreply.github.com)
     method: GET
     uri: https://gd-api2.uspto.gov/patent-family/svc/family/application/US/16123456
   response:
@@ -243,9 +233,9 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Mon, 30 Oct 2023 15:32:11 GMT
+      - Tue, 31 Oct 2023 15:44:21 GMT
       apigw-requestid:
-      - NnzjHhGdoAMESew=
+      - NrIRShqxIAMEY9g=
     http_version: HTTP/1.1
     status_code: 200
 version: 1

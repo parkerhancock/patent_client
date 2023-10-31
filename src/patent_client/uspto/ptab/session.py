@@ -1,8 +1,10 @@
-from pathlib import Path
-
 import hishel
-from patent_client.util.request_util import SimpleController
+import httpx
 
-cert = str(Path(__file__).parent / "developer.uspto.gov.crt")
-
-session = hishel.AsyncCacheClient(controller=SimpleController(max_age=3 * 24 * 60 * 60), verify=cert)
+session = hishel.AsyncCacheClient(
+    transport=httpx.AsyncHTTPTransport(
+        retries=3,
+        verify=False,
+    ),
+    timeout=60 * 5,
+)

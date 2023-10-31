@@ -2,10 +2,8 @@ import logging
 import re
 import warnings
 from collections.abc import Sequence
-from pathlib import Path
 from typing import AsyncIterator
 
-import httpx
 from patent_client.util import Manager
 from patent_client.util.request_util import get_start_and_row_count
 from urllib3.connectionpool import InsecureRequestWarning
@@ -20,8 +18,6 @@ clean_number = lambda x: NUMBER_CLEAN_RE.sub("", str(x))
 
 
 logger = logging.getLogger(__name__)
-assignment_cert = Path(__file__).parent.parent / "uspto.cer"
-asession = httpx.AsyncClient(verify=False)
 
 
 class AssignmentManager(Manager[Assignment]):

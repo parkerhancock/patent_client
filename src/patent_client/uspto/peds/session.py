@@ -1,4 +1,13 @@
 import hishel
-from patent_client.util.request_util import SimpleController
+import httpx
 
-session = hishel.AsyncCacheClient(controller=SimpleController(max_age=3 * 24 * 60 * 60))
+session = hishel.AsyncCacheClient(
+    transport=httpx.AsyncHTTPTransport(
+        retries=3,
+        verify=False,
+    ),
+    timeout=60 * 5,
+    controller=hishel.Controller(
+        allow_heuristics=True,
+    ),
+)

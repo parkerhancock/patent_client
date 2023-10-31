@@ -17,7 +17,8 @@ def vcr_config():
 
 def pytest_collection_modifyitems(items):
     for item in items:
-        item.add_marker(pytest.mark.vcr)
+        if not item.get_closest_marker("no_vcr"):
+            item.add_marker(pytest.mark.vcr)
         # item.add_marker(pytest.mark.block_network)
 
 

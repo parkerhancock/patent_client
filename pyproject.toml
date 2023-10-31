@@ -59,6 +59,7 @@ IPython                    = {optional=true, version="^7.17.0"}
 httpx = {extras = ["http2"], version = "^0.24.1"}
 nest-asyncio = "^1.5.8"
 hishel = {extras = ["sqlite"], version = "^0.0.16"}
+tenacity = "^8.2.3"
 
 [tool.poetry.dev-dependencies]
 
@@ -121,3 +122,6 @@ doctest_optionflags= [
     "ELLIPSIS"
 ]
 asyncio_mode = "auto"
+markers = [
+    "no_vcr: disable vcrpy recording",
+]

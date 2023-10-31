@@ -1,6 +1,15 @@
+from typing import Generic
+from typing import TypeVar
+
 from patent_client.util.base.manager import Manager
 
 from . import public_search_async_api
+from .model import Patent
+from .model import PatentBiblio
+from .model import PublicSearch
+from .model import PublicSearchDocument
+from .model import PublishedApplication
+from .model import PublishedApplicationBiblio
 from .query import QueryBuilder
 from .schema import PublicSearchDocumentSchema
 from .schema import PublicSearchSchema
@@ -14,7 +23,10 @@ class FinishedException(Exception):
     pass
 
 
-class PublicSearchManager(Manager):
+T = TypeVar("T")
+
+
+class GenericPublicSearchManager(Manager, Generic[T]):
     __schema__ = PublicSearchSchema
     page_size = 500
     primary_key = "patent_number"
@@ -82,7 +94,7 @@ class PublicSearchManager(Manager):
         return self._len
 
 
-class PublicSearchDocumentManager(PublicSearchManager):
+class GenericPublicSearchDocumentManager(GenericPublicSearchManager, Generic[T]):
     __doc_schema__ = PublicSearchDocumentSchema()
 
     async def _aget_results(self):
@@ -97,7 +109,15 @@ class PublicSearchDocumentManager(PublicSearchManager):
             yield self.__doc_schema__.load(doc)
 
 
-class PatentBiblioManager(PublicSearchManager):
+class PublicSearchManager(GenericPublicSearchManager[PublicSearch]):
+    pass
+
+
+class PublicSearchDocumentManager(GenericPublicSearchDocumentManager[PublicSearchDocument]):
+    pass
+
+
+class PatentBiblioManager(GenericPublicSearchManager[PatentBiblio]):
     def __init__(self, config=None):
         super().__init__(config=config)
         self.config.options["sources"] = [
@@ -105,7 +125,7 @@ class PatentBiblioManager(PublicSearchManager):
         ]
 
 
-class PatentManager(PublicSearchDocumentManager):
+class PatentManager(GenericPublicSearchDocumentManager[Patent]):
     def __init__(self, config=None):
         super().__init__(config=config)
         self.config.options["sources"] = [
@@ -113,7 +133,7 @@ class PatentManager(PublicSearchDocumentManager):
         ]
 
 
-class PublishedApplicationBiblioManager(PublicSearchManager):
+class PublishedApplicationBiblioManager(GenericPublicSearchManager[PublishedApplicationBiblio]):
     def __init__(self, config=None):
         super().__init__(config=config)
         self.config.options["sources"] = [
@@ -121,7 +141,7 @@ class PublishedApplicationBiblioManager(PublicSearchManager):
         ]
 
 
-class PublishedApplicationManager(PublicSearchDocumentManager):
+class PublishedApplicationManager(GenericPublicSearchDocumentManager[PublishedApplication]):
     def __init__(self, config=None):
         super().__init__(config=config)
         self.config.options["sources"] = [
