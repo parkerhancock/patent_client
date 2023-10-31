@@ -39,10 +39,6 @@ DEFAULT:
     LOG_FILE: patent_client.log
     LOG_LEVEL: INFO
 
-CACHE:
-    PATH: requests_cache.sqlite
-    MAX_AGE: "3 days"
-
 EPO:
     API_KEY: <Key Here>
     API_SECRET: <Secret Here>
@@ -191,13 +187,4 @@ Managers also behave like Django QuerySets, and support [values](https://docs.dj
     'INTELLIGENT ASSISTANT',
     'STYLUS FIRMWARE UPDATES'
 ]
-```
-
-## Caching
-
-Patent Client uses [requests_cache](https://requests-cache.readthedocs.io/) to provide caching support. By default, it stores
-cached responses for 3 days, and stores them to a SQLite database at:
-
-```bash
-~/patent_client/requests_cache.sqlite
 ```

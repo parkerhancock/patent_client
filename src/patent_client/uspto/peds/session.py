@@ -1,13 +1,3 @@
-import hishel
-import httpx
+from patent_client.session import PatentClientSession
 
-session = hishel.AsyncCacheClient(
-    transport=httpx.AsyncHTTPTransport(
-        retries=3,
-        verify=False,
-    ),
-    timeout=60 * 5,
-    controller=hishel.Controller(
-        allow_heuristics=True,
-    ),
-)
+session = PatentClientSession()

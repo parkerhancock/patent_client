@@ -1,7 +1,7 @@
 import datetime as dt
 
-import hishel
 from patent_client import SETTINGS
+from patent_client.session import PatentClientSession
 from patent_client.util.asyncio_util import SyncProxy
 
 NS = {
@@ -24,7 +24,7 @@ class OpsForbiddenError(Exception):
     pass
 
 
-class OpsAsyncSession(hishel.AsyncCacheClient):
+class OpsAsyncSession(PatentClientSession):
     def __init__(self, *args, key=None, secret=None, **kwargs):
         super(OpsAsyncSession, self).__init__(*args, **kwargs)
         self.key: str = key
@@ -65,4 +65,4 @@ class OpsAsyncSession(hishel.AsyncCacheClient):
         return response
 
 
-asession = OpsAsyncSession(key=SETTINGS.EPO.API_KEY, secret=SETTINGS.EPO.API_SECRET, follow_redirects=True)
+asession = OpsAsyncSession(key=SETTINGS.EPO.API_KEY, secret=SETTINGS.EPO.API_SECRET)

@@ -29,6 +29,8 @@ except OSError:
     SETTINGS.DEFAULT.BASE_DIR = str(BASE_DIR)
 
 LOG_FILENAME = BASE_DIR / SETTINGS.DEFAULT.LOG_FILE
+CACHE_DIR = BASE_DIR / "cache"
+CACHE_DIR.mkdir(exist_ok=True, parents=True)
 
 # Set up a specific logger with our desired output level
 logger = logging.getLogger(__name__)

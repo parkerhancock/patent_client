@@ -6,7 +6,6 @@ from fileinput import filename
 from pathlib import Path
 from typing import *
 
-from patent_client import session
 from patent_client.util import Model
 from yankee.data import ListCollection
 
