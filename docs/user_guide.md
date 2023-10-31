@@ -6,6 +6,7 @@ This section is a set of user guides on the various modules contained herein
 :maxdepth: 2
 
 user_guide/introduction
+user_guide/asyncio
 user_guide/us_application
 user_guide/fulltext
 user_guide/assignments
