@@ -98,7 +98,7 @@ class TestPtabProceedingAsync:
         assert await result.offset(1).offset(1).afirst() == objects[2]
 
 
-class TestPtabDocument:
+class TestPtabDocumentAsync:
     @pytest.mark.asyncio
     async def test_filter_by_proceeding(self):
         result = PtabDocument.objects.filter(proceeding_number="IPR2016-00831")
@@ -116,7 +116,7 @@ class TestPtabDocument:
         assert len(result) == 3
 
 
-class TestPtabDecision:
+class TestPtabDecisionAsync:
     @pytest.mark.asyncio
     async def test_get_by_proceeding(self):
         result = await PtabDecision.objects.aget(proceeding_number="IPR2016-00831")

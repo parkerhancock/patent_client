@@ -1,22 +1,21 @@
-import json
 import logging
-from datetime import date
+from collections.abc import Sequence
 from pathlib import Path
 from tempfile import TemporaryDirectory
 from typing import AsyncIterator
+from typing import TYPE_CHECKING
 
-import inflection
 from patent_client.util.asyncio_util import run_sync
 from patent_client.util.base.manager import Manager
 from patent_client.util.request_util import get_start_and_row_count
 from PyPDF2 import PdfFileMerger
 
 from .api import PatentExaminationDataSystemApi
-from .model import USApplication
-from .schema import DocumentSchema
-from .schema import USApplicationSchema
-from .session import session
+from .query import QueryFields
+from .util import date_to_solr_date
 
+if TYPE_CHECKING:
+    from .model import USApplication, Document
 
 logger = logging.getLogger(__name__)
 
@@ -25,25 +24,18 @@ class HttpException(Exception):
     pass
 
 
-class USApplicationManager(Manager[USApplication]):
-    primary_key = "appl_id"
-    query_url = "https://ped.uspto.gov/api/queries"
-    page_size = 20
-    __schema__ = USApplicationSchema()
-
-    def __init__(self, *args, **kwargs):
-        super(USApplicationManager, self).__init__(*args, **kwargs)
-        self.pages = dict()
+class USApplicationManager(Manager["USApplication"]):
+    default_filter = "appl_id"
 
     async def alen(self):
         api = PatentExaminationDataSystemApi()
         max_length = (await api.create_query(**self.get_query_params())).num_found
         return min(max_length, self.config.limit) if self.config.limit else max_length
 
-    async def _aget_results(self) -> AsyncIterator[USApplication]:
+    async def _aget_results(self) -> AsyncIterator["USApplication"]:
         query_params = self.get_query_params()
         api = PatentExaminationDataSystemApi()
-        for start, rows in get_start_and_row_count(self.config.limit, self.config.offset, self.page_size):
+        for start, rows in get_start_and_row_count(self.config.limit, self.config.offset, page_size=20):
             page = await api.create_query(**{**query_params, "start": start, "rows": rows})
             for app in page.applications:
                 yield app
@@ -51,28 +43,76 @@ class USApplicationManager(Manager[USApplication]):
                 break
 
     def get_query_params(self):
+        # Short circuit processing logic if the "query" filter is specified
         if "query" in self.config.filter:
             query_text = self.config.filter["query"]
         else:
             query = list()
-            for k, v in self.config.filter.items():
-                field = inflection.camelize(k, uppercase_first_letter=False)
-                if not v:
-                    continue
-                elif type(v) in (list, tuple):
-                    v = (str(i) for i in v)
-                    body = " OR ".join(f'"{value}"' if " " in value else value for value in v)
+            date_filters = {
+                QueryFields.get(k): v for k, v in self.config.filter.items() if QueryFields.is_date_field(k)
+            }
+            non_date_filters = {QueryFields.get(k): v for k, v in self.config.filter.items() if k not in date_filters}
+
+            date_filter_tuples = list()
+            # Check date filters for validity
+            for k, v in date_filters.items():
+                if "__" in k:
+                    f, *op = k.split("__")
+                    if len(op) > 1:
+                        raise ValueError(f"Invalid date filter: {k}={v}; Cannot have more than one operator")
+                    if op[0] not in ("gte", "lte"):
+                        raise ValueError(f"Invalid date filter: {k}={v}; Invalid operator: {op[0]}")
+                    if isinstance(v, (list, tuple)):
+                        raise ValueError(
+                            f"Invalid date filter: {k}={v}; Cannot have multiple values with operator {op[0]}"
+                        )
+                    date_filter_tuples.append((f, op[0], date_to_solr_date(v)))
                 else:
-                    body = v
-                query.append(f"{field}:({body})")
-            query_text = " AND ".join(query).strip()
+                    if isinstance(v, (list, tuple)):
+                        if len(v) != 2:
+                            raise ValueError(
+                                f"Invalid date range filter: {k}; When filtering using a list or tuple, must have length 2 (start, end)"
+                            )
+                        date_filter_tuples.append((k, "gte", date_to_solr_date(v[0])))
+                        date_filter_tuples.append((k, "lte", date_to_solr_date(v[1])))
+                    else:
+                        date_filter_tuples.append((k, "exact", date_to_solr_date(v)))
+
+            # Create pairs of gte/lte filters
+            query_date_filter_tuples = set()
+            for k, op, v in date_filter_tuples:
+                if op == "gte":
+                    lte_query = next((v for k, op, v in date_filter_tuples if k == k and op == "lte"), "*")
+                    query_date_filter_tuples.append((k, (v, lte_query)))
+                elif op == "lte":
+                    gte_query = next((v for k, op, v in date_filter_tuples if k == k and op == "gte"), "*")
+                    query_date_filter_tuples.append((k, (gte_query, v)))
+                elif op == "exact":
+                    query_date_filter_tuples.append((k, v))
+
+            # Create the query string
+            for k, v in query_date_filter_tuples:
+                if isinstance(v, (list, tuple)):
+                    query.append(f"{k}:[{v[0]} TO {v[1]}]")
+                else:
+                    query.append(f"{k}:{v}")
+
+            # Add non-date filters
+            for k, v in non_date_filters.items():
+                if isinstance(v, Sequence) and not isinstance(v, str):
+                    values = " OR ".join(str(i) for i in v)
+                    query.append(f"{k}:({values})")
+                else:
+                    query.append(f"{k}:({v})")
+            query_text = " AND ".join(query)
+
         if self.config.order_by:
             sort_query = ""
             for s in self.config.order_by:
                 if s[0] == "-":
-                    sort_query += f"{inflection.camelize(s[1:], uppercase_first_letter=False)} desc ".strip()
+                    sort_query += f"{QueryFields.get(s)} desc ".strip()
                 else:
-                    sort_query += (f"{inflection.camelize(s, uppercase_first_letter=False)} asc").strip()
+                    sort_query += (f"{QueryFields.get(s)} asc").strip()
         else:
             sort_query = None
 
@@ -89,55 +129,26 @@ class USApplicationManager(Manager[USApplication]):
 
     @property
     def allowed_filters(self):
-        fields = self.fields()
-        return list(fields.keys())
+        return QueryFields.field_names()
 
-    def fields(self):
-        """List of fields available to the API"""
-        if not hasattr(self.__class__, "_fields"):
-            url = "https://ped.uspto.gov/api/search-fields"
-            response = run_sync(session.get(url))
-            if not response.status_code == 200:
-                raise ValueError("Can't get fields!")
-            raw = response.json()
-            output = {inflection.underscore(key): value for (key, value) in raw.items()}
-            self.__class__._fields = output
-        return self.__class__._fields
+    async def ais_online(self):
+        return await PatentExaminationDataSystemApi.is_online()
 
     def is_online(self):
-        return run_sync(PatentExaminationDataSystemApi.is_online)
-
-    @property
-    def query_fields(self):
-        fields = self.fields()
-        for k in sorted(fields.keys()):
-            if "facet" in k:
-                continue
-            print(f"{k} ({fields[k]})")
+        return run_sync(self.ais_online())
 
 
-class DateEncoder(json.JSONEncoder):
-    def default(self, o):
-        if isinstance(o, date):
-            return o.isoformat()
-        return json.JSONEncoder.default(self, o)
-
-
-class DocumentManager(Manager):
-    query_url = "https://ped.uspto.gov/api/queries/cms/public/"
-    __schema__ = DocumentSchema()
+class DocumentManager(Manager["Document"]):
+    default_filter = "appl_id"
 
     async def alen(self):
-        url = self.query_url + self.config.filter["appl_id"]
-        response = await session.get(url)
-        response.raise_for_status()
-        return len(response.json())
+        return len([i async for i in self])
 
-    async def _aget_results(self) -> AsyncIterator[USApplication]:
-        url = self.query_url + self.config.filter["appl_id"]
-        response = await session.get(url)
-        for item in response.json():
-            yield self.__schema__.load(item)
+    async def _aget_results(self) -> AsyncIterator["Document"]:
+        api = PatentExaminationDataSystemApi()
+        docs = await api.get_documents(self.config.filter["appl_id"])
+        for doc in docs:
+            yield doc
 
     def download(self, docs, path="."):
         run_sync(self.adownload(docs, path))

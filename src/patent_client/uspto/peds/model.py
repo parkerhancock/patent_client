@@ -7,11 +7,17 @@ from pathlib import Path
 from typing import Iterable
 from typing import List
 from typing import Optional
+from typing import TYPE_CHECKING
 
 from dateutil.relativedelta import relativedelta
-from patent_client.util import Model
+from patent_client.util.base.model import Model
 from patent_client.util.base.related import get_model
 from yankee.data import ListCollection
+
+
+if TYPE_CHECKING:
+    from patent_client import PtabProceeding, Patent, PublishedApplication
+    from patent_client.epo.ops.published.model import InpadocBiblio
 
 
 @dataclass
@@ -20,7 +26,16 @@ class USApplication(Model):
     System (PEDS)
     """
 
-    __manager__ = "patent_client.uspto.peds.manager.USApplicationManager"
+    # @ClassProperty
+    # def objects(cls) -> "USApplicationManager":
+    #    from .manager import USApplicationManager
+    #    return USApplicationManager()
+
+    def __repr__(self):
+        return f"<USApplication(appl_id={self.appl_id}, title={self.patent_title})>)"
+
+    def __hash__(self):
+        return hash(self.appl_id)
 
     appl_id: str = field(compare=True)
     """The application number. U.S. Applications are digits only.
@@ -131,9 +146,6 @@ class USApplication(Model):
     assignments: ListCollection[Assignment] = field(default_factory=ListCollection, repr=False)
     """List of Assignments that include this application"""
 
-    def __hash__(self):
-        return hash(self.appl_id)
-
     # Dynamic Properties
 
     @property
@@ -141,7 +153,7 @@ class USApplication(Model):
         return f"https://patentcenter.uspto.gov/applications/{self.appl_id}"
 
     @property
-    def google_patents_link(self) -> str:
+    def google_patents_link(self) -> Optional[str]:
         if self.patent_number is not None:
             return f"https://patents.google.com/patent/US{self.patent_number}/en"
         elif self.app_early_pub_number is not None:
@@ -176,7 +188,7 @@ class USApplication(Model):
         return self.app_early_pub_number[2:-2]
 
     @property
-    def priority_date(self) -> datetime.date:
+    def priority_date(self) -> Optional[datetime.date]:
         """Attempts to return the priority date of the application, calculated as
         the earliest application filing date among the application's parents, or
         its own filing date if it has no parents. Does not include foreign priority
@@ -231,26 +243,26 @@ class USApplication(Model):
 
     # Related objects
     @property
-    def documents(self) -> "Iterable[patent_client.uspto.peds.model.Document]":
+    def documents(self) -> "Iterable[Document]":
         """File History Documents from PEDS CMS"""
         return get_model("patent_client.uspto.peds.model.Document").objects.filter(appl_id=self.appl_id)
 
     @property
     def related_assignments(
         self,
-    ) -> "Iterable[patent_client.uspto.assignment.model.Assignment]":
+    ) -> "Iterable[Assignment]":
         """Related Assignments from the Assignments API"""
         return get_model("patent_client.uspto.assignment.model.Assignment").objects.filter(appl_id=self.appl_id)
 
     @property
     def ptab_proceedings(
         self,
-    ) -> "Iterable[patent_client.uspto.ptab.model.PtabProceeding]":
+    ) -> "Iterable[PtabProceeding]":
         """Related PtabProceedings for this application"""
         return get_model("patent_client.uspto.ptab.model.PtabProceeding").objects.filter(appl_id=self.appl_id)
 
     @property
-    def patent(self) -> "Optional[patent_client.uspto.fulltext.patent.model.Patent]":
+    def patent(self) -> "Optional[Patent]":
         """Fulltext version of the patent - If Available"""
         return get_model("patent_client.uspto.fulltext.patent.model.Patent").objects.get(
             publication_number=self.patent_number
@@ -259,30 +271,27 @@ class USApplication(Model):
     @property
     def publication(
         self,
-    ) -> "Optional[patent_client.uspto.fulltext.published_application.model.PublishedApplication]":
+    ) -> "Optional[PublishedApplication]":
         """Fulltext version of the Publication - If Available"""
-        return get_model(
-            "patent_client.uspto.fulltext.published_application.model.PublishedApplication",
+        return get_model("patent_client.uspto.public_search.model.PublishedApplication").objects.get(
             publication_number=self.publication_number,
         )
 
     @property
     def inpadoc_patent(
         self,
-    ) -> "Optional[patent_client.epo.ops.published.model.InpadocBiblio]":
+    ) -> "Optional[InpadocBiblio]":
         """Fulltext version of the patent - If Available"""
-        return get_model(
-            "patent_client.epo.ops.published.model.InpadocBiblio",
+        return get_model("patent_client.epo.ops.published.model.InpadocBiblio").objects.get(
             publication_number=f"US{self.patent_number}",
         )
 
     @property
     def inpadoc_publication(
         self,
-    ) -> "Optional[patent_client.epo.ops.published.model.InpadocBiblio]":
+    ) -> "Optional[InpadocBiblio]":
         """Fulltext version of the patent - If Available"""
-        return get_model(
-            "patent_client.epo.ops.published.model.InpadocBiblio",
+        return get_model("patent_client.epo.ops.published.model.InpadocBiblio").objects.get(
             publication_number=self.app_early_pub_number,
         )
 
@@ -336,12 +345,12 @@ class Relationship(Model):
     """The status of the chidl application - which may not be indicated"""
 
     @property
-    def parent(self) -> "patent_client.uspto.peds.USApplication":
+    def parent(self) -> "USApplication":
         """Link to the parent application"""
         return get_model("patent_client.uspto.peds.USApplication").objects.get(appl_id=self.parent_appl_id)
 
     @property
-    def child(self) -> "patent_client.uspto.peds.USApplication":
+    def child(self) -> "USApplication":
         """Link to the child application"""
         return get_model("patent_client.uspto.peds.USApplication").objects.get(appl_id=self.child_appl_id)
 
@@ -358,11 +367,11 @@ class Relationship(Model):
 
 @dataclass
 class ForeignPriority(Model):
-    priority_claim: str = None
+    priority_claim: Optional[str] = None
     """The application number of the foreign priority application"""
-    country_name: str = None
+    country_name: Optional[str] = None
     """The country in which the foreign priorty application was filed"""
-    filing_date: datetime.date = None
+    filing_date: Optional[datetime.date] = None
     """The filing date of the foreign priority application"""
 
 
@@ -432,7 +441,6 @@ class PedsError(Exception):
 
 @dataclass
 class Document(Model):
-    __manager__ = "patent_client.uspto.peds.manager.DocumentManager"
     base_url = "https://ped.uspto.gov/api/queries/cms/public/"
     access_level_category: str
     appl_id: str
@@ -444,8 +452,13 @@ class Document(Model):
     page_count: int
     url: "Optional[str]" = None
 
+    # @ClassProperty
+    # def objects(cls) -> "DocumentManager":
+    #    from .manager import DocumentManager
+    #    return DocumentManager()
+
     @property
-    def application(self) -> "patent_client.uspto.peds.model.USApplication":
+    def application(self) -> "USApplication":
         return get_model("patent_client.uspto.peds.model.USApplication").objects.get(appl_id=self.appl_id)
 
     def __repr__(self):
@@ -474,27 +487,27 @@ class Document(Model):
 
 @dataclass
 class Assignee(Model):
-    name: str = None
-    address: str = None
+    name: Optional[str] = None
+    address: Optional[str] = None
 
 
 @dataclass
 class Assignor(Model):
-    name: str = None
-    exec_date: "datetime.date" = None
+    name: Optional[str] = None
+    exec_date: Optional[datetime.date] = None
 
 
 @dataclass
 class Assignment(Model):
     id: str
-    correspondent: str = None
-    correspondent_address: str = None
-    mail_date: "datetime.date" = None
-    received_date: "datetime.date" = None
-    recorded_date: "datetime.date" = None
-    pages: int = None
-    conveyance_text: str = None
-    sequence_number: int = None
+    correspondent: Optional[str] = None
+    correspondent_address: Optional[str] = None
+    mail_date: Optional[datetime.date] = None
+    received_date: Optional[datetime.date] = None
+    recorded_date: Optional[datetime.date] = None
+    pages: Optional[int] = None
+    conveyance_text: Optional[str] = None
+    sequence_number: Optional[int] = None
     assignors: "ListCollection[Assignor]" = field(default_factory=ListCollection)
     assignees: "ListCollection[Assignee]" = field(default_factory=ListCollection)
 

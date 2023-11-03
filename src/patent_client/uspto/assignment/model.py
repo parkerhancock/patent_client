@@ -4,11 +4,19 @@ import datetime
 import warnings
 from dataclasses import dataclass
 from dataclasses import field
+from pathlib import Path
 from typing import *
 
 from patent_client.util import Model
+from patent_client.util.asyncio_util import run_sync
 from patent_client.util.base.related import get_model
 from yankee.data import ListCollection
+
+from .api import AssignmentApi
+
+if TYPE_CHECKING:
+    from patent_client.uspto.peds.model import USApplication
+    from patent_client.uspto.public_search.model import Patent, PublishedApplication
 
 
 @dataclass
@@ -19,57 +27,59 @@ class AssignmentPage:
 
 @dataclass
 class Assignment(Model):
-    __manager__ = "patent_client.uspto.assignment.manager.AssignmentManager"
     id: str
     conveyance_text: str
     last_update_date: str
     page_count: int
     recorded_date: datetime.date
-    corr_name: str = None
-    corr_address: str = None
+    corr_name: Optional[str] = None
+    corr_address: Optional[str] = None
     assignors: "ListCollection[Assignor]" = field(default_factory=ListCollection)
     assignees: "ListCollection[Assignee]" = field(default_factory=ListCollection)
     properties: "ListCollection[Property]" = field(repr=False, default_factory=ListCollection)
     """Properties objects associated with this Assignment"""
     assignment_record_has_images: bool = False
-    transaction_date: "Optional[datetime.date]" = None
-    date_produced: "Optional[datetime.date]" = None
+    transaction_date: Optional[datetime.date] = None
+    date_produced: Optional[datetime.date] = None
 
     @property
-    def image_url(self) -> str:
-        reel, frame = self.id.split("-")
-        reel = reel.rjust(6, "0")
-        frame = frame.rjust(4, "0")
-        return f"http://legacy-assignments.uspto.gov/assignments/assignment-pat-{reel}-{frame}.pdf"
+    def reel_frame(self):
+        return self.id.split("-")
 
-    def download(self):
+    @property
+    def image_url(self):
+        return AssignmentApi.get_download_url(*self.reel_frame)
+
+    def download(self, path: Optional[str | Path] = None):
         """downloads the PDF associated with the assignment to the current working directory"""
-        response = session.get(self.image_url, stream=True)
-        with open(f"{self.id}.pdf", "wb") as f:
-            f.write(response.raw.read())
+        return run_sync(self.adownload(path=path))
+
+    async def adownload(self, path: Optional[str | Path] = None):
+        """asynchronously downloads the PDF associated with the assignment to the current working directory"""
+        return await AssignmentApi.download_pdf(*self.reel_frame, path=path)
 
 
 @dataclass
 class Property(Model):
-    appl_id: "Optional[str]" = None
-    invention_title: "Optional[str]" = None
-    inventors: "Optional[str]" = None
+    appl_id: Optional[str] = None
+    invention_title: Optional[str] = None
+    inventors: Optional[str] = None
     # Numbers
-    pct_num: "Optional[str]" = None
-    intl_reg_num: "Optional[str]" = None
-    publ_num: "Optional[str]" = None
-    pat_num: "Optional[str]" = None
+    pct_num: Optional[str] = None
+    intl_reg_num: Optional[str] = None
+    publ_num: Optional[str] = None
+    pat_num: Optional[str] = None
     # Dates
-    filing_date: "Optional[datetime.date]" = None
-    intl_publ_date: "Optional[datetime.date]" = None
-    issue_date: "Optional[datetime.date]" = None
-    publ_date: "Optional[datetime.date]" = None
+    filing_date: Optional[datetime.date] = None
+    intl_publ_date: Optional[datetime.date] = None
+    issue_date: Optional[datetime.date] = None
+    publ_date: Optional[datetime.date] = None
 
     def __repr__(self):
         return f"Property(appl_id={self.appl_id}, invention_title={self.invention_title})"
 
     @property
-    def application(self) -> "patent_client.uspto.peds.model.USApplication":
+    def application(self) -> Optional["USApplication"]:
         """The related US Application"""
         try:
             appl_id = getattr(self, "appl_id", None)
@@ -92,16 +102,14 @@ class Property(Model):
         return None
 
     @property
-    def patent(self) -> "patent_client.uspto.fulltext.patent.model.Patent":
+    def patent(self) -> "Patent":
         """The related US Patent, if any"""
-        return get_model("patent_client.uspto.peds.fulltext.patent.model.Patent").objects.get(
-            publication_number=self.pat_num
-        )
+        return get_model("patent_client.uspto.public_search.model.Patent").objects.get(publication_number=self.pat_num)
 
     @property
     def publication(
         self,
-    ) -> "patent_client.uspto.fulltext.published_application.model.PublishedApplication":
+    ) -> "PublishedApplication":
         """The related US Publication, if any"""
         return get_model("patent_client.uspto.peds.fulltext.patent.model.PublishedApplication").objects.get(
             publication_number=self.publ_num
@@ -112,10 +120,10 @@ class Property(Model):
 class Assignor(Model):
     name: str
     ex_date: datetime.date
-    date_ack: datetime.datetime = None
+    date_ack: Optional[datetime.datetime] = None
 
 
 @dataclass
 class Assignee(Model):
     name: str
-    address: "Optional[str]" = None
+    address: Optional[str] = None

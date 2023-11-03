@@ -1,7 +1,9 @@
+from typing import AsyncIterator
 from typing import Generic
 from typing import TypeVar
 
 from patent_client.util.base.manager import Manager
+from patent_client.util.request_util import get_start_and_row_count
 
 from . import public_search_async_api
 from .model import Patent
@@ -12,7 +14,6 @@ from .model import PublishedApplication
 from .model import PublishedApplicationBiblio
 from .query import QueryBuilder
 from .schema import PublicSearchDocumentSchema
-from .schema import PublicSearchSchema
 
 
 class CapacityException(Exception):
@@ -27,37 +28,26 @@ T = TypeVar("T")
 
 
 class GenericPublicSearchManager(Manager, Generic[T]):
-    __schema__ = PublicSearchSchema
     page_size = 500
-    primary_key = "patent_number"
+    default_filter = "patent_number"
     query_builder = QueryBuilder()
 
-    async def _aget_results(self):
+    async def _aget_results(self) -> AsyncIterator[T]:
         query = self._query
         order_by = self._order_by
         sources = self.config.options.get("sources", ["US-PGPUB", "USPAT", "USOCR"])
-        page_no = 0
-        obj_counter = 0
-        try:
-            while True:
-                page = await public_search_async_api.run_query(
-                    query=query,
-                    start=page_no * self.page_size,
-                    limit=self.page_size,
-                    sort=order_by,
-                    sources=sources,
-                )
-                for obj in page["patents"]:
-                    if self.config.limit and obj_counter >= self.config.limit + self.config.offset:
-                        raise FinishedException()
-                    if obj_counter >= self.config.offset:
-                        yield self.__schema__.load(obj)
-                    obj_counter += 1
-                page_no += 1
-                if len(page["patents"]) < self.page_size:
-                    raise FinishedException()
-        except FinishedException:
-            pass
+        for start, rows in get_start_and_row_count(self.config.limit, self.config.offset, self.page_size):
+            page = await public_search_async_api.run_query(
+                query=query,
+                start=start,
+                limit=rows,
+                sort=order_by,
+                sources=sources,
+            )
+            for obj in page.docs:
+                yield obj
+            if len(page.docs) < rows:
+                break
 
     @property
     def _query(self):
@@ -76,28 +66,20 @@ class GenericPublicSearchManager(Manager, Generic[T]):
         return self.query_builder.order_by_keywords
 
     async def alen(self):
-        if hasattr(self, "_len"):
-            return self._len
         query = self._query
         order_by = self._order_by
         sources = self.config.options.get("sources", ["US-PGPUB", "USPAT", "USOCR"])
         page = await public_search_async_api.run_query(
             query=query, start=0, limit=self.page_size, sort=order_by, sources=sources
         )
-
-        total_results = page["totalResults"]
-        total_results -= self.config.offset
-        if self.config.limit:
-            self._len = min(self.config.limit, total_results)
-        else:
-            self._len = total_results
-        return self._len
+        max_len = page.num_found - self.config.offset
+        return min(self.config.limit, max_len) if self.config.limit else max_len
 
 
 class GenericPublicSearchDocumentManager(GenericPublicSearchManager, Generic[T]):
     __doc_schema__ = PublicSearchDocumentSchema()
 
-    async def _aget_results(self):
+    async def _aget_results(self) -> AsyncIterator["PublicSearchDocument"]:
         result_count = super().__len__()
         if result_count > 20:
             raise CapacityException(
@@ -106,7 +88,7 @@ class GenericPublicSearchDocumentManager(GenericPublicSearchManager, Generic[T])
 
         async for obj in super()._aget_results():
             doc = await public_search_async_api.get_document(obj)
-            yield self.__doc_schema__.load(doc)
+            yield doc
 
 
 class PublicSearchManager(GenericPublicSearchManager[PublicSearch]):

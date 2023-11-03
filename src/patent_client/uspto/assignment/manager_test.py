@@ -78,10 +78,10 @@ class TestAssignment:
         assignment_list = [assignment.id for assignment in assignments]
         assert len(assignment_list) == len(assignments)
 
-    @pytest.mark.skip("Lookup api does not support multiple inputs")
     def test_can_fetch_multiple(self):
-        assignments = Assignment.objects.filter(appl_id=["13089872", "15216946"])
-        assert assignments.count() == 5
+        with pytest.raises(ValueError):
+            assignments = Assignment.objects.filter(appl_id=["13089872", "15216946"])
+            count = assignments.count()
 
 
 class TestAssignmentBugs:

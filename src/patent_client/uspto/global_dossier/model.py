@@ -2,6 +2,7 @@ import datetime
 from dataclasses import dataclass
 from dataclasses import field
 from pathlib import Path
+from typing import *
 
 from patent_client.util.asyncio_util import run_sync
 from patent_client.util.base.model import Model
@@ -15,39 +16,39 @@ global_dossier_async_api = GlobalDossierAsyncApi()
 
 @dataclass
 class GlobalDossierPublication(Model):
-    pub_country: "str" = None
-    pub_num: "str" = None
-    kind_code: "str" = None
-    pub_date: "datetime.date" = None
+    pub_country: Optional[str] = None
+    pub_num: Optional[str] = None
+    kind_code: Optional[str] = None
+    pub_date: Optional[datetime.date] = None
 
 
 @dataclass
 class GlobalDossierPriorityClaim(Model):
-    country: "str" = None
-    doc_number: "str" = None
-    kind_code: "str" = None
+    country: Optional[str] = None
+    doc_number: Optional[str] = None
+    kind_code: Optional[str] = None
 
 
 @dataclass
 class GlobalDossierDocumentNumber(Model):
-    country: "str" = None
-    doc_number: "str" = None
-    format: "str" = None
-    date: "datetime.date" = None
-    kind_code: "str" = None
+    country: Optional[str] = None
+    doc_number: Optional[str] = None
+    format: Optional[str] = None
+    date: Optional[datetime.date] = None
+    kind_code: Optional[str] = None
 
 
 @dataclass
 class GlobalDossierApplication(Model):
     __manager__ = "patent_client.uspto.global_dossier.manager.GlobalDossierApplicationManager"
-    app_num: "str" = None
-    app_date: "datetime.date" = None
-    country_code: "str" = None
-    kind_code: "str" = None
-    doc_num: "GlobalDossierDocumentNumber" = None
-    title: "str" = None
-    applicant_names: "str" = None
-    ip_5: "bool" = None
+    app_num: Optional[str] = None
+    app_date: Optional[datetime.date] = None
+    country_code: Optional[str] = None
+    kind_code: Optional[str] = None
+    doc_num: Optional["GlobalDossierDocumentNumber"] = None
+    title: Optional[str] = None
+    applicant_names: Optional[str] = None
+    ip_5: Optional[bool] = None
     priority_claim_list: "ListCollection[GlobalDossierPriorityClaim]" = field(default_factory=ListCollection)
     pub_list: "ListCollection[GlobalDossierPublication]" = field(default_factory=ListCollection)
 
@@ -110,11 +111,11 @@ class GlobalDossierApplication(Model):
 @dataclass
 class GlobalDossier(Model):
     __manager__ = "patent_client.uspto.global_dossier.manager.GlobalDossierManager"
-    country: "str" = None
-    internal: "bool" = None
-    corr_app_num: "str" = None
-    id: "str" = None
-    type: "str" = None
+    country: Optional[str] = None
+    internal: Optional[bool] = None
+    corr_app_num: Optional[str] = None
+    id: Optional[str] = None
+    type: Optional[str] = None
     applications: "ListCollection[GlobalDossierApplication]" = field(default_factory=ListCollection)
 
     def __repr__(self):
@@ -123,17 +124,17 @@ class GlobalDossier(Model):
 
 @dataclass
 class Document(Model):
-    doc_number: "str" = None
-    country: "str" = None
-    doc_code: "str" = None
-    doc_desc: "str" = None
-    doc_id: "str" = None
-    date: "datetime.date" = None
-    doc_format: "str" = None
-    pages: "int" = None
-    doc_code_desc: "str" = None
-    doc_group_code: "str" = None
-    shareable: "bool" = None
+    doc_number: Optional[str] = None
+    country: Optional[str] = None
+    doc_code: Optional[str] = None
+    doc_desc: Optional[str] = None
+    doc_id: Optional[str] = None
+    date: Optional[datetime.date] = None
+    doc_format: Optional[str] = None
+    pages: Optional[int] = None
+    doc_code_desc: Optional[str] = None
+    doc_group_code: Optional[str] = None
+    shareable: Optional[bool] = None
 
     def download(self, filename="", path="."):
         return run_sync(self.adownload(filename, path))
@@ -150,11 +151,11 @@ class Document(Model):
 @dataclass
 class DocumentList(Model):
     __manager__ = "patent_client.uspto.global_dossier.manager.GlobalDossierDocument"
-    title: "str" = None
-    doc_number: "str" = None
-    country: "str" = None
-    message: "str" = None
+    title: Optional[str] = None
+    doc_number: Optional[str] = None
+    country: Optional[str] = None
+    message: Optional[str] = None
     applicant_names: "ListCollection[str]" = field(default_factory=ListCollection)
-    office_action_count: "int" = None
+    office_action_count: Optional[int] = None
     docs: "ListCollection[Document]" = field(default_factory=ListCollection)
     office_action_docs: "ListCollection[Document]" = field(default_factory=ListCollection)

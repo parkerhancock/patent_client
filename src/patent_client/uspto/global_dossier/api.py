@@ -1,3 +1,5 @@
+from .schema import DocumentListSchema
+from .schema import GlobalDossierSchema
 from .session import session
 
 
@@ -7,13 +9,13 @@ class GlobalDossierAsyncApi:
         pre_flight = await session.options(url)
         response = await session.get(url)
         response.raise_for_status()
-        return response.json()
+        return GlobalDossierSchema().load(response.json())
 
     async def get_doc_list(self, country, doc_number, kind_code):
         url = f"https://gd-api2.uspto.gov/doc-list/svc/doclist/{country}/{doc_number}/{kind_code}"
         response = await session.get(url)
         response.raise_for_status()
-        return response.json()
+        return DocumentListSchema().load(response.json())
 
     async def get_document(self, country, doc_number, document_id, out_path):
         if out_path.exists():

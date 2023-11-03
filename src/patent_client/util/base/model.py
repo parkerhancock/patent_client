@@ -1,46 +1,30 @@
 import importlib
-import typing
 from dataclasses import dataclass
 from dataclasses import fields
+from typing import TypeVar
 
 from yankee.data.util import DataConversion
 from yankee.util import is_valid
 
-ManagerType = typing.TypeVar("ManagerType")
+ManagerType = TypeVar("ManagerType")
 
 
-class ModelMeta(type):
-    """Metaclass for automatically appending the .objects attriburte to Model
-    classes"""
+class ClassProperty:
+    def __init__(self, getter):
+        self.getter = getter
 
-    def __new__(cls, name, bases, dct):
-        klass = super().__new__(cls, name, bases, dct)
-        return klass
-
-    @property
-    def objects(cls):
-        if cls.__manager__ is None:
-            return None
-        if not isinstance(cls.__manager__, str):
-            return cls.__manager__()
-        obj_module, obj_class = cls.__manager__.rsplit(".", 1)
-        return getattr(importlib.import_module(obj_module), obj_class)()
-
-
-class ModelABC(object):
-    __manager__ = None
+    def __get__(self, instance, owner):
+        return self.getter(owner)
 
 
 @dataclass
-class Model(ModelABC, DataConversion, metaclass=ModelMeta):
-    __exclude_fields__ = list()
-    __default_fields__ = False
-
-    # def __init__(self, *args, **kwargs):
-    #    try:
-    #        return super().__init__(*args, **kwargs)
-    #    except TypeError as e:
-    #        raise TypeError(f"{e.args[0]}\nargs:{args}\nkwargs:{kwargs}")
+class Model(DataConversion):
+    @ClassProperty
+    def objects(cls) -> ManagerType:
+        manager_module = cls.__module__.split(".model")[0] + ".manager"
+        manager_class_name = cls.__name__ + "Manager"
+        manager_class = getattr(importlib.import_module(manager_module), manager_class_name)
+        return manager_class()
 
     @classmethod
     def fields(cls):
@@ -51,12 +35,13 @@ class Model(ModelABC, DataConversion, metaclass=ModelMeta):
         return self.items()
 
     def items(self):
-        if self.__default_fields__:
+        if hasattr(self, "__default_fields__") and self.__default_fields__:
             fields = self.__default_fields__
         else:
             fields = sorted(f.name for f in self.fields())
+        excluded_fields = getattr(self, "__exclude_fields__", [])
         for f in fields:
-            if f in self.__exclude_fields__:
+            if f in excluded_fields:
                 continue
             value = getattr(self, f, None)
             if is_valid(value):

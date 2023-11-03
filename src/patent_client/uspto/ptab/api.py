@@ -1,6 +1,7 @@
 import datetime
 import typing as tp
 from pathlib import Path
+from typing import Optional
 
 from dateutil.parser import parse as parse_dt
 
@@ -62,22 +63,22 @@ class PtabApi:
     @classmethod
     async def get_documents(
         cls,
-        document_title: tp.Optional[str] = None,
-        document_filing_date: tp.Union[None, datetime.date, tuple[datetime.date], tuple[str]] = None,
-        style_name: tp.Optional[str] = None,
-        filing_party_category: tp.Optional[str] = None,
-        patent_owner_name: tp.Optional[str] = None,
-        party_name: tp.Optional[str] = None,
-        document_number: tp.Optional[str] = None,
-        document_type: tp.Optional[str] = None,
-        document_name: tp.Optional[str] = None,
-        document_identifier: tp.Optional[str] = None,
-        proceeding_number: tp.Optional[str] = None,
-        proceeding_type: tp.Optional[str] = None,
-        application_number: tp.Optional[str] = None,
-        start: tp.Optional[int] = None,
-        rows: tp.Optional[int] = None,
-        sort: tp.Union[str, tp.List[str], None] = None,
+        document_title: Optional[tp.Optional[str]] = None,
+        document_filing_date: Optional[tp.Union[None, datetime.date, tuple[datetime.date], tuple[str]]] = None,
+        style_name: Optional[tp.Optional[str]] = None,
+        filing_party_category: Optional[tp.Optional[str]] = None,
+        patent_owner_name: Optional[tp.Optional[str]] = None,
+        party_name: Optional[tp.Optional[str]] = None,
+        document_number: Optional[tp.Optional[str]] = None,
+        document_type: Optional[tp.Optional[str]] = None,
+        document_name: Optional[tp.Optional[str]] = None,
+        document_identifier: Optional[tp.Optional[str]] = None,
+        proceeding_number: Optional[tp.Optional[str]] = None,
+        proceeding_type: Optional[tp.Optional[str]] = None,
+        application_number: Optional[tp.Optional[str]] = None,
+        start: Optional[tp.Optional[int]] = None,
+        rows: Optional[tp.Optional[int]] = None,
+        sort: Optional[tp.Union[str, tp.List[str], None]] = None,
     ) -> PtabDocumentPage:
 
         query_dict = {
@@ -106,43 +107,43 @@ class PtabApi:
         return PtabDocumentPageSchema().load(response.json())
 
     @classmethod
-    async def download_document(cls, document_identifier: str, output_path):
+    async def download_document(cls, document_identifier: str, output_path) -> Path:
         output_path = Path(output_path)
         if output_path.exists():
             return output_path
-        response = await session.stream(
+        async with session.stream(
             "GET",
             url=f"https://developer.uspto.gov/ptab-api/documents/{document_identifier}/download",
-        )
-        response.raise_for_status()
-        with open(output_path, "wb") as f:
-            async for chunk in response.aiter_content(chunk_size=8192):
-                f.write(chunk)
-        return output_path
+        ) as response:
+            response.raise_for_status()
+            with open(output_path, "wb") as f:
+                async for chunk in response.aiter_bytes(chunk_size=8192):
+                    f.write(chunk)
+            return output_path
 
     @classmethod
     async def get_proceedings(
         cls,
-        proceeding_number: tp.Optional[str] = None,
-        technology_center_number: tp.Optional[str] = None,
-        patent_owner: tp.Optional[str] = None,
-        party_name: tp.Optional[str] = None,
-        inventor_name: tp.Optional[str] = None,
-        patent_number: tp.Optional[str] = None,
-        declaration_date: tp.Union[None, datetime.date, tuple[datetime.date], tuple[str]] = None,
-        style_name: tp.Optional[str] = None,
-        application_number: tp.Optional[str] = None,
-        proceeding_status: tp.Optional[str] = None,
-        proceeding_type: tp.Optional[str] = None,
-        subproceeding_type: tp.Optional[str] = None,
-        institution_date: tp.Union[None, datetime.date, tuple[datetime.date], tuple[str]] = None,
-        proceeding_filing_date: tp.Union[None, datetime.date, tuple[datetime.date], tuple[str]] = None,
-        accorded_filing_date: tp.Union[None, datetime.date, tuple[datetime.date], tuple[str]] = None,
-        proceeding_last_modified_date: tp.Union[None, datetime.date, tuple[datetime.date], tuple[str]] = None,
-        grant_date: tp.Union[None, datetime.date, tuple[datetime.date], tuple[str]] = None,
-        start: tp.Optional[int] = None,
-        rows: tp.Optional[int] = None,
-        sort: tp.Union[str, tp.List[str], None] = None,
+        proceeding_number: Optional[tp.Optional[str]] = None,
+        technology_center_number: Optional[tp.Optional[str]] = None,
+        patent_owner: Optional[tp.Optional[str]] = None,
+        party_name: Optional[tp.Optional[str]] = None,
+        inventor_name: Optional[tp.Optional[str]] = None,
+        patent_number: Optional[tp.Optional[str]] = None,
+        declaration_date: Optional[tp.Union[None, datetime.date, tuple[datetime.date], tuple[str]]] = None,
+        style_name: Optional[tp.Optional[str]] = None,
+        application_number: Optional[tp.Optional[str]] = None,
+        proceeding_status: Optional[tp.Optional[str]] = None,
+        proceeding_type: Optional[tp.Optional[str]] = None,
+        subproceeding_type: Optional[tp.Optional[str]] = None,
+        institution_date: Optional[tp.Union[None, datetime.date, tuple[datetime.date], tuple[str]]] = None,
+        proceeding_filing_date: Optional[tp.Union[None, datetime.date, tuple[datetime.date], tuple[str]]] = None,
+        accorded_filing_date: Optional[tp.Union[None, datetime.date, tuple[datetime.date], tuple[str]]] = None,
+        proceeding_last_modified_date: Optional[tp.Union[None, datetime.date, tuple[datetime.date], tuple[str]]] = None,
+        grant_date: Optional[tp.Union[None, datetime.date, tuple[datetime.date], tuple[str]]] = None,
+        start: Optional[tp.Optional[int]] = None,
+        rows: Optional[tp.Optional[int]] = None,
+        sort: Optional[tp.Union[str, tp.List[str], None]] = None,
     ) -> PtabDocumentPage:
 
         query_dict = {
@@ -176,25 +177,25 @@ class PtabApi:
     @classmethod
     async def get_decisions(
         cls,
-        proceeding_number: tp.Optional[str] = None,
-        decision_type: tp.Optional[str] = None,
-        subdecision_type: tp.Optional[str] = None,
-        document_name: tp.Optional[str] = None,
-        decision_date: tp.Union[None, datetime.date, tuple[datetime.date], tuple[str]] = None,
-        style_name: tp.Optional[str] = None,
-        proceeding_type: tp.Optional[str] = None,
-        subproceeding_type: tp.Optional[str] = None,
-        technology_center_number: tp.Optional[str] = None,
-        document_number: tp.Optional[str] = None,
-        patent_owner: tp.Optional[str] = None,
-        party_name: tp.Optional[str] = None,
-        grant_date: tp.Union[None, datetime.date, tuple[datetime.date], tuple[str]] = None,
-        patent_number: tp.Optional[str] = None,
-        application_number: tp.Optional[str] = None,
-        text_search: tp.Optional[str] = None,
-        start: tp.Optional[int] = None,
-        rows: tp.Optional[int] = None,
-        sort: tp.Union[str, tp.List[str], None] = None,
+        proceeding_number: Optional[tp.Optional[str]] = None,
+        decision_type: Optional[tp.Optional[str]] = None,
+        subdecision_type: Optional[tp.Optional[str]] = None,
+        document_name: Optional[tp.Optional[str]] = None,
+        decision_date: Optional[tp.Union[None, datetime.date, tuple[datetime.date], tuple[str]]] = None,
+        style_name: Optional[tp.Optional[str]] = None,
+        proceeding_type: Optional[tp.Optional[str]] = None,
+        subproceeding_type: Optional[tp.Optional[str]] = None,
+        technology_center_number: Optional[tp.Optional[str]] = None,
+        document_number: Optional[tp.Optional[str]] = None,
+        patent_owner: Optional[tp.Optional[str]] = None,
+        party_name: Optional[tp.Optional[str]] = None,
+        grant_date: Optional[tp.Union[None, datetime.date, tuple[datetime.date], tuple[str]]] = None,
+        patent_number: Optional[tp.Optional[str]] = None,
+        application_number: Optional[tp.Optional[str]] = None,
+        text_search: Optional[tp.Optional[str]] = None,
+        start: Optional[tp.Optional[int]] = None,
+        rows: Optional[tp.Optional[int]] = None,
+        sort: Optional[tp.Union[str, tp.List[str], None]] = None,
     ) -> PtabDocumentPage:
 
         query_dict = {

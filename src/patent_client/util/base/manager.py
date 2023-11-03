@@ -6,6 +6,8 @@ from itertools import chain
 from typing import AsyncIterator
 from typing import Generic
 from typing import Iterator
+from typing import Self
+from typing import TYPE_CHECKING
 from typing import TypeVar
 from typing import Union
 
@@ -13,6 +15,9 @@ from yankee.data import Collection
 
 from ..asyncio_util import run_async_iterator
 from ..asyncio_util import run_sync
+
+if TYPE_CHECKING:
+    pass
 
 ModelType = TypeVar("ModelType")
 
@@ -54,12 +59,10 @@ class Manager(Collection, Generic[ModelType]):
 
     """
 
-    primary_key: str = ""
+    default_filter: str = ""
 
     def __init__(self, config=None):
         self.config = config or ManagerConfig()
-        if hasattr(self, "__schema__") and callable(self.__schema__):
-            self.__schema__ = self.__schema__()
 
     # Manager Iteration / Slicing
 
@@ -99,36 +102,36 @@ class Manager(Collection, Generic[ModelType]):
 
     # Manager Modification Functions
 
-    def filter(self, *args, **kwargs) -> Manager[ModelType]:
+    def filter(self, *args, **kwargs) -> Self:
         """Apply a new filtering condition"""
         mger = deepcopy(self)
         if args:
-            kwargs[self.primary_key] = args
+            kwargs[self.default_filter] = args
         update_values = OrderedDict()
         for key in sorted(kwargs.keys()):
             update_values[key] = kwargs[key]
         mger.config.filter.update(update_values)
         return mger
 
-    def order_by(self, *args) -> Manager[ModelType]:
+    def order_by(self, *args) -> Self:
         """Specify the order that argument should be returned in"""
         mger = deepcopy(self)
         mger.config.order_by = args
         return mger
 
-    def option(self, **kwargs) -> Manager[ModelType]:
+    def option(self, **kwargs) -> Self:
         """Set a key:value option on the manager"""
         mger = deepcopy(self)
         mger.config.options = {**mger.config.options, **kwargs}
         return mger
 
-    def limit(self, limit) -> Manager[ModelType]:
+    def limit(self, limit) -> Self:
         """Limit the number of records that are returned"""
         mger = deepcopy(self)
         mger.config.limit = limit
         return mger
 
-    def offset(self, offset) -> Manager[ModelType]:
+    def offset(self, offset) -> Self:
         """Specify the number of records from the beginning from which to apply an offset"""
         mger = deepcopy(self)
         mger.config.offset = self.config.offset + offset

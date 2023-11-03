@@ -1,5 +1,7 @@
 from copy import deepcopy
+from typing import Callable
 from typing import Generic
+from typing import Optional
 
 import httpx
 import inflection
@@ -21,7 +23,7 @@ class PtabManager(Manager, Generic[ModelType]):
     url = "https://developer.uspto.gov/ptab-api"
     page_size = 25
     instance_schema = None
-    api_method = None
+    api_method: Optional[Callable] = None
 
     async def _aget_results(self):
         query = deepcopy(self.config.filter)
@@ -47,17 +49,17 @@ class PtabManager(Manager, Generic[ModelType]):
 
 class PtabProceedingManager(PtabManager[PtabProceeding]):
     path = "/proceedings"
-    primary_key = "proceeding_number"
+    default_filter = "proceeding_number"
     api_method = PtabApi.get_proceedings
 
 
 class PtabDocumentManager(PtabManager[PtabDocument]):
     path = "/documents"
-    primary_key = "document_identifier"
+    default_filter = "document_identifier"
     api_method = PtabApi.get_documents
 
 
 class PtabDecisionManager(PtabManager[PtabDecision]):
     path = "/decisions"
-    primary_key = "identifier"
+    default_filter = "identifier"
     api_method = PtabApi.get_decisions

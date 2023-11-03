@@ -1,10 +1,16 @@
 import datetime
+from typing import Dict
 from typing import List
 from typing import Optional
+from typing import TYPE_CHECKING
 
-from .model import PedsPage
+from .schema import DocumentSchema
 from .schema import PedsPageSchema
 from .session import session
+
+if TYPE_CHECKING:
+    from .model import PedsPage
+
 
 type_map = {
     "string": str,
@@ -21,6 +27,7 @@ class NotAvailableException(Exception):
 
 class PatentExaminationDataSystemApi:
     base_url = "https://ped.uspto.gov/api"
+    search_fields: Dict = dict()
 
     def __init__(self):
         query_id = None
@@ -50,16 +57,16 @@ class PatentExaminationDataSystemApi:
     async def create_query(
         self,
         query: str,
-        query_fields: str = None,
+        query_fields: Optional[str] = None,
         default_field: Optional[str] = "patentTitle",
-        facet: str = False,
+        facet: bool = False,
         return_fields: Optional[List[str]] = None,
         filter_query: Optional[List[str]] = None,
         minimum_match: str = "100%",
         sort: Optional[str] = "applId asc",
         start: int = 0,
         rows: Optional[int] = None,
-    ) -> PedsPage:
+    ) -> "PedsPage":
         """
 
         Args:
@@ -74,13 +81,13 @@ class PatentExaminationDataSystemApi:
             _type_: _description_
         """
         if query_fields is None:
-            query_fields = list(f for f in (await self.get_search_fields()).keys() if f in query)
-        if query_fields is None:
-            query_fields = list((await self.get_search_fields()).keys())
+            qf = list(f for f in (await self.get_search_fields()).keys() if f in query)
+        if qf is None:
+            qf = list((await self.get_search_fields()).keys())
 
-        params = {
+        params: Dict[str, object] = {
             "df": default_field,
-            "qf": " ".join(query_fields),
+            "qf": " ".join(qf),
             "fl": " ".join(return_fields) if return_fields else "*",
             "fq": filter_query if filter_query else list(),
             "searchText": query,
@@ -91,7 +98,9 @@ class PatentExaminationDataSystemApi:
         }
         if rows:
             params["rows"] = rows
+        import json
 
+        print(json.dumps(params, indent=2))
         url = "https://ped.uspto.gov/api/queries"
         response = await session.post(
             url,
@@ -100,3 +109,10 @@ class PatentExaminationDataSystemApi:
         )
         response.raise_for_status()
         return PedsPageSchema().load(response.json())
+
+    async def get_documents(self, appl_id: str) -> "PedsPage":
+        url = f"https://ped.uspto.gov/api/queries/cms/public/{appl_id}"
+        response = await session.get(url)
+        response.raise_for_status()
+        schema = DocumentSchema()
+        return [schema.load(d) for d in response.json()]

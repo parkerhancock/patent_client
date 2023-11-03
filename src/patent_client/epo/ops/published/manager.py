@@ -104,3 +104,7 @@ class ImageManager(Manager):
 
     async def aget(self, doc_number) -> ImageDocument:
         return self.__schema__.load(await PublishedAsyncApi.images.get_images(doc_number))
+
+
+class InpadocManager(SearchManager):
+    pass

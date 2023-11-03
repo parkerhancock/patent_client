@@ -107,6 +107,13 @@ class PublicSearchSchema(Schema):
     score = f.Float("score")
 
 
+class PublicSearchPageSchema(Schema):
+    num_found = f.Integer("numFound")
+    per_page = f.Integer("perPage")
+    page = f.Integer("page")
+    docs = f.List(PublicSearchSchema, "patents")
+
+
 class SpecificationField(f.Combine):
     pass
 

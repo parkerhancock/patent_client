@@ -1,10 +1,16 @@
 import asyncio
 from pathlib import Path
+from typing import TYPE_CHECKING
 
 import httpx
 import tenacity
 
+from .schema import PublicSearchDocumentSchema
+from .schema import PublicSearchPageSchema
 from .session import session
+
+if TYPE_CHECKING:
+    from .model import PublicSearch, PublicSearchDocument
 
 
 class UsptoException(Exception):
@@ -35,7 +41,7 @@ class PublicSearchAsyncApi:
         sources=["US-PGPUB", "USPAT", "USOCR"],
         expand_plurals=True,
         british_equivalents=True,
-    ):
+    ) -> "PublicSearch":
         if self.case_id is None:
             await self.get_session()
         url = "https://ppubs.uspto.gov/dirsearch-public/searches/searchWithBeFamily"
@@ -80,10 +86,10 @@ class PublicSearchAsyncApi:
         result = query_response.json()
         if result.get("error", None) is not None:
             raise UsptoException(f"Error #{result['error']['errorCode']}\n{result['error']['errorMessage']}")
-        return result
+        return PublicSearchPageSchema().load(result)
 
     @tenacity.retry(stop=tenacity.stop_after_attempt(3), wait=tenacity.wait_random(min=1, max=5))
-    async def get_document(self, bib):
+    async def get_document(self, bib) -> "PublicSearchDocument":
         url = f"https://ppubs.uspto.gov/dirsearch-public/patents/{bib.guid}/highlight"
         params = {
             "queryId": 1,
@@ -93,7 +99,7 @@ class PublicSearchAsyncApi:
         }
         response = await session.get(url, params=params)
         response.raise_for_status()
-        return response.json()
+        return PublicSearchDocumentSchema().load(response.json())
 
     @tenacity.retry(stop=tenacity.stop_after_attempt(3), wait=tenacity.wait_random(min=1, max=5))
     async def get_session(self):

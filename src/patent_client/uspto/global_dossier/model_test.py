@@ -1,6 +1,6 @@
 import pytest
 
-from .manager import GlobalDossierDocument
+from .manager import DocumentListManager
 from .model import Document
 from .model import DocumentList
 from .model import GlobalDossier
@@ -70,13 +70,13 @@ class TestGlobalDossier:
         with pytest.raises(NotImplementedError):
             GlobalDossier.objects.offset("something")
         with pytest.raises(NotImplementedError):
-            GlobalDossierDocument().filter("something")
+            DocumentListManager().filter("something")
         with pytest.raises(NotImplementedError):
-            GlobalDossierDocument().order_by("something")
+            DocumentListManager().order_by("something")
         with pytest.raises(NotImplementedError):
-            GlobalDossierDocument().limit("something")
+            DocumentListManager().limit("something")
         with pytest.raises(NotImplementedError):
-            GlobalDossierDocument().offset("something")
+            DocumentListManager().offset("something")
 
     def test_issue_99(self):
         app = GlobalDossierApplication.objects.get("16740760", type="application", office="US")

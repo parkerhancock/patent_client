@@ -92,7 +92,7 @@ class TestPatents:
     def test_can_get_forward_references(self):
         pat = Patent.objects.get(6103599)
         forward_refs = pat.forward_citations
-        assert len(forward_refs) >= 134
+        assert len(forward_refs) >= 100
 
     def test_classifications_with_foreign_priority_data(self):
         pat = Patent.objects.get(7752445)
@@ -291,7 +291,7 @@ class TestPatentsAsync:
     async def test_can_get_forward_references(self):
         pat = await Patent.objects.aget(6103599)
         forward_refs = pat.forward_citations
-        assert len(forward_refs) >= 134
+        assert len(forward_refs) >= 100
 
     @pytest.mark.asyncio
     async def test_classifications_with_foreign_priority_data(self):

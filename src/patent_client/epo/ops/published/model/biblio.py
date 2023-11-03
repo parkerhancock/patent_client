@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 from dataclasses import field
+from typing import Optional
 
 from patent_client.epo.ops.number_service.model import DocumentId
 from patent_client.epo.ops.util import InpadocModel
@@ -9,11 +10,11 @@ from yankee.data import ListCollection
 
 @dataclass
 class Citation(InpadocModel):
-    cited_phase: str = None
-    cited_by: str = None
-    epodoc: DocumentId = None
-    docdb: DocumentId = None
-    original: DocumentId = None
+    cited_phase: Optional[str] = None
+    cited_by: Optional[str] = None
+    epodoc: Optional[DocumentId] = None
+    docdb: Optional[DocumentId] = None
+    original: Optional[DocumentId] = None
 
     def __repr__(self):
         return f"Citation(doc_number={str(self.docdb)}, cited_by={self.cited_by}, cited_phase={self.cited_phase})"
@@ -28,7 +29,7 @@ class Title(Model):
     lang: str
     text: str
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return f"Title(lang={self.lang}, text={self.text})"
 
 
@@ -42,25 +43,25 @@ def limit_text(string, limit=30):
 @dataclass
 class InpadocBiblio(InpadocModel):
     __manager__ = "patent_client.epo.ops.published.manager.BiblioManager"
-    country: str = None
-    doc_number: str = None
-    kind: str = None
-    family_id: str = None
-    publication_number: str = None
-    application_number: str = None
-    publication_reference_docdb: DocumentId = None
-    publication_reference_epodoc: DocumentId = None
-    publication_reference_original: DocumentId = None
-    application_reference_docdb: DocumentId = None
-    application_reference_epodoc: DocumentId = None
-    application_reference_original: DocumentId = None
+    country: Optional[str] = None
+    doc_number: Optional[str] = None
+    kind: Optional[str] = None
+    family_id: Optional[str] = None
+    publication_number: Optional[str] = None
+    application_number: Optional[str] = None
+    publication_reference_docdb: Optional[DocumentId] = None
+    publication_reference_epodoc: Optional[DocumentId] = None
+    publication_reference_original: Optional[DocumentId] = None
+    application_reference_docdb: Optional[DocumentId] = None
+    application_reference_epodoc: Optional[DocumentId] = None
+    application_reference_original: Optional[DocumentId] = None
     intl_class: "ListCollection[str]" = field(default_factory=list)
     cpc_class: "ListCollection[str]" = field(default_factory=list)
     us_class: "ListCollection[str]" = field(default_factory=list)
     priority_claims: "ListCollection[str]" = field(default_factory=list)
-    title: str = None
+    title: Optional[str] = None
     titles: "ListCollection[Title]" = field(default_factory=list)
-    abstract: str = None
+    abstract: Optional[str] = None
     citations: "ListCollection[Citation]" = field(default_factory=list)
     applicants_epodoc: "ListCollection[str]" = field(default_factory=list)
     applicants_original: "ListCollection[str]" = field(default_factory=list)
@@ -78,4 +79,4 @@ class InpadocBiblio(InpadocModel):
 
 @dataclass
 class BiblioResult(Model):
-    documents: list = None
+    documents: list = field(default_factory=list)

@@ -1,6 +1,7 @@
 from dataclasses import dataclass
 from dataclasses import field
 from typing import List
+from typing import Optional
 
 from patent_client.epo.ops.number_service.model import DocumentId
 from patent_client.util import Model
@@ -8,18 +9,18 @@ from patent_client.util import Model
 
 @dataclass
 class PriorityClaim(Model):
-    application_number: str = None
-    application_reference: DocumentId = None
-    sequence: int = None
-    kind: str = None
-    active: bool = None
+    application_number: Optional[str] = None
+    application_reference: Optional[DocumentId] = None
+    sequence: Optional[int] = None
+    kind: Optional[str] = None
+    active: Optional[bool] = None
 
 
 @dataclass
 class FamilyMember(Model):
-    publication_number: str = None
-    application_number: str = None
-    family_id: str = None
+    publication_number: Optional[str] = None
+    application_number: Optional[str] = None
+    family_id: Optional[str] = None
     publication_reference: list = field(default_factory=list)
     application_reference: list = field(default_factory=list)
     priority_claims: List[PriorityClaim] = field(default_factory=list)
@@ -35,7 +36,7 @@ class FamilyMember(Model):
 @dataclass
 class Family(Model):
     __manager__ = "patent_client.epo.ops.family.manager.FamilyManager"
-    publication_reference: DocumentId = None
-    num_records: int = None
-    publication_number: str = None
+    publication_reference: Optional[DocumentId] = None
+    num_records: Optional[int] = None
+    publication_number: Optional[str] = None
     family_members: List[FamilyMember] = field(default_factory=list)

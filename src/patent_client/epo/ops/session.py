@@ -1,4 +1,5 @@
 import datetime as dt
+from typing import Optional
 
 from patent_client import SETTINGS
 from patent_client.session import PatentClientSession
@@ -25,11 +26,16 @@ class OpsForbiddenError(Exception):
 
 
 class OpsAsyncSession(PatentClientSession):
-    def __init__(self, *args, key=None, secret=None, **kwargs):
+    key: Optional[str]
+    secret: Optional[str]
+    expires: dt.datetime
+    sync: SyncProxy
+
+    def __init__(self, *args, key: Optional[str] = None, secret: Optional[str] = None, **kwargs):
         super(OpsAsyncSession, self).__init__(*args, **kwargs)
-        self.key: str = key
-        self.secret: str = secret
-        self.expires: dt.datetime = dt.datetime.utcnow()
+        self.key = key
+        self.secret = secret
+        self.expires = dt.datetime.utcnow()
         self.sync = SyncProxy(self)
 
     async def request(self, *args, **kwargs):

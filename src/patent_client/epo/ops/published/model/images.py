@@ -2,6 +2,7 @@ from dataclasses import dataclass
 from dataclasses import field
 from pathlib import Path
 from typing import List
+from typing import Optional
 
 from patent_client.epo.ops.util import InpadocModel
 from patent_client.util import Model
@@ -11,18 +12,18 @@ from PyPDF2 import PdfWriter
 
 @dataclass
 class Section(Model):
-    name: str = None
-    start_page: int = None
+    name: Optional[str] = None
+    start_page: Optional[int] = None
 
 
 @dataclass
 class ImageDocument(Model):
-    num_pages: int = None
-    description: str = None
-    link: str = None
+    num_pages: Optional[int] = None
+    description: Optional[str] = None
+    link: Optional[str] = None
     formats: List[str] = field(default_factory=list)
     sections: List[Section] = field(default_factory=list)
-    doc_number: str = None
+    doc_number: Optional[str] = None
 
     def download(self, path="."):
         from ..api import PublishedImagesApi
@@ -44,11 +45,13 @@ class ImageDocument(Model):
 
     def download_image(self, path=".", image_format="tif", page_number=1):
         from ..api import PublishedImagesApi
-        
+
         out_file = Path(path) / f"{self.doc_number}.{image_format}"
-        
-        image = PublishedImagesApi.get_page_image_from_link(self.link, page_number=page_number, image_format=image_format) 
-        
+
+        image = PublishedImagesApi.get_page_image_from_link(
+            self.link, page_number=page_number, image_format=image_format
+        )
+
         with out_file.open("wb") as f:
             f.write(image.read())
 
@@ -56,10 +59,10 @@ class ImageDocument(Model):
 @dataclass
 class Images(InpadocModel):
     __manager__ = "patent_client.epo.ops.published.manager.ImageManager"
-    publication_number: str = None
-    full_document: ImageDocument = None
-    drawing: ImageDocument = None
-    first_page: ImageDocument = None
+    publication_number: Optional[str] = None
+    full_document: Optional[ImageDocument] = None
+    drawing: Optional[ImageDocument] = None
+    first_page: Optional[ImageDocument] = None
 
     @property
     def docdb_number(self):

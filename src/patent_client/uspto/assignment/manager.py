@@ -3,13 +3,16 @@ import re
 import warnings
 from collections.abc import Sequence
 from typing import AsyncIterator
+from typing import TYPE_CHECKING
 
 from patent_client.util import Manager
 from patent_client.util.request_util import get_start_and_row_count
 from urllib3.connectionpool import InsecureRequestWarning
 
 from .api import AssignmentApi
-from .model import Assignment
+
+if TYPE_CHECKING:
+    from .model import Assignment
 
 warnings.filterwarnings("ignore", category=InsecureRequestWarning)
 
@@ -20,7 +23,7 @@ clean_number = lambda x: NUMBER_CLEAN_RE.sub("", str(x))
 logger = logging.getLogger(__name__)
 
 
-class AssignmentManager(Manager[Assignment]):
+class AssignmentManager(Manager["Assignment"]):
     fields = {
         "patent_number": "PatentNumber",
         "appl_id": "ApplicationNumber",
@@ -33,7 +36,7 @@ class AssignmentManager(Manager[Assignment]):
     }
     page_size = 100
     obj_class = "patent_client.uspto_assignments.Assignment"
-    primary_key = "id"
+    default_filter = "id"
 
     def __init__(self, *args, **kwargs):
         super(AssignmentManager, self).__init__(*args, **kwargs)
@@ -42,7 +45,7 @@ class AssignmentManager(Manager[Assignment]):
     def allowed_filters(self):
         return list(self.fields.keys())
 
-    async def _aget_results(self) -> AsyncIterator[Assignment]:
+    async def _aget_results(self) -> AsyncIterator["Assignment"]:
         for start, rows in get_start_and_row_count(self.config.limit, self.config.offset, self.page_size):
             response = await AssignmentApi.alookup(**{**self.get_query(), "start": start, "rows": rows})
             for doc in response.docs:
@@ -57,15 +60,18 @@ class AssignmentManager(Manager[Assignment]):
             application: app no to search
             assignee: assignee name to search
         """
-
+        if len(self.config.filter) > 1:
+            raise ValueError("Assignment API does not support multiple filters!")
         for key, value in self.config.filter.items():
+            if isinstance(value, Sequence) and not isinstance(value, str):
+                if len(value) > 1:
+                    raise ValueError("Assignment API does not support multiple values!")
+                else:
+                    value = value[0]
             field = self.fields[key]
             query = value
         if field in ["PatentNumber", "ApplicationNumber"]:
-            if isinstance(query, Sequence) and not isinstance(query, str):
-                query = [clean_number(q) for q in query]
-            else:
-                query = clean_number(query)
+            query = clean_number(query)
         # Handle Ordering
         order_map = {"execution_date": "ExecutionDate+asc", "-execution_date": "ExecutionDate+desc"}
         if len(self.config.order_by) > 1:
@@ -75,14 +81,15 @@ class AssignmentManager(Manager[Assignment]):
         else:
             sort = "ExecutionDate+desc"
 
-        if isinstance(query, list):
-            query = [f'"{q}"' for q in query]
+        # if isinstance(query, list):
+        #    query = [f'"{q}"' for q in query]
 
         query = {
             "filter": field,
-            "query": " OR ".join(query) if isinstance(query, Sequence) and not isinstance(query, str) else query,
+            "query": query,
             "sort": sort,
         }
+        print(query)
         return query
 
     async def alen(self) -> int:

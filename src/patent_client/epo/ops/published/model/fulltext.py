@@ -1,6 +1,7 @@
 from dataclasses import dataclass
 from dataclasses import field
 from typing import List
+from typing import Optional
 
 from patent_client.epo.ops.util import InpadocModel
 from patent_client.util import Model
@@ -9,9 +10,9 @@ from patent_client.util.claims.model import Claim
 
 @dataclass
 class FTDocumentId(Model):
-    country: str = None
-    doc_number: str = None
-    kind: str = None
+    country: Optional[str] = None
+    doc_number: Optional[str] = None
+    kind: Optional[str] = None
 
     def __str__(self):
         return f"{self.country}{self.doc_number}{self.kind}"
@@ -20,9 +21,9 @@ class FTDocumentId(Model):
 @dataclass
 class Claims(Model):
     __manager__ = "patent_client.epo.ops.published.manager.ClaimsManager"
-    document_id: FTDocumentId
+    document_id: Optional[FTDocumentId]
     claims: List[Claim] = field(default_factory=list)
-    claim_text: str = None
+    claim_text: Optional[str] = None
 
     @property
     def docdb_number(self) -> str:
@@ -35,8 +36,8 @@ class Claims(Model):
 @dataclass
 class Description(InpadocModel):
     __manager__ = "patent_client.epo.ops.published.manager.DescriptionManager"
-    document_id: FTDocumentId = None
-    description: str = None
+    document_id: Optional[FTDocumentId] = None
+    description: Optional[str] = None
 
     @property
     def docdb_number(self) -> str:

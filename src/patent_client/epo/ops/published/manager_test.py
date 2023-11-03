@@ -58,7 +58,7 @@ class TestPublished:
         assert pub.biblio.title == "AUTOMATIC FLUID DISPENSER"
 
 
-class TestPublished:
+class TestPublishedAsync:
     @pytest.mark.asyncio
     async def test_inpadoc_manager(self):
         result = Inpadoc.objects.filter(applicant="Microsoft")

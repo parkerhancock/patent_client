@@ -1,6 +1,7 @@
 from dataclasses import dataclass
 from dataclasses import field
 from typing import List
+from typing import Optional
 
 from patent_client.util import Model
 
@@ -9,12 +10,11 @@ from ...util import InpadocModel
 
 @dataclass
 class Inpadoc(InpadocModel):
-    __manager__ = "patent_client.epo.ops.published.manager.SearchManager"
-    family_id: str = None
-    id_type: str = None
-    country: str = None
-    doc_number: str = None
-    kind: str = None
+    family_id: Optional[str] = None
+    id_type: Optional[str] = None
+    country: Optional[str] = None
+    doc_number: Optional[str] = None
+    kind: Optional[str] = None
 
     @property
     def docdb_number(self):
@@ -26,8 +26,8 @@ class Inpadoc(InpadocModel):
 
 @dataclass
 class Search(Model):
-    query: str = None
-    num_results: int = None
-    begin: int = None
-    end: int = None
+    query: Optional[str] = None
+    num_results: Optional[int] = None
+    begin: Optional[int] = None
+    end: Optional[int] = None
     results: List[Inpadoc] = field(default_factory=list)

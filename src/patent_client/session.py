@@ -1,7 +1,14 @@
+import re
+from pathlib import Path
+from typing import Optional
+
 import hishel
 import httpx
 from patent_client import CACHE_DIR
+from patent_client.util.asyncio_util import run_sync
 from patent_client.version import __version__
+
+filename_re = re.compile(r'filename="([^"]+)"')
 
 
 class PatentClientSession(hishel.AsyncCacheClient):
@@ -25,4 +32,21 @@ class PatentClientSession(hishel.AsyncCacheClient):
         headers["User-Agent"] = headers.get("User-Agent", self._default_user_agent)
         kwargs["headers"] = headers
         kwargs["follow_redirects"] = kwargs.get("follow_redirects", True)
+        kwargs["timeout"] = kwargs.get("timeout", self._default_timeout)
         super(PatentClientSession, self).__init__(**kwargs)
+
+    def download(self, url, method: str = "GET", path: Optional[str | Path] = None, **kwargs):
+        return run_sync(self.adownload(url, method, path, **kwargs))
+
+    async def adownload(self, url, method: str = "GET", path: Optional[str | Path] = None, **kwargs):
+        if isinstance(path, str):
+            path = Path(path)
+        async with self.stream(method, url, **kwargs) as response:
+            response.raise_for_status()
+            if path.is_dir() or None:
+                filename = filename_re.search(response.headers["Content-Disposition"]).group(1)
+                path = path / filename if path else Path.cwd() / filename
+            with path.open("wb") as f:
+                async for chunk in response.aiter_bytes():
+                    f.write(chunk)
+        return path
