@@ -1,9 +1,16 @@
 import logging
 from io import BytesIO
+from typing import TYPE_CHECKING
 
 from patent_client.epo.ops.session import asession
 from yankee.data import AttrDict
 
+from .schema import BiblioResultSchema
+from .schema import ClaimsSchema
+
+if TYPE_CHECKING:
+    from .model.biblio import BiblioResult
+    from .model.fulltext import Claims
 
 logger = logging.getLogger(__name__)
 
@@ -27,8 +34,9 @@ class PublishedBiblioAsyncApi:
         return response.text
 
     @classmethod
-    async def get_biblio(cls, number, doc_type="publication", format="docdb"):
-        return await cls.get_constituents(number, doc_type, format, constituents="biblio")
+    async def get_biblio(cls, number, doc_type="publication", format="docdb") -> "BiblioResult":
+        text = await cls.get_constituents(number, doc_type, format, constituents="biblio")
+        return BiblioResultSchema().loads(text)
 
     @classmethod
     async def get_abstract(cls, number, doc_type="publication", format="docdb"):
@@ -67,8 +75,9 @@ class PublishedFulltextAsyncApi:
         return await cls.get_fulltext_result(number, doc_type="publication", format="docdb", inquiry="description")
 
     @classmethod
-    async def get_claims(cls, number, doc_type="publication", format="docdb"):
-        return await cls.get_fulltext_result(number, doc_type="publication", format="docdb", inquiry="claims")
+    async def get_claims(cls, number, doc_type="publication", format="docdb") -> "Claims":
+        text = await cls.get_fulltext_result(number, doc_type="publication", format="docdb", inquiry="claims")
+        return ClaimsSchema().loads(text)
 
 
 class PublishedSearchAsyncApi:

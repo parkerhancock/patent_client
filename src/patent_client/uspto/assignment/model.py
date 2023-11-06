@@ -1,82 +1,79 @@
-from __future__ import annotations
-
 import datetime
 import warnings
-from dataclasses import dataclass
-from dataclasses import field
 from pathlib import Path
-from typing import *
+from typing import List
+from typing import Optional
+from typing import TYPE_CHECKING
 
-from patent_client.util import Model
 from patent_client.util.asyncio_util import run_sync
 from patent_client.util.base.related import get_model
-from yankee.data import ListCollection
-
-from .api import AssignmentApi
+from patent_client.util.pydantic_util import BaseModel
+from pydantic import BeforeValidator
+from pydantic import ConfigDict
+from pydantic import Field
+from pydantic import field_validator
+from pydantic.alias_generators import to_camel
+from typing_extensions import Annotated
 
 if TYPE_CHECKING:
     from patent_client.uspto.peds.model import USApplication
     from patent_client.uspto.public_search.model import Patent, PublishedApplication
+    from .manager import AssignmentManager
+
+from .session import session
+
+UsptoDate = Annotated[datetime.date, BeforeValidator(lambda x: datetime.datetime.strptime(x, "%Y%m%d").date())]
+YNBool = Annotated[bool, BeforeValidator(lambda x: x == "Y")]
 
 
-@dataclass
-class AssignmentPage:
-    num_found: int
-    docs: "List[Assignment]" = field(default_factory=ListCollection)
+def parse_datetime(string):
+    dt = datetime.datetime.fromisoformat(string)
+    if dt.year == 1 and dt.month == 1 and dt.day == 1:
+        return None
+    return dt
 
 
-@dataclass
-class Assignment(Model):
-    id: str
-    conveyance_text: str
-    last_update_date: str
-    page_count: int
-    recorded_date: datetime.date
-    corr_name: Optional[str] = None
-    corr_address: Optional[str] = None
-    assignors: "ListCollection[Assignor]" = field(default_factory=ListCollection)
-    assignees: "ListCollection[Assignee]" = field(default_factory=ListCollection)
-    properties: "ListCollection[Property]" = field(repr=False, default_factory=ListCollection)
-    """Properties objects associated with this Assignment"""
-    assignment_record_has_images: bool = False
-    transaction_date: Optional[datetime.date] = None
-    date_produced: Optional[datetime.date] = None
-
-    @property
-    def reel_frame(self):
-        return self.id.split("-")
-
-    @property
-    def image_url(self):
-        return AssignmentApi.get_download_url(*self.reel_frame)
-
-    def download(self, path: Optional[str | Path] = None):
-        """downloads the PDF associated with the assignment to the current working directory"""
-        return run_sync(self.adownload(path=path))
-
-    async def adownload(self, path: Optional[str | Path] = None):
-        """asynchronously downloads the PDF associated with the assignment to the current working directory"""
-        return await AssignmentApi.download_pdf(*self.reel_frame, path=path)
+def parse_date(string):
+    dt = parse_datetime(string)
+    if dt is None:
+        return None
+    return dt.date()
 
 
-@dataclass
-class Property(Model):
-    appl_id: Optional[str] = None
-    invention_title: Optional[str] = None
-    inventors: Optional[str] = None
-    # Numbers
-    pct_num: Optional[str] = None
-    intl_reg_num: Optional[str] = None
-    publ_num: Optional[str] = None
-    pat_num: Optional[str] = None
-    # Dates
-    filing_date: Optional[datetime.date] = None
-    intl_publ_date: Optional[datetime.date] = None
-    issue_date: Optional[datetime.date] = None
-    publ_date: Optional[datetime.date] = None
+DatetimeAsDate = Annotated[Optional[datetime.date], BeforeValidator(lambda x: parse_date(x))]
 
-    def __repr__(self):
-        return f"Property(appl_id={self.appl_id}, invention_title={self.invention_title})"
+
+class AbstractAssignmentModel(BaseModel):
+    model_config = ConfigDict(
+        alias_generator=to_camel,
+        anystr_strip_whitespace=True,
+    )
+
+
+class Assignor(AbstractAssignmentModel):
+    name: str = Field(alias="patAssignorName")
+    execution_date: DatetimeAsDate = Field(alias="patAssignorExDate")
+    acknowledgement_date: DatetimeAsDate = Field(alias="patAssignorDateAck")
+
+
+class Assignee(AbstractAssignmentModel):
+    name: str = Field(alias="patAssigneeName")
+    address: str = Field(alias="patAssigneeAddress")
+
+
+class Property(AbstractAssignmentModel):
+    invention_title: str
+    invention_title_lang: str
+    appl_num: str
+    filing_date: DatetimeAsDate
+    intl_publ_date: DatetimeAsDate
+    intl_reg_num: Optional[str]
+    inventors: str
+    issue_date: DatetimeAsDate
+    pat_num: Optional[str]
+    pct_num: Optional[str]
+    publ_date: DatetimeAsDate
+    publ_num: Optional[str]
 
     @property
     def application(self) -> Optional["USApplication"]:
@@ -116,14 +113,53 @@ class Property(Model):
         )
 
 
-@dataclass
-class Assignor(Model):
+class Correspondent(AbstractAssignmentModel):
     name: str
-    ex_date: datetime.date
-    date_ack: Optional[datetime.datetime] = None
+    address: str
 
 
-@dataclass
-class Assignee(Model):
-    name: str
-    address: Optional[str] = None
+class Assignment(AbstractAssignmentModel["AssignmentManager"]):
+    id: str
+    date_produced: UsptoDate
+    action_key_code: str
+    transaction_date: DatetimeAsDate
+    last_update_date: DatetimeAsDate
+    purge_indicator: YNBool
+    recorded_date: DatetimeAsDate
+    page_count: int
+    conveyance_text: str
+    assignment_record_has_images: YNBool
+    attorney_dock_num: str
+    pat_assignor_earliest_ex_date: DatetimeAsDate
+    correspondent: Correspondent
+    assignors: List[Assignor]
+    assignees: List[Assignee]
+    properties: List[Property]
+
+    @field_validator("conveyance_text")
+    @classmethod
+    def remove_see_document(cls, v) -> str:
+        return v.replace(" (SEE DOCUMENT FOR DETAILS).", "").strip()
+
+    @property
+    def reel_frame(self):
+        return self.id.split("-")
+
+    @property
+    def image_url(self):
+        reel = reel.rjust(6, "0")
+        frame = frame.rjust(4, "0")
+        return f"http://legacy-assignments.uspto.gov/assignments/assignment-pat-{reel}-{frame}.pdf"
+
+    def download(self, path: Optional[str | Path] = None):
+        """downloads the PDF associated with the assignment to the current working directory"""
+        return run_sync(self.adownload(path=path))
+
+    async def adownload(self, path: Optional[str | Path] = None):
+        """asynchronously downloads the PDF associated with the assignment to the current working directory"""
+        return await session.download(self.image_url, path=path)
+
+
+class AssignmentPage(AbstractAssignmentModel):
+    num_found: int
+    docs: list[Assignment]

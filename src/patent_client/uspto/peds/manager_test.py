@@ -1,10 +1,25 @@
 import datetime
+import json
 from collections import OrderedDict
+from pathlib import Path
 
 import pytest
 from PyPDF2 import PdfFileReader
 
+from .model import PedsPage
 from .model import USApplication
+
+fixtures = Path(__file__).parent / "fixtures"
+
+
+class TestPatentExaminationDataDeserialization:
+    def test_application(self):
+        input_file = fixtures / "app_1_input.json"
+        output_file = fixtures / "app_1_output.json"
+        app = PedsPage.model_validate_json(input_file.read_text())
+        output_file.write_text(app.model_dump_json(indent=2))
+        expected_data = json.loads(output_file.read_text())
+        assert json.loads(app.model_dump_json()) == expected_data
 
 
 class TestPatentExaminationData:
@@ -100,7 +115,7 @@ class TestPatentExaminationData:
                 ("total_days", 159),
             ]
         )
-        actual = app.pta_pte_summary.to_dict()
+        actual = app.pta_pte_summary.model_dump()
         for k, v in expected.items():
             assert actual[k] == v
 
@@ -110,24 +125,23 @@ class TestPatentExaminationData:
 
     def test_correspondent(self):
         app = USApplication.objects.get("14095073")
-        correspondent = app.correspondent.to_dict()
         expected_keys = [
-            "name",
-            "cust_no",
-            "address",
+            "corr_name",
+            "corr_cust_no",
+            "corr_address",
         ]
 
         for k in expected_keys:
-            assert k in correspondent
+            assert getattr(app, k) is not None
 
     def test_attorneys(self):
         app = USApplication.objects.get("14095073")
         assert len(app.attorneys) > 1
-        actual = app.attorneys[0].to_dict()
+        actual = app.attorneys[0].model_dump()
         assert int(actual["registration_no"]) > 1000
         expected_keys = [
             "registration_no",
-            "name",
+            "full_name",
             "phone_num",
             "reg_status",
         ]
@@ -342,7 +356,7 @@ class TestPatentExaminationDataAsync:
                 ("total_days", 159),
             ]
         )
-        actual = app.pta_pte_summary.to_dict()
+        actual = app.pta_pte_summary.model_dump()
         for k, v in expected.items():
             assert actual[k] == v
 
@@ -354,25 +368,24 @@ class TestPatentExaminationDataAsync:
     @pytest.mark.asyncio
     async def test_correspondent(self):
         app = await USApplication.objects.aget("14095073")
-        correspondent = app.correspondent.to_dict()
         expected_keys = [
-            "name",
-            "cust_no",
-            "address",
+            "corr_name",
+            "corr_cust_no",
+            "corr_address",
         ]
 
         for k in expected_keys:
-            assert k in correspondent
+            assert getattr(app, k, None) is not None
 
     @pytest.mark.asyncio
     async def test_attorneys(self):
         app = await USApplication.objects.aget("14095073")
         assert len(app.attorneys) > 1
-        actual = app.attorneys[0].to_dict()
+        actual = app.attorneys[0].model_dump()
         assert int(actual["registration_no"]) > 1000
         expected_keys = [
             "registration_no",
-            "name",
+            "full_name",
             "phone_num",
             "reg_status",
         ]

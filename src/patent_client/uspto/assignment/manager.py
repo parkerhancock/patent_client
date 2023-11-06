@@ -3,16 +3,13 @@ import re
 import warnings
 from collections.abc import Sequence
 from typing import AsyncIterator
-from typing import TYPE_CHECKING
 
 from patent_client.util import Manager
 from patent_client.util.request_util import get_start_and_row_count
 from urllib3.connectionpool import InsecureRequestWarning
 
 from .api import AssignmentApi
-
-if TYPE_CHECKING:
-    from .model import Assignment
+from .model import Assignment
 
 warnings.filterwarnings("ignore", category=InsecureRequestWarning)
 
@@ -89,7 +86,6 @@ class AssignmentManager(Manager["Assignment"]):
             "query": query,
             "sort": sort,
         }
-        print(query)
         return query
 
     async def alen(self) -> int:

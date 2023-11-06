@@ -2,14 +2,10 @@ import datetime
 from typing import Dict
 from typing import List
 from typing import Optional
-from typing import TYPE_CHECKING
 
-from .schema import DocumentSchema
-from .schema import PedsPageSchema
+from .model import Document
+from .model import PedsPage
 from .session import session
-
-if TYPE_CHECKING:
-    from .model import PedsPage
 
 
 type_map = {
@@ -98,9 +94,6 @@ class PatentExaminationDataSystemApi:
         }
         if rows:
             params["rows"] = rows
-        import json
-
-        print(json.dumps(params, indent=2))
         url = "https://ped.uspto.gov/api/queries"
         response = await session.post(
             url,
@@ -108,11 +101,10 @@ class PatentExaminationDataSystemApi:
             headers={"Accept": "application/json"},
         )
         response.raise_for_status()
-        return PedsPageSchema().load(response.json())
+        return PedsPage.model_validate(response.json())
 
     async def get_documents(self, appl_id: str) -> "PedsPage":
         url = f"https://ped.uspto.gov/api/queries/cms/public/{appl_id}"
         response = await session.get(url)
         response.raise_for_status()
-        schema = DocumentSchema()
-        return [schema.load(d) for d in response.json()]
+        return [Document.model_validate(d) for d in response.json()]

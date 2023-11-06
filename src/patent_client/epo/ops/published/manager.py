@@ -1,6 +1,3 @@
-from typing import AsyncIterator
-from typing import Iterator
-
 from patent_client.util import Manager
 
 from .api import PublishedAsyncApi
@@ -10,28 +7,16 @@ from .model.fulltext import Claims
 from .model.fulltext import Description
 from .model.images import ImageDocument
 from .schema import BiblioResultSchema
-from .schema import ClaimsSchema
 from .schema import DescriptionSchema
 from .schema import ImagesSchema
 from .schema import SearchSchema
 
 
-class SearchManager(Manager):
+class SearchManager(Manager["BiblioResult"]):
     result_size = 100
     primary_key = "publication"
     __schema__ = SearchSchema
     __item_schema__ = BiblioResultSchema
-
-    def __init__(self, config=None):
-        super().__init__(config=None)
-        if callable(self.__item_schema__):
-            self.__item_schema__ = self.__item_schema__()
-
-    def __iter__(self) -> Iterator[BiblioResult]:
-        return super(SearchManager, self).__iter__()
-
-    def __aiter__(self) -> AsyncIterator[BiblioResult]:
-        return super(SearchManager, self).__aiter__()
 
     async def _aget_search_results_range(self, start=1, end=100):
         if "cql_query" in self.config.filter:
@@ -76,19 +61,15 @@ class SearchManager(Manager):
 
 
 class BiblioManager(Manager):
-    __schema__ = BiblioResultSchema
-
-    async def aget(self, doc_number) -> BiblioResult:
-        result = self.__schema__.load(await PublishedAsyncApi.biblio.get_biblio(doc_number))
+    async def aget(self, doc_number) -> "BiblioResult":
+        result = await PublishedAsyncApi.biblio.get_biblio(doc_number)
         if len(result.documents) > 1:
             raise ValueError(f"More than one result found for {doc_number}!")
         return result.documents[0]
 
 
 class ClaimsManager(Manager):
-    __schema__ = ClaimsSchema
-
-    async def aget(self, doc_number) -> Claims:
+    async def aget(self, doc_number) -> "Claims":
         return self.__schema__.load(await PublishedAsyncApi.fulltext.get_claims(doc_number))
 
 
@@ -107,4 +88,8 @@ class ImageManager(Manager):
 
 
 class InpadocManager(SearchManager):
+    pass
+
+
+class InpadocBiblioManager(BiblioManager):
     pass
