@@ -20,6 +20,7 @@ class Schema(XmlSchema):
             "ops": "http://ops.epo.org",
             "epo": "http://www.epo.org/exchange",
             "ft": "http://www.epo.org/fulltext",
+            "reg": "http://www.epo.org/register",
         }
 
 
