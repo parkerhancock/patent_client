@@ -4,7 +4,7 @@ from collections import OrderedDict
 from pathlib import Path
 
 import pytest
-from PyPDF2 import PdfFileReader
+from pypdf import PdfReader
 
 from .model import PedsPage
 from .model import USApplication
@@ -252,7 +252,7 @@ class TestDocuments:
         app = USApplication.objects.get(patent_number=10000000)
         docs = app.documents.to_list()[-2:]
         result = app.documents.download(docs, path=tmp_path)
-        reader = PdfFileReader(str(result))
+        reader = PdfReader(str(result))
         assert reader.numPages == 8
 
 
@@ -493,5 +493,5 @@ class TestDocumentsAsync:
         app = USApplication.objects.get(patent_number=10000000)
         docs = app.documents.to_list()[-2:]
         result = app.documents.download(docs, path=tmp_path)
-        reader = PdfFileReader(str(result))
+        reader = PdfReader(str(result))
         assert reader.numPages == 8

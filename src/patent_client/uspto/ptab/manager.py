@@ -3,20 +3,16 @@ from typing import Callable
 from typing import Generic
 from typing import Optional
 
-import httpx
 import inflection
 from patent_client.util import Manager
 from patent_client.util import ModelType
 from patent_client.util.request_util import get_start_and_row_count
 
-from . import schema_doc
 from .api import PtabApi
 from .model import PtabDecision
 from .model import PtabDocument
 from .model import PtabProceeding
 from .util import peds_to_ptab
-
-asession = httpx.AsyncClient(verify=False)
 
 
 class PtabManager(Manager, Generic[ModelType]):

@@ -1,11 +1,11 @@
 from patent_client.util.base.manager import Manager
 
-from .api import GlobalDossierAsyncApi
+from .api import GlobalDossierApi
 from .query import QueryBuilder
 
 query_builder = QueryBuilder()
 
-global_dossier_async_api = GlobalDossierAsyncApi()
+global_dossier_api = GlobalDossierApi()
 
 
 class GlobalDossierBaseManager(Manager):
@@ -24,13 +24,13 @@ class GlobalDossierBaseManager(Manager):
 
 class GlobalDossierManager(GlobalDossierBaseManager):
     async def aget(self, *args, **kwargs):
-        return await global_dossier_async_api.get_file(**query_builder.build_query(*args, **kwargs))
+        return await global_dossier_api.get_file(**query_builder.build_query(*args, **kwargs))
 
 
 class GlobalDossierApplicationManager(GlobalDossierBaseManager):
     async def aget(self, *args, **kwargs):
         query = query_builder.build_query(*args, **kwargs)
-        gd_file = await global_dossier_async_api.get_file(**query)
+        gd_file = await global_dossier_api.get_file(**query)
         if query["type_code"] == "application":
             return next(a for a in gd_file.applications if a.app_num in query["doc_number"])
         elif query["type_code"] == "publication":
@@ -39,4 +39,4 @@ class GlobalDossierApplicationManager(GlobalDossierBaseManager):
 
 class DocumentListManager(GlobalDossierBaseManager):
     async def aget(self, country, doc_number, kind_code):
-        return await global_dossier_async_api.get_doc_list(country, doc_number, kind_code)
+        return await global_dossier_api.get_doc_list(country, doc_number, kind_code)

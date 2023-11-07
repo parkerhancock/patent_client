@@ -120,16 +120,16 @@ class Correspondent(AbstractAssignmentModel):
 
 class Assignment(AbstractAssignmentModel["AssignmentManager"]):
     id: str
-    date_produced: UsptoDate
-    action_key_code: str
-    transaction_date: DatetimeAsDate
+    date_produced: Optional[UsptoDate] = None
+    action_key_code: Optional[str] = None
+    transaction_date: Optional[DatetimeAsDate] = None
     last_update_date: DatetimeAsDate
     purge_indicator: YNBool
     recorded_date: DatetimeAsDate
     page_count: int
     conveyance_text: str
     assignment_record_has_images: YNBool
-    attorney_dock_num: str
+    attorney_dock_num: Optional[str] = None
     pat_assignor_earliest_ex_date: DatetimeAsDate
     correspondent: Correspondent
     assignors: List[Assignor]

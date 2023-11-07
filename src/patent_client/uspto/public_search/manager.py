@@ -5,15 +5,14 @@ from typing import TypeVar
 from patent_client.util.base.manager import Manager
 from patent_client.util.request_util import get_start_and_row_count
 
-from . import public_search_async_api
+from .api import PublicSearchApi
 from .model import Patent
 from .model import PatentBiblio
-from .model import PublicSearch
+from .model import PublicSearchBiblio
 from .model import PublicSearchDocument
 from .model import PublishedApplication
 from .model import PublishedApplicationBiblio
 from .query import QueryBuilder
-from .schema import PublicSearchDocumentSchema
 
 
 class CapacityException(Exception):
@@ -26,28 +25,13 @@ class FinishedException(Exception):
 
 T = TypeVar("T")
 
+public_search_api = PublicSearchApi()
+
 
 class GenericPublicSearchManager(Manager, Generic[T]):
     page_size = 500
     default_filter = "patent_number"
     query_builder = QueryBuilder()
-
-    async def _aget_results(self) -> AsyncIterator[T]:
-        query = self._query
-        order_by = self._order_by
-        sources = self.config.options.get("sources", ["US-PGPUB", "USPAT", "USOCR"])
-        for start, rows in get_start_and_row_count(self.config.limit, self.config.offset, self.page_size):
-            page = await public_search_async_api.run_query(
-                query=query,
-                start=start,
-                limit=rows,
-                sort=order_by,
-                sources=sources,
-            )
-            for obj in page.docs:
-                yield obj
-            if len(page.docs) < rows:
-                break
 
     @property
     def _query(self):
@@ -69,29 +53,45 @@ class GenericPublicSearchManager(Manager, Generic[T]):
         query = self._query
         order_by = self._order_by
         sources = self.config.options.get("sources", ["US-PGPUB", "USPAT", "USOCR"])
-        page = await public_search_async_api.run_query(
+        page = await public_search_api.run_query(
             query=query, start=0, limit=self.page_size, sort=order_by, sources=sources
         )
         max_len = page.num_found - self.config.offset
         return min(self.config.limit, max_len) if self.config.limit else max_len
 
 
-class GenericPublicSearchDocumentManager(GenericPublicSearchManager, Generic[T]):
-    __doc_schema__ = PublicSearchDocumentSchema()
+class GenericPublicSearchBiblioManager(GenericPublicSearchManager, Generic[T]):
+    async def _aget_results(self) -> AsyncIterator[T]:
+        query = self._query
+        order_by = self._order_by
+        sources = self.config.options.get("sources", ["US-PGPUB", "USPAT", "USOCR"])
+        for start, rows in get_start_and_row_count(self.config.limit, self.config.offset, self.page_size):
+            page = await public_search_api.run_query(
+                query=query,
+                start=start,
+                limit=rows,
+                sort=order_by,
+                sources=sources,
+            )
+            for obj in page.docs:
+                yield obj
+            if len(page.docs) < rows:
+                break
 
+
+class GenericPublicSearchDocumentManager(GenericPublicSearchBiblioManager, Generic[T]):
     async def _aget_results(self) -> AsyncIterator["PublicSearchDocument"]:
         result_count = super().__len__()
         if result_count > 20:
             raise CapacityException(
                 f"Query would result in more than 20 results! ({result_count} > 20).\nPlease use the associated Biblio method to reduce load on the API (PublicSearch / PatentBiblio / PublishedApplicationBiblio"
             )
-
         async for obj in super()._aget_results():
-            doc = await public_search_async_api.get_document(obj)
+            doc = await public_search_api.get_document(obj)
             yield doc
 
 
-class PublicSearchManager(GenericPublicSearchManager[PublicSearch]):
+class PublicSearchBiblioManager(GenericPublicSearchManager[PublicSearchBiblio]):
     pass
 
 
@@ -99,7 +99,7 @@ class PublicSearchDocumentManager(GenericPublicSearchDocumentManager[PublicSearc
     pass
 
 
-class PatentBiblioManager(GenericPublicSearchManager[PatentBiblio]):
+class PatentBiblioManager(GenericPublicSearchBiblioManager[PatentBiblio]):
     def __init__(self, config=None):
         super().__init__(config=config)
         self.config.options["sources"] = [
@@ -115,7 +115,7 @@ class PatentManager(GenericPublicSearchDocumentManager[Patent]):
         ]
 
 
-class PublishedApplicationBiblioManager(GenericPublicSearchManager[PublishedApplicationBiblio]):
+class PublishedApplicationBiblioManager(GenericPublicSearchBiblioManager[PublishedApplicationBiblio]):
     def __init__(self, config=None):
         super().__init__(config=config)
         self.config.options["sources"] = [

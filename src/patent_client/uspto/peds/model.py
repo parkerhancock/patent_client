@@ -124,14 +124,14 @@ class USApplication(PEDSBaseModel):
     last_insert_time: datetime.datetime = Field(alias="LAST_INSERT_TIME")
     patent_title: str
 
-    app_attr_dock_number: str
+    app_attr_dock_number: Optional[str]
     app_status: Optional[str] = None
     app_status_date: Optional[DateTimeAsDate] = None
-    app_type: str
-    app_cls_sub_cls: str
-    corr_name: str
-    corr_address: str
-    corr_cust_no: str = Field(alias="corrAddrCustNo")
+    app_type: Optional[str]
+    app_cls_sub_cls: Optional[str]
+    corr_name: Optional[str]
+    corr_address: Optional[str]
+    corr_cust_no: Optional[str] = Field(alias="corrAddrCustNo", default=None)
     transactions: List[Transactions]
     attorneys: List[AttorneyOrAgent] = Field(alias="attrnyAddr", default_factory=list)
     inventors: List[Inventor]

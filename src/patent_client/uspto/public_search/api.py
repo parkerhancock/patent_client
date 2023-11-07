@@ -1,16 +1,13 @@
 import asyncio
 from pathlib import Path
-from typing import TYPE_CHECKING
 
 import httpx
 import tenacity
+from pydantic_core._pydantic_core import ValidationError
 
-from .schema import PublicSearchDocumentSchema
-from .schema import PublicSearchPageSchema
+from .model import PublicSearchBiblioPage
+from .model import PublicSearchDocument
 from .session import session
-
-if TYPE_CHECKING:
-    from .model import PublicSearch, PublicSearchDocument
 
 
 class UsptoException(Exception):
@@ -25,12 +22,16 @@ def force_list(obj):
     return obj
 
 
-class PublicSearchAsyncApi:
+class PublicSearchApi:
     def __init__(self):
         self.session = dict()
         self.case_id = None
 
-    @tenacity.retry(stop=tenacity.stop_after_attempt(3), wait=tenacity.wait_random(min=1, max=5))
+    @tenacity.retry(
+        stop=tenacity.stop_after_attempt(3),
+        wait=tenacity.wait_random(min=1, max=5),
+        retry=tenacity.retry_if_not_exception_type(ValidationError),
+    )
     async def run_query(
         self,
         query,
@@ -86,9 +87,13 @@ class PublicSearchAsyncApi:
         result = query_response.json()
         if result.get("error", None) is not None:
             raise UsptoException(f"Error #{result['error']['errorCode']}\n{result['error']['errorMessage']}")
-        return PublicSearchPageSchema().load(result)
+        return PublicSearchBiblioPage.model_validate(result)
 
-    @tenacity.retry(stop=tenacity.stop_after_attempt(3), wait=tenacity.wait_random(min=1, max=5))
+    @tenacity.retry(
+        stop=tenacity.stop_after_attempt(3),
+        wait=tenacity.wait_random(min=1, max=5),
+        retry=tenacity.retry_if_not_exception_type(ValidationError),
+    )
     async def get_document(self, bib) -> "PublicSearchDocument":
         url = f"https://ppubs.uspto.gov/dirsearch-public/patents/{bib.guid}/highlight"
         params = {
@@ -99,9 +104,13 @@ class PublicSearchAsyncApi:
         }
         response = await session.get(url, params=params)
         response.raise_for_status()
-        return PublicSearchDocumentSchema().load(response.json())
+        return PublicSearchDocument.model_validate(response.json())
 
-    @tenacity.retry(stop=tenacity.stop_after_attempt(3), wait=tenacity.wait_random(min=1, max=5))
+    @tenacity.retry(
+        stop=tenacity.stop_after_attempt(3),
+        wait=tenacity.wait_random(min=1, max=5),
+        retry=tenacity.retry_if_not_exception_type(ValidationError),
+    )
     async def get_session(self):
         url = "https://ppubs.uspto.gov/dirsearch-public/users/me/session"
         response = await session.post(url, json=-1)  # json=str(random.randint(10000, 99999)))
@@ -125,7 +134,11 @@ class PublicSearchAsyncApi:
         response.raise_for_status()
         return response.text
 
-    @tenacity.retry(stop=tenacity.stop_after_attempt(3), wait=tenacity.wait_random(min=1, max=5))
+    @tenacity.retry(
+        stop=tenacity.stop_after_attempt(3),
+        wait=tenacity.wait_random(min=1, max=5),
+        retry=tenacity.retry_if_not_exception_type(ValidationError),
+    )
     async def download_image(self, obj, path="."):
         print("Trying!")
         out_path = Path(path).expanduser() / f"{obj.guid}.pdf"

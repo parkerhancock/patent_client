@@ -45,12 +45,6 @@ logger.addHandler(handler)
 logger.info(f"Starting Patent Client with log level {SETTINGS.DEFAULT.LOG_LEVEL}")
 
 
-# Set up yankee
-import yankee
-
-yankee.use_model = True
-
-
 from patent_client.epo.ops.published.model import Inpadoc  # isort:skip
 
 # from patent_client.usitc.model import ITCAttachment
@@ -67,14 +61,15 @@ from patent_client.uspto.global_dossier.model import (
     GlobalDossier,
     GlobalDossierApplication,
 )  # isort:skip
-from patent_client.uspto.public_search.model import (
-    PublicSearch,
-    PublicSearchDocument,
-    Patent,
-    PatentBiblio,
-    PublishedApplication,
-    PublishedApplicationBiblio,
-)  # isort:skip
+
+# from patent_client.uspto.public_search.model import (
+#    PublicSearch,
+#    PublicSearchDocument,
+#    Patent,
+#    PatentBiblio,
+#    PublishedApplication,
+#    PublishedApplicationBiblio,
+# )  # isort:skip
 
 elapsed = time.time() - start
 logger.debug(f"Startup Complete!, took {elapsed:.3f} seconds")

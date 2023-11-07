@@ -1,5 +1,7 @@
 import importlib
+from itertools import zip_longest
 from typing import Generic
+from typing import Sequence
 from typing import TypeVar
 
 from patent_client.util.base.manager import Manager
@@ -34,5 +36,14 @@ class BaseModel(PydanticBaseModel, Generic[M]):
         try:
             manager_class = getattr(importlib.import_module(manager_module), manager_class_name)
             return manager_class()
-        except (ImportError, AttributeError) as e:
-            raise UnmanagedModelException(f"Unable to find manager for {cls.__name__}")
+        except AttributeError as e:
+            raise UnmanagedModelException(
+                f"Unable to find manager for {cls.__name__}, looked in {manager_module}.{manager_class_name}"
+            )
+
+
+def zip_fields(values: dict, field_names: Sequence[str]):
+    lists = [values.get(key, list()) for key in field_names]
+    lists = [v if isinstance(v, list) else list() for v in lists]
+    tuples = list(zip_longest(*lists))
+    return [dict(zip(field_names, t)) for t in tuples]
