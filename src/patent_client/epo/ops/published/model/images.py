@@ -1,28 +1,28 @@
-from dataclasses import dataclass
-from dataclasses import field
 from pathlib import Path
 from typing import List
 from typing import Optional
 
+from patent_client.epo.ops.util import EpoBaseModel
 from patent_client.epo.ops.util import InpadocModel
-from patent_client.util import Model
-from PyPDF2 import PdfReader
-from PyPDF2 import PdfWriter
+from pydantic import Field
+from pydantic import model_validator
+from pypdf import PdfReader
+from pypdf import PdfWriter
+
+from ..schema.images import ImagesSchema
 
 
-@dataclass
-class Section(Model):
+class Section(EpoBaseModel):
     name: Optional[str] = None
     start_page: Optional[int] = None
 
 
-@dataclass
-class ImageDocument(Model):
+class ImageDocument(EpoBaseModel):
     num_pages: Optional[int] = None
     description: Optional[str] = None
     link: Optional[str] = None
-    formats: List[str] = field(default_factory=list)
-    sections: List[Section] = field(default_factory=list)
+    formats: List[str] = Field(default_factory=list)
+    sections: List[Section] = Field(default_factory=list)
     doc_number: Optional[str] = None
 
     def download(self, path="."):
@@ -56,9 +56,7 @@ class ImageDocument(Model):
             f.write(image.read())
 
 
-@dataclass
 class Images(InpadocModel):
-    __manager__ = "patent_client.epo.ops.published.manager.ImageManager"
     publication_number: Optional[str] = None
     full_document: Optional[ImageDocument] = None
     drawing: Optional[ImageDocument] = None
@@ -67,3 +65,8 @@ class Images(InpadocModel):
     @property
     def docdb_number(self):
         return str(self.publication_reference)
+
+    @model_validator(mode="before")
+    @classmethod
+    def convert(cls, values):
+        return ImagesSchema.load(values)

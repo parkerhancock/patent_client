@@ -1,14 +1,14 @@
-from dataclasses import dataclass
-from dataclasses import field
+from typing import List
 from typing import Optional
 
 from patent_client.epo.ops.number_service.model import DocumentId
+from patent_client.epo.ops.util import EpoBaseModel
 from patent_client.epo.ops.util import InpadocModel
-from patent_client.util import Model
-from yankee.data import ListCollection
+from pydantic import Field
+
+from ..schema.biblio import BiblioResultSchema
 
 
-@dataclass
 class Citation(InpadocModel):
     cited_phase: Optional[str] = None
     cited_by: Optional[str] = None
@@ -24,8 +24,7 @@ class Citation(InpadocModel):
         return str(self.docdb)
 
 
-@dataclass
-class Title(Model):
+class Title(EpoBaseModel):
     lang: str
     text: str
 
@@ -40,7 +39,6 @@ def limit_text(string, limit=30):
         return f"{string[:limit]}..."
 
 
-@dataclass
 class InpadocBiblio(InpadocModel):
     __manager__ = "patent_client.epo.ops.published.manager.BiblioManager"
     country: Optional[str] = None
@@ -55,18 +53,18 @@ class InpadocBiblio(InpadocModel):
     application_reference_docdb: Optional[DocumentId] = None
     application_reference_epodoc: Optional[DocumentId] = None
     application_reference_original: Optional[DocumentId] = None
-    intl_class: "ListCollection[str]" = field(default_factory=list)
-    cpc_class: "ListCollection[str]" = field(default_factory=list)
-    us_class: "ListCollection[str]" = field(default_factory=list)
-    priority_claims: "ListCollection[str]" = field(default_factory=list)
+    intl_class: List[str] = Field(default_factory=list)
+    cpc_class: List[str] = Field(default_factory=list)
+    us_class: List[str] = Field(default_factory=list)
+    priority_claims: List[DocumentId] = Field(default_factory=list)
     title: Optional[str] = None
-    titles: "ListCollection[Title]" = field(default_factory=list)
+    titles: List[Title] = Field(default_factory=list)
     abstract: Optional[str] = None
-    citations: "ListCollection[Citation]" = field(default_factory=list)
-    applicants_epodoc: "ListCollection[str]" = field(default_factory=list)
-    applicants_original: "ListCollection[str]" = field(default_factory=list)
-    inventors_epodoc: "ListCollection[str]" = field(default_factory=list)
-    inventors_original: "ListCollection[str]" = field(default_factory=list)
+    citations: List[Citation] = Field(default_factory=list)
+    applicants_epodoc: List[str] = Field(default_factory=list)
+    applicants_original: List[str] = Field(default_factory=list)
+    inventors_epodoc: List[str] = Field(default_factory=list)
+    inventors_original: List[str] = Field(default_factory=list)
     # TODO: NPL citations
 
     def __repr__(self):
@@ -77,6 +75,6 @@ class InpadocBiblio(InpadocModel):
         return str(self.publication_reference_docdb)
 
 
-@dataclass
-class BiblioResult(Model):
-    documents: list = field(default_factory=list)
+class BiblioResult(EpoBaseModel):
+    __schema__ = BiblioResultSchema()
+    documents: list[InpadocBiblio] = Field(default_factory=list)

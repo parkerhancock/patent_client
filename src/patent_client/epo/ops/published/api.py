@@ -1,16 +1,14 @@
 import logging
 from io import BytesIO
-from typing import TYPE_CHECKING
 
 from patent_client.epo.ops.session import asession
 from yankee.data import AttrDict
 
-from .schema import BiblioResultSchema
-from .schema import ClaimsSchema
-
-if TYPE_CHECKING:
-    from .model.biblio import BiblioResult
-    from .model.fulltext import Claims
+from .model.biblio import BiblioResult
+from .model.fulltext import Claims
+from .model.fulltext import Description
+from .model.images import Images
+from .model.search import Search
 
 logger = logging.getLogger(__name__)
 
@@ -30,13 +28,13 @@ class PublishedBiblioAsyncApi:
             constituents = (constituents,)
         url = base_url + ",".join(constituents)
         response = await asession.get(url)
-        response.raise_for_status()
+
         return response.text
 
     @classmethod
     async def get_biblio(cls, number, doc_type="publication", format="docdb") -> "BiblioResult":
         text = await cls.get_constituents(number, doc_type, format, constituents="biblio")
-        return BiblioResultSchema().loads(text)
+        return BiblioResult.model_validate(text)
 
     @classmethod
     async def get_abstract(cls, number, doc_type="publication", format="docdb"):
@@ -72,12 +70,13 @@ class PublishedFulltextAsyncApi:
 
     @classmethod
     async def get_description(cls, number, doc_type="publication", format="docdb"):
-        return await cls.get_fulltext_result(number, doc_type="publication", format="docdb", inquiry="description")
+        text = await cls.get_fulltext_result(number, doc_type="publication", format="docdb", inquiry="description")
+        return Description.model_validate(text)
 
     @classmethod
     async def get_claims(cls, number, doc_type="publication", format="docdb") -> "Claims":
         text = await cls.get_fulltext_result(number, doc_type="publication", format="docdb", inquiry="claims")
-        return ClaimsSchema().loads(text)
+        return Claims.model_validate(text)
 
 
 class PublishedSearchAsyncApi:
@@ -97,8 +96,8 @@ class PublishedSearchAsyncApi:
                     "results": list(),
                 }
             )
-        response.raise_for_status()
-        return response.text
+
+        return Search.model_validate(response.text)
 
 
 class PublishedImagesAsyncApi:
@@ -106,8 +105,8 @@ class PublishedImagesAsyncApi:
     async def get_images(cls, number, doc_type="publication", format="docdb"):
         base_url = f"http://ops.epo.org/3.2/rest-services/published-data/{doc_type}/{format}/{number}/images"
         response = await asession.get(base_url)
-        response.raise_for_status()
-        return response.text
+
+        return Images.validate_model(response.text)
 
     @classmethod
     async def get_page_image(cls, country, number, kind, image_type, page_number, image_format="pdf"):
@@ -116,7 +115,7 @@ class PublishedImagesAsyncApi:
             params={"Range": page_number},
             stream=True,
         )
-        response.raise_for_status()
+
         return BytesIO(response.raw.read())
 
     @classmethod
@@ -126,7 +125,7 @@ class PublishedImagesAsyncApi:
             params={"Range": page_number},
             stream=True,
         )
-        response.raise_for_status()
+
         return BytesIO(response.raw.read())
 
 

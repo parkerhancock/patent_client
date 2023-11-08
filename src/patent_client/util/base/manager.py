@@ -139,7 +139,7 @@ class Manager(Collection, Generic[ModelType]):
 
     async def afirst(self) -> ModelType:
         """Get the first object in the manager"""
-        return await anext(self.__aiter__())
+        return await anext(self.limit(1).__aiter__())
 
     def first(self) -> ModelType:
         """Get the first object in the manager"""

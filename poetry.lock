@@ -708,10 +708,8 @@ version = "0.0.16"
 description = "Persistent cache implementation for httpx and httpcore"
 optional = false
 python-versions = ">=3.8"
-files = [
-    {file = "hishel-0.0.16-py3-none-any.whl", hash = "sha256:6c6beaa95e9fd1bb0ba70a0b0ad53110b1dd89e7102475d5705f3c0584afc64a"},
-    {file = "hishel-0.0.16.tar.gz", hash = "sha256:d8d2b221f5b60bf5b1705f6eba7934670ba764008ac2e10fc239890976c851ae"},
-]
+files = []
+develop = false
 
 [package.dependencies]
 httpx = ">=0.22.0"
@@ -720,6 +718,12 @@ httpx = ">=0.22.0"
 redis = ["redis (==5.0.0)"]
 sqlite = ["anysqlite (>=0.0.5)"]
 yaml = ["pyyaml (==6.0.1)"]
+
+[package.source]
+type = "git"
+url = "https://github.com/parkerhancock/hishel"
+reference = "HEAD"
+resolved_reference = "338cfd730d3e5af46b2a53f68ee64409a072c7b6"
 
 [[package]]
 name = "hpack"
@@ -2163,6 +2167,39 @@ files = [
 typing-extensions = ">=4.6.0,<4.7.0 || >4.7.0"
 
 [[package]]
+name = "pydantic-settings"
+version = "2.0.3"
+description = "Settings management using Pydantic"
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "pydantic_settings-2.0.3-py3-none-any.whl", hash = "sha256:ddd907b066622bd67603b75e2ff791875540dc485b7307c4fffc015719da8625"},
+    {file = "pydantic_settings-2.0.3.tar.gz", hash = "sha256:962dc3672495aad6ae96a4390fac7e593591e144625e5112d359f8f67fb75945"},
+]
+
+[package.dependencies]
+pydantic = ">=2.0.1"
+python-dotenv = ">=0.21.0"
+
+[[package]]
+name = "pydantic-xml"
+version = "2.4.0"
+description = "pydantic xml extension"
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "pydantic_xml-2.4.0-py3-none-any.whl", hash = "sha256:77cb2b51401971aeaf98f5ac4a1a090eb0197ab84a719281eefcdb7733310e78"},
+    {file = "pydantic_xml-2.4.0.tar.gz", hash = "sha256:fd914627c39ef994f5055fe3f8a2099772dd3c83f0ef3045568a4b0b9bed28e5"},
+]
+
+[package.dependencies]
+pydantic = ">=2.0.0"
+
+[package.extras]
+docs = ["Sphinx (>=5.3.0,<6.0.0)", "furo (>=2022.12.7,<2023.0.0)", "sphinx-copybutton (>=0.5.1,<0.6.0)", "sphinx_design (>=0.3.0,<0.4.0)", "toml (>=0.10.2,<0.11.0)"]
+lxml = ["lxml (>=4.9.0)"]
+
+[[package]]
 name = "pygments"
 version = "2.16.1"
 description = "Pygments is a syntax highlighting package written in Python."
@@ -2333,6 +2370,20 @@ files = [
 
 [package.dependencies]
 six = ">=1.5"
+
+[[package]]
+name = "python-dotenv"
+version = "1.0.0"
+description = "Read key-value pairs from a .env file and set them as environment variables"
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "python-dotenv-1.0.0.tar.gz", hash = "sha256:a8df96034aae6d2d50a4ebe8216326c61c3eb64836776504fcca410e5937a3ba"},
+    {file = "python_dotenv-1.0.0-py3-none-any.whl", hash = "sha256:f5971a9226b701070a4bf2c38c89e5a3f0d64de8debda981d1db98583009122a"},
+]
+
+[package.extras]
+cli = ["click (>=5.0)"]
 
 [[package]]
 name = "pytz"
@@ -2866,7 +2917,7 @@ docs = ["furo", "ipython", "myst-parser", "sphinx-copybutton", "sphinx-inline-ta
 name = "sphinx-copybutton"
 version = "0.5.2"
 description = "Add a copy button to each of your code cells."
-optional = false
+optional = true
 python-versions = ">=3.7"
 files = [
     {file = "sphinx-copybutton-0.5.2.tar.gz", hash = "sha256:4cf17c82fb9646d1bc9ca92ac280813a3b605d8c421225fd9913154103ee1fbd"},
@@ -3515,28 +3566,40 @@ files = [
 ]
 
 [[package]]
+name = "xmltodict"
+version = "0.13.0"
+description = "Makes working with XML feel like you are working with JSON"
+optional = false
+python-versions = ">=3.4"
+files = [
+    {file = "xmltodict-0.13.0-py2.py3-none-any.whl", hash = "sha256:aa89e8fd76320154a40d19a0df04a4695fb9dc5ba977cbb68ab3e4eb225e7852"},
+    {file = "xmltodict-0.13.0.tar.gz", hash = "sha256:341595a488e3e01a85a9d8911d8912fd922ede5fecc4dce437eb4b6c8d037e56"},
+]
+
+[[package]]
 name = "yankee"
 version = "0.1.44"
 description = "lightweight, simple, and fast declarative XML and JSON data extraction"
 optional = false
 python-versions = ">=3.9,<3.13"
-files = [
-    {file = "yankee-0.1.44-py3-none-any.whl", hash = "sha256:53848b7a84220e1b511b8da4ea5852ba63040139fbf662cc508032dd00ccaa25"},
-    {file = "yankee-0.1.44.tar.gz", hash = "sha256:abe3159012e2b95a711e3ad9825c4855bd90a603959883ff418672142a987b18"},
-]
+files = []
+develop = true
 
 [package.dependencies]
-cssselect = ">=1.2.0,<2.0.0"
-inflection = ">=0.5.1,<0.6.0"
-jsonpath-ng = ">=1.5.3,<2.0.0"
-lxml = ">=4.8.0,<5.0.0"
-python-dateutil = ">=2.8.2,<3.0.0"
-sphinx-copybutton = ">=0.5"
-toolz = ">=0.12.0,<0.13.0"
-ujson = ">=5.7.0,<6.0.0"
+cssselect = "^1.2.0"
+inflection = "^0.5.1"
+jsonpath-ng = "^1.5.3"
+lxml = "^4.8.0"
+python-dateutil = "^2.8.2"
+toolz = "^0.12.0"
+ujson = "^5.7.0"
 
 [package.extras]
 docs = ["IPython (>=7.17.0,<8.0.0)", "furo (>=2022.6,<2023.0)", "linkify-it-py (>=2.0,<3.0)", "myst-parser (>=0.17)", "nbsphinx (>=0.8.9,<0.9.0)", "sphinx (>=5.0.2,<6.0.0)", "sphinx-autodoc-typehints (>=1.19,<2.0)", "sphinx-automodapi (>=0.14)", "sphinx-design (>=0.2)", "sphinx-notfound-page (>=0.8)", "sphinxcontrib-apidoc (>=0.3,<0.4)", "sphinxcontrib-mermaid (>=0.7.1,<0.8.0)"]
+
+[package.source]
+type = "directory"
+url = "../yankee"
 
 [[package]]
 name = "yarl"
@@ -3646,4 +3709,4 @@ docs = ["IPython", "furo", "linkify-it-py", "myst-parser", "nbsphinx", "sphinx",
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.9,<3.13"
-content-hash = "070b3f57d1418112bd7372b050d2488bb6e057b1563ee40f96f7173b7e30dd2c"
+content-hash = "ef069934147fdb474d9ff34ad1b91e574af63422416f087fb9c411578fb6c3dc"

@@ -4,8 +4,6 @@ from patent_client.epo.ops.util import Schema
 from yankee.xml import fields as f
 from yankee.xml.schema import fields as f
 
-from ..util import Schema
-
 
 class PriorityClaimSchema(Schema):
     application_number = DocDbNumberField(".//epo:document-id")

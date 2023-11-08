@@ -36,7 +36,9 @@ class TestPublished:
 
     def test_can_index_inpadoc_result(self):
         result = Inpadoc.objects.filter(applicant="Tesla")
-        assert result[0] != result[1]
+        first_obj = result[0]
+        second_obj = result[1]
+        assert first_obj != second_obj
 
     def test_can_handle_single_item_ipc_classes(self):
         result = Inpadoc.objects.get("WO2020081771").biblio

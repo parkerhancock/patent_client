@@ -4,7 +4,7 @@ from pathlib import Path
 fixtures = Path(__file__).parent / "fixtures"
 
 from .convert.biblio import PublicSearchBiblioPageSchema
-from .convert.doc import PublicSearchDocumentSchema
+from .convert.document import PublicSearchDocumentSchema
 
 
 def test_convert_biblio():

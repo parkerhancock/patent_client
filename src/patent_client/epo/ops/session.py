@@ -25,6 +25,10 @@ class OpsForbiddenError(Exception):
     pass
 
 
+class OpsFairUseError(Exception):
+    pass
+
+
 class OpsAsyncSession(PatentClientSession):
     key: Optional[str]
     secret: Optional[str]
@@ -43,6 +47,12 @@ class OpsAsyncSession(PatentClientSession):
         if response.status_code in (403, 400):
             auth_response = await self.get_token()
             response = await super(OpsAsyncSession, self).request(*args, **kwargs)
+        if response.status_code == 403:
+            if "Fair Use policy" in response.text:
+                raise OpsFairUseError(f"EPO Fair Use Policy Error!\n{response.text}{response.headers}")
+            else:
+                raise OpsForbiddenError(f"EPO Request Error!\nStatus Code: {response.status_code}\n{response.text}")
+        response.raise_for_status()
         return response
 
     async def get_token(self):
@@ -71,4 +81,4 @@ class OpsAsyncSession(PatentClientSession):
         return response
 
 
-asession = OpsAsyncSession(key=SETTINGS.EPO.API_KEY, secret=SETTINGS.EPO.API_SECRET)
+asession = OpsAsyncSession(key=SETTINGS.epo_api_key, secret=SETTINGS.epo_api_secret)

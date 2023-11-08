@@ -11,16 +11,17 @@ import nest_asyncio
 nest_asyncio.apply()
 
 from pathlib import Path
-from .settings import load_settings
+from .settings import Settings
 
-SETTINGS = load_settings()
+SETTINGS = Settings()
+
 
 import logging
 import logging.handlers
 
 # Revert base directory to local if there's an access problem
 
-BASE_DIR = Path(SETTINGS.DEFAULT.BASE_DIR).expanduser()
+BASE_DIR = SETTINGS.base_dir
 try:
     BASE_DIR.mkdir(exist_ok=True, parents=True)
 except OSError:
@@ -28,13 +29,13 @@ except OSError:
     BASE_DIR.mkdir(exist_ok=True, parents=True)
     SETTINGS.DEFAULT.BASE_DIR = str(BASE_DIR)
 
-LOG_FILENAME = BASE_DIR / SETTINGS.DEFAULT.LOG_FILE
+LOG_FILENAME = BASE_DIR / SETTINGS.log_file
 CACHE_DIR = BASE_DIR / "cache"
 CACHE_DIR.mkdir(exist_ok=True, parents=True)
 
 # Set up a specific logger with our desired output level
 logger = logging.getLogger(__name__)
-logger.setLevel(SETTINGS.DEFAULT.LOG_LEVEL)
+logger.setLevel(SETTINGS.log_level)
 
 
 # Add the log message handler to the logger
@@ -42,7 +43,7 @@ handler = logging.FileHandler(LOG_FILENAME)
 handler.setFormatter(logging.Formatter("%(asctime)s:%(levelname)s:%(name)s:%(message)s"))
 logger.addHandler(handler)
 
-logger.info(f"Starting Patent Client with log level {SETTINGS.DEFAULT.LOG_LEVEL}")
+logger.info(f"Starting Patent Client with log level {SETTINGS.log_level}")
 
 
 from patent_client.epo.ops.published.model import Inpadoc  # isort:skip
@@ -72,7 +73,7 @@ from patent_client.uspto.global_dossier.model import (
 # )  # isort:skip
 
 elapsed = time.time() - start
-logger.debug(f"Startup Complete!, took {elapsed:.3f} seconds")
+logger.info(f"Startup Complete!, took {elapsed:.3f} seconds")
 
 cache_dir = Path("~/.patent_client/cache").expanduser()
 cache_dir.parent.mkdir(exist_ok=True, parents=True)

@@ -1,15 +1,14 @@
 import datetime
-from dataclasses import dataclass
-from dataclasses import field
 from typing import Optional
 
 from patent_client.epo.ops.number_service.model import DocumentId
-from patent_client.util import Model
-from yankee.data import ListCollection
+from patent_client.epo.ops.util import EpoBaseModel
+from pydantic import Field
+
+from .schema import LegalSchema
 
 
-@dataclass
-class MetaData(Model):
+class MetaData(EpoBaseModel):
     status_of_data: Optional[str] = None
     docdb_publication_number: Optional[str] = None
     subscriber_exchange_date: Optional[datetime.date] = None
@@ -17,8 +16,7 @@ class MetaData(Model):
     docdb_integer: Optional[int] = None
 
 
-@dataclass
-class LegalEvent(Model):
+class LegalEvent(EpoBaseModel):
     """
     Field descriptions are here:
     https://documents.epo.org/projects/babylon/eponot.nsf/0/EF223017D933B30AC1257B50005A042E/$File/14.11_User_Documentation_3.1_en.pdf
@@ -65,8 +63,7 @@ class LegalEvent(Model):
         return f"Event(document_number={self.document_number}, event_description={self.event_description}, event_date={self.event_date})"
 
 
-@dataclass
-class Legal(Model):
-    __manager__ = "patent_client.epo.ops.legal.manager.LegalManager"
+class Legal(EpoBaseModel):
+    __schema__ = LegalSchema()
     publication_reference: Optional[DocumentId] = None
-    events: list = field(default_factory=ListCollection)
+    events: list = Field(default_factory=list)
