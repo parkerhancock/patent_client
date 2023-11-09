@@ -1,5 +1,8 @@
 # Changelog
 
+## 3.2.11 (2023-11-09)
+- Remove `requests-cache` as a dependency and remove all references thereto.
+
 ## 3.2.10 (2023-10-31)
 - Attempt to fix broken docs
 
