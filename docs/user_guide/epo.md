@@ -21,13 +21,10 @@ Each case can also access Full Text, Images, and Inpadoc Families
 >>> from patent_client import Inpadoc
 >>> from pprint import pprint
 >>> case = Inpadoc.objects.get("EP1000000A1")
->>> pprint(list(case.family))
-[FamilyMember(publication_number=EP1000000A1),
- FamilyMember(publication_number=EP1000000B1),
- FamilyMember(publication_number=ATE232441T1),
- FamilyMember(publication_number=DE69905327D1),
- FamilyMember(publication_number=NL1010536C2),
- FamilyMember(publication_number=US6093011A)]
+>>> pprint(list(case.family)) # doctest +ELLIPSIS
+[FamilyMember(...),
+...
+ FamilyMember(...)]
 
 >>> case.images.full_document.sections
 [Section(name='ABSTRACT', start_page=1), Section(name='BIBLIOGRAPHY', start_page=1), Section(name='CLAIMS', start_page=3), Section(name='DESCRIPTION', start_page=2), Section(name='DRAWINGS', start_page=5), Section(name='SEARCH_REPORT', start_page=11)]

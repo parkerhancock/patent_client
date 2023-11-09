@@ -4,6 +4,7 @@ from typing import Optional
 from patent_client import SETTINGS
 from patent_client.session import PatentClientSession
 from patent_client.util.asyncio_util import SyncProxy
+from patent_client.util.hishel_util import cache_disabled
 
 NS = {
     "http://ops.epo.org": None,
@@ -57,7 +58,7 @@ class OpsAsyncSession(PatentClientSession):
 
     async def get_token(self):
         auth_url = "https://ops.epo.org/3.2/auth/accesstoken"
-        with self.cache_disabled():
+        with cache_disabled(self):
             response = await super(OpsAsyncSession, self).request(
                 "post",
                 auth_url,

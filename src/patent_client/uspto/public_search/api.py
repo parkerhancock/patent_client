@@ -116,7 +116,7 @@ class PublicSearchApi:
     )
     async def get_session(self):
         url = "https://ppubs.uspto.gov/dirsearch-public/users/me/session"
-        with session.cache_disabled():
+        with cache_disabled(session):
             response = await session.post(url, json=-1)  # json=str(random.randint(10000, 99999)))
             self.session = response.json()
             self.case_id = self.session["userCase"]["caseId"]

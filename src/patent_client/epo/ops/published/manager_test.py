@@ -1,4 +1,5 @@
 import pytest
+from patent_client.util.hishel_util import cache_disabled
 
 from . import api
 from ..session import asession
@@ -53,7 +54,7 @@ class TestPublished:
     def test_issue_76_no_credential(self):
         good_session = api.asession
         api.asession = OpsAsyncSession()
-        with asession.cache_disabled():
+        with cache_disabled(asession):
             with pytest.raises(OpsAuthenticationError):
                 pub = Inpadoc.objects.get("EP3082535A1")
         api.asession = good_session
