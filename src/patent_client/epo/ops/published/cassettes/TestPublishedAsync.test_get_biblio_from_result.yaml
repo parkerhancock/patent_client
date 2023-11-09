@@ -1,0 +1,199 @@
+interactions:
+- request:
+    body: ''
+    headers:
+      Authorization:
+      - REDACTED
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - ops.epo.org
+      user-agent:
+      - Mozilla/5.0 Python Patent Clientbot/3.2.10 (parkerhancock@users.noreply.github.com)
+    method: GET
+    uri: http://ops.epo.org/3.2/rest-services/published-data/search?Range=1-1&q=applicant%3D%22Google%22
+  response:
+    content: "<?xml version=\"1.0\" encoding=\"UTF-8\"?><?xml-stylesheet type=\"text/xsl\"
+      href=\"/3.2/style/exchange.xsl\"?>\n<ops:world-patent-data xmlns=\"http://www.epo.org/exchange\"
+      xmlns:ops=\"http://ops.epo.org\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">\n
+      \   <ops:biblio-search total-result-count=\"10000\">\n        <ops:query syntax=\"CQL\">applicant
+      = Google</ops:query>\n        <ops:range begin=\"1\" end=\"1\"/>\n        <ops:search-result>\n
+      \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"69188275\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+      \                   <doc-number>D1003906</doc-number>\n                    <kind>S</kind>\n
+      \               </document-id>\n            </ops:publication-reference>\n        </ops:search-result>\n
+      \   </ops:biblio-search>\n</ops:world-patent-data>"
+    headers:
+      Access-Control-Allow-Headers:
+      - Authorization
+      Access-Control-Allow-Methods:
+      - POST
+      Access-Control-Allow-Origin:
+      - '*'
+      Cache-Control:
+      - no-cache
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/xml;charset=utf-8
+      Date:
+      - Thu, 09 Nov 2023 17:42:17 GMT
+      ETag:
+      - '"0c2f278dc6e7691084d023557c8ea30c6"'
+      Pragma:
+      - no-cache
+      Server:
+      - Apache
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      Vary:
+      - Accept
+      X-API:
+      - ops-v3.2
+      X-EPO-Client-IP:
+      - 38.104.255.66
+      X-EPO-Forwarded:
+      - '[38.104.255.66]'
+      X-Elapsed-Time:
+      - '11'
+      X-IndividualQuotaPerHour-Used:
+      - '352858'
+      X-RegisteredQuotaPerWeek-Used:
+      - '1091704'
+      X-Throttling-Control:
+      - busy (images=green:100, inpadoc=green:45, other=green:1000, retrieval=green:100,
+        search=green:15)
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: ''
+    headers:
+      Authorization:
+      - REDACTED
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - ops.epo.org
+      user-agent:
+      - Mozilla/5.0 Python Patent Clientbot/3.2.10 (parkerhancock@users.noreply.github.com)
+    method: GET
+    uri: http://ops.epo.org/3.2/rest-services/published-data/publication/docdb/USD1003906S/biblio
+  response:
+    content: "<?xml version=\"1.0\" encoding=\"UTF-8\"?><?xml-stylesheet type=\"text/xsl\"
+      href=\"/3.2/style/exchange.xsl\"?>\n<ops:world-patent-data xmlns=\"http://www.epo.org/exchange\"
+      xmlns:ops=\"http://ops.epo.org\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">\n
+      \   <exchange-documents>\n        <exchange-document system=\"ops.epo.org\"
+      family-id=\"69188275\" country=\"US\" doc-number=\"D1003906\" kind=\"S\">\n
+      \           <bibliographic-data>\n                <publication-reference>\n
+      \                   <document-id document-id-type=\"docdb\">\n                        <country>US</country>\n
+      \                       <doc-number>D1003906</doc-number>\n                        <kind>S</kind>\n
+      \                       <date>20231107</date>\n                    </document-id>\n
+      \                   <document-id document-id-type=\"epodoc\">\n                        <doc-number>USD1003906S</doc-number>\n
+      \                       <date>20231107</date>\n                    </document-id>\n
+      \               </publication-reference>\n                <patent-classifications/>\n
+      \               <application-reference doc-id=\"601388186\">\n                    <document-id
+      document-id-type=\"docdb\">\n                        <country>US</country>\n
+      \                       <doc-number>201929718429</doc-number>\n                        <kind>F</kind>\n
+      \                   </document-id>\n                    <document-id document-id-type=\"epodoc\">\n
+      \                       <doc-number>US201929718429F</doc-number>\n                        <date>20191224</date>\n
+      \                   </document-id>\n                    <document-id document-id-type=\"original\">\n
+      \                       <doc-number>29718429</doc-number>\n                    </document-id>\n
+      \               </application-reference>\n                <priority-claims>\n
+      \                   <priority-claim sequence=\"1\" kind=\"national\">\n                        <document-id
+      document-id-type=\"epodoc\">\n                            <doc-number>US201829665761F</doc-number>\n
+      \                           <date>20181005</date>\n                        </document-id>\n
+      \                       <document-id document-id-type=\"original\">\n                            <doc-number>29665761</doc-number>\n
+      \                       </document-id>\n                    </priority-claim>\n
+      \                   <priority-claim sequence=\"2\" kind=\"national\">\n                        <document-id
+      document-id-type=\"epodoc\">\n                            <doc-number>US201929718429F</doc-number>\n
+      \                           <date>20191224</date>\n                        </document-id>\n
+      \                   </priority-claim>\n                </priority-claims>\n
+      \               <parties>\n                    <applicants>\n                        <applicant
+      sequence=\"1\" data-format=\"epodoc\">\n                            <applicant-name>\n
+      \                               <name>GOOGLE LLC\u2002[US]</name>\n                            </applicant-name>\n
+      \                       </applicant>\n                        <applicant sequence=\"1\"
+      data-format=\"original\">\n                            <applicant-name>\n                                <name>GOOGLE
+      LLC</name>\n                            </applicant-name>\n                        </applicant>\n
+      \                   </applicants>\n                    <inventors>\n                        <inventor
+      sequence=\"1\" data-format=\"epodoc\">\n                            <inventor-name>\n
+      \                               <name>GAISER JONATHAN\u2002[US]</name>\n                            </inventor-name>\n
+      \                       </inventor>\n                        <inventor sequence=\"2\"
+      data-format=\"epodoc\">\n                            <inventor-name>\n                                <name>
+      PARMAR SIDDHARTHA\u2002[US]</name>\n                            </inventor-name>\n
+      \                       </inventor>\n                        <inventor sequence=\"3\"
+      data-format=\"epodoc\">\n                            <inventor-name>\n                                <name>
+      THAI JOHN\u2002[CA]</name>\n                            </inventor-name>\n                        </inventor>\n
+      \                       <inventor sequence=\"4\" data-format=\"epodoc\">\n                            <inventor-name>\n
+      \                               <name> DE GUSMAO NOGUEIRA VICTOR\u2002[US]</name>\n
+      \                           </inventor-name>\n                        </inventor>\n
+      \                       <inventor sequence=\"5\" data-format=\"epodoc\">\n                            <inventor-name>\n
+      \                               <name> TRAN KIM\u2002[US]</name>\n                            </inventor-name>\n
+      \                       </inventor>\n                        <inventor sequence=\"1\"
+      data-format=\"original\">\n                            <inventor-name>\n                                <name>Gaiser,
+      Jonathan, </name>\n                            </inventor-name>\n                        </inventor>\n
+      \                       <inventor sequence=\"2\" data-format=\"original\">\n
+      \                           <inventor-name>\n                                <name>Parmar,
+      Siddhartha, </name>\n                            </inventor-name>\n                        </inventor>\n
+      \                       <inventor sequence=\"3\" data-format=\"original\">\n
+      \                           <inventor-name>\n                                <name>Thai,
+      John, </name>\n                            </inventor-name>\n                        </inventor>\n
+      \                       <inventor sequence=\"4\" data-format=\"original\">\n
+      \                           <inventor-name>\n                                <name>De
+      Gusmao Nogueira, Victor, </name>\n                            </inventor-name>\n
+      \                       </inventor>\n                        <inventor sequence=\"5\"
+      data-format=\"original\">\n                            <inventor-name>\n                                <name>Tran,
+      Kim</name>\n                            </inventor-name>\n                        </inventor>\n
+      \                   </inventors>\n                </parties>\n                <invention-title
+      lang=\"en\">Display screen with animated graphical user interface</invention-title>\n
+      \           </bibliographic-data>\n        </exchange-document>\n    </exchange-documents>\n</ops:world-patent-data>"
+    headers:
+      Access-Control-Allow-Headers:
+      - Authorization
+      Access-Control-Allow-Methods:
+      - POST
+      Access-Control-Allow-Origin:
+      - '*'
+      Cache-Control:
+      - no-cache
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/xml;charset=utf-8
+      Date:
+      - Thu, 09 Nov 2023 17:42:17 GMT
+      ETag:
+      - '"0de43a1f2472428d31e71cb7a414b00a3"'
+      Pragma:
+      - no-cache
+      Server:
+      - Apache
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      Vary:
+      - Accept
+      X-API:
+      - ops-v3.2
+      X-EPO-Client-IP:
+      - 38.104.255.66
+      X-EPO-Forwarded:
+      - '[38.104.255.66]'
+      X-Elapsed-Time:
+      - '3'
+      X-IndividualQuotaPerHour-Used:
+      - '352858'
+      X-RegisteredQuotaPerWeek-Used:
+      - '1091704'
+      X-Throttling-Control:
+      - busy (images=green:100, inpadoc=green:45, other=green:1000, retrieval=green:100,
+        search=green:15)
+    http_version: HTTP/1.1
+    status_code: 200
+version: 1

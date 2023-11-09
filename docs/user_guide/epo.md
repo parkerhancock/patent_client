@@ -115,7 +115,7 @@ http://ops.epo.org/3.2/rest-services/register/publication/epodoc/EP.3221665.A1/p
 {'phase': 'undefined', 'description': 'Renewal fee payment - 03', 'date': '20171113', 'code': 'RFEE'}
 ```
 
-Searching is not avaailable at present.
+Searching is not available at present.
 
 Original API URL: <http://ops.epo.org>
 

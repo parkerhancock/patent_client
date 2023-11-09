@@ -1,4 +1,5 @@
 import re
+from dataclasses import asdict
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -36,6 +37,6 @@ def build_error_dir():
     message_text = (base_dir / "messages.txt").read_text()
     messages = [get_messages(err) for err in message_text.split("\n")]
     error_objs = [NumberServiceError(**e) for e in errors + messages if e]
-    errors = {e.code: e for e in error_objs if e}
+    errors = {e.code: asdict(e) for e in error_objs if e}
     errors["SUCCESS"] = None
     return errors

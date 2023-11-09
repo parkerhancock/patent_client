@@ -1,15 +1,15 @@
-from dataclasses import dataclass
-from dataclasses import field
 from typing import List
 from typing import Optional
 
-from patent_client.epo.ops.util import InpadocModel
-from patent_client.util import Model
+from patent_client.epo.ops.util import EpoBaseModel
 from patent_client.util.claims.model import Claim
+from pydantic import Field
+
+from ..schema.fulltext import ClaimsSchema
+from ..schema.fulltext import DescriptionSchema
 
 
-@dataclass
-class FTDocumentId(Model):
+class FTDocumentId(EpoBaseModel):
     country: Optional[str] = None
     doc_number: Optional[str] = None
     kind: Optional[str] = None
@@ -18,11 +18,10 @@ class FTDocumentId(Model):
         return f"{self.country}{self.doc_number}{self.kind}"
 
 
-@dataclass
-class Claims(Model):
-    __manager__ = "patent_client.epo.ops.published.manager.ClaimsManager"
-    document_id: Optional[FTDocumentId]
-    claims: List[Claim] = field(default_factory=list)
+class Claims(EpoBaseModel):
+    __schema__ = ClaimsSchema()
+    document_id: Optional[FTDocumentId] = None
+    claims: List[Claim] = Field(default_factory=list)
     claim_text: Optional[str] = None
 
     @property
@@ -33,9 +32,8 @@ class Claims(Model):
         return f"Claims(document_id={str(self.document_id)})"
 
 
-@dataclass
-class Description(InpadocModel):
-    __manager__ = "patent_client.epo.ops.published.manager.DescriptionManager"
+class Description(EpoBaseModel):
+    __schema__ = DescriptionSchema()
     document_id: Optional[FTDocumentId] = None
     description: Optional[str] = None
 

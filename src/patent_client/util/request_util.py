@@ -7,6 +7,7 @@ def get_start_and_row_count(limit=None, offset=0, page_size=50):
     tuples. If limit is None, then the iterator will be infinite.
     Otherwise, the iterator will be finite and the last row count may
     be less than the page size."""
+    offset = offset or 0
     if not limit:
         page_no = 0
         while True:

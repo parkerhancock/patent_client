@@ -38,7 +38,7 @@ class CorrespondingPatentField(f.Combine):
     kind_code = f.Str(".//ops:L506EP")
 
     def combine_func(self, obj):
-        if not obj.country and not obj.doc_number:
+        if not obj.get("country") and not obj.get("doc_number"):
             return None
         return f"{obj.country}{obj.doc_number}{obj.get('kind_code', '')}"
 

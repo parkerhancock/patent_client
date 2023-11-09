@@ -6,12 +6,15 @@ from pathlib import Path
 
 import lxml.etree as ET
 from openpyxl import load_workbook
-from patent_client import SETTINGS
-from patent_client.epo.ops.session import asession
+from patent_client import BASE_DIR
+from patent_client.session import PatentClientSession
+from patent_client.util.asyncio_util import run_sync
 
-dir = Path(SETTINGS.DEFAULT.BASE_DIR).expanduser() / "epo"
-dir.mkdir(exist_ok=True, parents=True)
-db_location = dir / "legal_codes.sqlite"
+session = PatentClientSession()
+
+legal_code_dir = BASE_DIR / "epo"
+legal_code_dir.mkdir(exist_ok=True, parents=True)
+db_location = legal_code_dir / "legal_codes.sqlite"
 
 
 logger = logging.getLogger(__name__)
@@ -24,11 +27,15 @@ def current_date():
 def generate_legal_code_db():
     current = has_current_spreadsheet()
     if current:
-        logger.debug("Legal Code Database is Current - skipping database creation")
+        logger.info("Legal Code Database is Current - skipping database creation")
         return
     else:
-        logger.debug("Legal Code Database is out of date - creating legal code database")
-        path = get_spreadsheet()
+        try:
+            logger.info("Legal Code Database is out of date - creating legal code database")
+            path = get_spreadsheet()
+        except Exception:
+            logger.exception("Could not find live code file - falling back to default dated 2023-11-05")
+            path = Path(__file__).parent / "legal_code_descriptions_2023-44-0.xlsx"
         create_code_database(path)
 
 
@@ -37,36 +44,40 @@ def has_current_spreadsheet():
     cur = con.cursor()
     try:
         fname = cur.execute("SELECT * FROM meta").fetchone()[0]
-        date_string = re.search(r"legal_code_descriptions_(\d+)\.xlsx", fname).group(1)
+        date_string = re.search(r"legal_code_descriptions_([\d-]+)\.xlsx", fname).group(1)
         try:
-            date = datetime.datetime.strptime(date_string, "%Y%W").date()
-        except ValueError:
-            date = datetime.datetime.strptime(date_string, "%Y%m%d").date()
+            date = datetime.datetime.strptime(date_string, "%Y-%W-%w").date()
+        except ValueError:  # Indicates using an older format and database needs to be updated
+            return False
         age = datetime.datetime.now().date() - date
         logger.debug(f"Legal Code Database is {age} days old")
-        return age.days <= 30
+        return age.days < 7
     except (sqlite3.OperationalError, TypeError):
         return False
 
 
-def get_spreadsheet():
+def get_spreadsheet_from_epo_website() -> tuple[datetime.date, str]:
     url = "https://www.epo.org/searching-for-patents/data/coverage/weekly.html"
-    response = asession.sync.get(url)
+    response = run_sync(session.get(url))
     response.raise_for_status()
     tree = ET.HTML(response.text)
-    try:
-        excel_url = tree.xpath('.//*[contains(@href, "legal_code_descriptions")][1]/@href')[0]
-        out_path = dir / excel_url.split("/")[-1]
-        if out_path.exists():
-            return out_path
-        response = asession.sync.get(excel_url, stream=True)
-        with out_path.open("wb") as f:
-            for chunk in response.iter_content(chunk_size=8192):
-                f.write(chunk)
+    date_string = tree.xpath(".//tr/td[contains(text(), 'Legal event codes')]/../td[4]")[0].text.strip()
+    week, year = date_string.split()[1].split("/")
+    date = datetime.datetime.strptime(f"{year}-{week}-0", "%Y-%W-%w").date()
+    excel_url = tree.xpath('.//a[contains(@href, "Legal-event-codes")][1]/@href')[0]
+    logger.info(f"Found new spreadsheet for {date.isoformat()}: {excel_url}")
+    return (date, excel_url)
+
+
+def get_spreadsheet() -> tuple[datetime.date, Path]:
+    date, excel_url = get_spreadsheet_from_epo_website()
+    out_path = legal_code_dir / f"legal_code_descriptions_{date.strftime('%Y-%W-%w')}.xlsx"
+    if out_path.exists():
+        logger.info(f"File already downloaded! Current as of {date.isoformat()}")
         return out_path
-    except Exception:
-        logger.debug("Could not find live code file - falling back to default dated 2022-11-12")
-        return Path(__file__).parent / "legal_code_descriptions_20221112.xlsx"
+    out_path = session.download(excel_url, path=out_path)
+    logger.info(f"Downloaded new live code file for date {date.isoformat()}")
+    return out_path
 
 
 def create_code_database(excel_path):

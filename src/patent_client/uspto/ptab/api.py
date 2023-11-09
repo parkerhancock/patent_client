@@ -1,14 +1,12 @@
 import datetime
 import typing as tp
-from pathlib import Path
 from typing import Optional
 
 from dateutil.parser import parse as parse_dt
 
+from .model import PtabDecisionPage
 from .model import PtabDocumentPage
-from .schema import PtabDecisionPageSchema
-from .schema import PtabDocumentPageSchema
-from .schema import PtabProceedingPageSchema
+from .model import PtabProceedingPage
 from .session import session
 
 
@@ -104,22 +102,7 @@ class PtabApi:
 
         response = await session.get(url="https://developer.uspto.gov/ptab-api/documents", params=query_dict)
         response.raise_for_status()
-        return PtabDocumentPageSchema().load(response.json())
-
-    @classmethod
-    async def download_document(cls, document_identifier: str, output_path) -> Path:
-        output_path = Path(output_path)
-        if output_path.exists():
-            return output_path
-        async with session.stream(
-            "GET",
-            url=f"https://developer.uspto.gov/ptab-api/documents/{document_identifier}/download",
-        ) as response:
-            response.raise_for_status()
-            with open(output_path, "wb") as f:
-                async for chunk in response.aiter_bytes(chunk_size=8192):
-                    f.write(chunk)
-            return output_path
+        return PtabDocumentPage.model_validate_json(response.content)
 
     @classmethod
     async def get_proceedings(
@@ -172,7 +155,7 @@ class PtabApi:
 
         response = await session.get(url="https://developer.uspto.gov/ptab-api/proceedings", params=query_dict)
         response.raise_for_status()
-        return PtabProceedingPageSchema().load(response.json())
+        return PtabProceedingPage.model_validate_json(response.content)
 
     @classmethod
     async def get_decisions(
@@ -223,4 +206,4 @@ class PtabApi:
 
         response = await session.get(url="https://developer.uspto.gov/ptab-api/decisions", params=query_dict)
         response.raise_for_status()
-        return PtabDecisionPageSchema().load(response.json())
+        return PtabDecisionPage.model_validate_json(response.content)

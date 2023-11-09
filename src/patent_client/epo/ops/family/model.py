@@ -1,14 +1,14 @@
-from dataclasses import dataclass
-from dataclasses import field
 from typing import List
 from typing import Optional
 
 from patent_client.epo.ops.number_service.model import DocumentId
-from patent_client.util import Model
+from patent_client.epo.ops.util import EpoBaseModel
+from pydantic import Field
+
+from .schema import FamilySchema
 
 
-@dataclass
-class PriorityClaim(Model):
+class PriorityClaim(EpoBaseModel):
     application_number: Optional[str] = None
     application_reference: Optional[DocumentId] = None
     sequence: Optional[int] = None
@@ -16,27 +16,22 @@ class PriorityClaim(Model):
     active: Optional[bool] = None
 
 
-@dataclass
-class FamilyMember(Model):
+class FamilyMember(EpoBaseModel):
     publication_number: Optional[str] = None
     application_number: Optional[str] = None
     family_id: Optional[str] = None
-    publication_reference: list = field(default_factory=list)
-    application_reference: list = field(default_factory=list)
-    priority_claims: List[PriorityClaim] = field(default_factory=list)
+    publication_reference: list = Field(default_factory=list)
+    application_reference: list = Field(default_factory=list)
+    priority_claims: List[PriorityClaim] = Field(default_factory=list)
 
     @property
     def docdb_number(self):
         return self.publication_number
 
-    def __repr__(self):
-        return f"FamilyMember(publication_number={self.publication_number})"
 
-
-@dataclass
-class Family(Model):
-    __manager__ = "patent_client.epo.ops.family.manager.FamilyManager"
+class Family(EpoBaseModel):
+    __schema__ = FamilySchema()
     publication_reference: Optional[DocumentId] = None
     num_records: Optional[int] = None
     publication_number: Optional[str] = None
-    family_members: List[FamilyMember] = field(default_factory=list)
+    family_members: List[FamilyMember] = Field(default_factory=list)

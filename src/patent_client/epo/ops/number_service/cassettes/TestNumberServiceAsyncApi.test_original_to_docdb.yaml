@@ -1,0 +1,79 @@
+interactions:
+- request:
+    body: ''
+    headers:
+      Authorization:
+      - REDACTED
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - ops.epo.org
+      user-agent:
+      - Mozilla/5.0 Python Patent Clientbot/3.2.10 (parkerhancock@users.noreply.github.com)
+    method: GET
+    uri: http://ops.epo.org/3.2/rest-services/number-service/application/original/JP.(2006-147056).A.20060526/docdb
+  response:
+    content: "<?xml version=\"1.0\" encoding=\"UTF-8\"?><?xml-stylesheet type=\"text/xsl\"
+      href=\"/3.2/style/numbers.xsl\"?>\n<ops:world-patent-data xmlns=\"http://www.epo.org/exchange\"
+      xmlns:ops=\"http://ops.epo.org\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">\n
+      \   <ops:meta name=\"status\" value=\"SUCCESS\"/>\n    <ops:meta name=\"version\"
+      value=\"11.07.65\"/>\n    <ops:standardization inputFormat=\"original\" outputFormat=\"docdb\">\n
+      \       <ops:input>\n            <ops:application-reference>\n                <document-id
+      document-id-type=\"original\">\n                    <country>JP</country>\n
+      \                   <doc-number>2006-147056</doc-number>\n                    <kind>A</kind>\n
+      \                   <date>20060526</date>\n                </document-id>\n
+      \           </ops:application-reference>\n        </ops:input>\n        <ops:output>\n
+      \           <ops:application-reference>\n                <document-id document-id-type=\"docdb\">\n
+      \                   <country>JP</country>\n                    <doc-number>2006147056</doc-number>\n
+      \                   <kind>A</kind>\n                    <date>20060526</date>\n
+      \               </document-id>\n            </ops:application-reference>\n        </ops:output>\n
+      \   </ops:standardization>\n</ops:world-patent-data>"
+    headers:
+      Access-Control-Allow-Headers:
+      - Authorization
+      Access-Control-Allow-Methods:
+      - POST
+      Access-Control-Allow-Origin:
+      - '*'
+      Cache-Control:
+      - no-cache
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1224'
+      Content-Type:
+      - application/xml;charset=utf-8
+      Date:
+      - Tue, 07 Nov 2023 20:07:21 GMT
+      ETag:
+      - '"013ae5887ff2e6621ab43a4ab3d3a91ac"'
+      Pragma:
+      - no-cache
+      Server:
+      - Apache
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      Vary:
+      - Accept
+      X-API:
+      - ops-v3.2
+      X-EPO-Client-IP:
+      - 37.19.196.132
+      X-EPO-Forwarded:
+      - '[37.19.196.132]'
+      X-Elapsed-Time:
+      - '31'
+      X-IndividualQuotaPerHour-Used:
+      - '139650'
+      X-RegisteredQuotaPerWeek-Used:
+      - '102645'
+      X-Throttling-Control:
+      - busy (images=green:100, inpadoc=green:45, other=green:1000, retrieval=green:100,
+        search=green:15)
+    http_version: HTTP/1.1
+    status_code: 200
+version: 1

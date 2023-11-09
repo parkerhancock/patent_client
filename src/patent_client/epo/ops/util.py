@@ -1,9 +1,10 @@
+from typing import List
 from typing import Optional
 from typing import TYPE_CHECKING
 
-from patent_client.util import Model
 from patent_client.util.base.related import get_model
-from yankee.data import ListCollection
+from patent_client.util.pydantic_util import BaseModel
+from pydantic import model_validator
 from yankee.xml.schema import Schema as XmlSchema
 
 if TYPE_CHECKING:
@@ -23,7 +24,18 @@ class Schema(XmlSchema):
         }
 
 
-class InpadocModel(Model):
+class EpoBaseModel(BaseModel):
+    __schema__: Optional[XmlSchema] = None
+
+    @model_validator(mode="before")
+    @classmethod
+    def convert(cls, values):
+        if isinstance(values, (str, bytes)):
+            return cls.__schema__.load(values).to_dict()
+        return values
+
+
+class InpadocModel(BaseModel):
     @property
     def biblio(self) -> "InpadocBiblio":
         return get_model("patent_client.epo.ops.published.model.InpadocBiblio").objects.get(self.docdb_number)
@@ -34,18 +46,18 @@ class InpadocModel(Model):
 
     @property
     def description(self) -> Optional[str]:
-        return get_model("Description").objects.get(self.docdb_number).description
+        return get_model("patent_client.epo.ops.published.model.Description").objects.get(self.docdb_number).description
 
     @property
     def claims(self) -> "Claims":
         return get_model("patent_client.epo.ops.published.model.Claims").objects.get(self.docdb_number)
 
     @property
-    def legal(self) -> "ListCollection[LegalEvent]":
+    def legal(self) -> List["LegalEvent"]:
         return get_model("patent_client.epo.ops.legal.model.Legal").objects.get(self.docdb_number).events
 
     @property
     def family(
         self,
-    ) -> "ListCollection[FamilyMember]":
+    ) -> List["FamilyMember"]:
         return get_model("patent_client.epo.ops.family.model.Family").objects.get(self.docdb_number).family_members

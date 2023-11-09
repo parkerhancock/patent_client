@@ -1,5 +1,4 @@
-from typing import AsyncIterator
-from typing import Iterator
+import math
 
 from patent_client.util import Manager
 
@@ -9,36 +8,38 @@ from .model.biblio import BiblioResult
 from .model.fulltext import Claims
 from .model.fulltext import Description
 from .model.images import ImageDocument
-from .schema import BiblioResultSchema
-from .schema import ClaimsSchema
-from .schema import DescriptionSchema
-from .schema import ImagesSchema
-from .schema import SearchSchema
 
 
-class SearchManager(Manager):
+def get_ranges(limit=None, offset=0, page_size=100):
+    offset = offset or 0
+    offset += 1
+    if not limit:
+        page_no = 0
+        while True:
+            start = page_no * page_size + offset
+            yield (start, start + page_size - 1)
+            page_no += 1
+    else:
+        num_full_pages = math.floor(limit / page_size)
+        last_page_size = limit % page_size
+        for i in range(num_full_pages):
+            start = i * page_size + offset
+            yield (start, start + page_size - 1)
+        if last_page_size:
+            start = num_full_pages * page_size + offset
+            yield (start, start + last_page_size - 1)
+
+
+class SearchManager(Manager["BiblioResult"]):
     result_size = 100
     primary_key = "publication"
-    __schema__ = SearchSchema
-    __item_schema__ = BiblioResultSchema
-
-    def __init__(self, config=None):
-        super().__init__(config=None)
-        if callable(self.__item_schema__):
-            self.__item_schema__ = self.__item_schema__()
-
-    def __iter__(self) -> Iterator[BiblioResult]:
-        return super(SearchManager, self).__iter__()
-
-    def __aiter__(self) -> AsyncIterator[BiblioResult]:
-        return super(SearchManager, self).__aiter__()
 
     async def _aget_search_results_range(self, start=1, end=100):
         if "cql_query" in self.config.filter:
             query = self.config.filter["cql_query"]
         else:
             query = generate_query(**self.config.filter)
-        return self.__schema__.load(await PublishedAsyncApi.search.search(query, start, end))
+        return await PublishedAsyncApi.search.search(query, start, end)
 
     async def alen(self) -> int:
         page = await self._aget_search_results_range(1, 100)
@@ -50,61 +51,47 @@ class SearchManager(Manager):
         return num_results
 
     async def _aget_results(self):
-        if len(self) == 0:
-            return
-        num_pages = round(len(self) / self.result_size)
-        limit = self.config.limit or len(self)
-        offset = self.config.offset or 0
-        max_position = offset + limit
-        range = (offset + 1, min(offset + self.result_size, max_position))
-        while True:
-            page = await self._aget_search_results_range(*range)
+
+        for start, end in get_ranges(self.config.limit, self.config.offset, self.result_size):
+            page = await self._aget_search_results_range(start, end)
             for result in page.results:
                 yield result
-            if range[1] == max_position:
+            if len(page.results) < self.result_size:
                 break
-            range = (
-                range[0] + self.result_size,
-                min(range[1] + self.result_size, max_position),
-            )
 
     async def aget(self, number, doc_type="publication", format="docdb") -> BiblioResult:
-        result = self.__item_schema__.load(await PublishedAsyncApi.biblio.get_biblio(number, doc_type, format))
+        result = await PublishedAsyncApi.biblio.get_biblio(number, doc_type, format)
         if len(result.documents) > 1:
             raise Exception("More than one result found! Try another query")
         return result.documents[0]
 
 
 class BiblioManager(Manager):
-    __schema__ = BiblioResultSchema
-
-    async def aget(self, doc_number) -> BiblioResult:
-        result = self.__schema__.load(await PublishedAsyncApi.biblio.get_biblio(doc_number))
+    async def aget(self, doc_number) -> "BiblioResult":
+        result = await PublishedAsyncApi.biblio.get_biblio(doc_number)
         if len(result.documents) > 1:
             raise ValueError(f"More than one result found for {doc_number}!")
         return result.documents[0]
 
 
 class ClaimsManager(Manager):
-    __schema__ = ClaimsSchema
-
-    async def aget(self, doc_number) -> Claims:
-        return self.__schema__.load(await PublishedAsyncApi.fulltext.get_claims(doc_number))
+    async def aget(self, doc_number) -> "Claims":
+        return await PublishedAsyncApi.fulltext.get_claims(doc_number)
 
 
 class DescriptionManager(Manager):
-    __schema__ = DescriptionSchema
-
     async def aget(self, doc_number) -> Description:
-        return self.__schema__.load(await PublishedAsyncApi.fulltext.get_description(doc_number))
+        return await PublishedAsyncApi.fulltext.get_description(doc_number)
 
 
 class ImageManager(Manager):
-    __schema__ = ImagesSchema
-
     async def aget(self, doc_number) -> ImageDocument:
-        return self.__schema__.load(await PublishedAsyncApi.images.get_images(doc_number))
+        return await PublishedAsyncApi.images.get_images(doc_number)
 
 
 class InpadocManager(SearchManager):
+    pass
+
+
+class InpadocBiblioManager(BiblioManager):
     pass

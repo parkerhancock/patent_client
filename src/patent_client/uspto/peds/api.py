@@ -2,14 +2,10 @@ import datetime
 from typing import Dict
 from typing import List
 from typing import Optional
-from typing import TYPE_CHECKING
 
-from .schema import DocumentSchema
-from .schema import PedsPageSchema
+from .model import Document
+from .model import PedsPage
 from .session import session
-
-if TYPE_CHECKING:
-    from .model import PedsPage
 
 
 type_map = {
@@ -34,15 +30,16 @@ class PatentExaminationDataSystemApi:
 
     @classmethod
     async def is_online(cls) -> bool:
-        response = await session.get("https://ped.uspto.gov/api/search-fields")
-        if response.status_code == 200:
-            return True
-        elif "requested resource is not available" in response.text:
-            raise NotAvailableException("Patent Examination Data is Offline - this is a USPTO problem")
-        elif "attempt failed or the origin closed the connection" in response.text:
-            raise NotAvailableException("The Patent Examination Data API is Broken! - this is a USPTO problem")
-        else:
-            raise NotAvailableException("There is a USPTO problem")
+        with session.cache_disabled():
+            response = await session.get("https://ped.uspto.gov/api/search-fields")
+            if response.status_code == 200:
+                return True
+            elif "requested resource is not available" in response.text:
+                raise NotAvailableException("Patent Examination Data is Offline - this is a USPTO problem")
+            elif "attempt failed or the origin closed the connection" in response.text:
+                raise NotAvailableException("The Patent Examination Data API is Broken! - this is a USPTO problem")
+            else:
+                raise NotAvailableException("There is a USPTO problem")
 
     @classmethod
     async def get_search_fields(cls) -> dict:
@@ -98,9 +95,6 @@ class PatentExaminationDataSystemApi:
         }
         if rows:
             params["rows"] = rows
-        import json
-
-        print(json.dumps(params, indent=2))
         url = "https://ped.uspto.gov/api/queries"
         response = await session.post(
             url,
@@ -108,11 +102,10 @@ class PatentExaminationDataSystemApi:
             headers={"Accept": "application/json"},
         )
         response.raise_for_status()
-        return PedsPageSchema().load(response.json())
+        return PedsPage.model_validate(response.json())
 
     async def get_documents(self, appl_id: str) -> "PedsPage":
         url = f"https://ped.uspto.gov/api/queries/cms/public/{appl_id}"
         response = await session.get(url)
         response.raise_for_status()
-        schema = DocumentSchema()
-        return [schema.load(d) for d in response.json()]
+        return [Document.model_validate(d) for d in response.json()]

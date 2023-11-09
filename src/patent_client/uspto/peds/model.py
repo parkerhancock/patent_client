@@ -1,152 +1,146 @@
-from __future__ import annotations
-
 import datetime
-from dataclasses import dataclass
-from dataclasses import field
 from pathlib import Path
-from typing import Iterable
 from typing import List
 from typing import Optional
+from typing import Self
 from typing import TYPE_CHECKING
 
 from dateutil.relativedelta import relativedelta
-from patent_client.util.base.model import Model
+from patent_client.util.asyncio_util import run_sync
 from patent_client.util.base.related import get_model
-from yankee.data import ListCollection
+from patent_client.util.pydantic_util import BaseModel
+from pydantic import AliasPath
+from pydantic import BeforeValidator
+from pydantic import ConfigDict
+from pydantic import Field
+from pydantic import model_validator
+from pydantic.alias_generators import to_camel
+from typing_extensions import Annotated
 
+from .session import session
 
 if TYPE_CHECKING:
     from patent_client import PtabProceeding, Patent, PublishedApplication
     from patent_client.epo.ops.published.model import InpadocBiblio
 
 
-@dataclass
-class USApplication(Model):
-    """A U.S. Patent Application retrieved from the Patent Examination Data
-    System (PEDS)
-    """
+DateTimeAsDate = Annotated[datetime.date, BeforeValidator(lambda x: datetime.datetime.fromisoformat(x).date())]
+MDYDate = Annotated[datetime.date, BeforeValidator(lambda x: datetime.datetime.strptime(x, "%m-%d-%Y").date())]
+YNBool = Annotated[bool, BeforeValidator(lambda x: x == "Y")]
+OptionalInt = Annotated[Optional[int], BeforeValidator(lambda x: int(x) if x else None)]
+RelationshipStr = Annotated[str, BeforeValidator(lambda x: x.replace("This application ", "").strip())]
 
-    # @ClassProperty
-    # def objects(cls) -> "USApplicationManager":
-    #    from .manager import USApplicationManager
-    #    return USApplicationManager()
 
-    def __repr__(self):
-        return f"<USApplication(appl_id={self.appl_id}, title={self.patent_title})>)"
+class PEDSBaseModel(BaseModel):
+    model_config = ConfigDict(
+        alias_generator=to_camel,
+        str_strip_whitespace=True,
+    )
 
-    def __hash__(self):
-        return hash(self.appl_id)
 
-    appl_id: str = field(compare=True)
-    """The application number. U.S. Applications are digits only.
-    PCT numbers are in the format PCT/CCYY/#####"""
+class Transactions(PEDSBaseModel):
+    record_date: DateTimeAsDate
+    code: str
+    description: str
 
-    app_filing_date: Optional[datetime.date] = field(default=None, repr=False)
-    """The filing date or 371(c) date"""
 
-    patent_title: "Optional[str]" = None
-    """Title of the invention"""
+class PtaOrPteTransactionHistory(PEDSBaseModel):
+    number: float
+    pta_or_pte_date: MDYDate
+    contents_description: str
+    pto_days: OptionalInt
+    appl_days: OptionalInt
+    start: float
 
-    app_status: "Optional[str]" = field(default=None, repr=True)
-    """Status of the Application"""
 
-    app_status_date: Optional[datetime.date] = field(default=None, repr=False)
-    """The date of the applicable status (the app_status attribute)"""
+class PtaOrPteSummary(PEDSBaseModel):
+    a_delay: int
+    b_delay: int
+    c_delay: int
+    pto_adjustments: int
+    total_days: int = Field(alias="totalPtoDays")
+    kind: str = Field(alias="ptaPteInd")
+    pto_delay: int
+    applicant_delay: int = Field(alias="applDelay")
+    overlap_delay: int
 
-    app_early_pub_number: "Optional[str]" = field(default=None, repr=False)
-    """The published patent application number in the format USYYYY#######A1
-    Note: this does not include subsequent or corrected publications, or publications
-    of PCT applications."""
 
-    app_early_pub_date: Optional[datetime.date] = field(default=None, repr=False)
-    """The publication date of the publication mentioned in app_early_pub_number"""
+class ParentApplication(PEDSBaseModel):
+    parent_appl_id: str = Field(alias="claimApplicationNumberText")
+    child_appl_id: str = Field(alias="applicationNumberText")
+    parent_app_filing_date: MDYDate = Field(alias="filingDate")
+    parent_patent_number: str = Field(alias="patentNumberText")
+    parent_status: str = Field(alias="applicationStatus")
+    relationship: RelationshipStr = Field(alias="applicationStatusDescription")
 
-    patent_number: "Optional[str]" = field(default=None, repr=False)
-    """The issued patent number, if any. Digits only"""
 
-    patent_issue_date: Optional[datetime.date] = field(default=None, repr=False)
-    """The date the patent issued"""
+class ChildApplication(PEDSBaseModel):
+    child_appl_id: str = Field(alias="claimApplicationNumberText")
+    parent_appl_id: str = Field(alias="applicationNumberText")
+    child_app_filing_date: MDYDate = Field(alias="filingDate")
+    child_patent_number: str = Field(alias="patentNumberText")
+    child_status: str = Field(alias="applicationStatus")
+    relationship: RelationshipStr = Field(alias="applicationStatusDescription")
 
-    wipo_early_pub_number: "Optional[str]" = field(default=None, repr=False)
-    """If the application was published by WIPO (i.e. a PCT application),
-    the publication number is here. Format is YYYY######"""
 
-    wipo_early_pub_date: Optional[datetime.date] = field(default=None, repr=False)
-    """Publication date by WIPO"""
+class ForeignPriority(PEDSBaseModel):
+    priority_claim: str
+    country_name: str
+    filing_date: MDYDate
 
-    corr_addr_cust_no: "Optional[str]" = field(default=None, repr=False)
-    """The customer number for the correspondent named for this application"""
 
-    app_cust_number: "Optional[str]" = field(default=None, repr=False)
-    """The customer number for the firm with authority to act in the application"""
+class AttorneyOrAgent(PEDSBaseModel):
+    application_id: Optional[str] = None
+    registration_no: Optional[str] = None
+    full_name: str
+    phone_num: str
+    reg_status: str
 
-    app_attr_dock_number: "Optional[str]" = field(default=None, repr=False)
-    """The docket number assigned to the application by the handling firm"""
 
-    app_location: "Optional[str]" = field(default=None, repr=False)
-    """The physical location of the application file"""
+class Inventor(PEDSBaseModel):
+    name: str
+    address: str
+    rank_no: int
 
-    first_inventor_file: "Optional[str]" = field(default=None, repr=False)
-    """Whether the application is examined under the America Invents Act"""
 
-    app_type: "Optional[str]" = field(default=None, repr=False)
-    """The subject matter of the application (i.e. Utility / Design / Plant)"""
+class Applicant(Inventor):
+    cust_no: str = None
 
-    app_entity_status: "Optional[str]" = field(default=None, repr=False)
-    """The entity type of the owner (UNDISCOUNTED / SMALL / MICRO)"""
 
-    app_confr_number: "Optional[str]" = field(default=None, repr=False)
-    """The application's confirmation number"""
+class USApplication(PEDSBaseModel):
+    appl_id: str
+    app_filing_date: DateTimeAsDate
+    app_exam_name: Optional[str] = None
+    public_ind: YNBool
+    inventor_name: str
+    app_early_pub_number: Optional[str] = None
+    app_early_pub_date: Optional[DateTimeAsDate] = None
+    patent_number: Optional[str] = None
+    patent_issue_date: Optional[DateTimeAsDate] = None
+    app_location: str
+    app_grp_art_number: str
+    app_sub_cls: str
+    last_modified: datetime.datetime = Field(alias="LAST_MOD_TS")
+    last_insert_time: datetime.datetime = Field(alias="LAST_INSERT_TIME")
+    patent_title: str
 
-    app_cls_sub_cls: "Optional[str]" = field(default=None, repr=False)
-    """The U.S. classification assigned to the application"""
-
-    app_grp_art_number: "Optional[str]" = field(default=None, repr=False)
-    """The Group Art Unit to which the application is assigned"""
-
-    app_exam_name: "Optional[str]" = field(default=None, repr=False)
-    """The name of the examiner handling the application"""
-
-    # Nested Objects
-    pta_pte_summary: Optional[PtaPteSummary] = field(default=None, repr=False)
-    """A related object containing the PTA/PTE analysis"""
-
-    correspondent: Optional[Correspondent] = field(default=None, repr=False)
-    """Correspondent for the Application"""
-
-    # List Properties
-    inventors: ListCollection[Inventor] = field(default=None, repr=False)
-    """List of named inventors"""
-
-    applicants: ListCollection[Applicant] = field(default_factory=list, repr=False)
-    """List of named applicants"""
-
-    attorneys: ListCollection[Attorney] = field(default_factory=list, repr=False)
-    """List of attorneys authorized to act in this application, associated with
-    the indicated customer number"""
-
-    transactions: ListCollection[Transaction] = field(default_factory=list, repr=False)
-    """List of transactions relating to this application. Identical to the "Transactions" tab on
-    Patent Center or Private PAIR"""
-
-    child_continuity: ListCollection[Relationship] = field(default_factory=ListCollection, repr=False)
-    """List of related Applications which claim priority to this application. Note that
-    this does not include continuity type (e.g. CON/CIP/DIV)"""
-
-    parent_continuity: ListCollection[Relationship] = field(default_factory=ListCollection, repr=False)
-    """List of related Applications that this application claims priority to, including
-    continuity type. Does not include foreign priority claims"""
-
-    foreign_priority: ListCollection[ForeignPriority] = field(default_factory=list, repr=False)
-    """List of foreign patent applications to which this application claims priority"""
-
-    pta_pte_tran_history: ListCollection[PtaPteHistory] = field(default_factory=list, repr=False)
-    """List of transactions relevant to calculating a Patent Term Extension or Adjustment"""
-
-    assignments: ListCollection[Assignment] = field(default_factory=ListCollection, repr=False)
-    """List of Assignments that include this application"""
-
-    # Dynamic Properties
+    app_attr_dock_number: Optional[str] = None
+    app_status: Optional[str] = None
+    app_status_date: Optional[DateTimeAsDate] = None
+    app_type: Optional[str] = None
+    app_cls_sub_cls: Optional[str] = None
+    corr_name: Optional[str] = None
+    corr_address: Optional[str] = None
+    corr_cust_no: Optional[str] = Field(alias="corrAddrCustNo", default=None)
+    transactions: List[Transactions]
+    attorneys: List[AttorneyOrAgent] = Field(alias="attrnyAddr", default_factory=list)
+    inventors: List[Inventor]
+    applicants: List[Applicant] = Field(default_factory=list)
+    pta_pte_summary: Optional[PtaOrPteSummary] = None
+    pta_pte_tran_history: List[PtaOrPteTransactionHistory] = Field(default_factory=list)
+    parent_continuity: List[ParentApplication] = Field(default_factory=list)
+    child_continuity: List[ChildApplication] = Field(default_factory=list)
+    foreign_priority: List[ForeignPriority] = Field(default_factory=list)
 
     @property
     def patent_center_link(self) -> str:
@@ -162,9 +156,9 @@ class USApplication(Model):
             return None
 
     @property
-    def continuity(self) -> ListCollection[USApplication]:
+    def continuity(self) -> List[Self]:
         """Returns a complete set of parents, self, and children"""
-        return ListCollection(
+        return List(
             [
                 self.child_continuity.values_list("child", flat=True),
                 [
@@ -199,7 +193,7 @@ class USApplication(Model):
             return sorted(p.parent_app_filing_date for p in self.parent_continuity)[0]
 
     @property
-    def expiration(self) -> Optional[Expiration]:
+    def expiration(self) -> Optional["Expiration"]:
         """Calculates expiration data from which the expiration date can be calculated. See
         help information for the resulting Expiration model.
         """
@@ -295,9 +289,54 @@ class USApplication(Model):
             publication_number=self.app_early_pub_number,
         )
 
+    @model_validator(mode="before")
+    @classmethod
+    def collect_related_fields(cls, values) -> dict:
+        # Collect Correspondent Data
+        correspondent_name_fields = ["corrAddrNameLineOne", "corrAddrNameLineTwo", "corrAddrNameLineThree"]
+        values["corrName"] = " ".join([values[field] for field in correspondent_name_fields if field in values])
+        correspondent_adddress_lines = "\n".join(
+            values[f] for f in ("corrAddrStreetLineOne", "corrAddrStreetLineTwo") if f in values
+        )
+        correspondent_address_last_line = f"{values.get('corrAddrCity', '')}, {values.get('corrAddrGeoRegionCode', '')} {values.get('corrAddrPostalCode', '')}"
+        if "corrAddrCountryName" in values:
+            correspondent_address_last_line += f" ({values['corrAddrCountryName']})"
+        values["corrAddress"] = "\n".join([correspondent_adddress_lines, correspondent_address_last_line])
+        # Collect PTA/PTE Data
+        pta_pte_name_fields = (
+            "totalPtoDays",
+            "ptaPteInd",
+            "applDelay",
+            "cDelay",
+            "ptoAdjustments",
+            "overlapDelay",
+            "aDelay",
+            "bDelay",
+            "ptoDelay",
+        )
+        pta_pte_summary = {k: values[k] for k in pta_pte_name_fields if k in values}
+        if pta_pte_summary:
+            values["ptaPteSummary"] = pta_pte_summary
+        # Collect Inventor Names and Addresses
+        for inventor in values["inventors"]:
+            inventor["name"] = f"{inventor['nameLineOne']}; {inventor['nameLineTwo']} {inventor['suffix']}".strip()
+            inventor["address"] = (
+                "\n".join([inventor["streetOne"], inventor["streetTwo"]])
+                + "\n"
+                + f"{inventor['city']}{inventor['geoCode']} {inventor['country']}"
+            )
+        for applicant in values.get("applicants", list()):
+            applicant["name"] = f"{applicant['nameLineOne']}; {applicant['nameLineTwo']} {applicant['suffix']}".strip()
+            applicant["address"] = (
+                "\n".join([applicant["streetOne"], applicant["streetTwo"]])
+                + "\n"
+                + f"{applicant['city']}{applicant['geoCode']} {applicant['country']}"
+            )
 
-@dataclass
-class Expiration(Model):
+        return values
+
+
+class Expiration(BaseModel):
     """Model for patent application expiration data.
     NOTE: THIS IS NOT LEGAL ADVICE. See MPEP Sec. 2701 for a detailed explanation of calculating patent term
 
@@ -326,194 +365,40 @@ class Expiration(Model):
     """Presence or absence of a terminal disclaimer in the transaction history of the application"""
 
 
-@dataclass
-class Relationship(Model):
-    parent_appl_id: str
-    """The application number of the parent application"""
-    child_appl_id: str
-    """The application number of the child application"""
-    relationship: "Optional[str]"
-    """The relationship of the parent to child. This information
-    is only populated on Relationships associated with the child application"""
-    child_app_filing_date: "Optional[datetime.date]" = None
-    """The filing date of the child application"""
-    parent_app_filing_date: "Optional[datetime.date]" = None
-    """The filing date of the parent application"""
-    parent_app_status: "Optional[str]" = None
-    """The status of the parent application - which may not be indicated"""
-    child_app_status: "Optional[str]" = None
-    """The status of the chidl application - which may not be indicated"""
+class Document(PEDSBaseModel):
+    application_number_text: str
+    mail_room_date: DateTimeAsDate
+    document_code: str
+    document_description: str
+    document_category: str
+    access_level_category: str
+    document_identifier: str
+    page_count: int
+    pdf_url: Optional[str] = None
+
+    def download(self, path: Optional[str | Path]) -> Path:
+        return run_sync(self.adownload(path=path))
+
+    async def adownload(self, path: Optional[str | Path]) -> Path:
+        if self.pdf_url is None:
+            raise ValueError("No PDF URL available")
+        full_url = f"https://ped.uspto.gov/api/queries/cms/{self.pdf_url}"
+        out_path = await session.adownload(full_url, path=path)
+        return out_path
 
     @property
-    def parent(self) -> "USApplication":
-        """Link to the parent application"""
-        return get_model("patent_client.uspto.peds.USApplication").objects.get(appl_id=self.parent_appl_id)
+    def application(self) -> USApplication:
+        return run_sync(self.aapplication)
 
     @property
-    def child(self) -> "USApplication":
-        """Link to the child application"""
-        return get_model("patent_client.uspto.peds.USApplication").objects.get(appl_id=self.child_appl_id)
-
-    def __eq__(self, other):
-        return (
-            self.parent_appl_id == other.parent_appl_id
-            and self.child_appl_id == other.child_appl_id
-            and self.relationship == other.relationship
+    async def aapplication(self) -> USApplication:
+        return await get_model("patent_client.uspto.peds.model.USApplication").objects.aget(
+            appl_id=self.application_number_text
         )
 
-    def __hash__(self):
-        return hash((self.parent_appl_id, self.child_appl_id, self.relationship))
 
-
-@dataclass
-class ForeignPriority(Model):
-    priority_claim: Optional[str] = None
-    """The application number of the foreign priority application"""
-    country_name: Optional[str] = None
-    """The country in which the foreign priorty application was filed"""
-    filing_date: Optional[datetime.date] = None
-    """The filing date of the foreign priority application"""
-
-
-@dataclass
-class PtaPteHistory(Model):
-    number: float
-    date: datetime.date
-    description: str
-    pto_days: "Optional[float]" = None
-    applicant_days: "Optional[float]" = None
-    start: "Optional[float]" = None
-
-
-@dataclass
-class PtaPteSummary(Model):
-    a_delay: "Optional[int]" = None
-    b_delay: "Optional[int]" = None
-    c_delay: "Optional[int]" = None
-    overlap_delay: "Optional[int]" = None
-    pto_delay: "Optional[int]" = None
-    applicant_delay: "Optional[int]" = None
-    pto_adjustments: "Optional[int]" = None
-    total_days: "Optional[int]" = None
-    kind: "Optional[str]" = None
-
-
-@dataclass
-class Transaction(Model):
-    date: datetime.date
-    code: str
-    description: str
-
-
-@dataclass
-class Correspondent(Model):
-    name: str
-    address: "Optional[str]" = None
-    cust_no: "Optional[str]" = None
-
-
-@dataclass
-class Attorney(Model):
-    name: str
-    phone_num: str
-    reg_status: "Optional[str]" = None
-    registration_no: Optional[int] = None
-
-
-@dataclass
-class Applicant(Model):
-    name: "Optional[str]" = None
-    cust_no: "Optional[str]" = None
-    address: "Optional[str]" = None
-    rank_no: Optional[int] = None
-
-
-@dataclass
-class Inventor(Model):
-    name: "Optional[str]" = None
-    address: "Optional[str]" = None
-    rank_no: Optional[int] = None
-
-
-class PedsError(Exception):
-    pass
-
-
-@dataclass
-class Document(Model):
-    base_url = "https://ped.uspto.gov/api/queries/cms/public/"
-    access_level_category: str
-    appl_id: str
-    category: str
-    code: str
-    description: str
-    identifier: str
-    mail_room_date: datetime.date
-    page_count: int
-    url: "Optional[str]" = None
-
-    # @ClassProperty
-    # def objects(cls) -> "DocumentManager":
-    #    from .manager import DocumentManager
-    #    return DocumentManager()
-
-    @property
-    def application(self) -> "USApplication":
-        return get_model("patent_client.uspto.peds.model.USApplication").objects.get(appl_id=self.appl_id)
-
-    def __repr__(self):
-        return f"Document(appl_id={self.appl_id}, mail_room_date={self.mail_room_date}, description={self.description})"
-
-    def download(self, path=".", include_appl_id=True):
-        if str(path)[-4:].lower() == ".pdf":
-            # If we've been given a specific filename, use it
-            out_file = Path(path)
-        elif include_appl_id:
-            out_file = (
-                Path(path) / f"{self.appl_id} - {self.mail_room_date} - {self.code} - {self.description[:40]}.pdf"
-            )
-        else:
-            out_file = Path(path) / f"{self.mail_room_date} - {self.code} - {self.description[:40]}.pdf"
-
-        with session.get(self.base_url + self.url, stream=True) as r:
-            if r.status_code == 403:
-                raise PedsError("File history document downloading is broken. This is a USPTO problem :(")
-            r.raise_for_status()
-            with out_file.open("wb") as f:
-                for chunk in r.iter_content(chunk_size=8192):
-                    f.write(chunk)
-        return out_file
-
-
-@dataclass
-class Assignee(Model):
-    name: Optional[str] = None
-    address: Optional[str] = None
-
-
-@dataclass
-class Assignor(Model):
-    name: Optional[str] = None
-    exec_date: Optional[datetime.date] = None
-
-
-@dataclass
-class Assignment(Model):
-    id: str
-    correspondent: Optional[str] = None
-    correspondent_address: Optional[str] = None
-    mail_date: Optional[datetime.date] = None
-    received_date: Optional[datetime.date] = None
-    recorded_date: Optional[datetime.date] = None
-    pages: Optional[int] = None
-    conveyance_text: Optional[str] = None
-    sequence_number: Optional[int] = None
-    assignors: "ListCollection[Assignor]" = field(default_factory=ListCollection)
-    assignees: "ListCollection[Assignee]" = field(default_factory=ListCollection)
-
-
-@dataclass
-class PedsPage(Model):
-    index_last_updated: datetime.date
-    num_found: int
-    applications: "List[USApplication]" = field(default_factory=list)
+class PedsPage(PEDSBaseModel):
+    num_found: int = Field(validation_alias=AliasPath("queryResults", "searchResponse", "response", "numFound"))
+    applications: List[USApplication] = Field(
+        validation_alias=AliasPath("queryResults", "searchResponse", "response", "docs")
+    )

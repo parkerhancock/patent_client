@@ -8,7 +8,7 @@ from typing import TYPE_CHECKING
 from patent_client.util.asyncio_util import run_sync
 from patent_client.util.base.manager import Manager
 from patent_client.util.request_util import get_start_and_row_count
-from PyPDF2 import PdfFileMerger
+from pypdf import PdfMerger
 
 from .api import PatentExaminationDataSystemApi
 from .query import QueryFields
@@ -167,7 +167,7 @@ class DocumentManager(Manager["Document"]):
                     if doc.access_level_category == "PUBLIC":
                         files.append((await doc.adownload(tmpdir), doc))
 
-                out_pdf = PdfFileMerger()
+                out_pdf = PdfMerger()
                 page = 0
                 for f, doc in files:
                     bookmark = f"{doc.mail_room_date} - {doc.code} - {doc.description}"

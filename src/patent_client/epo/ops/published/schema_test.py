@@ -38,7 +38,7 @@ def test_claims():
     tree = ET.parse(test_dir / "claims_example.xml")
     result = ClaimsSchema().load(tree)
     example_file = expected_dir / "claims_example.json"
-    example_file.write_text(result.to_json(indent=2))
+    # example_file.write_text(result.to_json(indent=2))
     expected = json.loads(example_file.read_text())
     compare_dicts(json.loads(result.to_json()), expected)
 
@@ -70,7 +70,7 @@ def test_images():
     tree = ET.parse(test_dir / "image_example.xml")
     result = ImagesSchema().load(tree)
     expected_file = expected_dir / "image_example.json"
-    expected_file.write_text(result.to_json())
+    # expected_file.write_text(result.to_json())
     expected = json.loads(expected_file.read_text())
     compare_dicts(json.loads(result.to_json()), expected)
 

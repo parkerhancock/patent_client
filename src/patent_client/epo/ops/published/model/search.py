@@ -1,14 +1,14 @@
-from dataclasses import dataclass
-from dataclasses import field
 from typing import List
 from typing import Optional
 
-from patent_client.util import Model
+from patent_client.epo.ops.util import EpoBaseModel
+from pydantic import Field
+from pydantic import model_validator
 
 from ...util import InpadocModel
+from ..schema.search import SearchSchema
 
 
-@dataclass
 class Inpadoc(InpadocModel):
     family_id: Optional[str] = None
     id_type: Optional[str] = None
@@ -24,10 +24,15 @@ class Inpadoc(InpadocModel):
         return self.images.full_document.download(path)
 
 
-@dataclass
-class Search(Model):
+class Search(EpoBaseModel):
+    __schema__ = SearchSchema()
     query: Optional[str] = None
     num_results: Optional[int] = None
     begin: Optional[int] = None
     end: Optional[int] = None
-    results: List[Inpadoc] = field(default_factory=list)
+    results: List[Inpadoc] = Field(default_factory=list)
+
+    @model_validator(mode="before")
+    @classmethod
+    def convert(cls, values):
+        return cls.__schema__.load(values)

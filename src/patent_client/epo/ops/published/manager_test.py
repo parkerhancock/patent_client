@@ -1,6 +1,8 @@
 import pytest
 
+from . import api
 from ..session import asession
+from ..session import OpsAsyncSession
 from ..session import OpsAuthenticationError
 from .model.search import Inpadoc
 
@@ -36,7 +38,9 @@ class TestPublished:
 
     def test_can_index_inpadoc_result(self):
         result = Inpadoc.objects.filter(applicant="Tesla")
-        assert result[0] != result[1]
+        first_obj = result[0]
+        second_obj = result[1]
+        assert first_obj != second_obj
 
     def test_can_handle_single_item_ipc_classes(self):
         result = Inpadoc.objects.get("WO2020081771").biblio
@@ -47,11 +51,12 @@ class TestPublished:
         assert result.title == None
 
     def test_issue_76_no_credential(self):
-        key = asession.key
-        asession.key = None
-        with pytest.raises(OpsAuthenticationError):
-            pub = Inpadoc.objects.get("EP3082535A1")
-        asession.key = key
+        good_session = api.asession
+        api.asession = OpsAsyncSession()
+        with asession.cache_disabled():
+            with pytest.raises(OpsAuthenticationError):
+                pub = Inpadoc.objects.get("EP3082535A1")
+        api.asession = good_session
 
     def test_issue_76_with_credential(self):
         pub = Inpadoc.objects.get("EP3082535A1")

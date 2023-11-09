@@ -1,17 +1,17 @@
+import json
 from pathlib import Path
 
 import pytest
 
 from .api import FamilyAsyncApi
 
-test_dir = Path(__file__).parent / "fixtures" / "examples"
-expected_dir = Path(__file__).parent / "fixtures" / "expected"
+fixtures = Path(__file__).parent / "fixtures"
 
 
 @pytest.mark.asyncio
-async def test_async_example():
+async def test_api():
     result = await FamilyAsyncApi.get_family("EP1000000A1")
-    expected_file = expected_dir / "example.xml"
-    expected_file.write_text(result)
+    expected_file = fixtures / "family_api_output.json"
+    # expected_file.write_text(result.model_dump_json(indent=2))
     expected = expected_file.read_text()
-    assert expected == result
+    assert json.loads(expected) == json.loads(result.model_dump_json())

@@ -4,7 +4,8 @@ from typing import TYPE_CHECKING
 
 from yankee.base.schema import ListCollection
 
-from .schema import AssignmentPageSchema
+from .convert import convert_xml_to_json
+from .model import AssignmentPage
 from .session import session
 
 if TYPE_CHECKING:
@@ -52,13 +53,7 @@ class AssignmentApi:
             headers={"Accept": "application/xml"},
         )
         response.raise_for_status()
-        return AssignmentPageSchema().load(response.text)
-
-    @classmethod
-    def get_download_url(self, reel: str, frame: str) -> str:
-        reel = reel.rjust(6, "0")
-        frame = frame.rjust(4, "0")
-        return f"http://legacy-assignments.uspto.gov/assignments/assignment-pat-{reel}-{frame}.pdf"
+        return AssignmentPage.model_validate(convert_xml_to_json(response.content))
 
     @classmethod
     async def download_pdf(self, reel: str, frame: str, path: Optional[Path] = None) -> Path:

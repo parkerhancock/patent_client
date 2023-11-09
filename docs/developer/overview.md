@@ -3,47 +3,134 @@
 The goal of this project is to provide easy-to-use access to public patent data through a simple API.
 The general idea is to implement a subset of the
 [Django QuerySet API](https://docs.djangoproject.com/en/2.1/ref/models/querysets/). functionality for accessing
-the various sources of patent data.
+the various sources of patent data. This is a form of the [Active Record](https://en.wikipedia.org/wiki/Active_record_pattern)
+pattern. To achieve this, the "record" is a Pydantic model, and it has a "manager" that is located at `.objects`.
 
-To facilitate this, two base classes are provided as scaffolding for adding new APIs - *Manager* and *Model* (both located in the patent_client.util module). The
-Django ORM implements its functionality using three classes - a Model class that models a single record in a database,
-a Manager class that provides a generic way of accessing that data, and a QuerySet that allows for sorting / filtering of data.
-Here, we omit the separate QuerySet and Manager, and instead use a single Manager class that handles both QuerySet and Manager
-functions.
 
-## Managers
+## Basic Structure
 
-When filtering, ordering, or values methods are called on a Manager, it returns a new Manager object with a combination of the arguments to the old manager and the new arguments. In this way, any given Manager is *immutable*. A base, blank manager (that would return all records), is attached to searchable models as Model.objects. Most searches will begin with a call to Model.objects.filter, which adds filtering critera to the manager. Like Django managers, they support .order_by, .limit, and .offset (and, in fact, slicing just passes the start and end on to those methods). Managers also support .values and .values_list.  Unlike Django, managers also support additional conveinence functions, including:
+The basic structure of Patent Client API wrapper looks like this:
 
-> - Manager.to_list - converts a manger to a list of models
-> - Manager.to_pandas - converts a manager to a Pandas dataframe (if pandas is available), with all model attributes as columns
+- `some_api`
+  - `__init__.py`
+  - `api.py`
+  - `model.py`
+  - `manager.py`
 
-Managers also support addition operations. For example, to create an application list with all applications naming two assignees, you could do this:
+The `model.py` file should contain [Pydantic v2](https://docs.pydantic.dev/latest/) models representing the output of the API, using `patent_client.util.pydantic_utils.BaseModel`
+instead of `pydantic.BaseModel`. The `api.py` file should contain at least one class with methods that call various API functions. The actual structure of the `api.py` file does not matter, but each method should return instances of the Pydantic models defined in `model.py`. The `manager.py` contains a subclass of `patent_client.util.base.manager.Manager` and serves as a wrapper over the API classes in `apy.py` that implement the manager protocol below.
 
-```python
->> apps = USApplication.objects.filter(first_named_applicant='Company A') + USApplication.objects.filter(first_named_applicant='Company B')
-```
+Other files can also be included in the API folder to support other functions. Common ones include:
+
+- `session.py` - if any extensive customization of the base `PatentClientSession`` is necessary, it goes here.
+- `convert.py` - if any data conversion is necessary from the API output to the Pydantic input, put that here.
+- `query.py` - if complex logic is necessary to convert input to the manager's `.filter` method, put that here.
+
+Each of these is discussed in more detail below.
+
+## API & PatentClientSession
+
+The `apy.py` file should use an instance of `patent_client.session.PatentClientSession` to access the methods of the API using only `async` methods. The `PatentClientSession` is a subclass of the `hishel.AsyncCacheClient` which is itself a subclass of `httpx.AsyncClient`. Patent Client uses this exclusively over the more popular
+`requests` library because (1) an increasing number of API's require the use of HTTP/2, which is not supported by requests, and (2) httpx has support for `asyncio`. That said, if you're coming from a `requests` background, fear not! The httpx interface is nearly (but not entirely) identical to `requests`.
 
 ## Models
 
-Models are special dataclasses, with some additional functionality baked-in. Fields are present as attributes on the Model. Additionally:
+Models are Pydantic Models that subclass `patent_client.util.pydantic_util.BaseModel`. This special version of `BaseModel` automatically
+detects the corresponding manager (discussed below) and adds some convenience functions. When used:
 
-- The Model.objects holds a manager that would retreive every Model in data source
-- The Model supports a .to_dict() method to convert it to a dictionary, and a to_pandas() method to convert it to a Pandas series.
+- The `Model.objects` holds a manager that would retreive every Model in data source
+- The `Model` supports a `.to_dict()` method to convert it to a dictionary, and a `to_pandas()` method to convert it to a Pandas series.
 
-Models can also have custom functions and properties attached to them. These vary from model to model, but consist of:
+Models can use any Pydantic features, such as [computed fields](https://docs.pydantic.dev/2.0/usage/computed_fields/) for additional properties.
+Models may also include:
 
-- Transformer methods - that calculate some property based on one or more Fields
-- Relationships - that traverse a relationship to a related model
-- Downloaders - that download some sort of content related to the model
+- Relationships - that traverse a relationship to a related model.
+- Downloaders - that download some sort of content related to the model.
 
-Downloaders always return a tempfile.NamedTemporaryFile with the downloaded file contained therein.
+### Relationships
 
-## Schemas
+You can create properties of a Model that link to another model using `patent_client.util.base.related.get_model`. With `get_model`, you can dynamically retrieve
+another model, and then use an active record call on that model. `get_model` is preferred over importing the model directly to reduce the risk of circular imports.
 
-Each data source also has a module called a "Schema," which is a deserialization layer that converts raw data obtained by the manager into
-models. In general, the data sources accessed by patent_client are either JSON or XML documents. Both use the Marshmallow library to apply
-formatting corrections, renaming conventions, etc.
+Example:
+
+```python
+class USApplication(BaseModel):
+    patent_number: str
+    ...
+    @property
+    def patent(self):
+        return get_model("patent_client.Patent").objects.get(self.patent_number)
+```
+
+In that example, if you have a USApplication instance, you can get the corresponding patent at USApplication.patent.
+
+### Downloaders
+
+Some models have downloads related to them, like Assignment PDF's or Patent and Publication documents. Downloaders should:
+
+- Be initially implemented as an asynchronous `.adownload` method that uses the `session.adownload` method on the related session.
+- Have a companion `.download` method that simply aliases `.adownload` using `patent_client.util.asyncio_util.run_sync`
+- Return a `pathlib.Path` object to the downloaded file.
+
+## Managers
+
+When filtering, ordering, or values methods are called on a Manager, it returns a new Manager object with a combination of the arguments to the old manager and the new arguments. In this way, any given Manager is *immutable*. The key data in the Manager is in a `ManagerConfig` object stored at `Manager.config`.
+Managers require subclassing `patent_client.util.base.Manager` and defining these methods:
+
+`Manager._aget_results`
+
+This method should return an `AsyncIterator` across the model results, based on the contents of the `ManagerConfig` object at `Manager.config`.
+
+`Manager.alen`
+
+This method should be an async method that returns the number of results to be retrieved by the manager, based on the contents of the `ManagerConfig` object.
+
+
+### Manager Discovery
+A base, blank manager (that would return all records), is attached to searchable models as Model.objects. This is done automatically when
+a file is placed in a `model.py` module and there is a corresponding manager in a `manager.py` file. For example:
+
+`model.py`
+```python
+from patent_client.util.pydantic_util import BaseModel
+class Model(BaseModel):
+    # Some fields
+```
+`manager.py`
+```python
+from patent_client.util.base import Manager
+class ModelManager(Manager):
+    # an implementation
+```
+
+No additional configuration is needed. If the API is particularly complex, such that `model` and `manager` are packages and not modules, this still works as long as the manager is
+listed in the `__init__.py` of the `manager` module. For example:
+`model/submodel.py``
+```python
+from patent_client.util.pydantic_util import BaseModel
+class SubModel(BaseModel):
+    # Some fields
+```
+`manager/submanager.py`
+```python
+from patent_client.util.base import Manager
+class SubModelManager(Manager):
+    # an implementation
+```
+Does not work, *unless* you also have this:
+`manager/__init__.py`
+```python
+from .submanager import SubModelManager
+```
+
+Alternatively, you can also expressly define the location of a manager with a string at `__manager__`
+`model.py`
+```python
+from patent_client.util.pydantic_util import BaseModel
+class Model(BaseModel):
+    __manager__ = "patent_client.manager.ModelManager"
+```
 
 ## Relationships
 
@@ -74,10 +161,10 @@ Once these relationships are in place, we can move from one record to the other 
 >>> from patent_client import PtabProceeding
 >>> a = PtabProceeding.objects.get('IPR2017-00001') # doctest +SKIP
 
->>> a.documents[0]
-PtabDocument(document_category='Paper', document_type_name='Notice of Appeal', document_number=50, document_name='IPR2017-00001NOAFWD.pdf', document_filing_date=datetime.date(2018, 5, 16), title=None)
+>>> a.documents[0] # doctest +ELLIPSIS
+PtabDocument(...)
 
->>> a.documents[0].proceeding
-PtabProceeding(subproceeding_type_category='IPR', proceeding_number='IPR2017-00001', proceeding_status_category='FWD Entered', proceeding_type_category='AIA Trial', respondent_party_name='SIPCO, LLC')
+>>> a.documents[0].proceeding # doctest +ELLIPSIS
+PtabProceeding(...)
 
 ```

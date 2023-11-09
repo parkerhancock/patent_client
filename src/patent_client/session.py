@@ -1,4 +1,5 @@
 import re
+import warnings
 from pathlib import Path
 from typing import Optional
 
@@ -41,6 +42,11 @@ class PatentClientSession(hishel.AsyncCacheClient):
     async def adownload(self, url, method: str = "GET", path: Optional[str | Path] = None, **kwargs):
         if isinstance(path, str):
             path = Path(path)
+        if not path.is_dir() and path.exists():
+            warnings.warn(
+                "File already exists at provided output! Not re-downloading. Please move the file or provide an alternative path to download"
+            )
+            return path
         async with self.stream(method, url, **kwargs) as response:
             response.raise_for_status()
             if path.is_dir() or None:
