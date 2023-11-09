@@ -25,7 +25,9 @@ getting_started
 user_guide
 examples
 api
+migration_guide
 developer
+changelog
 
 ```
 

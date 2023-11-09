@@ -30,12 +30,12 @@ class OpsFairUseError(Exception):
 
 
 class OpsAsyncSession(PatentClientSession):
-    key: Optional[str]
-    secret: Optional[str]
+    key: Optional[str] = None
+    secret: Optional[str] = None
     expires: dt.datetime
     sync: SyncProxy
 
-    def __init__(self, *args, key: Optional[str] = None, secret: Optional[str] = None, **kwargs):
+    def __init__(self, *args, key: str = "", secret: str = "", **kwargs):
         super(OpsAsyncSession, self).__init__(*args, **kwargs)
         self.key = key
         self.secret = secret
@@ -57,28 +57,29 @@ class OpsAsyncSession(PatentClientSession):
 
     async def get_token(self):
         auth_url = "https://ops.epo.org/3.2/auth/accesstoken"
-        response = await super(OpsAsyncSession, self).request(
-            "post",
-            auth_url,
-            auth=(self.key, self.secret),
-            data={"grant_type": "client_credentials"},
-        )
-        if response.status_code == 401:
-            logger.debug(f"EPO Authentication Error!\n{response.text}")
-            raise OpsAuthenticationError(
-                "Failed to authenticate with EPO OPS! Please check your credentials. See the setup instructions at https://patent-client.readthedocs.io/en/stable/getting_started.html"
+        with self.cache_disabled():
+            response = await super(OpsAsyncSession, self).request(
+                "post",
+                auth_url,
+                auth=(self.key, self.secret),
+                data={"grant_type": "client_credentials"},
             )
-        elif response.status_code == 403:
-            logger.debug(f"EPO Forbidden Error\n{response.text}")
-            raise OpsForbiddenError("Your EPO Request Failed - Quota Exceeded / Blacklisted / Blocked")
-        response.raise_for_status()
+            if response.status_code == 401:
+                logger.debug(f"EPO Authentication Error!\n{response.text}")
+                raise OpsAuthenticationError(
+                    "Failed to authenticate with EPO OPS! Please check your credentials. See the setup instructions at https://patent-client.readthedocs.io/en/stable/getting_started.html"
+                )
+            elif response.status_code == 403:
+                logger.debug(f"EPO Forbidden Error\n{response.text}")
+                raise OpsForbiddenError("Your EPO Request Failed - Quota Exceeded / Blacklisted / Blocked")
+            response.raise_for_status()
 
-        data = response.json()
-        self.expires = dt.datetime.fromtimestamp(int(data["issued_at"]) / 1000) + dt.timedelta(
-            seconds=int(data["expires_in"])
-        )
-        self.headers["Authorization"] = f"Bearer {data['access_token']}"
-        return response
+            data = response.json()
+            self.expires = dt.datetime.fromtimestamp(int(data["issued_at"]) / 1000) + dt.timedelta(
+                seconds=int(data["expires_in"])
+            )
+            self.headers["Authorization"] = f"Bearer {data['access_token']}"
+            return response
 
 
 asession = OpsAsyncSession(key=SETTINGS.epo_api_key, secret=SETTINGS.epo_api_secret)

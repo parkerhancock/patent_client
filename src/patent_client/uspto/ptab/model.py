@@ -145,14 +145,14 @@ fname_re = re.compile(r"[<>:\"/\|?*]")
 
 
 class PtabDocument(PtabBaseModel):
-    document_identifier: str
+    document_identifier: str = Field(repr=False, default=None)
     document_category: Optional[str] = None
     document_type_name: Optional[str] = None
     document_number: Optional[int] = None
     document_name: Optional[str] = None
     document_filing_date: Optional[MDYDate] = None
     proceeding_number: Optional[str] = None
-    proceeding_type_category: Optional[str] = None
+    proceeding_type_category: Optional[str] = Field(repr=False, default=None)
     title: Optional[str] = None
 
     @property

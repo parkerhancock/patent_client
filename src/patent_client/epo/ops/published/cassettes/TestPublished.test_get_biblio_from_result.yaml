@@ -17,96 +17,6 @@ interactions:
     method: GET
     uri: http://ops.epo.org/3.2/rest-services/published-data/search?Range=1-1&q=applicant%3D%22Google%22
   response:
-    content: "<error><code>400</code><message>invalid_access_token</message><description>Access
-      token has expired</description>\n\t\t\t\t</error>\n\t\t\t"
-    headers:
-      Access-Control-Allow-Headers:
-      - Authorization
-      Access-Control-Allow-Methods:
-      - POST
-      Access-Control-Allow-Origin:
-      - '*'
-      Connection:
-      - keep-alive
-      Content-Length:
-      - '130'
-      Content-Type:
-      - application/xml
-      Date:
-      - Thu, 09 Nov 2023 16:21:35 GMT
-      WWW-Authenticate:
-      - 'Bearer realm="null",error="invalid_token",error_description="keymanagement.service.access_token_expired:
-        Access Token expired"'
-    http_version: HTTP/1.1
-    status_code: 400
-- request:
-    body: grant_type=client_credentials
-    headers:
-      Authorization:
-      - REDACTED
-      accept:
-      - '*/*'
-      accept-encoding:
-      - gzip, deflate
-      connection:
-      - keep-alive
-      content-length:
-      - '29'
-      content-type:
-      - application/x-www-form-urlencoded
-      host:
-      - ops.epo.org
-      user-agent:
-      - Mozilla/5.0 Python Patent Clientbot/3.2.10 (parkerhancock@users.noreply.github.com)
-    method: POST
-    uri: https://ops.epo.org/3.2/auth/accesstoken
-  response:
-    content: "{\n  \"refresh_token_expires_in\": \"0\",\n  \"api_product_list\": \"[ops-prod]\",\n
-      \ \"api_product_list_json\": [\n    \"ops-prod\"\n  ],\n  \"organization_name\":
-      \"epo\",\n  \"developer.email\": \"parker.hancock@protonmail.com\",\n  \"token_type\":
-      \"BearerToken\",\n  \"issued_at\": \"1699546896237\",\n  \"client_id\": \"wVi6ni5GUZZ3BJqAfLGJb4KPGcYxRktw\",\n
-      \ \"access_token\": \"XdUfFcADurAz0OA6V3reMo3O22H2\",\n  \"application_name\":
-      \"8654da0d-5e44-4ea3-addc-e555eff4aee6\",\n  \"scope\": \"core\",\n  \"expires_in\":
-      \"1199\",\n  \"refresh_count\": \"0\",\n  \"status\": \"approved\"\n}"
-    headers:
-      Access-Control-Allow-Headers:
-      - Authorization
-      Access-Control-Allow-Methods:
-      - POST
-      Access-Control-Allow-Origin:
-      - '*'
-      Connection:
-      - keep-alive
-      Content-Length:
-      - '523'
-      Content-Type:
-      - application/json
-      Date:
-      - Thu, 09 Nov 2023 16:21:36 GMT
-      X-EPO-Client-IP:
-      - 38.104.255.66
-      X-EPO-Forwarded:
-      - '[38.104.255.66]'
-    http_version: HTTP/1.1
-    status_code: 200
-- request:
-    body: ''
-    headers:
-      Authorization:
-      - REDACTED
-      accept:
-      - '*/*'
-      accept-encoding:
-      - gzip, deflate
-      connection:
-      - keep-alive
-      host:
-      - ops.epo.org
-      user-agent:
-      - Mozilla/5.0 Python Patent Clientbot/3.2.10 (parkerhancock@users.noreply.github.com)
-    method: GET
-    uri: http://ops.epo.org/3.2/rest-services/published-data/search?Range=1-1&q=applicant%3D%22Google%22
-  response:
     content: "<?xml version=\"1.0\" encoding=\"UTF-8\"?><?xml-stylesheet type=\"text/xsl\"
       href=\"/3.2/style/exchange.xsl\"?>\n<ops:world-patent-data xmlns=\"http://www.epo.org/exchange\"
       xmlns:ops=\"http://ops.epo.org\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">\n
@@ -128,12 +38,10 @@ interactions:
       - no-cache
       Connection:
       - keep-alive
-      Content-Length:
-      - '837'
       Content-Type:
       - application/xml;charset=utf-8
       Date:
-      - Thu, 09 Nov 2023 16:21:36 GMT
+      - Thu, 09 Nov 2023 17:22:55 GMT
       ETag:
       - '"0c2f278dc6e7691084d023557c8ea30c6"'
       Pragma:
@@ -151,14 +59,14 @@ interactions:
       X-EPO-Forwarded:
       - '[38.104.255.66]'
       X-Elapsed-Time:
-      - '14'
+      - '11'
       X-IndividualQuotaPerHour-Used:
-      - '57966'
+      - '156213'
       X-RegisteredQuotaPerWeek-Used:
-      - '751069'
+      - '913430'
       X-Throttling-Control:
-      - busy (images=green:100, inpadoc=green:45, other=green:1000, retrieval=green:100,
-        search=green:15)
+      - overloaded (images=green:50, inpadoc=green:30, other=green:1000, retrieval=green:50,
+        search=green:5)
     http_version: HTTP/1.1
     status_code: 200
 - request:
@@ -257,12 +165,10 @@ interactions:
       - no-cache
       Connection:
       - keep-alive
-      Content-Length:
-      - '6148'
       Content-Type:
       - application/xml;charset=utf-8
       Date:
-      - Thu, 09 Nov 2023 16:21:36 GMT
+      - Thu, 09 Nov 2023 17:22:56 GMT
       ETag:
       - '"0de43a1f2472428d31e71cb7a414b00a3"'
       Pragma:
@@ -280,14 +186,14 @@ interactions:
       X-EPO-Forwarded:
       - '[38.104.255.66]'
       X-Elapsed-Time:
-      - '2'
+      - '3'
       X-IndividualQuotaPerHour-Used:
-      - '64114'
+      - '156213'
       X-RegisteredQuotaPerWeek-Used:
-      - '757217'
+      - '913430'
       X-Throttling-Control:
-      - busy (images=green:100, inpadoc=green:45, other=green:1000, retrieval=green:100,
-        search=green:15)
+      - overloaded (images=green:50, inpadoc=green:30, other=green:1000, retrieval=green:50,
+        search=green:5)
     http_version: HTTP/1.1
     status_code: 200
 version: 1

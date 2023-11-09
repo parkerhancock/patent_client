@@ -30,15 +30,16 @@ class PatentExaminationDataSystemApi:
 
     @classmethod
     async def is_online(cls) -> bool:
-        response = await session.get("https://ped.uspto.gov/api/search-fields")
-        if response.status_code == 200:
-            return True
-        elif "requested resource is not available" in response.text:
-            raise NotAvailableException("Patent Examination Data is Offline - this is a USPTO problem")
-        elif "attempt failed or the origin closed the connection" in response.text:
-            raise NotAvailableException("The Patent Examination Data API is Broken! - this is a USPTO problem")
-        else:
-            raise NotAvailableException("There is a USPTO problem")
+        with session.cache_disabled():
+            response = await session.get("https://ped.uspto.gov/api/search-fields")
+            if response.status_code == 200:
+                return True
+            elif "requested resource is not available" in response.text:
+                raise NotAvailableException("Patent Examination Data is Offline - this is a USPTO problem")
+            elif "attempt failed or the origin closed the connection" in response.text:
+                raise NotAvailableException("The Patent Examination Data API is Broken! - this is a USPTO problem")
+            else:
+                raise NotAvailableException("There is a USPTO problem")
 
     @classmethod
     async def get_search_fields(cls) -> dict:

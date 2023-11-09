@@ -65,15 +65,15 @@ class Property(AbstractAssignmentModel):
     invention_title: str
     invention_title_lang: str
     appl_num: str
-    filing_date: DatetimeAsDate
-    intl_publ_date: DatetimeAsDate
-    intl_reg_num: Optional[str]
-    inventors: str
-    issue_date: DatetimeAsDate
-    pat_num: Optional[str]
-    pct_num: Optional[str]
-    publ_date: DatetimeAsDate
-    publ_num: Optional[str]
+    filing_date: Optional[DatetimeAsDate] = None
+    intl_publ_date: Optional[DatetimeAsDate] = None
+    intl_reg_num: Optional[str] = None
+    inventors: Optional[str] = None
+    issue_date: Optional[DatetimeAsDate] = None
+    pat_num: Optional[str] = None
+    pct_num: Optional[str] = None
+    publ_date: Optional[DatetimeAsDate] = None
+    publ_num: Optional[str] = None
 
     @property
     def application(self) -> Optional["USApplication"]:
@@ -147,6 +147,7 @@ class Assignment(AbstractAssignmentModel["AssignmentManager"]):
 
     @property
     def image_url(self):
+        reel, frame = self.reel_frame
         reel = reel.rjust(6, "0")
         frame = frame.rjust(4, "0")
         return f"http://legacy-assignments.uspto.gov/assignments/assignment-pat-{reel}-{frame}.pdf"

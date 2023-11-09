@@ -83,6 +83,9 @@ class PublicSearchApi:
         if query_response.status_code in (500, 415):
             await asyncio.sleep(5)
             query_response = await session.post(url, json=data)
+        elif query_response.status_code == 403:
+            await self.get_session()
+            query_response = await session.post(url, json=data)
         query_response.raise_for_status()
         result = query_response.json()
         if result.get("error", None) is not None:
@@ -113,10 +116,11 @@ class PublicSearchApi:
     )
     async def get_session(self):
         url = "https://ppubs.uspto.gov/dirsearch-public/users/me/session"
-        response = await session.post(url, json=-1)  # json=str(random.randint(10000, 99999)))
-        self.session = response.json()
-        self.case_id = self.session["userCase"]["caseId"]
-        return self.session
+        with session.cache_disabled():
+            response = await session.post(url, json=-1)  # json=str(random.randint(10000, 99999)))
+            self.session = response.json()
+            self.case_id = self.session["userCase"]["caseId"]
+            return self.session
 
     @tenacity.retry(stop=tenacity.stop_after_attempt(3), wait=tenacity.wait_random(min=1, max=5))
     async def _request_save(self, obj):

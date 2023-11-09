@@ -16,16 +16,16 @@ from .shared import OptionalList
 
 class PublicSearchBiblio(BaseModel):
     guid: Optional[str] = None
-    publication_number: Optional[str]
+    publication_number: Optional[str] = None
     publication_date: datetime.date
     patent_title: str
     type: str
     main_classification_code: str
-    applicant_names: OptionalList[str] = Field(alias="applicant_name")
-    assignee_names: OptionalList[str] = Field(alias="assignee_name")
-    uspc_full_classification: OptionalList[str]
-    ipc_code: OptionalList[str]
-    cpc_additional: OptionalList[str]
+    applicant_names: OptionalList[str] = Field(alias="applicant_name", default_factory=list)
+    assignee_names: OptionalList[str] = Field(alias="assignee_name", default_factory=list)
+    uspc_full_classification: OptionalList[str] = Field(default_factory=list)
+    ipc_code: OptionalList[str] = Field(default_factory=list)
+    cpc_additional: OptionalList[str] = Field(default_factory=list)
     app_filing_date: datetime.date
     related_appl_filing_date: OptionalList[DateTimeAsDate] = Field(alias="relatedApplFilingDate", default_factory=list)
     primary_examiner: Optional[str] = None

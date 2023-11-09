@@ -44,5 +44,5 @@ True
 .. automodule:: patent_client.uspto.assignment.model
     :members:
     :undoc-members:
-    :exclude-members: Person
+    :exclude-members: Person, model_config, model_fields
 ```

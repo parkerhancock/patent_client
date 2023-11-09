@@ -22,6 +22,6 @@ def test_convert_doc():
     output_file = fixtures / "doc_convert.json"
     input_data = json.loads(input_file.read_text())
     output_data = PublicSearchDocumentSchema().load_batch(input_data)
-    output_file.write_text(output_data.to_json(indent=2))
+    # output_file.write_text(output_data.to_json(indent=2))
     expected_data = json.loads(output_file.read_text())
     assert json.loads(output_data.to_json()) == expected_data

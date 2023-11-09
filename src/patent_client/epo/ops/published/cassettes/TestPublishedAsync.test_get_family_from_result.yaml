@@ -166,7 +166,7 @@ interactions:
       Content-Type:
       - application/xml;charset=utf-8
       Date:
-      - Tue, 07 Nov 2023 20:07:30 GMT
+      - Thu, 09 Nov 2023 17:42:19 GMT
       ETag:
       - '"02bcf6d49927d35ce4b18c7d37307ba1b"'
       Pragma:
@@ -180,18 +180,483 @@ interactions:
       X-API:
       - ops-v3.2
       X-EPO-Client-IP:
-      - 37.19.196.132
+      - 38.104.255.66
       X-EPO-Forwarded:
-      - '[37.19.196.132]'
+      - '[38.104.255.66]'
       X-Elapsed-Time:
       - '0'
       X-IndividualQuotaPerHour-Used:
-      - '453304'
+      - '352858'
       X-RegisteredQuotaPerWeek-Used:
-      - '416299'
+      - '1091704'
       X-Throttling-Control:
-      - idle (images=green:200, inpadoc=green:60, other=green:1000, retrieval=green:200,
-        search=green:30)
+      - busy (images=green:100, inpadoc=green:45, other=green:1000, retrieval=green:100,
+        search=green:15)
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: ''
+    headers:
+      Authorization:
+      - REDACTED
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - ops.epo.org
+      user-agent:
+      - Mozilla/5.0 Python Patent Clientbot/3.2.10 (parkerhancock@users.noreply.github.com)
+    method: GET
+    uri: http://ops.epo.org/3.2/rest-services/family/publication/docdb/WO2009085664A2
+  response:
+    content: "<?xml version=\"1.0\" encoding=\"UTF-8\"?><?xml-stylesheet type=\"text/xsl\"
+      href=\"/3.2/style/family.xsl\"?>\n<ops:world-patent-data xmlns=\"http://www.epo.org/exchange\"
+      xmlns:ops=\"http://ops.epo.org\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">\n
+      \   <ops:patent-family legal=\"false\" total-result-count=\"20\">\n        <ops:publication-reference>\n
+      \           <document-id document-id-type=\"docdb\">\n                <country>WO</country>\n
+      \               <doc-number>2009085664</doc-number>\n                <kind>A2</kind>\n
+      \           </document-id>\n        </ops:publication-reference>\n        <ops:family-member
+      family-id=\"40799763\">\n            <publication-reference>\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>WO</country>\n                    <doc-number>2009085664</doc-number>\n
+      \                   <kind>A2</kind>\n                    <date>20090709</date>\n
+      \               </document-id>\n                <document-id document-id-type=\"epodoc\">\n
+      \                   <doc-number>WO2009085664</doc-number>\n                    <date>20090709</date>\n
+      \               </document-id>\n            </publication-reference>\n            <application-reference
+      doc-id=\"57822229\">\n                <document-id document-id-type=\"docdb\">\n
+      \                   <country>US</country>\n                    <doc-number>2008086599</doc-number>\n
+      \                   <kind>W</kind>\n                    <date>20081212</date>\n
+      \               </document-id>\n            </application-reference>\n            <priority-claim
+      sequence=\"1\" kind=\"national\">\n                <document-id document-id-type=\"docdb\">\n
+      \                   <country>US</country>\n                    <doc-number>96495207</doc-number>\n
+      \                   <kind>A</kind>\n                    <date>20071227</date>\n
+      \               </document-id>\n                <priority-active-indicator>YES</priority-active-indicator>\n
+      \           </priority-claim>\n        </ops:family-member>\n        <ops:family-member
+      family-id=\"40799763\">\n            <publication-reference>\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>WO</country>\n                    <doc-number>2009085664</doc-number>\n
+      \                   <kind>A3</kind>\n                    <date>20090911</date>\n
+      \               </document-id>\n                <document-id document-id-type=\"epodoc\">\n
+      \                   <doc-number>WO2009085664</doc-number>\n                    <date>20090911</date>\n
+      \               </document-id>\n            </publication-reference>\n            <application-reference
+      doc-id=\"57822229\">\n                <document-id document-id-type=\"docdb\">\n
+      \                   <country>US</country>\n                    <doc-number>2008086599</doc-number>\n
+      \                   <kind>W</kind>\n                    <date>20081212</date>\n
+      \               </document-id>\n            </application-reference>\n            <priority-claim
+      sequence=\"1\" kind=\"national\">\n                <document-id document-id-type=\"docdb\">\n
+      \                   <country>US</country>\n                    <doc-number>96495207</doc-number>\n
+      \                   <kind>A</kind>\n                    <date>20071227</date>\n
+      \               </document-id>\n                <priority-active-indicator>YES</priority-active-indicator>\n
+      \           </priority-claim>\n        </ops:family-member>\n        <ops:family-member
+      family-id=\"40799763\">\n            <publication-reference>\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>CN</country>\n                    <doc-number>101911042</doc-number>\n
+      \                   <kind>A</kind>\n                    <date>20101208</date>\n
+      \               </document-id>\n                <document-id document-id-type=\"epodoc\">\n
+      \                   <doc-number>CN101911042</doc-number>\n                    <date>20101208</date>\n
+      \               </document-id>\n            </publication-reference>\n            <application-reference
+      doc-id=\"329418264\">\n                <document-id document-id-type=\"docdb\">\n
+      \                   <country>CN</country>\n                    <doc-number>200880123968</doc-number>\n
+      \                   <kind>A</kind>\n                    <date>20081212</date>\n
+      \               </document-id>\n            </application-reference>\n            <priority-claim
+      sequence=\"1\" kind=\"national\">\n                <document-id document-id-type=\"docdb\">\n
+      \                   <country>US</country>\n                    <doc-number>96495207</doc-number>\n
+      \                   <kind>A</kind>\n                    <date>20071227</date>\n
+      \               </document-id>\n                <priority-active-indicator>YES</priority-active-indicator>\n
+      \           </priority-claim>\n            <priority-claim sequence=\"2\" kind=\"national\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+      \                   <doc-number>2008086599</doc-number>\n                    <kind>W</kind>\n
+      \                   <date>20081212</date>\n                </document-id>\n
+      \               <priority-active-indicator>NO</priority-active-indicator>\n
+      \               <priority-linkage-type>W</priority-linkage-type>\n            </priority-claim>\n
+      \       </ops:family-member>\n        <ops:family-member family-id=\"40799763\">\n
+      \           <publication-reference>\n                <document-id document-id-type=\"docdb\">\n
+      \                   <country>CN</country>\n                    <doc-number>101911042</doc-number>\n
+      \                   <kind>B</kind>\n                    <date>20160914</date>\n
+      \               </document-id>\n                <document-id document-id-type=\"epodoc\">\n
+      \                   <doc-number>CN101911042B</doc-number>\n                    <date>20160914</date>\n
+      \               </document-id>\n            </publication-reference>\n            <application-reference
+      doc-id=\"329418264\">\n                <document-id document-id-type=\"docdb\">\n
+      \                   <country>CN</country>\n                    <doc-number>200880123968</doc-number>\n
+      \                   <kind>A</kind>\n                    <date>20081212</date>\n
+      \               </document-id>\n            </application-reference>\n            <priority-claim
+      sequence=\"1\" kind=\"national\">\n                <document-id document-id-type=\"docdb\">\n
+      \                   <country>US</country>\n                    <doc-number>96495207</doc-number>\n
+      \                   <kind>A</kind>\n                    <date>20071227</date>\n
+      \               </document-id>\n                <priority-active-indicator>YES</priority-active-indicator>\n
+      \           </priority-claim>\n            <priority-claim sequence=\"2\" kind=\"national\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+      \                   <doc-number>2008086599</doc-number>\n                    <kind>W</kind>\n
+      \                   <date>20081212</date>\n                </document-id>\n
+      \               <priority-active-indicator>NO</priority-active-indicator>\n
+      \               <priority-linkage-type>W</priority-linkage-type>\n            </priority-claim>\n
+      \       </ops:family-member>\n        <ops:family-member family-id=\"40799763\">\n
+      \           <publication-reference>\n                <document-id document-id-type=\"docdb\">\n
+      \                   <country>CN</country>\n                    <doc-number>102622450</doc-number>\n
+      \                   <kind>A</kind>\n                    <date>20120801</date>\n
+      \               </document-id>\n                <document-id document-id-type=\"epodoc\">\n
+      \                   <doc-number>CN102622450</doc-number>\n                    <date>20120801</date>\n
+      \               </document-id>\n            </publication-reference>\n            <application-reference
+      doc-id=\"365459236\">\n                <document-id document-id-type=\"docdb\">\n
+      \                   <country>CN</country>\n                    <doc-number>201210106458</doc-number>\n
+      \                   <kind>A</kind>\n                    <date>20081212</date>\n
+      \               </document-id>\n            </application-reference>\n            <priority-claim
+      sequence=\"1\" kind=\"national\">\n                <document-id document-id-type=\"docdb\">\n
+      \                   <country>US</country>\n                    <doc-number>96495207</doc-number>\n
+      \                   <kind>A</kind>\n                    <date>20071227</date>\n
+      \               </document-id>\n                <priority-active-indicator>YES</priority-active-indicator>\n
+      \           </priority-claim>\n            <priority-claim sequence=\"2\" kind=\"national\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>CN</country>\n
+      \                   <doc-number>200880123968</doc-number>\n                    <kind>A</kind>\n
+      \                   <date>20081212</date>\n                </document-id>\n
+      \               <priority-active-indicator>NO</priority-active-indicator>\n
+      \           </priority-claim>\n        </ops:family-member>\n        <ops:family-member
+      family-id=\"40799763\">\n            <publication-reference>\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>CN</country>\n                    <doc-number>102622450</doc-number>\n
+      \                   <kind>B</kind>\n                    <date>20151104</date>\n
+      \               </document-id>\n                <document-id document-id-type=\"epodoc\">\n
+      \                   <doc-number>CN102622450B</doc-number>\n                    <date>20151104</date>\n
+      \               </document-id>\n            </publication-reference>\n            <application-reference
+      doc-id=\"365459236\">\n                <document-id document-id-type=\"docdb\">\n
+      \                   <country>CN</country>\n                    <doc-number>201210106458</doc-number>\n
+      \                   <kind>A</kind>\n                    <date>20081212</date>\n
+      \               </document-id>\n            </application-reference>\n            <priority-claim
+      sequence=\"1\" kind=\"national\">\n                <document-id document-id-type=\"docdb\">\n
+      \                   <country>US</country>\n                    <doc-number>96495207</doc-number>\n
+      \                   <kind>A</kind>\n                    <date>20071227</date>\n
+      \               </document-id>\n                <priority-active-indicator>YES</priority-active-indicator>\n
+      \           </priority-claim>\n            <priority-claim sequence=\"2\" kind=\"national\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>CN</country>\n
+      \                   <doc-number>200880123968</doc-number>\n                    <kind>A</kind>\n
+      \                   <date>20081212</date>\n                </document-id>\n
+      \               <priority-active-indicator>NO</priority-active-indicator>\n
+      \           </priority-claim>\n        </ops:family-member>\n        <ops:family-member
+      family-id=\"40799763\">\n            <publication-reference>\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>EP</country>\n                    <doc-number>2225660</doc-number>\n
+      \                   <kind>A2</kind>\n                    <date>20100908</date>\n
+      \               </document-id>\n                <document-id document-id-type=\"epodoc\">\n
+      \                   <doc-number>EP2225660</doc-number>\n                    <date>20100908</date>\n
+      \               </document-id>\n            </publication-reference>\n            <application-reference
+      doc-id=\"57811340\">\n                <document-id document-id-type=\"docdb\">\n
+      \                   <country>EP</country>\n                    <doc-number>08868513</doc-number>\n
+      \                   <kind>A</kind>\n                    <date>20081212</date>\n
+      \               </document-id>\n            </application-reference>\n            <priority-claim
+      sequence=\"1\" kind=\"national\">\n                <document-id document-id-type=\"docdb\">\n
+      \                   <country>US</country>\n                    <doc-number>96495207</doc-number>\n
+      \                   <kind>A</kind>\n                    <date>20071227</date>\n
+      \               </document-id>\n                <priority-active-indicator>YES</priority-active-indicator>\n
+      \           </priority-claim>\n            <priority-claim sequence=\"2\" kind=\"national\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+      \                   <doc-number>2008086599</doc-number>\n                    <kind>W</kind>\n
+      \                   <date>20081212</date>\n                </document-id>\n
+      \               <priority-active-indicator>NO</priority-active-indicator>\n
+      \               <priority-linkage-type>W</priority-linkage-type>\n            </priority-claim>\n
+      \       </ops:family-member>\n        <ops:family-member family-id=\"40799763\">\n
+      \           <publication-reference>\n                <document-id document-id-type=\"docdb\">\n
+      \                   <country>EP</country>\n                    <doc-number>2225660</doc-number>\n
+      \                   <kind>A4</kind>\n                    <date>20110105</date>\n
+      \               </document-id>\n                <document-id document-id-type=\"epodoc\">\n
+      \                   <doc-number>EP2225660</doc-number>\n                    <date>20110105</date>\n
+      \               </document-id>\n            </publication-reference>\n            <application-reference
+      doc-id=\"57811340\">\n                <document-id document-id-type=\"docdb\">\n
+      \                   <country>EP</country>\n                    <doc-number>08868513</doc-number>\n
+      \                   <kind>A</kind>\n                    <date>20081212</date>\n
+      \               </document-id>\n            </application-reference>\n            <priority-claim
+      sequence=\"1\" kind=\"national\">\n                <document-id document-id-type=\"docdb\">\n
+      \                   <country>US</country>\n                    <doc-number>96495207</doc-number>\n
+      \                   <kind>A</kind>\n                    <date>20071227</date>\n
+      \               </document-id>\n                <priority-active-indicator>YES</priority-active-indicator>\n
+      \           </priority-claim>\n            <priority-claim sequence=\"2\" kind=\"national\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+      \                   <doc-number>2008086599</doc-number>\n                    <kind>W</kind>\n
+      \                   <date>20081212</date>\n                </document-id>\n
+      \               <priority-active-indicator>NO</priority-active-indicator>\n
+      \               <priority-linkage-type>W</priority-linkage-type>\n            </priority-claim>\n
+      \       </ops:family-member>\n        <ops:family-member family-id=\"40799763\">\n
+      \           <publication-reference>\n                <document-id document-id-type=\"docdb\">\n
+      \                   <country>JP</country>\n                    <doc-number>2011511970</doc-number>\n
+      \                   <kind>A</kind>\n                    <date>20110414</date>\n
+      \               </document-id>\n                <document-id document-id-type=\"epodoc\">\n
+      \                   <doc-number>JP2011511970</doc-number>\n                    <date>20110414</date>\n
+      \               </document-id>\n            </publication-reference>\n            <application-reference
+      doc-id=\"365231554\">\n                <document-id document-id-type=\"docdb\">\n
+      \                   <country>JP</country>\n                    <doc-number>2010540766</doc-number>\n
+      \                   <kind>A</kind>\n                    <date>20081212</date>\n
+      \               </document-id>\n            </application-reference>\n            <priority-claim
+      sequence=\"1\" kind=\"national\">\n                <document-id document-id-type=\"docdb\">\n
+      \                   <country>US</country>\n                    <doc-number>96495207</doc-number>\n
+      \                   <kind>A</kind>\n                    <date>20071227</date>\n
+      \               </document-id>\n                <priority-active-indicator>YES</priority-active-indicator>\n
+      \           </priority-claim>\n            <priority-claim sequence=\"2\" kind=\"national\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+      \                   <doc-number>2008086599</doc-number>\n                    <kind>W</kind>\n
+      \                   <date>20081212</date>\n                </document-id>\n
+      \               <priority-active-indicator>NO</priority-active-indicator>\n
+      \               <priority-linkage-type>W</priority-linkage-type>\n            </priority-claim>\n
+      \       </ops:family-member>\n        <ops:family-member family-id=\"40799763\">\n
+      \           <publication-reference>\n                <document-id document-id-type=\"docdb\">\n
+      \                   <country>JP</country>\n                    <doc-number>4961043</doc-number>\n
+      \                   <kind>B2</kind>\n                    <date>20120627</date>\n
+      \               </document-id>\n                <document-id document-id-type=\"epodoc\">\n
+      \                   <doc-number>JP4961043B</doc-number>\n                    <date>20120627</date>\n
+      \               </document-id>\n            </publication-reference>\n            <application-reference
+      doc-id=\"365231554\">\n                <document-id document-id-type=\"docdb\">\n
+      \                   <country>JP</country>\n                    <doc-number>2010540766</doc-number>\n
+      \                   <kind>A</kind>\n                    <date>20081212</date>\n
+      \               </document-id>\n            </application-reference>\n            <priority-claim
+      sequence=\"1\" kind=\"national\">\n                <document-id document-id-type=\"docdb\">\n
+      \                   <country>US</country>\n                    <doc-number>96495207</doc-number>\n
+      \                   <kind>A</kind>\n                    <date>20071227</date>\n
+      \               </document-id>\n                <priority-active-indicator>YES</priority-active-indicator>\n
+      \           </priority-claim>\n            <priority-claim sequence=\"2\" kind=\"national\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+      \                   <doc-number>2008086599</doc-number>\n                    <kind>W</kind>\n
+      \                   <date>20081212</date>\n                </document-id>\n
+      \               <priority-active-indicator>NO</priority-active-indicator>\n
+      \               <priority-linkage-type>W</priority-linkage-type>\n            </priority-claim>\n
+      \       </ops:family-member>\n        <ops:family-member family-id=\"40799763\">\n
+      \           <publication-reference>\n                <document-id document-id-type=\"docdb\">\n
+      \                   <country>TW</country>\n                    <doc-number>200928818</doc-number>\n
+      \                   <kind>A</kind>\n                    <date>20090701</date>\n
+      \               </document-id>\n                <document-id document-id-type=\"epodoc\">\n
+      \                   <doc-number>TW200928818</doc-number>\n                    <date>20090701</date>\n
+      \               </document-id>\n            </publication-reference>\n            <application-reference
+      doc-id=\"338516634\">\n                <document-id document-id-type=\"docdb\">\n
+      \                   <country>TW</country>\n                    <doc-number>97145995</doc-number>\n
+      \                   <kind>A</kind>\n                    <date>20081127</date>\n
+      \               </document-id>\n            </application-reference>\n            <priority-claim
+      sequence=\"1\" kind=\"national\">\n                <document-id document-id-type=\"docdb\">\n
+      \                   <country>US</country>\n                    <doc-number>96495207</doc-number>\n
+      \                   <kind>A</kind>\n                    <date>20071227</date>\n
+      \               </document-id>\n                <priority-active-indicator>YES</priority-active-indicator>\n
+      \           </priority-claim>\n        </ops:family-member>\n        <ops:family-member
+      family-id=\"40799763\">\n            <publication-reference>\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>TW</country>\n                    <doc-number>I452476</doc-number>\n
+      \                   <kind>B</kind>\n                    <date>20140911</date>\n
+      \               </document-id>\n                <document-id document-id-type=\"epodoc\">\n
+      \                   <doc-number>TWI452476B</doc-number>\n                    <date>20140911</date>\n
+      \               </document-id>\n            </publication-reference>\n            <application-reference
+      doc-id=\"338516634\">\n                <document-id document-id-type=\"docdb\">\n
+      \                   <country>TW</country>\n                    <doc-number>97145995</doc-number>\n
+      \                   <kind>A</kind>\n                    <date>20081127</date>\n
+      \               </document-id>\n            </application-reference>\n            <priority-claim
+      sequence=\"1\" kind=\"national\">\n                <document-id document-id-type=\"docdb\">\n
+      \                   <country>US</country>\n                    <doc-number>96495207</doc-number>\n
+      \                   <kind>A</kind>\n                    <date>20071227</date>\n
+      \               </document-id>\n                <priority-active-indicator>YES</priority-active-indicator>\n
+      \           </priority-claim>\n        </ops:family-member>\n        <ops:family-member
+      family-id=\"40799763\">\n            <publication-reference>\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>2009171930</doc-number>\n
+      \                   <kind>A1</kind>\n                    <date>20090702</date>\n
+      \               </document-id>\n                <document-id document-id-type=\"epodoc\">\n
+      \                   <doc-number>US2009171930</doc-number>\n                    <date>20090702</date>\n
+      \               </document-id>\n            </publication-reference>\n            <application-reference
+      doc-id=\"57766417\" is-representative=\"YES\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>96495207</doc-number>\n
+      \                   <kind>A</kind>\n                    <date>20071227</date>\n
+      \               </document-id>\n            </application-reference>\n            <priority-claim
+      sequence=\"1\" kind=\"national\">\n                <document-id document-id-type=\"docdb\">\n
+      \                   <country>US</country>\n                    <doc-number>96495207</doc-number>\n
+      \                   <kind>A</kind>\n                    <date>20071227</date>\n
+      \               </document-id>\n                <priority-active-indicator>YES</priority-active-indicator>\n
+      \           </priority-claim>\n        </ops:family-member>\n        <ops:family-member
+      family-id=\"40799763\">\n            <publication-reference>\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>8131731</doc-number>\n
+      \                   <kind>B2</kind>\n                    <date>20120306</date>\n
+      \               </document-id>\n                <document-id document-id-type=\"epodoc\">\n
+      \                   <doc-number>US8131731</doc-number>\n                    <date>20120306</date>\n
+      \               </document-id>\n            </publication-reference>\n            <application-reference
+      doc-id=\"57766417\" is-representative=\"YES\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>96495207</doc-number>\n
+      \                   <kind>A</kind>\n                    <date>20071227</date>\n
+      \               </document-id>\n            </application-reference>\n            <priority-claim
+      sequence=\"1\" kind=\"national\">\n                <document-id document-id-type=\"docdb\">\n
+      \                   <country>US</country>\n                    <doc-number>96495207</doc-number>\n
+      \                   <kind>A</kind>\n                    <date>20071227</date>\n
+      \               </document-id>\n                <priority-active-indicator>YES</priority-active-indicator>\n
+      \           </priority-claim>\n        </ops:family-member>\n        <ops:family-member
+      family-id=\"40799763\">\n            <publication-reference>\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>2012150875</doc-number>\n
+      \                   <kind>A1</kind>\n                    <date>20120614</date>\n
+      \               </document-id>\n                <document-id document-id-type=\"epodoc\">\n
+      \                   <doc-number>US2012150875</doc-number>\n                    <date>20120614</date>\n
+      \               </document-id>\n            </publication-reference>\n            <application-reference
+      doc-id=\"364311130\">\n                <document-id document-id-type=\"docdb\">\n
+      \                   <country>US</country>\n                    <doc-number>201213372047</doc-number>\n
+      \                   <kind>A</kind>\n                    <date>20120213</date>\n
+      \               </document-id>\n            </application-reference>\n            <priority-claim
+      sequence=\"1\" kind=\"national\">\n                <document-id document-id-type=\"docdb\">\n
+      \                   <country>US</country>\n                    <doc-number>96495207</doc-number>\n
+      \                   <kind>A</kind>\n                    <date>20071227</date>\n
+      \               </document-id>\n                <priority-active-indicator>YES</priority-active-indicator>\n
+      \               <priority-linkage-type>1</priority-linkage-type>\n            </priority-claim>\n
+      \           <priority-claim sequence=\"2\" kind=\"national\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>201213372047</doc-number>\n
+      \                   <kind>A</kind>\n                    <date>20120213</date>\n
+      \               </document-id>\n                <priority-active-indicator>NO</priority-active-indicator>\n
+      \           </priority-claim>\n        </ops:family-member>\n        <ops:family-member
+      family-id=\"40799763\">\n            <publication-reference>\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>8510313</doc-number>\n
+      \                   <kind>B2</kind>\n                    <date>20130813</date>\n
+      \               </document-id>\n                <document-id document-id-type=\"epodoc\">\n
+      \                   <doc-number>US8510313</doc-number>\n                    <date>20130813</date>\n
+      \               </document-id>\n            </publication-reference>\n            <application-reference
+      doc-id=\"364311130\">\n                <document-id document-id-type=\"docdb\">\n
+      \                   <country>US</country>\n                    <doc-number>201213372047</doc-number>\n
+      \                   <kind>A</kind>\n                    <date>20120213</date>\n
+      \               </document-id>\n            </application-reference>\n            <priority-claim
+      sequence=\"1\" kind=\"national\">\n                <document-id document-id-type=\"docdb\">\n
+      \                   <country>US</country>\n                    <doc-number>96495207</doc-number>\n
+      \                   <kind>A</kind>\n                    <date>20071227</date>\n
+      \               </document-id>\n                <priority-active-indicator>YES</priority-active-indicator>\n
+      \               <priority-linkage-type>1</priority-linkage-type>\n            </priority-claim>\n
+      \           <priority-claim sequence=\"2\" kind=\"national\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>201213372047</doc-number>\n
+      \                   <kind>A</kind>\n                    <date>20120213</date>\n
+      \               </document-id>\n                <priority-active-indicator>NO</priority-active-indicator>\n
+      \           </priority-claim>\n        </ops:family-member>\n        <ops:family-member
+      family-id=\"40799763\">\n            <publication-reference>\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>2013304750</doc-number>\n
+      \                   <kind>A1</kind>\n                    <date>20131114</date>\n
+      \               </document-id>\n                <document-id document-id-type=\"epodoc\">\n
+      \                   <doc-number>US2013304750</doc-number>\n                    <date>20131114</date>\n
+      \               </document-id>\n            </publication-reference>\n            <application-reference
+      doc-id=\"412363604\">\n                <document-id document-id-type=\"docdb\">\n
+      \                   <country>US</country>\n                    <doc-number>201313915433</doc-number>\n
+      \                   <kind>A</kind>\n                    <date>20130611</date>\n
+      \               </document-id>\n            </application-reference>\n            <priority-claim
+      sequence=\"1\" kind=\"national\">\n                <document-id document-id-type=\"docdb\">\n
+      \                   <country>US</country>\n                    <doc-number>96495207</doc-number>\n
+      \                   <kind>A</kind>\n                    <date>20071227</date>\n
+      \               </document-id>\n                <priority-active-indicator>YES</priority-active-indicator>\n
+      \               <priority-linkage-type>1</priority-linkage-type>\n            </priority-claim>\n
+      \           <priority-claim sequence=\"2\" kind=\"national\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>201213372047</doc-number>\n
+      \                   <kind>A</kind>\n                    <date>20120213</date>\n
+      \               </document-id>\n                <priority-active-indicator>NO</priority-active-indicator>\n
+      \               <priority-linkage-type>1</priority-linkage-type>\n            </priority-claim>\n
+      \           <priority-claim sequence=\"3\" kind=\"national\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>201313915433</doc-number>\n
+      \                   <kind>A</kind>\n                    <date>20130611</date>\n
+      \               </document-id>\n                <priority-active-indicator>NO</priority-active-indicator>\n
+      \           </priority-claim>\n        </ops:family-member>\n        <ops:family-member
+      family-id=\"40799763\">\n            <publication-reference>\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>9292578</doc-number>\n
+      \                   <kind>B2</kind>\n                    <date>20160322</date>\n
+      \               </document-id>\n                <document-id document-id-type=\"epodoc\">\n
+      \                   <doc-number>US9292578</doc-number>\n                    <date>20160322</date>\n
+      \               </document-id>\n            </publication-reference>\n            <application-reference
+      doc-id=\"412363604\">\n                <document-id document-id-type=\"docdb\">\n
+      \                   <country>US</country>\n                    <doc-number>201313915433</doc-number>\n
+      \                   <kind>A</kind>\n                    <date>20130611</date>\n
+      \               </document-id>\n            </application-reference>\n            <priority-claim
+      sequence=\"1\" kind=\"national\">\n                <document-id document-id-type=\"docdb\">\n
+      \                   <country>US</country>\n                    <doc-number>96495207</doc-number>\n
+      \                   <kind>A</kind>\n                    <date>20071227</date>\n
+      \               </document-id>\n                <priority-active-indicator>YES</priority-active-indicator>\n
+      \               <priority-linkage-type>1</priority-linkage-type>\n            </priority-claim>\n
+      \           <priority-claim sequence=\"2\" kind=\"national\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>201213372047</doc-number>\n
+      \                   <kind>A</kind>\n                    <date>20120213</date>\n
+      \               </document-id>\n                <priority-active-indicator>NO</priority-active-indicator>\n
+      \               <priority-linkage-type>1</priority-linkage-type>\n            </priority-claim>\n
+      \           <priority-claim sequence=\"3\" kind=\"national\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>201313915433</doc-number>\n
+      \                   <kind>A</kind>\n                    <date>20130611</date>\n
+      \               </document-id>\n                <priority-active-indicator>NO</priority-active-indicator>\n
+      \           </priority-claim>\n        </ops:family-member>\n        <ops:family-member
+      family-id=\"40799763\">\n            <publication-reference>\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>2013275415</doc-number>\n
+      \                   <kind>A1</kind>\n                    <date>20131017</date>\n
+      \               </document-id>\n                <document-id document-id-type=\"epodoc\">\n
+      \                   <doc-number>US2013275415</doc-number>\n                    <date>20131017</date>\n
+      \               </document-id>\n            </publication-reference>\n            <application-reference
+      doc-id=\"411259039\">\n                <document-id document-id-type=\"docdb\">\n
+      \                   <country>US</country>\n                    <doc-number>201313915426</doc-number>\n
+      \                   <kind>A</kind>\n                    <date>20130611</date>\n
+      \               </document-id>\n            </application-reference>\n            <priority-claim
+      sequence=\"1\" kind=\"national\">\n                <document-id document-id-type=\"docdb\">\n
+      \                   <country>US</country>\n                    <doc-number>201313915426</doc-number>\n
+      \                   <kind>A</kind>\n                    <date>20130611</date>\n
+      \               </document-id>\n                <priority-active-indicator>NO</priority-active-indicator>\n
+      \           </priority-claim>\n            <priority-claim sequence=\"2\" kind=\"national\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+      \                   <doc-number>96495207</doc-number>\n                    <kind>A</kind>\n
+      \                   <date>20071227</date>\n                </document-id>\n
+      \               <priority-active-indicator>YES</priority-active-indicator>\n
+      \               <priority-linkage-type>1</priority-linkage-type>\n            </priority-claim>\n
+      \           <priority-claim sequence=\"3\" kind=\"national\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>201213372047</doc-number>\n
+      \                   <kind>A</kind>\n                    <date>20120213</date>\n
+      \               </document-id>\n                <priority-active-indicator>NO</priority-active-indicator>\n
+      \               <priority-linkage-type>1</priority-linkage-type>\n            </priority-claim>\n
+      \       </ops:family-member>\n        <ops:family-member family-id=\"40799763\">\n
+      \           <publication-reference>\n                <document-id document-id-type=\"docdb\">\n
+      \                   <country>US</country>\n                    <doc-number>9442982</doc-number>\n
+      \                   <kind>B2</kind>\n                    <date>20160913</date>\n
+      \               </document-id>\n                <document-id document-id-type=\"epodoc\">\n
+      \                   <doc-number>US9442982</doc-number>\n                    <date>20160913</date>\n
+      \               </document-id>\n            </publication-reference>\n            <application-reference
+      doc-id=\"411259039\">\n                <document-id document-id-type=\"docdb\">\n
+      \                   <country>US</country>\n                    <doc-number>201313915426</doc-number>\n
+      \                   <kind>A</kind>\n                    <date>20130611</date>\n
+      \               </document-id>\n            </application-reference>\n            <priority-claim
+      sequence=\"1\" kind=\"national\">\n                <document-id document-id-type=\"docdb\">\n
+      \                   <country>US</country>\n                    <doc-number>201313915426</doc-number>\n
+      \                   <kind>A</kind>\n                    <date>20130611</date>\n
+      \               </document-id>\n                <priority-active-indicator>NO</priority-active-indicator>\n
+      \           </priority-claim>\n            <priority-claim sequence=\"2\" kind=\"national\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>US</country>\n
+      \                   <doc-number>96495207</doc-number>\n                    <kind>A</kind>\n
+      \                   <date>20071227</date>\n                </document-id>\n
+      \               <priority-active-indicator>YES</priority-active-indicator>\n
+      \               <priority-linkage-type>1</priority-linkage-type>\n            </priority-claim>\n
+      \           <priority-claim sequence=\"3\" kind=\"national\">\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>US</country>\n                    <doc-number>201213372047</doc-number>\n
+      \                   <kind>A</kind>\n                    <date>20120213</date>\n
+      \               </document-id>\n                <priority-active-indicator>NO</priority-active-indicator>\n
+      \               <priority-linkage-type>1</priority-linkage-type>\n            </priority-claim>\n
+      \       </ops:family-member>\n    </ops:patent-family>\n</ops:world-patent-data>"
+    headers:
+      Access-Control-Allow-Headers:
+      - Authorization
+      Access-Control-Allow-Methods:
+      - POST
+      Access-Control-Allow-Origin:
+      - '*'
+      Cache-Control:
+      - no-cache
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/xml;charset=utf-8
+      Date:
+      - Thu, 09 Nov 2023 17:42:20 GMT
+      ETag:
+      - '"0b0617b9ebf1d597e2acb9cce2ae95c4d"'
+      Pragma:
+      - no-cache
+      Server:
+      - Apache
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      Vary:
+      - Accept
+      X-API:
+      - ops-v3.2
+      X-EPO-Client-IP:
+      - 38.104.255.66
+      X-EPO-Forwarded:
+      - '[38.104.255.66]'
+      X-Elapsed-Time:
+      - '1027'
+      X-IndividualQuotaPerHour-Used:
+      - '352858'
+      X-RegisteredQuotaPerWeek-Used:
+      - '1091704'
+      X-Throttling-Control:
+      - busy (images=green:100, inpadoc=green:45, other=green:1000, retrieval=green:100,
+        search=green:15)
     http_version: HTTP/1.1
     status_code: 200
 version: 1

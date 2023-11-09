@@ -20,7 +20,7 @@ class FTDocumentId(EpoBaseModel):
 
 class Claims(EpoBaseModel):
     __schema__ = ClaimsSchema()
-    document_id: Optional[FTDocumentId]
+    document_id: Optional[FTDocumentId] = None
     claims: List[Claim] = Field(default_factory=list)
     claim_text: Optional[str] = None
 

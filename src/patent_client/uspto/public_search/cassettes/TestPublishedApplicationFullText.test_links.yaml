@@ -632,4 +632,152 @@ interactions:
       - '[37.19.196.132]'
     http_version: HTTP/1.1
     status_code: 200
+- request:
+    body: ''
+    headers:
+      accept:
+      - application/xml
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - assignment-api.uspto.gov
+      user-agent:
+      - Mozilla/5.0 Python Patent Clientbot/3.2.10 (parkerhancock@users.noreply.github.com)
+    method: GET
+    uri: https://assignment-api.uspto.gov/patent/lookup?filter=ApplicationNumber&query=09089931&rows=1&start=0&sort=ExecutionDate%2Bdesc&facet=false
+  response:
+    content: "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<response>\n\n<lst name=\"responseHeader\">\n
+      \ <bool name=\"zkConnected\">true</bool>\n  <int name=\"status\">0</int>\n  <int
+      name=\"QTime\">331</int>\n  <lst name=\"params\">\n    <str name=\"q\">*:*</str>\n
+      \   <str name=\"qt\">/apisearch</str>\n    <str name=\"start\">0</str>\n    <str
+      name=\"sort\">patAssignorEarliestExDate desc</str>\n    <str name=\"fq\">applNum:09089931</str>\n
+      \   <str name=\"rows\">1</str>\n    <str name=\"wt\">javabin</str>\n    <str
+      name=\"version\">2</str>\n  </lst>\n</lst>\n<result name=\"response\" numFound=\"1\"
+      start=\"0\">\n  <doc>\n    <str name=\"id\">9218-376</str>\n    <str name=\"displayId\">009218-0376</str>\n
+      \   <str name=\"dtdVersion\">1.0</str>\n    <str name=\"dateProduced\">20140916</str>\n
+      \   <str name=\"actionKeyCode\">DA</str>\n    <str name=\"transactionDate\">2019-07-11T04:24:21Z</str>\n
+      \   <str name=\"reelNo\">9218</str>\n    <str name=\"frameNo\">376</str>\n    <date
+      name=\"lastUpdateDate\">2000-09-05T04:00:00Z</date>\n    <str name=\"purgeIndicator\">N</str>\n
+      \   <date name=\"recordedDate\">1998-06-03T04:00:00Z</date>\n    <str name=\"pageCount\">4</str>\n
+      \   <str name=\"conveyanceText\">ASSIGNMENT OF ASSIGNORS INTEREST (SEE DOCUMENT
+      FOR DETAILS).</str>\n    <str name=\"assignmentRecordHasImages\">Y</str>\n    <str
+      name=\"corrName\">TOWNSEND AND TOWNSEND AND CREW LLP</str>\n    <str name=\"corrAddress1\">RICHARD
+      T. OGAWA</str>\n    <str name=\"corrAddress2\">TWO EMBARCADERO CENTER, 8TH FLOOR</str>\n
+      \   <str name=\"corrAddress3\">SAN FRANCISCO, CA 94111-3834</str>\n    <date
+      name=\"patAssignorEarliestExDate\">1998-05-04T04:00:00Z</date>\n    <arr name=\"patAssignorName\">\n
+      \     <str>HENLEY, FRANCOIS J.</str>\n      <str>CHEUNG, NATHAN</str>\n    </arr>\n
+      \   <arr name=\"patAssignorExDate\">\n      <date>1998-05-05T04:00:00Z</date>\n
+      \     <date>1998-05-04T04:00:00Z</date>\n    </arr>\n    <arr name=\"patAssignorDateAck\">\n
+      \     <str>0001-01-01T00:00:00Z</str>\n      <str>0001-01-01T00:00:00Z</str>\n
+      \   </arr>\n    <arr name=\"patAssigneeName\">\n      <str>SILICON GENESIS CORPORATION</str>\n
+      \   </arr>\n    <arr name=\"patAssigneeAddress1\">\n      <str>NULL</str>\n
+      \   </arr>\n    <arr name=\"patAssigneeAddress2\">\n      <str>590 DIVISION
+      STREET</str>\n    </arr>\n    <arr name=\"patAssigneeCity\">\n      <str>CAMPBELL</str>\n
+      \   </arr>\n    <arr name=\"patAssigneeState\">\n      <str>CALIFORNIA</str>\n
+      \   </arr>\n    <arr name=\"patAssigneeCountryName\">\n      <str>NULL</str>\n
+      \   </arr>\n    <arr name=\"patAssigneePostcode\">\n      <str>95008</str>\n
+      \   </arr>\n    <arr name=\"inventionTitle\">\n      <str>PLANARIZING TECHNIQUE
+      FOR MULTILAYERED SUBSTRATES</str>\n    </arr>\n    <arr name=\"inventionTitleLang\">\n
+      \     <str>en</str>\n    </arr>\n    <arr name=\"applNum\">\n      <str>09089931</str>\n
+      \   </arr>\n    <arr name=\"filingDate\">\n      <date>1998-06-03T04:00:00Z</date>\n
+      \   </arr>\n    <arr name=\"intlPublDate\">\n      <date>0001-01-01T00:00:00Z</date>\n
+      \   </arr>\n    <arr name=\"intlRegNum\">\n      <str>NULL</str>\n    </arr>\n
+      \   <arr name=\"inventors\">\n      <str>FRANCOIS J. HENLEY, NATHAN CHEUNG</str>\n
+      \   </arr>\n    <arr name=\"issueDate\">\n      <date>2000-08-15T04:00:00Z</date>\n
+      \   </arr>\n    <arr name=\"patNum\">\n      <str>6103599</str>\n    </arr>\n
+      \   <arr name=\"pctNum\">\n      <str>NULL</str>\n    </arr>\n    <arr name=\"publDate\">\n
+      \     <date>0001-01-01T00:00:00Z</date>\n    </arr>\n    <arr name=\"publNum\">\n
+      \     <str>NULL</str>\n    </arr>\n    <int name=\"patAssignorNameSize\">2</int>\n
+      \   <int name=\"patAssignorNameTypeSize\">2</int>\n    <int name=\"patAssignorExDateSize\">2</int>\n
+      \   <int name=\"patAssignorDateAckSize\">2</int>\n    <int name=\"patAssigneeNameSize\">2</int>\n
+      \   <int name=\"patAssigneeNameTypeSize\">0</int>\n    <int name=\"patAssigneeAddress1Size\">1</int>\n
+      \   <int name=\"patAssigneeAddress2Size\">1</int>\n    <int name=\"patAssigneeCitySize\">1</int>\n
+      \   <int name=\"patAssigneeStateSize\">1</int>\n    <int name=\"patAssigneeCountryNameSize\">1</int>\n
+      \   <int name=\"patAssigneePostcodeSize\">1</int>\n    <int name=\"inventionTitleSize\">1</int>\n
+      \   <int name=\"inventionTitleIdSize\">1</int>\n    <int name=\"inventionTitleLangSize\">1</int>\n
+      \   <int name=\"applNumSize\">1</int>\n    <int name=\"filingDateSize\">1</int>\n
+      \   <int name=\"intlPublDateSize\">1</int>\n    <int name=\"intlRegNumSize\">1</int>\n
+      \   <int name=\"inventorsSize\">1</int>\n    <int name=\"issueDateSize\">1</int>\n
+      \   <int name=\"patNumSize\">1</int>\n    <int name=\"pctNumSize\">1</int>\n
+      \   <int name=\"publDateSize\">1</int>\n    <int name=\"publNumSize\">1</int>\n
+      \   <str name=\"inventionTitleFirst\">PLANARIZING TECHNIQUE FOR MULTILAYERED
+      SUBSTRATES</str>\n    <str name=\"inventionTitleLangFirst\">en</str>\n    <str
+      name=\"applNumFirst\">09089931</str>\n    <date name=\"filingDateFirst\">1998-06-03T04:00:00Z</date>\n
+      \   <date name=\"intlPublDateFirst\">0001-01-01T00:00:00Z</date>\n    <str name=\"intlRegNumFirst\">NULL</str>\n
+      \   <str name=\"inventorsFirst\">FRANCOIS J. HENLEY, NATHAN CHEUNG</str>\n    <date
+      name=\"issueDateFirst\">2000-08-15T04:00:00Z</date>\n    <str name=\"patNumFirst\">6103599</str>\n
+      \   <str name=\"pctNumFirst\">NULL</str>\n    <date name=\"publDateFirst\">0001-01-01T00:00:00Z</date>\n
+      \   <str name=\"publNumFirst\">NULL</str>\n    <str name=\"patAssignorNameFirst\">HENLEY,
+      FRANCOIS J.</str>\n    <str name=\"patAssigneeNameFirst\">SILICON GENESIS CORPORATION</str>\n
+      \   <arr name=\"patAssigneePostcodeFacet\">\n      <str>95008</str>\n    </arr>\n
+      \   <arr name=\"patAssignorNameFacet\">\n      <str>CHEUNG, NATHAN</str>\n      <str>HENLEY,
+      FRANCOIS J.</str>\n    </arr>\n    <str name=\"corrNameFacet\">TOWNSEND AND
+      TOWNSEND AND CREW LLP</str>\n    <long name=\"_version_\">1638868336665165825</long>\n
+      \   <arr name=\"patAssigneeNameFacet\">\n      <str>SILICON GENESIS CORPORATION</str>\n
+      \   </arr>\n    <arr name=\"patAssigneeCityFacet\">\n      <str>CAMPBELL</str>\n
+      \   </arr>\n    <arr name=\"patAssigneeCountryNameFacet\">\n      <str>NULL</str>\n
+      \   </arr>\n    <arr name=\"patAssigneeStateFacet\">\n      <str>CALIFORNIA</str>\n
+      \   </arr>\n    <str name=\"corrNameString\">TOWNSEND AND TOWNSEND AND CREW
+      LLP</str></doc>\n</result>\n<lst name=\"facet_counts\">\n  <lst name=\"facet_queries\">\n
+      \   <int name=\"conveyanceText:&quot;ASSIGNMENT OF ASSIGNORS INTEREST&quot;\">1</int>\n
+      \   <int name=\"conveyanceText:&quot;SECURITY INTEREST&quot;\">0</int>\n    <int
+      name=\"conveyanceText:&quot;NUNC PRO TUNC ASSIGNMENT&quot;\">0</int>\n    <int
+      name=\"conveyanceText:&quot;RELEASE BY SECURED PARTY&quot;\">0</int>\n    <int
+      name=\"conveyanceText:&quot;MERGER&quot;\">0</int>\n    <int name=\"conveyanceText:&quot;CHANGE
+      OF NAME&quot;\">0</int>\n    <int name=\"conveyanceText:&quot;MERGER AND CHANGE
+      OF NAME&quot;\">0</int>\n    <int name=\"conveyanceText:&quot;LICENSE&quot;\">0</int>\n
+      \   <int name=\"conveyanceText:&quot;LIEN&quot;\">0</int>\n    <int name=\"conveyanceText:&quot;MORTGAGE&quot;\">0</int>\n
+      \   <int name=\"conveyanceText:&quot;OPTION&quot;\">0</int>\n    <int name=\"conveyanceText:&quot;DECREE
+      OF DISTRIBUTION&quot;\">0</int>\n    <int name=\"conveyanceText:&quot;LETTERS
+      OF TESTAMENTARY&quot;\">0</int>\n    <int name=\"conveyanceText:&quot;LETTERS
+      OF ADMINISTRATION&quot;\">0</int>\n    <int name=\"conveyanceText:&quot;COURT
+      APPOINTMENT&quot;\">0</int>\n    <int name=\"conveyanceText:&quot;CONDITIONAL
+      ASSIGNMENT&quot;\">0</int>\n    <int name=\"conveyanceText:&quot;COURT ORDER&quot;\">0</int>\n
+      \ </lst>\n  <lst name=\"facet_fields\">\n    <lst name=\"patAssigneeCityFacet\">\n
+      \     <int name=\"CAMPBELL\">1</int>\n    </lst>\n    <lst name=\"patAssigneeStateFacet\">\n
+      \     <int name=\"CALIFORNIA\">1</int>\n    </lst>\n    <lst name=\"patAssigneePostcodeFacet\">\n
+      \     <int name=\"95008\">1</int>\n    </lst>\n    <lst name=\"patAssigneeCountryNameFacet\">\n
+      \     <int name=\"NULL\">1</int>\n    </lst>\n    <lst name=\"patAssigneeNameFacet\">\n
+      \     <int name=\"SILICON GENESIS CORPORATION\">1</int>\n    </lst>\n    <lst
+      name=\"corrNameFacet\">\n      <int name=\"TOWNSEND AND TOWNSEND AND CREW LLP\">1</int>\n
+      \   </lst>\n    <lst name=\"patAssignorNameFacet\">\n      <int name=\"CHEUNG,
+      NATHAN\">1</int>\n      <int name=\"HENLEY, FRANCOIS J.\">1</int>\n    </lst>\n
+      \   <lst name=\"applNum\">\n      <int name=\"09089931\">1</int>\n    </lst>\n
+      \   <lst name=\"patNum\">\n      <int name=\"6103599\">1</int>\n    </lst>\n
+      \   <lst name=\"publNum\">\n      <int name=\"NULL\">1</int>\n    </lst>\n    <lst
+      name=\"intlRegNum\">\n      <int name=\"NULL\">1</int>\n    </lst>\n  </lst>\n
+      \ <lst name=\"facet_ranges\">\n    <lst name=\"patAssignorEarliestExDate\">\n
+      \     <lst name=\"counts\">\n        <int name=\"1998-01-01T00:00:00Z\">1</int>\n
+      \     </lst>\n      <str name=\"gap\">+1YEAR</str>\n      <int name=\"before\">0</int>\n
+      \     <date name=\"start\">1898-01-01T00:00:00Z</date>\n      <date name=\"end\">2024-01-01T00:00:00Z</date>\n
+      \   </lst>\n  </lst>\n  <lst name=\"facet_intervals\"/>\n  <lst name=\"facet_heatmaps\"/>\n</lst>\n<lst
+      name=\"highlighting\">\n  <lst name=\"9218-376\">\n    <arr name=\"frameNo\"/>\n
+      \   <arr name=\"patAssigneeCity\"/>\n    <arr name=\"pctNum\"/>\n    <arr name=\"patAssigneePostcode\"/>\n
+      \   <arr name=\"filingDate\"/>\n    <arr name=\"conveyanceText\"/>\n    <arr
+      name=\"patNum\"/>\n    <arr name=\"patAssignorName\"/>\n    <arr name=\"corrAddress1\"/>\n
+      \   <arr name=\"corrAddress2\"/>\n    <arr name=\"corrAddress3\"/>\n    <arr
+      name=\"corrName\"/>\n    <arr name=\"applNum\"/>\n    <arr name=\"inventionTitle\"/>\n
+      \   <arr name=\"publNum\"/>\n    <arr name=\"patAssigneeAddress\"/>\n    <arr
+      name=\"intlRegNum\"/>\n    <arr name=\"publDate\"/>\n    <arr name=\"patAssigneeCountryName\"/>\n
+      \   <arr name=\"intlPublDate\"/>\n    <arr name=\"id\"/>\n    <arr name=\"patAssigneeName\"/>\n
+      \   <arr name=\"issueDate\"/>\n    <arr name=\"reelNo\"/>\n  </lst>\n</lst>\n</response>\n"
+    headers:
+      content-type:
+      - application/xml
+      date:
+      - Thu, 09 Nov 2023 17:09:51 GMT
+      server:
+      - Apache-Coyote/1.1
+      strict-transport-security:
+      - max-age=31536000;includeSubDomains
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+      x-xss-protection:
+      - 1; mode=block
+    http_version: HTTP/2
+    status_code: 200
 version: 1

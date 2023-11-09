@@ -20,43 +20,11 @@ register a new account (Free up to 4GB of data / month, which is usually more th
 
 **Step 2:** Log in to EPO OPS, and click on "My Apps," add a new app, and write down the corresponding API *Consumer Key* and *Consumer Key Secret*.
 
-**Step 3:** Import patent_client from anywhere. E.g.
+**Step 3:** Set your environment variables as:
 
 ```console
-$ python
-Python 3.6.5 (default, Jul 12 2018, 11:37:09)
->>> import patent_client
-
-```
-
-This will set up an empty settings file, located at **~/.patent_client_config.yaml**. The config file is a YAML file containing settings for the project.
-
-**Step 4:** Edit the config file to contain your user key and secret. E.g.
-
-```yaml
-DEFAULT:
-    BASE_DIR: ~/.patent_client
-    LOG_FILE: patent_client.log
-    LOG_LEVEL: INFO
-
-EPO:
-    API_KEY: <Key Here>
-    API_SECRET: <Secret Here>
-ITC:
-    USERNAME:
-    PASSWORD:
-
-```
-
-**Step 5:** PROFIT! Every time you import a model that requires EPO OPS access, you will automatically be logged on using that key and secret.
-
-### Environment Variables (Less Recommended)
-
-Alternatively, you can set the environment variables as:
-
-```console
-PATENT_CLIENT__EPO_API_KEY="<Consumer Key Here>"
-PATENT_CLIENT__EPO_SECRET="<Consumer Key Secret Here>"
+PATENT_CLIENT_EPO_API_KEY="<Consumer Key Here>"
+PATENT_CLIENT_EPO_SECRET="<Consumer Key Secret Here>"
 ```
 
 ## Basic Use
@@ -187,4 +155,17 @@ Managers also behave like Django QuerySets, and support [values](https://docs.dj
     'INTELLIGENT ASSISTANT',
     'STYLUS FIRMWARE UPDATES'
 ]
+```
+### Async/Await
+
+Patent Client also has optional `async/await` support for all methods that trigger I/O to an API endpoint.
+To use the asyncio methods, simply use `async with` for iterators, and call any methods with a `a` prefix:
+
+```python
+apps = list()
+async for app in USApplication.objects.filter(first_named_applicant="Google"):
+  apps.append(app)
+
+app = await USApplication.objects.aget("16123456")
+
 ```

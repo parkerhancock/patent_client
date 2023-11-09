@@ -493,4 +493,498 @@ interactions:
       - 1; mode=block
     http_version: HTTP/1.1
     status_code: 200
+- request:
+    body: '{"df": "patentTitle", "qf": "", "fl": "*", "fq": [], "searchText": "applId:(14591909)",
+      "sort": "applId asc", "facet": "false", "mm": "0%", "start": "0", "rows": 1}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '164'
+      content-type:
+      - application/json
+      host:
+      - ped.uspto.gov
+      user-agent:
+      - Mozilla/5.0 Python Patent Clientbot/3.2.10 (parkerhancock@users.noreply.github.com)
+    method: POST
+    uri: https://ped.uspto.gov/api/queries
+  response:
+    content: '{"queryResults":{"indexLastUpdatedDate":"Thu Nov 09 14:07:18 EST 2023","searchResponse":{"responseHeader":{"zkConnected":true,"status":0,"QTime":408},"response":{"numFound":1,"start":0,"numFoundExact":true,"docs":[{"corrAddrCountryName":"ISRAEL","applId":"14591909","totalPtoDays":"0","appFilingDate":"2015-01-07T00:00:00Z","appExamName":"CONNOLLY,
+      MARK A","appExamNameFacet":"CONNOLLY, MARK A","publicInd":"Y","APP_IND":"5","inventorName":"Yechezkal
+      Evan Spero","inventorNameFacet":"Yechezkal Evan Spero","appEarlyPubDate":"2016-07-07T00:00:00Z","appLocation":"ELECTRONIC","appEarlyPubNumber":"US20160195856A1","id":"14591909","appGrpArtNumber":"2115","appGrpArtNumberFacet":"2115","applIdStr":"14591909","appl_id_txt":"14591909","appSubCls":"090000","patentNumber":"11651258","LAST_MOD_TS":"2023-11-08T13:51:56Z","transactions":[{"recordDate":"2023-05-16
+      00:00:00","code":"ELC_RVW","description":"Electronic Review"},{"recordDate":"2023-05-16
+      00:00:00","code":"ELC_RVW","description":"Electronic Review"},{"recordDate":"2023-05-16
+      00:00:00","code":"PGM/","description":"Recordation of Patent Grant Mailed"},{"recordDate":"2023-05-16
+      00:00:00","code":"EML_NTR","description":"Email Notification"},{"recordDate":"2023-05-16
+      00:00:00","code":"EPG/","description":"Recordation of Patent eGrant"},{"recordDate":"2023-05-16
+      00:00:00","code":"MEPG_NTF","description":"Mail Patent eGrant Notification"},{"recordDate":"2023-05-16
+      00:00:00","code":"EPG_NTF","description":"Patent eGrant Notification"},{"recordDate":"2023-04-27
+      00:00:00","code":"EML_NTR","description":"Email Notification"},{"recordDate":"2023-04-26
+      00:00:00","code":"WPIR","description":"Issue Notification Mailed"},{"recordDate":"2023-05-16
+      00:00:00","code":"PTAC","description":"Patent Issue Date Used in PTA Calculation"},{"recordDate":"2023-04-13
+      00:00:00","code":"EML_NTR","description":"Email Notification"},{"recordDate":"2023-04-13
+      00:00:00","code":"MCNOA","description":"Mailing Corrected Notice of Allowability"},{"recordDate":"2023-04-11
+      00:00:00","code":"CNOA","description":"Corrected Notice of Allowability"},{"recordDate":"2023-04-10
+      00:00:00","code":"PUBTC","description":"Pubs Case Remand to TC"},{"recordDate":"2023-04-10
+      00:00:00","code":"EML_NTR","description":"Email Notification"},{"recordDate":"2023-04-10
+      00:00:00","code":"MCNOA","description":"Mailing Corrected Notice of Allowability"},{"recordDate":"2023-04-05
+      00:00:00","code":"CNOA","description":"Corrected Notice of Allowability"},{"recordDate":"2023-04-04
+      00:00:00","code":"PUBTC","description":"Pubs Case Remand to TC"},{"recordDate":"2023-04-03
+      00:00:00","code":"EML_NTR","description":"Email Notification"},{"recordDate":"2023-03-31
+      00:00:00","code":"D1935","description":"Dispatch to FDC"},{"recordDate":"2023-03-31
+      00:00:00","code":"PILS","description":"Application Is Considered Ready for Issue"},{"recordDate":"2023-04-03
+      00:00:00","code":"MN271","description":"Mail Response to 312 Amendment (PTO-271)"},{"recordDate":"2023-03-27
+      00:00:00","code":"N084","description":"Issue Fee Payment Verified"},{"recordDate":"2023-03-27
+      00:00:00","code":"IFEE","description":"Issue Fee Payment Received"},{"recordDate":"2023-03-24
+      00:00:00","code":"N271","description":"Response to Amendment under Rule 312"},{"recordDate":"2023-03-24
+      00:00:00","code":"EML_NTR","description":"Email Notification"},{"recordDate":"2023-03-23
+      00:00:00","code":"PG-ISSUE","description":"PG-Pub Issue Notification"},{"recordDate":"2023-03-21
+      00:00:00","code":"PUBTC","description":"Pubs Case Remand to TC"},{"recordDate":"2023-03-19
+      00:00:00","code":"A.NA","description":"Amendment after Notice of Allowance (Rule
+      312)"},{"recordDate":"2023-03-03 00:00:00","code":"EML_NTR","description":"Email
+      Notification"},{"recordDate":"2023-03-03 00:00:00","code":"MEXIN","description":"Mail
+      Examiner Interview Summary (PTOL - 413)"},{"recordDate":"2023-02-27 00:00:00","code":"EXAT","description":"Interview
+      Summary - Applicant Initiated - Telephonic"},{"recordDate":"2023-02-27 00:00:00","code":"EXIN","description":"Interview
+      Summary Record"},{"recordDate":"2023-02-02 00:00:00","code":"M865E","description":"Electronic
+      request for Examiner Interview"},{"recordDate":"2022-12-28 00:00:00","code":"ELC_RVW","description":"Electronic
+      Review"},{"recordDate":"2022-12-28 00:00:00","code":"EML_NTF","description":"Email
+      Notification"},{"recordDate":"2022-12-28 00:00:00","code":"MN/=.","description":"Mail
+      Notice of Allowance"},{"recordDate":"2022-12-22 00:00:00","code":"N/=.","description":"Notice
+      of Allowance Data Verification Completed"},{"recordDate":"2022-12-15 00:00:00","code":"ELC_RVW","description":"Electronic
+      Review"},{"recordDate":"2022-12-15 00:00:00","code":"EXAT","description":"Interview
+      Summary - Applicant Initiated - Telephonic"},{"recordDate":"2022-12-15 00:00:00","code":"EML_NTF","description":"Email
+      Notification"},{"recordDate":"2022-12-15 00:00:00","code":"PG-SUBM","description":"PG-Pub
+      Submission"},{"recordDate":"2022-12-14 00:00:00","code":"EML_NTR","description":"Email
+      Notification"},{"recordDate":"2022-12-13 00:00:00","code":"MPDRT","description":"Mail
+      Pet Dec Routed to Tech Center"},{"recordDate":"2022-12-12 00:00:00","code":"M865E","description":"Electronic
+      request for Examiner Interview"},{"recordDate":"2022-12-12 00:00:00","code":"EML_NTR","description":"Email
+      Notification"},{"recordDate":"2022-12-12 00:00:00","code":"MPTGR","description":"Mail-Petition
+      Decision - Granted"},{"recordDate":"2022-12-09 00:00:00","code":"PTGR","description":"Petition
+      Decision - Granted"},{"recordDate":"2022-12-12 00:00:00","code":"FLRCPT.C","description":"Filing
+      Receipt - Corrected"},{"recordDate":"2022-12-07 00:00:00","code":"PDRT","description":"Pet
+      Dec Routed to Tech Center"},{"recordDate":"2022-10-19 00:00:00","code":"LET.","description":"Miscellaneous
+      Incoming Letter"},{"recordDate":"2022-10-19 00:00:00","code":"FWDX","description":"Date
+      Forwarded to Examiner"},{"recordDate":"2022-10-03 00:00:00","code":"A.NE","description":"Response
+      after Final Action"},{"recordDate":"2022-10-03 00:00:00","code":"XT/G","description":"Request
+      for Extension of Time - Granted"},{"recordDate":"2022-10-09 00:00:00","code":"PET.","description":"Petition
+      Entered"},{"recordDate":"2022-10-05 00:00:00","code":"EML_NTR","description":"Email
+      Notification"},{"recordDate":"2022-10-05 00:00:00","code":"MEXIN","description":"Mail
+      Examiner Interview Summary (PTOL - 413)"},{"recordDate":"2022-09-29 00:00:00","code":"EXAT","description":"Interview
+      Summary - Applicant Initiated - Telephonic"},{"recordDate":"2022-09-29 00:00:00","code":"EXIN","description":"Interview
+      Summary Record"},{"recordDate":"2022-09-22 00:00:00","code":"M865E","description":"Electronic
+      request for Examiner Interview"},{"recordDate":"2022-08-03 00:00:00","code":"EML_NTR","description":"Email
+      Notification"},{"recordDate":"2022-08-03 00:00:00","code":"MCTAV","description":"Mail
+      Advisory Action (PTOL - 303)"},{"recordDate":"2022-07-28 00:00:00","code":"CTAV","description":"Advisory
+      Action (PTOL-303)"},{"recordDate":"2022-07-27 00:00:00","code":"FWDX","description":"Date
+      Forwarded to Examiner"},{"recordDate":"2022-07-19 00:00:00","code":"A.NE","description":"Response
+      after Final Action"},{"recordDate":"2022-07-19 00:00:00","code":"EML_NTR","description":"Email
+      Notification"},{"recordDate":"2022-07-19 00:00:00","code":"MEXIN","description":"Mail
+      Examiner Interview Summary (PTOL - 413)"},{"recordDate":"2022-07-13 00:00:00","code":"EXAC","description":"Interview
+      Summary - Applicant Initiated - Conference"},{"recordDate":"2022-07-13 00:00:00","code":"EXIN","description":"Interview
+      Summary Record"},{"recordDate":"2022-07-07 00:00:00","code":"M865E","description":"Electronic
+      request for Examiner Interview"},{"recordDate":"2022-04-21 00:00:00","code":"ELC_RVW","description":"Electronic
+      Review"},{"recordDate":"2022-04-19 00:00:00","code":"EML_NTF","description":"Email
+      Notification"},{"recordDate":"2022-04-19 00:00:00","code":"MCTFR","description":"Mail
+      Final Rejection (PTOL - 326)"},{"recordDate":"2022-04-14 00:00:00","code":"CTFR","description":"Final
+      Rejection"},{"recordDate":"2022-01-25 00:00:00","code":"FWDX","description":"Date
+      Forwarded to Examiner"},{"recordDate":"2021-05-31 00:00:00","code":"A...","description":"Response
+      after Non-Final Action"},{"recordDate":"2022-01-24 00:00:00","code":"MNRAB","description":"Mail
+      Notice of Rescinded Abandonment"},{"recordDate":"2022-01-25 00:00:00","code":"NRAB","description":"Notice
+      of Rescinded Abandonment in TCs"},{"recordDate":"2022-01-25 00:00:00","code":"DOCK","description":"Case
+      Docketed to Examiner in GAU"},{"recordDate":"2022-01-25 00:00:00","code":"EML_NTR","description":"Email
+      Notification"},{"recordDate":"2022-01-25 00:00:00","code":"EML_NTR","description":"Email
+      Notification"},{"recordDate":"2022-01-24 00:00:00","code":"MPDRT","description":"Mail
+      Pet Dec Routed to Tech Center"},{"recordDate":"2022-01-24 00:00:00","code":"MPREV","description":"Mail-Petition
+      to Revive Application - Granted"},{"recordDate":"2022-01-21 00:00:00","code":"PREV","description":"Petition
+      to Revive Application - Granted"},{"recordDate":"2022-01-21 00:00:00","code":"PDRT","description":"Pet
+      Dec Routed to Tech Center"},{"recordDate":"2021-11-13 00:00:00","code":"PET.","description":"Petition
+      Entered"},{"recordDate":"2021-09-13 00:00:00","code":"ELC_RVW","description":"Electronic
+      Review"},{"recordDate":"2021-09-13 00:00:00","code":"EML_NTF","description":"Email
+      Notification"},{"recordDate":"2021-09-13 00:00:00","code":"MOPPT","description":"Mail
+      O.P. Petition Decision"},{"recordDate":"2021-09-09 00:00:00","code":"MPTDI","description":"Mail-Petition
+      Decision - Dismissed"},{"recordDate":"2021-09-08 00:00:00","code":"PTDI","description":"Petition
+      Decision - Dismissed"},{"recordDate":"2021-09-08 00:00:00","code":"OPPT","description":"O.P.
+      Petition Decision"},{"recordDate":"2021-08-17 00:00:00","code":"PET.","description":"Petition
+      Entered"},{"recordDate":"2021-07-23 00:00:00","code":"EML_NTR","description":"Email
+      Notification"},{"recordDate":"2021-07-23 00:00:00","code":"MOPPT","description":"Mail
+      O.P. Petition Decision"},{"recordDate":"2021-07-20 00:00:00","code":"MPTDI","description":"Mail-Petition
+      Decision - Dismissed"},{"recordDate":"2021-07-19 00:00:00","code":"PTDI","description":"Petition
+      Decision - Dismissed"},{"recordDate":"2021-07-19 00:00:00","code":"OPPT","description":"O.P.
+      Petition Decision"},{"recordDate":"2021-05-31 00:00:00","code":"PET.","description":"Petition
+      Entered"},{"recordDate":"2019-07-25 00:00:00","code":"MABN2","description":"Mail
+      Abandonment for Failure to Respond to Office Action"},{"recordDate":"2019-07-22
+      00:00:00","code":"ABN2","description":"Aband. for Failure to Respond to O. A."},{"recordDate":"2018-11-13
+      00:00:00","code":"MCTNF","description":"Mail Non-Final Rejection"},{"recordDate":"2018-11-12
+      00:00:00","code":"CTNF","description":"Non-Final Rejection"},{"recordDate":"2018-09-27
+      00:00:00","code":"MOPPT","description":"Mail O.P. Petition Decision"},{"recordDate":"2018-09-27
+      00:00:00","code":"MPTDI","description":"Mail-Petition Decision - Dismissed"},{"recordDate":"2018-09-26
+      00:00:00","code":"PTDI","description":"Petition Decision - Dismissed"},{"recordDate":"2018-09-26
+      00:00:00","code":"OPPT","description":"O.P. Petition Decision"},{"recordDate":"2018-02-15
+      00:00:00","code":"PET.","description":"Petition Entered"},{"recordDate":"2018-06-08
+      00:00:00","code":"FWDX","description":"Date Forwarded to Examiner"},{"recordDate":"2018-06-08
+      00:00:00","code":"EOSP","description":"to Close the A/R Record and Reset the
+      Status for Expired Suspensions."},{"recordDate":"2018-03-07 00:00:00","code":"MAISP","description":"Mail
+      Letter Suspending Prosecution at Applicant''s Request"},{"recordDate":"2018-03-06
+      00:00:00","code":"AISP","description":"Suspension Letter- Applicant Initiated"},{"recordDate":"2018-02-15
+      00:00:00","code":"MPEN","description":"Mail Pre-Exam Notice"},{"recordDate":"2018-02-13
+      00:00:00","code":"M856","description":"Letter Requesting Suspension of Prosecution"},{"recordDate":"2018-02-15
+      00:00:00","code":"FWDX","description":"Date Forwarded to Examiner"},{"recordDate":"2018-02-13
+      00:00:00","code":"RCEX","description":"Request for Continued Examination (RCE)"},{"recordDate":"2018-02-15
+      00:00:00","code":"ABN9","description":"Disposal for a RCE / CPA / R129"},{"recordDate":"2018-02-14
+      00:00:00","code":"MEXAT","description":"Mail Interview Summary - Applicant Initiated
+      - Telephonic"},{"recordDate":"2018-02-13 00:00:00","code":"BRCE","description":"Workflow
+      - Request for RCE - Begin"},{"recordDate":"2018-02-13 00:00:00","code":"EXAT","description":"Interview
+      Summary - Applicant Initiated - Telephonic"},{"recordDate":"2018-02-07 00:00:00","code":"M865E","description":"Electronic
+      request for Examiner Interview"},{"recordDate":"2017-11-13 00:00:00","code":"MCTFR","description":"Mail
+      Final Rejection (PTOL - 326)"},{"recordDate":"2017-11-08 00:00:00","code":"CTFR","description":"Final
+      Rejection"},{"recordDate":"2017-08-10 00:00:00","code":"FWDX","description":"Date
+      Forwarded to Examiner"},{"recordDate":"2017-08-06 00:00:00","code":"A...","description":"Response
+      after Non-Final Action"},{"recordDate":"2017-02-23 00:00:00","code":"MCTNF","description":"Mail
+      Non-Final Rejection"},{"recordDate":"2017-02-20 00:00:00","code":"CTNF","description":"Non-Final
+      Rejection"},{"recordDate":"2017-01-09 00:00:00","code":"DOCK","description":"Case
+      Docketed to Examiner in GAU"},{"recordDate":"2017-01-05 00:00:00","code":"DOCK","description":"Case
+      Docketed to Examiner in GAU"},{"recordDate":"2016-07-07 00:00:00","code":"CCRDY","description":"Application
+      ready for PDX access by participating foreign offices"},{"recordDate":"2016-07-07
+      00:00:00","code":"PG-ISSUE","description":"PG-Pub Issue Notification"},{"recordDate":"2016-03-18
+      00:00:00","code":"DOCK","description":"Case Docketed to Examiner in GAU"},{"recordDate":"2015-12-02
+      00:00:00","code":"OIPE","description":"Application Dispatched from OIPE"},{"recordDate":"2015-11-25
+      00:00:00","code":"MPEN","description":"Mail Pre-Exam Notice"},{"recordDate":"2015-02-13
+      00:00:00","code":"PGPC","description":"Sent to Classification Contractor"},{"recordDate":"2015-02-13
+      00:00:00","code":"FTFS","description":"FITF set to YES - revise initial setting"},{"recordDate":"2015-01-07
+      00:00:00","code":"PTA.RFE","description":"Patent Term Adjustment - Ready for
+      Examination"},{"recordDate":"2015-02-17 00:00:00","code":"COMP","description":"Application
+      Is Now Complete"},{"recordDate":"2015-02-17 00:00:00","code":"FLRCPT.O","description":"Filing
+      Receipt"},{"recordDate":"2015-02-13 00:00:00","code":"SMAL","description":"Applicant
+      Has Filed a Verified Statement of Small Entity Status in Compliance with 37
+      CFR 1.27"},{"recordDate":"2015-02-05 00:00:00","code":"L128","description":"Cleared
+      by L&R (LARS)"},{"recordDate":"2015-01-21 00:00:00","code":"L198","description":"Referred
+      to Level 2 (LARS) by OIPE CSR"},{"recordDate":"2015-01-08 00:00:00","code":"SCAN","description":"IFW
+      Scan & PACR Auto Security Review"},{"recordDate":"2015-01-07 00:00:00","code":"BIG.","description":"Entity
+      Status Set To Undiscounted (Initial Default Setting or Status Change)"},{"recordDate":"2015-01-07
+      00:00:00","code":"IEXX","description":"Initial Exam Team nn"}],"LAST_INSERT_TIME":"2023-11-08T22:05:02Z","appCls":"700","appStatus":"Patented
+      Case","appStatusFacet":"Patented Case","appStatus_txt":"Patented Case","ptaPteInd":"PTA","ptaPteTranHistory":[{"number":"163.5","ptaOrPteDate":"05-16-2023","contentsDescription":"PTA
+      36 Months","ptoDays":"175","applDays":"","start":"0.5"},{"number":"163","ptaOrPteDate":"05-16-2023","contentsDescription":"Patent
+      Issue Date Used in PTA Calculation","ptoDays":"","applDays":"","start":"0"},{"number":"162","ptaOrPteDate":"04-13-2023","contentsDescription":"Email
+      Notification","ptoDays":"","applDays":"","start":"0"},{"number":"161","ptaOrPteDate":"04-13-2023","contentsDescription":"Mailing
+      Corrected Notice of Allowability","ptoDays":"","applDays":"","start":"0"},{"number":"159","ptaOrPteDate":"04-11-2023","contentsDescription":"Corrected
+      Notice of Allowability","ptoDays":"","applDays":"","start":"0"},{"number":"158","ptaOrPteDate":"04-10-2023","contentsDescription":"Pubs
+      Case Remand to TC","ptoDays":"","applDays":"","start":"0"},{"number":"157","ptaOrPteDate":"04-10-2023","contentsDescription":"Email
+      Notification","ptoDays":"","applDays":"","start":"0"},{"number":"156","ptaOrPteDate":"04-10-2023","contentsDescription":"Mailing
+      Corrected Notice of Allowability","ptoDays":"","applDays":"","start":"0"},{"number":"152","ptaOrPteDate":"04-05-2023","contentsDescription":"Corrected
+      Notice of Allowability","ptoDays":"","applDays":"","start":"0"},{"number":"151","ptaOrPteDate":"04-04-2023","contentsDescription":"Pubs
+      Case Remand to TC","ptoDays":"","applDays":"","start":"0"},{"number":"149","ptaOrPteDate":"04-03-2023","contentsDescription":"Email
+      Notification","ptoDays":"","applDays":"","start":"0"},{"number":"148","ptaOrPteDate":"03-31-2023","contentsDescription":"Dispatch
+      to FDC","ptoDays":"","applDays":"","start":"0"},{"number":"147","ptaOrPteDate":"03-31-2023","contentsDescription":"Application
+      Is Considered Ready for Issue","ptoDays":"","applDays":"","start":"0"},{"number":"146","ptaOrPteDate":"04-03-2023","contentsDescription":"Mail
+      Response to 312 Amendment (PTO-271)","ptoDays":"","applDays":"","start":"0"},{"number":"145","ptaOrPteDate":"03-27-2023","contentsDescription":"Issue
+      Fee Payment Verified","ptoDays":"","applDays":"","start":"0"},{"number":"143","ptaOrPteDate":"03-27-2023","contentsDescription":"Issue
+      Fee Payment Received","ptoDays":"","applDays":"","start":"0"},{"number":"142","ptaOrPteDate":"03-24-2023","contentsDescription":"Response
+      to Amendment under Rule 312","ptoDays":"","applDays":"","start":"0"},{"number":"141","ptaOrPteDate":"03-24-2023","contentsDescription":"Email
+      Notification","ptoDays":"","applDays":"","start":"0"},{"number":"140","ptaOrPteDate":"03-23-2023","contentsDescription":"PG-Pub
+      Issue Notification","ptoDays":"","applDays":"","start":"0"},{"number":"139","ptaOrPteDate":"03-21-2023","contentsDescription":"Pubs
+      Case Remand to TC","ptoDays":"","applDays":"","start":"0"},{"number":"138","ptaOrPteDate":"03-19-2023","contentsDescription":"Amendment
+      after Notice of Allowance (Rule 312)","ptoDays":"","applDays":"81","start":"128"},{"number":"137","ptaOrPteDate":"03-03-2023","contentsDescription":"Email
+      Notification","ptoDays":"","applDays":"","start":"0"},{"number":"136","ptaOrPteDate":"03-03-2023","contentsDescription":"Mail
+      Examiner Interview Summary (PTOL - 413)","ptoDays":"","applDays":"","start":"0"},{"number":"135","ptaOrPteDate":"02-27-2023","contentsDescription":"Interview
+      Summary - Applicant Initiated - Telephonic","ptoDays":"","applDays":"","start":"0"},{"number":"134","ptaOrPteDate":"02-27-2023","contentsDescription":"Interview
+      Summary Record","ptoDays":"","applDays":"","start":"0"},{"number":"133","ptaOrPteDate":"02-02-2023","contentsDescription":"Electronic
+      request for Examiner Interview","ptoDays":"","applDays":"","start":"0"},{"number":"131","ptaOrPteDate":"12-28-2022","contentsDescription":"Electronic
+      Review","ptoDays":"","applDays":"","start":"0"},{"number":"130","ptaOrPteDate":"12-28-2022","contentsDescription":"Email
+      Notification","ptoDays":"","applDays":"","start":"0"},{"number":"128","ptaOrPteDate":"12-28-2022","contentsDescription":"Mail
+      Notice of Allowance","ptoDays":"","applDays":"","start":"0"},{"number":"125","ptaOrPteDate":"12-22-2022","contentsDescription":"Notice
+      of Allowance Data Verification Completed","ptoDays":"","applDays":"","start":"0"},{"number":"122","ptaOrPteDate":"12-15-2022","contentsDescription":"Electronic
+      Review","ptoDays":"","applDays":"","start":"0"},{"number":"121","ptaOrPteDate":"12-15-2022","contentsDescription":"Interview
+      Summary - Applicant Initiated - Telephonic","ptoDays":"","applDays":"","start":"0"},{"number":"119","ptaOrPteDate":"12-15-2022","contentsDescription":"Email
+      Notification","ptoDays":"","applDays":"","start":"0"},{"number":"118","ptaOrPteDate":"12-15-2022","contentsDescription":"PG-Pub
+      Submission","ptoDays":"","applDays":"","start":"0"},{"number":"117","ptaOrPteDate":"12-14-2022","contentsDescription":"Email
+      Notification","ptoDays":"","applDays":"","start":"0"},{"number":"116","ptaOrPteDate":"12-13-2022","contentsDescription":"Mail
+      Pet Dec Routed to Tech Center","ptoDays":"","applDays":"","start":"0"},{"number":"115","ptaOrPteDate":"12-12-2022","contentsDescription":"Electronic
+      request for Examiner Interview","ptoDays":"","applDays":"","start":"0"},{"number":"114","ptaOrPteDate":"12-12-2022","contentsDescription":"Email
+      Notification","ptoDays":"","applDays":"","start":"0"},{"number":"112","ptaOrPteDate":"12-12-2022","contentsDescription":"Mail-Petition
+      Decision - Granted","ptoDays":"","applDays":"","start":"0"},{"number":"111","ptaOrPteDate":"12-09-2022","contentsDescription":"Petition
+      Decision - Granted","ptoDays":"","applDays":"","start":"0"},{"number":"110","ptaOrPteDate":"12-12-2022","contentsDescription":"Filing
+      Receipt - Corrected","ptoDays":"","applDays":"","start":"0"},{"number":"109","ptaOrPteDate":"12-07-2022","contentsDescription":"Pet
+      Dec Routed to Tech Center","ptoDays":"","applDays":"","start":"0"},{"number":"108","ptaOrPteDate":"10-19-2022","contentsDescription":"Miscellaneous
+      Incoming Letter","ptoDays":"","applDays":"","start":"0"},{"number":"107","ptaOrPteDate":"10-19-2022","contentsDescription":"Date
+      Forwarded to Examiner","ptoDays":"","applDays":"","start":"0"},{"number":"106","ptaOrPteDate":"10-03-2022","contentsDescription":"Response
+      after Final Action","ptoDays":"","applDays":"76","start":"83"},{"number":"105","ptaOrPteDate":"10-03-2022","contentsDescription":"Request
+      for Extension of Time - Granted","ptoDays":"","applDays":"","start":"0"},{"number":"102","ptaOrPteDate":"10-09-2022","contentsDescription":"Petition
+      Entered","ptoDays":"","applDays":"","start":"0"},{"number":"101","ptaOrPteDate":"10-05-2022","contentsDescription":"Email
+      Notification","ptoDays":"","applDays":"","start":"0"},{"number":"100","ptaOrPteDate":"10-05-2022","contentsDescription":"Mail
+      Examiner Interview Summary (PTOL - 413)","ptoDays":"","applDays":"","start":"0"},{"number":"99","ptaOrPteDate":"09-29-2022","contentsDescription":"Interview
+      Summary - Applicant Initiated - Telephonic","ptoDays":"","applDays":"","start":"0"},{"number":"98","ptaOrPteDate":"09-29-2022","contentsDescription":"Interview
+      Summary Record","ptoDays":"","applDays":"","start":"0"},{"number":"97","ptaOrPteDate":"09-22-2022","contentsDescription":"Electronic
+      request for Examiner Interview","ptoDays":"","applDays":"","start":"0"},{"number":"96","ptaOrPteDate":"08-03-2022","contentsDescription":"Email
+      Notification","ptoDays":"","applDays":"","start":"0"},{"number":"95","ptaOrPteDate":"08-03-2022","contentsDescription":"Mail
+      Advisory Action (PTOL - 303)","ptoDays":"","applDays":"","start":"0"},{"number":"94","ptaOrPteDate":"07-28-2022","contentsDescription":"Advisory
+      Action (PTOL-303)","ptoDays":"","applDays":"","start":"0"},{"number":"92","ptaOrPteDate":"07-27-2022","contentsDescription":"Date
+      Forwarded to Examiner","ptoDays":"","applDays":"","start":"0"},{"number":"91","ptaOrPteDate":"07-19-2022","contentsDescription":"Response
+      after Final Action","ptoDays":"","applDays":"","start":"0"},{"number":"90","ptaOrPteDate":"07-19-2022","contentsDescription":"Email
+      Notification","ptoDays":"","applDays":"","start":"0"},{"number":"89","ptaOrPteDate":"07-19-2022","contentsDescription":"Mail
+      Examiner Interview Summary (PTOL - 413)","ptoDays":"","applDays":"","start":"0"},{"number":"88","ptaOrPteDate":"07-13-2022","contentsDescription":"Interview
+      Summary - Applicant Initiated - Conference","ptoDays":"","applDays":"","start":"0"},{"number":"87","ptaOrPteDate":"07-13-2022","contentsDescription":"Interview
+      Summary Record","ptoDays":"","applDays":"","start":"0"},{"number":"86","ptaOrPteDate":"07-07-2022","contentsDescription":"Electronic
+      request for Examiner Interview","ptoDays":"","applDays":"","start":"0"},{"number":"85","ptaOrPteDate":"04-21-2022","contentsDescription":"Electronic
+      Review","ptoDays":"","applDays":"","start":"0"},{"number":"84","ptaOrPteDate":"04-19-2022","contentsDescription":"Email
+      Notification","ptoDays":"","applDays":"","start":"0"},{"number":"83","ptaOrPteDate":"04-19-2022","contentsDescription":"Mail
+      Final Rejection (PTOL - 326)","ptoDays":"201","applDays":"","start":"79"},{"number":"82","ptaOrPteDate":"04-14-2022","contentsDescription":"Final
+      Rejection","ptoDays":"","applDays":"","start":"0"},{"number":"80","ptaOrPteDate":"01-25-2022","contentsDescription":"Date
+      Forwarded to Examiner","ptoDays":"","applDays":"","start":"0"},{"number":"79","ptaOrPteDate":"05-31-2021","contentsDescription":"Response
+      after Non-Final Action","ptoDays":"","applDays":"838","start":"48"},{"number":"76","ptaOrPteDate":"01-24-2022","contentsDescription":"Mail
+      Notice of Rescinded Abandonment","ptoDays":"","applDays":"","start":"0"},{"number":"75","ptaOrPteDate":"01-25-2022","contentsDescription":"Notice
+      of Rescinded Abandonment in TCs","ptoDays":"","applDays":"","start":"0"},{"number":"74","ptaOrPteDate":"01-25-2022","contentsDescription":"Case
+      Docketed to Examiner in GAU","ptoDays":"","applDays":"","start":"0"},{"number":"73","ptaOrPteDate":"01-25-2022","contentsDescription":"Email
+      Notification","ptoDays":"","applDays":"","start":"0"},{"number":"72","ptaOrPteDate":"01-25-2022","contentsDescription":"Email
+      Notification","ptoDays":"","applDays":"","start":"0"},{"number":"71","ptaOrPteDate":"01-24-2022","contentsDescription":"Mail
+      Pet Dec Routed to Tech Center","ptoDays":"","applDays":"","start":"0"},{"number":"69","ptaOrPteDate":"01-24-2022","contentsDescription":"Mail-Petition
+      to Revive Application - Granted","ptoDays":"","applDays":"","start":"0"},{"number":"68","ptaOrPteDate":"01-21-2022","contentsDescription":"Petition
+      to Revive Application - Granted","ptoDays":"","applDays":"","start":"0"},{"number":"67","ptaOrPteDate":"01-21-2022","contentsDescription":"Pet
+      Dec Routed to Tech Center","ptoDays":"","applDays":"","start":"0"},{"number":"66","ptaOrPteDate":"11-13-2021","contentsDescription":"Petition
+      Entered","ptoDays":"","applDays":"","start":"0"},{"number":"65","ptaOrPteDate":"09-13-2021","contentsDescription":"Electronic
+      Review","ptoDays":"","applDays":"","start":"0"},{"number":"64","ptaOrPteDate":"09-13-2021","contentsDescription":"Email
+      Notification","ptoDays":"","applDays":"","start":"0"},{"number":"63","ptaOrPteDate":"09-13-2021","contentsDescription":"Mail
+      O.P. Petition Decision","ptoDays":"","applDays":"","start":"0"},{"number":"61","ptaOrPteDate":"09-09-2021","contentsDescription":"Mail-Petition
+      Decision - Dismissed","ptoDays":"","applDays":"","start":"0"},{"number":"60","ptaOrPteDate":"09-08-2021","contentsDescription":"Petition
+      Decision - Dismissed","ptoDays":"","applDays":"","start":"0"},{"number":"59","ptaOrPteDate":"09-08-2021","contentsDescription":"O.P.
+      Petition Decision","ptoDays":"","applDays":"","start":"0"},{"number":"58","ptaOrPteDate":"08-17-2021","contentsDescription":"Petition
+      Entered","ptoDays":"","applDays":"","start":"0"},{"number":"57","ptaOrPteDate":"07-23-2021","contentsDescription":"Email
+      Notification","ptoDays":"","applDays":"","start":"0"},{"number":"56","ptaOrPteDate":"07-23-2021","contentsDescription":"Mail
+      O.P. Petition Decision","ptoDays":"","applDays":"","start":"0"},{"number":"54","ptaOrPteDate":"07-20-2021","contentsDescription":"Mail-Petition
+      Decision - Dismissed","ptoDays":"","applDays":"","start":"0"},{"number":"53","ptaOrPteDate":"07-19-2021","contentsDescription":"Petition
+      Decision - Dismissed","ptoDays":"","applDays":"","start":"0"},{"number":"52","ptaOrPteDate":"07-19-2021","contentsDescription":"O.P.
+      Petition Decision","ptoDays":"","applDays":"","start":"0"},{"number":"51","ptaOrPteDate":"11-13-2021","contentsDescription":"Petition
+      Entered","ptoDays":"","applDays":"166","start":"49"},{"number":"50","ptaOrPteDate":"07-25-2019","contentsDescription":"Mail
+      Abandonment for Failure to Respond to Office Action","ptoDays":"","applDays":"","start":"0"},{"number":"49","ptaOrPteDate":"07-22-2019","contentsDescription":"Aband.
+      for Failure to Respond to O. A.","ptoDays":"","applDays":"","start":"0"},{"number":"48","ptaOrPteDate":"11-13-2018","contentsDescription":"Mail
+      Non-Final Rejection","ptoDays":"153","applDays":"","start":"32"},{"number":"47","ptaOrPteDate":"11-12-2018","contentsDescription":"Non-Final
+      Rejection","ptoDays":"","applDays":"","start":"0"},{"number":"46","ptaOrPteDate":"09-27-2018","contentsDescription":"Mail
+      O.P. Petition Decision","ptoDays":"","applDays":"","start":"0"},{"number":"44","ptaOrPteDate":"09-27-2018","contentsDescription":"Mail-Petition
+      Decision - Dismissed","ptoDays":"","applDays":"","start":"0"},{"number":"43","ptaOrPteDate":"09-26-2018","contentsDescription":"Petition
+      Decision - Dismissed","ptoDays":"","applDays":"","start":"0"},{"number":"42","ptaOrPteDate":"09-26-2018","contentsDescription":"O.P.
+      Petition Decision","ptoDays":"","applDays":"","start":"0"},{"number":"41","ptaOrPteDate":"02-15-2018","contentsDescription":"Petition
+      Entered","ptoDays":"","applDays":"","start":"0"},{"number":"40","ptaOrPteDate":"06-08-2018","contentsDescription":"Date
+      Forwarded to Examiner","ptoDays":"","applDays":"","start":"0"},{"number":"39","ptaOrPteDate":"06-08-2018","contentsDescription":"to
+      Close the A/R Record and Reset the Status for Expired Suspensions.","ptoDays":"","applDays":"116","start":"35"},{"number":"38","ptaOrPteDate":"03-07-2018","contentsDescription":"Mail
+      Letter Suspending Prosecution at Applicant''s Request","ptoDays":"","applDays":"","start":"0"},{"number":"37","ptaOrPteDate":"03-06-2018","contentsDescription":"Suspension
+      Letter- Applicant Initiated","ptoDays":"","applDays":"","start":"0"},{"number":"36","ptaOrPteDate":"02-15-2018","contentsDescription":"Mail
+      Pre-Exam Notice","ptoDays":"","applDays":"","start":"0"},{"number":"35","ptaOrPteDate":"02-13-2018","contentsDescription":"Letter
+      Requesting Suspension of Prosecution","ptoDays":"","applDays":"","start":"0"},{"number":"34","ptaOrPteDate":"02-15-2018","contentsDescription":"Date
+      Forwarded to Examiner","ptoDays":"","applDays":"","start":"0"},{"number":"32","ptaOrPteDate":"02-13-2018","contentsDescription":"Request
+      for Continued Examination (RCE)","ptoDays":"","applDays":"","start":"0"},{"number":"31","ptaOrPteDate":"02-15-2018","contentsDescription":"Disposal
+      for a RCE / CPA / R129","ptoDays":"","applDays":"","start":"0"},{"number":"30","ptaOrPteDate":"02-14-2018","contentsDescription":"Mail
+      Interview Summary - Applicant Initiated - Telephonic","ptoDays":"","applDays":"","start":"0"},{"number":"29","ptaOrPteDate":"02-13-2018","contentsDescription":"Workflow
+      - Request for RCE - Begin","ptoDays":"","applDays":"","start":"0"},{"number":"28","ptaOrPteDate":"02-13-2018","contentsDescription":"Interview
+      Summary - Applicant Initiated - Telephonic","ptoDays":"","applDays":"","start":"0"},{"number":"27","ptaOrPteDate":"02-07-2018","contentsDescription":"Electronic
+      request for Examiner Interview","ptoDays":"","applDays":"","start":"0"},{"number":"26","ptaOrPteDate":"11-13-2017","contentsDescription":"Mail
+      Final Rejection (PTOL - 326)","ptoDays":"","applDays":"","start":"0"},{"number":"24","ptaOrPteDate":"11-08-2017","contentsDescription":"Final
+      Rejection","ptoDays":"","applDays":"","start":"0"},{"number":"23","ptaOrPteDate":"08-10-2017","contentsDescription":"Date
+      Forwarded to Examiner","ptoDays":"","applDays":"","start":"0"},{"number":"22","ptaOrPteDate":"08-06-2017","contentsDescription":"Response
+      after Non-Final Action","ptoDays":"","applDays":"75","start":"21"},{"number":"21","ptaOrPteDate":"02-23-2017","contentsDescription":"Mail
+      Non-Final Rejection","ptoDays":"353","applDays":"","start":"0.5"},{"number":"19","ptaOrPteDate":"02-20-2017","contentsDescription":"Non-Final
+      Rejection","ptoDays":"","applDays":"","start":"0"},{"number":"18","ptaOrPteDate":"01-09-2017","contentsDescription":"Case
+      Docketed to Examiner in GAU","ptoDays":"","applDays":"","start":"0"},{"number":"17","ptaOrPteDate":"01-05-2017","contentsDescription":"Case
+      Docketed to Examiner in GAU","ptoDays":"","applDays":"","start":"0"},{"number":"16","ptaOrPteDate":"07-07-2016","contentsDescription":"Application
+      ready for PDX access by participating foreign offices","ptoDays":"","applDays":"","start":"0"},{"number":"15","ptaOrPteDate":"07-07-2016","contentsDescription":"PG-Pub
+      Issue Notification","ptoDays":"","applDays":"","start":"0"},{"number":"14","ptaOrPteDate":"03-18-2016","contentsDescription":"Case
+      Docketed to Examiner in GAU","ptoDays":"","applDays":"","start":"0"},{"number":"13","ptaOrPteDate":"12-02-2015","contentsDescription":"Application
+      Dispatched from OIPE","ptoDays":"","applDays":"","start":"0"},{"number":"12","ptaOrPteDate":"11-25-2015","contentsDescription":"Mail
+      Pre-Exam Notice","ptoDays":"","applDays":"","start":"0"},{"number":"11","ptaOrPteDate":"02-13-2015","contentsDescription":"Sent
+      to Classification Contractor","ptoDays":"","applDays":"","start":"0"},{"number":"10","ptaOrPteDate":"02-13-2015","contentsDescription":"FITF
+      set to YES - revise initial setting","ptoDays":"","applDays":"","start":"0"},{"number":"9","ptaOrPteDate":"01-07-2015","contentsDescription":"Patent
+      Term Adjustment - Ready for Examination","ptoDays":"","applDays":"","start":"0"},{"number":"8","ptaOrPteDate":"02-17-2015","contentsDescription":"Application
+      Is Now Complete","ptoDays":"","applDays":"","start":"0"},{"number":"7","ptaOrPteDate":"02-17-2015","contentsDescription":"Filing
+      Receipt","ptoDays":"","applDays":"","start":"0"},{"number":"6","ptaOrPteDate":"02-13-2015","contentsDescription":"Applicant
+      Has Filed a Verified Statement of Small Entity Status in Compliance with 37
+      CFR 1.27","ptoDays":"","applDays":"","start":"0"},{"number":"2","ptaOrPteDate":"01-07-2015","contentsDescription":"Entity
+      Status Set To Undiscounted (Initial Default Setting or Status Change)","ptoDays":"","applDays":"","start":"0"},{"number":"1","ptaOrPteDate":"01-07-2015","contentsDescription":"Initial
+      Exam Team nn","ptoDays":"","applDays":"","start":"0"},{"number":"0.5","ptaOrPteDate":"01-07-2015","contentsDescription":"Filing
+      date","ptoDays":"","applDays":"","start":"0"}],"patentTitle":"Integrated Docking
+      System for Intelligent Devices","applDelay":"1352","cDelay":"0","appStatusDate":"2023-04-26T00:00:00Z","inventors":[{"nameLineOne":"Spero","nameLineTwo":"Yechezkal
+      Evan","suffix":"","streetOne":"","streetTwo":"","city":"Tifrach, ","geoCode":"","country":"(IL)","rankNo":"1"}],"inventorsFacet":"{Yechezkal|Evan|Spero||||Tifrach||IL|IND|1}","ptoAdjustments":"0","corrAddrStreetLineOne":"Rashi
+      20","firstInventorFile":"Yes","childContinuity":[{"claimApplicationNumberText":"18315343","applicationNumberText":"14591909","filingDate":"05-10-2023","aiaIndicator":"Y","patentNumberText":"","applicationStatus":"Pending","applicationStatusDescription":"claims
+      the benefit of"}],"overlapDelay":"0","aDelay":"707","appType":"Utility","appTypeFacet":"Utility","corrAddrPostalCode":"8510200","appCustNumber":"37268","appClsSubCls":"700/090000","appClsSubClsFacet":"700/090000","patentIssueDate":"2023-05-16T00:00:00Z","bDelay":"175","corrAddrNameLineOne":"YECHEZKAL
+      EVAN SPERO","parentContinuity":[{"claimApplicationNumberText":"61924747","applicationNumberText":"14591909","filingDate":"01-08-2014","aiaIndicator":"","patentNumberText":"","applicationStatus":"Expired","applicationStatusDescription":"This
+      application Claims Priority from Provisional Application"}],"corrAddrCustNo":"37268","corrAddrCountryCd":"IL","ptoDelay":"882","corrAddrCity":"Tifrach","appEntityStatus":"SMALL","appConfrNumber":"2109","lastUpdatedTimestamp":"2023-11-09T17:34:48.412Z","cmsData":["{14591909|2023-05-15
+      20:00:00|PROSECUTION|eGrant day-of Notification|EGRANT.NTF|1|LHPRA8ICGREENX0},{14591909|2023-03-19
+      13:59:40|PROSECUTION|Amendment after Notice of Allowance (Rule 312)|A.NA|1|LFJSK2CQMBLUEM1},{14591909|2023-03-19
+      13:59:40|PROSECUTION|Claims|CLM|7|LFJSK2CSMBLUEM1},{14591909|2023-03-19 13:59:40|PROSECUTION|Specification|SPEC|1|LFJSK2CTMBLUEM1},{14591909|2023-03-19
+      13:59:40|PROSECUTION|Applicant Arguments/Remarks Made in an Amendment|REM|6|LFJSK2CUMBLUEM1},{14591909|2023-03-02
+      19:00:00|PROSECUTION|Office Action Appendix|OA.APPENDIX|11|LEPYWA3AGREENX0},{14591909|2023-03-02
+      19:00:00|PROSECUTION|Examiner Interview Summary Record (PTOL - 413)|EXIN|3|LEPYWA39GREENX0},{14591909|2022-12-27
+      19:00:00|PROSECUTION|Examiner Interview Summary Record (PTOL - 413)|EXIN|1|LC0HDXMLXBLUEX0},{14591909|2022-12-27
+      19:00:00|PROSECUTION|Issue Information including classification, examiner, name,
+      claim, renumbering, etc.|IIFW|3|LC0HDXMMXBLUEX0},{14591909|2022-12-27 19:00:00|PROSECUTION|Notice
+      of Allowance and Fees Due (PTOL-85)|NOA|5|LC0HDXMJXBLUEX0},{14591909|2022-12-27
+      19:00:00|PROSECUTION|Bibliographic Data Sheet|BIB|1|LC0HDXMPXBLUEX0},{14591909|2022-12-15
+      07:24:23|PROSECUTION|Miscellaneous Communication to Applicant - No Action Count|M327|1|LBNX9WTGXBLUEX2},{14591909|2022-12-12
+      21:57:01|PROSECUTION|Petition decision routed to the Technology Center to act
+      on the decision or continue prosecution|PET.DEC.TC|3|LBM8AN11XBLUEX1},{14591909|2022-12-12
+      21:57:01|PROSECUTION|Filing Receipt|APP.FILE.REC|3|LBM8AN12XBLUEX1},{14591909|2022-12-12
+      13:00:25|PROSECUTION|Electronic Request for Interview with Examiner|M865E|1|LBLEED14XBLUEX0},{14591909|2022-12-12
+      08:55:57|PROSECUTION|Filing Receipt|APP.FILE.REC|3|LBGVCEQSXBLUEX1},{14591909|2022-10-19
+      14:37:15|PROSECUTION|Internet Communications Authorization|ECOMM.AUTH|2|L9G7SL5LXBLUEX4},{14591909|2022-10-19
+      14:37:15|PROSECUTION|Electronic Filing System(EFS) Acknowledgment Receipt|N417|2|L9G7SL5NXBLUEX4},{14591909|2022-10-18
+      15:37:53|PROSECUTION|Fee Worksheet (SB06)|WFEE|2|L9EUIP0DXBLUEX2},{14591909|2022-10-18
+      15:37:53|PROSECUTION|Extension of Time|XT/|1|L9EUIP0CXBLUEX2},{14591909|2022-10-18
+      15:37:53|PROSECUTION|Electronic Filing System(EFS) Acknowledgment Receipt|N417|2|L9EUIP0EXBLUEX2},{14591909|2022-10-18
+      15:37:53|PROSECUTION|Transmittal Letter|TRAN.LET|1|L9EUIP0BXBLUEX2},{14591909|2022-10-17
+      20:00:00|PROSECUTION|Fee Worksheet (SB06)|WFEE|1|L9EJMDNYGREENX0},{14591909|2022-10-09
+      01:45:28|PROSECUTION|Application Data Sheet to update/correct info|ADS.CORR|5|L915TILQGREENX5},{14591909|2022-10-09
+      01:45:27|PROSECUTION|Petition for review by the Office of Petitions|PET.OP|6|L915TI9ZXBLUEX3},{14591909|2022-10-09
+      01:45:27|PROSECUTION|Fee Worksheet (SB06)|WFEE|2|L915TIHMXBLUEX5},{14591909|2022-10-09
+      01:45:27|PROSECUTION|Transmittal Letter|TRAN.LET|3|L915TIHLXBLUEX5},{14591909|2022-10-09
+      01:45:27|PROSECUTION|Electronic Filing System(EFS) Acknowledgment Receipt|N417|3|L915TIHOXBLUEX5},{14591909|2022-10-04
+      20:00:00|PROSECUTION|Office Action Appendix|OA.APPENDIX|13|L8T90FSIXBLUEX2},{14591909|2022-10-04
+      20:00:00|PROSECUTION|Office Action Appendix|OA.APPENDIX|7|L8T90FSLXBLUEX2},{14591909|2022-10-04
+      20:00:00|PROSECUTION|Office Action Appendix|OA.APPENDIX|11|L8T90FSJXBLUEX2},{14591909|2022-10-04
+      20:00:00|PROSECUTION|Examiner Interview Summary Record (PTOL - 413)|EXIN|2|L8T90FSHXBLUEX2},{14591909|2022-10-03
+      13:25:41|PROSECUTION|Applicant Arguments/Remarks Made in an Amendment|REM|1|L8U6NBMUGREENM3},{14591909|2022-10-03
+      13:25:41|PROSECUTION|Claims|CLM|5|L8U6NBMTGREENM3},{14591909|2022-10-03 13:25:41|PROSECUTION|Response
+      After Final Action|A.NE|1|L8U6NBMSGREENM3},{14591909|2022-10-03 13:25:41|PROSECUTION|Electronic
+      Filing System(EFS) Acknowledgment Receipt|N417|2|L8TA6WBYXBLUEX4},{14591909|2022-10-03
+      13:25:41|PROSECUTION|Response after Ex Parte Quayle Action|A.QU|7|L8TA6WBXXBLUEX4},{14591909|2022-10-02
+      20:00:00|PROSECUTION|Fee Worksheet (SB06)|WFEE|1|L9FREJWPGREENX3},{14591909|2022-09-22
+      14:02:21|PROSECUTION|Electronic Request for Interview with Examiner|M865E|1|L8DLNO80XBLUEX1},{14591909|2022-08-02
+      20:00:00|PROSECUTION|Amendment After Final or under 37CFR 1.312, initialed by
+      the examiner.|ANE.I|1|L6ATEMTVXBLUEX0},{14591909|2022-08-02 20:00:00|PROSECUTION|Advisory
+      Action (PTOL-303)|CTAV|3|L6ATEMTTXBLUEX0},{14591909|2022-08-02 20:00:00|PROSECUTION|Notice
+      to the applicant regarding a non-compliant or non-responsive amendment|NTC.A.NONCPL|2|L6ATEMTUXBLUEX0},{14591909|2022-07-20
+      00:09:13|PROSECUTION|Amendment Copy Claims/Response to Suggested Claims|IACS|12|L5TBPQU7GREENX3},{14591909|2022-07-19
+      16:32:08|PROSECUTION|Response After Final Action|A.NE|1|L5UZU2WMMBLUEM0},{14591909|2022-07-19
+      16:32:08|PROSECUTION|Claims|CLM|4|L5UZU2WNMBLUEM0},{14591909|2022-07-19 16:32:08|PROSECUTION|Applicant
+      Arguments/Remarks Made in an Amendment|REM|6|L5UZU2WOMBLUEM0},{14591909|2022-07-19
+      16:32:08|PROSECUTION|Fee Worksheet (SB06)|WFEE|2|L5SVDXEQGREENX1},{14591909|2022-07-19
+      16:32:08|PROSECUTION|Electronic Filing System(EFS) Acknowledgment Receipt|N417|2|L5SVDXERGREENX1},{14591909|2022-07-19
+      16:32:08|PROSECUTION|Applicant Arguments/Remarks Made in an Amendment|REM|11|L5SVDXEPGREENX1},{14591909|2022-07-18
+      20:00:00|PROSECUTION|Fee Worksheet (SB06)|WFEE|1|L63UG20WXBLUEX0},{14591909|2022-07-18
+      20:00:00|PROSECUTION|Examiner Interview Summary Record (PTOL - 413)|EXIN|3|L5MF9NUIXBLUEX0},{14591909|2022-07-07
+      14:07:52|PROSECUTION|Electronic Request for Interview with Examiner|M865E|1|L5BKY6T4GREENX2},{14591909|2022-04-19
+      02:10:05|PROSECUTION|Examiner''s search strategy and results|SRNT|9|L20LQ67FXBLUEX0},{14591909|2022-04-19
+      02:10:05|PROSECUTION|Search information including classification, databases
+      and other search related notes|SRFW|2|L20LQ67EXBLUEX0},{14591909|2022-04-19
+      02:10:05|PROSECUTION|Final Rejection|CTFR|10|L20LQ67DXBLUEX0},{14591909|2022-01-24
+      01:53:51|PROSECUTION|Petition decision routed to the Technology Center to act
+      on the decision or continue prosecution|PET.DEC.TC|3|KYSXIY6TLDFLYX9},{14591909|2021-11-13
+      18:25:18|PROSECUTION|Petition for review by the Office of Petitions|PET.OP|4|KVYQIIO4LDFLYX4},{14591909|2021-11-13
+      18:25:18|PROSECUTION|Electronic Filing System(EFS) Acknowledgment Receipt|N417|2|KVYQIIO5LDFLYX4},{14591909|2021-11-13
+      18:25:17|PROSECUTION|Transmittal Letter|TRAN.LET|16|KVYQIIFCLDFLYX7},{14591909|2021-09-12
+      23:41:31|PROSECUTION|Petition Decision|PETDEC|4|KTCV1LAKLDFLYX5},{14591909|2021-08-17
+      16:03:02|PROSECUTION|Electronic Filing System(EFS) Acknowledgment Receipt|N417|2|KSGQEAI0LDFLYX9},{14591909|2021-08-17
+      16:03:02|PROSECUTION|Other reference-Patent/Application/Search Documents|REF.OTHER|2|KSGQEAHZLDFLYX9},{14591909|2021-08-17
+      16:03:01|PROSECUTION|Transmittal Letter|TRAN.LET|5|KSGQE9UQDFLYX11},{14591909|2021-08-17
+      16:03:01|PROSECUTION|Petition for review by the Office of Petitions|PET.OP|4|KSGQE9PWDFLYX10},{14591909|2021-07-23
+      01:56:29|PROSECUTION|Petition Decision|PETDEC|4|KRDJUK8ILDFLYX9},{14591909|2021-06-02
+      05:56:59|PROSECUTION|Petition for review by the Office of Petitions|PET.OP|4|KPMOHFCVLDFLYX5},{14591909|2021-06-02
+      05:56:59|PROSECUTION|Transmittal Letter|TRAN.LET|1|KPMOHFCWLDFLYX5},{14591909|2021-06-02
+      05:46:46|PROSECUTION|Petition for review by the Office of Petitions|PET.OP|3|KPMO4ALALDFLYX5},{14591909|2021-06-02
+      05:46:46|PROSECUTION|Transmittal Letter|TRAN.LET|1|KPMO4ALBLDFLYX5},{14591909|2021-05-31
+      18:56:59|PROSECUTION|Electronic Filing System(EFS) Acknowledgment Receipt|N417|2|KPDGIIPNLDFLYX5},{14591909|2021-05-31
+      18:56:59|PROSECUTION|ePetition Request Form|PET.AUTO|4|KPDGIIPLLDFLYX5},{14591909|2021-05-31
+      18:56:59|PROSECUTION|Electronic Fee Payment|N417.PYMT|2|KPDGIIPMLDFLYX5},{14591909|2021-05-31
+      17:56:18|PROSECUTION|Electronic Filing System(EFS) Acknowledgment Receipt|N417|2|KPDE3ID4LDFLYX4},{14591909|2021-05-31
+      17:56:18|PROSECUTION|Applicant Arguments/Remarks Made in an Amendment|REM|14|KPDE3ID3LDFLYX4},{14591909|2021-05-31
+      17:56:18|PROSECUTION|Claims|CLM|4|KPFP4RNFLDFLYM3},{14591909|2021-05-31 17:56:18|PROSECUTION|Amendment/Request
+      for Reconsideration-After Non-Final Rejection|A...|1|KPFP4RNELDFLYM3},{14591909|2021-05-31
+      17:56:18|PROSECUTION|Applicant Arguments/Remarks Made in an Amendment|REM|9|KPFP4RNGLDFLYM3},{14591909|2021-05-31
+      09:19:58|PROSECUTION|Fee Worksheet (SB06)|WFEE|1|KYUG1931DFLYX10},{14591909|2019-07-25
+      08:53:08|PROSECUTION|Abandonment|ABN|2|JYIX154ZRXEAPX4},{14591909|2018-11-13
+      05:58:03|PROSECUTION|Examiner''s search strategy and results|SRNT|8|JOFX7ZHLRXEAPX0},{14591909|2018-11-13
+      05:58:03|PROSECUTION|Non-Final Rejection|CTNF|9|JOFX7ZHKRXEAPX0},{14591909|2018-09-27
+      05:44:40|PROSECUTION|Office of Petitions Decision (PTO-90)|PET.OP.DEC|6|JMKMRDCBRXEAPX1},{14591909|2018-09-27
+      05:44:40|PROSECUTION|Miscellaneous Internal Document|IMIS|1|JMKMRDCCRXEAPX1},{14591909|2018-09-27
+      05:44:40|PROSECUTION|Petition Decision|PETDEC|1|JMKMRDCDRXEAPX1},{14591909|2018-03-06
+      19:00:00|PROSECUTION|Letter of Suspension - Applicant Initiated|AISP|1|JEPSELBNRXEAPX0},{14591909|2018-02-14
+      19:00:00|PROSECUTION|Miscellaneous Communication to Applicant - No Action Count|M327|1|JDOZ8F9CRXEAPX2},{14591909|2018-02-14
+      19:00:00|PROSECUTION|Electronic Filing System(EFS) Acknowledgment Receipt|N417|2|JDOQAPGRRXEAPX4},{14591909|2018-02-14
+      19:00:00|PROSECUTION|Petition for review by the Office of Petitions|PET.OP|3|JDOQAPGQRXEAPX4},{14591909|2018-02-13
+      19:00:00|PROSECUTION|Applicant Initiated Interview Summary (PTOL-413)|INTV.SUM.APP|4|JDN9C3ZBRXEAPX5},{14591909|2018-02-12
+      19:00:00|PROSECUTION|Fee Worksheet (SB06)|WFEE|1|JDOFZZH7RXEAPX4},{14591909|2018-02-12
+      19:00:00|PROSECUTION|Electronic Filing System(EFS) Acknowledgment Receipt|N417|2|JDLTDKLXRXEAPX5},{14591909|2018-02-12
+      19:00:00|PROSECUTION|Application Data Sheet to update/correct info|ADS.CORR|2|JDLTDKLWRXEAPX5},{14591909|2018-02-12
+      19:00:00|PROSECUTION|Application Data Sheet to update/correct info|ADS.CORR|5|JDLTDK7YRXEAPX3},{14591909|2018-02-12
+      19:00:00|PROSECUTION|Amendment Submitted/Entered with Filing of Continued Prosecution
+      Application (CPA)/Request for Continued Examination(RCE)|AMSB|1|JDMOEP11RXEAPX5},{14591909|2018-02-12
+      19:00:00|PROSECUTION|Electronic Filing System(EFS) Acknowledgment Receipt|N417|2|JDMOEP10RXEAPX5},{14591909|2018-02-12
+      19:00:00|PROSECUTION|Applicant Arguments/Remarks Made in an Amendment|REM|10|JDN6UJXDPXXIFW2},{14591909|2018-02-12
+      19:00:00|PROSECUTION|Claims|CLM|4|JDN6UJVAPXXIFW2},{14591909|2018-02-12 19:00:00|PROSECUTION|Fee
+      Worksheet (SB06)|WFEE|2|JDMOEP0ZRXEAPX5},{14591909|2018-02-12 19:00:00|PROSECUTION|Request
+      for Continued Examination (RCE)|RCEX|2|JDMOEP0YRXEAPX5},{14591909|2018-02-06
+      19:00:00|PROSECUTION|Electronic Request for Interview with Examiner|M865E|1|JDDOHL72RXEAPX1},{14591909|2018-02-06
+      19:00:00|PROSECUTION|Letter Requesting Interview with Examiner|M865|1|JDLQODYGRXEAPX2},{14591909|2017-11-12
+      19:00:00|PROSECUTION|Final Rejection|CTFR|11|J9YEGY17RXEAPX0},{14591909|2017-11-12
+      19:00:00|PROSECUTION|Search information including classification, databases
+      and other search related notes|SRFW|1|J9YEGY1CRXEAPX0},{14591909|2017-11-12
+      19:00:00|PROSECUTION|List of references cited by examiner|892|1|J9YEGY1ARXEAPX0},{14591909|2017-11-12
+      19:00:00|PROSECUTION|Examiner''s search strategy and results|SRNT|8|J9YEGY1BRXEAPX0},{14591909|2017-08-05
+      20:00:00|PROSECUTION|Fee Worksheet (SB06)|WFEE|1|J66KUQ5ORXEAPX3},{14591909|2017-08-05
+      20:00:00|PROSECUTION|Electronic Filing System(EFS) Acknowledgment Receipt|N417|2|J613PEAWRXEAPX5},{14591909|2017-08-05
+      20:00:00|PROSECUTION|Applicant Arguments/Remarks Made in an Amendment|REM|13|J63U5WA9PXXIFW1},{14591909|2017-08-05
+      20:00:00|PROSECUTION|Claims|CLM|4|J63U5W9APXXIFW1},{14591909|2017-08-05 20:00:00|PROSECUTION|Amendment/Request
+      for Reconsideration-After Non-Final Rejection|A...|1|J613PEAURXEAPX5},{14591909|2017-05-23
+      20:00:00|PROSECUTION|Miscellaneous Incoming Letter|LET.|1|J32GYE5BRXEAPX4},{14591909|2017-05-23
+      20:00:00|PROSECUTION|Electronic Filing System(EFS) Acknowledgment Receipt|N417|2|J32GYE5CRXEAPX4},{14591909|2017-02-22
+      19:00:00|PROSECUTION|Non-Final Rejection|CTNF|8|IZINWVVJRXEAPX4},{14591909|2017-02-22
+      19:00:00|PROSECUTION|Search information including classification, databases
+      and other search related notes|SRFW|1|IZINWVVLRXEAPX4},{14591909|2017-02-22
+      19:00:00|PROSECUTION|Examiner''s search strategy and results|SRNT|3|IZINWVVNRXEAPX4},{14591909|2017-02-22
+      19:00:00|PROSECUTION|List of references cited by examiner|892|1|IZINWVVKRXEAPX4},{14591909|2016-07-06
+      20:00:00|PROSECUTION|Notice of Publication|NTC.PUB|1|IQCW4399RXEAPX3},{14591909|2015-11-24
+      19:00:00|PROSECUTION|Miscellaneous Communication to Applicant - No Action Count|M327|2|IHET0A5DPXXIFW4},{14591909|2015-11-18
+      19:00:00|PROSECUTION|Request for Corrected Filing Receipt|CFILE|2|IH9GTP9FPXXIFW3},{14591909|2015-11-18
+      19:00:00|PROSECUTION|Request for Corrected Filing Receipt|CFILE|3|IH9GTPECPXXIFW3},{14591909|2015-11-18
+      19:00:00|PROSECUTION|Electronic Filing System(EFS) Acknowledgment Receipt|N417|2|IH9GTPEXPXXIFW3},{14591909|2015-02-16
+      19:00:00|PROSECUTION|Filing Receipt|APP.FILE.REC|3|I643H8V4PXXIFW4},{14591909|2015-02-16
+      19:00:00|PROSECUTION|Fee Worksheet (SB06)|WFEE|1|I643H9OAPXXIFW4},{14591909|2015-01-06
+      19:00:00|PROSECUTION|Placeholder sheet indicating presence of supplemental content
+      in Supplemental Complex Repository for Examiners(SCORE)|SCORE|1|I4Y2MMDMPXXIFW4},{14591909|2015-01-06
+      19:00:00|PROSECUTION|Specification|SPEC|80|I4NML3QEPXXIFW3},{14591909|2015-01-06
+      19:00:00|PROSECUTION|Abstract|ABST|1|I4NML3QSPXXIFW3},{14591909|2015-01-06 19:00:00|PROSECUTION|Claims|CLM|4|I4NML3QLPXXIFW3},{14591909|2015-01-06
+      19:00:00|PROSECUTION|Drawings-other than black and white line drawings|DRW.NONBW|11|I4NML3QZPXXIFW3},{14591909|2015-01-06
+      19:00:00|PROSECUTION|Transmittal of New Application|TRNA|2|I4NML3PDPXXIFW3},{14591909|2015-01-06
+      19:00:00|PROSECUTION|Fee Worksheet (SB06)|WFEE|2|I4NML3PTPXXIFW3},{14591909|2015-01-06
+      19:00:00|PROSECUTION|Oath or Declaration filed|OATH|1|I4NML3PMPXXIFW3},{14591909|2015-01-06
+      19:00:00|PROSECUTION|Electronic Filing System(EFS) Acknowledgment Receipt|N417|3|I4NML3Q0PXXIFW3},{14591909|2015-01-06
+      19:00:00|PROSECUTION|Application Data Sheet|ADS|6|I4NML3Q7PXXIFW3}"],"appEntityStatusFacet":"SMALL","appCustNumberFacet":"37268","_version_":1782108773320491008,"firstInventorFileFacet":"Yes","appLocationFacet":"ELECTRONIC","appEarlyPubNumberFacet":"US20160195856A1","patentNumberFacet":"11651258"}]}},"queryId":"9c20beaf-972d-4574-be7a-cda7251cc4a2"},"jobStatus":null,"queryId":"9c20beaf-972d-4574-be7a-cda7251cc4a2","page":1,"count":0,"errorMessage":null,"createQueryRequest":{"searchText":"applId:(14591909)","facet":"false","facetField":null,"facetLimit":null,"facetMissing":null,"facetDate":null,"facetDateGap":null,"facetDateStart":null,"facetDateEnd":null,"facetDateOther":null,"facetDateInclude":null,"mm":"0%","sort":"applId
+      asc","qf":"","wt":null,"df":"patentTitle","fl":"*","start":"0","fq":[],"rows":"1","parameters":{"mm":"0%","df":"patentTitle","fl":["*"],"start":"0","sort":"applId
+      asc","fq":[],"rows":"1","facet":"false"}},"links":[{"rel":"self","href":"https://ped.uspto.gov/api/queries/9c20beaf-972d-4574-be7a-cda7251cc4a2?format=XML"},{"rel":"results","href":"https://ped.uspto.gov/api/queries/9c20beaf-972d-4574-be7a-cda7251cc4a2/results?page=1"},{"rel":"package","href":"https://ped.uspto.gov/api/queries/9c20beaf-972d-4574-be7a-cda7251cc4a2/package?format=XML"},{"rel":"first","href":"https://ped.uspto.gov/api/queries/9c20beaf-972d-4574-be7a-cda7251cc4a2/results?page=1"},{"rel":"next","href":"https://ped.uspto.gov/api/queries/9c20beaf-972d-4574-be7a-cda7251cc4a2/results?page=2"},{"rel":"self","href":"https://ped.uspto.gov/api/queries/9c20beaf-972d-4574-be7a-cda7251cc4a2?format=JSON"},{"rel":"results","href":"https://ped.uspto.gov/api/queries/9c20beaf-972d-4574-be7a-cda7251cc4a2/results?page=1"},{"rel":"package","href":"https://ped.uspto.gov/api/queries/9c20beaf-972d-4574-be7a-cda7251cc4a2/package?format=JSON"},{"rel":"first","href":"https://ped.uspto.gov/api/queries/9c20beaf-972d-4574-be7a-cda7251cc4a2/results?page=1"},{"rel":"next","href":"https://ped.uspto.gov/api/queries/9c20beaf-972d-4574-be7a-cda7251cc4a2/results?page=2"}]}'
+    headers:
+      Cache-Control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Date:
+      - Thu, 09 Nov 2023 19:55:52 GMT
+      Expires:
+      - '0'
+      Pragma:
+      - no-cache
+      Server-Timing:
+      - intid;desc=394df4cabf5abbdb
+      Strict-Transport-Security:
+      - max-age=31536000;includeSubDomains
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 07c18636d05168ab2f68b990a4913cf4.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - 4JojCUANxS2gaOlPbZENRs09kiVxO6ttRL4Dd7EA4-rQmxUGEh3yMA==
+      X-Amz-Cf-Pop:
+      - DFW50-C1
+      X-Cache:
+      - Miss from cloudfront
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - DENY
+      X-XSS-Protection:
+      - 1; mode=block
+    http_version: HTTP/1.1
+    status_code: 200
 version: 1

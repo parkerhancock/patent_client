@@ -47,19 +47,19 @@ class Document(BaseModel):
 
 
 class UsReference(BaseModel):
-    publication_number: Optional[str]
-    pub_month: Optional[datetime.date]
-    patentee_name: Optional[str]
-    cited_by_examiner: Optional[bool]
+    publication_number: Optional[str] = None
+    pub_month: Optional[datetime.date] = None
+    patentee_name: Optional[str] = None
+    cited_by_examiner: Optional[bool] = None
 
 
 class ForeignReference(BaseModel):
-    citation_classification: Optional[str]
-    citation_cpc: Optional[str]
-    country_code: Optional[str]
-    patent_number: Optional[str]
-    pub_month: Optional[datetime.date]
-    cited_by_examiner: Optional[bool]
+    citation_classification: Optional[str] = None
+    citation_cpc: Optional[str] = None
+    country_code: Optional[str] = None
+    patent_number: Optional[str] = None
+    pub_month: Optional[datetime.date] = None
+    cited_by_examiner: Optional[bool] = None
 
 
 class NplReference(BaseModel):

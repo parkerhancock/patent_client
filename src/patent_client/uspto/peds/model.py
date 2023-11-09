@@ -90,7 +90,7 @@ class ForeignPriority(PEDSBaseModel):
 
 
 class AttorneyOrAgent(PEDSBaseModel):
-    application_id: Optional[str]
+    application_id: Optional[str] = None
     registration_no: Optional[str] = None
     full_name: str
     phone_num: str
@@ -124,13 +124,13 @@ class USApplication(PEDSBaseModel):
     last_insert_time: datetime.datetime = Field(alias="LAST_INSERT_TIME")
     patent_title: str
 
-    app_attr_dock_number: Optional[str]
+    app_attr_dock_number: Optional[str] = None
     app_status: Optional[str] = None
     app_status_date: Optional[DateTimeAsDate] = None
-    app_type: Optional[str]
-    app_cls_sub_cls: Optional[str]
-    corr_name: Optional[str]
-    corr_address: Optional[str]
+    app_type: Optional[str] = None
+    app_cls_sub_cls: Optional[str] = None
+    corr_name: Optional[str] = None
+    corr_address: Optional[str] = None
     corr_cust_no: Optional[str] = Field(alias="corrAddrCustNo", default=None)
     transactions: List[Transactions]
     attorneys: List[AttorneyOrAgent] = Field(alias="attrnyAddr", default_factory=list)

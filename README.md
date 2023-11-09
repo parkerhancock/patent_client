@@ -8,6 +8,7 @@
 [![PyPI](https://img.shields.io/pypi/v/patent-client?color=blue)](https://pypi.org/project/patent-client)
 [![PyPI - Python Versions](https://img.shields.io/pypi/pyversions/patent-client)](https://pypi.org/project/patent-client)
 [![PyPI - Downloads](https://img.shields.io/pypi/dm/patent-client?color=blue)](https://pypi.org/project/patent-client)
+[![Pydantic v2](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/pydantic/pydantic/main/docs/badge/v2.json)](https://pydantic.dev)
 
 # Summary
 
@@ -17,6 +18,7 @@ A powerful library for accessing intellectual property, featuring:
 - 🐼 **Pandas Integration:** Results are easily castable to [Pandas Dataframes and Series][PANDAS].
 - 🚀 **Performance:** Fetched data is retrieved using the [httpx][httpx] library with native HTTP/2 and asyncio support, and cached using the [hishel][hishel] library for super-fast queries, and [yankee][yankee] for data extraction.
 - 🌐 **Async/Await Support:** All API's (optionally!) support the async/await syntax.
+- 🔮 **Pydantic v2 Support:** All models retrieved are [Pydantic v2 models][pydantic] with all the goodness that comes with them!
 
 Docs, including a fulsome Getting Started and User Guide are available on [Read the Docs](http://patent-client.readthedocs.io). The Examples folder includes examples of using `patent_client` for
 many common IP tasks
@@ -52,6 +54,7 @@ many common IP tasks
 [PTAB]: https://developer.uspto.gov/api-catalog/ptab-api-v2
 [USPTO]: http://developer.uspto.gov
 [GD]: https://globaldossier.uspto.gov
+[pydantic]: https://docs.pydantic.dev/latest/
 
 
 ## Installation

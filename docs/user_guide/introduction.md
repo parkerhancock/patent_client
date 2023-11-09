@@ -13,7 +13,7 @@ at just the most recent 20 filed (and publicly available) applications:
 
 ### 1. Query the Data
 
-:::python
+```python
 from patent_client import USApplication
 
 apps = (USApplication.objects
@@ -22,7 +22,7 @@ apps = (USApplication.objects
         .limit(20)
         )
 
-:::
+```
 
 This is step 1 - querying the data. Consult the documentation for further details on
 available filtering critera. This creates a problem, though. While it
@@ -33,20 +33,20 @@ At least for a single report. So let's reshape the result!
 
 We only want certain fields, so we can do this:
 
-:::python
+```python
 apps = (USApplication.objects
         .filter(first_named_applicant="Google")
         .order_by("-appl_filing_date")
         .limit(20)
         .values("appl_id", "app_filing_date", "patent_title", "patent_number", "issue_date")
         )
-:::
+```
 
 Now we've reshaped the data by limiting what information we have. But let's say
 we also want the full name of the first inventor. That can be done using the `values` function,
 by using dotted notation to get what we want:
 
-:::python
+```python
 apps = (USApplication.objects
         # Step 1 - Query the Data
         .filter(first_named_applicant="Google")
@@ -55,7 +55,7 @@ apps = (USApplication.objects
         # Step 2 - Reshape the Data
         .values("appl_id", "app_filing_date", "patent_title", "patent_number", "issue_date", "inventors.0.name")
         )
-:::
+```
 
 So, now we've reshaped the data into a convenient format. With this, we can convert to a
 pandas dataframe, a list, ingest it into a database, iterate over the results, etc.
@@ -66,7 +66,7 @@ That's nice, but maybe we want to actually want to do something else.
 Like calculate the average time from filing to issuance. We can do that using `pandas`, we just need
 to convert our result to something Pandas can deal with. So let's do that:
 
-:::python
+```python
 apps = (USApplication.objects
         # Step 1 - Query the Data
         .filter(first_named_applicant="Google")
@@ -80,7 +80,7 @@ apps = (USApplication.objects
         .mean()
         .time_to_issue
         )
-:::
+```
 
 # Advanced Data Reshaping
 
@@ -95,7 +95,7 @@ object with flexible contents.
 **Simple Attribute Fetching & Renaming:** Each argument becomes a field in the result, and each keyword argument can be used to create a renamed result. Additionally, you can pass a dictionary using the keyword `fields` to rename fields things that
 can't be keyword arguments. Using USApplication as an example, you can do this:
 
-:::python
+```python
 
 apps = (USApplication.objects
         .filter(first_named_applicant="Google")
@@ -103,14 +103,14 @@ apps = (USApplication.objects
         .limit(20)
         .values("appl_id", title="patent_title", fields={"Application Filing Date": "appl_filing_date"})
 
-:::
+```
 
 **Complex Attribute Fetching:** When resolving fields for a `Row`, you can select properties of the model
 that aren't actually fields, including related objects from other API's. Patent client will automate
 the retrieval of the related items. Additionally, you can use dotted notation to fetch fields on
 related objects:
 
-:::python
+```python
 
 apps = (USApplication.objects
         .filter(first_named_applicant="Google")
@@ -121,13 +121,13 @@ apps = (USApplication.objects
             "patent.us_refs", # US references cited in the patent - retreived from the Fulltext Patent API
             )
 
-:::
+```
 
 **Indexes in Attribute Fetching:** Sometimes a related object is a list of things, and you only want
 one. Like maybe you only want the first named inventor. You can include numeric values in dotted notation
 to fetch that.
 
-:::python
+```python
 
 apps = (USApplication.objects
         .filter(first_named_applicant="Google")
@@ -137,7 +137,7 @@ apps = (USApplication.objects
             "inventors.0.name", # Fetches the first inventor listed, and selects the name off of that value
             )
 
-:::
+```
 
 ## Unpack and Explode
 
@@ -145,7 +145,7 @@ The other two key data reshaping functions are `.unpack` and `.explode`.
 
 **Unpacking Data:** The `.unpack` method allows nested structured data to be "unpacked" into columns of a row. For example, if you wanted the name and address of the first named inventor, you could do this:
 
-:::python
+```python
 
 apps = (USApplication.objects
         .filter(first_named_applicant="Google")
@@ -156,7 +156,7 @@ apps = (USApplication.objects
             )
         .unpack("first_named_inventor")
 
-:::
+```
 
 In the result, this produces a row that has columns for `first_named_invetor.name`, `first_named_invetor.address`, and `first_named_invetor.rank_no`. Additionally, if there is no risk of colliding with other
 columns, `.unpack` can be passed a keyword argument `prefix=false` to suppress prefixes.
@@ -166,7 +166,7 @@ one row for each object in the nested list.
 
 For example, if you wanted a list of transactions, but annotated with the application number, you could do this:
 
-:::python
+```python
 
 apps = (USApplication.objects
         .get("16123456)
@@ -176,6 +176,6 @@ apps = (USApplication.objects
         .explode("transactions")
         .unpack("transactions")
 
-:::
+```
 
 [explode]: https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.explode.html

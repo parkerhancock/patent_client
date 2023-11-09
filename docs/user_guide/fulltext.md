@@ -5,14 +5,11 @@ Original API URL: <https://ppubs.uspto.gov/pubwebapp>
 :::{warning}
 The USPTO's Public Search interface IS NOT for bulk downloads. Please limit retrievals to 10's
 of documents. That will also prevent any issues with distributing this code. If you really
-want hundreds or thousands of documents, please use [Google's Public Patents Data Sets](GPAT).
+want hundreds or thousands of documents, please use [Google's Public Patents Data Sets](https://console.cloud.google.com/marketplace/partners/patents-public-data).
 :::
 
-[GPAT]: https://console.cloud.google.com/marketplace/partners/patents-public-data
 
-Patent Client provides an interface to the USPTO's [Public Search] databases.
-
-[Public Search]: https://ppubs.uspto.gov/pubwebapp/static/pages/landing.html
+Patent Client provides an interface to the USPTO's [Public Search](https://ppubs.uspto.gov/pubwebapp/static/pages/landing.html) databases.
 
 ## Api Structure
 
@@ -24,7 +21,7 @@ to prevent abuse, I have limited searches of full documents to queries that prod
 
 There are a few classes for accessing this API:
 
-- `PublicSearch` - Search bibliographic records across all databases
+- `PublicSearchBiblio` - Search bibliographic records across all databases
 - `PublicSearchDocument` - Search full documents across all databases
 - `PatentBiblio` - Search patent bibliographic records since ~1979
 - `Patent` - Search full documents for patents since ~1979
@@ -50,17 +47,14 @@ Publication(publication_number=20200000001, publication_date=2020-01-02, patent_
 The full Public Search query language is available for use by passing the special keyword "query" with a string:
 
 ```python
->>> from patent_client import PublicSearch
->>> result = PublicSearch.objects.filter(query='"6103599".PN. OR @APD=20210101')
+>>> from patent_client import PublicSearchBiblio
+>>> result = PublicSearchBiblio.objects.filter(query='"6103599".PN. OR @APD=20210101')
 
 ```
 
 Documentation on this query language is here:
- - [Training Document On Query Syntax (PDF)](QUERY_SYNTAX)
- - [Available Search Fields](SEARCH_FIELDS)
-
-[QUERY_SYNTAX]: https://ppubs.uspto.gov/pubwebapp/static/assets/files/Search%20overview%20QRG%20-%20Patent%20Public%20Search.pdf
-[SEARCH_FIELDS]: https://ppubs.uspto.gov/pubwebapp/static/pages/searchable-indexes.html
+ - [Training Document On Query Syntax (PDF)](https://ppubs.uspto.gov/pubwebapp/static/assets/files/Search%20overview%20QRG%20-%20Patent%20Public%20Search.pdf)
+ - [Available Search Fields](https://ppubs.uspto.gov/pubwebapp/static/pages/searchable-indexes.html)
 
 Patent Client also implements a subset of the searchable indexes in a fluent and Django-inspired way. Use it like this:
 
@@ -104,29 +98,35 @@ Any object can be downloaded locally as a pdf by calling `.download_images`.
 ## Models
 
 ```{eval-rst}
-.. autoclass:: patent_client.uspto.public_search.model.PublicSearch
+.. autoclass:: patent_client.uspto.public_search.model.PublicSearchBiblio
     :members:
     :undoc-members:
+    :exclude-members: model_config, model_fields
 
 .. autoclass:: patent_client.uspto.public_search.model.PublicSearchDocument
     :members:
     :undoc-members:
+    :exclude-members: model_config, model_fields
 
 .. autoclass:: patent_client.uspto.public_search.model.PatentBiblio
     :members:
     :undoc-members:
+    :exclude-members: model_config, model_fields
 
 .. autoclass:: patent_client.uspto.public_search.model.Patent
     :members:
     :undoc-members:
+    :exclude-members: model_config, model_fields
 
 .. autoclass:: patent_client.uspto.public_search.model.PublishedApplication
     :members:
     :undoc-members:
+    :exclude-members: model_config, model_fields
 
 .. autoclass:: patent_client.uspto.public_search.model.PublishedApplicationBiblio
     :members:
     :undoc-members:
+    :exclude-members: model_config, model_fields
 
 ```
 
