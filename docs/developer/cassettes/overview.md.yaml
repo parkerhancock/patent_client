@@ -557,4 +557,94 @@ interactions:
       - Access-Control-Request-Headers
     http_version: HTTP/2
     status_code: 200
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - developer.uspto.gov
+      user-agent:
+      - Mozilla/5.0 Python Patent Clientbot/3.2.10 (parkerhancock@users.noreply.github.com)
+    method: GET
+    uri: https://developer.uspto.gov/ptab-api/proceedings?proceedingNumber=IPR2017-00001&recordStartNumber=0&recordTotalQuantity=1&sortOrderCategory=
+  response:
+    content: '{"aggregationData":{},"results":[{"institutionDecisionDate":"03-27-2017","proceedingFilingDate":"10-01-2016","accordedFilingDate":"10-01-2016","proceedingStatusCategory":"FWD
+      Entered","proceedingNumber":"IPR2017-00001","proceedingLastModifiedDate":"06-13-2022","proceedingTypeCategory":"AIA
+      Trial","subproceedingTypeCategory":"IPR","respondentTechnologyCenterNumber":"2600","respondentPatentOwnerName":"Petite
+      et al","respondentPartyName":"SIPCO, LLC","respondentGroupArtUnitNumber":"2612","respondentCounselName":"Thomas
+      Meagher","respondentGrantDate":"12-23-2008","respondentPatentNumber":"7468661","respondentApplicationNumberText":"11395685","petitionerPartyName":"Emerson
+      Electric Co.","petitionerCounselName":"Steven Pepe","decisionDate":"03-16-2018","additionalRespondentPartyDataBag":[]}],"recordTotalQuantity":1}'
+    headers:
+      access-control-allow-credentials:
+      - 'true'
+      access-control-allow-headers:
+      - accept, authorization, content-type, x-requested-with
+      access-control-allow-methods:
+      - GET, POST, OPTIONS, PUT
+      access-control-allow-origin:
+      - '*'
+      access-control-max-age:
+      - '1'
+      content-type:
+      - application/json
+      date:
+      - Thu, 09 Nov 2023 16:17:39 GMT
+      strict-transport-security:
+      - max-age=31536000;
+      vary:
+      - Origin
+      - Access-Control-Request-Method
+      - Access-Control-Request-Headers
+    http_version: HTTP/2
+    status_code: 200
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - developer.uspto.gov
+      user-agent:
+      - Mozilla/5.0 Python Patent Clientbot/3.2.10 (parkerhancock@users.noreply.github.com)
+    method: GET
+    uri: https://developer.uspto.gov/ptab-api/documents?proceedingNumber=IPR2017-00001&recordStartNumber=0&recordTotalQuantity=1&sortOrderCategory=
+  response:
+    content: '{"aggregationData":{},"results":[{"filingPartyCategory":"PATENT OWN","documentNumber":"50","documentName":"IPR2017-00001NOAFWD.pdf","documentCategory":"Paper","documentTitleText":"Patent
+      Owner Notice of Appeal","proceedingNumber":"IPR2017-00001","documentFilingDate":"05-16-2018","documentTypeName":"Notice
+      of Appeal","proceedingTypeCategory":"AIA Trial","subproceedingTypeCategory":"IPR","documentIdentifier":"169664317","objectUuId":"workspace://SpacesStore/706413f4-6b98-4788-adbf-db7d101ae208;1.0","respondentTechnologyCenterNumber":"2600","respondentPatentOwnerName":"Petite
+      et al","respondentPartyName":"SIPCO, LLC","respondentGroupArtUnitNumber":"2612","respondentCounselName":"Thomas
+      Meagher","respondentGrantDate":"12-23-2008","respondentPatentNumber":"7468661","respondentApplicationNumberText":"11395685","petitionerPartyName":"Emerson
+      Electric Co.","petitionerCounselName":"Steven Pepe","additionalRespondentPartyDataBag":[]}],"recordTotalQuantity":109}'
+    headers:
+      access-control-allow-credentials:
+      - 'true'
+      access-control-allow-headers:
+      - accept, authorization, content-type, x-requested-with
+      access-control-allow-methods:
+      - GET, POST, OPTIONS, PUT
+      access-control-allow-origin:
+      - '*'
+      access-control-max-age:
+      - '1'
+      content-type:
+      - application/json
+      date:
+      - Thu, 09 Nov 2023 16:17:39 GMT
+      strict-transport-security:
+      - max-age=31536000;
+      vary:
+      - Origin
+      - Access-Control-Request-Method
+      - Access-Control-Request-Headers
+    http_version: HTTP/2
+    status_code: 200
 version: 1

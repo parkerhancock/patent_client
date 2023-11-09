@@ -341,4 +341,44 @@ interactions:
         search=green:15)
     http_version: HTTP/1.1
     status_code: 200
+- request:
+    body: ''
+    headers:
+      Authorization:
+      - REDACTED
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - ops.epo.org
+      user-agent:
+      - Mozilla/5.0 Python Patent Clientbot/3.2.10 (parkerhancock@users.noreply.github.com)
+    method: GET
+    uri: http://ops.epo.org/3.2/rest-services/published-data/publication/docdb/WO2020081771A1/biblio
+  response:
+    content: "<error><code>400</code><message>invalid_access_token</message><description>Access
+      token has expired</description>\n\t\t\t\t</error>\n\t\t\t"
+    headers:
+      Access-Control-Allow-Headers:
+      - Authorization
+      Access-Control-Allow-Methods:
+      - POST
+      Access-Control-Allow-Origin:
+      - '*'
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '130'
+      Content-Type:
+      - application/xml
+      Date:
+      - Thu, 09 Nov 2023 16:17:41 GMT
+      WWW-Authenticate:
+      - 'Bearer realm="null",error="invalid_token",error_description="keymanagement.service.access_token_expired:
+        Access Token expired"'
+    http_version: HTTP/1.1
+    status_code: 400
 version: 1
