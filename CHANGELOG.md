@@ -1,5 +1,17 @@
 # Changelog
 
+## 3.2.10 (2023-10-31)
+- Attempt to fix broken docs
+
+## 3.2.9 (2023-10-31)
+- Add `download_image` to EPO OPS published model.
+- Substitute `httpx` for all `requests` methods.
+- Migrate cache from `requests-cache` to `hishel`
+- Add async variations for all model endpoints using `hishel.AsyncCacheClient`
+
+## 3.2.8 (2023-10-25)
+- Change behavior of PTAB model downloading to match other download functions.
+
 ## 3.2.7 (2023-07-10)
 - Used HTTPX for Public Patent Search and removed references in documentation suggesting it no longer works.
 
