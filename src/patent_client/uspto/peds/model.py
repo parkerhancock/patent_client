@@ -2,7 +2,6 @@ import datetime
 from pathlib import Path
 from typing import List
 from typing import Optional
-from typing import Self
 from typing import TYPE_CHECKING
 
 from dateutil.relativedelta import relativedelta
@@ -16,6 +15,7 @@ from pydantic import Field
 from pydantic import model_validator
 from pydantic.alias_generators import to_camel
 from typing_extensions import Annotated
+from typing_extensions import Self
 
 from .session import session
 

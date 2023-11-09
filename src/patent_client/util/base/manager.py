@@ -6,11 +6,11 @@ from itertools import chain
 from typing import AsyncIterator
 from typing import Generic
 from typing import Iterator
-from typing import Self
 from typing import TYPE_CHECKING
 from typing import TypeVar
 from typing import Union
 
+from typing_extensions import Self
 from yankee.data import Collection
 
 from ..asyncio_util import run_async_iterator
