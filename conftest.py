@@ -2,6 +2,10 @@ import asyncio
 
 import pytest
 
+collect_ignore = [
+    "hishel",
+]
+
 
 @pytest.fixture(scope="module")
 def vcr_config():

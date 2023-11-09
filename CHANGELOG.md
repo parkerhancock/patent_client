@@ -1,5 +1,8 @@
 # Changelog
 
+## 4.0.0 (2023-11-09)
+- Rewrite all models using Pydantic models
+
 ## 3.2.11 (2023-11-09)
 - Remove `requests-cache` as a dependency and remove all references thereto.
 
