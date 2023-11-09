@@ -24,7 +24,7 @@ author = "Parker Hancock"
 
 # The full version, including alpha/beta/rc tags
 
-version = release = "3.2.10"
+version = release = "3.2.11"
 
 
 # -- General configuration ---------------------------------------------------
