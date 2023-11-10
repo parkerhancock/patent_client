@@ -1,13 +1,13 @@
 # Base Model and Manager
 
 ```{eval-rst}
-.. autoclass:: patent_client.util.base.manager.Manager
+.. autoclass:: patent_client.util.manager.Manager
     :members:
     :inherited-members:
 ```
 
 ```{eval-rst}
-.. autoclass:: patent_client.util.base.model.Model
+.. autoclass:: patent_client.util.model.Model
     :members:
     :inherited-members:
 ```

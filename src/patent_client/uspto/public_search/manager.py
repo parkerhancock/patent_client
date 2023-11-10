@@ -2,7 +2,7 @@ from typing import AsyncIterator
 from typing import Generic
 from typing import TypeVar
 
-from patent_client.util.base.manager import Manager
+from patent_client.util.manager import Manager
 from patent_client.util.request_util import get_start_and_row_count
 
 from .api import PublicSearchApi

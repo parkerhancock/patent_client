@@ -2,8 +2,7 @@ import asyncio
 from pathlib import Path
 
 import httpx
-import tenacity
-from pydantic_core._pydantic_core import ValidationError
+from patent_client.util.hishel_util import cache_disabled
 
 from .model import PublicSearchBiblioPage
 from .model import PublicSearchDocument
@@ -27,11 +26,6 @@ class PublicSearchApi:
         self.session = dict()
         self.case_id = None
 
-    @tenacity.retry(
-        stop=tenacity.stop_after_attempt(3),
-        wait=tenacity.wait_random(min=1, max=5),
-        retry=tenacity.retry_if_not_exception_type(ValidationError),
-    )
     async def run_query(
         self,
         query,
@@ -92,11 +86,6 @@ class PublicSearchApi:
             raise UsptoException(f"Error #{result['error']['errorCode']}\n{result['error']['errorMessage']}")
         return PublicSearchBiblioPage.model_validate(result)
 
-    @tenacity.retry(
-        stop=tenacity.stop_after_attempt(3),
-        wait=tenacity.wait_random(min=1, max=5),
-        retry=tenacity.retry_if_not_exception_type(ValidationError),
-    )
     async def get_document(self, bib) -> "PublicSearchDocument":
         url = f"https://ppubs.uspto.gov/dirsearch-public/patents/{bib.guid}/highlight"
         params = {
@@ -109,11 +98,6 @@ class PublicSearchApi:
         response.raise_for_status()
         return PublicSearchDocument.model_validate(response.json())
 
-    @tenacity.retry(
-        stop=tenacity.stop_after_attempt(3),
-        wait=tenacity.wait_random(min=1, max=5),
-        retry=tenacity.retry_if_not_exception_type(ValidationError),
-    )
     async def get_session(self):
         url = "https://ppubs.uspto.gov/dirsearch-public/users/me/session"
         with cache_disabled(session):
@@ -122,7 +106,6 @@ class PublicSearchApi:
             self.case_id = self.session["userCase"]["caseId"]
             return self.session
 
-    @tenacity.retry(stop=tenacity.stop_after_attempt(3), wait=tenacity.wait_random(min=1, max=5))
     async def _request_save(self, obj):
         page_keys = [f"{obj.image_location}/{i:0>8}.tif" for i in range(1, obj.document_structure.page_count + 1)]
         response = await session.post(
@@ -135,16 +118,11 @@ class PublicSearchApi:
                 "source": obj.type,
             },
         )
-        response.raise_for_status()
+        if response.status_code == 500:
+            raise UsptoException(response.text)
         return response.text
 
-    @tenacity.retry(
-        stop=tenacity.stop_after_attempt(3),
-        wait=tenacity.wait_random(min=1, max=5),
-        retry=tenacity.retry_if_not_exception_type(ValidationError),
-    )
     async def download_image(self, obj, path="."):
-        print("Trying!")
         out_path = Path(path).expanduser() / f"{obj.guid}.pdf"
         if out_path.exists():
             return out_path

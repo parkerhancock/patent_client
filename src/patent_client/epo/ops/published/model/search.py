@@ -34,5 +34,5 @@ class Search(EpoBaseModel):
 
     @model_validator(mode="before")
     @classmethod
-    def convert(cls, values):
+    def xml_convert(cls, values):
         return cls.__schema__.load(values)

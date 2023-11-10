@@ -18,7 +18,7 @@ The basic structure of Patent Client API wrapper looks like this:
   - `manager.py`
 
 The `model.py` file should contain [Pydantic v2](https://docs.pydantic.dev/latest/) models representing the output of the API, using `patent_client.util.pydantic_utils.BaseModel`
-instead of `pydantic.BaseModel`. The `api.py` file should contain at least one class with methods that call various API functions. The actual structure of the `api.py` file does not matter, but each method should return instances of the Pydantic models defined in `model.py`. The `manager.py` contains a subclass of `patent_client.util.base.manager.Manager` and serves as a wrapper over the API classes in `apy.py` that implement the manager protocol below.
+instead of `pydantic.BaseModel`. The `api.py` file should contain at least one class with methods that call various API functions. The actual structure of the `api.py` file does not matter, but each method should return instances of the Pydantic models defined in `model.py`. The `manager.py` contains a subclass of `patent_client.util.manager.Manager` and serves as a wrapper over the API classes in `apy.py` that implement the manager protocol below.
 
 Other files can also be included in the API folder to support other functions. Common ones include:
 
@@ -49,7 +49,7 @@ Models may also include:
 
 ### Relationships
 
-You can create properties of a Model that link to another model using `patent_client.util.base.related.get_model`. With `get_model`, you can dynamically retrieve
+You can create properties of a Model that link to another model using `patent_client.util.related.get_model`. With `get_model`, you can dynamically retrieve
 another model, and then use an active record call on that model. `get_model` is preferred over importing the model directly to reduce the risk of circular imports.
 
 Example:
@@ -76,7 +76,7 @@ Some models have downloads related to them, like Assignment PDF's or Patent and 
 ## Managers
 
 When filtering, ordering, or values methods are called on a Manager, it returns a new Manager object with a combination of the arguments to the old manager and the new arguments. In this way, any given Manager is *immutable*. The key data in the Manager is in a `ManagerConfig` object stored at `Manager.config`.
-Managers require subclassing `patent_client.util.base.Manager` and defining these methods:
+Managers require subclassing `patent_client.util.Manager` and defining these methods:
 
 `Manager._aget_results`
 
@@ -99,7 +99,7 @@ class Model(BaseModel):
 ```
 `manager.py`
 ```python
-from patent_client.util.base import Manager
+from patent_client.util import Manager
 class ModelManager(Manager):
     # an implementation
 ```
@@ -114,7 +114,7 @@ class SubModel(BaseModel):
 ```
 `manager/submanager.py`
 ```python
-from patent_client.util.base import Manager
+from patent_client.util import Manager
 class SubModelManager(Manager):
     # an implementation
 ```

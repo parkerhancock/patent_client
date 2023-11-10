@@ -4,7 +4,7 @@ import warnings
 from collections.abc import Sequence
 from typing import AsyncIterator
 
-from patent_client.util import Manager
+from patent_client.util.manager import Manager
 from patent_client.util.request_util import get_start_and_row_count
 from urllib3.connectionpool import InsecureRequestWarning
 

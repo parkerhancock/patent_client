@@ -1,11 +1,9 @@
 import importlib
-from itertools import zip_longest
 from typing import Generic
 from typing import Optional
-from typing import Sequence
 from typing import TypeVar
 
-from patent_client.util.base.manager import Manager
+from patent_client.util.manager import Manager
 from pydantic import BaseModel as PydanticBaseModel
 from pydantic import ConfigDict
 
@@ -58,10 +56,3 @@ class BaseModel(PydanticBaseModel, Generic[M]):
 
     def items(self):
         return iter(self)
-
-
-def zip_fields(values: dict, field_names: Sequence[str]):
-    lists = [values.get(key, list()) for key in field_names]
-    lists = [v if isinstance(v, list) else list() for v in lists]
-    tuples = list(zip_longest(*lists))
-    return [dict(zip(field_names, t)) for t in tuples]

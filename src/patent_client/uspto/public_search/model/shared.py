@@ -13,7 +13,7 @@ from typing_extensions import Annotated
 class PublicSearchBaseModel(BaseModel):
     model_config = ConfigDict(
         alias_generator=to_camel,
-        anystr_strip_whitespace=True,
+        str_strip_whitespace=True,
     )
 
 

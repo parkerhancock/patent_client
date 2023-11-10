@@ -6,8 +6,8 @@ from typing import TYPE_CHECKING
 
 from dateutil.relativedelta import relativedelta
 from patent_client.util.asyncio_util import run_sync
-from patent_client.util.base.related import get_model
 from patent_client.util.pydantic_util import BaseModel
+from patent_client.util.related import get_model
 from pydantic import AliasPath
 from pydantic import BeforeValidator
 from pydantic import ConfigDict
@@ -112,17 +112,16 @@ class USApplication(PEDSBaseModel):
     app_filing_date: DateTimeAsDate
     app_exam_name: Optional[str] = None
     public_ind: YNBool
-    inventor_name: str
+    inventor_name: Optional[str] = None
     app_early_pub_number: Optional[str] = None
     app_early_pub_date: Optional[DateTimeAsDate] = None
     patent_number: Optional[str] = None
     patent_issue_date: Optional[DateTimeAsDate] = None
-    app_location: str
-    app_grp_art_number: str
-    app_sub_cls: str
+    app_location: Optional[str] = None
+    app_grp_art_number: Optional[str] = None
     last_modified: datetime.datetime = Field(alias="LAST_MOD_TS")
     last_insert_time: datetime.datetime = Field(alias="LAST_INSERT_TIME")
-    patent_title: str
+    patent_title: Optional[str] = None
 
     app_attr_dock_number: Optional[str] = None
     app_status: Optional[str] = None

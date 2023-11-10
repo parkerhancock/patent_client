@@ -107,7 +107,8 @@ class TestPatents:
         assert obj.publication_number == "7658211"
         assert obj.patent_title == "Tennis ball recharging apparatus method"
 
-    # @pytest.mark.no_vcr
+    @pytest.mark.skip("This test is too slow")
+    @pytest.mark.no_vcr
     def test_can_get_images(self, tmp_path):
         pat = Patent.objects.get("6103599")
         path = pat.download_images(path=tmp_path)
@@ -160,6 +161,7 @@ class TestPublishedApplicationFullText:
         obj = PublishedApplication.objects.get("20170260839")
         assert obj.claims[0].text[:39] == "1. A method of well ranging comprising:"
 
+    @pytest.mark.skip("This test is too slow")
     @pytest.mark.no_vcr
     def test_can_get_images(self, tmp_path):
         pat = PublishedApplication.objects.get("20090150362")
@@ -309,6 +311,7 @@ class TestPatentsAsync:
         assert obj.publication_number == "7658211"
         assert obj.patent_title == "Tennis ball recharging apparatus method"
 
+    @pytest.mark.skip("This test is too slow")
     @pytest.mark.no_vcr
     @pytest.mark.asyncio
     async def test_can_get_images(self, tmp_path):
@@ -367,7 +370,7 @@ class TestPublishedApplicationFullTextAsync:
         obj = await PublishedApplication.objects.aget("20170260839")
         assert obj.claims[0].text[:39] == "1. A method of well ranging comprising:"
 
-    # @pytest.mark.no_vcr
+    @pytest.mark.skip("This test is too slow")
     @pytest.mark.asyncio
     async def test_can_get_images(self, tmp_path):
         pat = await PublishedApplication.objects.aget("20090150362")

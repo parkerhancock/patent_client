@@ -68,5 +68,5 @@ class Images(InpadocModel):
 
     @model_validator(mode="before")
     @classmethod
-    def convert(cls, values):
+    def xml_convert(cls, values):
         return ImagesSchema.load(values)

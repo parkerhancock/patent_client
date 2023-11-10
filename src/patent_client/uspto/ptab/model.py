@@ -13,7 +13,7 @@ from pydantic import Field
 from pydantic.alias_generators import to_camel
 from typing_extensions import Annotated
 
-from ...util.base.related import get_model
+from ...util.related import get_model
 from .session import session
 
 if TYPE_CHECKING:
@@ -25,7 +25,7 @@ MDYDate = Annotated[datetime.date, BeforeValidator(lambda x: datetime.datetime.s
 class PtabBaseModel(BaseModel):
     model_config = ConfigDict(
         alias_generator=to_camel,
-        anystr_strip_whitespace=True,
+        str_strip_whitespace=True,
     )
 
 

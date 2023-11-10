@@ -6,7 +6,7 @@ from typing import AsyncIterator
 from typing import TYPE_CHECKING
 
 from patent_client.util.asyncio_util import run_sync
-from patent_client.util.base.manager import Manager
+from patent_client.util.manager import Manager
 from patent_client.util.request_util import get_start_and_row_count
 from pypdf import PdfMerger
 

@@ -4,8 +4,8 @@ from typing import Generic
 from typing import Optional
 
 import inflection
-from patent_client.util import Manager
-from patent_client.util import ModelType
+from patent_client.util.manager import Manager
+from patent_client.util.manager import ModelType
 from patent_client.util.request_util import get_start_and_row_count
 
 from .api import PtabApi

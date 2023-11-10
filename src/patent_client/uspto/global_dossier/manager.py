@@ -1,4 +1,4 @@
-from patent_client.util.base.manager import Manager
+from patent_client.util.manager import Manager
 
 from .api import GlobalDossierApi
 from .query import QueryBuilder

@@ -17,7 +17,7 @@ class TestPatentExaminationDataDeserialization:
         input_file = fixtures / "app_1_input.json"
         output_file = fixtures / "app_1_output.json"
         app = PedsPage.model_validate_json(input_file.read_text())
-        output_file.write_text(app.model_dump_json(indent=2))
+        # output_file.write_text(app.model_dump_json(indent=2))
         expected_data = json.loads(output_file.read_text())
         assert json.loads(app.model_dump_json()) == expected_data
 

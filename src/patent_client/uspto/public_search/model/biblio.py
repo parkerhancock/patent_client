@@ -1,8 +1,8 @@
 import datetime
 from typing import Optional
 
-from patent_client.util.base.related import get_model
 from patent_client.util.pydantic_util import BaseModel
+from patent_client.util.related import get_model
 from pydantic import AliasPath
 from pydantic import Field
 from pydantic import model_validator

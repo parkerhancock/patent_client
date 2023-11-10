@@ -2,8 +2,8 @@ from typing import List
 from typing import Optional
 from typing import TYPE_CHECKING
 
-from patent_client.util.base.related import get_model
 from patent_client.util.pydantic_util import BaseModel
+from patent_client.util.related import get_model
 from pydantic import model_validator
 from yankee.xml.schema import Schema as XmlSchema
 
@@ -29,7 +29,7 @@ class EpoBaseModel(BaseModel):
 
     @model_validator(mode="before")
     @classmethod
-    def convert(cls, values):
+    def xml_convert(cls, values):
         if isinstance(values, (str, bytes)):
             return cls.__schema__.load(values).to_dict()
         return values

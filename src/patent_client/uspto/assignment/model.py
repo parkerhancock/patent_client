@@ -6,8 +6,8 @@ from typing import Optional
 from typing import TYPE_CHECKING
 
 from patent_client.util.asyncio_util import run_sync
-from patent_client.util.base.related import get_model
 from patent_client.util.pydantic_util import BaseModel
+from patent_client.util.related import get_model
 from pydantic import BeforeValidator
 from pydantic import ConfigDict
 from pydantic import Field
@@ -46,7 +46,7 @@ DatetimeAsDate = Annotated[Optional[datetime.date], BeforeValidator(lambda x: pa
 class AbstractAssignmentModel(BaseModel):
     model_config = ConfigDict(
         alias_generator=to_camel,
-        anystr_strip_whitespace=True,
+        str_strip_whitespace=True,
     )
 
 

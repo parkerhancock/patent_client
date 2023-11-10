@@ -5,9 +5,9 @@ from typing import Optional
 
 import lxml.html as ETH
 from patent_client.util.asyncio_util import run_sync
-from patent_client.util.base.related import get_model
 from patent_client.util.claims.parser import ClaimsParser
 from patent_client.util.pydantic_util import BaseModel
+from patent_client.util.related import get_model
 from pydantic import BeforeValidator
 from pydantic import Field
 from pydantic import model_validator
@@ -184,7 +184,7 @@ class PublicSearchDocument(BaseModel):
 
     @model_validator(mode="before")
     @classmethod
-    def convert(cls, values):
+    def xml_convert(cls, values):
         return PublicSearchBiblioConvert.convert(values)
 
     @property
@@ -242,5 +242,5 @@ class PublicSearchDocument(BaseModel):
 
     @model_validator(mode="before")
     @classmethod
-    def convert(cls, values):
+    def xml_convert(cls, values):
         return cls.__schema__.deserialize(values).to_dict()
