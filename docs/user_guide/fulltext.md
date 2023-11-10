@@ -36,9 +36,9 @@ into a "get" query, and you'll get the desired response:
 ```python
 >>> from patent_client import Patent, PublishedApplication
 >>> Patent.objects.get("10000000")
-Publication(publication_number=10000000, publication_date=2018-06-19, patent_title=Coherent LADAR using intra-pixel quadrature detection)
+PublicSearchDocument(publication_number=10000000, publication_date=2018-06-19, patent_title=Coherent LADAR using intra-pixel quadrature detection)
 >>> PublishedApplication.objects.get("20200000001")
-Publication(publication_number=20200000001, publication_date=2020-01-02, patent_title=SYSTEM FOR CONNECTING IMPLEMENT TO MOBILE MACHINERY)
+PublicSearchDocument(publication_number=20200000001, publication_date=2020-01-02, patent_title=SYSTEM FOR CONNECTING IMPLEMENT TO MOBILE MACHINERY)
 
 ```
 
@@ -61,7 +61,7 @@ Patent Client also implements a subset of the searchable indexes in a fluent and
 ```python
 >>> from patent_client import PatentBiblio
 >>> tennis_patents = PatentBiblio.objects.filter(patent_title="tennis", assignee="wilson")
->>> len(tennis_patents) > 10
+>>> len(tennis_patents) > 10 # doctest +SKIP
 True
 
 ```

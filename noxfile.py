@@ -24,7 +24,7 @@ CLEAN_DIRS = ["dist", "build", join("docs", "_build"), join("docs", "modules")]
 
 PYTHON_VERSIONS = ["3.7", "3.8", "3.9", "3.10"]
 SOURCE_FILES = [
-    "src",
+    "patent_client",
 ]
 INTEGRATION_TESTS = join("tests", "integration")
 DEFAULT_COVERAGE_FORMATS = ["html", "term"]
@@ -65,7 +65,7 @@ def clean_cassettes(session):
 @session(python=False, name="cov")
 def coverage(session):
     """Run tests and generate coverage report"""
-    cmd = f"pytest ./src -rs {XDIST_ARGS} --cov".split(" ")
+    cmd = f"pytest ./patent_client -rs {XDIST_ARGS} --cov".split(" ")
 
     # Add coverage formats
     cov_formats = session.posargs or DEFAULT_COVERAGE_FORMATS

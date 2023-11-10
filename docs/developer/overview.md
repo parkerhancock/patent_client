@@ -99,7 +99,7 @@ class Model(BaseModel):
 ```
 `manager.py`
 ```python
-from patent_client.util import Manager
+from patent_client.util.manager import Manager
 class ModelManager(Manager):
     # an implementation
 ```
@@ -114,7 +114,7 @@ class SubModel(BaseModel):
 ```
 `manager/submanager.py`
 ```python
-from patent_client.util import Manager
+from patent_client.util.manager import Manager
 class SubModelManager(Manager):
     # an implementation
 ```
