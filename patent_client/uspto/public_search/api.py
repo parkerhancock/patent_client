@@ -6,7 +6,6 @@ import httpx
 from .model import PublicSearchBiblioPage
 from .model import PublicSearchDocument
 from .session import session
-from patent_client.util.hishel_util import cache_disabled
 
 
 class UsptoException(Exception):
@@ -100,7 +99,7 @@ class PublicSearchApi:
 
     async def get_session(self):
         url = "https://ppubs.uspto.gov/dirsearch-public/users/me/session"
-        with cache_disabled(session):
+        with session.cache_disabled():
             response = await session.post(url, json=-1)  # json=str(random.randint(10000, 99999)))
             self.session = response.json()
             self.case_id = self.session["userCase"]["caseId"]

@@ -6,7 +6,7 @@ from typing import Optional
 from .model import Document
 from .model import PedsPage
 from .session import session
-from patent_client.util.hishel_util import cache_disabled
+
 
 type_map = {
     "string": str,
@@ -30,7 +30,7 @@ class PatentExaminationDataSystemApi:
 
     @classmethod
     async def is_online(cls) -> bool:
-        with cache_disabled(session):
+        with session.cache_disabled():
             response = await session.get("https://ped.uspto.gov/api/search-fields")
             if response.status_code == 200:
                 return True
