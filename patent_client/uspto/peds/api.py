@@ -104,7 +104,7 @@ class PatentExaminationDataSystemApi:
         response.raise_for_status()
         return PedsPage.model_validate(response.json())
 
-    async def get_documents(self, appl_id: str) -> "PedsPage":
+    async def get_documents(self, appl_id: str) -> List[Document]:
         url = f"https://ped.uspto.gov/api/queries/cms/public/{appl_id}"
         response = await session.get(url)
         response.raise_for_status()

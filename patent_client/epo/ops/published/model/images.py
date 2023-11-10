@@ -2,6 +2,7 @@ from pathlib import Path
 from typing import List
 from typing import Optional
 
+from pydantic import computed_field
 from pydantic import Field
 from pypdf import PdfReader
 from pypdf import PdfWriter
@@ -62,6 +63,7 @@ class Images(InpadocModel):
     drawing: Optional[ImageDocument] = None
     first_page: Optional[ImageDocument] = None
 
+    @computed_field
     @property
-    def docdb_number(self):
-        return str(self.publication_reference)
+    def docdb_number(self) -> str:
+        return str(self.publication_number)

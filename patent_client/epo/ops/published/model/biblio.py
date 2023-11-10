@@ -1,6 +1,7 @@
 from typing import List
 from typing import Optional
 
+from pydantic import computed_field
 from pydantic import Field
 
 from ..schema.biblio import BiblioResultSchema
@@ -19,9 +20,13 @@ class Citation(InpadocModel):
     def __repr__(self):
         return f"Citation(doc_number={str(self.docdb)}, cited_by={self.cited_by}, cited_phase={self.cited_phase})"
 
+    @computed_field
     @property
-    def docdb_number(self):
-        return str(self.docdb)
+    def docdb_number(self) -> str:
+        num = self.docdb
+        if num.kind:
+            return f"{num.country}{num.number}.{num.kind}"
+        return f"{num.country}{num.number}"
 
 
 class Title(EpoBaseModel):
@@ -69,10 +74,6 @@ class InpadocBiblio(InpadocModel):
 
     def __repr__(self):
         return f"InpadocBiblio(publication_number={self.publication_number}, title={limit_text(self.title, 30)})"
-
-    @property
-    def docdb_number(self):
-        return str(self.publication_reference_docdb)
 
 
 class BiblioResult(EpoBaseModel):

@@ -171,7 +171,7 @@ class PtabDocument(PtabBaseModel):
         filename = f"[{str(self.document_number).rjust(4, '0')}] {self.document_filing_date.isoformat()} - {name}"
         filename = filename.encode(encoding="ascii", errors="ignore").decode("ascii")
         filename = fname_re.sub("", filename)
-        out_path = Path(path)
+        out_path = Path(path) if path else Path.cwd()
         if out_path.is_dir():
             out_path = Path(path) / filename
         else:

@@ -2,6 +2,7 @@ from typing import List
 from typing import Optional
 from typing import TYPE_CHECKING
 
+from pydantic import computed_field
 from pydantic import model_validator
 from yankee.xml.schema import Schema as XmlSchema
 
@@ -37,6 +38,14 @@ class EpoBaseModel(BaseModel):
 
 
 class InpadocModel(EpoBaseModel):
+    @computed_field
+    @property
+    def docdb_number(self) -> str:
+        num = self.publication_reference_docdb
+        if num.kind:
+            return f"{num.country}{num.number}.{num.kind}"
+        return f"{num.country}{num.number}"
+
     @property
     def biblio(self) -> "InpadocBiblio":
         return get_model("patent_client.epo.ops.published.model.InpadocBiblio").objects.get(self.docdb_number)

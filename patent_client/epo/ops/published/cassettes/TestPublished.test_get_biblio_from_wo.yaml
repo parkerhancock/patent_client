@@ -13,7 +13,7 @@ interactions:
       host:
       - ops.epo.org
       user-agent:
-      - Mozilla/5.0 Python Patent Clientbot/3.2.10 (parkerhancock@users.noreply.github.com)
+      - Mozilla/5.0 Python Patent Clientbot/4.0.0 (parkerhancock@users.noreply.github.com)
     method: GET
     uri: http://ops.epo.org/3.2/rest-services/published-data/publication/docdb/WO2009085664A2/biblio
   response:
@@ -163,10 +163,12 @@ interactions:
       - no-cache
       Connection:
       - keep-alive
+      Content-Length:
+      - '12275'
       Content-Type:
       - application/xml;charset=utf-8
       Date:
-      - Thu, 09 Nov 2023 17:22:58 GMT
+      - Fri, 10 Nov 2023 17:56:16 GMT
       ETag:
       - '"02bcf6d49927d35ce4b18c7d37307ba1b"'
       Pragma:
@@ -180,18 +182,18 @@ interactions:
       X-API:
       - ops-v3.2
       X-EPO-Client-IP:
-      - 38.104.255.66
+      - 104.54.160.230
       X-EPO-Forwarded:
-      - '[38.104.255.66]'
+      - '[104.54.160.230]'
       X-Elapsed-Time:
       - '0'
       X-IndividualQuotaPerHour-Used:
-      - '261500'
+      - '400113'
       X-RegisteredQuotaPerWeek-Used:
-      - '1018717'
+      - '1625480'
       X-Throttling-Control:
-      - busy (images=green:100, inpadoc=green:45, other=green:1000, retrieval=green:100,
-        search=green:15)
+      - idle (images=green:200, inpadoc=green:60, other=green:1000, retrieval=green:200,
+        search=green:30)
     http_version: HTTP/1.1
     status_code: 200
 - request:
@@ -208,9 +210,9 @@ interactions:
       host:
       - ops.epo.org
       user-agent:
-      - Mozilla/5.0 Python Patent Clientbot/3.2.10 (parkerhancock@users.noreply.github.com)
+      - Mozilla/5.0 Python Patent Clientbot/4.0.0 (parkerhancock@users.noreply.github.com)
     method: GET
-    uri: http://ops.epo.org/3.2/rest-services/published-data/publication/docdb/WO2009085664A2/biblio
+    uri: http://ops.epo.org/3.2/rest-services/published-data/publication/docdb/WO2009085664.A2/biblio
   response:
     content: "<?xml version=\"1.0\" encoding=\"UTF-8\"?><?xml-stylesheet type=\"text/xsl\"
       href=\"/3.2/style/exchange.xsl\"?>\n<ops:world-patent-data xmlns=\"http://www.epo.org/exchange\"
@@ -358,10 +360,12 @@ interactions:
       - no-cache
       Connection:
       - keep-alive
+      Content-Length:
+      - '12275'
       Content-Type:
       - application/xml;charset=utf-8
       Date:
-      - Thu, 09 Nov 2023 17:22:58 GMT
+      - Fri, 10 Nov 2023 17:56:17 GMT
       ETag:
       - '"02bcf6d49927d35ce4b18c7d37307ba1b"'
       Pragma:
@@ -375,18 +379,18 @@ interactions:
       X-API:
       - ops-v3.2
       X-EPO-Client-IP:
-      - 38.104.255.66
+      - 104.54.160.230
       X-EPO-Forwarded:
-      - '[38.104.255.66]'
+      - '[104.54.160.230]'
       X-Elapsed-Time:
       - '0'
       X-IndividualQuotaPerHour-Used:
-      - '261500'
+      - '412388'
       X-RegisteredQuotaPerWeek-Used:
-      - '1018717'
+      - '1637755'
       X-Throttling-Control:
-      - overloaded (images=green:50, inpadoc=green:30, other=green:1000, retrieval=green:50,
-        search=green:5)
+      - idle (images=green:200, inpadoc=green:60, other=green:1000, retrieval=green:200,
+        search=green:30)
     http_version: HTTP/1.1
     status_code: 200
 version: 1

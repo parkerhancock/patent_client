@@ -46,9 +46,11 @@ class OpsAsyncSession(PatentClientSession):
     async def request(self, *args, **kwargs):
         response = await super(OpsAsyncSession, self).request(*args, **kwargs)
         if response.status_code in (403, 400):
+            self.delete(response)
             auth_response = await self.get_token()
             response = await super(OpsAsyncSession, self).request(*args, **kwargs)
         if response.status_code in (403, 400):
+            self.delete(response)
             if "Fair Use policy" in response.text:
                 raise OpsFairUseError(f"EPO Fair Use Policy Error!\n{response.text}{response.headers}")
             else:

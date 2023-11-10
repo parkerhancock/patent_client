@@ -89,6 +89,7 @@ def convert_xml_to_json(xml_text) -> dict:
     """Convert the idiosyncratic xml of the Assignment API to ordinary json"""
     tree = ET.fromstring(xml_text)
     output = dict()
-    output["numFound"] = tree.find(".//result").attrib["numFound"]
+    num_found = tree.find(".//result")
+    output["numFound"] = num_found.attrib["numFound"] if num_found is not None else 0
     output["docs"] = [convert_doc(doc) for doc in tree.findall(".//result/doc")]
     return output

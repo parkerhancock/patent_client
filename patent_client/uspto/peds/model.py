@@ -1,5 +1,6 @@
 import datetime
 from pathlib import Path
+from typing import Iterable
 from typing import List
 from typing import Optional
 from typing import TYPE_CHECKING
@@ -160,13 +161,11 @@ class USApplication(PEDSBaseModel):
     @property
     def continuity(self) -> List[Self]:
         """Returns a complete set of parents, self, and children"""
-        return List(
+        return list(
             [
-                self.child_continuity.values_list("child", flat=True),
-                [
-                    self,
-                ],
-                self.parent_continuity.values_list("parent", flat=True),
+                *self.child_continuity.values_list("child", flat=True),
+                self,
+                *self.parent_continuity.values_list("parent", flat=True),
             ]
         )
 

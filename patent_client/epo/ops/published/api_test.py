@@ -13,7 +13,7 @@ class TestPublishedBiblioAsyncApi:
     async def test_doc_example_biblio(self):
         result = await PublishedAsyncApi.biblio.get_biblio("EP1000000.A1", format="epodoc")
         expected_file = fixture_dir / "ep1000000_biblio_result.json"
-        # expected_file.write_text(result.model_dump_json(indent=2))
+        expected_file.write_text(result.model_dump_json(indent=2))
         expected = json.loads(expected_file.read_text())
         actual = json.loads(result.model_dump_json())
         assert actual == expected
@@ -40,7 +40,7 @@ class TestSearchApi:
     async def test_search(self):
         result = await PublishedAsyncApi.search.search("ti=plastic")
         expected_file = fixture_dir / "search_result.xml"
-        # expected_file.write_text(result.model_dump_json(indent=2))
+        expected_file.write_text(result.model_dump_json(indent=2))
         expected = json.loads(expected_file.read_text())
         actual = json.loads(result.model_dump_json())
         assert actual == expected

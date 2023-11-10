@@ -17,7 +17,7 @@ class TestPublished:
     def test_get_biblio_from_result(self):
         doc = Inpadoc.objects.filter(applicant="Google").first()
         result = doc.biblio
-        assert result.title is not None
+        assert len(result.titles) > 0
 
     def test_get_claims_from_result(self):
         result = Inpadoc.objects.get("WO2009085664A2")
@@ -75,7 +75,7 @@ class TestPublishedAsync:
     async def test_get_biblio_from_result(self):
         doc = await Inpadoc.objects.filter(applicant="Google").afirst()
         result = doc.biblio
-        assert result.title is not None
+        assert len(result.titles) > 0
 
     @pytest.mark.asyncio
     async def test_get_claims_from_result(self):

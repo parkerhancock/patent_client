@@ -177,7 +177,7 @@ class PublicSearchDocument(BaseModel):
 
     @model_validator(mode="before")
     @classmethod
-    def json_convert(cls, values):
+    def convert_json(cls, values):
         return PublicSearchBiblioConvert.convert(values)
 
     @property
@@ -235,5 +235,5 @@ class PublicSearchDocument(BaseModel):
 
     @model_validator(mode="before")
     @classmethod
-    def json_convert(cls, values):
+    def convert_json(cls, values):
         return cls.__schema__.deserialize(values).to_dict()

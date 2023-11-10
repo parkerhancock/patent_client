@@ -3,6 +3,7 @@ import warnings
 from contextlib import contextmanager
 from pathlib import Path
 from typing import Optional
+from typing import Union
 
 import hishel
 import httpx
@@ -14,6 +15,30 @@ from patent_client.version import __version__
 filename_re = re.compile(r'filename="([^"]+)"')
 
 
+class PatentClientAsyncFileCache(hishel.AsyncFileStorage):
+    _default_base_path = CACHE_DIR
+
+    def __init__(self, **kwargs):
+        kwargs["base_path"] = kwargs.get("base_path", self._default_base_path)
+        super(PatentClientAsyncFileCache, self).__init__(**kwargs)
+
+    def delete(self, cache_key: str):
+        response_path = self._base_path / cache_key
+        if response_path.exists():
+            response_path.unlink()
+
+
+class PatentClientController(hishel.Controller):
+    def construct_response_from_cache(
+        self, request: httpx.Request, response: httpx.Response, original_request: httpx.Request
+    ) -> Union[httpx.Response, httpx.Request, None]:
+        try:
+            super(PatentClientController, self).construct_response_from_cache(request, response, original_request)
+        except RuntimeError:
+            self._make_request_conditional(request=request, response=response)
+            return request
+
+
 class PatentClientSession(hishel.AsyncCacheClient):
     _default_transport = httpx.AsyncHTTPTransport(
         retries=3,
@@ -22,8 +47,8 @@ class PatentClientSession(hishel.AsyncCacheClient):
     )
     _default_timeout = 60 * 5
     _default_user_agent = f"Mozilla/5.0 Python Patent Clientbot/{__version__} (parkerhancock@users.noreply.github.com)"
-    _default_storage = hishel.AsyncFileStorage(base_path=CACHE_DIR)
-    _default_controller = hishel.Controller(
+    _default_storage = PatentClientAsyncFileCache()
+    _default_controller = PatentClientController(
         allow_heuristics=True,
     )
 
@@ -38,12 +63,18 @@ class PatentClientSession(hishel.AsyncCacheClient):
         kwargs["timeout"] = kwargs.get("timeout", self._default_timeout)
         super(PatentClientSession, self).__init__(**kwargs)
 
+    def delete(self, response: httpx.Response):
+        if "cache_metadata" in response.extensions:
+            self._storage.delete(response.extensions["cache_metadata"]["cache_key"])
+
     def download(self, url, method: str = "GET", path: Optional[str | Path] = None, **kwargs):
         return run_sync(self.adownload(url, method, path, **kwargs))
 
     async def adownload(self, url, method: str = "GET", path: Optional[str | Path] = None, **kwargs):
         if isinstance(path, str):
             path = Path(path)
+        elif path is None:
+            path = Path.cwd()
         if not path.is_dir() and path.exists():
             warnings.warn(
                 "File already exists at provided output! Not re-downloading. Please move the file or provide an alternative path to download"

@@ -13,7 +13,7 @@ interactions:
       host:
       - ops.epo.org
       user-agent:
-      - Mozilla/5.0 Python Patent Clientbot/3.2.10 (parkerhancock@users.noreply.github.com)
+      - Mozilla/5.0 Python Patent Clientbot/4.0.0 (parkerhancock@users.noreply.github.com)
     method: GET
     uri: http://ops.epo.org/3.2/rest-services/published-data/publication/epodoc/EP1000000.A1/biblio
   response:
@@ -33,7 +33,7 @@ interactions:
       Content-Type:
       - application/xml
       Date:
-      - Thu, 09 Nov 2023 17:22:53 GMT
+      - Fri, 10 Nov 2023 17:53:49 GMT
       WWW-Authenticate:
       - 'Bearer realm="null",error="invalid_token",error_description="keymanagement.service.access_token_expired:
         Access Token expired"'
@@ -57,15 +57,15 @@ interactions:
       host:
       - ops.epo.org
       user-agent:
-      - Mozilla/5.0 Python Patent Clientbot/3.2.10 (parkerhancock@users.noreply.github.com)
+      - Mozilla/5.0 Python Patent Clientbot/4.0.0 (parkerhancock@users.noreply.github.com)
     method: POST
     uri: https://ops.epo.org/3.2/auth/accesstoken
   response:
     content: "{\n  \"refresh_token_expires_in\": \"0\",\n  \"api_product_list\": \"[ops-prod]\",\n
       \ \"api_product_list_json\": [\n    \"ops-prod\"\n  ],\n  \"organization_name\":
       \"epo\",\n  \"developer.email\": \"parker.hancock@protonmail.com\",\n  \"token_type\":
-      \"BearerToken\",\n  \"issued_at\": \"1699550573607\",\n  \"client_id\": \"wVi6ni5GUZZ3BJqAfLGJb4KPGcYxRktw\",\n
-      \ \"access_token\": \"lWGEGY3cqLCND4rho2Avsr9hG1lN\",\n  \"application_name\":
+      \"BearerToken\",\n  \"issued_at\": \"1699638830117\",\n  \"client_id\": \"wVi6ni5GUZZ3BJqAfLGJb4KPGcYxRktw\",\n
+      \ \"access_token\": \"NxXPilaLaefYLgWvPQEdRWZZIvXY\",\n  \"application_name\":
       \"8654da0d-5e44-4ea3-addc-e555eff4aee6\",\n  \"scope\": \"core\",\n  \"expires_in\":
       \"1199\",\n  \"refresh_count\": \"0\",\n  \"status\": \"approved\"\n}"
     headers:
@@ -82,11 +82,11 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Thu, 09 Nov 2023 17:22:53 GMT
+      - Fri, 10 Nov 2023 17:53:50 GMT
       X-EPO-Client-IP:
-      - 38.104.255.66
+      - 104.54.160.230
       X-EPO-Forwarded:
-      - '[38.104.255.66]'
+      - '[104.54.160.230]'
     http_version: HTTP/1.1
     status_code: 200
 - request:
@@ -103,7 +103,7 @@ interactions:
       host:
       - ops.epo.org
       user-agent:
-      - Mozilla/5.0 Python Patent Clientbot/3.2.10 (parkerhancock@users.noreply.github.com)
+      - Mozilla/5.0 Python Patent Clientbot/4.0.0 (parkerhancock@users.noreply.github.com)
     method: GET
     uri: http://ops.epo.org/3.2/rest-services/published-data/publication/epodoc/EP1000000.A1/biblio
   response:
@@ -265,7 +265,7 @@ interactions:
       Content-Type:
       - application/xml;charset=utf-8
       Date:
-      - Thu, 09 Nov 2023 17:22:53 GMT
+      - Fri, 10 Nov 2023 17:53:50 GMT
       ETag:
       - '"0b35c4dc8a4aec55f54681e64f7b7edf6"'
       Pragma:
@@ -279,18 +279,18 @@ interactions:
       X-API:
       - ops-v3.2
       X-EPO-Client-IP:
-      - 38.104.255.66
+      - 104.54.160.230
       X-EPO-Forwarded:
-      - '[38.104.255.66]'
+      - '[104.54.160.230]'
       X-Elapsed-Time:
       - '0'
       X-IndividualQuotaPerHour-Used:
-      - '41383'
+      - '141182'
       X-RegisteredQuotaPerWeek-Used:
-      - '798600'
+      - '1366549'
       X-Throttling-Control:
-      - busy (images=green:100, inpadoc=green:45, other=green:1000, retrieval=green:100,
-        search=green:15)
+      - idle (images=green:200, inpadoc=green:60, other=green:1000, retrieval=green:200,
+        search=green:30)
     http_version: HTTP/1.1
     status_code: 200
 version: 1

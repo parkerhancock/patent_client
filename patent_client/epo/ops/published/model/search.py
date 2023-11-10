@@ -1,6 +1,7 @@
 from typing import List
 from typing import Optional
 
+from pydantic import computed_field
 from pydantic import Field
 
 from ...util import InpadocModel
@@ -15,8 +16,9 @@ class Inpadoc(InpadocModel):
     doc_number: Optional[str] = None
     kind: Optional[str] = None
 
+    @computed_field
     @property
-    def docdb_number(self):
+    def docdb_number(self) -> str:
         return f"{self.country}{self.doc_number}{self.kind}"
 
     def download(self, path="."):

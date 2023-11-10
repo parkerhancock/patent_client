@@ -76,6 +76,7 @@ class PublishedFulltextAsyncApi:
     @classmethod
     async def get_claims(cls, number, doc_type="publication", format="docdb") -> "Claims":
         text = await cls.get_fulltext_result(number, doc_type="publication", format="docdb", inquiry="claims")
+
         return Claims.model_validate(text)
 
 
