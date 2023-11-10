@@ -5,7 +5,19 @@ from yankee.json.schema import RegexSchema
 from yankee.json.schema import Schema
 from yankee.json.schema import ZipSchema
 
+from ..util import html_to_text
 from .shared import DocumentStructureSchema
+from patent_client.util.claims.parser import ClaimsParser
+
+
+def parse_claims(html):
+    text = html_to_text(html)
+    if text:
+        try:
+            return ClaimsParser().parse(text)
+        except Exception:
+            return list()
+    return list()
 
 
 class DocumentSchema(Schema):
@@ -16,6 +28,7 @@ class DocumentSchema(Schema):
     description_html = f.String("descriptionHtml")
     claim_statement = f.String("claimStatement")
     claims_html = f.String("claimsHtml")
+    claims = f.String("claimsHtml", formatter=parse_claims)
 
 
 class UsReferenceSchema(ZipSchema):

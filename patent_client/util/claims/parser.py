@@ -1,10 +1,6 @@
 import re
 from itertools import zip_longest
 
-from yankee.data import ListCollection
-from yankee.util import AttrDict
-
-from .model import Claim
 
 SPLIT_RE = re.compile(r"^\s*([\d\-\.]+[\)\.]|\.Iadd\.[\d\-\.]+\.|\.\[[\d\-\.]+\.)", flags=re.MULTILINE)
 NUMERIC_RE = re.compile(r"\d")
@@ -32,11 +28,13 @@ class ClaimsParser(object):
     def parse(self, claim_text):
         claim_strings = self.split_and_clean_claims(claim_text)
         claim_data = [self.parse_claim_string(string) for string in claim_strings]
-        claim_dictionary = {c.number: c for c in claim_data}
+        claim_dictionary = {c["number"]: c for c in claim_data}
         for claim in claim_data:
-            for d in claim.depends_on:
-                claim_dictionary[d].dependent_claims.append(claim["number"])
-        return ListCollection(Claim(**d) for d in claim_data)
+            for d in claim["depends_on"]:
+                parent = claim_dictionary.get(d)
+                if parent:
+                    parent["dependent_claims"].append(claim["number"])
+        return claim_data
 
     def split_and_clean_claims(self, claim_text):
         claim_text = CLAIM_INTRO_RE.sub("", claim_text)
@@ -65,15 +63,13 @@ class ClaimsParser(object):
     def parse_claim_string(self, text):
         number = int(NUMBER_RE.search(text).group("number"))
         text = NUMBER_RE.sub("", text)
-        return AttrDict.convert(
-            {
-                "number": number,
-                # "text": NUMBER_RE.sub("", text),
-                "limitations": [clean_text("".join(lim)) for lim in list(grouper(LIMITATION_RE.split(text), 2, ""))],
-                "depends_on": self.parse_dependency(text, number),
-                "dependent_claims": list(),
-            }
-        )
+        return {
+            "number": number,
+            # "text": NUMBER_RE.sub("", text),
+            "limitations": [clean_text("".join(lim)) for lim in list(grouper(LIMITATION_RE.split(text), 2, ""))],
+            "depends_on": self.parse_dependency(text, number),
+            "dependent_claims": list(),
+        }
 
     def parse_dependency(self, text, number):
         dependency = DEPENDENCY_RE.search(text)

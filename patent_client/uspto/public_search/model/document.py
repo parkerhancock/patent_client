@@ -1,32 +1,21 @@
 import datetime
-import re
 from typing import List
 from typing import Optional
 
-import lxml.html as ETH
 from pydantic import BeforeValidator
 from pydantic import Field
 from pydantic import model_validator
 from typing_extensions import Annotated
 
 from ..convert.document import PublicSearchDocumentSchema
+from ..util import html_to_text
+from .shared import ApplicationNumber
+from .shared import DocumentStructure
+from .shared import OptionalList
 from patent_client.util.asyncio_util import run_sync
-from patent_client.util.claims.parser import ClaimsParser
+from patent_client.util.claims.model import Claim
 from patent_client.util.pydantic_util import BaseModel
 from patent_client.util.related import get_model
-
-claim_parser = ClaimsParser()
-from .shared import ApplicationNumber, DocumentStructure, OptionalList
-
-newline_re = re.compile(r"<br />\s*")
-bad_break_re = re.compile(r"<br />\s+")
-
-
-def html_to_text(html):
-    html = newline_re.sub("\n\n", html)
-    # html = bad_break_re.sub(" ", html)
-    return "".join(ETH.fromstring(html).itertext())
-
 
 HtmlString = Annotated[str, BeforeValidator(html_to_text)]
 
@@ -43,7 +32,8 @@ class Document(BaseModel):
     brief: Optional[HtmlString] = Field(alias="brief_html", default=None)
     claim_statement: Optional[str] = None
     claims_html: Optional[str] = None
-    claims: Optional[HtmlString] = Field(alias="claims_html", default=None)
+    claims_text: Optional[HtmlString] = Field(alias="claims_html", default=None)
+    claims: List[Claim] = Field(default_factory=list)
 
 
 class UsReference(BaseModel):
@@ -211,7 +201,7 @@ class PublicSearchDocument(BaseModel):
 
     @property
     def claims(self):
-        return claim_parser.parse(self.document.claims)
+        return self.document.claims
 
     @property
     def forward_citations(self):

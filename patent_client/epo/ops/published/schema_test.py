@@ -2,6 +2,7 @@ import json
 from pathlib import Path
 
 import lxml.etree as ET
+import pytest
 
 from .schema import BiblioResultSchema
 from .schema import ClaimsSchema
@@ -34,11 +35,13 @@ def test_biblio():
     assert len(d.citations) == 99
 
 
-def test_claims():
-    tree = ET.parse(test_dir / "claims_example.xml")
+@pytest.mark.parametrize("filename", ["claims_example.xml", "claims_example_2.xml"])
+def test_claims(filename):
+    input_file = test_dir / filename
+    tree = ET.parse(input_file)
     result = ClaimsSchema().load(tree)
-    example_file = expected_dir / "claims_example.json"
-    # example_file.write_text(result.to_json(indent=2))
+    example_file = input_file.with_suffix(".json")
+    example_file.write_text(result.to_json(indent=2))
     expected = json.loads(example_file.read_text())
     compare_dicts(json.loads(result.to_json()), expected)
 
