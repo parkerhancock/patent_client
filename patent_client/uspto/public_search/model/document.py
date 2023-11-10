@@ -1,4 +1,3 @@
-import datetime
 from typing import List
 from typing import Optional
 
@@ -15,6 +14,7 @@ from .shared import OptionalList
 from patent_client.util.asyncio_util import run_sync
 from patent_client.util.claims.model import Claim
 from patent_client.util.pydantic_util import BaseModel
+from patent_client.util.pydantic_util import Date
 from patent_client.util.related import get_model
 
 HtmlString = Annotated[str, BeforeValidator(html_to_text)]
@@ -38,7 +38,7 @@ class Document(BaseModel):
 
 class UsReference(BaseModel):
     publication_number: Optional[str] = None
-    pub_month: Optional[datetime.date] = None
+    pub_month: Optional[Date] = None
     patentee_name: Optional[str] = None
     cited_by_examiner: Optional[bool] = None
 
@@ -48,7 +48,7 @@ class ForeignReference(BaseModel):
     citation_cpc: Optional[str] = None
     country_code: Optional[str] = None
     patent_number: Optional[str] = None
-    pub_month: Optional[datetime.date] = None
+    pub_month: Optional[Date] = None
     cited_by_examiner: Optional[bool] = None
 
 
@@ -61,10 +61,10 @@ class RelatedApplication(BaseModel):
     child_patent_country: Optional[str] = None
     child_patent_number: Optional[str] = None
     country_code: Optional[str] = None
-    filing_date: Optional[datetime.date] = None
+    filing_date: Optional[Date] = None
     number: Optional[str] = None
     parent_status_code: Optional[str] = None
-    patent_issue_date: Optional[datetime.date] = None
+    patent_issue_date: Optional[Date] = None
     patent_number: Optional[str] = None
 
 
@@ -98,18 +98,18 @@ class Assignee(BaseModel):
 class CpcCode(BaseModel):
     cpc_class: Optional[str] = None
     cpc_subclass: Optional[str] = None
-    version: Optional[datetime.date] = None
+    version: Optional[Date] = None
 
 
 class IntlCode(BaseModel):
     intl_class: Optional[str] = None
     intl_subclass: Optional[str] = None
-    version: Optional[datetime.date] = None
+    version: Optional[Date] = None
 
 
 class ForeignPriorityApplication(BaseModel):
     country: Optional[str] = None
-    app_filing_date: Optional[datetime.date] = None
+    app_filing_date: Optional[Date] = None
     app_number: Optional[str] = None
 
 
@@ -117,11 +117,11 @@ class PublicSearchDocument(BaseModel):
     __schema__ = PublicSearchDocumentSchema()
     guid: Optional[str] = None
     publication_number: Optional[str] = None
-    publication_date: Optional[datetime.date] = None
+    publication_date: Optional[Date] = None
 
     appl_id: Optional[ApplicationNumber] = None
     patent_title: Optional[str] = None
-    app_filing_date: Optional[datetime.date] = None
+    app_filing_date: Optional[Date] = None
     application_type: Optional[str] = None
     family_identifier_cur: Optional[int] = None
     related_apps: List[RelatedApplication] = Field(default_factory=list)

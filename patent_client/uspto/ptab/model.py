@@ -15,6 +15,7 @@ from ...util.related import get_model
 from .session import session
 from patent_client.util.asyncio_util import run_sync
 from patent_client.util.pydantic_util import BaseModel
+from patent_client.util.pydantic_util import DateTime
 
 if TYPE_CHECKING:
     from patent_client.uspto.peds.model import USApplication
@@ -45,8 +46,8 @@ class PtabProceeding(PtabBaseModel):
     """
 
     # Proceeding Metadata
-    last_modified_date: Optional[datetime.datetime] = None
-    last_modified_user_id: Optional[datetime.datetime] = None
+    last_modified_date: Optional[DateTime] = None
+    last_modified_user_id: Optional[DateTime] = None
     institution_decision_date: Optional[MDYDate] = None
     proceeding_filing_date: Optional[MDYDate] = None
     accorded_filing_date: Optional[MDYDate] = None

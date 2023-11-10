@@ -1,4 +1,3 @@
-import datetime
 from typing import Optional
 
 from pydantic import Field
@@ -6,13 +5,14 @@ from pydantic import Field
 from .schema import LegalSchema
 from patent_client.epo.ops.number_service.model import DocumentId
 from patent_client.epo.ops.util import EpoBaseModel
+from patent_client.util.pydantic_util import Date
 
 
 class MetaData(EpoBaseModel):
     status_of_data: Optional[str] = None
     docdb_publication_number: Optional[str] = None
-    subscriber_exchange_date: Optional[datetime.date] = None
-    epo_created_date: Optional[datetime.date] = None
+    subscriber_exchange_date: Optional[Date] = None
+    epo_created_date: Optional[Date] = None
     docdb_integer: Optional[int] = None
 
 
@@ -30,14 +30,14 @@ class LegalEvent(EpoBaseModel):
     country_code: Optional[str] = None
     text_record: Optional[str] = None
 
-    event_date: Optional[datetime.date] = None
+    event_date: Optional[Date] = None
     event_code: Optional[str] = None
     event_country: Optional[str] = None
     event_description: Optional[str] = None
     regional_event_code: Optional[str] = None
 
     corresponding_patent: Optional[str] = None
-    corresponding_patent_publication_date: Optional[datetime.date] = None
+    corresponding_patent_publication_date: Optional[Date] = None
 
     designated_states: Optional[str] = None
     extension_name: Optional[str] = None
@@ -56,7 +56,7 @@ class LegalEvent(EpoBaseModel):
     name_of_requester: Optional[str] = None
     date_extension_granted: Optional[str] = None
     extension_states: Optional[str] = None
-    effective_date: Optional[datetime.date] = None
+    effective_date: Optional[Date] = None
     date_of_withdrawal: Optional[str] = None
 
     def __repr__(self):

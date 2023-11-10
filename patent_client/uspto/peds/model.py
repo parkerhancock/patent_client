@@ -18,6 +18,8 @@ from typing_extensions import Self
 from .session import session
 from patent_client.util.asyncio_util import run_sync
 from patent_client.util.pydantic_util import BaseModel
+from patent_client.util.pydantic_util import Date
+from patent_client.util.pydantic_util import DateTime
 from patent_client.util.related import get_model
 
 if TYPE_CHECKING:
@@ -25,7 +27,6 @@ if TYPE_CHECKING:
     from patent_client.epo.ops.published.model import InpadocBiblio
 
 
-DateTimeAsDate = Annotated[datetime.date, BeforeValidator(lambda x: datetime.datetime.fromisoformat(x).date())]
 MDYDate = Annotated[datetime.date, BeforeValidator(lambda x: datetime.datetime.strptime(x, "%m-%d-%Y").date())]
 YNBool = Annotated[bool, BeforeValidator(lambda x: x == "Y")]
 OptionalInt = Annotated[Optional[int], BeforeValidator(lambda x: int(x) if x else None)]
@@ -40,7 +41,7 @@ class PEDSBaseModel(BaseModel):
 
 
 class Transactions(PEDSBaseModel):
-    record_date: DateTimeAsDate
+    record_date: Date
     code: str
     description: str
 
@@ -110,23 +111,23 @@ class Applicant(Inventor):
 
 class USApplication(PEDSBaseModel):
     appl_id: str
-    app_filing_date: DateTimeAsDate
+    app_filing_date: Date
     app_exam_name: Optional[str] = None
     public_ind: YNBool
     inventor_name: Optional[str] = None
     app_early_pub_number: Optional[str] = None
-    app_early_pub_date: Optional[DateTimeAsDate] = None
+    app_early_pub_date: Optional[Date] = None
     patent_number: Optional[str] = None
-    patent_issue_date: Optional[DateTimeAsDate] = None
+    patent_issue_date: Optional[Date] = None
     app_location: Optional[str] = None
     app_grp_art_number: Optional[str] = None
-    last_modified: datetime.datetime = Field(alias="LAST_MOD_TS")
-    last_insert_time: datetime.datetime = Field(alias="LAST_INSERT_TIME")
+    last_modified: DateTime = Field(alias="LAST_MOD_TS")
+    last_insert_time: DateTime = Field(alias="LAST_INSERT_TIME")
     patent_title: Optional[str] = None
 
     app_attr_dock_number: Optional[str] = None
     app_status: Optional[str] = None
-    app_status_date: Optional[DateTimeAsDate] = None
+    app_status_date: Optional[Date] = None
     app_type: Optional[str] = None
     app_cls_sub_cls: Optional[str] = None
     corr_name: Optional[str] = None
@@ -352,15 +353,15 @@ class Expiration(BaseModel):
 
     parent_appl_id: str
     """Application number for the earliest-filed nonprovisional application related to this application, or self"""
-    parent_app_filing_date: datetime.date
+    parent_app_filing_date: Date
     """Filing date of the earliest-filed nonprovisional application related to this application, or self"""
     parent_relationship: str
     """Relationship of the earliest-filed nonprovisional application. Can be self"""
-    initial_term: datetime.date
+    initial_term: Date
     """Patent term calculated as 20 years from earliest-field non-provisional (no adjustments)"""
     pta_or_pte: float
     """Days of extended patent term from a Patent Term Extension (PTE) or Patent Term Adjustment (PTA)"""
-    extended_term: datetime.date
+    extended_term: Date
     """Patent term as extended by any applicable Patent Term Extension or Patent Term Adjustment"""
     terminal_disclaimer_filed: bool
     """Presence or absence of a terminal disclaimer in the transaction history of the application"""
@@ -368,7 +369,7 @@ class Expiration(BaseModel):
 
 class Document(PEDSBaseModel):
     application_number_text: str
-    mail_room_date: DateTimeAsDate
+    mail_room_date: Date
     document_code: str
     document_description: str
     document_category: str

@@ -1,12 +1,41 @@
+import datetime
 import importlib
 from typing import Generic
 from typing import Optional
 from typing import TypeVar
 
+from dateutil.parser import isoparse
+from dateutil.parser import parse as parse_dt
 from pydantic import BaseModel as PydanticBaseModel
+from pydantic import BeforeValidator
 from pydantic import ConfigDict
+from typing_extensions import Annotated
 
 from patent_client.util.manager import Manager
+
+
+def parse_datetime(date_obj: str | datetime.datetime) -> datetime.datetime:
+    if isinstance(date_obj, datetime.datetime):
+        return date_obj
+    try:
+        return isoparse(date_obj)
+    except ValueError:
+        return parse_dt(date_obj)
+
+
+def parse_date(date_obj: str | datetime.datetime | datetime.date) -> datetime.date:
+    if isinstance(date_obj, datetime.date):
+        return date_obj
+    elif isinstance(date_obj, datetime.datetime):
+        return date_obj.date()
+    try:
+        return isoparse(date_obj).date()
+    except ValueError:
+        return parse_dt(date_obj).date()
+
+
+DateTime = Annotated[datetime.datetime, BeforeValidator(parse_datetime)]
+Date = Annotated[datetime.date, BeforeValidator(parse_date)]
 
 
 class ClassProperty:

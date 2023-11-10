@@ -1,10 +1,10 @@
-import datetime
 from typing import Optional
 
 from pydantic import Field
 
 from .schema import NumberServiceResultSchema
 from patent_client.epo.ops.util import EpoBaseModel
+from patent_client.util.pydantic_util import Date
 
 
 class DocumentId(EpoBaseModel):
@@ -13,7 +13,7 @@ class DocumentId(EpoBaseModel):
     country: Optional[str] = None
     number: Optional[str] = None
     kind: Optional[str] = None
-    date: Optional[datetime.date] = None
+    date: Optional[Date] = None
     name: Optional[str] = None
 
     def __str__(self):
