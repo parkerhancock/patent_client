@@ -3,6 +3,8 @@ from pathlib import Path
 
 from .model.biblio import PublicSearchBiblioPage
 from .model.document import PublicSearchDocument
+from patent_client.util.test import compare_dicts
+from patent_client.util.test import compare_lists
 
 fixtures = Path(__file__).parent / "fixtures"
 
@@ -25,7 +27,7 @@ def test_parse_biblio():
     output_data = PublicSearchBiblioPage.model_validate(input_data)
     # output_file.write_text(output_data.model_dump_json(indent=2))
     expected_data = json.loads(output_file.read_text())
-    assert json.loads(output_data.model_dump_json()) == expected_data
+    compare_dicts(json.loads(output_data.model_dump_json()), expected_data)
 
 
 def test_parse_doc():
@@ -35,4 +37,5 @@ def test_parse_doc():
     output_data = [PublicSearchDocument.model_validate(o) for o in input_data]
     # output_file.write_text(json.dumps([o.model_dump() for o in output_data], indent=2, default=json_serial))
     expected_data = json.loads(output_file.read_text())
-    assert json.loads(json.dumps([o.model_dump() for o in output_data], indent=2, default=json_serial)) == expected_data
+    output_data = json.loads(json.dumps([o.model_dump() for o in output_data], indent=2, default=json_serial))
+    compare_lists(output_data, expected_data)

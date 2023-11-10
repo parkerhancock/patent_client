@@ -5,6 +5,7 @@ from typing import List
 from typing import Optional
 from typing import TYPE_CHECKING
 
+from dateutil.parser import isoparse
 from pydantic import BeforeValidator
 from pydantic import ConfigDict
 from pydantic import Field
@@ -28,7 +29,7 @@ YNBool = Annotated[bool, BeforeValidator(lambda x: x == "Y")]
 
 
 def parse_datetime(string):
-    dt = datetime.datetime.fromisoformat(string)
+    dt = isoparse(string)
     if dt.year == 1 and dt.month == 1 and dt.day == 1:
         return None
     return dt
