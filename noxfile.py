@@ -22,7 +22,7 @@ LIVE_DOCS_IGNORE = ["*.pyc", "*.tmp", join("**", "modules", "*")]
 LIVE_DOCS_WATCH = ["examples"]
 CLEAN_DIRS = ["dist", "build", join("docs", "_build"), join("docs", "modules")]
 
-PYTHON_VERSIONS = ["3.7", "3.8", "3.9", "3.10"]
+PYTHON_VERSIONS = ["3.8", "3.9", "3.10", "3.11", "3.12"]
 SOURCE_FILES = [
     "patent_client",
 ]

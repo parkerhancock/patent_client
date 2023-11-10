@@ -1165,4 +1165,39 @@ interactions:
       - intid;desc=033728c721f89cf3
     http_version: HTTP/2
     status_code: 200
+- request:
+    body: '-1'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '2'
+      content-type:
+      - application/json
+      host:
+      - ppubs.uspto.gov
+      user-agent:
+      - Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/114.0.0.0 Safari/537.36
+      x-requested-with:
+      - XMLHttpRequest
+    method: POST
+    uri: https://ppubs.uspto.gov/dirsearch-public/users/me/session
+  response:
+    content: '{"userSessionId":23918794,"ipAddress":null,"displayName":"anonymous","deleteIn":false,"userCase":{"caseId":23918963,"userId":23918794,"caseName":"Untitled
+      Case","applicationNumber":null},"userPreferences":{},"hostURLs":{"image_server_host":"https://pasr-img.pvt.uspto.gov"},"versions":[{"product":"API","releaseNumber":"2.1.0.3","date":"10.04.2023
+      @ 21:20:10 UTC","commitId":"6d029659","collectionName":""},{"product":"SOLR","releaseNumber":"7.6.0","date":"5-4-0","commitId":"","collectionName":"us_patent_grant"}],"documentsLimitInQuery":1000,"sessionTimeOutTime":1800}'
+    headers:
+      content-type:
+      - application/json
+      date:
+      - Fri, 10 Nov 2023 15:57:51 GMT
+      server-timing:
+      - intid;desc=88ea2626d4f836d9
+    http_version: HTTP/2
+    status_code: 200
 version: 1
