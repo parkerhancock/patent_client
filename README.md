@@ -32,6 +32,7 @@ many common IP tasks
   - [Patent Assignment Data][Assignment] - Lookup Support
   - [Patent Trial & Appeal Board API v2][PTAB] - Supports Proceedings, Decisions, and Documents
   - [Patent Public Search][PPS] - Full Support
+  - [Bulk Data Storage System][BDSS] - Full Support
 
 
 - [European Patent Office - Open Patent Services][OPS]
@@ -53,6 +54,7 @@ many common IP tasks
 [PEDS]: https://developer.uspto.gov/api-catalog/ped
 [PTAB]: https://developer.uspto.gov/api-catalog/ptab-api-v2
 [USPTO]: http://developer.uspto.gov
+[BDSS]: https://developer.uspto.gov/api-catalog/bdss
 [GD]: https://globaldossier.uspto.gov
 [pydantic]: https://docs.pydantic.dev/latest/
 

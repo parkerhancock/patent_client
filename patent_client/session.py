@@ -12,6 +12,16 @@ from patent_client import CACHE_DIR
 from patent_client.util.asyncio_util import run_sync
 from patent_client.version import __version__
 
+try:
+    from IPython import get_ipython
+
+    if "IPKernelApp" in get_ipython().config:
+        from tqdm.notebook import tqdm
+    else:
+        from tqdm import tqdm
+except (ImportError, AttributeError):
+    from tqdm import tqdm
+
 filename_re = re.compile(r'filename="([^"]+)"')
 
 
@@ -82,12 +92,20 @@ class PatentClientSession(hishel.AsyncCacheClient):
             return path
         async with self.stream(method, url, **kwargs) as response:
             response.raise_for_status()
-            if path.is_dir() or None:
-                filename = filename_re.search(response.headers["Content-Disposition"]).group(1)
-                path = path / filename if path else Path.cwd() / filename
-            with path.open("wb") as f:
-                async for chunk in response.aiter_bytes():
-                    f.write(chunk)
+            total = int(response.headers["Content-Length"])
+            with tqdm(total=total, unit_scale=True, unit_divisor=1024, unit="B") as progress:
+                num_bytes_downloaded = response.num_bytes_downloaded
+                if path.is_dir() or None:
+                    try:
+                        filename = filename_re.search(response.headers["Content-Disposition"]).group(1)
+                    except (AttributeError, KeyError):
+                        filename = url.split("/")[-1]
+                    path = path / filename if path else Path.cwd() / filename
+                with path.open("wb") as f:
+                    async for chunk in response.aiter_bytes():
+                        f.write(chunk)
+                        progress.update(response.num_bytes_downloaded - num_bytes_downloaded)
+                        num_bytes_downloaded = response.num_bytes_downloaded
         return path
 
     @contextmanager
