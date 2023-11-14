@@ -1,5 +1,9 @@
 # Changelog
 
+## 4.0.1 (2023-11-14)
+- Add improved logic for file downloads
+- Add support for USPTO BDSS
+
 ## 4.0.0 (2023-11-09)
 - Rewrite all models using Pydantic models
 
