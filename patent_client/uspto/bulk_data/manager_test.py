@@ -28,6 +28,11 @@ class TestFile:
         assert len(results) == 10
         assert isinstance(results[0], File)
 
+    def test_can_get_daily_assignments(self):
+        results = list(File.objects.filter_by_short_name("PASDL"))
+        assert len(results) > 1
+        assert isinstance(results[0], File)
+
 
 def test_date_ranges():
     result = list(date_ranges(datetime.date(2020, 1, 15), datetime.date(2021, 2, 15)))

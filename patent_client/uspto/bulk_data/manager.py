@@ -73,5 +73,6 @@ class FileManager(Manager):
             to_date = to_date or product.to_date
         for start_date, end_date in date_ranges(from_date, to_date):
             chunk = await BulkDataApi.get_by_short_name(short_name, from_date=start_date, to_date=end_date)
-            for file in chunk.files:
-                yield file
+            if chunk.files:
+                for file in chunk.files:
+                    yield file
