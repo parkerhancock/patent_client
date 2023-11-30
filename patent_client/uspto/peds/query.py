@@ -123,7 +123,7 @@ class QueryFields:
 
     @classmethod
     def is_date_field(cls, field_name):
-        return any(field_name in f for f in cls._date_fields)
+        return any(cls.get(field_name) in f for f in cls._date_fields)
 
     @classmethod
     def get(cls, key):

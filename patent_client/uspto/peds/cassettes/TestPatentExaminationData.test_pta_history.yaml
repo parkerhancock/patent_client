@@ -1,7 +1,12 @@
 interactions:
 - request:
-    body: '{"df": "patentTitle", "qf": "", "fl": "*", "fq": [], "searchText": "applId:(14095073)",
-      "sort": "applId asc", "facet": "false", "mm": "0%", "start": "0"}'
+    body: '{"df": "patentTitle", "qf": "appEarlyPubNumber applId appLocation appType
+      appStatus_txt appConfrNumber appCustNumber appGrpArtNumber appCls appSubCls
+      appEntityStatus_txt patentNumber patentTitle inventorName firstNamedApplicant
+      appExamName appExamPrefrdName appAttrDockNumber appPCTNumber appIntlPubNumber
+      wipoEarlyPubNumber pctAppType firstInventorFile appClsSubCls rankAndInventorsList",
+      "fl": "*", "fq": [], "searchText": "applId:(14095073)", "sort": "applId asc",
+      "facet": "false", "mm": "0%", "start": "0"}'
     headers:
       accept:
       - application/json
@@ -10,17 +15,17 @@ interactions:
       connection:
       - keep-alive
       content-length:
-      - '153'
+      - '511'
       content-type:
       - application/json
       host:
       - ped.uspto.gov
       user-agent:
-      - Mozilla/5.0 Python Patent Clientbot/3.2.10 (parkerhancock@users.noreply.github.com)
+      - Mozilla/5.0 Python Patent Clientbot/4.1.1 (parkerhancock@users.noreply.github.com)
     method: POST
     uri: https://ped.uspto.gov/api/queries
   response:
-    content: '{"queryResults":{"indexLastUpdatedDate":"Wed Nov 01 08:17:43 EDT 2023","searchResponse":{"responseHeader":{"zkConnected":true,"status":0,"QTime":721},"response":{"numFound":1,"start":0,"numFoundExact":true,"docs":[{"corrAddrCountryName":"UNITED
+    content: '{"queryResults":{"indexLastUpdatedDate":"Thu Nov 30 13:06:42 EST 2023","searchResponse":{"responseHeader":{"zkConnected":true,"status":0,"QTime":932},"response":{"numFound":1,"start":0,"numFoundExact":true,"docs":[{"corrAddrCountryName":"UNITED
       STATES","applId":"14095073","totalPtoDays":"159","assignments":[{"reelNumber":"32351","frameNumber":"952","addressNameText":"TIMOTHY
       F. BLISS","addressLineOneText":"P.O. BOX 741715","addressLineTwoText":"DALLAS,
       TX 75374-1715","addressLineThreeText":"null","addressLineFourText":"null","mailDate":"03-06-2014","receivedDate":"03-05-2014","recordedDate":"03-05-2014","pagesCount":"4","converyanceName":"ASSIGNMENT
@@ -42,12 +47,14 @@ interactions:
       DRILLING TECHNOLOGIES, L.L.C.||||Dallas|TX||ORG|0}","appFilingDate":"2013-12-03T00:00:00Z","appExamName":"MICHENER,
       BLAKE E","appExamNameFacet":"MICHENER, BLAKE E","publicInd":"Y","APP_IND":"5","inventorName":"TODD
       W. BENSON","inventorNameFacet":"TODD W. BENSON","appEarlyPubDate":"2014-05-15T00:00:00Z","corrAddrGeoRegionCode":"GA","corrAddrNameLineTwo":"Mailstop:
-      IP Docketing - 22","appLocation":"ELECTRONIC","appEarlyPubNumber":"US20140131102A1","id":"14095073","appGrpArtNumber":"3676","appGrpArtNumberFacet":"3676","applIdStr":"14095073","appl_id_txt":"14095073","appSubCls":"061000","patentNumber":"9347308","LAST_MOD_TS":"2023-10-31T06:21:11Z","transactions":[{"recordDate":"2020-10-01
-      00:00:00","code":"EML_NTR","description":"Email Notification"},{"recordDate":"2020-10-01
-      00:00:00","code":"PA..","description":"Change in Power of Attorney (May Include
-      Associate POA)"},{"recordDate":"2020-09-29 00:00:00","code":"C.AD","description":"Correspondence
-      Address Change"},{"recordDate":"2019-11-08 00:00:00","code":"M1551","description":"Payment
-      of Maintenance Fee, 4th Year, Large Entity"},{"recordDate":"2017-10-31 00:00:00","code":"EML_NTR","description":"Email
+      IP Docketing - 22","appLocation":"ELECTRONIC","appEarlyPubNumber":"US20140131102A1","id":"14095073","appGrpArtNumber":"3676","appGrpArtNumberFacet":"3676","applIdStr":"14095073","appl_id_txt":"14095073","appSubCls":"061000","patentNumber":"9347308","LAST_MOD_TS":"2023-11-29T05:20:39Z","transactions":[{"recordDate":"2023-11-08
+      00:00:00","code":"M1552","description":"Payment of Maintenance Fee, 8th Year,
+      Large Entity"},{"recordDate":"2020-10-01 00:00:00","code":"EML_NTR","description":"Email
+      Notification"},{"recordDate":"2020-10-01 00:00:00","code":"PA..","description":"Change
+      in Power of Attorney (May Include Associate POA)"},{"recordDate":"2020-09-29
+      00:00:00","code":"C.AD","description":"Correspondence Address Change"},{"recordDate":"2019-11-08
+      00:00:00","code":"M1551","description":"Payment of Maintenance Fee, 4th Year,
+      Large Entity"},{"recordDate":"2017-10-31 00:00:00","code":"EML_NTR","description":"Email
       Notification"},{"recordDate":"2017-10-31 00:00:00","code":"PA..","description":"Change
       in Power of Attorney (May Include Associate POA)"},{"recordDate":"2017-10-27
       00:00:00","code":"C.AD","description":"Correspondence Address Change"},{"recordDate":"2017-08-31
@@ -121,7 +128,7 @@ interactions:
       by OIPE CSR"},{"recordDate":"2013-12-03 00:00:00","code":"SCAN","description":"IFW
       Scan & PACR Auto Security Review"},{"recordDate":"2013-12-03 00:00:00","code":"BIG.","description":"Entity
       Status Set To Undiscounted (Initial Default Setting or Status Change)"},{"recordDate":"2013-12-03
-      00:00:00","code":"IEXX","description":"Initial Exam Team nn"}],"LAST_INSERT_TIME":"2023-10-31T12:35:02Z","appCls":"175","appStatus":"Patented
+      00:00:00","code":"IEXX","description":"Initial Exam Team nn"}],"LAST_INSERT_TIME":"2023-11-29T08:30:03Z","appCls":"175","appStatus":"Patented
       Case","appStatusFacet":"Patented Case","appStatus_txt":"Patented Case","corrAddrStreetLineTwo":"Suite
       2800","ptaPteInd":"PTA","ptaPteTranHistory":[{"number":"78.5","ptaOrPteDate":"05-24-2016","contentsDescription":"PTA
       36 Months","ptoDays":"","applDays":"","start":"0.5"},{"number":"78","ptaOrPteDate":"05-24-2016","contentsDescription":"Patent
@@ -301,7 +308,7 @@ interactions:
       ADVANCED DRILLING TECHNOLOGIES, L.L.C."],"firstNamedApplicantFacet":"  HUNT
       ADVANCED DRILLING TECHNOLOGIES, L.L.C.","parentContinuity":[{"claimApplicationNumberText":"13530298","applicationNumberText":"14095073","filingDate":"06-22-2012","aiaIndicator":"N","patentNumberText":"8596385","applicationStatus":"Patented","applicationStatusDescription":"This
       application is a Continuation of"},{"claimApplicationNumberText":"13334370","applicationNumberText":"14095073","filingDate":"12-22-2011","aiaIndicator":"N","patentNumberText":"8210283","applicationStatus":"Patented","applicationStatusDescription":"This
-      application is a Continuation in part of"}],"corrAddrCustNo":"20350","corrAddrCountryCd":"US","ptoDelay":"169","corrAddrCity":"Atlanta","appEntityStatus":"UNDISCOUNTED","appConfrNumber":"9374","lastUpdatedTimestamp":"2023-11-01T10:55:15.179Z","attrnyAddr":[{"applicationId":null,"registrationNo":"29476","fullName":"Pratt,
+      application is a Continuation in part of"}],"corrAddrCustNo":"20350","corrAddrCountryCd":"US","ptoDelay":"169","corrAddrCity":"Atlanta","appEntityStatus":"UNDISCOUNTED","appConfrNumber":"9374","lastUpdatedTimestamp":"2023-11-30T02:53:07.228Z","attrnyAddr":[{"applicationId":null,"registrationNo":"29476","fullName":"Pratt,
       John  ","phoneNum":"404-815-6500","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"31741","fullName":"Brown,
       Theodore  III","phoneNum":"650-326-2400","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"31836","fullName":"Haughey,
       Paul  ","phoneNum":"415-273-4787","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"31814","fullName":"Calkins,
@@ -493,9 +500,17 @@ interactions:
       Jun  ","phoneNum":"314-341-0988","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"80491","fullName":"Nachtsheim,
       Patrick  ","phoneNum":"913-515-4836","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"57863","fullName":"Ford,
       Simon  ","phoneNum":"858-350-6159","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"78116","fullName":"Garcia,
-      Jessica  ","phoneNum":"650-462-5322","regStatus":"ACTIVE"}],"appAttrDockNumberFacet":"MTDI-31961","appEntityStatusFacet":"UNDISCOUNTED","appCustNumberFacet":"20350","_version_":1781358908941533184,"firstInventorFileFacet":"No","appLocationFacet":"ELECTRONIC","appEarlyPubNumberFacet":"US20140131102A1","patentNumberFacet":"9347308"}]}},"queryId":"2efba2c0-1a17-4254-b125-63c9198b0271"},"jobStatus":null,"queryId":"2efba2c0-1a17-4254-b125-63c9198b0271","page":1,"count":0,"errorMessage":null,"createQueryRequest":{"searchText":"applId:(14095073)","facet":"false","facetField":null,"facetLimit":null,"facetMissing":null,"facetDate":null,"facetDateGap":null,"facetDateStart":null,"facetDateEnd":null,"facetDateOther":null,"facetDateInclude":null,"mm":"0%","sort":"applId
-      asc","qf":"","wt":null,"df":"patentTitle","fl":"*","start":"0","fq":[],"rows":null,"parameters":{"mm":"0%","df":"patentTitle","fl":["*"],"start":"0","sort":"applId
-      asc","fq":[],"rows":"25","facet":"false"}},"links":[{"rel":"self","href":"https://ped.uspto.gov/api/queries/2efba2c0-1a17-4254-b125-63c9198b0271?format=XML"},{"rel":"results","href":"https://ped.uspto.gov/api/queries/2efba2c0-1a17-4254-b125-63c9198b0271/results?page=1"},{"rel":"package","href":"https://ped.uspto.gov/api/queries/2efba2c0-1a17-4254-b125-63c9198b0271/package?format=XML"},{"rel":"first","href":"https://ped.uspto.gov/api/queries/2efba2c0-1a17-4254-b125-63c9198b0271/results?page=1"},{"rel":"next","href":"https://ped.uspto.gov/api/queries/2efba2c0-1a17-4254-b125-63c9198b0271/results?page=2"},{"rel":"self","href":"https://ped.uspto.gov/api/queries/2efba2c0-1a17-4254-b125-63c9198b0271?format=JSON"},{"rel":"results","href":"https://ped.uspto.gov/api/queries/2efba2c0-1a17-4254-b125-63c9198b0271/results?page=1"},{"rel":"package","href":"https://ped.uspto.gov/api/queries/2efba2c0-1a17-4254-b125-63c9198b0271/package?format=JSON"},{"rel":"first","href":"https://ped.uspto.gov/api/queries/2efba2c0-1a17-4254-b125-63c9198b0271/results?page=1"},{"rel":"next","href":"https://ped.uspto.gov/api/queries/2efba2c0-1a17-4254-b125-63c9198b0271/results?page=2"}]}'
+      Jessica  ","phoneNum":"650-462-5322","regStatus":"ACTIVE"}],"appAttrDockNumberFacet":"MTDI-31961","appEntityStatusFacet":"UNDISCOUNTED","appCustNumberFacet":"20350","_version_":1783955858045009920,"firstInventorFileFacet":"No","appLocationFacet":"ELECTRONIC","appEarlyPubNumberFacet":"US20140131102A1","patentNumberFacet":"9347308"}]}},"queryId":"210c0878-101f-4764-8b3f-dbf204be0af9"},"jobStatus":null,"queryId":"210c0878-101f-4764-8b3f-dbf204be0af9","page":1,"count":0,"errorMessage":null,"createQueryRequest":{"searchText":"applId:(14095073)","facet":"false","facetField":null,"facetLimit":null,"facetMissing":null,"facetDate":null,"facetDateGap":null,"facetDateStart":null,"facetDateEnd":null,"facetDateOther":null,"facetDateInclude":null,"mm":"0%","sort":"applId
+      asc","qf":"appEarlyPubNumber applId appLocation appType appStatus_txt appConfrNumber
+      appCustNumber appGrpArtNumber appCls appSubCls appEntityStatus_txt patentNumber
+      patentTitle inventorName firstNamedApplicant appExamName appExamPrefrdName appAttrDockNumber
+      appPCTNumber appIntlPubNumber wipoEarlyPubNumber pctAppType firstInventorFile
+      appClsSubCls rankAndInventorsList","wt":null,"df":"patentTitle","fl":"*","start":"0","fq":[],"rows":null,"parameters":{"mm":"0%","df":"patentTitle","qf":"appEarlyPubNumber
+      applId appLocation appType appStatus_txt appConfrNumber appCustNumber appGrpArtNumber
+      appCls appSubCls appEntityStatus_txt patentNumber patentTitle inventorName firstNamedApplicant
+      appExamName appExamPrefrdName appAttrDockNumber appPCTNumber appIntlPubNumber
+      wipoEarlyPubNumber pctAppType firstInventorFile appClsSubCls rankAndInventorsList","fl":["*"],"start":"0","sort":"applId
+      asc","fq":[],"rows":"25","facet":"false"}},"links":[{"rel":"self","href":"https://ped.uspto.gov/api/queries/210c0878-101f-4764-8b3f-dbf204be0af9?format=XML"},{"rel":"results","href":"https://ped.uspto.gov/api/queries/210c0878-101f-4764-8b3f-dbf204be0af9/results?page=1"},{"rel":"package","href":"https://ped.uspto.gov/api/queries/210c0878-101f-4764-8b3f-dbf204be0af9/package?format=XML"},{"rel":"first","href":"https://ped.uspto.gov/api/queries/210c0878-101f-4764-8b3f-dbf204be0af9/results?page=1"},{"rel":"next","href":"https://ped.uspto.gov/api/queries/210c0878-101f-4764-8b3f-dbf204be0af9/results?page=2"},{"rel":"self","href":"https://ped.uspto.gov/api/queries/210c0878-101f-4764-8b3f-dbf204be0af9?format=JSON"},{"rel":"results","href":"https://ped.uspto.gov/api/queries/210c0878-101f-4764-8b3f-dbf204be0af9/results?page=1"},{"rel":"package","href":"https://ped.uspto.gov/api/queries/210c0878-101f-4764-8b3f-dbf204be0af9/package?format=JSON"},{"rel":"first","href":"https://ped.uspto.gov/api/queries/210c0878-101f-4764-8b3f-dbf204be0af9/results?page=1"},{"rel":"next","href":"https://ped.uspto.gov/api/queries/210c0878-101f-4764-8b3f-dbf204be0af9/results?page=2"}]}'
     headers:
       Cache-Control:
       - no-cache, no-store, max-age=0, must-revalidate
@@ -504,21 +519,21 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Wed, 01 Nov 2023 15:10:19 GMT
+      - Thu, 30 Nov 2023 18:09:59 GMT
       Expires:
       - '0'
       Pragma:
       - no-cache
       Server-Timing:
-      - intid;desc=d7abb607f3637bfb
+      - intid;desc=48bc1b7089f70381
       Strict-Transport-Security:
       - max-age=31536000;includeSubDomains
       Transfer-Encoding:
       - chunked
       Via:
-      - 1.1 0931682e22ec4f46e0053b859e61d412.cloudfront.net (CloudFront)
+      - 1.1 ed57c867ac386aff2fbbc4e97f282304.cloudfront.net (CloudFront)
       X-Amz-Cf-Id:
-      - 6KY_0WE6KXQKn4WlN-hXpaBtao3ILtAoES40x2VnS6sb9Ciwd9N0YA==
+      - xTqP70M3wk9sUv418e3S-m01eUQokN3xRz9Kk_SWCakGL2Xn-7OK5g==
       X-Amz-Cf-Pop:
       - IAH50-C1
       X-Cache:
@@ -532,8 +547,13 @@ interactions:
     http_version: HTTP/1.1
     status_code: 200
 - request:
-    body: '{"df": "patentTitle", "qf": "", "fl": "*", "fq": [], "searchText": "applId:(14095073)",
-      "sort": "applId asc", "facet": "false", "mm": "0%", "start": "0", "rows": 20}'
+    body: '{"df": "patentTitle", "qf": "appEarlyPubNumber applId appLocation appType
+      appStatus_txt appConfrNumber appCustNumber appGrpArtNumber appCls appSubCls
+      appEntityStatus_txt patentNumber patentTitle inventorName firstNamedApplicant
+      appExamName appExamPrefrdName appAttrDockNumber appPCTNumber appIntlPubNumber
+      wipoEarlyPubNumber pctAppType firstInventorFile appClsSubCls rankAndInventorsList",
+      "fl": "*", "fq": [], "searchText": "applId:(14095073)", "sort": "applId asc",
+      "facet": "false", "mm": "0%", "start": "0", "rows": 1}'
     headers:
       accept:
       - application/json
@@ -542,17 +562,17 @@ interactions:
       connection:
       - keep-alive
       content-length:
-      - '165'
+      - '522'
       content-type:
       - application/json
       host:
       - ped.uspto.gov
       user-agent:
-      - Mozilla/5.0 Python Patent Clientbot/3.2.10 (parkerhancock@users.noreply.github.com)
+      - Mozilla/5.0 Python Patent Clientbot/4.1.1 (parkerhancock@users.noreply.github.com)
     method: POST
     uri: https://ped.uspto.gov/api/queries
   response:
-    content: '{"queryResults":{"indexLastUpdatedDate":"Wed Nov 01 08:17:43 EDT 2023","searchResponse":{"responseHeader":{"zkConnected":true,"status":0,"QTime":383},"response":{"numFound":1,"start":0,"numFoundExact":true,"docs":[{"corrAddrCountryName":"UNITED
+    content: '{"queryResults":{"indexLastUpdatedDate":"Thu Nov 30 13:06:39 EST 2023","searchResponse":{"responseHeader":{"zkConnected":true,"status":0,"QTime":1307},"response":{"numFound":1,"start":0,"numFoundExact":true,"docs":[{"corrAddrCountryName":"UNITED
       STATES","applId":"14095073","totalPtoDays":"159","assignments":[{"reelNumber":"32351","frameNumber":"952","addressNameText":"TIMOTHY
       F. BLISS","addressLineOneText":"P.O. BOX 741715","addressLineTwoText":"DALLAS,
       TX 75374-1715","addressLineThreeText":"null","addressLineFourText":"null","mailDate":"03-06-2014","receivedDate":"03-05-2014","recordedDate":"03-05-2014","pagesCount":"4","converyanceName":"ASSIGNMENT
@@ -574,12 +594,14 @@ interactions:
       DRILLING TECHNOLOGIES, L.L.C.||||Dallas|TX||ORG|0}","appFilingDate":"2013-12-03T00:00:00Z","appExamName":"MICHENER,
       BLAKE E","appExamNameFacet":"MICHENER, BLAKE E","publicInd":"Y","APP_IND":"5","inventorName":"TODD
       W. BENSON","inventorNameFacet":"TODD W. BENSON","appEarlyPubDate":"2014-05-15T00:00:00Z","corrAddrGeoRegionCode":"GA","corrAddrNameLineTwo":"Mailstop:
-      IP Docketing - 22","appLocation":"ELECTRONIC","appEarlyPubNumber":"US20140131102A1","id":"14095073","appGrpArtNumber":"3676","appGrpArtNumberFacet":"3676","applIdStr":"14095073","appl_id_txt":"14095073","appSubCls":"061000","patentNumber":"9347308","LAST_MOD_TS":"2023-10-31T06:21:11Z","transactions":[{"recordDate":"2020-10-01
-      00:00:00","code":"EML_NTR","description":"Email Notification"},{"recordDate":"2020-10-01
-      00:00:00","code":"PA..","description":"Change in Power of Attorney (May Include
-      Associate POA)"},{"recordDate":"2020-09-29 00:00:00","code":"C.AD","description":"Correspondence
-      Address Change"},{"recordDate":"2019-11-08 00:00:00","code":"M1551","description":"Payment
-      of Maintenance Fee, 4th Year, Large Entity"},{"recordDate":"2017-10-31 00:00:00","code":"EML_NTR","description":"Email
+      IP Docketing - 22","appLocation":"ELECTRONIC","appEarlyPubNumber":"US20140131102A1","id":"14095073","appGrpArtNumber":"3676","appGrpArtNumberFacet":"3676","applIdStr":"14095073","appl_id_txt":"14095073","appSubCls":"061000","patentNumber":"9347308","LAST_MOD_TS":"2023-11-29T05:20:39Z","transactions":[{"recordDate":"2023-11-08
+      00:00:00","code":"M1552","description":"Payment of Maintenance Fee, 8th Year,
+      Large Entity"},{"recordDate":"2020-10-01 00:00:00","code":"EML_NTR","description":"Email
+      Notification"},{"recordDate":"2020-10-01 00:00:00","code":"PA..","description":"Change
+      in Power of Attorney (May Include Associate POA)"},{"recordDate":"2020-09-29
+      00:00:00","code":"C.AD","description":"Correspondence Address Change"},{"recordDate":"2019-11-08
+      00:00:00","code":"M1551","description":"Payment of Maintenance Fee, 4th Year,
+      Large Entity"},{"recordDate":"2017-10-31 00:00:00","code":"EML_NTR","description":"Email
       Notification"},{"recordDate":"2017-10-31 00:00:00","code":"PA..","description":"Change
       in Power of Attorney (May Include Associate POA)"},{"recordDate":"2017-10-27
       00:00:00","code":"C.AD","description":"Correspondence Address Change"},{"recordDate":"2017-08-31
@@ -653,7 +675,7 @@ interactions:
       by OIPE CSR"},{"recordDate":"2013-12-03 00:00:00","code":"SCAN","description":"IFW
       Scan & PACR Auto Security Review"},{"recordDate":"2013-12-03 00:00:00","code":"BIG.","description":"Entity
       Status Set To Undiscounted (Initial Default Setting or Status Change)"},{"recordDate":"2013-12-03
-      00:00:00","code":"IEXX","description":"Initial Exam Team nn"}],"LAST_INSERT_TIME":"2023-10-31T12:35:02Z","appCls":"175","appStatus":"Patented
+      00:00:00","code":"IEXX","description":"Initial Exam Team nn"}],"LAST_INSERT_TIME":"2023-11-29T08:30:03Z","appCls":"175","appStatus":"Patented
       Case","appStatusFacet":"Patented Case","appStatus_txt":"Patented Case","corrAddrStreetLineTwo":"Suite
       2800","ptaPteInd":"PTA","ptaPteTranHistory":[{"number":"78.5","ptaOrPteDate":"05-24-2016","contentsDescription":"PTA
       36 Months","ptoDays":"","applDays":"","start":"0.5"},{"number":"78","ptaOrPteDate":"05-24-2016","contentsDescription":"Patent
@@ -833,7 +855,7 @@ interactions:
       ADVANCED DRILLING TECHNOLOGIES, L.L.C."],"firstNamedApplicantFacet":"  HUNT
       ADVANCED DRILLING TECHNOLOGIES, L.L.C.","parentContinuity":[{"claimApplicationNumberText":"13530298","applicationNumberText":"14095073","filingDate":"06-22-2012","aiaIndicator":"N","patentNumberText":"8596385","applicationStatus":"Patented","applicationStatusDescription":"This
       application is a Continuation of"},{"claimApplicationNumberText":"13334370","applicationNumberText":"14095073","filingDate":"12-22-2011","aiaIndicator":"N","patentNumberText":"8210283","applicationStatus":"Patented","applicationStatusDescription":"This
-      application is a Continuation in part of"}],"corrAddrCustNo":"20350","corrAddrCountryCd":"US","ptoDelay":"169","corrAddrCity":"Atlanta","appEntityStatus":"UNDISCOUNTED","appConfrNumber":"9374","lastUpdatedTimestamp":"2023-11-01T10:56:56.632Z","attrnyAddr":[{"applicationId":null,"registrationNo":"29476","fullName":"Pratt,
+      application is a Continuation in part of"}],"corrAddrCustNo":"20350","corrAddrCountryCd":"US","ptoDelay":"169","corrAddrCity":"Atlanta","appEntityStatus":"UNDISCOUNTED","appConfrNumber":"9374","lastUpdatedTimestamp":"2023-11-30T02:53:07.228Z","attrnyAddr":[{"applicationId":null,"registrationNo":"29476","fullName":"Pratt,
       John  ","phoneNum":"404-815-6500","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"31741","fullName":"Brown,
       Theodore  III","phoneNum":"650-326-2400","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"31836","fullName":"Haughey,
       Paul  ","phoneNum":"415-273-4787","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"31814","fullName":"Calkins,
@@ -1025,9 +1047,17 @@ interactions:
       Jun  ","phoneNum":"314-341-0988","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"80491","fullName":"Nachtsheim,
       Patrick  ","phoneNum":"913-515-4836","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"57863","fullName":"Ford,
       Simon  ","phoneNum":"858-350-6159","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"78116","fullName":"Garcia,
-      Jessica  ","phoneNum":"650-462-5322","regStatus":"ACTIVE"}],"appAttrDockNumberFacet":"MTDI-31961","appEntityStatusFacet":"UNDISCOUNTED","appCustNumberFacet":"20350","_version_":1781358908941533184,"firstInventorFileFacet":"No","appLocationFacet":"ELECTRONIC","appEarlyPubNumberFacet":"US20140131102A1","patentNumberFacet":"9347308"}]}},"queryId":"72f8b40a-6989-4a45-be34-888c8351553a"},"jobStatus":null,"queryId":"72f8b40a-6989-4a45-be34-888c8351553a","page":1,"count":0,"errorMessage":null,"createQueryRequest":{"searchText":"applId:(14095073)","facet":"false","facetField":null,"facetLimit":null,"facetMissing":null,"facetDate":null,"facetDateGap":null,"facetDateStart":null,"facetDateEnd":null,"facetDateOther":null,"facetDateInclude":null,"mm":"0%","sort":"applId
-      asc","qf":"","wt":null,"df":"patentTitle","fl":"*","start":"0","fq":[],"rows":"20","parameters":{"mm":"0%","df":"patentTitle","fl":["*"],"start":"0","sort":"applId
-      asc","fq":[],"rows":"20","facet":"false"}},"links":[{"rel":"self","href":"https://ped.uspto.gov/api/queries/72f8b40a-6989-4a45-be34-888c8351553a?format=XML"},{"rel":"results","href":"https://ped.uspto.gov/api/queries/72f8b40a-6989-4a45-be34-888c8351553a/results?page=1"},{"rel":"package","href":"https://ped.uspto.gov/api/queries/72f8b40a-6989-4a45-be34-888c8351553a/package?format=XML"},{"rel":"first","href":"https://ped.uspto.gov/api/queries/72f8b40a-6989-4a45-be34-888c8351553a/results?page=1"},{"rel":"next","href":"https://ped.uspto.gov/api/queries/72f8b40a-6989-4a45-be34-888c8351553a/results?page=2"},{"rel":"self","href":"https://ped.uspto.gov/api/queries/72f8b40a-6989-4a45-be34-888c8351553a?format=JSON"},{"rel":"results","href":"https://ped.uspto.gov/api/queries/72f8b40a-6989-4a45-be34-888c8351553a/results?page=1"},{"rel":"package","href":"https://ped.uspto.gov/api/queries/72f8b40a-6989-4a45-be34-888c8351553a/package?format=JSON"},{"rel":"first","href":"https://ped.uspto.gov/api/queries/72f8b40a-6989-4a45-be34-888c8351553a/results?page=1"},{"rel":"next","href":"https://ped.uspto.gov/api/queries/72f8b40a-6989-4a45-be34-888c8351553a/results?page=2"}]}'
+      Jessica  ","phoneNum":"650-462-5322","regStatus":"ACTIVE"}],"appAttrDockNumberFacet":"MTDI-31961","appEntityStatusFacet":"UNDISCOUNTED","appCustNumberFacet":"20350","_version_":1783955858045009920,"firstInventorFileFacet":"No","appLocationFacet":"ELECTRONIC","appEarlyPubNumberFacet":"US20140131102A1","patentNumberFacet":"9347308"}]}},"queryId":"f9dbd58f-2d2f-4a6c-b555-05daf44a35ac"},"jobStatus":null,"queryId":"f9dbd58f-2d2f-4a6c-b555-05daf44a35ac","page":1,"count":0,"errorMessage":null,"createQueryRequest":{"searchText":"applId:(14095073)","facet":"false","facetField":null,"facetLimit":null,"facetMissing":null,"facetDate":null,"facetDateGap":null,"facetDateStart":null,"facetDateEnd":null,"facetDateOther":null,"facetDateInclude":null,"mm":"0%","sort":"applId
+      asc","qf":"appEarlyPubNumber applId appLocation appType appStatus_txt appConfrNumber
+      appCustNumber appGrpArtNumber appCls appSubCls appEntityStatus_txt patentNumber
+      patentTitle inventorName firstNamedApplicant appExamName appExamPrefrdName appAttrDockNumber
+      appPCTNumber appIntlPubNumber wipoEarlyPubNumber pctAppType firstInventorFile
+      appClsSubCls rankAndInventorsList","wt":null,"df":"patentTitle","fl":"*","start":"0","fq":[],"rows":"1","parameters":{"mm":"0%","df":"patentTitle","qf":"appEarlyPubNumber
+      applId appLocation appType appStatus_txt appConfrNumber appCustNumber appGrpArtNumber
+      appCls appSubCls appEntityStatus_txt patentNumber patentTitle inventorName firstNamedApplicant
+      appExamName appExamPrefrdName appAttrDockNumber appPCTNumber appIntlPubNumber
+      wipoEarlyPubNumber pctAppType firstInventorFile appClsSubCls rankAndInventorsList","fl":["*"],"start":"0","sort":"applId
+      asc","fq":[],"rows":"1","facet":"false"}},"links":[{"rel":"self","href":"https://ped.uspto.gov/api/queries/f9dbd58f-2d2f-4a6c-b555-05daf44a35ac?format=XML"},{"rel":"results","href":"https://ped.uspto.gov/api/queries/f9dbd58f-2d2f-4a6c-b555-05daf44a35ac/results?page=1"},{"rel":"package","href":"https://ped.uspto.gov/api/queries/f9dbd58f-2d2f-4a6c-b555-05daf44a35ac/package?format=XML"},{"rel":"first","href":"https://ped.uspto.gov/api/queries/f9dbd58f-2d2f-4a6c-b555-05daf44a35ac/results?page=1"},{"rel":"next","href":"https://ped.uspto.gov/api/queries/f9dbd58f-2d2f-4a6c-b555-05daf44a35ac/results?page=2"},{"rel":"self","href":"https://ped.uspto.gov/api/queries/f9dbd58f-2d2f-4a6c-b555-05daf44a35ac?format=JSON"},{"rel":"results","href":"https://ped.uspto.gov/api/queries/f9dbd58f-2d2f-4a6c-b555-05daf44a35ac/results?page=1"},{"rel":"package","href":"https://ped.uspto.gov/api/queries/f9dbd58f-2d2f-4a6c-b555-05daf44a35ac/package?format=JSON"},{"rel":"first","href":"https://ped.uspto.gov/api/queries/f9dbd58f-2d2f-4a6c-b555-05daf44a35ac/results?page=1"},{"rel":"next","href":"https://ped.uspto.gov/api/queries/f9dbd58f-2d2f-4a6c-b555-05daf44a35ac/results?page=2"}]}'
     headers:
       Cache-Control:
       - no-cache, no-store, max-age=0, must-revalidate
@@ -1036,21 +1066,21 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Wed, 01 Nov 2023 15:10:20 GMT
+      - Thu, 30 Nov 2023 18:10:01 GMT
       Expires:
       - '0'
       Pragma:
       - no-cache
       Server-Timing:
-      - intid;desc=ca06917d1cf481f9
+      - intid;desc=8b0acc1e5729de95
       Strict-Transport-Security:
       - max-age=31536000;includeSubDomains
       Transfer-Encoding:
       - chunked
       Via:
-      - 1.1 0931682e22ec4f46e0053b859e61d412.cloudfront.net (CloudFront)
+      - 1.1 ed57c867ac386aff2fbbc4e97f282304.cloudfront.net (CloudFront)
       X-Amz-Cf-Id:
-      - Vo0KWuYjKGODynd5BZ2WLuBwpyY-5QccWXvdo4HsBFh_BHHa3DUEmw==
+      - 2SkUlBOfV322X128bTKh2ZmOqyh0if1-bsRM31EVFyOR1Kw9STuZcg==
       X-Amz-Cf-Pop:
       - IAH50-C1
       X-Cache:

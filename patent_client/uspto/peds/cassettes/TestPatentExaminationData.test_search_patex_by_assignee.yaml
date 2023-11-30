@@ -1,7 +1,12 @@
 interactions:
 - request:
-    body: '{"df": "patentTitle", "qf": "", "fl": "*", "fq": [], "searchText": "firstNamedApplicant:(LogicBlox)",
-      "sort": "applId asc", "facet": "false", "mm": "0%", "start": "0", "rows": 4}'
+    body: '{"df": "patentTitle", "qf": "appEarlyPubNumber applId appLocation appType
+      appStatus_txt appConfrNumber appCustNumber appGrpArtNumber appCls appSubCls
+      appEntityStatus_txt patentNumber patentTitle inventorName firstNamedApplicant
+      appExamName appExamPrefrdName appAttrDockNumber appPCTNumber appIntlPubNumber
+      wipoEarlyPubNumber pctAppType firstInventorFile appClsSubCls rankAndInventorsList",
+      "fl": "*", "fq": [], "searchText": "firstNamedApplicant:(LogicBlox)", "sort":
+      "applId asc", "facet": "false", "mm": "0%", "start": "0", "rows": 4}'
     headers:
       accept:
       - application/json
@@ -10,17 +15,17 @@ interactions:
       connection:
       - keep-alive
       content-length:
-      - '178'
+      - '536'
       content-type:
       - application/json
       host:
       - ped.uspto.gov
       user-agent:
-      - Mozilla/5.0 Python Patent Clientbot/3.2.10 (parkerhancock@users.noreply.github.com)
+      - Mozilla/5.0 Python Patent Clientbot/4.1.1 (parkerhancock@users.noreply.github.com)
     method: POST
     uri: https://ped.uspto.gov/api/queries
   response:
-    content: '{"queryResults":{"indexLastUpdatedDate":"Wed Nov 01 08:18:00 EDT 2023","searchResponse":{"responseHeader":{"zkConnected":true,"status":0,"QTime":590},"response":{"numFound":11,"start":0,"numFoundExact":true,"docs":[{"corrAddrCountryName":"UNITED
+    content: '{"queryResults":{"indexLastUpdatedDate":"Thu Nov 30 12:52:38 EST 2023","searchResponse":{"responseHeader":{"zkConnected":true,"status":0,"QTime":2054},"response":{"numFound":11,"start":0,"numFoundExact":true,"docs":[{"corrAddrCountryName":"UNITED
       STATES","applId":"13722067","totalPtoDays":"674","assignments":[{"reelNumber":"29511","frameNumber":"506","addressNameText":"CANTOR
       COLBURN LLP","addressLineOneText":"20 CHURCH STREET, 22ND FLOOR","addressLineTwoText":"HARTFORD,
       CT 06103","addressLineThreeText":"null","addressLineFourText":"null","mailDate":"12-21-2012","receivedDate":"12-20-2012","recordedDate":"12-20-2012","pagesCount":"3","converyanceName":"ASSIGNMENT
@@ -74,7 +79,7 @@ interactions:
       INC.||||Atlanta|GA|US|ORG|2}","appFilingDate":"2012-12-20T00:00:00Z","appExamName":"TORGRIMSON,
       TYLER J","appExamNameFacet":"TORGRIMSON, TYLER J","publicInd":"Y","APP_IND":"5","inventorName":"Todd
       L. Veldhuizen","inventorNameFacet":"Todd L. Veldhuizen","appEarlyPubDate":"2014-06-26T00:00:00Z","corrAddrGeoRegionCode":"PA","corrAddrNameLineTwo":"Crystal
-      J. Corsey","appLocation":"ELECTRONIC","appEarlyPubNumber":"US20140181081A1","id":"13722067","appGrpArtNumber":"2165","appGrpArtNumberFacet":"2165","applIdStr":"13722067","appl_id_txt":"13722067","appSubCls":"722000","patentNumber":"9424304","LAST_MOD_TS":"2023-10-31T06:41:43Z","transactions":[{"recordDate":"2019-08-28
+      J. Corsey","appLocation":"ELECTRONIC","appEarlyPubNumber":"US20140181081A1","id":"13722067","appGrpArtNumber":"2165","appGrpArtNumberFacet":"2165","applIdStr":"13722067","appl_id_txt":"13722067","appSubCls":"722000","patentNumber":"9424304","LAST_MOD_TS":"2023-11-29T05:41:30Z","transactions":[{"recordDate":"2019-08-28
       00:00:00","code":"M1551","description":"Payment of Maintenance Fee, 4th Year,
       Large Entity"},{"recordDate":"2019-08-26 00:00:00","code":"BIG.","description":"Entity
       Status Set To Undiscounted (Initial Default Setting or Status Change)"},{"recordDate":"2019-06-26
@@ -137,7 +142,7 @@ interactions:
       Disclosure Statement (IDS) Filed"},{"recordDate":"2012-12-27 00:00:00","code":"L194","description":"Cleared
       by OIPE CSR"},{"recordDate":"2012-12-20 00:00:00","code":"SCAN","description":"IFW
       Scan & PACR Auto Security Review"},{"recordDate":"2012-12-20 00:00:00","code":"IEXX","description":"Initial
-      Exam Team nn"}],"LAST_INSERT_TIME":"2023-10-31T12:35:02Z","appCls":"707","appStatus":"Patented
+      Exam Team nn"}],"LAST_INSERT_TIME":"2023-11-29T08:30:03Z","appCls":"707","appStatus":"Patented
       Case","appStatusFacet":"Patented Case","appStatus_txt":"Patented Case","ptaPteInd":"PTA","ptaPteTranHistory":[{"number":"66.5","ptaOrPteDate":"08-23-2016","contentsDescription":"PTA
       36 Months","ptoDays":"247","applDays":"","start":"0.5"},{"number":"66","ptaOrPteDate":"08-23-2016","contentsDescription":"Patent
       Issue Date Used in PTA Calculation","ptoDays":"0","applDays":"","start":"57"},{"number":"65","ptaOrPteDate":"07-29-2016","contentsDescription":"Dispatch
@@ -236,7 +241,7 @@ interactions:
       Cole  ","phoneNum":"713-228-6601","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"70684","fullName":"LLagostera,
       Domingo  ","phoneNum":"713-632-8632","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"72989","fullName":"Dodd,
       Anastasia  ","phoneNum":"713-632-8685","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"79611","fullName":"Monterrosa,
-      Nelson  ","phoneNum":"713-228-8600","regStatus":"ACTIVE"}],"corrAddrCustNo":"64574","corrAddrCountryCd":"US","ptoDelay":"715","corrAddrCity":"PHILADELPHIA","appEntityStatus":"UNDISCOUNTED","appConfrNumber":"1751","lastUpdatedTimestamp":"2023-11-01T11:50:07.446Z","cmsData":["{13722067|2019-08-26
+      Nelson  ","phoneNum":"713-228-8600","regStatus":"ACTIVE"}],"corrAddrCustNo":"64574","corrAddrCountryCd":"US","ptoDelay":"715","corrAddrCity":"PHILADELPHIA","appEntityStatus":"UNDISCOUNTED","appConfrNumber":"1751","lastUpdatedTimestamp":"2023-11-30T02:57:17.854Z","cmsData":["{13722067|2019-08-26
       08:16:53|PROSECUTION|Notification of loss of entitlement to small entity status
       via Patent Application Information Retrieval (PAIR)|SES.LOSS.ELC|1|JZSLTSH6RXEAPX1},{13722067|2019-06-26
       09:44:01|PROSECUTION|Communication - Re:  Power of Attorney (PTOL-308)|N570|1|JXC3N0XVRXEAPX4},{13722067|2019-06-26
@@ -316,7 +321,7 @@ interactions:
       19:00:00|PROSECUTION|Drawings-only black and white line drawings|DRW|4|HAYDJG7IPXXIFW3},{13722067|2012-12-19
       19:00:00|PROSECUTION|Specification|SPEC|22|HAYDJG6PPXXIFW3},{13722067|2012-12-19
       19:00:00|PROSECUTION|Claims|CLM|4|HAYDJG70PXXIFW3},{13722067|2012-12-19 19:00:00|PROSECUTION|Fee
-      Worksheet (SB06)|WFEE|2|HAYDJG64PXXIFW3}"],"appAttrDockNumberFacet":"LBLOX2","appEntityStatusFacet":"UNDISCOUNTED","appCustNumberFacet":"64574","_version_":1781362233301794816,"firstInventorFileFacet":"No","appLocationFacet":"ELECTRONIC","appEarlyPubNumberFacet":"US20140181081A1","patentNumberFacet":"9424304"},{"corrAddrCountryName":"UNITED
+      Worksheet (SB06)|WFEE|2|HAYDJG64PXXIFW3}"],"appAttrDockNumberFacet":"LBLOX2","appEntityStatusFacet":"UNDISCOUNTED","appCustNumberFacet":"64574","_version_":1783956333970587648,"firstInventorFileFacet":"No","appLocationFacet":"ELECTRONIC","appEarlyPubNumberFacet":"US20140181081A1","patentNumberFacet":"9424304"},{"corrAddrCountryName":"UNITED
       STATES","applId":"14018930","totalPtoDays":"244","assignments":[{"reelNumber":"31169","frameNumber":"926","addressNameText":"CANTOR
       COLBURN LLP","addressLineOneText":"20 CHURCH STREET","addressLineTwoText":"22ND
       FLOOR","addressLineThreeText":"HARTFORD, CT 06103","addressLineFourText":"null","mailDate":"09-11-2013","receivedDate":"09-05-2013","recordedDate":"09-05-2013","pagesCount":"4","converyanceName":"ASSIGNMENT
@@ -370,7 +375,7 @@ interactions:
       Inc.||||Atlanta|GA||ORG|0}","appFilingDate":"2013-09-05T00:00:00Z","appExamName":"HOFFLER,
       RAHEEM","appExamNameFacet":"HOFFLER, RAHEEM","publicInd":"Y","APP_IND":"5","inventorName":"Todd
       L. Veldhuizen","inventorNameFacet":"Todd L. Veldhuizen","appEarlyPubDate":"2014-03-27T00:00:00Z","corrAddrGeoRegionCode":"PA","corrAddrNameLineTwo":"Crystal
-      J. Corsey","appLocation":"ELECTRONIC","appEarlyPubNumber":"US20140089292A1","id":"14018930","appGrpArtNumber":"2155","appGrpArtNumberFacet":"2155","applIdStr":"14018930","appl_id_txt":"14018930","appSubCls":"714000","patentNumber":"9177026","LAST_MOD_TS":"2023-10-30T14:41:11Z","transactions":[{"recordDate":"2023-04-19
+      J. Corsey","appLocation":"ELECTRONIC","appEarlyPubNumber":"US20140089292A1","id":"14018930","appGrpArtNumber":"2155","appGrpArtNumberFacet":"2155","applIdStr":"14018930","appl_id_txt":"14018930","appSubCls":"714000","patentNumber":"9177026","LAST_MOD_TS":"2023-11-29T05:41:30Z","transactions":[{"recordDate":"2023-04-19
       00:00:00","code":"M1552","description":"Payment of Maintenance Fee, 8th Year,
       Large Entity"},{"recordDate":"2019-06-26 00:00:00","code":"EML_NTR","description":"Email
       Notification"},{"recordDate":"2019-06-26 00:00:00","code":"PA..","description":"Change
@@ -426,7 +431,7 @@ interactions:
       Filed"},{"recordDate":"2013-09-05 00:00:00","code":"SCAN","description":"IFW
       Scan & PACR Auto Security Review"},{"recordDate":"2013-09-05 00:00:00","code":"BIG.","description":"Entity
       Status Set To Undiscounted (Initial Default Setting or Status Change)"},{"recordDate":"2013-09-05
-      00:00:00","code":"IEXX","description":"Initial Exam Team nn"}],"LAST_INSERT_TIME":"2023-10-30T20:25:03Z","appCls":"707","appStatus":"Patented
+      00:00:00","code":"IEXX","description":"Initial Exam Team nn"}],"LAST_INSERT_TIME":"2023-11-29T08:30:03Z","appCls":"707","appStatus":"Patented
       Case","appStatusFacet":"Patented Case","appStatus_txt":"Patented Case","ptaPteInd":"PTA","ptaPteTranHistory":[{"number":"47.5","ptaOrPteDate":"11-03-2015","contentsDescription":"PTA
       36 Months","ptoDays":"","applDays":"","start":"0.5"},{"number":"47","ptaOrPteDate":"11-03-2015","contentsDescription":"Patent
       Issue Date Used in PTA Calculation","ptoDays":"","applDays":"","start":"0"},{"number":"45","ptaOrPteDate":"10-06-2015","contentsDescription":"Dispatch
@@ -510,7 +515,7 @@ interactions:
       Alan  ","phoneNum":"713-632-8665","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"56790","fullName":"Wilson,
       David  ","phoneNum":"713-632-8692","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"79611","fullName":"Monterrosa,
       Nelson  ","phoneNum":"713-228-8600","regStatus":"ACTIVE"}],"parentContinuity":[{"claimApplicationNumberText":"61706484","applicationNumberText":"14018930","filingDate":"09-27-2012","aiaIndicator":"","patentNumberText":"","applicationStatus":"Expired","applicationStatusDescription":"This
-      application Claims Priority from Provisional Application"}],"corrAddrCustNo":"64574","corrAddrCountryCd":"US","ptoDelay":"244","corrAddrCity":"PHILADELPHIA","appEntityStatus":"UNDISCOUNTED","appConfrNumber":"9875","lastUpdatedTimestamp":"2023-10-31T16:03:47.747Z","cmsData":["{14018930|2019-06-26
+      application Claims Priority from Provisional Application"}],"corrAddrCustNo":"64574","corrAddrCountryCd":"US","ptoDelay":"244","corrAddrCity":"PHILADELPHIA","appEntityStatus":"UNDISCOUNTED","appConfrNumber":"9875","lastUpdatedTimestamp":"2023-11-30T04:15:52.432Z","cmsData":["{14018930|2019-06-26
       09:56:28|PROSECUTION|Communication - Re:  Power of Attorney (PTOL-308)|N570|1|JXC4310WRXEAPX0},{14018930|2019-06-26
       09:56:28|PROSECUTION|Communication - Re:  Power of Attorney (PTOL-308)|N570|1|JXC4319ARXEAPX3},{14018930|2019-06-24
       11:15:59|PROSECUTION|Assignee showing of ownership per 37 CFR 3.73|R3.73|3|JXARHFNLRXEAPX1},{14018930|2019-06-24
@@ -571,7 +576,7 @@ interactions:
       20:00:00|PROSECUTION|Non Patent Literature|NPL|12|HL8DFQTDPXXIFW3},{14018930|2013-09-04
       20:00:00|PROSECUTION|Specification|SPEC|22|HL8DFQUTPXXIFW3},{14018930|2013-09-04
       20:00:00|PROSECUTION|Drawings-only black and white line drawings|DRW|2|HL8DFQW3PXXIFW3},{14018930|2013-09-04
-      20:00:00|PROSECUTION|Information Disclosure Statement (IDS) Form (SB08)|IDS|5|HL8DFQSQPXXIFW3}"],"appAttrDockNumberFacet":"LBLOX1","appEntityStatusFacet":"UNDISCOUNTED","appCustNumberFacet":"64574","_version_":1781287593813475328,"firstInventorFileFacet":"No","appLocationFacet":"ELECTRONIC","appEarlyPubNumberFacet":"US20140089292A1","patentNumberFacet":"9177026"},{"corrAddrCountryName":"UNITED
+      20:00:00|PROSECUTION|Information Disclosure Statement (IDS) Form (SB08)|IDS|5|HL8DFQSQPXXIFW3}"],"appAttrDockNumberFacet":"LBLOX1","appEntityStatusFacet":"UNDISCOUNTED","appCustNumberFacet":"64574","_version_":1783961784505335808,"firstInventorFileFacet":"No","appLocationFacet":"ELECTRONIC","appEarlyPubNumberFacet":"US20140089292A1","patentNumberFacet":"9177026"},{"corrAddrCountryName":"UNITED
       STATES","applId":"14298201","totalPtoDays":"288","assignments":[{"reelNumber":"33049","frameNumber":"67","addressNameText":"CANTOR
       COLBURN LLP","addressLineOneText":"20 CHURCH STREET","addressLineTwoText":"22ND
       FLOOR","addressLineThreeText":"HARTFORD, CT 06103","addressLineFourText":"null","mailDate":"06-09-2014","receivedDate":"06-06-2014","recordedDate":"06-06-2014","pagesCount":"3","converyanceName":"ASSIGNMENT
@@ -625,7 +630,7 @@ interactions:
       Inc.||||Atlanta|GA|US|ORG|1}","appFilingDate":"2014-06-06T00:00:00Z","appExamName":"MOSER,
       BRUCE M","appExamNameFacet":"MOSER, BRUCE M","publicInd":"Y","APP_IND":"5","inventorName":"Todd
       L. Veldhuizen","inventorNameFacet":"Todd L. Veldhuizen","appEarlyPubDate":"2015-01-15T00:00:00Z","corrAddrGeoRegionCode":"PA","corrAddrNameLineTwo":"Crystal
-      J. Corsey","appLocation":"ELECTRONIC","appEarlyPubNumber":"US20150019529A1","id":"14298201","appGrpArtNumber":"2154","appGrpArtNumberFacet":"2154","applIdStr":"14298201","appl_id_txt":"14298201","appSubCls":"719000","patentNumber":"9779137","LAST_MOD_TS":"2023-10-31T06:41:43Z","transactions":[{"recordDate":"2021-03-17
+      J. Corsey","appLocation":"ELECTRONIC","appEarlyPubNumber":"US20150019529A1","id":"14298201","appGrpArtNumber":"2154","appGrpArtNumberFacet":"2154","applIdStr":"14298201","appl_id_txt":"14298201","appSubCls":"719000","patentNumber":"9779137","LAST_MOD_TS":"2023-11-29T05:41:30Z","transactions":[{"recordDate":"2021-03-17
       00:00:00","code":"M1551","description":"Payment of Maintenance Fee, 4th Year,
       Large Entity"},{"recordDate":"2019-06-26 00:00:00","code":"EML_NTR","description":"Email
       Notification"},{"recordDate":"2019-06-26 00:00:00","code":"EML_NTR","description":"Email
@@ -710,7 +715,7 @@ interactions:
       by OIPE CSR"},{"recordDate":"2014-06-06 00:00:00","code":"SCAN","description":"IFW
       Scan & PACR Auto Security Review"},{"recordDate":"2014-06-06 00:00:00","code":"BIG.","description":"Entity
       Status Set To Undiscounted (Initial Default Setting or Status Change)"},{"recordDate":"2014-06-06
-      00:00:00","code":"IEXX","description":"Initial Exam Team nn"}],"LAST_INSERT_TIME":"2023-10-31T12:35:02Z","appCls":"707","appStatus":"Patented
+      00:00:00","code":"IEXX","description":"Initial Exam Team nn"}],"LAST_INSERT_TIME":"2023-11-29T08:30:03Z","appCls":"707","appStatus":"Patented
       Case","appStatusFacet":"Patented Case","appStatus_txt":"Patented Case","ptaPteInd":"PTA","ptaPteTranHistory":[{"number":"105.5","ptaOrPteDate":"10-03-2017","contentsDescription":"PTA
       36 Months","ptoDays":"62","applDays":"","start":"0.5"},{"number":"105","ptaOrPteDate":"10-03-2017","contentsDescription":"Patent
       Issue Date Used in PTA Calculation","ptoDays":"","applDays":"","start":"0"},{"number":"103","ptaOrPteDate":"09-05-2017","contentsDescription":"Dispatch
@@ -823,7 +828,7 @@ interactions:
       Alan  ","phoneNum":"713-632-8665","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"44144","fullName":"Harris,
       Jonathan  ","phoneNum":"713-632-8643","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"79611","fullName":"Monterrosa,
       Nelson  ","phoneNum":"713-228-8600","regStatus":"ACTIVE"}],"parentContinuity":[{"claimApplicationNumberText":"61844045","applicationNumberText":"14298201","filingDate":"07-09-2013","aiaIndicator":"","patentNumberText":"","applicationStatus":"Expired","applicationStatusDescription":"This
-      application Claims Priority from Provisional Application"}],"corrAddrCustNo":"64574","corrAddrCountryCd":"US","ptoDelay":"385","corrAddrCity":"PHILADELPHIA","appEntityStatus":"UNDISCOUNTED","appConfrNumber":"1075","lastUpdatedTimestamp":"2023-11-01T10:40:38.795Z","cmsData":["{14298201|2019-06-26
+      application Claims Priority from Provisional Application"}],"corrAddrCustNo":"64574","corrAddrCountryCd":"US","ptoDelay":"385","corrAddrCity":"PHILADELPHIA","appEntityStatus":"UNDISCOUNTED","appConfrNumber":"1075","lastUpdatedTimestamp":"2023-11-30T02:35:57.674Z","cmsData":["{14298201|2019-06-26
       10:02:16|PROSECUTION|Petition Decision|PETDEC|2|JXAOUN1HRXEAPX3},{14298201|2019-06-26
       09:39:35|PROSECUTION|Communication - Re:  Power of Attorney (PTOL-308)|N570|1|JXC3HBK4RXEAPX0},{14298201|2019-06-26
       09:39:34|PROSECUTION|Communication - Re:  Power of Attorney (PTOL-308)|N570|1|JXC3HAC6RXEAPX0},{14298201|2019-06-24
@@ -924,7 +929,7 @@ interactions:
       20:00:00|PROSECUTION|Specification|SPEC|19|HW4093DSPXXIFW3},{14298201|2014-06-05
       20:00:00|PROSECUTION|Non Patent Literature|NPL|12|HW4093C2PXXIFW3},{14298201|2014-06-05
       20:00:00|PROSECUTION|Claims|CLM|5|HW4093E0PXXIFW3},{14298201|2014-06-05 20:00:00|PROSECUTION|Non
-      Patent Literature|NPL|4|HW4093BVPXXIFW3}"],"appAttrDockNumberFacet":"LBLOX3","appEntityStatusFacet":"UNDISCOUNTED","appCustNumberFacet":"64574","_version_":1781358080596901888,"firstInventorFileFacet":"Yes","appLocationFacet":"ELECTRONIC","appEarlyPubNumberFacet":"US20150019529A1","patentNumberFacet":"9779137"},{"corrAddrCountryName":"UNITED
+      Patent Literature|NPL|4|HW4093BVPXXIFW3}"],"appAttrDockNumberFacet":"LBLOX3","appEntityStatusFacet":"UNDISCOUNTED","appCustNumberFacet":"64574","_version_":1783954782120050688,"firstInventorFileFacet":"Yes","appLocationFacet":"ELECTRONIC","appEarlyPubNumberFacet":"US20150019529A1","patentNumberFacet":"9779137"},{"corrAddrCountryName":"UNITED
       STATES","applId":"14662457","totalPtoDays":"803","assignments":[{"reelNumber":"35202","frameNumber":"780","addressNameText":"CANTOR
       COLBURN LLP","addressLineOneText":"20 CHURCH STREET","addressLineTwoText":"22ND
       FLOOR","addressLineThreeText":"HARTFORD, CT 06103","addressLineFourText":"null","mailDate":"03-20-2015","receivedDate":"03-19-2015","recordedDate":"03-19-2015","pagesCount":"3","converyanceName":"ASSIGNMENT
@@ -972,7 +977,7 @@ interactions:
       Inc.||||Atlanta|GA||ORG|1}","appFilingDate":"2015-03-19T00:00:00Z","appExamName":"LE,
       THU NGUYET T","appExamNameFacet":"LE, THU NGUYET T","publicInd":"Y","APP_IND":"5","inventorName":"Todd
       L. Veldhuizen","inventorNameFacet":"Todd L. Veldhuizen","appEarlyPubDate":"2015-09-24T00:00:00Z","corrAddrGeoRegionCode":"PA","corrAddrNameLineTwo":"Crystal
-      J. Corsey","appLocation":"ELECTRONIC","appEarlyPubNumber":"US20150269226A1","id":"14662457","appGrpArtNumber":"2162","appGrpArtNumberFacet":"2162","applIdStr":"14662457","appl_id_txt":"14662457","appSubCls":"704000","patentNumber":"10204126","LAST_MOD_TS":"2023-10-31T06:41:43Z","transactions":[{"recordDate":"2022-07-27
+      J. Corsey","appLocation":"ELECTRONIC","appEarlyPubNumber":"US20150269226A1","id":"14662457","appGrpArtNumber":"2162","appGrpArtNumberFacet":"2162","applIdStr":"14662457","appl_id_txt":"14662457","appSubCls":"704000","patentNumber":"10204126","LAST_MOD_TS":"2023-11-29T05:41:30Z","transactions":[{"recordDate":"2022-07-27
       00:00:00","code":"M1551","description":"Payment of Maintenance Fee, 4th Year,
       Large Entity"},{"recordDate":"2019-07-02 00:00:00","code":"EML_NTR","description":"Email
       Notification"},{"recordDate":"2019-07-02 00:00:00","code":"PA..","description":"Change
@@ -1054,7 +1059,7 @@ interactions:
       Filed"},{"recordDate":"2015-03-19 00:00:00","code":"SCAN","description":"IFW
       Scan & PACR Auto Security Review"},{"recordDate":"2015-03-19 00:00:00","code":"BIG.","description":"Entity
       Status Set To Undiscounted (Initial Default Setting or Status Change)"},{"recordDate":"2015-03-19
-      00:00:00","code":"IEXX","description":"Initial Exam Team nn"}],"LAST_INSERT_TIME":"2023-10-31T12:35:02Z","appCls":"707","appStatus":"Patented
+      00:00:00","code":"IEXX","description":"Initial Exam Team nn"}],"LAST_INSERT_TIME":"2023-11-29T08:30:03Z","appCls":"707","appStatus":"Patented
       Case","appStatusFacet":"Patented Case","appStatus_txt":"Patented Case","ptaPteInd":"PTA","ptaPteTranHistory":[{"number":"94.5","ptaOrPteDate":"02-12-2019","contentsDescription":"PTA
       36 Months","ptoDays":"285","applDays":"","start":"0.5"},{"number":"94","ptaOrPteDate":"02-12-2019","contentsDescription":"Patent
       Issue Date Used in PTA Calculation","ptoDays":"","applDays":"","start":"0"},{"number":"92","ptaOrPteDate":"01-04-2019","contentsDescription":"Dispatch
@@ -1170,7 +1175,7 @@ interactions:
       Cole  ","phoneNum":"713-228-6601","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"32322","fullName":"Wong,
       Russell  ","phoneNum":"713-632-8634","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"79611","fullName":"Monterrosa,
       Nelson  ","phoneNum":"713-228-8600","regStatus":"ACTIVE"}],"parentContinuity":[{"claimApplicationNumberText":"61955890","applicationNumberText":"14662457","filingDate":"03-20-2014","aiaIndicator":"","patentNumberText":"","applicationStatus":"Expired","applicationStatusDescription":"This
-      application Claims Priority from Provisional Application"}],"corrAddrCustNo":"64574","corrAddrCountryCd":"US","ptoDelay":"803","corrAddrCity":"PHILADELPHIA","appEntityStatus":"UNDISCOUNTED","appConfrNumber":"2094","lastUpdatedTimestamp":"2023-11-01T10:42:08.126Z","cmsData":["{14662457|2019-07-02
+      application Claims Priority from Provisional Application"}],"corrAddrCustNo":"64574","corrAddrCountryCd":"US","ptoDelay":"803","corrAddrCity":"PHILADELPHIA","appEntityStatus":"UNDISCOUNTED","appConfrNumber":"2094","lastUpdatedTimestamp":"2023-11-30T02:33:35.361Z","cmsData":["{14662457|2019-07-02
       03:16:42|PROSECUTION|Communication - Re:  Power of Attorney (PTOL-308)|N570|1|JXKAG19KRXEAPX2},{14662457|2019-07-02
       03:16:42|PROSECUTION|Communication - Re:  Power of Attorney (PTOL-308)|N570|1|JXKAG12VRXEAPX2},{14662457|2019-06-25
       06:02:00|PROSECUTION|Electronic Filing System(EFS) Acknowledgment Receipt|N417|2|JXBVPI94RXEAPX0},{14662457|2019-06-25
@@ -1279,9 +1284,17 @@ interactions:
       Filing System(EFS) Acknowledgment Receipt|N417|3|I7GDEBFWPXXIFW3},{14662457|2015-03-18
       20:00:00|PROSECUTION|Non Patent Literature|NPL|12|I7GDEBEZPXXIFW3},{14662457|2015-03-18
       20:00:00|PROSECUTION|Fee Worksheet (SB06)|WFEE|2|I7GDEBFNPXXIFW3},{14662457|2015-03-18
-      20:00:00|PROSECUTION|Claims|CLM|6|I7GDEBGBPXXIFW3}"],"appAttrDockNumberFacet":"LBLOX4","appEntityStatusFacet":"UNDISCOUNTED","appCustNumberFacet":"64574","_version_":1781358039044980736,"firstInventorFileFacet":"Yes","appLocationFacet":"ELECTRONIC","appEarlyPubNumberFacet":"US20150269226A1","patentNumberFacet":"10204126"}]}},"queryId":"84cc7b1f-6da8-4d08-bc77-9f5dac5c930f"},"jobStatus":null,"queryId":"84cc7b1f-6da8-4d08-bc77-9f5dac5c930f","page":1,"count":0,"errorMessage":null,"createQueryRequest":{"searchText":"firstNamedApplicant:(LogicBlox)","facet":"false","facetField":null,"facetLimit":null,"facetMissing":null,"facetDate":null,"facetDateGap":null,"facetDateStart":null,"facetDateEnd":null,"facetDateOther":null,"facetDateInclude":null,"mm":"0%","sort":"applId
-      asc","qf":"","wt":null,"df":"patentTitle","fl":"*","start":"0","fq":[],"rows":"4","parameters":{"mm":"0%","df":"patentTitle","fl":["*"],"start":"0","sort":"applId
-      asc","fq":[],"rows":"4","facet":"false"}},"links":[{"rel":"self","href":"https://ped.uspto.gov/api/queries/84cc7b1f-6da8-4d08-bc77-9f5dac5c930f?format=XML"},{"rel":"results","href":"https://ped.uspto.gov/api/queries/84cc7b1f-6da8-4d08-bc77-9f5dac5c930f/results?page=1"},{"rel":"package","href":"https://ped.uspto.gov/api/queries/84cc7b1f-6da8-4d08-bc77-9f5dac5c930f/package?format=XML"},{"rel":"first","href":"https://ped.uspto.gov/api/queries/84cc7b1f-6da8-4d08-bc77-9f5dac5c930f/results?page=1"},{"rel":"next","href":"https://ped.uspto.gov/api/queries/84cc7b1f-6da8-4d08-bc77-9f5dac5c930f/results?page=2"},{"rel":"self","href":"https://ped.uspto.gov/api/queries/84cc7b1f-6da8-4d08-bc77-9f5dac5c930f?format=JSON"},{"rel":"results","href":"https://ped.uspto.gov/api/queries/84cc7b1f-6da8-4d08-bc77-9f5dac5c930f/results?page=1"},{"rel":"package","href":"https://ped.uspto.gov/api/queries/84cc7b1f-6da8-4d08-bc77-9f5dac5c930f/package?format=JSON"},{"rel":"first","href":"https://ped.uspto.gov/api/queries/84cc7b1f-6da8-4d08-bc77-9f5dac5c930f/results?page=1"},{"rel":"next","href":"https://ped.uspto.gov/api/queries/84cc7b1f-6da8-4d08-bc77-9f5dac5c930f/results?page=2"}]}'
+      20:00:00|PROSECUTION|Claims|CLM|6|I7GDEBGBPXXIFW3}"],"appAttrDockNumberFacet":"LBLOX4","appEntityStatusFacet":"UNDISCOUNTED","appCustNumberFacet":"64574","_version_":1783954696040349696,"firstInventorFileFacet":"Yes","appLocationFacet":"ELECTRONIC","appEarlyPubNumberFacet":"US20150269226A1","patentNumberFacet":"10204126"}]}},"queryId":"cfed43fa-3a84-40b7-9825-cc4ad6702d5a"},"jobStatus":null,"queryId":"cfed43fa-3a84-40b7-9825-cc4ad6702d5a","page":1,"count":0,"errorMessage":null,"createQueryRequest":{"searchText":"firstNamedApplicant:(LogicBlox)","facet":"false","facetField":null,"facetLimit":null,"facetMissing":null,"facetDate":null,"facetDateGap":null,"facetDateStart":null,"facetDateEnd":null,"facetDateOther":null,"facetDateInclude":null,"mm":"0%","sort":"applId
+      asc","qf":"appEarlyPubNumber applId appLocation appType appStatus_txt appConfrNumber
+      appCustNumber appGrpArtNumber appCls appSubCls appEntityStatus_txt patentNumber
+      patentTitle inventorName firstNamedApplicant appExamName appExamPrefrdName appAttrDockNumber
+      appPCTNumber appIntlPubNumber wipoEarlyPubNumber pctAppType firstInventorFile
+      appClsSubCls rankAndInventorsList","wt":null,"df":"patentTitle","fl":"*","start":"0","fq":[],"rows":"4","parameters":{"mm":"0%","df":"patentTitle","qf":"appEarlyPubNumber
+      applId appLocation appType appStatus_txt appConfrNumber appCustNumber appGrpArtNumber
+      appCls appSubCls appEntityStatus_txt patentNumber patentTitle inventorName firstNamedApplicant
+      appExamName appExamPrefrdName appAttrDockNumber appPCTNumber appIntlPubNumber
+      wipoEarlyPubNumber pctAppType firstInventorFile appClsSubCls rankAndInventorsList","fl":["*"],"start":"0","sort":"applId
+      asc","fq":[],"rows":"4","facet":"false"}},"links":[{"rel":"self","href":"https://ped.uspto.gov/api/queries/cfed43fa-3a84-40b7-9825-cc4ad6702d5a?format=XML"},{"rel":"results","href":"https://ped.uspto.gov/api/queries/cfed43fa-3a84-40b7-9825-cc4ad6702d5a/results?page=1"},{"rel":"package","href":"https://ped.uspto.gov/api/queries/cfed43fa-3a84-40b7-9825-cc4ad6702d5a/package?format=XML"},{"rel":"first","href":"https://ped.uspto.gov/api/queries/cfed43fa-3a84-40b7-9825-cc4ad6702d5a/results?page=1"},{"rel":"next","href":"https://ped.uspto.gov/api/queries/cfed43fa-3a84-40b7-9825-cc4ad6702d5a/results?page=2"},{"rel":"self","href":"https://ped.uspto.gov/api/queries/cfed43fa-3a84-40b7-9825-cc4ad6702d5a?format=JSON"},{"rel":"results","href":"https://ped.uspto.gov/api/queries/cfed43fa-3a84-40b7-9825-cc4ad6702d5a/results?page=1"},{"rel":"package","href":"https://ped.uspto.gov/api/queries/cfed43fa-3a84-40b7-9825-cc4ad6702d5a/package?format=JSON"},{"rel":"first","href":"https://ped.uspto.gov/api/queries/cfed43fa-3a84-40b7-9825-cc4ad6702d5a/results?page=1"},{"rel":"next","href":"https://ped.uspto.gov/api/queries/cfed43fa-3a84-40b7-9825-cc4ad6702d5a/results?page=2"}]}'
     headers:
       Cache-Control:
       - no-cache, no-store, max-age=0, must-revalidate
@@ -1290,21 +1303,21 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Wed, 01 Nov 2023 15:10:11 GMT
+      - Thu, 30 Nov 2023 18:09:49 GMT
       Expires:
       - '0'
       Pragma:
       - no-cache
       Server-Timing:
-      - intid;desc=fc077bcf9ff0e281
+      - intid;desc=c979ad78e069a53b
       Strict-Transport-Security:
       - max-age=31536000;includeSubDomains
       Transfer-Encoding:
       - chunked
       Via:
-      - 1.1 0931682e22ec4f46e0053b859e61d412.cloudfront.net (CloudFront)
+      - 1.1 ed57c867ac386aff2fbbc4e97f282304.cloudfront.net (CloudFront)
       X-Amz-Cf-Id:
-      - SvQ0oRr9QeKJEZMzRiGbw9P5vIa4vJTW-SEGCA1grej3XJh5Qa_buw==
+      - CeFohSXQeP_cfFIiRHcv5TcKfoogUdJB8NHR3Sj0jcoEaEmnmXQNNw==
       X-Amz-Cf-Pop:
       - IAH50-C1
       X-Cache:

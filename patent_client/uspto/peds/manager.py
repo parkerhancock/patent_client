@@ -1,3 +1,4 @@
+import datetime
 import logging
 from collections.abc import Sequence
 from pathlib import Path
@@ -5,11 +6,11 @@ from tempfile import TemporaryDirectory
 from typing import AsyncIterator
 from typing import TYPE_CHECKING
 
+from dateutil.parser import parse as dt_parse
 from pypdf import PdfMerger
 
 from .api import PatentExaminationDataSystemApi
 from .query import QueryFields
-from .util import date_to_solr_date
 from patent_client.util.asyncio_util import run_sync
 from patent_client.util.manager import Manager
 from patent_client.util.request_util import get_start_and_row_count
@@ -22,6 +23,26 @@ logger = logging.getLogger(__name__)
 
 class HttpException(Exception):
     pass
+
+
+def cast_as_datetime(date: str | datetime.datetime | datetime.date, end_of_day=False) -> datetime.datetime:
+    if isinstance(date, datetime.datetime):
+        pass
+    elif isinstance(date, str):
+        date = dt_parse(date)
+    elif isinstance(date, datetime.date):
+        date = datetime.datetime.combine(date, datetime.datetime.min.time())
+    elif not isinstance(date, datetime.datetime):
+        raise ValueError(f"Invalid date type: {type(date)}")
+    if end_of_day:
+        date = date.replace(hour=23, minute=59, second=59)
+    else:
+        date = date.replace(hour=0, minute=0, second=0)
+    return date
+
+
+def datetime_to_solr(date: datetime.datetime) -> str:
+    return date.strftime("%Y-%m-%dT%H:%M:%SZ")
 
 
 class USApplicationManager(Manager["USApplication"]):
@@ -51,7 +72,9 @@ class USApplicationManager(Manager["USApplication"]):
             date_filters = {
                 QueryFields.get(k): v for k, v in self.config.filter.items() if QueryFields.is_date_field(k)
             }
-            non_date_filters = {QueryFields.get(k): v for k, v in self.config.filter.items() if k not in date_filters}
+            non_date_filters = {
+                QueryFields.get(k): v for k, v in self.config.filter.items() if QueryFields.get(k) not in date_filters
+            }
 
             date_filter_tuples = list()
             # Check date filters for validity
@@ -66,36 +89,35 @@ class USApplicationManager(Manager["USApplication"]):
                         raise ValueError(
                             f"Invalid date filter: {k}={v}; Cannot have multiple values with operator {op[0]}"
                         )
-                    date_filter_tuples.append((f, op[0], date_to_solr_date(v)))
+                    date_filter_tuples.append((f, op[0], cast_as_datetime(v)))
                 else:
                     if isinstance(v, (list, tuple)):
                         if len(v) != 2:
                             raise ValueError(
                                 f"Invalid date range filter: {k}; When filtering using a list or tuple, must have length 2 (start, end)"
                             )
-                        date_filter_tuples.append((k, "gte", date_to_solr_date(v[0])))
-                        date_filter_tuples.append((k, "lte", date_to_solr_date(v[1])))
+                        date_filter_tuples.append((k, "gte", cast_as_datetime(v[0])))
+                        date_filter_tuples.append((k, "lte", cast_as_datetime(v[1])))
                     else:
-                        date_filter_tuples.append((k, "exact", date_to_solr_date(v)))
-
+                        date_filter_tuples.append((k, "exact", cast_as_datetime(v)))
             # Create pairs of gte/lte filters
             query_date_filter_tuples = set()
             for k, op, v in date_filter_tuples:
                 if op == "gte":
                     lte_query = next((v for k, op, v in date_filter_tuples if k == k and op == "lte"), "*")
-                    query_date_filter_tuples.append((k, (v, lte_query)))
+                    query_date_filter_tuples.add((k, (v, lte_query)))
                 elif op == "lte":
                     gte_query = next((v for k, op, v in date_filter_tuples if k == k and op == "gte"), "*")
-                    query_date_filter_tuples.append((k, (gte_query, v)))
+                    query_date_filter_tuples.add((k, (gte_query, v)))
                 elif op == "exact":
-                    query_date_filter_tuples.append((k, v))
+                    query_date_filter_tuples.add((k, (v, v)))
 
             # Create the query string
             for k, v in query_date_filter_tuples:
-                if isinstance(v, (list, tuple)):
-                    query.append(f"{k}:[{v[0]} TO {v[1]}]")
-                else:
-                    query.append(f"{k}:{v}")
+                start, end = v
+                start = datetime_to_solr(cast_as_datetime(start))
+                end = datetime_to_solr(cast_as_datetime(end, end_of_day=True))
+                query.append(f"{k}:[{start} TO {end}]")
 
             # Add non-date filters
             for k, v in non_date_filters.items():

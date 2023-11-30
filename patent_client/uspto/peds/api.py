@@ -1,4 +1,5 @@
 import datetime
+import logging
 from typing import Dict
 from typing import List
 from typing import Optional
@@ -7,6 +8,7 @@ from .model import Document
 from .model import PedsPage
 from .session import session
 
+logger = logging.getLogger(__name__)
 
 type_map = {
     "string": str,
@@ -78,9 +80,9 @@ class PatentExaminationDataSystemApi:
             _type_: _description_
         """
         if query_fields is None:
-            qf = list(f for f in (await self.get_search_fields()).keys() if f in query)
-        if qf is None:
-            qf = list((await self.get_search_fields()).keys())
+            qf = "appEarlyPubNumber applId appLocation appType appStatus_txt appConfrNumber appCustNumber appGrpArtNumber appCls appSubCls appEntityStatus_txt patentNumber patentTitle inventorName firstNamedApplicant appExamName appExamPrefrdName appAttrDockNumber appPCTNumber appIntlPubNumber wipoEarlyPubNumber pctAppType firstInventorFile appClsSubCls rankAndInventorsList".split(
+                " "
+            )
 
         params: Dict[str, object] = {
             "df": default_field,
@@ -96,6 +98,7 @@ class PatentExaminationDataSystemApi:
         if rows:
             params["rows"] = rows
         url = "https://ped.uspto.gov/api/queries"
+        logger.debug(f"POST {url}\n{params}")
         response = await session.post(
             url,
             json=params,

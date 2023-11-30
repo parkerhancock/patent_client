@@ -1,8 +1,12 @@
 interactions:
 - request:
-    body: '{"df": "patentTitle", "qf": "", "fl": "*", "fq": [], "searchText": "appCustNumber:(70155)",
-      "sort": "applId asc", "facet": "false", "mm": "100%", "start": "0", "rows":
-      5}'
+    body: '{"df": "patentTitle", "qf": "appEarlyPubNumber applId appLocation appType
+      appStatus_txt appConfrNumber appCustNumber appGrpArtNumber appCls appSubCls
+      appEntityStatus_txt patentNumber patentTitle inventorName firstNamedApplicant
+      appExamName appExamPrefrdName appAttrDockNumber appPCTNumber appIntlPubNumber
+      wipoEarlyPubNumber pctAppType firstInventorFile appClsSubCls rankAndInventorsList",
+      "fl": "*", "fq": [], "searchText": "appCustNumber:(70155)", "sort": "applId
+      asc", "facet": "false", "mm": "100%", "start": "0", "rows": 5}'
     headers:
       accept:
       - application/json
@@ -11,17 +15,17 @@ interactions:
       connection:
       - keep-alive
       content-length:
-      - '170'
+      - '528'
       content-type:
       - application/json
       host:
       - ped.uspto.gov
       user-agent:
-      - Mozilla/5.0 Python Patent Clientbot/3.2.10 (parkerhancock@users.noreply.github.com)
+      - Mozilla/5.0 Python Patent Clientbot/4.1.1 (parkerhancock@users.noreply.github.com)
     method: POST
     uri: https://ped.uspto.gov/api/queries
   response:
-    content: '{"queryResults":{"indexLastUpdatedDate":"Thu Nov 02 01:33:47 EDT 2023","searchResponse":{"responseHeader":{"zkConnected":true,"status":0,"QTime":737},"response":{"numFound":899,"start":0,"numFoundExact":true,"docs":[{"corrAddrCountryName":"UNITED
+    content: '{"queryResults":{"indexLastUpdatedDate":"Thu Nov 30 12:52:38 EST 2023","searchResponse":{"responseHeader":{"zkConnected":true,"status":0,"QTime":615},"response":{"numFound":899,"start":0,"numFoundExact":true,"docs":[{"corrAddrCountryName":"UNITED
       STATES","applId":"08910294","assignments":[{"reelNumber":"14363","frameNumber":"352","addressNameText":"MOORE
       & VAN ALLEN PLLC","addressLineOneText":"STEVEN D. THOMAS","addressLineTwoText":"2200
       W. MAIN STREET","addressLineThreeText":"SUITE 800","addressLineFourText":"DURHAM,
@@ -214,16 +218,9 @@ interactions:
       Worksheet (SB06)|WFEE|1|FGV30S0XPPOPPY5},{08971524|1997-11-16 19:00:00|PROSECUTION|Oath
       or Declaration filed|OATH|2|FGV30S08PPOPPY5},{08971524|1997-11-16 19:00:00|PROSECUTION|Specification|SPEC|6|FGV30RYSPPOPPY5},{08971524|1997-11-16
       19:00:00|PROSECUTION|Claims|CLM|2|FGV30RZ6PPOPPY5},{08971524|1997-11-16 19:00:00|PROSECUTION|Search
-      information including classification, databases and other search related notes|SRFW|1|FGV30S29PPOPPY5}"],"appAttrDockNumberFacet":"114510.010100/US-F0003","appEntityStatusFacet":"SMALL","appCustNumberFacet":"70155","_version_":1749000306330435584,"firstInventorFileFacet":"No","appLocationFacet":"ELECTRONIC","patentNumberFacet":"6090462"},{"corrAddrCountryName":"UNITED
-      STATES","applId":"09320950","totalPtoDays":"0","assignments":[{"reelNumber":"27018","frameNumber":"4","addressNameText":"BEN
-      D. TOBOR","addressLineOneText":"1000 LOUISIANA, SUITE 1700","addressLineTwoText":"HOUSTON,
-      TX 77002","addressLineThreeText":"null","addressLineFourText":"null","mailDate":"10-05-2011","receivedDate":"10-05-2011","recordedDate":"10-05-2011","pagesCount":"4","converyanceName":"ASSIGNMENT
-      OF ASSIGNORS INTEREST (SEE DOCUMENT FOR DETAILS).","sequenceNumber":"1","assignors":[{"assignorName":"GLOVER,
-      JOHN N.","execDate":"10-03-2011"}],"assignee":[{"assigneeName":"CRYSTAPHASE
-      PRODUCTS, INC.","streetLineOneText":"16945 NORTHCHASE DRIVE, SUITE 1610","streetLineTwoText":"null","cityName":"HOUSTON","countryCode":"TEXAS","postalCode":"77060-6029"}]}],"appFilingDate":"1999-05-27T00:00:00Z","appExamName":"SORKIN,
-      DAVID L","appExamNameFacet":"SORKIN, DAVID L","publicInd":"Y","APP_IND":"5","inventorName":"JOHN
-      N. GLOVER","inventorNameFacet":"JOHN N. GLOVER","appEarlyPubDate":"2001-08-23T00:00:00Z","corrAddrGeoRegionCode":"TX","corrAddrNameLineTwo":"INTELLECTUAL
-      PROPERTY DEPARTMENT","appLocation":"ELECTRONIC","appEarlyPubNumber":"US20010015336A1","id":"09320950","appGrpArtNumber":"1774","appGrpArtNumberFacet":"1774","applIdStr":"09320950","appl_id_txt":"09320950","appSubCls":"284000","patentNumber":"8062521","LAST_MOD_TS":"2023-11-01T06:21:12Z","transactions":[{"recordDate":"2023-07-10
+      information including classification, databases and other search related notes|SRFW|1|FGV30S29PPOPPY5}"],"appAttrDockNumberFacet":"114510.010100/US-F0003","appEntityStatusFacet":"SMALL","appCustNumberFacet":"70155","_version_":1749000306330435584,"firstInventorFileFacet":"No","appLocationFacet":"ELECTRONIC","patentNumberFacet":"6090462"},{"applId":"09320950","appFilingDate":"1999-05-27T00:00:00Z","appExamName":"SORKIN,
+      DAVID L","appExamNameFacet":"SORKIN, DAVID L","publicInd":"Y","APP_IND":"1","inventorName":"JOHN
+      N. GLOVER","inventorNameFacet":"JOHN N. GLOVER","appEarlyPubDate":"2001-08-23T00:00:00Z","appLocation":"ELECTRONIC","appEarlyPubNumber":"US20010015336A1","id":"09320950","appGrpArtNumber":"1774","appGrpArtNumberFacet":"1774","applIdStr":"09320950","appl_id_txt":"09320950","appSubCls":"284000","patentNumber":"8062521","LAST_MOD_TS":"2023-11-28T13:20:40Z","transactions":[{"recordDate":"2023-07-10
       00:00:00","code":"REM.","description":"Maintenance Fee Reminder Mailed"},{"recordDate":"2019-05-09
       00:00:00","code":"M2552","description":"Payment of Maintenance Fee, 8th Yr,
       Small Entity"},{"recordDate":"2011-11-22 00:00:00","code":"PGM/","description":"Recordation
@@ -422,202 +419,9 @@ interactions:
       Docketed to Examiner in GAU"},{"recordDate":"1999-06-21 00:00:00","code":"OIPE","description":"Application
       Dispatched from OIPE"},{"recordDate":"1999-06-16 00:00:00","code":"SCAN","description":"IFW
       Scan & PACR Auto Security Review"},{"recordDate":"1999-06-08 00:00:00","code":"IEXX","description":"Initial
-      Exam Team nn"}],"LAST_INSERT_TIME":"2023-11-01T08:05:03Z","appCls":"210","appStatus":"Patented
-      Case","appStatusFacet":"Patented Case","appStatus_txt":"Patented Case","corrAddrStreetLineTwo":"Suite
-      6700","ptaPteInd":"PTA","ptaPteTranHistory":[{"number":"229.5","ptaOrPteDate":"04-10-2002","contentsDescription":"PTA
-      36 Months","ptoDays":"0","applDays":"","start":"15"},{"number":"229","ptaOrPteDate":"11-22-2011","contentsDescription":"Patent
-      Issue Date Used in PTA Calculation","ptoDays":"","applDays":"","start":"0"},{"number":"227","ptaOrPteDate":"10-24-2011","contentsDescription":"Dispatch
-      to FDC","ptoDays":"","applDays":"","start":"0"},{"number":"226","ptaOrPteDate":"10-20-2011","contentsDescription":"Application
-      Is Considered Ready for Issue","ptoDays":"","applDays":"","start":"0"},{"number":"225","ptaOrPteDate":"10-06-2011","contentsDescription":"Issue
-      Fee Payment Verified","ptoDays":"","applDays":"","start":"0"},{"number":"223","ptaOrPteDate":"10-06-2011","contentsDescription":"Issue
-      Fee Payment Received","ptoDays":"","applDays":"","start":"0"},{"number":"222","ptaOrPteDate":"09-08-2011","contentsDescription":"Receipt
-      into Pubs","ptoDays":"","applDays":"","start":"0"},{"number":"221","ptaOrPteDate":"09-08-2011","contentsDescription":"Receipt
-      into Pubs","ptoDays":"","applDays":"","start":"0"},{"number":"217","ptaOrPteDate":"08-30-2011","contentsDescription":"Mail
-      Notice of Allowance","ptoDays":"","applDays":"","start":"0"},{"number":"213","ptaOrPteDate":"08-25-2011","contentsDescription":"Notice
-      of Allowance Data Verification Completed","ptoDays":"","applDays":"","start":"0"},{"number":"212","ptaOrPteDate":"08-25-2011","contentsDescription":"Case
-      Docketed to Examiner in GAU","ptoDays":"","applDays":"","start":"0"},{"number":"210","ptaOrPteDate":"08-11-2011","contentsDescription":"Electronic
-      Review","ptoDays":"","applDays":"","start":"0"},{"number":"209","ptaOrPteDate":"08-11-2011","contentsDescription":"Email
-      Notification","ptoDays":"","applDays":"","start":"0"},{"number":"208","ptaOrPteDate":"08-11-2011","contentsDescription":"Mail
-      PTAB Decision on Appeal - Reversed","ptoDays":"548","applDays":"","start":"174"},{"number":"207","ptaOrPteDate":"08-09-2011","contentsDescription":"PTAB
-      Decision - Examiner Reversed","ptoDays":"","applDays":"","start":"0"},{"number":"206","ptaOrPteDate":"02-18-2011","contentsDescription":"Email
-      Notification","ptoDays":"","applDays":"","start":"0"},{"number":"204","ptaOrPteDate":"02-18-2011","contentsDescription":"Docketing
-      Notice Mailed to Appellant","ptoDays":"","applDays":"","start":"0"},{"number":"203","ptaOrPteDate":"02-16-2011","contentsDescription":"Assignment
-      of Appeal Number","ptoDays":"","applDays":"","start":"0"},{"number":"202","ptaOrPteDate":"02-16-2011","contentsDescription":"Email
-      Notification","ptoDays":"","applDays":"","start":"0"},{"number":"201","ptaOrPteDate":"02-14-2011","contentsDescription":"Appeal
-      Awaiting PTAB Docketing","ptoDays":"","applDays":"","start":"0"},{"number":"200","ptaOrPteDate":"02-16-2011","contentsDescription":"Mail
-      Reply Brief Noted by Examiner","ptoDays":"","applDays":"","start":"0"},{"number":"199","ptaOrPteDate":"02-11-2011","contentsDescription":"Reply
-      Brief Noted by Examiner","ptoDays":"","applDays":"","start":"0"},{"number":"198","ptaOrPteDate":"02-03-2011","contentsDescription":"Date
-      Forwarded to Examiner","ptoDays":"","applDays":"","start":"0"},{"number":"197","ptaOrPteDate":"01-26-2011","contentsDescription":"Reply
-      Brief Filed","ptoDays":"","applDays":"","start":"0"},{"number":"196","ptaOrPteDate":"12-01-2010","contentsDescription":"Exam.
-      Ans. Review Complete","ptoDays":"","applDays":"","start":"0"},{"number":"195","ptaOrPteDate":"11-28-2010","contentsDescription":"Electronic
-      Review","ptoDays":"","applDays":"","start":"0"},{"number":"194","ptaOrPteDate":"11-26-2010","contentsDescription":"Email
-      Notification","ptoDays":"","applDays":"","start":"0"},{"number":"193","ptaOrPteDate":"11-26-2010","contentsDescription":"Mail
-      Examiner''s Answer","ptoDays":"","applDays":"","start":"0"},{"number":"192","ptaOrPteDate":"11-22-2010","contentsDescription":"Examiner''s
-      Answer to Appeal Brief","ptoDays":"","applDays":"","start":"0"},{"number":"191","ptaOrPteDate":"10-06-2010","contentsDescription":"Case
-      Docketed to Examiner in GAU","ptoDays":"","applDays":"","start":"0"},{"number":"190","ptaOrPteDate":"10-04-2010","contentsDescription":"Date
-      Forwarded to Examiner","ptoDays":"","applDays":"","start":"0"},{"number":"189","ptaOrPteDate":"09-29-2010","contentsDescription":"Appeal
-      Brief Filed","ptoDays":"","applDays":"","start":"0"},{"number":"188","ptaOrPteDate":"10-01-2010","contentsDescription":"Appeal
-      Brief Review Complete","ptoDays":"","applDays":"","start":"0"},{"number":"187","ptaOrPteDate":"09-23-2010","contentsDescription":"Email
-      Notification","ptoDays":"","applDays":"","start":"0"},{"number":"186","ptaOrPteDate":"09-16-2010","contentsDescription":"Notice  --  Defective
-      Appeal Brief","ptoDays":"","applDays":"","start":"0"},{"number":"185","ptaOrPteDate":"09-13-2010","contentsDescription":"Date
-      Forwarded to Examiner","ptoDays":"","applDays":"","start":"0"},{"number":"184.1","ptaOrPteDate":"09-09-2010","contentsDescription":"Defective
-      / Incomplete Appeal Brief Filed","ptoDays":"","applDays":"","start":"0"},{"number":"184","ptaOrPteDate":"09-09-2010","contentsDescription":"Appeal
-      Brief Filed","ptoDays":"","applDays":"","start":"0"},{"number":"183","ptaOrPteDate":"09-13-2010","contentsDescription":"Appeal
-      Brief Review Complete","ptoDays":"","applDays":"","start":"0"},{"number":"182","ptaOrPteDate":"09-09-2010","contentsDescription":"Request
-      for Extension of Time - Granted","ptoDays":"","applDays":"","start":"0"},{"number":"181","ptaOrPteDate":"02-24-2010","contentsDescription":"Email
-      Notification","ptoDays":"","applDays":"","start":"0"},{"number":"180","ptaOrPteDate":"02-24-2010","contentsDescription":"Mail
-      Advisory Action (PTOL - 303)","ptoDays":"","applDays":"","start":"0"},{"number":"179","ptaOrPteDate":"02-18-2010","contentsDescription":"Advisory
-      Action (PTOL-303)","ptoDays":"","applDays":"","start":"0"},{"number":"178","ptaOrPteDate":"02-18-2010","contentsDescription":"Email
-      Notification","ptoDays":"","applDays":"","start":"0"},{"number":"177","ptaOrPteDate":"02-18-2010","contentsDescription":"Change
-      in Power of Attorney (May Include Associate POA)","ptoDays":"","applDays":"","start":"0"},{"number":"176","ptaOrPteDate":"02-14-2010","contentsDescription":"Date
-      Forwarded to Examiner","ptoDays":"","applDays":"","start":"0"},{"number":"175","ptaOrPteDate":"02-10-2010","contentsDescription":"Amendment/Argument
-      after Notice of Appeal","ptoDays":"","applDays":"","start":"0"},{"number":"174","ptaOrPteDate":"02-10-2010","contentsDescription":"Notice
-      of Appeal Filed","ptoDays":"","applDays":"92","start":"171"},{"number":"173","ptaOrPteDate":"02-10-2010","contentsDescription":"Request
-      for Extension of Time - Granted","ptoDays":"","applDays":"","start":"0"},{"number":"172","ptaOrPteDate":"02-14-2010","contentsDescription":"Correspondence
-      Address Change","ptoDays":"","applDays":"","start":"0"},{"number":"171","ptaOrPteDate":"08-10-2009","contentsDescription":"Mail
-      Final Rejection (PTOL - 326)","ptoDays":"","applDays":"","start":"0"},{"number":"170","ptaOrPteDate":"08-07-2009","contentsDescription":"Final
-      Rejection","ptoDays":"","applDays":"","start":"0"},{"number":"169","ptaOrPteDate":"07-17-2009","contentsDescription":"Date
-      Forwarded to Examiner","ptoDays":"","applDays":"","start":"0"},{"number":"168","ptaOrPteDate":"06-11-2009","contentsDescription":"Response
-      after Non-Final Action","ptoDays":"","applDays":"92","start":"166"},{"number":"167","ptaOrPteDate":"06-11-2009","contentsDescription":"Request
-      for Extension of Time - Granted","ptoDays":"","applDays":"","start":"0"},{"number":"166","ptaOrPteDate":"12-11-2008","contentsDescription":"Mail
-      Non-Final Rejection","ptoDays":"","applDays":"","start":"0"},{"number":"165","ptaOrPteDate":"12-08-2008","contentsDescription":"Non-Final
-      Rejection","ptoDays":"","applDays":"","start":"0"},{"number":"164","ptaOrPteDate":"09-29-2008","contentsDescription":"Information
-      Disclosure Statement considered","ptoDays":"","applDays":"","start":"0"},{"number":"163","ptaOrPteDate":"11-28-2008","contentsDescription":"Mail-Petition
-      to Revive Application - Granted","ptoDays":"","applDays":"","start":"0"},{"number":"162","ptaOrPteDate":"11-28-2008","contentsDescription":"Petition
-      to Revive Application - Granted","ptoDays":"","applDays":"1942","start":"52"},{"number":"161","ptaOrPteDate":"09-29-2008","contentsDescription":"Petition
-      Entered","ptoDays":"","applDays":"","start":"0"},{"number":"160","ptaOrPteDate":"09-29-2008","contentsDescription":"Information
-      Disclosure Statement (IDS) Filed","ptoDays":"","applDays":"","start":"0"},{"number":"159","ptaOrPteDate":"10-07-2008","contentsDescription":"Date
-      Forwarded to Examiner","ptoDays":"","applDays":"","start":"0"},{"number":"157","ptaOrPteDate":"10-07-2008","contentsDescription":"Date
-      Forwarded to Examiner","ptoDays":"","applDays":"","start":"0"},{"number":"156","ptaOrPteDate":"09-30-2008","contentsDescription":"Request
-      for Continued Examination (RCE)","ptoDays":"","applDays":"","start":"136"},{"number":"155","ptaOrPteDate":"10-07-2008","contentsDescription":"Disposal
-      for a RCE / CPA / R129","ptoDays":"","applDays":"","start":"0"},{"number":"154","ptaOrPteDate":"09-30-2008","contentsDescription":"Request
-      for Extension of Time - Granted","ptoDays":"","applDays":"","start":"0"},{"number":"142","ptaOrPteDate":"09-29-2008","contentsDescription":"Information
-      Disclosure Statement (IDS) Filed","ptoDays":"","applDays":"","start":"0"},{"number":"141","ptaOrPteDate":"09-29-2008","contentsDescription":"Workflow
-      - Request for RCE - Begin","ptoDays":"","applDays":"","start":"0"},{"number":"140","ptaOrPteDate":"03-18-2008","contentsDescription":"Mail
-      Advisory Action (PTOL - 303)","ptoDays":"","applDays":"","start":"0"},{"number":"139","ptaOrPteDate":"03-12-2008","contentsDescription":"Advisory
-      Action (PTOL-303)","ptoDays":"","applDays":"","start":"0"},{"number":"138","ptaOrPteDate":"03-11-2008","contentsDescription":"Date
-      Forwarded to Examiner","ptoDays":"","applDays":"","start":"0"},{"number":"137","ptaOrPteDate":"02-28-2008","contentsDescription":"Amendment/Argument
-      after Notice of Appeal","ptoDays":"","applDays":"","start":"0"},{"number":"136","ptaOrPteDate":"02-28-2008","contentsDescription":"Notice
-      of Appeal Filed","ptoDays":"","applDays":"93","start":"132"},{"number":"135","ptaOrPteDate":"02-28-2008","contentsDescription":"Affidavit(s)
-      (Rule 131 or 132) or Exhibit(s) Received","ptoDays":"","applDays":"","start":"0"},{"number":"134","ptaOrPteDate":"02-28-2008","contentsDescription":"Request
-      for Extension of Time - Granted","ptoDays":"","applDays":"","start":"0"},{"number":"133","ptaOrPteDate":"10-04-2007","contentsDescription":"Case
-      Docketed to Examiner in GAU","ptoDays":"","applDays":"","start":"0"},{"number":"132","ptaOrPteDate":"08-27-2007","contentsDescription":"Mail
-      Final Rejection (PTOL - 326)","ptoDays":"","applDays":"","start":"0"},{"number":"131","ptaOrPteDate":"08-24-2007","contentsDescription":"Final
-      Rejection","ptoDays":"","applDays":"","start":"0"},{"number":"130","ptaOrPteDate":"06-22-2007","contentsDescription":"Date
-      Forwarded to Examiner","ptoDays":"","applDays":"","start":"0"},{"number":"129","ptaOrPteDate":"06-11-2007","contentsDescription":"Response
-      after Non-Final Action","ptoDays":"","applDays":"95","start":"127"},{"number":"128","ptaOrPteDate":"06-11-2007","contentsDescription":"Request
-      for Extension of Time - Granted","ptoDays":"","applDays":"","start":"0"},{"number":"127","ptaOrPteDate":"12-08-2006","contentsDescription":"Mail
-      Non-Final Rejection","ptoDays":"67","applDays":"","start":"105"},{"number":"126","ptaOrPteDate":"12-06-2006","contentsDescription":"Non-Final
-      Rejection","ptoDays":"","applDays":"","start":"0"},{"number":"125","ptaOrPteDate":"10-30-2006","contentsDescription":"Exam.
-      Ans. Review Complete","ptoDays":"","applDays":"","start":"0"},{"number":"124","ptaOrPteDate":"12-06-2006","contentsDescription":"Disposal
-      Flag Change","ptoDays":"","applDays":"","start":"0"},{"number":"123","ptaOrPteDate":"10-24-2006","contentsDescription":"Date
-      Forwarded to Examiner","ptoDays":"","applDays":"","start":"0"},{"number":"122","ptaOrPteDate":"10-04-2006","contentsDescription":"Resp.
-      to post-examiner ans","ptoDays":"","applDays":"","start":"0"},{"number":"116","ptaOrPteDate":"08-30-2006","contentsDescription":"Mail
-      Post-examiner ans. com","ptoDays":"","applDays":"","start":"0"},{"number":"115","ptaOrPteDate":"08-30-2006","contentsDescription":"Post-examiner
-      ans. com","ptoDays":"","applDays":"","start":"0"},{"number":"114","ptaOrPteDate":"10-18-2006","contentsDescription":"Date
-      Forwarded to Examiner","ptoDays":"","applDays":"","start":"0"},{"number":"113","ptaOrPteDate":"10-16-2006","contentsDescription":"Reply
-      Brief Filed","ptoDays":"","applDays":"","start":"0"},{"number":"112","ptaOrPteDate":"08-09-2006","contentsDescription":"Mail
-      Examiner''s Answer","ptoDays":"","applDays":"","start":"0"},{"number":"111","ptaOrPteDate":"08-09-2006","contentsDescription":"Examiner''s
-      Answer to Appeal Brief","ptoDays":"","applDays":"","start":"0"},{"number":"106","ptaOrPteDate":"06-08-2006","contentsDescription":"Date
-      Forwarded to Examiner","ptoDays":"","applDays":"","start":"0"},{"number":"105","ptaOrPteDate":"06-02-2006","contentsDescription":"Appeal
-      Brief Filed","ptoDays":"","applDays":"","start":"0"},{"number":"104","ptaOrPteDate":"06-02-2006","contentsDescription":"Request
-      for Extension of Time - Granted","ptoDays":"","applDays":"","start":"0"},{"number":"103","ptaOrPteDate":"03-29-2006","contentsDescription":"Notice  --  Defective
-      Appeal Brief","ptoDays":"","applDays":"","start":"0"},{"number":"102","ptaOrPteDate":"03-22-2006","contentsDescription":"Date
-      Forwarded to Examiner","ptoDays":"","applDays":"","start":"0"},{"number":"101.1","ptaOrPteDate":"03-15-2006","contentsDescription":"Defective
-      / Incomplete Appeal Brief Filed","ptoDays":"","applDays":"","start":"0"},{"number":"101","ptaOrPteDate":"03-15-2006","contentsDescription":"Appeal
-      Brief Filed","ptoDays":"","applDays":"","start":"0"},{"number":"100","ptaOrPteDate":"03-15-2006","contentsDescription":"Request
-      for Extension of Time - Granted","ptoDays":"","applDays":"","start":"0"},{"number":"98","ptaOrPteDate":"01-12-2006","contentsDescription":"Mail
-      Appeals conf. Proceed to PTAB","ptoDays":"","applDays":"","start":"0"},{"number":"97","ptaOrPteDate":"01-09-2006","contentsDescription":"Pre-Appeal
-      Conference Decision - Proceed to PTAB","ptoDays":"","applDays":"","start":"0"},{"number":"94","ptaOrPteDate":"11-10-2005","contentsDescription":"Request
-      for Pre-Appeal Conference Filed","ptoDays":"","applDays":"","start":"0"},{"number":"90","ptaOrPteDate":"11-10-2005","contentsDescription":"Notice
-      of Appeal Filed","ptoDays":"","applDays":"64","start":"80"},{"number":"89","ptaOrPteDate":"11-10-2005","contentsDescription":"Request
-      for Extension of Time - Granted","ptoDays":"","applDays":"","start":"0"},{"number":"88","ptaOrPteDate":"09-19-2005","contentsDescription":"IFW
-      TSS Processing by Tech Center Complete","ptoDays":"","applDays":"","start":"0"},{"number":"87","ptaOrPteDate":"08-29-2005","contentsDescription":"Mail
-      Advisory Action (PTOL - 303)","ptoDays":"","applDays":"","start":"0"},{"number":"86","ptaOrPteDate":"08-24-2005","contentsDescription":"Advisory
-      Action (PTOL-303)","ptoDays":"","applDays":"","start":"0"},{"number":"85","ptaOrPteDate":"08-11-2005","contentsDescription":"Affidavit(s)
-      (Rule 131 or 132) or Exhibit(s) Received","ptoDays":"","applDays":"","start":"0"},{"number":"84","ptaOrPteDate":"08-16-2005","contentsDescription":"Date
-      Forwarded to Examiner","ptoDays":"","applDays":"","start":"0"},{"number":"83","ptaOrPteDate":"08-11-2005","contentsDescription":"Response
-      after Final Action","ptoDays":"","applDays":"","start":"0"},{"number":"82","ptaOrPteDate":"08-16-2005","contentsDescription":"Date
-      Forwarded to Examiner","ptoDays":"","applDays":"","start":"0"},{"number":"81","ptaOrPteDate":"08-11-2005","contentsDescription":"Response
-      after Final Action","ptoDays":"","applDays":"","start":"0"},{"number":"80","ptaOrPteDate":"06-07-2005","contentsDescription":"Mail
-      Final Rejection (PTOL - 326)","ptoDays":"","applDays":"","start":"0"},{"number":"79","ptaOrPteDate":"06-06-2005","contentsDescription":"Final
-      Rejection","ptoDays":"","applDays":"","start":"0"},{"number":"78","ptaOrPteDate":"04-25-2005","contentsDescription":"Date
-      Forwarded to Examiner","ptoDays":"","applDays":"","start":"0"},{"number":"77","ptaOrPteDate":"04-08-2005","contentsDescription":"Response
-      after Non-Final Action","ptoDays":"","applDays":"45","start":"73"},{"number":"76","ptaOrPteDate":"03-15-2005","contentsDescription":"Mail
-      Notice of Informal or Non-Responsive Amendment","ptoDays":"","applDays":"","start":"0"},{"number":"75","ptaOrPteDate":"02-22-2005","contentsDescription":"Affidavit(s)
-      (Rule 131 or 132) or Exhibit(s) Received","ptoDays":"","applDays":"","start":"0"},{"number":"74","ptaOrPteDate":"03-12-2005","contentsDescription":"Date
-      Forwarded to Examiner","ptoDays":"","applDays":"","start":"0"},{"number":"73.1","ptaOrPteDate":"02-22-2005","contentsDescription":"Informal
-      or Non-Responsive Amendment after Examiner Action","ptoDays":"","applDays":"","start":"0"},{"number":"73","ptaOrPteDate":"02-22-2005","contentsDescription":"Response
-      after Non-Final Action","ptoDays":"","applDays":"97","start":"71"},{"number":"72","ptaOrPteDate":"02-22-2005","contentsDescription":"Request
-      for Extension of Time - Granted","ptoDays":"","applDays":"","start":"0"},{"number":"71","ptaOrPteDate":"08-17-2004","contentsDescription":"Mail
-      Non-Final Rejection","ptoDays":"","applDays":"","start":"0"},{"number":"70","ptaOrPteDate":"08-16-2004","contentsDescription":"Non-Final
-      Rejection","ptoDays":"","applDays":"","start":"0"},{"number":"69","ptaOrPteDate":"08-04-2004","contentsDescription":"Date
-      Forwarded to Examiner","ptoDays":"","applDays":"","start":"0"},{"number":"68","ptaOrPteDate":"07-12-2004","contentsDescription":"Response
-      after Non-Final Action","ptoDays":"","applDays":"","start":"0"},{"number":"67","ptaOrPteDate":"07-12-2004","contentsDescription":"Workflow
-      incoming amendment IFW","ptoDays":"","applDays":"","start":"0"},{"number":"66","ptaOrPteDate":"07-01-2004","contentsDescription":"Mail
-      Notice of Informal or Non-Responsive RCE Amendment","ptoDays":"113","applDays":"","start":"63"},{"number":"65","ptaOrPteDate":"06-25-2004","contentsDescription":"RCE
-      Amendment Informal or Non-Responsive","ptoDays":"","applDays":"","start":"0"},{"number":"64","ptaOrPteDate":"06-25-2004","contentsDescription":"Date
-      Forwarded to Examiner","ptoDays":"","applDays":"","start":"0"},{"number":"63","ptaOrPteDate":"11-10-2003","contentsDescription":"Request
-      for Continued Examination (RCE)","ptoDays":"","applDays":"","start":"0"},{"number":"62","ptaOrPteDate":"06-25-2004","contentsDescription":"Disposal
-      for a RCE / CPA / R129","ptoDays":"","applDays":"","start":"0"},{"number":"56","ptaOrPteDate":"06-17-2004","contentsDescription":"Mail
-      Notice of Rescinded Abandonment","ptoDays":"","applDays":"","start":"0"},{"number":"55","ptaOrPteDate":"06-17-2004","contentsDescription":"Notice
-      of Rescinded Abandonment in TCs","ptoDays":"","applDays":"","start":"0"},{"number":"54","ptaOrPteDate":"04-21-2004","contentsDescription":"Mail-Petition
-      to Revive Application - Granted","ptoDays":"","applDays":"","start":"0"},{"number":"53","ptaOrPteDate":"11-10-2003","contentsDescription":"Petition
-      Entered","ptoDays":"","applDays":"218","start":"52"},{"number":"52","ptaOrPteDate":"08-05-2003","contentsDescription":"Mail
-      Abandonment for Failure to Respond to Office Action","ptoDays":"","applDays":"","start":"0"},{"number":"51","ptaOrPteDate":"08-05-2003","contentsDescription":"Aband.
-      for Failure to Respond to O. A.","ptoDays":"","applDays":"","start":"0"},{"number":"50","ptaOrPteDate":"07-24-2003","contentsDescription":"Mail
-      Miscellaneous Communication to Applicant","ptoDays":"","applDays":"","start":"0"},{"number":"49","ptaOrPteDate":"07-23-2003","contentsDescription":"Miscellaneous
-      Communication to Applicant - No Action Count","ptoDays":"","applDays":"","start":"0"},{"number":"48","ptaOrPteDate":"07-02-2003","contentsDescription":"Improper
-      Request for Continued Examination","ptoDays":"","applDays":"","start":"0"},{"number":"44","ptaOrPteDate":"07-02-2003","contentsDescription":"Request
-      for Extension of Time - Granted","ptoDays":"","applDays":"","start":"0"},{"number":"43","ptaOrPteDate":"07-02-2003","contentsDescription":"Workflow
-      - Request for CPA - Begin","ptoDays":"","applDays":"","start":"0"},{"number":"42","ptaOrPteDate":"01-02-2003","contentsDescription":"Mail
-      Final Rejection (PTOL - 326)","ptoDays":"","applDays":"","start":"0"},{"number":"41","ptaOrPteDate":"12-30-2002","contentsDescription":"Final
-      Rejection","ptoDays":"","applDays":"","start":"0"},{"number":"40","ptaOrPteDate":"11-04-2002","contentsDescription":"Correspondence
-      Address Change","ptoDays":"","applDays":"","start":"0"},{"number":"39","ptaOrPteDate":"11-04-2002","contentsDescription":"Date
-      Forwarded to Examiner","ptoDays":"","applDays":"","start":"0"},{"number":"38","ptaOrPteDate":"10-29-2002","contentsDescription":"Response
-      after Non-Final Action","ptoDays":"","applDays":"67","start":"36"},{"number":"37","ptaOrPteDate":"10-29-2002","contentsDescription":"Request
-      for Extension of Time - Granted","ptoDays":"","applDays":"","start":"0"},{"number":"36","ptaOrPteDate":"05-23-2002","contentsDescription":"Mail
-      Non-Final Rejection","ptoDays":"","applDays":"","start":"0"},{"number":"35","ptaOrPteDate":"05-23-2002","contentsDescription":"Non-Final
-      Rejection","ptoDays":"","applDays":"","start":"0"},{"number":"33","ptaOrPteDate":"05-06-2002","contentsDescription":"Date
-      Forwarded to Examiner","ptoDays":"","applDays":"","start":"0"},{"number":"32","ptaOrPteDate":"04-11-2002","contentsDescription":"Request
-      for Continued Examination (RCE)","ptoDays":"","applDays":"62","start":"24"},{"number":"31","ptaOrPteDate":"05-06-2002","contentsDescription":"Disposal
-      for a RCE / CPA / R129","ptoDays":"","applDays":"","start":"0"},{"number":"30","ptaOrPteDate":"04-11-2002","contentsDescription":"Request
-      for Extension of Time - Granted","ptoDays":"","applDays":"","start":"0"},{"number":"29","ptaOrPteDate":"04-22-2002","contentsDescription":"Workflow
-      - Request for RCE - Begin","ptoDays":"","applDays":"","start":"0"},{"number":"28","ptaOrPteDate":"03-11-2002","contentsDescription":"Mail
-      Advisory Action (PTOL - 303)","ptoDays":"","applDays":"","start":"0"},{"number":"27","ptaOrPteDate":"03-11-2002","contentsDescription":"Advisory
-      Action (PTOL-303)","ptoDays":"","applDays":"","start":"0"},{"number":"26","ptaOrPteDate":"03-06-2002","contentsDescription":"Date
-      Forwarded to Examiner","ptoDays":"","applDays":"","start":"0"},{"number":"25","ptaOrPteDate":"02-20-2002","contentsDescription":"Response
-      after Final Action","ptoDays":"","applDays":"","start":"0"},{"number":"24","ptaOrPteDate":"11-08-2001","contentsDescription":"Mail
-      Final Rejection (PTOL - 326)","ptoDays":"","applDays":"","start":"0"},{"number":"23","ptaOrPteDate":"11-05-2001","contentsDescription":"Final
-      Rejection","ptoDays":"","applDays":"","start":"0"},{"number":"22","ptaOrPteDate":"09-17-2001","contentsDescription":"Date
-      Forwarded to Examiner","ptoDays":"","applDays":"","start":"0"},{"number":"21","ptaOrPteDate":"09-10-2001","contentsDescription":"Response
-      after Non-Final Action","ptoDays":"","applDays":"95","start":"19"},{"number":"20","ptaOrPteDate":"09-10-2001","contentsDescription":"Request
-      for Extension of Time - Granted","ptoDays":"","applDays":"","start":"0"},{"number":"19","ptaOrPteDate":"03-07-2001","contentsDescription":"Mail
-      Non-Final Rejection","ptoDays":"","applDays":"","start":"0"},{"number":"18","ptaOrPteDate":"03-06-2001","contentsDescription":"Non-Final
-      Rejection","ptoDays":"","applDays":"","start":"0"},{"number":"17","ptaOrPteDate":"02-07-2001","contentsDescription":"Preliminary
-      Amendment","ptoDays":"","applDays":"","start":"0"},{"number":"16","ptaOrPteDate":"02-12-2001","contentsDescription":"Date
-      Forwarded to Examiner","ptoDays":"","applDays":"","start":"0"},{"number":"15","ptaOrPteDate":"02-07-2001","contentsDescription":"Continuing
-      Prosecution Application - Continuation (ACPA)","ptoDays":"","applDays":"","start":"0"},{"number":"14","ptaOrPteDate":"02-07-2001","contentsDescription":"Mail-Petition
-      to Revive Application - Granted","ptoDays":"","applDays":"","start":"0"}],"corrAddrGeoRegionNA":"TEXAS","patentTitle":"FILTERING
-      MEDIUM AND METHOD FOR CONTACTING SOLIDS-CONTAINING FEEDS FOR CHEMICAL REACTORS","applDelay":"2962","cDelay":"548","appStatusDate":"2011-11-02T00:00:00Z","appAttrDockNumber":"105218-000004/US/2","inventors":[{"nameLineOne":"GLOVER","nameLineTwo":"JOHN
-      N.","suffix":"","streetOne":"","streetTwo":"","city":"SPRING, ","geoCode":"TX","country":"(US)","rankNo":"1"}],"inventorsFacet":"{JOHN|N.|GLOVER||||SPRING|TX|US|IND|1}","ptoAdjustments":"0","corrAddrStreetLineOne":"1000
-      Louisiana Street","firstInventorFile":"No","childContinuity":[{"claimApplicationNumberText":"11431772","applicationNumberText":"09320950","filingDate":"05-10-2006","aiaIndicator":"N","patentNumberText":"","applicationStatus":"Abandoned","applicationStatusDescription":"claims
-      the benefit of"},{"claimApplicationNumberText":"13301236","applicationNumberText":"09320950","filingDate":"11-21-2011","aiaIndicator":"N","patentNumberText":"9101863","applicationStatus":"Patented","applicationStatusDescription":"claims
-      the benefit of"}],"overlapDelay":"0","aDelay":"180","appType":"Utility","appTypeFacet":"Utility","corrAddrPostalCode":"77002","appCustNumber":"70155","appClsSubCls":"210/284000","appClsSubClsFacet":"210/284000","patentIssueDate":"2011-11-22T00:00:00Z","bDelay":"0","corrAddrNameLineOne":"GREENBERG
-      TRAURIG (HOU)","attrnyAddr":[{"applicationId":null,"registrationNo":"27760","fullName":"Tobor,
-      Ben  ","phoneNum":"713-374-3568","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"29249","fullName":"Berman,
-      Charles  ","phoneNum":"310-828-4804","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"31542","fullName":"McQuade,
-      Paul  ","phoneNum":"202-331-3187","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"32938","fullName":"Schindler,
-      Barry  ","phoneNum":"973-443-3289","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"38959","fullName":"Mason,
-      Dwayne  ","phoneNum":"713-374-3601","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"53777","fullName":"Williams,
-      Tara  ","phoneNum":"713-374-3665","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"55000","fullName":"Bersh,
-      Lennie  ","phoneNum":"973-360-7900","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"59962","fullName":"Browning,
-      Matthew  ","phoneNum":"713-504-5078","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"63858","fullName":"Chretien,
-      Mark  ","phoneNum":"713-374-3528","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"72706","fullName":"Zalepa,
-      George  ","phoneNum":"973-443-3241","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"74918","fullName":"Reichlen,
-      Kristopher  ","phoneNum":"508-868-0601","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"34898","fullName":"Persley,
-      Sidney  ","phoneNum":"908-324-2239","regStatus":"ACTIVE"}],"parentContinuity":[{"claimApplicationNumberText":"60087235","applicationNumberText":"09320950","filingDate":"05-29-1998","aiaIndicator":"","patentNumberText":"","applicationStatus":"Expired","applicationStatusDescription":"This
-      application Claims Priority from Provisional Application"}],"corrAddrCustNo":"70155","corrAddrCountryCd":"US","ptoDelay":"728","corrAddrCity":"Houston","appEntityStatus":"SMALL","appConfrNumber":"5662","lastUpdatedTimestamp":"2023-11-02T05:10:04.590Z","cmsData":["{09320950|2017-12-13
+      Exam Team nn"}],"LAST_INSERT_TIME":"2023-11-28T18:30:03Z","appCls":"210","patentTitle":"FILTERING
+      MEDIUM AND METHOD FOR CONTACTING SOLIDS-CONTAINING FEEDS FOR CHEMICAL REACTORS","appAttrDockNumber":"105218-000004/US/2","inventors":[{"nameLineOne":"GLOVER","nameLineTwo":"JOHN
+      N.","suffix":"","streetOne":"","streetTwo":"","city":"SPRING, ","geoCode":"TX","country":"(US)","rankNo":"1"}],"inventorsFacet":"{JOHN|N.|GLOVER||||SPRING|TX|US|IND|1}","firstInventorFile":"No","appType":"Utility","appTypeFacet":"Utility","appCustNumber":"70155","appClsSubCls":"210/284000","appClsSubClsFacet":"210/284000","patentIssueDate":"2011-11-22T00:00:00Z","corrAddrCustNo":"70155","appEntityStatus":"SMALL","appConfrNumber":"5662","lastUpdatedTimestamp":"2023-11-28T23:35:52.016Z","cmsData":["{09320950|2017-12-13
       05:39:10|PROSECUTION|Report on the filing or determination of an action regarding
       a patent|SOL.NTC.SUIT|1|JB581BTZRXEAPX3},{09320950|2011-11-01 20:00:00|PROSECUTION|Issue
       Notification|ISSUE.NTF|1|GUJ4DAS8PPOPPY5},{09320950|2011-10-25 20:00:00|PROSECUTION|List
@@ -913,7 +717,7 @@ interactions:
       claim, renumbering, etc.|IIFW|1|DX5GUGSCPPOPPY2},{09320950|1999-05-26 20:00:00|PROSECUTION|Claims|CLM|10|DX5GUGY7PPOPPY2},{09320950|1999-05-26
       20:00:00|PROSECUTION|Fee Worksheet (SB06)|WFEE|1|DX5GUH3OPPOPPY2},{09320950|1999-05-26
       20:00:00|PROSECUTION|Artifact sheet indicating an item has been filed which
-      cannot be scanned|ARTIFACT|1|DX5GUH4QPPOPPY2}"],"appAttrDockNumberFacet":"105218-000004/US/2","appEntityStatusFacet":"SMALL","appCustNumberFacet":"70155","_version_":1781427978375266304,"firstInventorFileFacet":"No","appLocationFacet":"ELECTRONIC","appEarlyPubNumberFacet":"US20010015336A1","patentNumberFacet":"8062521"},{"corrAddrCountryName":"UNITED
+      cannot be scanned|ARTIFACT|1|DX5GUH4QPPOPPY2}"],"appAttrDockNumberFacet":"105218-000004/US/2","appEntityStatusFacet":"SMALL","appCustNumberFacet":"70155","_version_":1783853197167689728,"firstInventorFileFacet":"No","appLocationFacet":"ELECTRONIC","appEarlyPubNumberFacet":"US20010015336A1","patentNumberFacet":"8062521"},{"corrAddrCountryName":"UNITED
       STATES","applId":"09490505","assignments":[{"reelNumber":"11091","frameNumber":"682","addressNameText":"MICHAEL
       A. OLIVER, JR.","addressLineOneText":"2727 ALLEN PARKWAY, SUITE 1300","addressLineTwoText":"HOUSTON,
       TEXAS 77019","addressLineThreeText":"null","addressLineFourText":"null","mailDate":"01-26-2001","receivedDate":"09-25-2000","recordedDate":"09-12-2000","pagesCount":"8","converyanceName":"ASSIGNMENT
@@ -1194,9 +998,17 @@ interactions:
       20:00:00|PROSECUTION|Fee Worksheet (SB06)|WFEE|1|FG9AY8Y4PPOPPY5},{09617206|2000-07-16
       20:00:00|PROSECUTION|Transmittal of New Application|TRNA|2|FG9AY8TPPPOPPY5},{09617206|2000-07-16
       20:00:00|PROSECUTION|Fee Worksheet (SB06)|WFEE|1|FG9AY8XPPPOPPY5},{09617206|2000-07-16
-      20:00:00|PROSECUTION|Drawings-only black and white line drawings|DRW|2|FG9AY8UPPPOPPY5}"],"appAttrDockNumberFacet":"114510.010100/US-F004","appEntityStatusFacet":"SMALL","appCustNumberFacet":"70155","_version_":1749000497261445121,"firstInventorFileFacet":"No","appLocationFacet":"ELECTRONIC","patentNumberFacet":"6572952"}]}},"queryId":"f1385058-ce7a-4b38-8ec5-f48d547176ad"},"jobStatus":null,"queryId":"f1385058-ce7a-4b38-8ec5-f48d547176ad","page":1,"count":0,"errorMessage":null,"createQueryRequest":{"searchText":"appCustNumber:(70155)","facet":"false","facetField":null,"facetLimit":null,"facetMissing":null,"facetDate":null,"facetDateGap":null,"facetDateStart":null,"facetDateEnd":null,"facetDateOther":null,"facetDateInclude":null,"mm":"100%","sort":"applId
-      asc","qf":"","wt":null,"df":"patentTitle","fl":"*","start":"0","fq":[],"rows":"5","parameters":{"mm":"100%","df":"patentTitle","fl":["*"],"start":"0","sort":"applId
-      asc","fq":[],"rows":"5","facet":"false"}},"links":[{"rel":"self","href":"https://ped.uspto.gov/api/queries/f1385058-ce7a-4b38-8ec5-f48d547176ad?format=XML"},{"rel":"results","href":"https://ped.uspto.gov/api/queries/f1385058-ce7a-4b38-8ec5-f48d547176ad/results?page=1"},{"rel":"package","href":"https://ped.uspto.gov/api/queries/f1385058-ce7a-4b38-8ec5-f48d547176ad/package?format=XML"},{"rel":"first","href":"https://ped.uspto.gov/api/queries/f1385058-ce7a-4b38-8ec5-f48d547176ad/results?page=1"},{"rel":"next","href":"https://ped.uspto.gov/api/queries/f1385058-ce7a-4b38-8ec5-f48d547176ad/results?page=2"},{"rel":"self","href":"https://ped.uspto.gov/api/queries/f1385058-ce7a-4b38-8ec5-f48d547176ad?format=JSON"},{"rel":"results","href":"https://ped.uspto.gov/api/queries/f1385058-ce7a-4b38-8ec5-f48d547176ad/results?page=1"},{"rel":"package","href":"https://ped.uspto.gov/api/queries/f1385058-ce7a-4b38-8ec5-f48d547176ad/package?format=JSON"},{"rel":"first","href":"https://ped.uspto.gov/api/queries/f1385058-ce7a-4b38-8ec5-f48d547176ad/results?page=1"},{"rel":"next","href":"https://ped.uspto.gov/api/queries/f1385058-ce7a-4b38-8ec5-f48d547176ad/results?page=2"}]}'
+      20:00:00|PROSECUTION|Drawings-only black and white line drawings|DRW|2|FG9AY8UPPPOPPY5}"],"appAttrDockNumberFacet":"114510.010100/US-F004","appEntityStatusFacet":"SMALL","appCustNumberFacet":"70155","_version_":1749000497261445121,"firstInventorFileFacet":"No","appLocationFacet":"ELECTRONIC","patentNumberFacet":"6572952"}]}},"queryId":"79e10b2e-b4a3-4369-bd4e-caead93e0637"},"jobStatus":null,"queryId":"79e10b2e-b4a3-4369-bd4e-caead93e0637","page":1,"count":0,"errorMessage":null,"createQueryRequest":{"searchText":"appCustNumber:(70155)","facet":"false","facetField":null,"facetLimit":null,"facetMissing":null,"facetDate":null,"facetDateGap":null,"facetDateStart":null,"facetDateEnd":null,"facetDateOther":null,"facetDateInclude":null,"mm":"100%","sort":"applId
+      asc","qf":"appEarlyPubNumber applId appLocation appType appStatus_txt appConfrNumber
+      appCustNumber appGrpArtNumber appCls appSubCls appEntityStatus_txt patentNumber
+      patentTitle inventorName firstNamedApplicant appExamName appExamPrefrdName appAttrDockNumber
+      appPCTNumber appIntlPubNumber wipoEarlyPubNumber pctAppType firstInventorFile
+      appClsSubCls rankAndInventorsList","wt":null,"df":"patentTitle","fl":"*","start":"0","fq":[],"rows":"5","parameters":{"mm":"100%","df":"patentTitle","qf":"appEarlyPubNumber
+      applId appLocation appType appStatus_txt appConfrNumber appCustNumber appGrpArtNumber
+      appCls appSubCls appEntityStatus_txt patentNumber patentTitle inventorName firstNamedApplicant
+      appExamName appExamPrefrdName appAttrDockNumber appPCTNumber appIntlPubNumber
+      wipoEarlyPubNumber pctAppType firstInventorFile appClsSubCls rankAndInventorsList","fl":["*"],"start":"0","sort":"applId
+      asc","fq":[],"rows":"5","facet":"false"}},"links":[{"rel":"self","href":"https://ped.uspto.gov/api/queries/79e10b2e-b4a3-4369-bd4e-caead93e0637?format=XML"},{"rel":"results","href":"https://ped.uspto.gov/api/queries/79e10b2e-b4a3-4369-bd4e-caead93e0637/results?page=1"},{"rel":"package","href":"https://ped.uspto.gov/api/queries/79e10b2e-b4a3-4369-bd4e-caead93e0637/package?format=XML"},{"rel":"first","href":"https://ped.uspto.gov/api/queries/79e10b2e-b4a3-4369-bd4e-caead93e0637/results?page=1"},{"rel":"next","href":"https://ped.uspto.gov/api/queries/79e10b2e-b4a3-4369-bd4e-caead93e0637/results?page=2"},{"rel":"self","href":"https://ped.uspto.gov/api/queries/79e10b2e-b4a3-4369-bd4e-caead93e0637?format=JSON"},{"rel":"results","href":"https://ped.uspto.gov/api/queries/79e10b2e-b4a3-4369-bd4e-caead93e0637/results?page=1"},{"rel":"package","href":"https://ped.uspto.gov/api/queries/79e10b2e-b4a3-4369-bd4e-caead93e0637/package?format=JSON"},{"rel":"first","href":"https://ped.uspto.gov/api/queries/79e10b2e-b4a3-4369-bd4e-caead93e0637/results?page=1"},{"rel":"next","href":"https://ped.uspto.gov/api/queries/79e10b2e-b4a3-4369-bd4e-caead93e0637/results?page=2"}]}'
     headers:
       Cache-Control:
       - no-cache, no-store, max-age=0, must-revalidate
@@ -1205,21 +1017,21 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Thu, 02 Nov 2023 16:19:14 GMT
+      - Thu, 30 Nov 2023 18:09:33 GMT
       Expires:
       - '0'
       Pragma:
       - no-cache
       Server-Timing:
-      - intid;desc=608518a0c829d1cf
+      - intid;desc=5abe0b55bd9b1ff3
       Strict-Transport-Security:
       - max-age=31536000;includeSubDomains
       Transfer-Encoding:
       - chunked
       Via:
-      - 1.1 6a7984963592cffd5cf08d03af7ea682.cloudfront.net (CloudFront)
+      - 1.1 ed57c867ac386aff2fbbc4e97f282304.cloudfront.net (CloudFront)
       X-Amz-Cf-Id:
-      - y5xC8Iv6Z4k3GyrSdrbXW_DlC6Vvmayi1CxrgTZeJeYPiy65zMVBvQ==
+      - RPnK2Nl_UWwVd0KoclxeQiLywvqEW8tYMvjNOn9x7LjptNeZkU1A9w==
       X-Amz-Cf-Pop:
       - IAH50-C1
       X-Cache:

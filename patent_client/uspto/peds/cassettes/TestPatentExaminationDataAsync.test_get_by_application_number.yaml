@@ -1,7 +1,12 @@
 interactions:
 - request:
-    body: '{"df": "patentTitle", "qf": "", "fl": "*", "fq": [], "searchText": "applId:(15145443)",
-      "sort": "applId asc", "facet": "false", "mm": "0%", "start": "0"}'
+    body: '{"df": "patentTitle", "qf": "appEarlyPubNumber applId appLocation appType
+      appStatus_txt appConfrNumber appCustNumber appGrpArtNumber appCls appSubCls
+      appEntityStatus_txt patentNumber patentTitle inventorName firstNamedApplicant
+      appExamName appExamPrefrdName appAttrDockNumber appPCTNumber appIntlPubNumber
+      wipoEarlyPubNumber pctAppType firstInventorFile appClsSubCls rankAndInventorsList",
+      "fl": "*", "fq": [], "searchText": "applId:(15145443)", "sort": "applId asc",
+      "facet": "false", "mm": "0%", "start": "0"}'
     headers:
       accept:
       - application/json
@@ -10,17 +15,17 @@ interactions:
       connection:
       - keep-alive
       content-length:
-      - '153'
+      - '511'
       content-type:
       - application/json
       host:
       - ped.uspto.gov
       user-agent:
-      - Mozilla/5.0 Python Patent Clientbot/3.2.10 (parkerhancock@users.noreply.github.com)
+      - Mozilla/5.0 Python Patent Clientbot/4.1.1 (parkerhancock@users.noreply.github.com)
     method: POST
     uri: https://ped.uspto.gov/api/queries
   response:
-    content: '{"queryResults":{"indexLastUpdatedDate":"Wed Nov 01 08:17:43 EDT 2023","searchResponse":{"responseHeader":{"zkConnected":true,"status":0,"QTime":1933},"response":{"numFound":1,"start":0,"numFoundExact":true,"docs":[{"corrAddrCountryName":"UNITED
+    content: '{"queryResults":{"indexLastUpdatedDate":"Thu Nov 30 12:52:38 EST 2023","searchResponse":{"responseHeader":{"zkConnected":true,"status":0,"QTime":861},"response":{"numFound":1,"start":0,"numFoundExact":true,"docs":[{"corrAddrCountryName":"UNITED
       STATES","applId":"15145443","assignments":[{"reelNumber":"39569","frameNumber":"974","addressNameText":"BRACEWELL
       LLP","addressLineOneText":"P.O. BOX 61389","addressLineTwoText":"HOUSTON, TX
       77208-1389","addressLineThreeText":"null","addressLineFourText":"null","mailDate":"08-30-2016","receivedDate":"08-29-2016","recordedDate":"08-29-2016","pagesCount":"4","converyanceName":"ASSIGNMENT
@@ -91,7 +96,12 @@ interactions:
       Well Services LLC","nameLineTwo":" ","suffix":"","streetOne":"","streetTwo":"","city":"Houston,
       ","geoCode":"TX","country":"(US)","rankNo":"1"}],"applicantsFacet":"{||US Well
       Services LLC||||Houston|TX|US|ORG|1}","appFilingDate":"2016-05-03T00:00:00Z","appExamName":"MACDONALD,
-      STEVEN A","appExamNameFacet":"MACDONALD, STEVEN A","publicInd":"Y","APP_IND":"5","inventorName":"Robert  Kurtz","inventorNameFacet":"Robert  Kurtz","appEarlyPubDate":"2016-11-03T00:00:00Z","corrAddrGeoRegionCode":"TX","appLocation":"ELECTRONIC","appEarlyPubNumber":"US20160319650A1","id":"15145443","appGrpArtNumber":"3674","appGrpArtNumberFacet":"3674","applIdStr":"15145443","appl_id_txt":"15145443","appSubCls":"065100","LAST_MOD_TS":"2023-10-31T06:53:10Z","transactions":[{"recordDate":"2023-05-22
+      STEVEN A","appExamNameFacet":"MACDONALD, STEVEN A","publicInd":"Y","APP_IND":"5","inventorName":"Robert  Kurtz","inventorNameFacet":"Robert  Kurtz","appEarlyPubDate":"2016-11-03T00:00:00Z","corrAddrGeoRegionCode":"TX","appLocation":"ELECTRONIC","appEarlyPubNumber":"US20160319650A1","id":"15145443","appGrpArtNumber":"3674","appGrpArtNumberFacet":"3674","applIdStr":"15145443","appl_id_txt":"15145443","appSubCls":"065100","LAST_MOD_TS":"2023-11-28T13:52:58Z","transactions":[{"recordDate":"2023-11-21
+      00:00:00","code":"FWDX","description":"Date Forwarded to Examiner"},{"recordDate":"2023-11-20
+      00:00:00","code":"RCEX","description":"Request for Continued Examination (RCE)"},{"recordDate":"2023-11-21
+      00:00:00","code":"ABN9","description":"Disposal for a RCE / CPA / R129"},{"recordDate":"2023-11-20
+      00:00:00","code":"XT/G","description":"Request for Extension of Time - Granted"},{"recordDate":"2023-11-20
+      00:00:00","code":"BRCE","description":"Workflow - Request for RCE - Begin"},{"recordDate":"2023-05-22
       00:00:00","code":"ELC_RVW","description":"Electronic Review"},{"recordDate":"2023-05-22
       00:00:00","code":"EML_NTF","description":"Email Notification"},{"recordDate":"2023-05-22
       00:00:00","code":"MCTFR","description":"Mail Final Rejection (PTOL - 326)"},{"recordDate":"2023-05-17
@@ -317,10 +327,11 @@ interactions:
       00:00:00","code":"SCAN","description":"IFW Scan & PACR Auto Security Review"},{"recordDate":"2016-05-03
       00:00:00","code":"BIG.","description":"Entity Status Set To Undiscounted (Initial
       Default Setting or Status Change)"},{"recordDate":"2016-05-03 00:00:00","code":"IEXX","description":"Initial
-      Exam Team nn"}],"LAST_INSERT_TIME":"2023-10-31T12:35:02Z","appCls":"166","appStatus":"Final
-      Rejection Mailed","appStatusFacet":"Final Rejection Mailed","appStatus_txt":"Final
-      Rejection Mailed","corrAddrStreetLineTwo":"Suite 4200","patentTitle":"Suction
-      and Discharge Lines for a Dual Hydraulic Fracturing Unit","appStatusDate":"2023-05-18T00:00:00Z","appAttrDockNumber":"047158.100016","inventors":[{"nameLineOne":"Kurtz","nameLineTwo":"Robert
+      Exam Team nn"}],"LAST_INSERT_TIME":"2023-11-28T18:30:03Z","appCls":"166","appStatus":"Docketed
+      New Case - Ready for Examination","appStatusFacet":"Docketed New Case - Ready
+      for Examination","appStatus_txt":"Docketed New Case - Ready for Examination","corrAddrStreetLineTwo":"Suite
+      4200","patentTitle":"Suction and Discharge Lines for a Dual Hydraulic Fracturing
+      Unit","appStatusDate":"2023-11-21T00:00:00Z","appAttrDockNumber":"047158.100016","inventors":[{"nameLineOne":"Kurtz","nameLineTwo":"Robert
       ","suffix":"","streetOne":"","streetTwo":"","city":"Houston, ","geoCode":"TX","country":"(US)","rankNo":"2"},{"nameLineOne":"Oehring","nameLineTwo":"Jared
       ","suffix":"","streetOne":"","streetTwo":"","city":"Houston, ","geoCode":"TX","country":"(US)","rankNo":"1"}],"inventorsFacet":"{Robert||Kurtz||||Houston|TX|US|IND|2},{Jared||Oehring||||Houston|TX|US|IND|1}","corrAddrStreetLineOne":"609
       Main Street","firstInventorFile":"No","appType":"Utility","appTypeFacet":"Utility","corrAddrPostalCode":"77002","appCustNumber":"132858","appClsSubCls":"166/065100","appClsSubClsFacet":"166/065100","corrAddrNameLineOne":"Hogan
@@ -344,7 +355,7 @@ interactions:
       Kevin  ","phoneNum":"713-632-1453","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"46089","fullName":"Schwaller,
       Melissa  ","phoneNum":"713-632-1449","regStatus":"ACTIVE"}],"parentContinuity":[{"claimApplicationNumberText":"62156301","applicationNumberText":"15145443","filingDate":"05-03-2015","aiaIndicator":"","patentNumberText":"","applicationStatus":"Expired","applicationStatusDescription":"This
       application Claims Priority from Provisional Application"},{"claimApplicationNumberText":"13679689","applicationNumberText":"15145443","filingDate":"11-16-2012","aiaIndicator":"N","patentNumberText":"9410410","applicationStatus":"Patented","applicationStatusDescription":"This
-      application is a Continuation in part of"}],"corrAddrCustNo":"132858","corrAddrCountryCd":"US","corrAddrCity":"Houston","appEntityStatus":"UNDISCOUNTED","appConfrNumber":"1871","lastUpdatedTimestamp":"2023-11-01T09:19:26.552Z","cmsData":["{15145443|2023-05-21
+      application is a Continuation in part of"}],"corrAddrCustNo":"132858","corrAddrCountryCd":"US","corrAddrCity":"Houston","appEntityStatus":"UNDISCOUNTED","appConfrNumber":"1871","lastUpdatedTimestamp":"2023-11-29T12:16:59.568Z","cmsData":["{15145443|2023-05-21
       20:00:00|PROSECUTION|Final Rejection|CTFR|17|LHTGKY71GREENX1},{15145443|2023-05-21
       20:00:00|PROSECUTION|Examiner''s search strategy and results|SRNT|1|LHTGKY74GREENX1},{15145443|2023-05-21
       20:00:00|PROSECUTION|Search information including classification, databases
@@ -811,9 +822,17 @@ interactions:
       20:00:00|PROSECUTION|Specification|SPEC|17|INRWK6DCRXEAPX4},{15145443|2016-05-02
       20:00:00|PROSECUTION|Claims|CLM|5|INUHS6N3PXXIFW1},{15145443|2016-05-02 20:00:00|PROSECUTION|Drawings-other
       than black and white line drawings|DRW.NONBW|3|INRWK6DBRXEAPX4},{15145443|2016-05-02
-      20:00:00|PROSECUTION|Abstract|ABST|1|INUHS6NEPXXIFW1}"],"appAttrDockNumberFacet":"047158.100016","appEntityStatusFacet":"UNDISCOUNTED","appCustNumberFacet":"132858","_version_":1781352763439972352,"firstInventorFileFacet":"No","appLocationFacet":"ELECTRONIC","appEarlyPubNumberFacet":"US20160319650A1"}]}},"queryId":"9506796a-6844-4c9d-b058-20def4c926e8"},"jobStatus":null,"queryId":"9506796a-6844-4c9d-b058-20def4c926e8","page":1,"count":0,"errorMessage":null,"createQueryRequest":{"searchText":"applId:(15145443)","facet":"false","facetField":null,"facetLimit":null,"facetMissing":null,"facetDate":null,"facetDateGap":null,"facetDateStart":null,"facetDateEnd":null,"facetDateOther":null,"facetDateInclude":null,"mm":"0%","sort":"applId
-      asc","qf":"","wt":null,"df":"patentTitle","fl":"*","start":"0","fq":[],"rows":null,"parameters":{"mm":"0%","df":"patentTitle","fl":["*"],"start":"0","sort":"applId
-      asc","fq":[],"rows":"25","facet":"false"}},"links":[{"rel":"self","href":"https://ped.uspto.gov/api/queries/9506796a-6844-4c9d-b058-20def4c926e8?format=XML"},{"rel":"results","href":"https://ped.uspto.gov/api/queries/9506796a-6844-4c9d-b058-20def4c926e8/results?page=1"},{"rel":"package","href":"https://ped.uspto.gov/api/queries/9506796a-6844-4c9d-b058-20def4c926e8/package?format=XML"},{"rel":"first","href":"https://ped.uspto.gov/api/queries/9506796a-6844-4c9d-b058-20def4c926e8/results?page=1"},{"rel":"next","href":"https://ped.uspto.gov/api/queries/9506796a-6844-4c9d-b058-20def4c926e8/results?page=2"},{"rel":"self","href":"https://ped.uspto.gov/api/queries/9506796a-6844-4c9d-b058-20def4c926e8?format=JSON"},{"rel":"results","href":"https://ped.uspto.gov/api/queries/9506796a-6844-4c9d-b058-20def4c926e8/results?page=1"},{"rel":"package","href":"https://ped.uspto.gov/api/queries/9506796a-6844-4c9d-b058-20def4c926e8/package?format=JSON"},{"rel":"first","href":"https://ped.uspto.gov/api/queries/9506796a-6844-4c9d-b058-20def4c926e8/results?page=1"},{"rel":"next","href":"https://ped.uspto.gov/api/queries/9506796a-6844-4c9d-b058-20def4c926e8/results?page=2"}]}'
+      20:00:00|PROSECUTION|Abstract|ABST|1|INUHS6NEPXXIFW1}"],"appAttrDockNumberFacet":"047158.100016","appEntityStatusFacet":"UNDISCOUNTED","appCustNumberFacet":"132858","_version_":1783900767519768576,"firstInventorFileFacet":"No","appLocationFacet":"ELECTRONIC","appEarlyPubNumberFacet":"US20160319650A1"}]}},"queryId":"5999cc16-4ffa-4194-9e3b-00a8b7cc7aaa"},"jobStatus":null,"queryId":"5999cc16-4ffa-4194-9e3b-00a8b7cc7aaa","page":1,"count":0,"errorMessage":null,"createQueryRequest":{"searchText":"applId:(15145443)","facet":"false","facetField":null,"facetLimit":null,"facetMissing":null,"facetDate":null,"facetDateGap":null,"facetDateStart":null,"facetDateEnd":null,"facetDateOther":null,"facetDateInclude":null,"mm":"0%","sort":"applId
+      asc","qf":"appEarlyPubNumber applId appLocation appType appStatus_txt appConfrNumber
+      appCustNumber appGrpArtNumber appCls appSubCls appEntityStatus_txt patentNumber
+      patentTitle inventorName firstNamedApplicant appExamName appExamPrefrdName appAttrDockNumber
+      appPCTNumber appIntlPubNumber wipoEarlyPubNumber pctAppType firstInventorFile
+      appClsSubCls rankAndInventorsList","wt":null,"df":"patentTitle","fl":"*","start":"0","fq":[],"rows":null,"parameters":{"mm":"0%","df":"patentTitle","qf":"appEarlyPubNumber
+      applId appLocation appType appStatus_txt appConfrNumber appCustNumber appGrpArtNumber
+      appCls appSubCls appEntityStatus_txt patentNumber patentTitle inventorName firstNamedApplicant
+      appExamName appExamPrefrdName appAttrDockNumber appPCTNumber appIntlPubNumber
+      wipoEarlyPubNumber pctAppType firstInventorFile appClsSubCls rankAndInventorsList","fl":["*"],"start":"0","sort":"applId
+      asc","fq":[],"rows":"25","facet":"false"}},"links":[{"rel":"self","href":"https://ped.uspto.gov/api/queries/5999cc16-4ffa-4194-9e3b-00a8b7cc7aaa?format=XML"},{"rel":"results","href":"https://ped.uspto.gov/api/queries/5999cc16-4ffa-4194-9e3b-00a8b7cc7aaa/results?page=1"},{"rel":"package","href":"https://ped.uspto.gov/api/queries/5999cc16-4ffa-4194-9e3b-00a8b7cc7aaa/package?format=XML"},{"rel":"first","href":"https://ped.uspto.gov/api/queries/5999cc16-4ffa-4194-9e3b-00a8b7cc7aaa/results?page=1"},{"rel":"next","href":"https://ped.uspto.gov/api/queries/5999cc16-4ffa-4194-9e3b-00a8b7cc7aaa/results?page=2"},{"rel":"self","href":"https://ped.uspto.gov/api/queries/5999cc16-4ffa-4194-9e3b-00a8b7cc7aaa?format=JSON"},{"rel":"results","href":"https://ped.uspto.gov/api/queries/5999cc16-4ffa-4194-9e3b-00a8b7cc7aaa/results?page=1"},{"rel":"package","href":"https://ped.uspto.gov/api/queries/5999cc16-4ffa-4194-9e3b-00a8b7cc7aaa/package?format=JSON"},{"rel":"first","href":"https://ped.uspto.gov/api/queries/5999cc16-4ffa-4194-9e3b-00a8b7cc7aaa/results?page=1"},{"rel":"next","href":"https://ped.uspto.gov/api/queries/5999cc16-4ffa-4194-9e3b-00a8b7cc7aaa/results?page=2"}]}'
     headers:
       Cache-Control:
       - no-cache, no-store, max-age=0, must-revalidate
@@ -822,21 +841,21 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Wed, 01 Nov 2023 15:51:25 GMT
+      - Thu, 30 Nov 2023 18:11:13 GMT
       Expires:
       - '0'
       Pragma:
       - no-cache
       Server-Timing:
-      - intid;desc=6744ebbd9d8ce1ff
+      - intid;desc=2fc6c01b6ce6c731
       Strict-Transport-Security:
       - max-age=31536000;includeSubDomains
       Transfer-Encoding:
       - chunked
       Via:
-      - 1.1 c6e58c7db36df23cb484b35ac21dade4.cloudfront.net (CloudFront)
+      - 1.1 ed57c867ac386aff2fbbc4e97f282304.cloudfront.net (CloudFront)
       X-Amz-Cf-Id:
-      - D4QFatSSacuwiWiK5yw8zpJWQmS3CLjYmji5R4PjgpfKF6bVwTpEiA==
+      - ybUQD_DQMZBPDWmL-SHpKsAgkpSGGn7mdcj80cntxLfsUiQ7kjYp1Q==
       X-Amz-Cf-Pop:
       - IAH50-C1
       X-Cache:
@@ -850,8 +869,13 @@ interactions:
     http_version: HTTP/1.1
     status_code: 200
 - request:
-    body: '{"df": "patentTitle", "qf": "", "fl": "*", "fq": [], "searchText": "applId:(15145443)",
-      "sort": "applId asc", "facet": "false", "mm": "0%", "start": "0", "rows": 20}'
+    body: '{"df": "patentTitle", "qf": "appEarlyPubNumber applId appLocation appType
+      appStatus_txt appConfrNumber appCustNumber appGrpArtNumber appCls appSubCls
+      appEntityStatus_txt patentNumber patentTitle inventorName firstNamedApplicant
+      appExamName appExamPrefrdName appAttrDockNumber appPCTNumber appIntlPubNumber
+      wipoEarlyPubNumber pctAppType firstInventorFile appClsSubCls rankAndInventorsList",
+      "fl": "*", "fq": [], "searchText": "applId:(15145443)", "sort": "applId asc",
+      "facet": "false", "mm": "0%", "start": "0", "rows": 1}'
     headers:
       accept:
       - application/json
@@ -860,17 +884,17 @@ interactions:
       connection:
       - keep-alive
       content-length:
-      - '165'
+      - '522'
       content-type:
       - application/json
       host:
       - ped.uspto.gov
       user-agent:
-      - Mozilla/5.0 Python Patent Clientbot/3.2.10 (parkerhancock@users.noreply.github.com)
+      - Mozilla/5.0 Python Patent Clientbot/4.1.1 (parkerhancock@users.noreply.github.com)
     method: POST
     uri: https://ped.uspto.gov/api/queries
   response:
-    content: '{"queryResults":{"indexLastUpdatedDate":"Wed Nov 01 08:18:00 EDT 2023","searchResponse":{"responseHeader":{"zkConnected":true,"status":0,"QTime":1280},"response":{"numFound":1,"start":0,"numFoundExact":true,"docs":[{"corrAddrCountryName":"UNITED
+    content: '{"queryResults":{"indexLastUpdatedDate":"Thu Nov 30 13:06:42 EST 2023","searchResponse":{"responseHeader":{"zkConnected":true,"status":0,"QTime":1059},"response":{"numFound":1,"start":0,"numFoundExact":true,"docs":[{"corrAddrCountryName":"UNITED
       STATES","applId":"15145443","assignments":[{"reelNumber":"39569","frameNumber":"974","addressNameText":"BRACEWELL
       LLP","addressLineOneText":"P.O. BOX 61389","addressLineTwoText":"HOUSTON, TX
       77208-1389","addressLineThreeText":"null","addressLineFourText":"null","mailDate":"08-30-2016","receivedDate":"08-29-2016","recordedDate":"08-29-2016","pagesCount":"4","converyanceName":"ASSIGNMENT
@@ -941,7 +965,12 @@ interactions:
       Well Services LLC","nameLineTwo":" ","suffix":"","streetOne":"","streetTwo":"","city":"Houston,
       ","geoCode":"TX","country":"(US)","rankNo":"1"}],"applicantsFacet":"{||US Well
       Services LLC||||Houston|TX|US|ORG|1}","appFilingDate":"2016-05-03T00:00:00Z","appExamName":"MACDONALD,
-      STEVEN A","appExamNameFacet":"MACDONALD, STEVEN A","publicInd":"Y","APP_IND":"5","inventorName":"Robert  Kurtz","inventorNameFacet":"Robert  Kurtz","appEarlyPubDate":"2016-11-03T00:00:00Z","corrAddrGeoRegionCode":"TX","appLocation":"ELECTRONIC","appEarlyPubNumber":"US20160319650A1","id":"15145443","appGrpArtNumber":"3674","appGrpArtNumberFacet":"3674","applIdStr":"15145443","appl_id_txt":"15145443","appSubCls":"065100","LAST_MOD_TS":"2023-10-31T06:53:10Z","transactions":[{"recordDate":"2023-05-22
+      STEVEN A","appExamNameFacet":"MACDONALD, STEVEN A","publicInd":"Y","APP_IND":"5","inventorName":"Robert  Kurtz","inventorNameFacet":"Robert  Kurtz","appEarlyPubDate":"2016-11-03T00:00:00Z","corrAddrGeoRegionCode":"TX","appLocation":"ELECTRONIC","appEarlyPubNumber":"US20160319650A1","id":"15145443","appGrpArtNumber":"3674","appGrpArtNumberFacet":"3674","applIdStr":"15145443","appl_id_txt":"15145443","appSubCls":"065100","LAST_MOD_TS":"2023-11-28T13:52:58Z","transactions":[{"recordDate":"2023-11-21
+      00:00:00","code":"FWDX","description":"Date Forwarded to Examiner"},{"recordDate":"2023-11-20
+      00:00:00","code":"RCEX","description":"Request for Continued Examination (RCE)"},{"recordDate":"2023-11-21
+      00:00:00","code":"ABN9","description":"Disposal for a RCE / CPA / R129"},{"recordDate":"2023-11-20
+      00:00:00","code":"XT/G","description":"Request for Extension of Time - Granted"},{"recordDate":"2023-11-20
+      00:00:00","code":"BRCE","description":"Workflow - Request for RCE - Begin"},{"recordDate":"2023-05-22
       00:00:00","code":"ELC_RVW","description":"Electronic Review"},{"recordDate":"2023-05-22
       00:00:00","code":"EML_NTF","description":"Email Notification"},{"recordDate":"2023-05-22
       00:00:00","code":"MCTFR","description":"Mail Final Rejection (PTOL - 326)"},{"recordDate":"2023-05-17
@@ -1167,10 +1196,11 @@ interactions:
       00:00:00","code":"SCAN","description":"IFW Scan & PACR Auto Security Review"},{"recordDate":"2016-05-03
       00:00:00","code":"BIG.","description":"Entity Status Set To Undiscounted (Initial
       Default Setting or Status Change)"},{"recordDate":"2016-05-03 00:00:00","code":"IEXX","description":"Initial
-      Exam Team nn"}],"LAST_INSERT_TIME":"2023-10-31T12:35:02Z","appCls":"166","appStatus":"Final
-      Rejection Mailed","appStatusFacet":"Final Rejection Mailed","appStatus_txt":"Final
-      Rejection Mailed","corrAddrStreetLineTwo":"Suite 4200","patentTitle":"Suction
-      and Discharge Lines for a Dual Hydraulic Fracturing Unit","appStatusDate":"2023-05-18T00:00:00Z","appAttrDockNumber":"047158.100016","inventors":[{"nameLineOne":"Kurtz","nameLineTwo":"Robert
+      Exam Team nn"}],"LAST_INSERT_TIME":"2023-11-28T18:30:03Z","appCls":"166","appStatus":"Docketed
+      New Case - Ready for Examination","appStatusFacet":"Docketed New Case - Ready
+      for Examination","appStatus_txt":"Docketed New Case - Ready for Examination","corrAddrStreetLineTwo":"Suite
+      4200","patentTitle":"Suction and Discharge Lines for a Dual Hydraulic Fracturing
+      Unit","appStatusDate":"2023-11-21T00:00:00Z","appAttrDockNumber":"047158.100016","inventors":[{"nameLineOne":"Kurtz","nameLineTwo":"Robert
       ","suffix":"","streetOne":"","streetTwo":"","city":"Houston, ","geoCode":"TX","country":"(US)","rankNo":"2"},{"nameLineOne":"Oehring","nameLineTwo":"Jared
       ","suffix":"","streetOne":"","streetTwo":"","city":"Houston, ","geoCode":"TX","country":"(US)","rankNo":"1"}],"inventorsFacet":"{Robert||Kurtz||||Houston|TX|US|IND|2},{Jared||Oehring||||Houston|TX|US|IND|1}","corrAddrStreetLineOne":"609
       Main Street","firstInventorFile":"No","appType":"Utility","appTypeFacet":"Utility","corrAddrPostalCode":"77002","appCustNumber":"132858","appClsSubCls":"166/065100","appClsSubClsFacet":"166/065100","corrAddrNameLineOne":"Hogan
@@ -1194,7 +1224,7 @@ interactions:
       Kevin  ","phoneNum":"713-632-1453","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"46089","fullName":"Schwaller,
       Melissa  ","phoneNum":"713-632-1449","regStatus":"ACTIVE"}],"parentContinuity":[{"claimApplicationNumberText":"62156301","applicationNumberText":"15145443","filingDate":"05-03-2015","aiaIndicator":"","patentNumberText":"","applicationStatus":"Expired","applicationStatusDescription":"This
       application Claims Priority from Provisional Application"},{"claimApplicationNumberText":"13679689","applicationNumberText":"15145443","filingDate":"11-16-2012","aiaIndicator":"N","patentNumberText":"9410410","applicationStatus":"Patented","applicationStatusDescription":"This
-      application is a Continuation in part of"}],"corrAddrCustNo":"132858","corrAddrCountryCd":"US","corrAddrCity":"Houston","appEntityStatus":"UNDISCOUNTED","appConfrNumber":"1871","lastUpdatedTimestamp":"2023-11-01T09:19:26.571Z","cmsData":["{15145443|2023-05-21
+      application is a Continuation in part of"}],"corrAddrCustNo":"132858","corrAddrCountryCd":"US","corrAddrCity":"Houston","appEntityStatus":"UNDISCOUNTED","appConfrNumber":"1871","lastUpdatedTimestamp":"2023-11-29T12:16:59.568Z","cmsData":["{15145443|2023-05-21
       20:00:00|PROSECUTION|Final Rejection|CTFR|17|LHTGKY71GREENX1},{15145443|2023-05-21
       20:00:00|PROSECUTION|Examiner''s search strategy and results|SRNT|1|LHTGKY74GREENX1},{15145443|2023-05-21
       20:00:00|PROSECUTION|Search information including classification, databases
@@ -1661,9 +1691,17 @@ interactions:
       20:00:00|PROSECUTION|Specification|SPEC|17|INRWK6DCRXEAPX4},{15145443|2016-05-02
       20:00:00|PROSECUTION|Claims|CLM|5|INUHS6N3PXXIFW1},{15145443|2016-05-02 20:00:00|PROSECUTION|Drawings-other
       than black and white line drawings|DRW.NONBW|3|INRWK6DBRXEAPX4},{15145443|2016-05-02
-      20:00:00|PROSECUTION|Abstract|ABST|1|INUHS6NEPXXIFW1}"],"appAttrDockNumberFacet":"047158.100016","appEntityStatusFacet":"UNDISCOUNTED","appCustNumberFacet":"132858","_version_":1781352763439972352,"firstInventorFileFacet":"No","appLocationFacet":"ELECTRONIC","appEarlyPubNumberFacet":"US20160319650A1"}]}},"queryId":"e5c3d0b7-a759-49b9-8ac0-5d33176a0587"},"jobStatus":null,"queryId":"e5c3d0b7-a759-49b9-8ac0-5d33176a0587","page":1,"count":0,"errorMessage":null,"createQueryRequest":{"searchText":"applId:(15145443)","facet":"false","facetField":null,"facetLimit":null,"facetMissing":null,"facetDate":null,"facetDateGap":null,"facetDateStart":null,"facetDateEnd":null,"facetDateOther":null,"facetDateInclude":null,"mm":"0%","sort":"applId
-      asc","qf":"","wt":null,"df":"patentTitle","fl":"*","start":"0","fq":[],"rows":"20","parameters":{"mm":"0%","df":"patentTitle","fl":["*"],"start":"0","sort":"applId
-      asc","fq":[],"rows":"20","facet":"false"}},"links":[{"rel":"self","href":"https://ped.uspto.gov/api/queries/e5c3d0b7-a759-49b9-8ac0-5d33176a0587?format=XML"},{"rel":"results","href":"https://ped.uspto.gov/api/queries/e5c3d0b7-a759-49b9-8ac0-5d33176a0587/results?page=1"},{"rel":"package","href":"https://ped.uspto.gov/api/queries/e5c3d0b7-a759-49b9-8ac0-5d33176a0587/package?format=XML"},{"rel":"first","href":"https://ped.uspto.gov/api/queries/e5c3d0b7-a759-49b9-8ac0-5d33176a0587/results?page=1"},{"rel":"next","href":"https://ped.uspto.gov/api/queries/e5c3d0b7-a759-49b9-8ac0-5d33176a0587/results?page=2"},{"rel":"self","href":"https://ped.uspto.gov/api/queries/e5c3d0b7-a759-49b9-8ac0-5d33176a0587?format=JSON"},{"rel":"results","href":"https://ped.uspto.gov/api/queries/e5c3d0b7-a759-49b9-8ac0-5d33176a0587/results?page=1"},{"rel":"package","href":"https://ped.uspto.gov/api/queries/e5c3d0b7-a759-49b9-8ac0-5d33176a0587/package?format=JSON"},{"rel":"first","href":"https://ped.uspto.gov/api/queries/e5c3d0b7-a759-49b9-8ac0-5d33176a0587/results?page=1"},{"rel":"next","href":"https://ped.uspto.gov/api/queries/e5c3d0b7-a759-49b9-8ac0-5d33176a0587/results?page=2"}]}'
+      20:00:00|PROSECUTION|Abstract|ABST|1|INUHS6NEPXXIFW1}"],"appAttrDockNumberFacet":"047158.100016","appEntityStatusFacet":"UNDISCOUNTED","appCustNumberFacet":"132858","_version_":1783900767519768576,"firstInventorFileFacet":"No","appLocationFacet":"ELECTRONIC","appEarlyPubNumberFacet":"US20160319650A1"}]}},"queryId":"6e22ff96-c7e6-4e7f-bb45-93b99b3a4f01"},"jobStatus":null,"queryId":"6e22ff96-c7e6-4e7f-bb45-93b99b3a4f01","page":1,"count":0,"errorMessage":null,"createQueryRequest":{"searchText":"applId:(15145443)","facet":"false","facetField":null,"facetLimit":null,"facetMissing":null,"facetDate":null,"facetDateGap":null,"facetDateStart":null,"facetDateEnd":null,"facetDateOther":null,"facetDateInclude":null,"mm":"0%","sort":"applId
+      asc","qf":"appEarlyPubNumber applId appLocation appType appStatus_txt appConfrNumber
+      appCustNumber appGrpArtNumber appCls appSubCls appEntityStatus_txt patentNumber
+      patentTitle inventorName firstNamedApplicant appExamName appExamPrefrdName appAttrDockNumber
+      appPCTNumber appIntlPubNumber wipoEarlyPubNumber pctAppType firstInventorFile
+      appClsSubCls rankAndInventorsList","wt":null,"df":"patentTitle","fl":"*","start":"0","fq":[],"rows":"1","parameters":{"mm":"0%","df":"patentTitle","qf":"appEarlyPubNumber
+      applId appLocation appType appStatus_txt appConfrNumber appCustNumber appGrpArtNumber
+      appCls appSubCls appEntityStatus_txt patentNumber patentTitle inventorName firstNamedApplicant
+      appExamName appExamPrefrdName appAttrDockNumber appPCTNumber appIntlPubNumber
+      wipoEarlyPubNumber pctAppType firstInventorFile appClsSubCls rankAndInventorsList","fl":["*"],"start":"0","sort":"applId
+      asc","fq":[],"rows":"1","facet":"false"}},"links":[{"rel":"self","href":"https://ped.uspto.gov/api/queries/6e22ff96-c7e6-4e7f-bb45-93b99b3a4f01?format=XML"},{"rel":"results","href":"https://ped.uspto.gov/api/queries/6e22ff96-c7e6-4e7f-bb45-93b99b3a4f01/results?page=1"},{"rel":"package","href":"https://ped.uspto.gov/api/queries/6e22ff96-c7e6-4e7f-bb45-93b99b3a4f01/package?format=XML"},{"rel":"first","href":"https://ped.uspto.gov/api/queries/6e22ff96-c7e6-4e7f-bb45-93b99b3a4f01/results?page=1"},{"rel":"next","href":"https://ped.uspto.gov/api/queries/6e22ff96-c7e6-4e7f-bb45-93b99b3a4f01/results?page=2"},{"rel":"self","href":"https://ped.uspto.gov/api/queries/6e22ff96-c7e6-4e7f-bb45-93b99b3a4f01?format=JSON"},{"rel":"results","href":"https://ped.uspto.gov/api/queries/6e22ff96-c7e6-4e7f-bb45-93b99b3a4f01/results?page=1"},{"rel":"package","href":"https://ped.uspto.gov/api/queries/6e22ff96-c7e6-4e7f-bb45-93b99b3a4f01/package?format=JSON"},{"rel":"first","href":"https://ped.uspto.gov/api/queries/6e22ff96-c7e6-4e7f-bb45-93b99b3a4f01/results?page=1"},{"rel":"next","href":"https://ped.uspto.gov/api/queries/6e22ff96-c7e6-4e7f-bb45-93b99b3a4f01/results?page=2"}]}'
     headers:
       Cache-Control:
       - no-cache, no-store, max-age=0, must-revalidate
@@ -1672,21 +1710,21 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Wed, 01 Nov 2023 15:51:27 GMT
+      - Thu, 30 Nov 2023 18:11:14 GMT
       Expires:
       - '0'
       Pragma:
       - no-cache
       Server-Timing:
-      - intid;desc=b660f1034105961f
+      - intid;desc=a8ed3e841c713cbb
       Strict-Transport-Security:
       - max-age=31536000;includeSubDomains
       Transfer-Encoding:
       - chunked
       Via:
-      - 1.1 c6e58c7db36df23cb484b35ac21dade4.cloudfront.net (CloudFront)
+      - 1.1 ed57c867ac386aff2fbbc4e97f282304.cloudfront.net (CloudFront)
       X-Amz-Cf-Id:
-      - tPU4sTr04PdOBQzth6iKAnrxYE0qs1tOnzscoH-XhIj8hiKumwl3fA==
+      - SJ--Cnc6l6GKUPk-CYkMwjRTtwuArsP-W6W5vxq2L6PTcI3h11hDtw==
       X-Amz-Cf-Pop:
       - IAH50-C1
       X-Cache:

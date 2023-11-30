@@ -1,7 +1,12 @@
 interactions:
 - request:
-    body: '{"df": "patentTitle", "qf": "", "fl": "*", "fq": [], "searchText": "patentNumber:(10000000)",
-      "sort": "applId asc", "facet": "false", "mm": "0%", "start": "0"}'
+    body: '{"df": "patentTitle", "qf": "appEarlyPubNumber applId appLocation appType
+      appStatus_txt appConfrNumber appCustNumber appGrpArtNumber appCls appSubCls
+      appEntityStatus_txt patentNumber patentTitle inventorName firstNamedApplicant
+      appExamName appExamPrefrdName appAttrDockNumber appPCTNumber appIntlPubNumber
+      wipoEarlyPubNumber pctAppType firstInventorFile appClsSubCls rankAndInventorsList",
+      "fl": "*", "fq": [], "searchText": "patentNumber:(10000000)", "sort": "applId
+      asc", "facet": "false", "mm": "0%", "start": "0"}'
     headers:
       accept:
       - application/json
@@ -10,17 +15,17 @@ interactions:
       connection:
       - keep-alive
       content-length:
-      - '159'
+      - '517'
       content-type:
       - application/json
       host:
       - ped.uspto.gov
       user-agent:
-      - Mozilla/5.0 Python Patent Clientbot/3.2.10 (parkerhancock@users.noreply.github.com)
+      - Mozilla/5.0 Python Patent Clientbot/4.1.1 (parkerhancock@users.noreply.github.com)
     method: POST
     uri: https://ped.uspto.gov/api/queries
   response:
-    content: '{"queryResults":{"indexLastUpdatedDate":"Wed Nov 01 08:17:43 EDT 2023","searchResponse":{"responseHeader":{"zkConnected":true,"status":0,"QTime":365},"response":{"numFound":1,"start":0,"numFoundExact":true,"docs":[{"corrAddrCountryName":"UNITED
+    content: '{"queryResults":{"indexLastUpdatedDate":"Thu Nov 30 12:52:44 EST 2023","searchResponse":{"responseHeader":{"zkConnected":true,"status":0,"QTime":2654},"response":{"numFound":1,"start":0,"numFoundExact":true,"docs":[{"corrAddrCountryName":"UNITED
       STATES","applId":"14643719","assignments":[{"reelNumber":"35130","frameNumber":"327","addressNameText":"DOCKET
       CLERK-RAYTHEON/MWM","addressLineOneText":"P.O.DRAWER 800889","addressLineTwoText":"DALLAS,
       TX 75380","addressLineThreeText":"null","addressLineFourText":"null","mailDate":"03-11-2015","receivedDate":"03-10-2015","recordedDate":"03-10-2015","pagesCount":"4","converyanceName":"ASSIGNMENT
@@ -30,7 +35,7 @@ interactions:
       Company","nameLineTwo":" ","suffix":"","streetOne":"","streetTwo":"","city":"Waltham,
       ","geoCode":"MA","country":"()","rankNo":"1"}],"applicantsFacet":"{||Raytheon
       Company||||Waltham|MA||ORG|1}","appFilingDate":"2015-03-10T00:00:00Z","appExamName":"RATCLIFFE,
-      LUKE D","appExamNameFacet":"RATCLIFFE, LUKE D","publicInd":"Y","APP_IND":"5","inventorName":"Joseph  Marron","inventorNameFacet":"Joseph  Marron","appEarlyPubDate":"2016-09-15T00:00:00Z","corrAddrGeoRegionCode":"TX","appLocation":"ELECTRONIC","appEarlyPubNumber":"US20160266243A1","id":"14643719","appGrpArtNumber":"3645","appGrpArtNumberFacet":"3645","applIdStr":"14643719","appl_id_txt":"14643719","appSubCls":"005010","patentNumber":"10000000","LAST_MOD_TS":"2023-10-31T06:41:43Z","transactions":[{"recordDate":"2021-11-18
+      LUKE D","appExamNameFacet":"RATCLIFFE, LUKE D","publicInd":"Y","APP_IND":"5","inventorName":"Joseph  Marron","inventorNameFacet":"Joseph  Marron","appEarlyPubDate":"2016-09-15T00:00:00Z","corrAddrGeoRegionCode":"TX","appLocation":"ELECTRONIC","appEarlyPubNumber":"US20160266243A1","id":"14643719","appGrpArtNumber":"3645","appGrpArtNumberFacet":"3645","applIdStr":"14643719","appl_id_txt":"14643719","appSubCls":"005010","patentNumber":"10000000","LAST_MOD_TS":"2023-11-29T05:41:30Z","transactions":[{"recordDate":"2021-11-18
       00:00:00","code":"M1551","description":"Payment of Maintenance Fee, 4th Year,
       Large Entity"},{"recordDate":"2018-06-19 00:00:00","code":"PGM/","description":"Recordation
       of Patent Grant Mailed"},{"recordDate":"2018-05-31 00:00:00","code":"EML_NTR","description":"Email
@@ -102,7 +107,7 @@ interactions:
       Filed"},{"recordDate":"2015-03-10 00:00:00","code":"SCAN","description":"IFW
       Scan & PACR Auto Security Review"},{"recordDate":"2015-03-10 00:00:00","code":"BIG.","description":"Entity
       Status Set To Undiscounted (Initial Default Setting or Status Change)"},{"recordDate":"2015-03-10
-      00:00:00","code":"IEXX","description":"Initial Exam Team nn"}],"LAST_INSERT_TIME":"2023-10-31T12:35:02Z","appCls":"356","appStatus":"Patented
+      00:00:00","code":"IEXX","description":"Initial Exam Team nn"}],"LAST_INSERT_TIME":"2023-11-29T08:30:03Z","appCls":"356","appStatus":"Patented
       Case","appStatusFacet":"Patented Case","appStatus_txt":"Patented Case","patentTitle":"COHERENT
       LADAR USING INTRA-PIXEL QUADRATURE DETECTION","appStatusDate":"2018-05-30T00:00:00Z","appAttrDockNumber":"14-6582
       (RAYN01-46582)","inventors":[{"nameLineOne":"Marron","nameLineTwo":"Joseph ","suffix":"","streetOne":"","streetTwo":"","city":"Manhattan
@@ -136,7 +141,7 @@ interactions:
       Abbas  ","phoneNum":"571-250-1619","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"71643","fullName":"Arvesen,
       David  ","phoneNum":"972-628-3600","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"78247","fullName":"Walsh,
       Andrew  ","phoneNum":"978-858-5223","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"46106","fullName":"O''Brien,
-      Kevin  ","phoneNum":"704-423-7581","regStatus":"ACTIVE"}],"corrAddrCustNo":"18510","corrAddrCountryCd":"US","corrAddrCity":"Dallas","appEntityStatus":"UNDISCOUNTED","appConfrNumber":"4531","lastUpdatedTimestamp":"2023-11-01T10:29:52.309Z","cmsData":["{14643719|2020-10-16
+      Kevin  ","phoneNum":"704-423-7581","regStatus":"ACTIVE"}],"corrAddrCustNo":"18510","corrAddrCountryCd":"US","corrAddrCity":"Dallas","appEntityStatus":"UNDISCOUNTED","appConfrNumber":"4531","lastUpdatedTimestamp":"2023-11-30T02:34:09.928Z","cmsData":["{14643719|2020-10-16
       11:28:51|PROSECUTION|Electronic Filing System(EFS) Acknowledgment Receipt|N417|2|KGCNAVL4LDFLYX9},{14643719|2020-10-16
       11:28:51|PROSECUTION|Maintenance Fee Address Change|MFEE.C.AD|2|KGCNAVL3LDFLYX9},{14643719|2018-06-20
       09:43:42|PROSECUTION|Examiner''s search strategy and results|SRNT|1|JINEPFNDRXEAPX0},{14643719|2018-05-30
@@ -217,9 +222,17 @@ interactions:
       20:00:00|PROSECUTION|Drawings-only black and white line drawings|DRW|6|I73SCH86PXXIFW3},{14643719|2015-03-09
       20:00:00|PROSECUTION|Power of Attorney|PA..|2|I73SCH6OPXXIFW3},{14643719|2015-03-09
       20:00:00|PROSECUTION|Abstract|ABST|1|I73SCH7QPXXIFW3}"],"appAttrDockNumberFacet":"14-6582
-      (RAYN01-46582)","appEntityStatusFacet":"UNDISCOUNTED","appCustNumberFacet":"18510","_version_":1781357273979813888,"firstInventorFileFacet":"Yes","appLocationFacet":"ELECTRONIC","appEarlyPubNumberFacet":"US20160266243A1","patentNumberFacet":"10000000"}]}},"queryId":"65ef349f-1def-4fb0-bf55-3af0dcb27371"},"jobStatus":null,"queryId":"65ef349f-1def-4fb0-bf55-3af0dcb27371","page":1,"count":0,"errorMessage":null,"createQueryRequest":{"searchText":"patentNumber:(10000000)","facet":"false","facetField":null,"facetLimit":null,"facetMissing":null,"facetDate":null,"facetDateGap":null,"facetDateStart":null,"facetDateEnd":null,"facetDateOther":null,"facetDateInclude":null,"mm":"0%","sort":"applId
-      asc","qf":"","wt":null,"df":"patentTitle","fl":"*","start":"0","fq":[],"rows":null,"parameters":{"mm":"0%","df":"patentTitle","fl":["*"],"start":"0","sort":"applId
-      asc","fq":[],"rows":"25","facet":"false"}},"links":[{"rel":"self","href":"https://ped.uspto.gov/api/queries/65ef349f-1def-4fb0-bf55-3af0dcb27371?format=XML"},{"rel":"results","href":"https://ped.uspto.gov/api/queries/65ef349f-1def-4fb0-bf55-3af0dcb27371/results?page=1"},{"rel":"package","href":"https://ped.uspto.gov/api/queries/65ef349f-1def-4fb0-bf55-3af0dcb27371/package?format=XML"},{"rel":"first","href":"https://ped.uspto.gov/api/queries/65ef349f-1def-4fb0-bf55-3af0dcb27371/results?page=1"},{"rel":"next","href":"https://ped.uspto.gov/api/queries/65ef349f-1def-4fb0-bf55-3af0dcb27371/results?page=2"},{"rel":"self","href":"https://ped.uspto.gov/api/queries/65ef349f-1def-4fb0-bf55-3af0dcb27371?format=JSON"},{"rel":"results","href":"https://ped.uspto.gov/api/queries/65ef349f-1def-4fb0-bf55-3af0dcb27371/results?page=1"},{"rel":"package","href":"https://ped.uspto.gov/api/queries/65ef349f-1def-4fb0-bf55-3af0dcb27371/package?format=JSON"},{"rel":"first","href":"https://ped.uspto.gov/api/queries/65ef349f-1def-4fb0-bf55-3af0dcb27371/results?page=1"},{"rel":"next","href":"https://ped.uspto.gov/api/queries/65ef349f-1def-4fb0-bf55-3af0dcb27371/results?page=2"}]}'
+      (RAYN01-46582)","appEntityStatusFacet":"UNDISCOUNTED","appCustNumberFacet":"18510","_version_":1783954570744954880,"firstInventorFileFacet":"Yes","appLocationFacet":"ELECTRONIC","appEarlyPubNumberFacet":"US20160266243A1","patentNumberFacet":"10000000"}]}},"queryId":"5a8e8997-b078-4027-bfcb-6c68a2688f47"},"jobStatus":null,"queryId":"5a8e8997-b078-4027-bfcb-6c68a2688f47","page":1,"count":0,"errorMessage":null,"createQueryRequest":{"searchText":"patentNumber:(10000000)","facet":"false","facetField":null,"facetLimit":null,"facetMissing":null,"facetDate":null,"facetDateGap":null,"facetDateStart":null,"facetDateEnd":null,"facetDateOther":null,"facetDateInclude":null,"mm":"0%","sort":"applId
+      asc","qf":"appEarlyPubNumber applId appLocation appType appStatus_txt appConfrNumber
+      appCustNumber appGrpArtNumber appCls appSubCls appEntityStatus_txt patentNumber
+      patentTitle inventorName firstNamedApplicant appExamName appExamPrefrdName appAttrDockNumber
+      appPCTNumber appIntlPubNumber wipoEarlyPubNumber pctAppType firstInventorFile
+      appClsSubCls rankAndInventorsList","wt":null,"df":"patentTitle","fl":"*","start":"0","fq":[],"rows":null,"parameters":{"mm":"0%","df":"patentTitle","qf":"appEarlyPubNumber
+      applId appLocation appType appStatus_txt appConfrNumber appCustNumber appGrpArtNumber
+      appCls appSubCls appEntityStatus_txt patentNumber patentTitle inventorName firstNamedApplicant
+      appExamName appExamPrefrdName appAttrDockNumber appPCTNumber appIntlPubNumber
+      wipoEarlyPubNumber pctAppType firstInventorFile appClsSubCls rankAndInventorsList","fl":["*"],"start":"0","sort":"applId
+      asc","fq":[],"rows":"25","facet":"false"}},"links":[{"rel":"self","href":"https://ped.uspto.gov/api/queries/5a8e8997-b078-4027-bfcb-6c68a2688f47?format=XML"},{"rel":"results","href":"https://ped.uspto.gov/api/queries/5a8e8997-b078-4027-bfcb-6c68a2688f47/results?page=1"},{"rel":"package","href":"https://ped.uspto.gov/api/queries/5a8e8997-b078-4027-bfcb-6c68a2688f47/package?format=XML"},{"rel":"first","href":"https://ped.uspto.gov/api/queries/5a8e8997-b078-4027-bfcb-6c68a2688f47/results?page=1"},{"rel":"next","href":"https://ped.uspto.gov/api/queries/5a8e8997-b078-4027-bfcb-6c68a2688f47/results?page=2"},{"rel":"self","href":"https://ped.uspto.gov/api/queries/5a8e8997-b078-4027-bfcb-6c68a2688f47?format=JSON"},{"rel":"results","href":"https://ped.uspto.gov/api/queries/5a8e8997-b078-4027-bfcb-6c68a2688f47/results?page=1"},{"rel":"package","href":"https://ped.uspto.gov/api/queries/5a8e8997-b078-4027-bfcb-6c68a2688f47/package?format=JSON"},{"rel":"first","href":"https://ped.uspto.gov/api/queries/5a8e8997-b078-4027-bfcb-6c68a2688f47/results?page=1"},{"rel":"next","href":"https://ped.uspto.gov/api/queries/5a8e8997-b078-4027-bfcb-6c68a2688f47/results?page=2"}]}'
     headers:
       Cache-Control:
       - no-cache, no-store, max-age=0, must-revalidate
@@ -228,21 +241,21 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Wed, 01 Nov 2023 15:51:59 GMT
+      - Thu, 30 Nov 2023 18:12:02 GMT
       Expires:
       - '0'
       Pragma:
       - no-cache
       Server-Timing:
-      - intid;desc=118907766433787f
+      - intid;desc=b8c6c53847cd04d5
       Strict-Transport-Security:
       - max-age=31536000;includeSubDomains
       Transfer-Encoding:
       - chunked
       Via:
-      - 1.1 c6e58c7db36df23cb484b35ac21dade4.cloudfront.net (CloudFront)
+      - 1.1 ed57c867ac386aff2fbbc4e97f282304.cloudfront.net (CloudFront)
       X-Amz-Cf-Id:
-      - dKkdBKyX4KSDMn8WI4swWldiAJhE6esieSDM9xQ57EcEfz67L674bQ==
+      - 6-MHwoO8DpX1sGEUJVMjpSDHrspGZXvasExSqNdhlPQ41l2eX02bMA==
       X-Amz-Cf-Pop:
       - IAH50-C1
       X-Cache:
@@ -256,8 +269,13 @@ interactions:
     http_version: HTTP/1.1
     status_code: 200
 - request:
-    body: '{"df": "patentTitle", "qf": "", "fl": "*", "fq": [], "searchText": "patentNumber:(10000000)",
-      "sort": "applId asc", "facet": "false", "mm": "0%", "start": "0", "rows": 20}'
+    body: '{"df": "patentTitle", "qf": "appEarlyPubNumber applId appLocation appType
+      appStatus_txt appConfrNumber appCustNumber appGrpArtNumber appCls appSubCls
+      appEntityStatus_txt patentNumber patentTitle inventorName firstNamedApplicant
+      appExamName appExamPrefrdName appAttrDockNumber appPCTNumber appIntlPubNumber
+      wipoEarlyPubNumber pctAppType firstInventorFile appClsSubCls rankAndInventorsList",
+      "fl": "*", "fq": [], "searchText": "patentNumber:(10000000)", "sort": "applId
+      asc", "facet": "false", "mm": "0%", "start": "0", "rows": 1}'
     headers:
       accept:
       - application/json
@@ -266,17 +284,17 @@ interactions:
       connection:
       - keep-alive
       content-length:
-      - '171'
+      - '528'
       content-type:
       - application/json
       host:
       - ped.uspto.gov
       user-agent:
-      - Mozilla/5.0 Python Patent Clientbot/3.2.10 (parkerhancock@users.noreply.github.com)
+      - Mozilla/5.0 Python Patent Clientbot/4.1.1 (parkerhancock@users.noreply.github.com)
     method: POST
     uri: https://ped.uspto.gov/api/queries
   response:
-    content: '{"queryResults":{"indexLastUpdatedDate":"Wed Nov 01 08:17:43 EDT 2023","searchResponse":{"responseHeader":{"zkConnected":true,"status":0,"QTime":339},"response":{"numFound":1,"start":0,"numFoundExact":true,"docs":[{"corrAddrCountryName":"UNITED
+    content: '{"queryResults":{"indexLastUpdatedDate":"Thu Nov 30 12:52:44 EST 2023","searchResponse":{"responseHeader":{"zkConnected":true,"status":0,"QTime":3051},"response":{"numFound":1,"start":0,"numFoundExact":true,"docs":[{"corrAddrCountryName":"UNITED
       STATES","applId":"14643719","assignments":[{"reelNumber":"35130","frameNumber":"327","addressNameText":"DOCKET
       CLERK-RAYTHEON/MWM","addressLineOneText":"P.O.DRAWER 800889","addressLineTwoText":"DALLAS,
       TX 75380","addressLineThreeText":"null","addressLineFourText":"null","mailDate":"03-11-2015","receivedDate":"03-10-2015","recordedDate":"03-10-2015","pagesCount":"4","converyanceName":"ASSIGNMENT
@@ -286,7 +304,7 @@ interactions:
       Company","nameLineTwo":" ","suffix":"","streetOne":"","streetTwo":"","city":"Waltham,
       ","geoCode":"MA","country":"()","rankNo":"1"}],"applicantsFacet":"{||Raytheon
       Company||||Waltham|MA||ORG|1}","appFilingDate":"2015-03-10T00:00:00Z","appExamName":"RATCLIFFE,
-      LUKE D","appExamNameFacet":"RATCLIFFE, LUKE D","publicInd":"Y","APP_IND":"5","inventorName":"Joseph  Marron","inventorNameFacet":"Joseph  Marron","appEarlyPubDate":"2016-09-15T00:00:00Z","corrAddrGeoRegionCode":"TX","appLocation":"ELECTRONIC","appEarlyPubNumber":"US20160266243A1","id":"14643719","appGrpArtNumber":"3645","appGrpArtNumberFacet":"3645","applIdStr":"14643719","appl_id_txt":"14643719","appSubCls":"005010","patentNumber":"10000000","LAST_MOD_TS":"2023-10-31T06:41:43Z","transactions":[{"recordDate":"2021-11-18
+      LUKE D","appExamNameFacet":"RATCLIFFE, LUKE D","publicInd":"Y","APP_IND":"5","inventorName":"Joseph  Marron","inventorNameFacet":"Joseph  Marron","appEarlyPubDate":"2016-09-15T00:00:00Z","corrAddrGeoRegionCode":"TX","appLocation":"ELECTRONIC","appEarlyPubNumber":"US20160266243A1","id":"14643719","appGrpArtNumber":"3645","appGrpArtNumberFacet":"3645","applIdStr":"14643719","appl_id_txt":"14643719","appSubCls":"005010","patentNumber":"10000000","LAST_MOD_TS":"2023-11-29T05:41:30Z","transactions":[{"recordDate":"2021-11-18
       00:00:00","code":"M1551","description":"Payment of Maintenance Fee, 4th Year,
       Large Entity"},{"recordDate":"2018-06-19 00:00:00","code":"PGM/","description":"Recordation
       of Patent Grant Mailed"},{"recordDate":"2018-05-31 00:00:00","code":"EML_NTR","description":"Email
@@ -358,7 +376,7 @@ interactions:
       Filed"},{"recordDate":"2015-03-10 00:00:00","code":"SCAN","description":"IFW
       Scan & PACR Auto Security Review"},{"recordDate":"2015-03-10 00:00:00","code":"BIG.","description":"Entity
       Status Set To Undiscounted (Initial Default Setting or Status Change)"},{"recordDate":"2015-03-10
-      00:00:00","code":"IEXX","description":"Initial Exam Team nn"}],"LAST_INSERT_TIME":"2023-10-31T12:35:02Z","appCls":"356","appStatus":"Patented
+      00:00:00","code":"IEXX","description":"Initial Exam Team nn"}],"LAST_INSERT_TIME":"2023-11-29T08:30:03Z","appCls":"356","appStatus":"Patented
       Case","appStatusFacet":"Patented Case","appStatus_txt":"Patented Case","patentTitle":"COHERENT
       LADAR USING INTRA-PIXEL QUADRATURE DETECTION","appStatusDate":"2018-05-30T00:00:00Z","appAttrDockNumber":"14-6582
       (RAYN01-46582)","inventors":[{"nameLineOne":"Marron","nameLineTwo":"Joseph ","suffix":"","streetOne":"","streetTwo":"","city":"Manhattan
@@ -392,7 +410,7 @@ interactions:
       Abbas  ","phoneNum":"571-250-1619","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"71643","fullName":"Arvesen,
       David  ","phoneNum":"972-628-3600","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"78247","fullName":"Walsh,
       Andrew  ","phoneNum":"978-858-5223","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"46106","fullName":"O''Brien,
-      Kevin  ","phoneNum":"704-423-7581","regStatus":"ACTIVE"}],"corrAddrCustNo":"18510","corrAddrCountryCd":"US","corrAddrCity":"Dallas","appEntityStatus":"UNDISCOUNTED","appConfrNumber":"4531","lastUpdatedTimestamp":"2023-11-01T10:29:52.332Z","cmsData":["{14643719|2020-10-16
+      Kevin  ","phoneNum":"704-423-7581","regStatus":"ACTIVE"}],"corrAddrCustNo":"18510","corrAddrCountryCd":"US","corrAddrCity":"Dallas","appEntityStatus":"UNDISCOUNTED","appConfrNumber":"4531","lastUpdatedTimestamp":"2023-11-30T02:34:09.928Z","cmsData":["{14643719|2020-10-16
       11:28:51|PROSECUTION|Electronic Filing System(EFS) Acknowledgment Receipt|N417|2|KGCNAVL4LDFLYX9},{14643719|2020-10-16
       11:28:51|PROSECUTION|Maintenance Fee Address Change|MFEE.C.AD|2|KGCNAVL3LDFLYX9},{14643719|2018-06-20
       09:43:42|PROSECUTION|Examiner''s search strategy and results|SRNT|1|JINEPFNDRXEAPX0},{14643719|2018-05-30
@@ -473,9 +491,17 @@ interactions:
       20:00:00|PROSECUTION|Drawings-only black and white line drawings|DRW|6|I73SCH86PXXIFW3},{14643719|2015-03-09
       20:00:00|PROSECUTION|Power of Attorney|PA..|2|I73SCH6OPXXIFW3},{14643719|2015-03-09
       20:00:00|PROSECUTION|Abstract|ABST|1|I73SCH7QPXXIFW3}"],"appAttrDockNumberFacet":"14-6582
-      (RAYN01-46582)","appEntityStatusFacet":"UNDISCOUNTED","appCustNumberFacet":"18510","_version_":1781357273979813888,"firstInventorFileFacet":"Yes","appLocationFacet":"ELECTRONIC","appEarlyPubNumberFacet":"US20160266243A1","patentNumberFacet":"10000000"}]}},"queryId":"b30119ee-e40a-4486-9228-1a7d1e6b52b3"},"jobStatus":null,"queryId":"b30119ee-e40a-4486-9228-1a7d1e6b52b3","page":1,"count":0,"errorMessage":null,"createQueryRequest":{"searchText":"patentNumber:(10000000)","facet":"false","facetField":null,"facetLimit":null,"facetMissing":null,"facetDate":null,"facetDateGap":null,"facetDateStart":null,"facetDateEnd":null,"facetDateOther":null,"facetDateInclude":null,"mm":"0%","sort":"applId
-      asc","qf":"","wt":null,"df":"patentTitle","fl":"*","start":"0","fq":[],"rows":"20","parameters":{"mm":"0%","df":"patentTitle","fl":["*"],"start":"0","sort":"applId
-      asc","fq":[],"rows":"20","facet":"false"}},"links":[{"rel":"self","href":"https://ped.uspto.gov/api/queries/b30119ee-e40a-4486-9228-1a7d1e6b52b3?format=XML"},{"rel":"results","href":"https://ped.uspto.gov/api/queries/b30119ee-e40a-4486-9228-1a7d1e6b52b3/results?page=1"},{"rel":"package","href":"https://ped.uspto.gov/api/queries/b30119ee-e40a-4486-9228-1a7d1e6b52b3/package?format=XML"},{"rel":"first","href":"https://ped.uspto.gov/api/queries/b30119ee-e40a-4486-9228-1a7d1e6b52b3/results?page=1"},{"rel":"next","href":"https://ped.uspto.gov/api/queries/b30119ee-e40a-4486-9228-1a7d1e6b52b3/results?page=2"},{"rel":"self","href":"https://ped.uspto.gov/api/queries/b30119ee-e40a-4486-9228-1a7d1e6b52b3?format=JSON"},{"rel":"results","href":"https://ped.uspto.gov/api/queries/b30119ee-e40a-4486-9228-1a7d1e6b52b3/results?page=1"},{"rel":"package","href":"https://ped.uspto.gov/api/queries/b30119ee-e40a-4486-9228-1a7d1e6b52b3/package?format=JSON"},{"rel":"first","href":"https://ped.uspto.gov/api/queries/b30119ee-e40a-4486-9228-1a7d1e6b52b3/results?page=1"},{"rel":"next","href":"https://ped.uspto.gov/api/queries/b30119ee-e40a-4486-9228-1a7d1e6b52b3/results?page=2"}]}'
+      (RAYN01-46582)","appEntityStatusFacet":"UNDISCOUNTED","appCustNumberFacet":"18510","_version_":1783954570744954880,"firstInventorFileFacet":"Yes","appLocationFacet":"ELECTRONIC","appEarlyPubNumberFacet":"US20160266243A1","patentNumberFacet":"10000000"}]}},"queryId":"0a7a9483-e4fa-41d7-aa94-7af863a3eef6"},"jobStatus":null,"queryId":"0a7a9483-e4fa-41d7-aa94-7af863a3eef6","page":1,"count":0,"errorMessage":null,"createQueryRequest":{"searchText":"patentNumber:(10000000)","facet":"false","facetField":null,"facetLimit":null,"facetMissing":null,"facetDate":null,"facetDateGap":null,"facetDateStart":null,"facetDateEnd":null,"facetDateOther":null,"facetDateInclude":null,"mm":"0%","sort":"applId
+      asc","qf":"appEarlyPubNumber applId appLocation appType appStatus_txt appConfrNumber
+      appCustNumber appGrpArtNumber appCls appSubCls appEntityStatus_txt patentNumber
+      patentTitle inventorName firstNamedApplicant appExamName appExamPrefrdName appAttrDockNumber
+      appPCTNumber appIntlPubNumber wipoEarlyPubNumber pctAppType firstInventorFile
+      appClsSubCls rankAndInventorsList","wt":null,"df":"patentTitle","fl":"*","start":"0","fq":[],"rows":"1","parameters":{"mm":"0%","df":"patentTitle","qf":"appEarlyPubNumber
+      applId appLocation appType appStatus_txt appConfrNumber appCustNumber appGrpArtNumber
+      appCls appSubCls appEntityStatus_txt patentNumber patentTitle inventorName firstNamedApplicant
+      appExamName appExamPrefrdName appAttrDockNumber appPCTNumber appIntlPubNumber
+      wipoEarlyPubNumber pctAppType firstInventorFile appClsSubCls rankAndInventorsList","fl":["*"],"start":"0","sort":"applId
+      asc","fq":[],"rows":"1","facet":"false"}},"links":[{"rel":"self","href":"https://ped.uspto.gov/api/queries/0a7a9483-e4fa-41d7-aa94-7af863a3eef6?format=XML"},{"rel":"results","href":"https://ped.uspto.gov/api/queries/0a7a9483-e4fa-41d7-aa94-7af863a3eef6/results?page=1"},{"rel":"package","href":"https://ped.uspto.gov/api/queries/0a7a9483-e4fa-41d7-aa94-7af863a3eef6/package?format=XML"},{"rel":"first","href":"https://ped.uspto.gov/api/queries/0a7a9483-e4fa-41d7-aa94-7af863a3eef6/results?page=1"},{"rel":"next","href":"https://ped.uspto.gov/api/queries/0a7a9483-e4fa-41d7-aa94-7af863a3eef6/results?page=2"},{"rel":"self","href":"https://ped.uspto.gov/api/queries/0a7a9483-e4fa-41d7-aa94-7af863a3eef6?format=JSON"},{"rel":"results","href":"https://ped.uspto.gov/api/queries/0a7a9483-e4fa-41d7-aa94-7af863a3eef6/results?page=1"},{"rel":"package","href":"https://ped.uspto.gov/api/queries/0a7a9483-e4fa-41d7-aa94-7af863a3eef6/package?format=JSON"},{"rel":"first","href":"https://ped.uspto.gov/api/queries/0a7a9483-e4fa-41d7-aa94-7af863a3eef6/results?page=1"},{"rel":"next","href":"https://ped.uspto.gov/api/queries/0a7a9483-e4fa-41d7-aa94-7af863a3eef6/results?page=2"}]}'
     headers:
       Cache-Control:
       - no-cache, no-store, max-age=0, must-revalidate
@@ -484,21 +510,21 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Wed, 01 Nov 2023 15:52:00 GMT
+      - Thu, 30 Nov 2023 18:12:06 GMT
       Expires:
       - '0'
       Pragma:
       - no-cache
       Server-Timing:
-      - intid;desc=489b8d0585d53f5d
+      - intid;desc=06ae107f2d04914b
       Strict-Transport-Security:
       - max-age=31536000;includeSubDomains
       Transfer-Encoding:
       - chunked
       Via:
-      - 1.1 c6e58c7db36df23cb484b35ac21dade4.cloudfront.net (CloudFront)
+      - 1.1 ed57c867ac386aff2fbbc4e97f282304.cloudfront.net (CloudFront)
       X-Amz-Cf-Id:
-      - 4QdTxSTn0X4CIBIrtIUJlIa-lDRSewDPIMS8ve1du5PDjG_kcRG9fQ==
+      - tSZATaerBMjqIEG1LY4rAkiCSgxl1impkqDzj-YN-AbEhbhE2op_Lg==
       X-Amz-Cf-Pop:
       - IAH50-C1
       X-Cache:
@@ -523,13 +549,13 @@ interactions:
       host:
       - ped.uspto.gov
       user-agent:
-      - Mozilla/5.0 Python Patent Clientbot/3.2.10 (parkerhancock@users.noreply.github.com)
+      - Mozilla/5.0 Python Patent Clientbot/4.1.1 (parkerhancock@users.noreply.github.com)
     method: GET
     uri: https://ped.uspto.gov/api/queries/cms/public/14643719
   response:
     content: '[{"applicationNumberText":"14643719","mailRoomDate":"2020-10-16T11:28:51.000Z","documentCode":"MFEE.C.AD","documentDescription":"Maintenance
       Fee Address Change","documentCategory":"PROSECUTION","accessLevelCategory":"PUBLIC","documentIdentifier":"KGCNAVL3LDFLYX9","pageCount":2,"pdfUrl":"pdfDocument/14643719/KGCNAVL3LDFLYX9"},{"applicationNumberText":"14643719","mailRoomDate":"2020-10-16T11:28:51.000Z","documentCode":"N417","documentDescription":"Electronic
-      Filing System(EFS) Acknowledgment Receipt","documentCategory":"PROSECUTION","accessLevelCategory":"PUBLIC","documentIdentifier":"KGCNAVL4LDFLYX9","pageCount":2,"pdfUrl":"pdfDocument/14643719/KGCNAVL4LDFLYX9"},{"applicationNumberText":"14643719","mailRoomDate":"2018-06-20T09:43:42.000Z","documentCode":"SRNT","documentDescription":"Examiner''s
+      Filing System Acknowledgment Receipt","documentCategory":"PROSECUTION","accessLevelCategory":"PUBLIC","documentIdentifier":"KGCNAVL4LDFLYX9","pageCount":2,"pdfUrl":"pdfDocument/14643719/KGCNAVL4LDFLYX9"},{"applicationNumberText":"14643719","mailRoomDate":"2018-06-20T09:43:42.000Z","documentCode":"SRNT","documentDescription":"Examiner''s
       search strategy and results","documentCategory":"PROSECUTION","accessLevelCategory":"PUBLIC","documentIdentifier":"JINEPFNDRXEAPX0","pageCount":1,"pdfUrl":"pdfDocument/14643719/JINEPFNDRXEAPX0"},{"applicationNumberText":"14643719","mailRoomDate":"2018-05-30T15:06:02.000Z","documentCode":"CLM","documentDescription":"Claims","documentCategory":"PROSECUTION","accessLevelCategory":"PUBLIC","documentIdentifier":"JHTPZ2EWRXEAPX3","pageCount":1,"pdfUrl":"pdfDocument/14643719/JHTPZ2EWRXEAPX3"},{"applicationNumberText":"14643719","mailRoomDate":"2018-05-29T20:00:00.000Z","documentCode":"ISSUE.NTF","documentDescription":"Issue
       Notification","documentCategory":"PROSECUTION","accessLevelCategory":"PUBLIC","documentIdentifier":"JIKLVNQ6RXEAPX5","pageCount":1,"pdfUrl":"pdfDocument/14643719/JIKLVNQ6RXEAPX5"},{"applicationNumberText":"14643719","mailRoomDate":"2018-05-29T07:38:20.000Z","documentCode":"NOA","documentDescription":"Notice
       of Allowance and Fees Due (PTOL-85)","documentCategory":"PROSECUTION","accessLevelCategory":"PUBLIC","documentIdentifier":"JHKPC86YRXEAPX4","pageCount":5,"pdfUrl":"pdfDocument/14643719/JHKPC86YRXEAPX4"},{"applicationNumberText":"14643719","mailRoomDate":"2018-05-23T08:51:36.000Z","documentCode":"ANE.I","documentDescription":"Amendment
@@ -537,7 +563,7 @@ interactions:
       to Amendment under Rule 312","documentCategory":"PROSECUTION","accessLevelCategory":"PUBLIC","documentIdentifier":"JHGHMVGDRXEAPX1","pageCount":2,"pdfUrl":"pdfDocument/14643719/JHGHMVGDRXEAPX1"},{"applicationNumberText":"14643719","mailRoomDate":"2018-05-10T20:29:48.000Z","documentCode":"CLM","documentDescription":"Claims","documentCategory":"PROSECUTION","accessLevelCategory":"PUBLIC","documentIdentifier":"JH6C2SAQPXXIFW1","pageCount":8,"pdfUrl":"pdfDocument/14643719/JH6C2SAQPXXIFW1"},{"applicationNumberText":"14643719","mailRoomDate":"2018-05-10T20:29:48.000Z","documentCode":"A.NA","documentDescription":"Amendment
       after Notice of Allowance (Rule 312)","documentCategory":"PROSECUTION","accessLevelCategory":"PUBLIC","documentIdentifier":"JH4BM5I5RXEAPX2","pageCount":1,"pdfUrl":"pdfDocument/14643719/JH4BM5I5RXEAPX2"},{"applicationNumberText":"14643719","mailRoomDate":"2018-05-10T20:29:48.000Z","documentCode":"REM","documentDescription":"Applicant
       Arguments/Remarks Made in an Amendment","documentCategory":"PROSECUTION","accessLevelCategory":"PUBLIC","documentIdentifier":"JH6C3B3SPXXIFW1","pageCount":2,"pdfUrl":"pdfDocument/14643719/JH6C3B3SPXXIFW1"},{"applicationNumberText":"14643719","mailRoomDate":"2018-05-10T20:29:48.000Z","documentCode":"N417","documentDescription":"Electronic
-      Filing System(EFS) Acknowledgment Receipt","documentCategory":"PROSECUTION","accessLevelCategory":"PUBLIC","documentIdentifier":"JH4BM5I9RXEAPX2","pageCount":3,"pdfUrl":"pdfDocument/14643719/JH4BM5I9RXEAPX2"},{"applicationNumberText":"14643719","mailRoomDate":"2018-05-10T20:29:48.000Z","documentCode":"WFEE","documentDescription":"Fee
+      Filing System Acknowledgment Receipt","documentCategory":"PROSECUTION","accessLevelCategory":"PUBLIC","documentIdentifier":"JH4BM5I9RXEAPX2","pageCount":3,"pdfUrl":"pdfDocument/14643719/JH4BM5I9RXEAPX2"},{"applicationNumberText":"14643719","mailRoomDate":"2018-05-10T20:29:48.000Z","documentCode":"WFEE","documentDescription":"Fee
       Worksheet (SB06)","documentCategory":"PROSECUTION","accessLevelCategory":"PUBLIC","documentIdentifier":"JH4BM5I8RXEAPX2","pageCount":2,"pdfUrl":"pdfDocument/14643719/JH4BM5I8RXEAPX2"},{"applicationNumberText":"14643719","mailRoomDate":"2018-05-10T20:29:48.000Z","documentCode":"N427","documentDescription":"Post
       Allowance Communication - Incoming","documentCategory":"PROSECUTION","accessLevelCategory":"PUBLIC","documentIdentifier":"JH4BM5I6RXEAPX2","pageCount":1,"pdfUrl":"pdfDocument/14643719/JH4BM5I6RXEAPX2"},{"applicationNumberText":"14643719","mailRoomDate":"2018-05-10T20:29:48.000Z","documentCode":"IFEE","documentDescription":"Issue
       Fee Payment (PTO-85B)","documentCategory":"PROSECUTION","accessLevelCategory":"PUBLIC","documentIdentifier":"JH4BM5I7RXEAPX2","pageCount":1,"pdfUrl":"pdfDocument/14643719/JH4BM5I7RXEAPX2"},{"applicationNumberText":"14643719","mailRoomDate":"2018-03-15T05:05:10.000Z","documentCode":"PETDEC","documentDescription":"Petition
@@ -550,12 +576,12 @@ interactions:
       of Allowance and Fees Due (PTOL-85)","documentCategory":"PROSECUTION","accessLevelCategory":"PUBLIC","documentIdentifier":"JDYVVX7GRXEAPX2","pageCount":5,"pdfUrl":"pdfDocument/14643719/JDYVVX7GRXEAPX2"},{"applicationNumberText":"14643719","mailRoomDate":"2018-02-26T09:11:29.000Z","documentCode":"IIFW","documentDescription":"Issue
       Information including classification, examiner, name, claim, renumbering, etc.","documentCategory":"PROSECUTION","accessLevelCategory":"PUBLIC","documentIdentifier":"JDYVVX7FRXEAPX2","pageCount":3,"pdfUrl":"pdfDocument/14643719/JDYVVX7FRXEAPX2"},{"applicationNumberText":"14643719","mailRoomDate":"2017-12-18T19:00:00.000Z","documentCode":"NPL","documentDescription":"Non
       Patent Literature","documentCategory":"PROSECUTION","accessLevelCategory":"PUBLIC","documentIdentifier":"JBEAIGKXRXEAPX5","pageCount":3,"pdfUrl":null},{"applicationNumberText":"14643719","mailRoomDate":"2017-12-18T19:00:00.000Z","documentCode":"N417","documentDescription":"Electronic
-      Filing System(EFS) Acknowledgment Receipt","documentCategory":"PROSECUTION","accessLevelCategory":"PUBLIC","documentIdentifier":"JBEAIGKZRXEAPX5","pageCount":3,"pdfUrl":"pdfDocument/14643719/JBEAIGKZRXEAPX5"},{"applicationNumberText":"14643719","mailRoomDate":"2017-12-18T19:00:00.000Z","documentCode":"IDS","documentDescription":"Information
+      Filing System Acknowledgment Receipt","documentCategory":"PROSECUTION","accessLevelCategory":"PUBLIC","documentIdentifier":"JBEAIGKZRXEAPX5","pageCount":3,"pdfUrl":"pdfDocument/14643719/JBEAIGKZRXEAPX5"},{"applicationNumberText":"14643719","mailRoomDate":"2017-12-18T19:00:00.000Z","documentCode":"IDS","documentDescription":"Information
       Disclosure Statement (IDS) Form (SB08)","documentCategory":"PROSECUTION","accessLevelCategory":"PUBLIC","documentIdentifier":"JBEAIGKWRXEAPX5","pageCount":4,"pdfUrl":"pdfDocument/14643719/JBEAIGKWRXEAPX5"},{"applicationNumberText":"14643719","mailRoomDate":"2017-12-18T19:00:00.000Z","documentCode":"WFEE","documentDescription":"Fee
       Worksheet (SB06)","documentCategory":"PROSECUTION","accessLevelCategory":"PUBLIC","documentIdentifier":"JBEAIGKYRXEAPX5","pageCount":2,"pdfUrl":"pdfDocument/14643719/JBEAIGKYRXEAPX5"},{"applicationNumberText":"14643719","mailRoomDate":"2017-12-18T19:00:00.000Z","documentCode":"PET.SPRE","documentDescription":"Petition
       for review by the Technology Center Special Program Examiner(SPRE)","documentCategory":"PROSECUTION","accessLevelCategory":"PUBLIC","documentIdentifier":"JBEAIG0XRXEAPX0","pageCount":2,"pdfUrl":"pdfDocument/14643719/JBEAIG0XRXEAPX0"},{"applicationNumberText":"14643719","mailRoomDate":"2017-12-18T19:00:00.000Z","documentCode":"RCEX","documentDescription":"Request
       for Continued Examination (RCE)","documentCategory":"PROSECUTION","accessLevelCategory":"PUBLIC","documentIdentifier":"JBEAIG9CRXEAPX1","pageCount":3,"pdfUrl":"pdfDocument/14643719/JBEAIG9CRXEAPX1"},{"applicationNumberText":"14643719","mailRoomDate":"2017-12-11T19:00:00.000Z","documentCode":"N417","documentDescription":"Electronic
-      Filing System(EFS) Acknowledgment Receipt","documentCategory":"PROSECUTION","accessLevelCategory":"PUBLIC","documentIdentifier":"JB42KNW4RXEAPX0","pageCount":2,"pdfUrl":"pdfDocument/14643719/JB42KNW4RXEAPX0"},{"applicationNumberText":"14643719","mailRoomDate":"2017-12-11T19:00:00.000Z","documentCode":"TRAN.LET","documentDescription":"Transmittal
+      Filing System Acknowledgment Receipt","documentCategory":"PROSECUTION","accessLevelCategory":"PUBLIC","documentIdentifier":"JB42KNW4RXEAPX0","pageCount":2,"pdfUrl":"pdfDocument/14643719/JB42KNW4RXEAPX0"},{"applicationNumberText":"14643719","mailRoomDate":"2017-12-11T19:00:00.000Z","documentCode":"TRAN.LET","documentDescription":"Transmittal
       Letter","documentCategory":"PROSECUTION","accessLevelCategory":"PUBLIC","documentIdentifier":"JB42KNW2RXEAPX0","pageCount":1,"pdfUrl":"pdfDocument/14643719/JB42KNW2RXEAPX0"},{"applicationNumberText":"14643719","mailRoomDate":"2017-12-11T19:00:00.000Z","documentCode":"DRW","documentDescription":"Drawings-only
       black and white line drawings","documentCategory":"PROSECUTION","accessLevelCategory":"PUBLIC","documentIdentifier":"JB42KNW3RXEAPX0","pageCount":6,"pdfUrl":"pdfDocument/14643719/JB42KNW3RXEAPX0"},{"applicationNumberText":"14643719","mailRoomDate":"2017-12-04T19:00:00.000Z","documentCode":"IIFW","documentDescription":"Issue
       Information including classification, examiner, name, claim, renumbering, etc.","documentCategory":"PROSECUTION","accessLevelCategory":"PUBLIC","documentIdentifier":"JANY4K58RXEAPX1","pageCount":3,"pdfUrl":"pdfDocument/14643719/JANY4K58RXEAPX1"},{"applicationNumberText":"14643719","mailRoomDate":"2017-12-04T19:00:00.000Z","documentCode":"NOA","documentDescription":"Notice
@@ -563,7 +589,7 @@ interactions:
       Data Sheet","documentCategory":"PROSECUTION","accessLevelCategory":"PUBLIC","documentIdentifier":"JANY4K5ARXEAPX1","pageCount":1,"pdfUrl":"pdfDocument/14643719/JANY4K5ARXEAPX1"},{"applicationNumberText":"14643719","mailRoomDate":"2017-12-04T19:00:00.000Z","documentCode":"SRNT","documentDescription":"Examiner''s
       search strategy and results","documentCategory":"PROSECUTION","accessLevelCategory":"PUBLIC","documentIdentifier":"JANY4K5DRXEAPX1","pageCount":4,"pdfUrl":"pdfDocument/14643719/JANY4K5DRXEAPX1"},{"applicationNumberText":"14643719","mailRoomDate":"2017-12-04T19:00:00.000Z","documentCode":"SRFW","documentDescription":"Search
       information including classification, databases and other search related notes","documentCategory":"PROSECUTION","accessLevelCategory":"PUBLIC","documentIdentifier":"JANY4K5CRXEAPX1","pageCount":1,"pdfUrl":"pdfDocument/14643719/JANY4K5CRXEAPX1"},{"applicationNumberText":"14643719","mailRoomDate":"2017-09-21T20:00:00.000Z","documentCode":"N417","documentDescription":"Electronic
-      Filing System(EFS) Acknowledgment Receipt","documentCategory":"PROSECUTION","accessLevelCategory":"PUBLIC","documentIdentifier":"J7W67SBYRXEAPX2","pageCount":2,"pdfUrl":"pdfDocument/14643719/J7W67SBYRXEAPX2"},{"applicationNumberText":"14643719","mailRoomDate":"2017-09-21T20:00:00.000Z","documentCode":"A...","documentDescription":"Amendment/Request
+      Filing System Acknowledgment Receipt","documentCategory":"PROSECUTION","accessLevelCategory":"PUBLIC","documentIdentifier":"J7W67SBYRXEAPX2","pageCount":2,"pdfUrl":"pdfDocument/14643719/J7W67SBYRXEAPX2"},{"applicationNumberText":"14643719","mailRoomDate":"2017-09-21T20:00:00.000Z","documentCode":"A...","documentDescription":"Amendment/Request
       for Reconsideration-After Non-Final Rejection","documentCategory":"PROSECUTION","accessLevelCategory":"PUBLIC","documentIdentifier":"J80KJE51LXEAPX3","pageCount":1,"pdfUrl":"pdfDocument/14643719/J80KJE51LXEAPX3"},{"applicationNumberText":"14643719","mailRoomDate":"2017-09-21T20:00:00.000Z","documentCode":"CLM","documentDescription":"Claims","documentCategory":"PROSECUTION","accessLevelCategory":"PUBLIC","documentIdentifier":"J80KLPUVLXEAPX2","pageCount":8,"pdfUrl":"pdfDocument/14643719/J80KLPUVLXEAPX2"},{"applicationNumberText":"14643719","mailRoomDate":"2017-09-21T20:00:00.000Z","documentCode":"REM","documentDescription":"Applicant
       Arguments/Remarks Made in an Amendment","documentCategory":"PROSECUTION","accessLevelCategory":"PUBLIC","documentIdentifier":"J80KLPUWLXEAPX2","pageCount":5,"pdfUrl":"pdfDocument/14643719/J80KLPUWLXEAPX2"},{"applicationNumberText":"14643719","mailRoomDate":"2017-09-21T20:00:00.000Z","documentCode":"WFEE","documentDescription":"Fee
       Worksheet (SB06)","documentCategory":"PROSECUTION","accessLevelCategory":"PUBLIC","documentIdentifier":"J80MDY5GRXEAPX3","pageCount":1,"pdfUrl":"pdfDocument/14643719/J80MDY5GRXEAPX3"},{"applicationNumberText":"14643719","mailRoomDate":"2017-07-09T20:00:00.000Z","documentCode":"892","documentDescription":"List
@@ -577,7 +603,7 @@ interactions:
       of References cited by applicant and considered by examiner","documentCategory":"PROSECUTION","accessLevelCategory":"PUBLIC","documentIdentifier":"J4SO2S9LRXEAPX2","pageCount":2,"pdfUrl":"pdfDocument/14643719/J4SO2S9LRXEAPX2"},{"applicationNumberText":"14643719","mailRoomDate":"2016-09-14T20:00:00.000Z","documentCode":"NTC.PUB","documentDescription":"Notice
       of Publication","documentCategory":"PROSECUTION","accessLevelCategory":"PUBLIC","documentIdentifier":"IT4E9MRJRXEAPX4","pageCount":1,"pdfUrl":"pdfDocument/14643719/IT4E9MRJRXEAPX4"},{"applicationNumberText":"14643719","mailRoomDate":"2016-09-07T20:00:00.000Z","documentCode":"TRAN.LET","documentDescription":"Transmittal
       Letter","documentCategory":"PROSECUTION","accessLevelCategory":"PUBLIC","documentIdentifier":"ISUSHQANRXEAPX0","pageCount":2,"pdfUrl":"pdfDocument/14643719/ISUSHQANRXEAPX0"},{"applicationNumberText":"14643719","mailRoomDate":"2016-09-07T20:00:00.000Z","documentCode":"N417","documentDescription":"Electronic
-      Filing System(EFS) Acknowledgment Receipt","documentCategory":"PROSECUTION","accessLevelCategory":"PUBLIC","documentIdentifier":"ISUSHQAMRXEAPX0","pageCount":2,"pdfUrl":"pdfDocument/14643719/ISUSHQAMRXEAPX0"},{"applicationNumberText":"14643719","mailRoomDate":"2016-09-07T20:00:00.000Z","documentCode":"NPL","documentDescription":"Non
+      Filing System Acknowledgment Receipt","documentCategory":"PROSECUTION","accessLevelCategory":"PUBLIC","documentIdentifier":"ISUSHQAMRXEAPX0","pageCount":2,"pdfUrl":"pdfDocument/14643719/ISUSHQAMRXEAPX0"},{"applicationNumberText":"14643719","mailRoomDate":"2016-09-07T20:00:00.000Z","documentCode":"NPL","documentDescription":"Non
       Patent Literature","documentCategory":"PROSECUTION","accessLevelCategory":"PUBLIC","documentIdentifier":"ISUSHQAIRXEAPX0","pageCount":14,"pdfUrl":null},{"applicationNumberText":"14643719","mailRoomDate":"2016-09-07T20:00:00.000Z","documentCode":"REF.OTHER","documentDescription":"Other
       reference-Patent/Application/Search Documents","documentCategory":"PROSECUTION","accessLevelCategory":"PUBLIC","documentIdentifier":"ISUSHQAJRXEAPX0","pageCount":14,"pdfUrl":"pdfDocument/14643719/ISUSHQAJRXEAPX0"},{"applicationNumberText":"14643719","mailRoomDate":"2016-09-07T20:00:00.000Z","documentCode":"FOR","documentDescription":"Foreign
       Reference","documentCategory":"PROSECUTION","accessLevelCategory":"PUBLIC","documentIdentifier":"ISUSHQALRXEAPX0","pageCount":22,"pdfUrl":"pdfDocument/14643719/ISUSHQALRXEAPX0"},{"applicationNumberText":"14643719","mailRoomDate":"2016-09-07T20:00:00.000Z","documentCode":"IDS","documentDescription":"Information
@@ -592,7 +618,7 @@ interactions:
       Worksheet (SB06)","documentCategory":"PROSECUTION","accessLevelCategory":"PUBLIC","documentIdentifier":"I73SCHJFPXXIFW3","pageCount":2,"pdfUrl":"pdfDocument/14643719/I73SCHJFPXXIFW3"},{"applicationNumberText":"14643719","mailRoomDate":"2015-03-09T20:00:00.000Z","documentCode":"OATH","documentDescription":"Oath
       or Declaration filed","documentCategory":"PROSECUTION","accessLevelCategory":"PUBLIC","documentIdentifier":"I73SCHN4PXXIFW3","pageCount":3,"pdfUrl":"pdfDocument/14643719/I73SCHN4PXXIFW3"},{"applicationNumberText":"14643719","mailRoomDate":"2015-03-09T20:00:00.000Z","documentCode":"NPL","documentDescription":"Non
       Patent Literature","documentCategory":"PROSECUTION","accessLevelCategory":"PUBLIC","documentIdentifier":"I73SCHIFPXXIFW3","pageCount":10,"pdfUrl":null},{"applicationNumberText":"14643719","mailRoomDate":"2015-03-09T20:00:00.000Z","documentCode":"N417","documentDescription":"Electronic
-      Filing System(EFS) Acknowledgment Receipt","documentCategory":"PROSECUTION","accessLevelCategory":"PUBLIC","documentIdentifier":"I73SCHJXPXXIFW3","pageCount":4,"pdfUrl":"pdfDocument/14643719/I73SCHJXPXXIFW3"},{"applicationNumberText":"14643719","mailRoomDate":"2015-03-09T20:00:00.000Z","documentCode":"NPL","documentDescription":"Non
+      Filing System Acknowledgment Receipt","documentCategory":"PROSECUTION","accessLevelCategory":"PUBLIC","documentIdentifier":"I73SCHJXPXXIFW3","pageCount":4,"pdfUrl":"pdfDocument/14643719/I73SCHJXPXXIFW3"},{"applicationNumberText":"14643719","mailRoomDate":"2015-03-09T20:00:00.000Z","documentCode":"NPL","documentDescription":"Non
       Patent Literature","documentCategory":"PROSECUTION","accessLevelCategory":"PUBLIC","documentIdentifier":"I73SCHIOPXXIFW3","pageCount":13,"pdfUrl":null},{"applicationNumberText":"14643719","mailRoomDate":"2015-03-09T20:00:00.000Z","documentCode":"ADS","documentDescription":"Application
       Data Sheet","documentCategory":"PROSECUTION","accessLevelCategory":"PUBLIC","documentIdentifier":"I73SCHMPPXXIFW3","pageCount":7,"pdfUrl":"pdfDocument/14643719/I73SCHMPPXXIFW3"},{"applicationNumberText":"14643719","mailRoomDate":"2015-03-09T20:00:00.000Z","documentCode":"IDS","documentDescription":"Information
       Disclosure Statement (IDS) Form (SB08)","documentCategory":"PROSECUTION","accessLevelCategory":"PUBLIC","documentIdentifier":"I73SCHI6PXXIFW3","pageCount":1,"pdfUrl":"pdfDocument/14643719/I73SCHI6PXXIFW3"}]'
@@ -604,9 +630,9 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Wed, 01 Nov 2023 15:40:02 GMT
+      - Thu, 30 Nov 2023 18:12:09 GMT
       Server-Timing:
-      - intid;desc=cf8bacc7648cd81f
+      - intid;desc=8a03ade4f8b33a4f
       Strict-Transport-Security:
       - max-age=31536000;includeSubDomains
       Transfer-Encoding:
@@ -616,9 +642,9 @@ interactions:
       - Access-Control-Request-Method
       - Access-Control-Request-Headers
       Via:
-      - 1.1 050fafda3999de306a6c7916e4c777bc.cloudfront.net (CloudFront)
+      - 1.1 ed57c867ac386aff2fbbc4e97f282304.cloudfront.net (CloudFront)
       X-Amz-Cf-Id:
-      - X6pEe9s0GKRSnEnMSHAM6sMjX4TbWoHdyjModZR9iocqA_29Q3MWsA==
+      - 7ry2_Ahf_sr9HV9RMsyzc7can0yjKZ7mkki7zMy0cdv6_4Oam6kV0Q==
       X-Amz-Cf-Pop:
       - IAH50-C1
       X-Cache:

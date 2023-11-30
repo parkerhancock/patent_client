@@ -34,6 +34,10 @@ class TestPatentExaminationData:
         result = USApplication.objects.filter(app_cust_number="70155")
         assert len(result) > 1
 
+    def test_search_by_issue_date(self):
+        result = USApplication.objects.filter(patent_issue_date="2023-11-21")
+        assert len(result) > 1
+
     def test_get_by_pub_number(self):
         pub_no = "US20060127129A1"
         app = USApplication.objects.get(app_early_pub_number=pub_no)
