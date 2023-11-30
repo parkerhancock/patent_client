@@ -1,5 +1,8 @@
 # Changelog
 
+## 4.0.2 (2023-11-31)
+- Fix issue with date filtering on PEDS endpoint
+
 ## 4.0.1 (2023-11-14)
 - Add improved logic for file downloads
 - Add support for USPTO BDSS
