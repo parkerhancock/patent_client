@@ -31,20 +31,21 @@ lxml = "^4.9.0"
 python-dateutil = "^2.8.2"
 inflection = "^0.5.1"
 openpyxl = "^3.0.10"
-colorlog = "^6.6.0"
 #yankee = {path="../yankee", develop=true}
 yankee = "^0.1.43"
-PyYAML = "^6.0"
-ujson = "^5.4.0"
-pyparsing = "^3.0.9"
 zipp = "^3.8.1"
 httpx = {extras = ["http2"], version = "^0.24.1"}
-nest-asyncio = "^1.5.8"
-tenacity = "^8.2.3"
+
 pydantic = "^2.4.2"
 pydantic-settings = "^2.0.3"
 pypdf = "^3.17.0"
 hishel = "^0.0.17"
+tqdm = "^4.66.1"
+
+[tool.poetry.group.docs]
+optional = true
+
+[tool.poetry.group.docs.dependencies]
 
 # Documentation Dependencies
 furo                       = {optional=true, version="^2022.6"}
@@ -60,17 +61,7 @@ sphinxcontrib-apidoc       = {optional=true, version="^0.3"}
 sphinxcontrib-mermaid      = {optional=true, version="^0.7.1"}
 nbsphinx                   = {optional=true, version="^0.8.9"}
 IPython                    = {optional=true, version="^7.17.0"}
-tqdm = "^4.66.1"
-
-
-
-
-
-[tool.poetry.extras]
-# Documentation
-docs     = ["furo", "linkify-it-py", "myst-parser", "sphinx", "sphinx-autodoc-typehints",
-            "sphinx-automodapi", "sphinx-copybutton", "sphinx-design", "sphinx-notfound-page",
-            "sphinxcontrib-apidoc", "sphinxext-opengraph", "sphinxcontrib-mermaid", "nbsphinx", "IPython"]
+nest-asyncio = "^1.5.8"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^7.1.2"
@@ -84,7 +75,6 @@ ipykernel = "^6.26.0"
 vcrpy = "^5.1.0"
 mypy = "^1.6.1"
 
-# For convenience in local development
 nox                   = "^2022.1.7"
 nox-poetry            = "^1.0.0"
 rich                  = ">=10.0"

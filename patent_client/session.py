@@ -80,7 +80,18 @@ class PatentClientSession(hishel.AsyncCacheClient):
     def download(self, url, method: str = "GET", path: Optional[str | Path] = None, **kwargs):
         return run_sync(self.adownload(url, method, path, **kwargs))
 
-    async def adownload(self, url, method: str = "GET", path: Optional[str | Path] = None, **kwargs):
+    def get_filename(self, url, path, filename, headers):
+        if path.is_dir() or None:
+            try:
+                filename = filename_re.search(headers["Content-Disposition"]).group(1)
+            except (AttributeError, KeyError):
+                filename = url.split("/")[-1]
+            path = path / filename if path else Path.cwd() / filename
+        return path
+
+    async def adownload(
+        self, url, method: str = "GET", path: Optional[str | Path] = None, show_progress: bool = False, **kwargs
+    ):
         if isinstance(path, str):
             path = Path(path)
         elif path is None:
@@ -92,15 +103,10 @@ class PatentClientSession(hishel.AsyncCacheClient):
             return path
         async with self.stream(method, url, **kwargs) as response:
             response.raise_for_status()
-            total = int(response.headers["Content-Length"])
-            with tqdm(total=total, unit_scale=True, unit_divisor=1024, unit="B") as progress:
+            total = int(response.headers.get("Content-Length", 0)) or None
+            with tqdm(total=total, unit_scale=True, unit_divisor=1024, unit="B", disable=not show_progress) as progress:
                 num_bytes_downloaded = response.num_bytes_downloaded
-                if path.is_dir() or None:
-                    try:
-                        filename = filename_re.search(response.headers["Content-Disposition"]).group(1)
-                    except (AttributeError, KeyError):
-                        filename = url.split("/")[-1]
-                    path = path / filename if path else Path.cwd() / filename
+                path = self.get_filename(url, path, response, response.headers)
                 with path.open("wb") as f:
                     async for chunk in response.aiter_bytes():
                         f.write(chunk)
