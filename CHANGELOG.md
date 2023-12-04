@@ -1,5 +1,9 @@
 # Changelog
 
+## 4.0.3 (2023-12-04)
+- Fix issue with downloads when the response does not have a `Content-Length` header
+- Add more informative error messages when PEDS is down.
+
 ## 4.0.2 (2023-11-31)
 - Fix issue with date filtering on PEDS endpoint
 
