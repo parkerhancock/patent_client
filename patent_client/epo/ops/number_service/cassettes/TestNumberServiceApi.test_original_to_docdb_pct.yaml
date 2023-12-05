@@ -2,8 +2,6 @@ interactions:
 - request:
     body: ''
     headers:
-      Authorization:
-      - REDACTED
       accept:
       - '*/*'
       accept-encoding:
@@ -13,7 +11,7 @@ interactions:
       host:
       - ops.epo.org
       user-agent:
-      - Mozilla/5.0 Python Patent Clientbot/3.2.10 (parkerhancock@users.noreply.github.com)
+      - Mozilla/5.0 Python Patent Clientbot/4.1.3 (parkerhancock@users.noreply.github.com)
     method: GET
     uri: http://ops.epo.org/3.2/rest-services/number-service/application/original/PCT/GB02/04635.20021011/docdb
   response:
@@ -42,10 +40,12 @@ interactions:
       - no-cache
       Connection:
       - keep-alive
+      Content-Length:
+      - '1155'
       Content-Type:
       - application/xml;charset=utf-8
       Date:
-      - Wed, 08 Nov 2023 16:50:55 GMT
+      - Tue, 05 Dec 2023 03:56:35 GMT
       ETag:
       - '"02cf72625e86337d41a30675253a35cf8"'
       Pragma:
@@ -59,18 +59,18 @@ interactions:
       X-API:
       - ops-v3.2
       X-EPO-Client-IP:
-      - 38.104.255.66
+      - 104.54.160.230
       X-EPO-Forwarded:
-      - '[38.104.255.66]'
+      - '[104.54.160.230]'
       X-Elapsed-Time:
-      - '32'
+      - '29'
       X-IndividualQuotaPerHour-Used:
-      - '2372'
+      - '335024'
       X-RegisteredQuotaPerWeek-Used:
-      - '426342'
+      - '783893'
       X-Throttling-Control:
-      - busy (images=green:100, inpadoc=green:45, other=green:1000, retrieval=green:100,
-        search=green:15)
+      - overloaded (images=green:50, inpadoc=green:30, other=green:1000, retrieval=green:50,
+        search=green:5)
     http_version: HTTP/1.1
     status_code: 200
 version: 1

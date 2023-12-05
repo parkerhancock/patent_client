@@ -28,7 +28,6 @@ class PublishedBiblioAsyncApi:
             constituents = (constituents,)
         url = base_url + ",".join(constituents)
         response = await asession.get(url)
-
         return response.text
 
     @classmethod
@@ -76,7 +75,6 @@ class PublishedFulltextAsyncApi:
     @classmethod
     async def get_claims(cls, number, doc_type="publication", format="docdb") -> "Claims":
         text = await cls.get_fulltext_result(number, doc_type="publication", format="docdb", inquiry="claims")
-
         return Claims.model_validate(text)
 
 
@@ -106,7 +104,6 @@ class PublishedImagesAsyncApi:
     async def get_images(cls, number, doc_type="publication", format="docdb"):
         base_url = f"http://ops.epo.org/3.2/rest-services/published-data/{doc_type}/{format}/{number}/images"
         response = await asession.get(base_url)
-
         return Images.model_validate(response.text)
 
     @classmethod
@@ -115,8 +112,8 @@ class PublishedImagesAsyncApi:
             f"https://ops.epo.org/3.2/rest-services/published-data/images/{country}/{number}/{kind}/{image_type}.{image_format}",
             params={"Range": page_number},
             stream=True,
+            extensions={"force_cache": True},
         )
-
         return BytesIO(response.raw.read())
 
     @classmethod
@@ -125,8 +122,8 @@ class PublishedImagesAsyncApi:
             f"https://ops.epo.org/3.2/rest-services/{link}.{image_format}",
             params={"Range": page_number},
             stream=True,
+            extensions={"force_cache": True},
         )
-
         return BytesIO(response.raw.read())
 
 

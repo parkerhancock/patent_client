@@ -4,6 +4,8 @@ from typing import Dict
 from typing import List
 from typing import Optional
 
+from httpx._exceptions import HTTPStatusError
+
 from .model import Document
 from .model import PedsPage
 from .session import session
@@ -19,7 +21,7 @@ type_map = {
 }
 
 
-class NotAvailableException(Exception):
+class PedsDownException(Exception):
     pass
 
 
@@ -30,25 +32,30 @@ class PatentExaminationDataSystemApi:
     def __init__(self):
         query_id = None
 
-    @classmethod
-    async def is_online(cls) -> bool:
-        with session.cache_disabled():
-            response = await session.get("https://ped.uspto.gov/api/search-fields")
-            if response.status_code == 200:
-                return True
-            elif "requested resource is not available" in response.text:
-                raise NotAvailableException("Patent Examination Data is Offline - this is a USPTO problem")
-            elif "attempt failed or the origin closed the connection" in response.text:
-                raise NotAvailableException("The Patent Examination Data API is Broken! - this is a USPTO problem")
-            else:
-                raise NotAvailableException("There is a USPTO problem")
+    async def is_online(self) -> bool:
+        response = await session.get("https://ped.uspto.gov/api/search-fields", extensions={"cache_disabled": True})
+        if response.status_code == 200:
+            return True, ""
+        elif "requested resource is not available" in response.text:
+            return False, "Patent Examination Data is Offline - this is a USPTO problem"
+        elif "attempt failed or the origin closed the connection" in response.text:
+            return False, "The Patent Examination Data API is Broken! - this is a USPTO problem"
+        else:
+            return False, "There is a USPTO problem"
+
+    async def check_response(self, response):
+        try:
+            response.raise_for_status()
+        except HTTPStatusError as e:
+            alive, reason = await self.is_online()
+            raise e if alive else PedsDownException(reason)
 
     @classmethod
     async def get_search_fields(cls) -> dict:
         if hasattr(cls, "search_fields"):
             return cls.search_fields
         response = await session.get("https://ped.uspto.gov/api/search-fields")
-        response.raise_for_status()
+        await cls().check_response(response)
         search_fields = response.json()
         cls.search_fields = {k: type_map[v] for k, v in search_fields.items()}
         return cls.search_fields
@@ -104,11 +111,11 @@ class PatentExaminationDataSystemApi:
             json=params,
             headers={"Accept": "application/json"},
         )
-        response.raise_for_status()
+        await self.check_response(response)
         return PedsPage.model_validate(response.json())
 
     async def get_documents(self, appl_id: str) -> List[Document]:
         url = f"https://ped.uspto.gov/api/queries/cms/public/{appl_id}"
         response = await session.get(url)
-        response.raise_for_status()
+        await self.check_response(response)
         return [Document.model_validate(d) for d in response.json()]

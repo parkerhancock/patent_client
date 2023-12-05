@@ -135,7 +135,7 @@ class USApplication(PEDSBaseModel):
     corr_cust_no: Optional[str] = Field(alias="corrAddrCustNo", default=None)
     transactions: List[Transactions]
     attorneys: List[AttorneyOrAgent] = Field(alias="attrnyAddr", default_factory=list)
-    inventors: List[Inventor]
+    inventors: List[Inventor] = Field(default_factory=list)
     applicants: List[Applicant] = Field(default_factory=list)
     pta_pte_summary: Optional[PtaOrPteSummary] = None
     pta_pte_tran_history: List[PtaOrPteTransactionHistory] = Field(default_factory=list)
@@ -320,7 +320,7 @@ class USApplication(PEDSBaseModel):
         if pta_pte_summary:
             values["ptaPteSummary"] = pta_pte_summary
         # Collect Inventor Names and Addresses
-        for inventor in values["inventors"]:
+        for inventor in values.get("inventors", list()):
             inventor["name"] = f"{inventor['nameLineOne']}; {inventor['nameLineTwo']} {inventor['suffix']}".strip()
             inventor["address"] = (
                 "\n".join([inventor["streetOne"], inventor["streetTwo"]])

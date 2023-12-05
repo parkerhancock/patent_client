@@ -2,6 +2,8 @@ interactions:
 - request:
     body: ''
     headers:
+      Authorization:
+      - REDACTED
       accept:
       - '*/*'
       accept-encoding:
@@ -11,7 +13,89 @@ interactions:
       host:
       - ops.epo.org
       user-agent:
-      - Mozilla/5.0 Python Patent Clientbot/3.2.10 (parkerhancock@users.noreply.github.com)
+      - Mozilla/5.0 Python Patent Clientbot/4.1.3 (parkerhancock@users.noreply.github.com)
+    method: GET
+    uri: http://ops.epo.org/3.2/rest-services/family/publication/docdb/EP1000000A1
+  response:
+    content: "<error><code>400</code><message>invalid_access_token</message><description>Access
+      token is invalid</description>\n\t\t\t\t</error>\n\t\t\t"
+    headers:
+      Access-Control-Allow-Headers:
+      - Authorization
+      Access-Control-Allow-Methods:
+      - POST
+      Access-Control-Allow-Origin:
+      - '*'
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '129'
+      Content-Type:
+      - application/xml
+      Date:
+      - Tue, 05 Dec 2023 03:56:29 GMT
+      WWW-Authenticate:
+      - 'Bearer realm="null",error="invalid_token",error_description="oauth.v2.InvalidAccessToken:
+        Invalid access token"'
+    http_version: HTTP/1.1
+    status_code: 400
+- request:
+    body: grant_type=client_credentials
+    headers:
+      Authorization:
+      - REDACTED
+      content-length:
+      - '29'
+      content-type:
+      - application/x-www-form-urlencoded
+      host:
+      - ops.epo.org
+    method: POST
+    uri: https://ops.epo.org/3.2/auth/accesstoken
+  response:
+    content: "{\n  \"refresh_token_expires_in\": \"0\",\n  \"api_product_list\": \"[ops-prod]\",\n
+      \ \"api_product_list_json\": [\n    \"ops-prod\"\n  ],\n  \"organization_name\":
+      \"epo\",\n  \"developer.email\": \"parker.hancock@protonmail.com\",\n  \"token_type\":
+      \"BearerToken\",\n  \"issued_at\": \"1701748590165\",\n  \"client_id\": \"wVi6ni5GUZZ3BJqAfLGJb4KPGcYxRktw\",\n
+      \ \"access_token\": \"Z7ke5OJubey8yUOS4AjznW0SPthF\",\n  \"application_name\":
+      \"8654da0d-5e44-4ea3-addc-e555eff4aee6\",\n  \"scope\": \"core\",\n  \"expires_in\":
+      \"1199\",\n  \"refresh_count\": \"0\",\n  \"status\": \"approved\"\n}"
+    headers:
+      Access-Control-Allow-Headers:
+      - Authorization
+      Access-Control-Allow-Methods:
+      - POST
+      Access-Control-Allow-Origin:
+      - '*'
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '523'
+      Content-Type:
+      - application/json
+      Date:
+      - Tue, 05 Dec 2023 03:56:30 GMT
+      X-EPO-Client-IP:
+      - 104.54.160.230
+      X-EPO-Forwarded:
+      - '[104.54.160.230]'
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: ''
+    headers:
+      Authorization:
+      - REDACTED
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - ops.epo.org
+      user-agent:
+      - Mozilla/5.0 Python Patent Clientbot/4.1.3 (parkerhancock@users.noreply.github.com)
     method: GET
     uri: http://ops.epo.org/3.2/rest-services/family/publication/docdb/EP1000000A1
   response:
@@ -123,10 +207,12 @@ interactions:
       - no-cache
       Connection:
       - keep-alive
+      Content-Length:
+      - '8857'
       Content-Type:
       - application/xml;charset=utf-8
       Date:
-      - Wed, 08 Nov 2023 16:03:45 GMT
+      - Tue, 05 Dec 2023 03:56:30 GMT
       ETag:
       - '"042c8b4f48cc4e69d9f34356eb9b71d8e"'
       Pragma:
@@ -139,23 +225,19 @@ interactions:
       - Accept
       X-API:
       - ops-v3.2
-      X-AnonymousQuotaPerDay-Used:
-      - '0'
-      X-AnonymousQuotaPerMinute-Used:
-      - '3'
       X-EPO-Client-IP:
-      - 38.104.255.66
+      - 104.54.160.230
       X-EPO-Forwarded:
-      - '[38.104.255.66]'
+      - '[104.54.160.230]'
       X-Elapsed-Time:
-      - '15'
-      X-IndividualQuotaPerHour-Used:
       - '0'
+      X-IndividualQuotaPerHour-Used:
+      - '232993'
       X-RegisteredQuotaPerWeek-Used:
-      - '425156'
+      - '681862'
       X-Throttling-Control:
-      - overloaded (images=green:50, inpadoc=green:30, other=green:1000, retrieval=green:50,
-        search=green:5)
+      - idle (images=green:200, inpadoc=green:60, other=green:1000, retrieval=green:200,
+        search=green:30)
     http_version: HTTP/1.1
     status_code: 200
 version: 1

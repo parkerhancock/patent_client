@@ -2,8 +2,6 @@ interactions:
 - request:
     body: ''
     headers:
-      Authorization:
-      - REDACTED
       accept:
       - '*/*'
       accept-encoding:
@@ -13,7 +11,7 @@ interactions:
       host:
       - ops.epo.org
       user-agent:
-      - Mozilla/5.0 Python Patent Clientbot/4.0.0 (parkerhancock@users.noreply.github.com)
+      - Mozilla/5.0 Python Patent Clientbot/4.1.3 (parkerhancock@users.noreply.github.com)
     method: GET
     uri: http://ops.epo.org/3.2/rest-services/published-data/search?Range=1-1&q=applicant%3D%22Google%22
   response:
@@ -22,9 +20,9 @@ interactions:
       xmlns:ops=\"http://ops.epo.org\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">\n
       \   <ops:biblio-search total-result-count=\"10000\">\n        <ops:query syntax=\"CQL\">applicant
       = Google</ops:query>\n        <ops:range begin=\"1\" end=\"1\"/>\n        <ops:search-result>\n
-      \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"75787025\">\n
-      \               <document-id document-id-type=\"docdb\">\n                    <country>DK</country>\n
-      \                   <doc-number>3989061</doc-number>\n                    <kind>T3</kind>\n
+      \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"78114422\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>TW</country>\n
+      \                   <doc-number>D218345</doc-number>\n                    <kind>S</kind>\n
       \               </document-id>\n            </ops:publication-reference>\n        </ops:search-result>\n
       \   </ops:biblio-search>\n</ops:world-patent-data>"
     headers:
@@ -39,13 +37,13 @@ interactions:
       Connection:
       - keep-alive
       Content-Length:
-      - '837'
+      - '836'
       Content-Type:
       - application/xml;charset=utf-8
       Date:
-      - Fri, 10 Nov 2023 17:56:19 GMT
+      - Tue, 05 Dec 2023 03:56:51 GMT
       ETag:
-      - '"0e324b13a235dedc520479f3870dc9a28"'
+      - '"0b72d9ec26fad05366a1be4538920b9e9"'
       Pragma:
       - no-cache
       Server:
@@ -61,21 +59,19 @@ interactions:
       X-EPO-Forwarded:
       - '[104.54.160.230]'
       X-Elapsed-Time:
-      - '13'
+      - '6'
       X-IndividualQuotaPerHour-Used:
-      - '602996'
+      - '784456'
       X-RegisteredQuotaPerWeek-Used:
-      - '1828363'
+      - '1233325'
       X-Throttling-Control:
-      - idle (images=green:200, inpadoc=green:60, other=green:1000, retrieval=green:200,
-        search=green:30)
+      - busy (images=green:100, inpadoc=green:45, other=green:1000, retrieval=green:100,
+        search=green:15)
     http_version: HTTP/1.1
     status_code: 200
 - request:
     body: ''
     headers:
-      Authorization:
-      - REDACTED
       accept:
       - '*/*'
       accept-encoding:
@@ -85,152 +81,82 @@ interactions:
       host:
       - ops.epo.org
       user-agent:
-      - Mozilla/5.0 Python Patent Clientbot/4.0.0 (parkerhancock@users.noreply.github.com)
+      - Mozilla/5.0 Python Patent Clientbot/4.1.3 (parkerhancock@users.noreply.github.com)
     method: GET
-    uri: http://ops.epo.org/3.2/rest-services/published-data/publication/docdb/DK3989061T3/biblio
+    uri: http://ops.epo.org/3.2/rest-services/published-data/publication/docdb/TWD218345S/biblio
   response:
     content: "<?xml version=\"1.0\" encoding=\"UTF-8\"?><?xml-stylesheet type=\"text/xsl\"
       href=\"/3.2/style/exchange.xsl\"?>\n<ops:world-patent-data xmlns=\"http://www.epo.org/exchange\"
       xmlns:ops=\"http://ops.epo.org\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">\n
       \   <exchange-documents>\n        <exchange-document system=\"ops.epo.org\"
-      family-id=\"75787025\" country=\"DK\" doc-number=\"3989061\" kind=\"T3\">\n
-      \           <bibliographic-data>\n                <publication-reference>\n
-      \                   <document-id document-id-type=\"docdb\">\n                        <country>DK</country>\n
-      \                       <doc-number>3989061</doc-number>\n                        <kind>T3</kind>\n
-      \                       <date>20231106</date>\n                    </document-id>\n
-      \                   <document-id document-id-type=\"epodoc\">\n                        <doc-number>DK3989061T</doc-number>\n
-      \                       <date>20231106</date>\n                    </document-id>\n
-      \               </publication-reference>\n                <classifications-ipcr>\n
-      \                   <classification-ipcr sequence=\"1\">\n                        <text>G06F
-      \  9/    30            A I                    </text>\n                    </classification-ipcr>\n
-      \                   <classification-ipcr sequence=\"2\">\n                        <text>G06F
-      \  9/    38            A I                    </text>\n                    </classification-ipcr>\n
-      \               </classifications-ipcr>\n                <patent-classifications>\n
-      \                   <patent-classification sequence=\"1\">\n                        <classification-scheme
-      office=\"EP\" scheme=\"CPCI\"/>\n                        <section>G</section>\n
-      \                       <class>06</class>\n                        <subclass>F</subclass>\n
-      \                       <main-group>1</main-group>\n                        <subgroup>03</subgroup>\n
-      \                       <classification-value>I</classification-value>\n                        <generating-office>US</generating-office>\n
-      \                   </patent-classification>\n                    <patent-classification
-      sequence=\"2\">\n                        <classification-scheme office=\"EP\"
-      scheme=\"CPCI\"/>\n                        <section>G</section>\n                        <class>06</class>\n
-      \                       <subclass>F</subclass>\n                        <main-group>9</main-group>\n
-      \                       <subgroup>30018</subgroup>\n                        <classification-value>I</classification-value>\n
-      \                       <generating-office>EP</generating-office>\n                    </patent-classification>\n
-      \                   <patent-classification sequence=\"3\">\n                        <classification-scheme
-      office=\"EP\" scheme=\"CPCI\"/>\n                        <section>G</section>\n
-      \                       <class>06</class>\n                        <subclass>F</subclass>\n
-      \                       <main-group>9</main-group>\n                        <subgroup>30021</subgroup>\n
-      \                       <classification-value>I</classification-value>\n                        <generating-office>EP</generating-office>\n
-      \                   </patent-classification>\n                    <patent-classification
-      sequence=\"4\">\n                        <classification-scheme office=\"EP\"
-      scheme=\"CPCI\"/>\n                        <section>G</section>\n                        <class>06</class>\n
-      \                       <subclass>F</subclass>\n                        <main-group>9</main-group>\n
-      \                       <subgroup>30032</subgroup>\n                        <classification-value>I</classification-value>\n
-      \                       <generating-office>EP</generating-office>\n                    </patent-classification>\n
-      \                   <patent-classification sequence=\"5\">\n                        <classification-scheme
-      office=\"EP\" scheme=\"CPCI\"/>\n                        <section>G</section>\n
-      \                       <class>06</class>\n                        <subclass>F</subclass>\n
-      \                       <main-group>9</main-group>\n                        <subgroup>30036</subgroup>\n
-      \                       <classification-value>I</classification-value>\n                        <generating-office>US</generating-office>\n
-      \                   </patent-classification>\n                    <patent-classification
-      sequence=\"6\">\n                        <classification-scheme office=\"EP\"
-      scheme=\"CPCI\"/>\n                        <section>G</section>\n                        <class>06</class>\n
-      \                       <subclass>F</subclass>\n                        <main-group>9</main-group>\n
-      \                       <subgroup>30036</subgroup>\n                        <classification-value>I</classification-value>\n
-      \                       <generating-office>EP</generating-office>\n                    </patent-classification>\n
-      \                   <patent-classification sequence=\"7\">\n                        <classification-scheme
-      office=\"EP\" scheme=\"CPCI\"/>\n                        <section>G</section>\n
-      \                       <class>06</class>\n                        <subclass>F</subclass>\n
-      \                       <main-group>9</main-group>\n                        <subgroup>30043</subgroup>\n
-      \                       <classification-value>I</classification-value>\n                        <generating-office>EP</generating-office>\n
-      \                   </patent-classification>\n                    <patent-classification
-      sequence=\"8\">\n                        <classification-scheme office=\"EP\"
-      scheme=\"CPCI\"/>\n                        <section>G</section>\n                        <class>06</class>\n
-      \                       <subclass>F</subclass>\n                        <main-group>9</main-group>\n
-      \                       <subgroup>30105</subgroup>\n                        <classification-value>I</classification-value>\n
-      \                       <generating-office>US</generating-office>\n                    </patent-classification>\n
-      \                   <patent-classification sequence=\"9\">\n                        <classification-scheme
-      office=\"EP\" scheme=\"CPCI\"/>\n                        <section>G</section>\n
-      \                       <class>06</class>\n                        <subclass>F</subclass>\n
-      \                       <main-group>9</main-group>\n                        <subgroup>30109</subgroup>\n
-      \                       <classification-value>I</classification-value>\n                        <generating-office>EP</generating-office>\n
-      \                   </patent-classification>\n                    <patent-classification
-      sequence=\"10\">\n                        <classification-scheme office=\"EP\"
-      scheme=\"CPCI\"/>\n                        <section>G</section>\n                        <class>06</class>\n
-      \                       <subclass>F</subclass>\n                        <main-group>9</main-group>\n
-      \                       <subgroup>3016</subgroup>\n                        <classification-value>I</classification-value>\n
-      \                       <generating-office>EP</generating-office>\n                    </patent-classification>\n
-      \                   <patent-classification sequence=\"11\">\n                        <classification-scheme
-      office=\"EP\" scheme=\"CPCI\"/>\n                        <section>G</section>\n
-      \                       <class>06</class>\n                        <subclass>F</subclass>\n
-      \                       <main-group>9</main-group>\n                        <subgroup>3836</subgroup>\n
-      \                       <classification-value>I</classification-value>\n                        <generating-office>US</generating-office>\n
-      \                   </patent-classification>\n                    <patent-classification
-      sequence=\"12\">\n                        <classification-scheme office=\"EP\"
-      scheme=\"CPCI\"/>\n                        <section>G</section>\n                        <class>06</class>\n
-      \                       <subclass>F</subclass>\n                        <main-group>9</main-group>\n
-      \                       <subgroup>3887</subgroup>\n                        <classification-value>I</classification-value>\n
-      \                       <generating-office>US</generating-office>\n                    </patent-classification>\n
-      \                   <patent-classification sequence=\"13\">\n                        <classification-scheme
-      office=\"EP\" scheme=\"CPCI\"/>\n                        <section>G</section>\n
-      \                       <class>06</class>\n                        <subclass>F</subclass>\n
-      \                       <main-group>9</main-group>\n                        <subgroup>3887</subgroup>\n
-      \                       <classification-value>I</classification-value>\n                        <generating-office>EP</generating-office>\n
-      \                   </patent-classification>\n                </patent-classifications>\n
-      \               <application-reference doc-id=\"601491675\">\n                    <document-id
-      document-id-type=\"docdb\">\n                        <country>DK</country>\n
-      \                       <doc-number>21171904</doc-number>\n                        <kind>T</kind>\n
+      family-id=\"78114422\" country=\"TW\" doc-number=\"D218345\" kind=\"S\">\n            <bibliographic-data>\n
+      \               <publication-reference>\n                    <document-id document-id-type=\"docdb\">\n
+      \                       <country>TW</country>\n                        <doc-number>D218345</doc-number>\n
+      \                       <kind>S</kind>\n                        <date>20220421</date>\n
       \                   </document-id>\n                    <document-id document-id-type=\"epodoc\">\n
-      \                       <doc-number>DK20210171904T</doc-number>\n                        <date>20210503</date>\n
-      \                   </document-id>\n                    <document-id document-id-type=\"original\">\n
-      \                       <doc-number>21171904.2</doc-number>\n                    </document-id>\n
-      \               </application-reference>\n                <priority-claims>\n
-      \                   <priority-claim sequence=\"1\" kind=\"national\">\n                        <document-id
-      document-id-type=\"epodoc\">\n                            <doc-number>US202017080282</doc-number>\n
-      \                           <date>20201026</date>\n                        </document-id>\n
-      \                       <document-id document-id-type=\"original\">\n                            <doc-number>202017080282</doc-number>\n
+      \                       <doc-number>TWD218345S</doc-number>\n                        <date>20220421</date>\n
+      \                   </document-id>\n                </publication-reference>\n
+      \               <patent-classifications/>\n                <application-reference
+      doc-id=\"602676171\">\n                    <document-id document-id-type=\"docdb\">\n
+      \                       <country>TW</country>\n                        <doc-number>109306816</doc-number>\n
+      \                       <kind>F</kind>\n                    </document-id>\n
+      \                   <document-id document-id-type=\"epodoc\">\n                        <doc-number>TW20200306816F</doc-number>\n
+      \                       <date>20201203</date>\n                    </document-id>\n
+      \                   <document-id document-id-type=\"original\">\n                        <doc-number>109306816</doc-number>\n
+      \                   </document-id>\n                </application-reference>\n
+      \               <priority-claims>\n                    <priority-claim sequence=\"1\"
+      kind=\"national\">\n                        <document-id document-id-type=\"epodoc\">\n
+      \                           <doc-number>US202029737187F</doc-number>\n                            <date>20200605</date>\n
+      \                       </document-id>\n                        <document-id
+      document-id-type=\"original\">\n                            <doc-number>29/737,187</doc-number>\n
       \                       </document-id>\n                    </priority-claim>\n
       \               </priority-claims>\n                <parties>\n                    <applicants>\n
       \                       <applicant sequence=\"1\" data-format=\"epodoc\">\n
+      \                           <applicant-name>\n                                <name>\u7F8E\u5546\u8C37\u6B4C\u6709\u9650\u8CAC\u4EFB\u516C\u53F8</name>\n
+      \                           </applicant-name>\n                        </applicant>\n
+      \                       <applicant sequence=\"2\" data-format=\"epodoc\">\n
+      \                           <applicant-name>\n                                <name>
+      GOOGLE LLC\u2002[US]</name>\n                            </applicant-name>\n
+      \                       </applicant>\n                        <applicant sequence=\"1\"
+      data-format=\"original\">\n                            <applicant-name>\n                                <name>\u7F8E\u5546\u8C37\u6B4C\u6709\u9650\u8CAC\u4EFB\u516C\u53F8,
+      </name>\n                            </applicant-name>\n                        </applicant>\n
+      \                       <applicant sequence=\"2\" data-format=\"original\">\n
       \                           <applicant-name>\n                                <name>GOOGLE
-      LLC\u2002[US]</name>\n                            </applicant-name>\n                        </applicant>\n
-      \                       <applicant sequence=\"1\" data-format=\"original\">\n
-      \                           <applicant-name>\n                                <name>Google
       LLC</name>\n                            </applicant-name>\n                        </applicant>\n
       \                   </applicants>\n                    <inventors>\n                        <inventor
       sequence=\"1\" data-format=\"epodoc\">\n                            <inventor-name>\n
-      \                               <name>AHN JUNWHAN\u2002[US]</name>\n                            </inventor-name>\n
+      \                               <name>REICHERT STEFAN</name>\n                            </inventor-name>\n
       \                       </inventor>\n                        <inventor sequence=\"2\"
       data-format=\"epodoc\">\n                            <inventor-name>\n                                <name>
-      CHANG JICHUAN\u2002[US]</name>\n                            </inventor-name>\n
-      \                       </inventor>\n                        <inventor sequence=\"3\"
-      data-format=\"epodoc\">\n                            <inventor-name>\n                                <name>
-      MCCORMICK ANDREW\u2002[US]</name>\n                            </inventor-name>\n
+      BEYER HENRY A</name>\n                            </inventor-name>\n                        </inventor>\n
+      \                       <inventor sequence=\"3\" data-format=\"epodoc\">\n                            <inventor-name>\n
+      \                               <name> OLSSON MAJ ISABELLE</name>\n                            </inventor-name>\n
       \                       </inventor>\n                        <inventor sequence=\"4\"
       data-format=\"epodoc\">\n                            <inventor-name>\n                                <name>
-      FANG YUANWEI\u2002[US]</name>\n                            </inventor-name>\n
+      MORGENROTH KATHERINE</name>\n                            </inventor-name>\n
       \                       </inventor>\n                        <inventor sequence=\"5\"
       data-format=\"epodoc\">\n                            <inventor-name>\n                                <name>
-      LUO YIXIN\u2002[US]</name>\n                            </inventor-name>\n                        </inventor>\n
+      CHUANG VICKI HUICHI</name>\n                            </inventor-name>\n                        </inventor>\n
       \                       <inventor sequence=\"1\" data-format=\"original\">\n
-      \                           <inventor-name>\n                                <name>AHN,
-      Junwhan, </name>\n                            </inventor-name>\n                        </inventor>\n
+      \                           <inventor-name>\n                                <name>REICHERT,
+      STEFAN, </name>\n                            </inventor-name>\n                        </inventor>\n
       \                       <inventor sequence=\"2\" data-format=\"original\">\n
-      \                           <inventor-name>\n                                <name>CHANG,
-      Jichuan, </name>\n                            </inventor-name>\n                        </inventor>\n
+      \                           <inventor-name>\n                                <name>BEYER,
+      HENRY A, </name>\n                            </inventor-name>\n                        </inventor>\n
       \                       <inventor sequence=\"3\" data-format=\"original\">\n
-      \                           <inventor-name>\n                                <name>MCCORMICK,
-      Andrew, </name>\n                            </inventor-name>\n                        </inventor>\n
+      \                           <inventor-name>\n                                <name>OLSSON,
+      MAJ ISABELLE, </name>\n                            </inventor-name>\n                        </inventor>\n
       \                       <inventor sequence=\"4\" data-format=\"original\">\n
-      \                           <inventor-name>\n                                <name>FANG,
-      Yuanwei, </name>\n                            </inventor-name>\n                        </inventor>\n
+      \                           <inventor-name>\n                                <name>MORGENROTH,
+      KATHERINE, </name>\n                            </inventor-name>\n                        </inventor>\n
       \                       <inventor sequence=\"5\" data-format=\"original\">\n
-      \                           <inventor-name>\n                                <name>LUO,
-      Yixin</name>\n                            </inventor-name>\n                        </inventor>\n
+      \                           <inventor-name>\n                                <name>CHUANG,
+      VICKI HUICHI</name>\n                            </inventor-name>\n                        </inventor>\n
       \                   </inventors>\n                </parties>\n                <invention-title
-      lang=\"ol\">BIT-PAKKET ARRAY-BEHANDLING VED ANVENDELSE AF SIMD</invention-title>\n
-      \           </bibliographic-data>\n        </exchange-document>\n    </exchange-documents>\n</ops:world-patent-data>"
+      lang=\"en\">MEDIA STREAMING ACCESSORY</invention-title>\n                <invention-title
+      lang=\"ol\">\u5A92\u9AD4\u4E32\u6D41\u914D\u4EF6</invention-title>\n            </bibliographic-data>\n
+      \           <abstract lang=\"ol\">\n                <p>\uFEFF\u3010\u7269\u54C1\u7528\u9014\u3011;\u672C\u8A2D\u8A08\u4FC2\u95DC\u65BC\u4E00\u7A2E\u5A92\u9AD4\u4E32\u6D41\u914D\u4EF6\u3002;\u3010\u8A2D\u8A08\u8AAA\u660E\u3011;\u5716\u5F0F\u6240\u63ED\u9732\u4E4B\u865B\u7DDA\u90E8\u5206\uFF0C\u70BA\u672C\u6848\u4E0D\u4E3B\u5F35\u8A2D\u8A08\u4E4B\u90E8\u5206\u3002;\u672C\u8A2D\u8A08\u4FC2\u4EE5\u7070\u968E\u96FB\u8166\u7E6A\u5716\u5448\u73FE\uFF0C\u5716\u5F0F\u4E2D\u4E4B\u7070\u968E\u50C5\u7528\u65BC\u5354\u52A9\u5C55\u793A\u672C\u8A2D\u8A08\u4E4B\u8F2A\u5ED3\uFF0C\u4E26\u975E\u7528\u4EE5\u4E3B\u5F35\u5982\u5716\u5F0F\u4E2D\u6240\u986F\u793A\u4E4B\u7070\u968E\u8272\u5F69\u3002</p>\n
+      \           </abstract>\n        </exchange-document>\n    </exchange-documents>\n</ops:world-patent-data>"
     headers:
       Access-Control-Allow-Headers:
       - Authorization
@@ -243,13 +169,13 @@ interactions:
       Connection:
       - keep-alive
       Content-Length:
-      - '13431'
+      - '6809'
       Content-Type:
       - application/xml;charset=utf-8
       Date:
-      - Fri, 10 Nov 2023 17:56:20 GMT
+      - Tue, 05 Dec 2023 03:56:51 GMT
       ETag:
-      - '"087f1fbf4db02ed1271ef0e8347de857e"'
+      - '"0fe6c8d48558c219235b66759e8063362"'
       Pragma:
       - no-cache
       Server:
@@ -265,14 +191,14 @@ interactions:
       X-EPO-Forwarded:
       - '[104.54.160.230]'
       X-Elapsed-Time:
-      - '5'
+      - '2'
       X-IndividualQuotaPerHour-Used:
-      - '616427'
+      - '791265'
       X-RegisteredQuotaPerWeek-Used:
-      - '1841794'
+      - '1240134'
       X-Throttling-Control:
-      - idle (images=green:200, inpadoc=green:60, other=green:1000, retrieval=green:200,
-        search=green:30)
+      - busy (images=green:100, inpadoc=green:45, other=green:1000, retrieval=green:100,
+        search=green:15)
     http_version: HTTP/1.1
     status_code: 200
 version: 1

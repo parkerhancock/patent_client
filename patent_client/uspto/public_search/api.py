@@ -99,11 +99,12 @@ class PublicSearchApi:
 
     async def get_session(self):
         url = "https://ppubs.uspto.gov/dirsearch-public/users/me/session"
-        with session.cache_disabled():
-            response = await session.post(url, json=-1)  # json=str(random.randint(10000, 99999)))
-            self.session = response.json()
-            self.case_id = self.session["userCase"]["caseId"]
-            return self.session
+        response = await session.post(
+            url, json=-1, extensions={"cache_disabled": True}
+        )  # json=str(random.randint(10000, 99999)))
+        self.session = response.json()
+        self.case_id = self.session["userCase"]["caseId"]
+        return self.session
 
     async def _request_save(self, obj):
         page_keys = [f"{obj.image_location}/{i:0>8}.tif" for i in range(1, obj.document_structure.page_count + 1)]

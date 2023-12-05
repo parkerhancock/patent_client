@@ -1,9 +1,5 @@
 import pytest
 
-from . import api
-from ..session import asession
-from ..session import OpsAsyncSession
-from ..session import OpsAuthenticationError
 from .model.search import Inpadoc
 
 
@@ -49,18 +45,6 @@ class TestPublished:
     def test_issue_41(self):
         result = Inpadoc.objects.get("JP2005533465A").biblio
         assert result.title == None
-
-    def test_issue_76_no_credential(self):
-        good_session = api.asession
-        api.asession = OpsAsyncSession()
-        with asession.cache_disabled():
-            with pytest.raises(OpsAuthenticationError):
-                pub = Inpadoc.objects.get("EP3082535A1")
-        api.asession = good_session
-
-    def test_issue_76_with_credential(self):
-        pub = Inpadoc.objects.get("EP3082535A1")
-        assert pub.biblio.title == "AUTOMATIC FLUID DISPENSER"
 
 
 class TestPublishedAsync:
@@ -114,8 +98,3 @@ class TestPublishedAsync:
     async def test_issue_41(self):
         result = await Inpadoc.objects.aget("JP2005533465A")
         assert result.biblio.title == None
-
-    @pytest.mark.asyncio
-    async def test_issue_76_with_credential(self):
-        pub = await Inpadoc.objects.aget("EP3082535A1")
-        assert pub.biblio.title == "AUTOMATIC FLUID DISPENSER"

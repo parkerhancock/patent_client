@@ -1,9 +1,15 @@
+import base64
 import datetime as dt
-from typing import Optional
+from typing import Sequence
+
+import hishel
+import httpx
+from httpcore import Request
+from httpcore import Response
 
 from patent_client import SETTINGS
+from patent_client.session import CACHE_DIR
 from patent_client.session import PatentClientSession
-from patent_client.util.asyncio_util import SyncProxy
 
 
 NS = {
@@ -30,59 +36,83 @@ class OpsFairUseError(Exception):
     pass
 
 
-class OpsAsyncSession(PatentClientSession):
-    key: Optional[str] = None
-    secret: Optional[str] = None
-    expires: dt.datetime
-    sync: SyncProxy
+class OpsController(hishel.Controller):
+    def __init__(
+        self,
+        cacheable_methods: Sequence[str] = ("GET", "HEAD"),
+        cacheable_status_codes: Sequence[int] = (200,),
+    ):
+        self.cacheable_methods = cacheable_methods
+        self.cacheable_status_codes = cacheable_status_codes
 
-    def __init__(self, *args, key: str = "", secret: str = "", **kwargs):
-        super(OpsAsyncSession, self).__init__(*args, **kwargs)
-        self.key = key
-        self.secret = secret
-        self.expires = dt.datetime.utcnow()
-        self.sync = SyncProxy(self)
+    def is_cachable(self, request: Request, response: Response) -> bool:
+        return request.method in self.cacheable_methods and response.status_code in self.cacheable_status_codes
 
-    async def request(self, *args, **kwargs):
-        response = await super(OpsAsyncSession, self).request(*args, **kwargs)
-        if response.status_code in (403, 400):
-            self.delete(response)
-            auth_response = await self.get_token()
-            response = await super(OpsAsyncSession, self).request(*args, **kwargs)
-        if response.status_code in (403, 400):
-            self.delete(response)
-            if "Fair Use policy" in response.text:
-                raise OpsFairUseError(f"EPO Fair Use Policy Error!\n{response.text}{response.headers}")
-            else:
-                raise OpsForbiddenError(f"EPO Request Error!\nStatus Code: {response.status_code}\n{response.text}")
-        response.raise_for_status()
+    def construct_response_from_cache(self, request, response, original_request):
         return response
 
-    async def get_token(self):
-        auth_url = "https://ops.epo.org/3.2/auth/accesstoken"
-        with self.cache_disabled():
-            response = await super(OpsAsyncSession, self).request(
-                "post",
-                auth_url,
-                auth=(self.key, self.secret),
-                data={"grant_type": "client_credentials"},
-            )
-            if response.status_code == 401:
+
+class OpsAuth(httpx.Auth):
+    requires_response_body = True
+    auth_url = "https://ops.epo.org/3.2/auth/accesstoken"
+
+    def __init__(self, key: str, secret: str):
+        self.key = key
+        self.secret = secret
+        self.authorization_header = "<unset>"
+
+    def auth_flow(self, request):
+        request.headers["Authorization"] = self.authorization_header
+        response = yield request
+
+        if response.status_code == 400:
+            response = yield self.build_refresh_request()
+            if response.status_code != 200:
                 logger.debug(f"EPO Authentication Error!\n{response.text}")
                 raise OpsAuthenticationError(
                     "Failed to authenticate with EPO OPS! Please check your credentials. See the setup instructions at https://patent-client.readthedocs.io/en/stable/getting_started.html"
                 )
-            elif response.status_code == 403:
-                logger.debug(f"EPO Forbidden Error\n{response.text}")
-                raise OpsForbiddenError("Your EPO Request Failed - Quota Exceeded / Blacklisted / Blocked")
-            response.raise_for_status()
-
             data = response.json()
             self.expires = dt.datetime.fromtimestamp(int(data["issued_at"]) / 1000) + dt.timedelta(
                 seconds=int(data["expires_in"])
             )
-            self.headers["Authorization"] = f"Bearer {data['access_token']}"
-            return response
+            self.authorization_header = f"Bearer {data['access_token']}"
+            request.headers["Authorization"] = self.authorization_header
+            yield request
+
+    def build_refresh_request(self):
+        token = base64.b64encode(f"{self.key}:{self.secret}".encode())
+        return httpx.Request(
+            "post",
+            self.auth_url,
+            headers={"Authorization": token},
+            data={"grant_type": "client_credentials"},
+        )
 
 
-asession = OpsAsyncSession(key=SETTINGS.epo_api_key, secret=SETTINGS.epo_api_secret)
+ops_transport = hishel.AsyncCacheTransport(
+    transport=httpx.AsyncHTTPTransport(
+        verify=False,
+        http2=True,
+        retries=3,
+    ),
+    storage=hishel.AsyncFileStorage(base_path=CACHE_DIR, ttl=60 * 60 * 24 * 3),
+    controller=OpsController(),
+)
+
+
+async def handle_response(response):
+    if response.status_code == 403:
+        raise OpsForbiddenError("Forbidden")
+    return response
+
+
+asession = PatentClientSession(
+    transport=ops_transport,
+    auth=OpsAuth(key=SETTINGS.epo_api_key, secret=SETTINGS.epo_api_secret),
+    event_hooks={
+        "response": [
+            handle_response,
+        ]
+    },
+)

@@ -2,8 +2,6 @@ interactions:
 - request:
     body: ''
     headers:
-      Authorization:
-      - REDACTED
       accept:
       - '*/*'
       accept-encoding:
@@ -13,7 +11,7 @@ interactions:
       host:
       - ops.epo.org
       user-agent:
-      - Mozilla/5.0 Python Patent Clientbot/3.2.10 (parkerhancock@users.noreply.github.com)
+      - Mozilla/5.0 Python Patent Clientbot/4.1.3 (parkerhancock@users.noreply.github.com)
     method: GET
     uri: http://ops.epo.org/3.2/rest-services/published-data/publication/docdb/WO2009085664A2/biblio
   response:
@@ -168,7 +166,7 @@ interactions:
       Content-Type:
       - application/xml;charset=utf-8
       Date:
-      - Thu, 09 Nov 2023 17:22:56 GMT
+      - Tue, 05 Dec 2023 03:56:41 GMT
       ETag:
       - '"02bcf6d49927d35ce4b18c7d37307ba1b"'
       Pragma:
@@ -182,25 +180,23 @@ interactions:
       X-API:
       - ops-v3.2
       X-EPO-Client-IP:
-      - 38.104.255.66
+      - 104.54.160.230
       X-EPO-Forwarded:
-      - '[38.104.255.66]'
+      - '[104.54.160.230]'
       X-Elapsed-Time:
-      - '14'
+      - '5'
       X-IndividualQuotaPerHour-Used:
-      - '168488'
+      - '482852'
       X-RegisteredQuotaPerWeek-Used:
-      - '925705'
+      - '931721'
       X-Throttling-Control:
       - overloaded (images=green:50, inpadoc=green:30, other=green:1000, retrieval=green:50,
-        search=green:5)
+        search=yellow:5)
     http_version: HTTP/1.1
     status_code: 200
 - request:
     body: ''
     headers:
-      Authorization:
-      - REDACTED
       accept:
       - '*/*'
       accept-encoding:
@@ -210,9 +206,9 @@ interactions:
       host:
       - ops.epo.org
       user-agent:
-      - Mozilla/5.0 Python Patent Clientbot/3.2.10 (parkerhancock@users.noreply.github.com)
+      - Mozilla/5.0 Python Patent Clientbot/4.1.3 (parkerhancock@users.noreply.github.com)
     method: GET
-    uri: http://ops.epo.org/3.2/rest-services/published-data/publication/docdb/WO2009085664A2/claims
+    uri: http://ops.epo.org/3.2/rest-services/published-data/publication/docdb/WO2009085664.A2/claims
   response:
     content: "<?xml version=\"1.0\" encoding=\"UTF-8\"?><?xml-stylesheet type=\"text/xsl\"
       href=\"/3.2/style/pub-ftxt-claims.xsl\"?>\n<ops:world-patent-data xmlns=\"http://www.epo.org/exchange\"
@@ -298,7 +294,7 @@ interactions:
       Content-Type:
       - application/xml;charset=utf-8
       Date:
-      - Thu, 09 Nov 2023 17:22:56 GMT
+      - Tue, 05 Dec 2023 03:56:42 GMT
       ETag:
       - '"0ae0b49a08a41797eb15b6b8c513635b6"'
       Pragma:
@@ -312,15 +308,15 @@ interactions:
       X-API:
       - ops-v3.2
       X-EPO-Client-IP:
-      - 38.104.255.66
+      - 104.54.160.230
       X-EPO-Forwarded:
-      - '[38.104.255.66]'
+      - '[104.54.160.230]'
       X-Elapsed-Time:
-      - '18'
+      - '20'
       X-IndividualQuotaPerHour-Used:
-      - '174103'
+      - '488467'
       X-RegisteredQuotaPerWeek-Used:
-      - '931320'
+      - '937336'
       X-Throttling-Control:
       - busy (images=green:100, inpadoc=green:45, other=green:1000, retrieval=green:100,
         search=green:15)
@@ -329,8 +325,6 @@ interactions:
 - request:
     body: ''
     headers:
-      Authorization:
-      - REDACTED
       accept:
       - '*/*'
       accept-encoding:
@@ -340,9 +334,9 @@ interactions:
       host:
       - ops.epo.org
       user-agent:
-      - Mozilla/5.0 Python Patent Clientbot/3.2.10 (parkerhancock@users.noreply.github.com)
+      - Mozilla/5.0 Python Patent Clientbot/4.1.3 (parkerhancock@users.noreply.github.com)
     method: GET
-    uri: http://ops.epo.org/3.2/rest-services/published-data/publication/docdb/WO2009085664A2/claims
+    uri: http://ops.epo.org/3.2/rest-services/published-data/publication/docdb/WO2009085664.A2/claims
   response:
     content: "<?xml version=\"1.0\" encoding=\"UTF-8\"?><?xml-stylesheet type=\"text/xsl\"
       href=\"/3.2/style/pub-ftxt-claims.xsl\"?>\n<ops:world-patent-data xmlns=\"http://www.epo.org/exchange\"
@@ -423,10 +417,12 @@ interactions:
       - no-cache
       Connection:
       - keep-alive
+      Content-Length:
+      - '5615'
       Content-Type:
       - application/xml;charset=utf-8
       Date:
-      - Thu, 09 Nov 2023 17:22:56 GMT
+      - Tue, 05 Dec 2023 03:56:42 GMT
       ETag:
       - '"0ae0b49a08a41797eb15b6b8c513635b6"'
       Pragma:
@@ -440,365 +436,15 @@ interactions:
       X-API:
       - ops-v3.2
       X-EPO-Client-IP:
-      - 38.104.255.66
+      - 104.54.160.230
       X-EPO-Forwarded:
-      - '[38.104.255.66]'
+      - '[104.54.160.230]'
       X-Elapsed-Time:
       - '2'
       X-IndividualQuotaPerHour-Used:
-      - '174103'
+      - '494082'
       X-RegisteredQuotaPerWeek-Used:
-      - '931320'
-      X-Throttling-Control:
-      - busy (images=green:100, inpadoc=green:45, other=green:1000, retrieval=green:100,
-        search=green:15)
-    http_version: HTTP/1.1
-    status_code: 200
-- request:
-    body: ''
-    headers:
-      Authorization:
-      - REDACTED
-      accept:
-      - '*/*'
-      accept-encoding:
-      - gzip, deflate
-      connection:
-      - keep-alive
-      host:
-      - ops.epo.org
-      user-agent:
-      - Mozilla/5.0 Python Patent Clientbot/4.0.0 (parkerhancock@users.noreply.github.com)
-    method: GET
-    uri: http://ops.epo.org/3.2/rest-services/published-data/publication/docdb/WO2009085664.A2/claims
-  response:
-    content: "<error><code>400</code><message>invalid_access_token</message><description>Access
-      token has expired</description>\n\t\t\t\t</error>\n\t\t\t"
-    headers:
-      Access-Control-Allow-Headers:
-      - Authorization
-      Access-Control-Allow-Methods:
-      - POST
-      Access-Control-Allow-Origin:
-      - '*'
-      Connection:
-      - keep-alive
-      Content-Length:
-      - '130'
-      Content-Type:
-      - application/xml
-      Date:
-      - Fri, 10 Nov 2023 17:53:04 GMT
-      WWW-Authenticate:
-      - 'Bearer realm="null",error="invalid_token",error_description="keymanagement.service.access_token_expired:
-        Access Token expired"'
-    http_version: HTTP/1.1
-    status_code: 400
-- request:
-    body: grant_type=client_credentials
-    headers:
-      Authorization:
-      - REDACTED
-      accept:
-      - '*/*'
-      accept-encoding:
-      - gzip, deflate
-      connection:
-      - keep-alive
-      content-length:
-      - '29'
-      content-type:
-      - application/x-www-form-urlencoded
-      host:
-      - ops.epo.org
-      user-agent:
-      - Mozilla/5.0 Python Patent Clientbot/4.0.0 (parkerhancock@users.noreply.github.com)
-    method: POST
-    uri: https://ops.epo.org/3.2/auth/accesstoken
-  response:
-    content: "{\n  \"refresh_token_expires_in\": \"0\",\n  \"api_product_list\": \"[ops-prod]\",\n
-      \ \"api_product_list_json\": [\n    \"ops-prod\"\n  ],\n  \"organization_name\":
-      \"epo\",\n  \"developer.email\": \"parker.hancock@protonmail.com\",\n  \"token_type\":
-      \"BearerToken\",\n  \"issued_at\": \"1699638784634\",\n  \"client_id\": \"wVi6ni5GUZZ3BJqAfLGJb4KPGcYxRktw\",\n
-      \ \"access_token\": \"xjOxSBArXVpecWeje8XcYitMRV1x\",\n  \"application_name\":
-      \"8654da0d-5e44-4ea3-addc-e555eff4aee6\",\n  \"scope\": \"core\",\n  \"expires_in\":
-      \"1199\",\n  \"refresh_count\": \"0\",\n  \"status\": \"approved\"\n}"
-    headers:
-      Access-Control-Allow-Headers:
-      - Authorization
-      Access-Control-Allow-Methods:
-      - POST
-      Access-Control-Allow-Origin:
-      - '*'
-      Connection:
-      - keep-alive
-      Content-Length:
-      - '523'
-      Content-Type:
-      - application/json
-      Date:
-      - Fri, 10 Nov 2023 17:53:04 GMT
-      X-EPO-Client-IP:
-      - 104.54.160.230
-      X-EPO-Forwarded:
-      - '[104.54.160.230]'
-    http_version: HTTP/1.1
-    status_code: 200
-- request:
-    body: ''
-    headers:
-      Authorization:
-      - REDACTED
-      accept:
-      - '*/*'
-      accept-encoding:
-      - gzip, deflate
-      connection:
-      - keep-alive
-      host:
-      - ops.epo.org
-      user-agent:
-      - Mozilla/5.0 Python Patent Clientbot/4.0.0 (parkerhancock@users.noreply.github.com)
-    method: GET
-    uri: http://ops.epo.org/3.2/rest-services/published-data/publication/docdb/WO2009085664.A2/claims
-  response:
-    content: "<?xml version=\"1.0\" encoding=\"UTF-8\"?><?xml-stylesheet type=\"text/xsl\"
-      href=\"/3.2/style/pub-ftxt-claims.xsl\"?>\n<ops:world-patent-data xmlns=\"http://www.epo.org/exchange\"
-      xmlns:ops=\"http://ops.epo.org\" xmlns:xlink=\"http://www.w3.org/1999/xlink\"><ftxt:fulltext-documents
-      xmlns=\"http://www.epo.org/fulltext\" xmlns:ftxt=\"http://www.epo.org/fulltext\"><ftxt:fulltext-document
-      system=\"ops.epo.org\" fulltext-format=\"text-only\"><bibliographic-data><publication-reference
-      data-format=\"docdb\"><document-id><country>WO</country><doc-number>2009085664</doc-number><kind>A2</kind></document-id></publication-reference></bibliographic-data><claims
-      lang=\"EN\"><claim><claim-text>Claims\n1. A computer-implemented method comprising:
-      maintaining metadata associated with browser-accessible items, wherein the metadata
-      includes: a title associated with an item, a URL associated with an item, a
-      last date an item was visited by a user, frequency with which an item has been
-      visited by a user, and whether or not an item was selected from a list; assigning
-      weights to the metadata; processing weighted metadata using a relevancy algorithm;
-      receiving a user action associated with accessing one or more items; and responsive
-      to receiving the user action, presenting one or more suggestions based upon
-      the user action and an output of the relevancy algorithm.\n2. The method of
-      claim 1 , wherein the user action inputs text into a Web browser user interface.\n3.
-      The method of claim 2, wherein the Web browser user interface comprises an address
-      bar into which the text has been typed.\n4. The method of claim 1 , wherein
-      the user action comprises accessing a drop down menu associated with the Web
-      browser.\n5. The method of claim 4, wherein the drop down menu is provided in
-      connection with a browser&apos;s address bar. \n6. The method of claim 1 , wherein
-      the metadata further includes a date an item was last modified.\n7. The method
-      of claim 1 , wherein the metadata further includes one or more of the following:
-      an unread count associate with an item, whether the user typed an entire string
-      associated with an item, how a user interacted with the page, tags or key words
-      associated with an item, and whether a term provided by the user was used in
-      a full text search.\n8. One or more computer-readable storage media comprising
-      computer-readable instructions which, when executed, implement a method comprising:
-      maintaining metadata associated with browser-accessible items, wherein the metadata
-      includes one or more of: a title associated with an item, a URL associated with
-      an item, a last date an item was visited by a user, frequency with which an
-      item has been visited by a user, or whether or not an item was selected from
-      a list; assigning weights to the metadata; processing weighted metadata using
-      a relevancy algorithm; receiving a user action associated with accessing one
-      or more items; and responsive to receiving the user action, presenting suggestions
-      based upon the user action and an output of the relevancy algorithm, wherein
-      the suggestions are grouped in accordance with different types.\n9. The one
-      or more computer-readable media of claim 8, wherein one type includes an URL
-      type. \n10. The one or more computer-readable media of claim 8, wherein one
-      type includes a history type.\n11. The one or more computer-readable media of
-      claim 8, where in one type includes a favorites type.\n12. The one or more computer-readable
-      media of claim 8, wherein one type includes an RSS type.\n13. The one or more
-      computer-readable media of claim 8, wherein types comprise an URL type, a history
-      type, a favorites type, and an RSS type.\n14. A computer-implemented method
-      comprising: ascertaining whether a user-entered query is more than one word;
-      if the user-entered query is not more than one word, ascertaining whether the
-      user- entered query is prefixed with a protocol string and/or a URI; if the
-      user-entered query is not more than one word and is prefixed with a protocol
-      string and/or a URI, returning results using a first method; if the user-entered
-      query is not more than one word and is not prefixed with a protocol string and/or
-      URI, returning results using a second using a second different method; and if
-      the user-entered query is more than one word, returning results using the second
-      different method. \n15. The method of claim 14, wherein said results are returned
-      grouped into different types.\n16. The method of claim 14, wherein the first
-      method strips a query word of protocol prefixes in order to perform a prefix
-      string match against a destination&apos;s stripped URL.\n17. The method of claim
-      16, wherein the first method returns results grouped in accordance with history
-      types, favorites types, RSS Feeds and Feed Item types and Typed URL types.\n18.
-      The method of claim 14, wherein the second method does not make changes to one
-      or more query words and utilizes word breaking.\n19. The method of claim 18,
-      wherein the second method returns at results grouped in accordance with history
-      types, favorites types, RSS Feeds and Feed Item types and Typed URL types.\n20.
-      The method of claim 14, wherein the first method strips a query word of protocol
-      prefixes in order to perform a prefix string match against a destination&apos;s
-      stripped URL and wherein the second method does not make changes to one or more
-      query words and utilizes word breaking, wherein the first and second methods
-      return results grouped in accordance with history types, favorites types, RSS
-      Feeds and Feed Item types and Typed URL types.</claim-text></claim></claims></ftxt:fulltext-document></ftxt:fulltext-documents></ops:world-patent-data>"
-    headers:
-      Access-Control-Allow-Headers:
-      - Authorization
-      Access-Control-Allow-Methods:
-      - POST
-      Access-Control-Allow-Origin:
-      - '*'
-      Cache-Control:
-      - no-cache
-      Connection:
-      - keep-alive
-      Content-Length:
-      - '5615'
-      Content-Type:
-      - application/xml;charset=utf-8
-      Date:
-      - Fri, 10 Nov 2023 17:56:15 GMT
-      ETag:
-      - '"0ae0b49a08a41797eb15b6b8c513635b6"'
-      Pragma:
-      - no-cache
-      Server:
-      - Apache
-      Strict-Transport-Security:
-      - max-age=31536000; includeSubDomains
-      Vary:
-      - Accept
-      X-API:
-      - ops-v3.2
-      X-EPO-Client-IP:
-      - 104.54.160.230
-      X-EPO-Forwarded:
-      - '[104.54.160.230]'
-      X-Elapsed-Time:
-      - '19'
-      X-IndividualQuotaPerHour-Used:
-      - '275891'
-      X-RegisteredQuotaPerWeek-Used:
-      - '1501258'
-      X-Throttling-Control:
-      - idle (images=green:200, inpadoc=green:60, other=green:1000, retrieval=green:200,
-        search=green:30)
-    http_version: HTTP/1.1
-    status_code: 200
-- request:
-    body: ''
-    headers:
-      Authorization:
-      - REDACTED
-      accept:
-      - '*/*'
-      accept-encoding:
-      - gzip, deflate
-      connection:
-      - keep-alive
-      host:
-      - ops.epo.org
-      user-agent:
-      - Mozilla/5.0 Python Patent Clientbot/4.0.0 (parkerhancock@users.noreply.github.com)
-    method: GET
-    uri: http://ops.epo.org/3.2/rest-services/published-data/publication/docdb/WO2009085664.A2/claims
-  response:
-    content: "<?xml version=\"1.0\" encoding=\"UTF-8\"?><?xml-stylesheet type=\"text/xsl\"
-      href=\"/3.2/style/pub-ftxt-claims.xsl\"?>\n<ops:world-patent-data xmlns=\"http://www.epo.org/exchange\"
-      xmlns:ops=\"http://ops.epo.org\" xmlns:xlink=\"http://www.w3.org/1999/xlink\"><ftxt:fulltext-documents
-      xmlns=\"http://www.epo.org/fulltext\" xmlns:ftxt=\"http://www.epo.org/fulltext\"><ftxt:fulltext-document
-      system=\"ops.epo.org\" fulltext-format=\"text-only\"><bibliographic-data><publication-reference
-      data-format=\"docdb\"><document-id><country>WO</country><doc-number>2009085664</doc-number><kind>A2</kind></document-id></publication-reference></bibliographic-data><claims
-      lang=\"EN\"><claim><claim-text>Claims\n1. A computer-implemented method comprising:
-      maintaining metadata associated with browser-accessible items, wherein the metadata
-      includes: a title associated with an item, a URL associated with an item, a
-      last date an item was visited by a user, frequency with which an item has been
-      visited by a user, and whether or not an item was selected from a list; assigning
-      weights to the metadata; processing weighted metadata using a relevancy algorithm;
-      receiving a user action associated with accessing one or more items; and responsive
-      to receiving the user action, presenting one or more suggestions based upon
-      the user action and an output of the relevancy algorithm.\n2. The method of
-      claim 1 , wherein the user action inputs text into a Web browser user interface.\n3.
-      The method of claim 2, wherein the Web browser user interface comprises an address
-      bar into which the text has been typed.\n4. The method of claim 1 , wherein
-      the user action comprises accessing a drop down menu associated with the Web
-      browser.\n5. The method of claim 4, wherein the drop down menu is provided in
-      connection with a browser&apos;s address bar. \n6. The method of claim 1 , wherein
-      the metadata further includes a date an item was last modified.\n7. The method
-      of claim 1 , wherein the metadata further includes one or more of the following:
-      an unread count associate with an item, whether the user typed an entire string
-      associated with an item, how a user interacted with the page, tags or key words
-      associated with an item, and whether a term provided by the user was used in
-      a full text search.\n8. One or more computer-readable storage media comprising
-      computer-readable instructions which, when executed, implement a method comprising:
-      maintaining metadata associated with browser-accessible items, wherein the metadata
-      includes one or more of: a title associated with an item, a URL associated with
-      an item, a last date an item was visited by a user, frequency with which an
-      item has been visited by a user, or whether or not an item was selected from
-      a list; assigning weights to the metadata; processing weighted metadata using
-      a relevancy algorithm; receiving a user action associated with accessing one
-      or more items; and responsive to receiving the user action, presenting suggestions
-      based upon the user action and an output of the relevancy algorithm, wherein
-      the suggestions are grouped in accordance with different types.\n9. The one
-      or more computer-readable media of claim 8, wherein one type includes an URL
-      type. \n10. The one or more computer-readable media of claim 8, wherein one
-      type includes a history type.\n11. The one or more computer-readable media of
-      claim 8, where in one type includes a favorites type.\n12. The one or more computer-readable
-      media of claim 8, wherein one type includes an RSS type.\n13. The one or more
-      computer-readable media of claim 8, wherein types comprise an URL type, a history
-      type, a favorites type, and an RSS type.\n14. A computer-implemented method
-      comprising: ascertaining whether a user-entered query is more than one word;
-      if the user-entered query is not more than one word, ascertaining whether the
-      user- entered query is prefixed with a protocol string and/or a URI; if the
-      user-entered query is not more than one word and is prefixed with a protocol
-      string and/or a URI, returning results using a first method; if the user-entered
-      query is not more than one word and is not prefixed with a protocol string and/or
-      URI, returning results using a second using a second different method; and if
-      the user-entered query is more than one word, returning results using the second
-      different method. \n15. The method of claim 14, wherein said results are returned
-      grouped into different types.\n16. The method of claim 14, wherein the first
-      method strips a query word of protocol prefixes in order to perform a prefix
-      string match against a destination&apos;s stripped URL.\n17. The method of claim
-      16, wherein the first method returns results grouped in accordance with history
-      types, favorites types, RSS Feeds and Feed Item types and Typed URL types.\n18.
-      The method of claim 14, wherein the second method does not make changes to one
-      or more query words and utilizes word breaking.\n19. The method of claim 18,
-      wherein the second method returns at results grouped in accordance with history
-      types, favorites types, RSS Feeds and Feed Item types and Typed URL types.\n20.
-      The method of claim 14, wherein the first method strips a query word of protocol
-      prefixes in order to perform a prefix string match against a destination&apos;s
-      stripped URL and wherein the second method does not make changes to one or more
-      query words and utilizes word breaking, wherein the first and second methods
-      return results grouped in accordance with history types, favorites types, RSS
-      Feeds and Feed Item types and Typed URL types.</claim-text></claim></claims></ftxt:fulltext-document></ftxt:fulltext-documents></ops:world-patent-data>"
-    headers:
-      Access-Control-Allow-Headers:
-      - Authorization
-      Access-Control-Allow-Methods:
-      - POST
-      Access-Control-Allow-Origin:
-      - '*'
-      Cache-Control:
-      - no-cache
-      Connection:
-      - keep-alive
-      Content-Length:
-      - '5615'
-      Content-Type:
-      - application/xml;charset=utf-8
-      Date:
-      - Fri, 10 Nov 2023 17:56:38 GMT
-      ETag:
-      - '"0ae0b49a08a41797eb15b6b8c513635b6"'
-      Pragma:
-      - no-cache
-      Server:
-      - Apache
-      Strict-Transport-Security:
-      - max-age=31536000; includeSubDomains
-      Vary:
-      - Accept
-      X-API:
-      - ops-v3.2
-      X-EPO-Client-IP:
-      - 104.54.160.230
-      X-EPO-Forwarded:
-      - '[104.54.160.230]'
-      X-Elapsed-Time:
-      - '16'
-      X-IndividualQuotaPerHour-Used:
-      - '622042'
-      X-RegisteredQuotaPerWeek-Used:
-      - '1847409'
+      - '942951'
       X-Throttling-Control:
       - busy (images=green:100, inpadoc=green:45, other=green:1000, retrieval=green:100,
         search=green:15)

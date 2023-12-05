@@ -1,9 +1,7 @@
 import re
 import warnings
-from contextlib import contextmanager
 from pathlib import Path
 from typing import Optional
-from typing import Union
 
 import hishel
 import httpx
@@ -25,57 +23,28 @@ except (ImportError, AttributeError):
 filename_re = re.compile(r'filename="([^"]+)"')
 
 
-class PatentClientAsyncFileCache(hishel.AsyncFileStorage):
-    _default_base_path = CACHE_DIR
-
-    def __init__(self, **kwargs):
-        kwargs["base_path"] = kwargs.get("base_path", self._default_base_path)
-        super(PatentClientAsyncFileCache, self).__init__(**kwargs)
-
-    def delete(self, cache_key: str):
-        response_path = self._base_path / cache_key
-        if response_path.exists():
-            response_path.unlink()
-
-
-class PatentClientController(hishel.Controller):
-    def construct_response_from_cache(
-        self, request: httpx.Request, response: httpx.Response, original_request: httpx.Request
-    ) -> Union[httpx.Response, httpx.Request, None]:
-        try:
-            super(PatentClientController, self).construct_response_from_cache(request, response, original_request)
-        except RuntimeError:
-            self._make_request_conditional(request=request, response=response)
-            return request
-
-
-class PatentClientSession(hishel.AsyncCacheClient):
-    _default_transport = httpx.AsyncHTTPTransport(
-        retries=3,
+patent_client_transport = hishel.AsyncCacheTransport(
+    transport=httpx.AsyncHTTPTransport(
         verify=False,
         http2=True,
-    )
-    _default_timeout = 60 * 5
+        retries=3,
+    ),
+    storage=hishel.AsyncFileStorage(base_path=CACHE_DIR),
+    controller=hishel.Controller(allow_heuristics=True),
+)
+
+
+class PatentClientSession(httpx.AsyncClient):
     _default_user_agent = f"Mozilla/5.0 Python Patent Clientbot/{__version__} (parkerhancock@users.noreply.github.com)"
-    _default_storage = PatentClientAsyncFileCache()
-    _default_controller = PatentClientController(
-        allow_heuristics=True,
-    )
 
     def __init__(self, **kwargs):
-        kwargs["transport"] = kwargs.get("transport", self._default_transport)
-        kwargs["storage"] = kwargs.get("storage", self._default_storage)
-        kwargs["controller"] = kwargs.get("controller", self._default_controller)
+        kwargs["transport"] = kwargs.get("transport", patent_client_transport)
         headers = kwargs.get("headers", dict())
         headers["User-Agent"] = headers.get("User-Agent", self._default_user_agent)
         kwargs["headers"] = headers
         kwargs["follow_redirects"] = kwargs.get("follow_redirects", True)
-        kwargs["timeout"] = kwargs.get("timeout", self._default_timeout)
+        kwargs["timeout"] = kwargs.get("timeout", 60 * 5)
         super(PatentClientSession, self).__init__(**kwargs)
-
-    def delete(self, response: httpx.Response):
-        if "cache_metadata" in response.extensions:
-            self._storage.delete(response.extensions["cache_metadata"]["cache_key"])
 
     def download(self, url, method: str = "GET", path: Optional[str | Path] = None, **kwargs):
         return run_sync(self.adownload(url, method, path, **kwargs))
@@ -113,13 +82,3 @@ class PatentClientSession(hishel.AsyncCacheClient):
                         progress.update(response.num_bytes_downloaded - num_bytes_downloaded)
                         num_bytes_downloaded = response.num_bytes_downloaded
         return path
-
-    @contextmanager
-    def cache_disabled(session):
-        if hasattr(session._transport, "_transport"):
-            cached_transport = session._transport._transport
-            session._transport = session._transport._transport
-            yield
-            session._transport = cached_transport
-        else:
-            yield

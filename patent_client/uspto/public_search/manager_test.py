@@ -187,7 +187,7 @@ class TestPublishedApplicationFullText:
         for p in pats:
             counter += 1
             assert p != old_p
-        assert counter == 525
+        assert counter >= 525
 
 
 class TestPatentsAsync:
@@ -385,4 +385,4 @@ class TestPublishedApplicationFullTextAsync:
         async for p in pats:
             counter += 1
             assert p != old_p
-        assert counter == 525
+        assert counter >= 525

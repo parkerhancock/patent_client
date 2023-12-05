@@ -26,7 +26,8 @@ class NumberServiceApi:
 
         """
         response = await asession.get(
-            f"http://ops.epo.org/3.2/rest-services/number-service/{doc_type}/{input_format}/{number}/{output_format}"
+            f"http://ops.epo.org/3.2/rest-services/number-service/{doc_type}/{input_format}/{number}/{output_format}",
+            extensions={"force_cache": True},
         )
         result = NumberServiceResult.model_validate(response.text)
         errors = [m for m in result.messages if m["kind"] == "ERROR"]
