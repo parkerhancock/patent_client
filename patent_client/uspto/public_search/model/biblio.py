@@ -38,11 +38,11 @@ class PublicSearchBiblio(BaseModel):
 
     @property
     def document(self):
-        return get_model("patent_client.uspto.public_search.model.PatentDocument").objects.get(guid=self.guid)
+        return get_model("patent_client.uspto.public_search.model.PublicSearchDocument").objects.get(guid=self.guid)
 
     @property
     def forward_citations(self):
-        return get_model("patent_client.uspto.public_search.model.PublicSearch").objects.filter(
+        return get_model("patent_client.uspto.public_search.model.PublicSearchBiblio").objects.filter(
             us_reference=self.publication_number
         )
 
