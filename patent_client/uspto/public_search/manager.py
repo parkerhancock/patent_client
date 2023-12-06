@@ -90,7 +90,7 @@ class GenericPublicSearchDocumentManager(GenericPublicSearchBiblioManager, Gener
             yield doc
 
 
-class PublicSearchBiblioManager(GenericPublicSearchManager[PublicSearchBiblio]):
+class PublicSearchBiblioManager(GenericPublicSearchBiblioManager[PublicSearchBiblio]):
     pass
 
 

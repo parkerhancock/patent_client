@@ -1,0 +1,680 @@
+interactions:
+- request:
+    body: '{"start": 0, "pageCount": 500, "sort": "date_publ desc", "docFamilyFiltering":
+      "familyIdFiltering", "searchType": 1, "familyIdEnglishOnly": true, "familyIdFirstPreferred":
+      "US-PGPUB", "familyIdSecondPreferred": "USPAT", "familyIdThirdPreferred": "FPRS",
+      "showDocPerFamilyPref": "showEnglish", "queryId": 0, "tagDocSearch": false,
+      "query": {"caseId": 24097224, "hl_snippets": "2", "op": "OR", "q": "@PD>=20100101<=20100227
+      AND \"tennis\".TTL.", "queryName": "@PD>=20100101<=20100227 AND \"tennis\".TTL.",
+      "highlights": "1", "qt": "brs", "spellCheck": false, "viewName": "tile", "plurals":
+      true, "britishEquivalents": true, "databaseFilters": [{"databaseName": "USPAT",
+      "countryCodes": []}], "searchType": 1, "ignorePersist": true, "userEnteredQuery":
+      "@PD>=20100101<=20100227 AND \"tennis\".TTL."}}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '797'
+      content-type:
+      - application/json
+      host:
+      - ppubs.uspto.gov
+      user-agent:
+      - Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/114.0.0.0 Safari/537.36
+      x-requested-with:
+      - XMLHttpRequest
+    method: POST
+    uri: https://ppubs.uspto.gov/dirsearch-public/searches/searchWithBeFamily
+  response:
+    content: '{"numFound":1,"perPage":500,"page":0,"totalPages":0,"hlSnippets":0,"sort":null,"query":{"id":null,"caseId":24097224,"numResults":1,"ignorePersist":true,"fq":null,"databaseFilters":[{"databaseName":"USPAT","countryCodes":[]}],"q":"@PD>=20100101<=20100227
+      AND \"tennis\".TTL.","queryName":"@PD>=20100101<=20100227 AND \"tennis\".TTL.","userEnteredQuery":"@PD>=20100101<=20100227
+      AND \"tennis\".TTL.","viewName":"tile","op":"OR","highlights":"1","plurals":true,"britishEquivalents":true,"searchType":1,"excludeResultsAfter":null,"dateCreated":null,"deleteIn":false,"expand":true,"expandSort":"group_sort_date
+      asc, id desc ","expandRows":"100","expandTrackDocScores":true,"expandTrackMaxScore":true,"termGraph":null,"hl":false,"fl":null,"originalQuery":"@PD>=20100101<=20100227
+      AND \"tennis\".TTL.","error":null,"terms":["\"tennis\"","@pd","\"tenni\""],"facets":[],"pNumber":null,"hl_fl":null},"duration":38,"highlightingTime":0,"cursorMarker":"AoJwwM+B2KYCNzQxNjQ2MzYwIVVTLVVTLTA3NjU4MjEx","totalResults":1,"numberOfFamilies":1,"error":null,"patents":[{"guid":"US-7658211-B1","publicationReferenceDocumentNumber":"7658211","compositeId":"41646360!US-US-07658211","publicationReferenceDocumentNumber1":"07658211","datePublishedKwicHits":null,"datePublished":"2010-02-09T00:00:00Z","inventionTitle":"<span
+      term=\"\"tennis\"\" class=\"highlight18\">Tennis</span> ball recharging apparatus
+      method","type":"USPAT","mainClassificationCode":"141/11","applicantName":null,"assigneeName":null,"uspcFullClassificationFlattened":"141/83;141/63;141/69;206/213.1;141/95;141/51","ipcCodeFlattened":"B65B1/20","cpcInventiveFlattened":"A63B39/025","cpcAdditionalFlattened":"A63B2102/02","applicationFilingDate":["2007-06-19T00:00:00Z"],"applicationFilingDateKwicHits":null,"relatedApplFilingDate":null,"primaryExaminer":"Maust;
+      Timothy L.","assistantExaminer":null,"applicationNumber":"11/820423","frontPageStart":1,"frontPageEnd":1,"drawingsStart":2,"drawingsEnd":2,"specificationStart":3,"specificationEnd":7,"claimsStart":7,"claimsEnd":8,"abstractStart":1,"abstractEnd":1,"bibStart":1,"bibEnd":1,"certCorrectionStart":0,"certCorrectionEnd":0,"certReexaminationStart":0,"certReexaminationEnd":0,"supplementalStart":0,"supplementalEnd":0,"ptabStart":0,"ptabEnd":0,"amendStart":0,"amendEnd":0,"searchReportStart":0,"searchReportEnd":0,"pageCount":8,"pageCountDisplay":"8","previouslyViewed":false,"unused":false,"imageLocation":"uspat/US/07/658/211","imageFileName":"00000001.tif","cpcCodes":null,"queryId":null,"tags":null,"inventorsShort":"Dirst;
+      William F.","familyIdentifierCur":41646360,"familyIdentifierCurStr":null,"languageIndicator":"EN","databaseName":"USPT","dwImageDoctypeList":null,"dwImageLocList":null,"dwPageCountList":null,"dwImageDocidList":null,"patentFamilyMembers":null,"patentFamilyCountry":null,"patentFamilySerialNumber":null,"documentIdWithDashesDw":null,"pfPublDate":null,"pfPublDateKwicHits":null,"priorityClaimsDate":null,"priorityClaimsDateKwicHits":null,"pfApplicationSerialNumber":null,"pfApplicationDescriptor":null,"pfLanguage":null,"pfApplicationDate":null,"pfApplicationDateKwicHits":null,"clippedUri":null,"source":null,"documentId":"US
+      7658211 B1","derwentAccessionNumber":null,"documentSize":48353,"score":14.382655,"governmentInterest":null,"kindCode":["B1"],"urpn":["1207813","4019629","4020948","4046491","4073120","4086743","4101029","4124117","4161247","4165770","4248275","4372095","5002196","5397018","5593157","5615596","5730286"],"urpnCode":["1207813","4019629","4020948","4046491","4073120","4086743","4101029","4124117","4161247","4165770","4248275","4372095","5002196","5397018","5593157","5615596","5730286"],"descriptionStart":3,"descriptionEnd":7,"publicationReferenceDocumentNumberOne":"07658211"}],"qtime":23}'
+    headers:
+      content-type:
+      - application/json
+      date:
+      - Wed, 06 Dec 2023 19:18:15 GMT
+      server-timing:
+      - intid;desc=10c6fbb27a570f93
+    http_version: HTTP/2
+    status_code: 200
+- request:
+    body: '{"start": 0, "pageCount": 500, "sort": "date_publ desc", "docFamilyFiltering":
+      "familyIdFiltering", "searchType": 1, "familyIdEnglishOnly": true, "familyIdFirstPreferred":
+      "US-PGPUB", "familyIdSecondPreferred": "USPAT", "familyIdThirdPreferred": "FPRS",
+      "showDocPerFamilyPref": "showEnglish", "queryId": 0, "tagDocSearch": false,
+      "query": {"caseId": 24097224, "hl_snippets": "2", "op": "OR", "q": "@PD>=20100101<=20100227
+      AND \"tennis\".TTL.", "queryName": "@PD>=20100101<=20100227 AND \"tennis\".TTL.",
+      "highlights": "1", "qt": "brs", "spellCheck": false, "viewName": "tile", "plurals":
+      true, "britishEquivalents": true, "databaseFilters": [{"databaseName": "USPAT",
+      "countryCodes": []}], "searchType": 1, "ignorePersist": true, "userEnteredQuery":
+      "@PD>=20100101<=20100227 AND \"tennis\".TTL."}}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '797'
+      content-type:
+      - application/json
+      host:
+      - ppubs.uspto.gov
+      user-agent:
+      - Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/114.0.0.0 Safari/537.36
+      x-requested-with:
+      - XMLHttpRequest
+    method: POST
+    uri: https://ppubs.uspto.gov/dirsearch-public/searches/searchWithBeFamily
+  response:
+    content: '{"numFound":1,"perPage":500,"page":0,"totalPages":0,"hlSnippets":0,"sort":null,"query":{"id":null,"caseId":24097224,"numResults":1,"ignorePersist":true,"fq":null,"databaseFilters":[{"databaseName":"USPAT","countryCodes":[]}],"q":"@PD>=20100101<=20100227
+      AND \"tennis\".TTL.","queryName":"@PD>=20100101<=20100227 AND \"tennis\".TTL.","userEnteredQuery":"@PD>=20100101<=20100227
+      AND \"tennis\".TTL.","viewName":"tile","op":"OR","highlights":"1","plurals":true,"britishEquivalents":true,"searchType":1,"excludeResultsAfter":null,"dateCreated":null,"deleteIn":false,"expand":true,"expandSort":"group_sort_date
+      asc, id desc ","expandRows":"100","expandTrackDocScores":true,"expandTrackMaxScore":true,"termGraph":null,"hl":false,"fl":null,"originalQuery":"@PD>=20100101<=20100227
+      AND \"tennis\".TTL.","error":null,"terms":["\"tennis\"","@pd","\"tenni\""],"facets":[],"pNumber":null,"hl_fl":null},"duration":29,"highlightingTime":0,"cursorMarker":"AoJwwM+B2KYCNzQxNjQ2MzYwIVVTLVVTLTA3NjU4MjEx","totalResults":1,"numberOfFamilies":1,"error":null,"patents":[{"guid":"US-7658211-B1","publicationReferenceDocumentNumber":"7658211","compositeId":"41646360!US-US-07658211","publicationReferenceDocumentNumber1":"07658211","datePublishedKwicHits":null,"datePublished":"2010-02-09T00:00:00Z","inventionTitle":"<span
+      term=\"\"tennis\"\" class=\"highlight18\">Tennis</span> ball recharging apparatus
+      method","type":"USPAT","mainClassificationCode":"141/11","applicantName":null,"assigneeName":null,"uspcFullClassificationFlattened":"141/83;141/63;141/69;206/213.1;141/95;141/51","ipcCodeFlattened":"B65B1/20","cpcInventiveFlattened":"A63B39/025","cpcAdditionalFlattened":"A63B2102/02","applicationFilingDate":["2007-06-19T00:00:00Z"],"applicationFilingDateKwicHits":null,"relatedApplFilingDate":null,"primaryExaminer":"Maust;
+      Timothy L.","assistantExaminer":null,"applicationNumber":"11/820423","frontPageStart":1,"frontPageEnd":1,"drawingsStart":2,"drawingsEnd":2,"specificationStart":3,"specificationEnd":7,"claimsStart":7,"claimsEnd":8,"abstractStart":1,"abstractEnd":1,"bibStart":1,"bibEnd":1,"certCorrectionStart":0,"certCorrectionEnd":0,"certReexaminationStart":0,"certReexaminationEnd":0,"supplementalStart":0,"supplementalEnd":0,"ptabStart":0,"ptabEnd":0,"amendStart":0,"amendEnd":0,"searchReportStart":0,"searchReportEnd":0,"pageCount":8,"pageCountDisplay":"8","previouslyViewed":false,"unused":false,"imageLocation":"uspat/US/07/658/211","imageFileName":"00000001.tif","cpcCodes":null,"queryId":null,"tags":null,"inventorsShort":"Dirst;
+      William F.","familyIdentifierCur":41646360,"familyIdentifierCurStr":null,"languageIndicator":"EN","databaseName":"USPT","dwImageDoctypeList":null,"dwImageLocList":null,"dwPageCountList":null,"dwImageDocidList":null,"patentFamilyMembers":null,"patentFamilyCountry":null,"patentFamilySerialNumber":null,"documentIdWithDashesDw":null,"pfPublDate":null,"pfPublDateKwicHits":null,"priorityClaimsDate":null,"priorityClaimsDateKwicHits":null,"pfApplicationSerialNumber":null,"pfApplicationDescriptor":null,"pfLanguage":null,"pfApplicationDate":null,"pfApplicationDateKwicHits":null,"clippedUri":null,"source":null,"documentId":"US
+      7658211 B1","derwentAccessionNumber":null,"documentSize":48353,"score":14.382655,"governmentInterest":null,"kindCode":["B1"],"urpn":["1207813","4019629","4020948","4046491","4073120","4086743","4101029","4124117","4161247","4165770","4248275","4372095","5002196","5397018","5593157","5615596","5730286"],"urpnCode":["1207813","4019629","4020948","4046491","4073120","4086743","4101029","4124117","4161247","4165770","4248275","4372095","5002196","5397018","5593157","5615596","5730286"],"descriptionStart":3,"descriptionEnd":7,"publicationReferenceDocumentNumberOne":"07658211"}],"qtime":17}'
+    headers:
+      content-type:
+      - application/json
+      date:
+      - Wed, 06 Dec 2023 19:18:15 GMT
+      server-timing:
+      - intid;desc=7667e88692e11cf1
+    http_version: HTTP/2
+    status_code: 200
+- request:
+    body: '{"start": 0, "pageCount": 1, "sort": "date_publ desc", "docFamilyFiltering":
+      "familyIdFiltering", "searchType": 1, "familyIdEnglishOnly": true, "familyIdFirstPreferred":
+      "US-PGPUB", "familyIdSecondPreferred": "USPAT", "familyIdThirdPreferred": "FPRS",
+      "showDocPerFamilyPref": "showEnglish", "queryId": 0, "tagDocSearch": false,
+      "query": {"caseId": 24097224, "hl_snippets": "2", "op": "OR", "q": "@PD>=20100101<=20100227
+      AND \"tennis\".TTL.", "queryName": "@PD>=20100101<=20100227 AND \"tennis\".TTL.",
+      "highlights": "1", "qt": "brs", "spellCheck": false, "viewName": "tile", "plurals":
+      true, "britishEquivalents": true, "databaseFilters": [{"databaseName": "USPAT",
+      "countryCodes": []}], "searchType": 1, "ignorePersist": true, "userEnteredQuery":
+      "@PD>=20100101<=20100227 AND \"tennis\".TTL."}}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '795'
+      content-type:
+      - application/json
+      host:
+      - ppubs.uspto.gov
+      user-agent:
+      - Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/114.0.0.0 Safari/537.36
+      x-requested-with:
+      - XMLHttpRequest
+    method: POST
+    uri: https://ppubs.uspto.gov/dirsearch-public/searches/searchWithBeFamily
+  response:
+    content: '{"numFound":1,"perPage":1,"page":0,"totalPages":0,"hlSnippets":0,"sort":null,"query":{"id":null,"caseId":24097224,"numResults":1,"ignorePersist":true,"fq":null,"databaseFilters":[{"databaseName":"USPAT","countryCodes":[]}],"q":"@PD>=20100101<=20100227
+      AND \"tennis\".TTL.","queryName":"@PD>=20100101<=20100227 AND \"tennis\".TTL.","userEnteredQuery":"@PD>=20100101<=20100227
+      AND \"tennis\".TTL.","viewName":"tile","op":"OR","highlights":"1","plurals":true,"britishEquivalents":true,"searchType":1,"excludeResultsAfter":null,"dateCreated":null,"deleteIn":false,"expand":true,"expandSort":"group_sort_date
+      asc, id desc ","expandRows":"100","expandTrackDocScores":true,"expandTrackMaxScore":true,"termGraph":null,"hl":false,"fl":null,"originalQuery":"@PD>=20100101<=20100227
+      AND \"tennis\".TTL.","error":null,"terms":["\"tennis\"","@pd","\"tenni\""],"facets":[],"pNumber":null,"hl_fl":null},"duration":58,"highlightingTime":0,"cursorMarker":"AoJwwM+B2KYCNzQxNjQ2MzYwIVVTLVVTLTA3NjU4MjEx","totalResults":1,"numberOfFamilies":1,"error":null,"patents":[{"guid":"US-7658211-B1","publicationReferenceDocumentNumber":"7658211","compositeId":"41646360!US-US-07658211","publicationReferenceDocumentNumber1":"07658211","datePublishedKwicHits":null,"datePublished":"2010-02-09T00:00:00Z","inventionTitle":"<span
+      term=\"\"tennis\"\" class=\"highlight18\">Tennis</span> ball recharging apparatus
+      method","type":"USPAT","mainClassificationCode":"141/11","applicantName":null,"assigneeName":null,"uspcFullClassificationFlattened":"141/83;141/63;141/69;206/213.1;141/95;141/51","ipcCodeFlattened":"B65B1/20","cpcInventiveFlattened":"A63B39/025","cpcAdditionalFlattened":"A63B2102/02","applicationFilingDate":["2007-06-19T00:00:00Z"],"applicationFilingDateKwicHits":null,"relatedApplFilingDate":null,"primaryExaminer":"Maust;
+      Timothy L.","assistantExaminer":null,"applicationNumber":"11/820423","frontPageStart":1,"frontPageEnd":1,"drawingsStart":2,"drawingsEnd":2,"specificationStart":3,"specificationEnd":7,"claimsStart":7,"claimsEnd":8,"abstractStart":1,"abstractEnd":1,"bibStart":1,"bibEnd":1,"certCorrectionStart":0,"certCorrectionEnd":0,"certReexaminationStart":0,"certReexaminationEnd":0,"supplementalStart":0,"supplementalEnd":0,"ptabStart":0,"ptabEnd":0,"amendStart":0,"amendEnd":0,"searchReportStart":0,"searchReportEnd":0,"pageCount":8,"pageCountDisplay":"8","previouslyViewed":false,"unused":false,"imageLocation":"uspat/US/07/658/211","imageFileName":"00000001.tif","cpcCodes":null,"queryId":null,"tags":null,"inventorsShort":"Dirst;
+      William F.","familyIdentifierCur":41646360,"familyIdentifierCurStr":null,"languageIndicator":"EN","databaseName":"USPT","dwImageDoctypeList":null,"dwImageLocList":null,"dwPageCountList":null,"dwImageDocidList":null,"patentFamilyMembers":null,"patentFamilyCountry":null,"patentFamilySerialNumber":null,"documentIdWithDashesDw":null,"pfPublDate":null,"pfPublDateKwicHits":null,"priorityClaimsDate":null,"priorityClaimsDateKwicHits":null,"pfApplicationSerialNumber":null,"pfApplicationDescriptor":null,"pfLanguage":null,"pfApplicationDate":null,"pfApplicationDateKwicHits":null,"clippedUri":null,"source":null,"documentId":"US
+      7658211 B1","derwentAccessionNumber":null,"documentSize":48353,"score":14.388595,"governmentInterest":null,"kindCode":["B1"],"urpn":["1207813","4019629","4020948","4046491","4073120","4086743","4101029","4124117","4161247","4165770","4248275","4372095","5002196","5397018","5593157","5615596","5730286"],"urpnCode":["1207813","4019629","4020948","4046491","4073120","4086743","4101029","4124117","4161247","4165770","4248275","4372095","5002196","5397018","5593157","5615596","5730286"],"descriptionStart":3,"descriptionEnd":7,"publicationReferenceDocumentNumberOne":"07658211"}],"qtime":43}'
+    headers:
+      content-type:
+      - application/json
+      date:
+      - Wed, 06 Dec 2023 19:18:15 GMT
+      server-timing:
+      - intid;desc=004f16e07a71d4cd
+    http_version: HTTP/2
+    status_code: 200
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - ppubs.uspto.gov
+      user-agent:
+      - Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/114.0.0.0 Safari/537.36
+      x-requested-with:
+      - XMLHttpRequest
+    method: GET
+    uri: https://ppubs.uspto.gov/dirsearch-public/patents/US-7658211-B1/highlight?queryId=1&source=USPAT&includeSections=true&uniqueId=
+  response:
+    content: '{"guid":"US-7658211-B1","publicationReferenceDocumentNumber":"7658211","compositeId":"41646360!US-US-07658211","publicationReferenceDocumentNumber1":"07658211","datePublishedKwicHits":null,"datePublished":"2010-02-09T00:00:00Z","inventionTitle":"Tennis
+      ball recharging apparatus method","type":"USPAT","mainClassificationCode":"141/11","applicantName":null,"assigneeName":null,"uspcFullClassificationFlattened":"141/83;141/63;141/69;206/213.1;141/95;141/51","ipcCodeFlattened":"B65B1/20","cpcInventiveFlattened":"A63B39/025","cpcAdditionalFlattened":"A63B2102/02","applicationFilingDate":["2007-06-19T00:00:00Z"],"applicationFilingDateKwicHits":null,"relatedApplFilingDate":null,"primaryExaminer":"Maust;
+      Timothy L.","assistantExaminer":null,"applicationNumber":"11/820423","frontPageStart":1,"frontPageEnd":1,"drawingsStart":2,"drawingsEnd":2,"specificationStart":3,"specificationEnd":7,"claimsStart":7,"claimsEnd":8,"abstractStart":1,"abstractEnd":1,"bibStart":1,"bibEnd":1,"certCorrectionStart":0,"certCorrectionEnd":0,"certReexaminationStart":0,"certReexaminationEnd":0,"supplementalStart":0,"supplementalEnd":0,"ptabStart":0,"ptabEnd":0,"amendStart":0,"amendEnd":0,"searchReportStart":0,"searchReportEnd":0,"pageCount":8,"pageCountDisplay":"8","previouslyViewed":false,"unused":false,"imageLocation":"uspat/US/07/658/211","imageFileName":"00000001.tif","cpcCodes":null,"queryId":1,"tags":null,"inventorsShort":"Dirst;
+      William F.","familyIdentifierCur":41646360,"familyIdentifierCurStr":"41646360","languageIndicator":"EN","databaseName":"USPT","dwImageDoctypeList":null,"dwImageLocList":null,"dwPageCountList":null,"dwImageDocidList":null,"patentFamilyMembers":null,"patentFamilyCountry":null,"patentFamilySerialNumber":null,"documentIdWithDashesDw":null,"pfPublDate":null,"pfPublDateKwicHits":null,"priorityClaimsDate":null,"priorityClaimsDateKwicHits":null,"pfApplicationSerialNumber":null,"pfApplicationDescriptor":null,"pfLanguage":null,"pfApplicationDate":null,"pfApplicationDateKwicHits":null,"clippedUri":null,"source":null,"documentId":"<span
+      term=\"us7658211b1\" class=\"highlight18\">US 7658211 B1</span>","derwentAccessionNumber":null,"documentSize":48353,"score":0.0,"governmentInterest":null,"kindCode":["B1"],"urpn":["1207813","4019629","4020948","4046491","4073120","4086743","4101029","4124117","4161247","4165770","4248275","4372095","5002196","5397018","5593157","5615596","5730286"],"urpnCode":["1207813","4019629","4020948","4046491","4073120","4086743","4101029","4124117","4161247","4165770","4248275","4372095","5002196","5397018","5593157","5615596","5730286"],"abstractedPatentNumber":null,"assigneeCity":null,"assigneePostalCode":null,"assigneeState":null,"assigneeTypeCode":null,"curIntlPatentClassificationPrimary":["B65B1/20
+      20060101"],"curIntlPatentClassificationPrimaryDateKwicHits":null,"designatedStates":null,"examinerGroup":"3751","issuedUsCrossRefClassification":["141/51","141/63","141/69","141/83","141/95","206/213.1"],"jpoFtermCurrent":null,"languageOfSpecification":null,"chosenDrawingsReference":null,"derwentClass":null,"inventionTitleHighlights":null,"cpcOrigInventiveClassificationHighlights":null,"cpcInventiveDateKwicHits":null,"cpcOrigAdditionalClassification":null,"cpcAdditionalDateKwicHits":null,"curIntlPatentClssficationSecHighlights":null,"fieldOfSearchClassSubclassHighlights":["141/2","141/3","141/11","141/37","141/51","141/63","141/64","141/69","141/72-74","141/83","141/94","141/95","141/98","206/213.1","206/315.9"],"cpcCombinationSetsCurHighlights":null,"applicantCountry":null,"applicantCity":null,"applicantState":null,"applicantZipCode":null,"applicantAuthorityType":null,"applicantDescriptiveText":null,"applicationSerialNumber":["820423"],"inventorCity":["Harrison"],"inventorState":["AR"],"inventorPostalCode":["72601"],"standardTitleTermsHighlights":null,"primaryExaminerHighlights":"Maust;
+      Timothy L.","continuityData":null,"inventors":null,"uspcFullClassification":null,"uspcCodeFmtFlattened":null,"ipcCode":null,"applicationNumberHighlights":["11/820423"],"dateProduced":"2012-12-11T00:00:00Z","auxFamilyMembersGroupTempPlaceHolder":null,"priorityCountryCode":null,"cpcCurAdditionalClassification":null,"internationalClassificationMain":null,"internationalClassificationSecondary":null,"internationalClassificationInformational":null,"europeanClassification":null,"europeanClassificationMain":null,"europeanClassificationSecondary":null,"lanuageIndicator":null,"intlPubClassificationPrimary":["B65B1/20
+      20060101 B65B001/20"],"intlPubClassificationPrimaryDateKwicHits":null,"intlPubClassificationSecondary":null,"intlPubClassificationSecondaryDateKwicHits":null,"publicationDate":null,"derwentWeekInt":0,"derwentWeek":null,"currentUsOriginalClassification":"141/11","currentUsCrossReferenceClassification":["141/83","141/63","141/69","206/213.1","141/95","141/51"],"locarnoClassification":null,"equivalentAbstractText":null,"hagueIntlRegistrationNumber":null,"hagueIntlFilingDate":null,"hagueIntlFilingDateKwicHits":null,"hagueIntlRegistrationDate":null,"hagueIntlRegistrationDateKwicHits":null,"hagueIntlRegistrationPubDate":null,"hagueIntlRegistrationPubDateKwicHits":null,"curIntlPatentClassificationNoninvention":null,"curIntlPatentClassificationNoninventionDateKwicHits":null,"curIntlPatentClassificationSecondary":null,"curIntlPatentClassificationSecondaryDateKwicHits":null,"abstractHtml":"A
+      method and apparatus for recharging depleted tennis balls that uses compressed
+      carbon dioxide. A recharge pressure vessel including a cylinder with a closed
+      end and a spaced apart open end with a connecting wall forming a charging chamber.
+      A pressure port proximate the open end permits gas entry and exit for charging.
+      The chamber may be filled with any number of discharged tennis balls and then
+      is sealed and charged with high pressure heavy molecular weight gas such as
+      carbon dioxide. The vessel is then agitated to jostle the inserted balls and
+      within 4 to 5 days, the balls will become fully pressurized and the pressure
+      may be released and the recharged balls remove from the vessel.","descriptionHtml":"(1)
+      BRIEF DESCRIPTION OF THE SEVERAL VIEWS OF THE DRAWINGS<br />(2)  In the following
+      drawings, which form a part of the specification and which are to be construed
+      in conjunction therewith, and in which like reference numerals have been employed
+      throughout wherever possible to indicate like parts in the various views:<br
+      />(3)  FIG. 1 is a schematic view of a recharging system in accordance with
+      an exemplary embodiment of the invention; and,<br />(4)  FIG. 2 is a partially
+      fragmented perspective view of a recharging tank showing several tennis balls
+      being recharged therein.<br />(5) DETAILED DESCRIPTION OF THE INVENTION<br />(6)  As
+      shown in FIG. 1 of the drawings, one exemplary embodiment of the present invention
+      is generally designated by reference numeral 20. The present invention employs
+      a cylindrical pressure vessel 22 with an internal charging chamber 24 that is
+      essentially impermeable when sealed.<br />(7)  The chamber 24 is formed from
+      the hollow vessel interior bounded between a closed end 26 and a spaced apart
+      removable end 27 with a wall 28 extending therebetween. The removable end 27
+      may include the entire cylinder end or a portion thereof. A charging port 29
+      penetrates vessel 22 proximate removable end 28. The charging port 29 permits
+      the entry and removal of gasses from chamber 24. A pressure gauge may penetrate
+      vessel 22 adjacent port 29 or alternatively a removable pressure gauge may be
+      placed on port 29 during tennis ball charging to thereby measure the internal
+      pressure in chamber 24.<br />(8)  The invention may include a series of storage
+      vessels 23 that are virtually identical to pressure vessel 22. The storage vessels
+      may be appropriately plumbed to reuse gas released from the charging vessel
+      22 or they may be supplied with gas separately as appropriate. Such storage
+      vessels may be used to store recharged tennis balls at 17 psi indefinitely.<br
+      />(9)  Of particular relevance to the present invention is Dalton''s law. It
+      says the total pressure of a gas is equal to the sum of the partial pressures
+      of each of the component gases: P.sub.total=P.sub.1+P.sub.2+P.sub.3 . . . +P.sub.n  If
+      we consider air, this means the total atmospheric pressure of 1.013 bars (14.7
+      pounds per square inch absolute) is the sum of the partial pressures of all
+      its constituents: nitrogen, oxygen, water vapor, argon, carbon dioxide, and
+      various other gases in trace amounts. In particular, air contains roughly 78%
+      nitrogen, 21% oxygen, 0.93% argon, 0.04% carbon dioxide, and trace amounts of
+      other gases, in addition to variable quantities of water vapor, which normally
+      approximates 3%. The two most dominant components in dry air are Oxygen and
+      Nitrogen. Oxygen has an 16 atomic unit mass and Nitrogen has a 14 atomic units
+      mass. Since both these elements are diatomic in air --O.sub.2 and N.sub.2, the
+      molecular mass of Oxygen is 32 and the molecular mass of Nitrogen is 28. Since
+      air is a mixture of gases the total mass can be estimated by adding the weight
+      of all major components as shown below:<br />(10)   TABLE-US-00001 Volume Ratio\t\tMolecular
+      Components in\tcompared to Dry\tMolecular Mass - M\tMass in Dry Air\tAir\t(kg/kmol)\tAir
+      Oxygen\t0.2095\t32.00\t6.704 Nitrogen\t0.7809\t28.02\t21.88 Carbon Dioxide\t0.0003\t44.01\t0.013
+      Hydrogen\t0.0000005\t2.02\t0 Argon\t0.00933\t39.94\t0.373 Neon\t0.000018\t20.18\t0
+      Helium\t0.000005\t4.00\t0 Krypton\t0.000001\t83.8\t0 Xenon\t0.09 10.sup.-6\t131.29\t0
+      Total Molecular Mass of dry Air\t28.97<br />(11)  Water vapor--H.sub.2O--is
+      composed of one Oxygen atom and two Hydrogen atoms. Hydrogen is the lightest
+      element at 1 atomic unit while Oxygen is 16 atomic units. Thus the water vapor
+      atom has an atomic mass of 18 atomic units. At 18 atomic units, water vapor
+      is lighter than diatomic Oxygen with 32 units and diatomic Nitrogen with 28
+      units. Thus, it is important to note that water vapor in air will replace other
+      gases and reduce the total density of the mixture and hence dry air is more
+      dense than humid air. Carbon dioxide (CO.sub.2) on the other hand has a atomic
+      mass of 44.01, which is more dense than dry air at 28.97.<br />(12)  In the
+      charging container 22, carbon dioxide is kept at 50 psi during charging. The
+      introduction of multiple depleted tennis balls 42 introduces a quantity of air
+      at atmospheric pressure (i.e. air at approximately 14.7 psi). The total quantity
+      is dependent upon the number of tennis balls introduced but can be expected
+      to be the number of tennis balls multiplied by the internal volume of each ball,
+      which can be calculated based upon the formula: sphere volume= 4/3.pi.r.sup.3=(.pi.d.sup.3)/6.
+      The acceptable measurements for the external diameter of tennis balls according
+      to the International Tennis Federation is 2.575 inches to 2.700 inches with
+      the outer covering and internal rubber core having a thickness of approximated
+      0.125 inches. Thus, the appropriate diameter is approximately 2.5 inches and
+      the internal volume of each ball is approximately 8.17 cubic inches. Fifty such
+      balls would have an internal volume of 408.5 cubic inches. The charging chamber
+      volume is much larger.<br />(13)  The volume of a cylinder can be calculated
+      using the formula: Volume=.pi.r.sup.2height=1/4.pi.d.sup.2height. In one exemplary
+      embodiment, the charging chamber 24 has a radius of approximately 4-6 inches
+      and a height of approximately 2.5-3.0 feet (i.e. 30 inches). Thus, the volume
+      of the charging chamber would be approximately 3391 cubic inches. Such a charging
+      chamber can hold 50 or more tennis balls.<br />(14)  Introducing 50 flat tennis
+      balls 32 at atmospheric pressure into the charging chamber does not change the
+      pressure or gas concentrations inside the chamber, which is already at ambient
+      room conditions. After the balls are added, the pressure in the charging chamber
+      25 is increased to 50 psi by introducing an appropriate quantity of pressurized
+      carbon dioxide, generally in the range of 1-5 pounds of materials. The added
+      carbon dioxide initially fills the charging chamber 24, increasing the pressure
+      throughout the charging container. Each of the tennis balls 30 acts as a small
+      pressure vessel with permeable walls that the pressurized carbon dioxide gas
+      must permeate over time. The internal pressure of each tennis ball is initially
+      at 14.7 psi (i.e. 1 atm) but over time the pressurized carbon dioxide at 50
+      psi will penetrate the tennis ball exterior 32 as well as the semi-permeable
+      rubber core or internal wall 34 and begin equalizing the internal tennis ball
+      pressure with the chamber internal pressure. As the tennis ball pressure increases,
+      the chamber pressure decreases accordingly. After approximately 4 days, the
+      internal tennis ball pressures will have risen to 17 psi while the chamber pressure
+      will have decreased from 50 to 47 psi. Thus it is possible to monitor the status
+      of the charging tennis balls by monitoring the decreasing pressure of the charging
+      chamber 30 to determine when the balls are recharged.<br />(15)  It has been
+      found that the number of tennis balls being recharged is not especially important
+      in that 3 balls can be recharged in essentially the same time frame as 30 balls.
+      However, increasing the internal pressure of the recharging chamber from 50
+      to 60 psi did decrease the recharging time from 4 days to 3 days.<br />(16)  The
+      steps for implementing the present invention include the following. The chamber
+      24 is emptied and open and at ambient atmospheric condition. Several depleted
+      tennis balls (i.e. up to around 50) are then introduced into the chamber 24
+      through the opened removable end 28. End 28 is then sealed. A gas preferably
+      heavier in molecular weight than air and most preferentially carbon dioxide
+      is introduced into the chamber 24 through port 29. As additional gas is introduced,
+      the pressure inside chamber 24 rises above 14 psi and then above 17 psi. While
+      feasible to operate at lower pressures, it has been determined through experimentation
+      that practicable time periods (i.e. less than 10 days) requires a chamber pressure
+      of at least 40 psi and more preferentially 50 psi. Once the pressure chamber
+      24 is charged to 50 psi, the chamber may be agitated to jostle the balls 32
+      inside the chamber. This prevents balls from becoming misshapen as a result
+      of being lodged or otherwise captivated against a wall or the like. The chamber
+      pressure is monitored with a pressure gauge, which may be a permanent part of
+      the vessel 22 or used with port 29. As the chamber pressure decreases, the pressure
+      inside the balls will increase correspondingly. Once a desirable pressure decrease
+      has occurred (i.e. 3 psi drop) a corresponding pressure increase in the balls
+      will occur as well. Thus, once the chamber pressure drops 3 psi the internal
+      ball pressure will have risen from 14 to 17 psi and the balls will be sufficiently
+      recharged to terminate the recharging process. The pressure in chamber 22 is
+      then bleed off through port 29 until at an acceptable level (i.e. 17 psi for
+      storage and 14 psi to open the chamber).<br />(17)  From the foregoing, it will
+      be seen that this invention well adapted to obtain all the ends and objects
+      herein set forth, together with other advantages which are inherent to the structure.
+      It will also be understood that certain features and subcombinations are of
+      utility and may be employed without reference to other features and subcombinations.
+      This is contemplated by and is within the scope of the claims. Many possible
+      embodiments may be made of the invention without departing from the scope thereof.
+      Therefore, it is to be understood that all matter herein set forth or shown
+      in the accompanying drawings is to be interpreted as illustrative and not in
+      a limiting sense.<br />(18)  Since other modifications and changes varied to
+      fit particular operating requirements and environments will be apparent to those
+      skilled in the art, the invention is not considered limited to the example chosen
+      for purposes of disclosure, and covers all changes and modifications which do
+      not constitute departures from the true spirit and scope of this invention.<br
+      />(19)  Having thus described the invention, what is desired to be protected
+      by Letters Patent is presented in the subsequently appended claims.","claimsHtml":"1.
+      A method of recharging deplete tennis balls comprising the steps of: filling
+      a pressure chamber by introducing a plurality of discharged tennis balls with
+      substantially ambient internal pressure into said chamber while said chamber
+      remains at ambient pressure; charging said chamber by sealing said chamber and
+      then increasing the internal pressure of said chamber by introducing a quantity
+      of gas with a molecular weight heavier than air; agitating said chamber to jostle
+      said balls within said chamber; monitoring the pressure inside said chamber
+      to determine when said balls are recharged to have an internal pressure of at
+      least 17 psi; relieving the internal pressure of said chamber after said balls
+      reach an internal pressure of 17 psi.<br /> 2. The method of claim 1 wherein
+      said chamber comprises a hollow cylinder having a removable end for receiving
+      said balls and a port for adding or removing gas thereto.<br /> 3. The method
+      of claim 2 wherein said chamber comprises a pressure gauge adapted to display
+      internal chamber pressure.<br /> 4. The method of claim 1 wherein said agitating
+      step occurs multiple times during the charging of said balls.<br /> 5. The method
+      of claim 4 wherein said agitating step occurs at least daily.<br /> 6. The method
+      of claim 1 wherein said gas is carbon dioxide.<br /> 7. The method of claim
+      1 wherein said internal chamber pressure is increased to at least 50 psi.<br
+      /> 8. A recharged tennis ball produced in accordance with the process of step
+      1.<br /> 9. A method of recharging deplete tennis balls comprising the steps
+      of: filling a pressure chamber by introducing a plurality of discharged tennis
+      balls with substantially ambient internal pressure into said chamber while said
+      chamber remains at ambient pressure; charging said chamber by sealing said chamber
+      and then increasing the internal pressure of said chamber to at least 50 psi
+      by introducing a quantity of gas with a molecular weight heavier than air; agitating
+      said chamber to jostle said balls within said chamber; monitoring the pressure
+      inside said chamber to determine when said balls are recharged to have an internal
+      pressure of at least 17 psi; relieving the internal pressure of said chamber
+      to not higher than 17 psi after said balls reach an internal pressure of 17
+      psi.<br /> 10. The method of claim 9 wherein said chamber comprises a hollow
+      cylinder having a removable end for receiving said balls and a port for adding
+      or removing gas thereto.<br /> 11. The method of claim 10 wherein said chamber
+      comprises a pressure gauge adapted to display internal chamber pressure.<br
+      /> 12. The method of claim 9 wherein said agitating step occurs multiple times
+      during the charging of said balls.<br /> 13. The method of claim 12 wherein
+      said agitating step occurs at least daily.<br /> 14. The method of claim 9 wherein
+      said gas is carbon dioxide.<br /> 15. A recharged tennis ball produced in accordance
+      with the process of step 9.<br /> 16. A method of recharging deplete tennis
+      balls comprising the steps of: filling a pressure chamber by introducing a plurality
+      of discharged tennis balls with substantially ambient internal pressure into
+      said chamber while said chamber remains at ambient pressure; charging said chamber
+      by sealing said chamber and then increasing the internal pressure of said chamber
+      to at least 50 psi by introducing a sufficient quantity of carbon dioxide; agitating
+      said chamber to jostle said balls within said chamber; monitoring the pressure
+      inside said chamber to determine when said balls are recharged to have an internal
+      pressure of at least 17 psi; relieving the internal pressure of said chamber
+      to not higher than 17 psi after said balls reach an internal pressure of 17
+      psi.<br /> 17. The method of claim 16 wherein said chamber comprises a pressure
+      gauge adapted to display internal chamber pressure.<br /> 18. The method of
+      claim 16 wherein said agitating step occurs multiple times during the charging
+      of said balls.<br /> 19. The method of claim 18 wherein said agitating step
+      occurs at least daily.<br /> 20. A recharged tennis ball produced in accordance
+      with the process of step 15.","briefHtml":"(1) CROSS-REFERENCE TO RELATED APPLICATIONS<br
+      />(2)  Not Applicable.<br />(3) STATEMENT REGARDING FEDERALLY SPONSORED RESEARCH
+      OR DEVELOPMENT<br />(4)  Not Applicable.<br />(5) REFERENCE TO A MICROFICHE
+      APPENDIX<br />(6)  Not Applicable.<br />(7) RESERVATION OF RIGHTS<br />(8)  A
+      portion of the disclosure of this patent document may contain material which
+      is subject to intellectual property rights such as but not limited to copyright,
+      trademark, and/or trade dress protection. The owner has no objection to the
+      facsimile reproduction by anyone of the patent document or the patent disclosure
+      as it appears in the Patent and Trademark Office patent files or records but
+      otherwise reserves all rights whatsoever.<br />(9) BACKGROUND OF THE INVENTION<br
+      />(10)  1. Field of the Invention<br />(11)  The present invention relates to
+      the field of recharging depleted or exhausted or dead or depressurized tennis
+      balls. In particular, the present invention relates specifically to an apparatus
+      and method for recharging depleted or exhausted or dead or depressurized tennis
+      balls to restore the liveliness and optimum configuration of the individual
+      balls. Known art may be found in U.S. Class 206, subclass 213.1 as well as in
+      other classes and subclasses.<br />(12)  2. Description of the Known Art<br
+      />(13)  Many games use a gas pressurized hollow ball during play (i.e. football,
+      basketball, soccer, tennis, etc.). In the game of tennis, the ball is spherical
+      and of a standard diameter and it is covered with a fibrous nap. Important parameters
+      of the tennis ball are its bounce or liveliness or resiliency and this is a
+      function of the ball''s internal gas pressure, its size and spherical configuration
+      and the condition of the fibrous nap. All of these parameters should be maintained
+      constant and uniform from ball to ball and during the useful life of the ball.
+      Since the reaction of the ball to the impact of the racket and its ground rebound
+      characteristics are functions of the above parameters, any significant change
+      or variation thereof adversely affects the proper playing of the game.<br />(14)  As
+      is well known, the resiliency exhibited by tennis balls is due, at least in
+      part, to the pressurization of the tennis balls during manufacturing. To be
+      suitable for tournament play, tennis balls must be able to meet quite rigid
+      specifications regarding their size, the distance to which they rebound when
+      dropped from a standard height, the amount of deformation they exhibit under
+      an applied standard force, and their surface characteristics. All manufacturers
+      strive to comply with these rigid specifications to insure that the balls they
+      manufacture exhibit the uniformity demanded by serious amateur as well as professional
+      tennis competitors.<br />(15)  Tennis balls are generally packaged and marketed
+      in pressurized hermetically sealed containers so as to minimize or prevent any
+      diffusion outwardly of the pressurized gas in the ball which would reduce its
+      liveliness and so as to obviate any distortion of the ball from its standard
+      size or shape as a consequence of the ball''s high internal pressure. A basic
+      problem with tennis balls presently in use is that, as the balls age, they lose
+      pressure. This pressure loss results from the diffusion through the tennis ball
+      surface of whatever gas may be used to inflate tennis balls during manufacture.
+      Partially to combat this loss of pressure, tennis balls have, for some time,
+      been marketed in pressurized canisters, generally three tennis balls to a canister.
+      Of course, once the canister in which the tennis balls have been sold is opened,
+      the tennis balls are removed from their pressurized environment and, as a result
+      of the pressure differential across their surfaces, they begin to be deflated
+      and the distortion of the ball commences so that the ball is thereafter of limited
+      useful life in the proper playing of tennis.<br />(16)  As stated previously,
+      with usage and/or the passage of time, the internal pressurization of tennis
+      balls eventually escapes until the internal pressure of the tennis balls drops
+      to atmospheric pressure. At that time, the unpressurized and depleted tennis
+      balls are considered to be dead or flat even though their the tennis balls may
+      otherwise be acceptable. Depleted tennis balls are typically discarded. While
+      many of the tennis balls may be retired because their surfaces have become worn
+      beyond acceptable limits, many more tennis balls are retired simply because
+      they have lost their pressurization. Discarding depleted but otherwise acceptable
+      tennis balls can be extremely wasteful, particularly at large clubs such as
+      tennis clubs and country clubs where the quantity of depleted tennis balls can
+      be high.<br />(17)  Others have proposed solutions to deal with depleted tennis
+      balls, including recharging and/or recycling apparatus and methods. Patents
+      disclosing information relevant to tennis ball pressurization include U.S. Pat.
+      No. 4,124,117 issued to Rudy on Nov. 7, 1978; U.S. Pat. No. 1,207,813 issued
+      to Stockton on Dec. 12, 1916; U.S. Pat. No. 4,019,629 issued to Dubner et al.
+      on Apr. 26, 1977; U.S. Pat. No. 4,020,948 issued to Won on May 3, 1977; U.S.
+      Pat. No. 4,046,491 issued to Roeder on Sep. 6, 1977; U.S. Pat. No. 4,073,120
+      issued to Berggren on Feb. 14, 1978; U.S. Pat. No. 4,086,743 issued to Hoopes
+      on May 2, 1978; U.S. Pat. No. 4,101,029 issued to Feinberg et al. on Jul. 18,
+      1978; U.S. Pat. No. 4,161,247 issued to Feinberg et al. on Jul. 17, 1979; U.S.
+      Pat. No. 4,165,770 issued to Goldman et al. on Aug. 28, 1979; and U.S. Pat.
+      No. 4,372,095 issued to De Satnick on Feb. 8, 1983. Each of these patents are
+      hereby expressly incorporated by reference in their entirety.<br />(18)  U.S.
+      Pat. No. 4,124,117 issued to Rudy on Nov. 7, 1978, entitled Apparatus For Repressuring
+      Tennis and Similar Play Balls shows a portable device similar to the container
+      most tennis balls are originally packaged in for storage. The patent discusses
+      a system for repressuring a tennis ball or similar play ball, which has lost
+      a portion of its initial inflation pressure, in which a container or enclosure
+      for the ball contains a chemical and a suitable fluid that reacts with the chemical
+      to generate a gas at atmospheric pressure capable of diffusing through the permeable
+      elastomeric material of the ball to elevate the total pressure within the ball
+      toward its initial pressure value. This device uses solid pellets that mix with
+      a liquid in the container to generate the repressurizing gas.<br />(19)  U.S.
+      Pat. No. 1,207,813 issued to Stockton on Dec. 12, 1916, entitled Method for
+      Preserving Tennis Balls or Other Objects Containing Fluid Under Pressure shows
+      a container for a ball. The patent discusses a method for preserving tennis
+      balls or other objects containing fluid under pressure.<br />(20)  U.S. Pat.
+      No. 4,019,629 issued to Dubner et al. on Apr. 26, 1977, entitled Pressurized
+      Tennis Ball Container shows another portable device similar to the container
+      most tennis balls are originally packaged in for storage. This patent discusses
+      a pressurized tennis ball container has a cover which fits onto a standard metal
+      tennis ball can. The cover includes a hand pump having a sliding seal which
+      opens to permit rapid refilling of the hand pump cylinder with air during the
+      upstroke of the piston, an air pressure indicator, which indicates the pressure
+      within the can, a pressure release member to release the air pressure within
+      the can to facilitate opening the cover, and an improved diaphragm valve.<br
+      />(21)  U.S. Pat. No. 4,020,948 issued to Won on May 3, 1977, entitled Tennis
+      Ball Storage Container shows another portable device similar to the container
+      most tennis balls are originally packaged in for storage. This patent discusses
+      a tennis ball storage container of the type wherein the balls located inside
+      the container are maintained in a compressed air surrounding in order to prevent
+      microscopic penetration of compressed air from inside the ball during the storage.
+      The container comprises a cylindric storage container and a cylindric lid arranged
+      to place over the container to close same. Sealing means are arranged on the
+      container and on the lid which are effective to maintain a generally air tight
+      sealing engagement between the container and the lid during the operation of
+      placing the lid over said container. The sealing means prevents air present
+      in the space defined by the container and the lid as the lid is being placed
+      over the container. The sealing means prevents air present in the space defined
+      by the container and the lid as the lid is being placed over the container.
+      The volume defined by the inside of the lid amounts to at least two thirds of
+      the volume defined by the container.<br />(22)  U.S. Pat. No. 4,161,247 issued
+      to Feinberg et al. on Jul. 17, 1979, entitled Method of and Means for Preserving
+      Tennis Balls or the Like shows another portable device similar to the container
+      most tennis balls are originally packaged in for storage. This patent discusses
+      a gas pressurized ball is packaged under pressure by first compressing the ball
+      about its girth and then compressing it about its full surface in the smaller
+      spherical cavity of a mold section. A device for compressing the ball includes
+      a collar member of smaller diameter than the ball and a pair of spherically
+      faced cavitied mold members which are assembled with the collar to form a spherical
+      closure chamber. The mold members may include lips which enter the collar opening
+      or may, with the collar face, form the closure chamber. The collar and a spherically
+      faced cavitied mold member, in one form, are integrally formed and a ball injection
+      plunger registers with a bore in the mold member. Another device includes three
+      mutually hinged members each having a cavity so that when the members are swung
+      to a closed condition the cavities form a spherical chamber smaller than the
+      ball. Another form of the device includes a cylindrical receptacle closed by
+      an elastomeric cap provided with an inflation valve and locking collar to permit
+      pressurizing of the receptacle.<br />(23)  U.S. Pat. No. 4,073,120 issued to
+      Berggren on Feb. 14, 1978, entitled Apparatus for Repressurizing Tennis Balls
+      shows a needle-like device that penetrates the ball to be repressurized. This
+      patent discusses a method and apparatus for repressurizing tennis balls or other
+      balls not being normally provided with an air fill valve and for internally
+      sealing the same after repressurizing, which includes: a needle-like element
+      for penetrating the skin of the ball and having a passage therethrough for the
+      passing of a sealing medium and air into the ball, compressing the ball to create
+      a negative pressure therein, a sealant containing member which is penetrable
+      by the extending end of the needle element for drawing the sealant into the
+      ball when the compressive force is released and a source of positive pressure
+      which is attachable to the extending end of the needle element for pressure
+      application to the interior of the ball. The sealant is in flowable condition
+      for a period and will flow about the internal end of the needle to form a supply
+      about the aperture formed by the needle such that when the same is withdrawn,
+      the sealant will flow in and over the aperture to seal the same.<br />(24)  U.S.
+      Pat. No. 4,086,743 issued to Hoopes on May 2, 1978, entitled Tennis Ball Revitalizer
+      shows another needle-like device for repressurizing a tennis ball. This patent
+      is directed to a simple, easily-operated device is provided by which a &quot;dead&quot;
+      tennis ball can be revitalized by injecting it with a gas, preferably in the
+      form of an aerosol propellant. The device described comprises an aerosol container
+      suitably charged and connected to a tubular needle and also a ball-receiving
+      cup. Pressure from the propellant restores original bouncing quality to the
+      ball. A sealant can be mixed with the propellant or gas if desired or necessary.
+      Proper selection of propellant and sealant mixture automatically meters the
+      amount of sealant moving into the ball. Safety features of the device protect
+      the needle.<br />(25)  U.S. Pat. No. 4,165,770 issued to Goldman et al. on Aug.
+      28, 1979, entitled Apparatus to Rejuvenate Tennis Balls shows another needle-like
+      device for repressurizing a tennis ball. This patent discusses an inflation
+      device for tennis balls and the like wherein a pressure vessel having a resiliently
+      closed discharge valve is provided with an operator fitting on the valve and
+      a hollow impaling element on the operator fitting for passing fluid from the
+      vessel, and an outwardly facing ball seat operatively connected to the fitting
+      for actuating the latter upon depression by a ball on the seat, which ball is
+      simultaneously penetrated by the impaling element for receiving pressurized
+      fluid.<br />(26)  U.S. Pat. No. 4,372,095 issued to De Satnick on Feb. 8, 1983,
+      entitled Tennis Ball Pressurizer shows another needle-like device for repressurizing
+      a tennis ball. This patent discusses a tennis ball pressurizer having a source
+      of pressurized gas, a regulating valve for controllably releasing the gas and
+      a hollow needle for injecting the gas into the ball. The needle has an internal
+      bevel at one end which cuts a plug from the wall of the ball. The plug seats
+      into the needle and is partially exposed beyond the end of the needle. Gas is
+      released from the pressure source and passes through the needle to enter into
+      the ball through a side vent in the needle. As the needle is withdrawn from
+      the ball after it is repressurized, the plug engages in and seals the puncture
+      hole.<br />(27)  Many of the preceding devices are either complex and inconvenient
+      to employ or they have been unsatisfactory in that they tended to damage the
+      surface of the ball, thereby adversely affecting the ball''s playing properties
+      and otherwise left much to be desired.<br />(28)  Another significant drawback
+      of the prior art is that such prior art contemplates pressurization of a very
+      small number of tennis balls, typically, three tennis balls in a container of
+      a configuration similar to the containers in which tennis balls are marketed.<br
+      />(29)  The increasing popularity of tennis and the resultant growth in the
+      offering of group tennis lessons, as well as the burgeoning tennis club industry,
+      have resulted in the use of far more tennis balls than such prior art apparatus
+      can economically preserve. For example, it is not uncommon for a tennis club
+      in a large metropolitan area to use 10,000 or more tennis balls in a year. To
+      address the large quantities of balls, some have proposed &quot;batch&quot;
+      systems. &quot;Batch&quot; processing of tennis balls can be a real and immediate
+      solution that may result in significant economy, particularly for users of large
+      numbers of tennis balls. As used by many, batch processing refers to the processing
+      of, for example, 200 or more tennis balls at one time.<br />(30)  For example,
+      U.S. Pat. No. 4,101,029 issued to Feinberg et al. on Jul. 18, 1978, entitled
+      Tennis Ball Rejuvenator and Maintainer shows pressure vessel for batch processing
+      tennis balls. This patent discusses a pressure vessel for storing tennis balls
+      includes a cylindrical open topped receptacle having in its inside upper border
+      a peripheral groove separably engaging an elastomeric O-ring gasket provided
+      with a finger removal tab. A vertical coaxial post is anchored to the receptacle
+      base and axially movably supports for movement between limited raised and depressed
+      positions a coupling member which is spring urged to raised position and releasably
+      locked in its depressed position. A dished cover is coaxially separably connected
+      to the coupling member and has an outwardly downwardly inclined peripheral lip
+      engaging the O-ring when the cover is in raised position to effect an air tight
+      seal. Mounted on the receptacle peripheral wall and communicating with the interior
+      thereof are a pressure gauge, a pressure release and safety valve and a pressurizing
+      check valve.<br />(31)  U.S. Pat. No. 4,046,491 issued to Roeder on Sep. 6,
+      1977, entitled Tennis Ball Preserver shows a large container for batch processing
+      tennis balls. This patent is directed to an apparatus for batch processing tennis
+      balls for preserving their internal pressurization. The apparatus includes a
+      high pressure reservoir and a lower pressure storage chamber integrally and
+      unitarily housed within a single tank and separated by a bulkhead. An air compressor
+      is connected to the high pressure reservoir and is controlled by a gauge apparatus
+      to maintain a desired high pressure within the reservoir. The reservoir and
+      storage chamber are connected together by a conduit which includes a low pressure
+      regulator to maintain a desired pressure in the storage chamber. A passageway
+      with an air-tight, removable lid provides access to the interior of the low
+      pressure chamber for loading and unloading the tennis balls. The apparatus may
+      also be used to repressurize tennis balls which have lost some of their inflation
+      with compressed air.<br />(32)  The known art fails to address many perceived
+      shortcomings in the industry. For example, a desirable improvement in the art
+      would be the introduction of a system adapted to quickly recharge depleted tennis
+      balls economically and efficiently wall also providing the ability to store
+      tennis balls indefinitely.<br />(33)  Thus, it may be seen that these prior
+      art patents are very limited in their teaching and utilization, and an improved
+      method and apparatus for effectively recharging tennis balls and particularly
+      large quantities of tennis balls quickly is needed to overcome these limitations.
+      What is needed then is an improved apparatus and method for quickly recharging
+      large quantities of depleted tennis balls in an efficient and economical manner.<br
+      />(34) SUMMARY OF THE INVENTION<br />(35)  The present invention is directed
+      to an improved apparatus and method for quickly recharging large quantities
+      of depleted tennis balls in an efficient and economical manner. In accordance
+      with one exemplary embodiment of the present invention, a method and apparatus
+      for recharging depleted tennis balls is provided that uses compressed carbon
+      dioxide. Of particular note is the invention''s ability to quickly and economically
+      recharge balls. The invention may advantageously utilize multiple pressure vessels
+      to permit a user to simultaneously recharge and store recharged balls. The multiple
+      pressure vessels may be arranged to discharge gases from a recharging vessel
+      at high-pressure into a storage vessel maintained at a lower pressure. In this
+      manner, gas may be recycled by moving it from a high pressure vessel to a low
+      pressure vessel before discharge. High-pressure gas may also be recycled by
+      moving it from a recharge vessel into another recharge vessel to partially charge
+      the new recharge vessel.<br />(36)  In one exemplary embodiment of the invention,
+      a recharge pressure vessel is filled with any number of discharged, flat tennis
+      balls. The vessel is sealed and charged with 50 psi of carbon dioxide. The vessel
+      is then rotated to dislodge any balls that may have been wedged into the side
+      of the vessel to prevent wedged balls from becoming misshapen. The vessel is
+      rotated periodically to maintain the desired ball shape. Within 4 to 5 days,
+      the balls become fully pressurized and the pressure may be released and the
+      recharged balls remove from the vessel. It is possible to recharge the balls
+      at a pressure as low as 20 psi, but such a lower pressure increases the charging
+      time to 6 weeks or longer. Thus, higher pressures exponentially decrease the
+      charging time.<br />(37)  It is thus an object of the present invention to provide
+      an apparatus and process that can be economically operated to batch process
+      tennis balls in order to restore a desirable internal pressurization, thereby
+      significantly increasing the useful life of the tennis balls.<br />(38)  It
+      is a basic object of the present invention to provide an apparatus and method
+      which may be used to repressurize tennis balls which have lost a significant
+      amount of their original pressurization.<br />(39)  An additional object of
+      the present invention is to provide an apparatus for storing tennis balls in
+      a pressurized environment to preserve their pressurization wherein the apparatus
+      is proportioned and designed for bulk processing of tennis balls and sufficient
+      to maintain constant pressure for such batch processing.<br />(40)  It is a
+      principal object of the present invention to provide an improved device for
+      preserving the playing characteristics of an internally gas pressurized ball.<br
+      />(41)  Another object of the present invention is to provide an improved vessel
+      for preserving the playing characteristics of a supply of internally gas pressurized
+      balls during the prolonged storage thereof.<br />(42)  Still another object
+      of the present invention is to provide an improved pressure vessel for storing
+      a supply of gas pressurized balls, such as tennis balls and the like, to preserve
+      their original liveliness, bounce, configuration and shape.<br />(43)  Still
+      a further object of the present invention is to provide an improved vessel of
+      the above nature characterized by its simplicity, ruggedness, reliability, ease
+      and convenience of use and application, and great versatility and adaptability.<br
+      />(44)  These and other objects and advantages of the present invention, along
+      with features of novelty appurtenant thereto, will appear or become apparent
+      by reviewing the following detailed description of the invention.","backgroundTextHtml":null,"subHeadingM0Html":null,"subHeadingM1Html":null,"subHeadingM2Html":null,"subHeadingM3Html":null,"subHeadingM4Html":null,"subHeadingM5Html":null,"subHeadingM6Html":null,"usClassIssued":"141/11","issuedUsDigestRefClassifi":null,"datePublYear":"2010","applicationYear":"2007","pfDerwentWeekYear":null,"pfApplicationYear":null,"pfPublYear":null,"reissueApplNumber":null,"abstractHeader":null,"abstractedPublicationDerwent":null,"affidavit130BFlag":null,"affidavit130BText":null,"applicantGroup":null,"applicantHeader":null,"applicationFilingDateInt":20070619,"applicationFilingDateIntKwicHits":null,"applicationRefFilingType":null,"applicationReferenceGroup":null,"applicationSeriesAndNumber":"11820423","applicationSeriesCode":"11","assignee1":null,"assigneeDescriptiveText":null,"patentAssigneeTerms":null,"associateAttorneyName":null,"attorneyName":null,"biologicalDepositInformation":null,"applicationType":null,"unlinkedDerwentRegistryNumber":null,"unlinkedRingIndexNumbersRarerFragments":null,"claimStatement":"What
+      is claimed is:","claimsTextAmended":null,"continuedProsecutionAppl":null,"cpcAdditionalLong":null,"cpcCisClassificationOrig":null,"cpcCombinationClassificationOrig":null,"cpcInventive":["A63B39/025
+      20130101"],"cpcInventiveCurrentDateKwicHits":null,"cpcAdditional":["A63B2102/02
+      20151001"],"cpcAdditionalCurrentDateKwicHits":null,"cpcOrigClassificationGroup":null,"curIntlPatentClassificationGroup":null,"curUsClassificationUsPrimaryClass":null,"curUsClassificationUsSecondaryClass":null,"customerNumber":null,"depositAccessionNumber":null,"depositDescription":null,"derwentClassAlpha":null,"designatedstatesRouteGroup":null,"docAccessionNumber":null,"drawingDescription":null,"editionField":null,"exchangeWeek":null,"exemplaryClaimNumber":["1"],"familyIdentifierOrig":null,"fieldOfSearchCpcClassification":null,"fieldOfSearchCpcMainClass":null,"fieldOfSearchIpcMainClass":null,"fieldOfSearchIpcMainClassSubclass":null,"fieldOfSearchSubclasses":["2;3;11;37;51;63;64;69;72-74;83;94;95;98","213.1;315.9"],"foreignRefGroup":null,"foreignRefPubDate":null,"foreignRefPubDateKwicHits":null,"foreignRefCitationClassification":null,"foreignRefPatentNumber":null,"foreignRefCitationCpc":null,"foreignRefCountryCode":null,"iceXmlIndicator":"Y","internationalClassificationHeader":null,"internationalClassificationInformationalGroup":null,"intlPubClassificationGroup":["20060101
+      A B65B B65B1/20 F I B US H 20100209"],"intlPubClassificationNonInvention":null,"inventorCitizenship":null,"inventorCorrection":null,"inventorDeceased":null,"inventorStreetAddress":["809
+      Quail Ave."],"inventorText":["N/A"],"jpoFiClassification":null,"legalRepresentativeCity":null,"legalRepresentativeCountry":"[]","legalRepresentativeName":null,"legalRepresentativePostcode":null,"legalRepresentativeState":null,"legalRepresentativeStreetAddress":null,"legalRepresentativeText":null,"messengerDocsFlag":null,"newRecordPatentDerwent":null,"numberOfClaims":"20","numberOfDrawingSheets":"1","numberOfFigures":"2","numberOfPagesInSpecification":null,"numberOfPagesOfSpecification":null,"objectContents":null,"objectDescription":null,"parentDocCountry":null,"parentGrantDocCountry":null,"patentBibliographicHeader":null,"pctOrRegionalPublishingSerial":null,"pfDerwentWeekNum":null,"principalAttorneyName":["Keisling;
+      Trent C."],"priorityApplicationCountry":null,"priorityClaimsCountry":null,"priorityNumberDerived":null,"publicationIssueNumber":null,"refCitedPatentDocNumber":null,"refCitedPatentDocDate":null,"refCitedPatentDocKindCode":null,"referenceCitedCode":null,"referenceCitedGroup":null,"referenceCitedSearchPhase":null,"referenceCitedText":null,"registrationNumber":null,"reissueApplCountry":null,"reissueParentKind":null,"reissueParentNumber":null,"reissueParentPubCountry":null,"reissuePatentGroup":null,"reissuePatentParentStatus":null,"reissuedPatentApplCountry":null,"reissuedPatentApplKind":null,"reissuedPatentApplNumber":null,"relatedApplChildPatentCountry":null,"relatedApplChildPatentName":null,"relatedApplChildPatentNumber":null,"relatedApplCountryCode":null,"relatedApplParentGrantPatentKind":null,"relatedApplParentGrantPatentName":null,"relatedApplParentPatentKind":null,"relatedApplParentPatentName":null,"relatedApplParentPctDoc":null,"relatedApplParentStatusCode":null,"relatedApplPatentNumber":null,"relatedApplRelatedPub":null,"relatedApplTypeOfCorrection":null,"rule47Flag":null,"selectedDrawingCharacter":null,"selectedDrawingFigure":null,"statutoryInventionText":null,"termOfExtension":"389","termOfPatentGrant":null,"titleTermsData":null,"additionalIndexingTerm":null,"applicationYearSearch":"2007","pfApplicationYearSearch":null,"assigneeCountry":null,"certOfCorrectionFlag":null,"citedPatentLiteratureAddressInformation":null,"citedPatentLiteratureClassificationIpc":null,"citedPatentLiteratureOrganizationName":null,"citedPatentLiteratureRefNumber":null,"crossReferenceNumber":null,"country":"US","cpiManualCodes":null,"cpiSecondaryAccessionNumber":null,"curIntlPatentAllClassificationLong":null,"currentUsOriginalClassificationLong":null,"datePublSearch":"2010-02-09T00:00:00.000+00:00","datePublYearSearch":"2010","epiManualCodes":null,"fieldOfSearchMainClassNational":["141","206"],"inventorCountry":["US"],"ipcAllMainClassification":["B65B"],"issuedUsClassificationFull":["141/69","141/11","141/83","141/95","141/51","141/63","206/213.1"],"issuedUsDigestRefClassification":["141/51","141/63","141/69","141/83","141/95","206/213.1"],"jpoFiCurrentAdditionalClassification":null,"jpoFiCurrentInventiveClassification":null,"legalFirmName":["Keisling
+      Pieper &amp; Scott, PLC"],"locarnoMainClassification":null,"nonCpiSecondaryAccessionNumber":null,"objectId":null,"otherRefPub":null,"pageNumber":null,"patentAssigneeCode":null,"patentAssigneeNameTotal":null,"patentFamilyDate":null,"patentFamilyDocNumber":null,"patentFamilyKind":null,"patentFamilyKindCode":null,"patentFamilyLanguage":null,"patentFamilyName":null,"patentNumberOfLocalApplication":null,"pct102eDate":null,"pct371c124Date":null,"pct371c124DateKwicHits":null,"pctFilingDate":null,"pctFilingDateKwicHits":null,"pctFilingDocCountryCode":null,"pctFilingKind":null,"pctFilingNumber":null,"pctName":null,"pctOrRegionalPublishingCountry":null,"pctOrRegionalPublishingKind":null,"pctOrRegionalPublishingName":null,"pctOrRegionalPublishingText":null,"pctPubDate":null,"pctPubDateKwicHits":null,"pctPubDocIdentifier":null,"pctPubNumber":null,"pfApplicationDateSearch":null,"pfApplicationType":null,"pfDerwentWeekDate":null,"pfPublDateSearch":null,"pfPublDateSearchKwicHits":null,"pfPublYearSearch":null,"polymerIndexingCodes":null,"polymerMultipunchCodeRecordNumber":null,"polymerMultipunchCodes":null,"priorPublishedDocCountryCode":null,"priorPublishedDocDate":null,"priorPublishedDocDateKwicHits":null,"priorPublishedDocIdentifier":null,"priorPublishedDocKindCode":null,"priorPublishedDocNumber":null,"priorityApplYear":null,"priorityApplicationDate":null,"priorityClaimsDateSearch":null,"priorityClaimsDocNumber":null,"priorityPatentDid":null,"priorityPatentNumber":null,"ptabCertFlag":null,"pubRefCountryCode":null,"pubRefDocNumber":"7658211","pubRefDocNumber1":"07658211","publicationData":null,"recordPatentNumber":null,"reexaminationFlag":null,"refCitedOthers":null,"refCitedPatentDocCountryCode":null,"refCitedPatentDocName":null,"refCitedPatentRelevantPassage":null,"reissueParentIssueDate":null,"reissuedPatentApplFilingDate":null,"relatedAccessionNumbers":null,"relatedApplChildPatentDate":null,"relatedApplFilingDateKwicHits":null,"relatedApplNumber":null,"relatedApplPatentIssueDate":null,"relatedApplPatentIssueDateKwicHits":null,"relatedDocumentKindCode":null,"securityLegend":null,"sequenceCwu":null,"sequenceListNewRules":null,"sequenceListOldRules":null,"sequencesListText":null,"standardTitleTerms":null,"supplementalExaminationFlag":null,"usBotanicLatinName":null,"usBotanicVariety":null,"usRefClassification":["N/A","206/315","206/315","417/44","53/79","53/79","206/315","206/213.1","206/315","141/329","141/4","53/79","220/240","221/102","473/606","92/98R","206/315.9"],"usRefCpcClassification":null,"usRefGroup":["US
+      1207813 A 19161200 Stockton cited by other","US 4019629 A 19770400 Dubner et
+      al. 206/315 cited by other","US 4020948 A 19770500 Won 206/315 cited by other","US
+      4046491 A 19770900 Roeder 417/44 cited by other","US 4073120 A 19780200 Berggren
+      53/79 cited by other","US 4086743 A 19780500 Hoopes 53/79 cited by other","US
+      4101029 A 19780700 Feinberg et al. 206/315 cited by other","US 4124117 A 19781100
+      Rudy 206/213.1 cited by other","US 4161247 A 19790700 Feinberg et al. 206/315
+      cited by other","US 4165770 A 19790800 Goldman et al. 141/329 cited by other","US
+      4248275 A 19810200 Reed 141/4 cited by examiner","US 4372095 A 19830200 De Satnick
+      53/79 cited by other","US 5002196 A 19910300 Bassili 220/240 cited by examiner","US
+      5397018 A 19950300 Mader 221/102 cited by examiner","US 5593157 A 19970100 Koros
+      et al. 473/606 cited by other","US 5615596 A 19970400 Issa 92/98R cited by examiner","US
+      5730286 A 19980300 Eska 206/315.9 cited by other"],"usRefIssueDate":["19161200","19770400","19770500","19770900","19780200","19780500","19780700","19781100","19790700","19790800","19810200","19830200","19910300","19950300","19970100","19970400","19980300"],"usRefIssueDateKwicHits":["19161200","19770400","19770500","19770900","19780200","19780500","19780700","19781100","19790700","19790800","19810200","19830200","19910300","19950300","19970100","19970400","19980300"],"usRefPatenteeName":["Stockton","Dubner
+      et al.","Won","Roeder","Berggren","Hoopes","Feinberg et al.","Rudy","Feinberg
+      et al.","Goldman et al.","Reed","De Satnick","Bassili","Mader","Koros et al.","Issa","Eska"],"volumeNumber":null,"correspondenceNameAddress":null,"correspondenceAddressCustomerNumber":null,"ibmtdbAccessionNumber":null,"inventorsName":["Dirst;
+      William F."],"applicationKindCode":"B1","inventorNameDerived":null,"intlPubClassificationClass":["B65B"],"issuedUsOrigClassification":"141/11","curCpcSubclassFull":["A63B","A63B"],"cpcCurAdditionalClass":["A63B"],"cpcCurInventiveClass":["A63B"],"cpcCurClassificationGroup":["A
+      A63B A63B39/025 20130101 F I B H 20130101 US","A A63B A63B2102/02 20151001 L
+      A B H 20151005 US"],"curCpcClassificationFull":["A63B2102/02 20151001","A63B39/025
+      20130101"],"cpcCombinationClassificationCur":null,"cpcCombinationTallyCur":null,"intlFurtherClassification":null,"currentUsPatentClass":["141","206"],"internationalClassificationInfom":null,"curIntlPatentClassifictionPrimaryDateKwicHits":null,"curIntlPatentClssifSecHlights":null,"idWithoutSolrPartition":"US-US-07658211","cpcOrigInventvClssifHlghts":null,"descriptionStart":3,"descriptionEnd":7,"publicationReferenceDocumentNumberOne":"07658211"}'
+    headers:
+      content-type:
+      - application/json
+      date:
+      - Wed, 06 Dec 2023 19:18:15 GMT
+      server-timing:
+      - intid;desc=d00d881525a40867
+    http_version: HTTP/2
+    status_code: 200
+version: 1

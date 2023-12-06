@@ -2,12 +2,19 @@ import pytest
 
 from . import Patent
 from . import PatentBiblio
+from . import PublicSearchBiblio
 from . import PublicSearchDocument
 from . import PublishedApplication
 from . import PublishedApplicationBiblio
 
 
 class TestPatents:
+    def test_simple_lookup_biblio(self):
+        app = PublicSearchBiblio.objects.get(patent_number="6103599")
+        assert app.appl_id == "09089931"
+        assert app.guid == "US-6103599-A"
+        assert app.patent_title == "Planarizing technique for multilayered substrates"
+
     def test_simple_lookup(self):
         app = PublicSearchDocument.objects.get(patent_number="6103599")
         assert app.appl_id == "09089931"
@@ -144,7 +151,7 @@ class TestPublishedApplicationFullText:
         pub_no = 20_170_370_151
         pub = PublishedApplication.objects.get(pub_no)
         for i in range(6):
-            assert pub.claims[i].text == f"{i+1}. (canceled)"
+            assert pub.claims[i].text == f"{i + 1}. (canceled)"
         assert "A system to control directional drilling in borehole drilling for" in pub.claims[6].text
 
     def test_search_classification(self):
@@ -352,7 +359,7 @@ class TestPublishedApplicationFullTextAsync:
         pub_no = 20_170_370_151
         pub = await PublishedApplication.objects.aget(pub_no)
         for i in range(6):
-            assert pub.claims[i].text == f"{i+1}. (canceled)"
+            assert pub.claims[i].text == f"{i + 1}. (canceled)"
         assert "A system to control directional drilling in borehole drilling for" in pub.claims[6].text
 
     @pytest.mark.asyncio

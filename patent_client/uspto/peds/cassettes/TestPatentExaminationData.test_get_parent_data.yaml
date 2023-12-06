@@ -1,0 +1,656 @@
+interactions:
+- request:
+    body: '{"df": "patentTitle", "qf": "appEarlyPubNumber applId appLocation appType
+      appStatus_txt appConfrNumber appCustNumber appGrpArtNumber appCls appSubCls
+      appEntityStatus_txt patentNumber patentTitle inventorName firstNamedApplicant
+      appExamName appExamPrefrdName appAttrDockNumber appPCTNumber appIntlPubNumber
+      wipoEarlyPubNumber pctAppType firstInventorFile appClsSubCls rankAndInventorsList",
+      "fl": "*", "fq": [], "searchText": "applId:(14018930)", "sort": "applId asc",
+      "facet": "false", "mm": "0%", "start": "0"}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '511'
+      content-type:
+      - application/json
+      host:
+      - ped.uspto.gov
+      user-agent:
+      - Mozilla/5.0 Python Patent Clientbot/4.1.3 (parkerhancock@users.noreply.github.com)
+    method: POST
+    uri: https://ped.uspto.gov/api/queries
+  response:
+    content: '{"queryResults":{"indexLastUpdatedDate":"Wed Dec 06 10:24:18 EST 2023","searchResponse":{"responseHeader":{"zkConnected":true,"status":0,"QTime":657},"response":{"numFound":1,"start":0,"numFoundExact":true,"docs":[{"corrAddrCountryName":"UNITED
+      STATES","applId":"14018930","totalPtoDays":"244","assignments":[{"reelNumber":"31169","frameNumber":"926","addressNameText":"CANTOR
+      COLBURN LLP","addressLineOneText":"20 CHURCH STREET","addressLineTwoText":"22ND
+      FLOOR","addressLineThreeText":"HARTFORD, CT 06103","addressLineFourText":"null","mailDate":"09-11-2013","receivedDate":"09-05-2013","recordedDate":"09-05-2013","pagesCount":"4","converyanceName":"ASSIGNMENT
+      OF ASSIGNORS INTEREST (SEE DOCUMENT FOR DETAILS).","sequenceNumber":"1","assignors":[{"assignorName":"VELDHUIZEN,
+      TODD L.","execDate":"09-04-2013"}],"assignee":[{"assigneeName":"LOGICBLOX, INC.","streetLineOneText":"1349
+      W. PEACHTREE STREET, NW","streetLineTwoText":"SUITE 1880","cityName":"ATLANTA","countryCode":"GEORGIA","postalCode":"30309"}]},{"reelNumber":"34909","frameNumber":"756","addressNameText":"MICHAEL
+      LABLANC","addressLineOneText":"655 W IRVING PARK ROAD","addressLineTwoText":"CHICAGO,
+      IL 60613","addressLineThreeText":"null","addressLineFourText":"null","mailDate":"02-09-2015","receivedDate":"02-06-2015","recordedDate":"02-06-2015","pagesCount":"12","converyanceName":"SECURITY
+      INTEREST (SEE DOCUMENT FOR DETAILS).","sequenceNumber":"2","assignors":[{"assignorName":"LOGICBLOX
+      INC.","execDate":"02-06-2015"}],"assignee":[{"assigneeName":"SILICON VALLEY
+      BANK","streetLineOneText":"3003 TASMAN DR.","streetLineTwoText":"null","cityName":"SANTA
+      CLARA","countryCode":"CALIFORNIA","postalCode":"95054"}]},{"reelNumber":"49519","frameNumber":"489","addressNameText":"BRUCE
+      D. GEORGE","addressLineOneText":"ONE LOGAN SQUARE","addressLineTwoText":"PHILADELPHIA,
+      PA 19103","addressLineThreeText":"null","addressLineFourText":"null","mailDate":"06-20-2019","receivedDate":"06-19-2019","recordedDate":"06-19-2019","pagesCount":"6","converyanceName":"MERGER
+      (SEE DOCUMENT FOR DETAILS).","sequenceNumber":"5","assignors":[{"assignorName":"LOGICBLOX,
+      INC.","execDate":"12-23-2016"}],"assignee":[{"assigneeName":"LOGICBLOX-PREDICTIX
+      ACQUISITIONCO, INC.","streetLineOneText":"C/O INFOR, INC.","streetLineTwoText":"641
+      AVENUE OF THE AMERICAS","cityName":"NEW YORK","countryCode":"NEW YORK","postalCode":"10011"}]},{"reelNumber":"49519","frameNumber":"716","addressNameText":"BRUCE
+      D. GEORGE","addressLineOneText":"ONE LOGAN SQUARE","addressLineTwoText":"PHILADELPHIA,
+      PA 19103","addressLineThreeText":"null","addressLineFourText":"null","mailDate":"06-20-2019","receivedDate":"06-19-2019","recordedDate":"06-19-2019","pagesCount":"6","converyanceName":"MERGER
+      (SEE DOCUMENT FOR DETAILS).","sequenceNumber":"5","assignors":[{"assignorName":"LOGICBLOX-PREDICTIX
+      ACQUISTIONCO, INC.","execDate":"12-23-2016"}],"assignee":[{"assigneeName":"LOGICBLOX-PREDICTIX
+      MIDCO, LLC","streetLineOneText":"C/O INFOR, INC.","streetLineTwoText":"641 AVENUE
+      OF THE AMERICAS","cityName":"NEW YORK","countryCode":"NEW YORK","postalCode":"10011"}]},{"reelNumber":"49519","frameNumber":"856","addressNameText":"BRUCE
+      D. GEORGE","addressLineOneText":"ONE LOGAN SQUARE","addressLineTwoText":"PHILADELPHIA,
+      PA 19103","addressLineThreeText":"null","addressLineFourText":"null","mailDate":"06-20-2019","receivedDate":"06-19-2019","recordedDate":"06-19-2019","pagesCount":"6","converyanceName":"MERGER
+      (SEE DOCUMENT FOR DETAILS).","sequenceNumber":"5","assignors":[{"assignorName":"LOGICBLOX-PREDICTIX
+      MIDCO, LLC","execDate":"12-23-2016"}],"assignee":[{"assigneeName":"INFOR RETAIL
+      HOLDINGS, INC.","streetLineOneText":"C/O INFOR, INC.","streetLineTwoText":"641
+      AVENUE OF THE AMERICAS","cityName":"NEW YORK","countryCode":"NEW YORK","postalCode":"10011"}]},{"reelNumber":"49519","frameNumber":"955","addressNameText":"BRUCE
+      D. GEORGE","addressLineOneText":"ONE LOGAN SQUARE","addressLineTwoText":"PHILADELPHIA,
+      PA 19103","addressLineThreeText":"null","addressLineFourText":"null","mailDate":"06-20-2019","receivedDate":"06-19-2019","recordedDate":"06-19-2019","pagesCount":"14","converyanceName":"NUNC
+      PRO TUNC ASSIGNMENT (SEE DOCUMENT FOR DETAILS).","sequenceNumber":"5","assignors":[{"assignorName":"INFOR
+      RETAIL HOLDINGS, INC.","execDate":"06-27-2018"}],"assignee":[{"assigneeName":"LOGICBLOX
+      LLC","streetLineOneText":"641 AVENUE OF THE AMERICAS","streetLineTwoText":"null","cityName":"NEW
+      YORK","countryCode":"NEW YORK","postalCode":"10011"}]},{"reelNumber":"49520","frameNumber":"138","addressNameText":"BRUCE
+      D. GEORGE","addressLineOneText":"ONE LOGAN SQUARE","addressLineTwoText":"PHILADELPHIA,
+      PA 19103","addressLineThreeText":"null","addressLineFourText":"null","mailDate":"06-20-2019","receivedDate":"06-19-2019","recordedDate":"06-19-2019","pagesCount":"6","converyanceName":"MERGER
+      (SEE DOCUMENT FOR DETAILS).","sequenceNumber":"5","assignors":[{"assignorName":"LOGICBLOX
+      LLC","execDate":"09-14-2017"}],"assignee":[{"assigneeName":"INFOR (US), INC.","streetLineOneText":"C/O
+      INFOR, INC.","streetLineTwoText":"641 AVENUE OF THE AMERICAS","cityName":"NEW
+      YORK","countryCode":"NEW YORK","postalCode":"10011"}]},{"reelNumber":"56048","frameNumber":"944","addressNameText":"SHANNON
+      GONSALVES","addressLineOneText":"4111 E 37TH ST N","addressLineTwoText":"WICHITA,
+      KS 67220","addressLineThreeText":"null","addressLineFourText":"null","mailDate":"04-28-2021","receivedDate":"04-26-2021","recordedDate":"04-26-2021","pagesCount":"5","converyanceName":"CHANGE
+      OF NAME (SEE DOCUMENT FOR DETAILS).","sequenceNumber":"28","assignors":[{"assignorName":"INFOR
+      (US), INC.","execDate":"11-01-2020"}],"assignee":[{"assigneeName":"INFOR (US),
+      LLC","streetLineOneText":"641 AVENUE OF THE AMERICAS","streetLineTwoText":"null","cityName":"NEW
+      YORK","countryCode":"NEW YORK","postalCode":"10011"}]}],"applicants":[{"nameLineOne":"LogicBlox,
+      Inc.","nameLineTwo":" ","suffix":"","streetOne":"","streetTwo":"","city":"Atlanta,
+      ","geoCode":"GA","country":"()","rankNo":"0"}],"applicantsFacet":"{||LogicBlox,
+      Inc.||||Atlanta|GA||ORG|0}","appFilingDate":"2013-09-05T00:00:00Z","appExamName":"HOFFLER,
+      RAHEEM","appExamNameFacet":"HOFFLER, RAHEEM","publicInd":"Y","APP_IND":"5","inventorName":"Todd
+      L. Veldhuizen","inventorNameFacet":"Todd L. Veldhuizen","appEarlyPubDate":"2014-03-27T00:00:00Z","corrAddrGeoRegionCode":"PA","corrAddrNameLineTwo":"Crystal
+      J. Corsey","appLocation":"ELECTRONIC","appEarlyPubNumber":"US20140089292A1","id":"14018930","appGrpArtNumber":"2155","appGrpArtNumberFacet":"2155","applIdStr":"14018930","appl_id_txt":"14018930","appSubCls":"714000","patentNumber":"9177026","LAST_MOD_TS":"2023-12-04T13:41:00Z","transactions":[{"recordDate":"2023-04-19
+      00:00:00","code":"M1552","description":"Payment of Maintenance Fee, 8th Year,
+      Large Entity"},{"recordDate":"2019-06-26 00:00:00","code":"EML_NTR","description":"Email
+      Notification"},{"recordDate":"2019-06-26 00:00:00","code":"PA..","description":"Change
+      in Power of Attorney (May Include Associate POA)"},{"recordDate":"2019-06-25
+      00:00:00","code":"C.AD","description":"Correspondence Address Change"},{"recordDate":"2019-04-03
+      00:00:00","code":"M1551","description":"Payment of Maintenance Fee, 4th Year,
+      Large Entity"},{"recordDate":"2019-03-22 00:00:00","code":"BIG.","description":"Entity
+      Status Set To Undiscounted (Initial Default Setting or Status Change)"},{"recordDate":"2015-12-14
+      00:00:00","code":"SMAL","description":"Applicant Has Filed a Verified Statement
+      of Small Entity Status in Compliance with 37 CFR 1.27"},{"recordDate":"2015-12-14
+      00:00:00","code":"EML_NTR","description":"Email Notification"},{"recordDate":"2015-12-14
+      00:00:00","code":"PA..","description":"Change in Power of Attorney (May Include
+      Associate POA)"},{"recordDate":"2015-12-11 00:00:00","code":"C.AD","description":"Correspondence
+      Address Change"},{"recordDate":"2015-11-03 00:00:00","code":"PGM/","description":"Recordation
+      of Patent Grant Mailed"},{"recordDate":"2015-10-15 00:00:00","code":"EML_NTR","description":"Email
+      Notification"},{"recordDate":"2015-10-14 00:00:00","code":"WPIR","description":"Issue
+      Notification Mailed"},{"recordDate":"2015-11-03 00:00:00","code":"PTAC","description":"Patent
+      Issue Date Used in PTA Calculation"},{"recordDate":"2015-10-06 00:00:00","code":"D1935","description":"Dispatch
+      to FDC"},{"recordDate":"2015-10-06 00:00:00","code":"PILS","description":"Application
+      Is Considered Ready for Issue"},{"recordDate":"2015-10-01 00:00:00","code":"N084","description":"Issue
+      Fee Payment Verified"},{"recordDate":"2015-10-01 00:00:00","code":"IFEE","description":"Issue
+      Fee Payment Received"},{"recordDate":"2015-08-31 00:00:00","code":"CCRDY","description":"Application
+      ready for PDX access by participating foreign offices"},{"recordDate":"2015-07-07
+      00:00:00","code":"ELC_RVW","description":"Electronic Review"},{"recordDate":"2015-07-07
+      00:00:00","code":"EML_NTF","description":"Email Notification"},{"recordDate":"2015-07-07
+      00:00:00","code":"MN/=.","description":"Mail Notice of Allowance"},{"recordDate":"2015-07-01
+      00:00:00","code":"N/=.","description":"Notice of Allowance Data Verification
+      Completed"},{"recordDate":"2015-06-29 00:00:00","code":"EX.R","description":"Reasons
+      for Allowance"},{"recordDate":"2014-02-14 00:00:00","code":"IDSC","description":"Information
+      Disclosure Statement considered"},{"recordDate":"2013-09-05 00:00:00","code":"IDSC","description":"Information
+      Disclosure Statement considered"},{"recordDate":"2015-04-09 00:00:00","code":"DOCK","description":"Case
+      Docketed to Examiner in GAU"},{"recordDate":"2014-03-28 00:00:00","code":"EML_NTR","description":"Email
+      Notification"},{"recordDate":"2014-03-27 00:00:00","code":"PG-ISSUE","description":"PG-Pub
+      Issue Notification"},{"recordDate":"2014-02-14 00:00:00","code":"EIDS.","description":"Electronic
+      Information Disclosure Statement"},{"recordDate":"2014-02-14 00:00:00","code":"WIDS","description":"Information
+      Disclosure Statement (IDS) Filed"},{"recordDate":"2013-10-08 00:00:00","code":"EML_NTR","description":"Email
+      Notification"},{"recordDate":"2013-09-05 00:00:00","code":"EIDS.","description":"Electronic
+      Information Disclosure Statement"},{"recordDate":"2013-10-08 00:00:00","code":"PA..","description":"Change
+      in Power of Attorney (May Include Associate POA)"},{"recordDate":"2013-09-25
+      00:00:00","code":"DOCK","description":"Case Docketed to Examiner in GAU"},{"recordDate":"2013-09-24
+      00:00:00","code":"OIPE","description":"Application Dispatched from OIPE"},{"recordDate":"2013-09-20
+      00:00:00","code":"COMP","description":"Application Is Now Complete"},{"recordDate":"2013-09-20
+      00:00:00","code":"EML_NTR","description":"Email Notification"},{"recordDate":"2013-09-20
+      00:00:00","code":"EML_NTR","description":"Email Notification"},{"recordDate":"2013-09-20
+      00:00:00","code":"PA..","description":"Change in Power of Attorney (May Include
+      Associate POA)"},{"recordDate":"2013-09-19 00:00:00","code":"FTFI","description":"FITF
+      set to NO - revise initial setting"},{"recordDate":"2013-09-19 00:00:00","code":"PGPC","description":"Sent
+      to Classification Contractor"},{"recordDate":"2013-09-20 00:00:00","code":"FLRCPT.O","description":"Filing
+      Receipt"},{"recordDate":"2013-09-05 00:00:00","code":"APPERMS","description":"Applicants
+      have given acceptable permission for participating foreign "},{"recordDate":"2013-09-06
+      00:00:00","code":"L194","description":"Cleared by OIPE CSR"},{"recordDate":"2013-09-05
+      00:00:00","code":"WIDS","description":"Information Disclosure Statement (IDS)
+      Filed"},{"recordDate":"2013-09-05 00:00:00","code":"SCAN","description":"IFW
+      Scan & PACR Auto Security Review"},{"recordDate":"2013-09-05 00:00:00","code":"BIG.","description":"Entity
+      Status Set To Undiscounted (Initial Default Setting or Status Change)"},{"recordDate":"2013-09-05
+      00:00:00","code":"IEXX","description":"Initial Exam Team nn"}],"LAST_INSERT_TIME":"2023-12-04T20:15:02Z","appCls":"707","appStatus":"Patented
+      Case","appStatusFacet":"Patented Case","appStatus_txt":"Patented Case","ptaPteInd":"PTA","ptaPteTranHistory":[{"number":"47.5","ptaOrPteDate":"11-03-2015","contentsDescription":"PTA
+      36 Months","ptoDays":"","applDays":"","start":"0.5"},{"number":"47","ptaOrPteDate":"11-03-2015","contentsDescription":"Patent
+      Issue Date Used in PTA Calculation","ptoDays":"","applDays":"","start":"0"},{"number":"45","ptaOrPteDate":"10-06-2015","contentsDescription":"Dispatch
+      to FDC","ptoDays":"","applDays":"","start":"0"},{"number":"44","ptaOrPteDate":"10-06-2015","contentsDescription":"Application
+      Is Considered Ready for Issue","ptoDays":"","applDays":"","start":"0"},{"number":"43","ptaOrPteDate":"10-01-2015","contentsDescription":"Issue
+      Fee Payment Verified","ptoDays":"","applDays":"","start":"0"},{"number":"42","ptaOrPteDate":"10-01-2015","contentsDescription":"Issue
+      Fee Payment Received","ptoDays":"","applDays":"","start":"0"},{"number":"41","ptaOrPteDate":"08-31-2015","contentsDescription":"Application
+      ready for PDX access by participating foreign offices","ptoDays":"","applDays":"","start":"0"},{"number":"38","ptaOrPteDate":"07-07-2015","contentsDescription":"Electronic
+      Review","ptoDays":"","applDays":"","start":"0"},{"number":"37","ptaOrPteDate":"07-07-2015","contentsDescription":"Email
+      Notification","ptoDays":"","applDays":"","start":"0"},{"number":"36","ptaOrPteDate":"07-07-2015","contentsDescription":"Mail
+      Notice of Allowance","ptoDays":"244","applDays":"","start":"0.5"},{"number":"33","ptaOrPteDate":"07-01-2015","contentsDescription":"Notice
+      of Allowance Data Verification Completed","ptoDays":"","applDays":"","start":"0"},{"number":"30","ptaOrPteDate":"06-29-2015","contentsDescription":"Reasons
+      for Allowance","ptoDays":"","applDays":"","start":"0"},{"number":"25","ptaOrPteDate":"02-14-2014","contentsDescription":"Information
+      Disclosure Statement considered","ptoDays":"","applDays":"","start":"0"},{"number":"24","ptaOrPteDate":"09-05-2013","contentsDescription":"Information
+      Disclosure Statement considered","ptoDays":"","applDays":"","start":"0"},{"number":"23","ptaOrPteDate":"04-09-2015","contentsDescription":"Case
+      Docketed to Examiner in GAU","ptoDays":"","applDays":"","start":"0"},{"number":"22","ptaOrPteDate":"03-28-2014","contentsDescription":"Email
+      Notification","ptoDays":"","applDays":"","start":"0"},{"number":"21","ptaOrPteDate":"03-27-2014","contentsDescription":"PG-Pub
+      Issue Notification","ptoDays":"","applDays":"","start":"0"},{"number":"20","ptaOrPteDate":"02-14-2014","contentsDescription":"Electronic
+      Information Disclosure Statement","ptoDays":"","applDays":"","start":"0"},{"number":"19","ptaOrPteDate":"02-14-2014","contentsDescription":"Information
+      Disclosure Statement (IDS) Filed","ptoDays":"","applDays":"","start":"0"},{"number":"18","ptaOrPteDate":"10-08-2013","contentsDescription":"Email
+      Notification","ptoDays":"","applDays":"","start":"0"},{"number":"17","ptaOrPteDate":"09-05-2013","contentsDescription":"Electronic
+      Information Disclosure Statement","ptoDays":"","applDays":"","start":"0"},{"number":"16","ptaOrPteDate":"10-08-2013","contentsDescription":"Change
+      in Power of Attorney (May Include Associate POA)","ptoDays":"","applDays":"","start":"0"},{"number":"15","ptaOrPteDate":"09-25-2013","contentsDescription":"Case
+      Docketed to Examiner in GAU","ptoDays":"","applDays":"","start":"0"},{"number":"14","ptaOrPteDate":"09-24-2013","contentsDescription":"Application
+      Dispatched from OIPE","ptoDays":"","applDays":"","start":"0"},{"number":"13","ptaOrPteDate":"09-20-2013","contentsDescription":"Application
+      Is Now Complete","ptoDays":"","applDays":"","start":"0"},{"number":"12","ptaOrPteDate":"09-20-2013","contentsDescription":"Email
+      Notification","ptoDays":"","applDays":"","start":"0"},{"number":"11","ptaOrPteDate":"09-20-2013","contentsDescription":"Email
+      Notification","ptoDays":"","applDays":"","start":"0"},{"number":"10","ptaOrPteDate":"09-20-2013","contentsDescription":"Change
+      in Power of Attorney (May Include Associate POA)","ptoDays":"","applDays":"","start":"0"},{"number":"9","ptaOrPteDate":"09-19-2013","contentsDescription":"FITF
+      set to NO - revise initial setting","ptoDays":"","applDays":"","start":"0"},{"number":"8","ptaOrPteDate":"09-19-2013","contentsDescription":"Sent
+      to Classification Contractor","ptoDays":"","applDays":"","start":"0"},{"number":"7","ptaOrPteDate":"09-20-2013","contentsDescription":"Filing
+      Receipt","ptoDays":"","applDays":"","start":"0"},{"number":"6","ptaOrPteDate":"09-05-2013","contentsDescription":"Applicants
+      have given acceptable permission for participating foreign ","ptoDays":"","applDays":"","start":"0"},{"number":"5","ptaOrPteDate":"09-06-2013","contentsDescription":"Cleared
+      by OIPE CSR","ptoDays":"","applDays":"","start":"0"},{"number":"4","ptaOrPteDate":"09-05-2013","contentsDescription":"Information
+      Disclosure Statement (IDS) Filed","ptoDays":"","applDays":"","start":"0"},{"number":"3","ptaOrPteDate":"09-05-2013","contentsDescription":"IFW
+      Scan & PACR Auto Security Review","ptoDays":"","applDays":"","start":"0"},{"number":"2","ptaOrPteDate":"09-05-2013","contentsDescription":"Entity
+      Status Set To Undiscounted (Initial Default Setting or Status Change)","ptoDays":"","applDays":"","start":"0"},{"number":"1","ptaOrPteDate":"09-05-2013","contentsDescription":"Initial
+      Exam Team nn","ptoDays":"","applDays":"","start":"0"},{"number":"0.5","ptaOrPteDate":"09-05-2013","contentsDescription":"Filing
+      date","ptoDays":"","applDays":"","start":"0"}],"corrAddrGeoRegionNA":"PENNSYLVANIA","patentTitle":"LEAPFROG
+      TREE-JOIN","applDelay":"0","cDelay":"0","appStatusDate":"2015-10-14T00:00:00Z","appAttrDockNumber":"LBLOX1","inventors":[{"nameLineOne":"Veldhuizen","nameLineTwo":"Todd
+      L.","suffix":"","streetOne":"","streetTwo":"","city":"Waterloo, ","geoCode":"","country":"(CA)","rankNo":"1"}],"inventorsFacet":"{Todd|L.|Veldhuizen||||Waterloo||CA|IND|1}","ptoAdjustments":"0","corrAddrStreetLineOne":"ONE
+      LOGAN SQUARE","firstInventorFile":"No","childContinuity":[{"claimApplicationNumberText":"14919159","applicationNumberText":"14018930","filingDate":"10-21-2015","aiaIndicator":"N","patentNumberText":"10120906","applicationStatus":"Patented","applicationStatusDescription":"claims
+      the benefit of"},{"claimApplicationNumberText":"16178099","applicationNumberText":"14018930","filingDate":"11-01-2018","aiaIndicator":"N","patentNumberText":"","applicationStatus":"Abandoned","applicationStatusDescription":"claims
+      the benefit of"}],"overlapDelay":"0","aDelay":"244","appType":"Utility","appTypeFacet":"Utility","corrAddrPostalCode":"19103","appCustNumber":"64574","appClsSubCls":"707/714000","appClsSubClsFacet":"707/714000","patentIssueDate":"2015-11-03T00:00:00Z","bDelay":"0","corrAddrNameLineOne":"BLANK
+      ROME LLP","firstNamedApplicant":["  LogicBlox, Inc."],"firstNamedApplicantFacet":"  LogicBlox,
+      Inc.","attrnyAddr":[{"applicationId":null,"registrationNo":"28419","fullName":"Greenbaum,
+      Michael  ","phoneNum":"202-772-5836","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"28680","fullName":"Wolfe,
+      Charles  Jr","phoneNum":"202-772-5841","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"31063","fullName":"Soffen,
+      Stephen  ","phoneNum":"202-420-4879","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"31727","fullName":"Marcus,
+      Michael  ","phoneNum":"703-283-0022","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"32115","fullName":"Brady,
+      James  Jr","phoneNum":"202-420-4786","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"32699","fullName":"Grossman,
+      Jon  ","phoneNum":"202-420-2279","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"33082","fullName":"Thronson,
+      Mark  ","phoneNum":"202-420-4742","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"40220","fullName":"Weissman,
+      Peter  ","phoneNum":"202-772-5805","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"41151","fullName":"Lessler,
+      Jay  ","phoneNum":"212-885-5176","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"41536","fullName":"Esserman,
+      Matthew  ","phoneNum":"215-569-5603","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"43631","fullName":"George,
+      Bruce  ","phoneNum":"215-569-5798","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"45153","fullName":"Tamburo,
+      Salvatore  ","phoneNum":"202-420-2200","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"46510","fullName":"Marcus,
+      Tara  ","phoneNum":"202-772-5957","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"48443","fullName":"Higgins,
+      Brian  ","phoneNum":"202-772-5814","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"49000","fullName":"McDermott,
+      Sean  ","phoneNum":"713-632-8639","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"50239","fullName":"Mitchell,
+      Jonathan  ","phoneNum":"212-885-5000","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"60073","fullName":"Doshi,
+      Dipu  ","phoneNum":"202-420-2604","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"63196","fullName":"Homyk,
+      Matthew  ","phoneNum":"--","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"65967","fullName":"King,
+      Jonathan  ","phoneNum":"215-569-5432","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"66271","fullName":"Herrman,
+      Scott  ","phoneNum":"202-420-4793","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"67399","fullName":"Peterson,
+      Daniel  ","phoneNum":"713-632-8665","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"68030","fullName":"Perry,
+      Alexander  ","phoneNum":"202-420-3115","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"71223","fullName":"England,
+      Jonathan  ","phoneNum":"202-420-2747","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"72367","fullName":"Wood,
+      Megan  ","phoneNum":"202-420-2753","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"78041","fullName":"Lin,
+      Wenzhi  ","phoneNum":"571-234-7818","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"46147","fullName":"Allen,
+      Billy  III","phoneNum":"713-632-8680","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"72236","fullName":"Paradkar,
+      Ameya  ","phoneNum":"202-772-5849","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"71956","fullName":"Duncan,
+      Cole  ","phoneNum":"713-228-6601","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"72989","fullName":"Dodd,
+      Anastasia  ","phoneNum":"713-632-8685","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"70684","fullName":"LLagostera,
+      Domingo  ","phoneNum":"713-632-8632","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"73921","fullName":"Chi,
+      Jeffrey  ","phoneNum":"713-632-8668","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"32322","fullName":"Wong,
+      Russell  ","phoneNum":"713-632-8634","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"68383","fullName":"Franco,
+      Katherine  ","phoneNum":"713-632-8664","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"44144","fullName":"Harris,
+      Jonathan  ","phoneNum":"713-632-8643","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"54036","fullName":"Christenson,
+      Alan  ","phoneNum":"713-632-8665","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"56790","fullName":"Wilson,
+      David  ","phoneNum":"713-632-8692","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"79611","fullName":"Monterrosa,
+      Nelson  ","phoneNum":"713-228-8600","regStatus":"ACTIVE"}],"parentContinuity":[{"claimApplicationNumberText":"61706484","applicationNumberText":"14018930","filingDate":"09-27-2012","aiaIndicator":"","patentNumberText":"","applicationStatus":"Expired","applicationStatusDescription":"This
+      application Claims Priority from Provisional Application"}],"corrAddrCustNo":"64574","corrAddrCountryCd":"US","ptoDelay":"244","corrAddrCity":"PHILADELPHIA","appEntityStatus":"UNDISCOUNTED","appConfrNumber":"9875","lastUpdatedTimestamp":"2023-12-05T16:03:31.303Z","cmsData":["{14018930|2019-06-26
+      09:56:28|PROSECUTION|Communication - Re:  Power of Attorney (PTOL-308)|N570|1|JXC4310WRXEAPX0},{14018930|2019-06-26
+      09:56:28|PROSECUTION|Communication - Re:  Power of Attorney (PTOL-308)|N570|1|JXC4319ARXEAPX3},{14018930|2019-06-24
+      11:15:59|PROSECUTION|Assignee showing of ownership per 37 CFR 3.73|R3.73|3|JXARHFNLRXEAPX1},{14018930|2019-06-24
+      11:15:59|PROSECUTION|Power of Attorney|PA..|2|JXARHFNJRXEAPX1},{14018930|2019-06-24
+      11:15:59|PROSECUTION|Electronic Filing System(EFS) Acknowledgment Receipt|N417|2|JXARHFNMRXEAPX1},{14018930|2019-03-22
+      10:06:21|PROSECUTION|Notification of loss of entitlement to small entity status
+      via Patent Application Information Retrieval (PAIR)|SES.LOSS.ELC|1|JTKDLT81RXEAPX1},{14018930|2015-12-13
+      19:00:00|PROSECUTION|Assertion of entitlement to small entity status via Patent
+      Application Information Retrieval(PAIR)|SES.REQ.ELC|1|II65G0CVPXXIFW4},{14018930|2015-12-13
+      19:00:00|PROSECUTION|Communication - Re:  Power of Attorney (PTOL-308)|N570|1|II1ZN024PXXIFW4},{14018930|2015-12-13
+      19:00:00|PROSECUTION|Communication - Re:  Power of Attorney (PTOL-308)|N570|1|II1ZN0P0PXXIFW4},{14018930|2015-12-08
+      19:00:00|PROSECUTION|Power of Attorney|PA..|2|IHZ22HHUPXXIFW3},{14018930|2015-12-08
+      19:00:00|PROSECUTION|Electronic Filing System(EFS) Acknowledgment Receipt|N417|2|IHZ22HIAPXXIFW3},{14018930|2015-12-08
+      19:00:00|PROSECUTION|Assignee showing of ownership per 37 CFR 3.73|R3.73|3|IHZ22HIKPXXIFW3},{14018930|2015-10-13
+      20:00:00|PROSECUTION|Issue Notification|ISSUE.NTF|1|IFRLLEGGPXXIFW4},{14018930|2015-09-30
+      20:00:00|PROSECUTION|Issue Fee Payment (PTO-85B)|IFEE|1|IF8I8TK2PXXIFW3},{14018930|2015-09-30
+      20:00:00|PROSECUTION|Electronic Filing System(EFS) Acknowledgment Receipt|N417|2|IF8I8TL2PXXIFW3},{14018930|2015-09-30
+      20:00:00|PROSECUTION|Fee Worksheet (SB06)|WFEE|2|IF8I8TKWPXXIFW3},{14018930|2015-07-06
+      20:00:00|PROSECUTION|Index of Claims|FWCLM|1|IBMI6PA3PXXIFW4},{14018930|2015-07-06
+      20:00:00|PROSECUTION|List of References cited by applicant and considered by
+      examiner|1449|4|IBMI6PB8PXXIFW4},{14018930|2015-07-06 20:00:00|PROSECUTION|Notice
+      of Allowance and Fees Due (PTOL-85)|NOA|9|IBMI6P6JPXXIFW4},{14018930|2015-07-06
+      20:00:00|PROSECUTION|Examiner''s search strategy and results|SRNT|3|IBMI6PAZPXXIFW4},{14018930|2015-07-06
+      20:00:00|PROSECUTION|Search information including classification, databases
+      and other search related notes|SRFW|1|IBMI6PAJPXXIFW4},{14018930|2015-07-06
+      20:00:00|PROSECUTION|List of references cited by examiner|892|1|IBMI6P8MPXXIFW4},{14018930|2015-07-06
+      20:00:00|PROSECUTION|Issue Information including classification, examiner, name,
+      claim, renumbering, etc.|IIFW|3|IBMI6PABPXXIFW4},{14018930|2015-07-06 20:00:00|PROSECUTION|List
+      of References cited by applicant and considered by examiner|1449|5|IBMI6PBMPXXIFW4},{14018930|2015-07-06
+      20:00:00|PROSECUTION|Bibliographic Data Sheet|BIB|1|IBMI6PASPXXIFW4},{14018930|2015-07-06
+      20:00:00|PROSECUTION|Amendment After Final or under 37CFR 1.312, initialed by
+      the examiner.|ANE.I|2|IBMI6PC1PXXIFW4},{14018930|2014-03-26 20:00:00|PROSECUTION|Notice
+      of Publication|NTC.PUB|1|HTA4LU7CPXXIFW4},{14018930|2014-02-13 19:00:00|PROSECUTION|Other
+      reference-Patent/Application/Search Documents|REF.OTHER|5|HRNVSDB8PXXIFW3},{14018930|2014-02-13
+      19:00:00|PROSECUTION|Non Patent Literature|NPL|48|HRNVSDBPPXXIFW3},{14018930|2014-02-13
+      19:00:00|PROSECUTION|Non Patent Literature|NPL|490|HRNVSDBGPXXIFW3},{14018930|2014-02-13
+      19:00:00|PROSECUTION|Electronic Filing System(EFS) Acknowledgment Receipt|N417|2|HRNVSDCCPXXIFW3},{14018930|2014-02-13
+      19:00:00|PROSECUTION|Information Disclosure Statement (IDS) Form (SB08)|IDS|4|HRNVSDA9PXXIFW3},{14018930|2014-02-13
+      19:00:00|PROSECUTION|Non Patent Literature|NPL|7|HRNVSDBWPXXIFW3},{14018930|2014-02-13
+      19:00:00|PROSECUTION|Other reference-Patent/Application/Search Documents|REF.OTHER|7|HRNVSDC4PXXIFW3},{14018930|2013-10-07
+      20:00:00|PROSECUTION|Communication - Re:  Power of Attorney (PTOL-308)|N570|1|HMHMWJ6KPXXIFW4},{14018930|2013-09-26
+      20:00:00|PROSECUTION|Power of Attorney|PA..|1|HM3IRXGEPXXIFW3},{14018930|2013-09-26
+      20:00:00|PROSECUTION|Electronic Filing System(EFS) Acknowledgment Receipt|N417|2|HM3IRXJ3PXXIFW3},{14018930|2013-09-26
+      20:00:00|PROSECUTION|Power of Attorney|PA..|1|HM3IRXIVPXXIFW3},{14018930|2013-09-26
+      20:00:00|PROSECUTION|Miscellaneous Incoming Letter|LET.|3|HM3IRXJBPXXIFW3},{14018930|2013-09-19
+      20:00:00|PROSECUTION|Response - Re:  Informal Power of Attorney (PTOL-308)|N572|1|HLRXP9QIPXXIFW4},{14018930|2013-09-19
+      20:00:00|PROSECUTION|Fee Worksheet (SB06)|WFEE|1|HLRXP6KPPXXIFW4},{14018930|2013-09-19
+      20:00:00|PROSECUTION|Filing Receipt|APP.FILE.REC|3|HLRXP64HPXXIFW4},{14018930|2013-09-04
+      20:00:00|PROSECUTION|Power of Attorney|PA..|3|HL8DFQNNPXXIFW3},{14018930|2013-09-04
+      20:00:00|PROSECUTION|Oath or Declaration filed|OATH|4|HLGIK8WMPXXIFW4},{14018930|2013-09-04
+      20:00:00|PROSECUTION|Power of Attorney|PA..|1|HL8DFQQTPXXIFW3},{14018930|2013-09-04
+      20:00:00|PROSECUTION|Application Data Sheet|ADS|6|HL8DFQUKPXXIFW3},{14018930|2013-09-04
+      20:00:00|PROSECUTION|Non Patent Literature|NPL|43|HL8DFQTLPXXIFW3},{14018930|2013-09-04
+      20:00:00|PROSECUTION|Electronic Filing System(EFS) Acknowledgment Receipt|N417|3|HL8DFQUBPXXIFW3},{14018930|2013-09-04
+      20:00:00|PROSECUTION|Abstract|ABST|1|HL8DFQVJPXXIFW3},{14018930|2013-09-04 20:00:00|PROSECUTION|Fee
+      Worksheet (SB06)|WFEE|2|HL8DFQU3PXXIFW3},{14018930|2013-09-04 20:00:00|PROSECUTION|Non
+      Patent Literature|NPL|29|HL8DFQT4PXXIFW3},{14018930|2013-09-04 20:00:00|PROSECUTION|Claims|CLM|5|HL8DFQV7PXXIFW3},{14018930|2013-09-04
+      20:00:00|PROSECUTION|Non Patent Literature|NPL|12|HL8DFQTDPXXIFW3},{14018930|2013-09-04
+      20:00:00|PROSECUTION|Specification|SPEC|22|HL8DFQUTPXXIFW3},{14018930|2013-09-04
+      20:00:00|PROSECUTION|Drawings-only black and white line drawings|DRW|2|HL8DFQW3PXXIFW3},{14018930|2013-09-04
+      20:00:00|PROSECUTION|Information Disclosure Statement (IDS) Form (SB08)|IDS|5|HL8DFQSQPXXIFW3}"],"appAttrDockNumberFacet":"LBLOX1","appEntityStatusFacet":"UNDISCOUNTED","appCustNumberFacet":"64574","_version_":1784458543062056960,"firstInventorFileFacet":"No","appLocationFacet":"ELECTRONIC","appEarlyPubNumberFacet":"US20140089292A1","patentNumberFacet":"9177026"}]}},"queryId":"49b44a62-6f4a-42a7-96d1-dc2f9541bd8b"},"jobStatus":null,"queryId":"49b44a62-6f4a-42a7-96d1-dc2f9541bd8b","page":1,"count":0,"errorMessage":null,"createQueryRequest":{"searchText":"applId:(14018930)","facet":"false","facetField":null,"facetLimit":null,"facetMissing":null,"facetDate":null,"facetDateGap":null,"facetDateStart":null,"facetDateEnd":null,"facetDateOther":null,"facetDateInclude":null,"mm":"0%","sort":"applId
+      asc","qf":"appEarlyPubNumber applId appLocation appType appStatus_txt appConfrNumber
+      appCustNumber appGrpArtNumber appCls appSubCls appEntityStatus_txt patentNumber
+      patentTitle inventorName firstNamedApplicant appExamName appExamPrefrdName appAttrDockNumber
+      appPCTNumber appIntlPubNumber wipoEarlyPubNumber pctAppType firstInventorFile
+      appClsSubCls rankAndInventorsList","wt":null,"df":"patentTitle","fl":"*","start":"0","fq":[],"rows":null,"parameters":{"mm":"0%","df":"patentTitle","qf":"appEarlyPubNumber
+      applId appLocation appType appStatus_txt appConfrNumber appCustNumber appGrpArtNumber
+      appCls appSubCls appEntityStatus_txt patentNumber patentTitle inventorName firstNamedApplicant
+      appExamName appExamPrefrdName appAttrDockNumber appPCTNumber appIntlPubNumber
+      wipoEarlyPubNumber pctAppType firstInventorFile appClsSubCls rankAndInventorsList","fl":["*"],"start":"0","sort":"applId
+      asc","fq":[],"rows":"25","facet":"false"}},"links":[{"rel":"self","href":"https://ped.uspto.gov/api/queries/49b44a62-6f4a-42a7-96d1-dc2f9541bd8b?format=XML"},{"rel":"results","href":"https://ped.uspto.gov/api/queries/49b44a62-6f4a-42a7-96d1-dc2f9541bd8b/results?page=1"},{"rel":"package","href":"https://ped.uspto.gov/api/queries/49b44a62-6f4a-42a7-96d1-dc2f9541bd8b/package?format=XML"},{"rel":"first","href":"https://ped.uspto.gov/api/queries/49b44a62-6f4a-42a7-96d1-dc2f9541bd8b/results?page=1"},{"rel":"next","href":"https://ped.uspto.gov/api/queries/49b44a62-6f4a-42a7-96d1-dc2f9541bd8b/results?page=2"},{"rel":"self","href":"https://ped.uspto.gov/api/queries/49b44a62-6f4a-42a7-96d1-dc2f9541bd8b?format=JSON"},{"rel":"results","href":"https://ped.uspto.gov/api/queries/49b44a62-6f4a-42a7-96d1-dc2f9541bd8b/results?page=1"},{"rel":"package","href":"https://ped.uspto.gov/api/queries/49b44a62-6f4a-42a7-96d1-dc2f9541bd8b/package?format=JSON"},{"rel":"first","href":"https://ped.uspto.gov/api/queries/49b44a62-6f4a-42a7-96d1-dc2f9541bd8b/results?page=1"},{"rel":"next","href":"https://ped.uspto.gov/api/queries/49b44a62-6f4a-42a7-96d1-dc2f9541bd8b/results?page=2"}]}'
+    headers:
+      Cache-Control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 06 Dec 2023 19:16:57 GMT
+      Expires:
+      - '0'
+      Pragma:
+      - no-cache
+      Server-Timing:
+      - intid;desc=1fb6962f93617c9d
+      Strict-Transport-Security:
+      - max-age=31536000;includeSubDomains
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 dce3932214fb38d941490d48f7ff75dc.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - -A33bgtHyg7-YrJxw-p_LXAvP0LcAD3C1GC_d89Q0M1-ZVEmYQs4FQ==
+      X-Amz-Cf-Pop:
+      - IAH50-C1
+      X-Cache:
+      - Miss from cloudfront
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - DENY
+      X-XSS-Protection:
+      - 1; mode=block
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: '{"df": "patentTitle", "qf": "appEarlyPubNumber applId appLocation appType
+      appStatus_txt appConfrNumber appCustNumber appGrpArtNumber appCls appSubCls
+      appEntityStatus_txt patentNumber patentTitle inventorName firstNamedApplicant
+      appExamName appExamPrefrdName appAttrDockNumber appPCTNumber appIntlPubNumber
+      wipoEarlyPubNumber pctAppType firstInventorFile appClsSubCls rankAndInventorsList",
+      "fl": "*", "fq": [], "searchText": "applId:(14018930)", "sort": "applId asc",
+      "facet": "false", "mm": "0%", "start": "0", "rows": 1}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '522'
+      content-type:
+      - application/json
+      host:
+      - ped.uspto.gov
+      user-agent:
+      - Mozilla/5.0 Python Patent Clientbot/4.1.3 (parkerhancock@users.noreply.github.com)
+    method: POST
+    uri: https://ped.uspto.gov/api/queries
+  response:
+    content: '{"queryResults":{"indexLastUpdatedDate":"Wed Dec 06 08:44:09 EST 2023","searchResponse":{"responseHeader":{"zkConnected":true,"status":0,"QTime":489},"response":{"numFound":1,"start":0,"numFoundExact":true,"docs":[{"corrAddrCountryName":"UNITED
+      STATES","applId":"14018930","totalPtoDays":"244","assignments":[{"reelNumber":"31169","frameNumber":"926","addressNameText":"CANTOR
+      COLBURN LLP","addressLineOneText":"20 CHURCH STREET","addressLineTwoText":"22ND
+      FLOOR","addressLineThreeText":"HARTFORD, CT 06103","addressLineFourText":"null","mailDate":"09-11-2013","receivedDate":"09-05-2013","recordedDate":"09-05-2013","pagesCount":"4","converyanceName":"ASSIGNMENT
+      OF ASSIGNORS INTEREST (SEE DOCUMENT FOR DETAILS).","sequenceNumber":"1","assignors":[{"assignorName":"VELDHUIZEN,
+      TODD L.","execDate":"09-04-2013"}],"assignee":[{"assigneeName":"LOGICBLOX, INC.","streetLineOneText":"1349
+      W. PEACHTREE STREET, NW","streetLineTwoText":"SUITE 1880","cityName":"ATLANTA","countryCode":"GEORGIA","postalCode":"30309"}]},{"reelNumber":"34909","frameNumber":"756","addressNameText":"MICHAEL
+      LABLANC","addressLineOneText":"655 W IRVING PARK ROAD","addressLineTwoText":"CHICAGO,
+      IL 60613","addressLineThreeText":"null","addressLineFourText":"null","mailDate":"02-09-2015","receivedDate":"02-06-2015","recordedDate":"02-06-2015","pagesCount":"12","converyanceName":"SECURITY
+      INTEREST (SEE DOCUMENT FOR DETAILS).","sequenceNumber":"2","assignors":[{"assignorName":"LOGICBLOX
+      INC.","execDate":"02-06-2015"}],"assignee":[{"assigneeName":"SILICON VALLEY
+      BANK","streetLineOneText":"3003 TASMAN DR.","streetLineTwoText":"null","cityName":"SANTA
+      CLARA","countryCode":"CALIFORNIA","postalCode":"95054"}]},{"reelNumber":"49519","frameNumber":"489","addressNameText":"BRUCE
+      D. GEORGE","addressLineOneText":"ONE LOGAN SQUARE","addressLineTwoText":"PHILADELPHIA,
+      PA 19103","addressLineThreeText":"null","addressLineFourText":"null","mailDate":"06-20-2019","receivedDate":"06-19-2019","recordedDate":"06-19-2019","pagesCount":"6","converyanceName":"MERGER
+      (SEE DOCUMENT FOR DETAILS).","sequenceNumber":"5","assignors":[{"assignorName":"LOGICBLOX,
+      INC.","execDate":"12-23-2016"}],"assignee":[{"assigneeName":"LOGICBLOX-PREDICTIX
+      ACQUISITIONCO, INC.","streetLineOneText":"C/O INFOR, INC.","streetLineTwoText":"641
+      AVENUE OF THE AMERICAS","cityName":"NEW YORK","countryCode":"NEW YORK","postalCode":"10011"}]},{"reelNumber":"49519","frameNumber":"716","addressNameText":"BRUCE
+      D. GEORGE","addressLineOneText":"ONE LOGAN SQUARE","addressLineTwoText":"PHILADELPHIA,
+      PA 19103","addressLineThreeText":"null","addressLineFourText":"null","mailDate":"06-20-2019","receivedDate":"06-19-2019","recordedDate":"06-19-2019","pagesCount":"6","converyanceName":"MERGER
+      (SEE DOCUMENT FOR DETAILS).","sequenceNumber":"5","assignors":[{"assignorName":"LOGICBLOX-PREDICTIX
+      ACQUISTIONCO, INC.","execDate":"12-23-2016"}],"assignee":[{"assigneeName":"LOGICBLOX-PREDICTIX
+      MIDCO, LLC","streetLineOneText":"C/O INFOR, INC.","streetLineTwoText":"641 AVENUE
+      OF THE AMERICAS","cityName":"NEW YORK","countryCode":"NEW YORK","postalCode":"10011"}]},{"reelNumber":"49519","frameNumber":"856","addressNameText":"BRUCE
+      D. GEORGE","addressLineOneText":"ONE LOGAN SQUARE","addressLineTwoText":"PHILADELPHIA,
+      PA 19103","addressLineThreeText":"null","addressLineFourText":"null","mailDate":"06-20-2019","receivedDate":"06-19-2019","recordedDate":"06-19-2019","pagesCount":"6","converyanceName":"MERGER
+      (SEE DOCUMENT FOR DETAILS).","sequenceNumber":"5","assignors":[{"assignorName":"LOGICBLOX-PREDICTIX
+      MIDCO, LLC","execDate":"12-23-2016"}],"assignee":[{"assigneeName":"INFOR RETAIL
+      HOLDINGS, INC.","streetLineOneText":"C/O INFOR, INC.","streetLineTwoText":"641
+      AVENUE OF THE AMERICAS","cityName":"NEW YORK","countryCode":"NEW YORK","postalCode":"10011"}]},{"reelNumber":"49519","frameNumber":"955","addressNameText":"BRUCE
+      D. GEORGE","addressLineOneText":"ONE LOGAN SQUARE","addressLineTwoText":"PHILADELPHIA,
+      PA 19103","addressLineThreeText":"null","addressLineFourText":"null","mailDate":"06-20-2019","receivedDate":"06-19-2019","recordedDate":"06-19-2019","pagesCount":"14","converyanceName":"NUNC
+      PRO TUNC ASSIGNMENT (SEE DOCUMENT FOR DETAILS).","sequenceNumber":"5","assignors":[{"assignorName":"INFOR
+      RETAIL HOLDINGS, INC.","execDate":"06-27-2018"}],"assignee":[{"assigneeName":"LOGICBLOX
+      LLC","streetLineOneText":"641 AVENUE OF THE AMERICAS","streetLineTwoText":"null","cityName":"NEW
+      YORK","countryCode":"NEW YORK","postalCode":"10011"}]},{"reelNumber":"49520","frameNumber":"138","addressNameText":"BRUCE
+      D. GEORGE","addressLineOneText":"ONE LOGAN SQUARE","addressLineTwoText":"PHILADELPHIA,
+      PA 19103","addressLineThreeText":"null","addressLineFourText":"null","mailDate":"06-20-2019","receivedDate":"06-19-2019","recordedDate":"06-19-2019","pagesCount":"6","converyanceName":"MERGER
+      (SEE DOCUMENT FOR DETAILS).","sequenceNumber":"5","assignors":[{"assignorName":"LOGICBLOX
+      LLC","execDate":"09-14-2017"}],"assignee":[{"assigneeName":"INFOR (US), INC.","streetLineOneText":"C/O
+      INFOR, INC.","streetLineTwoText":"641 AVENUE OF THE AMERICAS","cityName":"NEW
+      YORK","countryCode":"NEW YORK","postalCode":"10011"}]},{"reelNumber":"56048","frameNumber":"944","addressNameText":"SHANNON
+      GONSALVES","addressLineOneText":"4111 E 37TH ST N","addressLineTwoText":"WICHITA,
+      KS 67220","addressLineThreeText":"null","addressLineFourText":"null","mailDate":"04-28-2021","receivedDate":"04-26-2021","recordedDate":"04-26-2021","pagesCount":"5","converyanceName":"CHANGE
+      OF NAME (SEE DOCUMENT FOR DETAILS).","sequenceNumber":"28","assignors":[{"assignorName":"INFOR
+      (US), INC.","execDate":"11-01-2020"}],"assignee":[{"assigneeName":"INFOR (US),
+      LLC","streetLineOneText":"641 AVENUE OF THE AMERICAS","streetLineTwoText":"null","cityName":"NEW
+      YORK","countryCode":"NEW YORK","postalCode":"10011"}]}],"applicants":[{"nameLineOne":"LogicBlox,
+      Inc.","nameLineTwo":" ","suffix":"","streetOne":"","streetTwo":"","city":"Atlanta,
+      ","geoCode":"GA","country":"()","rankNo":"0"}],"applicantsFacet":"{||LogicBlox,
+      Inc.||||Atlanta|GA||ORG|0}","appFilingDate":"2013-09-05T00:00:00Z","appExamName":"HOFFLER,
+      RAHEEM","appExamNameFacet":"HOFFLER, RAHEEM","publicInd":"Y","APP_IND":"5","inventorName":"Todd
+      L. Veldhuizen","inventorNameFacet":"Todd L. Veldhuizen","appEarlyPubDate":"2014-03-27T00:00:00Z","corrAddrGeoRegionCode":"PA","corrAddrNameLineTwo":"Crystal
+      J. Corsey","appLocation":"ELECTRONIC","appEarlyPubNumber":"US20140089292A1","id":"14018930","appGrpArtNumber":"2155","appGrpArtNumberFacet":"2155","applIdStr":"14018930","appl_id_txt":"14018930","appSubCls":"714000","patentNumber":"9177026","LAST_MOD_TS":"2023-12-04T13:41:00Z","transactions":[{"recordDate":"2023-04-19
+      00:00:00","code":"M1552","description":"Payment of Maintenance Fee, 8th Year,
+      Large Entity"},{"recordDate":"2019-06-26 00:00:00","code":"EML_NTR","description":"Email
+      Notification"},{"recordDate":"2019-06-26 00:00:00","code":"PA..","description":"Change
+      in Power of Attorney (May Include Associate POA)"},{"recordDate":"2019-06-25
+      00:00:00","code":"C.AD","description":"Correspondence Address Change"},{"recordDate":"2019-04-03
+      00:00:00","code":"M1551","description":"Payment of Maintenance Fee, 4th Year,
+      Large Entity"},{"recordDate":"2019-03-22 00:00:00","code":"BIG.","description":"Entity
+      Status Set To Undiscounted (Initial Default Setting or Status Change)"},{"recordDate":"2015-12-14
+      00:00:00","code":"SMAL","description":"Applicant Has Filed a Verified Statement
+      of Small Entity Status in Compliance with 37 CFR 1.27"},{"recordDate":"2015-12-14
+      00:00:00","code":"EML_NTR","description":"Email Notification"},{"recordDate":"2015-12-14
+      00:00:00","code":"PA..","description":"Change in Power of Attorney (May Include
+      Associate POA)"},{"recordDate":"2015-12-11 00:00:00","code":"C.AD","description":"Correspondence
+      Address Change"},{"recordDate":"2015-11-03 00:00:00","code":"PGM/","description":"Recordation
+      of Patent Grant Mailed"},{"recordDate":"2015-10-15 00:00:00","code":"EML_NTR","description":"Email
+      Notification"},{"recordDate":"2015-10-14 00:00:00","code":"WPIR","description":"Issue
+      Notification Mailed"},{"recordDate":"2015-11-03 00:00:00","code":"PTAC","description":"Patent
+      Issue Date Used in PTA Calculation"},{"recordDate":"2015-10-06 00:00:00","code":"D1935","description":"Dispatch
+      to FDC"},{"recordDate":"2015-10-06 00:00:00","code":"PILS","description":"Application
+      Is Considered Ready for Issue"},{"recordDate":"2015-10-01 00:00:00","code":"N084","description":"Issue
+      Fee Payment Verified"},{"recordDate":"2015-10-01 00:00:00","code":"IFEE","description":"Issue
+      Fee Payment Received"},{"recordDate":"2015-08-31 00:00:00","code":"CCRDY","description":"Application
+      ready for PDX access by participating foreign offices"},{"recordDate":"2015-07-07
+      00:00:00","code":"ELC_RVW","description":"Electronic Review"},{"recordDate":"2015-07-07
+      00:00:00","code":"EML_NTF","description":"Email Notification"},{"recordDate":"2015-07-07
+      00:00:00","code":"MN/=.","description":"Mail Notice of Allowance"},{"recordDate":"2015-07-01
+      00:00:00","code":"N/=.","description":"Notice of Allowance Data Verification
+      Completed"},{"recordDate":"2015-06-29 00:00:00","code":"EX.R","description":"Reasons
+      for Allowance"},{"recordDate":"2014-02-14 00:00:00","code":"IDSC","description":"Information
+      Disclosure Statement considered"},{"recordDate":"2013-09-05 00:00:00","code":"IDSC","description":"Information
+      Disclosure Statement considered"},{"recordDate":"2015-04-09 00:00:00","code":"DOCK","description":"Case
+      Docketed to Examiner in GAU"},{"recordDate":"2014-03-28 00:00:00","code":"EML_NTR","description":"Email
+      Notification"},{"recordDate":"2014-03-27 00:00:00","code":"PG-ISSUE","description":"PG-Pub
+      Issue Notification"},{"recordDate":"2014-02-14 00:00:00","code":"EIDS.","description":"Electronic
+      Information Disclosure Statement"},{"recordDate":"2014-02-14 00:00:00","code":"WIDS","description":"Information
+      Disclosure Statement (IDS) Filed"},{"recordDate":"2013-10-08 00:00:00","code":"EML_NTR","description":"Email
+      Notification"},{"recordDate":"2013-09-05 00:00:00","code":"EIDS.","description":"Electronic
+      Information Disclosure Statement"},{"recordDate":"2013-10-08 00:00:00","code":"PA..","description":"Change
+      in Power of Attorney (May Include Associate POA)"},{"recordDate":"2013-09-25
+      00:00:00","code":"DOCK","description":"Case Docketed to Examiner in GAU"},{"recordDate":"2013-09-24
+      00:00:00","code":"OIPE","description":"Application Dispatched from OIPE"},{"recordDate":"2013-09-20
+      00:00:00","code":"COMP","description":"Application Is Now Complete"},{"recordDate":"2013-09-20
+      00:00:00","code":"EML_NTR","description":"Email Notification"},{"recordDate":"2013-09-20
+      00:00:00","code":"EML_NTR","description":"Email Notification"},{"recordDate":"2013-09-20
+      00:00:00","code":"PA..","description":"Change in Power of Attorney (May Include
+      Associate POA)"},{"recordDate":"2013-09-19 00:00:00","code":"FTFI","description":"FITF
+      set to NO - revise initial setting"},{"recordDate":"2013-09-19 00:00:00","code":"PGPC","description":"Sent
+      to Classification Contractor"},{"recordDate":"2013-09-20 00:00:00","code":"FLRCPT.O","description":"Filing
+      Receipt"},{"recordDate":"2013-09-05 00:00:00","code":"APPERMS","description":"Applicants
+      have given acceptable permission for participating foreign "},{"recordDate":"2013-09-06
+      00:00:00","code":"L194","description":"Cleared by OIPE CSR"},{"recordDate":"2013-09-05
+      00:00:00","code":"WIDS","description":"Information Disclosure Statement (IDS)
+      Filed"},{"recordDate":"2013-09-05 00:00:00","code":"SCAN","description":"IFW
+      Scan & PACR Auto Security Review"},{"recordDate":"2013-09-05 00:00:00","code":"BIG.","description":"Entity
+      Status Set To Undiscounted (Initial Default Setting or Status Change)"},{"recordDate":"2013-09-05
+      00:00:00","code":"IEXX","description":"Initial Exam Team nn"}],"LAST_INSERT_TIME":"2023-12-04T20:15:02Z","appCls":"707","appStatus":"Patented
+      Case","appStatusFacet":"Patented Case","appStatus_txt":"Patented Case","ptaPteInd":"PTA","ptaPteTranHistory":[{"number":"47.5","ptaOrPteDate":"11-03-2015","contentsDescription":"PTA
+      36 Months","ptoDays":"","applDays":"","start":"0.5"},{"number":"47","ptaOrPteDate":"11-03-2015","contentsDescription":"Patent
+      Issue Date Used in PTA Calculation","ptoDays":"","applDays":"","start":"0"},{"number":"45","ptaOrPteDate":"10-06-2015","contentsDescription":"Dispatch
+      to FDC","ptoDays":"","applDays":"","start":"0"},{"number":"44","ptaOrPteDate":"10-06-2015","contentsDescription":"Application
+      Is Considered Ready for Issue","ptoDays":"","applDays":"","start":"0"},{"number":"43","ptaOrPteDate":"10-01-2015","contentsDescription":"Issue
+      Fee Payment Verified","ptoDays":"","applDays":"","start":"0"},{"number":"42","ptaOrPteDate":"10-01-2015","contentsDescription":"Issue
+      Fee Payment Received","ptoDays":"","applDays":"","start":"0"},{"number":"41","ptaOrPteDate":"08-31-2015","contentsDescription":"Application
+      ready for PDX access by participating foreign offices","ptoDays":"","applDays":"","start":"0"},{"number":"38","ptaOrPteDate":"07-07-2015","contentsDescription":"Electronic
+      Review","ptoDays":"","applDays":"","start":"0"},{"number":"37","ptaOrPteDate":"07-07-2015","contentsDescription":"Email
+      Notification","ptoDays":"","applDays":"","start":"0"},{"number":"36","ptaOrPteDate":"07-07-2015","contentsDescription":"Mail
+      Notice of Allowance","ptoDays":"244","applDays":"","start":"0.5"},{"number":"33","ptaOrPteDate":"07-01-2015","contentsDescription":"Notice
+      of Allowance Data Verification Completed","ptoDays":"","applDays":"","start":"0"},{"number":"30","ptaOrPteDate":"06-29-2015","contentsDescription":"Reasons
+      for Allowance","ptoDays":"","applDays":"","start":"0"},{"number":"25","ptaOrPteDate":"02-14-2014","contentsDescription":"Information
+      Disclosure Statement considered","ptoDays":"","applDays":"","start":"0"},{"number":"24","ptaOrPteDate":"09-05-2013","contentsDescription":"Information
+      Disclosure Statement considered","ptoDays":"","applDays":"","start":"0"},{"number":"23","ptaOrPteDate":"04-09-2015","contentsDescription":"Case
+      Docketed to Examiner in GAU","ptoDays":"","applDays":"","start":"0"},{"number":"22","ptaOrPteDate":"03-28-2014","contentsDescription":"Email
+      Notification","ptoDays":"","applDays":"","start":"0"},{"number":"21","ptaOrPteDate":"03-27-2014","contentsDescription":"PG-Pub
+      Issue Notification","ptoDays":"","applDays":"","start":"0"},{"number":"20","ptaOrPteDate":"02-14-2014","contentsDescription":"Electronic
+      Information Disclosure Statement","ptoDays":"","applDays":"","start":"0"},{"number":"19","ptaOrPteDate":"02-14-2014","contentsDescription":"Information
+      Disclosure Statement (IDS) Filed","ptoDays":"","applDays":"","start":"0"},{"number":"18","ptaOrPteDate":"10-08-2013","contentsDescription":"Email
+      Notification","ptoDays":"","applDays":"","start":"0"},{"number":"17","ptaOrPteDate":"09-05-2013","contentsDescription":"Electronic
+      Information Disclosure Statement","ptoDays":"","applDays":"","start":"0"},{"number":"16","ptaOrPteDate":"10-08-2013","contentsDescription":"Change
+      in Power of Attorney (May Include Associate POA)","ptoDays":"","applDays":"","start":"0"},{"number":"15","ptaOrPteDate":"09-25-2013","contentsDescription":"Case
+      Docketed to Examiner in GAU","ptoDays":"","applDays":"","start":"0"},{"number":"14","ptaOrPteDate":"09-24-2013","contentsDescription":"Application
+      Dispatched from OIPE","ptoDays":"","applDays":"","start":"0"},{"number":"13","ptaOrPteDate":"09-20-2013","contentsDescription":"Application
+      Is Now Complete","ptoDays":"","applDays":"","start":"0"},{"number":"12","ptaOrPteDate":"09-20-2013","contentsDescription":"Email
+      Notification","ptoDays":"","applDays":"","start":"0"},{"number":"11","ptaOrPteDate":"09-20-2013","contentsDescription":"Email
+      Notification","ptoDays":"","applDays":"","start":"0"},{"number":"10","ptaOrPteDate":"09-20-2013","contentsDescription":"Change
+      in Power of Attorney (May Include Associate POA)","ptoDays":"","applDays":"","start":"0"},{"number":"9","ptaOrPteDate":"09-19-2013","contentsDescription":"FITF
+      set to NO - revise initial setting","ptoDays":"","applDays":"","start":"0"},{"number":"8","ptaOrPteDate":"09-19-2013","contentsDescription":"Sent
+      to Classification Contractor","ptoDays":"","applDays":"","start":"0"},{"number":"7","ptaOrPteDate":"09-20-2013","contentsDescription":"Filing
+      Receipt","ptoDays":"","applDays":"","start":"0"},{"number":"6","ptaOrPteDate":"09-05-2013","contentsDescription":"Applicants
+      have given acceptable permission for participating foreign ","ptoDays":"","applDays":"","start":"0"},{"number":"5","ptaOrPteDate":"09-06-2013","contentsDescription":"Cleared
+      by OIPE CSR","ptoDays":"","applDays":"","start":"0"},{"number":"4","ptaOrPteDate":"09-05-2013","contentsDescription":"Information
+      Disclosure Statement (IDS) Filed","ptoDays":"","applDays":"","start":"0"},{"number":"3","ptaOrPteDate":"09-05-2013","contentsDescription":"IFW
+      Scan & PACR Auto Security Review","ptoDays":"","applDays":"","start":"0"},{"number":"2","ptaOrPteDate":"09-05-2013","contentsDescription":"Entity
+      Status Set To Undiscounted (Initial Default Setting or Status Change)","ptoDays":"","applDays":"","start":"0"},{"number":"1","ptaOrPteDate":"09-05-2013","contentsDescription":"Initial
+      Exam Team nn","ptoDays":"","applDays":"","start":"0"},{"number":"0.5","ptaOrPteDate":"09-05-2013","contentsDescription":"Filing
+      date","ptoDays":"","applDays":"","start":"0"}],"corrAddrGeoRegionNA":"PENNSYLVANIA","patentTitle":"LEAPFROG
+      TREE-JOIN","applDelay":"0","cDelay":"0","appStatusDate":"2015-10-14T00:00:00Z","appAttrDockNumber":"LBLOX1","inventors":[{"nameLineOne":"Veldhuizen","nameLineTwo":"Todd
+      L.","suffix":"","streetOne":"","streetTwo":"","city":"Waterloo, ","geoCode":"","country":"(CA)","rankNo":"1"}],"inventorsFacet":"{Todd|L.|Veldhuizen||||Waterloo||CA|IND|1}","ptoAdjustments":"0","corrAddrStreetLineOne":"ONE
+      LOGAN SQUARE","firstInventorFile":"No","childContinuity":[{"claimApplicationNumberText":"14919159","applicationNumberText":"14018930","filingDate":"10-21-2015","aiaIndicator":"N","patentNumberText":"10120906","applicationStatus":"Patented","applicationStatusDescription":"claims
+      the benefit of"},{"claimApplicationNumberText":"16178099","applicationNumberText":"14018930","filingDate":"11-01-2018","aiaIndicator":"N","patentNumberText":"","applicationStatus":"Abandoned","applicationStatusDescription":"claims
+      the benefit of"}],"overlapDelay":"0","aDelay":"244","appType":"Utility","appTypeFacet":"Utility","corrAddrPostalCode":"19103","appCustNumber":"64574","appClsSubCls":"707/714000","appClsSubClsFacet":"707/714000","patentIssueDate":"2015-11-03T00:00:00Z","bDelay":"0","corrAddrNameLineOne":"BLANK
+      ROME LLP","firstNamedApplicant":["  LogicBlox, Inc."],"firstNamedApplicantFacet":"  LogicBlox,
+      Inc.","attrnyAddr":[{"applicationId":null,"registrationNo":"28419","fullName":"Greenbaum,
+      Michael  ","phoneNum":"202-772-5836","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"28680","fullName":"Wolfe,
+      Charles  Jr","phoneNum":"202-772-5841","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"31063","fullName":"Soffen,
+      Stephen  ","phoneNum":"202-420-4879","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"31727","fullName":"Marcus,
+      Michael  ","phoneNum":"703-283-0022","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"32115","fullName":"Brady,
+      James  Jr","phoneNum":"202-420-4786","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"32699","fullName":"Grossman,
+      Jon  ","phoneNum":"202-420-2279","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"33082","fullName":"Thronson,
+      Mark  ","phoneNum":"202-420-4742","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"40220","fullName":"Weissman,
+      Peter  ","phoneNum":"202-772-5805","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"41151","fullName":"Lessler,
+      Jay  ","phoneNum":"212-885-5176","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"41536","fullName":"Esserman,
+      Matthew  ","phoneNum":"215-569-5603","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"43631","fullName":"George,
+      Bruce  ","phoneNum":"215-569-5798","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"45153","fullName":"Tamburo,
+      Salvatore  ","phoneNum":"202-420-2200","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"46510","fullName":"Marcus,
+      Tara  ","phoneNum":"202-772-5957","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"48443","fullName":"Higgins,
+      Brian  ","phoneNum":"202-772-5814","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"49000","fullName":"McDermott,
+      Sean  ","phoneNum":"713-632-8639","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"50239","fullName":"Mitchell,
+      Jonathan  ","phoneNum":"212-885-5000","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"60073","fullName":"Doshi,
+      Dipu  ","phoneNum":"202-420-2604","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"63196","fullName":"Homyk,
+      Matthew  ","phoneNum":"--","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"65967","fullName":"King,
+      Jonathan  ","phoneNum":"215-569-5432","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"66271","fullName":"Herrman,
+      Scott  ","phoneNum":"202-420-4793","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"67399","fullName":"Peterson,
+      Daniel  ","phoneNum":"713-632-8665","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"68030","fullName":"Perry,
+      Alexander  ","phoneNum":"202-420-3115","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"71223","fullName":"England,
+      Jonathan  ","phoneNum":"202-420-2747","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"72367","fullName":"Wood,
+      Megan  ","phoneNum":"202-420-2753","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"78041","fullName":"Lin,
+      Wenzhi  ","phoneNum":"571-234-7818","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"46147","fullName":"Allen,
+      Billy  III","phoneNum":"713-632-8680","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"72236","fullName":"Paradkar,
+      Ameya  ","phoneNum":"202-772-5849","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"71956","fullName":"Duncan,
+      Cole  ","phoneNum":"713-228-6601","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"72989","fullName":"Dodd,
+      Anastasia  ","phoneNum":"713-632-8685","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"70684","fullName":"LLagostera,
+      Domingo  ","phoneNum":"713-632-8632","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"73921","fullName":"Chi,
+      Jeffrey  ","phoneNum":"713-632-8668","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"32322","fullName":"Wong,
+      Russell  ","phoneNum":"713-632-8634","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"68383","fullName":"Franco,
+      Katherine  ","phoneNum":"713-632-8664","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"44144","fullName":"Harris,
+      Jonathan  ","phoneNum":"713-632-8643","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"54036","fullName":"Christenson,
+      Alan  ","phoneNum":"713-632-8665","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"56790","fullName":"Wilson,
+      David  ","phoneNum":"713-632-8692","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"79611","fullName":"Monterrosa,
+      Nelson  ","phoneNum":"713-228-8600","regStatus":"ACTIVE"}],"parentContinuity":[{"claimApplicationNumberText":"61706484","applicationNumberText":"14018930","filingDate":"09-27-2012","aiaIndicator":"","patentNumberText":"","applicationStatus":"Expired","applicationStatusDescription":"This
+      application Claims Priority from Provisional Application"}],"corrAddrCustNo":"64574","corrAddrCountryCd":"US","ptoDelay":"244","corrAddrCity":"PHILADELPHIA","appEntityStatus":"UNDISCOUNTED","appConfrNumber":"9875","lastUpdatedTimestamp":"2023-12-05T16:03:31.303Z","cmsData":["{14018930|2019-06-26
+      09:56:28|PROSECUTION|Communication - Re:  Power of Attorney (PTOL-308)|N570|1|JXC4310WRXEAPX0},{14018930|2019-06-26
+      09:56:28|PROSECUTION|Communication - Re:  Power of Attorney (PTOL-308)|N570|1|JXC4319ARXEAPX3},{14018930|2019-06-24
+      11:15:59|PROSECUTION|Assignee showing of ownership per 37 CFR 3.73|R3.73|3|JXARHFNLRXEAPX1},{14018930|2019-06-24
+      11:15:59|PROSECUTION|Power of Attorney|PA..|2|JXARHFNJRXEAPX1},{14018930|2019-06-24
+      11:15:59|PROSECUTION|Electronic Filing System(EFS) Acknowledgment Receipt|N417|2|JXARHFNMRXEAPX1},{14018930|2019-03-22
+      10:06:21|PROSECUTION|Notification of loss of entitlement to small entity status
+      via Patent Application Information Retrieval (PAIR)|SES.LOSS.ELC|1|JTKDLT81RXEAPX1},{14018930|2015-12-13
+      19:00:00|PROSECUTION|Assertion of entitlement to small entity status via Patent
+      Application Information Retrieval(PAIR)|SES.REQ.ELC|1|II65G0CVPXXIFW4},{14018930|2015-12-13
+      19:00:00|PROSECUTION|Communication - Re:  Power of Attorney (PTOL-308)|N570|1|II1ZN024PXXIFW4},{14018930|2015-12-13
+      19:00:00|PROSECUTION|Communication - Re:  Power of Attorney (PTOL-308)|N570|1|II1ZN0P0PXXIFW4},{14018930|2015-12-08
+      19:00:00|PROSECUTION|Power of Attorney|PA..|2|IHZ22HHUPXXIFW3},{14018930|2015-12-08
+      19:00:00|PROSECUTION|Electronic Filing System(EFS) Acknowledgment Receipt|N417|2|IHZ22HIAPXXIFW3},{14018930|2015-12-08
+      19:00:00|PROSECUTION|Assignee showing of ownership per 37 CFR 3.73|R3.73|3|IHZ22HIKPXXIFW3},{14018930|2015-10-13
+      20:00:00|PROSECUTION|Issue Notification|ISSUE.NTF|1|IFRLLEGGPXXIFW4},{14018930|2015-09-30
+      20:00:00|PROSECUTION|Issue Fee Payment (PTO-85B)|IFEE|1|IF8I8TK2PXXIFW3},{14018930|2015-09-30
+      20:00:00|PROSECUTION|Electronic Filing System(EFS) Acknowledgment Receipt|N417|2|IF8I8TL2PXXIFW3},{14018930|2015-09-30
+      20:00:00|PROSECUTION|Fee Worksheet (SB06)|WFEE|2|IF8I8TKWPXXIFW3},{14018930|2015-07-06
+      20:00:00|PROSECUTION|Index of Claims|FWCLM|1|IBMI6PA3PXXIFW4},{14018930|2015-07-06
+      20:00:00|PROSECUTION|List of References cited by applicant and considered by
+      examiner|1449|4|IBMI6PB8PXXIFW4},{14018930|2015-07-06 20:00:00|PROSECUTION|Notice
+      of Allowance and Fees Due (PTOL-85)|NOA|9|IBMI6P6JPXXIFW4},{14018930|2015-07-06
+      20:00:00|PROSECUTION|Examiner''s search strategy and results|SRNT|3|IBMI6PAZPXXIFW4},{14018930|2015-07-06
+      20:00:00|PROSECUTION|Search information including classification, databases
+      and other search related notes|SRFW|1|IBMI6PAJPXXIFW4},{14018930|2015-07-06
+      20:00:00|PROSECUTION|List of references cited by examiner|892|1|IBMI6P8MPXXIFW4},{14018930|2015-07-06
+      20:00:00|PROSECUTION|Issue Information including classification, examiner, name,
+      claim, renumbering, etc.|IIFW|3|IBMI6PABPXXIFW4},{14018930|2015-07-06 20:00:00|PROSECUTION|List
+      of References cited by applicant and considered by examiner|1449|5|IBMI6PBMPXXIFW4},{14018930|2015-07-06
+      20:00:00|PROSECUTION|Bibliographic Data Sheet|BIB|1|IBMI6PASPXXIFW4},{14018930|2015-07-06
+      20:00:00|PROSECUTION|Amendment After Final or under 37CFR 1.312, initialed by
+      the examiner.|ANE.I|2|IBMI6PC1PXXIFW4},{14018930|2014-03-26 20:00:00|PROSECUTION|Notice
+      of Publication|NTC.PUB|1|HTA4LU7CPXXIFW4},{14018930|2014-02-13 19:00:00|PROSECUTION|Other
+      reference-Patent/Application/Search Documents|REF.OTHER|5|HRNVSDB8PXXIFW3},{14018930|2014-02-13
+      19:00:00|PROSECUTION|Non Patent Literature|NPL|48|HRNVSDBPPXXIFW3},{14018930|2014-02-13
+      19:00:00|PROSECUTION|Non Patent Literature|NPL|490|HRNVSDBGPXXIFW3},{14018930|2014-02-13
+      19:00:00|PROSECUTION|Electronic Filing System(EFS) Acknowledgment Receipt|N417|2|HRNVSDCCPXXIFW3},{14018930|2014-02-13
+      19:00:00|PROSECUTION|Information Disclosure Statement (IDS) Form (SB08)|IDS|4|HRNVSDA9PXXIFW3},{14018930|2014-02-13
+      19:00:00|PROSECUTION|Non Patent Literature|NPL|7|HRNVSDBWPXXIFW3},{14018930|2014-02-13
+      19:00:00|PROSECUTION|Other reference-Patent/Application/Search Documents|REF.OTHER|7|HRNVSDC4PXXIFW3},{14018930|2013-10-07
+      20:00:00|PROSECUTION|Communication - Re:  Power of Attorney (PTOL-308)|N570|1|HMHMWJ6KPXXIFW4},{14018930|2013-09-26
+      20:00:00|PROSECUTION|Power of Attorney|PA..|1|HM3IRXGEPXXIFW3},{14018930|2013-09-26
+      20:00:00|PROSECUTION|Electronic Filing System(EFS) Acknowledgment Receipt|N417|2|HM3IRXJ3PXXIFW3},{14018930|2013-09-26
+      20:00:00|PROSECUTION|Power of Attorney|PA..|1|HM3IRXIVPXXIFW3},{14018930|2013-09-26
+      20:00:00|PROSECUTION|Miscellaneous Incoming Letter|LET.|3|HM3IRXJBPXXIFW3},{14018930|2013-09-19
+      20:00:00|PROSECUTION|Response - Re:  Informal Power of Attorney (PTOL-308)|N572|1|HLRXP9QIPXXIFW4},{14018930|2013-09-19
+      20:00:00|PROSECUTION|Fee Worksheet (SB06)|WFEE|1|HLRXP6KPPXXIFW4},{14018930|2013-09-19
+      20:00:00|PROSECUTION|Filing Receipt|APP.FILE.REC|3|HLRXP64HPXXIFW4},{14018930|2013-09-04
+      20:00:00|PROSECUTION|Power of Attorney|PA..|3|HL8DFQNNPXXIFW3},{14018930|2013-09-04
+      20:00:00|PROSECUTION|Oath or Declaration filed|OATH|4|HLGIK8WMPXXIFW4},{14018930|2013-09-04
+      20:00:00|PROSECUTION|Power of Attorney|PA..|1|HL8DFQQTPXXIFW3},{14018930|2013-09-04
+      20:00:00|PROSECUTION|Application Data Sheet|ADS|6|HL8DFQUKPXXIFW3},{14018930|2013-09-04
+      20:00:00|PROSECUTION|Non Patent Literature|NPL|43|HL8DFQTLPXXIFW3},{14018930|2013-09-04
+      20:00:00|PROSECUTION|Electronic Filing System(EFS) Acknowledgment Receipt|N417|3|HL8DFQUBPXXIFW3},{14018930|2013-09-04
+      20:00:00|PROSECUTION|Abstract|ABST|1|HL8DFQVJPXXIFW3},{14018930|2013-09-04 20:00:00|PROSECUTION|Fee
+      Worksheet (SB06)|WFEE|2|HL8DFQU3PXXIFW3},{14018930|2013-09-04 20:00:00|PROSECUTION|Non
+      Patent Literature|NPL|29|HL8DFQT4PXXIFW3},{14018930|2013-09-04 20:00:00|PROSECUTION|Claims|CLM|5|HL8DFQV7PXXIFW3},{14018930|2013-09-04
+      20:00:00|PROSECUTION|Non Patent Literature|NPL|12|HL8DFQTDPXXIFW3},{14018930|2013-09-04
+      20:00:00|PROSECUTION|Specification|SPEC|22|HL8DFQUTPXXIFW3},{14018930|2013-09-04
+      20:00:00|PROSECUTION|Drawings-only black and white line drawings|DRW|2|HL8DFQW3PXXIFW3},{14018930|2013-09-04
+      20:00:00|PROSECUTION|Information Disclosure Statement (IDS) Form (SB08)|IDS|5|HL8DFQSQPXXIFW3}"],"appAttrDockNumberFacet":"LBLOX1","appEntityStatusFacet":"UNDISCOUNTED","appCustNumberFacet":"64574","_version_":1784458543062056960,"firstInventorFileFacet":"No","appLocationFacet":"ELECTRONIC","appEarlyPubNumberFacet":"US20140089292A1","patentNumberFacet":"9177026"}]}},"queryId":"6459b8c6-7112-4417-bfc1-d9147e39a697"},"jobStatus":null,"queryId":"6459b8c6-7112-4417-bfc1-d9147e39a697","page":1,"count":0,"errorMessage":null,"createQueryRequest":{"searchText":"applId:(14018930)","facet":"false","facetField":null,"facetLimit":null,"facetMissing":null,"facetDate":null,"facetDateGap":null,"facetDateStart":null,"facetDateEnd":null,"facetDateOther":null,"facetDateInclude":null,"mm":"0%","sort":"applId
+      asc","qf":"appEarlyPubNumber applId appLocation appType appStatus_txt appConfrNumber
+      appCustNumber appGrpArtNumber appCls appSubCls appEntityStatus_txt patentNumber
+      patentTitle inventorName firstNamedApplicant appExamName appExamPrefrdName appAttrDockNumber
+      appPCTNumber appIntlPubNumber wipoEarlyPubNumber pctAppType firstInventorFile
+      appClsSubCls rankAndInventorsList","wt":null,"df":"patentTitle","fl":"*","start":"0","fq":[],"rows":"1","parameters":{"mm":"0%","df":"patentTitle","qf":"appEarlyPubNumber
+      applId appLocation appType appStatus_txt appConfrNumber appCustNumber appGrpArtNumber
+      appCls appSubCls appEntityStatus_txt patentNumber patentTitle inventorName firstNamedApplicant
+      appExamName appExamPrefrdName appAttrDockNumber appPCTNumber appIntlPubNumber
+      wipoEarlyPubNumber pctAppType firstInventorFile appClsSubCls rankAndInventorsList","fl":["*"],"start":"0","sort":"applId
+      asc","fq":[],"rows":"1","facet":"false"}},"links":[{"rel":"self","href":"https://ped.uspto.gov/api/queries/6459b8c6-7112-4417-bfc1-d9147e39a697?format=XML"},{"rel":"results","href":"https://ped.uspto.gov/api/queries/6459b8c6-7112-4417-bfc1-d9147e39a697/results?page=1"},{"rel":"package","href":"https://ped.uspto.gov/api/queries/6459b8c6-7112-4417-bfc1-d9147e39a697/package?format=XML"},{"rel":"first","href":"https://ped.uspto.gov/api/queries/6459b8c6-7112-4417-bfc1-d9147e39a697/results?page=1"},{"rel":"next","href":"https://ped.uspto.gov/api/queries/6459b8c6-7112-4417-bfc1-d9147e39a697/results?page=2"},{"rel":"self","href":"https://ped.uspto.gov/api/queries/6459b8c6-7112-4417-bfc1-d9147e39a697?format=JSON"},{"rel":"results","href":"https://ped.uspto.gov/api/queries/6459b8c6-7112-4417-bfc1-d9147e39a697/results?page=1"},{"rel":"package","href":"https://ped.uspto.gov/api/queries/6459b8c6-7112-4417-bfc1-d9147e39a697/package?format=JSON"},{"rel":"first","href":"https://ped.uspto.gov/api/queries/6459b8c6-7112-4417-bfc1-d9147e39a697/results?page=1"},{"rel":"next","href":"https://ped.uspto.gov/api/queries/6459b8c6-7112-4417-bfc1-d9147e39a697/results?page=2"}]}'
+    headers:
+      Cache-Control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 06 Dec 2023 19:16:58 GMT
+      Expires:
+      - '0'
+      Pragma:
+      - no-cache
+      Server-Timing:
+      - intid;desc=e05bf98559db8131
+      Strict-Transport-Security:
+      - max-age=31536000;includeSubDomains
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 dce3932214fb38d941490d48f7ff75dc.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - VrOr-84yh55h-CZhn7AnrdP0sE7BMMh7GFbgyP-yahxEfjlPrkj41g==
+      X-Amz-Cf-Pop:
+      - IAH50-C1
+      X-Cache:
+      - Miss from cloudfront
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - DENY
+      X-XSS-Protection:
+      - 1; mode=block
+    http_version: HTTP/1.1
+    status_code: 200
+version: 1
