@@ -2,6 +2,7 @@
 # nopycln: file
 import time
 
+import patent_client.patches  # noqa # Run patching code
 from .version import __version__  # noqa
 
 start = time.time()
@@ -14,7 +15,6 @@ from pathlib import Path
 from .settings import Settings
 
 SETTINGS = Settings()
-
 
 import logging
 import logging.handlers

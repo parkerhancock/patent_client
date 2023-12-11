@@ -1,35 +1,118 @@
 interactions:
 - request:
-    body: null
+    body: ''
     headers:
-      Accept:
-      - '*/*'
-      Accept-Encoding:
-      - gzip, deflate
       Authorization:
       - REDACTED
-      Connection:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
       - keep-alive
-      User-Agent:
-      - Mozilla/5.0 Python Patent Clientbot/3.2.8 (parkerhancock@users.noreply.github.com)
+      host:
+      - ops.epo.org
+      user-agent:
+      - Mozilla/5.0 Python Patent Clientbot/4.1.4 (parkerhancock@users.noreply.github.com)
     method: GET
     uri: http://ops.epo.org/3.2/rest-services/number-service/application/docdb/MD.20050130.A.20050130/epodoc
   response:
-    body:
-      string: "<?xml version=\"1.0\" encoding=\"UTF-8\"?><?xml-stylesheet type=\"text/xsl\"
-        href=\"/3.2/style/numbers.xsl\"?>\n<ops:world-patent-data xmlns=\"http://www.epo.org/exchange\"
-        xmlns:ops=\"http://ops.epo.org\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">\n
-        \   <ops:meta name=\"status\" value=\"SUCCESS\"/>\n    <ops:meta name=\"version\"
-        value=\"11.07.65\"/>\n    <ops:standardization inputFormat=\"docdb\" outputFormat=\"epodoc\">\n
-        \       <ops:input>\n            <ops:application-reference>\n                <document-id
-        document-id-type=\"docdb\">\n                    <country>MD</country>\n                    <doc-number>20050130</doc-number>\n
-        \                   <kind>A</kind>\n                    <date>20050130</date>\n
-        \               </document-id>\n            </ops:application-reference>\n
-        \       </ops:input>\n        <ops:output>\n            <ops:application-reference>\n
-        \               <document-id document-id-type=\"epodoc\">\n                    <doc-number>MD20050000130</doc-number>\n
-        \                   <kind>A</kind>\n                    <date>20050130</date>\n
-        \               </document-id>\n            </ops:application-reference>\n
-        \       </ops:output>\n    </ops:standardization>\n</ops:world-patent-data>"
+    content: "<error><code>400</code><message>invalid_access_token</message><description>Access
+      token has expired</description>\n\t\t\t\t</error>\n\t\t\t"
+    headers:
+      Access-Control-Allow-Headers:
+      - Authorization
+      Access-Control-Allow-Methods:
+      - POST
+      Access-Control-Allow-Origin:
+      - '*'
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '130'
+      Content-Type:
+      - application/xml
+      Date:
+      - Mon, 11 Dec 2023 17:21:02 GMT
+      WWW-Authenticate:
+      - 'Bearer realm="null",error="invalid_token",error_description="keymanagement.service.access_token_expired:
+        Access Token expired"'
+    http_version: HTTP/1.1
+    status_code: 400
+- request:
+    body: grant_type=client_credentials
+    headers:
+      Authorization:
+      - REDACTED
+      content-length:
+      - '29'
+      content-type:
+      - application/x-www-form-urlencoded
+      host:
+      - ops.epo.org
+    method: POST
+    uri: https://ops.epo.org/3.2/auth/accesstoken
+  response:
+    content: "{\n  \"refresh_token_expires_in\": \"0\",\n  \"api_product_list\": \"[ops-prod]\",\n
+      \ \"api_product_list_json\": [\n    \"ops-prod\"\n  ],\n  \"organization_name\":
+      \"epo\",\n  \"developer.email\": \"parker.hancock@protonmail.com\",\n  \"token_type\":
+      \"BearerToken\",\n  \"issued_at\": \"1702315262850\",\n  \"client_id\": \"wVi6ni5GUZZ3BJqAfLGJb4KPGcYxRktw\",\n
+      \ \"access_token\": \"WQr5DcdJamEvalOlAiSFXlA54Dv5\",\n  \"application_name\":
+      \"8654da0d-5e44-4ea3-addc-e555eff4aee6\",\n  \"scope\": \"core\",\n  \"expires_in\":
+      \"1199\",\n  \"refresh_count\": \"0\",\n  \"status\": \"approved\"\n}"
+    headers:
+      Access-Control-Allow-Headers:
+      - Authorization
+      Access-Control-Allow-Methods:
+      - POST
+      Access-Control-Allow-Origin:
+      - '*'
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '523'
+      Content-Type:
+      - application/json
+      Date:
+      - Mon, 11 Dec 2023 17:21:02 GMT
+      X-EPO-Client-IP:
+      - 38.104.255.66
+      X-EPO-Forwarded:
+      - '[38.104.255.66]'
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: ''
+    headers:
+      Authorization:
+      - REDACTED
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - ops.epo.org
+      user-agent:
+      - Mozilla/5.0 Python Patent Clientbot/4.1.4 (parkerhancock@users.noreply.github.com)
+    method: GET
+    uri: http://ops.epo.org/3.2/rest-services/number-service/application/docdb/MD.20050130.A.20050130/epodoc
+  response:
+    content: "<?xml version=\"1.0\" encoding=\"UTF-8\"?><?xml-stylesheet type=\"text/xsl\"
+      href=\"/3.2/style/numbers.xsl\"?>\n<ops:world-patent-data xmlns=\"http://www.epo.org/exchange\"
+      xmlns:ops=\"http://ops.epo.org\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">\n
+      \   <ops:meta name=\"status\" value=\"SUCCESS\"/>\n    <ops:meta name=\"version\"
+      value=\"11.07.65\"/>\n    <ops:standardization inputFormat=\"docdb\" outputFormat=\"epodoc\">\n
+      \       <ops:input>\n            <ops:application-reference>\n                <document-id
+      document-id-type=\"docdb\">\n                    <country>MD</country>\n                    <doc-number>20050130</doc-number>\n
+      \                   <kind>A</kind>\n                    <date>20050130</date>\n
+      \               </document-id>\n            </ops:application-reference>\n        </ops:input>\n
+      \       <ops:output>\n            <ops:application-reference>\n                <document-id
+      document-id-type=\"epodoc\">\n                    <doc-number>MD20050000130</doc-number>\n
+      \                   <kind>A</kind>\n                    <date>20050130</date>\n
+      \               </document-id>\n            </ops:application-reference>\n        </ops:output>\n
+      \   </ops:standardization>\n</ops:world-patent-data>"
     headers:
       Access-Control-Allow-Headers:
       - Authorization
@@ -46,7 +129,7 @@ interactions:
       Content-Type:
       - application/xml;charset=utf-8
       Date:
-      - Mon, 30 Oct 2023 15:32:15 GMT
+      - Mon, 11 Dec 2023 17:21:03 GMT
       ETag:
       - '"03f3f239201110a231bf9266616b0a3f8"'
       Pragma:
@@ -64,15 +147,14 @@ interactions:
       X-EPO-Forwarded:
       - '[38.104.255.66]'
       X-Elapsed-Time:
-      - '31'
+      - '32'
       X-IndividualQuotaPerHour-Used:
-      - '225371'
+      - '49835'
       X-RegisteredQuotaPerWeek-Used:
-      - '1928649'
+      - '1469638'
       X-Throttling-Control:
-      - busy (images=green:100, inpadoc=green:45, other=green:1000, retrieval=green:100,
-        search=green:15)
-    status:
-      code: 200
-      message: OK
+      - idle (images=green:200, inpadoc=green:60, other=green:1000, retrieval=green:200,
+        search=green:30)
+    http_version: HTTP/1.1
+    status_code: 200
 version: 1

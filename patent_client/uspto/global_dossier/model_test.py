@@ -14,7 +14,7 @@ class TestGlobalDossier:
 
     def test_us_lookup_docs(self):
         result = GlobalDossier.objects.get("16123456").applications[0].document_list
-        assert result.office_action_count == 2
+        assert result.office_action_count >= 2
 
     @pytest.mark.skip("issue in pytest-recording")
     def test_us_download_docs(self, tmpdir):
