@@ -8,6 +8,7 @@ from typing import TYPE_CHECKING
 from dateutil.relativedelta import relativedelta
 from pydantic import AliasPath
 from pydantic import BeforeValidator
+from pydantic import computed_field
 from pydantic import ConfigDict
 from pydantic import Field
 from pydantic import model_validator
@@ -27,10 +28,18 @@ if TYPE_CHECKING:
     from patent_client.epo.ops.published.model import InpadocBiblio
 
 
-MDYDate = Annotated[datetime.date, BeforeValidator(lambda x: datetime.datetime.strptime(x, "%m-%d-%Y").date())]
+def parse_mdy_date(string: str) -> datetime.date:
+    try:
+        return datetime.datetime.strptime(string, "%m-%d-%Y").date()
+    except ValueError:
+        return None
+
+
+MDYDate = Annotated[Optional[datetime.date], BeforeValidator(parse_mdy_date)]
 YNBool = Annotated[bool, BeforeValidator(lambda x: x == "Y")]
 OptionalInt = Annotated[Optional[int], BeforeValidator(lambda x: int(x) if x else None)]
 RelationshipStr = Annotated[str, BeforeValidator(lambda x: x.replace("This application ", "").strip())]
+ConveyanceStr = Annotated[str, BeforeValidator(lambda x: x.replace(" (SEE DOCUMENT FOR DETAILS).", ""))]
 
 
 class PEDSBaseModel(BaseModel):
@@ -109,6 +118,34 @@ class Applicant(Inventor):
     cust_no: str = None
 
 
+class Assignor(PEDSBaseModel):
+    name: str = Field(alias="assignorName")
+    execution_date: MDYDate = Field(alias="execDate")
+
+
+class Assignee(PEDSBaseModel):
+    name: str = Field(alias="assigneeName")
+
+
+class Assignment(PEDSBaseModel):
+    reel_number: str = Field(exclude=True)
+    frame_number: str = Field(exclude=True)
+    correspondent_name: str = Field(alias="addressNameText")
+    mail_date: MDYDate
+    received_date: MDYDate
+    recorded_date: MDYDate
+    pages: int = Field(alias="pagesCount")
+    conveyance: ConveyanceStr = Field(alias="converyanceName")
+    sequence_number: int
+    assignors: Optional[List[Assignor]] = Field(alias="assignors", default_factory=list)
+    assignees: Optional[List[Assignee]] = Field(alias="assignee", default_factory=list)
+
+    @computed_field
+    @property
+    def reel_frame(self) -> str:
+        return f"{self.reel_number}/{self.frame_number}"
+
+
 class USApplication(PEDSBaseModel):
     appl_id: str
     app_filing_date: Date
@@ -142,6 +179,7 @@ class USApplication(PEDSBaseModel):
     parent_continuity: List[ParentApplication] = Field(default_factory=list)
     child_continuity: List[ChildApplication] = Field(default_factory=list)
     foreign_priority: List[ForeignPriority] = Field(default_factory=list)
+    assignments: List[Assignment] = Field(default_factory=list)
 
     def __repr__(self):
         return f"USApplication(appl_id='{self.appl_id}', patent_title='{self.patent_title}', app_status='{self.app_status}')"
