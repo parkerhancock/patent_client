@@ -9,6 +9,7 @@ from ..convert.biblio import PublicSearchBiblioPageSchema
 from .shared import ApplicationNumber
 from .shared import DateTimeAsDate
 from .shared import DocumentStructure
+from .shared import HtmlString
 from .shared import OptionalList
 from patent_client.util.pydantic_util import BaseModel
 from patent_client.util.related import get_model
@@ -17,20 +18,20 @@ from patent_client.util.related import get_model
 class PublicSearchBiblio(BaseModel):
     guid: Optional[str] = None
     publication_number: Optional[str] = None
-    publication_date: datetime.date
-    patent_title: str
-    type: str
-    main_classification_code: str
+    publication_date: Optional[datetime.date] = None
+    patent_title: Optional[HtmlString] = None
+    type: Optional[str] = None
+    main_classification_code: Optional[str] = None
     applicant_names: OptionalList[str] = Field(alias="applicant_name", default_factory=list)
     assignee_names: OptionalList[str] = Field(alias="assignee_name", default_factory=list)
     uspc_full_classification: OptionalList[str] = Field(default_factory=list)
     ipc_code: OptionalList[str] = Field(default_factory=list)
     cpc_additional: OptionalList[str] = Field(default_factory=list)
-    app_filing_date: datetime.date
+    app_filing_date: Optional[datetime.date] = None
     related_appl_filing_date: OptionalList[DateTimeAsDate] = Field(alias="relatedApplFilingDate", default_factory=list)
     primary_examiner: Optional[str] = None
     assistant_examiner: Optional[str] = Field(alias=AliasPath("assistant_examiner", 0), default=None)
-    appl_id: ApplicationNumber
+    appl_id: Optional[ApplicationNumber] = None
     document_structure: DocumentStructure
 
     def __repr__(self):

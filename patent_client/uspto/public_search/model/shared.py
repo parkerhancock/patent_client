@@ -8,6 +8,7 @@ from pydantic import ConfigDict
 from pydantic.alias_generators import to_camel
 from typing_extensions import Annotated
 
+from ..util import html_to_text
 from patent_client.util.pydantic_util import BaseModel
 
 
@@ -25,6 +26,7 @@ OptionalList = Annotated[List[T], BeforeValidator(lambda x: x if isinstance(x, l
 DateTimeAsDate = Annotated[
     datetime.date, BeforeValidator(lambda x: x.date() if isinstance(x, datetime.datetime) else x)
 ]
+HtmlString = Annotated[str, BeforeValidator(html_to_text)]
 
 
 def format_appl_id(string):
