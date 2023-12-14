@@ -72,13 +72,13 @@ class PublicSearchApi:
         }
         for s in force_list(sources):
             data["query"]["databaseFilters"].append({"databaseName": s, "countryCodes": []})
-        query_response = await session.post(url, json=data)
-        if query_response.status_code in (500, 415):
+        query_response = await session.post(url, json=data, extensions={"force_cache": True})
+        if query_response.status_code in (500, 415):  # Just need to retry
             await asyncio.sleep(5)
-            query_response = await session.post(url, json=data)
-        elif query_response.status_code == 403:
+            query_response = await session.post(url, json=data, extensions={"force_cache": True})
+        elif query_response.status_code == 403:  # Session must be refreshed
             await self.get_session()
-            query_response = await session.post(url, json=data)
+            query_response = await session.post(url, json=data, extensions={"force_cache": True})
         query_response.raise_for_status()
         result = query_response.json()
         if result.get("error", None) is not None:

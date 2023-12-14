@@ -1,23 +1,19 @@
 from typing import List
 from typing import Optional
 
-from pydantic import BeforeValidator
 from pydantic import Field
 from pydantic import model_validator
-from typing_extensions import Annotated
 
 from ..convert.document import PublicSearchDocumentSchema
-from ..util import html_to_text
 from .shared import ApplicationNumber
 from .shared import DocumentStructure
+from .shared import HtmlString
 from .shared import OptionalList
 from patent_client.util.asyncio_util import run_sync
 from patent_client.util.claims.model import Claim
 from patent_client.util.pydantic_util import BaseModel
 from patent_client.util.pydantic_util import Date
 from patent_client.util.related import get_model
-
-HtmlString = Annotated[str, BeforeValidator(html_to_text)]
 
 
 class Document(BaseModel):
@@ -177,7 +173,7 @@ class PublicSearchDocument(BaseModel):
 
     @model_validator(mode="before")
     @classmethod
-    def convert_json(cls, values):
+    def convert_to_json(cls, values):
         return PublicSearchBiblioConvert.convert(values)
 
     @property
@@ -235,5 +231,5 @@ class PublicSearchDocument(BaseModel):
 
     @model_validator(mode="before")
     @classmethod
-    def convert_json(cls, values):
+    def convert_to_json(cls, values):
         return cls.__schema__.deserialize(values).to_dict()
