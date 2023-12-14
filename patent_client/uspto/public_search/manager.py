@@ -78,10 +78,13 @@ class GenericPublicSearchBiblioManager(GenericPublicSearchManager, Generic[T]):
                 break
 
 
+capacity_limit = 501
+
+
 class GenericPublicSearchDocumentManager(GenericPublicSearchBiblioManager, Generic[T]):
     async def _aget_results(self) -> AsyncIterator["PublicSearchDocument"]:
         result_count = super().__len__()
-        if result_count > 20:
+        if result_count > capacity_limit:
             raise CapacityException(
                 f"Query would result in more than 20 results! ({result_count} > 20).\nPlease use the associated Biblio method to reduce load on the API (PublicSearch / PatentBiblio / PublishedApplicationBiblio"
             )
