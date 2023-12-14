@@ -78,6 +78,11 @@ class PatentClientSession(httpx.AsyncClient):
     async def adownload(
         self, url, method: str = "GET", path: Optional[str | Path] = None, show_progress: bool = False, **kwargs
     ):
+        # Ensure we skip the cache for file downloads
+        kwargs["extensions"] = kwargs.get("extensions", dict())
+        if "force_cache" in kwargs["extensions"]:
+            raise ValueError("force_cache is not supported for file downloads")
+        kwargs["extensions"]["cache_disabled"] = True
         if isinstance(path, str):
             path = Path(path)
         elif path is None:
