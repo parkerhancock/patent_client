@@ -78,7 +78,7 @@ class GenericPublicSearchBiblioManager(GenericPublicSearchManager, Generic[T]):
                 break
 
 
-capacity_limit = 20
+capacity_limit = 501
 
 
 class GenericPublicSearchDocumentManager(GenericPublicSearchBiblioManager, Generic[T]):
