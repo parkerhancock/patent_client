@@ -134,7 +134,7 @@ class Assignment(PEDSBaseModel):
     mail_date: MDYDate
     received_date: MDYDate
     recorded_date: MDYDate
-    pages: Optional[int] = Field(alias="pagesCount", default=None)
+    pages: OptionalInt = Field(alias="pagesCount", default=None)
     conveyance: ConveyanceStr = Field(alias="converyanceName")
     sequence_number: int
     assignors: Optional[List[Assignor]] = Field(alias="assignors", default_factory=list)
