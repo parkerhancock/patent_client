@@ -7,9 +7,9 @@ from .version import __version__  # noqa
 
 start = time.time()
 
-import nest_asyncio
+# import nest_asyncio
 
-nest_asyncio.apply()
+# nest_asyncio.apply()
 
 from pathlib import Path
 from .settings import Settings
