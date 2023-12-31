@@ -42,6 +42,7 @@ class OpsController(hishel.Controller):
         cacheable_methods: Sequence[str] = ("GET", "HEAD"),
         cacheable_status_codes: Sequence[int] = (200,),
     ):
+        super().__init__()
         self.cacheable_methods = cacheable_methods
         self.cacheable_status_codes = cacheable_status_codes
 
