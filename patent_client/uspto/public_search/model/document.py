@@ -171,11 +171,6 @@ class PublicSearchDocument(BaseModel):
     def __repr__(self):
         return f"PublicSearchDocument(publication_number={self.publication_number}, publication_date={self.publication_date}, patent_title={self.patent_title})"
 
-    @model_validator(mode="before")
-    @classmethod
-    def convert_to_json(cls, values):
-        return PublicSearchBiblioConvert.convert(values)
-
     @property
     def abstract(self):
         return self.document.abstract
@@ -231,5 +226,5 @@ class PublicSearchDocument(BaseModel):
 
     @model_validator(mode="before")
     @classmethod
-    def convert_to_json(cls, values):
+    def convert_xml_to_json(cls, values):
         return cls.__schema__.deserialize(values).to_dict()
