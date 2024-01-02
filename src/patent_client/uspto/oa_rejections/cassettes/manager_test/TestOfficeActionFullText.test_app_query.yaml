@@ -1,0 +1,1914 @@
+interactions:
+- request:
+    body: criteria=patentApplicationNumber%3A%2814574014%29&start=0&rows=100
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '66'
+      content-type:
+      - application/x-www-form-urlencoded
+      host:
+      - developer.uspto.gov
+      user-agent:
+      - Mozilla/5.0 Python Patent Clientbot/3.2.10 (parkerhancock@users.noreply.github.com)
+    method: POST
+    uri: https://developer.uspto.gov/ds-api/oa_actions/v1/records
+  response:
+    content: "{\n  \"responseHeader\":{\n    \"zkConnected\":true,\n    \"status\":0,\n
+      \   \"QTime\":68,\n    \"params\":{\n      \"json\":\"{\\\"params\\\":{\\\"q\\\":\\\"patentApplicationNumber:(14574014)\\\",\\\"start\\\":0,\\\"rows\\\":100,\\\"fl\\\":\\\"accessLevelCategory,applicantFileReference,applicationDeemedWithdrawnDate,applicationStatusNumber,applicationTypeCategory,bodyText,businessAreaCategory,businessEntityStatusCategory,createDateTime,customerNumber,documentActiveIndicator,documentDirectionCategory,effectiveClaimTotalQuantity,effectiveFilingDate,examinationProgramCode,examinerEmployeeNumber,figureQuantity,filingDate,grantDate,groupArtUnitNumber,id,independentClaimTotalQuantity,inventionSubjectMatterCategory,inventionTitle,lastModifiedTimestamp,lastModifiedUserIdentifier,legacyCMSIdentifier,legacyDocumentCodeIdentifier,legacyRepositoryLogicalPackageNumber,legacyRepositoryOffsetNumber,legacyRepositoryPackageSequenceNumber,legacyRepositoryProceduralName,legacyReviewCompleteIndicator,nSRDCurrentLocationDate,nSRDCurrentLocationNumber,nationalClass,nationalSubclass,obsoleteDocumentIdentifier,obsoleteSubmissionPackageNumber,patentApplicationConfirmationNumber,patentApplicationNumber,patentApplicationPatentCooperationTreatyNumber,patentNumber,priorityClaimIndicator,priorityClaimRequirementMetIndicator,relatedDocumentCategory,sections.abstractText,sections.afterFinalPracticeText,sections.aiaStatusNoticeText,sections.allowableSubjectMatterText,sections.allowanceReasonText,sections.amendmentAcknowledgementText,sections.amendmentAfterFinalStatusText,sections.applicationStatusCategory,sections.argumentAcknowledgementText,sections.certifiedCopyText,sections.claimAppendixText,sections.claimInterpretationText,sections.claimObjectionText,sections.claimSpecificationObjectionText,sections.claimStatusCategory,sections.claimSubjectMatterSummaryText,sections.communicationText,sections.conclusionFormParagraphText,sections.conclusionText,sections.contactText,sections.continueExaminationStatusText,sections.continueProsecutionApplicationStatusText,sections.correspondenceText,sections.detailCitationText,sections.detailText,sections.doublePatentingRejectionFormParagraphText,sections.doublePatentingRejectionText,sections.drawingText,sections.electionRestrictionText,sections.evidenceText,sections.examinerAmendmentText,sections.examinerAnswerText,sections.examinerContactText,sections.examinerEmployeeNumber,sections.examinerNote,sections.faxTelephone,sections.filingDate,sections.foreignPriorityStatusText,sections.grantDate,sections.groupArtUnitNumber,sections.informationDisclosureStatementText,sections.interferenceText,sections.internetCommunicationStatementText,sections.introductionText,sections.inventorshipStatusText,sections.legacyDocumentCodeIdentifier,sections.nationalClass,sections.nationalSubclass,sections.newGroundRejectionText,sections.oathDeclarationText,sections.obsoleteDocumentIdentifier,sections.officeActionIdentifier,sections.patentApplicationNumber,sections.preliminaryAmendmentAcknowledgementText,sections.priorityApplicationStatusText,sections.proceedingAppendixText,sections.provisionalElectionText,sections.realPartyInInterestText,sections.reexaminationStatusText,sections.reissueStatusText,sections.relatedAppealText,sections.relatedDocumentText,sections.restrictionText,sections.section101FormParagraphRejectionText,sections.section101RejectionText,sections.section102AndOr103RejectionFormParagraphText,sections.section102AndOr103RejectionText,sections.section102RejectionFormParagraphText,sections.section102RejectionText,sections.section103RejectionFormParagraphText,sections.section103RejectionText,sections.section112FInterpretationText,sections.section112InterpretationText,sections.section112RejectionFormParagraphText,sections.section112RejectionText,sections.specificationTitleText,sections.submissionDate,sections.summaryText,sections.techCenterNumber,sections.terminalDisclaimerStatusText,sections.withdrawalRejectionText,sections.workGroupNumber,sourceSystemDocumentIdentifier,sourceSystemName,submissionDate,techCenter,workGroup\\\",\\\"wt\\\":\\\"json\\\",\\\"indent\\\":\\\"on\\\"}}\"}},\n
+      \ \"response\":{\"numFound\":4,\"start\":0,\"docs\":[\n      {\n        \"obsoleteDocumentIdentifier\":[\"IVLC08MNRXEAPX5\"],\n
+      \       \"patentApplicationNumber\":[\"14574014\"],\n        \"accessLevelCategory\":[\"PUBLIC\"],\n
+      \       \"applicantFileReference\":[\"VAC.0893N1\"],\n        \"applicationDeemedWithdrawnDate\":\"0001-01-01T05:00:00Z\",\n
+      \       \"applicationStatusNumber\":150,\n        \"applicationTypeCategory\":[\"REGULAR\"],\n
+      \       \"businessAreaCategory\":[\"PATENT\"],\n        \"businessEntityStatusCategory\":[\"N\"],\n
+      \       \"customerNumber\":60402,\n        \"documentActiveIndicator\":[\"0\"],\n
+      \       \"documentDirectionCategory\":[\"null\"],\n        \"effectiveClaimTotalQuantity\":35,\n
+      \       \"effectiveFilingDate\":\"0001-01-01T05:00:00Z\",\n        \"examinationProgramCode\":[\"N\"],\n
+      \       \"examinerEmployeeNumber\":[\"84263\"],\n        \"figureQuantity\":0,\n
+      \       \"filingDate\":\"2014-12-17T05:00:00Z\",\n        \"grantDate\":\"2017-12-26T05:00:00Z\",\n
+      \       \"groupArtUnitNumber\":3763,\n        \"id\":\"465d7b35bcc6c042b57b15b1db5e2045be25ca136a085994ba9d1170\",\n
+      \       \"independentClaimTotalQuantity\":3,\n        \"inventionSubjectMatterCategory\":[\"UTL\"],\n
+      \       \"inventionTitle\":[\"THERAPY DELIVERY SYSTEMS AND METHODS\"],\n        \"lastModifiedTimestamp\":\"2016-11-16T20:13:12Z\",\n
+      \       \"lastModifiedUserIdentifier\":[\"CMS_ADD\"],\n        \"legacyCMSIdentifier\":[\"PATENT-14574014-OACS-IVLC08MNRXEAPX5\"],\n
+      \       \"legacyDocumentCodeIdentifier\":[\"CTFR\"],\n        \"nSRDCurrentLocationDate\":\"0001-01-01T05:00:00Z\",\n
+      \       \"nSRDCurrentLocationNumber\":[\"e\"],\n        \"nationalClass\":[\"604\"],\n
+      \       \"nationalSubclass\":[\"028000\"],\n        \"patentApplicationConfirmationNumber\":8505,\n
+      \       \"patentApplicationPatentCooperationTreatyNumber\":[\"null\"],\n        \"patentNumber\":[\"9849038\"],\n
+      \       \"priorityClaimIndicator\":[\"N\"],\n        \"priorityClaimRequirementMetIndicator\":[\"N\"],\n
+      \       \"relatedDocumentCategory\":[\"CON\"],\n        \"sourceSystemName\":[\"OACS\"],\n
+      \       \"submissionDate\":\"2016-11-18T05:00:00Z\",\n        \"techCenter\":[\"3700\"],\n
+      \       \"workGroup\":[\"3760\"],\n        \"sections.examinerEmployeeNumber\":[\"84263\"],\n
+      \       \"sections.filingDate\":\"2014-12-17T05:00:00Z\",\n        \"sections.grantDate\":\"2017-12-26T05:00:00Z\",\n
+      \       \"sections.groupArtUnitNumber\":[\"3763\"],\n        \"sections.legacyDocumentCodeIdentifier\":[\"CTFR\"],\n
+      \       \"sections.nationalClass\":[\"604\"],\n        \"sections.nationalSubclass\":[\"028000\"],\n
+      \       \"sections.officeActionIdentifier\":[\"465d7b35bcc6c042b57b15b1db5e2045be25ca136a085994ba9d1170\"],\n
+      \       \"sections.section103RejectionFormParagraphText\":[\"The following is
+      a quotation of pre-AIA  35 U.S.C. 103(a) which forms the basis for all obviousness
+      rejections set forth in this Office action:\\n(a) A patent may not be obtained
+      though the invention is not identically disclosed or described as set forth
+      in section 102, if the differences between the subject matter sought to be patented
+      and the prior art are such that the subject matter as a whole would have been
+      obvious at the time the invention was made to a person having ordinary skill
+      in the art to which said subject matter pertains. Patentability shall not be
+      negatived by the manner in which the invention was made.\\n\"],\n        \"sections.section103RejectionText\":[\"Claims
+      33, 40, and 42 are rejected under pre-AIA  35 U.S.C. 103(a) as being unpatentable
+      over Del Bigio et al (US 2009/0048582), and further in view of Odland (US 6,537,241)
+      and Fowle (US 5,324,286).\\nIn regards to claim 33, Del Bigio et al teaches
+      a system (Figure 7) for removing a fluid from a tissue site, comprising:\\nan
+      inbound conduit (inflow tubing [7]) for placement proximate to the tissue site
+      \\na treatment-fluid delivery unit (reservoir of dialysis fluid) adapted to
+      be fluidly coupled to the inbound conduit for delivering a treatment fluid (dialysis
+      fluid) to the inbound conduit (paragraph [0041])\\nan outbound conduit (outflow
+      tubing [7]) for placement proximate to the tissue site, the outbound conduit
+      fluidly coupled to the inbound conduit \\na treatment-fluid collector (waste
+      reservoir) adapted to be fluidly coupled to the outbound conduit for receiving
+      the treatment fluid and a recruited fluid from the tissue site (paragraph [0041])\\nwherein
+      the treatment fluid is hyperosmotic (hyperosmolar) with respect to the tissue
+      site (Abstract)\\n Del Bigio et al is silent about whether the inbound conduit
+      and the outbound conduit are semi-permeable, as Del Bigio et al only states
+      an osmotic cell with semipermeable membrane [6] between the inbound conduit
+      and the outbound conduit (Figure 7). Odland teaches a system (Figures 26-27)
+      comprising a semi-permeable inbound conduit (second lumen [230]) and a semi-permeable
+      outbound conduit (semipermeable membranes [232]). It would have been obvious
+      to a person having ordinary skill in the art at the time the invention was made
+      to modify the inbound conduit and the outbound conduit, of the system of Del
+      Bigio et al, to be semi-permeable, as taught by Odland, as such will provide
+      further areas in addition to the osmotic cell for site specific microdialysis
+      for recovering fluid from the tissue site and will provide an optimal combination
+      of properties such as mass transfer properties and biocompatibility (Abstract)(column
+      33, lines 16-18). Further, Del Bigio et al does not appear to teach that the
+      treatment fluid comprises a dry gas. Fowle teaches a system (Figures 1-3) wherein
+      a treatment fluid comprises a dry gas (dry inert gas stream [36]). It would
+      have been obvious to a person having ordinary skill in the art at the time the
+      invention was made to modify the treatment fluid, of the modified system of
+      Del Bigio et al and Odland, to comprise a dry gas, as taught by Fowle, as such
+      will allow for transporting cryogenic droplets to the distal end of the conduit
+      for cooling a cold-tip (Abstract), which can be manipulated to destroy a small
+      amount of brain tissue (the thalamus) by freezing it (column 1, lines 13-19).\\n\\tIn
+      regards to claim 40, in the modified system of Del Bigio et al, Odland, and
+      Fowle, Del Bigio et al teaches a conduit interface (osmotic cell with semipermeable
+      membrane [6]) for coupling the inbound conduit and the outbound conduit; however,
+      Del Bigio et al does not teach that the conduit interface comprises a plurality
+      of tributary conduits, as Del Bigio et al only  teaches a single conduit [6].
+      But it would have been obvious to a person having ordinary skill in the art
+      at the time the invention was made to modify the conduit interface, of the modified
+      system of Del Bigio et al, Odland, and Fowle, to comprise a plurality of tributary
+      conduits, as either configuration between the inbound conduit and the outbound
+      conduit will allow for excess water and small molecules to be efficiently drawn
+      from the surface of the brain, through osmotic forces, thereby reducing brain
+      swelling.\\n\\tIn regards to claim 42, in the modified system of Del Bigio et
+      al, Odland, and Fowle, Del Bigio et al teaches an open-cavity (Figure 7), reduced-pressure
+      (Abstract) subsystem (mechanical pumping system) for removing fluids from a
+      body cavity of a patient (paragraph [0041]).\\n Claims 34-37 are rejected under
+      pre-AIA  35 U.S.C. 103(a) as being unpatentable over Del Bigio et al, Odland,
+      and Fowle, as applied to claim 33 above, and further in view of Treu et al (US
+      6,254,567).\\nIn regards to claim 34, in the modified system of Del Bigio et
+      al, Odland, and Fowle, Del Bigio et al is silent about a recruited-fluid determination
+      unit coupled to the treatment-fluid collector for determining a volume of the
+      recruited fluid. Treu et al teaches a system (Figure 7) wherein a recruited-fluid
+      determination unit (fluid removal module [118]) is coupled to a treatment fluid
+      collector (waste module [46]) for determining a volume of a recruited fluid.
+      It would have been obvious to a person having ordinary skill in the art at the
+      time the invention was made to modify the modified system, of Del Bigio et al,
+      Odland, and Fowle, with a recruited-fluid determination unit, as taught by Treu
+      et al, as such will provide an efficient means for  monitoring the volume of
+      excess fluid removed from the patient in order to aid in balancing the fluid
+      level of the patient (column 10, lines 33-45)(column 3, lines 65-67).\\nIn regards
+      to claim 35, in the modified system of Del Bigio et al, Odland, and Fowle, Del
+      Bigio et al is silent about a volume transducer and a treatment controller comprising
+      a microprocessor, a memory device, an input device, the volume transducer, and
+      an output means. Treu et al teaches a system (Figures 1 and 7) comprising a
+      volume transducer (means [124]) for developing a signal indicative of the volume
+      of treatment fluid and recruited fluid (column 10, lines 41-45) and a treatment
+      controller (processing controller [16]), the treatment controller comprising:
+      a microprocessor (column 5, lines 21-22), a memory device associated with the
+      microprocessor (column 5, line 38), an input device (interface [50])(input device
+      [54]) associated with the microprocessor for receiving input signals, the volume
+      transducer coupled to the input device (column 3, lines 65-67), and an output
+      means associated with the microprocessor for delivering output signals (column
+      5, lines 21-44)(column 10, lines 33-45). It would have been obvious to a person
+      having ordinary skill in the art at the time the invention was made to modify
+      the modified system, of Del Bigio et al, Odland, and Fowle, with a volume transducer
+      and a treatment controller having a microprocessor, a memory device, an input
+      device, the volume transducer, and an output means, as taught by Treu et al,
+      as the volume transducer will provide an efficient means for monitoring the
+      volume of excess fluid removed from the patient in order to aid in balancing
+      the fluid level of the patient (column 10, lines 33-45)(column 3, lines 65-67)
+      and the treatment controller will govern the interactions within the system
+      by providing the user with the current status of the system, prompting the user
+      to input commands and information or receive data from the various sensors and
+      other components, recording data in memory,  controlling the operation of the
+      active components of the system, or alerting the patient to abnormal or failure
+      conditions in the system (column 5, lines 21-44).\\nIn regards to claim 36,
+      in the modified system of Del Bigio et al, Odland, Fowle, and Treu et al, Del
+      Bigio et al does not teach a microprocessor and a memory device. Treu et al
+      teaches that the microprocessor and the memory device are operable to develop
+      a control signal to adjust a flow rate in the treatment-fluid delivery unit
+      (column 9, lines 57-62)(column 10, lines 1-7). It would have been obvious to
+      a person having ordinary skill in the art at the time the invention was made
+      to modify the modified system, of Del Bigio et al, Odland, Fowle, and Treu et
+      al, to adjust a flow rate in the treatment-fluid delivery unit, as taught by
+      Treu et al, as adjusting the flow rate will help at least partially maintain
+      a normal physiologic fluid and electrolytic balance in the patient (column 9,
+      lines 52-54).\\nIn regards to claim 37, in the modified system of Del Bigio
+      et al, Odland, Fowle, and Treu et al, Del Bigio et al does not teach that the
+      treatment-fluid delivery unit comprises a heating element and the system comprises
+      an inbound conduit temperature transducer coupled to the treatment controller.
+      Treu et al teaches that the treatment-fluid delivery unit comprises a heating
+      element (column 9, lines 4-10). It would have been obvious to a person having
+      ordinary skill in the art at the time the invention was made to modify the modified
+      system, of Del Bigio et al, Odland, Fowle, and Treu et al, with a heating element,
+      as taught by Treu et al, as such will heat the treatment fluid to body temperature
+      (column 9, lines 4-10), which will be more comfortable to the patient. However,
+      Treu et al is silent about an inbound conduit temperature transducer. But it
+      would have been obvious to a person having ordinary skill in the art at the
+      time the invention was made to modify the modified system, of Del Bigio et al,
+      Odland, Fowle, and  Treu et al, with an inbound conduit temperature transducer,
+      as common practice in the art, as such will allow the treatment controller to
+      sense and determine whether or not the treatment fluid is at an acceptable temperature,
+      such as body temperature, for delivery to the patient. If the treatment fluid
+      is not at an acceptable temperature, the treatment controller will direct the
+      heating element to operate and regulate the temperature of the treatment fluid.\\n
+      Claims 43-46 are rejected under pre-AIA  35 U.S.C. 103(a) as being unpatentable
+      over Del Bigio et al, Odland, and Fowle, as applied to claim 42 above, and further
+      in view of Lockwood et al (US 6,752,794).\\nIn regards to claim 43, in the modified
+      system of Del Bigio et al, Odland, and Fowle, Del Bigio et al is silent about
+      whether the open-cavity, reduced-pressure subsystem comprises a treatment device,
+      a manifold, a sealing member, a reduced-pressure delivery conduit, and a reduced-pressure
+      interface. Lockwood et al teaches a system wherein an open-cavity, reduced-pressure
+      subsystem (Figures 1-7) comprises: \\na treatment device comprising:\\na fenestrated
+      non-adherent drape (member [20])\\na plurality of encapsulated leg members (channels
+      [28]) coupled to the non-adherent drape, each having an interior portion with
+      a leg manifold member [28] and formed with fenestrations (holes [36]) operable
+      to allow fluid flow into the interior portion \\na central connection member
+      (channels [30]) fluidly coupled to the plurality of encapsulated leg members,
+      the central connection member having a first side (Figure 4) and a second, patient-facing
+      side\\na manifold (vacuum/irrigation tube [13]) for disposing proximate the
+      first side of the central connection member and operable to manifold reduced
+      pressure to the central connection member \\na sealing member (sealing film
+      [62]) for disposing on a portion of the patient\u2019s epidermis and operable
+      to form a pneumatic seal over the body cavity\\na reduced-pressure delivery
+      conduit (between vacuum source [12] and valve [66])\\na reduced-pressure interface
+      (valve [66]) for coupling to the sealing member and operable to fluidly couple
+      the reduced-pressure delivery conduit to the manifold\\nIt would have been obvious
+      to a person having ordinary skill in the art at the time the invention was made
+      to modify the open-cavity, reduced-pressure subsystem, of the modified system
+      of Del Bigio et al, Odland, and Fowle, to comprise a treatment device, a manifold,
+      a sealing member, a reduced-pressure delivery conduit, and a reduced-pressure
+      interface, as taught by Lockwood et al, as such will promote the healing of
+      a large wound by providing vacuum therapy to the wound to promote blood flow
+      and remove exudate from a wound surface of the wound (column 7, lines 54-57).\\n\\tIn
+      regards to claim 44, in the modified system of Del Bigio et al, Odland, Fowle,
+      and Lockwood et al, Del Bigio et al is silent about a central connection member.
+      Lockwood et al teaches that the central connection member has a connection manifold
+      member [30] and wherein each leg manifold member is in fluid communication with
+      the connection manifold member number='10'(Figure 4). It would have been obvious
+      to a person having ordinary skill in the art at the time the invention was made
+      to modify the central connection member, of the modified system of Del Bigio
+      et al, Odland, Fowle, and Lockwood et al, to have a connection manifold member,
+      as taught by Lockwood et al, as such will promote the healing of a large wound
+      by providing vacuum therapy to the wound to promote blood flow and remove exudate
+      from a wound surface of the wound (column 7, lines 54-57).\\nIn regards to claim
+      45, in the modified system of Del Bigio et al, Odland, Fowle, and Lockwood et
+      al, Del Bigio et al is silent about the plurality of encapsulated leg members.
+      Lockwood et al teaches that the outbound conduit [13] and the inbound conduit
+      [13] are coupled to at least one of the plurality of encapsulated leg members
+      (Figure 5). It would have been obvious to a person having ordinary skill in
+      the art at the time the invention was made to modify the outbound conduit and
+      the inbound conduit, of the modified system of Del Bigio et al, Odland, Fowle,
+      and Lockwood et al, to be coupled to at least one of the plurality of encapsulated
+      leg members, as taught by Lockwood et al, as such will promote the healing of
+      a large wound by providing vacuum therapy to the wound to promote blood flow
+      and remove exudate from a wound surface of the wound (column 7, lines 54-57).\\nIn
+      regards to claim 46, in the modified system of Del Bigio et al, Odland, Fowle,
+      and Lockwood et al, Del Bigio et al is silent about the plurality of encapsulated
+      leg members. Lockwood et al teaches that each encapsulated leg member of the
+      plurality of encapsulated leg members comprises:\\na fenestrated first leg encapsulating
+      member [28]\\na fenestrated second leg encapsulating member [28]number='11'\\nwherein
+      the leg manifold member has a first side, a second side, a first lateral edge,
+      and a second lateral edge (Figure 4)\\nwherein the first leg encapsulating member
+      is disposed proximate the first side of the leg manifold member, the second
+      leg encapsulating member is disposed proximate the second side of the leg manifold
+      member, and the first leg encapsulating member and the second leg encapsulating
+      member are coupled proximate the first lateral edge and the second lateral edge
+      of the leg manifold member to form the first encapsulated leg member (Figure
+      4)\\nIt would have been obvious to a person having ordinary skill in the art
+      at the time the invention was made to modify each encapsulated leg member, of
+      the modified system of Del Bigio et al, Odland, Fowle, and Lockwood et al, to
+      comprise a fenestrated first leg encapsulating member and a fenestrated second
+      leg encapsulating member, as taught by Lockwood et al, as such will promote
+      the healing of a large wound by providing vacuum therapy to the wound to promote
+      blood flow and remove exudate from a wound surface of the wound (column 7, lines
+      54-57).\\n\"],\n        \"sections.specificationTitleText\":[\"The abstract
+      of the disclosure is objected to because:\\nIn the fifth sentence, the term
+      \u201Ca fluid\u201D should be changed to \\\"the fluid\\\"\\nCorrection is required.
+      \ See MPEP \xA7 608.01(b).\\n\"],\n        \"sections.submissionDate\":\"2016-11-18T05:00:00Z\",\n
+      \       \"sections.techCenterNumber\":[\"3700\"],\n        \"sections.workGroupNumber\":[\"3760\"],\n
+      \       \"sections.obsoleteDocumentIdentifier\":[\"IVLC08MNRXEAPX5\"],\n        \"sections.patentApplicationNumber\":[\"14574014\"],\n
+      \       \"createDateTime\":\"2022-07-23T03:52:57.322Z\",\n        \"bodyText\":[\"DETAILED
+      ACTION\\n\\nNotice of Pre-AIA  or AIA  Status\\nThe present application is being
+      examined under the pre-AIA  first to invent provisions. \\n\\nAcknowledgments\\nIn
+      the reply, filed on August 5, 2016, Applicant amended claims 1-6, 8, 11-19,
+      33, 35, 36, 43, 45, and 46.\\nApplicant cancelled claim 7.\\nIn the non-final
+      rejection of May 11, 2016, Examiner noted that the information disclosure statement
+      of January 12, 2015, fails to comply with 37 CFR 1.98(a)(2), which requires
+      a legible copy of each cited foreign patent document. Applicant submitted copies
+      of GB 692578 and SG 71559. Concern is withdrawn.\\nExaminer objected to the
+      Abstract. Applicant did not address the term \u201Ca fluid\u201D in the fifth
+      sentence. Objection is maintained.\\nExaminer objected to claims 1-8, 11-19,
+      33, 35, 36, 43, 45, and 46 for informalities. Applicant amended claims 1-6,
+      8, 11-19, 33, 35, 36, 43, 45, and 46 and cancelled claim 7. Objection is withdrawn.\\nExaminer
+      rejected claims 1-8, 11-19, 33-37, and 40-46 on the ground of nonstatutory double
+      patenting as being unpatentable over claims 1-5 and 8-15 of US 8,216,175. \\nThe
+      terminal disclaimer filed on August 5, 2016, disclaiming the terminal portion
+      of any patent granted on this application which would extend beyond the expiration
+      date of US  8,216,175 has been reviewed and is accepted.  The terminal disclaimer
+      has been recorded. Rejection is withdrawn.\\nCurrently, claims 1-6, 8-19, 33-37,
+      and 40-46 are under examination.\\n\\nSpecification\\nThe abstract of the disclosure
+      is objected to because:\\nIn the fifth sentence, the term \u201Ca fluid\u201D
+      should be changed to \\\"the fluid\\\"\\nCorrection is required.  See MPEP \xA7
+      608.01(b).\\n\\nClaim Objections\\nClaims 1, 9, and 10 are objected to because
+      of the following informalities: \\nIn regards to claim 1, the term \u201Cconfigured\u201D
+      should be changed to \u201Csized\u201D (corresponds to the subject matter of
+      cancelled claim 7).\\nIn regards to claim 9, the term \u201Cfluid\u201D should
+      be changed to \\\"the fluid\\\".\\nIn regards to claim 9, the term \u201Ca tissue
+      site\u201D should be changed to \u201Cthe tissue site\u201D.\\nIn regards to
+      claim 9, the term \u201Cproximal end\u201D should be changed to \u201Cthe proximal
+      end\u201D.\\nIn regards to claim 10, the term \u201Cfluid\u201D should be changed
+      to \\\"the fluid\\\".\\nIn regards to claim 10, the term \u201Ca tissue site\u201D
+      should be changed to \u201Cthe tissue site\u201D.\\nIn regards to claim 10,
+      the term \u201Cproximal end\u201D should be changed to \u201Cthe proximal end\u201D.\\nAppropriate
+      correction is required.\\n\\n Claim Rejections - 35 USC \xA7 103\\nThe following
+      is a quotation of pre-AIA  35 U.S.C. 103(a) which forms the basis for all obviousness
+      rejections set forth in this Office action:\\n(a) A patent may not be obtained
+      though the invention is not identically disclosed or described as set forth
+      in section 102, if the differences between the subject matter sought to be patented
+      and the prior art are such that the subject matter as a whole would have been
+      obvious at the time the invention was made to a person having ordinary skill
+      in the art to which said subject matter pertains. Patentability shall not be
+      negatived by the manner in which the invention was made.\\n\\nClaims 33, 40,
+      and 42 are rejected under pre-AIA  35 U.S.C. 103(a) as being unpatentable over
+      Del Bigio et al (US 2009/0048582), and further in view of Odland (US 6,537,241)
+      and Fowle (US 5,324,286).\\nIn regards to claim 33, Del Bigio et al teaches
+      a system (Figure 7) for removing a fluid from a tissue site, comprising:\\nan
+      inbound conduit (inflow tubing [7]) for placement proximate to the tissue site
+      \\na treatment-fluid delivery unit (reservoir of dialysis fluid) adapted to
+      be fluidly coupled to the inbound conduit for delivering a treatment fluid (dialysis
+      fluid) to the inbound conduit (paragraph [0041])\\nan outbound conduit (outflow
+      tubing [7]) for placement proximate to the tissue site, the outbound conduit
+      fluidly coupled to the inbound conduit \\na treatment-fluid collector (waste
+      reservoir) adapted to be fluidly coupled to the outbound conduit for receiving
+      the treatment fluid and a recruited fluid from the tissue site (paragraph [0041])\\nwherein
+      the treatment fluid is hyperosmotic (hyperosmolar) with respect to the tissue
+      site (Abstract)\\n Del Bigio et al is silent about whether the inbound conduit
+      and the outbound conduit are semi-permeable, as Del Bigio et al only states
+      an osmotic cell with semipermeable membrane [6] between the inbound conduit
+      and the outbound conduit (Figure 7). Odland teaches a system (Figures 26-27)
+      comprising a semi-permeable inbound conduit (second lumen [230]) and a semi-permeable
+      outbound conduit (semipermeable membranes [232]). It would have been obvious
+      to a person having ordinary skill in the art at the time the invention was made
+      to modify the inbound conduit and the outbound conduit, of the system of Del
+      Bigio et al, to be semi-permeable, as taught by Odland, as such will provide
+      further areas in addition to the osmotic cell for site specific microdialysis
+      for recovering fluid from the tissue site and will provide an optimal combination
+      of properties such as mass transfer properties and biocompatibility (Abstract)(column
+      33, lines 16-18). Further, Del Bigio et al does not appear to teach that the
+      treatment fluid comprises a dry gas. Fowle teaches a system (Figures 1-3) wherein
+      a treatment fluid comprises a dry gas (dry inert gas stream [36]). It would
+      have been obvious to a person having ordinary skill in the art at the time the
+      invention was made to modify the treatment fluid, of the modified system of
+      Del Bigio et al and Odland, to comprise a dry gas, as taught by Fowle, as such
+      will allow for transporting cryogenic droplets to the distal end of the conduit
+      for cooling a cold-tip (Abstract), which can be manipulated to destroy a small
+      amount of brain tissue (the thalamus) by freezing it (column 1, lines 13-19).\\n\\tIn
+      regards to claim 40, in the modified system of Del Bigio et al, Odland, and
+      Fowle, Del Bigio et al teaches a conduit interface (osmotic cell with semipermeable
+      membrane [6]) for coupling the inbound conduit and the outbound conduit; however,
+      Del Bigio et al does not teach that the conduit interface comprises a plurality
+      of tributary conduits, as Del Bigio et al only  teaches a single conduit [6].
+      But it would have been obvious to a person having ordinary skill in the art
+      at the time the invention was made to modify the conduit interface, of the modified
+      system of Del Bigio et al, Odland, and Fowle, to comprise a plurality of tributary
+      conduits, as either configuration between the inbound conduit and the outbound
+      conduit will allow for excess water and small molecules to be efficiently drawn
+      from the surface of the brain, through osmotic forces, thereby reducing brain
+      swelling.\\n\\tIn regards to claim 42, in the modified system of Del Bigio et
+      al, Odland, and Fowle, Del Bigio et al teaches an open-cavity (Figure 7), reduced-pressure
+      (Abstract) subsystem (mechanical pumping system) for removing fluids from a
+      body cavity of a patient (paragraph [0041]).\\n\\nClaims 34-37 are rejected
+      under pre-AIA  35 U.S.C. 103(a) as being unpatentable over Del Bigio et al,
+      Odland, and Fowle, as applied to claim 33 above, and further in view of Treu
+      et al (US 6,254,567).\\nIn regards to claim 34, in the modified system of Del
+      Bigio et al, Odland, and Fowle, Del Bigio et al is silent about a recruited-fluid
+      determination unit coupled to the treatment-fluid collector for determining
+      a volume of the recruited fluid. Treu et al teaches a system (Figure 7) wherein
+      a recruited-fluid determination unit (fluid removal module [118]) is coupled
+      to a treatment fluid collector (waste module [46]) for determining a volume
+      of a recruited fluid. It would have been obvious to a person having ordinary
+      skill in the art at the time the invention was made to modify the modified system,
+      of Del Bigio et al, Odland, and Fowle, with a recruited-fluid determination
+      unit, as taught by Treu et al, as such will provide an efficient means for  monitoring
+      the volume of excess fluid removed from the patient in order to aid in balancing
+      the fluid level of the patient (column 10, lines 33-45)(column 3, lines 65-67).\\nIn
+      regards to claim 35, in the modified system of Del Bigio et al, Odland, and
+      Fowle, Del Bigio et al is silent about a volume transducer and a treatment controller
+      comprising a microprocessor, a memory device, an input device, the volume transducer,
+      and an output means. Treu et al teaches a system (Figures 1 and 7) comprising
+      a volume transducer (means [124]) for developing a signal indicative of the
+      volume of treatment fluid and recruited fluid (column 10, lines 41-45) and a
+      treatment controller (processing controller [16]), the treatment controller
+      comprising: a microprocessor (column 5, lines 21-22), a memory device associated
+      with the microprocessor (column 5, line 38), an input device (interface [50])(input
+      device [54]) associated with the microprocessor for receiving input signals,
+      the volume transducer coupled to the input device (column 3, lines 65-67), and
+      an output means associated with the microprocessor for delivering output signals
+      (column 5, lines 21-44)(column 10, lines 33-45). It would have been obvious
+      to a person having ordinary skill in the art at the time the invention was made
+      to modify the modified system, of Del Bigio et al, Odland, and Fowle, with a
+      volume transducer and a treatment controller having a microprocessor, a memory
+      device, an input device, the volume transducer, and an output means, as taught
+      by Treu et al, as the volume transducer will provide an efficient means for
+      monitoring the volume of excess fluid removed from the patient in order to aid
+      in balancing the fluid level of the patient (column 10, lines 33-45)(column
+      3, lines 65-67) and the treatment controller will govern the interactions within
+      the system by providing the user with the current status of the system, prompting
+      the user to input commands and information or receive data from the various
+      sensors and other components, recording data in memory,  controlling the operation
+      of the active components of the system, or alerting the patient to abnormal
+      or failure conditions in the system (column 5, lines 21-44).\\nIn regards to
+      claim 36, in the modified system of Del Bigio et al, Odland, Fowle, and Treu
+      et al, Del Bigio et al does not teach a microprocessor and a memory device.
+      Treu et al teaches that the microprocessor and the memory device are operable
+      to develop a control signal to adjust a flow rate in the treatment-fluid delivery
+      unit (column 9, lines 57-62)(column 10, lines 1-7). It would have been obvious
+      to a person having ordinary skill in the art at the time the invention was made
+      to modify the modified system, of Del Bigio et al, Odland, Fowle, and Treu et
+      al, to adjust a flow rate in the treatment-fluid delivery unit, as taught by
+      Treu et al, as adjusting the flow rate will help at least partially maintain
+      a normal physiologic fluid and electrolytic balance in the patient (column 9,
+      lines 52-54).\\nIn regards to claim 37, in the modified system of Del Bigio
+      et al, Odland, Fowle, and Treu et al, Del Bigio et al does not teach that the
+      treatment-fluid delivery unit comprises a heating element and the system comprises
+      an inbound conduit temperature transducer coupled to the treatment controller.
+      Treu et al teaches that the treatment-fluid delivery unit comprises a heating
+      element (column 9, lines 4-10). It would have been obvious to a person having
+      ordinary skill in the art at the time the invention was made to modify the modified
+      system, of Del Bigio et al, Odland, Fowle, and Treu et al, with a heating element,
+      as taught by Treu et al, as such will heat the treatment fluid to body temperature
+      (column 9, lines 4-10), which will be more comfortable to the patient. However,
+      Treu et al is silent about an inbound conduit temperature transducer. But it
+      would have been obvious to a person having ordinary skill in the art at the
+      time the invention was made to modify the modified system, of Del Bigio et al,
+      Odland, Fowle, and  Treu et al, with an inbound conduit temperature transducer,
+      as common practice in the art, as such will allow the treatment controller to
+      sense and determine whether or not the treatment fluid is at an acceptable temperature,
+      such as body temperature, for delivery to the patient. If the treatment fluid
+      is not at an acceptable temperature, the treatment controller will direct the
+      heating element to operate and regulate the temperature of the treatment fluid.\\n\\nClaims
+      43-46 are rejected under pre-AIA  35 U.S.C. 103(a) as being unpatentable over
+      Del Bigio et al, Odland, and Fowle, as applied to claim 42 above, and further
+      in view of Lockwood et al (US 6,752,794).\\nIn regards to claim 43, in the modified
+      system of Del Bigio et al, Odland, and Fowle, Del Bigio et al is silent about
+      whether the open-cavity, reduced-pressure subsystem comprises a treatment device,
+      a manifold, a sealing member, a reduced-pressure delivery conduit, and a reduced-pressure
+      interface. Lockwood et al teaches a system wherein an open-cavity, reduced-pressure
+      subsystem (Figures 1-7) comprises: \\na treatment device comprising:\\na fenestrated
+      non-adherent drape (member [20])\\na plurality of encapsulated leg members (channels
+      [28]) coupled to the non-adherent drape, each having an interior portion with
+      a leg manifold member [28] and formed with fenestrations (holes [36]) operable
+      to allow fluid flow into the interior portion \\na central connection member
+      (channels [30]) fluidly coupled to the plurality of encapsulated leg members,
+      the central connection member having a first side (Figure 4) and a second, patient-facing
+      side\\na manifold (vacuum/irrigation tube [13]) for disposing proximate the
+      first side of the central connection member and operable to manifold reduced
+      pressure to the central connection member \\na sealing member (sealing film
+      [62]) for disposing on a portion of the patient\u2019s epidermis and operable
+      to form a pneumatic seal over the body cavity\\na reduced-pressure delivery
+      conduit (between vacuum source [12] and valve [66])\\na reduced-pressure interface
+      (valve [66]) for coupling to the sealing member and operable to fluidly couple
+      the reduced-pressure delivery conduit to the manifold\\nIt would have been obvious
+      to a person having ordinary skill in the art at the time the invention was made
+      to modify the open-cavity, reduced-pressure subsystem, of the modified system
+      of Del Bigio et al, Odland, and Fowle, to comprise a treatment device, a manifold,
+      a sealing member, a reduced-pressure delivery conduit, and a reduced-pressure
+      interface, as taught by Lockwood et al, as such will promote the healing of
+      a large wound by providing vacuum therapy to the wound to promote blood flow
+      and remove exudate from a wound surface of the wound (column 7, lines 54-57).\\n\\tIn
+      regards to claim 44, in the modified system of Del Bigio et al, Odland, Fowle,
+      and Lockwood et al, Del Bigio et al is silent about a central connection member.
+      Lockwood et al teaches that the central connection member has a connection manifold
+      member [30] and wherein each leg manifold member is in fluid communication with
+      the connection manifold member number='10'(Figure 4). It would have been obvious
+      to a person having ordinary skill in the art at the time the invention was made
+      to modify the central connection member, of the modified system of Del Bigio
+      et al, Odland, Fowle, and Lockwood et al, to have a connection manifold member,
+      as taught by Lockwood et al, as such will promote the healing of a large wound
+      by providing vacuum therapy to the wound to promote blood flow and remove exudate
+      from a wound surface of the wound (column 7, lines 54-57).\\nIn regards to claim
+      45, in the modified system of Del Bigio et al, Odland, Fowle, and Lockwood et
+      al, Del Bigio et al is silent about the plurality of encapsulated leg members.
+      Lockwood et al teaches that the outbound conduit [13] and the inbound conduit
+      [13] are coupled to at least one of the plurality of encapsulated leg members
+      (Figure 5). It would have been obvious to a person having ordinary skill in
+      the art at the time the invention was made to modify the outbound conduit and
+      the inbound conduit, of the modified system of Del Bigio et al, Odland, Fowle,
+      and Lockwood et al, to be coupled to at least one of the plurality of encapsulated
+      leg members, as taught by Lockwood et al, as such will promote the healing of
+      a large wound by providing vacuum therapy to the wound to promote blood flow
+      and remove exudate from a wound surface of the wound (column 7, lines 54-57).\\nIn
+      regards to claim 46, in the modified system of Del Bigio et al, Odland, Fowle,
+      and Lockwood et al, Del Bigio et al is silent about the plurality of encapsulated
+      leg members. Lockwood et al teaches that each encapsulated leg member of the
+      plurality of encapsulated leg members comprises:\\na fenestrated first leg encapsulating
+      member [28]\\na fenestrated second leg encapsulating member [28]number='11'\\nwherein
+      the leg manifold member has a first side, a second side, a first lateral edge,
+      and a second lateral edge (Figure 4)\\nwherein the first leg encapsulating member
+      is disposed proximate the first side of the leg manifold member, the second
+      leg encapsulating member is disposed proximate the second side of the leg manifold
+      member, and the first leg encapsulating member and the second leg encapsulating
+      member are coupled proximate the first lateral edge and the second lateral edge
+      of the leg manifold member to form the first encapsulated leg member (Figure
+      4)\\nIt would have been obvious to a person having ordinary skill in the art
+      at the time the invention was made to modify each encapsulated leg member, of
+      the modified system of Del Bigio et al, Odland, Fowle, and Lockwood et al, to
+      comprise a fenestrated first leg encapsulating member and a fenestrated second
+      leg encapsulating member, as taught by Lockwood et al, as such will promote
+      the healing of a large wound by providing vacuum therapy to the wound to promote
+      blood flow and remove exudate from a wound surface of the wound (column 7, lines
+      54-57).\\n\\nResponse to Arguments\\nApplicant's arguments filed August 5, 2016,
+      have been fully considered but they are not persuasive:\\nIn regards to claim
+      33, Applicant argued: Thus, in contrast to the treatment fluid applications
+      of Del Bigio and Odland, which may rely on specific osmotic properties and gradients
+      for fluid exchange with a tissue site, Fowle is drawn to the unrelated application
+      of cooling a tip of a probe. A person skilled in the art would not look to a
+      reference teaching the use number='12'of a probe with a cooled-tip for performing
+      surgical procedures in order to provide an applicable solution used for establishing
+      osmotic dialysis gradients across semipermeable membranes (Remarks, page 16).
+      Examiner disagrees. Both Del Bigio et al and Fowle teach systems used on the
+      brain, thus being analogous art and reasonably combinable at the time the invention
+      was made. Thus, the dry gas, of Fowle, which allows for transporting cryogenic
+      droplets to the distal end of the conduit for cooling a cold-tip (Abstract),
+      which can be manipulated to destroy a small amount of brain tissue (the thalamus)
+      by freezing it (column 1, lines 13-19), is relevant to the system, of Del Bigio
+      et al, also used on the brain.\\n\\nAllowable Subject Matter\\nClaims 1-6 and
+      8-19 are allowed.\\nIn regards to independent claim 1, the prior art of record
+      does not disclose or render obvious at the time the invention was made the combination
+      of a fluid removal system for removing a fluid from a tissue site, as claimed,
+      specifically including the conduit interface comprising a plurality of tributary
+      conduits configured/sized for a patient\u2019s abdominal cavity.\\nDel Bigio
+      et al teaches a fluid removal system (Figure 7) for removing a fluid from a
+      tissue site, comprising a conduit interface (osmotic cell with semipermeable
+      membrane [6]); however, Del Bigio et al does not teach that the conduit interface
+      comprises a plurality of tributary conduits, as Del Bigio et al only teaches
+      a single conduit [6]. But it would have been obvious to a person having ordinary
+      skill in the art at the time the invention was made to modify the conduit interface,
+      of the system of Del Bigio et al, to comprise a plurality of tributary conduits,
+      as either configuration between the inbound conduit (inflow tubing [7]) and
+      the number='13'outbound conduit (outflow tubing [7]) will allow for excess water
+      and small molecules to be efficiently drawn from the surface of the brain, through
+      osmotic forces, thereby reducing brain swelling. Further, as Del Bigio et al
+      teaches that the system is used on the brain (Abstract), Del Bigio et al does
+      not teach a plurality of tributary conduits configured/sized for a patient\u2019s
+      abdominal cavity. Odland (US 6,537,241) teaches a system (Figures 26-27) used
+      in an intraperitoneal route (column 32, lines 31-34), which is associated with
+      a patient\u2019s abdominal cavity; however, Odland does not teach a plurality
+      of tributary conduits.\\nThus, independent claim 1 is allowable. Dependent claims
+      2-6 and 8-19 are allowable by virtue of being dependent upon independent claim
+      1.\\n\\nClaim 41 is objected to as being dependent upon a rejected base claim,
+      but would be allowable if rewritten in independent form including all of the
+      limitations of the base claim and any intervening claims.\\nIn regards to dependent
+      claim 41, the prior art of record does not disclose or render obvious at the
+      time the invention was made the combination of a system for removing a fluid
+      from a tissue site, as claimed, specifically including that the plurality of
+      tributary conduits is sized for a patient\u2019s abdominal cavity.\\nDel Bigio
+      et al teaches a system (Figure 7) for removing a fluid from a tissue site; however,
+      Del Bigio et al does not teach a plurality of tributary conduits sized for a
+      patient\u2019s abdominal cavity, as Del Bigio et al teaches that the system
+      is used on the brain (Abstract). Odland teaches a system (Figures 26-27) used
+      in an intraperitoneal route (column 32, lines 31-number='14'34), which is associated
+      with a patient\u2019s abdominal cavity; however, Odland does not teach a plurality
+      of tributary conduits.\\n\\nConclusion\\nTHIS ACTION IS MADE FINAL.  Applicant
+      is reminded of the extension of time policy as set forth in 37 CFR 1.136(a).
+      \ \\nA shortened statutory period for reply to this final action is set to expire
+      THREE MONTHS from the mailing date of this action.  In the event a first reply
+      is filed within TWO MONTHS of the mailing date of this final action and the
+      advisory action is not mailed until after the end of the THREE-MONTH shortened
+      statutory period, then the shortened statutory period will expire on the date
+      the advisory action is mailed, and any extension fee pursuant to 37 CFR 1.136(a)
+      will be calculated from the mailing date of the advisory action.  In no event,
+      however, will the statutory period for reply expire later than SIX MONTHS from
+      the mailing date of this final action. \\nAny inquiry concerning this communication
+      or earlier communications from the examiner should be directed to SHEFALI PATEL
+      whose telephone number is (571)270-3645.  The examiner can normally be reached
+      on Monday through Thursday from 8am-5pm Eastern time.\\nIf attempts to reach
+      the examiner by telephone are unsuccessful, the examiner\u2019s supervisor,
+      Kevin C. Sirmons can be reached on (571) 272-4965.  The fax phone number for
+      the organization where this application or proceeding is assigned is 571-273-8300.\\nnumber='15'Information
+      regarding the status of an application may be obtained from the Patent Application
+      Information Retrieval (PAIR) system.  Status information for published applications
+      may be obtained from either Private PAIR or Public PAIR.  Status information
+      for unpublished applications is available through Private PAIR only.  For more
+      information about the PAIR system, see http://pair-direct.uspto.gov. Should
+      you have questions on access to the Private PAIR system, contact the Electronic
+      Business Center (EBC) at 866-217-9197 (toll-free). If you would like assistance
+      from a USPTO Customer Service Representative or access to the automated information
+      system, call 800-786-9199 (IN USA OR CANADA) or 571-272-1000.\\n\\n\\n\\n\\n\\n/SHEFALI
+      PATEL/\\nExaminer, Art Unit 3763\\n/KEVIN C. SIRMONS/\\nSupervisory Patent Examiner,
+      Art Unit 3763\"]},\n      {\n        \"obsoleteDocumentIdentifier\":[\"J6CB4NOHRXEAPX4\"],\n
+      \       \"patentApplicationNumber\":[\"14574014\"],\n        \"accessLevelCategory\":[\"PUBLIC\"],\n
+      \       \"applicantFileReference\":[\"VAC.0893N1\"],\n        \"applicationDeemedWithdrawnDate\":\"0001-01-01T05:00:00Z\",\n
+      \       \"applicationStatusNumber\":150,\n        \"applicationTypeCategory\":[\"REGULAR\"],\n
+      \       \"businessAreaCategory\":[\"PATENT\"],\n        \"businessEntityStatusCategory\":[\"N\"],\n
+      \       \"customerNumber\":60402,\n        \"documentActiveIndicator\":[\"0\"],\n
+      \       \"documentDirectionCategory\":[\"null\"],\n        \"effectiveClaimTotalQuantity\":35,\n
+      \       \"effectiveFilingDate\":\"0001-01-01T05:00:00Z\",\n        \"examinationProgramCode\":[\"N\"],\n
+      \       \"examinerEmployeeNumber\":[\"84263\"],\n        \"figureQuantity\":0,\n
+      \       \"filingDate\":\"2014-12-17T05:00:00Z\",\n        \"grantDate\":\"2017-12-26T05:00:00Z\",\n
+      \       \"groupArtUnitNumber\":3763,\n        \"id\":\"bfa5943fbedf26a979e0ab59c730e6b43ecc165f7ee3a1d85d3fdae5\",\n
+      \       \"independentClaimTotalQuantity\":3,\n        \"inventionSubjectMatterCategory\":[\"UTL\"],\n
+      \       \"inventionTitle\":[\"THERAPY DELIVERY SYSTEMS AND METHODS\"],\n        \"lastModifiedTimestamp\":\"2017-08-14T16:52:07Z\",\n
+      \       \"lastModifiedUserIdentifier\":[\"CMS_ADD\"],\n        \"legacyCMSIdentifier\":[\"PATENT-14574014-OACS-J6CB4NOHRXEAPX4\"],\n
+      \       \"legacyDocumentCodeIdentifier\":[\"NOA\"],\n        \"nSRDCurrentLocationDate\":\"0001-01-01T05:00:00Z\",\n
+      \       \"nSRDCurrentLocationNumber\":[\"e\"],\n        \"nationalClass\":[\"604\"],\n
+      \       \"nationalSubclass\":[\"028000\"],\n        \"patentApplicationConfirmationNumber\":8505,\n
+      \       \"patentApplicationPatentCooperationTreatyNumber\":[\"null\"],\n        \"patentNumber\":[\"9849038\"],\n
+      \       \"priorityClaimIndicator\":[\"N\"],\n        \"priorityClaimRequirementMetIndicator\":[\"N\"],\n
+      \       \"relatedDocumentCategory\":[\"CON\"],\n        \"sourceSystemName\":[\"OACS\"],\n
+      \       \"submissionDate\":\"2017-08-16T04:00:00Z\",\n        \"techCenter\":[\"3700\"],\n
+      \       \"workGroup\":[\"3760\"],\n        \"createDateTime\":\"2022-07-23T03:52:57.322Z\",\n
+      \       \"bodyText\":[\"ALLOWANCE\\n\\nNotice of Pre-AIA  or AIA  Status\\nThe
+      present application is being examined under the pre-AIA  first to invent provisions.
+      \\n\\nContinued Examination Under 37 CFR 1.114\\nA request for continued examination
+      under 37 CFR 1.114, including the fee set forth in 37 CFR 1.17(e), was filed
+      in this application after final rejection.  Since this application is eligible
+      for continued examination under 37 CFR 1.114, and the fee set forth in 37 CFR
+      1.17(e) has been timely paid, the finality of the previous Office action has
+      been withdrawn pursuant to 37 CFR 1.114.  Applicant's submission filed on April
+      18, 2017, has been entered.\\n\\nAcknowledgments\\nIn the reply, filed on April
+      18, 2017, Applicant requested the entry of the after final amendment of February
+      23, 2017. The amendment is now entered.\\nApplicant amended claims 1, 9, 10,
+      33, 38, and 39.\\nApplicant cancelled claims 40 and 41.\\nIn the final rejection
+      of November 18, 2016, Examiner objected to the Abstract. Applicant amended the
+      Abstract. Objection is withdrawn.\\nExaminer objected to claims 1, 9, and 10.
+      Applicant amended claims 1, 9, and 10. Objection is withdrawn.\\n\\n Examiner\u2019s
+      Amendment\\nAn examiner\u2019s amendment to the record appears below. Should
+      the changes and/or additions be unacceptable to applicant, an amendment may
+      be filed as provided by 37 CFR 1.312. To ensure consideration of such an amendment,
+      it MUST be submitted no later than the payment of the issue fee.\\nAuthorization
+      for this examiner\u2019s amendment was given in an interview with Thomas Schiano
+      on August 3, 2017.\\nThe application has been amended as follows: \\nClaim 11
+      (Currently Amended) The system for removing the fluid from the tissue site of
+      claim 1 further comprising an open-cavity, reduced-pressure subsystem for removing
+      fluids from a body cavity of the patient.\\nClaim 20 (Cancelled)\\nClaim 21
+      (Cancelled)\\nClaim 42 (Currently Amended) The system of claim 33, further comprising
+      an open-cavity, reduced-pressure subsystem for removing fluids from a body cavity
+      of the patient.\\n\\nReasons for Allowance\\nThe following is an examiner\u2019s
+      statement of reasons for allowance: \\nIn regards to independent claim 1, the
+      prior art of record does not disclose or render obvious at the time the invention
+      was made the combination of a fluid removal system for removing a fluid from
+      a tissue site, as claimed, specifically including the conduit interface comprising
+      a plurality of tributary conduits sized for a patient\u2019s abdominal cavity.\\n
+      In regards to independent claim 33, the prior art of record does not disclose
+      or render obvious at the time the invention was made the combination of a system
+      for removing a fluid from a tissue site, as claimed, specifically including
+      the conduit interface comprising a plurality of tributary conduits sized for
+      a patient\u2019s abdominal cavity.\\nDel Bigio et al (US 2009/0048582) teaches
+      a fluid removal system (Figure 7) for removing a fluid from a tissue site, comprising
+      a conduit interface (osmotic cell with semipermeable membrane [6]) for coupling
+      the inbound conduit (inflow tubing [7]) and the outbound conduit (outflow tubing
+      [7]); however, Del Bigio et al does not teach that the conduit interface comprises
+      a plurality of tributary conduits, as Del Bigio et al only teaches a single
+      conduit [6]. But it would have been obvious to a person having ordinary skill
+      in the art at the time the invention was made to modify the conduit interface,
+      of the system of Del Bigio et al, to comprise a plurality of tributary conduits,
+      as either configuration between the inbound conduit and the outbound conduit
+      will allow for excess water and small molecules to be efficiently drawn from
+      the surface of the brain, through osmotic forces, thereby reducing brain swelling.
+      Further, as Del Bigio et al teaches that the system is used on the brain (Abstract),
+      Del Bigio et al does not teach a plurality of tributary conduits sized for a
+      patient\u2019s abdominal cavity. Odland (US 6,537,241) teaches a system (Figures
+      26-27) used in an intraperitoneal route (column 32, lines 31-34), which is associated
+      with a patient\u2019s abdominal cavity; however, Odland does not teach a plurality
+      of tributary conduits sized for the patient\u2019s abdominal cavity. Thus, independent
+      claims 1 and 33 are allowable. Dependent claims 2-6, 8-19, 34-39, and 42-46
+      are allowable by virtue of being dependent upon one of independent claims 1
+      and 33.\\n\\n Any comments considered necessary by applicant must be submitted
+      no later than the payment of the issue fee and, to avoid processing delays,
+      should preferably accompany the issue fee.  Such submissions should be clearly
+      labeled \u201CComments on Statement of Reasons for Allowance.\u201D\\n\\nConclusion\\nAny
+      inquiry concerning this communication or earlier communications from the examiner
+      should be directed to SHEFALI PATEL whose telephone number is (571)270-3645.
+      \ The examiner can normally be reached on Monday through Thursday from 8am-5pm
+      Eastern time.\\nExaminer interviews are available via telephone, in-person,
+      and video conferencing using a USPTO supplied web-based collaboration tool.
+      To schedule an interview, applicant is encouraged to use the USPTO Automated
+      Interview Request (AIR) at http://www.uspto.gov/interviewpractice.  \\nIf attempts
+      to reach the examiner by telephone are unsuccessful, the examiner\u2019s supervisor,
+      Kevin C. Sirmons can be reached on (571) 272-4965.  The fax phone number for
+      the organization where this application or proceeding is assigned is 571-273-8300.\\n
+      Information regarding the status of an application may be obtained from the
+      Patent Application Information Retrieval (PAIR) system.  Status information
+      for published applications may be obtained from either Private PAIR or Public
+      PAIR.  Status information for unpublished applications is available through
+      Private PAIR only.  For more information about the PAIR system, see http://pair-direct.uspto.gov.
+      Should you have questions on access to the Private PAIR system, contact the
+      Electronic Business Center (EBC) at 866-217-9197 (toll-free). If you would like
+      assistance from a USPTO Customer Service Representative or access to the automated
+      information system, call 800-786-9199 (IN USA OR CANADA) or 571-272-1000.\\n\\n\\n\\n\\n\\n/SHEFALI
+      PATEL/\\nExaminer, Art Unit 3763\"]},\n      {\n        \"obsoleteDocumentIdentifier\":[\"ILJWESPGRXEAPX2\"],\n
+      \       \"patentApplicationNumber\":[\"14574014\"],\n        \"accessLevelCategory\":[\"PUBLIC\"],\n
+      \       \"applicantFileReference\":[\"VAC.0893N1\"],\n        \"applicationDeemedWithdrawnDate\":\"0001-01-01T05:00:00Z\",\n
+      \       \"applicationStatusNumber\":150,\n        \"applicationTypeCategory\":[\"REGULAR\"],\n
+      \       \"businessAreaCategory\":[\"PATENT\"],\n        \"businessEntityStatusCategory\":[\"N\"],\n
+      \       \"customerNumber\":60402,\n        \"documentActiveIndicator\":[\"0\"],\n
+      \       \"documentDirectionCategory\":[\"OUTGOING\"],\n        \"effectiveClaimTotalQuantity\":35,\n
+      \       \"effectiveFilingDate\":\"0001-01-01T05:00:00Z\",\n        \"examinationProgramCode\":[\"N\"],\n
+      \       \"examinerEmployeeNumber\":[\"84263\"],\n        \"figureQuantity\":0,\n
+      \       \"filingDate\":\"2014-12-17T05:00:00Z\",\n        \"grantDate\":\"2017-12-26T05:00:00Z\",\n
+      \       \"groupArtUnitNumber\":3763,\n        \"id\":\"3428ada045b3d2b0f7603f10a5a11ddcb3acdfcb7738fe3eab6e7da2\",\n
+      \       \"independentClaimTotalQuantity\":3,\n        \"inventionSubjectMatterCategory\":[\"UTL\"],\n
+      \       \"inventionTitle\":[\"THERAPY DELIVERY SYSTEMS AND METHODS\"],\n        \"lastModifiedTimestamp\":\"2016-10-13T13:06:19Z\",\n
+      \       \"lastModifiedUserIdentifier\":[\"CMS_ADD\"],\n        \"legacyCMSIdentifier\":[\"PATENT-14574014-OACS-ILJWESPGRXEAPX2\"],\n
+      \       \"legacyDocumentCodeIdentifier\":[\"CTRS\"],\n        \"nSRDCurrentLocationDate\":\"0001-01-01T05:00:00Z\",\n
+      \       \"nSRDCurrentLocationNumber\":[\"e\"],\n        \"nationalClass\":[\"604\"],\n
+      \       \"nationalSubclass\":[\"028000\"],\n        \"patentApplicationConfirmationNumber\":8505,\n
+      \       \"patentApplicationPatentCooperationTreatyNumber\":[\"null\"],\n        \"patentNumber\":[\"9849038\"],\n
+      \       \"priorityClaimIndicator\":[\"N\"],\n        \"priorityClaimRequirementMetIndicator\":[\"N\"],\n
+      \       \"relatedDocumentCategory\":[\"CON\"],\n        \"sourceSystemName\":[\"OACS\"],\n
+      \       \"submissionDate\":\"2016-03-10T05:00:00Z\",\n        \"techCenter\":[\"3700\"],\n
+      \       \"workGroup\":[\"3760\"],\n        \"createDateTime\":\"2022-07-23T03:52:57.322Z\",\n
+      \       \"bodyText\":[\"DETAILED ACTION\\n\\nNotice of Pre-AIA  or AIA  Status\\nThe
+      present application is being examined under the pre-AIA  first to invent provisions.
+      \\n\\nElection/Restrictions\\nRestriction to one of the following inventions
+      is required under 35 U.S.C. 121:\\nI. Claims 1-19 and 33-46, drawn to a fluid
+      removal system for removing fluid from a tissue site, classified in A61M 1/008.\\nII.
+      Claims 20 and 21, drawn to a method of manufacturing a fluid removal system,
+      classified in Y10T 29/49826.\\nInventions II and I are related as process of
+      making and product made.  The inventions are distinct if either or both of the
+      following can be shown: (1) that the process as claimed can be used to make
+      another and materially different product or (2) that the product as claimed
+      can be made by another and materially different process (MPEP \xA7 806.05(f)).
+      \ In the instant case, the product as claimed can be made by another and materially
+      different process, such as coupling the inbound conduit and the outbound conduit
+      by a conduit interface having a plurality of tributary conduits.\\nRestriction
+      for examination purposes as indicated is proper because all these inventions
+      listed in this action are independent or distinct for the reasons given above
+      and there would be a serious search and/or examination burden if restriction
+      were not required because one or more of the following reasons apply: \\nthe
+      inventions have acquired a separate status in the art in view of their different
+      classification\\nthe inventions have acquired a separate status in the art due
+      to their recognized divergent subject matter\\nthe inventions require a different
+      field of search (e.g., searching different classes/subclasses or electronic
+      resources, or employing different search strategies or search queries).\\nApplicant
+      is advised that the reply to this requirement to be complete must include (i)
+      an election of a invention to be examined even though the requirement may be
+      traversed (37 CFR 1.143) and (ii) identification of the claims encompassing
+      the elected invention. \\nThe election of an invention may be made with or without
+      traverse. To reserve a right to petition, the election must be made with traverse.
+      If the reply does not distinctly and specifically point out supposed errors
+      in the restriction requirement, the election shall be treated as an election
+      without traverse. Traversal must be presented at the time of election in order
+      to be considered timely. Failure to timely traverse the requirement will result
+      in the loss of right to petition under 37 CFR 1.144. If claims are added after
+      the election, applicant must indicate which of these claims are readable upon
+      the elected invention.\\nShould applicant traverse on the ground that the inventions
+      are not patentably distinct, applicant should submit evidence or identify such
+      evidence now of record showing the inventions to be obvious variants or clearly
+      admit on the record that this is the case. In either instance, if the examiner
+      finds one of the inventions unpatentable over the prior art, the evidence  or
+      admission may be used in a rejection under 35 U.S.C. 103 or pre-AIA  35 U.S.C.
+      103(a) of the other invention.\\n\\nThis application contains claims directed
+      to the following patentably distinct species:\\nI. Embodiment I:\\tFigures 2A-2D\\nII.
+      Embodiment II:\\tFigures 3-7\\nThe species are independent or distinct because
+      the claims to the different species recite the mutually exclusive characteristics
+      of such species. For example, Embodiment I at least claims a sealing member
+      operable to form a pneumatic seal over the body cavity. Embodiment II at least
+      claims that the inbound conduit and the outbound conduit both comprise a first
+      portion and a second portion, the first portion and the second portion coupled
+      by a coupler. In addition, these species are not obvious variants of each other
+      based on the current record.\\nApplicant is required under 35 U.S.C. 121 to
+      elect a single disclosed species, or a single grouping of patentably indistinct
+      species, for prosecution on the merits to which the claims shall be restricted
+      if no generic claim is finally held to be allowable. Currently, claims 1, 20,
+      and 33 are generic.\\nThere is a search and/or examination burden for the patentably
+      distinct species as set forth above because at least the following reason(s)
+      apply:\\nthe species or groupings of patentably indistinct species have acquired
+      a separate status in the art due to their recognized divergent subject matter
+      \\nthe species or groupings of patentably indistinct species require a different
+      field of search (e.g., searching different classes/subclasses or electronic
+      resources, or employing different search strategies or search queries).\\nApplicant
+      is advised that the reply to this requirement to be complete must include (i)
+      an election of a species to be examined even though the requirement may be traversed
+      (37 CFR 1.143) and (ii) identification of the claims encompassing the elected
+      species or grouping of patentably indistinct species, including any claims subsequently
+      added. An argument that a claim is allowable or that all claims are generic
+      is considered nonresponsive unless accompanied by an election.\\nThe election
+      may be made with or without traverse. To preserve a right to petition, the election
+      must be made with traverse. If the reply does not distinctly and specifically
+      point out supposed errors in the election of species requirement, the election
+      shall be treated as an election without traverse. Traversal must be presented
+      at the time of election in order to be considered timely. Failure to timely
+      traverse the requirement will result in the loss of right to petition under
+      37 CFR 1.144. If claims are added after the election, applicant must indicate
+      which of these claims are readable on the elected species or grouping of patentably
+      indistinct species.\\nShould applicant traverse on the ground that the species,
+      or groupings of patentably indistinct species from which election is required,
+      are not patentably distinct, applicant should submit evidence or identify such
+      evidence now of record showing them to be obvious variants or clearly admit
+      on the record that this is the case. In either instance, if the examiner finds
+      one of the species unpatentable over the prior art, the evidence or admission
+      may be used in a rejection under 35 U.S.C. 103 or pre-AIA  35 U.S.C. 103(a)
+      of the other species.\\n Upon the allowance of a generic claim, applicant will
+      be entitled to consideration of claims to additional species which depend from
+      or otherwise require all the limitations of an allowable generic claim as provided
+      by 37 CFR 1.141.\\n\\nApplicant is reminded that upon the cancellation of claims
+      to a non-elected invention, the inventorship must be corrected in compliance
+      with  37 CFR 1.48(a) if one or more of the currently named inventors is no longer
+      an inventor of at least one claim remaining in the application. A request to
+      correct inventorship under 37 CFR 1.48(a) must be accompanied by an application
+      data sheet in accordance with 37 CFR 1.76 that identifies each inventor by his
+      or her legal name and by the processing fee required under 37 CFR 1.17(i).\\n\\nThe
+      examiner has required restriction between product or apparatus claims and process
+      claims. Where applicant elects claims directed to the product/apparatus, and
+      all product/apparatus claims are subsequently found allowable, withdrawn process
+      claims that include all the limitations of the allowable product/apparatus claims
+      should be considered for rejoinder. All claims directed to a nonelected process
+      invention must include all the limitations of an allowable product/apparatus
+      claim for that process invention to be rejoined. \\nIn the event of rejoinder,
+      the requirement for restriction between the product/apparatus claims and the
+      rejoined process claims will be withdrawn, and the rejoined process claims will
+      be fully examined for patentability in accordance with 37 CFR 1.104. Thus, to
+      be allowable, the rejoined claims must meet all criteria for patentability including
+      the requirements of 35 U.S.C. 101, 102, 103 and 112. Until all claims to the
+      elected product/apparatus are found allowable, an  otherwise proper restriction
+      requirement between product/apparatus claims and process claims may be maintained.
+      Withdrawn process claims that are not commensurate in scope with an allowable
+      product/apparatus claim will not be rejoined. See MPEP \xA7 821.04. Additionally,
+      in order for rejoinder to occur, applicant is advised that the process claims
+      should be amended during prosecution to require the limitations of the product/apparatus
+      claims. Failure to do so may result in no rejoinder. Further, note that the
+      prohibition against double patenting rejections of 35 U.S.C. 121 does not apply
+      where the restriction requirement is withdrawn by the examiner before the patent
+      issues. See MPEP \xA7 804.01.\\n\\nAny inquiry concerning this communication
+      or earlier communications from the examiner should be directed to SHEFALI PATEL
+      whose telephone number is (571)270-3645.  The examiner can normally be reached
+      on Monday through Thursday from 8am-5pm Eastern time.\\nIf attempts to reach
+      the examiner by telephone are unsuccessful, the examiner\u2019s supervisor,
+      Kevin C. Sirmons can be reached on (571) 272-4965.  The fax phone number for
+      the organization where this application or proceeding is assigned is 571-273-8300.\\n
+      Information regarding the status of an application may be obtained from the
+      Patent Application Information Retrieval (PAIR) system.  Status information
+      for published applications may be obtained from either Private PAIR or Public
+      PAIR.  Status information for unpublished applications is available through
+      Private PAIR only.  For more information about the PAIR system, see http://pair-direct.uspto.gov.
+      Should you have questions on access to the Private PAIR system, contact the
+      Electronic Business Center (EBC) at 866-217-9197 (toll-free). If you would like
+      assistance from a USPTO Customer Service Representative or access to the automated
+      information system, call 800-786-9199 (IN USA OR CANADA) or 571-272-1000.\\n\\n\\n\\n\\n\\n/SHEFALI
+      PATEL/\\nExaminer, Art Unit 3763\\n03/06/2016\"]},\n      {\n        \"obsoleteDocumentIdentifier\":[\"IO07UNHTRXEAPX0\"],\n
+      \       \"patentApplicationNumber\":[\"14574014\"],\n        \"accessLevelCategory\":[\"PUBLIC\"],\n
+      \       \"applicantFileReference\":[\"VAC.0893N1\"],\n        \"applicationDeemedWithdrawnDate\":\"0001-01-01T05:00:00Z\",\n
+      \       \"applicationStatusNumber\":150,\n        \"applicationTypeCategory\":[\"REGULAR\"],\n
+      \       \"businessAreaCategory\":[\"PATENT\"],\n        \"businessEntityStatusCategory\":[\"N\"],\n
+      \       \"customerNumber\":60402,\n        \"documentActiveIndicator\":[\"0\"],\n
+      \       \"documentDirectionCategory\":[\"null\"],\n        \"effectiveClaimTotalQuantity\":35,\n
+      \       \"effectiveFilingDate\":\"0001-01-01T05:00:00Z\",\n        \"examinationProgramCode\":[\"N\"],\n
+      \       \"examinerEmployeeNumber\":[\"84263\"],\n        \"figureQuantity\":0,\n
+      \       \"filingDate\":\"2014-12-17T05:00:00Z\",\n        \"grantDate\":\"2017-12-26T05:00:00Z\",\n
+      \       \"groupArtUnitNumber\":3763,\n        \"id\":\"3e0722635abcc9c8b5888d78fe87f3e1196f0dfc5eeab0afcfad84d2\",\n
+      \       \"independentClaimTotalQuantity\":3,\n        \"inventionSubjectMatterCategory\":[\"UTL\"],\n
+      \       \"inventionTitle\":[\"THERAPY DELIVERY SYSTEMS AND METHODS\"],\n        \"lastModifiedTimestamp\":\"2016-08-03T21:37:57Z\",\n
+      \       \"lastModifiedUserIdentifier\":[\"CMS_ADD\"],\n        \"legacyCMSIdentifier\":[\"PATENT-14574014-OACS-IO07UNHTRXEAPX0\"],\n
+      \       \"legacyDocumentCodeIdentifier\":[\"CTNF\"],\n        \"nSRDCurrentLocationDate\":\"0001-01-01T05:00:00Z\",\n
+      \       \"nSRDCurrentLocationNumber\":[\"e\"],\n        \"nationalClass\":[\"604\"],\n
+      \       \"nationalSubclass\":[\"028000\"],\n        \"patentApplicationConfirmationNumber\":8505,\n
+      \       \"patentApplicationPatentCooperationTreatyNumber\":[\"null\"],\n        \"patentNumber\":[\"9849038\"],\n
+      \       \"priorityClaimIndicator\":[\"N\"],\n        \"priorityClaimRequirementMetIndicator\":[\"N\"],\n
+      \       \"relatedDocumentCategory\":[\"CON\"],\n        \"sourceSystemName\":[\"OACS\"],\n
+      \       \"submissionDate\":\"2016-05-11T04:00:00Z\",\n        \"techCenter\":[\"3700\"],\n
+      \       \"workGroup\":[\"3760\"],\n        \"sections.examinerEmployeeNumber\":[\"84263\"],\n
+      \       \"sections.filingDate\":\"2014-12-17T05:00:00Z\",\n        \"sections.grantDate\":\"2017-12-26T05:00:00Z\",\n
+      \       \"sections.groupArtUnitNumber\":[\"3763\"],\n        \"sections.legacyDocumentCodeIdentifier\":[\"CTNF\"],\n
+      \       \"sections.nationalClass\":[\"604\"],\n        \"sections.nationalSubclass\":[\"028000\"],\n
+      \       \"sections.officeActionIdentifier\":[\"3e0722635abcc9c8b5888d78fe87f3e1196f0dfc5eeab0afcfad84d2\"],\n
+      \       \"sections.section103RejectionFormParagraphText\":[\"The following is
+      a quotation of pre-AIA  35 U.S.C. 103(a) which forms the basis for all obviousness
+      rejections set forth in this Office action:\\n(a) A patent may not be obtained
+      though the invention is not identically disclosed or described as set forth
+      in section 102 of this title, if the differences between the subject matter
+      sought to be patented and the prior art are such that the subject matter as
+      a whole would have been obvious at the time the invention was made to a person
+      having ordinary skill in the art to which said subject matter pertains.  Patentability
+      shall not be negatived by the manner in which the invention was made.\\n\"],\n
+      \       \"sections.section103RejectionText\":[\"Claims 1, 3, 8, and 11 are rejected
+      under pre-AIA  35 U.S.C. 103(a) as being unpatentable over Del Bigio et al (US
+      2009/0048582), and further in view of Odland (US 6,537,241).\\nIn regards to
+      claim 1, Del Bigio et al teaches a fluid removal system (Figure 7) for removing
+      fluid from a tissue site, comprising:\\nan inbound conduit (inflow tubing [7])
+      for placement proximate to the tissue site \\na treatment-fluid delivery unit
+      (reservoir of dialysis fluid) adapted to be fluidly coupled to the inbound conduit
+      for delivering a treatment fluid (dialysis fluid) to the inbound conduit (paragraph
+      [0041])\\nan outbound conduit (outflow tubing [7]) for placement proximate to
+      the tissue site, the outbound conduit fluidly coupled to the inbound conduit
+      \\na treatment-fluid collector (waste reservoir) adapted to be fluidly coupled
+      to the outbound conduit for receiving the treatment fluid and a recruited fluid
+      from the tissue site (paragraph [0041])\\na conduit interface (osmotic cell
+      with semipermeable membrane [6]) for coupling the inbound conduit and the outbound
+      conduit\\nDel Bigio et al is silent about whether the inbound conduit and the
+      outbound conduit are semi-permeable, as Del Bigio et al only states an osmotic
+      cell with semipermeable membrane [6] between the inbound conduit and the outbound
+      conduit (Figure 7). Odland teaches a system (Figures 26-27) comprising a semi-permeable
+      inbound conduit (second lumen [230]) and a semi-permeable outbound conduit (semipermeable
+      membranes [232]). It would have been obvious to a person having ordinary skill
+      in the art at the time the invention was made to modify the inbound conduit
+      and the outbound conduit, of the system of Del Bigio et al, to be semi-permeable,
+      as  taught by Odland, as such will provide further areas in addition to the
+      osmotic cell for site specific microdialysis for recovering fluid from the tissue
+      site and will provide an optimal combination of properties such as mass transfer
+      properties and biocompatibility (Abstract)(column 33, lines 16-18). Further,
+      Del Bigio et al does not teach that the conduit interface comprises a plurality
+      of tributary conduits, as Del Bigio et al only teaches a single conduit [6].
+      But it would have been obvious to a person having ordinary skill in the art
+      at the time the invention was made to modify the conduit interface, of the modified
+      system of Del Bigio et al and Odland, to comprise a plurality of tributary conduits,
+      as either configuration between the inbound conduit and the outbound conduit
+      will allow for excess water and small molecules to be efficiently drawn from
+      the surface of the brain, through osmotic forces, thereby reducing brain swelling.\\n\\tIn
+      regards to claim 3, in the modified system of Del Bigio et al and Odland, Del
+      Bigio et al teaches that the treatment fluid is disposed within the inbound
+      conduit and outbound conduit, wherein the treatment fluid is a Dextran solution
+      (Abstract).\\n\\tIn regards to claim 8, in the modified system of Del Bigio
+      et al and Odland, Del Bigio et al does not teach tributary conduits. But it
+      would have been obvious to a person having ordinary skill in the art at the
+      time the invention was made to modify the tributary conduits, of the modified
+      system of Del Bigio et al and Odland, to be sized and provided in a quantity
+      to provide a desired surface area, as such will allow for excess water and small
+      molecules to be efficiently drawn from the surface of the brain, through osmotic
+      forces, thereby reducing brain swelling.\\n \\tIn regards to claim 11, in the
+      modified system of Del Bigio et al and Odland, Del Bigio et al teaches an open-cavity
+      (Figure 7), reduced-pressure (Abstract) subsystem (mechanical pumping system)
+      for removing fluids from a body cavity of a patient (paragraph [0041]).\\n Claims
+      2 and 4-6 are rejected under pre-AIA  35 U.S.C. 103(a) as being unpatentable
+      over Del Bigio et al and Odland, as applied to claim 1 above, and further in
+      view of Treu et al (US 6,254,567).\\nIn regards to claim 2, in the modified
+      system of Del Bigio et al and Odland, Del Bigio et al is silent about a recruited-fluid
+      determination unit coupled to the treatment-fluid collector for determining
+      a volume of the recruited fluid. Treu et al teaches a system (Figure 7) wherein
+      a recruited-fluid determination unit (fluid removal module [118]) is coupled
+      to a treatment fluid collector (waste module [46]) for determining a volume
+      of a recruited fluid. It would have been obvious to a person having ordinary
+      skill in the art at the time the invention was made to modify the modified system,
+      of Del Bigio et al and Odland, with a recruited-fluid determination unit, as
+      taught by Treu et al, as such will provide an efficient means for monitoring
+      the volume of excess fluid removed from the patient in order to aid in balancing
+      the fluid level of the patient (column 10, lines 33-45)(column 3, lines 65-67).\\nIn
+      regards to claim 4, in the modified system of Del Bigio et al and Odland, Del
+      Bigio et al is silent about a volume transducer and a treatment controller comprising
+      a microprocessor, a memory device, an input device, the volume transducer, and
+      an output means. Treu et al teaches a system (Figures 1 and 7) comprising a
+      volume transducer (means [124]) for developing a signal indicative of the volume
+      of treatment fluid and recruited fluid (column 10, lines 41-45)  and a treatment
+      controller (processing controller [16]), the treatment controller comprising:
+      a microprocessor (column 5, lines 21-22), a memory device associated with the
+      microprocessor (column 5, line 38), a input device (interface [50])(input device
+      [54]) associated with the microprocessor for receiving input signals, the volume
+      transducer coupled to the input device (column 3, lines 65-67), and an output
+      means associated with the microprocessor for delivering output signals (column
+      5, lines 21-44)(column 10, lines 33-45). It would have been obvious to a person
+      having ordinary skill in the art at the time the invention was made to modify
+      the modified system, of Del Bigio et al and Odland, with a volume transducer
+      and a treatment controller having a microprocessor, a memory device, an input
+      device, the volume transducer, and an output means, as taught by Treu et al,
+      as the volume transducer will provide an efficient means for monitoring the
+      volume of excess fluid removed from the patient in order to aid in balancing
+      the fluid level of the patient (column 10, lines 33-45)(column 3, lines 65-67)
+      and the treatment controller will govern the interactions within the system
+      by providing the user with the current status of the system, prompting the user
+      to input commands and information or receive data from the various sensors and
+      other components, recording data in memory, controlling the operation of the
+      active components of the system, or alerting the patient to abnormal or failure
+      conditions in the system (column 5, lines 21-44).\\nIn regards to claim 5, in
+      the modified system of Del Bigio et al, Odland, and Treu et al, Del Bigio et
+      al does not teach a microprocessor and memory device. Treu et al teaches that
+      the microprocessor and memory device are operable to develop a control signal
+      to adjust a flow rate in the treatment-fluid delivery unit (column 9, lines
+      57-62)(column 10, lines 1-7). It would have been obvious to a person having
+      ordinary skill in the art at the time the invention was made to number='10'modify
+      the modified system, of Del Bigio et al, Odland, and Treu et al, to adjust a
+      flow rate in the treatment-fluid delivery unit, as taught by Treu et al, as
+      adjusting the flow rate will help at least partially maintain a normal physiologic
+      fluid and electrolytic balance in the patient (column 9, lines 52-54).\\nIn
+      regards to claim 6, in the modified system of Del Bigio et al, Odland, and Treu
+      et al, Del Bigio et al does not teach that the treatment-fluid delivery unit
+      comprises a heating element and the system comprises an inbound conduit temperature
+      transducer coupled to the treatment controller. Treu et al teaches that the
+      treatment-fluid delivery unit comprises a heating element (column 9, lines 4-10).
+      It would have been obvious to a person having ordinary skill in the art at the
+      time the invention was made to modify the modified system, of Del Bigio et al,
+      Odland, and Treu et al, with a heating element, as taught by Treu et al, as
+      such will heat the treatment fluid to body temperature (column 9, lines 4-10),
+      which will be more comfortable to the patient. However, Treu et al is silent
+      about an inbound conduit temperature transducer. But it would have been obvious
+      to a person having ordinary skill in the art at the time the invention was made
+      to modify the modified system, of Del Bigio et al, Odland, and Treu et al, with
+      an inbound conduit temperature transducer, as common practice in the art, as
+      such will allow the treatment controller to sense and determine whether or not
+      the treatment fluid is at an acceptable temperature, such as body temperature,
+      for delivery to the patient. If the treatment fluid is not at an acceptable
+      temperature, the treatment controller will direct the heating element to operate
+      and regulate the temperature of the treatment fluid.\\n Claims 12-15 and 19
+      are rejected under pre-AIA  35 U.S.C. 103(a) as being unpatentable over Del
+      Bigio et al and Odland, as applied to claim 11 above, and further in view of
+      Lockwood et al (US 6,752,794).\\nIn regards to claim 12, in the modified system
+      of Del Bigio et al and Odland, Del Bigio et al is silent about whether the open-cavity,
+      reduced-pressure subsystem comprises a treatment device, a manifold, a sealing
+      member, a reduced-pressure delivery conduit, and a reduced-pressure interface.
+      Lockwood et al teaches a system wherein an open-cavity, reduced-pressure subsystem
+      (Figures 1-7) comprises: \\na treatment device comprising:\\na fenestrated non-adherent
+      drape (member [20])\\na plurality of encapsulated leg members (channels [28])
+      coupled to the non-adherent drape, each having an interior portion with a leg
+      manifold member [28] and formed with fenestrations (holes [36]) operable to
+      allow fluid flow into the interior portion\\na central connection member (channels
+      [30]) fluidly coupled to the plurality of encapsulated legs, the central connection
+      member having a first side (Figure 4) and a second, patient-facing side\\na
+      manifold (vacuum/irrigation tube [13]) for disposing proximate the first side
+      of the central connection member and operable to manifold reduced pressure to
+      the central connection member \\na sealing member (sealing film [62]) for disposing
+      on a portion of the patient\u2019s epidermis and operable to form a pneumatic
+      seal over the body cavitynumber='11'\\na reduced-pressure delivery conduit (between
+      vacuum source [12] and valve [66])\\na reduced-pressure interface (valve [66])
+      for coupling to the sealing member and operable to fluidly couple the reduced-pressure
+      delivery conduit to the manifold\\nIt would have been obvious to a person having
+      ordinary skill in the art at the time the invention was made to modify the open-cavity,
+      reduced-pressure subsystem, of the modified system of Del Bigio et al and Odland,
+      to comprise a treatment device, a manifold, a sealing member, a reduced-pressure
+      delivery conduit, and a reduced-pressure interface, as taught by Lockwood et
+      al, as such will promote the healing of a large wound by providing vacuum therapy
+      to the wound to promote blood flow and remove exudate from a wound surface of
+      the wound (column 7, lines 54-57).\\n\\tIn regards to claim 13, in the modified
+      system of Del Bigio et al, Odland, and Lockwood et al, Del Bigio et al is silent
+      about a central connection member. Lockwood et al teaches that the central connection
+      member has a connection manifold member [30] and wherein each leg manifold member
+      is in fluid communication with the connection manifold member (Figure 4). It
+      would have been obvious to a person having ordinary skill in the art at the
+      time the invention was made to modify the central connection member, of the
+      modified system of Del Bigio et al, Odland, and Lockwood et al, to have a connection
+      manifold member, as taught by Lockwood et al, as such will promote the healing
+      of a large wound by providing vacuum therapy to the wound to promote blood flow
+      and remove exudate from a wound surface of the wound (column 7, lines 54-57).\\nIn
+      regards to claim 14, in the modified system of Del Bigio et al, Odland, and
+      Lockwood et al, Del Bigio et al is silent about the plurality of encapsulated
+      leg members. Lockwood et al teaches that the outbound conduit [13] and inbound
+      conduit [13] are coupled to at least one of the number='12'plurality of encapsulated
+      leg members (Figure 5). It would have been obvious to a person having ordinary
+      skill in the art at the time the invention was made to modify the outbound conduit
+      and inbound conduit, of the modified system of Del Bigio et al, Odland, and
+      Lockwood et al, to be coupled to at least one of the plurality of encapsulated
+      leg members, as taught by Lockwood et al, as such will promote the healing of
+      a large wound by providing vacuum therapy to the wound to promote blood flow
+      and remove exudate from a wound surface of the wound (column 7, lines 54-57).\\nIn
+      regards to claim 15, in the modified system of Del Bigio et al, Odland, and
+      Lockwood et al, Del Bigio et al teaches a treatment fluid disposed within the
+      inbound conduit and outbound conduit, wherein the treatment fluid is a Dextran
+      solution (Abstract).\\nIn regards to claim 19, in the modified system of Del
+      Bigio et al, Odland, and Lockwood et al, Del Bigio et al is silent about the
+      plurality of encapsulated leg members. Lockwood et al teaches that each encapsulated
+      leg member of the plurality of encapsulated leg members comprises:\\na fenestrated
+      first leg encapsulating member [28]\\na fenestrated second leg encapsulating
+      member [28]\\nwherein the leg manifold member has a first side, a second side,
+      a first lateral edge, and a second lateral edge (Figure 4)\\nwherein the first
+      leg encapsulating member is disposed proximate the first side of the leg manifold
+      member, the second leg encapsulating member is disposed proximate the second
+      patient-facing side of the leg manifold member, and the first leg encapsulating
+      member and second leg encapsulating member are coupled proximate number='13'the
+      first lateral edge and second lateral edge of the leg manifold member to form
+      the first encapsulated leg member (Figure 4)\\nIt would have been obvious to
+      a person having ordinary skill in the art at the time the invention was made
+      to modify each encapsulated leg member, of the modified system of Del Bigio
+      et al, Odland, and Lockwood et al, to comprise a fenestrated first leg encapsulating
+      member and a fenestrated second leg encapsulating member, as taught by Lockwood
+      et al, as such will promote the healing of a large wound by providing vacuum
+      therapy to the wound to promote blood flow and remove exudate from a wound surface
+      of the wound (column 7, lines 54-57).\\n Claims 16-18 are rejected under pre-AIA
+      \ 35 U.S.C. 103(a) as being unpatentable over Del Bigio et al, Odland, and Lockwood
+      et al, as applied to claim 12 above, and further in view of Treu et al.\\nIn
+      regards to claim 16, in the modified system of Del Bigio et al, Odland, and
+      Lockwood et al, Del Bigio et al is silent about a volume transducer and a treatment
+      controller comprising a microprocessor, a memory device, an input device, the
+      volume transducer, and an output device. Treu et al teaches a system (Figures
+      1 and 7) comprising a volume transducer (means [124]) for developing a signal
+      indicative of the volume of treatment fluid and recruited fluid (column 10,
+      lines 41-45) and a treatment controller (processing controller [16]), the treatment
+      controller comprising: a microprocessor (column 5, lines 21-22), a memory device
+      associated with the microprocessor (column 5, line 38), a input device (interface
+      [50])(input device [54]) associated with the microprocessor for receiving input
+      signals, the volume transducer coupled to the input device (column 3, lines
+      65-67), and an output device associated with the microprocessor for number='14'delivering
+      output signals (column 5, lines 21-44)(column 10, lines 33-45). It would have
+      been obvious to a person having ordinary skill in the art at the time the invention
+      was made to modify the modified system, of Del Bigio et al, Odland, and Lockwood
+      et al, with a volume transducer and a treatment controller having a microprocessor,
+      a memory device, an input device, the volume transducer, and an output device,
+      as taught by Treu et al, as the volume transducer will provide an efficient
+      means for monitoring the volume of excess fluid removed from the patient in
+      order to aid in balancing the fluid level of the patient (column 10, lines 33-45)(column
+      3, lines 65-67) and the treatment controller will govern the interactions within
+      the system by providing the user with the current status of the system, prompting
+      the user to input commands and information or receive data from the various
+      sensors and other components, recording data in memory, controlling the operation
+      of the active components of the system, or alerting the patient to abnormal
+      or failure conditions in the system (column 5, lines 21-44).\\nIn regards to
+      claim 17, in the modified system of Del Bigio et al, Odland, Lockwood et al,
+      and Treu et al, Del Bigio et al does not teach a microprocessor and memory device.
+      Treu et al teaches that the microprocessor and memory device are operable to
+      develop a control signal to adjust a flow rate in the treatment-fluid delivery
+      unit (column 9, lines 57-62)(column 10, lines 1-7). It would have been obvious
+      to a person having ordinary skill in the art at the time the invention was made
+      to modify the modified system, of Del Bigio et al, Odland, Lockwood et al, and
+      Treu et al, to adjust a flow rate in the treatment-fluid delivery unit, as taught
+      by Treu et al, as adjusting the flow rate will help at least partially maintain
+      a normal physiologic fluid and electrolytic balance in the patient (column 9,
+      lines 52-54).\\nnumber='15'In regards to claim 18, in the modified system of
+      Del Bigio et al, Odland, Lockwood et al, and Treu et al, Del Bigio et al does
+      not teach that the treatment-fluid delivery unit comprises a heating element
+      and the system comprises an inbound conduit temperature transducer coupled to
+      the treatment controller. Treu et al teaches that the treatment-fluid delivery
+      unit comprises a heating element (column 9, lines 4-10). It would have been
+      obvious to a person having ordinary skill in the art at the time the invention
+      was made to modify the modified system, of Del Bigio et al, Odland, Lockwood
+      et al, and Treu et al, with a heating element, as taught by Treu et al, as such
+      will heat the treatment fluid to body temperature (column 9, lines 4-10), which
+      will be more comfortable to the patient. However, Treu et al is silent about
+      an inbound conduit temperature transducer. But it would have been obvious to
+      a person having ordinary skill in the art at the time the invention was made
+      to modify the modified system, of Del Bigio et al, Odland, Lockwood et al, and
+      Treu et al, with an inbound conduit temperature transducer, as common practice
+      in the art, as such will allow the treatment controller to sense and determine
+      whether or not the treatment fluid is at an acceptable temperature, such as
+      body temperature, for delivery to the patient. If the treatment fluid is not
+      at an acceptable temperature, the treatment controller will direct the heating
+      element to operate and regulate the temperature of the treatment fluid.\\n Claims
+      33, 40, and 42 are rejected under pre-AIA  35 U.S.C. 103(a) as being unpatentable
+      over Del Bigio et al, and further in view of Odland and Fowle.\\nIn regards
+      to claim 33, Del Bigio et al teaches a system (Figure 7) for removing fluid
+      from a tissue site, comprising:\\nan inbound conduit (inflow tubing [7]) for
+      placement proximate to the tissue site number='16'\\na treatment-fluid delivery
+      unit (reservoir of dialysis fluid) adapted to be fluidly coupled to the inbound
+      conduit for delivering a treatment fluid (dialysis fluid) to the inbound conduit
+      (paragraph [0041])\\nan outbound conduit (outflow tubing [7]) for placement
+      proximate to the tissue site, the outbound conduit fluidly coupled to the inbound
+      conduit \\na treatment-fluid collector (waste reservoir) adapted to be fluidly
+      coupled to the outbound conduit for receiving the treatment fluid and a recruited
+      fluid from the tissue site (paragraph [0041])\\nwherein the treatment fluid
+      is hyperosmotic (hyperosmolar) with respect to the tissue site (Abstract)\\nDel
+      Bigio et al is silent about whether the inbound conduit and the outbound conduit
+      are semi-permeable, as Del Bigio et al only states an osmotic cell with semipermeable
+      membrane [6] between the inbound conduit and the outbound conduit (Figure 7).
+      Odland teaches a system (Figures 26-27) comprising a semi-permeable inbound
+      conduit (second lumen [230]) and a semi-permeable outbound conduit (semipermeable
+      membranes [232]). It would have been obvious to a person having ordinary skill
+      in the art at the time the invention was made to modify the inbound conduit
+      and the outbound conduit, of the system of Del Bigio et al, to be semi-permeable,
+      as taught by Odland, as such will provide further areas in addition to the osmotic
+      cell for site specific microdialysis for recovering fluid from the tissue site
+      and will provide an optimal combination of properties such as mass transfer
+      properties and biocompatibility (Abstract)(column 33, lines 16-18). Further,
+      Del Bigio et al does not appear to teach that the treatment fluid comprises
+      a dry gas. Fowle teaches a system (Figures 1-3) wherein a number='17'treatment
+      fluid comprises a dry gas (dry inert gas stream [36]). It would have been obvious
+      to a person having ordinary skill in the art at the time the invention was made
+      to modify the treatment fluid, of the modified system of Del Bigio et al and
+      Odland, to comprise a dry gas, as taught by Fowle, as such will allow for transporting
+      cryogenic droplets to the distal end of the conduit for cooling a cold-tip (Abstract),
+      which can be manipulated to destroy a small amount of brain tissue (the thalamus)
+      by freezing it (column 1, lines 13-19).\\n\\tIn regards to claim 40, in the
+      modified system of Del Bigio et al, Odland, and Fowle, Del Bigio et al teaches
+      a conduit interface (osmotic cell with semipermeable membrane [6]) for coupling
+      the inbound conduit and the outbound conduit; however, Del Bigio et al does
+      not teach that the conduit interface comprises a plurality of tributary conduits,
+      as Del Bigio et al only teaches a single conduit [6]. But it would have been
+      obvious to a person having ordinary skill in the art at the time the invention
+      was made to modify the conduit interface, of the modified system of Del Bigio
+      et al, Odland, and Fowle, to comprise a plurality of tributary conduits, as
+      either configuration between the inbound conduit and the outbound conduit will
+      allow for excess water and small molecules to be efficiently drawn from the
+      surface of the brain, through osmotic forces, thereby reducing brain swelling.\\n\\tIn
+      regards to claim 42, in the modified system of Del Bigio et al, Odland, and
+      Fowle, Del Bigio et al teaches an open-cavity (Figure 7), reduced-pressure (Abstract)
+      subsystem (mechanical pumping system) for removing fluids from a body cavity
+      of a patient (paragraph [0041]).\\n Claims 34-37 are rejected under pre-AIA
+      \ 35 U.S.C. 103(a) as being unpatentable over Del Bigio et al, Odland, and Fowle,
+      as applied to claim 33 above, and further in view of Treu et al.\\nIn regards
+      to claim 34, in the modified system of Del Bigio et al, Odland, and Fowle, Del
+      Bigio et al is silent about a recruited-fluid determination unit coupled to
+      the treatment-fluid collector for determining a volume of the recruited fluid.
+      Treu et al teaches a system (Figure 7) wherein a recruited-fluid determination
+      unit (fluid removal module [118]) is coupled to a treatment fluid collector
+      (waste module [46]) for determining a volume of a recruited fluid. It would
+      have been obvious to a person having ordinary skill in the art at the time the
+      invention was made to modify the modified system, of Del Bigio et al, Odland,
+      and Fowle, with a recruited-fluid determination unit, as taught by Treu et al,
+      as such will provide an efficient means for monitoring the volume of excess
+      fluid removed from the patient in order to aid in balancing the fluid level
+      of the patient (column 10, lines 33-45)(column 3, lines 65-67).\\nIn regards
+      to claim 35, in the modified system of Del Bigio et al, Odland, and Fowle, Del
+      Bigio et al is silent about a volume transducer and a treatment controller comprising
+      a microprocessor, a memory device, an input device, the volume transducer, and
+      an output means. Treu et al teaches a system (Figures 1 and 7) comprising a
+      volume transducer (means [124]) for developing a signal indicative of the volume
+      of treatment fluid and recruited fluid (column 10, lines 41-45) and a treatment
+      controller (processing controller [16]), the treatment controller comprising:
+      a microprocessor (column 5, lines 21-22), a memory device associated with the
+      microprocessor (column 5, line 38), a input device (interface [50])(input device
+      [54]) associated with the microprocessor for receiving input signals, the volume
+      transducer coupled to the input number='18'device (column 3, lines 65-67), and
+      an output means associated with the microprocessor for delivering output signals
+      (column 5, lines 21-44)(column 10, lines 33-45). It would have been obvious
+      to a person having ordinary skill in the art at the time the invention was made
+      to modify the modified system, of Del Bigio et al, Odland, and Fowle, with a
+      volume transducer and a treatment controller having a microprocessor, a memory
+      device, an input device, the volume transducer, and an output means, as taught
+      by Treu et al, as the volume transducer will provide an efficient means for
+      monitoring the volume of excess fluid removed from the patient in order to aid
+      in balancing the fluid level of the patient (column 10, lines 33-45)(column
+      3, lines 65-67) and the treatment controller will govern the interactions within
+      the system by providing the user with the current status of the system, prompting
+      the user to input commands and information or receive data from the various
+      sensors and other components, recording data in memory, controlling the operation
+      of the active components of the system, or alerting the patient to abnormal
+      or failure conditions in the system (column 5, lines 21-44).\\nIn regards to
+      claim 36, in the modified system of Del Bigio et al, Odland, Fowle, and Treu
+      et al, Del Bigio et al does not teach a microprocessor and memory device. Treu
+      et al teaches that the microprocessor and memory device are operable to develop
+      a control signal to adjust a flow rate in the treatment-fluid delivery unit
+      (column 9, lines 57-62)(column 10, lines 1-7). It would have been obvious to
+      a person having ordinary skill in the art at the time the invention was made
+      to modify the modified system, of Del Bigio et al, Odland, Fowle, and Treu et
+      al, to adjust a flow rate in the treatment-fluid delivery unit, as taught by
+      Treu et al, as adjusting the flow rate will help at least partially maintain
+      a normal physiologic fluid and electrolytic balance in the patient (column 9,
+      lines 52-54).\\nnumber='19'In regards to claim 37, in the modified system of
+      Del Bigio et al, Odland, Fowle, and Treu et al, Del Bigio et al does not teach
+      that the treatment-fluid delivery unit comprises a heating element and the system
+      comprises an inbound conduit temperature transducer coupled to the treatment
+      controller. Treu et al teaches that the treatment-fluid delivery unit comprises
+      a heating element (column 9, lines 4-10). It would have been obvious to a person
+      having ordinary skill in the art at the time the invention was made to modify
+      the modified system, of Del Bigio et al, Odland, Fowle, and Treu et al, with
+      a heating element, as taught by Treu et al, as such will heat the treatment
+      fluid to body temperature (column 9, lines 4-10), which will be more comfortable
+      to the patient. However, Treu et al is silent about an inbound conduit temperature
+      transducer. But it would have been obvious to a person having ordinary skill
+      in the art at the time the invention was made to modify the modified system,
+      of Del Bigio et al, Odland, Fowle, and Treu et al, with an inbound conduit temperature
+      transducer, as common practice in the art, as such will allow the treatment
+      controller to sense and determine whether or not the treatment fluid is at an
+      acceptable temperature, such as body temperature, for delivery to the patient.
+      If the treatment fluid is not at an acceptable temperature, the treatment controller
+      will direct the heating element to operate and regulate the temperature of the
+      treatment fluid.\\n Claims 43-46 are rejected under pre-AIA  35 U.S.C. 103(a)
+      as being unpatentable over Del Bigio et al, Odland, and Fowle, as applied to
+      claim 42 above, and further in view of Lockwood et al.\\nIn regards to claim
+      43, in the modified system of Del Bigio et al, Odland, and Fowle, Del Bigio
+      et al is silent about whether the open-cavity, reduced-pressure subsystem comprises
+      a number='20'treatment device, a manifold, a sealing member, a reduced-pressure
+      delivery conduit, and a reduced-pressure interface. Lockwood et al teaches a
+      system wherein an open-cavity, reduced-pressure subsystem (Figures 1-7) comprises:
+      \\na treatment device comprising:\\na fenestrated non-adherent drape (member
+      [20])\\na plurality of encapsulated leg members (channels [28]) coupled to the
+      non-adherent drape, each having an interior portion with a leg manifold member
+      [28] and formed with fenestrations (holes [36]) operable to allow fluid flow
+      into the interior portion\\na central connection member (channels [30]) fluidly
+      coupled to the plurality of encapsulated legs, the central connection member
+      having a first side (Figure 4) and a second, patient-facing side\\na manifold
+      (vacuum/irrigation tube [13]) for disposing proximate the first side of the
+      central connection member and operable to manifold reduced pressure to the central
+      connection member \\na sealing member (sealing film [62]) for disposing on a
+      portion of the patient\u2019s epidermis and operable to form a pneumatic seal
+      over the body cavity\\na reduced-pressure delivery conduit (between vacuum source
+      [12] and valve [66])\\na reduced-pressure interface (valve [66]) for coupling
+      to the sealing member and operable to fluidly couple the reduced-pressure delivery
+      conduit to the manifold\\nIt would have been obvious to a person having ordinary
+      skill in the art at the time the invention was made to modify the open-cavity,
+      reduced-pressure subsystem, of the modified system of Del number='21'Bigio et
+      al, Odland, and Fowle, to comprise a treatment device, a manifold, a sealing
+      member, a reduced-pressure delivery conduit, and a reduced-pressure interface,
+      as taught by Lockwood et al, as such will promote the healing of a large wound
+      by providing vacuum therapy to the wound to promote blood flow and remove exudate
+      from a wound surface of the wound (column 7, lines 54-57).\\n\\tIn regards to
+      claim 44, in the modified system of Del Bigio et al, Odland, Fowle, and Lockwood
+      et al, Del Bigio et al is silent about a central connection member. Lockwood
+      et al teaches that the central connection member has a connection manifold member
+      [30] and wherein each leg manifold member is in fluid communication with the
+      connection manifold member (Figure 4). It would have been obvious to a person
+      having ordinary skill in the art at the time the invention was made to modify
+      the central connection member, of the modified system of Del Bigio et al, Odland,
+      Fowle, and Lockwood et al, to have a connection manifold member, as taught by
+      Lockwood et al, as such will promote the healing of a large wound by providing
+      vacuum therapy to the wound to promote blood flow and remove exudate from a
+      wound surface of the wound (column 7, lines 54-57).\\nIn regards to claim 45,
+      in the modified system of Del Bigio et al, Odland, Fowle, and Lockwood et al,
+      Del Bigio et al is silent about the plurality of encapsulated leg members. Lockwood
+      et al teaches that the outbound conduit [13] and inbound conduit [13] are coupled
+      to at least one of the plurality of encapsulated leg members (Figure 5). It
+      would have been obvious to a person having ordinary skill in the art at the
+      time the invention was made to modify the outbound conduit and inbound conduit,
+      of the modified system of Del Bigio et al, Odland, Fowle, and Lockwood et al,
+      to be coupled to at least one of the plurality of encapsulated leg number='22'members,
+      as taught by Lockwood et al, as such will promote the healing of a large wound
+      by providing vacuum therapy to the wound to promote blood flow and remove exudate
+      from a wound surface of the wound (column 7, lines 54-57).\\nIn regards to claim
+      46, in the modified system of Del Bigio et al, Odland, Fowle, and Lockwood et
+      al, Del Bigio et al is silent about the plurality of encapsulated leg members.
+      Lockwood et al teaches that each encapsulated leg member of the plurality of
+      encapsulated leg members comprises:\\na fenestrated first leg encapsulating
+      member [28]\\na fenestrated second leg encapsulating member [28]\\nwherein the
+      leg manifold member has a first side, a second side, a first lateral edge, and
+      a second lateral edge (Figure 4)\\nwherein the first leg encapsulating member
+      is disposed proximate the first side of the leg manifold member, the second
+      leg encapsulating member is disposed proximate the second patient-facing side
+      of the leg manifold member, and the first leg encapsulating member and second
+      leg encapsulating member are coupled proximate the first lateral edge and second
+      lateral edge of the leg manifold member to form the first encapsulated leg member
+      (Figure 4)\\nIt would have been obvious to a person having ordinary skill in
+      the art at the time the invention was made to modify each encapsulated leg member,
+      of the modified system of Del Bigio et al, Odland, Fowle, and Lockwood et al,
+      to comprise a fenestrated first leg encapsulating member and a fenestrated second
+      leg encapsulating member, as taught by Lockwood et al, as such will number='23'promote
+      the healing of a large wound by providing vacuum therapy to the wound to promote
+      blood flow and remove exudate from a wound surface of the wound (column 7, lines
+      54-57).\\n\"],\n        \"sections.specificationTitleText\":[\"The abstract
+      of the disclosure is objected to because:\\nIn the fifth sentence, the term
+      \u201Ca fluid\u201D should be changed to \\\"the fluid\\\"\\nCorrection is required.
+      \ See MPEP \xA7 608.01(b).\\n\"],\n        \"sections.submissionDate\":\"2016-05-11T04:00:00Z\",\n
+      \       \"sections.techCenterNumber\":[\"3700\"],\n        \"sections.workGroupNumber\":[\"3760\"],\n
+      \       \"sections.obsoleteDocumentIdentifier\":[\"IO07UNHTRXEAPX0\"],\n        \"sections.patentApplicationNumber\":[\"14574014\"],\n
+      \       \"createDateTime\":\"2022-07-23T03:52:57.322Z\",\n        \"bodyText\":[\"DETAILED
+      ACTION\\n\\nNotice of Pre-AIA  or AIA  Status\\nThe present application is being
+      examined under the pre-AIA  first to invent provisions. \\n\\nElection/Restrictions\\nApplicant\u2019s
+      election without traverse of Invention I (claims 1-19 and 33-46) and Embodiment
+      I (Figures 2A-2D) in the reply filed on April 20, 2016, is acknowledged.\\nClaims
+      9, 10, 20, 21, 38, and 39 are withdrawn from further consideration pursuant
+      to 37 CFR 1.142(b) as being drawn to a nonelected Invention II (claims 20 and
+      21) or Embodiment II (Figures 3-7), there being no allowable generic or linking
+      claim. Election was made without traverse in the reply filed on April 20, 2016.\\nCurrently,
+      claims 1-8, 11-19, 33-37, and 40-46 are under examination.\\n\\nInformation
+      Disclosure Statement\\nThe information disclosure statement filed January 12,
+      2015, fails to comply with 37 CFR 1.98(a)(2), which requires a legible copy
+      of each cited foreign patent document; each non-patent literature publication
+      or that portion which caused it to be listed; and all other information or that
+      portion which caused it to be listed.  It has been placed in the application
+      file, but the information referred to therein has not been considered:\\nGB
+      692578\\nSG 71559\\n\\nSpecification\\nThe abstract of the disclosure is objected
+      to because:\\nIn the fifth sentence, the term \u201Ca fluid\u201D should be
+      changed to \\\"the fluid\\\"\\nCorrection is required.  See MPEP \xA7 608.01(b).\\n\\nClaim
+      Objections\\nClaims 1-8, 11-19, 33, 35, 36, 43, 45, and 46 are objected to because
+      of the following informalities:  \\nIn regards to claim 1, the term \u201Cfluid\u201D
+      should be changed to \u201Ca fluid\u201D.\\nIn regards to claim 2, the term
+      \u201Cfluid\u201D should be changed to \u201Cthe fluid\u201D.\\nIn regards to
+      claim 2, the term \u201Ca tissue site\u201D should be changed to \u201Cthe tissue
+      site\u201D.\\nIn regards to claim 3, the term \u201Cfluid\u201D should be changed
+      to \u201Cthe fluid\u201D.\\nIn regards to claim 3, the term \u201Ca tissue site\u201D
+      should be changed to \u201Cthe tissue site\u201D.\\nIn regards to claim 3, the
+      term \\\"outbound conduit\\\" should be changed to \\\"the outbound conduit\\\".\\nIn
+      regards to claim 4, the term \u201Cfluid\u201D should be changed to \u201Cthe
+      fluid\u201D.\\nIn regards to claim 4, the term \u201Ca tissue site\u201D should
+      be changed to \u201Cthe tissue site\u201D.\\nIn regards to claim 4, the term
+      \u201Ca input device\u201D should be changed to \u201Can input device\u201D.\\nIn
+      regards to claim 4, the term \u201Cmemory device\u201D should be changed to
+      \u201Cthe memory device\u201D.\\nIn regards to claim 5, the term \u201Cfluid\u201D
+      should be changed to \u201Cthe fluid\u201D.\\n In regards to claim 5, the term
+      \u201Ca tissue site\u201D should be changed to \u201Cthe tissue site\u201D.\\nIn
+      regards to claim 5, the term \u201Cmemory device\u201D should be changed to
+      \u201Cthe memory device\u201D.\\nIn regards to claim 6, the term \u201Cfluid\u201D
+      should be changed to \u201Cthe fluid\u201D.\\nIn regards to claim 6, the term
+      \u201Ca tissue site\u201D should be changed to \u201Cthe tissue site\u201D.\\nIn
+      regards to claim 7, the term \u201Cfluid\u201D should be changed to \u201Cthe
+      fluid\u201D.\\nIn regards to claim 7, the term \u201Ca tissue site\u201D should
+      be changed to \u201Cthe tissue site\u201D.\\nIn regards to claim 8, the term
+      \u201Cfluid\u201D should be changed to \u201Cthe fluid\u201D.\\nIn regards to
+      claim 8, the term \u201Ca tissue site\u201D should be changed to \u201Cthe tissue
+      site\u201D.\\nIn regards to claim 11, the term \u201Cfluid\u201D should be changed
+      to \u201Cthe fluid\u201D.\\nIn regards to claim 11, the term \u201Ca tissue
+      site\u201D should be changed to \u201Cthe tissue site\u201D.\\nIn regards to
+      claim 12, the term \u201Cfluid\u201D should be changed to \u201Cthe fluid\u201D.\\nIn
+      regards to claim 12, the term \u201Ca tissue site\u201D should be changed to
+      \u201Cthe tissue site\u201D.\\nIn regards to claim 12, the term \u201Cthe plurality
+      of encapsulated legs\u201D should be changed to \\\"the plurality of encapsulated
+      leg members\\\".\\nIn regards to claim 13, the term \u201Cfluid\u201D should
+      be changed to \u201Cthe fluid\u201D.\\nIn regards to claim 13, the term \u201Ca
+      tissue site\u201D should be changed to \u201Cthe tissue site\u201D.\\nIn regards
+      to claim 14, the term \u201Cfluid\u201D should be changed to \u201Cthe fluid\u201D.\\nIn
+      regards to claim 14, the term \u201Ca tissue site\u201D should be changed to
+      \u201Cthe tissue site\u201D.\\nIn regards to claim 14, the term \u201Cinbound
+      conduit\u201D should be changed to \u201Cthe inbound conduit\u201D.\\nIn regards
+      to claim 15, the term \u201Cfluid\u201D should be changed to \u201Cthe fluid\u201D.\\n
+      In regards to claim 15, the term \u201Ca tissue site\u201D should be changed
+      to \u201Cthe tissue site\u201D.\\nIn regards to claim 15, the term \u201Ca treatment
+      fluid\u201D should be changed to \u201Cthe treatment fluid\u201D.\\nIn regards
+      to claim 15, the term \\\"outbound conduit\\\" should be changed to \\\"the
+      outbound conduit\\\".\\nIn regards to claim 16, the term \u201Cfluid\u201D should
+      be changed to \u201Cthe fluid\u201D.\\nIn regards to claim 16, the term \u201Ca
+      tissue site\u201D should be changed to \u201Cthe tissue site\u201D.\\nIn regards
+      to claim 16, the term \u201Cthe volume of treatment fluid and recruited fluid\u201D
+      should be changed to \u201Ca volume of the treatment fluid and the recruited
+      fluid\u201D.\\nIn regards to claim 16, the term \u201Ca input device\u201D should
+      be changed to \u201Can input device\u201D.\\nIn regards to claim 16, the term
+      \u201Cmemory device\u201D should be changed to \u201Cthe memory device\u201D.\\nIn
+      regards to claim 17, the term \u201Cfluid\u201D should be changed to \u201Cthe
+      fluid\u201D.\\nIn regards to claim 17, the term \u201Ca tissue site\u201D should
+      be changed to \u201Cthe tissue site\u201D.\\nIn regards to claim 17, the term
+      \u201Cmemory device\u201D should be changed to \u201Cthe memory device\u201D.\\nIn
+      regards to claim 18, the term \u201Cfluid\u201D should be changed to \u201Cthe
+      fluid\u201D.\\nIn regards to claim 18, the term \u201Ca tissue site\u201D should
+      be changed to \u201Cthe tissue site\u201D.\\nIn regards to claim 19, the term
+      \u201Cfluid\u201D should be changed to \u201Cthe fluid\u201D.\\nIn regards to
+      claim 19, the term \u201Ca tissue site\u201D should be changed to \u201Cthe
+      tissue site\u201D.\\nIn regards to claim 19, the term \u201Cthe second patient-facing
+      side\u201D should be changed to \u201Cthe second side\u201D.\\n In regards to
+      claim 19, the term \u201Csecond leg encapsulating member\u201D should be changed
+      to \u201Cthe second leg encapsulating member\u201D.\\nIn regards to claim 19,
+      the term \u201Csecond lateral edge\u201D should be changed to \u201Cthe second
+      lateral edge\u201D.\\nIn regards to claim 33, the term \u201Cfluid\u201D should
+      be changed to \u201Ca fluid\u201D.\\nIn regards to claim 35, the term \u201Ca
+      input device\u201D should be changed to \u201Can input device\u201D.\\nIn regards
+      to claim 35, the term \u201Cmemory device\u201D should be changed to \u201Cthe
+      memory device\u201D.\\nIn regards to claim 36, the term \u201Cmemory device\u201D
+      should be changed to \u201Cthe memory device\u201D.\\nIn regards to claim 43,
+      the term \u201Cthe plurality of encapsulated legs\u201D should be changed to
+      \\\"the plurality of encapsulated leg members\\\".\\nIn regards to claim 45,
+      the term \u201Cinbound conduit\u201D should be changed to \u201Cthe inbound
+      conduit\u201D.\\nIn regards to claim 46, the term \u201Cthe second patient-facing
+      side\u201D should be changed to \u201Cthe second side\u201D.\\nIn regards to
+      claim 46, the term \u201Csecond leg encapsulating member\u201D should be changed
+      to \u201Cthe second leg encapsulating member\u201D.\\nIn regards to claim 46,
+      the term \u201Csecond lateral edge\u201D should be changed to \u201Cthe second
+      lateral edge\u201D.\\nAppropriate correction is required.\\n\\n Double Patenting\\nThe
+      nonstatutory double patenting rejection is based on a judicially created doctrine
+      grounded in public policy (a policy reflected in the statute) so as to prevent
+      the unjustified or improper timewise extension of the \u201Cright to exclude\u201D
+      granted by a patent and to prevent possible harassment by multiple assignees.
+      A nonstatutory double patenting rejection is appropriate where the claims at
+      issue are not identical, but at least one examined application claim is not
+      patentably distinct from the reference claim(s) because the examined application
+      claim is either anticipated by, or would have been obvious over, the reference
+      claim(s). See, e.g., In re Berg, 140 F.3d 1428, 46 USPQ2d 1226 (Fed. Cir. 1998);
+      In re Goodman, 11 F.3d 1046, 29 USPQ2d 2010 (Fed. Cir. 1993); In re Longi, 759
+      F.2d 887, 225 USPQ 645 (Fed. Cir. 1985); In re Van Ornum, 686 F.2d 937, 214
+      USPQ 761 (CCPA 1982); In re Vogel, 422 F.2d 438, 164 USPQ 619 (CCPA 1970); and
+      In re Thorington, 418 F.2d 528, 163 USPQ 644 (CCPA 1969).\\nA timely filed terminal
+      disclaimer in compliance with 37 CFR 1.321(c) or 1.321(d) may be used to overcome
+      an actual or provisional rejection based on a nonstatutory double patenting
+      ground provided the reference application or patent either is shown to be commonly
+      owned with this application, or claims an invention made as a result of activities
+      undertaken within the scope of a joint research agreement. See MPEP \xA7 717.02
+      for applications subject to examination under the first inventor to file provisions
+      of the AIA  as explained in MPEP \xA7 2159.  See MPEP \xA7\xA7 706.02(l)(1)
+      - 706.02(l)(3) for applications not subject to examination under the first inventor
+      to file provisions of the AIA . A terminal disclaimer must be signed in compliance
+      with 37 CFR 1.321(b). \\n The USPTO Internet website contains terminal disclaimer
+      forms which may be used. Please visit www.uspto.gov/forms/. The filing date
+      of the application in which the form is filed  determines what form (e.g., PTO/SB/25,
+      PTO/SB/26, PTO/AIA /25, or PTO/AIA /26) should be used. A web-based eTerminal
+      Disclaimer may be filled out completely online using web-screens. An eTerminal
+      Disclaimer that meets all requirements is auto-processed and approved immediately
+      upon submission. For more information about eTerminal Disclaimers, refer to
+      http://www.uspto.gov/patents/process/file/efs/guidance/eTD-info-I.jsp.\\nClaims
+      1-8, 11-19, 33-37, and 40-46 are rejected on the ground of nonstatutory double
+      patenting as being unpatentable over claims 1-5 and 8-15 of U.S. Patent No.
+      8,216,175. \\nAlthough the claims at issue are not identical, they are not patentably
+      distinct from each other because both the application claims and the patent
+      claims at least recite a fluid removal system for removing fluid from a tissue
+      site, a semi-permeable inbound conduit, a treatment-fluid delivery unit, a semi-permeable
+      outbound conduit, a treatment-fluid collector, a conduit interface, a plurality
+      of tributary conduits, and wherein the treatment fluid is hyperosmotic with
+      respect to the tissue site and comprises a dry gas.\\n\\nClaim Rejections -
+      35 USC \xA7 103\\nThe following is a quotation of pre-AIA  35 U.S.C. 103(a)
+      which forms the basis for all obviousness rejections set forth in this Office
+      action:\\n(a) A patent may not be obtained though the invention is not identically
+      disclosed or described as set forth in section 102 of this title, if the differences
+      between the subject matter sought to be patented and the prior art are such
+      that the subject matter as a whole would have been obvious at the time the invention
+      was made to a person having ordinary skill in the art to which said subject
+      matter pertains.  Patentability shall not be negatived by the manner in which
+      the invention was made.\\n\\n\\nClaims 1, 3, 8, and 11 are rejected under pre-AIA
+      \ 35 U.S.C. 103(a) as being unpatentable over Del Bigio et al (US 2009/0048582),
+      and further in view of Odland (US 6,537,241).\\nIn regards to claim 1, Del Bigio
+      et al teaches a fluid removal system (Figure 7) for removing fluid from a tissue
+      site, comprising:\\nan inbound conduit (inflow tubing [7]) for placement proximate
+      to the tissue site \\na treatment-fluid delivery unit (reservoir of dialysis
+      fluid) adapted to be fluidly coupled to the inbound conduit for delivering a
+      treatment fluid (dialysis fluid) to the inbound conduit (paragraph [0041])\\nan
+      outbound conduit (outflow tubing [7]) for placement proximate to the tissue
+      site, the outbound conduit fluidly coupled to the inbound conduit \\na treatment-fluid
+      collector (waste reservoir) adapted to be fluidly coupled to the outbound conduit
+      for receiving the treatment fluid and a recruited fluid from the tissue site
+      (paragraph [0041])\\na conduit interface (osmotic cell with semipermeable membrane
+      [6]) for coupling the inbound conduit and the outbound conduit\\nDel Bigio et
+      al is silent about whether the inbound conduit and the outbound conduit are
+      semi-permeable, as Del Bigio et al only states an osmotic cell with semipermeable
+      membrane [6] between the inbound conduit and the outbound conduit (Figure 7).
+      Odland teaches a system (Figures 26-27) comprising a semi-permeable inbound
+      conduit (second lumen [230]) and a semi-permeable outbound conduit (semipermeable
+      membranes [232]). It would have been obvious to a person having ordinary skill
+      in the art at the time the invention was made to modify the inbound conduit
+      and the outbound conduit, of the system of Del Bigio et al, to be semi-permeable,
+      as  taught by Odland, as such will provide further areas in addition to the
+      osmotic cell for site specific microdialysis for recovering fluid from the tissue
+      site and will provide an optimal combination of properties such as mass transfer
+      properties and biocompatibility (Abstract)(column 33, lines 16-18). Further,
+      Del Bigio et al does not teach that the conduit interface comprises a plurality
+      of tributary conduits, as Del Bigio et al only teaches a single conduit [6].
+      But it would have been obvious to a person having ordinary skill in the art
+      at the time the invention was made to modify the conduit interface, of the modified
+      system of Del Bigio et al and Odland, to comprise a plurality of tributary conduits,
+      as either configuration between the inbound conduit and the outbound conduit
+      will allow for excess water and small molecules to be efficiently drawn from
+      the surface of the brain, through osmotic forces, thereby reducing brain swelling.\\n\\tIn
+      regards to claim 3, in the modified system of Del Bigio et al and Odland, Del
+      Bigio et al teaches that the treatment fluid is disposed within the inbound
+      conduit and outbound conduit, wherein the treatment fluid is a Dextran solution
+      (Abstract).\\n\\tIn regards to claim 8, in the modified system of Del Bigio
+      et al and Odland, Del Bigio et al does not teach tributary conduits. But it
+      would have been obvious to a person having ordinary skill in the art at the
+      time the invention was made to modify the tributary conduits, of the modified
+      system of Del Bigio et al and Odland, to be sized and provided in a quantity
+      to provide a desired surface area, as such will allow for excess water and small
+      molecules to be efficiently drawn from the surface of the brain, through osmotic
+      forces, thereby reducing brain swelling.\\n \\tIn regards to claim 11, in the
+      modified system of Del Bigio et al and Odland, Del Bigio et al teaches an open-cavity
+      (Figure 7), reduced-pressure (Abstract) subsystem (mechanical pumping system)
+      for removing fluids from a body cavity of a patient (paragraph [0041]).\\n\\nClaims
+      2 and 4-6 are rejected under pre-AIA  35 U.S.C. 103(a) as being unpatentable
+      over Del Bigio et al and Odland, as applied to claim 1 above, and further in
+      view of Treu et al (US 6,254,567).\\nIn regards to claim 2, in the modified
+      system of Del Bigio et al and Odland, Del Bigio et al is silent about a recruited-fluid
+      determination unit coupled to the treatment-fluid collector for determining
+      a volume of the recruited fluid. Treu et al teaches a system (Figure 7) wherein
+      a recruited-fluid determination unit (fluid removal module [118]) is coupled
+      to a treatment fluid collector (waste module [46]) for determining a volume
+      of a recruited fluid. It would have been obvious to a person having ordinary
+      skill in the art at the time the invention was made to modify the modified system,
+      of Del Bigio et al and Odland, with a recruited-fluid determination unit, as
+      taught by Treu et al, as such will provide an efficient means for monitoring
+      the volume of excess fluid removed from the patient in order to aid in balancing
+      the fluid level of the patient (column 10, lines 33-45)(column 3, lines 65-67).\\nIn
+      regards to claim 4, in the modified system of Del Bigio et al and Odland, Del
+      Bigio et al is silent about a volume transducer and a treatment controller comprising
+      a microprocessor, a memory device, an input device, the volume transducer, and
+      an output means. Treu et al teaches a system (Figures 1 and 7) comprising a
+      volume transducer (means [124]) for developing a signal indicative of the volume
+      of treatment fluid and recruited fluid (column 10, lines 41-45)  and a treatment
+      controller (processing controller [16]), the treatment controller comprising:
+      a microprocessor (column 5, lines 21-22), a memory device associated with the
+      microprocessor (column 5, line 38), a input device (interface [50])(input device
+      [54]) associated with the microprocessor for receiving input signals, the volume
+      transducer coupled to the input device (column 3, lines 65-67), and an output
+      means associated with the microprocessor for delivering output signals (column
+      5, lines 21-44)(column 10, lines 33-45). It would have been obvious to a person
+      having ordinary skill in the art at the time the invention was made to modify
+      the modified system, of Del Bigio et al and Odland, with a volume transducer
+      and a treatment controller having a microprocessor, a memory device, an input
+      device, the volume transducer, and an output means, as taught by Treu et al,
+      as the volume transducer will provide an efficient means for monitoring the
+      volume of excess fluid removed from the patient in order to aid in balancing
+      the fluid level of the patient (column 10, lines 33-45)(column 3, lines 65-67)
+      and the treatment controller will govern the interactions within the system
+      by providing the user with the current status of the system, prompting the user
+      to input commands and information or receive data from the various sensors and
+      other components, recording data in memory, controlling the operation of the
+      active components of the system, or alerting the patient to abnormal or failure
+      conditions in the system (column 5, lines 21-44).\\nIn regards to claim 5, in
+      the modified system of Del Bigio et al, Odland, and Treu et al, Del Bigio et
+      al does not teach a microprocessor and memory device. Treu et al teaches that
+      the microprocessor and memory device are operable to develop a control signal
+      to adjust a flow rate in the treatment-fluid delivery unit (column 9, lines
+      57-62)(column 10, lines 1-7). It would have been obvious to a person having
+      ordinary skill in the art at the time the invention was made to number='10'modify
+      the modified system, of Del Bigio et al, Odland, and Treu et al, to adjust a
+      flow rate in the treatment-fluid delivery unit, as taught by Treu et al, as
+      adjusting the flow rate will help at least partially maintain a normal physiologic
+      fluid and electrolytic balance in the patient (column 9, lines 52-54).\\nIn
+      regards to claim 6, in the modified system of Del Bigio et al, Odland, and Treu
+      et al, Del Bigio et al does not teach that the treatment-fluid delivery unit
+      comprises a heating element and the system comprises an inbound conduit temperature
+      transducer coupled to the treatment controller. Treu et al teaches that the
+      treatment-fluid delivery unit comprises a heating element (column 9, lines 4-10).
+      It would have been obvious to a person having ordinary skill in the art at the
+      time the invention was made to modify the modified system, of Del Bigio et al,
+      Odland, and Treu et al, with a heating element, as taught by Treu et al, as
+      such will heat the treatment fluid to body temperature (column 9, lines 4-10),
+      which will be more comfortable to the patient. However, Treu et al is silent
+      about an inbound conduit temperature transducer. But it would have been obvious
+      to a person having ordinary skill in the art at the time the invention was made
+      to modify the modified system, of Del Bigio et al, Odland, and Treu et al, with
+      an inbound conduit temperature transducer, as common practice in the art, as
+      such will allow the treatment controller to sense and determine whether or not
+      the treatment fluid is at an acceptable temperature, such as body temperature,
+      for delivery to the patient. If the treatment fluid is not at an acceptable
+      temperature, the treatment controller will direct the heating element to operate
+      and regulate the temperature of the treatment fluid.\\n\\nClaims 12-15 and 19
+      are rejected under pre-AIA  35 U.S.C. 103(a) as being unpatentable over Del
+      Bigio et al and Odland, as applied to claim 11 above, and further in view of
+      Lockwood et al (US 6,752,794).\\nIn regards to claim 12, in the modified system
+      of Del Bigio et al and Odland, Del Bigio et al is silent about whether the open-cavity,
+      reduced-pressure subsystem comprises a treatment device, a manifold, a sealing
+      member, a reduced-pressure delivery conduit, and a reduced-pressure interface.
+      Lockwood et al teaches a system wherein an open-cavity, reduced-pressure subsystem
+      (Figures 1-7) comprises: \\na treatment device comprising:\\na fenestrated non-adherent
+      drape (member [20])\\na plurality of encapsulated leg members (channels [28])
+      coupled to the non-adherent drape, each having an interior portion with a leg
+      manifold member [28] and formed with fenestrations (holes [36]) operable to
+      allow fluid flow into the interior portion\\na central connection member (channels
+      [30]) fluidly coupled to the plurality of encapsulated legs, the central connection
+      member having a first side (Figure 4) and a second, patient-facing side\\na
+      manifold (vacuum/irrigation tube [13]) for disposing proximate the first side
+      of the central connection member and operable to manifold reduced pressure to
+      the central connection member \\na sealing member (sealing film [62]) for disposing
+      on a portion of the patient\u2019s epidermis and operable to form a pneumatic
+      seal over the body cavitynumber='11'\\na reduced-pressure delivery conduit (between
+      vacuum source [12] and valve [66])\\na reduced-pressure interface (valve [66])
+      for coupling to the sealing member and operable to fluidly couple the reduced-pressure
+      delivery conduit to the manifold\\nIt would have been obvious to a person having
+      ordinary skill in the art at the time the invention was made to modify the open-cavity,
+      reduced-pressure subsystem, of the modified system of Del Bigio et al and Odland,
+      to comprise a treatment device, a manifold, a sealing member, a reduced-pressure
+      delivery conduit, and a reduced-pressure interface, as taught by Lockwood et
+      al, as such will promote the healing of a large wound by providing vacuum therapy
+      to the wound to promote blood flow and remove exudate from a wound surface of
+      the wound (column 7, lines 54-57).\\n\\tIn regards to claim 13, in the modified
+      system of Del Bigio et al, Odland, and Lockwood et al, Del Bigio et al is silent
+      about a central connection member. Lockwood et al teaches that the central connection
+      member has a connection manifold member [30] and wherein each leg manifold member
+      is in fluid communication with the connection manifold member (Figure 4). It
+      would have been obvious to a person having ordinary skill in the art at the
+      time the invention was made to modify the central connection member, of the
+      modified system of Del Bigio et al, Odland, and Lockwood et al, to have a connection
+      manifold member, as taught by Lockwood et al, as such will promote the healing
+      of a large wound by providing vacuum therapy to the wound to promote blood flow
+      and remove exudate from a wound surface of the wound (column 7, lines 54-57).\\nIn
+      regards to claim 14, in the modified system of Del Bigio et al, Odland, and
+      Lockwood et al, Del Bigio et al is silent about the plurality of encapsulated
+      leg members. Lockwood et al teaches that the outbound conduit [13] and inbound
+      conduit [13] are coupled to at least one of the number='12'plurality of encapsulated
+      leg members (Figure 5). It would have been obvious to a person having ordinary
+      skill in the art at the time the invention was made to modify the outbound conduit
+      and inbound conduit, of the modified system of Del Bigio et al, Odland, and
+      Lockwood et al, to be coupled to at least one of the plurality of encapsulated
+      leg members, as taught by Lockwood et al, as such will promote the healing of
+      a large wound by providing vacuum therapy to the wound to promote blood flow
+      and remove exudate from a wound surface of the wound (column 7, lines 54-57).\\nIn
+      regards to claim 15, in the modified system of Del Bigio et al, Odland, and
+      Lockwood et al, Del Bigio et al teaches a treatment fluid disposed within the
+      inbound conduit and outbound conduit, wherein the treatment fluid is a Dextran
+      solution (Abstract).\\nIn regards to claim 19, in the modified system of Del
+      Bigio et al, Odland, and Lockwood et al, Del Bigio et al is silent about the
+      plurality of encapsulated leg members. Lockwood et al teaches that each encapsulated
+      leg member of the plurality of encapsulated leg members comprises:\\na fenestrated
+      first leg encapsulating member [28]\\na fenestrated second leg encapsulating
+      member [28]\\nwherein the leg manifold member has a first side, a second side,
+      a first lateral edge, and a second lateral edge (Figure 4)\\nwherein the first
+      leg encapsulating member is disposed proximate the first side of the leg manifold
+      member, the second leg encapsulating member is disposed proximate the second
+      patient-facing side of the leg manifold member, and the first leg encapsulating
+      member and second leg encapsulating member are coupled proximate number='13'the
+      first lateral edge and second lateral edge of the leg manifold member to form
+      the first encapsulated leg member (Figure 4)\\nIt would have been obvious to
+      a person having ordinary skill in the art at the time the invention was made
+      to modify each encapsulated leg member, of the modified system of Del Bigio
+      et al, Odland, and Lockwood et al, to comprise a fenestrated first leg encapsulating
+      member and a fenestrated second leg encapsulating member, as taught by Lockwood
+      et al, as such will promote the healing of a large wound by providing vacuum
+      therapy to the wound to promote blood flow and remove exudate from a wound surface
+      of the wound (column 7, lines 54-57).\\n\\nClaims 16-18 are rejected under pre-AIA
+      \ 35 U.S.C. 103(a) as being unpatentable over Del Bigio et al, Odland, and Lockwood
+      et al, as applied to claim 12 above, and further in view of Treu et al.\\nIn
+      regards to claim 16, in the modified system of Del Bigio et al, Odland, and
+      Lockwood et al, Del Bigio et al is silent about a volume transducer and a treatment
+      controller comprising a microprocessor, a memory device, an input device, the
+      volume transducer, and an output device. Treu et al teaches a system (Figures
+      1 and 7) comprising a volume transducer (means [124]) for developing a signal
+      indicative of the volume of treatment fluid and recruited fluid (column 10,
+      lines 41-45) and a treatment controller (processing controller [16]), the treatment
+      controller comprising: a microprocessor (column 5, lines 21-22), a memory device
+      associated with the microprocessor (column 5, line 38), a input device (interface
+      [50])(input device [54]) associated with the microprocessor for receiving input
+      signals, the volume transducer coupled to the input device (column 3, lines
+      65-67), and an output device associated with the microprocessor for number='14'delivering
+      output signals (column 5, lines 21-44)(column 10, lines 33-45). It would have
+      been obvious to a person having ordinary skill in the art at the time the invention
+      was made to modify the modified system, of Del Bigio et al, Odland, and Lockwood
+      et al, with a volume transducer and a treatment controller having a microprocessor,
+      a memory device, an input device, the volume transducer, and an output device,
+      as taught by Treu et al, as the volume transducer will provide an efficient
+      means for monitoring the volume of excess fluid removed from the patient in
+      order to aid in balancing the fluid level of the patient (column 10, lines 33-45)(column
+      3, lines 65-67) and the treatment controller will govern the interactions within
+      the system by providing the user with the current status of the system, prompting
+      the user to input commands and information or receive data from the various
+      sensors and other components, recording data in memory, controlling the operation
+      of the active components of the system, or alerting the patient to abnormal
+      or failure conditions in the system (column 5, lines 21-44).\\nIn regards to
+      claim 17, in the modified system of Del Bigio et al, Odland, Lockwood et al,
+      and Treu et al, Del Bigio et al does not teach a microprocessor and memory device.
+      Treu et al teaches that the microprocessor and memory device are operable to
+      develop a control signal to adjust a flow rate in the treatment-fluid delivery
+      unit (column 9, lines 57-62)(column 10, lines 1-7). It would have been obvious
+      to a person having ordinary skill in the art at the time the invention was made
+      to modify the modified system, of Del Bigio et al, Odland, Lockwood et al, and
+      Treu et al, to adjust a flow rate in the treatment-fluid delivery unit, as taught
+      by Treu et al, as adjusting the flow rate will help at least partially maintain
+      a normal physiologic fluid and electrolytic balance in the patient (column 9,
+      lines 52-54).\\nnumber='15'In regards to claim 18, in the modified system of
+      Del Bigio et al, Odland, Lockwood et al, and Treu et al, Del Bigio et al does
+      not teach that the treatment-fluid delivery unit comprises a heating element
+      and the system comprises an inbound conduit temperature transducer coupled to
+      the treatment controller. Treu et al teaches that the treatment-fluid delivery
+      unit comprises a heating element (column 9, lines 4-10). It would have been
+      obvious to a person having ordinary skill in the art at the time the invention
+      was made to modify the modified system, of Del Bigio et al, Odland, Lockwood
+      et al, and Treu et al, with a heating element, as taught by Treu et al, as such
+      will heat the treatment fluid to body temperature (column 9, lines 4-10), which
+      will be more comfortable to the patient. However, Treu et al is silent about
+      an inbound conduit temperature transducer. But it would have been obvious to
+      a person having ordinary skill in the art at the time the invention was made
+      to modify the modified system, of Del Bigio et al, Odland, Lockwood et al, and
+      Treu et al, with an inbound conduit temperature transducer, as common practice
+      in the art, as such will allow the treatment controller to sense and determine
+      whether or not the treatment fluid is at an acceptable temperature, such as
+      body temperature, for delivery to the patient. If the treatment fluid is not
+      at an acceptable temperature, the treatment controller will direct the heating
+      element to operate and regulate the temperature of the treatment fluid.\\n\\nClaims
+      33, 40, and 42 are rejected under pre-AIA  35 U.S.C. 103(a) as being unpatentable
+      over Del Bigio et al, and further in view of Odland and Fowle.\\nIn regards
+      to claim 33, Del Bigio et al teaches a system (Figure 7) for removing fluid
+      from a tissue site, comprising:\\nan inbound conduit (inflow tubing [7]) for
+      placement proximate to the tissue site number='16'\\na treatment-fluid delivery
+      unit (reservoir of dialysis fluid) adapted to be fluidly coupled to the inbound
+      conduit for delivering a treatment fluid (dialysis fluid) to the inbound conduit
+      (paragraph [0041])\\nan outbound conduit (outflow tubing [7]) for placement
+      proximate to the tissue site, the outbound conduit fluidly coupled to the inbound
+      conduit \\na treatment-fluid collector (waste reservoir) adapted to be fluidly
+      coupled to the outbound conduit for receiving the treatment fluid and a recruited
+      fluid from the tissue site (paragraph [0041])\\nwherein the treatment fluid
+      is hyperosmotic (hyperosmolar) with respect to the tissue site (Abstract)\\nDel
+      Bigio et al is silent about whether the inbound conduit and the outbound conduit
+      are semi-permeable, as Del Bigio et al only states an osmotic cell with semipermeable
+      membrane [6] between the inbound conduit and the outbound conduit (Figure 7).
+      Odland teaches a system (Figures 26-27) comprising a semi-permeable inbound
+      conduit (second lumen [230]) and a semi-permeable outbound conduit (semipermeable
+      membranes [232]). It would have been obvious to a person having ordinary skill
+      in the art at the time the invention was made to modify the inbound conduit
+      and the outbound conduit, of the system of Del Bigio et al, to be semi-permeable,
+      as taught by Odland, as such will provide further areas in addition to the osmotic
+      cell for site specific microdialysis for recovering fluid from the tissue site
+      and will provide an optimal combination of properties such as mass transfer
+      properties and biocompatibility (Abstract)(column 33, lines 16-18). Further,
+      Del Bigio et al does not appear to teach that the treatment fluid comprises
+      a dry gas. Fowle teaches a system (Figures 1-3) wherein a number='17'treatment
+      fluid comprises a dry gas (dry inert gas stream [36]). It would have been obvious
+      to a person having ordinary skill in the art at the time the invention was made
+      to modify the treatment fluid, of the modified system of Del Bigio et al and
+      Odland, to comprise a dry gas, as taught by Fowle, as such will allow for transporting
+      cryogenic droplets to the distal end of the conduit for cooling a cold-tip (Abstract),
+      which can be manipulated to destroy a small amount of brain tissue (the thalamus)
+      by freezing it (column 1, lines 13-19).\\n\\tIn regards to claim 40, in the
+      modified system of Del Bigio et al, Odland, and Fowle, Del Bigio et al teaches
+      a conduit interface (osmotic cell with semipermeable membrane [6]) for coupling
+      the inbound conduit and the outbound conduit; however, Del Bigio et al does
+      not teach that the conduit interface comprises a plurality of tributary conduits,
+      as Del Bigio et al only teaches a single conduit [6]. But it would have been
+      obvious to a person having ordinary skill in the art at the time the invention
+      was made to modify the conduit interface, of the modified system of Del Bigio
+      et al, Odland, and Fowle, to comprise a plurality of tributary conduits, as
+      either configuration between the inbound conduit and the outbound conduit will
+      allow for excess water and small molecules to be efficiently drawn from the
+      surface of the brain, through osmotic forces, thereby reducing brain swelling.\\n\\tIn
+      regards to claim 42, in the modified system of Del Bigio et al, Odland, and
+      Fowle, Del Bigio et al teaches an open-cavity (Figure 7), reduced-pressure (Abstract)
+      subsystem (mechanical pumping system) for removing fluids from a body cavity
+      of a patient (paragraph [0041]).\\n\\nClaims 34-37 are rejected under pre-AIA
+      \ 35 U.S.C. 103(a) as being unpatentable over Del Bigio et al, Odland, and Fowle,
+      as applied to claim 33 above, and further in view of Treu et al.\\nIn regards
+      to claim 34, in the modified system of Del Bigio et al, Odland, and Fowle, Del
+      Bigio et al is silent about a recruited-fluid determination unit coupled to
+      the treatment-fluid collector for determining a volume of the recruited fluid.
+      Treu et al teaches a system (Figure 7) wherein a recruited-fluid determination
+      unit (fluid removal module [118]) is coupled to a treatment fluid collector
+      (waste module [46]) for determining a volume of a recruited fluid. It would
+      have been obvious to a person having ordinary skill in the art at the time the
+      invention was made to modify the modified system, of Del Bigio et al, Odland,
+      and Fowle, with a recruited-fluid determination unit, as taught by Treu et al,
+      as such will provide an efficient means for monitoring the volume of excess
+      fluid removed from the patient in order to aid in balancing the fluid level
+      of the patient (column 10, lines 33-45)(column 3, lines 65-67).\\nIn regards
+      to claim 35, in the modified system of Del Bigio et al, Odland, and Fowle, Del
+      Bigio et al is silent about a volume transducer and a treatment controller comprising
+      a microprocessor, a memory device, an input device, the volume transducer, and
+      an output means. Treu et al teaches a system (Figures 1 and 7) comprising a
+      volume transducer (means [124]) for developing a signal indicative of the volume
+      of treatment fluid and recruited fluid (column 10, lines 41-45) and a treatment
+      controller (processing controller [16]), the treatment controller comprising:
+      a microprocessor (column 5, lines 21-22), a memory device associated with the
+      microprocessor (column 5, line 38), a input device (interface [50])(input device
+      [54]) associated with the microprocessor for receiving input signals, the volume
+      transducer coupled to the input number='18'device (column 3, lines 65-67), and
+      an output means associated with the microprocessor for delivering output signals
+      (column 5, lines 21-44)(column 10, lines 33-45). It would have been obvious
+      to a person having ordinary skill in the art at the time the invention was made
+      to modify the modified system, of Del Bigio et al, Odland, and Fowle, with a
+      volume transducer and a treatment controller having a microprocessor, a memory
+      device, an input device, the volume transducer, and an output means, as taught
+      by Treu et al, as the volume transducer will provide an efficient means for
+      monitoring the volume of excess fluid removed from the patient in order to aid
+      in balancing the fluid level of the patient (column 10, lines 33-45)(column
+      3, lines 65-67) and the treatment controller will govern the interactions within
+      the system by providing the user with the current status of the system, prompting
+      the user to input commands and information or receive data from the various
+      sensors and other components, recording data in memory, controlling the operation
+      of the active components of the system, or alerting the patient to abnormal
+      or failure conditions in the system (column 5, lines 21-44).\\nIn regards to
+      claim 36, in the modified system of Del Bigio et al, Odland, Fowle, and Treu
+      et al, Del Bigio et al does not teach a microprocessor and memory device. Treu
+      et al teaches that the microprocessor and memory device are operable to develop
+      a control signal to adjust a flow rate in the treatment-fluid delivery unit
+      (column 9, lines 57-62)(column 10, lines 1-7). It would have been obvious to
+      a person having ordinary skill in the art at the time the invention was made
+      to modify the modified system, of Del Bigio et al, Odland, Fowle, and Treu et
+      al, to adjust a flow rate in the treatment-fluid delivery unit, as taught by
+      Treu et al, as adjusting the flow rate will help at least partially maintain
+      a normal physiologic fluid and electrolytic balance in the patient (column 9,
+      lines 52-54).\\nnumber='19'In regards to claim 37, in the modified system of
+      Del Bigio et al, Odland, Fowle, and Treu et al, Del Bigio et al does not teach
+      that the treatment-fluid delivery unit comprises a heating element and the system
+      comprises an inbound conduit temperature transducer coupled to the treatment
+      controller. Treu et al teaches that the treatment-fluid delivery unit comprises
+      a heating element (column 9, lines 4-10). It would have been obvious to a person
+      having ordinary skill in the art at the time the invention was made to modify
+      the modified system, of Del Bigio et al, Odland, Fowle, and Treu et al, with
+      a heating element, as taught by Treu et al, as such will heat the treatment
+      fluid to body temperature (column 9, lines 4-10), which will be more comfortable
+      to the patient. However, Treu et al is silent about an inbound conduit temperature
+      transducer. But it would have been obvious to a person having ordinary skill
+      in the art at the time the invention was made to modify the modified system,
+      of Del Bigio et al, Odland, Fowle, and Treu et al, with an inbound conduit temperature
+      transducer, as common practice in the art, as such will allow the treatment
+      controller to sense and determine whether or not the treatment fluid is at an
+      acceptable temperature, such as body temperature, for delivery to the patient.
+      If the treatment fluid is not at an acceptable temperature, the treatment controller
+      will direct the heating element to operate and regulate the temperature of the
+      treatment fluid.\\n\\nClaims 43-46 are rejected under pre-AIA  35 U.S.C. 103(a)
+      as being unpatentable over Del Bigio et al, Odland, and Fowle, as applied to
+      claim 42 above, and further in view of Lockwood et al.\\nIn regards to claim
+      43, in the modified system of Del Bigio et al, Odland, and Fowle, Del Bigio
+      et al is silent about whether the open-cavity, reduced-pressure subsystem comprises
+      a number='20'treatment device, a manifold, a sealing member, a reduced-pressure
+      delivery conduit, and a reduced-pressure interface. Lockwood et al teaches a
+      system wherein an open-cavity, reduced-pressure subsystem (Figures 1-7) comprises:
+      \\na treatment device comprising:\\na fenestrated non-adherent drape (member
+      [20])\\na plurality of encapsulated leg members (channels [28]) coupled to the
+      non-adherent drape, each having an interior portion with a leg manifold member
+      [28] and formed with fenestrations (holes [36]) operable to allow fluid flow
+      into the interior portion\\na central connection member (channels [30]) fluidly
+      coupled to the plurality of encapsulated legs, the central connection member
+      having a first side (Figure 4) and a second, patient-facing side\\na manifold
+      (vacuum/irrigation tube [13]) for disposing proximate the first side of the
+      central connection member and operable to manifold reduced pressure to the central
+      connection member \\na sealing member (sealing film [62]) for disposing on a
+      portion of the patient\u2019s epidermis and operable to form a pneumatic seal
+      over the body cavity\\na reduced-pressure delivery conduit (between vacuum source
+      [12] and valve [66])\\na reduced-pressure interface (valve [66]) for coupling
+      to the sealing member and operable to fluidly couple the reduced-pressure delivery
+      conduit to the manifold\\nIt would have been obvious to a person having ordinary
+      skill in the art at the time the invention was made to modify the open-cavity,
+      reduced-pressure subsystem, of the modified system of Del number='21'Bigio et
+      al, Odland, and Fowle, to comprise a treatment device, a manifold, a sealing
+      member, a reduced-pressure delivery conduit, and a reduced-pressure interface,
+      as taught by Lockwood et al, as such will promote the healing of a large wound
+      by providing vacuum therapy to the wound to promote blood flow and remove exudate
+      from a wound surface of the wound (column 7, lines 54-57).\\n\\tIn regards to
+      claim 44, in the modified system of Del Bigio et al, Odland, Fowle, and Lockwood
+      et al, Del Bigio et al is silent about a central connection member. Lockwood
+      et al teaches that the central connection member has a connection manifold member
+      [30] and wherein each leg manifold member is in fluid communication with the
+      connection manifold member (Figure 4). It would have been obvious to a person
+      having ordinary skill in the art at the time the invention was made to modify
+      the central connection member, of the modified system of Del Bigio et al, Odland,
+      Fowle, and Lockwood et al, to have a connection manifold member, as taught by
+      Lockwood et al, as such will promote the healing of a large wound by providing
+      vacuum therapy to the wound to promote blood flow and remove exudate from a
+      wound surface of the wound (column 7, lines 54-57).\\nIn regards to claim 45,
+      in the modified system of Del Bigio et al, Odland, Fowle, and Lockwood et al,
+      Del Bigio et al is silent about the plurality of encapsulated leg members. Lockwood
+      et al teaches that the outbound conduit [13] and inbound conduit [13] are coupled
+      to at least one of the plurality of encapsulated leg members (Figure 5). It
+      would have been obvious to a person having ordinary skill in the art at the
+      time the invention was made to modify the outbound conduit and inbound conduit,
+      of the modified system of Del Bigio et al, Odland, Fowle, and Lockwood et al,
+      to be coupled to at least one of the plurality of encapsulated leg number='22'members,
+      as taught by Lockwood et al, as such will promote the healing of a large wound
+      by providing vacuum therapy to the wound to promote blood flow and remove exudate
+      from a wound surface of the wound (column 7, lines 54-57).\\nIn regards to claim
+      46, in the modified system of Del Bigio et al, Odland, Fowle, and Lockwood et
+      al, Del Bigio et al is silent about the plurality of encapsulated leg members.
+      Lockwood et al teaches that each encapsulated leg member of the plurality of
+      encapsulated leg members comprises:\\na fenestrated first leg encapsulating
+      member [28]\\na fenestrated second leg encapsulating member [28]\\nwherein the
+      leg manifold member has a first side, a second side, a first lateral edge, and
+      a second lateral edge (Figure 4)\\nwherein the first leg encapsulating member
+      is disposed proximate the first side of the leg manifold member, the second
+      leg encapsulating member is disposed proximate the second patient-facing side
+      of the leg manifold member, and the first leg encapsulating member and second
+      leg encapsulating member are coupled proximate the first lateral edge and second
+      lateral edge of the leg manifold member to form the first encapsulated leg member
+      (Figure 4)\\nIt would have been obvious to a person having ordinary skill in
+      the art at the time the invention was made to modify each encapsulated leg member,
+      of the modified system of Del Bigio et al, Odland, Fowle, and Lockwood et al,
+      to comprise a fenestrated first leg encapsulating member and a fenestrated second
+      leg encapsulating member, as taught by Lockwood et al, as such will number='23'promote
+      the healing of a large wound by providing vacuum therapy to the wound to promote
+      blood flow and remove exudate from a wound surface of the wound (column 7, lines
+      54-57).\\n\\nConclusion\\nAny inquiry concerning this communication or earlier
+      communications from the examiner should be directed to SHEFALI PATEL whose telephone
+      number is (571)270-3645.  The examiner can normally be reached on Monday through
+      Thursday from 8am-5pm Eastern time.\\nIf attempts to reach the examiner by telephone
+      are unsuccessful, the examiner\u2019s supervisor, Kevin C. Sirmons can be reached
+      on (571) 272-4965.  The fax phone number for the organization where this application
+      or proceeding is assigned is 571-273-8300.\\nInformation regarding the status
+      of an application may be obtained from the Patent Application Information Retrieval
+      (PAIR) system.  Status information for published applications may be obtained
+      from either Private PAIR or Public PAIR.  Status information for unpublished
+      applications is available through Private PAIR only.  For more information about
+      the PAIR system, see http://pair-direct.uspto.gov. Should you have questions
+      on access to the Private PAIR system, contact the Electronic Business Center
+      (EBC) at 866-217-9197 (toll-free). If you would like assistance from a USPTO
+      Customer Service Representative or access to the automated information system,
+      call 800-786-9199 (IN USA OR CANADA) or 571-272-1000.\\n\\n\\n\\n\\n\\n/SHEFALI
+      PATEL/\\nExaminer, Art Unit 3763\\n05/06/2016\"]}]\n  }}\n"
+    headers:
+      access-control-allow-credentials:
+      - 'true'
+      access-control-allow-headers:
+      - accept, authorization, content-type, x-requested-with
+      access-control-allow-methods:
+      - GET, POST, OPTIONS, PUT
+      access-control-allow-origin:
+      - '*'
+      access-control-max-age:
+      - '1'
+      content-encoding:
+      - gzip
+      content-type:
+      - application/json
+      date:
+      - Tue, 31 Oct 2023 20:59:20 GMT
+      strict-transport-security:
+      - max-age=31536000;
+    http_version: HTTP/2
+    status_code: 200
+version: 1
