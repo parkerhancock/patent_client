@@ -1,0 +1,26 @@
+import re
+from pathlib import Path
+
+import pytest
+from _pytest.fixtures import SubRequest
+
+bracket_re = re.compile(r"\[(.*?)\]")
+
+cassette_dir = Path(__file__).parent.parent / "cassettes"
+print(cassette_dir)
+
+
+@pytest.fixture(scope="module")
+def vcr_cassette_dir(request: SubRequest):
+    module = request.node.fspath
+    return str(cassette_dir / module.purebasename)
+
+
+@pytest.fixture(scope="module")
+def vcr_config():
+    return {
+        "filter_headers": [("Authorization", "REDACTED")],
+        "record_mode": "new_episodes",
+        "record_on_exception": False,
+        "path_transformer": lambda path: bracket_re.sub(r"", path) + ".yaml",
+    }
