@@ -5,12 +5,14 @@ import datetime
 import typing as tp
 
 from ..http_client import PatentClientAsyncHttpClient
+from patent_client import function_cache
 
 
 class BulkDataApi:
     http_client = PatentClientAsyncHttpClient()
 
     @classmethod
+    @function_cache
     def get_latest(cls) -> tp.Any:
         """Returns all products with Latest Files"""
         response = cls.http_client.get("https://bulkdata.uspto.gov:443/BDSS-API/products/all/latest")
@@ -18,6 +20,7 @@ class BulkDataApi:
         return response.json()
 
     @classmethod
+    @function_cache
     def get_by_name(
         cls,
         product_name: str,
@@ -26,7 +29,7 @@ class BulkDataApi:
         max_files: int = 20,
     ) -> tp.Any:
         """Returns files associated with products (of level PRODUCT) based on their full or partial names."""
-        params = dict(hierarchy=False)
+        params: dict[str, tp.Any] = dict(hierarchy=False)
         if from_date:
             if isinstance(from_date, str):
                 from_date = datetime.date.fromisoformat(from_date)
@@ -41,12 +44,14 @@ class BulkDataApi:
             params["toDay"] = to_date.day
         params["maxFiles"] = max_files
         response = cls.http_client.get(
-            f"https://bulkdata.uspto.gov:443/BDSS-API/products/byname/{product_name}", params=params
+            f"https://bulkdata.uspto.gov:443/BDSS-API/products/byname/{product_name}",
+            params=params,
         )
         response.raise_for_status()
         return response.json()
 
     @classmethod
+    @function_cache
     def get_popular(cls) -> tp.Any:
         """Returns popular products along with latest files."""
         response = cls.http_client.get("https://bulkdata.uspto.gov:443/BDSS-API/products/popular")
@@ -54,12 +59,12 @@ class BulkDataApi:
         return response.json()
 
     @classmethod
+    @function_cache
     def get_by_short_name(
         cls,
         product_name: str,
         from_date: tp.Optional[datetime.date | str] = None,
         to_date: tp.Optional[datetime.date | str] = None,
-        max_files: int = 20,
     ) -> tp.Any:
         """Returns files associated with products (of level PRODUCT) based on their full or partial names."""
         params = dict()
@@ -76,7 +81,8 @@ class BulkDataApi:
             params["toMonth"] = to_date.month
             params["toDay"] = to_date.day
         response = cls.http_client.get(
-            f"https://bulkdata.uspto.gov:443/BDSS-API/products/{product_name}", params=params
+            f"https://bulkdata.uspto.gov:443/BDSS-API/products/{product_name}",
+            params=params,
         )
         response.raise_for_status()
         return response.json()

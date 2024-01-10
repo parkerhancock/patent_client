@@ -8,8 +8,8 @@ from httpcore import Request
 from httpcore import Response
 
 from patent_client import SETTINGS
-from patent_client.session import CACHE_DIR
-from patent_client.session import PatentClientSession
+from patent_client._async.http_client import CACHE_DIR
+from patent_client._async.http_client import PatentClientSession
 
 
 NS = {

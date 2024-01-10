@@ -1,4 +1,5 @@
 from ..http_client import PatentClientAsyncHttpClient
+from patent_client import function_cache
 
 
 class GlobalDossierApi:
@@ -9,6 +10,7 @@ class GlobalDossierApi:
     )
 
     @classmethod
+    @function_cache
     async def get_dossier(cls, doc_number, type_code="application", office_code="US"):
         url = f"https://gd-api2.uspto.gov/patent-family/svc/family/{type_code}/{office_code}/{doc_number}"
         await cls.http_client.options(url)
@@ -17,6 +19,7 @@ class GlobalDossierApi:
         return response.json()
 
     @classmethod
+    @function_cache
     async def get_doc_list(cls, country, doc_number, kind_code):
         url = f"https://gd-api2.uspto.gov/doc-list/svc/doclist/{country}/{doc_number}/{kind_code}"
         response = await cls.http_client.get(url)

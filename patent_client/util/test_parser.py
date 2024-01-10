@@ -1,4 +1,4 @@
-from patent_client.parser import parse
+from patent_client.util.parser import parse
 
 
 class TestPatentNumberParser:

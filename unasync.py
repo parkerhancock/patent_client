@@ -2,6 +2,7 @@
 import os
 import re
 import sys
+from pathlib import Path
 
 SUBS = [
     ("async def", "def"),
@@ -69,6 +70,7 @@ header = (
 
 def unasync_file(in_path, out_path):
     with open(in_path, "r") as in_file:
+        Path(out_path).parent.mkdir(parents=True, exist_ok=True)
         with open(out_path, "w", newline="") as out_file:
             out_file.write(header)
             for line in in_file.readlines():

@@ -11,7 +11,7 @@ from pydantic import Field
 from pydantic.alias_generators import to_camel
 from typing_extensions import Annotated
 
-from ...util.related import get_model
+from ....util.related import get_model
 from .session import session
 from patent_client.util.asyncio_util import run_sync
 from patent_client.util.pydantic_util import BaseModel

@@ -3,56 +3,27 @@
 # ********************************************************************************
 import re
 import warnings
-from hashlib import blake2b
 from pathlib import Path
 from typing import Optional
 
-import hishel
-import httpcore
 import httpx
-from hishel._utils import normalized_url
 
 from patent_client import __version__
-from patent_client import CACHE_DIR
+
 
 filename_re = re.compile(r'filename="([^"]+)"')
-
-
-def cache_key_generator(request: httpcore.Request):
-    encoded_url = normalized_url(request.url).encode("ascii")
-    body = [c for c in request.stream]
-    if isinstance(body[0], bytes):
-        body = b"".join(body)
-    else:
-        body = "".join(body).encode("utf-8")
-    key = blake2b(digest_size=16)
-    key.update(encoded_url)
-    key.update(request.method)
-    key.update(body)
-    return key.hexdigest()
-
-
-patent_client_transport = hishel.CacheTransport(
-    transport=httpx.HTTPTransport(
-        verify=False,
-        http2=True,
-        retries=3,
-    ),
-    storage=hishel.FileStorage(base_path=CACHE_DIR),
-    controller=hishel.Controller(allow_heuristics=True, key_generator=cache_key_generator),
-)
 
 
 class PatentClientAsyncHttpClient(httpx.Client):
     _default_user_agent = f"Mozilla/5.0 Python Patent Clientbot/{__version__} (parkerhancock@users.noreply.github.com)"
 
     def __init__(self, **kwargs):
-        kwargs["transport"] = kwargs.get("transport", patent_client_transport)
         headers = kwargs.get("headers", dict())
         headers["User-Agent"] = headers.get("User-Agent", self._default_user_agent)
         kwargs["headers"] = headers
         kwargs["follow_redirects"] = kwargs.get("follow_redirects", True)
         kwargs["timeout"] = kwargs.get("timeout", 60 * 5)
+        kwargs["verify"] = kwargs.get("verify", False)
         super().__init__(**kwargs)
 
     def get_filename(self, url, path, filename, headers):
@@ -65,7 +36,12 @@ class PatentClientAsyncHttpClient(httpx.Client):
         return path
 
     def download(
-        self, url, method: str = "GET", path: Optional[str | Path] = None, show_progress: bool = False, **kwargs
+        self,
+        url,
+        method: str = "GET",
+        path: Optional[str | Path] = None,
+        show_progress: bool = False,
+        **kwargs,
     ):
         # Ensure we skip the cache for file downloads
         kwargs["extensions"] = kwargs.get("extensions", dict())

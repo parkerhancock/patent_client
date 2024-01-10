@@ -7,6 +7,7 @@ from pathlib import Path
 import lxml.etree as ET
 
 from ..http_client import PatentClientAsyncHttpClient
+from patent_client import function_cache
 
 allowed_filters = [
     "PCTNumber",
@@ -32,6 +33,7 @@ class AssignmentApi:
     http_client = PatentClientAsyncHttpClient()
 
     @classmethod
+    @function_cache
     def lookup(cls, query: str, filter: str, rows=8, start=0, sort="ExecutionDate+desc") -> ET._Element:
         # Because of their limited utility, we omit fields, highlight, and facet
         url = "https://assignment-api.uspto.gov/patent/lookup"

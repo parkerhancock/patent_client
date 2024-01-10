@@ -8,7 +8,7 @@ import lxml.etree as ET
 from openpyxl import load_workbook
 
 from patent_client import BASE_DIR
-from patent_client.session import PatentClientSession
+from patent_client._async.http_client import PatentClientSession
 from patent_client.util.asyncio_util import run_sync
 
 session = PatentClientSession()
