@@ -6,7 +6,7 @@ from pathlib import Path
 
 import lxml.etree as ET
 
-from ..http_client import PatentClientAsyncHttpClient
+from ..http_client import PatentClientHttpClient
 from patent_client import function_cache
 
 allowed_filters = [
@@ -30,7 +30,7 @@ def validate_input(input, input_name, allowed_values):
 
 
 class AssignmentApi:
-    http_client = PatentClientAsyncHttpClient()
+    http_client = PatentClientHttpClient()
 
     @classmethod
     @function_cache

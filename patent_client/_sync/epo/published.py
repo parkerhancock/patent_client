@@ -7,7 +7,7 @@ from pathlib import Path
 
 import lxml.etree as ET
 
-from ..http_client import PatentClientAsyncHttpClient
+from ..http_client import PatentClientHttpClient
 from .auth import ops_auth
 from patent_client import function_cache
 
@@ -16,7 +16,7 @@ logger = logging.getLogger(__name__)
 
 
 class PublishedBiblioAsyncApi:
-    http_client = PatentClientAsyncHttpClient(auth=ops_auth)
+    http_client = PatentClientHttpClient(auth=ops_auth)
 
     @classmethod
     @function_cache
@@ -80,7 +80,7 @@ class PublishedBiblioAsyncApi:
 
 
 class PublishedFulltextAsyncApi:
-    http_client = PatentClientAsyncHttpClient(auth=ops_auth)
+    http_client = PatentClientHttpClient(auth=ops_auth)
     fulltext_jurisdictions = "EP, WO, AT, BE, BG, CA, CH, CY, CZ, DK, EE, ES, FR, GB, GR, HR, IE, IT, LT, LU, MC, MD, ME, NO, PL, PT, RO, RS, SE, SK".split(
         ", "
     )
@@ -122,7 +122,7 @@ class PublishedFulltextAsyncApi:
 
 
 class PublishedSearchAsyncApi:
-    http_client = PatentClientAsyncHttpClient(auth=ops_auth)
+    http_client = PatentClientHttpClient(auth=ops_auth)
 
     @classmethod
     @function_cache
@@ -135,7 +135,7 @@ class PublishedSearchAsyncApi:
 
 
 class PublishedImagesAsyncApi:
-    http_client = PatentClientAsyncHttpClient(auth=ops_auth)
+    http_client = PatentClientHttpClient(auth=ops_auth)
 
     @classmethod
     @function_cache

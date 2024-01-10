@@ -4,12 +4,12 @@
 import datetime
 import typing as tp
 
-from ..http_client import PatentClientAsyncHttpClient
+from ..http_client import PatentClientHttpClient
 from patent_client import function_cache
 
 
 class BulkDataApi:
-    http_client = PatentClientAsyncHttpClient()
+    http_client = PatentClientHttpClient()
 
     @classmethod
     @function_cache

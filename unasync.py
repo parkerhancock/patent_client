@@ -20,6 +20,7 @@ SUBS = [
     ("AsyncSQLiteStorage", "SQLiteStorage"),
     ("AsyncInMemoryStorage", "InMemoryStorage"),
     ("AsyncHTTPTransport", "HTTPTransport"),
+    ("PatentClientAsyncHttpClient", "PatentClientHttpClient"),
     ("import redis.asyncio as redis", "import redis"),
     ("AsyncCacheTransport", "CacheTransport"),
     ("AsyncBaseTransport", "BaseTransport"),

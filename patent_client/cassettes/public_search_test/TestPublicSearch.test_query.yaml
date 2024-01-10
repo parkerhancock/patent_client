@@ -1,0 +1,101 @@
+interactions:
+- request:
+    body: '-1'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '2'
+      content-type:
+      - application/json
+      host:
+      - ppubs.uspto.gov
+      user-agent:
+      - Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/114.0.0.0 Safari/537.36
+      x-requested-with:
+      - XMLHttpRequest
+    method: POST
+    uri: https://ppubs.uspto.gov/dirsearch-public/users/me/session
+  response:
+    content: '{"userSessionId":24351374,"ipAddress":null,"displayName":"anonymous","deleteIn":false,"userCase":{"caseId":24351543,"userId":24351374,"caseName":"Untitled
+      Case","applicationNumber":null},"userPreferences":{},"hostURLs":{"image_server_host":"https://pasr-img.pvt.uspto.gov"},"versions":[{"product":"API","releaseNumber":"2.1.0.3","date":"10.04.2023
+      @ 21:20:10 UTC","commitId":"6d029659","collectionName":""},{"product":"SOLR","releaseNumber":"7.6.0","date":"5-4-0","commitId":"","collectionName":"us_patent_grant"}],"documentsLimitInQuery":1000,"sessionTimeOutTime":1800}'
+    headers:
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 10 Jan 2024 16:59:20 GMT
+      Server-Timing:
+      - intid;desc=2cf35637c95cd921
+      Transfer-Encoding:
+      - chunked
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: '{"start": 0, "pageCount": 500, "sort": "date_publ desc", "docFamilyFiltering":
+      "familyIdFiltering", "searchType": 1, "familyIdEnglishOnly": true, "familyIdFirstPreferred":
+      "US-PGPUB", "familyIdSecondPreferred": "USPAT", "familyIdThirdPreferred": "FPRS",
+      "showDocPerFamilyPref": "showEnglish", "queryId": 0, "tagDocSearch": false,
+      "query": {"caseId": 24351543, "hl_snippets": "2", "op": "OR", "q": "\"B60N2/5628\".CPC.
+      AND @APD>=\"20210101\"<=20210107", "queryName": "\"B60N2/5628\".CPC. AND @APD>=\"20210101\"<=20210107",
+      "highlights": "1", "qt": "brs", "spellCheck": false, "viewName": "tile", "plurals":
+      true, "britishEquivalents": true, "databaseFilters": [{"databaseName": "US-PGPUB",
+      "countryCodes": []}, {"databaseName": "USPAT", "countryCodes": []}, {"databaseName":
+      "USOCR", "countryCodes": []}], "searchType": 1, "ignorePersist": true, "userEnteredQuery":
+      "\"B60N2/5628\".CPC. AND @APD>=\"20210101\"<=20210107"}}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '921'
+      content-type:
+      - application/json
+      host:
+      - ppubs.uspto.gov
+      user-agent:
+      - Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/114.0.0.0 Safari/537.36
+      x-requested-with:
+      - XMLHttpRequest
+    method: POST
+    uri: https://ppubs.uspto.gov/dirsearch-public/searches/searchWithBeFamily
+  response:
+    content: '{"numFound":1,"perPage":500,"page":0,"totalPages":0,"hlSnippets":0,"sort":null,"query":{"id":null,"caseId":24351543,"numResults":1,"ignorePersist":true,"fq":null,"databaseFilters":[{"databaseName":"US-PGPUB","countryCodes":[]},{"databaseName":"USPAT","countryCodes":[]},{"databaseName":"USOCR","countryCodes":[]}],"q":"\"B60N2/5628\".CPC.
+      AND @APD>=\"20210101\"<=20210107","queryName":"\"B60N2/5628\".CPC. AND @APD>=\"20210101\"<=20210107","userEnteredQuery":"\"B60N2/5628\".CPC.
+      AND @APD>=\"20210101\"<=20210107","viewName":"tile","op":"OR","highlights":"1","plurals":true,"britishEquivalents":true,"searchType":1,"excludeResultsAfter":null,"dateCreated":null,"deleteIn":false,"expand":true,"expandSort":"group_sort_date
+      asc, id desc ","expandRows":"100","expandTrackDocScores":true,"expandTrackMaxScore":true,"termGraph":null,"hl":false,"fl":null,"originalQuery":"\"B60N2/5628\".CPC.
+      AND @APD>=\"20210101\"<=20210107","error":null,"terms":["@apd","\"b60n2/5628\""],"facets":[],"pNumber":null,"hl_fl":null},"duration":60,"highlightingTime":0,"cursorMarker":"AoJwgJu7jfkCOjY5MjI4MTc1IVBHLVVTLTIwMjEwMTIyMjcz","totalResults":2,"numberOfFamilies":1,"error":null,"patents":[{"guid":"US-20210122273-A1","publicationReferenceDocumentNumber":"20210122273","compositeId":"69228175!PG-US-20210122273","publicationReferenceDocumentNumber1":"20210122273","datePublishedKwicHits":null,"datePublished":"2021-04-29T00:00:00Z","inventionTitle":"VEHICLE
+      SEAT","type":"US-PGPUB","mainClassificationCode":"1/1","applicantName":["Toyota
+      Jidosha Kabushiki Kaisha"],"assigneeName":null,"uspcFullClassificationFlattened":null,"ipcCodeFlattened":"B60N2/56","cpcInventiveFlattened":"B60N2/5628;B60N2/5657;B60N2/01","cpcAdditionalFlattened":null,"applicationFilingDate":["2021-01-07T00:00:00Z"],"applicationFilingDateKwicHits":null,"relatedApplFilingDate":["2019-07-26T00:00:00Z"],"primaryExaminer":null,"assistantExaminer":null,"applicationNumber":"17/143605","frontPageStart":1,"frontPageEnd":1,"drawingsStart":2,"drawingsEnd":6,"specificationStart":7,"specificationEnd":17,"claimsStart":17,"claimsEnd":18,"abstractStart":1,"abstractEnd":1,"bibStart":1,"bibEnd":1,"certCorrectionStart":0,"certCorrectionEnd":0,"certReexaminationStart":0,"certReexaminationEnd":0,"supplementalStart":0,"supplementalEnd":0,"ptabStart":0,"ptabEnd":0,"amendStart":0,"amendEnd":0,"searchReportStart":0,"searchReportEnd":0,"pageCount":18,"pageCountDisplay":"18","previouslyViewed":false,"unused":false,"imageLocation":"us-pgpub/US/2021/0122/273","imageFileName":"00000001.tif","cpcCodes":null,"queryId":null,"tags":null,"inventorsShort":"Shiga;
+      Kazuyuki","familyIdentifierCur":69228175,"familyIdentifierCurStr":null,"languageIndicator":"EN","databaseName":"PGPB","dwImageDoctypeList":null,"dwImageLocList":null,"dwPageCountList":null,"dwImageDocidList":null,"patentFamilyMembers":null,"patentFamilyCountry":null,"patentFamilySerialNumber":null,"documentIdWithDashesDw":null,"pfPublDate":null,"pfPublDateKwicHits":null,"priorityClaimsDate":["2018-08-02T00:00:00Z"],"priorityClaimsDateKwicHits":null,"pfApplicationSerialNumber":null,"pfApplicationDescriptor":null,"pfLanguage":null,"pfApplicationDate":null,"pfApplicationDateKwicHits":null,"clippedUri":null,"source":null,"documentId":"US
+      20210122273 A1","derwentAccessionNumber":null,"documentSize":95846,"score":16.579838,"governmentInterest":null,"kindCode":["A1"],"collapsed":true,"familyCount":2,"urpn":null,"urpnCode":null,"descriptionStart":7,"descriptionEnd":17,"publicationReferenceDocumentNumberOne":"20210122273"},{"guid":"US-11554698-B2","publicationReferenceDocumentNumber":"11554698","compositeId":"69228175!US-US-11554698","publicationReferenceDocumentNumber1":"11554698","datePublishedKwicHits":null,"datePublished":"2023-01-17T00:00:00Z","inventionTitle":"Vehicle
+      seat","type":"USPAT","mainClassificationCode":"1/1","applicantName":["Toyota
+      Jidosha Kabushiki Kaisha"],"assigneeName":["TOYOTA JIDOSHA KABUSHIKI KAISHA"],"uspcFullClassificationFlattened":null,"ipcCodeFlattened":"B60N2/56","cpcInventiveFlattened":"B60N2/01;B60N2/5628;B60N2/5657","cpcAdditionalFlattened":null,"applicationFilingDate":["2021-01-07T00:00:00Z"],"applicationFilingDateKwicHits":null,"relatedApplFilingDate":["2019-07-26T00:00:00Z"],"primaryExaminer":"Gabler;
+      Philip F","assistantExaminer":null,"applicationNumber":"17/143605","frontPageStart":1,"frontPageEnd":2,"drawingsStart":3,"drawingsEnd":7,"specificationStart":8,"specificationEnd":18,"claimsStart":18,"claimsEnd":19,"abstractStart":1,"abstractEnd":1,"bibStart":1,"bibEnd":2,"certCorrectionStart":0,"certCorrectionEnd":0,"certReexaminationStart":0,"certReexaminationEnd":0,"supplementalStart":0,"supplementalEnd":0,"ptabStart":0,"ptabEnd":0,"amendStart":0,"amendEnd":0,"searchReportStart":0,"searchReportEnd":0,"pageCount":19,"pageCountDisplay":"19","previouslyViewed":false,"unused":false,"imageLocation":"uspat/US/G98/546/115","imageFileName":"00000001.tif","cpcCodes":null,"queryId":null,"tags":null,"inventorsShort":"Shiga;
+      Kazuyuki","familyIdentifierCur":69228175,"familyIdentifierCurStr":null,"languageIndicator":"EN","databaseName":"USPT","dwImageDoctypeList":null,"dwImageLocList":null,"dwPageCountList":null,"dwImageDocidList":null,"patentFamilyMembers":null,"patentFamilyCountry":null,"patentFamilySerialNumber":null,"documentIdWithDashesDw":null,"pfPublDate":null,"pfPublDateKwicHits":null,"priorityClaimsDate":["2018-08-02T00:00:00Z"],"priorityClaimsDateKwicHits":null,"pfApplicationSerialNumber":null,"pfApplicationDescriptor":null,"pfLanguage":null,"pfApplicationDate":null,"pfApplicationDateKwicHits":null,"clippedUri":null,"source":null,"documentId":"US
+      11554698 B2","derwentAccessionNumber":null,"documentSize":107512,"score":15.520444,"governmentInterest":null,"kindCode":["B2"],"lastChild":true,"collapsed":true,"urpn":["4258555","5092395","5385382","6059018","7647780","9004993","10479241","20100181061","20110226461","20180117987","20190047449","20190241043","20190337429"],"urpnCode":["4258555","5092395","5385382","6059018","7647780","9004993","10479241","20100181061","20110226461","20180117987","20190047449","20190241043","20190337429"],"descriptionStart":8,"descriptionEnd":18,"publicationReferenceDocumentNumberOne":"11554698"}],"qtime":43}'
+    headers:
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 10 Jan 2024 16:59:21 GMT
+      Server-Timing:
+      - intid;desc=dd034d50b48ea143
+      Transfer-Encoding:
+      - chunked
+    http_version: HTTP/1.1
+    status_code: 200
+version: 1

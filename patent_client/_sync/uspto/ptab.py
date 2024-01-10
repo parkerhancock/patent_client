@@ -6,7 +6,7 @@ import typing as tp
 
 from dateutil.parser import parse as parse_dt
 
-from ..http_client import PatentClientAsyncHttpClient
+from ..http_client import PatentClientHttpClient
 from patent_client import function_cache
 
 
@@ -58,7 +58,7 @@ parameter_map = {
 
 
 class PtabApi:
-    http_client = PatentClientAsyncHttpClient()
+    http_client = PatentClientHttpClient()
 
     @classmethod
     @function_cache

@@ -7,7 +7,7 @@ import typing as tp
 
 from httpx._exceptions import HTTPStatusError
 
-from ..http_client import PatentClientAsyncHttpClient
+from ..http_client import PatentClientHttpClient
 from patent_client import function_cache
 
 logger = logging.getLogger(__name__)
@@ -26,7 +26,7 @@ class PedsDownException(Exception):
 
 
 class PatentExaminationDataSystemApi:
-    http_client = PatentClientAsyncHttpClient()
+    http_client = PatentClientHttpClient()
     base_url = "https://ped.uspto.gov/api"
     search_fields: dict = dict()
 

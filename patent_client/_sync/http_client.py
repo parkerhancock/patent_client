@@ -14,7 +14,7 @@ from patent_client import __version__
 filename_re = re.compile(r'filename="([^"]+)"')
 
 
-class PatentClientAsyncHttpClient(httpx.Client):
+class PatentClientHttpClient(httpx.Client):
     _default_user_agent = f"Mozilla/5.0 Python Patent Clientbot/{__version__} (parkerhancock@users.noreply.github.com)"
 
     def __init__(self, **kwargs):

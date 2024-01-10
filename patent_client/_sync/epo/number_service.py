@@ -3,13 +3,13 @@
 # ********************************************************************************
 import lxml.etree as ET
 
-from ..http_client import PatentClientAsyncHttpClient
+from ..http_client import PatentClientHttpClient
 from .auth import ops_auth
 from patent_client import function_cache
 
 
 class NumberServiceApi:
-    http_client = PatentClientAsyncHttpClient(auth=ops_auth)
+    http_client = PatentClientHttpClient(auth=ops_auth)
 
     @classmethod
     @function_cache
