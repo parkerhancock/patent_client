@@ -11,11 +11,11 @@ from pydantic import Field
 from pydantic.alias_generators import to_camel
 from typing_extensions import Annotated
 
-from ....util.related import get_model
-from .session import session
-from patent_client.util.asyncio_util import run_sync
+from patent_client._async.uspto.ptab import PtabApi as PtabAsyncApi
+from patent_client._sync.uspto.ptab import PtabApi as PtabSyncApi
 from patent_client.util.pydantic_util import BaseModel
 from patent_client.util.pydantic_util import DateTime
+from patent_client.util.related import get_model
 
 if TYPE_CHECKING:
     from patent_client.uspto.peds.model import USApplication
@@ -164,7 +164,18 @@ class PtabDocument(PtabBaseModel):
         )
 
     def download(self, path: Optional[str | Path]) -> Path:
-        return run_sync(self.adownload(path))
+        name, ext = self.document_name.rsplit(".", 1)
+        name = name[:100] + "." + ext
+        filename = f"[{str(self.document_number).rjust(4, '0')}] {self.document_filing_date.isoformat()} - {name}"
+        filename = filename.encode(encoding="ascii", errors="ignore").decode("ascii")
+        filename = fname_re.sub("", filename)
+        out_path = Path(path) if path else Path.cwd()
+        if out_path.is_dir():
+            out_path = Path(path) / filename
+        else:
+            out_path = out_path
+        download_url = f"https://developer.uspto.gov/ptab-api/documents/{self.document_identifier}/download"
+        return PtabSyncApi.http_client.download(download_url, path=out_path)
 
     async def adownload(self, path: Optional[str | Path]) -> Path:
         name, ext = self.document_name.rsplit(".", 1)
@@ -177,8 +188,8 @@ class PtabDocument(PtabBaseModel):
             out_path = Path(path) / filename
         else:
             out_path = out_path
-        donwload_url = f"https://developer.uspto.gov/ptab-api/documents/{self.document_identifier}/download"
-        return await session.download(download_url, path=out_path)
+        download_url = f"https://developer.uspto.gov/ptab-api/documents/{self.document_identifier}/download"
+        return await PtabAsyncApi.http_client.download(download_url, path=out_path)
 
 
 class PtabDecision(PtabBaseModel):

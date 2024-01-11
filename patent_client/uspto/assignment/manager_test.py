@@ -106,7 +106,7 @@ class TestAssignmentAnalysis:
 
 
 class TestAssignmentAsync:
-    @pytest.mark.asyncio
+    @pytest.mark.anyio
     async def test_get_assignment(self):
         a = await Assignment.objects.aget("18247-405")
         assert a.id == "18247-405"
@@ -138,7 +138,7 @@ class TestAssignmentAsync:
         assert a.properties[0].publ_date.isoformat() == "2004-04-15"
         assert a.properties[0].publ_num == "20040073746"
 
-    @pytest.mark.asyncio
+    @pytest.mark.anyio
     async def test_fetch_assignments_by_assignee(self):
         assignments = Assignment.objects.filter(assignee="US Well Services")
         assert await assignments.alen() >= 22
@@ -146,29 +146,29 @@ class TestAssignmentAsync:
         assignments = Assignment.objects.filter(assignee="LogicBlox")
         assert await assignments.alen() >= 9
 
-    @pytest.mark.asyncio
+    @pytest.mark.anyio
     async def test_fetch_assignments_by_patent(self):
         assignments = Assignment.objects.filter(patent_number="8,789,601")
         assert await assignments.alen() >= 1
         assert "48041-605" in [a.id async for a in assignments]
 
-    @pytest.mark.asyncio
+    @pytest.mark.anyio
     async def test_fetch_assignments_by_application(self):
         assignments = Assignment.objects.filter(appl_id="14/190,982")
         assert await assignments.alen() >= 1
 
-    @pytest.mark.asyncio
+    @pytest.mark.anyio
     async def test_fetch_assignee_with_greater_than_500_assignments(self):
         assignments = Assignment.objects.filter(assignee="Borealis")
         assert await assignments.alen() >= 1268
 
-    @pytest.mark.asyncio
+    @pytest.mark.anyio
     async def test_get_assignment_image(self):
         assignments = Assignment.objects.filter(patent_number=6095661)
         assignment = await assignments.afirst()
         assert assignment.image_url == "http://legacy-assignments.uspto.gov/assignments/assignment-pat-038505-0128.pdf"
 
-    @pytest.mark.asyncio
+    @pytest.mark.anyio
     async def test_slice_assignments(self):
         assignments = Assignment.objects.filter(assignee="US Well Services")
         assignment_list1 = [assignment.id async for assignment in assignments[0:5]]
@@ -180,7 +180,7 @@ class TestAssignmentAsync:
         assignment_list3 = [assignment.id async for assignment in assignments[-5:]]
         assert len(assignment_list3) == 5
 
-    @pytest.mark.asyncio
+    @pytest.mark.anyio
     async def test_iterate_assignments(self):
         assignments = Assignment.objects.filter(assignee="US Well Services")
         assignment_list = [assignment.id async for assignment in assignments]

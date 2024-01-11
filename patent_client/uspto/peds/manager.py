@@ -1,22 +1,21 @@
 import datetime
 import logging
+import typing as tp
 from collections.abc import Sequence
 from pathlib import Path
 from tempfile import TemporaryDirectory
-from typing import AsyncIterator
-from typing import TYPE_CHECKING
 
 from dateutil.parser import parse as dt_parse
 from pypdf import PdfMerger
 
-from .api import PatentExaminationDataSystemApi
+from .model import Document
+from .model import PedsPage
+from .model import USApplication
 from .query import QueryFields
-from patent_client.util.asyncio_util import run_sync
+from patent_client._async.uspto.peds import PatentExaminationDataSystemApi as PatentExaminationDataSystemAsyncApi
+from patent_client._sync.uspto.peds import PatentExaminationDataSystemApi as PatentExaminationDataSystemSyncApi
 from patent_client.util.manager import Manager
 from patent_client.util.request_util import get_start_and_row_count
-
-if TYPE_CHECKING:
-    from .model import USApplication, Document
 
 logger = logging.getLogger(__name__)
 
@@ -48,16 +47,33 @@ def datetime_to_solr(date: datetime.datetime) -> str:
 class USApplicationManager(Manager["USApplication"]):
     default_filter = "appl_id"
 
-    async def alen(self):
-        api = PatentExaminationDataSystemApi()
-        max_length = (await api.create_query(**self.get_query_params())).num_found
+    def len(self):
+        data = PatentExaminationDataSystemSyncApi.create_query(**self.get_query_params())
+        max_length = PedsPage.model_validate(data).num_found
         return min(max_length, self.config.limit) if self.config.limit else max_length
 
-    async def _aget_results(self) -> AsyncIterator["USApplication"]:
+    async def alen(self):
+        data = await PatentExaminationDataSystemAsyncApi.create_query(**self.get_query_params())
+        max_length = PedsPage.model_validate(data).num_found
+        return min(max_length, self.config.limit) if self.config.limit else max_length
+
+    def _get_results(self) -> tp.AsyncIterator["USApplication"]:
         query_params = self.get_query_params()
-        api = PatentExaminationDataSystemApi()
         for start, rows in get_start_and_row_count(self.config.limit, self.config.offset, page_size=20):
-            page = await api.create_query(**{**query_params, "start": start, "rows": rows})
+            data = PatentExaminationDataSystemSyncApi.create_query(**{**query_params, "start": start, "rows": rows})
+            page = PedsPage.model_validate(data)
+            for app in page.applications:
+                yield app
+            if len(page.applications) < rows:
+                break
+
+    async def _aget_results(self) -> tp.AsyncIterator["USApplication"]:
+        query_params = self.get_query_params()
+        for start, rows in get_start_and_row_count(self.config.limit, self.config.offset, page_size=20):
+            data = await PatentExaminationDataSystemAsyncApi.create_query(
+                **{**query_params, "start": start, "rows": rows}
+            )
+            page = PedsPage.model_validate(data)
             for app in page.applications:
                 yield app
             if len(page.applications) < rows:
@@ -154,10 +170,10 @@ class USApplicationManager(Manager["USApplication"]):
         return QueryFields.field_names()
 
     async def ais_online(self):
-        return await PatentExaminationDataSystemApi.is_online()
+        return await PatentExaminationDataSystemAsyncApi.is_online()
 
     def is_online(self):
-        return run_sync(self.ais_online())
+        return PatentExaminationDataSystemSyncApi.is_online()
 
 
 class DocumentManager(Manager["Document"]):
@@ -166,21 +182,54 @@ class DocumentManager(Manager["Document"]):
     async def alen(self):
         return len([i async for i in self])
 
-    async def _aget_results(self) -> AsyncIterator["Document"]:
-        api = PatentExaminationDataSystemApi()
-        docs = await api.get_documents(self.config.filter["appl_id"])
+    def len(self):
+        return len([i for i in self])
+
+    async def _aget_results(self) -> tp.AsyncIterator["Document"]:
+        docs = await PatentExaminationDataSystemAsyncApi.get_documents(self.config.filter["appl_id"])
         for doc in docs:
-            yield doc
+            yield Document.model_validate(doc)
 
-    def download(self, docs, path="."):
-        run_sync(self.adownload(docs, path))
+    def _get_results(self) -> tp.AsyncIterator["Document"]:
+        docs = PatentExaminationDataSystemSyncApi.get_documents(self.config.filter["appl_id"])
+        for doc in docs:
+            yield Document.model_validate(doc)
 
-    async def adownload(self, docs, path="."):
+    def download(self, docs: list[Document], path=tp.Optional[tp.Union[str, Path]]):
+        path = Path(path) if path else Path.cwd()
         if str(path)[-4:].lower() == ".pdf":
             # If we've been given a specific filename, use it
-            out_file = Path(path)
+            out_file = path
         else:
-            out_file = Path(path) / "package.pdf"
+            out_file = path / "package.pdf"
+
+        files = list()
+        try:
+            with TemporaryDirectory() as tmpdir:
+                for doc in docs:
+                    if doc.access_level_category == "PUBLIC":
+                        files.append((doc.download(tmpdir), doc))
+
+                out_pdf = PdfMerger()
+                page = 0
+                for f, doc in files:
+                    bookmark = f"{doc.mail_room_date} - {doc.document_code} - {doc.document_description}"
+                    out_pdf.append(str(f), outline_item=bookmark, import_outline=False)
+                    page += doc.page_count
+
+                out_pdf.write(str(out_file))
+        except (PermissionError, NotADirectoryError):
+            # This is needed due to a bug in Windows that prevents cleanup of the tmpdir
+            pass
+        return out_file
+
+    async def adownload(self, docs: list[Document], path=tp.Optional[tp.Union[str, Path]]):
+        path = Path(path) if path else Path.cwd()
+        if str(path)[-4:].lower() == ".pdf":
+            # If we've been given a specific filename, use it
+            out_file = path
+        else:
+            out_file = path / "package.pdf"
 
         files = list()
         try:
@@ -192,8 +241,8 @@ class DocumentManager(Manager["Document"]):
                 out_pdf = PdfMerger()
                 page = 0
                 for f, doc in files:
-                    bookmark = f"{doc.mail_room_date} - {doc.code} - {doc.description}"
-                    out_pdf.append(str(f), bookmark=bookmark, import_bookmarks=False)
+                    bookmark = f"{doc.mail_room_date} - {doc.document_code} - {doc.document_description}"
+                    out_pdf.append(str(f), outline_item=bookmark, import_outline=False)
                     page += doc.page_count
 
                 out_pdf.write(str(out_file))

@@ -9,7 +9,8 @@ from .shared import ApplicationNumber
 from .shared import DocumentStructure
 from .shared import HtmlString
 from .shared import OptionalList
-from patent_client.util.asyncio_util import run_sync
+from patent_client._async.uspto.public_search import PublicSearchApi as PublicSearchAsyncApi
+from patent_client._sync.uspto.public_search import PublicSearchApi as PublicSearchSyncApi
 from patent_client.util.claims.model import Claim
 from patent_client.util.pydantic_util import BaseModel
 from patent_client.util.pydantic_util import Date
@@ -200,13 +201,15 @@ class PublicSearchDocument(BaseModel):
             us_reference=self.publication_number
         )
 
-    def download_images(self, path="."):
-        return run_sync(self.adownload_images(path))
+    def download_images(self, path=None):
+        return PublicSearchSyncApi.download_images(
+            self.guid, self.image_location, self.type, self.document_structure.page_count, path
+        )
 
-    async def adownload_images(self, path="."):
-        from ..manager import public_search_api
-
-        return await public_search_api.download_image(self, path)
+    async def adownload_images(self, path=None):
+        return await PublicSearchAsyncApi.download_images(
+            self.guid, self.image_location, self.type, self.document_structure.page_count, path
+        )
 
     @property
     def application(self):

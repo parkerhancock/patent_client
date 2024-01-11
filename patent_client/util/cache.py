@@ -1,5 +1,4 @@
 import datetime
-import functools
 import inspect
 import pickle
 from collections import defaultdict
@@ -61,6 +60,10 @@ class FileCache:
             key = self._get_key(func, args, kwargs)
             path = (self.cache_dir / key).with_suffix(".pkl")
             if path.exists():
+                print("Cache hit!")
+            else:
+                print("Cache miss!")
+            if path.exists():
                 if (
                     datetime.datetime.now() - datetime.datetime.fromtimestamp(path.stat().st_mtime)
                 ).total_seconds() < self.ttl:
@@ -83,12 +86,11 @@ class FileCache:
             pickle.dump(dict(self.statistics), f)
 
     def _get_key(self, func, args, kwargs):
-        module = func.__module__
-        qualname = func.__qualname__
-        key = f"{module}.{qualname}"
-        key += str(args)
-        key += str(kwargs)
-        return functools.reduce(lambda x, y: blake2b((x + y).encode(), digest_size=32).hexdigest(), key)
+        key = str(func.__module__) + str(func.__qualname__) + str(args) + str(kwargs)
+        hash = blake2b(key.encode(), digest_size=32).hexdigest()
+        print("Key Material:", key)
+        print("Hash:", hash)
+        return hash
 
     def disable(self):
         """Disable the cache."""

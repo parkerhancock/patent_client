@@ -232,32 +232,30 @@ class TestDocuments:
         backref_app = doc.application
         assert app.appl_id == backref_app.appl_id
 
-    @pytest.mark.skip("Downloading currently doesn't work")
     def test_can_download_document(self, tmp_path):
         app = USApplication.objects.get(patent_number=10000000)
         doc = app.documents.to_list()[-1]
         result = doc.download(path=tmp_path)
-        assert "14643719 - 2015-03-10 - IDS" in str(result)
-        assert result.exists()
-        assert len(list(tmp_path.glob("*.pdf"))) == 1
-
-    @pytest.mark.skip("Downloading currently doesn't work")
-    def test_can_download_document_without_appl_id(self, tmp_path):
-        app = USApplication.objects.get(patent_number=10000000)
-        doc = app.documents.to_list()[-1]
-        result = doc.download(path=tmp_path, include_appl_id=False)
-        assert "2015-03-10 - IDS" in str(result)
+        assert "2015-03-09 - IDS" in str(result)
         assert "14643719" not in str(result)
         assert result.exists()
         assert len(list(tmp_path.glob("*.pdf"))) == 1
 
-    @pytest.mark.skip("Downloading currently doesn't work")
+    def test_can_download_document_with_appl_id(self, tmp_path):
+        app = USApplication.objects.get(patent_number=10000000)
+        doc = app.documents.to_list()[-1]
+        result = doc.download(path=tmp_path, include_appl_id=True)
+        assert "2015-03-09 - IDS" in str(result)
+        assert "14643719" in str(result)
+        assert result.exists()
+        assert len(list(tmp_path.glob("*.pdf"))) == 1
+
     def test_multiple_document_download(self, tmp_path):
         app = USApplication.objects.get(patent_number=10000000)
         docs = app.documents.to_list()[-2:]
         result = app.documents.download(docs, path=tmp_path)
         reader = PdfReader(str(result))
-        assert reader.numPages == 8
+        assert len(reader.pages) == 8
 
 
 class TestPatentExaminationDataAsync:
@@ -456,13 +454,13 @@ class TestPatentExaminationDataAsync:
 
 
 class TestDocumentsAsync:
-    @pytest.mark.vcr
+    @pytest.mark.anyio
     async def test_can_get_document_listing(self):
         app = await USApplication.objects.aget(patent_number=10000000)
         docs = app.documents
         assert len(docs) > 50
 
-    @pytest.mark.vcr
+    @pytest.mark.anyio
     async def test_can_get_application_from_document(self):
         app = await USApplication.objects.aget(patent_number=10000000)
         docs = app.documents
@@ -470,32 +468,32 @@ class TestDocumentsAsync:
         backref_app = doc.application
         assert app.appl_id == backref_app.appl_id
 
-    @pytest.mark.skip("Downloading currently doesn't work")
-    @pytest.mark.vcr
+    @pytest.mark.anyio
     async def test_can_download_document(self, tmp_path):
-        app = USApplication.objects.get(patent_number=10000000)
+        app = await USApplication.objects.aget(patent_number=10000000)
         doc = app.documents.to_list()[-1]
-        result = doc.download(path=tmp_path)
-        assert "14643719 - 2015-03-10 - IDS" in str(result)
-        assert result.exists()
-        assert len(list(tmp_path.glob("*.pdf"))) == 1
-
-    @pytest.mark.skip("Downloading currently doesn't work")
-    @pytest.mark.vcr
-    async def test_can_download_document_without_appl_id(self, tmp_path):
-        app = USApplication.objects.get(patent_number=10000000)
-        doc = app.documents.to_list()[-1]
-        result = doc.download(path=tmp_path, include_appl_id=False)
-        assert "2015-03-10 - IDS" in str(result)
+        result = await doc.adownload(path=tmp_path)
+        assert "2015-03-09 - IDS" in str(result)
         assert "14643719" not in str(result)
         assert result.exists()
         assert len(list(tmp_path.glob("*.pdf"))) == 1
 
-    @pytest.mark.skip("Downloading currently doesn't work")
-    @pytest.mark.vcr
+    @pytest.mark.skip("Network Error")
+    @pytest.mark.anyio
+    async def test_can_download_document_with_appl_id(self, tmp_path):
+        app = await USApplication.objects.aget(patent_number=10000000)
+        doc = app.documents.to_list()[-1]
+        result = await doc.adownload(path=tmp_path, include_appl_id=True)
+        assert "2015-03-09 - IDS" in str(result)
+        assert "14643719" in str(result)
+        assert result.exists()
+        assert len(list(tmp_path.glob("*.pdf"))) == 1
+
+    @pytest.mark.skip("Network Error")
+    @pytest.mark.anyio
     async def test_multiple_document_download(self, tmp_path):
-        app = USApplication.objects.get(patent_number=10000000)
+        app = await USApplication.objects.aget(patent_number=10000000)
         docs = app.documents.to_list()[-2:]
-        result = app.documents.download(docs, path=tmp_path)
+        result = await app.documents.adownload(docs, path=tmp_path)
         reader = PdfReader(str(result))
-        assert reader.numPages == 8
+        assert len(reader.pages) == 8

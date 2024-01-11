@@ -20,7 +20,7 @@ def force_list(obj):
     return obj
 
 
-class PublicSearchAsyncApi:
+class PublicSearchApi:
     http_client = PatentClientAsyncHttpClient(
         headers={
             "X-Requested-With": "XMLHttpRequest",

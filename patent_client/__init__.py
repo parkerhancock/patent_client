@@ -45,6 +45,8 @@ logger.addHandler(handler)
 
 logger.info(f"Starting Patent Client with log level {SETTINGS.log_level}")
 
+from .util import lxml_util  # noqa
+
 from .util.cache import FileCache
 
 function_cache = FileCache(CACHE_DIR, ttl=60 * 60 * 24 * 3)

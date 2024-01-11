@@ -1,3 +1,5 @@
+import re
+
 import pytest
 
 from patent_client import function_cache
@@ -19,3 +21,16 @@ def cache(request):
     else:
         function_cache.disable()
     yield
+
+
+bracket_re = re.compile(r"\[(.*?)\]")
+
+
+@pytest.fixture(scope="module")
+def vcr_config():
+    return {
+        "filter_headers": [("Authorization", "REDACTED")],
+        "record_mode": "new_episodes",
+        "record_on_exception": False,
+        "path_transformer": lambda path: bracket_re.sub(r"", path) + ".yaml",
+    }

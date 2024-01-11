@@ -2,13 +2,11 @@ import calendar
 import datetime
 import typing as tp
 
-from .api import BulkDataApi
-from patent_client.util.asyncio_util import run_async_iterator
-from patent_client.util.asyncio_util import run_sync
+from .model import File
+from .model import Product
+from patent_client._async.uspto.bulk_data import BulkDataApi as BulkDataAsyncApi
+from patent_client._sync.uspto.bulk_data import BulkDataApi as BulkDataSyncApi
 from patent_client.util.manager import Manager
-
-if tp.TYPE_CHECKING:
-    from .model import File, Product
 
 
 def date_ranges(start_date: datetime.date, end_date: datetime.date):
@@ -32,35 +30,52 @@ def date_ranges(start_date: datetime.date, end_date: datetime.date):
 class ProductManager(Manager):
     def filter_by_latest(self) -> tp.Iterator["Product"]:
         """Returns all products with Latest Files"""
-        for item in run_async_iterator(self.afilter_by_latest()):
-            yield item
+        result = BulkDataSyncApi.get_latest()
+        for product in result:
+            yield Product.model_validate(product)
 
     async def afilter_by_latest(self) -> tp.AsyncIterator["Product"]:
         """Returns all products with Latest Files"""
-        result = await BulkDataApi.get_latest()
+        result = await BulkDataAsyncApi.get_latest()
         for product in result:
-            yield product
+            yield Product.model_validate(product)
 
     def get_by_short_name(self, short_name) -> "Product":
-        return run_sync(self.aget_by_short_name(short_name))
+        data = BulkDataSyncApi.get_by_short_name(short_name)
+        return Product.model_validate(data)
 
     async def aget_by_short_name(self, short_name) -> "Product":
-        return await BulkDataApi.get_by_short_name(short_name)
+        data = await BulkDataAsyncApi.get_by_short_name(short_name)
+        return Product.model_validate(data)
 
     def filter_by_name(self, short_name) -> tp.Iterator["Product"]:
-        for item in run_async_iterator(self.afilter_by_name(short_name)):
-            yield item
+        result = BulkDataSyncApi.get_by_name(short_name)
+        for product in result:
+            yield Product.model_validate(product)
 
     async def afilter_by_name(self, short_name) -> tp.AsyncIterator["Product"]:
-        result = await BulkDataApi.get_by_name(short_name)
+        result = await BulkDataAsyncApi.get_by_name(short_name)
         for product in result:
-            yield product
+            yield Product.model_validate(product)
 
 
 class FileManager(Manager):
     def filter_by_short_name(self, short_name, from_date=None, to_date=None) -> tp.Iterator["File"]:
-        for item in run_async_iterator(self.afilter_by_short_name(short_name, from_date, to_date)):
-            yield item
+        if from_date is not None:
+            from_date = from_date if isinstance(from_date, datetime.date) else datetime.date.fromisoformat(from_date)
+        if to_date is not None:
+            to_date = to_date if isinstance(to_date, datetime.date) else datetime.date.fromisoformat(to_date)
+        if from_date is None or to_date is None:
+            data = BulkDataSyncApi.get_by_short_name(short_name)
+            product = Product.model_validate(data)
+            from_date = from_date or product.from_date
+            to_date = to_date or product.to_date
+        for start_date, end_date in date_ranges(from_date, to_date):
+            chunk = BulkDataSyncApi.get_by_short_name(short_name, from_date=start_date, to_date=end_date)
+            prod = Product.model_validate(chunk)
+            if prod.files:
+                for file in prod.files:
+                    yield file
 
     async def afilter_by_short_name(self, short_name, from_date=None, to_date=None) -> tp.AsyncIterator["File"]:
         if from_date is not None:
@@ -68,11 +83,12 @@ class FileManager(Manager):
         if to_date is not None:
             to_date = to_date if isinstance(to_date, datetime.date) else datetime.date.fromisoformat(to_date)
         if from_date is None or to_date is None:
-            product = await BulkDataApi.get_by_short_name(short_name)
+            product = await BulkDataAsyncApi.get_by_short_name(short_name)
             from_date = from_date or product.from_date
             to_date = to_date or product.to_date
         for start_date, end_date in date_ranges(from_date, to_date):
-            chunk = await BulkDataApi.get_by_short_name(short_name, from_date=start_date, to_date=end_date)
-            if chunk.files:
-                for file in chunk.files:
+            chunk = await BulkDataAsyncApi.get_by_short_name(short_name, from_date=start_date, to_date=end_date)
+            prod = Product.model_validate(chunk)
+            if prod.files:
+                for file in prod.files:
                     yield file

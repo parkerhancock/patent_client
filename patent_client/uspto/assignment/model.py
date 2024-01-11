@@ -13,16 +13,15 @@ from pydantic import field_validator
 from pydantic.alias_generators import to_camel
 from typing_extensions import Annotated
 
-from patent_client.util.asyncio_util import run_sync
+from patent_client._async.uspto.assignment import AssignmentApi as AssignmentAsyncApi
+from patent_client._sync.uspto.assignment import AssignmentApi as AssignmentSyncApi
 from patent_client.util.pydantic_util import BaseModel
 from patent_client.util.related import get_model
 
 if TYPE_CHECKING:
     from patent_client.uspto.peds.model import USApplication
-    from patent_client.uspto.public_search.model import Patent, PublishedApplication
     from .manager import AssignmentManager
 
-from .session import session
 
 UsptoDate = Annotated[datetime.date, BeforeValidator(lambda x: datetime.datetime.strptime(x, "%Y%m%d").date())]
 YNBool = Annotated[bool, BeforeValidator(lambda x: x == "Y")]
@@ -100,19 +99,19 @@ class Property(AbstractAssignmentModel):
         warnings.warn(f"Unable to find application for {self}")
         return None
 
-    @property
-    def patent(self) -> "Patent":
-        """The related US Patent, if any"""
-        return get_model("patent_client.uspto.public_search.model.Patent").objects.get(publication_number=self.pat_num)
+    # @property
+    # def patent(self) -> "Patent":
+    #    """The related US Patent, if any"""
+    #    return get_model("patent_client.uspto.public_search.model.Patent").objects.get(publication_number=self.pat_num)
 
-    @property
-    def publication(
-        self,
-    ) -> "PublishedApplication":
-        """The related US Publication, if any"""
-        return get_model("patent_client.uspto.peds.fulltext.patent.model.PublishedApplication").objects.get(
-            publication_number=self.publ_num
-        )
+    # @property
+    # def publication(
+    #    self,
+    # ) -> "PublishedApplication":
+    #    """The related US Publication, if any"""
+    #    return get_model("patent_client.uspto.peds.fulltext.patent.model.PublishedApplication").objects.get(
+    #        publication_number=self.publ_num
+    #    )
 
 
 class Correspondent(AbstractAssignmentModel):
@@ -156,11 +155,11 @@ class Assignment(AbstractAssignmentModel["AssignmentManager"]):
 
     def download(self, path: Optional[str | Path] = None):
         """downloads the PDF associated with the assignment to the current working directory"""
-        return run_sync(self.adownload(path=path))
+        return AssignmentSyncApi.download_pdf(*self.reel_frame, path=path)
 
     async def adownload(self, path: Optional[str | Path] = None):
         """asynchronously downloads the PDF associated with the assignment to the current working directory"""
-        return await session.download(self.image_url, path=path)
+        return await AssignmentAsyncApi.download_pdf(*self.reel_frame, path=path)
 
 
 class AssignmentPage(AbstractAssignmentModel):

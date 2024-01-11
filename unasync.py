@@ -110,6 +110,19 @@ def unasync_dir(in_dir, out_dir, check_only=False):
 def main():
     check_only = "--check" in sys.argv
     unasync_dir("patent_client/_async", "patent_client/_sync", check_only=check_only)
+    base_dir = Path(__file__).parent / "patent_client"
+    for dirpath, dirnames, filenames in os.walk(base_dir):
+        dirpath = Path(dirpath)
+        for filename in filenames:
+            if filename in ["async_api.py", "async_api_test.py"]:
+                out_filename = filename.replace("async", "sync")
+                in_path = dirpath / filename
+                out_path = dirpath / out_filename
+                print(in_path, "->", out_path)
+                if check_only:
+                    unasync_file_check(in_path, out_path)
+                else:
+                    unasync_file(in_path, out_path)
 
     if len(USED_SUBS) != len(SUBS):
         unused_subs = [SUBS[i] for i in range(len(SUBS)) if i not in USED_SUBS]

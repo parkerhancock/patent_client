@@ -94,7 +94,9 @@ class TestPatents:
 
     def test_can_get_forward_references(self):
         pat = Patent.objects.get(6103599)
+        assert pat.publication_number == "6103599"
         forward_refs = pat.forward_citations
+        assert forward_refs._query == '"6103599".URPN.'
         assert len(forward_refs) >= 100
 
     def test_classifications_with_foreign_priority_data(self):
@@ -114,7 +116,6 @@ class TestPatents:
         assert obj.publication_number == "7658211"
         assert obj.patent_title == "Tennis ball recharging apparatus method"
 
-    @pytest.mark.skip("This test is too slow")
     @pytest.mark.no_vcr
     def test_can_get_images(self, tmp_path):
         pat = Patent.objects.get("6103599")
@@ -318,8 +319,6 @@ class TestPatentsAsync:
         assert obj.publication_number == "7658211"
         assert obj.patent_title == "Tennis ball recharging apparatus method"
 
-    @pytest.mark.skip("This test is too slow")
-    @pytest.mark.no_vcr
     @pytest.mark.asyncio
     async def test_can_get_images(self, tmp_path):
         pat = await Patent.objects.aget("6103599")
@@ -377,7 +376,6 @@ class TestPublishedApplicationFullTextAsync:
         obj = await PublishedApplication.objects.aget("20170260839")
         assert obj.claims[0].text[:39] == "1. A method of well ranging comprising:"
 
-    @pytest.mark.skip("This test is too slow")
     @pytest.mark.asyncio
     async def test_can_get_images(self, tmp_path):
         pat = await PublishedApplication.objects.aget("20090150362")
