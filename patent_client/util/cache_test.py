@@ -12,7 +12,7 @@ def test_function(tmp_path):
 
     assert test_func(1) == 1
     assert test_func(1) == 1
-    assert cache.statistics["3767363ac75d2e946883d7e76315073ab124dce5d77dabe9a7e359ffa0b1de12"] == 1
+    assert cache.statistics["2a5394dcfdf8c471772a9f5f81360a6e5c58140f2709c319a416bd22d05407e7"] == 1
 
 
 @pytest.mark.anyio
@@ -25,7 +25,7 @@ async def test_async_function(tmp_path):
 
     assert await test_func(1) == 1
     assert await test_func(1) == 1
-    assert cache.statistics["7cbc9be0cf97359f481efaac01b7b3cb0073d7116a7ea7e5b32adab7eecdd738"] == 1
+    assert cache.statistics["1ca93912fc0db523d3837c4e900198a45bf080fc5ae9fd53c7f6b22cd1d026e4"] == 1
 
 
 def test_dsiable_cache(tmp_path):
@@ -38,4 +38,4 @@ def test_dsiable_cache(tmp_path):
     assert test_func(1) == 1
     cache.disable()
     assert test_func(1) == 1
-    assert cache.statistics["3767363ac75d2e946883d7e76315073ab124dce5d77dabe9a7e359ffa0b1de12"] == 0
+    assert len(cache.statistics) == 0

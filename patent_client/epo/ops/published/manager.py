@@ -1,11 +1,13 @@
 import math
 
-from .api import PublishedAsyncApi
 from .cql import generate_query
 from .model.biblio import BiblioResult
 from .model.fulltext import Claims
 from .model.fulltext import Description
 from .model.images import ImageDocument
+from .model.search import Search
+from patent_client._async.epo.published import PublishedApi as PublishedAsyncApi
+from patent_client._sync.epo.published import PublishedApi as PublishedSyncApi
 from patent_client.util.manager import Manager
 
 
@@ -33,12 +35,60 @@ class SearchManager(Manager["BiblioResult"]):
     result_size = 100
     primary_key = "publication"
 
+    def _get_search_results_range(self, start=1, end=100):
+        if "cql_query" in self.config.filter:
+            query = self.config.filter["cql_query"]
+        else:
+            query = generate_query(**self.config.filter)
+        data = PublishedSyncApi.search.search(query, start, end)
+        return Search.model_validate(data)
+
+    def _get_results(self):
+        for start, end in get_ranges(self.config.limit, self.config.offset, self.result_size):
+            page = self._get_search_results_range(start, end)
+            for result in page.results:
+                yield result
+            if len(page.results) < self.result_size:
+                break
+
+    def get(self, number, doc_type="publication", format="docdb") -> BiblioResult:
+        data = PublishedSyncApi.biblio.get_biblio(number, doc_type, format)
+        result = BiblioResult.model_validate(data)
+        if len(result.documents) > 1:
+            raise Exception("More than one result found! Try another query")
+        return result.documents[0]
+
+    def len(self) -> int:
+        page = self._get_search_results_range(1, 100)
+        offset = self.config.offset or 0
+        limit = self.config.limit or page.num_results - offset
+        num_results = page.num_results
+        num_results -= offset
+        num_results = min(limit, num_results)
+        return num_results
+
     async def _aget_search_results_range(self, start=1, end=100):
         if "cql_query" in self.config.filter:
             query = self.config.filter["cql_query"]
         else:
             query = generate_query(**self.config.filter)
-        return await PublishedAsyncApi.search.search(query, start, end)
+        data = await PublishedAsyncApi.search.search(query, start, end)
+        return Search.model_validate(data)
+
+    async def _aget_results(self):
+        for start, end in get_ranges(self.config.limit, self.config.offset, self.result_size):
+            page = await self._aget_search_results_range(start, end)
+            for result in page.results:
+                yield result
+            if len(page.results) < self.result_size:
+                break
+
+    async def aget(self, number, doc_type="publication", format="docdb") -> BiblioResult:
+        data = await PublishedAsyncApi.biblio.get_biblio(number, doc_type, format)
+        result = BiblioResult.model_validate(data)
+        if len(result.documents) > 1:
+            raise Exception("More than one result found! Try another query")
+        return result.documents[0]
 
     async def alen(self) -> int:
         page = await self._aget_search_results_range(1, 100)
@@ -49,43 +99,51 @@ class SearchManager(Manager["BiblioResult"]):
         num_results = min(limit, num_results)
         return num_results
 
-    async def _aget_results(self):
-
-        for start, end in get_ranges(self.config.limit, self.config.offset, self.result_size):
-            page = await self._aget_search_results_range(start, end)
-            for result in page.results:
-                yield result
-            if len(page.results) < self.result_size:
-                break
-
-    async def aget(self, number, doc_type="publication", format="docdb") -> BiblioResult:
-        result = await PublishedAsyncApi.biblio.get_biblio(number, doc_type, format)
-        if len(result.documents) > 1:
-            raise Exception("More than one result found! Try another query")
-        return result.documents[0]
-
 
 class BiblioManager(Manager):
+    def get(self, doc_number) -> "BiblioResult":
+        data = PublishedSyncApi.biblio.get_biblio(doc_number)
+        result = BiblioResult.model_validate(data)
+        if len(result.documents) > 1:
+            raise ValueError(f"More than one result found for {doc_number}!")
+        return result.documents[0]
+
     async def aget(self, doc_number) -> "BiblioResult":
-        result = await PublishedAsyncApi.biblio.get_biblio(doc_number)
+        data = await PublishedAsyncApi.biblio.get_biblio(doc_number)
+        result = BiblioResult.model_validate(data)
         if len(result.documents) > 1:
             raise ValueError(f"More than one result found for {doc_number}!")
         return result.documents[0]
 
 
 class ClaimsManager(Manager):
+    def get(self, doc_number) -> "Claims":
+        data = PublishedSyncApi.fulltext.get_claims(doc_number)
+        return Claims.model_validate(data)
+
     async def aget(self, doc_number) -> "Claims":
-        return await PublishedAsyncApi.fulltext.get_claims(doc_number)
+        data = await PublishedAsyncApi.fulltext.get_claims(doc_number)
+        return Claims.model_validate(data)
 
 
 class DescriptionManager(Manager):
+    def get(self, doc_number) -> Description:
+        data = PublishedSyncApi.fulltext.get_description(doc_number)
+        return Description.model_validate(data)
+
     async def aget(self, doc_number) -> Description:
-        return await PublishedAsyncApi.fulltext.get_description(doc_number)
+        data = await PublishedAsyncApi.fulltext.get_description(doc_number)
+        return Description.model_validate(data)
 
 
 class ImagesManager(Manager):
+    def get(self, doc_number) -> ImageDocument:
+        data = PublishedAsyncApi.images.get_images(doc_number)
+        return ImageDocument.model_validate(data)
+
     async def aget(self, doc_number) -> ImageDocument:
-        return await PublishedAsyncApi.images.get_images(doc_number)
+        data = await PublishedAsyncApi.images.get_images(doc_number)
+        return ImageDocument.model_validate(data)
 
 
 class InpadocManager(SearchManager):

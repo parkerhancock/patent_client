@@ -2,7 +2,7 @@ from pathlib import Path
 
 import pytest
 
-from .published import PublishedAsyncApi
+from .published import PublishedApi
 
 fixture_dir = Path(__file__).parent / "fixtures"
 
@@ -10,7 +10,7 @@ fixture_dir = Path(__file__).parent / "fixtures"
 class TestPublishedBiblioApi:
     @pytest.mark.anyio
     async def test_doc_example_biblio(self):
-        result = await PublishedAsyncApi.biblio.get_biblio("EP1000000.A1", format="epodoc")
+        result = await PublishedApi.biblio.get_biblio("EP1000000.A1", format="epodoc")
         doc = result.find(".//{*}exchange-document")
         assert doc.attrib["country"] == "EP"
         assert doc.attrib["doc-number"] == "1000000"
@@ -19,7 +19,7 @@ class TestPublishedBiblioApi:
 
     @pytest.mark.anyio
     async def test_doc_example_full_cycle(self):
-        result = await PublishedAsyncApi.biblio.get_full_cycle("EP1000000.A1", format="epodoc")
+        result = await PublishedApi.biblio.get_full_cycle("EP1000000.A1", format="epodoc")
         docs = result.findall(".//{*}exchange-document")
         assert docs[0].attrib["country"] == "EP"
         assert docs[0].attrib["doc-number"] == "1000000"
@@ -31,7 +31,7 @@ class TestPublishedBiblioApi:
 
     @pytest.mark.anyio
     async def test_doc_example_abstract(self):
-        result = await PublishedAsyncApi.biblio.get_abstract("EP1000000.A1", format="epodoc")
+        result = await PublishedApi.biblio.get_abstract("EP1000000.A1", format="epodoc")
         doc = result.find(".//{*}exchange-document")
         assert doc.attrib["country"] == "EP"
         assert doc.attrib["doc-number"] == "1000000"
@@ -42,7 +42,7 @@ class TestPublishedBiblioApi:
 class TestSearchApi:
     @pytest.mark.anyio
     async def test_search(self):
-        result = await PublishedAsyncApi.search.search("ti=plastic")
+        result = await PublishedApi.search.search("ti=plastic")
         result_set = result.find(".//{*}biblio-search")
         assert result_set.attrib["total-result-count"] == "10000"
         query = result_set.find(".//{*}query")
@@ -54,7 +54,7 @@ class TestSearchApi:
 class TestFullTextApi:
     @pytest.mark.anyio
     async def test_description(self):
-        result = await PublishedAsyncApi.fulltext.get_description("EP1000000.A1", format="epodoc")
+        result = await PublishedApi.fulltext.get_description("EP1000000.A1", format="epodoc")
         doc = result.find(".//{*}fulltext-document")
         doc_id = doc.find(".//{*}doc-number")
         assert doc_id.text == "1000000"
@@ -63,7 +63,7 @@ class TestFullTextApi:
 
     @pytest.mark.anyio
     async def test_claims(self):
-        result = await PublishedAsyncApi.fulltext.get_claims("EP1000000.A1", format="epodoc")
+        result = await PublishedApi.fulltext.get_claims("EP1000000.A1", format="epodoc")
         doc = result.find(".//{*}fulltext-document")
         doc_id = doc.find(".//{*}doc-number")
         assert doc_id.text == "1000000"
@@ -74,20 +74,20 @@ class TestFullTextApi:
 class TestImagesApi:
     @pytest.mark.anyio
     async def test_get_images(self):
-        result = await PublishedAsyncApi.images.get_images("EP1000000.A1", format="epodoc")
+        result = await PublishedApi.images.get_images("EP1000000.A1", format="epodoc")
         doc = result.find('.//{*}document-instance[@desc="FullDocument"]')
         assert doc is not None
         assert doc.attrib["number-of-pages"] == "12"
 
     @pytest.mark.anyio
     async def test_get_page_image(self, tmp_path):
-        result = await PublishedAsyncApi.images.get_page_image("EP", "1000000", "A1", "FullDocument", 1, path=tmp_path)
+        result = await PublishedApi.images.get_page_image("EP", "1000000", "A1", "FullDocument", 1, path=tmp_path)
         assert result.exists()
         assert result.stat().st_size > 0
 
     @pytest.mark.anyio
     async def test_get_page_image_from_link(self, tmp_path):
-        result = await PublishedAsyncApi.images.get_page_image_from_link(
+        result = await PublishedApi.images.get_page_image_from_link(
             "published-data/images/EP/1000000/PA/firstpage", 1, "png", path=tmp_path
         )
         assert result.exists()

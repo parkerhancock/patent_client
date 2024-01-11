@@ -1,6 +1,6 @@
 import pytest
 
-from .family import FamilyAsyncApi
+from .family import FamilyApi
 
 NS = {
     "http://ops.epo.org": None,
@@ -12,6 +12,6 @@ NS = {
 
 @pytest.mark.asyncio
 async def test_api():
-    result = await FamilyAsyncApi.get_family("EP1000000A1")
+    result = await FamilyApi.get_family("EP1000000A1")
     count = int(result.find(".//{http://ops.epo.org}patent-family").attrib["total-result-count"])
     assert count >= 6

@@ -8,7 +8,7 @@ from .auth import ops_auth
 from patent_client import function_cache
 
 
-class FamilyAsyncApi:
+class FamilyApi:
     http_client = PatentClientHttpClient(auth=ops_auth)
 
     @classmethod

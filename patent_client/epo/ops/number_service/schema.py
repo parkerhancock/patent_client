@@ -26,7 +26,7 @@ def get_messages(text):
     return [error_dir[k] for k in text.split() if k != "SUCCESS"]
 
 
-class NumberServiceResultSchema(Schema):
+class NumberServiceSchema(Schema):
     input_doc = DocumentIdSchema(".//ops:input")
     output_doc = DocumentIdSchema(".//ops:output")
     service_version = f.Str('.//ops:meta[@name="version"]/@value')

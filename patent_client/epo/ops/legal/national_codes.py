@@ -8,10 +8,9 @@ import lxml.etree as ET
 from openpyxl import load_workbook
 
 from patent_client import BASE_DIR
-from patent_client._async.http_client import PatentClientSession
-from patent_client.util.asyncio_util import run_sync
+from patent_client._sync.http_client import PatentClientHttpClient
 
-session = PatentClientSession()
+http_client = PatentClientHttpClient()
 
 legal_code_dir = BASE_DIR / "epo"
 legal_code_dir.mkdir(exist_ok=True, parents=True)
@@ -59,7 +58,7 @@ def has_current_spreadsheet():
 
 def get_spreadsheet_from_epo_website() -> tuple[datetime.date, str]:
     url = "https://www.epo.org/searching-for-patents/data/coverage/weekly.html"
-    response = run_sync(session.get(url))
+    response = http_client.get(url)
     response.raise_for_status()
     tree = ET.HTML(response.text)
     date_string = tree.xpath(".//tr/td[contains(text(), 'Legal event codes')]/../td[4]")[0].text.strip()
@@ -76,7 +75,7 @@ def get_spreadsheet() -> tuple[datetime.date, Path]:
     if out_path.exists():
         logger.info(f"File already downloaded! Current as of {date.isoformat()}")
         return out_path
-    out_path = session.download(excel_url, path=out_path)
+    out_path = http_client.download(excel_url, path=out_path)
     logger.info(f"Downloaded new live code file for date {date.isoformat()}")
     return out_path
 

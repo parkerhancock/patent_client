@@ -5,9 +5,10 @@ from .number_service import NumberServiceApi
 
 
 def test_number_service():
-    result = NumberServiceApi.get_number("US14123456")
-    assert result.number == "14123456"
-    assert result.country == "US"
-    assert result.kind_code == ""
-    assert result.display() == "US 14/123,456"
-    assert str(result) == "US14123456"
+    result = NumberServiceApi.convert_number("US14123456")
+    assert result.find(".//{*}input//{*}doc-number").text == "14123456"
+    assert result.find(".//{*}input//{*}country").text == "US"
+    assert result.find(".//{*}input//{*}document-id").attrib["document-id-type"] == "original"
+    assert result.find(".//{*}output//{*}doc-number").text == "14123456"
+    assert result.find(".//{*}output//{*}country").text == "US"
+    assert result.find(".//{*}output//{*}document-id").attrib["document-id-type"] == "docdb"

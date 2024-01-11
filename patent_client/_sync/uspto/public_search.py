@@ -134,6 +134,7 @@ class PublicSearchApi:
         return response.text
 
     @classmethod
+    @function_cache
     def download_images(
         cls, guid: str, image_location: str, source: str, page_count: int, path: tp.Optional[tp.Union[str, Path]] = None
     ) -> Path:
@@ -146,8 +147,8 @@ class PublicSearchApi:
             cls._get_session()
         try:
             print_job_id = cls._request_save(guid, image_location, source, page_count)
-        except httpx.HTTPStatusError:
-            cls.get_session()
+        except (httpx.HTTPStatusError, UsptoException):
+            cls._get_session()
             print_job_id = cls._request_save(guid, image_location, source, page_count)
         while True:
             response = cls.http_client.post(

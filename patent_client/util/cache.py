@@ -60,10 +60,6 @@ class FileCache:
             key = self._get_key(func, args, kwargs)
             path = (self.cache_dir / key).with_suffix(".pkl")
             if path.exists():
-                print("Cache hit!")
-            else:
-                print("Cache miss!")
-            if path.exists():
                 if (
                     datetime.datetime.now() - datetime.datetime.fromtimestamp(path.stat().st_mtime)
                 ).total_seconds() < self.ttl:
@@ -88,8 +84,6 @@ class FileCache:
     def _get_key(self, func, args, kwargs):
         key = str(func.__module__) + str(func.__qualname__) + str(args) + str(kwargs)
         hash = blake2b(key.encode(), digest_size=32).hexdigest()
-        print("Key Material:", key)
-        print("Hash:", hash)
         return hash
 
     def disable(self):

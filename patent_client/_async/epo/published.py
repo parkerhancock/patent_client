@@ -12,7 +12,7 @@ from patent_client import function_cache
 logger = logging.getLogger(__name__)
 
 
-class PublishedBiblioAsyncApi:
+class PublishedBiblioApi:
     http_client = PatentClientAsyncHttpClient(auth=ops_auth)
 
     @classmethod
@@ -76,7 +76,7 @@ class PublishedBiblioAsyncApi:
         return await cls.get_constituents(number, doc_type, format, constituents=("full-cycle",))
 
 
-class PublishedFulltextAsyncApi:
+class PublishedFulltextApi:
     http_client = PatentClientAsyncHttpClient(auth=ops_auth)
     fulltext_jurisdictions = "EP, WO, AT, BE, BG, CA, CH, CY, CZ, DK, EE, ES, FR, GB, GR, HR, IE, IT, LT, LU, MC, MD, ME, NO, PL, PT, RO, RS, SE, SK".split(
         ", "
@@ -118,7 +118,7 @@ class PublishedFulltextAsyncApi:
         return await cls.get_fulltext_result(number, doc_type="publication", format="docdb", inquiry="claims")
 
 
-class PublishedSearchAsyncApi:
+class PublishedSearchApi:
     http_client = PatentClientAsyncHttpClient(auth=ops_auth)
 
     @classmethod
@@ -131,7 +131,7 @@ class PublishedSearchAsyncApi:
         return ET.fromstring(response.content)
 
 
-class PublishedImagesAsyncApi:
+class PublishedImagesApi:
     http_client = PatentClientAsyncHttpClient(auth=ops_auth)
 
     @classmethod
@@ -193,8 +193,8 @@ class PublishedImagesAsyncApi:
         )
 
 
-class PublishedAsyncApi:
-    biblio = PublishedBiblioAsyncApi
-    fulltext = PublishedFulltextAsyncApi
-    search = PublishedSearchAsyncApi
-    images = PublishedImagesAsyncApi
+class PublishedApi:
+    biblio = PublishedBiblioApi
+    fulltext = PublishedFulltextApi
+    search = PublishedSearchApi
+    images = PublishedImagesApi
