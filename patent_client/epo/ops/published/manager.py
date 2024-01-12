@@ -5,6 +5,7 @@ from .model.biblio import BiblioResult
 from .model.fulltext import Claims
 from .model.fulltext import Description
 from .model.images import ImageDocument
+from .model.images import Images
 from .model.search import Search
 from patent_client._async.epo.published import PublishedApi as PublishedAsyncApi
 from patent_client._sync.epo.published import PublishedApi as PublishedSyncApi
@@ -138,12 +139,12 @@ class DescriptionManager(Manager):
 
 class ImagesManager(Manager):
     def get(self, doc_number) -> ImageDocument:
-        data = PublishedAsyncApi.images.get_images(doc_number)
-        return ImageDocument.model_validate(data)
+        data = PublishedSyncApi.images.get_images(doc_number)
+        return Images.model_validate(data)
 
     async def aget(self, doc_number) -> ImageDocument:
         data = await PublishedAsyncApi.images.get_images(doc_number)
-        return ImageDocument.model_validate(data)
+        return Images.model_validate(data)
 
 
 class InpadocManager(SearchManager):

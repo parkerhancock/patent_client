@@ -6,7 +6,7 @@ from pathlib import Path
 from tempfile import TemporaryDirectory
 
 from dateutil.parser import parse as dt_parse
-from pypdf import PdfMerger
+from pypdf import PdfWriter
 
 from .model import Document
 from .model import PedsPage
@@ -210,7 +210,7 @@ class DocumentManager(Manager["Document"]):
                     if doc.access_level_category == "PUBLIC":
                         files.append((doc.download(tmpdir), doc))
 
-                out_pdf = PdfMerger()
+                out_pdf = PdfWriter()
                 page = 0
                 for f, doc in files:
                     bookmark = f"{doc.mail_room_date} - {doc.document_code} - {doc.document_description}"

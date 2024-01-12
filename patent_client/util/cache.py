@@ -6,6 +6,10 @@ from hashlib import blake2b
 from pathlib import Path
 
 
+class CacheError(Exception):
+    pass
+
+
 class FileCache:
     """A file-based function cache that can be used as a decorator.
     Uses the full path of a function and passed arguments as a cache key
@@ -43,15 +47,27 @@ class FileCache:
                 ).total_seconds() < self.ttl:
                     try:
                         with open(path, "rb") as f:
-                            result = pickle.load(f)
+                            cache_obj = pickle.load(f)
                             self.statistics[key] += 1
-                            return result
-                    except EOFError:
+                            if (
+                                cache_obj["func"] != str(func.__module__) + str(func.__qualname__)
+                                or cache_obj["args"] != args
+                                or cache_obj["kwargs"] != kwargs
+                            ):
+                                raise CacheError("Function signature changed")
+                            return cache_obj["value"]
+                    except (EOFError, CacheError):
                         path.unlink()
 
             value = func(*args, **kwargs)
             with open(path, "wb") as f:
-                pickle.dump(value, f)
+                cache_obj = {
+                    "func": str(func.__module__) + str(func.__qualname__),
+                    "args": args,
+                    "kwargs": kwargs,
+                    "value": value,
+                }
+                pickle.dump(cache_obj, f)
             return value
 
         async def async_wrapper(*args, **kwargs):
@@ -65,14 +81,26 @@ class FileCache:
                 ).total_seconds() < self.ttl:
                     try:
                         with open(path, "rb") as f:
-                            result = pickle.load(f)
+                            cache_obj = pickle.load(f)
                             self.statistics[key] += 1
-                            return result
-                    except EOFError:
+                            if (
+                                cache_obj["func"] != str(func.__module__) + str(func.__qualname__)
+                                or cache_obj["args"] != args
+                                or cache_obj["kwargs"] != kwargs
+                            ):
+                                raise CacheError("Function signature changed")
+                            return cache_obj["value"]
+                    except (EOFError, CacheError):
                         path.unlink()
             value = await func(*args, **kwargs)
             with open(path, "wb") as f:
-                pickle.dump(value, f)
+                cache_obj = {
+                    "func": str(func.__module__) + str(func.__qualname__),
+                    "args": args,
+                    "kwargs": kwargs,
+                    "value": value,
+                }
+                pickle.dump(cache_obj, f)
             return value
 
         return async_wrapper if inspect.iscoroutinefunction(func) else sync_wrapper
