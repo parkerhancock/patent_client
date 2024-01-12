@@ -2152,4 +2152,147 @@ interactions:
       - chunked
     http_version: HTTP/1.1
     status_code: 200
+- request:
+    body: '-1'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '2'
+      content-type:
+      - application/json
+      host:
+      - ppubs.uspto.gov
+      user-agent:
+      - Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/114.0.0.0 Safari/537.36
+      x-requested-with:
+      - XMLHttpRequest
+    method: POST
+    uri: https://ppubs.uspto.gov/dirsearch-public/users/me/session
+  response:
+    content: '{"userSessionId":24370139,"ipAddress":null,"displayName":"anonymous","deleteIn":false,"userCase":{"caseId":24370308,"userId":24370139,"caseName":"Untitled
+      Case","applicationNumber":null},"userPreferences":{},"hostURLs":{"image_server_host":"https://pasr-img.pvt.uspto.gov"},"versions":[{"product":"API","releaseNumber":"2.1.0.3","date":"10.04.2023
+      @ 21:20:10 UTC","commitId":"6d029659","collectionName":""},{"product":"SOLR","releaseNumber":"7.6.0","date":"5-4-0","commitId":"","collectionName":"us_patent_grant"}],"documentsLimitInQuery":1000,"sessionTimeOutTime":1800}'
+    headers:
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Date:
+      - Fri, 12 Jan 2024 20:54:02 GMT
+      Server-Timing:
+      - intid;desc=b483133e2e0c6787
+      Transfer-Encoding:
+      - chunked
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: '{"start": 0, "pageCount": 500, "sort": "date_publ desc", "docFamilyFiltering":
+      "familyIdFiltering", "searchType": 1, "familyIdEnglishOnly": true, "familyIdFirstPreferred":
+      "US-PGPUB", "familyIdSecondPreferred": "USPAT", "familyIdThirdPreferred": "FPRS",
+      "showDocPerFamilyPref": "showEnglish", "queryId": 0, "tagDocSearch": false,
+      "query": {"caseId": 24370308, "hl_snippets": "2", "op": "OR", "q": "\"8832265\".PN.",
+      "queryName": "\"8832265\".PN.", "highlights": "1", "qt": "brs", "spellCheck":
+      false, "viewName": "tile", "plurals": true, "britishEquivalents": true, "databaseFilters":
+      [{"databaseName": "USPAT", "countryCodes": []}], "searchType": 1, "ignorePersist":
+      true, "userEnteredQuery": "\"8832265\".PN."}}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '713'
+      content-type:
+      - application/json
+      host:
+      - ppubs.uspto.gov
+      user-agent:
+      - Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/114.0.0.0 Safari/537.36
+      x-requested-with:
+      - XMLHttpRequest
+    method: POST
+    uri: https://ppubs.uspto.gov/dirsearch-public/searches/searchWithBeFamily
+  response:
+    content: '{"numFound":1,"perPage":500,"page":0,"totalPages":0,"hlSnippets":0,"sort":null,"query":{"id":null,"caseId":24370308,"numResults":1,"ignorePersist":true,"fq":null,"databaseFilters":[{"databaseName":"USPAT","countryCodes":[]}],"q":"\"8832265\".PN.","queryName":"\"8832265\".PN.","userEnteredQuery":"\"8832265\".PN.","viewName":"tile","op":"OR","highlights":"1","plurals":true,"britishEquivalents":true,"searchType":1,"excludeResultsAfter":null,"dateCreated":null,"deleteIn":false,"expand":true,"expandSort":"group_sort_date
+      asc, id desc ","expandRows":"100","expandTrackDocScores":true,"expandTrackMaxScore":true,"termGraph":null,"hl":false,"fl":null,"originalQuery":"\"8832265\".PN.","error":null,"terms":["\"8832265\""],"facets":[],"pNumber":null,"hl_fl":null},"duration":54,"highlightingTime":0,"cursorMarker":"AoJwgLftq8gCNzQ3ODkxOTg3IVVTLVVTLTA4ODMyMjY1","totalResults":1,"numberOfFamilies":1,"error":null,"patents":[{"guid":"US-8832265-B2","publicationReferenceDocumentNumber":"8832265","compositeId":"47891987!US-US-08832265","publicationReferenceDocumentNumber1":"08832265","datePublishedKwicHits":null,"datePublished":"2014-09-09T00:00:00Z","inventionTitle":"Automated
+      analysis system for modeling online business behavior and detecting outliers","type":"USPAT","mainClassificationCode":"709/224","applicantName":["Kozine;
+      Mikhail Borisovich","Wenig; Robert I.","Powell; Travis Spence"],"assigneeName":["International
+      Business Machines Corporation"],"uspcFullClassificationFlattened":"709/219;719/318","ipcCodeFlattened":"G06F15/173","cpcInventiveFlattened":"G06F11/3447;G06F11/34","cpcAdditionalFlattened":"G06F11/3466;G06Q10/0639;G06F2201/875;G06F11/3438;G06F2201/86","applicationFilingDate":["2012-05-01T00:00:00Z"],"applicationFilingDateKwicHits":null,"relatedApplFilingDate":null,"primaryExaminer":"Vu;
+      Viet","assistantExaminer":null,"applicationNumber":"13/461168","frontPageStart":1,"frontPageEnd":2,"drawingsStart":3,"drawingsEnd":14,"specificationStart":15,"specificationEnd":21,"claimsStart":21,"claimsEnd":22,"abstractStart":1,"abstractEnd":1,"bibStart":1,"bibEnd":2,"certCorrectionStart":0,"certCorrectionEnd":0,"certReexaminationStart":0,"certReexaminationEnd":0,"supplementalStart":0,"supplementalEnd":0,"ptabStart":0,"ptabEnd":0,"amendStart":0,"amendEnd":0,"searchReportStart":0,"searchReportEnd":0,"pageCount":22,"pageCountDisplay":"22","previouslyViewed":false,"unused":false,"imageLocation":"uspat/US/08/832/265","imageFileName":"00000001.tif","cpcCodes":null,"queryId":null,"tags":null,"inventorsShort":"Kozine;
+      Mikhail Borisovich et al.","familyIdentifierCur":47891987,"familyIdentifierCurStr":null,"languageIndicator":"EN","databaseName":"USPT","dwImageDoctypeList":null,"dwImageLocList":null,"dwPageCountList":null,"dwImageDocidList":null,"patentFamilyMembers":null,"patentFamilyCountry":null,"patentFamilySerialNumber":null,"documentIdWithDashesDw":null,"pfPublDate":null,"pfPublDateKwicHits":null,"priorityClaimsDate":null,"priorityClaimsDateKwicHits":null,"pfApplicationSerialNumber":null,"pfApplicationDescriptor":null,"pfLanguage":null,"pfApplicationDate":null,"pfApplicationDateKwicHits":null,"clippedUri":null,"source":null,"documentId":"US
+      8832265 B2","derwentAccessionNumber":null,"documentSize":78162,"score":14.107237,"governmentInterest":null,"kindCode":["B2"],"urpn":["6898597","7620523","7734607","2003/0163365","2003/0195395","2004/0103051","2005/0165736","2008/0005793","2008/0288306","2010/0031156","2010/0082301","2010/0332475","2011/0078004","2011/0320880","2012/0036256","2013/0342538"],"urpnCode":["6898597","7620523","7734607","2003/0163365","2003/0195395","2004/0103051","2005/0165736","2008/0005793","2008/0288306","2010/0031156","2010/0082301","2010/0332475","2011/0078004","2011/0320880","2012/0036256","2013/0342538"],"descriptionStart":15,"descriptionEnd":21,"publicationReferenceDocumentNumberOne":"08832265"}],"qtime":37}'
+    headers:
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Date:
+      - Fri, 12 Jan 2024 20:54:03 GMT
+      Server-Timing:
+      - intid;desc=187c72bb40eb2ae7
+      Transfer-Encoding:
+      - chunked
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: '{"start": 0, "pageCount": 1, "sort": "date_publ desc", "docFamilyFiltering":
+      "familyIdFiltering", "searchType": 1, "familyIdEnglishOnly": true, "familyIdFirstPreferred":
+      "US-PGPUB", "familyIdSecondPreferred": "USPAT", "familyIdThirdPreferred": "FPRS",
+      "showDocPerFamilyPref": "showEnglish", "queryId": 0, "tagDocSearch": false,
+      "query": {"caseId": 24351519, "hl_snippets": "2", "op": "OR", "q": "\"8832265\".PN.",
+      "queryName": "\"8832265\".PN.", "highlights": "1", "qt": "brs", "spellCheck":
+      false, "viewName": "tile", "plurals": true, "britishEquivalents": true, "databaseFilters":
+      [{"databaseName": "USPAT", "countryCodes": []}], "searchType": 1, "ignorePersist":
+      true, "userEnteredQuery": "\"8832265\".PN."}}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '711'
+      content-type:
+      - application/json
+      host:
+      - ppubs.uspto.gov
+      user-agent:
+      - Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/114.0.0.0 Safari/537.36
+      x-requested-with:
+      - XMLHttpRequest
+    method: POST
+    uri: https://ppubs.uspto.gov/dirsearch-public/searches/searchWithBeFamily
+  response:
+    content: '{"numFound":1,"perPage":1,"page":0,"totalPages":0,"hlSnippets":0,"sort":null,"query":{"id":null,"caseId":24351519,"numResults":1,"ignorePersist":true,"fq":null,"databaseFilters":[{"databaseName":"USPAT","countryCodes":[]}],"q":"\"8832265\".PN.","queryName":"\"8832265\".PN.","userEnteredQuery":"\"8832265\".PN.","viewName":"tile","op":"OR","highlights":"1","plurals":true,"britishEquivalents":true,"searchType":1,"excludeResultsAfter":null,"dateCreated":null,"deleteIn":false,"expand":true,"expandSort":"group_sort_date
+      asc, id desc ","expandRows":"100","expandTrackDocScores":true,"expandTrackMaxScore":true,"termGraph":null,"hl":false,"fl":null,"originalQuery":"\"8832265\".PN.","error":null,"terms":["\"8832265\""],"facets":[],"pNumber":null,"hl_fl":null},"duration":32,"highlightingTime":0,"cursorMarker":"AoJwgLftq8gCNzQ3ODkxOTg3IVVTLVVTLTA4ODMyMjY1","totalResults":1,"numberOfFamilies":1,"error":null,"patents":[{"guid":"US-8832265-B2","publicationReferenceDocumentNumber":"8832265","compositeId":"47891987!US-US-08832265","publicationReferenceDocumentNumber1":"08832265","datePublishedKwicHits":null,"datePublished":"2014-09-09T00:00:00Z","inventionTitle":"Automated
+      analysis system for modeling online business behavior and detecting outliers","type":"USPAT","mainClassificationCode":"709/224","applicantName":["Kozine;
+      Mikhail Borisovich","Wenig; Robert I.","Powell; Travis Spence"],"assigneeName":["International
+      Business Machines Corporation"],"uspcFullClassificationFlattened":"709/219;719/318","ipcCodeFlattened":"G06F15/173","cpcInventiveFlattened":"G06F11/3447;G06F11/34","cpcAdditionalFlattened":"G06F11/3466;G06Q10/0639;G06F2201/875;G06F11/3438;G06F2201/86","applicationFilingDate":["2012-05-01T00:00:00Z"],"applicationFilingDateKwicHits":null,"relatedApplFilingDate":null,"primaryExaminer":"Vu;
+      Viet","assistantExaminer":null,"applicationNumber":"13/461168","frontPageStart":1,"frontPageEnd":2,"drawingsStart":3,"drawingsEnd":14,"specificationStart":15,"specificationEnd":21,"claimsStart":21,"claimsEnd":22,"abstractStart":1,"abstractEnd":1,"bibStart":1,"bibEnd":2,"certCorrectionStart":0,"certCorrectionEnd":0,"certReexaminationStart":0,"certReexaminationEnd":0,"supplementalStart":0,"supplementalEnd":0,"ptabStart":0,"ptabEnd":0,"amendStart":0,"amendEnd":0,"searchReportStart":0,"searchReportEnd":0,"pageCount":22,"pageCountDisplay":"22","previouslyViewed":false,"unused":false,"imageLocation":"uspat/US/08/832/265","imageFileName":"00000001.tif","cpcCodes":null,"queryId":null,"tags":null,"inventorsShort":"Kozine;
+      Mikhail Borisovich et al.","familyIdentifierCur":47891987,"familyIdentifierCurStr":null,"languageIndicator":"EN","databaseName":"USPT","dwImageDoctypeList":null,"dwImageLocList":null,"dwPageCountList":null,"dwImageDocidList":null,"patentFamilyMembers":null,"patentFamilyCountry":null,"patentFamilySerialNumber":null,"documentIdWithDashesDw":null,"pfPublDate":null,"pfPublDateKwicHits":null,"priorityClaimsDate":null,"priorityClaimsDateKwicHits":null,"pfApplicationSerialNumber":null,"pfApplicationDescriptor":null,"pfLanguage":null,"pfApplicationDate":null,"pfApplicationDateKwicHits":null,"clippedUri":null,"source":null,"documentId":"US
+      8832265 B2","derwentAccessionNumber":null,"documentSize":78162,"score":14.107237,"governmentInterest":null,"kindCode":["B2"],"urpn":["6898597","7620523","7734607","2003/0163365","2003/0195395","2004/0103051","2005/0165736","2008/0005793","2008/0288306","2010/0031156","2010/0082301","2010/0332475","2011/0078004","2011/0320880","2012/0036256","2013/0342538"],"urpnCode":["6898597","7620523","7734607","2003/0163365","2003/0195395","2004/0103051","2005/0165736","2008/0005793","2008/0288306","2010/0031156","2010/0082301","2010/0332475","2011/0078004","2011/0320880","2012/0036256","2013/0342538"],"descriptionStart":15,"descriptionEnd":21,"publicationReferenceDocumentNumberOne":"08832265"}],"qtime":14}'
+    headers:
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Date:
+      - Fri, 12 Jan 2024 20:58:32 GMT
+      Server-Timing:
+      - intid;desc=33b590d83c2625ef
+      Transfer-Encoding:
+      - chunked
+    http_version: HTTP/1.1
+    status_code: 200
 version: 1
