@@ -10,7 +10,7 @@ NS = {
 }
 
 
-@pytest.mark.asyncio
+@pytest.mark.anyio
 async def test_api():
     result = await FamilyApi.get_family("EP1000000A1")
     count = int(result.find(".//{http://ops.epo.org}patent-family").attrib["total-result-count"])

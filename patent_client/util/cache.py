@@ -1,4 +1,5 @@
 import datetime
+import gzip
 import inspect
 import pickle
 from collections import defaultdict
@@ -39,14 +40,16 @@ class FileCache:
         def sync_wrapper(*args, **kwargs):
             if self.enabled is False:
                 return func(*args, **kwargs)
+            folder = self.cache_dir / Path(func.__module__.replace(".", "/"))
+            folder.mkdir(parents=True, exist_ok=True)
             key = self._get_key(func, args, kwargs)
-            path = (self.cache_dir / key).with_suffix(".pkl")
+            path = folder / key
             if path.exists():
                 if (
                     datetime.datetime.now() - datetime.datetime.fromtimestamp(path.stat().st_mtime)
                 ).total_seconds() < self.ttl:
                     try:
-                        with open(path, "rb") as f:
+                        with gzip.GzipFile(path, "rb") as f:
                             cache_obj = pickle.load(f)
                             self.statistics[key] += 1
                             if (
@@ -60,7 +63,10 @@ class FileCache:
                         path.unlink()
 
             value = func(*args, **kwargs)
-            with open(path, "wb") as f:
+            with gzip.GzipFile(
+                path,
+                "wb",
+            ) as f:
                 cache_obj = {
                     "func": str(func.__module__) + str(func.__qualname__),
                     "args": args,
@@ -73,14 +79,16 @@ class FileCache:
         async def async_wrapper(*args, **kwargs):
             if self.enabled is False:
                 return await func(*args, **kwargs)
+            folder = self.cache_dir / Path(func.__module__.replace(".", "/"))
+            folder.mkdir(parents=True, exist_ok=True)
             key = self._get_key(func, args, kwargs)
-            path = (self.cache_dir / key).with_suffix(".pkl")
+            path = folder / key
             if path.exists():
                 if (
                     datetime.datetime.now() - datetime.datetime.fromtimestamp(path.stat().st_mtime)
                 ).total_seconds() < self.ttl:
                     try:
-                        with open(path, "rb") as f:
+                        with gzip.GzipFile(path, "rb") as f:
                             cache_obj = pickle.load(f)
                             self.statistics[key] += 1
                             if (
@@ -93,7 +101,7 @@ class FileCache:
                     except (EOFError, CacheError):
                         path.unlink()
             value = await func(*args, **kwargs)
-            with open(path, "wb") as f:
+            with gzip.GzipFile(path, "wb") as f:
                 cache_obj = {
                     "func": str(func.__module__) + str(func.__qualname__),
                     "args": args,
@@ -110,9 +118,9 @@ class FileCache:
             pickle.dump(dict(self.statistics), f)
 
     def _get_key(self, func, args, kwargs):
-        key = str(func.__module__) + str(func.__qualname__) + str(args) + str(kwargs)
+        key = str(args) + str(kwargs)
         hash = blake2b(key.encode(), digest_size=32).hexdigest()
-        return hash
+        return f"{func.__qualname__}_{hash}.pkl.gz"
 
     def disable(self):
         """Disable the cache."""

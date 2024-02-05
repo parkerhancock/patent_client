@@ -21,6 +21,7 @@ class PatentClientAsyncHttpClient(httpx.AsyncClient):
         kwargs["follow_redirects"] = kwargs.get("follow_redirects", True)
         kwargs["timeout"] = kwargs.get("timeout", 60 * 5)
         kwargs["verify"] = kwargs.get("verify", False)
+        kwargs["http2"] = kwargs.get("http2", True)
         super().__init__(**kwargs)
 
     def get_filename(self, url, path, filename, headers):
@@ -40,11 +41,6 @@ class PatentClientAsyncHttpClient(httpx.AsyncClient):
         show_progress: bool = False,
         **kwargs,
     ):
-        # Ensure we skip the cache for file downloads
-        kwargs["extensions"] = kwargs.get("extensions", dict())
-        if "force_cache" in kwargs["extensions"]:
-            raise ValueError("force_cache is not supported for file downloads")
-        kwargs["extensions"]["cache_disabled"] = True
         if isinstance(path, str):
             base_path = Path(path)
         elif path is None:

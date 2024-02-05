@@ -199,30 +199,30 @@ class TestPublishedApplicationFullText:
 
 
 class TestPatentsAsync:
-    @pytest.mark.asyncio
+    @pytest.mark.anyio
     async def test_simple_lookup(self):
         app = await PublicSearchDocument.objects.aget(patent_number="6103599")
         assert app.appl_id == "09089931"
         assert app.guid == "US-6103599-A"
         assert app.patent_title == "Planarizing technique for multilayered substrates"
 
-    @pytest.mark.asyncio
+    @pytest.mark.anyio
     async def test_tennis_patents(self):
         tennis_patents = Patent.objects.filter(title="tennis", assignee_name="wilson")
         assert await tennis_patents.alen() > 10
 
-    @pytest.mark.asyncio
+    @pytest.mark.anyio
     async def test_fetch_patent(self):
         pat = await Patent.objects.aget(6095661)
         assert pat.patent_title == "Method and apparatus for an L.E.D. flashlight"
         assert len(pat.abstract) == 1543
 
-    @pytest.mark.asyncio
+    @pytest.mark.anyio
     async def test_government_interest(self):
         pat = await Patent.objects.aget(11555621)
         assert pat.document.government_interest is not None
 
-    @pytest.mark.asyncio
+    @pytest.mark.anyio
     async def test_claims(self):
         pat_no = 6095661
         pat = await Patent.objects.aget(6095661)
@@ -242,13 +242,13 @@ class TestPatentsAsync:
             31,
         ]
 
-    @pytest.mark.asyncio
+    @pytest.mark.anyio
     async def test_us8645300(self):
         pat_no = 8645300
         pat = await Patent.objects.aget(pat_no)
         assert pat.patent_title == "System and method for intent data processing"
 
-    @pytest.mark.asyncio
+    @pytest.mark.anyio
     async def test_search_classification(self):
         query = '"B60N2/5628".CPC. AND @APD>="20210101"<=20210107'
         results = Patent.objects.filter(query=query)
@@ -256,7 +256,7 @@ class TestPatentsAsync:
         app = await results.afirst()
         assert app.publication_number == "11554698"
 
-    @pytest.mark.asyncio
+    @pytest.mark.anyio
     async def test_can_fetch_reissue_applications(self):
         pat_no = "RE43633"
         pat = await Patent.objects.aget(pat_no)
@@ -266,7 +266,7 @@ class TestPatentsAsync:
         )
         assert pat.claims[0].text[:25] == "1. .[.A system for linkin"
 
-    @pytest.mark.asyncio
+    @pytest.mark.anyio
     async def test_can_get_field_of_search(self):
         pat_no = "9140110"
         pat = await Patent.objects.aget(pat_no)
@@ -275,43 +275,43 @@ class TestPatentsAsync:
         pat = await Patent.objects.aget(pat_no)
         assert len(pat.field_of_search_us) == 7
 
-    @pytest.mark.asyncio
+    @pytest.mark.anyio
     async def test_handles_disclaimers(self):
         """Some patents have notice markers on the issue date regarding statutory disclaimers"""
         pat = await Patent.objects.aget("5439055")
         assert pat.publication_date.isoformat() == "1995-08-08"
 
-    @pytest.mark.asyncio
+    @pytest.mark.anyio
     async def test_handles_claims_for_US6460631(self):
         pat = await Patent.objects.aget(6460631)
         for claim in pat.claims:
             pass
         assert True
 
-    @pytest.mark.asyncio
+    @pytest.mark.anyio
     async def test_handles_search_without_results(self):
         query = Patent.objects.filter(query='"379/56".CCLS. AND @APD>=19700101<=19950928')
         assert await query.alen() == 0
 
-    @pytest.mark.asyncio
+    @pytest.mark.anyio
     async def test_can_get_forward_references(self):
         pat = await Patent.objects.aget(6103599)
         forward_refs = pat.forward_citations
         assert len(forward_refs) >= 100
 
-    @pytest.mark.asyncio
+    @pytest.mark.anyio
     async def test_classifications_with_foreign_priority_data(self):
         pat = await Patent.objects.aget(7752445)
         assert len(pat.us_class_issued) == 6
         assert pat.foreign_priority[0].app_number == "2004-052835"
 
-    @pytest.mark.asyncio
+    @pytest.mark.anyio
     async def test_can_get_design_patents(self):
         pat = await Patent.objects.aget("D645062")
         assert pat.patent_title == "Gripping arm"
         assert pat.appl_id == "29380046"
 
-    @pytest.mark.asyncio
+    @pytest.mark.anyio
     async def test_search_that_has_single_patent(self):
         result = Patent.objects.filter(title="tennis", issue_date="2010-01-01->2010-02-27")
         assert await result.alen() == 1
@@ -319,7 +319,7 @@ class TestPatentsAsync:
         assert obj.publication_number == "7658211"
         assert obj.patent_title == "Tennis ball recharging apparatus method"
 
-    @pytest.mark.asyncio
+    @pytest.mark.anyio
     async def test_can_get_images(self, tmp_path):
         pat = await Patent.objects.aget("6103599")
         path = await pat.adownload_images(path=tmp_path)
@@ -328,7 +328,7 @@ class TestPatentsAsync:
 
 
 class TestPublishedApplicationFullTextAsync:
-    @pytest.mark.asyncio
+    @pytest.mark.anyio
     async def test_fetch_publication(self):
         pub_no = 20_160_009_839
         pub = await PublishedApplication.objects.aget(pub_no)
@@ -337,7 +337,7 @@ class TestPublishedApplicationFullTextAsync:
         )
         assert len(pub.abstract) == 651
 
-    @pytest.mark.asyncio
+    @pytest.mark.anyio
     async def test_publication_claims(self):
         pub_no = 20_160_009_839
         pub = await PublishedApplication.objects.aget(pub_no)
@@ -353,7 +353,7 @@ class TestPublishedApplicationFullTextAsync:
         assert claim_2.number == 2
         assert claim_2.dependent
 
-    @pytest.mark.asyncio
+    @pytest.mark.anyio
     async def test_us_pub_20170370151(self):
         pub_no = 20_170_370_151
         pub = await PublishedApplication.objects.aget(pub_no)
@@ -361,7 +361,7 @@ class TestPublishedApplicationFullTextAsync:
             assert pub.claims[i].text == f"{i + 1}. (canceled)"
         assert "A system to control directional drilling in borehole drilling for" in pub.claims[6].text
 
-    @pytest.mark.asyncio
+    @pytest.mark.anyio
     async def test_search_classification(self):
         query = '"166/308.1".CCLS. AND @APD>=20150101<=20210101'
         results = PublishedApplicationBiblio.objects.filter(query=query)
@@ -371,18 +371,18 @@ class TestPublishedApplicationFullTextAsync:
             counter += 1
         assert counter == 41
 
-    @pytest.mark.asyncio
+    @pytest.mark.anyio
     async def test_nonstandard_claim_format(self):
         obj = await PublishedApplication.objects.aget("20170260839")
         assert obj.claims[0].text[:39] == "1. A method of well ranging comprising:"
 
-    @pytest.mark.asyncio
+    @pytest.mark.anyio
     async def test_can_get_images(self, tmp_path):
         pat = await PublishedApplication.objects.aget("20090150362")
         await pat.adownload_images(path=tmp_path)
         assert (tmp_path / "US-20090150362-A1.pdf").exists()
 
-    @pytest.mark.asyncio
+    @pytest.mark.anyio
     async def test_pages(self):
         pats = PatentBiblio.objects.filter(title="system").limit(525)
         old_p = None

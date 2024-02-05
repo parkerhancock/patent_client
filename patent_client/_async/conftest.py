@@ -1,26 +1,22 @@
-import re
-from pathlib import Path
+import asyncio
 
 import pytest
-from _pytest.fixtures import SubRequest
 
-bracket_re = re.compile(r"\[(.*?)\]")
-
-cassette_dir = Path(__file__).parent.parent / "cassettes"
-print(cassette_dir)
-
-
-@pytest.fixture(scope="module")
-def vcr_cassette_dir(request: SubRequest):
-    module = request.node.fspath
-    return str(cassette_dir / module.purebasename)
+"""
+@pytest.fixture
+def anyio_backend():
+    return 'asyncio'
 
 
-@pytest.fixture(scope="module")
-def vcr_config():
-    return {
-        "filter_headers": [("Authorization", "REDACTED")],
-        "record_mode": "new_episodes",
-        "record_on_exception": False,
-        "path_transformer": lambda path: bracket_re.sub(r"", path) + ".yaml",
-    }
+@pytest.fixture(scope="session")
+def event_loop(request):
+    #Redefine the event loop to support session/module-scoped fixtures;
+    #see https://github.com/pytest-dev/pytest-asyncio/issues/68
+    policy = asyncio.get_event_loop_policy()
+    loop = policy.new_event_loop()
+
+    try:
+        yield loop
+    finally:
+        loop.close()
+"""

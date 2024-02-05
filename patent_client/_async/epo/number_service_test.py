@@ -3,7 +3,7 @@ import pytest
 from .number_service import NumberServiceApi
 
 
-@pytest.mark.asyncio
+@pytest.mark.anyio
 async def test_number_service():
     result = await NumberServiceApi.convert_number("US14123456")
     assert result.find(".//{*}input//{*}doc-number").text == "14123456"

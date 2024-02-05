@@ -17,7 +17,7 @@ def test_model():
     compare_dicts(json.loads(result.model_dump_json()), expected)
 
 
-@pytest.mark.asyncio
+@pytest.mark.anyio
 async def test_async_model():
     result = await Family.objects.aget("EP1000000A1")
     expected_file = fixtures / "family_model_output.json"

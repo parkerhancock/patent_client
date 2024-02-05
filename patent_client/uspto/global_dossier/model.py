@@ -3,6 +3,7 @@ import typing as tp
 from pathlib import Path
 
 from pydantic import BeforeValidator
+from pydantic import computed_field
 from pydantic import ConfigDict
 from pydantic import Field
 from pydantic import model_validator
@@ -163,9 +164,14 @@ class DocumentList(GlobalDossierBaseModel):
     country: tp.Optional[str] = None
     message: tp.Optional[str] = None
     applicant_names: list[str] = Field(default_factory=list)
-    office_action_count: tp.Optional[int] = Field(alias="oaIndCount")
+    # office_action_count: tp.Optional[int] = Field(alias="oaIndCount")
+    # This field is occasionally incorrect, so we'll just count the office actions ourselves
     docs: list[Document] = Field(default_factory=list)
     office_action_docs: list[Document] = Field(default_factory=list)
+
+    @computed_field
+    def office_action_count(self) -> int:
+        return len(self.office_action_docs)
 
     @model_validator(mode="before")
     @classmethod

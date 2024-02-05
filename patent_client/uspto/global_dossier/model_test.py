@@ -14,7 +14,9 @@ class TestGlobalDossier:
 
     def test_us_lookup_docs(self):
         result = GlobalDossier.objects.get("16123456").applications[0].document_list
+        assert len(result.office_action_docs) >= 2
         assert result.office_action_count >= 2
+        assert len(result.office_action_docs) == result.office_action_count
 
     def test_us_download_docs(self, tmp_path):
         result = GlobalDossier.objects.get("16123456").applications[0].documents[0].download(tmp_path)

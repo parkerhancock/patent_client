@@ -2,14 +2,15 @@
 # nopycln: file
 import time
 
-import patent_client.patches  # noqa # Run patching code
+from patent_client.patches import patch_response
+from patent_client.patches import patch_ssl
+
+patch_response()
+patch_ssl()
+
 from .version import __version__  # noqa
 
 start = time.time()
-
-# import nest_asyncio
-
-# nest_asyncio.apply()
 
 from pathlib import Path
 from .settings import Settings

@@ -12,11 +12,13 @@ class UsptoException(Exception):
     pass
 
 
-def force_list(obj):
-    if not isinstance(obj, list):
+def force_list(obj: tp.Union[str, tp.Sequence[str]]) -> list[str]:
+    if isinstance(obj, str):
         return [
             obj,
         ]
+    elif isinstance(obj, tp.Sequence):
+        return list(obj)
     return obj
 
 
@@ -25,27 +27,25 @@ class PublicSearchApi:
         headers={
             "X-Requested-With": "XMLHttpRequest",
             "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36",
+            "Referer": "https://ppubs.uspto.gov/pubwebapp/",
         },
+        http2=True,
     )
     session = dict()
     case_id = None
 
     @classmethod
-    @function_cache
-    async def query(
+    def prepare_query_params(
         cls,
         query: str,
-        start: int = 0,
-        limit: int = 500,
-        sort: str = "date_publ desc",
-        default_operator: str = "OR",
-        sources: tuple[str] = ("US-PGPUB", "USPAT", "USOCR"),
-        expand_plurals: bool = True,
-        british_equivalents: bool = True,
+        start: int,
+        limit: int,
+        sort: str,
+        default_operator: str,
+        sources: tuple[str],
+        expand_plurals: bool,
+        british_equivalents: bool,
     ) -> tp.Any:
-        if cls.case_id is None:
-            await cls._get_session()
-        url = "https://ppubs.uspto.gov/dirsearch-public/searches/searchWithBeFamily"
         data = {
             "start": start,
             "pageCount": limit,
@@ -71,20 +71,43 @@ class PublicSearchApi:
                 "viewName": "tile",
                 "plurals": expand_plurals,
                 "britishEquivalents": british_equivalents,
-                "databaseFilters": [],
                 "searchType": 1,
                 "ignorePersist": True,
                 "userEnteredQuery": query,
             },
         }
-        for s in force_list(sources):
-            data["query"]["databaseFilters"].append({"databaseName": s, "countryCodes": []})
+        database_filters = [{"databaseName": s, "countryCodes": []} for s in force_list(sources)]
+        data["query"]["databaseFilters"] = database_filters
+        return data
+
+    @classmethod
+    @function_cache
+    async def query(
+        cls,
+        query: str,
+        start: int = 0,
+        limit: int = 500,
+        sort: str = "date_publ desc",
+        default_operator: str = "OR",
+        sources: tuple[str] = ("US-PGPUB", "USPAT", "USOCR"),
+        expand_plurals: bool = True,
+        british_equivalents: bool = True,
+    ) -> tp.Any:
+        if cls.case_id is None:
+            await cls._get_session()
+        url = r"https://ppubs.uspto.gov/dirsearch-public/searches/searchWithBeFamily"
+        data = cls.prepare_query_params(
+            query, start, limit, sort, default_operator, sources, expand_plurals, british_equivalents
+        )
         query_response = await cls.http_client.post(url, json=data)
         if query_response.status_code in (500, 415):  # Just need to retry
             await anyio.sleep(5)
             query_response = await cls.http_client.post(url, json=data)
-        elif query_response.status_code == 403:  # Session must be refreshed
+        elif query_response.status_code in (400, 403):  # Session must be refreshed
             await cls._get_session()
+            data = cls.prepare_query_params(
+                query, start, limit, sort, default_operator, sources, expand_plurals, british_equivalents
+            )
             query_response = await cls.http_client.post(url, json=data)
         query_response.raise_for_status()
         result = query_response.json()
@@ -131,6 +154,7 @@ class PublicSearchApi:
         return response.text
 
     @classmethod
+    @function_cache
     async def download_images(
         cls, guid: str, image_location: str, source: str, page_count: int, path: tp.Optional[tp.Union[str, Path]] = None
     ) -> Path:

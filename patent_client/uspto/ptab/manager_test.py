@@ -62,34 +62,34 @@ class TestPtabDecision:
 
 
 class TestPtabProceedingAsync:
-    @pytest.mark.asyncio
+    @pytest.mark.anyio
     async def test_get_by_proceeding_number(self):
         result = await PtabProceeding.objects.aget("IPR2016-00831")
         assert result.respondent_patent_number == "6162705"
 
-    @pytest.mark.asyncio
+    @pytest.mark.anyio
     async def test_get_by_patent_number(self):
         result = await PtabProceeding.objects.aget(patent_number="6103599")
         assert result.proceeding_number == "IPR2016-00833"
 
-    @pytest.mark.asyncio
+    @pytest.mark.anyio
     async def test_get_by_application_number(self):
         result = await PtabProceeding.objects.aget(appl_id="09089931")
         assert result.proceeding_number == "IPR2016-00833"
 
-    @pytest.mark.asyncio
+    @pytest.mark.anyio
     async def test_filter_by_party(self):
         result = PtabProceeding.objects.filter(party_name="Apple")
         assert await result.alen() >= 400
 
-    @pytest.mark.asyncio
+    @pytest.mark.anyio
     async def test_filter_with_limit(self):
         result = PtabProceeding.objects.filter(party_name="Apple").limit(26)
         assert await result.alen() == 26
         objects = await result.ato_list()
         assert len(objects) == 26
 
-    @pytest.mark.asyncio
+    @pytest.mark.anyio
     async def test_offset(self):
         result = PtabProceeding.objects.filter(party_name="Apple").limit(3)
         objects = await result.ato_list()
@@ -99,12 +99,12 @@ class TestPtabProceedingAsync:
 
 
 class TestPtabDocumentAsync:
-    @pytest.mark.asyncio
+    @pytest.mark.anyio
     async def test_filter_by_proceeding(self):
         result = PtabDocument.objects.filter(proceeding_number="IPR2016-00831")
         assert await result.alen() == 77
 
-    @pytest.mark.asyncio
+    @pytest.mark.anyio
     async def test_sort_by_document_number(self):
         result = await (
             PtabDocument.objects.filter(proceeding_number="IPR2016-00831")
@@ -117,7 +117,7 @@ class TestPtabDocumentAsync:
 
 
 class TestPtabDecisionAsync:
-    @pytest.mark.asyncio
+    @pytest.mark.anyio
     async def test_get_by_proceeding(self):
         result = await PtabDecision.objects.aget(proceeding_number="IPR2016-00831")
         assert result.identifier == "a44c5f1557b7b60d00e66604d3668ce442d53f964aa597011cc476b4"

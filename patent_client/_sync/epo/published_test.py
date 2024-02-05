@@ -3,6 +3,8 @@
 # ********************************************************************************
 from pathlib import Path
 
+import pytest
+
 from .published import PublishedApi
 
 fixture_dir = Path(__file__).parent / "fixtures"
