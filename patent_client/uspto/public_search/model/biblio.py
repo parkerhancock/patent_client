@@ -11,6 +11,8 @@ from .shared import DateTimeAsDate
 from .shared import DocumentStructure
 from .shared import HtmlString
 from .shared import OptionalList
+from patent_client._async.uspto.public_search import PublicSearchApi as PublicSearchAsyncApi
+from patent_client._sync.uspto.public_search import PublicSearchApi as PublicSearchSyncApi
 from patent_client.util.pydantic_util import BaseModel
 from patent_client.util.related import get_model
 
@@ -64,12 +66,14 @@ class PublicSearchBiblio(BaseModel):
         return get_model("patent_client.epo.ops.published.model.Inpadoc").objects.get("US" + self.publication_number)
 
     def download_images(self, path="."):
-        return run_sync(self.adownload_images(path))
+        return PublicSearchSyncApi.download_images(
+            self.guid, self.image_location, self.type, self.document_structure.page_count, path
+        )
 
     async def adownload_images(self, path="."):
-        from .manager import public_search_api
-
-        return await public_search_api.download_image(self, path)
+        return await PublicSearchAsyncApi.download_images(
+            self.guid, self.image_location, self.type, self.document_structure.page_count, path
+        )
 
 
 class PublicSearchBiblioPage(BaseModel):

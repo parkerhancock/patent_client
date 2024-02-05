@@ -11,13 +11,13 @@ interactions:
       host:
       - assignment-api.uspto.gov
       user-agent:
-      - Mozilla/5.0 Python Patent Clientbot/4.1.4 (parkerhancock@users.noreply.github.com)
+      - Mozilla/5.0 Python Patent Clientbot/4.1.10 (parkerhancock@users.noreply.github.com)
     method: GET
     uri: https://assignment-api.uspto.gov/patent/lookup?filter=ApplicationNumber&query=14190982&rows=8&start=0&sort=ExecutionDate%2Bdesc&facet=false
   response:
     content: "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<response>\n\n<lst name=\"responseHeader\">\n
       \ <bool name=\"zkConnected\">true</bool>\n  <int name=\"status\">0</int>\n  <int
-      name=\"QTime\">72</int>\n  <lst name=\"params\">\n    <str name=\"q\">*:*</str>\n
+      name=\"QTime\">94</int>\n  <lst name=\"params\">\n    <str name=\"q\">*:*</str>\n
       \   <str name=\"qt\">/apisearch</str>\n    <str name=\"start\">0</str>\n    <str
       name=\"sort\">patAssignorEarliestExDate desc</str>\n    <str name=\"fq\">applNum:14190982</str>\n
       \   <str name=\"rows\">8</str>\n    <str name=\"wt\">javabin</str>\n    <str
@@ -3480,8 +3480,8 @@ interactions:
       \     <lst name=\"counts\">\n        <int name=\"2014-01-01T00:00:00Z\">1</int>\n
       \       <int name=\"2019-01-01T00:00:00Z\">7</int>\n        <int name=\"2021-01-01T00:00:00Z\">1</int>\n
       \       <int name=\"2022-01-01T00:00:00Z\">4</int>\n      </lst>\n      <str
-      name=\"gap\">+1YEAR</str>\n      <int name=\"before\">0</int>\n      <date name=\"start\">1898-01-01T00:00:00Z</date>\n
-      \     <date name=\"end\">2024-01-01T00:00:00Z</date>\n    </lst>\n  </lst>\n
+      name=\"gap\">+1YEAR</str>\n      <int name=\"before\">0</int>\n      <date name=\"start\">1899-01-01T00:00:00Z</date>\n
+      \     <date name=\"end\">2025-01-01T00:00:00Z</date>\n    </lst>\n  </lst>\n
       \ <lst name=\"facet_intervals\"/>\n  <lst name=\"facet_heatmaps\"/>\n</lst>\n<lst
       name=\"highlighting\">\n  <lst name=\"61875-260\">\n    <arr name=\"frameNo\"/>\n
       \   <arr name=\"patAssigneeCity\"/>\n    <arr name=\"pctNum\"/>\n    <arr name=\"patAssigneePostcode\"/>\n
@@ -3561,20 +3561,24 @@ interactions:
       \   <arr name=\"id\"/>\n    <arr name=\"patAssigneeName\"/>\n    <arr name=\"issueDate\"/>\n
       \   <arr name=\"reelNo\"/>\n  </lst>\n</lst>\n</response>\n"
     headers:
-      content-type:
+      Connection:
+      - keep-alive
+      Content-Type:
       - application/xml
-      date:
-      - Mon, 11 Dec 2023 16:00:17 GMT
-      server:
+      Date:
+      - Wed, 10 Jan 2024 17:56:05 GMT
+      Server:
       - Apache-Coyote/1.1
-      strict-transport-security:
+      Strict-Transport-Security:
       - max-age=31536000;includeSubDomains
-      x-content-type-options:
+      Transfer-Encoding:
+      - chunked
+      X-Content-Type-Options:
       - nosniff
-      x-frame-options:
+      X-Frame-Options:
       - DENY
-      x-xss-protection:
+      X-XSS-Protection:
       - 1; mode=block
-    http_version: HTTP/2
+    http_version: HTTP/1.1
     status_code: 200
 version: 1

@@ -85,9 +85,8 @@ def zip_lists(data, input_keys, output_key):
     return dicts
 
 
-def convert_xml_to_json(xml_text) -> dict:
+def convert_xml_to_json(tree: ET._Element) -> dict:
     """Convert the idiosyncratic xml of the Assignment API to ordinary json"""
-    tree = ET.fromstring(xml_text)
     output = dict()
     num_found = tree.find(".//result")
     output["numFound"] = num_found.attrib["numFound"] if num_found is not None else 0

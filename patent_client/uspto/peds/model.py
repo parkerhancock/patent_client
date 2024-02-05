@@ -16,8 +16,8 @@ from pydantic.alias_generators import to_camel
 from typing_extensions import Annotated
 from typing_extensions import Self
 
-from .session import session
-from patent_client.util.asyncio_util import run_sync
+from patent_client._async.uspto.peds import PatentExaminationDataSystemApi as PatentExaminationDataSystemAsyncApi
+from patent_client._sync.uspto.peds import PatentExaminationDataSystemApi as PatentExaminationDataSystemSyncApi
 from patent_client.util.pydantic_util import BaseModel
 from patent_client.util.pydantic_util import Date
 from patent_client.util.pydantic_util import DateTime
@@ -416,19 +416,47 @@ class Document(PEDSBaseModel):
     page_count: int
     pdf_url: Optional[str] = None
 
-    def download(self, path: Optional[str | Path]) -> Path:
-        return run_sync(self.adownload(path=path))
+    def download(self, path: Optional[str | Path], include_appl_id: bool = False) -> Path:
+        path = Path(path) if path is not None else Path.cwd()
+        if include_appl_id:
+            out_path = (
+                path
+                / f"{self.application_number_text} - {self.mail_room_date.isoformat()} - {self.document_code} - {self.document_description}.pdf"
+            )
+        else:
+            out_path = (
+                path / f"{self.mail_room_date.isoformat()} - {self.document_code} - {self.document_description}.pdf"
+            )
 
-    async def adownload(self, path: Optional[str | Path]) -> Path:
         if self.pdf_url is None:
             raise ValueError("No PDF URL available")
         full_url = f"https://ped.uspto.gov/api/queries/cms/{self.pdf_url}"
-        out_path = await session.adownload(full_url, path=path)
+        out_path = PatentExaminationDataSystemSyncApi.http_client.download(full_url, "GET", path=out_path)
+        return out_path
+
+    async def adownload(self, path: Optional[str | Path], include_appl_id: bool = False) -> Path:
+        path = Path(path) if path is not None else Path.cwd()
+        if include_appl_id:
+            out_path = (
+                path
+                / f"{self.application_number_text} - {self.mail_room_date.isoformat()} - {self.document_code} - {self.document_description}.pdf"
+            )
+        else:
+            out_path = (
+                path / f"{self.mail_room_date.isoformat()} - {self.document_code} - {self.document_description}.pdf"
+            )
+
+        if self.pdf_url is None:
+            raise ValueError("No PDF URL available")
+        full_url = f"https://ped.uspto.gov/api/queries/cms/{self.pdf_url}"
+        out_path = await PatentExaminationDataSystemAsyncApi.http_client.download(full_url, "GET", path=out_path)
         return out_path
 
     @property
     def application(self) -> USApplication:
-        return run_sync(self.aapplication)
+        return get_model("patent_client.uspto.peds.model.USApplication").objects.get(
+            appl_id=self.application_number_text
+        )
 
     @property
     async def aapplication(self) -> USApplication:

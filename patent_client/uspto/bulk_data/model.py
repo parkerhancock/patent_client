@@ -4,7 +4,8 @@ from pathlib import Path
 
 from pydantic import Field
 
-from patent_client.util.asyncio_util import run_sync
+from patent_client._async.uspto.bulk_data import BulkDataApi as BulkDataAsyncApi
+from patent_client._sync.uspto.bulk_data import BulkDataApi as BulkDataSyncApi
 from patent_client.util.pydantic_util import BaseModel
 
 
@@ -20,12 +21,10 @@ class File(BaseModel):
     release_date: datetime.date = Field(alias="fileReleaseDate")
 
     async def adownload(self, path: tp.Optional[str | Path]):
-        from .session import session
-
-        return await session.adownload(self.download_url, path=path)
+        return await BulkDataAsyncApi.http_client.download(self.download_url, path=path)
 
     def download(self, path: tp.Optional[str | Path] = None):
-        return run_sync(self.adownload(path))
+        return BulkDataSyncApi.http_client.download(self.download_url, path=path)
 
 
 class Product(BaseModel):

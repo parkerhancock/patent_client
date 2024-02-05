@@ -2,6 +2,7 @@ from typing import List
 from typing import Optional
 from typing import TYPE_CHECKING
 
+import lxml.etree as ET
 from pydantic import computed_field
 from pydantic import model_validator
 from yankee.xml.schema import Schema as XmlSchema
@@ -32,7 +33,7 @@ class EpoBaseModel(BaseModel):
     @model_validator(mode="before")
     @classmethod
     def xml_convert(cls, values):
-        if isinstance(values, (str, bytes)):
+        if isinstance(values, (str, bytes, ET._Element)):
             return cls.__schema__.load(values).to_dict()
         return values
 

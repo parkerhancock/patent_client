@@ -2,7 +2,7 @@ from typing import Optional
 
 from pydantic import Field
 
-from .schema import NumberServiceResultSchema
+from .schema import NumberServiceSchema
 from patent_client.epo.ops.util import EpoBaseModel
 from patent_client.util.pydantic_util import Date
 
@@ -20,8 +20,8 @@ class DocumentId(EpoBaseModel):
         return f"{self.country}{self.number}{self.kind}"
 
 
-class NumberServiceResult(EpoBaseModel):
-    __schema__ = NumberServiceResultSchema()
+class NumberService(EpoBaseModel):
+    __schema__ = NumberServiceSchema()
     input_doc: DocumentId
     output_doc: DocumentId
     service_version: Optional[str] = None

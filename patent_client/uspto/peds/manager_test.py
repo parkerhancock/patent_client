@@ -232,36 +232,34 @@ class TestDocuments:
         backref_app = doc.application
         assert app.appl_id == backref_app.appl_id
 
-    @pytest.mark.skip("Downloading currently doesn't work")
     def test_can_download_document(self, tmp_path):
         app = USApplication.objects.get(patent_number=10000000)
         doc = app.documents.to_list()[-1]
         result = doc.download(path=tmp_path)
-        assert "14643719 - 2015-03-10 - IDS" in str(result)
-        assert result.exists()
-        assert len(list(tmp_path.glob("*.pdf"))) == 1
-
-    @pytest.mark.skip("Downloading currently doesn't work")
-    def test_can_download_document_without_appl_id(self, tmp_path):
-        app = USApplication.objects.get(patent_number=10000000)
-        doc = app.documents.to_list()[-1]
-        result = doc.download(path=tmp_path, include_appl_id=False)
-        assert "2015-03-10 - IDS" in str(result)
+        assert "2015-03-09 - IDS" in str(result)
         assert "14643719" not in str(result)
         assert result.exists()
         assert len(list(tmp_path.glob("*.pdf"))) == 1
 
-    @pytest.mark.skip("Downloading currently doesn't work")
+    def test_can_download_document_with_appl_id(self, tmp_path):
+        app = USApplication.objects.get(patent_number=10000000)
+        doc = app.documents.to_list()[-1]
+        result = doc.download(path=tmp_path, include_appl_id=True)
+        assert "2015-03-09 - IDS" in str(result)
+        assert "14643719" in str(result)
+        assert result.exists()
+        assert len(list(tmp_path.glob("*.pdf"))) == 1
+
     def test_multiple_document_download(self, tmp_path):
         app = USApplication.objects.get(patent_number=10000000)
         docs = app.documents.to_list()[-2:]
         result = app.documents.download(docs, path=tmp_path)
         reader = PdfReader(str(result))
-        assert reader.numPages == 8
+        assert len(reader.pages) == 8
 
 
 class TestPatentExaminationDataAsync:
-    @pytest.mark.asyncio
+    @pytest.mark.anyio
     async def test_get_inventors(self):
         app = await USApplication.objects.aget(12721698)
         inventors = app.inventors
@@ -270,36 +268,36 @@ class TestPatentExaminationDataAsync:
         assert inventor.name == "Thind; Deepinder Singh"
         assert inventor.address == "Mankato, MN (US)"
 
-    @pytest.mark.asyncio
+    @pytest.mark.anyio
     async def test_search_by_customer_number(self):
         result = USApplication.objects.filter(app_cust_number="70155")
         assert await result.alen() > 1
 
-    @pytest.mark.asyncio
+    @pytest.mark.anyio
     async def test_get_by_pub_number(self):
         pub_no = "US20060127129A1"
         app = await USApplication.objects.aget(app_early_pub_number=pub_no)
         assert app.patent_title == "ELECTROPHOTOGRAPHIC IMAGE FORMING APPARATUS"
 
-    @pytest.mark.asyncio
+    @pytest.mark.anyio
     async def test_get_by_pat_number(self):
         pat_no = 6095661
         app = await USApplication.objects.aget(patent_number=pat_no)
         assert app.patent_title == "METHOD AND APPARATUS FOR AN L.E.D. FLASHLIGHT"
 
-    @pytest.mark.asyncio
+    @pytest.mark.anyio
     async def test_get_by_application_number(self):
         app_no = "15145443"
         app = await USApplication.objects.aget(app_no)
         assert app.patent_title == "Suction and Discharge Lines for a Dual Hydraulic Fracturing Unit"
 
-    @pytest.mark.asyncio
+    @pytest.mark.anyio
     async def test_get_many_by_application_number(self):
         app_nos = ["14971450", "15332765", "13441334", "15332709", "14542000"]
         data = USApplication.objects.filter(*app_nos)
         assert await data.alen() == 5
 
-    @pytest.mark.asyncio
+    @pytest.mark.anyio
     async def test_search_pat_by_assignee(self):
         data = USApplication.objects.filter(first_named_applicant="LogicBlox").order_by("appl_id").limit(4)
         expected_titles = [
@@ -313,7 +311,7 @@ class TestPatentExaminationDataAsync:
         for t in expected_titles:
             assert t in app_titles
 
-    @pytest.mark.asyncio
+    @pytest.mark.anyio
     async def test_get_many_by_publication_number(self):
         nos = [
             "US20080034424A1",
@@ -325,7 +323,7 @@ class TestPatentExaminationDataAsync:
         data = USApplication.objects.filter(app_early_pub_number=nos)
         assert await data.alen() == 5
 
-    @pytest.mark.asyncio
+    @pytest.mark.anyio
     async def test_get_child_data(self):
         parent = await USApplication.objects.aget("14018930")
         child = parent.child_continuity[0]
@@ -333,7 +331,7 @@ class TestPatentExaminationDataAsync:
         assert child.relationship == "claims the benefit of"
         # assert child.child.patent_title == "LEAPFROG TREE-JOIN"
 
-    @pytest.mark.asyncio
+    @pytest.mark.anyio
     async def test_get_parent_data(self):
         child = await USApplication.objects.aget("14018930")
         parent = child.parent_continuity[0]
@@ -342,13 +340,13 @@ class TestPatentExaminationDataAsync:
         assert parent.parent_app_filing_date is not None
         # assert parent.parent.patent_title == "Leapfrog Tree-Join"
 
-    @pytest.mark.asyncio
+    @pytest.mark.anyio
     async def test_pta_history(self):
         app = await USApplication.objects.aget("14095073")
         pta_history = app.pta_pte_tran_history
         assert len(pta_history) > 10
 
-    @pytest.mark.asyncio
+    @pytest.mark.anyio
     async def test_pta_summary(self):
         app = await USApplication.objects.aget("14095073")
         expected = OrderedDict(
@@ -364,12 +362,12 @@ class TestPatentExaminationDataAsync:
         for k, v in expected.items():
             assert actual[k] == v
 
-    @pytest.mark.asyncio
+    @pytest.mark.anyio
     async def test_transactions(self):
         app = await USApplication.objects.aget("14095073")
         assert len(app.transactions) > 70
 
-    @pytest.mark.asyncio
+    @pytest.mark.anyio
     async def test_correspondent(self):
         app = await USApplication.objects.aget("14095073")
         expected_keys = [
@@ -381,7 +379,7 @@ class TestPatentExaminationDataAsync:
         for k in expected_keys:
             assert getattr(app, k, None) is not None
 
-    @pytest.mark.asyncio
+    @pytest.mark.anyio
     async def test_attorneys(self):
         app = await USApplication.objects.aget("14095073")
         assert len(app.attorneys) > 1
@@ -396,7 +394,7 @@ class TestPatentExaminationDataAsync:
         for k in expected_keys:
             assert k in actual
 
-    @pytest.mark.asyncio
+    @pytest.mark.anyio
     async def test_iterator(self):
         apps = USApplication.objects.filter(first_named_applicant="Tesla").limit(68)
         counter = 0
@@ -407,7 +405,7 @@ class TestPatentExaminationDataAsync:
             raise e
         assert len(apps) == counter
 
-    @pytest.mark.asyncio
+    @pytest.mark.anyio
     async def test_expiration_date(self):
         app = await USApplication.objects.aget("15384723")
         expected = {
@@ -437,14 +435,14 @@ class TestPatentExaminationDataAsync:
         for k in expected.keys():
             assert expected[k] == actual[k]
 
-    @pytest.mark.asyncio
+    @pytest.mark.anyio
     async def test_expiration_date_for_pct_apps(self):
         app = await USApplication.objects.aget("PCT/US2014/020588")
         with pytest.raises(Exception) as exc:
             expiration_data = app.expiration
         assert exc.match("Expiration date not supported for PCT Applications")
 
-    @pytest.mark.asyncio
+    @pytest.mark.anyio
     async def test_foreign_priority(self):
         app = await USApplication.objects.aget(patent_number=10544653)
         fp = app.foreign_priority
@@ -456,13 +454,13 @@ class TestPatentExaminationDataAsync:
 
 
 class TestDocumentsAsync:
-    @pytest.mark.vcr
+    @pytest.mark.anyio
     async def test_can_get_document_listing(self):
         app = await USApplication.objects.aget(patent_number=10000000)
         docs = app.documents
         assert len(docs) > 50
 
-    @pytest.mark.vcr
+    @pytest.mark.anyio
     async def test_can_get_application_from_document(self):
         app = await USApplication.objects.aget(patent_number=10000000)
         docs = app.documents
@@ -470,32 +468,32 @@ class TestDocumentsAsync:
         backref_app = doc.application
         assert app.appl_id == backref_app.appl_id
 
-    @pytest.mark.skip("Downloading currently doesn't work")
-    @pytest.mark.vcr
+    @pytest.mark.anyio
     async def test_can_download_document(self, tmp_path):
-        app = USApplication.objects.get(patent_number=10000000)
+        app = await USApplication.objects.aget(patent_number=10000000)
         doc = app.documents.to_list()[-1]
-        result = doc.download(path=tmp_path)
-        assert "14643719 - 2015-03-10 - IDS" in str(result)
-        assert result.exists()
-        assert len(list(tmp_path.glob("*.pdf"))) == 1
-
-    @pytest.mark.skip("Downloading currently doesn't work")
-    @pytest.mark.vcr
-    async def test_can_download_document_without_appl_id(self, tmp_path):
-        app = USApplication.objects.get(patent_number=10000000)
-        doc = app.documents.to_list()[-1]
-        result = doc.download(path=tmp_path, include_appl_id=False)
-        assert "2015-03-10 - IDS" in str(result)
+        result = await doc.adownload(path=tmp_path)
+        assert "2015-03-09 - IDS" in str(result)
         assert "14643719" not in str(result)
         assert result.exists()
         assert len(list(tmp_path.glob("*.pdf"))) == 1
 
-    @pytest.mark.skip("Downloading currently doesn't work")
-    @pytest.mark.vcr
+    @pytest.mark.skip("Network Error")
+    @pytest.mark.anyio
+    async def test_can_download_document_with_appl_id(self, tmp_path):
+        app = await USApplication.objects.aget(patent_number=10000000)
+        doc = app.documents.to_list()[-1]
+        result = await doc.adownload(path=tmp_path, include_appl_id=True)
+        assert "2015-03-09 - IDS" in str(result)
+        assert "14643719" in str(result)
+        assert result.exists()
+        assert len(list(tmp_path.glob("*.pdf"))) == 1
+
+    @pytest.mark.skip("Network Error")
+    @pytest.mark.anyio
     async def test_multiple_document_download(self, tmp_path):
-        app = USApplication.objects.get(patent_number=10000000)
+        app = await USApplication.objects.aget(patent_number=10000000)
         docs = app.documents.to_list()[-2:]
-        result = app.documents.download(docs, path=tmp_path)
+        result = await app.documents.adownload(docs, path=tmp_path)
         reader = PdfReader(str(result))
-        assert reader.numPages == 8
+        assert len(reader.pages) == 8

@@ -13,8 +13,6 @@ from typing import Union
 from typing_extensions import Self
 from yankee.data import Collection
 
-from .asyncio_util import run_async_iterator
-from .asyncio_util import run_sync
 
 if TYPE_CHECKING:
     pass
@@ -67,8 +65,7 @@ class Manager(Collection, Generic[ModelType]):
     # Manager Iteration / Slicing
 
     def __iter__(self) -> Iterator[ModelType]:
-        for item in run_async_iterator(self.__aiter__()):
-            yield item
+        return self._get_results()
 
     def __aiter__(self) -> AsyncIterator[ModelType]:
         return self._aget_results()
@@ -92,7 +89,13 @@ class Manager(Collection, Generic[ModelType]):
         # The default len function runs the iterator and counts. There may be
         # more efficient ways to do it for any given subclass, but this is the
         # basic way
-        return run_sync(self.alen())
+        return self.len()
+
+    def len(self) -> int:
+        raise NotImplementedError("len() is not implemented for this manager")
+
+    async def alen(self) -> int:
+        raise NotImplementedError("alen() is not implemented for this manager")
 
     def __eq__(self, other) -> bool:
         return bool(self.config == other.config and isinstance(self, type(other)))
@@ -143,7 +146,7 @@ class Manager(Collection, Generic[ModelType]):
 
     def first(self) -> ModelType:
         """Get the first object in the manager"""
-        return run_sync(self.afirst())
+        return next(self.limit(1).__iter__())
 
     async def aget(self, *args, **kwargs) -> ModelType:
         """If the critera results in a single record, return it, else raise an exception"""
@@ -156,7 +159,14 @@ class Manager(Collection, Generic[ModelType]):
         return await mger.afirst()
 
     def get(self, *args, **kwargs) -> ModelType:
-        return run_sync(self.aget(*args, **kwargs))
+        """If the critera results in a single record, return it, else raise an exception"""
+        mger = self.filter(*args, **kwargs)
+        length = mger.len()
+        if length > 1:
+            raise ValueError("More than one document found!")
+        if length == 0:
+            raise ValueError("No documents found!")
+        return mger.first()
 
     # Basic Manager Fetching
 

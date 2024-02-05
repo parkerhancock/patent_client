@@ -1,13 +1,16 @@
 import logging
 import re
+import typing as tp
 import warnings
 from collections.abc import Sequence
-from typing import AsyncIterator
 
 from urllib3.connectionpool import InsecureRequestWarning
 
-from .api import AssignmentApi
+from .convert import convert_xml_to_json
 from .model import Assignment
+from .model import AssignmentPage
+from patent_client._async.uspto.assignment import AssignmentApi as AssignmentAsyncApi
+from patent_client._sync.uspto.assignment import AssignmentApi as AssignmentSyncApi
 from patent_client.util.manager import Manager
 from patent_client.util.request_util import get_start_and_row_count
 
@@ -42,12 +45,22 @@ class AssignmentManager(Manager["Assignment"]):
     def allowed_filters(self):
         return list(self.fields.keys())
 
-    async def _aget_results(self) -> AsyncIterator["Assignment"]:
+    async def _aget_results(self) -> tp.AsyncIterator["Assignment"]:
         for start, rows in get_start_and_row_count(self.config.limit, self.config.offset, self.page_size):
-            response = await AssignmentApi.alookup(**{**self.get_query(), "start": start, "rows": rows})
-            for doc in response.docs:
+            tree = await AssignmentAsyncApi.lookup(**{**self.get_query(), "start": start, "rows": rows})
+            page = AssignmentPage.model_validate(convert_xml_to_json(tree))
+            for doc in page.docs:
                 yield doc
-            if len(response.docs) < rows:
+            if len(page.docs) < rows:
+                break
+
+    def _get_results(self) -> tp.Iterator["Assignment"]:
+        for start, rows in get_start_and_row_count(self.config.limit, self.config.offset, self.page_size):
+            tree = AssignmentSyncApi.lookup(**{**self.get_query(), "start": start, "rows": rows})
+            page = AssignmentPage.model_validate(convert_xml_to_json(tree))
+            for doc in page.docs:
+                yield doc
+            if len(page.docs) < rows:
                 break
 
     def get_query(self):
@@ -89,8 +102,15 @@ class AssignmentManager(Manager["Assignment"]):
         return query
 
     async def alen(self) -> int:
-        response = await AssignmentApi.alookup(**self.get_query())
-        max_len = response.num_found
+        tree = await AssignmentAsyncApi.lookup(**self.get_query())
+        page = AssignmentPage.model_validate(convert_xml_to_json(tree))
+        max_len = page.num_found
+        return min(max_len, self.config.limit) if self.config.limit else max_len
+
+    def len(self) -> int:
+        tree = AssignmentSyncApi.lookup(**self.get_query())
+        page = AssignmentPage.model_validate(convert_xml_to_json(tree))
+        max_len = page.num_found
         return min(max_len, self.config.limit) if self.config.limit else max_len
 
     @property

@@ -2,14 +2,15 @@
 # nopycln: file
 import time
 
-import patent_client.patches  # noqa # Run patching code
+from patent_client.patches import patch_response
+from patent_client.patches import patch_ssl
+
+patch_response()
+patch_ssl()
+
 from .version import __version__  # noqa
 
 start = time.time()
-
-# import nest_asyncio
-
-# nest_asyncio.apply()
 
 from pathlib import Path
 from .settings import Settings
@@ -45,6 +46,11 @@ logger.addHandler(handler)
 
 logger.info(f"Starting Patent Client with log level {SETTINGS.log_level}")
 
+from .util import lxml_util  # noqa
+
+from .util.cache import FileCache
+
+function_cache = FileCache(CACHE_DIR, ttl=60 * 60 * 24 * 3)
 
 from patent_client.epo.ops.published.model import Inpadoc  # isort:skip
 
@@ -62,6 +68,7 @@ from patent_client.uspto.global_dossier.model import (
     GlobalDossier,
     GlobalDossierApplication,
 )  # isort:skip
+
 
 from patent_client.uspto.public_search.model import (
     PublicSearchBiblio,

@@ -1,6 +1,8 @@
 import datetime
 from pathlib import Path
 
+import lxml.etree as ET
+
 from .convert import convert_xml_to_json
 from .model import Assignment
 from .model import AssignmentPage
@@ -10,7 +12,7 @@ test_dir = Path(__file__).parent / "fixtures"
 
 def test_assignment_1():
     xml_file = test_dir / "assignment_1.xml"
-    input_data = convert_xml_to_json(xml_file.read_bytes())
+    input_data = convert_xml_to_json(ET.fromstring(xml_file.read_bytes()))
     page = AssignmentPage.model_validate(input_data)
     a = page.docs[0]
     assert a.id == "18247-405"
