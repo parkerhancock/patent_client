@@ -71,18 +71,28 @@ class PublicSearchApi:
             },
         }
         for s in force_list(sources):
-            data["query"]["databaseFilters"].append({"databaseName": s, "countryCodes": []})
-        query_response = await session.post(url, json=data, extensions={"force_cache": True})
+            data["query"]["databaseFilters"].append(
+                {"databaseName": s, "countryCodes": []}
+            )
+        query_response = await session.post(
+            url, json=data, extensions={"force_cache": True}
+        )
         if query_response.status_code in (500, 415):  # Just need to retry
             await asyncio.sleep(5)
-            query_response = await session.post(url, json=data, extensions={"force_cache": True})
+            query_response = await session.post(
+                url, json=data, extensions={"force_cache": True}
+            )
         elif query_response.status_code == 403:  # Session must be refreshed
             await self.get_session()
-            query_response = await session.post(url, json=data, extensions={"force_cache": True})
+            query_response = await session.post(
+                url, json=data, extensions={"force_cache": True}
+            )
         query_response.raise_for_status()
         result = query_response.json()
         if result.get("error", None) is not None:
-            raise UsptoException(f"Error #{result['error']['errorCode']}\n{result['error']['errorMessage']}")
+            raise UsptoException(
+                f"Error #{result['error']['errorCode']}\n{result['error']['errorMessage']}"
+            )
         return PublicSearchBiblioPage.model_validate(result)
 
     async def get_document(self, bib) -> "PublicSearchDocument":
@@ -102,12 +112,17 @@ class PublicSearchApi:
         response = await session.post(
             url, json=-1, extensions={"cache_disabled": True}
         )  # json=str(random.randint(10000, 99999)))
+        if "x-access-token" in response.headers:
+            session.headers["X-Access-Token"] = response.headers["x-access-token"]
         self.session = response.json()
         self.case_id = self.session["userCase"]["caseId"]
         return self.session
 
     async def _request_save(self, obj):
-        page_keys = [f"{obj.image_location}/{i:0>8}.tif" for i in range(1, obj.document_structure.page_count + 1)]
+        page_keys = [
+            f"{obj.image_location}/{i:0>8}.tif"
+            for i in range(1, obj.document_structure.page_count + 1)
+        ]
         response = await session.post(
             "https://ppubs.uspto.gov/dirsearch-public/print/imageviewer",
             json={
@@ -149,7 +164,8 @@ class PublicSearchApi:
         with out_path.open("wb") as f:
             try:
                 request = session.build_request(
-                    "GET", f"https://ppubs.uspto.gov/dirsearch-public/print/save/{pdf_name}"
+                    "GET",
+                    f"https://ppubs.uspto.gov/dirsearch-public/print/save/{pdf_name}",
                 )
                 response = await session.send(request, stream=True)
                 response.raise_for_status()
