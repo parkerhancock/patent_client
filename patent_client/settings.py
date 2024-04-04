@@ -1,6 +1,3 @@
-import dotenv
-
-dotenv.load_dotenv()
 from pathlib import Path
 from typing import Optional
 from pydantic import Field

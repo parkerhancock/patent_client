@@ -5,8 +5,17 @@ import httpx
 
 from .model import PublicSearchBiblioPage
 from .model import PublicSearchDocument
-from .session import session
 
+import httpx
+
+session = httpx.AsyncClient(
+    headers={
+        "X-Requested-With": "XMLHttpRequest",
+        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36",
+    },
+    http2=True,
+    follow_redirects=True
+)
 
 class UsptoException(Exception):
     pass
@@ -72,21 +81,28 @@ class PublicSearchApi:
         }
         for s in force_list(sources):
             data["query"]["databaseFilters"].append({"databaseName": s, "countryCodes": []})
-        query_response = await session.post(url, json=data, extensions={"force_cache": True})
-        if query_response.status_code in (500, 415):  # Just need to retry
-            await asyncio.sleep(5)
-            query_response = await session.post(url, json=data, extensions={"force_cache": True})
-        elif query_response.status_code == 403:  # Session must be refreshed
-            await self.get_session()
-            query_response = await session.post(url, json=data, extensions={"force_cache": True})
+        counts = await self.make_request("POST", "https://ppubs.uspto.gov/dirsearch-public/searches/counts", json=data['query'])
+        counts.raise_for_status()
+        query_response = await self.make_request("POST", url, json=data)
         query_response.raise_for_status()
         result = query_response.json()
         if result.get("error", None) is not None:
             raise UsptoException(f"Error #{result['error']['errorCode']}\n{result['error']['errorMessage']}")
         return PublicSearchBiblioPage.model_validate(result)
+    
+    async def make_request(self, method, url, **kwargs):
+        response = await session.request(method, url, **kwargs)
+        if response.status_code == 403:
+            await self.get_session()
+            response = await session.request(method, url, **kwargs)
+        if response.status_code == 429:
+            wait_time = int(response.headers['x-rate-limit-retry-after-seconds']) + 1
+            await asyncio.sleep(wait_time)
+            response = await session.request(method, url, **kwargs)
+        return response
 
     async def get_document(self, bib) -> "PublicSearchDocument":
-        url = f"https://ppubs.uspto.gov/dirsearch-public/patents/{bib.guid}/highlight"
+        url = f"https://ppubs.uspto.gov/dirsearch-public/internal/patents/{bib.guid}/highlight"
         params = {
             "queryId": 1,
             "source": bib.type,
@@ -98,12 +114,18 @@ class PublicSearchApi:
         return PublicSearchDocument.model_validate(response.json())
 
     async def get_session(self):
+        session.cookies = httpx.Cookies()
+        response = await session.get("https://ppubs.uspto.gov/pubwebapp/")
         url = "https://ppubs.uspto.gov/dirsearch-public/users/me/session"
         response = await session.post(
-            url, json=-1, extensions={"cache_disabled": True}
-        )  # json=str(random.randint(10000, 99999)))
+            url, json=-1, headers={
+                "X-Access-Token": "null",
+                "referer": "https://ppubs.uspto.gov/pubwebapp/",
+                })  # json=str(random.randint(10000, 99999)))
         self.session = response.json()
         self.case_id = self.session["userCase"]["caseId"]
+        self.access_token = response.headers['X-Access-Token']
+        session.headers["X-Access-Token"] = self.access_token
         return self.session
 
     async def _request_save(self, obj):

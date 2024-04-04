@@ -11,13 +11,13 @@ interactions:
       host:
       - assignment-api.uspto.gov
       user-agent:
-      - Mozilla/5.0 Python Patent Clientbot/4.1.4 (parkerhancock@users.noreply.github.com)
+      - Mozilla/5.0 Python Patent Clientbot/4.1.10 (parkerhancock@users.noreply.github.com)
     method: GET
     uri: https://assignment-api.uspto.gov/patent/lookup?filter=PatentNumber&query=9534285&rows=8&start=0&sort=ExecutionDate%2Bdesc&facet=false
   response:
     content: "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<response>\n\n<lst name=\"responseHeader\">\n
       \ <bool name=\"zkConnected\">true</bool>\n  <int name=\"status\">0</int>\n  <int
-      name=\"QTime\">189</int>\n  <lst name=\"params\">\n    <str name=\"q\">*:*</str>\n
+      name=\"QTime\">182</int>\n  <lst name=\"params\">\n    <str name=\"q\">*:*</str>\n
       \   <str name=\"qt\">/apisearch</str>\n    <str name=\"start\">0</str>\n    <str
       name=\"sort\">patAssignorEarliestExDate desc</str>\n    <str name=\"fq\">patNum:9534285</str>\n
       \   <str name=\"rows\">8</str>\n    <str name=\"wt\">javabin</str>\n    <str
@@ -20075,7 +20075,7 @@ interactions:
       \       <int name=\"2015-01-01T00:00:00Z\">1</int>\n        <int name=\"2018-01-01T00:00:00Z\">1</int>\n
       \       <int name=\"2019-01-01T00:00:00Z\">1</int>\n        <int name=\"2022-01-01T00:00:00Z\">1</int>\n
       \     </lst>\n      <str name=\"gap\">+1YEAR</str>\n      <int name=\"before\">0</int>\n
-      \     <date name=\"start\">1898-01-01T00:00:00Z</date>\n      <date name=\"end\">2024-01-01T00:00:00Z</date>\n
+      \     <date name=\"start\">1899-01-01T00:00:00Z</date>\n      <date name=\"end\">2025-01-01T00:00:00Z</date>\n
       \   </lst>\n  </lst>\n  <lst name=\"facet_intervals\"/>\n  <lst name=\"facet_heatmaps\"/>\n</lst>\n<lst
       name=\"highlighting\">\n  <lst name=\"60613-72\">\n    <arr name=\"frameNo\"/>\n
       \   <arr name=\"patAssigneeCity\"/>\n    <arr name=\"pctNum\"/>\n    <arr name=\"patAssigneePostcode\"/>\n
@@ -20120,7 +20120,7 @@ interactions:
       content-type:
       - application/xml
       date:
-      - Mon, 11 Dec 2023 17:44:38 GMT
+      - Thu, 04 Apr 2024 15:12:23 GMT
       server:
       - Apache-Coyote/1.1
       strict-transport-security:

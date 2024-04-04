@@ -6,6 +6,11 @@ collect_ignore = [
     "hishel",
 ]
 
+@pytest.fixture(scope="session")
+def load_dotenv():
+    import dotenv
+    dotenv.load_dotenv()
+
 
 @pytest.fixture(scope="module")
 def vcr_config():
