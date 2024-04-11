@@ -34,13 +34,14 @@ openpyxl = "^3.0.10"
 #yankee = {path="../yankee", develop=true}
 yankee = "^0.1.43"
 zipp = "^3.8.1"
-httpx = {extras = ["http2"], version = "^0.25.2"}
 
 pydantic = "^2.4.2"
 pydantic-settings = "^2.0.3"
 pypdf = "^3.17.0"
 hishel = "^0.0.20"
 tqdm = "^4.66.1"
+httpx = {extras = ["h2"], version = "^0.27.0"}
+requests = "^2.31.0"
 
 [tool.poetry.group.docs]
 optional = true
@@ -81,6 +82,8 @@ rich                  = ">=10.0"
 sphinx-autobuild      = "^2021.3.14"
 bump2version = "^1.0.1"
 pytest-recording = "^0.13.1"
+datamodel-code-generator = "^0.25.5"
+openapi-python-client = "^0.19.1"
 
 
 [tool.poetry.group.types.dependencies]

@@ -1,0 +1,50 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.31.0
+      X-API-KEY:
+      - oygzgndgwifcpqgvdcitnhorcdvpbb
+    method: GET
+    uri: https://beta-api.uspto.gov/api/v1/patent/applications/15123456/assignment
+  response:
+    body:
+      string: '{"count":1,"patentBag":[{"assignmentBag":[{"assignmentReceivedDate":"2018-10-25","assignorBag":[{"executionDate":"2018-09-23","assignorName":"WANG,
+        MARVIN "}],"frameNumber":"0442","pageNumber":4,"reelNumber/frameNumber":"047305/0442","assignmentRecordedDate":"2018-10-25","conveyanceText":"ASSIGNMENT
+        OF ASSIGNORS INTEREST (SEE DOCUMENT FOR DETAILS).","assigneeBag":[{"assigneeAddress":{"cityName":"BOSTON","geographicRegionCode":"MA
+        ","postalCode":"02114","addressLineOneText":"55 FRUIT STREET"},"assigneeNameText":"THE
+        GENERAL HOSPITAL CORPORATION"}],"assignmentMailedDate":"2018-10-26","reelNumber":"047305","correspondenceAddress":[{"addressLineThreeText":"MINNEAPOLIS,
+        MN 55440-1022","addressLineOneText":"FISH & RICHARDSON P.C.","correspondentNameText":"J.
+        P. FASSE","addressLineTwoText":"P.O.BOX 1022"}]}]}],"requestIdentifier":"6b1823de-6f00-478d-8fe4-632184179d5a"}'
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '874'
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 10 Apr 2024 20:43:12 GMT
+      X-Amzn-Trace-Id:
+      - Root=1-6616f9e0-0220e8845e9cd1c512439401;Parent=2148a9e0b860f205;Sampled=0;lineage=33e8fdb8:0
+      access-control-allow-headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      access-control-allow-methods:
+      - OPTIONS,POST,GET
+      access-control-allow-origin:
+      - '*'
+      x-amz-apigw-id:
+      - WBv7DEFjIAMF6Jw=
+      x-amzn-RequestId:
+      - 6b1823de-6f00-478d-8fe4-632184179d5a
+    status:
+      code: 200
+      message: OK
+version: 1

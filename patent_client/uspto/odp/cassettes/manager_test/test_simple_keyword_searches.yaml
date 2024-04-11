@@ -1,0 +1,102 @@
+interactions:
+- request:
+    body: '{"q": "applicationNumberText:(16123456)", "fields": ["applicationNumberText",
+      "inventionTitle", "filingDate", "patentNumber"], "pagination": {"offset": 0,
+      "limit": 25}}'
+    headers:
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '168'
+      Content-Type:
+      - application/json
+      User-Agent:
+      - python-requests/2.31.0
+      X-API-KEY:
+      - oygzgndgwifcpqgvdcitnhorcdvpbb
+      accept:
+      - application/json
+    method: POST
+    uri: https://beta-api.uspto.gov/api/v1/patent/applications/search
+  response:
+    body:
+      string: '{"count":1,"patentBag":[{"filingDate":"2018-09-06","patentNumber":"10902286","applicationNumberText":"16123456","inventionTitle":"LEARNING
+        ASSISTANCE DEVICE, METHOD OF OPERATING LEARNING ASSISTANCE DEVICE, LEARNING
+        ASSISTANCE PROGRAM, LEARNING ASSISTANCE SYSTEM, AND TERMINAL DEVICE"}],"requestIdentifier":"575c8211-4cab-43d1-9650-38d6d6fb7940"}'
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '345'
+      Content-Type:
+      - application/json
+      Date:
+      - Thu, 11 Apr 2024 03:04:29 GMT
+      X-Amzn-Trace-Id:
+      - Root=1-6617533d-3d0a750751d24ffd4c168a5e;Parent=14cea1938c3a6485;Sampled=0;lineage=33e8fdb8:0
+      access-control-allow-headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      access-control-allow-methods:
+      - OPTIONS,POST,GET
+      access-control-allow-origin:
+      - '*'
+      x-amz-apigw-id:
+      - WCnxlGuzIAMFZBw=
+      x-amzn-RequestId:
+      - 575c8211-4cab-43d1-9650-38d6d6fb7940
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"q": "applicationNumberText:(16123456)", "fields": ["applicationNumberText",
+      "inventionTitle", "filingDate", "patentNumber"], "pagination": {"offset": 0,
+      "limit": 1}}'
+    headers:
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '167'
+      Content-Type:
+      - application/json
+      User-Agent:
+      - python-requests/2.31.0
+      X-API-KEY:
+      - oygzgndgwifcpqgvdcitnhorcdvpbb
+      accept:
+      - application/json
+    method: POST
+    uri: https://beta-api.uspto.gov/api/v1/patent/applications/search
+  response:
+    body:
+      string: '{"count":1,"patentBag":[{"filingDate":"2018-09-06","patentNumber":"10902286","applicationNumberText":"16123456","inventionTitle":"LEARNING
+        ASSISTANCE DEVICE, METHOD OF OPERATING LEARNING ASSISTANCE DEVICE, LEARNING
+        ASSISTANCE PROGRAM, LEARNING ASSISTANCE SYSTEM, AND TERMINAL DEVICE"}],"requestIdentifier":"bf5c85cc-489c-4b64-ac5b-e3ca0375c424"}'
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '345'
+      Content-Type:
+      - application/json
+      Date:
+      - Thu, 11 Apr 2024 03:04:29 GMT
+      X-Amzn-Trace-Id:
+      - Root=1-6617533d-116a654579866042355513ba;Parent=76d0b060675790bc;Sampled=0;lineage=33e8fdb8:0
+      access-control-allow-headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      access-control-allow-methods:
+      - OPTIONS,POST,GET
+      access-control-allow-origin:
+      - '*'
+      x-amz-apigw-id:
+      - WCnxmH_zoAMFahA=
+      x-amzn-RequestId:
+      - bf5c85cc-489c-4b64-ac5b-e3ca0375c424
+    status:
+      code: 200
+      message: OK
+version: 1
