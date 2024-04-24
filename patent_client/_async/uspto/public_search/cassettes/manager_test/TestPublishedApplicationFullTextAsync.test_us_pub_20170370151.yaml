@@ -1,0 +1,2074 @@
+interactions:
+- request:
+    body: '{"caseId": 27914878, "hl_snippets": "2", "op": "OR", "q": "\"20170370151\".PN.",
+      "queryName": "\"20170370151\".PN.", "highlights": "1", "qt": "brs", "spellCheck":
+      false, "viewName": "tile", "plurals": true, "britishEquivalents": true, "databaseFilters":
+      [{"databaseName": "US-PGPUB", "countryCodes": []}], "searchType": 1, "ignorePersist":
+      true, "userEnteredQuery": "\"20170370151\".PN."}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '388'
+      content-type:
+      - application/json
+      host:
+      - ppubs.uspto.gov
+      user-agent:
+      - Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/114.0.0.0 Safari/537.36
+      x-access-token:
+      - eyJzdWIiOiJlZDAxMDYzMi04YTI0LTQzM2EtOTE2Zi00YjEzMjliMTY2OWMiLCJ2ZXIiOiI0YjMxZDc0NC1mYzgzLTRiNTAtYWQ2OC1mMjQ1YjUwYzkxZWMiLCJleHAiOjB9
+      x-requested-with:
+      - XMLHttpRequest
+    method: POST
+    uri: https://ppubs.uspto.gov/dirsearch-public/searches/counts
+  response:
+    content: '{ "message": "Too many requests" }'
+    headers:
+      content-length:
+      - '34'
+      content-type:
+      - application/json;charset=ISO-8859-1
+      date:
+      - Wed, 24 Apr 2024 16:57:40 GMT
+      server-timing:
+      - intid;desc=3ba274d1c149a02d
+      x-rate-limit-retry-after-seconds:
+      - '0'
+    http_version: HTTP/2
+    status_code: 429
+- request:
+    body: '{"caseId": 27914878, "hl_snippets": "2", "op": "OR", "q": "\"20170370151\".PN.",
+      "queryName": "\"20170370151\".PN.", "highlights": "1", "qt": "brs", "spellCheck":
+      false, "viewName": "tile", "plurals": true, "britishEquivalents": true, "databaseFilters":
+      [{"databaseName": "US-PGPUB", "countryCodes": []}], "searchType": 1, "ignorePersist":
+      true, "userEnteredQuery": "\"20170370151\".PN."}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '388'
+      content-type:
+      - application/json
+      host:
+      - ppubs.uspto.gov
+      user-agent:
+      - Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/114.0.0.0 Safari/537.36
+      x-access-token:
+      - eyJzdWIiOiJlZDAxMDYzMi04YTI0LTQzM2EtOTE2Zi00YjEzMjliMTY2OWMiLCJ2ZXIiOiI0YjMxZDc0NC1mYzgzLTRiNTAtYWQ2OC1mMjQ1YjUwYzkxZWMiLCJleHAiOjB9
+      x-requested-with:
+      - XMLHttpRequest
+    method: POST
+    uri: https://ppubs.uspto.gov/dirsearch-public/searches/counts
+  response:
+    content: '{"id":null,"caseId":27914878,"userId":null,"numResults":1,"ignorePersist":true,"fq":null,"databaseFilters":[{"databaseName":"US-PGPUB","countryCodes":[]}],"q":"\"20170370151\".PN.","queryName":"\"20170370151\".PN.","userEnteredQuery":"\"20170370151\".PN.","viewName":"tile","op":"OR","highlights":"1","plurals":true,"britishEquivalents":true,"searchType":1,"excludeResultsAfter":null,"dateCreated":null,"deleteIn":false,"expand":false,"expandSort":null,"expandRows":null,"expandTrackDocScores":false,"expandTrackMaxScore":false,"termGraph":{"termOrigin":[{"id":0,"name":null,"nodeType":"ROOT","parentId":null,"relation":null,"aliases":["default"],"aliasCategory":"OTHER"},{"id":1,"name":"\"20170370151\"","nodeType":"TERM","parentId":0,"relation":"REGULAR","aliases":["pn"],"aliasCategory":"DOC_IDENTIFIER"}],"termRelationship":[]},"hl":false,"fl":null,"originalQuery":"\"20170370151\".PN.","error":null,"terms":["\"20170370151\""],"facets":[{"solrField":"document_type","count":1,"id":"US-PGPUB"}],"pNumber":null,"hl_fl":null}'
+    headers:
+      content-type:
+      - application/json
+      date:
+      - Wed, 24 Apr 2024 16:57:41 GMT
+      server-timing:
+      - intid;desc=14efed0621d388b3
+      x-rate-limit-remaining:
+      - '0'
+    http_version: HTTP/2
+    status_code: 200
+- request:
+    body: '{"start": 0, "pageCount": 500, "sort": "date_publ desc", "docFamilyFiltering":
+      "familyIdFiltering", "searchType": 1, "familyIdEnglishOnly": true, "familyIdFirstPreferred":
+      "US-PGPUB", "familyIdSecondPreferred": "USPAT", "familyIdThirdPreferred": "FPRS",
+      "showDocPerFamilyPref": "showEnglish", "queryId": 0, "tagDocSearch": false,
+      "query": {"caseId": 27914878, "hl_snippets": "2", "op": "OR", "q": "\"20170370151\".PN.",
+      "queryName": "\"20170370151\".PN.", "highlights": "1", "qt": "brs", "spellCheck":
+      false, "viewName": "tile", "plurals": true, "britishEquivalents": true, "databaseFilters":
+      [{"databaseName": "US-PGPUB", "countryCodes": []}], "searchType": 1, "ignorePersist":
+      true, "userEnteredQuery": "\"20170370151\".PN."}}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '728'
+      content-type:
+      - application/json
+      host:
+      - ppubs.uspto.gov
+      user-agent:
+      - Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/114.0.0.0 Safari/537.36
+      x-access-token:
+      - eyJzdWIiOiJlZDAxMDYzMi04YTI0LTQzM2EtOTE2Zi00YjEzMjliMTY2OWMiLCJ2ZXIiOiI0YjMxZDc0NC1mYzgzLTRiNTAtYWQ2OC1mMjQ1YjUwYzkxZWMiLCJleHAiOjB9
+      x-requested-with:
+      - XMLHttpRequest
+    method: POST
+    uri: https://ppubs.uspto.gov/dirsearch-public/searches/searchWithBeFamily
+  response:
+    content: '{ "message": "Too many requests" }'
+    headers:
+      content-length:
+      - '34'
+      content-type:
+      - application/json;charset=ISO-8859-1
+      date:
+      - Wed, 24 Apr 2024 16:57:41 GMT
+      server-timing:
+      - intid;desc=69a1e50c20741c21
+      x-rate-limit-retry-after-seconds:
+      - '0'
+    http_version: HTTP/2
+    status_code: 429
+- request:
+    body: '{"start": 0, "pageCount": 500, "sort": "date_publ desc", "docFamilyFiltering":
+      "familyIdFiltering", "searchType": 1, "familyIdEnglishOnly": true, "familyIdFirstPreferred":
+      "US-PGPUB", "familyIdSecondPreferred": "USPAT", "familyIdThirdPreferred": "FPRS",
+      "showDocPerFamilyPref": "showEnglish", "queryId": 0, "tagDocSearch": false,
+      "query": {"caseId": 27914878, "hl_snippets": "2", "op": "OR", "q": "\"20170370151\".PN.",
+      "queryName": "\"20170370151\".PN.", "highlights": "1", "qt": "brs", "spellCheck":
+      false, "viewName": "tile", "plurals": true, "britishEquivalents": true, "databaseFilters":
+      [{"databaseName": "US-PGPUB", "countryCodes": []}], "searchType": 1, "ignorePersist":
+      true, "userEnteredQuery": "\"20170370151\".PN."}}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '728'
+      content-type:
+      - application/json
+      host:
+      - ppubs.uspto.gov
+      user-agent:
+      - Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/114.0.0.0 Safari/537.36
+      x-access-token:
+      - eyJzdWIiOiJlZDAxMDYzMi04YTI0LTQzM2EtOTE2Zi00YjEzMjliMTY2OWMiLCJ2ZXIiOiI0YjMxZDc0NC1mYzgzLTRiNTAtYWQ2OC1mMjQ1YjUwYzkxZWMiLCJleHAiOjB9
+      x-requested-with:
+      - XMLHttpRequest
+    method: POST
+    uri: https://ppubs.uspto.gov/dirsearch-public/searches/searchWithBeFamily
+  response:
+    content: '{"numFound":1,"perPage":500,"page":0,"totalPages":0,"hlSnippets":0,"sort":null,"query":{"id":null,"caseId":27914878,"userId":null,"numResults":1,"ignorePersist":true,"fq":null,"databaseFilters":[{"databaseName":"US-PGPUB","countryCodes":[]}],"q":"\"20170370151\".PN.","queryName":"\"20170370151\".PN.","userEnteredQuery":"\"20170370151\".PN.","viewName":"tile","op":"OR","highlights":"1","plurals":true,"britishEquivalents":true,"searchType":1,"excludeResultsAfter":null,"dateCreated":null,"deleteIn":false,"expand":true,"expandSort":"group_sort_date
+      asc, id desc ","expandRows":"100","expandTrackDocScores":true,"expandTrackMaxScore":true,"termGraph":null,"hl":false,"fl":null,"originalQuery":"\"20170370151\".PN.","error":null,"terms":["\"20170370151\""],"facets":[],"pNumber":null,"hl_fl":null},"duration":14,"highlightingTime":0,"cursorMarker":"AoJwgOSazeACOjU2MTYzNTg2IVBHLVVTLTIwMTcwMzcwMTUx","totalResults":1,"numberOfFamilies":1,"error":null,"patents":[{"guid":"US-20170370151-A1","publicationReferenceDocumentNumber":"20170370151","compositeId":"56163586!PG-US-20170370151","publicationReferenceDocumentNumber1":"20170370151","datePublishedKwicHits":null,"datePublished":"2017-12-28T00:00:00Z","inventionTitle":"SYSTEMS
+      AND METHODS TO CONTROL DIRECTIONAL DRILLING FOR HYDROCARBON WELLS","type":"US-PGPUB","mainClassificationCode":"1/1","applicantName":["NATIONAL
+      OILWELL VARCO, L.P."],"assigneeName":["National Oilwell Varco, L.P."],"uspcFullClassificationFlattened":null,"ipcCodeFlattened":"E21B7/04;E21B44/00","cpcInventiveFlattened":"G05B15/02;E21B47/022;E21B44/00;E21B7/04","cpcAdditionalFlattened":null,"applicationFilingDate":["2015-12-29T00:00:00Z"],"applicationFilingDateKwicHits":null,"relatedApplFilingDate":["2015-02-20T00:00:00Z","2014-12-30T00:00:00Z"],"primaryExaminer":null,"assistantExaminer":null,"applicationNumber":"15/540593","frontPageStart":1,"frontPageEnd":1,"drawingsStart":2,"drawingsEnd":13,"specificationStart":14,"specificationEnd":27,"claimsStart":27,"claimsEnd":29,"abstractStart":1,"abstractEnd":1,"bibStart":1,"bibEnd":1,"certCorrectionStart":0,"certCorrectionEnd":0,"certReexaminationStart":0,"certReexaminationEnd":0,"supplementalStart":0,"supplementalEnd":0,"ptabStart":0,"ptabEnd":0,"amendStart":0,"amendEnd":0,"searchReportStart":0,"searchReportEnd":0,"pageCount":29,"pageCountDisplay":"29","previouslyViewed":false,"unused":false,"imageLocation":"us-pgpub/US/2017/0370/151","imageFileName":"00000001.tif","cpcCodes":null,"queryId":null,"tags":null,"inventorsShort":"BANIRAZI-MOTLAGH;
+      Reza et al.","familyIdentifierCur":56163586,"familyIdentifierCurStr":null,"languageIndicator":"EN","databaseName":"PGPB","dwImageDoctypeList":null,"dwImageLocList":null,"dwPageCountList":null,"dwImageDocidList":null,"patentFamilyMembers":null,"patentFamilyCountry":null,"patentFamilySerialNumber":null,"documentIdWithDashesDw":null,"pfPublDate":null,"pfPublDateKwicHits":null,"priorityClaimsDate":null,"priorityClaimsDateKwicHits":null,"pfApplicationSerialNumber":null,"pfApplicationDescriptor":null,"pfLanguage":null,"pfApplicationDate":null,"pfApplicationDateKwicHits":null,"clippedUri":null,"source":null,"documentId":"US
+      20170370151 A1","derwentAccessionNumber":null,"documentSize":127241,"score":14.615118,"governmentInterest":null,"kindCode":["A1"],"urpn":null,"urpnCode":null,"descriptionStart":14,"descriptionEnd":27,"publicationReferenceDocumentNumberOne":"20170370151"}],"qtime":8}'
+    headers:
+      content-type:
+      - application/json
+      date:
+      - Wed, 24 Apr 2024 16:57:42 GMT
+      server-timing:
+      - intid;desc=834e6e0c920ef4af
+      x-rate-limit-remaining:
+      - '0'
+    http_version: HTTP/2
+    status_code: 200
+- request:
+    body: '{"caseId": 27914878, "hl_snippets": "2", "op": "OR", "q": "\"20170370151\".PN.",
+      "queryName": "\"20170370151\".PN.", "highlights": "1", "qt": "brs", "spellCheck":
+      false, "viewName": "tile", "plurals": true, "britishEquivalents": true, "databaseFilters":
+      [{"databaseName": "US-PGPUB", "countryCodes": []}], "searchType": 1, "ignorePersist":
+      true, "userEnteredQuery": "\"20170370151\".PN."}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '388'
+      content-type:
+      - application/json
+      host:
+      - ppubs.uspto.gov
+      user-agent:
+      - Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/114.0.0.0 Safari/537.36
+      x-access-token:
+      - eyJzdWIiOiJlZDAxMDYzMi04YTI0LTQzM2EtOTE2Zi00YjEzMjliMTY2OWMiLCJ2ZXIiOiI0YjMxZDc0NC1mYzgzLTRiNTAtYWQ2OC1mMjQ1YjUwYzkxZWMiLCJleHAiOjB9
+      x-requested-with:
+      - XMLHttpRequest
+    method: POST
+    uri: https://ppubs.uspto.gov/dirsearch-public/searches/counts
+  response:
+    content: '{ "message": "Too many requests" }'
+    headers:
+      content-length:
+      - '34'
+      content-type:
+      - application/json;charset=ISO-8859-1
+      date:
+      - Wed, 24 Apr 2024 16:57:43 GMT
+      server-timing:
+      - intid;desc=02de5ea9aca26a3b
+      x-rate-limit-retry-after-seconds:
+      - '0'
+    http_version: HTTP/2
+    status_code: 429
+- request:
+    body: '{"caseId": 27914878, "hl_snippets": "2", "op": "OR", "q": "\"20170370151\".PN.",
+      "queryName": "\"20170370151\".PN.", "highlights": "1", "qt": "brs", "spellCheck":
+      false, "viewName": "tile", "plurals": true, "britishEquivalents": true, "databaseFilters":
+      [{"databaseName": "US-PGPUB", "countryCodes": []}], "searchType": 1, "ignorePersist":
+      true, "userEnteredQuery": "\"20170370151\".PN."}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '388'
+      content-type:
+      - application/json
+      host:
+      - ppubs.uspto.gov
+      user-agent:
+      - Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/114.0.0.0 Safari/537.36
+      x-access-token:
+      - eyJzdWIiOiJlZDAxMDYzMi04YTI0LTQzM2EtOTE2Zi00YjEzMjliMTY2OWMiLCJ2ZXIiOiI0YjMxZDc0NC1mYzgzLTRiNTAtYWQ2OC1mMjQ1YjUwYzkxZWMiLCJleHAiOjB9
+      x-requested-with:
+      - XMLHttpRequest
+    method: POST
+    uri: https://ppubs.uspto.gov/dirsearch-public/searches/counts
+  response:
+    content: '{"id":null,"caseId":27914878,"userId":null,"numResults":1,"ignorePersist":true,"fq":null,"databaseFilters":[{"databaseName":"US-PGPUB","countryCodes":[]}],"q":"\"20170370151\".PN.","queryName":"\"20170370151\".PN.","userEnteredQuery":"\"20170370151\".PN.","viewName":"tile","op":"OR","highlights":"1","plurals":true,"britishEquivalents":true,"searchType":1,"excludeResultsAfter":null,"dateCreated":null,"deleteIn":false,"expand":false,"expandSort":null,"expandRows":null,"expandTrackDocScores":false,"expandTrackMaxScore":false,"termGraph":{"termOrigin":[{"id":0,"name":null,"nodeType":"ROOT","parentId":null,"relation":null,"aliases":["default"],"aliasCategory":"OTHER"},{"id":1,"name":"\"20170370151\"","nodeType":"TERM","parentId":0,"relation":"REGULAR","aliases":["pn"],"aliasCategory":"DOC_IDENTIFIER"}],"termRelationship":[]},"hl":false,"fl":null,"originalQuery":"\"20170370151\".PN.","error":null,"terms":["\"20170370151\""],"facets":[{"solrField":"document_type","count":1,"id":"US-PGPUB"}],"pNumber":null,"hl_fl":null}'
+    headers:
+      content-type:
+      - application/json
+      date:
+      - Wed, 24 Apr 2024 16:57:44 GMT
+      server-timing:
+      - intid;desc=bc6eefeb9b41b3a5
+      x-rate-limit-remaining:
+      - '0'
+    http_version: HTTP/2
+    status_code: 200
+- request:
+    body: '{"start": 0, "pageCount": 500, "sort": "date_publ desc", "docFamilyFiltering":
+      "familyIdFiltering", "searchType": 1, "familyIdEnglishOnly": true, "familyIdFirstPreferred":
+      "US-PGPUB", "familyIdSecondPreferred": "USPAT", "familyIdThirdPreferred": "FPRS",
+      "showDocPerFamilyPref": "showEnglish", "queryId": 0, "tagDocSearch": false,
+      "query": {"caseId": 27914878, "hl_snippets": "2", "op": "OR", "q": "\"20170370151\".PN.",
+      "queryName": "\"20170370151\".PN.", "highlights": "1", "qt": "brs", "spellCheck":
+      false, "viewName": "tile", "plurals": true, "britishEquivalents": true, "databaseFilters":
+      [{"databaseName": "US-PGPUB", "countryCodes": []}], "searchType": 1, "ignorePersist":
+      true, "userEnteredQuery": "\"20170370151\".PN."}}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '728'
+      content-type:
+      - application/json
+      host:
+      - ppubs.uspto.gov
+      user-agent:
+      - Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/114.0.0.0 Safari/537.36
+      x-access-token:
+      - eyJzdWIiOiJlZDAxMDYzMi04YTI0LTQzM2EtOTE2Zi00YjEzMjliMTY2OWMiLCJ2ZXIiOiI0YjMxZDc0NC1mYzgzLTRiNTAtYWQ2OC1mMjQ1YjUwYzkxZWMiLCJleHAiOjB9
+      x-requested-with:
+      - XMLHttpRequest
+    method: POST
+    uri: https://ppubs.uspto.gov/dirsearch-public/searches/searchWithBeFamily
+  response:
+    content: '{ "message": "Too many requests" }'
+    headers:
+      content-length:
+      - '34'
+      content-type:
+      - application/json;charset=ISO-8859-1
+      date:
+      - Wed, 24 Apr 2024 16:57:44 GMT
+      server-timing:
+      - intid;desc=28c0f34527380975
+      x-rate-limit-retry-after-seconds:
+      - '0'
+    http_version: HTTP/2
+    status_code: 429
+- request:
+    body: '{"start": 0, "pageCount": 500, "sort": "date_publ desc", "docFamilyFiltering":
+      "familyIdFiltering", "searchType": 1, "familyIdEnglishOnly": true, "familyIdFirstPreferred":
+      "US-PGPUB", "familyIdSecondPreferred": "USPAT", "familyIdThirdPreferred": "FPRS",
+      "showDocPerFamilyPref": "showEnglish", "queryId": 0, "tagDocSearch": false,
+      "query": {"caseId": 27914878, "hl_snippets": "2", "op": "OR", "q": "\"20170370151\".PN.",
+      "queryName": "\"20170370151\".PN.", "highlights": "1", "qt": "brs", "spellCheck":
+      false, "viewName": "tile", "plurals": true, "britishEquivalents": true, "databaseFilters":
+      [{"databaseName": "US-PGPUB", "countryCodes": []}], "searchType": 1, "ignorePersist":
+      true, "userEnteredQuery": "\"20170370151\".PN."}}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '728'
+      content-type:
+      - application/json
+      host:
+      - ppubs.uspto.gov
+      user-agent:
+      - Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/114.0.0.0 Safari/537.36
+      x-access-token:
+      - eyJzdWIiOiJlZDAxMDYzMi04YTI0LTQzM2EtOTE2Zi00YjEzMjliMTY2OWMiLCJ2ZXIiOiI0YjMxZDc0NC1mYzgzLTRiNTAtYWQ2OC1mMjQ1YjUwYzkxZWMiLCJleHAiOjB9
+      x-requested-with:
+      - XMLHttpRequest
+    method: POST
+    uri: https://ppubs.uspto.gov/dirsearch-public/searches/searchWithBeFamily
+  response:
+    content: '{"numFound":1,"perPage":500,"page":0,"totalPages":0,"hlSnippets":0,"sort":null,"query":{"id":null,"caseId":27914878,"userId":null,"numResults":1,"ignorePersist":true,"fq":null,"databaseFilters":[{"databaseName":"US-PGPUB","countryCodes":[]}],"q":"\"20170370151\".PN.","queryName":"\"20170370151\".PN.","userEnteredQuery":"\"20170370151\".PN.","viewName":"tile","op":"OR","highlights":"1","plurals":true,"britishEquivalents":true,"searchType":1,"excludeResultsAfter":null,"dateCreated":null,"deleteIn":false,"expand":true,"expandSort":"group_sort_date
+      asc, id desc ","expandRows":"100","expandTrackDocScores":true,"expandTrackMaxScore":true,"termGraph":null,"hl":false,"fl":null,"originalQuery":"\"20170370151\".PN.","error":null,"terms":["\"20170370151\""],"facets":[],"pNumber":null,"hl_fl":null},"duration":15,"highlightingTime":0,"cursorMarker":"AoJwgOSazeACOjU2MTYzNTg2IVBHLVVTLTIwMTcwMzcwMTUx","totalResults":1,"numberOfFamilies":1,"error":null,"patents":[{"guid":"US-20170370151-A1","publicationReferenceDocumentNumber":"20170370151","compositeId":"56163586!PG-US-20170370151","publicationReferenceDocumentNumber1":"20170370151","datePublishedKwicHits":null,"datePublished":"2017-12-28T00:00:00Z","inventionTitle":"SYSTEMS
+      AND METHODS TO CONTROL DIRECTIONAL DRILLING FOR HYDROCARBON WELLS","type":"US-PGPUB","mainClassificationCode":"1/1","applicantName":["NATIONAL
+      OILWELL VARCO, L.P."],"assigneeName":["National Oilwell Varco, L.P."],"uspcFullClassificationFlattened":null,"ipcCodeFlattened":"E21B7/04;E21B44/00","cpcInventiveFlattened":"G05B15/02;E21B47/022;E21B44/00;E21B7/04","cpcAdditionalFlattened":null,"applicationFilingDate":["2015-12-29T00:00:00Z"],"applicationFilingDateKwicHits":null,"relatedApplFilingDate":["2015-02-20T00:00:00Z","2014-12-30T00:00:00Z"],"primaryExaminer":null,"assistantExaminer":null,"applicationNumber":"15/540593","frontPageStart":1,"frontPageEnd":1,"drawingsStart":2,"drawingsEnd":13,"specificationStart":14,"specificationEnd":27,"claimsStart":27,"claimsEnd":29,"abstractStart":1,"abstractEnd":1,"bibStart":1,"bibEnd":1,"certCorrectionStart":0,"certCorrectionEnd":0,"certReexaminationStart":0,"certReexaminationEnd":0,"supplementalStart":0,"supplementalEnd":0,"ptabStart":0,"ptabEnd":0,"amendStart":0,"amendEnd":0,"searchReportStart":0,"searchReportEnd":0,"pageCount":29,"pageCountDisplay":"29","previouslyViewed":false,"unused":false,"imageLocation":"us-pgpub/US/2017/0370/151","imageFileName":"00000001.tif","cpcCodes":null,"queryId":null,"tags":null,"inventorsShort":"BANIRAZI-MOTLAGH;
+      Reza et al.","familyIdentifierCur":56163586,"familyIdentifierCurStr":null,"languageIndicator":"EN","databaseName":"PGPB","dwImageDoctypeList":null,"dwImageLocList":null,"dwPageCountList":null,"dwImageDocidList":null,"patentFamilyMembers":null,"patentFamilyCountry":null,"patentFamilySerialNumber":null,"documentIdWithDashesDw":null,"pfPublDate":null,"pfPublDateKwicHits":null,"priorityClaimsDate":null,"priorityClaimsDateKwicHits":null,"pfApplicationSerialNumber":null,"pfApplicationDescriptor":null,"pfLanguage":null,"pfApplicationDate":null,"pfApplicationDateKwicHits":null,"clippedUri":null,"source":null,"documentId":"US
+      20170370151 A1","derwentAccessionNumber":null,"documentSize":127241,"score":14.615118,"governmentInterest":null,"kindCode":["A1"],"urpn":null,"urpnCode":null,"descriptionStart":14,"descriptionEnd":27,"publicationReferenceDocumentNumberOne":"20170370151"}],"qtime":10}'
+    headers:
+      content-type:
+      - application/json
+      date:
+      - Wed, 24 Apr 2024 16:57:45 GMT
+      server-timing:
+      - intid;desc=321b1354006e6ee5
+      x-rate-limit-remaining:
+      - '0'
+    http_version: HTTP/2
+    status_code: 200
+- request:
+    body: '{"caseId": 27914878, "hl_snippets": "2", "op": "OR", "q": "\"20170370151\".PN.",
+      "queryName": "\"20170370151\".PN.", "highlights": "1", "qt": "brs", "spellCheck":
+      false, "viewName": "tile", "plurals": true, "britishEquivalents": true, "databaseFilters":
+      [{"databaseName": "US-PGPUB", "countryCodes": []}], "searchType": 1, "ignorePersist":
+      true, "userEnteredQuery": "\"20170370151\".PN."}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '388'
+      content-type:
+      - application/json
+      host:
+      - ppubs.uspto.gov
+      user-agent:
+      - Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/114.0.0.0 Safari/537.36
+      x-access-token:
+      - eyJzdWIiOiJlZDAxMDYzMi04YTI0LTQzM2EtOTE2Zi00YjEzMjliMTY2OWMiLCJ2ZXIiOiI0YjMxZDc0NC1mYzgzLTRiNTAtYWQ2OC1mMjQ1YjUwYzkxZWMiLCJleHAiOjB9
+      x-requested-with:
+      - XMLHttpRequest
+    method: POST
+    uri: https://ppubs.uspto.gov/dirsearch-public/searches/counts
+  response:
+    content: '{ "message": "Too many requests" }'
+    headers:
+      content-length:
+      - '34'
+      content-type:
+      - application/json;charset=ISO-8859-1
+      date:
+      - Wed, 24 Apr 2024 16:57:45 GMT
+      server-timing:
+      - intid;desc=e90f318a252c0df9
+      x-rate-limit-retry-after-seconds:
+      - '0'
+    http_version: HTTP/2
+    status_code: 429
+- request:
+    body: '{"caseId": 27914878, "hl_snippets": "2", "op": "OR", "q": "\"20170370151\".PN.",
+      "queryName": "\"20170370151\".PN.", "highlights": "1", "qt": "brs", "spellCheck":
+      false, "viewName": "tile", "plurals": true, "britishEquivalents": true, "databaseFilters":
+      [{"databaseName": "US-PGPUB", "countryCodes": []}], "searchType": 1, "ignorePersist":
+      true, "userEnteredQuery": "\"20170370151\".PN."}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '388'
+      content-type:
+      - application/json
+      host:
+      - ppubs.uspto.gov
+      user-agent:
+      - Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/114.0.0.0 Safari/537.36
+      x-access-token:
+      - eyJzdWIiOiJlZDAxMDYzMi04YTI0LTQzM2EtOTE2Zi00YjEzMjliMTY2OWMiLCJ2ZXIiOiI0YjMxZDc0NC1mYzgzLTRiNTAtYWQ2OC1mMjQ1YjUwYzkxZWMiLCJleHAiOjB9
+      x-requested-with:
+      - XMLHttpRequest
+    method: POST
+    uri: https://ppubs.uspto.gov/dirsearch-public/searches/counts
+  response:
+    content: '{"id":null,"caseId":27914878,"userId":null,"numResults":1,"ignorePersist":true,"fq":null,"databaseFilters":[{"databaseName":"US-PGPUB","countryCodes":[]}],"q":"\"20170370151\".PN.","queryName":"\"20170370151\".PN.","userEnteredQuery":"\"20170370151\".PN.","viewName":"tile","op":"OR","highlights":"1","plurals":true,"britishEquivalents":true,"searchType":1,"excludeResultsAfter":null,"dateCreated":null,"deleteIn":false,"expand":false,"expandSort":null,"expandRows":null,"expandTrackDocScores":false,"expandTrackMaxScore":false,"termGraph":{"termOrigin":[{"id":0,"name":null,"nodeType":"ROOT","parentId":null,"relation":null,"aliases":["default"],"aliasCategory":"OTHER"},{"id":1,"name":"\"20170370151\"","nodeType":"TERM","parentId":0,"relation":"REGULAR","aliases":["pn"],"aliasCategory":"DOC_IDENTIFIER"}],"termRelationship":[]},"hl":false,"fl":null,"originalQuery":"\"20170370151\".PN.","error":null,"terms":["\"20170370151\""],"facets":[{"solrField":"document_type","count":1,"id":"US-PGPUB"}],"pNumber":null,"hl_fl":null}'
+    headers:
+      content-type:
+      - application/json
+      date:
+      - Wed, 24 Apr 2024 16:57:46 GMT
+      server-timing:
+      - intid;desc=d130d2136fc2c889
+      x-rate-limit-remaining:
+      - '0'
+    http_version: HTTP/2
+    status_code: 200
+- request:
+    body: '{"start": 0, "pageCount": 1, "sort": "date_publ desc", "docFamilyFiltering":
+      "familyIdFiltering", "searchType": 1, "familyIdEnglishOnly": true, "familyIdFirstPreferred":
+      "US-PGPUB", "familyIdSecondPreferred": "USPAT", "familyIdThirdPreferred": "FPRS",
+      "showDocPerFamilyPref": "showEnglish", "queryId": 0, "tagDocSearch": false,
+      "query": {"caseId": 27914878, "hl_snippets": "2", "op": "OR", "q": "\"20170370151\".PN.",
+      "queryName": "\"20170370151\".PN.", "highlights": "1", "qt": "brs", "spellCheck":
+      false, "viewName": "tile", "plurals": true, "britishEquivalents": true, "databaseFilters":
+      [{"databaseName": "US-PGPUB", "countryCodes": []}], "searchType": 1, "ignorePersist":
+      true, "userEnteredQuery": "\"20170370151\".PN."}}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '726'
+      content-type:
+      - application/json
+      host:
+      - ppubs.uspto.gov
+      user-agent:
+      - Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/114.0.0.0 Safari/537.36
+      x-access-token:
+      - eyJzdWIiOiJlZDAxMDYzMi04YTI0LTQzM2EtOTE2Zi00YjEzMjliMTY2OWMiLCJ2ZXIiOiI0YjMxZDc0NC1mYzgzLTRiNTAtYWQ2OC1mMjQ1YjUwYzkxZWMiLCJleHAiOjB9
+      x-requested-with:
+      - XMLHttpRequest
+    method: POST
+    uri: https://ppubs.uspto.gov/dirsearch-public/searches/searchWithBeFamily
+  response:
+    content: '{ "message": "Too many requests" }'
+    headers:
+      content-length:
+      - '34'
+      content-type:
+      - application/json;charset=ISO-8859-1
+      date:
+      - Wed, 24 Apr 2024 16:57:46 GMT
+      server-timing:
+      - intid;desc=69ccb5b6df0c5d83
+      x-rate-limit-retry-after-seconds:
+      - '0'
+    http_version: HTTP/2
+    status_code: 429
+- request:
+    body: '{"start": 0, "pageCount": 1, "sort": "date_publ desc", "docFamilyFiltering":
+      "familyIdFiltering", "searchType": 1, "familyIdEnglishOnly": true, "familyIdFirstPreferred":
+      "US-PGPUB", "familyIdSecondPreferred": "USPAT", "familyIdThirdPreferred": "FPRS",
+      "showDocPerFamilyPref": "showEnglish", "queryId": 0, "tagDocSearch": false,
+      "query": {"caseId": 27914878, "hl_snippets": "2", "op": "OR", "q": "\"20170370151\".PN.",
+      "queryName": "\"20170370151\".PN.", "highlights": "1", "qt": "brs", "spellCheck":
+      false, "viewName": "tile", "plurals": true, "britishEquivalents": true, "databaseFilters":
+      [{"databaseName": "US-PGPUB", "countryCodes": []}], "searchType": 1, "ignorePersist":
+      true, "userEnteredQuery": "\"20170370151\".PN."}}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '726'
+      content-type:
+      - application/json
+      host:
+      - ppubs.uspto.gov
+      user-agent:
+      - Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/114.0.0.0 Safari/537.36
+      x-access-token:
+      - eyJzdWIiOiJlZDAxMDYzMi04YTI0LTQzM2EtOTE2Zi00YjEzMjliMTY2OWMiLCJ2ZXIiOiI0YjMxZDc0NC1mYzgzLTRiNTAtYWQ2OC1mMjQ1YjUwYzkxZWMiLCJleHAiOjB9
+      x-requested-with:
+      - XMLHttpRequest
+    method: POST
+    uri: https://ppubs.uspto.gov/dirsearch-public/searches/searchWithBeFamily
+  response:
+    content: '{"numFound":1,"perPage":1,"page":0,"totalPages":0,"hlSnippets":0,"sort":null,"query":{"id":null,"caseId":27914878,"userId":null,"numResults":1,"ignorePersist":true,"fq":null,"databaseFilters":[{"databaseName":"US-PGPUB","countryCodes":[]}],"q":"\"20170370151\".PN.","queryName":"\"20170370151\".PN.","userEnteredQuery":"\"20170370151\".PN.","viewName":"tile","op":"OR","highlights":"1","plurals":true,"britishEquivalents":true,"searchType":1,"excludeResultsAfter":null,"dateCreated":null,"deleteIn":false,"expand":true,"expandSort":"group_sort_date
+      asc, id desc ","expandRows":"100","expandTrackDocScores":true,"expandTrackMaxScore":true,"termGraph":null,"hl":false,"fl":null,"originalQuery":"\"20170370151\".PN.","error":null,"terms":["\"20170370151\""],"facets":[],"pNumber":null,"hl_fl":null},"duration":13,"highlightingTime":0,"cursorMarker":"AoJwgOSazeACOjU2MTYzNTg2IVBHLVVTLTIwMTcwMzcwMTUx","totalResults":1,"numberOfFamilies":1,"error":null,"patents":[{"guid":"US-20170370151-A1","publicationReferenceDocumentNumber":"20170370151","compositeId":"56163586!PG-US-20170370151","publicationReferenceDocumentNumber1":"20170370151","datePublishedKwicHits":null,"datePublished":"2017-12-28T00:00:00Z","inventionTitle":"SYSTEMS
+      AND METHODS TO CONTROL DIRECTIONAL DRILLING FOR HYDROCARBON WELLS","type":"US-PGPUB","mainClassificationCode":"1/1","applicantName":["NATIONAL
+      OILWELL VARCO, L.P."],"assigneeName":["National Oilwell Varco, L.P."],"uspcFullClassificationFlattened":null,"ipcCodeFlattened":"E21B7/04;E21B44/00","cpcInventiveFlattened":"G05B15/02;E21B47/022;E21B44/00;E21B7/04","cpcAdditionalFlattened":null,"applicationFilingDate":["2015-12-29T00:00:00Z"],"applicationFilingDateKwicHits":null,"relatedApplFilingDate":["2015-02-20T00:00:00Z","2014-12-30T00:00:00Z"],"primaryExaminer":null,"assistantExaminer":null,"applicationNumber":"15/540593","frontPageStart":1,"frontPageEnd":1,"drawingsStart":2,"drawingsEnd":13,"specificationStart":14,"specificationEnd":27,"claimsStart":27,"claimsEnd":29,"abstractStart":1,"abstractEnd":1,"bibStart":1,"bibEnd":1,"certCorrectionStart":0,"certCorrectionEnd":0,"certReexaminationStart":0,"certReexaminationEnd":0,"supplementalStart":0,"supplementalEnd":0,"ptabStart":0,"ptabEnd":0,"amendStart":0,"amendEnd":0,"searchReportStart":0,"searchReportEnd":0,"pageCount":29,"pageCountDisplay":"29","previouslyViewed":false,"unused":false,"imageLocation":"us-pgpub/US/2017/0370/151","imageFileName":"00000001.tif","cpcCodes":null,"queryId":null,"tags":null,"inventorsShort":"BANIRAZI-MOTLAGH;
+      Reza et al.","familyIdentifierCur":56163586,"familyIdentifierCurStr":null,"languageIndicator":"EN","databaseName":"PGPB","dwImageDoctypeList":null,"dwImageLocList":null,"dwPageCountList":null,"dwImageDocidList":null,"patentFamilyMembers":null,"patentFamilyCountry":null,"patentFamilySerialNumber":null,"documentIdWithDashesDw":null,"pfPublDate":null,"pfPublDateKwicHits":null,"priorityClaimsDate":null,"priorityClaimsDateKwicHits":null,"pfApplicationSerialNumber":null,"pfApplicationDescriptor":null,"pfLanguage":null,"pfApplicationDate":null,"pfApplicationDateKwicHits":null,"clippedUri":null,"source":null,"documentId":"US
+      20170370151 A1","derwentAccessionNumber":null,"documentSize":127241,"score":14.6145525,"governmentInterest":null,"kindCode":["A1"],"urpn":null,"urpnCode":null,"descriptionStart":14,"descriptionEnd":27,"publicationReferenceDocumentNumberOne":"20170370151"}],"qtime":8}'
+    headers:
+      content-type:
+      - application/json
+      date:
+      - Wed, 24 Apr 2024 16:57:47 GMT
+      server-timing:
+      - intid;desc=955d6c706dd56b27
+      x-rate-limit-remaining:
+      - '0'
+    http_version: HTTP/2
+    status_code: 200
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - ppubs.uspto.gov
+      user-agent:
+      - Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/114.0.0.0 Safari/537.36
+      x-access-token:
+      - eyJzdWIiOiJlZDAxMDYzMi04YTI0LTQzM2EtOTE2Zi00YjEzMjliMTY2OWMiLCJ2ZXIiOiI0YjMxZDc0NC1mYzgzLTRiNTAtYWQ2OC1mMjQ1YjUwYzkxZWMiLCJleHAiOjB9
+      x-requested-with:
+      - XMLHttpRequest
+    method: GET
+    uri: https://ppubs.uspto.gov/dirsearch-public/internal/patents/US-20170370151-A1/highlight?queryId=1&source=US-PGPUB&includeSections=true&uniqueId=
+  response:
+    content: "{\"guid\":\"US-20170370151-A1\",\"publicationReferenceDocumentNumber\":\"20170370151\",\"compositeId\":\"56163586!PG-US-20170370151\",\"publicationReferenceDocumentNumber1\":\"20170370151\",\"datePublishedKwicHits\":null,\"datePublished\":\"2017-12-28T00:00:00Z\",\"inventionTitle\":\"SYSTEMS
+      AND METHODS TO CONTROL DIRECTIONAL DRILLING FOR HYDROCARBON WELLS\",\"type\":\"US-PGPUB\",\"mainClassificationCode\":\"1/1\",\"applicantName\":[\"NATIONAL
+      OILWELL VARCO, L.P.\"],\"assigneeName\":[\"National Oilwell Varco, L.P.\"],\"uspcFullClassificationFlattened\":null,\"ipcCodeFlattened\":\"E21B7/04;E21B44/00\",\"cpcInventiveFlattened\":\"G05B15/02;E21B47/022;E21B44/00;E21B7/04\",\"cpcAdditionalFlattened\":null,\"applicationFilingDate\":[\"2015-12-29T00:00:00Z\"],\"applicationFilingDateKwicHits\":null,\"relatedApplFilingDate\":[\"2015-02-20T00:00:00Z\",\"2014-12-30T00:00:00Z\"],\"primaryExaminer\":null,\"assistantExaminer\":null,\"applicationNumber\":\"15/540593\",\"frontPageStart\":1,\"frontPageEnd\":1,\"drawingsStart\":2,\"drawingsEnd\":13,\"specificationStart\":14,\"specificationEnd\":27,\"claimsStart\":27,\"claimsEnd\":29,\"abstractStart\":1,\"abstractEnd\":1,\"bibStart\":1,\"bibEnd\":1,\"certCorrectionStart\":0,\"certCorrectionEnd\":0,\"certReexaminationStart\":0,\"certReexaminationEnd\":0,\"supplementalStart\":0,\"supplementalEnd\":0,\"ptabStart\":0,\"ptabEnd\":0,\"amendStart\":0,\"amendEnd\":0,\"searchReportStart\":0,\"searchReportEnd\":0,\"pageCount\":29,\"pageCountDisplay\":\"29\",\"previouslyViewed\":false,\"unused\":false,\"imageLocation\":\"us-pgpub/US/2017/0370/151\",\"imageFileName\":\"00000001.tif\",\"cpcCodes\":null,\"queryId\":1,\"tags\":null,\"inventorsShort\":\"BANIRAZI-MOTLAGH;
+      Reza et al.\",\"familyIdentifierCur\":56163586,\"familyIdentifierCurStr\":\"56163586\",\"languageIndicator\":\"EN\",\"databaseName\":\"PGPB\",\"dwImageDoctypeList\":null,\"dwImageLocList\":null,\"dwPageCountList\":null,\"dwImageDocidList\":null,\"patentFamilyMembers\":null,\"patentFamilyCountry\":null,\"patentFamilySerialNumber\":null,\"documentIdWithDashesDw\":null,\"pfPublDate\":null,\"pfPublDateKwicHits\":null,\"priorityClaimsDate\":null,\"priorityClaimsDateKwicHits\":null,\"pfApplicationSerialNumber\":null,\"pfApplicationDescriptor\":null,\"pfLanguage\":null,\"pfApplicationDate\":null,\"pfApplicationDateKwicHits\":null,\"clippedUri\":null,\"source\":null,\"documentId\":\"<span
+      term=\\\"us20170370151a1\\\" class=\\\"highlight18\\\">US 20170370151 A1</span>\",\"derwentAccessionNumber\":null,\"documentSize\":127241,\"score\":0.0,\"governmentInterest\":null,\"kindCode\":[\"A1\"],\"urpn\":null,\"urpnCode\":null,\"abstractedPatentNumber\":null,\"assigneeCity\":[\"Houston\"],\"assigneePostalCode\":[\"N/A\"],\"assigneeState\":[\"TX\"],\"assigneeTypeCode\":[\"02\"],\"curIntlPatentClassificationPrimary\":[\"E21B7/04
+      20060101\"],\"curIntlPatentClassificationPrimaryDateKwicHits\":null,\"designatedStates\":null,\"examinerGroup\":null,\"issuedUsCrossRefClassification\":null,\"jpoFtermCurrent\":null,\"languageOfSpecification\":null,\"chosenDrawingsReference\":null,\"derwentClass\":null,\"inventionTitleHighlights\":null,\"cpcOrigInventiveClassificationHighlights\":[\"E21B7/04
+      20130101\",\"G05B15/02 20130101\",\"E21B44/00 20130101\",\"E21B47/022 20130101\"],\"cpcInventiveDateKwicHits\":null,\"cpcOrigAdditionalClassification\":null,\"cpcAdditionalDateKwicHits\":null,\"curIntlPatentClssficationSecHighlights\":null,\"fieldOfSearchClassSubclassHighlights\":null,\"cpcCombinationSetsCurHighlights\":null,\"applicantCountry\":[\"US\"],\"applicantCity\":[\"Houston\"],\"applicantState\":[\"TX\"],\"applicantZipCode\":[\"N/A\"],\"applicantAuthorityType\":[\"assignee\"],\"applicantDescriptiveText\":null,\"applicationSerialNumber\":[\"540593\"],\"inventorCity\":[\"Houston\",\"Katy\",\"Houston\",\"Cleveland\"],\"inventorState\":[\"TX\",\"TX\",\"TX\",\"TX\"],\"inventorPostalCode\":[\"N/A\",\"N/A\",\"N/A\",\"N/A\"],\"standardTitleTermsHighlights\":null,\"primaryExaminerHighlights\":null,\"continuityData\":[\"parent
+      US continuation-in-part 14627581 20150220 PENDING \\n child US 15540593\",\"us-provisional-application
+      US 62097644 20141230\"],\"inventors\":null,\"uspcFullClassification\":null,\"uspcCodeFmtFlattened\":null,\"ipcCode\":null,\"applicationNumberHighlights\":[\"15/540593\"],\"dateProduced\":\"2017-12-12T00:00:00Z\",\"auxFamilyMembersGroupTempPlaceHolder\":null,\"priorityCountryCode\":null,\"cpcCurAdditionalClassification\":null,\"internationalClassificationMain\":null,\"internationalClassificationSecondary\":null,\"internationalClassificationInformational\":null,\"europeanClassification\":null,\"europeanClassificationMain\":null,\"europeanClassificationSecondary\":null,\"lanuageIndicator\":null,\"intlPubClassificationPrimary\":[\"E21B7/04
+      20060101 E21B007/04\"],\"intlPubClassificationPrimaryDateKwicHits\":null,\"intlPubClassificationSecondary\":[\"E21B44/00
+      20060101 E21B044/00\",\"E21B47/022 20120101 E21B047/022\",\"G05B15/02 20060101
+      G05B015/02\"],\"intlPubClassificationSecondaryDateKwicHits\":null,\"publicationDate\":null,\"derwentWeekInt\":0,\"derwentWeek\":null,\"currentUsOriginalClassification\":\"1/1\",\"currentUsCrossReferenceClassification\":null,\"locarnoClassification\":null,\"equivalentAbstractText\":null,\"hagueIntlRegistrationNumber\":null,\"hagueIntlFilingDate\":null,\"hagueIntlFilingDateKwicHits\":null,\"hagueIntlRegistrationDate\":null,\"hagueIntlRegistrationDateKwicHits\":null,\"hagueIntlRegistrationPubDate\":null,\"hagueIntlRegistrationPubDateKwicHits\":null,\"curIntlPatentClassificationNoninvention\":null,\"curIntlPatentClassificationNoninventionDateKwicHits\":null,\"curIntlPatentClassificationSecondary\":[\"E21B44/00
+      20060101\",\"G05B15/02 20060101\",\"E21B47/022 20120101\"],\"curIntlPatentClassificationSecondaryDateKwicHits\":null,\"abstractHtml\":\"Embodiments
+      of systems and methods to control directional drilling in borehole drilling
+      for hydrocarbon wells are disclosed. An actual toolface orientation measurement
+      value and an actual downhole torque on bit (DTOB) or actual downhole weight
+      on bit (DWOB) measurement value for a drill string positioned in a borehole
+      are determined. Responsive to a comparison of target measurement values and
+      actual measurement values, error values are determined. A control command for
+      one or more of a top drive, a drawworks, and a mud pump responsive to the DTOB
+      or DWOB error value and the toolface orientation error value is determined.
+      Additionally, one or more of the top drive, the drawworks, and the mud pump
+      are operated responsive to the control command thereby to correct a toolface
+      orientation of the drill string.\",\"descriptionHtml\":\"BRIEF DESCRIPTION OF
+      DRAWINGS<br />[0024] These and other features, aspects, and advantages of the
+      present invention will become better understood with regard to the following
+      descriptions, claims, and accompanying drawings. It is to be noted, however,
+      that the drawings illustrate only several embodiments of the invention and are
+      therefore not to be considered limiting of the invention's scope as it can admit
+      to other equally effective embodiments.<br />[0025] <figref idref=\\\"DRAWINGS\\\">FIG.
+      1</figref> is a schematic diagram of a system according to an embodiment of
+      the invention.<br />[0026] <figref idref=\\\"DRAWINGS\\\">FIG. 2</figref> is
+      a schematic diagram of a system according to an embodiment of the invention.<br
+      />[0027] <figref idref=\\\"DRAWINGS\\\">FIG. 3</figref> is a schematic diagram
+      of a method according to an embodiment of the invention.<br />[0028] <figref
+      idref=\\\"DRAWINGS\\\">FIG. 4</figref> is a schematic diagram of a method according
+      to an embodiment of the invention.<br />[0029] <figref idref=\\\"DRAWINGS\\\">FIG.
+      5</figref> is a schematic diagram of a system according to an embodiment of
+      the invention.<br />[0030] <figref idref=\\\"DRAWINGS\\\">FIG. 6</figref> is
+      a schematic diagram of a system according to an embodiment of the invention.<br
+      />[0031] <figref idref=\\\"DRAWINGS\\\">FIG. 7</figref> is a schematic diagram
+      of a system according to an embodiment of the invention.<br />[0032] <figref
+      idref=\\\"DRAWINGS\\\">FIG. 8A</figref> is a schematic diagram of a system according
+      to an embodiment of the invention.<br />[0033] <figref idref=\\\"DRAWINGS\\\">FIG.
+      8B</figref> is a schematic diagram of a system according to an embodiment of
+      the invention.<br />[0034] <figref idref=\\\"DRAWINGS\\\">FIG. 9</figref> is
+      a schematic diagram of a system according to an embodiment of the invention.<br
+      />[0035] <figref idref=\\\"DRAWINGS\\\">FIG. 10</figref> is a schematic diagram
+      of a method according to an embodiment of the invention.<br />[0036] <figref
+      idref=\\\"DRAWINGS\\\">FIG. 11</figref> is a schematic diagram of a system according
+      to an embodiment of the invention.<br />DETAILED DESCRIPTION<br />[0037] So
+      that the manner in which the features and advantages of the embodiments of systems,
+      computer-readable media, interfaces, and methods of the present invention, as
+      well as others, which will become apparent, may be understood in more detail,
+      a more particular description of the embodiments of systems, computer-readable
+      media, interfaces, and methods of the present invention briefly summarized above
+      may be had by reference to the embodiments thereof, which are illustrated in
+      the appended drawings, which form a part of this specification. It is to be
+      noted, however, that the drawings illustrate only various embodiments of the
+      embodiments of systems, computer-readable media, interfaces, and methods of
+      the present invention and are therefore not to be considered limiting of the
+      embodiments of systems, computer-readable media, interfaces, and methods of
+      the present invention's scope as it may include other effective embodiments
+      as well.<br />[0038] Systems, methods, and computer-readable media for autonomous
+      direct controlled steering in directional drilling can use substantially online
+      data transmission (that is, data transmission that can be accomplished during
+      drilling) to take drilling parameter measurements at one or more downhole locations.
+      Wired drill pipe, for example, can enable online data transmission, as can additional
+      or other hardware and signals, as will be understood by those skilled in the
+      art. These measurements can be used, along with data validation and reconciliation
+      techniques, to produce reliable online information from downhole and surface
+      variables in real-time intervals. Further, such direct control in autonomous
+      directional drilling can be based on joint control of downhole torque on bit
+      (DTOB) and toolface orientation while taking into consideration the coupling
+      dynamics between torque and angular displacement in slide drilling. Additionally,
+      control methods can adaptively predict the impact of changing downhole torque
+      on the toolface orientation and can compensate accordingly for that impact in
+      advance before it can influence the toolface angular displacement. In some instances,
+      a closed-loop control of directional drilling can include a first set of control
+      operations that ensure stability and robustness of automated directional drilling
+      against a wide range of external disturbances, measurement errors, and unknown
+      lithology and hydraulic conditions. Such a first set of control operations can
+      be implemented fully either in a downhole device or in a surface application.
+      Further, such a first set of control operations can be executed by a controller
+      to issue operating commands to a drilling equipment system (including, for example,
+      one or more of a rotating system, a hoisting system, a circulating system, and
+      a downhole rotary steerable system (RSS)) that can either directly or indirectly
+      affect one or more drilling parameters. Additionally, in some circumstances,
+      a closed-loop control of directional drilling also can include a second set
+      of control operations that can evaluate the drilling operating conditions and
+      adaptively modify the first set of control operations thereby to alter the manner
+      of issuing operating commands to one or more of a rotating system, a hoisting
+      system, a circulating system, and a downhole RSS. The second set of control
+      operations can include online adjusting the control parameters used as input
+      to the first set of control operations, as well as choosing a suitable control
+      structure from a database based on one or more if-then scenarios. Still further,
+      a closed-loop control of directional drilling also can include a third set of
+      control operations that can determine an optimal rate of penetration (ROP) online
+      to enhance the overall directional drilling performance by estimating short-
+      to mid-term future values of a preselected set of downhole variables and by
+      solving a set of parametric constrained optimization problems. Each set of control
+      operations can be associated with one or more separate controllers or other
+      computing devices, or one or more sets of control operations can be associated
+      with the same controller or other computing devices.<br />[0039] Embodiments
+      of the invention can include, for example, systems to control directional drilling
+      in borehole drilling for hydrocarbon wells. A system <b>100</b> according to
+      an embodiment, for instance, can relate to a borehole <b>102</b> for a hydrocarbon
+      well extending from a surface into subterranean material, as illustrated in
+      <figref idref=\\\"DRAWINGS\\\">FIG. 1</figref>, for example. Such a system <b>100</b>
+      can include a drill string <b>104</b> positioned within the borehole <b>102</b>.
+      A drill string <b>104</b> can include one or more substantially cylindrical
+      segments of drill pipe <b>106</b>, a wire drilling line <b>117</b>, a bottom
+      hole assembly (BHA) <b>108</b>, a drill bit <b>110</b>, and a downhole drive
+      controller <b>112</b> to control and adjust rotation of the drill bit <b>110</b>.
+      A downhole drive controller <b>112</b> can include, for example, a controller
+      associated with the RSS. A drill bit <b>110</b> can be located at the bottom
+      of the BHA <b>108</b>, as illustrated in <figref idref=\\\"DRAWINGS\\\">FIG.
+      1</figref>, for example. A system <b>100</b> further can include a top drive
+      <b>114</b> or other rotating system positioned substantially at the surface
+      and connected to the drill string <b>104</b>. Operation of the top drive <b>114</b>
+      can rotate the drill string <b>104</b> within the borehole <b>102</b> along
+      an axis substantially parallel to the walls of the borehole <b>102</b>. Such
+      a top drive <b>114</b> can be a device or assembly made up of one or more components
+      or machines (including, for example, one or more motors, one or more gears,
+      and a rotary mechanism) that is operable to rotate the drill string <b>104</b>
+      within the borehole <b>102</b>. In addition, a system <b>100</b> can include
+      a drawworks <b>116</b> or other hoisting system positioned substantially at
+      the surface and connected to the drill string <b>104</b>. The drawworks <b>116</b>
+      can include a substantially cylindrical spool around which the wire drilling
+      line <b>117</b> can be wound. Further, the drawworks <b>116</b> also can include
+      a pulley <b>119</b> and a brake to inhibit unwinding of the wire drilling line
+      <b>117</b> from the spool. Operation of the drawworks <b>116</b> can rotate
+      the spool thereby to extend the wire drilling line <b>117</b> into the borehole
+      <b>102</b> and, alternatively, to retract the wire drilling line <b>117</b>
+      from the borehole <b>102</b>. That is, operation of the drawworks <b>116</b>
+      thereby can lower the drill string <b>104</b> into the borehole <b>102</b> and
+      alternatively can reel the drill string <b>104</b> in from the borehole <b>102</b>.
+      Consequently, operation of the drawworks <b>116</b> can control ROP of the drill
+      string <b>104</b>. The drawworks <b>116</b> can be a device or assembly made
+      up of one or more components or machines (including, for example, the wire drilling
+      line <b>117</b>, one or more spools, one or more pulleys <b>119</b>, and one
+      or more brakes) that is operable to hoist the drill string <b>104</b> in and
+      out of the borehole <b>102</b>. A system <b>100</b> also can include a mud pump
+      <b>118</b> or other circulating system positioned substantially at the surface
+      and connected to the drill string <b>104</b>. Operation of the mud pump <b>118</b>
+      can pump a drilling fluid through the one or more segments of drill pipe <b>106</b>
+      and the BHA <b>108</b> of the drill string <b>104</b> to the drill bit <b>110</b>.
+      That is, such a mud pump <b>118</b> (or another circulating system) can pump
+      a drilling fluid down via the drill pipe <b>106</b> where the drilling fluid
+      subsequently can exit the drill string <b>104</b> via orifices in the drill
+      bit <b>110</b> and then flow upwardly to the surface through the annulus of
+      the borehole <b>102</b>, as will be understood by those skilled in the art.<br
+      />[0040] The drill bit <b>110</b>, the downhole drive controller <b>112</b>,
+      a sensor assembly <b>126</b>, the drill pipe <b>106</b>, the top drive <b>114</b>
+      (or other rotating system), the drawworks <b>116</b> (or other hoisting system),
+      the mud pump <b>118</b> (or other circulating system), and any other drilling
+      equipment (including those not illustrated in the example depicted in <figref
+      idref=\\\"DRAWINGS\\\">FIG. 1</figref>) each can include one or more high sampling
+      rate drilling parameter sensors. For example, a system <b>100</b> can include
+      a first set of one or more sensors positioned along the drill string <b>104</b>
+      thereby defining one or more downhole sensors <b>120</b> (sometimes called downhole
+      parameter sensors). As illustrated, downhole sensors <b>120</b> are positioned
+      on or at the BHA <b>108</b> but can be positioned in other locations, as well,
+      and need not be positioned in the locations illustrated in the example depicted
+      in <figref idref=\\\"DRAWINGS\\\">FIG. 1</figref>. A system <b>100</b> also
+      can include a second set of one or more sensors positioned at the surface thereby
+      defining one or more surface sensors <b>122</b>. As illustrated, surface sensors
+      <b>122</b> are rig-mounted sensors and positioned at the top drive <b>114</b>,
+      the drawworks <b>116</b>, and the mud pump <b>118</b>, but surface sensors <b>122</b>
+      can be positioned at other locations, as well, and need not be positioned in
+      the locations illustrated in the example depicted in <figref idref=\\\"DRAWINGS\\\">FIG.
+      1</figref>. A drilling parameter sensor, such as a downhole sensor <b>120</b>
+      or a surface sensor <b>122</b>, can be any sensor operable to measure and provide
+      raw data regarding at least one drilling parameter. Such a sensor can be mounted
+      to any location available to sense the drilling parameter being monitored. Exemplary
+      downhole sensors <b>120</b> can include (but are not limited to) direction measurement
+      sensors, formation and wellbore evaluation sensors, sensors for determining
+      the performance and physical condition of the BHA <b>108</b> and the drill bit
+      <b>110</b>, mud motor parameter sensors, and sensors for determining the operating
+      condition of the drill string <b>104</b>, as will be understood by those skilled
+      in the art. Exemplary surface sensors <b>122</b> can include (but are not limited
+      to) sensors for measuring variables related to the drill string <b>104</b>,
+      such as load, torque, position, velocity, acceleration, and vibration, as well
+      as sensors for measuring the fluid-related variables such as mud pressure, mud
+      flow rate, and casing annular pressure and temperature, as will be understood
+      by those skilled in the art.<br />[0041] A system <b>100</b> also can include
+      a controller <b>130</b> positioned at the surface. A controller <b>130</b> can
+      include one or more processors <b>132</b> and can be in communication with the
+      downhole drive controller <b>112</b>, the top drive <b>114</b>, the drawworks
+      <b>116</b>, the mud pump <b>118</b>, the one or more downhole sensors <b>120</b>,
+      and the one or more surface sensors <b>122</b>, as illustrated in <figref idref=\\\"DRAWINGS\\\">FIG.
+      5</figref>, for example. A downhole communication hub <b>128</b> can be operable
+      to collect data from different downhole sensors <b>120</b> and to transmit the
+      collected data to the surface via a substantially online data transmission system
+      <b>124</b>, in some circumstances, as illustrated in <figref idref=\\\"DRAWINGS\\\">FIG.
+      1</figref>, for example. The communications hub <b>128</b> also can be operable
+      to receive operating instructions and control signals from the surface and relay
+      those signals to one or more downhole sensors <b>120</b>, the downhole drive
+      controller <b>112</b>, or other downhole tools. Such a substantially online
+      data transmission system <b>124</b> can be any system suitable for the continuous
+      transmission of measurement data, control commands, and other signals between
+      downhole and the surface in real-time intervals of, for example, one second.
+      Exemplary communication methods can include, but are not limited to, direct
+      communication via electric signals along wired drill pipe (such as drill pipe
+      <b>106</b>), mud-pulse telemetry, fiber optics, wireless signals, acoustic signals,
+      and electromagnetic signals. For example, a data transmission system <b>124</b>
+      can include a wired drill pipe <b>106</b> that in turn includes conductors coupled
+      to the drill pipe <b>106</b> to provide a direct link between downhole and the
+      surface. For example, in some instances, the controller <b>130</b> can be in
+      communication with the downhole drive controller <b>112</b> and the one or more
+      downhole sensors <b>120</b> through the one or more segments of drill pipe <b>106</b>,
+      for example, as illustrated in <figref idref=\\\"DRAWINGS\\\">FIG. 5</figref>.
+      The data transmission system <b>124</b> can be connected to a surface data network
+      (such as a network to which the controller <b>130</b> also is connected) via
+      a surface communications link that can be integrated into a component such as
+      a swivel, internal blow out preventer (IBOP) or into an instrumented saver sub
+      coupled to the drill string <b>104</b>. Consequently, the controller <b>130</b>
+      can be in communication with the data transmission system <b>124</b>, as illustrated
+      in <figref idref=\\\"DRAWINGS\\\">FIG. 1</figref>, for example.<br />[0042]
+      A system <b>100</b> also can include a non-transitory computer-readable medium
+      (such as a memory <b>136</b>) in communication with the one or more processors
+      <b>132</b> of the controller <b>130</b>. The computer-readable medium <b>136</b>
+      can have one or more computer programs stored thereon that, when executed by
+      the one or more processors <b>132</b>, cause the system <b>100</b> to perform
+      certain steps. For example, the system <b>100</b> can receive user input from
+      a user, such as a directional driller, before performing additional steps. For
+      instance, a system <b>100</b> can determine a target downhole torque on bit
+      (DTOB) measurement value (that is, a targeted DTOB value to be measured by one
+      or more downhole sensors <b>120</b>) responsive to receipt of user input from
+      a user computing device in communication with the controller <b>130</b>. Further,
+      for example, a user such as a directional driller can preselect a desired or
+      target DTOB, or a target DTOB can be calculated from or otherwise determined
+      based on some other preselected target value, such as ROP, WOB, or mud motor
+      differential pressure. As an alternative or in addition to determining a target
+      DTOB, a system <b>100</b> can determine a target downhole WOB (DWOB) measurement
+      value (that is, a targeted DWOB value to be measured by one or more downhole
+      sensors <b>120</b>) responsive to receipt of user input from the user computing
+      device. A system <b>100</b> also can determine a target toolface orientation
+      measurement value (that is, a targeted toolface orientation value to be measured
+      by one or more downhole sensors <b>120</b>) responsive to receipt of the user
+      input from the user computing device. As an alternative to a directional driller's
+      preselection of these target values, any or all of the target values can be
+      automatically computed by a drilling path planner, for example, in some circumstances.<br
+      />[0043] Further, a system <b>100</b> can determine<b>6</b>\u2014responsive
+      to one or more measurements at the one or more downhole sensors <b>120</b>\u2014an
+      actual toolface orientation measurement value (that is, an actual toolface orientation
+      value as measured by one or more downhole sensors <b>120</b>) and one or more
+      of an actual DTOB measurement value (that is, an actual DTOB value as measured
+      by one or more downhole sensors <b>120</b>) and an actual DWOB measurement value
+      (that is, an actual DWOB value as measured by one or more downhole sensors <b>120</b>).
+      For example, when a target DTOB measurement value has been determined, a system
+      <b>100</b> can determine an actual DTOB measurement value; when a target DWOB
+      has been determined, a system <b>100</b> can determine an actual DWOB measurement
+      value. A system <b>100</b> also can determine\u2014responsive to one or more
+      measurements at the one or more surface sensors <b>122</b>\u2014one or more
+      of a current top drive operation measurement value, a current drawworks operation
+      measurement value, and a current mud pump operation measurement value.<br />[0044]
+      In addition, a system <b>100</b> can determine one or more of a DTOB error value
+      and a DWOB error value. For example, when a target DTOB measurement value and
+      an actual DTOB measurement value have been determined, a DTOB error value can
+      be determined responsive to a comparison of the target DTOB measurement value
+      to the actual DTOB measurement value. As an alternative to or in addition to
+      determining a DTOB error value, for example, a DWOB error value can be determined\u2014responsive
+      to a comparison of the target DWOB measurement value to the actual DWOB measurement
+      value\u2014when a target DWOB measurement value and an actual DWOB measurement
+      value have been determined. For example, the actual DTOB measurement value can
+      be compared to the target DTOB measurement value to generate one or more of
+      torque position error (E.sub.TOB), torque velocity error (\u0394E.sub.TOB),
+      and torque acceleration error (\u0394.sup.2E.sub.TOB). Each of these error variables
+      then can be scaled using a corresponding, in some instances nonlinear, scale
+      function (such as, for example, SE.sub.TOB, S\u0394E.sub.TOB, and S\u0394.sup.2E.sub.TOB)
+      that can determine the general sensitivity of control logic with respect to
+      different values of the respective error variable. Likewise, the actual DWOB
+      measurement value can be compared to the target DWOB measurement value to generate
+      one or more of weight position error (E.sub.WOB), weight velocity error (\u0394E.sub.WOB),
+      and weight acceleration error (\u0394.sup.2E.sub.WOB). Each of these error variables
+      then can be scaled using a corresponding, in some instances nonlinear, scale
+      function (such as, for example, SE.sub.WOB, S\u0394E.sub.WOB, and S\u0394.sup.2E.sub.WOB)
+      that can determine the general sensitivity of control logic with respect to
+      different values of the respective error variable. Each scale function can be
+      determined analytically or using a knowledge-based approach.<br />[0045] In
+      a similar manner, a system <b>100</b> can determine, responsive to a comparison
+      of the target toolface orientation measurement value and the actual toolface
+      orientation measurement value, a toolface orientation error value. For example,
+      the actual toolface orientation measurement value can be compared to the target
+      toolface orientation measurement value to generate one or more of position error
+      E.sub.toolface, velocity error \u0394E.sub.toolface, and acceleration error
+      \u0394.sup.2E.sub.toolface that then can be scaled using one or more (in some
+      instances, nonlinear) scale functions, such as, for example, SE.sub.toolface,
+      S\u0394E.sub.toolface, and S\u0394.sup.2E.sub.toolface.<br />[0046] A system
+      <b>100</b> then can determine a control command for one or more of the top drive
+      <b>114</b>, the drawworks <b>116</b>, and the mud pump <b>118</b> to correct
+      each of the toolface orientation error value and the one or more of the DTOB
+      error value and the DWOB error value responsive to the one or more of the current
+      top drive operation measurement value, the current drawworks operation measurement
+      value, and the current mud pump operation value, for example. A control command
+      for the top drive <b>114</b> can be responsive to the current top drive operation
+      measurement value, for instance, and a control command for the drawworks <b>116</b>
+      can be responsive to the current drawworks operation measurement value. A control
+      command for the mud pump <b>118</b> can be responsive to the current mud pump
+      operation measurement value. Further, a system <b>100</b> can operate one or
+      more of the top drive <b>114</b>, the drawworks <b>116</b>, and the mud pump
+      <b>118</b> responsive to the control command, which can include one or more
+      commands for the respective equipment. Operation of the drawworks <b>116</b>
+      can include altering an ROP, and consequently a WOB, measurement value at the
+      surface. Further, operation of the top drive <b>114</b> can include altering
+      one or more of an angle of the drill string <b>104</b> with respect to the surface
+      and a rotational speed of the drill string <b>104</b> within the borehole <b>102</b>.
+      In addition, operation of the mud pump <b>118</b> can include altering a flow
+      rate measurement value of the drilling fluid at the surface and, as a result,
+      a fluid differential pressure (DiffP) at the surface. Consequently, operation
+      of one or more of the top drive <b>114</b>, the drawworks <b>116</b>, and the
+      mud pump <b>118</b> responsive to the control command thereby eventually can
+      correct one or more of a toolface orientation of the drill string <b>104</b>,
+      a DTOB, and a DWOB.<br />[0047] A system <b>100</b> also can perform data validation
+      and reconciliation operations. The raw measurement data obtained by downhole
+      sensors <b>120</b> and surface sensors <b>122</b> may not be fully correct as
+      a result of measurement errors. Measurement errors can be categorized into two
+      basic types: (1) random errors that can result from intrinsic sensor accuracy
+      and (2) gross or systematic errors that can result from sensor calibration or
+      faulty data transmission. Data validation and reconciliation operations can
+      use filtering and estimation techniques to produce a single consistent set of
+      data that represent the most likely value of a drilling parameter in real-time
+      intervals of, for example, one second, while the raw data measured by the downhole
+      sensors <b>120</b> and surface sensors <b>122</b> can exceed, for example, 50
+      Hz in sampling rate.<br />[0048] Exemplary data validation and reconciliation
+      operations are illustrated, for instance, in <figref idref=\\\"DRAWINGS\\\">FIG.
+      3</figref>. For example, in some circumstances, determining the actual toolface
+      measurement value and the one or more of the actual DTOB measurement value and
+      the actual DWOB measurement value can include validating <b>204</b> the one
+      or more measurements at the one or more downhole sensors <b>120</b> (such as
+      high sampling rate raw measurement data <b>202</b>) thereby to produce one or
+      more validated measurements, as illustrated in <figref idref=\\\"DRAWINGS\\\">FIG.
+      3</figref>, for example. Validating <b>204</b> the one or more measurements,
+      which can have been sampled at a high rate, can provide certain improvements
+      to the fitness, accuracy, and consistency of the measured values. Exemplary
+      validation <b>204</b> operations can include, but are not limited to, examining
+      data for consistency within a minimum and maximum expected range, discarding
+      isolated data that deviate significantly from neighboring data measurements,
+      cleaning data from spike faults when the rate of change in a gradient of measurement
+      data over a specific period of time is much greater than expected, and monitoring
+      stuck-at fault or frozen data where a series of measurement data remain with
+      little or no variation for a period of time greater than expected.<br />[0049]
+      Data validation and reconciliation operations also can include filtering <b>208</b>
+      the validated data. For example, determining the actual toolface measurement
+      value and the one or more of the actual DTOB measurement value and the actual
+      DWOB measurement value also can include filtering <b>208</b> the one or more
+      validated measurements thereby to produce one or more filtered measurements.
+      Filtering <b>208</b> the one or more validated measurements can attenuate noise
+      components of the measurement data. Exemplary filtering <b>208</b> methods can
+      include, but are not limited to, taking the simple average of measured values
+      over a specific time period, taking the moving average based on a specific moving
+      time window, taking the exponentially weighted moving average that places greater
+      importance on more recent data by discounting older data in an exponential manner,
+      using local regression methods, and applying Savitzky-Golay filtering.<br />[0050]
+      In addition, data validation and reconciliation operations can include reconciling
+      <b>210</b> the filtered data. For instance, determining the actual toolface
+      measurement value and the one or more of the actual DTOB measurement value and
+      the actual DWOB measurement value further can include reconciling <b>210</b>
+      the one or more filtered measurements thereby to produce one or more reconciled
+      measurements. Reconciling <b>210</b> the one or more filtered measurements can
+      correct random errors. From a statistical viewpoint, a main assumption in data
+      reconciliation can be that no gross errors exist in the set of measurements,
+      since gross errors can bias the reconciliation results and reduce the robustness
+      of the reconciliation. Given n measurements for each variable in a set of m
+      variables, data reconciliation can be expressed as an optimization problem of
+      the following form:<br /><maths id=\\\"MATH-US-00001\\\" >[00001]<math overflow=\\\"scroll\\\">
+      <mrow> <mrow> <mi>minimize</mi> <mo>.Math.</mo> <mstyle> <mspace height=\\\"0.8ex\\\"
+      width=\\\"0.8em\\\"/> </mstyle> <mo>.Math.</mo> <mrow> <mi>f</mi> <mo>\uE8A0</mo>
+      <mrow> <mo>(</mo> <msup> <mi>y</mi> <mo>*</mo> </msup> <mo>)</mo> </mrow> </mrow>
+      </mrow> <mo>=</mo> <mrow> <munderover> <mo>.Math.</mo> <mrow> <mi>p</mi> <mo>=</mo>
+      <mn>1</mn> </mrow> <mi>m</mi> </munderover> <mo>.Math.</mo> <mrow> <munderover>
+      <mo>.Math.</mo> <mrow> <mi>i</mi> <mo>=</mo> <mn>1</mn> </mrow> <mi>n</mi> </munderover>
+      <mo>.Math.</mo> <msup> <mrow> <mo>(</mo> <mfrac> <mrow> <msubsup> <mi>y</mi>
+      <mi>i</mi> <mi>p</mi> </msubsup> <mo>-</mo> <msup> <mi>y</mi> <mrow> <mi>p</mi>
+      <mo>*</mo> </mrow> </msup> </mrow> <msup> <mi>\u03C3</mi> <mi>p</mi> </msup>
+      </mfrac> <mo>)</mo> </mrow> <mn>2</mn> </msup> </mrow> </mrow> </mrow></math></maths><maths
+      id=\\\"MATH-US-00001-2\\\" num=\\\"00001.2\\\"><math overflow=\\\"scroll\\\">
+      <mrow> <mrow> <mrow> <mi>subject</mi> <mo>.Math.</mo> <mstyle> <mspace height=\\\"0.8ex\\\"
+      width=\\\"0.8em\\\"/> </mstyle> <mo>.Math.</mo> <mi>to</mi> <mo>.Math.</mo>
+      <mstyle> <mspace height=\\\"0.8ex\\\" width=\\\"0.8em\\\"/> </mstyle> <mo>.Math.</mo>
+      <msub> <mi>y</mi> <mi>min</mi> </msub> </mrow> <mo>\u2264</mo> <msup> <mi>y</mi>
+      <mo>*</mo> </msup> <mo>\u2264</mo> <mrow> <msub> <mi>y</mi> <mi>max</mi> </msub>
+      <mo>.Math.</mo> <mstyle> <mspace height=\\\"0.8ex\\\" width=\\\"0.8em\\\"/>
+      </mstyle> <mo>.Math.</mo> <mi>and</mi> <mo>.Math.</mo> <mstyle> <mspace height=\\\"0.8ex\\\"
+      width=\\\"0.8em\\\"/> </mstyle> <mo>.Math.</mo> <mrow> <mi>F</mi> <mo>\uE8A0</mo>
+      <mrow> <mo>(</mo> <msup> <mi>y</mi> <mo>*</mo> </msup> <mo>)</mo> </mrow> </mrow>
+      </mrow> </mrow> <mo>=</mo> <mn>0</mn> </mrow></math></maths><br />where f(y*)
+      can be called a measurement penalty function, a can be the variance of the random
+      noise, y.sub.min and y.sub.max can be bounds on the measured variables, and
+      F(y*)=0 can represent a set of model equations <b>206</b> that express the general
+      structure of the process as functions of reconciled data. Models <b>206</b>
+      can have different levels of detail. For example, a model <b>206</b> can incorporate
+      simple static material balances or advanced dynamic models.<br />[0051] Data
+      validation and reconciliation operations also can include verifying <b>212</b>
+      the reconciled data. For example, determining the actual toolface measurement
+      value and the one or more of the actual DTOB measurement value and the actual
+      DWOB measurement value also can include verifying <b>212</b> the one or more
+      reconciled measurements thereby to produce one or more verified measurements.
+      Result verification <b>212</b> can include, but is not limited to, measurement
+      penalty analysis for determining the reliability of the reconciliation and bound
+      checks to ensure that the reconciled values lie in a certain reasonable bounds.
+      Result verification <b>212</b> can utilize analytical redundancy-based methods
+      where an analytical model <b>206</b> is used to provide estimates of measured
+      variables. This redundancy then can be used to detect any discrepancy or residual
+      between the reconciled data and expected values. The analytical model <b>206</b>
+      can be mathematical or knowledge-based. Exemplary model-based techniques can
+      include, but are not limited to, an observer-based approach, a parity-space
+      approach, a parameter identification-based approach, and a Kalman filter approach.
+      After result verification <b>212</b>, data validation and reconciliation operations
+      can include determining whether a valid result has been produced <b>214</b>.
+      If a valid result has not been produced at step <b>214</b>, data reconciliation
+      <b>210</b> can begin again. If a valid result has been produced at step <b>214</b>,
+      however, data validation and reconciliation operations can proceed.<br />[0052]
+      Data validation and reconciliation operations still further can include detecting
+      <b>216</b> and remediating <b>220</b> gross errors in the verified data. For
+      example, determining the actual toolface measurement value and the one or more
+      of the actual DTOB measurement value and the actual DWOB measurement value can
+      include remediating gross errors <b>220</b> in the one or more verified measurements
+      thereby to produce the actual toolface measurement value and the one or more
+      of the actual DTOB measurement value and the actual DWOB measurement value.
+      Gross error detection <b>216</b> can indicate whether a gross error exists somewhere
+      in the set of measurements at step <b>218</b>, for instance. In some circumstances,
+      it can be assumed that the measurement errors are normally distributed. Then,
+      if no gross errors exist in the set of measurements, each penalty term in f(y*)
+      can be a random variable that is normally distributed with a mean equal to 0
+      and a variance equal to 1. By consequence, the measurement penalty function
+      f(y*) can be a random variable which follows a chi-square distribution, since
+      it is the sum of the square of normally distributed random variables. This can
+      lead to an exemplary gross error detection approach that can include comparing
+      the value of the objective function f(y*) with a given percentile P.sub.\u03B1
+      of the probability density function of a chi-square distribution that can give
+      an indication of whether a gross error exists. In such an example, if f(y*)\u2266P.sub.90,
+      no gross errors exists with a 90% probability. Another exemplary gross error
+      detection approach can include an individual test that compares each penalty
+      term in f(y*) with the critical values of the normal distribution, and if the
+      i-th penalty term is outside, for example, the 90% confidence interval of the
+      normal distribution, then this measurement has a gross error with 90% probability.
+      If no gross error exists somewhere in the set of measurements at step <b>218</b>,
+      data validation and reconciliation operations can conclude and produce low sampling
+      rate reconciled data <b>222</b>. If a gross error exists somewhere in the set
+      of measurements at step <b>218</b>, gross remediation <b>220</b> can begin.<br
+      />[0053] Gross error remediation <b>220</b> can include either discarding or
+      relaxing measurement systematic errors that can bias the reconciliation results.
+      In some circumstances, gross error remediation <b>220</b> can include determining
+      the measurement data that are biased by a systematic error and discarding these
+      data from the data set. The determination of the measurement to be discarded
+      can be based on different kinds of penalty terms that express the degree to
+      which the measured values deviate from the reconciled values. After gross errors
+      have been discarded from the measurement data, data reconciliation <b>210</b>
+      can be performed without these erroneous data that can spoil the reconciliation
+      process. In some instances, the elimination can be repeated until no gross error
+      exists in the set of reconciled data. Further, in some circumstances where it
+      is not possible to determine which measurement data are responsible for systematic
+      errors, gross error remediation <b>220</b> can rely on relaxing the estimate
+      for the uncertainty of suspicious measurements so that the reconciled values
+      lie within, for example, the 90% confidence interval.<br />[0054] In some circumstances,
+      a control command can be responsive to one or more dynamic models of the drill
+      string <b>104</b> within the borehole <b>102</b>. For example, the actual toolface
+      orientation measurement value and the one or more of the actual DTOB measurement
+      value and the actual DWOB measurement value can be used to estimate a drill
+      string torsional compliance by analyzing the coupling dynamics between toolface
+      angular displacement and DTOB. In some instances, the torsional compliance can
+      be estimated using a drill string dynamic model that can be mathematical or
+      knowledge-based. In other instances, the torsional compliance can be estimated
+      by calculating the torsional compliance using actual observations at near past
+      times that show the angular toolface displacements as a response to the downhole
+      torque variations. In yet other instances, the torsional compliance can be estimated
+      using a combination of a drill string dynamic model and actual observations,
+      where the actual observations also can be used to update the drill string dynamic
+      model.<br />[0055] Additionally, in some circumstances, the one or more computer
+      programs, when executed by the one or more processors <b>132</b>, can cause
+      the system <b>100</b> to estimate one or more future values of one or more downhole
+      variables and to determine an optimal ROP of the drill string <b>104</b> responsive
+      to a constrained optimization problem. Further, the control command can be responsive
+      to the determined optimal ROP.<br />[0056] A control command can be for each
+      of the top drive <b>114</b>, the drawworks <b>116</b>, and the mud pump <b>118</b>,
+      or for any combination of them. In some circumstances, determining the control
+      command can include using multi-input, multi-output (MIMO) core logic to determine
+      the control command. Further, the MIMO core logic can include a plurality of
+      decision rules, and each of the decision rules can be associated with one or
+      more of: drawworks control, top drive control, and mud pump control. The outcome
+      of each decision rule can be scaled by a weight factor that, according to drilling
+      conditions, can determine the impact of that decision rule on the final control
+      command. An aggregation logic then can be used to combine the weighted results
+      from different decision rules and to produce quantifiable control command(s)
+      for one or more of the top drive <b>114</b>, the drawworks <b>116</b>, and the
+      mud pump <b>118</b>. Exemplary MIMO control logic can include, but is not limited
+      to, a multivariable fuzzy logic controller and a multivariable model predictive
+      controller.<br />[0057] Alternatively, in other circumstances, determining the
+      control command can include using a first single-input, single-output (SISO)
+      control logic to determine the control command for the top drive <b>114</b>
+      and a second SISO control logic to determine the control command for the drawworks
+      <b>116</b>. Exemplary SISO control logic can include, but is not limited to,
+      a conventional proportional-integral-derivative (PID) controller and fuzzy logic
+      controller, as will be understood by those skilled in the art.<br />[0058] For
+      example, exemplary operations of a system or exemplary steps of a method <b>238</b>
+      according to an embodiment are illustrated in <figref idref=\\\"DRAWINGS\\\">FIG.
+      4</figref>. As depicted, inputs can include desired (that is, target) downhole
+      variables <b>240</b>, target toolface orientation <b>242</b>, and real-time
+      information of drilling parameter variables <b>244</b>. Such real-time information
+      of drilling parameter variables <b>244</b> can be obtained from one or more
+      sensors, such as downhole sensors <b>120</b> or surface sensors <b>122</b>.
+      Given the desired downhole variables <b>240</b>, one or more of a target DWOB
+      and a target DTOB <b>246</b> can be determined. Further, given the real-time
+      information of drilling parameter variables <b>244</b>, one or more of an actual
+      DWOB and an actual DTOB <b>248</b>, as well as an actual toolface orientation
+      <b>250</b>, can be determined. Given one or more of a target DWOB and a target
+      DTOB <b>246</b> and one or more of an actual DWOB and an actual DTOB <b>248</b>,
+      one or more of a DWOB scaled error and a DTOB scaled error <b>252</b> can be
+      determined. Further, given the target toolface orientation <b>242</b> and the
+      actual toolface orientation <b>250</b>, a toolface orientation scaled error
+      <b>254</b> can be determined. A system states and disturbance observer <b>256</b>
+      then can operate responsive to the actual toolface orientation <b>250</b> and
+      one or more of the actual DWOB and the actual DTOB <b>248</b>. Further, a steering
+      compliance estimator <b>258</b> can estimate the drill string torsional compliance
+      responsive to the actual toolface orientation <b>250</b> and one or more of
+      the actual DWOB and the actual DTOB <b>248</b>. Given the toolface orientation
+      scaled error <b>254</b>, one or more of DWOB scaled error and DTOB scaled error
+      <b>252</b>, estimate from the steering compliance estimator <b>258</b>, and
+      input from the system states and disturbance observer <b>256</b>, multi-input
+      multi-output (MIMO) control logic <b>260</b> can operate to determine a command
+      <b>262</b> to send to one or more drilling equipment driving systems. Output
+      of the MIMO control logic <b>260</b> also can feed back into the system states
+      and disturbance observer <b>256</b> to be used for subsequent time-step calculations.<br
+      />[0059] MIMO control logic can take into account the mutual effects among downhole
+      torque, toolface orientation, top drive angle, and ROP, for example, as illustrated
+      in <figref idref=\\\"DRAWINGS\\\">FIG. 7</figref> and <figref idref=\\\"DRAWINGS\\\">FIG.
+      8</figref>. For instance, MIMO control logic <b>302</b> can utilize input from
+      a user through a graphical user interface (GUI) or another application <b>304</b>,
+      as well as input from one or more drilling sensors <b>306</b>, as illustrated
+      in <figref idref=\\\"DRAWINGS\\\">FIG. 7</figref>. Input from a user through
+      a graphical user interface (GUI) or another application <b>304</b> can include,
+      for example, toolface orientation (TF) setpoint (that is, target toolface orientation),
+      DTOB setpoint (that is, target DTOB), DWOB setpoint (that is, target DWOB),
+      maximum ROP, maximum DiffP, slide length, maximum DTOB, and pipe tally, as will
+      be understood by those skilled in the art. Further, input from one or more downhole
+      drilling sensors <b>306</b> (such as downhole sensors <b>120</b>, for example)
+      can include actual toolface orientation, actual DTOB, actual DWOB, and actual
+      downhole differential pressure (DDiffP), as will be understood by those skilled
+      in the art. Still further, input from one or more surface drilling sensors <b>306</b>
+      (such as surface sensors <b>122</b>, for example) can include top drive (TD)
+      orientation, ROP, WOB, DiffP, block height, hole depth, drill bit position,
+      and survey, as will be understood by those skilled in the art. The output of
+      the MIMO control logic <b>302</b> can include control commands to a top drive
+      <b>308</b> regarding top drive orientation. Such control commands <b>308</b>
+      can include one or more of angular position, throttle, and torque. Further,
+      the output of the MIMO control logic <b>302</b> can include commands to a drawworks
+      <b>310</b> regarding ROP. Such drawworks commands <b>310</b> can include drilling
+      line payoff, WOB, and DiffP. Still further, the output of the MIMO control logic
+      <b>302</b> can include commands to a mud pump <b>311</b> regarding mud flow
+      that can include mud pump strokes. For example, a controller <b>318</b> using
+      the MIMO core logic <b>302</b> can utilize target DTOB <b>314</b> and a target
+      toolface orientation <b>316</b> as inputs to generate a surface ROP command
+      <b>320</b> that can be sent to a drawworks <b>310</b>, as well as a surface
+      top drive orientation command <b>322</b> that can be sent to a top drive <b>308</b>,
+      as illustrated in <figref idref=\\\"DRAWINGS\\\">FIG. 8A</figref>, for example.
+      Top drive <b>308</b> can provide feedback regarding top drive orientation <b>324</b>
+      to the MIMO control logic <b>302</b>. In the drilling process <b>312</b>, the
+      operation of the drawworks <b>310</b> and top drive <b>308</b> then can modify
+      DTOB and toolface orientation to produce updated DTOB <b>328</b> and TF <b>330</b>.
+      These updated drilling parameter measurements then can be fed back into the
+      MIMO control logic <b>302</b> to be used for subsequent time-step calculations.
+      In some instances, the controller <b>318</b> also can send a mud flow command
+      <b>321</b> to a mud pump <b>309</b>, which can feed into the MIMO control logic
+      <b>302</b>, as illustrated in <figref idref=\\\"DRAWINGS\\\">FIG. 8B</figref>,
+      for example.<br />[0060] As an alternative to MIMO control logic <b>302</b>,
+      two disjointed SISO controllers (one for each of top drive orientation and surface
+      ROP) can be used, as illustrated in <figref idref=\\\"DRAWINGS\\\">FIG. 9</figref>,
+      for example. Each independent SISO controller can compare its setpoint with
+      its corresponding downhole actual value and accordingly can generate a command
+      to the process. For instance, a SISO control logic performed by a controller
+      associated with TF <b>338</b> can use TF setpoint <b>316</b> and actual TF <b>334</b>
+      as inputs to determine a command to send to a top drive <b>308</b>. Top drive
+      can be used to compensate for error between the TF setpoint <b>316</b> and the
+      actual TF <b>334</b>. That is, operation of the top drive can be used to correct
+      toolface orientation. Similarly, a SISO control logic performed by a controller
+      associated with DTOB <b>340</b> can use DTOB setpoint <b>314</b> and actual
+      DTOB <b>336</b> as inputs to determine a command to send to a drawworks <b>310</b>.
+      Drawworks can be used to compensate for error between the DTOB setpoint <b>314</b>
+      and the actual DTOB <b>336</b>. That is, operation of the drawworks can be used
+      to correct DTOB.<br />[0061] Another system according to an embodiment can include
+      a controller <b>130</b> that includes one or more processors <b>132</b>. A system
+      also can include a non-transitory computer-readable medium <b>136</b> in communication
+      with the one or more processors <b>132</b> of the controller <b>130</b>. The
+      computer-readable medium <b>136</b> can have one or more computer programs stored
+      thereon that, when executed by the one or more processors <b>132</b>, cause
+      the system to determine an actual downhole torque on bit (DTOB) measurement
+      value and an actual toolface orientation measurement value for a drill string
+      <b>104</b> positioned in a borehole <b>102</b> for a hydrocarbon well. As an
+      alternative to or in addition to determining the actual DTOB measurement value,
+      a system can determine a DWOB measurement value; in such circumstances, steps
+      performed by the system related to DTOB can instead be related to DWOB. A system
+      also can determine, responsive to a comparison of a target DTOB measurement
+      value and the actual DTOB measurement value, a DTOB error value. As an alternative
+      to or in addition to determining the DTOB error value, a system can determine
+      a DWOB error value. Further, a system can determine, responsive to a comparison
+      of a target toolface orientation measurement value and the actual toolface orientation
+      measurement value, a toolface orientation error value. In addition, a system
+      can determine a control command for one or more of a top drive <b>114</b> and
+      a drawworks <b>116</b> responsive to the DTOB error value (and/or the DWOB error
+      value) and the toolface orientation error value. A system further can operate
+      one or more of the top drive <b>114</b> and the drawworks <b>116</b> responsive
+      to the control command thereby to correct a toolface orientation of the drill
+      string <b>104</b>.<br />[0062] In some instances, determining the actual DTOB
+      measurement value can include determining an actual DWOB measurement value.
+      Additionally, the actual DTOB measurement value can be a sensor measurement
+      value, and the actual DWOB measurement value can be a sensor measurement value,
+      as well. Further, determining the actual DTOB measurement value and the actual
+      toolface orientation measurement value can be responsive to one or more of:
+      (a) one or more measurements at one or more sensors <b>120</b> positioned within
+      the borehole <b>102</b> and (b) an appropriate estimator, such as a Kalman filter.
+      For example, DTOB and toolface orientation can be obtained or estimated from
+      measurements by downhole sensors <b>120</b> or estimated by an appropriate estimator
+      (such as a Kalman filter, for example) or a combination of both.<br />[0063]
+      The controller <b>130</b> can be in communication with the one or more sensors
+      <b>120</b> through one or more segments of wired drill pipe <b>106</b>, in some
+      circumstances. Further, a system also can determine a current top drive operation
+      measurement value and a current drawworks operation measurement value, and the
+      control command can be responsive to the current top drive operation measurement
+      value and the current drawworks operation measurement value. In some instances,
+      the control command can be for one or more of the top drive <b>114</b>, the
+      drawworks <b>116</b>, and a mud pump <b>118</b>. The one or more computer programs,
+      when executed by the one or more processors <b>132</b>, further can cause the
+      system to determine a current mud pump operation measurement value and to operate
+      the mud pump <b>118</b> responsive to the control command thereby to correct
+      a toolface orientation of the drill string <b>104</b>.<br />[0064] Additionally,
+      in some circumstances, determining the actual DTOB measurement value and the
+      actual toolface measurement value can include validating the one or more measurements
+      at the one or more sensors <b>120</b> thereby to produce one or more validated
+      measurements and filtering the one or more validated measurements thereby to
+      produce one or more filtered measurements. Determining the actual DTOB measurement
+      value and the actual toolface measurement value also can include reconciling
+      the one or more filtered measurements thereby to produce one or more reconciled
+      measurements and verifying the one or more reconciled measurements thereby to
+      produce one or more verified measurements. Further, determining the actual DTOB
+      measurement value and the actual toolface measurement value can include remediating
+      gross errors in the one or more verified measurements thereby to produce the
+      actual DTOB measurement value and the actual toolface measurement value.<br
+      />[0065] Operation of the drawworks <b>116</b> can include altering a weight
+      on bit (WOB) measurement value at a surface of the borehole, and operation of
+      the top drive <b>114</b> can include altering one or more of an angle of the
+      drill string <b>104</b> with respect to the surface and a rotational speed of
+      the drill string <b>104</b> within the borehole <b>102</b>.<br />[0066] Further,
+      the control command can be responsive to one or more dynamic models of the drill
+      string <b>104</b> within the borehole <b>102</b>, and operation of the drawworks
+      <b>116</b> can control ROP of the drill string <b>104</b>. A system also can
+      estimate one or more future values of one or more downhole variables and determine
+      an optimal ROP of the drill string <b>104</b> responsive to a constrained optimization
+      problem. In addition, the control command can be responsive to the determined
+      optimal ROP of the drill string <b>104</b>.<br />[0067] In some circumstances,
+      the one or more computer programs, when executed by the one or more processors
+      <b>132</b>, further can cause the system determine the target toolface orientation
+      measurement value responsive to receipt of user input from a user computing
+      device in communication with the controller <b>130</b> and to determine the
+      target DTOB measurement value (and/or the target DWOB measurement value) responsive
+      to receipt of the user input from the user computing device. Such user input
+      can include, for example, one or more of: a preselected DTOB measurement value,
+      a preselected ROP, a preselected DWOB, and a preselected mud motor differential
+      pressure.<br />[0068] For instance, a user such as a directional driller can
+      select a desired target DTOB measurement value directly. A target DTOB measurement
+      value also can be automatically computed, such as by drilling application software,
+      for example. That is, user input can include a preselected DTOB measurement
+      value.<br />[0069] Further, user input can include a preselected ROP. A desired
+      ROP can be selected by a directional driller or other user, for example, and
+      the target DTOB measurement value can be determined as a function of the desired
+      ROP:<br /><br/><?in-line-formulae description=\\\"In-line Formulae\\\" end=\\\"lead\\\"?>DTOB.sub.desired<i>=g</i>(ROP.sub.desired)<?in-line-formulae
+      description=\\\"In-line Formulae\\\" end=\\\"tail\\\"?><br />[0070] subject
+      to: 1) WOB.sub.min\u2266WOB\u2266WOB.sub.max  [0071] 2) DiffP.sub.min\u2266DiffP\u2266DiffP.sub.max
+      [0072] 3) RPM.sub.min\u2266RPM\u2266RPM.sub.max [0073] 4) safety operational
+      limits<br/>where RPM is drill bit torsional speed. The safety operational limits
+      can include, but are not limited to, a hook-load limit, an annular pressure
+      limit, and a vibration limit.<br />[0074] In addition, user input can include
+      a preselected DWOB. The desired DWOB can be used to compute the desired DTOB
+      as a function of the desired DWOB:<br /><br/><?in-line-formulae description=\\\"In-line
+      Formulae\\\" end=\\\"lead\\\"?>DTOB.sub.desired<i>=f</i>(DWOB.sub.desired)<?in-line-formulae
+      description=\\\"In-line Formulae\\\" end=\\\"tail\\\"?><br />[0075] subject
+      to: 1) ROP.sub.min\u2266ROP\u2266ROP.sub.max  [0076] 2) DiffP.sub.min\u2266DiffP\u2266DiffP.sub.max
+      [0077] 3) RPM.sub.min\u2266RPM\u2266RPM.sub.max [0078] 4) safety operational
+      limits<br />[0079] User input still further can include a preselected mud motor
+      differential pressure. A desired mud motor differential pressure can be used
+      to compute the desired DTOB as a function of the desired DiffP:<br /><br/><?in-line-formulae
+      description=\\\"In-line Formulae\\\" end=\\\"lead\\\"?>DTOB.sub.desired<i>=f</i>(\u0394P.sub.desired)<?in-line-formulae
+      description=\\\"In-line Formulae\\\" end=\\\"tail\\\"?><br />[0080] subject
+      to: 1) ROP.sub.min\u2266ROP\u2266ROP.sub.max  [0081] 2) DWOB.sub.min\u2266DWOB\u2266DWOB.sub.max
+      [0082] 3) RPM.sub.min\u2266RPM\u2266RPM.sub.max [0083] 4) safety operational
+      limits<br />[0084] The target DTOB measurement value also can be determined
+      as a function of two or more of desired ROP, desired DWOB, desired DiffP, and
+      desired drill bit RPM, subject to safety operational limits.<br />[0085] In
+      addition to systems, embodiments of the invention can include methods to control
+      directional drilling in borehole drilling for hydrocarbon wells. For example,
+      a method according to an embodiment can include determining an actual DTOB measurement
+      value (and/or an actual DWOB measurement value) and an actual toolface orientation
+      measurement value for a drill string <b>104</b> positioned in a borehole <b>102</b>
+      for a hydrocarbon well. A method also can include determining, responsive to
+      a comparison of a target DTOB measurement value (and/or a target DWOB measurement
+      value) and the actual DTOB measurement value (and/or the actual DWOB measurement
+      value), a DTOB error value (and/or a DWOB error value). Further, a method can
+      include determining, responsive to a comparison of a target toolface orientation
+      measurement value and the actual toolface orientation measurement value, a toolface
+      orientation error value. In addition, a method can include determining a control
+      command for one or more of a top drive <b>114</b> and a drawworks <b>116</b>
+      responsive to the DTOB error value (and/or the DWOB error value) and the toolface
+      orientation error value. A method still further can include operating one or
+      more of the top drive <b>114</b> and the drawworks <b>116</b> responsive to
+      the control command thereby to correct a toolface orientation of the drill string
+      <b>104</b>.<br />[0086] In some circumstances, determining the actual DTOB measurement
+      value can include determining an actual DWOB measurement value. Additionally,
+      determining the actual DTOB measurement value (and/or the actual DWOB measurement
+      value) and the actual toolface orientation measurement value can be responsive
+      to one or more of: (a) one or more measurements at one or more sensors <b>120</b>
+      positioned within the borehole <b>102</b> and (b) a Kalman filter. Further,
+      a method also can include receiving the one or more measurements from the one
+      or more sensors <b>102</b> through one or more segments of wired drill pipe
+      <b>106</b> and determining a current top drive operation measurement value and
+      a current drawworks operation measurement value. The control command can be
+      responsive to the current top drive operation measurement value and the current
+      drawworks operation measurement value. The control command can be for one or
+      more of the top drive, the drawworks, and a mud pump, and the method also can
+      include determining a current mud pump operation measurement value and operating
+      the mud pump responsive to the control command thereby to correct a toolface
+      orientation of the drill string <b>104</b>. Determining the actual DTOB measurement
+      value (and/or the actual DWOB measurement value) and the actual toolface measurement
+      value can include validating the one or more measurements at the one or more
+      sensors <b>120</b> thereby to produce one or more validated measurements and
+      filtering the one or more validated measurements thereby to produce one or more
+      filtered measurements. Additionally, determining the actual DTOB measurement
+      value (and/or the actual DWOB measurement value) and the actual toolface measurement
+      value can include reconciling the one or more filtered measurements thereby
+      to produce one or more reconciled measurements and verifying the one or more
+      reconciled measurements thereby to produce one or more verified measurements.
+      Determining the actual DTOB measurement value (and/or the actual DWOB measurement
+      value) and the actual toolface measurement value also can include remediating
+      gross errors in the one or more verified measurements thereby to produce the
+      actual DTOB measurement value (and/or the actual DWOB measurement value) and
+      the actual toolface measurement value.<br />[0087] Additionally, operation of
+      the drawworks <b>116</b> can include altering a WOB measurement value at a surface
+      of the borehole, and operation of the top drive <b>114</b> can include altering
+      one or more of an angle of the drill string <b>104</b> with respect to the surface
+      and a rotational speed of the drill string <b>104</b> within the borehole <b>102</b>.
+      A method also can include determining the target DTOB measurement value (and/or
+      the target DWOB measurement value) responsive to receipt of user input from
+      a user computing device. The user input can include one or more of: a preselected
+      DTOB measurement value, a preselected rate of penetration, a preselected DWOB,
+      and a preselected mud motor differential pressure. A method also can include
+      determining the target toolface orientation measurement value responsive to
+      receipt of the user input from the user computing device.<br />[0088] Further,
+      the control command can be responsive to one or more dynamic models of the drill
+      string <b>104</b> within the borehole <b>102</b>, and operation of the drawworks
+      <b>116</b> can control a ROP of the drill string <b>102</b>. A method also can
+      include estimating one or more future values of one or more downhole variables
+      and determining an optimal ROP of the drill string <b>104</b> responsive to
+      a constrained optimization problem. Additionally, the control command can be
+      responsive to the determined optimal ROP of the drill string <b>104</b>.<br
+      />[0089] Embodiments also can include non-transitory computer-readable media
+      to control directional drilling in borehole drilling for hydrocarbon wells.
+      For example, a non-transitory computer-readable medium according to an embodiment
+      can have computer-executable instructions stored thereon that can be executed
+      by one or more processors to perform a method, such as one or more of the methods
+      described herein.<br />[0090] Another method according to an embodiment to control
+      directional drilling in borehole drilling for hydrocarbon wells can include
+      providing a directional drilling monitor application to a user on a user computing
+      device <b>170</b>, as illustrated in <figref idref=\\\"DRAWINGS\\\">FIG. 6</figref>,
+      for example. Such a user computing device <b>170</b> can include, for example,
+      a desktop computer, a laptop, a smartphone, a tablet computer, or a personal
+      digital assistant, among other examples. Further, the user computing device
+      <b>170</b> can be positioned and located at or near a drilling site, but the
+      user computing device <b>170</b> also can be positioned at a remote location,
+      such as an operator's office facility or remote operations center, for example,
+      or at any other location. A user computing device <b>170</b> can include one
+      or more processors <b>172</b>, one or more memories <b>174</b> (such as non-transitory
+      computer-readable media) in communication with the one or more processors <b>172</b>,
+      and one or more displays <b>176</b> in communication with the one or more processors
+      <b>172</b>, for example.<br />[0091] A method also can include receiving measurements
+      at a server <b>178</b> from one or more sensors <b>120</b> positioned in a borehole
+      <b>102</b> for a hydrocarbon well. The borehole <b>102</b> can extend from a
+      surface into a subsurface of the hydrocarbon well. The server <b>178</b> can
+      be positioned and located at the drilling site, but the server <b>178</b> also
+      can be positioned at a remote location, similarly to the user computing device
+      <b>170</b>. Further, the server <b>178</b> and the user computer device <b>170</b>
+      can be positioned at the same location, either at the drilling site or at a
+      remote site, or the server <b>178</b> and the user computer device <b>170</b>
+      can be positioned at different locations from each other, including two separate
+      remote locations. The server <b>178</b> can include one or more processors <b>180</b>
+      and a memory <b>182</b> (such as a non-transitory computer-readable medium)
+      that stores the user's preferences for information format and is in communication
+      with the one or more processors <b>180</b>. The server <b>178</b> can be in
+      communication with the user computing device <b>170</b>, a top drive <b>114</b>,
+      a drawworks <b>116</b>, and the one or more sensors <b>120</b>.<br />[0092]
+      The one or more processors <b>180</b> of the server <b>178</b> can operate to
+      perform a series of steps. For example, the one or more processors <b>180</b>
+      can operate to determine, responsive to the received measurements, an actual
+      DTOB measurement value and an actual toolface orientation measurement value
+      for a drill string <b>104</b> positioned in the borehole <b>102</b>. The one
+      or more processors <b>180</b> also can operate to determine a target DTOB measurement
+      value responsive to receipt of user input from the user computing device <b>170</b>.
+      Further, the one or more processors <b>180</b> can operate to determine a target
+      toolface orientation measurement value responsive to receipt of the user input
+      from the user computing device <b>170</b>. The one or more processors <b>180</b>
+      also can operate to determine, responsive to a comparison of the target DTOB
+      measurement value and the actual DTOB measurement value, a DTOB error value.
+      In addition, the one or more processors <b>180</b> can operate to determine,
+      responsive to a comparison of the target toolface orientation measurement value
+      and the actual toolface orientation measurement value, a toolface orientation
+      error value. Still further, the one or more processors <b>180</b> can operate
+      to determine a control command for one or more of a top drive <b>114</b> and
+      a drawworks <b>116</b> to correct each of the DTOB error value and the toolface
+      orientation error value responsive to a current top drive operation measurement
+      value and a current drawworks operation measurement value. The one or more processors
+      <b>180</b> also can operate to generate a directional drilling alert from the
+      actual DTOB measurement value, the actual toolface orientation measurement value,
+      and the control command. Further, the one or more processors <b>180</b> can
+      operate to format the directional drilling alert according to the information
+      format and transmit the formatted directional drilling alert to the user computing
+      device <b>170</b> thereby to indicate a planned change in drill string orientation.
+      In addition, the one or more processors <b>180</b> can operate one or more of
+      the top drive <b>114</b> and the drawworks <b>116</b> responsive to the control
+      command thereby to correct a toolface orientation of the drill string <b>104</b>.
+      Operation of the drawworks <b>116</b> can include altering a WOB measurement
+      value at the surface, and operation of the top drive <b>114</b> can include
+      altering one or more of an angle of the drill string <b>104</b> with respect
+      to the surface and a rotational speed of the drill string <b>104</b> within
+      the borehole <b>102</b>.<br />[0093] In some instances, a system according to
+      an embodiment can include one or more modules. A module can include a set of
+      instructions or operations or one or more portions of a software application
+      that relate to and operate to effect certain functions of the software, for
+      example, as will be understood by those skilled in the art. Computer-executable
+      instructions that make up a software application can be stored on a non-transitory
+      computer-readable medium, for example, such as those described herein. For example,
+      as depicted in the exemplary system diagram illustrated in <figref idref=\\\"DRAWINGS\\\">FIG.
+      2</figref>, an autonomous direct controlled steering system <b>150</b> according
+      to an embodiment can be configured to automate directional drilling operations
+      where a drill string <b>104</b> is guided along a non-vertical path. In operation,
+      the high sampling rate drilling parameter sensors <b>168</b> (which can include
+      downhole sensors <b>120</b> and surface sensors <b>122</b>, for example) and
+      a downhole drive controller <b>112</b> can provide data to a data validation
+      and reconciliation module <b>162</b> via the substantially online data transmission
+      system <b>164</b> (such as data transmission system <b>124</b>), which can make
+      direct control possible. Such a data validation and reconciliation module <b>162</b>
+      can process the raw data and provide the refined information to an autonomous
+      direct control system <b>152</b>, which can evaluate the real-time performance
+      of the steering operation and accordingly provide online operating commands
+      to one or more drilling equipment driving systems <b>166</b>. The one or more
+      drilling equipment driving systems <b>166</b> can include the top drive <b>114</b>,
+      the drawworks <b>116</b>, the mud pump <b>118</b>, as well as controllers associated
+      with any of the equipment used during drilling. A drilling equipment driving
+      system <b>166</b> can be a drive control interface or software of any drilling
+      equipment or apparatus that can either directly or indirectly affect one or
+      more drilling parameters. Further, such equipment can be mounted in downhole
+      or at the surface. Exemplary rig-mounted equipment includes, but is not limited
+      to, rotating system equipment (such as one or more top drives <b>114</b>), hoisting
+      system equipment (such as one or more drawworks <b>116</b>), and circulating
+      system equipment (such as one or more mud pumps <b>118</b>). Exemplary downhole
+      equipment can include any downhole active or adjustable devices such as mud
+      motors, turbines, bent subs or whipstocks, adjustable stabilizers, agitators,
+      and rotary steerable systems.<br />[0094] Some or all of the data validation
+      and reconciliation operations described above, including some or all of those
+      illustrated in <figref idref=\\\"DRAWINGS\\\">FIG. 3</figref>, can be performed
+      by a data validation and reconciliation module <b>162</b>, for example. In such
+      an example, <figref idref=\\\"DRAWINGS\\\">FIG. 3</figref> can depict an exemplary
+      workflow of the data validation and reconciliation module <b>162</b>.<br />[0095]
+      Further, the autonomous direct control system <b>152</b> can perform some of
+      the other operations described above. The autonomous direct control system <b>152</b>
+      can be in bidirectional communication with a common operation infrastructure,
+      including an operator station <b>160</b>. The operator station <b>160</b> can
+      provide a user interface that can be accessed by a directional driller on the
+      rig or in a remote location, for example. The operator station <b>160</b> also
+      can provide a location for providing manual input to the control system <b>152</b>
+      and for manual override of the control system <b>152</b> if needed. The control
+      station <b>160</b> can provide a visual representation of the operation of the
+      autonomous direct control system <b>152</b>, including the status of one or
+      more drilling equipment <b>166</b> and a real-time representation of data received
+      from the drilling parameter sensors <b>168</b>. The BHA <b>108</b> can be coupled
+      to and in communication with a rotating system (such as a top drive <b>114</b>),
+      a hoisting system (such as a drawworks <b>116</b>), or other surface equipment
+      via a drill pipe <b>106</b>. Under an autonomous direct control operation, the
+      raw data collected by the high sampling rate drilling parameter sensors <b>168</b>
+      can be relayed to the data validation and reconciliation module <b>162</b> via
+      the online data transmission system <b>164</b>. The drilling parameter sensors
+      <b>168</b> also can be configured to receive operating instructions (in addition
+      to sending measurements) via the online transmission system <b>164</b>. The
+      raw data collected by the drilling parameter sensors <b>168</b> can be processed
+      online by the data validation and reconciliation module <b>162</b> to obtain
+      refined information useful for decision-making by the autonomous direct control
+      system <b>152</b>.<br />[0096] An autonomous direct control system <b>152</b>
+      can include one or more components referred to herein as mechanisms, such as
+      a primary control mechanism <b>154</b>, a secondary control mechanism <b>156</b>,
+      and a tertiary control mechanism <b>158</b>. A mechanism as described can include
+      a set of instructions or operations or a portion of a software application that
+      relates to and operates to effect certain functions of the software, for example,
+      as will be understood by those skilled in the art. Computer-executable instructions
+      that make up a software application can be stored on a non-transitory computer-readable
+      medium, for example, such as those described herein. In some instances, the
+      autonomous direct control system <b>152</b> depicted in <figref idref=\\\"DRAWINGS\\\">FIG.
+      2</figref> can include only a primary control mechanism <b>154</b> that provides
+      online operating commands to one or more drilling equipment driving systems
+      <b>166</b> in order to ensure stability and robustness of automated directional
+      drilling against a wide range of external disturbances, measurement uncertainties,
+      and unknown environmental conditions. Such a primary control mechanism <b>154</b>
+      can be fully implemented either in a downhole device or in a surface application.
+      In either case, the communication between the surface and the downhole can be
+      enabled by an online data transmission system <b>164</b>.<br />[0097] Some or
+      all of the operations described above, including some or all of those illustrated
+      in <figref idref=\\\"DRAWINGS\\\">FIG. 4</figref>, can be performed by such
+      a primary control mechanism <b>154</b>, for example. In such an example, <figref
+      idref=\\\"DRAWINGS\\\">FIG. 4</figref> can depict a simplified block diagram
+      and an exemplary workflow of the primary control mechanism <b>154</b>. More
+      specifically, <figref idref=\\\"DRAWINGS\\\">FIG. 4</figref> can illustrate
+      an exemplary workflow of the primary control mechanism <b>154</b> utilizing
+      control logic related to a disturbance rejection method. Such disturbance rejection
+      control logic can receive a scaled deviation error of toolface orientation <b>254</b>
+      and one or more of scaled deviation errors of DTOB and DWOB <b>252</b>, along
+      with drill string torsional compliance data, and accordingly can issue operating
+      commands <b>262</b> via an output interface to one or more drilling equipment
+      and apparatuses, including rotating system equipment such as top drives, hoisting
+      system equipment such as drawworks, circulating system equipment such as mud
+      pumps, and downhole RSS equipment. The control logic can be a multivariable
+      (also called multi-input multi-output) control method with a model-independent
+      core logic <b>262</b>. In some instances, such active disturbance rejection
+      control logic can include one or more proportional-integral-derivative (PID)
+      controllers, where the input to each PID controller can be a function of the
+      scaled deviation errors and drill string torsional compliance data. Further,
+      in some circumstances, the control logic can be associated with a fuzzy logic
+      controller. An extension of a system model with an additional and fictitious
+      state variable that represents everything that a user does not include in a
+      mathematical description of the plant of interest can be used, as well. A plant,
+      as will be understood by those skilled in the art, can include a system on which
+      the disturbance control logic can operate, including drilling equipment (such
+      as sensors, a drawworks, a top drive, and a mud pump, for example) and information
+      transmitted to and from the drilling equipment. This virtual state (sum of internal
+      and external disturbances, sometimes denoted as a \u201Ctotal disturbance\u201D)
+      can be estimated online with a state observer and used in the control signal
+      in order to decouple unknown uncertainties from the rest of the drilling system.
+      This disturbance rejection feature can allow the user to treat the considered
+      system with a simpler model, since the negative effects of modeling uncertainty
+      can be compensated in real time. As a result, it can eliminate a need for a
+      precise analytical description of the system, as one can assume the unknown
+      parts of dynamics as the internal disturbance in the drilling system. Robustness
+      and the adaptive ability of this method can provide an advantageous solution
+      in scenarios where the full knowledge of the drilling system is not available.<br
+      />[0098] An additional method according to an embodiment is illustrated in <figref
+      idref=\\\"DRAWINGS\\\">FIG. 10</figref>, for example. Measurements can be taken
+      <b>350</b> from one or more downhole sensors <b>120</b> positioned along a drill
+      string <b>104</b>, including measurements related to toolface orientation, downhole
+      WOB (DWOB), downhole torque (Dtorque), and downhole differential pressure (Ddiff
+      P). These measurements can be used to determine toolface orientation, which
+      can be filtered <b>352</b> to generate a toolface estimate <b>354</b>. The toolface
+      estimate <b>354</b> and a target toolface <b>316</b> can be summed <b>356</b>,
+      then optimization criteria can be selected <b>358</b>. A torque command can
+      be processed <b>360</b> and used as an input to a state space MIMO <b>362</b>.
+      The state space MIMO <b>362</b> can include inputs of downhole bit torque, surface
+      torque, downhole WOB, and downhole differential pressure. The state space MIMO
+      <b>362</b> further can utilize as given inputs the length of the drill pipe,
+      the type and size of the drill pipe, and one or more optimizing parameters.
+      Outputs of the state space MIMO <b>362</b> can include line payoff, pipe rotation,
+      and pump speed. Line payoff, drill pipe incremental rotation, and bit speed
+      then can be sent to one or more controllers <b>364</b>, which can control operation
+      of a drawworks, a pipe rotator (which can be a subset of a top drive control),
+      and a pump controller.<br />[0099] Further, an additional system according to
+      an embodiment is illustrated in <figref idref=\\\"DRAWINGS\\\">FIG. 11</figref>,
+      for example. Such a system can allow input from one or more users <b>372</b>
+      through a user interface <b>374</b>. The user interface <b>374</b> can be in
+      communication, through input/output services <b>376</b>, with surface instrumentation
+      <b>378</b>, downhole instrumentation <b>382</b>, a rig control system <b>384</b>,
+      data services <b>386</b>, and an application engine <b>380</b>. The application
+      engine <b>380</b> can perform one or more of the operations or methods described
+      herein. Further, the data services <b>386</b> can be in communication with configuration
+      storage <b>388</b> and data logging <b>390</b>.<br />[0100] Embodiments of the
+      invention thus can provide autonomous direct controlled steering in directional
+      drilling that can include: a drilling parameter sensor with high sampling rate;
+      a data validation and reconciliation module that can be communicatively coupled
+      to the drilling parameter sensor through an online data transmission system
+      and can generate processed data from the raw data gathered by the drilling parameter
+      sensor; a primary control mechanism that can enhance stability and robustness
+      of automated directional drilling by online commanding a drilling equipment
+      driving system; a secondary control mechanism that adaptively can guide the
+      primary control mechanism based on a drill string dynamic model; and a tertiary
+      control mechanism that can determine an optimal rate of penetration by online
+      solving a constrained optimization problem.<br />[0101] Consequently, embodiments
+      of the invention can provide drilling optimization software to automate and
+      optimize directional drilling practices to set and continuously maintain downhole
+      equipment orientation while also optimizing drilling rate of penetration. Such
+      a software application can achieve this automation by applying downhole measurements
+      of torque, WOB, and differential pressure to continuously control surface pipe
+      rotary and drawworks systems. Further, such a software application also can
+      enable automated directional drilling to be performed and monitored from a remote
+      operations center.<br />[0102] In the various embodiments of the invention described
+      herein, a person having ordinary skill in the art will recognize that various
+      types of memory are readable by a computer, such as the memory described herein
+      in reference to the various computers and servers, e.g., computer, computer
+      server, web server, or other computers with embodiments of the present invention.
+      Examples of computer-readable media can include but are not limited to: nonvolatile,
+      hard-coded type media, such as read only memories (ROMs), CD-ROMs, and DVD-ROMs,
+      or erasable, electrically programmable read only memories (EEPROMs); recordable
+      type media, such as floppy disks, hard disk drives, CD-R/RWs, DVD-RAMs, DVD\u2212R/RWs,
+      DVD+R/RWs, flash drives, memory sticks, and other newer types of memories; and
+      transmission type media such as digital and analog communication links. For
+      example, such media can include operating instructions, as well as instructions
+      related to the systems and the method steps described above and can operate
+      on a computer. It will be understood by those skilled in the art that such media
+      can be at other locations instead of, or in addition to, the locations described
+      to store computer program products, e.g., including software thereon. It will
+      be understood by those skilled in the art that the various software modules
+      or electronic components described above can be implemented and maintained by
+      electronic hardware, software, or a combination of the two, and that such embodiments
+      are contemplated by embodiments of the present invention.<br />[0103] This application
+      is related to and claims the benefit and priority of provisional U.S. Patent
+      Application No. 62/097,644, titled \u201CDrilling Direct Control System\u201D
+      and filed Dec. 30, 2014, and non-provisional U.S. patent application Ser. No.
+      14/627,581, titled \u201CDrilling Direct Control User Interface\u201D and filed
+      Feb. 20, 2015, of which this application is a continuation-in-part, each of
+      which is hereby incorporated by reference.<br />[0104] In the drawings and specification,
+      there have been disclosed embodiments of systems, interfaces, computer-readable
+      media, and methods of the present invention, and although specific terms are
+      employed, the terms are used in a descriptive sense only and not for purposes
+      of limitation. The embodiments of systems, interfaces, computer-readable media,
+      and methods of the present invention have been described in considerable detail
+      with specific reference to these illustrated embodiments. It will be apparent,
+      however, that various modifications and changes can be made within the spirit
+      and scope of the embodiments of systems, interfaces, computer-readable media,
+      and methods of the present invention as described in the foregoing specification,
+      and such modifications and changes are to be considered equivalents and part
+      of this disclosure.\",\"claimsHtml\":\"<b>1</b>-<b>6</b>. (canceled) <br />
+      <b>7</b>. A system to control directional drilling in borehole drilling for
+      hydrocarbon wells, the system comprising: a controller including one or more
+      processors; a non-transitory computer-readable medium in communication with
+      the one or more processors of the controller and having one or more computer
+      programs stored thereon that, when executed by the one or more processors, cause
+      the system to: determine an actual downhole torque on bit (DTOB) measurement
+      value and an actual toolface orientation measurement value for a drill string
+      positioned in a borehole for a hydrocarbon well, determine, responsive to a
+      comparison of a target DTOB measurement value and the actual DTOB measurement
+      value, a DTOB error value, determine, responsive to a comparison of a target
+      toolface orientation measurement value and the actual toolface orientation measurement
+      value, a toolface orientation error value, determine a control command for one
+      or more of a top drive and a drawworks responsive to the DTOB error value and
+      the toolface orientation error value, and operate one or more of the top drive
+      and the drawworks responsive to the control command thereby to correct a toolface
+      orientation of the drill string.   <br /> <b>8</b>. A system of claim 7, wherein
+      determining the actual DTOB measurement value includes determining an actual
+      downhole weight on bit (DWOB) measurement value, and wherein determining the
+      actual DTOB measurement value and the actual toolface orientation measurement
+      value is responsive to one or more of: (a) a Kalman filter and (b) one or more
+      measurements at one or more sensors positioned within the borehole. <br /> <b>9</b>.
+      A system of claim 7, wherein the controller is in communication with one or
+      more sensors positioned within the borehole through one or more segments of
+      wired drill pipe; wherein the one or more computer programs, when executed by
+      the one or more processors, further cause the system to determine a current
+      top drive operation measurement value and a current drawworks operation measurement
+      value; and wherein the control command is responsive to the current top drive
+      operation measurement value and the current drawworks operation measurement
+      value.  <br /> <b>10</b>. A system of claim 9, wherein the control command is
+      for one or more of the top drive, the drawworks, and a mud pump; and wherein
+      the one or more computer programs, when executed by the one or more processors,
+      further cause the system to determine a current mud pump operation measurement
+      value and to operate the mud pump responsive to the control command thereby
+      to correct a toolface orientation of the drill string. <br /> <b>11</b>. A system
+      of claim 8, wherein determining the actual DTOB measurement value and the actual
+      toolface measurement value includes: validating the one or more measurements
+      at the one or more sensors thereby to produce one or more validated measurements;
+      filtering the one or more validated measurements thereby to produce one or more
+      filtered measurements; reconciling the one or more filtered measurements thereby
+      to produce one or more reconciled measurements; verifying the one or more reconciled
+      measurements thereby to produce one or more verified measurements; and remediating
+      gross errors in the one or more verified measurements thereby to produce the
+      actual DTOB measurement value and the actual toolface measurement value.  <br
+      /> <b>12</b>. A system of claim 7, wherein operation of the drawworks includes
+      altering a weight on bit (WOB) measurement value at a surface of the borehole,
+      wherein operation of the top drive includes altering one or more of an angle
+      of the drill string with respect to the surface and a rotational speed of the
+      drill string within the borehole, and wherein the one or more computer programs,
+      when executed by the one or more processors, further cause the system to: determine
+      the target DTOB measurement value responsive to receipt of user input from a
+      user computing device in communication with the controller, the user input including
+      one or more of: a preselected DTOB measurement value, a preselected rate of
+      penetration, a preselected downhole WOB, and a preselected mud motor differential
+      pressure; and determine the target toolface orientation measurement value responsive
+      to receipt of the user input from the user computing device.  <br /> <b>13</b>.
+      A system of claim 7, wherein the control command is responsive to one or more
+      dynamic models of the drill string within the borehole; wherein operation of
+      the drawworks controls a rate of penetration of the drill string; wherein the
+      one or more computer programs, when executed by the one or more processors,
+      cause the system to estimate one or more future values of one or more downhole
+      variables and to determine an optimal rate of penetration of the drill string
+      responsive to a constrained optimization problem; and wherein the control command
+      is responsive to the determined optimal rate of penetration of the drill string.
+      <br /> <b>14</b>. A method to control directional drilling in borehole drilling
+      for hydrocarbon wells, the method comprising: determining an actual downhole
+      torque on bit (DTOB) measurement value and an actual toolface orientation measurement
+      value for a drill string positioned in a borehole for a hydrocarbon well, determining,
+      responsive to a comparison of a target DTOB measurement value and the actual
+      DTOB measurement value, a DTOB error value, determining, responsive to a comparison
+      of a target toolface orientation measurement value and the actual toolface orientation
+      measurement value, a toolface orientation error value, determining a control
+      command for one or more of a top drive and a drawworks responsive to the DTOB
+      error value and the toolface orientation error value, and operating one or more
+      of the top drive and the drawworks responsive to the control command thereby
+      to correct a toolface orientation of the drill string.  <br /> <b>15</b>. A
+      method of claim 14, wherein determining the actual DTOB measurement value includes
+      determining an actual downhole weight on bit (DWOB) measurement value, and wherein
+      determining the actual DTOB measurement value and the actual toolface orientation
+      measurement value is responsive to one or more of: (a) a Kalman filter and (b)
+      one or more measurements at one or more sensors positioned within the borehole.
+      <br /> <b>16</b>. A method of claim 14, wherein the method further comprises
+      receiving the one or more measurements from one or more sensors positioned within
+      the borehole through one or more segments of wired drill pipe and determining
+      a current top drive operation measurement value and a current drawworks operation
+      measurement value, and wherein the control command is responsive to the current
+      top drive operation measurement value and the current drawworks operation measurement
+      value. <br /> <b>17</b>. A method of claim 16, wherein the control command is
+      for one or more of the top drive, the drawworks, and a mud pump; and wherein
+      the method further comprises determining a current mud pump operation measurement
+      value and operating the mud pump responsive to the control command thereby to
+      correct a toolface orientation of the drill string. <br /> <b>18</b>. A method
+      of claim 15, wherein determining the actual DTOB measurement value and the actual
+      toolface measurement value includes: validating the one or more measurements
+      at the one or more sensors thereby to produce one or more validated measurements;
+      filtering the one or more validated measurements thereby to produce one or more
+      filtered measurements; reconciling the one or more filtered measurements thereby
+      to produce one or more reconciled measurements; verifying the one or more reconciled
+      measurements thereby to produce one or more verified measurements; and remediating
+      gross errors in the one or more verified measurements thereby to produce the
+      actual DTOB measurement value and the actual toolface measurement value.  <br
+      /> <b>19</b>. A method of claim 14, wherein operation of the drawworks includes
+      altering a weight on bit (WOB) measurement value at a surface of the borehole,
+      wherein operation of the top drive includes altering one or more of an angle
+      of the drill string with respect to the surface and a rotational speed of the
+      drill string within the borehole, and wherein the method further comprises:
+      determining the target DTOB measurement value responsive to receipt of user
+      input from a user computing device, the user input including one or more of:
+      a preselected DTOB measurement value, a preselected rate of penetration, a preselected
+      downhole WOB, and a preselected mud motor differential pressure; and determining
+      the target toolface orientation measurement value responsive to receipt of the
+      user input from the user computing device.  <br /> <b>20</b>. A method of claim
+      14, wherein the control command is responsive to one or more dynamic models
+      of the drill string within the borehole; wherein operation of the drawworks
+      controls a rate of penetration of the drill string; wherein the method further
+      comprises estimating one or more future values of one or more downhole variables
+      and determining an optimal rate of penetration of the drill string responsive
+      to a constrained optimization problem; and wherein the control command is responsive
+      to the determined optimal rate of penetration of the drill string.\",\"briefHtml\":\"FIELD
+      OF INVENTION<br />[0002] Embodiments of the invention relate to hydrocarbon
+      well drilling and, more specifically, to systems, computer-readable media, interfaces,
+      and methods to control directional drilling.<br />BACKGROUND<br />[0003] In
+      the field of oil and gas exploration and production, hydrocarbon wells may be
+      drilled to recover hydrocarbons from subterranean formations. Such wells may
+      be constructed by drilling a borehole into a formation using a rotary drill
+      bit attached to a remote end of a drill string. A fluid that may be referred
+      to as \u201Cdrilling mud\u201D may be circulated down through the drill string
+      to lubricate the drill bit and carry drill cuttings out of the wellbore as the
+      fluid returns to the surface at the well site. The particular methods and equipment
+      used to construct a particular well may vary extensively based on the environment
+      and formation in which the well is being drilled. Many different types of equipment
+      and systems may be used in the construction of wells, including, but not limited
+      to, a rotating system for turning the drill bit, a hoisting system for lifting
+      the drill string, a circulating system for managing the drilling fluid, pressure
+      management equipment for controlling wellbore pressure, a directional drilling
+      and steering system for non-vertical drilling, and several downhole tools.<br
+      />[0004] Some oil and gas wells may not be drilled vertically straight but rather
+      at a deviated angle from vertical and in a specified direction. Specific drilling
+      methods may be deployed to deviate these wells to direct them in the desired
+      well path. Such methods, known collectively as \u201Cdirectional drilling,\u201D
+      may require drilling personnel to orient downhole equipment to drill the well
+      in the desired well path. The overall directional drilling operation may be
+      directed by a specific person known as the \u201Cdirectional driller.\u201D<br
+      />[0005] \u201CSliding\u201D may describe drilling with a mud motor rotating
+      the bit downhole without rotating the drill string from the surface. This operation
+      may be conducted when a bottom hole assembly has been fitted with a bent sub
+      or a bent housing mud motor, or both, for directional drilling. Sliding may
+      be a predominant method to build and control or correct hole angle in modern
+      and conventional directional drilling operations.<br />[0006] A precise drill
+      bit direction may be essential to drilling a borehole successfully, particularly
+      in controlled steering and directional drilling. Achieving a precise drill bit
+      direction may be obtained either by steering while sliding, which orients the
+      bent segment of a downhole mud motor from the surface, or by steering while
+      rotating, which utilizes a downhole rotary steerable system (RSS).<br />[0007]
+      A drill bit direction may be determined by a toolface orientation in three-dimensional
+      space. Downhole toolface orientation is a complex function of several drilling
+      variables including, but not limited to, weight on bit (WOB), torque on bit
+      (TOB), drill bit torsional speed (rotations per minute or RPM), mud motor differential
+      pressure, rate of penetration (ROP), drill bit type, formation lithology, and
+      the angular position of a rotating system. The overall efficiency of directional
+      drilling, especially in the slide drilling, may depend on analyzing all of these
+      variables and accordingly applying torque or angle corrections to the drill
+      bit.<br />[0008] Current directional drilling practices may require the directional
+      driller to verbally translate desired downhole equipment orientation to the
+      rig's \u201Cdriller,\u201D a person who may control the machinery on a rig floor
+      that is used to drill the well. The driller then may apply and maintain the
+      required settings of drilling machinery located on the drilling rig floor. These
+      directional drilling methods may result in human error that consequentially
+      may increase rig non-productive time, lower drilling efficiency, and drive up
+      overall directional drilling cost.<br />SUMMARY<br />[0009] Applicant has recognized
+      problems associated with drill bit direction in directional drilling and advantageously
+      provides solutions to these problems in fields such as drilling control and
+      automation systems. Applicant has recognized that, in the presence of latency
+      or a delay in receiving toolface orientation information, a controlled steering
+      process can lead to undesirable back-and-forth wandering of the drill bit, which
+      can result in high trajectory tortuosity. Further, Applicant has recognized
+      that substantially online transmission of downhole data while drilling can provide
+      new and unique opportunities for automated drilling operations by eliminating
+      or dramatically reducing the communication delay between downhole and the surface.
+      Wired drill pipe technology, for example, can enable such data transmission.
+      This online data transmission can enable real-time monitoring, optimization,
+      and autonomous direct control solutions and systems for three-dimensional directional
+      drilling. Applicant advantageously has recognized a need in the art for methods,
+      systems, and apparatuses that can provide these capabilities.<br />[0010] Further,
+      a measure of efficiency in a drilling operation can include how fast a borehole
+      can be drilled, which is directly related to rate of penetration (ROP). An optimal
+      ROP can be a function of several drilling variables including, but not limited
+      to, weight on bit (WOB), torque on bit (TOB), drill bit torsional speed (rotations
+      per minute or RPM), drilling fluid hydraulics, toolface orientation, drill bit
+      type, and formation lithology. Increasing ROP can decrease the life of the drill
+      bit, which in turn can increase drilling time because shorter drill bit life
+      can necessitate more frequent replacements of the drill bit. An inappropriate
+      ROP also can lead to such issues as vibration and sticking that can eventually
+      slow down the drilling process. Applicant therefore has recognized that an autonomous
+      directional drilling solution can optimize ROP while steering.<br />[0011] Applicant
+      advantageously provides systems, methods, computer-readable media, interfaces,
+      and apparatuses for drilling control and automation systems. More specifically,
+      embodiments of systems, methods, computer-readable media, interfaces, and apparatuses
+      for autonomous, closed-loop directional drilling that can interface with a plurality
+      of drilling sensors and communication systems to support a variety of autonomous
+      real-time direct control functions using a common operation infrastructure are
+      provided. The common operation infrastructure can be configured to acquire data
+      from a variety of sources and sensors, communicate that data with a variety
+      of control functions and information interfaces, and provide substantially online
+      operating instructions to drilling equipment and systems, all in real time and
+      at a high data rate, which can be enabled by wired drill pipe and a surface
+      data network, for example. Embodiments thus can enable an operator (or another
+      application) to determine slide drilling with a preselected target downhole
+      TOB (DTOB) and/or downhole WOB (DWOB) and under a specific toolface orientation.<br
+      />[0012] Directional drilling conceptually can include orienting the bit in
+      the desired direction and executing a series of slide drill and rotate drill
+      iterations. Orienting can be accomplished by rotating and holding the axial
+      position of the drill string so that the bent sub or bent housing, which has
+      a small angle offset, orients the new direction in which to drill. Without turning
+      the drill string, the bit can be rotated with a mud motor and drill in the direction
+      it points. With steerable motors, when the desired wellbore direction is attained,
+      the entire drill string can be rotated and drill straight rather than at an
+      angle. By controlling the amount of hole drilled in the sliding versus the rotating
+      mode, the wellbore trajectory can be controlled precisely.<br />[0013] Advantages
+      of embodiments of the invention can include that a feedback control can obtain
+      direct data at downhole. Because of this, the control can take into account
+      unforeseen disturbances due to, for example, frictional, hydraulic, and lithology
+      changes. By altering one or more surface drilling parameters immediately once
+      deviations are observed in toolface orientation and downhole TOB, regardless
+      of what caused the deviation, embodiments can deliver slide drilling with higher
+      accuracy and stability.<br />[0014] For example, embodiments can include systems
+      and methods to control directional drilling in borehole drilling for hydrocarbon
+      wells. A system according to an embodiment can include, for example, a drill
+      string positioned within a borehole for a hydrocarbon well. The borehole can
+      extend from a surface into subterranean material. Further, a drill string can
+      include one or more substantially cylindrical segments of drill pipe, a wire
+      drilling line, a bottom hole assembly, a drill bit, and a downhole drive controller
+      to control rotation of the drill bit. A system also can include a top drive
+      positioned substantially at the surface and connected to the drill string. Operation
+      of the top drive can rotate the drill string within the borehole. Additionally,
+      a system can include a drawworks positioned substantially at the surface and
+      connected to the drill string. The drawworks can include a substantially cylindrical
+      spool around which the wire drilling line is wound, and the drawworks also can
+      include a pulley and a brake to inhibit unwinding of the wire drilling line
+      from the spool. Further, operation of the drawworks can rotate the spool thereby
+      to extend the wire drilling line into the borehole and alternatively to retract
+      the wire drilling line from the borehole. As a result, operation of the drawworks
+      thereby can lower the drill string into the borehole and alternatively can reel
+      the drill string in from the borehole. A system still further can include a
+      mud pump positioned substantially at the surface and connected to the drill
+      string. Operation of the mud pump can pump a drilling fluid through the one
+      or more segments of drill pipe and the bottom hole assembly of the drill string
+      to the drill bit. In addition, a system can include a first set of one or more
+      sensors positioned along the drill string thereby defining one or more downhole
+      sensors. A system also can include a second set of one or more sensors positioned
+      at the surface thereby defining one or more surface sensors.<br />[0015] Additionally,
+      a system according to an embodiment can include a controller. A controller can
+      include one or more processors positioned at the surface and in communication
+      with the downhole drive controller, the top drive, the drawworks, the mud pump,
+      the one or more downhole sensors, and the one or more surface sensors. Further,
+      the controller can be in communication with the downhole drive controller and
+      the one or more downhole sensors through the one or more segments of drill pipe.
+      A system also can include a non-transitory computer-readable medium in communication
+      with the one or more processors of the controller. The non-transitory computer-readable
+      medium can have one or more computer programs stored thereon that, when executed
+      by the one or more processors, cause the system to perform certain actions.
+      For example, a system can determine one or more of a target downhole torque
+      on bit (DTOB) measurement value and a target downhole weight on bit (DWOB) measurement
+      value responsive to receipt of user input from a user computing device in communication
+      with the controller. A system also can determine a target toolface orientation
+      measurement value responsive to receipt of the user input from the user computing
+      device. In addition, a system can determine, responsive to one or more measurements
+      at the one or more downhole sensors, an actual toolface orientation measurement
+      value and one or more of an actual DTOB measurement value and an actual DWOB
+      measurement value. A system further can determine, responsive to one or more
+      measurements at the one or more surface sensors, a current top drive operation
+      measurement value, a current drawworks operation measurement value, and a current
+      mud pump operation value. Additionally, a system can determine one or more error
+      values selected from a group of a DTOB error value and a DWOB error value. A
+      DTOB error value can be determined responsive to a comparison of the target
+      DTOB measurement value to the actual DTOB measurement value, and a DWOB error
+      value can be determined responsive to a comparison of the target DWOB measurement
+      value to the actual DWOB measurement value. Still further, a system can determine,
+      responsive to a comparison of the target toolface orientation measurement value
+      and the actual toolface orientation measurement value, a toolface orientation
+      error value. A system also can determine a control command for one or more of
+      the top drive, the drawworks, and the mud pump to correct each of the toolface
+      orientation error value and the one or more of the DTOB error value and the
+      DWOB error value responsive to the current top drive operation measurement value,
+      the current drawworks operation measurement value, and the current mud pump
+      operation value. In addition, a system can operate one or more of the top drive,
+      the drawworks, and the mud pump responsive to the control command thereby to
+      correct a toolface orientation of the drill string. Operation of the drawworks
+      can include altering a weight on bit measurement value at the surface. Further,
+      operation of the top drive can include altering one or more of an angle of the
+      drill string with respect to the surface and a rotational speed of the drill
+      string within the borehole. Operation of the mud pump can include altering a
+      flow rate measurement value of the drilling fluid at the surface.<br />[0016]
+      In some instances, determining the actual toolface measurement value and the
+      one or more of the actual DTOB measurement value and the actual DWOB measurement
+      value can include validating the one or more measurements at the one or more
+      downhole sensors thereby to produce one or more validated measurements, as well
+      as filtering the one or more validated measurements thereby to produce one or
+      more filtered measurements. Further, determining the actual toolface measurement
+      value and the one or more of the actual DTOB measurement value and the actual
+      DWOB measurement value can include reconciling the one or more filtered measurements
+      thereby to produce one or more reconciled measurements and verifying the one
+      or more reconciled measurements thereby to produce one or more verified measurements.
+      Determining the actual toolface measurement value and the one or more of the
+      actual DTOB measurement value and the actual DWOB measurement value also can
+      include remediating gross errors in the one or more verified measurements thereby
+      to produce the actual toolface measurement value and the one or more of the
+      actual DTOB measurement value and the actual DWOB measurement value. Additionally,
+      in some circumstances, the control command can be responsive to one or more
+      dynamic models of the drill string within the borehole. Further, operation of
+      the drawworks can control a rate of penetration of the drill string. In addition,
+      in some instances, the one or more computer programs, when executed by the one
+      or more processors, can cause the system to estimate one or more future values
+      of one or more downhole variables and to determine an optimal rate of penetration
+      of the drill string responsive to a constrained optimization problem. The control
+      command can be responsive to the determined optimal rate of penetration of the
+      drill string.<br />[0017] Additionally, the control command can be for each
+      of the top drive and the drawworks. In some circumstances, determining the control
+      command can include using multi-input, multi-output control logic to determine
+      the control command. Further, the multi-input, multi-output control logic can
+      include a plurality of decision rules, and each of the decision rules can be
+      associated with one or more of: drawworks control, top drive control, and mud
+      pump control. In other circumstances, determining the control command can include
+      using a first single-input, single-output control logic to determine the control
+      command for the top drive and a second single-input, single-output control logic
+      to determine the control command for the drawworks.<br />[0018] Another system
+      according to an embodiment can include a controller, which can include one or
+      more processors. Such a system also can include a non-transitory computer-readable
+      medium in communication with the one or more processors of the controller. The
+      non-transitory computer-readable medium can have one or more computer programs
+      stored thereon that, when executed by the one or more processors, can cause
+      the system to perform certain actions. For example, a system can determine an
+      actual downhole torque on bit (DTOB) measurement value and an actual toolface
+      orientation measurement value for a drill string positioned in a borehole for
+      a hydrocarbon well. A system also can determine, responsive to a comparison
+      of a target DTOB measurement value and the actual DTOB measurement value, a
+      DTOB error value. Further, a system can determine, responsive to a comparison
+      of a target toolface orientation measurement value and the actual toolface orientation
+      measurement value, a toolface orientation error value. A system still further
+      can determine a control command for one or more of a top drive and a drawworks
+      responsive to the DTOB error value and the toolface orientation error value.
+      Additionally, a system can operate one or more of the top drive and the drawworks
+      responsive to the control command thereby to correct a toolface orientation
+      of the drill string.<br />[0019] In some instances, determining the actual DTOB
+      measurement value can include determining an actual downhole weight on bit (DWOB)
+      measurement value. Additionally, determining the actual DTOB measurement value
+      and the actual toolface orientation measurement value can be responsive to one
+      or more of: (a) a Kalman filter and (b) one or more measurements at one or more
+      sensors positioned within the borehole. Further, the controller can be in communication
+      with one or more sensors positioned within the borehole through one or more
+      segments of wired drill pipe. The one or more computer programs, when executed
+      by the one or more processors, further can cause the system to determine a current
+      top drive operation measurement value and a current drawworks operation measurement
+      value. Additionally, the control command can be responsive to the current top
+      drive operation measurement value and the current drawworks operation measurement
+      value. Further, the control command can be for one or more of the top drive,
+      the drawworks, and a mud pump, and the one or more computer programs, when executed
+      by the one or more processors, further can cause the system to determine a current
+      mud pump operation measurement value and to operate the mud pump responsive
+      to the control command thereby to correct a toolface orientation of the drill
+      string. In some circumstances, determining the actual DTOB measurement value
+      and the actual toolface measurement value can include validating the one or
+      more measurements at the one or more sensors thereby to produce one or more
+      validated measurements and filtering the one or more validated measurements
+      thereby to produce one or more filtered measurements. Further, determining the
+      actual DTOB measurement value and the actual toolface measurement value can
+      include reconciling the one or more filtered measurements thereby to produce
+      one or more reconciled measurements and verifying the one or more reconciled
+      measurements thereby to produce one or more verified measurements. In addition,
+      determining the actual DTOB measurement value and the actual toolface measurement
+      value can include remediating gross errors in the one or more verified measurements
+      thereby to produce the actual DTOB measurement value and the actual toolface
+      measurement value.<br />[0020] In addition, operation of the drawworks can include
+      altering a weight on bit (WOB) measurement value at a surface of the borehole,
+      and operation of the top drive can include altering one or more of an angle
+      of the drill string with respect to the surface and a rotational speed of the
+      drill string within the borehole. Further, the one or more computer programs,
+      when executed by the one or more processors, also can cause the system to determine
+      the target DTOB measurement value responsive to receipt of user input from a
+      user computing device in communication with the controller. The user input can
+      include one or more of: a preselected DTOB measurement value, a preselected
+      rate of penetration, a preselected downhole WOB, and a preselected mud motor
+      differential pressure. The one or more computer programs, when executed by the
+      one or more processors, also can cause the system to determine the target toolface
+      orientation measurement value responsive to receipt of the user input from the
+      user computing device. Still further, the control command can be responsive
+      to one or more dynamic models of the drill string within the borehole, and operation
+      of the drawworks can control a rate of penetration of the drill string. The
+      one or more computer programs, when executed by the one or more processors,
+      can cause the system to estimate one or more future values of one or more downhole
+      variables and to determine an optimal rate of penetration of the drill string
+      responsive to a constrained optimization problem. Additionally, the control
+      command can be responsive to the determined optimal rate of penetration of the
+      drill string.<br />[0021] In addition to systems, embodiments of the invention
+      can include methods to control directional drilling in borehole drilling for
+      hydrocarbon wells. A method according to an embodiment can include, for example,
+      determining an actual downhole torque on bit (DTOB) measurement value and an
+      actual toolface orientation measurement value for a drill string positioned
+      in a borehole for a hydrocarbon well. A method also can include determining,
+      responsive to a comparison of a target DTOB measurement value and the actual
+      DTOB measurement value, a DTOB error value. Further, a method can include determining,
+      responsive to a comparison of a target toolface orientation measurement value
+      and the actual toolface orientation measurement value, a toolface orientation
+      error value. A method additionally can include determining a control command
+      for one or more of a top drive and a drawworks responsive to the DTOB error
+      value and the toolface orientation error value. Still further, a method can
+      include operating one or more of the top drive and the drawworks responsive
+      to the control command thereby to correct a toolface orientation of the drill
+      string.<br />[0022] In some instances, determining the actual DTOB measurement
+      value can include determining an actual downhole weight on bit (DWOB) measurement
+      value. Further, determining the actual DTOB measurement value and the actual
+      toolface orientation measurement value can be responsive to one or more of:
+      (a) a Kalman filter and (b) one or more measurements at one or more sensors
+      positioned within the borehole. Additionally, a method further can include receiving
+      the one or more measurements from one or more sensors positioned within the
+      borehole through one or more segments of wired drill pipe and determining a
+      current top drive operation measurement value and a current drawworks operation
+      measurement value. The control command also can be responsive to the current
+      top drive operation measurement value and the current drawworks operation measurement
+      value. Further, the control command can be for one or more of the top drive,
+      the drawworks, and a mud pump, and the method also can include determining a
+      current mud pump operation measurement value and operating the mud pump responsive
+      to the control command thereby to correct a toolface orientation of the drill
+      string. In some circumstances, determining the actual DTOB measurement value
+      and the actual toolface measurement value can include validating the one or
+      more measurements at the one or more sensors thereby to produce one or more
+      validated measurements, as well as filtering the one or more validated measurements
+      thereby to produce one or more filtered measurements. Determining the actual
+      DTOB measurement value and the actual toolface measurement value also can include
+      reconciling the one or more filtered measurements thereby to produce one or
+      more reconciled measurements and verifying the one or more reconciled measurements
+      thereby to produce one or more verified measurements. Further, determining the
+      actual DTOB measurement value and the actual toolface measurement value can
+      include remediating gross errors in the one or more verified measurements thereby
+      to produce the actual DTOB measurement value and the actual toolface measurement
+      value.<br />[0023] In addition, operation of the drawworks can include altering
+      a weight on bit (WOB) measurement value at a surface of the borehole, and operation
+      of the top drive can include altering one or more of an angle of the drill string
+      with respect to the surface and a rotational speed of the drill string within
+      the borehole. A method further can include determining the target DTOB measurement
+      value responsive to receipt of user input from a user computing device. The
+      user input can include one or more of: a preselected DTOB measurement value,
+      a preselected rate of penetration, a preselected downhole WOB, and a preselected
+      mud motor differential pressure. A method also can include determining the target
+      toolface orientation measurement value responsive to receipt of the user input
+      from the user computing device. Additionally, the control command can be responsive
+      to one or more dynamic models of the drill string within the borehole. Further,
+      operation of the drawworks can control a rate of penetration of the drill string.
+      A method further can include estimating one or more future values of one or
+      more downhole variables and determining an optimal rate of penetration of the
+      drill string responsive to a constrained optimization problem. The control command
+      also can be responsive to the determined optimal rate of penetration of the
+      drill string.\",\"backgroundTextHtml\":\"[0001] This application is related
+      to and claims the benefit and priority of provisional U.S. Patent Application
+      No. 62/097,644, titled \u201CDrilling Direct Control System\u201D and filed
+      Dec. 30, 2014, and non-provisional U.S. patent application Ser. No. 14/627,581,
+      titled \u201CDrilling Direct Control User Interface\u201D and filed Feb. 20,
+      2015, of which this application is a continuation-in-part, each of which is
+      hereby incorporated by reference.\",\"subHeadingM0Html\":null,\"subHeadingM1Html\":null,\"subHeadingM2Html\":null,\"subHeadingM3Html\":null,\"subHeadingM4Html\":null,\"subHeadingM5Html\":null,\"subHeadingM6Html\":null,\"usClassIssued\":null,\"issuedUsDigestRefClassifi\":null,\"datePublYear\":\"2017\",\"applicationYear\":\"2015\",\"pfDerwentWeekYear\":null,\"pfApplicationYear\":null,\"pfPublYear\":null,\"reissueApplNumber\":null,\"abstractHeader\":null,\"abstractedPublicationDerwent\":null,\"affidavit130BFlag\":null,\"affidavit130BText\":null,\"applicantGroup\":[\"NATIONAL
+      OILWELL VARCO, L.P. Houston TX US\"],\"applicantHeader\":null,\"applicationFilingDateInt\":20151229,\"applicationFilingDateIntKwicHits\":null,\"applicationRefFilingType\":null,\"applicationReferenceGroup\":null,\"applicationSeriesAndNumber\":\"15540593\",\"applicationSeriesCode\":\"15\",\"assignee1\":\"[]\",\"assigneeDescriptiveText\":null,\"patentAssigneeTerms\":null,\"associateAttorneyName\":null,\"attorneyName\":null,\"biologicalDepositInformation\":null,\"applicationType\":null,\"unlinkedDerwentRegistryNumber\":null,\"unlinkedRingIndexNumbersRarerFragments\":null,\"claimStatement\":\"That
+      claimed is:\",\"claimsTextAmended\":null,\"continuedProsecutionAppl\":null,\"cpcAdditionalLong\":null,\"cpcCisClassificationOrig\":null,\"cpcCombinationClassificationOrig\":null,\"cpcInventive\":[\"G05B15/02
+      20130101\",\"E21B47/022 20130101\",\"E21B44/00 20130101\",\"E21B7/04 20130101\"],\"cpcInventiveCurrentDateKwicHits\":null,\"cpcAdditional\":null,\"cpcAdditionalCurrentDateKwicHits\":null,\"cpcOrigClassificationGroup\":[\"E
+      E21B E21B7/04 20130101 F I 20171228 US\",\"G G05B G05B15/02 20130101 L I 20171228
+      US\",\"E E21B E21B44/00 20130101 L I 20171228 US\",\"E E21B E21B47/022 20130101
+      L I 20171228 US\"],\"curIntlPatentClassificationGroup\":null,\"curUsClassificationUsPrimaryClass\":\"1\",\"curUsClassificationUsSecondaryClass\":null,\"customerNumber\":null,\"depositAccessionNumber\":null,\"depositDescription\":null,\"derwentClassAlpha\":null,\"designatedstatesRouteGroup\":null,\"docAccessionNumber\":null,\"drawingDescription\":null,\"editionField\":null,\"exchangeWeek\":null,\"exemplaryClaimNumber\":null,\"familyIdentifierOrig\":null,\"fieldOfSearchCpcClassification\":null,\"fieldOfSearchCpcMainClass\":null,\"fieldOfSearchIpcMainClass\":null,\"fieldOfSearchIpcMainClassSubclass\":null,\"fieldOfSearchSubclasses\":null,\"foreignRefGroup\":null,\"foreignRefPubDate\":null,\"foreignRefPubDateKwicHits\":null,\"foreignRefCitationClassification\":null,\"foreignRefPatentNumber\":null,\"foreignRefCitationCpc\":null,\"foreignRefCountryCode\":null,\"iceXmlIndicator\":\"Y\",\"internationalClassificationHeader\":null,\"internationalClassificationInformationalGroup\":null,\"intlPubClassificationGroup\":[\"20060101
+      A E21B E21B7/04 F I B US H 20171228\",\"20060101 A E21B E21B44/00 L I B US H
+      20171228\",\"20120101 A E21B E21B47/022 L I B US H 20171228\",\"20060101 A G05B
+      G05B15/02 L I B US H 20171228\"],\"intlPubClassificationNonInvention\":null,\"inventorCitizenship\":null,\"inventorCorrection\":null,\"inventorDeceased\":null,\"inventorStreetAddress\":null,\"inventorText\":null,\"jpoFiClassification\":null,\"legalRepresentativeCity\":null,\"legalRepresentativeCountry\":null,\"legalRepresentativeName\":null,\"legalRepresentativePostcode\":null,\"legalRepresentativeState\":null,\"legalRepresentativeStreetAddress\":null,\"legalRepresentativeText\":null,\"messengerDocsFlag\":null,\"newRecordPatentDerwent\":null,\"numberOfClaims\":null,\"numberOfDrawingSheets\":null,\"numberOfFigures\":null,\"numberOfPagesInSpecification\":null,\"numberOfPagesOfSpecification\":null,\"objectContents\":\"[]\",\"objectDescription\":\"[]\",\"parentDocCountry\":null,\"parentGrantDocCountry\":null,\"patentBibliographicHeader\":null,\"pctOrRegionalPublishingSerial\":null,\"pfDerwentWeekNum\":null,\"principalAttorneyName\":null,\"priorityApplicationCountry\":null,\"priorityClaimsCountry\":null,\"priorityNumberDerived\":null,\"publicationIssueNumber\":null,\"refCitedPatentDocNumber\":null,\"refCitedPatentDocDate\":null,\"refCitedPatentDocKindCode\":null,\"referenceCitedCode\":null,\"referenceCitedGroup\":null,\"referenceCitedSearchPhase\":null,\"referenceCitedText\":null,\"registrationNumber\":null,\"reissueApplCountry\":null,\"reissueParentKind\":null,\"reissueParentNumber\":null,\"reissueParentPubCountry\":null,\"reissuePatentGroup\":null,\"reissuePatentParentStatus\":null,\"reissuedPatentApplCountry\":null,\"reissuedPatentApplKind\":null,\"reissuedPatentApplNumber\":null,\"relatedApplChildPatentCountry\":null,\"relatedApplChildPatentName\":null,\"relatedApplChildPatentNumber\":null,\"relatedApplCountryCode\":[\"US\",\"US\",\"US\"],\"relatedApplParentGrantPatentKind\":null,\"relatedApplParentGrantPatentName\":null,\"relatedApplParentPatentKind\":null,\"relatedApplParentPatentName\":null,\"relatedApplParentPctDoc\":null,\"relatedApplParentStatusCode\":[\"PENDING\"],\"relatedApplPatentNumber\":null,\"relatedApplRelatedPub\":null,\"relatedApplTypeOfCorrection\":null,\"rule47Flag\":null,\"selectedDrawingCharacter\":null,\"selectedDrawingFigure\":null,\"statutoryInventionText\":null,\"termOfExtension\":null,\"termOfPatentGrant\":null,\"titleTermsData\":null,\"additionalIndexingTerm\":null,\"applicationYearSearch\":\"2015\",\"pfApplicationYearSearch\":null,\"assigneeCountry\":[\"US\"],\"certOfCorrectionFlag\":null,\"citedPatentLiteratureAddressInformation\":null,\"citedPatentLiteratureClassificationIpc\":null,\"citedPatentLiteratureOrganizationName\":null,\"citedPatentLiteratureRefNumber\":null,\"crossReferenceNumber\":null,\"country\":\"US\",\"cpiManualCodes\":null,\"cpiSecondaryAccessionNumber\":null,\"curIntlPatentAllClassificationLong\":null,\"currentUsOriginalClassificationLong\":null,\"datePublSearch\":\"2017-12-28T00:00:00.000+00:00\",\"datePublYearSearch\":\"2017\",\"epiManualCodes\":null,\"fieldOfSearchMainClassNational\":null,\"inventorCountry\":[\"US\",\"US\",\"US\",\"US\"],\"ipcAllMainClassification\":[\"G05B\",\"E21B\"],\"issuedUsClassificationFull\":null,\"issuedUsDigestRefClassification\":null,\"jpoFiCurrentAdditionalClassification\":null,\"jpoFiCurrentInventiveClassification\":null,\"legalFirmName\":null,\"locarnoMainClassification\":null,\"nonCpiSecondaryAccessionNumber\":null,\"objectId\":null,\"otherRefPub\":null,\"pageNumber\":null,\"patentAssigneeCode\":null,\"patentAssigneeNameTotal\":null,\"patentFamilyDate\":null,\"patentFamilyDocNumber\":null,\"patentFamilyKind\":null,\"patentFamilyKindCode\":null,\"patentFamilyLanguage\":null,\"patentFamilyName\":null,\"patentNumberOfLocalApplication\":null,\"pct102eDate\":null,\"pct371c124Date\":[\"2017-06-29T00:00:00Z\"],\"pct371c124DateKwicHits\":null,\"pctFilingDate\":[\"2015-12-29T00:00:00Z\"],\"pctFilingDateKwicHits\":null,\"pctFilingDocCountryCode\":[\"WO\"],\"pctFilingKind\":[\"00\"],\"pctFilingNumber\":[\"PCT/US2015/067865\"],\"pctName\":null,\"pctOrRegionalPublishingCountry\":null,\"pctOrRegionalPublishingKind\":null,\"pctOrRegionalPublishingName\":null,\"pctOrRegionalPublishingText\":null,\"pctPubDate\":null,\"pctPubDateKwicHits\":null,\"pctPubDocIdentifier\":null,\"pctPubNumber\":null,\"pfApplicationDateSearch\":null,\"pfApplicationType\":null,\"pfDerwentWeekDate\":null,\"pfPublDateSearch\":null,\"pfPublDateSearchKwicHits\":null,\"pfPublYearSearch\":null,\"polymerIndexingCodes\":null,\"polymerMultipunchCodeRecordNumber\":null,\"polymerMultipunchCodes\":null,\"priorPublishedDocCountryCode\":null,\"priorPublishedDocDate\":null,\"priorPublishedDocDateKwicHits\":null,\"priorPublishedDocIdentifier\":null,\"priorPublishedDocKindCode\":null,\"priorPublishedDocNumber\":null,\"priorityApplYear\":null,\"priorityApplicationDate\":null,\"priorityClaimsDateSearch\":null,\"priorityClaimsDocNumber\":null,\"priorityPatentDid\":null,\"priorityPatentNumber\":null,\"ptabCertFlag\":null,\"pubRefCountryCode\":\"US\",\"pubRefDocNumber\":\"20170370151\",\"pubRefDocNumber1\":\"20170370151\",\"publicationData\":null,\"recordPatentNumber\":null,\"reexaminationFlag\":null,\"refCitedOthers\":null,\"refCitedPatentDocCountryCode\":null,\"refCitedPatentDocName\":null,\"refCitedPatentRelevantPassage\":null,\"reissueParentIssueDate\":null,\"reissuedPatentApplFilingDate\":null,\"relatedAccessionNumbers\":null,\"relatedApplChildPatentDate\":null,\"relatedApplFilingDateKwicHits\":null,\"relatedApplNumber\":[\"continuation-in-part
+      14627581\",\"15540593\",\"62097644\"],\"relatedApplPatentIssueDate\":null,\"relatedApplPatentIssueDateKwicHits\":null,\"relatedDocumentKindCode\":null,\"securityLegend\":null,\"sequenceCwu\":null,\"sequenceListNewRules\":null,\"sequenceListOldRules\":null,\"sequencesListText\":null,\"standardTitleTerms\":null,\"supplementalExaminationFlag\":null,\"usBotanicLatinName\":null,\"usBotanicVariety\":null,\"usRefClassification\":null,\"usRefCpcClassification\":null,\"usRefGroup\":null,\"usRefIssueDate\":null,\"usRefIssueDateKwicHits\":null,\"usRefPatenteeName\":null,\"volumeNumber\":null,\"correspondenceNameAddress\":null,\"correspondenceAddressCustomerNumber\":null,\"ibmtdbAccessionNumber\":null,\"inventorsName\":[\"BANIRAZI-MOTLAGH;
+      Reza\",\"PENN; Mark Charles\",\"PINK; Anthony\",\"SMITH; Joseph Kyle\"],\"applicationKindCode\":\"A1\",\"inventorNameDerived\":null,\"intlPubClassificationClass\":[\"E21B\",\"E21B\",\"E21B\",\"G05B\"],\"issuedUsOrigClassification\":null,\"curCpcSubclassFull\":[\"G05B\",\"E21B\"],\"cpcCurAdditionalClass\":null,\"cpcCurInventiveClass\":[\"G05B\",\"E21B\",\"E21B\",\"E21B\"],\"cpcCurClassificationGroup\":[\"G
+      G05B G05B15/02 20130101 L I B H 20181115 US\",\"E E21B E21B47/022 20130101 L
+      I B H 20171228 US\",\"E E21B E21B44/00 20130101 L I B H 20160912 US\",\"E E21B
+      E21B7/04 20130101 F I B H 20181115 US\"],\"curCpcClassificationFull\":[\"E21B7/04
+      20130101\",\"E21B47/022 20130101\",\"G05B15/02 20130101\",\"E21B44/00 20130101\"],\"cpcCombinationClassificationCur\":null,\"cpcCombinationTallyCur\":null,\"intlFurtherClassification\":null,\"currentUsPatentClass\":[\"1\"],\"curIntlPatentClassifictionPrimaryDateKwicHits\":null,\"curIntlPatentClssifSecHlights\":null,\"internationalClassificationInfom\":null,\"cpcOrigInventvClssifHlghts\":[\"E21B7/04
+      20130101\",\"G05B15/02 20130101\",\"E21B44/00 20130101\",\"E21B47/022 20130101\"],\"idWithoutSolrPartition\":\"PG-US-20170370151\",\"descriptionStart\":14,\"descriptionEnd\":27,\"publicationReferenceDocumentNumberOne\":\"20170370151\"}"
+    headers:
+      content-type:
+      - application/json
+      date:
+      - Wed, 24 Apr 2024 16:57:47 GMT
+      server-timing:
+      - intid;desc=b77e49c72bbd6aaf
+      x-rate-limit-remaining:
+      - '0'
+    http_version: HTTP/2
+    status_code: 200
+version: 1

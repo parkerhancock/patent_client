@@ -2,7 +2,9 @@ import re
 from itertools import zip_longest
 
 
-SPLIT_RE = re.compile(r"^\s*([\d\-\.]+[\)\.]|\.Iadd\.[\d\-\.]+\.|\.\[[\d\-\.]+\.)", flags=re.MULTILINE)
+SPLIT_RE = re.compile(
+    r"^\s*([\d\-\.]+[\)\.]|\.Iadd\.[\d\-\.]+\.|\.\[[\d\-\.]+\.)", flags=re.MULTILINE
+)
 NUMERIC_RE = re.compile(r"\d")
 
 LIMITATION_RE = re.compile(r"(\s*[:;]\s*and|\s*[:;]\s*)", flags=re.IGNORECASE)
@@ -12,7 +14,9 @@ CLAIM_INTRO_RE = re.compile(r"^[^\d\.\[]+")
 
 DEPENDENCY_RE = re.compile(r"claims? (?P<number>[\d,or ]+)", flags=re.IGNORECASE)
 DEPENDENT_CLAIMS_RE = re.compile(r"(?P<number>\d+)([^\d]|$)")
-DEPEND_ALL_RE = re.compile(r"(any of the foregoing claims|any of the previous claims)", flags=re.IGNORECASE)
+DEPEND_ALL_RE = re.compile(
+    r"(any of the foregoing claims|any of the previous claims)", flags=re.IGNORECASE
+)
 
 clean_text = lambda text: WHITESPACE_RE.sub(" ", text).strip()
 
@@ -66,7 +70,10 @@ class ClaimsParser(object):
         return {
             "number": number,
             # "text": NUMBER_RE.sub("", text),
-            "limitations": [clean_text("".join(lim)) for lim in list(grouper(LIMITATION_RE.split(text), 2, ""))],
+            "limitations": [
+                clean_text("".join(lim))
+                for lim in list(grouper(LIMITATION_RE.split(text), 2, ""))
+            ],
             "depends_on": self.parse_dependency(text, number),
             "dependent_claims": list(),
         }
@@ -75,7 +82,10 @@ class ClaimsParser(object):
         dependency = DEPENDENCY_RE.search(text)
         if dependency is not None:
             claims = dependency.groupdict()["number"]
-            claim_numbers = [int(m.groupdict()["number"]) for m in DEPENDENT_CLAIMS_RE.finditer(claims)]
+            claim_numbers = [
+                int(m.groupdict()["number"])
+                for m in DEPENDENT_CLAIMS_RE.finditer(claims)
+            ]
             return claim_numbers
         elif DEPEND_ALL_RE.search(text):
             return list(range(1, number))

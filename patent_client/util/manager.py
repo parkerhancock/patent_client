@@ -23,9 +23,11 @@ if TYPE_CHECKING:
 
 ModelType = TypeVar("ModelType")
 
+
 class OrderDirection(str, Enum):
     ASC = "asc"
     DESC = "desc"
+
 
 class ManagerConfig:
     """
@@ -63,52 +65,11 @@ class ManagerConfig:
         )
 
 
-class Manager(Collection, Generic[ModelType]):
-    """
-    Manager Class
-
-    This class is essentially a configurable generator. It is intended to be initialized
-    as an empty object at Model.objects. Users can then call methods to modify the manager.
-    All methods should return a brand-new manager with the appropriate parameters re-set.
-    The manager's attributes are stored in a dictionary at Manager.config.
-
-    """
-
+class BaseManager(Collection, Generic[ModelType]):
     default_filter: str = ""
 
     def __init__(self, config=None):
         self.config = config or ManagerConfig()
-
-    # Manager Iteration / Slicing
-
-    def __iter__(self) -> Iterator[ModelType]:
-        return self._get_results()
-
-    def __aiter__(self) -> AsyncIterator[ModelType]:
-        return self._aget_results()
-
-    def __getitem__(self, key: Union[slice, int]) -> Union[Manager[ModelType], ModelType]:
-        if isinstance(key, slice):
-            if key.step != None:
-                raise AttributeError("Step is not supported")
-            start = key.start if key.start else 0
-            start = len(self) + start if start < 0 else start
-            stop = key.stop if key.stop else len(self)
-            stop = len(self) + stop if stop < 0 else stop
-            mger = self.offset(start + self.config.offset)
-            mger = mger.limit(stop - start)
-            return mger
-        return self.offset(key).first()
-
-    # Basic Manager Attributes
-
-    def __len__(self) -> int:
-        # The default len function runs the iterator and counts. There may be
-        # more efficient ways to do it for any given subclass, but this is the
-        # basic way
-        if hasattr(self, "_len"):
-            return self._len()
-        return run_sync(self.alen())
 
     def __eq__(self, other) -> bool:
         return bool(self.config == other.config and isinstance(self, type(other)))
@@ -123,9 +84,9 @@ class Manager(Collection, Generic[ModelType]):
         mger = deepcopy(self)
         if args:
             kwargs[self.default_filter] = args
-        
+
         for key, value in kwargs.items():
-            if isinstance(value, (str, dict)):
+            if isinstance(value, (str, dict, int, float)):
                 kwargs[key] = [value]
             else:
                 kwargs[key] = list(value)
@@ -135,7 +96,6 @@ class Manager(Collection, Generic[ModelType]):
                 mger.config.filter[key].extend(value)
             else:
                 mger.config.filter[key] = value
-            
 
         return mger
 
@@ -163,24 +123,67 @@ class Manager(Collection, Generic[ModelType]):
         mger.config.offset = self.config.offset + offset
         return mger
 
-    async def afirst(self) -> ModelType:
-        """Get the first object in the manager"""
-        return await anext(self.limit(1).__aiter__())
+    # Basic Manager Fetching
+
+    def count(self) -> int:
+        """Returns number of records in the QuerySet. Alias for len(self)"""
+        return len(self)
+
+    def all(self) -> Manager[ModelType]:
+        """Return self. Does nothing"""
+        return self
+
+
+class Manager(BaseManager, Generic[ModelType]):
+    """
+    Manager Class (Synchronous)
+
+    This class is essentially a configurable generator. It is intended to be initialized
+    as an empty object at Model.objects. Users can then call methods to modify the manager.
+    All methods should return a brand-new manager with the appropriate parameters re-set.
+    The manager's attributes are stored in a dictionary at Manager.config.
+
+    """
+
+    default_filter: str = ""
+
+    def __init__(self, config=None):
+        self.config = config or ManagerConfig()
+
+    # Manager Iteration / Slicing
+
+    def __iter__(self) -> Iterator[ModelType]:
+        return self._get_results()
+
+    def __getitem__(
+        self, key: Union[slice, int]
+    ) -> Union[Manager[ModelType], ModelType]:
+        if isinstance(key, slice):
+            if key.step != None:
+                raise AttributeError("Step is not supported")
+            start = key.start if key.start else 0
+            start = len(self) + start if start < 0 else start
+            stop = key.stop if key.stop else len(self)
+            stop = len(self) + stop if stop < 0 else stop
+            mger = self.offset(start + self.config.offset)
+            mger = mger.limit(stop - start)
+            return mger
+        return self.offset(key).first()
+
+    # Basic Manager Attributes
+
+    def __len__(self) -> int:
+        return self.count()
+
+    def __eq__(self, other) -> bool:
+        return bool(self.config == other.config and isinstance(self, type(other)))
+
+    def __add__(self, other):
+        return Collection(chain(self, other))
 
     def first(self) -> ModelType:
         """Get the first object in the manager"""
         return next(self.limit(1).__iter__())
-
-    async def aget(self, *args, **kwargs) -> ModelType:
-        """If the critera results in a single record, return it, else raise an exception"""
-        mger = self.filter(*args, **kwargs)
-        length = await mger.alen()
-        if length > 1:
-            raise ValueError("More than one document found!")
-        if length == 0:
-            raise ValueError("No documents found!")
-        return await mger.afirst()
-
 
     def get(self, *args, **kwargs) -> ModelType:
         """If the critera results in a single record, return it, else raise an exception"""
@@ -192,12 +195,76 @@ class Manager(Collection, Generic[ModelType]):
             raise ValueError("No documents found!")
         return mger.first()
 
-    # Basic Manager Fetching
 
-    def count(self) -> int:
+class AsyncManager(BaseManager, Generic[ModelType]):
+    """
+    Manager Class (Asynchronous)
+
+    This class is essentially a configurable generator. It is intended to be initialized
+    as an empty object at Model.objects. Users can then call methods to modify the manager.
+    All methods should return a brand-new manager with the appropriate parameters re-set.
+    The manager's attributes are stored in a dictionary at Manager.config.
+
+    """
+
+    default_filter: str = ""
+
+    def __init__(self, config=None):
+        self.config = config or ManagerConfig()
+
+    # Manager Iteration / Slicing
+
+    def __aiter__(self) -> AsyncIterator[ModelType]:
+        return self._get_results()
+
+    async def _get_results(self) -> AsyncIterator[ModelType]:
+        raise NotImplementedError(
+            f"This method must be defined in a subclass of {self.__class__.__name__}"
+        )
+
+    async def __getitem__(
+        self, key: Union[slice, int]
+    ) -> Union[Manager[ModelType], ModelType]:
+        if isinstance(key, slice):
+            if key.step is not None:
+                raise AttributeError("Step is not supported")
+            count = await self.count()
+            start = key.start if key.start else 0
+            start = count + start if start < 0 else start
+            stop = key.stop if key.stop else count
+            stop = count + stop if stop < 0 else stop
+            mger = self.offset(start + self.config.offset)
+            mger = mger.limit(stop - start)
+            return mger
+        return await self.offset(key).first()
+
+    # Basic Manager Attributes
+
+    def __len__(self) -> int:
+        raise NotImplementedError(
+            f"This method is not implemented for the AsyncManager class. Use await {self.__class__.__name__}.count() instead."
+        )
+
+    async def count(self) -> int:
         """Returns number of records in the QuerySet. Alias for len(self)"""
-        return len(self)
+        return NotImplemented(
+            f"This method must be defined in a subclass of {self.__class__.__name__}"
+        )
 
-    def all(self) -> Manager[ModelType]:
-        """Return self. Does nothing"""
-        return self
+    async def len(self) -> int:
+        """Returns number of records in the QuerySet. Alias for self.count()"""
+        return await self.count()
+
+    async def first(self) -> ModelType:
+        """Get the first object in the manager"""
+        return await anext(self.limit(1).__aiter__())
+
+    async def get(self, *args, **kwargs) -> ModelType:
+        """If the critera results in a single record, return it, else raise an exception"""
+        mger = self.filter(*args, **kwargs)
+        length = await mger.count()
+        if length > 1:
+            raise ValueError("More than one document found!")
+        if length == 0:
+            raise ValueError("No documents found!")
+        return await mger.first()

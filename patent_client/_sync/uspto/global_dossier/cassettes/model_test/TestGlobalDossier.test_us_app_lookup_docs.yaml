@@ -1,0 +1,58 @@
+interactions:
+- request:
+    body: ''
+    headers:
+      Authorization:
+      - REDACTED
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - gd-api2.uspto.gov
+      user-agent:
+      - Mozilla/5.0 Python Patent Clientbot/4.1.10 (parkerhancock@users.noreply.github.com)
+    method: OPTIONS
+    uri: https://gd-api2.uspto.gov/patent-family/svc/family/application/US/16123456
+  response:
+    content: ''
+    headers:
+      apigw-requestid:
+      - Wvc-uhXuoAMEYCA=
+      date:
+      - Wed, 24 Apr 2024 17:31:35 GMT
+    http_version: HTTP/2
+    status_code: 204
+- request:
+    body: ''
+    headers:
+      Authorization:
+      - REDACTED
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - gd-api2.uspto.gov
+      user-agent:
+      - Mozilla/5.0 Python Patent Clientbot/4.1.10 (parkerhancock@users.noreply.github.com)
+    method: GET
+    uri: https://gd-api2.uspto.gov/patent-family/svc/family/application/US/16123456
+  response:
+    content: '{"message":"Forbidden"}'
+    headers:
+      apigw-requestid:
+      - Wvc-via9IAMEMNw=
+      content-length:
+      - '23'
+      content-type:
+      - application/json
+      date:
+      - Wed, 24 Apr 2024 17:31:35 GMT
+    http_version: HTTP/2
+    status_code: 403
+version: 1

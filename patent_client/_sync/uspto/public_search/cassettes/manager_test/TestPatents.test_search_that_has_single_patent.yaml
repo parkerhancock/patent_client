@@ -1,0 +1,143 @@
+interactions:
+- request:
+    body: '{"caseId": 27915804, "hl_snippets": "2", "op": "OR", "q": "\"tennis\".TTL.
+      AND @PD>=20100101<=20100227", "queryName": "\"tennis\".TTL. AND @PD>=20100101<=20100227",
+      "highlights": "1", "qt": "brs", "spellCheck": false, "viewName": "tile", "plurals":
+      true, "britishEquivalents": true, "databaseFilters": [{"databaseName": "USPAT",
+      "countryCodes": []}], "searchType": 1, "ignorePersist": true, "userEnteredQuery":
+      "\"tennis\".TTL. AND @PD>=20100101<=20100227"}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '457'
+      content-type:
+      - application/json
+      host:
+      - ppubs.uspto.gov
+      user-agent:
+      - Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/114.0.0.0 Safari/537.36
+      x-access-token:
+      - eyJzdWIiOiJiZTU0YjA0ZC1mZGYxLTQ5NGMtYjUyZS00M2Q4ZWRiZjk1MDgiLCJ2ZXIiOiIxYTg3NmI0Ny0yM2NlLTQ2ZGItOWViNy1mNmRhODY3OTZjZmMiLCJleHAiOjB9
+      x-requested-with:
+      - XMLHttpRequest
+    method: POST
+    uri: https://ppubs.uspto.gov/dirsearch-public/searches/counts
+  response:
+    content: '{"id":null,"caseId":27915804,"userId":null,"numResults":1,"ignorePersist":true,"fq":null,"databaseFilters":[{"databaseName":"USPAT","countryCodes":[]}],"q":"\"tennis\".TTL.
+      AND @PD>=20100101<=20100227","queryName":"\"tennis\".TTL. AND @PD>=20100101<=20100227","userEnteredQuery":"\"tennis\".TTL.
+      AND @PD>=20100101<=20100227","viewName":"tile","op":"OR","highlights":"1","plurals":true,"britishEquivalents":true,"searchType":1,"excludeResultsAfter":null,"dateCreated":null,"deleteIn":false,"expand":false,"expandSort":null,"expandRows":null,"expandTrackDocScores":false,"expandTrackMaxScore":false,"termGraph":{"termOrigin":[{"id":0,"name":null,"nodeType":"ROOT","parentId":null,"relation":null,"aliases":["default"],"aliasCategory":"OTHER"},{"id":1,"name":"\"tennis\"","nodeType":"TERM","parentId":0,"relation":"REGULAR","aliases":["default"],"aliasCategory":"OTHER"},{"id":4,"name":"\"tenni\"","nodeType":"TERM","parentId":1,"relation":"PLURAL","aliases":["default"],"aliasCategory":"OTHER"},{"id":5,"name":"@pd","nodeType":"RANGE","parentId":0,"relation":"REGULAR","aliases":["pd"],"aliasCategory":"DATE_INT"}],"termRelationship":[]},"hl":false,"fl":null,"originalQuery":"\"tennis\".TTL.
+      AND @PD>=20100101<=20100227","error":null,"terms":["\"tennis\"","\"tenni\"","@pd"],"facets":[{"solrField":"document_type","count":1,"id":"USPAT"}],"pNumber":null,"hl_fl":null}'
+    headers:
+      content-type:
+      - application/json
+      date:
+      - Wed, 24 Apr 2024 17:32:27 GMT
+      server-timing:
+      - intid;desc=dfb557f7184c718d
+      x-rate-limit-remaining:
+      - '0'
+    http_version: HTTP/2
+    status_code: 200
+- request:
+    body: '{"start": 0, "pageCount": 500, "sort": "date_publ desc", "docFamilyFiltering":
+      "familyIdFiltering", "searchType": 1, "familyIdEnglishOnly": true, "familyIdFirstPreferred":
+      "US-PGPUB", "familyIdSecondPreferred": "USPAT", "familyIdThirdPreferred": "FPRS",
+      "showDocPerFamilyPref": "showEnglish", "queryId": 0, "tagDocSearch": false,
+      "query": {"caseId": 27915804, "hl_snippets": "2", "op": "OR", "q": "\"tennis\".TTL.
+      AND @PD>=20100101<=20100227", "queryName": "\"tennis\".TTL. AND @PD>=20100101<=20100227",
+      "highlights": "1", "qt": "brs", "spellCheck": false, "viewName": "tile", "plurals":
+      true, "britishEquivalents": true, "databaseFilters": [{"databaseName": "USPAT",
+      "countryCodes": []}], "searchType": 1, "ignorePersist": true, "userEnteredQuery":
+      "\"tennis\".TTL. AND @PD>=20100101<=20100227"}}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '797'
+      content-type:
+      - application/json
+      host:
+      - ppubs.uspto.gov
+      user-agent:
+      - Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/114.0.0.0 Safari/537.36
+      x-access-token:
+      - eyJzdWIiOiJiZTU0YjA0ZC1mZGYxLTQ5NGMtYjUyZS00M2Q4ZWRiZjk1MDgiLCJ2ZXIiOiIxYTg3NmI0Ny0yM2NlLTQ2ZGItOWViNy1mNmRhODY3OTZjZmMiLCJleHAiOjB9
+      x-requested-with:
+      - XMLHttpRequest
+    method: POST
+    uri: https://ppubs.uspto.gov/dirsearch-public/searches/searchWithBeFamily
+  response:
+    content: '{ "message": "Too many requests" }'
+    headers:
+      content-length:
+      - '34'
+      content-type:
+      - application/json;charset=ISO-8859-1
+      date:
+      - Wed, 24 Apr 2024 17:32:27 GMT
+      server-timing:
+      - intid;desc=5f282666c14264c7
+      x-rate-limit-retry-after-seconds:
+      - '0'
+    http_version: HTTP/2
+    status_code: 429
+- request:
+    body: '{"start": 0, "pageCount": 500, "sort": "date_publ desc", "docFamilyFiltering":
+      "familyIdFiltering", "searchType": 1, "familyIdEnglishOnly": true, "familyIdFirstPreferred":
+      "US-PGPUB", "familyIdSecondPreferred": "USPAT", "familyIdThirdPreferred": "FPRS",
+      "showDocPerFamilyPref": "showEnglish", "queryId": 0, "tagDocSearch": false,
+      "query": {"caseId": 27915804, "hl_snippets": "2", "op": "OR", "q": "\"tennis\".TTL.
+      AND @PD>=20100101<=20100227", "queryName": "\"tennis\".TTL. AND @PD>=20100101<=20100227",
+      "highlights": "1", "qt": "brs", "spellCheck": false, "viewName": "tile", "plurals":
+      true, "britishEquivalents": true, "databaseFilters": [{"databaseName": "USPAT",
+      "countryCodes": []}], "searchType": 1, "ignorePersist": true, "userEnteredQuery":
+      "\"tennis\".TTL. AND @PD>=20100101<=20100227"}}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '797'
+      content-type:
+      - application/json
+      host:
+      - ppubs.uspto.gov
+      user-agent:
+      - Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/114.0.0.0 Safari/537.36
+      x-access-token:
+      - eyJzdWIiOiJiZTU0YjA0ZC1mZGYxLTQ5NGMtYjUyZS00M2Q4ZWRiZjk1MDgiLCJ2ZXIiOiIxYTg3NmI0Ny0yM2NlLTQ2ZGItOWViNy1mNmRhODY3OTZjZmMiLCJleHAiOjB9
+      x-requested-with:
+      - XMLHttpRequest
+    method: POST
+    uri: https://ppubs.uspto.gov/dirsearch-public/searches/searchWithBeFamily
+  response:
+    content: '{ "message": "Too many requests" }'
+    headers:
+      content-length:
+      - '34'
+      content-type:
+      - application/json;charset=ISO-8859-1
+      date:
+      - Wed, 24 Apr 2024 17:32:27 GMT
+      server-timing:
+      - intid;desc=0094d9c2bca9c4cf
+      x-rate-limit-retry-after-seconds:
+      - '0'
+    http_version: HTTP/2
+    status_code: 429
+version: 1

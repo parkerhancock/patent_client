@@ -1,0 +1,44 @@
+interactions:
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - beta-api.uspto.gov
+      user-agent:
+      - python-httpx/0.27.0
+      x-api-key:
+      - oygzgndgwifcpqgvdcitnhorcdvpbb
+    method: GET
+    uri: https://beta-api.uspto.gov/api/v1/patent/applications/16123456/foreign-priority
+  response:
+    content: '{"count":1,"patentBag":[{"foreignPriorityBag":[{"priorityNumberText":"2017-187096","filingDate":"2017-09-27","countryName":"JAPAN"}]}],"requestIdentifier":"cc10d600-43ed-4549-b8ee-dfff060e2688"}'
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '194'
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 24 Apr 2024 16:55:38 GMT
+      X-Amzn-Trace-Id:
+      - Root=1-6629398a-14069baf075ddb6e43ccf4af;Parent=2556a5a9036be725;Sampled=0;lineage=33e8fdb8:0
+      access-control-allow-headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      access-control-allow-methods:
+      - OPTIONS,POST,GET
+      access-control-allow-origin:
+      - '*'
+      x-amz-apigw-id:
+      - WvXtsEs5IAMFXmg=
+      x-amzn-RequestId:
+      - cc10d600-43ed-4549-b8ee-dfff060e2688
+    http_version: HTTP/1.1
+    status_code: 200
+version: 1

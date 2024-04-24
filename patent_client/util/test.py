@@ -22,7 +22,9 @@ def compare_dicts(dict_1, dict_2, key=""):
     if len(in_1_not_2) > 0:
         raise ValueError(f"At {key}, Keys {in_1_not_2} are in Dict 1, but not Dict 2")
     if len(in_2_not_1) > 0:
-        raise ValueError(f"At {key}, Keys {in_2_not_1} are not in Dict 1, but are in Dict 2")
+        raise ValueError(
+            f"At {key}, Keys {in_2_not_1} are not in Dict 1, but are in Dict 2"
+        )
 
     for k, v in dict_1.items():
         if isinstance(v, list) and not isinstance(v, str):
@@ -68,5 +70,7 @@ def autogen_tests(name, obj):
     elif isinstance(obj, abc.Sequence) and not isinstance(obj, str):
         output = autogen_list_tests(name, obj)
     else:
-        raise ValueError(f"Object is type {type(obj)}! Must be either a Model, abc.Mapping, or abc.Sequence")
+        raise ValueError(
+            f"Object is type {type(obj)}! Must be either a Model, abc.Mapping, or abc.Sequence"
+        )
     return "\n".join(output)

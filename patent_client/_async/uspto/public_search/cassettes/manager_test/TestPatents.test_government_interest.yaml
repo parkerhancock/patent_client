@@ -1,0 +1,1030 @@
+interactions:
+- request:
+    body: '{"caseId": 27914878, "hl_snippets": "2", "op": "OR", "q": "\"11555621\".PN.",
+      "queryName": "\"11555621\".PN.", "highlights": "1", "qt": "brs", "spellCheck":
+      false, "viewName": "tile", "plurals": true, "britishEquivalents": true, "databaseFilters":
+      [{"databaseName": "USPAT", "countryCodes": []}], "searchType": 1, "ignorePersist":
+      true, "userEnteredQuery": "\"11555621\".PN."}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '376'
+      content-type:
+      - application/json
+      host:
+      - ppubs.uspto.gov
+      user-agent:
+      - Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/114.0.0.0 Safari/537.36
+      x-access-token:
+      - eyJzdWIiOiJlZDAxMDYzMi04YTI0LTQzM2EtOTE2Zi00YjEzMjliMTY2OWMiLCJ2ZXIiOiI0YjMxZDc0NC1mYzgzLTRiNTAtYWQ2OC1mMjQ1YjUwYzkxZWMiLCJleHAiOjB9
+      x-requested-with:
+      - XMLHttpRequest
+    method: POST
+    uri: https://ppubs.uspto.gov/dirsearch-public/searches/counts
+  response:
+    content: '{"id":null,"caseId":27914878,"userId":null,"numResults":1,"ignorePersist":true,"fq":null,"databaseFilters":[{"databaseName":"USPAT","countryCodes":[]}],"q":"\"11555621\".PN.","queryName":"\"11555621\".PN.","userEnteredQuery":"\"11555621\".PN.","viewName":"tile","op":"OR","highlights":"1","plurals":true,"britishEquivalents":true,"searchType":1,"excludeResultsAfter":null,"dateCreated":null,"deleteIn":false,"expand":false,"expandSort":null,"expandRows":null,"expandTrackDocScores":false,"expandTrackMaxScore":false,"termGraph":{"termOrigin":[{"id":0,"name":null,"nodeType":"ROOT","parentId":null,"relation":null,"aliases":["default"],"aliasCategory":"OTHER"},{"id":1,"name":"\"11555621\"","nodeType":"TERM","parentId":0,"relation":"REGULAR","aliases":["pn"],"aliasCategory":"DOC_IDENTIFIER"}],"termRelationship":[]},"hl":false,"fl":null,"originalQuery":"\"11555621\".PN.","error":null,"terms":["\"11555621\""],"facets":[{"solrField":"document_type","count":1,"id":"USPAT"}],"pNumber":null,"hl_fl":null}'
+    headers:
+      content-type:
+      - application/json
+      date:
+      - Wed, 24 Apr 2024 16:56:46 GMT
+      server-timing:
+      - intid;desc=d5e64034563f2c17
+      x-rate-limit-remaining:
+      - '44'
+    http_version: HTTP/2
+    status_code: 200
+- request:
+    body: '{"start": 0, "pageCount": 500, "sort": "date_publ desc", "docFamilyFiltering":
+      "familyIdFiltering", "searchType": 1, "familyIdEnglishOnly": true, "familyIdFirstPreferred":
+      "US-PGPUB", "familyIdSecondPreferred": "USPAT", "familyIdThirdPreferred": "FPRS",
+      "showDocPerFamilyPref": "showEnglish", "queryId": 0, "tagDocSearch": false,
+      "query": {"caseId": 27914878, "hl_snippets": "2", "op": "OR", "q": "\"11555621\".PN.",
+      "queryName": "\"11555621\".PN.", "highlights": "1", "qt": "brs", "spellCheck":
+      false, "viewName": "tile", "plurals": true, "britishEquivalents": true, "databaseFilters":
+      [{"databaseName": "USPAT", "countryCodes": []}], "searchType": 1, "ignorePersist":
+      true, "userEnteredQuery": "\"11555621\".PN."}}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '716'
+      content-type:
+      - application/json
+      host:
+      - ppubs.uspto.gov
+      user-agent:
+      - Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/114.0.0.0 Safari/537.36
+      x-access-token:
+      - eyJzdWIiOiJlZDAxMDYzMi04YTI0LTQzM2EtOTE2Zi00YjEzMjliMTY2OWMiLCJ2ZXIiOiI0YjMxZDc0NC1mYzgzLTRiNTAtYWQ2OC1mMjQ1YjUwYzkxZWMiLCJleHAiOjB9
+      x-requested-with:
+      - XMLHttpRequest
+    method: POST
+    uri: https://ppubs.uspto.gov/dirsearch-public/searches/searchWithBeFamily
+  response:
+    content: '{"numFound":1,"perPage":500,"page":0,"totalPages":0,"hlSnippets":0,"sort":null,"query":{"id":null,"caseId":27914878,"userId":null,"numResults":1,"ignorePersist":true,"fq":null,"databaseFilters":[{"databaseName":"USPAT","countryCodes":[]}],"q":"\"11555621\".PN.","queryName":"\"11555621\".PN.","userEnteredQuery":"\"11555621\".PN.","viewName":"tile","op":"OR","highlights":"1","plurals":true,"britishEquivalents":true,"searchType":1,"excludeResultsAfter":null,"dateCreated":null,"deleteIn":false,"expand":true,"expandSort":"group_sort_date
+      asc, id desc ","expandRows":"100","expandTrackDocScores":true,"expandTrackMaxScore":true,"termGraph":null,"hl":false,"fl":null,"originalQuery":"\"11555621\".PN.","error":null,"terms":["\"11555621\""],"facets":[],"pNumber":null,"hl_fl":null},"duration":17,"highlightingTime":0,"cursorMarker":"AoJwgNHB3oUDNzg0OTIyNzgwIVVTLVVTLTExNTU1NjIx","totalResults":1,"numberOfFamilies":1,"error":null,"patents":[{"guid":"US-11555621-B1","publicationReferenceDocumentNumber":"11555621","compositeId":"84922780!US-US-11555621","publicationReferenceDocumentNumber1":"11555621","datePublishedKwicHits":null,"datePublished":"2023-01-17T00:00:00Z","inventionTitle":"Adapter
+      for modular catalytic monoliths","type":"USPAT","mainClassificationCode":"1/1","applicantName":["The
+      United States of America, as represented by the Secretary of the Navy"],"assigneeName":["The
+      United States of America, as represented by the Secretary of the Navy"],"uspcFullClassificationFlattened":null,"ipcCodeFlattened":"F24F13/28;F01N3/10","cpcInventiveFlattened":"B63G8/36;B01D53/86;F01N3/10;B63J2/04;F24F8/167","cpcAdditionalFlattened":"B01D2255/30;B01D2255/92;B01D2255/1025;B01D2255/20715;B01D2257/108;B01D2259/4566;B01D2257/404;B01D2255/1023;B01D2255/106;B01D2255/1026;B01D2257/502;F24F13/28;B01D2258/06;B01D2255/1021","applicationFilingDate":["2020-03-30T00:00:00Z"],"applicationFilingDateKwicHits":null,"relatedApplFilingDate":["2020-02-27T00:00:00Z","2019-04-05T00:00:00Z"],"primaryExaminer":"Duong;
+      Tom P","assistantExaminer":null,"applicationNumber":"16/834313","frontPageStart":1,"frontPageEnd":1,"drawingsStart":2,"drawingsEnd":9,"specificationStart":10,"specificationEnd":16,"claimsStart":16,"claimsEnd":16,"abstractStart":1,"abstractEnd":1,"bibStart":1,"bibEnd":1,"certCorrectionStart":0,"certCorrectionEnd":0,"certReexaminationStart":0,"certReexaminationEnd":0,"supplementalStart":0,"supplementalEnd":0,"ptabStart":0,"ptabEnd":0,"amendStart":0,"amendEnd":0,"searchReportStart":0,"searchReportEnd":0,"pageCount":16,"pageCountDisplay":"16","previouslyViewed":false,"unused":false,"imageLocation":"uspat/US/G21/556/115","imageFileName":"00000001.tif","cpcCodes":null,"queryId":null,"tags":null,"inventorsShort":"Gulian;
+      Franklin J. et al.","familyIdentifierCur":84922780,"familyIdentifierCurStr":null,"languageIndicator":"EN","databaseName":"USPT","dwImageDoctypeList":null,"dwImageLocList":null,"dwPageCountList":null,"dwImageDocidList":null,"patentFamilyMembers":null,"patentFamilyCountry":null,"patentFamilySerialNumber":null,"documentIdWithDashesDw":null,"pfPublDate":null,"pfPublDateKwicHits":null,"priorityClaimsDate":null,"priorityClaimsDateKwicHits":null,"pfApplicationSerialNumber":null,"pfApplicationDescriptor":null,"pfLanguage":null,"pfApplicationDate":null,"pfApplicationDateKwicHits":null,"clippedUri":null,"source":null,"documentId":"US
+      11555621 B1","derwentAccessionNumber":null,"documentSize":69788,"score":14.091056,"governmentInterest":["STATEMENT
+      OF GOVERNMENT INTEREST\n(1) The invention described herein may be manufactured
+      and used by or for the Government of the United States of America for governmental
+      purposes without payment of any royalties thereon or therefor."],"kindCode":["B1"],"urpn":["4916001","8066950","20050042151","20060080967","20170159529"],"urpnCode":["4916001","8066950","20050042151","20060080967","20170159529"],"descriptionStart":10,"descriptionEnd":16,"publicationReferenceDocumentNumberOne":"11555621"}],"qtime":11}'
+    headers:
+      content-type:
+      - application/json
+      date:
+      - Wed, 24 Apr 2024 16:56:46 GMT
+      server-timing:
+      - intid;desc=350ca070bc27881b
+      x-rate-limit-remaining:
+      - '43'
+    http_version: HTTP/2
+    status_code: 200
+- request:
+    body: '{"caseId": 27914878, "hl_snippets": "2", "op": "OR", "q": "\"11555621\".PN.",
+      "queryName": "\"11555621\".PN.", "highlights": "1", "qt": "brs", "spellCheck":
+      false, "viewName": "tile", "plurals": true, "britishEquivalents": true, "databaseFilters":
+      [{"databaseName": "USPAT", "countryCodes": []}], "searchType": 1, "ignorePersist":
+      true, "userEnteredQuery": "\"11555621\".PN."}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '376'
+      content-type:
+      - application/json
+      host:
+      - ppubs.uspto.gov
+      user-agent:
+      - Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/114.0.0.0 Safari/537.36
+      x-access-token:
+      - eyJzdWIiOiJlZDAxMDYzMi04YTI0LTQzM2EtOTE2Zi00YjEzMjliMTY2OWMiLCJ2ZXIiOiI0YjMxZDc0NC1mYzgzLTRiNTAtYWQ2OC1mMjQ1YjUwYzkxZWMiLCJleHAiOjB9
+      x-requested-with:
+      - XMLHttpRequest
+    method: POST
+    uri: https://ppubs.uspto.gov/dirsearch-public/searches/counts
+  response:
+    content: '{"id":null,"caseId":27914878,"userId":null,"numResults":1,"ignorePersist":true,"fq":null,"databaseFilters":[{"databaseName":"USPAT","countryCodes":[]}],"q":"\"11555621\".PN.","queryName":"\"11555621\".PN.","userEnteredQuery":"\"11555621\".PN.","viewName":"tile","op":"OR","highlights":"1","plurals":true,"britishEquivalents":true,"searchType":1,"excludeResultsAfter":null,"dateCreated":null,"deleteIn":false,"expand":false,"expandSort":null,"expandRows":null,"expandTrackDocScores":false,"expandTrackMaxScore":false,"termGraph":{"termOrigin":[{"id":0,"name":null,"nodeType":"ROOT","parentId":null,"relation":null,"aliases":["default"],"aliasCategory":"OTHER"},{"id":1,"name":"\"11555621\"","nodeType":"TERM","parentId":0,"relation":"REGULAR","aliases":["pn"],"aliasCategory":"DOC_IDENTIFIER"}],"termRelationship":[]},"hl":false,"fl":null,"originalQuery":"\"11555621\".PN.","error":null,"terms":["\"11555621\""],"facets":[{"solrField":"document_type","count":1,"id":"USPAT"}],"pNumber":null,"hl_fl":null}'
+    headers:
+      content-type:
+      - application/json
+      date:
+      - Wed, 24 Apr 2024 16:56:46 GMT
+      server-timing:
+      - intid;desc=5c7f9ee87310286b
+      x-rate-limit-remaining:
+      - '42'
+    http_version: HTTP/2
+    status_code: 200
+- request:
+    body: '{"start": 0, "pageCount": 500, "sort": "date_publ desc", "docFamilyFiltering":
+      "familyIdFiltering", "searchType": 1, "familyIdEnglishOnly": true, "familyIdFirstPreferred":
+      "US-PGPUB", "familyIdSecondPreferred": "USPAT", "familyIdThirdPreferred": "FPRS",
+      "showDocPerFamilyPref": "showEnglish", "queryId": 0, "tagDocSearch": false,
+      "query": {"caseId": 27914878, "hl_snippets": "2", "op": "OR", "q": "\"11555621\".PN.",
+      "queryName": "\"11555621\".PN.", "highlights": "1", "qt": "brs", "spellCheck":
+      false, "viewName": "tile", "plurals": true, "britishEquivalents": true, "databaseFilters":
+      [{"databaseName": "USPAT", "countryCodes": []}], "searchType": 1, "ignorePersist":
+      true, "userEnteredQuery": "\"11555621\".PN."}}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '716'
+      content-type:
+      - application/json
+      host:
+      - ppubs.uspto.gov
+      user-agent:
+      - Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/114.0.0.0 Safari/537.36
+      x-access-token:
+      - eyJzdWIiOiJlZDAxMDYzMi04YTI0LTQzM2EtOTE2Zi00YjEzMjliMTY2OWMiLCJ2ZXIiOiI0YjMxZDc0NC1mYzgzLTRiNTAtYWQ2OC1mMjQ1YjUwYzkxZWMiLCJleHAiOjB9
+      x-requested-with:
+      - XMLHttpRequest
+    method: POST
+    uri: https://ppubs.uspto.gov/dirsearch-public/searches/searchWithBeFamily
+  response:
+    content: '{"numFound":1,"perPage":500,"page":0,"totalPages":0,"hlSnippets":0,"sort":null,"query":{"id":null,"caseId":27914878,"userId":null,"numResults":1,"ignorePersist":true,"fq":null,"databaseFilters":[{"databaseName":"USPAT","countryCodes":[]}],"q":"\"11555621\".PN.","queryName":"\"11555621\".PN.","userEnteredQuery":"\"11555621\".PN.","viewName":"tile","op":"OR","highlights":"1","plurals":true,"britishEquivalents":true,"searchType":1,"excludeResultsAfter":null,"dateCreated":null,"deleteIn":false,"expand":true,"expandSort":"group_sort_date
+      asc, id desc ","expandRows":"100","expandTrackDocScores":true,"expandTrackMaxScore":true,"termGraph":null,"hl":false,"fl":null,"originalQuery":"\"11555621\".PN.","error":null,"terms":["\"11555621\""],"facets":[],"pNumber":null,"hl_fl":null},"duration":13,"highlightingTime":0,"cursorMarker":"AoJwgNHB3oUDNzg0OTIyNzgwIVVTLVVTLTExNTU1NjIx","totalResults":1,"numberOfFamilies":1,"error":null,"patents":[{"guid":"US-11555621-B1","publicationReferenceDocumentNumber":"11555621","compositeId":"84922780!US-US-11555621","publicationReferenceDocumentNumber1":"11555621","datePublishedKwicHits":null,"datePublished":"2023-01-17T00:00:00Z","inventionTitle":"Adapter
+      for modular catalytic monoliths","type":"USPAT","mainClassificationCode":"1/1","applicantName":["The
+      United States of America, as represented by the Secretary of the Navy"],"assigneeName":["The
+      United States of America, as represented by the Secretary of the Navy"],"uspcFullClassificationFlattened":null,"ipcCodeFlattened":"F24F13/28;F01N3/10","cpcInventiveFlattened":"B63G8/36;B01D53/86;F01N3/10;B63J2/04;F24F8/167","cpcAdditionalFlattened":"B01D2255/30;B01D2255/92;B01D2255/1025;B01D2255/20715;B01D2257/108;B01D2259/4566;B01D2257/404;B01D2255/1023;B01D2255/106;B01D2255/1026;B01D2257/502;F24F13/28;B01D2258/06;B01D2255/1021","applicationFilingDate":["2020-03-30T00:00:00Z"],"applicationFilingDateKwicHits":null,"relatedApplFilingDate":["2020-02-27T00:00:00Z","2019-04-05T00:00:00Z"],"primaryExaminer":"Duong;
+      Tom P","assistantExaminer":null,"applicationNumber":"16/834313","frontPageStart":1,"frontPageEnd":1,"drawingsStart":2,"drawingsEnd":9,"specificationStart":10,"specificationEnd":16,"claimsStart":16,"claimsEnd":16,"abstractStart":1,"abstractEnd":1,"bibStart":1,"bibEnd":1,"certCorrectionStart":0,"certCorrectionEnd":0,"certReexaminationStart":0,"certReexaminationEnd":0,"supplementalStart":0,"supplementalEnd":0,"ptabStart":0,"ptabEnd":0,"amendStart":0,"amendEnd":0,"searchReportStart":0,"searchReportEnd":0,"pageCount":16,"pageCountDisplay":"16","previouslyViewed":false,"unused":false,"imageLocation":"uspat/US/G21/556/115","imageFileName":"00000001.tif","cpcCodes":null,"queryId":null,"tags":null,"inventorsShort":"Gulian;
+      Franklin J. et al.","familyIdentifierCur":84922780,"familyIdentifierCurStr":null,"languageIndicator":"EN","databaseName":"USPT","dwImageDoctypeList":null,"dwImageLocList":null,"dwPageCountList":null,"dwImageDocidList":null,"patentFamilyMembers":null,"patentFamilyCountry":null,"patentFamilySerialNumber":null,"documentIdWithDashesDw":null,"pfPublDate":null,"pfPublDateKwicHits":null,"priorityClaimsDate":null,"priorityClaimsDateKwicHits":null,"pfApplicationSerialNumber":null,"pfApplicationDescriptor":null,"pfLanguage":null,"pfApplicationDate":null,"pfApplicationDateKwicHits":null,"clippedUri":null,"source":null,"documentId":"US
+      11555621 B1","derwentAccessionNumber":null,"documentSize":69788,"score":14.090198,"governmentInterest":["STATEMENT
+      OF GOVERNMENT INTEREST\n(1) The invention described herein may be manufactured
+      and used by or for the Government of the United States of America for governmental
+      purposes without payment of any royalties thereon or therefor."],"kindCode":["B1"],"urpn":["4916001","8066950","20050042151","20060080967","20170159529"],"urpnCode":["4916001","8066950","20050042151","20060080967","20170159529"],"descriptionStart":10,"descriptionEnd":16,"publicationReferenceDocumentNumberOne":"11555621"}],"qtime":7}'
+    headers:
+      content-type:
+      - application/json
+      date:
+      - Wed, 24 Apr 2024 16:56:46 GMT
+      server-timing:
+      - intid;desc=f5624a40857fa94d
+      x-rate-limit-remaining:
+      - '41'
+    http_version: HTTP/2
+    status_code: 200
+- request:
+    body: '{"caseId": 27914878, "hl_snippets": "2", "op": "OR", "q": "\"11555621\".PN.",
+      "queryName": "\"11555621\".PN.", "highlights": "1", "qt": "brs", "spellCheck":
+      false, "viewName": "tile", "plurals": true, "britishEquivalents": true, "databaseFilters":
+      [{"databaseName": "USPAT", "countryCodes": []}], "searchType": 1, "ignorePersist":
+      true, "userEnteredQuery": "\"11555621\".PN."}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '376'
+      content-type:
+      - application/json
+      host:
+      - ppubs.uspto.gov
+      user-agent:
+      - Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/114.0.0.0 Safari/537.36
+      x-access-token:
+      - eyJzdWIiOiJlZDAxMDYzMi04YTI0LTQzM2EtOTE2Zi00YjEzMjliMTY2OWMiLCJ2ZXIiOiI0YjMxZDc0NC1mYzgzLTRiNTAtYWQ2OC1mMjQ1YjUwYzkxZWMiLCJleHAiOjB9
+      x-requested-with:
+      - XMLHttpRequest
+    method: POST
+    uri: https://ppubs.uspto.gov/dirsearch-public/searches/counts
+  response:
+    content: '{"id":null,"caseId":27914878,"userId":null,"numResults":1,"ignorePersist":true,"fq":null,"databaseFilters":[{"databaseName":"USPAT","countryCodes":[]}],"q":"\"11555621\".PN.","queryName":"\"11555621\".PN.","userEnteredQuery":"\"11555621\".PN.","viewName":"tile","op":"OR","highlights":"1","plurals":true,"britishEquivalents":true,"searchType":1,"excludeResultsAfter":null,"dateCreated":null,"deleteIn":false,"expand":false,"expandSort":null,"expandRows":null,"expandTrackDocScores":false,"expandTrackMaxScore":false,"termGraph":{"termOrigin":[{"id":0,"name":null,"nodeType":"ROOT","parentId":null,"relation":null,"aliases":["default"],"aliasCategory":"OTHER"},{"id":1,"name":"\"11555621\"","nodeType":"TERM","parentId":0,"relation":"REGULAR","aliases":["pn"],"aliasCategory":"DOC_IDENTIFIER"}],"termRelationship":[]},"hl":false,"fl":null,"originalQuery":"\"11555621\".PN.","error":null,"terms":["\"11555621\""],"facets":[{"solrField":"document_type","count":1,"id":"USPAT"}],"pNumber":null,"hl_fl":null}'
+    headers:
+      content-type:
+      - application/json
+      date:
+      - Wed, 24 Apr 2024 16:56:46 GMT
+      server-timing:
+      - intid;desc=d407205fffb6ae89
+      x-rate-limit-remaining:
+      - '40'
+    http_version: HTTP/2
+    status_code: 200
+- request:
+    body: '{"start": 0, "pageCount": 1, "sort": "date_publ desc", "docFamilyFiltering":
+      "familyIdFiltering", "searchType": 1, "familyIdEnglishOnly": true, "familyIdFirstPreferred":
+      "US-PGPUB", "familyIdSecondPreferred": "USPAT", "familyIdThirdPreferred": "FPRS",
+      "showDocPerFamilyPref": "showEnglish", "queryId": 0, "tagDocSearch": false,
+      "query": {"caseId": 27914878, "hl_snippets": "2", "op": "OR", "q": "\"11555621\".PN.",
+      "queryName": "\"11555621\".PN.", "highlights": "1", "qt": "brs", "spellCheck":
+      false, "viewName": "tile", "plurals": true, "britishEquivalents": true, "databaseFilters":
+      [{"databaseName": "USPAT", "countryCodes": []}], "searchType": 1, "ignorePersist":
+      true, "userEnteredQuery": "\"11555621\".PN."}}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '714'
+      content-type:
+      - application/json
+      host:
+      - ppubs.uspto.gov
+      user-agent:
+      - Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/114.0.0.0 Safari/537.36
+      x-access-token:
+      - eyJzdWIiOiJlZDAxMDYzMi04YTI0LTQzM2EtOTE2Zi00YjEzMjliMTY2OWMiLCJ2ZXIiOiI0YjMxZDc0NC1mYzgzLTRiNTAtYWQ2OC1mMjQ1YjUwYzkxZWMiLCJleHAiOjB9
+      x-requested-with:
+      - XMLHttpRequest
+    method: POST
+    uri: https://ppubs.uspto.gov/dirsearch-public/searches/searchWithBeFamily
+  response:
+    content: '{"numFound":1,"perPage":1,"page":0,"totalPages":0,"hlSnippets":0,"sort":null,"query":{"id":null,"caseId":27914878,"userId":null,"numResults":1,"ignorePersist":true,"fq":null,"databaseFilters":[{"databaseName":"USPAT","countryCodes":[]}],"q":"\"11555621\".PN.","queryName":"\"11555621\".PN.","userEnteredQuery":"\"11555621\".PN.","viewName":"tile","op":"OR","highlights":"1","plurals":true,"britishEquivalents":true,"searchType":1,"excludeResultsAfter":null,"dateCreated":null,"deleteIn":false,"expand":true,"expandSort":"group_sort_date
+      asc, id desc ","expandRows":"100","expandTrackDocScores":true,"expandTrackMaxScore":true,"termGraph":null,"hl":false,"fl":null,"originalQuery":"\"11555621\".PN.","error":null,"terms":["\"11555621\""],"facets":[],"pNumber":null,"hl_fl":null},"duration":16,"highlightingTime":0,"cursorMarker":"AoJwgNHB3oUDNzg0OTIyNzgwIVVTLVVTLTExNTU1NjIx","totalResults":1,"numberOfFamilies":1,"error":null,"patents":[{"guid":"US-11555621-B1","publicationReferenceDocumentNumber":"11555621","compositeId":"84922780!US-US-11555621","publicationReferenceDocumentNumber1":"11555621","datePublishedKwicHits":null,"datePublished":"2023-01-17T00:00:00Z","inventionTitle":"Adapter
+      for modular catalytic monoliths","type":"USPAT","mainClassificationCode":"1/1","applicantName":["The
+      United States of America, as represented by the Secretary of the Navy"],"assigneeName":["The
+      United States of America, as represented by the Secretary of the Navy"],"uspcFullClassificationFlattened":null,"ipcCodeFlattened":"F24F13/28;F01N3/10","cpcInventiveFlattened":"B63G8/36;B01D53/86;F01N3/10;B63J2/04;F24F8/167","cpcAdditionalFlattened":"B01D2255/30;B01D2255/92;B01D2255/1025;B01D2255/20715;B01D2257/108;B01D2259/4566;B01D2257/404;B01D2255/1023;B01D2255/106;B01D2255/1026;B01D2257/502;F24F13/28;B01D2258/06;B01D2255/1021","applicationFilingDate":["2020-03-30T00:00:00Z"],"applicationFilingDateKwicHits":null,"relatedApplFilingDate":["2020-02-27T00:00:00Z","2019-04-05T00:00:00Z"],"primaryExaminer":"Duong;
+      Tom P","assistantExaminer":null,"applicationNumber":"16/834313","frontPageStart":1,"frontPageEnd":1,"drawingsStart":2,"drawingsEnd":9,"specificationStart":10,"specificationEnd":16,"claimsStart":16,"claimsEnd":16,"abstractStart":1,"abstractEnd":1,"bibStart":1,"bibEnd":1,"certCorrectionStart":0,"certCorrectionEnd":0,"certReexaminationStart":0,"certReexaminationEnd":0,"supplementalStart":0,"supplementalEnd":0,"ptabStart":0,"ptabEnd":0,"amendStart":0,"amendEnd":0,"searchReportStart":0,"searchReportEnd":0,"pageCount":16,"pageCountDisplay":"16","previouslyViewed":false,"unused":false,"imageLocation":"uspat/US/G21/556/115","imageFileName":"00000001.tif","cpcCodes":null,"queryId":null,"tags":null,"inventorsShort":"Gulian;
+      Franklin J. et al.","familyIdentifierCur":84922780,"familyIdentifierCurStr":null,"languageIndicator":"EN","databaseName":"USPT","dwImageDoctypeList":null,"dwImageLocList":null,"dwPageCountList":null,"dwImageDocidList":null,"patentFamilyMembers":null,"patentFamilyCountry":null,"patentFamilySerialNumber":null,"documentIdWithDashesDw":null,"pfPublDate":null,"pfPublDateKwicHits":null,"priorityClaimsDate":null,"priorityClaimsDateKwicHits":null,"pfApplicationSerialNumber":null,"pfApplicationDescriptor":null,"pfLanguage":null,"pfApplicationDate":null,"pfApplicationDateKwicHits":null,"clippedUri":null,"source":null,"documentId":"US
+      11555621 B1","derwentAccessionNumber":null,"documentSize":69788,"score":14.090198,"governmentInterest":["STATEMENT
+      OF GOVERNMENT INTEREST\n(1) The invention described herein may be manufactured
+      and used by or for the Government of the United States of America for governmental
+      purposes without payment of any royalties thereon or therefor."],"kindCode":["B1"],"urpn":["4916001","8066950","20050042151","20060080967","20170159529"],"urpnCode":["4916001","8066950","20050042151","20060080967","20170159529"],"descriptionStart":10,"descriptionEnd":16,"publicationReferenceDocumentNumberOne":"11555621"}],"qtime":9}'
+    headers:
+      content-type:
+      - application/json
+      date:
+      - Wed, 24 Apr 2024 16:56:46 GMT
+      server-timing:
+      - intid;desc=027dbe41132c10a5
+      x-rate-limit-remaining:
+      - '39'
+    http_version: HTTP/2
+    status_code: 200
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - ppubs.uspto.gov
+      user-agent:
+      - Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/114.0.0.0 Safari/537.36
+      x-access-token:
+      - eyJzdWIiOiJlZDAxMDYzMi04YTI0LTQzM2EtOTE2Zi00YjEzMjliMTY2OWMiLCJ2ZXIiOiI0YjMxZDc0NC1mYzgzLTRiNTAtYWQ2OC1mMjQ1YjUwYzkxZWMiLCJleHAiOjB9
+      x-requested-with:
+      - XMLHttpRequest
+    method: GET
+    uri: https://ppubs.uspto.gov/dirsearch-public/internal/patents/US-11555621-B1/highlight?queryId=1&source=USPAT&includeSections=true&uniqueId=
+  response:
+    content: "{\"guid\":\"US-11555621-B1\",\"publicationReferenceDocumentNumber\":\"11555621\",\"compositeId\":\"84922780!US-US-11555621\",\"publicationReferenceDocumentNumber1\":\"11555621\",\"datePublishedKwicHits\":null,\"datePublished\":\"2023-01-17T00:00:00Z\",\"inventionTitle\":\"Adapter
+      for modular catalytic monoliths\",\"type\":\"USPAT\",\"mainClassificationCode\":\"1/1\",\"applicantName\":[\"The
+      United States of America, as represented by the Secretary of the Navy\"],\"assigneeName\":[\"The
+      United States of America, as represented by the Secretary of the Navy\"],\"uspcFullClassificationFlattened\":null,\"ipcCodeFlattened\":\"F24F13/28;F01N3/10\",\"cpcInventiveFlattened\":\"B63G8/36;B01D53/86;F01N3/10;B63J2/04;F24F8/167\",\"cpcAdditionalFlattened\":\"B01D2255/30;B01D2255/92;B01D2255/1025;B01D2255/20715;B01D2257/108;B01D2259/4566;B01D2257/404;B01D2255/1023;B01D2255/106;B01D2255/1026;B01D2257/502;F24F13/28;B01D2258/06;B01D2255/1021\",\"applicationFilingDate\":[\"2020-03-30T00:00:00Z\"],\"applicationFilingDateKwicHits\":null,\"relatedApplFilingDate\":[\"2020-02-27T00:00:00Z\",\"2019-04-05T00:00:00Z\"],\"primaryExaminer\":\"Duong;
+      Tom P\",\"assistantExaminer\":null,\"applicationNumber\":\"16/834313\",\"frontPageStart\":1,\"frontPageEnd\":1,\"drawingsStart\":2,\"drawingsEnd\":9,\"specificationStart\":10,\"specificationEnd\":16,\"claimsStart\":16,\"claimsEnd\":16,\"abstractStart\":1,\"abstractEnd\":1,\"bibStart\":1,\"bibEnd\":1,\"certCorrectionStart\":0,\"certCorrectionEnd\":0,\"certReexaminationStart\":0,\"certReexaminationEnd\":0,\"supplementalStart\":0,\"supplementalEnd\":0,\"ptabStart\":0,\"ptabEnd\":0,\"amendStart\":0,\"amendEnd\":0,\"searchReportStart\":0,\"searchReportEnd\":0,\"pageCount\":16,\"pageCountDisplay\":\"16\",\"previouslyViewed\":false,\"unused\":false,\"imageLocation\":\"uspat/US/G21/556/115\",\"imageFileName\":\"00000001.tif\",\"cpcCodes\":null,\"queryId\":1,\"tags\":null,\"inventorsShort\":\"Gulian;
+      Franklin J. et al.\",\"familyIdentifierCur\":84922780,\"familyIdentifierCurStr\":\"84922780\",\"languageIndicator\":\"EN\",\"databaseName\":\"USPT\",\"dwImageDoctypeList\":null,\"dwImageLocList\":null,\"dwPageCountList\":null,\"dwImageDocidList\":null,\"patentFamilyMembers\":null,\"patentFamilyCountry\":null,\"patentFamilySerialNumber\":null,\"documentIdWithDashesDw\":null,\"pfPublDate\":null,\"pfPublDateKwicHits\":null,\"priorityClaimsDate\":null,\"priorityClaimsDateKwicHits\":null,\"pfApplicationSerialNumber\":null,\"pfApplicationDescriptor\":null,\"pfLanguage\":null,\"pfApplicationDate\":null,\"pfApplicationDateKwicHits\":null,\"clippedUri\":null,\"source\":null,\"documentId\":\"<span
+      term=\\\"us11555621b1\\\" class=\\\"highlight18\\\">US 11555621 B1</span>\",\"derwentAccessionNumber\":null,\"documentSize\":69788,\"score\":0.0,\"governmentInterest\":[\"STATEMENT
+      OF GOVERNMENT INTEREST\\n(1) The invention described herein may be manufactured
+      and used by or for the Government of the United States of America for governmental
+      purposes without payment of any royalties thereon or therefor.\"],\"kindCode\":[\"B1\"],\"urpn\":[\"4916001\",\"8066950\",\"20050042151\",\"20060080967\",\"20170159529\"],\"urpnCode\":[\"4916001\",\"8066950\",\"20050042151\",\"20060080967\",\"20170159529\"],\"abstractedPatentNumber\":null,\"assigneeCity\":[\"Arlington\"],\"assigneePostalCode\":[\"N/A\"],\"assigneeState\":[\"VA\"],\"assigneeTypeCode\":[\"06\"],\"curIntlPatentClassificationPrimary\":[\"F24F13/28
+      20060101\"],\"curIntlPatentClassificationPrimaryDateKwicHits\":null,\"designatedStates\":null,\"examinerGroup\":\"1774\",\"issuedUsCrossRefClassification\":null,\"jpoFtermCurrent\":null,\"languageOfSpecification\":null,\"chosenDrawingsReference\":null,\"derwentClass\":null,\"inventionTitleHighlights\":null,\"cpcOrigInventiveClassificationHighlights\":[\"F24F8/167
+      20210101\",\"F01N3/10 20130101\",\"F24F8/10 20210101\"],\"cpcInventiveDateKwicHits\":null,\"cpcOrigAdditionalClassification\":[\"F24F13/28
+      20130101\"],\"cpcAdditionalDateKwicHits\":null,\"curIntlPatentClssficationSecHighlights\":null,\"fieldOfSearchClassSubclassHighlights\":[\"422/177\"],\"cpcCombinationSetsCurHighlights\":null,\"applicantCountry\":[\"US\"],\"applicantCity\":[\"Arlington\"],\"applicantState\":[\"VA\"],\"applicantZipCode\":[\"N/A\"],\"applicantAuthorityType\":[\"assignee\"],\"applicantDescriptiveText\":null,\"applicationSerialNumber\":[\"834313\"],\"inventorCity\":[\"Schwensville\",\"Garnet
+      Valley\"],\"inventorState\":[\"PA\",\"PA\"],\"inventorPostalCode\":[\"N/A\",\"N/A\"],\"standardTitleTermsHighlights\":null,\"primaryExaminerHighlights\":\"Duong;
+      Tom P\",\"continuityData\":[\"continuation-in-part parent-doc US 16803085 20200227
+      ABANDONED child-doc US 16834313\",\"us-provisional-application US 62829858 20190405\"],\"inventors\":null,\"uspcFullClassification\":null,\"uspcCodeFmtFlattened\":null,\"ipcCode\":null,\"applicationNumberHighlights\":[\"16/834313\"],\"dateProduced\":\"2022-12-28T00:00:00Z\",\"auxFamilyMembersGroupTempPlaceHolder\":null,\"priorityCountryCode\":null,\"cpcCurAdditionalClassification\":null,\"internationalClassificationMain\":null,\"internationalClassificationSecondary\":null,\"internationalClassificationInformational\":null,\"europeanClassification\":null,\"europeanClassificationMain\":null,\"europeanClassificationSecondary\":null,\"lanuageIndicator\":null,\"intlPubClassificationPrimary\":[\"F24F13/28
+      20060101 F24F013/28\"],\"intlPubClassificationPrimaryDateKwicHits\":null,\"intlPubClassificationSecondary\":[\"F24F8/167
+      20210101 F24F008/167\",\"F24F8/10 20210101 F24F008/10\",\"F01N3/10 20060101
+      F01N003/10\"],\"intlPubClassificationSecondaryDateKwicHits\":null,\"publicationDate\":null,\"derwentWeekInt\":0,\"derwentWeek\":null,\"currentUsOriginalClassification\":\"1/1\",\"currentUsCrossReferenceClassification\":null,\"locarnoClassification\":null,\"equivalentAbstractText\":null,\"hagueIntlRegistrationNumber\":null,\"hagueIntlFilingDate\":null,\"hagueIntlFilingDateKwicHits\":null,\"hagueIntlRegistrationDate\":null,\"hagueIntlRegistrationDateKwicHits\":null,\"hagueIntlRegistrationPubDate\":null,\"hagueIntlRegistrationPubDateKwicHits\":null,\"curIntlPatentClassificationNoninvention\":null,\"curIntlPatentClassificationNoninventionDateKwicHits\":null,\"curIntlPatentClassificationSecondary\":[\"F01N3/10
+      20060101\",\"F24F8/167 20210101\",\"F24F8/10 20210101\"],\"curIntlPatentClassificationSecondaryDateKwicHits\":null,\"abstractHtml\":\"Adapters,
+      devices, and methods are provided that permit catalytic monolith modules to
+      be used in catalytic converter systems designed for fixed bed catalysts using
+      granular catalysts. The adapter provides air flow straightening upstream from
+      the catalytic monoliths, mitigating non-uniform flow into the catalytic monoliths.
+      The adapter is reusable, allowing simple replacement of spent catalytic monolith
+      modules.\",\"descriptionHtml\":\"BRIEF DESCRIPTION OF THE DRAWINGS<br />(1)
+      <figref idref=\\\"DRAWINGS\\\">FIG. <b>1</b></figref> depicts an embodiment
+      of the adapter with a flow straightener element having a perforated plate and
+      a screen mounted on top, the adapter having a slot for insertion of catalytic
+      monolith modules.<br />(2) <figref idref=\\\"DRAWINGS\\\">FIG. <b>2</b></figref>
+      depicts an exemplary catalytic monolith module containing multiple catalytic
+      monoliths separated by interstitial filler.<br />(3) <figref idref=\\\"DRAWINGS\\\">FIG.
+      <b>3</b></figref> depicts a view of a monolith module inserted into the adapter.
+      A gap is maintained between the flow straightening element and the catalytic
+      monolith module.<br />(4) <figref idref=\\\"DRAWINGS\\\">FIG. <b>4</b></figref>
+      depicts a flow straightener element consisting of a perforated plate and a mesh
+      screen situated over the left hand portion of the perforated plate.<br />(5)
+      <figref idref=\\\"DRAWINGS\\\">FIG. <b>5</b></figref> depicts a frontal view
+      of a CO\u2014H.sub.2 burner air flow path without the catalyst bed present.<br
+      />(6) <figref idref=\\\"DRAWINGS\\\">FIG. <b>6</b></figref> depicts an adapter
+      with inserted catalytic monolith module, positioned in a CO\u2014H.sub.2 burner.<br
+      />(7) <figref idref=\\\"DRAWINGS\\\">FIG. <b>7</b></figref> provides velocity
+      flow profiles in the catalyst chamber of a burner without an adapter, with an
+      adapter and a uniform perforated plate flow straightener, and with a uniform
+      perforated plate and screen on the left hand side.<br />(8) <figref idref=\\\"DRAWINGS\\\">FIG.
+      <b>8</b></figref> provides a comparison of the local flow velocity to the average
+      flow velocity for the three scenarios depicted in <figref idref=\\\"DRAWINGS\\\">FIG.
+      <b>7</b></figref>.<br />DETAILED DESCRIPTION OF THE INVENTION<br />(9) The adapter
+      of the invention provides more uniform straightened air flow, directing contaminated
+      air toward a catalytic monolith module inserted in the adapter. The adapter
+      may be made from stainless steel, carbon steel, or other metals or alloys resistant
+      to degradation in the environment of a burner, such as austenitic nickel-chromium-based
+      alloys (e.g., Inconel\xAE). The adapter supports the flow straightening element
+      a distance upstream from the monolith inlet surface to permit flow straightening
+      before the air enters the monolith. The flow straightening element may be a
+      perforated plate constructed from any of a variety of temperature and corrosion
+      resistant materials, such as those of the adapter itself. Additionally, the
+      adapter is not part of the monolith module itself, so the adapter may be reused
+      when an old or exhausted catalytic monolith module is changed out.<br />(10)
+      Catalytic monoliths may be made from a variety of materials. In some embodiments,
+      an extruded ceramic catalytic monolith is constructed from ceramic monolith
+      substrate material, such as cordierite. The ceramic monolith substrate material
+      is extruded, to produce an extruded ceramic monolith. Catalytically active material
+      is then applied to the monolith to produce a catalytic monolith. In other embodiments,
+      a metal foil catalytic monolith is constructed from metal foil monolith substrate,
+      such as corrugated metal foil. The metal foil monolith substrate has catalytically
+      active material applied and may then be wound, folded, or otherwise configured
+      to produce the metal foil catalytic monolith.<br />(11) The catalytically active
+      materials applied to either extruded ceramic or metal foil monolith substrates
+      are typically catalytically active noble metals such as platinum, palladium,
+      ruthenium, rhodium, gold, or any other highly active noble metal catalysts,
+      and combinations thereof. To apply such catalysts to the monolith substrate
+      materials, the catalysts are generally dispersed on high surface area oxides
+      such as alumina, silica, zirconia, titania, ceria, and the like, or any combination
+      thereof, and washcoated onto the monolith substrate.<br />(12) The adapters
+      and devices of the invention beneficially permit the use of catalytic monolith
+      modules which are easily handled using gloved hands, and can be used in a system
+      incorporated in a space-constrained environment, such as a submarine's Mark
+      V or other CO\u2014H.sub.2 burner. The invention thus reduces necessary labor,
+      reduces variability, lowers the production of dust when loading the catalyst
+      into the submarine burner, and minimizes health risks to sailors. The adapters
+      and devices of the invention also facilitate catalytic monolith modules to be
+      produced more economically with simple rectangular dimensions because the flow
+      straightener elements and supporting tabs are included on the adapter.<br />(13)
+      With reference to the Figures, <figref idref=\\\"DRAWINGS\\\">FIG. <b>1</b></figref>
+      shows one embodiment of an adapter <b>1</b> of the invention. The flow in a
+      Mark V CO\u2014H.sub.2 burner toward the adapter is downward, and the flow straightener
+      element in this case is mounted on the top face of the adapter <b>1</b>. The
+      flow straightener element has a perforated plate <b>7</b> with a mesh screen
+      <b>6</b> placed over the left hand portion of the perforated plate <b>7</b>
+      as shown in face-on view in <figref idref=\\\"DRAWINGS\\\">FIG. <b>4</b></figref>.
+      While embodiments of the invention are described herein with reference to left
+      and right sides or portions, those of skill in the art will readily appreciate
+      that adapters may be constructed with the opposite orientation, depending on
+      the orientation of the burner and baffle <b>15</b> where the adapter will be
+      placed. A metal tab <b>8</b> extends along the sides of the adapter <b>1</b>
+      so that the adapter <b>1</b> slides into the catalyst tray of the CO\u2014H.sub.2
+      burner. The adapter <b>1</b> is supported by the catalyst tray tab supports
+      <b>17</b> which are part of the burner, as shown in <figref idref=\\\"DRAWINGS\\\">FIGS.
+      <b>5</b> and <b>6</b></figref>. The front face <b>2</b> of the adapter <b>1</b>
+      is open to allow one or multiple catalytic monolith modules <b>11</b> to slide
+      into the adapter <b>1</b>. A catalytic monolith module <b>11</b> may be installed
+      into the adapter <b>1</b> before or after the adapter <b>1</b> is slid into
+      the CO\u2014H.sub.2 burner. The side faces <b>4</b>, <b>5</b> and back face
+      <b>3</b> of the adapter are closed. The bottom of the adapter is open except
+      for a lip <b>9</b> (typically about one inch) around the perimeter to support
+      the catalytic monolith module or modules within the adapter <b>1</b>. Additional
+      support lips may be provided on the adapter in some embodiments, such as where
+      individual monoliths are used instead of a monolith module <b>11</b>.<br />(14)
+      <figref idref=\\\"DRAWINGS\\\">FIG. <b>2</b></figref> shows a catalytic monolith
+      module <b>11</b> containing a matrix array of individual catalytic monoliths
+      <b>12</b> with interstitial filler <b>13</b> between the monoliths. Such interstitial
+      filler <b>13</b> preferably prevents air flowing through the interstitial spaces
+      between the individual monoliths <b>12</b> in the monolith module <b>11</b>,
+      and may be made from ceramic blanket insulating material such as Fiberfrax\xAE
+      or the like. In other embodiments the monolith module <b>11</b> may be constructed
+      from a single full size monolith catalyst <b>12</b> which occupies essentially
+      all the area of the module, or other combinations of multiple smaller monoliths
+      <b>12</b>. The monoliths <b>12</b> themselves may be sized such that an integral
+      number fits into the adapter <b>1</b>, or fractional sized monoliths may be
+      used in order to fill the catalytic monolith module.<br />(15) A catalytic monolith
+      module <b>11</b> designed for use in the Mark V CO\u2014H.sub.2 burner, for
+      example, may have a metallic frame <b>14</b> with outside dimensions of 32 inches
+      long by 22\xBD inches wide by 4\u215C inches deep. Such a monolith module <b>11</b>
+      may accommodate an array of individual catalytic monoliths. For example, monoliths
+      <b>12</b> each of which measure 6 inches long by 6 inches wide by 3.5 inches
+      deep (e.g., in an array of 5 monoliths in the length direction by 3\xBD monoliths
+      in the width direction) with interstitial filler <b>13</b> in the form of blanket
+      material separating the monoliths <b>12</b>. Such a module <b>11</b> fits into
+      an adapter slightly larger in length and width, such as 32\xBC inches long by
+      22 11/16 inches wide by 4 15/16 inches deep, which itself would fit in the catalyst
+      chamber of the burner. The adapter thus takes the place of the catalyst drawer
+      in the catalyst chamber. As discussed below, the adapter is deeper than the
+      monoliths themselves in order to preserve a gap <b>16</b> between the upper
+      surface of the monoliths and the flow straightener. Those of skill in the art
+      will appreciate that the dimensions of the adapter and the module may be varied
+      depending on the application, thus, other sizes may be constructed for use in
+      other burners.<br />(16) When multiple modules are used, a high temperature
+      fabric or blanket material (such as the material used for interstitial filler
+      <b>13</b> which separate individual monoliths within a module) may be placed
+      between the modules to prevent air flow between the modules. For example, three
+      catalytic monolith modules with outside dimensions of 32 inches long by 7\xBD
+      inches wide by 4\u215C inches deep could be placed in the adapter and used in
+      the Mark V CO\u2014H.sub.2 burner. Alternatively, three catalytic monolith modules
+      with dimensions 10\u2154 inches long by 22\xBD inches wide by 4\u215C inches
+      deep may be placed in the adapter for use in a Mark V CO\u2014H.sub.2 burner.
+      Such an alternative embodiment may be preferred on a submarine where storage
+      of full length monolith modules may be undesirable. Each assembled monolith
+      module may optionally have a retainer screen designed to secure and constrain
+      the monolith or monolith blocks within the monolith module. For example, the
+      retainer screen in some embodiments is a heavy gauge stainless steel wire retainer
+      screen with 7/16 inch square openings secured at the upstream surface and/or
+      downstream surfaces of the monoliths. Other optional retention means will be
+      appreciated by those of skill in the art.<br />(17) <figref idref=\\\"DRAWINGS\\\">FIG.
+      <b>3</b></figref> shows a frontal view of a monolith module <b>11</b> placed
+      in the adapter <b>1</b>. The adapter <b>1</b> maintains a gap <b>16</b> (typically
+      about one inch) between the top surface of the monolith(s) themselves and the
+      perforated plate <b>7</b> or other flow straightener. This gap <b>16</b> is
+      provided to allow dissipation of the turbulence that is created in the air as
+      it travels through the holes in the perforated plate <b>7</b>, providing a more
+      uniform air flow to the catalytic monoliths. The gap is generally larger than
+      the diameter of the holes in the perforated plate <b>7</b>, preferably at least
+      six times the diameter of the largest holes. The monolith module <b>11</b> is
+      supported by the lip <b>9</b> that extends inside the bottom perimeter of the
+      adapter. The tabs <b>8</b> on the side of the adapter <b>1</b> support the adapter
+      <b>1</b> when it is installed in the burner, sliding along and ultimately resting
+      upon the tab supports <b>17</b> inside the burner catalyst chamber.<br />(18)
+      <figref idref=\\\"DRAWINGS\\\">FIG. <b>4</b></figref> shows a face-on view of
+      one embodiment of a flow straightener of the invention, one having a perforated
+      plate <b>7</b> and a mesh screen <b>6</b>. The flow straightener is designed
+      to promote more uniform air flow to the catalytic monolith. Without a flow straightener,
+      air flow emerging from the baffle of the burner is biased toward the near side
+      of the monolith, while the far side receives little air flow. The flow straightener
+      provides for more even air flow and air pressure reaching the monolith, improving
+      performance, efficiency, and life span of the catalytic monolith.<br />(19)
+      The particular specifications for the perforated plate (e.g., the diameter of
+      the holes) and screen (e.g., the kind and other parameters) can be adjusted
+      to straighten the air flow for any specific application. In some embodiments,
+      the perforated plate <b>7</b> is about 0.05 inches thick, substantially the
+      same length and width as the adapter, and is sufficiently rigid to be supported
+      solely by the upper lip around the perimeter of the upper portion of the adapter.
+      The perforated plate <b>7</b> is provided with holes allowing air to flow through
+      toward the monolith module(s). In some embodiments, the perforated plate has
+      3/32 inch diameter holes in a 3/16 inch staggered center pattern.<br />(20)
+      In some embodiments, the flow straightener has a stainless steel mesh screen
+      <b>6</b>, such as a 200 mesh screen with openings of about 0.002 inch, which
+      screen covers a portion of one side of the perforated plate. For example, the
+      mesh screen <b>6</b> may cover about six inches of the left side of the perforated
+      plate <b>7</b>. The mesh screen <b>6</b> imposes a restriction on the air flow
+      flux through the perforated plate <b>7</b> on the side of the perforated plate
+      <b>7</b> closest to the air flow's emergence from the baffle of the burner,
+      thereby providing more uniform air flow to the entirety of the catalytic monolith.<br
+      />(21) In other embodiments, the flow straightener's perforated plate <b>7</b>
+      has holes in a graduated pattern from smallest on the side nearest the baffle
+      to largest on the side furthest from the baffle. Such a perforated plate functions
+      as a flow straightener without the need for a mesh screen <b>6</b> to restrict
+      the flow on the baffle side. Instead, the smaller holes on the baffle side together
+      with progressively larger holes on the distal side promote the desired uniformity
+      of air flow. As those of skill in the art will appreciate, the flow straightener
+      perforated plate may be constructed with a variety of hole patterns, both in
+      the size of the holes and their placement, in order to accomplish more uniform
+      straightened air flow in a particular burner.<br />(22) <figref idref=\\\"DRAWINGS\\\">FIG.
+      <b>5</b></figref> shows the air flow path in a Mark V CO\u2014H.sub.2 burner.
+      This burner was designed for a fixed bed catalyst such as Hopcalite\xAE type
+      catalysts. After passing over the heater (not shown), the contaminated air travels
+      upward within a narrow duct along the right hand side and over a baffle from
+      the right hand side to the left before making a sharp turn downward to the catalyst
+      chamber <b>18</b>. The direction of air flow upstream from the catalyst chamber
+      on the left hand side is predominately downward with a high velocity. The velocity
+      of the air flow nearer the right hand side is much lower and less directed downward.
+      Such a velocity profile is not suitable for a channeled monolith because air
+      cannot travel from left to right within the monolith. The flow at the left side
+      would be much higher than on the right side and such conditions would result
+      in an overall diminished performance. Also, the top right hand side within the
+      channels would tend to wear because it is the point where the air must suddenly
+      alter paths from a slanted or angled downward direction to a straight downward
+      direction. The tab supports <b>17</b> for the catalyst drawer are shown and
+      allow the drawer to slide in and out.<br />(23) <figref idref=\\\"DRAWINGS\\\">FIG.
+      <b>6</b></figref> shows an embodiment of the adapter inserted into the Mark
+      V CO\u2014H.sub.2 burner with a catalytic monolith module <b>11</b> installed.
+      The perforated plate <b>7</b> and screen <b>6</b> are supported about one inch
+      above the monolith module <b>11</b>. The tab supports <b>17</b> that support
+      the adapter (via the tabs <b>8</b>) in the burner also prevent flow bypassing
+      along the sides of the adapter. The air flow is straightened above the monolith
+      module <b>11</b> and travels uniformly through the monolith catalyst therein.<br
+      />(24) In some embodiments of the invention, the adapter <b>1</b> and perforated
+      plate <b>7</b> as well as the frame <b>14</b> of the catalyst module <b>11</b>
+      are constructed from stainless steel, Inconel\xAE, Incoloy\xAE, or the like.
+      In other embodiments these components can be constructed from other metals or
+      alloys that are resistant to degradation in the chemical and thermal environment
+      present in the burner. The frame <b>14</b> of the module <b>11</b> protects
+      the fragile catalytic monoliths from damage. The monolith module <b>11</b> fits
+      into the adapter <b>1</b>, which is then inserted directly into the burner,
+      resting on the supporting tabs <b>17</b> of the burner. A catalyst tray or drawer
+      designed to hold the disadvantageous granular catalyst is not needed.<br />(25)
+      The adapter can easily accommodate both metal foil catalytic monoliths and extruded
+      ceramic catalytic monoliths. Extruded ceramic catalytic monoliths are suitable
+      for submarine application because they tend to be resistant to acid gases that
+      may form from the undesired oxidation of compounds such as halogenated VOC.
+      Typical extruded ceramic catalytic monoliths have channel densities (sometimes
+      referred to as cell densities) ranging from 100 to 600 channels (or cells) per
+      square inch. Depending on the application, extruded ceramic catalytic monoliths
+      for the invention will have at least 50, preferably 100, more preferably 400
+      or more channels per square inch. In one preferred embodiment for submarine
+      CO\u2014H.sub.2 burners, the monoliths have a cell density of at least 400 channels
+      per square inch. The geometric surface area and void fraction of a 400 channels
+      per square inch monolith are approximately 64 cm.sup.2/cm.sup.3 and 0.64, respectively.<br
+      />(26) In other embodiments, metal foil catalytic monoliths are also suitable
+      for submarine applications. One advantage provided by such monoliths is that
+      they can easily be constructed to most desirable dimensions. For example, a
+      monolith module having a single metal foil catalytic monolith within can be
+      made having dimensions of 32 inches long by 22\xBD inches wide by 4\u215C inches
+      deep, which would therefore fit in an adapter designed for the Mark V CO\u2014H.sub.2
+      burner. By contrast, extruded ceramic catalytic monoliths having channel densities
+      in the range of 400 channels per square inch are usually limited in size to
+      6 inch by 6 inch blocks, so that multiple monoliths and fractions thereof are
+      needed to complete a monolith module.<br />(27) Typically, a metal foil catalytic
+      monolith is designed to provide an \u201Ceffective\u201D channel density greater
+      than 50, preferably greater than 100, more preferably greater than 150 channels
+      per square inch. The channel density for metal foil catalytic monoliths is referred
+      to as \u201Ceffective\u201D because unlike the extrusion process for extruded
+      ceramic monoliths, a metal foil catalytic monolith may be constructed by spiral
+      winding of metal foil, or alternatively by folding metal foil, typically corrugated
+      metal foil, to create the channels. In one preferred catalytic monolith for
+      submarine CO\u2014H.sub.2 burners, the metal foil catalytic monolith has an
+      effective channel density of at least 150 channels per square inch. The geometric
+      surface area and void fraction of a monolith with an effective channel density
+      of 185 channels per square inch made from corrugated foils in a herringbone
+      pattern that are then folded to make layers is approximately 20 cm.sup.2/cm.sup.3
+      and 0.84, respectively.<br />(28) The adapter containing a catalytic monolith
+      module is oriented to accommodate the direction of air flow of the burner in
+      which it will be used. For the Mark V CO\u2014H.sub.2 burner, for example, the
+      air flow is downward (as shown in <figref idref=\\\"DRAWINGS\\\">FIGS. <b>5</b>
+      and <b>6</b></figref>). Alternatively, in the Mark IV CO\u2014H.sub.2 burner
+      the air flow is horizontal, and the adapter of the invention would simply be
+      suitably oriented.<br />(29) The following Example serves to illustrate the
+      present invention and are not intended to limit its scope in any way.<br />EXAMPLES<br
+      />Example 1\u2014an Adapter for a Monolith Catalyst Module for Use in a Mark
+      V CO\u2014H.SUB.2 .Burner<br />(30) An adapter of the invention was constructed
+      from \u215B inch carbon steel sheet metal, with outside dimensions of 32\xBC
+      inches long by 22 11/16 inches wide by 4 15/16 inches deep. In order to simplify
+      construction, the sheet metal was cut to the necessary dimensions and folded
+      to make 90 degree angles to provide 1 inch lips on the top and bottom. The pieces
+      were then welded along mitered corners to produce the complete rectangular structure.
+      The device was equipped with an air flow straightener having an Incoloy\xAE
+      625 perforated plate with 3/32 inch diameter holes in a 3/16 inch staggered
+      centers pattern, with an open area of about 50%. The perforated plate was 0.05
+      inches thick, substantially the same length and width as the adapter (32\xBC
+      inches long by 22 11/16 inches) and was sufficiently rigid to be supported solely
+      by a 1 inch lip along the perimeter of the top of the adapter. The flow straightener
+      was constructed with a 200 mesh stainless steel screen with openings of about
+      0.002 inch, which screen covered 6 inches of the left hand side of the perforated
+      plate. The tabs were also made from \u215B inch thick carbon steel sheet metal
+      and were welded to extend outward from the sides of the adapter by \xBC inch.
+      The tabs were 1\u215C inches from the bottom of the adapter to ensure proper
+      placement in the catalytic chamber.<br />(31) A catalytic monolith module was
+      constructed with a stainless steel frame which measured 32 inches long by 22\xBC
+      inches wide by 4 inches deep. Individual extruded ceramic monolith blocks were
+      constructed from cordierite, and were 6 inches square by 3\xBD inches deep,
+      with a channel density of 400 channels per square inch. The catalytically active
+      noble metal platinum was dispersed on a zirconia high surface area oxide support,
+      which was then washcoated onto the extruded ceramic monoliths. The washcoated
+      monolith blocks, now catalytically active extruded ceramic catalytic monoliths,
+      were then arranged in the monolith module. High temperature ceramic insulation
+      (Fiberfrax\xAE) was used to seal between the monolith blocks to prevent air
+      flow bypassing the monoliths. A heavy gauge stainless steel wire retainer screen
+      with 7/16 inch square openings was used to secure and constrain the monolith
+      blocks within the monolith module at both the upstream and downstream surfaces
+      of the monoliths in the catalytic monolith module.<br />(32) <figref idref=\\\"DRAWINGS\\\">FIG.
+      <b>7</b></figref> shows a comparison of the velocity profiles in the catalyst
+      chamber when the adapter is not in place, with an adapter in place having a
+      flow straightener in the form of a uniform perforated plate <b>7</b>, and with
+      an adapter in place having a flow straightener in the form of a uniform perforated
+      plate <b>7</b> and a screen <b>6</b> on the left hand side. Severe non-uniform
+      flow distribution is indicated by the high flow velocity on the left hand side
+      when the adapter is not in place. The adapter using only the perforated plate
+      <b>7</b> lowers the non-uniformity on the left side. The adapter with both the
+      perforated plate <b>7</b> and screen <b>6</b> shows the lowest velocity on the
+      left hand side. The average velocities for these three scenarios are 490, 305,
+      and 240 feet per minute, respectively.<br />(33) <figref idref=\\\"DRAWINGS\\\">FIG.
+      <b>8</b></figref> shows a comparison of the local flow velocity to the average
+      flow velocity for the three scenarios discussed above. The values were calculated
+      by dividing the velocity measured at each point by the average velocity of all
+      points. The case without the adapter shows severe velocity variation with the
+      velocity on the left side being approximately 3.0 to 3.5 times higher than the
+      average velocity and lower than average velocities on the right hand side. When
+      the adapter and perforated plate are used, the velocity at the left hand side
+      is between 2.0 to 3.0 times higher than the average velocity. The velocity toward
+      the right hand is predominately lower than the average velocity. Adding the
+      screen to the perforated plate produces the most uniform velocity profile. On
+      the left hand side, the velocity ranges from about 1.5 to 2.0 times higher than
+      the average and the ratio towards the right side is nearly 1.0. The perforated
+      plate straightens the incoming air flow, helps reduce wear on the right hand
+      side of the monolith channels, and is less prone to wear than the ceramic monolith
+      substrate material because it is made from metal. Monolith ceramic, as well
+      as the washcoat adhered to either ceramic or a metallic monolith, are relatively
+      soft compared to the perforated plate. In this Example using a perforated plate
+      with uniform size holes, flattening the velocity profile sufficiently to enable
+      efficient use of the catalytic monoliths was assisted by the addition of a mesh
+      screen. The combination of the perforated plate and mesh screen produced a flow
+      straightening element that is sufficient to allow the catalytic monoliths to
+      be used efficiently.<br />(34) The adapter of Example 1 is well suited to accommodating
+      catalytic monolith modules, whether metal or ceramic, for use in a variety of
+      catalytic converters, such as a Mark V CO\u2014H.sub.2 burner. For other burners
+      with different dimensions, such as the Mark IV CO\u2014H.sub.2 burner, suitable
+      modifications to the dimensions of the adapter and catalytic monolith modules
+      used therein may be made.<br />(35) The present invention is not to be limited
+      in scope by the specific embodiments described above, which are intended as
+      illustrations of aspects of the invention. Although the invention has been described
+      in detail with particular reference to such embodiments, other embodiments can
+      achieve the same results. Functionally equivalent methods and components are
+      within the scope of the invention. Various modifications of the invention, in
+      addition to those shown and described herein, will be readily apparent to those
+      skilled in the art from the foregoing description. Such modifications are intended
+      to fall within the scope of the appended claims. All cited documents are incorporated
+      herein by reference.\",\"claimsHtml\":\"1. An adapter for accommodating a catalytic
+      monolith module in a catalytic converter designed for use with a fixed bed catalyst
+      drawer, the catalytic converter having a catalytic chamber, the adapter comprising:
+      a rigid frame having an open front face; and an air flow straightener comprising
+      a perforated plate and a screen; wherein the open front face permits insertion
+      of the catalytic monolith module.  <br /> 2. The adapter of claim 1, further
+      comprising tabs extending longitudinally along a right face and a left face
+      for being supported by tab supports in the catalyst chamber. <br /> 3. The adapter
+      of claim 1, further comprising a lip on a bottom face for retaining the catalytic
+      monolith module. <br /> 4. The adapter of claim 1, wherein the dimensions of
+      the adapter are about 32\xBC inches long, 22 11/16 inches wide, and 4 15/16
+      inches deep. <br /> 5. The adapter of claim 4, wherein the catalytic converter
+      is a CO\u2014H.sub.2 burner. <br /> 6. The adapter of claim 5, wherein the CO\u2014H.sub.2
+      burner is a Mark V CO\u2014H.sub.2 burner. <br /> 7. The adapter of claim 1,
+      wherein the catalytic monolith module comprises: at least one catalytic monolith,
+      wherein the at least one catalytic monolith comprises a catalytic noble metal
+      dispersed on an oxide support washcoated onto a monolith substrate.   <br />
+      8. The adapter of claim 7, wherein the catalytic monolith is selected from the
+      group consisting of an extruded ceramic catalytic monolith and a metal foil
+      catalytic monolith. <br /> 9. The adapter of claim 8, wherein the catalytic
+      monolith is extruded ceramic catalytic monolith with a channel density of at
+      least 400 channels per square inch. <br /> 10. The adapter of claim 9, wherein
+      the monolith module comprises a plurality of extruded ceramic catalytic monoliths
+      separated by interstitial filler. <br /> 11. The adapter of claim 9, wherein
+      the catalytic monolith module further comprises at least one retainer screen
+      for retaining the at least one catalytic monolith. <br /> 12. The adapter of
+      claim 8, wherein the catalytic monolith is metal foil catalytic monolith with
+      an effective channel density at least 150 channels per square inch. <br /> 13.
+      The adapter of claim 7, wherein the noble metal is a member of the group consisting
+      of platinum, palladium, ruthenium, rhodium, and gold; and the oxide is a member
+      selected from the group consisting of alumina, silica, zirconia, titania, and
+      ceria.  <br /> 14. The adapter of claim 7, wherein the noble metal is platinum.
+      <br /> 15. The adapter of claim 7, wherein the oxide is zirconia. <br /> 16.
+      The adapter of claim 7, wherein a gap spans a distance from an inlet surface
+      of the catalytic monolith to a bottom surface of the perforated plate. <br />
+      17. A method of adapting a catalytic converter designed for use with a fixed
+      bed catalyst drawer for use with a monolithic catalyst, comprising the steps
+      of: substituting an adapter of claim 1 for the fixed bed catalyst drawer; inserting
+      at least one catalytic monolith module in the adapter; and inserting the adapter
+      containing the at least one catalytic monolith module in the catalyst chamber
+      of the CO\u2014H.sub.2 burner.  <br /> 18. The method of claim 17, further comprising
+      the steps of: removing the catalytic monolith module in the adapter when it
+      is exhausted; and inserting a replacement catalytic monolith module in the adapter.
+      \ <br /> 19. The method of claim 17, wherein the catalytic converter is a CO\u2014H.sub.2
+      burner.\",\"briefHtml\":\"FIELD OF THE INVENTION<br />(1) The invention is related
+      to the field of air purification systems using catalytic converters, more particularly
+      to adapting catalytic converters designed for use with a fixed bed catalyst
+      for modular use of catalytic monoliths.<br />BACKGROUND OF THE INVENTION<br
+      />(2) Life support systems are required on submarines, space vehicles, and other
+      closed air environments where human occupancy is necessary for extended periods
+      of time, and such systems operate by controlling the temperature, barometric
+      pressure, and composition of the enclosed air. Temperature and barometric pressure
+      are controlled by air conditioning and nitrogen reservoir systems, respectively,
+      while the composition of the environment is controlled by oxygen generation
+      (or replenishment), carbon dioxide removal, and other systems designed to remove
+      contaminants that are generated or released by personnel, equipment, and materials
+      into the closed environment. On a submarine, these contaminates include carbon
+      monoxide, hydrogen, volatile organic compounds (VOC), halogenated VOC, and particulate
+      material, which would adversely affect the sailors if they were not continuously
+      removed. Techniques used to control the amounts of contaminants in the breathing
+      air onboard closed air environments such as on a submarine include absorbents
+      for selected contaminants, filters for particulates, restrictions on materials
+      and activities permitted on board the submarine, and engineered systems.<br
+      />(3) Engineered systems for contaminant removal include, among others, catalytic
+      converters. A type of catalytic converter known as a burner heats contaminated
+      air, exposes the heated air to a catalyst which removes contaminants, and thereby
+      produces purified air. One such system that removes carbon monoxide (CO), hydrogen
+      (H.sub.2), and many VOCs from the air on a submarine is the Carbon Monoxide-Hydrogen
+      (CO\u2014H.sub.2) burner, which is based on catalytic oxidation at elevated
+      temperature. Air enters the CO\u2014H.sub.2 burner through a particulate filter
+      and is passed through a heat exchanger before being heated further and then
+      passed through an oxidation catalyst bed. One commonly used catalyst is a mixture
+      of copper oxide and manganese dioxide (known as a Hopcalite\xAE type catalyst)
+      which operates by chemically converting harmful contaminants to other chemical
+      compounds which are less hazardous and/or which can be removed from the submarine
+      by other systems. From the catalyst bed, the treated air flows again though
+      the heat exchanger, where a majority of the heat is transferred to the incoming
+      air, and then to a cooling coil. An after-filter consisting of a granular basic
+      material (e.g., lithium carbonate) is placed downstream from the cooling coil
+      to capture acidic compounds that may form over the catalyst.<br />(4) Gravimetrically,
+      Hopcalite\xAE type catalysts have relatively low activity and their use therefore
+      requires a large mass of catalyst to perform the necessary chemical conversions.
+      Hopcalite\xAE type catalysts are also granular and have to be manually poured
+      or scooped into the catalyst tray or drawer within the catalyst chamber. When
+      the Hopcalite\xAE type catalyst is handled in this fashion, it creates a significant
+      amount of toxic and irritating dust in the air. Consequently, operators are
+      required to wear respirators, chemical protective gloves, and goggles for protection
+      and other personnel are required to leave the immediate vicinity. Hopcalite\xAE
+      type catalysts are also hazardous materials, and the spent catalyst must be
+      treated as a hazardous waste.<br />(5) When loading the granular catalyst into
+      the catalyst drawer, it is often difficult to achieve a uniform void fraction
+      throughout the bed, and particularly at the edges of the drawer. Areas of a
+      higher void fraction offer lower resistance to air flowing through the bed and
+      cause flow non-uniformity, known as channeling. Channeling is analogous to flow
+      that is bypassing the bed, reducing the overall effectiveness of the catalyst
+      because contaminants are not chemically converted unless they contact the catalyst
+      surface. Even if a uniform void fraction were achieved during the loading process,
+      non-uniformities in the void fraction can develop over time due to catalyst
+      settling, attrition, and thermal cycling when the burner is started up and shut
+      down, which may lead to fracturing of the catalyst granules and dust formation.
+      This problem can be severe for fixed bed catalysts operating with air flowing
+      in a non-downward direction. These problems with fixed bed catalysts are well
+      known to those skilled in the art.<br />(6) The catalyst industry has developed
+      catalytic monoliths to address certain problems associated with fixed beds.
+      Monoliths are structures that provide high geometric surface area to support
+      the catalytically active ingredients while eliminating dust and attrition and
+      presenting a low pressure drop for the flowing air. Monoliths are widely used
+      in automotive catalytic converters and stationary emission control applications.
+      The monoliths are manually placed into a catalyst drawer as one would arrange
+      blocks or bricks in a single layer to fill the drawer. A gravimetrically highly
+      active catalyst is required to use a monolith, however, because the geometric
+      surface area of a monolith is usually lower than that of a fixed bed of granular
+      material. Hopcalite\xAE type catalysts are generally not used in monolithic
+      form because of their low gravimetric activity.<br />(7) One disadvantage of
+      placing multiple smaller catalytic monoliths in a catalyst drawer is that after
+      placing them into position, some monoliths may have to be manually cut or carved
+      for placement around the peripheral dimensions of the catalyst chamber. However,
+      most catalyst chambers are designed to be rectangular, and one or multiple monoliths
+      are commonly installed into a metallic frame that approximates the catalyst
+      chamber dimensions.<br />(8) Poor air flow distribution, that is, non-uniform
+      flow, upstream from the monolith will not self-correct as it travels through
+      the structure. Regions with higher air flow are characterized by reduced catalyst
+      contact time and concomitantly lower conversion of contaminants. This problem
+      is less severe for fixed or packed beds where readily free and extensive radial
+      flow in all directions promotes mixing and cross-flow of incoming air and promotes
+      a more uniform velocity profile throughout the catalyst bed when channeling
+      is not present. Monoliths, however, generally provide at best a limited ability
+      for cross-flow of incoming air and have a limited ability to promote flattening
+      of the velocity profile therein. Extruded ceramic monoliths may be made from
+      a variety of ceramic materials such as cordierite and the like. Such extruded
+      ceramic monoliths with channels therethrough prevent all air flow from one channel
+      to another, allowing radial dispersion only within each individual channel (and
+      thereby access to the catalytic inner surface of the channel) as the air flows
+      through the channels from the upstream inlet entry surface to the downstream
+      outlet exit surface. Use of an extruded ceramic catalytic monolith thus requires
+      more uniform incoming air flow in order to spread the mass of the air to all
+      the channels and to the full surface area of the catalyst in the channels.<br
+      />(9) Metal foil monoliths may be constructed in a variety of configurations.
+      See generally Gulian et al., Ind. Eng. Chem. Res., vol. 30, no. 1 (1991). Some
+      such configurations, such as wound corrugated metal foil monoliths, provide
+      channels passing through the monolith allowing no cross-flow and mixing between
+      channels. In such a design, the wound metal foil monolith behaves similarly
+      to an extruded ceramic monolith, in that the air flow entering each channel
+      is restricted to passage only through that same channel. Other configurations,
+      such as folded layered metal foil monolith structures, may provide at least
+      some cross-flow and mixing between channels in designs in which the folding
+      creates interconnections between the channels. Such configurations allow air
+      entering one channel to disperse to one or more adjacent channels, but such
+      dispersion is generally far less than in a fixed bed system. Because non-uniform
+      flow distribution through the monolithic structure lowers the overall effectiveness
+      of the system, effective monolithic catalyst systems would be improved by providing
+      a uniform air flow upstream from the monolith.<br />(10) Methods of achieving
+      more uniform air flow are well known to those skilled in monolith system design
+      and typically include providing long and straight ducting upstream from the
+      monolith for air self-straightening, flow straighteners, installing air expansion
+      zones, and/or installing screens. Straight ducting and expansion zones are preferred
+      in certain applications, particularly those that have sufficient physical space,
+      because they introduce the least turbulence and back pressure. Maintaining lower
+      turbulence and lower back pressure are particularly important in, for example,
+      automotive and pollution control applications, in order to achieve optimum performance
+      and efficiency, and may also reduce system noise where such noise reduction
+      is desirable. Flow straighteners using perforated plates or screens are not
+      well suited in such applications because they generally increase back pressure.<br
+      />(11) Catalytic burners onboard US submarines are designed to fit in highly
+      constrained tight spaces and do not have sufficient space for long straight
+      lengths of ducting or expansion zones. Additionally, the space constraints on
+      submarines contribute to more severe non-uniform air flow distribution upstream
+      from the catalyst chamber. This flow non-uniformity would reduce the effectiveness
+      of a catalytic monolith used in a submarine CO\u2014H.sub.2 burner designed
+      for a fixed bed catalyst.<br />(12) The art is in need of improved devices and
+      methods enabling the use of catalytic monoliths in catalytic converters otherwise
+      designed for use with a fixed bed catalyst.<br />SUMMARY OF THE INVENTION<br
+      />(13) Having observed the aforementioned problems, the inventors hereof have
+      invented improved devices and methods for adapting catalytic converters to use
+      catalytic monoliths where space is restricted and not amenable to the use of
+      long straight ducting, expansion zones, and other flow straightening means requiring
+      more space.<br />(14) The invention contemplates use of adapters in systems
+      for catalytic treatment of a variety of contaminated gases. While the term \u201Cair\u201D
+      is used herein, those of skill in the art will appreciate that the adapter of
+      the invention is equally useful in such systems for treatment of gases other
+      than air. The invention is useful in a wide variety of catalytic converters
+      where it would be desirable to use catalytic monoliths, such as in submarine
+      burners designed to purify air where space limitations have posed obstacles
+      to using catalytic monoliths. Additionally, for example, the invention is useful
+      in catalytic converters designed to control NOx (nitric oxide and nitrogen dioxide)
+      or VOC emissions from stationary sources such as coal or oil fired power plants
+      where the use of catalytic monoliths assists in compliance with emissions requirements,
+      but where space may also be limited. While the monolith materials and catalysts
+      may differ for different applications, the adapter of the invention is applicable
+      both to burners and to other catalytic converters such as NOx converters capable
+      of catalytically converting NOx to N.sub.2.<br />(15) The invention provides
+      an adapter that enables a catalytic monolith module to be used in a system that
+      was designed for a fixed bed catalyst in space-limited environments, such as
+      a submarine CO\u2014H.sub.2 burner. The adapter device is made to slide into
+      the catalyst chamber of the burner (in place of a catalyst drawer containing
+      granular catalyst) and supports an air flow straightener element upstream from
+      one or multiple catalytic monolith modules which slide into the adapter. The
+      adapter's outer dimensions in length and width are substantially the same as
+      the drawer, although the adapter's height may differ in some embodiments. The
+      dimensions of the adapter are specified to fit in an existing catalytic converter's
+      catalyst chamber, such as in a submarine burner, like a Mark V CO\u2014H.sub.2
+      burner, and the adapter can be oriented in either a horizontal or vertical direction
+      to accommodate the air flow in different burner models.<br />(16) A catalytic
+      monolith module consisting of only bare catalytic monoliths can be used, but
+      housings or frames that contain one or more catalytic monoliths may be preferred
+      in some applications to avoid cracking or fracturing the catalytic monoliths.
+      The monolithic modules of the invention contemplate both bare catalytic monoliths
+      and those housed in frames, which are generally constructed from metal or other
+      materials resistant to the environment in the catalytic chamber of a burner.<br
+      />(17) In some embodiments, the flow straightener element can consist of a perforated
+      plate or multiple layers of a perforated plate at specific locations. Alternatively,
+      the flow straightener element may consist of a woven screen or multiple layers
+      of a woven screen at specific locations. The perforations and screens may be
+      uniform or non-uniform. The flow straightener could also consist of a combination
+      of perforated plates and screens in specific areas. For monoliths used in systems
+      originally designed for fixed beds, perforated plates and screens are particularly
+      advantageous because the added pressure drop at least partially compensates
+      for the lower pressure drop of monoliths as compared to fixed beds.<br />(18)
+      The adapter may be made from rigid materials such as stainless steel or other
+      metals or alloys resistant to corrosion, oxidation, and carbonization at high
+      temperatures, such as austenitic nickel-chromium-based alloys (e.g., Inconel\xAE,
+      Incoloy\xAE, and the like). The adapter supports the flow straightener at a
+      distance upstream from the monolith to permit flow straightening before the
+      air enters the monolith. The adapter is not part of the catalytic monolith module
+      itself, so the adapter may be reused when an old or exhausted catalytic monolithic
+      module is changed out.<br />(19) The adapters and devices of the invention beneficially
+      permit the use of catalytic monolith modules which are easily handled using
+      gloved hands, and can be used in a system incorporated in a space-constrained
+      environment, such as a submarine burner. The invention thus reduces necessary
+      labor, reduces variability, lowers the production of dust when loading the catalyst
+      into the submarine CO\u2014H.sub.2 burner, and minimizes health risks to sailors.
+      The adapters and devices of the invention also permit catalytic monolithic modules
+      to be produced more economically with simple rectangular dimensions because
+      the flow straightener elements and supporting tabs are included on the adapter.<br
+      />(20) The adapter is particularly suitable for monoliths containing catalysts
+      such as platinum, palladium, ruthenium, rhodium, gold or any other highly active
+      noble metal catalysts that are easily applied both to extruded ceramic monolith
+      substrates to produce catalytic monoliths, and to metallic monolith substrates
+      made from metal foils which are then configured by winding or folding into catalytic
+      monoliths. The catalytically active metals are typically dispersed on high surface
+      area oxides such as alumina, silica, zirconia, titania, ceria, and the like,
+      or any combination thereof, and washcoated onto the monolith substrate. Alternatively,
+      and particularly for NOx converters, the catalyst may be co-extruded with other
+      materials to form the catalytic monolith. For example, catalytic monoliths suitable
+      for use in NOx converters may be constructed from vanadium oxide, tungsten oxide,
+      titanium oxide, and other materials. Such catalytic monoliths are prepared without
+      needing washcoating because the catalyst is part of the monolith as extruded.<br
+      />(21) In one aspect, the invention provides an adapter for accommodating a
+      catalytic monolith module (referred to herein alternatively as a monolith module)
+      in a catalytic converter with a catalytic chamber, having a rigid frame with
+      an open front face, and an air flow straightener having a perforated plate.
+      The adapter's open front face allows insertion of the catalytic monolith module.
+      In another aspect, the air flow straightener has a mesh screen. In another aspect,
+      the adapter also has tabs extending longitudinally along its right and left
+      faces to be supported by tab supports in the catalyst chamber of the catalytic
+      converter. The adapter may also have a lip on its bottom for retaining the catalytic
+      monolith module. The catalytic converter may be a burner, such as a CO\u2014H.sub.2
+      burner. One such CO\u2014H.sub.2 burner used by the Navy on submarines is the
+      Mark V CO\u2014H.sub.2 burner.<br />(22) In one aspect, the invention provides
+      an aforementioned adapter with an inserted catalytic monolith module. The catalytic
+      monolith module has at least one catalytic monolith such as an extruded ceramic
+      catalytic monolith or a metal foil catalytic monolith. A catalytically active
+      noble metal is dispersed on a high surface area oxide support and washcoated
+      onto the monolith substrate. In an embodiment using extruded ceramic substrate,
+      the extrusion produces an extruded ceramic monolith, to which the catalyst is
+      then applied. In an embodiment using metal foil substrate, the catalyst is preferably
+      applied prior to folding or winding the metal foil into a monolith. In both
+      such embodiments, a catalytic monolith is produced.<br />(23) The noble metal
+      may be selected from platinum, palladium, ruthenium, rhodium, and gold, or any
+      mixture of these. The oxide may be selected from alumina, silica, zirconia,
+      titania, and ceria, or any mixture of these. In some aspects, the catalytic
+      monolith is an extruded ceramic catalytic monolith with a cell density typically
+      at least 400 cells per square inch. The catalytic monolith module may have a
+      plurality of extruded ceramic catalytic monoliths, in which case such monoliths
+      may be separated by individual supporting brackets and/or interstitial filler.
+      In other aspects, the catalytic monolith is a metal foil catalytic monolith
+      with an effective cell density typically at least 150 channels per square inch.
+      In some aspects, the catalytic monolith module has a frame, which may be metal
+      or other durable materials sufficient to support the monoliths in the monolith
+      module.<br />(24) In some aspects, the catalytic monolith module has at least
+      one retainer screen, at or near the inlet (upstream) and/or outlet (downstream)
+      surfaces of the catalytic monoliths, to retain the catalytic monoliths therein.
+      In particular aspects used in a submarine, the dimensions of the adapter are
+      about 32\xBC inches long, 22 11/16 inches wide, and 4 15/16 inches deep and
+      the dimensions of the module's metal frame are slightly less than those of the
+      adapter such that the monolith module fits within the adapter. The catalytic
+      monolith module may be a fractional size such that an integral number of monolith
+      modules fit within the adapter. Where multiple monolith modules are used in
+      a single adapter, the monolith modules may be separated by interstitial filler.
+      Such adapters would be suitable for use in a Mark V CO\u2014H.sub.2 burner or
+      other burners having catalyst chambers with similar dimensions. Those of skill
+      in the art will appreciate that the adapter of the invention may be used in
+      applications which were designed for use with fixed bed catalysts other than
+      burners. The adapter with catalytic monolith module allows for replacement of
+      the fixed bed catalyst in a variety of catalytic converters where contaminated
+      gas is directed to the catalyst, thereby conferring the advantages of monolithic
+      catalysts and simple modular replacements.<br />(25) In one aspect, the invention
+      provides a method of adapting a catalytic converter designed for use with a
+      fixed bed catalyst drawer (such as a Mark V CO\u2014H.sub.2 burner) to be used
+      with a catalytic monolith, by substituting an aforementioned adapter in place
+      of the fixed bed catalyst drawer, and inserting a catalytic monolith module
+      in the adapter. In another aspect, the adapter is reusable, by simply removing
+      an exhausted catalytic monolith module from the adapter and inserting a replacement.
+      In another aspect, the catalytic converter is a CO\u2014H.sub.2 burner.<br />(26)
+      These and other aspects of the invention will be readily appreciated by those
+      of skill in the art from the description of the invention herein.\",\"backgroundTextHtml\":null,\"subHeadingM0Html\":null,\"subHeadingM1Html\":null,\"subHeadingM2Html\":null,\"subHeadingM3Html\":null,\"subHeadingM4Html\":null,\"subHeadingM5Html\":null,\"subHeadingM6Html\":null,\"usClassIssued\":null,\"issuedUsDigestRefClassifi\":null,\"datePublYear\":\"2023\",\"applicationYear\":\"2020\",\"pfDerwentWeekYear\":null,\"pfApplicationYear\":null,\"pfPublYear\":null,\"reissueApplNumber\":null,\"abstractHeader\":null,\"abstractedPublicationDerwent\":null,\"affidavit130BFlag\":null,\"affidavit130BText\":null,\"applicantGroup\":[\"The
+      United States of America, as represented by the Secretary of the Navy Arlington
+      VA US\"],\"applicantHeader\":null,\"applicationFilingDateInt\":20200330,\"applicationFilingDateIntKwicHits\":null,\"applicationRefFilingType\":\"utility\",\"applicationReferenceGroup\":null,\"applicationSeriesAndNumber\":\"16834313\",\"applicationSeriesCode\":\"16\",\"assignee1\":null,\"assigneeDescriptiveText\":null,\"patentAssigneeTerms\":null,\"associateAttorneyName\":null,\"attorneyName\":[\"Rosen;
+      Mark J.\"],\"biologicalDepositInformation\":null,\"applicationType\":null,\"unlinkedDerwentRegistryNumber\":null,\"unlinkedRingIndexNumbersRarerFragments\":null,\"claimStatement\":\"What
+      is claimed is:\",\"claimsTextAmended\":null,\"continuedProsecutionAppl\":null,\"cpcAdditionalLong\":null,\"cpcCisClassificationOrig\":null,\"cpcCombinationClassificationOrig\":null,\"cpcInventive\":[\"B63G8/36
+      20130101\",\"B01D53/86 20130101\",\"F01N3/10 20130101\",\"B63J2/04 20130101\",\"F24F8/167
+      20210101\"],\"cpcInventiveCurrentDateKwicHits\":null,\"cpcAdditional\":[\"B01D2255/30
+      20130101\",\"B01D2255/92 20130101\",\"B01D2255/1025 20130101\",\"B01D2255/20715
+      20130101\",\"B01D2257/108 20130101\",\"B01D2259/4566 20130101\",\"B01D2257/404
+      20130101\",\"B01D2255/1023 20130101\",\"B01D2255/106 20130101\",\"B01D2255/1026
+      20130101\",\"B01D2257/502 20130101\",\"F24F13/28 20130101\",\"B01D2258/06 20130101\",\"B01D2255/1021
+      20130101\"],\"cpcAdditionalCurrentDateKwicHits\":null,\"cpcOrigClassificationGroup\":[\"F
+      F24F F24F8/167 20210101 F I 20230117 US\",\"F F01N F01N3/10 20130101 L I 20230117
+      US\",\"F F24F F24F8/10 20210101 L I 20230117 US\",\"F F24F F24F13/28 20130101
+      L A 20230117 US\"],\"curIntlPatentClassificationGroup\":null,\"curUsClassificationUsPrimaryClass\":null,\"curUsClassificationUsSecondaryClass\":null,\"customerNumber\":null,\"depositAccessionNumber\":null,\"depositDescription\":null,\"derwentClassAlpha\":null,\"designatedstatesRouteGroup\":null,\"docAccessionNumber\":null,\"drawingDescription\":null,\"editionField\":null,\"exchangeWeek\":null,\"exemplaryClaimNumber\":[\"1\"],\"familyIdentifierOrig\":null,\"fieldOfSearchCpcClassification\":[\"B03C
+      3/32\",\"B03C 3/017\",\"B03C 3/08\",\"B03C 3/41\",\"B03C 3/47\",\"B03C 2201/08\",\"F24C
+      15/2035\",\"Y10S 55/36\"],\"fieldOfSearchCpcMainClass\":[\"B03C\",\"B03C\",\"B03C\",\"B03C\",\"B03C\",\"B03C\",\"F24C\",\"Y10S\"],\"fieldOfSearchIpcMainClass\":null,\"fieldOfSearchIpcMainClassSubclass\":null,\"fieldOfSearchSubclasses\":[\"177\"],\"foreignRefGroup\":null,\"foreignRefPubDate\":null,\"foreignRefPubDateKwicHits\":null,\"foreignRefCitationClassification\":null,\"foreignRefPatentNumber\":null,\"foreignRefCitationCpc\":null,\"foreignRefCountryCode\":null,\"iceXmlIndicator\":\"Y\",\"internationalClassificationHeader\":null,\"internationalClassificationInformationalGroup\":null,\"intlPubClassificationGroup\":[\"20060101
+      A F24F F24F13/28 F I B US H 20230117\",\"20210101 A F24F F24F8/167 L I B US
+      H 20230117\",\"20210101 A F24F F24F8/10 L I B US H 20230117\",\"20060101 A F01N
+      F01N3/10 L I B US H 20230117\"],\"intlPubClassificationNonInvention\":null,\"inventorCitizenship\":null,\"inventorCorrection\":null,\"inventorDeceased\":null,\"inventorStreetAddress\":null,\"inventorText\":null,\"jpoFiClassification\":null,\"legalRepresentativeCity\":null,\"legalRepresentativeCountry\":\"[]\",\"legalRepresentativeName\":null,\"legalRepresentativePostcode\":null,\"legalRepresentativeState\":null,\"legalRepresentativeStreetAddress\":null,\"legalRepresentativeText\":null,\"messengerDocsFlag\":null,\"newRecordPatentDerwent\":null,\"numberOfClaims\":\"19\",\"numberOfDrawingSheets\":\"8\",\"numberOfFigures\":\"8\",\"numberOfPagesInSpecification\":null,\"numberOfPagesOfSpecification\":null,\"objectContents\":null,\"objectDescription\":null,\"parentDocCountry\":null,\"parentGrantDocCountry\":null,\"patentBibliographicHeader\":null,\"pctOrRegionalPublishingSerial\":null,\"pfDerwentWeekNum\":null,\"principalAttorneyName\":[\"Rosen;
+      Mark J.\"],\"priorityApplicationCountry\":null,\"priorityClaimsCountry\":null,\"priorityNumberDerived\":null,\"publicationIssueNumber\":null,\"refCitedPatentDocNumber\":null,\"refCitedPatentDocDate\":null,\"refCitedPatentDocKindCode\":null,\"referenceCitedCode\":null,\"referenceCitedGroup\":null,\"referenceCitedSearchPhase\":null,\"referenceCitedText\":null,\"registrationNumber\":null,\"reissueApplCountry\":null,\"reissueParentKind\":null,\"reissueParentNumber\":null,\"reissueParentPubCountry\":null,\"reissuePatentGroup\":null,\"reissuePatentParentStatus\":null,\"reissuedPatentApplCountry\":null,\"reissuedPatentApplKind\":null,\"reissuedPatentApplNumber\":null,\"relatedApplChildPatentCountry\":[\"US\"],\"relatedApplChildPatentName\":null,\"relatedApplChildPatentNumber\":[\"16834313\"],\"relatedApplCountryCode\":null,\"relatedApplParentGrantPatentKind\":null,\"relatedApplParentGrantPatentName\":null,\"relatedApplParentPatentKind\":null,\"relatedApplParentPatentName\":null,\"relatedApplParentPctDoc\":null,\"relatedApplParentStatusCode\":[\"ABANDONED\"],\"relatedApplPatentNumber\":null,\"relatedApplRelatedPub\":null,\"relatedApplTypeOfCorrection\":null,\"rule47Flag\":null,\"selectedDrawingCharacter\":null,\"selectedDrawingFigure\":null,\"statutoryInventionText\":null,\"termOfExtension\":\"95\",\"termOfPatentGrant\":null,\"titleTermsData\":null,\"additionalIndexingTerm\":null,\"applicationYearSearch\":\"2020\",\"pfApplicationYearSearch\":null,\"assigneeCountry\":[\"US\"],\"certOfCorrectionFlag\":null,\"citedPatentLiteratureAddressInformation\":null,\"citedPatentLiteratureClassificationIpc\":null,\"citedPatentLiteratureOrganizationName\":null,\"citedPatentLiteratureRefNumber\":null,\"crossReferenceNumber\":null,\"country\":\"US\",\"cpiManualCodes\":null,\"cpiSecondaryAccessionNumber\":null,\"curIntlPatentAllClassificationLong\":null,\"currentUsOriginalClassificationLong\":null,\"datePublSearch\":\"2023-01-17T00:00:00.000+00:00\",\"datePublYearSearch\":\"2023\",\"epiManualCodes\":null,\"fieldOfSearchMainClassNational\":[\"422\"],\"inventorCountry\":[\"US\",\"US\"],\"ipcAllMainClassification\":[\"F01N\",\"F24F\"],\"issuedUsClassificationFull\":null,\"issuedUsDigestRefClassification\":null,\"jpoFiCurrentAdditionalClassification\":null,\"jpoFiCurrentInventiveClassification\":null,\"legalFirmName\":null,\"locarnoMainClassification\":null,\"nonCpiSecondaryAccessionNumber\":null,\"objectId\":null,\"otherRefPub\":null,\"pageNumber\":null,\"patentAssigneeCode\":null,\"patentAssigneeNameTotal\":null,\"patentFamilyDate\":null,\"patentFamilyDocNumber\":null,\"patentFamilyKind\":null,\"patentFamilyKindCode\":null,\"patentFamilyLanguage\":null,\"patentFamilyName\":null,\"patentNumberOfLocalApplication\":null,\"pct102eDate\":null,\"pct371c124Date\":null,\"pct371c124DateKwicHits\":null,\"pctFilingDate\":null,\"pctFilingDateKwicHits\":null,\"pctFilingDocCountryCode\":null,\"pctFilingKind\":null,\"pctFilingNumber\":null,\"pctName\":null,\"pctOrRegionalPublishingCountry\":null,\"pctOrRegionalPublishingKind\":null,\"pctOrRegionalPublishingName\":null,\"pctOrRegionalPublishingText\":null,\"pctPubDate\":null,\"pctPubDateKwicHits\":null,\"pctPubDocIdentifier\":null,\"pctPubNumber\":null,\"pfApplicationDateSearch\":null,\"pfApplicationType\":null,\"pfDerwentWeekDate\":null,\"pfPublDateSearch\":null,\"pfPublDateSearchKwicHits\":null,\"pfPublYearSearch\":null,\"polymerIndexingCodes\":null,\"polymerMultipunchCodeRecordNumber\":null,\"polymerMultipunchCodes\":null,\"priorPublishedDocCountryCode\":null,\"priorPublishedDocDate\":null,\"priorPublishedDocDateKwicHits\":null,\"priorPublishedDocIdentifier\":null,\"priorPublishedDocKindCode\":null,\"priorPublishedDocNumber\":null,\"priorityApplYear\":null,\"priorityApplicationDate\":null,\"priorityClaimsDateSearch\":null,\"priorityClaimsDocNumber\":null,\"priorityPatentDid\":null,\"priorityPatentNumber\":null,\"ptabCertFlag\":null,\"pubRefCountryCode\":null,\"pubRefDocNumber\":\"11555621\",\"pubRefDocNumber1\":\"11555621\",\"publicationData\":null,\"recordPatentNumber\":null,\"reexaminationFlag\":null,\"refCitedOthers\":null,\"refCitedPatentDocCountryCode\":null,\"refCitedPatentDocName\":null,\"refCitedPatentRelevantPassage\":null,\"reissueParentIssueDate\":null,\"reissuedPatentApplFilingDate\":null,\"relatedAccessionNumbers\":null,\"relatedApplChildPatentDate\":null,\"relatedApplFilingDateKwicHits\":null,\"relatedApplNumber\":[\"16803085\",\"62829858\"],\"relatedApplPatentIssueDate\":null,\"relatedApplPatentIssueDateKwicHits\":null,\"relatedDocumentKindCode\":null,\"securityLegend\":null,\"sequenceCwu\":null,\"sequenceListNewRules\":null,\"sequenceListOldRules\":null,\"sequencesListText\":null,\"standardTitleTerms\":null,\"supplementalExaminationFlag\":null,\"usBotanicLatinName\":null,\"usBotanicVariety\":null,\"usRefClassification\":[\"428/116\",\"422/180\",\"422/177\",\"60/777\",\"N/A\"],\"usRefCpcClassification\":[\"B01D
+      53/8631\",\"F01N 3/2839\",\"D04H 1/4209\",\"F23C 13/00\",\"F01N 13/017\"],\"usRefGroup\":[\"US
+      4916001 A Whittenberger 19900400 cited by examiner B01D 53/8631 428/116\",\"US
+      8066950 B2 Newburry 20111100 cited by examiner F01N 3/2839 422/180\",\"US 20050042151
+      A1 Alward 20050200 cited by examiner D04H 1/4209 422/177\",\"US 20060080967
+      A1 Colket 20060400 cited by examiner F23C 13/00 60/777\",\"US 20170159529 A1
+      Kleuderlein 20170600 cited by examiner F01N 13/017\"],\"usRefIssueDate\":[\"19900400\",\"20111100\",\"20050200\",\"20060400\",\"20170600\"],\"usRefIssueDateKwicHits\":[\"19900400\",\"20111100\",\"20050200\",\"20060400\",\"20170600\"],\"usRefPatenteeName\":[\"Whittenberger\",\"Newburry\",\"Alward\",\"Colket\",\"Kleuderlein\"],\"volumeNumber\":null,\"correspondenceNameAddress\":null,\"correspondenceAddressCustomerNumber\":null,\"ibmtdbAccessionNumber\":null,\"inventorsName\":[\"Gulian;
+      Franklin J.\",\"McCarrick; Alan D.\"],\"applicationKindCode\":\"B1\",\"inventorNameDerived\":null,\"intlPubClassificationClass\":[\"F24F\",\"F24F\",\"F24F\",\"F01N\"],\"issuedUsOrigClassification\":null,\"curCpcSubclassFull\":[\"B01D\",\"F24F\",\"B01D\",\"B63J\",\"B63G\",\"F01N\",\"F24F\"],\"cpcCurAdditionalClass\":[\"B01D\",\"B01D\",\"B01D\",\"B01D\",\"B01D\",\"B01D\",\"B01D\",\"B01D\",\"B01D\",\"B01D\",\"B01D\",\"F24F\",\"B01D\",\"B01D\"],\"cpcCurInventiveClass\":[\"B63G\",\"B01D\",\"F01N\",\"B63J\",\"F24F\"],\"cpcCurClassificationGroup\":[\"B
+      B01D B01D2255/30 20130101 L A B H 20230628 EP\",\"B B01D B01D2255/92 20130101
+      L A B H 20230628 EP\",\"B B01D B01D2255/1025 20130101 L A B H 20230628 EP\",\"B
+      B01D B01D2255/20715 20130101 L A B H 20230630 EP\",\"B B01D B01D2257/108 20130101
+      L A B H 20230628 EP\",\"B B01D B01D2259/4566 20130101 L A B H 20230628 EP\",\"B
+      B01D B01D2257/404 20130101 L A B H 20230628 EP\",\"B B63G B63G8/36 20130101
+      L I B H 20230420 EP\",\"B B01D B01D2255/1023 20130101 L A B H 20230628 EP\",\"B
+      B01D B01D53/86 20130101 L I B H 20230628 EP\",\"B B01D B01D2255/106 20130101
+      L A B H 20230628 EP\",\"B B01D B01D2255/1026 20130101 L A B H 20230628 EP\",\"B
+      B01D B01D2257/502 20130101 L A B H 20230628 EP\",\"F F01N F01N3/10 20130101
+      L I B H 20230117 US\",\"F F24F F24F13/28 20130101 L A B H 20230117 US\",\"B
+      B01D B01D2258/06 20130101 L A B H 20230628 EP\",\"B B63J B63J2/04 20130101 F
+      I B H 20230420 EP\",\"F F24F F24F8/167 20210101 F I R H 20230209 US\",\"B B01D
+      B01D2255/1021 20130101 L A B H 20230628 EP\"],\"curCpcClassificationFull\":[\"B01D2259/4566
+      20130101\",\"B01D2255/106 20130101\",\"B01D2255/1021 20130101\",\"B01D2255/30
+      20130101\",\"B01D2257/502 20130101\",\"B01D2255/20715 20130101\",\"B63G8/36
+      20130101\",\"B01D2255/1025 20130101\",\"F24F13/28 20130101\",\"B01D2257/404
+      20130101\",\"B01D2255/92 20130101\",\"B01D53/86 20130101\",\"F01N3/10 20130101\",\"B63J2/04
+      20130101\",\"F24F8/167 20210101\",\"B01D2257/108 20130101\",\"B01D2255/1026
+      20130101\",\"B01D2258/06 20130101\",\"B01D2255/1023 20130101\"],\"cpcCombinationClassificationCur\":null,\"cpcCombinationTallyCur\":null,\"intlFurtherClassification\":null,\"currentUsPatentClass\":[\"1\"],\"idWithoutSolrPartition\":\"US-US-11555621\",\"curIntlPatentClassifictionPrimaryDateKwicHits\":null,\"curIntlPatentClssifSecHlights\":null,\"internationalClassificationInfom\":null,\"cpcOrigInventvClssifHlghts\":[\"F24F8/167
+      20210101\",\"F01N3/10 20130101\",\"F24F8/10 20210101\"],\"descriptionStart\":10,\"descriptionEnd\":16,\"publicationReferenceDocumentNumberOne\":\"11555621\"}"
+    headers:
+      content-type:
+      - application/json
+      date:
+      - Wed, 24 Apr 2024 16:56:46 GMT
+      server-timing:
+      - intid;desc=fedd673892712385
+      x-rate-limit-remaining:
+      - '39'
+    http_version: HTTP/2
+    status_code: 200
+version: 1
