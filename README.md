@@ -23,11 +23,21 @@ A powerful library for accessing intellectual property, featuring:
 Docs, including a fulsome Getting Started and User Guide are available on [Read the Docs](http://patent-client.readthedocs.io). The Examples folder includes examples of using `patent_client` for
 many common IP tasks
 
+## ⭐ New in v5 ⭐
+
+Version 5 brings a new and more reliable way to provide synchronous and asynchronous access to the various APIs.
+In version 5, like in version 3, you can just `from patent_client import [Model]` and get a synchronous version
+of the model. No asynchronous methods or functionality at all. Or you can do `from patent_client._async import [Model]`
+and get an asynchronous version of the model.
+
+Version 5 also brings support for the USPTO's new [Open Data Portal](https://beta-data.uspto.gov/home), a system currently in beta that is scheduled to replace the current Patent Examination Data System in late 2024.
+
 ## Coverage
 
 - [United States Patent & Trademark Office][USPTO]
 
   - [Patent Examination Data][PEDS] - Full Support
+  - [Open Data Portal][ODP] - Full Support
   - [Global Dossier][GD] - Full Support
   - [Patent Assignment Data][Assignment] - Lookup Support
   - [Patent Trial & Appeal Board API v2][PTAB] - Supports Proceedings, Decisions, and Documents
@@ -57,6 +67,7 @@ many common IP tasks
 [BDSS]: https://developer.uspto.gov/api-catalog/bdss
 [GD]: https://globaldossier.uspto.gov
 [pydantic]: https://docs.pydantic.dev/latest/
+[ODP]: https://beta-data.uspto.gov/home
 
 
 ## Installation
@@ -99,9 +110,12 @@ True
 
 ## Async Quick Start
 
-To use the asyncio methods, simply use `async with` for iterators, and call any methods with a `a` prefix:
+To use async with Patent Client, just import the classes you need from the async module. All methods
+and iterators that access data or create a network request are asynchronous.
 
 ```python
+from patent_client._async import USApplication
+
 apps = list()
 async for app in USApplication.objects.filter(first_named_applicant="Google"):
   apps.append(app)

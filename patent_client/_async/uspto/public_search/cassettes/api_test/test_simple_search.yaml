@@ -1,0 +1,192 @@
+interactions:
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - ppubs.uspto.gov
+      user-agent:
+      - Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/114.0.0.0 Safari/537.36
+      x-requested-with:
+      - XMLHttpRequest
+    method: GET
+    uri: https://ppubs.uspto.gov/pubwebapp/
+  response:
+    content: "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"utf-8\">\n
+      \   <meta http-equiv=\"Pragma\" content=\"no-cache\">\n    <meta http-equiv=\"Expires\"
+      content=\"-1\">\n    <meta http-equiv=\"Cache-Control\" content=\"no-store,
+      no-cache, max-age=0\">\n    <title>Patent Public Search | USPTO</title>\n    <link
+      rel=\"icon\" type=\"image/png\" href=\"images/favicon_new.png\">\n    <!-- DO
+      NOT REMOVE ANY OF COMMENT BELOW (USED BY USMIN) -->\n    <!-- build:css(.tmp)
+      styles/main.css -->\n    <link rel=\"stylesheet\" href=\"styles/main.css\">\n
+      \   <!-- endbuild -->\n    <script src=\"common/environment.js\"></script>\n</head>\n<body>\n<h1
+      class=\"sr-only\">Patent Public Search | USPTO <span class=\"ext-window\"> -
+      extended window</span></h1>\n<div class=\"layout\">\n    <div class=\"zone ui-layout-north\"
+      data-zone=\"north\"></div>\n    <div class=\"zone ui-layout-west\" data-zone=\"west\"></div>\n
+      \   <div class=\"zone ui-layout-center\" data-zone=\"center\"></div>\n    <div
+      class=\"zone ui-layout-east\" data-zone=\"east\"></div>\n    <div class=\"zone
+      ui-layout-south\" data-zone=\"south\"></div>\n</div>\n\n<!-- build:js({web,.tmp})
+      main.js -->\n<!-- Google Analytics script -->\n<script type='text/javascript'
+      src=\"common/analytics/googleAnalytics.js\"></script>\n\n<!--BEGIN QUALTRICS
+      WEBSITE FEEDBACK SNIPPET-->\n<script type='text/javascript' src=\"common/analytics/qualtricsAnalytics.js\"></script>\n\n<script
+      src=\"vendor/require/require.js\"></script>\n<script src=\"main.js\"></script>\n<!--
+      endbuild -->\n</body>\n</html>"
+    headers:
+      accept-ranges:
+      - bytes
+      content-length:
+      - '1456'
+      content-type:
+      - text/html
+      date:
+      - Wed, 24 Apr 2024 20:51:04 GMT
+      etag:
+      - '"5b0-61069d5fcf800"'
+      last-modified:
+      - Fri, 02 Feb 2024 17:56:48 GMT
+      server:
+      - Apache/2.4.58 (Unix)
+    http_version: HTTP/2
+    status_code: 200
+- request:
+    body: '-1'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '2'
+      content-type:
+      - application/json
+      host:
+      - ppubs.uspto.gov
+      referer:
+      - https://ppubs.uspto.gov/pubwebapp/
+      user-agent:
+      - Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/114.0.0.0 Safari/537.36
+      x-access-token:
+      - 'null'
+      x-requested-with:
+      - XMLHttpRequest
+    method: POST
+    uri: https://ppubs.uspto.gov/dirsearch-public/users/me/session
+  response:
+    content: '{"userSessionId":27922236,"ipAddress":null,"userCase":{"caseId":27922405,"userId":27922236,"caseName":"Untitled
+      Case","applicationNumber":null},"userPreferences":{},"versions":[{"product":"API","releaseNumber":"3.0.0.15","date":"03.02.2024
+      @ 08:07:10 UTC","commitId":"3ff94059","collectionName":""},{"product":"SOLR","releaseNumber":"7.6.0","date":"","commitId":"","collectionName":"us_patent_grant"}],"documentsLimitInQuery":1000,"sessionTimeOutTime":1800,"role":"ANONYMOUS_USER","sessionIdentifer":"060413aa-fe1a-49e5-8621-cb962a71d77e"}'
+    headers:
+      content-type:
+      - application/json
+      date:
+      - Wed, 24 Apr 2024 21:16:18 GMT
+      server-timing:
+      - intid;desc=1a6488b5b6f3a1e1
+      x-access-token:
+      - eyJzdWIiOiIwNjA0MTNhYS1mZTFhLTQ5ZTUtODYyMS1jYjk2MmE3MWQ3N2UiLCJ2ZXIiOiIwZTRhOGQxMy0xY2RlLTQ1MGYtODY3Yy1jYmQ0NDZjMjc2NmMiLCJleHAiOjB9
+    http_version: HTTP/2
+    status_code: 200
+- request:
+    body: '{"caseId": 27922405, "hl_snippets": "2", "op": "OR", "q": "(\"6013599\").pn.",
+      "queryName": "(\"6013599\").pn.", "highlights": "1", "qt": "brs", "spellCheck":
+      false, "viewName": "tile", "plurals": true, "britishEquivalents": true, "databaseFilters":
+      [{"databaseName": "US-PGPUB", "countryCodes": []}, {"databaseName": "USPAT",
+      "countryCodes": []}, {"databaseName": "USOCR", "countryCodes": []}], "searchType":
+      1, "ignorePersist": true, "userEnteredQuery": "(\"6013599\").pn."}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '476'
+      content-type:
+      - application/json
+      host:
+      - ppubs.uspto.gov
+      user-agent:
+      - Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/114.0.0.0 Safari/537.36
+      x-access-token:
+      - eyJzdWIiOiIwNjA0MTNhYS1mZTFhLTQ5ZTUtODYyMS1jYjk2MmE3MWQ3N2UiLCJ2ZXIiOiIwZTRhOGQxMy0xY2RlLTQ1MGYtODY3Yy1jYmQ0NDZjMjc2NmMiLCJleHAiOjB9
+      x-requested-with:
+      - XMLHttpRequest
+    method: POST
+    uri: https://ppubs.uspto.gov/dirsearch-public/searches/counts
+  response:
+    content: '{"id":null,"caseId":27922405,"userId":null,"numResults":1,"ignorePersist":true,"fq":null,"databaseFilters":[{"databaseName":"US-PGPUB","countryCodes":[]},{"databaseName":"USPAT","countryCodes":[]},{"databaseName":"USOCR","countryCodes":[]}],"q":"(\"6013599\").pn.","queryName":"(\"6013599\").pn.","userEnteredQuery":"(\"6013599\").pn.","viewName":"tile","op":"OR","highlights":"1","plurals":true,"britishEquivalents":true,"searchType":1,"excludeResultsAfter":null,"dateCreated":null,"deleteIn":false,"expand":false,"expandSort":null,"expandRows":null,"expandTrackDocScores":false,"expandTrackMaxScore":false,"termGraph":{"termOrigin":[{"id":0,"name":null,"nodeType":"ROOT","parentId":null,"relation":null,"aliases":["default"],"aliasCategory":"OTHER"},{"id":1,"name":"\"6013599\"","nodeType":"TERM","parentId":0,"relation":"REGULAR","aliases":["pn"],"aliasCategory":"DOC_IDENTIFIER"}],"termRelationship":[]},"hl":false,"fl":null,"originalQuery":"(\"6013599\").pn.","error":null,"terms":["\"6013599\""],"facets":[{"solrField":"document_type","count":1,"id":"USPAT"}],"pNumber":null,"hl_fl":null}'
+    headers:
+      content-type:
+      - application/json
+      date:
+      - Wed, 24 Apr 2024 21:16:18 GMT
+      server-timing:
+      - intid;desc=2691ca545ba41e6b
+      x-rate-limit-remaining:
+      - '59'
+    http_version: HTTP/2
+    status_code: 200
+- request:
+    body: '{"start": 0, "pageCount": 500, "sort": "date_publ desc", "docFamilyFiltering":
+      "familyIdFiltering", "searchType": 1, "familyIdEnglishOnly": true, "familyIdFirstPreferred":
+      "US-PGPUB", "familyIdSecondPreferred": "USPAT", "familyIdThirdPreferred": "FPRS",
+      "showDocPerFamilyPref": "showEnglish", "queryId": 0, "tagDocSearch": false,
+      "query": {"caseId": 27922405, "hl_snippets": "2", "op": "OR", "q": "(\"6013599\").pn.",
+      "queryName": "(\"6013599\").pn.", "highlights": "1", "qt": "brs", "spellCheck":
+      false, "viewName": "tile", "plurals": true, "britishEquivalents": true, "databaseFilters":
+      [{"databaseName": "US-PGPUB", "countryCodes": []}, {"databaseName": "USPAT",
+      "countryCodes": []}, {"databaseName": "USOCR", "countryCodes": []}], "searchType":
+      1, "ignorePersist": true, "userEnteredQuery": "(\"6013599\").pn."}}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '816'
+      content-type:
+      - application/json
+      host:
+      - ppubs.uspto.gov
+      user-agent:
+      - Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/114.0.0.0 Safari/537.36
+      x-access-token:
+      - eyJzdWIiOiIwNjA0MTNhYS1mZTFhLTQ5ZTUtODYyMS1jYjk2MmE3MWQ3N2UiLCJ2ZXIiOiIwZTRhOGQxMy0xY2RlLTQ1MGYtODY3Yy1jYmQ0NDZjMjc2NmMiLCJleHAiOjB9
+      x-requested-with:
+      - XMLHttpRequest
+    method: POST
+    uri: https://ppubs.uspto.gov/dirsearch-public/searches/searchWithBeFamily
+  response:
+    content: '{"numFound":1,"perPage":500,"page":0,"totalPages":0,"hlSnippets":0,"sort":null,"query":{"id":null,"caseId":27922405,"userId":null,"numResults":1,"ignorePersist":true,"fq":null,"databaseFilters":[{"databaseName":"US-PGPUB","countryCodes":[]},{"databaseName":"USPAT","countryCodes":[]},{"databaseName":"USOCR","countryCodes":[]}],"q":"(\"6013599\").pn.","queryName":"(\"6013599\").pn.","userEnteredQuery":"(\"6013599\").pn.","viewName":"tile","op":"OR","highlights":"1","plurals":true,"britishEquivalents":true,"searchType":1,"excludeResultsAfter":null,"dateCreated":null,"deleteIn":false,"expand":true,"expandSort":"group_sort_date
+      asc, id desc ","expandRows":"100","expandTrackDocScores":true,"expandTrackMaxScore":true,"termGraph":null,"hl":false,"fl":null,"originalQuery":"(\"6013599\").pn.","error":null,"terms":["\"6013599\""],"facets":[],"pNumber":null,"hl_fl":null},"duration":49,"highlightingTime":0,"cursorMarker":"AoJwwOiTz9wBNzIyMzYzNTA2IVVTLVVTLTA2MDEzNTk5","totalResults":1,"numberOfFamilies":1,"error":null,"patents":[{"guid":"US-6013599-A","publicationReferenceDocumentNumber":"6013599","compositeId":"22363506!US-US-06013599","publicationReferenceDocumentNumber1":"06013599","datePublishedKwicHits":null,"datePublished":"2000-01-11T00:00:00Z","inventionTitle":"Self-regenerating
+      diesel exhaust particulate filter and material","type":"USPAT","mainClassificationCode":"502/340","applicantName":null,"assigneeName":["Redem
+      Corporation"],"uspcFullClassificationFlattened":"502/345;502/325;502/326;502/339;502/331;502/328;502/330;502/344;502/338;502/353","ipcCodeFlattened":"F01N3/022","cpcInventiveFlattened":"B01D53/944;F01N3/035;F01N3/0231;F01N3/0222;B01J37/038;B01J37/0215;B01J23/8472","cpcAdditionalFlattened":null,"applicationFilingDate":["1998-07-15T00:00:00Z"],"applicationFilingDateKwicHits":null,"relatedApplFilingDate":null,"primaryExaminer":"Wood;
+      Elizabeth D.","assistantExaminer":null,"applicationNumber":"09/115806","frontPageStart":1,"frontPageEnd":1,"drawingsStart":2,"drawingsEnd":7,"specificationStart":8,"specificationEnd":12,"claimsStart":12,"claimsEnd":12,"abstractStart":1,"abstractEnd":1,"bibStart":1,"bibEnd":1,"certCorrectionStart":0,"certCorrectionEnd":0,"certReexaminationStart":0,"certReexaminationEnd":0,"supplementalStart":0,"supplementalEnd":0,"ptabStart":0,"ptabEnd":0,"amendStart":0,"amendEnd":0,"searchReportStart":0,"searchReportEnd":0,"pageCount":12,"pageCountDisplay":"12","previouslyViewed":false,"unused":false,"imageLocation":"uspat/US/06/013/599","imageFileName":"00000001.tif","cpcCodes":null,"queryId":null,"tags":null,"inventorsShort":"Manson;
+      Ian","familyIdentifierCur":22363506,"familyIdentifierCurStr":null,"languageIndicator":"EN","databaseName":"USPT","dwImageDoctypeList":null,"dwImageLocList":null,"dwPageCountList":null,"dwImageDocidList":null,"patentFamilyMembers":null,"patentFamilyCountry":null,"patentFamilySerialNumber":null,"documentIdWithDashesDw":null,"pfPublDate":null,"pfPublDateKwicHits":null,"priorityClaimsDate":null,"priorityClaimsDateKwicHits":null,"pfApplicationSerialNumber":null,"pfApplicationDescriptor":null,"pfLanguage":null,"pfApplicationDate":null,"pfApplicationDateKwicHits":null,"clippedUri":null,"source":null,"documentId":"US
+      6013599 A","derwentAccessionNumber":null,"documentSize":50571,"score":14.114281,"governmentInterest":null,"kindCode":["A"],"urpn":["4503162","4510265","4515758","4711870","4759918","5000929","5203166","5213781","5258348","5294411","5330945","5340548"],"urpnCode":["4503162","4510265","4515758","4711870","4759918","5000929","5203166","5213781","5258348","5294411","5330945","5340548"],"descriptionStart":8,"descriptionEnd":12,"publicationReferenceDocumentNumberOne":"06013599"}],"qtime":27}'
+    headers:
+      content-type:
+      - application/json
+      date:
+      - Wed, 24 Apr 2024 21:16:18 GMT
+      server-timing:
+      - intid;desc=289498ef19404acb
+      x-rate-limit-remaining:
+      - '58'
+    http_version: HTTP/2
+    status_code: 200
+version: 1

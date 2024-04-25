@@ -6,6 +6,7 @@ Notes:
 * All other commands: the current environment will be used instead of creating new ones
 * Run `nox -l` to see all available commands
 """
+
 from os import getenv
 from os.path import join
 from pathlib import Path

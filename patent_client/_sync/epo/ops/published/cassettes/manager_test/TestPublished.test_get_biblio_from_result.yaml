@@ -1,0 +1,193 @@
+interactions:
+- request:
+    body: ''
+    headers:
+      Authorization:
+      - REDACTED
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - ops.epo.org
+      user-agent:
+      - Mozilla/5.0 Python Patent Clientbot/4.1.10 (parkerhancock@users.noreply.github.com)
+    method: GET
+    uri: http://ops.epo.org/3.2/rest-services/published-data/search?Range=1-1&q=applicant%3D%22Google%22
+  response:
+    content: "<?xml version=\"1.0\" encoding=\"UTF-8\"?><?xml-stylesheet type=\"text/xsl\"
+      href=\"/3.2/style/exchange.xsl\"?>\n<ops:world-patent-data xmlns=\"http://www.epo.org/exchange\"
+      xmlns:ops=\"http://ops.epo.org\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">\n
+      \   <ops:biblio-search total-result-count=\"10000\">\n        <ops:query syntax=\"CQL\">applicant
+      = Google</ops:query>\n        <ops:range begin=\"1\" end=\"1\"/>\n        <ops:search-result>\n
+      \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"51798657\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>TW</country>\n
+      \                   <doc-number>D163326</doc-number>\n                    <kind>S</kind>\n
+      \               </document-id>\n            </ops:publication-reference>\n        </ops:search-result>\n
+      \   </ops:biblio-search>\n</ops:world-patent-data>"
+    headers:
+      Access-Control-Allow-Headers:
+      - Authorization
+      Access-Control-Allow-Methods:
+      - POST
+      Access-Control-Allow-Origin:
+      - '*'
+      Cache-Control:
+      - no-cache
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '836'
+      Content-Type:
+      - application/xml;charset=utf-8
+      Date:
+      - Wed, 24 Apr 2024 19:37:01 GMT
+      ETag:
+      - '"0f0ab6ecb99af199e0cf3658f03decfe6"'
+      Pragma:
+      - no-cache
+      Server:
+      - Apache
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      Vary:
+      - Accept
+      X-API:
+      - ops-v3.2
+      X-EPO-Client-IP:
+      - 38.104.255.66
+      X-EPO-Forwarded:
+      - '[38.104.255.66]'
+      X-Elapsed-Time:
+      - '9'
+      X-IndividualQuotaPerHour-Used:
+      - '533079'
+      X-RegisteredQuotaPerWeek-Used:
+      - '533079'
+      X-Throttling-Control:
+      - idle (images=green:200, inpadoc=green:60, other=green:1000, retrieval=green:200,
+        search=green:30)
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: ''
+    headers:
+      Authorization:
+      - REDACTED
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - ops.epo.org
+      user-agent:
+      - Mozilla/5.0 Python Patent Clientbot/4.1.10 (parkerhancock@users.noreply.github.com)
+    method: GET
+    uri: http://ops.epo.org/3.2/rest-services/published-data/publication/docdb/TWD163326S/biblio
+  response:
+    content: "<?xml version=\"1.0\" encoding=\"UTF-8\"?><?xml-stylesheet type=\"text/xsl\"
+      href=\"/3.2/style/exchange.xsl\"?>\n<ops:world-patent-data xmlns=\"http://www.epo.org/exchange\"
+      xmlns:ops=\"http://ops.epo.org\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">\n
+      \   <exchange-documents>\n        <exchange-document system=\"ops.epo.org\"
+      family-id=\"51798657\" country=\"TW\" doc-number=\"D163326\" kind=\"S\">\n            <bibliographic-data>\n
+      \               <publication-reference>\n                    <document-id document-id-type=\"docdb\">\n
+      \                       <country>TW</country>\n                        <doc-number>D163326</doc-number>\n
+      \                       <kind>S</kind>\n                        <date>20141001</date>\n
+      \                   </document-id>\n                    <document-id document-id-type=\"epodoc\">\n
+      \                       <doc-number>TWD163326S</doc-number>\n                        <date>20141001</date>\n
+      \                   </document-id>\n                </publication-reference>\n
+      \               <patent-classifications/>\n                <application-reference
+      doc-id=\"610185634\">\n                    <document-id document-id-type=\"docdb\">\n
+      \                       <country>TW</country>\n                        <doc-number>102306223</doc-number>\n
+      \                       <kind>F</kind>\n                    </document-id>\n
+      \                   <document-id document-id-type=\"epodoc\">\n                        <doc-number>TW20130306223F</doc-number>\n
+      \                       <date>20120330</date>\n                    </document-id>\n
+      \                   <document-id document-id-type=\"original\">\n                        <doc-number>102306223</doc-number>\n
+      \                   </document-id>\n                </application-reference>\n
+      \               <priority-claims>\n                    <priority-claim sequence=\"1\"
+      kind=\"national\">\n                        <document-id document-id-type=\"epodoc\">\n
+      \                           <doc-number>US201229416465F</doc-number>\n                            <date>20120322</date>\n
+      \                       </document-id>\n                        <document-id
+      document-id-type=\"original\">\n                            <doc-number>29/416,465</doc-number>\n
+      \                       </document-id>\n                    </priority-claim>\n
+      \               </priority-claims>\n                <parties>\n                    <applicants>\n
+      \                       <applicant sequence=\"1\" data-format=\"epodoc\">\n
+      \                           <applicant-name>\n                                <name>\u5495\u679C\u516C\u53F8\u2002[US]</name>\n
+      \                           </applicant-name>\n                        </applicant>\n
+      \                       <applicant sequence=\"2\" data-format=\"epodoc\">\n
+      \                           <applicant-name>\n                                <name>
+      GOOGLE INC\u2002[US]</name>\n                            </applicant-name>\n
+      \                       </applicant>\n                        <applicant sequence=\"1\"
+      data-format=\"original\">\n                            <applicant-name>\n                                <name>\u5495\u679C\u516C\u53F8,
+      </name>\n                            </applicant-name>\n                        </applicant>\n
+      \                       <applicant sequence=\"2\" data-format=\"original\">\n
+      \                           <applicant-name>\n                                <name>GOOGLE
+      INC</name>\n                            </applicant-name>\n                        </applicant>\n
+      \                   </applicants>\n                    <inventors>\n                        <inventor
+      sequence=\"1\" data-format=\"epodoc\">\n                            <inventor-name>\n
+      \                               <name>\u3000\u3000 OLSSON MAJ ISABELLE</name>\n
+      \                           </inventor-name>\n                        </inventor>\n
+      \                       <inventor sequence=\"2\" data-format=\"epodoc\">\n                            <inventor-name>\n
+      \                               <name> \u3000\u3000 MARTIN MATTHEW WYATT</name>\n
+      \                           </inventor-name>\n                        </inventor>\n
+      \                       <inventor sequence=\"1\" data-format=\"original\">\n
+      \                           <inventor-name>\n                                <name>\u3000\u3000
+      OLSSON, MAJ ISABELLE, </name>\n                            </inventor-name>\n
+      \                       </inventor>\n                        <inventor sequence=\"2\"
+      data-format=\"original\">\n                            <inventor-name>\n                                <name>\u3000\u3000
+      MARTIN, MATTHEW WYATT</name>\n                            </inventor-name>\n
+      \                       </inventor>\n                    </inventors>\n                </parties>\n
+      \               <invention-title lang=\"en\">PORTION OF A DISPLAY AND BATTERY
+      MODULE OF A WEARABLE DISPLAY DEVICE</invention-title>\n                <invention-title
+      lang=\"ol\">\u53EF\u914D\u6234\u5F0F\u986F\u793A\u88DD\u7F6E\u4E4B\u986F\u793A\u53CA\u96FB\u6C60\u6A21\u7D44\u4E4B\u90E8\u5206</invention-title>\n
+      \           </bibliographic-data>\n            <abstract lang=\"ol\">\n                <p>\u3010\u7269\u54C1\u7528\u9014\u3011;\u672C\u8A2D\u8A08\u4FC2\u95DC\u65BC\u4E00\u7A2E\u53EF\u914D\u6234\u5F0F\u986F\u793A\u88DD\u7F6E\u4E4B\u986F\u793A\u53CA\u96FB\u6C60\u6A21\u7D44\u3002;\u3010\u8A2D\u8A08\u8AAA\u660E\u3011;\u5716\u5F0F\u4E2D\u6240\u63ED\u9732\u4E4B\u865B\u7DDA\u70BA\u672C\u6848\u4E0D\u4E3B\u5F35\u8A2D\u8A08\u4E4B\u90E8\u5206\u3002;\u5716\u5F0F\u4E2D\u9670\u5F71\u7DDA\u7E6A\u793A\u8F2A\u5ED3\u800C\u975E\u8868\u9762\u88DD\u98FE\u3002</p>\n
+      \           </abstract>\n        </exchange-document>\n    </exchange-documents>\n</ops:world-patent-data>"
+    headers:
+      Access-Control-Allow-Headers:
+      - Authorization
+      Access-Control-Allow-Methods:
+      - POST
+      Access-Control-Allow-Origin:
+      - '*'
+      Cache-Control:
+      - no-cache
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '5251'
+      Content-Type:
+      - application/xml;charset=utf-8
+      Date:
+      - Wed, 24 Apr 2024 19:37:01 GMT
+      ETag:
+      - '"0990ba02be6d42ab73165bc8ce37fa5bc"'
+      Pragma:
+      - no-cache
+      Server:
+      - Apache
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      Vary:
+      - Accept
+      X-API:
+      - ops-v3.2
+      X-EPO-Client-IP:
+      - 38.104.255.66
+      X-EPO-Forwarded:
+      - '[38.104.255.66]'
+      X-Elapsed-Time:
+      - '2'
+      X-IndividualQuotaPerHour-Used:
+      - '538330'
+      X-RegisteredQuotaPerWeek-Used:
+      - '538330'
+      X-Throttling-Control:
+      - idle (images=green:200, inpadoc=green:60, other=green:1000, retrieval=green:200,
+        search=green:30)
+    http_version: HTTP/1.1
+    status_code: 200
+version: 1

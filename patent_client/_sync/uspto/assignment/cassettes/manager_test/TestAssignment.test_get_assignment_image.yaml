@@ -1,0 +1,239 @@
+interactions:
+- request:
+    body: ''
+    headers:
+      accept:
+      - application/xml
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - assignment-api.uspto.gov
+      user-agent:
+      - Mozilla/5.0 Python Patent Clientbot/4.1.10 (parkerhancock@users.noreply.github.com)
+    method: GET
+    uri: https://assignment-api.uspto.gov/patent/lookup?filter=PatentNumber&query=6095661&rows=1&start=0&sort=ExecutionDate%2Bdesc&facet=false
+  response:
+    content: "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<response>\n\n<lst name=\"responseHeader\">\n
+      \ <bool name=\"zkConnected\">true</bool>\n  <int name=\"status\">0</int>\n  <int
+      name=\"QTime\">58</int>\n  <lst name=\"params\">\n    <str name=\"q\">*:*</str>\n
+      \   <str name=\"qt\">/apisearch</str>\n    <str name=\"start\">0</str>\n    <str
+      name=\"sort\">patAssignorEarliestExDate desc</str>\n    <str name=\"fq\">patNum:6095661</str>\n
+      \   <str name=\"rows\">1</str>\n    <str name=\"wt\">javabin</str>\n    <str
+      name=\"version\">2</str>\n  </lst>\n</lst>\n<result name=\"response\" numFound=\"6\"
+      start=\"0\">\n  <doc>\n    <str name=\"id\">38505-128</str>\n    <str name=\"displayId\">038505-0128</str>\n
+      \   <str name=\"dtdVersion\">1.0</str>\n    <str name=\"dateProduced\">20140916</str>\n
+      \   <str name=\"actionKeyCode\">DA</str>\n    <str name=\"transactionDate\">2019-07-16T00:40:08Z</str>\n
+      \   <str name=\"reelNo\">38505</str>\n    <str name=\"frameNo\">128</str>\n
+      \   <date name=\"lastUpdateDate\">2018-02-27T06:01:28Z</date>\n    <str name=\"purgeIndicator\">N</str>\n
+      \   <date name=\"recordedDate\">2016-05-06T04:00:00Z</date>\n    <str name=\"pageCount\">4</str>\n
+      \   <str name=\"conveyanceText\">ASSIGNMENT OF ASSIGNORS INTEREST (SEE DOCUMENT
+      FOR DETAILS).</str>\n    <str name=\"assignmentRecordHasImages\">Y</str>\n    <str
+      name=\"attorneyDockNum\">7139.030US1 - .030US13</str>\n    <str name=\"corrName\">LEMAIRE
+      PATENT LAW FIRM, P.L.L.C.</str>\n    <str name=\"corrAddress1\">P.O. BOX 1818</str>\n
+      \   <str name=\"corrAddress2\">BURNSVILLE, MN 55337</str>\n    <date name=\"patAssignorEarliestExDate\">2016-05-06T04:00:00Z</date>\n
+      \   <arr name=\"patAssignorName\">\n      <str>LED TECH DEVELOPMENT, LLC</str>\n
+      \   </arr>\n    <arr name=\"patAssignorExDate\">\n      <date>2016-05-06T04:00:00Z</date>\n
+      \   </arr>\n    <arr name=\"patAssignorDateAck\">\n      <str>0001-01-01T00:00:00Z</str>\n
+      \   </arr>\n    <arr name=\"patAssigneeName\">\n      <str>LEMAIRE ILLUMINATION
+      TECHNOLOGIES, LLC</str>\n    </arr>\n    <arr name=\"patAssigneeAddress1\">\n
+      \     <str>815 BRAZOS STREET, SUITE 500</str>\n    </arr>\n    <arr name=\"patAssigneeAddress2\">\n
+      \     <str>NULL</str>\n    </arr>\n    <arr name=\"patAssigneeCity\">\n      <str>AUSTIN</str>\n
+      \   </arr>\n    <arr name=\"patAssigneeState\">\n      <str>TEXAS</str>\n    </arr>\n
+      \   <arr name=\"patAssigneeCountryName\">\n      <str>NULL</str>\n    </arr>\n
+      \   <arr name=\"patAssigneePostcode\">\n      <str>78701</str>\n    </arr>\n
+      \   <arr name=\"inventionTitle\">\n      <str>PULSED L.E.D. ILLUMINATION</str>\n
+      \     <str>METHOD AND APPARATUS FOR AN L.E.D. FLASHLIGHT</str>\n      <str>Method
+      and apparatus for L.E.D. illumination</str>\n      <str>COLOR-ADJUSTED CAMERA
+      LIGHT AND METHOD</str>\n      <str>METHOD AND APPARATUS FOR A PULSED L.E.D.
+      ILLUMINATION SOURCE</str>\n      <str>METHOD AND APPARATUS FOR A VARIABLE INTENSITY
+      PULSED L.E.D. LIGHT</str>\n      <str>METHOD AND APPARATUS FOR CONSTANT LIGHT
+      OPUTPUT PULSED L.E.D. ILLUMINATION</str>\n      <str>METHOD AND APPARATUS FOR
+      PULSED L.E.D. ILLUMINATION FOR A CAMERA</str>\n      <str>APPARATUS AND METHOD
+      FOR PULSED L.E.D. ILLUMINATION</str>\n      <str>APPARATUS AND METHOD FOR L.E.D.
+      ILLUMINATION</str>\n      <str>APPARATUS FOR L.E.D. ILLUMINATION</str>\n      <str>METHOD
+      AND APPARATUS AND METHOD FOR PULSED L.E.D. ILLUMINATION</str>\n      <str>PULSED
+      L.E.D. ILLUMINATION APPARATUS AND METHOD</str>\n    </arr>\n    <arr name=\"inventionTitleLang\">\n
+      \     <str>en</str>\n      <str>en</str>\n      <str>en</str>\n      <str>en</str>\n
+      \     <str>en</str>\n      <str>en</str>\n      <str>en</str>\n      <str>en</str>\n
+      \     <str>en</str>\n      <str>en</str>\n      <str>en</str>\n      <str>en</str>\n
+      \     <str>en</str>\n    </arr>\n    <arr name=\"applNum\">\n      <str>14835432</str>\n
+      \     <str>09044559</str>\n      <str>09627268</str>\n      <str>09978760</str>\n
+      \     <str>10299609</str>\n      <str>10945801</str>\n      <str>11674143</str>\n
+      \     <str>12166315</str>\n      <str>12820139</str>\n      <str>13244481</str>\n
+      \     <str>13736865</str>\n      <str>14049188</str>\n      <str>14480630</str>\n
+      \   </arr>\n    <arr name=\"filingDate\">\n      <date>2015-08-25T04:00:00Z</date>\n
+      \     <date>1998-03-19T04:00:00Z</date>\n      <date>2000-07-28T04:00:00Z</date>\n
+      \     <date>2001-10-16T04:00:00Z</date>\n      <date>2002-11-18T04:00:00Z</date>\n
+      \     <date>2004-09-20T04:00:00Z</date>\n      <date>2007-02-12T04:00:00Z</date>\n
+      \     <date>2008-07-01T04:00:00Z</date>\n      <date>2010-06-22T04:00:00Z</date>\n
+      \     <date>2011-09-25T04:00:00Z</date>\n      <date>2013-01-08T04:00:00Z</date>\n
+      \     <date>2013-10-08T04:00:00Z</date>\n      <date>2014-09-08T04:00:00Z</date>\n
+      \   </arr>\n    <arr name=\"intlPublDate\">\n      <date>0001-01-01T00:00:00Z</date>\n
+      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
+      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
+      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
+      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
+      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
+      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
+      \   </arr>\n    <arr name=\"intlRegNum\">\n      <str>NULL</str>\n      <str>NULL</str>\n
+      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
+      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
+      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n    </arr>\n
+      \   <arr name=\"inventors\">\n      <str>Gary A. Lebens, Charles T. Bourn, Charles
+      A. Lemaire</str>\n      <str>GARY A. LEBENS, CHARLES T. BOURN, CHARLES A. LEMAIRE</str>\n
+      \     <str>Gary A. Lebens, Charles T. Bourn, Charles A. Lemaire</str>\n      <str>Gary
+      A. Lebens, Charles T. Bourn, Charles A. Lemaire</str>\n      <str>Gary A. Lebens,
+      Charles T. Bourn, Charles A. Lemaire</str>\n      <str>Gary A. Lebens, Charles
+      T. Bourn, Charies A. Lemaire</str>\n      <str>Gary A. Lebens, Charles T. Bourn,
+      Charles A. Lemaire</str>\n      <str>Gary A. Lebens, Charles T. Bourn, Charles
+      A. Lemaire</str>\n      <str>Gary A. Lebens, Charles T. Bourn, Charles A. Lemaire</str>\n
+      \     <str>Gary A. Lebens, Charles T. Bourn, Charles A. Lemaire</str>\n      <str>Gary
+      A. Lebens, Charles T. Bourn, Charles A. Lemaire</str>\n      <str>Charles T.
+      Bourn, Gary A. Lebens, Charles A. Lemaire</str>\n      <str>Gary A. Lebens,
+      Charles T. Bourn, Charles A. Lemaire</str>\n    </arr>\n    <arr name=\"issueDate\">\n
+      \     <date>2018-02-27T04:00:00Z</date>\n      <date>2000-08-01T04:00:00Z</date>\n
+      \     <date>2001-10-23T04:00:00Z</date>\n      <date>2002-12-03T04:00:00Z</date>\n
+      \     <date>2004-10-26T04:00:00Z</date>\n      <date>2007-03-06T04:00:00Z</date>\n
+      \     <date>2008-07-01T04:00:00Z</date>\n      <date>2010-06-22T04:00:00Z</date>\n
+      \     <date>2012-04-17T04:00:00Z</date>\n      <date>2013-01-29T04:00:00Z</date>\n
+      \     <date>2014-02-04T04:00:00Z</date>\n      <date>2014-09-09T04:00:00Z</date>\n
+      \     <date>2015-08-25T04:00:00Z</date>\n    </arr>\n    <arr name=\"patNum\">\n
+      \     <str>9907137</str>\n      <str>6095661</str>\n      <str>6305818</str>\n
+      \     <str>6488390</str>\n      <str>6808287</str>\n      <str>7186000</str>\n
+      \     <str>7393119</str>\n      <str>7740371</str>\n      <str>8159146</str>\n
+      \     <str>8362712</str>\n      <str>8643305</str>\n      <str>8829808</str>\n
+      \     <str>9119266</str>\n    </arr>\n    <arr name=\"pctNum\">\n      <str>NULL</str>\n
+      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
+      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
+      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
+      \   </arr>\n    <arr name=\"publDate\">\n      <date>0001-01-01T00:00:00Z</date>\n
+      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
+      \     <date>0001-01-01T00:00:00Z</date>\n      <date>2003-05-22T04:00:00Z</date>\n
+      \     <date>2005-02-24T04:00:00Z</date>\n      <date>2007-06-14T04:00:00Z</date>\n
+      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
+      \     <date>0001-01-01T00:00:00Z</date>\n      <date>2013-06-06T04:00:00Z</date>\n
+      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
+      \   </arr>\n    <arr name=\"publNum\">\n      <str>NULL</str>\n      <str>NULL</str>\n
+      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>20030095406</str>\n
+      \     <str>20050040773</str>\n      <str>20070133199</str>\n      <str>NULL</str>\n
+      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>20130141635</str>\n
+      \     <str>NULL</str>\n      <str>NULL</str>\n    </arr>\n    <int name=\"patAssignorNameSize\">1</int>\n
+      \   <int name=\"patAssignorNameTypeSize\">1</int>\n    <int name=\"patAssignorExDateSize\">1</int>\n
+      \   <int name=\"patAssignorDateAckSize\">1</int>\n    <int name=\"patAssigneeNameSize\">2</int>\n
+      \   <int name=\"patAssigneeNameTypeSize\">0</int>\n    <int name=\"patAssigneeAddress1Size\">1</int>\n
+      \   <int name=\"patAssigneeAddress2Size\">1</int>\n    <int name=\"patAssigneeCitySize\">1</int>\n
+      \   <int name=\"patAssigneeStateSize\">1</int>\n    <int name=\"patAssigneeCountryNameSize\">1</int>\n
+      \   <int name=\"patAssigneePostcodeSize\">1</int>\n    <int name=\"inventionTitleSize\">13</int>\n
+      \   <int name=\"inventionTitleIdSize\">13</int>\n    <int name=\"inventionTitleLangSize\">13</int>\n
+      \   <int name=\"applNumSize\">13</int>\n    <int name=\"filingDateSize\">13</int>\n
+      \   <int name=\"intlPublDateSize\">13</int>\n    <int name=\"intlRegNumSize\">13</int>\n
+      \   <int name=\"inventorsSize\">13</int>\n    <int name=\"issueDateSize\">13</int>\n
+      \   <int name=\"patNumSize\">13</int>\n    <int name=\"pctNumSize\">13</int>\n
+      \   <int name=\"publDateSize\">13</int>\n    <int name=\"publNumSize\">13</int>\n
+      \   <str name=\"inventionTitleFirst\">PULSED L.E.D. ILLUMINATION</str>\n    <str
+      name=\"inventionTitleLangFirst\">en</str>\n    <str name=\"applNumFirst\">14835432</str>\n
+      \   <date name=\"filingDateFirst\">2015-08-25T04:00:00Z</date>\n    <date name=\"intlPublDateFirst\">0001-01-01T00:00:00Z</date>\n
+      \   <str name=\"intlRegNumFirst\">NULL</str>\n    <str name=\"inventorsFirst\">Gary
+      A. Lebens, Charles T. Bourn, Charles A. Lemaire</str>\n    <date name=\"issueDateFirst\">2018-02-27T04:00:00Z</date>\n
+      \   <str name=\"patNumFirst\">9907137</str>\n    <str name=\"pctNumFirst\">NULL</str>\n
+      \   <date name=\"publDateFirst\">0001-01-01T00:00:00Z</date>\n    <str name=\"publNumFirst\">NULL</str>\n
+      \   <str name=\"patAssignorNameFirst\">LED TECH DEVELOPMENT, LLC</str>\n    <str
+      name=\"patAssigneeNameFirst\">LEMAIRE ILLUMINATION TECHNOLOGIES, LLC</str>\n
+      \   <arr name=\"patAssigneePostcodeFacet\">\n      <str>78701</str>\n    </arr>\n
+      \   <arr name=\"patAssignorNameFacet\">\n      <str>LED TECH DEVELOPMENT, LLC</str>\n
+      \   </arr>\n    <str name=\"corrNameFacet\">LEMAIRE PATENT LAW FIRM, P.L.L.C.</str>\n
+      \   <long name=\"_version_\">1639256498008752128</long>\n    <arr name=\"patAssigneeNameFacet\">\n
+      \     <str>LEMAIRE ILLUMINATION TECHNOLOGIES, LLC</str>\n    </arr>\n    <arr
+      name=\"patAssigneeCityFacet\">\n      <str>AUSTIN</str>\n    </arr>\n    <arr
+      name=\"patAssigneeCountryNameFacet\">\n      <str>NULL</str>\n    </arr>\n    <arr
+      name=\"patAssigneeStateFacet\">\n      <str>TEXAS</str>\n    </arr>\n    <str
+      name=\"corrNameString\">LEMAIRE PATENT LAW FIRM, P.L.L.C.</str></doc>\n</result>\n<lst
+      name=\"facet_counts\">\n  <lst name=\"facet_queries\">\n    <int name=\"conveyanceText:&quot;ASSIGNMENT
+      OF ASSIGNORS INTEREST&quot;\">5</int>\n    <int name=\"conveyanceText:&quot;SECURITY
+      INTEREST&quot;\">0</int>\n    <int name=\"conveyanceText:&quot;NUNC PRO TUNC
+      ASSIGNMENT&quot;\">0</int>\n    <int name=\"conveyanceText:&quot;RELEASE BY
+      SECURED PARTY&quot;\">0</int>\n    <int name=\"conveyanceText:&quot;MERGER&quot;\">1</int>\n
+      \   <int name=\"conveyanceText:&quot;CHANGE OF NAME&quot;\">0</int>\n    <int
+      name=\"conveyanceText:&quot;MERGER AND CHANGE OF NAME&quot;\">0</int>\n    <int
+      name=\"conveyanceText:&quot;LICENSE&quot;\">0</int>\n    <int name=\"conveyanceText:&quot;LIEN&quot;\">0</int>\n
+      \   <int name=\"conveyanceText:&quot;MORTGAGE&quot;\">0</int>\n    <int name=\"conveyanceText:&quot;OPTION&quot;\">0</int>\n
+      \   <int name=\"conveyanceText:&quot;DECREE OF DISTRIBUTION&quot;\">0</int>\n
+      \   <int name=\"conveyanceText:&quot;LETTERS OF TESTAMENTARY&quot;\">0</int>\n
+      \   <int name=\"conveyanceText:&quot;LETTERS OF ADMINISTRATION&quot;\">0</int>\n
+      \   <int name=\"conveyanceText:&quot;COURT APPOINTMENT&quot;\">0</int>\n    <int
+      name=\"conveyanceText:&quot;CONDITIONAL ASSIGNMENT&quot;\">0</int>\n    <int
+      name=\"conveyanceText:&quot;COURT ORDER&quot;\">0</int>\n  </lst>\n  <lst name=\"facet_fields\">\n
+      \   <lst name=\"patAssigneeCityFacet\">\n      <int name=\"APPLE VALLEY\">1</int>\n
+      \     <int name=\"AUSTIN\">2</int>\n      <int name=\"DALLAS\">1</int>\n      <int
+      name=\"EDEN PRAIRIE\">1</int>\n      <int name=\"TYLER\">1</int>\n    </lst>\n
+      \   <lst name=\"patAssigneeStateFacet\">\n      <int name=\"MINNESOTA\">2</int>\n
+      \     <int name=\"TEXAS\">4</int>\n    </lst>\n    <lst name=\"patAssigneePostcodeFacet\">\n
+      \     <int name=\"55124-7941\">1</int>\n      <int name=\"55344\">1</int>\n
+      \     <int name=\"75230\">1</int>\n      <int name=\"75702\">1</int>\n      <int
+      name=\"78701\">2</int>\n    </lst>\n    <lst name=\"patAssigneeCountryNameFacet\">\n
+      \     <int name=\"NULL\">6</int>\n    </lst>\n    <lst name=\"patAssigneeNameFacet\">\n
+      \     <int name=\"LED TECH DEVELOPMENT, LLC\">2</int>\n      <int name=\"LEMAIRE
+      ILLUMINATION TECHNOLOGIES, LLC\">2</int>\n      <int name=\"LEMAIRE, CHARLES
+      A.\">1</int>\n      <int name=\"PPT VISION, INC.\">1</int>\n    </lst>\n    <lst
+      name=\"corrNameFacet\">\n      <int name=\"CHARLES A. LEMAIRE\">1</int>\n      <int
+      name=\"LEMAIRE PATENT LAW FIRM, P.L.L.C.\">2</int>\n      <int name=\"SCHWEGMAN,
+      LUNDBERG, WOESSNER &amp; KLUTH\">1</int>\n      <int name=\"TAREK N. FAHMI,
+      APC\">2</int>\n    </lst>\n    <lst name=\"patAssignorNameFacet\">\n      <int
+      name=\"BOURN, CHARLES\">1</int>\n      <int name=\"LEBENS, GARY A.\">1</int>\n
+      \     <int name=\"LED TECH DEVELOPMENT, LLC\">2</int>\n      <int name=\"LEMAIRE
+      ILLUMINATION TECHNOLOGIES, LLC\">1</int>\n      <int name=\"LEMAIRE, CHARLES
+      A.\">2</int>\n      <int name=\"PPT VISION, INC.\">1</int>\n    </lst>\n    <lst
+      name=\"applNum\">\n      <int name=\"09044559\">6</int>\n      <int name=\"09627268\">3</int>\n
+      \     <int name=\"09978760\">3</int>\n      <int name=\"10299609\">3</int>\n
+      \     <int name=\"10945801\">3</int>\n      <int name=\"11674143\">3</int>\n
+      \     <int name=\"12166315\">3</int>\n      <int name=\"12820139\">4</int>\n
+      \     <int name=\"13244481\">3</int>\n      <int name=\"13736865\">1</int>\n
+      \     <int name=\"14049188\">1</int>\n      <int name=\"14480630\">1</int>\n
+      \     <int name=\"14835432\">1</int>\n    </lst>\n    <lst name=\"patNum\">\n
+      \     <int name=\"6095661\">6</int>\n      <int name=\"6305818\">3</int>\n      <int
+      name=\"6488390\">3</int>\n      <int name=\"6808287\">3</int>\n      <int name=\"7186000\">3</int>\n
+      \     <int name=\"7393119\">3</int>\n      <int name=\"7740371\">3</int>\n      <int
+      name=\"8159146\">4</int>\n      <int name=\"8362712\">3</int>\n      <int name=\"8643305\">1</int>\n
+      \     <int name=\"8829808\">1</int>\n      <int name=\"9119266\">1</int>\n      <int
+      name=\"9907137\">1</int>\n    </lst>\n    <lst name=\"publNum\">\n      <int
+      name=\"20030095406\">3</int>\n      <int name=\"20050040773\">3</int>\n      <int
+      name=\"20070133199\">3</int>\n      <int name=\"20130141635\">1</int>\n      <int
+      name=\"NULL\">6</int>\n    </lst>\n    <lst name=\"intlRegNum\">\n      <int
+      name=\"NULL\">6</int>\n    </lst>\n  </lst>\n  <lst name=\"facet_ranges\">\n
+      \   <lst name=\"patAssignorEarliestExDate\">\n      <lst name=\"counts\">\n
+      \       <int name=\"1998-01-01T00:00:00Z\">1</int>\n        <int name=\"2004-01-01T00:00:00Z\">1</int>\n
+      \       <int name=\"2011-01-01T00:00:00Z\">1</int>\n        <int name=\"2012-01-01T00:00:00Z\">2</int>\n
+      \       <int name=\"2016-01-01T00:00:00Z\">1</int>\n      </lst>\n      <str
+      name=\"gap\">+1YEAR</str>\n      <int name=\"before\">0</int>\n      <date name=\"start\">1899-01-01T00:00:00Z</date>\n
+      \     <date name=\"end\">2025-01-01T00:00:00Z</date>\n    </lst>\n  </lst>\n
+      \ <lst name=\"facet_intervals\"/>\n  <lst name=\"facet_heatmaps\"/>\n</lst>\n<lst
+      name=\"highlighting\">\n  <lst name=\"38505-128\">\n    <arr name=\"frameNo\"/>\n
+      \   <arr name=\"patAssigneeCity\"/>\n    <arr name=\"pctNum\"/>\n    <arr name=\"patAssigneePostcode\"/>\n
+      \   <arr name=\"filingDate\"/>\n    <arr name=\"conveyanceText\"/>\n    <arr
+      name=\"patNum\"/>\n    <arr name=\"patAssignorName\"/>\n    <arr name=\"corrAddress1\"/>\n
+      \   <arr name=\"corrAddress2\"/>\n    <arr name=\"corrAddress3\"/>\n    <arr
+      name=\"corrName\"/>\n    <arr name=\"applNum\"/>\n    <arr name=\"inventionTitle\"/>\n
+      \   <arr name=\"publNum\"/>\n    <arr name=\"patAssigneeAddress\"/>\n    <arr
+      name=\"intlRegNum\"/>\n    <arr name=\"publDate\"/>\n    <arr name=\"patAssigneeCountryName\"/>\n
+      \   <arr name=\"intlPublDate\"/>\n    <arr name=\"id\"/>\n    <arr name=\"patAssigneeName\"/>\n
+      \   <arr name=\"issueDate\"/>\n    <arr name=\"reelNo\"/>\n  </lst>\n</lst>\n</response>\n"
+    headers:
+      content-type:
+      - application/xml
+      date:
+      - Wed, 24 Apr 2024 16:01:03 GMT
+      server:
+      - Apache-Coyote/1.1
+      strict-transport-security:
+      - max-age=31536000;includeSubDomains
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+      x-xss-protection:
+      - 1; mode=block
+    http_version: HTTP/2
+    status_code: 200
+version: 1

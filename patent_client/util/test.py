@@ -1,5 +1,4 @@
 import random
-from collections import abc
 
 random.seed(1)
 
@@ -22,7 +21,9 @@ def compare_dicts(dict_1, dict_2, key=""):
     if len(in_1_not_2) > 0:
         raise ValueError(f"At {key}, Keys {in_1_not_2} are in Dict 1, but not Dict 2")
     if len(in_2_not_1) > 0:
-        raise ValueError(f"At {key}, Keys {in_2_not_1} are not in Dict 1, but are in Dict 2")
+        raise ValueError(
+            f"At {key}, Keys {in_2_not_1} are not in Dict 1, but are in Dict 2"
+        )
 
     for k, v in dict_1.items():
         if isinstance(v, list) and not isinstance(v, str):
@@ -32,41 +33,3 @@ def compare_dicts(dict_1, dict_2, key=""):
         else:
             assert v == dict_2[k], f"At key {key}.{k}, {v} != {dict_2[k]}"
 
-
-def autogen_list_tests(name, lst):
-    output = list()
-    idx = random.randint(0, len(lst) - 1)
-    subel_name = f"{name}[{idx}]"
-    subel = lst[idx]
-    output.append(f"assert len({name}) == {len(lst)}")
-    if isinstance(subel, abc.Mapping):
-        output += autogen_dict_tests(subel_name, subel)
-    elif isinstance(subel, abc.Sequence) and not isinstance(subel, str):
-        output += autogen_list_tests(subel_name, subel)
-    else:
-        output.append(f"assert {subel_name} == {repr(subel)}")
-    return output
-
-
-def autogen_dict_tests(name, d):
-    output = list()
-    for k, v in d.items():
-        subel_name = f"{name}.{k}"
-        subel = v
-        if isinstance(subel, (abc.Mapping, Model)):
-            output += autogen_dict_tests(subel_name, subel)
-        elif isinstance(subel, abc.Sequence) and not isinstance(subel, str):
-            output += autogen_list_tests(subel_name, subel)
-        else:
-            output.append(f"assert {name}.{k} == {repr(v)}")
-    return output
-
-
-def autogen_tests(name, obj):
-    if isinstance(obj, (abc.Mapping, Model)):
-        output = autogen_dict_tests(name, obj)
-    elif isinstance(obj, abc.Sequence) and not isinstance(obj, str):
-        output = autogen_list_tests(name, obj)
-    else:
-        raise ValueError(f"Object is type {type(obj)}! Must be either a Model, abc.Mapping, or abc.Sequence")
-    return "\n".join(output)

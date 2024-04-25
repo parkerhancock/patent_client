@@ -1,0 +1,246 @@
+{
+  "document_id": {
+    "country": "WO",
+    "doc_number": "2009085664",
+    "kind": "A2"
+  },
+  "claims": [
+    {
+      "number": 1,
+      "limitations": [
+        "A computer-implemented method comprising:",
+        "maintaining metadata associated with browser-accessible items, wherein the metadata includes:",
+        "a title associated with an item, a URL associated with an item, a last date an item was visited by a user, frequency with which an item has been visited by a user, and whether or not an item was selected from a list;",
+        "assigning weights to the metadata;",
+        "processing weighted metadata using a relevancy algorithm;",
+        "receiving a user action associated with accessing one or more items; and",
+        "responsive to receiving the user action, presenting one or more suggestions based upon the user action and an output of the relevancy algorithm."
+      ],
+      "depends_on": [],
+      "dependent_claims": [
+        2,
+        4,
+        6,
+        7
+      ]
+    },
+    {
+      "number": 2,
+      "limitations": [
+        "The method of claim 1 , wherein the user action inputs text into a Web browser user interface."
+      ],
+      "depends_on": [
+        1
+      ],
+      "dependent_claims": [
+        3
+      ]
+    },
+    {
+      "number": 3,
+      "limitations": [
+        "The method of claim 2, wherein the Web browser user interface comprises an address bar into which the text has been typed."
+      ],
+      "depends_on": [
+        2
+      ],
+      "dependent_claims": []
+    },
+    {
+      "number": 4,
+      "limitations": [
+        "The method of claim 1 , wherein the user action comprises accessing a drop down menu associated with the Web browser."
+      ],
+      "depends_on": [
+        1
+      ],
+      "dependent_claims": [
+        5
+      ]
+    },
+    {
+      "number": 5,
+      "limitations": [
+        "The method of claim 4, wherein the drop down menu is provided in connection with a browser's address bar."
+      ],
+      "depends_on": [
+        4
+      ],
+      "dependent_claims": []
+    },
+    {
+      "number": 6,
+      "limitations": [
+        "The method of claim 1 , wherein the metadata further includes a date an item was last modified."
+      ],
+      "depends_on": [
+        1
+      ],
+      "dependent_claims": []
+    },
+    {
+      "number": 7,
+      "limitations": [
+        "The method of claim 1 , wherein the metadata further includes one or more of the following:",
+        "an unread count associate with an item, whether the user typed an entire string associated with an item, how a user interacted with the page, tags or key words associated with an item, and whether a term provided by the user was used in a full text search."
+      ],
+      "depends_on": [
+        1
+      ],
+      "dependent_claims": []
+    },
+    {
+      "number": 8,
+      "limitations": [
+        "One or more computer-readable storage media comprising computer-readable instructions which, when executed, implement a method comprising:",
+        "maintaining metadata associated with browser-accessible items, wherein the metadata includes one or more of:",
+        "a title associated with an item, a URL associated with an item, a last date an item was visited by a user, frequency with which an item has been visited by a user, or whether or not an item was selected from a list;",
+        "assigning weights to the metadata;",
+        "processing weighted metadata using a relevancy algorithm;",
+        "receiving a user action associated with accessing one or more items; and",
+        "responsive to receiving the user action, presenting suggestions based upon the user action and an output of the relevancy algorithm, wherein the suggestions are grouped in accordance with different types."
+      ],
+      "depends_on": [],
+      "dependent_claims": [
+        9,
+        10,
+        11,
+        12,
+        13
+      ]
+    },
+    {
+      "number": 9,
+      "limitations": [
+        "The one or more computer-readable media of claim 8, wherein one type includes an URL type."
+      ],
+      "depends_on": [
+        8
+      ],
+      "dependent_claims": []
+    },
+    {
+      "number": 10,
+      "limitations": [
+        "The one or more computer-readable media of claim 8, wherein one type includes a history type."
+      ],
+      "depends_on": [
+        8
+      ],
+      "dependent_claims": []
+    },
+    {
+      "number": 11,
+      "limitations": [
+        "The one or more computer-readable media of claim 8, where in one type includes a favorites type."
+      ],
+      "depends_on": [
+        8
+      ],
+      "dependent_claims": []
+    },
+    {
+      "number": 12,
+      "limitations": [
+        "The one or more computer-readable media of claim 8, wherein one type includes an RSS type."
+      ],
+      "depends_on": [
+        8
+      ],
+      "dependent_claims": []
+    },
+    {
+      "number": 13,
+      "limitations": [
+        "The one or more computer-readable media of claim 8, wherein types comprise an URL type, a history type, a favorites type, and an RSS type."
+      ],
+      "depends_on": [
+        8
+      ],
+      "dependent_claims": []
+    },
+    {
+      "number": 14,
+      "limitations": [
+        "A computer-implemented method comprising:",
+        "ascertaining whether a user-entered query is more than one word;",
+        "if the user-entered query is not more than one word, ascertaining whether the user- entered query is prefixed with a protocol string and/or a URI;",
+        "if the user-entered query is not more than one word and is prefixed with a protocol string and/or a URI, returning results using a first method;",
+        "if the user-entered query is not more than one word and is not prefixed with a protocol string and/or URI, returning results using a second using a second different method; and",
+        "if the user-entered query is more than one word, returning results using the second different method."
+      ],
+      "depends_on": [],
+      "dependent_claims": [
+        15,
+        16,
+        18,
+        20
+      ]
+    },
+    {
+      "number": 15,
+      "limitations": [
+        "The method of claim 14, wherein said results are returned grouped into different types."
+      ],
+      "depends_on": [
+        14
+      ],
+      "dependent_claims": []
+    },
+    {
+      "number": 16,
+      "limitations": [
+        "The method of claim 14, wherein the first method strips a query word of protocol prefixes in order to perform a prefix string match against a destination's stripped URL."
+      ],
+      "depends_on": [
+        14
+      ],
+      "dependent_claims": [
+        17
+      ]
+    },
+    {
+      "number": 17,
+      "limitations": [
+        "The method of claim 16, wherein the first method returns results grouped in accordance with history types, favorites types, RSS Feeds and Feed Item types and Typed URL types."
+      ],
+      "depends_on": [
+        16
+      ],
+      "dependent_claims": []
+    },
+    {
+      "number": 18,
+      "limitations": [
+        "The method of claim 14, wherein the second method does not make changes to one or more query words and utilizes word breaking."
+      ],
+      "depends_on": [
+        14
+      ],
+      "dependent_claims": [
+        19
+      ]
+    },
+    {
+      "number": 19,
+      "limitations": [
+        "The method of claim 18, wherein the second method returns at results grouped in accordance with history types, favorites types, RSS Feeds and Feed Item types and Typed URL types."
+      ],
+      "depends_on": [
+        18
+      ],
+      "dependent_claims": []
+    },
+    {
+      "number": 20,
+      "limitations": [
+        "The method of claim 14, wherein the first method strips a query word of protocol prefixes in order to perform a prefix string match against a destination's stripped URL and wherein the second method does not make changes to one or more query words and utilizes word breaking, wherein the first and second methods return results grouped in accordance with history types, favorites types, RSS Feeds and Feed Item types and Typed URL types."
+      ],
+      "depends_on": [
+        14
+      ],
+      "dependent_claims": []
+    }
+  ],
+  "claim_text": "Claims\n1. A computer-implemented method comprising: maintaining metadata associated with browser-accessible items, wherein the metadata includes: a title associated with an item, a URL associated with an item, a last date an item was visited by a user, frequency with which an item has been visited by a user, and whether or not an item was selected from a list; assigning weights to the metadata; processing weighted metadata using a relevancy algorithm; receiving a user action associated with accessing one or more items; and responsive to receiving the user action, presenting one or more suggestions based upon the user action and an output of the relevancy algorithm.\n2. The method of claim 1 , wherein the user action inputs text into a Web browser user interface.\n3. The method of claim 2, wherein the Web browser user interface comprises an address bar into which the text has been typed.\n4. The method of claim 1 , wherein the user action comprises accessing a drop down menu associated with the Web browser.\n5. The method of claim 4, wherein the drop down menu is provided in connection with a browser's address bar.\n6. The method of claim 1 , wherein the metadata further includes a date an item was last modified.\n7. The method of claim 1 , wherein the metadata further includes one or more of the following: an unread count associate with an item, whether the user typed an entire string associated with an item, how a user interacted with the page, tags or key words associated with an item, and whether a term provided by the user was used in a full text search.\n8. One or more computer-readable storage media comprising computer-readable instructions which, when executed, implement a method comprising: maintaining metadata associated with browser-accessible items, wherein the metadata includes one or more of: a title associated with an item, a URL associated with an item, a last date an item was visited by a user, frequency with which an item has been visited by a user, or whether or not an item was selected from a list; assigning weights to the metadata; processing weighted metadata using a relevancy algorithm; receiving a user action associated with accessing one or more items; and responsive to receiving the user action, presenting suggestions based upon the user action and an output of the relevancy algorithm, wherein the suggestions are grouped in accordance with different types.\n9. The one or more computer-readable media of claim 8, wherein one type includes an URL type.\n10. The one or more computer-readable media of claim 8, wherein one type includes a history type.\n11. The one or more computer-readable media of claim 8, where in one type includes a favorites type.\n12. The one or more computer-readable media of claim 8, wherein one type includes an RSS type.\n13. The one or more computer-readable media of claim 8, wherein types comprise an URL type, a history type, a favorites type, and an RSS type.\n14. A computer-implemented method comprising: ascertaining whether a user-entered query is more than one word; if the user-entered query is not more than one word, ascertaining whether the user- entered query is prefixed with a protocol string and/or a URI; if the user-entered query is not more than one word and is prefixed with a protocol string and/or a URI, returning results using a first method; if the user-entered query is not more than one word and is not prefixed with a protocol string and/or URI, returning results using a second using a second different method; and if the user-entered query is more than one word, returning results using the second different method.\n15. The method of claim 14, wherein said results are returned grouped into different types.\n16. The method of claim 14, wherein the first method strips a query word of protocol prefixes in order to perform a prefix string match against a destination's stripped URL.\n17. The method of claim 16, wherein the first method returns results grouped in accordance with history types, favorites types, RSS Feeds and Feed Item types and Typed URL types.\n18. The method of claim 14, wherein the second method does not make changes to one or more query words and utilizes word breaking.\n19. The method of claim 18, wherein the second method returns at results grouped in accordance with history types, favorites types, RSS Feeds and Feed Item types and Typed URL types.\n20. The method of claim 14, wherein the first method strips a query word of protocol prefixes in order to perform a prefix string match against a destination's stripped URL and wherein the second method does not make changes to one or more query words and utilizes word breaking, wherein the first and second methods return results grouped in accordance with history types, favorites types, RSS Feeds and Feed Item types and Typed URL types."
+}

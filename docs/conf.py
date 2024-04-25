@@ -24,7 +24,7 @@ author = "Parker Hancock"
 
 # The full version, including alpha/beta/rc tags
 
-version = release = "4.1.10"
+version = release = "5.0.0"
 
 
 # -- General configuration ---------------------------------------------------
@@ -49,7 +49,6 @@ extensions = [
     "sphinx.ext.githubpages",
     "sphinx.ext.napoleon",  # Google & NumPy Style Autodocs
     "myst_parser",  # Myst-Style Markdown parser
-    "sphinxcontrib.mermaid",  # Mermaid addon for MyST
     "nbsphinx",  # Jupyter Notebook support
     "IPython.sphinxext.ipython_console_highlighting",  # ipython3 lexer
 ]

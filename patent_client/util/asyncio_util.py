@@ -1,45 +1,45 @@
-import asyncio
+import functools
 
 
-def run_sync(coroutine):
-    import nest_asyncio
+class AsyncProxyObject:
+    """
+    Proxy for an async object that ensures the object is awaited and stored.
+    """
 
-    nest_asyncio.apply()
-    try:
-        loop = asyncio.get_running_loop()
-    except RuntimeError:
-        loop = asyncio.new_event_loop()
-    return loop.run_until_complete(coroutine)
+    def __init__(self, coroutine, attr=None, index=None):
+        self._coroutine = coroutine
+        self._object = None
+        self._attr = attr
+        self._index = index
 
+    async def _ensure_object(self):
+        if self._object is None:
+            self._object = await self._coroutine
+        if self._index is not None:
+            return self._object[self._index]
+        elif self._attr is not None:
+            return getattr(self._object, self._attr)
+        return self._object
 
-def run_async_iterator(async_iterator):
-    while True:
-        try:
-            yield run_sync(async_iterator.__anext__())
-        except StopAsyncIteration:
-            break
+    def __getattr__(self, item):
+        return AsyncProxyObject(self._ensure_object(), attr=item)
 
+    def __getitem__(self, item):
+        return AsyncProxyObject(self._ensure_object(), index=item)
 
-def run_sync_decorator(func):
-    def wrapper(*args, **kwargs):
-        return run_sync(func(*args, **kwargs))
-
-    return wrapper
-
-
-def run_sync_iterator_decorator(func):
-    def wrapper(*args, **kwargs):
-        return run_async_iterator(func(*args, **kwargs))
-
-    return wrapper
+    def __await__(self):
+        return self._ensure_object().__await__()
 
 
-class SyncProxy:
-    def __init__(self, async_obj):
-        self.async_obj = async_obj
+def async_proxy(_func=None, *, attr=None):
+    def decorator_async_proxy(func):
+        @functools.wraps(func)
+        def wrapper(*args, **kwargs):
+            return AsyncProxyObject(func(*args, **kwargs), attr=attr)
 
-    def __getattr__(self, name):
-        return run_sync_decorator(getattr(self.async_obj, name))
+        return wrapper
 
-    def __iter__(self):
-        return run_sync_iterator_decorator(self.async_obj.__aiter__())
+    if _func is None:
+        return decorator_async_proxy
+    else:
+        return decorator_async_proxy(_func)

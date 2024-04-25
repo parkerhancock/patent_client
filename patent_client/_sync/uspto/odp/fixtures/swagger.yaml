@@ -1,0 +1,2335 @@
+openapi: 3.0.1
+info:
+  title: Open Data Portal (ODP) API
+  description: The Open Data Portal (ODP) API allows you to extract USPTO data at no cost – with several ways to do it. For more details and steps to generate api key visit to <a href="https://beta-data.uspto.gov/apis/getting-started" target="_blank">API Overview</a><br><br>
+    ODP API requires an API key in order to access resources. Once you have obtained an API key, you can pass the API key into a REST API call in the x-api-key header of the request. For example, the request to access patent data for an application might look like as below.<br><br><code>curl -X 'GET' 'https://beta-api.uspto.gov/api/v1/patent/applications/14412875' -H 'X-API-KEY:YOUR_API_KEY'</code><br><br></br><code>curl -X 'POST' 'https://beta-api.uspto.gov/api/v1/patent/applications/search' -H 'X-API-KEY:YOUR_API_KEY' -d '{"q":"applicationTypeLabelName:Utility"}'</br></code>
+  contact:
+    email: data@uspto.gov
+    url: https://beta-data.uspto.gov/apis/getting-started
+  x-oas-url: https://beta-data.uspto.gov/swagger/swagger.yaml
+  x-product-page-url: https://beta-data.uspto.gov/apis/getting-started
+  x-ipdomain: ["Patent","Common","Trademark"]
+  x-functionality: ["Search"]
+  version: 1.0.0
+servers:
+  - url: https://beta-api.uspto.gov
+security:
+  - ApiKeyAuth: []
+tags:
+  - name: Patent Search
+    description: Search patent data by supplying query parameter or json request. Get data of a specific application or a section of an application
+
+
+paths:
+  /api/v1/patent/applications/search:
+
+    x-ip-domain: Patent
+    x-service-type: ["Search","Dissemination"]
+    x-content-type: Bibliographic data
+    post:
+      tags:
+        - Patent Search
+      summary: Search patent applications by supplying json payload
+      operationId: post_search_patent_applications
+      requestBody:
+        description: Patent data search request json payload. Fields in the request is optional
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatentSearchRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PatentDataResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    example: 400
+                  error:
+                    example: Bad Request
+                  errorDetails:
+                    example: Invalid request, review patent data request filter section and try again
+                  requestIdentifier:
+                    example: 07c5c24d-bf8e-458c-9427-a038500d6e98
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    example: 403
+                  error:
+                    example: Forbidden
+
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    example: 404
+                  error:
+                    example: Not Found
+                  errorDetails:
+                    example: No matching records found, refine your search criteria and try again
+                  requestIdentifier:
+                    example: 07c5c24d-bf8e-458c-9427-a038500d6e98
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    example: 500
+                  error:
+                    example: Internal Server Error
+                  errorDetails:
+                    example: Internal Server Error. Please contact Help Desk.
+                  requestIdentifier:
+                    example: 07c5c24d-bf8e-458c-9427-a038500d6e98
+    get:
+      tags:
+        - Patent Search
+      summary: Patent application search by supplying query parameters
+      description: Query parameters are optional. When no query paramters supplied, top 25 applications are returned
+      operationId: get_search_patent_applications
+      parameters:
+        - name: q
+          in: query
+          description: A search query string which accepts boolean operators (AND, OR, NOT), wildcards (*), and exact phrases ("").
+          allowReserved: true
+          schema:
+            type: string
+          examples:
+            No Search Text:
+              summary: No conditions
+              description: Empty, No conditions
+              value:
+            Exact Phrase:
+              value: Utility
+              description: Search text 'Utility' across the searchable data fields
+            Exact Phrase AND:
+              value: Utility AND Design
+              description: Search text 'Utility' AND 'Design' across all searchable fields within data set
+            Search By Field Value:
+              value: applicationNumberText:14412875
+              description: Search data for application number 14412875
+            Boolean OR:
+              value: inventorBag.inventorNameText:Mark OR applicationTypeLabelName:Design
+              description: Search data where inventorNameText is Mark Or applicationTypeLabelName is Design
+            Boolean AND:
+              value: applicationTypeLabelName:Utility AND applicationStatusCode:150
+              description: Search data where applicationTypeLabelName is both Utility and applicationStatusCode value is 150
+            Wildcard:
+              value: firstApplicantName:Rockwel*
+              description: Search data where firstApplicantName has text Rockwel followed by any character
+            Range:
+              value: filingDate:[2021-08-04 TO 2021-09-04]
+              description: Search data where filidingDate range is between 2020-08-04 TO 2022-08-04
+            Comparison:
+              value: applicationStatusCode:>600
+              description: Search all records where applicationStatusCode is greater than 600
+        - name: sort
+          in: query
+          description: Field to be sorted followed by sort order
+          schema:
+            type: string
+          examples:
+            No Sort:
+              description: No sort option go by default sort
+              value:
+            Ascending:
+              value: filingDate asc
+              description: Sort by filingDate ascending order
+            Descending:
+              value: grantDate desc
+              description: Sort by grantDate descending order
+        - name: offset
+          in: query
+          description: Position in the dataset of a particular record
+          schema:
+            type: integer
+            minimum: 0
+          example: 0
+        - name: limit
+          in: query
+          description: Limit the number of results returned
+          schema:
+            type: integer
+            minimum: 1
+          example: 25
+        - name: facets
+          in: query
+          description: List of fields names to be faceted upon separated by comma (<b>,</b>)
+          schema:
+            type: string
+          examples:
+            No Facets:
+              value:
+              description: No faceting option
+            Facets Example 1:
+              value: applicationTypeCode,docketNumber
+              description: Faceting by applicationTypeCode and docketNumber
+            Facets Example 2:
+              value: publicationCategoryBag,groupArtUnitNumber,applicationStatusCode
+              description: Faceting by publicationCategoryBag, groupArtUnitNumber and applicationStatusCode
+        - name: fields
+          in: query
+          description: Limits the response by specifying which fields from dataset should be included.
+          schema:
+            type: string
+          examples:
+            All Available Data Set Fields:
+              value:
+              description: Returns all available data set fields
+            Selected Fields:
+              value: applicationNumberText,patentNumber,applicationTypeCode
+              description: Include only applicationNumberText,patentNumber,applicationTypeCode in search result
+        - name: filters
+          in: query
+          description: Limits the response by specifying which fields from dataset should be included.
+          schema:
+            type: string
+          examples:
+            No Filter:
+              value:
+              description: No filter
+            Filters Example 1:
+              value: firstInventorToFileIndicator Y
+              description: Filter data where firstInventorToFileIndicator value is Y
+            Filters Example 2:
+              value: smallEntityStatusIndicator true
+              description: Filter data where smallEntityStatusIndicator value is true
+            Filters Single Value:
+              value: filingDate 2023-10-18
+              description: Filter data where filingDate value is 2023-10-18
+            Filters Multi Value:
+              value: applicationTypeCode UTL,DES
+              description: Filter data where applicationTypeCode value is UTL or DES
+        - name: rangeFilters
+          in: query
+          description: Limits the response by specifying which fields from dataset should be included.
+          schema:
+            type: string
+          examples:
+            No Range Filter:
+              value:
+              description: No range filter
+            Date Range Filter:
+              value: grantDate 2010-01-01:2011-01-01
+              description: Filter data where grant date is between 2010-01-01 and 2011-01-01
+            Number Range Filter:
+              value: applicationStatusCode 150:160
+              description: Filter data where grant date is between 2010-01-01 and 2011-01-01
+
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PatentDataResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    example: 400
+                  error:
+                    example: Bad Request
+                  errorDetails:
+                    example: Invalid request, review patent data request filter section and try again
+                  requestIdentifier:
+                    example: 07c5c24d-bf8e-458c-9427-a038500d6e98
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    example: 403
+                  error:
+                    example: Forbidden
+
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    example: 404
+                  error:
+                    example: Not Found
+                  errorDetails:
+                    example: No matching records found, refine your search criteria and try again
+                  requestIdentifier:
+                    example: 07c5c24d-bf8e-458c-9427-a038500d6e98
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    example: 500
+                  error:
+                    example: Internal Server Error
+                  errorDetails:
+                    example: Internal Server Error. Please contact Help Desk.
+                  requestIdentifier:
+                    example: 07c5c24d-bf8e-458c-9427-a038500d6e98
+  /api/v1/patent/applications/search/download:
+    x-ip-domain: Patent
+    x-service-type: ["Search","Dissemination"]
+    x-content-type: Bibliographic data
+    post:
+      tags:
+        - Patent Search
+      summary: Download patent data by supplying json payload
+      operationId: post_download_patent_applications
+      requestBody:
+        description: Patent data search request json payload. Fields in the request is optional
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatentDownloadRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PatentDataResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    example: 400
+                  error:
+                    example: Bad Request
+                  errorDetails:
+                    example: Invalid request, review patent data request filter section and try again
+                  requestIdentifier:
+                    example: 07c5c24d-bf8e-458c-9427-a038500d6e98
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    example: 403
+                  error:
+                    example: Forbidden
+
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    example: 404
+                  error:
+                    example: Not Found
+                  errorDetails:
+                    example: No matching records found, refine your search criteria and try again
+                  requestIdentifier:
+                    example: 07c5c24d-bf8e-458c-9427-a038500d6e98
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    example: 500
+                  error:
+                    example: Internal Server Error
+                  errorDetails:
+                    example: Internal Server Error. Please contact Help Desk.
+                  requestIdentifier:
+                    example: 07c5c24d-bf8e-458c-9427-a038500d6e98
+    get:
+      tags:
+        - Patent Search
+      summary: Patent application search by supplying query parameters
+      description: Query parameters are optional. When no query paramters supplied, top 25 applications are returned
+      operationId: get_download_patent_applications
+      parameters:
+        - name: q
+          in: query
+          description: A search query string which accepts boolean operators (AND, OR, NOT), wildcards (*), and exact phrases ("").
+          allowReserved: true
+          schema:
+            type: string
+          examples:
+            No Search Text:
+              summary: No conditions
+              description: Empty, No conditions
+              value:
+            Exact Phrase:
+              value: Utility
+              description: Search text 'Utility' across the searchable data fields
+            Exact Phrase AND:
+              value: Utility AND Design
+              description: Search text 'Utility' AND 'Design' across all searchable fields within data set
+            Search By Field Value:
+              value: applicationNumberText:14412875
+              description: Search data for application number 14412875
+            Boolean OR:
+              value: inventorBag.inventorNameText:Mark OR applicationTypeLabelName:Design
+              description: Search data where inventorNameText is Mark Or applicationTypeLabelName is Design
+            Boolean AND:
+              value: applicationTypeLabelName:Utility AND applicationStatusCode:150
+              description: Search data where applicationTypeLabelName is both Utility and applicationStatusCode value is 150
+            Wildcard:
+              value: firstApplicantName:Rockwel*
+              description: Search data where firstApplicantName has text Rockwel followed by any character
+            Range:
+              value: filingDate:[2021-08-04 TO 2021-09-04]
+              description: Search data where filidingDate range is between 2020-08-04 TO 2022-08-04
+            Comparison:
+              value: applicationStatusCode:>600
+              description: Search all records where applicationStatusCode is greater than 600
+        - name: sort
+          in: query
+          description: field to be sorted followed by sort order
+          schema:
+            type: string
+          examples:
+            No Sort:
+              description: No sort option go by default sort
+              value:
+            Ascending:
+              value: filingDate asc
+              description: Sort by filingDate ascending order
+            Descending:
+              value: grantDate desc
+              description: Sort by grantDate descending order
+        - name: offset
+          in: query
+          description: Page number to begin with
+          schema:
+            type: integer
+            minimum: 0
+          example: 0
+        - name: limit
+          in: query
+          description: Limit the number of results returned
+          schema:
+            type: integer
+            minimum: 1
+          example: 25
+        - name: fields
+          in: query
+          description: Limits the response by specifying fields from dataset should be included.
+          schema:
+            type: string
+          examples:
+            All Fields:
+              value:
+              description: Returns all available data set fields
+            Include Fields:
+              value: applicationNumberText,patentNumber,applicationTypeCode
+              description: Include only applicationNumberText,patentNumber,applicationTypeCode in search result
+
+        - name: filters
+          in: query
+          description: Filter data by suppying filter paramter. Provide field name and its value
+          schema:
+            type: string
+          examples:
+            No Filter:
+              value:
+              description: No filter
+            Filters Example 1:
+              value: firstInventorToFileIndicator Y
+              description: Filter data where firstInventorToFileIndicator value is Y
+            Filters Example 2:
+              value: smallEntityStatusIndicator true
+              description: Filter data where smallEntityStatusIndicator value is true
+            Filters Single Value:
+              value: filingDate 2023-10-18
+              description: Filter data where filingDate value is 2023-10-18
+            Filters Multi Value:
+              value: applicationTypeCode UTL,DES
+              description: Filter data where applicationTypeCode value is UTL or DES
+        - name: rangeFilters
+          in: query
+          description: Limits the response by specifying which fields from dataset should be included.
+          schema:
+            type: string
+          examples:
+            No Range Filter:
+              value:
+              description: No range filter
+            Date Range Filter:
+              value: grantDate 2010-01-01:2011-01-01
+              description: Filter data where grant date is between 2010-01-01 and 2011-01-01
+            Number Range Filter:
+              value: applicationStatusCode 150:160
+              description: Filter data where grant date is between 2010-01-01 and 2011-01-01
+        - name: format
+          in: query
+          description: Download Format
+          schema:
+            type: string
+          examples:
+            json:
+              value: json
+            csv:
+              value: csv
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PatentDataResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    example: 400
+                  error:
+                    example: Bad Request
+                  errorDetails:
+                    example: Invalid request, review patent data request filter section and try again
+                  requestIdentifier:
+                    example: 07c5c24d-bf8e-458c-9427-a038500d6e98
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                properties:
+                  message:
+                    example: Forbidden
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    example: 404
+                  error:
+                    example: Not Found
+                  errorDetails:
+                    example: No matching records found, refine your search criteria and try again
+                  requestIdentifier:
+                    example: 07c5c24d-bf8e-458c-9427-a038500d6e98
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    example: 500
+                  error:
+                    example: Internal Server Error
+                  errorDetails:
+                    example: Internal Server Error. Please contact Help Desk.
+                  requestIdentifier:
+                    example: 07c5c24d-bf8e-458c-9427-a038500d6e98
+  /api/v1/patent/applications/{applicationNumberText}:
+    x-ip-domain: Patent
+    x-service-type: Dissemination
+    x-content-type: Bibliographic data
+    get:
+      tags:
+        - Patent Search
+      summary: Patent application data for a provided application number
+      operationId: get_patent_application_data
+      parameters:
+        - name: applicationNumberText
+          in: path
+          description: Patent application number. <b>Note</b>:Application number having special character e.g PCT/BR00/000001 must be encoded with UTF-8 character encoding standard
+          schema:
+            type: string
+          required: true
+          examples:
+            first:
+              value: 14412875
+              summary: Application Number
+              description: Application Number
+            second:
+              value: PCT%2fUS07%2f19317
+              summary: International Application Number
+              description: International Application Number
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PatentDataResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    example: 400
+                  error:
+                    example: Bad Request
+                  errorDetails:
+                    example: Invalid request, review patent data request filter section and try again
+                  requestIdentifier:
+                    example: 07c5c24d-bf8e-458c-9427-a038500d6e98
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    example: 403
+                  error:
+                    example: Forbidden
+
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    example: 404
+                  error:
+                    example: Not Found
+                  errorDetails:
+                    example: No matching records found, refine your search criteria and try again
+                  requestIdentifier:
+                    example: 07c5c24d-bf8e-458c-9427-a038500d6e98
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    example: 500
+                  error:
+                    example: Internal Server Error
+                  errorDetailed:
+                    example: Internal Server Error. Please contact Help Desk.
+                  requestIdentifier:
+                    example: 07c5c24d-bf8e-458c-9427-a038500d6e98
+  /api/v1/patent/applications/{applicationNumberText}/application-data:
+    x-ip-domain: Patent
+    x-service-type: Dissemination
+    x-content-type: Bibliographic data
+    get:
+      tags:
+        - Patent Search
+      summary: Get patent application-data
+      operationId: get_patent_basic_application_data
+      parameters:
+        - name: applicationNumberText
+          in: path
+          required: true
+          description: Patent application number
+          schema:
+            type: string
+          example: 16330077
+      responses:
+        '200':
+          description: Application data section
+          content:
+            application/json:
+              schema:
+                properties:
+                  count:
+                    example: 1
+                  patentBag:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        firstInventorToFileIndicator:
+                          example: Y
+                        filingDate:
+                          type: string
+                          example: 2019-03-01
+                        inventorBag:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              firstName:
+                                example: Beate
+                              lastName:
+                                example: BÖHME
+                              inventorNameText:
+                                example: Beate BÖHME
+                              partyIdentifier:
+                                type: string
+                                example: 69548620
+                              correspondenceAddressBag:
+                                type: array
+                                items:
+                                  type: object
+                                  properties:
+                                    cityName:
+                                      example: Großpürschütz
+                                    countryCode:
+                                      example: DE
+                                    nameLineOneText:
+                                      example: BÖHME, Beate
+                                    countryName:
+                                      example: GERMANY
+                                    postalAddressCategory:
+                                      example: residence
+                        applicationStatusDescriptionText:
+                          example: Patented Case
+                        businessEntityStatusCategory:
+                          example: Regular Undiscounted
+                        patentNumber:
+                          type: string
+                          example: 11759105
+                        grantDate:
+                          type: string
+                          example: 2023-09-18
+                        wipoReferenceNumber:
+                          type: string
+                          example: WO 2019/040939
+                        pctPublicationDate:
+                          type: string
+                          example: 2019-02-28
+                        internationalRegistrationPublicationDate:
+                          type: string
+                          example: 2017-08-25
+                        internationalRegistrationNumber:
+                          type: string
+                          example: DM/095000
+                        firstApplicantName:
+                          example: Carl Zeiss Meditec AG
+                        customerNumber:
+                          example: 25005
+                        groupArtUnitNumber:
+                          type: string
+                          example: 2481
+                        applicationNumberText:
+                          type: string
+                          example: 16330077
+                        earliestPublicationNumber:
+                          example: US 2019-0223715 A1
+                        inventionTitle:
+                          example: ILLUMINATING SYSTEM FOR DETERMINING THE TOPOGRAPHY OF THE CORNEA OF AN EYE
+                        correspondenceAddressBag:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              cityName:
+                                example: Brookfield
+                              geographicRegionName:
+                                example: WISCONSIN
+                              geographicRegionCode:
+                                example: WI
+                              countryCode:
+                                example: US
+                              postalCode:
+                                type: string
+                                example: 53005
+                              nameLineOneText:
+                                example: DeWitt LLP
+                              nameLineTwoText:
+                                example: Intellectual Property Department
+                              countryName:
+                                example: UNITED STATES
+                              addressLineOneText:
+                                example: 13845 Bishop's Drive
+                              addressLineTwoText:
+                                example: Suite 300
+                              firstInventorName:
+                                example: Beate BÖHME
+                              postalAddressCategory:
+                                example:
+                        cpcClassificationBag:
+                          type: array
+                          items:
+                            type: string
+                            example: ['A61B3/107','A61B3/0008','G01B11/25']
+                        applicationConfirmationNumber:
+                          example: 5169
+                        examinerNameText:
+                          example: HESS, MICHAEL J
+                        earliestPublicationDate:
+                          type: string
+                          example: 2019-07-24
+                        applicationTypeLabelName:
+                          example: Utility
+                        publicationCategoryBag:
+                          type: array
+                          items:
+                            type: string
+                            example: ['Granted/Issued','Pre-Grant Publications - PGPub']
+                        applicationStatusDate:
+                          type: string
+                          example: 2023-08-30
+                        docketNumber:
+                          type: string
+                          example: 104628.0009
+                  requestIdentifier:
+                    example: 0ff4c603-a290-4659-8092-f68b408150c4
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    example: 400
+                  error:
+                    example: Bad Request
+                  errorDetails:
+                    example: Invalid request, review patent data request filter section and try again
+                  requestIdentifier:
+                    example: 07c5c24d-bf8e-458c-9427-a038500d6e98
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    example: 403
+                  error:
+                    example: Forbidden
+
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    example: 404
+                  error:
+                    example: Not Found
+                  errorDetails:
+                    example: No matching records found, refine your search criteria and try again
+                  requestIdentifier:
+                    example: 07c5c24d-bf8e-458c-9427-a038500d6e98
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    example: 500
+                  error:
+                    example: Internal Server Error
+                  errorDetails:
+                    example: Internal Server Error. Please contact Help Desk.
+                  requestIdentifier:
+                    example: 07c5c24d-bf8e-458c-9427-a038500d6e98
+  /api/v1/patent/applications/{applicationNumberText}/adjustment:
+    x-ip-domain: Patent
+    x-service-type: Dissemination
+    x-content-type: Bibliographic data
+    get:
+      tags:
+        - Patent Search
+      summary: Get patent term adjustment data for an application number
+      operationId: get_patent_term_adjustment_data
+      parameters:
+        - name: applicationNumberText
+          in: path
+          required: true
+          description: Patent application number
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  count:
+                    type: integer
+                    example: 1
+                  patentBag:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        patentTermAdjustmentData:
+                          $ref: '#/components/schemas/PatentTermAdjustment'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    example: 400
+                  error:
+                    example: Bad Request
+                  errorDetails:
+                    example: Invalid request, review patent data request filter section and try again
+                  requestIdentifier:
+                    example: 07c5c24d-bf8e-458c-9427-a038500d6e98
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    example: 403
+                  error:
+                    example: Forbidden
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    example: 404
+                  error:
+                    example: Not Found
+                  errorDetails:
+                    example: No matching records found, refine your search criteria and try again
+                  requestIdentifier:
+                    example: 07c5c24d-bf8e-458c-9427-a038500d6e98
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    example: 500
+                  error:
+                    example: Internal Server Error
+                  errorDetails:
+                    example: Internal Server Error. Please contact Help Desk.
+                  requestIdentifier:
+                    example: 07c5c24d-bf8e-458c-9427-a038500d6e98
+
+
+
+  /api/v1/patent/applications/{applicationNumberText}/assignment:
+    x-ip-domain: Patent
+    x-service-type: Dissemination
+    x-content-type: Bibliographic data
+    get:
+      tags:
+        - Patent Search
+      summary: Get patent assignment data for an application number
+      operationId: get_patent_assignment_data
+      parameters:
+        - name: applicationNumberText
+          in: path
+          required: true
+          description: Patent application number
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  count:
+                    type: integer
+                    example: 1
+                  patentBag:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        assignmentBag:
+                          $ref: '#/components/schemas/Assignment'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    example: 400
+                  error:
+                    example: Bad Request
+                  errorDetails:
+                    example: Invalid request, review patent data request filter section and try again
+                  requestIdentifier:
+                    example: 07c5c24d-bf8e-458c-9427-a038500d6e98
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    example: 403
+                  error:
+                    example: Forbidden
+
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    example: 404
+                  error:
+                    example: Not Found
+                  errorDetails:
+                    example: No matching records found, refine your search criteria and try again
+                  requestIdentifier:
+                    example: 07c5c24d-bf8e-458c-9427-a038500d6e98
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    example: 500
+                  error:
+                    example: Internal Server Error
+                  errorDetails:
+                    example: Internal Server Error. Please contact Help Desk.
+                  requestIdentifier:
+                    example: 07c5c24d-bf8e-458c-9427-a038500d6e98
+
+
+  /api/v1/patent/applications/{applicationNumberText}/attorney:
+    x-ip-domain: Patent
+    x-service-type: Dissemination
+    x-content-type: Bibliographic data
+    get:
+      tags:
+        - Patent Search
+      summary: Get attorney/agent data for an application number
+      operationId: get_patent_attorney_data
+      parameters:
+        - name: applicationNumberText
+          in: path
+          required: true
+          description: Patent application number
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  count:
+                    type: integer
+                    example: 1
+                  patentBag:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        recordAttorney:
+                          $ref: '#/components/schemas/Attorney'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    example: 400
+                  error:
+                    example: Bad Request
+                  errorDetails:
+                    example: Invalid request, review patent data request filter section and try again
+                  requestIdentifier:
+                    example: 07c5c24d-bf8e-458c-9427-a038500d6e98
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    example: 403
+                  error:
+                    example: Forbidden
+
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    example: 404
+                  error:
+                    example: Not Found
+                  errorDetails:
+                    example: No matching records found, refine your search criteria and try again
+                  requestIdentifier:
+                    example: 07c5c24d-bf8e-458c-9427-a038500d6e98
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    example: 500
+                  error:
+                    example: Internal Server Error
+                  errorDetails:
+                    example: Internal Server Error. Please contact Help Desk.
+                  requestIdentifier:
+                    example: 07c5c24d-bf8e-458c-9427-a038500d6e98
+
+
+
+  /api/v1/patent/applications/{applicationNumberText}/continuity:
+    x-ip-domain: Patent
+    x-service-type: Dissemination
+    x-content-type: Bibliographic data
+    get:
+      tags:
+        - Patent Search
+      summary: Get continuity data for an application number
+      operationId: get_patent_continuity_data
+      parameters:
+        - name: applicationNumberText
+          in: path
+          required: true
+          description: Patent application number
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  count:
+                    type: integer
+                    example: 1
+                  patentBag:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        continuityBag:
+                          type: array
+                          items:
+                            $ref: '#/components/schemas/ContinuityData'
+
+  /api/v1/patent/applications/{applicationNumberText}/foreign-priority:
+    x-ip-domain: Patent
+    x-service-type: Dissemination
+    x-content-type: Bibliographic data
+    get:
+      tags:
+        - Patent Search
+      summary: Get foreign-priority data for an application number
+      operationId: get_patent_foreign_priority_data
+      parameters:
+        - name: applicationNumberText
+          in: path
+          required: true
+          description: Patent application number
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  count:
+                    type: integer
+                    example: 1
+                  patentBag:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        foreignPriorityBag:
+                          type: array
+                          items:
+                            $ref: '#/components/schemas/ForeignPriority'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    example: 400
+                  error:
+                    example: Bad Request
+                  errorDetails:
+                    example: Invalid request, review patent data request filter section and try again
+                  requestIdentifier:
+                    example: 07c5c24d-bf8e-458c-9427-a038500d6e98
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    example: 403
+                  error:
+                    example: Forbidden
+
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    example: 404
+                  error:
+                    example: Not Found
+                  errorDetails:
+                    example: No matching records found, refine your search criteria and try again
+                  requestIdentifier:
+                    example: 07c5c24d-bf8e-458c-9427-a038500d6e98
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    example: 500
+                  error:
+                    example: Internal Server Error
+                  errorDetails:
+                    example: Internal Server Error. Please contact Help Desk.
+                  requestIdentifier:
+                    example: 07c5c24d-bf8e-458c-9427-a038500d6e98
+
+
+  /api/v1/patent/applications/{applicationNumberText}/transactions:
+    x-ip-domain: Patent
+    x-service-type: Dissemination
+    x-content-type: Bibliographic data
+    get:
+      tags:
+        - Patent Search
+      summary: Get transaction data for an application number
+      operationId: get_patent_transaction_data
+      parameters:
+        - name: applicationNumberText
+          in: path
+          required: true
+          description: Patent application number
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  count:
+                    type: integer
+                    example: 1
+                  patentBag:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        transactionContentBag:
+                          type: array
+                          items:
+                            $ref: '#/components/schemas/TransactionContent'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    example: 400
+                  error:
+                    example: Bad Request
+                  errorDetails:
+                    example: Invalid request, review patent data request filter section and try again
+                  requestIdentifier:
+                    example: 07c5c24d-bf8e-458c-9427-a038500d6e98
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    example: 403
+                  error:
+                    example: Forbidden
+
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    example: 404
+                  error:
+                    example: Not Found
+                  errorDetails:
+                    example: No matching records found, refine your search criteria and try again
+                  requestIdentifier:
+                    example: 07c5c24d-bf8e-458c-9427-a038500d6e98
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    example: 500
+                  error:
+                    example: Internal Server Error
+                  errorDetails:
+                    example: Internal Server Error. Please contact Help Desk.
+                  requestIdentifier:
+                    example: 07c5c24d-bf8e-458c-9427-a038500d6e98
+
+
+  /api/v1/patent/applications/{applicationNumberText}/documents:
+    x-ip-domain: Patent
+    x-service-type: Dissemination
+    x-content-type: Bibliographic data
+    get:
+      tags:
+        - Patent Search
+      summary: Documents details for an application number
+      operationId: get_patent_document_data
+      parameters:
+        - name: applicationNumberText
+          in: path
+          required: true
+          description: application number
+          schema:
+            type: string
+            example: 16330077
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DocumentBag'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    example: 400
+                  error:
+                    example: Bad Request
+                  errorDetails:
+                    example: Invalid request, review patent data request filter section and try again
+                  requestIdentifier:
+                    example: 07c5c24d-bf8e-458c-9427-a038500d6e98
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    example: 403
+                  error:
+                    example: Forbidden
+
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    example: 404
+                  error:
+                    example: Not Found
+                  errorDetails:
+                    example: No matching records found, refine your search criteria and try again
+                  requestIdentifier:
+                    example: 07c5c24d-bf8e-458c-9427-a038500d6e98
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                properties:
+                  code:
+                    example: 500
+                  error:
+                    example: Internal Server Error
+                  errorDetails:
+                    example: Internal Server Error. Please contact Help Desk.
+                  requestIdentifier:
+                    example: 07c5c24d-bf8e-458c-9427-a038500d6e98
+
+
+
+components:
+
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-KEY
+
+  schemas:
+    PatentSearchRequest:
+      type: object
+      properties:
+        q:
+          type: string
+          example: "applicationTypeLabelName:Utility"
+          description: Search by field value or pass opensearch string query syntax
+        filters:
+          type: array
+          items:
+            $ref: '#/components/schemas/Filter'
+        rangeFilters:
+          type: array
+          items:
+            $ref: '#/components/schemas/Range'
+        sort:
+          type: array
+          items:
+            $ref: '#/components/schemas/Sort'
+        fields:
+          type: array
+          items:
+            type: string
+          example: ['applicationNumberText','correspondenceAddressBag','filingDate']
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        facets:
+          type: array
+          items:
+            type: string
+          example: ['applicationTypeLabelName','applicationStatusCode']
+
+    PatentDownloadRequest:
+      type: object
+      properties:
+        q:
+          type: string
+          example: "applicationTypeLabelName:Utility"
+          description: Search by field value or pass opensearch string query syntax
+        filters:
+          type: array
+          items:
+            $ref: '#/components/schemas/Filter'
+        rangeFilters:
+          type: array
+          items:
+            $ref: '#/components/schemas/Range'
+        sort:
+          type: array
+          items:
+            $ref: '#/components/schemas/Sort'
+        fields:
+          type: array
+          items:
+            type: string
+          example: ['applicationNumberText','correspondenceAddressBag','filingDate']
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        format:
+          type: string
+          example: json
+          enum: [json, csv]
+          description: Download format. csv or json
+
+    PatentDataResponse:
+      type: object
+      description: This json structure represents all data fields possible for a patent application. Not all fields mentioned here will be returned in API response, only fields that have data should present in the response.
+      properties:
+        count:
+          type: integer
+          example: 1
+        patentBag:
+          type: array
+          items:
+            type: object
+            properties:
+              applicationNumberText:
+                type: string
+                example: 14104993
+                description: Free format of application number
+              nationalStageIndicator:
+                type: boolean
+              smallEntityStatusIndicator:
+                type: boolean
+              publicationDataBag:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    publicationDate:
+                      type: string
+                      format: "yyyy-MM-dd"
+                      example: 2014-06-19
+                    publicationCategory:
+                      type: string
+                      example: ["Granted/Issued","Pre-Grant Publications - PGPub"]
+
+              docketNumber:
+                type: string
+                example: 12GR10425US01/859063.688
+              firstInventorToFileIndicator:
+                type: string
+                example: Y
+              firstApplicantName:
+                type: string
+                example: STMicroelectronics S.A.
+              firstInventorName:
+                type: string
+                example: Pascal Chevalier
+              applicationConfirmationNumber:
+                type: string
+                example: 1061
+              applicationStatusDate:
+                type: "string"
+                format: "yyyy-MM-dd"
+                example: 2016-05-18
+              applicationStatusDescriptionText:
+                type: string
+                example: Patented Case
+              filingDate:
+                type: string
+                format: "yyyy-MM-dd"
+                example: 2012-12-19
+                description: The date assigned by the Patent Office that identifies when an application meets certain criteria to qualify as having been filed. Refers to ST.9 INID Code 22.
+              effectiveFilingDate:
+                type: string
+                format: "yyyy-MM-dd"
+                example: 2013-12-12
+                description: The date according to PTO criteria that the patent case qualified as having been 'filed'.  The effective filing date is the same or later than the Filing Date.  The filing date can be changed due to a subsequent action on an application patent case.
+              grantDate:
+                type: string
+                format: "yyyy-MM-dd"
+                example: 2016-06-07
+              groupArtUnitNumber:
+                type: integer
+                example: 2895
+                description: GAU Code
+              applicationTypeCode:
+                type: string
+                example: UTL
+              applicationTypeLabelName:
+                type: string
+                example: Utility
+              applicationTypeCategory:
+                type: string
+                example: electronics
+              inventionTitle:
+                type: string
+                example: HETEROJUNCTION BIPOLAR TRANSISTOR
+              patentNumber:
+                type: string
+                example: 9362380
+              applicationStatusCode:
+                type: integer
+                example: 150
+              businessEntityStatusCategory:
+                type: string
+                example: Undiscounted
+                description: Status of business entity being established for the purpose of paying a fee such as a filing fee and a maintenance fee
+              earliestPublicationNumber:
+                type: string
+                example: US 2014-0167116 A1
+              earliestPublicationDate:
+                type: string
+                format: "yyyy-MM-dd"
+                example: 2014-06-19
+              publicationSequenceNumberBag:
+                type: array
+                items:
+                  type: string
+                  example: 0167116
+              wipoReferenceNumber:
+                type: string
+                example: WO 2009/064413
+                description: 10 digit number that appears in the notification that appear as part of the WIPO reference number. Add `pattern:` Pattern to allow for 9 digit or 10 digit numeric values. Blank for the 10th position if total length is 9.
+              pctPublicationDate:
+                type: string
+                format: "yyyy-MM-dd"
+                example: 2016-12-16
+              internationalRegistrationPublicationDate:
+                type: string
+                format: "yyyy-MM-dd"
+                example: 2016-12-16
+                description: The date that the IPR is published by the International Bureau
+              internationalRegistrationNumber:
+                type: string
+                example: DM/091304
+                description: The number assigned by the International Bureau to an international registration upon registering an industrial design, a trademark or other type of IPR in the International Register
+              examinerNameText:
+                type: string
+                example: HUI TSAI JEY
+              partyIdentifier:
+                type: string
+                example: 71109
+                description: Identifier for party
+              class:
+                type: string
+                example: 257
+                description: The second hierarchical level in the classification scheme
+              subclass:
+                type: string
+                example: 197000
+                description: The third highest hierarchical level in the classification scheme
+              class/subclass:
+                type: string
+                example: 257/197000
+              correspondenceAddressBag:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    nameLineOneText:
+                      type: string
+                      example: Seed IP Law Group LLP/ST (EP ORIGINATING)
+                    nameLineTwoText:
+                      type: string
+                      example: Attn- IP Docket
+                    addressLineOneText:
+                      type: string
+                      example: 701 FIFTH AVENUE, SUITE 5400
+                    addressLineTwoText:
+                      type: string
+                      example: Suite 501
+                    geographicRegionName:
+                      type: string
+                      example: WASHINGTON
+                    geographicRegionCode:
+                      type: string
+                      example: WA
+                    postalCode:
+                      type: string
+                      example: 98104-7092
+                    cityName:
+                      type: string
+                      example: SEATTLE
+                    countryCode:
+                      type: string
+                      example: US
+                    countryName:
+                      type: string
+                      example: USA
+                    postalAddressCategory:
+                      type: string
+                      example: commercial
+                description: Collection of correspondences
+              customerNumber:
+                type: integer
+                example: 38106
+                description: Correspondence customer number
+              cpcClassificationBag:
+                type: array
+                items:
+                  type: string
+                example: [H01L29/66325,H01L27/0623,H01L29/7378,H01L21/8249,H01L29/737,H01L29/66242]
+                description: Collection of Classifications for CPC
+              applicantBag:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    partyIdentifier:
+                      type: string
+                      example: 23030abcd
+                    firstName:
+                      type: string
+                      example: John
+                    middleName:
+                      type: string
+                      example: P
+                    lastName:
+                      type: string
+                      example: Smith
+                    preferredName:
+                      type: string
+                      example: John Smith
+                    namePrefix:
+                      type: string
+                      example: Mr.
+                    nameSuffix:
+                      type: string
+                      example: Jr.
+                    countryCode:
+                      type: string
+                      example: US
+                    correspondenceAddressBag:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          nameLineOneText:
+                            type: string
+                            example: STMicroelectronics S.A.
+                          nameLineTwoText:
+                            type: string
+                            example: Name Line Two
+                          addressLineOneText:
+                            type: string
+                            example: Address Line 1
+                          addressLineTwoText:
+                            type: string
+                            example: Address Line 2
+                          geographicRegionName:
+                            type: string
+                            example: MN
+                          geographicRegionCode:
+                            type: string
+                            example: Region Code
+                          postalCode:
+                            type: string
+                            example: 10012
+                          cityName:
+                            type: string
+                            example: Montrouge
+                          countryCode:
+                            type: string
+                            example: FR
+                          countryName:
+                            type: string
+                            example: FRANCE
+                          postalAddressCategory:
+                            type: string
+                            example: commmercial
+                    applicant:
+                      type: string
+                      example: John Smith
+              inventorBag:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    partyIdentifier:
+                      type: string
+                      example: 2345
+                    firstName:
+                      type: string
+                      example: John
+                    middleName:
+                      type: string
+                      example: K
+                    lastName:
+                      type: string
+                      example: Smith
+                    namePrefix:
+                      type: string
+                      example: Mr.
+                    nameSuffix:
+                      type: string
+                      example: Sr.
+                    preferredName:
+                      type: string
+                      example: John Smith
+                    countryCode:
+                      type: string
+                      example: US
+                    inventorNameText:
+                      type: string
+                      example: Pascal Chevalier
+                    correspondenceAddressBag:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          nameLineOneText:
+                            type: string
+                            example: Pascal  Chevalier
+                          nameLineTwoText:
+                            type: string
+                            example: Name Two
+                          addressLineOneText:
+                            type: string
+                            example: 197 Chemin de la Meuniere
+                          addressLineTwoText:
+                            type: string
+                            example: Line Two
+                          geographicRegionName:
+                            type: string
+                            example: Region Name
+                          geographicRegionCode:
+                            type: string
+                            example: FR
+                          postalCode:
+                            type: string
+                            example: 20125
+                          cityName:
+                            type: string
+                            example: Chapareillan
+                          countryCode:
+                            type: string
+                            example: FR
+                          countryName:
+                            type: string
+                            example: FRANCE
+                          postalAddressCategory:
+                            type: string
+                            example: commercial
+              assignmentBag:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Assignment'
+              recordAttorney:
+                $ref: '#/components/schemas/Attorney'
+              foreignPriorityBag:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ForeignPriority'
+              continuityBag:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ContinuityData'
+              patentTermAdjustmentData:
+                $ref: '#/components/schemas/PatentTermAdjustment'
+              transactionContentBag:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TransactionContent'
+        facets:
+          type: array
+          items:
+            type: object
+            properties:
+              applicationStatusCode:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    value:
+                      type: string
+                      example: Utility
+                    count:
+                      type: integer
+                      example: 44673
+    DocumentBag:
+      type: object
+      properties:
+        documentBag:
+          type: array
+          items:
+            properties:
+              applicationNumberText:
+                type: string
+                example: 16123123
+              officialDate:
+                type: string
+                example: 2020-08-31T01:20:29.000-0400
+              documentIdentifier:
+                type: string
+                example: LDXBTPQ7XBLUEX3
+              documentCode:
+                type: string
+                example: WFEE
+              documentCodeDescriptionText:
+                type: string
+                example: Fee Worksheet (SB06)
+              directionCategory:
+                type: string
+                example: INTERNAL
+              downloadOptionBag:
+                type: array
+                items:
+                  properties:
+                    mimeTypeIdentifier:
+                      type: string
+                      example: PDF
+                    downloadURI:
+                      type: string
+                      example: https://beta-api.uspto.gov/api/v1/patent/application/documents/16123123/LDXBTPQ7XBLUEX3.pdf
+                    pageTotalQuantity:
+                      type: integer
+                      example: 2
+
+    Filter:
+      type: object
+      description: Add filters to your search request by providing filter name and filter value where name in filter request some field in data set.
+      properties:
+        name:
+          type: string
+          example: applicationStatusDescriptionText
+        value:
+          type: array
+          items:
+            type: string
+            example: Patented Case
+
+    Range:
+      type: object
+      description: Range filter. Provide field from dataset and valueFrom and valueTo. If range filter is for date field, date must be in “yyyy-MM-dd” format
+      properties:
+        field:
+          type: string
+          example: grantDate
+        valueFrom:
+          type: string
+          example: 2010-08-04
+        valueTo:
+          type: string
+          example: 2022-08-04
+
+    Sort:
+      type: object
+      description: Sort you search result by providing field to be sorted and sort order
+      properties:
+        field:
+          type: string
+          format: '123456789'
+          example: filingDate
+        order:
+          type: string
+          description: Sort order. e.g. Asc, ASC, Desc, desc, DESC
+          example: desc
+          enum: [Asc, asc, Desc, desc]
+    Pagination:
+      type: object
+      description: Pagination information.
+      properties:
+        offset:
+          type: integer
+          format: int32
+          minimum: 0
+          example: 0
+          default: 0
+          description: Start
+        limit:
+          type: integer
+          format: int32
+          minimum: 1
+          default: 25
+          example: 25
+          description: Maximum number of patent records to be returned in response
+
+    PatentTermAdjustment:
+      type: object
+      description: Patent term adjustment data
+      properties:
+        aDelayQuantity:
+          type: number
+          format: float
+          example: 0
+          description: A delays quantity number of adjustments to the term of the patent based upon USPTO delays included in the PTA determination that is mailed as part of the ISSUE NOTIFICATION LETTER.
+        adjustmentTotalQuantity:
+          type: number
+          format: float
+          example: 0
+          description: Patent term adjustment total quantity number that is a summation of NONOVERLAPPING USPTO DELAYS (+/- PTO MANUAL ADJUSTMENTS) - APPLICANT DELAYS.
+        applicantDayDelayQuantity:
+          type: number
+          format: float
+          example: 28
+          description: Patent term adjustment applicant delays quantity number of the patent term due to the Applicant's failure to engage in reasonable efforts to conclude prosecution of the application for the cumulative period in excess of three
+        bDelayQuantity:
+          type: number
+          format: float
+          example: 0
+          description: B delays quantity number of adjustments to the term of the patent based upon the patent failing to issue within three years of the actual filing date of the application at the time that the issue notification letter is generated and an issue date has been established.
+        cDelayQuantity:
+          type: number
+          format: float
+          example: 0
+          description: C delays quantity number of adjustments to the term of the patent based upon USPTO delays caused by interference proceedings, secrecy orders, and successful appellate reviews.
+        filingDate:
+          type: string
+          format: "yyyy-MM-dd"
+          example: 2013-12-12
+          description: The date assigned by the Patent Office that identifies when an application meets certain criteria to qualify as having been filed. Refers to ST.9 INID Code 22.
+        grantDate:
+          type: string
+          format: "yyyy-MM-dd"
+          example: 2016-06-07
+        nonOverlappingDayQuantity:
+          type: number
+          format: float
+          example: 0
+          description: Patent term adjustment non overlapping days quantity number of overall summation of the USPTO delays minus any overlapping days.
+        overlappingDayQuantity:
+          type: number
+          format: float
+          example: 0
+          description: Patent term adjustment overlapping days quantity number that reflects the calculation of overlapping delays consistent with the federal circuit's interpretation.
+        ipOfficeDayDelayQuantity:
+          type: number
+          format: float
+          example: 0
+          description: Number of days the UPSTO personnel adjusting the calculation to increase or decrease the patent term adjustment based upon a request for reconsideration of the patent term adjustment.
+        patentTermAdjustmentHistoryDataBag:
+          type: array
+          items:
+            type: object
+            properties:
+              actionDate:
+                type: string
+                format: "yyyy-MM-dd"
+                example: 2016-06-07
+                description: The date that the symbol was assigned to the patent document
+              applicantDays:
+                type: number
+                format: float
+                example: 4
+              caseActionDescriptionText:
+                type: string
+                example: Patent Issue Date Used in PTA Calculation
+              caseActionSequenceNumber:
+                type: number
+                format: float
+                example: 65
+              ipOfficeDayDelayQuantity:
+                type: number
+                format: float
+                example: 0
+                description: Number of days the UPSTO personnel adjusting the calculation to increase or decrease the patent term adjustment based upon a request for reconsideration of the patent term adjustment.
+              startSequenceNumber:
+                type: number
+                format: float
+                example: 0
+
+
+    ContinuityData:
+      type: object
+      properties:
+        prentContinuityBag:
+          type: array
+          items:
+            type: object
+            properties:
+              aiaIndicator:
+                type: boolean
+                example: true
+                description: Indicates first inventor to file.
+              applicationStatusCode:
+                type: integer
+                example: 159
+              patentNumber:
+                type: string
+                example: 8968299
+              applicationStatusDescriptionText:
+                type: string
+                example: Patent Expired Due to NonPayment of Maintenance Fees Under 37 CFR 1.362
+              filingDate:
+                type: string
+                format: "yyyy-MM-dd"
+                example: 2012-05-23
+              parentApplicationNumberText:
+                type: string
+                example: 123123133
+              childApplicationNumberText:
+                type: string
+              claimParentageTypeCode:
+                type: string
+                example: CODE
+              claimParentageTypeCodeDescription:
+                type: string
+                example: some description
+        childContinuityBag:
+          type: array
+          items:
+            type: object
+            properties:
+              applicationStatusCode:
+                type: number
+                example: 150
+              parentApplicationNumberText:
+                type: string
+                example: 14104993
+              childApplicationNumberText:
+                type: string
+                example: 14853719
+              applicationStatusDescriptionText:
+                type: string
+                example: Patented Case
+              filingDate:
+                type: string
+                format: "yyyy-MM-dd"
+                example: 2015-09-14
+              aiaIndicator:
+                type: boolean
+                example: false
+              patentNumber:
+                type: string
+                example: 9704967
+              claimParentageTypeCode:
+                type: string
+                example: DIV
+              claimParentageTypeCodeDescription:
+                type: string
+                example: some desc
+
+    ForeignPriority:
+      type: object
+      properties:
+        countryName:
+          type: string
+          example: FRANCE
+        filingDate:
+          type: string
+          format: "yyyy-MM-dd"
+          example: 2012-12-19
+        priorityNumberText:
+          type: string
+          example: 1262321
+
+    Assignment:
+      type: object
+      properties:
+        reelNumber:
+          type: string
+          example: 60620
+          description: 1-6 digit number identifies the reel number to be used to locate the assignment on microfilm.
+        frameNumber:
+          type: string
+          example: 769
+          description: 1-4 digit number that identifies the frame number to be used to locate the first image(page) of the assignment on microfilm.
+        reelNumber/frameNumber:
+          type: string
+          example: 60620/769
+        pageNumber:
+          type: integer
+          example: 16
+        assignmentReceivedDate:
+          type: string
+          format: "yyyy-MM-dd"
+          example: 2022-07-11
+        assignmentRecordedDate:
+          type: string
+          format: "yyyy-MM-dd"
+          example: 2022-07-11
+        assignmentMailedDate:
+          type: string
+          format: "yyyy-MM-dd"
+          example: 2022-07-28
+          description: The date an assignment request was mailed to the office or received by the office
+        conveyanceText:
+          type: string
+          example: ASSIGNMENT OF ASSIGNORS INTEREST (SEE DOCUMENT FOR DETAILS).
+          description: A description of the nature of the interest conveyed or transaction to be recorded in an assignment. Examples of the types of descriptions `include:` assignment, security agreement, merger, change of name, license, foreclosure, lien,
+        assignorBag:
+          type: array
+          items:
+            type: object
+            properties:
+              assignorName:
+                type: string
+                example: STMICROELECTRONICS SA
+              executionDate:
+                type: string
+                format: "yyyy-MM-dd"
+                example: 2022-06-30
+        assigneeBag:
+          type: array
+          items:
+            type: object
+            properties:
+              assigneeNameText:
+                type: string
+                example: STMICROELECTRONICS SA
+              assigneeAddress:
+                type: object
+                properties:
+                  addressLineOneText:
+                    type: string
+                    example: CHEMIN DU CHAMP-DES-FILLES 39
+                  addressLineTwoText:
+                    type: string
+                    example: 1228 PLAN-LES-OUATES
+                  cityName:
+                    type: string
+                    example: GENEVA
+                  geographicRegionName:
+                    type: string
+                    example: CHX
+                  geographicRegionCode:
+                    type: string
+                  countryName:
+                    type: string
+                    example: Switzerland
+                  postalCode:
+                    type: string
+                    example: 20123
+        correspondenceAddress:
+          type: object
+          properties:
+            correspondentNameText:
+              type: string
+              example: STMICROELECTRONICS, INC.
+            addressLineOneText:
+              type: string
+              example: 750 CANYON DRIVE
+            addressLineTwoText:
+              type: string
+              example: SUITE 300
+            addressLineThreeText:
+              type: string
+              example: COPPELL, TX 75019
+            addressLineFourText:
+              type: string
+              example: Address Line Four
+
+    Attorney:
+      type: object
+      description: An attorney selected by the applicant or owner of an intellectual property to represent them before the national office.
+      properties:
+        customerNumber:
+          type: array
+          items:
+            type: object
+            properties:
+              patronIdentifier:
+                type: string
+              organizationStandardName:
+                type: string
+              powerOfAttorneyAddressBag:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    nameLineOneText:
+                      type: string
+                      example: Seed IP Law Group LLP/ST (EP ORIGINATING)
+                    addressLineOneText:
+                      type: string
+                      example: 701 FIFTH AVENUE, SUITE 5400
+                    addressLineTwoText:
+                      type: string
+                      example: Sample Line Two
+                    geographicRegionName:
+                      type: string
+                      example: ST
+                    geographicRegionCode:
+                      type: string
+                    postalCode:
+                      type: string
+                      example: 98104-7092
+                    cityName:
+                      type: string
+                      example: SEATTLE
+                    countryCode:
+                      type: string
+                      example: US
+                    countryName:
+                      type: string
+                      example: UNITED STATES
+              telecommunicationAddressBag:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    telecommunicationNumber:
+                      type: string
+                    extensionNumber:
+                      type: string
+                    usageTypeCategory:
+                      type: string
+        attorneyBag:
+          type: array
+          items:
+            type: object
+            properties:
+              firstName:
+                type: string
+                example: DANIEL
+              lastName:
+                type: string
+                example: O'BRIEN
+              registrationNumber:
+                type: string
+                example: 65545
+              activeIndicator:
+                type: string
+                example: ACTIVE
+              telecommunicationAddressBag:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    telecommunicationNumber:
+                      type: string
+                      example: 206-622-4900
+                    extensionNumber:
+                      type: string
+                      example: 243
+                    usageTypeCategory:
+                      type: string
+                      example: TEL
+
+    TransactionContent:
+      type: object
+      description: The date the patent case action was recorded.
+      properties:
+        caseActionCode:
+          type: string
+          example: ELC_RVW
+        caseActionDescriptionText:
+          type: string
+          example: Electronic Review
+        recordedDate:
+          type: string
+          format: "yyyy-MM-dd"
+          example: 2018-10-18
+          description: The date the patent case action was recorded.
+
+    Error:
+      type: object
+      description: Object representing the error response
+      properties:
+        code:
+          type: number
+          enum: [400,403,404,500]
+        description:
+          type: string
+          enum: ["Bad Request","Unauthorized","Not Found","Internal Server Error"]
+        detailedError:
+          type: string
+          example: No matching records found, refine your search criteria and try again
+        requestIdentifier:
+          type: string
+          example: 07c5c24d-bf8e-458c-9427-a038500d6e98

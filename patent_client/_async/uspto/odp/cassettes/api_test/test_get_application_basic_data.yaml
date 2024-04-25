@@ -1,0 +1,53 @@
+interactions:
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - beta-api.uspto.gov
+      user-agent:
+      - python-httpx/0.27.0
+      x-api-key:
+      - oygzgndgwifcpqgvdcitnhorcdvpbb
+    method: GET
+    uri: https://beta-api.uspto.gov/api/v1/patent/applications/15123456/application-data
+  response:
+    content: '{"count":1,"patentBag":[{"firstInventorToFileIndicator":"Y","filingDate":"2016-09-02","inventorBag":[{"firstName":"Marvin","lastName":"Wang","inventorNameText":"Marvin
+      Wang","correspondenceAddressBag":[{"cityName":"Boston","geographicRegionName":"MASSACHUSETTS","geographicRegionCode":"MA","countryCode":"US","nameLineOneText":"Marvin  Wang","countryName":"UNITED
+      STATES","postalAddressCategory":"residence"},{"cityName":"Boston","geographicRegionName":"MASSACHUSETTS","geographicRegionCode":"MA","countryCode":"US","postalCode":"02114","nameLineOneText":"Marvin  Wang","countryName":"UNITED
+      STATES","addressLineOneText":"Founders 442","postalAddressCategory":"postal"}]}],"applicationStatusDescriptionText":"Abandoned  --  Failure
+      to Respond to an Office Action","businessEntityStatusCategory":"Small","firstApplicantName":"The
+      General Hospital Corporation","customerNumber":26161,"groupArtUnitNumber":"3775","applicationNumberText":"15123456","earliestPublicationNumber":"US
+      2017-0071586 A1","inventionTitle":"TONGUE RETRACTORS FOR FRENOTOMIES","correspondenceAddressBag":[{"cityName":"MINNEAPOLIS","geographicRegionName":"MINNESOTA","geographicRegionCode":"MN","countryCode":"US","postalCode":"55440-1022","nameLineOneText":"FISH
+      & RICHARDSON P.C. (BO)","countryName":"UNITED STATES","addressLineOneText":"P.O.
+      BOX 1022"}],"firstInventorName":"Marvin Wang","cpcClassificationBag":["A61B13/00","A61B2017/320052","A61B17/02","A61B2017/00814","A61B17/24","A61B17/244"],"applicationConfirmationNumber":7229,"earliestPublicationDate":"2017-03-16","applicationTypeLabelName":"Utility","publicationCategoryBag":["Pre-Grant
+      Publications - PGPub"],"applicationStatusDate":"2018-10-02","docketNumber":"29539-0122US1"}],"requestIdentifier":"ae7b70ad-b632-495d-aacf-0ebb0f3c3900"}'
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1771'
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 24 Apr 2024 16:55:37 GMT
+      X-Amzn-Trace-Id:
+      - Root=1-66293989-22559d565614594d39a0ac8b;Parent=5217fd9d677531db;Sampled=0;lineage=33e8fdb8:0
+      access-control-allow-headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      access-control-allow-methods:
+      - OPTIONS,POST,GET
+      access-control-allow-origin:
+      - '*'
+      x-amz-apigw-id:
+      - WvXtgF86oAMF97A=
+      x-amzn-RequestId:
+      - ae7b70ad-b632-495d-aacf-0ebb0f3c3900
+    http_version: HTTP/1.1
+    status_code: 200
+version: 1

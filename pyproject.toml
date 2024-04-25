@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "patent_client"
-version = "4.1.10"
+version = "5.0.0"
 description = "A set of ORM-style clients for publicly available intellectual property data"
 authors = ["Parker Hancock <633163+parkerhancock@users.noreply.github.com>"]
 license = "Apache Software License 2.0"
@@ -29,18 +29,18 @@ python = ">=3.9,<3.13"
 # Required Dependencies
 lxml = "^4.9.0"
 python-dateutil = "^2.8.2"
-inflection = "^0.5.1"
 openpyxl = "^3.0.10"
 #yankee = {path="../yankee", develop=true}
 yankee = "^0.1.43"
-zipp = "^3.8.1"
-httpx = {extras = ["http2"], version = "^0.25.2"}
 
 pydantic = "^2.4.2"
 pydantic-settings = "^2.0.3"
 pypdf = "^3.17.0"
 hishel = "^0.0.20"
-tqdm = "^4.66.1"
+async-property = "^0.2.2"
+httpx = {extras = ["http2"], version = "^0.27.0"}
+
+# Documentation Dependencies
 
 [tool.poetry.group.docs]
 optional = true
@@ -48,20 +48,19 @@ optional = true
 [tool.poetry.group.docs.dependencies]
 
 # Documentation Dependencies
-furo                       = {optional=true, version="^2022.6"}
-linkify-it-py              = {optional=true, version="^2.0"}
-myst-parser                = {optional=true, version=">=0.17"}
-sphinx                     = {optional=true, version="^5.0.2"}
-sphinx-autodoc-typehints   = {optional=true, version="^1.19"}
-sphinx-automodapi          = {optional=true, version=">=0.14"}
-sphinx-copybutton          = {optional=true, version=">=0.5"}
-sphinx-design              = {optional=true, version=">=0.2"}
-sphinx-notfound-page       = {optional=true, version=">=0.8"}
-sphinxcontrib-apidoc       = {optional=true, version="^0.3"}
-sphinxcontrib-mermaid      = {optional=true, version="^0.7.1"}
-nbsphinx                   = {optional=true, version="^0.8.9"}
-IPython                    = {optional=true, version="^7.17.0"}
-nest-asyncio = "^1.5.8"
+furo                       = "^2022.6"
+linkify-it-py              = "^2.0"
+myst-parser                = ">=0.17"
+sphinx                     = "^5.0.2"
+sphinx-autodoc-typehints   = "^1.19"
+sphinx-automodapi          = ">=0.14"
+sphinx-copybutton          = ">=0.5"
+sphinx-design              = ">=0.2"
+sphinx-notfound-page       = ">=0.8"
+sphinxcontrib-apidoc       = "^0.3"
+sphinxcontrib-mermaid      = "^0.7.1"
+nbsphinx                   = "^0.8.9"
+IPython                    = "^7.17.0"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^7.1.2"
@@ -81,6 +80,9 @@ rich                  = ">=10.0"
 sphinx-autobuild      = "^2021.3.14"
 bump2version = "^1.0.1"
 pytest-recording = "^0.13.1"
+datamodel-code-generator = "^0.25.5"
+openapi-python-client = "^0.19.1"
+isort = "^5.13.2"
 
 
 [tool.poetry.group.types.dependencies]

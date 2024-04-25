@@ -1,43 +1,69 @@
 # Async / Await Support
 
-Under the hood, `patent_client` is 100% async. But no worries! All the functionality is optional. You can still use the synchronous methods without changing your codebase. But if you want to use async/await syntax, here's what you do:
+Patent Client optionally supports asyncio. Introduced in v.5, there are two alternative ways of using 
+Patent Client, one of which is entirely asynchronous, and the other synchronous. The two do not mix,
+you should stick with one or the other, and then use the appropriate syntax.
 
-## Iterataors
+## Synchronous Operation
 
-Any object that can be iterated now also supports the async iterator protocol:
+To use the synchronous interface, just import models the normal way:
 
 ```python
 from patent_client import USApplication
+```
 
+All operations are synchronous. No async/await syntax is needed. 
+Managers can be iterated over like a normal list:
+
+```python
+for app in USApplication.objects.filter(first_named_applicant="Tesla"):
+    # do something
+```
+
+Calls to .get and .first are synchronous:
+
+```python
+app = USApplication.objects.get("16123456")
+app = USApplication.objects.first(first_named_applicant="Tesla")
+```
+
+Related objects are also synchronous
+
+```python
+app = USApplication.objects.get("16123456")
+app.patent
+```
+
+## Async Operation
+
+To use the asynchronous interface, import from patent_client._async
+
+```python
+from patent_client._async import USApplication
+```
+
+Now, every call that could potentially create network activity is asynchronous. 
+
+Managers can be iterated over using async syntax:
+
+```python
 async for app in USApplication.objects.filter(first_named_applicant="Tesla"):
     # do something
 
+[app async for app in USApplication.objects.filter(first_named_applicant="Tesla")]
 ```
 
-## I/O Methods
-
-All methods that trigger I/O have an async version prefixed with the letter `a`. For example:
+Calls to .get and .first are asynchronous:
 
 ```python
-from patent_client import USApplication
-
-# These do the same thing, but the second uses await
-app = USApplication.objects.get("16123456")
-app = await USApplication.objects.aget("16123456")
-
+app = await USApplication.objects.get("16123456")
+app = await USApplication.objects.first(first_named_applicant="Tesla")
 ```
 
-| Synchronous Method | Async/Await Method |
-| ------------------ | ------------------ |
-| `.get`             | `.aget`            |
-| `.first`           | `.afirst`          |
-| `.to_list`         | `.ato_list`        |
-| `.to_pandas`       | `.ato_pandas`      |
+Related objects are also asynchronous, including related objects that may produce another manager
 
-Several models also have a `.download` method. All of those also have a mirror-image `.adownload`.
+```python
+app = await USApplication.objects.get("16123456")
+patent = await app.patent
+```
 
-## Related Objects
-
-Some of the objects have "related" objects. For example if you have a `USApplication`, you can get
-related PTAB Trials at `USApplication.ptab_proceedings`. These are currently all still synchronous
-but an async version is on the roadmap.

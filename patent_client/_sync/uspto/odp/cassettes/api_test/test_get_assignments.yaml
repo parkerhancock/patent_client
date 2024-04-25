@@ -1,0 +1,50 @@
+interactions:
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - beta-api.uspto.gov
+      user-agent:
+      - python-httpx/0.27.0
+      x-api-key:
+      - oygzgndgwifcpqgvdcitnhorcdvpbb
+    method: GET
+    uri: https://beta-api.uspto.gov/api/v1/patent/applications/15123456/assignment
+  response:
+    content: '{"count":1,"patentBag":[{"assignmentBag":[{"assignmentReceivedDate":"2018-10-25","assignorBag":[{"executionDate":"2018-09-23","assignorName":"WANG,
+      MARVIN "}],"frameNumber":"0442","pageNumber":4,"reelNumber/frameNumber":"047305/0442","assignmentRecordedDate":"2018-10-25","conveyanceText":"ASSIGNMENT
+      OF ASSIGNORS INTEREST (SEE DOCUMENT FOR DETAILS).","assigneeBag":[{"assigneeAddress":{"cityName":"BOSTON","geographicRegionCode":"MA
+      ","postalCode":"02114","addressLineOneText":"55 FRUIT STREET"},"assigneeNameText":"THE
+      GENERAL HOSPITAL CORPORATION"}],"assignmentMailedDate":"2018-10-26","reelNumber":"047305","correspondenceAddress":[{"addressLineThreeText":"MINNEAPOLIS,
+      MN 55440-1022","addressLineOneText":"FISH & RICHARDSON P.C.","correspondentNameText":"J.
+      P. FASSE","addressLineTwoText":"P.O.BOX 1022"}]}]}],"requestIdentifier":"9d88996a-4cae-4a65-a6cd-0751ba572b7f"}'
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '874'
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 24 Apr 2024 17:31:37 GMT
+      X-Amzn-Trace-Id:
+      - Root=1-662941f9-312593986cad44791a0a32c8;Parent=79f04f6b7954dc7d;Sampled=0;lineage=33e8fdb8:0
+      access-control-allow-headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      access-control-allow-methods:
+      - OPTIONS,POST,GET
+      access-control-allow-origin:
+      - '*'
+      x-amz-apigw-id:
+      - Wvc_DHj9oAMFQLQ=
+      x-amzn-RequestId:
+      - 9d88996a-4cae-4a65-a6cd-0751ba572b7f
+    http_version: HTTP/1.1
+    status_code: 200
+version: 1

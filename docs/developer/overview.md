@@ -60,7 +60,7 @@ class USApplication(BaseModel):
     ...
     @property
     def patent(self):
-        return get_model("patent_client.Patent").objects.get(self.patent_number)
+        return self._get_model("patent_client.Patent").objects.get(self.patent_number)
 ```
 
 In that example, if you have a USApplication instance, you can get the corresponding patent at USApplication.patent.
