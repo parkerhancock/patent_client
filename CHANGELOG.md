@@ -1,5 +1,9 @@
 # Changelog
 
+## 5.0.0 (2024-04-25)
+- Add support for the USPTO Open Data Portal
+- Restructure the API to cleanly separate async and sync models
+
 ## 4.1.2 (2023-12-04)
 - Fix issue with downloads when the response does not have a `Content-Length` header
 - Add more informative error messages when PEDS is down.

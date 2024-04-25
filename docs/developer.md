@@ -5,6 +5,4 @@ This section is a set of guides for further developing and expanding Patent CLie
 :maxdepth: 2
 
 developer/overview
-developer/design_notes
-
 ```
