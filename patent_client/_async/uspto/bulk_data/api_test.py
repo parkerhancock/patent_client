@@ -1,8 +1,7 @@
 import pytest
 
 from .api import BulkDataApi
-from .model import File
-from .model import Product
+from .model import File, Product
 
 
 @pytest.mark.asyncio

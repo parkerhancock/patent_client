@@ -4,10 +4,11 @@
 # *         Source File: patent_client/_async/epo/ops/family/manager.py          *
 # ********************************************************************************
 
+from patent_client.util.manager import Manager
+
 from .api import FamilyAsyncApi
 from .model import Family
 from .schema import FamilySchema
-from patent_client.util.manager import Manager
 
 
 class FamilyManager(Manager[Family]):

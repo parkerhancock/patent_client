@@ -1,21 +1,23 @@
-import httpx
-from patent_client import SETTINGS
 import typing as tp
 
+import httpx
+
+from patent_client import SETTINGS
+from ...http_client import PatentClientSession
 
 from .model import (
+    Assignment,
+    Continuity,
+    CustomerNumber,
+    Document,
+    ForeignPriority,
+    SearchGetRequest,
+    SearchRequest,
+    TermAdjustment,
+    Transaction,
     USApplication,
     USApplicationBiblio,
-    TermAdjustment,
-    Assignment,
-    CustomerNumber,
-    Continuity,
-    ForeignPriority,
-    Transaction,
-    Document,
-    SearchResponse,
 )
-from .model import SearchGetRequest, SearchRequest
 from .util import prune
 
 
@@ -23,8 +25,8 @@ class ODPApi:
     base_url = "https://beta-api.uspto.gov"
 
     def __init__(self):
-        self.client = httpx.AsyncClient(
-            follow_redirects=True, headers={"X-API-KEY": SETTINGS.odp_api_key}
+        self.client = PatentClientSession(
+            headers={"X-API-KEY": SETTINGS.odp_api_key}
         )
 
     async def post_search(

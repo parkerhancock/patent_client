@@ -1,5 +1,5 @@
-from yankee.json.schema import fields as f
 from yankee.json.schema import Schema
+from yankee.json.schema import fields as f
 
 from .shared import DocumentStructureSchema
 

@@ -1,10 +1,6 @@
 import pytest
 
-from .manager import DocumentListManager
-from .model import Document
-from .model import DocumentList
-from .model import GlobalDossier
-from .model import GlobalDossierApplication
+from .model import Document, DocumentList, GlobalDossier, GlobalDossierApplication
 
 
 class TestGlobalDossier:

@@ -2,10 +2,11 @@ from typing import Optional
 
 from pydantic import Field
 
-from .schema import LegalSchema
+from patent_client.util.pydantic_util import Date
+
 from ..number_service.model import DocumentId
 from ..util import EpoBaseModel
-from patent_client.util.pydantic_util import Date
+from .schema import LegalSchema
 
 
 class MetaData(EpoBaseModel):

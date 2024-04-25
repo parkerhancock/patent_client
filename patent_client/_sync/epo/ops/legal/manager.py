@@ -6,10 +6,11 @@
 
 from yankee.data import ListCollection
 
+from patent_client.util.manager import Manager
+
 from .api import LegalApi
 from .model import LegalEvent
 from .schema import LegalSchema
-from patent_client.util.manager import Manager
 
 
 class LegalManager(Manager):
@@ -19,5 +20,5 @@ class LegalManager(Manager):
         self, doc_number, doc_type="publication", format="docdb"
     ) -> ListCollection[LegalEvent]:
         return self.__schema__.load(
-            LegalAsyncApi.get_legal(doc_number, doc_type, format)
+            LegalApi.get_legal(doc_number, doc_type, format)
         ).events

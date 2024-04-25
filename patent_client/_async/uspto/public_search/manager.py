@@ -1,17 +1,18 @@
-from typing import AsyncIterator
-from typing import Generic
-from typing import TypeVar
+from typing import AsyncIterator, Generic, TypeVar
 
-from .api import PublicSearchApi
-from .model import Patent
-from .model import PatentBiblio
-from .model import PublicSearchBiblio
-from .model import PublicSearchDocument
-from .model import PublishedApplication
-from .model import PublishedApplicationBiblio
-from .query import QueryBuilder
 from patent_client.util.manager import AsyncManager
 from patent_client.util.request_util import get_start_and_row_count
+
+from .api import PublicSearchApi
+from .model import (
+    Patent,
+    PatentBiblio,
+    PublicSearchBiblio,
+    PublicSearchDocument,
+    PublishedApplication,
+    PublishedApplicationBiblio,
+)
+from .query import QueryBuilder
 
 
 class CapacityException(Exception):

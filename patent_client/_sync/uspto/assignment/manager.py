@@ -12,10 +12,11 @@ from typing import Iterator
 
 from urllib3.connectionpool import InsecureRequestWarning
 
-from .api import AssignmentApi
-from .model import Assignment
 from patent_client.util.manager import Manager
 from patent_client.util.request_util import get_start_and_row_count
+
+from .api import AssignmentApi
+from .model import Assignment
 
 warnings.filterwarnings("ignore", category=InsecureRequestWarning)
 

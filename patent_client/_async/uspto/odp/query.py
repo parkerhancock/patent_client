@@ -1,6 +1,7 @@
 import csv
-from pathlib import Path
 import typing as tp
+from pathlib import Path
+
 from .model import SearchRequest
 
 if tp.TYPE_CHECKING:

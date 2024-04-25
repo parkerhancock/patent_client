@@ -4,4 +4,4 @@
 # *           Source File: patent_client/_async/uspto/odp/__init__.py            *
 # ********************************************************************************
 
-from .model import USApplication
+

@@ -9,8 +9,9 @@ from pathlib import Path
 
 import lxml.etree as ET
 
-from .schema import LegalSchema
 from patent_client.util.test import compare_dicts
+
+from .schema import LegalSchema
 
 fixture_dir = Path(__file__).parent / "fixtures"
 

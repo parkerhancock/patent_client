@@ -3,19 +3,19 @@ import logging
 from collections.abc import Sequence
 from pathlib import Path
 from tempfile import TemporaryDirectory
-from typing import AsyncIterator
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, AsyncIterator
 
 from dateutil.parser import parse as dt_parse
 from pypdf import PdfMerger
 
-from .api import PatentExaminationDataSystemApi
-from .query import QueryFields
 from patent_client.util.manager import AsyncManager
 from patent_client.util.request_util import get_start_and_row_count
 
+from .api import PatentExaminationDataSystemApi
+from .query import QueryFields
+
 if TYPE_CHECKING:
-    from .model import USApplication, Document
+    from .model import Document, USApplication
 
 logger = logging.getLogger(__name__)
 

@@ -1,13 +1,10 @@
-from typing import List
-from typing import Optional
+from typing import List, Optional
 
-from pydantic import computed_field
-from pydantic import Field
+from pydantic import Field, computed_field
 
-from ..schema.biblio import BiblioResultSchema
 from ...number_service.model import DocumentId
-from ...util import EpoBaseModel
-from ...util import InpadocModel
+from ...util import EpoBaseModel, InpadocModel
+from ..schema.biblio import BiblioResultSchema
 
 
 class Citation(InpadocModel):

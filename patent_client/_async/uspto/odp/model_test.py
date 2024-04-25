@@ -1,21 +1,22 @@
-import pytest
-from pathlib import Path
-import json
 import datetime
+import json
+from pathlib import Path
+
+import pytest
 
 from .model import (
-    SearchRequest,
-    Continuity,
-    Document,
-    USApplicationBiblio,
-    USApplication,
     AssigneeAddress,
     Assignment,
-    Transaction,
-    ForeignPriority,
+    Continuity,
     CustomerNumber,
+    Document,
+    ForeignPriority,
+    SearchRequest,
     TermAdjustment,
     TermAdjustmentHistory,
+    Transaction,
+    USApplication,
+    USApplicationBiblio,
 )
 
 
@@ -203,7 +204,7 @@ def test_application_biblio(fixture_dir):
     application_biblio_data = data["patentBag"][0]
     application_biblio = USApplicationBiblio(**application_biblio_data)
 
-    assert application_biblio.aia_indicator == True
+    assert application_biblio.aia_indicator is True
     assert application_biblio.app_filing_date == datetime.date.fromisoformat(
         "2016-09-02"
     )

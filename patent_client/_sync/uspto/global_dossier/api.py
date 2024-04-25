@@ -4,13 +4,14 @@
 # *        Source File: patent_client/_async/uspto/global_dossier/api.py         *
 # ********************************************************************************
 
-from .model import DocumentList
-from .model import GlobalDossier
-import lxml.etree as ET
 import re
 from urllib.parse import urljoin
 
+import lxml.etree as ET
+
 from patent_client._sync.http_client import PatentClientSession
+
+from .model import DocumentList, GlobalDossier
 
 client = PatentClientSession(
     headers={
@@ -40,7 +41,7 @@ class GlobalDossierApi:
 
     def get_file(self, doc_number, type_code="application", office_code="US"):
         url = f"{self.get_base_url()}/patent-family/svc/family/{type_code}/{office_code}/{doc_number}"
-        pre_flight = client.options(url)
+        _ = client.options(url)
         response = client.get(url)
         response.raise_for_status()
         return GlobalDossier.model_validate_json(response.content)

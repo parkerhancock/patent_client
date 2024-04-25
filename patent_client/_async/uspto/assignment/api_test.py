@@ -1,8 +1,8 @@
+from pathlib import Path
+
+import httpx
 import pytest
 
-import pytest
-import httpx
-from pathlib import Path
 from .api import AssignmentApi
 
 

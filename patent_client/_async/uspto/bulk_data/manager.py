@@ -2,8 +2,9 @@ import calendar
 import datetime
 import typing as tp
 
-from .api import BulkDataApi
 from patent_client.util.manager import AsyncManager
+
+from .api import BulkDataApi
 
 if tp.TYPE_CHECKING:
     from .model import File, Product

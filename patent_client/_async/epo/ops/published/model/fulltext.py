@@ -1,12 +1,11 @@
-from typing import List
-from typing import Optional
+from typing import List, Optional
 
 from pydantic import Field
 
-from ..schema.fulltext import ClaimsSchema
-from ..schema.fulltext import DescriptionSchema
-from ...util import EpoBaseModel
 from patent_client.util.claims.model import Claim
+
+from ...util import EpoBaseModel
+from ..schema.fulltext import ClaimsSchema, DescriptionSchema
 
 
 class FTDocumentId(EpoBaseModel):

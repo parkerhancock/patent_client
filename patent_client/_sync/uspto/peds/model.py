@@ -6,31 +6,27 @@
 
 import datetime
 from pathlib import Path
-from typing import Iterable
-from typing import List
-from typing import Optional
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Iterable, List, Optional
+
 
 from dateutil.relativedelta import relativedelta
-from pydantic import AliasPath
-from pydantic import BeforeValidator
-from pydantic import computed_field
-from pydantic import ConfigDict
-from pydantic import Field
-from pydantic import model_validator
+from pydantic import (
+    AliasPath,
+    BeforeValidator,
+    ConfigDict,
+    Field,
+    computed_field,
+    model_validator,
+)
 from pydantic.alias_generators import to_camel
-from typing_extensions import Annotated
-from typing_extensions import Self
+from typing_extensions import Annotated, Self
 
-
-from patent_client.util.pydantic_util import BaseModel
-from patent_client.util.pydantic_util import Date
-from patent_client.util.pydantic_util import DateTime
-
+from patent_client.util.pydantic_util import BaseModel, Date, DateTime
 
 if TYPE_CHECKING:
-    from patent_client import PtabProceeding, Patent, PublishedApplication
-    from patent_client.epo.ops.published.model import InpadocBiblio
+    from ..public_search.model import Patent, PublishedApplication
+    from ..ptab.model import PtabProceeding
+    from ...epo.ops.published.model import InpadocBiblio
 
 
 def parse_mdy_date(string: str) -> datetime.date:
@@ -282,7 +278,7 @@ class USApplication(PEDSBaseModel):
 
         transactions = self.transactions
         try:
-            disclaimer = next(t for t in transactions if t.code == "DIST")
+            _ = next(t for t in transactions if t.code == "DIST")
             expiration_data["terminal_disclaimer_filed"] = True
         except StopIteration:
             expiration_data["terminal_disclaimer_filed"] = False

@@ -1,13 +1,12 @@
 import asyncio
-from pathlib import Path
-from copy import deepcopy
 import json
-
+from copy import deepcopy
+from pathlib import Path
 import httpx
-from .model import PublicSearchBiblioPage
-from .model import PublicSearchDocument
 
 from patent_client._async.http_client import PatentClientSession
+
+from .model import PublicSearchBiblioPage, PublicSearchDocument
 
 
 class UsptoException(Exception):
@@ -49,7 +48,7 @@ class PublicSearchApi:
         sources=["US-PGPUB", "USPAT", "USOCR"],
         expand_plurals=True,
         british_equivalents=True,
-    ) -> "PublicSearch":
+    ) -> "PublicSearchBiblioPage":
         if self.case_id is None:
             await self.get_session()
 

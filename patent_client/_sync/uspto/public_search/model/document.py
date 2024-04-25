@@ -4,20 +4,15 @@
 # *   Source File: patent_client/_async/uspto/public_search/model/document.py    *
 # ********************************************************************************
 
-from typing import List
-from typing import Optional
+from typing import List, Optional
 
-from pydantic import Field
-from pydantic import model_validator
+from pydantic import Field, model_validator
+
+from patent_client.util.claims.model import Claim
+from patent_client.util.pydantic_util import BaseModel, Date
 
 from ..convert.document import PublicSearchDocumentSchema
-from .shared import ApplicationNumber
-from .shared import DocumentStructure
-from .shared import HtmlString
-from .shared import OptionalList
-from patent_client.util.claims.model import Claim
-from patent_client.util.pydantic_util import BaseModel
-from patent_client.util.pydantic_util import Date
+from .shared import ApplicationNumber, DocumentStructure, HtmlString, OptionalList
 
 
 class Document(BaseModel):

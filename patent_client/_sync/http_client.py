@@ -74,7 +74,6 @@ class PatentClientSession(httpx.Client):
         url,
         method: str = "GET",
         path: Optional[str | Path] = None,
-        show_progress: bool = False,
         **kwargs,
     ):
         # Ensure we skip the cache for file downloads

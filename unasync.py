@@ -1,8 +1,8 @@
 #!venv/bin/python
 import os
 import re
-import sys
 import shutil
+import sys
 from pathlib import Path
 
 SUBS = [

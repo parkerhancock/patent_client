@@ -13,6 +13,7 @@ from .api import LegalApi
 fixtures = Path(__file__).parent / "fixtures"
 
 
+
 def test_async_example():
     result = LegalApi.get_legal("EP1000000A1")
     assert str(result.publication_reference) == "EP1000000A1"

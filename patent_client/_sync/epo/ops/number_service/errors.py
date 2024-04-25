@@ -5,8 +5,7 @@
 # ********************************************************************************
 
 import re
-from dataclasses import asdict
-from dataclasses import dataclass
+from dataclasses import asdict, dataclass
 from pathlib import Path
 
 base_dir = Path(__file__).parent

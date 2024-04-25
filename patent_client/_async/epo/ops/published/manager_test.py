@@ -61,4 +61,4 @@ class TestPublished:
     async def test_issue_41(self):
         result = await Inpadoc.objects.get("JP2005533465A")
         biblio = await result.biblio
-        assert biblio.title == None
+        assert biblio.title is None

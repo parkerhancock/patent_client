@@ -5,20 +5,20 @@
 # ********************************************************************************
 
 import datetime
-from pathlib import Path
 import typing as tp
+from pathlib import Path
 
-from pydantic import BeforeValidator
-from pydantic import ConfigDict
-from pydantic import Field
-from pydantic import model_validator
-from pydantic import computed_field
+
+from pydantic import BeforeValidator, ConfigDict, Field, model_validator
 from pydantic.alias_generators import to_camel
 from typing_extensions import Annotated
 
-
 from patent_client.util.pydantic_util import BaseModel
 
+if tp.TYPE_CHECKING:
+    from ..peds.model import USApplication
+    from ..public_search.model import Patent, PublishedApplication
+    from ..assignment.model import Assignment
 
 MDYDate = Annotated[
     datetime.date,
@@ -102,7 +102,9 @@ class GlobalDossierApplication(GlobalDossierBaseModel):
             raise ValueError(
                 f"Global Dossier Application is not a US Application! {self}"
             )
-        return self._get_model("..peds.model.USApplication").objects.get(self.app_num)
+        return self._get_model("..peds.model.USApplication").objects.get(
+            self.app_num
+        )
 
     @property
     def us_publication(self) -> "PublishedApplication":

@@ -4,20 +4,21 @@
 # *       Source File: patent_client/_async/uspto/public_search/manager.py       *
 # ********************************************************************************
 
-from typing import Iterator
-from typing import Generic
-from typing import TypeVar
+from typing import Iterator, Generic, TypeVar
 
-from .api import PublicSearchApi
-from .model import Patent
-from .model import PatentBiblio
-from .model import PublicSearchBiblio
-from .model import PublicSearchDocument
-from .model import PublishedApplication
-from .model import PublishedApplicationBiblio
-from .query import QueryBuilder
 from patent_client.util.manager import Manager
 from patent_client.util.request_util import get_start_and_row_count
+
+from .api import PublicSearchApi
+from .model import (
+    Patent,
+    PatentBiblio,
+    PublicSearchBiblio,
+    PublicSearchDocument,
+    PublishedApplication,
+    PublishedApplicationBiblio,
+)
+from .query import QueryBuilder
 
 
 class CapacityException(Exception):

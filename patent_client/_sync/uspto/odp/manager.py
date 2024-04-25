@@ -5,20 +5,26 @@
 # ********************************************************************************
 
 import typing as tp
+
 from patent_client.util.manager import Manager
 from patent_client.util.request_util import get_start_and_row_count
+
 from .api import ODPApi
-from .model import SearchRequest
-from .model import USApplicationBiblio, USApplication
+from .model import SearchRequest, USApplication, USApplicationBiblio
 from .query import create_post_search_obj
 
 if tp.TYPE_CHECKING:
     from .model import (
+        Continuity,
+        Document,
+        SearchResult,
         USApplication,
         USApplicationBiblio,
-        Document,
-        Continuity,
-        SearchResult,
+        TermAdjustment,
+        Assignment,
+        CustomerNumber,
+        ForeignPriority,
+        Transaction
     )
 
 
@@ -32,7 +38,9 @@ class USApplicationManager(Manager):
 
     def count(self):
         return (
-            api.post_search(self._create_search_obj(fields=["applicationNumberText"]))
+            api.post_search(
+                self._create_search_obj(fields=["applicationNumberText"])
+            )
         )["count"]
 
     def _get_results(self) -> tp.Iterator["SearchResult"]:
@@ -105,3 +113,43 @@ class DocumentManager(Manager):
     def _get_results(self) -> tp.Iterator["Document"]:
         for doc in api.get_documents(self.config.filter["appl_id"][0]):
             yield doc
+            
+class TermAdjustmentManager(Manager):
+    default_filter = "appl_id"
+    
+    def _get_results(self) -> "TermAdjustment":
+        return api.get_term_adjustments(self.config.filter["appl_id"][0])
+    
+class AssignmentManager(Manager):
+    default_filter = "appl_id"
+    
+    def _get_results(self) -> tp.Iterator["Assignment"]:
+        for doc in api.get_assignments(self.config.filter["appl_id"][0]):
+            yield doc
+    
+    def count(self):
+        return len(api.get_assignments(self.config.filter["appl_id"][0]))
+    
+class CustomerNumberManager(Manager):
+    default_filter = "appl_id"
+    
+    def _get_results(self) -> "CustomerNumber":
+        return api.get_customer_numbers(self.config.filter["appl_id"][0])
+    
+class ForeignPriorityManager(Manager):
+    default_filter = "appl_id"
+    
+    def _get_results(self) -> "ForeignPriority":
+        for doc in api.get_foreign_priority_data(self.config.filter["appl_id"][0]):
+            yield doc
+    
+class TransactionManager(Manager):
+    default_filter = "appl_id"
+    
+    def _get_results(self) -> tp.Iterator["Transaction"]:
+        for doc in api.get_transactions(self.config.filter["appl_id"][0]):
+            yield doc
+    
+    def count(self):
+        return len(api.get_transactions(self.config.filter["appl_id"][0]))
+

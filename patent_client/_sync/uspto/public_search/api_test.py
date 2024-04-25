@@ -5,7 +5,9 @@
 # ********************************************************************************
 
 import pytest
+
 from .api import PublicSearchApi
+
 
 
 def test_simple_search():

@@ -1,7 +1,8 @@
+from patent_client.util.manager import AsyncManager
+
 from .api import FamilyAsyncApi
 from .model import Family
 from .schema import FamilySchema
-from patent_client.util.manager import AsyncManager
 
 
 class FamilyManager(AsyncManager[Family]):

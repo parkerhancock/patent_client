@@ -1,11 +1,7 @@
-from .biblio import BiblioResult
-from .biblio import InpadocBiblio
-from .fulltext import Claims
-from .fulltext import Description
-from .images import ImageDocument
-from .images import Images
-from .search import Inpadoc
-from .search import Search
+from .biblio import BiblioResult, InpadocBiblio
+from .fulltext import Claims, Description
+from .images import ImageDocument, Images
+from .search import Inpadoc, Search
 
 __all__ = [
     "BiblioResult",

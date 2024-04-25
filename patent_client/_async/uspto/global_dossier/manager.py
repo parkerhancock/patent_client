@@ -1,6 +1,7 @@
+from patent_client.util.manager import AsyncManager
+
 from .api import GlobalDossierApi
 from .query import QueryBuilder
-from patent_client.util.manager import AsyncManager
 
 query_builder = QueryBuilder()
 

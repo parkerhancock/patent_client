@@ -4,13 +4,15 @@ from typing import Sequence
 
 import hishel
 import httpx
-from httpcore import Request
-from httpcore import Response
+from httpcore import Request, Response
 
 from patent_client import SETTINGS
-from patent_client.session import CACHE_DIR
 from patent_client._async.http_client import PatentClientSession
+from patent_client.session import CACHE_DIR
 
+import logging
+
+logger = logging.getLogger(__name__)
 
 NS = {
     "http://ops.epo.org": None,
@@ -19,9 +21,7 @@ NS = {
     "http://www.epo.org/register": None,
 }
 
-import logging
 
-logger = logging.getLogger(__name__)
 
 
 class OpsAuthenticationError(Exception):

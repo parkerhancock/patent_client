@@ -3,8 +3,9 @@ from pathlib import Path
 
 import pytest
 
-from .model import Family
 from patent_client.util.test import compare_dicts
+
+from .model import Family
 
 fixtures = Path(__file__).parent / "fixtures"
 

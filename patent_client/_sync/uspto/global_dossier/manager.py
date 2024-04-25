@@ -4,9 +4,10 @@
 # *      Source File: patent_client/_async/uspto/global_dossier/manager.py       *
 # ********************************************************************************
 
+from patent_client.util.manager import Manager
+
 from .api import GlobalDossierApi
 from .query import QueryBuilder
-from patent_client.util.manager import Manager
 
 query_builder = QueryBuilder()
 
@@ -37,7 +38,9 @@ class GlobalDossierBaseManager(Manager):
 
 class GlobalDossierManager(GlobalDossierBaseManager):
     def get(self, *args, **kwargs):
-        return global_dossier_api.get_file(**query_builder.build_query(*args, **kwargs))
+        return global_dossier_api.get_file(
+            **query_builder.build_query(*args, **kwargs)
+        )
 
 
 class GlobalDossierApplicationManager(GlobalDossierBaseManager):

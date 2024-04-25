@@ -1,11 +1,10 @@
-from typing import List
-from typing import Optional
+from typing import List, Optional
 
 from pydantic import Field
 
-from .schema import FamilySchema
 from ..number_service.model import DocumentId
 from ..util import EpoBaseModel
+from .schema import FamilySchema
 
 
 class PriorityClaim(EpoBaseModel):

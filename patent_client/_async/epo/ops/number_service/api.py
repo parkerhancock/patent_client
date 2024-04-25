@@ -1,5 +1,5 @@
-from .model import NumberServiceResult
 from ..session import asession
+from .model import NumberServiceResult
 
 
 class NumberServiceException(Exception):

@@ -5,12 +5,12 @@
 # ********************************************************************************
 
 from pathlib import Path
-from typing import Optional
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Optional
 
 from yankee.base.schema import ListCollection
 
 from patent_client._sync.http_client import PatentClientSession
+
 from .convert import convert_xml_to_json
 from .model import AssignmentPage
 
@@ -65,7 +65,9 @@ class AssignmentApi:
         return AssignmentPage.model_validate(convert_xml_to_json(response.content))
 
     @classmethod
-    def download_pdf(cls, reel: str, frame: str, path: Optional[Path] = None) -> Path:
+    def download_pdf(
+        cls, reel: str, frame: str, path: Optional[Path] = None
+    ) -> Path:
         url = cls.get_download_url(reel, frame)
 
         if path is None:

@@ -8,6 +8,7 @@ import datetime
 import typing as tp
 
 from patent_client._sync.http_client import PatentClientSession
+
 from .model import Product
 
 client = PatentClientSession()

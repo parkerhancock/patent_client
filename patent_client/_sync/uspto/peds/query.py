@@ -4,8 +4,7 @@
 # *            Source File: patent_client/_async/uspto/peds/query.py             *
 # ********************************************************************************
 
-from dataclasses import dataclass
-from dataclasses import fields
+from dataclasses import dataclass, fields
 
 
 @dataclass

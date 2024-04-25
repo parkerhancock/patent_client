@@ -8,9 +8,10 @@ from typing import Optional
 
 from pydantic import Field
 
-from .schema import NumberServiceResultSchema
-from ..util import EpoBaseModel
 from patent_client.util.pydantic_util import Date
+
+from ..util import EpoBaseModel
+from .schema import NumberServiceResultSchema
 
 
 class DocumentId(EpoBaseModel):

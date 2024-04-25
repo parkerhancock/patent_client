@@ -4,8 +4,8 @@
 # *            Source File: patent_client/_async/epo/ops/legal/api.py            *
 # ********************************************************************************
 
-from .model import Legal
 from ..session import asession
+from .model import Legal
 
 
 class LegalApi:

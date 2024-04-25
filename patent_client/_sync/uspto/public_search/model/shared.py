@@ -5,17 +5,15 @@
 # ********************************************************************************
 
 import datetime
-from typing import List
-from typing import Optional
-from typing import TypeVar
+from typing import List, Optional, TypeVar
 
-from pydantic import BeforeValidator
-from pydantic import ConfigDict
+from pydantic import BeforeValidator, ConfigDict
 from pydantic.alias_generators import to_camel
 from typing_extensions import Annotated
 
-from ..util import html_to_text
 from patent_client.util.pydantic_util import BaseModel
+
+from ..util import html_to_text
 
 
 class PublicSearchBaseModel(BaseModel):

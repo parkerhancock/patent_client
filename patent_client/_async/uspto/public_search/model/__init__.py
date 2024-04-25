@@ -1,5 +1,4 @@
-from .biblio import PublicSearchBiblio
-from .biblio import PublicSearchBiblioPage
+from .biblio import PublicSearchBiblio, PublicSearchBiblioPage
 from .document import PublicSearchDocument
 
 

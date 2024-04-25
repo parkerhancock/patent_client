@@ -1,10 +1,12 @@
 import pytest
 
-from . import Patent
-from . import PatentBiblio
-from . import PublicSearchDocument
-from . import PublishedApplication
-from . import PublishedApplicationBiblio
+from . import (
+    Patent,
+    PatentBiblio,
+    PublicSearchDocument,
+    PublishedApplication,
+    PublishedApplicationBiblio,
+)
 
 
 class TestPatents:
@@ -33,7 +35,6 @@ class TestPatents:
 
     @pytest.mark.asyncio
     async def test_claims(self):
-        pat_no = 6095661
         pat = await Patent.objects.get(6095661)
         assert len(pat.claims) == 52
         assert pat.claims[0].number == 1

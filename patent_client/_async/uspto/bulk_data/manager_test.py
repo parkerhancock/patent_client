@@ -1,9 +1,9 @@
-import pytest
 import datetime
 
+import pytest
+
 from .manager import date_ranges
-from .model import File
-from .model import Product
+from .model import File, Product
 
 
 class TestProduct:

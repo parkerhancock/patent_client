@@ -7,7 +7,8 @@ This section is a set of user guides on the various modules contained herein
 
 user_guide/introduction
 user_guide/asyncio
-user_guide/us_application
+user_guide/peds
+user_guide/open_data_portal
 user_guide/fulltext
 user_guide/assignments
 user_guide/global_dossier

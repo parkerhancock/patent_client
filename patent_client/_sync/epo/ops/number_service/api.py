@@ -4,8 +4,8 @@
 # *       Source File: patent_client/_async/epo/ops/number_service/api.py        *
 # ********************************************************************************
 
-from .model import NumberServiceResult
 from ..session import asession
+from .model import NumberServiceResult
 
 
 class NumberServiceException(Exception):

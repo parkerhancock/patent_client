@@ -1,17 +1,18 @@
 import datetime
 from typing import Optional
 
-from pydantic import AliasPath
-from pydantic import Field
-from pydantic import model_validator
+from pydantic import AliasPath, Field, model_validator
+
+from patent_client.util.pydantic_util import BaseModel
 
 from ..convert.biblio import PublicSearchBiblioPageSchema
-from .shared import ApplicationNumber
-from .shared import DateTimeAsDate
-from .shared import DocumentStructure
-from .shared import HtmlString
-from .shared import OptionalList
-from patent_client.util.pydantic_util import BaseModel
+from .shared import (
+    ApplicationNumber,
+    DateTimeAsDate,
+    DocumentStructure,
+    HtmlString,
+    OptionalList,
+)
 
 
 class PublicSearchBiblio(BaseModel):
@@ -77,7 +78,7 @@ class PublicSearchBiblio(BaseModel):
         )
 
     async def download_images(self, path="."):
-        from .manager import public_search_api
+        from ..manager import public_search_api
 
         return await public_search_api.download_image(self, path)
 

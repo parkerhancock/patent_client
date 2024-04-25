@@ -3,6 +3,7 @@
 import time
 
 import patent_client.patches  # noqa # Run patching code
+
 from .version import __version__  # noqa
 
 start = time.time()

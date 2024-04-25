@@ -1,4 +1,4 @@
-# US Patent Applications
+# US Patent Examination Data System (PEDS)
 
 Original API URL: <https://ped.uspto.gov/peds/>
 
@@ -11,6 +11,11 @@ have no effect.
 :::{warning}
 Downloading file history documents currently doesn't work. The downloader now raises an appropriate
 error to indicate this problem. This warning will be removed when downloading works reliably again
+:::
+
+:::{warning}
+The PEDS interface will be DEPRECATED in late 2024 in favor of [Open Data Portal](../open_data_portal.md).
+See [the ODP FAQs](https://beta-data.uspto.gov/support/faq) for more information.
 :::
 
 Patent Client provides an interface to the USPTO Patent Examination Data System (PEDS).

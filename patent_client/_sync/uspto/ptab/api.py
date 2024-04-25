@@ -10,10 +10,9 @@ from typing import Optional
 
 from dateutil.parser import parse as parse_dt
 
-from .model import PtabDecisionPage
-from .model import PtabDocumentPage
-from .model import PtabProceedingPage
 from patent_client._sync.http_client import PatentClientSession
+
+from .model import PtabDecisionPage, PtabDocumentPage, PtabProceedingPage
 
 client = PatentClientSession()
 

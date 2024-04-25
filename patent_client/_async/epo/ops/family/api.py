@@ -1,5 +1,5 @@
-from .model import Family
 from ..session import asession
+from .model import Family
 
 
 class FamilyAsyncApi:

@@ -10,12 +10,15 @@ from pathlib import Path
 import lxml.etree as ET
 import pytest
 
-from .schema import BiblioResultSchema
-from .schema import ClaimsSchema
-from .schema import DescriptionSchema
-from .schema import ImagesSchema
-from .schema import SearchSchema
 from patent_client.util.test import compare_dicts
+
+from .schema import (
+    BiblioResultSchema,
+    ClaimsSchema,
+    DescriptionSchema,
+    ImagesSchema,
+    SearchSchema,
+)
 
 test_dir = Path(__file__).parent / "test"
 expected_dir = Path(__file__).parent / "test" / "expected"

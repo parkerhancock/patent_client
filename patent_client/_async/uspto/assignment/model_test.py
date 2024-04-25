@@ -35,11 +35,11 @@ def test_assignment_1():
     )
     assert a.properties[0].appl_num == "10628795"
     assert a.properties[0].filing_date.isoformat() == "2003-07-28"
-    assert a.properties[0].intl_publ_date == None
-    assert a.properties[0].intl_reg_num == None
+    assert a.properties[0].intl_publ_date is None
+    assert a.properties[0].intl_reg_num is None
     assert a.properties[0].inventors == "James J. Fallon"
     assert a.properties[0].issue_date.isoformat() == "2006-10-31"
     assert a.properties[0].pat_num == "7130913"
-    assert a.properties[0].pct_num == None
+    assert a.properties[0].pct_num is None
     assert a.properties[0].publ_date.isoformat() == "2004-04-15"
     assert a.properties[0].publ_num == "20040073746"

@@ -1,8 +1,6 @@
 import pytest
 
-from .model import PtabDecision
-from .model import PtabDocument
-from .model import PtabProceeding
+from .model import PtabDecision, PtabDocument, PtabProceeding
 
 
 class TestPtabProceeding:

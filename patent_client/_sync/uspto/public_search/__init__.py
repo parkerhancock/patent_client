@@ -4,9 +4,11 @@
 # *      Source File: patent_client/_async/uspto/public_search/__init__.py       *
 # ********************************************************************************
 
-from .model import Patent
-from .model import PatentBiblio
-from .model import PublicSearchBiblio
-from .model import PublicSearchDocument
-from .model import PublishedApplication
-from .model import PublishedApplicationBiblio
+from .model import (
+    Patent,
+    PatentBiblio,
+    PublicSearchBiblio,
+    PublicSearchDocument,
+    PublishedApplication,
+    PublishedApplicationBiblio,
+)

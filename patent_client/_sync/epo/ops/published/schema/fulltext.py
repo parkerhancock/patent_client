@@ -8,8 +8,9 @@ import re
 
 from yankee.xml import fields as f
 
-from ...util import Schema
 from patent_client.util.claims.parser import ClaimsParser
+
+from ...util import Schema
 
 
 class FTDocumentIdSchema(Schema):

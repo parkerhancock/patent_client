@@ -1,12 +1,9 @@
-from typing import List
-from typing import Optional
+from typing import List, Optional
 
-from pydantic import computed_field
-from pydantic import Field
+from pydantic import Field, computed_field
 
-from ...util import InpadocModel
+from ...util import EpoBaseModel, InpadocModel
 from ..schema.search import SearchSchema
-from ...util import EpoBaseModel
 
 
 class Inpadoc(InpadocModel):

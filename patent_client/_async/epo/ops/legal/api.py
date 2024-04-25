@@ -1,5 +1,5 @@
-from .model import Legal
 from ..session import asession
+from .model import Legal
 
 
 class LegalApi:

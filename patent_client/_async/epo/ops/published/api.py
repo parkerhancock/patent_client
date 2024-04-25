@@ -3,12 +3,11 @@ from io import BytesIO
 
 from yankee.data import AttrDict
 
+from ..session import asession
 from .model.biblio import BiblioResult
-from .model.fulltext import Claims
-from .model.fulltext import Description
+from .model.fulltext import Claims, Description
 from .model.images import Images
 from .model.search import Search
-from ..session import asession
 
 logger = logging.getLogger(__name__)
 

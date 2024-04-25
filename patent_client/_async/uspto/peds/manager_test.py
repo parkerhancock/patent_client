@@ -6,8 +6,7 @@ from pathlib import Path
 import pytest
 from pypdf import PdfReader
 
-from .model import PedsPage
-from .model import USApplication
+from .model import PedsPage, USApplication
 
 fixtures = Path(__file__).parent / "fixtures"
 
@@ -210,7 +209,7 @@ class TestPatentExaminationData:
     async def test_expiration_date_for_pct_apps(self):
         app = await USApplication.objects.get("PCT/US2014/020588")
         with pytest.raises(Exception) as exc:
-            expiration_data = app.expiration
+            _ = app.expiration
         assert exc.match("Expiration date not supported for PCT Applications")
 
     @pytest.mark.asyncio

@@ -1,10 +1,10 @@
 from pathlib import Path
-from typing import Optional
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Optional
 
 from yankee.base.schema import ListCollection
 
 from patent_client._async.http_client import PatentClientSession
+
 from .convert import convert_xml_to_json
 from .model import AssignmentPage
 

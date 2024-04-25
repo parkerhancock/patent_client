@@ -7,24 +7,18 @@
 import datetime
 import warnings
 from pathlib import Path
-from typing import List
-from typing import Optional
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, List, Optional
 
 from dateutil.parser import isoparse
-from pydantic import BeforeValidator
-from pydantic import ConfigDict
-from pydantic import Field
-from pydantic import field_validator
+from pydantic import BeforeValidator, ConfigDict, Field, field_validator
 from pydantic.alias_generators import to_camel
 from typing_extensions import Annotated
 
 from patent_client.util.pydantic_util import BaseModel
 
-
 if TYPE_CHECKING:
-    from patent_client.uspto.peds.model import USApplication
-    from patent_client.uspto.public_search.model import Patent, PublishedApplication
+    from ..peds.model import USApplication
+    from ..public_search.model import Patent, PublishedApplication
 
 UsptoDate = Annotated[
     datetime.date,

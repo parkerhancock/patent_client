@@ -1,8 +1,9 @@
-import pytest
-import httpx
 from pathlib import Path
+
+import pytest
+
 from .api import GlobalDossierApi
-from .model import GlobalDossier, DocumentList
+from .model import DocumentList, GlobalDossier
 
 
 @pytest.mark.asyncio

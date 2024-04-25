@@ -1,18 +1,24 @@
 import typing as tp
+
 from patent_client.util.manager import AsyncManager
 from patent_client.util.request_util import get_start_and_row_count
+
 from .api import ODPApi
-from .model import SearchRequest
-from .model import USApplicationBiblio, USApplication
+from .model import SearchRequest, USApplication, USApplicationBiblio
 from .query import create_post_search_obj
 
 if tp.TYPE_CHECKING:
     from .model import (
+        Continuity,
+        Document,
+        SearchResult,
         USApplication,
         USApplicationBiblio,
-        Document,
-        Continuity,
-        SearchResult,
+        TermAdjustment,
+        Assignment,
+        CustomerNumber,
+        ForeignPriority,
+        Transaction
     )
 
 
@@ -101,3 +107,43 @@ class DocumentManager(AsyncManager):
     async def _get_results(self) -> tp.AsyncIterator["Document"]:
         for doc in await api.get_documents(self.config.filter["appl_id"][0]):
             yield doc
+            
+class TermAdjustmentManager(AsyncManager):
+    default_filter = "appl_id"
+    
+    async def _get_results(self) -> "TermAdjustment":
+        return await api.get_term_adjustments(self.config.filter["appl_id"][0])
+    
+class AssignmentManager(AsyncManager):
+    default_filter = "appl_id"
+    
+    async def _get_results(self) -> tp.AsyncIterator["Assignment"]:
+        for doc in await api.get_assignments(self.config.filter["appl_id"][0]):
+            yield doc
+    
+    async def count(self):
+        return len(await api.get_assignments(self.config.filter["appl_id"][0]))
+    
+class CustomerNumberManager(AsyncManager):
+    default_filter = "appl_id"
+    
+    async def _get_results(self) -> "CustomerNumber":
+        return await api.get_customer_numbers(self.config.filter["appl_id"][0])
+    
+class ForeignPriorityManager(AsyncManager):
+    default_filter = "appl_id"
+    
+    async def _get_results(self) -> "ForeignPriority":
+        for doc in await api.get_foreign_priority_data(self.config.filter["appl_id"][0]):
+            yield doc
+    
+class TransactionManager(AsyncManager):
+    default_filter = "appl_id"
+    
+    async def _get_results(self) -> tp.AsyncIterator["Transaction"]:
+        for doc in await api.get_transactions(self.config.filter["appl_id"][0]):
+            yield doc
+    
+    async def count(self):
+        return len(await api.get_transactions(self.config.filter["appl_id"][0]))
+

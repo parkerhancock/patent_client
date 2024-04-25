@@ -4,8 +4,9 @@
 # *    Source File: patent_client/_async/epo/ops/legal/national_codes_test.py    *
 # ********************************************************************************
 
-import pytest
 import datetime
+
+import pytest
 
 from ..legal import national_codes
 
@@ -18,6 +19,7 @@ def test_legal_codes():
     dt = national_codes.current_date
     national_codes.current_date = stub_date
     national_codes.current_date = dt
+
 
 
 def test_epo_website_parsing():

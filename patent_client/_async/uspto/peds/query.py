@@ -1,5 +1,4 @@
-from dataclasses import dataclass
-from dataclasses import fields
+from dataclasses import dataclass, fields
 
 
 @dataclass

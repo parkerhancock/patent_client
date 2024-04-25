@@ -4,8 +4,8 @@
 # *   Source File: patent_client/_async/uspto/public_search/convert/shared.py    *
 # ********************************************************************************
 
-from yankee.json import fields as f
 from yankee.json import Schema
+from yankee.json import fields as f
 
 
 class DocumentStructureSchema(Schema):

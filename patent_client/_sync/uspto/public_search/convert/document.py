@@ -6,14 +6,13 @@
 
 import datetime
 
+from yankee.json.schema import RegexSchema, Schema, ZipSchema
 from yankee.json.schema import fields as f
-from yankee.json.schema import RegexSchema
-from yankee.json.schema import Schema
-from yankee.json.schema import ZipSchema
+
+from patent_client.util.claims.parser import ClaimsParser
 
 from ..util import html_to_text
 from .shared import DocumentStructureSchema
-from patent_client.util.claims.parser import ClaimsParser
 
 
 def parse_claims(html):

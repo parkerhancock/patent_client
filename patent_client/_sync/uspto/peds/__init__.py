@@ -4,9 +4,7 @@
 # *           Source File: patent_client/_async/uspto/peds/__init__.py           *
 # ********************************************************************************
 
-from .model import Document
-from .model import USApplication
-
+from .model import Document, USApplication
 
 __api_name__ = "US Patent Examination Data Set"
 __all__ = ["USApplication", "Document"]

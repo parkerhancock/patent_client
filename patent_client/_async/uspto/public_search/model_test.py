@@ -1,10 +1,10 @@
 import json
 from pathlib import Path
 
+from patent_client.util.test import compare_dicts, compare_lists
+
 from .model.biblio import PublicSearchBiblioPage
 from .model.document import PublicSearchDocument
-from patent_client.util.test import compare_dicts
-from patent_client.util.test import compare_lists
 
 fixtures = Path(__file__).parent / "fixtures"
 

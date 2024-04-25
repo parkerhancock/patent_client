@@ -4,12 +4,13 @@
 # *        Source File: patent_client/_async/uspto/assignment/api_test.py        *
 # ********************************************************************************
 
+from pathlib import Path
+
+import httpx
 import pytest
 
-import pytest
-import httpx
-from pathlib import Path
 from .api import AssignmentApi
+
 
 
 def test_alookup():
@@ -25,6 +26,7 @@ def test_alookup():
     assert (
         len(assignments) <= rows
     ), "Expected number of assignments to be less than or equal to requested rows"
+
 
 
 def test_download_pdf(tmp_path: Path):

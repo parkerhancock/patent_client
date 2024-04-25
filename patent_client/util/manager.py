@@ -2,18 +2,19 @@ from __future__ import annotations
 
 from collections import OrderedDict
 from copy import deepcopy
+from enum import Enum
 from itertools import chain
-from typing import AsyncIterator
-from typing import Generic
-from typing import Iterator
-from typing import TYPE_CHECKING
-from typing import TypeVar
-from typing import Union
-from typing import Sequence
+from typing import (
+    TYPE_CHECKING,
+    AsyncIterator,
+    Generic,
+    Iterator,
+    TypeVar,
+    Union,
+)
 
 from typing_extensions import Self
 from yankee.data import Collection
-from enum import Enum
 
 if TYPE_CHECKING:
     pass
@@ -156,7 +157,7 @@ class Manager(BaseManager, Generic[ModelType]):
         self, key: Union[slice, int]
     ) -> Union[Manager[ModelType], ModelType]:
         if isinstance(key, slice):
-            if key.step != None:
+            if key.step is not None:
                 raise AttributeError("Step is not supported")
             start = key.start if key.start else 0
             start = len(self) + start if start < 0 else start

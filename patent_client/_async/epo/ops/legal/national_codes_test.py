@@ -1,5 +1,6 @@
-import pytest
 import datetime
+
+import pytest
 
 from ..legal import national_codes
 

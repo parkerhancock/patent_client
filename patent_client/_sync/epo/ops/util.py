@@ -4,24 +4,19 @@
 # *              Source File: patent_client/_async/epo/ops/util.py               *
 # ********************************************************************************
 
-from typing import List
-from typing import Optional
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, List, Optional
 
-from pydantic import computed_field, ConfigDict
-from pydantic import model_validator
-from yankee.xml.schema import Schema as XmlSchema
 
 from async_property.base import AsyncPropertyDescriptor
+from pydantic import ConfigDict, computed_field, model_validator
+from yankee.xml.schema import Schema as XmlSchema
+
 from patent_client.util.pydantic_util import BaseModel
 
-
 if TYPE_CHECKING:
-    from ..published.model import InpadocBiblio
-    from ..published.model import Images
-    from ..published.model import Claims
-    from ..legal.model import LegalEvent
-    from ..family.model import FamilyMember
+    from .family.model import FamilyMember
+    from .legal.model import LegalEvent
+    from .published.model import Claims, Images, InpadocBiblio
 
 
 class Schema(XmlSchema):
@@ -83,9 +78,9 @@ class InpadocModel(EpoBaseModel):
     @property
     def legal(self) -> List["LegalEvent"]:
         return (
-            self._get_model(".legal.model.Legal", base_class=InpadocModel).objects.get(
-                self.docdb_number
-            )
+            self._get_model(
+                ".legal.model.Legal", base_class=InpadocModel
+            ).objects.get(self.docdb_number)
         ).events
 
     @property

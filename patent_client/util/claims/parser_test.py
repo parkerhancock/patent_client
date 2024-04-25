@@ -1,8 +1,9 @@
 import json
 from pathlib import Path
 
-from .parser import ClaimsParser
 from patent_client.util.test import compare_lists
+
+from .parser import ClaimsParser
 
 example_dir = Path(__file__).parent / "examples"
 

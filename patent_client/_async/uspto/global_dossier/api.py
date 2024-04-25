@@ -1,10 +1,11 @@
-from .model import DocumentList
-from .model import GlobalDossier
-import lxml.etree as ET
 import re
 from urllib.parse import urljoin
 
+import lxml.etree as ET
+
 from patent_client._async.http_client import PatentClientSession
+
+from .model import DocumentList, GlobalDossier
 
 client = PatentClientSession(
     headers={
@@ -34,7 +35,7 @@ class GlobalDossierApi:
 
     async def get_file(self, doc_number, type_code="application", office_code="US"):
         url = f"{await self.get_base_url()}/patent-family/svc/family/{type_code}/{office_code}/{doc_number}"
-        pre_flight = await client.options(url)
+        _ = await client.options(url)
         response = await client.get(url)
         response.raise_for_status()
         return GlobalDossier.model_validate_json(response.content)

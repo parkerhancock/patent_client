@@ -6,8 +6,8 @@
 
 from yankee.xml import fields as f
 
-from . import error_dir
 from ..util import Schema
+from . import error_dir
 
 
 class TagField(f.Field):

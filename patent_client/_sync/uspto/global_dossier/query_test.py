@@ -6,8 +6,7 @@
 
 import pytest
 
-from .query import QueryBuilder
-from .query import QueryException
+from .query import QueryBuilder, QueryException
 
 builder = QueryBuilder()
 

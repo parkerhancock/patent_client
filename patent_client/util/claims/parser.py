@@ -1,7 +1,6 @@
 import re
 from itertools import zip_longest
 
-
 SPLIT_RE = re.compile(
     r"^\s*([\d\-\.]+[\)\.]|\.Iadd\.[\d\-\.]+\.|\.\[[\d\-\.]+\.)", flags=re.MULTILINE
 )

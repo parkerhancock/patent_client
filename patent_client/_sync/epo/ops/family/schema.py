@@ -5,7 +5,6 @@
 # ********************************************************************************
 
 from yankee.xml import fields as f
-from yankee.xml.schema import fields as f
 
 from ..number_service.schema import DocumentIdSchema
 from ..published.schema.biblio import DocDbNumberField

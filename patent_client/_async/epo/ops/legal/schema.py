@@ -1,11 +1,11 @@
-from typing import *
+from typing import Dict
 
 from yankee.util import clean_whitespace
 from yankee.xml import fields as f
 
-from .national_codes import LegalCodes
 from ..number_service.schema import DocumentIdSchema
 from ..util import Schema
+from .national_codes import LegalCodes
 
 code_db = LegalCodes()
 

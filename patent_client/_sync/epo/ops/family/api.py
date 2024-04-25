@@ -4,8 +4,8 @@
 # *           Source File: patent_client/_async/epo/ops/family/api.py            *
 # ********************************************************************************
 
-from .model import Family
 from ..session import asession
+from .model import Family
 
 
 class FamilyAsyncApi:

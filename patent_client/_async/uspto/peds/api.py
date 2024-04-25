@@ -1,14 +1,12 @@
 import datetime
 import logging
-from typing import Dict
-from typing import List
-from typing import Optional
+from typing import Dict, List, Optional
 
 from httpx._exceptions import HTTPStatusError
 
-from .model import Document
-from .model import PedsPage
 from patent_client._async.http_client import PatentClientSession
+
+from .model import Document, PedsPage
 
 logger = logging.getLogger(__name__)
 
@@ -30,9 +28,6 @@ class PedsDownException(Exception):
 class PatentExaminationDataSystemApi:
     base_url = "https://ped.uspto.gov/api"
     search_fields: Dict = dict()
-
-    def __init__(self):
-        query_id = None
 
     async def is_online(self) -> bool:
         response = await client.get(

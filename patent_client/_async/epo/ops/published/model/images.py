@@ -1,15 +1,11 @@
 from pathlib import Path
-from typing import List
-from typing import Optional
+from typing import List, Optional
 
-from pydantic import computed_field
-from pydantic import Field
-from pypdf import PdfReader
-from pypdf import PdfWriter
+from pydantic import Field, computed_field
+from pypdf import PdfReader, PdfWriter
 
+from ...util import EpoBaseModel, InpadocModel
 from ..schema.images import ImagesSchema
-from ...util import EpoBaseModel
-from ...util import InpadocModel
 
 
 class Section(EpoBaseModel):

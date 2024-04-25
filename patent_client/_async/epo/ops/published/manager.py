@@ -1,12 +1,12 @@
 import math
 
+from patent_client.util.manager import AsyncManager
+
 from .api import PublishedAsyncApi
 from .cql import generate_query
 from .model.biblio import BiblioResult
-from .model.fulltext import Claims
-from .model.fulltext import Description
+from .model.fulltext import Claims, Description
 from .model.images import ImageDocument
-from patent_client.util.manager import AsyncManager
 
 
 def get_ranges(limit=None, offset=0, page_size=100):
