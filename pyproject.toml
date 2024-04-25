@@ -40,26 +40,27 @@ hishel = "^0.0.20"
 async-property = "^0.2.2"
 httpx = {extras = ["http2"], version = "^0.27.0"}
 
+# Documentation Dependencies
+
 [tool.poetry.group.docs]
 optional = true
 
 [tool.poetry.group.docs.dependencies]
 
 # Documentation Dependencies
-furo                       = {optional=true, version="^2022.6"}
-linkify-it-py              = {optional=true, version="^2.0"}
-myst-parser                = {optional=true, version=">=0.17"}
-sphinx                     = {optional=true, version="^5.0.2"}
-sphinx-autodoc-typehints   = {optional=true, version="^1.19"}
-sphinx-automodapi          = {optional=true, version=">=0.14"}
-sphinx-copybutton          = {optional=true, version=">=0.5"}
-sphinx-design              = {optional=true, version=">=0.2"}
-sphinx-notfound-page       = {optional=true, version=">=0.8"}
-sphinxcontrib-apidoc       = {optional=true, version="^0.3"}
-sphinxcontrib-mermaid      = {optional=true, version="^0.7.1"}
-nbsphinx                   = {optional=true, version="^0.8.9"}
-IPython                    = {optional=true, version="^7.17.0"}
-nest-asyncio = "^1.5.8"
+furo                       = "^2022.6"
+linkify-it-py              = "^2.0"
+myst-parser                = ">=0.17"
+sphinx                     = "^5.0.2"
+sphinx-autodoc-typehints   = "^1.19"
+sphinx-automodapi          = ">=0.14"
+sphinx-copybutton          = ">=0.5"
+sphinx-design              = ">=0.2"
+sphinx-notfound-page       = ">=0.8"
+sphinxcontrib-apidoc       = "^0.3"
+sphinxcontrib-mermaid      = "^0.7.1"
+nbsphinx                   = "^0.8.9"
+IPython                    = "^7.17.0"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^7.1.2"

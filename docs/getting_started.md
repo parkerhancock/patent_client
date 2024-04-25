@@ -8,7 +8,7 @@ To install
 pip install patent_client
 ```
 
-If you are only interested in using the USPTO API's, no further setup is necessary. Skip ahead to the next section.
+If you are only interested in using the USPTO API's (exlcuding the Open Data Portal), no further setup is necessary. Skip ahead to the next section.
 
 If you want to take advantage of the European Patent Office's Open Patent Services,
 which supports Inpadoc and Epo Register documents, you will need to set up your API key:
@@ -25,6 +25,16 @@ register a new account (Free up to 4GB of data / month, which is usually more th
 ```console
 PATENT_CLIENT_EPO_API_KEY="<Consumer Key Here>"
 PATENT_CLIENT_EPO_SECRET="<Consumer Key Secret Here>"
+```
+
+### How to get a USPTO Open Data Portal API key
+
+**Step 1:** Go to [ODP - My API Key](https://beta-data.uspto.gov/key/myapikey) and follow the instructions for obtaining an API key.
+
+**Step 2:** Set your environment variables as:
+
+```console
+PATENT_CLIENT_ODP_API_KEY="<API Key here>"
 ```
 
 ## Basic Use
@@ -155,17 +165,4 @@ Managers also behave like Django QuerySets, and support [values](https://docs.dj
     'INTELLIGENT ASSISTANT',
     'STYLUS FIRMWARE UPDATES'
 ]
-```
-### Async/Await
-
-Patent Client also has optional `async/await` support for all methods that trigger I/O to an API endpoint.
-To use the asyncio methods, simply use `async with` for iterators, and call any methods with a `a` prefix:
-
-```python
-apps = list()
-async for app in USApplication.objects.filter(first_named_applicant="Google"):
-  apps.append(app)
-
-app = await USApplication.objects.aget("16123456")
-
 ```

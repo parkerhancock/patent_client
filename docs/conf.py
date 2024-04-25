@@ -49,7 +49,6 @@ extensions = [
     "sphinx.ext.githubpages",
     "sphinx.ext.napoleon",  # Google & NumPy Style Autodocs
     "myst_parser",  # Myst-Style Markdown parser
-    "sphinxcontrib.mermaid",  # Mermaid addon for MyST
     "nbsphinx",  # Jupyter Notebook support
     "IPython.sphinxext.ipython_console_highlighting",  # ipython3 lexer
 ]
