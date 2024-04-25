@@ -1,7 +1,5 @@
 import typing as tp
 
-import httpx
-
 from patent_client import SETTINGS
 from ...http_client import PatentClientSession
 

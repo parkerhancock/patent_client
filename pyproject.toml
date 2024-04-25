@@ -29,21 +29,16 @@ python = ">=3.9,<3.13"
 # Required Dependencies
 lxml = "^4.9.0"
 python-dateutil = "^2.8.2"
-inflection = "^0.5.1"
 openpyxl = "^3.0.10"
 #yankee = {path="../yankee", develop=true}
 yankee = "^0.1.43"
-zipp = "^3.8.1"
 
 pydantic = "^2.4.2"
 pydantic-settings = "^2.0.3"
 pypdf = "^3.17.0"
 hishel = "^0.0.20"
-tqdm = "^4.66.1"
-httpx = {extras = ["h2"], version = "^0.27.0"}
-requests = "^2.31.0"
-h2 = "^4.1.0"
 async-property = "^0.2.2"
+httpx = {extras = ["http2"], version = "^0.27.0"}
 
 [tool.poetry.group.docs]
 optional = true
