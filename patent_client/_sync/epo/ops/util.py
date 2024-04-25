@@ -8,11 +8,12 @@ from typing import List
 from typing import Optional
 from typing import TYPE_CHECKING
 
-from pydantic import computed_field
+from pydantic import computed_field, ConfigDict
 from pydantic import model_validator
 from yankee.xml.schema import Schema as XmlSchema
 
-from patent_client.util.pydantic_util import BaseModel, async_proxy, AsyncProxy
+from async_property.base import AsyncPropertyDescriptor
+from patent_client.util.pydantic_util import BaseModel
 
 
 if TYPE_CHECKING:
@@ -33,6 +34,7 @@ class Schema(XmlSchema):
 
 
 class EpoBaseModel(BaseModel):
+    model_config = ConfigDict(ignored_types=(AsyncPropertyDescriptor,))
     __schema__: Optional[XmlSchema] = None
 
     @model_validator(mode="before")
@@ -66,12 +68,11 @@ class InpadocModel(EpoBaseModel):
 
     @property
     def description(self) -> Optional[str]:
-        return AsyncProxy(
+        return (
             self._get_model(
                 ".published.model.Description", base_class=InpadocModel
-            ).objects.get(self.docdb_number),
-            attr="description",
-        )
+            ).objects.get(self.docdb_number)
+        ).description
 
     @property
     def claims(self) -> "Claims":
@@ -82,18 +83,17 @@ class InpadocModel(EpoBaseModel):
     @property
     def legal(self) -> List["LegalEvent"]:
         return (
-            self._get_model(".legal.model.Legal", base_class=InpadocModel)
-            .objects.get(self.docdb_number)
-            .events
-        )
+            self._get_model(".legal.model.Legal", base_class=InpadocModel).objects.get(
+                self.docdb_number
+            )
+        ).events
 
     @property
     def family(
         self,
     ) -> List["FamilyMember"]:
-        return AsyncProxy(
+        return (
             self._get_model(
                 ".family.model.Family", base_class=InpadocModel
-            ).objects.get(self.docdb_number),
-            attr="family_members",
-        )
+            ).objects.get(self.docdb_number)
+        ).family_members

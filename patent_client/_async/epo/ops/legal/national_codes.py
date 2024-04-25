@@ -1,6 +1,7 @@
 import datetime
 import logging
 import re
+import asyncio
 import sqlite3
 from pathlib import Path
 
@@ -24,8 +25,11 @@ def current_date():
     return datetime.datetime.now().date()
 
 
-def generate_legal_code_db():
-    current = has_current_spreadsheet()
+code_database_current = False
+
+
+async def generate_legal_code_db():
+    current = await has_current_spreadsheet()
     if current:
         logger.info("Legal Code Database is Current - skipping database creation")
         return
@@ -34,16 +38,20 @@ def generate_legal_code_db():
             logger.info(
                 "Legal Code Database is out of date - creating legal code database"
             )
-            path = get_spreadsheet()
+            path = await get_spreadsheet()
         except Exception:
             logger.exception(
                 "Could not find live code file - falling back to default dated 2023-11-05"
             )
-            path = Path(__file__).parent / "legal_code_descriptions_2023-44-0.xlsx"
+            path = (
+                Path(__file__).parent
+                / "fixtures"
+                / "legal_code_descriptions_202417.xlsx"
+            )
         create_code_database(path)
 
 
-def has_current_spreadsheet():
+async def has_current_spreadsheet():
     con = sqlite3.connect(db_location, timeout=30)
     cur = con.cursor()
     try:
@@ -79,8 +87,8 @@ async def get_spreadsheet_from_epo_website() -> tuple[datetime.date, str]:
     return (date, excel_url)
 
 
-def get_spreadsheet() -> tuple[datetime.date, Path]:
-    date, excel_url = get_spreadsheet_from_epo_website()
+async def get_spreadsheet() -> tuple[datetime.date, Path]:
+    date, excel_url = await get_spreadsheet_from_epo_website()
     out_path = (
         legal_code_dir / f"legal_code_descriptions_{date.strftime('%Y-%W-%w')}.xlsx"
     )
@@ -135,6 +143,11 @@ def create_code_database(excel_path):
 
 class LegalCodes:
     def __init__(self):
+        if not code_database_current:
+            logger.info(
+                "Legal Code Database is out of date - creating legal code database. Note this only happens once!"
+            )
+            asyncio.run(generate_legal_code_db())
         self.connection = sqlite3.connect(db_location, timeout=30)
         self.connection.row_factory = sqlite3.Row
 

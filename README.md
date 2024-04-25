@@ -99,9 +99,12 @@ True
 
 ## Async Quick Start
 
-To use the asyncio methods, simply use `async with` for iterators, and call any methods with a `a` prefix:
+To use async with Patent Client, just import the classes you need from the async module. All methods
+and iterators that access data or create a network request are asynchronous.
 
 ```python
+from patent_client._async import USApplication
+
 apps = list()
 async for app in USApplication.objects.filter(first_named_applicant="Google"):
   apps.append(app)

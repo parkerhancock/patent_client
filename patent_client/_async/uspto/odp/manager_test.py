@@ -20,28 +20,32 @@ async def test_get_one_app():
 async def test_get_app_from_search_result():
     manager = USApplicationManager()
     result = await manager.get(q="applicationNumberText:16123456")
-    assert await result.application.appl_id == "16123456"
+    application = await result.application
+    assert application.appl_id == "16123456"
 
 
 @pytest.mark.asyncio
 async def test_get_app_biblio_from_search_result():
     manager = USApplicationManager()
     result = await manager.get(q="applicationNumberText:16123456")
-    assert await result.biblio.appl_id == "16123456"
+    biblio = await result.biblio
+    assert biblio.appl_id == "16123456"
 
 
 @pytest.mark.asyncio
 async def test_get_continuity_from_search_result():
     manager = USApplicationManager()
     result = await manager.get(q="applicationNumberText:16123456")
-    assert len(await result.continuity.child_continuity) > 0
+    continuity = await result.continuity
+    assert len(continuity.child_continuity) > 0
 
 
 @pytest.mark.asyncio
 async def test_get_documents_from_search_result():
     manager = USApplicationManager()
     result = await manager.get(q="applicationNumberText:16123456")
-    assert await result.docs.count() > 0
+    documents = await result.documents
+    assert await documents.count() > 0
 
 
 @pytest.mark.asyncio

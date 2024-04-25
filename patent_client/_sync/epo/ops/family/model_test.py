@@ -15,7 +15,6 @@ from patent_client.util.test import compare_dicts
 fixtures = Path(__file__).parent / "fixtures"
 
 
-
 def test_model():
     result = Family.objects.get("EP1000000A1")
     expected_file = fixtures / "family_model_output.json"

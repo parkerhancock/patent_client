@@ -13,18 +13,15 @@ from .model import Product
 
 
 class TestProduct:
-    
     def test_can_get_latest(self):
         latest = [p for p in Product.objects.filter_by_latest()]
         assert isinstance(latest[0], Product)
 
-    
     def test_can_get_by_short_name(self):
         first = Product.objects.get_by_short_name("PTGRXML")
         assert isinstance(first, Product)
         assert isinstance(first.files[0], File)
 
-    
     def test_can_filter_by_name(self):
         first = [p for p in Product.objects.filter_by_name("Assignment")]
         first = list(first)[0]
@@ -33,7 +30,6 @@ class TestProduct:
 
 
 class TestFile:
-    
     def test_can_filter_by_short_name(self):
         results = [
             f
@@ -44,7 +40,6 @@ class TestFile:
         assert len(results) == 10
         assert isinstance(results[0], File)
 
-    
     def test_can_get_daily_assignments(self):
         results = [f for f in File.objects.filter_by_short_name("PASDL")]
         assert len(results) > 1

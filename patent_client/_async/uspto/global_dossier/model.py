@@ -6,10 +6,12 @@ from pydantic import BeforeValidator
 from pydantic import ConfigDict
 from pydantic import Field
 from pydantic import model_validator
+from pydantic import computed_field
 from pydantic.alias_generators import to_camel
 from typing_extensions import Annotated
+from async_property import async_property
 
-from patent_client.util.pydantic_util import BaseModel, async_proxy
+from patent_client.util.pydantic_util import BaseModel
 
 
 MDYDate = Annotated[
@@ -66,40 +68,40 @@ class GlobalDossierApplication(GlobalDossierBaseModel):
     def __repr__(self):
         return f"GlobalDossierApplication(app_num={self.app_num}, country_code={self.country_code})"
 
-    @property
-    def document_list(self):
-        return self._get_model(".model.DocumentList").objects.get(
+    @async_property
+    async def document_list(self) -> "DocumentList":
+        return await self._get_model(".model.DocumentList").objects.get(
             self.country_code, self.app_num, self.kind_code
         )
 
-    @property
-    def documents(self):
+    @async_property
+    async def documents(self) -> list["Document"]:
         return (
-            self._get_model(".model.DocumentList").objects.get(
+            await self._get_model(".model.DocumentList").objects.get(
                 self.country_code, self.app_num, self.kind_code
             )
         ).docs
 
-    @property
-    def office_actions(self):
+    @async_property
+    async def office_actions(self) -> list["Document"]:
         return (
-            self._get_model(".model.DocumentList")
-            .objects.get(self.country_code, self.app_num, self.kind_code)
-            .office_action_docs
-        )
+            await self._get_model(".model.DocumentList").objects.get(
+                self.country_code, self.app_num, self.kind_code
+            )
+        ).office_action_docs
 
-    @property
-    @async_proxy
-    def us_application(self):
+    @async_property
+    async def us_application(self) -> "USApplication":
         if self.country_code != "US":
             raise ValueError(
                 f"Global Dossier Application is not a US Application! {self}"
             )
-        return self._get_model("..peds.model.USApplication").objects.get(self.app_num)
+        return await self._get_model("..peds.model.USApplication").objects.get(
+            self.app_num
+        )
 
-    @property
-    @async_proxy
-    def us_publication(self):
+    @async_property
+    async def us_publication(self) -> "PublishedApplication":
         if self.country_code != "US":
             raise ValueError(
                 f"Global Dossier Application is not a US Application! {self}"
@@ -107,13 +109,12 @@ class GlobalDossierApplication(GlobalDossierBaseModel):
         pub = list(p for p in self.pub_list if p.kind_code == "A1")
         if len(pub) > 1:
             raise ValueError("More than one US publication for application!")
-        return self._get_model(
+        return await self._get_model(
             "..public_search.model.PublishedApplication"
         ).objects.get(pub[0].pub_num)
 
-    @property
-    @async_proxy
-    def us_patent(self):
+    @async_property
+    async def us_patent(self) -> "Patent":
         if self.country_code != "US":
             raise ValueError(
                 f"Global Dossier Application is not a US Application! {self}"
@@ -121,12 +122,12 @@ class GlobalDossierApplication(GlobalDossierBaseModel):
         pat = list(p for p in self.pub_list if p.kind_code in ("A", "B1", "B2"))
         if len(pat) > 1:
             raise ValueError("More than one US patent for application!")
-        return self._get_model("..public_search.model.Patent").objects.get(
+        return await self._get_model("..public_search.model.Patent").objects.get(
             pat[0].pub_num
         )
 
-    @property
-    def us_assignments(self):
+    @async_property
+    async def us_assignments(self) -> list["Assignment"]:
         if self.country_code != "US":
             raise ValueError(
                 f"Global Dossier Application is not a US Application! {self}"
@@ -166,10 +167,7 @@ class Document(GlobalDossierBaseModel):
     doc_group_code: tp.Optional[str] = None
     shareable: tp.Optional[bool] = None
 
-    def download(self, filename="", path="."):
-        return run_sync(self.adownload(filename, path))
-
-    async def adownload(self, filename="", path="."):
+    async def download(self, filename="", path="."):
         from .manager import global_dossier_api
 
         out_path = Path(path).expanduser() / (
@@ -188,7 +186,6 @@ class DocumentList(GlobalDossierBaseModel):
     country: tp.Optional[str] = None
     message: tp.Optional[str] = None
     applicant_names: "tp.List[str]" = Field(default_factory=list)
-    office_action_count: tp.Optional[int] = Field(alias="oaIndCount")
     docs: tp.List[Document] = Field(default_factory=list)
     office_action_docs: tp.List[Document] = Field(default_factory=list)
 

@@ -1,6 +1,6 @@
 interactions:
 - request:
-    body: '{"caseId": 27915804, "hl_snippets": "2", "op": "OR", "q": "\"11555621\".PN.",
+    body: '{"caseId": 27922612, "hl_snippets": "2", "op": "OR", "q": "\"11555621\".PN.",
       "queryName": "\"11555621\".PN.", "highlights": "1", "qt": "brs", "spellCheck":
       false, "viewName": "tile", "plurals": true, "britishEquivalents": true, "databaseFilters":
       [{"databaseName": "USPAT", "countryCodes": []}], "searchType": 1, "ignorePersist":
@@ -22,20 +22,116 @@ interactions:
       - Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML,
         like Gecko) Chrome/114.0.0.0 Safari/537.36
       x-access-token:
-      - eyJzdWIiOiJiZTU0YjA0ZC1mZGYxLTQ5NGMtYjUyZS00M2Q4ZWRiZjk1MDgiLCJ2ZXIiOiIxYTg3NmI0Ny0yM2NlLTQ2ZGItOWViNy1mNmRhODY3OTZjZmMiLCJleHAiOjB9
+      - eyJzdWIiOiJlZDU5MTBmMC1kMzBhLTQ5ZmEtOGE1Ny1jMjRjNWU4ZjNiOGUiLCJ2ZXIiOiJhNDVjMWVhMy1kM2QxLTQzNTQtYmQyMC0wM2JiYjZmODUyMGUiLCJleHAiOjB9
       x-requested-with:
       - XMLHttpRequest
     method: POST
     uri: https://ppubs.uspto.gov/dirsearch-public/searches/counts
   response:
-    content: '{"id":null,"caseId":27915804,"userId":null,"numResults":1,"ignorePersist":true,"fq":null,"databaseFilters":[{"databaseName":"USPAT","countryCodes":[]}],"q":"\"11555621\".PN.","queryName":"\"11555621\".PN.","userEnteredQuery":"\"11555621\".PN.","viewName":"tile","op":"OR","highlights":"1","plurals":true,"britishEquivalents":true,"searchType":1,"excludeResultsAfter":null,"dateCreated":null,"deleteIn":false,"expand":false,"expandSort":null,"expandRows":null,"expandTrackDocScores":false,"expandTrackMaxScore":false,"termGraph":{"termOrigin":[{"id":0,"name":null,"nodeType":"ROOT","parentId":null,"relation":null,"aliases":["default"],"aliasCategory":"OTHER"},{"id":1,"name":"\"11555621\"","nodeType":"TERM","parentId":0,"relation":"REGULAR","aliases":["pn"],"aliasCategory":"DOC_IDENTIFIER"}],"termRelationship":[]},"hl":false,"fl":null,"originalQuery":"\"11555621\".PN.","error":null,"terms":["\"11555621\""],"facets":[{"solrField":"document_type","count":1,"id":"USPAT"}],"pNumber":null,"hl_fl":null}'
+    content: '{"id":null,"caseId":27922612,"userId":null,"numResults":1,"ignorePersist":true,"fq":null,"databaseFilters":[{"databaseName":"USPAT","countryCodes":[]}],"q":"\"11555621\".PN.","queryName":"\"11555621\".PN.","userEnteredQuery":"\"11555621\".PN.","viewName":"tile","op":"OR","highlights":"1","plurals":true,"britishEquivalents":true,"searchType":1,"excludeResultsAfter":null,"dateCreated":null,"deleteIn":false,"expand":false,"expandSort":null,"expandRows":null,"expandTrackDocScores":false,"expandTrackMaxScore":false,"termGraph":{"termOrigin":[{"id":0,"name":null,"nodeType":"ROOT","parentId":null,"relation":null,"aliases":["default"],"aliasCategory":"OTHER"},{"id":1,"name":"\"11555621\"","nodeType":"TERM","parentId":0,"relation":"REGULAR","aliases":["pn"],"aliasCategory":"DOC_IDENTIFIER"}],"termRelationship":[]},"hl":false,"fl":null,"originalQuery":"\"11555621\".PN.","error":null,"terms":["\"11555621\""],"facets":[{"solrField":"document_type","count":1,"id":"USPAT"}],"pNumber":null,"hl_fl":null}'
     headers:
       content-type:
       - application/json
       date:
-      - Wed, 24 Apr 2024 17:32:23 GMT
+      - Wed, 24 Apr 2024 21:25:05 GMT
       server-timing:
-      - intid;desc=53eb41f98a2bfee7
+      - intid;desc=5c04a468e1a69b45
+      x-rate-limit-remaining:
+      - '46'
+    http_version: HTTP/2
+    status_code: 200
+- request:
+    body: '{"start": 0, "pageCount": 500, "sort": "date_publ desc", "docFamilyFiltering":
+      "familyIdFiltering", "searchType": 1, "familyIdEnglishOnly": true, "familyIdFirstPreferred":
+      "US-PGPUB", "familyIdSecondPreferred": "USPAT", "familyIdThirdPreferred": "FPRS",
+      "showDocPerFamilyPref": "showEnglish", "queryId": 0, "tagDocSearch": false,
+      "query": {"caseId": 27922612, "hl_snippets": "2", "op": "OR", "q": "\"11555621\".PN.",
+      "queryName": "\"11555621\".PN.", "highlights": "1", "qt": "brs", "spellCheck":
+      false, "viewName": "tile", "plurals": true, "britishEquivalents": true, "databaseFilters":
+      [{"databaseName": "USPAT", "countryCodes": []}], "searchType": 1, "ignorePersist":
+      true, "userEnteredQuery": "\"11555621\".PN."}}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '716'
+      content-type:
+      - application/json
+      host:
+      - ppubs.uspto.gov
+      user-agent:
+      - Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/114.0.0.0 Safari/537.36
+      x-access-token:
+      - eyJzdWIiOiJlZDU5MTBmMC1kMzBhLTQ5ZmEtOGE1Ny1jMjRjNWU4ZjNiOGUiLCJ2ZXIiOiJhNDVjMWVhMy1kM2QxLTQzNTQtYmQyMC0wM2JiYjZmODUyMGUiLCJleHAiOjB9
+      x-requested-with:
+      - XMLHttpRequest
+    method: POST
+    uri: https://ppubs.uspto.gov/dirsearch-public/searches/searchWithBeFamily
+  response:
+    content: '{"numFound":1,"perPage":500,"page":0,"totalPages":0,"hlSnippets":0,"sort":null,"query":{"id":null,"caseId":27922612,"userId":null,"numResults":1,"ignorePersist":true,"fq":null,"databaseFilters":[{"databaseName":"USPAT","countryCodes":[]}],"q":"\"11555621\".PN.","queryName":"\"11555621\".PN.","userEnteredQuery":"\"11555621\".PN.","viewName":"tile","op":"OR","highlights":"1","plurals":true,"britishEquivalents":true,"searchType":1,"excludeResultsAfter":null,"dateCreated":null,"deleteIn":false,"expand":true,"expandSort":"group_sort_date
+      asc, id desc ","expandRows":"100","expandTrackDocScores":true,"expandTrackMaxScore":true,"termGraph":null,"hl":false,"fl":null,"originalQuery":"\"11555621\".PN.","error":null,"terms":["\"11555621\""],"facets":[],"pNumber":null,"hl_fl":null},"duration":12,"highlightingTime":0,"cursorMarker":"AoJwgNHB3oUDNzg0OTIyNzgwIVVTLVVTLTExNTU1NjIx","totalResults":1,"numberOfFamilies":1,"error":null,"patents":[{"guid":"US-11555621-B1","publicationReferenceDocumentNumber":"11555621","compositeId":"84922780!US-US-11555621","publicationReferenceDocumentNumber1":"11555621","datePublishedKwicHits":null,"datePublished":"2023-01-17T00:00:00Z","inventionTitle":"Adapter
+      for modular catalytic monoliths","type":"USPAT","mainClassificationCode":"1/1","applicantName":["The
+      United States of America, as represented by the Secretary of the Navy"],"assigneeName":["The
+      United States of America, as represented by the Secretary of the Navy"],"uspcFullClassificationFlattened":null,"ipcCodeFlattened":"F24F13/28;F01N3/10","cpcInventiveFlattened":"B63G8/36;B01D53/86;F01N3/10;B63J2/04;F24F8/167","cpcAdditionalFlattened":"B01D2255/30;B01D2255/92;B01D2255/1025;B01D2255/20715;B01D2257/108;B01D2259/4566;B01D2257/404;B01D2255/1023;B01D2255/106;B01D2255/1026;B01D2257/502;F24F13/28;B01D2258/06;B01D2255/1021","applicationFilingDate":["2020-03-30T00:00:00Z"],"applicationFilingDateKwicHits":null,"relatedApplFilingDate":["2020-02-27T00:00:00Z","2019-04-05T00:00:00Z"],"primaryExaminer":"Duong;
+      Tom P","assistantExaminer":null,"applicationNumber":"16/834313","frontPageStart":1,"frontPageEnd":1,"drawingsStart":2,"drawingsEnd":9,"specificationStart":10,"specificationEnd":16,"claimsStart":16,"claimsEnd":16,"abstractStart":1,"abstractEnd":1,"bibStart":1,"bibEnd":1,"certCorrectionStart":0,"certCorrectionEnd":0,"certReexaminationStart":0,"certReexaminationEnd":0,"supplementalStart":0,"supplementalEnd":0,"ptabStart":0,"ptabEnd":0,"amendStart":0,"amendEnd":0,"searchReportStart":0,"searchReportEnd":0,"pageCount":16,"pageCountDisplay":"16","previouslyViewed":false,"unused":false,"imageLocation":"uspat/US/G21/556/115","imageFileName":"00000001.tif","cpcCodes":null,"queryId":null,"tags":null,"inventorsShort":"Gulian;
+      Franklin J. et al.","familyIdentifierCur":84922780,"familyIdentifierCurStr":null,"languageIndicator":"EN","databaseName":"USPT","dwImageDoctypeList":null,"dwImageLocList":null,"dwPageCountList":null,"dwImageDocidList":null,"patentFamilyMembers":null,"patentFamilyCountry":null,"patentFamilySerialNumber":null,"documentIdWithDashesDw":null,"pfPublDate":null,"pfPublDateKwicHits":null,"priorityClaimsDate":null,"priorityClaimsDateKwicHits":null,"pfApplicationSerialNumber":null,"pfApplicationDescriptor":null,"pfLanguage":null,"pfApplicationDate":null,"pfApplicationDateKwicHits":null,"clippedUri":null,"source":null,"documentId":"US
+      11555621 B1","derwentAccessionNumber":null,"documentSize":69788,"score":14.091056,"governmentInterest":["STATEMENT
+      OF GOVERNMENT INTEREST\n(1) The invention described herein may be manufactured
+      and used by or for the Government of the United States of America for governmental
+      purposes without payment of any royalties thereon or therefor."],"kindCode":["B1"],"urpn":["4916001","8066950","20050042151","20060080967","20170159529"],"urpnCode":["4916001","8066950","20050042151","20060080967","20170159529"],"descriptionStart":10,"descriptionEnd":16,"publicationReferenceDocumentNumberOne":"11555621"}],"qtime":8}'
+    headers:
+      content-type:
+      - application/json
+      date:
+      - Wed, 24 Apr 2024 21:25:05 GMT
+      server-timing:
+      - intid;desc=1bc3573c9567d475
+      x-rate-limit-remaining:
+      - '45'
+    http_version: HTTP/2
+    status_code: 200
+- request:
+    body: '{"caseId": 27922612, "hl_snippets": "2", "op": "OR", "q": "\"11555621\".PN.",
+      "queryName": "\"11555621\".PN.", "highlights": "1", "qt": "brs", "spellCheck":
+      false, "viewName": "tile", "plurals": true, "britishEquivalents": true, "databaseFilters":
+      [{"databaseName": "USPAT", "countryCodes": []}], "searchType": 1, "ignorePersist":
+      true, "userEnteredQuery": "\"11555621\".PN."}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '376'
+      content-type:
+      - application/json
+      host:
+      - ppubs.uspto.gov
+      user-agent:
+      - Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/114.0.0.0 Safari/537.36
+      x-access-token:
+      - eyJzdWIiOiJlZDU5MTBmMC1kMzBhLTQ5ZmEtOGE1Ny1jMjRjNWU4ZjNiOGUiLCJ2ZXIiOiJhNDVjMWVhMy1kM2QxLTQzNTQtYmQyMC0wM2JiYjZmODUyMGUiLCJleHAiOjB9
+      x-requested-with:
+      - XMLHttpRequest
+    method: POST
+    uri: https://ppubs.uspto.gov/dirsearch-public/searches/counts
+  response:
+    content: '{"id":null,"caseId":27922612,"userId":null,"numResults":1,"ignorePersist":true,"fq":null,"databaseFilters":[{"databaseName":"USPAT","countryCodes":[]}],"q":"\"11555621\".PN.","queryName":"\"11555621\".PN.","userEnteredQuery":"\"11555621\".PN.","viewName":"tile","op":"OR","highlights":"1","plurals":true,"britishEquivalents":true,"searchType":1,"excludeResultsAfter":null,"dateCreated":null,"deleteIn":false,"expand":false,"expandSort":null,"expandRows":null,"expandTrackDocScores":false,"expandTrackMaxScore":false,"termGraph":{"termOrigin":[{"id":0,"name":null,"nodeType":"ROOT","parentId":null,"relation":null,"aliases":["default"],"aliasCategory":"OTHER"},{"id":1,"name":"\"11555621\"","nodeType":"TERM","parentId":0,"relation":"REGULAR","aliases":["pn"],"aliasCategory":"DOC_IDENTIFIER"}],"termRelationship":[]},"hl":false,"fl":null,"originalQuery":"\"11555621\".PN.","error":null,"terms":["\"11555621\""],"facets":[{"solrField":"document_type","count":1,"id":"USPAT"}],"pNumber":null,"hl_fl":null}'
+    headers:
+      content-type:
+      - application/json
+      date:
+      - Wed, 24 Apr 2024 21:25:06 GMT
+      server-timing:
+      - intid;desc=35dd4ca34d3183cb
       x-rate-limit-remaining:
       - '44'
     http_version: HTTP/2
@@ -45,7 +141,7 @@ interactions:
       "familyIdFiltering", "searchType": 1, "familyIdEnglishOnly": true, "familyIdFirstPreferred":
       "US-PGPUB", "familyIdSecondPreferred": "USPAT", "familyIdThirdPreferred": "FPRS",
       "showDocPerFamilyPref": "showEnglish", "queryId": 0, "tagDocSearch": false,
-      "query": {"caseId": 27915804, "hl_snippets": "2", "op": "OR", "q": "\"11555621\".PN.",
+      "query": {"caseId": 27922612, "hl_snippets": "2", "op": "OR", "q": "\"11555621\".PN.",
       "queryName": "\"11555621\".PN.", "highlights": "1", "qt": "brs", "spellCheck":
       false, "viewName": "tile", "plurals": true, "britishEquivalents": true, "databaseFilters":
       [{"databaseName": "USPAT", "countryCodes": []}], "searchType": 1, "ignorePersist":
@@ -67,14 +163,14 @@ interactions:
       - Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML,
         like Gecko) Chrome/114.0.0.0 Safari/537.36
       x-access-token:
-      - eyJzdWIiOiJiZTU0YjA0ZC1mZGYxLTQ5NGMtYjUyZS00M2Q4ZWRiZjk1MDgiLCJ2ZXIiOiIxYTg3NmI0Ny0yM2NlLTQ2ZGItOWViNy1mNmRhODY3OTZjZmMiLCJleHAiOjB9
+      - eyJzdWIiOiJlZDU5MTBmMC1kMzBhLTQ5ZmEtOGE1Ny1jMjRjNWU4ZjNiOGUiLCJ2ZXIiOiJhNDVjMWVhMy1kM2QxLTQzNTQtYmQyMC0wM2JiYjZmODUyMGUiLCJleHAiOjB9
       x-requested-with:
       - XMLHttpRequest
     method: POST
     uri: https://ppubs.uspto.gov/dirsearch-public/searches/searchWithBeFamily
   response:
-    content: '{"numFound":1,"perPage":500,"page":0,"totalPages":0,"hlSnippets":0,"sort":null,"query":{"id":null,"caseId":27915804,"userId":null,"numResults":1,"ignorePersist":true,"fq":null,"databaseFilters":[{"databaseName":"USPAT","countryCodes":[]}],"q":"\"11555621\".PN.","queryName":"\"11555621\".PN.","userEnteredQuery":"\"11555621\".PN.","viewName":"tile","op":"OR","highlights":"1","plurals":true,"britishEquivalents":true,"searchType":1,"excludeResultsAfter":null,"dateCreated":null,"deleteIn":false,"expand":true,"expandSort":"group_sort_date
-      asc, id desc ","expandRows":"100","expandTrackDocScores":true,"expandTrackMaxScore":true,"termGraph":null,"hl":false,"fl":null,"originalQuery":"\"11555621\".PN.","error":null,"terms":["\"11555621\""],"facets":[],"pNumber":null,"hl_fl":null},"duration":27,"highlightingTime":0,"cursorMarker":"AoJwgNHB3oUDNzg0OTIyNzgwIVVTLVVTLTExNTU1NjIx","totalResults":1,"numberOfFamilies":1,"error":null,"patents":[{"guid":"US-11555621-B1","publicationReferenceDocumentNumber":"11555621","compositeId":"84922780!US-US-11555621","publicationReferenceDocumentNumber1":"11555621","datePublishedKwicHits":null,"datePublished":"2023-01-17T00:00:00Z","inventionTitle":"Adapter
+    content: '{"numFound":1,"perPage":500,"page":0,"totalPages":0,"hlSnippets":0,"sort":null,"query":{"id":null,"caseId":27922612,"userId":null,"numResults":1,"ignorePersist":true,"fq":null,"databaseFilters":[{"databaseName":"USPAT","countryCodes":[]}],"q":"\"11555621\".PN.","queryName":"\"11555621\".PN.","userEnteredQuery":"\"11555621\".PN.","viewName":"tile","op":"OR","highlights":"1","plurals":true,"britishEquivalents":true,"searchType":1,"excludeResultsAfter":null,"dateCreated":null,"deleteIn":false,"expand":true,"expandSort":"group_sort_date
+      asc, id desc ","expandRows":"100","expandTrackDocScores":true,"expandTrackMaxScore":true,"termGraph":null,"hl":false,"fl":null,"originalQuery":"\"11555621\".PN.","error":null,"terms":["\"11555621\""],"facets":[],"pNumber":null,"hl_fl":null},"duration":14,"highlightingTime":0,"cursorMarker":"AoJwgNHB3oUDNzg0OTIyNzgwIVVTLVVTLTExNTU1NjIx","totalResults":1,"numberOfFamilies":1,"error":null,"patents":[{"guid":"US-11555621-B1","publicationReferenceDocumentNumber":"11555621","compositeId":"84922780!US-US-11555621","publicationReferenceDocumentNumber1":"11555621","datePublishedKwicHits":null,"datePublished":"2023-01-17T00:00:00Z","inventionTitle":"Adapter
       for modular catalytic monoliths","type":"USPAT","mainClassificationCode":"1/1","applicantName":["The
       United States of America, as represented by the Secretary of the Navy"],"assigneeName":["The
       United States of America, as represented by the Secretary of the Navy"],"uspcFullClassificationFlattened":null,"ipcCodeFlattened":"F24F13/28;F01N3/10","cpcInventiveFlattened":"B63G8/36;B01D53/86;F01N3/10;B63J2/04;F24F8/167","cpcAdditionalFlattened":"B01D2255/30;B01D2255/92;B01D2255/1025;B01D2255/20715;B01D2257/108;B01D2259/4566;B01D2257/404;B01D2255/1023;B01D2255/106;B01D2255/1026;B01D2257/502;F24F13/28;B01D2258/06;B01D2255/1021","applicationFilingDate":["2020-03-30T00:00:00Z"],"applicationFilingDateKwicHits":null,"relatedApplFilingDate":["2020-02-27T00:00:00Z","2019-04-05T00:00:00Z"],"primaryExaminer":"Duong;
@@ -83,20 +179,20 @@ interactions:
       11555621 B1","derwentAccessionNumber":null,"documentSize":69788,"score":14.091056,"governmentInterest":["STATEMENT
       OF GOVERNMENT INTEREST\n(1) The invention described herein may be manufactured
       and used by or for the Government of the United States of America for governmental
-      purposes without payment of any royalties thereon or therefor."],"kindCode":["B1"],"urpn":["4916001","8066950","20050042151","20060080967","20170159529"],"urpnCode":["4916001","8066950","20050042151","20060080967","20170159529"],"descriptionStart":10,"descriptionEnd":16,"publicationReferenceDocumentNumberOne":"11555621"}],"qtime":22}'
+      purposes without payment of any royalties thereon or therefor."],"kindCode":["B1"],"urpn":["4916001","8066950","20050042151","20060080967","20170159529"],"urpnCode":["4916001","8066950","20050042151","20060080967","20170159529"],"descriptionStart":10,"descriptionEnd":16,"publicationReferenceDocumentNumberOne":"11555621"}],"qtime":8}'
     headers:
       content-type:
       - application/json
       date:
-      - Wed, 24 Apr 2024 17:32:23 GMT
+      - Wed, 24 Apr 2024 21:25:06 GMT
       server-timing:
-      - intid;desc=d64f325a3fece895
+      - intid;desc=b55481783b3bf8e3
       x-rate-limit-remaining:
       - '43'
     http_version: HTTP/2
     status_code: 200
 - request:
-    body: '{"caseId": 27915804, "hl_snippets": "2", "op": "OR", "q": "\"11555621\".PN.",
+    body: '{"caseId": 27922612, "hl_snippets": "2", "op": "OR", "q": "\"11555621\".PN.",
       "queryName": "\"11555621\".PN.", "highlights": "1", "qt": "brs", "spellCheck":
       false, "viewName": "tile", "plurals": true, "britishEquivalents": true, "databaseFilters":
       [{"databaseName": "USPAT", "countryCodes": []}], "searchType": 1, "ignorePersist":
@@ -118,118 +214,22 @@ interactions:
       - Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML,
         like Gecko) Chrome/114.0.0.0 Safari/537.36
       x-access-token:
-      - eyJzdWIiOiJiZTU0YjA0ZC1mZGYxLTQ5NGMtYjUyZS00M2Q4ZWRiZjk1MDgiLCJ2ZXIiOiIxYTg3NmI0Ny0yM2NlLTQ2ZGItOWViNy1mNmRhODY3OTZjZmMiLCJleHAiOjB9
+      - eyJzdWIiOiJlZDU5MTBmMC1kMzBhLTQ5ZmEtOGE1Ny1jMjRjNWU4ZjNiOGUiLCJ2ZXIiOiJhNDVjMWVhMy1kM2QxLTQzNTQtYmQyMC0wM2JiYjZmODUyMGUiLCJleHAiOjB9
       x-requested-with:
       - XMLHttpRequest
     method: POST
     uri: https://ppubs.uspto.gov/dirsearch-public/searches/counts
   response:
-    content: '{"id":null,"caseId":27915804,"userId":null,"numResults":1,"ignorePersist":true,"fq":null,"databaseFilters":[{"databaseName":"USPAT","countryCodes":[]}],"q":"\"11555621\".PN.","queryName":"\"11555621\".PN.","userEnteredQuery":"\"11555621\".PN.","viewName":"tile","op":"OR","highlights":"1","plurals":true,"britishEquivalents":true,"searchType":1,"excludeResultsAfter":null,"dateCreated":null,"deleteIn":false,"expand":false,"expandSort":null,"expandRows":null,"expandTrackDocScores":false,"expandTrackMaxScore":false,"termGraph":{"termOrigin":[{"id":0,"name":null,"nodeType":"ROOT","parentId":null,"relation":null,"aliases":["default"],"aliasCategory":"OTHER"},{"id":1,"name":"\"11555621\"","nodeType":"TERM","parentId":0,"relation":"REGULAR","aliases":["pn"],"aliasCategory":"DOC_IDENTIFIER"}],"termRelationship":[]},"hl":false,"fl":null,"originalQuery":"\"11555621\".PN.","error":null,"terms":["\"11555621\""],"facets":[{"solrField":"document_type","count":1,"id":"USPAT"}],"pNumber":null,"hl_fl":null}'
+    content: '{"id":null,"caseId":27922612,"userId":null,"numResults":1,"ignorePersist":true,"fq":null,"databaseFilters":[{"databaseName":"USPAT","countryCodes":[]}],"q":"\"11555621\".PN.","queryName":"\"11555621\".PN.","userEnteredQuery":"\"11555621\".PN.","viewName":"tile","op":"OR","highlights":"1","plurals":true,"britishEquivalents":true,"searchType":1,"excludeResultsAfter":null,"dateCreated":null,"deleteIn":false,"expand":false,"expandSort":null,"expandRows":null,"expandTrackDocScores":false,"expandTrackMaxScore":false,"termGraph":{"termOrigin":[{"id":0,"name":null,"nodeType":"ROOT","parentId":null,"relation":null,"aliases":["default"],"aliasCategory":"OTHER"},{"id":1,"name":"\"11555621\"","nodeType":"TERM","parentId":0,"relation":"REGULAR","aliases":["pn"],"aliasCategory":"DOC_IDENTIFIER"}],"termRelationship":[]},"hl":false,"fl":null,"originalQuery":"\"11555621\".PN.","error":null,"terms":["\"11555621\""],"facets":[{"solrField":"document_type","count":1,"id":"USPAT"}],"pNumber":null,"hl_fl":null}'
     headers:
       content-type:
       - application/json
       date:
-      - Wed, 24 Apr 2024 17:32:23 GMT
+      - Wed, 24 Apr 2024 21:25:06 GMT
       server-timing:
-      - intid;desc=27964f5fca716d71
+      - intid;desc=938e18aea9511121
       x-rate-limit-remaining:
       - '42'
-    http_version: HTTP/2
-    status_code: 200
-- request:
-    body: '{"start": 0, "pageCount": 500, "sort": "date_publ desc", "docFamilyFiltering":
-      "familyIdFiltering", "searchType": 1, "familyIdEnglishOnly": true, "familyIdFirstPreferred":
-      "US-PGPUB", "familyIdSecondPreferred": "USPAT", "familyIdThirdPreferred": "FPRS",
-      "showDocPerFamilyPref": "showEnglish", "queryId": 0, "tagDocSearch": false,
-      "query": {"caseId": 27915804, "hl_snippets": "2", "op": "OR", "q": "\"11555621\".PN.",
-      "queryName": "\"11555621\".PN.", "highlights": "1", "qt": "brs", "spellCheck":
-      false, "viewName": "tile", "plurals": true, "britishEquivalents": true, "databaseFilters":
-      [{"databaseName": "USPAT", "countryCodes": []}], "searchType": 1, "ignorePersist":
-      true, "userEnteredQuery": "\"11555621\".PN."}}'
-    headers:
-      accept:
-      - '*/*'
-      accept-encoding:
-      - gzip, deflate
-      connection:
-      - keep-alive
-      content-length:
-      - '716'
-      content-type:
-      - application/json
-      host:
-      - ppubs.uspto.gov
-      user-agent:
-      - Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML,
-        like Gecko) Chrome/114.0.0.0 Safari/537.36
-      x-access-token:
-      - eyJzdWIiOiJiZTU0YjA0ZC1mZGYxLTQ5NGMtYjUyZS00M2Q4ZWRiZjk1MDgiLCJ2ZXIiOiIxYTg3NmI0Ny0yM2NlLTQ2ZGItOWViNy1mNmRhODY3OTZjZmMiLCJleHAiOjB9
-      x-requested-with:
-      - XMLHttpRequest
-    method: POST
-    uri: https://ppubs.uspto.gov/dirsearch-public/searches/searchWithBeFamily
-  response:
-    content: '{"numFound":1,"perPage":500,"page":0,"totalPages":0,"hlSnippets":0,"sort":null,"query":{"id":null,"caseId":27915804,"userId":null,"numResults":1,"ignorePersist":true,"fq":null,"databaseFilters":[{"databaseName":"USPAT","countryCodes":[]}],"q":"\"11555621\".PN.","queryName":"\"11555621\".PN.","userEnteredQuery":"\"11555621\".PN.","viewName":"tile","op":"OR","highlights":"1","plurals":true,"britishEquivalents":true,"searchType":1,"excludeResultsAfter":null,"dateCreated":null,"deleteIn":false,"expand":true,"expandSort":"group_sort_date
-      asc, id desc ","expandRows":"100","expandTrackDocScores":true,"expandTrackMaxScore":true,"termGraph":null,"hl":false,"fl":null,"originalQuery":"\"11555621\".PN.","error":null,"terms":["\"11555621\""],"facets":[],"pNumber":null,"hl_fl":null},"duration":15,"highlightingTime":0,"cursorMarker":"AoJwgNHB3oUDNzg0OTIyNzgwIVVTLVVTLTExNTU1NjIx","totalResults":1,"numberOfFamilies":1,"error":null,"patents":[{"guid":"US-11555621-B1","publicationReferenceDocumentNumber":"11555621","compositeId":"84922780!US-US-11555621","publicationReferenceDocumentNumber1":"11555621","datePublishedKwicHits":null,"datePublished":"2023-01-17T00:00:00Z","inventionTitle":"Adapter
-      for modular catalytic monoliths","type":"USPAT","mainClassificationCode":"1/1","applicantName":["The
-      United States of America, as represented by the Secretary of the Navy"],"assigneeName":["The
-      United States of America, as represented by the Secretary of the Navy"],"uspcFullClassificationFlattened":null,"ipcCodeFlattened":"F24F13/28;F01N3/10","cpcInventiveFlattened":"B63G8/36;B01D53/86;F01N3/10;B63J2/04;F24F8/167","cpcAdditionalFlattened":"B01D2255/30;B01D2255/92;B01D2255/1025;B01D2255/20715;B01D2257/108;B01D2259/4566;B01D2257/404;B01D2255/1023;B01D2255/106;B01D2255/1026;B01D2257/502;F24F13/28;B01D2258/06;B01D2255/1021","applicationFilingDate":["2020-03-30T00:00:00Z"],"applicationFilingDateKwicHits":null,"relatedApplFilingDate":["2020-02-27T00:00:00Z","2019-04-05T00:00:00Z"],"primaryExaminer":"Duong;
-      Tom P","assistantExaminer":null,"applicationNumber":"16/834313","frontPageStart":1,"frontPageEnd":1,"drawingsStart":2,"drawingsEnd":9,"specificationStart":10,"specificationEnd":16,"claimsStart":16,"claimsEnd":16,"abstractStart":1,"abstractEnd":1,"bibStart":1,"bibEnd":1,"certCorrectionStart":0,"certCorrectionEnd":0,"certReexaminationStart":0,"certReexaminationEnd":0,"supplementalStart":0,"supplementalEnd":0,"ptabStart":0,"ptabEnd":0,"amendStart":0,"amendEnd":0,"searchReportStart":0,"searchReportEnd":0,"pageCount":16,"pageCountDisplay":"16","previouslyViewed":false,"unused":false,"imageLocation":"uspat/US/G21/556/115","imageFileName":"00000001.tif","cpcCodes":null,"queryId":null,"tags":null,"inventorsShort":"Gulian;
-      Franklin J. et al.","familyIdentifierCur":84922780,"familyIdentifierCurStr":null,"languageIndicator":"EN","databaseName":"USPT","dwImageDoctypeList":null,"dwImageLocList":null,"dwPageCountList":null,"dwImageDocidList":null,"patentFamilyMembers":null,"patentFamilyCountry":null,"patentFamilySerialNumber":null,"documentIdWithDashesDw":null,"pfPublDate":null,"pfPublDateKwicHits":null,"priorityClaimsDate":null,"priorityClaimsDateKwicHits":null,"pfApplicationSerialNumber":null,"pfApplicationDescriptor":null,"pfLanguage":null,"pfApplicationDate":null,"pfApplicationDateKwicHits":null,"clippedUri":null,"source":null,"documentId":"US
-      11555621 B1","derwentAccessionNumber":null,"documentSize":69788,"score":14.090198,"governmentInterest":["STATEMENT
-      OF GOVERNMENT INTEREST\n(1) The invention described herein may be manufactured
-      and used by or for the Government of the United States of America for governmental
-      purposes without payment of any royalties thereon or therefor."],"kindCode":["B1"],"urpn":["4916001","8066950","20050042151","20060080967","20170159529"],"urpnCode":["4916001","8066950","20050042151","20060080967","20170159529"],"descriptionStart":10,"descriptionEnd":16,"publicationReferenceDocumentNumberOne":"11555621"}],"qtime":9}'
-    headers:
-      content-type:
-      - application/json
-      date:
-      - Wed, 24 Apr 2024 17:32:23 GMT
-      server-timing:
-      - intid;desc=8a0cf9b4569f5c4f
-      x-rate-limit-remaining:
-      - '41'
-    http_version: HTTP/2
-    status_code: 200
-- request:
-    body: '{"caseId": 27915804, "hl_snippets": "2", "op": "OR", "q": "\"11555621\".PN.",
-      "queryName": "\"11555621\".PN.", "highlights": "1", "qt": "brs", "spellCheck":
-      false, "viewName": "tile", "plurals": true, "britishEquivalents": true, "databaseFilters":
-      [{"databaseName": "USPAT", "countryCodes": []}], "searchType": 1, "ignorePersist":
-      true, "userEnteredQuery": "\"11555621\".PN."}'
-    headers:
-      accept:
-      - '*/*'
-      accept-encoding:
-      - gzip, deflate
-      connection:
-      - keep-alive
-      content-length:
-      - '376'
-      content-type:
-      - application/json
-      host:
-      - ppubs.uspto.gov
-      user-agent:
-      - Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML,
-        like Gecko) Chrome/114.0.0.0 Safari/537.36
-      x-access-token:
-      - eyJzdWIiOiJiZTU0YjA0ZC1mZGYxLTQ5NGMtYjUyZS00M2Q4ZWRiZjk1MDgiLCJ2ZXIiOiIxYTg3NmI0Ny0yM2NlLTQ2ZGItOWViNy1mNmRhODY3OTZjZmMiLCJleHAiOjB9
-      x-requested-with:
-      - XMLHttpRequest
-    method: POST
-    uri: https://ppubs.uspto.gov/dirsearch-public/searches/counts
-  response:
-    content: '{"id":null,"caseId":27915804,"userId":null,"numResults":1,"ignorePersist":true,"fq":null,"databaseFilters":[{"databaseName":"USPAT","countryCodes":[]}],"q":"\"11555621\".PN.","queryName":"\"11555621\".PN.","userEnteredQuery":"\"11555621\".PN.","viewName":"tile","op":"OR","highlights":"1","plurals":true,"britishEquivalents":true,"searchType":1,"excludeResultsAfter":null,"dateCreated":null,"deleteIn":false,"expand":false,"expandSort":null,"expandRows":null,"expandTrackDocScores":false,"expandTrackMaxScore":false,"termGraph":{"termOrigin":[{"id":0,"name":null,"nodeType":"ROOT","parentId":null,"relation":null,"aliases":["default"],"aliasCategory":"OTHER"},{"id":1,"name":"\"11555621\"","nodeType":"TERM","parentId":0,"relation":"REGULAR","aliases":["pn"],"aliasCategory":"DOC_IDENTIFIER"}],"termRelationship":[]},"hl":false,"fl":null,"originalQuery":"\"11555621\".PN.","error":null,"terms":["\"11555621\""],"facets":[{"solrField":"document_type","count":1,"id":"USPAT"}],"pNumber":null,"hl_fl":null}'
-    headers:
-      content-type:
-      - application/json
-      date:
-      - Wed, 24 Apr 2024 17:32:23 GMT
-      server-timing:
-      - intid;desc=b16911f592aac269
-      x-rate-limit-remaining:
-      - '40'
     http_version: HTTP/2
     status_code: 200
 - request:
@@ -237,7 +237,7 @@ interactions:
       "familyIdFiltering", "searchType": 1, "familyIdEnglishOnly": true, "familyIdFirstPreferred":
       "US-PGPUB", "familyIdSecondPreferred": "USPAT", "familyIdThirdPreferred": "FPRS",
       "showDocPerFamilyPref": "showEnglish", "queryId": 0, "tagDocSearch": false,
-      "query": {"caseId": 27915804, "hl_snippets": "2", "op": "OR", "q": "\"11555621\".PN.",
+      "query": {"caseId": 27922612, "hl_snippets": "2", "op": "OR", "q": "\"11555621\".PN.",
       "queryName": "\"11555621\".PN.", "highlights": "1", "qt": "brs", "spellCheck":
       false, "viewName": "tile", "plurals": true, "britishEquivalents": true, "databaseFilters":
       [{"databaseName": "USPAT", "countryCodes": []}], "searchType": 1, "ignorePersist":
@@ -259,20 +259,20 @@ interactions:
       - Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML,
         like Gecko) Chrome/114.0.0.0 Safari/537.36
       x-access-token:
-      - eyJzdWIiOiJiZTU0YjA0ZC1mZGYxLTQ5NGMtYjUyZS00M2Q4ZWRiZjk1MDgiLCJ2ZXIiOiIxYTg3NmI0Ny0yM2NlLTQ2ZGItOWViNy1mNmRhODY3OTZjZmMiLCJleHAiOjB9
+      - eyJzdWIiOiJlZDU5MTBmMC1kMzBhLTQ5ZmEtOGE1Ny1jMjRjNWU4ZjNiOGUiLCJ2ZXIiOiJhNDVjMWVhMy1kM2QxLTQzNTQtYmQyMC0wM2JiYjZmODUyMGUiLCJleHAiOjB9
       x-requested-with:
       - XMLHttpRequest
     method: POST
     uri: https://ppubs.uspto.gov/dirsearch-public/searches/searchWithBeFamily
   response:
-    content: '{"numFound":1,"perPage":1,"page":0,"totalPages":0,"hlSnippets":0,"sort":null,"query":{"id":null,"caseId":27915804,"userId":null,"numResults":1,"ignorePersist":true,"fq":null,"databaseFilters":[{"databaseName":"USPAT","countryCodes":[]}],"q":"\"11555621\".PN.","queryName":"\"11555621\".PN.","userEnteredQuery":"\"11555621\".PN.","viewName":"tile","op":"OR","highlights":"1","plurals":true,"britishEquivalents":true,"searchType":1,"excludeResultsAfter":null,"dateCreated":null,"deleteIn":false,"expand":true,"expandSort":"group_sort_date
+    content: '{"numFound":1,"perPage":1,"page":0,"totalPages":0,"hlSnippets":0,"sort":null,"query":{"id":null,"caseId":27922612,"userId":null,"numResults":1,"ignorePersist":true,"fq":null,"databaseFilters":[{"databaseName":"USPAT","countryCodes":[]}],"q":"\"11555621\".PN.","queryName":"\"11555621\".PN.","userEnteredQuery":"\"11555621\".PN.","viewName":"tile","op":"OR","highlights":"1","plurals":true,"britishEquivalents":true,"searchType":1,"excludeResultsAfter":null,"dateCreated":null,"deleteIn":false,"expand":true,"expandSort":"group_sort_date
       asc, id desc ","expandRows":"100","expandTrackDocScores":true,"expandTrackMaxScore":true,"termGraph":null,"hl":false,"fl":null,"originalQuery":"\"11555621\".PN.","error":null,"terms":["\"11555621\""],"facets":[],"pNumber":null,"hl_fl":null},"duration":13,"highlightingTime":0,"cursorMarker":"AoJwgNHB3oUDNzg0OTIyNzgwIVVTLVVTLTExNTU1NjIx","totalResults":1,"numberOfFamilies":1,"error":null,"patents":[{"guid":"US-11555621-B1","publicationReferenceDocumentNumber":"11555621","compositeId":"84922780!US-US-11555621","publicationReferenceDocumentNumber1":"11555621","datePublishedKwicHits":null,"datePublished":"2023-01-17T00:00:00Z","inventionTitle":"Adapter
       for modular catalytic monoliths","type":"USPAT","mainClassificationCode":"1/1","applicantName":["The
       United States of America, as represented by the Secretary of the Navy"],"assigneeName":["The
       United States of America, as represented by the Secretary of the Navy"],"uspcFullClassificationFlattened":null,"ipcCodeFlattened":"F24F13/28;F01N3/10","cpcInventiveFlattened":"B63G8/36;B01D53/86;F01N3/10;B63J2/04;F24F8/167","cpcAdditionalFlattened":"B01D2255/30;B01D2255/92;B01D2255/1025;B01D2255/20715;B01D2257/108;B01D2259/4566;B01D2257/404;B01D2255/1023;B01D2255/106;B01D2255/1026;B01D2257/502;F24F13/28;B01D2258/06;B01D2255/1021","applicationFilingDate":["2020-03-30T00:00:00Z"],"applicationFilingDateKwicHits":null,"relatedApplFilingDate":["2020-02-27T00:00:00Z","2019-04-05T00:00:00Z"],"primaryExaminer":"Duong;
       Tom P","assistantExaminer":null,"applicationNumber":"16/834313","frontPageStart":1,"frontPageEnd":1,"drawingsStart":2,"drawingsEnd":9,"specificationStart":10,"specificationEnd":16,"claimsStart":16,"claimsEnd":16,"abstractStart":1,"abstractEnd":1,"bibStart":1,"bibEnd":1,"certCorrectionStart":0,"certCorrectionEnd":0,"certReexaminationStart":0,"certReexaminationEnd":0,"supplementalStart":0,"supplementalEnd":0,"ptabStart":0,"ptabEnd":0,"amendStart":0,"amendEnd":0,"searchReportStart":0,"searchReportEnd":0,"pageCount":16,"pageCountDisplay":"16","previouslyViewed":false,"unused":false,"imageLocation":"uspat/US/G21/556/115","imageFileName":"00000001.tif","cpcCodes":null,"queryId":null,"tags":null,"inventorsShort":"Gulian;
       Franklin J. et al.","familyIdentifierCur":84922780,"familyIdentifierCurStr":null,"languageIndicator":"EN","databaseName":"USPT","dwImageDoctypeList":null,"dwImageLocList":null,"dwPageCountList":null,"dwImageDocidList":null,"patentFamilyMembers":null,"patentFamilyCountry":null,"patentFamilySerialNumber":null,"documentIdWithDashesDw":null,"pfPublDate":null,"pfPublDateKwicHits":null,"priorityClaimsDate":null,"priorityClaimsDateKwicHits":null,"pfApplicationSerialNumber":null,"pfApplicationDescriptor":null,"pfLanguage":null,"pfApplicationDate":null,"pfApplicationDateKwicHits":null,"clippedUri":null,"source":null,"documentId":"US
-      11555621 B1","derwentAccessionNumber":null,"documentSize":69788,"score":14.091056,"governmentInterest":["STATEMENT
+      11555621 B1","derwentAccessionNumber":null,"documentSize":69788,"score":14.090198,"governmentInterest":["STATEMENT
       OF GOVERNMENT INTEREST\n(1) The invention described herein may be manufactured
       and used by or for the Government of the United States of America for governmental
       purposes without payment of any royalties thereon or therefor."],"kindCode":["B1"],"urpn":["4916001","8066950","20050042151","20060080967","20170159529"],"urpnCode":["4916001","8066950","20050042151","20060080967","20170159529"],"descriptionStart":10,"descriptionEnd":16,"publicationReferenceDocumentNumberOne":"11555621"}],"qtime":7}'
@@ -280,11 +280,11 @@ interactions:
       content-type:
       - application/json
       date:
-      - Wed, 24 Apr 2024 17:32:23 GMT
+      - Wed, 24 Apr 2024 21:25:06 GMT
       server-timing:
-      - intid;desc=914cdc3856472935
+      - intid;desc=1777c382678e9357
       x-rate-limit-remaining:
-      - '39'
+      - '41'
     http_version: HTTP/2
     status_code: 200
 - request:
@@ -302,7 +302,7 @@ interactions:
       - Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML,
         like Gecko) Chrome/114.0.0.0 Safari/537.36
       x-access-token:
-      - eyJzdWIiOiJiZTU0YjA0ZC1mZGYxLTQ5NGMtYjUyZS00M2Q4ZWRiZjk1MDgiLCJ2ZXIiOiIxYTg3NmI0Ny0yM2NlLTQ2ZGItOWViNy1mNmRhODY3OTZjZmMiLCJleHAiOjB9
+      - eyJzdWIiOiJlZDU5MTBmMC1kMzBhLTQ5ZmEtOGE1Ny1jMjRjNWU4ZjNiOGUiLCJ2ZXIiOiJhNDVjMWVhMy1kM2QxLTQzNTQtYmQyMC0wM2JiYjZmODUyMGUiLCJleHAiOjB9
       x-requested-with:
       - XMLHttpRequest
     method: GET
@@ -1020,11 +1020,11 @@ interactions:
       content-type:
       - application/json
       date:
-      - Wed, 24 Apr 2024 17:32:23 GMT
+      - Wed, 24 Apr 2024 20:51:24 GMT
       server-timing:
-      - intid;desc=6453784b5e15fbed
+      - intid;desc=d69b86f0c02952e5
       x-rate-limit-remaining:
-      - '38'
+      - '44'
     http_version: HTTP/2
     status_code: 200
 version: 1

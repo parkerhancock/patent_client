@@ -10,7 +10,8 @@ import datetime
 from typing import Optional
 from typing_extensions import Annotated
 
-from patent_client.util.pydantic_util import async_proxy
+
+from async_property.base import AsyncPropertyDescriptor
 
 from pydantic import Field, model_validator
 from typing import Optional, List, Any
@@ -21,7 +22,9 @@ from patent_client.util.pydantic_util import BaseModel
 
 
 class BaseODPModel(BaseModel):
-    model_config = ConfigDict(alias_generator=to_camel)
+    model_config = ConfigDict(
+        alias_generator=to_camel, ignored_types=(AsyncPropertyDescriptor,)
+    )
 
 
 # Common
@@ -276,6 +279,7 @@ class USApplicationBiblio(BaseODPModel):
         return self._get_model(".model.Document").objects.filter(appl_id=self.appl_id)
 
     # Aliases
+
     @property
     def biblio(self) -> "USApplicationBiblio":
         return self.bibliographic_data

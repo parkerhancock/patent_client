@@ -22,7 +22,8 @@ from pydantic.alias_generators import to_camel
 from typing_extensions import Annotated
 from typing_extensions import Self
 
-from patent_client.util.pydantic_util import BaseModel, async_proxy
+
+from patent_client.util.pydantic_util import BaseModel
 from patent_client.util.pydantic_util import Date
 from patent_client.util.pydantic_util import DateTime
 
@@ -458,6 +459,7 @@ class Document(PEDSBaseModel):
         out_path = client.download(full_url, path=path)
         return out_path
 
+    @computed_field
     @property
     def application(self) -> USApplication:
         return self._get_model(".USApplication").objects.get(

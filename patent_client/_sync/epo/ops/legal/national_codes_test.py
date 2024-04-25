@@ -20,7 +20,6 @@ def test_legal_codes():
     national_codes.current_date = dt
 
 
-
 def test_epo_website_parsing():
     sp_date, sp_url = national_codes.get_spreadsheet_from_epo_website()
     assert isinstance(sp_date, datetime.date)

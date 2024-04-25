@@ -7,6 +7,7 @@
 import datetime
 import logging
 import re
+import asyncio
 import sqlite3
 from pathlib import Path
 
@@ -30,6 +31,9 @@ def current_date():
     return datetime.datetime.now().date()
 
 
+code_database_current = False
+
+
 def generate_legal_code_db():
     current = has_current_spreadsheet()
     if current:
@@ -45,7 +49,11 @@ def generate_legal_code_db():
             logger.exception(
                 "Could not find live code file - falling back to default dated 2023-11-05"
             )
-            path = Path(__file__).parent / "legal_code_descriptions_2023-44-0.xlsx"
+            path = (
+                Path(__file__).parent
+                / "fixtures"
+                / "legal_code_descriptions_202417.xlsx"
+            )
         create_code_database(path)
 
 
@@ -141,6 +149,11 @@ def create_code_database(excel_path):
 
 class LegalCodes:
     def __init__(self):
+        if not code_database_current:
+            logger.info(
+                "Legal Code Database is out of date - creating legal code database. Note this only happens once!"
+            )
+            generate_legal_code_db()
         self.connection = sqlite3.connect(db_location, timeout=30)
         self.connection.row_factory = sqlite3.Row
 

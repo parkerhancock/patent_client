@@ -17,7 +17,7 @@ class TestGlobalDossier:
     async def test_us_lookup_docs(self):
         dossier = await GlobalDossier.objects.get("16123456")
         result = await dossier.applications[0].document_list
-        assert result.office_action_count >= 2
+        assert len(result.office_action_docs) >= 2
 
     @pytest.mark.skip("issue in pytest-recording")
     @pytest.mark.asyncio
@@ -35,17 +35,21 @@ class TestGlobalDossier:
     @pytest.mark.asyncio
     async def test_us_app_lookup_docs(self):
         result = await GlobalDossierApplication.objects.get("16123456")
-        assert isinstance(await result.document_list, DocumentList)
-        assert isinstance(await result.documents, list)
-        assert isinstance(await result.documents[0], Document)
-        assert isinstance(await result.office_actions, list)
-        assert isinstance(await result.office_actions[0], Document)
+        document_list = await result.document_list
+        documents = await result.documents
+        office_actions = await result.office_actions
+        assert isinstance(document_list, DocumentList)
+        assert isinstance(documents, list)
+        assert isinstance(documents[0], Document)
+        assert isinstance(office_actions, list)
+        assert isinstance(office_actions[0], Document)
 
     @pytest.mark.asyncio
     async def test_links(self):
         app = await GlobalDossierApplication.objects.get("16123456")
+        us_application = await app.us_application
         assert (
-            await app.us_application.patent_title
+            us_application.patent_title
             == "LEARNING ASSISTANCE DEVICE, METHOD OF OPERATING LEARNING ASSISTANCE DEVICE, LEARNING ASSISTANCE PROGRAM, LEARNING ASSISTANCE SYSTEM, AND TERMINAL DEVICE"
         )
         # Broken links to Public Patent Search
@@ -57,10 +61,11 @@ class TestGlobalDossier:
         #    GlobalDossierApplication.objects.get("16123456").us_patent.patent_title
         #    == "Learning assistance device, method of operating learning assistance device, learning assistance program, learning assistance system, and terminal device"
         # )
-        assert (await app.us_assignments.first()).id == "46816-108"
+        assignments = await app.us_assignments
+        assert (await assignments.first()).id == "46816-108"
         with pytest.raises(ValueError):
-            await GlobalDossierApplication.objects.get(
-                publication="EP1000000"
+            await (
+                await GlobalDossierApplication.objects.get(publication="EP1000000")
             ).us_application
         # Broken links to Public Patent Search
         # with pytest.raises(ValueError):
@@ -68,8 +73,8 @@ class TestGlobalDossier:
         # with pytest.raises(ValueError):
         #    GlobalDossierApplication.objects.get(publication="EP1000000").us_patent
         with pytest.raises(ValueError):
-            await GlobalDossierApplication.objects.get(
-                publication="EP1000000"
+            await (
+                await GlobalDossierApplication.objects.get(publication="EP1000000")
             ).us_assignments
 
     @pytest.mark.asyncio

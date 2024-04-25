@@ -8,13 +8,12 @@ from pathlib import Path
 
 import pytest
 
-from .api import LegalAsyncApi
+from .api import LegalApi
 
 fixtures = Path(__file__).parent / "fixtures"
 
 
-
 def test_async_example():
-    result = LegalAsyncApi.get_legal("EP1000000A1")
+    result = LegalApi.get_legal("EP1000000A1")
     assert str(result.publication_reference) == "EP1000000A1"
     assert len(result.events) >= 50

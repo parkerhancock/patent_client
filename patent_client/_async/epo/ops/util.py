@@ -2,11 +2,12 @@ from typing import List
 from typing import Optional
 from typing import TYPE_CHECKING
 
-from pydantic import computed_field
+from pydantic import computed_field, ConfigDict
 from pydantic import model_validator
 from yankee.xml.schema import Schema as XmlSchema
-
-from patent_client.util.pydantic_util import BaseModel, async_proxy, AsyncProxy
+from async_property import async_property
+from async_property.base import AsyncPropertyDescriptor
+from patent_client.util.pydantic_util import BaseModel
 
 
 if TYPE_CHECKING:
@@ -27,6 +28,7 @@ class Schema(XmlSchema):
 
 
 class EpoBaseModel(BaseModel):
+    model_config = ConfigDict(ignored_types=(AsyncPropertyDescriptor,))
     __schema__: Optional[XmlSchema] = None
 
     @model_validator(mode="before")
@@ -46,54 +48,46 @@ class InpadocModel(EpoBaseModel):
             return f"{num.country}{num.number}.{num.kind}"
         return f"{num.country}{num.number}"
 
-    @property
-    @async_proxy
-    def biblio(self) -> "InpadocBiblio":
-        return self._get_model(
+    @async_property
+    async def biblio(self) -> "InpadocBiblio":
+        return await self._get_model(
             ".published.model.InpadocBiblio", base_class=InpadocModel
         ).objects.get(self.docdb_number)
 
-    @property
-    @async_proxy
-    def images(self) -> "Images":
-        return self._get_model(
+    @async_property
+    async def images(self) -> "Images":
+        return await self._get_model(
             ".published.model.Images", base_class=InpadocModel
         ).objects.get(self.docdb_number)
 
-    @property
-    @async_proxy
-    def description(self) -> Optional[str]:
-        return AsyncProxy(
-            self._get_model(
+    @async_property
+    async def description(self) -> Optional[str]:
+        return (
+            await self._get_model(
                 ".published.model.Description", base_class=InpadocModel
-            ).objects.get(self.docdb_number),
-            attr="description",
-        )
+            ).objects.get(self.docdb_number)
+        ).description
 
-    @property
-    @async_proxy
-    def claims(self) -> "Claims":
-        return self._get_model(
+    @async_property
+    async def claims(self) -> "Claims":
+        return await self._get_model(
             ".published.model.Claims", base_class=InpadocModel
         ).objects.get(self.docdb_number)
 
-    @property
-    @async_proxy
-    def legal(self) -> List["LegalEvent"]:
+    @async_property
+    async def legal(self) -> List["LegalEvent"]:
         return (
-            self._get_model(".legal.model.Legal", base_class=InpadocModel)
-            .objects.get(self.docdb_number)
-            .events
-        )
+            await self._get_model(
+                ".legal.model.Legal", base_class=InpadocModel
+            ).objects.get(self.docdb_number)
+        ).events
 
-    @property
-    @async_proxy
-    def family(
+    @async_property
+    async def family(
         self,
     ) -> List["FamilyMember"]:
-        return AsyncProxy(
-            self._get_model(
+        return (
+            await self._get_model(
                 ".family.model.Family", base_class=InpadocModel
-            ).objects.get(self.docdb_number),
-            attr="family_members",
-        )
+            ).objects.get(self.docdb_number)
+        ).family_members

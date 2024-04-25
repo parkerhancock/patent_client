@@ -12,7 +12,6 @@ from pathlib import Path
 from .api import AssignmentApi
 
 
-
 def test_alookup():
     query = "test_query"
     filter = "OwnerName"
@@ -26,7 +25,6 @@ def test_alookup():
     assert (
         len(assignments) <= rows
     ), "Expected number of assignments to be less than or equal to requested rows"
-
 
 
 def test_download_pdf(tmp_path: Path):

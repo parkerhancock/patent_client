@@ -8,14 +8,16 @@ class TestPublished:
     async def test_inpadoc_manager(self):
         result = Inpadoc.objects.filter(applicant="Microsoft")
         assert await result.count() > 20
-        countries = await result.limit(20).values_list("country", flat=True).ato_list()
+        countries = [
+            c async for c in result.limit(20).values_list("country", flat=True)
+        ]
         assert sum(1 for c in countries if c == "US") >= 1
 
     @pytest.mark.asyncio
     async def test_get_biblio_from_result(self):
         doc = await Inpadoc.objects.filter(applicant="Google").first()
-        result = doc.biblio
-        assert len(await result.titles) > 0
+        result = await doc.biblio
+        assert len(result.titles) > 0
 
     @pytest.mark.asyncio
     async def test_get_claims_from_result(self):
@@ -27,17 +29,20 @@ class TestPublished:
     @pytest.mark.asyncio
     async def test_get_description_from_result(self):
         result = await Inpadoc.objects.get("WO2009085664A2")
-        assert len(await result.description) == 47955
+        description = await result.description
+        assert len(description) == 47955
 
     @pytest.mark.asyncio
     async def test_get_family_from_result(self):
         result = await Inpadoc.objects.get("WO2009085664A2")
-        assert len(await result.family) >= 20
+        family = await result.family
+        assert len(family) >= 20
 
     @pytest.mark.asyncio
     async def test_get_biblio_from_wo(self):
         result = await Inpadoc.objects.get("WO2009085664A2")
-        assert result.biblio.abstract is not None
+        biblio = await result.biblio
+        assert biblio.abstract is not None
 
     @pytest.mark.asyncio
     async def test_can_index_inpadoc_result(self):
@@ -49,9 +54,11 @@ class TestPublished:
     @pytest.mark.asyncio
     async def test_can_handle_single_item_ipc_classes(self):
         result = await Inpadoc.objects.get("WO2020081771")
-        assert result.biblio.intl_class is not None
+        biblio = await result.biblio
+        assert biblio.intl_class is not None
 
     @pytest.mark.asyncio
     async def test_issue_41(self):
         result = await Inpadoc.objects.get("JP2005533465A")
-        assert await result.biblio.title == None
+        biblio = await result.biblio
+        assert biblio.title == None

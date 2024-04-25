@@ -7,7 +7,6 @@
 from .api import GlobalDossierApi
 from .query import QueryBuilder
 from patent_client.util.manager import Manager
-from patent_client.util.pydantic_util import async_proxy
 
 query_builder = QueryBuilder()
 
@@ -37,15 +36,11 @@ class GlobalDossierBaseManager(Manager):
 
 
 class GlobalDossierManager(GlobalDossierBaseManager):
-    
     def get(self, *args, **kwargs):
-        return global_dossier_api.get_file(
-            **query_builder.build_query(*args, **kwargs)
-        )
+        return global_dossier_api.get_file(**query_builder.build_query(*args, **kwargs))
 
 
 class GlobalDossierApplicationManager(GlobalDossierBaseManager):
-    
     def get(self, *args, **kwargs):
         query = query_builder.build_query(*args, **kwargs)
         gd_file = global_dossier_api.get_file(**query)
@@ -62,6 +57,5 @@ class GlobalDossierApplicationManager(GlobalDossierBaseManager):
 
 
 class DocumentListManager(GlobalDossierBaseManager):
-    
     def get(self, country, doc_number, kind_code):
         return global_dossier_api.get_doc_list(country, doc_number, kind_code)

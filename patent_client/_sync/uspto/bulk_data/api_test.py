@@ -11,7 +11,6 @@ from .model import File
 from .model import Product
 
 
-
 def test_can_get_latest():
     latest = BulkDataApi.get_latest()
     first = latest[0]
@@ -19,12 +18,10 @@ def test_can_get_latest():
     assert isinstance(first.files[0], File)
 
 
-
 def test_can_get_by_short_name():
     first = BulkDataApi.get_by_short_name("PTGRXML")
     assert isinstance(first, Product)
     assert isinstance(first.files[0], File)
-
 
 
 def test_can_get_by_short_name_with_date_range():
@@ -34,7 +31,6 @@ def test_can_get_by_short_name_with_date_range():
     assert isinstance(first, Product)
     assert isinstance(first.files[0], File)
     assert len(first.files) == 10
-
 
 
 @pytest.mark.no_vcr

@@ -37,17 +37,19 @@ SUBS = [
     ("__aexit__", "__exit__"),
     ("*@pytest.mark.anyio", ""),
     ("*@pytest.mark.asyncio", ""),
-    ("*@async_proxy", ""),
+    ("*@async_proxy.*", ""),
     ('*@pytest.mark.parametrize\("anyio_backend", \["asyncio"\]\)', ""),
     ("anysqlite", "sqlite3"),
     ("AsyncManager", "Manager"),
     ("from .async_api ", "from .sync_api "),
     (".aiter_bytes", ".iter_bytes"),
     ("_async", "_sync"),
-    ('AsyncProxy\((.*), attr="(\S+)"\)', "\\2.\\3"),
+    ("from async_property import async_property", ""),
+    ("*@async_property", "@property"),
+    (r"asyncio.run\((.*)\)", r"\2"),
 ]
 COMPILED_SUBS = [
-    (re.compile(r"(^|\b)" + regex + r"($|\b)"), repl) for regex, repl in SUBS
+    (re.compile(r"(^|\b)" + regex + r"($|\b|(?=\())"), repl) for regex, repl in SUBS
 ]
 
 USED_SUBS = set()

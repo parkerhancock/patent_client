@@ -180,11 +180,8 @@ class USApplicationManager(AsyncManager["USApplication"]):
     def allowed_filters(self):
         return QueryFields.field_names()
 
-    async def ais_online(self):
+    async def is_online(self):
         return await PatentExaminationDataSystemApi.is_online()
-
-    def is_online(self):
-        return run_sync(self.ais_online())
 
 
 class DocumentManager(AsyncManager["Document"]):

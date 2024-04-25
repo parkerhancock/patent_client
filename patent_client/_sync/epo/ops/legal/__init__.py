@@ -4,6 +4,3 @@
 # *         Source File: patent_client/_async/epo/ops/legal/__init__.py          *
 # ********************************************************************************
 
-from .national_codes import generate_legal_code_db
-
-generate_legal_code_db()

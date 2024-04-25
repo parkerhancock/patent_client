@@ -1,7 +1,7 @@
 import datetime
 import importlib
 import typing as tp
-import inspect
+import functools
 import re
 
 from dateutil.parser import isoparse
@@ -9,6 +9,7 @@ from dateutil.parser import parse as parse_dt
 from pydantic import BaseModel as PydanticBaseModel
 from pydantic import BeforeValidator
 from pydantic import ConfigDict
+from async_property.base import AsyncPropertyDescriptor
 from typing_extensions import Annotated
 
 from patent_client.util.manager import Manager
@@ -53,54 +54,6 @@ class UnmanagedModelException(Exception):
 M = tp.TypeVar("M", bound=Manager)
 
 
-class AsyncProxy:
-    """
-    Proxy for an async object that ensures the object is awaited and stored.
-    """
-
-    def __init__(self, coroutine, attr=None, index=None):
-        self._coroutine = coroutine
-        self._object = None
-        self._attr = attr
-        self._index = index
-
-    async def _ensure_object(self):
-        if self._object is None:
-            self._object = await self._coroutine
-        if self._index is not None:
-            return self._object[self._index]
-        elif self._attr is not None:
-            return getattr(self._object, self._attr)
-        return self._object
-
-    def __getattr__(self, item):
-        return AsyncProxy(self._ensure_object(), attr=item)
-
-    def __getitem__(self, item):
-        return AsyncProxy(self._ensure_object(), index=item)
-
-    def __await__(self):
-        return self._ensure_object().__await__()
-
-
-class AsyncProxyDecorator:
-    def __init__(self, attr=None):
-        self._attr = attr
-
-    def __call__(self, f):
-        def wrapped_f(*args, **kwargs):
-            return AsyncProxy(f(*args, **kwargs), attr=self._attr)
-
-        return wrapped_f
-
-
-def async_proxy(function):
-    def wrapper(*args, **kwargs):
-        return AsyncProxy(function(*args, **kwargs))
-
-    return wrapper
-
-
 leading_period_re = re.compile(r"^\.+")
 
 
@@ -125,7 +78,7 @@ def get_class(class_name: str, base_class: type) -> type:
 class BaseModel(PydanticBaseModel, tp.Generic[M]):
     __manager__: tp.Optional[str] = None
     model_config = ConfigDict(
-        ignored_types=(ClassProperty,),
+        ignored_types=(ClassProperty, AsyncPropertyDescriptor),
     )
 
     @ClassProperty

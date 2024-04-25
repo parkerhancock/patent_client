@@ -26,7 +26,7 @@ class TestPublishedBiblioAsyncApi:
             "EP1000000.A1", format="epodoc"
         )
         expected_file = fixture_dir / "ep1000000_full_cycle_result.xml"
-        # expected_file.write_text(result, encoding="utf8")
+        expected_file.write_text(result, encoding="utf8")
         expected = expected_file.read_text(encoding="utf8")
         assert result == expected
 

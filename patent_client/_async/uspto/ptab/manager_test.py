@@ -30,13 +30,13 @@ class TestPtabProceeding:
     async def test_filter_with_limit(self):
         result = PtabProceeding.objects.filter(party_name="Apple").limit(26)
         assert await result.count() == 26
-        objects = await result.ato_list()
+        objects = [a async for a in result]
         assert len(objects) == 26
 
     @pytest.mark.asyncio
     async def test_offset(self):
         result = PtabProceeding.objects.filter(party_name="Apple").limit(3)
-        objects = await result.ato_list()
+        objects = [a async for a in result]
         assert await result.first() == objects[0]
         assert await result.offset(1).first() == objects[1]
         assert await result.offset(1).offset(1).first() == objects[2]

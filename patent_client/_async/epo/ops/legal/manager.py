@@ -1,6 +1,6 @@
 from yankee.data import ListCollection
 
-from .api import LegalAsyncApi
+from .api import LegalApi
 from .model import LegalEvent
 from .schema import LegalSchema
 from patent_client.util.manager import AsyncManager

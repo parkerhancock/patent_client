@@ -4,7 +4,8 @@ import datetime
 from typing import Optional
 from typing_extensions import Annotated
 
-from patent_client.util.pydantic_util import async_proxy
+from async_property import async_property
+from async_property.base import AsyncPropertyDescriptor
 
 from pydantic import Field, model_validator
 from typing import Optional, List, Any
@@ -15,7 +16,9 @@ from patent_client.util.pydantic_util import BaseModel
 
 
 class BaseODPModel(BaseModel):
-    model_config = ConfigDict(alias_generator=to_camel)
+    model_config = ConfigDict(
+        alias_generator=to_camel, ignored_types=(AsyncPropertyDescriptor,)
+    )
 
 
 # Common
@@ -251,39 +254,41 @@ class USApplicationBiblio(BaseODPModel):
     entity_status: str = Field(alias="businessEntityStatusCategory")
     app_early_pub_number: Optional[str] = Field(alias="earliestPublicationNumber")
 
-    @property
-    @async_proxy
-    def bibliographic_data(self) -> "USApplicationBiblio":
-        return self._get_model(".model.USApplicationBiblio").objects.get(
+    @async_property
+    async def bibliographic_data(self) -> "USApplicationBiblio":
+        return await self._get_model(".model.USApplicationBiblio").objects.get(
             appl_id=self.appl_id
         )
 
-    @property
-    @async_proxy
-    def application(self) -> "USApplication":
-        return self._get_model(".model.USApplication").objects.get(appl_id=self.appl_id)
+    @async_property
+    async def application(self) -> "USApplication":
+        return await self._get_model(".model.USApplication").objects.get(
+            appl_id=self.appl_id
+        )
 
-    @property
-    @async_proxy
-    def continuity(self) -> Continuity:
-        return self._get_model(".model.Continuity").objects.get(appl_id=self.appl_id)
+    @async_property
+    async def continuity(self) -> Continuity:
+        return await self._get_model(".model.Continuity").objects.get(
+            appl_id=self.appl_id
+        )
 
-    @property
-    def documents(self) -> list[Document]:
+    @async_property
+    async def documents(self) -> list[Document]:
         return self._get_model(".model.Document").objects.filter(appl_id=self.appl_id)
 
     # Aliases
-    @property
-    def biblio(self) -> "USApplicationBiblio":
-        return self.bibliographic_data
 
-    @property
-    def app(self) -> "USApplication":
-        return self.application
+    @async_property
+    async def biblio(self) -> "USApplicationBiblio":
+        return await self.bibliographic_data
 
-    @property
-    def docs(self) -> list[Document]:
-        return self.documents
+    @async_property
+    async def app(self) -> "USApplication":
+        return await self.application
+
+    @async_property
+    async def docs(self) -> list[Document]:
+        return await self.documents
 
 
 class USApplication(USApplicationBiblio):

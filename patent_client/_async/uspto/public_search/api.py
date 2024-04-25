@@ -1,21 +1,13 @@
 import asyncio
 from pathlib import Path
+from copy import deepcopy
+import json
 
 import httpx
-
 from .model import PublicSearchBiblioPage
 from .model import PublicSearchDocument
 
-import httpx
-
-session = httpx.AsyncClient(
-    headers={
-        "X-Requested-With": "XMLHttpRequest",
-        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36",
-    },
-    http2=True,
-    follow_redirects=True,
-)
+from patent_client._async.http_client import PatentClientSession
 
 
 class UsptoException(Exception):
@@ -32,8 +24,20 @@ def force_list(obj):
 
 class PublicSearchApi:
     def __init__(self):
+        self.client = PatentClientSession(
+            headers={
+                "X-Requested-With": "XMLHttpRequest",
+                "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36",
+            },
+            http2=True,
+            follow_redirects=True,
+        )
         self.session = dict()
         self.case_id = None
+        self.queries = dict()
+        self.search_query = json.loads(
+            (Path(__file__).parent / "search_query.json").read_text()
+        )
 
     async def run_query(
         self,
@@ -48,49 +52,32 @@ class PublicSearchApi:
     ) -> "PublicSearch":
         if self.case_id is None:
             await self.get_session()
-        url = "https://ppubs.uspto.gov/dirsearch-public/searches/searchWithBeFamily"
-        data = {
-            "start": start,
-            "pageCount": limit,
-            "sort": sort,
-            "docFamilyFiltering": "familyIdFiltering",
-            "searchType": 1,
-            "familyIdEnglishOnly": True,
-            "familyIdFirstPreferred": "US-PGPUB",
-            "familyIdSecondPreferred": "USPAT",
-            "familyIdThirdPreferred": "FPRS",
-            "showDocPerFamilyPref": "showEnglish",
-            "queryId": 0,
-            "tagDocSearch": False,
-            "query": {
-                "caseId": self.case_id,
-                "hl_snippets": "2",
-                "op": default_operator,
-                "q": query,
-                "queryName": query,
-                "highlights": "1",
-                "qt": "brs",
-                "spellCheck": False,
-                "viewName": "tile",
-                "plurals": expand_plurals,
-                "britishEquivalents": british_equivalents,
-                "databaseFilters": [],
-                "searchType": 1,
-                "ignorePersist": True,
-                "userEnteredQuery": query,
-            },
-        }
-        for s in force_list(sources):
-            data["query"]["databaseFilters"].append(
-                {"databaseName": s, "countryCodes": []}
-            )
+
+        data = deepcopy(self.search_query)
+        data["start"] = start
+        data["pageCount"] = limit
+        data["sort"] = sort
+        data["query"]["caseId"] = self.case_id
+        data["query"]["op"] = default_operator
+        data["query"]["q"] = query
+        data["query"]["queryName"] = query
+        data["query"]["userEnteredQuery"] = query
+        data["query"]["databaseFilters"] = [
+            {"databaseName": s, "countryCodes": []} for s in sources
+        ]
+        data["query"]["plurals"] = expand_plurals
+        data["query"]["britishEquivalents"] = british_equivalents
+
         counts = await self.make_request(
             "POST",
             "https://ppubs.uspto.gov/dirsearch-public/searches/counts",
             json=data["query"],
         )
         counts.raise_for_status()
-        query_response = await self.make_request("POST", url, json=data)
+        search_url = (
+            "https://ppubs.uspto.gov/dirsearch-public/searches/searchWithBeFamily"
+        )
+        query_response = await self.make_request("POST", search_url, json=data)
         query_response.raise_for_status()
         result = query_response.json()
         if result.get("error", None) is not None:
@@ -100,14 +87,14 @@ class PublicSearchApi:
         return PublicSearchBiblioPage.model_validate(result)
 
     async def make_request(self, method, url, **kwargs):
-        response = await session.request(method, url, **kwargs)
+        response = await self.client.request(method, url, **kwargs)
         if response.status_code == 403:
             await self.get_session()
-            response = await session.request(method, url, **kwargs)
+            response = await self.client.request(method, url, **kwargs)
         if response.status_code == 429:
             wait_time = int(response.headers["x-rate-limit-retry-after-seconds"]) + 1
             await asyncio.sleep(wait_time)
-            response = await session.request(method, url, **kwargs)
+            response = await self.client.request(method, url, **kwargs)
         return response
 
     async def get_document(self, bib) -> "PublicSearchDocument":
@@ -118,15 +105,15 @@ class PublicSearchApi:
             "includeSections": True,
             "uniqueId": None,
         }
-        response = await session.get(url, params=params)
+        response = await self.make_request("GET", url, params=params)
         response.raise_for_status()
         return PublicSearchDocument.model_validate(response.json())
 
     async def get_session(self):
-        session.cookies = httpx.Cookies()
-        response = await session.get("https://ppubs.uspto.gov/pubwebapp/")
+        self.client.cookies = httpx.Cookies()
+        response = await self.client.get("https://ppubs.uspto.gov/pubwebapp/")
         url = "https://ppubs.uspto.gov/dirsearch-public/users/me/session"
-        response = await session.post(
+        response = await self.client.post(
             url,
             json=-1,
             headers={
@@ -137,7 +124,7 @@ class PublicSearchApi:
         self.session = response.json()
         self.case_id = self.session["userCase"]["caseId"]
         self.access_token = response.headers["X-Access-Token"]
-        session.headers["X-Access-Token"] = self.access_token
+        self.client.headers["X-Access-Token"] = self.access_token
         return self.session
 
     async def _request_save(self, obj):
@@ -145,7 +132,7 @@ class PublicSearchApi:
             f"{obj.image_location}/{i:0>8}.tif"
             for i in range(1, obj.document_structure.page_count + 1)
         ]
-        response = await session.post(
+        response = await self.client.post(
             "https://ppubs.uspto.gov/dirsearch-public/print/imageviewer",
             json={
                 "caseId": self.case_id,
@@ -171,7 +158,7 @@ class PublicSearchApi:
             await self.get_session()
             print_job_id = await self._request_save(obj)
         while True:
-            response = await session.post(
+            response = await self.client.post(
                 "https://ppubs.uspto.gov/dirsearch-public/print/print-process",
                 json=[
                     print_job_id,
@@ -185,11 +172,11 @@ class PublicSearchApi:
         pdf_name = print_data[0]["pdfName"]
         with out_path.open("wb") as f:
             try:
-                request = session.build_request(
+                request = self.client.build_request(
                     "GET",
                     f"https://ppubs.uspto.gov/dirsearch-public/print/save/{pdf_name}",
                 )
-                response = await session.send(request, stream=True)
+                response = await self.client.send(request, stream=True)
                 response.raise_for_status()
                 async for chunk in response.aiter_bytes():
                     if chunk:

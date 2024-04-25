@@ -32,9 +32,7 @@ class USApplicationManager(Manager):
 
     def count(self):
         return (
-            api.post_search(
-                self._create_search_obj(fields=["applicationNumberText"])
-            )
+            api.post_search(self._create_search_obj(fields=["applicationNumberText"]))
         )["count"]
 
     def _get_results(self) -> tp.Iterator["SearchResult"]:

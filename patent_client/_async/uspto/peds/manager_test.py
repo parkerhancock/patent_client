@@ -77,7 +77,7 @@ class TestPatentExaminationData:
             "TRANSACTION REPAIR",
             "LEAPFROG TREE-JOIN",
         ]
-        apps = await data.ato_list()
+        apps = [a async for a in data]
         app_titles = [a.patent_title.upper() for a in apps]
         for t in expected_titles:
             assert t in app_titles

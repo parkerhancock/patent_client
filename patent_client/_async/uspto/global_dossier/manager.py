@@ -1,14 +1,13 @@
 from .api import GlobalDossierApi
 from .query import QueryBuilder
-from patent_client.util.manager import Manager
-from patent_client.util.pydantic_util import async_proxy
+from patent_client.util.manager import AsyncManager
 
 query_builder = QueryBuilder()
 
 global_dossier_api = GlobalDossierApi()
 
 
-class GlobalDossierBaseManager(Manager):
+class GlobalDossierBaseManager(AsyncManager):
     def filter(self, *args, **kwargs):
         raise NotImplementedError(
             "GlobalDossier can only retrieve using the GET interface"
@@ -31,7 +30,6 @@ class GlobalDossierBaseManager(Manager):
 
 
 class GlobalDossierManager(GlobalDossierBaseManager):
-    @async_proxy
     async def get(self, *args, **kwargs):
         return await global_dossier_api.get_file(
             **query_builder.build_query(*args, **kwargs)
@@ -39,7 +37,6 @@ class GlobalDossierManager(GlobalDossierBaseManager):
 
 
 class GlobalDossierApplicationManager(GlobalDossierBaseManager):
-    @async_proxy
     async def get(self, *args, **kwargs):
         query = query_builder.build_query(*args, **kwargs)
         gd_file = await global_dossier_api.get_file(**query)
@@ -56,6 +53,5 @@ class GlobalDossierApplicationManager(GlobalDossierBaseManager):
 
 
 class DocumentListManager(GlobalDossierBaseManager):
-    @async_proxy
     async def get(self, country, doc_number, kind_code):
         return await global_dossier_api.get_doc_list(country, doc_number, kind_code)

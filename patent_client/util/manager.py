@@ -15,9 +15,6 @@ from typing_extensions import Self
 from yankee.data import Collection
 from enum import Enum
 
-from .asyncio_util import run_async_iterator
-from .asyncio_util import run_sync
-
 if TYPE_CHECKING:
     pass
 

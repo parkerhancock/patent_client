@@ -9,11 +9,9 @@ import pytest
 from .manager import USApplicationManager
 
 
-
 def test_all_apps():
     manager = USApplicationManager().filter(query=dict())
     assert manager.count() > 1000
-
 
 
 def test_get_one_app():
@@ -22,40 +20,38 @@ def test_get_one_app():
     assert app.appl_id == "16123456"
 
 
-
 def test_get_app_from_search_result():
     manager = USApplicationManager()
     result = manager.get(q="applicationNumberText:16123456")
-    assert result.application.appl_id == "16123456"
-
+    application = result.application
+    assert application.appl_id == "16123456"
 
 
 def test_get_app_biblio_from_search_result():
     manager = USApplicationManager()
     result = manager.get(q="applicationNumberText:16123456")
-    assert result.biblio.appl_id == "16123456"
-
+    biblio = result.biblio
+    assert biblio.appl_id == "16123456"
 
 
 def test_get_continuity_from_search_result():
     manager = USApplicationManager()
     result = manager.get(q="applicationNumberText:16123456")
-    assert len(result.continuity.child_continuity) > 0
-
+    continuity = result.continuity
+    assert len(continuity.child_continuity) > 0
 
 
 def test_get_documents_from_search_result():
     manager = USApplicationManager()
     result = manager.get(q="applicationNumberText:16123456")
-    assert result.docs.count() > 0
-
+    documents = result.documents
+    assert documents.count() > 0
 
 
 def test_simple_keyword_searches():
     manager = USApplicationManager()
     result = manager.get("16123456")
     assert result.appl_id == "16123456"
-
 
 
 def test_combination_search():

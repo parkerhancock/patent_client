@@ -8,7 +8,6 @@ import pytest
 from .api import PublicSearchApi
 
 
-
 def test_simple_search():
     api = PublicSearchApi()
     results = api.run_query(
