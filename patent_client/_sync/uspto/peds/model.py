@@ -8,7 +8,6 @@ import datetime
 from pathlib import Path
 from typing import TYPE_CHECKING, Iterable, List, Optional
 
-
 from dateutil.relativedelta import relativedelta
 from pydantic import (
     AliasPath,
@@ -24,9 +23,9 @@ from typing_extensions import Annotated, Self
 from patent_client.util.pydantic_util import BaseModel, Date, DateTime
 
 if TYPE_CHECKING:
-    from ..public_search.model import Patent, PublishedApplication
-    from ..ptab.model import PtabProceeding
     from ...epo.ops.published.model import InpadocBiblio
+    from ..ptab.model import PtabProceeding
+    from ..public_search.model import Patent, PublishedApplication
 
 
 def parse_mdy_date(string: str) -> datetime.date:

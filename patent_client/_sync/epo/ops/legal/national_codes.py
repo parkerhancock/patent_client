@@ -4,7 +4,6 @@
 # *      Source File: patent_client/_async/epo/ops/legal/national_codes.py       *
 # ********************************************************************************
 
-import asyncio
 import datetime
 import logging
 import re

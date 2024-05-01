@@ -41,22 +41,16 @@ class PublishedBiblioAsyncApi:
     def get_biblio(
         cls, number, doc_type="publication", format="docdb"
     ) -> "BiblioResult":
-        text = cls.get_constituents(
-            number, doc_type, format, constituents="biblio"
-        )
+        text = cls.get_constituents(number, doc_type, format, constituents="biblio")
         return BiblioResult.model_validate(text)
 
     @classmethod
     def get_abstract(cls, number, doc_type="publication", format="docdb"):
-        return cls.get_constituents(
-            number, doc_type, format, constituents="abstract"
-        )
+        return cls.get_constituents(number, doc_type, format, constituents="abstract")
 
     @classmethod
     def get_full_cycle(cls, number, doc_type="publication", format="docdb"):
-        return cls.get_constituents(
-            number, doc_type, format, constituents="full-cycle"
-        )
+        return cls.get_constituents(number, doc_type, format, constituents="full-cycle")
 
 
 class PublishedFulltextAsyncApi:
@@ -92,9 +86,7 @@ class PublishedFulltextAsyncApi:
         return Description.model_validate(text)
 
     @classmethod
-    def get_claims(
-        cls, number, doc_type="publication", format="docdb"
-    ) -> "Claims":
+    def get_claims(cls, number, doc_type="publication", format="docdb") -> "Claims":
         text = cls.get_fulltext_result(
             number, doc_type="publication", format="docdb", inquiry="claims"
         )

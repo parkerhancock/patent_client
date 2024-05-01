@@ -2,6 +2,7 @@ import asyncio
 import json
 from copy import deepcopy
 from pathlib import Path
+
 import httpx
 
 from patent_client._async.http_client import PatentClientSession

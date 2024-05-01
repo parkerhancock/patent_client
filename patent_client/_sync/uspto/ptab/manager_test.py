@@ -4,40 +4,33 @@
 # *         Source File: patent_client/_async/uspto/ptab/manager_test.py         *
 # ********************************************************************************
 
-import pytest
 
 from .model import PtabDecision, PtabDocument, PtabProceeding
 
 
 class TestPtabProceeding:
-    
     def test_get_by_proceeding_number(self):
         result = PtabProceeding.objects.get("IPR2016-00831")
         assert result.respondent_patent_number == "6162705"
 
-    
     def test_get_by_patent_number(self):
         result = PtabProceeding.objects.get(patent_number="6103599")
         assert result.proceeding_number == "IPR2016-00833"
 
-    
     def test_get_by_application_number(self):
         result = PtabProceeding.objects.get(appl_id="09089931")
         assert result.proceeding_number == "IPR2016-00833"
 
-    
     def test_filter_by_party(self):
         result = PtabProceeding.objects.filter(party_name="Apple")
         assert result.count() >= 400
 
-    
     def test_filter_with_limit(self):
         result = PtabProceeding.objects.filter(party_name="Apple").limit(26)
         assert result.count() == 26
         objects = [a for a in result]
         assert len(objects) == 26
 
-    
     def test_offset(self):
         result = PtabProceeding.objects.filter(party_name="Apple").limit(3)
         objects = [a for a in result]
@@ -47,12 +40,10 @@ class TestPtabProceeding:
 
 
 class TestPtabDocument:
-    
     def test_filter_by_proceeding(self):
         result = PtabDocument.objects.filter(proceeding_number="IPR2016-00831")
         assert result.count() == 77
 
-    
     def test_sort_by_document_number(self):
         result = (
             PtabDocument.objects.filter(proceeding_number="IPR2016-00831")
@@ -63,7 +54,6 @@ class TestPtabDocument:
 
 
 class TestPtabDecision:
-    
     def test_get_by_proceeding(self):
         result = PtabDecision.objects.get(proceeding_number="IPR2016-00831")
         assert (

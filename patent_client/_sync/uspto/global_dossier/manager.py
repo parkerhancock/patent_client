@@ -38,9 +38,7 @@ class GlobalDossierBaseManager(Manager):
 
 class GlobalDossierManager(GlobalDossierBaseManager):
     def get(self, *args, **kwargs):
-        return global_dossier_api.get_file(
-            **query_builder.build_query(*args, **kwargs)
-        )
+        return global_dossier_api.get_file(**query_builder.build_query(*args, **kwargs))
 
 
 class GlobalDossierApplicationManager(GlobalDossierBaseManager):

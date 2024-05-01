@@ -4,7 +4,7 @@
 # *       Source File: patent_client/_async/uspto/public_search/manager.py       *
 # ********************************************************************************
 
-from typing import Iterator, Generic, TypeVar
+from typing import Generic, Iterator, TypeVar
 
 from patent_client.util.manager import Manager
 from patent_client.util.request_util import get_start_and_row_count

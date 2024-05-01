@@ -94,9 +94,9 @@ class QueryTest:
 
     def test_error_date_query(self):
         with pytest.raises(QueryException):
-            q = PatentBiblioManager().filter(app_filing_date="2021-00-01")._query
+            _ = PatentBiblioManager().filter(app_filing_date="2021-00-01")._query
         with pytest.raises(QueryException):
-            q = PatentBiblioManager().filter(app_filing_date=False)._query
+            _ = PatentBiblioManager().filter(app_filing_date=False)._query
 
     def test_multiple_fields(self):
         assert (

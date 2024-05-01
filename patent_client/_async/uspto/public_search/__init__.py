@@ -6,3 +6,12 @@ from .model import (
     PublishedApplication,
     PublishedApplicationBiblio,
 )
+
+__all__ = [
+    "PatentBiblio",
+    "Patent",
+    "PublishedApplicationBiblio",
+    "PublishedApplication",
+    "PublicSearchBiblio",
+    "PublicSearchDocument",
+]

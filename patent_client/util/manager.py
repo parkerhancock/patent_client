@@ -4,14 +4,7 @@ from collections import OrderedDict
 from copy import deepcopy
 from enum import Enum
 from itertools import chain
-from typing import (
-    TYPE_CHECKING,
-    AsyncIterator,
-    Generic,
-    Iterator,
-    TypeVar,
-    Union,
-)
+from typing import TYPE_CHECKING, AsyncIterator, Generic, Iterator, TypeVar, Union
 
 from typing_extensions import Self
 from yankee.data import Collection

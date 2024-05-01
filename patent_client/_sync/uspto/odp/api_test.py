@@ -15,12 +15,10 @@ def odp_api():
     return ODPApi()
 
 
-
 def test_post_search(odp_api):
     search_request = SearchRequest(q="firstNamedApplicant:STMicroelectronics S.A.")
     response = odp_api.post_search(search_request)
     assert response["count"] > 0, "Expected at least one result"
-
 
 
 def test_get_search(odp_api):
@@ -29,19 +27,16 @@ def test_get_search(odp_api):
     assert response["count"] > 0, "Expected at least one result"
 
 
-
 def test_get_application_data(odp_api):
     application_id = "15123456"
     application = odp_api.get_application_data(application_id)
     assert application.appl_id is not None, "Expected patent data"
 
 
-
 def test_get_application_basic_data(odp_api):
     application_id = "15123456"
     application = odp_api.get_application_biblio_data(application_id)
     assert application.appl_id is not None, "Expected basic patent data"
-
 
 
 def test_get_patent_term_adjustment_data(odp_api):
@@ -52,12 +47,10 @@ def test_get_patent_term_adjustment_data(odp_api):
     ), "Expected patent term adjustment data"
 
 
-
 def test_get_assignments(odp_api):
     application_id = "15123456"
     response = odp_api.get_assignments(application_id)
     assert len(response) > 0, "Expected at least one assignment"
-
 
 
 def test_get_attorney_data(odp_api):
@@ -66,12 +59,10 @@ def test_get_attorney_data(odp_api):
     assert response.attorneys is not None, "Expected attorney data"
 
 
-
 def test_get_continuity_data(odp_api):
     application_id = "15123456"
     response = odp_api.get_continuity_data(application_id)
     assert response.parent_continuity is not None, "Expected continuity data"
-
 
 
 def test_get_foreign_priority_data(odp_api):
@@ -80,12 +71,10 @@ def test_get_foreign_priority_data(odp_api):
     assert len(response) > 0, "Expected at least one foreign priority"
 
 
-
 def test_get_transactions(odp_api):
     application_id = "15123456"
     response = odp_api.get_transactions(application_id)
     assert len(response) > 0, "Expected at least one transaction"
-
 
 
 def test_get_documents(odp_api):

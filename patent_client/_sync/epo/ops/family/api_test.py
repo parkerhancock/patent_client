@@ -7,12 +7,9 @@
 import json
 from pathlib import Path
 
-import pytest
-
 from .api import FamilyAsyncApi
 
 fixtures = Path(__file__).parent / "fixtures"
-
 
 
 def test_api():

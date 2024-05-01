@@ -1,6 +1,6 @@
 import pytest
 
-from .manager import USApplicationManager, USApplicationBiblioManager
+from .manager import USApplicationBiblioManager, USApplicationManager
 
 
 @pytest.mark.asyncio

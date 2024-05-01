@@ -66,9 +66,7 @@ class USApplicationManager(Manager["USApplication"]):
         for start, rows in get_start_and_row_count(
             self.config.limit, self.config.offset, page_size=20
         ):
-            page = api.create_query(
-                **{**query_params, "start": start, "rows": rows}
-            )
+            page = api.create_query(**{**query_params, "start": start, "rows": rows})
             for app in page.applications:
                 yield app
             if len(page.applications) < rows:

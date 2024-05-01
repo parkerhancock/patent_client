@@ -4,6 +4,7 @@
 # *     Source File: patent_client/_async/uspto/public_search/model_test.py      *
 # ********************************************************************************
 
+import datetime
 import json
 from pathlib import Path
 
@@ -13,9 +14,6 @@ from .model.biblio import PublicSearchBiblioPage
 from .model.document import PublicSearchDocument
 
 fixtures = Path(__file__).parent / "fixtures"
-
-
-import datetime
 
 
 def json_serial(obj):

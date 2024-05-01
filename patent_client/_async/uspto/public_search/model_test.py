@@ -1,3 +1,4 @@
+import datetime
 import json
 from pathlib import Path
 
@@ -7,9 +8,6 @@ from .model.biblio import PublicSearchBiblioPage
 from .model.document import PublicSearchDocument
 
 fixtures = Path(__file__).parent / "fixtures"
-
-
-import datetime
 
 
 def json_serial(obj):
