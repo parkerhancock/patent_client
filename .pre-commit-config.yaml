@@ -5,7 +5,7 @@ repos:
     - id: pycln
       args: [--config=pyproject.toml]
 - repo: https://github.com/pycqa/isort
-  rev: 5.11.2
+  rev: 5.13.2
   hooks:
     - id: isort
       name: isort (python)
@@ -24,8 +24,6 @@ repos:
     -   id: check-json
     -   id: check-yaml
     -   id: debug-statements
-    -   id: flake8
-        args: ['--config=.flake8']
 -   repo: meta
     hooks:
     -   id: check-hooks-apply
