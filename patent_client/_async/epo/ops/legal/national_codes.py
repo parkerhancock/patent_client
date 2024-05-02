@@ -95,7 +95,7 @@ async def get_spreadsheet() -> tuple[datetime.date, Path]:
     if out_path.exists():
         logger.info(f"File already downloaded! Current as of {date.isoformat()}")
         return out_path
-    out_path = session.download(excel_url, path=out_path)
+    out_path = await session.download(excel_url, path=out_path)
     logger.info(f"Downloaded new live code file for date {date.isoformat()}")
     return out_path
 
@@ -119,6 +119,7 @@ def create_code_database(excel_path):
         for r in wb[wb.sheetnames[0]].iter_rows(values_only=True)
     )
     rows = data[1:]
+    cur.execute("DROP TABLE IF EXISTS legal_codes")
     cur.execute(
         """CREATE TABLE IF NOT EXISTS legal_codes (
     country_code text,
