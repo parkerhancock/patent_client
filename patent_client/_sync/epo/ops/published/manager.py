@@ -8,7 +8,7 @@ import math
 
 from patent_client.util.manager import Manager
 
-from .api import PublishedAsyncApi
+from .api import PublishedApi
 from .cql import generate_query
 from .model.biblio import BiblioResult
 from .model.fulltext import Claims, Description
@@ -44,7 +44,7 @@ class SearchManager(Manager["BiblioResult"]):
             query = self.config.filter["cql_query"]
         else:
             query = generate_query(**self.config.filter)
-        return PublishedAsyncApi.search.search(query, start, end)
+        return PublishedApi.search.search(query, start, end)
 
     def count(self) -> int:
         page = self._get_search_results_range(1, 100)
@@ -66,7 +66,7 @@ class SearchManager(Manager["BiblioResult"]):
                 break
 
     def get(self, number, doc_type="publication", format="docdb") -> BiblioResult:
-        result = PublishedAsyncApi.biblio.get_biblio(number, doc_type, format)
+        result = PublishedApi.biblio.get_biblio(number, doc_type, format)
         if len(result.documents) > 1:
             raise Exception("More than one result found! Try another query")
         return result.documents[0]
@@ -74,7 +74,7 @@ class SearchManager(Manager["BiblioResult"]):
 
 class BiblioManager(Manager):
     def get(self, doc_number) -> "BiblioResult":
-        result = PublishedAsyncApi.biblio.get_biblio(doc_number)
+        result = PublishedApi.biblio.get_biblio(doc_number)
         if len(result.documents) > 1:
             raise ValueError(f"More than one result found for {doc_number}!")
         return result.documents[0]
@@ -82,17 +82,17 @@ class BiblioManager(Manager):
 
 class ClaimsManager(Manager):
     def get(self, doc_number) -> "Claims":
-        return PublishedAsyncApi.fulltext.get_claims(doc_number)
+        return PublishedApi.fulltext.get_claims(doc_number)
 
 
 class DescriptionManager(Manager):
     def get(self, doc_number) -> Description:
-        return PublishedAsyncApi.fulltext.get_description(doc_number)
+        return PublishedApi.fulltext.get_description(doc_number)
 
 
 class ImagesManager(Manager):
     def get(self, doc_number) -> ImageDocument:
-        return PublishedAsyncApi.images.get_images(doc_number)
+        return PublishedApi.images.get_images(doc_number)
 
 
 class InpadocManager(SearchManager):

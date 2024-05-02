@@ -114,7 +114,7 @@ def handle_response(response):
     return response
 
 
-asession = PatentClientSession(
+session = PatentClientSession(
     transport=ops_transport,
     auth=OpsAuth(key=SETTINGS.epo_api_key, secret=SETTINGS.epo_api_secret),
     event_hooks={

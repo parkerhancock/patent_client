@@ -3,7 +3,7 @@ from io import BytesIO
 
 from yankee.data import AttrDict
 
-from ..session import asession
+from ..session import session
 from .model.biblio import BiblioResult
 from .model.fulltext import Claims, Description
 from .model.images import Images
@@ -12,7 +12,7 @@ from .model.search import Search
 logger = logging.getLogger(__name__)
 
 
-class PublishedBiblioAsyncApi:
+class PublishedBiblioApi:
     @classmethod
     async def get_constituents(
         cls, number, doc_type="publication", format="docdb", constituents=("biblio",)
@@ -28,7 +28,7 @@ class PublishedBiblioAsyncApi:
         if isinstance(constituents, str):
             constituents = (constituents,)
         url = base_url + ",".join(constituents)
-        response = await asession.get(url)
+        response = await session.get(url)
         return response.text
 
     @classmethod
@@ -53,7 +53,7 @@ class PublishedBiblioAsyncApi:
         )
 
 
-class PublishedFulltextAsyncApi:
+class PublishedFulltextApi:
     fulltext_jurisdictions = "EP, WO, AT, BE, BG, CA, CH, CY, CZ, DK, EE, ES, FR, GB, GR, HR, IE, IT, LT, LU, MC, MD, ME, NO, PL, PT, RO, RS, SE, SK".split(
         ", "
     )
@@ -74,7 +74,7 @@ class PublishedFulltextAsyncApi:
             raise ValueError(
                 f"Fulltext Is Not Available For Country Code {number[:2]}. Fulltext is only available in {', '.join(cls.fulltext_jurisdictions)}"
             )
-        response = await asession.get(url)
+        response = await session.get(url)
         response.raise_for_status
         return response.text
 
@@ -95,13 +95,13 @@ class PublishedFulltextAsyncApi:
         return Claims.model_validate(text)
 
 
-class PublishedSearchAsyncApi:
+class PublishedSearchApi:
     @classmethod
     async def search(cls, query, start=1, end=100):
         base_url = "http://ops.epo.org/3.2/rest-services/published-data/search"
         range = f"{start}-{end}"
         logger.debug(f"OPS Search Endpoint - Query: {query}\nRange: {start}-{end}")
-        response = await asession.get(base_url, params={"Range": range, "q": query})
+        response = await session.get(base_url, params={"Range": range, "q": query})
         if response.status_code == 404:
             return AttrDict.convert(
                 {
@@ -116,38 +116,36 @@ class PublishedSearchAsyncApi:
         return Search.model_validate(response.text)
 
 
-class PublishedImagesAsyncApi:
+class PublishedImagesApi:
     @classmethod
     async def get_images(cls, number, doc_type="publication", format="docdb"):
         base_url = f"http://ops.epo.org/3.2/rest-services/published-data/{doc_type}/{format}/{number}/images"
-        response = await asession.get(base_url)
+        response = await session.get(base_url)
         return Images.model_validate(response.text)
 
     @classmethod
     async def get_page_image(
         cls, country, number, kind, image_type, page_number, image_format="pdf"
     ):
-        response = await asession.get(
+        response = await session.get(
             f"https://ops.epo.org/3.2/rest-services/published-data/images/{country}/{number}/{kind}/{image_type}.{image_format}",
             params={"Range": page_number},
-            stream=True,
             extensions={"force_cache": True},
         )
-        return BytesIO(response.raw.read())
+        return BytesIO(response.content)
 
     @classmethod
     async def get_page_image_from_link(cls, link, page_number, image_format="pdf"):
-        response = await asession.get(
+        response = await session.get(
             f"https://ops.epo.org/3.2/rest-services/{link}.{image_format}",
             params={"Range": page_number},
-            stream=True,
             extensions={"force_cache": True},
         )
-        return BytesIO(response.raw.read())
+        return BytesIO(response.content)
 
 
-class PublishedAsyncApi:
-    biblio = PublishedBiblioAsyncApi
-    fulltext = PublishedFulltextAsyncApi
-    search = PublishedSearchAsyncApi
-    images = PublishedImagesAsyncApi
+class PublishedApi:
+    biblio = PublishedBiblioApi
+    fulltext = PublishedFulltextApi
+    search = PublishedSearchApi
+    images = PublishedImagesApi

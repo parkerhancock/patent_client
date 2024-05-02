@@ -6,7 +6,6 @@
 
 from typing import TYPE_CHECKING, List, Optional
 
-
 from async_property.base import AsyncPropertyDescriptor
 from pydantic import ConfigDict, computed_field, model_validator
 from yankee.xml.schema import Schema as XmlSchema
@@ -78,9 +77,9 @@ class InpadocModel(EpoBaseModel):
     @property
     def legal(self) -> List["LegalEvent"]:
         return (
-            self._get_model(
-                ".legal.model.Legal", base_class=InpadocModel
-            ).objects.get(self.docdb_number)
+            self._get_model(".legal.model.Legal", base_class=InpadocModel).objects.get(
+                self.docdb_number
+            )
         ).events
 
     @property
@@ -92,3 +91,7 @@ class InpadocModel(EpoBaseModel):
                 ".family.model.Family", base_class=InpadocModel
             ).objects.get(self.docdb_number)
         ).family_members
+
+    def download(self, path: str = "."):
+        images = self.images
+        return images.full_document.download(path)

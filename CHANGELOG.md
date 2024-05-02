@@ -1,8 +1,9 @@
 # Changelog
 
 ## 5.0.1 (2024-05-01)
-- Fix type annotations to be supported by Python 3.9.
+- Fix type annotations to be supported by Python 3.9 (#153, #138).
 - Raises an exception in PEDS when data removed by the USPTO is attempted to be accessed.
+- Fixed issue with downloading documents from EPO OPS (#151)
 
 ## 5.0.0 (2024-04-25)
 - Add support for the USPTO Open Data Portal

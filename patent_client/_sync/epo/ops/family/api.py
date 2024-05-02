@@ -4,7 +4,7 @@
 # *           Source File: patent_client/_async/epo/ops/family/api.py            *
 # ********************************************************************************
 
-from ..session import asession
+from ..session import session
 from .model import Family
 
 
@@ -14,5 +14,5 @@ class FamilyAsyncApi:
         url = (
             f"http://ops.epo.org/3.2/rest-services/family/{doc_type}/{format}/{number}"
         )
-        response = asession.get(url)
+        response = session.get(url)
         return Family.model_validate(response.text)

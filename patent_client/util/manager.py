@@ -250,7 +250,7 @@ class AsyncManager(BaseManager, Generic[ModelType]):
         """Get the first object in the manager"""
         try:
             return await anext(self.limit(1).__aiter__())
-        except NameError: # anext was added in 3.10
+        except NameError:  # anext was added in 3.10
             async for doc in self.limit(1):
                 return doc
 
@@ -263,3 +263,7 @@ class AsyncManager(BaseManager, Generic[ModelType]):
         if length == 0:
             raise ValueError("No documents found!")
         return await mger.first()
+
+    async def to_list(self) -> list[ModelType]:
+        """Return a list of all objects in the manager"""
+        return [item async for item in self]
