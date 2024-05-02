@@ -6,7 +6,7 @@
 
 import pytest
 
-from .manager import USApplicationManager
+from .manager import USApplicationBiblioManager, USApplicationManager
 
 
 
@@ -24,7 +24,7 @@ def test_get_one_app():
 
 
 def test_get_app_from_search_result():
-    manager = USApplicationManager()
+    manager = USApplicationBiblioManager()
     result = manager.get(q="applicationNumberText:16123456")
     application = result.application
     assert application.appl_id == "16123456"
@@ -32,7 +32,7 @@ def test_get_app_from_search_result():
 
 
 def test_get_app_biblio_from_search_result():
-    manager = USApplicationManager()
+    manager = USApplicationBiblioManager()
     result = manager.get(q="applicationNumberText:16123456")
     biblio = result.biblio
     assert biblio.appl_id == "16123456"
@@ -40,7 +40,7 @@ def test_get_app_biblio_from_search_result():
 
 
 def test_get_continuity_from_search_result():
-    manager = USApplicationManager()
+    manager = USApplicationBiblioManager()
     result = manager.get(q="applicationNumberText:16123456")
     continuity = result.continuity
     assert len(continuity.child_continuity) > 0
@@ -48,7 +48,7 @@ def test_get_continuity_from_search_result():
 
 
 def test_get_documents_from_search_result():
-    manager = USApplicationManager()
+    manager = USApplicationBiblioManager()
     result = manager.get(q="applicationNumberText:16123456")
     documents = result.documents
     assert documents.count() > 0

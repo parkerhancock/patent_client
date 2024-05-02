@@ -4,14 +4,7 @@ from collections import OrderedDict
 from copy import deepcopy
 from enum import Enum
 from itertools import chain
-from typing import (
-    TYPE_CHECKING,
-    AsyncIterator,
-    Generic,
-    Iterator,
-    TypeVar,
-    Union,
-)
+from typing import TYPE_CHECKING, AsyncIterator, Generic, Iterator, TypeVar, Union
 
 from typing_extensions import Self
 from yankee.data import Collection
@@ -255,7 +248,11 @@ class AsyncManager(BaseManager, Generic[ModelType]):
 
     async def first(self) -> ModelType:
         """Get the first object in the manager"""
-        return await anext(self.limit(1).__aiter__())
+        try:
+            return await anext(self.limit(1).__aiter__())
+        except NameError:  # anext was added in 3.10
+            async for doc in self.limit(1):
+                return doc
 
     async def get(self, *args, **kwargs) -> ModelType:
         """If the critera results in a single record, return it, else raise an exception"""
@@ -266,3 +263,7 @@ class AsyncManager(BaseManager, Generic[ModelType]):
         if length == 0:
             raise ValueError("No documents found!")
         return await mger.first()
+
+    async def to_list(self) -> list[ModelType]:
+        """Return a list of all objects in the manager"""
+        return [item async for item in self]

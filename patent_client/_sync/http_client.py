@@ -8,7 +8,7 @@ import re
 import warnings
 from hashlib import blake2b
 from pathlib import Path
-from typing import Optional
+import typing as tp
 
 import hishel
 import httpcore
@@ -73,7 +73,7 @@ class PatentClientSession(httpx.Client):
         self,
         url,
         method: str = "GET",
-        path: Optional[str | Path] = None,
+        path: tp.Optional[tp.Union[str, Path]] = None,
         **kwargs,
     ):
         # Ensure we skip the cache for file downloads

@@ -62,3 +62,9 @@ class TestPublished:
         result = await Inpadoc.objects.get("JP2005533465A")
         biblio = await result.biblio
         assert biblio.title is None
+
+    @pytest.mark.asyncio
+    async def test_document_downloading(self, tmpdir):
+        result = await Inpadoc.objects.get("WO2010050748A2")
+        await result.download(tmpdir)
+        assert len(tmpdir.listdir()) > 0

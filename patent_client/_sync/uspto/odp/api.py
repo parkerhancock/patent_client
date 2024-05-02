@@ -6,11 +6,9 @@
 
 import typing as tp
 
-import httpx
-
 from patent_client import SETTINGS
-from ...http_client import PatentClientSession
 
+from ...http_client import PatentClientSession
 from .model import (
     Assignment,
     Continuity,
@@ -31,9 +29,7 @@ class ODPApi:
     base_url = "https://beta-api.uspto.gov"
 
     def __init__(self):
-        self.client = PatentClientSession(
-            headers={"X-API-KEY": SETTINGS.odp_api_key}
-        )
+        self.client = PatentClientSession(headers={"X-API-KEY": SETTINGS.odp_api_key})
 
     def post_search(
         self, search_request: SearchRequest = SearchRequest()

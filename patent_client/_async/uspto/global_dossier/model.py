@@ -10,9 +10,9 @@ from typing_extensions import Annotated
 from patent_client.util.pydantic_util import BaseModel
 
 if tp.TYPE_CHECKING:
+    from ..assignment.model import Assignment
     from ..peds.model import USApplication
     from ..public_search.model import Patent, PublishedApplication
-    from ..assignment.model import Assignment
 
 MDYDate = Annotated[
     datetime.date,

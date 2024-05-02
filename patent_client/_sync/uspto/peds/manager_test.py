@@ -12,7 +12,7 @@ from pathlib import Path
 import pytest
 from pypdf import PdfReader
 
-from .model import PedsPage, USApplication
+from .model import PedsPage, USApplication, RemovedDataException
 
 fixtures = Path(__file__).parent / "fixtures"
 
@@ -100,6 +100,7 @@ class TestPatentExaminationData:
         assert data.count() == 5
 
     
+    @pytest.mark.skip("Continuity information has been removed from PEDS")
     def test_get_child_data(self):
         parent = USApplication.objects.get("14018930")
         child = parent.child_continuity[0]
@@ -108,6 +109,7 @@ class TestPatentExaminationData:
         # assert child.child.patent_title == "LEAPFROG TREE-JOIN"
 
     
+    @pytest.mark.skip("Continuity information has been removed from PEDS")
     def test_get_parent_data(self):
         child = USApplication.objects.get("14018930")
         parent = child.parent_continuity[0]
@@ -117,12 +119,14 @@ class TestPatentExaminationData:
         # assert parent.parent.patent_title == "Leapfrog Tree-Join"
 
     
+    @pytest.mark.skip("PTA information has been removed from PEDS")
     def test_pta_history(self):
         app = USApplication.objects.get("14095073")
         pta_history = app.pta_pte_tran_history
         assert len(pta_history) > 10
 
     
+    @pytest.mark.skip("PTA information has been removed from PEDS")
     def test_pta_summary(self):
         app = USApplication.objects.get("14095073")
         expected = OrderedDict(
@@ -156,6 +160,7 @@ class TestPatentExaminationData:
             assert getattr(app, k, None) is not None
 
     
+    @pytest.mark.skip("Attorney information has been removed from PEDS")
     def test_attorneys(self):
         app = USApplication.objects.get("14095073")
         assert len(app.attorneys) > 1
@@ -182,6 +187,7 @@ class TestPatentExaminationData:
         assert apps.count() == counter
 
     
+    @pytest.mark.skip("PTA information has been removed from PEDS")
     def test_expiration_date(self):
         app = USApplication.objects.get("15384723")
         expected = {
@@ -212,6 +218,7 @@ class TestPatentExaminationData:
             assert expected[k] == actual[k]
 
     
+    @pytest.mark.skip("Expiration date is not supported for PCT applications")
     def test_expiration_date_for_pct_apps(self):
         app = USApplication.objects.get("PCT/US2014/020588")
         with pytest.raises(Exception) as exc:
@@ -229,6 +236,27 @@ class TestPatentExaminationData:
         assert app.priority_claim == "20170229"
 
 
+    
+    def test_raises_warning_on_missing_information(self):
+        app = USApplication.objects.get(patent_number=10000000)
+        with pytest.raises(RemovedDataException):
+            _ = app.expiration
+            
+        with pytest.raises(RemovedDataException):
+            _ = app.attorneys
+            
+        with pytest.raises(RemovedDataException):
+            _ = app.pta_pte_summary
+            
+        with pytest.raises(RemovedDataException):
+            _ = app.pta_pte_tran_history
+            
+        with pytest.raises(RemovedDataException):
+            _ = app.parent_continuity
+            
+        with pytest.raises(RemovedDataException):
+            _ = app.child_continuity
+
 class TestDocuments:
     @pytest.mark.vcr
     def test_can_get_document_listing(self):
@@ -244,32 +272,5 @@ class TestDocuments:
         backref_app = doc.application
         assert app.appl_id == backref_app.appl_id
 
-    @pytest.mark.skip("Downloading currently doesn't work")
-    @pytest.mark.vcr
-    def test_can_download_document(self, tmp_path):
-        app = USApplication.objects.get(patent_number=10000000)
-        doc = app.documents.to_list()[-1]
-        result = doc.download(path=tmp_path)
-        assert "14643719 - 2015-03-10 - IDS" in str(result)
-        assert result.exists()
-        assert len(list(tmp_path.glob("*.pdf"))) == 1
 
-    @pytest.mark.skip("Downloading currently doesn't work")
-    @pytest.mark.vcr
-    def test_can_download_document_without_appl_id(self, tmp_path):
-        app = USApplication.objects.get(patent_number=10000000)
-        doc = app.documents.to_list()[-1]
-        result = doc.download(path=tmp_path, include_appl_id=False)
-        assert "2015-03-10 - IDS" in str(result)
-        assert "14643719" not in str(result)
-        assert result.exists()
-        assert len(list(tmp_path.glob("*.pdf"))) == 1
 
-    @pytest.mark.skip("Downloading currently doesn't work")
-    @pytest.mark.vcr
-    def test_multiple_document_download(self, tmp_path):
-        app = USApplication.objects.get(patent_number=10000000)
-        docs = app.documents.to_list()[-2:]
-        result = app.documents.download(docs, path=tmp_path)
-        reader = PdfReader(str(result))
-        assert reader.numPages == 8

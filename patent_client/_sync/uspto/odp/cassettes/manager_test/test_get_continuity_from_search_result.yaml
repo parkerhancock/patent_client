@@ -15,39 +15,41 @@ interactions:
       host:
       - beta-api.uspto.gov
       user-agent:
-      - python-httpx/0.27.0
+      - Mozilla/5.0 Python Patent Clientbot/5.0.0 (parkerhancock@users.noreply.github.com)
       x-api-key:
       - oygzgndgwifcpqgvdcitnhorcdvpbb
     method: POST
     uri: https://beta-api.uspto.gov/api/v1/patent/applications/search
   response:
-    content: '{"count":1,"patentBag":[{"applicationNumberText":"16123456"}],"requestIdentifier":"66d5442f-bf62-4f50-9376-c0f13d8989b0"}'
+    content: '{"count":1,"patentBag":[{"applicationNumberText":"16123456"}],"requestIdentifier":"f4ae7e19-bb60-415c-95a0-2da73068e764"}'
     headers:
-      Connection:
-      - keep-alive
-      Content-Length:
-      - '121'
-      Content-Type:
-      - application/json
-      Date:
-      - Wed, 24 Apr 2024 17:31:41 GMT
-      X-Amzn-Trace-Id:
-      - Root=1-662941fd-737af25474f409b834883246;Parent=577b7d751237250d;Sampled=0;lineage=33e8fdb8:0
       access-control-allow-headers:
       - Origin, X-Requested-With, Content-Type, Accept
       access-control-allow-methods:
       - OPTIONS,POST,GET
       access-control-allow-origin:
       - '*'
+      content-length:
+      - '121'
+      content-type:
+      - application/json
+      date:
+      - Wed, 01 May 2024 18:46:29 GMT
       x-amz-apigw-id:
-      - Wvc_nHNdIAMFY9w=
-      x-amzn-RequestId:
-      - 66d5442f-bf62-4f50-9376-c0f13d8989b0
-    http_version: HTTP/1.1
+      - XGsg2Fx5oAMFqcQ=
+      x-amzn-requestid:
+      - f4ae7e19-bb60-415c-95a0-2da73068e764
+      x-amzn-trace-id:
+      - Root=1-66328e05-62897ece0f73897f3dd462a6;Parent=6ba95cffdac29d41;Sampled=0;lineage=33e8fdb8:0
+    http_version: HTTP/2
     status_code: 200
 - request:
-    body: '{"q": "applicationNumberText:16123456", "pagination": {"offset": 0, "limit":
-      1}}'
+    body: '{"q": "applicationNumberText:16123456", "fields": ["firstInventorToFileIndicator",
+      "filingDate", "inventorBag", "customerNumber", "groupArtUnitNumber", "inventionTitle",
+      "correspondenceAddressBag", "applicationConfirmationNumber", "docketNumber",
+      "applicationNumberText", "firstInventorName", "firstApplicantName", "cpcClassificationBag",
+      "businessEntityStatusCategory", "earliestPublicationNumber"], "pagination":
+      {"offset": 0, "limit": 1}}'
     headers:
       accept:
       - application/json
@@ -56,305 +58,50 @@ interactions:
       connection:
       - keep-alive
       content-length:
-      - '80'
+      - '441'
       content-type:
       - application/json
       host:
       - beta-api.uspto.gov
       user-agent:
-      - python-httpx/0.27.0
+      - Mozilla/5.0 Python Patent Clientbot/5.0.0 (parkerhancock@users.noreply.github.com)
       x-api-key:
       - oygzgndgwifcpqgvdcitnhorcdvpbb
     method: POST
     uri: https://beta-api.uspto.gov/api/v1/patent/applications/search
   response:
-    content: '{"count":1,"patentBag":[{"firstInventorToFileIndicator":"Y","applicationStatusCode":150,"applicationTypeCode":"UTL","filingDate":"2018-09-06","assignmentBag":[{"assignmentReceivedDate":"2018-09-07","assignorBag":[{"executionDate":"2018-07-11","assignorName":"KANADA,
-      SHOJI"}],"frameNumber":"0108","pageNumber":3,"reelNumber/frameNumber":"046816/0108","assignmentRecordedDate":"2018-09-07","conveyanceText":"ASSIGNMENT
-      OF ASSIGNORS INTEREST (SEE DOCUMENT FOR DETAILS).","assigneeBag":[{"assigneeAddress":{"cityName":"TOKYO","geographicRegionCode":"JPX","postalCode":"106-8620","addressLineOneText":"26-30,
-      NISHIAZABU 2-CHOME, MINATO-KU"},"assigneeNameText":"FUJIFILM CORPORATION"}],"assignmentMailedDate":"2018-09-10","reelNumber":"046816","correspondenceAddress":[{"addressLineOneText":"8110
-      GATEHOUSE ROAD, SUITE 100E","correspondentNameText":"BIRCH, STEWART, KOLASCH
-      & BIRCH, LLP","addressLineTwoText":"FALLS CHURCH, VA 22042"}]}],"class/subclass":"382/159","recordAttorney":{"attorneyBag":[{"activeIndicator":"ACTIVE","firstName":"CHENG
-      KANG","lastName":"HSU","registrationNumber":"61007","attorneyAddressBag":[{"cityName":"FALLS
-      CHURCH","geographicRegionName":"VIRGINIA","geographicRegionCode":"VA","countryCode":"US","postalCode":"22042","nameLineOneText":"BIRCH,
-      STEWART, KOLASCH & BIRCH LLP","countryName":"UNITED STATES","addressLineOneText":"8110
-      GATEHOUSE ROAD, SUITE 100 EAST","addressLineTwoText":"P.O. BOX 747"}],"telecommunicationAddressBag":[{"telecommunicationNumber":"703-205-8000","usageTypeCategory":"TEL"}],"registeredPractitionerCategory":"ATTNY"},{"activeIndicator":"ACTIVE","firstName":"TOYOHIKO","lastName":"KONNO","registrationNumber":"68859","attorneyAddressBag":[{"cityName":"FALLS
-      CHURCH","geographicRegionName":"VIRGINIA","geographicRegionCode":"VA","countryCode":"US","postalCode":"22042-124","nameLineOneText":"BIRCH,
-      STEWART, KOLASCH & BIRCH, LLP","countryName":"UNITED STATES","addressLineOneText":"8110
-      GATEHOUSE ROAD","addressLineTwoText":"SUITE 100 EAST"}],"telecommunicationAddressBag":[{"telecommunicationNumber":"703-205-8000","usageTypeCategory":"TEL"}],"registeredPractitionerCategory":"AGENT"},{"activeIndicator":"ACTIVE","firstName":"ATSUSHI","lastName":"NAKAMURA","registrationNumber":"78681","attorneyAddressBag":[{"cityName":"FALLS
-      CHURCH","geographicRegionName":"VIRGINIA","geographicRegionCode":"VA","countryCode":"US","postalCode":"22042","nameLineOneText":"BIRCH
-      STEWART KOLASCH & BIRCH, LLP","countryName":"UNITED STATES","addressLineOneText":"8110
-      GATEHOUSE ROAD, SUITE 100E"}],"telecommunicationAddressBag":[{"telecommunicationNumber":"703-205-8000","usageTypeCategory":"TEL"}],"registeredPractitionerCategory":"AGENT"},{"activeIndicator":"ACTIVE","firstName":"CHAD","lastName":"WELLS","registrationNumber":"50875","attorneyAddressBag":[{"cityName":"FALLS
-      CHURCH","geographicRegionName":"VIRGINIA","geographicRegionCode":"VA","countryCode":"US","postalCode":"22042-124","nameLineOneText":"BIRCH,
-      STEWART, KOLASCH & BIRCH, LLP","countryName":"UNITED STATES","addressLineOneText":"8110
-      GATEHOUSE ROAD, SUITE 100 EAST"}],"telecommunicationAddressBag":[{"telecommunicationNumber":"703-205-8000","usageTypeCategory":"TEL"}],"registeredPractitionerCategory":"ATTNY"},{"activeIndicator":"ACTIVE","firstName":"TERRELL","lastName":"BIRCH","registrationNumber":"19382","attorneyAddressBag":[{"cityName":"FALLS
-      CHURCH","geographicRegionName":"VIRGINIA","geographicRegionCode":"VA","countryCode":"US","postalCode":"22042","nameLineOneText":"BIRCH
-      STEWART KOLASCH & BIRCH, LLP","countryName":"UNITED STATES","addressLineOneText":"8100
-      GATEHOUSE ROAD SUITE 500 E"}],"telecommunicationAddressBag":[{"telecommunicationNumber":"703-205-8000","usageTypeCategory":"TEL"}],"registeredPractitionerCategory":"ATTNY"},{"activeIndicator":"ACTIVE","firstName":"JOHNNY","lastName":"BAILEY","registrationNumber":"32881","attorneyAddressBag":[{"cityName":"FALLS
-      CHURCH","geographicRegionName":"VIRGINIA","geographicRegionCode":"VA","countryCode":"US","postalCode":"22042","nameLineOneText":"BIRCH
-      STEWART KOLASCH AND BIRCH LLP","countryName":"UNITED STATES","addressLineOneText":"8110
-      GATEHOUSE ROAD SUITE 100 E"}],"telecommunicationAddressBag":[{"telecommunicationNumber":"703-205-8000","usageTypeCategory":"TEL"}],"registeredPractitionerCategory":"ATTNY"},{"activeIndicator":"ACTIVE","firstName":"JOSEPH","lastName":"ANDERSON","registrationNumber":"79684","attorneyAddressBag":[{"cityName":"DIX
-      HILLS","geographicRegionName":"NEW YORK","geographicRegionCode":"NY","countryCode":"US","postalCode":"11746","countryName":"UNITED
-      STATES","addressLineOneText":"8 MEHAN LANE"}],"telecommunicationAddressBag":[{"telecommunicationNumber":"631-901-5580","usageTypeCategory":"TEL"}],"registeredPractitionerCategory":"AGENT"},{"activeIndicator":"ACTIVE","firstName":"EUGENE","lastName":"PEREZ","registrationNumber":"48501","attorneyAddressBag":[{"cityName":"FALLS
-      CHURCH","geographicRegionName":"VIRGINIA","geographicRegionCode":"VA","countryCode":"US","postalCode":"22040","nameLineOneText":"BIRCH,
-      STEWART, KOLASCH AND BIRCH LLP","countryName":"UNITED STATES","addressLineOneText":"8110
-      GATEHOUSE ROAD,SUITE 100E"}],"telecommunicationAddressBag":[{"telecommunicationNumber":"703-205-8000","usageTypeCategory":"TEL"}],"registeredPractitionerCategory":"ATTNY"},{"activeIndicator":"ACTIVE","firstName":"CHARLES","lastName":"GORENSTEIN","registrationNumber":"29271","attorneyAddressBag":[{"cityName":"FALLS
-      CHURCH","geographicRegionName":"VIRGINIA","geographicRegionCode":"VA","countryCode":"US","postalCode":"22042","nameLineOneText":"BIRCH
-      STEWART KOLASCH AND BIRCH LLP","countryName":"UNITED STATES","addressLineOneText":"8110
-      GATEHOUSE ROAD","addressLineTwoText":"SUITE 100 E"}],"telecommunicationAddressBag":[{"telecommunicationNumber":"703-205-8000","usageTypeCategory":"TEL"}],"registeredPractitionerCategory":"ATTNY"},{"activeIndicator":"ACTIVE","firstName":"CHRISTOPHER","lastName":"MCDONALD","registrationNumber":"41533","attorneyAddressBag":[{"cityName":"FALLS
-      CHURCH","geographicRegionName":"VIRGINIA","geographicRegionCode":"VA","countryCode":"US","postalCode":"22042-124","nameLineOneText":"BIRCH
-      STEWART KOLASCH AND BIRCH","countryName":"UNITED STATES","addressLineOneText":"8110
-      GATEHOUSE ROAD","addressLineTwoText":"SUITE100 E"}],"telecommunicationAddressBag":[{"telecommunicationNumber":"703-205-8000","usageTypeCategory":"TEL"}],"registeredPractitionerCategory":"ATTNY"},{"activeIndicator":"ACTIVE","firstName":"ANDREW","lastName":"MEIKLE","registrationNumber":"32868","attorneyAddressBag":[{"cityName":"FALLS
-      CHURCH","geographicRegionName":"VIRGINIA","geographicRegionCode":"VA","countryCode":"US","postalCode":"22042","nameLineOneText":"BIRCH
-      STEWART KOLASCH AND BIRCH LLP","countryName":"UNITED STATES","addressLineOneText":"8110
-      GATEHOUSE ROAD","addressLineTwoText":"SUITE 100 EAST"}],"telecommunicationAddressBag":[{"telecommunicationNumber":"703-205-8000","usageTypeCategory":"TEL"}],"registeredPractitionerCategory":"ATTNY"},{"activeIndicator":"ACTIVE","firstName":"MARC","lastName":"WEINER","registrationNumber":"32181","attorneyAddressBag":[{"cityName":"FALLS
-      CHURCH","geographicRegionName":"VIRGINIA","geographicRegionCode":"VA","countryCode":"US","postalCode":"22042","nameLineOneText":"BIRCH
-      STEWART KOLASCH AND BIRCH LLP","countryName":"UNITED STATES","addressLineOneText":"8110
-      GATEHOUSE ROAD","addressLineTwoText":"SUITE 100 E"}],"telecommunicationAddressBag":[{"telecommunicationNumber":"703-205-8000","usageTypeCategory":"TEL"}],"registeredPractitionerCategory":"ATTNY"},{"activeIndicator":"ACTIVE","firstName":"QING","lastName":"LIN","registrationNumber":"76455","attorneyAddressBag":[{"cityName":"FALLS
-      CHURCH","geographicRegionName":"VIRGINIA","geographicRegionCode":"VA","countryCode":"US","postalCode":"22030","nameLineOneText":"BIRCH,
-      STEWART KOLASCH & BIRCH, LLP","countryName":"UNITED STATES","addressLineOneText":"8110
-      GATEHOUSE ROAD","addressLineTwoText":"SUITE 100 E"}],"telecommunicationAddressBag":[{"telecommunicationNumber":"703-205-8085","usageTypeCategory":"TEL"}],"registeredPractitionerCategory":"AGENT"},{"activeIndicator":"ACTIVE","firstName":"GERALD","lastName":"MURPHY","registrationNumber":"28977","attorneyAddressBag":[{"cityName":"FALLS
-      CHURCH","geographicRegionName":"VIRGINIA","geographicRegionCode":"VA","countryCode":"US","postalCode":"22042","nameLineOneText":"BIRCH
-      STEWART KOLASCH AND BIRCH LLP","countryName":"UNITED STATES","addressLineOneText":"8110
-      GATEHOUSE RD STE 500E"}],"nameSuffix":"JR","telecommunicationAddressBag":[{"telecommunicationNumber":"703-205-8000","usageTypeCategory":"TEL"}],"registeredPractitionerCategory":"ATTNY"},{"activeIndicator":"ACTIVE","firstName":"HYUK
-      JUNG","lastName":"KWON","registrationNumber":"78391","attorneyAddressBag":[{"cityName":"FALLS
-      CHURCH","geographicRegionName":"VIRGINIA","geographicRegionCode":"VA","countryCode":"US","postalCode":"22042","nameLineOneText":"BIRCH,
-      STEWART, KOLASCH & BIRCH, LLP","countryName":"UNITED STATES","addressLineOneText":"8110
-      GATEHOUSE ROAD, SUITE 100E"}],"telecommunicationAddressBag":[{"telecommunicationNumber":"703-205-8000","usageTypeCategory":"TEL"}],"registeredPractitionerCategory":"ATTNY"},{"activeIndicator":"ACTIVE","firstName":"JASON","lastName":"RHODES","registrationNumber":"47305","attorneyAddressBag":[{"cityName":"FALLS
-      CHURCH","geographicRegionName":"VIRGINIA","geographicRegionCode":"VA","countryCode":"US","postalCode":"22042","nameLineOneText":"BIRCH
-      STEWART KOLASCH AND BIRCH","countryName":"UNITED STATES","addressLineOneText":"8110
-      GATEHOUSE ROAD SUITE 100 E"}],"telecommunicationAddressBag":[{"telecommunicationNumber":"703-205-8000","usageTypeCategory":"TEL"}],"registeredPractitionerCategory":"AGENT"},{"activeIndicator":"ACTIVE","firstName":"JAMES","lastName":"ELLER","registrationNumber":"39538","attorneyAddressBag":[{"cityName":"FALLS
-      CHURCH","geographicRegionName":"VIRGINIA","geographicRegionCode":"VA","countryCode":"US","postalCode":"22040","nameLineOneText":"BIRCH
-      STEWARD KOLASCH AND BIRCH, LLP","countryName":"UNITED STATES","addressLineOneText":"P.
-      O. BOX 747"}],"nameSuffix":"JR","telecommunicationAddressBag":[{"telecommunicationNumber":"703-205-8000","usageTypeCategory":"TEL"}],"registeredPractitionerCategory":"ATTNY"},{"activeIndicator":"ACTIVE","firstName":"JAMES","lastName":"LARSEN","registrationNumber":"58565","attorneyAddressBag":[{"cityName":"BOTHELL","geographicRegionName":"WASHINGTON","geographicRegionCode":"WA","countryCode":"US","postalCode":"98021","nameLineOneText":"LARSEN
-      IP, PLLC","countryName":"UNITED STATES","addressLineOneText":"24207 25TH AVE
-      SE"}],"telecommunicationAddressBag":[{"telecommunicationNumber":"425-298-6846","usageTypeCategory":"TEL"}],"registeredPractitionerCategory":"ATTNY"},{"activeIndicator":"ACTIVE","firstName":"PAUL","lastName":"LEWIS","registrationNumber":"43368","attorneyAddressBag":[{"cityName":"FALLS
-      CHURCH","geographicRegionName":"VIRGINIA","geographicRegionCode":"VA","countryCode":"US","postalCode":"22040","nameLineOneText":"BIRCH
-      STEWARD KOLASCH AND BIRCH, LLP","countryName":"UNITED STATES","addressLineOneText":"8110
-      GATE HOUSE ROAD, SUITE 100 EAST"}],"telecommunicationAddressBag":[{"telecommunicationNumber":"703-205-8000","usageTypeCategory":"TEL"}],"registeredPractitionerCategory":"AGENT"},{"activeIndicator":"ACTIVE","firstName":"SETH","lastName":"KIM","registrationNumber":"54577","attorneyAddressBag":[{"cityName":"FALLS
-      CHURCH","geographicRegionName":"VIRGINIA","geographicRegionCode":"VA","countryCode":"US","postalCode":"22040-074","nameLineOneText":"BIRCH,
-      STEWART, KOLASCH & BIRCH, LLP","countryName":"UNITED STATES","addressLineOneText":"P.O.
-      BOX 747","addressLineTwoText":"8110 GATEHOUSE ROAD, SUITE 500 EAST"}],"telecommunicationAddressBag":[{"telecommunicationNumber":"703-205-8000","usageTypeCategory":"TEL"}],"registeredPractitionerCategory":"ATTNY"},{"activeIndicator":"ACTIVE","firstName":"LAURA","lastName":"LUTZ","registrationNumber":"43451","attorneyAddressBag":[{"cityName":"NICHOLASVILLE","geographicRegionName":"KENTUCKY","geographicRegionCode":"KY","countryCode":"US","postalCode":"40356","nameLineOneText":"BIRCH
-      STEWART KOLASCH & BIRCH","countryName":"UNITED STATES","addressLineOneText":"101
-      STONEWALL DRIVE"}],"telecommunicationAddressBag":[{"telecommunicationNumber":"703-205-8000","usageTypeCategory":"TEL"}],"registeredPractitionerCategory":"ATTNY"},{"activeIndicator":"ACTIVE","firstName":"CRAIG","lastName":"MCROBBIE","registrationNumber":"42874","attorneyAddressBag":[{"cityName":"FALLS
-      CHURCH","geographicRegionName":"VIRGINIA","geographicRegionCode":"VA","countryCode":"US","postalCode":"22042","nameLineOneText":"BIRCH,
-      STEWARD, KOLASCH AND BIRCH, LLP","countryName":"UNITED STATES","addressLineOneText":"8110
-      GATE HOUSE ROAD, SUITE 100 EAST"},{"cityName":"FALLS CHURCH","geographicRegionName":"VIRGINIA","geographicRegionCode":"VA","countryCode":"US","postalCode":"22042","nameLineOneText":"BIRCH,
-      STEWARD, KOLASCH AND BIRCH, LLP","countryName":"UNITED STATES","addressLineOneText":"8110
-      GATE HOUSE ROAD, SUITE 100 EAST"},{"cityName":"FALLS CHURCH,","geographicRegionName":"VIRGINIA","geographicRegionCode":"VA","countryCode":"US","postalCode":"220420000","nameLineOneText":"BIRCH,
-      STEWART, KOLASCH","nameLineTwoText":"& BIRCH, L L P","countryName":"UNITED STATES","addressLineOneText":"8110
-      GATEHOUSE ROAD","addressLineTwoText":"SUITE 500E"},{"cityName":"FALLS CHURCH,","geographicRegionName":"VIRGINIA","geographicRegionCode":"VA","countryCode":"US","postalCode":"220420000","nameLineOneText":"BIRCH,
-      STEWART, KOLASCH","nameLineTwoText":"& BIRCH, L L P","countryName":"UNITED STATES","addressLineOneText":"8110
-      GATEHOUSE ROAD","addressLineTwoText":"SUITE 500E"}],"telecommunicationAddressBag":[{"telecommunicationNumber":"703-208-4002","usageTypeCategory":"TEL"},{"telecommunicationNumber":"703-848-0387","usageTypeCategory":"TEL"},{"telecommunicationNumber":"703-208-4002","usageTypeCategory":"TEL"},{"telecommunicationNumber":"703-848-0387","usageTypeCategory":"TEL"}],"registeredPractitionerCategory":"AGENT"},{"activeIndicator":"ACTIVE","firstName":"CHAD","lastName":"BILLINGS","registrationNumber":"48917","attorneyAddressBag":[{"cityName":"FALLS
-      CHURCH","geographicRegionName":"VIRGINIA","geographicRegionCode":"VA","countryCode":"US","postalCode":"22042","nameLineOneText":"BIRCH
-      STEWART KOLASCH AND BIRCH LLP","countryName":"UNITED STATES","addressLineOneText":"8110
-      GATEHOUSE ROAD SUITE 500 E"}],"telecommunicationAddressBag":[{"telecommunicationNumber":"703-205-8000","usageTypeCategory":"TEL"}],"registeredPractitionerCategory":"AGENT"},{"activeIndicator":"ACTIVE","firstName":"MAKI","lastName":"HATSUMI","registrationNumber":"40417","attorneyAddressBag":[{"cityName":"FALLS
-      CHURCH","geographicRegionName":"VIRGINIA","geographicRegionCode":"VA","countryCode":"US","postalCode":"22040","nameLineOneText":"BIRCH
-      STEWARD KOLASCH AND BIRCH, LLP","countryName":"UNITED STATES","addressLineOneText":"8110
-      GATE HOUSE ROAD, SUITE 100 EAST"},{"cityName":"FALLS CHURCH,","geographicRegionName":"VIRGINIA","geographicRegionCode":"VA","countryCode":"US","postalCode":"220400000","nameLineOneText":"BIRCH,
-      STEWART, KOLASCH","nameLineTwoText":"& BIRCH, L L P","countryName":"UNITED STATES","addressLineOneText":"8110
-      GATEHOUSE RD.","addressLineTwoText":"SUITE 500 EAST"}],"telecommunicationAddressBag":[{"telecommunicationNumber":"703-205-8000","usageTypeCategory":"TEL"},{"telecommunicationNumber":"703-205-8000","usageTypeCategory":"TEL"}],"registeredPractitionerCategory":"AGENT"},{"activeIndicator":"ACTIVE","firstName":"BRADFORD","lastName":"FRITZ","registrationNumber":"63406","attorneyAddressBag":[{"cityName":"ALEXANDRIA","geographicRegionName":"VIRGINIA","geographicRegionCode":"VA","countryCode":"US","postalCode":"22314-272","nameLineOneText":"BUCHANAN
-      INGERSOLL & ROONEY","countryName":"UNITED STATES","addressLineOneText":"1737
-      KING STREET","addressLineTwoText":"SUITE 500"}],"telecommunicationAddressBag":[{"telecommunicationNumber":"703-836-6505","usageTypeCategory":"TEL"}],"registeredPractitionerCategory":"AGENT"},{"activeIndicator":"ACTIVE","firstName":"LEONARD","lastName":"SVENSSON","registrationNumber":"30330","attorneyAddressBag":[{"cityName":"SAN
-      DIEGO","geographicRegionName":"CALIFORNIA","geographicRegionCode":"CA","countryCode":"US","postalCode":"92130","nameLineOneText":"BIRCH,
-      STEWART, KOLASCH & BIRCH, LLP","countryName":"UNITED STATES","addressLineOneText":"12770
-      HIGH BLUFF DRIVE","addressLineTwoText":"SUITE 260"}],"telecommunicationAddressBag":[{"telecommunicationNumber":"858-792-8855","usageTypeCategory":"TEL"}],"registeredPractitionerCategory":"ATTNY"},{"activeIndicator":"ACTIVE","firstName":"MICHAEL","lastName":"MUTTER","registrationNumber":"29680","attorneyAddressBag":[{"cityName":"FALLS
-      CHURCH","geographicRegionName":"VIRGINIA","geographicRegionCode":"VA","countryCode":"US","postalCode":"22042","nameLineOneText":"BIRCH
-      STEWART KOLASCH AND BIRCH LLP","countryName":"UNITED STATES","addressLineOneText":"8110
-      GATEHOUSE ROAD, SUITE 100 E"}],"telecommunicationAddressBag":[{"telecommunicationNumber":"703-205-8000","usageTypeCategory":"TEL"}],"registeredPractitionerCategory":"ATTNY"},{"activeIndicator":"ACTIVE","firstName":"CATHERINE","lastName":"VOISINET","registrationNumber":"52327","attorneyAddressBag":[{"cityName":"FALLS
-      CHURCH","geographicRegionName":"VIRGINIA","geographicRegionCode":"VA","countryCode":"US","postalCode":"22042","nameLineOneText":"BIRCH
-      STEWART KOLASCH & BIRCH LLP","countryName":"UNITED STATES","addressLineOneText":"8110
-      GATEHOUSE RD.","addressLineTwoText":"SUITE 100 EAST"}],"telecommunicationAddressBag":[{"telecommunicationNumber":"703-205-8000","usageTypeCategory":"TEL"}],"registeredPractitionerCategory":"ATTNY"},{"activeIndicator":"ACTIVE","firstName":"JAMES","lastName":"SLATTERY","registrationNumber":"28380","attorneyAddressBag":[{"cityName":"FALLS
-      CHURCH","geographicRegionName":"VIRGINIA","geographicRegionCode":"VA","countryCode":"US","postalCode":"22040","nameLineOneText":"BIRCH
-      STEWART KOLASCH AND BIRCH LLP","countryName":"UNITED STATES","addressLineOneText":"8110
-      GATEHOUSE ROAD SUITE 500 E","addressLineTwoText":"P O BOX 747"}],"telecommunicationAddressBag":[{"telecommunicationNumber":"703-205-8000","usageTypeCategory":"TEL"}],"registeredPractitionerCategory":"ATTNY"},{"activeIndicator":"ACTIVE","firstName":"MICHAEL","lastName":"SMITH","registrationNumber":"47099","attorneyAddressBag":[{"cityName":"CLARKSBURG","geographicRegionName":"WEST
-      VIRGINIA","geographicRegionCode":"WV","countryCode":"US","postalCode":"26302","nameLineOneText":"STEPTOE
-      AND JOHNSON PLLC","countryName":"UNITED STATES","addressLineOneText":"BANK ONE
-      CENTER SIXTH FLOOR","addressLineTwoText":"P O BOX 2190"}],"telecommunicationAddressBag":[{"telecommunicationNumber":"304-624-8000","usageTypeCategory":"TEL"}],"registeredPractitionerCategory":"ATTNY"},{"activeIndicator":"ACTIVE","firstName":"ERIC","lastName":"LIOU","registrationNumber":"67246","attorneyAddressBag":[{"cityName":"FALLS
-      CHURCH","geographicRegionName":"VIRGINIA","geographicRegionCode":"VA","countryCode":"US","postalCode":"22042","nameLineOneText":"BIRCH,
-      STEWART, KOLASCH & BIRCH, LLP","countryName":"UNITED STATES","addressLineOneText":"8110
-      GATEHOUSE ROAD SUITE 100 E"}],"telecommunicationAddressBag":[{"telecommunicationNumber":"703-205-8000","usageTypeCategory":"TEL"}],"registeredPractitionerCategory":"ATTNY"},{"activeIndicator":"ACTIVE","firstName":"DAVID","lastName":"ANDERSON","registrationNumber":"40439","attorneyAddressBag":[{"cityName":"FALLS
-      CHURCH","geographicRegionName":"VIRGINIA","geographicRegionCode":"VA","countryCode":"US","postalCode":"22042","nameLineOneText":"BIRCH
-      STEWARD KOLASCH AND BIRCH, LLP","countryName":"UNITED STATES","addressLineOneText":"8110
-      GATE HOUSE ROAD, SUITE 100 EAST"}],"nameSuffix":"JR","telecommunicationAddressBag":[{"telecommunicationNumber":"703-205-8000","usageTypeCategory":"TEL"}],"registeredPractitionerCategory":"ATTNY"},{"activeIndicator":"ACTIVE","firstName":"MARY
-      ANNE","lastName":"ARMSTRONG","registrationNumber":"40069","attorneyAddressBag":[{"cityName":"FALLS
-      CHURCH","geographicRegionName":"VIRGINIA","geographicRegionCode":"VA","countryCode":"US","postalCode":"22042","nameLineOneText":"BIRCH
-      STEWARD KOLASCH & BIRCH, LLP","countryName":"UNITED STATES","addressLineOneText":"8110
-      GATEHOUSE ROAD, SUITE 100 E"}],"telecommunicationAddressBag":[{"telecommunicationNumber":"703-205-8000","usageTypeCategory":"TEL"}],"registeredPractitionerCategory":"ATTNY"},{"activeIndicator":"ACTIVE","firstName":"JOSEPH","lastName":"KOLASCH","registrationNumber":"22463","attorneyAddressBag":[{"cityName":"FALLS
-      CHURCH","geographicRegionName":"VIRGINIA","geographicRegionCode":"VA","countryCode":"US","postalCode":"22042","nameLineOneText":"BIRCH,
-      STEWART, KOLASCH, BIRCH LLP","countryName":"UNITED STATES","addressLineOneText":"8110
-      GATEHOUSE ROAD","addressLineTwoText":"SUITE 100 EAST"}],"telecommunicationAddressBag":[{"telecommunicationNumber":"703-205-8000","usageTypeCategory":"TEL"}],"registeredPractitionerCategory":"ATTNY"},{"activeIndicator":"ACTIVE","firstName":"WHITNEY","lastName":"REMILY","registrationNumber":"59981","attorneyAddressBag":[{"cityName":"FALLS
-      CHURCH","geographicRegionName":"VIRGINIA","geographicRegionCode":"VA","countryCode":"US","postalCode":"22042","nameLineOneText":"BIRCH
-      STEWART KOLASCH & BIRCH, LLP","countryName":"UNITED STATES","addressLineOneText":"8110
-      GATEHOUSE ROAD","addressLineTwoText":"SUITE 100 EAST"}],"telecommunicationAddressBag":[{"telecommunicationNumber":"703-205-8083","usageTypeCategory":"TEL"}],"registeredPractitionerCategory":"ATTNY"},{"activeIndicator":"ACTIVE","firstName":"ESTHER","lastName":"CHONG","registrationNumber":"40953","attorneyAddressBag":[{"cityName":"FALLS
-      CHRUCH","geographicRegionName":"VIRGINIA","geographicRegionCode":"VA","countryCode":"US","postalCode":"22040","nameLineOneText":"BIRCH,
-      STEWART, KOLASCH & BIRCH, LLP","countryName":"UNITED STATES","addressLineOneText":"8110
-      GATE HOUSE ROAD, SUITE 100 EAST"}],"telecommunicationAddressBag":[{"telecommunicationNumber":"703-205-8000","usageTypeCategory":"TEL"}],"registeredPractitionerCategory":"AGENT"},{"activeIndicator":"ACTIVE","firstName":"DAVID","lastName":"BILODEAU","registrationNumber":"42325","attorneyAddressBag":[{"cityName":"FALLS
-      CHURCH","geographicRegionName":"VIRGINIA","geographicRegionCode":"VA","countryCode":"US","postalCode":"22042","nameLineOneText":"BIRCH,
-      STEWART, KOLASCH & BIRCH, LLP","countryName":"UNITED STATES","addressLineOneText":"8110
-      GATEHOUSE ROAD, SUITE 100E"}],"telecommunicationAddressBag":[{"telecommunicationNumber":"703-205-8072","usageTypeCategory":"TEL"}],"registeredPractitionerCategory":"AGENT"},{"activeIndicator":"ACTIVE","firstName":"CHAD","lastName":"RINK","registrationNumber":"58258","attorneyAddressBag":[{"cityName":"FALLS
-      CHURCH","geographicRegionName":"VIRGINIA","geographicRegionCode":"VA","countryCode":"US","postalCode":"22040-074","nameLineOneText":"BIRCH,
-      STEWART, KOLASCH & BIRCH","countryName":"UNITED STATES","addressLineOneText":"8110
-      GATEHOUSE ROAD, SUITE 100E","addressLineTwoText":"P.O. BOX 747"}],"telecommunicationAddressBag":[{"telecommunicationNumber":"703-205-8000","usageTypeCategory":"TEL"}],"registeredPractitionerCategory":"ATTNY"}],"customerNumber":{"powerOfAttorneyAddressBag":[{"cityName":"Falls
-      Church","geographicRegionName":"VIRGINIA","geographicRegionCode":"VA","countryCode":"US","postalCode":"22042-1248","nameLineOneText":"BIRCH
-      STEWART KOLASCH & BIRCH, LLP","countryName":"UNITED STATES","addressLineOneText":"8110
-      Gatehouse Road","addressLineTwoText":"Suite 100 East"}],"patronIdentifier":"2292.0000000000"}},"applicationNumberText":"16123456","nationalStageIndicator":false,"firstInventorName":"Shoji
-      KANADA","cpcClassificationBag":["G06N3/08","G16H30/20","G16H50/70","G16H30/40","G06N20/00","G06V10/7784","G06V10/774","G06F18/2178","G06N3/042","G06F18/217","G06F18/214","G06N3/045"],"effectiveFilingDate":"2018-09-06","publicationDateBag":["2019-03-28"],"publicationSequenceNumberBag":["0095759"],"earliestPublicationDate":"2019-03-28","applicationTypeLabelName":"Utility","applicationStatusDate":"2021-01-06","class":"382","applicationTypeCategory":"REGULAR","inventorBag":[{"firstName":"Shoji","lastName":"KANADA","inventorNameText":"Shoji
+    content: '{"count":1,"patentBag":[{"firstInventorToFileIndicator":"Y","filingDate":"2018-09-06","inventorBag":[{"firstName":"Shoji","lastName":"KANADA","inventorNameText":"Shoji
       KANADA","correspondenceAddressBag":[{"cityName":"Tokyo","countryCode":"JP","nameLineOneText":"KANADA,
       Shoji","countryName":"JAPAN","postalAddressCategory":"residence"},{"cityName":"Tokyo","countryCode":"JP","nameLineOneText":"Shoji  KANADA","countryName":"JAPAN","addressLineOneText":"c/o
-      FUJIFILM Corporation","addressLineTwoText":"7-3, Akasaka 9-chome, Minato-ku","postalAddressCategory":"postal"}]}],"patentTermAdjustmentData":{"applicantDayDelayQuantity":15.0,"overlappingDayQuantity":0.0,"filingDate":"2018-09-06","cDelayQuantity":0.0,"adjustmentTotalQuantity":0.0,"bDelayQuantity":0.0,"grantDate":"2021-01-26","aDelayQuantity":142.0,"nonOverlappingDayQuantity":127.0,"ipOfficeDayDelayQuantity":142.0,"patentTermAdjustmentHistoryDataBag":[{"applicantDayDelayQuantity":0.0,"startSequenceNumber":0.5,"caseActionDescriptionText":"PTA
-      36 Months","caseActionSequenceNumber":74.5,"actionDate":"2021-01-26"},{"applicantDayDelayQuantity":0.0,"startSequenceNumber":0.0,"caseActionDescriptionText":"Patent
-      Issue Date Used in PTA Calculation","caseActionSequenceNumber":74.0,"actionDate":"2021-01-26"},{"applicantDayDelayQuantity":0.0,"startSequenceNumber":0.0,"caseActionDescriptionText":"Dispatch
-      to FDC","caseActionSequenceNumber":72.0,"actionDate":"2020-12-26"},{"applicantDayDelayQuantity":0.0,"startSequenceNumber":0.0,"caseActionDescriptionText":"Application
-      Is Considered Ready for Issue","caseActionSequenceNumber":71.0,"actionDate":"2020-12-23"},{"applicantDayDelayQuantity":0.0,"startSequenceNumber":0.0,"caseActionDescriptionText":"Issue
-      Fee Payment Verified","caseActionSequenceNumber":70.0,"actionDate":"2020-12-22"},{"applicantDayDelayQuantity":0.0,"startSequenceNumber":0.0,"caseActionDescriptionText":"Issue
-      Fee Payment Received","caseActionSequenceNumber":69.0,"actionDate":"2020-12-22"},{"applicantDayDelayQuantity":0.0,"startSequenceNumber":0.0,"caseActionDescriptionText":"Email
-      Notification","caseActionSequenceNumber":67.0,"actionDate":"2020-10-20"},{"applicantDayDelayQuantity":0.0,"startSequenceNumber":0.0,"caseActionDescriptionText":"Email
-      Notification","caseActionSequenceNumber":66.0,"actionDate":"2020-10-19"},{"applicantDayDelayQuantity":0.0,"startSequenceNumber":0.0,"caseActionDescriptionText":"Printer
-      Rush- No mailing","caseActionSequenceNumber":65.0,"actionDate":"2020-10-20"},{"applicantDayDelayQuantity":0.0,"startSequenceNumber":0.0,"caseActionDescriptionText":"Mailing
-      Corrected Notice of Allowability","caseActionSequenceNumber":64.0,"actionDate":"2020-10-20"},{"applicantDayDelayQuantity":0.0,"startSequenceNumber":0.0,"caseActionDescriptionText":"Corrected
-      Notice of Allowability","caseActionSequenceNumber":62.0,"actionDate":"2020-10-15"},{"applicantDayDelayQuantity":0.0,"startSequenceNumber":0.0,"caseActionDescriptionText":"Printer
-      Rush- No mailing","caseActionSequenceNumber":61.0,"actionDate":"2020-10-19"},{"applicantDayDelayQuantity":15.0,"startSequenceNumber":55.0,"caseActionDescriptionText":"Mail
-      Miscellaneous Communication to Applicant","caseActionSequenceNumber":60.0,"actionDate":"2020-10-19"},{"applicantDayDelayQuantity":0.0,"startSequenceNumber":0.0,"caseActionDescriptionText":"Miscellaneous
-      Communication to Applicant - No Action Count","caseActionSequenceNumber":59.0,"actionDate":"2020-10-13"},{"applicantDayDelayQuantity":0.0,"startSequenceNumber":0.0,"caseActionDescriptionText":"Information
-      Disclosure Statement considered","caseActionSequenceNumber":58.0,"actionDate":"2020-10-13"},{"applicantDayDelayQuantity":0.0,"startSequenceNumber":0.0,"caseActionDescriptionText":"Pubs
-      Case Remand to TC","caseActionSequenceNumber":57.0,"actionDate":"2020-10-07"},{"applicantDayDelayQuantity":0.0,"startSequenceNumber":0.0,"caseActionDescriptionText":"Information
-      Disclosure Statement (IDS) Filed","caseActionSequenceNumber":56.0,"actionDate":"2020-10-05"},{"applicantDayDelayQuantity":0.0,"startSequenceNumber":0.0,"caseActionDescriptionText":"Information
-      Disclosure Statement (IDS) Filed","caseActionSequenceNumber":55.0,"actionDate":"2020-10-05"},{"applicantDayDelayQuantity":0.0,"startSequenceNumber":0.0,"caseActionDescriptionText":"Electronic
-      Review","caseActionSequenceNumber":53.0,"actionDate":"2020-09-23"},{"applicantDayDelayQuantity":0.0,"startSequenceNumber":0.0,"caseActionDescriptionText":"Email
-      Notification","caseActionSequenceNumber":52.0,"actionDate":"2020-09-23"},{"applicantDayDelayQuantity":0.0,"startSequenceNumber":0.0,"caseActionDescriptionText":"Mail
-      Notice of Allowance","caseActionSequenceNumber":51.0,"actionDate":"2020-09-23"},{"applicantDayDelayQuantity":0.0,"startSequenceNumber":0.0,"caseActionDescriptionText":"Notice
-      of Allowance Data Verification Completed","caseActionSequenceNumber":47.0,"actionDate":"2020-09-20"},{"applicantDayDelayQuantity":0.0,"startSequenceNumber":0.0,"caseActionDescriptionText":"Date
-      Forwarded to Examiner","caseActionSequenceNumber":43.0,"actionDate":"2020-07-02"},{"applicantDayDelayQuantity":0.0,"startSequenceNumber":0.0,"caseActionDescriptionText":"Response
-      after Non-Final Action","caseActionSequenceNumber":42.0,"actionDate":"2020-06-26"},{"applicantDayDelayQuantity":0.0,"startSequenceNumber":0.0,"caseActionDescriptionText":"Email
-      Notification","caseActionSequenceNumber":40.0,"actionDate":"2020-06-09"},{"applicantDayDelayQuantity":0.0,"startSequenceNumber":0.0,"caseActionDescriptionText":"Mail
-      Applicant Initiated Interview Summary","caseActionSequenceNumber":39.0,"actionDate":"2020-06-09"},{"applicantDayDelayQuantity":0.0,"startSequenceNumber":0.0,"caseActionDescriptionText":"Interview
-      Summary - Applicant Initiated - Telephonic","caseActionSequenceNumber":38.0,"actionDate":"2020-06-03"},{"applicantDayDelayQuantity":0.0,"startSequenceNumber":0.0,"caseActionDescriptionText":"Interview
-      Summary- Applicant Initiated","caseActionSequenceNumber":37.0,"actionDate":"2020-06-03"},{"applicantDayDelayQuantity":0.0,"startSequenceNumber":0.0,"caseActionDescriptionText":"Case
-      Docketed to Examiner in GAU","caseActionSequenceNumber":35.0,"actionDate":"2020-05-22"},{"applicantDayDelayQuantity":0.0,"startSequenceNumber":0.0,"caseActionDescriptionText":"Case
-      Docketed to Examiner in GAU","caseActionSequenceNumber":33.0,"actionDate":"2020-05-21"},{"applicantDayDelayQuantity":0.0,"startSequenceNumber":0.0,"caseActionDescriptionText":"Electronic
-      Review","caseActionSequenceNumber":32.0,"actionDate":"2020-03-27"},{"applicantDayDelayQuantity":0.0,"startSequenceNumber":0.0,"caseActionDescriptionText":"Email
-      Notification","caseActionSequenceNumber":31.0,"actionDate":"2020-03-27"},{"applicantDayDelayQuantity":0.0,"startSequenceNumber":0.5,"ipOfficeDayDelayQuantity":142.0,"caseActionDescriptionText":"Mail
-      Non-Final Rejection","caseActionSequenceNumber":29.0,"actionDate":"2020-03-27"},{"applicantDayDelayQuantity":0.0,"startSequenceNumber":0.0,"caseActionDescriptionText":"Non-Final
-      Rejection","caseActionSequenceNumber":28.0,"actionDate":"2020-03-23"},{"applicantDayDelayQuantity":0.0,"startSequenceNumber":0.0,"caseActionDescriptionText":"Information
-      Disclosure Statement considered","caseActionSequenceNumber":27.0,"actionDate":"2020-03-23"},{"applicantDayDelayQuantity":0.0,"startSequenceNumber":0.0,"caseActionDescriptionText":"Case
-      Docketed to Examiner in GAU","caseActionSequenceNumber":26.0,"actionDate":"2020-01-08"},{"applicantDayDelayQuantity":0.0,"startSequenceNumber":0.0,"caseActionDescriptionText":"Case
-      Docketed to Examiner in GAU","caseActionSequenceNumber":25.0,"actionDate":"2019-12-09"},{"applicantDayDelayQuantity":0.0,"startSequenceNumber":0.0,"caseActionDescriptionText":"Email
-      Notification","caseActionSequenceNumber":21.0,"actionDate":"2019-03-29"},{"applicantDayDelayQuantity":0.0,"startSequenceNumber":0.0,"caseActionDescriptionText":"Application
-      ready for PDX access by participating foreign offices","caseActionSequenceNumber":20.0,"actionDate":"2019-03-28"},{"applicantDayDelayQuantity":0.0,"startSequenceNumber":0.0,"caseActionDescriptionText":"PG-Pub
-      Issue Notification","caseActionSequenceNumber":19.0,"actionDate":"2019-03-28"},{"applicantDayDelayQuantity":0.0,"startSequenceNumber":0.0,"caseActionDescriptionText":"Priority
-      document has successfully retrieved via PDX/DAS","caseActionSequenceNumber":18.0,"actionDate":"2018-10-23"},{"applicantDayDelayQuantity":0.0,"startSequenceNumber":0.0,"caseActionDescriptionText":"Information
-      Disclosure Statement (IDS) Filed","caseActionSequenceNumber":17.0,"actionDate":"2018-09-06"},{"applicantDayDelayQuantity":0.0,"startSequenceNumber":0.0,"caseActionDescriptionText":"Case
-      Docketed to Examiner in GAU","caseActionSequenceNumber":16.0,"actionDate":"2018-10-19"},{"applicantDayDelayQuantity":0.0,"startSequenceNumber":0.0,"caseActionDescriptionText":"Application
-      Dispatched from OIPE","caseActionSequenceNumber":15.0,"actionDate":"2018-10-18"},{"applicantDayDelayQuantity":0.0,"startSequenceNumber":0.0,"caseActionDescriptionText":"Email
-      Notification","caseActionSequenceNumber":14.0,"actionDate":"2018-10-12"},{"applicantDayDelayQuantity":0.0,"startSequenceNumber":0.0,"caseActionDescriptionText":"Sent
-      to Classification Contractor","caseActionSequenceNumber":13.0,"actionDate":"2018-10-11"},{"applicantDayDelayQuantity":0.0,"startSequenceNumber":0.0,"caseActionDescriptionText":"FITF
-      set to YES - revise initial setting","caseActionSequenceNumber":12.0,"actionDate":"2018-10-11"},{"applicantDayDelayQuantity":0.0,"startSequenceNumber":0.0,"caseActionDescriptionText":"Patent
-      Term Adjustment - Ready for Examination","caseActionSequenceNumber":11.0,"actionDate":"2018-09-06"},{"applicantDayDelayQuantity":0.0,"startSequenceNumber":0.0,"caseActionDescriptionText":"Application
-      Is Now Complete","caseActionSequenceNumber":10.0,"actionDate":"2018-10-12"},{"applicantDayDelayQuantity":0.0,"startSequenceNumber":0.0,"caseActionDescriptionText":"Filing
-      Receipt","caseActionSequenceNumber":9.0,"actionDate":"2018-10-12"},{"applicantDayDelayQuantity":0.0,"startSequenceNumber":0.0,"caseActionDescriptionText":"Applicants
-      have given acceptable permission for participating foreign","caseActionSequenceNumber":8.0,"actionDate":"2018-09-06"},{"applicantDayDelayQuantity":0.0,"startSequenceNumber":0.0,"caseActionDescriptionText":"Request
-      from applicant for the USPTO to retrieve the Priority Document","caseActionSequenceNumber":7.0,"actionDate":"2018-09-06"},{"applicantDayDelayQuantity":0.0,"startSequenceNumber":0.0,"caseActionDescriptionText":"Information
-      Disclosure Statement (IDS) Filed","caseActionSequenceNumber":4.0,"actionDate":"2018-09-06"},{"applicantDayDelayQuantity":0.0,"startSequenceNumber":0.0,"caseActionDescriptionText":"Entity
-      Status Set To Undiscounted (Initial Default Setting or Status Change)","caseActionSequenceNumber":2.0,"actionDate":"2018-09-06"},{"applicantDayDelayQuantity":0.0,"startSequenceNumber":0.0,"caseActionDescriptionText":"Initial
-      Exam Team nn","caseActionSequenceNumber":1.0,"actionDate":"2018-09-06"},{"applicantDayDelayQuantity":0.0,"startSequenceNumber":0.0,"caseActionDescriptionText":"Filing
-      date","caseActionSequenceNumber":0.5,"actionDate":"2018-09-06"}]},"transactionContentBag":[{"recordedDate":"2018-09-06","caseActionDescriptionText":"Information
-      Disclosure Statement (IDS) Filed","caseActionCode":"WIDS"},{"recordedDate":"2018-09-06","caseActionDescriptionText":"Initial
-      Exam Team nn","caseActionCode":"IEXX"},{"recordedDate":"2018-09-06","caseActionDescriptionText":"Entity
-      Status Set To Undiscounted (Initial Default Setting or Status Change)","caseActionCode":"BIG."},{"recordedDate":"2018-09-06","caseActionDescriptionText":"Request
-      from applicant for the USPTO to retrieve the Priority Document","caseActionCode":"PDREQUST"},{"recordedDate":"2018-09-06","caseActionDescriptionText":"Applicants
-      have given acceptable permission for participating foreign","caseActionCode":"APPERMS"},{"recordedDate":"2018-10-12","caseActionDescriptionText":"Filing
-      Receipt","caseActionCode":"FLRCPT.O"},{"recordedDate":"2018-10-12","caseActionDescriptionText":"Application
-      Is Now Complete","caseActionCode":"COMP"},{"recordedDate":"2018-09-06","caseActionDescriptionText":"Patent
-      Term Adjustment - Ready for Examination","caseActionCode":"PTA.RFE"},{"recordedDate":"2018-10-11","caseActionDescriptionText":"FITF
-      set to YES - revise initial setting","caseActionCode":"FTFS"},{"recordedDate":"2018-10-11","caseActionDescriptionText":"Sent
-      to Classification Contractor","caseActionCode":"PGPC"},{"recordedDate":"2018-10-12","caseActionDescriptionText":"Email
-      Notification","caseActionCode":"EML_NTR"},{"recordedDate":"2018-10-23","caseActionDescriptionText":"Priority
-      document has successfully retrieved via PDX/DAS","caseActionCode":"PD.RECVD"},{"recordedDate":"2018-09-06","caseActionDescriptionText":"Information
-      Disclosure Statement (IDS) Filed","caseActionCode":"M844"},{"recordedDate":"2018-10-19","caseActionDescriptionText":"Case
-      Docketed to Examiner in GAU","caseActionCode":"DOCK"},{"recordedDate":"2018-10-18","caseActionDescriptionText":"Application
-      Dispatched from OIPE","caseActionCode":"OIPE"},{"recordedDate":"2019-03-29","caseActionDescriptionText":"Email
-      Notification","caseActionCode":"EML_NTR"},{"recordedDate":"2019-03-28","caseActionDescriptionText":"Application
-      ready for PDX access by participating foreign offices","caseActionCode":"CCRDY"},{"recordedDate":"2019-03-28","caseActionDescriptionText":"PG-Pub
-      Issue Notification","caseActionCode":"PG-ISSUE"},{"recordedDate":"2018-09-06","caseActionDescriptionText":"Information
-      Disclosure Statement considered","caseActionCode":"IDSC"},{"recordedDate":"2019-12-09","caseActionDescriptionText":"Case
-      Docketed to Examiner in GAU","caseActionCode":"DOCK"},{"recordedDate":"2020-01-08","caseActionDescriptionText":"Case
-      Docketed to Examiner in GAU","caseActionCode":"DOCK"},{"recordedDate":"2020-03-23","caseActionDescriptionText":"Information
-      Disclosure Statement considered","caseActionCode":"IDSC"},{"recordedDate":"2020-03-23","caseActionDescriptionText":"Non-Final
-      Rejection","caseActionCode":"CTNF"},{"recordedDate":"2019-05-05","caseActionDescriptionText":"Information
-      Disclosure Statement (IDS) Filed","caseActionCode":"M844"},{"recordedDate":"2020-03-27","caseActionDescriptionText":"Mail
-      Non-Final Rejection","caseActionCode":"MCTNF"},{"recordedDate":"2020-03-27","caseActionDescriptionText":"Email
-      Notification","caseActionCode":"EML_NTF"},{"recordedDate":"2020-03-27","caseActionDescriptionText":"Electronic
-      Review","caseActionCode":"ELC_RVW"},{"recordedDate":"2020-05-21","caseActionDescriptionText":"Case
-      Docketed to Examiner in GAU","caseActionCode":"DOCK"},{"recordedDate":"2020-05-22","caseActionDescriptionText":"Case
-      Docketed to Examiner in GAU","caseActionCode":"DOCK"},{"recordedDate":"2020-06-03","caseActionDescriptionText":"Interview
-      Summary- Applicant Initiated","caseActionCode":"EXIA"},{"recordedDate":"2020-06-09","caseActionDescriptionText":"Mail
-      Applicant Initiated Interview Summary","caseActionCode":"MEXIA"},{"recordedDate":"2020-06-03","caseActionDescriptionText":"Interview
-      Summary - Applicant Initiated - Telephonic","caseActionCode":"EXAT"},{"recordedDate":"2020-06-09","caseActionDescriptionText":"Email
-      Notification","caseActionCode":"EML_NTR"},{"recordedDate":"2020-06-26","caseActionDescriptionText":"Response
-      after Non-Final Action","caseActionCode":"A..."},{"recordedDate":"2020-07-02","caseActionDescriptionText":"Date
-      Forwarded to Examiner","caseActionCode":"FWDX"},{"recordedDate":"2020-09-23","caseActionDescriptionText":"Mail
-      Notice of Allowance","caseActionCode":"MN/=."},{"recordedDate":"2020-09-23","caseActionDescriptionText":"Email
-      Notification","caseActionCode":"EML_NTF"},{"recordedDate":"2020-09-23","caseActionDescriptionText":"Electronic
-      Review","caseActionCode":"ELC_RVW"},{"recordedDate":"2020-09-20","caseActionDescriptionText":"Notice
-      of Allowance Data Verification Completed","caseActionCode":"N/=."},{"recordedDate":"2020-10-05","caseActionDescriptionText":"Information
-      Disclosure Statement (IDS) Filed","caseActionCode":"WIDS"},{"recordedDate":"2020-10-07","caseActionDescriptionText":"Pubs
-      Case Remand to TC","caseActionCode":"PUBTC"},{"recordedDate":"2020-10-13","caseActionDescriptionText":"Miscellaneous
-      Communication to Applicant - No Action Count","caseActionCode":"M327"},{"recordedDate":"2020-10-19","caseActionDescriptionText":"Printer
-      Rush- No mailing","caseActionCode":"TCPB"},{"recordedDate":"2020-10-15","caseActionDescriptionText":"Corrected
-      Notice of Allowability","caseActionCode":"CNOA"},{"recordedDate":"2020-10-19","caseActionDescriptionText":"Mail
-      Miscellaneous Communication to Applicant","caseActionCode":"MM327"},{"recordedDate":"2020-10-13","caseActionDescriptionText":"Information
-      Disclosure Statement considered","caseActionCode":"IDSC"},{"recordedDate":"2020-10-05","caseActionDescriptionText":"Information
-      Disclosure Statement (IDS) Filed","caseActionCode":"M844"},{"recordedDate":"2020-10-20","caseActionDescriptionText":"Mailing
-      Corrected Notice of Allowability","caseActionCode":"MCNOA"},{"recordedDate":"2020-10-20","caseActionDescriptionText":"Printer
-      Rush- No mailing","caseActionCode":"TCPB"},{"recordedDate":"2020-10-20","caseActionDescriptionText":"Email
-      Notification","caseActionCode":"EML_NTR"},{"recordedDate":"2020-10-19","caseActionDescriptionText":"Email
-      Notification","caseActionCode":"EML_NTR"},{"recordedDate":"2020-12-23","caseActionDescriptionText":"Application
-      Is Considered Ready for Issue","caseActionCode":"PILS"},{"recordedDate":"2020-12-26","caseActionDescriptionText":"Dispatch
-      to FDC","caseActionCode":"D1935"},{"recordedDate":"2020-12-22","caseActionDescriptionText":"Issue
-      Fee Payment Verified","caseActionCode":"N084"},{"recordedDate":"2020-12-22","caseActionDescriptionText":"Issue
-      Fee Payment Received","caseActionCode":"IFEE"},{"recordedDate":"2021-01-06","caseActionDescriptionText":"Issue
-      Notification Mailed","caseActionCode":"WPIR"},{"recordedDate":"2021-01-26","caseActionDescriptionText":"Patent
-      Issue Date Used in PTA Calculation","caseActionCode":"PTAC"},{"recordedDate":"2021-01-07","caseActionDescriptionText":"Email
-      Notification","caseActionCode":"EML_NTR"},{"recordedDate":"2021-01-26","caseActionDescriptionText":"Recordation
-      of Patent Grant Mailed","caseActionCode":"PGM/"},{"recordedDate":"2020-10-05","caseActionDescriptionText":"Information
-      Disclosure Statement considered","caseActionCode":"IDSC"},{"recordedDate":"2021-07-09","caseActionDescriptionText":"Information
-      Disclosure Statement considered","caseActionCode":"IDSC"},{"recordedDate":"2021-07-09","caseActionDescriptionText":"Information
-      Disclosure Statement considered","caseActionCode":"IDSC"},{"recordedDate":"2018-09-06","caseActionDescriptionText":"Information
-      Disclosure Statement considered","caseActionCode":"IDSC"},{"recordedDate":"2021-04-04","caseActionDescriptionText":"Information
-      Disclosure Statement (IDS) Filed","caseActionCode":"M844"}],"applicationStatusDescriptionText":"Patented
-      Case","businessEntityStatusCategory":"Regular Undiscounted","patentNumber":"10902286","continuityBag":{"childContinuityBag":[{"applicationStatusCode":150,"claimParentageTypeCode":"DIV","aiaIndicator":true,"filingDate":"2020-12-22","applicationStatusDescriptionText":"Patented
-      Case","claimParentageTypeCodeDescription":"is a Division of","parentApplicationNumberText":"16123456","patentNumber":"11797846","childApplicationNumberText":"17130468"}]},"grantDate":"2021-01-26","applicantBag":[{"applicant":"FUJIFILM
-      Corporation","correspondenceAddressBag":[{"cityName":"Tokyo","countryCode":"JP","nameLineOneText":"FUJIFILM
-      Corporation","countryName":"JAPAN"}]}],"firstApplicantName":"FUJIFILM Corporation","customerNumber":2292,"groupArtUnitNumber":"2641","earliestPublicationNumber":"US
+      FUJIFILM Corporation","addressLineTwoText":"7-3, Akasaka 9-chome, Minato-ku","postalAddressCategory":"postal"}]}],"businessEntityStatusCategory":"Regular
+      Undiscounted","firstApplicantName":"FUJIFILM Corporation","customerNumber":2292,"groupArtUnitNumber":"2641","applicationNumberText":"16123456","earliestPublicationNumber":"US
       2019-0095759 A1","inventionTitle":"LEARNING ASSISTANCE DEVICE, METHOD OF OPERATING
       LEARNING ASSISTANCE DEVICE, LEARNING ASSISTANCE PROGRAM, LEARNING ASSISTANCE
       SYSTEM, AND TERMINAL DEVICE","correspondenceAddressBag":[{"cityName":"Falls
       Church","geographicRegionName":"VIRGINIA","geographicRegionCode":"VA","countryCode":"US","postalCode":"22042-1248","nameLineOneText":"BIRCH
       STEWART KOLASCH & BIRCH, LLP","countryName":"UNITED STATES","addressLineOneText":"8110
-      Gatehouse Road","addressLineTwoText":"Suite 100 East"}],"foreignPriorityBag":[{"priorityNumberText":"2017-187096","filingDate":"2017-09-27","countryName":"JAPAN"}],"applicationConfirmationNumber":7051,"smallEntityStatusIndicator":false,"subclass":"159","publicationCategoryBag":["Granted/Issued","Pre-Grant
-      Publications - PGPub"],"docketNumber":"1982-1042PUS1"}],"requestIdentifier":"c65243ce-11e2-4797-94de-41e80e271a8d"}'
+      Gatehouse Road","addressLineTwoText":"Suite 100 East"}],"firstInventorName":"Shoji
+      KANADA","cpcClassificationBag":["G06N3/08","G16H30/20","G16H50/70","G16H30/40","G06N20/00","G06V10/7784","G06V10/774","G06F18/2178","G06N3/042","G06F18/217","G06F18/214","G06N3/045"],"applicationConfirmationNumber":7051,"docketNumber":"1982-1042PUS1"}],"requestIdentifier":"0fb6de3f-3ee1-46e4-bd54-921b32f7f8b0"}'
     headers:
-      Connection:
-      - keep-alive
-      Content-Length:
-      - '44717'
-      Content-Type:
-      - application/json
-      Date:
-      - Wed, 24 Apr 2024 17:31:41 GMT
-      X-Amzn-Trace-Id:
-      - Root=1-662941fd-79c902b9399948cd3bb147b1;Parent=7980f44a3b1d25c9;Sampled=0;lineage=33e8fdb8:0
       access-control-allow-headers:
       - Origin, X-Requested-With, Content-Type, Accept
       access-control-allow-methods:
       - OPTIONS,POST,GET
       access-control-allow-origin:
       - '*'
+      content-length:
+      - '1644'
+      content-type:
+      - application/json
+      date:
+      - Wed, 01 May 2024 18:46:29 GMT
       x-amz-apigw-id:
-      - Wvc_oGgRIAMFgwA=
-      x-amzn-RequestId:
-      - c65243ce-11e2-4797-94de-41e80e271a8d
-    http_version: HTTP/1.1
+      - XGsg5ECooAMFRUA=
+      x-amzn-requestid:
+      - 0fb6de3f-3ee1-46e4-bd54-921b32f7f8b0
+      x-amzn-trace-id:
+      - Root=1-66328e05-2951089830f4f8f038c2e744;Parent=2b22c0a714ec4789;Sampled=0;lineage=33e8fdb8:0
+    http_version: HTTP/2
     status_code: 200
 - request:
     body: ''
@@ -368,35 +115,33 @@ interactions:
       host:
       - beta-api.uspto.gov
       user-agent:
-      - python-httpx/0.27.0
+      - Mozilla/5.0 Python Patent Clientbot/5.0.0 (parkerhancock@users.noreply.github.com)
       x-api-key:
       - oygzgndgwifcpqgvdcitnhorcdvpbb
     method: GET
     uri: https://beta-api.uspto.gov/api/v1/patent/applications/16123456/continuity
   response:
     content: '{"count":1,"patentBag":[{"continuityBag":{"childContinuityBag":[{"applicationStatusCode":150,"claimParentageTypeCode":"DIV","aiaIndicator":true,"filingDate":"2020-12-22","applicationStatusDescriptionText":"Patented
-      Case","claimParentageTypeCodeDescription":"is a Division of","parentApplicationNumberText":"16123456","patentNumber":"11797846","childApplicationNumberText":"17130468"}]}}],"requestIdentifier":"0e062231-cd33-42d1-85a4-75dbca6f7a59"}'
+      Case","claimParentageTypeCodeDescription":"is a Division of","parentApplicationNumberText":"16123456","patentNumber":"11797846","childApplicationNumberText":"17130468"}]}}],"requestIdentifier":"83eb5164-fb10-44d5-bcd5-72b0bf6e13fa"}'
     headers:
-      Connection:
-      - keep-alive
-      Content-Length:
-      - '447'
-      Content-Type:
-      - application/json
-      Date:
-      - Wed, 24 Apr 2024 17:31:41 GMT
-      X-Amzn-Trace-Id:
-      - Root=1-662941fd-45de85485c7fb5853857c097;Parent=50156d1c9252e5ce;Sampled=0;lineage=33e8fdb8:0
       access-control-allow-headers:
       - Origin, X-Requested-With, Content-Type, Accept
       access-control-allow-methods:
       - OPTIONS,POST,GET
       access-control-allow-origin:
       - '*'
+      content-length:
+      - '447'
+      content-type:
+      - application/json
+      date:
+      - Wed, 01 May 2024 18:46:29 GMT
       x-amz-apigw-id:
-      - Wvc_pFfaIAMFjfQ=
-      x-amzn-RequestId:
-      - 0e062231-cd33-42d1-85a4-75dbca6f7a59
-    http_version: HTTP/1.1
+      - XGsg7ELVoAMF_ig=
+      x-amzn-requestid:
+      - 83eb5164-fb10-44d5-bcd5-72b0bf6e13fa
+      x-amzn-trace-id:
+      - Root=1-66328e05-1c32e3247456e33e40b1c2a4;Parent=7f112eb89c6ba832;Sampled=0;lineage=33e8fdb8:0
+    http_version: HTTP/2
     status_code: 200
 version: 1

@@ -12,7 +12,7 @@ pattern. To achieve this, the "record" is a Pydantic model, and it has a "manage
 The basic structure of Patent Client API wrapper looks like this:
 - `patent_client`
   - `_async`
-    - `provider` 
+    - `provider`
       - `some_api`
         - `__init__.py`
         - `api.py`
@@ -24,9 +24,9 @@ All wrappers should live in the `_async` subfolder, and make use of async/await 
 
 
 The `model.py` file should contain [Pydantic v2](https://docs.pydantic.dev/latest/) models representing the output of the API, using `patent_client.util.pydantic_utils.BaseModel`
-instead of `pydantic.BaseModel`. 
+instead of `pydantic.BaseModel`.
 
-The `api.py` file should contain at least one class with methods that call various API functions. The actual structure of the `api.py` file does not matter, but each method should return instances of the Pydantic models defined in `model.py`. 
+The `api.py` file should contain at least one class with methods that call various API functions. The actual structure of the `api.py` file does not matter, but each method should return instances of the Pydantic models defined in `model.py`.
 
 The `manager.py` contains a subclass of `patent_client.util.manager.Manager` and serves as a wrapper over the API classes in `apy.py` that implement the manager protocol below.
 

@@ -18,7 +18,7 @@ class File(BaseModel):
     type: str = Field(alias="fileType")
     release_date: datetime.date = Field(alias="fileReleaseDate")
 
-    async def download(self, path: tp.Optional[str | Path]):
+    async def download(self, path: tp.Optional[tp.Union[str, Path]]):
         from .api import client
 
         return await client.download(self.download_url, path=path)

@@ -11,13 +11,13 @@ interactions:
       host:
       - assignment-api.uspto.gov
       user-agent:
-      - Mozilla/5.0 Python Patent Clientbot/4.1.10 (parkerhancock@users.noreply.github.com)
+      - Mozilla/5.0 Python Patent Clientbot/5.0.0 (parkerhancock@users.noreply.github.com)
     method: GET
     uri: https://assignment-api.uspto.gov/patent/lookup?filter=ApplicationNumber&query=14190982&rows=8&start=0&sort=ExecutionDate%2Bdesc&facet=false
   response:
     content: "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<response>\n\n<lst name=\"responseHeader\">\n
       \ <bool name=\"zkConnected\">true</bool>\n  <int name=\"status\">0</int>\n  <int
-      name=\"QTime\">110</int>\n  <lst name=\"params\">\n    <str name=\"q\">*:*</str>\n
+      name=\"QTime\">130</int>\n  <lst name=\"params\">\n    <str name=\"q\">*:*</str>\n
       \   <str name=\"qt\">/apisearch</str>\n    <str name=\"start\">0</str>\n    <str
       name=\"sort\">patAssignorEarliestExDate desc</str>\n    <str name=\"fq\">applNum:14190982</str>\n
       \   <str name=\"rows\">8</str>\n    <str name=\"wt\">javabin</str>\n    <str
@@ -1319,634 +1319,6 @@ interactions:
       \   </arr>\n    <arr name=\"patAssigneeCountryNameFacet\">\n      <str>NULL</str>\n
       \   </arr>\n    <arr name=\"patAssigneeStateFacet\">\n      <str>TEXAS</str>\n
       \   </arr>\n    <str name=\"corrNameString\">KE YANG XIA</str></doc>\n  <doc>\n
-      \   <str name=\"id\">61875-1</str>\n    <str name=\"displayId\">061875-0001</str>\n
-      \   <str name=\"reelNo\">61875</str>\n    <str name=\"frameNo\">1</str>\n    <date
-      name=\"lastUpdateDate\">2024-04-16T06:00:04Z</date>\n    <str name=\"purgeIndicator\">N</str>\n
-      \   <date name=\"recordedDate\">2022-11-02T04:00:00Z</date>\n    <str name=\"pageCount\">21</str>\n
-      \   <str name=\"conveyanceText\">SECURITY INTEREST (SEE DOCUMENT FOR DETAILS).</str>\n
-      \   <str name=\"assignmentRecordHasImages\">Y</str>\n    <str name=\"attorneyDockNum\">63728.005</str>\n
-      \   <str name=\"corrName\">KE YANG XIA</str>\n    <str name=\"corrAddress1\">PROSKAUER
-      ROSE LLP</str>\n    <str name=\"corrAddress2\">ELEVEN TIMES SQUARE</str>\n    <str
-      name=\"corrAddress3\">NEW YORK, NY 10036-8299</str>\n    <date name=\"patAssignorEarliestExDate\">2022-11-01T04:00:00Z</date>\n
-      \   <arr name=\"patAssignorName\">\n      <str>U.S. WELL SERVICES, LLC</str>\n
-      \   </arr>\n    <arr name=\"patAssignorExDate\">\n      <date>2022-11-01T04:00:00Z</date>\n
-      \   </arr>\n    <arr name=\"patAssignorDateAck\">\n      <str>0001-01-01T00:00:00Z</str>\n
-      \   </arr>\n    <arr name=\"patAssigneeName\">\n      <str>PIPER SANDLER FINANCE
-      LLC</str>\n    </arr>\n    <arr name=\"patAssigneeAddress1\">\n      <str>1251
-      AVENUE OF THE AMERICAS, 6TH FLOOR</str>\n    </arr>\n    <arr name=\"patAssigneeAddress2\">\n
-      \     <str>NULL</str>\n    </arr>\n    <arr name=\"patAssigneeCity\">\n      <str>NEW
-      YORK</str>\n    </arr>\n    <arr name=\"patAssigneeState\">\n      <str>NEW
-      YORK</str>\n    </arr>\n    <arr name=\"patAssigneeCountryName\">\n      <str>NULL</str>\n
-      \   </arr>\n    <arr name=\"patAssigneePostcode\">\n      <str>10020</str>\n
-      \   </arr>\n    <arr name=\"inventionTitle\">\n      <str>SYSTEM FOR GAS COMPRESSION
-      ON ELECTRIC HYDRAULIC FRACTURING FLEETS</str>\n      <str>Suction and Discharge
-      Lines for a Dual Hydraulic Fracturing Unit</str>\n      <str>ELECTRIC POWERED
-      HYDRAULIC FRACTURING SYSTEM WITHOUT GEAR REDUCTION</str>\n      <str>REMOTE
-      MONITORING FOR HYDRAULIC FRACTURING EQUIPMENT</str>\n      <str>INDEPENDENT
-      CONTROL OF AUGER AND HOPPER ASSEMBLY IN ELECTRIC BLENDER SYSTEM</str>\n      <str>FRAC
-      PUMP AUTOMATIC RATE ADJUSTMENT AND CRITICAL PLUNGER SPEED INDICATION</str>\n
-      \     <str>DAMAGE ACCUMULATION METERING FOR REMAINING USEFUL LIFE DETERMINATION</str>\n
-      \     <str>OVERSIZED SWITCHGEAR TRAILER FOR ELECTRIC HYDRAULIC FRACTURING</str>\n
-      \     <str>HYDRAULIC FRACTURING EQUIPMENT WITH NON-HYDRAULIC POWER</str>\n      <str>ENCODERLESS
-      VECTOR CONTROL FOR VFD IN HYDRAULIC FRACTURING APPLICATIONS</str>\n      <str>SYSTEM
-      FOR GAS COMPRESSION ON ELECTRIC HYDRAULIC FRACTURING FLEETS</str>\n      <str>ELECTRIC
-      POWERED PUMP DOWN</str>\n      <str>SLIDE OUT PUMP STAND FOR HYDRAULIC FRACTURING
-      EQUIPMENT</str>\n      <str>LOAD LEVELING POWER STORAGE SYSTEM FOR ELECTRIC
-      HYDRAULIC FRACTURING</str>\n      <str>COMPACT ELECTRIC HYDRAULIC FRACTURING
-      TRAILER</str>\n      <str>Electrically Actuated Valves for Manifold Trailers
-      or Skids</str>\n      <str>MODULAR REMOTE POWER GENERATION AND TRANSMISSION
-      FOR HYDRAULIC FRACTURING SYSTEM</str>\n      <str>MULTI-PLUNGER PUMPS AND ASSOCIATED
-      DRIVE SYSTEMS</str>\n      <str>SYSTEMS AND METHODS FOR FLUID END HEALTH MONITORING</str>\n
-      \     <str>AUTOMATED BLENDER BUCKET TESTING AND CALIBRATION</str>\n      <str>ELECTRIC
-      MOTOR DRIVEN TRANSPORTATION MECHANISMS FOR FRACTURING BLENDERS</str>\n      <str>BLENDER
-      TUB OVERFLOW CATCH</str>\n      <str>SYSTEMS AND METHODS FOR FLUID END EARLY
-      FAILURE PREDICTION</str>\n      <str>SEGMENTED FLUID END PLUNGER PUMP</str>\n
-      \     <str>SMART FRACTURING SYSTEM AND METHOD</str>\n      <str>CONSTANT VOLTAGE
-      POWER DISTRIBUTION SYSTEM FOR USE WITH AN ELECTRIC HYDRAULIC FRACTURING SYSTEM</str>\n
-      \     <str>Electric Powered Hydraulic Fracturing Pump System with Single Electric
-      Powered Multi-Plunger Pump Fracturing Trailers, Filtration Units, and Slide
-      Out Platform</str>\n      <str>SYSTEM FOR FUELING ELECTRIC POWERED HYDRAULIC
-      FRACTURING EQUIPMENT WITH MULTIPLE FUEL SOURCES</str>\n      <str>SYSTEM FOR
-      REDUCING VIBRATIONS IN A PRESSURE PUMPING FLEET</str>\n      <str>CABLE MANAGEMENT
-      OF ELECTRIC POWERED HYDRAULIC FRACTURING PUMP UNIT</str>\n      <str>HYBRID
-      HYDRAULIC FRACTURING FLEET</str>\n      <str>SYSTEM AND METHOD FOR INTEGRATED
-      FLOW SUPPLY LINE</str>\n      <str>ELECTRIC HYDRAULIC FRACTURING WITH BATTERY
-      POWER AS PRIMARY SOURCE</str>\n      <str>INSTRUMENTED FRACTURING SLURRY FLOW
-      SYSTEM AND METHOD</str>\n      <str>SYSTEM FOR CENTRALIZED MONITORING AND CONTROL
-      OF ELECTRIC POWERED HYDRAULIC FRACTURING FLEET</str>\n      <str>MICROGRID ELECTRICAL
-      LOAD MANAGEMENT</str>\n      <str>INDEPENDENT CONTROL OF AUGER AND HOPPER ASSEMBLY
-      IN ELECTRIC BLENDER SYSTEM</str>\n      <str>SYSTEM FOR PUMPING HYDRAULIC FRACTURING
-      FLUID USING ELECTRIC PUMPS</str>\n      <str>INTEGRATED MOBILE POWER UNIT FOR
-      HYDRAULIC FRACTURING</str>\n      <str>MONITORING AND CONTROL OF PROPPANT STORAGE
-      FROM A DATAVAN</str>\n      <str>AUTOMATED FRACTURING SYSTEM AND METHOD</str>\n
-      \     <str>MODULAR SWITCHGEAR SYSTEM AND POWER DISTRIBUTION FOR ELECTRIC OILFIELD
-      EQUIPMENT</str>\n      <str>HIGH HORSEPOWER PUMPING CONFIGURATION FOR AN ELECTRIC
-      HYDRAULIC FRACTURING SYSTEM</str>\n      <str>SYSTEM AND METHOD FOR PARALLEL
-      POWER AND BLACKOUT PROTECTION FOR ELECTRIC POWERED HYDRAULIC FRACTURING</str>\n
-      \     <str>SWITCHGEAR LOAD SHARING FOR OIL FIELD EQUIPMENT</str>\n      <str>INTEGRATED
-      FUEL GAS HEATER FOR MOBILE FUEL CONDITIONING EQUIPMENT</str>\n      <str>ELECTRIC
-      POWERED HYDRAULIC FRACTURING PUMP SYSTEM WITH SINGLE ELECTRIC POWERED MULTI-PLUNGER
-      FRACTURING PUMP</str>\n      <str>INTEGRATED FUEL GAS HEATER FOR MOBILE FUEL
-      CONDITIONING EQUIPMENT</str>\n      <str>HIGH CAPACITY POWER STORAGE SYSTEM
-      FOR ELECTRIC HYDRAULIC FRACTURING</str>\n      <str>TORSIONAL COUPLING FOR ELECTRIC
-      HYDRAULIC FRACTURING FLUID PUMPS</str>\n      <str>CONSTANT VOLTAGE POWER DISTRIBUTION
-      SYSTEM FOR USE WITH AN ELECTRIC HYDRAULIC FRACTURING SYSTEM</str>\n      <str>System
-      for Pumping Hydraulic Fracturing Fluid Using Electric Pumps</str>\n      <str>SYSTEM
-      FOR PUMPING HYDRAULIC FRACTURING FLUID USING ELECTRIC PUMPS</str>\n      <str>System
-      for Reducing Noise in a Hydraulic Fracturing Fleet</str>\n      <str>Cold Weather
-      Package for Oil Field Hydraulics</str>\n      <str>TORSIONAL COUPLING FOR ELECTRIC
-      HYDRAULIC FRACTURING FLUID PUMPS</str>\n      <str>SAFETY INDICATOR LIGHTS FOR
-      HYDRAULIC FRACTURING PUMPS</str>\n      <str>ELECTRIC POWERED PUMP DOWN</str>\n
-      \     <str>REMOTE MONITORING FOR HYDRAULIC FRACTURING EQUIPMENT</str>\n      <str>SWITCHGEAR
-      LOAD SHARING FOR OIL FIELD EQUIPMENT</str>\n      <str>SYSTEM FOR CENTRALIZED
-      MONITORING AND CONTROL OF ELECTRIC POWERED HYDRAULIC FRACTURING FLEET</str>\n
-      \     <str>TURBINE CHILLING FOR OIL FIELD POWER GENERATION</str>\n      <str>SYSTEM
-      FOR FUELING ELECTRIC POWERED HYDRAULIC FRACTURING EQUIPMENT WITH MULTIPLE FUEL
-      SOURCES</str>\n      <str>Cable Management of Electric Powered Hydraulic Fracturing
-      Pump Unit</str>\n      <str>System for Reducing Vibrations in a Pressure Pumping
-      Fleet</str>\n      <str>REMOTE MONITORING FOR HYDRAULIC FRACTURING EQUIPMENT</str>\n
-      \     <str>INDEPENDENT CONTROL OF AUGER AND HOPPER ASSEMBLY IN ELECTRIC BLENDER
-      SYSTEM</str>\n      <str>Monitoring and Control of Proppant Storage from a Datavan</str>\n
-      \     <str>HYDRAULIC FRACTURING EQUIPMENT WITH NON-HYDRAULIC POWER</str>\n      <str>SYSTEM
-      FOR PUMPING HYDRAULIC FRACTURING FLUID USING ELECTRIC PUMPS</str>\n      <str>ELECTRIC
-      POWERED PUMP DOWN</str>\n      <str>SLIDE OUT PUMP STAND FOR HYDRAULIC FRACTURING
-      EQUIPMENT</str>\n      <str>AUTOMATED FRACTURING SYSTEM AND METHOD</str>\n      <str>MODULAR
-      REMOTE POWER GENERATION AND TRANSMISSION FOR HYDRAULIC FRACTURING SYSTEM</str>\n
-      \     <str>MULTI-PLUNGER PUMPS AND ASSOCIATED DRIVE SYSTEMS</str>\n      <str>SMART
-      FRACTURING SYSTEM AND METHOD</str>\n      <str>HIGH HORSEPOWER PUMPING CONFIGURATION
-      FOR AN ELECTRIC HYDRAULIC FRACTURING SYSTEM</str>\n      <str>RISER ASSIST FOR
-      WELLSITES</str>\n      <str>SWITCHGEAR LOAD SHARING FOR OIL FIELD EQUIPMENT</str>\n
-      \     <str>TURBINE CHILLING FOR OIL FIELD POWER GENERATION</str>\n      <str>SYSTEM
-      FOR FUELING ELECTRIC POWERED HYDRAULIC FRACTURING EQUIPMENT WITH MULTIPLE FUEL
-      SOURCES</str>\n      <str>SYSTEM FOR REDUCING VIBRATIONS IN A PRESSURE PUMPING
-      FLEET</str>\n      <str>Electric Powered Hydraulic Fracturing Pump System with
-      Single Electric Powered Multi-Plunger Pump Fracturing Trailers, Filtration Units,
-      and Slide Out Platform</str>\n      <str>CABLE MANAGEMENT OF ELECTRIC POWERED
-      HYDRAULIC FRACTURING PUMP UNIT</str>\n      <str>SYSTEM AND METHOD FOR INTEGRATED
-      FLOW SUPPLY LINE</str>\n      <str>TORSIONAL COUPLING FOR ELECTRIC HYDRAULIC
-      FRACTURING FLUID PUMPS</str>\n      <str>HYBRID HYDRAULIC FRACTURING FLEET</str>\n
-      \     <str>INSTRUMENTED FRACTURING SLURRY FLOW SYSTEM AND METHOD</str>\n      <str>SYSTEM
-      FOR CENTRALIZED MONITORING AND CONTROL OF ELECTRIC POWERED HYDRAULIC FRACTURING
-      FLEET</str>\n      <str>MICROGRID ELECTRICAL LOAD MANAGEMENT</str>\n      <str>SYSTEM
-      FOR PUMPING HYDRAULIC FRACTURING FLUID USING ELECTRIC PUMPS</str>\n      <str>MONITORING
-      AND CONTROL OF PROPPANT STORAGE FROM A DATAVAN</str>\n      <str>CONSTANT VOLTAGE
-      POWER DISTRIBUTION SYSTEM FOR USE WITH AN ELECTRIC HYDRAULIC FRACTURING SYSTEM</str>\n
-      \     <str>AUTOMATED FRACTURING SYSTEM AND METHOD</str>\n      <str>INTEGRATED
-      MOBILE POWER UNIT FOR HYDRAULIC FRACTURING</str>\n      <str>MODULAR SWITCHGEAR
-      SYSTEM AND POWER DISTRIBUTION FOR ELECTRIC OILFIELD EQUIPMENT</str>\n      <str>RISER
-      ASSIST FOR WELLSITES</str>\n      <str>HIGH HORSEPOWER PUMPING CONFIGURATION
-      FOR AN ELECTRIC HYDRAULIC FRACTURING SYSTEM</str>\n      <str>WIRELINE POWER
-      SUPPLY DURING ELECTRIC POWERED FRACTURING OPERATIONS</str>\n      <str>SYSTEM
-      AND METHOD FOR PARALLEL POWER AND BLACKOUT PROTECTION FOR ELECTRIC POWERED HYDRAULIC
-      FRACTURING</str>\n      <str>SWITCHGEAR LOAD SHARING FOR OIL FIELD EQUIPMENT</str>\n
-      \     <str>TURBINE CHILLING FOR OIL FIELD POWER GENERATION</str>\n      <str>ELECTRIC
-      POWERED HYDRAULIC FRACTURING PUMP SYSTEM WITH SINGLE ELECTRIC POWERED MULTI-PLUNGER
-      FRACTURING PUMP</str>\n      <str>SELF-REGULATING FRAC PUMP SUCTION STABILIZER/DAMPENER</str>\n
-      \   </arr>\n    <arr name=\"inventionTitleLang\">\n      <str>en</str>\n      <str>en</str>\n
-      \     <str>en</str>\n      <str>en</str>\n      <str>en</str>\n      <str>en</str>\n
-      \     <str>en</str>\n      <str>en</str>\n      <str>en</str>\n      <str>en</str>\n
-      \     <str>en</str>\n      <str>en</str>\n      <str>en</str>\n      <str>en</str>\n
-      \     <str>en</str>\n      <str>en</str>\n      <str>en</str>\n      <str>en</str>\n
-      \     <str>en</str>\n      <str>en</str>\n      <str>en</str>\n      <str>en</str>\n
-      \     <str>en</str>\n      <str>en</str>\n      <str>en</str>\n      <str>en</str>\n
-      \     <str>en</str>\n      <str>en</str>\n      <str>en</str>\n      <str>en</str>\n
-      \     <str>en</str>\n      <str>en</str>\n      <str>en</str>\n      <str>en</str>\n
-      \     <str>en</str>\n      <str>en</str>\n      <str>en</str>\n      <str>en</str>\n
-      \     <str>en</str>\n      <str>en</str>\n      <str>en</str>\n      <str>en</str>\n
-      \     <str>en</str>\n      <str>en</str>\n      <str>en</str>\n      <str>en</str>\n
-      \     <str>en</str>\n      <str>en</str>\n      <str>en</str>\n      <str>en</str>\n
-      \     <str>en</str>\n      <str>en</str>\n      <str>en</str>\n      <str>en</str>\n
-      \     <str>en</str>\n      <str>en</str>\n      <str>en</str>\n      <str>en</str>\n
-      \     <str>en</str>\n      <str>en</str>\n      <str>en</str>\n      <str>en</str>\n
-      \     <str>en</str>\n      <str>en</str>\n      <str>en</str>\n      <str>en</str>\n
-      \     <str>en</str>\n      <str>en</str>\n      <str>en</str>\n      <str>en</str>\n
-      \     <str>en</str>\n      <str>en</str>\n      <str>en</str>\n      <str>en</str>\n
-      \     <str>en</str>\n      <str>en</str>\n      <str>en</str>\n      <str>en</str>\n
-      \     <str>en</str>\n      <str>en</str>\n      <str>en</str>\n      <str>en</str>\n
-      \     <str>en</str>\n      <str>en</str>\n      <str>en</str>\n      <str>en</str>\n
-      \     <str>en</str>\n      <str>en</str>\n      <str>en</str>\n      <str>en</str>\n
-      \     <str>en</str>\n      <str>en</str>\n      <str>en</str>\n      <str>en</str>\n
-      \     <str>en</str>\n      <str>en</str>\n      <str>en</str>\n      <str>en</str>\n
-      \     <str>en</str>\n      <str>en</str>\n      <str>en</str>\n      <str>en</str>\n
-      \     <str>en</str>\n      <str>en</str>\n    </arr>\n    <arr name=\"applNum\">\n
-      \     <str>15356436</str>\n      <str>15145443</str>\n      <str>16152732</str>\n
-      \     <str>16167083</str>\n      <str>16356263</str>\n      <str>16824409</str>\n
-      \     <str>16824428</str>\n      <str>16824432</str>\n      <str>16404283</str>\n
-      \     <str>16873583</str>\n      <str>16458696</str>\n      <str>16522043</str>\n
-      \     <str>16564186</str>\n      <str>17087068</str>\n      <str>17088934</str>\n
-      \     <str>17091926</str>\n      <str>16696364</str>\n      <str>16827166</str>\n
-      \     <str>17134880</str>\n      <str>17136937</str>\n      <str>17135543</str>\n
-      \     <str>17122425</str>\n      <str>17137570</str>\n      <str>17136943</str>\n
-      \     <str>16876929</str>\n      <str>17157458</str>\n      <str>17170128</str>\n
-      \     <str>17181546</str>\n      <str>17188441</str>\n      <str>17202412</str>\n
-      \     <str>17319810</str>\n      <str>17321936</str>\n      <str>17752135</str>\n
-      \     <str>17379341</str>\n      <str>17402752</str>\n      <str>17466261</str>\n
-      \     <str>17484818</str>\n      <str>17493092</str>\n      <str>17540807</str>\n
-      \     <str>17533279</str>\n      <str>17556409</str>\n      <str>17560651</str>\n
-      \     <str>17903831</str>\n      <str>17948372</str>\n      <str>17948844</str>\n
-      \     <str>17950166</str>\n      <str>17959465</str>\n      <str>16897467</str>\n
-      \     <str>16943727</str>\n      <str>17379651</str>\n      <str>17533183</str>\n
-      \     <str>13679689</str>\n      <str>14190982</str>\n      <str>14995811</str>\n
-      \     <str>15145440</str>\n      <str>14622532</str>\n      <str>15217040</str>\n
-      \     <str>15291842</str>\n      <str>15293681</str>\n      <str>15487694</str>\n
-      \     <str>14884363</str>\n      <str>15486970</str>\n      <str>15487656</str>\n
-      \     <str>15145491</str>\n      <str>15145414</str>\n      <str>15838033</str>\n
-      \     <str>15294349</str>\n      <str>15235716</str>\n      <str>15644487</str>\n
-      \     <str>15202085</str>\n      <str>15653028</str>\n      <str>15217081</str>\n
-      \     <str>16160708</str>\n      <str>15183387</str>\n      <str>16210807</str>\n
-      \     <str>16170695</str>\n      <str>16210749</str>\n      <str>16570331</str>\n
-      \     <str>15893766</str>\n      <str>15994759</str>\n      <str>15994772</str>\n
-      \     <str>16158756</str>\n      <str>16597008</str>\n      <str>16047653</str>\n
-      \     <str>16728359</str>\n      <str>15581625</str>\n      <str>16385070</str>\n
-      \     <str>16152695</str>\n      <str>15978838</str>\n      <str>16268030</str>\n
-      \     <str>16456777</str>\n      <str>16377861</str>\n      <str>15829419</str>\n
-      \     <str>16564185</str>\n      <str>16443273</str>\n      <str>16597014</str>\n
-      \     <str>16871328</str>\n      <str>16871928</str>\n      <str>15235788</str>\n
-      \     <str>14881535</str>\n      <str>16901774</str>\n      <str>16943935</str>\n
-      \     <str>17060647</str>\n      <str>17136913</str>\n    </arr>\n    <arr name=\"filingDate\">\n
-      \     <date>2016-11-18T04:00:00Z</date>\n      <date>2016-05-03T04:00:00Z</date>\n
-      \     <date>2018-10-05T04:00:00Z</date>\n      <date>2018-10-22T04:00:00Z</date>\n
-      \     <date>2019-03-18T04:00:00Z</date>\n      <date>2020-03-19T04:00:00Z</date>\n
-      \     <date>2020-03-19T04:00:00Z</date>\n      <date>2020-03-19T04:00:00Z</date>\n
-      \     <date>2019-05-06T04:00:00Z</date>\n      <date>2020-05-12T04:00:00Z</date>\n
-      \     <date>2019-07-01T04:00:00Z</date>\n      <date>2019-07-25T04:00:00Z</date>\n
-      \     <date>2019-09-09T04:00:00Z</date>\n      <date>2020-11-02T04:00:00Z</date>\n
-      \     <date>2020-11-04T04:00:00Z</date>\n      <date>2020-11-06T04:00:00Z</date>\n
-      \     <date>2019-11-26T04:00:00Z</date>\n      <date>2020-03-23T04:00:00Z</date>\n
-      \     <date>2020-12-28T04:00:00Z</date>\n      <date>2020-12-29T04:00:00Z</date>\n
-      \     <date>2020-12-28T04:00:00Z</date>\n      <date>2020-12-15T04:00:00Z</date>\n
-      \     <date>2020-12-30T04:00:00Z</date>\n      <date>2020-12-29T04:00:00Z</date>\n
-      \     <date>2020-05-18T04:00:00Z</date>\n      <date>2021-01-25T04:00:00Z</date>\n
-      \     <date>2021-02-08T04:00:00Z</date>\n      <date>2021-02-22T04:00:00Z</date>\n
-      \     <date>2021-03-01T04:00:00Z</date>\n      <date>2021-03-16T04:00:00Z</date>\n
-      \     <date>2021-05-13T04:00:00Z</date>\n      <date>2021-05-17T04:00:00Z</date>\n
-      \     <date>2022-05-24T04:00:00Z</date>\n      <date>2021-07-19T04:00:00Z</date>\n
-      \     <date>2021-08-16T04:00:00Z</date>\n      <date>2021-09-03T04:00:00Z</date>\n
-      \     <date>2021-09-24T04:00:00Z</date>\n      <date>2021-10-04T04:00:00Z</date>\n
-      \     <date>2021-12-02T04:00:00Z</date>\n      <date>2021-11-23T04:00:00Z</date>\n
-      \     <date>2021-12-20T04:00:00Z</date>\n      <date>2021-12-23T04:00:00Z</date>\n
-      \     <date>2022-09-06T04:00:00Z</date>\n      <date>2022-09-20T04:00:00Z</date>\n
-      \     <date>2022-09-20T04:00:00Z</date>\n      <date>2022-09-22T04:00:00Z</date>\n
-      \     <date>2022-10-04T04:00:00Z</date>\n      <date>2020-06-10T04:00:00Z</date>\n
-      \     <date>2020-07-30T04:00:00Z</date>\n      <date>2021-07-19T04:00:00Z</date>\n
-      \     <date>2021-11-23T04:00:00Z</date>\n      <date>2012-11-16T04:00:00Z</date>\n
-      \     <date>2014-02-26T04:00:00Z</date>\n      <date>2016-01-14T04:00:00Z</date>\n
-      \     <date>2016-05-03T04:00:00Z</date>\n      <date>2015-02-13T04:00:00Z</date>\n
-      \     <date>2016-07-22T04:00:00Z</date>\n      <date>2016-10-12T04:00:00Z</date>\n
-      \     <date>2016-10-14T04:00:00Z</date>\n      <date>2017-04-14T04:00:00Z</date>\n
-      \     <date>2015-10-15T04:00:00Z</date>\n      <date>2017-04-13T04:00:00Z</date>\n
-      \     <date>2017-04-14T04:00:00Z</date>\n      <date>2016-05-03T04:00:00Z</date>\n
-      \     <date>2016-05-03T04:00:00Z</date>\n      <date>2017-12-11T04:00:00Z</date>\n
-      \     <date>2016-10-14T04:00:00Z</date>\n      <date>2016-08-12T04:00:00Z</date>\n
-      \     <date>2017-07-07T04:00:00Z</date>\n      <date>2016-07-05T04:00:00Z</date>\n
-      \     <date>2017-07-18T04:00:00Z</date>\n      <date>2016-07-22T04:00:00Z</date>\n
-      \     <date>2018-10-15T04:00:00Z</date>\n      <date>2016-06-15T04:00:00Z</date>\n
-      \     <date>2018-12-05T04:00:00Z</date>\n      <date>2018-10-25T04:00:00Z</date>\n
-      \     <date>2018-12-05T04:00:00Z</date>\n      <date>2019-09-13T04:00:00Z</date>\n
-      \     <date>2018-02-12T04:00:00Z</date>\n      <date>2018-05-31T04:00:00Z</date>\n
-      \     <date>2018-05-31T04:00:00Z</date>\n      <date>2018-10-12T04:00:00Z</date>\n
-      \     <date>2019-10-09T04:00:00Z</date>\n      <date>2018-07-27T04:00:00Z</date>\n
-      \     <date>2019-12-27T04:00:00Z</date>\n      <date>2017-04-28T04:00:00Z</date>\n
-      \     <date>2019-04-16T04:00:00Z</date>\n      <date>2018-10-05T04:00:00Z</date>\n
-      \     <date>2018-05-14T04:00:00Z</date>\n      <date>2019-02-05T04:00:00Z</date>\n
-      \     <date>2019-06-28T04:00:00Z</date>\n      <date>2019-04-08T04:00:00Z</date>\n
-      \     <date>2017-12-01T04:00:00Z</date>\n      <date>2019-09-09T04:00:00Z</date>\n
-      \     <date>2019-06-17T04:00:00Z</date>\n      <date>2019-10-09T04:00:00Z</date>\n
-      \     <date>2020-05-11T04:00:00Z</date>\n      <date>2020-05-11T04:00:00Z</date>\n
-      \     <date>2016-08-12T04:00:00Z</date>\n      <date>2015-10-13T04:00:00Z</date>\n
-      \     <date>2020-06-15T04:00:00Z</date>\n      <date>2020-07-30T04:00:00Z</date>\n
-      \     <date>2020-10-01T04:00:00Z</date>\n      <date>2020-12-29T04:00:00Z</date>\n
-      \   </arr>\n    <arr name=\"intlPublDate\">\n      <date>0001-01-01T00:00:00Z</date>\n
-      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
-      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
-      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
-      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
-      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
-      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
-      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
-      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
-      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
-      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
-      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
-      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
-      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
-      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
-      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
-      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
-      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
-      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
-      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
-      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
-      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
-      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
-      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
-      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
-      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
-      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
-      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
-      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
-      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
-      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
-      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
-      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
-      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
-      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
-      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
-      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
-      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
-      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
-      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
-      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
-      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
-      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
-      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
-      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
-      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
-      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
-      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
-      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
-      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
-      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
-      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
-      \     <date>0001-01-01T00:00:00Z</date>\n    </arr>\n    <arr name=\"intlRegNum\">\n
-      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
-      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
-      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
-      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
-      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
-      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
-      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
-      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
-      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
-      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
-      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
-      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
-      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
-      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
-      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
-      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
-      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
-      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
-      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
-      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
-      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
-      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
-      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
-      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
-      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
-      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
-      \   </arr>\n    <arr name=\"inventors\">\n      <str>Jared Oehring, Brandon
-      N. Hinderliter</str>\n      <str>Robert Kurtz, Jared Oehring</str>\n      <str>Jared
-      Oehring</str>\n      <str>Jared Oehring, Brandon N. Hinderliter</str>\n      <str>Jared
-      Oehring, Brandon N. Hinderliter</str>\n      <str>Lon Robinson, Jared Oehring</str>\n
-      \     <str>Arden Albert, Alexander Christinzio, Jared Oehring</str>\n      <str>Jared
-      Oehring, Brandon Hinderliter</str>\n      <str>Brandon N. Hinderliter</str>\n
-      \     <str>Lon Robinson, Jared Oehring, Brandon N. Hinderliter</str>\n      <str>Brandon
-      N. Hinderliter, Jared Oehring</str>\n      <str>Jared Oehring, Brandon N. Hinderliter</str>\n
-      \     <str>Jared Oehring, Brandon Neil Hinderliter</str>\n      <str>Brandon
-      Hinderliter, Jared Oehring, Steven Riley</str>\n      <str>Jared Oehring, Lon
-      Robinson, Brandon Hinderliter</str>\n      <str>Jeremiah Luke Wright, Brandon
-      Hinderliter, Jared Oehring, Joshua Watson, Jeremy Brunty, Alexander Christinzio,
-      Lon Robinson, Arden Albert</str>\n      <str>Brandon Neil HINDERLITER, Jared
-      Oehring</str>\n      <str>Lon Robinson, Alexander James Christinzio, Jared Oehring,
-      Brandon N. Hinderliter</str>\n      <str>Alexander Christinzio, Arden Albert,
-      Lon Robinson, Jared Oehring</str>\n      <str>Jared Oehring, Alexander Christinzio</str>\n
-      \     <str>Alexander Christinzio, Brandon Hinderliter, Lon Robinson, Jared Oehring</str>\n
-      \     <str>Jared Oehring, Alexander Christinzio</str>\n      <str>Arden Albert,
-      Alexander Christinzio</str>\n      <str>Brandon Hinderliter, Lon Robinson, Jared
-      Oehring</str>\n      <str>Jared OEHRING, Alexander James CHRISTINZIO, Brandon
-      N. HINDERLITER</str>\n      <str>Jared Oehring, Brandon N. Hinderliter</str>\n
-      \     <str>Jared Oehring, Brandon N. Hinderliter, Lon Robinson</str>\n      <str>Jared
-      Oehring, Brandon N. Hinderliter</str>\n      <str>Jared Oehring, Robert Kurtz</str>\n
-      \     <str>Jared Oehring</str>\n      <str>Brandon Neil Hinderliter, Jared Oehring</str>\n
-      \     <str>Brandon Hinderliter, Alexander James Christinzio, Jared Oehring,
-      Lon Robinson</str>\n      <str>Brandon Hinderliter</str>\n      <str>Jared Oehring,
-      Alexander James Christinzio, Brandon N. Hinderliter</str>\n      <str>Joel N.
-      Broussard, Jeff McPherson, Robert Kurtz, Jared Oehring, Brandon Hinderliter</str>\n
-      \     <str>Brandon N. Hinderliter, Jared Oehring</str>\n      <str>Jared Oehring,
-      Brandon N. Hinderliter</str>\n      <str>Joel N. BROUSSARD, Jeff McPHERSON,
-      Robert KURTZ</str>\n      <str>Brandon N. Hinderliter, Jared Oehring</str>\n
-      \     <str>Jared Oehring, Brandon N. Hinderliter, Arthur Baron</str>\n      <str>Jared
-      Oehring, Brandon N. Hinderliter, Alexander James Christinzio</str>\n      <str>Brandon
-      N. Hinderliter, Jared Oehring, Lon Robinson</str>\n      <str>Jared Oehring,
-      Brandon N. Hinderliter, Lon Robinson</str>\n      <str>Jared Oehring, Robert
-      Kurtz, Brennan Zaunbrecher</str>\n      <str>Jared Oehring, Brandon N. Hinderliter</str>\n
-      \     <str>Brandon Hinderliter, Jared Oehring</str>\n      <str>Lon Robinson,
-      Jared Oehring, Brandon N. Hinderliter</str>\n      <str>Brandon Hinderliter,
-      Jared Oehring</str>\n      <str>Brandon N. Hinderliter, Jared Oehring, Steven
-      Riley</str>\n      <str>Joel N. Broussard, Jeff McPherson, Robert Kurtz, Jared
-      Oehring</str>\n      <str>Jared Oehring, Brandon N. Hinderliter</str>\n      <str>Joel
-      N. Broussard, Robert Kurtz, Jeff McPherson</str>\n      <str>Joel N. Broussard,
-      Jeff McPherson, Robert Kurtz</str>\n      <str>Jared Oehring</str>\n      <str>Jared
-      Oehring</str>\n      <str>Jeff McPherson, Jared Oehring, Joel N. Broussard,
-      Robert Kurtz</str>\n      <str>Jared OEHRING, Brandon Neil HINDERLITER</str>\n
-      \     <str>Jared Oehring, Brandon N. Hinderliter</str>\n      <str>Jared Oehring,
-      Brandon N. Hinderliter</str>\n      <str>Jared Oehring, Brandon N. Hinderliter</str>\n
-      \     <str>Joel N. Broussard, Jeff McPherson, Robert Kurtz, Jared Oehring, Brandon
-      Hinderliter</str>\n      <str>Jared Oehring, Brandon N. Hinderliter</str>\n
-      \     <str>Jared Oehring, Brandon N. Hinderliter</str>\n      <str>Jared Oehring</str>\n
-      \     <str>Robert Kurtz, Jared Oehring</str>\n      <str>Jared Oehring, Brandon
-      N. Hinderliter</str>\n      <str>Jared Oehring, Brandon N. Hinderliter</str>\n
-      \     <str>Jared OEHRING, Brandon Neil HINDERLITER, Arthur BARON</str>\n      <str>Brandon
-      N. Hinderliter</str>\n      <str>Joel N. BROUSSARD, Jeff McPHERSON, Robert KURTZ</str>\n
-      \     <str>Jared Oehring, Brandon N. Hinderliter</str>\n      <str>Jared OEHRING,
-      Brandon Neil HINDERLITER</str>\n      <str>Jared Oehring, Alexander James Christinzio,
-      Brandon N. Hinderliter</str>\n      <str>Brandon Neil HINDERLITER, Jared OEHRING</str>\n
-      \     <str>Jared Oehring, Lon Robinson, Brandon N. Hinderliter, Alexander James
-      Christinzio</str>\n      <str>Alexander James Christinzio, Jared Oehring, Brandon
-      N. Hinderliter</str>\n      <str>Jared Oehring, Brandon N. Hinderliter, Lon
-      Robinson</str>\n      <str>Randall Kimbler, Andrew Frame, Jeremy Brunty, Dominic
-      Chero, Robert Kurtz</str>\n      <str>Jared Oehring, Brandon N. Hinderliter</str>\n
-      \     <str>Jared Oehring, Brandon N. Hinderliter</str>\n      <str>Jared Oehring,
-      Brandon N. Hinderliter</str>\n      <str>Jared Oehring, Robert Kurtz</str>\n
-      \     <str>Jared Oehring, Brandon N. Hinderliter, Lon Robinson</str>\n      <str>Jared
-      Oehring</str>\n      <str>Jared Oehring, Brandon Hinderliter, Lon Robinson,
-      Alexander James Christinzio</str>\n      <str>Jeff McPherson, Jared Oehring,
-      Joel N. Broussard, Robert Kurtz</str>\n      <str>Jared Oehring, Brandon Neil
-      Hinderliter</str>\n      <str>Jared Oehring, Brandon N. Hinderliter, Alexander
-      James Christinzio</str>\n      <str>Joel N. Broussard, Jeff McPherson, Robert
-      Kurtz, Jared Oehring, Brandon Hinderliter</str>\n      <str>Brandon N. Hinderliter,
-      Jared Oehring</str>\n      <str>Joel N. BROUSSARD, Jeff McPHERSON, Robert KURTZ</str>\n
-      \     <str>Jared Oehring, Arthur Baron, Brandon N. Hinderliter</str>\n      <str>Brandon
-      N. Hinderliter, Jared Oehring</str>\n      <str>Jared Oehring, Brandon N. Hinderliter,
-      Alexander James Christinzio</str>\n      <str>Brandon N. Hinderliter, Jared
-      Oehring</str>\n      <str>Jared Oehring, Brandon N. Hinderliter, Lon Robinson</str>\n
-      \     <str>Jeremy BRUNTY, Randall Kimbler, Dominic Chero, Andrew Frame, Robert
-      Kurtz</str>\n      <str>Jared Oehring, Brandon N. Hinderliter, Lon Robinson</str>\n
-      \     <str>Jared OEHRING, Brandon Neil HINDERLITER, Joel BROUSSARD</str>\n      <str>Jared
-      Oehring, Robert Kurtz, Brennan Zaunbrecher</str>\n      <str>Brandon N. Hinderliter,
-      Jared Oehring</str>\n      <str>Jared Oehring, Brandon N. Hinderliter</str>\n
-      \     <str>Jared Oehring, Lon Robinson, Brandon N. Hinderliter</str>\n      <str>Jared
-      Oehring, Alexander Christinzio, Lon Robinson</str>\n    </arr>\n    <arr name=\"issueDate\">\n
-      \     <date>0001-01-01T00:00:00Z</date>\n      <date>2024-04-16T04:00:00Z</date>\n
-      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
-      \     <date>2023-12-26T04:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
-      \     <date>0001-01-01T00:00:00Z</date>\n      <date>2023-02-14T04:00:00Z</date>\n
-      \     <date>0001-01-01T00:00:00Z</date>\n      <date>2023-08-15T04:00:00Z</date>\n
-      \     <date>0001-01-01T00:00:00Z</date>\n      <date>2023-08-01T04:00:00Z</date>\n
-      \     <date>2023-06-13T04:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
-      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
-      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
-      \     <date>0001-01-01T00:00:00Z</date>\n      <date>2024-04-16T04:00:00Z</date>\n
-      \     <date>2024-01-30T04:00:00Z</date>\n      <date>2023-12-19T04:00:00Z</date>\n
-      \     <date>0001-01-01T00:00:00Z</date>\n      <date>2023-01-24T04:00:00Z</date>\n
-      \     <date>2023-11-07T04:00:00Z</date>\n      <date>2024-04-09T04:00:00Z</date>\n
-      \     <date>2023-02-14T04:00:00Z</date>\n      <date>2023-06-13T04:00:00Z</date>\n
-      \     <date>0001-01-01T00:00:00Z</date>\n      <date>2023-06-20T04:00:00Z</date>\n
-      \     <date>2023-11-14T04:00:00Z</date>\n      <date>2023-06-06T04:00:00Z</date>\n
-      \     <date>2023-08-15T04:00:00Z</date>\n      <date>2023-06-13T04:00:00Z</date>\n
-      \     <date>2024-03-05T04:00:00Z</date>\n      <date>2023-12-26T04:00:00Z</date>\n
-      \     <date>2023-09-05T04:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
-      \     <date>2023-08-01T04:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
-      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
-      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
-      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
-      \     <date>2024-02-20T04:00:00Z</date>\n      <date>2022-11-22T04:00:00Z</date>\n
-      \     <date>2023-01-03T04:00:00Z</date>\n      <date>2023-01-10T04:00:00Z</date>\n
-      \     <date>2023-01-17T04:00:00Z</date>\n      <date>2016-08-09T04:00:00Z</date>\n
-      \     <date>2014-07-29T04:00:00Z</date>\n      <date>2017-03-07T04:00:00Z</date>\n
-      \     <date>2017-04-04T04:00:00Z</date>\n      <date>2017-05-16T04:00:00Z</date>\n
-      \     <date>2017-05-16T04:00:00Z</date>\n      <date>2017-08-29T04:00:00Z</date>\n
-      \     <date>2017-12-12T04:00:00Z</date>\n      <date>2018-02-13T04:00:00Z</date>\n
-      \     <date>2018-05-15T04:00:00Z</date>\n      <date>2018-06-12T04:00:00Z</date>\n
-      \     <date>2018-07-10T04:00:00Z</date>\n      <date>2018-07-31T04:00:00Z</date>\n
-      \     <date>2018-11-06T04:00:00Z</date>\n      <date>2018-10-23T04:00:00Z</date>\n
-      \     <date>2019-03-19T04:00:00Z</date>\n      <date>2019-04-09T04:00:00Z</date>\n
-      \     <date>2019-05-07T04:00:00Z</date>\n      <date>2019-07-02T04:00:00Z</date>\n
-      \     <date>2019-09-10T04:00:00Z</date>\n      <date>2019-09-10T04:00:00Z</date>\n
-      \     <date>2019-09-10T04:00:00Z</date>\n      <date>2020-01-07T04:00:00Z</date>\n
-      \     <date>2020-03-24T04:00:00Z</date>\n      <date>2020-05-19T04:00:00Z</date>\n
-      \     <date>2020-05-12T04:00:00Z</date>\n      <date>2020-05-12T04:00:00Z</date>\n
-      \     <date>2020-06-16T04:00:00Z</date>\n      <date>2020-08-04T04:00:00Z</date>\n
-      \     <date>2021-02-23T04:00:00Z</date>\n      <date>2021-03-02T04:00:00Z</date>\n
-      \     <date>2021-02-09T04:00:00Z</date>\n      <date>2021-03-16T04:00:00Z</date>\n
-      \     <date>2021-05-18T04:00:00Z</date>\n      <date>2021-07-20T04:00:00Z</date>\n
-      \     <date>2021-06-15T04:00:00Z</date>\n      <date>2021-07-20T04:00:00Z</date>\n
-      \     <date>2021-08-17T04:00:00Z</date>\n      <date>2021-09-07T04:00:00Z</date>\n
-      \     <date>2021-10-05T04:00:00Z</date>\n      <date>2021-11-23T04:00:00Z</date>\n
-      \     <date>2021-11-23T04:00:00Z</date>\n      <date>2021-12-21T04:00:00Z</date>\n
-      \     <date>2021-12-28T04:00:00Z</date>\n      <date>2021-12-28T04:00:00Z</date>\n
-      \     <date>2022-09-27T04:00:00Z</date>\n      <date>2022-09-06T04:00:00Z</date>\n
-      \     <date>2022-10-18T04:00:00Z</date>\n      <date>2022-09-20T04:00:00Z</date>\n
-      \     <date>2022-09-20T04:00:00Z</date>\n      <date>2022-09-27T04:00:00Z</date>\n
-      \     <date>2022-10-04T04:00:00Z</date>\n      <date>2022-11-08T04:00:00Z</date>\n
-      \   </arr>\n    <arr name=\"patNum\">\n      <str>NULL</str>\n      <str>11959371</str>\n
-      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>11850563</str>\n      <str>NULL</str>\n
-      \     <str>NULL</str>\n      <str>11578577</str>\n      <str>NULL</str>\n      <str>11728709</str>\n
-      \     <str>NULL</str>\n      <str>11713661</str>\n      <str>11674352</str>\n
-      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
-      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>11960305</str>\n      <str>11885206</str>\n
-      \     <str>11846167</str>\n      <str>NULL</str>\n      <str>11560887</str>\n
-      \     <str>11808125</str>\n      <str>11952996</str>\n      <str>11578580</str>\n
-      \     <str>11674484</str>\n      <str>NULL</str>\n      <str>11680473</str>\n
-      \     <str>11814938</str>\n      <str>11668420</str>\n      <str>11728657</str>\n
-      \     <str>11674868</str>\n      <str>11920449</str>\n      <str>11851999</str>\n
-      \     <str>11745155</str>\n      <str>NULL</str>\n      <str>11713690</str>\n
-      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
-      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>11905806</str>\n
-      \     <str>11506126</str>\n      <str>11542786</str>\n      <str>11549346</str>\n
-      \     <str>11555491</str>\n      <str>9410410</str>\n      <str>8789601</str>\n
-      \     <str>9587649</str>\n      <str>9611728</str>\n      <str>9650879</str>\n
-      \     <str>9650871</str>\n      <str>9745840</str>\n      <str>9840901</str>\n
-      \     <str>9893500</str>\n      <str>9970278</str>\n      <str>9995218</str>\n
-      \     <str>10020711</str>\n      <str>10036238</str>\n      <str>10119381</str>\n
-      \     <str>10107086</str>\n      <str>10232332</str>\n      <str>10254732</str>\n
-      \     <str>10280724</str>\n      <str>10337308</str>\n      <str>10408030</str>\n
-      \     <str>10407990</str>\n      <str>10408031</str>\n      <str>10526882</str>\n
-      \     <str>10598258</str>\n      <str>10655435</str>\n      <str>10648311</str>\n
-      \     <str>10648270</str>\n      <str>10686301</str>\n      <str>10731561</str>\n
-      \     <str>10927802</str>\n      <str>10934824</str>\n      <str>10914155</str>\n
-      \     <str>10947829</str>\n      <str>11009162</str>\n      <str>11066912</str>\n
-      \     <str>11035207</str>\n      <str>11067481</str>\n      <str>11091992</str>\n
-      \     <str>11114857</str>\n      <str>11136870</str>\n      <str>11181879</str>\n
-      \     <str>11181107</str>\n      <str>11203924</str>\n      <str>11211801</str>\n
-      \     <str>11208878</str>\n      <str>11454079</str>\n      <str>11434737</str>\n
-      \     <str>11476781</str>\n      <str>11449018</str>\n      <str>11451016</str>\n
-      \     <str>11454170</str>\n      <str>11459863</str>\n      <str>11492886</str>\n
-      \   </arr>\n    <arr name=\"pctNum\">\n      <str>NULL</str>\n      <str>NULL</str>\n
-      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
-      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
-      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
-      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
-      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
-      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
-      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
-      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
-      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
-      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
-      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
-      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
-      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
-      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
-      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
-      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
-      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
-      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
-      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
-      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
-      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
-      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
-      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
-      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
-      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
-      \     <str>NULL</str>\n      <str>NULL</str>\n    </arr>\n    <arr name=\"publDate\">\n
-      \     <date>2017-05-25T04:00:00Z</date>\n      <date>2016-11-03T04:00:00Z</date>\n
-      \     <date>2019-04-11T04:00:00Z</date>\n      <date>2019-02-21T04:00:00Z</date>\n
-      \     <date>2020-02-13T04:00:00Z</date>\n      <date>2020-09-24T04:00:00Z</date>\n
-      \     <date>2020-09-24T04:00:00Z</date>\n      <date>2020-09-24T04:00:00Z</date>\n
-      \     <date>2020-03-26T04:00:00Z</date>\n      <date>2020-11-19T04:00:00Z</date>\n
-      \     <date>2019-10-24T04:00:00Z</date>\n      <date>2019-11-14T04:00:00Z</date>\n
-      \     <date>2020-03-05T04:00:00Z</date>\n      <date>2021-05-06T04:00:00Z</date>\n
-      \     <date>2021-05-06T04:00:00Z</date>\n      <date>2021-05-20T04:00:00Z</date>\n
-      \     <date>2020-10-29T04:00:00Z</date>\n      <date>2021-02-11T04:00:00Z</date>\n
-      \     <date>2021-07-01T04:00:00Z</date>\n      <date>2021-07-01T04:00:00Z</date>\n
-      \     <date>2021-07-01T04:00:00Z</date>\n      <date>2021-07-01T04:00:00Z</date>\n
-      \     <date>2021-07-01T04:00:00Z</date>\n      <date>2021-07-01T04:00:00Z</date>\n
-      \     <date>2020-12-10T04:00:00Z</date>\n      <date>2021-05-13T04:00:00Z</date>\n
-      \     <date>2022-01-20T04:00:00Z</date>\n      <date>2022-01-13T04:00:00Z</date>\n
-      \     <date>2022-01-20T04:00:00Z</date>\n      <date>2022-02-03T04:00:00Z</date>\n
-      \     <date>2021-08-26T04:00:00Z</date>\n      <date>2022-04-07T04:00:00Z</date>\n
-      \     <date>2022-12-01T04:00:00Z</date>\n      <date>2022-06-16T04:00:00Z</date>\n
-      \     <date>2022-07-07T04:00:00Z</date>\n      <date>2022-07-28T04:00:00Z</date>\n
-      \     <date>2022-01-13T04:00:00Z</date>\n      <date>2022-09-01T04:00:00Z</date>\n
-      \     <date>2022-03-24T04:00:00Z</date>\n      <date>2022-10-20T04:00:00Z</date>\n
-      \     <date>2022-11-17T04:00:00Z</date>\n      <date>2022-11-17T04:00:00Z</date>\n
-      \     <date>2023-04-06T04:00:00Z</date>\n      <date>2023-08-17T04:00:00Z</date>\n
-      \     <date>2023-05-18T04:00:00Z</date>\n      <date>2023-01-19T04:00:00Z</date>\n
-      \     <date>2023-05-11T04:00:00Z</date>\n      <date>2020-12-10T04:00:00Z</date>\n
-      \     <date>2021-02-04T04:00:00Z</date>\n      <date>2022-06-09T04:00:00Z</date>\n
-      \     <date>2022-10-20T04:00:00Z</date>\n      <date>2014-05-22T04:00:00Z</date>\n
-      \     <date>2014-06-26T04:00:00Z</date>\n      <date>2016-07-21T04:00:00Z</date>\n
-      \     <date>2016-11-03T04:00:00Z</date>\n      <date>2015-07-30T04:00:00Z</date>\n
-      \     <date>2017-01-26T04:00:00Z</date>\n      <date>2017-02-02T04:00:00Z</date>\n
-      \     <date>2017-04-06T04:00:00Z</date>\n      <date>2017-08-03T04:00:00Z</date>\n
-      \     <date>2016-02-04T04:00:00Z</date>\n      <date>2017-08-03T04:00:00Z</date>\n
-      \     <date>2017-08-03T04:00:00Z</date>\n      <date>2016-09-22T04:00:00Z</date>\n
-      \     <date>2017-02-09T04:00:00Z</date>\n      <date>2018-04-26T04:00:00Z</date>\n
-      \     <date>2017-02-02T04:00:00Z</date>\n      <date>2016-12-01T04:00:00Z</date>\n
-      \     <date>2019-01-10T04:00:00Z</date>\n      <date>2016-11-10T04:00:00Z</date>\n
-      \     <date>2017-11-02T04:00:00Z</date>\n      <date>2017-02-02T04:00:00Z</date>\n
-      \     <date>2019-04-18T04:00:00Z</date>\n      <date>2016-10-06T04:00:00Z</date>\n
-      \     <date>2019-08-15T04:00:00Z</date>\n      <date>2019-04-25T04:00:00Z</date>\n
-      \     <date>2019-06-06T04:00:00Z</date>\n      <date>2020-03-19T04:00:00Z</date>\n
-      \     <date>2018-06-28T04:00:00Z</date>\n      <date>2018-09-27T04:00:00Z</date>\n
-      \     <date>2018-09-27T04:00:00Z</date>\n      <date>2019-02-07T04:00:00Z</date>\n
-      \     <date>2020-04-09T04:00:00Z</date>\n      <date>2018-11-22T04:00:00Z</date>\n
-      \     <date>0001-01-01T00:00:00Z</date>\n      <date>2017-08-10T04:00:00Z</date>\n
-      \     <date>2019-10-17T04:00:00Z</date>\n      <date>2019-04-11T04:00:00Z</date>\n
-      \     <date>2018-09-13T04:00:00Z</date>\n      <date>2019-08-08T04:00:00Z</date>\n
-      \     <date>2020-06-11T04:00:00Z</date>\n      <date>2020-03-05T04:00:00Z</date>\n
-      \     <date>2018-06-07T04:00:00Z</date>\n      <date>2020-05-07T04:00:00Z</date>\n
-      \     <date>2019-12-19T04:00:00Z</date>\n      <date>2020-04-09T04:00:00Z</date>\n
-      \     <date>2020-12-31T04:00:00Z</date>\n      <date>2021-04-01T04:00:00Z</date>\n
-      \     <date>2016-12-01T04:00:00Z</date>\n      <date>2016-04-14T04:00:00Z</date>\n
-      \     <date>2021-05-27T04:00:00Z</date>\n      <date>2020-11-12T04:00:00Z</date>\n
-      \     <date>2021-04-08T04:00:00Z</date>\n      <date>2021-07-01T04:00:00Z</date>\n
-      \   </arr>\n    <arr name=\"publNum\">\n      <str>20170145918</str>\n      <str>20160319650</str>\n
-      \     <str>20190106970</str>\n      <str>20190055826</str>\n      <str>20200047141</str>\n
-      \     <str>20200300050</str>\n      <str>20200300065</str>\n      <str>20200300073</str>\n
-      \     <str>20200095854</str>\n      <str>20200362681</str>\n      <str>20190323428</str>\n
-      \     <str>20190345804</str>\n      <str>20200071998</str>\n      <str>20210131248</str>\n
-      \     <str>20210131411</str>\n      <str>20210148385</str>\n      <str>20200340340</str>\n
-      \     <str>20210041009</str>\n      <str>20210198992</str>\n      <str>20210200249</str>\n
-      \     <str>20210198994</str>\n      <str>20210198993</str>\n      <str>20210199110</str>\n
-      \     <str>20210198989</str>\n      <str>20200386077</str>\n      <str>20210140423</str>\n
-      \     <str>20220018232</str>\n      <str>20220010758</str>\n      <str>20220018233</str>\n
-      \     <str>20220034210</str>\n      <str>20210262321</str>\n      <str>20220107039</str>\n
-      \     <str>20220385074</str>\n      <str>20220187171</str>\n      <str>20220213772</str>\n
-      \     <str>20220239100</str>\n      <str>20220008879</str>\n      <str>20220275716</str>\n
-      \     <str>20220094173</str>\n      <str>20220334546</str>\n      <str>20220364447</str>\n
-      \     <str>20220364448</str>\n      <str>20230103589</str>\n      <str>20230258063</str>\n
-      \     <str>20230155358</str>\n      <str>20230018992</str>\n      <str>20230146951</str>\n
-      \     <str>20200386169</str>\n      <str>20210032961</str>\n      <str>20220178234</str>\n
-      \     <str>20220333594</str>\n      <str>20140138079</str>\n      <str>20140174717</str>\n
-      \     <str>20160208592</str>\n      <str>20160319649</str>\n      <str>20150211524</str>\n
-      \     <str>20170022788</str>\n      <str>20170030178</str>\n      <str>20170096885</str>\n
-      \     <str>20170222409</str>\n      <str>20160032703</str>\n      <str>20170218843</str>\n
-      \     <str>20170218727</str>\n      <str>20160273328</str>\n      <str>20170037717</str>\n
-      \     <str>20180112507</str>\n      <str>20170028368</str>\n      <str>20160349728</str>\n
-      \     <str>20190010793</str>\n      <str>20160326854</str>\n      <str>20170314380</str>\n
-      \     <str>20170030177</str>\n      <str>20190112910</str>\n      <str>20160290114</str>\n
-      \     <str>20190249754</str>\n      <str>20190120024</str>\n      <str>20190169971</str>\n
-      \     <str>20200088005</str>\n      <str>20180183219</str>\n      <str>20180274446</str>\n
-      \     <str>20180278124</str>\n      <str>20190040727</str>\n      <str>20200109616</str>\n
-      \     <str>20180334893</str>\n      <str>NULL</str>\n      <str>20170226839</str>\n
-      \     <str>20190316447</str>\n      <str>20190107466</str>\n      <str>20180258746</str>\n
-      \     <str>20190245348</str>\n      <str>20200182032</str>\n      <str>20200073353</str>\n
-      \     <str>20180156210</str>\n      <str>20200141219</str>\n      <str>20190383123</str>\n
-      \     <str>20200109617</str>\n      <str>20200408060</str>\n      <str>20210095552</str>\n
-      \     <str>20160348479</str>\n      <str>20160105022</str>\n      <str>20210159677</str>\n
-      \     <str>20200355120</str>\n      <str>20210102451</str>\n      <str>20210198995</str>\n
-      \   </arr>\n    <int name=\"patAssignorNameSize\">1</int>\n    <int name=\"patAssignorNameTypeSize\">1</int>\n
-      \   <int name=\"patAssignorExDateSize\">1</int>\n    <int name=\"patAssignorDateAckSize\">1</int>\n
-      \   <int name=\"patAssigneeNameSize\">2</int>\n    <int name=\"patAssigneeNameTypeSize\">0</int>\n
-      \   <int name=\"patAssigneeAddress1Size\">1</int>\n    <int name=\"patAssigneeAddress2Size\">1</int>\n
-      \   <int name=\"patAssigneeCitySize\">1</int>\n    <int name=\"patAssigneeStateSize\">1</int>\n
-      \   <int name=\"patAssigneeCountryNameSize\">1</int>\n    <int name=\"patAssigneePostcodeSize\">1</int>\n
-      \   <int name=\"inventionTitleSize\">104</int>\n    <int name=\"inventionTitleIdSize\">104</int>\n
-      \   <int name=\"inventionTitleLangSize\">104</int>\n    <int name=\"applNumSize\">104</int>\n
-      \   <int name=\"filingDateSize\">104</int>\n    <int name=\"intlPublDateSize\">104</int>\n
-      \   <int name=\"intlRegNumSize\">104</int>\n    <int name=\"inventorsSize\">104</int>\n
-      \   <int name=\"issueDateSize\">104</int>\n    <int name=\"patNumSize\">104</int>\n
-      \   <int name=\"pctNumSize\">104</int>\n    <int name=\"publDateSize\">104</int>\n
-      \   <int name=\"publNumSize\">104</int>\n    <str name=\"inventionTitleFirst\">SYSTEM
-      FOR GAS COMPRESSION ON ELECTRIC HYDRAULIC FRACTURING FLEETS</str>\n    <str
-      name=\"inventionTitleLangFirst\">en</str>\n    <str name=\"applNumFirst\">15356436</str>\n
-      \   <date name=\"filingDateFirst\">2016-11-18T04:00:00Z</date>\n    <date name=\"intlPublDateFirst\">0001-01-01T00:00:00Z</date>\n
-      \   <str name=\"intlRegNumFirst\">NULL</str>\n    <str name=\"inventorsFirst\">Jared
-      Oehring, Brandon N. Hinderliter</str>\n    <date name=\"issueDateFirst\">0001-01-01T00:00:00Z</date>\n
-      \   <str name=\"patNumFirst\">NULL</str>\n    <str name=\"pctNumFirst\">NULL</str>\n
-      \   <date name=\"publDateFirst\">2017-05-25T04:00:00Z</date>\n    <str name=\"publNumFirst\">20170145918</str>\n
-      \   <str name=\"patAssignorNameFirst\">U.S. WELL SERVICES, LLC</str>\n    <str
-      name=\"patAssigneeNameFirst\">PIPER SANDLER FINANCE LLC</str>\n    <arr name=\"patAssigneePostcodeFacet\">\n
-      \     <str>10020</str>\n    </arr>\n    <arr name=\"patAssignorNameFacet\">\n
-      \     <str>U.S. WELL SERVICES, LLC</str>\n    </arr>\n    <str name=\"corrNameFacet\">KE
-      YANG XIA</str>\n    <long name=\"_version_\">1796473047916478464</long>\n    <arr
-      name=\"patAssigneeNameFacet\">\n      <str>PIPER SANDLER FINANCE LLC</str>\n
-      \   </arr>\n    <arr name=\"patAssigneeCityFacet\">\n      <str>NEW YORK</str>\n
-      \   </arr>\n    <arr name=\"patAssigneeCountryNameFacet\">\n      <str>NULL</str>\n
-      \   </arr>\n    <arr name=\"patAssigneeStateFacet\">\n      <str>NEW YORK</str>\n
-      \   </arr>\n    <str name=\"corrNameString\">KE YANG XIA</str></doc>\n  <doc>\n
       \   <str name=\"id\">62142-927</str>\n    <str name=\"displayId\">062142-0927</str>\n
       \   <str name=\"reelNo\">62142</str>\n    <str name=\"frameNo\">927</str>\n
       \   <date name=\"lastUpdateDate\">2024-04-16T06:00:04Z</date>\n    <str name=\"purgeIndicator\">N</str>\n
@@ -2583,7 +1955,635 @@ interactions:
       \   </arr>\n    <arr name=\"patAssigneeCountryNameFacet\">\n      <str>NULL</str>\n
       \   </arr>\n    <arr name=\"patAssigneeStateFacet\">\n      <str>ILLINOIS</str>\n
       \   </arr>\n    <str name=\"corrNameString\">SHANNON SPAINHOUR</str></doc>\n
-      \ <doc>\n    <str name=\"id\">66091-133</str>\n    <str name=\"displayId\">066091-0133</str>\n
+      \ <doc>\n    <str name=\"id\">61875-1</str>\n    <str name=\"displayId\">061875-0001</str>\n
+      \   <str name=\"reelNo\">61875</str>\n    <str name=\"frameNo\">1</str>\n    <date
+      name=\"lastUpdateDate\">2024-04-16T06:00:04Z</date>\n    <str name=\"purgeIndicator\">N</str>\n
+      \   <date name=\"recordedDate\">2022-11-02T04:00:00Z</date>\n    <str name=\"pageCount\">21</str>\n
+      \   <str name=\"conveyanceText\">SECURITY INTEREST (SEE DOCUMENT FOR DETAILS).</str>\n
+      \   <str name=\"assignmentRecordHasImages\">Y</str>\n    <str name=\"attorneyDockNum\">63728.005</str>\n
+      \   <str name=\"corrName\">KE YANG XIA</str>\n    <str name=\"corrAddress1\">PROSKAUER
+      ROSE LLP</str>\n    <str name=\"corrAddress2\">ELEVEN TIMES SQUARE</str>\n    <str
+      name=\"corrAddress3\">NEW YORK, NY 10036-8299</str>\n    <date name=\"patAssignorEarliestExDate\">2022-11-01T04:00:00Z</date>\n
+      \   <arr name=\"patAssignorName\">\n      <str>U.S. WELL SERVICES, LLC</str>\n
+      \   </arr>\n    <arr name=\"patAssignorExDate\">\n      <date>2022-11-01T04:00:00Z</date>\n
+      \   </arr>\n    <arr name=\"patAssignorDateAck\">\n      <str>0001-01-01T00:00:00Z</str>\n
+      \   </arr>\n    <arr name=\"patAssigneeName\">\n      <str>PIPER SANDLER FINANCE
+      LLC</str>\n    </arr>\n    <arr name=\"patAssigneeAddress1\">\n      <str>1251
+      AVENUE OF THE AMERICAS, 6TH FLOOR</str>\n    </arr>\n    <arr name=\"patAssigneeAddress2\">\n
+      \     <str>NULL</str>\n    </arr>\n    <arr name=\"patAssigneeCity\">\n      <str>NEW
+      YORK</str>\n    </arr>\n    <arr name=\"patAssigneeState\">\n      <str>NEW
+      YORK</str>\n    </arr>\n    <arr name=\"patAssigneeCountryName\">\n      <str>NULL</str>\n
+      \   </arr>\n    <arr name=\"patAssigneePostcode\">\n      <str>10020</str>\n
+      \   </arr>\n    <arr name=\"inventionTitle\">\n      <str>SYSTEM FOR GAS COMPRESSION
+      ON ELECTRIC HYDRAULIC FRACTURING FLEETS</str>\n      <str>Suction and Discharge
+      Lines for a Dual Hydraulic Fracturing Unit</str>\n      <str>ELECTRIC POWERED
+      HYDRAULIC FRACTURING SYSTEM WITHOUT GEAR REDUCTION</str>\n      <str>REMOTE
+      MONITORING FOR HYDRAULIC FRACTURING EQUIPMENT</str>\n      <str>INDEPENDENT
+      CONTROL OF AUGER AND HOPPER ASSEMBLY IN ELECTRIC BLENDER SYSTEM</str>\n      <str>FRAC
+      PUMP AUTOMATIC RATE ADJUSTMENT AND CRITICAL PLUNGER SPEED INDICATION</str>\n
+      \     <str>DAMAGE ACCUMULATION METERING FOR REMAINING USEFUL LIFE DETERMINATION</str>\n
+      \     <str>OVERSIZED SWITCHGEAR TRAILER FOR ELECTRIC HYDRAULIC FRACTURING</str>\n
+      \     <str>HYDRAULIC FRACTURING EQUIPMENT WITH NON-HYDRAULIC POWER</str>\n      <str>ENCODERLESS
+      VECTOR CONTROL FOR VFD IN HYDRAULIC FRACTURING APPLICATIONS</str>\n      <str>SYSTEM
+      FOR GAS COMPRESSION ON ELECTRIC HYDRAULIC FRACTURING FLEETS</str>\n      <str>ELECTRIC
+      POWERED PUMP DOWN</str>\n      <str>SLIDE OUT PUMP STAND FOR HYDRAULIC FRACTURING
+      EQUIPMENT</str>\n      <str>LOAD LEVELING POWER STORAGE SYSTEM FOR ELECTRIC
+      HYDRAULIC FRACTURING</str>\n      <str>COMPACT ELECTRIC HYDRAULIC FRACTURING
+      TRAILER</str>\n      <str>Electrically Actuated Valves for Manifold Trailers
+      or Skids</str>\n      <str>MODULAR REMOTE POWER GENERATION AND TRANSMISSION
+      FOR HYDRAULIC FRACTURING SYSTEM</str>\n      <str>MULTI-PLUNGER PUMPS AND ASSOCIATED
+      DRIVE SYSTEMS</str>\n      <str>SYSTEMS AND METHODS FOR FLUID END HEALTH MONITORING</str>\n
+      \     <str>AUTOMATED BLENDER BUCKET TESTING AND CALIBRATION</str>\n      <str>ELECTRIC
+      MOTOR DRIVEN TRANSPORTATION MECHANISMS FOR FRACTURING BLENDERS</str>\n      <str>BLENDER
+      TUB OVERFLOW CATCH</str>\n      <str>SYSTEMS AND METHODS FOR FLUID END EARLY
+      FAILURE PREDICTION</str>\n      <str>SEGMENTED FLUID END PLUNGER PUMP</str>\n
+      \     <str>SMART FRACTURING SYSTEM AND METHOD</str>\n      <str>CONSTANT VOLTAGE
+      POWER DISTRIBUTION SYSTEM FOR USE WITH AN ELECTRIC HYDRAULIC FRACTURING SYSTEM</str>\n
+      \     <str>Electric Powered Hydraulic Fracturing Pump System with Single Electric
+      Powered Multi-Plunger Pump Fracturing Trailers, Filtration Units, and Slide
+      Out Platform</str>\n      <str>SYSTEM FOR FUELING ELECTRIC POWERED HYDRAULIC
+      FRACTURING EQUIPMENT WITH MULTIPLE FUEL SOURCES</str>\n      <str>SYSTEM FOR
+      REDUCING VIBRATIONS IN A PRESSURE PUMPING FLEET</str>\n      <str>CABLE MANAGEMENT
+      OF ELECTRIC POWERED HYDRAULIC FRACTURING PUMP UNIT</str>\n      <str>HYBRID
+      HYDRAULIC FRACTURING FLEET</str>\n      <str>SYSTEM AND METHOD FOR INTEGRATED
+      FLOW SUPPLY LINE</str>\n      <str>ELECTRIC HYDRAULIC FRACTURING WITH BATTERY
+      POWER AS PRIMARY SOURCE</str>\n      <str>INSTRUMENTED FRACTURING SLURRY FLOW
+      SYSTEM AND METHOD</str>\n      <str>SYSTEM FOR CENTRALIZED MONITORING AND CONTROL
+      OF ELECTRIC POWERED HYDRAULIC FRACTURING FLEET</str>\n      <str>MICROGRID ELECTRICAL
+      LOAD MANAGEMENT</str>\n      <str>INDEPENDENT CONTROL OF AUGER AND HOPPER ASSEMBLY
+      IN ELECTRIC BLENDER SYSTEM</str>\n      <str>SYSTEM FOR PUMPING HYDRAULIC FRACTURING
+      FLUID USING ELECTRIC PUMPS</str>\n      <str>INTEGRATED MOBILE POWER UNIT FOR
+      HYDRAULIC FRACTURING</str>\n      <str>MONITORING AND CONTROL OF PROPPANT STORAGE
+      FROM A DATAVAN</str>\n      <str>AUTOMATED FRACTURING SYSTEM AND METHOD</str>\n
+      \     <str>MODULAR SWITCHGEAR SYSTEM AND POWER DISTRIBUTION FOR ELECTRIC OILFIELD
+      EQUIPMENT</str>\n      <str>HIGH HORSEPOWER PUMPING CONFIGURATION FOR AN ELECTRIC
+      HYDRAULIC FRACTURING SYSTEM</str>\n      <str>SYSTEM AND METHOD FOR PARALLEL
+      POWER AND BLACKOUT PROTECTION FOR ELECTRIC POWERED HYDRAULIC FRACTURING</str>\n
+      \     <str>SWITCHGEAR LOAD SHARING FOR OIL FIELD EQUIPMENT</str>\n      <str>INTEGRATED
+      FUEL GAS HEATER FOR MOBILE FUEL CONDITIONING EQUIPMENT</str>\n      <str>ELECTRIC
+      POWERED HYDRAULIC FRACTURING PUMP SYSTEM WITH SINGLE ELECTRIC POWERED MULTI-PLUNGER
+      FRACTURING PUMP</str>\n      <str>INTEGRATED FUEL GAS HEATER FOR MOBILE FUEL
+      CONDITIONING EQUIPMENT</str>\n      <str>HIGH CAPACITY POWER STORAGE SYSTEM
+      FOR ELECTRIC HYDRAULIC FRACTURING</str>\n      <str>TORSIONAL COUPLING FOR ELECTRIC
+      HYDRAULIC FRACTURING FLUID PUMPS</str>\n      <str>CONSTANT VOLTAGE POWER DISTRIBUTION
+      SYSTEM FOR USE WITH AN ELECTRIC HYDRAULIC FRACTURING SYSTEM</str>\n      <str>System
+      for Pumping Hydraulic Fracturing Fluid Using Electric Pumps</str>\n      <str>SYSTEM
+      FOR PUMPING HYDRAULIC FRACTURING FLUID USING ELECTRIC PUMPS</str>\n      <str>System
+      for Reducing Noise in a Hydraulic Fracturing Fleet</str>\n      <str>Cold Weather
+      Package for Oil Field Hydraulics</str>\n      <str>TORSIONAL COUPLING FOR ELECTRIC
+      HYDRAULIC FRACTURING FLUID PUMPS</str>\n      <str>SAFETY INDICATOR LIGHTS FOR
+      HYDRAULIC FRACTURING PUMPS</str>\n      <str>ELECTRIC POWERED PUMP DOWN</str>\n
+      \     <str>REMOTE MONITORING FOR HYDRAULIC FRACTURING EQUIPMENT</str>\n      <str>SWITCHGEAR
+      LOAD SHARING FOR OIL FIELD EQUIPMENT</str>\n      <str>SYSTEM FOR CENTRALIZED
+      MONITORING AND CONTROL OF ELECTRIC POWERED HYDRAULIC FRACTURING FLEET</str>\n
+      \     <str>TURBINE CHILLING FOR OIL FIELD POWER GENERATION</str>\n      <str>SYSTEM
+      FOR FUELING ELECTRIC POWERED HYDRAULIC FRACTURING EQUIPMENT WITH MULTIPLE FUEL
+      SOURCES</str>\n      <str>Cable Management of Electric Powered Hydraulic Fracturing
+      Pump Unit</str>\n      <str>System for Reducing Vibrations in a Pressure Pumping
+      Fleet</str>\n      <str>REMOTE MONITORING FOR HYDRAULIC FRACTURING EQUIPMENT</str>\n
+      \     <str>INDEPENDENT CONTROL OF AUGER AND HOPPER ASSEMBLY IN ELECTRIC BLENDER
+      SYSTEM</str>\n      <str>Monitoring and Control of Proppant Storage from a Datavan</str>\n
+      \     <str>HYDRAULIC FRACTURING EQUIPMENT WITH NON-HYDRAULIC POWER</str>\n      <str>SYSTEM
+      FOR PUMPING HYDRAULIC FRACTURING FLUID USING ELECTRIC PUMPS</str>\n      <str>ELECTRIC
+      POWERED PUMP DOWN</str>\n      <str>SLIDE OUT PUMP STAND FOR HYDRAULIC FRACTURING
+      EQUIPMENT</str>\n      <str>AUTOMATED FRACTURING SYSTEM AND METHOD</str>\n      <str>MODULAR
+      REMOTE POWER GENERATION AND TRANSMISSION FOR HYDRAULIC FRACTURING SYSTEM</str>\n
+      \     <str>MULTI-PLUNGER PUMPS AND ASSOCIATED DRIVE SYSTEMS</str>\n      <str>SMART
+      FRACTURING SYSTEM AND METHOD</str>\n      <str>HIGH HORSEPOWER PUMPING CONFIGURATION
+      FOR AN ELECTRIC HYDRAULIC FRACTURING SYSTEM</str>\n      <str>RISER ASSIST FOR
+      WELLSITES</str>\n      <str>SWITCHGEAR LOAD SHARING FOR OIL FIELD EQUIPMENT</str>\n
+      \     <str>TURBINE CHILLING FOR OIL FIELD POWER GENERATION</str>\n      <str>SYSTEM
+      FOR FUELING ELECTRIC POWERED HYDRAULIC FRACTURING EQUIPMENT WITH MULTIPLE FUEL
+      SOURCES</str>\n      <str>SYSTEM FOR REDUCING VIBRATIONS IN A PRESSURE PUMPING
+      FLEET</str>\n      <str>Electric Powered Hydraulic Fracturing Pump System with
+      Single Electric Powered Multi-Plunger Pump Fracturing Trailers, Filtration Units,
+      and Slide Out Platform</str>\n      <str>CABLE MANAGEMENT OF ELECTRIC POWERED
+      HYDRAULIC FRACTURING PUMP UNIT</str>\n      <str>SYSTEM AND METHOD FOR INTEGRATED
+      FLOW SUPPLY LINE</str>\n      <str>TORSIONAL COUPLING FOR ELECTRIC HYDRAULIC
+      FRACTURING FLUID PUMPS</str>\n      <str>HYBRID HYDRAULIC FRACTURING FLEET</str>\n
+      \     <str>INSTRUMENTED FRACTURING SLURRY FLOW SYSTEM AND METHOD</str>\n      <str>SYSTEM
+      FOR CENTRALIZED MONITORING AND CONTROL OF ELECTRIC POWERED HYDRAULIC FRACTURING
+      FLEET</str>\n      <str>MICROGRID ELECTRICAL LOAD MANAGEMENT</str>\n      <str>SYSTEM
+      FOR PUMPING HYDRAULIC FRACTURING FLUID USING ELECTRIC PUMPS</str>\n      <str>MONITORING
+      AND CONTROL OF PROPPANT STORAGE FROM A DATAVAN</str>\n      <str>CONSTANT VOLTAGE
+      POWER DISTRIBUTION SYSTEM FOR USE WITH AN ELECTRIC HYDRAULIC FRACTURING SYSTEM</str>\n
+      \     <str>AUTOMATED FRACTURING SYSTEM AND METHOD</str>\n      <str>INTEGRATED
+      MOBILE POWER UNIT FOR HYDRAULIC FRACTURING</str>\n      <str>MODULAR SWITCHGEAR
+      SYSTEM AND POWER DISTRIBUTION FOR ELECTRIC OILFIELD EQUIPMENT</str>\n      <str>RISER
+      ASSIST FOR WELLSITES</str>\n      <str>HIGH HORSEPOWER PUMPING CONFIGURATION
+      FOR AN ELECTRIC HYDRAULIC FRACTURING SYSTEM</str>\n      <str>WIRELINE POWER
+      SUPPLY DURING ELECTRIC POWERED FRACTURING OPERATIONS</str>\n      <str>SYSTEM
+      AND METHOD FOR PARALLEL POWER AND BLACKOUT PROTECTION FOR ELECTRIC POWERED HYDRAULIC
+      FRACTURING</str>\n      <str>SWITCHGEAR LOAD SHARING FOR OIL FIELD EQUIPMENT</str>\n
+      \     <str>TURBINE CHILLING FOR OIL FIELD POWER GENERATION</str>\n      <str>ELECTRIC
+      POWERED HYDRAULIC FRACTURING PUMP SYSTEM WITH SINGLE ELECTRIC POWERED MULTI-PLUNGER
+      FRACTURING PUMP</str>\n      <str>SELF-REGULATING FRAC PUMP SUCTION STABILIZER/DAMPENER</str>\n
+      \   </arr>\n    <arr name=\"inventionTitleLang\">\n      <str>en</str>\n      <str>en</str>\n
+      \     <str>en</str>\n      <str>en</str>\n      <str>en</str>\n      <str>en</str>\n
+      \     <str>en</str>\n      <str>en</str>\n      <str>en</str>\n      <str>en</str>\n
+      \     <str>en</str>\n      <str>en</str>\n      <str>en</str>\n      <str>en</str>\n
+      \     <str>en</str>\n      <str>en</str>\n      <str>en</str>\n      <str>en</str>\n
+      \     <str>en</str>\n      <str>en</str>\n      <str>en</str>\n      <str>en</str>\n
+      \     <str>en</str>\n      <str>en</str>\n      <str>en</str>\n      <str>en</str>\n
+      \     <str>en</str>\n      <str>en</str>\n      <str>en</str>\n      <str>en</str>\n
+      \     <str>en</str>\n      <str>en</str>\n      <str>en</str>\n      <str>en</str>\n
+      \     <str>en</str>\n      <str>en</str>\n      <str>en</str>\n      <str>en</str>\n
+      \     <str>en</str>\n      <str>en</str>\n      <str>en</str>\n      <str>en</str>\n
+      \     <str>en</str>\n      <str>en</str>\n      <str>en</str>\n      <str>en</str>\n
+      \     <str>en</str>\n      <str>en</str>\n      <str>en</str>\n      <str>en</str>\n
+      \     <str>en</str>\n      <str>en</str>\n      <str>en</str>\n      <str>en</str>\n
+      \     <str>en</str>\n      <str>en</str>\n      <str>en</str>\n      <str>en</str>\n
+      \     <str>en</str>\n      <str>en</str>\n      <str>en</str>\n      <str>en</str>\n
+      \     <str>en</str>\n      <str>en</str>\n      <str>en</str>\n      <str>en</str>\n
+      \     <str>en</str>\n      <str>en</str>\n      <str>en</str>\n      <str>en</str>\n
+      \     <str>en</str>\n      <str>en</str>\n      <str>en</str>\n      <str>en</str>\n
+      \     <str>en</str>\n      <str>en</str>\n      <str>en</str>\n      <str>en</str>\n
+      \     <str>en</str>\n      <str>en</str>\n      <str>en</str>\n      <str>en</str>\n
+      \     <str>en</str>\n      <str>en</str>\n      <str>en</str>\n      <str>en</str>\n
+      \     <str>en</str>\n      <str>en</str>\n      <str>en</str>\n      <str>en</str>\n
+      \     <str>en</str>\n      <str>en</str>\n      <str>en</str>\n      <str>en</str>\n
+      \     <str>en</str>\n      <str>en</str>\n      <str>en</str>\n      <str>en</str>\n
+      \     <str>en</str>\n      <str>en</str>\n      <str>en</str>\n      <str>en</str>\n
+      \     <str>en</str>\n      <str>en</str>\n    </arr>\n    <arr name=\"applNum\">\n
+      \     <str>15356436</str>\n      <str>15145443</str>\n      <str>16152732</str>\n
+      \     <str>16167083</str>\n      <str>16356263</str>\n      <str>16824409</str>\n
+      \     <str>16824428</str>\n      <str>16824432</str>\n      <str>16404283</str>\n
+      \     <str>16873583</str>\n      <str>16458696</str>\n      <str>16522043</str>\n
+      \     <str>16564186</str>\n      <str>17087068</str>\n      <str>17088934</str>\n
+      \     <str>17091926</str>\n      <str>16696364</str>\n      <str>16827166</str>\n
+      \     <str>17134880</str>\n      <str>17136937</str>\n      <str>17135543</str>\n
+      \     <str>17122425</str>\n      <str>17137570</str>\n      <str>17136943</str>\n
+      \     <str>16876929</str>\n      <str>17157458</str>\n      <str>17170128</str>\n
+      \     <str>17181546</str>\n      <str>17188441</str>\n      <str>17202412</str>\n
+      \     <str>17319810</str>\n      <str>17321936</str>\n      <str>17752135</str>\n
+      \     <str>17379341</str>\n      <str>17402752</str>\n      <str>17466261</str>\n
+      \     <str>17484818</str>\n      <str>17493092</str>\n      <str>17540807</str>\n
+      \     <str>17533279</str>\n      <str>17556409</str>\n      <str>17560651</str>\n
+      \     <str>17903831</str>\n      <str>17948372</str>\n      <str>17948844</str>\n
+      \     <str>17950166</str>\n      <str>17959465</str>\n      <str>16897467</str>\n
+      \     <str>16943727</str>\n      <str>17379651</str>\n      <str>17533183</str>\n
+      \     <str>13679689</str>\n      <str>14190982</str>\n      <str>14995811</str>\n
+      \     <str>15145440</str>\n      <str>14622532</str>\n      <str>15217040</str>\n
+      \     <str>15291842</str>\n      <str>15293681</str>\n      <str>15487694</str>\n
+      \     <str>14884363</str>\n      <str>15486970</str>\n      <str>15487656</str>\n
+      \     <str>15145491</str>\n      <str>15145414</str>\n      <str>15838033</str>\n
+      \     <str>15294349</str>\n      <str>15235716</str>\n      <str>15644487</str>\n
+      \     <str>15202085</str>\n      <str>15653028</str>\n      <str>15217081</str>\n
+      \     <str>16160708</str>\n      <str>15183387</str>\n      <str>16210807</str>\n
+      \     <str>16170695</str>\n      <str>16210749</str>\n      <str>16570331</str>\n
+      \     <str>15893766</str>\n      <str>15994759</str>\n      <str>15994772</str>\n
+      \     <str>16158756</str>\n      <str>16597008</str>\n      <str>16047653</str>\n
+      \     <str>16728359</str>\n      <str>15581625</str>\n      <str>16385070</str>\n
+      \     <str>16152695</str>\n      <str>15978838</str>\n      <str>16268030</str>\n
+      \     <str>16456777</str>\n      <str>16377861</str>\n      <str>15829419</str>\n
+      \     <str>16564185</str>\n      <str>16443273</str>\n      <str>16597014</str>\n
+      \     <str>16871328</str>\n      <str>16871928</str>\n      <str>15235788</str>\n
+      \     <str>14881535</str>\n      <str>16901774</str>\n      <str>16943935</str>\n
+      \     <str>17060647</str>\n      <str>17136913</str>\n    </arr>\n    <arr name=\"filingDate\">\n
+      \     <date>2016-11-18T04:00:00Z</date>\n      <date>2016-05-03T04:00:00Z</date>\n
+      \     <date>2018-10-05T04:00:00Z</date>\n      <date>2018-10-22T04:00:00Z</date>\n
+      \     <date>2019-03-18T04:00:00Z</date>\n      <date>2020-03-19T04:00:00Z</date>\n
+      \     <date>2020-03-19T04:00:00Z</date>\n      <date>2020-03-19T04:00:00Z</date>\n
+      \     <date>2019-05-06T04:00:00Z</date>\n      <date>2020-05-12T04:00:00Z</date>\n
+      \     <date>2019-07-01T04:00:00Z</date>\n      <date>2019-07-25T04:00:00Z</date>\n
+      \     <date>2019-09-09T04:00:00Z</date>\n      <date>2020-11-02T04:00:00Z</date>\n
+      \     <date>2020-11-04T04:00:00Z</date>\n      <date>2020-11-06T04:00:00Z</date>\n
+      \     <date>2019-11-26T04:00:00Z</date>\n      <date>2020-03-23T04:00:00Z</date>\n
+      \     <date>2020-12-28T04:00:00Z</date>\n      <date>2020-12-29T04:00:00Z</date>\n
+      \     <date>2020-12-28T04:00:00Z</date>\n      <date>2020-12-15T04:00:00Z</date>\n
+      \     <date>2020-12-30T04:00:00Z</date>\n      <date>2020-12-29T04:00:00Z</date>\n
+      \     <date>2020-05-18T04:00:00Z</date>\n      <date>2021-01-25T04:00:00Z</date>\n
+      \     <date>2021-02-08T04:00:00Z</date>\n      <date>2021-02-22T04:00:00Z</date>\n
+      \     <date>2021-03-01T04:00:00Z</date>\n      <date>2021-03-16T04:00:00Z</date>\n
+      \     <date>2021-05-13T04:00:00Z</date>\n      <date>2021-05-17T04:00:00Z</date>\n
+      \     <date>2022-05-24T04:00:00Z</date>\n      <date>2021-07-19T04:00:00Z</date>\n
+      \     <date>2021-08-16T04:00:00Z</date>\n      <date>2021-09-03T04:00:00Z</date>\n
+      \     <date>2021-09-24T04:00:00Z</date>\n      <date>2021-10-04T04:00:00Z</date>\n
+      \     <date>2021-12-02T04:00:00Z</date>\n      <date>2021-11-23T04:00:00Z</date>\n
+      \     <date>2021-12-20T04:00:00Z</date>\n      <date>2021-12-23T04:00:00Z</date>\n
+      \     <date>2022-09-06T04:00:00Z</date>\n      <date>2022-09-20T04:00:00Z</date>\n
+      \     <date>2022-09-20T04:00:00Z</date>\n      <date>2022-09-22T04:00:00Z</date>\n
+      \     <date>2022-10-04T04:00:00Z</date>\n      <date>2020-06-10T04:00:00Z</date>\n
+      \     <date>2020-07-30T04:00:00Z</date>\n      <date>2021-07-19T04:00:00Z</date>\n
+      \     <date>2021-11-23T04:00:00Z</date>\n      <date>2012-11-16T04:00:00Z</date>\n
+      \     <date>2014-02-26T04:00:00Z</date>\n      <date>2016-01-14T04:00:00Z</date>\n
+      \     <date>2016-05-03T04:00:00Z</date>\n      <date>2015-02-13T04:00:00Z</date>\n
+      \     <date>2016-07-22T04:00:00Z</date>\n      <date>2016-10-12T04:00:00Z</date>\n
+      \     <date>2016-10-14T04:00:00Z</date>\n      <date>2017-04-14T04:00:00Z</date>\n
+      \     <date>2015-10-15T04:00:00Z</date>\n      <date>2017-04-13T04:00:00Z</date>\n
+      \     <date>2017-04-14T04:00:00Z</date>\n      <date>2016-05-03T04:00:00Z</date>\n
+      \     <date>2016-05-03T04:00:00Z</date>\n      <date>2017-12-11T04:00:00Z</date>\n
+      \     <date>2016-10-14T04:00:00Z</date>\n      <date>2016-08-12T04:00:00Z</date>\n
+      \     <date>2017-07-07T04:00:00Z</date>\n      <date>2016-07-05T04:00:00Z</date>\n
+      \     <date>2017-07-18T04:00:00Z</date>\n      <date>2016-07-22T04:00:00Z</date>\n
+      \     <date>2018-10-15T04:00:00Z</date>\n      <date>2016-06-15T04:00:00Z</date>\n
+      \     <date>2018-12-05T04:00:00Z</date>\n      <date>2018-10-25T04:00:00Z</date>\n
+      \     <date>2018-12-05T04:00:00Z</date>\n      <date>2019-09-13T04:00:00Z</date>\n
+      \     <date>2018-02-12T04:00:00Z</date>\n      <date>2018-05-31T04:00:00Z</date>\n
+      \     <date>2018-05-31T04:00:00Z</date>\n      <date>2018-10-12T04:00:00Z</date>\n
+      \     <date>2019-10-09T04:00:00Z</date>\n      <date>2018-07-27T04:00:00Z</date>\n
+      \     <date>2019-12-27T04:00:00Z</date>\n      <date>2017-04-28T04:00:00Z</date>\n
+      \     <date>2019-04-16T04:00:00Z</date>\n      <date>2018-10-05T04:00:00Z</date>\n
+      \     <date>2018-05-14T04:00:00Z</date>\n      <date>2019-02-05T04:00:00Z</date>\n
+      \     <date>2019-06-28T04:00:00Z</date>\n      <date>2019-04-08T04:00:00Z</date>\n
+      \     <date>2017-12-01T04:00:00Z</date>\n      <date>2019-09-09T04:00:00Z</date>\n
+      \     <date>2019-06-17T04:00:00Z</date>\n      <date>2019-10-09T04:00:00Z</date>\n
+      \     <date>2020-05-11T04:00:00Z</date>\n      <date>2020-05-11T04:00:00Z</date>\n
+      \     <date>2016-08-12T04:00:00Z</date>\n      <date>2015-10-13T04:00:00Z</date>\n
+      \     <date>2020-06-15T04:00:00Z</date>\n      <date>2020-07-30T04:00:00Z</date>\n
+      \     <date>2020-10-01T04:00:00Z</date>\n      <date>2020-12-29T04:00:00Z</date>\n
+      \   </arr>\n    <arr name=\"intlPublDate\">\n      <date>0001-01-01T00:00:00Z</date>\n
+      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
+      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
+      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
+      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
+      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
+      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
+      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
+      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
+      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
+      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
+      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
+      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
+      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
+      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
+      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
+      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
+      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
+      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
+      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
+      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
+      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
+      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
+      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
+      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
+      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
+      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
+      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
+      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
+      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
+      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
+      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
+      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
+      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
+      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
+      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
+      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
+      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
+      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
+      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
+      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
+      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
+      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
+      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
+      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
+      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
+      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
+      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
+      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
+      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
+      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
+      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
+      \     <date>0001-01-01T00:00:00Z</date>\n    </arr>\n    <arr name=\"intlRegNum\">\n
+      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
+      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
+      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
+      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
+      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
+      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
+      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
+      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
+      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
+      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
+      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
+      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
+      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
+      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
+      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
+      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
+      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
+      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
+      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
+      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
+      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
+      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
+      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
+      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
+      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
+      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
+      \   </arr>\n    <arr name=\"inventors\">\n      <str>Jared Oehring, Brandon
+      N. Hinderliter</str>\n      <str>Robert Kurtz, Jared Oehring</str>\n      <str>Jared
+      Oehring</str>\n      <str>Jared Oehring, Brandon N. Hinderliter</str>\n      <str>Jared
+      Oehring, Brandon N. Hinderliter</str>\n      <str>Lon Robinson, Jared Oehring</str>\n
+      \     <str>Arden Albert, Alexander Christinzio, Jared Oehring</str>\n      <str>Jared
+      Oehring, Brandon Hinderliter</str>\n      <str>Brandon N. Hinderliter</str>\n
+      \     <str>Lon Robinson, Jared Oehring, Brandon N. Hinderliter</str>\n      <str>Brandon
+      N. Hinderliter, Jared Oehring</str>\n      <str>Jared Oehring, Brandon N. Hinderliter</str>\n
+      \     <str>Jared Oehring, Brandon Neil Hinderliter</str>\n      <str>Brandon
+      Hinderliter, Jared Oehring, Steven Riley</str>\n      <str>Jared Oehring, Lon
+      Robinson, Brandon Hinderliter</str>\n      <str>Jeremiah Luke Wright, Brandon
+      Hinderliter, Jared Oehring, Joshua Watson, Jeremy Brunty, Alexander Christinzio,
+      Lon Robinson, Arden Albert</str>\n      <str>Brandon Neil HINDERLITER, Jared
+      Oehring</str>\n      <str>Lon Robinson, Alexander James Christinzio, Jared Oehring,
+      Brandon N. Hinderliter</str>\n      <str>Alexander Christinzio, Arden Albert,
+      Lon Robinson, Jared Oehring</str>\n      <str>Jared Oehring, Alexander Christinzio</str>\n
+      \     <str>Alexander Christinzio, Brandon Hinderliter, Lon Robinson, Jared Oehring</str>\n
+      \     <str>Jared Oehring, Alexander Christinzio</str>\n      <str>Arden Albert,
+      Alexander Christinzio</str>\n      <str>Brandon Hinderliter, Lon Robinson, Jared
+      Oehring</str>\n      <str>Jared OEHRING, Alexander James CHRISTINZIO, Brandon
+      N. HINDERLITER</str>\n      <str>Jared Oehring, Brandon N. Hinderliter</str>\n
+      \     <str>Jared Oehring, Brandon N. Hinderliter, Lon Robinson</str>\n      <str>Jared
+      Oehring, Brandon N. Hinderliter</str>\n      <str>Jared Oehring, Robert Kurtz</str>\n
+      \     <str>Jared Oehring</str>\n      <str>Brandon Neil Hinderliter, Jared Oehring</str>\n
+      \     <str>Brandon Hinderliter, Alexander James Christinzio, Jared Oehring,
+      Lon Robinson</str>\n      <str>Brandon Hinderliter</str>\n      <str>Jared Oehring,
+      Alexander James Christinzio, Brandon N. Hinderliter</str>\n      <str>Joel N.
+      Broussard, Jeff McPherson, Robert Kurtz, Jared Oehring, Brandon Hinderliter</str>\n
+      \     <str>Brandon N. Hinderliter, Jared Oehring</str>\n      <str>Jared Oehring,
+      Brandon N. Hinderliter</str>\n      <str>Joel N. BROUSSARD, Jeff McPHERSON,
+      Robert KURTZ</str>\n      <str>Brandon N. Hinderliter, Jared Oehring</str>\n
+      \     <str>Jared Oehring, Brandon N. Hinderliter, Arthur Baron</str>\n      <str>Jared
+      Oehring, Brandon N. Hinderliter, Alexander James Christinzio</str>\n      <str>Brandon
+      N. Hinderliter, Jared Oehring, Lon Robinson</str>\n      <str>Jared Oehring,
+      Brandon N. Hinderliter, Lon Robinson</str>\n      <str>Jared Oehring, Robert
+      Kurtz, Brennan Zaunbrecher</str>\n      <str>Jared Oehring, Brandon N. Hinderliter</str>\n
+      \     <str>Brandon Hinderliter, Jared Oehring</str>\n      <str>Lon Robinson,
+      Jared Oehring, Brandon N. Hinderliter</str>\n      <str>Brandon Hinderliter,
+      Jared Oehring</str>\n      <str>Brandon N. Hinderliter, Jared Oehring, Steven
+      Riley</str>\n      <str>Joel N. Broussard, Jeff McPherson, Robert Kurtz, Jared
+      Oehring</str>\n      <str>Jared Oehring, Brandon N. Hinderliter</str>\n      <str>Joel
+      N. Broussard, Robert Kurtz, Jeff McPherson</str>\n      <str>Joel N. Broussard,
+      Jeff McPherson, Robert Kurtz</str>\n      <str>Jared Oehring</str>\n      <str>Jared
+      Oehring</str>\n      <str>Jeff McPherson, Jared Oehring, Joel N. Broussard,
+      Robert Kurtz</str>\n      <str>Jared OEHRING, Brandon Neil HINDERLITER</str>\n
+      \     <str>Jared Oehring, Brandon N. Hinderliter</str>\n      <str>Jared Oehring,
+      Brandon N. Hinderliter</str>\n      <str>Jared Oehring, Brandon N. Hinderliter</str>\n
+      \     <str>Joel N. Broussard, Jeff McPherson, Robert Kurtz, Jared Oehring, Brandon
+      Hinderliter</str>\n      <str>Jared Oehring, Brandon N. Hinderliter</str>\n
+      \     <str>Jared Oehring, Brandon N. Hinderliter</str>\n      <str>Jared Oehring</str>\n
+      \     <str>Robert Kurtz, Jared Oehring</str>\n      <str>Jared Oehring, Brandon
+      N. Hinderliter</str>\n      <str>Jared Oehring, Brandon N. Hinderliter</str>\n
+      \     <str>Jared OEHRING, Brandon Neil HINDERLITER, Arthur BARON</str>\n      <str>Brandon
+      N. Hinderliter</str>\n      <str>Joel N. BROUSSARD, Jeff McPHERSON, Robert KURTZ</str>\n
+      \     <str>Jared Oehring, Brandon N. Hinderliter</str>\n      <str>Jared OEHRING,
+      Brandon Neil HINDERLITER</str>\n      <str>Jared Oehring, Alexander James Christinzio,
+      Brandon N. Hinderliter</str>\n      <str>Brandon Neil HINDERLITER, Jared OEHRING</str>\n
+      \     <str>Jared Oehring, Lon Robinson, Brandon N. Hinderliter, Alexander James
+      Christinzio</str>\n      <str>Alexander James Christinzio, Jared Oehring, Brandon
+      N. Hinderliter</str>\n      <str>Jared Oehring, Brandon N. Hinderliter, Lon
+      Robinson</str>\n      <str>Randall Kimbler, Andrew Frame, Jeremy Brunty, Dominic
+      Chero, Robert Kurtz</str>\n      <str>Jared Oehring, Brandon N. Hinderliter</str>\n
+      \     <str>Jared Oehring, Brandon N. Hinderliter</str>\n      <str>Jared Oehring,
+      Brandon N. Hinderliter</str>\n      <str>Jared Oehring, Robert Kurtz</str>\n
+      \     <str>Jared Oehring, Brandon N. Hinderliter, Lon Robinson</str>\n      <str>Jared
+      Oehring</str>\n      <str>Jared Oehring, Brandon Hinderliter, Lon Robinson,
+      Alexander James Christinzio</str>\n      <str>Jeff McPherson, Jared Oehring,
+      Joel N. Broussard, Robert Kurtz</str>\n      <str>Jared Oehring, Brandon Neil
+      Hinderliter</str>\n      <str>Jared Oehring, Brandon N. Hinderliter, Alexander
+      James Christinzio</str>\n      <str>Joel N. Broussard, Jeff McPherson, Robert
+      Kurtz, Jared Oehring, Brandon Hinderliter</str>\n      <str>Brandon N. Hinderliter,
+      Jared Oehring</str>\n      <str>Joel N. BROUSSARD, Jeff McPHERSON, Robert KURTZ</str>\n
+      \     <str>Jared Oehring, Arthur Baron, Brandon N. Hinderliter</str>\n      <str>Brandon
+      N. Hinderliter, Jared Oehring</str>\n      <str>Jared Oehring, Brandon N. Hinderliter,
+      Alexander James Christinzio</str>\n      <str>Brandon N. Hinderliter, Jared
+      Oehring</str>\n      <str>Jared Oehring, Brandon N. Hinderliter, Lon Robinson</str>\n
+      \     <str>Jeremy BRUNTY, Randall Kimbler, Dominic Chero, Andrew Frame, Robert
+      Kurtz</str>\n      <str>Jared Oehring, Brandon N. Hinderliter, Lon Robinson</str>\n
+      \     <str>Jared OEHRING, Brandon Neil HINDERLITER, Joel BROUSSARD</str>\n      <str>Jared
+      Oehring, Robert Kurtz, Brennan Zaunbrecher</str>\n      <str>Brandon N. Hinderliter,
+      Jared Oehring</str>\n      <str>Jared Oehring, Brandon N. Hinderliter</str>\n
+      \     <str>Jared Oehring, Lon Robinson, Brandon N. Hinderliter</str>\n      <str>Jared
+      Oehring, Alexander Christinzio, Lon Robinson</str>\n    </arr>\n    <arr name=\"issueDate\">\n
+      \     <date>0001-01-01T00:00:00Z</date>\n      <date>2024-04-16T04:00:00Z</date>\n
+      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
+      \     <date>2023-12-26T04:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
+      \     <date>0001-01-01T00:00:00Z</date>\n      <date>2023-02-14T04:00:00Z</date>\n
+      \     <date>0001-01-01T00:00:00Z</date>\n      <date>2023-08-15T04:00:00Z</date>\n
+      \     <date>0001-01-01T00:00:00Z</date>\n      <date>2023-08-01T04:00:00Z</date>\n
+      \     <date>2023-06-13T04:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
+      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
+      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
+      \     <date>0001-01-01T00:00:00Z</date>\n      <date>2024-04-16T04:00:00Z</date>\n
+      \     <date>2024-01-30T04:00:00Z</date>\n      <date>2023-12-19T04:00:00Z</date>\n
+      \     <date>0001-01-01T00:00:00Z</date>\n      <date>2023-01-24T04:00:00Z</date>\n
+      \     <date>2023-11-07T04:00:00Z</date>\n      <date>2024-04-09T04:00:00Z</date>\n
+      \     <date>2023-02-14T04:00:00Z</date>\n      <date>2023-06-13T04:00:00Z</date>\n
+      \     <date>0001-01-01T00:00:00Z</date>\n      <date>2023-06-20T04:00:00Z</date>\n
+      \     <date>2023-11-14T04:00:00Z</date>\n      <date>2023-06-06T04:00:00Z</date>\n
+      \     <date>2023-08-15T04:00:00Z</date>\n      <date>2023-06-13T04:00:00Z</date>\n
+      \     <date>2024-03-05T04:00:00Z</date>\n      <date>2023-12-26T04:00:00Z</date>\n
+      \     <date>2023-09-05T04:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
+      \     <date>2023-08-01T04:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
+      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
+      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
+      \     <date>0001-01-01T00:00:00Z</date>\n      <date>0001-01-01T00:00:00Z</date>\n
+      \     <date>2024-02-20T04:00:00Z</date>\n      <date>2022-11-22T04:00:00Z</date>\n
+      \     <date>2023-01-03T04:00:00Z</date>\n      <date>2023-01-10T04:00:00Z</date>\n
+      \     <date>2023-01-17T04:00:00Z</date>\n      <date>2016-08-09T04:00:00Z</date>\n
+      \     <date>2014-07-29T04:00:00Z</date>\n      <date>2017-03-07T04:00:00Z</date>\n
+      \     <date>2017-04-04T04:00:00Z</date>\n      <date>2017-05-16T04:00:00Z</date>\n
+      \     <date>2017-05-16T04:00:00Z</date>\n      <date>2017-08-29T04:00:00Z</date>\n
+      \     <date>2017-12-12T04:00:00Z</date>\n      <date>2018-02-13T04:00:00Z</date>\n
+      \     <date>2018-05-15T04:00:00Z</date>\n      <date>2018-06-12T04:00:00Z</date>\n
+      \     <date>2018-07-10T04:00:00Z</date>\n      <date>2018-07-31T04:00:00Z</date>\n
+      \     <date>2018-11-06T04:00:00Z</date>\n      <date>2018-10-23T04:00:00Z</date>\n
+      \     <date>2019-03-19T04:00:00Z</date>\n      <date>2019-04-09T04:00:00Z</date>\n
+      \     <date>2019-05-07T04:00:00Z</date>\n      <date>2019-07-02T04:00:00Z</date>\n
+      \     <date>2019-09-10T04:00:00Z</date>\n      <date>2019-09-10T04:00:00Z</date>\n
+      \     <date>2019-09-10T04:00:00Z</date>\n      <date>2020-01-07T04:00:00Z</date>\n
+      \     <date>2020-03-24T04:00:00Z</date>\n      <date>2020-05-19T04:00:00Z</date>\n
+      \     <date>2020-05-12T04:00:00Z</date>\n      <date>2020-05-12T04:00:00Z</date>\n
+      \     <date>2020-06-16T04:00:00Z</date>\n      <date>2020-08-04T04:00:00Z</date>\n
+      \     <date>2021-02-23T04:00:00Z</date>\n      <date>2021-03-02T04:00:00Z</date>\n
+      \     <date>2021-02-09T04:00:00Z</date>\n      <date>2021-03-16T04:00:00Z</date>\n
+      \     <date>2021-05-18T04:00:00Z</date>\n      <date>2021-07-20T04:00:00Z</date>\n
+      \     <date>2021-06-15T04:00:00Z</date>\n      <date>2021-07-20T04:00:00Z</date>\n
+      \     <date>2021-08-17T04:00:00Z</date>\n      <date>2021-09-07T04:00:00Z</date>\n
+      \     <date>2021-10-05T04:00:00Z</date>\n      <date>2021-11-23T04:00:00Z</date>\n
+      \     <date>2021-11-23T04:00:00Z</date>\n      <date>2021-12-21T04:00:00Z</date>\n
+      \     <date>2021-12-28T04:00:00Z</date>\n      <date>2021-12-28T04:00:00Z</date>\n
+      \     <date>2022-09-27T04:00:00Z</date>\n      <date>2022-09-06T04:00:00Z</date>\n
+      \     <date>2022-10-18T04:00:00Z</date>\n      <date>2022-09-20T04:00:00Z</date>\n
+      \     <date>2022-09-20T04:00:00Z</date>\n      <date>2022-09-27T04:00:00Z</date>\n
+      \     <date>2022-10-04T04:00:00Z</date>\n      <date>2022-11-08T04:00:00Z</date>\n
+      \   </arr>\n    <arr name=\"patNum\">\n      <str>NULL</str>\n      <str>11959371</str>\n
+      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>11850563</str>\n      <str>NULL</str>\n
+      \     <str>NULL</str>\n      <str>11578577</str>\n      <str>NULL</str>\n      <str>11728709</str>\n
+      \     <str>NULL</str>\n      <str>11713661</str>\n      <str>11674352</str>\n
+      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
+      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>11960305</str>\n      <str>11885206</str>\n
+      \     <str>11846167</str>\n      <str>NULL</str>\n      <str>11560887</str>\n
+      \     <str>11808125</str>\n      <str>11952996</str>\n      <str>11578580</str>\n
+      \     <str>11674484</str>\n      <str>NULL</str>\n      <str>11680473</str>\n
+      \     <str>11814938</str>\n      <str>11668420</str>\n      <str>11728657</str>\n
+      \     <str>11674868</str>\n      <str>11920449</str>\n      <str>11851999</str>\n
+      \     <str>11745155</str>\n      <str>NULL</str>\n      <str>11713690</str>\n
+      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
+      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>11905806</str>\n
+      \     <str>11506126</str>\n      <str>11542786</str>\n      <str>11549346</str>\n
+      \     <str>11555491</str>\n      <str>9410410</str>\n      <str>8789601</str>\n
+      \     <str>9587649</str>\n      <str>9611728</str>\n      <str>9650879</str>\n
+      \     <str>9650871</str>\n      <str>9745840</str>\n      <str>9840901</str>\n
+      \     <str>9893500</str>\n      <str>9970278</str>\n      <str>9995218</str>\n
+      \     <str>10020711</str>\n      <str>10036238</str>\n      <str>10119381</str>\n
+      \     <str>10107086</str>\n      <str>10232332</str>\n      <str>10254732</str>\n
+      \     <str>10280724</str>\n      <str>10337308</str>\n      <str>10408030</str>\n
+      \     <str>10407990</str>\n      <str>10408031</str>\n      <str>10526882</str>\n
+      \     <str>10598258</str>\n      <str>10655435</str>\n      <str>10648311</str>\n
+      \     <str>10648270</str>\n      <str>10686301</str>\n      <str>10731561</str>\n
+      \     <str>10927802</str>\n      <str>10934824</str>\n      <str>10914155</str>\n
+      \     <str>10947829</str>\n      <str>11009162</str>\n      <str>11066912</str>\n
+      \     <str>11035207</str>\n      <str>11067481</str>\n      <str>11091992</str>\n
+      \     <str>11114857</str>\n      <str>11136870</str>\n      <str>11181879</str>\n
+      \     <str>11181107</str>\n      <str>11203924</str>\n      <str>11211801</str>\n
+      \     <str>11208878</str>\n      <str>11454079</str>\n      <str>11434737</str>\n
+      \     <str>11476781</str>\n      <str>11449018</str>\n      <str>11451016</str>\n
+      \     <str>11454170</str>\n      <str>11459863</str>\n      <str>11492886</str>\n
+      \   </arr>\n    <arr name=\"pctNum\">\n      <str>NULL</str>\n      <str>NULL</str>\n
+      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
+      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
+      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
+      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
+      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
+      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
+      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
+      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
+      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
+      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
+      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
+      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
+      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
+      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
+      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
+      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
+      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
+      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
+      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
+      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
+      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
+      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
+      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
+      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
+      \     <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n      <str>NULL</str>\n
+      \     <str>NULL</str>\n      <str>NULL</str>\n    </arr>\n    <arr name=\"publDate\">\n
+      \     <date>2017-05-25T04:00:00Z</date>\n      <date>2016-11-03T04:00:00Z</date>\n
+      \     <date>2019-04-11T04:00:00Z</date>\n      <date>2019-02-21T04:00:00Z</date>\n
+      \     <date>2020-02-13T04:00:00Z</date>\n      <date>2020-09-24T04:00:00Z</date>\n
+      \     <date>2020-09-24T04:00:00Z</date>\n      <date>2020-09-24T04:00:00Z</date>\n
+      \     <date>2020-03-26T04:00:00Z</date>\n      <date>2020-11-19T04:00:00Z</date>\n
+      \     <date>2019-10-24T04:00:00Z</date>\n      <date>2019-11-14T04:00:00Z</date>\n
+      \     <date>2020-03-05T04:00:00Z</date>\n      <date>2021-05-06T04:00:00Z</date>\n
+      \     <date>2021-05-06T04:00:00Z</date>\n      <date>2021-05-20T04:00:00Z</date>\n
+      \     <date>2020-10-29T04:00:00Z</date>\n      <date>2021-02-11T04:00:00Z</date>\n
+      \     <date>2021-07-01T04:00:00Z</date>\n      <date>2021-07-01T04:00:00Z</date>\n
+      \     <date>2021-07-01T04:00:00Z</date>\n      <date>2021-07-01T04:00:00Z</date>\n
+      \     <date>2021-07-01T04:00:00Z</date>\n      <date>2021-07-01T04:00:00Z</date>\n
+      \     <date>2020-12-10T04:00:00Z</date>\n      <date>2021-05-13T04:00:00Z</date>\n
+      \     <date>2022-01-20T04:00:00Z</date>\n      <date>2022-01-13T04:00:00Z</date>\n
+      \     <date>2022-01-20T04:00:00Z</date>\n      <date>2022-02-03T04:00:00Z</date>\n
+      \     <date>2021-08-26T04:00:00Z</date>\n      <date>2022-04-07T04:00:00Z</date>\n
+      \     <date>2022-12-01T04:00:00Z</date>\n      <date>2022-06-16T04:00:00Z</date>\n
+      \     <date>2022-07-07T04:00:00Z</date>\n      <date>2022-07-28T04:00:00Z</date>\n
+      \     <date>2022-01-13T04:00:00Z</date>\n      <date>2022-09-01T04:00:00Z</date>\n
+      \     <date>2022-03-24T04:00:00Z</date>\n      <date>2022-10-20T04:00:00Z</date>\n
+      \     <date>2022-11-17T04:00:00Z</date>\n      <date>2022-11-17T04:00:00Z</date>\n
+      \     <date>2023-04-06T04:00:00Z</date>\n      <date>2023-08-17T04:00:00Z</date>\n
+      \     <date>2023-05-18T04:00:00Z</date>\n      <date>2023-01-19T04:00:00Z</date>\n
+      \     <date>2023-05-11T04:00:00Z</date>\n      <date>2020-12-10T04:00:00Z</date>\n
+      \     <date>2021-02-04T04:00:00Z</date>\n      <date>2022-06-09T04:00:00Z</date>\n
+      \     <date>2022-10-20T04:00:00Z</date>\n      <date>2014-05-22T04:00:00Z</date>\n
+      \     <date>2014-06-26T04:00:00Z</date>\n      <date>2016-07-21T04:00:00Z</date>\n
+      \     <date>2016-11-03T04:00:00Z</date>\n      <date>2015-07-30T04:00:00Z</date>\n
+      \     <date>2017-01-26T04:00:00Z</date>\n      <date>2017-02-02T04:00:00Z</date>\n
+      \     <date>2017-04-06T04:00:00Z</date>\n      <date>2017-08-03T04:00:00Z</date>\n
+      \     <date>2016-02-04T04:00:00Z</date>\n      <date>2017-08-03T04:00:00Z</date>\n
+      \     <date>2017-08-03T04:00:00Z</date>\n      <date>2016-09-22T04:00:00Z</date>\n
+      \     <date>2017-02-09T04:00:00Z</date>\n      <date>2018-04-26T04:00:00Z</date>\n
+      \     <date>2017-02-02T04:00:00Z</date>\n      <date>2016-12-01T04:00:00Z</date>\n
+      \     <date>2019-01-10T04:00:00Z</date>\n      <date>2016-11-10T04:00:00Z</date>\n
+      \     <date>2017-11-02T04:00:00Z</date>\n      <date>2017-02-02T04:00:00Z</date>\n
+      \     <date>2019-04-18T04:00:00Z</date>\n      <date>2016-10-06T04:00:00Z</date>\n
+      \     <date>2019-08-15T04:00:00Z</date>\n      <date>2019-04-25T04:00:00Z</date>\n
+      \     <date>2019-06-06T04:00:00Z</date>\n      <date>2020-03-19T04:00:00Z</date>\n
+      \     <date>2018-06-28T04:00:00Z</date>\n      <date>2018-09-27T04:00:00Z</date>\n
+      \     <date>2018-09-27T04:00:00Z</date>\n      <date>2019-02-07T04:00:00Z</date>\n
+      \     <date>2020-04-09T04:00:00Z</date>\n      <date>2018-11-22T04:00:00Z</date>\n
+      \     <date>0001-01-01T00:00:00Z</date>\n      <date>2017-08-10T04:00:00Z</date>\n
+      \     <date>2019-10-17T04:00:00Z</date>\n      <date>2019-04-11T04:00:00Z</date>\n
+      \     <date>2018-09-13T04:00:00Z</date>\n      <date>2019-08-08T04:00:00Z</date>\n
+      \     <date>2020-06-11T04:00:00Z</date>\n      <date>2020-03-05T04:00:00Z</date>\n
+      \     <date>2018-06-07T04:00:00Z</date>\n      <date>2020-05-07T04:00:00Z</date>\n
+      \     <date>2019-12-19T04:00:00Z</date>\n      <date>2020-04-09T04:00:00Z</date>\n
+      \     <date>2020-12-31T04:00:00Z</date>\n      <date>2021-04-01T04:00:00Z</date>\n
+      \     <date>2016-12-01T04:00:00Z</date>\n      <date>2016-04-14T04:00:00Z</date>\n
+      \     <date>2021-05-27T04:00:00Z</date>\n      <date>2020-11-12T04:00:00Z</date>\n
+      \     <date>2021-04-08T04:00:00Z</date>\n      <date>2021-07-01T04:00:00Z</date>\n
+      \   </arr>\n    <arr name=\"publNum\">\n      <str>20170145918</str>\n      <str>20160319650</str>\n
+      \     <str>20190106970</str>\n      <str>20190055826</str>\n      <str>20200047141</str>\n
+      \     <str>20200300050</str>\n      <str>20200300065</str>\n      <str>20200300073</str>\n
+      \     <str>20200095854</str>\n      <str>20200362681</str>\n      <str>20190323428</str>\n
+      \     <str>20190345804</str>\n      <str>20200071998</str>\n      <str>20210131248</str>\n
+      \     <str>20210131411</str>\n      <str>20210148385</str>\n      <str>20200340340</str>\n
+      \     <str>20210041009</str>\n      <str>20210198992</str>\n      <str>20210200249</str>\n
+      \     <str>20210198994</str>\n      <str>20210198993</str>\n      <str>20210199110</str>\n
+      \     <str>20210198989</str>\n      <str>20200386077</str>\n      <str>20210140423</str>\n
+      \     <str>20220018232</str>\n      <str>20220010758</str>\n      <str>20220018233</str>\n
+      \     <str>20220034210</str>\n      <str>20210262321</str>\n      <str>20220107039</str>\n
+      \     <str>20220385074</str>\n      <str>20220187171</str>\n      <str>20220213772</str>\n
+      \     <str>20220239100</str>\n      <str>20220008879</str>\n      <str>20220275716</str>\n
+      \     <str>20220094173</str>\n      <str>20220334546</str>\n      <str>20220364447</str>\n
+      \     <str>20220364448</str>\n      <str>20230103589</str>\n      <str>20230258063</str>\n
+      \     <str>20230155358</str>\n      <str>20230018992</str>\n      <str>20230146951</str>\n
+      \     <str>20200386169</str>\n      <str>20210032961</str>\n      <str>20220178234</str>\n
+      \     <str>20220333594</str>\n      <str>20140138079</str>\n      <str>20140174717</str>\n
+      \     <str>20160208592</str>\n      <str>20160319649</str>\n      <str>20150211524</str>\n
+      \     <str>20170022788</str>\n      <str>20170030178</str>\n      <str>20170096885</str>\n
+      \     <str>20170222409</str>\n      <str>20160032703</str>\n      <str>20170218843</str>\n
+      \     <str>20170218727</str>\n      <str>20160273328</str>\n      <str>20170037717</str>\n
+      \     <str>20180112507</str>\n      <str>20170028368</str>\n      <str>20160349728</str>\n
+      \     <str>20190010793</str>\n      <str>20160326854</str>\n      <str>20170314380</str>\n
+      \     <str>20170030177</str>\n      <str>20190112910</str>\n      <str>20160290114</str>\n
+      \     <str>20190249754</str>\n      <str>20190120024</str>\n      <str>20190169971</str>\n
+      \     <str>20200088005</str>\n      <str>20180183219</str>\n      <str>20180274446</str>\n
+      \     <str>20180278124</str>\n      <str>20190040727</str>\n      <str>20200109616</str>\n
+      \     <str>20180334893</str>\n      <str>NULL</str>\n      <str>20170226839</str>\n
+      \     <str>20190316447</str>\n      <str>20190107466</str>\n      <str>20180258746</str>\n
+      \     <str>20190245348</str>\n      <str>20200182032</str>\n      <str>20200073353</str>\n
+      \     <str>20180156210</str>\n      <str>20200141219</str>\n      <str>20190383123</str>\n
+      \     <str>20200109617</str>\n      <str>20200408060</str>\n      <str>20210095552</str>\n
+      \     <str>20160348479</str>\n      <str>20160105022</str>\n      <str>20210159677</str>\n
+      \     <str>20200355120</str>\n      <str>20210102451</str>\n      <str>20210198995</str>\n
+      \   </arr>\n    <int name=\"patAssignorNameSize\">1</int>\n    <int name=\"patAssignorNameTypeSize\">1</int>\n
+      \   <int name=\"patAssignorExDateSize\">1</int>\n    <int name=\"patAssignorDateAckSize\">1</int>\n
+      \   <int name=\"patAssigneeNameSize\">2</int>\n    <int name=\"patAssigneeNameTypeSize\">0</int>\n
+      \   <int name=\"patAssigneeAddress1Size\">1</int>\n    <int name=\"patAssigneeAddress2Size\">1</int>\n
+      \   <int name=\"patAssigneeCitySize\">1</int>\n    <int name=\"patAssigneeStateSize\">1</int>\n
+      \   <int name=\"patAssigneeCountryNameSize\">1</int>\n    <int name=\"patAssigneePostcodeSize\">1</int>\n
+      \   <int name=\"inventionTitleSize\">104</int>\n    <int name=\"inventionTitleIdSize\">104</int>\n
+      \   <int name=\"inventionTitleLangSize\">104</int>\n    <int name=\"applNumSize\">104</int>\n
+      \   <int name=\"filingDateSize\">104</int>\n    <int name=\"intlPublDateSize\">104</int>\n
+      \   <int name=\"intlRegNumSize\">104</int>\n    <int name=\"inventorsSize\">104</int>\n
+      \   <int name=\"issueDateSize\">104</int>\n    <int name=\"patNumSize\">104</int>\n
+      \   <int name=\"pctNumSize\">104</int>\n    <int name=\"publDateSize\">104</int>\n
+      \   <int name=\"publNumSize\">104</int>\n    <str name=\"inventionTitleFirst\">SYSTEM
+      FOR GAS COMPRESSION ON ELECTRIC HYDRAULIC FRACTURING FLEETS</str>\n    <str
+      name=\"inventionTitleLangFirst\">en</str>\n    <str name=\"applNumFirst\">15356436</str>\n
+      \   <date name=\"filingDateFirst\">2016-11-18T04:00:00Z</date>\n    <date name=\"intlPublDateFirst\">0001-01-01T00:00:00Z</date>\n
+      \   <str name=\"intlRegNumFirst\">NULL</str>\n    <str name=\"inventorsFirst\">Jared
+      Oehring, Brandon N. Hinderliter</str>\n    <date name=\"issueDateFirst\">0001-01-01T00:00:00Z</date>\n
+      \   <str name=\"patNumFirst\">NULL</str>\n    <str name=\"pctNumFirst\">NULL</str>\n
+      \   <date name=\"publDateFirst\">2017-05-25T04:00:00Z</date>\n    <str name=\"publNumFirst\">20170145918</str>\n
+      \   <str name=\"patAssignorNameFirst\">U.S. WELL SERVICES, LLC</str>\n    <str
+      name=\"patAssigneeNameFirst\">PIPER SANDLER FINANCE LLC</str>\n    <arr name=\"patAssigneePostcodeFacet\">\n
+      \     <str>10020</str>\n    </arr>\n    <arr name=\"patAssignorNameFacet\">\n
+      \     <str>U.S. WELL SERVICES, LLC</str>\n    </arr>\n    <str name=\"corrNameFacet\">KE
+      YANG XIA</str>\n    <long name=\"_version_\">1796473047916478464</long>\n    <arr
+      name=\"patAssigneeNameFacet\">\n      <str>PIPER SANDLER FINANCE LLC</str>\n
+      \   </arr>\n    <arr name=\"patAssigneeCityFacet\">\n      <str>NEW YORK</str>\n
+      \   </arr>\n    <arr name=\"patAssigneeCountryNameFacet\">\n      <str>NULL</str>\n
+      \   </arr>\n    <arr name=\"patAssigneeStateFacet\">\n      <str>NEW YORK</str>\n
+      \   </arr>\n    <str name=\"corrNameString\">KE YANG XIA</str></doc>\n  <doc>\n
+      \   <str name=\"id\">66091-133</str>\n    <str name=\"displayId\">066091-0133</str>\n
       \   <str name=\"reelNo\">66091</str>\n    <str name=\"frameNo\">133</str>\n
       \   <date name=\"lastUpdateDate\">2024-04-16T06:00:04Z</date>\n    <str name=\"purgeIndicator\">N</str>\n
       \   <date name=\"recordedDate\">2023-12-21T04:00:00Z</date>\n    <str name=\"pageCount\">12</str>\n
@@ -4184,7 +4184,7 @@ interactions:
       name=\"intlRegNum\"/>\n    <arr name=\"publDate\"/>\n    <arr name=\"patAssigneeCountryName\"/>\n
       \   <arr name=\"intlPublDate\"/>\n    <arr name=\"id\"/>\n    <arr name=\"patAssigneeName\"/>\n
       \   <arr name=\"issueDate\"/>\n    <arr name=\"reelNo\"/>\n  </lst>\n  <lst
-      name=\"61875-1\">\n    <arr name=\"frameNo\"/>\n    <arr name=\"patAssigneeCity\"/>\n
+      name=\"62142-927\">\n    <arr name=\"frameNo\"/>\n    <arr name=\"patAssigneeCity\"/>\n
       \   <arr name=\"pctNum\"/>\n    <arr name=\"patAssigneePostcode\"/>\n    <arr
       name=\"filingDate\"/>\n    <arr name=\"conveyanceText\"/>\n    <arr name=\"patNum\"/>\n
       \   <arr name=\"patAssignorName\"/>\n    <arr name=\"corrAddress1\"/>\n    <arr
@@ -4193,7 +4193,7 @@ interactions:
       \   <arr name=\"patAssigneeAddress\"/>\n    <arr name=\"intlRegNum\"/>\n    <arr
       name=\"publDate\"/>\n    <arr name=\"patAssigneeCountryName\"/>\n    <arr name=\"intlPublDate\"/>\n
       \   <arr name=\"id\"/>\n    <arr name=\"patAssigneeName\"/>\n    <arr name=\"issueDate\"/>\n
-      \   <arr name=\"reelNo\"/>\n  </lst>\n  <lst name=\"62142-927\">\n    <arr name=\"frameNo\"/>\n
+      \   <arr name=\"reelNo\"/>\n  </lst>\n  <lst name=\"61875-1\">\n    <arr name=\"frameNo\"/>\n
       \   <arr name=\"patAssigneeCity\"/>\n    <arr name=\"pctNum\"/>\n    <arr name=\"patAssigneePostcode\"/>\n
       \   <arr name=\"filingDate\"/>\n    <arr name=\"conveyanceText\"/>\n    <arr
       name=\"patNum\"/>\n    <arr name=\"patAssignorName\"/>\n    <arr name=\"corrAddress1\"/>\n
@@ -4236,7 +4236,7 @@ interactions:
       content-type:
       - application/xml
       date:
-      - Wed, 24 Apr 2024 16:01:02 GMT
+      - Wed, 01 May 2024 18:45:20 GMT
       server:
       - Apache-Coyote/1.1
       strict-transport-security:

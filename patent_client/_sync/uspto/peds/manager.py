@@ -9,7 +9,7 @@ import logging
 from collections.abc import Sequence
 from pathlib import Path
 from tempfile import TemporaryDirectory
-from typing import TYPE_CHECKING, Iterator
+import typing as tp
 
 from dateutil.parser import parse as dt_parse
 from pypdf import PdfMerger
@@ -20,7 +20,7 @@ from patent_client.util.request_util import get_start_and_row_count
 from .api import PatentExaminationDataSystemApi
 from .query import QueryFields
 
-if TYPE_CHECKING:
+if tp.TYPE_CHECKING:
     from .model import Document, USApplication
 
 logger = logging.getLogger(__name__)
@@ -31,7 +31,7 @@ class HttpException(Exception):
 
 
 def cast_as_datetime(
-    date: str | datetime.datetime | datetime.date, end_of_day=False
+    date: tp.Union[str, datetime.datetime, datetime.date], end_of_day=False
 ) -> datetime.datetime:
     if isinstance(date, datetime.datetime):
         pass
@@ -60,9 +60,10 @@ class USApplicationManager(Manager["USApplication"]):
         max_length = (api.create_query(**self.get_query_params())).num_found
         return min(max_length, self.config.limit) if self.config.limit else max_length
 
-    def _get_results(self) -> Iterator["USApplication"]:
+    def _get_results(self) -> tp.Iterator["USApplication"]:
         query_params = self.get_query_params()
         api = PatentExaminationDataSystemApi()
+        counter = 0
         for start, rows in get_start_and_row_count(
             self.config.limit, self.config.offset, page_size=20
         ):
@@ -71,6 +72,9 @@ class USApplicationManager(Manager["USApplication"]):
             )
             for app in page.applications:
                 yield app
+                counter += 1
+                if self.config.limit and counter >= self.config.limit:
+                    break
             if len(page.applications) < rows:
                 break
 
@@ -196,7 +200,7 @@ class DocumentManager(Manager["Document"]):
     def count(self):
         return len([i for i in self])
 
-    def _get_results(self) -> Iterator["Document"]:
+    def _get_results(self) -> tp.Iterator["Document"]:
         api = PatentExaminationDataSystemApi()
         docs = api.get_documents(self.config.filter["appl_id"][0])
         for doc in docs:

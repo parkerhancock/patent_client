@@ -22,3 +22,14 @@ class PublishedApplicationBiblio(PublicSearchBiblio):
 
 class PublishedApplication(PublicSearchDocument):
     pass
+
+
+__all__ = [
+    "PatentBiblio",
+    "Patent",
+    "PublishedApplicationBiblio",
+    "PublishedApplication",
+    "PublicSearchBiblio",
+    "PublicSearchDocument",
+    "PublicSearchDocument",
+]

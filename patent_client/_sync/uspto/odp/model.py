@@ -98,15 +98,20 @@ class Document(BaseODPModel):
     document_code_description: str = Field(alias="documentCodeDescriptionText")
     direction_category: str = Field(alias="directionCategory")
     download_option_bag: list[dict] = Field(alias="downloadOptionBag")
-    
+
     def download(self, type="PDF", out_path=None):
         from .manager import api
+
         try:
-            url = next(u for u in self.download_option_bag if u["mimeTypeIdentifier"] == type)["downloadUrl"]
+            url = next(
+                u for u in self.download_option_bag if u["mimeTypeIdentifier"] == type
+            )["downloadUrl"]
         except StopIteration:
             raise ValueError(f"No download URL found for this document type: {type}")
         if out_path is None:
-            out_path = f"{self.appl_id} - {self.mail_date.date()} - {self.document_code} - {self.document_code_description}.{type.lower()}".replace("/", "-")
+            out_path = f"{self.appl_id} - {self.mail_date.date()} - {self.document_code} - {self.document_code_description}.{type.lower()}".replace(
+                "/", "-"
+            )
         return api.client.download(url, "GET", path=out_path)
 
 
@@ -287,26 +292,34 @@ class USApplicationBiblio(BaseODPModel):
     @property
     def documents(self) -> list[Document]:
         return self._get_model(".model.Document").objects.filter(appl_id=self.appl_id)
-    
+
     @property
     def term_adjustment(self) -> TermAdjustment:
-        return self._get_model(".model.TermAdjustment").objects.filter(appl_id=self.appl_id)
-    
+        return self._get_model(".model.TermAdjustment").objects.filter(
+            appl_id=self.appl_id
+        )
+
     @property
     def assignments(self) -> list[Assignment]:
         return self._get_model(".model.Assignment").objects.filter(appl_id=self.appl_id)
-    
+
     @property
     def customer_number(self) -> CustomerNumber:
-        return self._get_model(".model.CustomerNumber").objects.filter(appl_id=self.appl_id)
-    
+        return self._get_model(".model.CustomerNumber").objects.filter(
+            appl_id=self.appl_id
+        )
+
     @property
     def foreign_priority(self) -> ForeignPriority:
-        return self._get_model(".model.ForeignPriority").objects.filter(appl_id=self.appl_id)
-    
+        return self._get_model(".model.ForeignPriority").objects.filter(
+            appl_id=self.appl_id
+        )
+
     @property
     def transactions(self) -> list[Transaction]:
-        return self._get_model(".model.Transaction").objects.filter(appl_id=self.appl_id)
+        return self._get_model(".model.Transaction").objects.filter(
+            appl_id=self.appl_id
+        )
 
     # Aliases
 
@@ -323,7 +336,23 @@ class USApplicationBiblio(BaseODPModel):
         return self.documents
 
 
-class USApplication(USApplicationBiblio):
+class USApplication(BaseODPModel):
+    aia_indicator: YNBool = Field(alias="firstInventorToFileIndicator")
+    app_filing_date: datetime.date = Field(alias="filingDate")
+    inventors: list[Inventor] = Field(alias="inventorBag")
+    customer_number: int = Field(alias="customerNumber")
+    group_art_unit: str = Field(alias="groupArtUnitNumber")
+    invention_title: str = Field(alias="inventionTitle")
+    correspondence_address: list[Address] = Field(alias="correspondenceAddressBag")
+    app_conf_num: int = Field(alias="applicationConfirmationNumber")
+    atty_docket_num: str = Field(alias="docketNumber")
+    appl_id: str = Field(alias="applicationNumberText")
+    first_inventor_name: str = Field(alias="firstInventorName")
+    first_applicant_name: str = Field(alias="firstApplicantName")
+    cpc_classifications: list[str] = Field(alias="cpcClassificationBag")
+    entity_status: str = Field(alias="businessEntityStatusCategory")
+    app_early_pub_number: Optional[str] = Field(alias="earliestPublicationNumber")
+
     app_type_code: str = Field(alias="applicationTypeCode")
     national_stage_indicator: YNBool = Field(alias="nationalStageIndicator")
 

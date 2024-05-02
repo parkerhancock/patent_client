@@ -13,7 +13,7 @@ interactions:
       host:
       - ops.epo.org
       user-agent:
-      - Mozilla/5.0 Python Patent Clientbot/4.1.10 (parkerhancock@users.noreply.github.com)
+      - Mozilla/5.0 Python Patent Clientbot/5.0.0 (parkerhancock@users.noreply.github.com)
     method: GET
     uri: http://ops.epo.org/3.2/rest-services/family/publication/docdb/EP1000000A1
   response:
@@ -33,10 +33,10 @@ interactions:
       Content-Type:
       - application/xml
       Date:
-      - Wed, 24 Apr 2024 19:30:29 GMT
+      - Wed, 01 May 2024 18:44:50 GMT
       WWW-Authenticate:
-      - 'Bearer realm="null",error="invalid_token",error_description="oauth.v2.InvalidAccessToken:
-        Invalid access token"'
+      - 'Bearer realm="null",error="invalid_token",error_description="keymanagement.service.invalid_access_token:
+        Invalid Access Token"'
     http_version: HTTP/1.1
     status_code: 400
 - request:
@@ -56,8 +56,8 @@ interactions:
     content: "{\n  \"refresh_token_expires_in\": \"0\",\n  \"api_product_list\": \"[ops-prod]\",\n
       \ \"api_product_list_json\": [\n    \"ops-prod\"\n  ],\n  \"organization_name\":
       \"epo\",\n  \"developer.email\": \"parker.hancock@protonmail.com\",\n  \"token_type\":
-      \"BearerToken\",\n  \"issued_at\": \"1713987029858\",\n  \"client_id\": \"wVi6ni5GUZZ3BJqAfLGJb4KPGcYxRktw\",\n
-      \ \"access_token\": \"ZlUVqnwPvb6AJEpKxX0Q5tPDnZ9v\",\n  \"application_name\":
+      \"BearerToken\",\n  \"issued_at\": \"1714589092070\",\n  \"client_id\": \"wVi6ni5GUZZ3BJqAfLGJb4KPGcYxRktw\",\n
+      \ \"access_token\": \"UQTbz8bSBDY3eBMb7ZVJqCq7M9TJ\",\n  \"application_name\":
       \"8654da0d-5e44-4ea3-addc-e555eff4aee6\",\n  \"scope\": \"core\",\n  \"expires_in\":
       \"1199\",\n  \"refresh_count\": \"0\",\n  \"status\": \"approved\"\n}"
     headers:
@@ -74,11 +74,11 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Wed, 24 Apr 2024 19:30:29 GMT
+      - Wed, 01 May 2024 18:44:52 GMT
       X-EPO-Client-IP:
-      - 38.104.255.66
+      - 174.194.194.160
       X-EPO-Forwarded:
-      - '[38.104.255.66]'
+      - '[174.194.194.160]'
     http_version: HTTP/1.1
     status_code: 200
 - request:
@@ -95,7 +95,7 @@ interactions:
       host:
       - ops.epo.org
       user-agent:
-      - Mozilla/5.0 Python Patent Clientbot/4.1.10 (parkerhancock@users.noreply.github.com)
+      - Mozilla/5.0 Python Patent Clientbot/5.0.0 (parkerhancock@users.noreply.github.com)
     method: GET
     uri: http://ops.epo.org/3.2/rest-services/family/publication/docdb/EP1000000A1
   response:
@@ -212,7 +212,7 @@ interactions:
       Content-Type:
       - application/xml;charset=utf-8
       Date:
-      - Wed, 24 Apr 2024 19:30:30 GMT
+      - Wed, 01 May 2024 18:44:52 GMT
       ETag:
       - '"042c8b4f48cc4e69d9f34356eb9b71d8e"'
       Pragma:
@@ -226,11 +226,11 @@ interactions:
       X-API:
       - ops-v3.2
       X-EPO-Client-IP:
-      - 38.104.255.66
+      - 174.194.194.160
       X-EPO-Forwarded:
-      - '[38.104.255.66]'
+      - '[174.194.194.160]'
       X-Elapsed-Time:
-      - '82'
+      - '309'
       X-IndividualQuotaPerHour-Used:
       - '8857'
       X-RegisteredQuotaPerWeek-Used:

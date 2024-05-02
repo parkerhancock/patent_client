@@ -32,4 +32,3 @@ def compare_dicts(dict_1, dict_2, key=""):
             return compare_dicts(v, dict_2[k], key=f"{key}.{k}")
         else:
             assert v == dict_2[k], f"At key {key}.{k}, {v} != {dict_2[k]}"
-

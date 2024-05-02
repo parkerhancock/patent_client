@@ -17,7 +17,9 @@ DEPEND_ALL_RE = re.compile(
     r"(any of the foregoing claims|any of the previous claims)", flags=re.IGNORECASE
 )
 
-clean_text = lambda text: WHITESPACE_RE.sub(" ", text).strip()
+
+def clean_text(text):
+    return WHITESPACE_RE.sub(" ", text).strip()
 
 
 def grouper(iterable, n, fillvalue=None):

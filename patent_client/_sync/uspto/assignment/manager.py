@@ -21,7 +21,10 @@ from .model import Assignment
 warnings.filterwarnings("ignore", category=InsecureRequestWarning)
 
 NUMBER_CLEAN_RE = re.compile(r"[^\d]")
-clean_number = lambda x: NUMBER_CLEAN_RE.sub("", str(x))
+
+
+def clean_number(x):
+    return NUMBER_CLEAN_RE.sub("", str(x))
 
 
 logger = logging.getLogger(__name__)

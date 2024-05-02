@@ -15,16 +15,16 @@ from .query import create_post_search_obj
 
 if tp.TYPE_CHECKING:
     from .model import (
+        Assignment,
         Continuity,
+        CustomerNumber,
         Document,
+        ForeignPriority,
         SearchResult,
+        TermAdjustment,
+        Transaction,
         USApplication,
         USApplicationBiblio,
-        TermAdjustment,
-        Assignment,
-        CustomerNumber,
-        ForeignPriority,
-        Transaction
     )
 
 
@@ -113,43 +113,49 @@ class DocumentManager(Manager):
     def _get_results(self) -> tp.Iterator["Document"]:
         for doc in api.get_documents(self.config.filter["appl_id"][0]):
             yield doc
-            
+
+
 class TermAdjustmentManager(Manager):
     default_filter = "appl_id"
-    
+
     def _get_results(self) -> "TermAdjustment":
         return api.get_term_adjustments(self.config.filter["appl_id"][0])
-    
+
+
 class AssignmentManager(Manager):
     default_filter = "appl_id"
-    
+
     def _get_results(self) -> tp.Iterator["Assignment"]:
         for doc in api.get_assignments(self.config.filter["appl_id"][0]):
             yield doc
-    
+
     def count(self):
         return len(api.get_assignments(self.config.filter["appl_id"][0]))
-    
+
+
 class CustomerNumberManager(Manager):
     default_filter = "appl_id"
-    
+
     def _get_results(self) -> "CustomerNumber":
         return api.get_customer_numbers(self.config.filter["appl_id"][0])
-    
+
+
 class ForeignPriorityManager(Manager):
     default_filter = "appl_id"
-    
+
     def _get_results(self) -> "ForeignPriority":
-        for doc in api.get_foreign_priority_data(self.config.filter["appl_id"][0]):
+        for doc in api.get_foreign_priority_data(
+            self.config.filter["appl_id"][0]
+        ):
             yield doc
-    
+
+
 class TransactionManager(Manager):
     default_filter = "appl_id"
-    
+
     def _get_results(self) -> tp.Iterator["Transaction"]:
         for doc in api.get_transactions(self.config.filter["appl_id"][0]):
             yield doc
-    
+
     def count(self):
         return len(api.get_transactions(self.config.filter["appl_id"][0]))
-

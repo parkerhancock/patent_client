@@ -1,10 +1,10 @@
 import json
 from pathlib import Path
 
-fixtures = Path(__file__).parent / "fixtures"
-
 from .convert.biblio import PublicSearchBiblioPageSchema
 from .convert.document import PublicSearchDocumentSchema
+
+fixtures = Path(__file__).parent / "fixtures"
 
 
 def test_convert_biblio():

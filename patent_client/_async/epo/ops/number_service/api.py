@@ -1,4 +1,4 @@
-from ..session import asession
+from ..session import session
 from .model import NumberServiceResult
 
 
@@ -29,7 +29,7 @@ class NumberServiceApi:
         output_format: output type (original / docdb / epodoc)
 
         """
-        response = await asession.get(
+        response = await session.get(
             f"http://ops.epo.org/3.2/rest-services/number-service/{doc_type}/{input_format}/{number}/{output_format}",
             extensions={"force_cache": True},
         )

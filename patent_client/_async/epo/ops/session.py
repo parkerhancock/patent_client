@@ -1,5 +1,6 @@
 import base64
 import datetime as dt
+import logging
 from typing import Sequence
 
 import hishel
@@ -10,8 +11,6 @@ from patent_client import SETTINGS
 from patent_client._async.http_client import PatentClientSession
 from patent_client.session import CACHE_DIR
 
-import logging
-
 logger = logging.getLogger(__name__)
 
 NS = {
@@ -20,8 +19,6 @@ NS = {
     "http://www.epo.org/fulltext": None,
     "http://www.epo.org/register": None,
 }
-
-
 
 
 class OpsAuthenticationError(Exception):
@@ -111,7 +108,7 @@ async def handle_response(response):
     return response
 
 
-asession = PatentClientSession(
+session = PatentClientSession(
     transport=ops_transport,
     auth=OpsAuth(key=SETTINGS.epo_api_key, secret=SETTINGS.epo_api_secret),
     event_hooks={

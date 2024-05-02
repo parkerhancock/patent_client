@@ -3,6 +3,14 @@
 Original API URL: <https://ped.uspto.gov/peds/>
 
 :::{warning}
+The PEDS interface will be DEPRECATED in late 2024 in favor of [Open Data Portal](../open_data_portal.md).
+See [the ODP FAQs](https://beta-data.uspto.gov/support/faq) for more information.
+
+I have also noticed that the USPTO is removing data from PEDS, and has currently removed
+Attorney, PTA/PTE, and Continuity information.
+:::
+
+:::{warning}
 The PEDS interface is under active development by the USPTO. Occasionally documented filtering
 and ordering criteria will fail. Failed filters return no results. Failed ordering critera just
 have no effect.
@@ -13,10 +21,7 @@ Downloading file history documents currently doesn't work. The downloader now ra
 error to indicate this problem. This warning will be removed when downloading works reliably again
 :::
 
-:::{warning}
-The PEDS interface will be DEPRECATED in late 2024 in favor of [Open Data Portal](../open_data_portal.md).
-See [the ODP FAQs](https://beta-data.uspto.gov/support/faq) for more information.
-:::
+
 
 Patent Client provides an interface to the USPTO Patent Examination Data System (PEDS).
 

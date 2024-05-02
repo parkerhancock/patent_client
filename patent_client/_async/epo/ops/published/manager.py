@@ -2,7 +2,7 @@ import math
 
 from patent_client.util.manager import AsyncManager
 
-from .api import PublishedAsyncApi
+from .api import PublishedApi
 from .cql import generate_query
 from .model.biblio import BiblioResult
 from .model.fulltext import Claims, Description
@@ -38,7 +38,7 @@ class SearchManager(AsyncManager["BiblioResult"]):
             query = self.config.filter["cql_query"]
         else:
             query = generate_query(**self.config.filter)
-        return await PublishedAsyncApi.search.search(query, start, end)
+        return await PublishedApi.search.search(query, start, end)
 
     async def count(self) -> int:
         page = await self._get_search_results_range(1, 100)
@@ -60,7 +60,7 @@ class SearchManager(AsyncManager["BiblioResult"]):
                 break
 
     async def get(self, number, doc_type="publication", format="docdb") -> BiblioResult:
-        result = await PublishedAsyncApi.biblio.get_biblio(number, doc_type, format)
+        result = await PublishedApi.biblio.get_biblio(number, doc_type, format)
         if len(result.documents) > 1:
             raise Exception("More than one result found! Try another query")
         return result.documents[0]
@@ -68,7 +68,7 @@ class SearchManager(AsyncManager["BiblioResult"]):
 
 class BiblioManager(AsyncManager):
     async def get(self, doc_number) -> "BiblioResult":
-        result = await PublishedAsyncApi.biblio.get_biblio(doc_number)
+        result = await PublishedApi.biblio.get_biblio(doc_number)
         if len(result.documents) > 1:
             raise ValueError(f"More than one result found for {doc_number}!")
         return result.documents[0]
@@ -76,17 +76,17 @@ class BiblioManager(AsyncManager):
 
 class ClaimsManager(AsyncManager):
     async def get(self, doc_number) -> "Claims":
-        return await PublishedAsyncApi.fulltext.get_claims(doc_number)
+        return await PublishedApi.fulltext.get_claims(doc_number)
 
 
 class DescriptionManager(AsyncManager):
     async def get(self, doc_number) -> Description:
-        return await PublishedAsyncApi.fulltext.get_description(doc_number)
+        return await PublishedApi.fulltext.get_description(doc_number)
 
 
 class ImagesManager(AsyncManager):
     async def get(self, doc_number) -> ImageDocument:
-        return await PublishedAsyncApi.images.get_images(doc_number)
+        return await PublishedApi.images.get_images(doc_number)
 
 
 class InpadocManager(SearchManager):

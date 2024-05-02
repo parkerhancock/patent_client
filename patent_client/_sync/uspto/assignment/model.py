@@ -7,7 +7,7 @@
 import datetime
 import warnings
 from pathlib import Path
-from typing import TYPE_CHECKING, List, Optional
+import typing as tp
 
 from dateutil.parser import isoparse
 from pydantic import BeforeValidator, ConfigDict, Field, field_validator
@@ -16,7 +16,7 @@ from typing_extensions import Annotated
 
 from patent_client.util.pydantic_util import BaseModel
 
-if TYPE_CHECKING:
+if tp.TYPE_CHECKING:
     from ..peds.model import USApplication
     from ..public_search.model import Patent, PublishedApplication
 
@@ -42,7 +42,7 @@ def parse_date(string):
 
 
 DatetimeAsDate = Annotated[
-    Optional[datetime.date], BeforeValidator(lambda x: parse_date(x))
+    tp.Optional[datetime.date], BeforeValidator(lambda x: parse_date(x))
 ]
 
 
@@ -68,18 +68,18 @@ class Property(AbstractAssignmentModel):
     invention_title: str
     invention_title_lang: str
     appl_num: str
-    filing_date: Optional[DatetimeAsDate] = None
-    intl_publ_date: Optional[DatetimeAsDate] = None
-    intl_reg_num: Optional[str] = None
-    inventors: Optional[str] = None
-    issue_date: Optional[DatetimeAsDate] = None
-    pat_num: Optional[str] = None
-    pct_num: Optional[str] = None
-    publ_date: Optional[DatetimeAsDate] = None
-    publ_num: Optional[str] = None
+    filing_date: tp.Optional[DatetimeAsDate] = None
+    intl_publ_date: tp.Optional[DatetimeAsDate] = None
+    intl_reg_num: tp.Optional[str] = None
+    inventors: tp.Optional[str] = None
+    issue_date: tp.Optional[DatetimeAsDate] = None
+    pat_num: tp.Optional[str] = None
+    pct_num: tp.Optional[str] = None
+    publ_date: tp.Optional[DatetimeAsDate] = None
+    publ_num: tp.Optional[str] = None
 
     @property
-    def application(self) -> Optional["USApplication"]:
+    def application(self) -> tp.Optional["USApplication"]:
         """The related US Application"""
         try:
             appl_id = getattr(self, "appl_id", None)
@@ -131,21 +131,21 @@ class Correspondent(AbstractAssignmentModel):
 
 class Assignment(AbstractAssignmentModel["AssignmentManager"]):
     id: str
-    date_produced: Optional[UsptoDate] = None
-    action_key_code: Optional[str] = None
-    transaction_date: Optional[DatetimeAsDate] = None
+    date_produced: tp.Optional[UsptoDate] = None
+    action_key_code: tp.Optional[str] = None
+    transaction_date: tp.Optional[DatetimeAsDate] = None
     last_update_date: DatetimeAsDate
     purge_indicator: YNBool
     recorded_date: DatetimeAsDate
     page_count: int
     conveyance_text: str
     assignment_record_has_images: YNBool
-    attorney_dock_num: Optional[str] = None
+    attorney_dock_num: tp.Optional[str] = None
     pat_assignor_earliest_ex_date: DatetimeAsDate
     correspondent: Correspondent
-    assignors: List[Assignor]
-    assignees: List[Assignee]
-    properties: List[Property]
+    assignors: tp.List[Assignor]
+    assignees: tp.List[Assignee]
+    properties: tp.List[Property]
 
     @field_validator("conveyance_text")
     @classmethod
@@ -163,7 +163,7 @@ class Assignment(AbstractAssignmentModel["AssignmentManager"]):
         frame = frame.rjust(4, "0")
         return f"http://legacy-assignments.uspto.gov/assignments/assignment-pat-{reel}-{frame}.pdf"
 
-    def download(self, path: Optional[str | Path] = None):
+    def download(self, path: tp.Optional[tp.Union[str, Path]] = None):
         """asynchronously downloads the PDF associated with the assignment to the current working directory"""
         from .api import client
 

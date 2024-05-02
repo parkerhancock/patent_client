@@ -21,13 +21,13 @@ class ImageDocument(EpoBaseModel):
     sections: List[Section] = Field(default_factory=list)
     doc_number: Optional[str] = None
 
-    def download(self, path="."):
+    async def download(self, path="."):
         from ..api import PublishedImagesApi
 
         out_file = Path(path) / f"{self.doc_number}.pdf"
         writer = PdfWriter()
         for i in range(1, self.num_pages + 1):
-            page_data = PublishedImagesApi.get_page_image_from_link(
+            page_data = await PublishedImagesApi.get_page_image_from_link(
                 self.link, page_number=i
             )
             page = PdfReader(page_data).pages[0]
@@ -41,12 +41,12 @@ class ImageDocument(EpoBaseModel):
         with out_file.open("wb") as f:
             writer.write(f)
 
-    def download_image(self, path=".", image_format="tif", page_number=1):
+    async def download_image(self, path=".", image_format="tif", page_number=1):
         from ..api import PublishedImagesApi
 
         out_file = Path(path) / f"{self.doc_number}.{image_format}"
 
-        image = PublishedImagesApi.get_page_image_from_link(
+        image = await PublishedImagesApi.get_page_image_from_link(
             self.link, page_number=page_number, image_format=image_format
         )
 

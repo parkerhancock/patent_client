@@ -86,3 +86,7 @@ class InpadocModel(EpoBaseModel):
                 ".family.model.Family", base_class=InpadocModel
             ).objects.get(self.docdb_number)
         ).family_members
+
+    async def download(self, path: str = "."):
+        images = await self.images
+        return await images.full_document.download(path)

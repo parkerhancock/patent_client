@@ -1,5 +1,5 @@
 import textwrap
-from typing import *
+from typing import List
 
 from pydantic import Field
 

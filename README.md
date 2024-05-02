@@ -58,16 +58,16 @@ Version 5 also brings support for the USPTO's new [Open Data Portal](https://bet
 [httpx]: https://www.python-httpx.org/
 [hishel]: https://hishel.com/
 [yankee]: https://github.com/parkerhancock/yankee
-[Assignment]: https://developer.uspto.gov/api-catalog/patent-assignment-search-beta
-[OPS]: http://ops.epo.org
-[PPS]:  https://ppubs.uspto.gov/pubwebapp/static/pages/landing.html
-[PEDS]: https://developer.uspto.gov/api-catalog/ped
-[PTAB]: https://developer.uspto.gov/api-catalog/ptab-api-v2
+[Assignment]: user_guide/assignments.html
+[OPS]: https://patent-client.readthedocs.io/en/latest/user_guide/epo.html
+[PPS]:  https://patent-client.readthedocs.io/en/latest/user_guide/fulltext.html
+[PEDS]: https://patent-client.readthedocs.io/en/latest/user_guide/peds.html
+[PTAB]: https://patent-client.readthedocs.io/en/latest/user_guide/ptab.html
 [USPTO]: http://developer.uspto.gov
-[BDSS]: https://developer.uspto.gov/api-catalog/bdss
-[GD]: https://globaldossier.uspto.gov
+[BDSS]: https://patent-client.readthedocs.io/en/latest/user_guide/bulk_data.html
+[GD]: https://patent-client.readthedocs.io/en/latest/user_guide/global_dossier.html
 [pydantic]: https://docs.pydantic.dev/latest/
-[ODP]: https://beta-data.uspto.gov/home
+[ODP]: https://patent-client.readthedocs.io/en/latest/user_guide/open_data_portal.html
 
 
 ## Installation

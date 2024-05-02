@@ -4,7 +4,7 @@
 # *       Source File: patent_client/_async/epo/ops/number_service/api.py        *
 # ********************************************************************************
 
-from ..session import asession
+from ..session import session
 from .model import NumberServiceResult
 
 
@@ -35,7 +35,7 @@ class NumberServiceApi:
         output_format: output type (original / docdb / epodoc)
 
         """
-        response = asession.get(
+        response = session.get(
             f"http://ops.epo.org/3.2/rest-services/number-service/{doc_type}/{input_format}/{number}/{output_format}",
             extensions={"force_cache": True},
         )
