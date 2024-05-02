@@ -15,34 +15,32 @@ interactions:
       host:
       - beta-api.uspto.gov
       user-agent:
-      - python-httpx/0.27.0
+      - Mozilla/5.0 Python Patent Clientbot/5.0.0 (parkerhancock@users.noreply.github.com)
       x-api-key:
       - oygzgndgwifcpqgvdcitnhorcdvpbb
     method: POST
     uri: https://beta-api.uspto.gov/api/v1/patent/applications/search
   response:
-    content: '{"count":11469842,"patentBag":[{"applicationNumberText":"90019421"},{"applicationNumberText":"96050025"},{"applicationNumberText":"18254067"},{"applicationNumberText":"90019413"},{"applicationNumberText":"90019411"},{"applicationNumberText":"18253941"},{"applicationNumberText":"90019412"},{"applicationNumberText":"18457687"},{"applicationNumberText":"90019409"},{"applicationNumberText":"18280929"},{"applicationNumberText":"18257756"},{"applicationNumberText":"90019402"},{"applicationNumberText":"90019410"},{"applicationNumberText":"90019408"},{"applicationNumberText":"90019407"},{"applicationNumberText":"90019404"},{"applicationNumberText":"18434409"},{"applicationNumberText":"90019405"},{"applicationNumberText":"90019403"},{"applicationNumberText":"90019400"},{"applicationNumberText":"90019401"},{"applicationNumberText":"18270480"},{"applicationNumberText":"18681062"},{"applicationNumberText":"90019397"},{"applicationNumberText":"18254336"}],"requestIdentifier":"c827fac1-5746-441e-b332-4126c9867b55"}'
+    content: '{"count":11469842,"patentBag":[{"applicationNumberText":"90019421"},{"applicationNumberText":"96050025"},{"applicationNumberText":"18254067"},{"applicationNumberText":"90019413"},{"applicationNumberText":"18253941"},{"applicationNumberText":"90019411"},{"applicationNumberText":"90019412"},{"applicationNumberText":"18457687"},{"applicationNumberText":"90019409"},{"applicationNumberText":"18280929"},{"applicationNumberText":"18257756"},{"applicationNumberText":"90019410"},{"applicationNumberText":"90019402"},{"applicationNumberText":"90019408"},{"applicationNumberText":"90019407"},{"applicationNumberText":"90019404"},{"applicationNumberText":"18434409"},{"applicationNumberText":"90019405"},{"applicationNumberText":"90019403"},{"applicationNumberText":"90019401"},{"applicationNumberText":"90019400"},{"applicationNumberText":"18270480"},{"applicationNumberText":"18681062"},{"applicationNumberText":"90019397"},{"applicationNumberText":"18254336"}],"requestIdentifier":"4ce9a8d8-e02c-4aa7-8efc-7155b03d89a6"}'
     headers:
-      Connection:
-      - keep-alive
-      Content-Length:
-      - '1016'
-      Content-Type:
-      - application/json
-      Date:
-      - Wed, 24 Apr 2024 17:31:39 GMT
-      X-Amzn-Trace-Id:
-      - Root=1-662941fb-759e642a76f6564a7b172591;Parent=05a3fcc825dccb2f;Sampled=0;lineage=33e8fdb8:0
       access-control-allow-headers:
       - Origin, X-Requested-With, Content-Type, Accept
       access-control-allow-methods:
       - OPTIONS,POST,GET
       access-control-allow-origin:
       - '*'
+      content-length:
+      - '1016'
+      content-type:
+      - application/json
+      date:
+      - Wed, 01 May 2024 18:46:25 GMT
       x-amz-apigw-id:
-      - Wvc_YG5-oAMF-Qw=
-      x-amzn-RequestId:
-      - c827fac1-5746-441e-b332-4126c9867b55
-    http_version: HTTP/1.1
+      - XGsgSGIiIAMFRrA=
+      x-amzn-requestid:
+      - 4ce9a8d8-e02c-4aa7-8efc-7155b03d89a6
+      x-amzn-trace-id:
+      - Root=1-66328e01-78f4daf93b66e5403ebb9b96;Parent=1c2b709b260b4040;Sampled=0;lineage=33e8fdb8:0
+    http_version: HTTP/2
     status_code: 200
 version: 1

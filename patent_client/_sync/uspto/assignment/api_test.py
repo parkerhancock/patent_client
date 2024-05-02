@@ -6,7 +6,10 @@
 
 from pathlib import Path
 
+import pytest
+
 from .api import AssignmentApi
+
 
 
 def test_alookup():
@@ -22,6 +25,7 @@ def test_alookup():
     assert (
         len(assignments) <= rows
     ), "Expected number of assignments to be less than or equal to requested rows"
+
 
 
 def test_download_pdf(tmp_path: Path):

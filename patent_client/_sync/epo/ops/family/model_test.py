@@ -7,11 +7,14 @@
 import json
 from pathlib import Path
 
+import pytest
+
 from patent_client.util.test import compare_dicts
 
 from .model import Family
 
 fixtures = Path(__file__).parent / "fixtures"
+
 
 
 def test_model():

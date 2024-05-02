@@ -65,7 +65,9 @@ class AssignmentApi:
         return AssignmentPage.model_validate(convert_xml_to_json(response.content))
 
     @classmethod
-    def download_pdf(cls, reel: str, frame: str, path: Optional[Path] = None) -> Path:
+    def download_pdf(
+        cls, reel: str, frame: str, path: Optional[Path] = None
+    ) -> Path:
         url = cls.get_download_url(reel, frame)
 
         if path is None:

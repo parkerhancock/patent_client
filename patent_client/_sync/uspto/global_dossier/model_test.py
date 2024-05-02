@@ -10,10 +10,12 @@ from .model import Document, DocumentList, GlobalDossier, GlobalDossierApplicati
 
 
 class TestGlobalDossier:
+    
     def test_us_lookup(self):
         result = GlobalDossier.objects.get("16123456")
         assert result.id == "16123456"
 
+    
     def test_us_lookup_docs(self):
         dossier = GlobalDossier.objects.get("16123456")
         result = dossier.applications[0].document_list
@@ -25,11 +27,13 @@ class TestGlobalDossier:
         result = dossier.applications[0].documents[0].download(tmpdir)
         assert result.exists()
 
+    
     def test_us_app_lookup(self):
         result = GlobalDossierApplication.objects.get("16123456")
         assert result.app_num == "16123456"
         assert isinstance(result, GlobalDossierApplication)
 
+    
     def test_us_app_lookup_docs(self):
         result = GlobalDossierApplication.objects.get("16123456")
         document_list = result.document_list
@@ -41,6 +45,7 @@ class TestGlobalDossier:
         assert isinstance(office_actions, list)
         assert isinstance(office_actions[0], Document)
 
+    
     def test_links(self):
         app = GlobalDossierApplication.objects.get("16123456")
         us_application = app.us_application
@@ -73,6 +78,7 @@ class TestGlobalDossier:
                 GlobalDossierApplication.objects.get(publication="EP1000000")
             ).us_assignments
 
+    
     def test_issue_99(self):
         app = GlobalDossierApplication.objects.get(
             "16740760", type="application", office="US"

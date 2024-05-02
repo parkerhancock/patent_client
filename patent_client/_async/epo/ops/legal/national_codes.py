@@ -143,6 +143,9 @@ def create_code_database(excel_path):
 
 class LegalCodes:
     def __init__(self):
+        self.initialized = False
+
+    def initialize(self):
         if not code_database_current:
             logger.info(
                 "Legal Code Database is out of date - creating legal code database. Note this only happens once!"
@@ -150,8 +153,11 @@ class LegalCodes:
             asyncio.run(generate_legal_code_db())
         self.connection = sqlite3.connect(db_location, timeout=30)
         self.connection.row_factory = sqlite3.Row
+        self.initialized = True
 
     def get_code_data(self, country_code, legal_code):
+        if not self.initialized:
+            self.initialize()
         cur = self.connection.cursor()
         try:
             return dict(

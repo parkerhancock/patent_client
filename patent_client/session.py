@@ -2,7 +2,7 @@ import re
 import warnings
 from hashlib import blake2b
 from pathlib import Path
-from typing import Optional
+import typing as tp
 
 import hishel
 import httpcore
@@ -67,7 +67,7 @@ class PatentClientAsyncSession(httpx.AsyncClient):
         self,
         url,
         method: str = "GET",
-        path: Optional[str | Path] = None,
+        path: tp.Optional[tp.Union[str, Path]] = None,
         show_progress: bool = False,
         **kwargs,
     ):

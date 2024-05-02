@@ -4,8 +4,10 @@
 # *      Source File: patent_client/_async/uspto/public_search/api_test.py       *
 # ********************************************************************************
 
+import pytest
 
 from .api import PublicSearchApi
+
 
 
 def test_simple_search():

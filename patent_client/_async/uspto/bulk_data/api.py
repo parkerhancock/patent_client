@@ -59,8 +59,8 @@ class BulkDataApi:
     async def get_by_short_name(
         cls,
         product_name: str,
-        from_date: tp.Optional[datetime.date | str] = None,
-        to_date: tp.Optional[datetime.date | str] = None,
+        from_date: tp.Optional[tp.Union[datetime.date, str]] = None,
+        to_date: tp.Optional[tp.Union[datetime.date, str]] = None,
         max_files: int = 20,
     ) -> tp.List[Product]:
         """Returns files associated with products (of level PRODUCT) based on their full or partial names."""

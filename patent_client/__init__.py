@@ -49,8 +49,10 @@ logger.addHandler(handler)
 
 logger.info(f"Starting Patent Client with log level {SETTINGS.log_level}")
 
-
-from ._sync import *
+try:
+    from ._sync import *
+except ImportError:
+    pass
 
 elapsed = time.time() - start
 logger.info(f"Startup Complete!, took {elapsed:.3f} seconds")

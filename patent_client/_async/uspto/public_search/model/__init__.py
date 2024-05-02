@@ -1,4 +1,4 @@
-from .biblio import PublicSearchBiblio
+from .biblio import PublicSearchBiblio, PublicSearchBiblioPage
 from .document import PublicSearchDocument
 
 
@@ -24,5 +24,6 @@ __all__ = [
     "PublishedApplicationBiblio",
     "PublishedApplication",
     "PublicSearchBiblio",
+    "PublicSearchDocument",
     "PublicSearchDocument",
 ]

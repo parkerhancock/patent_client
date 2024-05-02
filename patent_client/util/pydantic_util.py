@@ -6,14 +6,13 @@ import typing as tp
 from async_property.base import AsyncPropertyDescriptor
 from dateutil.parser import isoparse
 from dateutil.parser import parse as parse_dt
-from pydantic import BaseModel as PydanticBaseModel
-from pydantic import BeforeValidator, ConfigDict
+from pydantic import BaseModel as PydanticBaseModel, BeforeValidator, ConfigDict
 from typing_extensions import Annotated
 
 from patent_client.util.manager import Manager
 
 
-def parse_datetime(date_obj: str | datetime.datetime) -> datetime.datetime:
+def parse_datetime(date_obj: tp.Union[str, datetime.datetime]) -> datetime.datetime:
     if isinstance(date_obj, datetime.datetime):
         return date_obj
     try:
@@ -22,7 +21,7 @@ def parse_datetime(date_obj: str | datetime.datetime) -> datetime.datetime:
         return parse_dt(date_obj)
 
 
-def parse_date(date_obj: str | datetime.datetime | datetime.date) -> datetime.date:
+def parse_date(date_obj: tp.Union[str, datetime.datetime, datetime.date]) -> datetime.date:
     if isinstance(date_obj, datetime.date):
         return date_obj
     elif isinstance(date_obj, datetime.datetime):

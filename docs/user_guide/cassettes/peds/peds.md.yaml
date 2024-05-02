@@ -6171,4 +6171,252 @@ interactions:
       - 1; mode=block
     http_version: HTTP/1.1
     status_code: 200
+- request:
+    body: '{"df": "patentTitle", "qf": "appEarlyPubNumber applId appLocation appType
+      appStatus_txt appConfrNumber appCustNumber appGrpArtNumber appCls appSubCls
+      appEntityStatus_txt patentNumber patentTitle inventorName firstNamedApplicant
+      appExamName appExamPrefrdName appAttrDockNumber appPCTNumber appIntlPubNumber
+      wipoEarlyPubNumber pctAppType firstInventorFile appClsSubCls rankAndInventorsList",
+      "fl": "*", "fq": [], "searchText": "firstNamedApplicant:(Caterpillar)", "sort":
+      "applId asc", "facet": "false", "mm": "0%", "start": "0", "rows": 5}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '538'
+      content-type:
+      - application/json
+      host:
+      - ped.uspto.gov
+      user-agent:
+      - Mozilla/5.0 Python Patent Clientbot/5.0.0 (parkerhancock@users.noreply.github.com)
+    method: POST
+    uri: https://ped.uspto.gov/api/queries
+  response:
+    content: '{"queryResults":{"indexLastUpdatedDate":"Wed May 01 00:59:13 EDT 2024","searchResponse":{"responseHeader":{"zkConnected":true,"status":0,"QTime":452},"response":{"numFound":7765,"start":0,"numFoundExact":true,"docs":[{"applId":"06113950","assignments":[{"reelNumber":"4669","frameNumber":"905","addressNameText":"CATERPILLAR
+      TRACTOR CO.","addressLineOneText":"100 N.E. ADAMS ST.","addressLineTwoText":"PEORIA,
+      ILLINOIS 61629","addressLineThreeText":"null","addressLineFourText":"null","mailDate":"NONE","receivedDate":"","recordedDate":"06-12-1986","pagesCount":"55","converyanceName":"ASSIGNMENT
+      OF ASSIGNORS INTEREST.","sequenceNumber":"2018","assignors":[{"assignorName":"CATERPILLAR
+      TRACTOR CO., A CORP. OF CALIF.","execDate":"05-15-1986"}],"assignee":[{"assigneeName":"CATERPILLAR
+      INC., A CORP. OF DE.","streetLineOneText":"100 N.E. ADAMS STREET","streetLineTwoText":"null","cityName":"PEORIA","countryCode":"ILLINOIS","postalCode":"null"}]}],"applicants":[{"nameLineOne":"CATERPILLAR
+      TRACTOR CO.","nameLineTwo":"A CORP. OF CALIF.","suffix":"","streetOne":"","streetTwo":"","city":"PEORIA,
+      ","geoCode":"IL","country":"(US)","rankNo":"5"}],"applicantsFacet":"{A|CORP.
+      OF CALIF.|CATERPILLAR TRACTOR CO.||||PEORIA|IL|US|IND|5}","appFilingDate":"1980-01-21T00:00:00Z","appExamName":"LAZARUS,
+      IRA S","appExamNameFacet":"LAZARUS, IRA S","publicInd":"Y","appLocationDate":"2023-01-20T00:00:00Z","APP_IND":"5","inventorName":"GEORGE
+      E. HICKS","inventorNameFacet":"GEORGE E. HICKS","corrAddrGeoRegionCode":"IL","corrAddrNameLineTwo":"WOOD
+      & DALTON","appLocation":"At National Archives - Contact Records Management at
+      RecordsManagement@uspto.gov","id":"06113950","appGrpArtNumber":"3402","appGrpArtNumberFacet":"3402","applIdStr":"06113950","appl_id_txt":"06113950","appSubCls":"00100A","patentNumber":"RE31218","LAST_MOD_TS":"2023-04-29T00:54:12Z","transactions":[{"recordDate":"2001-09-22
+      00:00:00","code":"SETS","description":"Set Application Status"},{"recordDate":"1981-03-20
+      00:00:00","code":"DOCK","description":"Case Docketed to Examiner in GAU"},{"recordDate":"1983-04-19
+      00:00:00","code":"N066","description":"Notice of Balance of Issue Fee Due (PTO-1031)  -
+      Charged to Deposit Account"},{"recordDate":"1982-08-09 00:00:00","code":"N084","description":"Issue
+      Fee Payment Verified"},{"recordDate":"1982-06-02 00:00:00","code":"MN/=.","description":"Mail
+      Notice of Allowance"},{"recordDate":"1982-06-02 00:00:00","code":"N/=.","description":"Notice
+      of Allowance Data Verification Completed"},{"recordDate":"1981-03-20 00:00:00","code":"MCTNF","description":"Mail
+      Non-Final Rejection"},{"recordDate":"1981-03-20 00:00:00","code":"CTNF","description":"Non-Final
+      Rejection"},{"recordDate":"1981-03-20 00:00:00","code":"DOCK","description":"Case
+      Docketed to Examiner in GAU"},{"recordDate":"1981-03-20 00:00:00","code":"OIPE","description":"Application
+      Dispatched from OIPE"}],"LAST_INSERT_TIME":"2023-04-29T05:45:02Z","appCls":"123","appStatus":"Patented
+      Case","appStatusFacet":"Patented Case","appStatus_txt":"Patented Case","patentTitle":"FUEL
+      ADDITIVE INJECTION SYSTEM FOR DIESEL ENGINES ","appStatusDate":"1983-04-26T00:00:00Z","inventors":[{"nameLineOne":"HICKS","nameLineTwo":"GEORGE
+      E.","suffix":"","streetOne":"","streetTwo":"","city":"PEORIA, ","geoCode":"IL","country":"(US)","rankNo":"1"},{"nameLineOne":"LITHERLAND","nameLineTwo":"JOHN
+      W.","suffix":"","streetOne":"","streetTwo":"","city":"PEORIA, ","geoCode":"IL","country":"(US)","rankNo":"2"},{"nameLineOne":"MARTIN","nameLineTwo":"ARLAN
+      G.","suffix":"","streetOne":"","streetTwo":"","city":"MORTON, ","geoCode":"IL","country":"(US)","rankNo":"3"},{"nameLineOne":"WILLIAMS","nameLineTwo":"LAWRENCE
+      ","suffix":"","streetOne":"","streetTwo":"","city":"PEORIA HTS., ","geoCode":"IL","country":"(US)","rankNo":"4"}],"inventorsFacet":"{GEORGE|E.|HICKS||||PEORIA|IL|US|IND|1},{JOHN|W.|LITHERLAND||||PEORIA|IL|US|IND|2},{ARLAN|G.|MARTIN||||MORTON|IL|US|IND|3},{LAWRENCE||WILLIAMS||||PEORIA
+      HTS.|IL|US|IND|4}","corrAddrStreetLineOne":"20 N. WACKER DR.","firstInventorFile":"No","appType":"Re-Issue","appTypeFacet":"Re-Issue","corrAddrPostalCode":"60606","appClsSubCls":"123/00100A","appClsSubClsFacet":"123/00100A","patentIssueDate":"1983-04-26T00:00:00Z","corrAddrNameLineOne":"WEGNER,
+      STELLMAN, MC CORD","firstNamedApplicant":["A CORP. OF CALIF. CATERPILLAR TRACTOR
+      CO."],"firstNamedApplicantFacet":"A CORP. OF CALIF. CATERPILLAR TRACTOR CO.","attrnyAddr":[{"applicationId":null,"registrationNo":"22070","fullName":"Walters,
+      Ralph  ","phoneNum":"760-941-1454","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"22810","fullName":"Van
+      Santen, William  Jr","phoneNum":"312-876-1800","regStatus":"ADMIN SUSPENDED"},{"applicationId":null,"registrationNo":"25340","fullName":"Hart,
+      Frank  ","phoneNum":"918-254-8865","regStatus":"ADMIN SUSPENDED"}],"parentContinuity":[{"claimApplicationNumberText":"05847530","applicationNumberText":"06113950","filingDate":"10-31-1977","aiaIndicator":"N","patentNumberText":"4161160","applicationStatus":"Patented","applicationStatusDescription":"This
+      application is a Reissue of"}],"corrAddrCountryCd":"US","corrAddrCity":"CHICAGO","appEntityStatus":"UNDISCOUNTED","appConfrNumber":"6476","lastUpdatedTimestamp":"2023-04-29T20:50:53.528Z","appEntityStatusFacet":"UNDISCOUNTED","_version_":1764545217712619521,"firstInventorFileFacet":"No","appLocationFacet":"At
+      National Archives - Contact Records Management at RecordsManagement@uspto.gov","patentNumberFacet":"RE31218"},{"applId":"06167089","assignments":[{"reelNumber":"4669","frameNumber":"905","addressNameText":"CATERPILLAR
+      TRACTOR CO.","addressLineOneText":"100 N.E. ADAMS ST.","addressLineTwoText":"PEORIA,
+      ILLINOIS 61629","addressLineThreeText":"null","addressLineFourText":"null","mailDate":"NONE","receivedDate":"","recordedDate":"06-12-1986","pagesCount":"55","converyanceName":"ASSIGNMENT
+      OF ASSIGNORS INTEREST.","sequenceNumber":"2012","assignors":[{"assignorName":"CATERPILLAR
+      TRACTOR CO., A CORP. OF CALIF.","execDate":"05-15-1986"}],"assignee":[{"assigneeName":"CATERPILLAR
+      INC., A CORP. OF DE.","streetLineOneText":"100 N.E. ADAMS STREET","streetLineTwoText":"null","cityName":"PEORIA","countryCode":"ILLINOIS","postalCode":"null"}]}],"applicants":[{"nameLineOne":"A
+      CORP. OF ILL.","nameLineTwo":"CATERPILLAR TRACTOR CO.","suffix":"","streetOne":"","streetTwo":"","city":"PEORIA,
+      ","geoCode":"IL","country":"(US)","rankNo":"3"}],"applicantsFacet":"{CATERPILLAR|TRACTOR
+      CO.|A CORP. OF ILL.||||PEORIA|IL|US|IND|3}","appFilingDate":"1980-07-09T00:00:00Z","publicInd":"Y","appLocationDate":"2023-01-20T00:00:00Z","APP_IND":"5","inventorName":"TERRY
+      G. BAER","inventorNameFacet":"TERRY G. BAER","corrAddrGeoRegionCode":"IL","corrAddrNameLineTwo":"100
+      N. E. ADAMS ST.","appLocation":"At National Archives - Contact Records Management
+      at RecordsManagement@uspto.gov","id":"06167089","appGrpArtNumber":"3203","appGrpArtNumberFacet":"3203","applIdStr":"06167089","appl_id_txt":"06167089","appSubCls":"001370","patentNumber":"RE30918","LAST_MOD_TS":"2023-04-29T00:54:12Z","transactions":[{"recordDate":"2001-09-22
+      00:00:00","code":"SETS","description":"Set Application Status"},{"recordDate":"1982-04-30
+      00:00:00","code":"N066","description":"Notice of Balance of Issue Fee Due (PTO-1031)  -
+      Charged to Deposit Account"},{"recordDate":"1981-11-04 00:00:00","code":"N084","description":"Issue
+      Fee Payment Verified"},{"recordDate":"1981-08-14 00:00:00","code":"MN/=.","description":"Mail
+      Notice of Allowance"},{"recordDate":"1981-08-14 00:00:00","code":"N/=.","description":"Notice
+      of Allowance Data Verification Completed"},{"recordDate":"1981-04-20 00:00:00","code":"MCTNF","description":"Mail
+      Non-Final Rejection"},{"recordDate":"1981-04-20 00:00:00","code":"CTNF","description":"Non-Final
+      Rejection"}],"LAST_INSERT_TIME":"2023-04-29T05:45:02Z","appCls":"157","appStatus":"Patented
+      Case","appStatusFacet":"Patented Case","appStatus_txt":"Patented Case","patentTitle":"TIRE
+      AND CENTER SUPPORT ASSEMBLING APPARATUS ","appStatusDate":"1982-05-04T00:00:00Z","appAttrDockNumber":"76-424.R
+      (W)","inventors":[{"nameLineOne":"BAER","nameLineTwo":"TERRY G.","suffix":"","streetOne":"","streetTwo":"","city":"EDELSTEIN,
+      ","geoCode":"IL","country":"(US)","rankNo":"1"},{"nameLineOne":"KLOPFENSTEIN","nameLineTwo":"WAYNE
+      A.","suffix":"","streetOne":"","streetTwo":"","city":"PEORIA, ","geoCode":"IL","country":"(US)","rankNo":"2"}],"inventorsFacet":"{TERRY|G.|BAER||||EDELSTEIN|IL|US|IND|1},{WAYNE|A.|KLOPFENSTEIN||||PEORIA|IL|US|IND|2}","firstInventorFile":"No","appType":"Re-Issue","appTypeFacet":"Re-Issue","corrAddrPostalCode":"61629","appClsSubCls":"157/001370","appClsSubClsFacet":"157/001370","patentIssueDate":"1982-05-04T00:00:00Z","corrAddrNameLineOne":"CATERPILLAR
+      TRACTOR CO.","firstNamedApplicant":["CATERPILLAR TRACTOR CO. A CORP. OF ILL."],"firstNamedApplicantFacet":"CATERPILLAR
+      TRACTOR CO. A CORP. OF ILL.","attrnyAddr":[{"applicationId":null,"registrationNo":"22070","fullName":"Walters,
+      Ralph  ","phoneNum":"760-941-1454","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"25340","fullName":"Hart,
+      Frank  ","phoneNum":"918-254-8865","regStatus":"ADMIN SUSPENDED"},{"applicationId":null,"registrationNo":"27347","fullName":"Lanchantin,
+      Charles  Jr","phoneNum":"480-283-0195","regStatus":"ACTIVE"}],"parentContinuity":[{"claimApplicationNumberText":"05782670","applicationNumberText":"06167089","filingDate":"01-01-0001","aiaIndicator":"","patentNumberText":"4108233","applicationStatus":"-","applicationStatusDescription":"This
+      application is a Reissue of"}],"corrAddrCountryCd":"US","corrAddrCity":"PEORIA","appEntityStatus":"UNDISCOUNTED","appConfrNumber":"8366","lastUpdatedTimestamp":"2023-04-29T20:50:53.527Z","appAttrDockNumberFacet":"76-424.R
+      (W)","appEntityStatusFacet":"UNDISCOUNTED","_version_":1764545217808039936,"firstInventorFileFacet":"No","appLocationFacet":"At
+      National Archives - Contact Records Management at RecordsManagement@uspto.gov","patentNumberFacet":"RE30918"},{"applId":"06183677","assignments":[{"reelNumber":"4669","frameNumber":"905","addressNameText":"CATERPILLAR
+      TRACTOR CO.","addressLineOneText":"100 N.E. ADAMS ST.","addressLineTwoText":"PEORIA,
+      ILLINOIS 61629","addressLineThreeText":"null","addressLineFourText":"null","mailDate":"NONE","receivedDate":"","recordedDate":"06-12-1986","pagesCount":"55","converyanceName":"ASSIGNMENT
+      OF ASSIGNORS INTEREST.","sequenceNumber":"1946","assignors":[{"assignorName":"CATERPILLAR
+      TRACTOR CO., A CORP. OF CALIF.","execDate":"05-15-1986"}],"assignee":[{"assigneeName":"CATERPILLAR
+      INC., A CORP. OF DE.","streetLineOneText":"100 N.E. ADAMS STREET","streetLineTwoText":"null","cityName":"PEORIA","countryCode":"ILLINOIS","postalCode":"null"}]}],"applicants":[{"nameLineOne":"CORP.
+      OF CALIF.","nameLineTwo":"CATERPILLAR TRACTOR CO.","suffix":"","streetOne":"","streetTwo":"","city":"PEORIA,
+      ","geoCode":"IL","country":"(US)","rankNo":"3"}],"applicantsFacet":"{CATERPILLAR|TRACTOR
+      CO.|CORP. OF CALIF.||||PEORIA|IL|US|IND|3}","appFilingDate":"1980-09-02T00:00:00Z","appExamName":"NOT,
+      DEFINED","appExamNameFacet":"NOT, DEFINED","publicInd":"Y","appLocationDate":"2023-01-20T00:00:00Z","APP_IND":"5","inventorName":"DUANE
+      E. BEALS","inventorNameFacet":"DUANE E. BEALS","corrAddrGeoRegionCode":"IL","corrAddrNameLineTwo":"CATERPILLAR
+      TRACTOR CO.","appLocation":"At National Archives - Contact Records Management
+      at RecordsManagement@uspto.gov","id":"06183677","appGrpArtNumber":"3106","appGrpArtNumberFacet":"3106","applIdStr":"06183677","appl_id_txt":"06183677","appSubCls":"078000","patentNumber":"RE31646","LAST_MOD_TS":"2023-04-29T00:54:12Z","transactions":[{"recordDate":"2001-09-22
+      00:00:00","code":"SETS","description":"Set Application Status"},{"recordDate":"1981-03-20
+      00:00:00","code":"DOCK","description":"Case Docketed to Examiner in GAU"},{"recordDate":"1984-03-12
+      00:00:00","code":"N084","description":"Issue Fee Payment Verified"},{"recordDate":"1984-03-01
+      00:00:00","code":"MC/N=","description":"Mail Corrected Notice of Allowance"},{"recordDate":"1984-03-01
+      00:00:00","code":"C/N=","description":"Corrected Notice of Allowance"},{"recordDate":"1984-02-29
+      00:00:00","code":"MN/=.","description":"Mail Notice of Allowance"},{"recordDate":"1984-02-29
+      00:00:00","code":"N/=.","description":"Notice of Allowance Data Verification
+      Completed"},{"recordDate":"1983-11-25 00:00:00","code":"MEX.A","description":"Mail
+      Examiner''s Amendment"},{"recordDate":"1983-11-25 00:00:00","code":"EX.A","description":"Examiner''s
+      Amendment Communication"},{"recordDate":"1983-07-27 00:00:00","code":"MAPDR","description":"Mail
+      PTAB Decision on Appeal - Reversed"},{"recordDate":"1983-07-27 00:00:00","code":"APDR","description":"PTAB
+      Decision - Examiner Reversed"},{"recordDate":"1982-04-05 00:00:00","code":"MAPEA","description":"Mail
+      Examiner''s Answer"},{"recordDate":"1982-04-05 00:00:00","code":"APEA","description":"Examiner''s
+      Answer to Appeal Brief"},{"recordDate":"1981-03-20 00:00:00","code":"MCTNF","description":"Mail
+      Non-Final Rejection"},{"recordDate":"1981-03-20 00:00:00","code":"CTNF","description":"Non-Final
+      Rejection"},{"recordDate":"1981-03-20 00:00:00","code":"DOCK","description":"Case
+      Docketed to Examiner in GAU"},{"recordDate":"1981-03-20 00:00:00","code":"OIPE","description":"Application
+      Dispatched from OIPE"}],"LAST_INSERT_TIME":"2023-04-29T05:45:02Z","appCls":"180","appStatus":"Patented
+      Case","appStatusFacet":"Patented Case","appStatus_txt":"Patented Case","patentTitle":"ADJUSTABLE
+      CONTROL CONSOLE FOR VEHICLES ","appStatusDate":"1984-06-13T00:00:00Z","appAttrDockNumber":"CA219B.4W","inventors":[{"nameLineOne":"BEALS","nameLineTwo":"DUANE
+      E.","suffix":"","streetOne":"","streetTwo":"","city":"DECATUR, ","geoCode":"IL","country":"(US)","rankNo":"1"},{"nameLineOne":"PAGE","nameLineTwo":"RUSSELL
+      D.","suffix":"","streetOne":"","streetTwo":"","city":"DECATUR, ","geoCode":"IL","country":"(US)","rankNo":"2"}],"inventorsFacet":"{DUANE|E.|BEALS||||DECATUR|IL|US|IND|1},{RUSSELL|D.|PAGE||||DECATUR|IL|US|IND|2}","corrAddrStreetLineOne":"100
+      N. E. ADAMS ST.","firstInventorFile":"No","appType":"Re-Issue","appTypeFacet":"Re-Issue","corrAddrPostalCode":"61629","appClsSubCls":"180/078000","appClsSubClsFacet":"180/078000","patentIssueDate":"1984-08-14T00:00:00Z","corrAddrNameLineOne":"JOHN
+      W. GRANT","firstNamedApplicant":["CATERPILLAR TRACTOR CO. CORP. OF CALIF."],"firstNamedApplicantFacet":"CATERPILLAR
+      TRACTOR CO. CORP. OF CALIF.","attrnyAddr":[{"applicationId":null,"registrationNo":"27641","fullName":"Grant,
+      John  ","phoneNum":"309-346-3630","regStatus":"INACTIVE"}],"parentContinuity":[{"claimApplicationNumberText":"05937399","applicationNumberText":"06183677","filingDate":"01-01-0001","aiaIndicator":"","patentNumberText":"","applicationStatus":"Pending","applicationStatusDescription":"This
+      application is a Continuation of"},{"claimApplicationNumberText":"05139362","applicationNumberText":"06183677","filingDate":"01-01-0001","aiaIndicator":"","patentNumberText":"3737003","applicationStatus":"-","applicationStatusDescription":"This
+      application is a Reissue of"}],"corrAddrCountryCd":"US","corrAddrCity":"PEORIA","appEntityStatus":"UNDISCOUNTED","appConfrNumber":"5960","lastUpdatedTimestamp":"2023-04-29T20:50:53.528Z","appAttrDockNumberFacet":"CA219B.4W","appEntityStatusFacet":"UNDISCOUNTED","_version_":1764545217837400064,"firstInventorFileFacet":"No","appLocationFacet":"At
+      National Archives - Contact Records Management at RecordsManagement@uspto.gov","patentNumberFacet":"RE31646"},{"applId":"06202386","assignments":[{"reelNumber":"4669","frameNumber":"905","addressNameText":"CATERPILLAR
+      TRACTOR CO.","addressLineOneText":"100 N.E. ADAMS ST.","addressLineTwoText":"PEORIA,
+      ILLINOIS 61629","addressLineThreeText":"null","addressLineFourText":"null","mailDate":"NONE","receivedDate":"","recordedDate":"06-12-1986","pagesCount":"55","converyanceName":"ASSIGNMENT
+      OF ASSIGNORS INTEREST.","sequenceNumber":"2011","assignors":[{"assignorName":"CATERPILLAR
+      TRACTOR CO., A CORP. OF CALIF.","execDate":"05-15-1986"}],"assignee":[{"assigneeName":"CATERPILLAR
+      INC., A CORP. OF DE.","streetLineOneText":"100 N.E. ADAMS STREET","streetLineTwoText":"null","cityName":"PEORIA","countryCode":"ILLINOIS","postalCode":"null"}]}],"applicants":[{"nameLineOne":"A
+      CORP. OF CALIFORNIA","nameLineTwo":"CATERPILLAR TRACTOR CO.","suffix":"","streetOne":"","streetTwo":"","city":"PEORIA,
+      ","geoCode":"IL","country":"(US)","rankNo":"3"}],"applicantsFacet":"{CATERPILLAR|TRACTOR
+      CO.|A CORP. OF CALIFORNIA||||PEORIA|IL|US|IND|3}","appFilingDate":"1980-10-30T00:00:00Z","appExamName":"GARRETT,
+      ROBERT E","appExamNameFacet":"GARRETT, ROBERT E","publicInd":"Y","appLocationDate":"2023-01-20T00:00:00Z","APP_IND":"5","inventorName":"B.
+      CLARK SMITH","inventorNameFacet":"B. CLARK SMITH","corrAddrGeoRegionCode":"IL","corrAddrNameLineTwo":"PATENT
+      DEPT., AB6A","appLocation":"At National Archives - Contact Records Management
+      at RecordsManagement@uspto.gov","id":"06202386","appGrpArtNumber":"3403","appGrpArtNumberFacet":"3403","applIdStr":"06202386","appl_id_txt":"06202386","appSubCls":"733000","patentNumber":"RE30925","LAST_MOD_TS":"2023-04-29T00:54:12Z","transactions":[{"recordDate":"2001-09-20
+      00:00:00","code":"SETS","description":"Set Application Status"},{"recordDate":"1982-05-05
+      00:00:00","code":"N066","description":"Notice of Balance of Issue Fee Due (PTO-1031)  -
+      Charged to Deposit Account"},{"recordDate":"1981-10-09 00:00:00","code":"N084","description":"Issue
+      Fee Payment Verified"},{"recordDate":"1981-08-14 00:00:00","code":"MN/=.","description":"Mail
+      Notice of Allowance"},{"recordDate":"1981-08-14 00:00:00","code":"N/=.","description":"Notice
+      of Allowance Data Verification Completed"},{"recordDate":"1981-05-15 00:00:00","code":"MCTNF","description":"Mail
+      Non-Final Rejection"},{"recordDate":"1981-05-15 00:00:00","code":"CTNF","description":"Non-Final
+      Rejection"},{"recordDate":"1981-04-02 00:00:00","code":"DOCK","description":"Case
+      Docketed to Examiner in GAU"}],"LAST_INSERT_TIME":"2023-04-29T05:45:02Z","appCls":"060","appStatus":"Patented
+      Case","appStatusFacet":"Patented Case","appStatus_txt":"Patented Case","corrAddrStreetLineTwo":"100
+      N. E. ADAMS ST.","patentTitle":"FUEL VAPORIZING COMBUSTOR TUBE ","appStatusDate":"1982-05-11T00:00:00Z","appAttrDockNumber":"77-393.R(W)","inventors":[{"nameLineOne":"SMITH","nameLineTwo":"B.
+      CLARK","suffix":"","streetOne":"","streetTwo":"","city":"PEORIA, ","geoCode":"IL","country":"(US)","rankNo":"1"},{"nameLineOne":"ANDERS","nameLineTwo":"GENE
+      A.","suffix":"","streetOne":"","streetTwo":"","city":"PEORIA, ","geoCode":"IL","country":"(US)","rankNo":"2"}],"inventorsFacet":"{B.|CLARK|SMITH||||PEORIA|IL|US|IND|1},{GENE|A.|ANDERS||||PEORIA|IL|US|IND|2}","corrAddrStreetLineOne":"CATERPILLAR
+      TRACTOR CO.","firstInventorFile":"No","appType":"Re-Issue","appTypeFacet":"Re-Issue","corrAddrPostalCode":"61629","appClsSubCls":"060/733000","appClsSubClsFacet":"060/733000","patentIssueDate":"1982-05-11T00:00:00Z","corrAddrNameLineOne":"ATTN:  R.
+      F. PHILLIPS","firstNamedApplicant":["CATERPILLAR TRACTOR CO. A CORP. OF CALIFORNIA"],"firstNamedApplicantFacet":"CATERPILLAR
+      TRACTOR CO. A CORP. OF CALIFORNIA","attrnyAddr":[{"applicationId":null,"registrationNo":"22070","fullName":"Walters,
+      Ralph  ","phoneNum":"760-941-1454","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"25340","fullName":"Hart,
+      Frank  ","phoneNum":"918-254-8865","regStatus":"ADMIN SUSPENDED"},{"applicationId":null,"registrationNo":"29390","fullName":"Heming,
+      William  ","phoneNum":"520-405-1897","regStatus":"ACTIVE"}],"parentContinuity":[{"claimApplicationNumberText":"05860644","applicationNumberText":"06202386","filingDate":"12-14-1977","aiaIndicator":"N","patentNumberText":"4188782","applicationStatus":"Patented","applicationStatusDescription":"This
+      application is a Reissue of"}],"corrAddrCountryCd":"US","corrAddrCity":"PEORIA","appEntityStatus":"UNDISCOUNTED","appConfrNumber":"6033","lastUpdatedTimestamp":"2023-04-29T20:50:53.527Z","appAttrDockNumberFacet":"77-393.R(W)","appEntityStatusFacet":"UNDISCOUNTED","_version_":1764545217883537408,"firstInventorFileFacet":"No","appLocationFacet":"At
+      National Archives - Contact Records Management at RecordsManagement@uspto.gov","patentNumberFacet":"RE30925"},{"applId":"06204964","applicants":[{"nameLineOne":"A
+      CORP. OF CALIF.","nameLineTwo":"CATERPILLAR TRACTOR CO.","suffix":"","streetOne":"","streetTwo":"","city":"PEORIA,
+      ","geoCode":"IL","country":"(US)","rankNo":"3"}],"applicantsFacet":"{CATERPILLAR|TRACTOR
+      CO.|A CORP. OF CALIF.||||PEORIA|IL|US|IND|3}","appFilingDate":"1980-11-07T00:00:00Z","appExamName":"HAROIAN,
+      HARRY","appExamNameFacet":"HAROIAN, HARRY","publicInd":"Y","appLocationDate":"2018-11-20T00:00:00Z","APP_IND":"5","inventorName":"DONALD
+      A. KUNTZ","inventorNameFacet":"DONALD A. KUNTZ","corrAddrGeoRegionCode":"IL","corrAddrNameLineTwo":"&
+      DALTON, 20 N. WACKER DR.","appLocation":"FILE REPOSITORY (FRANCONIA)","id":"06204964","appGrpArtNumber":"2403","appGrpArtNumberFacet":"2403","applIdStr":"06204964","appl_id_txt":"06204964","inventorsFullName":["{DONALD|A.|KUNTZ},{MICHAEL|A.|WINTERS}"],"inventorsFullNameFacet":"{DONALD|A.|KUNTZ},{MICHAEL|A.|WINTERS}","appSubCls":"999999","LAST_MOD_TS":"2011-12-10T00:02:06Z","transactions":[{"recordDate":"2001-09-20
+      00:00:00","code":"SETS","description":"Set Application Status"},{"recordDate":"1981-06-01
+      00:00:00","code":"DOCK","description":"Case Docketed to Examiner in GAU"},{"recordDate":"1981-06-01
+      00:00:00","code":"CTNF","description":"Non-Final Rejection"},{"recordDate":"1981-06-01
+      00:00:00","code":"DOCK","description":"Case Docketed to Examiner in GAU"},{"recordDate":"1981-06-01
+      00:00:00","code":"OIPE","description":"Application Dispatched from OIPE"}],"LAST_INSERT_TIME":"2022-11-06T22:59:42Z","appCls":"138","appStatus":"Abandoned  --  Failure
+      to Respond to an Office Action","appStatusFacet":"Abandoned  --  Failure to
+      Respond to an Office Action","appStatus_txt":"Abandoned  --  Failure to Respond
+      to an Office Action","patentTitle":"DOUBLE WALLED FUEL LINE ","appStatusDate":"1982-04-16T00:00:00Z","appAttrDockNumber":"77386RW","inventors":[{"nameLineOne":"KUNTZ","nameLineTwo":"DONALD
+      A.","suffix":"","streetOne":"","streetTwo":"","city":"MORTON, ","geoCode":"IL","country":"(US)","rankNo":"1"},{"nameLineOne":"WINTERS","nameLineTwo":"MICHAEL
+      A.","suffix":"","streetOne":"","streetTwo":"","city":"PEORIA, ","geoCode":"IL","country":"(US)","rankNo":"2"}],"inventorsFacet":"{DONALD|A.|KUNTZ||||MORTON|IL|US|IND|1},{MICHAEL|A.|WINTERS||||PEORIA|IL|US|IND|2}","firstInventorFile":"No","appType":"Re-Issue","appTypeFacet":"Re-Issue","corrAddrPostalCode":"60606","appClsSubCls":"138/999999","appClsSubClsFacet":"138/999999","corrAddrNameLineOne":"WEGNER,
+      STELLMAN, MC CORD, WOOD","firstNamedApplicant":["CATERPILLAR TRACTOR CO. A CORP.
+      OF CALIF."],"firstNamedApplicantFacet":"CATERPILLAR TRACTOR CO. A CORP. OF CALIF.","attrnyAddr":[{"applicationId":null,"registrationNo":"22070","fullName":"Walters,
+      Ralph  ","phoneNum":"760-941-1454","regStatus":"ACTIVE"},{"applicationId":null,"registrationNo":"22810","fullName":"Van
+      Santen, William  Jr","phoneNum":"312-876-1800","regStatus":"ADMIN SUSPENDED"},{"applicationId":null,"registrationNo":"25340","fullName":"Hart,
+      Frank  ","phoneNum":"918-254-8865","regStatus":"ADMIN SUSPENDED"}],"corrAddrCountryCd":"US","corrAddrCity":"CHICAGO","appEntityStatus":"UNDISCOUNTED","appConfrNumber":"8537","lastUpdatedTimestamp":"2022-11-08T01:22:50.612Z","appAttrDockNumberFacet":"77386RW","appEntityStatusFacet":"UNDISCOUNTED","_version_":1748889100337807362,"firstInventorFileFacet":"No","appLocationFacet":"FILE
+      REPOSITORY (FRANCONIA)"}]}},"queryId":"3bbcd783-1115-4600-bf6f-61f54fd13bf6"},"jobStatus":null,"queryId":"3bbcd783-1115-4600-bf6f-61f54fd13bf6","page":1,"count":0,"errorMessage":null,"createQueryRequest":{"searchText":"firstNamedApplicant:(Caterpillar)","facet":"false","facetField":null,"facetLimit":null,"facetMissing":null,"facetDate":null,"facetDateGap":null,"facetDateStart":null,"facetDateEnd":null,"facetDateOther":null,"facetDateInclude":null,"mm":"0%","sort":"applId
+      asc","qf":"appEarlyPubNumber applId appLocation appType appStatus_txt appConfrNumber
+      appCustNumber appGrpArtNumber appCls appSubCls appEntityStatus_txt patentNumber
+      patentTitle inventorName firstNamedApplicant appExamName appExamPrefrdName appAttrDockNumber
+      appPCTNumber appIntlPubNumber wipoEarlyPubNumber pctAppType firstInventorFile
+      appClsSubCls rankAndInventorsList","wt":null,"df":"patentTitle","fl":"*","start":"0","fq":[],"rows":"5","parameters":{"mm":"0%","df":"patentTitle","qf":"appEarlyPubNumber
+      applId appLocation appType appStatus_txt appConfrNumber appCustNumber appGrpArtNumber
+      appCls appSubCls appEntityStatus_txt patentNumber patentTitle inventorName firstNamedApplicant
+      appExamName appExamPrefrdName appAttrDockNumber appPCTNumber appIntlPubNumber
+      wipoEarlyPubNumber pctAppType firstInventorFile appClsSubCls rankAndInventorsList","fl":["*"],"start":"0","sort":"applId
+      asc","fq":[],"rows":"5","facet":"false"}},"links":[{"rel":"self","href":"https://ped.uspto.gov/api/queries/3bbcd783-1115-4600-bf6f-61f54fd13bf6?format=XML"},{"rel":"results","href":"https://ped.uspto.gov/api/queries/3bbcd783-1115-4600-bf6f-61f54fd13bf6/results?page=1"},{"rel":"package","href":"https://ped.uspto.gov/api/queries/3bbcd783-1115-4600-bf6f-61f54fd13bf6/package?format=XML"},{"rel":"first","href":"https://ped.uspto.gov/api/queries/3bbcd783-1115-4600-bf6f-61f54fd13bf6/results?page=1"},{"rel":"next","href":"https://ped.uspto.gov/api/queries/3bbcd783-1115-4600-bf6f-61f54fd13bf6/results?page=2"},{"rel":"self","href":"https://ped.uspto.gov/api/queries/3bbcd783-1115-4600-bf6f-61f54fd13bf6?format=JSON"},{"rel":"results","href":"https://ped.uspto.gov/api/queries/3bbcd783-1115-4600-bf6f-61f54fd13bf6/results?page=1"},{"rel":"package","href":"https://ped.uspto.gov/api/queries/3bbcd783-1115-4600-bf6f-61f54fd13bf6/package?format=JSON"},{"rel":"first","href":"https://ped.uspto.gov/api/queries/3bbcd783-1115-4600-bf6f-61f54fd13bf6/results?page=1"},{"rel":"next","href":"https://ped.uspto.gov/api/queries/3bbcd783-1115-4600-bf6f-61f54fd13bf6/results?page=2"}]}'
+    headers:
+      Cache-Control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      Connection:
+      - keep-alive
+      Content-Security-Policy:
+      - 'default-src ''self'' validator.swagger.io; script-src ''self'' ''unsafe-inline''
+        ''unsafe-eval'' online.swagger.io validator.swagger.io ajax.googleapis.com
+        www.googletagmanager.com www.google-analytics.com code.jquery.com components.uspto.gov
+        cdn.jsdelivr.net code.jquery.com; img-src ''self'' online.swagger.io data:
+        www.google-analytics.com validator.swagger.io www.w3.org validator.swagger.io;
+        style-src ''self'' ''unsafe-inline''; font-src ''self'' fonts.gstatic.com;
+        connect-src ''self'' ajax.googleapis.com online.swagger.io validator.swagger.io
+        www.googletagmanager.com www.google-analytics.com region1.google-analytics.com'
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 01 May 2024 18:44:30 GMT
+      Expires:
+      - '0'
+      Pragma:
+      - no-cache
+      Server-Timing:
+      - intid;desc=035a056f82e96df5
+      Strict-Transport-Security:
+      - max-age=31536000;includeSubDomains
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Origin
+      Via:
+      - 1.1 51ef2d5f52dad26e2bbdf93520deaaee.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - 3u08NeGToly8eSmE8Tf4ywwrvX9uUtBTEdNo92CizGQrPh2JK5xzKA==
+      X-Amz-Cf-Pop:
+      - SFO53-P3
+      X-Cache:
+      - Miss from cloudfront
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - DENY
+      X-XSS-Protection:
+      - 1; mode=block
+    http_version: HTTP/1.1
+    status_code: 200
 version: 1

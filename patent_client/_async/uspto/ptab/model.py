@@ -1,7 +1,7 @@
 import datetime
 import re
 from pathlib import Path
-from typing import TYPE_CHECKING, List, Optional
+import typing as tp
 
 from pydantic import BeforeValidator, ConfigDict, Field
 from pydantic.alias_generators import to_camel
@@ -9,7 +9,7 @@ from typing_extensions import Annotated
 
 from patent_client.util.pydantic_util import BaseModel, DateTime
 
-if TYPE_CHECKING:
+if tp.TYPE_CHECKING:
     from ..peds.model import USApplication
 
 MDYDate = Annotated[
@@ -26,10 +26,10 @@ class PtabBaseModel(BaseModel):
 
 
 class AdditionalRespondent(PtabBaseModel):
-    application_number_text: Optional[str] = None
-    inventor_name: Optional[str] = None
-    patent_number: Optional[str] = None
-    party_name: Optional[str] = None
+    application_number_text: tp.Optional[str] = None
+    inventor_name: tp.Optional[str] = None
+    patent_number: tp.Optional[str] = None
+    party_name: tp.Optional[str] = None
 
 
 class PtabProceeding(PtabBaseModel):
@@ -41,73 +41,73 @@ class PtabProceeding(PtabBaseModel):
     """
 
     # Proceeding Metadata
-    last_modified_date: Optional[DateTime] = None
-    last_modified_user_id: Optional[DateTime] = None
-    institution_decision_date: Optional[MDYDate] = None
-    proceeding_filing_date: Optional[MDYDate] = None
-    accorded_filing_date: Optional[MDYDate] = None
-    proceeding_status_category: Optional[str] = None
-    proceeding_number: Optional[str] = None
-    proceeding_last_modified_date: Optional[MDYDate] = None
-    proceeding_type_category: Optional[str] = None
-    subproceeding_type_category: Optional[str] = None
-    decision_date: Optional[MDYDate] = None
-    docket_notice_mail_date: Optional[MDYDate] = None
-    declaration_date: Optional[MDYDate] = None
-    style_name_text: Optional[str] = None
+    last_modified_date: tp.Optional[DateTime] = None
+    last_modified_user_id: tp.Optional[DateTime] = None
+    institution_decision_date: tp.Optional[MDYDate] = None
+    proceeding_filing_date: tp.Optional[MDYDate] = None
+    accorded_filing_date: tp.Optional[MDYDate] = None
+    proceeding_status_category: tp.Optional[str] = None
+    proceeding_number: tp.Optional[str] = None
+    proceeding_last_modified_date: tp.Optional[MDYDate] = None
+    proceeding_type_category: tp.Optional[str] = None
+    subproceeding_type_category: tp.Optional[str] = None
+    decision_date: tp.Optional[MDYDate] = None
+    docket_notice_mail_date: tp.Optional[MDYDate] = None
+    declaration_date: tp.Optional[MDYDate] = None
+    style_name_text: tp.Optional[str] = None
 
     # Respondent Information
-    respondent_technology_center_number: Optional[str] = None
-    respondent_patent_owner_name: Optional[str] = None
-    respondent_party_name: Optional[str] = None
-    respondent_group_art_unit_number: Optional[str] = None
-    respondent_inventor_name: Optional[str] = None
-    respondent_counsel_name: Optional[str] = None
-    respondent_grant_date: Optional[MDYDate] = None
-    respondent_patent_number: Optional[str] = None
-    respondent_application_number_text: Optional[str] = None
-    respondent_publication_number: Optional[str] = None
-    respondent_publication_date: Optional[MDYDate] = None
+    respondent_technology_center_number: tp.Optional[str] = None
+    respondent_patent_owner_name: tp.Optional[str] = None
+    respondent_party_name: tp.Optional[str] = None
+    respondent_group_art_unit_number: tp.Optional[str] = None
+    respondent_inventor_name: tp.Optional[str] = None
+    respondent_counsel_name: tp.Optional[str] = None
+    respondent_grant_date: tp.Optional[MDYDate] = None
+    respondent_patent_number: tp.Optional[str] = None
+    respondent_application_number_text: tp.Optional[str] = None
+    respondent_publication_number: tp.Optional[str] = None
+    respondent_publication_date: tp.Optional[MDYDate] = None
 
     # Petitioner Information
-    petitioner_technology_center_number: Optional[str] = None
-    petitioner_patent_owner_name: Optional[str] = None
-    petitioner_party_name: Optional[str] = None
-    petitioner_group_art_unit_number: Optional[str] = None
-    petitioner_inventor_name: Optional[str] = None
-    petitioner_counsel_name: Optional[str] = None
-    petitioner_grant_date: Optional[MDYDate] = None
-    petitioner_patent_number: Optional[str] = None
-    petitioner_application_number_text: Optional[str] = None
+    petitioner_technology_center_number: tp.Optional[str] = None
+    petitioner_patent_owner_name: tp.Optional[str] = None
+    petitioner_party_name: tp.Optional[str] = None
+    petitioner_group_art_unit_number: tp.Optional[str] = None
+    petitioner_inventor_name: tp.Optional[str] = None
+    petitioner_counsel_name: tp.Optional[str] = None
+    petitioner_grant_date: tp.Optional[MDYDate] = None
+    petitioner_patent_number: tp.Optional[str] = None
+    petitioner_application_number_text: tp.Optional[str] = None
 
     # Appellant Information
-    appellant_technology_center_number: Optional[str] = None
-    appellant_patent_owner_name: Optional[str] = None
-    appellant_party_name: Optional[str] = None
-    appellant_group_art_unit_number: Optional[str] = None
-    appellant_inventor_name: Optional[str] = None
-    appellant_counsel_name: Optional[str] = None
-    appellant_grant_date: Optional[MDYDate] = None
-    appellant_patent_number: Optional[str] = None
-    appellant_application_number_text: Optional[str] = None
-    appellant_publication_date: Optional[MDYDate] = None
-    appellant_publication_number: Optional[str] = None
-    third_party_name: Optional[str] = None
+    appellant_technology_center_number: tp.Optional[str] = None
+    appellant_patent_owner_name: tp.Optional[str] = None
+    appellant_party_name: tp.Optional[str] = None
+    appellant_group_art_unit_number: tp.Optional[str] = None
+    appellant_inventor_name: tp.Optional[str] = None
+    appellant_counsel_name: tp.Optional[str] = None
+    appellant_grant_date: tp.Optional[MDYDate] = None
+    appellant_patent_number: tp.Optional[str] = None
+    appellant_application_number_text: tp.Optional[str] = None
+    appellant_publication_date: tp.Optional[MDYDate] = None
+    appellant_publication_number: tp.Optional[str] = None
+    third_party_name: tp.Optional[str] = None
 
     # Second Respondent (if any)
-    second_respondent_party_name: Optional[str] = None
-    second_respondent_appl_number_text: Optional[str] = None
-    second_respondent_patent_number: Optional[str] = None
-    second_respondent_grant_date: Optional[MDYDate] = None
-    second_respondent_patent_owner_name: Optional[str] = None
-    second_respondent_inventor_name: Optional[str] = None
-    second_respondent_counsel_name: Optional[str] = None
-    second_respondent_g_a_u_number: Optional[str] = None
-    second_respondent_tech_center_number: Optional[str] = None
-    second_respondent_pub_number: Optional[str] = None
-    second_respondent_publication_date: Optional[MDYDate] = None
+    second_respondent_party_name: tp.Optional[str] = None
+    second_respondent_appl_number_text: tp.Optional[str] = None
+    second_respondent_patent_number: tp.Optional[str] = None
+    second_respondent_grant_date: tp.Optional[MDYDate] = None
+    second_respondent_patent_owner_name: tp.Optional[str] = None
+    second_respondent_inventor_name: tp.Optional[str] = None
+    second_respondent_counsel_name: tp.Optional[str] = None
+    second_respondent_g_a_u_number: tp.Optional[str] = None
+    second_respondent_tech_center_number: tp.Optional[str] = None
+    second_respondent_pub_number: tp.Optional[str] = None
+    second_respondent_publication_date: tp.Optional[MDYDate] = None
 
-    additional_respondents: List[str] = Field(default_factory=list)
+    additional_respondents: tp.List[str] = Field(default_factory=list)
 
     @property
     def documents(
@@ -142,14 +142,14 @@ fname_re = re.compile(r"[<>:\"/\|?*]")
 
 class PtabDocument(PtabBaseModel):
     document_identifier: str = Field(repr=False, default=None)
-    document_category: Optional[str] = None
-    document_type_name: Optional[str] = None
-    document_number: Optional[int] = None
-    document_name: Optional[str] = None
-    document_filing_date: Optional[MDYDate] = None
-    proceeding_number: Optional[str] = None
-    proceeding_type_category: Optional[str] = Field(repr=False, default=None)
-    title: Optional[str] = None
+    document_category: tp.Optional[str] = None
+    document_type_name: tp.Optional[str] = None
+    document_number: tp.Optional[int] = None
+    document_name: tp.Optional[str] = None
+    document_filing_date: tp.Optional[MDYDate] = None
+    proceeding_number: tp.Optional[str] = None
+    proceeding_type_category: tp.Optional[str] = Field(repr=False, default=None)
+    title: tp.Optional[str] = None
 
     @property
     def proceeding(self) -> "PtabProceeding":
@@ -158,7 +158,7 @@ class PtabDocument(PtabBaseModel):
             proceeding_number=self.proceeding_number
         )
 
-    async def download(self, path: Optional[str | Path]) -> Path:
+    async def download(self, path: tp.Optional[tp.Union[str, Path]]) -> Path:
         from .api import client
 
         name, ext = self.document_name.rsplit(".", 1)
@@ -177,15 +177,15 @@ class PtabDocument(PtabBaseModel):
 
 class PtabDecision(PtabBaseModel):
     proceeding_number: str
-    board_rulings: List[str] = Field(default_factory=list)
-    decision_type_category: Optional[str] = None
-    document_identifier: Optional[str] = None
-    document_name: Optional[str] = None
-    identifier: Optional[str] = None
-    subdecision_type_category: Optional[str] = None
-    issue_type: List[str] = Field(default_factory=list)
-    object_uu_id: Optional[str] = None
-    petitioner_technology_center_number: Optional[str] = None
+    board_rulings: tp.List[str] = Field(default_factory=list)
+    decision_type_category: tp.Optional[str] = None
+    document_identifier: tp.Optional[str] = None
+    document_name: tp.Optional[str] = None
+    identifier: tp.Optional[str] = None
+    subdecision_type_category: tp.Optional[str] = None
+    issue_type: tp.List[str] = Field(default_factory=list)
+    object_uu_id: tp.Optional[str] = None
+    petitioner_technology_center_number: tp.Optional[str] = None
 
     @property
     def proceeding(self) -> "PtabProceeding":
@@ -196,15 +196,15 @@ class PtabDecision(PtabBaseModel):
 
 
 class PtabDocumentPage(PtabBaseModel):
-    num_found: Optional[int] = Field(alias="recordTotalQuantity")
-    docs: List[PtabDocument] = Field(alias="results", default_factory=list)
+    num_found: tp.Optional[int] = Field(alias="recordTotalQuantity")
+    docs: tp.List[PtabDocument] = Field(alias="results", default_factory=list)
 
 
 class PtabProceedingPage(PtabBaseModel):
-    num_found: Optional[int] = Field(alias="recordTotalQuantity")
-    docs: List[PtabProceeding] = Field(alias="results", default_factory=list)
+    num_found: tp.Optional[int] = Field(alias="recordTotalQuantity")
+    docs: tp.List[PtabProceeding] = Field(alias="results", default_factory=list)
 
 
 class PtabDecisionPage(PtabBaseModel):
-    num_found: Optional[int] = Field(alias="recordTotalQuantity")
-    docs: List[PtabDecision] = Field(alias="results", default_factory=list)
+    num_found: tp.Optional[int] = Field(alias="recordTotalQuantity")
+    docs: tp.List[PtabDecision] = Field(alias="results", default_factory=list)

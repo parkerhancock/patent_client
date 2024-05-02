@@ -11,34 +11,32 @@ interactions:
       host:
       - beta-api.uspto.gov
       user-agent:
-      - python-httpx/0.27.0
+      - Mozilla/5.0 Python Patent Clientbot/5.0.0 (parkerhancock@users.noreply.github.com)
       x-api-key:
       - oygzgndgwifcpqgvdcitnhorcdvpbb
     method: GET
     uri: https://beta-api.uspto.gov/api/v1/patent/applications/16123456/foreign-priority
   response:
-    content: '{"count":1,"patentBag":[{"foreignPriorityBag":[{"priorityNumberText":"2017-187096","filingDate":"2017-09-27","countryName":"JAPAN"}]}],"requestIdentifier":"fe6abc22-9b9a-41d7-ad52-423bf9fb8095"}'
+    content: '{"count":1,"patentBag":[{"foreignPriorityBag":[{"priorityNumberText":"2017-187096","filingDate":"2017-09-27","countryName":"JAPAN"}]}],"requestIdentifier":"d70052c4-f223-4174-a497-16e65081e7a8"}'
     headers:
-      Connection:
-      - keep-alive
-      Content-Length:
-      - '194'
-      Content-Type:
-      - application/json
-      Date:
-      - Wed, 24 Apr 2024 17:31:38 GMT
-      X-Amzn-Trace-Id:
-      - Root=1-662941fa-15fef2a97d00b0ce44ec672b;Parent=26a04b577df41e33;Sampled=0;lineage=33e8fdb8:0
       access-control-allow-headers:
       - Origin, X-Requested-With, Content-Type, Accept
       access-control-allow-methods:
       - OPTIONS,POST,GET
       access-control-allow-origin:
       - '*'
+      content-length:
+      - '194'
+      content-type:
+      - application/json
+      date:
+      - Wed, 01 May 2024 18:46:24 GMT
       x-amz-apigw-id:
-      - Wvc_KGEzoAMFlaA=
-      x-amzn-RequestId:
-      - fe6abc22-9b9a-41d7-ad52-423bf9fb8095
-    http_version: HTTP/1.1
+      - XGsgFHb0IAMFQLQ=
+      x-amzn-requestid:
+      - d70052c4-f223-4174-a497-16e65081e7a8
+      x-amzn-trace-id:
+      - Root=1-66328e00-425a92f62bc6f63643cead5d;Parent=756177c5bbca44dd;Sampled=0;lineage=33e8fdb8:0
+    http_version: HTTP/2
     status_code: 200
 version: 1

@@ -31,7 +31,9 @@ class ODPApi:
     def __init__(self):
         self.client = PatentClientSession(headers={"X-API-KEY": SETTINGS.odp_api_key})
 
-    def post_search(self, search_request: SearchRequest = SearchRequest()) -> tp.Dict:
+    def post_search(
+        self, search_request: SearchRequest = SearchRequest()
+    ) -> tp.Dict:
         url = self.base_url + "/api/v1/patent/applications/search"
         search_data = prune(search_request.model_dump())
         response = self.client.post(
@@ -60,7 +62,9 @@ class ODPApi:
         response.raise_for_status()
         return USApplication(**response.json()["patentBag"][0])
 
-    def get_application_biblio_data(self, application_id: str) -> USApplicationBiblio:
+    def get_application_biblio_data(
+        self, application_id: str
+    ) -> USApplicationBiblio:
         """Patent application basic data by application id"""
         url = (
             self.base_url
@@ -70,7 +74,9 @@ class ODPApi:
         response.raise_for_status()
         return USApplicationBiblio(**response.json()["patentBag"][0])
 
-    def get_patent_term_adjustment_data(self, application_id: str) -> TermAdjustment:
+    def get_patent_term_adjustment_data(
+        self, application_id: str
+    ) -> TermAdjustment:
         """Patent application term adjustment data by application id"""
         url = self.base_url + f"/api/v1/patent/applications/{application_id}/adjustment"
         response = self.client.get(url)

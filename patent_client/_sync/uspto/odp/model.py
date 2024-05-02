@@ -8,6 +8,7 @@ import datetime
 from enum import Enum
 from typing import Any, List, Optional
 
+
 from async_property.base import AsyncPropertyDescriptor
 from pydantic import AliasPath, BeforeValidator, ConfigDict, Field, model_validator
 from pydantic.alias_generators import to_camel
@@ -278,11 +279,15 @@ class USApplicationBiblio(BaseODPModel):
 
     @property
     def application(self) -> "USApplication":
-        return self._get_model(".model.USApplication").objects.get(appl_id=self.appl_id)
+        return self._get_model(".model.USApplication").objects.get(
+            appl_id=self.appl_id
+        )
 
     @property
     def continuity(self) -> Continuity:
-        return self._get_model(".model.Continuity").objects.get(appl_id=self.appl_id)
+        return self._get_model(".model.Continuity").objects.get(
+            appl_id=self.appl_id
+        )
 
     @property
     def documents(self) -> list[Document]:

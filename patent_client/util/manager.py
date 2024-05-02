@@ -248,7 +248,11 @@ class AsyncManager(BaseManager, Generic[ModelType]):
 
     async def first(self) -> ModelType:
         """Get the first object in the manager"""
-        return await anext(self.limit(1).__aiter__())
+        try:
+            return await anext(self.limit(1).__aiter__())
+        except NameError: # anext was added in 3.10
+            async for doc in self.limit(1):
+                return doc
 
     async def get(self, *args, **kwargs) -> ModelType:
         """If the critera results in a single record, return it, else raise an exception"""
