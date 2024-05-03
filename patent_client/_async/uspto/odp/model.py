@@ -266,7 +266,11 @@ class USApplicationBiblio(BaseODPModel):
     cpc_classifications: list[str] = Field(alias="cpcClassificationBag", default_factory=list)
     entity_status: Optional[str] = Field(alias="businessEntityStatusCategory", default=None)
     app_early_pub_number: Optional[str] = Field(alias="earliestPublicationNumber", default=None)
+    app_early_pub_date: Optional[datetime.date] = Field(
+        alias="earliestPublicationDate", default=None
+    )
     patent_number: Optional[str] = Field(alias="patentNumber", default=None)
+    grant_date: Optional[datetime.date] = Field(alias="grantDate", default=None)
     status: Optional[str] = Field(alias="applicationStatusDescriptionText", default=None)
     status_date: Optional[datetime.date] = Field(alias="applicationStatusDate", default=None)
     status_code: Optional[int] = Field(alias="applicationStatusCode", default=None)
@@ -340,7 +344,11 @@ class USApplication(BaseODPModel):
     cpc_classifications: list[str] = Field(alias="cpcClassificationBag", default_factory=list)
     entity_status: Optional[str] = Field(alias="businessEntityStatusCategory", default=None)
     app_early_pub_number: Optional[str] = Field(alias="earliestPublicationNumber", default=None)
+    app_early_pub_date: Optional[datetime.date] = Field(
+        alias="earliestPublicationDate", default=None
+    )
     patent_number: Optional[str] = Field(alias="patentNumber", default=None)
+    grant_date: Optional[datetime.date] = Field(alias="grantDate", default=None)
 
     app_type_code: Optional[str] = Field(alias="applicationTypeCode", default=None)
     national_stage_indicator: Optional[YNBool] = Field(alias="nationalStageIndicator", default=None)
