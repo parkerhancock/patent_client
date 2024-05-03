@@ -215,6 +215,7 @@ def test_application_biblio(fixture_dir):
     assert application_biblio.status == "Abandoned  --  Failure to Respond to an Office Action"
     assert application_biblio.status_date == datetime.date.fromisoformat("2018-10-02")
     assert application_biblio.status_code is None
+    assert application_biblio.patent_number is None
 
 
 def test_application_object(fixture_dir):
@@ -247,6 +248,7 @@ def test_application_object(fixture_dir):
     assert application.status == "Abandoned  --  Failure to Respond to an Office Action"
     assert application.status_date == datetime.date.fromisoformat("2018-10-02")
     assert application.status_code == 161
+    assert application.patent_number is None
 
 
 def test_search_model():

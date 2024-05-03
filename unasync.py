@@ -117,12 +117,17 @@ def unasync_dir(in_dir, out_dir, check_only=False):
             rel_dir = os.path.relpath(dirpath, in_dir)
             in_path = os.path.normpath(os.path.join(in_dir, rel_dir, filename))
             out_path = os.path.normpath(os.path.join(out_dir, rel_dir, filename))
-            print(in_path, "->", out_path)
+            # print(in_path, "->", out_path)
             if check_only:
                 if not filename.endswith(".py"):
                     continue
                 unasync_file_check(in_path, out_path)
             else:
+                if (
+                    Path(out_path).exists()
+                    and Path(out_path).stat().st_mtime > Path(in_path).stat().st_mtime
+                ):
+                    continue
                 if not filename.endswith(".py"):
                     Path(out_path).parent.mkdir(parents=True, exist_ok=True)
                     shutil.copy(in_path, out_path)
@@ -139,14 +144,12 @@ def main():
         sync_dir.mkdir(parents=True, exist_ok=True)
         unasync_dir(dir, sync_dir, check_only)
 
-    if len(USED_SUBS) != len(SUBS):
-        unused_subs = [SUBS[i] for i in range(len(SUBS)) if i not in USED_SUBS]
+    # if len(USED_SUBS) != len(SUBS):
+    #    unused_subs = [SUBS[i] for i in range(len(SUBS)) if i not in USED_SUBS]
 
-        from pprint import pprint
-
-        print("This SUBS was not used")
-        pprint(unused_subs)
-        exit(1)
+    # print("This SUBS was not used")
+    # pprint(unused_subs)
+    # exit(1)
 
 
 if __name__ == "__main__":
