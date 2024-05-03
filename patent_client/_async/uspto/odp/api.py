@@ -23,6 +23,8 @@ class ODPApi:
     base_url = "https://beta-api.uspto.gov"
 
     def __init__(self):
+        if SETTINGS.odp_api_key is None:
+            raise ValueError("ODP API key is not set")
         self.client = PatentClientSession(headers={"X-API-KEY": SETTINGS.odp_api_key})
 
     async def post_search(self, search_request: SearchRequest = SearchRequest()) -> tp.Dict:
@@ -31,6 +33,12 @@ class ODPApi:
         response = await self.client.post(
             url, json=search_data, headers={"accept": "application/json"}
         )
+        if response.status_code == 404 and "No matching records found" in response.text:
+            return {
+                "count": 0,
+                "patentBag": [],
+                "requestIdentifier": response.json()["requestIdentifier"],
+            }
         response.raise_for_status()
         return response.json()
 
@@ -40,6 +48,12 @@ class ODPApi:
         url = self.base_url + "/api/v1/patent/applications/search"
         search_data = prune(search_request.model_dump())
         response = await self.client.get(url, params=search_data)
+        if response.status_code == 404 and "No matching records found" in response.text:
+            return {
+                "count": 0,
+                "patentBag": [],
+                "requestIdentifier": response.json()["requestIdentifier"],
+            }
         response.raise_for_status()
         return response.json()
 

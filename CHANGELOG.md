@@ -1,5 +1,12 @@
 # Changelog
 
+## 5.0.5 (2024-05-02)
+- Fix issue where ODP API returns 404 when there are no results - now returns an empty manager.
+- Fix issue where older applications don't have certain fields set in ODP.
+
+## 5.0.4 (2024-05-02)
+- Fix importing of USPTO Open Data Portal models from top level patent_client object.
+
 ## 5.0.3 (2024-05-02)
 - Add missing confirmation number to PEDS model (#135).
 - Improve downloading of images from USPTO Public Search.

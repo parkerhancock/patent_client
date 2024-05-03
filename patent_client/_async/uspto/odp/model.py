@@ -233,10 +233,10 @@ class USApplicationBiblio(BaseODPModel):
     invention_title: str = Field(alias="inventionTitle")
     correspondence_address: list[Address] = Field(alias="correspondenceAddressBag")
     app_conf_num: int = Field(alias="applicationConfirmationNumber")
-    atty_docket_num: str = Field(alias="docketNumber")
+    atty_docket_num: Optional[str] = Field(alias="docketNumber", default=None)
     appl_id: str = Field(alias="applicationNumberText")
     first_inventor_name: str = Field(alias="firstInventorName")
-    first_applicant_name: str = Field(alias="firstApplicantName")
+    first_applicant_name: Optional[str] = Field(alias="firstApplicantName", default=None)
     cpc_classifications: list[str] = Field(alias="cpcClassificationBag")
     entity_status: str = Field(alias="businessEntityStatusCategory")
     app_early_pub_number: Optional[str] = Field(alias="earliestPublicationNumber")
@@ -328,7 +328,7 @@ class USApplication(BaseODPModel):
     @model_validator(mode="before")
     @classmethod
     def _validate_patent_term_adjustment(cls, v):
-        if v["patentTermAdjustmentData"] == dict():
+        if "patentTermAdjustmentData" in v and v["patentTermAdjustmentData"] == dict():
             v["patentTermAdjustmentData"] = None
         return v
 

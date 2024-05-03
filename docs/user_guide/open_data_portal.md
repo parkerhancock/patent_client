@@ -5,6 +5,8 @@ Original API URL: <https://beta-data.uspto.gov/home>
 :::{warning}
 The USPTO's Open Data Portal is still considered a beta product. It should work well, but
 there may be errors in the data.
+
+**Also, please note that the ODP only covers applications filed on or after Jan 1, 2001.**
 :::
 
 Patent Client provides an interface to the USPTO's [Open Data Portal](https://beta-data.uspto.gov/home), which currently
@@ -28,7 +30,7 @@ prefixing the USApplicationManager with "odp". Here is an example of how to acce
 ```python
 from patent_client.odp import USApplicationBiblio
 
-app = USApplicationBiblio.objects.get("123456789") # The application itself
+app = USApplicationBiblio.objects.get("16123456") # The application itself
 app.biblio # The basic bibliographic information
 app.assignments # The related assignments
 app.documents # The related documents
@@ -48,10 +50,10 @@ of your queries, and then use the related attributes to access the data you actu
 To download file history information about an application, use the related `.documents` attribute. Each `Document` object has a `download` method, which can be used to download the document. For example:
 
 ```python
-from patent_client.odp import USApplicationBiblio
+>>> from patent_client.odp import USApplicationBiblio
 
-app = USApplicationBiblio.objects.get("123456789")
-app.documents[0].download()
+>>> app = USApplicationBiblio.objects.get("16123456")
+>>> app.documents[0].download() # doctest: +SKIP
 ```
 
 This will download the first document in the application's file history, and save it to the current working directory with the naming format: `{application_id} - {mail_date} - {document_code} - {document_code_description}.{type}`.

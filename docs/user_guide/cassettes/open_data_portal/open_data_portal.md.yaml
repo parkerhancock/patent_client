@@ -1,6 +1,7 @@
 interactions:
 - request:
-    body: '{"q": "applicationNumberText:16123456", "fields": ["applicationNumberText"]}'
+    body: '{"q": "applicationNumberText:(16123456)", "fields": ["applicationNumberText"],
+      "pagination": {"offset": 0, "limit": 25}}'
     headers:
       X-API-KEY:
       - REDACTED
@@ -11,7 +12,7 @@ interactions:
       connection:
       - keep-alive
       content-length:
-      - '76'
+      - '120'
       content-type:
       - application/json
       host:
@@ -21,7 +22,7 @@ interactions:
     method: POST
     uri: https://beta-api.uspto.gov/api/v1/patent/applications/search
   response:
-    content: '{"count":1,"patentBag":[{"applicationNumberText":"16123456"}],"requestIdentifier":"c7302a6a-c101-4ee0-9fb3-0e1fd1fc3001"}'
+    content: '{"count":1,"patentBag":[{"applicationNumberText":"16123456"}],"requestIdentifier":"dda5358c-6e57-40e4-9234-4844eade4329"}'
     headers:
       access-control-allow-headers:
       - Origin, X-Requested-With, Content-Type, Accept
@@ -34,17 +35,17 @@ interactions:
       content-type:
       - application/json
       date:
-      - Fri, 03 May 2024 17:51:44 GMT
+      - Fri, 03 May 2024 17:35:07 GMT
       x-amz-apigw-id:
-      - XNKXpEWjoAMFkmw=
+      - XNH7wHZQoAMF9tA=
       x-amzn-requestid:
-      - c7302a6a-c101-4ee0-9fb3-0e1fd1fc3001
+      - dda5358c-6e57-40e4-9234-4844eade4329
       x-amzn-trace-id:
-      - Root=1-66352430-7f94d9cd3698f3697c0c97ec;Parent=4462f6789b92ed1b;Sampled=0;lineage=33e8fdb8:0
+      - Root=1-6635204a-3d5917bd72c9e1827e86149f;Parent=0e40072be5b6a5b0;Sampled=0;lineage=33e8fdb8:0
     http_version: HTTP/2
     status_code: 200
 - request:
-    body: '{"q": "applicationNumberText:16123456", "fields": ["firstInventorToFileIndicator",
+    body: '{"q": "applicationNumberText:(16123456)", "fields": ["firstInventorToFileIndicator",
       "filingDate", "inventorBag", "customerNumber", "groupArtUnitNumber", "inventionTitle",
       "correspondenceAddressBag", "applicationConfirmationNumber", "docketNumber",
       "applicationNumberText", "firstInventorName", "firstApplicantName", "cpcClassificationBag",
@@ -60,7 +61,7 @@ interactions:
       connection:
       - keep-alive
       content-length:
-      - '441'
+      - '443'
       content-type:
       - application/json
       host:
@@ -81,7 +82,7 @@ interactions:
       Church","geographicRegionName":"VIRGINIA","geographicRegionCode":"VA","countryCode":"US","postalCode":"22042-1248","nameLineOneText":"BIRCH
       STEWART KOLASCH & BIRCH, LLP","countryName":"UNITED STATES","addressLineOneText":"8110
       Gatehouse Road","addressLineTwoText":"Suite 100 East"}],"firstInventorName":"Shoji
-      KANADA","cpcClassificationBag":["G06N3/08","G16H30/20","G16H50/70","G16H30/40","G06N20/00","G06V10/7784","G06V10/774","G06F18/2178","G06N3/042","G06F18/217","G06F18/214","G06N3/045"],"applicationConfirmationNumber":7051,"docketNumber":"1982-1042PUS1"}],"requestIdentifier":"7f433ac5-455e-4caf-b963-88bb44abefa4"}'
+      KANADA","cpcClassificationBag":["G06N3/08","G16H30/20","G16H50/70","G16H30/40","G06N20/00","G06V10/7784","G06V10/774","G06F18/2178","G06N3/042","G06F18/217","G06F18/214","G06N3/045"],"applicationConfirmationNumber":7051,"docketNumber":"1982-1042PUS1"}],"requestIdentifier":"baddb74d-3448-4b0e-84f1-9f20dcf32d70"}'
     headers:
       access-control-allow-headers:
       - Origin, X-Requested-With, Content-Type, Accept
@@ -94,54 +95,13 @@ interactions:
       content-type:
       - application/json
       date:
-      - Fri, 03 May 2024 17:51:44 GMT
+      - Fri, 03 May 2024 17:35:07 GMT
       x-amz-apigw-id:
-      - XNKXqEv7IAMF67g=
+      - XNH7yF2KoAMF7Lw=
       x-amzn-requestid:
-      - 7f433ac5-455e-4caf-b963-88bb44abefa4
+      - baddb74d-3448-4b0e-84f1-9f20dcf32d70
       x-amzn-trace-id:
-      - Root=1-66352430-18b1e9b645a475692e78b9a5;Parent=701d254e18991ceb;Sampled=0;lineage=33e8fdb8:0
-    http_version: HTTP/2
-    status_code: 200
-- request:
-    body: ''
-    headers:
-      X-API-KEY:
-      - REDACTED
-      accept:
-      - '*/*'
-      accept-encoding:
-      - gzip, deflate
-      connection:
-      - keep-alive
-      host:
-      - beta-api.uspto.gov
-      user-agent:
-      - Mozilla/5.0 Python Patent Clientbot/5.0.4 (parkerhancock@users.noreply.github.com)
-    method: GET
-    uri: https://beta-api.uspto.gov/api/v1/patent/applications/16123456/continuity
-  response:
-    content: '{"count":1,"patentBag":[{"continuityBag":{"childContinuityBag":[{"applicationStatusCode":150,"claimParentageTypeCode":"DIV","aiaIndicator":true,"filingDate":"2020-12-22","applicationStatusDescriptionText":"Patented
-      Case","claimParentageTypeCodeDescription":"is a Division of","parentApplicationNumberText":"16123456","patentNumber":"11797846","childApplicationNumberText":"17130468"}]}}],"requestIdentifier":"dfd407a1-ea7d-456a-b9b1-87b3c66674ec"}'
-    headers:
-      access-control-allow-headers:
-      - Origin, X-Requested-With, Content-Type, Accept
-      access-control-allow-methods:
-      - OPTIONS,POST,GET
-      access-control-allow-origin:
-      - '*'
-      content-length:
-      - '447'
-      content-type:
-      - application/json
-      date:
-      - Fri, 03 May 2024 17:31:36 GMT
-      x-amz-apigw-id:
-      - XNHa1El3oAMFkYQ=
-      x-amzn-requestid:
-      - dfd407a1-ea7d-456a-b9b1-87b3c66674ec
-      x-amzn-trace-id:
-      - Root=1-66351f78-24db04695745d5f5708d8243;Parent=1d73151dfcead477;Sampled=0;lineage=33e8fdb8:0
+      - Root=1-6635204b-1a6ebada031dd645482956ea;Parent=203a57845aaaa5c8;Sampled=0;lineage=33e8fdb8:0
     http_version: HTTP/2
     status_code: 200
 version: 1
