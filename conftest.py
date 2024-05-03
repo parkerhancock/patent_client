@@ -27,7 +27,7 @@ def path_generator_function(function):
 def vcr_config():
     return {
         # Replace the Authorization request header with "REDACTED" in cassettes
-        "filter_headers": [("Authorization", "REDACTED")],
+        "filter_headers": [("Authorization", "REDACTED"), ("X-API-KEY", "REDACTED")],
         # "serializer": "json",
         # "path_transformer": VCR.ensure_suffix(".json"),
         "record_mode": "new_episodes",

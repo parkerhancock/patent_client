@@ -2,6 +2,8 @@ interactions:
 - request:
     body: ''
     headers:
+      X-API-KEY:
+      - REDACTED
       accept:
       - '*/*'
       accept-encoding:
@@ -11,9 +13,7 @@ interactions:
       host:
       - beta-api.uspto.gov
       user-agent:
-      - python-httpx/0.27.0
-      x-api-key:
-      - oygzgndgwifcpqgvdcitnhorcdvpbb
+      - Mozilla/5.0 Python Patent Clientbot/5.0.4 (parkerhancock@users.noreply.github.com)
     method: GET
     uri: https://beta-api.uspto.gov/api/v1/patent/applications/16123456/adjustment
   response:
@@ -73,28 +73,26 @@ interactions:
       Disclosure Statement (IDS) Filed","caseActionSequenceNumber":4.0,"actionDate":"2018-09-06"},{"applicantDayDelayQuantity":0.0,"startSequenceNumber":0.0,"caseActionDescriptionText":"Entity
       Status Set To Undiscounted (Initial Default Setting or Status Change)","caseActionSequenceNumber":2.0,"actionDate":"2018-09-06"},{"applicantDayDelayQuantity":0.0,"startSequenceNumber":0.0,"caseActionDescriptionText":"Initial
       Exam Team nn","caseActionSequenceNumber":1.0,"actionDate":"2018-09-06"},{"applicantDayDelayQuantity":0.0,"startSequenceNumber":0.0,"caseActionDescriptionText":"Filing
-      date","caseActionSequenceNumber":0.5,"actionDate":"2018-09-06"}]}}],"requestIdentifier":"40706fa6-c3b1-4fa7-97af-aacf95be1ead"}'
+      date","caseActionSequenceNumber":0.5,"actionDate":"2018-09-06"}]}}],"requestIdentifier":"856d58f4-4cb9-4f69-aa27-0780be28056d"}'
     headers:
-      Connection:
-      - keep-alive
-      Content-Length:
-      - '10677'
-      Content-Type:
-      - application/json
-      Date:
-      - Wed, 24 Apr 2024 16:55:37 GMT
-      X-Amzn-Trace-Id:
-      - Root=1-66293989-0e606dcc7d13e7c15961efb4;Parent=22a8ff63aab95863;Sampled=0;lineage=33e8fdb8:0
       access-control-allow-headers:
       - Origin, X-Requested-With, Content-Type, Accept
       access-control-allow-methods:
       - OPTIONS,POST,GET
       access-control-allow-origin:
       - '*'
+      content-length:
+      - '10677'
+      content-type:
+      - application/json
+      date:
+      - Fri, 03 May 2024 17:31:32 GMT
       x-amz-apigw-id:
-      - WvXtiGgbIAMFe7g=
-      x-amzn-RequestId:
-      - 40706fa6-c3b1-4fa7-97af-aacf95be1ead
-    http_version: HTTP/1.1
+      - XNHaUEN0IAMFkog=
+      x-amzn-requestid:
+      - 856d58f4-4cb9-4f69-aa27-0780be28056d
+      x-amzn-trace-id:
+      - Root=1-66351f74-1682af116575d99a70eef2d7;Parent=1e805f1e58921515;Sampled=0;lineage=33e8fdb8:0
+    http_version: HTTP/2
     status_code: 200
 version: 1

@@ -2,6 +2,8 @@ interactions:
 - request:
     body: ''
     headers:
+      X-API-KEY:
+      - REDACTED
       accept:
       - '*/*'
       accept-encoding:
@@ -11,9 +13,7 @@ interactions:
       host:
       - beta-api.uspto.gov
       user-agent:
-      - python-httpx/0.27.0
-      x-api-key:
-      - oygzgndgwifcpqgvdcitnhorcdvpbb
+      - Mozilla/5.0 Python Patent Clientbot/5.0.4 (parkerhancock@users.noreply.github.com)
     method: GET
     uri: https://beta-api.uspto.gov/api/v1/patent/applications/15123456/continuity
   response:
@@ -23,28 +23,26 @@ interactions:
       Application Expired","claimParentageTypeCodeDescription":"Claims priority from
       a provisional application","parentApplicationNumberText":"61983088","childApplicationNumberText":"PCT/US15/27322"}],"childContinuityBag":[{"applicationStatusCode":160,"claimParentageTypeCode":"CON","filingDate":"2018-09-14","applicationStatusDescriptionText":"Abandoned  --  Incomplete
       Application (Pre-examination)","claimParentageTypeCodeDescription":"is a Continuation
-      of","parentApplicationNumberText":"15123456","childApplicationNumberText":"16132008"}]}}],"requestIdentifier":"b49b5afe-2f59-4ed5-b132-3da7edf1f148"}'
+      of","parentApplicationNumberText":"15123456","childApplicationNumberText":"16132008"}]}}],"requestIdentifier":"35155e9b-8643-4090-8b22-0c7bef8729a0"}'
     headers:
-      Connection:
-      - keep-alive
-      Content-Length:
-      - '1131'
-      Content-Type:
-      - application/json
-      Date:
-      - Wed, 24 Apr 2024 16:55:38 GMT
-      X-Amzn-Trace-Id:
-      - Root=1-6629398a-2e026c8f58feb83679b354d3;Parent=36f939687de8bb7f;Sampled=0;lineage=33e8fdb8:0
       access-control-allow-headers:
       - Origin, X-Requested-With, Content-Type, Accept
       access-control-allow-methods:
       - OPTIONS,POST,GET
       access-control-allow-origin:
       - '*'
+      content-length:
+      - '1131'
+      content-type:
+      - application/json
+      date:
+      - Fri, 03 May 2024 17:31:33 GMT
       x-amz-apigw-id:
-      - WvXtqGrFoAMFnjg=
-      x-amzn-RequestId:
-      - b49b5afe-2f59-4ed5-b132-3da7edf1f148
-    http_version: HTTP/1.1
+      - XNHaYEKDIAMFc8Q=
+      x-amzn-requestid:
+      - 35155e9b-8643-4090-8b22-0c7bef8729a0
+      x-amzn-trace-id:
+      - Root=1-66351f75-50e575c16cea704410755770;Parent=5975909ba6cb24d2;Sampled=0;lineage=33e8fdb8:0
+    http_version: HTTP/2
     status_code: 200
 version: 1

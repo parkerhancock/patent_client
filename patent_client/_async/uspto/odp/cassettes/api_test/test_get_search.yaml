@@ -2,6 +2,8 @@ interactions:
 - request:
     body: ''
     headers:
+      X-API-KEY:
+      - REDACTED
       accept:
       - '*/*'
       accept-encoding:
@@ -11,9 +13,7 @@ interactions:
       host:
       - beta-api.uspto.gov
       user-agent:
-      - python-httpx/0.27.0
-      x-api-key:
-      - oygzgndgwifcpqgvdcitnhorcdvpbb
+      - Mozilla/5.0 Python Patent Clientbot/5.0.4 (parkerhancock@users.noreply.github.com)
     method: GET
     uri: https://beta-api.uspto.gov/api/v1/patent/applications/search?q=firstNamedApplicant%3ASTMicroelectronics%20S.A.
   response:
@@ -89,14 +89,14 @@ interactions:
       frame\",\"correspondenceAddressBag\":[{\"cityName\":\"Barcelona\",\"countryCode\":\"ES\",\"postalCode\":\"08021\",\"nameLineOneText\":\"CURELL
       SU\xD1OL SLP\",\"countryName\":\"SPAIN\",\"addressLineOneText\":\"Muntaner 240,
       4-2\"}],\"foreignPriorityBag\":[{\"priorityNumberText\":\"015024866-0001\",\"filingDate\":\"2023-06-16\",\"countryName\":\"EUROPEAN
-      UNION INTELLECTUAL PROPERTY OFFICE (EUIPO)\"}],\"applicationConfirmationNumber\":2158,\"smallEntityStatusIndicator\":false,\"subclass\":\"111\",\"publicationCategoryBag\":[\"Other\"],\"internationalRegistrationNumber\":\"DM/233918\"},{\"firstInventorToFileIndicator\":\"Y\",\"applicationStatusCode\":30,\"applicationTypeCode\":\"DES\",\"filingDate\":\"2023-11-28\",\"class/subclass\":\"D24/130\",\"recordAttorney\":{\"customerNumber\":{}},\"applicationNumberText\":\"35519390\",\"nationalStageIndicator\":false,\"firstInventorName\":\"ALAIN
+      UNION INTELLECTUAL PROPERTY OFFICE (EUIPO)\"}],\"applicationConfirmationNumber\":2158,\"smallEntityStatusIndicator\":false,\"subclass\":\"111\",\"publicationCategoryBag\":[\"Other\"],\"internationalRegistrationNumber\":\"DM/233918\"},{\"firstInventorToFileIndicator\":\"Y\",\"applicationStatusCode\":30,\"applicationTypeCode\":\"DES\",\"filingDate\":\"2023-11-28\",\"class/subclass\":\"D24/130\",\"recordAttorney\":{\"customerNumber\":{}},\"applicationNumberText\":\"35519392\",\"nationalStageIndicator\":false,\"firstInventorName\":\"ALAIN
       MARCOZ\",\"effectiveFilingDate\":\"2023-11-28\",\"applicationTypeLabelName\":\"Design\",\"applicationStatusDate\":\"2024-01-15\",\"class\":\"D24\",\"applicationTypeCategory\":\"REGULAR\",\"inventorBag\":[{\"firstName\":\"ALAIN\",\"lastName\":\"MARCOZ\",\"inventorNameText\":\"ALAIN
       MARCOZ\",\"correspondenceAddressBag\":[{\"cityName\":\"MONTMORIN\",\"countryCode\":\"FR\",\"nameLineOneText\":\"ALAIN
       MARCOZ\",\"countryName\":\"FRANCE\",\"postalAddressCategory\":\"residence\"},{\"cityName\":\"MONTMORIN\",\"countryCode\":\"FR\",\"postalCode\":\"63160\",\"nameLineOneText\":\"ALAIN
       MARCOZ\",\"countryName\":\"FRANCE\",\"addressLineOneText\":\"ESPINASSE HAUT\",\"postalAddressCategory\":\"postal\"}]}],\"patentTermAdjustmentData\":{},\"transactionContentBag\":[{\"recordedDate\":\"2023-12-18\",\"caseActionDescriptionText\":\"Receipt
-      of New Application from I.B. (Hague)\",\"caseActionCode\":\"NWREIBHA\"},{\"recordedDate\":\"2023-12-18\",\"caseActionDescriptionText\":\"Initial
-      Exam Team nn\",\"caseActionCode\":\"IEXX\"},{\"recordedDate\":\"2023-12-18\",\"caseActionDescriptionText\":\"Entity
-      Status Set To Undiscounted (Initial Default Setting or Status Change)\",\"caseActionCode\":\"BIG.\"},{\"recordedDate\":\"2024-01-05\",\"caseActionDescriptionText\":\"Filing
+      of New Application from I.B. (Hague)\",\"caseActionCode\":\"NWREIBHA\"},{\"recordedDate\":\"2023-12-18\",\"caseActionDescriptionText\":\"Entity
+      Status Set To Undiscounted (Initial Default Setting or Status Change)\",\"caseActionCode\":\"BIG.\"},{\"recordedDate\":\"2023-12-18\",\"caseActionDescriptionText\":\"Initial
+      Exam Team nn\",\"caseActionCode\":\"IEXX\"},{\"recordedDate\":\"2024-01-05\",\"caseActionDescriptionText\":\"Filing
       Receipt\",\"caseActionCode\":\"FLRCPT.O\"},{\"recordedDate\":\"2024-01-05\",\"caseActionDescriptionText\":\"Application
       Is Now Complete\",\"caseActionCode\":\"COMP\"},{\"recordedDate\":\"2024-01-05\",\"caseActionDescriptionText\":\"FITF
       set to YES - revise initial setting\",\"caseActionCode\":\"FTFS\"},{\"recordedDate\":\"2024-01-05\",\"caseActionDescriptionText\":\"Application
@@ -109,14 +109,14 @@ interactions:
       PRODUCTION S.A. A CONSEIL D'ADMINISTRATION\",\"groupArtUnitNumber\":\"2900\",\"inventionTitle\":\"Injection
       monitoring addon for attachment to and monitoring of an injection pen\",\"correspondenceAddressBag\":[{\"cityName\":\"ISSOIRE\",\"countryCode\":\"FR\",\"postalCode\":\"63500\",\"nameLineOneText\":\"ALEXANDER
       THURGOOD E.I. - IP GALORE\",\"countryName\":\"FRANCE\",\"addressLineOneText\":\"3
-      BIS RUE JEAN BIGOT CENTRE D'AFFAIRES AMARANTE\"}],\"applicationConfirmationNumber\":2158,\"smallEntityStatusIndicator\":false,\"subclass\":\"130\",\"publicationCategoryBag\":[\"Other\"]},{\"firstInventorToFileIndicator\":\"Y\",\"applicationStatusCode\":30,\"applicationTypeCode\":\"DES\",\"filingDate\":\"2023-11-28\",\"class/subclass\":\"D24/130\",\"recordAttorney\":{\"customerNumber\":{}},\"applicationNumberText\":\"35519392\",\"nationalStageIndicator\":false,\"firstInventorName\":\"ALAIN
+      BIS RUE JEAN BIGOT CENTRE D'AFFAIRES AMARANTE\"}],\"applicationConfirmationNumber\":2158,\"smallEntityStatusIndicator\":false,\"subclass\":\"130\",\"publicationCategoryBag\":[\"Other\"]},{\"firstInventorToFileIndicator\":\"Y\",\"applicationStatusCode\":30,\"applicationTypeCode\":\"DES\",\"filingDate\":\"2023-11-28\",\"class/subclass\":\"D24/130\",\"recordAttorney\":{\"customerNumber\":{}},\"applicationNumberText\":\"35519390\",\"nationalStageIndicator\":false,\"firstInventorName\":\"ALAIN
       MARCOZ\",\"effectiveFilingDate\":\"2023-11-28\",\"applicationTypeLabelName\":\"Design\",\"applicationStatusDate\":\"2024-01-15\",\"class\":\"D24\",\"applicationTypeCategory\":\"REGULAR\",\"inventorBag\":[{\"firstName\":\"ALAIN\",\"lastName\":\"MARCOZ\",\"inventorNameText\":\"ALAIN
       MARCOZ\",\"correspondenceAddressBag\":[{\"cityName\":\"MONTMORIN\",\"countryCode\":\"FR\",\"nameLineOneText\":\"ALAIN
       MARCOZ\",\"countryName\":\"FRANCE\",\"postalAddressCategory\":\"residence\"},{\"cityName\":\"MONTMORIN\",\"countryCode\":\"FR\",\"postalCode\":\"63160\",\"nameLineOneText\":\"ALAIN
       MARCOZ\",\"countryName\":\"FRANCE\",\"addressLineOneText\":\"ESPINASSE HAUT\",\"postalAddressCategory\":\"postal\"}]}],\"patentTermAdjustmentData\":{},\"transactionContentBag\":[{\"recordedDate\":\"2023-12-18\",\"caseActionDescriptionText\":\"Receipt
-      of New Application from I.B. (Hague)\",\"caseActionCode\":\"NWREIBHA\"},{\"recordedDate\":\"2023-12-18\",\"caseActionDescriptionText\":\"Entity
-      Status Set To Undiscounted (Initial Default Setting or Status Change)\",\"caseActionCode\":\"BIG.\"},{\"recordedDate\":\"2023-12-18\",\"caseActionDescriptionText\":\"Initial
-      Exam Team nn\",\"caseActionCode\":\"IEXX\"},{\"recordedDate\":\"2024-01-05\",\"caseActionDescriptionText\":\"Filing
+      of New Application from I.B. (Hague)\",\"caseActionCode\":\"NWREIBHA\"},{\"recordedDate\":\"2023-12-18\",\"caseActionDescriptionText\":\"Initial
+      Exam Team nn\",\"caseActionCode\":\"IEXX\"},{\"recordedDate\":\"2023-12-18\",\"caseActionDescriptionText\":\"Entity
+      Status Set To Undiscounted (Initial Default Setting or Status Change)\",\"caseActionCode\":\"BIG.\"},{\"recordedDate\":\"2024-01-05\",\"caseActionDescriptionText\":\"Filing
       Receipt\",\"caseActionCode\":\"FLRCPT.O\"},{\"recordedDate\":\"2024-01-05\",\"caseActionDescriptionText\":\"Application
       Is Now Complete\",\"caseActionCode\":\"COMP\"},{\"recordedDate\":\"2024-01-05\",\"caseActionDescriptionText\":\"FITF
       set to YES - revise initial setting\",\"caseActionCode\":\"FTFS\"},{\"recordedDate\":\"2024-01-05\",\"caseActionDescriptionText\":\"Application
@@ -1395,7 +1395,124 @@ interactions:
       Gates LLP-Nestec S.A.\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"P.O.
       Box 1135\"}],\"foreignPriorityBag\":[{\"priorityNumberText\":\"17193916.8\",\"filingDate\":\"2017-09-29\",\"countryName\":\"EUROPEAN
       PATENT OFFICE (EPO)\"}],\"applicationConfirmationNumber\":9560,\"smallEntityStatusIndicator\":false,\"subclass\":\"167\",\"publicationCategoryBag\":[\"Pre-Grant
-      Publications - PGPub\"],\"docketNumber\":\"3712036-04650\"},{\"firstInventorToFileIndicator\":\"Y\",\"applicationStatusCode\":30,\"applicationTypeCode\":\"UTL\",\"filingDate\":\"2023-10-10\",\"class/subclass\":\"710/116\",\"recordAttorney\":{\"attorneyBag\":[{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"ANGEL\",\"lastName\":\"HERRERA\",\"registrationNumber\":\"46767\",\"attorneyAddressBag\":[{\"cityName\":\"AUSTIN\",\"geographicRegionName\":\"TEXAS\",\"geographicRegionCode\":\"TX\",\"countryCode\":\"US\",\"postalCode\":\"78759\",\"nameLineOneText\":\"ABEL
+      Publications - PGPub\"],\"docketNumber\":\"3712036-04650\"},{\"firstInventorToFileIndicator\":\"Y\",\"applicationStatusCode\":30,\"applicationTypeCode\":\"UTL\",\"filingDate\":\"2023-10-10\",\"class/subclass\":\"700/276\",\"recordAttorney\":{\"attorneyBag\":[{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"DAVID\",\"lastName\":\"PITTMAN\",\"registrationNumber\":\"66027\",\"attorneyAddressBag\":[{\"cityName\":\"AUSTIN\",\"geographicRegionName\":\"TEXAS\",\"geographicRegionCode\":\"TX\",\"countryCode\":\"US\",\"postalCode\":\"78759\",\"nameLineOneText\":\"ABEL
+      SCHILLINGER, LLP\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"8911
+      N. CAPITAL OF TEXAS HWY\",\"addressLineTwoText\":\"BLDG 4, SUITE 4200\"},{\"cityName\":\"AUSTIN\",\"geographicRegionName\":\"TEXAS\",\"geographicRegionCode\":\"TX\",\"countryCode\":\"US\",\"postalCode\":\"78759\",\"nameLineOneText\":\"ABEL
+      SCHILLINGER, LLP\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"8911
+      N. CAPITAL OF TEXAS HWY\",\"addressLineTwoText\":\"BLDG 4, SUITE 4200\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"312-580-9696\",\"usageTypeCategory\":\"FAX\"},{\"telecommunicationNumber\":\"512-900-8500\",\"usageTypeCategory\":\"TEL\"}],\"registeredPractitionerCategory\":\"AGENT\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"BERNADETTE\",\"lastName\":\"BENNETT\",\"registrationNumber\":\"44532\",\"attorneyAddressBag\":[{\"cityName\":\"AUSTIN\",\"geographicRegionName\":\"TEXAS\",\"geographicRegionCode\":\"TX\",\"countryCode\":\"US\",\"postalCode\":\"78759\",\"nameLineOneText\":\"ABEL
+      LAW GROUP, LLP\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"8911
+      N. CAPITAL  OF TEXAS HWY\",\"addressLineTwoText\":\"BLDG. 4, SUITE 4200\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"512-900-8500\",\"usageTypeCategory\":\"TEL\"}],\"registeredPractitionerCategory\":\"AGENT\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"HERIBERT\",\"lastName\":\"MUENSTERER\",\"registrationNumber\":\"50417\",\"attorneyAddressBag\":[{\"cityName\":\"AUSTIN\",\"geographicRegionName\":\"TEXAS\",\"geographicRegionCode\":\"TX\",\"countryCode\":\"US\",\"postalCode\":\"78731\",\"nameLineOneText\":\"ABEL
+      SCHILLINGER, LLP\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"5929
+      BALCONES DRIVE\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"512-900-8507\",\"usageTypeCategory\":\"TEL\"}],\"registeredPractitionerCategory\":\"AGENT\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"ETHAN\",\"lastName\":\"SCHILLINGER\",\"registrationNumber\":\"58342\",\"attorneyAddressBag\":[{\"cityName\":\"AUSTIN\",\"geographicRegionName\":\"TEXAS\",\"geographicRegionCode\":\"TX\",\"countryCode\":\"US\",\"postalCode\":\"78759\",\"nameLineOneText\":\"ABEL
+      LAW GROUP, LLP\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"8911
+      N. CAPITAL OF TEXAS HWY\",\"addressLineTwoText\":\"BLDG. 4,STE 4200\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"512-900-8500\",\"usageTypeCategory\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"JACLYN\",\"lastName\":\"TORRES\",\"registrationNumber\":\"75702\",\"attorneyAddressBag\":[{\"cityName\":\"AUSTIN\",\"geographicRegionName\":\"TEXAS\",\"geographicRegionCode\":\"TX\",\"countryCode\":\"US\",\"postalCode\":\"78759\",\"nameLineOneText\":\"ABEL
+      LAW GROUP LLP\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"8911
+      N. CAPITAL OF TX HWY\",\"addressLineTwoText\":\"BLDG. 4, SUITE 4200\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"512-900-8535\",\"usageTypeCategory\":\"TEL\"}],\"registeredPractitionerCategory\":\"AGENT\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"MARIA\",\"lastName\":\"AMON\",\"registrationNumber\":\"82214\",\"attorneyAddressBag\":[{\"cityName\":\"AUSTIN\",\"geographicRegionName\":\"TEXAS\",\"geographicRegionCode\":\"TX\",\"countryCode\":\"US\",\"postalCode\":\"78758\",\"nameLineOneText\":\"ABEL
+      IP\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"12414 ALDERBROOK
+      DRIVE\",\"addressLineTwoText\":\"SUITE 201\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"512-900-8518\",\"usageTypeCategory\":\"TEL\"}],\"middleName\":\"I.\",\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"BRETT\",\"lastName\":\"HAMILTON\",\"registrationNumber\":\"66575\",\"attorneyAddressBag\":[{\"cityName\":\"AUSTIN\",\"geographicRegionName\":\"TEXAS\",\"geographicRegionCode\":\"TX\",\"countryCode\":\"US\",\"postalCode\":\"78759\",\"nameLineOneText\":\"ABEL
+      LAW GROUP, LLP\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"8911
+      N CAPITAL OF TEXAS HWY\",\"addressLineTwoText\":\"BLDG. 4, SUITE 4200\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"512-900-8520\",\"usageTypeCategory\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"ANGEL\",\"lastName\":\"HERRERA\",\"registrationNumber\":\"46767\",\"attorneyAddressBag\":[{\"cityName\":\"AUSTIN\",\"geographicRegionName\":\"TEXAS\",\"geographicRegionCode\":\"TX\",\"countryCode\":\"US\",\"postalCode\":\"78759\",\"nameLineOneText\":\"ABEL
+      LAW GROUP, LLP\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"8911
+      N. CAPITAL OF TEXAS HWY\",\"addressLineTwoText\":\"BLDG.4, SUITE 4200\"}],\"nameSuffix\":\"JR\",\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"512-900-8500\",\"usageTypeCategory\":\"TEL\"}],\"registeredPractitionerCategory\":\"AGENT\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"ALEX\",\"lastName\":\"JACOBS\",\"registrationNumber\":\"76319\",\"attorneyAddressBag\":[{\"cityName\":\"ST.
+      LOUIS\",\"geographicRegionName\":\"MISSOURI\",\"geographicRegionCode\":\"MO\",\"countryCode\":\"US\",\"postalCode\":\"63130\",\"countryName\":\"UNITED
+      STATES\",\"addressLineOneText\":\"7330 AMHERST AVENUE\",\"addressLineTwoText\":\"APARTMENT
+      #2W\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"847-797-1354\",\"usageTypeCategory\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"MAX\",\"lastName\":\"KOLAR\",\"registrationNumber\":\"69778\",\"attorneyAddressBag\":[{\"cityName\":\"AUSTIN\",\"geographicRegionName\":\"TEXAS\",\"geographicRegionCode\":\"TX\",\"countryCode\":\"US\",\"postalCode\":\"78759\",\"nameLineOneText\":\"ABEL
+      LAW GROUP, LLP\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"8911
+      N. CAPITAL OF TEXAS HWY\",\"addressLineTwoText\":\"BLDG. 4, SUITE 4200\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"512-900-8500\",\"usageTypeCategory\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"GEORGE\",\"lastName\":\"MEYER\",\"registrationNumber\":\"35284\",\"attorneyAddressBag\":[{\"cityName\":\"PHOENIX\",\"geographicRegionName\":\"ARIZONA\",\"geographicRegionCode\":\"AZ\",\"countryCode\":\"US\",\"postalCode\":\"85064\",\"nameLineOneText\":\"ABEL
+      SCHILLINGER, LLP\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"PO
+      BOX 32335\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"512-900-8500\",\"usageTypeCategory\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"KATRIN\",\"lastName\":\"VENTER\",\"registrationNumber\":\"57634\",\"attorneyAddressBag\":[{\"cityName\":\"HAYMARKET\",\"geographicRegionName\":\"VIRGINIA\",\"geographicRegionCode\":\"VA\",\"countryCode\":\"US\",\"postalCode\":\"20169\",\"nameLineOneText\":\"GROSSMANN
+      INC.\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"15740 PALMER
+      LANE\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"571-214-8271\",\"usageTypeCategory\":\"TEL\"}],\"registeredPractitionerCategory\":\"AGENT\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"JEFFREY\",\"lastName\":\"ABEL\",\"registrationNumber\":\"36079\",\"attorneyAddressBag\":[{\"cityName\":\"AUSTIN\",\"geographicRegionName\":\"TEXAS\",\"geographicRegionCode\":\"TX\",\"countryCode\":\"US\",\"postalCode\":\"78759\",\"nameLineOneText\":\"ABEL
+      LAW GROUP, LLP\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"8911
+      N. CAPITAL OF TEXAS HWY\",\"addressLineTwoText\":\"BLDG. 4, SUITE 4200\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"512-900-8500\",\"usageTypeCategory\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"LEI\",\"lastName\":\"GUO\",\"registrationNumber\":\"68730\",\"attorneyAddressBag\":[{\"cityName\":\"AUSTIN\",\"geographicRegionName\":\"TEXAS\",\"geographicRegionCode\":\"TX\",\"countryCode\":\"US\",\"postalCode\":\"78759\",\"nameLineOneText\":\"ABEL
+      LAW GROUP, LLP\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"8911
+      N. CAPITAL OF TEXAS HIGHWAY\",\"addressLineTwoText\":\"BUILDING 4, SUITE 4200\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"512-900-8500\",\"usageTypeCategory\":\"TEL\"}],\"registeredPractitionerCategory\":\"AGENT\"}],\"customerNumber\":{\"powerOfAttorneyAddressBag\":[{\"cityName\":\"Austin\",\"geographicRegionName\":\"TEXAS\",\"geographicRegionCode\":\"TX\",\"countryCode\":\"US\",\"postalCode\":\"78758\",\"nameLineOneText\":\"Abel
+      Schillinger, LLP\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"12414
+      Alderbrook Drive\",\"addressLineTwoText\":\"Suite 201\"}],\"patronIdentifier\":\"13897.0000000000\"}},\"applicationNumberText\":\"18483735\",\"nationalStageIndicator\":false,\"firstInventorName\":\"Matthias
+      SCHWAIBOLD\",\"cpcClassificationBag\":[\"G05B19/042\",\"A61M16/0858\",\"A61M16/024\",\"A61M16/022\",\"G16H20/40\",\"G16H40/63\",\"A61M16/0066\",\"A61M16/06\",\"A61M2016/0027\",\"A61M2016/0033\",\"A61M2205/3306\",\"A61M2205/3313\",\"A61M2205/3331\",\"A61M2205/3592\",\"A61M2205/50\",\"A61M2205/502\",\"A61M2205/505\",\"A61M2205/507\",\"A61M2205/52\",\"A61M2205/581\",\"A61M2205/583\",\"A61M2205/587\",\"A61M2205/80\",\"G05B2219/2614\",\"G06F3/011\",\"G06F3/017\",\"G06F3/04815\",\"G06F3/167\",\"G06T7/20\",\"G06T2207/10012\",\"G06T2207/10028\",\"G06T2207/10048\",\"G06T2207/30196\"],\"effectiveFilingDate\":\"2023-10-10\",\"publicationDateBag\":[\"2024-02-01\"],\"publicationSequenceNumberBag\":[\"0036542\"],\"earliestPublicationDate\":\"2024-02-01\",\"applicationTypeLabelName\":\"Utility\",\"applicationStatusDate\":\"2023-10-24\",\"class\":\"700\",\"applicationTypeCategory\":\"REGULAR\",\"inventorBag\":[{\"firstName\":\"Matthias\",\"lastName\":\"SCHWAIBOLD\",\"inventorNameText\":\"Matthias
+      SCHWAIBOLD\",\"correspondenceAddressBag\":[{\"cityName\":\"Karlsruhe\",\"countryCode\":\"DE\",\"nameLineOneText\":\"Matthias
+      SCHWAIBOLD\",\"countryName\":\"GERMANY\",\"postalAddressCategory\":\"residence\"},{\"cityName\":\"Karlsruhe\",\"countryCode\":\"DE\",\"postalCode\":\"76228\",\"nameLineOneText\":\"Matthias
+      SCHWAIBOLD\",\"countryName\":\"GERMANY\",\"addressLineOneText\":\"Waldbronner
+      Strasse 57\",\"postalAddressCategory\":\"postal\"}]}],\"patentTermAdjustmentData\":{},\"transactionContentBag\":[{\"recordedDate\":\"2023-10-10\",\"caseActionDescriptionText\":\"Applicants
+      have given acceptable permission for participating foreign\",\"caseActionCode\":\"APPERMS\"},{\"recordedDate\":\"2023-10-10\",\"caseActionDescriptionText\":\"Entity
+      Status Set To Undiscounted (Initial Default Setting or Status Change)\",\"caseActionCode\":\"BIG.\"},{\"recordedDate\":\"2023-10-10\",\"caseActionDescriptionText\":\"Initial
+      Exam Team nn\",\"caseActionCode\":\"IEXX\"},{\"recordedDate\":\"2023-10-10\",\"caseActionDescriptionText\":\"PTO/SB/69-Authorize
+      EPO Access to Search Results\",\"caseActionCode\":\"SREXR141\"},{\"recordedDate\":\"2023-10-23\",\"caseActionDescriptionText\":\"FITF
+      set to YES - revise initial setting\",\"caseActionCode\":\"FTFS\"},{\"recordedDate\":\"2023-10-23\",\"caseActionDescriptionText\":\"Sent
+      to Classification Contractor\",\"caseActionCode\":\"PGPC\"},{\"recordedDate\":\"2023-10-23\",\"caseActionDescriptionText\":\"Patent
+      Term Adjustment - Ready for Examination\",\"caseActionCode\":\"PTA.RFE\"},{\"recordedDate\":\"2023-10-24\",\"caseActionDescriptionText\":\"Application
+      Is Now Complete\",\"caseActionCode\":\"COMP\"},{\"recordedDate\":\"2023-10-24\",\"caseActionDescriptionText\":\"Case
+      Docketed to Examiner in GAU\",\"caseActionCode\":\"DOCK\"},{\"recordedDate\":\"2023-10-24\",\"caseActionDescriptionText\":\"Email
+      Notification\",\"caseActionCode\":\"EML_NTR\"},{\"recordedDate\":\"2023-10-24\",\"caseActionDescriptionText\":\"Filing
+      Receipt\",\"caseActionCode\":\"FLRCPT.O\"},{\"recordedDate\":\"2023-10-24\",\"caseActionDescriptionText\":\"Mail
+      Pre-Exam Notice\",\"caseActionCode\":\"MPEN\"},{\"recordedDate\":\"2023-10-24\",\"caseActionDescriptionText\":\"Application
+      Dispatched from OIPE\",\"caseActionCode\":\"OIPE\"},{\"recordedDate\":\"2024-02-01\",\"caseActionDescriptionText\":\"Application
+      ready for PDX access by participating foreign offices\",\"caseActionCode\":\"CCRDY\"},{\"recordedDate\":\"2024-02-02\",\"caseActionDescriptionText\":\"Email
+      Notification\",\"caseActionCode\":\"EML_NTR\"},{\"recordedDate\":\"2024-02-02\",\"caseActionDescriptionText\":\"PG-Pub
+      Issue Notification\",\"caseActionCode\":\"PG-ISSUE\"},{\"recordedDate\":\"2024-02-29\",\"caseActionDescriptionText\":\"Information
+      Disclosure Statement (IDS) Filed\",\"caseActionCode\":\"M844\"},{\"recordedDate\":\"2024-02-29\",\"caseActionDescriptionText\":\"Information
+      Disclosure Statement (IDS) Filed\",\"caseActionCode\":\"WIDS\"}],\"applicationStatusDescriptionText\":\"Docketed
+      New Case - Ready for Examination\",\"businessEntityStatusCategory\":\"Regular
+      Undiscounted\",\"continuityBag\":{\"parentContinuityBag\":[{\"applicationStatusCode\":150,\"claimParentageTypeCode\":\"CON\",\"aiaIndicator\":true,\"filingDate\":\"2018-12-17\",\"applicationStatusDescriptionText\":\"Patented
+      Case\",\"claimParentageTypeCodeDescription\":\"is a Continuation of\",\"parentApplicationNumberText\":\"16222400\",\"patentNumber\":\"11815866\",\"childApplicationNumberText\":\"18483735\"}]},\"applicantBag\":[{\"applicant\":\"Loewenstein
+      Medical Technology S.A.\",\"correspondenceAddressBag\":[{\"cityName\":\"Luxembourg\",\"countryCode\":\"LU\",\"postalCode\":\"2557\",\"nameLineOneText\":\"Loewenstein
+      Medical Technology S.A.\",\"countryName\":\"LUXEMBOURG\"}]}],\"firstApplicantName\":\"Loewenstein
+      Medical Technology S.A.\",\"customerNumber\":13897,\"groupArtUnitNumber\":\"OPAP\",\"earliestPublicationNumber\":\"US
+      2024-0036542 A1\",\"inventionTitle\":\"VENTILATOR COMPRISING A DEVICE FOR CONTACTLESS
+      DETECTION OF OPERATIONS CARRIED OUT BY A USER\",\"correspondenceAddressBag\":[{\"cityName\":\"Austin\",\"geographicRegionName\":\"TEXAS\",\"geographicRegionCode\":\"TX\",\"countryCode\":\"US\",\"postalCode\":\"78758\",\"nameLineOneText\":\"Abel
+      Schillinger, LLP\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"12414
+      Alderbrook Drive\",\"addressLineTwoText\":\"Suite 201\"}],\"foreignPriorityBag\":[{\"priorityNumberText\":\"102017011690.3\",\"filingDate\":\"2017-12-18\",\"countryName\":\"GERMANY\"}],\"applicationConfirmationNumber\":4085,\"smallEntityStatusIndicator\":false,\"subclass\":\"276\",\"publicationCategoryBag\":[\"Pre-Grant
+      Publications - PGPub\"],\"docketNumber\":\"6580-P50819\"},{\"firstInventorToFileIndicator\":\"Y\",\"applicationStatusCode\":30,\"applicationTypeCode\":\"UTL\",\"filingDate\":\"2023-10-10\",\"class/subclass\":\"524/174\",\"recordAttorney\":{\"customerNumber\":{}},\"applicationNumberText\":\"18483687\",\"nationalStageIndicator\":false,\"firstInventorName\":\"Olavo
+      Martins Junior\",\"cpcClassificationBag\":[\"C08K5/56\",\"C07F5/062\",\"C08F10/02\",\"C08F10/06\",\"C08K2201/001\"],\"effectiveFilingDate\":\"2023-10-10\",\"publicationDateBag\":[\"2024-02-01\"],\"publicationSequenceNumberBag\":[\"0034858\"],\"earliestPublicationDate\":\"2024-02-01\",\"applicationTypeLabelName\":\"Utility\",\"applicationStatusDate\":\"2023-10-26\",\"class\":\"524\",\"applicationTypeCategory\":\"REGULAR\",\"inventorBag\":[{\"firstName\":\"Olavo\",\"lastName\":\"Martins
+      Junior\",\"inventorNameText\":\"Olavo Martins Junior\",\"correspondenceAddressBag\":[{\"cityName\":\"S\xE3o
+      Paulo\",\"countryCode\":\"BR\",\"nameLineOneText\":\"Martins Junior,Olavo\",\"countryName\":\"BRAZIL\",\"postalAddressCategory\":\"residence\"},{\"cityName\":\"S\xE3o
+      Paulo City\",\"countryCode\":\"BR\",\"postalCode\":\"05501-050\",\"nameLineOneText\":\"Martins
+      Junior,Olavo\",\"countryName\":\"BRAZIL\",\"addressLineOneText\":\"Rua Lemos
+      Monteiro, 120, 23rd floor\",\"postalAddressCategory\":\"postal\"}]},{\"firstName\":\"Dihogenes\",\"lastName\":\"Pozzer\",\"inventorNameText\":\"Dihogenes
+      Adriano Pozzer\",\"middleName\":\"Adriano\",\"correspondenceAddressBag\":[{\"cityName\":\"S\xE3o
+      Paulo\",\"countryCode\":\"BR\",\"nameLineOneText\":\"Pozzer,Dihogenes,Adriano\",\"countryName\":\"BRAZIL\",\"postalAddressCategory\":\"residence\"},{\"cityName\":\"S\xE3o
+      Paulo City\",\"countryCode\":\"BR\",\"postalCode\":\"05501-050\",\"nameLineOneText\":\"Pozzer,Dihogenes,Adriano\",\"countryName\":\"BRAZIL\",\"addressLineOneText\":\"Rua
+      Lemos Monteiro, 120, 23rd floor\",\"postalAddressCategory\":\"postal\"}]},{\"firstName\":\"\xC9lita\",\"lastName\":\"Cavalli\",\"inventorNameText\":\"\xC9lita
+      Cavalli\",\"correspondenceAddressBag\":[{\"cityName\":\"S\xE3o Paulo\",\"countryCode\":\"BR\",\"nameLineOneText\":\"Cavalli,\xC9lita\",\"countryName\":\"BRAZIL\",\"postalAddressCategory\":\"residence\"},{\"cityName\":\"S\xE3o
+      Paulo City\",\"countryCode\":\"BR\",\"postalCode\":\"05501-050\",\"nameLineOneText\":\"Cavalli,\xC9lita\",\"countryName\":\"BRAZIL\",\"addressLineOneText\":\"Rua
+      Lemos Monteiro, 120, 23rd floor\",\"postalAddressCategory\":\"postal\"}]},{\"firstName\":\"Adriano\",\"lastName\":\"Fisch\",\"inventorNameText\":\"Adriano
+      Giraldi Fisch\",\"middleName\":\"Giraldi\",\"correspondenceAddressBag\":[{\"cityName\":\"S\xE3o
+      Paulo\",\"countryCode\":\"BR\",\"nameLineOneText\":\"Fisch,Adriano,Giraldi\",\"countryName\":\"BRAZIL\",\"postalAddressCategory\":\"residence\"},{\"cityName\":\"S\xE3o
+      Paulo City\",\"countryCode\":\"BR\",\"postalCode\":\"05501-050\",\"nameLineOneText\":\"Fisch,Adriano,Giraldi\",\"countryName\":\"BRAZIL\",\"addressLineOneText\":\"Rua
+      Lemos Monteiro, 120, 23rd floor\",\"postalAddressCategory\":\"postal\"}]},{\"firstName\":\"Roberto\",\"lastName\":\"Jimenez\",\"inventorNameText\":\"Roberto
+      Os\xF3rio Jimenez\",\"middleName\":\"Os\xF3rio\",\"correspondenceAddressBag\":[{\"cityName\":\"S\xE3o
+      Paulo City\",\"countryCode\":\"BR\",\"nameLineOneText\":\"Jimenez,Roberto,Os\xF3rio\",\"countryName\":\"BRAZIL\",\"postalAddressCategory\":\"residence\"},{\"cityName\":\"S\xE3o
+      Paulo City\",\"countryCode\":\"BR\",\"postalCode\":\"05501-050\",\"nameLineOneText\":\"Jimenez,Roberto,Os\xF3rio\",\"countryName\":\"BRAZIL\",\"addressLineOneText\":\"Rua
+      Lemos Monteiro, 120, 23rd floor\",\"postalAddressCategory\":\"postal\"}]}],\"patentTermAdjustmentData\":{},\"transactionContentBag\":[{\"recordedDate\":\"2023-10-10\",\"caseActionDescriptionText\":\"Initial
+      Exam Team nn\",\"caseActionCode\":\"IEXX\"},{\"recordedDate\":\"2023-10-10\",\"caseActionDescriptionText\":\"Entity
+      Status Set To Undiscounted (Initial Default Setting or Status Change)\",\"caseActionCode\":\"BIG.\"},{\"recordedDate\":\"2023-10-10\",\"caseActionDescriptionText\":\"PTO/SB/69-Authorize
+      EPO Access to Search Results\",\"caseActionCode\":\"SREXR141\"},{\"recordedDate\":\"2023-10-26\",\"caseActionDescriptionText\":\"Mail
+      Pre-Exam Notice\",\"caseActionCode\":\"MPEN\"},{\"recordedDate\":\"2023-10-26\",\"caseActionDescriptionText\":\"Application
+      Is Now Complete\",\"caseActionCode\":\"COMP\"},{\"recordedDate\":\"2023-10-26\",\"caseActionDescriptionText\":\"Application
+      Dispatched from OIPE\",\"caseActionCode\":\"OIPE\"},{\"recordedDate\":\"2023-10-10\",\"caseActionDescriptionText\":\"Applicants
+      have given acceptable permission for participating foreign\",\"caseActionCode\":\"APPERMS\"},{\"recordedDate\":\"2023-10-26\",\"caseActionDescriptionText\":\"Case
+      Docketed to Examiner in GAU\",\"caseActionCode\":\"DOCK\"},{\"recordedDate\":\"2023-10-25\",\"caseActionDescriptionText\":\"Patent
+      Term Adjustment - Ready for Examination\",\"caseActionCode\":\"PTA.RFE\"},{\"recordedDate\":\"2023-10-26\",\"caseActionDescriptionText\":\"Email
+      Notification\",\"caseActionCode\":\"EML_NTR\"},{\"recordedDate\":\"2023-10-25\",\"caseActionDescriptionText\":\"FITF
+      set to YES - revise initial setting\",\"caseActionCode\":\"FTFS\"},{\"recordedDate\":\"2023-10-26\",\"caseActionDescriptionText\":\"Filing
+      Receipt\",\"caseActionCode\":\"FLRCPT.O\"},{\"recordedDate\":\"2023-10-25\",\"caseActionDescriptionText\":\"Sent
+      to Classification Contractor\",\"caseActionCode\":\"PGPC\"},{\"recordedDate\":\"2024-02-02\",\"caseActionDescriptionText\":\"Email
+      Notification\",\"caseActionCode\":\"EML_NTR\"},{\"recordedDate\":\"2024-02-01\",\"caseActionDescriptionText\":\"PG-Pub
+      Issue Notification\",\"caseActionCode\":\"PG-ISSUE\"},{\"recordedDate\":\"2024-02-01\",\"caseActionDescriptionText\":\"Application
+      ready for PDX access by participating foreign offices\",\"caseActionCode\":\"CCRDY\"}],\"applicationStatusDescriptionText\":\"Docketed
+      New Case - Ready for Examination\",\"businessEntityStatusCategory\":\"Regular
+      Undiscounted\",\"continuityBag\":{\"parentContinuityBag\":[{\"applicationStatusCode\":150,\"claimParentageTypeCode\":\"CON\",\"aiaIndicator\":true,\"filingDate\":\"2019-12-27\",\"applicationStatusDescriptionText\":\"Patented
+      Case\",\"claimParentageTypeCodeDescription\":\"is a Continuation of\",\"parentApplicationNumberText\":\"16728802\",\"patentNumber\":\"11820879\",\"childApplicationNumberText\":\"18483687\"},{\"applicationStatusCode\":159,\"claimParentageTypeCode\":\"PRO\",\"filingDate\":\"2018-12-28\",\"applicationStatusDescriptionText\":\"Provisional
+      Application Expired\",\"claimParentageTypeCodeDescription\":\"Claims priority
+      from a provisional application\",\"parentApplicationNumberText\":\"62785846\",\"childApplicationNumberText\":\"16728802\"}]},\"applicantBag\":[{\"applicant\":\"Braskem
+      S.A.\",\"correspondenceAddressBag\":[{\"cityName\":\"Cama\xE7ari\",\"countryCode\":\"BR\",\"postalCode\":\"42810-000\",\"nameLineOneText\":\"Braskem
+      S.A.\",\"countryName\":\"BRAZIL\",\"addressLineOneText\":\"Rua Eteno, 1561\",\"addressLineTwoText\":\"Complexo
+      Petroqu\xEDmico de Cama\xE7ari\"}]}],\"firstApplicantName\":\"Braskem S.A.\",\"customerNumber\":158712,\"groupArtUnitNumber\":\"1763\",\"earliestPublicationNumber\":\"US
+      2024-0034858 A1\",\"inventionTitle\":\"CONTINUOUS FEED OF ANTISTATIC AGENT FOR
+      GAS PHASE POLYMERIZATION PROCESS\",\"correspondenceAddressBag\":[{\"cityName\":\"Houston\",\"geographicRegionName\":\"TEXAS\",\"geographicRegionCode\":\"TX\",\"countryCode\":\"US\",\"postalCode\":\"77002\",\"nameLineOneText\":\"Osha
+      Bergman Watanabe & Burton LLP / Braskem\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"Enterprise
+      Plaza\",\"addressLineTwoText\":\"1100 Louisiana, Suite 4900\"}],\"applicationConfirmationNumber\":1847,\"smallEntityStatusIndicator\":false,\"subclass\":\"174\",\"publicationCategoryBag\":[\"Pre-Grant
+      Publications - PGPub\"],\"docketNumber\":\"18489-039003\"},{\"firstInventorToFileIndicator\":\"Y\",\"applicationStatusCode\":30,\"applicationTypeCode\":\"UTL\",\"filingDate\":\"2023-10-10\",\"class/subclass\":\"710/116\",\"recordAttorney\":{\"attorneyBag\":[{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"ANGEL\",\"lastName\":\"HERRERA\",\"registrationNumber\":\"46767\",\"attorneyAddressBag\":[{\"cityName\":\"AUSTIN\",\"geographicRegionName\":\"TEXAS\",\"geographicRegionCode\":\"TX\",\"countryCode\":\"US\",\"postalCode\":\"78759\",\"nameLineOneText\":\"ABEL
       LAW GROUP, LLP\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"8911
       N. CAPITAL OF TEXAS HWY\",\"addressLineTwoText\":\"BLDG.4, SUITE 4200\"}],\"nameSuffix\":\"JR\",\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"512-900-8500\",\"usageTypeCategory\":\"TEL\"}],\"registeredPractitionerCategory\":\"AGENT\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"MARIA\",\"lastName\":\"AMON\",\"registrationNumber\":\"82214\",\"attorneyAddressBag\":[{\"cityName\":\"AUSTIN\",\"geographicRegionName\":\"TEXAS\",\"geographicRegionCode\":\"TX\",\"countryCode\":\"US\",\"postalCode\":\"78758\",\"nameLineOneText\":\"ABEL
       IP\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"12414 ALDERBROOK
@@ -1470,124 +1587,7 @@ interactions:
       2024-0045817 A1\",\"inventionTitle\":\"PRIORITIZATION OF INTERFACES OF A VENTILATOR\",\"correspondenceAddressBag\":[{\"cityName\":\"Austin\",\"geographicRegionName\":\"TEXAS\",\"geographicRegionCode\":\"TX\",\"countryCode\":\"US\",\"postalCode\":\"78758\",\"nameLineOneText\":\"Abel
       Schillinger, LLP\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"12414
       Alderbrook Drive\",\"addressLineTwoText\":\"Suite 201\"}],\"foreignPriorityBag\":[{\"priorityNumberText\":\"102020121835.4\",\"filingDate\":\"2020-08-20\",\"countryName\":\"GERMANY\"}],\"applicationConfirmationNumber\":4794,\"smallEntityStatusIndicator\":false,\"subclass\":\"116\",\"publicationCategoryBag\":[\"Pre-Grant
-      Publications - PGPub\"],\"docketNumber\":\"6580-P50818\"},{\"firstInventorToFileIndicator\":\"Y\",\"applicationStatusCode\":30,\"applicationTypeCode\":\"UTL\",\"filingDate\":\"2023-10-10\",\"class/subclass\":\"524/174\",\"recordAttorney\":{\"customerNumber\":{}},\"applicationNumberText\":\"18483687\",\"nationalStageIndicator\":false,\"firstInventorName\":\"Olavo
-      Martins Junior\",\"cpcClassificationBag\":[\"C08K5/56\",\"C07F5/062\",\"C08F10/02\",\"C08F10/06\",\"C08K2201/001\"],\"effectiveFilingDate\":\"2023-10-10\",\"publicationDateBag\":[\"2024-02-01\"],\"publicationSequenceNumberBag\":[\"0034858\"],\"earliestPublicationDate\":\"2024-02-01\",\"applicationTypeLabelName\":\"Utility\",\"applicationStatusDate\":\"2023-10-26\",\"class\":\"524\",\"applicationTypeCategory\":\"REGULAR\",\"inventorBag\":[{\"firstName\":\"Olavo\",\"lastName\":\"Martins
-      Junior\",\"inventorNameText\":\"Olavo Martins Junior\",\"correspondenceAddressBag\":[{\"cityName\":\"S\xE3o
-      Paulo\",\"countryCode\":\"BR\",\"nameLineOneText\":\"Martins Junior,Olavo\",\"countryName\":\"BRAZIL\",\"postalAddressCategory\":\"residence\"},{\"cityName\":\"S\xE3o
-      Paulo City\",\"countryCode\":\"BR\",\"postalCode\":\"05501-050\",\"nameLineOneText\":\"Martins
-      Junior,Olavo\",\"countryName\":\"BRAZIL\",\"addressLineOneText\":\"Rua Lemos
-      Monteiro, 120, 23rd floor\",\"postalAddressCategory\":\"postal\"}]},{\"firstName\":\"Dihogenes\",\"lastName\":\"Pozzer\",\"inventorNameText\":\"Dihogenes
-      Adriano Pozzer\",\"middleName\":\"Adriano\",\"correspondenceAddressBag\":[{\"cityName\":\"S\xE3o
-      Paulo\",\"countryCode\":\"BR\",\"nameLineOneText\":\"Pozzer,Dihogenes,Adriano\",\"countryName\":\"BRAZIL\",\"postalAddressCategory\":\"residence\"},{\"cityName\":\"S\xE3o
-      Paulo City\",\"countryCode\":\"BR\",\"postalCode\":\"05501-050\",\"nameLineOneText\":\"Pozzer,Dihogenes,Adriano\",\"countryName\":\"BRAZIL\",\"addressLineOneText\":\"Rua
-      Lemos Monteiro, 120, 23rd floor\",\"postalAddressCategory\":\"postal\"}]},{\"firstName\":\"\xC9lita\",\"lastName\":\"Cavalli\",\"inventorNameText\":\"\xC9lita
-      Cavalli\",\"correspondenceAddressBag\":[{\"cityName\":\"S\xE3o Paulo\",\"countryCode\":\"BR\",\"nameLineOneText\":\"Cavalli,\xC9lita\",\"countryName\":\"BRAZIL\",\"postalAddressCategory\":\"residence\"},{\"cityName\":\"S\xE3o
-      Paulo City\",\"countryCode\":\"BR\",\"postalCode\":\"05501-050\",\"nameLineOneText\":\"Cavalli,\xC9lita\",\"countryName\":\"BRAZIL\",\"addressLineOneText\":\"Rua
-      Lemos Monteiro, 120, 23rd floor\",\"postalAddressCategory\":\"postal\"}]},{\"firstName\":\"Adriano\",\"lastName\":\"Fisch\",\"inventorNameText\":\"Adriano
-      Giraldi Fisch\",\"middleName\":\"Giraldi\",\"correspondenceAddressBag\":[{\"cityName\":\"S\xE3o
-      Paulo\",\"countryCode\":\"BR\",\"nameLineOneText\":\"Fisch,Adriano,Giraldi\",\"countryName\":\"BRAZIL\",\"postalAddressCategory\":\"residence\"},{\"cityName\":\"S\xE3o
-      Paulo City\",\"countryCode\":\"BR\",\"postalCode\":\"05501-050\",\"nameLineOneText\":\"Fisch,Adriano,Giraldi\",\"countryName\":\"BRAZIL\",\"addressLineOneText\":\"Rua
-      Lemos Monteiro, 120, 23rd floor\",\"postalAddressCategory\":\"postal\"}]},{\"firstName\":\"Roberto\",\"lastName\":\"Jimenez\",\"inventorNameText\":\"Roberto
-      Os\xF3rio Jimenez\",\"middleName\":\"Os\xF3rio\",\"correspondenceAddressBag\":[{\"cityName\":\"S\xE3o
-      Paulo City\",\"countryCode\":\"BR\",\"nameLineOneText\":\"Jimenez,Roberto,Os\xF3rio\",\"countryName\":\"BRAZIL\",\"postalAddressCategory\":\"residence\"},{\"cityName\":\"S\xE3o
-      Paulo City\",\"countryCode\":\"BR\",\"postalCode\":\"05501-050\",\"nameLineOneText\":\"Jimenez,Roberto,Os\xF3rio\",\"countryName\":\"BRAZIL\",\"addressLineOneText\":\"Rua
-      Lemos Monteiro, 120, 23rd floor\",\"postalAddressCategory\":\"postal\"}]}],\"patentTermAdjustmentData\":{},\"transactionContentBag\":[{\"recordedDate\":\"2023-10-10\",\"caseActionDescriptionText\":\"Initial
-      Exam Team nn\",\"caseActionCode\":\"IEXX\"},{\"recordedDate\":\"2023-10-10\",\"caseActionDescriptionText\":\"Entity
-      Status Set To Undiscounted (Initial Default Setting or Status Change)\",\"caseActionCode\":\"BIG.\"},{\"recordedDate\":\"2023-10-10\",\"caseActionDescriptionText\":\"PTO/SB/69-Authorize
-      EPO Access to Search Results\",\"caseActionCode\":\"SREXR141\"},{\"recordedDate\":\"2023-10-26\",\"caseActionDescriptionText\":\"Mail
-      Pre-Exam Notice\",\"caseActionCode\":\"MPEN\"},{\"recordedDate\":\"2023-10-26\",\"caseActionDescriptionText\":\"Application
-      Is Now Complete\",\"caseActionCode\":\"COMP\"},{\"recordedDate\":\"2023-10-26\",\"caseActionDescriptionText\":\"Application
-      Dispatched from OIPE\",\"caseActionCode\":\"OIPE\"},{\"recordedDate\":\"2023-10-10\",\"caseActionDescriptionText\":\"Applicants
-      have given acceptable permission for participating foreign\",\"caseActionCode\":\"APPERMS\"},{\"recordedDate\":\"2023-10-26\",\"caseActionDescriptionText\":\"Case
-      Docketed to Examiner in GAU\",\"caseActionCode\":\"DOCK\"},{\"recordedDate\":\"2023-10-25\",\"caseActionDescriptionText\":\"Patent
-      Term Adjustment - Ready for Examination\",\"caseActionCode\":\"PTA.RFE\"},{\"recordedDate\":\"2023-10-26\",\"caseActionDescriptionText\":\"Email
-      Notification\",\"caseActionCode\":\"EML_NTR\"},{\"recordedDate\":\"2023-10-25\",\"caseActionDescriptionText\":\"FITF
-      set to YES - revise initial setting\",\"caseActionCode\":\"FTFS\"},{\"recordedDate\":\"2023-10-26\",\"caseActionDescriptionText\":\"Filing
-      Receipt\",\"caseActionCode\":\"FLRCPT.O\"},{\"recordedDate\":\"2023-10-25\",\"caseActionDescriptionText\":\"Sent
-      to Classification Contractor\",\"caseActionCode\":\"PGPC\"},{\"recordedDate\":\"2024-02-02\",\"caseActionDescriptionText\":\"Email
-      Notification\",\"caseActionCode\":\"EML_NTR\"},{\"recordedDate\":\"2024-02-01\",\"caseActionDescriptionText\":\"PG-Pub
-      Issue Notification\",\"caseActionCode\":\"PG-ISSUE\"},{\"recordedDate\":\"2024-02-01\",\"caseActionDescriptionText\":\"Application
-      ready for PDX access by participating foreign offices\",\"caseActionCode\":\"CCRDY\"}],\"applicationStatusDescriptionText\":\"Docketed
-      New Case - Ready for Examination\",\"businessEntityStatusCategory\":\"Regular
-      Undiscounted\",\"continuityBag\":{\"parentContinuityBag\":[{\"applicationStatusCode\":150,\"claimParentageTypeCode\":\"CON\",\"aiaIndicator\":true,\"filingDate\":\"2019-12-27\",\"applicationStatusDescriptionText\":\"Patented
-      Case\",\"claimParentageTypeCodeDescription\":\"is a Continuation of\",\"parentApplicationNumberText\":\"16728802\",\"patentNumber\":\"11820879\",\"childApplicationNumberText\":\"18483687\"},{\"applicationStatusCode\":159,\"claimParentageTypeCode\":\"PRO\",\"filingDate\":\"2018-12-28\",\"applicationStatusDescriptionText\":\"Provisional
-      Application Expired\",\"claimParentageTypeCodeDescription\":\"Claims priority
-      from a provisional application\",\"parentApplicationNumberText\":\"62785846\",\"childApplicationNumberText\":\"16728802\"}]},\"applicantBag\":[{\"applicant\":\"Braskem
-      S.A.\",\"correspondenceAddressBag\":[{\"cityName\":\"Cama\xE7ari\",\"countryCode\":\"BR\",\"postalCode\":\"42810-000\",\"nameLineOneText\":\"Braskem
-      S.A.\",\"countryName\":\"BRAZIL\",\"addressLineOneText\":\"Rua Eteno, 1561\",\"addressLineTwoText\":\"Complexo
-      Petroqu\xEDmico de Cama\xE7ari\"}]}],\"firstApplicantName\":\"Braskem S.A.\",\"customerNumber\":158712,\"groupArtUnitNumber\":\"1763\",\"earliestPublicationNumber\":\"US
-      2024-0034858 A1\",\"inventionTitle\":\"CONTINUOUS FEED OF ANTISTATIC AGENT FOR
-      GAS PHASE POLYMERIZATION PROCESS\",\"correspondenceAddressBag\":[{\"cityName\":\"Houston\",\"geographicRegionName\":\"TEXAS\",\"geographicRegionCode\":\"TX\",\"countryCode\":\"US\",\"postalCode\":\"77002\",\"nameLineOneText\":\"Osha
-      Bergman Watanabe & Burton LLP / Braskem\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"Enterprise
-      Plaza\",\"addressLineTwoText\":\"1100 Louisiana, Suite 4900\"}],\"applicationConfirmationNumber\":1847,\"smallEntityStatusIndicator\":false,\"subclass\":\"174\",\"publicationCategoryBag\":[\"Pre-Grant
-      Publications - PGPub\"],\"docketNumber\":\"18489-039003\"},{\"firstInventorToFileIndicator\":\"Y\",\"applicationStatusCode\":30,\"applicationTypeCode\":\"UTL\",\"filingDate\":\"2023-10-10\",\"class/subclass\":\"700/276\",\"recordAttorney\":{\"attorneyBag\":[{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"DAVID\",\"lastName\":\"PITTMAN\",\"registrationNumber\":\"66027\",\"attorneyAddressBag\":[{\"cityName\":\"AUSTIN\",\"geographicRegionName\":\"TEXAS\",\"geographicRegionCode\":\"TX\",\"countryCode\":\"US\",\"postalCode\":\"78759\",\"nameLineOneText\":\"ABEL
-      SCHILLINGER, LLP\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"8911
-      N. CAPITAL OF TEXAS HWY\",\"addressLineTwoText\":\"BLDG 4, SUITE 4200\"},{\"cityName\":\"AUSTIN\",\"geographicRegionName\":\"TEXAS\",\"geographicRegionCode\":\"TX\",\"countryCode\":\"US\",\"postalCode\":\"78759\",\"nameLineOneText\":\"ABEL
-      SCHILLINGER, LLP\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"8911
-      N. CAPITAL OF TEXAS HWY\",\"addressLineTwoText\":\"BLDG 4, SUITE 4200\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"312-580-9696\",\"usageTypeCategory\":\"FAX\"},{\"telecommunicationNumber\":\"512-900-8500\",\"usageTypeCategory\":\"TEL\"}],\"registeredPractitionerCategory\":\"AGENT\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"BERNADETTE\",\"lastName\":\"BENNETT\",\"registrationNumber\":\"44532\",\"attorneyAddressBag\":[{\"cityName\":\"AUSTIN\",\"geographicRegionName\":\"TEXAS\",\"geographicRegionCode\":\"TX\",\"countryCode\":\"US\",\"postalCode\":\"78759\",\"nameLineOneText\":\"ABEL
-      LAW GROUP, LLP\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"8911
-      N. CAPITAL  OF TEXAS HWY\",\"addressLineTwoText\":\"BLDG. 4, SUITE 4200\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"512-900-8500\",\"usageTypeCategory\":\"TEL\"}],\"registeredPractitionerCategory\":\"AGENT\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"HERIBERT\",\"lastName\":\"MUENSTERER\",\"registrationNumber\":\"50417\",\"attorneyAddressBag\":[{\"cityName\":\"AUSTIN\",\"geographicRegionName\":\"TEXAS\",\"geographicRegionCode\":\"TX\",\"countryCode\":\"US\",\"postalCode\":\"78731\",\"nameLineOneText\":\"ABEL
-      SCHILLINGER, LLP\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"5929
-      BALCONES DRIVE\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"512-900-8507\",\"usageTypeCategory\":\"TEL\"}],\"registeredPractitionerCategory\":\"AGENT\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"ETHAN\",\"lastName\":\"SCHILLINGER\",\"registrationNumber\":\"58342\",\"attorneyAddressBag\":[{\"cityName\":\"AUSTIN\",\"geographicRegionName\":\"TEXAS\",\"geographicRegionCode\":\"TX\",\"countryCode\":\"US\",\"postalCode\":\"78759\",\"nameLineOneText\":\"ABEL
-      LAW GROUP, LLP\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"8911
-      N. CAPITAL OF TEXAS HWY\",\"addressLineTwoText\":\"BLDG. 4,STE 4200\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"512-900-8500\",\"usageTypeCategory\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"JACLYN\",\"lastName\":\"TORRES\",\"registrationNumber\":\"75702\",\"attorneyAddressBag\":[{\"cityName\":\"AUSTIN\",\"geographicRegionName\":\"TEXAS\",\"geographicRegionCode\":\"TX\",\"countryCode\":\"US\",\"postalCode\":\"78759\",\"nameLineOneText\":\"ABEL
-      LAW GROUP LLP\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"8911
-      N. CAPITAL OF TX HWY\",\"addressLineTwoText\":\"BLDG. 4, SUITE 4200\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"512-900-8535\",\"usageTypeCategory\":\"TEL\"}],\"registeredPractitionerCategory\":\"AGENT\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"MARIA\",\"lastName\":\"AMON\",\"registrationNumber\":\"82214\",\"attorneyAddressBag\":[{\"cityName\":\"AUSTIN\",\"geographicRegionName\":\"TEXAS\",\"geographicRegionCode\":\"TX\",\"countryCode\":\"US\",\"postalCode\":\"78758\",\"nameLineOneText\":\"ABEL
-      IP\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"12414 ALDERBROOK
-      DRIVE\",\"addressLineTwoText\":\"SUITE 201\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"512-900-8518\",\"usageTypeCategory\":\"TEL\"}],\"middleName\":\"I.\",\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"BRETT\",\"lastName\":\"HAMILTON\",\"registrationNumber\":\"66575\",\"attorneyAddressBag\":[{\"cityName\":\"AUSTIN\",\"geographicRegionName\":\"TEXAS\",\"geographicRegionCode\":\"TX\",\"countryCode\":\"US\",\"postalCode\":\"78759\",\"nameLineOneText\":\"ABEL
-      LAW GROUP, LLP\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"8911
-      N CAPITAL OF TEXAS HWY\",\"addressLineTwoText\":\"BLDG. 4, SUITE 4200\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"512-900-8520\",\"usageTypeCategory\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"ANGEL\",\"lastName\":\"HERRERA\",\"registrationNumber\":\"46767\",\"attorneyAddressBag\":[{\"cityName\":\"AUSTIN\",\"geographicRegionName\":\"TEXAS\",\"geographicRegionCode\":\"TX\",\"countryCode\":\"US\",\"postalCode\":\"78759\",\"nameLineOneText\":\"ABEL
-      LAW GROUP, LLP\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"8911
-      N. CAPITAL OF TEXAS HWY\",\"addressLineTwoText\":\"BLDG.4, SUITE 4200\"}],\"nameSuffix\":\"JR\",\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"512-900-8500\",\"usageTypeCategory\":\"TEL\"}],\"registeredPractitionerCategory\":\"AGENT\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"ALEX\",\"lastName\":\"JACOBS\",\"registrationNumber\":\"76319\",\"attorneyAddressBag\":[{\"cityName\":\"ST.
-      LOUIS\",\"geographicRegionName\":\"MISSOURI\",\"geographicRegionCode\":\"MO\",\"countryCode\":\"US\",\"postalCode\":\"63130\",\"countryName\":\"UNITED
-      STATES\",\"addressLineOneText\":\"7330 AMHERST AVENUE\",\"addressLineTwoText\":\"APARTMENT
-      #2W\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"847-797-1354\",\"usageTypeCategory\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"MAX\",\"lastName\":\"KOLAR\",\"registrationNumber\":\"69778\",\"attorneyAddressBag\":[{\"cityName\":\"AUSTIN\",\"geographicRegionName\":\"TEXAS\",\"geographicRegionCode\":\"TX\",\"countryCode\":\"US\",\"postalCode\":\"78759\",\"nameLineOneText\":\"ABEL
-      LAW GROUP, LLP\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"8911
-      N. CAPITAL OF TEXAS HWY\",\"addressLineTwoText\":\"BLDG. 4, SUITE 4200\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"512-900-8500\",\"usageTypeCategory\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"GEORGE\",\"lastName\":\"MEYER\",\"registrationNumber\":\"35284\",\"attorneyAddressBag\":[{\"cityName\":\"PHOENIX\",\"geographicRegionName\":\"ARIZONA\",\"geographicRegionCode\":\"AZ\",\"countryCode\":\"US\",\"postalCode\":\"85064\",\"nameLineOneText\":\"ABEL
-      SCHILLINGER, LLP\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"PO
-      BOX 32335\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"512-900-8500\",\"usageTypeCategory\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"KATRIN\",\"lastName\":\"VENTER\",\"registrationNumber\":\"57634\",\"attorneyAddressBag\":[{\"cityName\":\"HAYMARKET\",\"geographicRegionName\":\"VIRGINIA\",\"geographicRegionCode\":\"VA\",\"countryCode\":\"US\",\"postalCode\":\"20169\",\"nameLineOneText\":\"GROSSMANN
-      INC.\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"15740 PALMER
-      LANE\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"571-214-8271\",\"usageTypeCategory\":\"TEL\"}],\"registeredPractitionerCategory\":\"AGENT\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"JEFFREY\",\"lastName\":\"ABEL\",\"registrationNumber\":\"36079\",\"attorneyAddressBag\":[{\"cityName\":\"AUSTIN\",\"geographicRegionName\":\"TEXAS\",\"geographicRegionCode\":\"TX\",\"countryCode\":\"US\",\"postalCode\":\"78759\",\"nameLineOneText\":\"ABEL
-      LAW GROUP, LLP\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"8911
-      N. CAPITAL OF TEXAS HWY\",\"addressLineTwoText\":\"BLDG. 4, SUITE 4200\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"512-900-8500\",\"usageTypeCategory\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"LEI\",\"lastName\":\"GUO\",\"registrationNumber\":\"68730\",\"attorneyAddressBag\":[{\"cityName\":\"AUSTIN\",\"geographicRegionName\":\"TEXAS\",\"geographicRegionCode\":\"TX\",\"countryCode\":\"US\",\"postalCode\":\"78759\",\"nameLineOneText\":\"ABEL
-      LAW GROUP, LLP\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"8911
-      N. CAPITAL OF TEXAS HIGHWAY\",\"addressLineTwoText\":\"BUILDING 4, SUITE 4200\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"512-900-8500\",\"usageTypeCategory\":\"TEL\"}],\"registeredPractitionerCategory\":\"AGENT\"}],\"customerNumber\":{\"powerOfAttorneyAddressBag\":[{\"cityName\":\"Austin\",\"geographicRegionName\":\"TEXAS\",\"geographicRegionCode\":\"TX\",\"countryCode\":\"US\",\"postalCode\":\"78758\",\"nameLineOneText\":\"Abel
-      Schillinger, LLP\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"12414
-      Alderbrook Drive\",\"addressLineTwoText\":\"Suite 201\"}],\"patronIdentifier\":\"13897.0000000000\"}},\"applicationNumberText\":\"18483735\",\"nationalStageIndicator\":false,\"firstInventorName\":\"Matthias
-      SCHWAIBOLD\",\"cpcClassificationBag\":[\"G05B19/042\",\"A61M16/0858\",\"A61M16/024\",\"A61M16/022\",\"G16H20/40\",\"G16H40/63\",\"A61M16/0066\",\"A61M16/06\",\"A61M2016/0027\",\"A61M2016/0033\",\"A61M2205/3306\",\"A61M2205/3313\",\"A61M2205/3331\",\"A61M2205/3592\",\"A61M2205/50\",\"A61M2205/502\",\"A61M2205/505\",\"A61M2205/507\",\"A61M2205/52\",\"A61M2205/581\",\"A61M2205/583\",\"A61M2205/587\",\"A61M2205/80\",\"G05B2219/2614\",\"G06F3/011\",\"G06F3/017\",\"G06F3/04815\",\"G06F3/167\",\"G06T7/20\",\"G06T2207/10012\",\"G06T2207/10028\",\"G06T2207/10048\",\"G06T2207/30196\"],\"effectiveFilingDate\":\"2023-10-10\",\"publicationDateBag\":[\"2024-02-01\"],\"publicationSequenceNumberBag\":[\"0036542\"],\"earliestPublicationDate\":\"2024-02-01\",\"applicationTypeLabelName\":\"Utility\",\"applicationStatusDate\":\"2023-10-24\",\"class\":\"700\",\"applicationTypeCategory\":\"REGULAR\",\"inventorBag\":[{\"firstName\":\"Matthias\",\"lastName\":\"SCHWAIBOLD\",\"inventorNameText\":\"Matthias
-      SCHWAIBOLD\",\"correspondenceAddressBag\":[{\"cityName\":\"Karlsruhe\",\"countryCode\":\"DE\",\"nameLineOneText\":\"Matthias
-      SCHWAIBOLD\",\"countryName\":\"GERMANY\",\"postalAddressCategory\":\"residence\"},{\"cityName\":\"Karlsruhe\",\"countryCode\":\"DE\",\"postalCode\":\"76228\",\"nameLineOneText\":\"Matthias
-      SCHWAIBOLD\",\"countryName\":\"GERMANY\",\"addressLineOneText\":\"Waldbronner
-      Strasse 57\",\"postalAddressCategory\":\"postal\"}]}],\"patentTermAdjustmentData\":{},\"transactionContentBag\":[{\"recordedDate\":\"2023-10-10\",\"caseActionDescriptionText\":\"Applicants
-      have given acceptable permission for participating foreign\",\"caseActionCode\":\"APPERMS\"},{\"recordedDate\":\"2023-10-10\",\"caseActionDescriptionText\":\"Entity
-      Status Set To Undiscounted (Initial Default Setting or Status Change)\",\"caseActionCode\":\"BIG.\"},{\"recordedDate\":\"2023-10-10\",\"caseActionDescriptionText\":\"Initial
-      Exam Team nn\",\"caseActionCode\":\"IEXX\"},{\"recordedDate\":\"2023-10-10\",\"caseActionDescriptionText\":\"PTO/SB/69-Authorize
-      EPO Access to Search Results\",\"caseActionCode\":\"SREXR141\"},{\"recordedDate\":\"2023-10-23\",\"caseActionDescriptionText\":\"FITF
-      set to YES - revise initial setting\",\"caseActionCode\":\"FTFS\"},{\"recordedDate\":\"2023-10-23\",\"caseActionDescriptionText\":\"Sent
-      to Classification Contractor\",\"caseActionCode\":\"PGPC\"},{\"recordedDate\":\"2023-10-23\",\"caseActionDescriptionText\":\"Patent
-      Term Adjustment - Ready for Examination\",\"caseActionCode\":\"PTA.RFE\"},{\"recordedDate\":\"2023-10-24\",\"caseActionDescriptionText\":\"Application
-      Is Now Complete\",\"caseActionCode\":\"COMP\"},{\"recordedDate\":\"2023-10-24\",\"caseActionDescriptionText\":\"Case
-      Docketed to Examiner in GAU\",\"caseActionCode\":\"DOCK\"},{\"recordedDate\":\"2023-10-24\",\"caseActionDescriptionText\":\"Email
-      Notification\",\"caseActionCode\":\"EML_NTR\"},{\"recordedDate\":\"2023-10-24\",\"caseActionDescriptionText\":\"Filing
-      Receipt\",\"caseActionCode\":\"FLRCPT.O\"},{\"recordedDate\":\"2023-10-24\",\"caseActionDescriptionText\":\"Mail
-      Pre-Exam Notice\",\"caseActionCode\":\"MPEN\"},{\"recordedDate\":\"2023-10-24\",\"caseActionDescriptionText\":\"Application
-      Dispatched from OIPE\",\"caseActionCode\":\"OIPE\"},{\"recordedDate\":\"2024-02-01\",\"caseActionDescriptionText\":\"Application
-      ready for PDX access by participating foreign offices\",\"caseActionCode\":\"CCRDY\"},{\"recordedDate\":\"2024-02-02\",\"caseActionDescriptionText\":\"Email
-      Notification\",\"caseActionCode\":\"EML_NTR\"},{\"recordedDate\":\"2024-02-02\",\"caseActionDescriptionText\":\"PG-Pub
-      Issue Notification\",\"caseActionCode\":\"PG-ISSUE\"},{\"recordedDate\":\"2024-02-29\",\"caseActionDescriptionText\":\"Information
-      Disclosure Statement (IDS) Filed\",\"caseActionCode\":\"M844\"},{\"recordedDate\":\"2024-02-29\",\"caseActionDescriptionText\":\"Information
-      Disclosure Statement (IDS) Filed\",\"caseActionCode\":\"WIDS\"}],\"applicationStatusDescriptionText\":\"Docketed
-      New Case - Ready for Examination\",\"businessEntityStatusCategory\":\"Regular
-      Undiscounted\",\"continuityBag\":{\"parentContinuityBag\":[{\"applicationStatusCode\":150,\"claimParentageTypeCode\":\"CON\",\"aiaIndicator\":true,\"filingDate\":\"2018-12-17\",\"applicationStatusDescriptionText\":\"Patented
-      Case\",\"claimParentageTypeCodeDescription\":\"is a Continuation of\",\"parentApplicationNumberText\":\"16222400\",\"patentNumber\":\"11815866\",\"childApplicationNumberText\":\"18483735\"}]},\"applicantBag\":[{\"applicant\":\"Loewenstein
-      Medical Technology S.A.\",\"correspondenceAddressBag\":[{\"cityName\":\"Luxembourg\",\"countryCode\":\"LU\",\"postalCode\":\"2557\",\"nameLineOneText\":\"Loewenstein
-      Medical Technology S.A.\",\"countryName\":\"LUXEMBOURG\"}]}],\"firstApplicantName\":\"Loewenstein
-      Medical Technology S.A.\",\"customerNumber\":13897,\"groupArtUnitNumber\":\"OPAP\",\"earliestPublicationNumber\":\"US
-      2024-0036542 A1\",\"inventionTitle\":\"VENTILATOR COMPRISING A DEVICE FOR CONTACTLESS
-      DETECTION OF OPERATIONS CARRIED OUT BY A USER\",\"correspondenceAddressBag\":[{\"cityName\":\"Austin\",\"geographicRegionName\":\"TEXAS\",\"geographicRegionCode\":\"TX\",\"countryCode\":\"US\",\"postalCode\":\"78758\",\"nameLineOneText\":\"Abel
-      Schillinger, LLP\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"12414
-      Alderbrook Drive\",\"addressLineTwoText\":\"Suite 201\"}],\"foreignPriorityBag\":[{\"priorityNumberText\":\"102017011690.3\",\"filingDate\":\"2017-12-18\",\"countryName\":\"GERMANY\"}],\"applicationConfirmationNumber\":4085,\"smallEntityStatusIndicator\":false,\"subclass\":\"276\",\"publicationCategoryBag\":[\"Pre-Grant
-      Publications - PGPub\"],\"docketNumber\":\"6580-P50819\"},{\"firstInventorToFileIndicator\":\"Y\",\"applicationStatusCode\":30,\"applicationTypeCode\":\"UTL\",\"filingDate\":\"2023-10-09\",\"class/subclass\":\"526/281\",\"recordAttorney\":{\"attorneyBag\":[{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"BRADLEY\",\"lastName\":\"ROUSH\",\"registrationNumber\":\"61062\",\"attorneyAddressBag\":[{\"cityName\":\"WASHINGTON\",\"geographicRegionName\":\"DISTRICT
+      Publications - PGPub\"],\"docketNumber\":\"6580-P50818\"},{\"firstInventorToFileIndicator\":\"Y\",\"applicationStatusCode\":30,\"applicationTypeCode\":\"UTL\",\"filingDate\":\"2023-10-09\",\"class/subclass\":\"526/281\",\"recordAttorney\":{\"attorneyBag\":[{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"BRADLEY\",\"lastName\":\"ROUSH\",\"registrationNumber\":\"61062\",\"attorneyAddressBag\":[{\"cityName\":\"WASHINGTON\",\"geographicRegionName\":\"DISTRICT
       OF COLUMBIA\",\"geographicRegionCode\":\"DC\",\"countryCode\":\"US\",\"postalCode\":\"20007\",\"nameLineOneText\":\"FOLEY
       & LARDNER LLP\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"3000
       K STREET\",\"addressLineTwoText\":\"NW STE.600\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"202-295-4166\",\"usageTypeCategory\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"JEFFREY\",\"lastName\":\"LOMPREY\",\"registrationNumber\":\"55401\",\"attorneyAddressBag\":[{\"cityName\":\"MADISON\",\"geographicRegionName\":\"WISCONSIN\",\"geographicRegionCode\":\"WI\",\"countryCode\":\"US\",\"postalCode\":\"53701-149\",\"nameLineOneText\":\"FOLEY
@@ -1930,28 +1930,26 @@ interactions:
       DEVICE WITH HEATER ACTUATION MECHANISM\",\"correspondenceAddressBag\":[{\"cityName\":\"MINNEAPOLIS\",\"geographicRegionName\":\"MINNESOTA\",\"geographicRegionCode\":\"MN\",\"countryCode\":\"US\",\"postalCode\":\"55401\",\"nameLineOneText\":\"MUETING
       RAASCH GROUP\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"111
       WASHINGTON AVE. S., SUITE 700\"}],\"foreignPriorityBag\":[{\"priorityNumberText\":\"21167582.2\",\"filingDate\":\"2021-04-09\",\"countryName\":\"EUROPEAN
-      PATENT OFFICE (EPO)\"}],\"applicationConfirmationNumber\":7235,\"smallEntityStatusIndicator\":false,\"subclass\":\"328\",\"publicationCategoryBag\":[\"Other\"],\"docketNumber\":\"0642.002916US01\"}],\"requestIdentifier\":\"43f80c32-0109-4763-b52a-bbe77196a37f\"}"
+      PATENT OFFICE (EPO)\"}],\"applicationConfirmationNumber\":7235,\"smallEntityStatusIndicator\":false,\"subclass\":\"328\",\"publicationCategoryBag\":[\"Other\"],\"docketNumber\":\"0642.002916US01\"}],\"requestIdentifier\":\"63156078-a346-4c99-9215-4b64941b252f\"}"
     headers:
-      Connection:
-      - keep-alive
-      Content-Length:
-      - '353484'
-      Content-Type:
-      - application/json
-      Date:
-      - Wed, 24 Apr 2024 16:55:36 GMT
-      X-Amzn-Trace-Id:
-      - Root=1-66293988-57b9bc207bc34bd475778b54;Parent=19e3aede8d54bf3d;Sampled=0;lineage=33e8fdb8:0
       access-control-allow-headers:
       - Origin, X-Requested-With, Content-Type, Accept
       access-control-allow-methods:
       - OPTIONS,POST,GET
       access-control-allow-origin:
       - '*'
+      content-length:
+      - '353484'
+      content-type:
+      - application/json
+      date:
+      - Fri, 03 May 2024 17:31:32 GMT
       x-amz-apigw-id:
-      - WvXtYGk-IAMFVqw=
-      x-amzn-RequestId:
-      - 43f80c32-0109-4763-b52a-bbe77196a37f
-    http_version: HTTP/1.1
+      - XNHaOFw8IAMF09w=
+      x-amzn-requestid:
+      - 63156078-a346-4c99-9215-4b64941b252f
+      x-amzn-trace-id:
+      - Root=1-66351f74-38edd13f4bcc7b1e270610cb;Parent=06382afbb115bea5;Sampled=0;lineage=33e8fdb8:0
+    http_version: HTTP/2
     status_code: 200
 version: 1

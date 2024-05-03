@@ -1,5 +1,9 @@
 # Changelog
 
+## 5.0.5 (2024-05-02)
+- Fix issue where ODP API returns 404 when there are no results - now returns an empty manager.
+- Fix issue where older applications don't have certain fields set in ODP.
+
 ## 5.0.4 (2024-05-02)
 - Fix importing of USPTO Open Data Portal models from top level patent_client object.
 

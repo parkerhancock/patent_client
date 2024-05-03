@@ -27,7 +27,7 @@ api = ODPApi()
 
 class USApplicationManager(AsyncManager):
     default_filter = "appl_id"
-    default_fields = []
+    default_fields = ["applicationNumberText"]
     response_model = USApplication
 
     async def count(self):
@@ -42,7 +42,9 @@ class USApplicationManager(AsyncManager):
             page_query["pagination"] = {"offset": start, "limit": rows}
             page_query_obj = SearchRequest(**page_query)
             for result in (await api.post_search(page_query_obj))["patentBag"]:
-                yield self.response_model(**result)
+                app_id = result["applicationNumberText"]
+                app = await api.get_application_data(app_id)
+                yield app
 
     def _create_search_obj(self, fields: tp.Optional[tp.List[str]] = None):
         if fields is None:
@@ -75,6 +77,15 @@ class USApplicationBiblioManager(USApplicationManager):
         "earliestPublicationNumber",
     ]
     response_model = USApplicationBiblio
+
+    async def _get_results(self) -> tp.AsyncIterator["SearchResult"]:
+        query_obj = self._create_search_obj()
+        for start, rows in get_start_and_row_count(self.config.limit):
+            page_query = query_obj.model_dump()
+            page_query["pagination"] = {"offset": start, "limit": rows}
+            page_query_obj = SearchRequest(**page_query)
+            for result in (await api.post_search(page_query_obj))["patentBag"]:
+                yield self.response_model(**result)
 
 
 class AttributeManager(AsyncManager):
