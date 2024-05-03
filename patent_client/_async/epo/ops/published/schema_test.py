@@ -6,13 +6,7 @@ import pytest
 
 from patent_client.util.test import compare_dicts
 
-from .schema import (
-    BiblioResultSchema,
-    ClaimsSchema,
-    DescriptionSchema,
-    ImagesSchema,
-    SearchSchema,
-)
+from .schema import BiblioResultSchema, ClaimsSchema, DescriptionSchema, ImagesSchema, SearchSchema
 
 test_dir = Path(__file__).parent / "test"
 expected_dir = Path(__file__).parent / "test" / "expected"
@@ -87,8 +81,7 @@ def test_full_cycle():
     assert len(result.documents) == 2
     d = result.documents[0]
     assert (
-        d.title
-        == "Apparatus for manufacturing green bricks for the brick manufacturing industry"
+        d.title == "Apparatus for manufacturing green bricks for the brick manufacturing industry"
     )
 
 

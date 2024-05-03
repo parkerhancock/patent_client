@@ -6,10 +6,10 @@
 
 import datetime
 import logging
+import typing as tp
 from collections.abc import Sequence
 from pathlib import Path
 from tempfile import TemporaryDirectory
-import typing as tp
 
 from dateutil.parser import parse as dt_parse
 from pypdf import PdfMerger
@@ -67,9 +67,7 @@ class USApplicationManager(Manager["USApplication"]):
         for start, rows in get_start_and_row_count(
             self.config.limit, self.config.offset, page_size=20
         ):
-            page = api.create_query(
-                **{**query_params, "start": start, "rows": rows}
-            )
+            page = api.create_query(**{**query_params, "start": start, "rows": rows})
             for app in page.applications:
                 yield app
                 counter += 1
@@ -105,9 +103,7 @@ class USApplicationManager(Manager["USApplication"]):
                             f"Invalid date filter: {k}={v}; Cannot have more than one operator"
                         )
                     if op[0] not in ("gte", "lte"):
-                        raise ValueError(
-                            f"Invalid date filter: {k}={v}; Invalid operator: {op[0]}"
-                        )
+                        raise ValueError(f"Invalid date filter: {k}={v}; Invalid operator: {op[0]}")
                     if isinstance(v, (list, tuple)):
                         raise ValueError(
                             f"Invalid date filter: {k}={v}; Cannot have multiple values with operator {op[0]}"
@@ -128,21 +124,13 @@ class USApplicationManager(Manager["USApplication"]):
             for k, op, v in date_filter_tuples:
                 if op == "gte":
                     lte_query = next(
-                        (
-                            v
-                            for k, op, v in date_filter_tuples
-                            if k == k and op == "lte"
-                        ),
+                        (v for k, op, v in date_filter_tuples if k == k and op == "lte"),
                         "*",
                     )
                     query_date_filter_tuples.add((k, (v, lte_query)))
                 elif op == "lte":
                     gte_query = next(
-                        (
-                            v
-                            for k, op, v in date_filter_tuples
-                            if k == k and op == "gte"
-                        ),
+                        (v for k, op, v in date_filter_tuples if k == k and op == "gte"),
                         "*",
                     )
                     query_date_filter_tuples.add((k, (gte_query, v)))

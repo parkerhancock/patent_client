@@ -51,9 +51,7 @@ def convert_doc(doc):
         del output[key]
     # Collect the correspondent into a dict
     corr_address_fields = ["corrAddress1", "corrAddress2", "corrAddress3"]
-    correspondent_address = "\n".join(
-        output[k] for k in corr_address_fields if k in output
-    )
+    correspondent_address = "\n".join(output[k] for k in corr_address_fields if k in output)
     if correspondent_address:
         output["corr_address"] = correspondent_address
     for key in corr_address_fields:
@@ -69,9 +67,7 @@ def convert_doc(doc):
     # Collect the address for each assignee into a single string
     for assignee in output["assignees"]:
         address_lines = "\n".join(
-            assignee[k]
-            for k in ["patAssigneeAddress1", "patAssigneeAddress2"]
-            if assignee[k]
+            assignee[k] for k in ["patAssigneeAddress1", "patAssigneeAddress2"] if assignee[k]
         )
         last_line = f"{assignee['patAssigneeCity']}, {assignee['patAssigneeState']} {assignee['patAssigneePostcode']}"
         if assignee["patAssigneeCountryName"]:

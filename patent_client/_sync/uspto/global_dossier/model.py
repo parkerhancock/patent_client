@@ -8,7 +8,6 @@ import datetime
 import typing as tp
 from pathlib import Path
 
-
 from pydantic import BeforeValidator, ConfigDict, Field, model_validator
 from pydantic.alias_generators import to_camel
 from typing_extensions import Annotated
@@ -66,9 +65,7 @@ class GlobalDossierApplication(GlobalDossierBaseModel):
     title: tp.Optional[str] = None
     applicant_names: OptionalStrList = Field(default_factory=list)
     ip_5: tp.Optional[bool] = Field(alias="ip5")
-    priority_claim_list: "tp.List[GlobalDossierPriorityClaim]" = Field(
-        default_factory=list
-    )
+    priority_claim_list: "tp.List[GlobalDossierPriorityClaim]" = Field(default_factory=list)
     pub_list: "tp.List[GlobalDossierPublication]" = Field(default_factory=list)
 
     def __repr__(self):
@@ -99,48 +96,34 @@ class GlobalDossierApplication(GlobalDossierBaseModel):
     @property
     def us_application(self) -> "USApplication":
         if self.country_code != "US":
-            raise ValueError(
-                f"Global Dossier Application is not a US Application! {self}"
-            )
-        return self._get_model("..peds.model.USApplication").objects.get(
-            self.app_num
-        )
+            raise ValueError(f"Global Dossier Application is not a US Application! {self}")
+        return self._get_model("..peds.model.USApplication").objects.get(self.app_num)
 
     @property
     def us_publication(self) -> "PublishedApplication":
         if self.country_code != "US":
-            raise ValueError(
-                f"Global Dossier Application is not a US Application! {self}"
-            )
+            raise ValueError(f"Global Dossier Application is not a US Application! {self}")
         pub = list(p for p in self.pub_list if p.kind_code == "A1")
         if len(pub) > 1:
             raise ValueError("More than one US publication for application!")
-        return self._get_model(
-            "..public_search.model.PublishedApplication"
-        ).objects.get(pub[0].pub_num)
+        return self._get_model("..public_search.model.PublishedApplication").objects.get(
+            pub[0].pub_num
+        )
 
     @property
     def us_patent(self) -> "Patent":
         if self.country_code != "US":
-            raise ValueError(
-                f"Global Dossier Application is not a US Application! {self}"
-            )
+            raise ValueError(f"Global Dossier Application is not a US Application! {self}")
         pat = list(p for p in self.pub_list if p.kind_code in ("A", "B1", "B2"))
         if len(pat) > 1:
             raise ValueError("More than one US patent for application!")
-        return self._get_model("..public_search.model.Patent").objects.get(
-            pat[0].pub_num
-        )
+        return self._get_model("..public_search.model.Patent").objects.get(pat[0].pub_num)
 
     @property
     def us_assignments(self) -> list["Assignment"]:
         if self.country_code != "US":
-            raise ValueError(
-                f"Global Dossier Application is not a US Application! {self}"
-            )
-        return self._get_model("..assignment.model.Assignment").objects.filter(
-            appl_id=self.app_num
-        )
+            raise ValueError(f"Global Dossier Application is not a US Application! {self}")
+        return self._get_model("..assignment.model.Assignment").objects.filter(appl_id=self.app_num)
 
 
 TextBool = Annotated[bool, BeforeValidator(lambda x: x == "true")]
@@ -152,9 +135,7 @@ class GlobalDossier(GlobalDossierBaseModel):
     corr_app_num: tp.Optional[str] = None
     id: tp.Optional[str] = None
     type: tp.Optional[str] = None
-    applications: tp.List[GlobalDossierApplication] = Field(
-        default_factory=list, alias="list"
-    )
+    applications: tp.List[GlobalDossierApplication] = Field(default_factory=list, alias="list")
 
     def __repr__(self):
         return f"GlobalDossier(id={self.id}, type={self.type}, country={self.country})"

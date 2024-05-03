@@ -77,17 +77,13 @@ class TestAssignment:
     @pytest.mark.asyncio
     async def test_slice_assignments(self):
         assignments = Assignment.objects.filter(assignee="US Well Services")
-        assignment_list1 = [
-            assignment.id async for assignment in await assignments[0:5]
-        ]
+        assignment_list1 = [assignment.id async for assignment in await assignments[0:5]]
         assert len(assignment_list1) == 5
 
         assignment_list2 = [assignment.id async for assignment in await assignments[:5]]
         assert len(assignment_list2) == 5
 
-        assignment_list3 = [
-            assignment.id async for assignment in await assignments[-5:]
-        ]
+        assignment_list3 = [assignment.id async for assignment in await assignments[-5:]]
         assert len(assignment_list3) == 5
 
     @pytest.mark.asyncio

@@ -4,10 +4,8 @@
 # *         Source File: patent_client/_async/uspto/odp/manager_test.py          *
 # ********************************************************************************
 
-import pytest
 
 from .manager import USApplicationBiblioManager, USApplicationManager
-
 
 
 def test_all_apps():
@@ -15,12 +13,10 @@ def test_all_apps():
     assert manager.count() > 1000
 
 
-
 def test_get_one_app():
     app = USApplicationManager().get(q="applicationNumberText:16123456")
     assert app is not None
     assert app.appl_id == "16123456"
-
 
 
 def test_get_app_from_search_result():
@@ -30,13 +26,11 @@ def test_get_app_from_search_result():
     assert application.appl_id == "16123456"
 
 
-
 def test_get_app_biblio_from_search_result():
     manager = USApplicationBiblioManager()
     result = manager.get(q="applicationNumberText:16123456")
     biblio = result.biblio
     assert biblio.appl_id == "16123456"
-
 
 
 def test_get_continuity_from_search_result():
@@ -46,7 +40,6 @@ def test_get_continuity_from_search_result():
     assert len(continuity.child_continuity) > 0
 
 
-
 def test_get_documents_from_search_result():
     manager = USApplicationBiblioManager()
     result = manager.get(q="applicationNumberText:16123456")
@@ -54,12 +47,10 @@ def test_get_documents_from_search_result():
     assert documents.count() > 0
 
 
-
 def test_simple_keyword_searches():
     manager = USApplicationManager()
     result = manager.get("16123456")
     assert result.appl_id == "16123456"
-
 
 
 def test_combination_search():

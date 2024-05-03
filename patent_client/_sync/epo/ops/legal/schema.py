@@ -109,9 +109,7 @@ class LegalEventSchema(Schema):
     def deserialize(self, obj) -> "Dict":
         obj = super().deserialize(obj)
         if obj.event_code == "REG":
-            code_data = code_db.get_code_data(
-                obj.event_country, obj.regional_event_code
-            )
+            code_data = code_db.get_code_data(obj.event_country, obj.regional_event_code)
             obj["event_code"] = obj.event_country + "." + obj.regional_event_code
         else:
             code_data = code_db.get_code_data(obj.country_code, obj.event_code)
@@ -121,7 +119,5 @@ class LegalEventSchema(Schema):
 
 
 class LegalSchema(Schema):
-    publication_reference = DocumentIdSchema(
-        ".//ops:patent-family/ops:publication-reference"
-    )
+    publication_reference = DocumentIdSchema(".//ops:patent-family/ops:publication-reference")
     events = f.List(LegalEventSchema, ".//ops:legal")

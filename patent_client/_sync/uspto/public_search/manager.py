@@ -4,7 +4,7 @@
 # *       Source File: patent_client/_async/uspto/public_search/manager.py       *
 # ********************************************************************************
 
-from typing import Iterator, Generic, TypeVar
+from typing import Generic, Iterator, TypeVar
 
 from patent_client.util.manager import Manager
 from patent_client.util.request_util import get_start_and_row_count
@@ -106,9 +106,7 @@ class PublicSearchBiblioManager(GenericPublicSearchBiblioManager[PublicSearchBib
     pass
 
 
-class PublicSearchDocumentManager(
-    GenericPublicSearchDocumentManager[PublicSearchDocument]
-):
+class PublicSearchDocumentManager(GenericPublicSearchDocumentManager[PublicSearchDocument]):
     pass
 
 
@@ -138,9 +136,7 @@ class PublishedApplicationBiblioManager(
         ]
 
 
-class PublishedApplicationManager(
-    GenericPublicSearchDocumentManager[PublishedApplication]
-):
+class PublishedApplicationManager(GenericPublicSearchDocumentManager[PublishedApplication]):
     def __init__(self, config=None):
         super().__init__(config=config)
         self.config.options["sources"] = [

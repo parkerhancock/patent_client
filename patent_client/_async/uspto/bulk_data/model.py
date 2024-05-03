@@ -36,6 +36,4 @@ class Product(BaseModel):
     to_date: datetime.date = Field(alias="productToDate")
     number_of_files: int = Field(alias="numberOfFiles")
     parent_product: tp.Optional[str] = Field(alias="parentProduct", default=None)
-    files: tp.Optional[tp.List[File]] = Field(
-        alias="productFiles", default_factory=list
-    )
+    files: tp.Optional[tp.List[File]] = Field(alias="productFiles", default_factory=list)

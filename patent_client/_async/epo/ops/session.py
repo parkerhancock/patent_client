@@ -74,9 +74,9 @@ class OpsAuth(httpx.Auth):
                     "Failed to authenticate with EPO OPS! Please check your credentials. See the setup instructions at https://patent-client.readthedocs.io/en/stable/getting_started.html"
                 )
             data = response.json()
-            self.expires = dt.datetime.fromtimestamp(
-                int(data["issued_at"]) / 1000
-            ) + dt.timedelta(seconds=int(data["expires_in"]))
+            self.expires = dt.datetime.fromtimestamp(int(data["issued_at"]) / 1000) + dt.timedelta(
+                seconds=int(data["expires_in"])
+            )
             self.authorization_header = f"Bearer {data['access_token']}"
             request.headers["Authorization"] = self.authorization_header
             yield request

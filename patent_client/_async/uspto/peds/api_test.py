@@ -12,15 +12,11 @@ async def test_can_get_app():
 
 @pytest.mark.asyncio
 async def test_can_search_by_customer_number():
-    result = await PatentExaminationDataSystemApi().create_query(
-        "appCustNumber:(70155)"
-    )
+    result = await PatentExaminationDataSystemApi().create_query("appCustNumber:(70155)")
     assert result.num_found > 10
 
 
 @pytest.mark.asyncio
 async def test_can_limit_by_rows():
-    result = await PatentExaminationDataSystemApi().create_query(
-        "appCustNumber:(70155)", rows=5
-    )
+    result = await PatentExaminationDataSystemApi().create_query("appCustNumber:(70155)", rows=5)
     assert len(result.applications) == 5

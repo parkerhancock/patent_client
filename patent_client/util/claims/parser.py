@@ -72,8 +72,7 @@ class ClaimsParser(object):
             "number": number,
             # "text": NUMBER_RE.sub("", text),
             "limitations": [
-                clean_text("".join(lim))
-                for lim in list(grouper(LIMITATION_RE.split(text), 2, ""))
+                clean_text("".join(lim)) for lim in list(grouper(LIMITATION_RE.split(text), 2, ""))
             ],
             "depends_on": self.parse_dependency(text, number),
             "dependent_claims": list(),
@@ -84,8 +83,7 @@ class ClaimsParser(object):
         if dependency is not None:
             claims = dependency.groupdict()["number"]
             claim_numbers = [
-                int(m.groupdict()["number"])
-                for m in DEPENDENT_CLAIMS_RE.finditer(claims)
+                int(m.groupdict()["number"]) for m in DEPENDENT_CLAIMS_RE.finditer(claims)
             ]
             return claim_numbers
         elif DEPEND_ALL_RE.search(text):

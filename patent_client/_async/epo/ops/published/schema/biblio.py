@@ -88,12 +88,8 @@ class InpadocBiblioSchema(Schema):
     titles = f.List(TitleSchema, ".//epo:invention-title")
     abstract = f.Str('.//epo:abstract[@lang="en"]')
     citations = f.List(CitationSchema, ".//epo:citation")
-    applicants_epodoc = f.List(
-        f.Str(), './/epo:applicant[@data-format="epodoc"]//epo:name'
-    )
-    applicants_original = f.List(
-        f.Str(), './/epo:applicant[@data-format="original"]//epo:name'
-    )
+    applicants_epodoc = f.List(f.Str(), './/epo:applicant[@data-format="epodoc"]//epo:name')
+    applicants_original = f.List(f.Str(), './/epo:applicant[@data-format="original"]//epo:name')
     inventors_epodoc = f.List(f.Str(), './/epo:inventor[@data-format="epodoc"]')
     inventors_original = f.List(f.Str(), './/epo:inventor[@data-format="original"]')
 

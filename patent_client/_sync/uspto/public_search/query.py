@@ -23,9 +23,7 @@ class QueryBuilder:
         with config_file.open(encoding="utf-8-sig") as csvfile:
             reader = csv.DictReader(csvfile)
             config = list(reader)
-        self.search_keywords = {
-            r["keyword"]: r["query_field"] for r in config if r["query_field"]
-        }
+        self.search_keywords = {r["keyword"]: r["query_field"] for r in config if r["query_field"]}
         self.order_by_keywords = {
             r["keyword"]: r["order_by_field"] for r in config if r["order_by_field"]
         }

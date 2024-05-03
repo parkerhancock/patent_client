@@ -5,19 +5,10 @@
 # ********************************************************************************
 
 import datetime
-from pathlib import Path
 import typing as tp
+from pathlib import Path
 
-
-from dateutil.relativedelta import relativedelta
-from pydantic import (
-    AliasPath,
-    BeforeValidator,
-    ConfigDict,
-    Field,
-    computed_field,
-    model_validator,
-)
+from pydantic import AliasPath, BeforeValidator, ConfigDict, Field, computed_field, model_validator
 from pydantic.alias_generators import to_camel
 from typing_extensions import Annotated, Self
 
@@ -121,6 +112,7 @@ class USApplication(PEDSBaseModel):
     app_filing_date: Date
     app_exam_name: tp.Optional[str] = None
     public_ind: YNBool
+    app_confr_number: tp.Optional[str] = None
     inventor_name: tp.Optional[str] = None
     app_early_pub_number: tp.Optional[str] = None
     app_early_pub_date: tp.Optional[Date] = None
@@ -152,28 +144,39 @@ class USApplication(PEDSBaseModel):
 
     @property
     def attorneys(self):
-        raise RemovedDataException("Attorney information is no longer available in PEDS. Use the ODP client to retrieve this information:\nhttps://patent-client.readthedocs.io/en/latest/user_guide/open_data_portal.html")
+        raise RemovedDataException(
+            "Attorney information is no longer available in PEDS. Use the ODP client to retrieve this information:\nhttps://patent-client.readthedocs.io/en/latest/user_guide/open_data_portal.html"
+        )
 
     @property
     def expiration(self):
-        raise RemovedDataException("PTA information is no longer available in PEDS. Use the ODP client to retrieve this information:\nhttps://patent-client.readthedocs.io/en/latest/user_guide/open_data_portal.html")
-    
+        raise RemovedDataException(
+            "PTA information is no longer available in PEDS. Use the ODP client to retrieve this information:\nhttps://patent-client.readthedocs.io/en/latest/user_guide/open_data_portal.html"
+        )
+
     @property
     def pta_pte_summary(self):
-        raise RemovedDataException("PTA information is no longer available in PEDS. Use the ODP client to retrieve this information:\nhttps://patent-client.readthedocs.io/en/latest/user_guide/open_data_portal.html")
-    
+        raise RemovedDataException(
+            "PTA information is no longer available in PEDS. Use the ODP client to retrieve this information:\nhttps://patent-client.readthedocs.io/en/latest/user_guide/open_data_portal.html"
+        )
+
     @property
     def pta_pte_tran_history(self):
-        raise RemovedDataException("Continuity information is no longer available in PEDS. Use the ODP client to retrieve this information:\nhttps://patent-client.readthedocs.io/en/latest/user_guide/open_data_portal.html")
-    
+        raise RemovedDataException(
+            "Continuity information is no longer available in PEDS. Use the ODP client to retrieve this information:\nhttps://patent-client.readthedocs.io/en/latest/user_guide/open_data_portal.html"
+        )
+
     @property
     def parent_continuity(self):
-        raise RemovedDataException("Continuity information is no longer available in PEDS. Use the ODP client to retrieve this information:\nhttps://patent-client.readthedocs.io/en/latest/user_guide/open_data_portal.html")
-    
+        raise RemovedDataException(
+            "Continuity information is no longer available in PEDS. Use the ODP client to retrieve this information:\nhttps://patent-client.readthedocs.io/en/latest/user_guide/open_data_portal.html"
+        )
+
     @property
     def child_continuity(self):
-        raise RemovedDataException("Continuity information is no longer available in PEDS. Use the ODP client to retrieve this information:\nhttps://patent-client.readthedocs.io/en/latest/user_guide/open_data_portal.html")
-
+        raise RemovedDataException(
+            "Continuity information is no longer available in PEDS. Use the ODP client to retrieve this information:\nhttps://patent-client.readthedocs.io/en/latest/user_guide/open_data_portal.html"
+        )
 
     @property
     def patent_center_link(self) -> str:
@@ -234,18 +237,14 @@ class USApplication(PEDSBaseModel):
         self,
     ) -> tp.Iterable["Assignment"]:
         """Related Assignments from the Assignments API"""
-        return self._get_model("..assignment.model.Assignment").objects.filter(
-            appl_id=self.appl_id
-        )
+        return self._get_model("..assignment.model.Assignment").objects.filter(appl_id=self.appl_id)
 
     @property
     def ptab_proceedings(
         self,
     ) -> tp.Iterable["PtabProceeding"]:
         """Related PtabProceedings for this application"""
-        return self._get_model("..ptab.model.PtabProceeding").objects.filter(
-            appl_id=self.appl_id
-        )
+        return self._get_model("..ptab.model.PtabProceeding").objects.filter(appl_id=self.appl_id)
 
     @property
     def patent(self) -> tp.Optional["Patent"]:
@@ -259,9 +258,7 @@ class USApplication(PEDSBaseModel):
         self,
     ) -> tp.Optional["PublishedApplication"]:
         """Fulltext version of the Publication - If Available"""
-        return self._get_model(
-            "..public_search.model.PublishedApplication"
-        ).objects.get(
+        return self._get_model("..public_search.model.PublishedApplication").objects.get(
             publication_number=self.publication_number,
         )
 
@@ -296,9 +293,7 @@ class USApplication(PEDSBaseModel):
             [values[field] for field in correspondent_name_fields if field in values]
         )
         correspondent_adddress_lines = "\n".join(
-            values[f]
-            for f in ("corrAddrStreetLineOne", "corrAddrStreetLineTwo")
-            if f in values
+            values[f] for f in ("corrAddrStreetLineOne", "corrAddrStreetLineTwo") if f in values
         )
         correspondent_address_last_line = f"{values.get('corrAddrCity', '')}, {values.get('corrAddrGeoRegionCode', '')} {values.get('corrAddrPostalCode', '')}"
         if "corrAddrCountryName" in values:
@@ -396,16 +391,12 @@ class Document(PEDSBaseModel):
     @computed_field
     @property
     def application(self) -> USApplication:
-        return self._get_model(".USApplication").objects.get(
-            appl_id=self.application_number_text
-        )
+        return self._get_model(".USApplication").objects.get(appl_id=self.application_number_text)
 
 
 class PedsPage(PEDSBaseModel):
     num_found: int = Field(
-        validation_alias=AliasPath(
-            "queryResults", "searchResponse", "response", "numFound"
-        )
+        validation_alias=AliasPath("queryResults", "searchResponse", "response", "numFound")
     )
     applications: tp.List[USApplication] = Field(
         validation_alias=AliasPath("queryResults", "searchResponse", "response", "docs")

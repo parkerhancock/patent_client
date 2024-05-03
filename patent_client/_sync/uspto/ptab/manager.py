@@ -27,8 +27,7 @@ class PtabManager(Manager, Generic[ModelType]):
         query = deepcopy(self.config.filter)
         query = peds_to_ptab(query)
         query["sort"] = " ".join(
-            inflection.camelize(o, uppercase_first_letter=False)
-            for o in self.config.order_by
+            inflection.camelize(o, uppercase_first_letter=False) for o in self.config.order_by
         )
         for start, rows in get_start_and_row_count(
             self.config.limit, self.config.offset, self.page_size
@@ -43,11 +42,7 @@ class PtabManager(Manager, Generic[ModelType]):
 
     def count(self):
         page = self.api_method(**peds_to_ptab(self.config.filter))
-        return (
-            min(self.config.limit, page.num_found)
-            if self.config.limit
-            else page.num_found
-        )
+        return min(self.config.limit, page.num_found) if self.config.limit else page.num_found
 
     # def allowed_filters(self):
     #    params = schema_doc["paths"][self.path]["get"]["parameters"]

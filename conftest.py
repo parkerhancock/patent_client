@@ -1,9 +1,8 @@
 import asyncio
-
-import pytest
-
 import inspect
 from pathlib import Path
+
+import pytest
 
 collect_ignore = [
     "hishel",

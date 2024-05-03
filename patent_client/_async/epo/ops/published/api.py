@@ -24,7 +24,9 @@ class PublishedBiblioApi:
         constituents: what data to retrieve. Can be combined. (biblio / abstract / full-cycle)
 
         """
-        base_url = f"http://ops.epo.org/3.2/rest-services/published-data/{doc_type}/{format}/{number}/"
+        base_url = (
+            f"http://ops.epo.org/3.2/rest-services/published-data/{doc_type}/{format}/{number}/"
+        )
         if isinstance(constituents, str):
             constituents = (constituents,)
         url = base_url + ",".join(constituents)
@@ -32,25 +34,17 @@ class PublishedBiblioApi:
         return response.text
 
     @classmethod
-    async def get_biblio(
-        cls, number, doc_type="publication", format="docdb"
-    ) -> "BiblioResult":
-        text = await cls.get_constituents(
-            number, doc_type, format, constituents="biblio"
-        )
+    async def get_biblio(cls, number, doc_type="publication", format="docdb") -> "BiblioResult":
+        text = await cls.get_constituents(number, doc_type, format, constituents="biblio")
         return BiblioResult.model_validate(text)
 
     @classmethod
     async def get_abstract(cls, number, doc_type="publication", format="docdb"):
-        return await cls.get_constituents(
-            number, doc_type, format, constituents="abstract"
-        )
+        return await cls.get_constituents(number, doc_type, format, constituents="abstract")
 
     @classmethod
     async def get_full_cycle(cls, number, doc_type="publication", format="docdb"):
-        return await cls.get_constituents(
-            number, doc_type, format, constituents="full-cycle"
-        )
+        return await cls.get_constituents(number, doc_type, format, constituents="full-cycle")
 
 
 class PublishedFulltextApi:
@@ -86,9 +80,7 @@ class PublishedFulltextApi:
         return Description.model_validate(text)
 
     @classmethod
-    async def get_claims(
-        cls, number, doc_type="publication", format="docdb"
-    ) -> "Claims":
+    async def get_claims(cls, number, doc_type="publication", format="docdb") -> "Claims":
         text = await cls.get_fulltext_result(
             number, doc_type="publication", format="docdb", inquiry="claims"
         )

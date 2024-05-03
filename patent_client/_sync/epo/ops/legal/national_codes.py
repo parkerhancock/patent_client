@@ -4,7 +4,6 @@
 # *      Source File: patent_client/_async/epo/ops/legal/national_codes.py       *
 # ********************************************************************************
 
-import asyncio
 import datetime
 import logging
 import re
@@ -41,19 +40,13 @@ def generate_legal_code_db():
         return
     else:
         try:
-            logger.info(
-                "Legal Code Database is out of date - creating legal code database"
-            )
+            logger.info("Legal Code Database is out of date - creating legal code database")
             path = get_spreadsheet()
         except Exception:
             logger.exception(
                 "Could not find live code file - falling back to default dated 2023-11-05"
             )
-            path = (
-                Path(__file__).parent
-                / "fixtures"
-                / "legal_code_descriptions_202417.xlsx"
-            )
+            path = Path(__file__).parent / "fixtures" / "legal_code_descriptions_202417.xlsx"
         create_code_database(path)
 
 
@@ -62,14 +55,10 @@ def has_current_spreadsheet():
     cur = con.cursor()
     try:
         fname = cur.execute("SELECT * FROM meta").fetchone()[0]
-        date_string = re.search(r"legal_code_descriptions_([\d-]+)\.xlsx", fname).group(
-            1
-        )
+        date_string = re.search(r"legal_code_descriptions_([\d-]+)\.xlsx", fname).group(1)
         try:
             date = datetime.datetime.strptime(date_string, "%Y-%W-%w").date()
-        except (
-            ValueError
-        ):  # Indicates using an older format and database needs to be updated
+        except ValueError:  # Indicates using an older format and database needs to be updated
             return False
         age = datetime.datetime.now().date() - date
         logger.debug(f"Legal Code Database is {age} days old")
@@ -83,9 +72,9 @@ def get_spreadsheet_from_epo_website() -> tuple[datetime.date, str]:
     response = session.get(url)
     response.raise_for_status()
     tree = ET.HTML(response.text)
-    date_string = tree.xpath(
-        ".//tr/td[contains(text(), 'Legal event codes')]/../td[4]"
-    )[0].text.strip()
+    date_string = tree.xpath(".//tr/td[contains(text(), 'Legal event codes')]/../td[4]")[
+        0
+    ].text.strip()
     week, year = date_string.split()[1].split("/")
     date = datetime.datetime.strptime(f"{year}-{week}-0", "%Y-%W-%w").date()
     excel_url = tree.xpath('.//a[contains(@href, "Legal-event-codes")][1]/@href')[0]
@@ -95,9 +84,7 @@ def get_spreadsheet_from_epo_website() -> tuple[datetime.date, str]:
 
 def get_spreadsheet() -> tuple[datetime.date, Path]:
     date, excel_url = get_spreadsheet_from_epo_website()
-    out_path = (
-        legal_code_dir / f"legal_code_descriptions_{date.strftime('%Y-%W-%w')}.xlsx"
-    )
+    out_path = legal_code_dir / f"legal_code_descriptions_{date.strftime('%Y-%W-%w')}.xlsx"
     if out_path.exists():
         logger.info(f"File already downloaded! Current as of {date.isoformat()}")
         return out_path
@@ -121,10 +108,10 @@ def create_code_database(excel_path):
     cur.execute("INSERT INTO meta values (?)", (excel_path.name,))
     wb = load_workbook(excel_path)
     data = list(
-        tuple(i.strip() for i in r)
-        for r in wb[wb.sheetnames[0]].iter_rows(values_only=True)
+        tuple(i.strip() for i in r) for r in wb[wb.sheetnames[0]].iter_rows(values_only=True)
     )
     rows = data[1:]
+    cur.execute("DROP TABLE IF EXISTS legal_codes")
     cur.execute(
         """CREATE TABLE IF NOT EXISTS legal_codes (
     country_code text,
@@ -141,9 +128,7 @@ def create_code_database(excel_path):
     cur.execute(
         """CREATE INDEX IF NOT EXISTS country_event_code ON legal_codes (country_code, event_code)"""
     )
-    cur.executemany(
-        "INSERT INTO legal_codes values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", rows
-    )
+    cur.executemany("INSERT INTO legal_codes values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", rows)
     con.commit()
 
 

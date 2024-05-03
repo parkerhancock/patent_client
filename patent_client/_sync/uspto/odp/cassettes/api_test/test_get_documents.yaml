@@ -11,7 +11,7 @@ interactions:
       host:
       - beta-api.uspto.gov
       user-agent:
-      - Mozilla/5.0 Python Patent Clientbot/5.0.0 (parkerhancock@users.noreply.github.com)
+      - python-httpx/0.27.0
       x-api-key:
       - oygzgndgwifcpqgvdcitnhorcdvpbb
     method: GET
@@ -273,24 +273,26 @@ interactions:
       "https://beta-api.uspto.gov/api/v1/download/applications/15123456/J7CKZXQVRXEAPX2.pdf",
       "pageTotalQuantity": 1}]}]}'
     headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '23603'
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 24 Apr 2024 16:55:39 GMT
+      X-Amzn-Trace-Id:
+      - Root=1-6629398a-0019ef4b63cac2473e902da6;Parent=136e1cc73a2d7355;Sampled=0;lineage=1430c078:0|53981e07:0
       access-control-allow-headers:
       - '*'
       access-control-allow-methods:
       - GET, OPTIONS
       access-control-allow-origin:
       - '*'
-      content-length:
-      - '23603'
-      content-type:
-      - application/json
-      date:
-      - Wed, 01 May 2024 18:46:25 GMT
       x-amz-apigw-id:
-      - XGsgKGkcIAMF9lQ=
-      x-amzn-requestid:
-      - c474cded-1ed5-4d11-af85-c36291b32898
-      x-amzn-trace-id:
-      - Root=1-66328e00-1db069db123744cf1feff2e3;Parent=2169bbf2793dab96;Sampled=0;lineage=1430c078:0|53981e07:0
-    http_version: HTTP/2
+      - WvXtwHAtoAMF-pA=
+      x-amzn-RequestId:
+      - ecfa373c-ed23-4e52-860d-8dcab8678e51
+    http_version: HTTP/1.1
     status_code: 200
 version: 1

@@ -40,7 +40,9 @@ class GlobalDossierApi:
         return self.api_base_url
 
     def get_file(self, doc_number, type_code="application", office_code="US"):
-        url = f"{self.get_base_url()}/patent-family/svc/family/{type_code}/{office_code}/{doc_number}"
+        url = (
+            f"{self.get_base_url()}/patent-family/svc/family/{type_code}/{office_code}/{doc_number}"
+        )
         _ = client.options(url)
         response = client.get(url)
         response.raise_for_status()

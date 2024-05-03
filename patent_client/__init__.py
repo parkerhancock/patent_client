@@ -42,9 +42,7 @@ logger.setLevel(SETTINGS.log_level)
 
 # Add the log message handler to the logger
 handler = logging.FileHandler(LOG_FILENAME)
-handler.setFormatter(
-    logging.Formatter("%(asctime)s:%(levelname)s:%(name)s:%(message)s")
-)
+handler.setFormatter(logging.Formatter("%(asctime)s:%(levelname)s:%(name)s:%(message)s"))
 logger.addHandler(handler)
 
 logger.info(f"Starting Patent Client with log level {SETTINGS.log_level}")

@@ -40,10 +40,6 @@ class ImageDocumentSchema(Schema):
 class ImagesSchema(Schema):
     # search_reference = DocumentIdSchema(".//ops:document-inquiry/ops:publication-reference")
     publication_number = DocDbSchema(".//ops:inquiry-result/epo:publication-reference")
-    full_document = ImageDocumentSchema(
-        './/ops:document-instance[@desc="FullDocument"]'
-    )
+    full_document = ImageDocumentSchema('.//ops:document-instance[@desc="FullDocument"]')
     drawing = ImageDocumentSchema('.//ops:document-instance[@desc="Drawing"]')
-    first_page = ImageDocumentSchema(
-        './/ops:document-instance[@desc="FirstPageClipping"]'
-    )
+    first_page = ImageDocumentSchema('.//ops:document-instance[@desc="FirstPageClipping"]')

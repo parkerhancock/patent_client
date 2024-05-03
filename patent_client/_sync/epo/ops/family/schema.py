@@ -27,19 +27,13 @@ class FamilyMemberSchema(Schema):
         './/epo:application-reference/epo:document-id[@document-id-type="docdb"]'
     )
     family_id = f.Str("./@family-id")
-    publication_reference = f.List(
-        DocumentIdSchema, ".//epo:publication-reference/epo:document-id"
-    )
-    application_reference = f.List(
-        DocumentIdSchema, ".//epo:application-reference/epo:document-id"
-    )
+    publication_reference = f.List(DocumentIdSchema, ".//epo:publication-reference/epo:document-id")
+    application_reference = f.List(DocumentIdSchema, ".//epo:application-reference/epo:document-id")
     priority_claims = f.List(PriorityClaimSchema, ".//epo:priority-claim")
 
 
 class FamilySchema(Schema):
-    publication_reference = DocumentIdSchema(
-        ".//ops:patent-family/ops:publication-reference"
-    )
+    publication_reference = DocumentIdSchema(".//ops:patent-family/ops:publication-reference")
     num_records = f.Int(".//ops:patent-family/@total-result-count")
     publication_number = DocDbNumberField(
         './/ops:patent-family/ops:publication-reference/epo:document-id[@document-id-type="docdb"]'

@@ -11,17 +11,17 @@ interactions:
       host:
       - assignment-api.uspto.gov
       user-agent:
-      - Mozilla/5.0 Python Patent Clientbot/5.0.0 (parkerhancock@users.noreply.github.com)
+      - python-httpx/0.27.0
     method: GET
     uri: https://assignment-api.uspto.gov/patent/lookup?filter=OwnerName&query=Borealis&rows=8&start=0&sort=ExecutionDate%2Bdesc&facet=false
   response:
     content: "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<response>\n\n<lst name=\"responseHeader\">\n
       \ <bool name=\"zkConnected\">true</bool>\n  <int name=\"status\">0</int>\n  <int
-      name=\"QTime\">316</int>\n  <lst name=\"params\">\n    <str name=\"q\">patAssigneeName:(Borealis)</str>\n
+      name=\"QTime\">321</int>\n  <lst name=\"params\">\n    <str name=\"q\">patAssigneeName:(Borealis)</str>\n
       \   <str name=\"qt\">/apisearch</str>\n    <str name=\"start\">0</str>\n    <str
       name=\"sort\">patAssignorEarliestExDate desc</str>\n    <str name=\"rows\">8</str>\n
       \   <str name=\"wt\">javabin</str>\n    <str name=\"version\">2</str>\n  </lst>\n</lst>\n<result
-      name=\"response\" numFound=\"1859\" start=\"0\">\n  <doc>\n    <str name=\"id\">66552-292</str>\n
+      name=\"response\" numFound=\"1858\" start=\"0\">\n  <doc>\n    <str name=\"id\">66552-292</str>\n
       \   <str name=\"displayId\">066552-0292</str>\n    <str name=\"reelNo\">66552</str>\n
       \   <str name=\"frameNo\">292</str>\n    <date name=\"lastUpdateDate\">2024-03-04T17:20:21Z</date>\n
       \   <str name=\"purgeIndicator\">N</str>\n    <date name=\"recordedDate\">2024-01-31T05:00:00Z</date>\n
@@ -193,81 +193,13 @@ interactions:
       \     <str>AUSTRIA</str>\n      <str>BELGIUM</str>\n      <str>GERMANY</str>\n
       \     <str>NETHERLANDS</str>\n    </arr>\n    <arr name=\"patAssigneeStateFacet\">\n
       \     <str>NULL</str>\n    </arr>\n    <str name=\"corrNameString\">PROCOPIO,
-      CORY, HARGREAVES &amp; SAVITCH LLP</str></doc>\n  <doc>\n    <str name=\"id\">65207-366</str>\n
-      \   <str name=\"displayId\">065207-0366</str>\n    <str name=\"reelNo\">65207</str>\n
-      \   <str name=\"frameNo\">366</str>\n    <date name=\"lastUpdateDate\">2024-04-18T06:00:05Z</date>\n
-      \   <str name=\"purgeIndicator\">N</str>\n    <date name=\"recordedDate\">2023-10-13T04:00:00Z</date>\n
-      \   <str name=\"pageCount\">5</str>\n    <str name=\"conveyanceText\">ASSIGNMENT
+      CORY, HARGREAVES &amp; SAVITCH LLP</str></doc>\n  <doc>\n    <str name=\"id\">65088-715</str>\n
+      \   <str name=\"displayId\">065088-0715</str>\n    <str name=\"reelNo\">65088</str>\n
+      \   <str name=\"frameNo\">715</str>\n    <date name=\"lastUpdateDate\">2024-04-04T06:00:09Z</date>\n
+      \   <str name=\"purgeIndicator\">N</str>\n    <date name=\"recordedDate\">2023-10-02T04:00:00Z</date>\n
+      \   <str name=\"pageCount\">7</str>\n    <str name=\"conveyanceText\">ASSIGNMENT
       OF ASSIGNORS INTEREST (SEE DOCUMENT FOR DETAILS).</str>\n    <str name=\"assignmentRecordHasImages\">Y</str>\n
-      \   <str name=\"attorneyDockNum\">04385-2307249</str>\n    <str name=\"corrName\">THE
-      WEBB LAW FIRM</str>\n    <str name=\"corrAddress1\">420 FORT DUQUESNE BLVD.</str>\n
-      \   <str name=\"corrAddress2\">ONE GATEWAY CENTER SUITE 1200</str>\n    <str
-      name=\"corrAddress3\">PITTSBURGH, PA 15222</str>\n    <date name=\"patAssignorEarliestExDate\">2023-09-21T04:00:00Z</date>\n
-      \   <arr name=\"patAssignorName\">\n      <str>KAHLEN, SUSANNE MARGARETE</str>\n
-      \     <str>BRAUN, HERMANN</str>\n      <str>LEHNER, GISELA KARIN</str>\n      <str>BACHTROD,
-      QUANG MANFRED</str>\n    </arr>\n    <arr name=\"patAssignorExDate\">\n      <date>2023-09-21T04:00:00Z</date>\n
-      \     <date>2023-09-21T04:00:00Z</date>\n      <date>2023-09-21T04:00:00Z</date>\n
-      \     <date>2023-09-21T04:00:00Z</date>\n    </arr>\n    <arr name=\"patAssignorDateAck\">\n
-      \     <str>0001-01-01T00:00:00Z</str>\n      <str>0001-01-01T00:00:00Z</str>\n
-      \     <str>0001-01-01T00:00:00Z</str>\n      <str>0001-01-01T00:00:00Z</str>\n
-      \   </arr>\n    <arr name=\"patAssigneeName\">\n      <str>BOREALIS AG</str>\n
-      \   </arr>\n    <arr name=\"patAssigneeAddress1\">\n      <str>TRABRENNSTRASSE
-      6-8</str>\n    </arr>\n    <arr name=\"patAssigneeAddress2\">\n      <str>NULL</str>\n
-      \   </arr>\n    <arr name=\"patAssigneeCity\">\n      <str>VIENNA</str>\n    </arr>\n
-      \   <arr name=\"patAssigneeState\">\n      <str>NULL</str>\n    </arr>\n    <arr
-      name=\"patAssigneeCountryName\">\n      <str>AUSTRIA</str>\n    </arr>\n    <arr
-      name=\"patAssigneePostcode\">\n      <str>1020</str>\n    </arr>\n    <arr name=\"inventionTitle\">\n
-      \     <str>Polyolefin Composition Comprising Polypropylene Homopolymer and Recycled
-      Plastic Material</str>\n    </arr>\n    <arr name=\"inventionTitleLang\">\n
-      \     <str>en</str>\n    </arr>\n    <arr name=\"applNum\">\n      <str>18286794</str>\n
-      \   </arr>\n    <arr name=\"filingDate\">\n      <date>2023-10-13T04:00:00Z</date>\n
-      \   </arr>\n    <arr name=\"intlPublDate\">\n      <date>0001-01-01T00:00:00Z</date>\n
-      \   </arr>\n    <arr name=\"intlRegNum\">\n      <str>NULL</str>\n    </arr>\n
-      \   <arr name=\"inventors\">\n      <str>Susanne Margarete Kahlen, Hermann Braun,
-      Gisela Karin Lehner, Quang Manfred Bachtrod</str>\n    </arr>\n    <arr name=\"issueDate\">\n
-      \     <date>0001-01-01T00:00:00Z</date>\n    </arr>\n    <arr name=\"patNum\">\n
-      \     <str>NULL</str>\n    </arr>\n    <arr name=\"pctNum\">\n      <str>NULL</str>\n
-      \   </arr>\n    <arr name=\"publDate\">\n      <date>2024-04-18T04:00:00Z</date>\n
-      \   </arr>\n    <arr name=\"publNum\">\n      <str>20240124695</str>\n    </arr>\n
-      \   <int name=\"patAssignorNameSize\">4</int>\n    <int name=\"patAssignorNameTypeSize\">4</int>\n
-      \   <int name=\"patAssignorExDateSize\">4</int>\n    <int name=\"patAssignorDateAckSize\">4</int>\n
-      \   <int name=\"patAssigneeNameSize\">2</int>\n    <int name=\"patAssigneeNameTypeSize\">0</int>\n
-      \   <int name=\"patAssigneeAddress1Size\">1</int>\n    <int name=\"patAssigneeAddress2Size\">1</int>\n
-      \   <int name=\"patAssigneeCitySize\">1</int>\n    <int name=\"patAssigneeStateSize\">1</int>\n
-      \   <int name=\"patAssigneeCountryNameSize\">1</int>\n    <int name=\"patAssigneePostcodeSize\">1</int>\n
-      \   <int name=\"inventionTitleSize\">1</int>\n    <int name=\"inventionTitleIdSize\">1</int>\n
-      \   <int name=\"inventionTitleLangSize\">1</int>\n    <int name=\"applNumSize\">1</int>\n
-      \   <int name=\"filingDateSize\">1</int>\n    <int name=\"intlPublDateSize\">1</int>\n
-      \   <int name=\"intlRegNumSize\">1</int>\n    <int name=\"inventorsSize\">1</int>\n
-      \   <int name=\"issueDateSize\">1</int>\n    <int name=\"patNumSize\">1</int>\n
-      \   <int name=\"pctNumSize\">1</int>\n    <int name=\"publDateSize\">1</int>\n
-      \   <int name=\"publNumSize\">1</int>\n    <str name=\"inventionTitleFirst\">Polyolefin
-      Composition Comprising Polypropylene Homopolymer and Recycled Plastic Material</str>\n
-      \   <str name=\"inventionTitleLangFirst\">en</str>\n    <str name=\"applNumFirst\">18286794</str>\n
-      \   <date name=\"filingDateFirst\">2023-10-13T04:00:00Z</date>\n    <date name=\"intlPublDateFirst\">0001-01-01T00:00:00Z</date>\n
-      \   <str name=\"intlRegNumFirst\">NULL</str>\n    <str name=\"inventorsFirst\">Susanne
-      Margarete Kahlen, Hermann Braun, Gisela Karin Lehner, Quang Manfred Bachtrod</str>\n
-      \   <date name=\"issueDateFirst\">0001-01-01T00:00:00Z</date>\n    <str name=\"patNumFirst\">NULL</str>\n
-      \   <str name=\"pctNumFirst\">NULL</str>\n    <date name=\"publDateFirst\">2024-04-18T04:00:00Z</date>\n
-      \   <str name=\"publNumFirst\">20240124695</str>\n    <str name=\"patAssignorNameFirst\">KAHLEN,
-      SUSANNE MARGARETE</str>\n    <str name=\"patAssigneeNameFirst\">BOREALIS AG</str>\n
-      \   <arr name=\"patAssigneePostcodeFacet\">\n      <str>1020</str>\n    </arr>\n
-      \   <arr name=\"patAssignorNameFacet\">\n      <str>BACHTROD, QUANG MANFRED</str>\n
-      \     <str>BRAUN, HERMANN</str>\n      <str>KAHLEN, SUSANNE MARGARETE</str>\n
-      \     <str>LEHNER, GISELA KARIN</str>\n    </arr>\n    <str name=\"corrNameFacet\">THE
-      WEBB LAW FIRM</str>\n    <long name=\"_version_\">1796653424169713664</long>\n
-      \   <arr name=\"patAssigneeNameFacet\">\n      <str>BOREALIS AG</str>\n    </arr>\n
-      \   <arr name=\"patAssigneeCityFacet\">\n      <str>VIENNA</str>\n    </arr>\n
-      \   <arr name=\"patAssigneeCountryNameFacet\">\n      <str>AUSTRIA</str>\n    </arr>\n
-      \   <arr name=\"patAssigneeStateFacet\">\n      <str>NULL</str>\n    </arr>\n
-      \   <str name=\"corrNameString\">THE WEBB LAW FIRM</str></doc>\n  <doc>\n    <str
-      name=\"id\">65088-715</str>\n    <str name=\"displayId\">065088-0715</str>\n
-      \   <str name=\"reelNo\">65088</str>\n    <str name=\"frameNo\">715</str>\n
-      \   <date name=\"lastUpdateDate\">2024-04-04T06:00:09Z</date>\n    <str name=\"purgeIndicator\">N</str>\n
-      \   <date name=\"recordedDate\">2023-10-02T04:00:00Z</date>\n    <str name=\"pageCount\">7</str>\n
-      \   <str name=\"conveyanceText\">ASSIGNMENT OF ASSIGNORS INTEREST (SEE DOCUMENT
-      FOR DETAILS).</str>\n    <str name=\"assignmentRecordHasImages\">Y</str>\n    <str
-      name=\"attorneyDockNum\">KADZ 200266US01</str>\n    <str name=\"corrName\">LIPPES
+      \   <str name=\"attorneyDockNum\">KADZ 200266US01</str>\n    <str name=\"corrName\">LIPPES
       MATHIAS LLP</str>\n    <str name=\"corrAddress1\">1228 EUCLID AVENUE, 5TH FLOOR</str>\n
       \   <str name=\"corrAddress2\">THE HALLE BUILDING</str>\n    <str name=\"corrAddress3\">CLEVELAND,
       44115 UNITED STATES</str>\n    <date name=\"patAssignorEarliestExDate\">2023-09-12T04:00:00Z</date>\n
@@ -600,9 +532,69 @@ interactions:
       \     <str>VIENNA</str>\n    </arr>\n    <arr name=\"patAssigneeCountryNameFacet\">\n
       \     <str>AUSTRIA</str>\n    </arr>\n    <arr name=\"patAssigneeStateFacet\">\n
       \     <str>NULL</str>\n    </arr>\n    <str name=\"corrNameString\">MEUNIER
-      CARLIN &amp; CURFMAN LLC</str></doc>\n</result>\n<lst name=\"facet_counts\">\n
-      \ <lst name=\"facet_queries\">\n    <int name=\"conveyanceText:&quot;ASSIGNMENT
-      OF ASSIGNORS INTEREST&quot;\">1782</int>\n    <int name=\"conveyanceText:&quot;SECURITY
+      CARLIN &amp; CURFMAN LLC</str></doc>\n  <doc>\n    <str name=\"id\">65050-208</str>\n
+      \   <str name=\"displayId\">065050-0208</str>\n    <str name=\"reelNo\">65050</str>\n
+      \   <str name=\"frameNo\">208</str>\n    <date name=\"lastUpdateDate\">2024-02-08T07:00:05Z</date>\n
+      \   <str name=\"purgeIndicator\">N</str>\n    <date name=\"recordedDate\">2023-09-27T05:00:00Z</date>\n
+      \   <str name=\"pageCount\">3</str>\n    <str name=\"conveyanceText\">ASSIGNMENT
+      OF ASSIGNORS INTEREST (SEE DOCUMENT FOR DETAILS).</str>\n    <str name=\"assignmentRecordHasImages\">Y</str>\n
+      \   <str name=\"attorneyDockNum\">MPG-032925US PCT</str>\n    <str name=\"corrName\">RICHARD
+      A. SUTKUS</str>\n    <str name=\"corrAddress1\">950 MAIN STREET</str>\n    <str
+      name=\"corrAddress2\">SUITE 710</str>\n    <str name=\"corrAddress3\">CLEVELAND,
+      OH 44113</str>\n    <date name=\"patAssignorEarliestExDate\">2023-07-26T05:00:00Z</date>\n
+      \   <arr name=\"patAssignorName\">\n      <str>TRAN, ANH TUAN</str>\n      <str>BRAUN,
+      HERMANN</str>\n    </arr>\n    <arr name=\"patAssignorExDate\">\n      <date>2023-07-26T05:00:00Z</date>\n
+      \     <date>2023-07-26T05:00:00Z</date>\n    </arr>\n    <arr name=\"patAssignorDateAck\">\n
+      \     <str>0001-01-01T00:00:00Z</str>\n      <str>0001-01-01T00:00:00Z</str>\n
+      \   </arr>\n    <arr name=\"patAssigneeName\">\n      <str>BOREALIS AG</str>\n
+      \   </arr>\n    <arr name=\"patAssigneeAddress1\">\n      <str>TRABRENNSTRASSE
+      6-8</str>\n    </arr>\n    <arr name=\"patAssigneeAddress2\">\n      <str>NULL</str>\n
+      \   </arr>\n    <arr name=\"patAssigneeCity\">\n      <str>LINZ</str>\n    </arr>\n
+      \   <arr name=\"patAssigneeState\">\n      <str>NULL</str>\n    </arr>\n    <arr
+      name=\"patAssigneeCountryName\">\n      <str>AUSTRIA</str>\n    </arr>\n    <arr
+      name=\"patAssigneePostcode\">\n      <str>1020</str>\n    </arr>\n    <arr name=\"inventionTitle\">\n
+      \     <str>UPGRADED POLYOLEFIN FOR ELECTRICAL COMPONENTS</str>\n    </arr>\n
+      \   <arr name=\"inventionTitleLang\">\n      <str>en</str>\n    </arr>\n    <arr
+      name=\"applNum\">\n      <str>18264184</str>\n    </arr>\n    <arr name=\"filingDate\">\n
+      \     <date>2023-08-03T05:00:00Z</date>\n    </arr>\n    <arr name=\"intlPublDate\">\n
+      \     <date>0001-01-01T00:00:00Z</date>\n    </arr>\n    <arr name=\"intlRegNum\">\n
+      \     <str>NULL</str>\n    </arr>\n    <arr name=\"inventors\">\n      <str>Anh
+      Tuan Tran, Hermann Braun</str>\n    </arr>\n    <arr name=\"issueDate\">\n      <date>0001-01-01T00:00:00Z</date>\n
+      \   </arr>\n    <arr name=\"patNum\">\n      <str>NULL</str>\n    </arr>\n    <arr
+      name=\"pctNum\">\n      <str>NULL</str>\n    </arr>\n    <arr name=\"publDate\">\n
+      \     <date>2024-02-08T05:00:00Z</date>\n    </arr>\n    <arr name=\"publNum\">\n
+      \     <str>20240043649</str>\n    </arr>\n    <int name=\"patAssignorNameSize\">2</int>\n
+      \   <int name=\"patAssignorNameTypeSize\">2</int>\n    <int name=\"patAssignorExDateSize\">2</int>\n
+      \   <int name=\"patAssignorDateAckSize\">2</int>\n    <int name=\"patAssigneeNameSize\">2</int>\n
+      \   <int name=\"patAssigneeNameTypeSize\">0</int>\n    <int name=\"patAssigneeAddress1Size\">1</int>\n
+      \   <int name=\"patAssigneeAddress2Size\">1</int>\n    <int name=\"patAssigneeCitySize\">1</int>\n
+      \   <int name=\"patAssigneeStateSize\">1</int>\n    <int name=\"patAssigneeCountryNameSize\">1</int>\n
+      \   <int name=\"patAssigneePostcodeSize\">1</int>\n    <int name=\"inventionTitleSize\">1</int>\n
+      \   <int name=\"inventionTitleIdSize\">1</int>\n    <int name=\"inventionTitleLangSize\">1</int>\n
+      \   <int name=\"applNumSize\">1</int>\n    <int name=\"filingDateSize\">1</int>\n
+      \   <int name=\"intlPublDateSize\">1</int>\n    <int name=\"intlRegNumSize\">1</int>\n
+      \   <int name=\"inventorsSize\">1</int>\n    <int name=\"issueDateSize\">1</int>\n
+      \   <int name=\"patNumSize\">1</int>\n    <int name=\"pctNumSize\">1</int>\n
+      \   <int name=\"publDateSize\">1</int>\n    <int name=\"publNumSize\">1</int>\n
+      \   <str name=\"inventionTitleFirst\">UPGRADED POLYOLEFIN FOR ELECTRICAL COMPONENTS</str>\n
+      \   <str name=\"inventionTitleLangFirst\">en</str>\n    <str name=\"applNumFirst\">18264184</str>\n
+      \   <date name=\"filingDateFirst\">2023-08-03T05:00:00Z</date>\n    <date name=\"intlPublDateFirst\">0001-01-01T00:00:00Z</date>\n
+      \   <str name=\"intlRegNumFirst\">NULL</str>\n    <str name=\"inventorsFirst\">Anh
+      Tuan Tran, Hermann Braun</str>\n    <date name=\"issueDateFirst\">0001-01-01T00:00:00Z</date>\n
+      \   <str name=\"patNumFirst\">NULL</str>\n    <str name=\"pctNumFirst\">NULL</str>\n
+      \   <date name=\"publDateFirst\">2024-02-08T05:00:00Z</date>\n    <str name=\"publNumFirst\">20240043649</str>\n
+      \   <str name=\"patAssignorNameFirst\">TRAN, ANH TUAN</str>\n    <str name=\"patAssigneeNameFirst\">BOREALIS
+      AG</str>\n    <arr name=\"patAssigneePostcodeFacet\">\n      <str>1020</str>\n
+      \   </arr>\n    <arr name=\"patAssignorNameFacet\">\n      <str>BRAUN, HERMANN</str>\n
+      \     <str>TRAN, ANH TUAN</str>\n    </arr>\n    <str name=\"corrNameFacet\">RICHARD
+      A. SUTKUS</str>\n    <long name=\"_version_\">1790315489110523904</long>\n    <arr
+      name=\"patAssigneeNameFacet\">\n      <str>BOREALIS AG</str>\n    </arr>\n    <arr
+      name=\"patAssigneeCityFacet\">\n      <str>LINZ</str>\n    </arr>\n    <arr
+      name=\"patAssigneeCountryNameFacet\">\n      <str>AUSTRIA</str>\n    </arr>\n
+      \   <arr name=\"patAssigneeStateFacet\">\n      <str>NULL</str>\n    </arr>\n
+      \   <str name=\"corrNameString\">RICHARD A. SUTKUS</str></doc>\n</result>\n<lst
+      name=\"facet_counts\">\n  <lst name=\"facet_queries\">\n    <int name=\"conveyanceText:&quot;ASSIGNMENT
+      OF ASSIGNORS INTEREST&quot;\">1781</int>\n    <int name=\"conveyanceText:&quot;SECURITY
       INTEREST&quot;\">0</int>\n    <int name=\"conveyanceText:&quot;NUNC PRO TUNC
       ASSIGNMENT&quot;\">1</int>\n    <int name=\"conveyanceText:&quot;RELEASE BY
       SECURED PARTY&quot;\">0</int>\n    <int name=\"conveyanceText:&quot;MERGER&quot;\">0</int>\n
@@ -656,14 +648,14 @@ interactions:
       \     <int name=\"SCHWECHAT-MANNSWORTH\">3</int>\n      <int name=\"SENEFFE\">2</int>\n
       \     <int name=\"STATHELLE\">1</int>\n      <int name=\"TAIPEI\">1</int>\n
       \     <int name=\"VAASA\">3</int>\n      <int name=\"VASA\">1</int>\n      <int
-      name=\"VIENNA\">957</int>\n      <int name=\"WATERLOO, ONTARIO\">1</int>\n      <int
+      name=\"VIENNA\">956</int>\n      <int name=\"WATERLOO, ONTARIO\">1</int>\n      <int
       name=\"WEIN\">1</int>\n      <int name=\"WESSELING\">2</int>\n      <int name=\"WIEN\">68</int>\n
       \   </lst>\n    <lst name=\"patAssigneeStateFacet\">\n      <int name=\"GEORGIA\">1</int>\n
       \     <int name=\"MARYLAND\">1</int>\n      <int name=\"MINNESOTA\">1</int>\n
-      \     <int name=\"NORTH DAKOTA\">4</int>\n      <int name=\"NULL\">1805</int>\n
+      \     <int name=\"NORTH DAKOTA\">4</int>\n      <int name=\"NULL\">1804</int>\n
       \     <int name=\"OREGON\">47</int>\n    </lst>\n    <lst name=\"patAssigneePostcodeFacet\">\n
       \     <int name=\"06101\">95</int>\n      <int name=\"06201\">3</int>\n      <int
-      name=\"1020\">123</int>\n      <int name=\"110\">1</int>\n      <int name=\"1210\">1</int>\n
+      name=\"1020\">122</int>\n      <int name=\"110\">1</int>\n      <int name=\"1210\">1</int>\n
       \     <int name=\"1220\">458</int>\n      <int name=\"2040\">2</int>\n      <int
       name=\"21215\">1</int>\n      <int name=\"2800\">2</int>\n      <int name=\"30309\">1</int>\n
       \     <int name=\"3223 HJ\">2</int>\n      <int name=\"4020\">1</int>\n      <int
@@ -684,7 +676,7 @@ interactions:
       \     <int name=\"FIN-60101\">1</int>\n      <int name=\"N-0764\">1</int>\n
       \     <int name=\"N2V 1K4\">1</int>\n      <int name=\"NULL\">426</int>\n      <int
       name=\"NW3 7\">12</int>\n    </lst>\n    <lst name=\"patAssigneeCountryNameFacet\">\n
-      \     <int name=\"AUSTRALIA\">7</int>\n      <int name=\"AUSTRIA\">1073</int>\n
+      \     <int name=\"AUSTRALIA\">7</int>\n      <int name=\"AUSTRIA\">1072</int>\n
       \     <int name=\"BELGIUM\">2</int>\n      <int name=\"CANADA\">1</int>\n      <int
       name=\"DENMARK\">85</int>\n      <int name=\"ENGLAND\">13</int>\n      <int
       name=\"FINLAND\">454</int>\n      <int name=\"FRANCE\">3</int>\n      <int name=\"GERMANY\">6</int>\n
@@ -705,7 +697,7 @@ interactions:
       \     <int name=\"BASELL POLYOLEFINE GMBH\">2</int>\n      <int name=\"BASF
       ANTWERPEN N.V.\">2</int>\n      <int name=\"BOREALIS A.G.\">4</int>\n      <int
       name=\"BOREALIS A/G\">1</int>\n      <int name=\"BOREALIS A/S\">59</int>\n      <int
-      name=\"BOREALIS AG\">1045</int>\n      <int name=\"BOREALIS AG,\">2</int>\n
+      name=\"BOREALIS AG\">1044</int>\n      <int name=\"BOREALIS AG,\">2</int>\n
       \     <int name=\"BOREALIS AGROLINZ MELAMINE GMBH\">15</int>\n      <int name=\"BOREALIS
       AS\">2</int>\n      <int name=\"BOREALIS CHIMIE S.A.\">1</int>\n      <int name=\"BOREALIS
       CHIMIE S.A.S.\">1</int>\n      <int name=\"BOREALIS CHIMIE SAS\">1</int>\n      <int
@@ -879,7 +871,7 @@ interactions:
       PLLC\">2</int>\n      <int name=\"SUGHRUE, MION, ZINN, ET AL\">1</int>\n      <int
       name=\"SUMNER C. ROSENBERG\">1</int>\n      <int name=\"SUTHERLAND ASBILL &amp;
       BRENNAN LLP\">16</int>\n      <int name=\"TESTA, HURWITZ &amp; THIBEAULT, LLP\">1</int>\n
-      \     <int name=\"THE WEBB LAW FIRM\">17</int>\n      <int name=\"THE WEBB LAW
+      \     <int name=\"THE WEBB LAW FIRM\">16</int>\n      <int name=\"THE WEBB LAW
       FIRM, P.C.\">27</int>\n      <int name=\"THOMAS HORSTEMEYER, LLP\">1</int>\n
       \     <int name=\"TILTON, FALLON, LUNGMUS &amp; CHESTNUT\">1</int>\n      <int
       name=\"VICTORIA LINNE POULSEN\">1</int>\n      <int name=\"WARN PARTNERS, P.C.\">45</int>\n
@@ -934,58 +926,57 @@ interactions:
       \     <int name=\"AUBERT, MELANIE\">1</int>\n      <int name=\"AUGESTAD, MORTEN\">3</int>\n
       \     <int name=\"AUMO, JEANNETTE\">1</int>\n      <int name=\"AVELA, ARNO\">1</int>\n
       \     <int name=\"BAANN, HEGE VALE\">3</int>\n      <int name=\"BAANN, HENNING\">1</int>\n
-      \     <int name=\"BACHTROD, MANFRED\">1</int>\n      <int name=\"BACHTROD, QUANG
-      MANFRED\">1</int>\n      <int name=\"BACKAMN, MATS\">1</int>\n      <int name=\"BACKMAN,
-      MATS\">20</int>\n      <int name=\"BAECKMAN, MATS\">5</int>\n      <int name=\"BALAKANTHA,
-      RAO KONA\">1</int>\n      <int name=\"BALMER, BERT\">1</int>\n      <int name=\"BANDYOPADHYAY,
-      PRATYUSH\">1</int>\n      <int name=\"BARTKE, MICHAEL\">6</int>\n      <int
-      name=\"BARTSCH, JONAS\">1</int>\n      <int name=\"BAUMGARTEL, GERNOT\">1</int>\n
-      \     <int name=\"BAUR, HERBERT\">2</int>\n      <int name=\"BAYER, JANICE ILENE\">2</int>\n
-      \     <int name=\"BEISERT, CLAUS\">2</int>\n      <int name=\"BELSHAW, JOANNE\">2</int>\n
-      \     <int name=\"BENEDETTI, GIOVANNI FEDERICO\">1</int>\n      <int name=\"BENTZROD,
-      PAL CHRISTIAN\">3</int>\n      <int name=\"BERGER, FRIEDRICH\">27</int>\n      <int
-      name=\"BERGFORS, FREDRIK\">3</int>\n      <int name=\"BERGMAN, NICKE\">1</int>\n
-      \     <int name=\"BERGMANN, FRED\">3</int>\n      <int name=\"BERGQVIST, MATTIAS\">26</int>\n
-      \     <int name=\"BERGSTRA, MICHIEL\">22</int>\n      <int name=\"BERGSTRA,
-      MICHIEL F.\">1</int>\n      <int name=\"BERGSTRA, MICHIEL FRISO\">1</int>\n
-      \     <int name=\"BERISHVILI, ZAURI\">2</int>\n      <int name=\"BERNREITER,
-      KLAUS\">2</int>\n      <int name=\"BERNREITNER, KLAUS\">149</int>\n      <int
-      name=\"BERQVIST, MATTIAS\">1</int>\n      <int name=\"BETKE, HARALD\">1</int>\n
-      \     <int name=\"BIANCO, AARON\">3</int>\n      <int name=\"BIBILASHVILI, AMIRAN\">4</int>\n
-      \     <int name=\"BILINA, WERNER\">2</int>\n      <int name=\"BINDER, JOSEF\">1</int>\n
-      \     <int name=\"BINKS, BERNARD\">1</int>\n      <int name=\"BIRGE, JOHN D.\">1</int>\n
-      \     <int name=\"BJALAND, ANN BRITT\">1</int>\n      <int name=\"BJALAND, ANNE
-      BRITT\">3</int>\n      <int name=\"BJUGGREN, JONAS MATTIASSON\">1</int>\n      <int
-      name=\"BLAYAC, LAURENT\">1</int>\n      <int name=\"BLOK, ACHIM\">3</int>\n
-      \     <int name=\"BLOM, RICHARD\">8</int>\n      <int name=\"BLOMQVIST, TIMO\">1</int>\n
-      \     <int name=\"BOELAERS, GUIDO\">4</int>\n      <int name=\"BOGDANOVIC, MILORAD\">1</int>\n
-      \     <int name=\"BOON, PAUL\">1</int>\n      <int name=\"BORAGNO, LUCA\">14</int>\n
-      \     <int name=\"BOREALIS A/S\">22</int>\n      <int name=\"BOREALIS AG\">12</int>\n
-      \     <int name=\"BOREALIS AS\">2</int>\n      <int name=\"BOREALIS CHIMIE S.A.\">1</int>\n
-      \     <int name=\"BOREALIS CHIPS LIMITED\">1</int>\n      <int name=\"BOREALIS
-      GMBH\">1</int>\n      <int name=\"BOREALIS HOLDING A/S\">9</int>\n      <int
-      name=\"BOREALIS HOLDINGS A/S\">1</int>\n      <int name=\"BOREALIS POLYMERS
-      OY\">10</int>\n      <int name=\"BOREALIS TECHNICAL INCORPORATED LIMITED\">1</int>\n
-      \     <int name=\"BOREALIS TECHNICAL LIMITED, A CORPORATION OF GIBRALTAR\">1</int>\n
-      \     <int name=\"BOREALIS TECHNICAL LTD\">1</int>\n      <int name=\"BOREALIS
-      TECHNOLOGY OY\">1</int>\n      <int name=\"BOREALIS, A/S\">3</int>\n      <int
-      name=\"BOREALIS, POLYMERS OY\">2</int>\n      <int name=\"BOROUGE PTE LIMITED\">4</int>\n
-      \     <int name=\"BORVE, KJETIL L.\">1</int>\n      <int name=\"BORVE, KJETIL
-      LARSEN\">1</int>\n      <int name=\"BOSTROEM, JAN-OVE\">3</int>\n      <int
-      name=\"BOSTROM, JAN-OVE\">9</int>\n      <int name=\"BP EUROPA SE\">1</int>\n
-      \     <int name=\"BRANDSTETTER, FRANZ\">1</int>\n      <int name=\"BRAUN, HERMANN\">45</int>\n
-      \     <int name=\"BRAUN, JULIANE\">13</int>\n      <int name=\"BREDERO SHAW
-      NORWAY AS\">1</int>\n      <int name=\"BRETTERBAUER, KLAUS\">3</int>\n      <int
-      name=\"BROEDERS, BERT\">26</int>\n      <int name=\"BROMAN, CLAES\">8</int>\n
-      \     <int name=\"BROVE, KJETIL LARSEN\">1</int>\n      <int name=\"BRUCKBAUER,
-      STEFAN\">2</int>\n      <int name=\"BRUEGGEMANN, MARC\">1</int>\n      <int
-      name=\"BUCHMANN, KLAUS-JUERGEN\">1</int>\n      <int name=\"BUCKA, HARTMUT\">3</int>\n
-      \     <int name=\"BURGER, MARTIN\">6</int>\n      <int name=\"BURGSTAKKER, CHRISTOPH\">1</int>\n
-      \     <int name=\"BURGSTALLER, CHRISTOPH\">1</int>\n      <int name=\"BURYAK,
-      ANDREY\">10</int>\n      <int name=\"BUSCH, DETLEF\">1</int>\n      <int name=\"CAMPUS,
-      ALFRED\">15</int>\n      <int name=\"CARLSSON, ROGER\">18</int>\n      <int
-      name=\"CARMONA, REBECA REGUILLO\">2</int>\n      <int name=\"CARSTENSEN, PETER\">3</int>\n
-      \     <int name=\"CASTRO, PASCAL\">22</int>\n      <int name=\"CAUWENBERGHE,
+      \     <int name=\"BACHTROD, MANFRED\">1</int>\n      <int name=\"BACKAMN, MATS\">1</int>\n
+      \     <int name=\"BACKMAN, MATS\">20</int>\n      <int name=\"BAECKMAN, MATS\">5</int>\n
+      \     <int name=\"BALAKANTHA, RAO KONA\">1</int>\n      <int name=\"BALMER,
+      BERT\">1</int>\n      <int name=\"BANDYOPADHYAY, PRATYUSH\">1</int>\n      <int
+      name=\"BARTKE, MICHAEL\">6</int>\n      <int name=\"BARTSCH, JONAS\">1</int>\n
+      \     <int name=\"BAUMGARTEL, GERNOT\">1</int>\n      <int name=\"BAUR, HERBERT\">2</int>\n
+      \     <int name=\"BAYER, JANICE ILENE\">2</int>\n      <int name=\"BEISERT,
+      CLAUS\">2</int>\n      <int name=\"BELSHAW, JOANNE\">2</int>\n      <int name=\"BENEDETTI,
+      GIOVANNI FEDERICO\">1</int>\n      <int name=\"BENTZROD, PAL CHRISTIAN\">3</int>\n
+      \     <int name=\"BERGER, FRIEDRICH\">27</int>\n      <int name=\"BERGFORS,
+      FREDRIK\">3</int>\n      <int name=\"BERGMAN, NICKE\">1</int>\n      <int name=\"BERGMANN,
+      FRED\">3</int>\n      <int name=\"BERGQVIST, MATTIAS\">26</int>\n      <int
+      name=\"BERGSTRA, MICHIEL\">22</int>\n      <int name=\"BERGSTRA, MICHIEL F.\">1</int>\n
+      \     <int name=\"BERGSTRA, MICHIEL FRISO\">1</int>\n      <int name=\"BERISHVILI,
+      ZAURI\">2</int>\n      <int name=\"BERNREITER, KLAUS\">2</int>\n      <int name=\"BERNREITNER,
+      KLAUS\">149</int>\n      <int name=\"BERQVIST, MATTIAS\">1</int>\n      <int
+      name=\"BETKE, HARALD\">1</int>\n      <int name=\"BIANCO, AARON\">3</int>\n
+      \     <int name=\"BIBILASHVILI, AMIRAN\">4</int>\n      <int name=\"BILINA,
+      WERNER\">2</int>\n      <int name=\"BINDER, JOSEF\">1</int>\n      <int name=\"BINKS,
+      BERNARD\">1</int>\n      <int name=\"BIRGE, JOHN D.\">1</int>\n      <int name=\"BJALAND,
+      ANN BRITT\">1</int>\n      <int name=\"BJALAND, ANNE BRITT\">3</int>\n      <int
+      name=\"BJUGGREN, JONAS MATTIASSON\">1</int>\n      <int name=\"BLAYAC, LAURENT\">1</int>\n
+      \     <int name=\"BLOK, ACHIM\">3</int>\n      <int name=\"BLOM, RICHARD\">8</int>\n
+      \     <int name=\"BLOMQVIST, TIMO\">1</int>\n      <int name=\"BOELAERS, GUIDO\">4</int>\n
+      \     <int name=\"BOGDANOVIC, MILORAD\">1</int>\n      <int name=\"BOON, PAUL\">1</int>\n
+      \     <int name=\"BORAGNO, LUCA\">14</int>\n      <int name=\"BOREALIS A/S\">22</int>\n
+      \     <int name=\"BOREALIS AG\">12</int>\n      <int name=\"BOREALIS AS\">2</int>\n
+      \     <int name=\"BOREALIS CHIMIE S.A.\">1</int>\n      <int name=\"BOREALIS
+      CHIPS LIMITED\">1</int>\n      <int name=\"BOREALIS GMBH\">1</int>\n      <int
+      name=\"BOREALIS HOLDING A/S\">9</int>\n      <int name=\"BOREALIS HOLDINGS A/S\">1</int>\n
+      \     <int name=\"BOREALIS POLYMERS OY\">10</int>\n      <int name=\"BOREALIS
+      TECHNICAL INCORPORATED LIMITED\">1</int>\n      <int name=\"BOREALIS TECHNICAL
+      LIMITED, A CORPORATION OF GIBRALTAR\">1</int>\n      <int name=\"BOREALIS TECHNICAL
+      LTD\">1</int>\n      <int name=\"BOREALIS TECHNOLOGY OY\">1</int>\n      <int
+      name=\"BOREALIS, A/S\">3</int>\n      <int name=\"BOREALIS, POLYMERS OY\">2</int>\n
+      \     <int name=\"BOROUGE PTE LIMITED\">4</int>\n      <int name=\"BORVE, KJETIL
+      L.\">1</int>\n      <int name=\"BORVE, KJETIL LARSEN\">1</int>\n      <int name=\"BOSTROEM,
+      JAN-OVE\">3</int>\n      <int name=\"BOSTROM, JAN-OVE\">9</int>\n      <int
+      name=\"BP EUROPA SE\">1</int>\n      <int name=\"BRANDSTETTER, FRANZ\">1</int>\n
+      \     <int name=\"BRAUN, HERMANN\">44</int>\n      <int name=\"BRAUN, JULIANE\">13</int>\n
+      \     <int name=\"BREDERO SHAW NORWAY AS\">1</int>\n      <int name=\"BRETTERBAUER,
+      KLAUS\">3</int>\n      <int name=\"BROEDERS, BERT\">26</int>\n      <int name=\"BROMAN,
+      CLAES\">8</int>\n      <int name=\"BROVE, KJETIL LARSEN\">1</int>\n      <int
+      name=\"BRUCKBAUER, STEFAN\">2</int>\n      <int name=\"BRUEGGEMANN, MARC\">1</int>\n
+      \     <int name=\"BUCHMANN, KLAUS-JUERGEN\">1</int>\n      <int name=\"BUCKA,
+      HARTMUT\">3</int>\n      <int name=\"BURGER, MARTIN\">6</int>\n      <int name=\"BURGSTAKKER,
+      CHRISTOPH\">1</int>\n      <int name=\"BURGSTALLER, CHRISTOPH\">1</int>\n      <int
+      name=\"BURYAK, ANDREY\">10</int>\n      <int name=\"BUSCH, DETLEF\">1</int>\n
+      \     <int name=\"CAMPUS, ALFRED\">15</int>\n      <int name=\"CARLSSON, ROGER\">18</int>\n
+      \     <int name=\"CARMONA, REBECA REGUILLO\">2</int>\n      <int name=\"CARSTENSEN,
+      PETER\">3</int>\n      <int name=\"CASTRO, PASCAL\">22</int>\n      <int name=\"CAUWENBERGHE,
       HANS JOZEF FRANCOIS VAN\">1</int>\n      <int name=\"CAVACAS, PAULO\">9</int>\n
       \     <int name=\"CHEMELOT CAMPUS B.V.\">1</int>\n      <int name=\"CHEN, XIAO
       DONG\">2</int>\n      <int name=\"CHENG, JOY\">3</int>\n      <int name=\"CHENG,
@@ -1189,7 +1180,7 @@ interactions:
       \     <int name=\"JUNGQVIST, JONAS\">4</int>\n      <int name=\"JUNQVIST, JONAS\">3</int>\n
       \     <int name=\"J\xC4GER, KARL-MICHAEL\">1</int>\n      <int name=\"KADAR,
       ROLAND\">1</int>\n      <int name=\"KAHLEN, SUSANNE\">35</int>\n      <int name=\"KAHLEN,
-      SUSANNE MARGARETE\">7</int>\n      <int name=\"KALIAPPAN, SENTHIL KUMAR\">3</int>\n
+      SUSANNE MARGARETE\">6</int>\n      <int name=\"KALIAPPAN, SENTHIL KUMAR\">3</int>\n
       \     <int name=\"KALKNER, WILFRIED\">1</int>\n      <int name=\"KALLIO, KALLE\">32</int>\n
       \     <int name=\"KALLSTRAND, BIRGITTA\">2</int>\n      <int name=\"KALMAR,
       SZABOLCS\">1</int>\n      <int name=\"KALTENBACHER, SASCHA\">2</int>\n      <int
@@ -1256,21 +1247,20 @@ interactions:
       \     <int name=\"LAURENSON, PAUL\">3</int>\n      <int name=\"LEDERER, KLAUS\">9</int>\n
       \     <int name=\"LEGRAS, ANGELICA\">4</int>\n      <int name=\"LEGRAS, ANGELICA
       MA\xCBLLE DELPHINE\">4</int>\n      <int name=\"LEHMUS, PETRI\">4</int>\n      <int
-      name=\"LEHNER, GISELA KARIN\">1</int>\n      <int name=\"LEHNTINEN, ARJA\">1</int>\n
-      \     <int name=\"LEHTINEN, ARJA\">6</int>\n      <int name=\"LEHTINEN, JARI\">1</int>\n
-      \     <int name=\"LEHTINIEMI, ISMO\">8</int>\n      <int name=\"LEIDEN, ANDERS\">1</int>\n
-      \     <int name=\"LEIDEN, LEIF\">14</int>\n      <int name=\"LEINO, REKO\">3</int>\n
-      \     <int name=\"LEINONEN, ALA-HUIKKU, SIRPA\">1</int>\n      <int name=\"LEINONEN,
-      TIMO\">47</int>\n      <int name=\"LEITNER, ANDREAS\">5</int>\n      <int name=\"LESKELA,
-      MARKKU\">2</int>\n      <int name=\"LESKINEN, PAULI\">108</int>\n      <int
-      name=\"LEWIS, GAVIN\">1</int>\n      <int name=\"LIEBER, SUSANA\">1</int>\n
-      \     <int name=\"LIEBER, SUSANNA\">3</int>\n      <int name=\"LIEDAUER, SIEGFRIED\">9</int>\n
-      \     <int name=\"LIEN, MANGOR\">1</int>\n      <int name=\"LILJA, JOHANNA\">30</int>\n
-      \     <int name=\"LIN, YI AN\">3</int>\n      <int name=\"LIND, CHRISTER\">2</int>\n
-      \     <int name=\"LINDAHL, ANN KRISTEN\">1</int>\n      <int name=\"LINDAHL,
-      ANN KRISTIN\">1</int>\n      <int name=\"LINDAHL, KRISTIN\">1</int>\n      <int
-      name=\"LINDBOM, LENA\">11</int>\n      <int name=\"LINDER, ASA\">2</int>\n      <int
-      name=\"LINDGREN, DANIEL\">3</int>\n      <int name=\"LINDGREN, LARS\">3</int>\n
+      name=\"LEHNTINEN, ARJA\">1</int>\n      <int name=\"LEHTINEN, ARJA\">6</int>\n
+      \     <int name=\"LEHTINEN, JARI\">1</int>\n      <int name=\"LEHTINIEMI, ISMO\">8</int>\n
+      \     <int name=\"LEIDEN, ANDERS\">1</int>\n      <int name=\"LEIDEN, LEIF\">14</int>\n
+      \     <int name=\"LEINO, REKO\">3</int>\n      <int name=\"LEINONEN, ALA-HUIKKU,
+      SIRPA\">1</int>\n      <int name=\"LEINONEN, TIMO\">47</int>\n      <int name=\"LEITNER,
+      ANDREAS\">5</int>\n      <int name=\"LESKELA, MARKKU\">2</int>\n      <int name=\"LESKINEN,
+      PAULI\">108</int>\n      <int name=\"LEWIS, GAVIN\">1</int>\n      <int name=\"LIEBER,
+      SUSANA\">1</int>\n      <int name=\"LIEBER, SUSANNA\">3</int>\n      <int name=\"LIEDAUER,
+      SIEGFRIED\">9</int>\n      <int name=\"LIEN, MANGOR\">1</int>\n      <int name=\"LILJA,
+      JOHANNA\">30</int>\n      <int name=\"LIN, YI AN\">3</int>\n      <int name=\"LIND,
+      CHRISTER\">2</int>\n      <int name=\"LINDAHL, ANN KRISTEN\">1</int>\n      <int
+      name=\"LINDAHL, ANN KRISTIN\">1</int>\n      <int name=\"LINDAHL, KRISTIN\">1</int>\n
+      \     <int name=\"LINDBOM, LENA\">11</int>\n      <int name=\"LINDER, ASA\">2</int>\n
+      \     <int name=\"LINDGREN, DANIEL\">3</int>\n      <int name=\"LINDGREN, LARS\">3</int>\n
       \     <int name=\"LINDHOLM, JAN\">1</int>\n      <int name=\"LINDHOLM, TERO\">1</int>\n
       \     <int name=\"LINDROOS, JARMO\">7</int>\n      <int name=\"LINDSTROEM, TONY\">2</int>\n
       \     <int name=\"LINDSTROM, HELGE\">1</int>\n      <int name=\"LINDSTROM, TONY\">1</int>\n
@@ -2497,220 +2487,219 @@ interactions:
       \     <int name=\"18266117\">1</int>\n      <int name=\"18266981\">1</int>\n
       \     <int name=\"18271318\">1</int>\n      <int name=\"18271319\">1</int>\n
       \     <int name=\"18271322\">1</int>\n      <int name=\"18283128\">1</int>\n
-      \     <int name=\"18285278\">1</int>\n      <int name=\"18286794\">1</int>\n
-      \     <int name=\"18365310\">2</int>\n      <int name=\"18458341\">1</int>\n
-      \     <int name=\"18485443\">2</int>\n    </lst>\n    <lst name=\"patNum\">\n
-      \     <int name=\"10000592\">2</int>\n      <int name=\"10000674\">1</int>\n
-      \     <int name=\"10005898\">2</int>\n      <int name=\"10010030\">2</int>\n
-      \     <int name=\"10011708\">2</int>\n      <int name=\"10029959\">2</int>\n
-      \     <int name=\"10030109\">2</int>\n      <int name=\"10032396\">1</int>\n
-      \     <int name=\"10032543\">2</int>\n      <int name=\"10035866\">1</int>\n
-      \     <int name=\"10040930\">2</int>\n      <int name=\"10047249\">2</int>\n
-      \     <int name=\"10053246\">2</int>\n      <int name=\"10053524\">2</int>\n
-      \     <int name=\"10053528\">2</int>\n      <int name=\"10053568\">2</int>\n
-      \     <int name=\"10059785\">2</int>\n      <int name=\"10065398\">2</int>\n
-      \     <int name=\"10081686\">1</int>\n      <int name=\"10081726\">2</int>\n
-      \     <int name=\"10082228\">2</int>\n      <int name=\"10087296\">2</int>\n
-      \     <int name=\"10087575\">2</int>\n      <int name=\"10100158\">2</int>\n
-      \     <int name=\"10100185\">2</int>\n      <int name=\"10100186\">2</int>\n
-      \     <int name=\"10105908\">2</int>\n      <int name=\"10106249\">3</int>\n
-      \     <int name=\"10112877\">1</int>\n      <int name=\"10113021\">2</int>\n
-      \     <int name=\"10118691\">1</int>\n      <int name=\"10118977\">2</int>\n
-      \     <int name=\"10124886\">2</int>\n      <int name=\"10125248\">2</int>\n
-      \     <int name=\"10130896\">2</int>\n      <int name=\"10138308\">2</int>\n
-      \     <int name=\"10138335\">2</int>\n      <int name=\"10144789\">2</int>\n
-      \     <int name=\"10150716\">2</int>\n      <int name=\"10155828\">2</int>\n
-      \     <int name=\"10167354\">3</int>\n      <int name=\"10167355\">2</int>\n
-      \     <int name=\"10173358\">2</int>\n      <int name=\"10174189\">2</int>\n
-      \     <int name=\"10179645\">1</int>\n      <int name=\"10179851\">2</int>\n
-      \     <int name=\"10184016\">2</int>\n      <int name=\"10184043\">1</int>\n
-      \     <int name=\"10189979\">2</int>\n      <int name=\"10196133\">1</int>\n
-      \     <int name=\"10202319\">1</int>\n      <int name=\"10202475\">2</int>\n
-      \     <int name=\"10202504\">2</int>\n      <int name=\"10208182\">1</int>\n
-      \     <int name=\"10208196\">2</int>\n      <int name=\"10221300\">2</int>\n
-      \     <int name=\"10221305\">2</int>\n      <int name=\"10227427\">2</int>\n
-      \     <int name=\"10227473\">2</int>\n      <int name=\"10233271\">1</int>\n
-      \     <int name=\"10233310\">2</int>\n      <int name=\"10239291\">2</int>\n
-      \     <int name=\"10246527\">2</int>\n      <int name=\"10253115\">2</int>\n
-      \     <int name=\"10253171\">2</int>\n      <int name=\"10259935\">2</int>\n
-      \     <int name=\"10266624\">1</int>\n      <int name=\"10266671\">3</int>\n
-      \     <int name=\"10272992\">2</int>\n      <int name=\"10280242\">2</int>\n
-      \     <int name=\"10280285\">2</int>\n      <int name=\"10287074\">1</int>\n
-      \     <int name=\"10287375\">3</int>\n      <int name=\"10290390\">2</int>\n
-      \     <int name=\"10293922\">2</int>\n      <int name=\"10301411\">1</int>\n
-      \     <int name=\"10301460\">2</int>\n      <int name=\"10304582\">2</int>\n
-      \     <int name=\"10308352\">3</int>\n      <int name=\"10308737\">2</int>\n
-      \     <int name=\"10308794\">2</int>\n      <int name=\"10308795\">2</int>\n
-      \     <int name=\"10308797\">2</int>\n      <int name=\"10308798\">2</int>\n
-      \     <int name=\"10316177\">2</int>\n      <int name=\"10324442\">1</int>\n
-      \     <int name=\"10328678\">2</int>\n      <int name=\"10329362\">2</int>\n
-      \     <int name=\"10344153\">2</int>\n      <int name=\"10347390\">2</int>\n
-      \     <int name=\"10351284\">1</int>\n      <int name=\"10358507\">2</int>\n
-      \     <int name=\"10358546\">2</int>\n      <int name=\"10363719\">1</int>\n
-      \     <int name=\"10364310\">1</int>\n      <int name=\"10369491\">1</int>\n
-      \     <int name=\"10371816\">1</int>\n      <int name=\"10385194\">1</int>\n
-      \     <int name=\"10385196\">1</int>\n      <int name=\"10385197\">1</int>\n
-      \     <int name=\"10392492\">1</int>\n      <int name=\"10392498\">1</int>\n
-      \     <int name=\"10403776\">1</int>\n      <int name=\"10414135\">1</int>\n
-      \     <int name=\"10414910\">1</int>\n      <int name=\"10435493\">1</int>\n
-      \     <int name=\"10435551\">1</int>\n      <int name=\"10442883\">2</int>\n
-      \     <int name=\"10450391\">2</int>\n      <int name=\"10450451\">1</int>\n
-      \     <int name=\"10450452\">2</int>\n      <int name=\"10457758\">1</int>\n
-      \     <int name=\"10457766\">1</int>\n      <int name=\"10472509\">2</int>\n
-      \     <int name=\"10487203\">2</int>\n      <int name=\"10494464\">1</int>\n
-      \     <int name=\"10494465\">1</int>\n      <int name=\"10501223\">3</int>\n
-      \     <int name=\"10505060\">2</int>\n      <int name=\"10519259\">2</int>\n
-      \     <int name=\"10519306\">2</int>\n      <int name=\"10519570\">2</int>\n
-      \     <int name=\"10526478\">2</int>\n      <int name=\"10529469\">2</int>\n
-      \     <int name=\"10544297\">2</int>\n      <int name=\"10550233\">1</int>\n
-      \     <int name=\"10550253\">2</int>\n      <int name=\"10557027\">2</int>\n
-      \     <int name=\"10571051\">2</int>\n      <int name=\"10584196\">2</int>\n
-      \     <int name=\"10586634\">2</int>\n      <int name=\"10597470\">2</int>\n
-      \     <int name=\"10597472\">2</int>\n      <int name=\"10604595\">2</int>\n
-      \     <int name=\"10612635\">1</int>\n      <int name=\"10619036\">2</int>\n
-      \     <int name=\"10626199\">2</int>\n      <int name=\"10626261\">2</int>\n
-      \     <int name=\"10626265\">2</int>\n      <int name=\"10640685\">2</int>\n
-      \     <int name=\"10647838\">2</int>\n      <int name=\"10665361\">2</int>\n
-      \     <int name=\"10669410\">2</int>\n      <int name=\"10676544\">2</int>\n
-      \     <int name=\"10676604\">2</int>\n      <int name=\"10679768\">2</int>\n
-      \     <int name=\"10679769\">3</int>\n      <int name=\"10688765\">1</int>\n
-      \     <int name=\"10696762\">1</int>\n      <int name=\"10696764\">1</int>\n
-      \     <int name=\"10696834\">1</int>\n      <int name=\"10702842\">1</int>\n
-      \     <int name=\"10717832\">1</int>\n      <int name=\"10723870\">2</int>\n
-      \     <int name=\"10723874\">1</int>\n      <int name=\"10731093\">2</int>\n
-      \     <int name=\"10744678\">2</int>\n      <int name=\"10745498\">2</int>\n
-      \     <int name=\"10745548\">2</int>\n      <int name=\"10752762\">2</int>\n
-      \     <int name=\"10752763\">2</int>\n      <int name=\"10759880\">2</int>\n
-      \     <int name=\"10759931\">2</int>\n      <int name=\"10767020\">2</int>\n
-      \     <int name=\"10767087\">2</int>\n      <int name=\"10773797\">1</int>\n
-      \     <int name=\"10774202\">2</int>\n      <int name=\"10781303\">2</int>\n
-      \     <int name=\"10781304\">2</int>\n      <int name=\"10787528\">2</int>\n
-      \     <int name=\"10792837\">2</int>\n      <int name=\"10793753\">2</int>\n
-      \     <int name=\"10800864\">2</int>\n      <int name=\"10800910\">2</int>\n
-      \     <int name=\"10804005\">2</int>\n      <int name=\"10807467\">1</int>\n
-      \     <int name=\"10811164\">2</int>\n      <int name=\"10815399\">1</int>\n
-      \     <int name=\"10822478\">2</int>\n      <int name=\"10823152\">1</int>\n
-      \     <int name=\"10829610\">2</int>\n      <int name=\"10829624\">2</int>\n
-      \     <int name=\"10839715\">1</int>\n      <int name=\"10851191\">2</int>\n
-      \     <int name=\"10870718\">2</int>\n      <int name=\"10870937\">2</int>\n
-      \     <int name=\"10875939\">2</int>\n      <int name=\"10875993\">2</int>\n
-      \     <int name=\"10882934\">2</int>\n      <int name=\"10886034\">2</int>\n
-      \     <int name=\"10886070\">2</int>\n      <int name=\"10889666\">2</int>\n
-      \     <int name=\"10889670\">3</int>\n      <int name=\"10889697\">2</int>\n
-      \     <int name=\"10889705\">2</int>\n      <int name=\"10899942\">2</int>\n
-      \     <int name=\"10907036\">2</int>\n      <int name=\"10918972\">2</int>\n
-      \     <int name=\"10919993\">2</int>\n      <int name=\"10920055\">2</int>\n
-      \     <int name=\"10920057\">2</int>\n      <int name=\"10934420\">2</int>\n
-      \     <int name=\"10934422\">3</int>\n      <int name=\"10940941\">1</int>\n
-      \     <int name=\"10941123\">2</int>\n      <int name=\"10941276\">2</int>\n
-      \     <int name=\"10941288\">2</int>\n      <int name=\"10943710\">2</int>\n
-      \     <int name=\"10946357\">2</int>\n      <int name=\"10947335\">2</int>\n
-      \     <int name=\"10950366\">2</int>\n      <int name=\"10961334\">2</int>\n
-      \     <int name=\"10961376\">2</int>\n      <int name=\"10964221\">1</int>\n
-      \     <int name=\"10982019\">2</int>\n      <int name=\"10982022\">2</int>\n
-      \     <int name=\"10982025\">2</int>\n      <int name=\"10982028\">2</int>\n
-      \     <int name=\"10988555\">2</int>\n      <int name=\"10995205\">2</int>\n
-      \     <int name=\"11001736\">2</int>\n      <int name=\"11007187\">1</int>\n
-      \     <int name=\"11011287\">2</int>\n      <int name=\"11015003\">2</int>\n
-      \     <int name=\"11015048\">2</int>\n      <int name=\"11020878\">2</int>\n
-      \     <int name=\"11021597\">2</int>\n      <int name=\"11028238\">2</int>\n
-      \     <int name=\"11030559\">2</int>\n      <int name=\"11034784\">2</int>\n
-      \     <int name=\"11034824\">2</int>\n      <int name=\"11053371\">2</int>\n
-      \     <int name=\"11053379\">2</int>\n      <int name=\"11053380\">2</int>\n
-      \     <int name=\"11066541\">2</int>\n      <int name=\"11072699\">2</int>\n
-      \     <int name=\"11078304\">2</int>\n      <int name=\"11078305\">2</int>\n
-      \     <int name=\"11078310\">1</int>\n      <int name=\"11078312\">2</int>\n
-      \     <int name=\"11084919\">2</int>\n      <int name=\"11084920\">2</int>\n
-      \     <int name=\"11091617\">2</int>\n      <int name=\"11097305\">2</int>\n
-      \     <int name=\"11098141\">2</int>\n      <int name=\"11111324\">2</int>\n
-      \     <int name=\"11111369\">2</int>\n      <int name=\"11111371\">2</int>\n
-      \     <int name=\"11142306\">2</int>\n      <int name=\"11149096\">2</int>\n
-      \     <int name=\"11170908\">2</int>\n      <int name=\"11175238\">1</int>\n
-      \     <int name=\"11177051\">2</int>\n      <int name=\"11179690\">2</int>\n
-      \     <int name=\"11180586\">2</int>\n      <int name=\"11180619\">2</int>\n
-      \     <int name=\"11186706\">3</int>\n      <int name=\"11186708\">2</int>\n
-      \     <int name=\"11192349\">2</int>\n      <int name=\"11192963\">2</int>\n
-      \     <int name=\"11203683\">2</int>\n      <int name=\"11208507\">2</int>\n
-      \     <int name=\"11213765\">2</int>\n      <int name=\"11220558\">2</int>\n
-      \     <int name=\"11224828\">2</int>\n      <int name=\"11230637\">2</int>\n
-      \     <int name=\"11230638\">2</int>\n      <int name=\"11235865\">1</int>\n
-      \     <int name=\"11236214\">2</int>\n      <int name=\"11236553\">1</int>\n
-      \     <int name=\"11242449\">1</int>\n      <int name=\"11248115\">2</int>\n
-      \     <int name=\"11254445\">1</int>\n      <int name=\"11254809\">2</int>\n
-      \     <int name=\"11254811\">2</int>\n      <int name=\"11278602\">1</int>\n
-      \     <int name=\"11279777\">2</int>\n      <int name=\"11279781\">2</int>\n
-      \     <int name=\"11286315\">2</int>\n      <int name=\"11292156\">2</int>\n
-      \     <int name=\"11292858\">2</int>\n      <int name=\"11292900\">2</int>\n
-      \     <int name=\"11292901\">2</int>\n      <int name=\"11299610\">2</int>\n
-      \     <int name=\"11299617\">2</int>\n      <int name=\"11322279\">2</int>\n
-      \     <int name=\"11332236\">1</int>\n      <int name=\"11332603\">2</int>\n
-      \     <int name=\"11339277\">2</int>\n      <int name=\"11340349\">1</int>\n
-      \     <int name=\"11345804\">2</int>\n      <int name=\"11346490\">2</int>\n
-      \     <int name=\"11352376\">2</int>\n      <int name=\"11355260\">2</int>\n
-      \     <int name=\"11359080\">2</int>\n      <int name=\"11370904\">2</int>\n
-      \     <int name=\"11370905\">2</int>\n      <int name=\"11377543\">2</int>\n
-      \     <int name=\"11384170\">2</int>\n      <int name=\"11390699\">2</int>\n
-      \     <int name=\"11390700\">2</int>\n      <int name=\"11390732\">2</int>\n
-      \     <int name=\"11396593\">2</int>\n      <int name=\"11400427\">2</int>\n
-      \     <int name=\"11400429\">2</int>\n      <int name=\"11400846\">1</int>\n
-      \     <int name=\"11401359\">2</int>\n      <int name=\"11402048\">2</int>\n
-      \     <int name=\"11407886\">2</int>\n      <int name=\"11410788\">2</int>\n
-      \     <int name=\"11414500\">2</int>\n      <int name=\"11421057\">2</int>\n
-      \     <int name=\"11427670\">2</int>\n      <int name=\"11440300\">2</int>\n
-      \     <int name=\"11440983\">2</int>\n      <int name=\"11441024\">3</int>\n
-      \     <int name=\"11447580\">2</int>\n      <int name=\"11447623\">2</int>\n
-      \     <int name=\"11450780\">2</int>\n      <int name=\"11462340\">2</int>\n
-      \     <int name=\"11465393\">2</int>\n      <int name=\"11466148\">2</int>\n
-      \     <int name=\"11471847\">2</int>\n      <int name=\"11472166\">2</int>\n
-      \     <int name=\"11485636\">2</int>\n      <int name=\"11485843\">2</int>\n
-      \     <int name=\"11485845\">2</int>\n      <int name=\"11486056\">1</int>\n
-      \     <int name=\"11491767\">2</int>\n      <int name=\"11492473\">2</int>\n
-      \     <int name=\"11492478\">2</int>\n      <int name=\"11512157\">2</int>\n
-      \     <int name=\"11512189\">2</int>\n      <int name=\"11518863\">2</int>\n
-      \     <int name=\"11527337\">2</int>\n      <int name=\"11530280\">2</int>\n
-      \     <int name=\"11530320\">2</int>\n      <int name=\"11530321\">2</int>\n
-      \     <int name=\"11535012\">2</int>\n      <int name=\"11542346\">2</int>\n
-      \     <int name=\"11552210\">2</int>\n      <int name=\"11555083\">2</int>\n
-      \     <int name=\"11559776\">2</int>\n      <int name=\"11560440\">2</int>\n
-      \     <int name=\"11572461\">2</int>\n      <int name=\"11578198\">2</int>\n
-      \     <int name=\"11578430\">2</int>\n      <int name=\"11584834\">2</int>\n
-      \     <int name=\"11591444\">2</int>\n      <int name=\"11591455\">4</int>\n
-      \     <int name=\"11603418\">2</int>\n      <int name=\"11613633\">2</int>\n
-      \     <int name=\"11614159\">1</int>\n      <int name=\"11618794\">2</int>\n
-      \     <int name=\"11618795\">2</int>\n      <int name=\"11634571\">2</int>\n
-      \     <int name=\"11638722\">1</int>\n      <int name=\"11639399\">1</int>\n
-      \     <int name=\"11643427\">2</int>\n      <int name=\"11643537\">2</int>\n
-      \     <int name=\"11648722\">2</int>\n      <int name=\"11661503\">2</int>\n
-      \     <int name=\"11668033\">2</int>\n      <int name=\"11674016\">2</int>\n
-      \     <int name=\"11674017\">2</int>\n      <int name=\"11674025\">2</int>\n
-      \     <int name=\"11674027\">2</int>\n      <int name=\"11680114\">2</int>\n
-      \     <int name=\"11680118\">2</int>\n      <int name=\"11685825\">2</int>\n
-      \     <int name=\"11685826\">2</int>\n      <int name=\"11685840\">2</int>\n
-      \     <int name=\"11688529\">2</int>\n      <int name=\"11702487\">2</int>\n
-      \     <int name=\"11708425\">2</int>\n      <int name=\"11708431\">2</int>\n
-      \     <int name=\"11708432\">2</int>\n      <int name=\"11713135\">1</int>\n
-      \     <int name=\"11735059\">1</int>\n      <int name=\"11739202\">2</int>\n
-      \     <int name=\"11746223\">1</int>\n      <int name=\"11746224\">2</int>\n
-      \     <int name=\"11752743\">2</int>\n      <int name=\"11753486\">2</int>\n
-      \     <int name=\"11756700\">2</int>\n      <int name=\"11760067\">3</int>\n
-      \     <int name=\"11783960\">2</int>\n      <int name=\"11807655\">2</int>\n
-      \     <int name=\"11814509\">2</int>\n      <int name=\"11827733\">2</int>\n
-      \     <int name=\"11827758\">2</int>\n      <int name=\"11827774\">2</int>\n
-      \     <int name=\"11827777\">2</int>\n      <int name=\"11834529\">2</int>\n
-      \     <int name=\"11845836\">2</int>\n      <int name=\"11845857\">2</int>\n
-      \     <int name=\"11851552\">2</int>\n      <int name=\"11858656\">1</int>\n
-      \     <int name=\"11858659\">1</int>\n      <int name=\"11859030\">2</int>\n
-      \     <int name=\"11865818\">2</int>\n      <int name=\"11869375\">1</int>\n
-      \     <int name=\"11873397\">2</int>\n      <int name=\"11879057\">2</int>\n
-      \     <int name=\"11881335\">2</int>\n      <int name=\"11884044\">2</int>\n
-      \     <int name=\"11891191\">1</int>\n      <int name=\"11893722\">2</int>\n
-      \     <int name=\"11897975\">2</int>\n      <int name=\"11904580\">1</int>\n
-      \     <int name=\"11911715\">2</int>\n      <int name=\"11912838\">2</int>\n
-      \     <int name=\"11912849\">2</int>\n      <int name=\"11912951\">1</int>\n
-      \     <int name=\"11920018\">2</int>\n      <int name=\"11940529\">1</int>\n
-      \     <int name=\"11945926\">2</int>\n      <int name=\"11952481\">2</int>\n
-      \     <int name=\"11952482\">1</int>\n      <int name=\"11958957\">2</int>\n
-      \     <int name=\"11965052\">1</int>\n      <int name=\"4829034\">1</int>\n
+      \     <int name=\"18285278\">1</int>\n      <int name=\"18365310\">2</int>\n
+      \     <int name=\"18458341\">1</int>\n      <int name=\"18485443\">2</int>\n
+      \   </lst>\n    <lst name=\"patNum\">\n      <int name=\"10000592\">2</int>\n
+      \     <int name=\"10000674\">1</int>\n      <int name=\"10005898\">2</int>\n
+      \     <int name=\"10010030\">2</int>\n      <int name=\"10011708\">2</int>\n
+      \     <int name=\"10029959\">2</int>\n      <int name=\"10030109\">2</int>\n
+      \     <int name=\"10032396\">1</int>\n      <int name=\"10032543\">2</int>\n
+      \     <int name=\"10035866\">1</int>\n      <int name=\"10040930\">2</int>\n
+      \     <int name=\"10047249\">2</int>\n      <int name=\"10053246\">2</int>\n
+      \     <int name=\"10053524\">2</int>\n      <int name=\"10053528\">2</int>\n
+      \     <int name=\"10053568\">2</int>\n      <int name=\"10059785\">2</int>\n
+      \     <int name=\"10065398\">2</int>\n      <int name=\"10081686\">1</int>\n
+      \     <int name=\"10081726\">2</int>\n      <int name=\"10082228\">2</int>\n
+      \     <int name=\"10087296\">2</int>\n      <int name=\"10087575\">2</int>\n
+      \     <int name=\"10100158\">2</int>\n      <int name=\"10100185\">2</int>\n
+      \     <int name=\"10100186\">2</int>\n      <int name=\"10105908\">2</int>\n
+      \     <int name=\"10106249\">3</int>\n      <int name=\"10112877\">1</int>\n
+      \     <int name=\"10113021\">2</int>\n      <int name=\"10118691\">1</int>\n
+      \     <int name=\"10118977\">2</int>\n      <int name=\"10124886\">2</int>\n
+      \     <int name=\"10125248\">2</int>\n      <int name=\"10130896\">2</int>\n
+      \     <int name=\"10138308\">2</int>\n      <int name=\"10138335\">2</int>\n
+      \     <int name=\"10144789\">2</int>\n      <int name=\"10150716\">2</int>\n
+      \     <int name=\"10155828\">2</int>\n      <int name=\"10167354\">3</int>\n
+      \     <int name=\"10167355\">2</int>\n      <int name=\"10173358\">2</int>\n
+      \     <int name=\"10174189\">2</int>\n      <int name=\"10179645\">1</int>\n
+      \     <int name=\"10179851\">2</int>\n      <int name=\"10184016\">2</int>\n
+      \     <int name=\"10184043\">1</int>\n      <int name=\"10189979\">2</int>\n
+      \     <int name=\"10196133\">1</int>\n      <int name=\"10202319\">1</int>\n
+      \     <int name=\"10202475\">2</int>\n      <int name=\"10202504\">2</int>\n
+      \     <int name=\"10208182\">1</int>\n      <int name=\"10208196\">2</int>\n
+      \     <int name=\"10221300\">2</int>\n      <int name=\"10221305\">2</int>\n
+      \     <int name=\"10227427\">2</int>\n      <int name=\"10227473\">2</int>\n
+      \     <int name=\"10233271\">1</int>\n      <int name=\"10233310\">2</int>\n
+      \     <int name=\"10239291\">2</int>\n      <int name=\"10246527\">2</int>\n
+      \     <int name=\"10253115\">2</int>\n      <int name=\"10253171\">2</int>\n
+      \     <int name=\"10259935\">2</int>\n      <int name=\"10266624\">1</int>\n
+      \     <int name=\"10266671\">3</int>\n      <int name=\"10272992\">2</int>\n
+      \     <int name=\"10280242\">2</int>\n      <int name=\"10280285\">2</int>\n
+      \     <int name=\"10287074\">1</int>\n      <int name=\"10287375\">3</int>\n
+      \     <int name=\"10290390\">2</int>\n      <int name=\"10293922\">2</int>\n
+      \     <int name=\"10301411\">1</int>\n      <int name=\"10301460\">2</int>\n
+      \     <int name=\"10304582\">2</int>\n      <int name=\"10308352\">3</int>\n
+      \     <int name=\"10308737\">2</int>\n      <int name=\"10308794\">2</int>\n
+      \     <int name=\"10308795\">2</int>\n      <int name=\"10308797\">2</int>\n
+      \     <int name=\"10308798\">2</int>\n      <int name=\"10316177\">2</int>\n
+      \     <int name=\"10324442\">1</int>\n      <int name=\"10328678\">2</int>\n
+      \     <int name=\"10329362\">2</int>\n      <int name=\"10344153\">2</int>\n
+      \     <int name=\"10347390\">2</int>\n      <int name=\"10351284\">1</int>\n
+      \     <int name=\"10358507\">2</int>\n      <int name=\"10358546\">2</int>\n
+      \     <int name=\"10363719\">1</int>\n      <int name=\"10364310\">1</int>\n
+      \     <int name=\"10369491\">1</int>\n      <int name=\"10371816\">1</int>\n
+      \     <int name=\"10385194\">1</int>\n      <int name=\"10385196\">1</int>\n
+      \     <int name=\"10385197\">1</int>\n      <int name=\"10392492\">1</int>\n
+      \     <int name=\"10392498\">1</int>\n      <int name=\"10403776\">1</int>\n
+      \     <int name=\"10414135\">1</int>\n      <int name=\"10414910\">1</int>\n
+      \     <int name=\"10435493\">1</int>\n      <int name=\"10435551\">1</int>\n
+      \     <int name=\"10442883\">2</int>\n      <int name=\"10450391\">2</int>\n
+      \     <int name=\"10450451\">1</int>\n      <int name=\"10450452\">2</int>\n
+      \     <int name=\"10457758\">1</int>\n      <int name=\"10457766\">1</int>\n
+      \     <int name=\"10472509\">2</int>\n      <int name=\"10487203\">2</int>\n
+      \     <int name=\"10494464\">1</int>\n      <int name=\"10494465\">1</int>\n
+      \     <int name=\"10501223\">3</int>\n      <int name=\"10505060\">2</int>\n
+      \     <int name=\"10519259\">2</int>\n      <int name=\"10519306\">2</int>\n
+      \     <int name=\"10519570\">2</int>\n      <int name=\"10526478\">2</int>\n
+      \     <int name=\"10529469\">2</int>\n      <int name=\"10544297\">2</int>\n
+      \     <int name=\"10550233\">1</int>\n      <int name=\"10550253\">2</int>\n
+      \     <int name=\"10557027\">2</int>\n      <int name=\"10571051\">2</int>\n
+      \     <int name=\"10584196\">2</int>\n      <int name=\"10586634\">2</int>\n
+      \     <int name=\"10597470\">2</int>\n      <int name=\"10597472\">2</int>\n
+      \     <int name=\"10604595\">2</int>\n      <int name=\"10612635\">1</int>\n
+      \     <int name=\"10619036\">2</int>\n      <int name=\"10626199\">2</int>\n
+      \     <int name=\"10626261\">2</int>\n      <int name=\"10626265\">2</int>\n
+      \     <int name=\"10640685\">2</int>\n      <int name=\"10647838\">2</int>\n
+      \     <int name=\"10665361\">2</int>\n      <int name=\"10669410\">2</int>\n
+      \     <int name=\"10676544\">2</int>\n      <int name=\"10676604\">2</int>\n
+      \     <int name=\"10679768\">2</int>\n      <int name=\"10679769\">3</int>\n
+      \     <int name=\"10688765\">1</int>\n      <int name=\"10696762\">1</int>\n
+      \     <int name=\"10696764\">1</int>\n      <int name=\"10696834\">1</int>\n
+      \     <int name=\"10702842\">1</int>\n      <int name=\"10717832\">1</int>\n
+      \     <int name=\"10723870\">2</int>\n      <int name=\"10723874\">1</int>\n
+      \     <int name=\"10731093\">2</int>\n      <int name=\"10744678\">2</int>\n
+      \     <int name=\"10745498\">2</int>\n      <int name=\"10745548\">2</int>\n
+      \     <int name=\"10752762\">2</int>\n      <int name=\"10752763\">2</int>\n
+      \     <int name=\"10759880\">2</int>\n      <int name=\"10759931\">2</int>\n
+      \     <int name=\"10767020\">2</int>\n      <int name=\"10767087\">2</int>\n
+      \     <int name=\"10773797\">1</int>\n      <int name=\"10774202\">2</int>\n
+      \     <int name=\"10781303\">2</int>\n      <int name=\"10781304\">2</int>\n
+      \     <int name=\"10787528\">2</int>\n      <int name=\"10792837\">2</int>\n
+      \     <int name=\"10793753\">2</int>\n      <int name=\"10800864\">2</int>\n
+      \     <int name=\"10800910\">2</int>\n      <int name=\"10804005\">2</int>\n
+      \     <int name=\"10807467\">1</int>\n      <int name=\"10811164\">2</int>\n
+      \     <int name=\"10815399\">1</int>\n      <int name=\"10822478\">2</int>\n
+      \     <int name=\"10823152\">1</int>\n      <int name=\"10829610\">2</int>\n
+      \     <int name=\"10829624\">2</int>\n      <int name=\"10839715\">1</int>\n
+      \     <int name=\"10851191\">2</int>\n      <int name=\"10870718\">2</int>\n
+      \     <int name=\"10870937\">2</int>\n      <int name=\"10875939\">2</int>\n
+      \     <int name=\"10875993\">2</int>\n      <int name=\"10882934\">2</int>\n
+      \     <int name=\"10886034\">2</int>\n      <int name=\"10886070\">2</int>\n
+      \     <int name=\"10889666\">2</int>\n      <int name=\"10889670\">3</int>\n
+      \     <int name=\"10889697\">2</int>\n      <int name=\"10889705\">2</int>\n
+      \     <int name=\"10899942\">2</int>\n      <int name=\"10907036\">2</int>\n
+      \     <int name=\"10918972\">2</int>\n      <int name=\"10919993\">2</int>\n
+      \     <int name=\"10920055\">2</int>\n      <int name=\"10920057\">2</int>\n
+      \     <int name=\"10934420\">2</int>\n      <int name=\"10934422\">3</int>\n
+      \     <int name=\"10940941\">1</int>\n      <int name=\"10941123\">2</int>\n
+      \     <int name=\"10941276\">2</int>\n      <int name=\"10941288\">2</int>\n
+      \     <int name=\"10943710\">2</int>\n      <int name=\"10946357\">2</int>\n
+      \     <int name=\"10947335\">2</int>\n      <int name=\"10950366\">2</int>\n
+      \     <int name=\"10961334\">2</int>\n      <int name=\"10961376\">2</int>\n
+      \     <int name=\"10964221\">1</int>\n      <int name=\"10982019\">2</int>\n
+      \     <int name=\"10982022\">2</int>\n      <int name=\"10982025\">2</int>\n
+      \     <int name=\"10982028\">2</int>\n      <int name=\"10988555\">2</int>\n
+      \     <int name=\"10995205\">2</int>\n      <int name=\"11001736\">2</int>\n
+      \     <int name=\"11007187\">1</int>\n      <int name=\"11011287\">2</int>\n
+      \     <int name=\"11015003\">2</int>\n      <int name=\"11015048\">2</int>\n
+      \     <int name=\"11020878\">2</int>\n      <int name=\"11021597\">2</int>\n
+      \     <int name=\"11028238\">2</int>\n      <int name=\"11030559\">2</int>\n
+      \     <int name=\"11034784\">2</int>\n      <int name=\"11034824\">2</int>\n
+      \     <int name=\"11053371\">2</int>\n      <int name=\"11053379\">2</int>\n
+      \     <int name=\"11053380\">2</int>\n      <int name=\"11066541\">2</int>\n
+      \     <int name=\"11072699\">2</int>\n      <int name=\"11078304\">2</int>\n
+      \     <int name=\"11078305\">2</int>\n      <int name=\"11078310\">1</int>\n
+      \     <int name=\"11078312\">2</int>\n      <int name=\"11084919\">2</int>\n
+      \     <int name=\"11084920\">2</int>\n      <int name=\"11091617\">2</int>\n
+      \     <int name=\"11097305\">2</int>\n      <int name=\"11098141\">2</int>\n
+      \     <int name=\"11111324\">2</int>\n      <int name=\"11111369\">2</int>\n
+      \     <int name=\"11111371\">2</int>\n      <int name=\"11142306\">2</int>\n
+      \     <int name=\"11149096\">2</int>\n      <int name=\"11170908\">2</int>\n
+      \     <int name=\"11175238\">1</int>\n      <int name=\"11177051\">2</int>\n
+      \     <int name=\"11179690\">2</int>\n      <int name=\"11180586\">2</int>\n
+      \     <int name=\"11180619\">2</int>\n      <int name=\"11186706\">3</int>\n
+      \     <int name=\"11186708\">2</int>\n      <int name=\"11192349\">2</int>\n
+      \     <int name=\"11192963\">2</int>\n      <int name=\"11203683\">2</int>\n
+      \     <int name=\"11208507\">2</int>\n      <int name=\"11213765\">2</int>\n
+      \     <int name=\"11220558\">2</int>\n      <int name=\"11224828\">2</int>\n
+      \     <int name=\"11230637\">2</int>\n      <int name=\"11230638\">2</int>\n
+      \     <int name=\"11235865\">1</int>\n      <int name=\"11236214\">2</int>\n
+      \     <int name=\"11236553\">1</int>\n      <int name=\"11242449\">1</int>\n
+      \     <int name=\"11248115\">2</int>\n      <int name=\"11254445\">1</int>\n
+      \     <int name=\"11254809\">2</int>\n      <int name=\"11254811\">2</int>\n
+      \     <int name=\"11278602\">1</int>\n      <int name=\"11279777\">2</int>\n
+      \     <int name=\"11279781\">2</int>\n      <int name=\"11286315\">2</int>\n
+      \     <int name=\"11292156\">2</int>\n      <int name=\"11292858\">2</int>\n
+      \     <int name=\"11292900\">2</int>\n      <int name=\"11292901\">2</int>\n
+      \     <int name=\"11299610\">2</int>\n      <int name=\"11299617\">2</int>\n
+      \     <int name=\"11322279\">2</int>\n      <int name=\"11332236\">1</int>\n
+      \     <int name=\"11332603\">2</int>\n      <int name=\"11339277\">2</int>\n
+      \     <int name=\"11340349\">1</int>\n      <int name=\"11345804\">2</int>\n
+      \     <int name=\"11346490\">2</int>\n      <int name=\"11352376\">2</int>\n
+      \     <int name=\"11355260\">2</int>\n      <int name=\"11359080\">2</int>\n
+      \     <int name=\"11370904\">2</int>\n      <int name=\"11370905\">2</int>\n
+      \     <int name=\"11377543\">2</int>\n      <int name=\"11384170\">2</int>\n
+      \     <int name=\"11390699\">2</int>\n      <int name=\"11390700\">2</int>\n
+      \     <int name=\"11390732\">2</int>\n      <int name=\"11396593\">2</int>\n
+      \     <int name=\"11400427\">2</int>\n      <int name=\"11400429\">2</int>\n
+      \     <int name=\"11400846\">1</int>\n      <int name=\"11401359\">2</int>\n
+      \     <int name=\"11402048\">2</int>\n      <int name=\"11407886\">2</int>\n
+      \     <int name=\"11410788\">2</int>\n      <int name=\"11414500\">2</int>\n
+      \     <int name=\"11421057\">2</int>\n      <int name=\"11427670\">2</int>\n
+      \     <int name=\"11440300\">2</int>\n      <int name=\"11440983\">2</int>\n
+      \     <int name=\"11441024\">3</int>\n      <int name=\"11447580\">2</int>\n
+      \     <int name=\"11447623\">2</int>\n      <int name=\"11450780\">2</int>\n
+      \     <int name=\"11462340\">2</int>\n      <int name=\"11465393\">2</int>\n
+      \     <int name=\"11466148\">2</int>\n      <int name=\"11471847\">2</int>\n
+      \     <int name=\"11472166\">2</int>\n      <int name=\"11485636\">2</int>\n
+      \     <int name=\"11485843\">2</int>\n      <int name=\"11485845\">2</int>\n
+      \     <int name=\"11486056\">1</int>\n      <int name=\"11491767\">2</int>\n
+      \     <int name=\"11492473\">2</int>\n      <int name=\"11492478\">2</int>\n
+      \     <int name=\"11512157\">2</int>\n      <int name=\"11512189\">2</int>\n
+      \     <int name=\"11518863\">2</int>\n      <int name=\"11527337\">2</int>\n
+      \     <int name=\"11530280\">2</int>\n      <int name=\"11530320\">2</int>\n
+      \     <int name=\"11530321\">2</int>\n      <int name=\"11535012\">2</int>\n
+      \     <int name=\"11542346\">2</int>\n      <int name=\"11552210\">2</int>\n
+      \     <int name=\"11555083\">2</int>\n      <int name=\"11559776\">2</int>\n
+      \     <int name=\"11560440\">2</int>\n      <int name=\"11572461\">2</int>\n
+      \     <int name=\"11578198\">2</int>\n      <int name=\"11578430\">2</int>\n
+      \     <int name=\"11584834\">2</int>\n      <int name=\"11591444\">2</int>\n
+      \     <int name=\"11591455\">4</int>\n      <int name=\"11603418\">2</int>\n
+      \     <int name=\"11613633\">2</int>\n      <int name=\"11614159\">1</int>\n
+      \     <int name=\"11618794\">2</int>\n      <int name=\"11618795\">2</int>\n
+      \     <int name=\"11634571\">2</int>\n      <int name=\"11638722\">1</int>\n
+      \     <int name=\"11639399\">1</int>\n      <int name=\"11643427\">2</int>\n
+      \     <int name=\"11643537\">2</int>\n      <int name=\"11648722\">2</int>\n
+      \     <int name=\"11661503\">2</int>\n      <int name=\"11668033\">2</int>\n
+      \     <int name=\"11674016\">2</int>\n      <int name=\"11674017\">2</int>\n
+      \     <int name=\"11674025\">2</int>\n      <int name=\"11674027\">2</int>\n
+      \     <int name=\"11680114\">2</int>\n      <int name=\"11680118\">2</int>\n
+      \     <int name=\"11685825\">2</int>\n      <int name=\"11685826\">2</int>\n
+      \     <int name=\"11685840\">2</int>\n      <int name=\"11688529\">2</int>\n
+      \     <int name=\"11702487\">2</int>\n      <int name=\"11708425\">2</int>\n
+      \     <int name=\"11708431\">2</int>\n      <int name=\"11708432\">2</int>\n
+      \     <int name=\"11713135\">1</int>\n      <int name=\"11735059\">1</int>\n
+      \     <int name=\"11739202\">2</int>\n      <int name=\"11746223\">1</int>\n
+      \     <int name=\"11746224\">2</int>\n      <int name=\"11752743\">2</int>\n
+      \     <int name=\"11753486\">2</int>\n      <int name=\"11756700\">2</int>\n
+      \     <int name=\"11760067\">3</int>\n      <int name=\"11783960\">2</int>\n
+      \     <int name=\"11807655\">2</int>\n      <int name=\"11814509\">2</int>\n
+      \     <int name=\"11827733\">2</int>\n      <int name=\"11827758\">2</int>\n
+      \     <int name=\"11827774\">2</int>\n      <int name=\"11827777\">2</int>\n
+      \     <int name=\"11834529\">2</int>\n      <int name=\"11845836\">2</int>\n
+      \     <int name=\"11845857\">2</int>\n      <int name=\"11851552\">2</int>\n
+      \     <int name=\"11858656\">1</int>\n      <int name=\"11858659\">1</int>\n
+      \     <int name=\"11859030\">2</int>\n      <int name=\"11865818\">2</int>\n
+      \     <int name=\"11869375\">1</int>\n      <int name=\"11873397\">2</int>\n
+      \     <int name=\"11879057\">2</int>\n      <int name=\"11881335\">2</int>\n
+      \     <int name=\"11884044\">2</int>\n      <int name=\"11891191\">1</int>\n
+      \     <int name=\"11893722\">2</int>\n      <int name=\"11897975\">2</int>\n
+      \     <int name=\"11904580\">1</int>\n      <int name=\"11911715\">2</int>\n
+      \     <int name=\"11912838\">2</int>\n      <int name=\"11912849\">2</int>\n
+      \     <int name=\"11912951\">1</int>\n      <int name=\"11920018\">2</int>\n
+      \     <int name=\"11940529\">1</int>\n      <int name=\"11945926\">2</int>\n
+      \     <int name=\"11952481\">2</int>\n      <int name=\"11952482\">1</int>\n
+      \     <int name=\"11958957\">2</int>\n      <int name=\"4829034\">1</int>\n
       \     <int name=\"4918037\">1</int>\n      <int name=\"4990383\">1</int>\n      <int
       name=\"5084305\">1</int>\n      <int name=\"5108797\">1</int>\n      <int name=\"5135899\">2</int>\n
       \     <int name=\"5137856\">2</int>\n      <int name=\"5158806\">1</int>\n      <int
@@ -3813,28 +3802,28 @@ interactions:
       \     <int name=\"20240075441\">2</int>\n      <int name=\"20240082801\">1</int>\n
       \     <int name=\"20240084080\">1</int>\n      <int name=\"20240084103\">1</int>\n
       \     <int name=\"20240093012\">1</int>\n      <int name=\"20240093415\">1</int>\n
-      \     <int name=\"20240110032\">1</int>\n      <int name=\"20240124695\">1</int>\n
-      \     <int name=\"NULL\">267</int>\n    </lst>\n    <lst name=\"intlRegNum\">\n
-      \     <int name=\"NULL\">1859</int>\n    </lst>\n  </lst>\n  <lst name=\"facet_ranges\">\n
-      \   <lst name=\"patAssignorEarliestExDate\">\n      <lst name=\"counts\">\n
-      \       <int name=\"1994-01-01T00:00:00Z\">20</int>\n        <int name=\"1995-01-01T00:00:00Z\">19</int>\n
-      \       <int name=\"1996-01-01T00:00:00Z\">14</int>\n        <int name=\"1997-01-01T00:00:00Z\">21</int>\n
-      \       <int name=\"1998-01-01T00:00:00Z\">32</int>\n        <int name=\"1999-01-01T00:00:00Z\">31</int>\n
-      \       <int name=\"2000-01-01T00:00:00Z\">53</int>\n        <int name=\"2001-01-01T00:00:00Z\">46</int>\n
-      \       <int name=\"2002-01-01T00:00:00Z\">31</int>\n        <int name=\"2003-01-01T00:00:00Z\">28</int>\n
-      \       <int name=\"2004-01-01T00:00:00Z\">55</int>\n        <int name=\"2005-01-01T00:00:00Z\">35</int>\n
-      \       <int name=\"2006-01-01T00:00:00Z\">28</int>\n        <int name=\"2007-01-01T00:00:00Z\">50</int>\n
-      \       <int name=\"2008-01-01T00:00:00Z\">65</int>\n        <int name=\"2009-01-01T00:00:00Z\">61</int>\n
-      \       <int name=\"2010-01-01T00:00:00Z\">91</int>\n        <int name=\"2011-01-01T00:00:00Z\">72</int>\n
-      \       <int name=\"2012-01-01T00:00:00Z\">67</int>\n        <int name=\"2013-01-01T00:00:00Z\">70</int>\n
-      \       <int name=\"2014-01-01T00:00:00Z\">112</int>\n        <int name=\"2015-01-01T00:00:00Z\">132</int>\n
-      \       <int name=\"2016-01-01T00:00:00Z\">87</int>\n        <int name=\"2017-01-01T00:00:00Z\">101</int>\n
-      \       <int name=\"2018-01-01T00:00:00Z\">98</int>\n        <int name=\"2019-01-01T00:00:00Z\">92</int>\n
-      \       <int name=\"2020-01-01T00:00:00Z\">91</int>\n        <int name=\"2021-01-01T00:00:00Z\">104</int>\n
-      \       <int name=\"2022-01-01T00:00:00Z\">109</int>\n        <int name=\"2023-01-01T00:00:00Z\">44</int>\n
-      \     </lst>\n      <str name=\"gap\">+1YEAR</str>\n      <int name=\"before\">0</int>\n
-      \     <date name=\"start\">1899-01-01T00:00:00Z</date>\n      <date name=\"end\">2025-01-01T00:00:00Z</date>\n
-      \   </lst>\n  </lst>\n  <lst name=\"facet_intervals\"/>\n  <lst name=\"facet_heatmaps\"/>\n</lst>\n<lst
+      \     <int name=\"20240110032\">1</int>\n      <int name=\"NULL\">267</int>\n
+      \   </lst>\n    <lst name=\"intlRegNum\">\n      <int name=\"NULL\">1858</int>\n
+      \   </lst>\n  </lst>\n  <lst name=\"facet_ranges\">\n    <lst name=\"patAssignorEarliestExDate\">\n
+      \     <lst name=\"counts\">\n        <int name=\"1994-01-01T00:00:00Z\">20</int>\n
+      \       <int name=\"1995-01-01T00:00:00Z\">19</int>\n        <int name=\"1996-01-01T00:00:00Z\">14</int>\n
+      \       <int name=\"1997-01-01T00:00:00Z\">21</int>\n        <int name=\"1998-01-01T00:00:00Z\">32</int>\n
+      \       <int name=\"1999-01-01T00:00:00Z\">31</int>\n        <int name=\"2000-01-01T00:00:00Z\">53</int>\n
+      \       <int name=\"2001-01-01T00:00:00Z\">46</int>\n        <int name=\"2002-01-01T00:00:00Z\">31</int>\n
+      \       <int name=\"2003-01-01T00:00:00Z\">28</int>\n        <int name=\"2004-01-01T00:00:00Z\">55</int>\n
+      \       <int name=\"2005-01-01T00:00:00Z\">35</int>\n        <int name=\"2006-01-01T00:00:00Z\">28</int>\n
+      \       <int name=\"2007-01-01T00:00:00Z\">50</int>\n        <int name=\"2008-01-01T00:00:00Z\">65</int>\n
+      \       <int name=\"2009-01-01T00:00:00Z\">61</int>\n        <int name=\"2010-01-01T00:00:00Z\">91</int>\n
+      \       <int name=\"2011-01-01T00:00:00Z\">72</int>\n        <int name=\"2012-01-01T00:00:00Z\">67</int>\n
+      \       <int name=\"2013-01-01T00:00:00Z\">70</int>\n        <int name=\"2014-01-01T00:00:00Z\">112</int>\n
+      \       <int name=\"2015-01-01T00:00:00Z\">132</int>\n        <int name=\"2016-01-01T00:00:00Z\">87</int>\n
+      \       <int name=\"2017-01-01T00:00:00Z\">101</int>\n        <int name=\"2018-01-01T00:00:00Z\">98</int>\n
+      \       <int name=\"2019-01-01T00:00:00Z\">92</int>\n        <int name=\"2020-01-01T00:00:00Z\">91</int>\n
+      \       <int name=\"2021-01-01T00:00:00Z\">104</int>\n        <int name=\"2022-01-01T00:00:00Z\">109</int>\n
+      \       <int name=\"2023-01-01T00:00:00Z\">43</int>\n      </lst>\n      <str
+      name=\"gap\">+1YEAR</str>\n      <int name=\"before\">0</int>\n      <date name=\"start\">1899-01-01T00:00:00Z</date>\n
+      \     <date name=\"end\">2025-01-01T00:00:00Z</date>\n    </lst>\n  </lst>\n
+      \ <lst name=\"facet_intervals\"/>\n  <lst name=\"facet_heatmaps\"/>\n</lst>\n<lst
       name=\"highlighting\">\n  <lst name=\"66552-292\">\n    <arr name=\"frameNo\"/>\n
       \   <arr name=\"patAssigneeCity\"/>\n    <arr name=\"pctNum\"/>\n    <arr name=\"patAssigneePostcode\"/>\n
       \   <arr name=\"filingDate\"/>\n    <arr name=\"conveyanceText\"/>\n    <arr
@@ -3855,16 +3844,6 @@ interactions:
       name=\"intlRegNum\"/>\n    <arr name=\"publDate\"/>\n    <arr name=\"patAssigneeCountryName\"/>\n
       \   <arr name=\"intlPublDate\"/>\n    <arr name=\"id\"/>\n    <arr name=\"patAssigneeName\">\n
       \     <str>&lt;em&gt;BOREALIS&lt;/em&gt; A.G.</str>\n    </arr>\n    <arr name=\"issueDate\"/>\n
-      \   <arr name=\"reelNo\"/>\n  </lst>\n  <lst name=\"65207-366\">\n    <arr name=\"frameNo\"/>\n
-      \   <arr name=\"patAssigneeCity\"/>\n    <arr name=\"pctNum\"/>\n    <arr name=\"patAssigneePostcode\"/>\n
-      \   <arr name=\"filingDate\"/>\n    <arr name=\"conveyanceText\"/>\n    <arr
-      name=\"patNum\"/>\n    <arr name=\"patAssignorName\"/>\n    <arr name=\"corrAddress1\"/>\n
-      \   <arr name=\"corrAddress2\"/>\n    <arr name=\"corrAddress3\"/>\n    <arr
-      name=\"corrName\"/>\n    <arr name=\"applNum\"/>\n    <arr name=\"inventionTitle\"/>\n
-      \   <arr name=\"publNum\"/>\n    <arr name=\"patAssigneeAddress\"/>\n    <arr
-      name=\"intlRegNum\"/>\n    <arr name=\"publDate\"/>\n    <arr name=\"patAssigneeCountryName\"/>\n
-      \   <arr name=\"intlPublDate\"/>\n    <arr name=\"id\"/>\n    <arr name=\"patAssigneeName\">\n
-      \     <str>&lt;em&gt;BOREALIS&lt;/em&gt; AG</str>\n    </arr>\n    <arr name=\"issueDate\"/>\n
       \   <arr name=\"reelNo\"/>\n  </lst>\n  <lst name=\"65088-715\">\n    <arr name=\"frameNo\"/>\n
       \   <arr name=\"patAssigneeCity\"/>\n    <arr name=\"pctNum\"/>\n    <arr name=\"patAssigneePostcode\"/>\n
       \   <arr name=\"filingDate\"/>\n    <arr name=\"conveyanceText\"/>\n    <arr
@@ -3915,22 +3894,36 @@ interactions:
       name=\"intlRegNum\"/>\n    <arr name=\"publDate\"/>\n    <arr name=\"patAssigneeCountryName\"/>\n
       \   <arr name=\"intlPublDate\"/>\n    <arr name=\"id\"/>\n    <arr name=\"patAssigneeName\">\n
       \     <str>&lt;em&gt;BOREALIS&lt;/em&gt; AG</str>\n    </arr>\n    <arr name=\"issueDate\"/>\n
+      \   <arr name=\"reelNo\"/>\n  </lst>\n  <lst name=\"65050-208\">\n    <arr name=\"frameNo\"/>\n
+      \   <arr name=\"patAssigneeCity\"/>\n    <arr name=\"pctNum\"/>\n    <arr name=\"patAssigneePostcode\"/>\n
+      \   <arr name=\"filingDate\"/>\n    <arr name=\"conveyanceText\"/>\n    <arr
+      name=\"patNum\"/>\n    <arr name=\"patAssignorName\"/>\n    <arr name=\"corrAddress1\"/>\n
+      \   <arr name=\"corrAddress2\"/>\n    <arr name=\"corrAddress3\"/>\n    <arr
+      name=\"corrName\"/>\n    <arr name=\"applNum\"/>\n    <arr name=\"inventionTitle\"/>\n
+      \   <arr name=\"publNum\"/>\n    <arr name=\"patAssigneeAddress\"/>\n    <arr
+      name=\"intlRegNum\"/>\n    <arr name=\"publDate\"/>\n    <arr name=\"patAssigneeCountryName\"/>\n
+      \   <arr name=\"intlPublDate\"/>\n    <arr name=\"id\"/>\n    <arr name=\"patAssigneeName\">\n
+      \     <str>&lt;em&gt;BOREALIS&lt;/em&gt; AG</str>\n    </arr>\n    <arr name=\"issueDate\"/>\n
       \   <arr name=\"reelNo\"/>\n  </lst>\n</lst>\n</response>\n"
     headers:
-      content-type:
+      Connection:
+      - keep-alive
+      Content-Type:
       - application/xml
-      date:
-      - Wed, 01 May 2024 18:45:20 GMT
-      server:
+      Date:
+      - Wed, 24 Apr 2024 15:22:51 GMT
+      Server:
       - Apache-Coyote/1.1
-      strict-transport-security:
+      Strict-Transport-Security:
       - max-age=31536000;includeSubDomains
-      x-content-type-options:
+      Transfer-Encoding:
+      - chunked
+      X-Content-Type-Options:
       - nosniff
-      x-frame-options:
+      X-Frame-Options:
       - DENY
-      x-xss-protection:
+      X-XSS-Protection:
       - 1; mode=block
-    http_version: HTTP/2
+    http_version: HTTP/1.1
     status_code: 200
 version: 1

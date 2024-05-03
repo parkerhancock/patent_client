@@ -8,9 +8,7 @@ class TestPublished:
     async def test_inpadoc_manager(self):
         result = Inpadoc.objects.filter(applicant="Microsoft")
         assert await result.count() > 20
-        countries = [
-            c async for c in result.limit(20).values_list("country", flat=True)
-        ]
+        countries = [c async for c in result.limit(20).values_list("country", flat=True)]
         assert sum(1 for c in countries if c == "US") >= 1
 
     @pytest.mark.asyncio

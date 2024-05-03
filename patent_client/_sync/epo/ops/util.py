@@ -56,23 +56,23 @@ class InpadocModel(EpoBaseModel):
 
     @property
     def images(self) -> "Images":
-        return self._get_model(
-            ".published.model.Images", base_class=InpadocModel
-        ).objects.get(self.docdb_number)
+        return self._get_model(".published.model.Images", base_class=InpadocModel).objects.get(
+            self.docdb_number
+        )
 
     @property
     def description(self) -> Optional[str]:
         return (
-            self._get_model(
-                ".published.model.Description", base_class=InpadocModel
-            ).objects.get(self.docdb_number)
+            self._get_model(".published.model.Description", base_class=InpadocModel).objects.get(
+                self.docdb_number
+            )
         ).description
 
     @property
     def claims(self) -> "Claims":
-        return self._get_model(
-            ".published.model.Claims", base_class=InpadocModel
-        ).objects.get(self.docdb_number)
+        return self._get_model(".published.model.Claims", base_class=InpadocModel).objects.get(
+            self.docdb_number
+        )
 
     @property
     def legal(self) -> List["LegalEvent"]:
@@ -87,9 +87,9 @@ class InpadocModel(EpoBaseModel):
         self,
     ) -> List["FamilyMember"]:
         return (
-            self._get_model(
-                ".family.model.Family", base_class=InpadocModel
-            ).objects.get(self.docdb_number)
+            self._get_model(".family.model.Family", base_class=InpadocModel).objects.get(
+                self.docdb_number
+            )
         ).family_members
 
     def download(self, path: str = "."):

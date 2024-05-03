@@ -56,9 +56,7 @@ class ProductManager(Manager):
 
 
 class FileManager(Manager):
-    def filter_by_short_name(
-        self, short_name, from_date=None, to_date=None
-    ) -> tp.Iterator["File"]:
+    def filter_by_short_name(self, short_name, from_date=None, to_date=None) -> tp.Iterator["File"]:
         if from_date is not None:
             from_date = (
                 from_date

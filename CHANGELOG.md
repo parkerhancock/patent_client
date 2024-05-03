@@ -1,5 +1,12 @@
 # Changelog
 
+## 5.0.3 (2024-05-02)
+- Add missing confirmation number to PEDS model (#135).
+- Improve downloading of images from USPTO Public Search.
+
+## 5.0.2 (2024-05-01)
+- Fix issue where legal codes database can aggregate to an unreasonable size (#146)
+
 ## 5.0.1 (2024-05-01)
 - Fix type annotations to be supported by Python 3.9 (#153, #138).
 - Raises an exception in PEDS when data removed by the USPTO is attempted to be accessed.

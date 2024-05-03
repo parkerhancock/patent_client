@@ -15,6 +15,4 @@ class FamilyManager(Manager[Family]):
     __schema__ = FamilySchema
 
     def get(self, doc_number):
-        return FamilyAsyncApi.get_family(
-            doc_number, doc_type="publication", format="docdb"
-        )
+        return FamilyAsyncApi.get_family(doc_number, doc_type="publication", format="docdb")

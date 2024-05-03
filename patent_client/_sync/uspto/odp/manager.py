@@ -37,11 +37,7 @@ class USApplicationManager(Manager):
     response_model = USApplication
 
     def count(self):
-        return (
-            api.post_search(
-                self._create_search_obj(fields=["applicationNumberText"])
-            )
-        )["count"]
+        return (api.post_search(self._create_search_obj(fields=["applicationNumberText"])))["count"]
 
     def _get_results(self) -> tp.Iterator["SearchResult"]:
         query_obj = self._create_search_obj()
@@ -144,9 +140,7 @@ class ForeignPriorityManager(Manager):
     default_filter = "appl_id"
 
     def _get_results(self) -> "ForeignPriority":
-        for doc in api.get_foreign_priority_data(
-            self.config.filter["appl_id"][0]
-        ):
+        for doc in api.get_foreign_priority_data(self.config.filter["appl_id"][0]):
             yield doc
 
 

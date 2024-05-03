@@ -12,9 +12,7 @@ class BulkDataApi:
     @classmethod
     async def get_latest(cls) -> tp.List[Product]:
         """Returns all products with Latest Files"""
-        response = await client.get(
-            "https://bulkdata.uspto.gov:443/BDSS-API/products/all/latest"
-        )
+        response = await client.get("https://bulkdata.uspto.gov:443/BDSS-API/products/all/latest")
         return [Product(**product) for product in response.json()]
 
     @classmethod
@@ -50,9 +48,7 @@ class BulkDataApi:
     @classmethod
     async def get_popular(cls) -> tp.List[Product]:
         """Returns popular products along with latest files."""
-        response = await client.get(
-            "https://bulkdata.uspto.gov:443/BDSS-API/products/popular"
-        )
+        response = await client.get("https://bulkdata.uspto.gov:443/BDSS-API/products/popular")
         return [Product.model_validate(product) for product in response.json()]
 
     @classmethod

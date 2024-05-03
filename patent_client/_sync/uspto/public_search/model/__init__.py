@@ -4,7 +4,7 @@
 # *   Source File: patent_client/_async/uspto/public_search/model/__init__.py    *
 # ********************************************************************************
 
-from .biblio import PublicSearchBiblio, PublicSearchBiblioPage
+from .biblio import PublicSearchBiblio
 from .document import PublicSearchDocument
 
 

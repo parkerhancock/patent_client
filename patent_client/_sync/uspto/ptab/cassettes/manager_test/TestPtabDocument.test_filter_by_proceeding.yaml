@@ -11,7 +11,7 @@ interactions:
       host:
       - developer.uspto.gov
       user-agent:
-      - Mozilla/5.0 Python Patent Clientbot/5.0.0 (parkerhancock@users.noreply.github.com)
+      - python-httpx/0.24.1
     method: GET
     uri: https://developer.uspto.gov/ptab-api/documents?proceedingNumber=IPR2016-00831
   response:
@@ -191,26 +191,30 @@ interactions:
       a l\u2019Energie Atomique et aux Energies Alternatives\",\"petitionerCounselName\":\"Paul
       McGowan\",\"additionalRespondentPartyDataBag\":[]}],\"recordTotalQuantity\":77}"
     headers:
-      access-control-allow-credentials:
+      Access-Control-Allow-Credentials:
       - 'true'
-      access-control-allow-headers:
+      Access-Control-Allow-Headers:
       - accept, authorization, content-type, x-requested-with
-      access-control-allow-methods:
+      Access-Control-Allow-Methods:
       - GET, POST, OPTIONS, PUT
-      access-control-allow-origin:
+      Access-Control-Allow-Origin:
       - '*'
-      access-control-max-age:
+      Access-Control-Max-Age:
       - '1'
-      content-type:
+      Connection:
+      - keep-alive
+      Content-Type:
       - application/json
-      date:
-      - Wed, 01 May 2024 18:47:23 GMT
-      strict-transport-security:
+      Date:
+      - Tue, 31 Oct 2023 02:12:18 GMT
+      Strict-Transport-Security:
       - max-age=31536000;
-      vary:
+      Transfer-Encoding:
+      - chunked
+      Vary:
       - Origin
       - Access-Control-Request-Method
       - Access-Control-Request-Headers
-    http_version: HTTP/2
+    http_version: HTTP/1.1
     status_code: 200
 version: 1
