@@ -4,7 +4,7 @@
 # *   Source File: patent_client/_async/uspto/public_search/model/__init__.py    *
 # ********************************************************************************
 
-from .biblio import PublicSearchBiblio
+from .biblio import PublicSearchBiblio, PublicSearchBiblioPage
 from .document import PublicSearchDocument
 
 
@@ -30,6 +30,7 @@ __all__ = [
     "PublishedApplicationBiblio",
     "PublishedApplication",
     "PublicSearchBiblio",
+    "PublicSearchBiblioPage",
     "PublicSearchDocument",
     "PublicSearchDocument",
 ]
