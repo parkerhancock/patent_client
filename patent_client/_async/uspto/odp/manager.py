@@ -79,7 +79,7 @@ class USApplicationBiblioManager(USApplicationManager):
     response_model = USApplicationBiblio
 
     async def _get_results(self) -> tp.AsyncIterator["SearchResult"]:
-        query_obj = self._create_search_obj()
+        query_obj = self._create_search_obj(fields=self.default_fields)
         for start, rows in get_start_and_row_count(self.config.limit):
             page_query = query_obj.model_dump()
             page_query["pagination"] = {"offset": start, "limit": rows}

@@ -1,0 +1,349 @@
+interactions:
+- request:
+    body: '{"q": "applicationNumberText:(14230558)", "fields": ["applicationNumberText"],
+      "pagination": {"offset": 0, "limit": 25}}'
+    headers:
+      X-API-KEY:
+      - REDACTED
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '120'
+      content-type:
+      - application/json
+      host:
+      - beta-api.uspto.gov
+      user-agent:
+      - Mozilla/5.0 Python Patent Clientbot/5.0.5 (parkerhancock@users.noreply.github.com)
+    method: POST
+    uri: https://beta-api.uspto.gov/api/v1/patent/applications/search
+  response:
+    content: '{"count":1,"patentBag":[{"applicationNumberText":"14230558"}],"requestIdentifier":"708e7065-32d4-4884-a7e1-af43c113047a"}'
+    headers:
+      access-control-allow-headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      access-control-allow-methods:
+      - OPTIONS,POST,GET
+      access-control-allow-origin:
+      - '*'
+      content-length:
+      - '121'
+      content-type:
+      - application/json
+      date:
+      - Fri, 03 May 2024 18:14:58 GMT
+      x-amz-apigw-id:
+      - XNNxbG-zoAMFwyA=
+      x-amzn-requestid:
+      - 708e7065-32d4-4884-a7e1-af43c113047a
+      x-amzn-trace-id:
+      - Root=1-663529a2-2298e9bb2fc55a5a62f95e09;Parent=39ed4d7e14c1d402;Sampled=0;lineage=33e8fdb8:0
+    http_version: HTTP/2
+    status_code: 200
+- request:
+    body: '{"q": "applicationNumberText:(14230558)", "fields": ["applicationNumberText"],
+      "pagination": {"offset": 0, "limit": 1}}'
+    headers:
+      X-API-KEY:
+      - REDACTED
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '119'
+      content-type:
+      - application/json
+      host:
+      - beta-api.uspto.gov
+      user-agent:
+      - Mozilla/5.0 Python Patent Clientbot/5.0.5 (parkerhancock@users.noreply.github.com)
+    method: POST
+    uri: https://beta-api.uspto.gov/api/v1/patent/applications/search
+  response:
+    content: '{"count":1,"patentBag":[{"applicationNumberText":"14230558"}],"requestIdentifier":"0025e829-1f2d-46e2-ae2a-1e9b88ec30e6"}'
+    headers:
+      access-control-allow-headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      access-control-allow-methods:
+      - OPTIONS,POST,GET
+      access-control-allow-origin:
+      - '*'
+      content-length:
+      - '121'
+      content-type:
+      - application/json
+      date:
+      - Fri, 03 May 2024 18:14:58 GMT
+      x-amz-apigw-id:
+      - XNNxdE5xIAMFjhA=
+      x-amzn-requestid:
+      - 0025e829-1f2d-46e2-ae2a-1e9b88ec30e6
+      x-amzn-trace-id:
+      - Root=1-663529a2-3b0d7d40148ccec353ac41a2;Parent=1fe58a0a03946bf2;Sampled=0;lineage=33e8fdb8:0
+    http_version: HTTP/2
+    status_code: 200
+- request:
+    body: ''
+    headers:
+      X-API-KEY:
+      - REDACTED
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - beta-api.uspto.gov
+      user-agent:
+      - Mozilla/5.0 Python Patent Clientbot/5.0.5 (parkerhancock@users.noreply.github.com)
+    method: GET
+    uri: https://beta-api.uspto.gov/api/v1/patent/applications/14230558
+  response:
+    content: '{"count":1,"patentBag":[{"firstInventorToFileIndicator":"N","applicationStatusCode":150,"applicationTypeCode":"UTL","filingDate":"2014-03-31","assignmentBag":[{"assignmentReceivedDate":"2014-03-31","assignorBag":[{"executionDate":"2004-08-19","assignorName":"BEST,
+      SCOTT C."}],"frameNumber":"0453","pageNumber":3,"reelNumber/frameNumber":"032567/0453","assignmentRecordedDate":"2014-03-31","conveyanceText":"ASSIGNMENT
+      OF ASSIGNORS INTEREST (SEE DOCUMENT FOR DETAILS).","assigneeBag":[{"assigneeAddress":{"cityName":"SUNNYVALE","geographicRegionCode":"CA
+      ","postalCode":"94089","addressLineOneText":"1050 ENTERPRISE WAY, SUITE 700"},"assigneeNameText":"RAMBUS
+      INC."}],"assignmentMailedDate":"2014-04-01","reelNumber":"032567","correspondenceAddress":[{"addressLineOneText":"1050
+      ENTERPRISE WAY #700","correspondentNameText":"TARISA WAIN","addressLineTwoText":"SUNNYVALE,
+      CA 94089"}]}],"class/subclass":"72/106","recordAttorney":{"attorneyBag":[{"activeIndicator":"ACTIVE","firstName":"JOSE","lastName":"MONIZ","registrationNumber":"50192","attorneyAddressBag":[{"cityName":"SUNNYVALE","geographicRegionName":"CALIFORNIA","geographicRegionCode":"CA","countryCode":"US","postalCode":"94089","nameLineOneText":"RAMBUS
+      INC.","countryName":"UNITED STATES","addressLineOneText":"1050 ENTERPRISE WAY,
+      SUITE 700"},{"cityName":"SUNNYVALE","geographicRegionName":"CALIFORNIA","geographicRegionCode":"CA","countryCode":"US","postalCode":"94089","nameLineOneText":"RAMBUS
+      INC.","countryName":"UNITED STATES","addressLineOneText":"1050 ENTERPRISE WAY,
+      SUITE 700"}],"telecommunicationAddressBag":[{"telecommunicationNumber":"408-462-8336","usageTypeCategory":"TEL"},{"telecommunicationNumber":"5153346883","usageTypeCategory":"FAX"}],"registeredPractitionerCategory":"AGENT"},{"activeIndicator":"ACTIVE","firstName":"SUNITA","lastName":"ADLURI","registrationNumber":"78032","attorneyAddressBag":[{"cityName":"WASHINGTON","geographicRegionName":"DISTRICT
+      OF COLUMBIA","geographicRegionCode":"DC","countryCode":"US","postalCode":"20005","nameLineOneText":"BANNER
+      & WITCOFF","countryName":"UNITED STATES","addressLineOneText":"1100 13TH STREET
+      NW","addressLineTwoText":"SUITE 1200"}],"telecommunicationAddressBag":[{"telecommunicationNumber":"202-824-3000","usageTypeCategory":"TEL"}],"registeredPractitionerCategory":"ATTNY"},{"activeIndicator":"ACTIVE","firstName":"CHRISTOPHER","lastName":"KOSH","registrationNumber":"42760","attorneyAddressBag":[{"cityName":"SUNNYVALE","geographicRegionName":"CALIFORNIA","geographicRegionCode":"CA","countryCode":"US","postalCode":"94089","nameLineOneText":"RAMBUS,
+      INC.","countryName":"UNITED STATES","addressLineOneText":"1050 ENTERPRISE WAY","addressLineTwoText":"SUITE
+      700"}],"telecommunicationAddressBag":[{"telecommunicationNumber":"408-462-8903","usageTypeCategory":"TEL"}],"registeredPractitionerCategory":"ATTNY"}],"customerNumber":{"powerOfAttorneyAddressBag":[{"cityName":"San
+      Jose","geographicRegionName":"CALIFORNIA","geographicRegionCode":"CA","countryCode":"US","postalCode":"95134","nameLineOneText":"RAMBUS
+      INC.","nameLineTwoText":"C/O Ann Williams","countryName":"UNITED STATES","addressLineOneText":"4453
+      North First Street","addressLineTwoText":"Suite 100"}],"patronIdentifier":"69090.0000000000"}},"applicationNumberText":"14230558","nationalStageIndicator":false,"firstInventorName":"Scott
+      C. Best","cpcClassificationBag":["G11C7/222","G11C11/4076","G11C7/04","G06F13/1689"],"effectiveFilingDate":"2014-03-31","publicationDateBag":["2014-08-14"],"publicationSequenceNumberBag":["0226420"],"earliestPublicationDate":"2014-08-14","applicationTypeLabelName":"Utility","applicationStatusDate":"2015-07-29","class":"72","applicationTypeCategory":"REGULAR","inventorBag":[{"firstName":"Scott","lastName":"Best","countryCode":"US","inventorNameText":"Scott
+      C. Best","middleName":"C.","correspondenceAddressBag":[{"cityName":"Palo Alto","geographicRegionName":"CALIFORNIA","geographicRegionCode":"CA","countryCode":"US","nameLineOneText":"Scott
+      C. Best","countryName":"UNITED STATES","postalAddressCategory":"residence"},{"cityName":"Sunnyvale","geographicRegionName":"CALIFORNIA","geographicRegionCode":"CA","countryCode":"US","postalCode":"94089","nameLineOneText":"Scott
+      C. Best","countryName":"UNITED STATES","addressLineOneText":"1050 Enterprise
+      Way, Suite 700","postalAddressCategory":"postal"}]}],"patentTermAdjustmentData":{"applicantDayDelayQuantity":0.0,"overlappingDayQuantity":0.0,"filingDate":"2014-03-31","cDelayQuantity":0.0,"adjustmentTotalQuantity":0.0,"bDelayQuantity":0.0,"grantDate":"2015-08-18","aDelayQuantity":0.0,"nonOverlappingDayQuantity":0.0,"ipOfficeDayDelayQuantity":0.0,"patentTermAdjustmentHistoryDataBag":[{"applicantDayDelayQuantity":0.0,"startSequenceNumber":0.5,"caseActionDescriptionText":"PTA
+      36 Months","caseActionSequenceNumber":46.5,"actionDate":"2015-08-18"},{"applicantDayDelayQuantity":0.0,"startSequenceNumber":0.0,"caseActionDescriptionText":"Patent
+      Issue Date Used in PTA Calculation","caseActionSequenceNumber":46.0,"actionDate":"2015-08-18"},{"applicantDayDelayQuantity":0.0,"startSequenceNumber":0.0,"caseActionDescriptionText":"Dispatch
+      to FDC","caseActionSequenceNumber":44.0,"actionDate":"2015-07-14"},{"applicantDayDelayQuantity":0.0,"startSequenceNumber":0.0,"caseActionDescriptionText":"Application
+      Is Considered Ready for Issue","caseActionSequenceNumber":43.0,"actionDate":"2015-07-13"},{"applicantDayDelayQuantity":0.0,"startSequenceNumber":0.0,"caseActionDescriptionText":"Issue
+      Fee Payment Verified","caseActionSequenceNumber":42.0,"actionDate":"2015-07-10"},{"applicantDayDelayQuantity":0.0,"startSequenceNumber":0.0,"caseActionDescriptionText":"Issue
+      Fee Payment Received","caseActionSequenceNumber":41.0,"actionDate":"2015-07-10"},{"applicantDayDelayQuantity":0.0,"startSequenceNumber":0.0,"caseActionDescriptionText":"Electronic
+      Review","caseActionSequenceNumber":38.0,"actionDate":"2015-04-17"},{"applicantDayDelayQuantity":0.0,"startSequenceNumber":0.0,"caseActionDescriptionText":"Email
+      Notification","caseActionSequenceNumber":37.0,"actionDate":"2015-04-16"},{"applicantDayDelayQuantity":0.0,"startSequenceNumber":0.0,"caseActionDescriptionText":"Mail
+      Notice of Allowance","caseActionSequenceNumber":36.0,"actionDate":"2015-04-16"},{"applicantDayDelayQuantity":0.0,"startSequenceNumber":0.0,"caseActionDescriptionText":"Notice
+      of Allowance Data Verification Completed","caseActionSequenceNumber":33.0,"actionDate":"2015-04-14"},{"applicantDayDelayQuantity":0.0,"startSequenceNumber":0.0,"caseActionDescriptionText":"Information
+      Disclosure Statement considered","caseActionSequenceNumber":25.0,"actionDate":"2015-04-05"},{"applicantDayDelayQuantity":0.0,"startSequenceNumber":0.0,"caseActionDescriptionText":"Email
+      Notification","caseActionSequenceNumber":24.0,"actionDate":"2014-08-15"},{"applicantDayDelayQuantity":0.0,"startSequenceNumber":0.0,"caseActionDescriptionText":"PG-Pub
+      Issue Notification","caseActionSequenceNumber":23.0,"actionDate":"2014-08-14"},{"applicantDayDelayQuantity":0.0,"startSequenceNumber":0.0,"caseActionDescriptionText":"Case
+      Docketed to Examiner in GAU","caseActionSequenceNumber":22.0,"actionDate":"2014-06-23"},{"applicantDayDelayQuantity":0.0,"startSequenceNumber":0.0,"caseActionDescriptionText":"Reference
+      capture on IDS","caseActionSequenceNumber":20.0,"actionDate":"2014-05-07"},{"applicantDayDelayQuantity":0.0,"startSequenceNumber":0.0,"caseActionDescriptionText":"Information
+      Disclosure Statement (IDS) Filed","caseActionSequenceNumber":19.0,"actionDate":"2014-05-07"},{"applicantDayDelayQuantity":0.0,"startSequenceNumber":0.0,"caseActionDescriptionText":"Preliminary
+      Amendment","caseActionSequenceNumber":18.0,"actionDate":"2014-05-01"},{"applicantDayDelayQuantity":0.0,"startSequenceNumber":0.0,"caseActionDescriptionText":"Information
+      Disclosure Statement (IDS) Filed","caseActionSequenceNumber":17.0,"actionDate":"2014-05-07"},{"applicantDayDelayQuantity":0.0,"startSequenceNumber":0.0,"caseActionDescriptionText":"Email
+      Notification","caseActionSequenceNumber":16.0,"actionDate":"2014-05-07"},{"applicantDayDelayQuantity":0.0,"startSequenceNumber":0.0,"caseActionDescriptionText":"Application
+      Dispatched from OIPE","caseActionSequenceNumber":15.0,"actionDate":"2014-05-06"},{"applicantDayDelayQuantity":0.0,"startSequenceNumber":0.0,"caseActionDescriptionText":"FITF
+      set to NO - revise initial setting","caseActionSequenceNumber":14.0,"actionDate":"2014-05-06"},{"applicantDayDelayQuantity":0.0,"startSequenceNumber":0.0,"caseActionDescriptionText":"Patent
+      Term Adjustment - Ready for Examination","caseActionSequenceNumber":13.0,"actionDate":"2014-05-01"},{"applicantDayDelayQuantity":0.0,"startSequenceNumber":0.0,"caseActionDescriptionText":"Application
+      Is Now Complete","caseActionSequenceNumber":12.0,"actionDate":"2014-05-07"},{"applicantDayDelayQuantity":0.0,"startSequenceNumber":0.0,"caseActionDescriptionText":"Filing
+      Receipt - Updated","caseActionSequenceNumber":11.0,"actionDate":"2014-05-07"},{"applicantDayDelayQuantity":0.0,"startSequenceNumber":0.0,"caseActionDescriptionText":"Additional
+      Application Filing Fees","caseActionSequenceNumber":10.0,"actionDate":"2014-05-01"},{"applicantDayDelayQuantity":0.0,"startSequenceNumber":0.0,"caseActionDescriptionText":"Electronic
+      Review","caseActionSequenceNumber":9.0,"actionDate":"2014-04-23"},{"applicantDayDelayQuantity":0.0,"startSequenceNumber":0.0,"caseActionDescriptionText":"Email
+      Notification","caseActionSequenceNumber":8.0,"actionDate":"2014-04-23"},{"applicantDayDelayQuantity":0.0,"startSequenceNumber":0.0,"caseActionDescriptionText":"Email
+      Notification","caseActionSequenceNumber":7.0,"actionDate":"2014-04-23"},{"applicantDayDelayQuantity":0.0,"startSequenceNumber":0.0,"caseActionDescriptionText":"Notice
+      Mailed--Application Incomplete--Filing Date Assigned","caseActionSequenceNumber":6.0,"actionDate":"2014-04-23"},{"applicantDayDelayQuantity":0.0,"startSequenceNumber":0.0,"caseActionDescriptionText":"Filing
+      Receipt","caseActionSequenceNumber":5.0,"actionDate":"2014-04-23"},{"applicantDayDelayQuantity":0.0,"startSequenceNumber":0.0,"caseActionDescriptionText":"Entity
+      Status Set To Undiscounted (Initial Default Setting or Status Change)","caseActionSequenceNumber":2.0,"actionDate":"2014-03-31"},{"applicantDayDelayQuantity":0.0,"startSequenceNumber":0.0,"caseActionDescriptionText":"Initial
+      Exam Team nn","caseActionSequenceNumber":1.0,"actionDate":"2014-03-31"},{"applicantDayDelayQuantity":0.0,"startSequenceNumber":0.0,"caseActionDescriptionText":"Filing
+      date","caseActionSequenceNumber":0.5,"actionDate":"2014-03-31"}]},"transactionContentBag":[{"recordedDate":"2014-03-31","caseActionDescriptionText":"Initial
+      Exam Team nn","caseActionCode":"IEXX"},{"recordedDate":"2014-03-31","caseActionDescriptionText":"Entity
+      Status Set To Undiscounted (Initial Default Setting or Status Change)","caseActionCode":"BIG."},{"recordedDate":"2014-04-23","caseActionDescriptionText":"Electronic
+      Review","caseActionCode":"ELC_RVW"},{"recordedDate":"2014-04-23","caseActionDescriptionText":"Email
+      Notification","caseActionCode":"EML_NTR"},{"recordedDate":"2014-04-23","caseActionDescriptionText":"Email
+      Notification","caseActionCode":"EML_NTF"},{"recordedDate":"2014-04-23","caseActionDescriptionText":"Filing
+      Receipt","caseActionCode":"FLRCPT.O"},{"recordedDate":"2014-04-23","caseActionDescriptionText":"Notice
+      Mailed--Application Incomplete--Filing Date Assigned","caseActionCode":"INCD"},{"recordedDate":"2014-05-01","caseActionDescriptionText":"Additional
+      Application Filing Fees","caseActionCode":"ADDFLFEE"},{"recordedDate":"2014-05-07","caseActionDescriptionText":"Filing
+      Receipt - Updated","caseActionCode":"FLRCPT.U"},{"recordedDate":"2014-05-07","caseActionDescriptionText":"Application
+      Is Now Complete","caseActionCode":"COMP"},{"recordedDate":"2014-05-01","caseActionDescriptionText":"Patent
+      Term Adjustment - Ready for Examination","caseActionCode":"PTA.RFE"},{"recordedDate":"2014-05-06","caseActionDescriptionText":"FITF
+      set to NO - revise initial setting","caseActionCode":"FTFI"},{"recordedDate":"2014-05-06","caseActionDescriptionText":"Application
+      Dispatched from OIPE","caseActionCode":"OIPE"},{"recordedDate":"2014-05-07","caseActionDescriptionText":"Information
+      Disclosure Statement (IDS) Filed","caseActionCode":"WIDS"},{"recordedDate":"2014-05-07","caseActionDescriptionText":"Email
+      Notification","caseActionCode":"EML_NTR"},{"recordedDate":"2014-05-07","caseActionDescriptionText":"Information
+      Disclosure Statement (IDS) Filed","caseActionCode":"M844"},{"recordedDate":"2014-05-01","caseActionDescriptionText":"Preliminary
+      Amendment","caseActionCode":"A.PE"},{"recordedDate":"2014-05-07","caseActionDescriptionText":"Information
+      Disclosure Statement (IDS) Filed","caseActionCode":"M844"},{"recordedDate":"2014-05-07","caseActionDescriptionText":"Reference
+      capture on IDS","caseActionCode":"RCAP"},{"recordedDate":"2014-06-23","caseActionDescriptionText":"Case
+      Docketed to Examiner in GAU","caseActionCode":"DOCK"},{"recordedDate":"2014-08-14","caseActionDescriptionText":"PG-Pub
+      Issue Notification","caseActionCode":"PG-ISSUE"},{"recordedDate":"2014-08-15","caseActionDescriptionText":"Email
+      Notification","caseActionCode":"EML_NTR"},{"recordedDate":"2015-04-05","caseActionDescriptionText":"Information
+      Disclosure Statement considered","caseActionCode":"IDSC"},{"recordedDate":"2015-04-16","caseActionDescriptionText":"Email
+      Notification","caseActionCode":"EML_NTF"},{"recordedDate":"2015-04-14","caseActionDescriptionText":"Notice
+      of Allowance Data Verification Completed","caseActionCode":"N/=."},{"recordedDate":"2015-04-16","caseActionDescriptionText":"Mail
+      Notice of Allowance","caseActionCode":"MN/=."},{"recordedDate":"2015-04-17","caseActionDescriptionText":"Electronic
+      Review","caseActionCode":"ELC_RVW"},{"recordedDate":"2015-07-14","caseActionDescriptionText":"Dispatch
+      to FDC","caseActionCode":"D1935"},{"recordedDate":"2015-07-10","caseActionDescriptionText":"Issue
+      Fee Payment Verified","caseActionCode":"N084"},{"recordedDate":"2015-07-13","caseActionDescriptionText":"Application
+      Is Considered Ready for Issue","caseActionCode":"PILS"},{"recordedDate":"2015-07-10","caseActionDescriptionText":"Issue
+      Fee Payment Received","caseActionCode":"IFEE"},{"recordedDate":"2015-08-18","caseActionDescriptionText":"Patent
+      Issue Date Used in PTA Calculation","caseActionCode":"PTAC"},{"recordedDate":"2015-07-29","caseActionDescriptionText":"Issue
+      Notification Mailed","caseActionCode":"WPIR"},{"recordedDate":"2015-07-30","caseActionDescriptionText":"Email
+      Notification","caseActionCode":"EML_NTR"},{"recordedDate":"2015-08-18","caseActionDescriptionText":"Recordation
+      of Patent Grant Mailed","caseActionCode":"PGM/"},{"recordedDate":"2015-08-31","caseActionDescriptionText":"Application
+      ready for PDX access by participating foreign offices","caseActionCode":"CCRDY"},{"recordedDate":"2016-07-21","caseActionDescriptionText":"Change
+      in Power of Attorney (May Include Associate POA)","caseActionCode":"PA.."},{"recordedDate":"2016-07-20","caseActionDescriptionText":"Correspondence
+      Address Change","caseActionCode":"C.AD"},{"recordedDate":"2016-07-21","caseActionDescriptionText":"Email
+      Notification","caseActionCode":"EML_NTR"},{"recordedDate":"2019-02-18","caseActionDescriptionText":"Payment
+      of Maintenance Fee, 4th Year, Large Entity","caseActionCode":"M1551"},{"recordedDate":"2023-02-20","caseActionDescriptionText":"Payment
+      of Maintenance Fee, 8th Year, Large Entity","caseActionCode":"M1552"}],"applicationStatusDescriptionText":"Patented
+      Case","businessEntityStatusCategory":"Regular Undiscounted","patentNumber":"9111608","continuityBag":{"parentContinuityBag":[{"applicationStatusCode":150,"claimParentageTypeCode":"CON","aiaIndicator":false,"filingDate":"2012-10-19","applicationStatusDescriptionText":"Patented
+      Case","claimParentageTypeCodeDescription":"is a Continuation of","parentApplicationNumberText":"13656238","patentNumber":"8688399","childApplicationNumberText":"14230558"},{"applicationStatusCode":150,"claimParentageTypeCode":"CON","aiaIndicator":false,"filingDate":"2011-10-19","applicationStatusDescriptionText":"Patented
+      Case","claimParentageTypeCodeDescription":"is a Continuation of","parentApplicationNumberText":"13276708","patentNumber":"8311761","childApplicationNumberText":"13656238"},{"applicationStatusCode":150,"claimParentageTypeCode":"CON","aiaIndicator":false,"filingDate":"2010-01-26","applicationStatusDescriptionText":"Patented
+      Case","claimParentageTypeCodeDescription":"is a Continuation of","parentApplicationNumberText":"12694251","patentNumber":"8135555","childApplicationNumberText":"13276708"},{"applicationStatusCode":150,"claimParentageTypeCode":"CON","aiaIndicator":false,"filingDate":"2007-01-09","applicationStatusDescriptionText":"Patented
+      Case","claimParentageTypeCodeDescription":"is a Continuation of","parentApplicationNumberText":"11621491","patentNumber":"7668679","childApplicationNumberText":"12694251"},{"applicationStatusCode":150,"claimParentageTypeCode":"CON","aiaIndicator":false,"filingDate":"2004-08-20","applicationStatusDescriptionText":"Patented
+      Case","claimParentageTypeCodeDescription":"is a Continuation of","parentApplicationNumberText":"10923421","patentNumber":"7171321","childApplicationNumberText":"11621491"}],"childContinuityBag":[{"applicationStatusCode":150,"claimParentageTypeCode":"CON","aiaIndicator":false,"filingDate":"2018-08-21","applicationStatusDescriptionText":"Patented
+      Case","claimParentageTypeCodeDescription":"is a Continuation of","parentApplicationNumberText":"14230558","patentNumber":"10741237","childApplicationNumberText":"16106355"},{"applicationStatusCode":150,"claimParentageTypeCode":"CON","aiaIndicator":false,"filingDate":"2015-08-17","applicationStatusDescriptionText":"Patented
+      Case","claimParentageTypeCodeDescription":"is a Continuation of","parentApplicationNumberText":"14230558","patentNumber":"10056130","childApplicationNumberText":"14827771"},{"applicationStatusCode":30,"claimParentageTypeCode":"CON","aiaIndicator":false,"filingDate":"2023-01-09","applicationStatusDescriptionText":"Docketed
+      New Case - Ready for Examination","claimParentageTypeCodeDescription":"is a
+      Continuation of","parentApplicationNumberText":"14230558","childApplicationNumberText":"18094895"},{"applicationStatusCode":150,"claimParentageTypeCode":"CON","aiaIndicator":false,"filingDate":"2020-07-28","applicationStatusDescriptionText":"Patented
+      Case","claimParentageTypeCodeDescription":"is a Continuation of","parentApplicationNumberText":"14230558","patentNumber":"11551743","childApplicationNumberText":"16940858"}]},"grantDate":"2015-08-18","customerNumber":69090,"groupArtUnitNumber":"2864","earliestPublicationNumber":"US
+      2014-0226420 A1","inventionTitle":"STROBE-OFFSET CONTROL CIRCUIT","correspondenceAddressBag":[{"cityName":"San
+      Jose","geographicRegionName":"CALIFORNIA","geographicRegionCode":"CA","countryCode":"US","postalCode":"95134","nameLineOneText":"RAMBUS
+      INC.","nameLineTwoText":"C/O Ann Williams","countryName":"UNITED STATES","addressLineOneText":"4453
+      North First Street","addressLineTwoText":"Suite 100"}],"applicationConfirmationNumber":9057,"smallEntityStatusIndicator":false,"subclass":"106","publicationCategoryBag":["Granted/Issued","Pre-Grant
+      Publications - PGPub"]}],"requestIdentifier":"a539e46b-4a3a-4ca9-b888-a7fdf2dcc7de"}'
+    headers:
+      access-control-allow-headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      access-control-allow-methods:
+      - OPTIONS,POST,GET
+      access-control-allow-origin:
+      - '*'
+      content-length:
+      - '19308'
+      content-type:
+      - application/json
+      date:
+      - Fri, 03 May 2024 18:14:58 GMT
+      x-amz-apigw-id:
+      - XNNxeF2kIAMFtsg=
+      x-amzn-requestid:
+      - a539e46b-4a3a-4ca9-b888-a7fdf2dcc7de
+      x-amzn-trace-id:
+      - Root=1-663529a2-47be086c755cec0428e98c08;Parent=531c1a5245921104;Sampled=0;lineage=33e8fdb8:0
+    http_version: HTTP/2
+    status_code: 200
+- request:
+    body: '{"q": "applicationNumberText:(14230558)", "fields": ["applicationNumberText"],
+      "pagination": {"offset": 0, "limit": 25}}'
+    headers:
+      X-API-KEY:
+      - REDACTED
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '120'
+      content-type:
+      - application/json
+      host:
+      - beta-api.uspto.gov
+      user-agent:
+      - Mozilla/5.0 Python Patent Clientbot/5.0.5 (parkerhancock@users.noreply.github.com)
+    method: POST
+    uri: https://beta-api.uspto.gov/api/v1/patent/applications/search
+  response:
+    content: '{"count":1,"patentBag":[{"applicationNumberText":"14230558"}],"requestIdentifier":"8c618e1d-bf4a-458c-a402-ace74b5752c3"}'
+    headers:
+      access-control-allow-headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      access-control-allow-methods:
+      - OPTIONS,POST,GET
+      access-control-allow-origin:
+      - '*'
+      content-length:
+      - '121'
+      content-type:
+      - application/json
+      date:
+      - Fri, 03 May 2024 18:16:18 GMT
+      x-amz-apigw-id:
+      - XNN99G53oAMFSgA=
+      x-amzn-requestid:
+      - 8c618e1d-bf4a-458c-a402-ace74b5752c3
+      x-amzn-trace-id:
+      - Root=1-663529f2-07a4c82b2efccb257dc4025f;Parent=21a1de11d9f293ff;Sampled=0;lineage=33e8fdb8:0
+    http_version: HTTP/2
+    status_code: 200
+- request:
+    body: '{"q": "applicationNumberText:(14230558)", "fields": ["firstInventorToFileIndicator",
+      "filingDate", "inventorBag", "customerNumber", "groupArtUnitNumber", "inventionTitle",
+      "correspondenceAddressBag", "applicationConfirmationNumber", "docketNumber",
+      "applicationNumberText", "firstInventorName", "firstApplicantName", "cpcClassificationBag",
+      "businessEntityStatusCategory", "earliestPublicationNumber"], "pagination":
+      {"offset": 0, "limit": 1}}'
+    headers:
+      X-API-KEY:
+      - REDACTED
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '443'
+      content-type:
+      - application/json
+      host:
+      - beta-api.uspto.gov
+      user-agent:
+      - Mozilla/5.0 Python Patent Clientbot/5.0.5 (parkerhancock@users.noreply.github.com)
+    method: POST
+    uri: https://beta-api.uspto.gov/api/v1/patent/applications/search
+  response:
+    content: '{"count":1,"patentBag":[{"firstInventorToFileIndicator":"N","filingDate":"2014-03-31","inventorBag":[{"firstName":"Scott","lastName":"Best","countryCode":"US","inventorNameText":"Scott
+      C. Best","middleName":"C.","correspondenceAddressBag":[{"cityName":"Palo Alto","geographicRegionName":"CALIFORNIA","geographicRegionCode":"CA","countryCode":"US","nameLineOneText":"Scott
+      C. Best","countryName":"UNITED STATES","postalAddressCategory":"residence"},{"cityName":"Sunnyvale","geographicRegionName":"CALIFORNIA","geographicRegionCode":"CA","countryCode":"US","postalCode":"94089","nameLineOneText":"Scott
+      C. Best","countryName":"UNITED STATES","addressLineOneText":"1050 Enterprise
+      Way, Suite 700","postalAddressCategory":"postal"}]}],"businessEntityStatusCategory":"Regular
+      Undiscounted","customerNumber":69090,"groupArtUnitNumber":"2864","applicationNumberText":"14230558","earliestPublicationNumber":"US
+      2014-0226420 A1","inventionTitle":"STROBE-OFFSET CONTROL CIRCUIT","correspondenceAddressBag":[{"cityName":"San
+      Jose","geographicRegionName":"CALIFORNIA","geographicRegionCode":"CA","countryCode":"US","postalCode":"95134","nameLineOneText":"RAMBUS
+      INC.","nameLineTwoText":"C/O Ann Williams","countryName":"UNITED STATES","addressLineOneText":"4453
+      North First Street","addressLineTwoText":"Suite 100"}],"firstInventorName":"Scott
+      C. Best","cpcClassificationBag":["G11C7/222","G11C11/4076","G11C7/04","G06F13/1689"],"applicationConfirmationNumber":9057}],"requestIdentifier":"428482ae-f25a-43a9-b0dc-e91d74479d15"}'
+    headers:
+      access-control-allow-headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      access-control-allow-methods:
+      - OPTIONS,POST,GET
+      access-control-allow-origin:
+      - '*'
+      content-length:
+      - '1515'
+      content-type:
+      - application/json
+      date:
+      - Fri, 03 May 2024 18:16:55 GMT
+      x-amz-apigw-id:
+      - XNODxEtXoAMF7bw=
+      x-amzn-requestid:
+      - 428482ae-f25a-43a9-b0dc-e91d74479d15
+      x-amzn-trace-id:
+      - Root=1-66352a17-204e68ae6f5ab67b1128a92a;Parent=611b3324f94d8e09;Sampled=0;lineage=33e8fdb8:0
+    http_version: HTTP/2
+    status_code: 200
+version: 1
