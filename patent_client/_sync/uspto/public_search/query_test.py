@@ -17,14 +17,11 @@ class QueryTest:
 
     def test_plural_default_query(self):
         assert (
-            PatentBiblioManager().filter("6103599", "6103600")._query
-            == '("6103599" "6103600").PN.'
+            PatentBiblioManager().filter("6103599", "6103600")._query == '("6103599" "6103600").PN.'
         )
 
     def test_keyword_query(self):
-        assert (
-            PatentBiblioManager().filter(appl_id="6103599")._query == '"6103599".APNR.'
-        )
+        assert PatentBiblioManager().filter(appl_id="6103599")._query == '"6103599".APNR.'
 
     def test_plural_keyword_query(self):
         assert (
@@ -34,38 +31,29 @@ class QueryTest:
 
     def test_keyword_date_query(self):
         assert (
-            PatentBiblioManager().filter(app_filing_date="2021-01-01")._query
-            == '@APD="20210101"'
+            PatentBiblioManager().filter(app_filing_date="2021-01-01")._query == '@APD="20210101"'
         )
         assert (
             PatentBiblioManager().filter(app_filing_date=parse_dt("2021-01-01"))._query
             == '@APD="20210101"'
         )
         assert (
-            PatentBiblioManager()
-            .filter(app_filing_date=parse_dt("2021-01-01").date())
-            ._query
+            PatentBiblioManager().filter(app_filing_date=parse_dt("2021-01-01").date())._query
             == '@APD="20210101"'
         )
 
     def test_keyword_date_range_query(self):
         assert (
-            PatentBiblioManager()
-            .filter(app_filing_date="2021-01-01->2021-02-01")
-            ._query
+            PatentBiblioManager().filter(app_filing_date="2021-01-01->2021-02-01")._query
+            == "@APD>=20210101<=20210201"
+        )
+        assert (
+            PatentBiblioManager().filter(app_filing_date__range=("2021-01-01", "2021-02-01"))._query
             == "@APD>=20210101<=20210201"
         )
         assert (
             PatentBiblioManager()
-            .filter(app_filing_date__range=("2021-01-01", "2021-02-01"))
-            ._query
-            == "@APD>=20210101<=20210201"
-        )
-        assert (
-            PatentBiblioManager()
-            .filter(
-                app_filing_date__range=(parse_dt("2021-01-01"), parse_dt("2021-02-01"))
-            )
+            .filter(app_filing_date__range=(parse_dt("2021-01-01"), parse_dt("2021-02-01")))
             ._query
             == "@APD>=20210101<=20210201"
         )
@@ -104,10 +92,7 @@ class QueryTest:
             == '@APD="20210101" AND "6103599".PN.'
         )
         assert (
-            PatentBiblioManager()
-            .filter("6103599")
-            .filter(app_filing_date="2021-01-01")
-            ._query
+            PatentBiblioManager().filter("6103599").filter(app_filing_date="2021-01-01")._query
             == '"6103599".PN. AND @APD="20210101"'
         )
         assert (
@@ -118,16 +103,11 @@ class QueryTest:
         )
 
     def test_raw_query(self):
-        assert (
-            PatentBiblioManager().filter(query="example query")._query
-            == "example query"
-        )
+        assert PatentBiblioManager().filter(query="example query")._query == "example query"
 
     def test_raw_query_with_keywords(self):
         assert (
-            PatentBiblioManager()
-            .filter(query="some text", patent_number="6103599")
-            ._query
+            PatentBiblioManager().filter(query="some text", patent_number="6103599")._query
             == '"6103599".PN. AND some text'
         )
 

@@ -9,6 +9,4 @@ class FamilyManager(AsyncManager[Family]):
     __schema__ = FamilySchema
 
     async def get(self, doc_number):
-        return await FamilyAsyncApi.get_family(
-            doc_number, doc_type="publication", format="docdb"
-        )
+        return await FamilyAsyncApi.get_family(doc_number, doc_type="publication", format="docdb")

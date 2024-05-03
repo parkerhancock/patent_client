@@ -43,9 +43,7 @@ class UsReferenceSchema(ZipSchema):
     # group = f.String("usRefGroup")
     pub_month = f.Date(
         "usRefIssueDate",
-        dt_converter=lambda s: datetime.datetime(
-            year=int(s[:4]), month=int(s[4:6]), day=1
-        ),
+        dt_converter=lambda s: datetime.datetime(year=int(s[:4]), month=int(s[4:6]), day=1),
     )
     patentee_name = f.String("usRefPatenteeName")
     cited_by_examiner = f.Boolean("usRefGroup", true_func=lambda s: "examiner" in s)
@@ -59,19 +57,13 @@ class ForeignReferenceSchema(ZipSchema):
     patent_number = f.String("foreignRefPatentNumber")
     pub_month = f.Date(
         "foreignRefPubDate",
-        dt_converter=lambda s: datetime.datetime(
-            year=int(s[:4]), month=int(s[4:6]), day=1
-        ),
+        dt_converter=lambda s: datetime.datetime(year=int(s[:4]), month=int(s[4:6]), day=1),
     )
-    cited_by_examiner = f.Boolean(
-        "foreignRefGroup", true_func=lambda s: "examiner" in s
-    )
+    cited_by_examiner = f.Boolean("foreignRefGroup", true_func=lambda s: "examiner" in s)
 
 
 class NplReferenceSchema(RegexSchema):
-    __regex__ = (
-        r"(?P<citation>.*)(?P<cited_by_examiner>cited by (applicant|examiner).?$)"
-    )
+    __regex__ = r"(?P<citation>.*)(?P<cited_by_examiner>cited by (applicant|examiner).?$)"
     citation = f.String()
     cited_by_examiner = f.Bool(true_func=lambda s: "examiner" in s)
 
@@ -176,25 +168,17 @@ class PublicSearchDocumentSchema(Schema):
     # References Cited
     us_references = UsReferenceSchema(data_key=False)
     foreign_references = ForeignReferenceSchema(data_key=False)
-    npl_references = f.DelimitedString(
-        NplReferenceSchema, "otherRefPub.0", delimeter="<br />"
-    )
+    npl_references = f.DelimitedString(NplReferenceSchema, "otherRefPub.0", delimeter="<br />")
 
     # Classifications
     cpc_inventive = f.List(CpcCodeSchema)
     cpc_additional = f.List(CpcCodeSchema)
 
     intl_class_issued = f.DelimitedString(f.String, "ipcCodeFlattened", delimeter=";")
-    intl_class_current_primary = f.List(
-        IntlCodeSchema, "curIntlPatentClassificationPrimary"
-    )
-    intl_class_currrent_secondary = f.List(
-        IntlCodeSchema, "curIntlPatentClassificationSecondary"
-    )
+    intl_class_current_primary = f.List(IntlCodeSchema, "curIntlPatentClassificationPrimary")
+    intl_class_currrent_secondary = f.List(IntlCodeSchema, "curIntlPatentClassificationSecondary")
 
-    us_class_current = f.DelimitedString(
-        f.Str(), "uspcFullClassificationFlattened", delimeter=";"
-    )
+    us_class_current = f.DelimitedString(f.Str(), "uspcFullClassificationFlattened", delimeter=";")
     us_class_issued = f.List(f.Str, "issuedUsClassificationFull")
 
     field_of_search_us = f.List(f.Str(), "fieldOfSearchClassSubclassHighlights")

@@ -4,9 +4,8 @@ from collections import OrderedDict
 from pathlib import Path
 
 import pytest
-from pypdf import PdfReader
 
-from .model import PedsPage, USApplication, RemovedDataException
+from .model import PedsPage, RemovedDataException, USApplication
 
 fixtures = Path(__file__).parent / "fixtures"
 
@@ -53,8 +52,7 @@ class TestPatentExaminationData:
         app_no = "15145443"
         app = await USApplication.objects.get(app_no)
         assert (
-            app.patent_title
-            == "Suction and Discharge Lines for a Dual Hydraulic Fracturing Unit"
+            app.patent_title == "Suction and Discharge Lines for a Dual Hydraulic Fracturing Unit"
         )
 
     @pytest.mark.asyncio
@@ -229,27 +227,27 @@ class TestPatentExaminationData:
         assert app.filing_date == datetime.date(2017, 2, 15)
         assert app.priority_claim == "20170229"
 
-
     @pytest.mark.asyncio
     async def test_raises_warning_on_missing_information(self):
         app = await USApplication.objects.get(patent_number=10000000)
         with pytest.raises(RemovedDataException):
             _ = app.expiration
-            
+
         with pytest.raises(RemovedDataException):
             _ = app.attorneys
-            
+
         with pytest.raises(RemovedDataException):
             _ = app.pta_pte_summary
-            
+
         with pytest.raises(RemovedDataException):
             _ = app.pta_pte_tran_history
-            
+
         with pytest.raises(RemovedDataException):
             _ = app.parent_continuity
-            
+
         with pytest.raises(RemovedDataException):
             _ = app.child_continuity
+
 
 class TestDocuments:
     @pytest.mark.vcr
@@ -265,6 +263,3 @@ class TestDocuments:
         doc = await docs[5]
         backref_app = await doc.application
         assert app.appl_id == backref_app.appl_id
-
-
-

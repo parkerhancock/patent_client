@@ -146,9 +146,7 @@ class Manager(BaseManager, Generic[ModelType]):
     def __iter__(self) -> Iterator[ModelType]:
         return self._get_results()
 
-    def __getitem__(
-        self, key: Union[slice, int]
-    ) -> Union[Manager[ModelType], ModelType]:
+    def __getitem__(self, key: Union[slice, int]) -> Union[Manager[ModelType], ModelType]:
         if isinstance(key, slice):
             if key.step is not None:
                 raise AttributeError("Step is not supported")
@@ -213,9 +211,7 @@ class AsyncManager(BaseManager, Generic[ModelType]):
             f"This method must be defined in a subclass of {self.__class__.__name__}"
         )
 
-    async def __getitem__(
-        self, key: Union[slice, int]
-    ) -> Union[Manager[ModelType], ModelType]:
+    async def __getitem__(self, key: Union[slice, int]) -> Union[Manager[ModelType], ModelType]:
         if isinstance(key, slice):
             if key.step is not None:
                 raise AttributeError("Step is not supported")

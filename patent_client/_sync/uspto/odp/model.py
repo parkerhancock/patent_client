@@ -8,7 +8,6 @@ import datetime
 from enum import Enum
 from typing import Any, List, Optional
 
-
 from async_property.base import AsyncPropertyDescriptor
 from pydantic import AliasPath, BeforeValidator, ConfigDict, Field, model_validator
 from pydantic.alias_generators import to_camel
@@ -18,9 +17,7 @@ from patent_client.util.pydantic_util import BaseModel
 
 
 class BaseODPModel(BaseModel):
-    model_config = ConfigDict(
-        alias_generator=to_camel, ignored_types=(AsyncPropertyDescriptor,)
-    )
+    model_config = ConfigDict(alias_generator=to_camel, ignored_types=(AsyncPropertyDescriptor,))
 
 
 # Common
@@ -28,29 +25,17 @@ class BaseODPModel(BaseModel):
 
 class Address(BaseODPModel):
     city_name: Optional[str] = Field(alias="cityName", default=None)
-    geographic_region_name: Optional[str] = Field(
-        alias="geographicRegionName", default=None
-    )
-    geographic_region_code: Optional[str] = Field(
-        alias="geographicRegionCode", default=None
-    )
+    geographic_region_name: Optional[str] = Field(alias="geographicRegionName", default=None)
+    geographic_region_code: Optional[str] = Field(alias="geographicRegionCode", default=None)
     country_code: Optional[str] = Field(alias="countryCode", default=None)
     postal_code: Optional[str] = Field(alias="postalCode", default=None)
     country_name: Optional[str] = Field(alias="countryName", default=None)
-    address_line_one_text: Optional[str] = Field(
-        alias="addressLineOneText", default=None
-    )
-    address_line_two_text: Optional[str] = Field(
-        alias="addressLineTwoText", default=None
-    )
+    address_line_one_text: Optional[str] = Field(alias="addressLineOneText", default=None)
+    address_line_two_text: Optional[str] = Field(alias="addressLineTwoText", default=None)
     name_line_one_text: Optional[str] = Field(alias="nameLineOneText", default=None)
     name_line_two_text: Optional[str] = Field(alias="nameLineTwoText", default=None)
-    postal_address_category: Optional[str] = Field(
-        alias="postalAddressCategory", default=None
-    )
-    correspondent_name_text: Optional[str] = Field(
-        alias="correspondentNameText", default=None
-    )
+    postal_address_category: Optional[str] = Field(alias="postalAddressCategory", default=None)
+    correspondent_name_text: Optional[str] = Field(alias="correspondentNameText", default=None)
 
 
 # Continuity
@@ -60,9 +45,7 @@ class Relationship(BaseODPModel):
     application_status_code: int = Field()
     claim_type_code: str = Field(alias="claimParentageTypeCode")
     filing_date: datetime.date
-    application_status_description: str = Field(
-        alias="applicationStatusDescriptionText"
-    )
+    application_status_description: str = Field(alias="applicationStatusDescriptionText")
     claim_type_description: str = Field(alias="claimParentageTypeCodeDescription")
     parent_application_id: str = Field(alias="parentApplicationNumberText")
     child_application_id: str = Field(alias="childApplicationNumberText")
@@ -103,9 +86,9 @@ class Document(BaseODPModel):
         from .manager import api
 
         try:
-            url = next(
-                u for u in self.download_option_bag if u["mimeTypeIdentifier"] == type
-            )["downloadUrl"]
+            url = next(u for u in self.download_option_bag if u["mimeTypeIdentifier"] == type)[
+                "downloadUrl"
+            ]
         except StopIteration:
             raise ValueError(f"No download URL found for this document type: {type}")
         if out_path is None:
@@ -175,17 +158,13 @@ class Attorney(BaseODPModel):
     telecommunication_address_bag: list[TelecommunicationAddress] = Field(
         alias="telecommunicationAddressBag"
     )
-    registered_practitioner_category: str = Field(
-        alias="registeredPractitionerCategory"
-    )
+    registered_practitioner_category: str = Field(alias="registeredPractitionerCategory")
     name_suffix: Optional[str] = Field(alias="nameSuffix", default=None)
 
 
 class CustomerNumber(BaseODPModel):
     attorneys: list[Attorney] = Field(alias="attorneyBag")
-    customer_number: Optional[str] = Field(
-        alias=AliasPath("customerNumber", "patronIdentifier")
-    )
+    customer_number: Optional[str] = Field(alias=AliasPath("customerNumber", "patronIdentifier"))
     address: Optional[Address] = Field(
         alias=AliasPath("customerNumber", "powerOfAttorneyAddressBag", 0)
     )
@@ -213,14 +192,10 @@ class TermAdjustment(BaseODPModel):
     applicant_day_delay_quantity: Optional[int] = Field(
         alias="applicantDayDelayQuantity", default=None
     )
-    overlapping_day_quantity: Optional[int] = Field(
-        alias="overlappingDayQuantity", default=None
-    )
+    overlapping_day_quantity: Optional[int] = Field(alias="overlappingDayQuantity", default=None)
     filing_date: Optional[datetime.date] = Field(alias="filingDate", default=None)
     c_delay_quantity: Optional[int] = Field(alias="cDelayQuantity", default=None)
-    adjustment_total_quantity: Optional[int] = Field(
-        alias="adjustmentTotalQuantity", default=None
-    )
+    adjustment_total_quantity: Optional[int] = Field(alias="adjustmentTotalQuantity", default=None)
     b_delay_quantity: Optional[int] = Field(alias="bDelayQuantity", default=None)
     grant_date: Optional[datetime.date] = Field(alias="grantDate", default=None)
     a_delay_quantity: Optional[int] = Field(alias="aDelayQuantity", default=None)
@@ -273,21 +248,15 @@ class USApplicationBiblio(BaseODPModel):
 
     @property
     def bibliographic_data(self) -> "USApplicationBiblio":
-        return self._get_model(".model.USApplicationBiblio").objects.get(
-            appl_id=self.appl_id
-        )
+        return self._get_model(".model.USApplicationBiblio").objects.get(appl_id=self.appl_id)
 
     @property
     def application(self) -> "USApplication":
-        return self._get_model(".model.USApplication").objects.get(
-            appl_id=self.appl_id
-        )
+        return self._get_model(".model.USApplication").objects.get(appl_id=self.appl_id)
 
     @property
     def continuity(self) -> Continuity:
-        return self._get_model(".model.Continuity").objects.get(
-            appl_id=self.appl_id
-        )
+        return self._get_model(".model.Continuity").objects.get(appl_id=self.appl_id)
 
     @property
     def documents(self) -> list[Document]:
@@ -295,9 +264,7 @@ class USApplicationBiblio(BaseODPModel):
 
     @property
     def term_adjustment(self) -> TermAdjustment:
-        return self._get_model(".model.TermAdjustment").objects.filter(
-            appl_id=self.appl_id
-        )
+        return self._get_model(".model.TermAdjustment").objects.filter(appl_id=self.appl_id)
 
     @property
     def assignments(self) -> list[Assignment]:
@@ -305,21 +272,15 @@ class USApplicationBiblio(BaseODPModel):
 
     @property
     def customer_number(self) -> CustomerNumber:
-        return self._get_model(".model.CustomerNumber").objects.filter(
-            appl_id=self.appl_id
-        )
+        return self._get_model(".model.CustomerNumber").objects.filter(appl_id=self.appl_id)
 
     @property
     def foreign_priority(self) -> ForeignPriority:
-        return self._get_model(".model.ForeignPriority").objects.filter(
-            appl_id=self.appl_id
-        )
+        return self._get_model(".model.ForeignPriority").objects.filter(appl_id=self.appl_id)
 
     @property
     def transactions(self) -> list[Transaction]:
-        return self._get_model(".model.Transaction").objects.filter(
-            appl_id=self.appl_id
-        )
+        return self._get_model(".model.Transaction").objects.filter(appl_id=self.appl_id)
 
     # Aliases
 
@@ -367,9 +328,7 @@ class USApplication(BaseODPModel):
     child_applications: Optional[list[Relationship]] = Field(
         alias=AliasPath("continuityBag", "childContinuityBag"), default=None
     )
-    patent_term_adjustment: Optional[TermAdjustment] = Field(
-        alias="patentTermAdjustmentData"
-    )
+    patent_term_adjustment: Optional[TermAdjustment] = Field(alias="patentTermAdjustmentData")
 
     @model_validator(mode="before")
     @classmethod

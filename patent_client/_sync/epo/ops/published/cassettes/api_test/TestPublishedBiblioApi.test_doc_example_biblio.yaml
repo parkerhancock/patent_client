@@ -18,7 +18,7 @@ interactions:
     uri: http://ops.epo.org/3.2/rest-services/published-data/publication/epodoc/EP1000000.A1/biblio
   response:
     content: "<error><code>400</code><message>invalid_access_token</message><description>Access
-      token has expired</description>\n\t\t\t\t</error>\n\t\t\t"
+      token is invalid</description>\n\t\t\t\t</error>\n\t\t\t"
     headers:
       Access-Control-Allow-Headers:
       - Authorization
@@ -29,14 +29,14 @@ interactions:
       Connection:
       - keep-alive
       Content-Length:
-      - '130'
+      - '129'
       Content-Type:
       - application/xml
       Date:
-      - Thu, 02 May 2024 16:55:17 GMT
+      - Thu, 02 May 2024 16:49:45 GMT
       WWW-Authenticate:
-      - 'Bearer realm="null",error="invalid_token",error_description="keymanagement.service.access_token_expired:
-        Access Token expired"'
+      - 'Bearer realm="null",error="invalid_token",error_description="oauth.v2.InvalidAccessToken:
+        Invalid access token"'
     http_version: HTTP/1.1
     status_code: 400
 - request:
@@ -56,8 +56,8 @@ interactions:
     content: "{\n  \"refresh_token_expires_in\": \"0\",\n  \"api_product_list\": \"[ops-prod]\",\n
       \ \"api_product_list_json\": [\n    \"ops-prod\"\n  ],\n  \"organization_name\":
       \"epo\",\n  \"developer.email\": \"parker.hancock@protonmail.com\",\n  \"token_type\":
-      \"BearerToken\",\n  \"issued_at\": \"1714668918149\",\n  \"client_id\": \"wVi6ni5GUZZ3BJqAfLGJb4KPGcYxRktw\",\n
-      \ \"access_token\": \"aGzD5MVzNT5IpNvJrA8kl1aRUliB\",\n  \"application_name\":
+      \"BearerToken\",\n  \"issued_at\": \"1714668585636\",\n  \"client_id\": \"wVi6ni5GUZZ3BJqAfLGJb4KPGcYxRktw\",\n
+      \ \"access_token\": \"KL251nNYBRcr4a89gsGvQIC0LZW3\",\n  \"application_name\":
       \"8654da0d-5e44-4ea3-addc-e555eff4aee6\",\n  \"scope\": \"core\",\n  \"expires_in\":
       \"1199\",\n  \"refresh_count\": \"0\",\n  \"status\": \"approved\"\n}"
     headers:
@@ -74,7 +74,7 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Thu, 02 May 2024 16:55:18 GMT
+      - Thu, 02 May 2024 16:49:45 GMT
       X-EPO-Client-IP:
       - 38.104.255.66
       X-EPO-Forwarded:
@@ -252,7 +252,7 @@ interactions:
       Content-Type:
       - application/xml;charset=utf-8
       Date:
-      - Thu, 02 May 2024 16:55:18 GMT
+      - Thu, 02 May 2024 16:49:45 GMT
       ETag:
       - '"0c60470db993d8cfb443f6c554fd289b8"'
       Pragma:
@@ -270,11 +270,11 @@ interactions:
       X-EPO-Forwarded:
       - '[38.104.255.66]'
       X-Elapsed-Time:
-      - '3'
+      - '0'
       X-IndividualQuotaPerHour-Used:
-      - '8323818'
+      - '7835163'
       X-RegisteredQuotaPerWeek-Used:
-      - '8837629'
+      - '8348974'
       X-Throttling-Control:
       - idle (images=green:200, inpadoc=green:60, other=green:1000, retrieval=green:200,
         search=green:30)

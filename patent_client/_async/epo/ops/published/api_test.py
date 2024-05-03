@@ -20,9 +20,7 @@ class TestPublishedBiblioApi:
 
     @pytest.mark.asyncio
     async def test_doc_example_full_cycle(self):
-        result = await PublishedApi.biblio.get_full_cycle(
-            "EP1000000.A1", format="epodoc"
-        )
+        result = await PublishedApi.biblio.get_full_cycle("EP1000000.A1", format="epodoc")
         expected_file = fixture_dir / "ep1000000_full_cycle_result.xml"
         expected_file.write_text(result, encoding="utf8")
         expected = expected_file.read_text(encoding="utf8")
@@ -51,9 +49,7 @@ class TestSearchApi:
 class TestFullTextAsyncApi:
     @pytest.mark.asyncio
     async def test_description(self):
-        result = await PublishedApi.fulltext.get_description(
-            "EP1000000.A1", format="epodoc"
-        )
+        result = await PublishedApi.fulltext.get_description("EP1000000.A1", format="epodoc")
         expected_file = fixture_dir / "ep1000000_description_result.xml"
         # expected_file.write_text(result.model_dump_json(indent=2))
         expected = json.loads(expected_file.read_text())

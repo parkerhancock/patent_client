@@ -21,9 +21,7 @@ def compare_dicts(dict_1, dict_2, key=""):
     if len(in_1_not_2) > 0:
         raise ValueError(f"At {key}, Keys {in_1_not_2} are in Dict 1, but not Dict 2")
     if len(in_2_not_1) > 0:
-        raise ValueError(
-            f"At {key}, Keys {in_2_not_1} are not in Dict 1, but are in Dict 2"
-        )
+        raise ValueError(f"At {key}, Keys {in_2_not_1} are not in Dict 1, but are in Dict 2")
 
     for k, v in dict_1.items():
         if isinstance(v, list) and not isinstance(v, str):

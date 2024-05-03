@@ -10,9 +10,8 @@ from collections import OrderedDict
 from pathlib import Path
 
 import pytest
-from pypdf import PdfReader
 
-from .model import PedsPage, USApplication, RemovedDataException
+from .model import PedsPage, RemovedDataException, USApplication
 
 fixtures = Path(__file__).parent / "fixtures"
 
@@ -28,7 +27,6 @@ class TestPatentExaminationDataDeserialization:
 
 
 class TestPatentExaminationData:
-    
     def test_get_inventors(self):
         app = USApplication.objects.get(12721698)
         inventors = app.inventors
@@ -37,39 +35,32 @@ class TestPatentExaminationData:
         assert inventor.name == "Thind; Deepinder Singh"
         assert inventor.address == "Mankato, MN (US)"
 
-    
     def test_search_by_customer_number(self):
         result = USApplication.objects.filter(app_cust_number="70155")
         assert result.count() > 1
 
-    
     def test_get_by_pub_number(self):
         pub_no = "US20060127129A1"
         app = USApplication.objects.get(app_early_pub_number=pub_no)
         assert app.patent_title == "ELECTROPHOTOGRAPHIC IMAGE FORMING APPARATUS"
 
-    
     def test_get_by_pat_number(self):
         pat_no = 6095661
         app = USApplication.objects.get(patent_number=pat_no)
         assert app.patent_title == "METHOD AND APPARATUS FOR AN L.E.D. FLASHLIGHT"
 
-    
     def test_get_by_application_number(self):
         app_no = "15145443"
         app = USApplication.objects.get(app_no)
         assert (
-            app.patent_title
-            == "Suction and Discharge Lines for a Dual Hydraulic Fracturing Unit"
+            app.patent_title == "Suction and Discharge Lines for a Dual Hydraulic Fracturing Unit"
         )
 
-    
     def test_get_many_by_application_number(self):
         app_nos = ["14971450", "15332765", "13441334", "15332709", "14542000"]
         data = USApplication.objects.filter(*app_nos)
         assert data.count() == 5
 
-    
     def test_search_pat_by_assignee(self):
         data = (
             USApplication.objects.filter(first_named_applicant="LogicBlox")
@@ -87,7 +78,6 @@ class TestPatentExaminationData:
         for t in expected_titles:
             assert t in app_titles
 
-    
     def test_get_many_by_publication_number(self):
         nos = [
             "US20080034424A1",
@@ -99,7 +89,6 @@ class TestPatentExaminationData:
         data = USApplication.objects.filter(app_early_pub_number=nos)
         assert data.count() == 5
 
-    
     @pytest.mark.skip("Continuity information has been removed from PEDS")
     def test_get_child_data(self):
         parent = USApplication.objects.get("14018930")
@@ -108,7 +97,6 @@ class TestPatentExaminationData:
         assert child.relationship == "claims the benefit of"
         # assert child.child.patent_title == "LEAPFROG TREE-JOIN"
 
-    
     @pytest.mark.skip("Continuity information has been removed from PEDS")
     def test_get_parent_data(self):
         child = USApplication.objects.get("14018930")
@@ -118,14 +106,12 @@ class TestPatentExaminationData:
         assert parent.parent_app_filing_date is not None
         # assert parent.parent.patent_title == "Leapfrog Tree-Join"
 
-    
     @pytest.mark.skip("PTA information has been removed from PEDS")
     def test_pta_history(self):
         app = USApplication.objects.get("14095073")
         pta_history = app.pta_pte_tran_history
         assert len(pta_history) > 10
 
-    
     @pytest.mark.skip("PTA information has been removed from PEDS")
     def test_pta_summary(self):
         app = USApplication.objects.get("14095073")
@@ -142,12 +128,10 @@ class TestPatentExaminationData:
         for k, v in expected.items():
             assert actual[k] == v
 
-    
     def test_transactions(self):
         app = USApplication.objects.get("14095073")
         assert len(app.transactions) > 70
 
-    
     def test_correspondent(self):
         app = USApplication.objects.get("14095073")
         expected_keys = [
@@ -159,7 +143,6 @@ class TestPatentExaminationData:
         for k in expected_keys:
             assert getattr(app, k, None) is not None
 
-    
     @pytest.mark.skip("Attorney information has been removed from PEDS")
     def test_attorneys(self):
         app = USApplication.objects.get("14095073")
@@ -175,7 +158,6 @@ class TestPatentExaminationData:
         for k in expected_keys:
             assert k in actual
 
-    
     def test_iterator(self):
         apps = USApplication.objects.filter(first_named_applicant="Tesla").limit(68)
         counter = 0
@@ -186,7 +168,6 @@ class TestPatentExaminationData:
             raise e
         assert apps.count() == counter
 
-    
     @pytest.mark.skip("PTA information has been removed from PEDS")
     def test_expiration_date(self):
         app = USApplication.objects.get("15384723")
@@ -217,7 +198,6 @@ class TestPatentExaminationData:
         for k in expected.keys():
             assert expected[k] == actual[k]
 
-    
     @pytest.mark.skip("Expiration date is not supported for PCT applications")
     def test_expiration_date_for_pct_apps(self):
         app = USApplication.objects.get("PCT/US2014/020588")
@@ -225,7 +205,6 @@ class TestPatentExaminationData:
             _ = app.expiration
         assert exc.match("Expiration date not supported for PCT Applications")
 
-    
     def test_foreign_priority(self):
         app = USApplication.objects.get(patent_number=10544653)
         fp = app.foreign_priority
@@ -235,27 +214,26 @@ class TestPatentExaminationData:
         assert app.filing_date == datetime.date(2017, 2, 15)
         assert app.priority_claim == "20170229"
 
-
-    
     def test_raises_warning_on_missing_information(self):
         app = USApplication.objects.get(patent_number=10000000)
         with pytest.raises(RemovedDataException):
             _ = app.expiration
-            
+
         with pytest.raises(RemovedDataException):
             _ = app.attorneys
-            
+
         with pytest.raises(RemovedDataException):
             _ = app.pta_pte_summary
-            
+
         with pytest.raises(RemovedDataException):
             _ = app.pta_pte_tran_history
-            
+
         with pytest.raises(RemovedDataException):
             _ = app.parent_continuity
-            
+
         with pytest.raises(RemovedDataException):
             _ = app.child_continuity
+
 
 class TestDocuments:
     @pytest.mark.vcr
@@ -271,6 +249,3 @@ class TestDocuments:
         doc = docs[5]
         backref_app = doc.application
         assert app.appl_id == backref_app.appl_id
-
-
-

@@ -11,7 +11,7 @@ interactions:
       host:
       - developer.uspto.gov
       user-agent:
-      - Mozilla/5.0 Python Patent Clientbot/5.0.0 (parkerhancock@users.noreply.github.com)
+      - python-httpx/0.24.1
     method: GET
     uri: https://developer.uspto.gov/ptab-api/decisions?proceedingNumber=IPR2016-00831
   response:
@@ -31,27 +31,31 @@ interactions:
       \\n\\n \\nCase IPR2016-00831 (Patent 6\",\"issueType\":[\"\"],\"boardRulings\":[\"35
       USC 317\",\"37 CFR 42.72\",\"37 CFR 42.74\"],\"decisionDate\":\"07-06-2017\",\"respondentGrantDate\":\"12-19-2000\",\"identifier\":\"a44c5f1557b7b60d00e66604d3668ce442d53f964aa597011cc476b4\",\"additionalRespondentPartyDataBag\":[]}],\"recordTotalQuantity\":1}"
     headers:
-      access-control-allow-credentials:
+      Access-Control-Allow-Credentials:
       - 'true'
-      access-control-allow-headers:
+      Access-Control-Allow-Headers:
       - accept, authorization, content-type, x-requested-with
-      access-control-allow-methods:
+      Access-Control-Allow-Methods:
       - GET, POST, OPTIONS, PUT
-      access-control-allow-origin:
+      Access-Control-Allow-Origin:
       - '*'
-      access-control-max-age:
+      Access-Control-Max-Age:
       - '1'
-      content-type:
+      Connection:
+      - keep-alive
+      Content-Type:
       - application/json
-      date:
-      - Wed, 01 May 2024 18:47:24 GMT
-      strict-transport-security:
+      Date:
+      - Tue, 31 Oct 2023 02:12:18 GMT
+      Strict-Transport-Security:
       - max-age=31536000;
-      vary:
+      Transfer-Encoding:
+      - chunked
+      Vary:
       - Origin
       - Access-Control-Request-Method
       - Access-Control-Request-Headers
-    http_version: HTTP/2
+    http_version: HTTP/1.1
     status_code: 200
 - request:
     body: ''
@@ -65,7 +69,65 @@ interactions:
       host:
       - developer.uspto.gov
       user-agent:
-      - Mozilla/5.0 Python Patent Clientbot/5.0.0 (parkerhancock@users.noreply.github.com)
+      - python-httpx/0.24.1
+    method: GET
+    uri: https://developer.uspto.gov/ptab-api/decisions?proceedingNumber=IPR2016-00831&recordStartNumber=0&recordTotalQuantity=25&sortOrderCategory=
+  response:
+    content: "{\"aggregationData\":{},\"results\":[{\"proceedingNumber\":\"IPR2016-00831\",\"decisionTypeCategory\":\"Decision\",\"subdecisionTypeCategory\":\"Settlement
+      after Institution\",\"documentName\":\"IPR2016-00831 -832 -833 Decision on Motion
+      to Terminate.pdf\",\"proceedingTypeCategory\":\"AIA Trial\",\"subproceedingTypeCategory\":\"IPR\",\"documentIdentifier\":\"169514971\",\"respondentTechnologyCenterNumber\":\"2800\",\"respondentPatentOwnerName\":\"Silicon
+      Genesis Corporation\",\"respondentPartyName\":\"Silicon Genesis Corporation\",\"respondentInventorName\":\"FRANCOIS
+      HENLEY\",\"respondentCounselName\":\"Margaux Nair\",\"respondentPatentNumber\":\"6162705\",\"respondentApplicationNumberText\":\"09026118\",\"petitionerPartyName\":\"Commissariat
+      a l\u2019Energie Atomique et aux Energies Alternatives\",\"petitionerCounselName\":\"Paul
+      McGowan\",\"ocrSearchText\":\"\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\nMicrosoft
+      Word - IPR2016-00831 -832 -833 Decision on Motion to Terminate\\n\\n\\nTrials@uspto.gov
+      \ Paper No. 39 \\n571-272-7822 Entered:  July 6, 2017 \\n \\n\\n \\n\\n \\n\\n
+      \\n \\n \\nUNITED STATES PATENT AND TRADEMARK OFFICE \\n\\n____________ \\n
+      \\n\\nBEFORE THE PATENT TRIAL AND APPEAL BOARD \\n____________ \\n\\n \\nCOMMISSARIAT
+      \ LENERGIE ATOMIQUE  \\n\\nET AUX ENERGIES ALTERNATIVES, \\nPetitioner, \\n\\n
+      \\nv. \\n \\n\\nSILICON GENESIS CORPORATION, \\nPatent Owner. \\n____________
+      \\n\\n \\nCase IPR2016-00831 (Patent 6\",\"issueType\":[\"\"],\"boardRulings\":[\"35
+      USC 317\",\"37 CFR 42.72\",\"37 CFR 42.74\"],\"decisionDate\":\"07-06-2017\",\"respondentGrantDate\":\"12-19-2000\",\"identifier\":\"a44c5f1557b7b60d00e66604d3668ce442d53f964aa597011cc476b4\",\"additionalRespondentPartyDataBag\":[]}],\"recordTotalQuantity\":1}"
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Headers:
+      - accept, authorization, content-type, x-requested-with
+      Access-Control-Allow-Methods:
+      - GET, POST, OPTIONS, PUT
+      Access-Control-Allow-Origin:
+      - '*'
+      Access-Control-Max-Age:
+      - '1'
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Date:
+      - Tue, 31 Oct 2023 02:12:18 GMT
+      Strict-Transport-Security:
+      - max-age=31536000;
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Origin
+      - Access-Control-Request-Method
+      - Access-Control-Request-Headers
+    http_version: HTTP/1.1
+    status_code: 200
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - developer.uspto.gov
+      user-agent:
+      - Mozilla/5.0 Python Patent Clientbot/4.1.4 (parkerhancock@users.noreply.github.com)
     method: GET
     uri: https://developer.uspto.gov/ptab-api/decisions?proceedingNumber=IPR2016-00831&recordStartNumber=0&recordTotalQuantity=1&sortOrderCategory=
   response:
@@ -98,7 +160,7 @@ interactions:
       content-type:
       - application/json
       date:
-      - Wed, 01 May 2024 18:47:25 GMT
+      - Mon, 11 Dec 2023 16:01:17 GMT
       strict-transport-security:
       - max-age=31536000;
       vary:

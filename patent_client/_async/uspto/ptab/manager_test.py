@@ -49,9 +49,7 @@ class TestPtabDocument:
     @pytest.mark.asyncio
     async def test_sort_by_document_number(self):
         result = (
-            await PtabDocument.objects.filter(proceeding_number="IPR2016-00831")
-            .limit(3)
-            .count()
+            await PtabDocument.objects.filter(proceeding_number="IPR2016-00831").limit(3).count()
         )
         assert result == 3
 
@@ -60,7 +58,4 @@ class TestPtabDecision:
     @pytest.mark.asyncio
     async def test_get_by_proceeding(self):
         result = await PtabDecision.objects.get(proceeding_number="IPR2016-00831")
-        assert (
-            result.identifier
-            == "a44c5f1557b7b60d00e66604d3668ce442d53f964aa597011cc476b4"
-        )
+        assert result.identifier == "a44c5f1557b7b60d00e66604d3668ce442d53f964aa597011cc476b4"

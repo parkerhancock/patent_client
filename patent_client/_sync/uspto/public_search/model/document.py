@@ -210,9 +210,9 @@ class PublicSearchDocument(BaseModel):
 
     @property
     def global_dossier(self):
-        return self._get_model(
-            "...global_dossier.model.GlobalDossierApplication"
-        ).objects.get(self.appl_id)
+        return self._get_model("...global_dossier.model.GlobalDossierApplication").objects.get(
+            self.appl_id
+        )
 
     @property
     def assignments(self):

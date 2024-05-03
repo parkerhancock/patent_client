@@ -6,11 +6,8 @@
 
 from pathlib import Path
 
-import pytest
-
 from .api import GlobalDossierApi
 from .model import DocumentList, GlobalDossier
-
 
 
 def test_get_file():
@@ -24,7 +21,6 @@ def test_get_file():
     assert response.id == "16740760"
 
 
-
 def test_get_doc_list():
     api = GlobalDossierApi()
     country = "US"
@@ -33,7 +29,6 @@ def test_get_doc_list():
     response = api.get_doc_list(country, doc_number, kind_code)
     assert isinstance(response, DocumentList)
     assert len(response.docs) > 0
-
 
 
 def test_get_document(tmp_path: Path):

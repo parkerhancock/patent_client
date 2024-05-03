@@ -13,12 +13,12 @@ interactions:
       host:
       - ops.epo.org
       user-agent:
-      - Mozilla/5.0 Python Patent Clientbot/5.0.0 (parkerhancock@users.noreply.github.com)
+      - Mozilla/5.0 Python Patent Clientbot/4.1.4 (parkerhancock@users.noreply.github.com)
     method: GET
     uri: http://ops.epo.org/3.2/rest-services/family/publication/docdb/EP1000000A1
   response:
     content: "<error><code>400</code><message>invalid_access_token</message><description>Access
-      token is invalid</description>\n\t\t\t\t</error>\n\t\t\t"
+      token has expired</description>\n\t\t\t\t</error>\n\t\t\t"
     headers:
       Access-Control-Allow-Headers:
       - Authorization
@@ -29,14 +29,14 @@ interactions:
       Connection:
       - keep-alive
       Content-Length:
-      - '129'
+      - '130'
       Content-Type:
       - application/xml
       Date:
-      - Wed, 01 May 2024 18:44:50 GMT
+      - Mon, 11 Dec 2023 16:09:07 GMT
       WWW-Authenticate:
-      - 'Bearer realm="null",error="invalid_token",error_description="keymanagement.service.invalid_access_token:
-        Invalid Access Token"'
+      - 'Bearer realm="null",error="invalid_token",error_description="keymanagement.service.access_token_expired:
+        Access Token expired"'
     http_version: HTTP/1.1
     status_code: 400
 - request:
@@ -56,8 +56,8 @@ interactions:
     content: "{\n  \"refresh_token_expires_in\": \"0\",\n  \"api_product_list\": \"[ops-prod]\",\n
       \ \"api_product_list_json\": [\n    \"ops-prod\"\n  ],\n  \"organization_name\":
       \"epo\",\n  \"developer.email\": \"parker.hancock@protonmail.com\",\n  \"token_type\":
-      \"BearerToken\",\n  \"issued_at\": \"1714589092070\",\n  \"client_id\": \"wVi6ni5GUZZ3BJqAfLGJb4KPGcYxRktw\",\n
-      \ \"access_token\": \"UQTbz8bSBDY3eBMb7ZVJqCq7M9TJ\",\n  \"application_name\":
+      \"BearerToken\",\n  \"issued_at\": \"1702310948003\",\n  \"client_id\": \"wVi6ni5GUZZ3BJqAfLGJb4KPGcYxRktw\",\n
+      \ \"access_token\": \"157uRRvz8X7fMe2Hf934dTtLhAn1\",\n  \"application_name\":
       \"8654da0d-5e44-4ea3-addc-e555eff4aee6\",\n  \"scope\": \"core\",\n  \"expires_in\":
       \"1199\",\n  \"refresh_count\": \"0\",\n  \"status\": \"approved\"\n}"
     headers:
@@ -74,11 +74,11 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Wed, 01 May 2024 18:44:52 GMT
+      - Mon, 11 Dec 2023 16:09:08 GMT
       X-EPO-Client-IP:
-      - 174.194.194.160
+      - 38.104.255.66
       X-EPO-Forwarded:
-      - '[174.194.194.160]'
+      - '[38.104.255.66]'
     http_version: HTTP/1.1
     status_code: 200
 - request:
@@ -95,7 +95,7 @@ interactions:
       host:
       - ops.epo.org
       user-agent:
-      - Mozilla/5.0 Python Patent Clientbot/5.0.0 (parkerhancock@users.noreply.github.com)
+      - Mozilla/5.0 Python Patent Clientbot/4.1.4 (parkerhancock@users.noreply.github.com)
     method: GET
     uri: http://ops.epo.org/3.2/rest-services/family/publication/docdb/EP1000000A1
   response:
@@ -203,8 +203,6 @@ interactions:
       - POST
       Access-Control-Allow-Origin:
       - '*'
-      Cache-Control:
-      - no-cache
       Connection:
       - keep-alive
       Content-Length:
@@ -212,7 +210,7 @@ interactions:
       Content-Type:
       - application/xml;charset=utf-8
       Date:
-      - Wed, 01 May 2024 18:44:52 GMT
+      - Mon, 11 Dec 2023 16:09:08 GMT
       ETag:
       - '"042c8b4f48cc4e69d9f34356eb9b71d8e"'
       Pragma:
@@ -226,18 +224,18 @@ interactions:
       X-API:
       - ops-v3.2
       X-EPO-Client-IP:
-      - 174.194.194.160
+      - 38.104.255.66
       X-EPO-Forwarded:
-      - '[174.194.194.160]'
+      - '[38.104.255.66]'
       X-Elapsed-Time:
-      - '309'
+      - '1'
       X-IndividualQuotaPerHour-Used:
-      - '8857'
+      - '920938'
       X-RegisteredQuotaPerWeek-Used:
-      - '8857'
+      - '920938'
       X-Throttling-Control:
-      - idle (images=green:200, inpadoc=green:60, other=green:1000, retrieval=green:200,
-        search=green:30)
+      - busy (images=green:100, inpadoc=green:45, other=green:1000, retrieval=green:100,
+        search=green:15)
     http_version: HTTP/1.1
     status_code: 200
 version: 1

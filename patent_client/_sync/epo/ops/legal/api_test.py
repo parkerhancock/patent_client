@@ -6,12 +6,9 @@
 
 from pathlib import Path
 
-import pytest
-
 from .api import LegalApi
 
 fixtures = Path(__file__).parent / "fixtures"
-
 
 
 def test_async_example():

@@ -5,10 +5,10 @@
 # ********************************************************************************
 
 import re
+import typing as tp
 import warnings
 from hashlib import blake2b
 from pathlib import Path
-import typing as tp
 
 import hishel
 import httpcore
@@ -42,9 +42,7 @@ patent_client_transport = hishel.CacheTransport(
         retries=3,
     ),
     storage=hishel.FileStorage(base_path=CACHE_DIR),
-    controller=hishel.Controller(
-        allow_heuristics=True, key_generator=cache_key_generator
-    ),
+    controller=hishel.Controller(allow_heuristics=True, key_generator=cache_key_generator),
 )
 
 

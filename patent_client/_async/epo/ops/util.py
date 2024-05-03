@@ -72,9 +72,9 @@ class InpadocModel(EpoBaseModel):
     @async_property
     async def legal(self) -> List["LegalEvent"]:
         return (
-            await self._get_model(
-                ".legal.model.Legal", base_class=InpadocModel
-            ).objects.get(self.docdb_number)
+            await self._get_model(".legal.model.Legal", base_class=InpadocModel).objects.get(
+                self.docdb_number
+            )
         ).events
 
     @async_property
@@ -82,9 +82,9 @@ class InpadocModel(EpoBaseModel):
         self,
     ) -> List["FamilyMember"]:
         return (
-            await self._get_model(
-                ".family.model.Family", base_class=InpadocModel
-            ).objects.get(self.docdb_number)
+            await self._get_model(".family.model.Family", base_class=InpadocModel).objects.get(
+                self.docdb_number
+            )
         ).family_members
 
     async def download(self, path: str = "."):

@@ -125,9 +125,7 @@ class QueryBuilder:
 
         elif kwargs:
             numbers = {
-                k: v
-                for k, v in kwargs.items()
-                if k in ("publication", "application", "patent")
+                k: v for k, v in kwargs.items() if k in ("publication", "application", "patent")
             }
             if len(numbers) > 1:
                 raise QueryException(

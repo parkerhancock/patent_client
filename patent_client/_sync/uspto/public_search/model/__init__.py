@@ -30,6 +30,7 @@ __all__ = [
     "PublishedApplicationBiblio",
     "PublishedApplication",
     "PublicSearchBiblio",
+    "PublicSearchBiblioPage",
     "PublicSearchDocument",
     "PublicSearchDocument",
 ]

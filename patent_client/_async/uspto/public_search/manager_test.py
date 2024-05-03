@@ -100,9 +100,7 @@ class TestPatents:
 
     @pytest.mark.asyncio
     async def test_handles_search_without_results(self):
-        query = Patent.objects.filter(
-            query='"379/56".CCLS. AND @APD>=19700101<=19950928'
-        )
+        query = Patent.objects.filter(query='"379/56".CCLS. AND @APD>=19700101<=19950928')
         assert await query.count() == 0
 
     @pytest.mark.asyncio
@@ -125,20 +123,16 @@ class TestPatents:
 
     @pytest.mark.asyncio
     async def test_search_that_has_single_patent(self):
-        result = Patent.objects.filter(
-            title="tennis", issue_date="2010-01-01->2010-02-27"
-        )
+        result = Patent.objects.filter(title="tennis", issue_date="2010-01-01->2010-02-27")
         assert await result.count() == 1
         obj = await result.first()
         assert obj.publication_number == "7658211"
         assert obj.patent_title == "Tennis ball recharging apparatus method"
 
-    @pytest.mark.skip("This test is too slow")
-    @pytest.mark.no_vcr
     @pytest.mark.asyncio
     async def test_can_get_images(self, tmp_path):
         pat = await Patent.objects.get("6103599")
-        path = await pat.adownload_images(path=tmp_path)
+        path = await pat.download_images(path=tmp_path)
         assert path == tmp_path / "US-6103599-A.pdf"
         assert path.exists()
 

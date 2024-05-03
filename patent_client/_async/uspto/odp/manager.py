@@ -31,11 +31,9 @@ class USApplicationManager(AsyncManager):
     response_model = USApplication
 
     async def count(self):
-        return (
-            await api.post_search(
-                self._create_search_obj(fields=["applicationNumberText"])
-            )
-        )["count"]
+        return (await api.post_search(self._create_search_obj(fields=["applicationNumberText"])))[
+            "count"
+        ]
 
     async def _get_results(self) -> tp.AsyncIterator["SearchResult"]:
         query_obj = self._create_search_obj()
@@ -138,9 +136,7 @@ class ForeignPriorityManager(AsyncManager):
     default_filter = "appl_id"
 
     async def _get_results(self) -> "ForeignPriority":
-        for doc in await api.get_foreign_priority_data(
-            self.config.filter["appl_id"][0]
-        ):
+        for doc in await api.get_foreign_priority_data(self.config.filter["appl_id"][0]):
             yield doc
 
 

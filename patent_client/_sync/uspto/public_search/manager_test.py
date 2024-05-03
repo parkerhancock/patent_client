@@ -16,30 +16,25 @@ from . import (
 
 
 class TestPatents:
-    
     def test_simple_lookup(self):
         app = PublicSearchDocument.objects.get(patent_number="6103599")
         assert app.appl_id == "09089931"
         assert app.guid == "US-6103599-A"
         assert app.patent_title == "Planarizing technique for multilayered substrates"
 
-    
     def test_tennis_patents(self):
         tennis_patents = Patent.objects.filter(title="tennis", assignee_name="wilson")
         assert tennis_patents.count() > 10
 
-    
     def test_fetch_patent(self):
         pat = Patent.objects.get(6095661)
         assert pat.patent_title == "Method and apparatus for an L.E.D. flashlight"
         assert len(pat.abstract) == 1543
 
-    
     def test_government_interest(self):
         pat = Patent.objects.get(11555621)
         assert pat.document.government_interest is not None
 
-    
     def test_claims(self):
         pat = Patent.objects.get(6095661)
         assert len(pat.claims) == 52
@@ -58,13 +53,11 @@ class TestPatents:
             31,
         ]
 
-    
     def test_us8645300(self):
         pat_no = 8645300
         pat = Patent.objects.get(pat_no)
         assert pat.patent_title == "System and method for intent data processing"
 
-    
     def test_search_classification(self):
         query = '"B60N2/5628".CPC. AND @APD>="20210101"<=20210107'
         results = Patent.objects.filter(query=query)
@@ -72,7 +65,6 @@ class TestPatents:
         app = results.first()
         assert app.publication_number == "11554698"
 
-    
     def test_can_fetch_reissue_applications(self):
         pat_no = "RE43633"
         pat = Patent.objects.get(pat_no)
@@ -82,7 +74,6 @@ class TestPatents:
         )
         assert pat.claims[0].text[:25] == "1. .[.A system for linkin"
 
-    
     def test_can_get_field_of_search(self):
         pat_no = "9140110"
         pat = Patent.objects.get(pat_no)
@@ -91,65 +82,51 @@ class TestPatents:
         pat = Patent.objects.get(pat_no)
         assert len(pat.field_of_search_us) == 7
 
-    
     def test_handles_disclaimers(self):
         """Some patents have notice markers on the issue date regarding statutory disclaimers"""
         pat = Patent.objects.get("5439055")
         assert pat.publication_date.isoformat() == "1995-08-08"
 
-    
     def test_handles_claims_for_US6460631(self):
         pat = Patent.objects.get(6460631)
         for claim in pat.claims:
             pass
         assert True
 
-    
     def test_handles_search_without_results(self):
-        query = Patent.objects.filter(
-            query='"379/56".CCLS. AND @APD>=19700101<=19950928'
-        )
+        query = Patent.objects.filter(query='"379/56".CCLS. AND @APD>=19700101<=19950928')
         assert query.count() == 0
 
-    
     def test_can_get_forward_references(self):
         pat = Patent.objects.get(6103599)
         forward_refs = pat.forward_citations
         assert forward_refs.count() >= 100
 
-    
     def test_classifications_with_foreign_priority_data(self):
         pat = Patent.objects.get(7752445)
         assert len(pat.us_class_issued) == 6
         assert pat.foreign_priority[0].app_number == "2004-052835"
 
-    
     def test_can_get_design_patents(self):
         pat = Patent.objects.get("D645062")
         assert pat.patent_title == "Gripping arm"
         assert pat.appl_id == "29380046"
 
-    
     def test_search_that_has_single_patent(self):
-        result = Patent.objects.filter(
-            title="tennis", issue_date="2010-01-01->2010-02-27"
-        )
+        result = Patent.objects.filter(title="tennis", issue_date="2010-01-01->2010-02-27")
         assert result.count() == 1
         obj = result.first()
         assert obj.publication_number == "7658211"
         assert obj.patent_title == "Tennis ball recharging apparatus method"
 
-    @pytest.mark.skip("This test is too slow")
-    @pytest.mark.no_vcr
     def test_can_get_images(self, tmp_path):
         pat = Patent.objects.get("6103599")
-        path = pat.adownload_images(path=tmp_path)
+        path = pat.download_images(path=tmp_path)
         assert path == tmp_path / "US-6103599-A.pdf"
         assert path.exists()
 
 
 class TestPublishedApplicationFullTextAsync:
-    
     def test_fetch_publication(self):
         pub_no = 20_160_009_839
         pub = PublishedApplication.objects.get(pub_no)
@@ -159,7 +136,6 @@ class TestPublishedApplicationFullTextAsync:
         )
         assert len(pub.abstract) == 651
 
-    
     def test_publication_claims(self):
         pub_no = 20_160_009_839
         pub = PublishedApplication.objects.get(pub_no)
@@ -175,7 +151,6 @@ class TestPublishedApplicationFullTextAsync:
         assert claim_2.number == 2
         assert claim_2.dependent
 
-    
     def test_us_pub_20170370151(self):
         pub_no = 20_170_370_151
         pub = PublishedApplication.objects.get(pub_no)
@@ -186,7 +161,6 @@ class TestPublishedApplicationFullTextAsync:
             in pub.claims[6].text
         )
 
-    
     def test_search_classification(self):
         query = '"166/308.1".CCLS. AND @APD>=20150101<=20210101'
         results = PublishedApplicationBiblio.objects.filter(query=query)
@@ -196,7 +170,6 @@ class TestPublishedApplicationFullTextAsync:
             counter += 1
         assert counter == 41
 
-    
     def test_nonstandard_claim_format(self):
         obj = PublishedApplication.objects.get("20170260839")
         assert obj.claims[0].text[:39] == "1. A method of well ranging comprising:"
@@ -207,7 +180,6 @@ class TestPublishedApplicationFullTextAsync:
         pat.adownload_images(path=tmp_path)
         assert (tmp_path / "US-20090150362-A1.pdf").exists()
 
-    
     def test_pages(self):
         pats = PatentBiblio.objects.filter(title="system").limit(525)
         old_p = None

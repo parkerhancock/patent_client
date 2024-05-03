@@ -12,13 +12,7 @@ from pydantic import AliasPath, Field, model_validator
 from patent_client.util.pydantic_util import BaseModel
 
 from ..convert.biblio import PublicSearchBiblioPageSchema
-from .shared import (
-    ApplicationNumber,
-    DateTimeAsDate,
-    DocumentStructure,
-    HtmlString,
-    OptionalList,
-)
+from .shared import ApplicationNumber, DateTimeAsDate, DocumentStructure, HtmlString, OptionalList
 
 
 class PublicSearchBiblio(BaseModel):
@@ -28,12 +22,8 @@ class PublicSearchBiblio(BaseModel):
     patent_title: Optional[HtmlString] = None
     type: Optional[str] = None
     main_classification_code: Optional[str] = None
-    applicant_names: OptionalList[str] = Field(
-        alias="applicant_name", default_factory=list
-    )
-    assignee_names: OptionalList[str] = Field(
-        alias="assignee_name", default_factory=list
-    )
+    applicant_names: OptionalList[str] = Field(alias="applicant_name", default_factory=list)
+    assignee_names: OptionalList[str] = Field(alias="assignee_name", default_factory=list)
     uspc_full_classification: OptionalList[str] = Field(default_factory=list)
     ipc_code: OptionalList[str] = Field(default_factory=list)
     cpc_additional: OptionalList[str] = Field(default_factory=list)
@@ -67,9 +57,9 @@ class PublicSearchBiblio(BaseModel):
 
     @property
     def global_dossier(self):
-        return self._get_model(
-            "...global_dossier.model.GlobalDossierApplication"
-        ).objects.get(self.appl_id)
+        return self._get_model("...global_dossier.model.GlobalDossierApplication").objects.get(
+            self.appl_id
+        )
 
     @property
     def assignments(self):

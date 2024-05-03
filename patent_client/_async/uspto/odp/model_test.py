@@ -38,10 +38,7 @@ def test_continuity(fixture_dir):
         continuity.parent_continuity[0].application_status_description
         == "Abandoned  --  Failure to Respond to an Office Action"
     )
-    assert (
-        continuity.parent_continuity[0].claim_type_description
-        == "is a National Stage Entry of"
-    )
+    assert continuity.parent_continuity[0].claim_type_description == "is a National Stage Entry of"
     assert continuity.parent_continuity[0].parent_application_id == "PCT/US15/27322"
     assert continuity.parent_continuity[0].child_application_id == "15123456"
     assert len(continuity.child_continuity) == 1
@@ -52,9 +49,7 @@ def test_continuity(fixture_dir):
         continuity.child_continuity[0].application_status_description
         == "Abandoned  --  Incomplete Application (Pre-examination)"
     )
-    assert (
-        continuity.child_continuity[0].claim_type_description == "is a Continuation of"
-    )
+    assert continuity.child_continuity[0].claim_type_description == "is a Continuation of"
     assert continuity.child_continuity[0].parent_application_id == "15123456"
     assert continuity.child_continuity[0].child_application_id == "16132008"
 
@@ -163,10 +158,7 @@ def test_transactions(fixture_dir):
     )
     assert transactions[-1].recorded_date == datetime.date.fromisoformat("2020-10-21")
     assert transactions[-1].transaction_code == "IDSC"
-    assert (
-        transactions[-1].transaction_description
-        == "Information Disclosure Statement considered"
-    )
+    assert transactions[-1].transaction_description == "Information Disclosure Statement considered"
 
 
 def test_patent_term_adjustment(fixture_dir):
@@ -176,15 +168,11 @@ def test_patent_term_adjustment(fixture_dir):
 
     assert patent_term_adjustment.applicant_day_delay_quantity == 15
     assert patent_term_adjustment.overlapping_day_quantity == 0
-    assert patent_term_adjustment.filing_date == datetime.date.fromisoformat(
-        "2018-09-06"
-    )
+    assert patent_term_adjustment.filing_date == datetime.date.fromisoformat("2018-09-06")
     assert patent_term_adjustment.c_delay_quantity == 0
     assert patent_term_adjustment.adjustment_total_quantity == 0
     assert patent_term_adjustment.b_delay_quantity == 0
-    assert patent_term_adjustment.grant_date == datetime.date.fromisoformat(
-        "2021-01-26"
-    )
+    assert patent_term_adjustment.grant_date == datetime.date.fromisoformat("2021-01-26")
     assert patent_term_adjustment.a_delay_quantity == 142
     assert patent_term_adjustment.non_overlapping_day_quantity == 127
     assert patent_term_adjustment.ip_office_day_delay_quantity == 142
@@ -205,9 +193,7 @@ def test_application_biblio(fixture_dir):
     application_biblio = USApplicationBiblio(**application_biblio_data)
 
     assert application_biblio.aia_indicator is True
-    assert application_biblio.app_filing_date == datetime.date.fromisoformat(
-        "2016-09-02"
-    )
+    assert application_biblio.app_filing_date == datetime.date.fromisoformat("2016-09-02")
     assert len(application_biblio.inventors) > 0
     assert application_biblio.customer_number == 26161
     assert application_biblio.group_art_unit == "3775"
@@ -243,9 +229,7 @@ def test_application_object(fixture_dir):
     assert application.entity_status == "Small"
     assert application.app_type_code == "UTL"
     assert application.national_stage_indicator is False
-    assert application.effective_filing_date == datetime.date.fromisoformat(
-        "2016-09-02"
-    )
+    assert application.effective_filing_date == datetime.date.fromisoformat("2016-09-02")
     assert len(application.assignments) > 0
     assert len(application.attorneys.attorneys) > 0
     assert len(application.transactions) > 0

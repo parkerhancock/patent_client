@@ -13,7 +13,7 @@ interactions:
       host:
       - ops.epo.org
       user-agent:
-      - Mozilla/5.0 Python Patent Clientbot/5.0.0 (parkerhancock@users.noreply.github.com)
+      - Mozilla/5.0 Python Patent Clientbot/4.1.4 (parkerhancock@users.noreply.github.com)
     method: GET
     uri: http://ops.epo.org/3.2/rest-services/published-data/publication/epodoc/EP1000000.A1/biblio
   response:
@@ -49,38 +49,43 @@ interactions:
       \                   <patent-classification sequence=\"2\">\n                        <classification-scheme
       office=\"EP\" scheme=\"CPCI\"/>\n                        <section>B</section>\n
       \                       <class>28</class>\n                        <subclass>B</subclass>\n
-      \                       <main-group>5</main-group>\n                        <subgroup>022</subgroup>\n
-      \                       <classification-value>I</classification-value>\n                        <generating-office>US</generating-office>\n
+      \                       <main-group>1</main-group>\n                        <subgroup>29</subgroup>\n
+      \                       <classification-value>I</classification-value>\n                        <generating-office>EP</generating-office>\n
       \                   </patent-classification>\n                    <patent-classification
       sequence=\"3\">\n                        <classification-scheme office=\"EP\"
       scheme=\"CPCI\"/>\n                        <section>B</section>\n                        <class>28</class>\n
       \                       <subclass>B</subclass>\n                        <main-group>5</main-group>\n
-      \                       <subgroup>025</subgroup>\n                        <classification-value>I</classification-value>\n
-      \                       <generating-office>EP</generating-office>\n                    </patent-classification>\n
+      \                       <subgroup>022</subgroup>\n                        <classification-value>I</classification-value>\n
+      \                       <generating-office>US</generating-office>\n                    </patent-classification>\n
       \                   <patent-classification sequence=\"4\">\n                        <classification-scheme
       office=\"EP\" scheme=\"CPCI\"/>\n                        <section>B</section>\n
       \                       <class>28</class>\n                        <subclass>B</subclass>\n
-      \                       <main-group>7</main-group>\n                        <subgroup>0064</subgroup>\n
-      \                       <classification-value>I</classification-value>\n                        <generating-office>US</generating-office>\n
+      \                       <main-group>5</main-group>\n                        <subgroup>022</subgroup>\n
+      \                       <classification-value>I</classification-value>\n                        <generating-office>EP</generating-office>\n
       \                   </patent-classification>\n                    <patent-classification
       sequence=\"5\">\n                        <classification-scheme office=\"EP\"
       scheme=\"CPCI\"/>\n                        <section>B</section>\n                        <class>28</class>\n
       \                       <subclass>B</subclass>\n                        <main-group>7</main-group>\n
       \                       <subgroup>0064</subgroup>\n                        <classification-value>I</classification-value>\n
-      \                       <generating-office>EP</generating-office>\n                    </patent-classification>\n
-      \               </patent-classifications>\n                <application-reference
-      doc-id=\"17397285\">\n                    <document-id document-id-type=\"docdb\">\n
-      \                       <country>EP</country>\n                        <doc-number>99203729</doc-number>\n
-      \                       <kind>A</kind>\n                    </document-id>\n
-      \                   <document-id document-id-type=\"epodoc\">\n                        <doc-number>EP19990203729</doc-number>\n
-      \                       <date>19991108</date>\n                    </document-id>\n
-      \                   <document-id document-id-type=\"original\">\n                        <doc-number>99203729</doc-number>\n
-      \                   </document-id>\n                </application-reference>\n
-      \               <priority-claims>\n                    <priority-claim sequence=\"1\"
-      kind=\"national\">\n                        <document-id document-id-type=\"epodoc\">\n
-      \                           <doc-number>NL19981010536</doc-number>\n                            <date>19981112</date>\n
-      \                       </document-id>\n                        <document-id
-      document-id-type=\"original\">\n                            <doc-number>1010536</doc-number>\n
+      \                       <generating-office>US</generating-office>\n                    </patent-classification>\n
+      \                   <patent-classification sequence=\"6\">\n                        <classification-scheme
+      office=\"EP\" scheme=\"CPCI\"/>\n                        <section>B</section>\n
+      \                       <class>28</class>\n                        <subclass>B</subclass>\n
+      \                       <main-group>7</main-group>\n                        <subgroup>0064</subgroup>\n
+      \                       <classification-value>I</classification-value>\n                        <generating-office>EP</generating-office>\n
+      \                   </patent-classification>\n                </patent-classifications>\n
+      \               <application-reference doc-id=\"17397285\">\n                    <document-id
+      document-id-type=\"docdb\">\n                        <country>EP</country>\n
+      \                       <doc-number>99203729</doc-number>\n                        <kind>A</kind>\n
+      \                   </document-id>\n                    <document-id document-id-type=\"epodoc\">\n
+      \                       <doc-number>EP19990203729</doc-number>\n                        <date>19991108</date>\n
+      \                   </document-id>\n                    <document-id document-id-type=\"original\">\n
+      \                       <doc-number>99203729</doc-number>\n                    </document-id>\n
+      \               </application-reference>\n                <priority-claims>\n
+      \                   <priority-claim sequence=\"1\" kind=\"national\">\n                        <document-id
+      document-id-type=\"epodoc\">\n                            <doc-number>NL19981010536</doc-number>\n
+      \                           <date>19981112</date>\n                        </document-id>\n
+      \                       <document-id document-id-type=\"original\">\n                            <doc-number>1010536</doc-number>\n
       \                       </document-id>\n                    </priority-claim>\n
       \               </priority-claims>\n                <parties>\n                    <applicants>\n
       \                       <applicant sequence=\"1\" data-format=\"epodoc\">\n
@@ -161,18 +166,16 @@ interactions:
       - POST
       Access-Control-Allow-Origin:
       - '*'
-      Cache-Control:
-      - no-cache
       Connection:
       - keep-alive
       Content-Length:
-      - '12488'
+      - '13035'
       Content-Type:
       - application/xml;charset=utf-8
       Date:
-      - Wed, 01 May 2024 18:44:57 GMT
+      - Mon, 11 Dec 2023 16:09:10 GMT
       ETag:
-      - '"0c60470db993d8cfb443f6c554fd289b8"'
+      - '"0b35c4dc8a4aec55f54681e64f7b7edf6"'
       Pragma:
       - no-cache
       Server:
@@ -184,18 +187,18 @@ interactions:
       X-API:
       - ops-v3.2
       X-EPO-Client-IP:
-      - 174.194.194.160
+      - 38.104.255.66
       X-EPO-Forwarded:
-      - '[174.194.194.160]'
+      - '[38.104.255.66]'
       X-Elapsed-Time:
-      - '4'
+      - '3'
       X-IndividualQuotaPerHour-Used:
-      - '112428'
+      - '1027147'
       X-RegisteredQuotaPerWeek-Used:
-      - '112428'
+      - '1027147'
       X-Throttling-Control:
-      - idle (images=green:200, inpadoc=green:60, other=green:1000, retrieval=green:200,
-        search=green:30)
+      - busy (images=green:100, inpadoc=green:45, other=green:1000, retrieval=green:100,
+        search=green:15)
     http_version: HTTP/1.1
     status_code: 200
 version: 1

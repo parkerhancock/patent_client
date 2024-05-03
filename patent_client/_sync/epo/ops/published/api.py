@@ -30,7 +30,9 @@ class PublishedBiblioApi:
         constituents: what data to retrieve. Can be combined. (biblio / abstract / full-cycle)
 
         """
-        base_url = f"http://ops.epo.org/3.2/rest-services/published-data/{doc_type}/{format}/{number}/"
+        base_url = (
+            f"http://ops.epo.org/3.2/rest-services/published-data/{doc_type}/{format}/{number}/"
+        )
         if isinstance(constituents, str):
             constituents = (constituents,)
         url = base_url + ",".join(constituents)
@@ -38,9 +40,7 @@ class PublishedBiblioApi:
         return response.text
 
     @classmethod
-    def get_biblio(
-        cls, number, doc_type="publication", format="docdb"
-    ) -> "BiblioResult":
+    def get_biblio(cls, number, doc_type="publication", format="docdb") -> "BiblioResult":
         text = cls.get_constituents(number, doc_type, format, constituents="biblio")
         return BiblioResult.model_validate(text)
 
@@ -122,9 +122,7 @@ class PublishedImagesApi:
         return Images.model_validate(response.text)
 
     @classmethod
-    def get_page_image(
-        cls, country, number, kind, image_type, page_number, image_format="pdf"
-    ):
+    def get_page_image(cls, country, number, kind, image_type, page_number, image_format="pdf"):
         response = session.get(
             f"https://ops.epo.org/3.2/rest-services/published-data/images/{country}/{number}/{kind}/{image_type}.{image_format}",
             params={"Range": page_number},

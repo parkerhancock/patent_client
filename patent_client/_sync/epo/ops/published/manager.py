@@ -56,9 +56,7 @@ class SearchManager(Manager["BiblioResult"]):
         return num_results
 
     def _get_results(self):
-        for start, end in get_ranges(
-            self.config.limit, self.config.offset, self.result_size
-        ):
+        for start, end in get_ranges(self.config.limit, self.config.offset, self.result_size):
             page = self._get_search_results_range(start, end)
             for result in page.results:
                 yield result

@@ -80,9 +80,7 @@ class AssignmentManager(AsyncManager["Assignment"]):
             "-execution_date": "ExecutionDate+desc",
         }
         if len(self.config.order_by) > 1:
-            raise ValueError(
-                "Assignment API does not support multiple sort parameters!"
-            )
+            raise ValueError("Assignment API does not support multiple sort parameters!")
         elif len(self.config.order_by) == 1:
             sort = order_map[self.config.order_by[0]]
         else:

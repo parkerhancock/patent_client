@@ -27,9 +27,7 @@ class ImageDocument(EpoBaseModel):
         out_file = Path(path) / f"{self.doc_number}.pdf"
         writer = PdfWriter()
         for i in range(1, self.num_pages + 1):
-            page_data = await PublishedImagesApi.get_page_image_from_link(
-                self.link, page_number=i
-            )
+            page_data = await PublishedImagesApi.get_page_image_from_link(self.link, page_number=i)
             page = PdfReader(page_data).pages[0]
             if page["/Rotate"] == 90:
                 page.rotate_clockwise(-90)

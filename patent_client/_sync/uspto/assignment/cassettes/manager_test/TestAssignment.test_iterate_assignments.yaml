@@ -11,13 +11,13 @@ interactions:
       host:
       - assignment-api.uspto.gov
       user-agent:
-      - Mozilla/5.0 Python Patent Clientbot/5.0.0 (parkerhancock@users.noreply.github.com)
+      - python-httpx/0.27.0
     method: GET
     uri: https://assignment-api.uspto.gov/patent/lookup?filter=OwnerName&query=US%20Well%20Services&rows=100&start=0&sort=ExecutionDate%2Bdesc&facet=false
   response:
     content: "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<response>\n\n<lst name=\"responseHeader\">\n
       \ <bool name=\"zkConnected\">true</bool>\n  <int name=\"status\">0</int>\n  <int
-      name=\"QTime\">112</int>\n  <lst name=\"params\">\n    <str name=\"q\">patAssigneeName:(US
+      name=\"QTime\">157</int>\n  <lst name=\"params\">\n    <str name=\"q\">patAssigneeName:(US
       Well Services)</str>\n    <str name=\"qt\">/apisearch</str>\n    <str name=\"start\">0</str>\n
       \   <str name=\"sort\">patAssignorEarliestExDate desc</str>\n    <str name=\"rows\">100</str>\n
       \   <str name=\"wt\">javabin</str>\n    <str name=\"version\">2</str>\n  </lst>\n</lst>\n<result
@@ -1758,21 +1758,25 @@ interactions:
       &lt;em&gt;WELL&lt;/em&gt; &lt;em&gt;SERVICES&lt;/em&gt; LLC</str>\n    </arr>\n
       \   <arr name=\"issueDate\"/>\n    <arr name=\"reelNo\"/>\n  </lst>\n</lst>\n</response>\n"
     headers:
-      content-type:
+      Connection:
+      - keep-alive
+      Content-Type:
       - application/xml
-      date:
-      - Wed, 01 May 2024 18:45:22 GMT
-      server:
+      Date:
+      - Wed, 24 Apr 2024 15:22:15 GMT
+      Server:
       - Apache-Coyote/1.1
-      strict-transport-security:
+      Strict-Transport-Security:
       - max-age=31536000;includeSubDomains
-      x-content-type-options:
+      Transfer-Encoding:
+      - chunked
+      X-Content-Type-Options:
       - nosniff
-      x-frame-options:
+      X-Frame-Options:
       - DENY
-      x-xss-protection:
+      X-XSS-Protection:
       - 1; mode=block
-    http_version: HTTP/2
+    http_version: HTTP/1.1
     status_code: 200
 - request:
     body: ''
@@ -1786,13 +1790,13 @@ interactions:
       host:
       - assignment-api.uspto.gov
       user-agent:
-      - Mozilla/5.0 Python Patent Clientbot/5.0.0 (parkerhancock@users.noreply.github.com)
+      - python-httpx/0.27.0
     method: GET
     uri: https://assignment-api.uspto.gov/patent/lookup?filter=OwnerName&query=US%20Well%20Services&rows=8&start=0&sort=ExecutionDate%2Bdesc&facet=false
   response:
     content: "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<response>\n\n<lst name=\"responseHeader\">\n
       \ <bool name=\"zkConnected\">true</bool>\n  <int name=\"status\">0</int>\n  <int
-      name=\"QTime\">148</int>\n  <lst name=\"params\">\n    <str name=\"q\">patAssigneeName:(US
+      name=\"QTime\">109</int>\n  <lst name=\"params\">\n    <str name=\"q\">patAssigneeName:(US
       Well Services)</str>\n    <str name=\"qt\">/apisearch</str>\n    <str name=\"start\">0</str>\n
       \   <str name=\"sort\">patAssignorEarliestExDate desc</str>\n    <str name=\"rows\">8</str>\n
       \   <str name=\"wt\">javabin</str>\n    <str name=\"version\">2</str>\n  </lst>\n</lst>\n<result
@@ -2477,20 +2481,24 @@ interactions:
       &lt;em&gt;WELL&lt;/em&gt; &lt;em&gt;SERVICES&lt;/em&gt;, LLC.</str>\n    </arr>\n
       \   <arr name=\"issueDate\"/>\n    <arr name=\"reelNo\"/>\n  </lst>\n</lst>\n</response>\n"
     headers:
-      content-type:
+      Connection:
+      - keep-alive
+      Content-Type:
       - application/xml
-      date:
-      - Wed, 01 May 2024 18:45:16 GMT
-      server:
+      Date:
+      - Wed, 24 Apr 2024 15:22:51 GMT
+      Server:
       - Apache-Coyote/1.1
-      strict-transport-security:
+      Strict-Transport-Security:
       - max-age=31536000;includeSubDomains
-      x-content-type-options:
+      Transfer-Encoding:
+      - chunked
+      X-Content-Type-Options:
       - nosniff
-      x-frame-options:
+      X-Frame-Options:
       - DENY
-      x-xss-protection:
+      X-XSS-Protection:
       - 1; mode=block
-    http_version: HTTP/2
+    http_version: HTTP/1.1
     status_code: 200
 version: 1

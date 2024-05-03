@@ -34,6 +34,11 @@ class PublicSearchApi:
             headers={
                 "X-Requested-With": "XMLHttpRequest",
                 "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36",
+                "Origin": "https://ppubs.uspto.gov",
+                "Referer": "https://ppubs.uspto.gov/pubwebapp/",
+                "Pragma": "no-cache",
+                "Cache-Control": "no-cache",
+                "Priority": "u=1, i",
             },
             http2=True,
             follow_redirects=True,
@@ -41,9 +46,7 @@ class PublicSearchApi:
         self.session = dict()
         self.case_id = None
         self.queries = dict()
-        self.search_query = json.loads(
-            (Path(__file__).parent / "search_query.json").read_text()
-        )
+        self.search_query = json.loads((Path(__file__).parent / "search_query.json").read_text())
 
     def run_query(
         self,
@@ -80,9 +83,7 @@ class PublicSearchApi:
             json=data["query"],
         )
         counts.raise_for_status()
-        search_url = (
-            "https://ppubs.uspto.gov/dirsearch-public/searches/searchWithBeFamily"
-        )
+        search_url = "https://ppubs.uspto.gov/dirsearch-public/searches/searchWithBeFamily"
         query_response = self.make_request("POST", search_url, json=data)
         query_response.raise_for_status()
         result = query_response.json()
@@ -139,7 +140,7 @@ class PublicSearchApi:
             for i in range(1, obj.document_structure.page_count + 1)
         ]
         response = self.client.post(
-            "https://ppubs.uspto.gov/dirsearch-public/print/imageviewer",
+            "https://ppubs.uspto.gov/dirsearch-public/internal/print/imageviewer",
             json={
                 "caseId": self.case_id,
                 "pageKeys": page_keys,
@@ -165,7 +166,7 @@ class PublicSearchApi:
             print_job_id = self._request_save(obj)
         while True:
             response = self.client.post(
-                "https://ppubs.uspto.gov/dirsearch-public/print/print-process",
+                "https://ppubs.uspto.gov/dirsearch-public/internal/print/print-process",
                 json=[
                     print_job_id,
                 ],
@@ -180,7 +181,7 @@ class PublicSearchApi:
             try:
                 request = self.client.build_request(
                     "GET",
-                    f"https://ppubs.uspto.gov/dirsearch-public/print/save/{pdf_name}",
+                    f"https://ppubs.uspto.gov/dirsearch-public/internal/print/save/{pdf_name}",
                 )
                 response = self.client.send(request, stream=True)
                 response.raise_for_status()

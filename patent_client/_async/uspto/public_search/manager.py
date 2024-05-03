@@ -100,9 +100,7 @@ class PublicSearchBiblioManager(GenericPublicSearchBiblioManager[PublicSearchBib
     pass
 
 
-class PublicSearchDocumentManager(
-    GenericPublicSearchDocumentManager[PublicSearchDocument]
-):
+class PublicSearchDocumentManager(GenericPublicSearchDocumentManager[PublicSearchDocument]):
     pass
 
 
@@ -132,9 +130,7 @@ class PublishedApplicationBiblioManager(
         ]
 
 
-class PublishedApplicationManager(
-    GenericPublicSearchDocumentManager[PublishedApplication]
-):
+class PublishedApplicationManager(GenericPublicSearchDocumentManager[PublishedApplication]):
     def __init__(self, config=None):
         super().__init__(config=config)
         self.config.options["sources"] = [

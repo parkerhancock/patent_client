@@ -100,9 +100,7 @@ class PtabApi:
         }
         query_dict = {k: v for k, v in query_dict.items() if v is not None}
 
-        query_dict = update_query_with_date(
-            document_filing_date, "documentFiling", query_dict
-        )
+        query_dict = update_query_with_date(document_filing_date, "documentFiling", query_dict)
 
         response = await client.get(
             url="https://developer.uspto.gov/ptab-api/documents", params=query_dict
@@ -165,12 +163,8 @@ class PtabApi:
         query_dict = {k: v for k, v in query_dict.items() if v is not None}
         query_dict = update_query_with_date(declaration_date, "declaration", query_dict)
         query_dict = update_query_with_date(institution_date, "institution", query_dict)
-        query_dict = update_query_with_date(
-            proceeding_filing_date, "proceedingFiling", query_dict
-        )
-        query_dict = update_query_with_date(
-            accorded_filing_date, "accordedFiling", query_dict
-        )
+        query_dict = update_query_with_date(proceeding_filing_date, "proceedingFiling", query_dict)
+        query_dict = update_query_with_date(accorded_filing_date, "accordedFiling", query_dict)
         query_dict = update_query_with_date(
             proceeding_last_modified_date, "proceedingLastModified", query_dict
         )

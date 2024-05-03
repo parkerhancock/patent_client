@@ -5,9 +5,9 @@
 # ********************************************************************************
 
 import datetime
+import typing as tp
 import warnings
 from pathlib import Path
-import typing as tp
 
 from dateutil.parser import isoparse
 from pydantic import BeforeValidator, ConfigDict, Field, field_validator
@@ -41,9 +41,7 @@ def parse_date(string):
     return dt.date()
 
 
-DatetimeAsDate = Annotated[
-    tp.Optional[datetime.date], BeforeValidator(lambda x: parse_date(x))
-]
+DatetimeAsDate = Annotated[tp.Optional[datetime.date], BeforeValidator(lambda x: parse_date(x))]
 
 
 class AbstractAssignmentModel(BaseModel):
@@ -84,24 +82,24 @@ class Property(AbstractAssignmentModel):
         try:
             appl_id = getattr(self, "appl_id", None)
             if appl_id is not None:
-                return self._get_model(
-                    "patent_client.uspto.peds.model.USApplication"
-                ).objects.get(appl_id=appl_id)
+                return self._get_model("patent_client.uspto.peds.model.USApplication").objects.get(
+                    appl_id=appl_id
+                )
             appl_id = getattr(self, "pct_num", None)
             if appl_id is not None:
-                return self._get_model(
-                    "patent_client.uspto.peds.model.USApplication"
-                ).objects.get(appl_id=appl_id)
+                return self._get_model("patent_client.uspto.peds.model.USApplication").objects.get(
+                    appl_id=appl_id
+                )
             pub_num = getattr(self, "publ_num", None)
             if pub_num is not None:
-                return self._get_model(
-                    "patent_client.uspto.peds.model.USApplication"
-                ).objects.get(app_early_pub_number=pub_num)
+                return self._get_model("patent_client.uspto.peds.model.USApplication").objects.get(
+                    app_early_pub_number=pub_num
+                )
             pat_num = getattr(self, "pat_num", None)
             if pat_num is not None:
-                return self._get_model(
-                    "patent_client.uspto.peds.model.USApplication"
-                ).objects.get(patent_number=pat_num)
+                return self._get_model("patent_client.uspto.peds.model.USApplication").objects.get(
+                    patent_number=pat_num
+                )
         except Exception:
             pass
         warnings.warn(f"Unable to find application for {self}")
@@ -110,9 +108,9 @@ class Property(AbstractAssignmentModel):
     @property
     def patent(self) -> "Patent":
         """The related US Patent, if any"""
-        return self._get_model(
-            "patent_client.uspto.public_search.model.Patent"
-        ).objects.get(publication_number=self.pat_num)
+        return self._get_model("patent_client.uspto.public_search.model.Patent").objects.get(
+            publication_number=self.pat_num
+        )
 
     @property
     def publication(

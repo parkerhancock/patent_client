@@ -53,9 +53,7 @@ class AssignmentManager(Manager["Assignment"]):
         for start, rows in get_start_and_row_count(
             self.config.limit, self.config.offset, self.page_size
         ):
-            response = AssignmentApi.lookup(
-                **{**self.get_query(), "start": start, "rows": rows}
-            )
+            response = AssignmentApi.lookup(**{**self.get_query(), "start": start, "rows": rows})
             for doc in response.docs:
                 yield doc
             if len(response.docs) < rows:
@@ -86,9 +84,7 @@ class AssignmentManager(Manager["Assignment"]):
             "-execution_date": "ExecutionDate+desc",
         }
         if len(self.config.order_by) > 1:
-            raise ValueError(
-                "Assignment API does not support multiple sort parameters!"
-            )
+            raise ValueError("Assignment API does not support multiple sort parameters!")
         elif len(self.config.order_by) == 1:
             sort = order_map[self.config.order_by[0]]
         else:

@@ -41,9 +41,7 @@ async def test_get_application_basic_data(odp_api):
 async def test_get_patent_term_adjustment_data(odp_api):
     application_id = "16123456"
     response = await odp_api.get_patent_term_adjustment_data(application_id)
-    assert (
-        response.adjustment_total_quantity is not None
-    ), "Expected patent term adjustment data"
+    assert response.adjustment_total_quantity is not None, "Expected patent term adjustment data"
 
 
 @pytest.mark.asyncio
