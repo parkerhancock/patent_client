@@ -42,25 +42,29 @@ class Address(BaseODPModel):
 
 
 class Relationship(BaseODPModel):
-    application_status_code: int = Field()
-    claim_type_code: str = Field(alias="claimParentageTypeCode")
-    filing_date: datetime.date
-    application_status_description: str = Field(alias="applicationStatusDescriptionText")
-    claim_type_description: str = Field(alias="claimParentageTypeCodeDescription")
-    parent_application_id: str = Field(alias="parentApplicationNumberText")
-    child_application_id: str = Field(alias="childApplicationNumberText")
+    application_status_code: Optional[int] = Field(default=None)
+    claim_type_code: Optional[str] = Field(alias="claimParentageTypeCode", default=None)
+    filing_date: Optional[datetime.date] = Field(default=None)
+    application_status_description: Optional[str] = Field(
+        alias="applicationStatusDescriptionText", default=None
+    )
+    claim_type_description: Optional[str] = Field(
+        alias="claimParentageTypeCodeDescription", default=None
+    )
+    parent_application_id: Optional[str] = Field(alias="parentApplicationNumberText", default=None)
+    child_application_id: Optional[str] = Field(alias="childApplicationNumberText", default=None)
 
 
 class Continuity(BaseODPModel):
-    count: int
-    request_identifier: str
+    count: Optional[int] = Field(default=None)
+    request_identifier: Optional[str] = Field(default=None)
     parent_continuity: Optional[list[Relationship]] = Field(
         alias=AliasPath(["patentBag", 0, "continuityBag", "parentContinuityBag"]),
-        default=None,
+        default_factory=list,
     )
     child_continuity: Optional[list[Relationship]] = Field(
         alias=AliasPath(["patentBag", 0, "continuityBag", "childContinuityBag"]),
-        default=None,
+        default_factory=list,
     )
 
 
@@ -68,19 +72,21 @@ class Continuity(BaseODPModel):
 
 
 class DownloadOption(BaseODPModel):
-    mime_type_identifier: str
-    download_url: str
-    pages: int = Field(alias="pageTotalQuantity")
+    mime_type_identifier: Optional[str] = Field(default=None)
+    download_url: Optional[str] = Field(default=None)
+    pages: Optional[int] = Field(alias="pageTotalQuantity", default=None)
 
 
 class Document(BaseODPModel):
-    appl_id: str = Field(alias="applicationNumberText")
-    mail_date: datetime.datetime = Field(alias="officialDate")
-    document_identifier: str = Field(alias="documentIdentifier")
-    document_code: str = Field(alias="documentCode")
-    document_code_description: str = Field(alias="documentCodeDescriptionText")
-    direction_category: str = Field(alias="directionCategory")
-    download_option_bag: list[dict] = Field(alias="downloadOptionBag")
+    appl_id: Optional[str] = Field(alias="applicationNumberText", default=None)
+    mail_date: Optional[datetime.datetime] = Field(alias="officialDate", default=None)
+    document_identifier: Optional[str] = Field(alias="documentIdentifier", default=None)
+    document_code: Optional[str] = Field(alias="documentCode", default=None)
+    document_code_description: Optional[str] = Field(
+        alias="documentCodeDescriptionText", default=None
+    )
+    direction_category: Optional[str] = Field(alias="directionCategory", default=None)
+    download_option_bag: list[dict] = Field(alias="downloadOptionBag", default_factory=list)
 
     def download(self, type="PDF", out_path=None):
         from .manager import api
@@ -102,71 +108,83 @@ class Document(BaseODPModel):
 
 
 class Assignor(BaseODPModel):
-    execution_date: datetime.date = Field(alias="executionDate")
-    assignor_name: str = Field(alias="assignorName")
+    execution_date: Optional[datetime.date] = Field(alias="executionDate", default=None)
+    assignor_name: Optional[str] = Field(alias="assignorName", default=None)
 
 
 class AssigneeAddress(BaseODPModel):
-    city_name: str = Field(alias="cityName")
-    geographic_region_code: str = Field(alias="geographicRegionCode")
-    postal_code: str = Field(alias="postalCode")
-    address_line_one_text: str = Field(alias="addressLineOneText")
+    city_name: Optional[str] = Field(alias="cityName", default=None)
+    geographic_region_code: Optional[str] = Field(alias="geographicRegionCode", default=None)
+    postal_code: Optional[str] = Field(alias="postalCode", default=None)
+    address_line_one_text: Optional[str] = Field(alias="addressLineOneText", default=None)
 
 
 class Assignee(BaseODPModel):
-    assignee_address: AssigneeAddress = Field(alias="assigneeAddress")
-    assignee_name_text: str = Field(alias="assigneeNameText")
+    assignee_address: Optional[AssigneeAddress] = Field(alias="assigneeAddress", default=None)
+    assignee_name_text: Optional[str] = Field(alias="assigneeNameText", default=None)
 
 
 class Assignment(BaseODPModel):
-    assignment_received_date: datetime.date = Field(alias="assignmentReceivedDate")
-    frame_number: str = Field(alias="frameNumber")
-    page_number: int = Field(alias="pageNumber")
-    reel_number_frame_number: str = Field(alias="reelNumber/frameNumber")
-    assignment_recorded_date: datetime.date = Field(alias="assignmentRecordedDate")
-    conveyance_text: str = Field(alias="conveyanceText")
-    assignment_mailed_date: datetime.date = Field(alias="assignmentMailedDate")
-    reel_number: str = Field(alias="reelNumber")
-    assignor_bag: list[Assignor] = Field(alias="assignorBag")
-    assignee_bag: list[Assignee] = Field(alias="assigneeBag")
-    correspondence_address: list[Address] = Field(alias="correspondenceAddress")
+    assignment_received_date: Optional[datetime.date] = Field(
+        alias="assignmentReceivedDate", default=None
+    )
+    frame_number: Optional[str] = Field(alias="frameNumber", default=None)
+    page_number: Optional[int] = Field(alias="pageNumber", default=None)
+    reel_number_frame_number: Optional[str] = Field(alias="reelNumber/frameNumber", default=None)
+    assignment_recorded_date: Optional[datetime.date] = Field(
+        alias="assignmentRecordedDate", default=None
+    )
+    conveyance_text: Optional[str] = Field(alias="conveyanceText", default=None)
+    assignment_mailed_date: Optional[datetime.date] = Field(
+        alias="assignmentMailedDate", default=None
+    )
+    reel_number: Optional[str] = Field(alias="reelNumber", default=None)
+    assignor_bag: list[Assignor] = Field(alias="assignorBag", default_factory=list)
+    assignee_bag: list[Assignee] = Field(alias="assigneeBag", default_factory=list)
+    correspondence_address: list[Address] = Field(
+        alias="correspondenceAddress", default_factory=list
+    )
 
 
 # Foreign Priority
 
 
 class ForeignPriority(BaseODPModel):
-    priority_number_text: str = Field(alias="priorityNumberText")
-    filing_date: datetime.date = Field(alias="filingDate")
-    country_name: str = Field(alias="countryName")
+    priority_number_text: Optional[str] = Field(alias="priorityNumberText", default=None)
+    filing_date: Optional[datetime.date] = Field(alias="filingDate", default=None)
+    country_name: Optional[str] = Field(alias="countryName", default=None)
 
 
 # Attorney
 
 
 class TelecommunicationAddress(BaseODPModel):
-    telecommunication_number: str = Field(alias="telecommunicationNumber")
-    usage_type_category: str = Field(alias="usageTypeCategory")
+    telecommunication_number: Optional[str] = Field(alias="telecommunicationNumber", default=None)
+    usage_type_category: Optional[str] = Field(alias="usageTypeCategory", default=None)
 
 
 class Attorney(BaseODPModel):
-    active_indicator: str = Field(alias="activeIndicator")
+    active_indicator: Optional[str] = Field(alias="activeIndicator", default=None)
     first_name: Optional[str] = Field(alias="firstName", default=None)
     last_name: Optional[str] = Field(alias="lastName", default=None)
-    registration_number: str = Field(alias="registrationNumber")
-    attorney_address_bag: list[Address] = Field(alias="attorneyAddressBag")
+    registration_number: Optional[str] = Field(alias="registrationNumber", default=None)
+    attorney_address_bag: list[Address] = Field(alias="attorneyAddressBag", default_factory=list)
     telecommunication_address_bag: list[TelecommunicationAddress] = Field(
-        alias="telecommunicationAddressBag"
+        alias="telecommunicationAddressBag", default_factory=list
     )
-    registered_practitioner_category: str = Field(alias="registeredPractitionerCategory")
+    registered_practitioner_category: Optional[str] = Field(
+        alias="registeredPractitionerCategory", default=None
+    )
     name_suffix: Optional[str] = Field(alias="nameSuffix", default=None)
 
 
 class CustomerNumber(BaseODPModel):
-    attorneys: list[Attorney] = Field(alias="attorneyBag")
-    customer_number: Optional[str] = Field(alias=AliasPath("customerNumber", "patronIdentifier"))
+    attorneys: list[Attorney] = Field(alias="attorneyBag", default_factory=list)
+    customer_number: Optional[str] = Field(
+        alias=AliasPath("customerNumber", "patronIdentifier"), default=None
+    )
     address: Optional[Address] = Field(
-        alias=AliasPath("customerNumber", "powerOfAttorneyAddressBag", 0)
+        alias=AliasPath("customerNumber", "powerOfAttorneyAddressBag", 0), default=None
     )
 
 
@@ -174,18 +192,24 @@ class CustomerNumber(BaseODPModel):
 
 
 class Transaction(BaseODPModel):
-    recorded_date: datetime.date = Field(alias="recordedDate")
-    transaction_code: str = Field(alias="caseActionCode")
-    transaction_description: str = Field(alias="caseActionDescriptionText")
+    recorded_date: Optional[datetime.date] = Field(alias="recordedDate", default=None)
+    transaction_code: Optional[str] = Field(alias="caseActionCode", default=None)
+    transaction_description: Optional[str] = Field(alias="caseActionDescriptionText", default=None)
 
 
 # Adjustment Data
 class TermAdjustmentHistory(BaseODPModel):
-    applicant_day_delay_quantity: int = Field(alias="applicantDayDelayQuantity")
-    start_sequence_number: float = Field(alias="startSequenceNumber")
-    case_action_description_text: str = Field(alias="caseActionDescriptionText")
-    case_action_sequence_number: float = Field(alias="caseActionSequenceNumber")
-    action_date: datetime.date = Field(alias="actionDate")
+    applicant_day_delay_quantity: Optional[int] = Field(
+        alias="applicantDayDelayQuantity", default=None
+    )
+    start_sequence_number: Optional[float] = Field(alias="startSequenceNumber", default=None)
+    case_action_description_text: Optional[str] = Field(
+        alias="caseActionDescriptionText", default=None
+    )
+    case_action_sequence_number: Optional[float] = Field(
+        alias="caseActionSequenceNumber", default=None
+    )
+    action_date: Optional[datetime.date] = Field(alias="actionDate", default=None)
 
 
 class TermAdjustment(BaseODPModel):
@@ -206,7 +230,7 @@ class TermAdjustment(BaseODPModel):
         alias="ipOfficeDayDelayQuantity", default=None
     )
     history: Optional[list[TermAdjustmentHistory]] = Field(
-        alias="patentTermAdjustmentHistoryDataBag", default=None
+        alias="patentTermAdjustmentHistoryDataBag", default_factory=list
     )
 
 
@@ -216,35 +240,37 @@ YNBool = Annotated[bool, BeforeValidator(lambda v: v == "Y")]
 
 
 class Inventor(BaseODPModel):
-    first_name: str = Field(alias="firstName")
-    last_name: str = Field(alias="lastName")
-    full_name: str = Field(alias="inventorNameText")
-    addresses: list[Address] = Field(alias="correspondenceAddressBag")
+    first_name: Optional[str] = Field(alias="firstName", default=None)
+    last_name: Optional[str] = Field(alias="lastName", default=None)
+    full_name: Optional[str] = Field(alias="inventorNameText", default=None)
+    addresses: list[Address] = Field(alias="correspondenceAddressBag", default_factory=list)
 
 
 class Applicant(BaseODPModel):
-    applicant_name: str = Field(alias="applicantNameText")
-    addresses: list[Address] = Field(alias="correspondenceAddressBag")
-    app_status_code: int = Field(alias="applicationStatusCode")
-    app_status: str = Field(alias="applicationStatusDescriptionText")
+    applicant_name: Optional[str] = Field(alias="applicantNameText", default=None)
+    addresses: list[Address] = Field(alias="correspondenceAddressBag", default_factory=list)
+    app_status_code: Optional[int] = Field(alias="applicationStatusCode", default=None)
+    app_status: Optional[str] = Field(alias="applicationStatusDescriptionText", default=None)
 
 
 class USApplicationBiblio(BaseODPModel):
-    aia_indicator: YNBool = Field(alias="firstInventorToFileIndicator")
-    app_filing_date: datetime.date = Field(alias="filingDate")
-    inventors: list[Inventor] = Field(alias="inventorBag")
-    customer_number: int = Field(alias="customerNumber")
-    group_art_unit: str = Field(alias="groupArtUnitNumber")
-    invention_title: str = Field(alias="inventionTitle")
-    correspondence_address: list[Address] = Field(alias="correspondenceAddressBag")
-    app_conf_num: int = Field(alias="applicationConfirmationNumber")
-    atty_docket_num: str = Field(alias="docketNumber")
-    appl_id: str = Field(alias="applicationNumberText")
-    first_inventor_name: str = Field(alias="firstInventorName")
-    first_applicant_name: str = Field(alias="firstApplicantName")
-    cpc_classifications: list[str] = Field(alias="cpcClassificationBag")
-    entity_status: str = Field(alias="businessEntityStatusCategory")
-    app_early_pub_number: Optional[str] = Field(alias="earliestPublicationNumber")
+    aia_indicator: Optional[YNBool] = Field(alias="firstInventorToFileIndicator", default=None)
+    app_filing_date: Optional[datetime.date] = Field(alias="filingDate", default=None)
+    inventors: list[Inventor] = Field(alias="inventorBag", default_factory=list)
+    customer_number: Optional[int] = Field(alias="customerNumber", default=None)
+    group_art_unit: Optional[str] = Field(alias="groupArtUnitNumber", default=None)
+    invention_title: Optional[str] = Field(alias="inventionTitle", default=None)
+    correspondence_address: list[Address] = Field(
+        alias="correspondenceAddressBag", default_factory=list
+    )
+    app_conf_num: Optional[int] = Field(alias="applicationConfirmationNumber", default=None)
+    atty_docket_num: Optional[str] = Field(alias="docketNumber", default=None)
+    appl_id: Optional[str] = Field(alias="applicationNumberText", default=None)
+    first_inventor_name: Optional[str] = Field(alias="firstInventorName", default=None)
+    first_applicant_name: Optional[str] = Field(alias="firstApplicantName", default=None)
+    cpc_classifications: list[str] = Field(alias="cpcClassificationBag", default_factory=list)
+    entity_status: Optional[str] = Field(alias="businessEntityStatusCategory", default=None)
+    app_early_pub_number: Optional[str] = Field(alias="earliestPublicationNumber", default=None)
 
     @property
     def bibliographic_data(self) -> "USApplicationBiblio":
@@ -298,42 +324,48 @@ class USApplicationBiblio(BaseODPModel):
 
 
 class USApplication(BaseODPModel):
-    aia_indicator: YNBool = Field(alias="firstInventorToFileIndicator")
-    app_filing_date: datetime.date = Field(alias="filingDate")
-    inventors: list[Inventor] = Field(alias="inventorBag")
-    customer_number: int = Field(alias="customerNumber")
-    group_art_unit: str = Field(alias="groupArtUnitNumber")
-    invention_title: str = Field(alias="inventionTitle")
-    correspondence_address: list[Address] = Field(alias="correspondenceAddressBag")
-    app_conf_num: int = Field(alias="applicationConfirmationNumber")
-    atty_docket_num: str = Field(alias="docketNumber")
-    appl_id: str = Field(alias="applicationNumberText")
-    first_inventor_name: str = Field(alias="firstInventorName")
-    first_applicant_name: str = Field(alias="firstApplicantName")
-    cpc_classifications: list[str] = Field(alias="cpcClassificationBag")
-    entity_status: str = Field(alias="businessEntityStatusCategory")
-    app_early_pub_number: Optional[str] = Field(alias="earliestPublicationNumber")
+    aia_indicator: Optional[YNBool] = Field(alias="firstInventorToFileIndicator", default=None)
+    app_filing_date: Optional[datetime.date] = Field(alias="filingDate", default=None)
+    inventors: list[Inventor] = Field(alias="inventorBag", default_factory=list)
+    customer_number: Optional[int] = Field(alias="customerNumber", default=None)
+    group_art_unit: Optional[str] = Field(alias="groupArtUnitNumber", default=None)
+    invention_title: Optional[str] = Field(alias="inventionTitle", default=None)
+    correspondence_address: list[Address] = Field(
+        alias="correspondenceAddressBag", default_factory=list
+    )
+    app_conf_num: Optional[int] = Field(alias="applicationConfirmationNumber", default=None)
+    atty_docket_num: Optional[str] = Field(alias="docketNumber", default=None)
+    appl_id: Optional[str] = Field(alias="applicationNumberText", default=None)
+    first_inventor_name: Optional[str] = Field(alias="firstInventorName", default=None)
+    first_applicant_name: Optional[str] = Field(alias="firstApplicantName", default=None)
+    cpc_classifications: list[str] = Field(alias="cpcClassificationBag", default_factory=list)
+    entity_status: Optional[str] = Field(alias="businessEntityStatusCategory", default=None)
+    app_early_pub_number: Optional[str] = Field(alias="earliestPublicationNumber", default=None)
 
-    app_type_code: str = Field(alias="applicationTypeCode")
-    national_stage_indicator: YNBool = Field(alias="nationalStageIndicator")
+    app_type_code: Optional[str] = Field(alias="applicationTypeCode", default=None)
+    national_stage_indicator: Optional[YNBool] = Field(alias="nationalStageIndicator", default=None)
 
-    effective_filing_date: datetime.date = Field(alias="effectiveFilingDate")
-    cls_sub_cls: str = Field(alias="class/subclass")
-    assignments: list[Assignment] = Field(alias="assignmentBag")
-    attorneys: CustomerNumber = Field(alias="recordAttorney")
-    transactions: list[Transaction] = Field(alias="transactionContentBag")
+    effective_filing_date: Optional[datetime.date] = Field(
+        alias="effectiveFilingDate", default=None
+    )
+    cls_sub_cls: Optional[str] = Field(alias="class/subclass", default=None)
+    assignments: list[Assignment] = Field(alias="assignmentBag", default_factory=list)
+    attorneys: Optional[CustomerNumber] = Field(alias="recordAttorney", default=None)
+    transactions: list[Transaction] = Field(alias="transactionContentBag", default_factory=list)
     parent_applications: Optional[list[Relationship]] = Field(
-        alias=AliasPath("continuityBag", "parentContinuityBag"), default=None
+        alias=AliasPath("continuityBag", "parentContinuityBag"), default_factory=list
     )
     child_applications: Optional[list[Relationship]] = Field(
-        alias=AliasPath("continuityBag", "childContinuityBag"), default=None
+        alias=AliasPath("continuityBag", "childContinuityBag"), default_factory=list
     )
-    patent_term_adjustment: Optional[TermAdjustment] = Field(alias="patentTermAdjustmentData")
+    patent_term_adjustment: Optional[TermAdjustment] = Field(
+        alias="patentTermAdjustmentData", default=None
+    )
 
     @model_validator(mode="before")
     @classmethod
     def _validate_patent_term_adjustment(cls, v):
-        if v["patentTermAdjustmentData"] == dict():
+        if "patentTermAdjustmentData" in v and v["patentTermAdjustmentData"] == dict():
             v["patentTermAdjustmentData"] = None
         return v
 
@@ -342,31 +374,31 @@ class USApplication(BaseODPModel):
 
 
 class SearchResult(BaseODPModel):
-    filing_date: datetime.date
-    appl_id: str = Field(alias="applicationNumberText")
-    invention_title: str = Field(alias="inventionTitle")
-    filing_date: datetime.date = Field(alias="filingDate")
+    filing_date: Optional[datetime.date] = Field(default=None)
+    appl_id: Optional[str] = Field(alias="applicationNumberText", default=None)
+    invention_title: Optional[str] = Field(alias="inventionTitle", default=None)
+    filing_date: Optional[datetime.date] = Field(default=None)
     patent_number: Optional[str] = Field(alias="patentNumber", default=None)
 
 
 class SearchResponse(BaseODPModel):
-    count: int
-    results: list[SearchResult] = Field(alias="patentBag")
-    request_id: str = Field(alias="requestIdentifier")
+    count: Optional[int] = Field(default=None)
+    results: list[SearchResult] = Field(alias="patentBag", default_factory=list)
+    request_id: Optional[str] = Field(alias="requestIdentifier", default=None)
 
 
 ## Request Models
 
 
 class Filter(BaseModel):
-    name: str
-    value: List[str]
+    name: Optional[str] = Field(default=None)
+    value: Optional[List[str]] = Field(default_factory=list)
 
 
 class Range(BaseModel):
-    field: str = Field(examples=["grantDate"])
-    valueFrom: str = Field(examples=["2020-01-01"])
-    valueTo: str = Field(examples=["2020-12-31"])
+    field: Optional[str] = Field(examples=["grantDate"], default=None)
+    valueFrom: Optional[str] = Field(examples=["2020-01-01"], default=None)
+    valueTo: Optional[str] = Field(examples=["2020-12-31"], default=None)
 
     @model_validator(mode="before")
     @classmethod
@@ -386,28 +418,28 @@ class SortOrder(str, Enum):
 
 
 class Sort(BaseModel):
-    field: str = Field(examples=["grantDate"])
-    order: SortOrder = Field(examples=[SortOrder.desc])
+    field: Optional[str] = Field(examples=["grantDate"], default=None)
+    order: Optional[SortOrder] = Field(examples=[SortOrder.desc], default=None)
 
 
 class Pagination(BaseModel):
-    offset: int = Field(examples=[0], default=0, ge=0)
-    limit: int = Field(examples=[25], default=25, ge=1)
+    offset: Optional[int] = Field(examples=[0], default=0, ge=0)
+    limit: Optional[int] = Field(examples=[25], default=25, ge=1)
 
 
 class SearchRequest(BaseModel):
-    q: str = Field(default="")
-    filters: Optional[List[Filter]] = Field(default=None)
-    rangeFilters: Optional[List[Range]] = Field(default=None)
-    sort: Optional[List[Sort]] = Field(default=None)
-    fields: Optional[List[str]] = Field(default=None)
+    q: Optional[str] = Field(default="")
+    filters: Optional[List[Filter]] = Field(default_factory=list)
+    rangeFilters: Optional[List[Range]] = Field(default_factory=list)
+    sort: Optional[List[Sort]] = Field(default_factory=list)
+    fields: Optional[List[str]] = Field(default_factory=list)
     pagination: Optional[Pagination] = Field(default=None)
-    facets: Optional[List[str]] = Field(default=None)
+    facets: Optional[List[str]] = Field(default_factory=list)
 
 
 class SearchGetRequest(BaseModel):
-    q: str = Field(default="")
-    sort: str = Field(default="filingDate")
-    fields: str = Field(default="")
-    offset: int = Field(default=0)
-    limit: int = Field(default=25)
+    q: Optional[str] = Field(default="")
+    sort: Optional[str] = Field(default="filingDate")
+    fields: Optional[str] = Field(default="")
+    offset: Optional[int] = Field(default=0)
+    limit: Optional[int] = Field(default=25)

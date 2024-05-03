@@ -33,7 +33,7 @@ api = ODPApi()
 
 class USApplicationManager(Manager):
     default_filter = "appl_id"
-    default_fields = []
+    default_fields = ["applicationNumberText"]
     response_model = USApplication
 
     def count(self):
@@ -46,7 +46,9 @@ class USApplicationManager(Manager):
             page_query["pagination"] = {"offset": start, "limit": rows}
             page_query_obj = SearchRequest(**page_query)
             for result in (api.post_search(page_query_obj))["patentBag"]:
-                yield self.response_model(**result)
+                app_id = result["applicationNumberText"]
+                app = api.get_application_data(app_id)
+                yield app
 
     def _create_search_obj(self, fields: tp.Optional[tp.List[str]] = None):
         if fields is None:
@@ -57,6 +59,11 @@ class USApplicationManager(Manager):
             return SearchRequest(q=self.config.filter["q"][0], fields=fields)
         else:
             return create_post_search_obj(self.config, fields=fields)
+
+    def get(self, *args, **kwargs):
+        if len(args) == 1 and not kwargs:
+            return api.get_application_data(args[0])
+        return super().get(*args, **kwargs)
 
 
 class USApplicationBiblioManager(USApplicationManager):
@@ -79,6 +86,20 @@ class USApplicationBiblioManager(USApplicationManager):
         "earliestPublicationNumber",
     ]
     response_model = USApplicationBiblio
+
+    def _get_results(self) -> tp.Iterator["SearchResult"]:
+        query_obj = self._create_search_obj(fields=self.default_fields)
+        for start, rows in get_start_and_row_count(self.config.limit):
+            page_query = query_obj.model_dump()
+            page_query["pagination"] = {"offset": start, "limit": rows}
+            page_query_obj = SearchRequest(**page_query)
+            for result in (api.post_search(page_query_obj))["patentBag"]:
+                yield self.response_model(**result)
+
+    def get(self, *args, **kwargs):
+        if len(args) == 1 and not kwargs:
+            return api.get_application_biblio_data(args[0])
+        return super().get(*args, **kwargs)
 
 
 class AttributeManager(Manager):
