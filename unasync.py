@@ -6,6 +6,8 @@ import sys
 from pathlib import Path
 
 SUBS = [
+    ("import asyncio", "import time"),
+    ("await asyncio.sleep", "time.sleep"),
     ("async def", "def"),
     ("async with", "with"),
     ("await ", ""),

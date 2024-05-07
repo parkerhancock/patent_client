@@ -5,7 +5,7 @@ from pathlib import Path
 
 import pytest
 
-from .model import PedsPage, RemovedDataException, USApplication
+from .model import PedsPage, USApplication
 
 fixtures = Path(__file__).parent / "fixtures"
 
@@ -92,33 +92,29 @@ class TestPatentExaminationData:
         assert await data.count() == 5
 
     @pytest.mark.asyncio
-    @pytest.mark.skip("Continuity information has been removed from PEDS")
     async def test_get_child_data(self):
-        parent = await USApplication.objects.get("14018930")
+        parent = await USApplication.objects.get("16123456")
         child = parent.child_continuity[0]
-        assert child.child_appl_id == "14919159"
+        assert child.child_appl_id == "17130468"
         assert child.relationship == "claims the benefit of"
         # assert child.child.patent_title == "LEAPFROG TREE-JOIN"
 
     @pytest.mark.asyncio
-    @pytest.mark.skip("Continuity information has been removed from PEDS")
     async def test_get_parent_data(self):
-        child = await USApplication.objects.get("14018930")
+        child = await USApplication.objects.get("17130468")
         parent = child.parent_continuity[0]
-        assert parent.parent_appl_id == "61706484"
-        assert parent.relationship == "Claims Priority from Provisional Application"
+        assert parent.parent_appl_id == "16123456"
+        assert parent.relationship == "is a Division of"
         assert parent.parent_app_filing_date is not None
         # assert parent.parent.patent_title == "Leapfrog Tree-Join"
 
     @pytest.mark.asyncio
-    @pytest.mark.skip("PTA information has been removed from PEDS")
     async def test_pta_history(self):
         app = await USApplication.objects.get("14095073")
         pta_history = app.pta_pte_tran_history
         assert len(pta_history) > 10
 
     @pytest.mark.asyncio
-    @pytest.mark.skip("PTA information has been removed from PEDS")
     async def test_pta_summary(self):
         app = await USApplication.objects.get("14095073")
         expected = OrderedDict(
@@ -152,7 +148,6 @@ class TestPatentExaminationData:
             assert getattr(app, k, None) is not None
 
     @pytest.mark.asyncio
-    @pytest.mark.skip("Attorney information has been removed from PEDS")
     async def test_attorneys(self):
         app = await USApplication.objects.get("14095073")
         assert len(app.attorneys) > 1
@@ -179,7 +174,6 @@ class TestPatentExaminationData:
         assert await apps.count() == counter
 
     @pytest.mark.asyncio
-    @pytest.mark.skip("PTA information has been removed from PEDS")
     async def test_expiration_date(self):
         app = await USApplication.objects.get("15384723")
         expected = {
@@ -226,27 +220,6 @@ class TestPatentExaminationData:
         assert app.country_name == "NORWAY"
         assert app.filing_date == datetime.date(2017, 2, 15)
         assert app.priority_claim == "20170229"
-
-    @pytest.mark.asyncio
-    async def test_raises_warning_on_missing_information(self):
-        app = await USApplication.objects.get(patent_number=10000000)
-        with pytest.raises(RemovedDataException):
-            _ = app.expiration
-
-        with pytest.raises(RemovedDataException):
-            _ = app.attorneys
-
-        with pytest.raises(RemovedDataException):
-            _ = app.pta_pte_summary
-
-        with pytest.raises(RemovedDataException):
-            _ = app.pta_pte_tran_history
-
-        with pytest.raises(RemovedDataException):
-            _ = app.parent_continuity
-
-        with pytest.raises(RemovedDataException):
-            _ = app.child_continuity
 
 
 class TestDocuments:
