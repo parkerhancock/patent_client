@@ -1,0 +1,50 @@
+interactions:
+- request:
+    body: '{"q": "patentNumber:(6013599)", "fields": ["applicationNumberText"], "pagination":
+      {"offset": 0, "limit": 25}}'
+    headers:
+      X-API-KEY:
+      - REDACTED
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '110'
+      content-type:
+      - application/json
+      host:
+      - beta-api.uspto.gov
+      user-agent:
+      - Mozilla/5.0 Python Patent Clientbot/5.0.4 (parkerhancock@users.noreply.github.com)
+    method: POST
+    uri: https://beta-api.uspto.gov/api/v1/patent/applications/search
+  response:
+    content: '{"code":404,"message":"Not Found","detailedMessage":"No matching records
+      found, refine your search criteria and try again","requestIdentifier":"45e767db-52c7-4a75-a7c2-1a908e27401a"}'
+    headers:
+      access-control-allow-headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      access-control-allow-methods:
+      - OPTIONS,POST,GET
+      access-control-allow-origin:
+      - '*'
+      content-length:
+      - '182'
+      content-type:
+      - application/json
+      correlation-id:
+      - 45e767db-52c7-4a75-a7c2-1a908e27401a
+      date:
+      - Fri, 03 May 2024 17:57:17 GMT
+      x-amz-apigw-id:
+      - XNLLpHCGoAMFUyQ=
+      x-amzn-requestid:
+      - 45e767db-52c7-4a75-a7c2-1a908e27401a
+      x-amzn-trace-id:
+      - Root=1-6635257d-5bc471812d7a280f33f05135;Parent=6b444d86b165ce06;Sampled=0;lineage=33e8fdb8:0
+    http_version: HTTP/2
+    status_code: 404
+version: 1

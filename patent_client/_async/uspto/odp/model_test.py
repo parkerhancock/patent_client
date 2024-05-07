@@ -206,6 +206,10 @@ def test_application_biblio(fixture_dir):
     assert application_biblio.first_applicant_name == "The General Hospital Corporation"
     assert len(application_biblio.cpc_classifications) > 0
     assert application_biblio.entity_status == "Small"
+    assert application_biblio.status == "Abandoned  --  Failure to Respond to an Office Action"
+    assert application_biblio.status_date == datetime.date.fromisoformat("2018-10-02")
+    assert application_biblio.status_code is None
+    assert application_biblio.patent_number is None
 
 
 def test_application_object(fixture_dir):
@@ -235,6 +239,10 @@ def test_application_object(fixture_dir):
     assert len(application.transactions) > 0
     assert len(application.parent_applications) > 0
     assert len(application.child_applications) > 0
+    assert application.status == "Abandoned  --  Failure to Respond to an Office Action"
+    assert application.status_date == datetime.date.fromisoformat("2018-10-02")
+    assert application.status_code == 161
+    assert application.patent_number is None
 
 
 def test_search_model():

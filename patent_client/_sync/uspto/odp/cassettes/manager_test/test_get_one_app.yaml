@@ -2,6 +2,8 @@ interactions:
 - request:
     body: '{"q": "applicationNumberText:16123456", "fields": ["applicationNumberText"]}'
     headers:
+      X-API-KEY:
+      - REDACTED
       accept:
       - application/json
       accept-encoding:
@@ -15,40 +17,38 @@ interactions:
       host:
       - beta-api.uspto.gov
       user-agent:
-      - python-httpx/0.27.0
-      x-api-key:
-      - oygzgndgwifcpqgvdcitnhorcdvpbb
+      - Mozilla/5.0 Python Patent Clientbot/5.0.4 (parkerhancock@users.noreply.github.com)
     method: POST
     uri: https://beta-api.uspto.gov/api/v1/patent/applications/search
   response:
-    content: '{"count":1,"patentBag":[{"applicationNumberText":"16123456"}],"requestIdentifier":"83fa9e7d-d889-4ac4-a91f-1b1de0b428d0"}'
+    content: '{"count":1,"patentBag":[{"applicationNumberText":"16123456"}],"requestIdentifier":"7613a020-b3a6-4cb1-99f9-be019b879408"}'
     headers:
-      Connection:
-      - keep-alive
-      Content-Length:
-      - '121'
-      Content-Type:
-      - application/json
-      Date:
-      - Wed, 24 Apr 2024 16:55:40 GMT
-      X-Amzn-Trace-Id:
-      - Root=1-6629398c-24ea64517e22ca0e568bcf29;Parent=75e1e915d7fd32cc;Sampled=0;lineage=33e8fdb8:0
       access-control-allow-headers:
       - Origin, X-Requested-With, Content-Type, Accept
       access-control-allow-methods:
       - OPTIONS,POST,GET
       access-control-allow-origin:
       - '*'
+      content-length:
+      - '121'
+      content-type:
+      - application/json
+      date:
+      - Fri, 03 May 2024 17:51:20 GMT
       x-amz-apigw-id:
-      - WvXt8HaDoAMFn_A=
-      x-amzn-RequestId:
-      - 83fa9e7d-d889-4ac4-a91f-1b1de0b428d0
-    http_version: HTTP/1.1
+      - XNKT5GHqoAMFe_Q=
+      x-amzn-requestid:
+      - 7613a020-b3a6-4cb1-99f9-be019b879408
+      x-amzn-trace-id:
+      - Root=1-66352418-268be8e108e1bb2e30ebf70f;Parent=2e348f022c18eb3d;Sampled=0;lineage=33e8fdb8:0
+    http_version: HTTP/2
     status_code: 200
 - request:
-    body: '{"q": "applicationNumberText:16123456", "pagination": {"offset": 0, "limit":
-      1}}'
+    body: '{"q": "applicationNumberText:16123456", "fields": ["applicationNumberText"],
+      "pagination": {"offset": 0, "limit": 1}}'
     headers:
+      X-API-KEY:
+      - REDACTED
       accept:
       - application/json
       accept-encoding:
@@ -56,17 +56,55 @@ interactions:
       connection:
       - keep-alive
       content-length:
-      - '80'
+      - '117'
       content-type:
       - application/json
       host:
       - beta-api.uspto.gov
       user-agent:
-      - python-httpx/0.27.0
-      x-api-key:
-      - oygzgndgwifcpqgvdcitnhorcdvpbb
+      - Mozilla/5.0 Python Patent Clientbot/5.0.4 (parkerhancock@users.noreply.github.com)
     method: POST
     uri: https://beta-api.uspto.gov/api/v1/patent/applications/search
+  response:
+    content: '{"count":1,"patentBag":[{"applicationNumberText":"16123456"}],"requestIdentifier":"75d113a9-afa3-4d49-ae90-1378433d9fff"}'
+    headers:
+      access-control-allow-headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      access-control-allow-methods:
+      - OPTIONS,POST,GET
+      access-control-allow-origin:
+      - '*'
+      content-length:
+      - '121'
+      content-type:
+      - application/json
+      date:
+      - Fri, 03 May 2024 17:51:20 GMT
+      x-amz-apigw-id:
+      - XNKT6HxToAMF8Ag=
+      x-amzn-requestid:
+      - 75d113a9-afa3-4d49-ae90-1378433d9fff
+      x-amzn-trace-id:
+      - Root=1-66352418-4f5e98423a35cf0601af5846;Parent=4ebcc8892702c82b;Sampled=0;lineage=33e8fdb8:0
+    http_version: HTTP/2
+    status_code: 200
+- request:
+    body: ''
+    headers:
+      X-API-KEY:
+      - REDACTED
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - beta-api.uspto.gov
+      user-agent:
+      - Mozilla/5.0 Python Patent Clientbot/5.0.4 (parkerhancock@users.noreply.github.com)
+    method: GET
+    uri: https://beta-api.uspto.gov/api/v1/patent/applications/16123456
   response:
     content: '{"count":1,"patentBag":[{"firstInventorToFileIndicator":"Y","applicationStatusCode":150,"applicationTypeCode":"UTL","filingDate":"2018-09-06","assignmentBag":[{"assignmentReceivedDate":"2018-09-07","assignorBag":[{"executionDate":"2018-07-11","assignorName":"KANADA,
       SHOJI"}],"frameNumber":"0108","pageNumber":3,"reelNumber/frameNumber":"046816/0108","assignmentRecordedDate":"2018-09-07","conveyanceText":"ASSIGNMENT
@@ -332,28 +370,26 @@ interactions:
       Church","geographicRegionName":"VIRGINIA","geographicRegionCode":"VA","countryCode":"US","postalCode":"22042-1248","nameLineOneText":"BIRCH
       STEWART KOLASCH & BIRCH, LLP","countryName":"UNITED STATES","addressLineOneText":"8110
       Gatehouse Road","addressLineTwoText":"Suite 100 East"}],"foreignPriorityBag":[{"priorityNumberText":"2017-187096","filingDate":"2017-09-27","countryName":"JAPAN"}],"applicationConfirmationNumber":7051,"smallEntityStatusIndicator":false,"subclass":"159","publicationCategoryBag":["Granted/Issued","Pre-Grant
-      Publications - PGPub"],"docketNumber":"1982-1042PUS1"}],"requestIdentifier":"c034f394-32a9-4ea6-b600-3de27bd12a3d"}'
+      Publications - PGPub"],"docketNumber":"1982-1042PUS1"}],"requestIdentifier":"53dfb59a-7666-467d-8add-cd8298a7bd39"}'
     headers:
-      Connection:
-      - keep-alive
-      Content-Length:
-      - '44717'
-      Content-Type:
-      - application/json
-      Date:
-      - Wed, 24 Apr 2024 16:55:40 GMT
-      X-Amzn-Trace-Id:
-      - Root=1-6629398c-4f5ead2e4db5b8e836574b56;Parent=7d5feaf35d0672d6;Sampled=0;lineage=33e8fdb8:0
       access-control-allow-headers:
       - Origin, X-Requested-With, Content-Type, Accept
       access-control-allow-methods:
       - OPTIONS,POST,GET
       access-control-allow-origin:
       - '*'
+      content-length:
+      - '44717'
+      content-type:
+      - application/json
+      date:
+      - Fri, 03 May 2024 17:49:59 GMT
       x-amz-apigw-id:
-      - WvXt9Fr5oAMFidQ=
-      x-amzn-RequestId:
-      - c034f394-32a9-4ea6-b600-3de27bd12a3d
-    http_version: HTTP/1.1
+      - XNKHSEOfIAMFg9A=
+      x-amzn-requestid:
+      - 53dfb59a-7666-467d-8add-cd8298a7bd39
+      x-amzn-trace-id:
+      - Root=1-663523c7-09cdb9be76fd6e7a51dcdf02;Parent=24f86ba44e931519;Sampled=0;lineage=33e8fdb8:0
+    http_version: HTTP/2
     status_code: 200
 version: 1

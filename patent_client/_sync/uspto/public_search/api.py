@@ -4,8 +4,8 @@
 # *         Source File: patent_client/_async/uspto/public_search/api.py         *
 # ********************************************************************************
 
-import asyncio
 import json
+import time
 from copy import deepcopy
 from pathlib import Path
 
@@ -100,7 +100,7 @@ class PublicSearchApi:
             response = self.client.request(method, url, **kwargs)
         if response.status_code == 429:
             wait_time = int(response.headers["x-rate-limit-retry-after-seconds"]) + 1
-            asyncio.sleep(wait_time)
+            time.sleep(wait_time)
             response = self.client.request(method, url, **kwargs)
         return response
 
@@ -175,7 +175,7 @@ class PublicSearchApi:
             print_data = response.json()
             if print_data[0]["printStatus"] == "COMPLETED":
                 break
-            asyncio.sleep(1)
+            time.sleep(1)
         pdf_name = print_data[0]["pdfName"]
         with out_path.open("wb") as f:
             try:

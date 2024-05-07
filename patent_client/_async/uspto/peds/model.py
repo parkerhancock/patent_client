@@ -3,6 +3,7 @@ import typing as tp
 from pathlib import Path
 
 from async_property import async_property
+from dateutil.relativedelta import relativedelta
 from pydantic import AliasPath, BeforeValidator, ConfigDict, Field, computed_field, model_validator
 from pydantic.alias_generators import to_camel
 from typing_extensions import Annotated, Self
@@ -48,6 +49,45 @@ class Transactions(PEDSBaseModel):
     record_date: Date
     code: str
     description: str
+
+
+class PtaOrPteTransactionHistory(PEDSBaseModel):
+    number: float
+    pta_or_pte_date: MDYDate
+    contents_description: str
+    pto_days: OptionalInt
+    appl_days: OptionalInt
+    start: float
+
+
+class PtaOrPteSummary(PEDSBaseModel):
+    a_delay: int
+    b_delay: int
+    c_delay: int
+    pto_adjustments: int
+    total_days: int = Field(alias="totalPtoDays")
+    kind: str = Field(alias="ptaPteInd")
+    pto_delay: int
+    applicant_delay: int = Field(alias="applDelay")
+    overlap_delay: int
+
+
+class ParentApplication(PEDSBaseModel):
+    parent_appl_id: str = Field(alias="claimApplicationNumberText")
+    child_appl_id: str = Field(alias="applicationNumberText")
+    parent_app_filing_date: MDYDate = Field(alias="filingDate")
+    parent_patent_number: str = Field(alias="patentNumberText")
+    parent_status: str = Field(alias="applicationStatus")
+    relationship: RelationshipStr = Field(alias="applicationStatusDescription")
+
+
+class ChildApplication(PEDSBaseModel):
+    child_appl_id: str = Field(alias="claimApplicationNumberText")
+    parent_appl_id: str = Field(alias="applicationNumberText")
+    child_app_filing_date: MDYDate = Field(alias="filingDate")
+    child_patent_number: str = Field(alias="patentNumberText")
+    child_status: str = Field(alias="applicationStatus")
+    relationship: RelationshipStr = Field(alias="applicationStatusDescription")
 
 
 class ForeignPriority(PEDSBaseModel):
@@ -118,6 +158,7 @@ class USApplication(PEDSBaseModel):
     last_modified: DateTime = Field(alias="LAST_MOD_TS")
     last_insert_time: DateTime = Field(alias="LAST_INSERT_TIME")
     patent_title: tp.Optional[str] = None
+
     app_attr_dock_number: tp.Optional[str] = None
     app_status: tp.Optional[str] = None
     app_status_date: tp.Optional[Date] = None
@@ -127,51 +168,18 @@ class USApplication(PEDSBaseModel):
     corr_address: tp.Optional[str] = None
     corr_cust_no: tp.Optional[str] = Field(alias="corrAddrCustNo", default=None)
     transactions: tp.List[Transactions]
+    attorneys: tp.List[AttorneyOrAgent] = Field(alias="attrnyAddr", default_factory=list)
     inventors: tp.List[Inventor] = Field(default_factory=list)
     applicants: tp.List[Applicant] = Field(default_factory=list)
+    pta_pte_summary: tp.Optional[PtaOrPteSummary] = None
+    pta_pte_tran_history: tp.List[PtaOrPteTransactionHistory] = Field(default_factory=list)
+    parent_continuity: tp.List[ParentApplication] = Field(default_factory=list)
+    child_continuity: tp.List[ChildApplication] = Field(default_factory=list)
     foreign_priority: tp.List[ForeignPriority] = Field(default_factory=list)
     assignments: tp.List[Assignment] = Field(default_factory=list)
 
     def __repr__(self):
         return f"USApplication(appl_id='{self.appl_id}', patent_title='{self.patent_title}', app_status='{self.app_status}')"
-
-    # Data removed by USPTO
-
-    @property
-    def attorneys(self):
-        raise RemovedDataException(
-            "Attorney information is no longer available in PEDS. Use the ODP client to retrieve this information:\nhttps://patent-client.readthedocs.io/en/latest/user_guide/open_data_portal.html"
-        )
-
-    @property
-    def expiration(self):
-        raise RemovedDataException(
-            "PTA information is no longer available in PEDS. Use the ODP client to retrieve this information:\nhttps://patent-client.readthedocs.io/en/latest/user_guide/open_data_portal.html"
-        )
-
-    @property
-    def pta_pte_summary(self):
-        raise RemovedDataException(
-            "PTA information is no longer available in PEDS. Use the ODP client to retrieve this information:\nhttps://patent-client.readthedocs.io/en/latest/user_guide/open_data_portal.html"
-        )
-
-    @property
-    def pta_pte_tran_history(self):
-        raise RemovedDataException(
-            "Continuity information is no longer available in PEDS. Use the ODP client to retrieve this information:\nhttps://patent-client.readthedocs.io/en/latest/user_guide/open_data_portal.html"
-        )
-
-    @property
-    def parent_continuity(self):
-        raise RemovedDataException(
-            "Continuity information is no longer available in PEDS. Use the ODP client to retrieve this information:\nhttps://patent-client.readthedocs.io/en/latest/user_guide/open_data_portal.html"
-        )
-
-    @property
-    def child_continuity(self):
-        raise RemovedDataException(
-            "Continuity information is no longer available in PEDS. Use the ODP client to retrieve this information:\nhttps://patent-client.readthedocs.io/en/latest/user_guide/open_data_portal.html"
-        )
 
     @property
     def patent_center_link(self) -> str:
@@ -220,6 +228,50 @@ class USApplication(PEDSBaseModel):
             return self.app_filing_date
         else:
             return sorted(p.parent_app_filing_date for p in self.parent_continuity)[0]
+
+    @property
+    def expiration(self) -> tp.Optional["Expiration"]:
+        """Calculates expiration data from which the expiration date can be calculated. See
+        help information for the resulting Expiration model.
+        """
+        if "PCT" in self.appl_id:
+            raise NotImplementedError("Expiration date not supported for PCT Applications")
+        if not self.patent_number:
+            return None
+        expiration_data = dict()
+        term_parents = [
+            p
+            for p in self.parent_continuity
+            if p.relationship
+            not in ["Claims Priority from Provisional Application", "is a Reissue of"]
+        ]
+        if term_parents:
+            term_parent = sorted(term_parents, key=lambda x: x.parent_app_filing_date)[0]
+            relationship = term_parent.relationship
+            parent_filing_date = term_parent.parent_app_filing_date
+            parent_appl_id = term_parent.parent_appl_id
+        else:
+            relationship = "self"
+            parent_appl_id = self.appl_id
+            parent_filing_date = self.app_filing_date
+
+        expiration_data["parent_appl_id"] = parent_appl_id
+        expiration_data["parent_app_filing_date"] = parent_filing_date
+        expiration_data["parent_relationship"] = relationship
+        expiration_data["initial_term"] = parent_filing_date + relativedelta(years=20)  # type: ignore
+        expiration_data["pta_or_pte"] = self.pta_pte_summary.total_days or 0  # type: ignore
+        expiration_data["extended_term"] = expiration_data["initial_term"] + relativedelta(
+            days=expiration_data["pta_or_pte"]
+        )  # type: ignore
+
+        transactions = self.transactions
+        try:
+            _ = next(t for t in transactions if t.code == "DIST")
+            expiration_data["terminal_disclaimer_filed"] = True
+        except StopIteration:
+            expiration_data["terminal_disclaimer_filed"] = False
+
+        return Expiration(**expiration_data)  # type: ignore
 
     # Related objects
     @property

@@ -56,6 +56,11 @@ class USApplicationManager(AsyncManager):
         else:
             return create_post_search_obj(self.config, fields=fields)
 
+    async def get(self, *args, **kwargs):
+        if len(args) == 1 and not kwargs:
+            return await api.get_application_data(args[0])
+        return await super().get(*args, **kwargs)
+
 
 class USApplicationBiblioManager(USApplicationManager):
     default_filter = "appl_id"
@@ -79,13 +84,18 @@ class USApplicationBiblioManager(USApplicationManager):
     response_model = USApplicationBiblio
 
     async def _get_results(self) -> tp.AsyncIterator["SearchResult"]:
-        query_obj = self._create_search_obj()
+        query_obj = self._create_search_obj(fields=self.default_fields)
         for start, rows in get_start_and_row_count(self.config.limit):
             page_query = query_obj.model_dump()
             page_query["pagination"] = {"offset": start, "limit": rows}
             page_query_obj = SearchRequest(**page_query)
             for result in (await api.post_search(page_query_obj))["patentBag"]:
                 yield self.response_model(**result)
+
+    async def get(self, *args, **kwargs):
+        if len(args) == 1 and not kwargs:
+            return await api.get_application_biblio_data(args[0])
+        return await super().get(*args, **kwargs)
 
 
 class AttributeManager(AsyncManager):

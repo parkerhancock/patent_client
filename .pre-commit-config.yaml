@@ -6,6 +6,15 @@ repos:
     -   id: check-json
     -   id: check-yaml
     -   id: debug-statements
+-   repo: local
+    hooks:
+    -   id: unasync
+        name: unasync
+        entry: python unasync.py
+        language: system
+        always_run: true
+        require_serial: true
+
 - repo: https://github.com/astral-sh/ruff-pre-commit
   rev: v0.4.2
   hooks:

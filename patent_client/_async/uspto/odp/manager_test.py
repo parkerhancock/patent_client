@@ -54,3 +54,17 @@ async def test_combination_search():
         invention_title="Hair Dryer", filing_date_gte="2020-01-01"
     )
     assert await result.count() > 5
+
+
+@pytest.mark.asyncio
+async def test_can_get_old_applications():
+    result = await USApplication.objects.get("14230558")
+    assert result.appl_id == "14230558"
+    result = await USApplicationBiblio.objects.get("14230558")
+    assert result.appl_id == "14230558"
+
+
+@pytest.mark.asyncio
+async def test_can_get_pct_application():
+    result = await USApplication.objects.get("PCT/US07/19317")
+    assert result.appl_id == "PCT/US07/19317"

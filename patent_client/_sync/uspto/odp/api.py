@@ -5,6 +5,7 @@
 # ********************************************************************************
 
 import typing as tp
+from urllib.parse import quote
 
 from patent_client import SETTINGS
 
@@ -25,16 +26,28 @@ from .model import (
 from .util import prune
 
 
+def urlescape(s: str) -> str:
+    return quote(s, safe="")
+
+
 class ODPApi:
     base_url = "https://beta-api.uspto.gov"
 
     def __init__(self):
+        if SETTINGS.odp_api_key is None:
+            raise ValueError("ODP API key is not set")
         self.client = PatentClientSession(headers={"X-API-KEY": SETTINGS.odp_api_key})
 
     def post_search(self, search_request: SearchRequest = SearchRequest()) -> tp.Dict:
         url = self.base_url + "/api/v1/patent/applications/search"
         search_data = prune(search_request.model_dump())
         response = self.client.post(url, json=search_data, headers={"accept": "application/json"})
+        if response.status_code == 404 and "No matching records found" in response.text:
+            return {
+                "count": 0,
+                "patentBag": [],
+                "requestIdentifier": response.json()["requestIdentifier"],
+            }
         response.raise_for_status()
         return response.json()
 
@@ -44,6 +57,12 @@ class ODPApi:
         url = self.base_url + "/api/v1/patent/applications/search"
         search_data = prune(search_request.model_dump())
         response = self.client.get(url, params=search_data)
+        if response.status_code == 404 and "No matching records found" in response.text:
+            return {
+                "count": 0,
+                "patentBag": [],
+                "requestIdentifier": response.json()["requestIdentifier"],
+            }
         response.raise_for_status()
         return response.json()
 
@@ -51,28 +70,31 @@ class ODPApi:
 
     def get_application_data(self, application_id: str) -> USApplication:
         """Patent application data by application id"""
-        url = self.base_url + f"/api/v1/patent/applications/{application_id}"
+        url = self.base_url + f"/api/v1/patent/applications/{urlescape(application_id)}"
         response = self.client.get(url)
         response.raise_for_status()
         return USApplication(**response.json()["patentBag"][0])
 
     def get_application_biblio_data(self, application_id: str) -> USApplicationBiblio:
         """Patent application basic data by application id"""
-        url = self.base_url + f"/api/v1/patent/applications/{application_id}/application-data"
+        url = (
+            self.base_url
+            + f"/api/v1/patent/applications/{urlescape(application_id)}/application-data"
+        )
         response = self.client.get(url)
         response.raise_for_status()
         return USApplicationBiblio(**response.json()["patentBag"][0])
 
     def get_patent_term_adjustment_data(self, application_id: str) -> TermAdjustment:
         """Patent application term adjustment data by application id"""
-        url = self.base_url + f"/api/v1/patent/applications/{application_id}/adjustment"
+        url = self.base_url + f"/api/v1/patent/applications/{urlescape(application_id)}/adjustment"
         response = self.client.get(url)
         response.raise_for_status()
         return TermAdjustment(**response.json()["patentBag"][0]["patentTermAdjustmentData"])
 
     def get_assignments(self, application_id: str) -> tp.List[Assignment]:
         """Patent application term adjustment data by application id"""
-        url = self.base_url + f"/api/v1/patent/applications/{application_id}/assignment"
+        url = self.base_url + f"/api/v1/patent/applications/{urlescape(application_id)}/assignment"
         response = self.client.get(url)
         response.raise_for_status()
         data = response.json()["patentBag"][0]["assignmentBag"]
@@ -80,21 +102,24 @@ class ODPApi:
 
     def get_attorney_data(self, application_id: str) -> CustomerNumber:
         """Patent application attorney data by application id"""
-        url = self.base_url + f"/api/v1/patent/applications/{application_id}/attorney"
+        url = self.base_url + f"/api/v1/patent/applications/{urlescape(application_id)}/attorney"
         response = self.client.get(url)
         response.raise_for_status()
         return CustomerNumber(**response.json()["patentBag"][0]["recordAttorney"])
 
     def get_continuity_data(self, application_id: str) -> Continuity:
         """Patent application continuity data by application id"""
-        url = self.base_url + f"/api/v1/patent/applications/{application_id}/continuity"
+        url = self.base_url + f"/api/v1/patent/applications/{urlescape(application_id)}/continuity"
         response = self.client.get(url)
         response.raise_for_status()
         return Continuity(**response.json())
 
     def get_foreign_priority_data(self, application_id: str) -> tp.List[ForeignPriority]:
         """Patent application foreign priority data by application id"""
-        url = self.base_url + f"/api/v1/patent/applications/{application_id}/foreign-priority"
+        url = (
+            self.base_url
+            + f"/api/v1/patent/applications/{urlescape(application_id)}/foreign-priority"
+        )
         response = self.client.get(url)
         response.raise_for_status()
         return [
@@ -104,7 +129,9 @@ class ODPApi:
 
     def get_transactions(self, application_id: str) -> tp.List[Transaction]:
         """Patent application transactions by application id"""
-        url = self.base_url + f"/api/v1/patent/applications/{application_id}/transactions"
+        url = (
+            self.base_url + f"/api/v1/patent/applications/{urlescape(application_id)}/transactions"
+        )
         response = self.client.get(url)
         response.raise_for_status()
         return [
@@ -114,7 +141,7 @@ class ODPApi:
 
     def get_documents(self, application_id: str) -> tp.List[Document]:
         """Patent application documents by application id"""
-        url = self.base_url + f"/api/v1/patent/applications/{application_id}/documents"
+        url = self.base_url + f"/api/v1/patent/applications/{urlescape(application_id)}/documents"
         response = self.client.get(url)
         response.raise_for_status()
         return [Document(**document) for document in response.json()["documentBag"]]
