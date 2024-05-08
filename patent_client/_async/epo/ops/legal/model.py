@@ -1,12 +1,16 @@
 from typing import Optional
 
+from async_property import async_property
 from pydantic import Field
 
 from patent_client.util.pydantic_util import Date
 
 from ..number_service.model import DocumentId
 from ..util import EpoBaseModel
+from .national_codes import LegalCodes
 from .schema import LegalSchema
+
+code_db = LegalCodes()
 
 
 class MetaData(EpoBaseModel):
@@ -34,7 +38,7 @@ class LegalEvent(EpoBaseModel):
     event_date: Optional[Date] = None
     event_code: Optional[str] = None
     event_country: Optional[str] = None
-    event_description: Optional[str] = None
+    # event_description: Optional[str] = None
     regional_event_code: Optional[str] = None
 
     corresponding_patent: Optional[str] = None
@@ -62,6 +66,15 @@ class LegalEvent(EpoBaseModel):
 
     def __repr__(self):
         return f"Event(document_number={self.document_number}, event_description={self.event_description}, event_date={self.event_date})"
+
+    @async_property
+    async def description(self):
+        if self.event_code == "REG":
+            return await code_db.get_code_data(self.event_country, self.regional_event_code)[
+                "description"
+            ]
+        else:
+            return await code_db.get_code_data(self.country_code, self.event_code)["description"]
 
 
 class Legal(EpoBaseModel):

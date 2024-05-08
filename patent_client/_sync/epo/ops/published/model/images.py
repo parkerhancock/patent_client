@@ -38,10 +38,8 @@ class ImageDocument(EpoBaseModel):
             if page["/Rotate"] == 90:
                 page.rotate_clockwise(-90)
             writer.add_page(page)
-
         for section in self.sections:
             writer.add_outline_item(section.name.capitalize(), section.start_page)
-
         with out_file.open("wb") as f:
             writer.write(f)
 
@@ -49,11 +47,9 @@ class ImageDocument(EpoBaseModel):
         from ..api import PublishedImagesApi
 
         out_file = Path(path) / f"{self.doc_number}.{image_format}"
-
         image = PublishedImagesApi.get_page_image_from_link(
             self.link, page_number=page_number, image_format=image_format
         )
-
         with out_file.open("wb") as f:
             f.write(image.read())
 

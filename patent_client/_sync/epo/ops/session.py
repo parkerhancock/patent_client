@@ -18,7 +18,6 @@ from patent_client._sync.http_client import PatentClientSession
 from patent_client.session import CACHE_DIR
 
 logger = logging.getLogger(__name__)
-
 NS = {
     "http://ops.epo.org": None,
     "http://www.epo.org/exchange": None,
@@ -71,7 +70,6 @@ class OpsAuth(httpx.Auth):
     def auth_flow(self, request):
         request.headers["Authorization"] = self.authorization_header
         response = yield request
-
         if response.status_code == 400:
             response = yield self.build_refresh_request()
             if response.status_code != 200:

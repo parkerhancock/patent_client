@@ -105,9 +105,7 @@ class PtabApi:
             "sortOrderCategory": sort,
         }
         query_dict = {k: v for k, v in query_dict.items() if v is not None}
-
         query_dict = update_query_with_date(document_filing_date, "documentFiling", query_dict)
-
         response = client.get(
             url="https://developer.uspto.gov/ptab-api/documents", params=query_dict
         )
@@ -175,7 +173,6 @@ class PtabApi:
             proceeding_last_modified_date, "proceedingLastModified", query_dict
         )
         query_dict = update_query_with_date(grant_date, "grant", query_dict)
-
         response = client.get(
             url="https://developer.uspto.gov/ptab-api/proceedings", params=query_dict
         )
@@ -231,7 +228,6 @@ class PtabApi:
         query_dict = {k: v for k, v in query_dict.items() if v is not None}
         query_dict = update_query_with_date(decision_date, "decision", query_dict)
         query_dict = update_query_with_date(grant_date, "grant", query_dict)
-
         response = client.get(
             url="https://developer.uspto.gov/ptab-api/decisions", params=query_dict
         )

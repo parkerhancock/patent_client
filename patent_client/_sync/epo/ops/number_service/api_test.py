@@ -4,7 +4,6 @@
 # *     Source File: patent_client/_async/epo/ops/number_service/api_test.py     *
 # ********************************************************************************
 
-
 from .api import NumberServiceApi
 
 

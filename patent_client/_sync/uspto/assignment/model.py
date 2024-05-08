@@ -19,7 +19,6 @@ from patent_client.util.pydantic_util import BaseModel
 if tp.TYPE_CHECKING:
     from ..peds.model import USApplication
     from ..public_search.model import Patent, PublishedApplication
-
 UsptoDate = Annotated[
     datetime.date,
     BeforeValidator(lambda x: datetime.datetime.strptime(x, "%Y%m%d").date()),

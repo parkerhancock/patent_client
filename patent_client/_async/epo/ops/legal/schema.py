@@ -5,9 +5,6 @@ from yankee.xml import fields as f
 
 from ..number_service.schema import DocumentIdSchema
 from ..util import Schema
-from .national_codes import LegalCodes
-
-code_db = LegalCodes()
 
 
 def ip_type_formatter(string):
@@ -103,12 +100,9 @@ class LegalEventSchema(Schema):
     def deserialize(self, obj) -> "Dict":
         obj = super().deserialize(obj)
         if obj.event_code == "REG":
-            code_data = code_db.get_code_data(obj.event_country, obj.regional_event_code)
             obj["event_code"] = obj.event_country + "." + obj.regional_event_code
         else:
-            code_data = code_db.get_code_data(obj.country_code, obj.event_code)
             obj["event_code"] = obj.country_code + "." + obj.event_code
-        obj["event_description"] = code_data["description"]
         return obj
 
 

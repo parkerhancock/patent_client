@@ -30,7 +30,6 @@ class FinishedException(Exception):
 
 
 T = TypeVar("T")
-
 public_search_api = PublicSearchApi()
 
 

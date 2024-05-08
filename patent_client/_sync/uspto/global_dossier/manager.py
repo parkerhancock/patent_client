@@ -10,7 +10,6 @@ from .api import GlobalDossierApi
 from .query import QueryBuilder
 
 query_builder = QueryBuilder()
-
 global_dossier_api = GlobalDossierApi()
 
 

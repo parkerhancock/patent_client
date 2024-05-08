@@ -24,8 +24,6 @@ class PublicSearchBaseModel(BaseModel):
 
 
 T = TypeVar("T")
-
-
 OptionalList = Annotated[List[T], BeforeValidator(lambda x: x if isinstance(x, list) else list())]
 DateTimeAsDate = Annotated[
     datetime.date,

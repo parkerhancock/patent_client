@@ -25,7 +25,6 @@ class QueryBuilder:
         self.pattern_index = defaultdict(dict)
         for row in self.input_schema:
             self.pattern_index[row["office_code"]][row["type_code"]] = row["pattern"]
-
         self.country_codes = ["US", "CN", "EP", "KR", "JP", "AU"]
 
     def validate_query(self, query):
@@ -122,7 +121,6 @@ class QueryBuilder:
                     "doc_number": arg,
                     "type_code": candidates[0]["type_code"],
                 }
-
         elif kwargs:
             numbers = {
                 k: v for k, v in kwargs.items() if k in ("publication", "application", "patent")

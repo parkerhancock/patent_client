@@ -18,7 +18,6 @@ if tp.TYPE_CHECKING:
     from ..assignment.model import Assignment
     from ..peds.model import USApplication
     from ..public_search.model import Patent, PublishedApplication
-
 MDYDate = Annotated[
     datetime.date,
     BeforeValidator(lambda x: datetime.datetime.strptime(x, "%m/%d/%Y").date()),

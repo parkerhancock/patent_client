@@ -33,7 +33,6 @@ class NumberServiceApi:
         doc_type: type of document (publication / application / priority)
         input_format: input type (original / docdb / epodoc)
         output_format: output type (original / docdb / epodoc)
-
         """
         response = session.get(
             f"http://ops.epo.org/3.2/rest-services/number-service/{doc_type}/{input_format}/{number}/{output_format}",

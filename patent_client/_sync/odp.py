@@ -5,7 +5,6 @@
 # ********************************************************************************
 
 # A simple separate namespace for the USPTO's Open Data Portal.
-
 from patent_client._sync.uspto.odp.model import USApplication, USApplicationBiblio
 
 __all__ = ["USApplication", "USApplicationBiblio"]

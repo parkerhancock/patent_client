@@ -11,9 +11,6 @@ from yankee.xml import fields as f
 
 from ..number_service.schema import DocumentIdSchema
 from ..util import Schema
-from .national_codes import LegalCodes
-
-code_db = LegalCodes()
 
 
 def ip_type_formatter(string):
@@ -68,7 +65,6 @@ class LegalEventSchema(Schema):
     """
     Field descriptions are here:
     https://documents.epo.org/projects/babylon/eponot.nsf/0/EF223017D933B30AC1257B50005A042E/$File/14.11_User_Documentation_3.1_en.pdf
-
     """
 
     filing_or_publication = f.Str(".//ops:L002EP")
@@ -76,16 +72,13 @@ class LegalEventSchema(Schema):
     ip_type = f.Str(".//ops:L005EP", formatter=ip_type_formatter)
     metadata = MetaDataSchema()
     text_record = TextRecord()
-
     event_date = f.Date(".//ops:L007EP")
     event_code = f.Str(".//ops:L008EP")
     event_country = f.Str(".//ops:L501EP")
     country_code = f.Str(".//ops:L001EP")
     regional_event_code = f.Str(".//ops:L502EP")
-
     corresponding_patent = CorrespondingPatentField()
     corresponding_patent_publication_date = f.Date(".//ops:L505EP")
-
     designated_states = f.Str(".//ops:L507EP")
     extension_name = f.Str(".//ops:L508EP")
     new_owner_name = f.Str(".//ops:L509EP")
@@ -109,12 +102,9 @@ class LegalEventSchema(Schema):
     def deserialize(self, obj) -> "Dict":
         obj = super().deserialize(obj)
         if obj.event_code == "REG":
-            code_data = code_db.get_code_data(obj.event_country, obj.regional_event_code)
             obj["event_code"] = obj.event_country + "." + obj.regional_event_code
         else:
-            code_data = code_db.get_code_data(obj.country_code, obj.event_code)
             obj["event_code"] = obj.country_code + "." + obj.event_code
-        obj["event_description"] = code_data["description"]
         return obj
 
 

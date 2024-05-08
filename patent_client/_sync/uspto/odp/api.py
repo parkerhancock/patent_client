@@ -67,7 +67,6 @@ class ODPApi:
         return response.json()
 
     # Data Attributes
-
     def get_application_data(self, application_id: str) -> USApplication:
         """Patent application data by application id"""
         url = self.base_url + f"/api/v1/patent/applications/{urlescape(application_id)}"

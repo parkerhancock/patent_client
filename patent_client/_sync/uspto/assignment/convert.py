@@ -63,7 +63,6 @@ def convert_doc(doc):
     }
     del output["corrName"]
     del output["corr_address"]
-
     # Collect the address for each assignee into a single string
     for assignee in output["assignees"]:
         address_lines = "\n".join(
@@ -84,7 +83,6 @@ def convert_doc(doc):
             "patAssigneeCountryName",
         ]:
             del assignee[key]
-
     return output
 
 

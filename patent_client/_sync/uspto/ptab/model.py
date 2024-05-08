@@ -17,7 +17,6 @@ from patent_client.util.pydantic_util import BaseModel, DateTime
 
 if tp.TYPE_CHECKING:
     from ..peds.model import USApplication
-
 MDYDate = Annotated[
     datetime.date,
     BeforeValidator(lambda x: datetime.datetime.strptime(x, "%m-%d-%Y").date()),
@@ -40,10 +39,8 @@ class AdditionalRespondent(PtabBaseModel):
 
 class PtabProceeding(PtabBaseModel):
     """A PTAB Proceeding - e.g. IPR/CBM/DER Trial, Patent Appeal, Interference, etc.
-
     All fields are query-able. Date ranges can be formed by inserting "from" or "to" on a query
     for a date range.
-
     """
 
     # Proceeding Metadata
@@ -61,7 +58,6 @@ class PtabProceeding(PtabBaseModel):
     docket_notice_mail_date: tp.Optional[MDYDate] = None
     declaration_date: tp.Optional[MDYDate] = None
     style_name_text: tp.Optional[str] = None
-
     # Respondent Information
     respondent_technology_center_number: tp.Optional[str] = None
     respondent_patent_owner_name: tp.Optional[str] = None
@@ -74,7 +70,6 @@ class PtabProceeding(PtabBaseModel):
     respondent_application_number_text: tp.Optional[str] = None
     respondent_publication_number: tp.Optional[str] = None
     respondent_publication_date: tp.Optional[MDYDate] = None
-
     # Petitioner Information
     petitioner_technology_center_number: tp.Optional[str] = None
     petitioner_patent_owner_name: tp.Optional[str] = None
@@ -85,7 +80,6 @@ class PtabProceeding(PtabBaseModel):
     petitioner_grant_date: tp.Optional[MDYDate] = None
     petitioner_patent_number: tp.Optional[str] = None
     petitioner_application_number_text: tp.Optional[str] = None
-
     # Appellant Information
     appellant_technology_center_number: tp.Optional[str] = None
     appellant_patent_owner_name: tp.Optional[str] = None
@@ -99,7 +93,6 @@ class PtabProceeding(PtabBaseModel):
     appellant_publication_date: tp.Optional[MDYDate] = None
     appellant_publication_number: tp.Optional[str] = None
     third_party_name: tp.Optional[str] = None
-
     # Second Respondent (if any)
     second_respondent_party_name: tp.Optional[str] = None
     second_respondent_appl_number_text: tp.Optional[str] = None
@@ -112,7 +105,6 @@ class PtabProceeding(PtabBaseModel):
     second_respondent_tech_center_number: tp.Optional[str] = None
     second_respondent_pub_number: tp.Optional[str] = None
     second_respondent_publication_date: tp.Optional[MDYDate] = None
-
     additional_respondents: tp.List[str] = Field(default_factory=list)
 
     @property

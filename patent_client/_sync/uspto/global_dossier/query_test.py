@@ -161,7 +161,6 @@ def test_ep_queries():
         "doc_number": "1234567",
         "type_code": "publication",
     }
-
     assert builder.build_query("EP12345678") == {
         "office_code": "EP",
         "doc_number": "12345678",

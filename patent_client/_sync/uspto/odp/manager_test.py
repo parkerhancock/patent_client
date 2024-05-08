@@ -4,7 +4,6 @@
 # *         Source File: patent_client/_async/uspto/odp/manager_test.py          *
 # ********************************************************************************
 
-
 from .model import USApplication, USApplicationBiblio
 
 

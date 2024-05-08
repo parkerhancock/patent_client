@@ -171,7 +171,6 @@ def test_patent_term_adjustment(fixture_dir):
     data = json.loads((fixture_dir / "adjustment.json").read_text())
     patent_term_adjustment_data = data["patentBag"][0]["patentTermAdjustmentData"]
     patent_term_adjustment = TermAdjustment(**patent_term_adjustment_data)
-
     assert patent_term_adjustment.applicant_day_delay_quantity == 15
     assert patent_term_adjustment.overlapping_day_quantity == 0
     assert patent_term_adjustment.filing_date == datetime.date.fromisoformat("2018-09-06")
@@ -182,7 +181,6 @@ def test_patent_term_adjustment(fixture_dir):
     assert patent_term_adjustment.a_delay_quantity == 142
     assert patent_term_adjustment.non_overlapping_day_quantity == 127
     assert patent_term_adjustment.ip_office_day_delay_quantity == 142
-
     assert len(patent_term_adjustment.history) > 0
     for history_item in patent_term_adjustment.history:
         assert isinstance(history_item, TermAdjustmentHistory)
@@ -197,7 +195,6 @@ def test_application_biblio(fixture_dir):
     data = json.loads((fixture_dir / "biblio.json").read_text())
     application_biblio_data = data["patentBag"][0]
     application_biblio = USApplicationBiblio(**application_biblio_data)
-
     assert application_biblio.aia_indicator is True
     assert application_biblio.app_filing_date == datetime.date.fromisoformat("2016-09-02")
     assert len(application_biblio.inventors) > 0
@@ -222,7 +219,6 @@ def test_application_object(fixture_dir):
     data = json.loads((fixture_dir / "application.json").read_text())
     application_data = data["patentBag"][0]
     application = USApplication(**application_data)
-
     assert application.aia_indicator is True
     assert application.app_filing_date == datetime.date.fromisoformat("2016-09-02")
     assert len(application.inventors) > 0

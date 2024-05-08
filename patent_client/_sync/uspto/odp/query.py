@@ -12,11 +12,8 @@ from .model import SearchRequest
 
 if tp.TYPE_CHECKING:
     from patent_client.util.manager import ManagerConfig
-
 field_file = Path(__file__).parent / "query_fields.csv"
-
 field_index = dict()
-
 with field_file.open("r") as file:
     reader = csv.DictReader(file)
     for row in reader:
@@ -48,7 +45,6 @@ def create_post_search_obj(
                 range_filters[field_name] = {"valueFrom": value[0]}
             elif field.endswith("_lte"):
                 range_filters[field_name] = {"valueTo": value[0]}
-
         else:
             if field not in field_index:
                 raise ValueError(f"Unknown field: {field}")
@@ -57,7 +53,6 @@ def create_post_search_obj(
                 q_str.append(f"{field_data['field_name']}:({' OR '.join(value)})")
             else:
                 q_str.append(f"{field_data['field_name']}=({' OR '.join(value)})")
-
     for sort_field, direction in config.order_by:
         query_obj["sort"].append(
             dict(field=field_index[sort_field]["field_name"], direction=direction)

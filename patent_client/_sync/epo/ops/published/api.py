@@ -28,7 +28,6 @@ class PublishedBiblioApi:
         doc_type: document type (application / publication)
         format: document number format (original / docdb / epodoc)
         constituents: what data to retrieve. Can be combined. (biblio / abstract / full-cycle)
-
         """
         base_url = (
             f"http://ops.epo.org/3.2/rest-services/published-data/{doc_type}/{format}/{number}/"
@@ -67,7 +66,6 @@ class PublishedFulltextApi:
         doc_type: document type (application / publication)
         format: document number format (original / docdb / epodoc)
         inquiry: what data to retrieve. Can be combined. (fulltext / description / claims)
-
         """
         url = f"http://ops.epo.org/3.2/rest-services/published-data/{doc_type}/{format}/{number}/{inquiry}"
         if number[:2] not in cls.fulltext_jurisdictions:
@@ -110,7 +108,6 @@ class PublishedSearchApi:
                     "results": list(),
                 }
             )
-
         return Search.model_validate(response.text)
 
 

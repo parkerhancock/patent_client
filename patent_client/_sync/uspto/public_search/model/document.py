@@ -113,7 +113,6 @@ class PublicSearchDocument(BaseModel):
     guid: Optional[str] = None
     publication_number: Optional[str] = None
     publication_date: Optional[Date] = None
-
     appl_id: Optional[ApplicationNumber] = None
     patent_title: Optional[str] = None
     app_filing_date: Optional[Date] = None
@@ -122,48 +121,38 @@ class PublicSearchDocument(BaseModel):
     related_apps: List[RelatedApplication] = Field(default_factory=list)
     foreign_priority: List[ForeignPriorityApplication] = Field(default_factory=list)
     type: Optional[str] = None
-
     # Parties
     inventors: List[Inventor] = Field(default_factory=list)
     inventors_short: Optional[str] = None
     applicants: List[Applicant] = Field(default_factory=list)
     assignees: List[Assignee] = Field(default_factory=list)
-
     group_art_unit: Optional[str] = None
     primary_examiner: Optional[str] = None
     assistant_examiner: Optional[List[str]] = Field(default_factory=list)
     legal_firm_name: Optional[List[str]] = Field(default_factory=list)
     attorney_name: Optional[List[str]] = Field(default_factory=list)
-
     # Text Data
     document: Optional[Document] = None
     document_structure: Optional[DocumentStructure] = None
-
     # Image Data
     image_file_name: Optional[str] = None
     image_location: Optional[str] = None
-
     # Metadata
     composite_id: Optional[str] = None
     database_name: Optional[str] = None
     derwent_week_int: Optional[int] = None
-
     # References Cited
     us_references: OptionalList[UsReference] = Field(default_factory=list)
     foreign_references: OptionalList[ForeignReference] = Field(default_factory=list)
     npl_references: OptionalList[NplReference] = Field(default_factory=list)
-
     # Classifications
     cpc_inventive: OptionalList = Field(default_factory=list)
     cpc_additional: OptionalList = Field(default_factory=list)
-
     intl_class_issued: OptionalList[str] = Field(default_factory=list)
     intl_class_current_primary: OptionalList[IntlCode] = Field(default_factory=list)
     intl_class_currrent_secondary: OptionalList[IntlCode] = Field(default_factory=list)
-
     us_class_current: OptionalList[str] = Field(default_factory=list)
     us_class_issued: OptionalList[str] = Field(default_factory=list)
-
     field_of_search_us: OptionalList[str] = Field(default_factory=list)
     field_of_search_cpc: OptionalList[str] = Field(default_factory=list)
 
