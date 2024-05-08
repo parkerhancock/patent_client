@@ -1,4 +1,6 @@
 # Changelog
+## 5.0.13 (2024-05-08)
+- Remove nest_asyncio call, and update Legal Codes. (#153)
 
 ## 5.0.5 (2024-05-02)
 - Fix issue where ODP API returns 404 when there are no results - now returns an empty manager.
