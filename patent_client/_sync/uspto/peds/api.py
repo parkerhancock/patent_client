@@ -15,7 +15,6 @@ from patent_client._sync.http_client import PatentClientSession
 from .model import Document, PedsPage
 
 logger = logging.getLogger(__name__)
-
 type_map = {
     "string": str,
     "date": datetime.datetime,
@@ -23,7 +22,6 @@ type_map = {
     "int": int,
     "text_ws": str,
 }
-
 client = PatentClientSession()
 
 
@@ -83,7 +81,6 @@ class PatentExaminationDataSystemApi:
         rows: Optional[int] = None,
     ) -> "PedsPage":
         """
-
         Args:
             query (str): The query to be issued to PEDS
             query_fields (str): A list of fields to be queried
@@ -91,7 +88,6 @@ class PatentExaminationDataSystemApi:
             facet (str, optional): Whether to enabled SOLR faceting. Defaults to "false".
             return_fields (str, optional): Specifies which fields should be returned. Defaults to "*".
             filter_query (str, optional)
-
         Returns:
             _type_: _description_
         """
@@ -99,7 +95,6 @@ class PatentExaminationDataSystemApi:
             qf = "appEarlyPubNumber applId appLocation appType appStatus_txt appConfrNumber appCustNumber appGrpArtNumber appCls appSubCls appEntityStatus_txt patentNumber patentTitle inventorName firstNamedApplicant appExamName appExamPrefrdName appAttrDockNumber appPCTNumber appIntlPubNumber wipoEarlyPubNumber pctAppType firstInventorFile appClsSubCls rankAndInventorsList".split(
                 " "
             )
-
         params: Dict[str, object] = {
             "df": default_field,
             "qf": " ".join(qf),

@@ -26,8 +26,6 @@ if tp.TYPE_CHECKING:
         USApplication,
         USApplicationBiblio,
     )
-
-
 api = ODPApi()
 
 

@@ -4,7 +4,6 @@
 # *           Source File: patent_client/_async/uspto/peds/api_test.py           *
 # ********************************************************************************
 
-
 from .api import PatentExaminationDataSystemApi
 
 

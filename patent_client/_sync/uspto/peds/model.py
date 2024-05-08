@@ -163,7 +163,6 @@ class USApplication(PEDSBaseModel):
     last_modified: DateTime = Field(alias="LAST_MOD_TS")
     last_insert_time: DateTime = Field(alias="LAST_INSERT_TIME")
     patent_title: tp.Optional[str] = None
-
     app_attr_dock_number: tp.Optional[str] = None
     app_status: tp.Optional[str] = None
     app_status_date: tp.Optional[Date] = None
@@ -259,7 +258,6 @@ class USApplication(PEDSBaseModel):
             relationship = "self"
             parent_appl_id = self.appl_id
             parent_filing_date = self.app_filing_date
-
         expiration_data["parent_appl_id"] = parent_appl_id
         expiration_data["parent_app_filing_date"] = parent_filing_date
         expiration_data["parent_relationship"] = relationship
@@ -268,14 +266,12 @@ class USApplication(PEDSBaseModel):
         expiration_data["extended_term"] = expiration_data["initial_term"] + relativedelta(
             days=expiration_data["pta_or_pte"]
         )  # type: ignore
-
         transactions = self.transactions
         try:
             _ = next(t for t in transactions if t.code == "DIST")
             expiration_data["terminal_disclaimer_filed"] = True
         except StopIteration:
             expiration_data["terminal_disclaimer_filed"] = False
-
         return Expiration(**expiration_data)  # type: ignore
 
     # Related objects
@@ -387,21 +383,17 @@ class USApplication(PEDSBaseModel):
                 + "\n"
                 + f"{applicant['city']}{applicant['geoCode']} {applicant['country']}"
             )
-
         return values
 
 
 class Expiration(BaseModel):
     """Model for patent application expiration data.
     NOTE: THIS IS NOT LEGAL ADVICE. See MPEP Sec. 2701 for a detailed explanation of calculating patent term
-
     This model provides a first-cut estimate of patent term by calulating four things:
-
     1. The earliest-filed non-provisional patent application (EFNP) from which term should be calculated (parent).
     2. 20 years from the filing date of the EFNP (initial term)
     3. Extensions from Patent Term Extentions (PTE) or Patent Term Adjustments (PTA) (extended_term)
     4. The presence or absence of a terminal disclaimer in the transaction history
-
     """
 
     parent_appl_id: str

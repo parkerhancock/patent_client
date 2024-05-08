@@ -16,7 +16,6 @@ from .model import AssignmentPage
 
 if TYPE_CHECKING:
     from .model import Assignment
-
 allowed_filters = [
     "PCTNumber",
     "OwnerName",
@@ -28,7 +27,6 @@ allowed_filters = [
     "IntlRegistrationNumber",
     "ReelFrame",
 ]
-
 allowed_sorts = ["ExecutionDate+desc", "ExecutionDate+asc"]
 
 
@@ -67,7 +65,6 @@ class AssignmentApi:
     @classmethod
     def download_pdf(cls, reel: str, frame: str, path: Optional[Path] = None) -> Path:
         url = cls.get_download_url(reel, frame)
-
         if path is None:
             path = Path.cwd()
             output_path = output_path = path / f"assignment-pat-{reel}-{frame}.pdf"
@@ -75,7 +72,6 @@ class AssignmentApi:
             output_path = path / f"assignment-pat-{reel}-{frame}.pdf"
         else:
             output_path = path
-
         with output_path.open("wb") as f:
             with client.stream("GET", url) as response:
                 for chunk in response.iter_bytes():

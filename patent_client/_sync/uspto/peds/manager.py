@@ -22,7 +22,6 @@ from .query import QueryFields
 
 if tp.TYPE_CHECKING:
     from .model import Document, USApplication
-
 logger = logging.getLogger(__name__)
 
 
@@ -92,7 +91,6 @@ class USApplicationManager(Manager["USApplication"]):
                 for k, v in self.config.filter.items()
                 if QueryFields.get(k) not in date_filters
             }
-
             date_filter_tuples = list()
             # Check date filters for validity
             for k, v in date_filters.items():
@@ -136,14 +134,12 @@ class USApplicationManager(Manager["USApplication"]):
                     query_date_filter_tuples.add((k, (gte_query, v)))
                 elif op == "exact":
                     query_date_filter_tuples.add((k, (v, v)))
-
             # Create the query string
             for k, v in query_date_filter_tuples:
                 start, end = v
                 start = datetime_to_solr(cast_as_datetime(start))
                 end = datetime_to_solr(cast_as_datetime(end, end_of_day=True))
                 query.append(f"{k}:[{start} TO {end}]")
-
             # Add non-date filters
             for k, v in non_date_filters.items():
                 if isinstance(v, Sequence) and not isinstance(v, str):
@@ -152,7 +148,6 @@ class USApplicationManager(Manager["USApplication"]):
                 else:
                     query.append(f"{k}:({v})")
             query_text = " AND ".join(query)
-
         if self.config.order_by:
             sort_query = ""
             for s in self.config.order_by:
@@ -162,9 +157,7 @@ class USApplicationManager(Manager["USApplication"]):
                     sort_query += (f"{QueryFields.get(s)} asc").strip()
         else:
             sort_query = None
-
         mm = "0%" if "appEarlyPubNumber" not in query else "90%"
-
         query_data = {
             "query": query_text,
             "facet": False,
@@ -200,21 +193,18 @@ class DocumentManager(Manager["Document"]):
             out_file = Path(path)
         else:
             out_file = Path(path) / "package.pdf"
-
         files = list()
         try:
             with TemporaryDirectory() as tmpdir:
                 for doc in docs:
                     if doc.access_level_category == "PUBLIC":
                         files.append((doc.adownload(tmpdir), doc))
-
                 out_pdf = PdfMerger()
                 page = 0
                 for f, doc in files:
                     bookmark = f"{doc.mail_room_date} - {doc.code} - {doc.description}"
                     out_pdf.append(str(f), bookmark=bookmark, import_bookmarks=False)
                     page += doc.page_count
-
                 out_pdf.write(str(out_file))
         except (PermissionError, NotADirectoryError):
             # This is needed due to a bug in Windows that prevents cleanup of the tmpdir

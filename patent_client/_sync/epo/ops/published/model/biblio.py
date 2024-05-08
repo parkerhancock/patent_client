@@ -73,8 +73,8 @@ class InpadocBiblio(InpadocModel):
     applicants_original: List[str] = Field(default_factory=list)
     inventors_epodoc: List[str] = Field(default_factory=list)
     inventors_original: List[str] = Field(default_factory=list)
-    # TODO: NPL citations
 
+    # TODO: NPL citations
     def __repr__(self):
         return f"InpadocBiblio(publication_number={self.publication_number}, title={limit_text(self.title, 30)})"
 

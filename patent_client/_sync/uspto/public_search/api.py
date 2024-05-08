@@ -61,7 +61,6 @@ class PublicSearchApi:
     ) -> "PublicSearchBiblioPage":
         if self.case_id is None:
             self.get_session()
-
         data = deepcopy(self.search_query)
         data["start"] = start
         data["pageCount"] = limit
@@ -76,7 +75,6 @@ class PublicSearchApi:
         ]
         data["query"]["plurals"] = expand_plurals
         data["query"]["britishEquivalents"] = british_equivalents
-
         counts = self.make_request(
             "POST",
             "https://ppubs.uspto.gov/dirsearch-public/searches/counts",

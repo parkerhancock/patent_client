@@ -17,12 +17,9 @@ from patent_client import BASE_DIR
 from patent_client._sync.http_client import PatentClientSession
 
 session = PatentClientSession()
-
 legal_code_dir = BASE_DIR / "epo"
 legal_code_dir.mkdir(exist_ok=True, parents=True)
 db_location = legal_code_dir / "legal_codes.sqlite"
-
-
 logger = logging.getLogger(__name__)
 
 
@@ -103,7 +100,6 @@ def create_code_database(excel_path):
             return
     except (sqlite3.OperationalError, TypeError):
         pass
-
     cur.execute("CREATE TABLE IF NOT EXISTS meta (file_name text)")
     cur.execute("INSERT INTO meta values (?)", (excel_path.name,))
     wb = load_workbook(excel_path)

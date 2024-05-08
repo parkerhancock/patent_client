@@ -4,7 +4,6 @@
 # *     Source File: patent_client/_async/epo/ops/published/manager_test.py      *
 # ********************************************************************************
 
-
 from .model.search import Inpadoc
 
 

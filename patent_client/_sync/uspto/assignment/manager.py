@@ -19,7 +19,6 @@ from .api import AssignmentApi
 from .model import Assignment
 
 warnings.filterwarnings("ignore", category=InsecureRequestWarning)
-
 NUMBER_CLEAN_RE = re.compile(r"[^\d]")
 
 
@@ -89,10 +88,8 @@ class AssignmentManager(Manager["Assignment"]):
             sort = order_map[self.config.order_by[0]]
         else:
             sort = "ExecutionDate+desc"
-
         # if isinstance(query, list):
         #    query = [f'"{q}"' for q in query]
-
         query = {
             "filter": field,
             "query": query,

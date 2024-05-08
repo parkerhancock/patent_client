@@ -76,10 +76,8 @@ class TestAssignment:
         assignments = Assignment.objects.filter(assignee="US Well Services")
         assignment_list1 = [assignment.id for assignment in assignments[0:5]]
         assert len(assignment_list1) == 5
-
         assignment_list2 = [assignment.id for assignment in assignments[:5]]
         assert len(assignment_list2) == 5
-
         assignment_list3 = [assignment.id for assignment in assignments[-5:]]
         assert len(assignment_list3) == 5
 

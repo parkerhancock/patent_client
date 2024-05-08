@@ -24,7 +24,6 @@ def date_ranges(start_date: datetime.date, end_date: datetime.date):
         calendar.monthrange(start_date.year, start_date.month)[1],
     )
     yield (start_date, end_of_month.date())
-
     # Full months between start and end date
     current_month = start_date.replace(day=1) + datetime.timedelta(days=32)
     while current_month.replace(day=1) < end_date.replace(day=1):
@@ -33,7 +32,6 @@ def date_ranges(start_date: datetime.date, end_date: datetime.date):
         )
         yield (current_month.replace(day=1), last_day_of_month)
         current_month += datetime.timedelta(days=32)
-
     # Last range: start of month to end date
     yield (end_date.replace(day=1), end_date)
 

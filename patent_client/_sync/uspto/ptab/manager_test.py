@@ -4,7 +4,6 @@
 # *         Source File: patent_client/_async/uspto/ptab/manager_test.py         *
 # ********************************************************************************
 
-
 from .model import PtabDecision, PtabDocument, PtabProceeding
 
 

@@ -135,7 +135,6 @@ class TestPatentExaminationData:
             "corr_cust_no",
             "corr_address",
         ]
-
         for k in expected_keys:
             assert getattr(app, k, None) is not None
 
@@ -177,7 +176,6 @@ class TestPatentExaminationData:
         actual = dict(app.expiration)
         for k in expected.keys():
             assert expected[k] == actual[k]
-
         app = USApplication.objects.get("14865625")
         expected = {
             "parent_appl_id": "14865625",

@@ -12,7 +12,10 @@ from patent_client.util.pydantic_util import Date
 
 from ..number_service.model import DocumentId
 from ..util import EpoBaseModel
+from .national_codes import LegalCodes
 from .schema import LegalSchema
+
+code_db = LegalCodes()
 
 
 class MetaData(EpoBaseModel):
@@ -27,7 +30,6 @@ class LegalEvent(EpoBaseModel):
     """
     Field descriptions are here:
     https://documents.epo.org/projects/babylon/eponot.nsf/0/EF223017D933B30AC1257B50005A042E/$File/14.11_User_Documentation_3.1_en.pdf
-
     """
 
     filing_or_publication: Optional[str] = None
@@ -36,16 +38,13 @@ class LegalEvent(EpoBaseModel):
     metadata: Optional[MetaData] = None
     country_code: Optional[str] = None
     text_record: Optional[str] = None
-
     event_date: Optional[Date] = None
     event_code: Optional[str] = None
     event_country: Optional[str] = None
-    event_description: Optional[str] = None
+    # event_description: Optional[str] = None
     regional_event_code: Optional[str] = None
-
     corresponding_patent: Optional[str] = None
     corresponding_patent_publication_date: Optional[Date] = None
-
     designated_states: Optional[str] = None
     extension_name: Optional[str] = None
     new_owner_name: Optional[str] = None
@@ -68,6 +67,15 @@ class LegalEvent(EpoBaseModel):
 
     def __repr__(self):
         return f"Event(document_number={self.document_number}, event_description={self.event_description}, event_date={self.event_date})"
+
+    @property
+    def description(self):
+        if self.event_code == "REG":
+            return code_db.get_code_data(self.event_country, self.regional_event_code)[
+                "description"
+            ]
+        else:
+            return code_db.get_code_data(self.country_code, self.event_code)["description"]
 
 
 class Legal(EpoBaseModel):
