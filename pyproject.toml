@@ -27,20 +27,21 @@ exclude = ["./**/cassettes/**/*",]
 python = ">=3.9,<3.13"
 
 # Required Dependencies
-lxml = "^4.9.0"
-python-dateutil = "^2.8.2"
-openpyxl = "^3.0.10"
+lxml = "^5.2.2"
+python-dateutil = "^2.9.0.post0"
+openpyxl = "^3.1.2"
 #yankee = {path="../yankee", develop=true}
-yankee = "^0.1.43"
+yankee = "^0.1.46"
 
-pydantic = "^2.4.2"
-pydantic-settings = "^2.0.3"
-pypdf = "^3.17.0"
-hishel = "^0.0.20"
+pydantic = "^2.7.1"
+pydantic-settings = "^2.2.1"
+pypdf = "^4.2.0"
+hishel = "^0.0.26"
 async-property = "^0.2.2"
 httpx = {extras = ["http2"], version = "^0.27.0"}
 
 # Documentation Dependencies
+inflection = "^0.5.1"
 
 [tool.poetry.group.docs]
 optional = true

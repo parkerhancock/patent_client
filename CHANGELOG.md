@@ -1,4 +1,7 @@
 # Changelog
+## 5.0.14 (2024-05-22)
+- Update underlying dependencies
+
 ## 5.0.13 (2024-05-08)
 - Remove nest_asyncio call, and update Legal Codes. (#153)
 
