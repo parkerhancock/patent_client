@@ -13,7 +13,7 @@ interactions:
       host:
       - ops.epo.org
       user-agent:
-      - Mozilla/5.0 Python Patent Clientbot/4.1.4 (parkerhancock@users.noreply.github.com)
+      - Mozilla/5.0 Python Patent Clientbot/5.0.14 (parkerhancock@users.noreply.github.com)
     method: GET
     uri: http://ops.epo.org/3.2/rest-services/family/publication/docdb/EP1000000A1
   response:
@@ -121,6 +121,8 @@ interactions:
       - POST
       Access-Control-Allow-Origin:
       - '*'
+      Cache-Control:
+      - no-cache
       Connection:
       - keep-alive
       Content-Length:
@@ -128,7 +130,7 @@ interactions:
       Content-Type:
       - application/xml;charset=utf-8
       Date:
-      - Mon, 11 Dec 2023 16:00:10 GMT
+      - Wed, 22 May 2024 16:13:39 GMT
       ETag:
       - '"042c8b4f48cc4e69d9f34356eb9b71d8e"'
       Pragma:
@@ -142,18 +144,18 @@ interactions:
       X-API:
       - ops-v3.2
       X-EPO-Client-IP:
-      - 38.104.255.66
+      - 37.19.196.69
       X-EPO-Forwarded:
-      - '[38.104.255.66]'
+      - '[37.19.196.69]'
       X-Elapsed-Time:
-      - '0'
+      - '1'
       X-IndividualQuotaPerHour-Used:
-      - '205387'
+      - '89370'
       X-RegisteredQuotaPerWeek-Used:
-      - '205387'
+      - '89370'
       X-Throttling-Control:
-      - busy (images=green:100, inpadoc=green:45, other=green:1000, retrieval=green:100,
-        search=green:15)
+      - idle (images=green:200, inpadoc=green:60, other=green:1000, retrieval=green:200,
+        search=green:30)
     http_version: HTTP/1.1
     status_code: 200
 version: 1

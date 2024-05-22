@@ -1,6 +1,6 @@
 interactions:
 - request:
-    body: '{"caseId": 27922406, "hl_snippets": "2", "op": "OR", "q": "\"379/56\".CCLS.
+    body: '{"caseId": 28623452, "hl_snippets": "2", "op": "OR", "q": "\"379/56\".CCLS.
       AND @APD>=19700101<=19950928", "queryName": "\"379/56\".CCLS. AND @APD>=19700101<=19950928",
       "highlights": "1", "qt": "brs", "spellCheck": false, "viewName": "tile", "plurals":
       true, "britishEquivalents": true, "databaseFilters": [{"databaseName": "USPAT",
@@ -11,6 +11,8 @@ interactions:
       - '*/*'
       accept-encoding:
       - gzip, deflate
+      cache-control:
+      - no-cache
       connection:
       - keep-alive
       content-length:
@@ -19,17 +21,79 @@ interactions:
       - application/json
       host:
       - ppubs.uspto.gov
+      origin:
+      - https://ppubs.uspto.gov
+      pragma:
+      - no-cache
+      priority:
+      - u=1, i
+      referer:
+      - https://ppubs.uspto.gov/pubwebapp/
       user-agent:
       - Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML,
         like Gecko) Chrome/114.0.0.0 Safari/537.36
       x-access-token:
-      - eyJzdWIiOiJlYzZmYTVkOC03NWZiLTQ5ZTktODFjMS0wZjI1MWY1NmRiZGUiLCJ2ZXIiOiIxOTAzNDQ1Yi1jMWRmLTQyYTEtODJmYi05ZDdiNWJmMWI0NDgiLCJleHAiOjB9
+      - eyJzdWIiOiIwNDJmZDczNi0wYTBmLTQ1Y2ItODcyMi04NzgxYjk4YTkwODkiLCJ2ZXIiOiIxNGQ1YjExMS03NjU4LTRhMGItYmFhYy02YmJmMTE5OTJlMDMiLCJleHAiOjB9
       x-requested-with:
       - XMLHttpRequest
     method: POST
     uri: https://ppubs.uspto.gov/dirsearch-public/searches/counts
   response:
-    content: '{"id":null,"caseId":27922406,"userId":null,"numResults":0,"ignorePersist":true,"fq":null,"databaseFilters":[{"databaseName":"USPAT","countryCodes":[]}],"q":"\"379/56\".CCLS.
+    content: '{ "message": "Too many requests" }'
+    headers:
+      content-length:
+      - '34'
+      content-type:
+      - application/json;charset=ISO-8859-1
+      date:
+      - Wed, 22 May 2024 16:20:31 GMT
+      server-timing:
+      - intid;desc=0dc6477545e1d6a5
+      x-rate-limit-retry-after-seconds:
+      - '0'
+    http_version: HTTP/2
+    status_code: 429
+- request:
+    body: '{"caseId": 28623452, "hl_snippets": "2", "op": "OR", "q": "\"379/56\".CCLS.
+      AND @APD>=19700101<=19950928", "queryName": "\"379/56\".CCLS. AND @APD>=19700101<=19950928",
+      "highlights": "1", "qt": "brs", "spellCheck": false, "viewName": "tile", "plurals":
+      true, "britishEquivalents": true, "databaseFilters": [{"databaseName": "USPAT",
+      "countryCodes": []}], "searchType": 1, "ignorePersist": true, "userEnteredQuery":
+      "\"379/56\".CCLS. AND @APD>=19700101<=19950928"}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      cache-control:
+      - no-cache
+      connection:
+      - keep-alive
+      content-length:
+      - '463'
+      content-type:
+      - application/json
+      host:
+      - ppubs.uspto.gov
+      origin:
+      - https://ppubs.uspto.gov
+      pragma:
+      - no-cache
+      priority:
+      - u=1, i
+      referer:
+      - https://ppubs.uspto.gov/pubwebapp/
+      user-agent:
+      - Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/114.0.0.0 Safari/537.36
+      x-access-token:
+      - eyJzdWIiOiIwNDJmZDczNi0wYTBmLTQ1Y2ItODcyMi04NzgxYjk4YTkwODkiLCJ2ZXIiOiIxNGQ1YjExMS03NjU4LTRhMGItYmFhYy02YmJmMTE5OTJlMDMiLCJleHAiOjB9
+      x-requested-with:
+      - XMLHttpRequest
+    method: POST
+    uri: https://ppubs.uspto.gov/dirsearch-public/searches/counts
+  response:
+    content: '{"id":null,"caseId":28623452,"userId":null,"numResults":0,"ignorePersist":true,"fq":null,"databaseFilters":[{"databaseName":"USPAT","countryCodes":[]}],"q":"\"379/56\".CCLS.
       AND @APD>=19700101<=19950928","queryName":"\"379/56\".CCLS. AND @APD>=19700101<=19950928","userEnteredQuery":"\"379/56\".CCLS.
       AND @APD>=19700101<=19950928","viewName":"tile","op":"OR","highlights":"1","plurals":true,"britishEquivalents":true,"searchType":1,"excludeResultsAfter":null,"dateCreated":null,"deleteIn":false,"expand":false,"expandSort":null,"expandRows":null,"expandTrackDocScores":false,"expandTrackMaxScore":false,"termGraph":{"termOrigin":[{"id":0,"name":null,"nodeType":"ROOT","parentId":null,"relation":null,"aliases":["default"],"aliasCategory":"OTHER"},{"id":1,"name":"\"379/56\"","nodeType":"TERM","parentId":0,"relation":"REGULAR","aliases":["ccls"],"aliasCategory":"CLASSIFICATION"},{"id":4,"name":"@apd","nodeType":"RANGE","parentId":0,"relation":"REGULAR","aliases":["apd"],"aliasCategory":"DATE_INT"}],"termRelationship":[]},"hl":false,"fl":null,"originalQuery":"\"379/56\".CCLS.
       AND @APD>=19700101<=19950928","error":null,"terms":["@apd","\"379/56\""],"facets":[],"pNumber":null,"hl_fl":null}'
@@ -37,9 +101,9 @@ interactions:
       content-type:
       - application/json
       date:
-      - Wed, 24 Apr 2024 21:17:14 GMT
+      - Wed, 22 May 2024 16:20:32 GMT
       server-timing:
-      - intid;desc=1d0595e64f082a7f
+      - intid;desc=4962582d70f40aff
       x-rate-limit-remaining:
       - '0'
     http_version: HTTP/2
@@ -49,7 +113,7 @@ interactions:
       "familyIdFiltering", "searchType": 1, "familyIdEnglishOnly": true, "familyIdFirstPreferred":
       "US-PGPUB", "familyIdSecondPreferred": "USPAT", "familyIdThirdPreferred": "FPRS",
       "showDocPerFamilyPref": "showEnglish", "queryId": 0, "tagDocSearch": false,
-      "query": {"caseId": 27922406, "hl_snippets": "2", "op": "OR", "q": "\"379/56\".CCLS.
+      "query": {"caseId": 28623452, "hl_snippets": "2", "op": "OR", "q": "\"379/56\".CCLS.
       AND @APD>=19700101<=19950928", "queryName": "\"379/56\".CCLS. AND @APD>=19700101<=19950928",
       "highlights": "1", "qt": "brs", "spellCheck": false, "viewName": "tile", "plurals":
       true, "britishEquivalents": true, "databaseFilters": [{"databaseName": "USPAT",
@@ -60,6 +124,8 @@ interactions:
       - '*/*'
       accept-encoding:
       - gzip, deflate
+      cache-control:
+      - no-cache
       connection:
       - keep-alive
       content-length:
@@ -68,11 +134,19 @@ interactions:
       - application/json
       host:
       - ppubs.uspto.gov
+      origin:
+      - https://ppubs.uspto.gov
+      pragma:
+      - no-cache
+      priority:
+      - u=1, i
+      referer:
+      - https://ppubs.uspto.gov/pubwebapp/
       user-agent:
       - Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML,
         like Gecko) Chrome/114.0.0.0 Safari/537.36
       x-access-token:
-      - eyJzdWIiOiJlYzZmYTVkOC03NWZiLTQ5ZTktODFjMS0wZjI1MWY1NmRiZGUiLCJ2ZXIiOiIxOTAzNDQ1Yi1jMWRmLTQyYTEtODJmYi05ZDdiNWJmMWI0NDgiLCJleHAiOjB9
+      - eyJzdWIiOiIwNDJmZDczNi0wYTBmLTQ1Y2ItODcyMi04NzgxYjk4YTkwODkiLCJ2ZXIiOiIxNGQ1YjExMS03NjU4LTRhMGItYmFhYy02YmJmMTE5OTJlMDMiLCJleHAiOjB9
       x-requested-with:
       - XMLHttpRequest
     method: POST
@@ -85,9 +159,9 @@ interactions:
       content-type:
       - application/json;charset=ISO-8859-1
       date:
-      - Wed, 24 Apr 2024 21:17:14 GMT
+      - Wed, 22 May 2024 16:20:32 GMT
       server-timing:
-      - intid;desc=5511520dafc46cf3
+      - intid;desc=386d0c34cab33243
       x-rate-limit-retry-after-seconds:
       - '0'
     http_version: HTTP/2
@@ -97,7 +171,7 @@ interactions:
       "familyIdFiltering", "searchType": 1, "familyIdEnglishOnly": true, "familyIdFirstPreferred":
       "US-PGPUB", "familyIdSecondPreferred": "USPAT", "familyIdThirdPreferred": "FPRS",
       "showDocPerFamilyPref": "showEnglish", "queryId": 0, "tagDocSearch": false,
-      "query": {"caseId": 27922406, "hl_snippets": "2", "op": "OR", "q": "\"379/56\".CCLS.
+      "query": {"caseId": 28623452, "hl_snippets": "2", "op": "OR", "q": "\"379/56\".CCLS.
       AND @APD>=19700101<=19950928", "queryName": "\"379/56\".CCLS. AND @APD>=19700101<=19950928",
       "highlights": "1", "qt": "brs", "spellCheck": false, "viewName": "tile", "plurals":
       true, "britishEquivalents": true, "databaseFilters": [{"databaseName": "USPAT",
@@ -108,6 +182,8 @@ interactions:
       - '*/*'
       accept-encoding:
       - gzip, deflate
+      cache-control:
+      - no-cache
       connection:
       - keep-alive
       content-length:
@@ -116,28 +192,36 @@ interactions:
       - application/json
       host:
       - ppubs.uspto.gov
+      origin:
+      - https://ppubs.uspto.gov
+      pragma:
+      - no-cache
+      priority:
+      - u=1, i
+      referer:
+      - https://ppubs.uspto.gov/pubwebapp/
       user-agent:
       - Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML,
         like Gecko) Chrome/114.0.0.0 Safari/537.36
       x-access-token:
-      - eyJzdWIiOiJlYzZmYTVkOC03NWZiLTQ5ZTktODFjMS0wZjI1MWY1NmRiZGUiLCJ2ZXIiOiIxOTAzNDQ1Yi1jMWRmLTQyYTEtODJmYi05ZDdiNWJmMWI0NDgiLCJleHAiOjB9
+      - eyJzdWIiOiIwNDJmZDczNi0wYTBmLTQ1Y2ItODcyMi04NzgxYjk4YTkwODkiLCJ2ZXIiOiIxNGQ1YjExMS03NjU4LTRhMGItYmFhYy02YmJmMTE5OTJlMDMiLCJleHAiOjB9
       x-requested-with:
       - XMLHttpRequest
     method: POST
     uri: https://ppubs.uspto.gov/dirsearch-public/searches/searchWithBeFamily
   response:
-    content: '{"numFound":0,"perPage":500,"page":0,"totalPages":0,"hlSnippets":0,"sort":null,"query":{"id":null,"caseId":27922406,"userId":null,"numResults":0,"ignorePersist":true,"fq":null,"databaseFilters":[{"databaseName":"USPAT","countryCodes":[]}],"q":"\"379/56\".CCLS.
+    content: '{"numFound":0,"perPage":500,"page":0,"totalPages":0,"hlSnippets":0,"sort":null,"query":{"id":null,"caseId":28623452,"userId":null,"numResults":0,"ignorePersist":true,"fq":null,"databaseFilters":[{"databaseName":"USPAT","countryCodes":[]}],"q":"\"379/56\".CCLS.
       AND @APD>=19700101<=19950928","queryName":"\"379/56\".CCLS. AND @APD>=19700101<=19950928","userEnteredQuery":"\"379/56\".CCLS.
       AND @APD>=19700101<=19950928","viewName":"tile","op":"OR","highlights":"1","plurals":true,"britishEquivalents":true,"searchType":1,"excludeResultsAfter":null,"dateCreated":null,"deleteIn":false,"expand":true,"expandSort":"group_sort_date
       asc, id desc ","expandRows":"100","expandTrackDocScores":true,"expandTrackMaxScore":true,"termGraph":null,"hl":false,"fl":null,"originalQuery":"\"379/56\".CCLS.
-      AND @APD>=19700101<=19950928","error":null,"terms":["@apd","\"379/56\""],"facets":[],"pNumber":null,"hl_fl":null},"duration":12,"highlightingTime":0,"cursorMarker":"*","totalResults":0,"numberOfFamilies":0,"error":null,"patents":[],"qtime":7}'
+      AND @APD>=19700101<=19950928","error":null,"terms":["@apd","\"379/56\""],"facets":[],"pNumber":null,"hl_fl":null},"duration":59,"highlightingTime":0,"cursorMarker":"*","totalResults":0,"numberOfFamilies":0,"error":null,"patents":[],"qtime":53}'
     headers:
       content-type:
       - application/json
       date:
-      - Wed, 24 Apr 2024 21:17:15 GMT
+      - Wed, 22 May 2024 16:20:33 GMT
       server-timing:
-      - intid;desc=fc305ddc25785d3b
+      - intid;desc=02ebf98ca3544427
       x-rate-limit-remaining:
       - '0'
     http_version: HTTP/2

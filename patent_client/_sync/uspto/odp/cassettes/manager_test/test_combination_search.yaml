@@ -1,7 +1,7 @@
 interactions:
 - request:
     body: '{"q": "inventionTitle:(Hair Dryer)", "rangeFilters": [{"field": "filingDate",
-      "valueFrom": "2020-01-01", "valueTo": "2024-05-03"}], "fields": ["applicationNumberText"],
+      "valueFrom": "2020-01-01", "valueTo": "2024-05-22"}], "fields": ["applicationNumberText"],
       "pagination": {"offset": 0, "limit": 25}}'
     headers:
       X-API-KEY:
@@ -19,11 +19,11 @@ interactions:
       host:
       - beta-api.uspto.gov
       user-agent:
-      - Mozilla/5.0 Python Patent Clientbot/5.0.4 (parkerhancock@users.noreply.github.com)
+      - Mozilla/5.0 Python Patent Clientbot/5.0.14 (parkerhancock@users.noreply.github.com)
     method: POST
     uri: https://beta-api.uspto.gov/api/v1/patent/applications/search
   response:
-    content: '{"count":699,"patentBag":[{"applicationNumberText":"35519933"},{"applicationNumberText":"35519938"},{"applicationNumberText":"35519769"},{"applicationNumberText":"35519947"},{"applicationNumberText":"35519302"},{"applicationNumberText":"35519293"},{"applicationNumberText":"35519384"},{"applicationNumberText":"29906702"},{"applicationNumberText":"29906704"},{"applicationNumberText":"29916113"},{"applicationNumberText":"29906700"},{"applicationNumberText":"29906701"},{"applicationNumberText":"18247524"},{"applicationNumberText":"35519201"},{"applicationNumberText":"29904561"},{"applicationNumberText":"35519453"},{"applicationNumberText":"29912491"},{"applicationNumberText":"29902676"},{"applicationNumberText":"29902405"},{"applicationNumberText":"29901951"},{"applicationNumberText":"29911485"},{"applicationNumberText":"18279629"},{"applicationNumberText":"29911079"},{"applicationNumberText":"29900731"},{"applicationNumberText":"35518492"}],"requestIdentifier":"12787052-a99c-4445-8c73-dbcdbc989e6b"}'
+    content: '{"count":4081,"patentBag":[{"applicationNumberText":"18283924"},{"applicationNumberText":"18695537"},{"applicationNumberText":"29931488"},{"applicationNumberText":"29931489"},{"applicationNumberText":"29931490"},{"applicationNumberText":"18551286"},{"applicationNumberText":"35520490"},{"applicationNumberText":"29927368"},{"applicationNumberText":"29927366"},{"applicationNumberText":"29927367"},{"applicationNumberText":"18294305"},{"applicationNumberText":"18422701"},{"applicationNumberText":"18422684"},{"applicationNumberText":"29925080"},{"applicationNumberText":"18419319"},{"applicationNumberText":"18290788"},{"applicationNumberText":"29924549"},{"applicationNumberText":"18580936"},{"applicationNumberText":"35519938"},{"applicationNumberText":"35519933"},{"applicationNumberText":"35520235"},{"applicationNumberText":"18414179"},{"applicationNumberText":"18413787"},{"applicationNumberText":"18410892"},{"applicationNumberText":"29908133"}],"requestIdentifier":"e5a961db-0864-4edf-8d06-3deaeb4151d1"}'
     headers:
       access-control-allow-headers:
       - Origin, X-Requested-With, Content-Type, Accept
@@ -32,17 +32,17 @@ interactions:
       access-control-allow-origin:
       - '*'
       content-length:
-      - '1011'
+      - '1012'
       content-type:
       - application/json
       date:
-      - Fri, 03 May 2024 17:51:45 GMT
+      - Wed, 22 May 2024 16:33:19 GMT
       x-amz-apigw-id:
-      - XNKXwFsNoAMFlTQ=
+      - YLmsYFLvIAMFzLw=
       x-amzn-requestid:
-      - 12787052-a99c-4445-8c73-dbcdbc989e6b
+      - e5a961db-0864-4edf-8d06-3deaeb4151d1
       x-amzn-trace-id:
-      - Root=1-66352431-3355918e47d31e280952f1f3;Parent=46c26f988b379bec;Sampled=0;lineage=33e8fdb8:0
+      - Root=1-664e1e4e-76f8101a1ba106983a84f6ff;Parent=5c2aded45708f83a;Sampled=0;lineage=33e8fdb8:0
     http_version: HTTP/2
     status_code: 200
 version: 1

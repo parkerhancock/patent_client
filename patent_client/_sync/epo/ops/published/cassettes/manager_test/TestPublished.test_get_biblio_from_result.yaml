@@ -13,7 +13,7 @@ interactions:
       host:
       - ops.epo.org
       user-agent:
-      - Mozilla/5.0 Python Patent Clientbot/4.1.4 (parkerhancock@users.noreply.github.com)
+      - Mozilla/5.0 Python Patent Clientbot/5.0.14 (parkerhancock@users.noreply.github.com)
     method: GET
     uri: http://ops.epo.org/3.2/rest-services/published-data/search?Range=1-1&q=applicant%3D%22Google%22
   response:
@@ -22,9 +22,9 @@ interactions:
       xmlns:ops=\"http://ops.epo.org\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">\n
       \   <ops:biblio-search total-result-count=\"10000\">\n        <ops:query syntax=\"CQL\">applicant
       = Google</ops:query>\n        <ops:range begin=\"1\" end=\"1\"/>\n        <ops:search-result>\n
-      \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"77389304\">\n
-      \               <document-id document-id-type=\"docdb\">\n                    <country>TW</country>\n
-      \                   <doc-number>D222991</doc-number>\n                    <kind>S</kind>\n
+      \           <ops:publication-reference system=\"ops.epo.org\" family-id=\"51211874\">\n
+      \               <document-id document-id-type=\"docdb\">\n                    <country>CA</country>\n
+      \                   <doc-number>3237996</doc-number>\n                    <kind>A1</kind>\n
       \               </document-id>\n            </ops:publication-reference>\n        </ops:search-result>\n
       \   </ops:biblio-search>\n</ops:world-patent-data>"
     headers:
@@ -34,16 +34,18 @@ interactions:
       - POST
       Access-Control-Allow-Origin:
       - '*'
+      Cache-Control:
+      - no-cache
       Connection:
       - keep-alive
       Content-Length:
-      - '836'
+      - '837'
       Content-Type:
       - application/xml;charset=utf-8
       Date:
-      - Mon, 11 Dec 2023 16:00:11 GMT
+      - Wed, 22 May 2024 16:32:42 GMT
       ETag:
-      - '"065250c602272db63665c3f219199456d"'
+      - '"073dd46bd5a09f5da7dcc81cba6a59a61"'
       Pragma:
       - no-cache
       Server:
@@ -59,14 +61,14 @@ interactions:
       X-EPO-Forwarded:
       - '[38.104.255.66]'
       X-Elapsed-Time:
-      - '17'
+      - '16'
       X-IndividualQuotaPerHour-Used:
-      - '248322'
+      - '226887'
       X-RegisteredQuotaPerWeek-Used:
-      - '248322'
+      - '1305133'
       X-Throttling-Control:
-      - busy (images=green:100, inpadoc=green:45, other=green:1000, retrieval=green:100,
-        search=green:15)
+      - idle (images=green:200, inpadoc=green:60, other=green:1000, retrieval=green:200,
+        search=green:30)
     http_version: HTTP/1.1
     status_code: 200
 - request:
@@ -83,76 +85,623 @@ interactions:
       host:
       - ops.epo.org
       user-agent:
-      - Mozilla/5.0 Python Patent Clientbot/4.1.4 (parkerhancock@users.noreply.github.com)
+      - Mozilla/5.0 Python Patent Clientbot/5.0.14 (parkerhancock@users.noreply.github.com)
     method: GET
-    uri: http://ops.epo.org/3.2/rest-services/published-data/publication/docdb/TWD222991S/biblio
+    uri: http://ops.epo.org/3.2/rest-services/published-data/publication/docdb/CA3237996A1/biblio
   response:
     content: "<?xml version=\"1.0\" encoding=\"UTF-8\"?><?xml-stylesheet type=\"text/xsl\"
       href=\"/3.2/style/exchange.xsl\"?>\n<ops:world-patent-data xmlns=\"http://www.epo.org/exchange\"
       xmlns:ops=\"http://ops.epo.org\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">\n
       \   <exchange-documents>\n        <exchange-document system=\"ops.epo.org\"
-      family-id=\"77389304\" country=\"TW\" doc-number=\"D222991\" kind=\"S\">\n            <bibliographic-data>\n
-      \               <publication-reference>\n                    <document-id document-id-type=\"docdb\">\n
-      \                       <country>TW</country>\n                        <doc-number>D222991</doc-number>\n
-      \                       <kind>S</kind>\n                        <date>20230101</date>\n
+      family-id=\"51211874\" country=\"CA\" doc-number=\"3237996\" kind=\"A1\">\n
+      \           <bibliographic-data>\n                <publication-reference>\n
+      \                   <document-id document-id-type=\"docdb\">\n                        <country>CA</country>\n
+      \                       <doc-number>3237996</doc-number>\n                        <kind>A1</kind>\n
+      \                       <date>20141231</date>\n                    </document-id>\n
+      \                   <document-id document-id-type=\"epodoc\">\n                        <doc-number>CA3237996</doc-number>\n
+      \                       <date>20141231</date>\n                    </document-id>\n
+      \               </publication-reference>\n                <patent-classifications>\n
+      \                   <patent-classification sequence=\"1\">\n                        <classification-scheme
+      office=\"EP\" scheme=\"CPCI\"/>\n                        <section>G</section>\n
+      \                       <class>06</class>\n                        <subclass>F</subclass>\n
+      \                       <main-group>8</main-group>\n                        <subgroup>65</subgroup>\n
+      \                       <classification-value>I</classification-value>\n                        <generating-office>US</generating-office>\n
+      \                   </patent-classification>\n                    <patent-classification
+      sequence=\"2\">\n                        <classification-scheme office=\"EP\"
+      scheme=\"CPCI\"/>\n                        <section>G</section>\n                        <class>06</class>\n
+      \                       <subclass>F</subclass>\n                        <main-group>8</main-group>\n
+      \                       <subgroup>65</subgroup>\n                        <classification-value>I</classification-value>\n
+      \                       <generating-office>RU</generating-office>\n                    </patent-classification>\n
+      \                   <patent-classification sequence=\"3\">\n                        <classification-scheme
+      office=\"EP\" scheme=\"CPCI\"/>\n                        <section>G</section>\n
+      \                       <class>08</class>\n                        <subclass>B</subclass>\n
+      \                       <main-group>21</main-group>\n                        <subgroup>0415</subgroup>\n
+      \                       <classification-value>I</classification-value>\n                        <generating-office>US</generating-office>\n
+      \                   </patent-classification>\n                    <patent-classification
+      sequence=\"4\">\n                        <classification-scheme office=\"EP\"
+      scheme=\"CPCI\"/>\n                        <section>G</section>\n                        <class>08</class>\n
+      \                       <subclass>B</subclass>\n                        <main-group>21</main-group>\n
+      \                       <subgroup>0415</subgroup>\n                        <classification-value>I</classification-value>\n
+      \                       <generating-office>RU</generating-office>\n                    </patent-classification>\n
+      \                   <patent-classification sequence=\"5\">\n                        <classification-scheme
+      office=\"EP\" scheme=\"CPCI\"/>\n                        <section>H</section>\n
+      \                       <class>04</class>\n                        <subclass>L</subclass>\n
+      \                       <main-group>9</main-group>\n                        <subgroup>0861</subgroup>\n
+      \                       <classification-value>I</classification-value>\n                        <generating-office>US</generating-office>\n
+      \                   </patent-classification>\n                    <patent-classification
+      sequence=\"6\">\n                        <classification-scheme office=\"EP\"
+      scheme=\"CPCI\"/>\n                        <section>H</section>\n                        <class>04</class>\n
+      \                       <subclass>L</subclass>\n                        <main-group>9</main-group>\n
+      \                       <subgroup>0861</subgroup>\n                        <classification-value>I</classification-value>\n
+      \                       <generating-office>EP</generating-office>\n                    </patent-classification>\n
+      \                   <patent-classification sequence=\"7\">\n                        <classification-scheme
+      office=\"EP\" scheme=\"CPCI\"/>\n                        <section>H</section>\n
+      \                       <class>04</class>\n                        <subclass>L</subclass>\n
+      \                       <main-group>9</main-group>\n                        <subgroup>14</subgroup>\n
+      \                       <classification-value>I</classification-value>\n                        <generating-office>US</generating-office>\n
+      \                   </patent-classification>\n                    <patent-classification
+      sequence=\"8\">\n                        <classification-scheme office=\"EP\"
+      scheme=\"CPCI\"/>\n                        <section>H</section>\n                        <class>04</class>\n
+      \                       <subclass>L</subclass>\n                        <main-group>9</main-group>\n
+      \                       <subgroup>30</subgroup>\n                        <classification-value>I</classification-value>\n
+      \                       <generating-office>US</generating-office>\n                    </patent-classification>\n
+      \                   <patent-classification sequence=\"9\">\n                        <classification-scheme
+      office=\"EP\" scheme=\"CPCI\"/>\n                        <section>H</section>\n
+      \                       <class>04</class>\n                        <subclass>L</subclass>\n
+      \                       <main-group>9</main-group>\n                        <subgroup>32</subgroup>\n
+      \                       <classification-value>I</classification-value>\n                        <generating-office>US</generating-office>\n
+      \                   </patent-classification>\n                    <patent-classification
+      sequence=\"10\">\n                        <classification-scheme office=\"EP\"
+      scheme=\"CPCI\"/>\n                        <section>H</section>\n                        <class>04</class>\n
+      \                       <subclass>L</subclass>\n                        <main-group>9</main-group>\n
+      \                       <subgroup>32</subgroup>\n                        <classification-value>I</classification-value>\n
+      \                       <generating-office>EP</generating-office>\n                    </patent-classification>\n
+      \                   <patent-classification sequence=\"11\">\n                        <classification-scheme
+      office=\"EP\" scheme=\"CPCI\"/>\n                        <section>H</section>\n
+      \                       <class>04</class>\n                        <subclass>L</subclass>\n
+      \                       <main-group>9</main-group>\n                        <subgroup>3247</subgroup>\n
+      \                       <classification-value>I</classification-value>\n                        <generating-office>US</generating-office>\n
+      \                   </patent-classification>\n                    <patent-classification
+      sequence=\"12\">\n                        <classification-scheme office=\"EP\"
+      scheme=\"CPCI\"/>\n                        <section>H</section>\n                        <class>04</class>\n
+      \                       <subclass>L</subclass>\n                        <main-group>9</main-group>\n
+      \                       <subgroup>3247</subgroup>\n                        <classification-value>I</classification-value>\n
+      \                       <generating-office>EP</generating-office>\n                    </patent-classification>\n
+      \                   <patent-classification sequence=\"13\">\n                        <classification-scheme
+      office=\"EP\" scheme=\"CPCI\"/>\n                        <section>H</section>\n
+      \                       <class>04</class>\n                        <subclass>L</subclass>\n
+      \                       <main-group>9</main-group>\n                        <subgroup>3263</subgroup>\n
+      \                       <classification-value>I</classification-value>\n                        <generating-office>US</generating-office>\n
+      \                   </patent-classification>\n                    <patent-classification
+      sequence=\"14\">\n                        <classification-scheme office=\"EP\"
+      scheme=\"CPCI\"/>\n                        <section>H</section>\n                        <class>04</class>\n
+      \                       <subclass>L</subclass>\n                        <main-group>9</main-group>\n
+      \                       <subgroup>3263</subgroup>\n                        <classification-value>I</classification-value>\n
+      \                       <generating-office>EP</generating-office>\n                    </patent-classification>\n
+      \                   <patent-classification sequence=\"15\">\n                        <classification-scheme
+      office=\"EP\" scheme=\"CPCI\"/>\n                        <section>H</section>\n
+      \                       <class>04</class>\n                        <subclass>L</subclass>\n
+      \                       <main-group>9</main-group>\n                        <subgroup>3265</subgroup>\n
+      \                       <classification-value>I</classification-value>\n                        <generating-office>US</generating-office>\n
+      \                   </patent-classification>\n                    <patent-classification
+      sequence=\"16\">\n                        <classification-scheme office=\"EP\"
+      scheme=\"CPCI\"/>\n                        <section>H</section>\n                        <class>04</class>\n
+      \                       <subclass>L</subclass>\n                        <main-group>9</main-group>\n
+      \                       <subgroup>3265</subgroup>\n                        <classification-value>I</classification-value>\n
+      \                       <generating-office>EP</generating-office>\n                    </patent-classification>\n
+      \                   <patent-classification sequence=\"17\">\n                        <classification-scheme
+      office=\"EP\" scheme=\"CPCI\"/>\n                        <section>H</section>\n
+      \                       <class>04</class>\n                        <subclass>L</subclass>\n
+      \                       <main-group>12</main-group>\n                        <subgroup>28</subgroup>\n
+      \                       <classification-value>I</classification-value>\n                        <generating-office>RU</generating-office>\n
+      \                   </patent-classification>\n                    <patent-classification
+      sequence=\"18\">\n                        <classification-scheme office=\"EP\"
+      scheme=\"CPCI\"/>\n                        <section>H</section>\n                        <class>04</class>\n
+      \                       <subclass>L</subclass>\n                        <main-group>12</main-group>\n
+      \                       <subgroup>2803</subgroup>\n                        <classification-value>I</classification-value>\n
+      \                       <generating-office>US</generating-office>\n                    </patent-classification>\n
+      \                   <patent-classification sequence=\"19\">\n                        <classification-scheme
+      office=\"EP\" scheme=\"CPCI\"/>\n                        <section>H</section>\n
+      \                       <class>04</class>\n                        <subclass>L</subclass>\n
+      \                       <main-group>12</main-group>\n                        <subgroup>2803</subgroup>\n
+      \                       <classification-value>I</classification-value>\n                        <generating-office>RU</generating-office>\n
+      \                   </patent-classification>\n                    <patent-classification
+      sequence=\"20\">\n                        <classification-scheme office=\"EP\"
+      scheme=\"CPCI\"/>\n                        <section>H</section>\n                        <class>04</class>\n
+      \                       <subclass>L</subclass>\n                        <main-group>12</main-group>\n
+      \                       <subgroup>2814</subgroup>\n                        <classification-value>I</classification-value>\n
+      \                       <generating-office>RU</generating-office>\n                    </patent-classification>\n
+      \                   <patent-classification sequence=\"21\">\n                        <classification-scheme
+      office=\"EP\" scheme=\"CPCI\"/>\n                        <section>H</section>\n
+      \                       <class>04</class>\n                        <subclass>L</subclass>\n
+      \                       <main-group>12</main-group>\n                        <subgroup>2814</subgroup>\n
+      \                       <classification-value>I</classification-value>\n                        <generating-office>US</generating-office>\n
+      \                   </patent-classification>\n                    <patent-classification
+      sequence=\"22\">\n                        <classification-scheme office=\"EP\"
+      scheme=\"CPCI\"/>\n                        <section>H</section>\n                        <class>04</class>\n
+      \                       <subclass>L</subclass>\n                        <main-group>12</main-group>\n
+      \                       <subgroup>2814</subgroup>\n                        <classification-value>I</classification-value>\n
+      \                       <generating-office>KR</generating-office>\n                    </patent-classification>\n
+      \                   <patent-classification sequence=\"23\">\n                        <classification-scheme
+      office=\"EP\" scheme=\"CPCI\"/>\n                        <section>H</section>\n
+      \                       <class>04</class>\n                        <subclass>L</subclass>\n
+      \                       <main-group>12</main-group>\n                        <subgroup>2823</subgroup>\n
+      \                       <classification-value>I</classification-value>\n                        <generating-office>RU</generating-office>\n
+      \                   </patent-classification>\n                    <patent-classification
+      sequence=\"24\">\n                        <classification-scheme office=\"EP\"
+      scheme=\"CPCI\"/>\n                        <section>H</section>\n                        <class>04</class>\n
+      \                       <subclass>L</subclass>\n                        <main-group>12</main-group>\n
+      \                       <subgroup>2823</subgroup>\n                        <classification-value>I</classification-value>\n
+      \                       <generating-office>US</generating-office>\n                    </patent-classification>\n
+      \                   <patent-classification sequence=\"25\">\n                        <classification-scheme
+      office=\"EP\" scheme=\"CPCI\"/>\n                        <section>H</section>\n
+      \                       <class>04</class>\n                        <subclass>L</subclass>\n
+      \                       <main-group>12</main-group>\n                        <subgroup>2823</subgroup>\n
+      \                       <classification-value>I</classification-value>\n                        <generating-office>KR</generating-office>\n
+      \                   </patent-classification>\n                    <patent-classification
+      sequence=\"26\">\n                        <classification-scheme office=\"EP\"
+      scheme=\"CPCI\"/>\n                        <section>H</section>\n                        <class>04</class>\n
+      \                       <subclass>L</subclass>\n                        <main-group>12</main-group>\n
+      \                       <subgroup>2827</subgroup>\n                        <classification-value>I</classification-value>\n
+      \                       <generating-office>RU</generating-office>\n                    </patent-classification>\n
+      \                   <patent-classification sequence=\"27\">\n                        <classification-scheme
+      office=\"EP\" scheme=\"CPCI\"/>\n                        <section>H</section>\n
+      \                       <class>04</class>\n                        <subclass>L</subclass>\n
+      \                       <main-group>43</main-group>\n                        <subgroup>065</subgroup>\n
+      \                       <classification-value>I</classification-value>\n                        <generating-office>RU</generating-office>\n
+      \                   </patent-classification>\n                    <patent-classification
+      sequence=\"28\">\n                        <classification-scheme office=\"EP\"
+      scheme=\"CPCI\"/>\n                        <section>H</section>\n                        <class>04</class>\n
+      \                       <subclass>L</subclass>\n                        <main-group>45</main-group>\n
+      \                       <subgroup>00</subgroup>\n                        <classification-value>I</classification-value>\n
+      \                       <generating-office>US</generating-office>\n                    </patent-classification>\n
+      \                   <patent-classification sequence=\"29\">\n                        <classification-scheme
+      office=\"EP\" scheme=\"CPCI\"/>\n                        <section>H</section>\n
+      \                       <class>04</class>\n                        <subclass>L</subclass>\n
+      \                       <main-group>45</main-group>\n                        <subgroup>74</subgroup>\n
+      \                       <classification-value>I</classification-value>\n                        <generating-office>US</generating-office>\n
+      \                   </patent-classification>\n                    <patent-classification
+      sequence=\"30\">\n                        <classification-scheme office=\"EP\"
+      scheme=\"CPCI\"/>\n                        <section>H</section>\n                        <class>04</class>\n
+      \                       <subclass>L</subclass>\n                        <main-group>49</main-group>\n
+      \                       <subgroup>254</subgroup>\n                        <classification-value>I</classification-value>\n
+      \                       <generating-office>US</generating-office>\n                    </patent-classification>\n
+      \                   <patent-classification sequence=\"31\">\n                        <classification-scheme
+      office=\"EP\" scheme=\"CPCI\"/>\n                        <section>H</section>\n
+      \                       <class>04</class>\n                        <subclass>L</subclass>\n
+      \                       <main-group>61</main-group>\n                        <subgroup>00</subgroup>\n
+      \                       <classification-value>I</classification-value>\n                        <generating-office>US</generating-office>\n
+      \                   </patent-classification>\n                    <patent-classification
+      sequence=\"32\">\n                        <classification-scheme office=\"EP\"
+      scheme=\"CPCI\"/>\n                        <section>H</section>\n                        <class>04</class>\n
+      \                       <subclass>L</subclass>\n                        <main-group>63</main-group>\n
+      \                       <subgroup>061</subgroup>\n                        <classification-value>I</classification-value>\n
+      \                       <generating-office>US</generating-office>\n                    </patent-classification>\n
+      \                   <patent-classification sequence=\"33\">\n                        <classification-scheme
+      office=\"EP\" scheme=\"CPCI\"/>\n                        <section>H</section>\n
+      \                       <class>04</class>\n                        <subclass>L</subclass>\n
+      \                       <main-group>63</main-group>\n                        <subgroup>083</subgroup>\n
+      \                       <classification-value>I</classification-value>\n                        <generating-office>US</generating-office>\n
+      \                   </patent-classification>\n                    <patent-classification
+      sequence=\"34\">\n                        <classification-scheme office=\"EP\"
+      scheme=\"CPCI\"/>\n                        <section>H</section>\n                        <class>04</class>\n
+      \                       <subclass>L</subclass>\n                        <main-group>67</main-group>\n
+      \                       <subgroup>10</subgroup>\n                        <classification-value>I</classification-value>\n
+      \                       <generating-office>US</generating-office>\n                    </patent-classification>\n
+      \                   <patent-classification sequence=\"35\">\n                        <classification-scheme
+      office=\"EP\" scheme=\"CPCI\"/>\n                        <section>H</section>\n
+      \                       <class>04</class>\n                        <subclass>L</subclass>\n
+      \                       <main-group>67</main-group>\n                        <subgroup>10</subgroup>\n
+      \                       <classification-value>I</classification-value>\n                        <generating-office>KR</generating-office>\n
+      \                   </patent-classification>\n                    <patent-classification
+      sequence=\"36\">\n                        <classification-scheme office=\"EP\"
+      scheme=\"CPCI\"/>\n                        <section>H</section>\n                        <class>04</class>\n
+      \                       <subclass>L</subclass>\n                        <main-group>67</main-group>\n
+      \                       <subgroup>12</subgroup>\n                        <classification-value>I</classification-value>\n
+      \                       <generating-office>KR</generating-office>\n                    </patent-classification>\n
+      \                   <patent-classification sequence=\"37\">\n                        <classification-scheme
+      office=\"EP\" scheme=\"CPCI\"/>\n                        <section>H</section>\n
+      \                       <class>04</class>\n                        <subclass>L</subclass>\n
+      \                       <main-group>67</main-group>\n                        <subgroup>12</subgroup>\n
+      \                       <classification-value>I</classification-value>\n                        <generating-office>US</generating-office>\n
+      \                   </patent-classification>\n                    <patent-classification
+      sequence=\"38\">\n                        <classification-scheme office=\"EP\"
+      scheme=\"CPCI\"/>\n                        <section>H</section>\n                        <class>04</class>\n
+      \                       <subclass>L</subclass>\n                        <main-group>67</main-group>\n
+      \                       <subgroup>12</subgroup>\n                        <classification-value>I</classification-value>\n
+      \                       <generating-office>EP</generating-office>\n                    </patent-classification>\n
+      \                   <patent-classification sequence=\"39\">\n                        <classification-scheme
+      office=\"EP\" scheme=\"CPCI\"/>\n                        <section>H</section>\n
+      \                       <class>04</class>\n                        <subclass>L</subclass>\n
+      \                       <main-group>67</main-group>\n                        <subgroup>34</subgroup>\n
+      \                       <classification-value>I</classification-value>\n                        <generating-office>US</generating-office>\n
+      \                   </patent-classification>\n                    <patent-classification
+      sequence=\"40\">\n                        <classification-scheme office=\"EP\"
+      scheme=\"CPCI\"/>\n                        <section>H</section>\n                        <class>04</class>\n
+      \                       <subclass>L</subclass>\n                        <main-group>67</main-group>\n
+      \                       <subgroup>34</subgroup>\n                        <classification-value>I</classification-value>\n
+      \                       <generating-office>EP</generating-office>\n                    </patent-classification>\n
+      \                   <patent-classification sequence=\"41\">\n                        <classification-scheme
+      office=\"EP\" scheme=\"CPCI\"/>\n                        <section>H</section>\n
+      \                       <class>04</class>\n                        <subclass>L</subclass>\n
+      \                       <main-group>69</main-group>\n                        <subgroup>165</subgroup>\n
+      \                       <classification-value>I</classification-value>\n                        <generating-office>KR</generating-office>\n
+      \                   </patent-classification>\n                    <patent-classification
+      sequence=\"42\">\n                        <classification-scheme office=\"EP\"
+      scheme=\"CPCI\"/>\n                        <section>H</section>\n                        <class>04</class>\n
+      \                       <subclass>L</subclass>\n                        <main-group>69</main-group>\n
+      \                       <subgroup>165</subgroup>\n                        <classification-value>I</classification-value>\n
+      \                       <generating-office>US</generating-office>\n                    </patent-classification>\n
+      \                   <patent-classification sequence=\"43\">\n                        <classification-scheme
+      office=\"EP\" scheme=\"CPCI\"/>\n                        <section>H</section>\n
+      \                       <class>04</class>\n                        <subclass>L</subclass>\n
+      \                       <main-group>69</main-group>\n                        <subgroup>165</subgroup>\n
+      \                       <classification-value>I</classification-value>\n                        <generating-office>EP</generating-office>\n
+      \                   </patent-classification>\n                    <patent-classification
+      sequence=\"44\">\n                        <classification-scheme office=\"EP\"
+      scheme=\"CPCI\"/>\n                        <section>H</section>\n                        <class>04</class>\n
+      \                       <subclass>L</subclass>\n                        <main-group>69</main-group>\n
+      \                       <subgroup>22</subgroup>\n                        <classification-value>I</classification-value>\n
+      \                       <generating-office>US</generating-office>\n                    </patent-classification>\n
+      \                   <patent-classification sequence=\"45\">\n                        <classification-scheme
+      office=\"EP\" scheme=\"CPCI\"/>\n                        <section>H</section>\n
+      \                       <class>04</class>\n                        <subclass>L</subclass>\n
+      \                       <main-group>69</main-group>\n                        <subgroup>22</subgroup>\n
+      \                       <classification-value>I</classification-value>\n                        <generating-office>KR</generating-office>\n
+      \                   </patent-classification>\n                    <patent-classification
+      sequence=\"46\">\n                        <classification-scheme office=\"EP\"
+      scheme=\"CPCI\"/>\n                        <section>H</section>\n                        <class>04</class>\n
+      \                       <subclass>W</subclass>\n                        <main-group>4</main-group>\n
+      \                       <subgroup>029</subgroup>\n                        <classification-value>I</classification-value>\n
+      \                       <generating-office>US</generating-office>\n                    </patent-classification>\n
+      \                   <patent-classification sequence=\"47\">\n                        <classification-scheme
+      office=\"EP\" scheme=\"CPCI\"/>\n                        <section>H</section>\n
+      \                       <class>04</class>\n                        <subclass>W</subclass>\n
+      \                       <main-group>12</main-group>\n                        <subgroup>069</subgroup>\n
+      \                       <classification-value>I</classification-value>\n                        <generating-office>US</generating-office>\n
+      \                   </patent-classification>\n                    <patent-classification
+      sequence=\"48\">\n                        <classification-scheme office=\"EP\"
+      scheme=\"CPCI\"/>\n                        <section>H</section>\n                        <class>04</class>\n
+      \                       <subclass>W</subclass>\n                        <main-group>12</main-group>\n
+      \                       <subgroup>069</subgroup>\n                        <classification-value>I</classification-value>\n
+      \                       <generating-office>EP</generating-office>\n                    </patent-classification>\n
+      \                   <patent-classification sequence=\"49\">\n                        <classification-scheme
+      office=\"EP\" scheme=\"CPCI\"/>\n                        <section>H</section>\n
+      \                       <class>04</class>\n                        <subclass>W</subclass>\n
+      \                       <main-group>24</main-group>\n                        <subgroup>04</subgroup>\n
+      \                       <classification-value>I</classification-value>\n                        <generating-office>US</generating-office>\n
+      \                   </patent-classification>\n                    <patent-classification
+      sequence=\"50\">\n                        <classification-scheme office=\"EP\"
+      scheme=\"CPCI\"/>\n                        <section>H</section>\n                        <class>04</class>\n
+      \                       <subclass>W</subclass>\n                        <main-group>24</main-group>\n
+      \                       <subgroup>04</subgroup>\n                        <classification-value>I</classification-value>\n
+      \                       <generating-office>EP</generating-office>\n                    </patent-classification>\n
+      \                   <patent-classification sequence=\"51\">\n                        <classification-scheme
+      office=\"EP\" scheme=\"CPCI\"/>\n                        <section>H</section>\n
+      \                       <class>04</class>\n                        <subclass>W</subclass>\n
+      \                       <main-group>24</main-group>\n                        <subgroup>10</subgroup>\n
+      \                       <classification-value>I</classification-value>\n                        <generating-office>US</generating-office>\n
+      \                   </patent-classification>\n                    <patent-classification
+      sequence=\"52\">\n                        <classification-scheme office=\"EP\"
+      scheme=\"CPCI\"/>\n                        <section>H</section>\n                        <class>04</class>\n
+      \                       <subclass>W</subclass>\n                        <main-group>24</main-group>\n
+      \                       <subgroup>10</subgroup>\n                        <classification-value>I</classification-value>\n
+      \                       <generating-office>EP</generating-office>\n                    </patent-classification>\n
+      \                   <patent-classification sequence=\"53\">\n                        <classification-scheme
+      office=\"EP\" scheme=\"CPCI\"/>\n                        <section>H</section>\n
+      \                       <class>04</class>\n                        <subclass>W</subclass>\n
+      \                       <main-group>40</main-group>\n                        <subgroup>246</subgroup>\n
+      \                       <classification-value>I</classification-value>\n                        <generating-office>US</generating-office>\n
+      \                   </patent-classification>\n                    <patent-classification
+      sequence=\"54\">\n                        <classification-scheme office=\"EP\"
+      scheme=\"CPCI\"/>\n                        <section>H</section>\n                        <class>04</class>\n
+      \                       <subclass>W</subclass>\n                        <main-group>52</main-group>\n
+      \                       <subgroup>0212</subgroup>\n                        <classification-value>I</classification-value>\n
+      \                       <generating-office>US</generating-office>\n                    </patent-classification>\n
+      \                   <patent-classification sequence=\"55\">\n                        <classification-scheme
+      office=\"EP\" scheme=\"CPCI\"/>\n                        <section>H</section>\n
+      \                       <class>04</class>\n                        <subclass>W</subclass>\n
+      \                       <main-group>52</main-group>\n                        <subgroup>0212</subgroup>\n
+      \                       <classification-value>I</classification-value>\n                        <generating-office>EP</generating-office>\n
+      \                   </patent-classification>\n                    <patent-classification
+      sequence=\"56\">\n                        <classification-scheme office=\"EP\"
+      scheme=\"CPCI\"/>\n                        <section>H</section>\n                        <class>04</class>\n
+      \                       <subclass>W</subclass>\n                        <main-group>52</main-group>\n
+      \                       <subgroup>383</subgroup>\n                        <classification-value>I</classification-value>\n
+      \                       <generating-office>US</generating-office>\n                    </patent-classification>\n
+      \                   <patent-classification sequence=\"57\">\n                        <classification-scheme
+      office=\"EP\" scheme=\"CPCI\"/>\n                        <section>H</section>\n
+      \                       <class>04</class>\n                        <subclass>W</subclass>\n
+      \                       <main-group>60</main-group>\n                        <subgroup>00</subgroup>\n
+      \                       <classification-value>I</classification-value>\n                        <generating-office>US</generating-office>\n
+      \                   </patent-classification>\n                    <patent-classification
+      sequence=\"58\">\n                        <classification-scheme office=\"EP\"
+      scheme=\"CPCI\"/>\n                        <section>H</section>\n                        <class>04</class>\n
+      \                       <subclass>W</subclass>\n                        <main-group>72</main-group>\n
+      \                       <subgroup>53</subgroup>\n                        <classification-value>I</classification-value>\n
+      \                       <generating-office>US</generating-office>\n                    </patent-classification>\n
+      \                   <patent-classification sequence=\"59\">\n                        <classification-scheme
+      office=\"EP\" scheme=\"CPCI\"/>\n                        <section>H</section>\n
+      \                       <class>04</class>\n                        <subclass>W</subclass>\n
+      \                       <main-group>72</main-group>\n                        <subgroup>53</subgroup>\n
+      \                       <classification-value>I</classification-value>\n                        <generating-office>EP</generating-office>\n
+      \                   </patent-classification>\n                    <patent-classification
+      sequence=\"60\">\n                        <classification-scheme office=\"EP\"
+      scheme=\"CPCI\"/>\n                        <section>H</section>\n                        <class>04</class>\n
+      \                       <subclass>W</subclass>\n                        <main-group>76</main-group>\n
+      \                       <subgroup>10</subgroup>\n                        <classification-value>I</classification-value>\n
+      \                       <generating-office>US</generating-office>\n                    </patent-classification>\n
+      \                   <patent-classification sequence=\"61\">\n                        <classification-scheme
+      office=\"EP\" scheme=\"CPCI\"/>\n                        <section>H</section>\n
+      \                       <class>04</class>\n                        <subclass>W</subclass>\n
+      \                       <main-group>76</main-group>\n                        <subgroup>10</subgroup>\n
+      \                       <classification-value>I</classification-value>\n                        <generating-office>EP</generating-office>\n
+      \                   </patent-classification>\n                    <patent-classification
+      sequence=\"62\">\n                        <classification-scheme office=\"EP\"
+      scheme=\"CPCI\"/>\n                        <section>H</section>\n                        <class>04</class>\n
+      \                       <subclass>W</subclass>\n                        <main-group>76</main-group>\n
+      \                       <subgroup>14</subgroup>\n                        <classification-value>I</classification-value>\n
+      \                       <generating-office>US</generating-office>\n                    </patent-classification>\n
+      \                   <patent-classification sequence=\"63\">\n                        <classification-scheme
+      office=\"EP\" scheme=\"CPCI\"/>\n                        <section>H</section>\n
+      \                       <class>04</class>\n                        <subclass>W</subclass>\n
+      \                       <main-group>76</main-group>\n                        <subgroup>14</subgroup>\n
+      \                       <classification-value>I</classification-value>\n                        <generating-office>EP</generating-office>\n
+      \                   </patent-classification>\n                    <patent-classification
+      sequence=\"64\">\n                        <classification-scheme office=\"EP\"
+      scheme=\"CPCI\"/>\n                        <section>H</section>\n                        <class>04</class>\n
+      \                       <subclass>W</subclass>\n                        <main-group>84</main-group>\n
+      \                       <subgroup>12</subgroup>\n                        <classification-value>I</classification-value>\n
+      \                       <generating-office>US</generating-office>\n                    </patent-classification>\n
+      \                   <patent-classification sequence=\"65\">\n                        <classification-scheme
+      office=\"EP\" scheme=\"CPCI\"/>\n                        <section>H</section>\n
+      \                       <class>04</class>\n                        <subclass>W</subclass>\n
+      \                       <main-group>84</main-group>\n                        <subgroup>12</subgroup>\n
+      \                       <classification-value>I</classification-value>\n                        <generating-office>EP</generating-office>\n
+      \                   </patent-classification>\n                    <patent-classification
+      sequence=\"66\">\n                        <classification-scheme office=\"EP\"
+      scheme=\"CPCI\"/>\n                        <section>H</section>\n                        <class>04</class>\n
+      \                       <subclass>W</subclass>\n                        <main-group>88</main-group>\n
+      \                       <subgroup>02</subgroup>\n                        <classification-value>I</classification-value>\n
+      \                       <generating-office>US</generating-office>\n                    </patent-classification>\n
+      \                   <patent-classification sequence=\"67\">\n                        <classification-scheme
+      office=\"EP\" scheme=\"CPCI\"/>\n                        <section>H</section>\n
+      \                       <class>04</class>\n                        <subclass>W</subclass>\n
+      \                       <main-group>88</main-group>\n                        <subgroup>02</subgroup>\n
+      \                       <classification-value>I</classification-value>\n                        <generating-office>EP</generating-office>\n
+      \                   </patent-classification>\n                    <patent-classification
+      sequence=\"68\">\n                        <classification-scheme office=\"EP\"
+      scheme=\"CPCI\"/>\n                        <section>H</section>\n                        <class>04</class>\n
+      \                       <subclass>L</subclass>\n                        <main-group>12</main-group>\n
+      \                       <subgroup>28</subgroup>\n                        <classification-value>A</classification-value>\n
+      \                       <generating-office>US</generating-office>\n                    </patent-classification>\n
+      \                   <patent-classification sequence=\"69\">\n                        <classification-scheme
+      office=\"EP\" scheme=\"CPCI\"/>\n                        <section>H</section>\n
+      \                       <class>04</class>\n                        <subclass>L</subclass>\n
+      \                       <main-group>12</main-group>\n                        <subgroup>56</subgroup>\n
+      \                       <classification-value>A</classification-value>\n                        <generating-office>US</generating-office>\n
+      \                   </patent-classification>\n                    <patent-classification
+      sequence=\"70\">\n                        <classification-scheme office=\"EP\"
+      scheme=\"CPCI\"/>\n                        <section>H</section>\n                        <class>04</class>\n
+      \                       <subclass>L</subclass>\n                        <main-group>51</main-group>\n
+      \                       <subgroup>00</subgroup>\n                        <classification-value>A</classification-value>\n
+      \                       <generating-office>US</generating-office>\n                    </patent-classification>\n
+      \                   <patent-classification sequence=\"71\">\n                        <classification-scheme
+      office=\"EP\" scheme=\"CPCI\"/>\n                        <section>H</section>\n
+      \                       <class>04</class>\n                        <subclass>L</subclass>\n
+      \                       <main-group>61</main-group>\n                        <subgroup>5038</subgroup>\n
+      \                       <classification-value>A</classification-value>\n                        <generating-office>US</generating-office>\n
+      \                   </patent-classification>\n                    <patent-classification
+      sequence=\"72\">\n                        <classification-scheme office=\"EP\"
+      scheme=\"CPCI\"/>\n                        <section>H</section>\n                        <class>04</class>\n
+      \                       <subclass>L</subclass>\n                        <main-group>61</main-group>\n
+      \                       <subgroup>5038</subgroup>\n                        <classification-value>A</classification-value>\n
+      \                       <generating-office>EP</generating-office>\n                    </patent-classification>\n
+      \                   <patent-classification sequence=\"73\">\n                        <classification-scheme
+      office=\"EP\" scheme=\"CPCI\"/>\n                        <section>H</section>\n
+      \                       <class>04</class>\n                        <subclass>L</subclass>\n
+      \                       <main-group>63</main-group>\n                        <subgroup>0823</subgroup>\n
+      \                       <classification-value>A</classification-value>\n                        <generating-office>US</generating-office>\n
+      \                   </patent-classification>\n                    <patent-classification
+      sequence=\"74\">\n                        <classification-scheme office=\"EP\"
+      scheme=\"CPCI\"/>\n                        <section>H</section>\n                        <class>04</class>\n
+      \                       <subclass>L</subclass>\n                        <main-group>63</main-group>\n
+      \                       <subgroup>0823</subgroup>\n                        <classification-value>A</classification-value>\n
+      \                       <generating-office>EP</generating-office>\n                    </patent-classification>\n
+      \                   <patent-classification sequence=\"75\">\n                        <classification-scheme
+      office=\"EP\" scheme=\"CPCI\"/>\n                        <section>H</section>\n
+      \                       <class>04</class>\n                        <subclass>L</subclass>\n
+      \                       <main-group>67</main-group>\n                        <subgroup>52</subgroup>\n
+      \                       <classification-value>A</classification-value>\n                        <generating-office>US</generating-office>\n
+      \                   </patent-classification>\n                    <patent-classification
+      sequence=\"76\">\n                        <classification-scheme office=\"EP\"
+      scheme=\"CPCI\"/>\n                        <section>H</section>\n                        <class>04</class>\n
+      \                       <subclass>L</subclass>\n                        <main-group>67</main-group>\n
+      \                       <subgroup>535</subgroup>\n                        <classification-value>A</classification-value>\n
+      \                       <generating-office>US</generating-office>\n                    </patent-classification>\n
+      \                   <patent-classification sequence=\"77\">\n                        <classification-scheme
+      office=\"EP\" scheme=\"CPCI\"/>\n                        <section>H</section>\n
+      \                       <class>04</class>\n                        <subclass>L</subclass>\n
+      \                       <main-group>2101</main-group>\n                        <subgroup>604</subgroup>\n
+      \                       <classification-value>A</classification-value>\n                        <generating-office>US</generating-office>\n
+      \                   </patent-classification>\n                    <patent-classification
+      sequence=\"78\">\n                        <classification-scheme office=\"EP\"
+      scheme=\"CPCI\"/>\n                        <section>H</section>\n                        <class>04</class>\n
+      \                       <subclass>L</subclass>\n                        <main-group>2101</main-group>\n
+      \                       <subgroup>604</subgroup>\n                        <classification-value>A</classification-value>\n
+      \                       <generating-office>EP</generating-office>\n                    </patent-classification>\n
+      \                   <patent-classification sequence=\"79\">\n                        <classification-scheme
+      office=\"EP\" scheme=\"CPCI\"/>\n                        <section>H</section>\n
+      \                       <class>04</class>\n                        <subclass>L</subclass>\n
+      \                       <main-group>2101</main-group>\n                        <subgroup>659</subgroup>\n
+      \                       <classification-value>A</classification-value>\n                        <generating-office>KR</generating-office>\n
+      \                   </patent-classification>\n                    <patent-classification
+      sequence=\"80\">\n                        <classification-scheme office=\"EP\"
+      scheme=\"CPCI\"/>\n                        <section>H</section>\n                        <class>04</class>\n
+      \                       <subclass>L</subclass>\n                        <main-group>2101</main-group>\n
+      \                       <subgroup>659</subgroup>\n                        <classification-value>A</classification-value>\n
+      \                       <generating-office>US</generating-office>\n                    </patent-classification>\n
+      \                   <patent-classification sequence=\"81\">\n                        <classification-scheme
+      office=\"EP\" scheme=\"CPCI\"/>\n                        <section>H</section>\n
+      \                       <class>04</class>\n                        <subclass>L</subclass>\n
+      \                       <main-group>2101</main-group>\n                        <subgroup>659</subgroup>\n
+      \                       <classification-value>A</classification-value>\n                        <generating-office>EP</generating-office>\n
+      \                   </patent-classification>\n                    <patent-classification
+      sequence=\"82\">\n                        <classification-scheme office=\"EP\"
+      scheme=\"CPCI\"/>\n                        <section>H</section>\n                        <class>04</class>\n
+      \                       <subclass>W</subclass>\n                        <main-group>12</main-group>\n
+      \                       <subgroup>0471</subgroup>\n                        <classification-value>A</classification-value>\n
+      \                       <generating-office>US</generating-office>\n                    </patent-classification>\n
+      \                   <patent-classification sequence=\"83\">\n                        <classification-scheme
+      office=\"EP\" scheme=\"CPCI\"/>\n                        <section>H</section>\n
+      \                       <class>04</class>\n                        <subclass>W</subclass>\n
+      \                       <main-group>12</main-group>\n                        <subgroup>0471</subgroup>\n
+      \                       <classification-value>A</classification-value>\n                        <generating-office>EP</generating-office>\n
+      \                   </patent-classification>\n                    <patent-classification
+      sequence=\"84\">\n                        <classification-scheme office=\"EP\"
+      scheme=\"CPCI\"/>\n                        <section>H</section>\n                        <class>04</class>\n
+      \                       <subclass>W</subclass>\n                        <main-group>80</main-group>\n
+      \                       <subgroup>045</subgroup>\n                        <classification-value>A</classification-value>\n
+      \                       <generating-office>US</generating-office>\n                    </patent-classification>\n
+      \                   <patent-classification sequence=\"85\">\n                        <classification-scheme
+      office=\"EP\" scheme=\"CPCI\"/>\n                        <section>H</section>\n
+      \                       <class>04</class>\n                        <subclass>W</subclass>\n
+      \                       <main-group>84</main-group>\n                        <subgroup>18</subgroup>\n
+      \                       <classification-value>A</classification-value>\n                        <generating-office>US</generating-office>\n
+      \                   </patent-classification>\n                    <patent-classification
+      sequence=\"86\">\n                        <classification-scheme office=\"EP\"
+      scheme=\"CPCI\"/>\n                        <section>H</section>\n                        <class>04</class>\n
+      \                       <subclass>W</subclass>\n                        <main-group>84</main-group>\n
+      \                       <subgroup>18</subgroup>\n                        <classification-value>A</classification-value>\n
+      \                       <generating-office>EP</generating-office>\n                    </patent-classification>\n
+      \                   <patent-classification sequence=\"87\">\n                        <classification-scheme
+      office=\"EP\" scheme=\"CPCI\"/>\n                        <section>H</section>\n
+      \                       <class>04</class>\n                        <subclass>W</subclass>\n
+      \                       <main-group>88</main-group>\n                        <subgroup>04</subgroup>\n
+      \                       <classification-value>A</classification-value>\n                        <generating-office>US</generating-office>\n
+      \                   </patent-classification>\n                    <patent-classification
+      sequence=\"88\">\n                        <classification-scheme office=\"EP\"
+      scheme=\"CPCI\"/>\n                        <section>H</section>\n                        <class>04</class>\n
+      \                       <subclass>W</subclass>\n                        <main-group>88</main-group>\n
+      \                       <subgroup>04</subgroup>\n                        <classification-value>A</classification-value>\n
+      \                       <generating-office>EP</generating-office>\n                    </patent-classification>\n
+      \                   <patent-classification sequence=\"89\">\n                        <classification-scheme
+      office=\"EP\" scheme=\"CPCI\"/>\n                        <section>H</section>\n
+      \                       <class>04</class>\n                        <subclass>W</subclass>\n
+      \                       <main-group>88</main-group>\n                        <subgroup>06</subgroup>\n
+      \                       <classification-value>A</classification-value>\n                        <generating-office>US</generating-office>\n
+      \                   </patent-classification>\n                    <patent-classification
+      sequence=\"90\">\n                        <classification-scheme office=\"EP\"
+      scheme=\"CPCI\"/>\n                        <section>H</section>\n                        <class>04</class>\n
+      \                       <subclass>W</subclass>\n                        <main-group>88</main-group>\n
+      \                       <subgroup>06</subgroup>\n                        <classification-value>A</classification-value>\n
+      \                       <generating-office>EP</generating-office>\n                    </patent-classification>\n
+      \                   <patent-classification sequence=\"91\">\n                        <classification-scheme
+      office=\"EP\" scheme=\"CPCI\"/>\n                        <section>Y</section>\n
+      \                       <class>02</class>\n                        <subclass>D</subclass>\n
+      \                       <main-group>30</main-group>\n                        <subgroup>70</subgroup>\n
+      \                       <classification-value>A</classification-value>\n                        <generating-office>US</generating-office>\n
+      \                   </patent-classification>\n                    <patent-classification
+      sequence=\"92\">\n                        <classification-scheme office=\"EP\"
+      scheme=\"CPCI\"/>\n                        <section>Y</section>\n                        <class>02</class>\n
+      \                       <subclass>D</subclass>\n                        <main-group>30</main-group>\n
+      \                       <subgroup>70</subgroup>\n                        <classification-value>A</classification-value>\n
+      \                       <generating-office>EP</generating-office>\n                    </patent-classification>\n
+      \                   <patent-classification sequence=\"93\">\n                        <classification-scheme
+      office=\"EP\" scheme=\"CPCI\"/>\n                        <section>Y</section>\n
+      \                       <class>04</class>\n                        <subclass>S</subclass>\n
+      \                       <main-group>40</main-group>\n                        <subgroup>18</subgroup>\n
+      \                       <classification-value>A</classification-value>\n                        <generating-office>US</generating-office>\n
+      \                   </patent-classification>\n                    <patent-classification
+      sequence=\"94\">\n                        <classification-scheme office=\"EP\"
+      scheme=\"CPCI\"/>\n                        <section>Y</section>\n                        <class>04</class>\n
+      \                       <subclass>S</subclass>\n                        <main-group>40</main-group>\n
+      \                       <subgroup>18</subgroup>\n                        <classification-value>A</classification-value>\n
+      \                       <generating-office>EP</generating-office>\n                    </patent-classification>\n
+      \                   <patent-classification sequence=\"95\">\n                        <classification-scheme
+      office=\"EP\" scheme=\"CPCI\"/>\n                        <section>Y</section>\n
+      \                       <class>04</class>\n                        <subclass>S</subclass>\n
+      \                       <main-group>40</main-group>\n                        <subgroup>20</subgroup>\n
+      \                       <classification-value>A</classification-value>\n                        <generating-office>EP</generating-office>\n
+      \                   </patent-classification>\n                </patent-classifications>\n
+      \               <application-reference doc-id=\"611669467\">\n                    <document-id
+      document-id-type=\"docdb\">\n                        <country>CA</country>\n
+      \                       <doc-number>3237996</doc-number>\n                        <kind>A</kind>\n
       \                   </document-id>\n                    <document-id document-id-type=\"epodoc\">\n
-      \                       <doc-number>TWD222991S</doc-number>\n                        <date>20230101</date>\n
-      \                   </document-id>\n                </publication-reference>\n
-      \               <patent-classifications/>\n                <application-reference
-      doc-id=\"603107600\">\n                    <document-id document-id-type=\"docdb\">\n
-      \                       <country>TW</country>\n                        <doc-number>111302295</doc-number>\n
-      \                       <kind>F</kind>\n                    </document-id>\n
-      \                   <document-id document-id-type=\"epodoc\">\n                        <doc-number>TW20220302295F</doc-number>\n
-      \                       <date>20201203</date>\n                    </document-id>\n
-      \                   <document-id document-id-type=\"original\">\n                        <doc-number>111302295</doc-number>\n
-      \                   </document-id>\n                </application-reference>\n
-      \               <priority-claims>\n                    <priority-claim sequence=\"1\"
-      kind=\"national\">\n                        <document-id document-id-type=\"epodoc\">\n
-      \                           <doc-number>US202029737185F</doc-number>\n                            <date>20200605</date>\n
-      \                       </document-id>\n                        <document-id
-      document-id-type=\"original\">\n                            <doc-number>29/737,185</doc-number>\n
+      \                       <doc-number>CA20143237996</doc-number>\n                        <date>20140623</date>\n
+      \                   </document-id>\n                    <document-id document-id-type=\"original\">\n
+      \                       <doc-number>3237996</doc-number>\n                    </document-id>\n
+      \               </application-reference>\n                <priority-claims>\n
+      \                   <priority-claim sequence=\"1\" kind=\"national\">\n                        <document-id
+      document-id-type=\"epodoc\">\n                            <doc-number>US201313926335</doc-number>\n
+      \                           <date>20130625</date>\n                        </document-id>\n
+      \                       <document-id document-id-type=\"original\">\n                            <doc-number>13/926,335</doc-number>\n
+      \                       </document-id>\n                    </priority-claim>\n
+      \                   <priority-claim sequence=\"2\" kind=\"national\">\n                        <document-id
+      document-id-type=\"epodoc\">\n                            <doc-number>CA20143146924</doc-number>\n
+      \                           <date>20140623</date>\n                        </document-id>\n
+      \                       <document-id document-id-type=\"original\">\n                            <doc-number>3146924</doc-number>\n
       \                       </document-id>\n                    </priority-claim>\n
       \               </priority-claims>\n                <parties>\n                    <applicants>\n
       \                       <applicant sequence=\"1\" data-format=\"epodoc\">\n
-      \                           <applicant-name>\n                                <name>\u7F8E\u5546\u8C37\u6B4C\u6709\u9650\u8CAC\u4EFB\u516C\u53F8
-      \u7F8E\u570B\u2002[US]</name>\n                            </applicant-name>\n
-      \                       </applicant>\n                        <applicant sequence=\"2\"
-      data-format=\"epodoc\">\n                            <applicant-name>\n                                <name>
-      GOOGLE LLC\u2002[US]</name>\n                            </applicant-name>\n
-      \                       </applicant>\n                        <applicant sequence=\"1\"
-      data-format=\"original\">\n                            <applicant-name>\n                                <name>\u7F8E\u5546\u8C37\u6B4C\u6709\u9650\u8CAC\u4EFB\u516C\u53F8
-      (\u7F8E\u570B), </name>\n                            </applicant-name>\n                        </applicant>\n
-      \                       <applicant sequence=\"2\" data-format=\"original\">\n
+      \                           <applicant-name>\n                                <name>GOOGLE
+      LLC\u2002[US]</name>\n                            </applicant-name>\n                        </applicant>\n
+      \                       <applicant sequence=\"1\" data-format=\"original\">\n
       \                           <applicant-name>\n                                <name>GOOGLE
       LLC</name>\n                            </applicant-name>\n                        </applicant>\n
       \                   </applicants>\n                    <inventors>\n                        <inventor
       sequence=\"1\" data-format=\"epodoc\">\n                            <inventor-name>\n
-      \                               <name>REICHERT STEFAN</name>\n                            </inventor-name>\n
+      \                               <name>ERICKSON GRANT M\u2002[US]</name>\n                            </inventor-name>\n
       \                       </inventor>\n                        <inventor sequence=\"2\"
       data-format=\"epodoc\">\n                            <inventor-name>\n                                <name>
-      BEYER HENRY A</name>\n                            </inventor-name>\n                        </inventor>\n
-      \                       <inventor sequence=\"3\" data-format=\"epodoc\">\n                            <inventor-name>\n
-      \                               <name> OLSSON MAJ ISABELLE</name>\n                            </inventor-name>\n
+      LOGUE JAY D\u2002[US]</name>\n                            </inventor-name>\n
+      \                       </inventor>\n                        <inventor sequence=\"3\"
+      data-format=\"epodoc\">\n                            <inventor-name>\n                                <name>
+      BOROSS CHRISTOPHER A\u2002[US]</name>\n                            </inventor-name>\n
       \                       </inventor>\n                        <inventor sequence=\"4\"
       data-format=\"epodoc\">\n                            <inventor-name>\n                                <name>
-      MORGENROTH KATHERINE</name>\n                            </inventor-name>\n
+      SMITH ZACHARY B\u2002[US]</name>\n                            </inventor-name>\n
+      \                       </inventor>\n                        <inventor sequence=\"5\"
+      data-format=\"epodoc\">\n                            <inventor-name>\n                                <name>
+      HARDISON OSBORNE B\u2002[US]</name>\n                            </inventor-name>\n
+      \                       </inventor>\n                        <inventor sequence=\"6\"
+      data-format=\"epodoc\">\n                            <inventor-name>\n                                <name>
+      SCHULTZ RICHARD J\u2002[US]</name>\n                            </inventor-name>\n
+      \                       </inventor>\n                        <inventor sequence=\"7\"
+      data-format=\"epodoc\">\n                            <inventor-name>\n                                <name>
+      GUJJARU SUNNY P\u2002[US]</name>\n                            </inventor-name>\n
+      \                       </inventor>\n                        <inventor sequence=\"8\"
+      data-format=\"epodoc\">\n                            <inventor-name>\n                                <name>
+      NEELEY MATTHEW G\u2002[US]</name>\n                            </inventor-name>\n
       \                       </inventor>\n                        <inventor sequence=\"1\"
-      data-format=\"original\">\n                            <inventor-name>\n                                <name>REICHERT,
-      STEFAN, </name>\n                            </inventor-name>\n                        </inventor>\n
+      data-format=\"original\">\n                            <inventor-name>\n                                <name>ERICKSON,
+      GRANT M, </name>\n                            </inventor-name>\n                        </inventor>\n
       \                       <inventor sequence=\"2\" data-format=\"original\">\n
-      \                           <inventor-name>\n                                <name>BEYER,
-      HENRY A, </name>\n                            </inventor-name>\n                        </inventor>\n
+      \                           <inventor-name>\n                                <name>LOGUE,
+      JAY D, </name>\n                            </inventor-name>\n                        </inventor>\n
       \                       <inventor sequence=\"3\" data-format=\"original\">\n
-      \                           <inventor-name>\n                                <name>OLSSON,
-      MAJ ISABELLE, </name>\n                            </inventor-name>\n                        </inventor>\n
+      \                           <inventor-name>\n                                <name>BOROSS,
+      CHRISTOPHER A, </name>\n                            </inventor-name>\n                        </inventor>\n
       \                       <inventor sequence=\"4\" data-format=\"original\">\n
-      \                           <inventor-name>\n                                <name>MORGENROTH,
-      KATHERINE</name>\n                            </inventor-name>\n                        </inventor>\n
+      \                           <inventor-name>\n                                <name>SMITH,
+      ZACHARY B, </name>\n                            </inventor-name>\n                        </inventor>\n
+      \                       <inventor sequence=\"5\" data-format=\"original\">\n
+      \                           <inventor-name>\n                                <name>HARDISON,
+      OSBORNE B, </name>\n                            </inventor-name>\n                        </inventor>\n
+      \                       <inventor sequence=\"6\" data-format=\"original\">\n
+      \                           <inventor-name>\n                                <name>SCHULTZ,
+      RICHARD J, </name>\n                            </inventor-name>\n                        </inventor>\n
+      \                       <inventor sequence=\"7\" data-format=\"original\">\n
+      \                           <inventor-name>\n                                <name>GUJJARU,
+      SUNNY P, </name>\n                            </inventor-name>\n                        </inventor>\n
+      \                       <inventor sequence=\"8\" data-format=\"original\">\n
+      \                           <inventor-name>\n                                <name>NEELEY,
+      MATTHEW G</name>\n                            </inventor-name>\n                        </inventor>\n
       \                   </inventors>\n                </parties>\n                <invention-title
-      lang=\"en\">MEDIA STREAMING ACCESSORY</invention-title>\n                <invention-title
-      lang=\"ol\">\u5A92\u9AD4\u4E32\u6D41\u914D\u4EF6</invention-title>\n            </bibliographic-data>\n
-      \           <abstract lang=\"ol\">\n                <p>\uFEFF\u3010\u7269\u54C1\u7528\u9014\u3011;\u672C\u8A2D\u8A08\u4FC2\u95DC\u65BC\u4E00\u7A2E\u5A92\u9AD4\u4E32\u6D41\u914D\u4EF6\u3002;\u3010\u8A2D\u8A08\u8AAA\u660E\u3011</p>\n
-      \           </abstract>\n        </exchange-document>\n    </exchange-documents>\n</ops:world-patent-data>"
+      lang=\"fr\">COMMUNICATION EFFICACE DESTINEE A DES DISPOSITIFS DANS UN RESEAU
+      DOMESTIQUE</invention-title>\n                <invention-title lang=\"en\">EFFIECIENT
+      COMMUNICATION FOR DEVICES OF A HOME NETWORK</invention-title>\n            </bibliographic-data>\n
+      \       </exchange-document>\n    </exchange-documents>\n</ops:world-patent-data>"
     headers:
       Access-Control-Allow-Headers:
       - Authorization
@@ -160,16 +709,18 @@ interactions:
       - POST
       Access-Control-Allow-Origin:
       - '*'
+      Cache-Control:
+      - no-cache
       Connection:
       - keep-alive
       Content-Length:
-      - '6078'
+      - '60283'
       Content-Type:
       - application/xml;charset=utf-8
       Date:
-      - Mon, 11 Dec 2023 16:00:11 GMT
+      - Wed, 22 May 2024 16:32:42 GMT
       ETag:
-      - '"0dc24dc95462e0687b45701908ff0f8c3"'
+      - '"0ffe03e52dbe0357a5b9c1e2803a45a70"'
       Pragma:
       - no-cache
       Server:
@@ -187,12 +738,12 @@ interactions:
       X-Elapsed-Time:
       - '3'
       X-IndividualQuotaPerHour-Used:
-      - '254400'
+      - '287170'
       X-RegisteredQuotaPerWeek-Used:
-      - '254400'
+      - '1365416'
       X-Throttling-Control:
-      - busy (images=green:100, inpadoc=green:45, other=green:1000, retrieval=green:100,
-        search=green:15)
+      - idle (images=green:200, inpadoc=green:60, other=green:1000, retrieval=green:200,
+        search=green:30)
     http_version: HTTP/1.1
     status_code: 200
 version: 1

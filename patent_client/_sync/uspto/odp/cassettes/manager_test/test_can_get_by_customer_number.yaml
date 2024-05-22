@@ -1,0 +1,47 @@
+interactions:
+- request:
+    body: '{"q": "customerNumber:(31625)", "fields": ["applicationNumberText"], "pagination":
+      {"offset": 0, "limit": 25}}'
+    headers:
+      X-API-KEY:
+      - REDACTED
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '110'
+      content-type:
+      - application/json
+      host:
+      - beta-api.uspto.gov
+      user-agent:
+      - Mozilla/5.0 Python Patent Clientbot/5.0.14 (parkerhancock@users.noreply.github.com)
+    method: POST
+    uri: https://beta-api.uspto.gov/api/v1/patent/applications/search
+  response:
+    content: '{"count":3045,"patentBag":[{"applicationNumberText":"18415062"},{"applicationNumberText":"18482547"},{"applicationNumberText":"18478156"},{"applicationNumberText":"18474891"},{"applicationNumberText":"18461871"},{"applicationNumberText":"90019241"},{"applicationNumberText":"18453427"},{"applicationNumberText":"18453057"},{"applicationNumberText":"18450866"},{"applicationNumberText":"90019236"},{"applicationNumberText":"18447727"},{"applicationNumberText":"18446676"},{"applicationNumberText":"18366813"},{"applicationNumberText":"18360629"},{"applicationNumberText":"18353474"},{"applicationNumberText":"18351142"},{"applicationNumberText":"PCT/US23/69770"},{"applicationNumberText":"18343852"},{"applicationNumberText":"18341221"},{"applicationNumberText":"18338555"},{"applicationNumberText":"18336529"},{"applicationNumberText":"18331261"},{"applicationNumberText":"PCT/US23/24572"},{"applicationNumberText":"18321125"},{"applicationNumberText":"PCT/US23/22846"}],"requestIdentifier":"6576142e-0d83-4e77-8670-5f26f0ccf1dd"}'
+    headers:
+      access-control-allow-headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      access-control-allow-methods:
+      - OPTIONS,POST,GET
+      access-control-allow-origin:
+      - '*'
+      content-length:
+      - '1030'
+      content-type:
+      - application/json
+      date:
+      - Wed, 22 May 2024 16:33:19 GMT
+      x-amz-apigw-id:
+      - YLmsaFasIAMF_fw=
+      x-amzn-requestid:
+      - 6576142e-0d83-4e77-8670-5f26f0ccf1dd
+      x-amzn-trace-id:
+      - Root=1-664e1e4f-630e089060b659c479143c26;Parent=2ac32be5beb9a82a;Sampled=0;lineage=33e8fdb8:0
+    http_version: HTTP/2
+    status_code: 200
+version: 1

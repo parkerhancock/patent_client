@@ -21,6 +21,8 @@ class BaseODPModel(BaseModel):
 
 
 # Common
+
+
 class Address(BaseODPModel):
     city_name: Optional[str] = Field(alias="cityName", default=None)
     geographic_region_name: Optional[str] = Field(alias="geographicRegionName", default=None)
@@ -37,6 +39,8 @@ class Address(BaseODPModel):
 
 
 # Continuity
+
+
 class Relationship(BaseODPModel):
     application_status_code: Optional[int] = Field(default=None)
     claim_type_code: Optional[str] = Field(alias="claimParentageTypeCode", default=None)
@@ -65,6 +69,8 @@ class Continuity(BaseODPModel):
 
 
 # Documents
+
+
 class DownloadOption(BaseODPModel):
     mime_type_identifier: Optional[str] = Field(default=None)
     download_url: Optional[str] = Field(default=None)
@@ -99,6 +105,8 @@ class Document(BaseODPModel):
 
 
 # Assignment
+
+
 class Assignor(BaseODPModel):
     execution_date: Optional[datetime.date] = Field(alias="executionDate", default=None)
     assignor_name: Optional[str] = Field(alias="assignorName", default=None)
@@ -120,7 +128,7 @@ class Assignment(BaseODPModel):
     assignment_received_date: Optional[datetime.date] = Field(
         alias="assignmentReceivedDate", default=None
     )
-    frame_number: Optional[str] = Field(alias="frameNumber", default=None)
+    frame_number: Optional[int] = Field(alias="frameNumber", default=None)
     page_number: Optional[int] = Field(alias="pageNumber", default=None)
     reel_number_frame_number: Optional[str] = Field(alias="reelNumber/frameNumber", default=None)
     assignment_recorded_date: Optional[datetime.date] = Field(
@@ -130,7 +138,7 @@ class Assignment(BaseODPModel):
     assignment_mailed_date: Optional[datetime.date] = Field(
         alias="assignmentMailedDate", default=None
     )
-    reel_number: Optional[str] = Field(alias="reelNumber", default=None)
+    reel_number: Optional[int] = Field(alias="reelNumber", default=None)
     assignor_bag: list[Assignor] = Field(alias="assignorBag", default_factory=list)
     assignee_bag: list[Assignee] = Field(alias="assigneeBag", default_factory=list)
     correspondence_address: list[Address] = Field(
@@ -139,6 +147,8 @@ class Assignment(BaseODPModel):
 
 
 # Foreign Priority
+
+
 class ForeignPriority(BaseODPModel):
     priority_number_text: Optional[str] = Field(alias="priorityNumberText", default=None)
     filing_date: Optional[datetime.date] = Field(alias="filingDate", default=None)
@@ -146,6 +156,8 @@ class ForeignPriority(BaseODPModel):
 
 
 # Attorney
+
+
 class TelecommunicationAddress(BaseODPModel):
     telecommunication_number: Optional[str] = Field(alias="telecommunicationNumber", default=None)
     usage_type_category: Optional[str] = Field(alias="usageTypeCategory", default=None)
@@ -177,6 +189,8 @@ class CustomerNumber(BaseODPModel):
 
 
 # Transactions
+
+
 class Transaction(BaseODPModel):
     recorded_date: Optional[datetime.date] = Field(alias="recordedDate", default=None)
     transaction_code: Optional[str] = Field(alias="caseActionCode", default=None)
@@ -221,6 +235,7 @@ class TermAdjustment(BaseODPModel):
 
 
 # Application Object
+
 YNBool = Annotated[bool, BeforeValidator(lambda v: v == "Y")]
 
 
@@ -302,6 +317,7 @@ class USApplicationBiblio(BaseODPModel):
         return self._get_model(".model.Transaction").objects.filter(appl_id=self.appl_id)
 
     # Aliases
+
     @property
     def biblio(self) -> "USApplicationBiblio":
         return self.bibliographic_data
@@ -338,11 +354,14 @@ class USApplication(BaseODPModel):
     )
     patent_number: Optional[str] = Field(alias="patentNumber", default=None)
     grant_date: Optional[datetime.date] = Field(alias="grantDate", default=None)
+
     app_type_code: Optional[str] = Field(alias="applicationTypeCode", default=None)
     national_stage_indicator: Optional[YNBool] = Field(alias="nationalStageIndicator", default=None)
+
     status: Optional[str] = Field(alias="applicationStatusDescriptionText", default=None)
     status_date: Optional[datetime.date] = Field(alias="applicationStatusDate", default=None)
     status_code: Optional[int] = Field(alias="applicationStatusCode", default=None)
+
     effective_filing_date: Optional[datetime.date] = Field(
         alias="effectiveFilingDate", default=None
     )
@@ -369,6 +388,8 @@ class USApplication(BaseODPModel):
 
 
 ## RESPONSE Models
+
+
 class SearchResult(BaseODPModel):
     filing_date: Optional[datetime.date] = Field(default=None)
     appl_id: Optional[str] = Field(alias="applicationNumberText", default=None)
@@ -384,6 +405,8 @@ class SearchResponse(BaseODPModel):
 
 
 ## Request Models
+
+
 class Filter(BaseModel):
     name: Optional[str] = Field(default=None)
     value: Optional[List[str]] = Field(default_factory=list)

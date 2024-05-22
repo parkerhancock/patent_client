@@ -1,6 +1,6 @@
 interactions:
 - request:
-    body: '{"caseId": 27922406, "hl_snippets": "2", "op": "OR", "q": "\"tennis\".TTL.
+    body: '{"caseId": 28621613, "hl_snippets": "2", "op": "OR", "q": "\"tennis\".TTL.
       AND @PD>=20100101<=20100227", "queryName": "\"tennis\".TTL. AND @PD>=20100101<=20100227",
       "highlights": "1", "qt": "brs", "spellCheck": false, "viewName": "tile", "plurals":
       true, "britishEquivalents": true, "databaseFilters": [{"databaseName": "USPAT",
@@ -11,6 +11,8 @@ interactions:
       - '*/*'
       accept-encoding:
       - gzip, deflate
+      cache-control:
+      - no-cache
       connection:
       - keep-alive
       content-length:
@@ -19,17 +21,79 @@ interactions:
       - application/json
       host:
       - ppubs.uspto.gov
+      origin:
+      - https://ppubs.uspto.gov
+      pragma:
+      - no-cache
+      priority:
+      - u=1, i
+      referer:
+      - https://ppubs.uspto.gov/pubwebapp/
       user-agent:
       - Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML,
         like Gecko) Chrome/114.0.0.0 Safari/537.36
       x-access-token:
-      - eyJzdWIiOiJlYzZmYTVkOC03NWZiLTQ5ZTktODFjMS0wZjI1MWY1NmRiZGUiLCJ2ZXIiOiIxOTAzNDQ1Yi1jMWRmLTQyYTEtODJmYi05ZDdiNWJmMWI0NDgiLCJleHAiOjB9
+      - eyJzdWIiOiI4ZGIzNjdkOS1lZjc1LTRiNDQtYjA1ZS1mZDVjMzk3NjM1YzUiLCJ2ZXIiOiI2MDlhMWNhMi1hOGM0LTQxMWQtOTlkYy02NTYzZGVhMDNiZTEiLCJleHAiOjB9
       x-requested-with:
       - XMLHttpRequest
     method: POST
     uri: https://ppubs.uspto.gov/dirsearch-public/searches/counts
   response:
-    content: '{"id":null,"caseId":27922406,"userId":null,"numResults":1,"ignorePersist":true,"fq":null,"databaseFilters":[{"databaseName":"USPAT","countryCodes":[]}],"q":"\"tennis\".TTL.
+    content: '{ "message": "Too many requests" }'
+    headers:
+      content-length:
+      - '34'
+      content-type:
+      - application/json;charset=ISO-8859-1
+      date:
+      - Wed, 22 May 2024 16:34:40 GMT
+      server-timing:
+      - intid;desc=2092b0755b86792b
+      x-rate-limit-retry-after-seconds:
+      - '0'
+    http_version: HTTP/2
+    status_code: 429
+- request:
+    body: '{"caseId": 28621613, "hl_snippets": "2", "op": "OR", "q": "\"tennis\".TTL.
+      AND @PD>=20100101<=20100227", "queryName": "\"tennis\".TTL. AND @PD>=20100101<=20100227",
+      "highlights": "1", "qt": "brs", "spellCheck": false, "viewName": "tile", "plurals":
+      true, "britishEquivalents": true, "databaseFilters": [{"databaseName": "USPAT",
+      "countryCodes": []}], "searchType": 1, "ignorePersist": true, "userEnteredQuery":
+      "\"tennis\".TTL. AND @PD>=20100101<=20100227"}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      cache-control:
+      - no-cache
+      connection:
+      - keep-alive
+      content-length:
+      - '457'
+      content-type:
+      - application/json
+      host:
+      - ppubs.uspto.gov
+      origin:
+      - https://ppubs.uspto.gov
+      pragma:
+      - no-cache
+      priority:
+      - u=1, i
+      referer:
+      - https://ppubs.uspto.gov/pubwebapp/
+      user-agent:
+      - Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/114.0.0.0 Safari/537.36
+      x-access-token:
+      - eyJzdWIiOiI4ZGIzNjdkOS1lZjc1LTRiNDQtYjA1ZS1mZDVjMzk3NjM1YzUiLCJ2ZXIiOiI2MDlhMWNhMi1hOGM0LTQxMWQtOTlkYy02NTYzZGVhMDNiZTEiLCJleHAiOjB9
+      x-requested-with:
+      - XMLHttpRequest
+    method: POST
+    uri: https://ppubs.uspto.gov/dirsearch-public/searches/counts
+  response:
+    content: '{"id":null,"caseId":28621613,"userId":null,"numResults":1,"ignorePersist":true,"fq":null,"databaseFilters":[{"databaseName":"USPAT","countryCodes":[]}],"q":"\"tennis\".TTL.
       AND @PD>=20100101<=20100227","queryName":"\"tennis\".TTL. AND @PD>=20100101<=20100227","userEnteredQuery":"\"tennis\".TTL.
       AND @PD>=20100101<=20100227","viewName":"tile","op":"OR","highlights":"1","plurals":true,"britishEquivalents":true,"searchType":1,"excludeResultsAfter":null,"dateCreated":null,"deleteIn":false,"expand":false,"expandSort":null,"expandRows":null,"expandTrackDocScores":false,"expandTrackMaxScore":false,"termGraph":{"termOrigin":[{"id":0,"name":null,"nodeType":"ROOT","parentId":null,"relation":null,"aliases":["default"],"aliasCategory":"OTHER"},{"id":1,"name":"\"tennis\"","nodeType":"TERM","parentId":0,"relation":"REGULAR","aliases":["default"],"aliasCategory":"OTHER"},{"id":4,"name":"\"tenni\"","nodeType":"TERM","parentId":1,"relation":"PLURAL","aliases":["default"],"aliasCategory":"OTHER"},{"id":5,"name":"@pd","nodeType":"RANGE","parentId":0,"relation":"REGULAR","aliases":["pd"],"aliasCategory":"DATE_INT"}],"termRelationship":[]},"hl":false,"fl":null,"originalQuery":"\"tennis\".TTL.
       AND @PD>=20100101<=20100227","error":null,"terms":["\"tennis\"","\"tenni\"","@pd"],"facets":[{"solrField":"document_type","count":1,"id":"USPAT"}],"pNumber":null,"hl_fl":null}'
@@ -37,11 +101,11 @@ interactions:
       content-type:
       - application/json
       date:
-      - Wed, 24 Apr 2024 21:20:59 GMT
+      - Wed, 22 May 2024 16:34:41 GMT
       server-timing:
-      - intid;desc=5595da28e2c41141
+      - intid;desc=6aa09cf746fc08ad
       x-rate-limit-remaining:
-      - '56'
+      - '0'
     http_version: HTTP/2
     status_code: 200
 - request:
@@ -49,7 +113,7 @@ interactions:
       "familyIdFiltering", "searchType": 1, "familyIdEnglishOnly": true, "familyIdFirstPreferred":
       "US-PGPUB", "familyIdSecondPreferred": "USPAT", "familyIdThirdPreferred": "FPRS",
       "showDocPerFamilyPref": "showEnglish", "queryId": 0, "tagDocSearch": false,
-      "query": {"caseId": 27922406, "hl_snippets": "2", "op": "OR", "q": "\"tennis\".TTL.
+      "query": {"caseId": 28621613, "hl_snippets": "2", "op": "OR", "q": "\"tennis\".TTL.
       AND @PD>=20100101<=20100227", "queryName": "\"tennis\".TTL. AND @PD>=20100101<=20100227",
       "highlights": "1", "qt": "brs", "spellCheck": false, "viewName": "tile", "plurals":
       true, "britishEquivalents": true, "databaseFilters": [{"databaseName": "USPAT",
@@ -60,6 +124,8 @@ interactions:
       - '*/*'
       accept-encoding:
       - gzip, deflate
+      cache-control:
+      - no-cache
       connection:
       - keep-alive
       content-length:
@@ -68,17 +134,83 @@ interactions:
       - application/json
       host:
       - ppubs.uspto.gov
+      origin:
+      - https://ppubs.uspto.gov
+      pragma:
+      - no-cache
+      priority:
+      - u=1, i
+      referer:
+      - https://ppubs.uspto.gov/pubwebapp/
       user-agent:
       - Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML,
         like Gecko) Chrome/114.0.0.0 Safari/537.36
       x-access-token:
-      - eyJzdWIiOiJlYzZmYTVkOC03NWZiLTQ5ZTktODFjMS0wZjI1MWY1NmRiZGUiLCJ2ZXIiOiIxOTAzNDQ1Yi1jMWRmLTQyYTEtODJmYi05ZDdiNWJmMWI0NDgiLCJleHAiOjB9
+      - eyJzdWIiOiI4ZGIzNjdkOS1lZjc1LTRiNDQtYjA1ZS1mZDVjMzk3NjM1YzUiLCJ2ZXIiOiI2MDlhMWNhMi1hOGM0LTQxMWQtOTlkYy02NTYzZGVhMDNiZTEiLCJleHAiOjB9
       x-requested-with:
       - XMLHttpRequest
     method: POST
     uri: https://ppubs.uspto.gov/dirsearch-public/searches/searchWithBeFamily
   response:
-    content: '{"numFound":1,"perPage":500,"page":0,"totalPages":0,"hlSnippets":0,"sort":null,"query":{"id":null,"caseId":27922406,"userId":null,"numResults":1,"ignorePersist":true,"fq":null,"databaseFilters":[{"databaseName":"USPAT","countryCodes":[]}],"q":"\"tennis\".TTL.
+    content: '{ "message": "Too many requests" }'
+    headers:
+      content-length:
+      - '34'
+      content-type:
+      - application/json;charset=ISO-8859-1
+      date:
+      - Wed, 22 May 2024 16:34:41 GMT
+      server-timing:
+      - intid;desc=f3a9d44a15e06bdd
+      x-rate-limit-retry-after-seconds:
+      - '0'
+    http_version: HTTP/2
+    status_code: 429
+- request:
+    body: '{"start": 0, "pageCount": 500, "sort": "date_publ desc", "docFamilyFiltering":
+      "familyIdFiltering", "searchType": 1, "familyIdEnglishOnly": true, "familyIdFirstPreferred":
+      "US-PGPUB", "familyIdSecondPreferred": "USPAT", "familyIdThirdPreferred": "FPRS",
+      "showDocPerFamilyPref": "showEnglish", "queryId": 0, "tagDocSearch": false,
+      "query": {"caseId": 28621613, "hl_snippets": "2", "op": "OR", "q": "\"tennis\".TTL.
+      AND @PD>=20100101<=20100227", "queryName": "\"tennis\".TTL. AND @PD>=20100101<=20100227",
+      "highlights": "1", "qt": "brs", "spellCheck": false, "viewName": "tile", "plurals":
+      true, "britishEquivalents": true, "databaseFilters": [{"databaseName": "USPAT",
+      "countryCodes": []}], "searchType": 1, "ignorePersist": true, "userEnteredQuery":
+      "\"tennis\".TTL. AND @PD>=20100101<=20100227"}}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      cache-control:
+      - no-cache
+      connection:
+      - keep-alive
+      content-length:
+      - '797'
+      content-type:
+      - application/json
+      host:
+      - ppubs.uspto.gov
+      origin:
+      - https://ppubs.uspto.gov
+      pragma:
+      - no-cache
+      priority:
+      - u=1, i
+      referer:
+      - https://ppubs.uspto.gov/pubwebapp/
+      user-agent:
+      - Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/114.0.0.0 Safari/537.36
+      x-access-token:
+      - eyJzdWIiOiI4ZGIzNjdkOS1lZjc1LTRiNDQtYjA1ZS1mZDVjMzk3NjM1YzUiLCJ2ZXIiOiI2MDlhMWNhMi1hOGM0LTQxMWQtOTlkYy02NTYzZGVhMDNiZTEiLCJleHAiOjB9
+      x-requested-with:
+      - XMLHttpRequest
+    method: POST
+    uri: https://ppubs.uspto.gov/dirsearch-public/searches/searchWithBeFamily
+  response:
+    content: '{"numFound":1,"perPage":500,"page":0,"totalPages":0,"hlSnippets":0,"sort":null,"query":{"id":null,"caseId":28621613,"userId":null,"numResults":1,"ignorePersist":true,"fq":null,"databaseFilters":[{"databaseName":"USPAT","countryCodes":[]}],"q":"\"tennis\".TTL.
       AND @PD>=20100101<=20100227","queryName":"\"tennis\".TTL. AND @PD>=20100101<=20100227","userEnteredQuery":"\"tennis\".TTL.
       AND @PD>=20100101<=20100227","viewName":"tile","op":"OR","highlights":"1","plurals":true,"britishEquivalents":true,"searchType":1,"excludeResultsAfter":null,"dateCreated":null,"deleteIn":false,"expand":true,"expandSort":"group_sort_date
       asc, id desc ","expandRows":"100","expandTrackDocScores":true,"expandTrackMaxScore":true,"termGraph":null,"hl":false,"fl":null,"originalQuery":"\"tennis\".TTL.
@@ -87,20 +219,20 @@ interactions:
       method","type":"USPAT","mainClassificationCode":"141/11","applicantName":null,"assigneeName":null,"uspcFullClassificationFlattened":"141/83;141/63;141/69;206/213.1;141/95;141/51","ipcCodeFlattened":"B65B1/20","cpcInventiveFlattened":"A63B39/025","cpcAdditionalFlattened":"A63B2102/02","applicationFilingDate":["2007-06-19T00:00:00Z"],"applicationFilingDateKwicHits":null,"relatedApplFilingDate":null,"primaryExaminer":"Maust;
       Timothy L.","assistantExaminer":null,"applicationNumber":"11/820423","frontPageStart":1,"frontPageEnd":1,"drawingsStart":2,"drawingsEnd":2,"specificationStart":3,"specificationEnd":7,"claimsStart":7,"claimsEnd":8,"abstractStart":1,"abstractEnd":1,"bibStart":1,"bibEnd":1,"certCorrectionStart":0,"certCorrectionEnd":0,"certReexaminationStart":0,"certReexaminationEnd":0,"supplementalStart":0,"supplementalEnd":0,"ptabStart":0,"ptabEnd":0,"amendStart":0,"amendEnd":0,"searchReportStart":0,"searchReportEnd":0,"pageCount":8,"pageCountDisplay":"8","previouslyViewed":false,"unused":false,"imageLocation":"uspat/US/07/658/211","imageFileName":"00000001.tif","cpcCodes":null,"queryId":null,"tags":null,"inventorsShort":"Dirst;
       William F.","familyIdentifierCur":41646360,"familyIdentifierCurStr":null,"languageIndicator":"EN","databaseName":"USPT","dwImageDoctypeList":null,"dwImageLocList":null,"dwPageCountList":null,"dwImageDocidList":null,"patentFamilyMembers":null,"patentFamilyCountry":null,"patentFamilySerialNumber":null,"documentIdWithDashesDw":null,"pfPublDate":null,"pfPublDateKwicHits":null,"priorityClaimsDate":null,"priorityClaimsDateKwicHits":null,"pfApplicationSerialNumber":null,"pfApplicationDescriptor":null,"pfLanguage":null,"pfApplicationDate":null,"pfApplicationDateKwicHits":null,"clippedUri":null,"source":null,"documentId":"US
-      7658211 B1","derwentAccessionNumber":null,"documentSize":48353,"score":14.407783,"governmentInterest":null,"kindCode":["B1"],"urpn":["1207813","4019629","4020948","4046491","4073120","4086743","4101029","4124117","4161247","4165770","4248275","4372095","5002196","5397018","5593157","5615596","5730286"],"urpnCode":["1207813","4019629","4020948","4046491","4073120","4086743","4101029","4124117","4161247","4165770","4248275","4372095","5002196","5397018","5593157","5615596","5730286"],"descriptionStart":3,"descriptionEnd":7,"publicationReferenceDocumentNumberOne":"07658211"}],"qtime":10}'
+      7658211 B1","derwentAccessionNumber":null,"documentSize":48353,"score":14.4353895,"governmentInterest":null,"kindCode":["B1"],"urpn":["1207813","4019629","4020948","4046491","4073120","4086743","4101029","4124117","4161247","4165770","4248275","4372095","5002196","5397018","5593157","5615596","5730286"],"urpnCode":["1207813","4019629","4020948","4046491","4073120","4086743","4101029","4124117","4161247","4165770","4248275","4372095","5002196","5397018","5593157","5615596","5730286"],"publicationReferenceDocumentNumberOne":"07658211","descriptionStart":3,"descriptionEnd":7}],"qtime":10}'
     headers:
       content-type:
       - application/json
       date:
-      - Wed, 24 Apr 2024 21:20:59 GMT
+      - Wed, 22 May 2024 16:34:42 GMT
       server-timing:
-      - intid;desc=8b04f55a92bf6a4d
+      - intid;desc=bc5d9c6c5532e491
       x-rate-limit-remaining:
-      - '55'
+      - '0'
     http_version: HTTP/2
     status_code: 200
 - request:
-    body: '{"caseId": 27922406, "hl_snippets": "2", "op": "OR", "q": "\"tennis\".TTL.
+    body: '{"caseId": 28621613, "hl_snippets": "2", "op": "OR", "q": "\"tennis\".TTL.
       AND @PD>=20100101<=20100227", "queryName": "\"tennis\".TTL. AND @PD>=20100101<=20100227",
       "highlights": "1", "qt": "brs", "spellCheck": false, "viewName": "tile", "plurals":
       true, "britishEquivalents": true, "databaseFilters": [{"databaseName": "USPAT",
@@ -111,6 +243,8 @@ interactions:
       - '*/*'
       accept-encoding:
       - gzip, deflate
+      cache-control:
+      - no-cache
       connection:
       - keep-alive
       content-length:
@@ -119,17 +253,79 @@ interactions:
       - application/json
       host:
       - ppubs.uspto.gov
+      origin:
+      - https://ppubs.uspto.gov
+      pragma:
+      - no-cache
+      priority:
+      - u=1, i
+      referer:
+      - https://ppubs.uspto.gov/pubwebapp/
       user-agent:
       - Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML,
         like Gecko) Chrome/114.0.0.0 Safari/537.36
       x-access-token:
-      - eyJzdWIiOiJlYzZmYTVkOC03NWZiLTQ5ZTktODFjMS0wZjI1MWY1NmRiZGUiLCJ2ZXIiOiIxOTAzNDQ1Yi1jMWRmLTQyYTEtODJmYi05ZDdiNWJmMWI0NDgiLCJleHAiOjB9
+      - eyJzdWIiOiI4ZGIzNjdkOS1lZjc1LTRiNDQtYjA1ZS1mZDVjMzk3NjM1YzUiLCJ2ZXIiOiI2MDlhMWNhMi1hOGM0LTQxMWQtOTlkYy02NTYzZGVhMDNiZTEiLCJleHAiOjB9
       x-requested-with:
       - XMLHttpRequest
     method: POST
     uri: https://ppubs.uspto.gov/dirsearch-public/searches/counts
   response:
-    content: '{"id":null,"caseId":27922406,"userId":null,"numResults":1,"ignorePersist":true,"fq":null,"databaseFilters":[{"databaseName":"USPAT","countryCodes":[]}],"q":"\"tennis\".TTL.
+    content: '{ "message": "Too many requests" }'
+    headers:
+      content-length:
+      - '34'
+      content-type:
+      - application/json;charset=ISO-8859-1
+      date:
+      - Wed, 22 May 2024 16:34:42 GMT
+      server-timing:
+      - intid;desc=6a34d2737ca1c489
+      x-rate-limit-retry-after-seconds:
+      - '0'
+    http_version: HTTP/2
+    status_code: 429
+- request:
+    body: '{"caseId": 28621613, "hl_snippets": "2", "op": "OR", "q": "\"tennis\".TTL.
+      AND @PD>=20100101<=20100227", "queryName": "\"tennis\".TTL. AND @PD>=20100101<=20100227",
+      "highlights": "1", "qt": "brs", "spellCheck": false, "viewName": "tile", "plurals":
+      true, "britishEquivalents": true, "databaseFilters": [{"databaseName": "USPAT",
+      "countryCodes": []}], "searchType": 1, "ignorePersist": true, "userEnteredQuery":
+      "\"tennis\".TTL. AND @PD>=20100101<=20100227"}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      cache-control:
+      - no-cache
+      connection:
+      - keep-alive
+      content-length:
+      - '457'
+      content-type:
+      - application/json
+      host:
+      - ppubs.uspto.gov
+      origin:
+      - https://ppubs.uspto.gov
+      pragma:
+      - no-cache
+      priority:
+      - u=1, i
+      referer:
+      - https://ppubs.uspto.gov/pubwebapp/
+      user-agent:
+      - Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/114.0.0.0 Safari/537.36
+      x-access-token:
+      - eyJzdWIiOiI4ZGIzNjdkOS1lZjc1LTRiNDQtYjA1ZS1mZDVjMzk3NjM1YzUiLCJ2ZXIiOiI2MDlhMWNhMi1hOGM0LTQxMWQtOTlkYy02NTYzZGVhMDNiZTEiLCJleHAiOjB9
+      x-requested-with:
+      - XMLHttpRequest
+    method: POST
+    uri: https://ppubs.uspto.gov/dirsearch-public/searches/counts
+  response:
+    content: '{"id":null,"caseId":28621613,"userId":null,"numResults":1,"ignorePersist":true,"fq":null,"databaseFilters":[{"databaseName":"USPAT","countryCodes":[]}],"q":"\"tennis\".TTL.
       AND @PD>=20100101<=20100227","queryName":"\"tennis\".TTL. AND @PD>=20100101<=20100227","userEnteredQuery":"\"tennis\".TTL.
       AND @PD>=20100101<=20100227","viewName":"tile","op":"OR","highlights":"1","plurals":true,"britishEquivalents":true,"searchType":1,"excludeResultsAfter":null,"dateCreated":null,"deleteIn":false,"expand":false,"expandSort":null,"expandRows":null,"expandTrackDocScores":false,"expandTrackMaxScore":false,"termGraph":{"termOrigin":[{"id":0,"name":null,"nodeType":"ROOT","parentId":null,"relation":null,"aliases":["default"],"aliasCategory":"OTHER"},{"id":1,"name":"\"tennis\"","nodeType":"TERM","parentId":0,"relation":"REGULAR","aliases":["default"],"aliasCategory":"OTHER"},{"id":4,"name":"\"tenni\"","nodeType":"TERM","parentId":1,"relation":"PLURAL","aliases":["default"],"aliasCategory":"OTHER"},{"id":5,"name":"@pd","nodeType":"RANGE","parentId":0,"relation":"REGULAR","aliases":["pd"],"aliasCategory":"DATE_INT"}],"termRelationship":[]},"hl":false,"fl":null,"originalQuery":"\"tennis\".TTL.
       AND @PD>=20100101<=20100227","error":null,"terms":["\"tennis\"","\"tenni\"","@pd"],"facets":[{"solrField":"document_type","count":1,"id":"USPAT"}],"pNumber":null,"hl_fl":null}'
@@ -137,11 +333,11 @@ interactions:
       content-type:
       - application/json
       date:
-      - Wed, 24 Apr 2024 21:20:59 GMT
+      - Wed, 22 May 2024 16:34:43 GMT
       server-timing:
-      - intid;desc=f8d24b0aac52640f
+      - intid;desc=9521d96e45d93fa9
       x-rate-limit-remaining:
-      - '54'
+      - '0'
     http_version: HTTP/2
     status_code: 200
 - request:
@@ -149,7 +345,7 @@ interactions:
       "familyIdFiltering", "searchType": 1, "familyIdEnglishOnly": true, "familyIdFirstPreferred":
       "US-PGPUB", "familyIdSecondPreferred": "USPAT", "familyIdThirdPreferred": "FPRS",
       "showDocPerFamilyPref": "showEnglish", "queryId": 0, "tagDocSearch": false,
-      "query": {"caseId": 27922406, "hl_snippets": "2", "op": "OR", "q": "\"tennis\".TTL.
+      "query": {"caseId": 28621613, "hl_snippets": "2", "op": "OR", "q": "\"tennis\".TTL.
       AND @PD>=20100101<=20100227", "queryName": "\"tennis\".TTL. AND @PD>=20100101<=20100227",
       "highlights": "1", "qt": "brs", "spellCheck": false, "viewName": "tile", "plurals":
       true, "britishEquivalents": true, "databaseFilters": [{"databaseName": "USPAT",
@@ -160,6 +356,8 @@ interactions:
       - '*/*'
       accept-encoding:
       - gzip, deflate
+      cache-control:
+      - no-cache
       connection:
       - keep-alive
       content-length:
@@ -168,88 +366,44 @@ interactions:
       - application/json
       host:
       - ppubs.uspto.gov
+      origin:
+      - https://ppubs.uspto.gov
+      pragma:
+      - no-cache
+      priority:
+      - u=1, i
+      referer:
+      - https://ppubs.uspto.gov/pubwebapp/
       user-agent:
       - Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML,
         like Gecko) Chrome/114.0.0.0 Safari/537.36
       x-access-token:
-      - eyJzdWIiOiJlYzZmYTVkOC03NWZiLTQ5ZTktODFjMS0wZjI1MWY1NmRiZGUiLCJ2ZXIiOiIxOTAzNDQ1Yi1jMWRmLTQyYTEtODJmYi05ZDdiNWJmMWI0NDgiLCJleHAiOjB9
+      - eyJzdWIiOiI4ZGIzNjdkOS1lZjc1LTRiNDQtYjA1ZS1mZDVjMzk3NjM1YzUiLCJ2ZXIiOiI2MDlhMWNhMi1hOGM0LTQxMWQtOTlkYy02NTYzZGVhMDNiZTEiLCJleHAiOjB9
       x-requested-with:
       - XMLHttpRequest
     method: POST
     uri: https://ppubs.uspto.gov/dirsearch-public/searches/searchWithBeFamily
   response:
-    content: '{"numFound":1,"perPage":500,"page":0,"totalPages":0,"hlSnippets":0,"sort":null,"query":{"id":null,"caseId":27922406,"userId":null,"numResults":1,"ignorePersist":true,"fq":null,"databaseFilters":[{"databaseName":"USPAT","countryCodes":[]}],"q":"\"tennis\".TTL.
-      AND @PD>=20100101<=20100227","queryName":"\"tennis\".TTL. AND @PD>=20100101<=20100227","userEnteredQuery":"\"tennis\".TTL.
-      AND @PD>=20100101<=20100227","viewName":"tile","op":"OR","highlights":"1","plurals":true,"britishEquivalents":true,"searchType":1,"excludeResultsAfter":null,"dateCreated":null,"deleteIn":false,"expand":true,"expandSort":"group_sort_date
-      asc, id desc ","expandRows":"100","expandTrackDocScores":true,"expandTrackMaxScore":true,"termGraph":null,"hl":false,"fl":null,"originalQuery":"\"tennis\".TTL.
-      AND @PD>=20100101<=20100227","error":null,"terms":["\"tennis\"","\"tenni\"","@pd"],"facets":[],"pNumber":null,"hl_fl":null},"duration":18,"highlightingTime":0,"cursorMarker":"AoJwwM+B2KYCNzQxNjQ2MzYwIVVTLVVTLTA3NjU4MjEx","totalResults":1,"numberOfFamilies":1,"error":null,"patents":[{"guid":"US-7658211-B1","publicationReferenceDocumentNumber":"7658211","compositeId":"41646360!US-US-07658211","publicationReferenceDocumentNumber1":"07658211","datePublishedKwicHits":null,"datePublished":"2010-02-09T00:00:00Z","inventionTitle":"<span
-      term=\"\"tennis\"\" class=\"highlight18\">Tennis</span> ball recharging apparatus
-      method","type":"USPAT","mainClassificationCode":"141/11","applicantName":null,"assigneeName":null,"uspcFullClassificationFlattened":"141/83;141/63;141/69;206/213.1;141/95;141/51","ipcCodeFlattened":"B65B1/20","cpcInventiveFlattened":"A63B39/025","cpcAdditionalFlattened":"A63B2102/02","applicationFilingDate":["2007-06-19T00:00:00Z"],"applicationFilingDateKwicHits":null,"relatedApplFilingDate":null,"primaryExaminer":"Maust;
-      Timothy L.","assistantExaminer":null,"applicationNumber":"11/820423","frontPageStart":1,"frontPageEnd":1,"drawingsStart":2,"drawingsEnd":2,"specificationStart":3,"specificationEnd":7,"claimsStart":7,"claimsEnd":8,"abstractStart":1,"abstractEnd":1,"bibStart":1,"bibEnd":1,"certCorrectionStart":0,"certCorrectionEnd":0,"certReexaminationStart":0,"certReexaminationEnd":0,"supplementalStart":0,"supplementalEnd":0,"ptabStart":0,"ptabEnd":0,"amendStart":0,"amendEnd":0,"searchReportStart":0,"searchReportEnd":0,"pageCount":8,"pageCountDisplay":"8","previouslyViewed":false,"unused":false,"imageLocation":"uspat/US/07/658/211","imageFileName":"00000001.tif","cpcCodes":null,"queryId":null,"tags":null,"inventorsShort":"Dirst;
-      William F.","familyIdentifierCur":41646360,"familyIdentifierCurStr":null,"languageIndicator":"EN","databaseName":"USPT","dwImageDoctypeList":null,"dwImageLocList":null,"dwPageCountList":null,"dwImageDocidList":null,"patentFamilyMembers":null,"patentFamilyCountry":null,"patentFamilySerialNumber":null,"documentIdWithDashesDw":null,"pfPublDate":null,"pfPublDateKwicHits":null,"priorityClaimsDate":null,"priorityClaimsDateKwicHits":null,"pfApplicationSerialNumber":null,"pfApplicationDescriptor":null,"pfLanguage":null,"pfApplicationDate":null,"pfApplicationDateKwicHits":null,"clippedUri":null,"source":null,"documentId":"US
-      7658211 B1","derwentAccessionNumber":null,"documentSize":48353,"score":14.414438,"governmentInterest":null,"kindCode":["B1"],"urpn":["1207813","4019629","4020948","4046491","4073120","4086743","4101029","4124117","4161247","4165770","4248275","4372095","5002196","5397018","5593157","5615596","5730286"],"urpnCode":["1207813","4019629","4020948","4046491","4073120","4086743","4101029","4124117","4161247","4165770","4248275","4372095","5002196","5397018","5593157","5615596","5730286"],"descriptionStart":3,"descriptionEnd":7,"publicationReferenceDocumentNumberOne":"07658211"}],"qtime":11}'
+    content: '{ "message": "Too many requests" }'
     headers:
-      content-type:
-      - application/json
-      date:
-      - Wed, 24 Apr 2024 21:20:59 GMT
-      server-timing:
-      - intid;desc=b92bc98d3d606341
-      x-rate-limit-remaining:
-      - '53'
-    http_version: HTTP/2
-    status_code: 200
-- request:
-    body: '{"caseId": 27922406, "hl_snippets": "2", "op": "OR", "q": "\"tennis\".TTL.
-      AND @PD>=20100101<=20100227", "queryName": "\"tennis\".TTL. AND @PD>=20100101<=20100227",
-      "highlights": "1", "qt": "brs", "spellCheck": false, "viewName": "tile", "plurals":
-      true, "britishEquivalents": true, "databaseFilters": [{"databaseName": "USPAT",
-      "countryCodes": []}], "searchType": 1, "ignorePersist": true, "userEnteredQuery":
-      "\"tennis\".TTL. AND @PD>=20100101<=20100227"}'
-    headers:
-      accept:
-      - '*/*'
-      accept-encoding:
-      - gzip, deflate
-      connection:
-      - keep-alive
       content-length:
-      - '457'
+      - '34'
       content-type:
-      - application/json
-      host:
-      - ppubs.uspto.gov
-      user-agent:
-      - Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML,
-        like Gecko) Chrome/114.0.0.0 Safari/537.36
-      x-access-token:
-      - eyJzdWIiOiJlYzZmYTVkOC03NWZiLTQ5ZTktODFjMS0wZjI1MWY1NmRiZGUiLCJ2ZXIiOiIxOTAzNDQ1Yi1jMWRmLTQyYTEtODJmYi05ZDdiNWJmMWI0NDgiLCJleHAiOjB9
-      x-requested-with:
-      - XMLHttpRequest
-    method: POST
-    uri: https://ppubs.uspto.gov/dirsearch-public/searches/counts
-  response:
-    content: '{"id":null,"caseId":27922406,"userId":null,"numResults":1,"ignorePersist":true,"fq":null,"databaseFilters":[{"databaseName":"USPAT","countryCodes":[]}],"q":"\"tennis\".TTL.
-      AND @PD>=20100101<=20100227","queryName":"\"tennis\".TTL. AND @PD>=20100101<=20100227","userEnteredQuery":"\"tennis\".TTL.
-      AND @PD>=20100101<=20100227","viewName":"tile","op":"OR","highlights":"1","plurals":true,"britishEquivalents":true,"searchType":1,"excludeResultsAfter":null,"dateCreated":null,"deleteIn":false,"expand":false,"expandSort":null,"expandRows":null,"expandTrackDocScores":false,"expandTrackMaxScore":false,"termGraph":{"termOrigin":[{"id":0,"name":null,"nodeType":"ROOT","parentId":null,"relation":null,"aliases":["default"],"aliasCategory":"OTHER"},{"id":1,"name":"\"tennis\"","nodeType":"TERM","parentId":0,"relation":"REGULAR","aliases":["default"],"aliasCategory":"OTHER"},{"id":4,"name":"\"tenni\"","nodeType":"TERM","parentId":1,"relation":"PLURAL","aliases":["default"],"aliasCategory":"OTHER"},{"id":5,"name":"@pd","nodeType":"RANGE","parentId":0,"relation":"REGULAR","aliases":["pd"],"aliasCategory":"DATE_INT"}],"termRelationship":[]},"hl":false,"fl":null,"originalQuery":"\"tennis\".TTL.
-      AND @PD>=20100101<=20100227","error":null,"terms":["\"tennis\"","\"tenni\"","@pd"],"facets":[{"solrField":"document_type","count":1,"id":"USPAT"}],"pNumber":null,"hl_fl":null}'
-    headers:
-      content-type:
-      - application/json
+      - application/json;charset=ISO-8859-1
       date:
-      - Wed, 24 Apr 2024 21:20:59 GMT
+      - Wed, 22 May 2024 16:34:43 GMT
       server-timing:
-      - intid;desc=1e6e1a8635ce1ec1
-      x-rate-limit-remaining:
-      - '52'
+      - intid;desc=5f4e6ac892af3209
+      x-rate-limit-retry-after-seconds:
+      - '0'
     http_version: HTTP/2
-    status_code: 200
+    status_code: 429
 - request:
-    body: '{"start": 0, "pageCount": 1, "sort": "date_publ desc", "docFamilyFiltering":
+    body: '{"start": 0, "pageCount": 500, "sort": "date_publ desc", "docFamilyFiltering":
       "familyIdFiltering", "searchType": 1, "familyIdEnglishOnly": true, "familyIdFirstPreferred":
       "US-PGPUB", "familyIdSecondPreferred": "USPAT", "familyIdThirdPreferred": "FPRS",
       "showDocPerFamilyPref": "showEnglish", "queryId": 0, "tagDocSearch": false,
-      "query": {"caseId": 27922406, "hl_snippets": "2", "op": "OR", "q": "\"tennis\".TTL.
+      "query": {"caseId": 28621613, "hl_snippets": "2", "op": "OR", "q": "\"tennis\".TTL.
       AND @PD>=20100101<=20100227", "queryName": "\"tennis\".TTL. AND @PD>=20100101<=20100227",
       "highlights": "1", "qt": "brs", "spellCheck": false, "viewName": "tile", "plurals":
       true, "britishEquivalents": true, "databaseFilters": [{"databaseName": "USPAT",
@@ -260,25 +414,35 @@ interactions:
       - '*/*'
       accept-encoding:
       - gzip, deflate
+      cache-control:
+      - no-cache
       connection:
       - keep-alive
       content-length:
-      - '795'
+      - '797'
       content-type:
       - application/json
       host:
       - ppubs.uspto.gov
+      origin:
+      - https://ppubs.uspto.gov
+      pragma:
+      - no-cache
+      priority:
+      - u=1, i
+      referer:
+      - https://ppubs.uspto.gov/pubwebapp/
       user-agent:
       - Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML,
         like Gecko) Chrome/114.0.0.0 Safari/537.36
       x-access-token:
-      - eyJzdWIiOiJlYzZmYTVkOC03NWZiLTQ5ZTktODFjMS0wZjI1MWY1NmRiZGUiLCJ2ZXIiOiIxOTAzNDQ1Yi1jMWRmLTQyYTEtODJmYi05ZDdiNWJmMWI0NDgiLCJleHAiOjB9
+      - eyJzdWIiOiI4ZGIzNjdkOS1lZjc1LTRiNDQtYjA1ZS1mZDVjMzk3NjM1YzUiLCJ2ZXIiOiI2MDlhMWNhMi1hOGM0LTQxMWQtOTlkYy02NTYzZGVhMDNiZTEiLCJleHAiOjB9
       x-requested-with:
       - XMLHttpRequest
     method: POST
     uri: https://ppubs.uspto.gov/dirsearch-public/searches/searchWithBeFamily
   response:
-    content: '{"numFound":1,"perPage":1,"page":0,"totalPages":0,"hlSnippets":0,"sort":null,"query":{"id":null,"caseId":27922406,"userId":null,"numResults":1,"ignorePersist":true,"fq":null,"databaseFilters":[{"databaseName":"USPAT","countryCodes":[]}],"q":"\"tennis\".TTL.
+    content: '{"numFound":1,"perPage":500,"page":0,"totalPages":0,"hlSnippets":0,"sort":null,"query":{"id":null,"caseId":28621613,"userId":null,"numResults":1,"ignorePersist":true,"fq":null,"databaseFilters":[{"databaseName":"USPAT","countryCodes":[]}],"q":"\"tennis\".TTL.
       AND @PD>=20100101<=20100227","queryName":"\"tennis\".TTL. AND @PD>=20100101<=20100227","userEnteredQuery":"\"tennis\".TTL.
       AND @PD>=20100101<=20100227","viewName":"tile","op":"OR","highlights":"1","plurals":true,"britishEquivalents":true,"searchType":1,"excludeResultsAfter":null,"dateCreated":null,"deleteIn":false,"expand":true,"expandSort":"group_sort_date
       asc, id desc ","expandRows":"100","expandTrackDocScores":true,"expandTrackMaxScore":true,"termGraph":null,"hl":false,"fl":null,"originalQuery":"\"tennis\".TTL.
@@ -287,16 +451,190 @@ interactions:
       method","type":"USPAT","mainClassificationCode":"141/11","applicantName":null,"assigneeName":null,"uspcFullClassificationFlattened":"141/83;141/63;141/69;206/213.1;141/95;141/51","ipcCodeFlattened":"B65B1/20","cpcInventiveFlattened":"A63B39/025","cpcAdditionalFlattened":"A63B2102/02","applicationFilingDate":["2007-06-19T00:00:00Z"],"applicationFilingDateKwicHits":null,"relatedApplFilingDate":null,"primaryExaminer":"Maust;
       Timothy L.","assistantExaminer":null,"applicationNumber":"11/820423","frontPageStart":1,"frontPageEnd":1,"drawingsStart":2,"drawingsEnd":2,"specificationStart":3,"specificationEnd":7,"claimsStart":7,"claimsEnd":8,"abstractStart":1,"abstractEnd":1,"bibStart":1,"bibEnd":1,"certCorrectionStart":0,"certCorrectionEnd":0,"certReexaminationStart":0,"certReexaminationEnd":0,"supplementalStart":0,"supplementalEnd":0,"ptabStart":0,"ptabEnd":0,"amendStart":0,"amendEnd":0,"searchReportStart":0,"searchReportEnd":0,"pageCount":8,"pageCountDisplay":"8","previouslyViewed":false,"unused":false,"imageLocation":"uspat/US/07/658/211","imageFileName":"00000001.tif","cpcCodes":null,"queryId":null,"tags":null,"inventorsShort":"Dirst;
       William F.","familyIdentifierCur":41646360,"familyIdentifierCurStr":null,"languageIndicator":"EN","databaseName":"USPT","dwImageDoctypeList":null,"dwImageLocList":null,"dwPageCountList":null,"dwImageDocidList":null,"patentFamilyMembers":null,"patentFamilyCountry":null,"patentFamilySerialNumber":null,"documentIdWithDashesDw":null,"pfPublDate":null,"pfPublDateKwicHits":null,"priorityClaimsDate":null,"priorityClaimsDateKwicHits":null,"pfApplicationSerialNumber":null,"pfApplicationDescriptor":null,"pfLanguage":null,"pfApplicationDate":null,"pfApplicationDateKwicHits":null,"clippedUri":null,"source":null,"documentId":"US
-      7658211 B1","derwentAccessionNumber":null,"documentSize":48353,"score":14.414438,"governmentInterest":null,"kindCode":["B1"],"urpn":["1207813","4019629","4020948","4046491","4073120","4086743","4101029","4124117","4161247","4165770","4248275","4372095","5002196","5397018","5593157","5615596","5730286"],"urpnCode":["1207813","4019629","4020948","4046491","4073120","4086743","4101029","4124117","4161247","4165770","4248275","4372095","5002196","5397018","5593157","5615596","5730286"],"descriptionStart":3,"descriptionEnd":7,"publicationReferenceDocumentNumberOne":"07658211"}],"qtime":11}'
+      7658211 B1","derwentAccessionNumber":null,"documentSize":48353,"score":14.445937,"governmentInterest":null,"kindCode":["B1"],"urpn":["1207813","4019629","4020948","4046491","4073120","4086743","4101029","4124117","4161247","4165770","4248275","4372095","5002196","5397018","5593157","5615596","5730286"],"urpnCode":["1207813","4019629","4020948","4046491","4073120","4086743","4101029","4124117","4161247","4165770","4248275","4372095","5002196","5397018","5593157","5615596","5730286"],"descriptionStart":3,"descriptionEnd":7,"publicationReferenceDocumentNumberOne":"07658211"}],"qtime":11}'
     headers:
       content-type:
       - application/json
       date:
-      - Wed, 24 Apr 2024 21:21:00 GMT
+      - Wed, 22 May 2024 16:34:44 GMT
       server-timing:
-      - intid;desc=a95d0c7e65175f97
+      - intid;desc=266d9949fbcf7061
       x-rate-limit-remaining:
-      - '51'
+      - '0'
+    http_version: HTTP/2
+    status_code: 200
+- request:
+    body: '{"caseId": 28621613, "hl_snippets": "2", "op": "OR", "q": "\"tennis\".TTL.
+      AND @PD>=20100101<=20100227", "queryName": "\"tennis\".TTL. AND @PD>=20100101<=20100227",
+      "highlights": "1", "qt": "brs", "spellCheck": false, "viewName": "tile", "plurals":
+      true, "britishEquivalents": true, "databaseFilters": [{"databaseName": "USPAT",
+      "countryCodes": []}], "searchType": 1, "ignorePersist": true, "userEnteredQuery":
+      "\"tennis\".TTL. AND @PD>=20100101<=20100227"}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      cache-control:
+      - no-cache
+      connection:
+      - keep-alive
+      content-length:
+      - '457'
+      content-type:
+      - application/json
+      host:
+      - ppubs.uspto.gov
+      origin:
+      - https://ppubs.uspto.gov
+      pragma:
+      - no-cache
+      priority:
+      - u=1, i
+      referer:
+      - https://ppubs.uspto.gov/pubwebapp/
+      user-agent:
+      - Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/114.0.0.0 Safari/537.36
+      x-access-token:
+      - eyJzdWIiOiI4ZGIzNjdkOS1lZjc1LTRiNDQtYjA1ZS1mZDVjMzk3NjM1YzUiLCJ2ZXIiOiI2MDlhMWNhMi1hOGM0LTQxMWQtOTlkYy02NTYzZGVhMDNiZTEiLCJleHAiOjB9
+      x-requested-with:
+      - XMLHttpRequest
+    method: POST
+    uri: https://ppubs.uspto.gov/dirsearch-public/searches/counts
+  response:
+    content: '{ "message": "Too many requests" }'
+    headers:
+      content-length:
+      - '34'
+      content-type:
+      - application/json;charset=ISO-8859-1
+      date:
+      - Wed, 22 May 2024 16:34:44 GMT
+      server-timing:
+      - intid;desc=c86bedf14617092f
+      x-rate-limit-retry-after-seconds:
+      - '0'
+    http_version: HTTP/2
+    status_code: 429
+- request:
+    body: '{"caseId": 28621613, "hl_snippets": "2", "op": "OR", "q": "\"tennis\".TTL.
+      AND @PD>=20100101<=20100227", "queryName": "\"tennis\".TTL. AND @PD>=20100101<=20100227",
+      "highlights": "1", "qt": "brs", "spellCheck": false, "viewName": "tile", "plurals":
+      true, "britishEquivalents": true, "databaseFilters": [{"databaseName": "USPAT",
+      "countryCodes": []}], "searchType": 1, "ignorePersist": true, "userEnteredQuery":
+      "\"tennis\".TTL. AND @PD>=20100101<=20100227"}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      cache-control:
+      - no-cache
+      connection:
+      - keep-alive
+      content-length:
+      - '457'
+      content-type:
+      - application/json
+      host:
+      - ppubs.uspto.gov
+      origin:
+      - https://ppubs.uspto.gov
+      pragma:
+      - no-cache
+      priority:
+      - u=1, i
+      referer:
+      - https://ppubs.uspto.gov/pubwebapp/
+      user-agent:
+      - Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/114.0.0.0 Safari/537.36
+      x-access-token:
+      - eyJzdWIiOiI4ZGIzNjdkOS1lZjc1LTRiNDQtYjA1ZS1mZDVjMzk3NjM1YzUiLCJ2ZXIiOiI2MDlhMWNhMi1hOGM0LTQxMWQtOTlkYy02NTYzZGVhMDNiZTEiLCJleHAiOjB9
+      x-requested-with:
+      - XMLHttpRequest
+    method: POST
+    uri: https://ppubs.uspto.gov/dirsearch-public/searches/counts
+  response:
+    content: '{"id":null,"caseId":28621613,"userId":null,"numResults":1,"ignorePersist":true,"fq":null,"databaseFilters":[{"databaseName":"USPAT","countryCodes":[]}],"q":"\"tennis\".TTL.
+      AND @PD>=20100101<=20100227","queryName":"\"tennis\".TTL. AND @PD>=20100101<=20100227","userEnteredQuery":"\"tennis\".TTL.
+      AND @PD>=20100101<=20100227","viewName":"tile","op":"OR","highlights":"1","plurals":true,"britishEquivalents":true,"searchType":1,"excludeResultsAfter":null,"dateCreated":null,"deleteIn":false,"expand":false,"expandSort":null,"expandRows":null,"expandTrackDocScores":false,"expandTrackMaxScore":false,"termGraph":{"termOrigin":[{"id":0,"name":null,"nodeType":"ROOT","parentId":null,"relation":null,"aliases":["default"],"aliasCategory":"OTHER"},{"id":1,"name":"\"tennis\"","nodeType":"TERM","parentId":0,"relation":"REGULAR","aliases":["default"],"aliasCategory":"OTHER"},{"id":4,"name":"\"tenni\"","nodeType":"TERM","parentId":1,"relation":"PLURAL","aliases":["default"],"aliasCategory":"OTHER"},{"id":5,"name":"@pd","nodeType":"RANGE","parentId":0,"relation":"REGULAR","aliases":["pd"],"aliasCategory":"DATE_INT"}],"termRelationship":[]},"hl":false,"fl":null,"originalQuery":"\"tennis\".TTL.
+      AND @PD>=20100101<=20100227","error":null,"terms":["\"tennis\"","\"tenni\"","@pd"],"facets":[{"solrField":"document_type","count":1,"id":"USPAT"}],"pNumber":null,"hl_fl":null}'
+    headers:
+      content-type:
+      - application/json
+      date:
+      - Wed, 22 May 2024 16:34:45 GMT
+      server-timing:
+      - intid;desc=835d8de00caee42d
+      x-rate-limit-remaining:
+      - '0'
+    http_version: HTTP/2
+    status_code: 200
+- request:
+    body: '{"start": 0, "pageCount": 1, "sort": "date_publ desc", "docFamilyFiltering":
+      "familyIdFiltering", "searchType": 1, "familyIdEnglishOnly": true, "familyIdFirstPreferred":
+      "US-PGPUB", "familyIdSecondPreferred": "USPAT", "familyIdThirdPreferred": "FPRS",
+      "showDocPerFamilyPref": "showEnglish", "queryId": 0, "tagDocSearch": false,
+      "query": {"caseId": 28621613, "hl_snippets": "2", "op": "OR", "q": "\"tennis\".TTL.
+      AND @PD>=20100101<=20100227", "queryName": "\"tennis\".TTL. AND @PD>=20100101<=20100227",
+      "highlights": "1", "qt": "brs", "spellCheck": false, "viewName": "tile", "plurals":
+      true, "britishEquivalents": true, "databaseFilters": [{"databaseName": "USPAT",
+      "countryCodes": []}], "searchType": 1, "ignorePersist": true, "userEnteredQuery":
+      "\"tennis\".TTL. AND @PD>=20100101<=20100227"}}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      cache-control:
+      - no-cache
+      connection:
+      - keep-alive
+      content-length:
+      - '795'
+      content-type:
+      - application/json
+      host:
+      - ppubs.uspto.gov
+      origin:
+      - https://ppubs.uspto.gov
+      pragma:
+      - no-cache
+      priority:
+      - u=1, i
+      referer:
+      - https://ppubs.uspto.gov/pubwebapp/
+      user-agent:
+      - Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/114.0.0.0 Safari/537.36
+      x-access-token:
+      - eyJzdWIiOiI4ZGIzNjdkOS1lZjc1LTRiNDQtYjA1ZS1mZDVjMzk3NjM1YzUiLCJ2ZXIiOiI2MDlhMWNhMi1hOGM0LTQxMWQtOTlkYy02NTYzZGVhMDNiZTEiLCJleHAiOjB9
+      x-requested-with:
+      - XMLHttpRequest
+    method: POST
+    uri: https://ppubs.uspto.gov/dirsearch-public/searches/searchWithBeFamily
+  response:
+    content: '{"numFound":1,"perPage":1,"page":0,"totalPages":0,"hlSnippets":0,"sort":null,"query":{"id":null,"caseId":28621613,"userId":null,"numResults":1,"ignorePersist":true,"fq":null,"databaseFilters":[{"databaseName":"USPAT","countryCodes":[]}],"q":"\"tennis\".TTL.
+      AND @PD>=20100101<=20100227","queryName":"\"tennis\".TTL. AND @PD>=20100101<=20100227","userEnteredQuery":"\"tennis\".TTL.
+      AND @PD>=20100101<=20100227","viewName":"tile","op":"OR","highlights":"1","plurals":true,"britishEquivalents":true,"searchType":1,"excludeResultsAfter":null,"dateCreated":null,"deleteIn":false,"expand":true,"expandSort":"group_sort_date
+      asc, id desc ","expandRows":"100","expandTrackDocScores":true,"expandTrackMaxScore":true,"termGraph":null,"hl":false,"fl":null,"originalQuery":"\"tennis\".TTL.
+      AND @PD>=20100101<=20100227","error":null,"terms":["\"tennis\"","\"tenni\"","@pd"],"facets":[],"pNumber":null,"hl_fl":null},"duration":15,"highlightingTime":0,"cursorMarker":"AoJwwM+B2KYCNzQxNjQ2MzYwIVVTLVVTLTA3NjU4MjEx","totalResults":1,"numberOfFamilies":1,"error":null,"patents":[{"guid":"US-7658211-B1","publicationReferenceDocumentNumber":"7658211","compositeId":"41646360!US-US-07658211","publicationReferenceDocumentNumber1":"07658211","datePublishedKwicHits":null,"datePublished":"2010-02-09T00:00:00Z","inventionTitle":"<span
+      term=\"\"tennis\"\" class=\"highlight18\">Tennis</span> ball recharging apparatus
+      method","type":"USPAT","mainClassificationCode":"141/11","applicantName":null,"assigneeName":null,"uspcFullClassificationFlattened":"141/83;141/63;141/69;206/213.1;141/95;141/51","ipcCodeFlattened":"B65B1/20","cpcInventiveFlattened":"A63B39/025","cpcAdditionalFlattened":"A63B2102/02","applicationFilingDate":["2007-06-19T00:00:00Z"],"applicationFilingDateKwicHits":null,"relatedApplFilingDate":null,"primaryExaminer":"Maust;
+      Timothy L.","assistantExaminer":null,"applicationNumber":"11/820423","frontPageStart":1,"frontPageEnd":1,"drawingsStart":2,"drawingsEnd":2,"specificationStart":3,"specificationEnd":7,"claimsStart":7,"claimsEnd":8,"abstractStart":1,"abstractEnd":1,"bibStart":1,"bibEnd":1,"certCorrectionStart":0,"certCorrectionEnd":0,"certReexaminationStart":0,"certReexaminationEnd":0,"supplementalStart":0,"supplementalEnd":0,"ptabStart":0,"ptabEnd":0,"amendStart":0,"amendEnd":0,"searchReportStart":0,"searchReportEnd":0,"pageCount":8,"pageCountDisplay":"8","previouslyViewed":false,"unused":false,"imageLocation":"uspat/US/07/658/211","imageFileName":"00000001.tif","cpcCodes":null,"queryId":null,"tags":null,"inventorsShort":"Dirst;
+      William F.","familyIdentifierCur":41646360,"familyIdentifierCurStr":null,"languageIndicator":"EN","databaseName":"USPT","dwImageDoctypeList":null,"dwImageLocList":null,"dwPageCountList":null,"dwImageDocidList":null,"patentFamilyMembers":null,"patentFamilyCountry":null,"patentFamilySerialNumber":null,"documentIdWithDashesDw":null,"pfPublDate":null,"pfPublDateKwicHits":null,"priorityClaimsDate":null,"priorityClaimsDateKwicHits":null,"pfApplicationSerialNumber":null,"pfApplicationDescriptor":null,"pfLanguage":null,"pfApplicationDate":null,"pfApplicationDateKwicHits":null,"clippedUri":null,"source":null,"documentId":"US
+      7658211 B1","derwentAccessionNumber":null,"documentSize":48353,"score":14.445937,"governmentInterest":null,"kindCode":["B1"],"urpn":["1207813","4019629","4020948","4046491","4073120","4086743","4101029","4124117","4161247","4165770","4248275","4372095","5002196","5397018","5593157","5615596","5730286"],"urpnCode":["1207813","4019629","4020948","4046491","4073120","4086743","4101029","4124117","4161247","4165770","4248275","4372095","5002196","5397018","5593157","5615596","5730286"],"descriptionStart":3,"descriptionEnd":7,"publicationReferenceDocumentNumberOne":"07658211"}],"qtime":10}'
+    headers:
+      content-type:
+      - application/json
+      date:
+      - Wed, 22 May 2024 16:34:45 GMT
+      server-timing:
+      - intid;desc=c1d19f3757c28d99
+      x-rate-limit-remaining:
+      - '0'
     http_version: HTTP/2
     status_code: 200
 - request:
@@ -306,15 +644,70 @@ interactions:
       - '*/*'
       accept-encoding:
       - gzip, deflate
+      cache-control:
+      - no-cache
       connection:
       - keep-alive
       host:
       - ppubs.uspto.gov
+      origin:
+      - https://ppubs.uspto.gov
+      pragma:
+      - no-cache
+      priority:
+      - u=1, i
+      referer:
+      - https://ppubs.uspto.gov/pubwebapp/
       user-agent:
       - Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML,
         like Gecko) Chrome/114.0.0.0 Safari/537.36
       x-access-token:
-      - eyJzdWIiOiJlYzZmYTVkOC03NWZiLTQ5ZTktODFjMS0wZjI1MWY1NmRiZGUiLCJ2ZXIiOiIxOTAzNDQ1Yi1jMWRmLTQyYTEtODJmYi05ZDdiNWJmMWI0NDgiLCJleHAiOjB9
+      - eyJzdWIiOiI4ZGIzNjdkOS1lZjc1LTRiNDQtYjA1ZS1mZDVjMzk3NjM1YzUiLCJ2ZXIiOiI2MDlhMWNhMi1hOGM0LTQxMWQtOTlkYy02NTYzZGVhMDNiZTEiLCJleHAiOjB9
+      x-requested-with:
+      - XMLHttpRequest
+    method: GET
+    uri: https://ppubs.uspto.gov/dirsearch-public/internal/patents/US-7658211-B1/highlight?queryId=1&source=USPAT&includeSections=true&uniqueId=
+  response:
+    content: '{ "message": "Too many requests" }'
+    headers:
+      content-length:
+      - '34'
+      content-type:
+      - application/json;charset=ISO-8859-1
+      date:
+      - Wed, 22 May 2024 16:34:45 GMT
+      server-timing:
+      - intid;desc=8eedbb157c495363
+      x-rate-limit-retry-after-seconds:
+      - '0'
+    http_version: HTTP/2
+    status_code: 429
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      cache-control:
+      - no-cache
+      connection:
+      - keep-alive
+      host:
+      - ppubs.uspto.gov
+      origin:
+      - https://ppubs.uspto.gov
+      pragma:
+      - no-cache
+      priority:
+      - u=1, i
+      referer:
+      - https://ppubs.uspto.gov/pubwebapp/
+      user-agent:
+      - Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/114.0.0.0 Safari/537.36
+      x-access-token:
+      - eyJzdWIiOiI4ZGIzNjdkOS1lZjc1LTRiNDQtYjA1ZS1mZDVjMzk3NjM1YzUiLCJ2ZXIiOiI2MDlhMWNhMi1hOGM0LTQxMWQtOTlkYy02NTYzZGVhMDNiZTEiLCJleHAiOjB9
       x-requested-with:
       - XMLHttpRequest
     method: GET
@@ -821,11 +1214,11 @@ interactions:
       content-type:
       - application/json
       date:
-      - Wed, 24 Apr 2024 21:21:00 GMT
+      - Wed, 22 May 2024 16:34:46 GMT
       server-timing:
-      - intid;desc=9d82d2cefa4132c1
+      - intid;desc=2805c33ba707461b
       x-rate-limit-remaining:
-      - '50'
+      - '0'
     http_version: HTTP/2
     status_code: 200
 version: 1

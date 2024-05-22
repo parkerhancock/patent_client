@@ -123,7 +123,7 @@ class Assignment(BaseODPModel):
     assignment_received_date: Optional[datetime.date] = Field(
         alias="assignmentReceivedDate", default=None
     )
-    frame_number: Optional[str] = Field(alias="frameNumber", default=None)
+    frame_number: Optional[int] = Field(alias="frameNumber", default=None)
     page_number: Optional[int] = Field(alias="pageNumber", default=None)
     reel_number_frame_number: Optional[str] = Field(alias="reelNumber/frameNumber", default=None)
     assignment_recorded_date: Optional[datetime.date] = Field(
@@ -133,7 +133,7 @@ class Assignment(BaseODPModel):
     assignment_mailed_date: Optional[datetime.date] = Field(
         alias="assignmentMailedDate", default=None
     )
-    reel_number: Optional[str] = Field(alias="reelNumber", default=None)
+    reel_number: Optional[int] = Field(alias="reelNumber", default=None)
     assignor_bag: list[Assignor] = Field(alias="assignorBag", default_factory=list)
     assignee_bag: list[Assignee] = Field(alias="assigneeBag", default_factory=list)
     correspondence_address: list[Address] = Field(

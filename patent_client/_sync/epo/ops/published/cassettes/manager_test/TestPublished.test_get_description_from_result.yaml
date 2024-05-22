@@ -13,7 +13,7 @@ interactions:
       host:
       - ops.epo.org
       user-agent:
-      - Mozilla/5.0 Python Patent Clientbot/4.1.4 (parkerhancock@users.noreply.github.com)
+      - Mozilla/5.0 Python Patent Clientbot/5.0.14 (parkerhancock@users.noreply.github.com)
     method: GET
     uri: http://ops.epo.org/3.2/rest-services/published-data/publication/docdb/WO2009085664A2/biblio
   response:
@@ -159,6 +159,8 @@ interactions:
       - POST
       Access-Control-Allow-Origin:
       - '*'
+      Cache-Control:
+      - no-cache
       Connection:
       - keep-alive
       Content-Length:
@@ -166,7 +168,7 @@ interactions:
       Content-Type:
       - application/xml;charset=utf-8
       Date:
-      - Mon, 11 Dec 2023 16:00:12 GMT
+      - Wed, 22 May 2024 16:32:43 GMT
       ETag:
       - '"02bcf6d49927d35ce4b18c7d37307ba1b"'
       Pragma:
@@ -186,12 +188,12 @@ interactions:
       X-Elapsed-Time:
       - '0'
       X-IndividualQuotaPerHour-Used:
-      - '290180'
+      - '317335'
       X-RegisteredQuotaPerWeek-Used:
-      - '290180'
+      - '1395581'
       X-Throttling-Control:
-      - busy (images=green:100, inpadoc=green:45, other=green:1000, retrieval=green:100,
-        search=green:15)
+      - idle (images=green:200, inpadoc=green:60, other=green:1000, retrieval=green:200,
+        search=green:30)
     http_version: HTTP/1.1
     status_code: 200
 - request:
@@ -208,7 +210,7 @@ interactions:
       host:
       - ops.epo.org
       user-agent:
-      - Mozilla/5.0 Python Patent Clientbot/4.1.4 (parkerhancock@users.noreply.github.com)
+      - Mozilla/5.0 Python Patent Clientbot/5.0.14 (parkerhancock@users.noreply.github.com)
     method: GET
     uri: http://ops.epo.org/3.2/rest-services/published-data/publication/docdb/WO2009085664.A2/description
   response:
@@ -851,6 +853,8 @@ interactions:
       - POST
       Access-Control-Allow-Origin:
       - '*'
+      Cache-Control:
+      - no-cache
       Connection:
       - keep-alive
       Content-Length:
@@ -858,7 +862,7 @@ interactions:
       Content-Type:
       - application/xml;charset=utf-8
       Date:
-      - Mon, 11 Dec 2023 16:00:12 GMT
+      - Wed, 22 May 2024 16:32:43 GMT
       ETag:
       - '"0ad8ea6df54cba7034ce6a1f5de56b0e4"'
       Pragma:
@@ -876,11 +880,11 @@ interactions:
       X-EPO-Forwarded:
       - '[38.104.255.66]'
       X-Elapsed-Time:
-      - '43'
+      - '44'
       X-IndividualQuotaPerHour-Used:
-      - '340790'
+      - '367945'
       X-RegisteredQuotaPerWeek-Used:
-      - '340790'
+      - '1446191'
       X-Throttling-Control:
       - idle (images=green:200, inpadoc=green:60, other=green:1000, retrieval=green:200,
         search=green:30)

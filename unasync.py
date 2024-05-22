@@ -40,7 +40,7 @@ SUBS = [
     ("*@pytest.mark.anyio", ""),
     ("*@pytest.mark.asyncio", ""),
     ("*@async_proxy.*", ""),
-    ('*@pytest.mark.parametrize\("anyio_backend", \["asyncio"\]\)', ""),
+    (r'*@pytest.mark.parametrize\("anyio_backend", \["asyncio"\]\)', r""),
     ("anysqlite", "sqlite3"),
     ("AsyncManager", "Manager"),
     ("from .async_api ", "from .sync_api "),

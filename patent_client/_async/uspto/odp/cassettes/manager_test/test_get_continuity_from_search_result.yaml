@@ -17,11 +17,11 @@ interactions:
       host:
       - beta-api.uspto.gov
       user-agent:
-      - Mozilla/5.0 Python Patent Clientbot/5.0.4 (parkerhancock@users.noreply.github.com)
+      - Mozilla/5.0 Python Patent Clientbot/5.0.14 (parkerhancock@users.noreply.github.com)
     method: POST
     uri: https://beta-api.uspto.gov/api/v1/patent/applications/search
   response:
-    content: '{"count":1,"patentBag":[{"applicationNumberText":"16123456"}],"requestIdentifier":"c7302a6a-c101-4ee0-9fb3-0e1fd1fc3001"}'
+    content: '{"count":1,"patentBag":[{"applicationNumberText":"16123456"}],"requestIdentifier":"e858d441-d0e8-41b6-96ed-8588892578c0"}'
     headers:
       access-control-allow-headers:
       - Origin, X-Requested-With, Content-Type, Accept
@@ -34,13 +34,13 @@ interactions:
       content-type:
       - application/json
       date:
-      - Fri, 03 May 2024 17:51:44 GMT
+      - Wed, 22 May 2024 16:19:31 GMT
       x-amz-apigw-id:
-      - XNKXpEWjoAMFkmw=
+      - YLkrFGN_IAMFcKg=
       x-amzn-requestid:
-      - c7302a6a-c101-4ee0-9fb3-0e1fd1fc3001
+      - e858d441-d0e8-41b6-96ed-8588892578c0
       x-amzn-trace-id:
-      - Root=1-66352430-7f94d9cd3698f3697c0c97ec;Parent=4462f6789b92ed1b;Sampled=0;lineage=33e8fdb8:0
+      - Root=1-664e1b13-360169164a69448e2036da7e;Parent=70ce26bc9c8b7ee0;Sampled=0;lineage=33e8fdb8:0
     http_version: HTTP/2
     status_code: 200
 - request:
@@ -66,7 +66,7 @@ interactions:
       host:
       - beta-api.uspto.gov
       user-agent:
-      - Mozilla/5.0 Python Patent Clientbot/5.0.4 (parkerhancock@users.noreply.github.com)
+      - Mozilla/5.0 Python Patent Clientbot/5.0.14 (parkerhancock@users.noreply.github.com)
     method: POST
     uri: https://beta-api.uspto.gov/api/v1/patent/applications/search
   response:
@@ -81,7 +81,7 @@ interactions:
       Church","geographicRegionName":"VIRGINIA","geographicRegionCode":"VA","countryCode":"US","postalCode":"22042-1248","nameLineOneText":"BIRCH
       STEWART KOLASCH & BIRCH, LLP","countryName":"UNITED STATES","addressLineOneText":"8110
       Gatehouse Road","addressLineTwoText":"Suite 100 East"}],"firstInventorName":"Shoji
-      KANADA","cpcClassificationBag":["G06N3/08","G16H30/20","G16H50/70","G16H30/40","G06N20/00","G06V10/7784","G06V10/774","G06F18/2178","G06N3/042","G06F18/217","G06F18/214","G06N3/045"],"applicationConfirmationNumber":7051,"docketNumber":"1982-1042PUS1"}],"requestIdentifier":"7f433ac5-455e-4caf-b963-88bb44abefa4"}'
+      KANADA","cpcClassificationBag":["G06N3/08","G16H30/20","G16H50/70","G16H30/40","G06N20/00","G06V10/7784","G06V10/774","G06F18/2178","G06N3/042","G06F18/217","G06F18/214","G06N3/045"],"applicationConfirmationNumber":7051,"docketNumber":"1982-1042PUS1"}],"requestIdentifier":"263aa7bc-ef46-4507-b41b-400174f92c4f"}'
     headers:
       access-control-allow-headers:
       - Origin, X-Requested-With, Content-Type, Accept
@@ -94,13 +94,13 @@ interactions:
       content-type:
       - application/json
       date:
-      - Fri, 03 May 2024 17:51:44 GMT
+      - Wed, 22 May 2024 16:19:31 GMT
       x-amz-apigw-id:
-      - XNKXqEv7IAMF67g=
+      - YLkrGEw9IAMF7Ig=
       x-amzn-requestid:
-      - 7f433ac5-455e-4caf-b963-88bb44abefa4
+      - 263aa7bc-ef46-4507-b41b-400174f92c4f
       x-amzn-trace-id:
-      - Root=1-66352430-18b1e9b645a475692e78b9a5;Parent=701d254e18991ceb;Sampled=0;lineage=33e8fdb8:0
+      - Root=1-664e1b13-0d97b730229e13651c7ce187;Parent=6e3da98ee5b8b41d;Sampled=0;lineage=33e8fdb8:0
     http_version: HTTP/2
     status_code: 200
 - request:
@@ -117,12 +117,13 @@ interactions:
       host:
       - beta-api.uspto.gov
       user-agent:
-      - Mozilla/5.0 Python Patent Clientbot/5.0.4 (parkerhancock@users.noreply.github.com)
+      - Mozilla/5.0 Python Patent Clientbot/5.0.14 (parkerhancock@users.noreply.github.com)
     method: GET
     uri: https://beta-api.uspto.gov/api/v1/patent/applications/16123456/continuity
   response:
-    content: '{"count":1,"patentBag":[{"continuityBag":{"childContinuityBag":[{"applicationStatusCode":150,"claimParentageTypeCode":"DIV","aiaIndicator":true,"filingDate":"2020-12-22","applicationStatusDescriptionText":"Patented
-      Case","claimParentageTypeCodeDescription":"is a Division of","parentApplicationNumberText":"16123456","patentNumber":"11797846","childApplicationNumberText":"17130468"}]}}],"requestIdentifier":"dfd407a1-ea7d-456a-b9b1-87b3c66674ec"}'
+    content: '{"count":1,"patentBag":[{"continuityBag":{"childContinuityBag":[{"firstInventorToFileIndicator":true,"childApplicationStatusDescriptionText":"Patented
+      Case","claimParentageTypeCode":"DIV","childApplicationStatusCode":150,"claimParentageTypeCodeDescription":"is
+      a Division of","childPatentNumber":"11797846","parentApplicationNumberText":"16123456","childApplicationFilingDate":"2020-12-22","childApplicationNumberText":"17130468"}]}}],"requestIdentifier":"ae8d0cc2-d580-4aad-849c-64fd03aa12e9"}'
     headers:
       access-control-allow-headers:
       - Origin, X-Requested-With, Content-Type, Accept
@@ -131,17 +132,17 @@ interactions:
       access-control-allow-origin:
       - '*'
       content-length:
-      - '447'
+      - '494'
       content-type:
       - application/json
       date:
-      - Fri, 03 May 2024 17:31:36 GMT
+      - Wed, 22 May 2024 16:00:14 GMT
       x-amz-apigw-id:
-      - XNHa1El3oAMFkYQ=
+      - YLh2VF3hIAMFkQw=
       x-amzn-requestid:
-      - dfd407a1-ea7d-456a-b9b1-87b3c66674ec
+      - ae8d0cc2-d580-4aad-849c-64fd03aa12e9
       x-amzn-trace-id:
-      - Root=1-66351f78-24db04695745d5f5708d8243;Parent=1d73151dfcead477;Sampled=0;lineage=33e8fdb8:0
+      - Root=1-664e168e-451c15290ac0923544e8a173;Parent=7e5465af79fc063d;Sampled=0;lineage=33e8fdb8:0
     http_version: HTTP/2
     status_code: 200
 version: 1

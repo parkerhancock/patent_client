@@ -11,7 +11,7 @@ interactions:
       host:
       - developer.uspto.gov
       user-agent:
-      - python-httpx/0.24.1
+      - Mozilla/5.0 Python Patent Clientbot/5.0.14 (parkerhancock@users.noreply.github.com)
     method: GET
     uri: https://developer.uspto.gov/ptab-api/proceedings?applicationNumberText=09089931
   response:
@@ -22,31 +22,27 @@ interactions:
       a l\u2019Energie Atomique et aux Energies Alternatives\",\"petitionerCounselName\":\"Paul
       McGowan\",\"decisionDate\":\"07-06-2017\",\"additionalRespondentPartyDataBag\":[]}],\"recordTotalQuantity\":1}"
     headers:
-      Access-Control-Allow-Credentials:
+      access-control-allow-credentials:
       - 'true'
-      Access-Control-Allow-Headers:
+      access-control-allow-headers:
       - accept, authorization, content-type, x-requested-with
-      Access-Control-Allow-Methods:
+      access-control-allow-methods:
       - GET, POST, OPTIONS, PUT
-      Access-Control-Allow-Origin:
+      access-control-allow-origin:
       - '*'
-      Access-Control-Max-Age:
+      access-control-max-age:
       - '1'
-      Connection:
-      - keep-alive
-      Content-Type:
+      content-type:
       - application/json
-      Date:
-      - Tue, 31 Oct 2023 02:12:16 GMT
-      Strict-Transport-Security:
+      date:
+      - Wed, 22 May 2024 16:20:05 GMT
+      strict-transport-security:
       - max-age=31536000;
-      Transfer-Encoding:
-      - chunked
-      Vary:
+      vary:
       - Origin
       - Access-Control-Request-Method
       - Access-Control-Request-Headers
-    http_version: HTTP/1.1
+    http_version: HTTP/2
     status_code: 200
 - request:
     body: ''
@@ -60,56 +56,7 @@ interactions:
       host:
       - developer.uspto.gov
       user-agent:
-      - python-httpx/0.24.1
-    method: GET
-    uri: https://developer.uspto.gov/ptab-api/proceedings?applicationNumberText=09089931&recordStartNumber=0&recordTotalQuantity=25&sortOrderCategory=
-  response:
-    content: "{\"aggregationData\":{},\"results\":[{\"institutionDecisionDate\":\"09-28-2016\",\"proceedingFilingDate\":\"04-01-2016\",\"accordedFilingDate\":\"04-01-2016\",\"proceedingStatusCategory\":\"Terminated-Settled\",\"proceedingNumber\":\"IPR2016-00833\",\"proceedingLastModifiedDate\":\"07-06-2017\",\"proceedingTypeCategory\":\"AIA
-      Trial\",\"subproceedingTypeCategory\":\"IPR\",\"respondentTechnologyCenterNumber\":\"2800\",\"respondentPatentOwnerName\":\"Silicon
-      Genesis Corporation\",\"respondentPartyName\":\"Silicon Genesis Corporation\",\"respondentInventorName\":\"FRANCOIS
-      HENLEY\",\"respondentCounselName\":\"Margaux Nair\",\"respondentGrantDate\":\"08-15-2000\",\"respondentPatentNumber\":\"6103599\",\"respondentApplicationNumberText\":\"09089931\",\"petitionerPartyName\":\"Commissariat
-      a l\u2019Energie Atomique et aux Energies Alternatives\",\"petitionerCounselName\":\"Paul
-      McGowan\",\"decisionDate\":\"07-06-2017\",\"additionalRespondentPartyDataBag\":[]}],\"recordTotalQuantity\":1}"
-    headers:
-      Access-Control-Allow-Credentials:
-      - 'true'
-      Access-Control-Allow-Headers:
-      - accept, authorization, content-type, x-requested-with
-      Access-Control-Allow-Methods:
-      - GET, POST, OPTIONS, PUT
-      Access-Control-Allow-Origin:
-      - '*'
-      Access-Control-Max-Age:
-      - '1'
-      Connection:
-      - keep-alive
-      Content-Type:
-      - application/json
-      Date:
-      - Tue, 31 Oct 2023 02:12:16 GMT
-      Strict-Transport-Security:
-      - max-age=31536000;
-      Transfer-Encoding:
-      - chunked
-      Vary:
-      - Origin
-      - Access-Control-Request-Method
-      - Access-Control-Request-Headers
-    http_version: HTTP/1.1
-    status_code: 200
-- request:
-    body: ''
-    headers:
-      accept:
-      - '*/*'
-      accept-encoding:
-      - gzip, deflate
-      connection:
-      - keep-alive
-      host:
-      - developer.uspto.gov
-      user-agent:
-      - Mozilla/5.0 Python Patent Clientbot/4.1.4 (parkerhancock@users.noreply.github.com)
+      - Mozilla/5.0 Python Patent Clientbot/5.0.14 (parkerhancock@users.noreply.github.com)
     method: GET
     uri: https://developer.uspto.gov/ptab-api/proceedings?applicationNumberText=09089931&recordStartNumber=0&recordTotalQuantity=1&sortOrderCategory=
   response:
@@ -133,7 +80,7 @@ interactions:
       content-type:
       - application/json
       date:
-      - Mon, 11 Dec 2023 16:01:16 GMT
+      - Wed, 22 May 2024 16:20:05 GMT
       strict-transport-security:
       - max-age=31536000;
       vary:

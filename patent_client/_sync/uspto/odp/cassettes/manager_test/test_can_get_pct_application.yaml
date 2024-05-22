@@ -1,53 +1,5 @@
 interactions:
 - request:
-    body: '{"q": "applicationNumberText:(PCT/US07/19317)", "fields": ["applicationNumberText"],
-      "pagination": {"offset": 0, "limit": 25}}'
-    headers:
-      X-API-KEY:
-      - REDACTED
-      accept:
-      - application/json
-      accept-encoding:
-      - gzip, deflate
-      connection:
-      - keep-alive
-      content-length:
-      - '126'
-      content-type:
-      - application/json
-      host:
-      - beta-api.uspto.gov
-      user-agent:
-      - Mozilla/5.0 Python Patent Clientbot/5.0.6 (parkerhancock@users.noreply.github.com)
-    method: POST
-    uri: https://beta-api.uspto.gov/api/v1/patent/applications/search
-  response:
-    content: '{"code":404,"message":"Not Found","detailedMessage":"No matching records
-      found, refine your search criteria and try again","requestIdentifier":"d90bf7a8-d995-4599-904f-f91eb024d448"}'
-    headers:
-      access-control-allow-headers:
-      - Origin, X-Requested-With, Content-Type, Accept
-      access-control-allow-methods:
-      - OPTIONS,POST,GET
-      access-control-allow-origin:
-      - '*'
-      content-length:
-      - '182'
-      content-type:
-      - application/json
-      correlation-id:
-      - d90bf7a8-d995-4599-904f-f91eb024d448
-      date:
-      - Fri, 03 May 2024 18:45:08 GMT
-      x-amz-apigw-id:
-      - XNSMNHa9oAMF2wQ=
-      x-amzn-requestid:
-      - d90bf7a8-d995-4599-904f-f91eb024d448
-      x-amzn-trace-id:
-      - Root=1-663530b4-02c4d35b50e85442681a2119;Parent=105ec4e5c7dbe442;Sampled=0;lineage=33e8fdb8:0
-    http_version: HTTP/2
-    status_code: 404
-- request:
     body: ''
     headers:
       X-API-KEY:
@@ -61,76 +13,36 @@ interactions:
       host:
       - beta-api.uspto.gov
       user-agent:
-      - Mozilla/5.0 Python Patent Clientbot/5.0.6 (parkerhancock@users.noreply.github.com)
-    method: GET
-    uri: https://beta-api.uspto.gov/api/v1/patent/applications/PCT/US07/19317
-  response:
-    content: '{"message":"Missing Authentication Token"}'
-    headers:
-      access-control-allow-headers:
-      - Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token
-      access-control-allow-methods:
-      - GET,OPTIONS
-      access-control-allow-origin:
-      - '*'
-      content-length:
-      - '42'
-      content-type:
-      - application/json
-      date:
-      - Fri, 03 May 2024 18:48:01 GMT
-      x-amz-apigw-id:
-      - XNSnWH2rIAMF8bQ=
-      x-amzn-errortype:
-      - MissingAuthenticationTokenException
-      x-amzn-requestid:
-      - b7c98829-6507-409c-94da-2c5d5cb95d4a
-    http_version: HTTP/2
-    status_code: 403
-- request:
-    body: ''
-    headers:
-      X-API-KEY:
-      - REDACTED
-      accept:
-      - '*/*'
-      accept-encoding:
-      - gzip, deflate
-      connection:
-      - keep-alive
-      host:
-      - beta-api.uspto.gov
-      user-agent:
-      - Mozilla/5.0 Python Patent Clientbot/5.0.6 (parkerhancock@users.noreply.github.com)
+      - Mozilla/5.0 Python Patent Clientbot/5.0.14 (parkerhancock@users.noreply.github.com)
     method: GET
     uri: https://beta-api.uspto.gov/api/v1/patent/applications/PCT%2FUS07%2F19317
   response:
     content: '{"count":1,"patentBag":[{"applicationStatusCode":218,"applicationTypeCode":"?","filingDate":"2007-09-05","recordAttorney":{"attorneyBag":[{"activeIndicator":"ACTIVE","firstName":"DAVID","lastName":"HEISER","registrationNumber":"31366","attorneyAddressBag":[{"cityName":"SMYRNA","geographicRegionName":"DELAWARE","geographicRegionCode":"DE","countryCode":"US","postalCode":"19977","countryName":"UNITED
-      STATES","addressLineOneText":"116 PEBBLE CREEK DRIVE"}],"telecommunicationAddressBag":[{"telecommunicationNumber":"443-243-5472","usageTypeCategory":"TEL"}],"registeredPractitionerCategory":"ATTNY"}],"customerNumber":{}},"applicationNumberText":"PCT/US07/19317","pctPublicationDate":"2008-03-13","firstInventorName":"ALLEN
-      C. SIEVERT","applicationTypeLabelName":"PCT","applicationStatusDate":"2019-02-08","class":"570","applicationTypeCategory":"PCT","inventorBag":[{"firstName":"ALLEN","lastName":"SIEVERT","countryCode":"US","inventorNameText":"ALLEN
+      STATES","addressLineOneText":"116 PEBBLE CREEK DRIVE"}],"telecommunicationAddressBag":[{"telecommunicationNumber":"443-243-5472","telecomTypeCode":"TEL"}],"registeredPractitionerCategory":"ATTNY"}]},"applicationNumberText":"PCT/US07/19317","pctPublicationDate":"2008-03-13","firstInventorName":"ALLEN
+      C. SIEVERT","applicationTypeLabelName":"PCT","applicationStatusDate":"2019-02-08","class":"570","applicationTypeCategory":"PCT","eventDataBag":[{"eventCode":"RCDT","eventDescriptionText":"Receipt
+      Date","eventDate":"2007-09-05"},{"eventCode":"IEXX","eventDescriptionText":"Initial
+      Exam Team nn","eventDate":"2007-09-10"},{"eventCode":"MLIB","eventDescriptionText":"Record
+      Copy Mailed","eventDate":"2007-11-26"},{"eventCode":"P102","eventDescriptionText":"Notification
+      Concerning Payment of Fees","eventDate":"2007-11-26"},{"eventCode":"P105","eventDescriptionText":"Notification
+      of Intntl. Appl. Number and Intntl. Filing Date","eventDate":"2007-11-26"},{"eventCode":"ROST","eventDescriptionText":"RO
+      complete, placed in storage","eventDate":"2017-01-01"}],"inventorBag":[{"firstName":"ALLEN","lastName":"SIEVERT","countryCode":"US","inventorNameText":"ALLEN
       C. SIEVERT","middleName":"C.","correspondenceAddressBag":[{"cityName":"ELKTON","geographicRegionName":"MARYLAND","geographicRegionCode":"MD","countryCode":"US","postalCode":"21921","nameLineOneText":"215
-      RHETT LANE","countryName":"UNITED STATES"}]}],"patentTermAdjustmentData":{},"transactionContentBag":[{"recordedDate":"2007-09-05","caseActionDescriptionText":"Receipt
-      Date","caseActionCode":"RCDT"},{"recordedDate":"2007-09-10","caseActionDescriptionText":"Initial
-      Exam Team nn","caseActionCode":"IEXX"},{"recordedDate":"2007-11-26","caseActionDescriptionText":"Record
-      Copy Mailed","caseActionCode":"MLIB"},{"recordedDate":"2007-11-26","caseActionDescriptionText":"Notification
-      Concerning Payment of Fees","caseActionCode":"P102"},{"recordedDate":"2007-11-26","caseActionDescriptionText":"Notification
-      of Intntl. Appl. Number and Intntl. Filing Date","caseActionCode":"P105"},{"recordedDate":"2017-01-01","caseActionDescriptionText":"RO
-      complete, placed in storage","caseActionCode":"ROST"}],"applicationStatusDescriptionText":"RO
+      RHETT LANE","countryName":"UNITED STATES"}]}],"patentTermAdjustmentData":{},"applicationStatusDescriptionText":"RO
       PROCESSING COMPLETED-PLACED IN STORAGE ","businessEntityStatusCategory":"Regular
-      Undiscounted","continuityBag":{"parentContinuityBag":[{"applicationStatusCode":218,"claimParentageTypeCode":"PRO","filingDate":"2006-09-05","applicationStatusDescriptionText":"RO
-      PROCESSING COMPLETED-PLACED IN STORAGE","claimParentageTypeCodeDescription":"Claims
-      priority from a provisional application","parentApplicationNumberText":"60842609","childApplicationNumberText":"PCT/US07/19317"}],"childContinuityBag":[{"applicationStatusCode":250,"claimParentageTypeCode":"NST","aiaIndicator":false,"filingDate":"2009-02-17","applicationStatusDescriptionText":"Patent
-      Expired Due to NonPayment of Maintenance Fees Under 37 CFR 1.362","claimParentageTypeCodeDescription":"is
-      a National Stage Entry of","parentApplicationNumberText":"PCT/US07/19317","patentNumber":"8053613","childApplicationNumberText":"12377761"}]},"applicantBag":[{"applicant":"E.
+      Undiscounted","continuityBag":{"parentContinuityBag":[{"parentApplicationStatusCode":218,"claimParentageTypeCode":"PRO","claimParentageTypeCodeDescription":"Claims
+      priority from a provisional application","parentApplicationStatusDescriptionText":"RO
+      PROCESSING COMPLETED-PLACED IN STORAGE","parentApplicationNumberText":"60842609","parentApplicationFilingDate":"2006-09-05","childApplicationNumberText":"PCT/US07/19317"}],"childContinuityBag":[{"firstInventorToFileIndicator":false,"childApplicationStatusDescriptionText":"Patent
+      Expired Due to NonPayment of Maintenance Fees Under 37 CFR 1.362","claimParentageTypeCode":"NST","childApplicationStatusCode":250,"claimParentageTypeCodeDescription":"is
+      a National Stage Entry of","childPatentNumber":"8053613","parentApplicationNumberText":"PCT/US07/19317","childApplicationFilingDate":"2009-02-17","childApplicationNumberText":"12377761"}]},"applicantBag":[{"applicantNameText":"E.
       I. DU PONT DE NEMOURS AND COMPANY","correspondenceAddressBag":[{"cityName":"WILMINGTON","geographicRegionName":"DELAWARE","geographicRegionCode":"DE","countryCode":"US","postalCode":"19898","nameLineOneText":"1007
       MARKET STREET","countryName":"UNITED STATES"}]}],"firstApplicantName":"E. I.
       DU PONT DE NEMOURS AND COMPANY","customerNumber":23906,"groupArtUnitNumber":"1621","inventionTitle":"PROCESSES
-      FOR PRODUCING 1,2,3,3,3-PENTAFLUOROPROPENE AND PRECURSORS THEREOF","wipoReferenceNumber":"WO
+      FOR PRODUCING 1,2,3,3,3-PENTAFLUOROPROPENE AND PRECURSORS THEREOF","pctPublicationNumber":"WO
       2008/030442","correspondenceAddressBag":[{"cityName":"WILMINGTON","geographicRegionName":"DELAWARE","geographicRegionCode":"DE","countryCode":"US","postalCode":"19805","nameLineOneText":"DAVID
       E. HEISER","nameLineTwoText":"E. I. DU PONT DE NEMOURS AND COMPANY","countryName":"UNITED
       STATES","addressLineOneText":"LEGAL PATENT RECORDS CENTER","addressLineTwoText":"4417
-      LANCASTER PIKE"}],"foreignPriorityBag":[{"priorityNumberText":"60842609","filingDate":"2006-09-05","countryName":"UNITED
-      STATES"}],"applicationConfirmationNumber":7383,"smallEntityStatusIndicator":false,"publicationCategoryBag":["Other"],"docketNumber":"FL1264PCT"}],"requestIdentifier":"637b775a-b16f-42b3-976c-85165b0eefd4"}'
+      LANCASTER PIKE"}],"foreignPriorityBag":[{"filingDate":"2006-09-05","applicationNumberText":"60842609","ipOfficeName":"UNITED
+      STATES"}],"applicationConfirmationNumber":7383,"smallEntityStatusIndicator":false,"publicationCategoryBag":["Other"],"docketNumber":"FL1264PCT"}],"requestIdentifier":"617f5356-24d4-4cf4-b502-f5348f849fcb"}'
     headers:
       access-control-allow-headers:
       - Origin, X-Requested-With, Content-Type, Accept
@@ -139,17 +51,17 @@ interactions:
       access-control-allow-origin:
       - '*'
       content-length:
-      - '4106'
+      - '4086'
       content-type:
       - application/json
       date:
-      - Fri, 03 May 2024 18:50:05 GMT
+      - Wed, 22 May 2024 16:00:16 GMT
       x-amz-apigw-id:
-      - XNS6qHA7oAMFYaw=
+      - YLh2jEiVIAMFe2w=
       x-amzn-requestid:
-      - 637b775a-b16f-42b3-976c-85165b0eefd4
+      - 617f5356-24d4-4cf4-b502-f5348f849fcb
       x-amzn-trace-id:
-      - Root=1-663531dd-2331d6831a2c8b1822012f8c;Parent=7d15e9582c287475;Sampled=0;lineage=33e8fdb8:0
+      - Root=1-664e1690-3bfb7c0962cf498c3020f45c;Parent=6eceed343e9f7f67;Sampled=0;lineage=33e8fdb8:0
     http_version: HTTP/2
     status_code: 200
 version: 1

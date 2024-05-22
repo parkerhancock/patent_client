@@ -11,7 +11,7 @@ interactions:
       host:
       - developer.uspto.gov
       user-agent:
-      - python-httpx/0.24.1
+      - Mozilla/5.0 Python Patent Clientbot/5.0.14 (parkerhancock@users.noreply.github.com)
     method: GET
     uri: https://developer.uspto.gov/ptab-api/documents?documentIdentifier=170680401
   response:
@@ -23,30 +23,26 @@ interactions:
       al","respondentGrantDate":"05-09-2000","respondentPatentNumber":"6059576","respondentApplicationNumberText":"08976228","petitionerPartyName":"Apple
       Inc.","petitionerCounselName":"Renner, Walteret al","additionalRespondentPartyDataBag":[]}],"recordTotalQuantity":1}'
     headers:
-      Access-Control-Allow-Credentials:
+      access-control-allow-credentials:
       - 'true'
-      Access-Control-Allow-Headers:
+      access-control-allow-headers:
       - accept, authorization, content-type, x-requested-with
-      Access-Control-Allow-Methods:
+      access-control-allow-methods:
       - GET, POST, OPTIONS, PUT
-      Access-Control-Allow-Origin:
+      access-control-allow-origin:
       - '*'
-      Access-Control-Max-Age:
+      access-control-max-age:
       - '1'
-      Connection:
-      - keep-alive
-      Content-Type:
+      content-type:
       - application/json
-      Date:
-      - Tue, 31 Oct 2023 02:12:16 GMT
-      Strict-Transport-Security:
+      date:
+      - Wed, 22 May 2024 16:20:04 GMT
+      strict-transport-security:
       - max-age=31536000;
-      Transfer-Encoding:
-      - chunked
-      Vary:
+      vary:
       - Origin
       - Access-Control-Request-Method
       - Access-Control-Request-Headers
-    http_version: HTTP/1.1
+    http_version: HTTP/2
     status_code: 200
 version: 1

@@ -4,6 +4,7 @@
 # *         Source File: patent_client/_async/uspto/odp/manager_test.py          *
 # ********************************************************************************
 
+
 from .model import USApplication, USApplicationBiblio
 
 
@@ -62,3 +63,8 @@ def test_can_get_old_applications():
 def test_can_get_pct_application():
     result = USApplication.objects.get("PCT/US07/19317")
     assert result.appl_id == "PCT/US07/19317"
+
+
+def test_can_get_by_customer_number():
+    result = USApplication.objects.filter(customer_number="31625")
+    assert result.count() > 0
