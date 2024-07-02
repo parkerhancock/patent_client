@@ -45,6 +45,7 @@ class TestPtabDocument:
     async def test_filter_by_proceeding(self):
         result = PtabDocument.objects.filter(proceeding_number="IPR2016-00831")
         assert await result.count() == 77
+        assert (await result.first()).document_title == "DECISION - Motion to Terminate"
 
     @pytest.mark.asyncio
     async def test_sort_by_document_number(self):

@@ -213,4 +213,51 @@ interactions:
       - Access-Control-Request-Headers
     http_version: HTTP/2
     status_code: 200
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - developer.uspto.gov
+      user-agent:
+      - Mozilla/5.0 Python Patent Clientbot/5.0.15 (parkerhancock@users.noreply.github.com)
+    method: GET
+    uri: https://developer.uspto.gov/ptab-api/documents?proceedingNumber=IPR2016-00831&recordStartNumber=0&recordTotalQuantity=1&sortOrderCategory=
+  response:
+    content: "{\"aggregationData\":{},\"results\":[{\"documentNumber\":\"39\",\"documentName\":\"IPR2016-00831
+      -832 -833 Decision on Motion to Terminate.pdf\",\"documentCategory\":\"Paper\",\"documentTitleText\":\"DECISION
+      - Motion to Terminate\",\"proceedingNumber\":\"IPR2016-00831\",\"documentFilingDate\":\"07-06-2017\",\"documentTypeName\":\"Termination
+      - Settlement After Institution\",\"proceedingTypeCategory\":\"AIA Trial\",\"subproceedingTypeCategory\":\"IPR\",\"documentIdentifier\":\"169514971\",\"objectUuId\":\"workspace://SpacesStore/4d7af7ba-623e-49fa-ad9e-688ca7274c28;1.0\",\"respondentTechnologyCenterNumber\":\"2800\",\"respondentPatentOwnerName\":\"Silicon
+      Genesis Corporation\",\"respondentPartyName\":\"Silicon Genesis Corporation\",\"respondentInventorName\":\"FRANCOIS
+      HENLEY\",\"respondentCounselName\":\"Margaux Nair\",\"respondentGrantDate\":\"12-19-2000\",\"respondentPatentNumber\":\"6162705\",\"respondentApplicationNumberText\":\"09026118\",\"petitionerPartyName\":\"Commissariat
+      a l\u2019Energie Atomique et aux Energies Alternatives\",\"petitionerCounselName\":\"Paul
+      McGowan\",\"additionalRespondentPartyDataBag\":[]}],\"recordTotalQuantity\":77}"
+    headers:
+      access-control-allow-credentials:
+      - 'true'
+      access-control-allow-headers:
+      - accept, authorization, content-type, x-requested-with
+      access-control-allow-methods:
+      - GET, POST, OPTIONS, PUT
+      access-control-allow-origin:
+      - '*'
+      access-control-max-age:
+      - '1'
+      content-type:
+      - application/json
+      date:
+      - Tue, 02 Jul 2024 20:48:19 GMT
+      strict-transport-security:
+      - max-age=31536000;
+      vary:
+      - Origin
+      - Access-Control-Request-Method
+      - Access-Control-Request-Headers
+    http_version: HTTP/2
+    status_code: 200
 version: 1

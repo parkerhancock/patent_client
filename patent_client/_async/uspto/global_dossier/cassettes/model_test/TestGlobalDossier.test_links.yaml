@@ -867,4 +867,316 @@ interactions:
       - 1; mode=block
     http_version: HTTP/1.1
     status_code: 200
+- request:
+    body: ''
+    headers:
+      accept:
+      - application/xml
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - assignment-api.uspto.gov
+      user-agent:
+      - Mozilla/5.0 Python Patent Clientbot/5.0.15 (parkerhancock@users.noreply.github.com)
+    method: GET
+    uri: https://assignment-api.uspto.gov/patent/lookup?filter=ApplicationNumber&query=16123456&rows=1&start=0&sort=ExecutionDate%2Bdesc&facet=false
+  response:
+    content: "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<response>\n\n<lst name=\"responseHeader\">\n
+      \ <bool name=\"zkConnected\">true</bool>\n  <int name=\"status\">0</int>\n  <int
+      name=\"QTime\">73</int>\n  <lst name=\"params\">\n    <str name=\"q\">*:*</str>\n
+      \   <str name=\"qt\">/apisearch</str>\n    <str name=\"start\">0</str>\n    <str
+      name=\"sort\">patAssignorEarliestExDate desc</str>\n    <str name=\"fq\">applNum:16123456</str>\n
+      \   <str name=\"rows\">1</str>\n    <str name=\"wt\">javabin</str>\n    <str
+      name=\"version\">2</str>\n  </lst>\n</lst>\n<result name=\"response\" numFound=\"1\"
+      start=\"0\">\n  <doc>\n    <str name=\"id\">46816-108</str>\n    <str name=\"displayId\">046816-0108</str>\n
+      \   <str name=\"reelNo\">46816</str>\n    <str name=\"frameNo\">108</str>\n
+      \   <date name=\"lastUpdateDate\">2021-01-26T07:00:52Z</date>\n    <str name=\"purgeIndicator\">N</str>\n
+      \   <date name=\"recordedDate\">2018-09-07T05:00:00Z</date>\n    <str name=\"pageCount\">3</str>\n
+      \   <str name=\"conveyanceText\">ASSIGNMENT OF ASSIGNORS INTEREST (SEE DOCUMENT
+      FOR DETAILS).</str>\n    <str name=\"assignmentRecordHasImages\">Y</str>\n    <str
+      name=\"attorneyDockNum\">1982-1042PUS1</str>\n    <str name=\"corrName\">BIRCH,
+      STEWART, KOLASCH &amp; BIRCH, LLP</str>\n    <str name=\"corrAddress1\">8110
+      GATEHOUSE ROAD, SUITE 100E</str>\n    <str name=\"corrAddress2\">FALLS CHURCH,
+      VA 22042</str>\n    <date name=\"patAssignorEarliestExDate\">2018-07-11T05:00:00Z</date>\n
+      \   <arr name=\"patAssignorName\">\n      <str>KANADA, SHOJI</str>\n    </arr>\n
+      \   <arr name=\"patAssignorExDate\">\n      <date>2018-07-11T05:00:00Z</date>\n
+      \   </arr>\n    <arr name=\"patAssignorDateAck\">\n      <str>0001-01-01T00:00:00Z</str>\n
+      \   </arr>\n    <arr name=\"patAssigneeName\">\n      <str>FUJIFILM CORPORATION</str>\n
+      \   </arr>\n    <arr name=\"patAssigneeAddress1\">\n      <str>26-30, NISHIAZABU
+      2-CHOME, MINATO-KU</str>\n    </arr>\n    <arr name=\"patAssigneeAddress2\">\n
+      \     <str>NULL</str>\n    </arr>\n    <arr name=\"patAssigneeCity\">\n      <str>TOKYO</str>\n
+      \   </arr>\n    <arr name=\"patAssigneeState\">\n      <str>NULL</str>\n    </arr>\n
+      \   <arr name=\"patAssigneeCountryName\">\n      <str>JAPAN</str>\n    </arr>\n
+      \   <arr name=\"patAssigneePostcode\">\n      <str>106-8620</str>\n    </arr>\n
+      \   <arr name=\"inventionTitle\">\n      <str>LEARNING ASSISTANCE DEVICE, METHOD
+      OF OPERATING LEARNING ASSISTANCE DEVICE, LEARNING ASSISTANCE PROGRAM, LEARNING
+      ASSISTANCE SYSTEM, AND TERMINAL DEVICE</str>\n    </arr>\n    <arr name=\"inventionTitleLang\">\n
+      \     <str>en</str>\n    </arr>\n    <arr name=\"applNum\">\n      <str>16123456</str>\n
+      \   </arr>\n    <arr name=\"filingDate\">\n      <date>2018-09-06T05:00:00Z</date>\n
+      \   </arr>\n    <arr name=\"intlPublDate\">\n      <date>0001-01-01T00:00:00Z</date>\n
+      \   </arr>\n    <arr name=\"intlRegNum\">\n      <str>NULL</str>\n    </arr>\n
+      \   <arr name=\"inventors\">\n      <str>Shoji KANADA</str>\n    </arr>\n    <arr
+      name=\"issueDate\">\n      <date>2021-01-26T05:00:00Z</date>\n    </arr>\n    <arr
+      name=\"patNum\">\n      <str>10902286</str>\n    </arr>\n    <arr name=\"pctNum\">\n
+      \     <str>NULL</str>\n    </arr>\n    <arr name=\"publDate\">\n      <date>2019-03-28T05:00:00Z</date>\n
+      \   </arr>\n    <arr name=\"publNum\">\n      <str>20190095759</str>\n    </arr>\n
+      \   <int name=\"patAssignorNameSize\">1</int>\n    <int name=\"patAssignorNameTypeSize\">1</int>\n
+      \   <int name=\"patAssignorExDateSize\">1</int>\n    <int name=\"patAssignorDateAckSize\">1</int>\n
+      \   <int name=\"patAssigneeNameSize\">2</int>\n    <int name=\"patAssigneeNameTypeSize\">0</int>\n
+      \   <int name=\"patAssigneeAddress1Size\">1</int>\n    <int name=\"patAssigneeAddress2Size\">1</int>\n
+      \   <int name=\"patAssigneeCitySize\">1</int>\n    <int name=\"patAssigneeStateSize\">1</int>\n
+      \   <int name=\"patAssigneeCountryNameSize\">1</int>\n    <int name=\"patAssigneePostcodeSize\">1</int>\n
+      \   <int name=\"inventionTitleSize\">1</int>\n    <int name=\"inventionTitleIdSize\">1</int>\n
+      \   <int name=\"inventionTitleLangSize\">1</int>\n    <int name=\"applNumSize\">1</int>\n
+      \   <int name=\"filingDateSize\">1</int>\n    <int name=\"intlPublDateSize\">1</int>\n
+      \   <int name=\"intlRegNumSize\">1</int>\n    <int name=\"inventorsSize\">1</int>\n
+      \   <int name=\"issueDateSize\">1</int>\n    <int name=\"patNumSize\">1</int>\n
+      \   <int name=\"pctNumSize\">1</int>\n    <int name=\"publDateSize\">1</int>\n
+      \   <int name=\"publNumSize\">1</int>\n    <str name=\"inventionTitleFirst\">LEARNING
+      ASSISTANCE DEVICE, METHOD OF OPERATING LEARNING ASSISTANCE DEVICE, LEARNING
+      ASSISTANCE PROGRAM, LEARNING ASSISTANCE SYSTEM, AND TERMINAL DEVICE</str>\n
+      \   <str name=\"inventionTitleLangFirst\">en</str>\n    <str name=\"applNumFirst\">16123456</str>\n
+      \   <date name=\"filingDateFirst\">2018-09-06T05:00:00Z</date>\n    <date name=\"intlPublDateFirst\">0001-01-01T00:00:00Z</date>\n
+      \   <str name=\"intlRegNumFirst\">NULL</str>\n    <str name=\"inventorsFirst\">Shoji
+      KANADA</str>\n    <date name=\"issueDateFirst\">2021-01-26T05:00:00Z</date>\n
+      \   <str name=\"patNumFirst\">10902286</str>\n    <str name=\"pctNumFirst\">NULL</str>\n
+      \   <date name=\"publDateFirst\">2019-03-28T05:00:00Z</date>\n    <str name=\"publNumFirst\">20190095759</str>\n
+      \   <str name=\"patAssignorNameFirst\">KANADA, SHOJI</str>\n    <str name=\"patAssigneeNameFirst\">FUJIFILM
+      CORPORATION</str>\n    <arr name=\"patAssigneePostcodeFacet\">\n      <str>106-8620</str>\n
+      \   </arr>\n    <arr name=\"patAssignorNameFacet\">\n      <str>KANADA, SHOJI</str>\n
+      \   </arr>\n    <str name=\"corrNameFacet\">BIRCH, STEWART, KOLASCH &amp; BIRCH,
+      LLP</str>\n    <long name=\"_version_\">1689942979356131328</long>\n    <arr
+      name=\"patAssigneeNameFacet\">\n      <str>FUJIFILM CORPORATION</str>\n    </arr>\n
+      \   <arr name=\"patAssigneeCityFacet\">\n      <str>TOKYO</str>\n    </arr>\n
+      \   <arr name=\"patAssigneeCountryNameFacet\">\n      <str>JAPAN</str>\n    </arr>\n
+      \   <arr name=\"patAssigneeStateFacet\">\n      <str>NULL</str>\n    </arr>\n
+      \   <str name=\"corrNameString\">BIRCH, STEWART, KOLASCH &amp; BIRCH, LLP</str></doc>\n</result>\n<lst
+      name=\"facet_counts\">\n  <lst name=\"facet_queries\">\n    <int name=\"conveyanceText:&quot;ASSIGNMENT
+      OF ASSIGNORS INTEREST&quot;\">1</int>\n    <int name=\"conveyanceText:&quot;SECURITY
+      INTEREST&quot;\">0</int>\n    <int name=\"conveyanceText:&quot;NUNC PRO TUNC
+      ASSIGNMENT&quot;\">0</int>\n    <int name=\"conveyanceText:&quot;RELEASE BY
+      SECURED PARTY&quot;\">0</int>\n    <int name=\"conveyanceText:&quot;MERGER&quot;\">0</int>\n
+      \   <int name=\"conveyanceText:&quot;CHANGE OF NAME&quot;\">0</int>\n    <int
+      name=\"conveyanceText:&quot;MERGER AND CHANGE OF NAME&quot;\">0</int>\n    <int
+      name=\"conveyanceText:&quot;LICENSE&quot;\">0</int>\n    <int name=\"conveyanceText:&quot;LIEN&quot;\">0</int>\n
+      \   <int name=\"conveyanceText:&quot;MORTGAGE&quot;\">0</int>\n    <int name=\"conveyanceText:&quot;OPTION&quot;\">0</int>\n
+      \   <int name=\"conveyanceText:&quot;DECREE OF DISTRIBUTION&quot;\">0</int>\n
+      \   <int name=\"conveyanceText:&quot;LETTERS OF TESTAMENTARY&quot;\">0</int>\n
+      \   <int name=\"conveyanceText:&quot;LETTERS OF ADMINISTRATION&quot;\">0</int>\n
+      \   <int name=\"conveyanceText:&quot;COURT APPOINTMENT&quot;\">0</int>\n    <int
+      name=\"conveyanceText:&quot;CONDITIONAL ASSIGNMENT&quot;\">0</int>\n    <int
+      name=\"conveyanceText:&quot;COURT ORDER&quot;\">0</int>\n  </lst>\n  <lst name=\"facet_fields\">\n
+      \   <lst name=\"patAssigneeCityFacet\">\n      <int name=\"TOKYO\">1</int>\n
+      \   </lst>\n    <lst name=\"patAssigneeStateFacet\">\n      <int name=\"NULL\">1</int>\n
+      \   </lst>\n    <lst name=\"patAssigneePostcodeFacet\">\n      <int name=\"106-8620\">1</int>\n
+      \   </lst>\n    <lst name=\"patAssigneeCountryNameFacet\">\n      <int name=\"JAPAN\">1</int>\n
+      \   </lst>\n    <lst name=\"patAssigneeNameFacet\">\n      <int name=\"FUJIFILM
+      CORPORATION\">1</int>\n    </lst>\n    <lst name=\"corrNameFacet\">\n      <int
+      name=\"BIRCH, STEWART, KOLASCH &amp; BIRCH, LLP\">1</int>\n    </lst>\n    <lst
+      name=\"patAssignorNameFacet\">\n      <int name=\"KANADA, SHOJI\">1</int>\n
+      \   </lst>\n    <lst name=\"applNum\">\n      <int name=\"16123456\">1</int>\n
+      \   </lst>\n    <lst name=\"patNum\">\n      <int name=\"10902286\">1</int>\n
+      \   </lst>\n    <lst name=\"publNum\">\n      <int name=\"20190095759\">1</int>\n
+      \   </lst>\n    <lst name=\"intlRegNum\">\n      <int name=\"NULL\">1</int>\n
+      \   </lst>\n  </lst>\n  <lst name=\"facet_ranges\">\n    <lst name=\"patAssignorEarliestExDate\">\n
+      \     <lst name=\"counts\">\n        <int name=\"2018-01-01T00:00:00Z\">1</int>\n
+      \     </lst>\n      <str name=\"gap\">+1YEAR</str>\n      <int name=\"before\">0</int>\n
+      \     <date name=\"start\">1899-01-01T00:00:00Z</date>\n      <date name=\"end\">2025-01-01T00:00:00Z</date>\n
+      \   </lst>\n  </lst>\n  <lst name=\"facet_intervals\"/>\n  <lst name=\"facet_heatmaps\"/>\n</lst>\n<lst
+      name=\"highlighting\">\n  <lst name=\"46816-108\">\n    <arr name=\"frameNo\"/>\n
+      \   <arr name=\"patAssigneeCity\"/>\n    <arr name=\"pctNum\"/>\n    <arr name=\"patAssigneePostcode\"/>\n
+      \   <arr name=\"filingDate\"/>\n    <arr name=\"conveyanceText\"/>\n    <arr
+      name=\"patNum\"/>\n    <arr name=\"patAssignorName\"/>\n    <arr name=\"corrAddress1\"/>\n
+      \   <arr name=\"corrAddress2\"/>\n    <arr name=\"corrAddress3\"/>\n    <arr
+      name=\"corrName\"/>\n    <arr name=\"applNum\"/>\n    <arr name=\"inventionTitle\"/>\n
+      \   <arr name=\"publNum\"/>\n    <arr name=\"patAssigneeAddress\"/>\n    <arr
+      name=\"intlRegNum\"/>\n    <arr name=\"publDate\"/>\n    <arr name=\"patAssigneeCountryName\"/>\n
+      \   <arr name=\"intlPublDate\"/>\n    <arr name=\"id\"/>\n    <arr name=\"patAssigneeName\"/>\n
+      \   <arr name=\"issueDate\"/>\n    <arr name=\"reelNo\"/>\n  </lst>\n</lst>\n</response>\n"
+    headers:
+      content-type:
+      - application/xml
+      date:
+      - Tue, 02 Jul 2024 20:47:22 GMT
+      server:
+      - Apache-Coyote/1.1
+      strict-transport-security:
+      - max-age=31536000;includeSubDomains
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+      x-xss-protection:
+      - 1; mode=block
+    http_version: HTTP/2
+    status_code: 200
+- request:
+    body: ''
+    headers:
+      Authorization:
+      - REDACTED
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - d1kazzu6rbodne.cloudfront.net
+      user-agent:
+      - Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML,
+        like Gecko) Version/21.1.1.164 Safari/602.1.507
+    method: OPTIONS
+    uri: https://d1kazzu6rbodne.cloudfront.net/patent-family/svc/family/publication/EP/1000000
+  response:
+    content: ''
+    headers:
+      apigw-requestid:
+      - aTUWLg9EoAMEbXg=
+      date:
+      - Tue, 02 Jul 2024 20:47:22 GMT
+      referrer-policy:
+      - strict-origin-when-cross-origin
+      strict-transport-security:
+      - max-age=31536000
+      vary:
+      - Origin
+      via:
+      - 1.1 42d7e882429d1efea7b9399eb4d47bdc.cloudfront.net (CloudFront)
+      x-amz-cf-id:
+      - _dVpboCVOMMbj4_svygR_5dn5fpyZrhf9qWRM56tNPdd-iIOaA4pMw==
+      x-amz-cf-pop:
+      - IAH50-P1
+      x-cache:
+      - Miss from cloudfront
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - SAMEORIGIN
+      x-xss-protection:
+      - 1; mode=block
+    http_version: HTTP/2
+    status_code: 204
+- request:
+    body: ''
+    headers:
+      Authorization:
+      - REDACTED
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - d1kazzu6rbodne.cloudfront.net
+      user-agent:
+      - Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML,
+        like Gecko) Version/21.1.1.164 Safari/602.1.507
+    method: GET
+    uri: https://d1kazzu6rbodne.cloudfront.net/patent-family/svc/family/publication/EP/1000000
+  response:
+    content: '{"country":"EP","internal":"false","corrAppNum":"99203729","id":"1000000","type":"publication","list":[{"appNum":"1010536","appDate":910828800000,"pubList":[{"pubCountry":"NL","pubNum":"1010536","pubDate":958348800000,"kindCode":"C2","pubDateStr":"05/15/2000"}],"countryCode":"NL","docList":null,"kindCode":"A","priorityClaimList":[{"country":"NL","docNumber":"1010536","kindCode":"A"}],"appDateStr":"11/12/1998","docListMsg":null,"docNum":{"country":"NL","docNumber":"1010536","format":null,"date":"11/12/1998","kindCode":"A"},"title":null,"applicantNames":null,"ip5":false},{"appNum":"20685698","appDate":913075200000,"pubList":[{"pubCountry":"US","pubNum":"6093011","pubDate":964483200000,"kindCode":"A","pubDateStr":"07/25/2000"}],"countryCode":"US","docList":null,"kindCode":"A","priorityClaimList":[{"country":"NL","docNumber":"1010536","kindCode":"A"}],"appDateStr":"12/08/1998","docListMsg":null,"docNum":{"country":"US","docNumber":"20685698","format":null,"date":"12/08/1998","kindCode":"A"},"title":null,"applicantNames":null,"ip5":true},{"appNum":"99203729","appDate":942019200000,"pubList":[{"pubCountry":"AT","pubNum":"E232441","pubDate":1045267200000,"kindCode":"T1","pubDateStr":"02/15/2003"}],"countryCode":"AT","docList":null,"kindCode":"T","priorityClaimList":[{"country":"NL","docNumber":"1010536","kindCode":"A"}],"appDateStr":"11/08/1999","docListMsg":null,"docNum":{"country":"AT","docNumber":"99203729","format":null,"date":"11/08/1999","kindCode":"T"},"title":null,"applicantNames":null,"ip5":false},{"appNum":"69905327","appDate":942019200000,"pubList":[{"pubCountry":"DE","pubNum":"69905327","pubDate":1048118400000,"kindCode":"D1","pubDateStr":"03/20/2003"}],"countryCode":"DE","docList":null,"kindCode":"T","priorityClaimList":[{"country":"NL","docNumber":"1010536","kindCode":"A"}],"appDateStr":"11/08/1999","docListMsg":null,"docNum":{"country":"DE","docNumber":"69905327","format":null,"date":"11/08/1999","kindCode":"T"},"title":null,"applicantNames":null,"ip5":false},{"appNum":"99203729","appDate":942019200000,"pubList":[{"pubCountry":"EP","pubNum":"1000000","pubDate":958521600000,"kindCode":"A1","pubDateStr":"05/17/2000"},{"pubCountry":"EP","pubNum":"1000000","pubDate":1045008000000,"kindCode":"B1","pubDateStr":"02/12/2003"}],"countryCode":"EP","docList":{"title":"Apparatus
+      for manufacturing green bricks for the brick manufacturing industry","docs":[{"docCode":"1001","docDesc":"Request
+      for grant of a European patent","docId":"EA2JRLI1DHXBS08","legalDate":942019200000,"docFormat":"PDF","numberOfPages":6,"docCodeDesc":"Application
+      Documents","docGroupCode":"1","legalDateStr":"11/08/1999","mimeTypeData":null,"shareable":false},{"docCode":"1002","docDesc":"Designation
+      of inventor","docId":"EA2JRLJNDHXBS08","legalDate":942019200000,"docFormat":"PDF","numberOfPages":1,"docCodeDesc":"Written
+      Arguments, Opinions, Incoming amendments, Papers received from applicants","docGroupCode":"4","legalDateStr":"11/08/1999","mimeTypeData":null,"shareable":false},{"docCode":"SRCH","docDesc":"Letter
+      concerning search matters","docId":"EA2JRLJ0DHXBS08","legalDate":942019200000,"docFormat":"PDF","numberOfPages":3,"docCodeDesc":"No
+      document group defined for this document","docGroupCode":"unknown","legalDateStr":"11/08/1999","mimeTypeData":null,"shareable":false},{"docCode":"SPEC","docDesc":"Specification
+      filed by fax and/or in non-official language","docId":"EA2JRLKBDHXBS08","legalDate":942019200000,"docFormat":"PDF","numberOfPages":10,"docCodeDesc":"Application
+      Documents","docGroupCode":"1","legalDateStr":"11/08/1999","mimeTypeData":null,"shareable":false},{"docCode":"DESC","docDesc":"Description","docId":"EA2JRLKODHXBS08","legalDate":942019200000,"docFormat":"PDF","numberOfPages":6,"docCodeDesc":"Application
+      Documents","docGroupCode":"1,4","legalDateStr":"11/08/1999","mimeTypeData":null,"shareable":false},{"docCode":"CLMS","docDesc":"Claims","docId":"EA2JRLKZDHXBS08","legalDate":942019200000,"docFormat":"PDF","numberOfPages":2,"docCodeDesc":"Application
+      Documents","docGroupCode":"1,4","legalDateStr":"11/08/1999","mimeTypeData":null,"shareable":false},{"docCode":"ABST","docDesc":"Abstract","docId":"EA2JRLLBDHXBS08","legalDate":942019200000,"docFormat":"PDF","numberOfPages":1,"docCodeDesc":"Application
+      Documents","docGroupCode":"1","legalDateStr":"11/08/1999","mimeTypeData":null,"shareable":false},{"docCode":"DRAW","docDesc":"Drawings","docId":"EA2JRLLRDHXBS08","legalDate":942019200000,"docFormat":"PDF","numberOfPages":6,"docCodeDesc":"Application
+      Documents","docGroupCode":"1,4","legalDateStr":"11/08/1999","mimeTypeData":null,"shareable":false},{"docCode":"APPL","docDesc":"Matter
+      concerning the application","docId":"EA4ZMR1TDHXBS04","legalDate":944006400000,"docFormat":"PDF","numberOfPages":1,"docCodeDesc":"Written
+      Arguments, Opinions, Incoming amendments, Papers received from applicants","docGroupCode":"4","legalDateStr":"12/01/1999","mimeTypeData":null,"shareable":false},{"docCode":"FREP","docDesc":"Submission
+      concerning representation","docId":"EA4ZMR2ADHXBS04","legalDate":944006400000,"docFormat":"PDF","numberOfPages":1,"docCodeDesc":"No
+      document group defined for this document","docGroupCode":"unknown","legalDateStr":"12/01/1999","mimeTypeData":null,"shareable":false},{"docCode":"PRIODOC","docDesc":"Priority
+      document","docId":"EA4ZMR24DHXBS04","legalDate":944006400000,"docFormat":"PDF","numberOfPages":17,"docCodeDesc":"No
+      document group defined for this document","docGroupCode":"unknown","legalDateStr":"12/01/1999","mimeTypeData":null,"shareable":false},{"docCode":"PRIOTRAN","docDesc":"Translation
+      of priority document","docId":"EA4ZMR3HDHXBS04","legalDate":944006400000,"docFormat":"PDF","numberOfPages":10,"docCodeDesc":"No
+      document group defined for this document","docGroupCode":"unknown","legalDateStr":"12/01/1999","mimeTypeData":null,"shareable":false},{"docCode":"1048","docDesc":"Communication
+      to designated inventor","docId":"EA8YD1MRINPPHID","legalDate":947462400000,"docFormat":"PDF","numberOfPages":1,"docCodeDesc":"Office
+      Actions Communications","docGroupCode":"2","legalDateStr":"01/10/2000","mimeTypeData":null,"shareable":false},{"docCode":"ABST","docDesc":"Abstract","docId":"EBHJF58CDHXBS05","legalDate":951696000000,"docFormat":"PDF","numberOfPages":1,"docCodeDesc":"Application
+      Documents","docGroupCode":"1","legalDateStr":"02/28/2000","mimeTypeData":null,"shareable":false},{"docCode":"1507","docDesc":"Communication
+      regarding the transmission of the European search report","docId":"EBH7YL38INPPHIB","legalDate":952560000000,"docFormat":"PDF","numberOfPages":1,"docCodeDesc":"Office
+      Actions Communications","docGroupCode":"2","legalDateStr":"03/09/2000","mimeTypeData":null,"shareable":false},{"docCode":"P0459","docDesc":"Annex
+      to European Search report","docId":"EBH7YMIVINPPHID","legalDate":952560000000,"docFormat":"PDF","numberOfPages":1,"docCodeDesc":"Documents
+      including citations","docGroupCode":"101","legalDateStr":"03/09/2000","mimeTypeData":null,"shareable":false},{"docCode":"1503","docDesc":"European
+      search report","docId":"EBH7YMLSINPPHIB","legalDate":952560000000,"docFormat":"PDF","numberOfPages":1,"docCodeDesc":"Office
+      Actions Communications","docGroupCode":"2,101,102,5","legalDateStr":"03/09/2000","mimeTypeData":null,"shareable":false},{"docCode":"1133","docDesc":"Notification
+      of forthcoming publication","docId":"EBL2KXTXINPPHIB","legalDate":954892800000,"docFormat":"PDF","numberOfPages":1,"docCodeDesc":"Office
+      Actions Communications","docGroupCode":"2","legalDateStr":"04/05/2000","mimeTypeData":null,"shareable":false},{"docCode":"FREP","docDesc":"Submission
+      concerning representation","docId":"EBNZTATODHXBS04","legalDate":955411200000,"docFormat":"PDF","numberOfPages":1,"docCodeDesc":"No
+      document group defined for this document","docGroupCode":"unknown","legalDateStr":"04/11/2000","mimeTypeData":null,"shareable":false},{"docCode":"FREP","docDesc":"Submission
+      concerning representation","docId":"EBOJJXREDHXBS13","legalDate":955324800000,"docFormat":"PDF","numberOfPages":1,"docCodeDesc":"No
+      document group defined for this document","docGroupCode":"unknown","legalDateStr":"04/10/2000","mimeTypeData":null,"shareable":false},{"docCode":"1081","docDesc":"Reminder
+      period for payment of examination fee/designation fee and correction of deficiencies
+      in Written Opinion/amendment","docId":"EBSXC9T8INPPHIB","legalDate":959040000000,"docFormat":"PDF","numberOfPages":2,"docCodeDesc":"Office
+      Actions Communications","docGroupCode":"2","legalDateStr":"05/23/2000","mimeTypeData":null,"shareable":false},{"docCode":"FREP","docDesc":"Submission
+      concerning representation","docId":"ECGJQI6ADHXBS16","legalDate":972604800000,"docFormat":"PDF","numberOfPages":1,"docCodeDesc":"No
+      document group defined for this document","docGroupCode":"unknown","legalDateStr":"10/27/2000","mimeTypeData":null,"shareable":false},{"docCode":"2004","docDesc":"Communication
+      about intention to grant a European patent","docId":"EEJVG18WMH21264","legalDate":1019520000000,"docFormat":"PDF","numberOfPages":2,"docCodeDesc":"Office
+      Actions Communications","docGroupCode":"23,2","legalDateStr":"04/23/2002","mimeTypeData":null,"shareable":false},{"docCode":"2056","docDesc":"Bibliographic
+      data of the European patent application","docId":"EEJVG2ABMH21264","legalDate":1019520000000,"docFormat":"PDF","numberOfPages":1,"docCodeDesc":"Office
+      Actions Communications","docGroupCode":"2,102","legalDateStr":"04/23/2002","mimeTypeData":null,"shareable":false},{"docCode":"DREX","docDesc":"Text
+      intended for grant","docId":"EEJVG2CDMH21264","legalDate":1019520000000,"docFormat":"PDF","numberOfPages":14,"docCodeDesc":"Office
+      Actions Communications","docGroupCode":"2","legalDateStr":"04/23/2002","mimeTypeData":null,"shareable":false},{"docCode":"AGRA31","docDesc":"Approval
+      to announcement of intention to grant a European patent","docId":"EEZUDRHUDHXBS02","legalDate":1027900800000,"docFormat":"PDF","numberOfPages":1,"docCodeDesc":"Written
+      Arguments, Opinions, Incoming amendments, Papers received from applicants","docGroupCode":"4","legalDateStr":"07/29/2002","mimeTypeData":null,"shareable":false},{"docCode":"2005","docDesc":"Invitation
+      to pay the fees for intended grant","docId":"EEZ471NBDHEPLEI","legalDate":1028678400000,"docFormat":"PDF","numberOfPages":3,"docCodeDesc":"Office
+      Actions Communications","docGroupCode":"2","legalDateStr":"08/07/2002","mimeTypeData":null,"shareable":false},{"docCode":"IGRA7","docDesc":"Filing
+      of the translations of the claims","docId":"EE8ZV40RDHXBS03","legalDate":1033430400000,"docFormat":"PDF","numberOfPages":1,"docCodeDesc":"Written
+      Arguments, Opinions, Incoming amendments, Papers received from applicants","docGroupCode":"4","legalDateStr":"10/01/2002","mimeTypeData":null,"shareable":false},{"docCode":"CLMS","docDesc":"Claims","docId":"EE8ZV40WDHXBS03","legalDate":1033430400000,"docFormat":"PDF","numberOfPages":2,"docCodeDesc":"Application
+      Documents","docGroupCode":"1,4","legalDateStr":"10/01/2002","mimeTypeData":null,"shareable":false},{"docCode":"CLMS","docDesc":"Claims","docId":"EE8ZV40ZDHXBS03","legalDate":1033430400000,"docFormat":"PDF","numberOfPages":2,"docCodeDesc":"Application
+      Documents","docGroupCode":"1,4","legalDateStr":"10/01/2002","mimeTypeData":null,"shareable":false},{"docCode":"2006","docDesc":"Decision
+      to grant a European patent","docId":"EFK9EIOKDHEPLEI","legalDate":1041897600000,"docFormat":"PDF","numberOfPages":2,"docCodeDesc":"Office
+      Actions Communications","docGroupCode":"23,2","legalDateStr":"01/07/2003","mimeTypeData":null,"shareable":false},{"docCode":"2057","docDesc":"Communication
+      regarding the expiry of opposition period","docId":"EGY4W09VDHEPLEI","legalDate":1071619200000,"docFormat":"PDF","numberOfPages":1,"docCodeDesc":"Office
+      Actions Communications","docGroupCode":"23,2","legalDateStr":"12/17/2003","mimeTypeData":null,"shareable":false}],"country":"EP","docNumber":"99203729.A","message":null,"applicantNames":["Beheermaatschappij
+      De Boer Nijmegen B.V., "],"oaIndCount":3,"officeActionDocs":[{"docCode":"2004","docDesc":"Communication
+      about intention to grant a European patent","docId":"EEJVG18WMH21264","legalDate":1019520000000,"docFormat":"PDF","numberOfPages":2,"docCodeDesc":"Office
+      Actions Communications","docGroupCode":"23,2","legalDateStr":"04/23/2002","mimeTypeData":null,"shareable":false},{"docCode":"2006","docDesc":"Decision
+      to grant a European patent","docId":"EFK9EIOKDHEPLEI","legalDate":1041897600000,"docFormat":"PDF","numberOfPages":2,"docCodeDesc":"Office
+      Actions Communications","docGroupCode":"23,2","legalDateStr":"01/07/2003","mimeTypeData":null,"shareable":false},{"docCode":"2057","docDesc":"Communication
+      regarding the expiry of opposition period","docId":"EGY4W09VDHEPLEI","legalDate":1071619200000,"docFormat":"PDF","numberOfPages":1,"docCodeDesc":"Office
+      Actions Communications","docGroupCode":"23,2","legalDateStr":"12/17/2003","mimeTypeData":null,"shareable":false}]},"kindCode":"A","priorityClaimList":[{"country":"NL","docNumber":"1010536","kindCode":"A"}],"appDateStr":"11/08/1999","docListMsg":null,"docNum":{"country":"EP","docNumber":"99203729","format":null,"date":"11/08/1999","kindCode":"A"},"title":"Apparatus
+      for manufacturing green bricks for the brick manufacturing industry","applicantNames":["Beheermaatschappij
+      De Boer Nijmegen B.V., "],"ip5":true}]}'
+    headers:
+      apigw-requestid:
+      - aTUWNgsooAMEVfQ=
+      content-length:
+      - '13313'
+      content-type:
+      - application/json
+      date:
+      - Tue, 02 Jul 2024 20:47:23 GMT
+      referrer-policy:
+      - strict-origin-when-cross-origin
+      strict-transport-security:
+      - max-age=31536000
+      vary:
+      - Accept-Encoding
+      - Origin
+      via:
+      - 1.1 42d7e882429d1efea7b9399eb4d47bdc.cloudfront.net (CloudFront)
+      x-amz-cf-id:
+      - FI3BWm3LTROCnD6N2vXXyhlokRcVarg6t1sIPMhHwZQ9DOG_lOqZxw==
+      x-amz-cf-pop:
+      - IAH50-P1
+      x-cache:
+      - Miss from cloudfront
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - SAMEORIGIN
+      x-xss-protection:
+      - 1; mode=block
+    http_version: HTTP/2
+    status_code: 200
 version: 1

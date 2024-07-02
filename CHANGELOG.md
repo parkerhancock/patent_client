@@ -1,4 +1,7 @@
 # Changelog
+## 5.0.16 (2024-07-02)
+- Add `document_title` to PTAB model
+
 ## 5.0.14 (2024-05-22)
 - Update underlying dependencies
 

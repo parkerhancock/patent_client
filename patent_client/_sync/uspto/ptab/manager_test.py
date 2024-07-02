@@ -4,6 +4,7 @@
 # *         Source File: patent_client/_async/uspto/ptab/manager_test.py         *
 # ********************************************************************************
 
+
 from .model import PtabDecision, PtabDocument, PtabProceeding
 
 
@@ -42,6 +43,7 @@ class TestPtabDocument:
     def test_filter_by_proceeding(self):
         result = PtabDocument.objects.filter(proceeding_number="IPR2016-00831")
         assert result.count() == 77
+        assert (result.first()).document_title == "DECISION - Motion to Terminate"
 
     def test_sort_by_document_number(self):
         result = PtabDocument.objects.filter(proceeding_number="IPR2016-00831").limit(3).count()

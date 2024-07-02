@@ -149,7 +149,7 @@ class PtabDocument(PtabBaseModel):
     document_filing_date: tp.Optional[MDYDate] = None
     proceeding_number: tp.Optional[str] = None
     proceeding_type_category: tp.Optional[str] = Field(repr=False, default=None)
-    title: tp.Optional[str] = None
+    document_title: tp.Optional[str] = Field(alias="documentTitleText")
 
     @property
     def proceeding(self) -> "PtabProceeding":

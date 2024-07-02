@@ -867,4 +867,196 @@ interactions:
       - 1; mode=block
     http_version: HTTP/1.1
     status_code: 200
+- request:
+    body: ''
+    headers:
+      accept:
+      - application/xml
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - assignment-api.uspto.gov
+      user-agent:
+      - Mozilla/5.0 Python Patent Clientbot/5.0.15 (parkerhancock@users.noreply.github.com)
+    method: GET
+    uri: https://assignment-api.uspto.gov/patent/lookup?filter=ApplicationNumber&query=16123456&rows=1&start=0&sort=ExecutionDate%2Bdesc&facet=false
+  response:
+    content: "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<response>\n\n<lst name=\"responseHeader\">\n
+      \ <bool name=\"zkConnected\">true</bool>\n  <int name=\"status\">0</int>\n  <int
+      name=\"QTime\">73</int>\n  <lst name=\"params\">\n    <str name=\"q\">*:*</str>\n
+      \   <str name=\"qt\">/apisearch</str>\n    <str name=\"start\">0</str>\n    <str
+      name=\"sort\">patAssignorEarliestExDate desc</str>\n    <str name=\"fq\">applNum:16123456</str>\n
+      \   <str name=\"rows\">1</str>\n    <str name=\"wt\">javabin</str>\n    <str
+      name=\"version\">2</str>\n  </lst>\n</lst>\n<result name=\"response\" numFound=\"1\"
+      start=\"0\">\n  <doc>\n    <str name=\"id\">46816-108</str>\n    <str name=\"displayId\">046816-0108</str>\n
+      \   <str name=\"reelNo\">46816</str>\n    <str name=\"frameNo\">108</str>\n
+      \   <date name=\"lastUpdateDate\">2021-01-26T07:00:52Z</date>\n    <str name=\"purgeIndicator\">N</str>\n
+      \   <date name=\"recordedDate\">2018-09-07T05:00:00Z</date>\n    <str name=\"pageCount\">3</str>\n
+      \   <str name=\"conveyanceText\">ASSIGNMENT OF ASSIGNORS INTEREST (SEE DOCUMENT
+      FOR DETAILS).</str>\n    <str name=\"assignmentRecordHasImages\">Y</str>\n    <str
+      name=\"attorneyDockNum\">1982-1042PUS1</str>\n    <str name=\"corrName\">BIRCH,
+      STEWART, KOLASCH &amp; BIRCH, LLP</str>\n    <str name=\"corrAddress1\">8110
+      GATEHOUSE ROAD, SUITE 100E</str>\n    <str name=\"corrAddress2\">FALLS CHURCH,
+      VA 22042</str>\n    <date name=\"patAssignorEarliestExDate\">2018-07-11T05:00:00Z</date>\n
+      \   <arr name=\"patAssignorName\">\n      <str>KANADA, SHOJI</str>\n    </arr>\n
+      \   <arr name=\"patAssignorExDate\">\n      <date>2018-07-11T05:00:00Z</date>\n
+      \   </arr>\n    <arr name=\"patAssignorDateAck\">\n      <str>0001-01-01T00:00:00Z</str>\n
+      \   </arr>\n    <arr name=\"patAssigneeName\">\n      <str>FUJIFILM CORPORATION</str>\n
+      \   </arr>\n    <arr name=\"patAssigneeAddress1\">\n      <str>26-30, NISHIAZABU
+      2-CHOME, MINATO-KU</str>\n    </arr>\n    <arr name=\"patAssigneeAddress2\">\n
+      \     <str>NULL</str>\n    </arr>\n    <arr name=\"patAssigneeCity\">\n      <str>TOKYO</str>\n
+      \   </arr>\n    <arr name=\"patAssigneeState\">\n      <str>NULL</str>\n    </arr>\n
+      \   <arr name=\"patAssigneeCountryName\">\n      <str>JAPAN</str>\n    </arr>\n
+      \   <arr name=\"patAssigneePostcode\">\n      <str>106-8620</str>\n    </arr>\n
+      \   <arr name=\"inventionTitle\">\n      <str>LEARNING ASSISTANCE DEVICE, METHOD
+      OF OPERATING LEARNING ASSISTANCE DEVICE, LEARNING ASSISTANCE PROGRAM, LEARNING
+      ASSISTANCE SYSTEM, AND TERMINAL DEVICE</str>\n    </arr>\n    <arr name=\"inventionTitleLang\">\n
+      \     <str>en</str>\n    </arr>\n    <arr name=\"applNum\">\n      <str>16123456</str>\n
+      \   </arr>\n    <arr name=\"filingDate\">\n      <date>2018-09-06T05:00:00Z</date>\n
+      \   </arr>\n    <arr name=\"intlPublDate\">\n      <date>0001-01-01T00:00:00Z</date>\n
+      \   </arr>\n    <arr name=\"intlRegNum\">\n      <str>NULL</str>\n    </arr>\n
+      \   <arr name=\"inventors\">\n      <str>Shoji KANADA</str>\n    </arr>\n    <arr
+      name=\"issueDate\">\n      <date>2021-01-26T05:00:00Z</date>\n    </arr>\n    <arr
+      name=\"patNum\">\n      <str>10902286</str>\n    </arr>\n    <arr name=\"pctNum\">\n
+      \     <str>NULL</str>\n    </arr>\n    <arr name=\"publDate\">\n      <date>2019-03-28T05:00:00Z</date>\n
+      \   </arr>\n    <arr name=\"publNum\">\n      <str>20190095759</str>\n    </arr>\n
+      \   <int name=\"patAssignorNameSize\">1</int>\n    <int name=\"patAssignorNameTypeSize\">1</int>\n
+      \   <int name=\"patAssignorExDateSize\">1</int>\n    <int name=\"patAssignorDateAckSize\">1</int>\n
+      \   <int name=\"patAssigneeNameSize\">2</int>\n    <int name=\"patAssigneeNameTypeSize\">0</int>\n
+      \   <int name=\"patAssigneeAddress1Size\">1</int>\n    <int name=\"patAssigneeAddress2Size\">1</int>\n
+      \   <int name=\"patAssigneeCitySize\">1</int>\n    <int name=\"patAssigneeStateSize\">1</int>\n
+      \   <int name=\"patAssigneeCountryNameSize\">1</int>\n    <int name=\"patAssigneePostcodeSize\">1</int>\n
+      \   <int name=\"inventionTitleSize\">1</int>\n    <int name=\"inventionTitleIdSize\">1</int>\n
+      \   <int name=\"inventionTitleLangSize\">1</int>\n    <int name=\"applNumSize\">1</int>\n
+      \   <int name=\"filingDateSize\">1</int>\n    <int name=\"intlPublDateSize\">1</int>\n
+      \   <int name=\"intlRegNumSize\">1</int>\n    <int name=\"inventorsSize\">1</int>\n
+      \   <int name=\"issueDateSize\">1</int>\n    <int name=\"patNumSize\">1</int>\n
+      \   <int name=\"pctNumSize\">1</int>\n    <int name=\"publDateSize\">1</int>\n
+      \   <int name=\"publNumSize\">1</int>\n    <str name=\"inventionTitleFirst\">LEARNING
+      ASSISTANCE DEVICE, METHOD OF OPERATING LEARNING ASSISTANCE DEVICE, LEARNING
+      ASSISTANCE PROGRAM, LEARNING ASSISTANCE SYSTEM, AND TERMINAL DEVICE</str>\n
+      \   <str name=\"inventionTitleLangFirst\">en</str>\n    <str name=\"applNumFirst\">16123456</str>\n
+      \   <date name=\"filingDateFirst\">2018-09-06T05:00:00Z</date>\n    <date name=\"intlPublDateFirst\">0001-01-01T00:00:00Z</date>\n
+      \   <str name=\"intlRegNumFirst\">NULL</str>\n    <str name=\"inventorsFirst\">Shoji
+      KANADA</str>\n    <date name=\"issueDateFirst\">2021-01-26T05:00:00Z</date>\n
+      \   <str name=\"patNumFirst\">10902286</str>\n    <str name=\"pctNumFirst\">NULL</str>\n
+      \   <date name=\"publDateFirst\">2019-03-28T05:00:00Z</date>\n    <str name=\"publNumFirst\">20190095759</str>\n
+      \   <str name=\"patAssignorNameFirst\">KANADA, SHOJI</str>\n    <str name=\"patAssigneeNameFirst\">FUJIFILM
+      CORPORATION</str>\n    <arr name=\"patAssigneePostcodeFacet\">\n      <str>106-8620</str>\n
+      \   </arr>\n    <arr name=\"patAssignorNameFacet\">\n      <str>KANADA, SHOJI</str>\n
+      \   </arr>\n    <str name=\"corrNameFacet\">BIRCH, STEWART, KOLASCH &amp; BIRCH,
+      LLP</str>\n    <long name=\"_version_\">1689942979356131328</long>\n    <arr
+      name=\"patAssigneeNameFacet\">\n      <str>FUJIFILM CORPORATION</str>\n    </arr>\n
+      \   <arr name=\"patAssigneeCityFacet\">\n      <str>TOKYO</str>\n    </arr>\n
+      \   <arr name=\"patAssigneeCountryNameFacet\">\n      <str>JAPAN</str>\n    </arr>\n
+      \   <arr name=\"patAssigneeStateFacet\">\n      <str>NULL</str>\n    </arr>\n
+      \   <str name=\"corrNameString\">BIRCH, STEWART, KOLASCH &amp; BIRCH, LLP</str></doc>\n</result>\n<lst
+      name=\"facet_counts\">\n  <lst name=\"facet_queries\">\n    <int name=\"conveyanceText:&quot;ASSIGNMENT
+      OF ASSIGNORS INTEREST&quot;\">1</int>\n    <int name=\"conveyanceText:&quot;SECURITY
+      INTEREST&quot;\">0</int>\n    <int name=\"conveyanceText:&quot;NUNC PRO TUNC
+      ASSIGNMENT&quot;\">0</int>\n    <int name=\"conveyanceText:&quot;RELEASE BY
+      SECURED PARTY&quot;\">0</int>\n    <int name=\"conveyanceText:&quot;MERGER&quot;\">0</int>\n
+      \   <int name=\"conveyanceText:&quot;CHANGE OF NAME&quot;\">0</int>\n    <int
+      name=\"conveyanceText:&quot;MERGER AND CHANGE OF NAME&quot;\">0</int>\n    <int
+      name=\"conveyanceText:&quot;LICENSE&quot;\">0</int>\n    <int name=\"conveyanceText:&quot;LIEN&quot;\">0</int>\n
+      \   <int name=\"conveyanceText:&quot;MORTGAGE&quot;\">0</int>\n    <int name=\"conveyanceText:&quot;OPTION&quot;\">0</int>\n
+      \   <int name=\"conveyanceText:&quot;DECREE OF DISTRIBUTION&quot;\">0</int>\n
+      \   <int name=\"conveyanceText:&quot;LETTERS OF TESTAMENTARY&quot;\">0</int>\n
+      \   <int name=\"conveyanceText:&quot;LETTERS OF ADMINISTRATION&quot;\">0</int>\n
+      \   <int name=\"conveyanceText:&quot;COURT APPOINTMENT&quot;\">0</int>\n    <int
+      name=\"conveyanceText:&quot;CONDITIONAL ASSIGNMENT&quot;\">0</int>\n    <int
+      name=\"conveyanceText:&quot;COURT ORDER&quot;\">0</int>\n  </lst>\n  <lst name=\"facet_fields\">\n
+      \   <lst name=\"patAssigneeCityFacet\">\n      <int name=\"TOKYO\">1</int>\n
+      \   </lst>\n    <lst name=\"patAssigneeStateFacet\">\n      <int name=\"NULL\">1</int>\n
+      \   </lst>\n    <lst name=\"patAssigneePostcodeFacet\">\n      <int name=\"106-8620\">1</int>\n
+      \   </lst>\n    <lst name=\"patAssigneeCountryNameFacet\">\n      <int name=\"JAPAN\">1</int>\n
+      \   </lst>\n    <lst name=\"patAssigneeNameFacet\">\n      <int name=\"FUJIFILM
+      CORPORATION\">1</int>\n    </lst>\n    <lst name=\"corrNameFacet\">\n      <int
+      name=\"BIRCH, STEWART, KOLASCH &amp; BIRCH, LLP\">1</int>\n    </lst>\n    <lst
+      name=\"patAssignorNameFacet\">\n      <int name=\"KANADA, SHOJI\">1</int>\n
+      \   </lst>\n    <lst name=\"applNum\">\n      <int name=\"16123456\">1</int>\n
+      \   </lst>\n    <lst name=\"patNum\">\n      <int name=\"10902286\">1</int>\n
+      \   </lst>\n    <lst name=\"publNum\">\n      <int name=\"20190095759\">1</int>\n
+      \   </lst>\n    <lst name=\"intlRegNum\">\n      <int name=\"NULL\">1</int>\n
+      \   </lst>\n  </lst>\n  <lst name=\"facet_ranges\">\n    <lst name=\"patAssignorEarliestExDate\">\n
+      \     <lst name=\"counts\">\n        <int name=\"2018-01-01T00:00:00Z\">1</int>\n
+      \     </lst>\n      <str name=\"gap\">+1YEAR</str>\n      <int name=\"before\">0</int>\n
+      \     <date name=\"start\">1899-01-01T00:00:00Z</date>\n      <date name=\"end\">2025-01-01T00:00:00Z</date>\n
+      \   </lst>\n  </lst>\n  <lst name=\"facet_intervals\"/>\n  <lst name=\"facet_heatmaps\"/>\n</lst>\n<lst
+      name=\"highlighting\">\n  <lst name=\"46816-108\">\n    <arr name=\"frameNo\"/>\n
+      \   <arr name=\"patAssigneeCity\"/>\n    <arr name=\"pctNum\"/>\n    <arr name=\"patAssigneePostcode\"/>\n
+      \   <arr name=\"filingDate\"/>\n    <arr name=\"conveyanceText\"/>\n    <arr
+      name=\"patNum\"/>\n    <arr name=\"patAssignorName\"/>\n    <arr name=\"corrAddress1\"/>\n
+      \   <arr name=\"corrAddress2\"/>\n    <arr name=\"corrAddress3\"/>\n    <arr
+      name=\"corrName\"/>\n    <arr name=\"applNum\"/>\n    <arr name=\"inventionTitle\"/>\n
+      \   <arr name=\"publNum\"/>\n    <arr name=\"patAssigneeAddress\"/>\n    <arr
+      name=\"intlRegNum\"/>\n    <arr name=\"publDate\"/>\n    <arr name=\"patAssigneeCountryName\"/>\n
+      \   <arr name=\"intlPublDate\"/>\n    <arr name=\"id\"/>\n    <arr name=\"patAssigneeName\"/>\n
+      \   <arr name=\"issueDate\"/>\n    <arr name=\"reelNo\"/>\n  </lst>\n</lst>\n</response>\n"
+    headers:
+      content-type:
+      - application/xml
+      date:
+      - Tue, 02 Jul 2024 20:47:22 GMT
+      server:
+      - Apache-Coyote/1.1
+      strict-transport-security:
+      - max-age=31536000;includeSubDomains
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+      x-xss-protection:
+      - 1; mode=block
+    http_version: HTTP/2
+    status_code: 200
+- request:
+    body: ''
+    headers:
+      Authorization:
+      - REDACTED
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - d1kazzu6rbodne.cloudfront.net
+      user-agent:
+      - Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML,
+        like Gecko) Version/21.1.1.164 Safari/602.1.507
+    method: OPTIONS
+    uri: https://d1kazzu6rbodne.cloudfront.net/patent-family/svc/family/publication/EP/1000000
+  response:
+    content: ''
+    headers:
+      apigw-requestid:
+      - aTUZViIhoAMEVUQ=
+      date:
+      - Tue, 02 Jul 2024 20:47:42 GMT
+      referrer-policy:
+      - strict-origin-when-cross-origin
+      strict-transport-security:
+      - max-age=31536000
+      vary:
+      - Origin
+      via:
+      - 1.1 51ee3c92b7ccd8c298b87edc91ec234a.cloudfront.net (CloudFront)
+      x-amz-cf-id:
+      - Yhm7-3tGT7ZXboUiSZt99tDvE_dgqD5Pqh-67ggMjoukjGdrma0erQ==
+      x-amz-cf-pop:
+      - IAH50-P1
+      x-cache:
+      - Miss from cloudfront
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - SAMEORIGIN
+      x-xss-protection:
+      - 1; mode=block
+    http_version: HTTP/2
+    status_code: 204
 version: 1
