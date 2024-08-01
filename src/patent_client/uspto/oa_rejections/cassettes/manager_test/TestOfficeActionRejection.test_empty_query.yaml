@@ -1,0 +1,1260 @@
+interactions:
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '0'
+      host:
+      - developer.uspto.gov
+      user-agent:
+      - python-httpx/0.24.1
+    method: POST
+    uri: https://developer.uspto.gov/ds-api/oa_rejections/v2/records?criteria=&start=0&rows=100
+  response:
+    content: <html><head><title>Error</title></head><body>Internal Server Error</body></html>
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '80'
+      Content-Type:
+      - text/html;charset=UTF-8
+      Date:
+      - Tue, 31 Oct 2023 18:31:26 GMT
+    http_version: HTTP/1.1
+    status_code: 500
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '0'
+      host:
+      - developer.uspto.gov
+      user-agent:
+      - python-httpx/0.24.1
+    method: POST
+    uri: https://developer.uspto.gov/ds-api/oa_rejections/v2/records?criteria=%2A%3A%2A&start=0&rows=100
+  response:
+    content: <html><head><title>Error</title></head><body>Internal Server Error</body></html>
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '80'
+      Content-Type:
+      - text/html;charset=UTF-8
+      Date:
+      - Tue, 31 Oct 2023 18:33:40 GMT
+    http_version: HTTP/1.1
+    status_code: 500
+- request:
+    body: criteria=%2A%3A%2A&start=0&rows=100
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '35'
+      content-type:
+      - application/x-www-form-urlencoded
+      host:
+      - developer.uspto.gov
+      user-agent:
+      - python-httpx/0.24.1
+    method: POST
+    uri: https://developer.uspto.gov/ds-api/oa_rejections/v2/records
+  response:
+    content: "{\n  \"responseHeader\":{\n    \"zkConnected\":true,\n    \"status\":0,\n
+      \   \"QTime\":120,\n    \"params\":{\n      \"json\":\"{\\\"params\\\":{\\\"q\\\":\\\"*:*\\\",\\\"start\\\":0,\\\"rows\\\":100,\\\"fl\\\":\\\"actionTypeCategory,aliceIndicator,allowedClaimIndicator,bilskiIndicator,cite102GT1,cite103EQ1,cite103GT3,cite103Max,claimNumberArrayDocument,closingMissing,createDateTime,createUserIdentifier,formParagraphMissing,groupArtUnitNumber,hasObjection,hasRej101,hasRej102,hasRej103,hasRej112,hasRejDP,headerMissing,id,legacyDocumentCodeIdentifier,legalSectionCode,mayoIndicator,myriadIndicator,nationalClass,nationalSubclass,obsoleteDocumentIdentifier,paragraphNumber,patentApplicationNumber,rejectFormMissmatch,signatureType,submissionDate\\\",\\\"wt\\\":\\\"json\\\",\\\"indent\\\":\\\"on\\\"}}\"}},\n
+      \ \"response\":{\"numFound\":17444214,\"start\":0,\"docs\":[\n      {\n        \"id\":\"40ae4cb8be9f1d54a7ecde0949468dc2\",\n
+      \       \"patentApplicationNumber\":\"14146331\",\n        \"obsoleteDocumentIdentifier\":\"J16J8QVURXEAPX0\",\n
+      \       \"groupArtUnitNumber\":\"3689\",\n        \"legacyDocumentCodeIdentifier\":\"CTNF\",\n
+      \       \"submissionDate\":\"2017-04-10T04:00:00Z\",\n        \"nationalClass\":\"705\",\n
+      \       \"nationalSubclass\":\"001100\",\n        \"headerMissing\":0.0,\n        \"formParagraphMissing\":0.0,\n
+      \       \"rejectFormMissmatch\":0.0,\n        \"closingMissing\":0.0,\n        \"hasRej101\":1.0,\n
+      \       \"hasRejDP\":0.0,\n        \"hasRej102\":0.0,\n        \"hasRej103\":1.0,\n
+      \       \"hasRej112\":1.0,\n        \"hasObjection\":0.0,\n        \"cite102GT1\":0.0,\n
+      \       \"cite103GT3\":1.0,\n        \"cite103EQ1\":0.0,\n        \"cite103Max\":4.0,\n
+      \       \"signatureType\":0.0,\n        \"actionTypeCategory\":\"rejected\",\n
+      \       \"legalSectionCode\":\"101\",\n        \"claimNumberArrayDocument\":[\"0\"],\n
+      \       \"createUserIdentifier\":\"ETL_SYS\",\n        \"createDateTime\":\"2023-05-07T15:08:32Z\"},\n
+      \     {\n        \"id\":\"e2acaeea82e1110ffa5224a302e035cd\",\n        \"patentApplicationNumber\":\"14146331\",\n
+      \       \"obsoleteDocumentIdentifier\":\"J16J8QVURXEAPX0\",\n        \"groupArtUnitNumber\":\"3689\",\n
+      \       \"legacyDocumentCodeIdentifier\":\"CTNF\",\n        \"submissionDate\":\"2017-04-10T04:00:00Z\",\n
+      \       \"nationalClass\":\"705\",\n        \"nationalSubclass\":\"001100\",\n
+      \       \"headerMissing\":0.0,\n        \"formParagraphMissing\":0.0,\n        \"rejectFormMissmatch\":0.0,\n
+      \       \"closingMissing\":0.0,\n        \"hasRej101\":1.0,\n        \"hasRejDP\":0.0,\n
+      \       \"hasRej102\":0.0,\n        \"hasRej103\":1.0,\n        \"hasRej112\":1.0,\n
+      \       \"hasObjection\":0.0,\n        \"cite102GT1\":0.0,\n        \"cite103GT3\":1.0,\n
+      \       \"cite103EQ1\":0.0,\n        \"cite103Max\":4.0,\n        \"signatureType\":0.0,\n
+      \       \"actionTypeCategory\":\"rejected\",\n        \"legalSectionCode\":\"101\",\n
+      \       \"paragraphNumber\":\"Non-Statutory-other\",\n        \"claimNumberArrayDocument\":[\"1,10,11,12,13,14,15,17,18,19,20,21,3,4,5,6,7,8\"],\n
+      \       \"createUserIdentifier\":\"ETL_SYS\",\n        \"createDateTime\":\"2023-05-07T15:08:32Z\"},\n
+      \     {\n        \"id\":\"89ff88ac08edcda8a50c213d01162adc\",\n        \"patentApplicationNumber\":\"14469265\",\n
+      \       \"obsoleteDocumentIdentifier\":\"J66MW0GMRXEAPX3\",\n        \"groupArtUnitNumber\":\"2665\",\n
+      \       \"legacyDocumentCodeIdentifier\":\"CTFR\",\n        \"submissionDate\":\"2017-08-14T04:00:00Z\",\n
+      \       \"nationalClass\":\"382\",\n        \"nationalSubclass\":\"103000\",\n
+      \       \"headerMissing\":0.0,\n        \"formParagraphMissing\":0.0,\n        \"rejectFormMissmatch\":0.0,\n
+      \       \"closingMissing\":0.0,\n        \"hasRej101\":1.0,\n        \"hasRejDP\":0.0,\n
+      \       \"hasRej102\":0.0,\n        \"hasRej103\":1.0,\n        \"hasRej112\":0.0,\n
+      \       \"hasObjection\":1.0,\n        \"cite102GT1\":0.0,\n        \"cite103GT3\":0.0,\n
+      \       \"cite103EQ1\":0.0,\n        \"cite103Max\":3.0,\n        \"signatureType\":3.0,\n
+      \       \"actionTypeCategory\":\"cancelled\",\n        \"claimNumberArrayDocument\":[\"13\"],\n
+      \       \"createUserIdentifier\":\"ETL_SYS\",\n        \"createDateTime\":\"2021-07-28T01:15:02Z\"},\n
+      \     {\n        \"id\":\"9c32ec6fb402bdec896b7ec8bdbf6905\",\n        \"patentApplicationNumber\":\"14465086\",\n
+      \       \"obsoleteDocumentIdentifier\":\"J67V8H9MRXEAPX4\",\n        \"groupArtUnitNumber\":\"1786\",\n
+      \       \"legacyDocumentCodeIdentifier\":\"CTFR\",\n        \"submissionDate\":\"2017-08-15T04:00:00Z\",\n
+      \       \"nationalClass\":\"442\",\n        \"nationalSubclass\":\"203000\",\n
+      \       \"headerMissing\":0.0,\n        \"formParagraphMissing\":0.0,\n        \"rejectFormMissmatch\":0.0,\n
+      \       \"closingMissing\":0.0,\n        \"hasRej101\":0.0,\n        \"hasRejDP\":0.0,\n
+      \       \"hasRej102\":0.0,\n        \"hasRej103\":1.0,\n        \"hasRej112\":1.0,\n
+      \       \"hasObjection\":0.0,\n        \"cite102GT1\":0.0,\n        \"cite103GT3\":1.0,\n
+      \       \"cite103EQ1\":0.0,\n        \"cite103Max\":5.0,\n        \"signatureType\":2.0,\n
+      \       \"actionTypeCategory\":\"withdrawn\",\n        \"claimNumberArrayDocument\":[\"1,10,11,12,13,14,15,16,17,18,19,20,21,22,3,4,5,7,8,9\"],\n
+      \       \"createUserIdentifier\":\"ETL_SYS\",\n        \"createDateTime\":\"2021-07-28T01:18:40Z\"},\n
+      \     {\n        \"id\":\"9373abb6d936261f336a2d7f0e6fdcd7\",\n        \"patentApplicationNumber\":\"14209637\",\n
+      \       \"obsoleteDocumentIdentifier\":\"J16OECPLRXEAPX5\",\n        \"groupArtUnitNumber\":\"3763\",\n
+      \       \"legacyDocumentCodeIdentifier\":\"CTFR\",\n        \"submissionDate\":\"2017-04-07T04:00:00Z\",\n
+      \       \"nationalClass\":\"604\",\n        \"nationalSubclass\":\"536000\",\n
+      \       \"headerMissing\":0.0,\n        \"formParagraphMissing\":0.0,\n        \"rejectFormMissmatch\":0.0,\n
+      \       \"closingMissing\":0.0,\n        \"hasRej101\":0.0,\n        \"hasRejDP\":0.0,\n
+      \       \"hasRej102\":1.0,\n        \"hasRej103\":1.0,\n        \"hasRej112\":0.0,\n
+      \       \"hasObjection\":0.0,\n        \"cite102GT1\":0.0,\n        \"cite103GT3\":0.0,\n
+      \       \"cite103EQ1\":1.0,\n        \"cite103Max\":1.0,\n        \"signatureType\":2.0,\n
+      \       \"actionTypeCategory\":\"rejected\",\n        \"legalSectionCode\":\"102\",\n
+      \       \"claimNumberArrayDocument\":[\"1,10,12,13,14,15,16,17,18,19,2,20,3,5,6,7,8,9\"],\n
+      \       \"createUserIdentifier\":\"ETL_SYS\",\n        \"createDateTime\":\"2023-05-07T22:13:17Z\"},\n
+      \     {\n        \"id\":\"a56ddd844b65bbf7555b957ebbffa186\",\n        \"patentApplicationNumber\":\"14465086\",\n
+      \       \"obsoleteDocumentIdentifier\":\"J67V8H9MRXEAPX4\",\n        \"groupArtUnitNumber\":\"1786\",\n
+      \       \"legacyDocumentCodeIdentifier\":\"CTFR\",\n        \"submissionDate\":\"2017-08-15T04:00:00Z\",\n
+      \       \"nationalClass\":\"442\",\n        \"nationalSubclass\":\"203000\",\n
+      \       \"headerMissing\":0.0,\n        \"formParagraphMissing\":0.0,\n        \"rejectFormMissmatch\":0.0,\n
+      \       \"closingMissing\":0.0,\n        \"hasRej101\":0.0,\n        \"hasRejDP\":0.0,\n
+      \       \"hasRej102\":0.0,\n        \"hasRej103\":1.0,\n        \"hasRej112\":1.0,\n
+      \       \"hasObjection\":0.0,\n        \"cite102GT1\":0.0,\n        \"cite103GT3\":1.0,\n
+      \       \"cite103EQ1\":0.0,\n        \"cite103Max\":5.0,\n        \"signatureType\":2.0,\n
+      \       \"actionTypeCategory\":\"rejected\",\n        \"legalSectionCode\":\"112\",\n
+      \       \"claimNumberArrayDocument\":[\"8,9\"],\n        \"createUserIdentifier\":\"ETL_SYS\",\n
+      \       \"createDateTime\":\"2021-07-28T01:18:40Z\"},\n      {\n        \"id\":\"c4ac34236ea5277121cb21a8c8023099\",\n
+      \       \"patentApplicationNumber\":\"13905288\",\n        \"obsoleteDocumentIdentifier\":\"J16PKHV3RXEAPX2\",\n
+      \       \"groupArtUnitNumber\":\"2444\",\n        \"legacyDocumentCodeIdentifier\":\"CTNF\",\n
+      \       \"submissionDate\":\"2017-04-10T04:00:00Z\",\n        \"nationalClass\":\"709\",\n
+      \       \"nationalSubclass\":\"206000\",\n        \"headerMissing\":0.0,\n        \"formParagraphMissing\":0.0,\n
+      \       \"rejectFormMissmatch\":0.0,\n        \"closingMissing\":0.0,\n        \"hasRej101\":0.0,\n
+      \       \"hasRejDP\":0.0,\n        \"hasRej102\":0.0,\n        \"hasRej103\":1.0,\n
+      \       \"hasRej112\":1.0,\n        \"hasObjection\":0.0,\n        \"cite102GT1\":0.0,\n
+      \       \"cite103GT3\":1.0,\n        \"cite103EQ1\":0.0,\n        \"cite103Max\":4.0,\n
+      \       \"signatureType\":2.0,\n        \"actionTypeCategory\":\"rejected\",\n
+      \       \"legalSectionCode\":\"103\",\n        \"claimNumberArrayDocument\":[\"14,15,16,17,18,19,2,3,4,5\"],\n
+      \       \"createUserIdentifier\":\"ETL_SYS\",\n        \"createDateTime\":\"2023-05-07T15:00:35Z\"},\n
+      \     {\n        \"id\":\"1bed26f994a221ae7e682bd332a6d39c\",\n        \"patentApplicationNumber\":\"14622466\",\n
+      \       \"obsoleteDocumentIdentifier\":\"IVL9TGRLRXEAPX0\",\n        \"groupArtUnitNumber\":\"2642\",\n
+      \       \"legacyDocumentCodeIdentifier\":\"CTNF\",\n        \"submissionDate\":\"2016-11-18T05:00:00Z\",\n
+      \       \"nationalClass\":\"455\",\n        \"nationalSubclass\":\"415000\",\n
+      \       \"headerMissing\":0.0,\n        \"formParagraphMissing\":1.0,\n        \"rejectFormMissmatch\":1.0,\n
+      \       \"closingMissing\":0.0,\n        \"hasRej101\":0.0,\n        \"hasRejDP\":0.0,\n
+      \       \"hasRej102\":0.0,\n        \"hasRej103\":1.0,\n        \"hasRej112\":1.0,\n
+      \       \"hasObjection\":1.0,\n        \"cite102GT1\":0.0,\n        \"cite103GT3\":0.0,\n
+      \       \"cite103EQ1\":0.0,\n        \"cite103Max\":2.0,\n        \"signatureType\":2.0,\n
+      \       \"actionTypeCategory\":\"objected\",\n        \"claimNumberArrayDocument\":[\"1,14,8\"],\n
+      \       \"createUserIdentifier\":\"ETL_SYS\",\n        \"createDateTime\":\"2023-06-02T17:19:13Z\"},\n
+      \     {\n        \"id\":\"1fe87eded37612e244c85a58d02351b7\",\n        \"patentApplicationNumber\":\"14622466\",\n
+      \       \"obsoleteDocumentIdentifier\":\"IVL9TGRLRXEAPX0\",\n        \"groupArtUnitNumber\":\"2642\",\n
+      \       \"legacyDocumentCodeIdentifier\":\"CTNF\",\n        \"submissionDate\":\"2016-11-18T05:00:00Z\",\n
+      \       \"nationalClass\":\"455\",\n        \"nationalSubclass\":\"415000\",\n
+      \       \"headerMissing\":0.0,\n        \"formParagraphMissing\":1.0,\n        \"rejectFormMissmatch\":1.0,\n
+      \       \"closingMissing\":0.0,\n        \"hasRej101\":0.0,\n        \"hasRejDP\":0.0,\n
+      \       \"hasRej102\":0.0,\n        \"hasRej103\":1.0,\n        \"hasRej112\":1.0,\n
+      \       \"hasObjection\":1.0,\n        \"cite102GT1\":0.0,\n        \"cite103GT3\":0.0,\n
+      \       \"cite103EQ1\":0.0,\n        \"cite103Max\":2.0,\n        \"signatureType\":2.0,\n
+      \       \"actionTypeCategory\":\"rejected\",\n        \"legalSectionCode\":\"112\",\n
+      \       \"paragraphNumber\":\"a\",\n        \"claimNumberArrayDocument\":[\"1,2,3,4,5,6,7\"],\n
+      \       \"createUserIdentifier\":\"ETL_SYS\",\n        \"createDateTime\":\"2023-06-02T17:19:13Z\"},\n
+      \     {\n        \"id\":\"6273b18234681318be4e5d753909b1c8\",\n        \"patentApplicationNumber\":\"13905288\",\n
+      \       \"obsoleteDocumentIdentifier\":\"J16PKHV3RXEAPX2\",\n        \"groupArtUnitNumber\":\"2444\",\n
+      \       \"legacyDocumentCodeIdentifier\":\"CTNF\",\n        \"submissionDate\":\"2017-04-10T04:00:00Z\",\n
+      \       \"nationalClass\":\"709\",\n        \"nationalSubclass\":\"206000\",\n
+      \       \"headerMissing\":0.0,\n        \"formParagraphMissing\":0.0,\n        \"rejectFormMissmatch\":0.0,\n
+      \       \"closingMissing\":0.0,\n        \"hasRej101\":0.0,\n        \"hasRejDP\":0.0,\n
+      \       \"hasRej102\":0.0,\n        \"hasRej103\":1.0,\n        \"hasRej112\":1.0,\n
+      \       \"hasObjection\":0.0,\n        \"cite102GT1\":0.0,\n        \"cite103GT3\":1.0,\n
+      \       \"cite103EQ1\":0.0,\n        \"cite103Max\":4.0,\n        \"signatureType\":2.0,\n
+      \       \"actionTypeCategory\":\"interpreted\",\n        \"claimNumberArrayDocument\":[\"18\"],\n
+      \       \"createUserIdentifier\":\"ETL_SYS\",\n        \"createDateTime\":\"2023-05-07T15:00:35Z\"},\n
+      \     {\n        \"id\":\"90c04f9dc33f7d0662d544148e4e559f\",\n        \"patentApplicationNumber\":\"14039501\",\n
+      \       \"obsoleteDocumentIdentifier\":\"IVLB04MYRXEAPX1\",\n        \"groupArtUnitNumber\":\"2651\",\n
+      \       \"legacyDocumentCodeIdentifier\":\"CTNF\",\n        \"submissionDate\":\"2016-11-18T05:00:00Z\",\n
+      \       \"nationalClass\":\"381\",\n        \"nationalSubclass\":\"190000\",\n
+      \       \"headerMissing\":0.0,\n        \"formParagraphMissing\":0.0,\n        \"rejectFormMissmatch\":0.0,\n
+      \       \"closingMissing\":0.0,\n        \"hasRej101\":0.0,\n        \"hasRejDP\":0.0,\n
+      \       \"hasRej102\":0.0,\n        \"hasRej103\":1.0,\n        \"hasRej112\":0.0,\n
+      \       \"hasObjection\":0.0,\n        \"cite102GT1\":0.0,\n        \"cite103GT3\":1.0,\n
+      \       \"cite103EQ1\":0.0,\n        \"cite103Max\":5.0,\n        \"signatureType\":0.0,\n
+      \       \"actionTypeCategory\":\"rejected\",\n        \"legalSectionCode\":\"103\",\n
+      \       \"claimNumberArrayDocument\":[\"1,10,11,12,13,16,17,18,19,2,20,21,23,4,5,6,7,8,9\"],\n
+      \       \"createUserIdentifier\":\"ETL_SYS\",\n        \"createDateTime\":\"2023-06-02T19:47:09Z\"},\n
+      \     {\n        \"id\":\"c1c0d4274fb58615ab0ceec0af1fcd5c\",\n        \"patentApplicationNumber\":\"14230404\",\n
+      \       \"obsoleteDocumentIdentifier\":\"IVLB5OQ2RXEAPX0\",\n        \"groupArtUnitNumber\":\"2659\",\n
+      \       \"legacyDocumentCodeIdentifier\":\"CTNF\",\n        \"submissionDate\":\"2016-11-18T05:00:00Z\",\n
+      \       \"nationalClass\":\"704\",\n        \"nationalSubclass\":\"208000\",\n
+      \       \"headerMissing\":0.0,\n        \"formParagraphMissing\":0.0,\n        \"rejectFormMissmatch\":0.0,\n
+      \       \"closingMissing\":0.0,\n        \"hasRej101\":1.0,\n        \"hasRejDP\":0.0,\n
+      \       \"hasRej102\":0.0,\n        \"hasRej103\":1.0,\n        \"hasRej112\":1.0,\n
+      \       \"hasObjection\":0.0,\n        \"cite102GT1\":0.0,\n        \"cite103GT3\":1.0,\n
+      \       \"cite103EQ1\":0.0,\n        \"cite103Max\":6.0,\n        \"signatureType\":3.0,\n
+      \       \"actionTypeCategory\":\"rejected\",\n        \"legalSectionCode\":\"112\",\n
+      \       \"claimNumberArrayDocument\":[\"1,10,13,14,15,16,17,18,19,20,4,5,6,7,8,9\"],\n
+      \       \"createUserIdentifier\":\"ETL_SYS\",\n        \"createDateTime\":\"2023-06-02T19:51:51Z\"},\n
+      \     {\n        \"id\":\"8d4d21790dbe65b19a8dce95bc5c4d3f\",\n        \"patentApplicationNumber\":\"13905288\",\n
+      \       \"obsoleteDocumentIdentifier\":\"J16PKHV3RXEAPX2\",\n        \"groupArtUnitNumber\":\"2444\",\n
+      \       \"legacyDocumentCodeIdentifier\":\"CTNF\",\n        \"submissionDate\":\"2017-04-10T04:00:00Z\",\n
+      \       \"nationalClass\":\"709\",\n        \"nationalSubclass\":\"206000\",\n
+      \       \"headerMissing\":0.0,\n        \"formParagraphMissing\":0.0,\n        \"rejectFormMissmatch\":0.0,\n
+      \       \"closingMissing\":0.0,\n        \"hasRej101\":0.0,\n        \"hasRejDP\":0.0,\n
+      \       \"hasRej102\":0.0,\n        \"hasRej103\":1.0,\n        \"hasRej112\":1.0,\n
+      \       \"hasObjection\":0.0,\n        \"cite102GT1\":0.0,\n        \"cite103GT3\":1.0,\n
+      \       \"cite103EQ1\":0.0,\n        \"cite103Max\":4.0,\n        \"signatureType\":2.0,\n
+      \       \"actionTypeCategory\":\"rejected\",\n        \"legalSectionCode\":\"112\",\n
+      \       \"claimNumberArrayDocument\":[\"14,15,16,17,18,19,2,3,4,5\"],\n        \"createUserIdentifier\":\"ETL_SYS\",\n
+      \       \"createDateTime\":\"2023-05-07T15:00:35Z\"},\n      {\n        \"id\":\"0bacea4f2492150c83d06c85e2db70f2\",\n
+      \       \"patentApplicationNumber\":\"14230404\",\n        \"obsoleteDocumentIdentifier\":\"IVLB5OQ2RXEAPX0\",\n
+      \       \"groupArtUnitNumber\":\"2659\",\n        \"legacyDocumentCodeIdentifier\":\"CTNF\",\n
+      \       \"submissionDate\":\"2016-11-18T05:00:00Z\",\n        \"nationalClass\":\"704\",\n
+      \       \"nationalSubclass\":\"208000\",\n        \"headerMissing\":0.0,\n        \"formParagraphMissing\":0.0,\n
+      \       \"rejectFormMissmatch\":0.0,\n        \"closingMissing\":0.0,\n        \"hasRej101\":1.0,\n
+      \       \"hasRejDP\":0.0,\n        \"hasRej102\":0.0,\n        \"hasRej103\":1.0,\n
+      \       \"hasRej112\":1.0,\n        \"hasObjection\":0.0,\n        \"cite102GT1\":0.0,\n
+      \       \"cite103GT3\":1.0,\n        \"cite103EQ1\":0.0,\n        \"cite103Max\":6.0,\n
+      \       \"signatureType\":3.0,\n        \"actionTypeCategory\":\"rejected\",\n
+      \       \"legalSectionCode\":\"103\",\n        \"claimNumberArrayDocument\":[\"1,10,11,12,13,14,15,16,17,18,19,2,20,3,4,5,6,7,8,9\"],\n
+      \       \"createUserIdentifier\":\"ETL_SYS\",\n        \"createDateTime\":\"2023-06-02T19:51:51Z\"},\n
+      \     {\n        \"id\":\"04e9a4aa4f89f9083517dc15c20705d9\",\n        \"patentApplicationNumber\":\"14230404\",\n
+      \       \"obsoleteDocumentIdentifier\":\"IVLB5OQ2RXEAPX0\",\n        \"groupArtUnitNumber\":\"2659\",\n
+      \       \"legacyDocumentCodeIdentifier\":\"CTNF\",\n        \"submissionDate\":\"2016-11-18T05:00:00Z\",\n
+      \       \"nationalClass\":\"704\",\n        \"nationalSubclass\":\"208000\",\n
+      \       \"headerMissing\":0.0,\n        \"formParagraphMissing\":0.0,\n        \"rejectFormMissmatch\":0.0,\n
+      \       \"closingMissing\":0.0,\n        \"hasRej101\":1.0,\n        \"hasRejDP\":0.0,\n
+      \       \"hasRej102\":0.0,\n        \"hasRej103\":1.0,\n        \"hasRej112\":1.0,\n
+      \       \"hasObjection\":0.0,\n        \"cite102GT1\":0.0,\n        \"cite103GT3\":1.0,\n
+      \       \"cite103EQ1\":0.0,\n        \"cite103Max\":6.0,\n        \"signatureType\":3.0,\n
+      \       \"actionTypeCategory\":\"rejected\",\n        \"legalSectionCode\":\"101\",\n
+      \       \"paragraphNumber\":\"Non-Statutory-other\",\n        \"claimNumberArrayDocument\":[\"1,10,11,12,13,14,15,16,17,18,19,2,20,3,4,5,6,7,8,9\"],\n
+      \       \"createUserIdentifier\":\"ETL_SYS\",\n        \"createDateTime\":\"2023-06-02T19:51:51Z\"},\n
+      \     {\n        \"id\":\"468e20b849767130714c9194f3400881\",\n        \"patentApplicationNumber\":\"13763388\",\n
+      \       \"obsoleteDocumentIdentifier\":\"J17QQY6LRXEAPX5\",\n        \"groupArtUnitNumber\":\"3736\",\n
+      \       \"legacyDocumentCodeIdentifier\":\"CTFR\",\n        \"submissionDate\":\"2017-04-11T04:00:00Z\",\n
+      \       \"nationalClass\":\"600\",\n        \"nationalSubclass\":\"566000\",\n
+      \       \"headerMissing\":0.0,\n        \"formParagraphMissing\":0.0,\n        \"rejectFormMissmatch\":0.0,\n
+      \       \"closingMissing\":0.0,\n        \"hasRej101\":0.0,\n        \"hasRejDP\":0.0,\n
+      \       \"hasRej102\":1.0,\n        \"hasRej103\":0.0,\n        \"hasRej112\":1.0,\n
+      \       \"hasObjection\":1.0,\n        \"cite102GT1\":1.0,\n        \"cite103GT3\":0.0,\n
+      \       \"cite103EQ1\":0.0,\n        \"cite103Max\":0.0,\n        \"signatureType\":2.0,\n
+      \       \"actionTypeCategory\":\"rejected\",\n        \"legalSectionCode\":\"102\",\n
+      \       \"claimNumberArrayDocument\":[\"1,17,18,19,21,22,24,27,5,6,7\"],\n        \"createUserIdentifier\":\"ETL_SYS\",\n
+      \       \"createDateTime\":\"2023-05-07T13:08:43Z\"},\n      {\n        \"id\":\"529f9f8dc58f9fcb01a34b7b9334483e\",\n
+      \       \"patentApplicationNumber\":\"14760011\",\n        \"obsoleteDocumentIdentifier\":\"IVLBUWSKRXEAPX5\",\n
+      \       \"groupArtUnitNumber\":\"3766\",\n        \"legacyDocumentCodeIdentifier\":\"CTNF\",\n
+      \       \"submissionDate\":\"2016-11-18T05:00:00Z\",\n        \"nationalClass\":\"607\",\n
+      \       \"nationalSubclass\":\"062000\",\n        \"headerMissing\":0.0,\n        \"formParagraphMissing\":0.0,\n
+      \       \"rejectFormMissmatch\":0.0,\n        \"closingMissing\":0.0,\n        \"hasRej101\":0.0,\n
+      \       \"hasRejDP\":0.0,\n        \"hasRej102\":1.0,\n        \"hasRej103\":1.0,\n
+      \       \"hasRej112\":0.0,\n        \"hasObjection\":0.0,\n        \"cite102GT1\":1.0,\n
+      \       \"cite103GT3\":1.0,\n        \"cite103EQ1\":0.0,\n        \"cite103Max\":8.0,\n
+      \       \"signatureType\":1.0,\n        \"actionTypeCategory\":\"rejected\",\n
+      \       \"legalSectionCode\":\"103\",\n        \"claimNumberArrayDocument\":[\"1,10,21,22,23,3,4,5,6,7,8,9\"],\n
+      \       \"createUserIdentifier\":\"ETL_SYS\",\n        \"createDateTime\":\"2023-06-02T17:16:35Z\"},\n
+      \     {\n        \"id\":\"c6871ec9b55e0b922f834a0bca9525fd\",\n        \"patentApplicationNumber\":\"14760011\",\n
+      \       \"obsoleteDocumentIdentifier\":\"IVLBUWSKRXEAPX5\",\n        \"groupArtUnitNumber\":\"3766\",\n
+      \       \"legacyDocumentCodeIdentifier\":\"CTNF\",\n        \"submissionDate\":\"2016-11-18T05:00:00Z\",\n
+      \       \"nationalClass\":\"607\",\n        \"nationalSubclass\":\"062000\",\n
+      \       \"headerMissing\":0.0,\n        \"formParagraphMissing\":0.0,\n        \"rejectFormMissmatch\":0.0,\n
+      \       \"closingMissing\":0.0,\n        \"hasRej101\":0.0,\n        \"hasRejDP\":0.0,\n
+      \       \"hasRej102\":1.0,\n        \"hasRej103\":1.0,\n        \"hasRej112\":0.0,\n
+      \       \"hasObjection\":0.0,\n        \"cite102GT1\":1.0,\n        \"cite103GT3\":1.0,\n
+      \       \"cite103EQ1\":0.0,\n        \"cite103Max\":8.0,\n        \"signatureType\":1.0,\n
+      \       \"actionTypeCategory\":\"rejected\",\n        \"legalSectionCode\":\"102\",\n
+      \       \"claimNumberArrayDocument\":[\"1,21,22,23,3,4,5,6,7,8,9\"],\n        \"createUserIdentifier\":\"ETL_SYS\",\n
+      \       \"createDateTime\":\"2023-06-02T17:16:35Z\"},\n      {\n        \"id\":\"53b2dc8da645467fcaca3e40834793bb\",\n
+      \       \"patentApplicationNumber\":\"13763388\",\n        \"obsoleteDocumentIdentifier\":\"J17QQY6LRXEAPX5\",\n
+      \       \"groupArtUnitNumber\":\"3736\",\n        \"legacyDocumentCodeIdentifier\":\"CTFR\",\n
+      \       \"submissionDate\":\"2017-04-11T04:00:00Z\",\n        \"nationalClass\":\"600\",\n
+      \       \"nationalSubclass\":\"566000\",\n        \"headerMissing\":0.0,\n        \"formParagraphMissing\":0.0,\n
+      \       \"rejectFormMissmatch\":0.0,\n        \"closingMissing\":0.0,\n        \"hasRej101\":0.0,\n
+      \       \"hasRejDP\":0.0,\n        \"hasRej102\":1.0,\n        \"hasRej103\":0.0,\n
+      \       \"hasRej112\":1.0,\n        \"hasObjection\":1.0,\n        \"cite102GT1\":1.0,\n
+      \       \"cite103GT3\":0.0,\n        \"cite103EQ1\":0.0,\n        \"cite103Max\":0.0,\n
+      \       \"signatureType\":2.0,\n        \"actionTypeCategory\":\"interpreted\",\n
+      \       \"legalSectionCode\":\"112\",\n        \"claimNumberArrayDocument\":[\"1,10,17,18,19,21,22,24,27,5,6,7\"],\n
+      \       \"createUserIdentifier\":\"ETL_SYS\",\n        \"createDateTime\":\"2023-05-07T13:08:43Z\"},\n
+      \     {\n        \"id\":\"d56828faecf40e8907c3cdb0e6d9a191\",\n        \"patentApplicationNumber\":\"14574014\",\n
+      \       \"obsoleteDocumentIdentifier\":\"IVLC08MNRXEAPX5\",\n        \"groupArtUnitNumber\":\"3763\",\n
+      \       \"legacyDocumentCodeIdentifier\":\"CTFR\",\n        \"submissionDate\":\"2016-11-18T05:00:00Z\",\n
+      \       \"nationalClass\":\"604\",\n        \"nationalSubclass\":\"028000\",\n
+      \       \"headerMissing\":0.0,\n        \"formParagraphMissing\":1.0,\n        \"rejectFormMissmatch\":0.0,\n
+      \       \"closingMissing\":0.0,\n        \"hasRej101\":0.0,\n        \"hasRejDP\":1.0,\n
+      \       \"hasRej102\":0.0,\n        \"hasRej103\":1.0,\n        \"hasRej112\":0.0,\n
+      \       \"hasObjection\":1.0,\n        \"cite102GT1\":0.0,\n        \"cite103GT3\":1.0,\n
+      \       \"cite103EQ1\":0.0,\n        \"cite103Max\":6.0,\n        \"signatureType\":3.0,\n
+      \       \"actionTypeCategory\":\"rejected\",\n        \"legalSectionCode\":\"nonstatutory
+      double patenting\",\n        \"claimNumberArrayDocument\":[\"1,11,12,13,14,15,16,17,18,19,2,3,33,34,35,36,37,4,40,41,42,43,44,45,46,5,6,7,8\"],\n
+      \       \"createUserIdentifier\":\"ETL_SYS\",\n        \"createDateTime\":\"2023-06-02T17:17:19Z\"},\n
+      \     {\n        \"id\":\"92e333d5b5a2f9b9294941a4b5d0a5b5\",\n        \"patentApplicationNumber\":\"14574014\",\n
+      \       \"obsoleteDocumentIdentifier\":\"IVLC08MNRXEAPX5\",\n        \"groupArtUnitNumber\":\"3763\",\n
+      \       \"legacyDocumentCodeIdentifier\":\"CTFR\",\n        \"submissionDate\":\"2016-11-18T05:00:00Z\",\n
+      \       \"nationalClass\":\"604\",\n        \"nationalSubclass\":\"028000\",\n
+      \       \"headerMissing\":0.0,\n        \"formParagraphMissing\":1.0,\n        \"rejectFormMissmatch\":0.0,\n
+      \       \"closingMissing\":0.0,\n        \"hasRej101\":0.0,\n        \"hasRejDP\":1.0,\n
+      \       \"hasRej102\":0.0,\n        \"hasRej103\":1.0,\n        \"hasRej112\":0.0,\n
+      \       \"hasObjection\":1.0,\n        \"cite102GT1\":0.0,\n        \"cite103GT3\":1.0,\n
+      \       \"cite103EQ1\":0.0,\n        \"cite103Max\":6.0,\n        \"signatureType\":3.0,\n
+      \       \"actionTypeCategory\":\"cancelled\",\n        \"claimNumberArrayDocument\":[\"1,11,12,13,14,15,16,17,18,19,2,3,33,35,36,4,43,45,46,5,6,7,8\"],\n
+      \       \"createUserIdentifier\":\"ETL_SYS\",\n        \"createDateTime\":\"2023-06-02T17:17:19Z\"},\n
+      \     {\n        \"id\":\"c78aa15a25e5d1ce86d55f3c4800c494\",\n        \"patentApplicationNumber\":\"13763388\",\n
+      \       \"obsoleteDocumentIdentifier\":\"J17QQY6LRXEAPX5\",\n        \"groupArtUnitNumber\":\"3736\",\n
+      \       \"legacyDocumentCodeIdentifier\":\"CTFR\",\n        \"submissionDate\":\"2017-04-11T04:00:00Z\",\n
+      \       \"nationalClass\":\"600\",\n        \"nationalSubclass\":\"566000\",\n
+      \       \"headerMissing\":0.0,\n        \"formParagraphMissing\":0.0,\n        \"rejectFormMissmatch\":0.0,\n
+      \       \"closingMissing\":0.0,\n        \"hasRej101\":0.0,\n        \"hasRejDP\":0.0,\n
+      \       \"hasRej102\":1.0,\n        \"hasRej103\":0.0,\n        \"hasRej112\":1.0,\n
+      \       \"hasObjection\":1.0,\n        \"cite102GT1\":1.0,\n        \"cite103GT3\":0.0,\n
+      \       \"cite103EQ1\":0.0,\n        \"cite103Max\":0.0,\n        \"signatureType\":2.0,\n
+      \       \"actionTypeCategory\":\"objected\",\n        \"claimNumberArrayDocument\":[\"1,10,18,5,6\"],\n
+      \       \"createUserIdentifier\":\"ETL_SYS\",\n        \"createDateTime\":\"2023-05-07T13:08:43Z\"},\n
+      \     {\n        \"id\":\"a48d4adcca0778dcb265d083525abeca\",\n        \"patentApplicationNumber\":\"14574014\",\n
+      \       \"obsoleteDocumentIdentifier\":\"IVLC08MNRXEAPX5\",\n        \"groupArtUnitNumber\":\"3763\",\n
+      \       \"legacyDocumentCodeIdentifier\":\"CTFR\",\n        \"submissionDate\":\"2016-11-18T05:00:00Z\",\n
+      \       \"nationalClass\":\"604\",\n        \"nationalSubclass\":\"028000\",\n
+      \       \"headerMissing\":0.0,\n        \"formParagraphMissing\":1.0,\n        \"rejectFormMissmatch\":0.0,\n
+      \       \"closingMissing\":0.0,\n        \"hasRej101\":0.0,\n        \"hasRejDP\":1.0,\n
+      \       \"hasRej102\":0.0,\n        \"hasRej103\":1.0,\n        \"hasRej112\":0.0,\n
+      \       \"hasObjection\":1.0,\n        \"cite102GT1\":0.0,\n        \"cite103GT3\":1.0,\n
+      \       \"cite103EQ1\":0.0,\n        \"cite103Max\":6.0,\n        \"signatureType\":3.0,\n
+      \       \"actionTypeCategory\":\"allowed\",\n        \"claimNumberArrayDocument\":[\"1,10,11,12,13,14,15,16,17,18,19,2,3,4,5,6,8,9\"],\n
+      \       \"createUserIdentifier\":\"ETL_SYS\",\n        \"createDateTime\":\"2023-06-02T17:17:19Z\"},\n
+      \     {\n        \"id\":\"392bc4b25e7f19c3a1c148b1cc97ce3d\",\n        \"patentApplicationNumber\":\"14574014\",\n
+      \       \"obsoleteDocumentIdentifier\":\"IVLC08MNRXEAPX5\",\n        \"groupArtUnitNumber\":\"3763\",\n
+      \       \"legacyDocumentCodeIdentifier\":\"CTFR\",\n        \"submissionDate\":\"2016-11-18T05:00:00Z\",\n
+      \       \"nationalClass\":\"604\",\n        \"nationalSubclass\":\"028000\",\n
+      \       \"headerMissing\":0.0,\n        \"formParagraphMissing\":1.0,\n        \"rejectFormMissmatch\":0.0,\n
+      \       \"closingMissing\":0.0,\n        \"hasRej101\":0.0,\n        \"hasRejDP\":1.0,\n
+      \       \"hasRej102\":0.0,\n        \"hasRej103\":1.0,\n        \"hasRej112\":0.0,\n
+      \       \"hasObjection\":1.0,\n        \"cite102GT1\":0.0,\n        \"cite103GT3\":1.0,\n
+      \       \"cite103EQ1\":0.0,\n        \"cite103Max\":6.0,\n        \"signatureType\":3.0,\n
+      \       \"actionTypeCategory\":\"objected\",\n        \"claimNumberArrayDocument\":[\"1,10,11,12,13,14,15,16,17,18,19,2,3,33,35,36,4,41,43,45,46,5,6,7,8,9\"],\n
+      \       \"createUserIdentifier\":\"ETL_SYS\",\n        \"createDateTime\":\"2023-06-02T17:17:19Z\"},\n
+      \     {\n        \"id\":\"1d625542936d3084348404c53a559199\",\n        \"patentApplicationNumber\":\"15256490\",\n
+      \       \"obsoleteDocumentIdentifier\":\"J17R9LKSRXEAPX5\",\n        \"groupArtUnitNumber\":\"3763\",\n
+      \       \"legacyDocumentCodeIdentifier\":\"CTNF\",\n        \"submissionDate\":\"2017-04-07T04:00:00Z\",\n
+      \       \"nationalClass\":\"604\",\n        \"nationalSubclass\":\"095040\",\n
+      \       \"headerMissing\":0.0,\n        \"formParagraphMissing\":0.0,\n        \"rejectFormMissmatch\":0.0,\n
+      \       \"closingMissing\":0.0,\n        \"hasRej101\":0.0,\n        \"hasRejDP\":0.0,\n
+      \       \"hasRej102\":0.0,\n        \"hasRej103\":1.0,\n        \"hasRej112\":1.0,\n
+      \       \"hasObjection\":1.0,\n        \"cite102GT1\":0.0,\n        \"cite103GT3\":1.0,\n
+      \       \"cite103EQ1\":0.0,\n        \"cite103Max\":4.0,\n        \"signatureType\":3.0,\n
+      \       \"actionTypeCategory\":\"rejected\",\n        \"legalSectionCode\":\"112\",\n
+      \       \"claimNumberArrayDocument\":[\"1,2\"],\n        \"createUserIdentifier\":\"ETL_SYS\",\n
+      \       \"createDateTime\":\"2023-05-07T16:30:39Z\"},\n      {\n        \"id\":\"e729861500168651440a7846dfdfea08\",\n
+      \       \"patentApplicationNumber\":\"14574014\",\n        \"obsoleteDocumentIdentifier\":\"IVLC08MNRXEAPX5\",\n
+      \       \"groupArtUnitNumber\":\"3763\",\n        \"legacyDocumentCodeIdentifier\":\"CTFR\",\n
+      \       \"submissionDate\":\"2016-11-18T05:00:00Z\",\n        \"nationalClass\":\"604\",\n
+      \       \"nationalSubclass\":\"028000\",\n        \"headerMissing\":0.0,\n        \"formParagraphMissing\":1.0,\n
+      \       \"rejectFormMissmatch\":0.0,\n        \"closingMissing\":0.0,\n        \"hasRej101\":0.0,\n
+      \       \"hasRejDP\":1.0,\n        \"hasRej102\":0.0,\n        \"hasRej103\":1.0,\n
+      \       \"hasRej112\":0.0,\n        \"hasObjection\":1.0,\n        \"cite102GT1\":0.0,\n
+      \       \"cite103GT3\":1.0,\n        \"cite103EQ1\":0.0,\n        \"cite103Max\":6.0,\n
+      \       \"signatureType\":3.0,\n        \"actionTypeCategory\":\"allowable\",\n
+      \       \"claimNumberArrayDocument\":[\"1,10,11,12,13,14,15,16,17,18,19,2,3,4,5,6,8,9\"],\n
+      \       \"createUserIdentifier\":\"ETL_SYS\",\n        \"createDateTime\":\"2023-06-02T17:17:19Z\"},\n
+      \     {\n        \"id\":\"82bf033918ca5bb3dbb34fdc5713dbb7\",\n        \"patentApplicationNumber\":\"14574014\",\n
+      \       \"obsoleteDocumentIdentifier\":\"IVLC08MNRXEAPX5\",\n        \"groupArtUnitNumber\":\"3763\",\n
+      \       \"legacyDocumentCodeIdentifier\":\"CTFR\",\n        \"submissionDate\":\"2016-11-18T05:00:00Z\",\n
+      \       \"nationalClass\":\"604\",\n        \"nationalSubclass\":\"028000\",\n
+      \       \"headerMissing\":0.0,\n        \"formParagraphMissing\":1.0,\n        \"rejectFormMissmatch\":0.0,\n
+      \       \"closingMissing\":0.0,\n        \"hasRej101\":0.0,\n        \"hasRejDP\":1.0,\n
+      \       \"hasRej102\":0.0,\n        \"hasRej103\":1.0,\n        \"hasRej112\":0.0,\n
+      \       \"hasObjection\":1.0,\n        \"cite102GT1\":0.0,\n        \"cite103GT3\":1.0,\n
+      \       \"cite103EQ1\":0.0,\n        \"cite103Max\":6.0,\n        \"signatureType\":3.0,\n
+      \       \"actionTypeCategory\":\"rejected\",\n        \"legalSectionCode\":\"103\",\n
+      \       \"claimNumberArrayDocument\":[\"33,34,35,36,37,40,42,43,44,45,46\"],\n
+      \       \"createUserIdentifier\":\"ETL_SYS\",\n        \"createDateTime\":\"2023-06-02T17:17:19Z\"},\n
+      \     {\n        \"id\":\"e2eab3eee5df0ddb7a33f99a27e45df3\",\n        \"patentApplicationNumber\":\"13471098\",\n
+      \       \"obsoleteDocumentIdentifier\":\"IVLC3W4IRXEAPX2\",\n        \"groupArtUnitNumber\":\"1724\",\n
+      \       \"legacyDocumentCodeIdentifier\":\"CTNF\",\n        \"submissionDate\":\"2016-11-18T05:00:00Z\",\n
+      \       \"nationalClass\":\"429\",\n        \"nationalSubclass\":\"211000\",\n
+      \       \"headerMissing\":0.0,\n        \"formParagraphMissing\":1.0,\n        \"rejectFormMissmatch\":0.0,\n
+      \       \"closingMissing\":0.0,\n        \"hasRej101\":0.0,\n        \"hasRejDP\":0.0,\n
+      \       \"hasRej102\":0.0,\n        \"hasRej103\":1.0,\n        \"hasRej112\":0.0,\n
+      \       \"hasObjection\":0.0,\n        \"cite102GT1\":0.0,\n        \"cite103GT3\":1.0,\n
+      \       \"cite103EQ1\":0.0,\n        \"cite103Max\":5.0,\n        \"signatureType\":3.0,\n
+      \       \"actionTypeCategory\":\"rejected\",\n        \"legalSectionCode\":\"103\",\n
+      \       \"claimNumberArrayDocument\":[\"1,10,11,12,15,16,6,8,9\"],\n        \"createUserIdentifier\":\"ETL_SYS\",\n
+      \       \"createDateTime\":\"2023-06-02T19:54:50Z\"},\n      {\n        \"id\":\"9c2035963cc8a66abe15b83a0fcdf7e9\",\n
+      \       \"patentApplicationNumber\":\"13471098\",\n        \"obsoleteDocumentIdentifier\":\"IVLC3W4IRXEAPX2\",\n
+      \       \"groupArtUnitNumber\":\"1724\",\n        \"legacyDocumentCodeIdentifier\":\"CTNF\",\n
+      \       \"submissionDate\":\"2016-11-18T05:00:00Z\",\n        \"nationalClass\":\"429\",\n
+      \       \"nationalSubclass\":\"211000\",\n        \"headerMissing\":0.0,\n        \"formParagraphMissing\":1.0,\n
+      \       \"rejectFormMissmatch\":0.0,\n        \"closingMissing\":0.0,\n        \"hasRej101\":0.0,\n
+      \       \"hasRejDP\":0.0,\n        \"hasRej102\":0.0,\n        \"hasRej103\":1.0,\n
+      \       \"hasRej112\":0.0,\n        \"hasObjection\":0.0,\n        \"cite102GT1\":0.0,\n
+      \       \"cite103GT3\":1.0,\n        \"cite103EQ1\":0.0,\n        \"cite103Max\":5.0,\n
+      \       \"signatureType\":3.0,\n        \"actionTypeCategory\":\"withdrawn\",\n
+      \       \"claimNumberArrayDocument\":[\"17\"],\n        \"createUserIdentifier\":\"ETL_SYS\",\n
+      \       \"createDateTime\":\"2023-06-02T19:54:50Z\"},\n      {\n        \"id\":\"88afdd4276bce80cea2e24f28e60771c\",\n
+      \       \"patentApplicationNumber\":\"13471098\",\n        \"obsoleteDocumentIdentifier\":\"IVLC3W4IRXEAPX2\",\n
+      \       \"groupArtUnitNumber\":\"1724\",\n        \"legacyDocumentCodeIdentifier\":\"CTNF\",\n
+      \       \"submissionDate\":\"2016-11-18T05:00:00Z\",\n        \"nationalClass\":\"429\",\n
+      \       \"nationalSubclass\":\"211000\",\n        \"headerMissing\":0.0,\n        \"formParagraphMissing\":1.0,\n
+      \       \"rejectFormMissmatch\":0.0,\n        \"closingMissing\":0.0,\n        \"hasRej101\":0.0,\n
+      \       \"hasRejDP\":0.0,\n        \"hasRej102\":0.0,\n        \"hasRej103\":1.0,\n
+      \       \"hasRej112\":0.0,\n        \"hasObjection\":0.0,\n        \"cite102GT1\":0.0,\n
+      \       \"cite103GT3\":1.0,\n        \"cite103EQ1\":0.0,\n        \"cite103Max\":5.0,\n
+      \       \"signatureType\":3.0,\n        \"actionTypeCategory\":\"cancelled\",\n
+      \       \"claimNumberArrayDocument\":[\"13,14,17,2,3,4,5,7\"],\n        \"createUserIdentifier\":\"ETL_SYS\",\n
+      \       \"createDateTime\":\"2023-06-02T19:54:50Z\"},\n      {\n        \"id\":\"fdda4789bf55f4774fe7ac385be99529\",\n
+      \       \"patentApplicationNumber\":\"14611525\",\n        \"obsoleteDocumentIdentifier\":\"IVLDK6QORXEAPX0\",\n
+      \       \"groupArtUnitNumber\":\"2444\",\n        \"legacyDocumentCodeIdentifier\":\"CTNF\",\n
+      \       \"submissionDate\":\"2016-11-18T05:00:00Z\",\n        \"nationalClass\":\"709\",\n
+      \       \"nationalSubclass\":\"204000\",\n        \"headerMissing\":0.0,\n        \"formParagraphMissing\":0.0,\n
+      \       \"rejectFormMissmatch\":0.0,\n        \"closingMissing\":0.0,\n        \"hasRej101\":1.0,\n
+      \       \"hasRejDP\":0.0,\n        \"hasRej102\":1.0,\n        \"hasRej103\":0.0,\n
+      \       \"hasRej112\":0.0,\n        \"hasObjection\":0.0,\n        \"cite102GT1\":0.0,\n
+      \       \"cite103GT3\":0.0,\n        \"cite103EQ1\":0.0,\n        \"cite103Max\":0.0,\n
+      \       \"signatureType\":1.0,\n        \"actionTypeCategory\":\"rejected\",\n
+      \       \"legalSectionCode\":\"101\",\n        \"paragraphNumber\":\"Non-Statutory-other\",\n
+      \       \"claimNumberArrayDocument\":[\"1,10,11,12,13,14,15,16,17,18,19,2,20,3,4,5,6,7,8,9\"],\n
+      \       \"createUserIdentifier\":\"ETL_SYS\",\n        \"createDateTime\":\"2023-06-02T17:14:58Z\"},\n
+      \     {\n        \"id\":\"743e493cb5dcfe6efaaab9dda993df5a\",\n        \"patentApplicationNumber\":\"14611525\",\n
+      \       \"obsoleteDocumentIdentifier\":\"IVLDK6QORXEAPX0\",\n        \"groupArtUnitNumber\":\"2444\",\n
+      \       \"legacyDocumentCodeIdentifier\":\"CTNF\",\n        \"submissionDate\":\"2016-11-18T05:00:00Z\",\n
+      \       \"nationalClass\":\"709\",\n        \"nationalSubclass\":\"204000\",\n
+      \       \"headerMissing\":0.0,\n        \"formParagraphMissing\":0.0,\n        \"rejectFormMissmatch\":0.0,\n
+      \       \"closingMissing\":0.0,\n        \"hasRej101\":1.0,\n        \"hasRejDP\":0.0,\n
+      \       \"hasRej102\":1.0,\n        \"hasRej103\":0.0,\n        \"hasRej112\":0.0,\n
+      \       \"hasObjection\":0.0,\n        \"cite102GT1\":0.0,\n        \"cite103GT3\":0.0,\n
+      \       \"cite103EQ1\":0.0,\n        \"cite103Max\":0.0,\n        \"signatureType\":1.0,\n
+      \       \"actionTypeCategory\":\"rejected\",\n        \"legalSectionCode\":\"101\",\n
+      \       \"claimNumberArrayDocument\":[\"0\"],\n        \"createUserIdentifier\":\"ETL_SYS\",\n
+      \       \"createDateTime\":\"2023-06-02T17:14:58Z\"},\n      {\n        \"id\":\"8daf844eb6d88d029f9c0689da3da022\",\n
+      \       \"patentApplicationNumber\":\"14611525\",\n        \"obsoleteDocumentIdentifier\":\"IVLDK6QORXEAPX0\",\n
+      \       \"groupArtUnitNumber\":\"2444\",\n        \"legacyDocumentCodeIdentifier\":\"CTNF\",\n
+      \       \"submissionDate\":\"2016-11-18T05:00:00Z\",\n        \"nationalClass\":\"709\",\n
+      \       \"nationalSubclass\":\"204000\",\n        \"headerMissing\":0.0,\n        \"formParagraphMissing\":0.0,\n
+      \       \"rejectFormMissmatch\":0.0,\n        \"closingMissing\":0.0,\n        \"hasRej101\":1.0,\n
+      \       \"hasRejDP\":0.0,\n        \"hasRej102\":1.0,\n        \"hasRej103\":0.0,\n
+      \       \"hasRej112\":0.0,\n        \"hasObjection\":0.0,\n        \"cite102GT1\":0.0,\n
+      \       \"cite103GT3\":0.0,\n        \"cite103EQ1\":0.0,\n        \"cite103Max\":0.0,\n
+      \       \"signatureType\":1.0,\n        \"actionTypeCategory\":\"rejected\",\n
+      \       \"legalSectionCode\":\"102\",\n        \"claimNumberArrayDocument\":[\"1,16,2,3,4,5,6,7,8\"],\n
+      \       \"createUserIdentifier\":\"ETL_SYS\",\n        \"createDateTime\":\"2023-06-02T17:14:58Z\"},\n
+      \     {\n        \"id\":\"562c2f2da34bae36a18ae6c23b79c3f6\",\n        \"patentApplicationNumber\":\"14147636\",\n
+      \       \"obsoleteDocumentIdentifier\":\"IVLDUDJPRXEAPX1\",\n        \"groupArtUnitNumber\":\"2836\",\n
+      \       \"legacyDocumentCodeIdentifier\":\"CTNF\",\n        \"submissionDate\":\"2016-11-18T05:00:00Z\",\n
+      \       \"nationalClass\":\"307\",\n        \"nationalSubclass\":\"019000\",\n
+      \       \"headerMissing\":0.0,\n        \"formParagraphMissing\":0.0,\n        \"rejectFormMissmatch\":0.0,\n
+      \       \"closingMissing\":0.0,\n        \"hasRej101\":0.0,\n        \"hasRejDP\":0.0,\n
+      \       \"hasRej102\":0.0,\n        \"hasRej103\":1.0,\n        \"hasRej112\":1.0,\n
+      \       \"hasObjection\":1.0,\n        \"cite102GT1\":0.0,\n        \"cite103GT3\":1.0,\n
+      \       \"cite103EQ1\":0.0,\n        \"cite103Max\":5.0,\n        \"signatureType\":3.0,\n
+      \       \"actionTypeCategory\":\"rejected\",\n        \"legalSectionCode\":\"103\",\n
+      \       \"claimNumberArrayDocument\":[\"1,11,13,14,15,16,17,18,19,2,20,3,4,5,6,7\"],\n
+      \       \"createUserIdentifier\":\"ETL_SYS\",\n        \"createDateTime\":\"2023-06-02T19:44:12Z\"},\n
+      \     {\n        \"id\":\"049460a885f37142778deac224f8364d\",\n        \"patentApplicationNumber\":\"14147636\",\n
+      \       \"obsoleteDocumentIdentifier\":\"IVLDUDJPRXEAPX1\",\n        \"groupArtUnitNumber\":\"2836\",\n
+      \       \"legacyDocumentCodeIdentifier\":\"CTNF\",\n        \"submissionDate\":\"2016-11-18T05:00:00Z\",\n
+      \       \"nationalClass\":\"307\",\n        \"nationalSubclass\":\"019000\",\n
+      \       \"headerMissing\":0.0,\n        \"formParagraphMissing\":0.0,\n        \"rejectFormMissmatch\":0.0,\n
+      \       \"closingMissing\":0.0,\n        \"hasRej101\":0.0,\n        \"hasRejDP\":0.0,\n
+      \       \"hasRej102\":0.0,\n        \"hasRej103\":1.0,\n        \"hasRej112\":1.0,\n
+      \       \"hasObjection\":1.0,\n        \"cite102GT1\":0.0,\n        \"cite103GT3\":1.0,\n
+      \       \"cite103EQ1\":0.0,\n        \"cite103Max\":5.0,\n        \"signatureType\":3.0,\n
+      \       \"actionTypeCategory\":\"withdrawn\",\n        \"claimNumberArrayDocument\":[\"10,8,9\"],\n
+      \       \"createUserIdentifier\":\"ETL_SYS\",\n        \"createDateTime\":\"2023-06-02T19:44:12Z\"},\n
+      \     {\n        \"id\":\"d4bfd09236c8752d3df208ac8d7d344b\",\n        \"patentApplicationNumber\":\"14147636\",\n
+      \       \"obsoleteDocumentIdentifier\":\"IVLDUDJPRXEAPX1\",\n        \"groupArtUnitNumber\":\"2836\",\n
+      \       \"legacyDocumentCodeIdentifier\":\"CTNF\",\n        \"submissionDate\":\"2016-11-18T05:00:00Z\",\n
+      \       \"nationalClass\":\"307\",\n        \"nationalSubclass\":\"019000\",\n
+      \       \"headerMissing\":0.0,\n        \"formParagraphMissing\":0.0,\n        \"rejectFormMissmatch\":0.0,\n
+      \       \"closingMissing\":0.0,\n        \"hasRej101\":0.0,\n        \"hasRejDP\":0.0,\n
+      \       \"hasRej102\":0.0,\n        \"hasRej103\":1.0,\n        \"hasRej112\":1.0,\n
+      \       \"hasObjection\":1.0,\n        \"cite102GT1\":0.0,\n        \"cite103GT3\":1.0,\n
+      \       \"cite103EQ1\":0.0,\n        \"cite103Max\":5.0,\n        \"signatureType\":3.0,\n
+      \       \"actionTypeCategory\":\"objected\",\n        \"claimNumberArrayDocument\":[\"12\"],\n
+      \       \"createUserIdentifier\":\"ETL_SYS\",\n        \"createDateTime\":\"2023-06-02T19:44:12Z\"},\n
+      \     {\n        \"id\":\"92e33d001e0c319fc864d84ff36d8923\",\n        \"patentApplicationNumber\":\"14147636\",\n
+      \       \"obsoleteDocumentIdentifier\":\"IVLDUDJPRXEAPX1\",\n        \"groupArtUnitNumber\":\"2836\",\n
+      \       \"legacyDocumentCodeIdentifier\":\"CTNF\",\n        \"submissionDate\":\"2016-11-18T05:00:00Z\",\n
+      \       \"nationalClass\":\"307\",\n        \"nationalSubclass\":\"019000\",\n
+      \       \"headerMissing\":0.0,\n        \"formParagraphMissing\":0.0,\n        \"rejectFormMissmatch\":0.0,\n
+      \       \"closingMissing\":0.0,\n        \"hasRej101\":0.0,\n        \"hasRejDP\":0.0,\n
+      \       \"hasRej102\":0.0,\n        \"hasRej103\":1.0,\n        \"hasRej112\":1.0,\n
+      \       \"hasObjection\":1.0,\n        \"cite102GT1\":0.0,\n        \"cite103GT3\":1.0,\n
+      \       \"cite103EQ1\":0.0,\n        \"cite103Max\":5.0,\n        \"signatureType\":3.0,\n
+      \       \"actionTypeCategory\":\"rejected\",\n        \"legalSectionCode\":\"112\",\n
+      \       \"claimNumberArrayDocument\":[\"12\"],\n        \"createUserIdentifier\":\"ETL_SYS\",\n
+      \       \"createDateTime\":\"2023-06-02T19:44:12Z\"},\n      {\n        \"id\":\"fedc6b99f197c4881f6e5a64e304bf8e\",\n
+      \       \"patentApplicationNumber\":\"15256490\",\n        \"obsoleteDocumentIdentifier\":\"J17R9LKSRXEAPX5\",\n
+      \       \"groupArtUnitNumber\":\"3763\",\n        \"legacyDocumentCodeIdentifier\":\"CTNF\",\n
+      \       \"submissionDate\":\"2017-04-07T04:00:00Z\",\n        \"nationalClass\":\"604\",\n
+      \       \"nationalSubclass\":\"095040\",\n        \"headerMissing\":0.0,\n        \"formParagraphMissing\":0.0,\n
+      \       \"rejectFormMissmatch\":0.0,\n        \"closingMissing\":0.0,\n        \"hasRej101\":0.0,\n
+      \       \"hasRejDP\":0.0,\n        \"hasRej102\":0.0,\n        \"hasRej103\":1.0,\n
+      \       \"hasRej112\":1.0,\n        \"hasObjection\":1.0,\n        \"cite102GT1\":0.0,\n
+      \       \"cite103GT3\":1.0,\n        \"cite103EQ1\":0.0,\n        \"cite103Max\":4.0,\n
+      \       \"signatureType\":3.0,\n        \"actionTypeCategory\":\"objected\",\n
+      \       \"claimNumberArrayDocument\":[\"1\"],\n        \"createUserIdentifier\":\"ETL_SYS\",\n
+      \       \"createDateTime\":\"2023-05-07T16:30:39Z\"},\n      {\n        \"id\":\"436d827aa8c74a683aec7ab678ef17ea\",\n
+      \       \"patentApplicationNumber\":\"13883100\",\n        \"obsoleteDocumentIdentifier\":\"IVLDXB3XRXEAPX3\",\n
+      \       \"groupArtUnitNumber\":\"2476\",\n        \"legacyDocumentCodeIdentifier\":\"CTFR\",\n
+      \       \"submissionDate\":\"2016-11-18T05:00:00Z\",\n        \"nationalClass\":\"370\",\n
+      \       \"nationalSubclass\":\"311000\",\n        \"headerMissing\":0.0,\n        \"formParagraphMissing\":1.0,\n
+      \       \"rejectFormMissmatch\":0.0,\n        \"closingMissing\":0.0,\n        \"hasRej101\":0.0,\n
+      \       \"hasRejDP\":0.0,\n        \"hasRej102\":0.0,\n        \"hasRej103\":1.0,\n
+      \       \"hasRej112\":0.0,\n        \"hasObjection\":0.0,\n        \"cite102GT1\":0.0,\n
+      \       \"cite103GT3\":1.0,\n        \"cite103EQ1\":0.0,\n        \"cite103Max\":6.0,\n
+      \       \"signatureType\":1.0,\n        \"actionTypeCategory\":\"rejected\",\n
+      \       \"legalSectionCode\":\"103\",\n        \"claimNumberArrayDocument\":[\"1,10,11,12,13,14,15,17,2,3,4,5,6,7,8,9\"],\n
+      \       \"createUserIdentifier\":\"ETL_SYS\",\n        \"createDateTime\":\"2023-06-02T19:45:32Z\"},\n
+      \     {\n        \"id\":\"d94e374655deceb90b1403d557711cb1\",\n        \"patentApplicationNumber\":\"15256490\",\n
+      \       \"obsoleteDocumentIdentifier\":\"J17R9LKSRXEAPX5\",\n        \"groupArtUnitNumber\":\"3763\",\n
+      \       \"legacyDocumentCodeIdentifier\":\"CTNF\",\n        \"submissionDate\":\"2017-04-07T04:00:00Z\",\n
+      \       \"nationalClass\":\"604\",\n        \"nationalSubclass\":\"095040\",\n
+      \       \"headerMissing\":0.0,\n        \"formParagraphMissing\":0.0,\n        \"rejectFormMissmatch\":0.0,\n
+      \       \"closingMissing\":0.0,\n        \"hasRej101\":0.0,\n        \"hasRejDP\":0.0,\n
+      \       \"hasRej102\":0.0,\n        \"hasRej103\":1.0,\n        \"hasRej112\":1.0,\n
+      \       \"hasObjection\":1.0,\n        \"cite102GT1\":0.0,\n        \"cite103GT3\":1.0,\n
+      \       \"cite103EQ1\":0.0,\n        \"cite103Max\":4.0,\n        \"signatureType\":3.0,\n
+      \       \"actionTypeCategory\":\"rejected\",\n        \"legalSectionCode\":\"103\",\n
+      \       \"claimNumberArrayDocument\":[\"1,2\"],\n        \"createUserIdentifier\":\"ETL_SYS\",\n
+      \       \"createDateTime\":\"2023-05-07T16:30:39Z\"},\n      {\n        \"id\":\"fa6136481dc112ae4ba83dc15effae8a\",\n
+      \       \"patentApplicationNumber\":\"14915987\",\n        \"obsoleteDocumentIdentifier\":\"J17TK2X4RXEAPX1\",\n
+      \       \"groupArtUnitNumber\":\"2468\",\n        \"legacyDocumentCodeIdentifier\":\"CTNF\",\n
+      \       \"submissionDate\":\"2017-04-11T04:00:00Z\",\n        \"nationalClass\":\"370\",\n
+      \       \"nationalSubclass\":\"280000\",\n        \"headerMissing\":0.0,\n        \"formParagraphMissing\":0.0,\n
+      \       \"rejectFormMissmatch\":0.0,\n        \"closingMissing\":0.0,\n        \"hasRej101\":0.0,\n
+      \       \"hasRejDP\":0.0,\n        \"hasRej102\":0.0,\n        \"hasRej103\":1.0,\n
+      \       \"hasRej112\":1.0,\n        \"hasObjection\":0.0,\n        \"cite102GT1\":0.0,\n
+      \       \"cite103GT3\":1.0,\n        \"cite103EQ1\":0.0,\n        \"cite103Max\":4.0,\n
+      \       \"signatureType\":0.0,\n        \"actionTypeCategory\":\"rejected\",\n
+      \       \"legalSectionCode\":\"103\",\n        \"claimNumberArrayDocument\":[\"1,10,11,12,2,3,4,5,6,7,8,9\"],\n
+      \       \"createUserIdentifier\":\"ETL_SYS\",\n        \"createDateTime\":\"2023-05-07T11:45:06Z\"},\n
+      \     {\n        \"id\":\"e5948e6101c2e75321926e29c9efc740\",\n        \"patentApplicationNumber\":\"14915987\",\n
+      \       \"obsoleteDocumentIdentifier\":\"J17TK2X4RXEAPX1\",\n        \"groupArtUnitNumber\":\"2468\",\n
+      \       \"legacyDocumentCodeIdentifier\":\"CTNF\",\n        \"submissionDate\":\"2017-04-11T04:00:00Z\",\n
+      \       \"nationalClass\":\"370\",\n        \"nationalSubclass\":\"280000\",\n
+      \       \"headerMissing\":0.0,\n        \"formParagraphMissing\":0.0,\n        \"rejectFormMissmatch\":0.0,\n
+      \       \"closingMissing\":0.0,\n        \"hasRej101\":0.0,\n        \"hasRejDP\":0.0,\n
+      \       \"hasRej102\":0.0,\n        \"hasRej103\":1.0,\n        \"hasRej112\":1.0,\n
+      \       \"hasObjection\":0.0,\n        \"cite102GT1\":0.0,\n        \"cite103GT3\":1.0,\n
+      \       \"cite103EQ1\":0.0,\n        \"cite103Max\":4.0,\n        \"signatureType\":0.0,\n
+      \       \"actionTypeCategory\":\"rejected\",\n        \"legalSectionCode\":\"112\",\n
+      \       \"claimNumberArrayDocument\":[\"1,10,11,12,2,3,4,5,6,7,8,9\"],\n        \"createUserIdentifier\":\"ETL_SYS\",\n
+      \       \"createDateTime\":\"2023-05-07T11:45:06Z\"},\n      {\n        \"id\":\"383934254c1c3a3bb26abe3afd2557a2\",\n
+      \       \"patentApplicationNumber\":\"15344811\",\n        \"obsoleteDocumentIdentifier\":\"J51H3PXDRXEAPX2\",\n
+      \       \"groupArtUnitNumber\":\"3735\",\n        \"legacyDocumentCodeIdentifier\":\"CTFR\",\n
+      \       \"submissionDate\":\"2017-07-14T04:00:00Z\",\n        \"nationalClass\":\"600\",\n
+      \       \"nationalSubclass\":\"014000\",\n        \"headerMissing\":0.0,\n        \"formParagraphMissing\":0.0,\n
+      \       \"rejectFormMissmatch\":0.0,\n        \"closingMissing\":0.0,\n        \"hasRej101\":0.0,\n
+      \       \"hasRejDP\":0.0,\n        \"hasRej102\":1.0,\n        \"hasRej103\":1.0,\n
+      \       \"hasRej112\":1.0,\n        \"hasObjection\":0.0,\n        \"cite102GT1\":0.0,\n
+      \       \"cite103GT3\":0.0,\n        \"cite103EQ1\":0.0,\n        \"cite103Max\":2.0,\n
+      \       \"signatureType\":3.0,\n        \"actionTypeCategory\":\"rejected\",\n
+      \       \"legalSectionCode\":\"112\",\n        \"claimNumberArrayDocument\":[\"86\"],\n
+      \       \"createUserIdentifier\":\"ETL_SYS\",\n        \"createDateTime\":\"2021-08-08T21:06:51Z\"},\n
+      \     {\n        \"id\":\"01713c021c2ccb9ca233be3894532528\",\n        \"patentApplicationNumber\":\"14774286\",\n
+      \       \"obsoleteDocumentIdentifier\":\"J17TVHGMRXEAPX1\",\n        \"groupArtUnitNumber\":\"1729\",\n
+      \       \"legacyDocumentCodeIdentifier\":\"CTFR\",\n        \"submissionDate\":\"2017-04-11T04:00:00Z\",\n
+      \       \"nationalClass\":\"029\",\n        \"nationalSubclass\":\"623100\",\n
+      \       \"headerMissing\":0.0,\n        \"formParagraphMissing\":1.0,\n        \"rejectFormMissmatch\":0.0,\n
+      \       \"closingMissing\":0.0,\n        \"hasRej101\":0.0,\n        \"hasRejDP\":0.0,\n
+      \       \"hasRej102\":0.0,\n        \"hasRej103\":1.0,\n        \"hasRej112\":1.0,\n
+      \       \"hasObjection\":1.0,\n        \"cite102GT1\":0.0,\n        \"cite103GT3\":0.0,\n
+      \       \"cite103EQ1\":0.0,\n        \"cite103Max\":0.0,\n        \"signatureType\":2.0,\n
+      \       \"actionTypeCategory\":\"canceled\",\n        \"claimNumberArrayDocument\":[\"1,2,3,4,5\"],\n
+      \       \"createUserIdentifier\":\"ETL_SYS\",\n        \"createDateTime\":\"2023-05-07T11:44:08Z\"},\n
+      \     {\n        \"id\":\"500f5b077410bc855f5ac52b306a2c03\",\n        \"patentApplicationNumber\":\"14774286\",\n
+      \       \"obsoleteDocumentIdentifier\":\"J17TVHGMRXEAPX1\",\n        \"groupArtUnitNumber\":\"1729\",\n
+      \       \"legacyDocumentCodeIdentifier\":\"CTFR\",\n        \"submissionDate\":\"2017-04-11T04:00:00Z\",\n
+      \       \"nationalClass\":\"029\",\n        \"nationalSubclass\":\"623100\",\n
+      \       \"headerMissing\":0.0,\n        \"formParagraphMissing\":1.0,\n        \"rejectFormMissmatch\":0.0,\n
+      \       \"closingMissing\":0.0,\n        \"hasRej101\":0.0,\n        \"hasRejDP\":0.0,\n
+      \       \"hasRej102\":0.0,\n        \"hasRej103\":1.0,\n        \"hasRej112\":1.0,\n
+      \       \"hasObjection\":1.0,\n        \"cite102GT1\":0.0,\n        \"cite103GT3\":0.0,\n
+      \       \"cite103EQ1\":0.0,\n        \"cite103Max\":0.0,\n        \"signatureType\":2.0,\n
+      \       \"actionTypeCategory\":\"rejected\",\n        \"legalSectionCode\":\"103\",\n
+      \       \"claimNumberArrayDocument\":[\"1,2,5,6,7\"],\n        \"createUserIdentifier\":\"ETL_SYS\",\n
+      \       \"createDateTime\":\"2023-05-07T11:44:08Z\"},\n      {\n        \"id\":\"4a2681a89e726d157322ae73e4f8ab10\",\n
+      \       \"patentApplicationNumber\":\"15344811\",\n        \"obsoleteDocumentIdentifier\":\"J51H3PXDRXEAPX2\",\n
+      \       \"groupArtUnitNumber\":\"3735\",\n        \"legacyDocumentCodeIdentifier\":\"CTFR\",\n
+      \       \"submissionDate\":\"2017-07-14T04:00:00Z\",\n        \"nationalClass\":\"600\",\n
+      \       \"nationalSubclass\":\"014000\",\n        \"headerMissing\":0.0,\n        \"formParagraphMissing\":0.0,\n
+      \       \"rejectFormMissmatch\":0.0,\n        \"closingMissing\":0.0,\n        \"hasRej101\":0.0,\n
+      \       \"hasRejDP\":0.0,\n        \"hasRej102\":1.0,\n        \"hasRej103\":1.0,\n
+      \       \"hasRej112\":1.0,\n        \"hasObjection\":0.0,\n        \"cite102GT1\":0.0,\n
+      \       \"cite103GT3\":0.0,\n        \"cite103EQ1\":0.0,\n        \"cite103Max\":2.0,\n
+      \       \"signatureType\":3.0,\n        \"actionTypeCategory\":\"cancellation\",\n
+      \       \"claimNumberArrayDocument\":[\"31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57\"],\n
+      \       \"createUserIdentifier\":\"ETL_SYS\",\n        \"createDateTime\":\"2021-08-08T21:06:51Z\"},\n
+      \     {\n        \"id\":\"051ba77200fe7c15cf03dffde2106924\",\n        \"patentApplicationNumber\":\"14774286\",\n
+      \       \"obsoleteDocumentIdentifier\":\"J17TVHGMRXEAPX1\",\n        \"groupArtUnitNumber\":\"1729\",\n
+      \       \"legacyDocumentCodeIdentifier\":\"CTFR\",\n        \"submissionDate\":\"2017-04-11T04:00:00Z\",\n
+      \       \"nationalClass\":\"029\",\n        \"nationalSubclass\":\"623100\",\n
+      \       \"headerMissing\":0.0,\n        \"formParagraphMissing\":1.0,\n        \"rejectFormMissmatch\":0.0,\n
+      \       \"closingMissing\":0.0,\n        \"hasRej101\":0.0,\n        \"hasRejDP\":0.0,\n
+      \       \"hasRej102\":0.0,\n        \"hasRej103\":1.0,\n        \"hasRej112\":1.0,\n
+      \       \"hasObjection\":1.0,\n        \"cite102GT1\":0.0,\n        \"cite103GT3\":0.0,\n
+      \       \"cite103EQ1\":0.0,\n        \"cite103Max\":0.0,\n        \"signatureType\":2.0,\n
+      \       \"actionTypeCategory\":\"objected\",\n        \"claimNumberArrayDocument\":[\"8\"],\n
+      \       \"createUserIdentifier\":\"ETL_SYS\",\n        \"createDateTime\":\"2023-05-07T11:44:08Z\"},\n
+      \     {\n        \"id\":\"7239eb460fc99eacd81b82a3e98747f0\",\n        \"patentApplicationNumber\":\"15344811\",\n
+      \       \"obsoleteDocumentIdentifier\":\"J51H3PXDRXEAPX2\",\n        \"groupArtUnitNumber\":\"3735\",\n
+      \       \"legacyDocumentCodeIdentifier\":\"CTFR\",\n        \"submissionDate\":\"2017-07-14T04:00:00Z\",\n
+      \       \"nationalClass\":\"600\",\n        \"nationalSubclass\":\"014000\",\n
+      \       \"headerMissing\":0.0,\n        \"formParagraphMissing\":0.0,\n        \"rejectFormMissmatch\":0.0,\n
+      \       \"closingMissing\":0.0,\n        \"hasRej101\":0.0,\n        \"hasRejDP\":0.0,\n
+      \       \"hasRej102\":1.0,\n        \"hasRej103\":1.0,\n        \"hasRej112\":1.0,\n
+      \       \"hasObjection\":0.0,\n        \"cite102GT1\":0.0,\n        \"cite103GT3\":0.0,\n
+      \       \"cite103EQ1\":0.0,\n        \"cite103Max\":2.0,\n        \"signatureType\":3.0,\n
+      \       \"actionTypeCategory\":\"rejected\",\n        \"legalSectionCode\":\"103\",\n
+      \       \"claimNumberArrayDocument\":[\"77,78,79,80,81\"],\n        \"createUserIdentifier\":\"ETL_SYS\",\n
+      \       \"createDateTime\":\"2021-08-08T21:06:51Z\"},\n      {\n        \"id\":\"e638d06e98ca1ddbe0e2f39e89ed734a\",\n
+      \       \"patentApplicationNumber\":\"14774286\",\n        \"obsoleteDocumentIdentifier\":\"J17TVHGMRXEAPX1\",\n
+      \       \"groupArtUnitNumber\":\"1729\",\n        \"legacyDocumentCodeIdentifier\":\"CTFR\",\n
+      \       \"submissionDate\":\"2017-04-11T04:00:00Z\",\n        \"nationalClass\":\"029\",\n
+      \       \"nationalSubclass\":\"623100\",\n        \"headerMissing\":0.0,\n        \"formParagraphMissing\":1.0,\n
+      \       \"rejectFormMissmatch\":0.0,\n        \"closingMissing\":0.0,\n        \"hasRej101\":0.0,\n
+      \       \"hasRejDP\":0.0,\n        \"hasRej102\":0.0,\n        \"hasRej103\":1.0,\n
+      \       \"hasRej112\":1.0,\n        \"hasObjection\":1.0,\n        \"cite102GT1\":0.0,\n
+      \       \"cite103GT3\":0.0,\n        \"cite103EQ1\":0.0,\n        \"cite103Max\":0.0,\n
+      \       \"signatureType\":2.0,\n        \"actionTypeCategory\":\"withdrawn\",\n
+      \       \"legalSectionCode\":\"112\",\n        \"claimNumberArrayDocument\":[\"1,2,5\"],\n
+      \       \"createUserIdentifier\":\"ETL_SYS\",\n        \"createDateTime\":\"2023-05-07T11:44:08Z\"},\n
+      \     {\n        \"id\":\"c944bac447415e616b5bcfdd34f246d8\",\n        \"patentApplicationNumber\":\"14948680\",\n
+      \       \"obsoleteDocumentIdentifier\":\"J51I6L52RXEAPX0\",\n        \"groupArtUnitNumber\":\"3669\",\n
+      \       \"legacyDocumentCodeIdentifier\":\"CTFR\",\n        \"submissionDate\":\"2017-07-13T04:00:00Z\",\n
+      \       \"nationalClass\":\"701\",\n        \"nationalSubclass\":\"022000\",\n
+      \       \"headerMissing\":0.0,\n        \"formParagraphMissing\":0.0,\n        \"rejectFormMissmatch\":0.0,\n
+      \       \"closingMissing\":0.0,\n        \"hasRej101\":0.0,\n        \"hasRejDP\":0.0,\n
+      \       \"hasRej102\":0.0,\n        \"hasRej103\":1.0,\n        \"hasRej112\":1.0,\n
+      \       \"hasObjection\":0.0,\n        \"cite102GT1\":0.0,\n        \"cite103GT3\":0.0,\n
+      \       \"cite103EQ1\":0.0,\n        \"cite103Max\":3.0,\n        \"signatureType\":3.0,\n
+      \       \"actionTypeCategory\":\"interpreted\",\n        \"legalSectionCode\":\"112\",\n
+      \       \"claimNumberArrayDocument\":[\"0\"],\n        \"createUserIdentifier\":\"ETL_SYS\",\n
+      \       \"createDateTime\":\"2021-08-09T03:16:05Z\"},\n      {\n        \"id\":\"bec689ea023e148daa08fc420b494562\",\n
+      \       \"patentApplicationNumber\":\"14767824\",\n        \"obsoleteDocumentIdentifier\":\"J7KJAL62RXEAPX2\",\n
+      \       \"groupArtUnitNumber\":\"3735\",\n        \"legacyDocumentCodeIdentifier\":\"CTNF\",\n
+      \       \"submissionDate\":\"2017-09-18T04:00:00Z\",\n        \"nationalClass\":\"600\",\n
+      \       \"nationalSubclass\":\"001000\",\n        \"headerMissing\":0.0,\n        \"formParagraphMissing\":0.0,\n
+      \       \"rejectFormMissmatch\":1.0,\n        \"closingMissing\":0.0,\n        \"hasRej101\":1.0,\n
+      \       \"hasRejDP\":0.0,\n        \"hasRej102\":1.0,\n        \"hasRej103\":0.0,\n
+      \       \"hasRej112\":1.0,\n        \"hasObjection\":1.0,\n        \"cite102GT1\":1.0,\n
+      \       \"cite103GT3\":0.0,\n        \"cite103EQ1\":0.0,\n        \"cite103Max\":0.0,\n
+      \       \"signatureType\":2.0,\n        \"actionTypeCategory\":\"interpreted\",\n
+      \       \"claimNumberArrayDocument\":[\"1,8,9\"],\n        \"createUserIdentifier\":\"ETL_SYS\",\n
+      \       \"createDateTime\":\"2021-07-20T22:58:44Z\"},\n      {\n        \"id\":\"471f3a6d0b5bd818c4a4e095bffb69a2\",\n
+      \       \"patentApplicationNumber\":\"14892558\",\n        \"obsoleteDocumentIdentifier\":\"J7KLP2R0RXEAPX0\",\n
+      \       \"groupArtUnitNumber\":\"2864\",\n        \"legacyDocumentCodeIdentifier\":\"CTNF\",\n
+      \       \"submissionDate\":\"2017-09-18T04:00:00Z\",\n        \"nationalClass\":\"702\",\n
+      \       \"nationalSubclass\":\"007000\",\n        \"headerMissing\":0.0,\n        \"formParagraphMissing\":0.0,\n
+      \       \"rejectFormMissmatch\":0.0,\n        \"closingMissing\":0.0,\n        \"hasRej101\":1.0,\n
+      \       \"hasRejDP\":0.0,\n        \"hasRej102\":1.0,\n        \"hasRej103\":0.0,\n
+      \       \"hasRej112\":0.0,\n        \"hasObjection\":0.0,\n        \"cite102GT1\":1.0,\n
+      \       \"cite103GT3\":0.0,\n        \"cite103EQ1\":0.0,\n        \"cite103Max\":0.0,\n
+      \       \"signatureType\":2.0,\n        \"actionTypeCategory\":\"rejected\",\n
+      \       \"legalSectionCode\":\"102\",\n        \"claimNumberArrayDocument\":[\"1,10,11,12,13,14,15,16,17,18,19,2,20,21,22,23,24,25,26,27,28,29,3,30,31,32,33,34,35,36,37,38,39,4,40,41,42,43,44,45,46,47,48,49,5,50,51,52,53,54,55,56,57,58,59,6,60,61,62,7,8,9\"],\n
+      \       \"createUserIdentifier\":\"ETL_SYS\",\n        \"createDateTime\":\"2021-07-20T22:45:17Z\"},\n
+      \     {\n        \"id\":\"96d7c9e279054266245742379f2e9e2d\",\n        \"patentApplicationNumber\":\"14440991\",\n
+      \       \"obsoleteDocumentIdentifier\":\"J7KM2BOGRXEAPX2\",\n        \"groupArtUnitNumber\":\"3729\",\n
+      \       \"legacyDocumentCodeIdentifier\":\"CTNF\",\n        \"submissionDate\":\"2017-09-18T04:00:00Z\",\n
+      \       \"nationalClass\":\"029\",\n        \"nationalSubclass\":\"594000\",\n
+      \       \"headerMissing\":0.0,\n        \"formParagraphMissing\":0.0,\n        \"rejectFormMissmatch\":1.0,\n
+      \       \"closingMissing\":0.0,\n        \"hasRej101\":0.0,\n        \"hasRejDP\":0.0,\n
+      \       \"hasRej102\":1.0,\n        \"hasRej103\":1.0,\n        \"hasRej112\":1.0,\n
+      \       \"hasObjection\":0.0,\n        \"cite102GT1\":0.0,\n        \"cite103GT3\":0.0,\n
+      \       \"cite103EQ1\":0.0,\n        \"cite103Max\":3.0,\n        \"signatureType\":2.0,\n
+      \       \"actionTypeCategory\":\"rejected\",\n        \"legalSectionCode\":\"102\",\n
+      \       \"claimNumberArrayDocument\":[\"1,21\"],\n        \"createUserIdentifier\":\"ETL_SYS\",\n
+      \       \"createDateTime\":\"2021-07-20T23:48:14Z\"},\n      {\n        \"id\":\"b39a17d18ec8260a6825b1bbdc426697\",\n
+      \       \"patentApplicationNumber\":\"14574769\",\n        \"obsoleteDocumentIdentifier\":\"J52E6D3LRXEAPX1\",\n
+      \       \"groupArtUnitNumber\":\"3721\",\n        \"legacyDocumentCodeIdentifier\":\"CTNF\",\n
+      \       \"submissionDate\":\"2017-07-17T04:00:00Z\",\n        \"nationalClass\":\"053\",\n
+      \       \"nationalSubclass\":\"510000\",\n        \"headerMissing\":0.0,\n        \"formParagraphMissing\":0.0,\n
+      \       \"rejectFormMissmatch\":0.0,\n        \"closingMissing\":0.0,\n        \"hasRej101\":0.0,\n
+      \       \"hasRejDP\":0.0,\n        \"hasRej102\":1.0,\n        \"hasRej103\":1.0,\n
+      \       \"hasRej112\":1.0,\n        \"hasObjection\":1.0,\n        \"cite102GT1\":0.0,\n
+      \       \"cite103GT3\":0.0,\n        \"cite103EQ1\":0.0,\n        \"cite103Max\":2.0,\n
+      \       \"signatureType\":2.0,\n        \"actionTypeCategory\":\"rejected\",\n
+      \       \"legalSectionCode\":\"112\",\n        \"claimNumberArrayDocument\":[\"2\"],\n
+      \       \"createUserIdentifier\":\"ETL_SYS\",\n        \"createDateTime\":\"2021-08-08T20:48:33Z\"},\n
+      \     {\n        \"id\":\"cbfdc1a7a9e2194edd39c66916aa3b96\",\n        \"patentApplicationNumber\":\"14440991\",\n
+      \       \"obsoleteDocumentIdentifier\":\"J7KM2BOGRXEAPX2\",\n        \"groupArtUnitNumber\":\"3729\",\n
+      \       \"legacyDocumentCodeIdentifier\":\"CTNF\",\n        \"submissionDate\":\"2017-09-18T04:00:00Z\",\n
+      \       \"nationalClass\":\"029\",\n        \"nationalSubclass\":\"594000\",\n
+      \       \"headerMissing\":0.0,\n        \"formParagraphMissing\":0.0,\n        \"rejectFormMissmatch\":1.0,\n
+      \       \"closingMissing\":0.0,\n        \"hasRej101\":0.0,\n        \"hasRejDP\":0.0,\n
+      \       \"hasRej102\":1.0,\n        \"hasRej103\":1.0,\n        \"hasRej112\":1.0,\n
+      \       \"hasObjection\":0.0,\n        \"cite102GT1\":0.0,\n        \"cite103GT3\":0.0,\n
+      \       \"cite103EQ1\":0.0,\n        \"cite103Max\":3.0,\n        \"signatureType\":2.0,\n
+      \       \"actionTypeCategory\":\"withdrawn\",\n        \"claimNumberArrayDocument\":[\"10,11,12,13,14,15,16,17,3,4,5,7,8\"],\n
+      \       \"createUserIdentifier\":\"ETL_SYS\",\n        \"createDateTime\":\"2021-07-20T23:48:14Z\"},\n
+      \     {\n        \"id\":\"81f2b9e515f4761df039904bf97c11b7\",\n        \"patentApplicationNumber\":\"14215508\",\n
+      \       \"obsoleteDocumentIdentifier\":\"J17U75YHRXEAPX1\",\n        \"groupArtUnitNumber\":\"1652\",\n
+      \       \"legacyDocumentCodeIdentifier\":\"CTFR\",\n        \"submissionDate\":\"2017-04-11T04:00:00Z\",\n
+      \       \"nationalClass\":\"435\",\n        \"nationalSubclass\":\"071100\",\n
+      \       \"headerMissing\":0.0,\n        \"formParagraphMissing\":1.0,\n        \"rejectFormMissmatch\":0.0,\n
+      \       \"closingMissing\":0.0,\n        \"hasRej101\":1.0,\n        \"hasRejDP\":1.0,\n
+      \       \"hasRej102\":1.0,\n        \"hasRej103\":1.0,\n        \"hasRej112\":1.0,\n
+      \       \"hasObjection\":1.0,\n        \"cite102GT1\":0.0,\n        \"cite103GT3\":1.0,\n
+      \       \"cite103EQ1\":0.0,\n        \"cite103Max\":4.0,\n        \"signatureType\":2.0,\n
+      \       \"actionTypeCategory\":\"rejected\",\n        \"legalSectionCode\":\"102\",\n
+      \       \"claimNumberArrayDocument\":[\"1,10,11,12,13,16,2,21,22,23,24,3,35,38,39,4,5,6,7,8,9\"],\n
+      \       \"createUserIdentifier\":\"ETL_SYS\",\n        \"createDateTime\":\"2023-05-07T12:28:47Z\"},\n
+      \     {\n        \"id\":\"c746e684767ae8a73909c78a46129608\",\n        \"patentApplicationNumber\":\"14066933\",\n
+      \       \"obsoleteDocumentIdentifier\":\"J13PFJV3RXEAPX3\",\n        \"groupArtUnitNumber\":\"3652\",\n
+      \       \"legacyDocumentCodeIdentifier\":\"CTNF\",\n        \"submissionDate\":\"2017-04-06T04:00:00Z\",\n
+      \       \"nationalClass\":\"414\",\n        \"nationalSubclass\":\"217100\",\n
+      \       \"headerMissing\":0.0,\n        \"formParagraphMissing\":0.0,\n        \"rejectFormMissmatch\":1.0,\n
+      \       \"closingMissing\":0.0,\n        \"hasRej101\":0.0,\n        \"hasRejDP\":0.0,\n
+      \       \"hasRej102\":0.0,\n        \"hasRej103\":1.0,\n        \"hasRej112\":1.0,\n
+      \       \"hasObjection\":0.0,\n        \"cite102GT1\":0.0,\n        \"cite103GT3\":0.0,\n
+      \       \"cite103EQ1\":0.0,\n        \"cite103Max\":2.0,\n        \"signatureType\":0.0,\n
+      \       \"actionTypeCategory\":\"rejected\",\n        \"legalSectionCode\":\"103\",\n
+      \       \"claimNumberArrayDocument\":[\"25,26,27,28\"],\n        \"createUserIdentifier\":\"ETL_SYS\",\n
+      \       \"createDateTime\":\"2023-05-08T08:56:45Z\"},\n      {\n        \"id\":\"6a14467ab139b715cdae0b15e4f414b3\",\n
+      \       \"patentApplicationNumber\":\"15229656\",\n        \"obsoleteDocumentIdentifier\":\"J4IM9NFJRXEAPX1\",\n
+      \       \"groupArtUnitNumber\":\"1722\",\n        \"legacyDocumentCodeIdentifier\":\"CTNF\",\n
+      \       \"submissionDate\":\"2017-07-03T04:00:00Z\",\n        \"nationalClass\":\"252\",\n
+      \       \"nationalSubclass\":\"299630\",\n        \"headerMissing\":1.0,\n        \"formParagraphMissing\":0.0,\n
+      \       \"rejectFormMissmatch\":0.0,\n        \"closingMissing\":0.0,\n        \"hasRej101\":0.0,\n
+      \       \"hasRejDP\":0.0,\n        \"hasRej102\":1.0,\n        \"hasRej103\":1.0,\n
+      \       \"hasRej112\":0.0,\n        \"hasObjection\":0.0,\n        \"cite102GT1\":1.0,\n
+      \       \"cite103GT3\":0.0,\n        \"cite103EQ1\":1.0,\n        \"cite103Max\":1.0,\n
+      \       \"signatureType\":2.0,\n        \"actionTypeCategory\":\"rejected\",\n
+      \       \"legalSectionCode\":\"103\",\n        \"claimNumberArrayDocument\":[\"1,10,11,12,13,14,15,16,17,18,19,2,20,21,22,23,24,25,3,4,5,6,7,8,9\"],\n
+      \       \"createUserIdentifier\":\"ETL_SYS\",\n        \"createDateTime\":\"2021-08-09T16:04:04Z\"},\n
+      \     {\n        \"id\":\"8eddbe29af0811bafba7e48c3e552cfe\",\n        \"patentApplicationNumber\":\"15229656\",\n
+      \       \"obsoleteDocumentIdentifier\":\"J4IM9NFJRXEAPX1\",\n        \"groupArtUnitNumber\":\"1722\",\n
+      \       \"legacyDocumentCodeIdentifier\":\"CTNF\",\n        \"submissionDate\":\"2017-07-03T04:00:00Z\",\n
+      \       \"nationalClass\":\"252\",\n        \"nationalSubclass\":\"299630\",\n
+      \       \"headerMissing\":1.0,\n        \"formParagraphMissing\":0.0,\n        \"rejectFormMissmatch\":0.0,\n
+      \       \"closingMissing\":0.0,\n        \"hasRej101\":0.0,\n        \"hasRejDP\":0.0,\n
+      \       \"hasRej102\":1.0,\n        \"hasRej103\":1.0,\n        \"hasRej112\":0.0,\n
+      \       \"hasObjection\":0.0,\n        \"cite102GT1\":1.0,\n        \"cite103GT3\":0.0,\n
+      \       \"cite103EQ1\":1.0,\n        \"cite103Max\":1.0,\n        \"signatureType\":2.0,\n
+      \       \"actionTypeCategory\":\"rejected\",\n        \"legalSectionCode\":\"102\",\n
+      \       \"claimNumberArrayDocument\":[\"1,10,11,12,13,14,15,16,17,18,19,2,20,21,22,23,24,25,3,4,5,6,7,8,9\"],\n
+      \       \"createUserIdentifier\":\"ETL_SYS\",\n        \"createDateTime\":\"2021-08-09T16:04:04Z\"},\n
+      \     {\n        \"id\":\"08496f224401fb926c56d18caa763e18\",\n        \"patentApplicationNumber\":\"15477744\",\n
+      \       \"obsoleteDocumentIdentifier\":\"J4IMR6G1RXEAPX1\",\n        \"groupArtUnitNumber\":\"2836\",\n
+      \       \"legacyDocumentCodeIdentifier\":\"CTNF\",\n        \"submissionDate\":\"2017-07-03T04:00:00Z\",\n
+      \       \"nationalClass\":\"361\",\n        \"nationalSubclass\":\"126000\",\n
+      \       \"headerMissing\":1.0,\n        \"formParagraphMissing\":0.0,\n        \"rejectFormMissmatch\":0.0,\n
+      \       \"closingMissing\":0.0,\n        \"hasRej101\":0.0,\n        \"hasRejDP\":0.0,\n
+      \       \"hasRej102\":0.0,\n        \"hasRej103\":1.0,\n        \"hasRej112\":0.0,\n
+      \       \"hasObjection\":1.0,\n        \"cite102GT1\":0.0,\n        \"cite103GT3\":0.0,\n
+      \       \"cite103EQ1\":0.0,\n        \"cite103Max\":2.0,\n        \"signatureType\":2.0,\n
+      \       \"actionTypeCategory\":\"objected\",\n        \"claimNumberArrayDocument\":[\"18,19,20\"],\n
+      \       \"createUserIdentifier\":\"ETL_SYS\",\n        \"createDateTime\":\"2021-08-09T16:06:30Z\"},\n
+      \     {\n        \"id\":\"20b354a5fcd8bbf51a869bebc114b9ec\",\n        \"patentApplicationNumber\":\"15477744\",\n
+      \       \"obsoleteDocumentIdentifier\":\"J4IMR6G1RXEAPX1\",\n        \"groupArtUnitNumber\":\"2836\",\n
+      \       \"legacyDocumentCodeIdentifier\":\"CTNF\",\n        \"submissionDate\":\"2017-07-03T04:00:00Z\",\n
+      \       \"nationalClass\":\"361\",\n        \"nationalSubclass\":\"126000\",\n
+      \       \"headerMissing\":1.0,\n        \"formParagraphMissing\":0.0,\n        \"rejectFormMissmatch\":0.0,\n
+      \       \"closingMissing\":0.0,\n        \"hasRej101\":0.0,\n        \"hasRejDP\":0.0,\n
+      \       \"hasRej102\":0.0,\n        \"hasRej103\":1.0,\n        \"hasRej112\":0.0,\n
+      \       \"hasObjection\":1.0,\n        \"cite102GT1\":0.0,\n        \"cite103GT3\":0.0,\n
+      \       \"cite103EQ1\":0.0,\n        \"cite103Max\":2.0,\n        \"signatureType\":2.0,\n
+      \       \"actionTypeCategory\":\"rejected\",\n        \"legalSectionCode\":\"103\",\n
+      \       \"claimNumberArrayDocument\":[\"1,10,11,12,13,14,15,16,17,18,19,2,20,3,4,5,6,7,8,9\"],\n
+      \       \"createUserIdentifier\":\"ETL_SYS\",\n        \"createDateTime\":\"2021-08-09T16:06:30Z\"},\n
+      \     {\n        \"id\":\"39fa8945d57bdea15979aaa52c835e8c\",\n        \"patentApplicationNumber\":\"14950960\",\n
+      \       \"obsoleteDocumentIdentifier\":\"J4IMVS8CRXEAPX1\",\n        \"groupArtUnitNumber\":\"2838\",\n
+      \       \"legacyDocumentCodeIdentifier\":\"CTFR\",\n        \"submissionDate\":\"2017-07-03T04:00:00Z\",\n
+      \       \"nationalClass\":\"323\",\n        \"nationalSubclass\":\"313000\",\n
+      \       \"headerMissing\":0.0,\n        \"formParagraphMissing\":0.0,\n        \"rejectFormMissmatch\":0.0,\n
+      \       \"closingMissing\":0.0,\n        \"hasRej101\":0.0,\n        \"hasRejDP\":0.0,\n
+      \       \"hasRej102\":1.0,\n        \"hasRej103\":1.0,\n        \"hasRej112\":1.0,\n
+      \       \"hasObjection\":0.0,\n        \"cite102GT1\":0.0,\n        \"cite103GT3\":1.0,\n
+      \       \"cite103EQ1\":0.0,\n        \"cite103Max\":4.0,\n        \"signatureType\":2.0,\n
+      \       \"actionTypeCategory\":\"rejected\",\n        \"legalSectionCode\":\"112\",\n
+      \       \"claimNumberArrayDocument\":[\"1,11,12,13,14,15,17,18,19,2,20,4,5,6,7,8\"],\n
+      \       \"createUserIdentifier\":\"ETL_SYS\",\n        \"createDateTime\":\"2021-08-09T15:46:42Z\"},\n
+      \     {\n        \"id\":\"e0b94033c10c1b2d87abce1b8ea7c2a3\",\n        \"patentApplicationNumber\":\"14950960\",\n
+      \       \"obsoleteDocumentIdentifier\":\"J4IMVS8CRXEAPX1\",\n        \"groupArtUnitNumber\":\"2838\",\n
+      \       \"legacyDocumentCodeIdentifier\":\"CTFR\",\n        \"submissionDate\":\"2017-07-03T04:00:00Z\",\n
+      \       \"nationalClass\":\"323\",\n        \"nationalSubclass\":\"313000\",\n
+      \       \"headerMissing\":0.0,\n        \"formParagraphMissing\":0.0,\n        \"rejectFormMissmatch\":0.0,\n
+      \       \"closingMissing\":0.0,\n        \"hasRej101\":0.0,\n        \"hasRejDP\":0.0,\n
+      \       \"hasRej102\":1.0,\n        \"hasRej103\":1.0,\n        \"hasRej112\":1.0,\n
+      \       \"hasObjection\":0.0,\n        \"cite102GT1\":0.0,\n        \"cite103GT3\":1.0,\n
+      \       \"cite103EQ1\":0.0,\n        \"cite103Max\":4.0,\n        \"signatureType\":2.0,\n
+      \       \"actionTypeCategory\":\"rejected\",\n        \"legalSectionCode\":\"103\",\n
+      \       \"claimNumberArrayDocument\":[\"1,11,12,13,14,15,17,18,19,2,20,4,5,6,7,8\"],\n
+      \       \"createUserIdentifier\":\"ETL_SYS\",\n        \"createDateTime\":\"2021-08-09T15:46:42Z\"},\n
+      \     {\n        \"id\":\"fad25a52ac987bfdbc67cbacf836bec4\",\n        \"patentApplicationNumber\":\"14950960\",\n
+      \       \"obsoleteDocumentIdentifier\":\"J4IMVS8CRXEAPX1\",\n        \"groupArtUnitNumber\":\"2838\",\n
+      \       \"legacyDocumentCodeIdentifier\":\"CTFR\",\n        \"submissionDate\":\"2017-07-03T04:00:00Z\",\n
+      \       \"nationalClass\":\"323\",\n        \"nationalSubclass\":\"313000\",\n
+      \       \"headerMissing\":0.0,\n        \"formParagraphMissing\":0.0,\n        \"rejectFormMissmatch\":0.0,\n
+      \       \"closingMissing\":0.0,\n        \"hasRej101\":0.0,\n        \"hasRejDP\":0.0,\n
+      \       \"hasRej102\":1.0,\n        \"hasRej103\":1.0,\n        \"hasRej112\":1.0,\n
+      \       \"hasObjection\":0.0,\n        \"cite102GT1\":0.0,\n        \"cite103GT3\":1.0,\n
+      \       \"cite103EQ1\":0.0,\n        \"cite103Max\":4.0,\n        \"signatureType\":2.0,\n
+      \       \"actionTypeCategory\":\"rejected\",\n        \"legalSectionCode\":\"112\",\n
+      \       \"paragraphNumber\":\"b\",\n        \"claimNumberArrayDocument\":[\"11,12,15,19,20,4,5,6,7,8\"],\n
+      \       \"createUserIdentifier\":\"ETL_SYS\",\n        \"createDateTime\":\"2021-08-09T15:46:42Z\"},\n
+      \     {\n        \"id\":\"94cafd99c696ef0f0e4d12b0503f3f09\",\n        \"patentApplicationNumber\":\"15117061\",\n
+      \       \"obsoleteDocumentIdentifier\":\"J4INZJZORXEAPX4\",\n        \"groupArtUnitNumber\":\"2838\",\n
+      \       \"legacyDocumentCodeIdentifier\":\"CTNF\",\n        \"submissionDate\":\"2017-07-03T04:00:00Z\",\n
+      \       \"nationalClass\":\"363\",\n        \"nationalSubclass\":\"126000\",\n
+      \       \"headerMissing\":0.0,\n        \"formParagraphMissing\":0.0,\n        \"rejectFormMissmatch\":0.0,\n
+      \       \"closingMissing\":0.0,\n        \"hasRej101\":0.0,\n        \"hasRejDP\":0.0,\n
+      \       \"hasRej102\":1.0,\n        \"hasRej103\":1.0,\n        \"hasRej112\":0.0,\n
+      \       \"hasObjection\":1.0,\n        \"cite102GT1\":0.0,\n        \"cite103GT3\":0.0,\n
+      \       \"cite103EQ1\":1.0,\n        \"cite103Max\":2.0,\n        \"signatureType\":3.0,\n
+      \       \"actionTypeCategory\":\"rejected\",\n        \"legalSectionCode\":\"103\",\n
+      \       \"claimNumberArrayDocument\":[\"10,3,6,7,8\"],\n        \"createUserIdentifier\":\"ETL_SYS\",\n
+      \       \"createDateTime\":\"2021-08-09T15:56:31Z\"},\n      {\n        \"id\":\"b9bd7cf29732fb806a77b18b4c1ae0f7\",\n
+      \       \"patentApplicationNumber\":\"15117061\",\n        \"obsoleteDocumentIdentifier\":\"J4INZJZORXEAPX4\",\n
+      \       \"groupArtUnitNumber\":\"2838\",\n        \"legacyDocumentCodeIdentifier\":\"CTNF\",\n
+      \       \"submissionDate\":\"2017-07-03T04:00:00Z\",\n        \"nationalClass\":\"363\",\n
+      \       \"nationalSubclass\":\"126000\",\n        \"headerMissing\":0.0,\n        \"formParagraphMissing\":0.0,\n
+      \       \"rejectFormMissmatch\":0.0,\n        \"closingMissing\":0.0,\n        \"hasRej101\":0.0,\n
+      \       \"hasRejDP\":0.0,\n        \"hasRej102\":1.0,\n        \"hasRej103\":1.0,\n
+      \       \"hasRej112\":0.0,\n        \"hasObjection\":1.0,\n        \"cite102GT1\":0.0,\n
+      \       \"cite103GT3\":0.0,\n        \"cite103EQ1\":1.0,\n        \"cite103Max\":2.0,\n
+      \       \"signatureType\":3.0,\n        \"actionTypeCategory\":\"rejected\",\n
+      \       \"legalSectionCode\":\"102\",\n        \"claimNumberArrayDocument\":[\"1,2,4,5,9\"],\n
+      \       \"createUserIdentifier\":\"ETL_SYS\",\n        \"createDateTime\":\"2021-08-09T15:56:31Z\"},\n
+      \     {\n        \"id\":\"42b16fc42071875a22eb084b4e1345ac\",\n        \"patentApplicationNumber\":\"15117061\",\n
+      \       \"obsoleteDocumentIdentifier\":\"J4INZJZORXEAPX4\",\n        \"groupArtUnitNumber\":\"2838\",\n
+      \       \"legacyDocumentCodeIdentifier\":\"CTNF\",\n        \"submissionDate\":\"2017-07-03T04:00:00Z\",\n
+      \       \"nationalClass\":\"363\",\n        \"nationalSubclass\":\"126000\",\n
+      \       \"headerMissing\":0.0,\n        \"formParagraphMissing\":0.0,\n        \"rejectFormMissmatch\":0.0,\n
+      \       \"closingMissing\":0.0,\n        \"hasRej101\":0.0,\n        \"hasRejDP\":0.0,\n
+      \       \"hasRej102\":1.0,\n        \"hasRej103\":1.0,\n        \"hasRej112\":0.0,\n
+      \       \"hasObjection\":1.0,\n        \"cite102GT1\":0.0,\n        \"cite103GT3\":0.0,\n
+      \       \"cite103EQ1\":1.0,\n        \"cite103Max\":2.0,\n        \"signatureType\":3.0,\n
+      \       \"actionTypeCategory\":\"objected\",\n        \"claimNumberArrayDocument\":[\"10\"],\n
+      \       \"createUserIdentifier\":\"ETL_SYS\",\n        \"createDateTime\":\"2021-08-09T15:56:31Z\"},\n
+      \     {\n        \"id\":\"3d5392f24270b8d32d3494387a6b6cbe\",\n        \"patentApplicationNumber\":\"15117061\",\n
+      \       \"obsoleteDocumentIdentifier\":\"J4INZJZORXEAPX4\",\n        \"groupArtUnitNumber\":\"2838\",\n
+      \       \"legacyDocumentCodeIdentifier\":\"CTNF\",\n        \"submissionDate\":\"2017-07-03T04:00:00Z\",\n
+      \       \"nationalClass\":\"363\",\n        \"nationalSubclass\":\"126000\",\n
+      \       \"headerMissing\":0.0,\n        \"formParagraphMissing\":0.0,\n        \"rejectFormMissmatch\":0.0,\n
+      \       \"closingMissing\":0.0,\n        \"hasRej101\":0.0,\n        \"hasRejDP\":0.0,\n
+      \       \"hasRej102\":1.0,\n        \"hasRej103\":1.0,\n        \"hasRej112\":0.0,\n
+      \       \"hasObjection\":1.0,\n        \"cite102GT1\":0.0,\n        \"cite103GT3\":0.0,\n
+      \       \"cite103EQ1\":1.0,\n        \"cite103Max\":2.0,\n        \"signatureType\":3.0,\n
+      \       \"actionTypeCategory\":\"canceled\",\n        \"claimNumberArrayDocument\":[\"6\"],\n
+      \       \"createUserIdentifier\":\"ETL_SYS\",\n        \"createDateTime\":\"2021-08-09T15:56:31Z\"},\n
+      \     {\n        \"id\":\"2ac78a09197194e98715e96cf81197e1\",\n        \"patentApplicationNumber\":\"14353601\",\n
+      \       \"obsoleteDocumentIdentifier\":\"J4IS0QFURXEAPX3\",\n        \"groupArtUnitNumber\":\"2123\",\n
+      \       \"legacyDocumentCodeIdentifier\":\"CTNF\",\n        \"submissionDate\":\"2017-07-03T04:00:00Z\",\n
+      \       \"nationalClass\":\"703\",\n        \"nationalSubclass\":\"021000\",\n
+      \       \"headerMissing\":0.0,\n        \"formParagraphMissing\":0.0,\n        \"rejectFormMissmatch\":0.0,\n
+      \       \"closingMissing\":0.0,\n        \"hasRej101\":1.0,\n        \"hasRejDP\":0.0,\n
+      \       \"hasRej102\":1.0,\n        \"hasRej103\":0.0,\n        \"hasRej112\":1.0,\n
+      \       \"hasObjection\":0.0,\n        \"cite102GT1\":0.0,\n        \"cite103GT3\":0.0,\n
+      \       \"cite103EQ1\":0.0,\n        \"cite103Max\":0.0,\n        \"signatureType\":2.0,\n
+      \       \"actionTypeCategory\":\"rejected\",\n        \"legalSectionCode\":\"101\",\n
+      \       \"claimNumberArrayDocument\":[\"0\"],\n        \"createUserIdentifier\":\"ETL_SYS\",\n
+      \       \"createDateTime\":\"2021-08-09T15:49:12Z\"},\n      {\n        \"id\":\"b1f44dc35b034d588cb1b31a4785baf2\",\n
+      \       \"patentApplicationNumber\":\"14353601\",\n        \"obsoleteDocumentIdentifier\":\"J4IS0QFURXEAPX3\",\n
+      \       \"groupArtUnitNumber\":\"2123\",\n        \"legacyDocumentCodeIdentifier\":\"CTNF\",\n
+      \       \"submissionDate\":\"2017-07-03T04:00:00Z\",\n        \"nationalClass\":\"703\",\n
+      \       \"nationalSubclass\":\"021000\",\n        \"headerMissing\":0.0,\n        \"formParagraphMissing\":0.0,\n
+      \       \"rejectFormMissmatch\":0.0,\n        \"closingMissing\":0.0,\n        \"hasRej101\":1.0,\n
+      \       \"hasRejDP\":0.0,\n        \"hasRej102\":1.0,\n        \"hasRej103\":0.0,\n
+      \       \"hasRej112\":1.0,\n        \"hasObjection\":0.0,\n        \"cite102GT1\":0.0,\n
+      \       \"cite103GT3\":0.0,\n        \"cite103EQ1\":0.0,\n        \"cite103Max\":0.0,\n
+      \       \"signatureType\":2.0,\n        \"actionTypeCategory\":\"rejected\",\n
+      \       \"legalSectionCode\":\"102\",\n        \"claimNumberArrayDocument\":[\"42,43,44,45,46,47,48,49,50,51,52,53,54,55,56\"],\n
+      \       \"createUserIdentifier\":\"ETL_SYS\",\n        \"createDateTime\":\"2021-08-09T15:49:12Z\"},\n
+      \     {\n        \"id\":\"a0474929fff297c130c54bdd0d349e13\",\n        \"patentApplicationNumber\":\"14353601\",\n
+      \       \"obsoleteDocumentIdentifier\":\"J4IS0QFURXEAPX3\",\n        \"groupArtUnitNumber\":\"2123\",\n
+      \       \"legacyDocumentCodeIdentifier\":\"CTNF\",\n        \"submissionDate\":\"2017-07-03T04:00:00Z\",\n
+      \       \"nationalClass\":\"703\",\n        \"nationalSubclass\":\"021000\",\n
+      \       \"headerMissing\":0.0,\n        \"formParagraphMissing\":0.0,\n        \"rejectFormMissmatch\":0.0,\n
+      \       \"closingMissing\":0.0,\n        \"hasRej101\":1.0,\n        \"hasRejDP\":0.0,\n
+      \       \"hasRej102\":1.0,\n        \"hasRej103\":0.0,\n        \"hasRej112\":1.0,\n
+      \       \"hasObjection\":0.0,\n        \"cite102GT1\":0.0,\n        \"cite103GT3\":0.0,\n
+      \       \"cite103EQ1\":0.0,\n        \"cite103Max\":0.0,\n        \"signatureType\":2.0,\n
+      \       \"actionTypeCategory\":\"rejected\",\n        \"legalSectionCode\":\"112\",\n
+      \       \"claimNumberArrayDocument\":[\"45,50,55\"],\n        \"createUserIdentifier\":\"ETL_SYS\",\n
+      \       \"createDateTime\":\"2021-08-09T15:49:12Z\"},\n      {\n        \"id\":\"af9ca77579c7f80aa6d2ec7f425111a5\",\n
+      \       \"patentApplicationNumber\":\"14353601\",\n        \"obsoleteDocumentIdentifier\":\"J4IS0QFURXEAPX3\",\n
+      \       \"groupArtUnitNumber\":\"2123\",\n        \"legacyDocumentCodeIdentifier\":\"CTNF\",\n
+      \       \"submissionDate\":\"2017-07-03T04:00:00Z\",\n        \"nationalClass\":\"703\",\n
+      \       \"nationalSubclass\":\"021000\",\n        \"headerMissing\":0.0,\n        \"formParagraphMissing\":0.0,\n
+      \       \"rejectFormMissmatch\":0.0,\n        \"closingMissing\":0.0,\n        \"hasRej101\":1.0,\n
+      \       \"hasRejDP\":0.0,\n        \"hasRej102\":1.0,\n        \"hasRej103\":0.0,\n
+      \       \"hasRej112\":1.0,\n        \"hasObjection\":0.0,\n        \"cite102GT1\":0.0,\n
+      \       \"cite103GT3\":0.0,\n        \"cite103EQ1\":0.0,\n        \"cite103Max\":0.0,\n
+      \       \"signatureType\":2.0,\n        \"actionTypeCategory\":\"canceled\",\n
+      \       \"claimNumberArrayDocument\":[\"1,10,11,12,13,14,15,16,17,18,19,2,20,21,22,23,24,25,26,27,28,29,3,30,31,32,33,34,35,36,37,38,39,4,40,41,5,6,7,8,9\"],\n
+      \       \"createUserIdentifier\":\"ETL_SYS\",\n        \"createDateTime\":\"2021-08-09T15:49:12Z\"},\n
+      \     {\n        \"id\":\"87b4219592c6ed21ebc24b17be2f7cf5\",\n        \"patentApplicationNumber\":\"14353601\",\n
+      \       \"obsoleteDocumentIdentifier\":\"J4IS0QFURXEAPX3\",\n        \"groupArtUnitNumber\":\"2123\",\n
+      \       \"legacyDocumentCodeIdentifier\":\"CTNF\",\n        \"submissionDate\":\"2017-07-03T04:00:00Z\",\n
+      \       \"nationalClass\":\"703\",\n        \"nationalSubclass\":\"021000\",\n
+      \       \"headerMissing\":0.0,\n        \"formParagraphMissing\":0.0,\n        \"rejectFormMissmatch\":0.0,\n
+      \       \"closingMissing\":0.0,\n        \"hasRej101\":1.0,\n        \"hasRejDP\":0.0,\n
+      \       \"hasRej102\":1.0,\n        \"hasRej103\":0.0,\n        \"hasRej112\":1.0,\n
+      \       \"hasObjection\":0.0,\n        \"cite102GT1\":0.0,\n        \"cite103GT3\":0.0,\n
+      \       \"cite103EQ1\":0.0,\n        \"cite103Max\":0.0,\n        \"signatureType\":2.0,\n
+      \       \"actionTypeCategory\":\"rejected\",\n        \"legalSectionCode\":\"101\",\n
+      \       \"paragraphNumber\":\"Non-Statutory-other\",\n        \"claimNumberArrayDocument\":[\"42,43,44,45,46,47,48,49,50,51,52,53,54,55,56\"],\n
+      \       \"createUserIdentifier\":\"ETL_SYS\",\n        \"createDateTime\":\"2021-08-09T15:49:12Z\"},\n
+      \     {\n        \"id\":\"f67af049a589a80bfd34b8ba9f605c8f\",\n        \"patentApplicationNumber\":\"14974341\",\n
+      \       \"obsoleteDocumentIdentifier\":\"J4ISEQNVRXEAPX5\",\n        \"groupArtUnitNumber\":\"2875\",\n
+      \       \"legacyDocumentCodeIdentifier\":\"CTNF\",\n        \"submissionDate\":\"2017-07-03T04:00:00Z\",\n
+      \       \"nationalClass\":\"362\",\n        \"nationalSubclass\":\"485000\",\n
+      \       \"headerMissing\":0.0,\n        \"formParagraphMissing\":0.0,\n        \"rejectFormMissmatch\":0.0,\n
+      \       \"closingMissing\":0.0,\n        \"hasRej101\":0.0,\n        \"hasRejDP\":0.0,\n
+      \       \"hasRej102\":0.0,\n        \"hasRej103\":1.0,\n        \"hasRej112\":1.0,\n
+      \       \"hasObjection\":1.0,\n        \"cite102GT1\":0.0,\n        \"cite103GT3\":1.0,\n
+      \       \"cite103EQ1\":0.0,\n        \"cite103Max\":5.0,\n        \"signatureType\":3.0,\n
+      \       \"actionTypeCategory\":\"rejected\",\n        \"legalSectionCode\":\"103\",\n
+      \       \"claimNumberArrayDocument\":[\"1,10,11,12,13,2,3,4,5,6,7,8,9\"],\n
+      \       \"createUserIdentifier\":\"ETL_SYS\",\n        \"createDateTime\":\"2021-08-09T16:15:57Z\"},\n
+      \     {\n        \"id\":\"765c290903c5c1c7278c339666d8dbbc\",\n        \"patentApplicationNumber\":\"14974341\",\n
+      \       \"obsoleteDocumentIdentifier\":\"J4ISEQNVRXEAPX5\",\n        \"groupArtUnitNumber\":\"2875\",\n
+      \       \"legacyDocumentCodeIdentifier\":\"CTNF\",\n        \"submissionDate\":\"2017-07-03T04:00:00Z\",\n
+      \       \"nationalClass\":\"362\",\n        \"nationalSubclass\":\"485000\",\n
+      \       \"headerMissing\":0.0,\n        \"formParagraphMissing\":0.0,\n        \"rejectFormMissmatch\":0.0,\n
+      \       \"closingMissing\":0.0,\n        \"hasRej101\":0.0,\n        \"hasRejDP\":0.0,\n
+      \       \"hasRej102\":0.0,\n        \"hasRej103\":1.0,\n        \"hasRej112\":1.0,\n
+      \       \"hasObjection\":1.0,\n        \"cite102GT1\":0.0,\n        \"cite103GT3\":1.0,\n
+      \       \"cite103EQ1\":0.0,\n        \"cite103Max\":5.0,\n        \"signatureType\":3.0,\n
+      \       \"actionTypeCategory\":\"objected\",\n        \"claimNumberArrayDocument\":[\"13\"],\n
+      \       \"createUserIdentifier\":\"ETL_SYS\",\n        \"createDateTime\":\"2021-08-09T16:15:57Z\"},\n
+      \     {\n        \"id\":\"c529239dbf0e543863637971a37d44a5\",\n        \"patentApplicationNumber\":\"14974341\",\n
+      \       \"obsoleteDocumentIdentifier\":\"J4ISEQNVRXEAPX5\",\n        \"groupArtUnitNumber\":\"2875\",\n
+      \       \"legacyDocumentCodeIdentifier\":\"CTNF\",\n        \"submissionDate\":\"2017-07-03T04:00:00Z\",\n
+      \       \"nationalClass\":\"362\",\n        \"nationalSubclass\":\"485000\",\n
+      \       \"headerMissing\":0.0,\n        \"formParagraphMissing\":0.0,\n        \"rejectFormMissmatch\":0.0,\n
+      \       \"closingMissing\":0.0,\n        \"hasRej101\":0.0,\n        \"hasRejDP\":0.0,\n
+      \       \"hasRej102\":0.0,\n        \"hasRej103\":1.0,\n        \"hasRej112\":1.0,\n
+      \       \"hasObjection\":1.0,\n        \"cite102GT1\":0.0,\n        \"cite103GT3\":1.0,\n
+      \       \"cite103EQ1\":0.0,\n        \"cite103Max\":5.0,\n        \"signatureType\":3.0,\n
+      \       \"actionTypeCategory\":\"rejected\",\n        \"legalSectionCode\":\"112\",\n
+      \       \"claimNumberArrayDocument\":[\"11,7\"],\n        \"createUserIdentifier\":\"ETL_SYS\",\n
+      \       \"createDateTime\":\"2021-08-09T16:15:57Z\"},\n      {\n        \"id\":\"61a726a3b14f429baa817a142df02057\",\n
+      \       \"patentApplicationNumber\":\"14873115\",\n        \"obsoleteDocumentIdentifier\":\"J4ISEXUFRXEAPX0\",\n
+      \       \"groupArtUnitNumber\":\"1677\",\n        \"legacyDocumentCodeIdentifier\":\"CTNF\",\n
+      \       \"submissionDate\":\"2017-07-03T04:00:00Z\",\n        \"nationalClass\":\"435\",\n
+      \       \"nationalSubclass\":\"285200\",\n        \"headerMissing\":0.0,\n        \"formParagraphMissing\":0.0,\n
+      \       \"rejectFormMissmatch\":0.0,\n        \"closingMissing\":0.0,\n        \"hasRej101\":1.0,\n
+      \       \"hasRejDP\":0.0,\n        \"hasRej102\":1.0,\n        \"hasRej103\":1.0,\n
+      \       \"hasRej112\":0.0,\n        \"hasObjection\":0.0,\n        \"cite102GT1\":0.0,\n
+      \       \"cite103GT3\":0.0,\n        \"cite103EQ1\":0.0,\n        \"cite103Max\":3.0,\n
+      \       \"signatureType\":2.0,\n        \"actionTypeCategory\":\"rejected\",\n
+      \       \"legalSectionCode\":\"102\",\n        \"claimNumberArrayDocument\":[\"1,5\"],\n
+      \       \"createUserIdentifier\":\"ETL_SYS\",\n        \"createDateTime\":\"2021-08-09T16:20:16Z\"},\n
+      \     {\n        \"id\":\"bdd5adaa632a09eb3addeb918f2b1dc3\",\n        \"patentApplicationNumber\":\"14873115\",\n
+      \       \"obsoleteDocumentIdentifier\":\"J4ISEXUFRXEAPX0\",\n        \"groupArtUnitNumber\":\"1677\",\n
+      \       \"legacyDocumentCodeIdentifier\":\"CTNF\",\n        \"submissionDate\":\"2017-07-03T04:00:00Z\",\n
+      \       \"nationalClass\":\"435\",\n        \"nationalSubclass\":\"285200\",\n
+      \       \"headerMissing\":0.0,\n        \"formParagraphMissing\":0.0,\n        \"rejectFormMissmatch\":0.0,\n
+      \       \"closingMissing\":0.0,\n        \"hasRej101\":1.0,\n        \"hasRejDP\":0.0,\n
+      \       \"hasRej102\":1.0,\n        \"hasRej103\":1.0,\n        \"hasRej112\":0.0,\n
+      \       \"hasObjection\":0.0,\n        \"cite102GT1\":0.0,\n        \"cite103GT3\":0.0,\n
+      \       \"cite103EQ1\":0.0,\n        \"cite103Max\":3.0,\n        \"signatureType\":2.0,\n
+      \       \"actionTypeCategory\":\"rejected\",\n        \"legalSectionCode\":\"101\",\n
+      \       \"paragraphNumber\":\"Non-Statutory-other\",\n        \"claimNumberArrayDocument\":[\"1,10,11,12,13,14,15,16,17,2,3,4,5,6,7,8,9\"],\n
+      \       \"createUserIdentifier\":\"ETL_SYS\",\n        \"createDateTime\":\"2021-08-09T16:20:16Z\"},\n
+      \     {\n        \"id\":\"99bf6694681f85b2511113d6762ec310\",\n        \"patentApplicationNumber\":\"14873115\",\n
+      \       \"obsoleteDocumentIdentifier\":\"J4ISEXUFRXEAPX0\",\n        \"groupArtUnitNumber\":\"1677\",\n
+      \       \"legacyDocumentCodeIdentifier\":\"CTNF\",\n        \"submissionDate\":\"2017-07-03T04:00:00Z\",\n
+      \       \"nationalClass\":\"435\",\n        \"nationalSubclass\":\"285200\",\n
+      \       \"headerMissing\":0.0,\n        \"formParagraphMissing\":0.0,\n        \"rejectFormMissmatch\":0.0,\n
+      \       \"closingMissing\":0.0,\n        \"hasRej101\":1.0,\n        \"hasRejDP\":0.0,\n
+      \       \"hasRej102\":1.0,\n        \"hasRej103\":1.0,\n        \"hasRej112\":0.0,\n
+      \       \"hasObjection\":0.0,\n        \"cite102GT1\":0.0,\n        \"cite103GT3\":0.0,\n
+      \       \"cite103EQ1\":0.0,\n        \"cite103Max\":3.0,\n        \"signatureType\":2.0,\n
+      \       \"actionTypeCategory\":\"rejected\",\n        \"legalSectionCode\":\"103\",\n
+      \       \"claimNumberArrayDocument\":[\"1,10,11,12,14,2,3,5,9\"],\n        \"createUserIdentifier\":\"ETL_SYS\",\n
+      \       \"createDateTime\":\"2021-08-09T16:20:16Z\"},\n      {\n        \"id\":\"0170f58c891cc07257ab9966fd4b18f5\",\n
+      \       \"patentApplicationNumber\":\"15389235\",\n        \"obsoleteDocumentIdentifier\":\"J4JSW0IZRXEAPX2\",\n
+      \       \"groupArtUnitNumber\":\"2833\",\n        \"legacyDocumentCodeIdentifier\":\"CTNF\",\n
+      \       \"submissionDate\":\"2017-07-05T04:00:00Z\",\n        \"nationalClass\":\"439\",\n
+      \       \"nationalSubclass\":\"116000\",\n        \"headerMissing\":1.0,\n        \"formParagraphMissing\":0.0,\n
+      \       \"rejectFormMissmatch\":0.0,\n        \"closingMissing\":0.0,\n        \"hasRej101\":0.0,\n
+      \       \"hasRejDP\":0.0,\n        \"hasRej102\":1.0,\n        \"hasRej103\":1.0,\n
+      \       \"hasRej112\":0.0,\n        \"hasObjection\":1.0,\n        \"cite102GT1\":0.0,\n
+      \       \"cite103GT3\":0.0,\n        \"cite103EQ1\":1.0,\n        \"cite103Max\":3.0,\n
+      \       \"signatureType\":2.0,\n        \"actionTypeCategory\":\"rejected\",\n
+      \       \"legalSectionCode\":\"102\",\n        \"claimNumberArrayDocument\":[\"1,15,16,2,3,4,5,6,8,9\"],\n
+      \       \"createUserIdentifier\":\"ETL_SYS\",\n        \"createDateTime\":\"2021-08-09T07:58:22Z\"},\n
+      \     {\n        \"id\":\"8db8d2253cc896bb246afeb1399e8b91\",\n        \"patentApplicationNumber\":\"15389235\",\n
+      \       \"obsoleteDocumentIdentifier\":\"J4JSW0IZRXEAPX2\",\n        \"groupArtUnitNumber\":\"2833\",\n
+      \       \"legacyDocumentCodeIdentifier\":\"CTNF\",\n        \"submissionDate\":\"2017-07-05T04:00:00Z\",\n
+      \       \"nationalClass\":\"439\",\n        \"nationalSubclass\":\"116000\",\n
+      \       \"headerMissing\":1.0,\n        \"formParagraphMissing\":0.0,\n        \"rejectFormMissmatch\":0.0,\n
+      \       \"closingMissing\":0.0,\n        \"hasRej101\":0.0,\n        \"hasRejDP\":0.0,\n
+      \       \"hasRej102\":1.0,\n        \"hasRej103\":1.0,\n        \"hasRej112\":0.0,\n
+      \       \"hasObjection\":1.0,\n        \"cite102GT1\":0.0,\n        \"cite103GT3\":0.0,\n
+      \       \"cite103EQ1\":1.0,\n        \"cite103Max\":3.0,\n        \"signatureType\":2.0,\n
+      \       \"actionTypeCategory\":\"rejected\",\n        \"legalSectionCode\":\"103\",\n
+      \       \"claimNumberArrayDocument\":[\"10,11,13,14,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,7\"],\n
+      \       \"createUserIdentifier\":\"ETL_SYS\",\n        \"createDateTime\":\"2021-08-09T07:58:22Z\"},\n
+      \     {\n        \"id\":\"0607ffff05ba8cd36808ec40e119da97\",\n        \"patentApplicationNumber\":\"15389235\",\n
+      \       \"obsoleteDocumentIdentifier\":\"J4JSW0IZRXEAPX2\",\n        \"groupArtUnitNumber\":\"2833\",\n
+      \       \"legacyDocumentCodeIdentifier\":\"CTNF\",\n        \"submissionDate\":\"2017-07-05T04:00:00Z\",\n
+      \       \"nationalClass\":\"439\",\n        \"nationalSubclass\":\"116000\",\n
+      \       \"headerMissing\":1.0,\n        \"formParagraphMissing\":0.0,\n        \"rejectFormMissmatch\":0.0,\n
+      \       \"closingMissing\":0.0,\n        \"hasRej101\":0.0,\n        \"hasRejDP\":0.0,\n
+      \       \"hasRej102\":1.0,\n        \"hasRej103\":1.0,\n        \"hasRej112\":0.0,\n
+      \       \"hasObjection\":1.0,\n        \"cite102GT1\":0.0,\n        \"cite103GT3\":0.0,\n
+      \       \"cite103EQ1\":1.0,\n        \"cite103Max\":3.0,\n        \"signatureType\":2.0,\n
+      \       \"actionTypeCategory\":\"objected\",\n        \"claimNumberArrayDocument\":[\"1,12,19,35\"],\n
+      \       \"createUserIdentifier\":\"ETL_SYS\",\n        \"createDateTime\":\"2021-08-09T07:58:22Z\"},\n
+      \     {\n        \"id\":\"b5a52b9166eb2b9bba0dcce243f3c951\",\n        \"patentApplicationNumber\":\"15265034\",\n
+      \       \"obsoleteDocumentIdentifier\":\"J4JT8UBDRXEAPX1\",\n        \"groupArtUnitNumber\":\"2643\",\n
+      \       \"legacyDocumentCodeIdentifier\":\"CTNF\",\n        \"submissionDate\":\"2017-07-05T04:00:00Z\",\n
+      \       \"nationalClass\":\"455\",\n        \"nationalSubclass\":\"454000\",\n
+      \       \"headerMissing\":0.0,\n        \"formParagraphMissing\":0.0,\n        \"rejectFormMissmatch\":0.0,\n
+      \       \"closingMissing\":0.0,\n        \"hasRej101\":0.0,\n        \"hasRejDP\":0.0,\n
+      \       \"hasRej102\":0.0,\n        \"hasRej103\":1.0,\n        \"hasRej112\":0.0,\n
+      \       \"hasObjection\":1.0,\n        \"cite102GT1\":0.0,\n        \"cite103GT3\":0.0,\n
+      \       \"cite103EQ1\":0.0,\n        \"cite103Max\":3.0,\n        \"signatureType\":2.0,\n
+      \       \"actionTypeCategory\":\"allowable\",\n        \"claimNumberArrayDocument\":[\"16,5\"],\n
+      \       \"createUserIdentifier\":\"ETL_SYS\",\n        \"createDateTime\":\"2021-08-09T07:56:35Z\"},\n
+      \     {\n        \"id\":\"9f44904988cbf57c71718765530e5fae\",\n        \"patentApplicationNumber\":\"15265034\",\n
+      \       \"obsoleteDocumentIdentifier\":\"J4JT8UBDRXEAPX1\",\n        \"groupArtUnitNumber\":\"2643\",\n
+      \       \"legacyDocumentCodeIdentifier\":\"CTNF\",\n        \"submissionDate\":\"2017-07-05T04:00:00Z\",\n
+      \       \"nationalClass\":\"455\",\n        \"nationalSubclass\":\"454000\",\n
+      \       \"headerMissing\":0.0,\n        \"formParagraphMissing\":0.0,\n        \"rejectFormMissmatch\":0.0,\n
+      \       \"closingMissing\":0.0,\n        \"hasRej101\":0.0,\n        \"hasRejDP\":0.0,\n
+      \       \"hasRej102\":0.0,\n        \"hasRej103\":1.0,\n        \"hasRej112\":0.0,\n
+      \       \"hasObjection\":1.0,\n        \"cite102GT1\":0.0,\n        \"cite103GT3\":0.0,\n
+      \       \"cite103EQ1\":0.0,\n        \"cite103Max\":3.0,\n        \"signatureType\":2.0,\n
+      \       \"actionTypeCategory\":\"objected\",\n        \"claimNumberArrayDocument\":[\"10\"],\n
+      \       \"createUserIdentifier\":\"ETL_SYS\",\n        \"createDateTime\":\"2021-08-09T07:56:35Z\"},\n
+      \     {\n        \"id\":\"a4c299add8edc03a355748ea09c8e66b\",\n        \"patentApplicationNumber\":\"15265034\",\n
+      \       \"obsoleteDocumentIdentifier\":\"J4JT8UBDRXEAPX1\",\n        \"groupArtUnitNumber\":\"2643\",\n
+      \       \"legacyDocumentCodeIdentifier\":\"CTNF\",\n        \"submissionDate\":\"2017-07-05T04:00:00Z\",\n
+      \       \"nationalClass\":\"455\",\n        \"nationalSubclass\":\"454000\",\n
+      \       \"headerMissing\":0.0,\n        \"formParagraphMissing\":0.0,\n        \"rejectFormMissmatch\":0.0,\n
+      \       \"closingMissing\":0.0,\n        \"hasRej101\":0.0,\n        \"hasRejDP\":0.0,\n
+      \       \"hasRej102\":0.0,\n        \"hasRej103\":1.0,\n        \"hasRej112\":0.0,\n
+      \       \"hasObjection\":1.0,\n        \"cite102GT1\":0.0,\n        \"cite103GT3\":0.0,\n
+      \       \"cite103EQ1\":0.0,\n        \"cite103Max\":3.0,\n        \"signatureType\":2.0,\n
+      \       \"actionTypeCategory\":\"rejected\",\n        \"legalSectionCode\":\"103\",\n
+      \       \"claimNumberArrayDocument\":[\"1,10,11,12,13,14,15,17,2,3,4,6,7,8,9\"],\n
+      \       \"createUserIdentifier\":\"ETL_SYS\",\n        \"createDateTime\":\"2021-08-09T07:56:35Z\"},\n
+      \     {\n        \"id\":\"562b5c79e1cf46a31e0fc9357901b193\",\n        \"patentApplicationNumber\":\"14819320\",\n
+      \       \"obsoleteDocumentIdentifier\":\"J4JTHYBFRXEAPX5\",\n        \"groupArtUnitNumber\":\"2818\",\n
+      \       \"legacyDocumentCodeIdentifier\":\"CTNF\",\n        \"submissionDate\":\"2017-07-05T04:00:00Z\",\n
+      \       \"nationalClass\":\"257\",\n        \"nationalSubclass\":\"421000\",\n
+      \       \"headerMissing\":0.0,\n        \"formParagraphMissing\":0.0,\n        \"rejectFormMissmatch\":0.0,\n
+      \       \"closingMissing\":0.0,\n        \"hasRej101\":0.0,\n        \"hasRejDP\":0.0,\n
+      \       \"hasRej102\":0.0,\n        \"hasRej103\":1.0,\n        \"hasRej112\":1.0,\n
+      \       \"hasObjection\":1.0,\n        \"cite102GT1\":0.0,\n        \"cite103GT3\":0.0,\n
+      \       \"cite103EQ1\":0.0,\n        \"cite103Max\":3.0,\n        \"signatureType\":3.0,\n
+      \       \"actionTypeCategory\":\"rejected\",\n        \"legalSectionCode\":\"103\",\n
+      \       \"claimNumberArrayDocument\":[\"21,22,23,24,25,26,27,28,30,31,32,33,34,35,36,37,39,40\"],\n
+      \       \"createUserIdentifier\":\"ETL_SYS\",\n        \"createDateTime\":\"2021-08-09T16:25:45Z\"},\n
+      \     {\n        \"id\":\"352e8431183e97a5cbfdb544d14eb91d\",\n        \"patentApplicationNumber\":\"14819320\",\n
+      \       \"obsoleteDocumentIdentifier\":\"J4JTHYBFRXEAPX5\",\n        \"groupArtUnitNumber\":\"2818\",\n
+      \       \"legacyDocumentCodeIdentifier\":\"CTNF\",\n        \"submissionDate\":\"2017-07-05T04:00:00Z\",\n
+      \       \"nationalClass\":\"257\",\n        \"nationalSubclass\":\"421000\",\n
+      \       \"headerMissing\":0.0,\n        \"formParagraphMissing\":0.0,\n        \"rejectFormMissmatch\":0.0,\n
+      \       \"closingMissing\":0.0,\n        \"hasRej101\":0.0,\n        \"hasRejDP\":0.0,\n
+      \       \"hasRej102\":0.0,\n        \"hasRej103\":1.0,\n        \"hasRej112\":1.0,\n
+      \       \"hasObjection\":1.0,\n        \"cite102GT1\":0.0,\n        \"cite103GT3\":0.0,\n
+      \       \"cite103EQ1\":0.0,\n        \"cite103Max\":3.0,\n        \"signatureType\":3.0,\n
+      \       \"actionTypeCategory\":\"objected\",\n        \"claimNumberArrayDocument\":[\"29,38\"],\n
+      \       \"createUserIdentifier\":\"ETL_SYS\",\n        \"createDateTime\":\"2021-08-09T16:25:45Z\"},\n
+      \     {\n        \"id\":\"90fd81dec523448264c196e90c25cc6a\",\n        \"patentApplicationNumber\":\"14819320\",\n
+      \       \"obsoleteDocumentIdentifier\":\"J4JTHYBFRXEAPX5\",\n        \"groupArtUnitNumber\":\"2818\",\n
+      \       \"legacyDocumentCodeIdentifier\":\"CTNF\",\n        \"submissionDate\":\"2017-07-05T04:00:00Z\",\n
+      \       \"nationalClass\":\"257\",\n        \"nationalSubclass\":\"421000\",\n
+      \       \"headerMissing\":0.0,\n        \"formParagraphMissing\":0.0,\n        \"rejectFormMissmatch\":0.0,\n
+      \       \"closingMissing\":0.0,\n        \"hasRej101\":0.0,\n        \"hasRejDP\":0.0,\n
+      \       \"hasRej102\":0.0,\n        \"hasRej103\":1.0,\n        \"hasRej112\":1.0,\n
+      \       \"hasObjection\":1.0,\n        \"cite102GT1\":0.0,\n        \"cite103GT3\":0.0,\n
+      \       \"cite103EQ1\":0.0,\n        \"cite103Max\":3.0,\n        \"signatureType\":3.0,\n
+      \       \"actionTypeCategory\":\"rejected\",\n        \"legalSectionCode\":\"112\",\n
+      \       \"claimNumberArrayDocument\":[\"21,22,30,31,36,39\"],\n        \"createUserIdentifier\":\"ETL_SYS\",\n
+      \       \"createDateTime\":\"2021-08-09T16:25:45Z\"},\n      {\n        \"id\":\"77b4ae0bdbae9d8f68f008b06cbaf853\",\n
+      \       \"patentApplicationNumber\":\"15391604\",\n        \"obsoleteDocumentIdentifier\":\"J4JTIDQIRXEAPX4\",\n
+      \       \"groupArtUnitNumber\":\"2823\",\n        \"legacyDocumentCodeIdentifier\":\"CTNF\",\n
+      \       \"submissionDate\":\"2017-06-30T04:00:00Z\",\n        \"nationalClass\":\"257\",\n
+      \       \"nationalSubclass\":\"300000\",\n        \"headerMissing\":0.0,\n        \"formParagraphMissing\":0.0,\n
+      \       \"rejectFormMissmatch\":0.0,\n        \"closingMissing\":0.0,\n        \"hasRej101\":0.0,\n
+      \       \"hasRejDP\":0.0,\n        \"hasRej102\":0.0,\n        \"hasRej103\":1.0,\n
+      \       \"hasRej112\":0.0,\n        \"hasObjection\":0.0,\n        \"cite102GT1\":0.0,\n
+      \       \"cite103GT3\":0.0,\n        \"cite103EQ1\":1.0,\n        \"cite103Max\":2.0,\n
+      \       \"signatureType\":0.0,\n        \"actionTypeCategory\":\"rejected\",\n
+      \       \"legalSectionCode\":\"103\",\n        \"claimNumberArrayDocument\":[\"1,10,11,12,13,2,3,4,5,6,7,8,9\"],\n
+      \       \"createUserIdentifier\":\"ETL_SYS\",\n        \"createDateTime\":\"2021-08-09T16:26:10Z\"},\n
+      \     {\n        \"id\":\"cd9185b0ecf66f3226a07dfeccd36419\",\n        \"patentApplicationNumber\":\"14696223\",\n
+      \       \"obsoleteDocumentIdentifier\":\"J4JTUUJVRXEAPX0\",\n        \"groupArtUnitNumber\":\"2894\",\n
+      \       \"legacyDocumentCodeIdentifier\":\"CTNF\",\n        \"submissionDate\":\"2017-07-05T04:00:00Z\",\n
+      \       \"nationalClass\":\"438\",\n        \"nationalSubclass\":\"465000\",\n
+      \       \"headerMissing\":0.0,\n        \"formParagraphMissing\":0.0,\n        \"rejectFormMissmatch\":0.0,\n
+      \       \"closingMissing\":0.0,\n        \"hasRej101\":0.0,\n        \"hasRejDP\":0.0,\n
+      \       \"hasRej102\":0.0,\n        \"hasRej103\":1.0,\n        \"hasRej112\":0.0,\n
+      \       \"hasObjection\":0.0,\n        \"cite102GT1\":0.0,\n        \"cite103GT3\":1.0,\n
+      \       \"cite103EQ1\":0.0,\n        \"cite103Max\":4.0,\n        \"signatureType\":3.0,\n
+      \       \"actionTypeCategory\":\"rejected\",\n        \"legalSectionCode\":\"103\",\n
+      \       \"claimNumberArrayDocument\":[\"1,10,11,12,13,14,15,16,17,2,3,4,5,6,7,8,9\"],\n
+      \       \"createUserIdentifier\":\"ETL_SYS\",\n        \"createDateTime\":\"2021-08-09T15:59:47Z\"},\n
+      \     {\n        \"id\":\"4991f60b0de2f8ac92721f22ca3700ed\",\n        \"patentApplicationNumber\":\"14442764\",\n
+      \       \"obsoleteDocumentIdentifier\":\"J4JUNHA1RXEAPX1\",\n        \"groupArtUnitNumber\":\"1781\",\n
+      \       \"legacyDocumentCodeIdentifier\":\"CTNF\",\n        \"submissionDate\":\"2017-07-05T04:00:00Z\",\n
+      \       \"nationalClass\":\"428\",\n        \"nationalSubclass\":\"161000\",\n
+      \       \"headerMissing\":0.0,\n        \"formParagraphMissing\":0.0,\n        \"rejectFormMissmatch\":0.0,\n
+      \       \"closingMissing\":0.0,\n        \"hasRej101\":0.0,\n        \"hasRejDP\":0.0,\n
+      \       \"hasRej102\":1.0,\n        \"hasRej103\":0.0,\n        \"hasRej112\":0.0,\n
+      \       \"hasObjection\":0.0,\n        \"cite102GT1\":1.0,\n        \"cite103GT3\":0.0,\n
+      \       \"cite103EQ1\":0.0,\n        \"cite103Max\":0.0,\n        \"signatureType\":1.0,\n
+      \       \"actionTypeCategory\":\"withdrawn\",\n        \"claimNumberArrayDocument\":[\"10,11,12,13,14,15,16,17,18,19,9\"],\n
+      \       \"createUserIdentifier\":\"ETL_SYS\",\n        \"createDateTime\":\"2021-08-09T16:01:09Z\"},\n
+      \     {\n        \"id\":\"2a88402a1fc8196fae790158d4ab92c5\",\n        \"patentApplicationNumber\":\"14442764\",\n
+      \       \"obsoleteDocumentIdentifier\":\"J4JUNHA1RXEAPX1\",\n        \"groupArtUnitNumber\":\"1781\",\n
+      \       \"legacyDocumentCodeIdentifier\":\"CTNF\",\n        \"submissionDate\":\"2017-07-05T04:00:00Z\",\n
+      \       \"nationalClass\":\"428\",\n        \"nationalSubclass\":\"161000\",\n
+      \       \"headerMissing\":0.0,\n        \"formParagraphMissing\":0.0,\n        \"rejectFormMissmatch\":0.0,\n
+      \       \"closingMissing\":0.0,\n        \"hasRej101\":0.0,\n        \"hasRejDP\":0.0,\n
+      \       \"hasRej102\":1.0,\n        \"hasRej103\":0.0,\n        \"hasRej112\":0.0,\n
+      \       \"hasObjection\":0.0,\n        \"cite102GT1\":1.0,\n        \"cite103GT3\":0.0,\n
+      \       \"cite103EQ1\":0.0,\n        \"cite103Max\":0.0,\n        \"signatureType\":1.0,\n
+      \       \"actionTypeCategory\":\"rejected\",\n        \"legalSectionCode\":\"102\",\n
+      \       \"claimNumberArrayDocument\":[\"1,2,3,4,5,6,7,8\"],\n        \"createUserIdentifier\":\"ETL_SYS\",\n
+      \       \"createDateTime\":\"2021-08-09T16:01:09Z\"},\n      {\n        \"id\":\"663709e4ae376dc02898fb760eb792a2\",\n
+      \       \"patentApplicationNumber\":\"14432207\",\n        \"obsoleteDocumentIdentifier\":\"J4JX7OYARXEAPX3\",\n
+      \       \"groupArtUnitNumber\":\"3744\",\n        \"legacyDocumentCodeIdentifier\":\"CTNF\",\n
+      \       \"submissionDate\":\"2017-07-05T04:00:00Z\",\n        \"nationalClass\":\"165\",\n
+      \       \"nationalSubclass\":\"287000\",\n        \"headerMissing\":0.0,\n        \"formParagraphMissing\":0.0,\n
+      \       \"rejectFormMissmatch\":0.0,\n        \"closingMissing\":0.0,\n        \"hasRej101\":0.0,\n
+      \       \"hasRejDP\":0.0,\n        \"hasRej102\":0.0,\n        \"hasRej103\":1.0,\n
+      \       \"hasRej112\":0.0,\n        \"hasObjection\":1.0,\n        \"cite102GT1\":0.0,\n
+      \       \"cite103GT3\":0.0,\n        \"cite103EQ1\":1.0,\n        \"cite103Max\":1.0,\n
+      \       \"signatureType\":1.0,\n        \"actionTypeCategory\":\"objected\",\n
+      \       \"claimNumberArrayDocument\":[\"12,13,4,5,6,9\"],\n        \"createUserIdentifier\":\"ETL_SYS\",\n
+      \       \"createDateTime\":\"2021-08-09T16:07:17Z\"},\n      {\n        \"id\":\"a4fbeb668fd376b23e8c9a3cdb8dcce1\",\n
+      \       \"patentApplicationNumber\":\"14432207\",\n        \"obsoleteDocumentIdentifier\":\"J4JX7OYARXEAPX3\",\n
+      \       \"groupArtUnitNumber\":\"3744\",\n        \"legacyDocumentCodeIdentifier\":\"CTNF\",\n
+      \       \"submissionDate\":\"2017-07-05T04:00:00Z\",\n        \"nationalClass\":\"165\",\n
+      \       \"nationalSubclass\":\"287000\",\n        \"headerMissing\":0.0,\n        \"formParagraphMissing\":0.0,\n
+      \       \"rejectFormMissmatch\":0.0,\n        \"closingMissing\":0.0,\n        \"hasRej101\":0.0,\n
+      \       \"hasRejDP\":0.0,\n        \"hasRej102\":0.0,\n        \"hasRej103\":1.0,\n
+      \       \"hasRej112\":0.0,\n        \"hasObjection\":1.0,\n        \"cite102GT1\":0.0,\n
+      \       \"cite103GT3\":0.0,\n        \"cite103EQ1\":1.0,\n        \"cite103Max\":1.0,\n
+      \       \"signatureType\":1.0,\n        \"actionTypeCategory\":\"allowed\",\n
+      \       \"claimNumberArrayDocument\":[\"14,25\"],\n        \"createUserIdentifier\":\"ETL_SYS\",\n
+      \       \"createDateTime\":\"2021-08-09T16:07:17Z\"},\n      {\n        \"id\":\"d82d53e4c099399b15a86e084056fa3c\",\n
+      \       \"patentApplicationNumber\":\"13437072\",\n        \"obsoleteDocumentIdentifier\":\"J4JXQARZRXEAPX4\",\n
+      \       \"groupArtUnitNumber\":\"1631\",\n        \"legacyDocumentCodeIdentifier\":\"CTFR\",\n
+      \       \"submissionDate\":\"2017-07-05T04:00:00Z\",\n        \"nationalClass\":\"702\",\n
+      \       \"nationalSubclass\":\"019000\",\n        \"headerMissing\":0.0,\n        \"formParagraphMissing\":0.0,\n
+      \       \"rejectFormMissmatch\":0.0,\n        \"closingMissing\":0.0,\n        \"hasRej101\":1.0,\n
+      \       \"hasRejDP\":0.0,\n        \"hasRej102\":0.0,\n        \"hasRej103\":0.0,\n
+      \       \"hasRej112\":0.0,\n        \"hasObjection\":0.0,\n        \"cite102GT1\":0.0,\n
+      \       \"cite103GT3\":0.0,\n        \"cite103EQ1\":0.0,\n        \"cite103Max\":0.0,\n
+      \       \"signatureType\":2.0,\n        \"actionTypeCategory\":\"rejected\",\n
+      \       \"legalSectionCode\":\"101\",\n        \"paragraphNumber\":\"Non-Statutory-other\",\n
+      \       \"claimNumberArrayDocument\":[\"1,10,11,12,13,14,15,16,17,18,19,2,20,21,22,23,3,5,6,7,8,9\"],\n
+      \       \"createUserIdentifier\":\"ETL_SYS\",\n        \"createDateTime\":\"2021-08-09T16:11:21Z\"},\n
+      \     {\n        \"id\":\"e9a15e8384960fb3fb4ce19fef841351\",\n        \"patentApplicationNumber\":\"15376279\",\n
+      \       \"obsoleteDocumentIdentifier\":\"J7T0VRPJRXEAPX0\",\n        \"groupArtUnitNumber\":\"1624\",\n
+      \       \"legacyDocumentCodeIdentifier\":\"CTNF\",\n        \"submissionDate\":\"2017-09-22T04:00:00Z\",\n
+      \       \"nationalClass\":\"544\",\n        \"nationalSubclass\":\"328000\",\n
+      \       \"headerMissing\":1.0,\n        \"formParagraphMissing\":0.0,\n        \"rejectFormMissmatch\":1.0,\n
+      \       \"closingMissing\":0.0,\n        \"hasRej101\":0.0,\n        \"hasRejDP\":0.0,\n
+      \       \"hasRej102\":0.0,\n        \"hasRej103\":1.0,\n        \"hasRej112\":1.0,\n
+      \       \"hasObjection\":1.0,\n        \"cite102GT1\":0.0,\n        \"cite103GT3\":0.0,\n
+      \       \"cite103EQ1\":0.0,\n        \"cite103Max\":0.0,\n        \"signatureType\":1.0,\n
+      \       \"actionTypeCategory\":\"rejected\",\n        \"legalSectionCode\":\"103\",\n
+      \       \"claimNumberArrayDocument\":[\"0\"],\n        \"createUserIdentifier\":\"ETL_SYS\",\n
+      \       \"createDateTime\":\"2021-07-19T08:49:45Z\"},\n      {\n        \"id\":\"97dc78c334c899f531e725e9f293ffad\",\n
+      \       \"patentApplicationNumber\":\"15620995\",\n        \"obsoleteDocumentIdentifier\":\"J7T1UODHRXEAPX3\",\n
+      \       \"groupArtUnitNumber\":\"2855\",\n        \"legacyDocumentCodeIdentifier\":\"CTNF\",\n
+      \       \"submissionDate\":\"2017-09-20T04:00:00Z\",\n        \"nationalClass\":\"073\",\n
+      \       \"nationalSubclass\":\"427000\",\n        \"headerMissing\":0.0,\n        \"formParagraphMissing\":0.0,\n
+      \       \"rejectFormMissmatch\":0.0,\n        \"closingMissing\":0.0,\n        \"hasRej101\":0.0,\n
+      \       \"hasRejDP\":0.0,\n        \"hasRej102\":1.0,\n        \"hasRej103\":0.0,\n
+      \       \"hasRej112\":1.0,\n        \"hasObjection\":1.0,\n        \"cite102GT1\":0.0,\n
+      \       \"cite103GT3\":0.0,\n        \"cite103EQ1\":0.0,\n        \"cite103Max\":0.0,\n
+      \       \"signatureType\":0.0,\n        \"actionTypeCategory\":\"objected\",\n
+      \       \"claimNumberArrayDocument\":[\"1,10,11,12,13,14,15,16,17,18,19,20,3,4,5,6,7,8,9\"],\n
+      \       \"createUserIdentifier\":\"ETL_SYS\",\n        \"createDateTime\":\"2021-07-20T14:52:54Z\"},\n
+      \     {\n        \"id\":\"a7798e788cc3040b9d64e791eaa6e6a9\",\n        \"patentApplicationNumber\":\"15620995\",\n
+      \       \"obsoleteDocumentIdentifier\":\"J7T1UODHRXEAPX3\",\n        \"groupArtUnitNumber\":\"2855\",\n
+      \       \"legacyDocumentCodeIdentifier\":\"CTNF\",\n        \"submissionDate\":\"2017-09-20T04:00:00Z\",\n
+      \       \"nationalClass\":\"073\",\n        \"nationalSubclass\":\"427000\",\n
+      \       \"headerMissing\":0.0,\n        \"formParagraphMissing\":0.0,\n        \"rejectFormMissmatch\":0.0,\n
+      \       \"closingMissing\":0.0,\n        \"hasRej101\":0.0,\n        \"hasRejDP\":0.0,\n
+      \       \"hasRej102\":1.0,\n        \"hasRej103\":0.0,\n        \"hasRej112\":1.0,\n
+      \       \"hasObjection\":1.0,\n        \"cite102GT1\":0.0,\n        \"cite103GT3\":0.0,\n
+      \       \"cite103EQ1\":0.0,\n        \"cite103Max\":0.0,\n        \"signatureType\":0.0,\n
+      \       \"actionTypeCategory\":\"rejected\",\n        \"legalSectionCode\":\"112\",\n
+      \       \"claimNumberArrayDocument\":[\"10,11,12,13,14,15,16,17,18,19,2,20,3,4,5,6,7,8,9\"],\n
+      \       \"createUserIdentifier\":\"ETL_SYS\",\n        \"createDateTime\":\"2021-07-20T14:52:54Z\"},\n
+      \     {\n        \"id\":\"0b296c8f2e415f17b78552ebe901831b\",\n        \"patentApplicationNumber\":\"15620995\",\n
+      \       \"obsoleteDocumentIdentifier\":\"J7T1UODHRXEAPX3\",\n        \"groupArtUnitNumber\":\"2855\",\n
+      \       \"legacyDocumentCodeIdentifier\":\"CTNF\",\n        \"submissionDate\":\"2017-09-20T04:00:00Z\",\n
+      \       \"nationalClass\":\"073\",\n        \"nationalSubclass\":\"427000\",\n
+      \       \"headerMissing\":0.0,\n        \"formParagraphMissing\":0.0,\n        \"rejectFormMissmatch\":0.0,\n
+      \       \"closingMissing\":0.0,\n        \"hasRej101\":0.0,\n        \"hasRejDP\":0.0,\n
+      \       \"hasRej102\":1.0,\n        \"hasRej103\":0.0,\n        \"hasRej112\":1.0,\n
+      \       \"hasObjection\":1.0,\n        \"cite102GT1\":0.0,\n        \"cite103GT3\":0.0,\n
+      \       \"cite103EQ1\":0.0,\n        \"cite103Max\":0.0,\n        \"signatureType\":0.0,\n
+      \       \"actionTypeCategory\":\"rejected\",\n        \"legalSectionCode\":\"102\",\n
+      \       \"claimNumberArrayDocument\":[\"1,2\"],\n        \"createUserIdentifier\":\"ETL_SYS\",\n
+      \       \"createDateTime\":\"2021-07-20T14:52:54Z\"},\n      {\n        \"id\":\"f0b39b6d004249481fd8ba90876d6f6c\",\n
+      \       \"patentApplicationNumber\":\"14616587\",\n        \"obsoleteDocumentIdentifier\":\"J7T2CRH7RXEAPX3\",\n
+      \       \"groupArtUnitNumber\":\"2477\",\n        \"legacyDocumentCodeIdentifier\":\"CTNF\",\n
+      \       \"submissionDate\":\"2017-09-22T04:00:00Z\",\n        \"nationalClass\":\"370\",\n
+      \       \"nationalSubclass\":\"419000\",\n        \"headerMissing\":0.0,\n        \"formParagraphMissing\":0.0,\n
+      \       \"rejectFormMissmatch\":0.0,\n        \"closingMissing\":0.0,\n        \"hasRej101\":0.0,\n
+      \       \"hasRejDP\":0.0,\n        \"hasRej102\":0.0,\n        \"hasRej103\":1.0,\n
+      \       \"hasRej112\":0.0,\n        \"hasObjection\":0.0,\n        \"cite102GT1\":0.0,\n
+      \       \"cite103GT3\":0.0,\n        \"cite103EQ1\":0.0,\n        \"cite103Max\":3.0,\n
+      \       \"signatureType\":0.0,\n        \"actionTypeCategory\":\"rejected\",\n
+      \       \"legalSectionCode\":\"103\",\n        \"claimNumberArrayDocument\":[\"1,10,11,12,13,14,15,16,17,18,19,2,20,3,4,5,6,7,8,9\"],\n
+      \       \"createUserIdentifier\":\"ETL_SYS\",\n        \"createDateTime\":\"2021-07-19T08:38:23Z\"}]\n
+      \ }}\n"
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Headers:
+      - accept, authorization, content-type, x-requested-with
+      Access-Control-Allow-Methods:
+      - GET, POST, OPTIONS, PUT
+      Access-Control-Allow-Origin:
+      - '*'
+      Access-Control-Max-Age:
+      - '1'
+      Connection:
+      - keep-alive
+      Content-Encoding:
+      - gzip
+      Content-Length:
+      - '6826'
+      Content-Type:
+      - application/json
+      Date:
+      - Tue, 31 Oct 2023 18:33:56 GMT
+      Strict-Transport-Security:
+      - max-age=31536000;
+    http_version: HTTP/1.1
+    status_code: 200
+version: 1

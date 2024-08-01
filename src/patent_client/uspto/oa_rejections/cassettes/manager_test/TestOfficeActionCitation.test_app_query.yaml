@@ -1,0 +1,118 @@
+interactions:
+- request:
+    body: criteria=patentApplicationNumber%3A%2814574014%29&start=0&rows=100
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '66'
+      content-type:
+      - application/x-www-form-urlencoded
+      host:
+      - developer.uspto.gov
+      user-agent:
+      - Mozilla/5.0 Python Patent Clientbot/3.2.10 (parkerhancock@users.noreply.github.com)
+    method: POST
+    uri: https://developer.uspto.gov/ds-api/oa_citations/v2/records
+  response:
+    content: "{\n  \"responseHeader\":{\n    \"zkConnected\":true,\n    \"status\":0,\n
+      \   \"QTime\":56,\n    \"params\":{\n      \"json\":\"{\\\"params\\\":{\\\"q\\\":\\\"patentApplicationNumber:(14574014)\\\",\\\"start\\\":0,\\\"rows\\\":100,\\\"fl\\\":\\\"actionTypeCategory,applicantCitedExaminerReferenceIndicator,createDateTime,createUserIdentifier,examinerCitedReferenceIndicator,groupArtUnitNumber,id,legalSectionCode,obsoleteDocumentIdentifier,officeActionCitationReferenceIndicator,paragraphNumber,parsedReferenceIdentifier,patentApplicationNumber,referenceIdentifier,techCenter,workGroup\\\",\\\"wt\\\":\\\"json\\\",\\\"indent\\\":\\\"on\\\"}}\"}},\n
+      \ \"response\":{\"numFound\":10,\"start\":0,\"docs\":[\n      {\n        \"id\":\"fff6fce3fa0b77c4c989081999738052\",\n
+      \       \"patentApplicationNumber\":\"14574014\",\n        \"obsoleteDocumentIdentifier\":\"IO07UNHTRXEAPX0\",\n
+      \       \"referenceIdentifier\":\"5324286\",\n        \"parsedReferenceIdentifier\":\"5324286\",\n
+      \       \"officeActionCitationReferenceIndicator\":true,\n        \"examinerCitedReferenceIndicator\":true,\n
+      \       \"applicantCitedExaminerReferenceIndicator\":false,\n        \"actionTypeCategory\":\"rejected\",\n
+      \       \"legalSectionCode\":\"103\",\n        \"groupArtUnitNumber\":\"3763\",\n
+      \       \"techCenter\":\"3700\",\n        \"workGroup\":\"3760\",\n        \"createUserIdentifier\":\"ETL_SYS\",\n
+      \       \"createDateTime\":\"2023-07-04T17:40:41Z\"},\n      {\n        \"id\":\"5493f502b8badcb25e27b5e7580d5ed8\",\n
+      \       \"patentApplicationNumber\":\"14574014\",\n        \"obsoleteDocumentIdentifier\":\"IO07UNHTRXEAPX0\",\n
+      \       \"referenceIdentifier\":\"6752794\",\n        \"parsedReferenceIdentifier\":\"6752794\",\n
+      \       \"officeActionCitationReferenceIndicator\":true,\n        \"examinerCitedReferenceIndicator\":true,\n
+      \       \"applicantCitedExaminerReferenceIndicator\":false,\n        \"actionTypeCategory\":\"rejected\",\n
+      \       \"legalSectionCode\":\"103\",\n        \"groupArtUnitNumber\":\"3763\",\n
+      \       \"techCenter\":\"3700\",\n        \"workGroup\":\"3760\",\n        \"createUserIdentifier\":\"ETL_SYS\",\n
+      \       \"createDateTime\":\"2023-07-04T17:40:41Z\"},\n      {\n        \"id\":\"c8ec80e2952c9d7001ac270e5de03039\",\n
+      \       \"patentApplicationNumber\":\"14574014\",\n        \"obsoleteDocumentIdentifier\":\"IO07UNHTRXEAPX0\",\n
+      \       \"referenceIdentifier\":\"6254567\",\n        \"parsedReferenceIdentifier\":\"6254567\",\n
+      \       \"officeActionCitationReferenceIndicator\":true,\n        \"examinerCitedReferenceIndicator\":true,\n
+      \       \"applicantCitedExaminerReferenceIndicator\":false,\n        \"actionTypeCategory\":\"rejected\",\n
+      \       \"legalSectionCode\":\"103\",\n        \"groupArtUnitNumber\":\"3763\",\n
+      \       \"techCenter\":\"3700\",\n        \"workGroup\":\"3760\",\n        \"createUserIdentifier\":\"ETL_SYS\",\n
+      \       \"createDateTime\":\"2023-07-04T17:40:41Z\"},\n      {\n        \"id\":\"28c018698f88c2c67e91592cde43a2ff\",\n
+      \       \"patentApplicationNumber\":\"14574014\",\n        \"obsoleteDocumentIdentifier\":\"IO07UNHTRXEAPX0\",\n
+      \       \"referenceIdentifier\":\"20090048582\",\n        \"parsedReferenceIdentifier\":\"20090048582\",\n
+      \       \"officeActionCitationReferenceIndicator\":true,\n        \"examinerCitedReferenceIndicator\":true,\n
+      \       \"applicantCitedExaminerReferenceIndicator\":false,\n        \"actionTypeCategory\":\"rejected\",\n
+      \       \"legalSectionCode\":\"103\",\n        \"groupArtUnitNumber\":\"3763\",\n
+      \       \"techCenter\":\"3700\",\n        \"workGroup\":\"3760\",\n        \"createUserIdentifier\":\"ETL_SYS\",\n
+      \       \"createDateTime\":\"2023-07-04T17:40:41Z\"},\n      {\n        \"id\":\"d5c11cfcc0ab744674753f834c3c379a\",\n
+      \       \"patentApplicationNumber\":\"14574014\",\n        \"obsoleteDocumentIdentifier\":\"IO07UNHTRXEAPX0\",\n
+      \       \"referenceIdentifier\":\"6537241\",\n        \"parsedReferenceIdentifier\":\"6537241\",\n
+      \       \"officeActionCitationReferenceIndicator\":true,\n        \"examinerCitedReferenceIndicator\":true,\n
+      \       \"applicantCitedExaminerReferenceIndicator\":false,\n        \"actionTypeCategory\":\"rejected\",\n
+      \       \"legalSectionCode\":\"103\",\n        \"groupArtUnitNumber\":\"3763\",\n
+      \       \"techCenter\":\"3700\",\n        \"workGroup\":\"3760\",\n        \"createUserIdentifier\":\"ETL_SYS\",\n
+      \       \"createDateTime\":\"2023-07-04T17:40:41Z\"},\n      {\n        \"id\":\"ac7cdf9a90d8f932be21fba39b93b0e6\",\n
+      \       \"patentApplicationNumber\":\"14574014\",\n        \"obsoleteDocumentIdentifier\":\"IVLC08MNRXEAPX5\",\n
+      \       \"referenceIdentifier\":\"6254567\",\n        \"parsedReferenceIdentifier\":\"6254567\",\n
+      \       \"officeActionCitationReferenceIndicator\":true,\n        \"examinerCitedReferenceIndicator\":true,\n
+      \       \"applicantCitedExaminerReferenceIndicator\":false,\n        \"actionTypeCategory\":\"rejected\",\n
+      \       \"legalSectionCode\":\"103\",\n        \"groupArtUnitNumber\":\"3763\",\n
+      \       \"techCenter\":\"3700\",\n        \"workGroup\":\"3760\",\n        \"createUserIdentifier\":\"ETL_SYS\",\n
+      \       \"createDateTime\":\"2023-06-04T13:50:26Z\"},\n      {\n        \"id\":\"953bf491e4d20b9f53ef467bc3602ca1\",\n
+      \       \"patentApplicationNumber\":\"14574014\",\n        \"obsoleteDocumentIdentifier\":\"IVLC08MNRXEAPX5\",\n
+      \       \"referenceIdentifier\":\"6752794\",\n        \"parsedReferenceIdentifier\":\"6752794\",\n
+      \       \"officeActionCitationReferenceIndicator\":true,\n        \"examinerCitedReferenceIndicator\":true,\n
+      \       \"applicantCitedExaminerReferenceIndicator\":false,\n        \"actionTypeCategory\":\"rejected\",\n
+      \       \"legalSectionCode\":\"103\",\n        \"groupArtUnitNumber\":\"3763\",\n
+      \       \"techCenter\":\"3700\",\n        \"workGroup\":\"3760\",\n        \"createUserIdentifier\":\"ETL_SYS\",\n
+      \       \"createDateTime\":\"2023-06-04T13:50:26Z\"},\n      {\n        \"id\":\"09a08c8591bb0e0e40da3cfde6e2966e\",\n
+      \       \"patentApplicationNumber\":\"14574014\",\n        \"obsoleteDocumentIdentifier\":\"IVLC08MNRXEAPX5\",\n
+      \       \"referenceIdentifier\":\"5324286\",\n        \"parsedReferenceIdentifier\":\"5324286\",\n
+      \       \"officeActionCitationReferenceIndicator\":true,\n        \"examinerCitedReferenceIndicator\":true,\n
+      \       \"applicantCitedExaminerReferenceIndicator\":false,\n        \"actionTypeCategory\":\"rejected\",\n
+      \       \"legalSectionCode\":\"103\",\n        \"groupArtUnitNumber\":\"3763\",\n
+      \       \"techCenter\":\"3700\",\n        \"workGroup\":\"3760\",\n        \"createUserIdentifier\":\"ETL_SYS\",\n
+      \       \"createDateTime\":\"2023-06-04T13:50:26Z\"},\n      {\n        \"id\":\"fd549ab31795ac6df7702654363d4bd7\",\n
+      \       \"patentApplicationNumber\":\"14574014\",\n        \"obsoleteDocumentIdentifier\":\"IVLC08MNRXEAPX5\",\n
+      \       \"referenceIdentifier\":\"20090048582\",\n        \"parsedReferenceIdentifier\":\"20090048582\",\n
+      \       \"officeActionCitationReferenceIndicator\":true,\n        \"examinerCitedReferenceIndicator\":true,\n
+      \       \"applicantCitedExaminerReferenceIndicator\":false,\n        \"actionTypeCategory\":\"rejected\",\n
+      \       \"legalSectionCode\":\"103\",\n        \"groupArtUnitNumber\":\"3763\",\n
+      \       \"techCenter\":\"3700\",\n        \"workGroup\":\"3760\",\n        \"createUserIdentifier\":\"ETL_SYS\",\n
+      \       \"createDateTime\":\"2023-06-04T13:50:26Z\"},\n      {\n        \"id\":\"81e7e8608f505af36a1e3beac5055d30\",\n
+      \       \"patentApplicationNumber\":\"14574014\",\n        \"obsoleteDocumentIdentifier\":\"IVLC08MNRXEAPX5\",\n
+      \       \"referenceIdentifier\":\"6537241\",\n        \"parsedReferenceIdentifier\":\"6537241\",\n
+      \       \"officeActionCitationReferenceIndicator\":true,\n        \"examinerCitedReferenceIndicator\":true,\n
+      \       \"applicantCitedExaminerReferenceIndicator\":false,\n        \"actionTypeCategory\":\"rejected\",\n
+      \       \"legalSectionCode\":\"103\",\n        \"groupArtUnitNumber\":\"3763\",\n
+      \       \"techCenter\":\"3700\",\n        \"workGroup\":\"3760\",\n        \"createUserIdentifier\":\"ETL_SYS\",\n
+      \       \"createDateTime\":\"2023-06-04T13:50:26Z\"}]\n  }}\n"
+    headers:
+      access-control-allow-credentials:
+      - 'true'
+      access-control-allow-headers:
+      - accept, authorization, content-type, x-requested-with
+      access-control-allow-methods:
+      - GET, POST, OPTIONS, PUT
+      access-control-allow-origin:
+      - '*'
+      access-control-max-age:
+      - '1'
+      content-encoding:
+      - gzip
+      content-length:
+      - '898'
+      content-type:
+      - application/json
+      date:
+      - Tue, 31 Oct 2023 20:58:47 GMT
+      strict-transport-security:
+      - max-age=31536000;
+    http_version: HTTP/2
+    status_code: 200
+version: 1
