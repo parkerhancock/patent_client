@@ -4,64 +4,138 @@
 # *           Source File: patent_client/_async/uspto/ptab/manager.py            *
 # ********************************************************************************
 
-from copy import deepcopy
-from typing import Callable, Generic, Optional
+from typing import Iterator
 
 import inflection
 
-from patent_client.util.manager import Manager, ModelType
+from patent_client._sync.uspto.ptab.api import ptab_client
+from patent_client._sync.uspto.ptab.model import PtabDecision, PtabDocument, PtabProceeding
+from patent_client._sync.uspto.ptab.schema import SearchInput
+from patent_client.util.manager import Manager
 from patent_client.util.request_util import get_start_and_row_count
 
-from .api import PtabApi
-from .model import PtabDecision, PtabDocument, PtabProceeding
-from .util import peds_to_ptab
+from .errors import InvalidFieldError
+from .schema_parser import ALLOWED_FIELDS
 
 
-class PtabManager(Manager, Generic[ModelType]):
-    url = "https://developer.uspto.gov/ptab-api"
-    page_size = 25
-    instance_schema = None
-    api_method: Optional[Callable] = None
+class PtabBaseManager(Manager):
+    default_page_size = 25
 
-    def _get_results(self):
-        query = deepcopy(self.config.filter)
-        query = peds_to_ptab(query)
-        query["sort"] = " ".join(
-            inflection.camelize(o, uppercase_first_letter=False) for o in self.config.order_by
-        )
-        for start, rows in get_start_and_row_count(
-            self.config.limit, self.config.offset, self.page_size
-        ):
-            query["start"] = start
-            query["rows"] = rows
-            page = self.api_method(**query)
-            for doc in page.docs:
-                yield doc
-            if len(page.docs) < rows:
+    def __init__(self, config=None):
+        super().__init__(config)
+
+    def _get_results(self) -> Iterator[PtabProceeding]:
+        search_input = self._build_search_input()
+        limit = self.config.limit
+        offset = self.config.offset
+        for start, row_count in get_start_and_row_count(limit, offset, self.default_page_size):
+            if isinstance(search_input, SearchInput):
+                search_input.record_start_number = start
+                search_input.record_total_quantity = row_count
+            else:
+                # If it's a raw query, we need to create a new SearchInput object
+                search_input = SearchInput(
+                    search_text=search_input,
+                    record_start_number=start,
+                    record_total_quantity=row_count,
+                )
+            response = self._search(search_input)
+
+            for result in response.results:
+                yield self.model(**result)
+
+            if len(response.results) < row_count:
+                # We've reached the end of the results
                 break
 
-    def count(self):
-        page = self.api_method(**peds_to_ptab(self.config.filter))
-        return min(self.config.limit, page.num_found) if self.config.limit else page.num_found
+    def _build_search_input(self) -> SearchInput:
+        if "raw_query" in self.config.filter:
+            return SearchInput.model_validate(self.config.filter["raw_query"])
 
-    # def allowed_filters(self):
-    #    params = schema_doc["paths"][self.path]["get"]["parameters"]
-    #    return {inflection.underscore(p["name"]): p["description"] for p in params}
+        search_text = self._build_search_text()
+        return SearchInput(
+            search_text=search_text,
+            sort_data_bag=[
+                {"sortField": field, "sortOrder": order.value}
+                for field, order in self.config.order_by
+            ],
+        )
+
+    def _get_allowed_fields(self) -> set:
+        return ALLOWED_FIELDS[self.endpoint]
+
+    def _build_search_text(self) -> str:
+        if "query" in self.config.filter:
+            return self.config.filter["query"]
+
+        allowed_fields = self._get_allowed_fields()
+        query_parts = []
+        for field, value in self.config.filter.items():
+            field_name = inflection.camelize(field, uppercase_first_letter=False)
+            if field_name not in allowed_fields:
+                raise InvalidFieldError(
+                    f"Invalid field: {field}. Allowed fields are: {', '.join(allowed_fields)}"
+                )
+
+            if isinstance(value, (list, tuple)):
+                or_values = " OR ".join(f'"{v}"' for v in value)
+                query_parts.append(f"{field_name}:({or_values})")
+            else:
+                query_parts.append(f'{field_name}:"{value}"')
+        return " AND ".join(query_parts)
+
+    def count(self) -> int:
+        search_input = self._build_search_input()
+        if isinstance(search_input, SearchInput):
+            search_input.record_start_number = 0
+            search_input.record_total_quantity = 1
+        else:
+            # If it's a raw query, we need to create a new SearchInput object
+            search_input = SearchInput(
+                search_text=search_input,
+                record_start_number=0,
+                record_total_quantity=1,
+            )
+
+        response = self._search(search_input)
+        total_count = response.record_total_quantity
+
+        if self.config.limit is not None:
+            return min(total_count, self.config.limit)
+        return total_count
+
+    def _search(self, search_input: SearchInput):
+        raise NotImplementedError("Subclasses must implement this method")
 
 
-class PtabProceedingManager(PtabManager[PtabProceeding]):
-    path = "/proceedings"
+class PtabProceedingManager(PtabBaseManager):
+    model = PtabProceeding
     default_filter = "proceeding_number"
-    api_method = PtabApi.get_proceedings
+    endpoint = "proceedings"
+
+    def _search(self, search_input: SearchInput):
+        return ptab_client.proceedings.search(search_input)
 
 
-class PtabDocumentManager(PtabManager[PtabDocument]):
-    path = "/documents"
-    default_filter = "document_identifier"
-    api_method = PtabApi.get_documents
+class PtabDocumentManager(PtabBaseManager):
+    model = PtabDocument
+    default_filter = "proceeding_number"
+    endpoint = "documents"
+
+    def _search(self, search_input: SearchInput):
+        return ptab_client.documents.search(search_input)
+
+    def download(self, document_identifier: str) -> bytes:
+        return ptab_client.documents.download(document_identifier)
+
+    def download_trial_documents(self, proceeding_number: str) -> bytes:
+        return ptab_client.documents.download_trial_documents(proceeding_number)
 
 
-class PtabDecisionManager(PtabManager[PtabDecision]):
-    path = "/decisions"
-    default_filter = "identifier"
-    api_method = PtabApi.get_decisions
+class PtabDecisionManager(PtabBaseManager):
+    model = PtabDecision
+    default_filter = "proceeding_number"
+    endpoint = "decisions"
+
+    def _search(self, search_input: SearchInput):
+        return ptab_client.decisions.search(search_input)

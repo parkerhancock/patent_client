@@ -1,212 +1,160 @@
-import datetime
-import re
-import typing as tp
-from pathlib import Path
+from datetime import datetime
+from typing import Any, Dict, List, Optional
 
-from pydantic import BeforeValidator, ConfigDict, Field
-from pydantic.alias_generators import to_camel
-from typing_extensions import Annotated
+from pydantic import BaseModel, Field
 
-from patent_client.util.pydantic_util import BaseModel, DateTime
-
-if tp.TYPE_CHECKING:
-    from ..peds.model import USApplication
-
-MDYDate = Annotated[
-    datetime.date,
-    BeforeValidator(lambda x: datetime.datetime.strptime(x, "%m-%d-%Y").date()),
-]
+from patent_client.util.pydantic_util import BaseModel
 
 
-class PtabBaseModel(BaseModel):
-    model_config = ConfigDict(
-        alias_generator=to_camel,
-        str_strip_whitespace=True,
+class Party(BaseModel):
+    application_number_text: Optional[str] = Field(None, alias="applicationNumberText")
+    inventor_name: Optional[str] = Field(None, alias="inventorName")
+    patent_number: Optional[str] = Field(None, alias="patentNumber")
+    party_name: Optional[str] = Field(None, alias="partyName")
+
+
+class AggregationInfo(BaseModel):
+    name: Optional[str] = None
+    quantity: Optional[int] = None
+    nested_facet_type_name: Optional[str] = Field(None, alias="nestedFacetTypeName")
+    nested_facet_bag: Optional[List["AggregationInfo"]] = Field(None, alias="nestedFacetBag")
+
+
+class SearchOutput(BaseModel):
+    aggregation_data: Optional[Dict[str, List[AggregationInfo]]] = Field(
+        None, alias="aggregationData"
+    )
+    results: Optional[Any] = None
+    record_total_quantity: Optional[int] = Field(None, alias="recordTotalQuantity")
+    response_message: Optional[str] = Field(None, alias="responseMessage")
+
+
+class PtabProceeding(BaseModel):
+    last_modified_date: Optional[datetime] = Field(None, alias="lastModifiedDate")
+    last_modified_user_id: Optional[str] = Field(None, alias="lastModifiedUserId")
+    institution_decision_date: Optional[str] = Field(None, alias="institutionDecisionDate")
+    proceeding_filing_date: Optional[str] = Field(None, alias="proceedingFilingDate")
+    accorded_filing_date: Optional[str] = Field(None, alias="accordedFilingDate")
+    proceeding_status_category: Optional[str] = Field(None, alias="proceedingStatusCategory")
+    proceeding_number: Optional[str] = Field(None, alias="proceedingNumber")
+    proceeding_last_modified_date: Optional[str] = Field(None, alias="proceedingLastModifiedDate")
+    proceeding_type_category: Optional[str] = Field(None, alias="proceedingTypeCategory")
+    subproceeding_type_category: Optional[str] = Field(None, alias="subproceedingTypeCategory")
+    respondent_technology_center_number: Optional[str] = Field(
+        None, alias="respondentTechnologyCenterNumber"
+    )
+    respondent_patent_owner_name: Optional[str] = Field(None, alias="respondentPatentOwnerName")
+    respondent_party_name: Optional[str] = Field(None, alias="respondentPartyName")
+    respondent_group_art_unit_number: Optional[str] = Field(
+        None, alias="respondentGroupArtUnitNumber"
+    )
+    respondent_inventor_name: Optional[str] = Field(None, alias="respondentInventorName")
+    respondent_counsel_name: Optional[str] = Field(None, alias="respondentCounselName")
+    respondent_grant_date: Optional[str] = Field(None, alias="respondentGrantDate")
+    respondent_patent_number: Optional[str] = Field(None, alias="respondentPatentNumber")
+    respondent_application_number_text: Optional[str] = Field(
+        None, alias="respondentApplicationNumberText"
+    )
+    petitioner_technology_center_number: Optional[str] = Field(
+        None, alias="petitionerTechnologyCenterNumber"
+    )
+    petitioner_patent_owner_name: Optional[str] = Field(None, alias="petitionerPatentOwnerName")
+    petitioner_party_name: Optional[str] = Field(None, alias="petitionerPartyName")
+    petitioner_group_art_unit_number: Optional[str] = Field(
+        None, alias="petitionerGroupArtUnitNumber"
+    )
+    petitioner_inventor_name: Optional[str] = Field(None, alias="petitionerInventorName")
+    petitioner_counsel_name: Optional[str] = Field(None, alias="petitionerCounselName")
+    petitioner_grant_date: Optional[str] = Field(None, alias="petitionerGrantDate")
+    petitioner_patent_number: Optional[str] = Field(None, alias="petitionerPatentNumber")
+    petitioner_application_number_text: Optional[str] = Field(
+        None, alias="petitionerApplicationNumberText"
+    )
+    decision_date: Optional[str] = Field(None, alias="decisionDate")
+    appellant_technology_center_number: Optional[str] = Field(
+        None, alias="appellantTechnologyCenterNumber"
+    )
+    appellant_patent_owner_name: Optional[str] = Field(None, alias="appellantPatentOwnerName")
+    appellant_party_name: Optional[str] = Field(None, alias="appellantPartyName")
+    third_party_name: Optional[str] = Field(None, alias="thirdPartyName")
+    appellant_group_art_unit_number: Optional[str] = Field(
+        None, alias="appellantGroupArtUnitNumber"
+    )
+    appellant_inventor_name: Optional[str] = Field(None, alias="appellantInventorName")
+    appellant_counsel_name: Optional[str] = Field(None, alias="appellantCounselName")
+    appellant_grant_date: Optional[str] = Field(None, alias="appellantGrantDate")
+    appellant_patent_number: Optional[str] = Field(None, alias="appellantPatentNumber")
+    appellant_application_number_text: Optional[str] = Field(
+        None, alias="appellantApplicationNumberText"
+    )
+    appellant_publication_date: Optional[str] = Field(None, alias="appellantPublicationDate")
+    appellant_publication_number: Optional[str] = Field(None, alias="appellantPublicationNumber")
+    documents: Optional[str] = None
+    docket_notice_mail_date: Optional[str] = Field(None, alias="docketNoticeMailDate")
+    declaration_date: Optional[str] = Field(None, alias="declarationDate")
+    second_respondent_party_name: Optional[str] = Field(None, alias="secondRespondentPartyName")
+    second_respondent_appl_number_text: Optional[str] = Field(
+        None, alias="secondRespondentApplNumberText"
+    )
+    second_respondent_patent_number: Optional[str] = Field(
+        None, alias="secondRespondentPatentNumber"
+    )
+    second_respondent_grant_date: Optional[str] = Field(None, alias="secondRespondentGrantDate")
+    second_respondent_patent_owner_name: Optional[str] = Field(
+        None, alias="secondRespondentPatentOwnerName"
+    )
+    second_respondent_inventor_name: Optional[str] = Field(
+        None, alias="secondRespondentInventorName"
+    )
+    second_respondent_counsel_name: Optional[str] = Field(None, alias="secondRespondentCounselName")
+    second_respondent_gau_number: Optional[str] = Field(None, alias="secondRespondentGAUNumber")
+    second_respondent_tech_center_number: Optional[str] = Field(
+        None, alias="secondRespondentTechCenterNumber"
+    )
+    second_respondent_pub_number: Optional[str] = Field(None, alias="secondRespondentPubNumber")
+    second_respondent_publication_date: Optional[str] = Field(
+        None, alias="secondRespondentPublicationDate"
+    )
+    respondent_publication_number: Optional[str] = Field(None, alias="respondentPublicationNumber")
+    respondent_publication_date: Optional[str] = Field(None, alias="respondentPublicationDate")
+    style_name_text: Optional[str] = Field(None, alias="styleNameText")
+    additional_respondent_party_data_bag: Optional[List[Party]] = Field(
+        None, alias="additionalRespondentPartyDataBag"
     )
 
 
-class AdditionalRespondent(PtabBaseModel):
-    application_number_text: tp.Optional[str] = None
-    inventor_name: tp.Optional[str] = None
-    patent_number: tp.Optional[str] = None
-    party_name: tp.Optional[str] = None
+class PtabDocument(BaseModel):
+    last_modified_date: Optional[datetime] = Field(None, alias="lastModifiedDate")
+    last_modified_user_id: Optional[str] = Field(None, alias="lastModifiedUserId")
+    filing_party_category: Optional[str] = Field(None, alias="filingPartyCategory")
+    document_number: Optional[str] = Field(None, alias="documentNumber")
+    document_name: Optional[str] = Field(None, alias="documentName")
+    document_category: Optional[str] = Field(None, alias="documentCategory")
+    document_title_text: Optional[str] = Field(None, alias="documentTitleText")
+    proceeding_number: Optional[str] = Field(None, alias="proceedingNumber")
+    document_filing_date: Optional[str] = Field(None, alias="documentFilingDate")
+    document_type_name: Optional[str] = Field(None, alias="documentTypeName")
+    proceeding_type_category: Optional[str] = Field(None, alias="proceedingTypeCategory")
+    subproceeding_type_category: Optional[str] = Field(None, alias="subproceedingTypeCategory")
+    media_type_category: Optional[str] = Field(None, alias="mediaTypeCategory")
+    document_size: Optional[str] = Field(None, alias="documentSize")
+    document_identifier: Optional[str] = Field(None, alias="documentIdentifier")
+    object_uu_id: Optional[str] = Field(None, alias="objectUuId")
 
 
-class PtabProceeding(PtabBaseModel):
-    """A PTAB Proceeding - e.g. IPR/CBM/DER Trial, Patent Appeal, Interference, etc.
-
-    All fields are query-able. Date ranges can be formed by inserting "from" or "to" on a query
-    for a date range.
-
-    """
-
-    # Proceeding Metadata
-    last_modified_date: tp.Optional[DateTime] = None
-    last_modified_user_id: tp.Optional[DateTime] = None
-    institution_decision_date: tp.Optional[MDYDate] = None
-    proceeding_filing_date: tp.Optional[MDYDate] = None
-    accorded_filing_date: tp.Optional[MDYDate] = None
-    proceeding_status_category: tp.Optional[str] = None
-    proceeding_number: tp.Optional[str] = None
-    proceeding_last_modified_date: tp.Optional[MDYDate] = None
-    proceeding_type_category: tp.Optional[str] = None
-    subproceeding_type_category: tp.Optional[str] = None
-    decision_date: tp.Optional[MDYDate] = None
-    docket_notice_mail_date: tp.Optional[MDYDate] = None
-    declaration_date: tp.Optional[MDYDate] = None
-    style_name_text: tp.Optional[str] = None
-
-    # Respondent Information
-    respondent_technology_center_number: tp.Optional[str] = None
-    respondent_patent_owner_name: tp.Optional[str] = None
-    respondent_party_name: tp.Optional[str] = None
-    respondent_group_art_unit_number: tp.Optional[str] = None
-    respondent_inventor_name: tp.Optional[str] = None
-    respondent_counsel_name: tp.Optional[str] = None
-    respondent_grant_date: tp.Optional[MDYDate] = None
-    respondent_patent_number: tp.Optional[str] = None
-    respondent_application_number_text: tp.Optional[str] = None
-    respondent_publication_number: tp.Optional[str] = None
-    respondent_publication_date: tp.Optional[MDYDate] = None
-
-    # Petitioner Information
-    petitioner_technology_center_number: tp.Optional[str] = None
-    petitioner_patent_owner_name: tp.Optional[str] = None
-    petitioner_party_name: tp.Optional[str] = None
-    petitioner_group_art_unit_number: tp.Optional[str] = None
-    petitioner_inventor_name: tp.Optional[str] = None
-    petitioner_counsel_name: tp.Optional[str] = None
-    petitioner_grant_date: tp.Optional[MDYDate] = None
-    petitioner_patent_number: tp.Optional[str] = None
-    petitioner_application_number_text: tp.Optional[str] = None
-
-    # Appellant Information
-    appellant_technology_center_number: tp.Optional[str] = None
-    appellant_patent_owner_name: tp.Optional[str] = None
-    appellant_party_name: tp.Optional[str] = None
-    appellant_group_art_unit_number: tp.Optional[str] = None
-    appellant_inventor_name: tp.Optional[str] = None
-    appellant_counsel_name: tp.Optional[str] = None
-    appellant_grant_date: tp.Optional[MDYDate] = None
-    appellant_patent_number: tp.Optional[str] = None
-    appellant_application_number_text: tp.Optional[str] = None
-    appellant_publication_date: tp.Optional[MDYDate] = None
-    appellant_publication_number: tp.Optional[str] = None
-    third_party_name: tp.Optional[str] = None
-
-    # Second Respondent (if any)
-    second_respondent_party_name: tp.Optional[str] = None
-    second_respondent_appl_number_text: tp.Optional[str] = None
-    second_respondent_patent_number: tp.Optional[str] = None
-    second_respondent_grant_date: tp.Optional[MDYDate] = None
-    second_respondent_patent_owner_name: tp.Optional[str] = None
-    second_respondent_inventor_name: tp.Optional[str] = None
-    second_respondent_counsel_name: tp.Optional[str] = None
-    second_respondent_g_a_u_number: tp.Optional[str] = None
-    second_respondent_tech_center_number: tp.Optional[str] = None
-    second_respondent_pub_number: tp.Optional[str] = None
-    second_respondent_publication_date: tp.Optional[MDYDate] = None
-
-    additional_respondents: tp.List[str] = Field(default_factory=list)
-
-    @property
-    def documents(
-        self,
-    ) -> "list[PtabDocument]":
-        """Documents associated with the Proceeding"""
-        return self._get_model(".model.PtabDocument").objects.filter(
-            proceeding_number=self.proceeding_number
-        )
-
-    @property
-    def decisions(
-        self,
-    ) -> "list[PtabDecision]":
-        """Decisions associated with the Proceeding"""
-        return self._get_model(".model.PtabDecision").objects.filter(
-            proceeding_number=self.proceeding_number
-        )
-
-    @property
-    def us_application(
-        self,
-    ) -> "list[USApplication]":
-        """The US Application provided by PEDS associated with the Proceeding"""
-        return self._get_model(".model.USApplication").objects.get(
-            patent_number=self.respondent_patent_number
-        )
-
-
-fname_re = re.compile(r"[<>:\"/\|?*]")
-
-
-class PtabDocument(PtabBaseModel):
-    document_identifier: str = Field(repr=False, default=None)
-    document_category: tp.Optional[str] = None
-    document_type_name: tp.Optional[str] = None
-    document_number: tp.Optional[int] = None
-    document_name: tp.Optional[str] = None
-    document_filing_date: tp.Optional[MDYDate] = None
-    proceeding_number: tp.Optional[str] = None
-    proceeding_type_category: tp.Optional[str] = Field(repr=False, default=None)
-    document_title: tp.Optional[str] = Field(alias="documentTitleText")
-
-    @property
-    def proceeding(self) -> "PtabProceeding":
-        """The PTAB proceeding associated with the document"""
-        return self._get_model(".model.PtabProceeding").objects.get(
-            proceeding_number=self.proceeding_number
-        )
-
-    async def download(self, path: tp.Optional[tp.Union[str, Path]]) -> Path:
-        from .api import client
-
-        name, ext = self.document_name.rsplit(".", 1)
-        name = name[:100] + "." + ext
-        filename = f"[{str(self.document_number).rjust(4, '0')}] {self.document_filing_date.isoformat()} - {name}"
-        filename = filename.encode(encoding="ascii", errors="ignore").decode("ascii")
-        filename = fname_re.sub("", filename)
-        out_path = Path(path) if path else Path.cwd()
-        if out_path.is_dir():
-            out_path = Path(path) / filename
-        else:
-            out_path = out_path
-        download_url = (
-            f"https://developer.uspto.gov/ptab-api/documents/{self.document_identifier}/download"
-        )
-        return await client.download(download_url, path=out_path)
-
-
-class PtabDecision(PtabBaseModel):
-    proceeding_number: str
-    board_rulings: tp.List[str] = Field(default_factory=list)
-    decision_type_category: tp.Optional[str] = None
-    document_identifier: tp.Optional[str] = None
-    document_name: tp.Optional[str] = None
-    identifier: tp.Optional[str] = None
-    subdecision_type_category: tp.Optional[str] = None
-    issue_type: tp.List[str] = Field(default_factory=list)
-    object_uu_id: tp.Optional[str] = None
-    petitioner_technology_center_number: tp.Optional[str] = None
-
-    @property
-    def proceeding(self) -> "PtabProceeding":
-        """The PTAB proceeding associated with the document"""
-        return self._get_model(".model.PtabProceeding").objects.get(
-            proceeding_number=self.proceeding_number
-        )
-
-
-class PtabDocumentPage(PtabBaseModel):
-    num_found: tp.Optional[int] = Field(alias="recordTotalQuantity")
-    docs: tp.List[PtabDocument] = Field(alias="results", default_factory=list)
-
-
-class PtabProceedingPage(PtabBaseModel):
-    num_found: tp.Optional[int] = Field(alias="recordTotalQuantity")
-    docs: tp.List[PtabProceeding] = Field(alias="results", default_factory=list)
-
-
-class PtabDecisionPage(PtabBaseModel):
-    num_found: tp.Optional[int] = Field(alias="recordTotalQuantity")
-    docs: tp.List[PtabDecision] = Field(alias="results", default_factory=list)
+class PtabDecision(BaseModel):
+    last_modified_date: Optional[datetime] = Field(None, alias="lastModifiedDate")
+    last_modified_user_id: Optional[str] = Field(None, alias="lastModifiedUserId")
+    proceeding_number: Optional[str] = Field(None, alias="proceedingNumber")
+    decision_type_category: Optional[str] = Field(None, alias="decisionTypeCategory")
+    subdecision_type_category: Optional[str] = Field(None, alias="subdecisionTypeCategory")
+    document_name: Optional[str] = Field(None, alias="documentName")
+    proceeding_type_category: Optional[str] = Field(None, alias="proceedingTypeCategory")
+    subproceeding_type_category: Optional[str] = Field(None, alias="subproceedingTypeCategory")
+    document_identifier: Optional[str] = Field(None, alias="documentIdentifier")
+    object_uu_id: Optional[str] = Field(None, alias="objectUuId")
+    ocr_search_text: Optional[str] = Field(None, alias="ocrSearchText")
+    issue_type: Optional[List[str]] = Field(None, alias="issueType")
+    board_rulings: Optional[List[str]] = Field(None, alias="boardRulings")
+    decision_date: Optional[str] = Field(None, alias="decisionDate")
+    identifier: Optional[str] = None

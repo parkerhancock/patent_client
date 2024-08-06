@@ -1,6 +1,7 @@
 interactions:
 - request:
-    body: ''
+    body: '{"recordStartNumber": 0, "recordTotalQuantity": 3, "sortDataBag": [], "searchText":
+      "partyName:(\"Apple\")"}'
     headers:
       accept:
       - '*/*'
@@ -8,46 +9,61 @@ interactions:
       - gzip, deflate
       connection:
       - keep-alive
+      content-length:
+      - '108'
+      content-type:
+      - application/json
       host:
       - developer.uspto.gov
       user-agent:
-      - Mozilla/5.0 Python Patent Clientbot/5.0.14 (parkerhancock@users.noreply.github.com)
-    method: GET
-    uri: https://developer.uspto.gov/ptab-api/proceedings?partyName=Apple&recordStartNumber=0&recordTotalQuantity=3&sortOrderCategory=
+      - python-httpx/0.27.0
+    method: POST
+    uri: https://developer.uspto.gov/ptab-api/proceedings/json
   response:
-    content: '{"aggregationData":{},"results":[{"proceedingFilingDate":"09-23-1998","proceedingStatusCategory":"Decision","proceedingNumber":"1998003162","proceedingLastModifiedDate":"11-02-2020","proceedingTypeCategory":"Appeal","subproceedingTypeCategory":"REGULAR","respondentTechnologyCenterNumber":"1700","respondentPartyName":"KAPPLER
-      et al","respondentGroupArtUnitNumber":"1713","respondentPatentNumber":"6448328","respondentApplicationNumberText":"08453149","decisionDate":"11-27-2001","appellantTechnologyCenterNumber":"1700","appellantPatentOwnerName":"KAPPLER
-      et al","appellantPartyName":"KAPPLER et al","appellantGroupArtUnitNumber":"1713","appellantInventorName":"KAPPLER
-      et al","appellantCounselName":"PENNIE & EDMONDS","appellantGrantDate":"09-10-2002","appellantPatentNumber":"6448328","appellantApplicationNumberText":"08453149","additionalRespondentPartyDataBag":[]},{"proceedingFilingDate":"06-15-2000","proceedingStatusCategory":"Decision","proceedingNumber":"2000001619","proceedingLastModifiedDate":"06-15-2000","proceedingTypeCategory":"Appeal","subproceedingTypeCategory":"REGULAR","respondentTechnologyCenterNumber":"2800","respondentPartyName":"APPLETON","respondentGroupArtUnitNumber":"2873","respondentPatentNumber":"6491393","respondentApplicationNumberText":"08977107","decisionDate":"08-30-2002","appellantTechnologyCenterNumber":"2800","appellantPatentOwnerName":"APPLETON","appellantPartyName":"APPLETON","appellantGroupArtUnitNumber":"2873","appellantInventorName":"APPLETON","appellantCounselName":"Bausch
-      & Lomb Incorporated","appellantGrantDate":"12-10-2002","appellantPatentNumber":"6491393","appellantApplicationNumberText":"08977107","additionalRespondentPartyDataBag":[]},{"proceedingFilingDate":"09-19-2002","proceedingStatusCategory":"Decision","proceedingNumber":"2003000028","proceedingLastModifiedDate":"10-29-2002","proceedingTypeCategory":"Appeal","subproceedingTypeCategory":"REGULAR","respondentTechnologyCenterNumber":"3600","respondentPartyName":"APPLETON
-      et al","respondentGroupArtUnitNumber":"3671","respondentPatentNumber":"6655477","respondentApplicationNumberText":"09029509","decisionDate":"10-29-2002","appellantTechnologyCenterNumber":"3600","appellantPatentOwnerName":"APPLETON
-      et al","appellantPartyName":"APPLETON et al","appellantGroupArtUnitNumber":"3671","appellantInventorName":"APPLETON
-      et al","appellantCounselName":"DINSMORE & SHOHL LLP","appellantGrantDate":"12-02-2003","appellantPatentNumber":"6655477","appellantApplicationNumberText":"09029509","appellantPublicationDate":"02-28-2002","appellantPublicationNumber":"20020023782A1","docketNoticeMailDate":"10-11-2002","additionalRespondentPartyDataBag":[]}],"recordTotalQuantity":1449}'
+    content: '{"aggregationData":{"proceedingTypeCategory":[{"name":"AIA Trial","quantity":916,"nestedFacetTypeName":"subproceedingTypeCategory","nestedFacetBag":[{"name":"IPR","quantity":857},{"name":"CBM","quantity":55},{"name":"PGR","quantity":4}]},{"name":"Appeal","quantity":501,"nestedFacetTypeName":"subproceedingTypeCategory","nestedFacetBag":[{"name":"REGULAR","quantity":492},{"name":"REEXAM","quantity":8},{"name":"REISSUE","quantity":1}]}],"respondentTechnologyCenterNumber":[{"name":"2600","quantity":505,"nestedFacetTypeName":"respondentGroupArtUnitNumber","nestedFacetBag":[{"name":"2641","quantity":29},{"name":"2646","quantity":29},{"name":"2611","quantity":24},{"name":"2623","quantity":20},{"name":"2626","quantity":17},{"name":"2625","quantity":16},{"name":"2652","quantity":15},{"name":"2616","quantity":14},{"name":"2621","quantity":14},{"name":"2644","quantity":13},{"name":"2656","quantity":12},{"name":"2612","quantity":10},{"name":"2614","quantity":10},{"name":"2617","quantity":10},{"name":"2613","quantity":9},{"name":"2651","quantity":9},{"name":"2627","quantity":8},{"name":"2642","quantity":8},{"name":"2645","quantity":8},{"name":"2647","quantity":8},{"name":"2648","quantity":8},{"name":"2653","quantity":8},{"name":"2618","quantity":7},{"name":"2624","quantity":7},{"name":"2654","quantity":7},{"name":"2657","quantity":7},{"name":"2684","quantity":7},{"name":"2699","quantity":7},{"name":"2629","quantity":6},{"name":"2631","quantity":6},{"name":"2628","quantity":5},{"name":"2658","quantity":5},{"name":"2661","quantity":5},{"name":"2664","quantity":5},{"name":"2681","quantity":5},{"name":"2622","quantity":4},{"name":"2643","quantity":4},{"name":"2662","quantity":4},{"name":"2668","quantity":4},{"name":"2683","quantity":4},{"name":"2692","quantity":4},{"name":"2694","quantity":4},{"name":"2655","quantity":3},{"name":"2691","quantity":3},{"name":"2697","quantity":3},{"name":"2619","quantity":2},{"name":"2632","quantity":2},{"name":"2633","quantity":2},{"name":"2634","quantity":2},{"name":"2635","quantity":2},{"name":"2649","quantity":2},{"name":"2659","quantity":2},{"name":"2669","quantity":2},{"name":"2674","quantity":2},{"name":"2682","quantity":2},{"name":"2685","quantity":2},{"name":"2689","quantity":2},{"name":"2693","quantity":2},{"name":"2696","quantity":2},{"name":"2636","quantity":1},{"name":"2663","quantity":1},{"name":"2665","quantity":1},{"name":"2666","quantity":1},{"name":"2667","quantity":1},{"name":"2677","quantity":1},{"name":"2687","quantity":1},{"name":"2698","quantity":1}]},{"name":"2400","quantity":271,"nestedFacetTypeName":"respondentGroupArtUnitNumber","nestedFacetBag":[{"name":"2469","quantity":12},{"name":"2414","quantity":9},{"name":"2467","quantity":9},{"name":"2473","quantity":9},{"name":"2477","quantity":9},{"name":"2435","quantity":8},{"name":"2463","quantity":8},{"name":"2413","quantity":7},{"name":"2478","quantity":7},{"name":"2461","quantity":6},{"name":"2466","quantity":6},{"name":"2412","quantity":5},{"name":"2416","quantity":5},{"name":"2436","quantity":5},{"name":"2438","quantity":5},{"name":"2465","quantity":5},{"name":"2472","quantity":5},{"name":"2459","quantity":4},{"name":"2468","quantity":4},{"name":"2484","quantity":4},{"name":"2485","quantity":4},{"name":"2497","quantity":4},{"name":"2411","quantity":3},{"name":"2424","quantity":3},{"name":"2431","quantity":3},{"name":"2437","quantity":3},{"name":"2439","quantity":3},{"name":"2453","quantity":3},{"name":"2462","quantity":3},{"name":"2471","quantity":3},{"name":"2476","quantity":3},{"name":"2482","quantity":3},{"name":"2483","quantity":3},{"name":"2486","quantity":3},{"name":"2415","quantity":2},{"name":"2419","quantity":2},{"name":"2421","quantity":2},{"name":"2423","quantity":2},{"name":"2425","quantity":2},{"name":"2434","quantity":2},{"name":"2443","quantity":2},{"name":"2444","quantity":2},{"name":"2447","quantity":2},{"name":"2451","quantity":2},{"name":"2456","quantity":2},{"name":"2464","quantity":2},{"name":"2474","quantity":2},{"name":"2488","quantity":2},{"name":"2491","quantity":2},{"name":"2492","quantity":2},{"name":"2494","quantity":2},{"name":"2495","quantity":2},{"name":"2422","quantity":1},{"name":"2432","quantity":1},{"name":"2433","quantity":1},{"name":"2441","quantity":1},{"name":"2442","quantity":1},{"name":"2448","quantity":1},{"name":"2455","quantity":1},{"name":"2475","quantity":1},{"name":"2479","quantity":1},{"name":"2481","quantity":1},{"name":"2487","quantity":1}]},{"name":"2100","quantity":219,"nestedFacetTypeName":"respondentGroupArtUnitNumber","nestedFacetBag":[{"name":"2181","quantity":14},{"name":"2173","quantity":12},{"name":"2177","quantity":10},{"name":"2145","quantity":8},{"name":"2175","quantity":8},{"name":"2143","quantity":7},{"name":"2174","quantity":7},{"name":"2176","quantity":7},{"name":"2179","quantity":7},{"name":"2171","quantity":6},{"name":"2116","quantity":5},{"name":"2185","quantity":4},{"name":"2194","quantity":4},{"name":"2118","quantity":3},{"name":"2164","quantity":3},{"name":"2165","quantity":3},{"name":"2178","quantity":3},{"name":"2187","quantity":3},{"name":"2191","quantity":3},{"name":"2193","quantity":3},{"name":"2115","quantity":2},{"name":"2123","quantity":2},{"name":"2124","quantity":2},{"name":"2125","quantity":2},{"name":"2128","quantity":2},{"name":"2129","quantity":2},{"name":"2132","quantity":2},{"name":"2144","quantity":2},{"name":"2154","quantity":2},{"name":"2157","quantity":2},{"name":"2163","quantity":2},{"name":"2195","quantity":2},{"name":"2111","quantity":1},{"name":"2112","quantity":1},{"name":"2121","quantity":1},{"name":"2135","quantity":1},{"name":"2139","quantity":1},{"name":"2141","quantity":1},{"name":"2142","quantity":1},{"name":"2152","quantity":1},{"name":"2153","quantity":1},{"name":"2158","quantity":1},{"name":"2161","quantity":1},{"name":"2166","quantity":1},{"name":"2168","quantity":1},{"name":"2172","quantity":1},{"name":"2183","quantity":1},{"name":"2184","quantity":1},{"name":"2199","quantity":1}]},{"name":"2800","quantity":182,"nestedFacetTypeName":"respondentGroupArtUnitNumber","nestedFacetBag":[{"name":"2835","quantity":11},{"name":"2836","quantity":11},{"name":"2872","quantity":11},{"name":"2886","quantity":10},{"name":"2852","quantity":8},{"name":"2859","quantity":7},{"name":"2838","quantity":6},{"name":"2887","quantity":6},{"name":"2824","quantity":4},{"name":"2833","quantity":4},{"name":"2845","quantity":4},{"name":"2863","quantity":4},{"name":"2822","quantity":3},{"name":"2837","quantity":3},{"name":"2811","quantity":2},{"name":"2814","quantity":2},{"name":"2816","quantity":2},{"name":"2819","quantity":2},{"name":"2834","quantity":2},{"name":"2841","quantity":2},{"name":"2842","quantity":2},{"name":"2854","quantity":2},{"name":"2855","quantity":2},{"name":"2857","quantity":2},{"name":"2862","quantity":2},{"name":"2868","quantity":2},{"name":"2871","quantity":2},{"name":"2875","quantity":2},{"name":"2884","quantity":2},{"name":"2893","quantity":2},{"name":"2896","quantity":2},{"name":"2817","quantity":1},{"name":"2818","quantity":1},{"name":"2825","quantity":1},{"name":"2827","quantity":1},{"name":"2828","quantity":1},{"name":"2832","quantity":1},{"name":"2844","quantity":1},{"name":"2846","quantity":1},{"name":"2847","quantity":1},{"name":"2848","quantity":1},{"name":"2858","quantity":1},{"name":"2864","quantity":1},{"name":"2873","quantity":1},{"name":"2874","quantity":1},{"name":"2897","quantity":1}]},{"name":"3600","quantity":118,"nestedFacetTypeName":"respondentGroupArtUnitNumber","nestedFacetBag":[{"name":"3668","quantity":10},{"name":"3685","quantity":10},{"name":"3687","quantity":7},{"name":"3696","quantity":7},{"name":"3695","quantity":4},{"name":"3625","quantity":3},{"name":"3645","quantity":3},{"name":"3661","quantity":3},{"name":"3686","quantity":3},{"name":"3692","quantity":3},{"name":"3619","quantity":2},{"name":"3646","quantity":2},{"name":"3652","quantity":2},{"name":"3662","quantity":2},{"name":"3667","quantity":2},{"name":"3682","quantity":2},{"name":"3684","quantity":2},{"name":"3694","quantity":2},{"name":"3623","quantity":1},{"name":"3627","quantity":1},{"name":"3629","quantity":1},{"name":"3633","quantity":1},{"name":"3663","quantity":1},{"name":"3673","quantity":1},{"name":"3683","quantity":1},{"name":"3688","quantity":1},{"name":"3693","quantity":1},{"name":"3697","quantity":1},{"name":"3698","quantity":1}]},{"name":"3700","quantity":75,"nestedFacetTypeName":"respondentGroupArtUnitNumber","nestedFacetBag":[{"name":"3791","quantity":37},{"name":"3792","quantity":9},{"name":"3762","quantity":6},{"name":"3766","quantity":4},{"name":"3769","quantity":4},{"name":"3713","quantity":2},{"name":"3736","quantity":2},{"name":"3768","quantity":2},{"name":"3777","quantity":2},{"name":"3714","quantity":1},{"name":"3715","quantity":1},{"name":"3735","quantity":1},{"name":"3764","quantity":1},{"name":"3794","quantity":1}]},{"name":"1700","quantity":15,"nestedFacetTypeName":"respondentGroupArtUnitNumber","nestedFacetBag":[{"name":"1783","quantity":4},{"name":"1795","quantity":2},{"name":"1714","quantity":1},{"name":"1722","quantity":1},{"name":"1724","quantity":1},{"name":"1725","quantity":1},{"name":"1734","quantity":1},{"name":"1742","quantity":1},{"name":"1751","quantity":1},{"name":"1782","quantity":1},{"name":"1794","quantity":1}]},{"name":"2900","quantity":12,"nestedFacetTypeName":"respondentGroupArtUnitNumber","nestedFacetBag":[{"name":"2923","quantity":4},{"name":"2913","quantity":3},{"name":"2911","quantity":2},{"name":"2917","quantity":1},{"name":"2918","quantity":1},{"name":"2925","quantity":1}]},{"name":"2700","quantity":10,"nestedFacetTypeName":"respondentGroupArtUnitNumber","nestedFacetBag":[{"name":"2745","quantity":1},{"name":"2758","quantity":1},{"name":"2767","quantity":1},{"name":"2778","quantity":1}]},{"name":"3900","quantity":9,"nestedFacetTypeName":"respondentGroupArtUnitNumber","nestedFacetBag":[{"name":"3992","quantity":9}]},{"name":"RD00","quantity":1,"nestedFacetTypeName":"respondentGroupArtUnitNumber","nestedFacetBag":[{"name":"RD00","quantity":1}]}],"proceedingStatusCategory":[{"name":"Decision","quantity":501},{"name":"Terminated-Denied","quantity":255},{"name":"Terminated-Settled","quantity":182},{"name":"FWD
+      Entered","quantity":165},{"name":"Final Written Decision","quantity":113},{"name":"Institution
+      Denied","quantity":67},{"name":"Final Written Decision - Appealed","quantity":40},{"name":"Pending","quantity":33},{"name":"Trial
+      Instituted","quantity":29},{"name":"Terminated","quantity":25},{"name":"Pending
+      Director Review","quantity":3},{"name":"Terminated-Dismissed","quantity":2},{"name":"Terminated-Other","quantity":2}]},"results":[{"proceedingFilingDate":"02-04-2003","proceedingStatusCategory":"Decision","proceedingNumber":"2003000712","proceedingLastModifiedDate":"10-15-2003","proceedingTypeCategory":"Appeal","subproceedingTypeCategory":"REGULAR","respondentTechnologyCenterNumber":"3600","respondentPartyName":"APPLE
+      et al","respondentGroupArtUnitNumber":"3652","respondentApplicationNumberText":"09451574","decisionDate":"10-15-2003","appellantTechnologyCenterNumber":"3600","appellantPatentOwnerName":"APPLE
+      et al","appellantPartyName":"APPLE et al","appellantGroupArtUnitNumber":"3652","appellantInventorName":"APPLE
+      et al","appellantCounselName":"BROOKS KUSHMAN P.C. /Oracle America/ SUN / STK","appellantApplicationNumberText":"09451574","docketNoticeMailDate":"03-05-2003","additionalRespondentPartyDataBag":[]},{"proceedingFilingDate":"03-19-2003","proceedingStatusCategory":"Decision","proceedingNumber":"2003000938","proceedingLastModifiedDate":"12-16-2003","proceedingTypeCategory":"Appeal","subproceedingTypeCategory":"REGULAR","respondentTechnologyCenterNumber":"2600","respondentPartyName":"APPLE
+      et al","respondentGroupArtUnitNumber":"2628","respondentPatentNumber":"7082398","respondentApplicationNumberText":"08736143","decisionDate":"05-06-2004","appellantTechnologyCenterNumber":"2600","appellantPatentOwnerName":"APPLE
+      et al","appellantPartyName":"APPLE et al","appellantGroupArtUnitNumber":"2628","appellantInventorName":"APPLE
+      et al","appellantCounselName":"FISH & RICHARDSON P.C. (BO)","appellantGrantDate":"07-25-2006","appellantPatentNumber":"7082398","appellantApplicationNumberText":"08736143","docketNoticeMailDate":"03-26-2003","additionalRespondentPartyDataBag":[]},{"proceedingFilingDate":"05-11-2005","proceedingStatusCategory":"Decision","proceedingNumber":"2005001531","proceedingLastModifiedDate":"12-19-2005","proceedingTypeCategory":"Appeal","subproceedingTypeCategory":"REGULAR","respondentTechnologyCenterNumber":"3600","respondentPartyName":"APPLE
+      et al","respondentGroupArtUnitNumber":"3652","respondentApplicationNumberText":"09451574","decisionDate":"12-15-2005","appellantTechnologyCenterNumber":"3600","appellantPatentOwnerName":"APPLE
+      et al","appellantPartyName":"APPLE et al","appellantGroupArtUnitNumber":"3652","appellantInventorName":"APPLE
+      et al","appellantCounselName":"BROOKS KUSHMAN P.C. /Oracle America/ SUN / STK","appellantApplicationNumberText":"09451574","docketNoticeMailDate":"06-15-2005","additionalRespondentPartyDataBag":[]}],"recordTotalQuantity":1417}'
     headers:
-      access-control-allow-credentials:
+      Access-Control-Allow-Credentials:
       - 'true'
-      access-control-allow-headers:
+      Access-Control-Allow-Headers:
       - accept, authorization, content-type, x-requested-with
-      access-control-allow-methods:
+      Access-Control-Allow-Methods:
       - GET, POST, OPTIONS, PUT
-      access-control-allow-origin:
+      Access-Control-Allow-Origin:
       - '*'
-      access-control-max-age:
+      Access-Control-Max-Age:
       - '1'
-      content-type:
+      Connection:
+      - keep-alive
+      Content-Type:
       - application/json
-      date:
-      - Wed, 22 May 2024 16:20:06 GMT
-      strict-transport-security:
+      Date:
+      - Mon, 05 Aug 2024 22:16:01 GMT
+      Strict-Transport-Security:
       - max-age=31536000;
-      vary:
+      Transfer-Encoding:
+      - chunked
+      Vary:
       - Origin
       - Access-Control-Request-Method
       - Access-Control-Request-Headers
-    http_version: HTTP/2
+    http_version: HTTP/1.1
     status_code: 200
 - request:
-    body: ''
+    body: '{"recordStartNumber": 0, "recordTotalQuantity": 1, "sortDataBag": [], "searchText":
+      "partyName:(\"Apple\")"}'
     headers:
       accept:
       - '*/*'
@@ -55,42 +71,55 @@ interactions:
       - gzip, deflate
       connection:
       - keep-alive
+      content-length:
+      - '108'
+      content-type:
+      - application/json
       host:
       - developer.uspto.gov
       user-agent:
-      - Mozilla/5.0 Python Patent Clientbot/5.0.14 (parkerhancock@users.noreply.github.com)
-    method: GET
-    uri: https://developer.uspto.gov/ptab-api/proceedings?partyName=Apple&recordStartNumber=0&recordTotalQuantity=1&sortOrderCategory=
+      - python-httpx/0.27.0
+    method: POST
+    uri: https://developer.uspto.gov/ptab-api/proceedings/json
   response:
-    content: '{"aggregationData":{},"results":[{"proceedingFilingDate":"09-23-1998","proceedingStatusCategory":"Decision","proceedingNumber":"1998003162","proceedingLastModifiedDate":"11-02-2020","proceedingTypeCategory":"Appeal","subproceedingTypeCategory":"REGULAR","respondentTechnologyCenterNumber":"1700","respondentPartyName":"KAPPLER
-      et al","respondentGroupArtUnitNumber":"1713","respondentPatentNumber":"6448328","respondentApplicationNumberText":"08453149","decisionDate":"11-27-2001","appellantTechnologyCenterNumber":"1700","appellantPatentOwnerName":"KAPPLER
-      et al","appellantPartyName":"KAPPLER et al","appellantGroupArtUnitNumber":"1713","appellantInventorName":"KAPPLER
-      et al","appellantCounselName":"PENNIE & EDMONDS","appellantGrantDate":"09-10-2002","appellantPatentNumber":"6448328","appellantApplicationNumberText":"08453149","additionalRespondentPartyDataBag":[]}],"recordTotalQuantity":1449}'
+    content: '{"aggregationData":{"proceedingTypeCategory":[{"name":"AIA Trial","quantity":916,"nestedFacetTypeName":"subproceedingTypeCategory","nestedFacetBag":[{"name":"IPR","quantity":857},{"name":"CBM","quantity":55},{"name":"PGR","quantity":4}]},{"name":"Appeal","quantity":501,"nestedFacetTypeName":"subproceedingTypeCategory","nestedFacetBag":[{"name":"REGULAR","quantity":492},{"name":"REEXAM","quantity":8},{"name":"REISSUE","quantity":1}]}],"respondentTechnologyCenterNumber":[{"name":"2600","quantity":505,"nestedFacetTypeName":"respondentGroupArtUnitNumber","nestedFacetBag":[{"name":"2641","quantity":29},{"name":"2646","quantity":29},{"name":"2611","quantity":24},{"name":"2623","quantity":20},{"name":"2626","quantity":17},{"name":"2625","quantity":16},{"name":"2652","quantity":15},{"name":"2616","quantity":14},{"name":"2621","quantity":14},{"name":"2644","quantity":13},{"name":"2656","quantity":12},{"name":"2612","quantity":10},{"name":"2614","quantity":10},{"name":"2617","quantity":10},{"name":"2613","quantity":9},{"name":"2651","quantity":9},{"name":"2627","quantity":8},{"name":"2642","quantity":8},{"name":"2645","quantity":8},{"name":"2647","quantity":8},{"name":"2648","quantity":8},{"name":"2653","quantity":8},{"name":"2618","quantity":7},{"name":"2624","quantity":7},{"name":"2654","quantity":7},{"name":"2657","quantity":7},{"name":"2684","quantity":7},{"name":"2699","quantity":7},{"name":"2629","quantity":6},{"name":"2631","quantity":6},{"name":"2628","quantity":5},{"name":"2658","quantity":5},{"name":"2661","quantity":5},{"name":"2664","quantity":5},{"name":"2681","quantity":5},{"name":"2622","quantity":4},{"name":"2643","quantity":4},{"name":"2662","quantity":4},{"name":"2668","quantity":4},{"name":"2683","quantity":4},{"name":"2692","quantity":4},{"name":"2694","quantity":4},{"name":"2655","quantity":3},{"name":"2691","quantity":3},{"name":"2697","quantity":3},{"name":"2619","quantity":2},{"name":"2632","quantity":2},{"name":"2633","quantity":2},{"name":"2634","quantity":2},{"name":"2635","quantity":2},{"name":"2649","quantity":2},{"name":"2659","quantity":2},{"name":"2669","quantity":2},{"name":"2674","quantity":2},{"name":"2682","quantity":2},{"name":"2685","quantity":2},{"name":"2689","quantity":2},{"name":"2693","quantity":2},{"name":"2696","quantity":2},{"name":"2636","quantity":1},{"name":"2663","quantity":1},{"name":"2665","quantity":1},{"name":"2666","quantity":1},{"name":"2667","quantity":1},{"name":"2677","quantity":1},{"name":"2687","quantity":1},{"name":"2698","quantity":1}]},{"name":"2400","quantity":271,"nestedFacetTypeName":"respondentGroupArtUnitNumber","nestedFacetBag":[{"name":"2469","quantity":12},{"name":"2414","quantity":9},{"name":"2467","quantity":9},{"name":"2473","quantity":9},{"name":"2477","quantity":9},{"name":"2435","quantity":8},{"name":"2463","quantity":8},{"name":"2413","quantity":7},{"name":"2478","quantity":7},{"name":"2461","quantity":6},{"name":"2466","quantity":6},{"name":"2412","quantity":5},{"name":"2416","quantity":5},{"name":"2436","quantity":5},{"name":"2438","quantity":5},{"name":"2465","quantity":5},{"name":"2472","quantity":5},{"name":"2459","quantity":4},{"name":"2468","quantity":4},{"name":"2484","quantity":4},{"name":"2485","quantity":4},{"name":"2497","quantity":4},{"name":"2411","quantity":3},{"name":"2424","quantity":3},{"name":"2431","quantity":3},{"name":"2437","quantity":3},{"name":"2439","quantity":3},{"name":"2453","quantity":3},{"name":"2462","quantity":3},{"name":"2471","quantity":3},{"name":"2476","quantity":3},{"name":"2482","quantity":3},{"name":"2483","quantity":3},{"name":"2486","quantity":3},{"name":"2415","quantity":2},{"name":"2419","quantity":2},{"name":"2421","quantity":2},{"name":"2423","quantity":2},{"name":"2425","quantity":2},{"name":"2434","quantity":2},{"name":"2443","quantity":2},{"name":"2444","quantity":2},{"name":"2447","quantity":2},{"name":"2451","quantity":2},{"name":"2456","quantity":2},{"name":"2464","quantity":2},{"name":"2474","quantity":2},{"name":"2488","quantity":2},{"name":"2491","quantity":2},{"name":"2492","quantity":2},{"name":"2494","quantity":2},{"name":"2495","quantity":2},{"name":"2422","quantity":1},{"name":"2432","quantity":1},{"name":"2433","quantity":1},{"name":"2441","quantity":1},{"name":"2442","quantity":1},{"name":"2448","quantity":1},{"name":"2455","quantity":1},{"name":"2475","quantity":1},{"name":"2479","quantity":1},{"name":"2481","quantity":1},{"name":"2487","quantity":1}]},{"name":"2100","quantity":219,"nestedFacetTypeName":"respondentGroupArtUnitNumber","nestedFacetBag":[{"name":"2181","quantity":14},{"name":"2173","quantity":12},{"name":"2177","quantity":10},{"name":"2145","quantity":8},{"name":"2175","quantity":8},{"name":"2143","quantity":7},{"name":"2174","quantity":7},{"name":"2176","quantity":7},{"name":"2179","quantity":7},{"name":"2171","quantity":6},{"name":"2116","quantity":5},{"name":"2185","quantity":4},{"name":"2194","quantity":4},{"name":"2118","quantity":3},{"name":"2164","quantity":3},{"name":"2165","quantity":3},{"name":"2178","quantity":3},{"name":"2187","quantity":3},{"name":"2191","quantity":3},{"name":"2193","quantity":3},{"name":"2115","quantity":2},{"name":"2123","quantity":2},{"name":"2124","quantity":2},{"name":"2125","quantity":2},{"name":"2128","quantity":2},{"name":"2129","quantity":2},{"name":"2132","quantity":2},{"name":"2144","quantity":2},{"name":"2154","quantity":2},{"name":"2157","quantity":2},{"name":"2163","quantity":2},{"name":"2195","quantity":2},{"name":"2111","quantity":1},{"name":"2112","quantity":1},{"name":"2121","quantity":1},{"name":"2135","quantity":1},{"name":"2139","quantity":1},{"name":"2141","quantity":1},{"name":"2142","quantity":1},{"name":"2152","quantity":1},{"name":"2153","quantity":1},{"name":"2158","quantity":1},{"name":"2161","quantity":1},{"name":"2166","quantity":1},{"name":"2168","quantity":1},{"name":"2172","quantity":1},{"name":"2183","quantity":1},{"name":"2184","quantity":1},{"name":"2199","quantity":1}]},{"name":"2800","quantity":182,"nestedFacetTypeName":"respondentGroupArtUnitNumber","nestedFacetBag":[{"name":"2835","quantity":11},{"name":"2836","quantity":11},{"name":"2872","quantity":11},{"name":"2886","quantity":10},{"name":"2852","quantity":8},{"name":"2859","quantity":7},{"name":"2838","quantity":6},{"name":"2887","quantity":6},{"name":"2824","quantity":4},{"name":"2833","quantity":4},{"name":"2845","quantity":4},{"name":"2863","quantity":4},{"name":"2822","quantity":3},{"name":"2837","quantity":3},{"name":"2811","quantity":2},{"name":"2814","quantity":2},{"name":"2816","quantity":2},{"name":"2819","quantity":2},{"name":"2834","quantity":2},{"name":"2841","quantity":2},{"name":"2842","quantity":2},{"name":"2854","quantity":2},{"name":"2855","quantity":2},{"name":"2857","quantity":2},{"name":"2862","quantity":2},{"name":"2868","quantity":2},{"name":"2871","quantity":2},{"name":"2875","quantity":2},{"name":"2884","quantity":2},{"name":"2893","quantity":2},{"name":"2896","quantity":2},{"name":"2817","quantity":1},{"name":"2818","quantity":1},{"name":"2825","quantity":1},{"name":"2827","quantity":1},{"name":"2828","quantity":1},{"name":"2832","quantity":1},{"name":"2844","quantity":1},{"name":"2846","quantity":1},{"name":"2847","quantity":1},{"name":"2848","quantity":1},{"name":"2858","quantity":1},{"name":"2864","quantity":1},{"name":"2873","quantity":1},{"name":"2874","quantity":1},{"name":"2897","quantity":1}]},{"name":"3600","quantity":118,"nestedFacetTypeName":"respondentGroupArtUnitNumber","nestedFacetBag":[{"name":"3668","quantity":10},{"name":"3685","quantity":10},{"name":"3687","quantity":7},{"name":"3696","quantity":7},{"name":"3695","quantity":4},{"name":"3625","quantity":3},{"name":"3645","quantity":3},{"name":"3661","quantity":3},{"name":"3686","quantity":3},{"name":"3692","quantity":3},{"name":"3619","quantity":2},{"name":"3646","quantity":2},{"name":"3652","quantity":2},{"name":"3662","quantity":2},{"name":"3667","quantity":2},{"name":"3682","quantity":2},{"name":"3684","quantity":2},{"name":"3694","quantity":2},{"name":"3623","quantity":1},{"name":"3627","quantity":1},{"name":"3629","quantity":1},{"name":"3633","quantity":1},{"name":"3663","quantity":1},{"name":"3673","quantity":1},{"name":"3683","quantity":1},{"name":"3688","quantity":1},{"name":"3693","quantity":1},{"name":"3697","quantity":1},{"name":"3698","quantity":1}]},{"name":"3700","quantity":75,"nestedFacetTypeName":"respondentGroupArtUnitNumber","nestedFacetBag":[{"name":"3791","quantity":37},{"name":"3792","quantity":9},{"name":"3762","quantity":6},{"name":"3766","quantity":4},{"name":"3769","quantity":4},{"name":"3713","quantity":2},{"name":"3736","quantity":2},{"name":"3768","quantity":2},{"name":"3777","quantity":2},{"name":"3714","quantity":1},{"name":"3715","quantity":1},{"name":"3735","quantity":1},{"name":"3764","quantity":1},{"name":"3794","quantity":1}]},{"name":"1700","quantity":15,"nestedFacetTypeName":"respondentGroupArtUnitNumber","nestedFacetBag":[{"name":"1783","quantity":4},{"name":"1795","quantity":2},{"name":"1714","quantity":1},{"name":"1722","quantity":1},{"name":"1724","quantity":1},{"name":"1725","quantity":1},{"name":"1734","quantity":1},{"name":"1742","quantity":1},{"name":"1751","quantity":1},{"name":"1782","quantity":1},{"name":"1794","quantity":1}]},{"name":"2900","quantity":12,"nestedFacetTypeName":"respondentGroupArtUnitNumber","nestedFacetBag":[{"name":"2923","quantity":4},{"name":"2913","quantity":3},{"name":"2911","quantity":2},{"name":"2917","quantity":1},{"name":"2918","quantity":1},{"name":"2925","quantity":1}]},{"name":"2700","quantity":10,"nestedFacetTypeName":"respondentGroupArtUnitNumber","nestedFacetBag":[{"name":"2745","quantity":1},{"name":"2758","quantity":1},{"name":"2767","quantity":1},{"name":"2778","quantity":1}]},{"name":"3900","quantity":9,"nestedFacetTypeName":"respondentGroupArtUnitNumber","nestedFacetBag":[{"name":"3992","quantity":9}]},{"name":"RD00","quantity":1,"nestedFacetTypeName":"respondentGroupArtUnitNumber","nestedFacetBag":[{"name":"RD00","quantity":1}]}],"proceedingStatusCategory":[{"name":"Decision","quantity":501},{"name":"Terminated-Denied","quantity":255},{"name":"Terminated-Settled","quantity":182},{"name":"FWD
+      Entered","quantity":165},{"name":"Final Written Decision","quantity":113},{"name":"Institution
+      Denied","quantity":67},{"name":"Final Written Decision - Appealed","quantity":40},{"name":"Pending","quantity":33},{"name":"Trial
+      Instituted","quantity":29},{"name":"Terminated","quantity":25},{"name":"Pending
+      Director Review","quantity":3},{"name":"Terminated-Dismissed","quantity":2},{"name":"Terminated-Other","quantity":2}]},"results":[{"proceedingFilingDate":"02-04-2003","proceedingStatusCategory":"Decision","proceedingNumber":"2003000712","proceedingLastModifiedDate":"10-15-2003","proceedingTypeCategory":"Appeal","subproceedingTypeCategory":"REGULAR","respondentTechnologyCenterNumber":"3600","respondentPartyName":"APPLE
+      et al","respondentGroupArtUnitNumber":"3652","respondentApplicationNumberText":"09451574","decisionDate":"10-15-2003","appellantTechnologyCenterNumber":"3600","appellantPatentOwnerName":"APPLE
+      et al","appellantPartyName":"APPLE et al","appellantGroupArtUnitNumber":"3652","appellantInventorName":"APPLE
+      et al","appellantCounselName":"BROOKS KUSHMAN P.C. /Oracle America/ SUN / STK","appellantApplicationNumberText":"09451574","docketNoticeMailDate":"03-05-2003","additionalRespondentPartyDataBag":[]}],"recordTotalQuantity":1417}'
     headers:
-      access-control-allow-credentials:
+      Access-Control-Allow-Credentials:
       - 'true'
-      access-control-allow-headers:
+      Access-Control-Allow-Headers:
       - accept, authorization, content-type, x-requested-with
-      access-control-allow-methods:
+      Access-Control-Allow-Methods:
       - GET, POST, OPTIONS, PUT
-      access-control-allow-origin:
+      Access-Control-Allow-Origin:
       - '*'
-      access-control-max-age:
+      Access-Control-Max-Age:
       - '1'
-      content-type:
+      Connection:
+      - keep-alive
+      Content-Type:
       - application/json
-      date:
-      - Wed, 22 May 2024 16:20:06 GMT
-      strict-transport-security:
+      Date:
+      - Mon, 05 Aug 2024 22:16:01 GMT
+      Strict-Transport-Security:
       - max-age=31536000;
-      vary:
+      Transfer-Encoding:
+      - chunked
+      Vary:
       - Origin
       - Access-Control-Request-Method
       - Access-Control-Request-Headers
-    http_version: HTTP/2
+    http_version: HTTP/1.1
     status_code: 200
 - request:
-    body: ''
+    body: '{"recordStartNumber": 1, "recordTotalQuantity": 1, "sortDataBag": [], "searchText":
+      "partyName:(\"Apple\")"}'
     headers:
       accept:
       - '*/*'
@@ -98,40 +127,55 @@ interactions:
       - gzip, deflate
       connection:
       - keep-alive
+      content-length:
+      - '108'
+      content-type:
+      - application/json
       host:
       - developer.uspto.gov
       user-agent:
-      - Mozilla/5.0 Python Patent Clientbot/5.0.14 (parkerhancock@users.noreply.github.com)
-    method: GET
-    uri: https://developer.uspto.gov/ptab-api/proceedings?partyName=Apple&recordStartNumber=1&recordTotalQuantity=1&sortOrderCategory=
+      - python-httpx/0.27.0
+    method: POST
+    uri: https://developer.uspto.gov/ptab-api/proceedings/json
   response:
-    content: '{"aggregationData":{},"results":[{"proceedingFilingDate":"06-15-2000","proceedingStatusCategory":"Decision","proceedingNumber":"2000001619","proceedingLastModifiedDate":"06-15-2000","proceedingTypeCategory":"Appeal","subproceedingTypeCategory":"REGULAR","respondentTechnologyCenterNumber":"2800","respondentPartyName":"APPLETON","respondentGroupArtUnitNumber":"2873","respondentPatentNumber":"6491393","respondentApplicationNumberText":"08977107","decisionDate":"08-30-2002","appellantTechnologyCenterNumber":"2800","appellantPatentOwnerName":"APPLETON","appellantPartyName":"APPLETON","appellantGroupArtUnitNumber":"2873","appellantInventorName":"APPLETON","appellantCounselName":"Bausch
-      & Lomb Incorporated","appellantGrantDate":"12-10-2002","appellantPatentNumber":"6491393","appellantApplicationNumberText":"08977107","additionalRespondentPartyDataBag":[]}],"recordTotalQuantity":1449}'
+    content: '{"aggregationData":{"proceedingTypeCategory":[{"name":"AIA Trial","quantity":916,"nestedFacetTypeName":"subproceedingTypeCategory","nestedFacetBag":[{"name":"IPR","quantity":857},{"name":"CBM","quantity":55},{"name":"PGR","quantity":4}]},{"name":"Appeal","quantity":501,"nestedFacetTypeName":"subproceedingTypeCategory","nestedFacetBag":[{"name":"REGULAR","quantity":492},{"name":"REEXAM","quantity":8},{"name":"REISSUE","quantity":1}]}],"respondentTechnologyCenterNumber":[{"name":"2600","quantity":505,"nestedFacetTypeName":"respondentGroupArtUnitNumber","nestedFacetBag":[{"name":"2641","quantity":29},{"name":"2646","quantity":29},{"name":"2611","quantity":24},{"name":"2623","quantity":20},{"name":"2626","quantity":17},{"name":"2625","quantity":16},{"name":"2652","quantity":15},{"name":"2616","quantity":14},{"name":"2621","quantity":14},{"name":"2644","quantity":13},{"name":"2656","quantity":12},{"name":"2612","quantity":10},{"name":"2614","quantity":10},{"name":"2617","quantity":10},{"name":"2613","quantity":9},{"name":"2651","quantity":9},{"name":"2627","quantity":8},{"name":"2642","quantity":8},{"name":"2645","quantity":8},{"name":"2647","quantity":8},{"name":"2648","quantity":8},{"name":"2653","quantity":8},{"name":"2618","quantity":7},{"name":"2624","quantity":7},{"name":"2654","quantity":7},{"name":"2657","quantity":7},{"name":"2684","quantity":7},{"name":"2699","quantity":7},{"name":"2629","quantity":6},{"name":"2631","quantity":6},{"name":"2628","quantity":5},{"name":"2658","quantity":5},{"name":"2661","quantity":5},{"name":"2664","quantity":5},{"name":"2681","quantity":5},{"name":"2622","quantity":4},{"name":"2643","quantity":4},{"name":"2662","quantity":4},{"name":"2668","quantity":4},{"name":"2683","quantity":4},{"name":"2692","quantity":4},{"name":"2694","quantity":4},{"name":"2655","quantity":3},{"name":"2691","quantity":3},{"name":"2697","quantity":3},{"name":"2619","quantity":2},{"name":"2632","quantity":2},{"name":"2633","quantity":2},{"name":"2634","quantity":2},{"name":"2635","quantity":2},{"name":"2649","quantity":2},{"name":"2659","quantity":2},{"name":"2669","quantity":2},{"name":"2674","quantity":2},{"name":"2682","quantity":2},{"name":"2685","quantity":2},{"name":"2689","quantity":2},{"name":"2693","quantity":2},{"name":"2696","quantity":2},{"name":"2636","quantity":1},{"name":"2663","quantity":1},{"name":"2665","quantity":1},{"name":"2666","quantity":1},{"name":"2667","quantity":1},{"name":"2677","quantity":1},{"name":"2687","quantity":1},{"name":"2698","quantity":1}]},{"name":"2400","quantity":271,"nestedFacetTypeName":"respondentGroupArtUnitNumber","nestedFacetBag":[{"name":"2469","quantity":12},{"name":"2414","quantity":9},{"name":"2467","quantity":9},{"name":"2473","quantity":9},{"name":"2477","quantity":9},{"name":"2435","quantity":8},{"name":"2463","quantity":8},{"name":"2413","quantity":7},{"name":"2478","quantity":7},{"name":"2461","quantity":6},{"name":"2466","quantity":6},{"name":"2412","quantity":5},{"name":"2416","quantity":5},{"name":"2436","quantity":5},{"name":"2438","quantity":5},{"name":"2465","quantity":5},{"name":"2472","quantity":5},{"name":"2459","quantity":4},{"name":"2468","quantity":4},{"name":"2484","quantity":4},{"name":"2485","quantity":4},{"name":"2497","quantity":4},{"name":"2411","quantity":3},{"name":"2424","quantity":3},{"name":"2431","quantity":3},{"name":"2437","quantity":3},{"name":"2439","quantity":3},{"name":"2453","quantity":3},{"name":"2462","quantity":3},{"name":"2471","quantity":3},{"name":"2476","quantity":3},{"name":"2482","quantity":3},{"name":"2483","quantity":3},{"name":"2486","quantity":3},{"name":"2415","quantity":2},{"name":"2419","quantity":2},{"name":"2421","quantity":2},{"name":"2423","quantity":2},{"name":"2425","quantity":2},{"name":"2434","quantity":2},{"name":"2443","quantity":2},{"name":"2444","quantity":2},{"name":"2447","quantity":2},{"name":"2451","quantity":2},{"name":"2456","quantity":2},{"name":"2464","quantity":2},{"name":"2474","quantity":2},{"name":"2488","quantity":2},{"name":"2491","quantity":2},{"name":"2492","quantity":2},{"name":"2494","quantity":2},{"name":"2495","quantity":2},{"name":"2422","quantity":1},{"name":"2432","quantity":1},{"name":"2433","quantity":1},{"name":"2441","quantity":1},{"name":"2442","quantity":1},{"name":"2448","quantity":1},{"name":"2455","quantity":1},{"name":"2475","quantity":1},{"name":"2479","quantity":1},{"name":"2481","quantity":1},{"name":"2487","quantity":1}]},{"name":"2100","quantity":219,"nestedFacetTypeName":"respondentGroupArtUnitNumber","nestedFacetBag":[{"name":"2181","quantity":14},{"name":"2173","quantity":12},{"name":"2177","quantity":10},{"name":"2145","quantity":8},{"name":"2175","quantity":8},{"name":"2143","quantity":7},{"name":"2174","quantity":7},{"name":"2176","quantity":7},{"name":"2179","quantity":7},{"name":"2171","quantity":6},{"name":"2116","quantity":5},{"name":"2185","quantity":4},{"name":"2194","quantity":4},{"name":"2118","quantity":3},{"name":"2164","quantity":3},{"name":"2165","quantity":3},{"name":"2178","quantity":3},{"name":"2187","quantity":3},{"name":"2191","quantity":3},{"name":"2193","quantity":3},{"name":"2115","quantity":2},{"name":"2123","quantity":2},{"name":"2124","quantity":2},{"name":"2125","quantity":2},{"name":"2128","quantity":2},{"name":"2129","quantity":2},{"name":"2132","quantity":2},{"name":"2144","quantity":2},{"name":"2154","quantity":2},{"name":"2157","quantity":2},{"name":"2163","quantity":2},{"name":"2195","quantity":2},{"name":"2111","quantity":1},{"name":"2112","quantity":1},{"name":"2121","quantity":1},{"name":"2135","quantity":1},{"name":"2139","quantity":1},{"name":"2141","quantity":1},{"name":"2142","quantity":1},{"name":"2152","quantity":1},{"name":"2153","quantity":1},{"name":"2158","quantity":1},{"name":"2161","quantity":1},{"name":"2166","quantity":1},{"name":"2168","quantity":1},{"name":"2172","quantity":1},{"name":"2183","quantity":1},{"name":"2184","quantity":1},{"name":"2199","quantity":1}]},{"name":"2800","quantity":182,"nestedFacetTypeName":"respondentGroupArtUnitNumber","nestedFacetBag":[{"name":"2835","quantity":11},{"name":"2836","quantity":11},{"name":"2872","quantity":11},{"name":"2886","quantity":10},{"name":"2852","quantity":8},{"name":"2859","quantity":7},{"name":"2838","quantity":6},{"name":"2887","quantity":6},{"name":"2824","quantity":4},{"name":"2833","quantity":4},{"name":"2845","quantity":4},{"name":"2863","quantity":4},{"name":"2822","quantity":3},{"name":"2837","quantity":3},{"name":"2811","quantity":2},{"name":"2814","quantity":2},{"name":"2816","quantity":2},{"name":"2819","quantity":2},{"name":"2834","quantity":2},{"name":"2841","quantity":2},{"name":"2842","quantity":2},{"name":"2854","quantity":2},{"name":"2855","quantity":2},{"name":"2857","quantity":2},{"name":"2862","quantity":2},{"name":"2868","quantity":2},{"name":"2871","quantity":2},{"name":"2875","quantity":2},{"name":"2884","quantity":2},{"name":"2893","quantity":2},{"name":"2896","quantity":2},{"name":"2817","quantity":1},{"name":"2818","quantity":1},{"name":"2825","quantity":1},{"name":"2827","quantity":1},{"name":"2828","quantity":1},{"name":"2832","quantity":1},{"name":"2844","quantity":1},{"name":"2846","quantity":1},{"name":"2847","quantity":1},{"name":"2848","quantity":1},{"name":"2858","quantity":1},{"name":"2864","quantity":1},{"name":"2873","quantity":1},{"name":"2874","quantity":1},{"name":"2897","quantity":1}]},{"name":"3600","quantity":118,"nestedFacetTypeName":"respondentGroupArtUnitNumber","nestedFacetBag":[{"name":"3668","quantity":10},{"name":"3685","quantity":10},{"name":"3687","quantity":7},{"name":"3696","quantity":7},{"name":"3695","quantity":4},{"name":"3625","quantity":3},{"name":"3645","quantity":3},{"name":"3661","quantity":3},{"name":"3686","quantity":3},{"name":"3692","quantity":3},{"name":"3619","quantity":2},{"name":"3646","quantity":2},{"name":"3652","quantity":2},{"name":"3662","quantity":2},{"name":"3667","quantity":2},{"name":"3682","quantity":2},{"name":"3684","quantity":2},{"name":"3694","quantity":2},{"name":"3623","quantity":1},{"name":"3627","quantity":1},{"name":"3629","quantity":1},{"name":"3633","quantity":1},{"name":"3663","quantity":1},{"name":"3673","quantity":1},{"name":"3683","quantity":1},{"name":"3688","quantity":1},{"name":"3693","quantity":1},{"name":"3697","quantity":1},{"name":"3698","quantity":1}]},{"name":"3700","quantity":75,"nestedFacetTypeName":"respondentGroupArtUnitNumber","nestedFacetBag":[{"name":"3791","quantity":37},{"name":"3792","quantity":9},{"name":"3762","quantity":6},{"name":"3766","quantity":4},{"name":"3769","quantity":4},{"name":"3713","quantity":2},{"name":"3736","quantity":2},{"name":"3768","quantity":2},{"name":"3777","quantity":2},{"name":"3714","quantity":1},{"name":"3715","quantity":1},{"name":"3735","quantity":1},{"name":"3764","quantity":1},{"name":"3794","quantity":1}]},{"name":"1700","quantity":15,"nestedFacetTypeName":"respondentGroupArtUnitNumber","nestedFacetBag":[{"name":"1783","quantity":4},{"name":"1795","quantity":2},{"name":"1714","quantity":1},{"name":"1722","quantity":1},{"name":"1724","quantity":1},{"name":"1725","quantity":1},{"name":"1734","quantity":1},{"name":"1742","quantity":1},{"name":"1751","quantity":1},{"name":"1782","quantity":1},{"name":"1794","quantity":1}]},{"name":"2900","quantity":12,"nestedFacetTypeName":"respondentGroupArtUnitNumber","nestedFacetBag":[{"name":"2923","quantity":4},{"name":"2913","quantity":3},{"name":"2911","quantity":2},{"name":"2917","quantity":1},{"name":"2918","quantity":1},{"name":"2925","quantity":1}]},{"name":"2700","quantity":10,"nestedFacetTypeName":"respondentGroupArtUnitNumber","nestedFacetBag":[{"name":"2745","quantity":1},{"name":"2758","quantity":1},{"name":"2767","quantity":1},{"name":"2778","quantity":1}]},{"name":"3900","quantity":9,"nestedFacetTypeName":"respondentGroupArtUnitNumber","nestedFacetBag":[{"name":"3992","quantity":9}]},{"name":"RD00","quantity":1,"nestedFacetTypeName":"respondentGroupArtUnitNumber","nestedFacetBag":[{"name":"RD00","quantity":1}]}],"proceedingStatusCategory":[{"name":"Decision","quantity":501},{"name":"Terminated-Denied","quantity":255},{"name":"Terminated-Settled","quantity":182},{"name":"FWD
+      Entered","quantity":165},{"name":"Final Written Decision","quantity":113},{"name":"Institution
+      Denied","quantity":67},{"name":"Final Written Decision - Appealed","quantity":40},{"name":"Pending","quantity":33},{"name":"Trial
+      Instituted","quantity":29},{"name":"Terminated","quantity":25},{"name":"Pending
+      Director Review","quantity":3},{"name":"Terminated-Dismissed","quantity":2},{"name":"Terminated-Other","quantity":2}]},"results":[{"proceedingFilingDate":"03-19-2003","proceedingStatusCategory":"Decision","proceedingNumber":"2003000938","proceedingLastModifiedDate":"12-16-2003","proceedingTypeCategory":"Appeal","subproceedingTypeCategory":"REGULAR","respondentTechnologyCenterNumber":"2600","respondentPartyName":"APPLE
+      et al","respondentGroupArtUnitNumber":"2628","respondentPatentNumber":"7082398","respondentApplicationNumberText":"08736143","decisionDate":"05-06-2004","appellantTechnologyCenterNumber":"2600","appellantPatentOwnerName":"APPLE
+      et al","appellantPartyName":"APPLE et al","appellantGroupArtUnitNumber":"2628","appellantInventorName":"APPLE
+      et al","appellantCounselName":"FISH & RICHARDSON P.C. (BO)","appellantGrantDate":"07-25-2006","appellantPatentNumber":"7082398","appellantApplicationNumberText":"08736143","docketNoticeMailDate":"03-26-2003","additionalRespondentPartyDataBag":[]}],"recordTotalQuantity":1417}'
     headers:
-      access-control-allow-credentials:
+      Access-Control-Allow-Credentials:
       - 'true'
-      access-control-allow-headers:
+      Access-Control-Allow-Headers:
       - accept, authorization, content-type, x-requested-with
-      access-control-allow-methods:
+      Access-Control-Allow-Methods:
       - GET, POST, OPTIONS, PUT
-      access-control-allow-origin:
+      Access-Control-Allow-Origin:
       - '*'
-      access-control-max-age:
+      Access-Control-Max-Age:
       - '1'
-      content-type:
+      Connection:
+      - keep-alive
+      Content-Type:
       - application/json
-      date:
-      - Wed, 22 May 2024 16:20:06 GMT
-      strict-transport-security:
+      Date:
+      - Mon, 05 Aug 2024 22:16:01 GMT
+      Strict-Transport-Security:
       - max-age=31536000;
-      vary:
+      Transfer-Encoding:
+      - chunked
+      Vary:
       - Origin
       - Access-Control-Request-Method
       - Access-Control-Request-Headers
-    http_version: HTTP/2
+    http_version: HTTP/1.1
     status_code: 200
 - request:
-    body: ''
+    body: '{"recordStartNumber": 2, "recordTotalQuantity": 1, "sortDataBag": [], "searchText":
+      "partyName:(\"Apple\")"}'
     headers:
       accept:
       - '*/*'
@@ -139,38 +183,50 @@ interactions:
       - gzip, deflate
       connection:
       - keep-alive
+      content-length:
+      - '108'
+      content-type:
+      - application/json
       host:
       - developer.uspto.gov
       user-agent:
-      - Mozilla/5.0 Python Patent Clientbot/5.0.14 (parkerhancock@users.noreply.github.com)
-    method: GET
-    uri: https://developer.uspto.gov/ptab-api/proceedings?partyName=Apple&recordStartNumber=2&recordTotalQuantity=1&sortOrderCategory=
+      - python-httpx/0.27.0
+    method: POST
+    uri: https://developer.uspto.gov/ptab-api/proceedings/json
   response:
-    content: '{"aggregationData":{},"results":[{"proceedingFilingDate":"09-19-2002","proceedingStatusCategory":"Decision","proceedingNumber":"2003000028","proceedingLastModifiedDate":"10-29-2002","proceedingTypeCategory":"Appeal","subproceedingTypeCategory":"REGULAR","respondentTechnologyCenterNumber":"3600","respondentPartyName":"APPLETON
-      et al","respondentGroupArtUnitNumber":"3671","respondentPatentNumber":"6655477","respondentApplicationNumberText":"09029509","decisionDate":"10-29-2002","appellantTechnologyCenterNumber":"3600","appellantPatentOwnerName":"APPLETON
-      et al","appellantPartyName":"APPLETON et al","appellantGroupArtUnitNumber":"3671","appellantInventorName":"APPLETON
-      et al","appellantCounselName":"DINSMORE & SHOHL LLP","appellantGrantDate":"12-02-2003","appellantPatentNumber":"6655477","appellantApplicationNumberText":"09029509","appellantPublicationDate":"02-28-2002","appellantPublicationNumber":"20020023782A1","docketNoticeMailDate":"10-11-2002","additionalRespondentPartyDataBag":[]}],"recordTotalQuantity":1449}'
+    content: '{"aggregationData":{"proceedingTypeCategory":[{"name":"AIA Trial","quantity":916,"nestedFacetTypeName":"subproceedingTypeCategory","nestedFacetBag":[{"name":"IPR","quantity":857},{"name":"CBM","quantity":55},{"name":"PGR","quantity":4}]},{"name":"Appeal","quantity":501,"nestedFacetTypeName":"subproceedingTypeCategory","nestedFacetBag":[{"name":"REGULAR","quantity":492},{"name":"REEXAM","quantity":8},{"name":"REISSUE","quantity":1}]}],"respondentTechnologyCenterNumber":[{"name":"2600","quantity":505,"nestedFacetTypeName":"respondentGroupArtUnitNumber","nestedFacetBag":[{"name":"2641","quantity":29},{"name":"2646","quantity":29},{"name":"2611","quantity":24},{"name":"2623","quantity":20},{"name":"2626","quantity":17},{"name":"2625","quantity":16},{"name":"2652","quantity":15},{"name":"2616","quantity":14},{"name":"2621","quantity":14},{"name":"2644","quantity":13},{"name":"2656","quantity":12},{"name":"2612","quantity":10},{"name":"2614","quantity":10},{"name":"2617","quantity":10},{"name":"2613","quantity":9},{"name":"2651","quantity":9},{"name":"2627","quantity":8},{"name":"2642","quantity":8},{"name":"2645","quantity":8},{"name":"2647","quantity":8},{"name":"2648","quantity":8},{"name":"2653","quantity":8},{"name":"2618","quantity":7},{"name":"2624","quantity":7},{"name":"2654","quantity":7},{"name":"2657","quantity":7},{"name":"2684","quantity":7},{"name":"2699","quantity":7},{"name":"2629","quantity":6},{"name":"2631","quantity":6},{"name":"2628","quantity":5},{"name":"2658","quantity":5},{"name":"2661","quantity":5},{"name":"2664","quantity":5},{"name":"2681","quantity":5},{"name":"2622","quantity":4},{"name":"2643","quantity":4},{"name":"2662","quantity":4},{"name":"2668","quantity":4},{"name":"2683","quantity":4},{"name":"2692","quantity":4},{"name":"2694","quantity":4},{"name":"2655","quantity":3},{"name":"2691","quantity":3},{"name":"2697","quantity":3},{"name":"2619","quantity":2},{"name":"2632","quantity":2},{"name":"2633","quantity":2},{"name":"2634","quantity":2},{"name":"2635","quantity":2},{"name":"2649","quantity":2},{"name":"2659","quantity":2},{"name":"2669","quantity":2},{"name":"2674","quantity":2},{"name":"2682","quantity":2},{"name":"2685","quantity":2},{"name":"2689","quantity":2},{"name":"2693","quantity":2},{"name":"2696","quantity":2},{"name":"2636","quantity":1},{"name":"2663","quantity":1},{"name":"2665","quantity":1},{"name":"2666","quantity":1},{"name":"2667","quantity":1},{"name":"2677","quantity":1},{"name":"2687","quantity":1},{"name":"2698","quantity":1}]},{"name":"2400","quantity":271,"nestedFacetTypeName":"respondentGroupArtUnitNumber","nestedFacetBag":[{"name":"2469","quantity":12},{"name":"2414","quantity":9},{"name":"2467","quantity":9},{"name":"2473","quantity":9},{"name":"2477","quantity":9},{"name":"2435","quantity":8},{"name":"2463","quantity":8},{"name":"2413","quantity":7},{"name":"2478","quantity":7},{"name":"2461","quantity":6},{"name":"2466","quantity":6},{"name":"2412","quantity":5},{"name":"2416","quantity":5},{"name":"2436","quantity":5},{"name":"2438","quantity":5},{"name":"2465","quantity":5},{"name":"2472","quantity":5},{"name":"2459","quantity":4},{"name":"2468","quantity":4},{"name":"2484","quantity":4},{"name":"2485","quantity":4},{"name":"2497","quantity":4},{"name":"2411","quantity":3},{"name":"2424","quantity":3},{"name":"2431","quantity":3},{"name":"2437","quantity":3},{"name":"2439","quantity":3},{"name":"2453","quantity":3},{"name":"2462","quantity":3},{"name":"2471","quantity":3},{"name":"2476","quantity":3},{"name":"2482","quantity":3},{"name":"2483","quantity":3},{"name":"2486","quantity":3},{"name":"2415","quantity":2},{"name":"2419","quantity":2},{"name":"2421","quantity":2},{"name":"2423","quantity":2},{"name":"2425","quantity":2},{"name":"2434","quantity":2},{"name":"2443","quantity":2},{"name":"2444","quantity":2},{"name":"2447","quantity":2},{"name":"2451","quantity":2},{"name":"2456","quantity":2},{"name":"2464","quantity":2},{"name":"2474","quantity":2},{"name":"2488","quantity":2},{"name":"2491","quantity":2},{"name":"2492","quantity":2},{"name":"2494","quantity":2},{"name":"2495","quantity":2},{"name":"2422","quantity":1},{"name":"2432","quantity":1},{"name":"2433","quantity":1},{"name":"2441","quantity":1},{"name":"2442","quantity":1},{"name":"2448","quantity":1},{"name":"2455","quantity":1},{"name":"2475","quantity":1},{"name":"2479","quantity":1},{"name":"2481","quantity":1},{"name":"2487","quantity":1}]},{"name":"2100","quantity":219,"nestedFacetTypeName":"respondentGroupArtUnitNumber","nestedFacetBag":[{"name":"2181","quantity":14},{"name":"2173","quantity":12},{"name":"2177","quantity":10},{"name":"2145","quantity":8},{"name":"2175","quantity":8},{"name":"2143","quantity":7},{"name":"2174","quantity":7},{"name":"2176","quantity":7},{"name":"2179","quantity":7},{"name":"2171","quantity":6},{"name":"2116","quantity":5},{"name":"2185","quantity":4},{"name":"2194","quantity":4},{"name":"2118","quantity":3},{"name":"2164","quantity":3},{"name":"2165","quantity":3},{"name":"2178","quantity":3},{"name":"2187","quantity":3},{"name":"2191","quantity":3},{"name":"2193","quantity":3},{"name":"2115","quantity":2},{"name":"2123","quantity":2},{"name":"2124","quantity":2},{"name":"2125","quantity":2},{"name":"2128","quantity":2},{"name":"2129","quantity":2},{"name":"2132","quantity":2},{"name":"2144","quantity":2},{"name":"2154","quantity":2},{"name":"2157","quantity":2},{"name":"2163","quantity":2},{"name":"2195","quantity":2},{"name":"2111","quantity":1},{"name":"2112","quantity":1},{"name":"2121","quantity":1},{"name":"2135","quantity":1},{"name":"2139","quantity":1},{"name":"2141","quantity":1},{"name":"2142","quantity":1},{"name":"2152","quantity":1},{"name":"2153","quantity":1},{"name":"2158","quantity":1},{"name":"2161","quantity":1},{"name":"2166","quantity":1},{"name":"2168","quantity":1},{"name":"2172","quantity":1},{"name":"2183","quantity":1},{"name":"2184","quantity":1},{"name":"2199","quantity":1}]},{"name":"2800","quantity":182,"nestedFacetTypeName":"respondentGroupArtUnitNumber","nestedFacetBag":[{"name":"2835","quantity":11},{"name":"2836","quantity":11},{"name":"2872","quantity":11},{"name":"2886","quantity":10},{"name":"2852","quantity":8},{"name":"2859","quantity":7},{"name":"2838","quantity":6},{"name":"2887","quantity":6},{"name":"2824","quantity":4},{"name":"2833","quantity":4},{"name":"2845","quantity":4},{"name":"2863","quantity":4},{"name":"2822","quantity":3},{"name":"2837","quantity":3},{"name":"2811","quantity":2},{"name":"2814","quantity":2},{"name":"2816","quantity":2},{"name":"2819","quantity":2},{"name":"2834","quantity":2},{"name":"2841","quantity":2},{"name":"2842","quantity":2},{"name":"2854","quantity":2},{"name":"2855","quantity":2},{"name":"2857","quantity":2},{"name":"2862","quantity":2},{"name":"2868","quantity":2},{"name":"2871","quantity":2},{"name":"2875","quantity":2},{"name":"2884","quantity":2},{"name":"2893","quantity":2},{"name":"2896","quantity":2},{"name":"2817","quantity":1},{"name":"2818","quantity":1},{"name":"2825","quantity":1},{"name":"2827","quantity":1},{"name":"2828","quantity":1},{"name":"2832","quantity":1},{"name":"2844","quantity":1},{"name":"2846","quantity":1},{"name":"2847","quantity":1},{"name":"2848","quantity":1},{"name":"2858","quantity":1},{"name":"2864","quantity":1},{"name":"2873","quantity":1},{"name":"2874","quantity":1},{"name":"2897","quantity":1}]},{"name":"3600","quantity":118,"nestedFacetTypeName":"respondentGroupArtUnitNumber","nestedFacetBag":[{"name":"3668","quantity":10},{"name":"3685","quantity":10},{"name":"3687","quantity":7},{"name":"3696","quantity":7},{"name":"3695","quantity":4},{"name":"3625","quantity":3},{"name":"3645","quantity":3},{"name":"3661","quantity":3},{"name":"3686","quantity":3},{"name":"3692","quantity":3},{"name":"3619","quantity":2},{"name":"3646","quantity":2},{"name":"3652","quantity":2},{"name":"3662","quantity":2},{"name":"3667","quantity":2},{"name":"3682","quantity":2},{"name":"3684","quantity":2},{"name":"3694","quantity":2},{"name":"3623","quantity":1},{"name":"3627","quantity":1},{"name":"3629","quantity":1},{"name":"3633","quantity":1},{"name":"3663","quantity":1},{"name":"3673","quantity":1},{"name":"3683","quantity":1},{"name":"3688","quantity":1},{"name":"3693","quantity":1},{"name":"3697","quantity":1},{"name":"3698","quantity":1}]},{"name":"3700","quantity":75,"nestedFacetTypeName":"respondentGroupArtUnitNumber","nestedFacetBag":[{"name":"3791","quantity":37},{"name":"3792","quantity":9},{"name":"3762","quantity":6},{"name":"3766","quantity":4},{"name":"3769","quantity":4},{"name":"3713","quantity":2},{"name":"3736","quantity":2},{"name":"3768","quantity":2},{"name":"3777","quantity":2},{"name":"3714","quantity":1},{"name":"3715","quantity":1},{"name":"3735","quantity":1},{"name":"3764","quantity":1},{"name":"3794","quantity":1}]},{"name":"1700","quantity":15,"nestedFacetTypeName":"respondentGroupArtUnitNumber","nestedFacetBag":[{"name":"1783","quantity":4},{"name":"1795","quantity":2},{"name":"1714","quantity":1},{"name":"1722","quantity":1},{"name":"1724","quantity":1},{"name":"1725","quantity":1},{"name":"1734","quantity":1},{"name":"1742","quantity":1},{"name":"1751","quantity":1},{"name":"1782","quantity":1},{"name":"1794","quantity":1}]},{"name":"2900","quantity":12,"nestedFacetTypeName":"respondentGroupArtUnitNumber","nestedFacetBag":[{"name":"2923","quantity":4},{"name":"2913","quantity":3},{"name":"2911","quantity":2},{"name":"2917","quantity":1},{"name":"2918","quantity":1},{"name":"2925","quantity":1}]},{"name":"2700","quantity":10,"nestedFacetTypeName":"respondentGroupArtUnitNumber","nestedFacetBag":[{"name":"2745","quantity":1},{"name":"2758","quantity":1},{"name":"2767","quantity":1},{"name":"2778","quantity":1}]},{"name":"3900","quantity":9,"nestedFacetTypeName":"respondentGroupArtUnitNumber","nestedFacetBag":[{"name":"3992","quantity":9}]},{"name":"RD00","quantity":1,"nestedFacetTypeName":"respondentGroupArtUnitNumber","nestedFacetBag":[{"name":"RD00","quantity":1}]}],"proceedingStatusCategory":[{"name":"Decision","quantity":501},{"name":"Terminated-Denied","quantity":255},{"name":"Terminated-Settled","quantity":182},{"name":"FWD
+      Entered","quantity":165},{"name":"Final Written Decision","quantity":113},{"name":"Institution
+      Denied","quantity":67},{"name":"Final Written Decision - Appealed","quantity":40},{"name":"Pending","quantity":33},{"name":"Trial
+      Instituted","quantity":29},{"name":"Terminated","quantity":25},{"name":"Pending
+      Director Review","quantity":3},{"name":"Terminated-Dismissed","quantity":2},{"name":"Terminated-Other","quantity":2}]},"results":[{"proceedingFilingDate":"05-11-2005","proceedingStatusCategory":"Decision","proceedingNumber":"2005001531","proceedingLastModifiedDate":"12-19-2005","proceedingTypeCategory":"Appeal","subproceedingTypeCategory":"REGULAR","respondentTechnologyCenterNumber":"3600","respondentPartyName":"APPLE
+      et al","respondentGroupArtUnitNumber":"3652","respondentApplicationNumberText":"09451574","decisionDate":"12-15-2005","appellantTechnologyCenterNumber":"3600","appellantPatentOwnerName":"APPLE
+      et al","appellantPartyName":"APPLE et al","appellantGroupArtUnitNumber":"3652","appellantInventorName":"APPLE
+      et al","appellantCounselName":"BROOKS KUSHMAN P.C. /Oracle America/ SUN / STK","appellantApplicationNumberText":"09451574","docketNoticeMailDate":"06-15-2005","additionalRespondentPartyDataBag":[]}],"recordTotalQuantity":1417}'
     headers:
-      access-control-allow-credentials:
+      Access-Control-Allow-Credentials:
       - 'true'
-      access-control-allow-headers:
+      Access-Control-Allow-Headers:
       - accept, authorization, content-type, x-requested-with
-      access-control-allow-methods:
+      Access-Control-Allow-Methods:
       - GET, POST, OPTIONS, PUT
-      access-control-allow-origin:
+      Access-Control-Allow-Origin:
       - '*'
-      access-control-max-age:
+      Access-Control-Max-Age:
       - '1'
-      content-type:
+      Connection:
+      - keep-alive
+      Content-Type:
       - application/json
-      date:
-      - Wed, 22 May 2024 16:20:06 GMT
-      strict-transport-security:
+      Date:
+      - Mon, 05 Aug 2024 22:16:01 GMT
+      Strict-Transport-Security:
       - max-age=31536000;
-      vary:
+      Transfer-Encoding:
+      - chunked
+      Vary:
       - Origin
       - Access-Control-Request-Method
       - Access-Control-Request-Headers
-    http_version: HTTP/2
+    http_version: HTTP/1.1
     status_code: 200
 version: 1

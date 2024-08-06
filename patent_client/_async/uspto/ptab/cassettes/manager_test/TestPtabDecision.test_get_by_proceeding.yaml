@@ -1,6 +1,8 @@
 interactions:
 - request:
-    body: ''
+    body: '{"dateRangeData": null, "parameterData": null, "facetData": null, "recordStartNumber":
+      0, "recordTotalQuantity": 1, "sortDataBag": [], "searchText": "proceedingNumber:(\"IPR2016-00831\")",
+      "actionDownload": null}'
     headers:
       accept:
       - '*/*'
@@ -8,14 +10,22 @@ interactions:
       - gzip, deflate
       connection:
       - keep-alive
+      content-length:
+      - '212'
+      content-type:
+      - application/json
       host:
       - developer.uspto.gov
       user-agent:
-      - Mozilla/5.0 Python Patent Clientbot/5.0.14 (parkerhancock@users.noreply.github.com)
-    method: GET
-    uri: https://developer.uspto.gov/ptab-api/decisions?proceedingNumber=IPR2016-00831
+      - python-httpx/0.27.0
+    method: POST
+    uri: https://developer.uspto.gov/ptab-api/decisions/json
   response:
-    content: "{\"aggregationData\":{},\"results\":[{\"proceedingNumber\":\"IPR2016-00831\",\"decisionTypeCategory\":\"Decision\",\"subdecisionTypeCategory\":\"Settlement
+    content: "{\"aggregationData\":{\"respondentTechnologyCenterNumber\":[{\"name\":\"2800\",\"quantity\":1,\"nestedFacetBag\":[]}],\"proceedingTypeCategory\":[{\"name\":\"AIA
+      Trial\",\"quantity\":1,\"nestedFacetTypeName\":\"subproceedingTypeCategory\",\"nestedFacetBag\":[{\"name\":\"IPR\",\"quantity\":1}]}],\"decisionTypeCategory\":[{\"name\":\"Decision\",\"quantity\":1,\"nestedFacetTypeName\":\"subdecisionTypeCategory\",\"nestedFacetBag\":[{\"name\":\"Settlement
+      after Institution\",\"quantity\":1}]}],\"issueType\":[{\"name\":\"\",\"quantity\":1}],\"boardRulings\":[{\"name\":\"35
+      USC 317\",\"quantity\":1},{\"name\":\"37 CFR 42.72\",\"quantity\":1},{\"name\":\"37
+      CFR 42.74\",\"quantity\":1}]},\"results\":[{\"proceedingNumber\":\"IPR2016-00831\",\"decisionTypeCategory\":\"Decision\",\"subdecisionTypeCategory\":\"Settlement
       after Institution\",\"documentName\":\"IPR2016-00831 -832 -833 Decision on Motion
       to Terminate.pdf\",\"proceedingTypeCategory\":\"AIA Trial\",\"subproceedingTypeCategory\":\"IPR\",\"documentIdentifier\":\"169514971\",\"respondentTechnologyCenterNumber\":\"2800\",\"respondentPatentOwnerName\":\"Silicon
       Genesis Corporation\",\"respondentPartyName\":\"Silicon Genesis Corporation\",\"respondentInventorName\":\"FRANCOIS
@@ -31,30 +41,36 @@ interactions:
       \\n\\n \\nCase IPR2016-00831 (Patent 6\",\"issueType\":[\"\"],\"boardRulings\":[\"35
       USC 317\",\"37 CFR 42.72\",\"37 CFR 42.74\"],\"decisionDate\":\"07-06-2017\",\"respondentGrantDate\":\"12-19-2000\",\"identifier\":\"a44c5f1557b7b60d00e66604d3668ce442d53f964aa597011cc476b4\",\"additionalRespondentPartyDataBag\":[]}],\"recordTotalQuantity\":1}"
     headers:
-      access-control-allow-credentials:
+      Access-Control-Allow-Credentials:
       - 'true'
-      access-control-allow-headers:
+      Access-Control-Allow-Headers:
       - accept, authorization, content-type, x-requested-with
-      access-control-allow-methods:
+      Access-Control-Allow-Methods:
       - GET, POST, OPTIONS, PUT
-      access-control-allow-origin:
+      Access-Control-Allow-Origin:
       - '*'
-      access-control-max-age:
+      Access-Control-Max-Age:
       - '1'
-      content-type:
+      Connection:
+      - keep-alive
+      Content-Type:
       - application/json
-      date:
-      - Wed, 22 May 2024 16:20:06 GMT
-      strict-transport-security:
+      Date:
+      - Mon, 05 Aug 2024 22:17:18 GMT
+      Strict-Transport-Security:
       - max-age=31536000;
-      vary:
+      Transfer-Encoding:
+      - chunked
+      Vary:
       - Origin
       - Access-Control-Request-Method
       - Access-Control-Request-Headers
-    http_version: HTTP/2
+    http_version: HTTP/1.1
     status_code: 200
 - request:
-    body: ''
+    body: '{"dateRangeData": null, "parameterData": null, "facetData": null, "recordStartNumber":
+      0, "recordTotalQuantity": 1, "sortDataBag": [], "searchText": "proceedingNumber:(\"IPR2016-00831\")",
+      "actionDownload": null}'
     headers:
       accept:
       - '*/*'
@@ -62,14 +78,22 @@ interactions:
       - gzip, deflate
       connection:
       - keep-alive
+      content-length:
+      - '212'
+      content-type:
+      - application/json
       host:
       - developer.uspto.gov
       user-agent:
-      - Mozilla/5.0 Python Patent Clientbot/5.0.14 (parkerhancock@users.noreply.github.com)
-    method: GET
-    uri: https://developer.uspto.gov/ptab-api/decisions?proceedingNumber=IPR2016-00831&recordStartNumber=0&recordTotalQuantity=1&sortOrderCategory=
+      - python-httpx/0.27.0
+    method: POST
+    uri: https://developer.uspto.gov/ptab-api/decisions/json
   response:
-    content: "{\"aggregationData\":{},\"results\":[{\"proceedingNumber\":\"IPR2016-00831\",\"decisionTypeCategory\":\"Decision\",\"subdecisionTypeCategory\":\"Settlement
+    content: "{\"aggregationData\":{\"respondentTechnologyCenterNumber\":[{\"name\":\"2800\",\"quantity\":1,\"nestedFacetBag\":[]}],\"proceedingTypeCategory\":[{\"name\":\"AIA
+      Trial\",\"quantity\":1,\"nestedFacetTypeName\":\"subproceedingTypeCategory\",\"nestedFacetBag\":[{\"name\":\"IPR\",\"quantity\":1}]}],\"decisionTypeCategory\":[{\"name\":\"Decision\",\"quantity\":1,\"nestedFacetTypeName\":\"subdecisionTypeCategory\",\"nestedFacetBag\":[{\"name\":\"Settlement
+      after Institution\",\"quantity\":1}]}],\"issueType\":[{\"name\":\"\",\"quantity\":1}],\"boardRulings\":[{\"name\":\"35
+      USC 317\",\"quantity\":1},{\"name\":\"37 CFR 42.72\",\"quantity\":1},{\"name\":\"37
+      CFR 42.74\",\"quantity\":1}]},\"results\":[{\"proceedingNumber\":\"IPR2016-00831\",\"decisionTypeCategory\":\"Decision\",\"subdecisionTypeCategory\":\"Settlement
       after Institution\",\"documentName\":\"IPR2016-00831 -832 -833 Decision on Motion
       to Terminate.pdf\",\"proceedingTypeCategory\":\"AIA Trial\",\"subproceedingTypeCategory\":\"IPR\",\"documentIdentifier\":\"169514971\",\"respondentTechnologyCenterNumber\":\"2800\",\"respondentPatentOwnerName\":\"Silicon
       Genesis Corporation\",\"respondentPartyName\":\"Silicon Genesis Corporation\",\"respondentInventorName\":\"FRANCOIS
@@ -85,26 +109,30 @@ interactions:
       \\n\\n \\nCase IPR2016-00831 (Patent 6\",\"issueType\":[\"\"],\"boardRulings\":[\"35
       USC 317\",\"37 CFR 42.72\",\"37 CFR 42.74\"],\"decisionDate\":\"07-06-2017\",\"respondentGrantDate\":\"12-19-2000\",\"identifier\":\"a44c5f1557b7b60d00e66604d3668ce442d53f964aa597011cc476b4\",\"additionalRespondentPartyDataBag\":[]}],\"recordTotalQuantity\":1}"
     headers:
-      access-control-allow-credentials:
+      Access-Control-Allow-Credentials:
       - 'true'
-      access-control-allow-headers:
+      Access-Control-Allow-Headers:
       - accept, authorization, content-type, x-requested-with
-      access-control-allow-methods:
+      Access-Control-Allow-Methods:
       - GET, POST, OPTIONS, PUT
-      access-control-allow-origin:
+      Access-Control-Allow-Origin:
       - '*'
-      access-control-max-age:
+      Access-Control-Max-Age:
       - '1'
-      content-type:
+      Connection:
+      - keep-alive
+      Content-Type:
       - application/json
-      date:
-      - Wed, 22 May 2024 16:20:06 GMT
-      strict-transport-security:
+      Date:
+      - Mon, 05 Aug 2024 22:17:19 GMT
+      Strict-Transport-Security:
       - max-age=31536000;
-      vary:
+      Transfer-Encoding:
+      - chunked
+      Vary:
       - Origin
       - Access-Control-Request-Method
       - Access-Control-Request-Headers
-    http_version: HTTP/2
+    http_version: HTTP/1.1
     status_code: 200
 version: 1

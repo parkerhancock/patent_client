@@ -1,5 +1,6 @@
 import pytest
 
+from .errors import InvalidFieldError
 from .model import PtabDecision, PtabDocument, PtabProceeding
 
 
@@ -7,7 +8,7 @@ class TestPtabProceeding:
     @pytest.mark.asyncio
     async def test_get_by_proceeding_number(self):
         result = await PtabProceeding.objects.get("IPR2016-00831")
-        assert result.respondent_patent_number == "6162705"
+        assert result.proceeding_number == "IPR2016-00831"
 
     @pytest.mark.asyncio
     async def test_get_by_patent_number(self):
@@ -16,8 +17,13 @@ class TestPtabProceeding:
 
     @pytest.mark.asyncio
     async def test_get_by_application_number(self):
-        result = await PtabProceeding.objects.get(appl_id="09089931")
+        result = await PtabProceeding.objects.get(application_number_text="09089931")
         assert result.proceeding_number == "IPR2016-00833"
+
+    @pytest.mark.asyncio
+    async def test_get_by_invalid_field(self):
+        with pytest.raises(InvalidFieldError):
+            await PtabProceeding.objects.get(invalid_field="invalid")
 
     @pytest.mark.asyncio
     async def test_filter_by_party(self):
@@ -45,7 +51,8 @@ class TestPtabDocument:
     async def test_filter_by_proceeding(self):
         result = PtabDocument.objects.filter(proceeding_number="IPR2016-00831")
         assert await result.count() == 77
-        assert (await result.first()).document_title == "DECISION - Motion to Terminate"
+        doc = await result.first()
+        assert doc.document_title_text == "DECISION - Motion to Terminate"
 
     @pytest.mark.asyncio
     async def test_sort_by_document_number(self):

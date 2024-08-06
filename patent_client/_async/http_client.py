@@ -1,33 +1,15 @@
 import re
 import typing as tp
 import warnings
-from hashlib import blake2b
 from pathlib import Path
 
 import hishel
-import httpcore
 import httpx
-from hishel._utils import normalized_url
 
 from patent_client import CACHE_DIR
 from patent_client.version import __version__
 
 filename_re = re.compile(r'filename="([^"]+)"')
-
-
-def cache_key_generator(request: httpcore.Request):
-    encoded_url = normalized_url(request.url).encode("ascii")
-    body = [c for c in request.stream]
-    if isinstance(body[0], bytes):
-        body = b"".join(body)
-    else:
-        body = "".join(body).encode("utf-8")
-    key = blake2b(digest_size=16)
-    key.update(encoded_url)
-    key.update(request.method)
-    key.update(body)
-    return key.hexdigest()
-
 
 patent_client_transport = hishel.AsyncCacheTransport(
     transport=httpx.AsyncHTTPTransport(

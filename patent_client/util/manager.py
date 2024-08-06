@@ -7,10 +7,9 @@ from itertools import chain
 from typing import TYPE_CHECKING, AsyncIterator, Generic, Iterator, TypeVar, Union
 
 from typing_extensions import Self
-from yankee.data import Collection
 
 if TYPE_CHECKING:
-    pass
+    import pandas as pd
 
 ModelType = TypeVar("ModelType")
 
@@ -56,7 +55,7 @@ class ManagerConfig:
         )
 
 
-class BaseManager(Collection, Generic[ModelType]):
+class BaseManager(Generic[ModelType]):
     default_filter: str = ""
 
     def __init__(self, config=None):
@@ -184,6 +183,15 @@ class Manager(BaseManager, Generic[ModelType]):
             raise ValueError("No documents found!")
         return mger.first()
 
+    # Data convesion methods
+    def to_pandas(self) -> pd.DataFrame:
+        """Convert the manager to a pandas DataFrame"""
+        try:
+            import pandas as pd
+        except ImportError:
+            raise ImportError("Pandas is not installed. Please install pandas to use this method.")
+        return pd.DataFrame.from_records([doc.model_dump() for doc in self])
+
 
 class AsyncManager(BaseManager, Generic[ModelType]):
     """
@@ -263,3 +271,18 @@ class AsyncManager(BaseManager, Generic[ModelType]):
     async def to_list(self) -> list[ModelType]:
         """Return a list of all objects in the manager"""
         return [item async for item in self]
+
+    # Data convesion methods
+    async def to_pandas(self, fields: list[str] | None = None) -> pd.DataFrame:
+        """Convert the manager to a pandas DataFrame"""
+        try:
+            import pandas as pd
+        except ImportError:
+            raise ImportError("Pandas is not installed. Please install pandas to use this method.")
+
+        records = [doc.model_dump() async for doc in self]
+        if fields is None:
+            return pd.DataFrame.from_records(records)
+        else:
+            records = [{field: record.get(field) for field in fields} for record in records]
+            return pd.DataFrame.from_records(records)

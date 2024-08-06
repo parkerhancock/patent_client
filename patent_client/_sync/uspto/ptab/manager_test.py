@@ -4,22 +4,28 @@
 # *         Source File: patent_client/_async/uspto/ptab/manager_test.py         *
 # ********************************************************************************
 
+import pytest
 
+from .errors import InvalidFieldError
 from .model import PtabDecision, PtabDocument, PtabProceeding
 
 
 class TestPtabProceeding:
     def test_get_by_proceeding_number(self):
         result = PtabProceeding.objects.get("IPR2016-00831")
-        assert result.respondent_patent_number == "6162705"
+        assert result.proceeding_number == "IPR2016-00831"
 
     def test_get_by_patent_number(self):
         result = PtabProceeding.objects.get(patent_number="6103599")
         assert result.proceeding_number == "IPR2016-00833"
 
     def test_get_by_application_number(self):
-        result = PtabProceeding.objects.get(appl_id="09089931")
+        result = PtabProceeding.objects.get(application_number_text="09089931")
         assert result.proceeding_number == "IPR2016-00833"
+
+    def test_get_by_invalid_field(self):
+        with pytest.raises(InvalidFieldError):
+            PtabProceeding.objects.get(invalid_field="invalid")
 
     def test_filter_by_party(self):
         result = PtabProceeding.objects.filter(party_name="Apple")
@@ -43,7 +49,8 @@ class TestPtabDocument:
     def test_filter_by_proceeding(self):
         result = PtabDocument.objects.filter(proceeding_number="IPR2016-00831")
         assert result.count() == 77
-        assert (result.first()).document_title == "DECISION - Motion to Terminate"
+        doc = result.first()
+        assert doc.document_title_text == "DECISION - Motion to Terminate"
 
     def test_sort_by_document_number(self):
         result = PtabDocument.objects.filter(proceeding_number="IPR2016-00831").limit(3).count()
