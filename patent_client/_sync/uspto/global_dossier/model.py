@@ -162,7 +162,7 @@ class Document(GlobalDossierBaseModel):
             else filename
         )
         return global_dossier_api.get_document(
-            self.country, self.doc_number, self.doc_id, out_path=out_path
+            self.country, self.doc_number, self.doc_id, self.pages, out_path=out_path
         )
 
 
