@@ -856,4 +856,116 @@ interactions:
       - '53'
     http_version: HTTP/2
     status_code: 200
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      cache-control:
+      - no-cache
+      connection:
+      - keep-alive
+      host:
+      - ppubs.uspto.gov
+      origin:
+      - https://ppubs.uspto.gov
+      pragma:
+      - no-cache
+      priority:
+      - u=1, i
+      referer:
+      - https://ppubs.uspto.gov/pubwebapp/
+      user-agent:
+      - Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/114.0.0.0 Safari/537.36
+      x-requested-with:
+      - XMLHttpRequest
+    method: GET
+    uri: https://ppubs.uspto.gov/pubwebapp/
+  response:
+    content: "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"utf-8\">\n
+      \   <meta http-equiv=\"Pragma\" content=\"no-cache\">\n    <meta http-equiv=\"Expires\"
+      content=\"-1\">\n    <meta http-equiv=\"Cache-Control\" content=\"no-store,
+      no-cache, max-age=0\">\n    <title>Patent Public Search | USPTO</title>\n    <link
+      rel=\"icon\" type=\"image/png\" href=\"images/favicon_new.png\">\n    <!-- DO
+      NOT REMOVE ANY OF COMMENT BELOW (USED BY USMIN) -->\n    <!-- build:css(.tmp)
+      styles/main.css -->\n    <link rel=\"stylesheet\" href=\"styles/main.css\">\n
+      \   <!-- endbuild -->\n    <script src=\"common/environment.js\"></script>\n</head>\n<body>\n<h1
+      class=\"sr-only\">Patent Public Search | USPTO <span class=\"ext-window\"> -
+      extended window</span></h1>\n<div class=\"layout\">\n    <div class=\"zone ui-layout-north\"
+      data-zone=\"north\"></div>\n    <div class=\"zone ui-layout-west\" data-zone=\"west\"></div>\n
+      \   <div class=\"zone ui-layout-center\" data-zone=\"center\"></div>\n    <div
+      class=\"zone ui-layout-east\" data-zone=\"east\"></div>\n    <div class=\"zone
+      ui-layout-south\" data-zone=\"south\"></div>\n</div>\n\n<!-- build:js({web,.tmp})
+      main.js -->\n<!-- Google Analytics script -->\n<script type='text/javascript'
+      src=\"common/analytics/googleAnalytics.js\"></script>\n\n<!--BEGIN QUALTRICS
+      WEBSITE FEEDBACK SNIPPET-->\n<script type='text/javascript' src=\"common/analytics/qualtricsAnalytics.js\"></script>\n\n<script
+      src=\"vendor/require/require.js\"></script>\n<script src=\"main.js\"></script>\n<!--
+      endbuild -->\n</body>\n</html>"
+    headers:
+      accept-ranges:
+      - bytes
+      content-type:
+      - text/html
+      date:
+      - Tue, 24 Sep 2024 19:01:02 GMT
+      etag:
+      - '"5b0-61cd4568d28c0"'
+      last-modified:
+      - Tue, 09 Jul 2024 18:02:51 GMT
+      server:
+      - Apache/2.4.61 (Unix)
+    http_version: HTTP/2
+    status_code: 200
+- request:
+    body: '-1'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      cache-control:
+      - no-cache
+      connection:
+      - keep-alive
+      content-length:
+      - '2'
+      content-type:
+      - application/json
+      host:
+      - ppubs.uspto.gov
+      origin:
+      - https://ppubs.uspto.gov
+      pragma:
+      - no-cache
+      priority:
+      - u=1, i
+      referer:
+      - https://ppubs.uspto.gov/pubwebapp/
+      user-agent:
+      - Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/114.0.0.0 Safari/537.36
+      x-access-token:
+      - 'null'
+      x-requested-with:
+      - XMLHttpRequest
+    method: POST
+    uri: https://ppubs.uspto.gov/dirsearch-public/users/me/session
+  response:
+    content: '{"userSessionId":64613658,"ipAddress":null,"userCase":{"caseId":64613827,"userId":64613658,"caseName":"Untitled
+      Case","applicationNumber":null},"userPreferences":{},"versions":[{"product":"API","releaseNumber":"3.0.0.15","date":"09.07.2024
+      @ 17:08:41 UTC","commitId":"e3dfd709","collectionName":""},{"product":"SOLR","releaseNumber":"7.6.0","date":"","commitId":"","collectionName":"us_patent_grant"}],"documentsLimitInQuery":1000,"sessionTimeOutTime":1800,"role":"ANONYMOUS_USER","sessionIdentifer":"995077ba-d265-41dd-909d-a1fa2900e242"}'
+    headers:
+      content-type:
+      - application/json
+      date:
+      - Tue, 24 Sep 2024 19:01:04 GMT
+      server-timing:
+      - intid;desc=38bae03696d8bcc5
+      x-access-token:
+      - eyJzdWIiOiI5OTUwNzdiYS1kMjY1LTQxZGQtOTA5ZC1hMWZhMjkwMGUyNDIiLCJ2ZXIiOiJkN2Q0N2RjMi01YmFiLTRjZWItYjQ5NC03ZjNmODMzZjNkOTkiLCJleHAiOjB9
+    http_version: HTTP/2
+    status_code: 200
 version: 1
