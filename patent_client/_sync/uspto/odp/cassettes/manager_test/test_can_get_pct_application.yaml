@@ -13,36 +13,12 @@ interactions:
       host:
       - beta-api.uspto.gov
       user-agent:
-      - Mozilla/5.0 Python Patent Clientbot/5.0.14 (parkerhancock@users.noreply.github.com)
+      - Mozilla/5.0 Python Patent Clientbot/5.0.16 (parkerhancock@users.noreply.github.com)
     method: GET
     uri: https://beta-api.uspto.gov/api/v1/patent/applications/PCT%2FUS07%2F19317
   response:
-    content: '{"count":1,"patentBag":[{"applicationStatusCode":218,"applicationTypeCode":"?","filingDate":"2007-09-05","recordAttorney":{"attorneyBag":[{"activeIndicator":"ACTIVE","firstName":"DAVID","lastName":"HEISER","registrationNumber":"31366","attorneyAddressBag":[{"cityName":"SMYRNA","geographicRegionName":"DELAWARE","geographicRegionCode":"DE","countryCode":"US","postalCode":"19977","countryName":"UNITED
-      STATES","addressLineOneText":"116 PEBBLE CREEK DRIVE"}],"telecommunicationAddressBag":[{"telecommunicationNumber":"443-243-5472","telecomTypeCode":"TEL"}],"registeredPractitionerCategory":"ATTNY"}]},"applicationNumberText":"PCT/US07/19317","pctPublicationDate":"2008-03-13","firstInventorName":"ALLEN
-      C. SIEVERT","applicationTypeLabelName":"PCT","applicationStatusDate":"2019-02-08","class":"570","applicationTypeCategory":"PCT","eventDataBag":[{"eventCode":"RCDT","eventDescriptionText":"Receipt
-      Date","eventDate":"2007-09-05"},{"eventCode":"IEXX","eventDescriptionText":"Initial
-      Exam Team nn","eventDate":"2007-09-10"},{"eventCode":"MLIB","eventDescriptionText":"Record
-      Copy Mailed","eventDate":"2007-11-26"},{"eventCode":"P102","eventDescriptionText":"Notification
-      Concerning Payment of Fees","eventDate":"2007-11-26"},{"eventCode":"P105","eventDescriptionText":"Notification
-      of Intntl. Appl. Number and Intntl. Filing Date","eventDate":"2007-11-26"},{"eventCode":"ROST","eventDescriptionText":"RO
-      complete, placed in storage","eventDate":"2017-01-01"}],"inventorBag":[{"firstName":"ALLEN","lastName":"SIEVERT","countryCode":"US","inventorNameText":"ALLEN
-      C. SIEVERT","middleName":"C.","correspondenceAddressBag":[{"cityName":"ELKTON","geographicRegionName":"MARYLAND","geographicRegionCode":"MD","countryCode":"US","postalCode":"21921","nameLineOneText":"215
-      RHETT LANE","countryName":"UNITED STATES"}]}],"patentTermAdjustmentData":{},"applicationStatusDescriptionText":"RO
-      PROCESSING COMPLETED-PLACED IN STORAGE ","businessEntityStatusCategory":"Regular
-      Undiscounted","continuityBag":{"parentContinuityBag":[{"parentApplicationStatusCode":218,"claimParentageTypeCode":"PRO","claimParentageTypeCodeDescription":"Claims
-      priority from a provisional application","parentApplicationStatusDescriptionText":"RO
-      PROCESSING COMPLETED-PLACED IN STORAGE","parentApplicationNumberText":"60842609","parentApplicationFilingDate":"2006-09-05","childApplicationNumberText":"PCT/US07/19317"}],"childContinuityBag":[{"firstInventorToFileIndicator":false,"childApplicationStatusDescriptionText":"Patent
-      Expired Due to NonPayment of Maintenance Fees Under 37 CFR 1.362","claimParentageTypeCode":"NST","childApplicationStatusCode":250,"claimParentageTypeCodeDescription":"is
-      a National Stage Entry of","childPatentNumber":"8053613","parentApplicationNumberText":"PCT/US07/19317","childApplicationFilingDate":"2009-02-17","childApplicationNumberText":"12377761"}]},"applicantBag":[{"applicantNameText":"E.
-      I. DU PONT DE NEMOURS AND COMPANY","correspondenceAddressBag":[{"cityName":"WILMINGTON","geographicRegionName":"DELAWARE","geographicRegionCode":"DE","countryCode":"US","postalCode":"19898","nameLineOneText":"1007
-      MARKET STREET","countryName":"UNITED STATES"}]}],"firstApplicantName":"E. I.
-      DU PONT DE NEMOURS AND COMPANY","customerNumber":23906,"groupArtUnitNumber":"1621","inventionTitle":"PROCESSES
-      FOR PRODUCING 1,2,3,3,3-PENTAFLUOROPROPENE AND PRECURSORS THEREOF","pctPublicationNumber":"WO
-      2008/030442","correspondenceAddressBag":[{"cityName":"WILMINGTON","geographicRegionName":"DELAWARE","geographicRegionCode":"DE","countryCode":"US","postalCode":"19805","nameLineOneText":"DAVID
-      E. HEISER","nameLineTwoText":"E. I. DU PONT DE NEMOURS AND COMPANY","countryName":"UNITED
-      STATES","addressLineOneText":"LEGAL PATENT RECORDS CENTER","addressLineTwoText":"4417
-      LANCASTER PIKE"}],"foreignPriorityBag":[{"filingDate":"2006-09-05","applicationNumberText":"60842609","ipOfficeName":"UNITED
-      STATES"}],"applicationConfirmationNumber":7383,"smallEntityStatusIndicator":false,"publicationCategoryBag":["Other"],"docketNumber":"FL1264PCT"}],"requestIdentifier":"617f5356-24d4-4cf4-b502-f5348f849fcb"}'
+    content: '{"code":404,"message":"Not Found","detailedMessage":"No matching records
+      found, refine your search criteria and try again","requestIdentifier":"566763dc-2c36-4ddd-a3a9-7ae413a56c33"}'
     headers:
       access-control-allow-headers:
       - Origin, X-Requested-With, Content-Type, Accept
@@ -51,17 +27,182 @@ interactions:
       access-control-allow-origin:
       - '*'
       content-length:
-      - '4086'
+      - '182'
+      content-type:
+      - application/json
+      correlation-id:
+      - 566763dc-2c36-4ddd-a3a9-7ae413a56c33
+      date:
+      - Tue, 24 Sep 2024 18:53:41 GMT
+      x-amz-apigw-id:
+      - en6caGuXIAMFRPA=
+      x-amzn-requestid:
+      - 566763dc-2c36-4ddd-a3a9-7ae413a56c33
+      x-amzn-trace-id:
+      - Root=1-66f30ab5-14ee2c6272974a7511586e91;Parent=287e09e7fed39a53;Sampled=0;Lineage=1:33e8fdb8:0
+    http_version: HTTP/2
+    status_code: 404
+- request:
+    body: ''
+    headers:
+      X-API-KEY:
+      - REDACTED
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - beta-api.uspto.gov
+      user-agent:
+      - Mozilla/5.0 Python Patent Clientbot/5.0.16 (parkerhancock@users.noreply.github.com)
+    method: GET
+    uri: https://beta-api.uspto.gov/api/v1/patent/applications/PCT%2FUS2020%2F067535
+  response:
+    content: '{"code":404,"message":"Not Found","detailedMessage":"No matching records
+      found, refine your search criteria and try again","requestIdentifier":"cc8ae46e-55cd-4985-bd39-263a69f87b65"}'
+    headers:
+      access-control-allow-headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      access-control-allow-methods:
+      - OPTIONS,POST,GET
+      access-control-allow-origin:
+      - '*'
+      content-length:
+      - '182'
+      content-type:
+      - application/json
+      correlation-id:
+      - cc8ae46e-55cd-4985-bd39-263a69f87b65
+      date:
+      - Tue, 24 Sep 2024 18:59:24 GMT
+      x-amz-apigw-id:
+      - en7SDEDOIAMF0Yw=
+      x-amzn-requestid:
+      - cc8ae46e-55cd-4985-bd39-263a69f87b65
+      x-amzn-trace-id:
+      - Root=1-66f30c0c-26380e04061513092f5de0bf;Parent=1a0924eb5353375a;Sampled=0;Lineage=1:33e8fdb8:0
+    http_version: HTTP/2
+    status_code: 404
+- request:
+    body: ''
+    headers:
+      X-API-KEY:
+      - REDACTED
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - beta-api.uspto.gov
+      user-agent:
+      - Mozilla/5.0 Python Patent Clientbot/5.0.16 (parkerhancock@users.noreply.github.com)
+    method: GET
+    uri: https://beta-api.uspto.gov/api/v1/patent/applications/PCT%2FUS20%2F67535
+  response:
+    content: '{"count":1,"patentFileWrapperDataBag":[{"eventDataBag":[{"eventCode":"MP210","eventDescriptionText":"Mail
+      International Search Report","eventDate":"2021-03-29"},{"eventCode":"P237","eventDescriptionText":"ISA
+      Written Opinion","eventDate":"2021-03-20"},{"eventCode":"P210","eventDescriptionText":"International
+      Search Report Ready to be Mailed","eventDate":"2021-03-20"},{"eventCode":"PCTFR","eventDescriptionText":"PCT
+      Formality Review","eventDate":"2021-03-20"},{"eventCode":"CTSF","eventDescriptionText":"PCT
+      - Chapter 1 P210 / P237 (Full count)","eventDate":"2021-03-17"},{"eventCode":"210I","eventDescriptionText":"210I","eventDate":"2021-03-12"},{"eventCode":"SEQO","eventDescriptionText":"Outgoing
+      Biotech Sequence Results","eventDate":"2021-02-22"},{"eventCode":"SEQI","eventDescriptionText":"Incoming
+      Biotech Sequence Request","eventDate":"2021-02-16"},{"eventCode":"DOCK","eventDescriptionText":"Case
+      Docketed to Examiner in GAU","eventDate":"2021-02-08"},{"eventCode":"TF07","eventDescriptionText":"TF07","eventDate":"2021-01-26"},{"eventCode":"RCIB","eventDescriptionText":"Record
+      Copy For IB","eventDate":"2021-01-22"},{"eventCode":"RCIB","eventDescriptionText":"Record
+      Copy For IB","eventDate":"2021-01-22"},{"eventCode":"RCIB","eventDescriptionText":"Record
+      Copy For IB","eventDate":"2021-01-22"},{"eventCode":"RCIB","eventDescriptionText":"Record
+      Copy For IB","eventDate":"2021-01-22"},{"eventCode":"RCIB","eventDescriptionText":"Record
+      Copy For IB","eventDate":"2021-01-22"},{"eventCode":"D5003","eventDescriptionText":"Dispatch
+      from PCT Operations -Chapter I","eventDate":"2021-01-21"},{"eventCode":"P105","eventDescriptionText":"Notification
+      of Intntl. Appl. Number and Intntl. Filing Date","eventDate":"2021-01-22"},{"eventCode":"P102","eventDescriptionText":"Notification
+      Concerning Payment of Fees","eventDate":"2021-01-22"},{"eventCode":"MLIB","eventDescriptionText":"Record
+      Copy Mailed","eventDate":"2021-01-22"},{"eventCode":"P202","eventDescriptionText":"Notification
+      of Receipt of Search Copy","eventDate":"2021-01-22"},{"eventCode":"CRFE","eventDescriptionText":"CRF
+      Is Good Technically / Entered into Database","eventDate":"2021-01-04"},{"eventCode":"RCDT","eventDescriptionText":"Receipt
+      Date","eventDate":"2020-12-30"},{"eventCode":"SMAL","eventDescriptionText":"Applicant
+      Has Filed a Verified Statement of Small Entity Status in Compliance with 37
+      CFR 1.27","eventDate":"2020-12-31"},{"eventCode":"BIG.","eventDescriptionText":"Entity
+      Status Set To Undiscounted (Initial Default Setting or Status Change)","eventDate":"2020-12-30"},{"eventCode":"IEXX","eventDescriptionText":"Initial
+      Exam Team nn","eventDate":"2020-12-30"}],"applicationMetaData":{"applicationStatusCode":566,"applicationTypeCode":"?","entityStatusData":{"smallEntityStatusIndicator":false,"businessEntityStatusCategory":"Small"},"filingDate":"2020-12-30","class/subclass":"1/PCT
+      7","nationalStageIndicator":false,"pctPublicationDate":"2021-07-08","firstInventorName":"JONATHAN
+      STRECKER","applicationTypeLabelName":"PCT","applicationStatusDate":"2021-03-29","class":"1","applicationTypeCategory":"PCT","inventorBag":[{"firstName":"JONATHAN","lastName":"STRECKER","inventorNameText":"JONATHAN
+      STRECKER","correspondenceAddressBag":[{"cityName":"CAMBRIDGE","geographicRegionName":"MASSACHUSETTS","geographicRegionCode":"MA","countryCode":"US","postalCode":"02142","nameLineOneText":"C/O
+      415 MAIN STREET","countryName":"UNITED STATES"}]},{"firstName":"FENG","lastName":"ZHANG","inventorNameText":"FENG
+      ZHANG","correspondenceAddressBag":[{"cityName":"CAMBRIDGE","geographicRegionName":"MASSACHUSETTS","geographicRegionCode":"MA","countryCode":"US","postalCode":"02142","nameLineOneText":"C/O
+      415 MAIN STREET","countryName":"UNITED STATES"}]}],"applicationStatusDescriptionText":"PCT
+      - International Search Report Mailed to IB","applicantBag":[{"applicantNameText":"MASSACHUSETTS
+      INSTITUTE OF TECHNOLOGY","correspondenceAddressBag":[{"cityName":"CAMBRIDGE","geographicRegionName":"MASSACHUSETTS","geographicRegionCode":"MA","countryCode":"US","postalCode":"02139","nameLineOneText":"77
+      MASSACHUSETTS AVENUE","countryName":"UNITED STATES","postalAddressCategory":"postal"}]},{"applicantNameText":"THE
+      BROAD INSTITUTE, INC.","correspondenceAddressBag":[{"cityName":"CAMBRIDGE","geographicRegionName":"MASSACHUSETTS","geographicRegionCode":"MA","countryCode":"US","postalCode":"02142","nameLineOneText":"415
+      MAIN STREET","countryName":"UNITED STATES","postalAddressCategory":"postal"}]}],"firstApplicantName":"MASSACHUSETTS
+      INSTITUTE OF TECHNOLOGY","customerNumber":198696,"groupArtUnitNumber":"OITP","inventionTitle":"GENOME
+      EDITING USING REVERSE TRANSCRIPTASE ENABLED AND FULLY ACTIVE CRISPR COMPLEXES","pctPublicationNumber":"WO2021138469","applicationConfirmationNumber":3020,"examinerNameText":"YOUNG,
+      LEE W","subclass":"PCT 7","publicationCategoryBag":["Other"],"docketNumber":"BROD-5030WP"},"parentContinuityBag":[{"parentApplicationStatusCode":566,"claimParentageTypeCode":"PRO","claimParentageTypeCodeDescription":"Claims
+      priority from a provisional application","parentApplicationStatusDescriptionText":"PCT
+      - International Search Report Mailed to IB","parentApplicationNumberText":"62955224","parentApplicationFilingDate":"2019-12-30","childApplicationNumberText":"PCT/US20/67535"},{"parentApplicationStatusCode":566,"claimParentageTypeCode":"PRO","claimParentageTypeCodeDescription":"Claims
+      priority from a provisional application","parentApplicationStatusDescriptionText":"PCT
+      - International Search Report Mailed to IB","parentApplicationNumberText":"62993249","parentApplicationFilingDate":"2020-03-23","childApplicationNumberText":"PCT/US20/67535"}],"recordAttorney":{"powerOfAttorneyBag":[{"activeIndicator":"ACTIVE","firstName":"MICHAEL","lastName":"SCHER","registrationNumber":"72319","attorneyAddressBag":[{"cityName":"LAWRENCEVILLE","geographicRegionName":"NEW
+      JERSEY","geographicRegionCode":"NJ","countryCode":"US","postalCode":"08648","countryName":"UNITED
+      STATES","addressLineOneText":"806 BUNKER HILL AVE"}],"telecommunicationAddressBag":[{"telecommunicationNumber":"732-841-6405","telecomTypeCode":"TEL"}],"middleName":"B.","registeredPractitionerCategory":"ATTNY"},{"activeIndicator":"ACTIVE","firstName":"F.","lastName":"NIX","registrationNumber":"59004","attorneyAddressBag":[{"cityName":"SAVANNAH","geographicRegionName":"GEORGIA","geographicRegionCode":"GA","countryCode":"US","postalCode":"31401","nameLineOneText":"JOHNSON
+      & ASSOCIATES","countryName":"UNITED STATES","addressLineOneText":"317A E. LIBERTY
+      STREET"}],"telecommunicationAddressBag":[{"telecommunicationNumber":"404-665-3099","telecomTypeCode":"TEL"}],"middleName":"BRENT","registeredPractitionerCategory":"ATTNY"}],"attorneyBag":[{"activeIndicator":"ACTIVE","firstName":"ELLEN","lastName":"LAW","registrationNumber":"39741","attorneyAddressBag":[{"cityName":"CAMBRIDGE","geographicRegionName":"MASSACHUSETTS","geographicRegionCode":"MA","countryCode":"US","postalCode":"02142","nameLineOneText":"BROAD
+      INSTITUTE, NON-PROFIT CORPORATION","countryName":"UNITED STATES","addressLineOneText":"7
+      CAMBRIDGE CENTER","addressLineTwoText":"7CC ROOM 7003"}],"telecommunicationAddressBag":[{"telecommunicationNumber":"617-714-8186","telecomTypeCode":"TEL"}],"registeredPractitionerCategory":"ATTNY"},{"activeIndicator":"ACTIVE","firstName":"JENNIFER","lastName":"STACHNIAK","registrationNumber":"40654","attorneyAddressBag":[{"cityName":"SAVANNAH","geographicRegionName":"GEORGIA","geographicRegionCode":"GA","countryCode":"US","postalCode":"31401","nameLineOneText":"JOHNSON,
+      MARCOU & ISAACS. LLC","countryName":"UNITED STATES","addressLineOneText":"317A
+      EAST LIBERTY STREET"}],"telecommunicationAddressBag":[{"telecommunicationNumber":"720-458-5857","telecomTypeCode":"TEL"}],"registeredPractitionerCategory":"ATTNY"},{"activeIndicator":"ACTIVE","firstName":"LANCE","lastName":"ISHIMOTO","registrationNumber":"41866","attorneyAddressBag":[{"cityName":"THE
+      WOODLANDS","geographicRegionName":"TEXAS","geographicRegionCode":"TX","countryCode":"US","postalCode":"77382","countryName":"UNITED
+      STATES","addressLineOneText":"6 S PINEY PLAINS CIRCLE"}],"telecommunicationAddressBag":[{"telecommunicationNumber":"936-443-8901","telecomTypeCode":"TEL"}],"registeredPractitionerCategory":"ATTNY"},{"activeIndicator":"ACTIVE","firstName":"CHRISTOPHER","lastName":"SOUTHGATE","registrationNumber":"54875","attorneyAddressBag":[{"cityName":"SUDBURY","geographicRegionName":"MASSACHUSETTS","geographicRegionCode":"MA","countryCode":"US","postalCode":"01776","countryName":"UNITED
+      STATES","addressLineOneText":"24 MAYNARD FARM CIRCLE"}],"telecommunicationAddressBag":[{"telecommunicationNumber":"857-366-2755","telecomTypeCode":"TEL"}],"registeredPractitionerCategory":"ATTNY"},{"activeIndicator":"ACTIVE","firstName":"JOCELYN","lastName":"RAM","registrationNumber":"54898","attorneyAddressBag":[{"cityName":"SANTA
+      CLARA","geographicRegionName":"CALIFORNIA","geographicRegionCode":"CA","countryCode":"US","postalCode":"95050","nameLineOneText":"FOUNTAINHEAD
+      LAW","countryName":"UNITED STATES","addressLineOneText":"900 LAFAYETTE STREET","addressLineTwoText":"SUITE
+      301"}],"telecommunicationAddressBag":[{"telecommunicationNumber":"818-676-9544","telecomTypeCode":"TEL"}],"registeredPractitionerCategory":"ATTNY"},{"activeIndicator":"ACTIVE","firstName":"SHIRLEY","lastName":"SLACK","registrationNumber":"56167","attorneyAddressBag":[{"cityName":"HOSCHTON","geographicRegionName":"GEORGIA","geographicRegionCode":"GA","countryCode":"US","postalCode":"30548","nameLineOneText":"JOHNSON,
+      MARCOU & ISAACS, LLC","countryName":"UNITED STATES","addressLineOneText":"27
+      CITY SQUARE","addressLineTwoText":"SUITE 1"}],"telecommunicationAddressBag":[{"telecommunicationNumber":"912-292-0236","telecomTypeCode":"TEL"}],"registeredPractitionerCategory":"AGENT"},{"activeIndicator":"ACTIVE","firstName":"BRIAN","lastName":"LIBBY","registrationNumber":"56865","attorneyAddressBag":[{"cityName":"HINGHAM","geographicRegionName":"MASSACHUSETTS","geographicRegionCode":"MA","countryCode":"US","postalCode":"02043","countryName":"UNITED
+      STATES","addressLineOneText":"7 TAURASI ROAD"}],"telecommunicationAddressBag":[{"telecommunicationNumber":"781-635-7842","telecomTypeCode":"TEL"},{"telecommunicationNumber":"8586582502","telecomTypeCode":"FAX"}],"registeredPractitionerCategory":"ATTNY"},{"activeIndicator":"ACTIVE","firstName":"ANGELA","lastName":"KUJAK","registrationNumber":"58252","attorneyAddressBag":[{"cityName":"MADISON","geographicRegionName":"WISCONSIN","geographicRegionCode":"WI","countryCode":"US","postalCode":"53726","nameLineOneText":"WISCONSIN
+      ALUMNI RESEARCH FOUNDATION","countryName":"UNITED STATES","addressLineOneText":"614
+      WALNUT STREET","addressLineTwoText":"13TH FLOOR"}],"telecommunicationAddressBag":[{"telecommunicationNumber":"608-261-1950","telecomTypeCode":"TEL"}],"registeredPractitionerCategory":"ATTNY"},{"activeIndicator":"ACTIVE","firstName":"FREDERICK","lastName":"NIX","registrationNumber":"59004","attorneyAddressBag":[{"cityName":"SAVANNAH","geographicRegionName":"GEORGIA","geographicRegionCode":"GA","countryCode":"US","postalCode":"31401","nameLineOneText":"JOHNSON
+      & ASSOCIATES","countryName":"UNITED STATES","addressLineOneText":"317A E. LIBERTY
+      STREET"}],"telecommunicationAddressBag":[{"telecommunicationNumber":"404-665-3099","telecomTypeCode":"TEL"}],"registeredPractitionerCategory":"ATTNY"},{"activeIndicator":"ACTIVE","firstName":"JESSICA","lastName":"ERGMANN","registrationNumber":"68220","attorneyAddressBag":[{"cityName":"ANDOVER","geographicRegionName":"MASSACHUSETTS","geographicRegionCode":"MA","countryCode":"US","postalCode":"01810","nameLineOneText":"DRAGER","countryName":"UNITED
+      STATES","addressLineOneText":"6 TECH DRIVE"}],"telecommunicationAddressBag":[{"telecommunicationNumber":"978-379-7133","telecomTypeCode":"TEL"}],"registeredPractitionerCategory":"ATTNY"},{"activeIndicator":"ACTIVE","firstName":"SCOTT","lastName":"HENDRIX","registrationNumber":"68446","attorneyAddressBag":[{"cityName":"SAVANNAH","geographicRegionName":"GEORGIA","geographicRegionCode":"GA","countryCode":"US","postalCode":"31401","nameLineOneText":"JOHNSON,
+      MARCOU & ISAACS, LLC","countryName":"UNITED STATES","addressLineOneText":"317A
+      EAST LIBERTY STREET"}],"telecommunicationAddressBag":[{"telecommunicationNumber":"912-292-0233","telecomTypeCode":"TEL"}],"registeredPractitionerCategory":"AGENT"},{"activeIndicator":"ACTIVE","firstName":"CARIN","lastName":"MILLER","registrationNumber":"69647","attorneyAddressBag":[{"cityName":"DAYTON","geographicRegionName":"OHIO","geographicRegionCode":"OH","countryCode":"US","postalCode":"45402","countryName":"UNITED
+      STATES","addressLineOneText":"217 WEST MONUMENT AVE."}],"telecommunicationAddressBag":[{"telecommunicationNumber":"703-795-3339","telecomTypeCode":"TEL"}],"registeredPractitionerCategory":"AGENT"},{"activeIndicator":"ACTIVE","firstName":"CHERI","lastName":"ARNSDORFF","registrationNumber":"76766","attorneyAddressBag":[{"cityName":"KNOXVILLE","geographicRegionName":"TENNESSEE","geographicRegionCode":"TN","countryCode":"US","postalCode":"37938","nameLineOneText":"JOHNSON,
+      MARCOU, ISAACS, & NIX","countryName":"UNITED STATES","addressLineOneText":"6609
+      KIMARON LANE"}],"telecommunicationAddressBag":[{"telecommunicationNumber":"865-444-4054","telecomTypeCode":"TEL"}],"registeredPractitionerCategory":"AGENT"},{"activeIndicator":"ACTIVE","firstName":"JERRIN","lastName":"KURIAKOSE","registrationNumber":"78058","attorneyAddressBag":[{"cityName":"HOSCHTON","geographicRegionName":"GEORGIA","geographicRegionCode":"GA","countryCode":"US","postalCode":"30548","nameLineOneText":"JOHNSON
+      MARCOU ISAACS NIX","countryName":"UNITED STATES","addressLineOneText":"27 CITY
+      SQUARE, SUITE 1"}],"telecommunicationAddressBag":[{"telecommunicationNumber":"404-665-3992","telecomTypeCode":"TEL"}],"registeredPractitionerCategory":"AGENT"},{"activeIndicator":"ACTIVE","firstName":"ERIN","lastName":"DALY","registrationNumber":"79690","attorneyAddressBag":[{"cityName":"HOSCHTON","geographicRegionName":"GEORGIA","geographicRegionCode":"GA","countryCode":"US","postalCode":"30548","nameLineOneText":"JOHNSON,
+      MARCOU, ISAACS, & NIX","nameLineTwoText":"27 CITY SQUARE","countryName":"UNITED
+      STATES","addressLineOneText":"SUITE 1"}],"telecommunicationAddressBag":[{"telecommunicationNumber":"203-941-4173","telecomTypeCode":"TEL"}],"middleName":"M.","registeredPractitionerCategory":"AGENT"},{"activeIndicator":"ACTIVE","firstName":"DREW","lastName":"HARDING","registrationNumber":"79933","attorneyAddressBag":[{"cityName":"HOSCHTON","geographicRegionName":"GEORGIA","geographicRegionCode":"GA","countryCode":"US","postalCode":"30548","nameLineOneText":"JOHNSON,
+      MARCOU, ISAACS & NIX, LLC","countryName":"UNITED STATES","addressLineOneText":"27
+      CITY SQUARE","addressLineTwoText":"SUITE 1"}],"telecommunicationAddressBag":[{"telecommunicationNumber":"912-257-4864","telecomTypeCode":"TEL"}],"registeredPractitionerCategory":"AGENT"}]},"applicationNumberText":"PCTUS2067535","correspondenceAddressBag":[{"cityName":"HOSCHTON","geographicRegionName":"GEORGIA","countryCode":"US","postalCode":"30548","nameLineOneText":"MICHAEL
+      B. SCHER","nameLineTwoText":"JOHNSON, MARCOU, ISAACS & NIX, LLC","countryName":"UNITED
+      STATES","addressLineOneText":"CUSTOMER NO. 95280","addressLineTwoText":"PO BOX
+      691"}],"foreignPriorityBag":[{"filingDate":"2020-03-23","applicationNumberText":"62993249","ipOfficeName":"UNITED
+      STATES"},{"filingDate":"2019-12-30","applicationNumberText":"62955224","ipOfficeName":"UNITED
+      STATES"}]}],"requestIdentifier":"cc5fbf14-05db-408d-a933-e3221b5268c1"}'
+    headers:
+      access-control-allow-headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      access-control-allow-methods:
+      - OPTIONS,POST,GET
+      access-control-allow-origin:
+      - '*'
+      content-length:
+      - '15596'
       content-type:
       - application/json
       date:
-      - Wed, 22 May 2024 16:00:16 GMT
+      - Tue, 24 Sep 2024 18:59:39 GMT
       x-amz-apigw-id:
-      - YLh2jEiVIAMFe2w=
+      - en7UXHKnoAMFbtg=
       x-amzn-requestid:
-      - 617f5356-24d4-4cf4-b502-f5348f849fcb
+      - cc5fbf14-05db-408d-a933-e3221b5268c1
       x-amzn-trace-id:
-      - Root=1-664e1690-3bfb7c0962cf498c3020f45c;Parent=6eceed343e9f7f67;Sampled=0;lineage=33e8fdb8:0
+      - Root=1-66f30c1b-3e25429a782e71604a1af438;Parent=1bdfe9c2f707a1de;Sampled=0;Lineage=1:33e8fdb8:0
     http_version: HTTP/2
     status_code: 200
 version: 1

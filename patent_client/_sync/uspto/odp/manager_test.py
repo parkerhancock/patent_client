@@ -61,8 +61,8 @@ def test_can_get_old_applications():
 
 
 def test_can_get_pct_application():
-    result = USApplication.objects.get("PCT/US07/19317")
-    assert result.appl_id == "PCT/US07/19317"
+    result = USApplication.objects.get("PCT/US20/67535")
+    assert result.appl_id == "PCTUS2067535"
 
 
 def test_can_get_by_customer_number():

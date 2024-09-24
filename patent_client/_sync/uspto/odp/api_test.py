@@ -28,13 +28,13 @@ def test_get_search(odp_api):
 
 
 def test_get_application_data(odp_api):
-    application_id = "15123456"
+    application_id = "16123456"
     application = odp_api.get_application_data(application_id)
     assert application.appl_id is not None, "Expected patent data"
 
 
 def test_get_application_basic_data(odp_api):
-    application_id = "15123456"
+    application_id = "16123456"
     application = odp_api.get_application_biblio_data(application_id)
     assert application.appl_id is not None, "Expected basic patent data"
 
@@ -46,19 +46,19 @@ def test_get_patent_term_adjustment_data(odp_api):
 
 
 def test_get_assignments(odp_api):
-    application_id = "15123456"
+    application_id = "16123456"
     response = odp_api.get_assignments(application_id)
     assert len(response) > 0, "Expected at least one assignment"
 
 
 def test_get_attorney_data(odp_api):
-    application_id = "15123456"
+    application_id = "16123456"
     response = odp_api.get_attorney_data(application_id)
     assert response.attorneys is not None, "Expected attorney data"
 
 
 def test_get_continuity_data(odp_api):
-    application_id = "15123456"
+    application_id = "16123456"
     response = odp_api.get_continuity_data(application_id)
     assert response.parent_continuity is not None, "Expected continuity data"
 
@@ -70,12 +70,12 @@ def test_get_foreign_priority_data(odp_api):
 
 
 def test_get_transactions(odp_api):
-    application_id = "15123456"
+    application_id = "16123456"
     response = odp_api.get_transactions(application_id)
     assert len(response) > 0, "Expected at least one transaction"
 
 
 def test_get_documents(odp_api):
-    application_id = "15123456"
+    application_id = "16123456"
     response = odp_api.get_documents(application_id)
     assert len(response) > 0, "Expected at least one document"

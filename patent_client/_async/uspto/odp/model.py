@@ -37,28 +37,44 @@ class Address(BaseODPModel):
 
 
 class Relationship(BaseODPModel):
-    application_status_code: Optional[int] = Field(default=None)
-    claim_type_code: Optional[str] = Field(alias="claimParentageTypeCode", default=None)
-    filing_date: Optional[datetime.date] = Field(default=None)
-    application_status_description: Optional[str] = Field(
-        alias="applicationStatusDescriptionText", default=None
+    # Parent Data
+    parent_application_id: Optional[str] = Field(alias="parentApplicationNumberText", default=None)
+    parent_application_status_code: Optional[int] = Field(default=None)
+    parent_application_status: Optional[str] = Field(
+        alias="parentApplicationStatusDescriptionText", default=None
     )
+    parent_filing_date: Optional[datetime.date] = Field(
+        alias="parentApplicationFilingDate", default=None
+    )
+
+    # Child Data
+    child_application_id: Optional[str] = Field(alias="childApplicationNumberText", default=None)
+    child_application_status_code: Optional[int] = Field(default=None)
+    child_application_status: Optional[str] = Field(
+        alias="childApplicationStatusDescriptionText", default=None
+    )
+    child_filing_date: Optional[datetime.date] = Field(
+        alias="childApplicationFilingDate", default=None
+    )
+    child_patent_number: Optional[str] = Field(alias="childPatentNumber", default=None)
+    child_aia_indicator: Optional[bool] = Field(alias="firstInventorToFileIndicator", default=None)
+
+    # Claim Data
+    claim_type_code: Optional[str] = Field(alias="claimParentageTypeCode", default=None)
     claim_type_description: Optional[str] = Field(
         alias="claimParentageTypeCodeDescription", default=None
     )
-    parent_application_id: Optional[str] = Field(alias="parentApplicationNumberText", default=None)
-    child_application_id: Optional[str] = Field(alias="childApplicationNumberText", default=None)
 
 
 class Continuity(BaseODPModel):
     count: Optional[int] = Field(default=None)
     request_identifier: Optional[str] = Field(default=None)
     parent_continuity: Optional[list[Relationship]] = Field(
-        alias=AliasPath(["patentBag", 0, "continuityBag", "parentContinuityBag"]),
+        alias=AliasPath(["patentFileWrapperDataBag", 0, "parentContinuityBag"]),
         default_factory=list,
     )
     child_continuity: Optional[list[Relationship]] = Field(
-        alias=AliasPath(["patentBag", 0, "continuityBag", "childContinuityBag"]),
+        alias=AliasPath(["patentFileWrapperDataBag", 0, "childContinuityBag"]),
         default_factory=list,
     )
 
@@ -145,9 +161,9 @@ class Assignment(BaseODPModel):
 
 
 class ForeignPriority(BaseODPModel):
-    priority_number_text: Optional[str] = Field(alias="priorityNumberText", default=None)
+    priority_number_text: Optional[str] = Field(alias="applicationNumberText", default=None)
     filing_date: Optional[datetime.date] = Field(alias="filingDate", default=None)
-    country_name: Optional[str] = Field(alias="countryName", default=None)
+    ip_office: Optional[str] = Field(alias="ipOfficeName", default=None)
 
 
 # Attorney
@@ -155,7 +171,7 @@ class ForeignPriority(BaseODPModel):
 
 class TelecommunicationAddress(BaseODPModel):
     telecommunication_number: Optional[str] = Field(alias="telecommunicationNumber", default=None)
-    usage_type_category: Optional[str] = Field(alias="usageTypeCategory", default=None)
+    telecom_type_code: Optional[str] = Field(alias="telecomTypeCode", default=None)
 
 
 class Attorney(BaseODPModel):
@@ -175,7 +191,7 @@ class Attorney(BaseODPModel):
 
 class CustomerNumber(BaseODPModel):
     attorneys: list[Attorney] = Field(alias="attorneyBag", default_factory=list)
-    customer_number: Optional[str] = Field(
+    customer_number: Optional[int] = Field(
         alias=AliasPath("customerNumber", "patronIdentifier"), default=None
     )
     address: Optional[Address] = Field(
@@ -187,24 +203,40 @@ class CustomerNumber(BaseODPModel):
 
 
 class Transaction(BaseODPModel):
-    recorded_date: Optional[datetime.date] = Field(alias="recordedDate", default=None)
-    transaction_code: Optional[str] = Field(alias="caseActionCode", default=None)
-    transaction_description: Optional[str] = Field(alias="caseActionDescriptionText", default=None)
+    event_date: Optional[datetime.date] = Field(alias="eventDate", default=None)
+    event_code: Optional[str] = Field(alias="eventCode", default=None)
+    event_description: Optional[str] = Field(alias="eventDescriptionText", default=None)
 
 
 # Adjustment Data
 class TermAdjustmentHistory(BaseODPModel):
-    applicant_day_delay_quantity: Optional[int] = Field(
-        alias="applicantDayDelayQuantity", default=None
+    originating_event_sequence_number: Optional[float] = Field(
+        alias="originatingEventSequenceNumber",
+        default=None,
+        description="The sequence of the patent case action that started the time period for the Patent Case Action/Extension.",
     )
-    start_sequence_number: Optional[float] = Field(alias="startSequenceNumber", default=None)
-    case_action_description_text: Optional[str] = Field(
-        alias="caseActionDescriptionText", default=None
+    event_sequence_number: Optional[float] = Field(
+        alias="eventSequenceNumber",
+        default=None,
+        description="The sequence in which the actions for a patent case are to be displayed.",
     )
-    case_action_sequence_number: Optional[float] = Field(
-        alias="caseActionSequenceNumber", default=None
+    event_description_text: Optional[str] = Field(
+        alias="eventDescriptionText",
+        default=None,
+        description="A text field that denotes the use or function of the activity.",
     )
-    action_date: Optional[datetime.date] = Field(alias="actionDate", default=None)
+    event_date: Optional[datetime.date] = Field(
+        alias="eventDate", default=None, description="The date of the legal status change event."
+    )
+    ip_office_day_delay_quantity: Optional[int] = Field(
+        alias="ipOfficeDayDelayQuantity", default=None, description="IP office delay summation"
+    )
+    applicant_days: Optional[int] = Field(
+        alias="applicantDays", default=None, description="Applicant office delay summation"
+    )
+    pta_pte_code: Optional[str] = Field(
+        alias="ptaPteCode", default=None, description="PTA or PTE code"
+    )
 
 
 class TermAdjustment(BaseODPModel):
@@ -218,9 +250,6 @@ class TermAdjustment(BaseODPModel):
     b_delay_quantity: Optional[int] = Field(alias="bDelayQuantity", default=None)
     grant_date: Optional[datetime.date] = Field(alias="grantDate", default=None)
     a_delay_quantity: Optional[int] = Field(alias="aDelayQuantity", default=None)
-    non_overlapping_day_quantity: Optional[int] = Field(
-        alias="nonOverlappingDayQuantity", default=None
-    )
     ip_office_day_delay_quantity: Optional[int] = Field(
         alias="ipOfficeDayDelayQuantity", default=None
     )
@@ -255,16 +284,15 @@ class USApplicationBiblio(BaseODPModel):
     customer_number: Optional[int] = Field(alias="customerNumber", default=None)
     group_art_unit: Optional[str] = Field(alias="groupArtUnitNumber", default=None)
     invention_title: Optional[str] = Field(alias="inventionTitle", default=None)
-    correspondence_address: list[Address] = Field(
-        alias="correspondenceAddressBag", default_factory=list
-    )
     app_conf_num: Optional[int] = Field(alias="applicationConfirmationNumber", default=None)
     atty_docket_num: Optional[str] = Field(alias="docketNumber", default=None)
     appl_id: Optional[str] = Field(alias="applicationNumberText", default=None)
     first_inventor_name: Optional[str] = Field(alias="firstInventorName", default=None)
     first_applicant_name: Optional[str] = Field(alias="firstApplicantName", default=None)
     cpc_classifications: list[str] = Field(alias="cpcClassificationBag", default_factory=list)
-    entity_status: Optional[str] = Field(alias="businessEntityStatusCategory", default=None)
+    entity_status: Optional[str] = Field(
+        alias=AliasPath("entityStatusData", "businessEntityStatusCategory"), default=None
+    )
     app_early_pub_number: Optional[str] = Field(alias="earliestPublicationNumber", default=None)
     app_early_pub_date: Optional[datetime.date] = Field(
         alias="earliestPublicationDate", default=None
@@ -274,6 +302,14 @@ class USApplicationBiblio(BaseODPModel):
     status: Optional[str] = Field(alias="applicationStatusDescriptionText", default=None)
     status_date: Optional[datetime.date] = Field(alias="applicationStatusDate", default=None)
     status_code: Optional[int] = Field(alias="applicationStatusCode", default=None)
+
+    @model_validator(mode="before")
+    @classmethod
+    def _annotate_metadata(cls, v):
+        appl_id = v.pop("applicationNumberText")
+        metadata = v.pop("applicationMetaData")
+        metadata["applicationNumberText"] = appl_id
+        return metadata
 
     @async_property
     async def bibliographic_data(self) -> "USApplicationBiblio":
@@ -342,7 +378,9 @@ class USApplication(BaseODPModel):
     first_inventor_name: Optional[str] = Field(alias="firstInventorName", default=None)
     first_applicant_name: Optional[str] = Field(alias="firstApplicantName", default=None)
     cpc_classifications: list[str] = Field(alias="cpcClassificationBag", default_factory=list)
-    entity_status: Optional[str] = Field(alias="businessEntityStatusCategory", default=None)
+    entity_status: Optional[str] = Field(
+        alias=AliasPath("entityStatusData", "businessEntityStatusCategory"), default=None
+    )
     app_early_pub_number: Optional[str] = Field(alias="earliestPublicationNumber", default=None)
     app_early_pub_date: Optional[datetime.date] = Field(
         alias="earliestPublicationDate", default=None
@@ -363,12 +401,12 @@ class USApplication(BaseODPModel):
     cls_sub_cls: Optional[str] = Field(alias="class/subclass", default=None)
     assignments: list[Assignment] = Field(alias="assignmentBag", default_factory=list)
     attorneys: Optional[CustomerNumber] = Field(alias="recordAttorney", default=None)
-    transactions: list[Transaction] = Field(alias="transactionContentBag", default_factory=list)
+    transactions: list[Transaction] = Field(alias="eventDataBag", default_factory=list)
     parent_applications: Optional[list[Relationship]] = Field(
-        alias=AliasPath("continuityBag", "parentContinuityBag"), default_factory=list
+        alias="parentContinuityBag", default_factory=list
     )
     child_applications: Optional[list[Relationship]] = Field(
-        alias=AliasPath("continuityBag", "childContinuityBag"), default_factory=list
+        alias="childContinuityBag", default_factory=list
     )
     patent_term_adjustment: Optional[TermAdjustment] = Field(
         alias="patentTermAdjustmentData", default=None
@@ -376,9 +414,12 @@ class USApplication(BaseODPModel):
 
     @model_validator(mode="before")
     @classmethod
-    def _validate_patent_term_adjustment(cls, v):
+    def _validate_patent_term_adjustment_and_explode_metadata(cls, v):
         if "patentTermAdjustmentData" in v and v["patentTermAdjustmentData"] == dict():
             v["patentTermAdjustmentData"] = None
+        # explode metadata
+        metadata = v.pop("applicationMetaData")
+        v.update(metadata)
         return v
 
 
@@ -395,7 +436,7 @@ class SearchResult(BaseODPModel):
 
 class SearchResponse(BaseODPModel):
     count: Optional[int] = Field(default=None)
-    results: list[SearchResult] = Field(alias="patentBag", default_factory=list)
+    results: list[SearchResult] = Field(alias="patentFileWrapperDataBag", default_factory=list)
     request_id: Optional[str] = Field(alias="requestIdentifier", default=None)
 
 

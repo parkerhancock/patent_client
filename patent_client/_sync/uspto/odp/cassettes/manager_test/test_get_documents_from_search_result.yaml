@@ -17,11 +17,11 @@ interactions:
       host:
       - beta-api.uspto.gov
       user-agent:
-      - Mozilla/5.0 Python Patent Clientbot/5.0.14 (parkerhancock@users.noreply.github.com)
+      - Mozilla/5.0 Python Patent Clientbot/5.0.16 (parkerhancock@users.noreply.github.com)
     method: POST
     uri: https://beta-api.uspto.gov/api/v1/patent/applications/search
   response:
-    content: '{"count":1,"patentBag":[{"applicationNumberText":"16123456"}],"requestIdentifier":"73c94cd3-eb95-4fa1-a48d-2f467b4fad1f"}'
+    content: '{"count":1,"patentFileWrapperDataBag":[{"applicationNumberText":"16123456"}],"requestIdentifier":"bbcd6893-3b3a-402d-bd43-1c6e0139b15d"}'
     headers:
       access-control-allow-headers:
       - Origin, X-Requested-With, Content-Type, Accept
@@ -30,26 +30,29 @@ interactions:
       access-control-allow-origin:
       - '*'
       content-length:
-      - '121'
+      - '136'
       content-type:
       - application/json
       date:
-      - Wed, 22 May 2024 16:33:18 GMT
+      - Tue, 24 Sep 2024 18:40:37 GMT
       x-amz-apigw-id:
-      - YLmsWGTQoAMFfUg=
+      - en4h4Fk4IAMFy7Q=
       x-amzn-requestid:
-      - 73c94cd3-eb95-4fa1-a48d-2f467b4fad1f
+      - bbcd6893-3b3a-402d-bd43-1c6e0139b15d
       x-amzn-trace-id:
-      - Root=1-664e1e4e-7505b9920b9134c94624efb8;Parent=7fcd9f45149bbeb4;Sampled=0;lineage=33e8fdb8:0
+      - Root=1-66f307a5-34054abe7516607d501ff4ed;Parent=6f8d6dfd57e92784;Sampled=0;Lineage=1:33e8fdb8:0
     http_version: HTTP/2
     status_code: 200
 - request:
-    body: '{"q": "applicationNumberText:16123456", "fields": ["firstInventorToFileIndicator",
-      "filingDate", "inventorBag", "customerNumber", "groupArtUnitNumber", "inventionTitle",
-      "correspondenceAddressBag", "applicationConfirmationNumber", "docketNumber",
-      "applicationNumberText", "firstInventorName", "firstApplicantName", "cpcClassificationBag",
-      "businessEntityStatusCategory", "earliestPublicationNumber"], "pagination":
-      {"offset": 0, "limit": 1}}'
+    body: '{"q": "applicationNumberText:16123456", "fields": ["applicationMetaData.firstInventorToFileIndicator",
+      "applicationMetaData.filingDate", "applicationMetaData.inventorBag", "applicationMetaData.customerNumber",
+      "applicationMetaData.groupArtUnitNumber", "applicationMetaData.inventionTitle",
+      "correspondenceAddressBag", "applicationMetaData.applicationConfirmationNumber",
+      "applicationMetaData.docketNumber", "applicationNumberText", "applicationMetaData.firstInventorName",
+      "applicationMetaData.firstApplicantName", "applicationMetaData.cpcClassificationBag",
+      "applicationMetaData.entityStatusData.businessEntityStatusCategory", "applicationMetaData.earliestPublicationNumber",
+      "applicationMetaData.earliestPublicationDate"], "pagination": {"offset": 0,
+      "limit": 1}}'
     headers:
       X-API-KEY:
       - REDACTED
@@ -60,28 +63,28 @@ interactions:
       connection:
       - keep-alive
       content-length:
-      - '441'
+      - '765'
       content-type:
       - application/json
       host:
       - beta-api.uspto.gov
       user-agent:
-      - Mozilla/5.0 Python Patent Clientbot/5.0.14 (parkerhancock@users.noreply.github.com)
+      - Mozilla/5.0 Python Patent Clientbot/5.0.16 (parkerhancock@users.noreply.github.com)
     method: POST
     uri: https://beta-api.uspto.gov/api/v1/patent/applications/search
   response:
-    content: '{"count":1,"patentBag":[{"firstInventorToFileIndicator":"Y","filingDate":"2018-09-06","inventorBag":[{"firstName":"Shoji","lastName":"KANADA","inventorNameText":"Shoji
-      KANADA","correspondenceAddressBag":[{"cityName":"Tokyo","countryCode":"JP","nameLineOneText":"KANADA,
-      Shoji","countryName":"JAPAN","postalAddressCategory":"residence"},{"cityName":"Tokyo","countryCode":"JP","nameLineOneText":"Shoji  KANADA","countryName":"JAPAN","addressLineOneText":"c/o
-      FUJIFILM Corporation","addressLineTwoText":"7-3, Akasaka 9-chome, Minato-ku","postalAddressCategory":"postal"}]}],"businessEntityStatusCategory":"Regular
-      Undiscounted","firstApplicantName":"FUJIFILM Corporation","customerNumber":2292,"groupArtUnitNumber":"2641","applicationNumberText":"16123456","earliestPublicationNumber":"US
-      2019-0095759 A1","inventionTitle":"LEARNING ASSISTANCE DEVICE, METHOD OF OPERATING
-      LEARNING ASSISTANCE DEVICE, LEARNING ASSISTANCE PROGRAM, LEARNING ASSISTANCE
-      SYSTEM, AND TERMINAL DEVICE","correspondenceAddressBag":[{"cityName":"Falls
+    content: '{"count":1,"patentFileWrapperDataBag":[{"applicationMetaData":{"firstInventorToFileIndicator":"Y","entityStatusData":{"businessEntityStatusCategory":"Regular
+      Undiscounted"},"filingDate":"2018-09-06","inventorBag":[{"firstName":"Shoji","lastName":"KANADA","inventorNameText":"Shoji
+      KANADA","correspondenceAddressBag":[{"cityName":"Tokyo","countryCode":"JP","nameLineOneText":"Shoji  KANADA","countryName":"JAPAN","addressLineOneText":"c/o
+      FUJIFILM Corporation","addressLineTwoText":"7-3, Akasaka 9-chome, Minato-ku","postalAddressCategory":"postal"},{"cityName":"Tokyo","countryCode":"JP","nameLineOneText":"KANADA,
+      Shoji","countryName":"JAPAN","postalAddressCategory":"residence"}]}],"firstApplicantName":"FUJIFILM
+      Corporation","customerNumber":2292,"groupArtUnitNumber":"2641","earliestPublicationNumber":"US20190095759A1","inventionTitle":"LEARNING
+      ASSISTANCE DEVICE, METHOD OF OPERATING LEARNING ASSISTANCE DEVICE, LEARNING
+      ASSISTANCE PROGRAM, LEARNING ASSISTANCE SYSTEM, AND TERMINAL DEVICE","firstInventorName":"Shoji
+      KANADA","cpcClassificationBag":["G06N3/08","G16H30/20","G16H50/70","G16H30/40","G06N20/00","G06V10/7784","G06V10/774","G06F18/2178","G06N3/042","G06F18/217","G06F18/214","G06N3/045"],"applicationConfirmationNumber":7051,"earliestPublicationDate":"2019-03-28","docketNumber":"1982-1042PUS1"},"applicationNumberText":"16123456","correspondenceAddressBag":[{"cityName":"Falls
       Church","geographicRegionName":"VIRGINIA","geographicRegionCode":"VA","countryCode":"US","postalCode":"22042-1248","nameLineOneText":"BIRCH
       STEWART KOLASCH & BIRCH, LLP","countryName":"UNITED STATES","addressLineOneText":"8110
-      Gatehouse Road","addressLineTwoText":"Suite 100 East"}],"firstInventorName":"Shoji
-      KANADA","cpcClassificationBag":["G06N3/08","G16H30/20","G16H50/70","G16H30/40","G06N20/00","G06V10/7784","G06V10/774","G06F18/2178","G06N3/042","G06F18/217","G06F18/214","G06N3/045"],"applicationConfirmationNumber":7051,"docketNumber":"1982-1042PUS1"}],"requestIdentifier":"2a33cfc0-6038-46d1-8dda-a09f39e3b70c"}'
+      Gatehouse Road","addressLineTwoText":"Suite 100 East"}]}],"requestIdentifier":"be7ce7cc-a14d-41a9-a06e-f55f28f1607f"}'
     headers:
       access-control-allow-headers:
       - Origin, X-Requested-With, Content-Type, Accept
@@ -90,17 +93,17 @@ interactions:
       access-control-allow-origin:
       - '*'
       content-length:
-      - '1644'
+      - '1740'
       content-type:
       - application/json
       date:
-      - Wed, 22 May 2024 16:33:18 GMT
+      - Tue, 24 Sep 2024 18:40:37 GMT
       x-amz-apigw-id:
-      - YLmsXEV4IAMFrnQ=
+      - en4h6E5KoAMFvww=
       x-amzn-requestid:
-      - 2a33cfc0-6038-46d1-8dda-a09f39e3b70c
+      - be7ce7cc-a14d-41a9-a06e-f55f28f1607f
       x-amzn-trace-id:
-      - Root=1-664e1e4e-764ccd1e7879c25f12f971b4;Parent=0e32111a402fff82;Sampled=0;lineage=33e8fdb8:0
+      - Root=1-66f307a5-3f5fa81c1d6dd48e5094a992;Parent=5ea0b0e987acdfa8;Sampled=0;Lineage=1:33e8fdb8:0
     http_version: HTTP/2
     status_code: 200
 - request:
@@ -117,7 +120,7 @@ interactions:
       host:
       - beta-api.uspto.gov
       user-agent:
-      - Mozilla/5.0 Python Patent Clientbot/5.0.14 (parkerhancock@users.noreply.github.com)
+      - Mozilla/5.0 Python Patent Clientbot/5.0.16 (parkerhancock@users.noreply.github.com)
     method: GET
     uri: https://beta-api.uspto.gov/api/v1/patent/applications/16123456/documents
   response:
@@ -274,11 +277,6 @@ interactions:
       "INTERNAL", "downloadOptionBag": [{"mimeTypeIdentifier": "PDF", "downloadUrl":
       "https://beta-api.uspto.gov/api/v1/download/applications/16123456/KJ0DBK1SLDFLYX5.pdf",
       "pageTotalQuantity": 2}]}, {"applicationNumberText": "16123456", "officialDate":
-      "2018-09-06T15:08:25.000-0400", "documentIdentifier": "JLQY2TS1RXEAPX0", "documentCode":
-      "TRNA", "documentCodeDescriptionText": "Transmittal of New Application", "directionCategory":
-      "INCOMING", "downloadOptionBag": [{"mimeTypeIdentifier": "PDF", "downloadUrl":
-      "https://beta-api.uspto.gov/api/v1/download/applications/16123456/JLQY2TS1RXEAPX0.pdf",
-      "pageTotalQuantity": 1}]}, {"applicationNumberText": "16123456", "officialDate":
       "2020-06-26T15:13:35.000-0400", "documentIdentifier": "KBWLFU3URXEAPX2", "documentCode":
       "CLM", "documentCodeDescriptionText": "Claims", "directionCategory": "INCOMING",
       "downloadOptionBag": [{"mimeTypeIdentifier": "PDF", "downloadUrl": "https://beta-api.uspto.gov/api/v1/download/applications/16123456/KBWLFU3URXEAPX2.pdf",
@@ -365,11 +363,6 @@ interactions:
       and considered by examiner", "directionCategory": "OUTGOING", "downloadOptionBag":
       [{"mimeTypeIdentifier": "PDF", "downloadUrl": "https://beta-api.uspto.gov/api/v1/download/applications/16123456/K87AK41MRXEAPX5.pdf",
       "pageTotalQuantity": 1}]}, {"applicationNumberText": "16123456", "officialDate":
-      "2018-09-06T15:08:25.000-0400", "documentIdentifier": "JLQY2TS2RXEAPX0", "documentCode":
-      "LET.", "documentCodeDescriptionText": "Miscellaneous Incoming Letter", "directionCategory":
-      "INCOMING", "downloadOptionBag": [{"mimeTypeIdentifier": "PDF", "downloadUrl":
-      "https://beta-api.uspto.gov/api/v1/download/applications/16123456/JLQY2TS2RXEAPX0.pdf",
-      "pageTotalQuantity": 1}]}, {"applicationNumberText": "16123456", "officialDate":
       "2018-09-06T15:08:25.000-0400", "documentIdentifier": "JLQY2TUNRXEAPX0", "documentCode":
       "PA..", "documentCodeDescriptionText": "Power of Attorney", "directionCategory":
       "INCOMING", "downloadOptionBag": [{"mimeTypeIdentifier": "PDF", "downloadUrl":
@@ -402,17 +395,17 @@ interactions:
       access-control-allow-origin:
       - '*'
       content-length:
-      - '25364'
+      - '24503'
       content-type:
       - application/json
       date:
-      - Wed, 22 May 2024 16:00:15 GMT
+      - Tue, 24 Sep 2024 18:17:21 GMT
       x-amz-apigw-id:
-      - YLh2YEpuIAMFdDA=
+      - en1HaHOdIAMF8cw=
       x-amzn-requestid:
-      - 3193bad4-56c4-4695-85af-fe31f24b057d
+      - 4c786074-98a8-417a-b3f9-ed835621c961
       x-amzn-trace-id:
-      - Root=1-664e168e-61b052550ccbd5b7086bd232;Parent=65bcfb8630360260;Sampled=0;lineage=1430c078:0|53981e07:0
+      - Root=1-66f3022f-30b538480b67808007379032;Parent=5817ab7bd7ba12c4;Sampled=0;Lineage=2:53981e07:0
     http_version: HTTP/2
     status_code: 200
 version: 1

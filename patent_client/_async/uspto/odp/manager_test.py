@@ -66,8 +66,8 @@ async def test_can_get_old_applications():
 
 @pytest.mark.asyncio
 async def test_can_get_pct_application():
-    result = await USApplication.objects.get("PCT/US07/19317")
-    assert result.appl_id == "PCT/US07/19317"
+    result = await USApplication.objects.get("PCT/US20/67535")
+    assert result.appl_id == "PCTUS2067535"
 
 
 @pytest.mark.asyncio

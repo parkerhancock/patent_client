@@ -1,8 +1,9 @@
 interactions:
 - request:
-    body: '{"q": "inventionTitle:(Hair Dryer)", "rangeFilters": [{"field": "filingDate",
-      "valueFrom": "2020-01-01", "valueTo": "2024-05-22"}], "fields": ["applicationNumberText"],
-      "pagination": {"offset": 0, "limit": 25}}'
+    body: '{"q": "applicationMetaData.inventionTitle:(Hair Dryer)", "filters": [],
+      "rangeFilters": [{"field": "applicationMetaData.filingDate", "valueFrom": "2020-01-01",
+      "valueTo": "2024-09-24"}], "sort": [], "fields": ["applicationNumberText"],
+      "pagination": {"offset": 0, "limit": 25}, "facets": []}'
     headers:
       X-API-KEY:
       - REDACTED
@@ -13,17 +14,17 @@ interactions:
       connection:
       - keep-alive
       content-length:
-      - '210'
+      - '291'
       content-type:
       - application/json
       host:
       - beta-api.uspto.gov
       user-agent:
-      - Mozilla/5.0 Python Patent Clientbot/5.0.14 (parkerhancock@users.noreply.github.com)
+      - Mozilla/5.0 Python Patent Clientbot/5.0.16 (parkerhancock@users.noreply.github.com)
     method: POST
     uri: https://beta-api.uspto.gov/api/v1/patent/applications/search
   response:
-    content: '{"count":4080,"patentBag":[{"applicationNumberText":"18283924"},{"applicationNumberText":"18695537"},{"applicationNumberText":"29931489"},{"applicationNumberText":"29931490"},{"applicationNumberText":"29931488"},{"applicationNumberText":"18551286"},{"applicationNumberText":"35520490"},{"applicationNumberText":"29927368"},{"applicationNumberText":"29927366"},{"applicationNumberText":"29927367"},{"applicationNumberText":"18294305"},{"applicationNumberText":"18422701"},{"applicationNumberText":"18422684"},{"applicationNumberText":"29925080"},{"applicationNumberText":"18419319"},{"applicationNumberText":"18290788"},{"applicationNumberText":"18580936"},{"applicationNumberText":"29924549"},{"applicationNumberText":"35520235"},{"applicationNumberText":"35519938"},{"applicationNumberText":"35519933"},{"applicationNumberText":"18414179"},{"applicationNumberText":"18413787"},{"applicationNumberText":"29908133"},{"applicationNumberText":"18410892"}],"requestIdentifier":"faf8d791-91ec-47b7-9156-23ed0066c788"}'
+    content: '{"count":4017,"patentFileWrapperDataBag":[{"applicationNumberText":"35522034"},{"applicationNumberText":"35522062"},{"applicationNumberText":"35522140"},{"applicationNumberText":"18259712"},{"applicationNumberText":"18259715"},{"applicationNumberText":"35521763"},{"applicationNumberText":"35521482"},{"applicationNumberText":"35521857"},{"applicationNumberText":"18678610"},{"applicationNumberText":"18678680"},{"applicationNumberText":"29944716"},{"applicationNumberText":"18675982"},{"applicationNumberText":"29943742"},{"applicationNumberText":"18670995"},{"applicationNumberText":"18670374"},{"applicationNumberText":"35521107"},{"applicationNumberText":"18710925"},{"applicationNumberText":"18666486"},{"applicationNumberText":"29942458"},{"applicationNumberText":"29941807"},{"applicationNumberText":"18660711"},{"applicationNumberText":"29941165"},{"applicationNumberText":"18708013"},{"applicationNumberText":"35522227"},{"applicationNumberText":"18653609"}],"requestIdentifier":"b28ab327-ba78-4859-be48-8277a5a55ce7"}'
     headers:
       access-control-allow-headers:
       - Origin, X-Requested-With, Content-Type, Accept
@@ -32,17 +33,17 @@ interactions:
       access-control-allow-origin:
       - '*'
       content-length:
-      - '1012'
+      - '1027'
       content-type:
       - application/json
       date:
-      - Wed, 22 May 2024 16:19:32 GMT
+      - Tue, 24 Sep 2024 18:53:41 GMT
       x-amz-apigw-id:
-      - YLkrKEJrIAMFe4w=
+      - en6cWHkwoAMF3OA=
       x-amzn-requestid:
-      - faf8d791-91ec-47b7-9156-23ed0066c788
+      - b28ab327-ba78-4859-be48-8277a5a55ce7
       x-amzn-trace-id:
-      - Root=1-664e1b13-3ef06d56017107c64e09529b;Parent=2d35b29790aa485b;Sampled=0;lineage=33e8fdb8:0
+      - Root=1-66f30ab5-28b5b90c6d9a1bb62271761a;Parent=4e08d575fb8f9918;Sampled=0;Lineage=1:33e8fdb8:0
     http_version: HTTP/2
     status_code: 200
 version: 1

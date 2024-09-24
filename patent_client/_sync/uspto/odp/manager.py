@@ -26,6 +26,8 @@ if tp.TYPE_CHECKING:
         USApplication,
         USApplicationBiblio,
     )
+
+
 api = ODPApi()
 
 
@@ -35,7 +37,11 @@ class USApplicationManager(Manager):
     response_model = USApplication
 
     def count(self):
-        return (api.post_search(self._create_search_obj(fields=["applicationNumberText"])))["count"]
+        query_data = self._create_search_obj(fields=["applicationNumberText"])
+        print(query_data.model_dump_json())
+        response = api.post_search(query_data)
+        print(response)
+        return response["count"]
 
     def _get_results(self) -> tp.Iterator["SearchResult"]:
         query_obj = self._create_search_obj()
@@ -43,12 +49,12 @@ class USApplicationManager(Manager):
             page_query = query_obj.model_dump()
             page_query["pagination"] = {"offset": start, "limit": rows}
             page_query_obj = SearchRequest(**page_query)
-            for result in (api.post_search(page_query_obj))["patentBag"]:
+            for result in (api.post_search(page_query_obj))["patentFileWrapperDataBag"]:
                 app_id = result["applicationNumberText"]
                 app = api.get_application_data(app_id)
                 yield app
 
-    def _create_search_obj(self, fields: tp.Optional[tp.List[str]] = None):
+    def _create_search_obj(self, fields: tp.Optional[tp.List[str]] = None) -> SearchRequest:
         if fields is None:
             fields = self.default_fields
         if "query" in self.config.filter:
@@ -67,21 +73,22 @@ class USApplicationManager(Manager):
 class USApplicationBiblioManager(USApplicationManager):
     default_filter = "appl_id"
     default_fields = [
-        "firstInventorToFileIndicator",
-        "filingDate",
-        "inventorBag",
-        "customerNumber",
-        "groupArtUnitNumber",
-        "inventionTitle",
+        "applicationMetaData.firstInventorToFileIndicator",
+        "applicationMetaData.filingDate",
+        "applicationMetaData.inventorBag",
+        "applicationMetaData.customerNumber",
+        "applicationMetaData.groupArtUnitNumber",
+        "applicationMetaData.inventionTitle",
         "correspondenceAddressBag",
-        "applicationConfirmationNumber",
-        "docketNumber",
+        "applicationMetaData.applicationConfirmationNumber",
+        "applicationMetaData.docketNumber",
         "applicationNumberText",
-        "firstInventorName",
-        "firstApplicantName",
-        "cpcClassificationBag",
-        "businessEntityStatusCategory",
-        "earliestPublicationNumber",
+        "applicationMetaData.firstInventorName",
+        "applicationMetaData.firstApplicantName",
+        "applicationMetaData.cpcClassificationBag",
+        "applicationMetaData.entityStatusData.businessEntityStatusCategory",
+        "applicationMetaData.earliestPublicationNumber",
+        "applicationMetaData.earliestPublicationDate",
     ]
     response_model = USApplicationBiblio
 
@@ -91,7 +98,7 @@ class USApplicationBiblioManager(USApplicationManager):
             page_query = query_obj.model_dump()
             page_query["pagination"] = {"offset": start, "limit": rows}
             page_query_obj = SearchRequest(**page_query)
-            for result in (api.post_search(page_query_obj))["patentBag"]:
+            for result in (api.post_search(page_query_obj))["patentFileWrapperDataBag"]:
                 yield self.response_model(**result)
 
     def get(self, *args, **kwargs):

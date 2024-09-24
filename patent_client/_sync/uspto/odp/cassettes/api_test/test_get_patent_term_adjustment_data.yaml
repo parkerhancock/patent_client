@@ -13,67 +13,82 @@ interactions:
       host:
       - beta-api.uspto.gov
       user-agent:
-      - Mozilla/5.0 Python Patent Clientbot/5.0.14 (parkerhancock@users.noreply.github.com)
+      - Mozilla/5.0 Python Patent Clientbot/5.0.16 (parkerhancock@users.noreply.github.com)
     method: GET
     uri: https://beta-api.uspto.gov/api/v1/patent/applications/16123456/adjustment
   response:
-    content: '{"count":1,"patentBag":[{"patentTermAdjustmentData":{"applicantDayDelayQuantity":15.0,"overlappingDayQuantity":0.0,"filingDate":"2018-09-06","ipOfficeAdjustmentDelayQuantity":0.0,"cDelayQuantity":0.0,"adjustmentTotalQuantity":127.0,"bDelayQuantity":0.0,"grantDate":"2021-01-26","aDelayQuantity":142.0,"ipOfficeDayDelayQuantity":142.0,"patentTermAdjustmentHistoryDataBag":[{"applicantDayDelayQuantity":0.0,"eventDescriptionText":"PTA
-      36 Months","eventSequenceNumber":74.5,"originatingEventSequenceNumber":0.5,"ptaPteCode":"PTA","eventDate":"2021-01-26"},{"applicantDayDelayQuantity":0.0,"eventDescriptionText":"Patent
-      Issue Date Used in PTA Calculation","eventSequenceNumber":74.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2021-01-26"},{"applicantDayDelayQuantity":0.0,"eventDescriptionText":"Dispatch
-      to FDC","eventSequenceNumber":72.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2020-12-26"},{"applicantDayDelayQuantity":0.0,"eventDescriptionText":"Application
-      Is Considered Ready for Issue","eventSequenceNumber":71.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2020-12-23"},{"applicantDayDelayQuantity":0.0,"eventDescriptionText":"Issue
-      Fee Payment Verified","eventSequenceNumber":70.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2020-12-22"},{"applicantDayDelayQuantity":0.0,"eventDescriptionText":"Issue
-      Fee Payment Received","eventSequenceNumber":69.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2020-12-22"},{"applicantDayDelayQuantity":0.0,"eventDescriptionText":"Email
-      Notification","eventSequenceNumber":67.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2020-10-20"},{"applicantDayDelayQuantity":0.0,"eventDescriptionText":"Email
-      Notification","eventSequenceNumber":66.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2020-10-19"},{"applicantDayDelayQuantity":0.0,"eventDescriptionText":"Printer
-      Rush- No mailing","eventSequenceNumber":65.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2020-10-20"},{"applicantDayDelayQuantity":0.0,"eventDescriptionText":"Mailing
-      Corrected Notice of Allowability","eventSequenceNumber":64.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2020-10-20"},{"applicantDayDelayQuantity":0.0,"eventDescriptionText":"Corrected
-      Notice of Allowability","eventSequenceNumber":62.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2020-10-15"},{"applicantDayDelayQuantity":0.0,"eventDescriptionText":"Printer
+    content: '{"count":1,"patentFileWrapperDataBag":[{"patentTermAdjustmentData":{"applicantDayDelayQuantity":15.0,"overlappingDayQuantity":0.0,"filingDate":"2018-09-06","ipOfficeAdjustmentDelayQuantity":0.0,"cDelayQuantity":0.0,"adjustmentTotalQuantity":127.0,"bDelayQuantity":0.0,"grantDate":"2021-01-26","aDelayQuantity":142.0,"ipOfficeDayDelayQuantity":142.0,"patentTermAdjustmentHistoryDataBag":[{"eventDescriptionText":"PTA
+      36 Months","eventSequenceNumber":74.5,"originatingEventSequenceNumber":0.5,"ptaPteCode":"PTA","eventDate":"2021-01-26"},{"eventDescriptionText":"Patent
+      Issue Date Used in PTA Calculation","eventSequenceNumber":74.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2021-01-26"},{"eventDescriptionText":"Export
+      to Final Data Capture","eventSequenceNumber":73.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2020-12-29"},{"eventDescriptionText":"Dispatch
+      to FDC","eventSequenceNumber":72.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2020-12-26"},{"eventDescriptionText":"Application
+      Is Considered Ready for Issue","eventSequenceNumber":71.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2020-12-23"},{"eventDescriptionText":"Issue
+      Fee Payment Verified","eventSequenceNumber":70.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2020-12-22"},{"eventDescriptionText":"Issue
+      Fee Payment Received","eventSequenceNumber":69.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2020-12-22"},{"eventDescriptionText":"Finished
+      Initial Data Capture","eventSequenceNumber":68.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2020-10-30"},{"eventDescriptionText":"Email
+      Notification","eventSequenceNumber":67.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2020-10-20"},{"eventDescriptionText":"Email
+      Notification","eventSequenceNumber":66.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2020-10-19"},{"eventDescriptionText":"Printer
+      Rush- No mailing","eventSequenceNumber":65.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2020-10-20"},{"eventDescriptionText":"Mailing
+      Corrected Notice of Allowability","eventSequenceNumber":64.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2020-10-20"},{"eventDescriptionText":"Office
+      Action Review","eventSequenceNumber":63.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2020-10-15"},{"eventDescriptionText":"Corrected
+      Notice of Allowability","eventSequenceNumber":62.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2020-10-15"},{"eventDescriptionText":"Printer
       Rush- No mailing","eventSequenceNumber":61.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2020-10-19"},{"applicantDayDelayQuantity":15.0,"eventDescriptionText":"Mail
-      Miscellaneous Communication to Applicant","eventSequenceNumber":60.0,"originatingEventSequenceNumber":55.0,"ptaPteCode":"PTA","eventDate":"2020-10-19"},{"applicantDayDelayQuantity":0.0,"eventDescriptionText":"Miscellaneous
-      Communication to Applicant - No Action Count","eventSequenceNumber":59.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2020-10-13"},{"applicantDayDelayQuantity":0.0,"eventDescriptionText":"Information
-      Disclosure Statement considered","eventSequenceNumber":58.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2020-10-13"},{"applicantDayDelayQuantity":0.0,"eventDescriptionText":"Pubs
-      Case Remand to TC","eventSequenceNumber":57.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2020-10-07"},{"applicantDayDelayQuantity":0.0,"eventDescriptionText":"Information
-      Disclosure Statement (IDS) Filed","eventSequenceNumber":56.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2020-10-05"},{"applicantDayDelayQuantity":0.0,"eventDescriptionText":"Information
-      Disclosure Statement (IDS) Filed","eventSequenceNumber":55.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2020-10-05"},{"applicantDayDelayQuantity":0.0,"eventDescriptionText":"Electronic
-      Review","eventSequenceNumber":53.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2020-09-23"},{"applicantDayDelayQuantity":0.0,"eventDescriptionText":"Email
-      Notification","eventSequenceNumber":52.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2020-09-23"},{"applicantDayDelayQuantity":0.0,"eventDescriptionText":"Mail
-      Notice of Allowance","eventSequenceNumber":51.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2020-09-23"},{"applicantDayDelayQuantity":0.0,"eventDescriptionText":"Notice
-      of Allowance Data Verification Completed","eventSequenceNumber":47.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2020-09-20"},{"applicantDayDelayQuantity":0.0,"eventDescriptionText":"Date
-      Forwarded to Examiner","eventSequenceNumber":43.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2020-07-02"},{"applicantDayDelayQuantity":0.0,"eventDescriptionText":"Response
-      after Non-Final Action","eventSequenceNumber":42.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2020-06-26"},{"applicantDayDelayQuantity":0.0,"eventDescriptionText":"Email
-      Notification","eventSequenceNumber":40.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2020-06-09"},{"applicantDayDelayQuantity":0.0,"eventDescriptionText":"Mail
-      Applicant Initiated Interview Summary","eventSequenceNumber":39.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2020-06-09"},{"applicantDayDelayQuantity":0.0,"eventDescriptionText":"Interview
-      Summary - Applicant Initiated - Telephonic","eventSequenceNumber":38.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2020-06-03"},{"applicantDayDelayQuantity":0.0,"eventDescriptionText":"Interview
-      Summary- Applicant Initiated","eventSequenceNumber":37.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2020-06-03"},{"applicantDayDelayQuantity":0.0,"eventDescriptionText":"Case
-      Docketed to Examiner in GAU","eventSequenceNumber":35.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2020-05-22"},{"applicantDayDelayQuantity":0.0,"eventDescriptionText":"Case
-      Docketed to Examiner in GAU","eventSequenceNumber":33.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2020-05-21"},{"applicantDayDelayQuantity":0.0,"eventDescriptionText":"Electronic
-      Review","eventSequenceNumber":32.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2020-03-27"},{"applicantDayDelayQuantity":0.0,"eventDescriptionText":"Email
-      Notification","eventSequenceNumber":31.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2020-03-27"},{"applicantDayDelayQuantity":0.0,"eventDescriptionText":"Mail
-      Non-Final Rejection","eventSequenceNumber":29.0,"originatingEventSequenceNumber":0.5,"ptaPteCode":"PTA","ipOfficeDayDelayQuantity":142.0,"eventDate":"2020-03-27"},{"applicantDayDelayQuantity":0.0,"eventDescriptionText":"Non-Final
-      Rejection","eventSequenceNumber":28.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2020-03-23"},{"applicantDayDelayQuantity":0.0,"eventDescriptionText":"Information
-      Disclosure Statement considered","eventSequenceNumber":27.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2020-03-23"},{"applicantDayDelayQuantity":0.0,"eventDescriptionText":"Case
-      Docketed to Examiner in GAU","eventSequenceNumber":26.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2020-01-08"},{"applicantDayDelayQuantity":0.0,"eventDescriptionText":"Case
-      Docketed to Examiner in GAU","eventSequenceNumber":25.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2019-12-09"},{"applicantDayDelayQuantity":0.0,"eventDescriptionText":"Email
-      Notification","eventSequenceNumber":21.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2019-03-29"},{"applicantDayDelayQuantity":0.0,"eventDescriptionText":"Application
-      ready for PDX access by participating foreign offices","eventSequenceNumber":20.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2019-03-28"},{"applicantDayDelayQuantity":0.0,"eventDescriptionText":"PG-Pub
-      Issue Notification","eventSequenceNumber":19.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2019-03-28"},{"applicantDayDelayQuantity":0.0,"eventDescriptionText":"Priority
-      document has successfully retrieved via PDX/DAS","eventSequenceNumber":18.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2018-10-23"},{"applicantDayDelayQuantity":0.0,"eventDescriptionText":"Information
-      Disclosure Statement (IDS) Filed","eventSequenceNumber":17.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2018-09-06"},{"applicantDayDelayQuantity":0.0,"eventDescriptionText":"Case
-      Docketed to Examiner in GAU","eventSequenceNumber":16.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2018-10-19"},{"applicantDayDelayQuantity":0.0,"eventDescriptionText":"Application
-      Dispatched from OIPE","eventSequenceNumber":15.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2018-10-18"},{"applicantDayDelayQuantity":0.0,"eventDescriptionText":"Email
-      Notification","eventSequenceNumber":14.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2018-10-12"},{"applicantDayDelayQuantity":0.0,"eventDescriptionText":"Sent
-      to Classification Contractor","eventSequenceNumber":13.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2018-10-11"},{"applicantDayDelayQuantity":0.0,"eventDescriptionText":"FITF
-      set to YES - revise initial setting","eventSequenceNumber":12.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2018-10-11"},{"applicantDayDelayQuantity":0.0,"eventDescriptionText":"Patent
-      Term Adjustment - Ready for Examination","eventSequenceNumber":11.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2018-09-06"},{"applicantDayDelayQuantity":0.0,"eventDescriptionText":"Application
-      Is Now Complete","eventSequenceNumber":10.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2018-10-12"},{"applicantDayDelayQuantity":0.0,"eventDescriptionText":"Filing
-      Receipt","eventSequenceNumber":9.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2018-10-12"},{"applicantDayDelayQuantity":0.0,"eventDescriptionText":"Applicants
-      have given acceptable permission for participating foreign","eventSequenceNumber":8.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2018-09-06"},{"applicantDayDelayQuantity":0.0,"eventDescriptionText":"Request
-      from applicant for the USPTO to retrieve the Priority Document","eventSequenceNumber":7.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2018-09-06"},{"applicantDayDelayQuantity":0.0,"eventDescriptionText":"Information
-      Disclosure Statement (IDS) Filed","eventSequenceNumber":4.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2018-09-06"},{"applicantDayDelayQuantity":0.0,"eventDescriptionText":"Entity
-      Status Set To Undiscounted (Initial Default Setting or Status Change)","eventSequenceNumber":2.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2018-09-06"},{"applicantDayDelayQuantity":0.0,"eventDescriptionText":"Initial
-      Exam Team nn","eventSequenceNumber":1.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2018-09-06"},{"applicantDayDelayQuantity":0.0,"eventDescriptionText":"Filing
-      date","eventSequenceNumber":0.5,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2018-09-06"}]}}],"requestIdentifier":"166043d1-3c1a-4cff-8a05-fd4c1a0ec2f7"}'
+      Miscellaneous Communication to Applicant","eventSequenceNumber":60.0,"originatingEventSequenceNumber":55.0,"ptaPteCode":"PTA","eventDate":"2020-10-19"},{"eventDescriptionText":"Miscellaneous
+      Communication to Applicant - No Action Count","eventSequenceNumber":59.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2020-10-13"},{"eventDescriptionText":"Information
+      Disclosure Statement considered","eventSequenceNumber":58.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2020-10-13"},{"eventDescriptionText":"Pubs
+      Case Remand to TC","eventSequenceNumber":57.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2020-10-07"},{"eventDescriptionText":"Information
+      Disclosure Statement (IDS) Filed","eventSequenceNumber":56.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2020-10-05"},{"eventDescriptionText":"Information
+      Disclosure Statement (IDS) Filed","eventSequenceNumber":55.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2020-10-05"},{"eventDescriptionText":"Export
+      to Initial Data Capture","eventSequenceNumber":54.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2020-09-22"},{"eventDescriptionText":"Electronic
+      Review","eventSequenceNumber":53.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2020-09-23"},{"eventDescriptionText":"Email
+      Notification","eventSequenceNumber":52.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2020-09-23"},{"eventDescriptionText":"Mail
+      Notice of Allowance","eventSequenceNumber":51.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2020-09-23"},{"eventDescriptionText":"Office
+      Action Review","eventSequenceNumber":50.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2020-09-20"},{"eventDescriptionText":"Office
+      Action Review","eventSequenceNumber":49.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2020-09-20"},{"eventDescriptionText":"Issue
+      Revision Completed","eventSequenceNumber":48.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2020-09-20"},{"eventDescriptionText":"Notice
+      of Allowance Data Verification Completed","eventSequenceNumber":47.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2020-09-20"},{"eventDescriptionText":"Document
+      Verification","eventSequenceNumber":46.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2020-09-20"},{"eventDescriptionText":"Examiner''s
+      Amendment Communication","eventSequenceNumber":45.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2020-09-18"},{"eventDescriptionText":"Allowability
+      Notice","eventSequenceNumber":44.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2020-09-18"},{"eventDescriptionText":"Date
+      Forwarded to Examiner","eventSequenceNumber":43.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2020-07-02"},{"eventDescriptionText":"Response
+      after Non-Final Action","eventSequenceNumber":42.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2020-06-26"},{"eventDescriptionText":"Email
+      Notification","eventSequenceNumber":40.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2020-06-09"},{"eventDescriptionText":"Mail
+      Applicant Initiated Interview Summary","eventSequenceNumber":39.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2020-06-09"},{"eventDescriptionText":"Interview
+      Summary - Applicant Initiated - Telephonic","eventSequenceNumber":38.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2020-06-03"},{"eventDescriptionText":"Interview
+      Summary- Applicant Initiated","eventSequenceNumber":37.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2020-06-03"},{"eventDescriptionText":"case
+      Inherited","eventSequenceNumber":36.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2020-05-22"},{"eventDescriptionText":"Case
+      Docketed to Examiner in GAU","eventSequenceNumber":35.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2020-05-22"},{"eventDescriptionText":"case
+      Inherited","eventSequenceNumber":34.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2020-05-21"},{"eventDescriptionText":"Case
+      Docketed to Examiner in GAU","eventSequenceNumber":33.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2020-05-21"},{"eventDescriptionText":"Electronic
+      Review","eventSequenceNumber":32.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2020-03-27"},{"eventDescriptionText":"Email
+      Notification","eventSequenceNumber":31.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2020-03-27"},{"eventDescriptionText":"Mail
+      Non-Final Rejection","eventSequenceNumber":29.0,"originatingEventSequenceNumber":0.5,"ptaPteCode":"PTA","ipOfficeDayDelayQuantity":142.0,"eventDate":"2020-03-27"},{"eventDescriptionText":"Non-Final
+      Rejection","eventSequenceNumber":28.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2020-03-23"},{"eventDescriptionText":"Information
+      Disclosure Statement considered","eventSequenceNumber":27.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2020-03-23"},{"eventDescriptionText":"Case
+      Docketed to Examiner in GAU","eventSequenceNumber":26.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2020-01-08"},{"eventDescriptionText":"Case
+      Docketed to Examiner in GAU","eventSequenceNumber":25.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2019-12-09"},{"eventDescriptionText":"Email
+      Notification","eventSequenceNumber":21.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2019-03-29"},{"eventDescriptionText":"Application
+      ready for PDX access by participating foreign offices","eventSequenceNumber":20.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2019-03-28"},{"eventDescriptionText":"PG-Pub
+      Issue Notification","eventSequenceNumber":19.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2019-03-28"},{"eventDescriptionText":"Priority
+      document has successfully retrieved via PDX/DAS","eventSequenceNumber":18.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2018-10-23"},{"eventDescriptionText":"Information
+      Disclosure Statement (IDS) Filed","eventSequenceNumber":17.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2018-09-06"},{"eventDescriptionText":"Case
+      Docketed to Examiner in GAU","eventSequenceNumber":16.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2018-10-19"},{"eventDescriptionText":"Application
+      Dispatched from OIPE","eventSequenceNumber":15.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2018-10-18"},{"eventDescriptionText":"Email
+      Notification","eventSequenceNumber":14.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2018-10-12"},{"eventDescriptionText":"Sent
+      to Classification Contractor","eventSequenceNumber":13.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2018-10-11"},{"eventDescriptionText":"FITF
+      set to YES - revise initial setting","eventSequenceNumber":12.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2018-10-11"},{"eventDescriptionText":"Patent
+      Term Adjustment - Ready for Examination","eventSequenceNumber":11.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2018-09-06"},{"eventDescriptionText":"Application
+      Is Now Complete","eventSequenceNumber":10.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2018-10-12"},{"eventDescriptionText":"Filing
+      Receipt","eventSequenceNumber":9.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2018-10-12"},{"eventDescriptionText":"Applicants
+      have given acceptable permission for participating foreign","eventSequenceNumber":8.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2018-09-06"},{"eventDescriptionText":"Request
+      from applicant for the USPTO to retrieve the Priority Document","eventSequenceNumber":7.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2018-09-06"},{"eventDescriptionText":"Cleared
+      by L&R (LARS)","eventSequenceNumber":6.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2018-09-26"},{"eventDescriptionText":"Referred
+      to Level 2 (LARS) by OIPE CSR","eventSequenceNumber":5.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2018-09-14"},{"eventDescriptionText":"Information
+      Disclosure Statement (IDS) Filed","eventSequenceNumber":4.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2018-09-06"},{"eventDescriptionText":"IFW
+      Scan & PACR Auto Security Review","eventSequenceNumber":3.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2018-09-06"},{"eventDescriptionText":"Entity
+      Status Set To Undiscounted (Initial Default Setting or Status Change)","eventSequenceNumber":2.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2018-09-06"},{"eventDescriptionText":"Initial
+      Exam Team nn","eventSequenceNumber":1.0,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2018-09-06"},{"eventDescriptionText":"Filing
+      date","eventSequenceNumber":0.5,"originatingEventSequenceNumber":0.0,"ptaPteCode":"PTA","eventDate":"2018-09-06"}]},"applicationNumberText":"16123456"}],"requestIdentifier":"0012890f-e6e8-4cd6-9cc5-83d79d6e111a"}'
     headers:
       access-control-allow-headers:
       - Origin, X-Requested-With, Content-Type, Accept
@@ -82,17 +97,17 @@ interactions:
       access-control-allow-origin:
       - '*'
       content-length:
-      - '11747'
+      - '12442'
       content-type:
       - application/json
       date:
-      - Wed, 22 May 2024 16:03:17 GMT
+      - Tue, 24 Sep 2024 15:56:40 GMT
       x-amz-apigw-id:
-      - YLiS8FnkIAMFf5g=
+      - engg3En4oAMFU0Q=
       x-amzn-requestid:
-      - 166043d1-3c1a-4cff-8a05-fd4c1a0ec2f7
+      - 0012890f-e6e8-4cd6-9cc5-83d79d6e111a
       x-amzn-trace-id:
-      - Root=1-664e1745-114aff8744d83b361332d283;Parent=07854cc99c4658f0;Sampled=0;lineage=33e8fdb8:0
+      - Root=1-66f2e138-5993ec7577a09dec77daea34;Parent=42b5c61e17e85eda;Sampled=0;Lineage=1:33e8fdb8:0
     http_version: HTTP/2
     status_code: 200
 version: 1
