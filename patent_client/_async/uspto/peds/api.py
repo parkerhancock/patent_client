@@ -63,7 +63,7 @@ class PatentExaminationDataSystemApi:
         cls.search_fields = {k: type_map[v] for k, v in search_fields.items()}
         return cls.search_fields
 
-    async def create_query(
+    async def _create_raw_query(
         self,
         query: str,
         query_fields: Optional[str] = None,
@@ -115,7 +115,34 @@ class PatentExaminationDataSystemApi:
             headers={"Accept": "application/json"},
         )
         await self.check_response(response)
-        return PedsPage.model_validate(response.json())
+        return response.json()
+
+    async def create_query(
+        self,
+        query: str,
+        query_fields: Optional[str] = None,
+        default_field: Optional[str] = "patentTitle",
+        facet: bool = False,
+        return_fields: Optional[List[str]] = None,
+        filter_query: Optional[List[str]] = None,
+        minimum_match: str = "100%",
+        sort: Optional[str] = "applId asc",
+        start: int = 0,
+        rows: Optional[int] = None,
+    ) -> "PedsPage":
+        data = await self._create_raw_query(
+            query,
+            query_fields,
+            default_field,
+            facet,
+            return_fields,
+            filter_query,
+            minimum_match,
+            sort,
+            start,
+            rows,
+        )
+        return PedsPage.model_validate(data)
 
     async def get_documents(self, appl_id: str) -> List[Document]:
         url = f"https://ped.uspto.gov/api/queries/cms/public/{appl_id}"

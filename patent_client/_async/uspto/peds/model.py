@@ -144,7 +144,7 @@ class Assignment(PEDSBaseModel):
 
 class USApplication(PEDSBaseModel):
     appl_id: str
-    app_filing_date: Date
+    app_filing_date: tp.Optional[Date] = None
     app_exam_name: tp.Optional[str] = None
     public_ind: YNBool
     app_confr_number: tp.Optional[str] = None

@@ -19,6 +19,15 @@ class TestPatentExaminationDataDeserialization:
         expected_data = json.loads(output_file.read_text())
         assert json.loads(app.model_dump_json()) == expected_data
 
+    def test_application_with_no_filing_date(self):
+        input_file = fixtures / "app_no_filing_date_input.json"
+        output_file = fixtures / "app_no_filing_date_output.json"
+        app = PedsPage.model_validate_json(input_file.read_text())
+        # output_file.write_text(app.model_dump_json(indent=2))
+        expected_data = json.loads(output_file.read_text())
+        assert app.applications[0].app_filing_date is None
+        assert json.loads(app.model_dump_json()) == expected_data
+
 
 class TestPatentExaminationData:
     @pytest.mark.asyncio

@@ -15,6 +15,7 @@ from patent_client._sync.http_client import PatentClientSession
 from .model import Document, PedsPage
 
 logger = logging.getLogger(__name__)
+
 type_map = {
     "string": str,
     "date": datetime.datetime,
@@ -22,6 +23,7 @@ type_map = {
     "int": int,
     "text_ws": str,
 }
+
 client = PatentClientSession()
 
 
@@ -67,7 +69,7 @@ class PatentExaminationDataSystemApi:
         cls.search_fields = {k: type_map[v] for k, v in search_fields.items()}
         return cls.search_fields
 
-    def create_query(
+    def _create_raw_query(
         self,
         query: str,
         query_fields: Optional[str] = None,
@@ -81,6 +83,7 @@ class PatentExaminationDataSystemApi:
         rows: Optional[int] = None,
     ) -> "PedsPage":
         """
+
         Args:
             query (str): The query to be issued to PEDS
             query_fields (str): A list of fields to be queried
@@ -88,6 +91,7 @@ class PatentExaminationDataSystemApi:
             facet (str, optional): Whether to enabled SOLR faceting. Defaults to "false".
             return_fields (str, optional): Specifies which fields should be returned. Defaults to "*".
             filter_query (str, optional)
+
         Returns:
             _type_: _description_
         """
@@ -95,6 +99,7 @@ class PatentExaminationDataSystemApi:
             qf = "appEarlyPubNumber applId appLocation appType appStatus_txt appConfrNumber appCustNumber appGrpArtNumber appCls appSubCls appEntityStatus_txt patentNumber patentTitle inventorName firstNamedApplicant appExamName appExamPrefrdName appAttrDockNumber appPCTNumber appIntlPubNumber wipoEarlyPubNumber pctAppType firstInventorFile appClsSubCls rankAndInventorsList".split(
                 " "
             )
+
         params: Dict[str, object] = {
             "df": default_field,
             "qf": " ".join(qf),
@@ -116,7 +121,34 @@ class PatentExaminationDataSystemApi:
             headers={"Accept": "application/json"},
         )
         self.check_response(response)
-        return PedsPage.model_validate(response.json())
+        return response.json()
+
+    def create_query(
+        self,
+        query: str,
+        query_fields: Optional[str] = None,
+        default_field: Optional[str] = "patentTitle",
+        facet: bool = False,
+        return_fields: Optional[List[str]] = None,
+        filter_query: Optional[List[str]] = None,
+        minimum_match: str = "100%",
+        sort: Optional[str] = "applId asc",
+        start: int = 0,
+        rows: Optional[int] = None,
+    ) -> "PedsPage":
+        data = self._create_raw_query(
+            query,
+            query_fields,
+            default_field,
+            facet,
+            return_fields,
+            filter_query,
+            minimum_match,
+            sort,
+            start,
+            rows,
+        )
+        return PedsPage.model_validate(data)
 
     def get_documents(self, appl_id: str) -> List[Document]:
         url = f"https://ped.uspto.gov/api/queries/cms/public/{appl_id}"
