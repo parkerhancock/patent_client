@@ -1,4 +1,7 @@
 # Changelog
+## 5.0.18 (2024-11-04)
+- Update `hishel` dependency to fix issue with file downloads.
+
 ## 5.0.17 (2024-09-24)
 - Update USPTO ODP to work with ODP versoion 1.0.0
 
