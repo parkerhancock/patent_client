@@ -6,7 +6,7 @@ import lxml.etree as ET
 from patent_client._async.http_client import PatentClientSession
 
 from .model import DocumentList, GlobalDossier
-
+from patent_client.warnings import DeprecatedMeta
 client = PatentClientSession(
     headers={
         "Authorization": "OQmPwAN1QD4OXe25jpmMD27zmnM21gIL0lg85G6j",
@@ -15,7 +15,7 @@ client = PatentClientSession(
 )
 
 
-class GlobalDossierApi:
+class GlobalDossierApi(metaclass=DeprecatedMeta, deprecation_msg="The Global Dossier API will be deprecated in a coming version in favor of the Open Data Portal API's endpoints. This API will no longer be maintained."):
     def __init__(self):
         self.api_base_url = None
 

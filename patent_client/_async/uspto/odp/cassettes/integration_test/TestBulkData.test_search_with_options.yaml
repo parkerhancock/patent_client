@@ -1,0 +1,86 @@
+interactions:
+- request:
+    body: ''
+    headers:
+      X-API-KEY:
+      - REDACTED
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - beta-api.uspto.gov
+      user-agent:
+      - Mozilla/5.0 Python Patent Clientbot/5.0.16 (parkerhancock@users.noreply.github.com)
+    method: GET
+    uri: https://beta-api.uspto.gov/api/v1/datasets/products/search?productTitle=Patent&offset=0&limit=5&facets=true&includeFiles=true&latest=true
+  response:
+    content: "{\"count\":5,\"bulkDataProductBag\":[{\"productIdentifier\":\"APPDT\",\"productDescriptionText\":\"Contains
+      the full text, images/drawings, and complex work units (tables, mathematical
+      expressions, chemical structures, and genetic sequence data) of each patent
+      application (non-provisional utility and plant) published weekly (Thursdays)
+      from March 15, 2001 to present.\",\"productTitleText\":\"Patent Application
+      Full Text Data with Embedded TIFF Images (Application Red Book based on WIPO
+      ST.36)\",\"productFrequencyText\":\"WEEKLY\",\"daysOfWeekText\":\"THURSDAY\",\"productLabelArrayText\":[\"Patent\"],\"productDatasetArrayText\":[\"Authoritative\"],\"productDatasetCategoryArrayText\":[\"Patent
+      Application\"],\"productFromDate\":\"2001-03-15\",\"productToDate\":\"2025-02-13\",\"productTotalFileSize\":3788926555439,\"productFileTotalQuantity\":1869,\"lastModifiedDateTime\":\"2025-02-13
+      00:02:00\",\"mimeTypeIdentifierArrayText\":[\"XML\"],\"productFileBag\":{\"count\":1,\"fileDataBag\":[{\"fileName\":\"I20250213.tar\",\"fileSize\":5473483264,\"fileDataFromDate\":\"2025-02-13\",\"fileDataToDate\":\"2025-02-13\",\"fileTypeText\":\"Data\",\"fileDownloadURI\":\"https://beta-api.uspto.gov/api/v1/datasets/products/files/APPDT/2025/I20250213.tar\",\"fileReleaseDate\":\"2025-02-13
+      00:02:00\",\"fileLastModifiedDateTime\":\"2025-02-18 12:02:00\"}]}},{\"productIdentifier\":\"GZLST\",\"productDescriptionText\":\"Contains
+      bibliographic (front page) information, a representative claim, and a drawing
+      (if applicable) of each patent grant issued that week (Tuesdays). Includes U.S.
+      Patent and Trademark Office Notices which provide important information and
+      changes in rules concerning both patents and trademarks.\",\"productTitleText\":\"Patent
+      Official Gazettes\",\"productFrequencyText\":\"WEEKLY\",\"daysOfWeekText\":\"TUESDAY\",\"productLabelArrayText\":[\"Patent\"],\"productDatasetArrayText\":[\"Authoritative\"],\"productDatasetCategoryArrayText\":[\"Patent
+      official gazettes\"],\"productFromDate\":\"2002-07-02\",\"productToDate\":\"2025-02-18\",\"productTotalFileSize\":233012128603,\"productFileTotalQuantity\":1183,\"lastModifiedDateTime\":\"2025-02-18
+      06:09:00\",\"mimeTypeIdentifierArrayText\":[\"HTML\"],\"productFileBag\":{\"count\":1,\"fileDataBag\":[{\"fileName\":\"e-OG20250218_1531-3.zip\",\"fileSize\":263381646,\"fileDataFromDate\":\"2025-02-18\",\"fileDataToDate\":\"2025-02-18\",\"fileTypeText\":\"Data\",\"fileDownloadURI\":\"https://beta-api.uspto.gov/api/v1/datasets/products/files/GZLST/2025/e-OG20250218_1531-3.zip\",\"fileReleaseDate\":\"2025-02-18
+      06:09:00\",\"fileLastModifiedDateTime\":\"2025-02-18 12:02:00\"}]}},{\"productIdentifier\":\"APPMP2\",\"productDescriptionText\":\"Contains
+      the images of each patent application (non-provisional utility and plant) published
+      weekly (Thursdays) from March 15, 2001 to present in Portable Document Format
+      (PDF) created from the Patent Application Single-Page TIFF Images.\",\"productTitleText\":\"Patent
+      Application Multi-Page PDF Images\",\"productFrequencyText\":\"WEEKLY\",\"daysOfWeekText\":\"THURSDAY\",\"productLabelArrayText\":[\"Patent\"],\"productDatasetArrayText\":[\"Authoritative\"],\"productDatasetCategoryArrayText\":[\"Published
+      patent applications (pre-grant publicati\"],\"productFromDate\":\"2016-04-13\",\"productToDate\":\"2025-02-13\",\"productTotalFileSize\":12962033418240,\"productFileTotalQuantity\":1151,\"lastModifiedDateTime\":\"2025-02-13
+      04:40:00\",\"mimeTypeIdentifierArrayText\":[\"PDF\"],\"productFileBag\":{\"count\":1,\"fileDataBag\":[{\"fileName\":\"app_pdf_20250213.tar\",\"fileSize\":18026455040,\"fileDataFromDate\":\"2025-02-13\",\"fileDataToDate\":\"2025-02-13\",\"fileTypeText\":\"Data\",\"fileDownloadURI\":\"https://beta-api.uspto.gov/api/v1/datasets/products/files/APPMP2/2025/app_pdf_20250213.tar\",\"fileReleaseDate\":\"2025-02-13
+      04:40:00\",\"fileLastModifiedDateTime\":\"2025-02-18 12:02:00\"}]}},{\"productIdentifier\":\"PTGRAPS\",\"productDescriptionText\":\"Contains
+      the concatenated full-text of each patent grant document issued weekly (Tuesdays)
+      from January 1, 1976 to present (excludes images/drawings). This is the subset
+      of the Patent Grant Full Text Data with Embedded TIFF Images.\",\"productTitleText\":\"Patent
+      Grant Full-Text Data (No Images) - APS\",\"productFrequencyText\":\"YEARLY\",\"productLabelArrayText\":[\"Patent\"],\"productDatasetArrayText\":[\"Authoritative\"],\"productDatasetCategoryArrayText\":[\"Issued
+      patents (patent grants)\"],\"productFromDate\":\"1970-10-02\",\"productToDate\":\"2017-04-03\",\"productTotalFileSize\":25938442242,\"productFileTotalQuantity\":1382,\"lastModifiedDateTime\":\"2017-04-03
+      10:05:00\",\"mimeTypeIdentifierArrayText\":[\"ASCII\",\"XML\"],\"productFileBag\":{\"count\":1,\"fileDataBag\":[{\"fileName\":\"pftaps19860624_wk25.zip\",\"fileSize\":8898220,\"fileDataFromDate\":\"2017-04-03\",\"fileDataToDate\":\"2017-04-03\",\"fileTypeText\":\"Data\",\"fileDownloadURI\":\"https://beta-api.uspto.gov/api/v1/datasets/products/files/PTGRAPS/1986/pftaps19860624_wk25.zip\",\"fileReleaseDate\":\"2017-04-03
+      10:05:00\",\"fileLastModifiedDateTime\":\"2025-02-18 12:00:00\"}]}},{\"productIdentifier\":\"PTGRXML\",\"productDescriptionText\":\"Provides
+      the bulk zip files that contains the concatenated full-text of each patent grant
+      document issued weekly. This page provides an additional feature called \u201CView
+      Patent Records\u201D which allows user to find or discover the patent grants
+      that are bundled in the zip file. Even though the zip file may contain grants
+      that belong to the applications which were filed before 2001, ODP will only
+      show the grants that belong to the applications that were filed from 2001.\",\"productTitleText\":\"Patent
+      Grant Full-Text Data (No Images) - XML\",\"productFrequencyText\":\"WEEKLY\",\"daysOfWeekText\":\"TUESDAY\",\"productLabelArrayText\":[\"Patent\"],\"productDatasetArrayText\":[\"Authoritative\"],\"productDatasetCategoryArrayText\":[\"Issued
+      patents (patent grants)\"],\"productFromDate\":\"2002-01-01\",\"productToDate\":\"2025-02-18\",\"productTotalFileSize\":115580062700,\"productFileTotalQuantity\":1233,\"lastModifiedDateTime\":\"2025-02-18
+      00:01:00\",\"mimeTypeIdentifierArrayText\":[\"ASCII\",\"XML\"],\"productFileBag\":{\"count\":1,\"fileDataBag\":[{\"fileName\":\"ipg250218.zip\",\"fileSize\":169313285,\"fileDataFromDate\":\"2025-02-18\",\"fileDataToDate\":\"2025-02-18\",\"fileTypeText\":\"Data\",\"fileDownloadURI\":\"https://beta-api.uspto.gov/api/v1/datasets/products/files/PTGRXML/2025/ipg250218.zip\",\"fileReleaseDate\":\"2025-02-18
+      00:01:00\",\"fileLastModifiedDateTime\":\"2025-02-18 12:01:00\"}]}}],\"facets\":{\"productLabelBag\":[{\"value\":\"Patent\",\"count\":5}],\"productDataSetBag\":[{\"value\":\"Authoritative\",\"count\":5}],\"productCategoryBag\":[{\"value\":\"Patent
+      official gazettes\",\"count\":1},{\"value\":\"Published patent applications
+      (pre-grant publicati\",\"count\":1},{\"value\":\"Patent Application\",\"count\":1},{\"value\":\"Issued
+      patents (patent grants)\",\"count\":2}],\"productMimeTypeBag\":[{\"value\":\"PDF\",\"count\":1},{\"value\":\"XML\",\"count\":3},{\"value\":\"HTML\",\"count\":1},{\"value\":\"ASCII\",\"count\":2}]}}"
+    headers:
+      access-control-allow-headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      access-control-allow-methods:
+      - OPTIONS,GET
+      access-control-allow-origin:
+      - '*'
+      content-length:
+      - '6690'
+      content-type:
+      - application/json
+      date:
+      - Tue, 18 Feb 2025 17:35:00 GMT
+      x-amz-apigw-id:
+      - GMOuvHv6IAMF2LA=
+      x-amzn-requestid:
+      - 7d0d71c6-7b50-42ff-bd8a-7d6031476ff9
+      x-amzn-trace-id:
+      - Root=1-67b4c4c4-7b254c8066d760242cce66e3;Parent=44e9af26ebc210e3;Sampled=0;Lineage=1:d7dee2c6:0
+    http_version: HTTP/2
+    status_code: 200
+version: 1

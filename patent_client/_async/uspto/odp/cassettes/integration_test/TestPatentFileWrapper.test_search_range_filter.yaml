@@ -1,0 +1,1021 @@
+interactions:
+- request:
+    body: '{"q": "applicationMetaData.applicationTypeLabelName:Utility", "rangeFilters":
+      [{"field": "applicationMetaData.filingDate", "valueFrom": "2023-01-01", "valueTo":
+      "2023-01-31"}], "fields": ["applicationNumberText"], "pagination": {"offset":
+      0, "limit": 1}}'
+    headers:
+      X-API-KEY:
+      - REDACTED
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '254'
+      content-type:
+      - application/json
+      host:
+      - beta-api.uspto.gov
+      user-agent:
+      - Mozilla/5.0 Python Patent Clientbot/5.0.16 (parkerhancock@users.noreply.github.com)
+    method: POST
+    uri: https://beta-api.uspto.gov/api/v1/patent/applications/search
+  response:
+    content: '{"count":32437,"patentFileWrapperDataBag":[{"applicationNumberText":"18019071"}],"requestIdentifier":"3900fe38-f6e9-422b-a19c-96ffd807b156"}'
+    headers:
+      access-control-allow-headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      access-control-allow-methods:
+      - OPTIONS,POST,GET
+      access-control-allow-origin:
+      - '*'
+      content-length:
+      - '140'
+      content-type:
+      - application/json
+      date:
+      - Tue, 18 Feb 2025 17:33:32 GMT
+      x-amz-apigw-id:
+      - GMOg7HrkIAMF3sA=
+      x-amzn-requestid:
+      - 3900fe38-f6e9-422b-a19c-96ffd807b156
+      x-amzn-trace-id:
+      - Root=1-67b4c46b-45c83e343bf191977fb02100;Parent=3007945351da0ef7;Sampled=0;Lineage=1:9bd78c15:0
+    http_version: HTTP/2
+    status_code: 200
+- request:
+    body: '{"q": "applicationMetaData.applicationTypeLabelName:Utility", "rangeFilters":
+      [{"field": "applicationMetaData.filingDate", "valueFrom": "2023-01-01", "valueTo":
+      "2023-01-31"}], "pagination": {"offset": 0, "limit": 5}}'
+    headers:
+      X-API-KEY:
+      - REDACTED
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '217'
+      content-type:
+      - application/json
+      host:
+      - beta-api.uspto.gov
+      user-agent:
+      - Mozilla/5.0 Python Patent Clientbot/5.0.16 (parkerhancock@users.noreply.github.com)
+    method: POST
+    uri: https://beta-api.uspto.gov/api/v1/patent/applications/search
+  response:
+    content: "{\"count\":32437,\"patentFileWrapperDataBag\":[{\"eventDataBag\":[{\"eventCode\":\"M844\",\"eventDescriptionText\":\"Information
+      Disclosure Statement (IDS) Filed\",\"eventDate\":\"2023-01-31\"},{\"eventCode\":\"EML_NTR\",\"eventDescriptionText\":\"Email
+      Notification\",\"eventDate\":\"2023-09-29\"},{\"eventCode\":\"PG-ISSUE\",\"eventDescriptionText\":\"PG-Pub
+      Issue Notification\",\"eventDate\":\"2023-09-29\"},{\"eventCode\":\"CCRDY\",\"eventDescriptionText\":\"Application
+      ready for PDX access by participating foreign offices\",\"eventDate\":\"2023-09-28\"},{\"eventCode\":\"RQPR\",\"eventDescriptionText\":\"Request
+      for Foreign Priority (Priority Papers May Be Included)\",\"eventDate\":\"2023-01-31\"},{\"eventCode\":\"DOCK\",\"eventDescriptionText\":\"Case
+      Docketed to Examiner in GAU\",\"eventDate\":\"2023-07-18\"},{\"eventCode\":\"COMP\",\"eventDescriptionText\":\"Application
+      Is Now Complete\",\"eventDate\":\"2023-07-18\"},{\"eventCode\":\"OIPE\",\"eventDescriptionText\":\"Application
+      Dispatched from OIPE\",\"eventDate\":\"2023-07-18\"},{\"eventCode\":\"FTFS\",\"eventDescriptionText\":\"FITF
+      set to YES - revise initial setting\",\"eventDate\":\"2023-07-03\"},{\"eventCode\":\"ELC_RVW\",\"eventDescriptionText\":\"Electronic
+      Review\",\"eventDate\":\"2023-06-22\"},{\"eventCode\":\"ELC_RVW\",\"eventDescriptionText\":\"Electronic
+      Review\",\"eventDate\":\"2023-06-22\"},{\"eventCode\":\"EML_NTR\",\"eventDescriptionText\":\"Email
+      Notification\",\"eventDate\":\"2023-06-22\"},{\"eventCode\":\"371COMP\",\"eventDescriptionText\":\"371
+      Completion Date\",\"eventDate\":\"2023-01-31\"},{\"eventCode\":\"PGPC\",\"eventDescriptionText\":\"Sent
+      to Classification Contractor\",\"eventDate\":\"2023-06-21\"},{\"eventCode\":\"PTA.RFE\",\"eventDescriptionText\":\"Patent
+      Term Adjustment - Ready for Examination\",\"eventDate\":\"2023-01-31\"},{\"eventCode\":\"M903\",\"eventDescriptionText\":\"Notice
+      of DO/EO Acceptance Mailed\",\"eventDate\":\"2023-06-22\"},{\"eventCode\":\"FLRCPT.O\",\"eventDescriptionText\":\"Filing
+      Receipt\",\"eventDate\":\"2023-06-22\"},{\"eventCode\":\"SREXR141\",\"eventDescriptionText\":\"PTO/SB/69-Authorize
+      EPO Access to Search Results\",\"eventDate\":\"2023-01-31\"},{\"eventCode\":\"APPERMS\",\"eventDescriptionText\":\"Applicants
+      have given acceptable permission for participating foreign\",\"eventDate\":\"2023-01-31\"},{\"eventCode\":\"SMAL\",\"eventDescriptionText\":\"Applicant
+      Has Filed a Verified Statement of Small Entity Status in Compliance with 37
+      CFR 1.27\",\"eventDate\":\"2023-03-13\"},{\"eventCode\":\"WIDS\",\"eventDescriptionText\":\"Information
+      Disclosure Statement (IDS) Filed\",\"eventDate\":\"2023-01-31\"},{\"eventCode\":\"BIG.\",\"eventDescriptionText\":\"Entity
+      Status Set To Undiscounted (Initial Default Setting or Status Change)\",\"eventDate\":\"2023-01-31\"},{\"eventCode\":\"IEXX\",\"eventDescriptionText\":\"Initial
+      Exam Team nn\",\"eventDate\":\"2023-01-31\"}],\"applicationMetaData\":{\"firstInventorToFileIndicator\":\"Y\",\"applicationStatusCode\":30,\"applicationTypeCode\":\"UTL\",\"entityStatusData\":{\"smallEntityStatusIndicator\":false,\"businessEntityStatusCategory\":\"Small\"},\"filingDate\":\"2023-01-31\",\"uspcSymbolText\":\"423/92\",\"nationalStageIndicator\":true,\"firstInventorName\":\"Giovanni
+      MODICA\",\"cpcClassificationBag\":[\"H01M10/54\",\"C22B13/045\",\"C22B3/46\",\"H01M10/06\"],\"effectiveFilingDate\":\"2023-01-31\",\"publicationDateBag\":[\"2023-09-28\"],\"publicationSequenceNumberBag\":[\"0307733\"],\"earliestPublicationDate\":\"2023-09-28\",\"applicationTypeLabelName\":\"Utility\",\"applicationStatusDate\":\"2023-07-18\",\"class\":\"423\",\"applicationTypeCategory\":\"REGULAR\",\"inventorBag\":[{\"firstName\":\"Giovanni\",\"lastName\":\"MODICA\",\"inventorNameText\":\"Giovanni
+      MODICA\",\"correspondenceAddressBag\":[{\"cityName\":\"Milan\",\"countryCode\":\"IT\",\"nameLineOneText\":\"MODICA,
+      Giovanni\",\"countryName\":\"ITALY\",\"postalAddressCategory\":\"residence\"},{\"cityName\":\"Milan\",\"countryCode\":\"IT\",\"nameLineOneText\":\"Giovanni
+      \ MODICA\",\"countryName\":\"ITALY\",\"postalAddressCategory\":\"postal\"}]},{\"firstName\":\"Arturo\",\"lastName\":\"SOMMARIVA\",\"inventorNameText\":\"Arturo
+      SOMMARIVA\",\"correspondenceAddressBag\":[{\"cityName\":\"Salsomaggiore Terme
+      (PR)\",\"countryCode\":\"IT\",\"nameLineOneText\":\"SOMMARIVA, Arturo\",\"countryName\":\"ITALY\",\"postalAddressCategory\":\"residence\"},{\"cityName\":\"Salsomaggiore
+      Terme (PR)\",\"countryCode\":\"IT\",\"nameLineOneText\":\"Arturo  SOMMARIVA\",\"countryName\":\"ITALY\",\"postalAddressCategory\":\"postal\"}]}],\"applicationStatusDescriptionText\":\"Docketed
+      New Case - Ready for Examination\",\"applicantBag\":[{\"applicantNameText\":\"ENN.CO
+      SRL\",\"correspondenceAddressBag\":[{\"cityName\":\"Castiglione delle Stiviere
+      (MN)\",\"countryCode\":\"IT\",\"nameLineOneText\":\"ENN.CO SRL\",\"countryName\":\"ITALY\",\"postalAddressCategory\":\"postal\"}]}],\"firstApplicantName\":\"ENN.CO
+      SRL\",\"customerNumber\":39878,\"groupArtUnitNumber\":\"OPAP\",\"earliestPublicationNumber\":\"US20230307733A1\",\"inventionTitle\":\"PROCESS
+      WITH LOW ENVIRONMENTAL IMPACT AND REDUCED ENERGY CONSUMPTION FOR THE RECOVERY
+      OF LEAD FROM THE ELECTRODE PASTES OF END-OF-LIFE BATTERIES\",\"applicationConfirmationNumber\":7064,\"examinerNameText\":\"CENTRAL,
+      DOCKET\",\"subclass\":\"92\",\"publicationCategoryBag\":[\"Pre-Grant Publications
+      - PGPub\"],\"docketNumber\":\"0385.0075\"},\"parentContinuityBag\":[{\"parentApplicationStatusCode\":30,\"claimParentageTypeCode\":\"NST\",\"claimParentageTypeCodeDescriptionText\":\"is
+      a National Stage Entry of\",\"parentApplicationStatusDescriptionText\":\"Docketed
+      New Case - Ready for Examination\",\"parentApplicationNumberText\":\"PCTIB2021056433\",\"parentApplicationFilingDate\":\"2021-07-16\",\"childApplicationNumberText\":\"18019071\"}],\"pgpubDocumentMetaData\":{\"productIdentifier\":\"APPXML\",\"zipFileName\":\"ipa230928.zip\",\"fileCreateDateTime\":\"2024-09-30T11:06:56\",\"xmlFileName\":\"18019071_20230307733.xml\",\"fileLocationURI\":\"https://beta-api.uspto.gov/api/v1/datasets/products/files/APPXML-SPLT/2023/ipa230928/18019071_20230307733.xml\"},\"lastIngestionDateTime\":\"2025-02-10T23:46:04\",\"recordAttorney\":{\"attorneyBag\":[{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"DAVID\",\"lastName\":\"ZIBELLI\",\"registrationNumber\":\"36394\",\"attorneyAddressBag\":[{\"cityName\":\"ALEXANDRIA,\",\"geographicRegionName\":\"VIRGINIA\",\"geographicRegionCode\":\"VA\",\"countryCode\":\"US\",\"postalCode\":\"223200000\",\"nameLineOneText\":\"0LIFF
+      & BERRIDGE, P.L.C.\",\"nameLineTwoText\":\"P.O. BOX 19928\",\"countryName\":\"UNITED
+      STATES\"},{\"cityName\":\"LAS VEGAS\",\"geographicRegionName\":\"NEVADA\",\"geographicRegionCode\":\"NV\",\"countryCode\":\"US\",\"postalCode\":\"89144\",\"nameLineOneText\":\"WEIDE
+      & MILLER, LTD.\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"10655
+      PARK RUN DRIVE\",\"addressLineTwoText\":\"SUITE 100\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"702-382-4804\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"RICHARD\",\"lastName\":\"IRVING\",\"registrationNumber\":\"38499\",\"attorneyAddressBag\":[{\"cityName\":\"TYSONS
+      CORNER\",\"geographicRegionName\":\"VIRGINIA\",\"geographicRegionCode\":\"VA\",\"countryCode\":\"US\",\"postalCode\":\"22182\",\"nameLineOneText\":\"MH2
+      TECHNOLOGY LAW GROUP LLP\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"1951
+      KIDWELL DRIVE, SUITE 310\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"703-917-0000\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"STUART\",\"lastName\":\"SMITH\",\"registrationNumber\":\"42159\",\"attorneyAddressBag\":[{\"cityName\":\"CHANTILLY,\",\"geographicRegionName\":\"VIRGINIA\",\"geographicRegionCode\":\"VA\",\"countryCode\":\"US\",\"postalCode\":\"201510000\",\"nameLineOneText\":\"FLESHNER
+      & KIM\",\"nameLineTwoText\":\"14500 AVION PARKWAY\",\"countryName\":\"UNITED
+      STATES\",\"addressLineOneText\":\"SUITE 125\"},{\"cityName\":\"PHILADELPHIA\",\"geographicRegionName\":\"PENNSYLVANIA\",\"geographicRegionCode\":\"PA\",\"countryCode\":\"US\",\"postalCode\":\"19103\",\"nameLineOneText\":\"THE
+      BELLES GROUP, P.C.\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"1608
+      WALNUT STREET\",\"addressLineTwoText\":\"SUITE 1302\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"703-244-8133\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"JAY\",\"lastName\":\"STELACONE\",\"registrationNumber\":\"42168\",\"attorneyAddressBag\":[{\"cityName\":\"ALEXANDRIA\",\"geographicRegionName\":\"VIRGINIA\",\"geographicRegionCode\":\"VA\",\"countryCode\":\"US\",\"postalCode\":\"22314\",\"nameLineOneText\":\"OLIFF
+      PLC\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"277 S. WASHINGTON
+      STREET\",\"addressLineTwoText\":\"SUITE 500\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"703-836-6400\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"TIMOTHY\",\"lastName\":\"HSIEH\",\"registrationNumber\":\"42672\",\"attorneyAddressBag\":[{\"cityName\":\"TYSONS
+      CORNER\",\"geographicRegionName\":\"VIRGINIA\",\"geographicRegionCode\":\"VA\",\"countryCode\":\"US\",\"postalCode\":\"22182\",\"nameLineOneText\":\"MH2
+      TECHNOLOGY LAW GROUP LLP\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"1951
+      KIDWELL DRIVE\",\"addressLineTwoText\":\"SUITE 550\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"703-917-0000\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"MICHAEL\",\"lastName\":\"KENNEY\",\"registrationNumber\":\"42718\",\"attorneyAddressBag\":[{\"cityName\":\"NEW
+      YORK\",\"geographicRegionName\":\"NEW YORK\",\"geographicRegionCode\":\"NY\",\"countryCode\":\"US\",\"postalCode\":\"10003\",\"nameLineOneText\":\"HAPPIFY
+      INC.\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"51 E 12TH
+      ST.\",\"addressLineTwoText\":\"FLOOR 5\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"212-261-6933\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"WILLIAM\",\"lastName\":\"BROGAN\",\"registrationNumber\":\"43515\",\"attorneyAddressBag\":[{\"cityName\":\"VIENNA\",\"geographicRegionName\":\"VIRGINIA\",\"geographicRegionCode\":\"VA\",\"countryCode\":\"US\",\"postalCode\":\"22182\",\"nameLineOneText\":\"MH2
+      TECHNOLOGY LAW  GROUP LLP\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"1951
+      KIDWELL DRIVE\",\"addressLineTwoText\":\"SUITE 550\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"703-917-0000\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"TIMOTHY\",\"lastName\":\"DONALDSON\",\"registrationNumber\":\"43592\",\"attorneyAddressBag\":[{\"cityName\":\"TYSONS
+      CORNER\",\"geographicRegionName\":\"VIRGINIA\",\"geographicRegionCode\":\"VA\",\"countryCode\":\"US\",\"postalCode\":\"22182\",\"nameLineOneText\":\"MH2
+      TECHNOLOGY LAW GROUP LLP\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"1951
+      KIDWELL DRIVE\",\"addressLineTwoText\":\"SUITE 550\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"703-917-0000X203\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"STEVEN\",\"lastName\":\"SCOTT\",\"registrationNumber\":\"43911\",\"attorneyAddressBag\":[{\"cityName\":\"ROCKVILLE\",\"geographicRegionName\":\"MARYLAND\",\"geographicRegionCode\":\"MD\",\"countryCode\":\"US\",\"postalCode\":\"20850\",\"nameLineOneText\":\"SONAPAT
+      LLC\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"ONE RESEARCH
+      COURT\",\"addressLineTwoText\":\"SUITE 450\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"301-339-1000\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"BLAIR\",\"lastName\":\"TAYLOR\",\"registrationNumber\":\"44370\",\"attorneyAddressBag\":[{\"cityName\":\"TYSONS
+      CORNER\",\"geographicRegionName\":\"VIRGINIA\",\"geographicRegionCode\":\"VA\",\"countryCode\":\"US\",\"postalCode\":\"22182\",\"nameLineOneText\":\"MH2
+      TECHNOLOGY LAW GROUP, LLP\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"1951
+      KIDWELL DRIVE, SUITE 310\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"703-917-0000\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"LAWRENCE\",\"lastName\":\"GALVIN\",\"registrationNumber\":\"44694\",\"attorneyAddressBag\":[{\"cityName\":\"TYSONS
+      CORNER\",\"geographicRegionName\":\"VIRGINIA\",\"geographicRegionCode\":\"VA\",\"countryCode\":\"US\",\"postalCode\":\"22182-398\",\"nameLineOneText\":\"MH2
+      TECHNOLOGY LAW GROUP LLP\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"1951
+      KIDWELL DRIVE\",\"addressLineTwoText\":\"SUITE 310\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"703-917-0000\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"CHRISTOPHER\",\"lastName\":\"SAPPENFIELD\",\"registrationNumber\":\"45073\",\"attorneyAddressBag\":[{\"cityName\":\"TYSONS
+      CORNER\",\"geographicRegionName\":\"VIRGINIA\",\"geographicRegionCode\":\"VA\",\"countryCode\":\"US\",\"postalCode\":\"22182\",\"nameLineOneText\":\"MH2
+      TECHNOLOGY LAW GROUP LLP\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"1951
+      KIDWELL DRIVE, SUITE 550\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"703-917-0000\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"LINDA\",\"lastName\":\"PARKER\",\"registrationNumber\":\"46046\",\"attorneyAddressBag\":[{\"cityName\":\"TYSON'S
+      CORNER\",\"geographicRegionName\":\"VIRGINIA\",\"geographicRegionCode\":\"VA\",\"countryCode\":\"US\",\"postalCode\":\"22182\",\"nameLineOneText\":\"MH2TECHNOLOGY
+      LAW GROUP LLP\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"1951
+      KIDWELL DRIVE, SUITE 550\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"703-917-0000\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"KATHLEEN\",\"lastName\":\"CHAPMAN\",\"registrationNumber\":\"46094\",\"attorneyAddressBag\":[{\"cityName\":\"TYSONS
+      CORNER\",\"geographicRegionName\":\"VIRGINIA\",\"geographicRegionCode\":\"VA\",\"countryCode\":\"US\",\"postalCode\":\"22182\",\"nameLineOneText\":\"MH2
+      TECHNOLOGY LAW GROUP LLP\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"1951
+      KIDWELL DRIVE\",\"addressLineTwoText\":\"SUITE 310\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"703-917-0000\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"JAMES\",\"lastName\":\"BOYLE\",\"registrationNumber\":\"46570\",\"attorneyAddressBag\":[{\"cityName\":\"RESTON\",\"geographicRegionName\":\"VIRGINIA\",\"geographicRegionCode\":\"VA\",\"countryCode\":\"US\",\"postalCode\":\"20190\",\"nameLineOneText\":\"BOYLE,
+      PLLC\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"11706 BOWMAN
+      GREEN DR\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"703-429-1906\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"CHRISTOPHER\",\"lastName\":\"TUCKER\",\"registrationNumber\":\"48783\",\"attorneyAddressBag\":[{\"cityName\":\"TYSONS
+      CORNER\",\"geographicRegionName\":\"VIRGINIA\",\"geographicRegionCode\":\"VA\",\"countryCode\":\"US\",\"postalCode\":\"22182\",\"nameLineOneText\":\"MH2
+      TECHNOLOGY LAW GROUP\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"1951
+      KIDWELL DRIVE, SUITE 550\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"703-917-000
+      EXT 143\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"AGENT\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"JEFFREY\",\"lastName\":\"LEANING\",\"registrationNumber\":\"51184\",\"attorneyAddressBag\":[{\"cityName\":\"TYSON
+      CORNER\",\"geographicRegionName\":\"VIRGINIA\",\"geographicRegionCode\":\"VA\",\"countryCode\":\"US\",\"postalCode\":\"22182\",\"nameLineOneText\":\"MH2
+      TECHNOLOGY LAW GROUP LLP\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"1951
+      KIDWELL DRIVE\",\"addressLineTwoText\":\"SUITE 550\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"703-917-0000
+      EXT. 20\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"ERIN\",\"lastName\":\"DECARLO\",\"registrationNumber\":\"51688\",\"attorneyAddressBag\":[{\"cityName\":\"TYSON
+      CORNER\",\"geographicRegionName\":\"VIRGINIA\",\"geographicRegionCode\":\"VA\",\"countryCode\":\"US\",\"postalCode\":\"22182\",\"nameLineOneText\":\"MH2
+      TECHNOLOGY LAW GROUP LLP\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"1951
+      KIDWELL DRIVE\",\"addressLineTwoText\":\"SUITE 550\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"703-917-0000
+      X209\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"MARK\",\"lastName\":\"HULL\",\"registrationNumber\":\"54753\",\"attorneyAddressBag\":[{\"cityName\":\"BLUE
+      ASH\",\"geographicRegionName\":\"OHIO\",\"geographicRegionCode\":\"OH\",\"countryCode\":\"US\",\"postalCode\":\"45242\",\"countryName\":\"UNITED
+      STATES\",\"addressLineOneText\":\"9508 FALLSON CT.\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"513-693-4876\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"HUI-JU\",\"lastName\":\"WU\",\"registrationNumber\":\"57209\",\"attorneyAddressBag\":[{\"cityName\":\"TYSONS
+      CORNER\",\"geographicRegionName\":\"VIRGINIA\",\"geographicRegionCode\":\"VA\",\"countryCode\":\"US\",\"postalCode\":\"22182\",\"nameLineOneText\":\"MH2
+      TECHNOLOGY LAW GROUP LLP\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"1951
+      KIDWELL DRIVE\",\"addressLineTwoText\":\"SUITE 310\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"703-917-0000X125\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"MANUEL\",\"lastName\":\"CORDOVEZ\",\"registrationNumber\":\"58480\",\"attorneyAddressBag\":[{\"cityName\":\"ALEXANDRIA\",\"geographicRegionName\":\"VIRGINIA\",\"geographicRegionCode\":\"VA\",\"countryCode\":\"US\",\"postalCode\":\"22314\",\"nameLineOneText\":\"CREATIVITY
+      IP PLLC\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"950 NORTH
+      WASHINGTON STREET\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"804-876-2195\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"TYLER\",\"lastName\":\"MANTOOTH\",\"registrationNumber\":\"60162\",\"attorneyAddressBag\":[{\"cityName\":\"OKLAHOMA
+      CITY\",\"geographicRegionName\":\"OKLAHOMA\",\"geographicRegionCode\":\"OK\",\"countryCode\":\"US\",\"postalCode\":\"73102-886\",\"nameLineOneText\":\"HALL
+      ESTILL\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"100 NORTH
+      BROADWAY AVE\",\"addressLineTwoText\":\"CHASE TOWER, SUITE 2900\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"405-553-2828\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"MARCUS\",\"lastName\":\"DAWES\",\"registrationNumber\":\"61918\",\"attorneyAddressBag\":[{\"cityName\":\"HUNTINGTON
+      BEACH\",\"geographicRegionName\":\"CALIFORNIA\",\"geographicRegionCode\":\"CA\",\"countryCode\":\"US\",\"postalCode\":\"92649\",\"nameLineOneText\":\"DAWES
+      PATENT LAW GROUP\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"5200
+      WARNER AVE.\",\"addressLineTwoText\":\"SUITE 106\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"714-840-0302\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"GARRETT\",\"lastName\":\"ATKINSON\",\"registrationNumber\":\"62645\",\"attorneyAddressBag\":[{\"cityName\":\"TYSON
+      CORNER\",\"geographicRegionName\":\"VIRGINIA\",\"geographicRegionCode\":\"VA\",\"countryCode\":\"US\",\"postalCode\":\"22182\",\"nameLineOneText\":\"MH2
+      TECHNOLOGY LAW GROUP, LLP\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"1951
+      KIDWELL DR., SUITE 550\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"703-917-0000X
+      136\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"ANDREW\",\"lastName\":\"PLUMMER\",\"registrationNumber\":\"66400\",\"attorneyAddressBag\":[{\"cityName\":\"TYSONS
+      CORNER\",\"geographicRegionName\":\"VIRGINIA\",\"geographicRegionCode\":\"VA\",\"countryCode\":\"US\",\"postalCode\":\"22182\",\"nameLineOneText\":\"MH2
+      TECHNOLOGY LAW GROUP\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"1951
+      KIDWELL DRIVE\",\"addressLineTwoText\":\"SUITE 550\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"703-917-0000\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"DAVID\",\"lastName\":\"GERVASI\",\"registrationNumber\":\"74372\",\"attorneyAddressBag\":[{\"cityName\":\"ROCHESTER\",\"geographicRegionName\":\"NEW
+      YORK\",\"geographicRegionCode\":\"NY\",\"countryCode\":\"US\",\"postalCode\":\"14644\",\"nameLineOneText\":\"XEROX
+      CORPORATION\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"100
+      CLINTON AVENUE SOUTH\",\"addressLineTwoText\":\"XRX2 - 20A\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"585-265-5812\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"AGENT\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"I-CHU\",\"lastName\":\"WANG\",\"registrationNumber\":\"75858\",\"attorneyAddressBag\":[{\"cityName\":\"DELTA\",\"geographicRegionName\":\"COLORADO\",\"geographicRegionCode\":\"CO\",\"countryCode\":\"US\",\"postalCode\":\"81416\",\"countryName\":\"UNITED
+      STATES\",\"addressLineOneText\":\"1776 CLEARVIEW DRIVE\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"617-838-3448\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"}]},\"applicationNumberText\":\"18019071\",\"correspondenceAddressBag\":[{\"cityName\":\"TYSONS
+      CORNER\",\"geographicRegionName\":\"VIRGINIA\",\"geographicRegionCode\":\"VA\",\"countryCode\":\"US\",\"postalCode\":\"22182\",\"nameLineOneText\":\"MH2
+      TECHNOLOGY LAW GROUP, LLP\",\"nameLineTwoText\":\"TIMOTHY M. HSIEH\",\"countryName\":\"UNITED
+      STATES\",\"addressLineOneText\":\"1951 KIDWELL DRIVE\",\"addressLineTwoText\":\"SUITE
+      310\"}],\"foreignPriorityBag\":[{\"filingDate\":\"2020-08-04\",\"applicationNumberText\":\"102020000017320\",\"ipOfficeName\":\"ITALY\"}]},{\"grantDocumentMetaData\":{\"productIdentifier\":\"PTGRXML\",\"zipFileName\":\"ipg240116.zip\",\"fileCreateDateTime\":\"2024-09-30T17:32:50\",\"xmlFileName\":\"18162559_11876263.xml\",\"fileLocationURI\":\"https://beta-api.uspto.gov/api/v1/datasets/products/files/PTGRXML-SPLT/2024/ipg240116/18162559_11876263.xml\"},\"eventDataBag\":[{\"eventCode\":\"PGM/\",\"eventDescriptionText\":\"Recordation
+      of Patent Grant Mailed\",\"eventDate\":\"2024-01-16\"},{\"eventCode\":\"EML_NTR\",\"eventDescriptionText\":\"Email
+      Notification\",\"eventDate\":\"2024-01-16\"},{\"eventCode\":\"CCRDY\",\"eventDescriptionText\":\"Application
+      ready for PDX access by participating foreign offices\",\"eventDate\":\"2024-01-16\"},{\"eventCode\":\"MEPG_NTF\",\"eventDescriptionText\":\"Mail
+      Patent eGrant Notification\",\"eventDate\":\"2024-01-16\"},{\"eventCode\":\"EPG_NTF\",\"eventDescriptionText\":\"Patent
+      eGrant Notification\",\"eventDate\":\"2024-01-16\"},{\"eventCode\":\"EPG/\",\"eventDescriptionText\":\"Recordation
+      of Patent eGrant\",\"eventDate\":\"2024-01-16\"},{\"eventCode\":\"EML_NTR\",\"eventDescriptionText\":\"Email
+      Notification\",\"eventDate\":\"2023-12-28\"},{\"eventCode\":\"WPIR\",\"eventDescriptionText\":\"Issue
+      Notification Mailed\",\"eventDate\":\"2023-12-27\"},{\"eventCode\":\"PTAC\",\"eventDescriptionText\":\"Patent
+      Issue Date Used in PTA Calculation\",\"eventDate\":\"2024-01-16\"},{\"eventCode\":\"D1935\",\"eventDescriptionText\":\"Dispatch
+      to FDC\",\"eventDate\":\"2023-11-28\"},{\"eventCode\":\"PILS\",\"eventDescriptionText\":\"Application
+      Is Considered Ready for Issue\",\"eventDate\":\"2023-11-28\"},{\"eventCode\":\"DRWF\",\"eventDescriptionText\":\"Workflow
+      - Drawings Finished\",\"eventDate\":\"2023-10-20\"},{\"eventCode\":\"N084\",\"eventDescriptionText\":\"Issue
+      Fee Payment Verified\",\"eventDate\":\"2023-11-17\"},{\"eventCode\":\"IFEE\",\"eventDescriptionText\":\"Issue
+      Fee Payment Received\",\"eventDate\":\"2023-11-17\"},{\"eventCode\":\"EML_NTR\",\"eventDescriptionText\":\"Email
+      Notification\",\"eventDate\":\"2023-11-13\"},{\"eventCode\":\"MN271\",\"eventDescriptionText\":\"Mail
+      Response to 312 Amendment (PTO-271)\",\"eventDate\":\"2023-11-13\"},{\"eventCode\":\"N271\",\"eventDescriptionText\":\"Response
+      to Amendment under Rule 312\",\"eventDate\":\"2023-11-05\"},{\"eventCode\":\"PUBTC\",\"eventDescriptionText\":\"Pubs
+      Case Remand to TC\",\"eventDate\":\"2023-10-26\"},{\"eventCode\":\"A.NA\",\"eventDescriptionText\":\"Amendment
+      after Notice of Allowance (Rule 312)\",\"eventDate\":\"2023-10-20\"},{\"eventCode\":\"EML_NTR\",\"eventDescriptionText\":\"Email
+      Notification\",\"eventDate\":\"2023-09-15\"},{\"eventCode\":\"MN/=.\",\"eventDescriptionText\":\"Mail
+      Notice of Allowance\",\"eventDate\":\"2023-09-15\"},{\"eventCode\":\"N/=.\",\"eventDescriptionText\":\"Notice
+      of Allowance Data Verification Completed\",\"eventDate\":\"2023-09-13\"},{\"eventCode\":\"FWDX\",\"eventDescriptionText\":\"Date
+      Forwarded to Examiner\",\"eventDate\":\"2023-08-27\"},{\"eventCode\":\"A...\",\"eventDescriptionText\":\"Response
+      after Non-Final Action\",\"eventDate\":\"2023-08-23\"},{\"eventCode\":\"ELC_RVW\",\"eventDescriptionText\":\"Electronic
+      Review\",\"eventDate\":\"2023-05-24\"},{\"eventCode\":\"ELC_RVW\",\"eventDescriptionText\":\"Electronic
+      Review\",\"eventDate\":\"2023-05-24\"},{\"eventCode\":\"ELC_RVW\",\"eventDescriptionText\":\"Electronic
+      Review\",\"eventDate\":\"2023-05-24\"},{\"eventCode\":\"EML_NTF\",\"eventDescriptionText\":\"Email
+      Notification\",\"eventDate\":\"2023-05-24\"},{\"eventCode\":\"MCTNF\",\"eventDescriptionText\":\"Mail
+      Non-Final Rejection\",\"eventDate\":\"2023-05-24\"},{\"eventCode\":\"CTNF\",\"eventDescriptionText\":\"Non-Final
+      Rejection\",\"eventDate\":\"2023-05-19\"},{\"eventCode\":\"IDSC\",\"eventDescriptionText\":\"Information
+      Disclosure Statement considered\",\"eventDate\":\"2023-05-19\"},{\"eventCode\":\"M844\",\"eventDescriptionText\":\"Information
+      Disclosure Statement (IDS) Filed\",\"eventDate\":\"2023-02-24\"},{\"eventCode\":\"DOCK\",\"eventDescriptionText\":\"Case
+      Docketed to Examiner in GAU\",\"eventDate\":\"2023-03-26\"},{\"eventCode\":\"DOCK\",\"eventDescriptionText\":\"Case
+      Docketed to Examiner in GAU\",\"eventDate\":\"2023-03-24\"},{\"eventCode\":\"OIPE\",\"eventDescriptionText\":\"Application
+      Dispatched from OIPE\",\"eventDate\":\"2023-03-24\"},{\"eventCode\":\"ELC_RVW\",\"eventDescriptionText\":\"Electronic
+      Review\",\"eventDate\":\"2023-03-06\"},{\"eventCode\":\"EML_NTF\",\"eventDescriptionText\":\"Email
+      Notification\",\"eventDate\":\"2023-03-06\"},{\"eventCode\":\"MOPPT\",\"eventDescriptionText\":\"Mail
+      O.P. Petition Decision\",\"eventDate\":\"2023-03-06\"},{\"eventCode\":\"MP003\",\"eventDescriptionText\":\"Mail-Record
+      Petition Decision of Granted to Make Special\",\"eventDate\":\"2023-03-02\"},{\"eventCode\":\"P003\",\"eventDescriptionText\":\"Record
+      Petition Decision of Granted to Make Special\",\"eventDate\":\"2023-03-01\"},{\"eventCode\":\"OPPT\",\"eventDescriptionText\":\"O.P.
+      Petition Decision\",\"eventDate\":\"2023-03-01\"},{\"eventCode\":\"EML_NTR\",\"eventDescriptionText\":\"Email
+      Notification\",\"eventDate\":\"2023-03-01\"},{\"eventCode\":\"PGPC\",\"eventDescriptionText\":\"Sent
+      to Classification Contractor\",\"eventDate\":\"2023-02-28\"},{\"eventCode\":\"FTFS\",\"eventDescriptionText\":\"FITF
+      set to YES - revise initial setting\",\"eventDate\":\"2023-02-28\"},{\"eventCode\":\"PTA.RFE\",\"eventDescriptionText\":\"Patent
+      Term Adjustment - Ready for Examination\",\"eventDate\":\"2023-02-28\"},{\"eventCode\":\"MPEN\",\"eventDescriptionText\":\"Mail
+      Pre-Exam Notice\",\"eventDate\":\"2023-03-01\"},{\"eventCode\":\"COMP\",\"eventDescriptionText\":\"Application
+      Is Now Complete\",\"eventDate\":\"2023-03-01\"},{\"eventCode\":\"FLRCPT.O\",\"eventDescriptionText\":\"Filing
+      Receipt\",\"eventDate\":\"2023-03-01\"},{\"eventCode\":\"WIDS\",\"eventDescriptionText\":\"Information
+      Disclosure Statement (IDS) Filed\",\"eventDate\":\"2023-02-24\"},{\"eventCode\":\"SREXR141\",\"eventDescriptionText\":\"PTO/SB/69-Authorize
+      EPO Access to Search Results\",\"eventDate\":\"2023-01-31\"},{\"eventCode\":\"APPERMS\",\"eventDescriptionText\":\"Applicants
+      have given acceptable permission for participating foreign\",\"eventDate\":\"2023-01-31\"},{\"eventCode\":\"SMAL\",\"eventDescriptionText\":\"Applicant
+      Has Filed a Verified Statement of Small Entity Status in Compliance with 37
+      CFR 1.27\",\"eventDate\":\"2023-02-24\"},{\"eventCode\":\"PET.\",\"eventDescriptionText\":\"Petition
+      Entered\",\"eventDate\":\"2023-01-31\"},{\"eventCode\":\"BIG.\",\"eventDescriptionText\":\"Entity
+      Status Set To Undiscounted (Initial Default Setting or Status Change)\",\"eventDate\":\"2023-01-31\"},{\"eventCode\":\"IEXX\",\"eventDescriptionText\":\"Initial
+      Exam Team nn\",\"eventDate\":\"2023-01-31\"}],\"applicationMetaData\":{\"firstInventorToFileIndicator\":\"Y\",\"applicationStatusCode\":150,\"applicationTypeCode\":\"UTL\",\"entityStatusData\":{\"smallEntityStatusIndicator\":false,\"businessEntityStatusCategory\":\"Small\"},\"filingDate\":\"2023-01-31\",\"uspcSymbolText\":\"429/427\",\"nationalStageIndicator\":false,\"firstInventorName\":\"Hung-Chi
+      WANG\",\"cpcClassificationBag\":[\"H01M8/04067\",\"B60L50/70\",\"H01M8/04014\",\"B64D33/10\",\"H01M8/04768\",\"H01M8/04761\",\"B64D27/24\",\"H01M2250/20\",\"B60L2200/10\",\"B60L58/33\"],\"effectiveFilingDate\":\"2023-01-31\",\"applicationTypeLabelName\":\"Utility\",\"applicationStatusDate\":\"2023-12-27\",\"class\":\"429\",\"applicationTypeCategory\":\"REGULAR\",\"inventorBag\":[{\"firstName\":\"Hung-Chi\",\"lastName\":\"WANG\",\"countryCode\":\"US\",\"inventorNameText\":\"Hung-Chi
+      WANG\",\"correspondenceAddressBag\":[{\"cityName\":\"Gilroy\",\"geographicRegionName\":\"CALIFORNIA\",\"geographicRegionCode\":\"CA\",\"countryCode\":\"US\",\"nameLineOneText\":\"WANG,
+      Hung-Chi\",\"countryName\":\"UNITED STATES\",\"postalAddressCategory\":\"residence\"},{\"cityName\":\"Hollister\",\"geographicRegionName\":\"CALIFORNIA\",\"geographicRegionCode\":\"CA\",\"countryCode\":\"US\",\"nameLineOneText\":\"Hung-Chi
+      \ WANG\",\"countryName\":\"UNITED STATES\",\"postalAddressCategory\":\"postal\"}]},{\"firstName\":\"Matthew\",\"lastName\":\"LEGG\",\"countryCode\":\"US\",\"inventorNameText\":\"Matthew
+      LEGG\",\"correspondenceAddressBag\":[{\"cityName\":\"Swindon\",\"countryCode\":\"GB\",\"nameLineOneText\":\"Matthew
+      LEGG\",\"countryName\":\"UNITED KINGDOM\",\"postalAddressCategory\":\"residence\"},{\"cityName\":\"Hollister\",\"geographicRegionName\":\"CALIFORNIA\",\"geographicRegionCode\":\"CA\",\"countryCode\":\"US\",\"nameLineOneText\":\"Matthew
+      LEGG\",\"countryName\":\"UNITED STATES\",\"postalAddressCategory\":\"postal\"}]},{\"firstName\":\"Rudolf\",\"lastName\":\"COERTZE\",\"countryCode\":\"US\",\"inventorNameText\":\"Rudolf
+      Jacobus COERTZE\",\"middleName\":\"Jacobus\",\"correspondenceAddressBag\":[{\"cityName\":\"Gloucestershire\",\"countryCode\":\"GB\",\"nameLineOneText\":\"Rudolf
+      Jacobus COERTZE\",\"countryName\":\"UNITED KINGDOM\",\"postalAddressCategory\":\"residence\"},{\"cityName\":\"Hollister\",\"geographicRegionName\":\"CALIFORNIA\",\"geographicRegionCode\":\"CA\",\"countryCode\":\"US\",\"nameLineOneText\":\"Rudolf
+      Jacobus COERTZE\",\"countryName\":\"UNITED STATES\",\"postalAddressCategory\":\"postal\"}]}],\"applicationStatusDescriptionText\":\"Patented
+      Case\",\"patentNumber\":\"11876263\",\"grantDate\":\"2024-01-16\",\"applicantBag\":[{\"applicantNameText\":\"ZeroAvia,
+      Inc.\",\"correspondenceAddressBag\":[{\"cityName\":\"Hollister\",\"geographicRegionName\":\"CALIFORNIA\",\"geographicRegionCode\":\"CA\",\"countryCode\":\"US\",\"countryName\":\"UNITED
+      STATES\",\"postalAddressCategory\":\"postal\"}]}],\"firstApplicantName\":\"ZeroAvia,
+      Inc.\",\"customerNumber\":27667,\"groupArtUnitNumber\":\"1752\",\"inventionTitle\":\"CATHODE
+      EJECTOR COOLING FLOW CONTROL SYSTEM\",\"applicationConfirmationNumber\":7882,\"examinerNameText\":\"GODO,
+      OLATUNJI A\",\"subclass\":\"427\",\"publicationCategoryBag\":[\"Granted/Issued\"],\"docketNumber\":\"CI-ZERO
+      22.10\"},\"patentTermAdjustmentData\":{\"applicantDayDelayQuantity\":35.0,\"overlappingDayQuantity\":0.0,\"filingDate\":\"2023-01-31\",\"ipOfficeAdjustmentDelayQuantity\":0.0,\"cDelayQuantity\":0.0,\"adjustmentTotalQuantity\":0.0,\"bDelayQuantity\":0.0,\"grantDate\":\"2024-01-16\",\"aDelayQuantity\":0.0,\"ipOfficeDayDelayQuantity\":0.0,\"patentTermAdjustmentHistoryDataBag\":[{\"eventDescriptionText\":\"PTA
+      36 Months\",\"eventSequenceNumber\":59.5,\"originatingEventSequenceNumber\":0.5,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2024-01-16\"},{\"eventDescriptionText\":\"Patent
+      Issue Date Used in PTA Calculation\",\"eventSequenceNumber\":59.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2024-01-16\"},{\"eventDescriptionText\":\"Export
+      to Final Data Capture\",\"eventSequenceNumber\":58.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-11-29\"},{\"eventDescriptionText\":\"Dispatch
+      to FDC\",\"eventSequenceNumber\":57.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-11-28\"},{\"eventDescriptionText\":\"Application
+      Is Considered Ready for Issue\",\"eventSequenceNumber\":56.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-11-28\"},{\"applicantDayDelayQuantity\":35.0,\"eventDescriptionText\":\"Workflow
+      - Drawings Finished\",\"eventSequenceNumber\":55.0,\"originatingEventSequenceNumber\":43.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-10-20\"},{\"eventDescriptionText\":\"Issue
+      Fee Payment Verified\",\"eventSequenceNumber\":54.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-11-17\"},{\"eventDescriptionText\":\"Issue
+      Fee Payment Received\",\"eventSequenceNumber\":53.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-11-17\"},{\"eventDescriptionText\":\"Email
+      Notification\",\"eventSequenceNumber\":52.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-11-13\"},{\"eventDescriptionText\":\"Mail
+      Response to 312 Amendment (PTO-271)\",\"eventSequenceNumber\":51.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-11-13\"},{\"eventDescriptionText\":\"Office
+      Action Review\",\"eventSequenceNumber\":50.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-11-06\"},{\"eventDescriptionText\":\"Response
+      to Amendment under Rule 312\",\"eventSequenceNumber\":49.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-11-05\"},{\"eventDescriptionText\":\"Pubs
+      Case Remand to TC\",\"eventSequenceNumber\":48.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-10-26\"},{\"eventDescriptionText\":\"Amendment
+      after Notice of Allowance (Rule 312)\",\"eventSequenceNumber\":47.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-10-20\"},{\"eventDescriptionText\":\"Finished
+      Initial Data Capture\",\"eventSequenceNumber\":46.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-09-29\"},{\"eventDescriptionText\":\"Export
+      to Initial Data Capture\",\"eventSequenceNumber\":45.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-09-15\"},{\"eventDescriptionText\":\"Email
+      Notification\",\"eventSequenceNumber\":44.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-09-15\"},{\"eventDescriptionText\":\"Mail
+      Notice of Allowance\",\"eventSequenceNumber\":43.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-09-15\"},{\"eventDescriptionText\":\"Office
+      Action Review\",\"eventSequenceNumber\":42.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-09-13\"},{\"eventDescriptionText\":\"Office
+      Action Review\",\"eventSequenceNumber\":41.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-09-13\"},{\"eventDescriptionText\":\"Issue
+      Revision Completed\",\"eventSequenceNumber\":40.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-09-13\"},{\"eventDescriptionText\":\"Document
+      Verification\",\"eventSequenceNumber\":39.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-09-13\"},{\"eventDescriptionText\":\"Notice
+      of Allowance Data Verification Completed\",\"eventSequenceNumber\":38.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-09-13\"},{\"eventDescriptionText\":\"Reasons
+      for Allowance\",\"eventSequenceNumber\":37.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-09-09\"},{\"eventDescriptionText\":\"Allowability
+      Notice\",\"eventSequenceNumber\":36.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-09-09\"},{\"eventDescriptionText\":\"Date
+      Forwarded to Examiner\",\"eventSequenceNumber\":35.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-08-27\"},{\"eventDescriptionText\":\"Response
+      after Non-Final Action\",\"eventSequenceNumber\":34.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-08-23\"},{\"eventDescriptionText\":\"Electronic
+      Review\",\"eventSequenceNumber\":33.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-05-24\"},{\"eventDescriptionText\":\"Electronic
+      Review\",\"eventSequenceNumber\":32.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-05-24\"},{\"eventDescriptionText\":\"Electronic
+      Review\",\"eventSequenceNumber\":31.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-05-24\"},{\"eventDescriptionText\":\"Email
+      Notification\",\"eventSequenceNumber\":30.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-05-24\"},{\"eventDescriptionText\":\"Mail
+      Non-Final Rejection\",\"eventSequenceNumber\":29.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-05-24\"},{\"eventDescriptionText\":\"Non-Final
+      Rejection\",\"eventSequenceNumber\":28.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-05-19\"},{\"eventDescriptionText\":\"Information
+      Disclosure Statement considered\",\"eventSequenceNumber\":27.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-05-19\"},{\"eventDescriptionText\":\"Information
+      Disclosure Statement (IDS) Filed\",\"eventSequenceNumber\":26.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-02-24\"},{\"eventDescriptionText\":\"Case
+      Docketed to Examiner in GAU\",\"eventSequenceNumber\":25.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-03-26\"},{\"eventDescriptionText\":\"Case
+      Docketed to Examiner in GAU\",\"eventSequenceNumber\":24.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-03-24\"},{\"eventDescriptionText\":\"Application
+      Dispatched from OIPE\",\"eventSequenceNumber\":23.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-03-24\"},{\"eventDescriptionText\":\"Electronic
+      Review\",\"eventSequenceNumber\":22.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-03-06\"},{\"eventDescriptionText\":\"Email
+      Notification\",\"eventSequenceNumber\":21.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-03-06\"},{\"eventDescriptionText\":\"Mail
+      O.P. Petition Decision\",\"eventSequenceNumber\":20.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-03-06\"},{\"eventDescriptionText\":\"Mail-Record
+      Petition Decision of Granted to Make Special\",\"eventSequenceNumber\":19.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-03-02\"},{\"eventDescriptionText\":\"Record
+      Petition Decision of Granted to Make Special\",\"eventSequenceNumber\":18.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-03-01\"},{\"eventDescriptionText\":\"O.P.
+      Petition Decision\",\"eventSequenceNumber\":17.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-03-01\"},{\"eventDescriptionText\":\"Email
+      Notification\",\"eventSequenceNumber\":16.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-03-01\"},{\"eventDescriptionText\":\"Sent
+      to Classification Contractor\",\"eventSequenceNumber\":15.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-02-28\"},{\"eventDescriptionText\":\"FITF
+      set to YES - revise initial setting\",\"eventSequenceNumber\":14.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-02-28\"},{\"eventDescriptionText\":\"Patent
+      Term Adjustment - Ready for Examination\",\"eventSequenceNumber\":13.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-02-28\"},{\"eventDescriptionText\":\"Mail
+      Pre-Exam Notice\",\"eventSequenceNumber\":12.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-03-01\"},{\"eventDescriptionText\":\"Application
+      Is Now Complete\",\"eventSequenceNumber\":11.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-03-01\"},{\"eventDescriptionText\":\"Filing
+      Receipt\",\"eventSequenceNumber\":10.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-03-01\"},{\"eventDescriptionText\":\"Information
+      Disclosure Statement (IDS) Filed\",\"eventSequenceNumber\":9.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-02-24\"},{\"eventDescriptionText\":\"PTO/SB/69-Authorize
+      EPO Access to Search Results\",\"eventSequenceNumber\":8.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-01-31\"},{\"eventDescriptionText\":\"Applicants
+      have given acceptable permission for participating foreign\",\"eventSequenceNumber\":7.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-01-31\"},{\"eventDescriptionText\":\"Applicant
+      Has Filed a Verified Statement of Small Entity Status in Compliance with 37
+      CFR 1.27\",\"eventSequenceNumber\":6.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-02-24\"},{\"eventDescriptionText\":\"Cleared
+      by OIPE CSR\",\"eventSequenceNumber\":5.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-02-20\"},{\"eventDescriptionText\":\"Petition
+      Entered\",\"eventSequenceNumber\":4.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-01-31\"},{\"eventDescriptionText\":\"IFW
+      Scan & PACR Auto Security Review\",\"eventSequenceNumber\":3.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-02-01\"},{\"eventDescriptionText\":\"Entity
+      Status Set To Undiscounted (Initial Default Setting or Status Change)\",\"eventSequenceNumber\":2.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-01-31\"},{\"eventDescriptionText\":\"Initial
+      Exam Team nn\",\"eventSequenceNumber\":1.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-01-31\"},{\"eventDescriptionText\":\"Filing
+      date\",\"eventSequenceNumber\":0.5,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-01-31\"}]},\"lastIngestionDateTime\":\"2025-02-10T23:46:04\",\"childContinuityBag\":[{\"childApplicationStatusDescriptionText\":\"RO
+      PROCESSING COMPLETED-PLACED IN STORAGE\",\"claimParentageTypeCode\":\"?\",\"childApplicationStatusCode\":218,\"claimParentageTypeCodeDescriptionText\":\"is
+      a no data of\",\"parentApplicationNumberText\":\"18162559\",\"childApplicationFilingDate\":\"2023-06-12\",\"childApplicationNumberText\":\"PCTUS2325071\"},{\"firstInventorToFileIndicator\":true,\"childApplicationStatusDescriptionText\":\"Docketed
+      New Case - Ready for Examination\",\"claimParentageTypeCode\":\"CON\",\"childApplicationStatusCode\":30,\"claimParentageTypeCodeDescriptionText\":\"is
+      a Continuation of\",\"parentApplicationNumberText\":\"18162559\",\"childApplicationFilingDate\":\"2024-12-10\",\"childApplicationNumberText\":\"18975286\"}],\"recordAttorney\":{\"attorneyBag\":[{\"activeIndicator\":\"DELETED\",\"firstName\":\"OLIVER\",\"lastName\":\"HAYES\",\"registrationNumber\":\"15867\",\"attorneyAddressBag\":[{\"cityName\":\"MANCHESTER\",\"geographicRegionName\":\"NEW
+      HAMPSHIRE\",\"geographicRegionCode\":\"NH\",\"countryCode\":\"US\",\"postalCode\":\"03101\",\"nameLineOneText\":\"HAYES
+      SOLOWAY HENNESSEY GROSSMAN AND HAGE PC\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"175
+      CANAL ST\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"603-668-1400\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"NORMAN\",\"lastName\":\"SOLOWAY\",\"registrationNumber\":\"24315\",\"attorneyAddressBag\":[{\"cityName\":\"TUCSON\",\"geographicRegionName\":\"ARIZONA\",\"geographicRegionCode\":\"AZ\",\"countryCode\":\"US\",\"postalCode\":\"85718\",\"nameLineOneText\":\"HAYES
+      SOLOWAY, P.C.\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"4640
+      E. SKYLINE DRIVE\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"520-882-7623\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"THOMAS\",\"lastName\":\"ROSSA\",\"registrationNumber\":\"26799\",\"attorneyAddressBag\":[{\"cityName\":\"TUCSON\",\"geographicRegionName\":\"ARIZONA\",\"geographicRegionCode\":\"AZ\",\"countryCode\":\"US\",\"postalCode\":\"85718\",\"nameLineOneText\":\"HAYES
+      SOLOWAY PC\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"4640
+      E. SKYLINE DRIVE\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"520-882-7623\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"PHILLIP\",\"lastName\":\"DECKER\",\"registrationNumber\":\"39163\",\"attorneyAddressBag\":[{\"cityName\":\"MANCHESTER\",\"geographicRegionName\":\"NEW
+      HAMPSHIRE\",\"geographicRegionCode\":\"NH\",\"countryCode\":\"US\",\"postalCode\":\"03101\",\"nameLineOneText\":\"HAYES
+      SOLOWAY PC\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"175
+      CANAL ST.\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"603-696-6697\",\"telecomTypeCode\":\"TEL\"}],\"middleName\":\"E\",\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"TODD\",\"lastName\":\"SULLIVAN\",\"registrationNumber\":\"47117\",\"attorneyAddressBag\":[{\"cityName\":\"MANCHESTER\",\"geographicRegionName\":\"NEW
+      HAMPSHIRE\",\"geographicRegionCode\":\"NH\",\"countryCode\":\"US\",\"postalCode\":\"03101\",\"nameLineOneText\":\"HAYES
+      SOLOWAY, P.C.\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"175
+      CANAL STREET\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"603-668-1400\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"DANIEL\",\"lastName\":\"LANDAU\",\"registrationNumber\":\"64726\",\"attorneyAddressBag\":[{\"cityName\":\"TUCSON\",\"geographicRegionName\":\"ARIZONA\",\"geographicRegionCode\":\"AZ\",\"countryCode\":\"US\",\"postalCode\":\"85718\",\"nameLineOneText\":\"HAYES
+      SOLOWAY, P.C.\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"4640
+      E. SKYLINE DRIVE\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"520-882-7623\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"JONATHAN\",\"lastName\":\"RAYMOND\",\"registrationNumber\":\"67073\",\"attorneyAddressBag\":[{\"cityName\":\"MANCHESTER\",\"geographicRegionName\":\"NEW
+      HAMPSHIRE\",\"geographicRegionCode\":\"NH\",\"countryCode\":\"US\",\"postalCode\":\"03101\",\"nameLineOneText\":\"HAYES
+      SOLOWAY P.C.\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"175
+      CANAL ST.\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"603-668-1400\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"NICHOLAS\",\"lastName\":\"BIELAT\",\"registrationNumber\":\"74951\",\"attorneyAddressBag\":[{\"cityName\":\"TUSCON\",\"geographicRegionName\":\"ARIZONA\",\"geographicRegionCode\":\"AZ\",\"countryCode\":\"US\",\"postalCode\":\"85718\",\"nameLineOneText\":\"HAYES
+      SOLOWAY PC\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"4640
+      E. SKYLINE DRIVE\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"520-882-7623\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"SHAUNA\",\"lastName\":\"BRONSON\",\"registrationNumber\":\"81925\",\"attorneyAddressBag\":[{\"cityName\":\"TUCSON\",\"geographicRegionName\":\"ARIZONA\",\"geographicRegionCode\":\"AZ\",\"countryCode\":\"US\",\"postalCode\":\"85718\",\"nameLineOneText\":\"HAYES
+      SOLOWAY P.C.\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"4640
+      E. SKYLINE DRIVE\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"520-882-7623\",\"telecomTypeCode\":\"TEL\"}],\"middleName\":\"S.\",\"registeredPractitionerCategory\":\"AGENT\"}]},\"applicationNumberText\":\"18162559\",\"correspondenceAddressBag\":[{\"cityName\":\"TUCSON\",\"geographicRegionName\":\"ARIZONA\",\"geographicRegionCode\":\"AZ\",\"countryCode\":\"US\",\"postalCode\":\"85718\",\"nameLineOneText\":\"HAYES
+      SOLOWAY P.C.\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"4640
+      E. Skyline Drive\"}]},{\"grantDocumentMetaData\":{\"productIdentifier\":\"PTGRXML\",\"zipFileName\":\"ipg231128.zip\",\"fileCreateDateTime\":\"2024-09-30T17:27:15\",\"xmlFileName\":\"18007478_11831020.xml\",\"fileLocationURI\":\"https://beta-api.uspto.gov/api/v1/datasets/products/files/PTGRXML-SPLT/2023/ipg231128/18007478_11831020.xml\"},\"eventDataBag\":[{\"eventCode\":\"EML_NTR\",\"eventDescriptionText\":\"Email
+      Notification\",\"eventDate\":\"2023-11-29\"},{\"eventCode\":\"MEPG_NTF\",\"eventDescriptionText\":\"Mail
+      Patent eGrant Notification\",\"eventDate\":\"2023-11-28\"},{\"eventCode\":\"PGM/\",\"eventDescriptionText\":\"Recordation
+      of Patent Grant Mailed\",\"eventDate\":\"2023-11-28\"},{\"eventCode\":\"EPG_NTF\",\"eventDescriptionText\":\"Patent
+      eGrant Notification\",\"eventDate\":\"2023-11-28\"},{\"eventCode\":\"EPG/\",\"eventDescriptionText\":\"Recordation
+      of Patent eGrant\",\"eventDate\":\"2023-11-28\"},{\"eventCode\":\"EML_NTR\",\"eventDescriptionText\":\"Email
+      Notification\",\"eventDate\":\"2023-11-09\"},{\"eventCode\":\"WPIR\",\"eventDescriptionText\":\"Issue
+      Notification Mailed\",\"eventDate\":\"2023-11-08\"},{\"eventCode\":\"PTAC\",\"eventDescriptionText\":\"Patent
+      Issue Date Used in PTA Calculation\",\"eventDate\":\"2023-11-28\"},{\"eventCode\":\"D1935\",\"eventDescriptionText\":\"Dispatch
+      to FDC\",\"eventDate\":\"2023-10-25\"},{\"eventCode\":\"PILS\",\"eventDescriptionText\":\"Application
+      Is Considered Ready for Issue\",\"eventDate\":\"2023-10-25\"},{\"eventCode\":\"N084\",\"eventDescriptionText\":\"Issue
+      Fee Payment Verified\",\"eventDate\":\"2023-10-20\"},{\"eventCode\":\"IFEE\",\"eventDescriptionText\":\"Issue
+      Fee Payment Received\",\"eventDate\":\"2023-10-20\"},{\"eventCode\":\"EML_NTR\",\"eventDescriptionText\":\"Email
+      Notification\",\"eventDate\":\"2023-09-27\"},{\"eventCode\":\"MN/=.\",\"eventDescriptionText\":\"Mail
+      Notice of Allowance\",\"eventDate\":\"2023-09-27\"},{\"eventCode\":\"N/=.\",\"eventDescriptionText\":\"Notice
+      of Allowance Data Verification Completed\",\"eventDate\":\"2023-09-25\"},{\"eventCode\":\"IDSC\",\"eventDescriptionText\":\"Information
+      Disclosure Statement considered\",\"eventDate\":\"2023-09-20\"},{\"eventCode\":\"IDSC\",\"eventDescriptionText\":\"Information
+      Disclosure Statement considered\",\"eventDate\":\"2023-09-20\"},{\"eventCode\":\"IDSC\",\"eventDescriptionText\":\"Information
+      Disclosure Statement considered\",\"eventDate\":\"2023-09-20\"},{\"eventCode\":\"DOCK\",\"eventDescriptionText\":\"Case
+      Docketed to Examiner in GAU\",\"eventDate\":\"2023-09-16\"},{\"eventCode\":\"EML_NTR\",\"eventDescriptionText\":\"Email
+      Notification\",\"eventDate\":\"2023-08-31\"},{\"eventCode\":\"CCRDY\",\"eventDescriptionText\":\"Application
+      ready for PDX access by participating foreign offices\",\"eventDate\":\"2023-08-31\"},{\"eventCode\":\"PG-ISSUE\",\"eventDescriptionText\":\"PG-Pub
+      Issue Notification\",\"eventDate\":\"2023-08-31\"},{\"eventCode\":\"MPDPH\",\"eventDescriptionText\":\"Mail
+      Pet Dec PPH Decision\",\"eventDate\":\"2023-08-30\"},{\"eventCode\":\"MP003\",\"eventDescriptionText\":\"Mail-Record
+      Petition Decision of Granted to Make Special\",\"eventDate\":\"2023-08-29\"},{\"eventCode\":\"P003\",\"eventDescriptionText\":\"Record
+      Petition Decision of Granted to Make Special\",\"eventDate\":\"2023-08-28\"},{\"eventCode\":\"PDPH\",\"eventDescriptionText\":\"Pet
+      Dec PPH Decision\",\"eventDate\":\"2023-08-24\"},{\"eventCode\":\"PET.\",\"eventDescriptionText\":\"Petition
+      Entered\",\"eventDate\":\"2023-07-20\"},{\"eventCode\":\"WIDS\",\"eventDescriptionText\":\"Information
+      Disclosure Statement (IDS) Filed\",\"eventDate\":\"2023-07-20\"},{\"eventCode\":\"RQPR\",\"eventDescriptionText\":\"Request
+      for Foreign Priority (Priority Papers May Be Included)\",\"eventDate\":\"2023-01-31\"},{\"eventCode\":\"DOCK\",\"eventDescriptionText\":\"Case
+      Docketed to Examiner in GAU\",\"eventDate\":\"2023-06-05\"},{\"eventCode\":\"COMP\",\"eventDescriptionText\":\"Application
+      Is Now Complete\",\"eventDate\":\"2023-06-05\"},{\"eventCode\":\"OIPE\",\"eventDescriptionText\":\"Application
+      Dispatched from OIPE\",\"eventDate\":\"2023-06-05\"},{\"eventCode\":\"FTFS\",\"eventDescriptionText\":\"FITF
+      set to YES - revise initial setting\",\"eventDate\":\"2023-06-02\"},{\"eventCode\":\"ELC_RVW\",\"eventDescriptionText\":\"Electronic
+      Review\",\"eventDate\":\"2023-05-23\"},{\"eventCode\":\"ELC_RVW\",\"eventDescriptionText\":\"Electronic
+      Review\",\"eventDate\":\"2023-05-23\"},{\"eventCode\":\"EML_NTR\",\"eventDescriptionText\":\"Email
+      Notification\",\"eventDate\":\"2023-05-23\"},{\"eventCode\":\"371COMP\",\"eventDescriptionText\":\"371
+      Completion Date\",\"eventDate\":\"2023-01-31\"},{\"eventCode\":\"PGPC\",\"eventDescriptionText\":\"Sent
+      to Classification Contractor\",\"eventDate\":\"2023-05-22\"},{\"eventCode\":\"PTA.RFE\",\"eventDescriptionText\":\"Patent
+      Term Adjustment - Ready for Examination\",\"eventDate\":\"2023-01-31\"},{\"eventCode\":\"M903\",\"eventDescriptionText\":\"Notice
+      of DO/EO Acceptance Mailed\",\"eventDate\":\"2023-05-23\"},{\"eventCode\":\"FLRCPT.O\",\"eventDescriptionText\":\"Filing
+      Receipt\",\"eventDate\":\"2023-05-23\"},{\"eventCode\":\"SREXR141\",\"eventDescriptionText\":\"PTO/SB/69-Authorize
+      EPO Access to Search Results\",\"eventDate\":\"2023-01-31\"},{\"eventCode\":\"APPERMS\",\"eventDescriptionText\":\"Applicants
+      have given acceptable permission for participating foreign\",\"eventDate\":\"2023-01-31\"},{\"eventCode\":\"WIDS\",\"eventDescriptionText\":\"Information
+      Disclosure Statement (IDS) Filed\",\"eventDate\":\"2023-04-21\"},{\"eventCode\":\"WIDS\",\"eventDescriptionText\":\"Information
+      Disclosure Statement (IDS) Filed\",\"eventDate\":\"2023-01-31\"},{\"eventCode\":\"BIG.\",\"eventDescriptionText\":\"Entity
+      Status Set To Undiscounted (Initial Default Setting or Status Change)\",\"eventDate\":\"2023-01-31\"},{\"eventCode\":\"IEXX\",\"eventDescriptionText\":\"Initial
+      Exam Team nn\",\"eventDate\":\"2023-01-31\"}],\"applicationMetaData\":{\"firstInventorToFileIndicator\":\"Y\",\"applicationStatusCode\":150,\"applicationTypeCode\":\"UTL\",\"entityStatusData\":{\"smallEntityStatusIndicator\":false,\"businessEntityStatusCategory\":\"Regular
+      Undiscounted\"},\"filingDate\":\"2023-01-31\",\"uspcSymbolText\":\"429/232\",\"nationalStageIndicator\":true,\"firstInventorName\":\"Akito
+      NAKAI\",\"cpcClassificationBag\":[\"H01M4/625\"],\"effectiveFilingDate\":\"2023-01-31\",\"publicationDateBag\":[\"2023-08-31\"],\"publicationSequenceNumberBag\":[\"0275234\"],\"earliestPublicationDate\":\"2023-08-31\",\"applicationTypeLabelName\":\"Utility\",\"applicationStatusDate\":\"2023-11-08\",\"class\":\"429\",\"applicationTypeCategory\":\"REGULAR\",\"inventorBag\":[{\"firstName\":\"Akito\",\"lastName\":\"NAKAI\",\"inventorNameText\":\"Akito
+      NAKAI\",\"correspondenceAddressBag\":[{\"cityName\":\"Chiyoda-ku, Tokyo\",\"countryCode\":\"JP\",\"nameLineOneText\":\"Akito
+      \ NAKAI\",\"countryName\":\"JAPAN\",\"postalAddressCategory\":\"residence\"},{\"cityName\":\"Chiyoda-ku,
+      Tokyo\",\"countryCode\":\"JP\",\"nameLineOneText\":\"Akito  NAKAI\",\"countryName\":\"JAPAN\",\"postalAddressCategory\":\"postal\"}]},{\"firstName\":\"Kazuki\",\"lastName\":\"ASAI\",\"inventorNameText\":\"Kazuki
+      ASAI\",\"correspondenceAddressBag\":[{\"cityName\":\"Chiyoda-ku, Tokyo\",\"countryCode\":\"JP\",\"nameLineOneText\":\"Kazuki
+      \ ASAI\",\"countryName\":\"JAPAN\",\"postalAddressCategory\":\"residence\"},{\"cityName\":\"Chiyoda-ku,
+      Tokyo\",\"countryCode\":\"JP\",\"nameLineOneText\":\"Kazuki  ASAI\",\"countryName\":\"JAPAN\",\"postalAddressCategory\":\"postal\"}]}],\"applicationStatusDescriptionText\":\"Patented
+      Case\",\"patentNumber\":\"11831020\",\"grantDate\":\"2023-11-28\",\"applicantBag\":[{\"applicantNameText\":\"ZEON
+      CORPORATION\",\"correspondenceAddressBag\":[{\"cityName\":\"Chiyoda-ku, Tokyo\",\"countryCode\":\"JP\",\"nameLineOneText\":\"ZEON
+      CORPORATION\",\"countryName\":\"JAPAN\",\"postalAddressCategory\":\"postal\"}]}],\"firstApplicantName\":\"ZEON
+      CORPORATION\",\"customerNumber\":128976,\"groupArtUnitNumber\":\"1723\",\"earliestPublicationNumber\":\"US20230275234A1\",\"inventionTitle\":\"CONDUCTIVE
+      MATERIAL DISPERSION LIQUID FOR ELECTROCHEMICAL DEVICE, SLURRY FOR ELECTROCHEMICAL
+      DEVICE ELECTRODE, ELECTRODE FOR ELECTROCHEMICAL DEVICE, AND ELECTROCHEMICAL
+      DEVICE\",\"applicationConfirmationNumber\":5136,\"examinerNameText\":\"BARCENA,
+      CARLOS\",\"subclass\":\"232\",\"publicationCategoryBag\":[\"Granted/Issued\",\"Pre-Grant
+      Publications - PGPub\"],\"docketNumber\":\"22P0248\"},\"parentContinuityBag\":[{\"parentApplicationStatusCode\":150,\"claimParentageTypeCode\":\"NST\",\"claimParentageTypeCodeDescriptionText\":\"is
+      a National Stage Entry of\",\"parentApplicationStatusDescriptionText\":\"Patented
+      Case\",\"parentApplicationNumberText\":\"PCTJP2021031043\",\"parentApplicationFilingDate\":\"2021-08-24\",\"childApplicationNumberText\":\"18007478\"}],\"patentTermAdjustmentData\":{\"applicantDayDelayQuantity\":0.0,\"overlappingDayQuantity\":0.0,\"filingDate\":\"2023-01-31\",\"ipOfficeAdjustmentDelayQuantity\":0.0,\"cDelayQuantity\":0.0,\"adjustmentTotalQuantity\":0.0,\"bDelayQuantity\":0.0,\"grantDate\":\"2023-11-28\",\"aDelayQuantity\":0.0,\"ipOfficeDayDelayQuantity\":0.0,\"patentTermAdjustmentHistoryDataBag\":[{\"eventDescriptionText\":\"PTA
+      36 Months\",\"eventSequenceNumber\":51.5,\"originatingEventSequenceNumber\":51.4,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-11-28\"},{\"eventDescriptionText\":\"Commencement
+      Date\",\"eventSequenceNumber\":51.4,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-01-31\"},{\"eventDescriptionText\":\"Patent
+      Issue Date Used in PTA Calculation\",\"eventSequenceNumber\":51.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-11-28\"},{\"eventDescriptionText\":\"Export
+      to Final Data Capture\",\"eventSequenceNumber\":50.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-10-26\"},{\"eventDescriptionText\":\"Dispatch
+      to FDC\",\"eventSequenceNumber\":49.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-10-25\"},{\"eventDescriptionText\":\"Application
+      Is Considered Ready for Issue\",\"eventSequenceNumber\":48.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-10-25\"},{\"eventDescriptionText\":\"Issue
+      Fee Payment Verified\",\"eventSequenceNumber\":47.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-10-20\"},{\"eventDescriptionText\":\"Issue
+      Fee Payment Received\",\"eventSequenceNumber\":46.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-10-20\"},{\"eventDescriptionText\":\"Finished
+      Initial Data Capture\",\"eventSequenceNumber\":45.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-10-11\"},{\"eventDescriptionText\":\"Export
+      to Initial Data Capture\",\"eventSequenceNumber\":44.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-09-26\"},{\"eventDescriptionText\":\"Email
+      Notification\",\"eventSequenceNumber\":43.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-09-27\"},{\"eventDescriptionText\":\"Mail
+      Notice of Allowance\",\"eventSequenceNumber\":42.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-09-27\"},{\"eventDescriptionText\":\"Office
+      Action Review\",\"eventSequenceNumber\":41.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-09-25\"},{\"eventDescriptionText\":\"Office
+      Action Review\",\"eventSequenceNumber\":40.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-09-25\"},{\"eventDescriptionText\":\"Notice
+      of Allowance Data Verification Completed\",\"eventSequenceNumber\":39.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-09-25\"},{\"eventDescriptionText\":\"Issue
+      Revision Completed\",\"eventSequenceNumber\":38.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-09-25\"},{\"eventDescriptionText\":\"Document
+      Verification\",\"eventSequenceNumber\":37.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-09-25\"},{\"eventDescriptionText\":\"Reasons
+      for Allowance\",\"eventSequenceNumber\":36.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-09-24\"},{\"eventDescriptionText\":\"Allowability
+      Notice\",\"eventSequenceNumber\":35.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-09-24\"},{\"eventDescriptionText\":\"Information
+      Disclosure Statement considered\",\"eventSequenceNumber\":34.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-09-20\"},{\"eventDescriptionText\":\"Information
+      Disclosure Statement considered\",\"eventSequenceNumber\":33.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-09-20\"},{\"eventDescriptionText\":\"Information
+      Disclosure Statement considered\",\"eventSequenceNumber\":32.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-09-20\"},{\"eventDescriptionText\":\"Case
+      Docketed to Examiner in GAU\",\"eventSequenceNumber\":31.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-09-16\"},{\"eventDescriptionText\":\"Email
+      Notification\",\"eventSequenceNumber\":30.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-08-31\"},{\"eventDescriptionText\":\"Application
+      ready for PDX access by participating foreign offices\",\"eventSequenceNumber\":29.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-08-31\"},{\"eventDescriptionText\":\"PG-Pub
+      Issue Notification\",\"eventSequenceNumber\":28.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-08-31\"},{\"eventDescriptionText\":\"Mail
+      Pet Dec PPH Decision\",\"eventSequenceNumber\":27.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-08-30\"},{\"eventDescriptionText\":\"Office
+      Action Review\",\"eventSequenceNumber\":26.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-08-28\"},{\"eventDescriptionText\":\"Mail-Record
+      Petition Decision of Granted to Make Special\",\"eventSequenceNumber\":25.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-08-29\"},{\"eventDescriptionText\":\"Record
+      Petition Decision of Granted to Make Special\",\"eventSequenceNumber\":24.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-08-28\"},{\"eventDescriptionText\":\"Pet
+      Dec PPH Decision\",\"eventSequenceNumber\":23.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-08-24\"},{\"eventDescriptionText\":\"Petition
+      Entered\",\"eventSequenceNumber\":22.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-07-20\"},{\"eventDescriptionText\":\"Information
+      Disclosure Statement (IDS) Filed\",\"eventSequenceNumber\":21.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-07-20\"},{\"eventDescriptionText\":\"Request
+      for Foreign Priority (Priority Papers May Be Included)\",\"eventSequenceNumber\":20.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-01-31\"},{\"eventDescriptionText\":\"Case
+      Docketed to Examiner in GAU\",\"eventSequenceNumber\":19.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-06-05\"},{\"eventDescriptionText\":\"Application
+      Is Now Complete\",\"eventSequenceNumber\":18.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-06-05\"},{\"eventDescriptionText\":\"Application
+      Dispatched from OIPE\",\"eventSequenceNumber\":17.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-06-05\"},{\"eventDescriptionText\":\"FITF
+      set to YES - revise initial setting\",\"eventSequenceNumber\":16.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-06-02\"},{\"eventDescriptionText\":\"Electronic
+      Review\",\"eventSequenceNumber\":15.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-05-23\"},{\"eventDescriptionText\":\"Electronic
+      Review\",\"eventSequenceNumber\":14.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-05-23\"},{\"eventDescriptionText\":\"Email
+      Notification\",\"eventSequenceNumber\":13.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-05-23\"},{\"eventDescriptionText\":\"371
+      Completion Date\",\"eventSequenceNumber\":12.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-01-31\"},{\"eventDescriptionText\":\"Sent
+      to Classification Contractor\",\"eventSequenceNumber\":11.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-05-22\"},{\"eventDescriptionText\":\"Patent
+      Term Adjustment - Ready for Examination\",\"eventSequenceNumber\":10.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-01-31\"},{\"eventDescriptionText\":\"Notice
+      of DO/EO Acceptance Mailed\",\"eventSequenceNumber\":9.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-05-23\"},{\"eventDescriptionText\":\"Filing
+      Receipt\",\"eventSequenceNumber\":8.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-05-23\"},{\"eventDescriptionText\":\"PTO/SB/69-Authorize
+      EPO Access to Search Results\",\"eventSequenceNumber\":7.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-01-31\"},{\"eventDescriptionText\":\"Applicants
+      have given acceptable permission for participating foreign\",\"eventSequenceNumber\":6.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-01-31\"},{\"eventDescriptionText\":\"Information
+      Disclosure Statement (IDS) Filed\",\"eventSequenceNumber\":5.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-04-21\"},{\"eventDescriptionText\":\"Cleared
+      by OIPE CSR\",\"eventSequenceNumber\":4.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-01-31\"},{\"eventDescriptionText\":\"Information
+      Disclosure Statement (IDS) Filed\",\"eventSequenceNumber\":3.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-01-31\"},{\"eventDescriptionText\":\"Entity
+      Status Set To Undiscounted (Initial Default Setting or Status Change)\",\"eventSequenceNumber\":2.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-01-31\"},{\"eventDescriptionText\":\"Initial
+      Exam Team nn\",\"eventSequenceNumber\":1.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-01-31\"},{\"eventDescriptionText\":\"International
+      Filing date\",\"eventSequenceNumber\":0.5,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2021-08-24\"}]},\"pgpubDocumentMetaData\":{\"productIdentifier\":\"APPXML\",\"zipFileName\":\"ipa230831.zip\",\"fileCreateDateTime\":\"2024-09-30T11:03:39\",\"xmlFileName\":\"18007478_20230275234.xml\",\"fileLocationURI\":\"https://beta-api.uspto.gov/api/v1/datasets/products/files/APPXML-SPLT/2023/ipa230831/18007478_20230275234.xml\"},\"lastIngestionDateTime\":\"2025-02-10T23:46:04\",\"recordAttorney\":{\"attorneyBag\":[{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"ERIC\",\"lastName\":\"MORTON\",\"registrationNumber\":\"54588\",\"attorneyAddressBag\":[{\"cityName\":\"SAN
+      JOSE\",\"geographicRegionName\":\"CALIFORNIA\",\"geographicRegionCode\":\"CA\",\"countryCode\":\"US\",\"postalCode\":\"95113\",\"nameLineOneText\":\"KENJA
+      IP LAW PC\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"4 NORTH
+      SECOND STREET, SUITE 598\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"650-561-4758\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"JIAMENG\",\"lastName\":\"LIU\",\"registrationNumber\":\"65495\",\"attorneyAddressBag\":[{\"cityName\":\"SAN
+      JOSE\",\"geographicRegionName\":\"CALIFORNIA\",\"geographicRegionCode\":\"CA\",\"countryCode\":\"US\",\"postalCode\":\"95113\",\"nameLineOneText\":\"KENJA
+      IP LAW PC\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"4 N 2ND
+      ST\",\"addressLineTwoText\":\"SUITE 598\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"650-561-4758\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"TATSUYA\",\"lastName\":\"SAWADA\",\"registrationNumber\":\"75161\",\"attorneyAddressBag\":[{\"cityName\":\"SAN
+      JOSE\",\"geographicRegionName\":\"CALIFORNIA\",\"geographicRegionCode\":\"CA\",\"countryCode\":\"US\",\"postalCode\":\"95113\",\"nameLineOneText\":\"KENJA
+      IP LAW PC\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"4 NORTH
+      SECOND STREET\",\"addressLineTwoText\":\"SUITE 598\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"650-561-4758\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"AGENT\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"KENJI\",\"lastName\":\"NAKAJIMA\",\"registrationNumber\":\"75983\",\"attorneyAddressBag\":[{\"cityName\":\"PLANO\",\"geographicRegionName\":\"TEXAS\",\"geographicRegionCode\":\"TX\",\"countryCode\":\"US\",\"postalCode\":\"75024\",\"nameLineOneText\":\"KENJA
+      IP LAW PC\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"6010
+      W SPRING CREEK PKWY\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"650-561-4758\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"YUKI\",\"lastName\":\"SUZUKI\",\"registrationNumber\":\"800096\",\"attorneyAddressBag\":[{\"cityName\":\"SAN
+      JOSE\",\"geographicRegionName\":\"CALIFORNIA\",\"geographicRegionCode\":\"CA\",\"countryCode\":\"US\",\"postalCode\":\"95113\",\"nameLineOneText\":\"KENJA
+      IP LAW PC\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"4 NORTH
+      SECOND STREET, SUITE 598\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"650-646-1523\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"LTDREC\"}]},\"applicationNumberText\":\"18007478\",\"correspondenceAddressBag\":[{\"cityName\":\"San
+      Jose\",\"geographicRegionName\":\"CALIFORNIA\",\"geographicRegionCode\":\"CA\",\"countryCode\":\"US\",\"postalCode\":\"95113\",\"nameLineOneText\":\"KENJA
+      IP LAW PC\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"4 North
+      Second Street, Suite 598\"}],\"foreignPriorityBag\":[{\"filingDate\":\"2020-08-31\",\"applicationNumberText\":\"2020-146307\",\"ipOfficeName\":\"JAPAN\"}]},{\"grantDocumentMetaData\":{\"productIdentifier\":\"PTGRXML\",\"zipFileName\":\"ipg240716.zip\",\"fileCreateDateTime\":\"2024-09-30T17:53:19\",\"xmlFileName\":\"18104229_12037804.xml\",\"fileLocationURI\":\"https://beta-api.uspto.gov/api/v1/datasets/products/files/PTGRXML-SPLT/2024/ipg240716/18104229_12037804.xml\"},\"eventDataBag\":[{\"eventCode\":\"PGM/\",\"eventDescriptionText\":\"Recordation
+      of Patent Grant Mailed\",\"eventDate\":\"2024-07-16\"},{\"eventCode\":\"EML_NTR\",\"eventDescriptionText\":\"Email
+      Notification\",\"eventDate\":\"2024-07-16\"},{\"eventCode\":\"MEPG_NTF\",\"eventDescriptionText\":\"Mail
+      Patent eGrant Notification\",\"eventDate\":\"2024-07-16\"},{\"eventCode\":\"EPG_NTF\",\"eventDescriptionText\":\"Patent
+      eGrant Notification\",\"eventDate\":\"2024-07-16\"},{\"eventCode\":\"EPG/\",\"eventDescriptionText\":\"Recordation
+      of Patent eGrant\",\"eventDate\":\"2024-07-16\"},{\"eventCode\":\"EML_NTR\",\"eventDescriptionText\":\"Email
+      Notification\",\"eventDate\":\"2024-06-27\"},{\"eventCode\":\"WPIR\",\"eventDescriptionText\":\"Issue
+      Notification Mailed\",\"eventDate\":\"2024-06-26\"},{\"eventCode\":\"PTAC\",\"eventDescriptionText\":\"Patent
+      Issue Date Used in PTA Calculation\",\"eventDate\":\"2024-07-16\"},{\"eventCode\":\"D1935\",\"eventDescriptionText\":\"Dispatch
+      to FDC\",\"eventDate\":\"2024-06-17\"},{\"eventCode\":\"PILS\",\"eventDescriptionText\":\"Application
+      Is Considered Ready for Issue\",\"eventDate\":\"2024-06-17\"},{\"eventCode\":\"N084\",\"eventDescriptionText\":\"Issue
+      Fee Payment Verified\",\"eventDate\":\"2024-06-13\"},{\"eventCode\":\"IFEE\",\"eventDescriptionText\":\"Issue
+      Fee Payment Received\",\"eventDate\":\"2024-06-13\"},{\"eventCode\":\"ELC_RVW\",\"eventDescriptionText\":\"Electronic
+      Review\",\"eventDate\":\"2024-03-13\"},{\"eventCode\":\"ELC_RVW\",\"eventDescriptionText\":\"Electronic
+      Review\",\"eventDate\":\"2024-03-13\"},{\"eventCode\":\"EML_NTF\",\"eventDescriptionText\":\"Email
+      Notification\",\"eventDate\":\"2024-03-13\"},{\"eventCode\":\"EML_NTF\",\"eventDescriptionText\":\"Email
+      Notification\",\"eventDate\":\"2024-03-13\"},{\"eventCode\":\"EML_NTF\",\"eventDescriptionText\":\"Email
+      Notification\",\"eventDate\":\"2024-03-13\"},{\"eventCode\":\"MN/=.\",\"eventDescriptionText\":\"Mail
+      Notice of Allowance\",\"eventDate\":\"2024-03-13\"},{\"eventCode\":\"N/=.\",\"eventDescriptionText\":\"Notice
+      of Allowance Data Verification Completed\",\"eventDate\":\"2024-03-11\"},{\"eventCode\":\"FWDX\",\"eventDescriptionText\":\"Date
+      Forwarded to Examiner\",\"eventDate\":\"2024-02-22\"},{\"eventCode\":\"A...\",\"eventDescriptionText\":\"Response
+      after Non-Final Action\",\"eventDate\":\"2024-02-20\"},{\"eventCode\":\"XT/G\",\"eventDescriptionText\":\"Request
+      for Extension of Time - Granted\",\"eventDate\":\"2024-02-20\"},{\"eventCode\":\"EML_NTR\",\"eventDescriptionText\":\"Email
+      Notification\",\"eventDate\":\"2023-10-12\"},{\"eventCode\":\"CCRDY\",\"eventDescriptionText\":\"Application
+      ready for PDX access by participating foreign offices\",\"eventDate\":\"2023-10-12\"},{\"eventCode\":\"PG-ISSUE\",\"eventDescriptionText\":\"PG-Pub
+      Issue Notification\",\"eventDate\":\"2023-10-12\"},{\"eventCode\":\"ELC_RVW\",\"eventDescriptionText\":\"Electronic
+      Review\",\"eventDate\":\"2023-08-18\"},{\"eventCode\":\"ELC_RVW\",\"eventDescriptionText\":\"Electronic
+      Review\",\"eventDate\":\"2023-08-18\"},{\"eventCode\":\"EML_NTF\",\"eventDescriptionText\":\"Email
+      Notification\",\"eventDate\":\"2023-08-18\"},{\"eventCode\":\"MCTNF\",\"eventDescriptionText\":\"Mail
+      Non-Final Rejection\",\"eventDate\":\"2023-08-18\"},{\"eventCode\":\"CTNF\",\"eventDescriptionText\":\"Non-Final
+      Rejection\",\"eventDate\":\"2023-08-15\"},{\"eventCode\":\"DOCK\",\"eventDescriptionText\":\"Case
+      Docketed to Examiner in GAU\",\"eventDate\":\"2023-08-05\"},{\"eventCode\":\"DOCK\",\"eventDescriptionText\":\"Case
+      Docketed to Examiner in GAU\",\"eventDate\":\"2023-07-09\"},{\"eventCode\":\"OIPE\",\"eventDescriptionText\":\"Application
+      Dispatched from OIPE\",\"eventDate\":\"2023-07-09\"},{\"eventCode\":\"EML_NTR\",\"eventDescriptionText\":\"Email
+      Notification\",\"eventDate\":\"2023-07-07\"},{\"eventCode\":\"PGPC\",\"eventDescriptionText\":\"Sent
+      to Classification Contractor\",\"eventDate\":\"2023-07-06\"},{\"eventCode\":\"FTFS\",\"eventDescriptionText\":\"FITF
+      set to YES - revise initial setting\",\"eventDate\":\"2023-07-06\"},{\"eventCode\":\"PTA.RFE\",\"eventDescriptionText\":\"Patent
+      Term Adjustment - Ready for Examination\",\"eventDate\":\"2023-07-06\"},{\"eventCode\":\"MPEN\",\"eventDescriptionText\":\"Mail
+      Pre-Exam Notice\",\"eventDate\":\"2023-07-07\"},{\"eventCode\":\"COMP\",\"eventDescriptionText\":\"Application
+      Is Now Complete\",\"eventDate\":\"2023-07-07\"},{\"eventCode\":\"FLRCPT.U\",\"eventDescriptionText\":\"Filing
+      Receipt - Updated\",\"eventDate\":\"2023-07-07\"},{\"eventCode\":\"ELC_RVW\",\"eventDescriptionText\":\"Electronic
+      Review\",\"eventDate\":\"2023-03-01\"},{\"eventCode\":\"EML_NTF\",\"eventDescriptionText\":\"Email
+      Notification\",\"eventDate\":\"2023-03-01\"},{\"eventCode\":\"EML_NTF\",\"eventDescriptionText\":\"Email
+      Notification\",\"eventDate\":\"2023-03-01\"},{\"eventCode\":\"EML_NTR\",\"eventDescriptionText\":\"Email
+      Notification\",\"eventDate\":\"2023-03-01\"},{\"eventCode\":\"INCD\",\"eventDescriptionText\":\"Notice
+      Mailed--Application Incomplete--Filing Date Assigned\",\"eventDate\":\"2023-03-01\"},{\"eventCode\":\"MPEN\",\"eventDescriptionText\":\"Mail
+      Pre-Exam Notice\",\"eventDate\":\"2023-03-01\"},{\"eventCode\":\"INCD\",\"eventDescriptionText\":\"Notice
+      Mailed--Application Incomplete--Filing Date Assigned\",\"eventDate\":\"2023-03-01\"},{\"eventCode\":\"FLRCPT.O\",\"eventDescriptionText\":\"Filing
+      Receipt\",\"eventDate\":\"2023-03-01\"},{\"eventCode\":\"SREXR141\",\"eventDescriptionText\":\"PTO/SB/69-Authorize
+      EPO Access to Search Results\",\"eventDate\":\"2023-01-31\"},{\"eventCode\":\"APPERMS\",\"eventDescriptionText\":\"Applicants
+      have given acceptable permission for participating foreign\",\"eventDate\":\"2023-01-31\"},{\"eventCode\":\"SMAL\",\"eventDescriptionText\":\"Applicant
+      Has Filed a Verified Statement of Small Entity Status in Compliance with 37
+      CFR 1.27\",\"eventDate\":\"2023-02-28\"},{\"eventCode\":\"BIG.\",\"eventDescriptionText\":\"Entity
+      Status Set To Undiscounted (Initial Default Setting or Status Change)\",\"eventDate\":\"2023-01-31\"},{\"eventCode\":\"IEXX\",\"eventDescriptionText\":\"Initial
+      Exam Team nn\",\"eventDate\":\"2023-01-31\"}],\"applicationMetaData\":{\"firstInventorToFileIndicator\":\"Y\",\"applicationStatusCode\":150,\"applicationTypeCode\":\"UTL\",\"entityStatusData\":{\"smallEntityStatusIndicator\":false,\"businessEntityStatusCategory\":\"Small\"},\"filingDate\":\"2023-01-31\",\"uspcSymbolText\":\"40/442\",\"nationalStageIndicator\":false,\"firstInventorName\":\"Jonathan
+      Spangler\",\"cpcClassificationBag\":[\"E04H1/125\",\"A47C11/005\",\"E04H1/12\",\"G10G5/00\",\"A47F3/001\"],\"effectiveFilingDate\":\"2023-01-31\",\"publicationDateBag\":[\"2023-10-12\"],\"publicationSequenceNumberBag\":[\"0323688\"],\"earliestPublicationDate\":\"2023-10-12\",\"applicationTypeLabelName\":\"Utility\",\"applicationStatusDate\":\"2024-06-26\",\"class\":\"40\",\"applicationTypeCategory\":\"REGULAR\",\"inventorBag\":[{\"firstName\":\"Jonathan\",\"lastName\":\"Spangler\",\"inventorNameText\":\"Jonathan
+      Spangler\",\"correspondenceAddressBag\":[{\"cityName\":\"San Diego\",\"geographicRegionName\":\"CALIFORNIA\",\"geographicRegionCode\":\"CA\",\"countryCode\":\"US\",\"nameLineOneText\":\"Spangler,
+      Jonathan\",\"countryName\":\"UNITED STATES\",\"postalAddressCategory\":\"residence\"},{\"cityName\":\"San
+      Diego\",\"geographicRegionName\":\"CALIFORNIA\",\"geographicRegionCode\":\"CA\",\"countryCode\":\"US\",\"nameLineOneText\":\"Jonathan
+      \ Spangler\",\"countryName\":\"UNITED STATES\",\"postalAddressCategory\":\"postal\"}]},{\"firstName\":\"G.\",\"lastName\":\"Cornwall\",\"inventorNameText\":\"G.
+      Bryan Cornwall\",\"middleName\":\"Bryan\",\"correspondenceAddressBag\":[{\"cityName\":\"Poway\",\"geographicRegionName\":\"CALIFORNIA\",\"geographicRegionCode\":\"CA\",\"countryCode\":\"US\",\"nameLineOneText\":\"Cornwall,
+      G. Bryan\",\"countryName\":\"UNITED STATES\",\"postalAddressCategory\":\"residence\"},{\"cityName\":\"Poway\",\"geographicRegionName\":\"CALIFORNIA\",\"geographicRegionCode\":\"CA\",\"countryCode\":\"US\",\"nameLineOneText\":\"G.
+      Bryan Cornwall\",\"countryName\":\"UNITED STATES\",\"postalAddressCategory\":\"postal\"}]},{\"firstName\":\"Thomas\",\"lastName\":\"Benson\",\"inventorNameText\":\"Thomas
+      Benson\",\"correspondenceAddressBag\":[{\"cityName\":\"Laguna Beach\",\"geographicRegionName\":\"CALIFORNIA\",\"geographicRegionCode\":\"CA\",\"countryCode\":\"US\",\"nameLineOneText\":\"Benson,
+      Thomas\",\"countryName\":\"UNITED STATES\",\"postalAddressCategory\":\"residence\"},{\"cityName\":\"Laguna
+      Beach\",\"geographicRegionName\":\"CALIFORNIA\",\"geographicRegionCode\":\"CA\",\"countryCode\":\"US\",\"nameLineOneText\":\"Thomas
+      \ Benson\",\"countryName\":\"UNITED STATES\",\"postalAddressCategory\":\"postal\"}]}],\"applicationStatusDescriptionText\":\"Patented
+      Case\",\"patentNumber\":\"12037804\",\"grantDate\":\"2024-07-16\",\"applicantBag\":[{\"applicantNameText\":\"Ciari
+      Guitars, Inc.\",\"correspondenceAddressBag\":[{\"cityName\":\"San Diego\",\"geographicRegionName\":\"CALIFORNIA\",\"geographicRegionCode\":\"CA\",\"countryCode\":\"US\",\"nameLineOneText\":\"Ciari
+      Guitars, Inc.\",\"countryName\":\"UNITED STATES\",\"postalAddressCategory\":\"postal\"}]}],\"firstApplicantName\":\"Ciari
+      Guitars, Inc.\",\"customerNumber\":106059,\"groupArtUnitNumber\":\"3636\",\"earliestPublicationNumber\":\"US20230323688A1\",\"inventionTitle\":\"IN-AIRPORT
+      GUITAR KIOSK AND RELATED METHODS\",\"applicationConfirmationNumber\":3708,\"examinerNameText\":\"WENDELL,
+      MARK R\",\"subclass\":\"442\",\"publicationCategoryBag\":[\"Granted/Issued\",\"Pre-Grant
+      Publications - PGPub\"],\"docketNumber\":\"CG-Kiosk-US3\"},\"parentContinuityBag\":[{\"parentApplicationStatusCode\":150,\"firstInventorToFileIndicator\":true,\"claimParentageTypeCode\":\"CON\",\"claimParentageTypeCodeDescriptionText\":\"is
+      a Continuation of\",\"parentApplicationStatusDescriptionText\":\"Patented Case\",\"parentApplicationNumberText\":\"17708176\",\"parentApplicationFilingDate\":\"2022-03-30\",\"childApplicationNumberText\":\"18104229\",\"parentPatentNumber\":\"11566436\"},{\"parentApplicationStatusCode\":150,\"firstInventorToFileIndicator\":true,\"claimParentageTypeCode\":\"CON\",\"claimParentageTypeCodeDescriptionText\":\"is
+      a Continuation of\",\"parentApplicationStatusDescriptionText\":\"Patented Case\",\"parentApplicationNumberText\":\"16830252\",\"parentApplicationFilingDate\":\"2020-03-25\",\"childApplicationNumberText\":\"17708176\",\"parentPatentNumber\":\"11306498\"},{\"parentApplicationStatusCode\":159,\"claimParentageTypeCode\":\"PRO\",\"claimParentageTypeCodeDescriptionText\":\"Claims
+      priority from a provisional application\",\"parentApplicationStatusDescriptionText\":\"Provisional
+      Application Expired\",\"parentApplicationNumberText\":\"62823646\",\"parentApplicationFilingDate\":\"2019-03-25\",\"childApplicationNumberText\":\"16830252\"}],\"patentTermAdjustmentData\":{\"applicantDayDelayQuantity\":92.0,\"overlappingDayQuantity\":0.0,\"filingDate\":\"2023-01-31\",\"ipOfficeAdjustmentDelayQuantity\":0.0,\"cDelayQuantity\":0.0,\"adjustmentTotalQuantity\":0.0,\"bDelayQuantity\":0.0,\"grantDate\":\"2024-07-16\",\"aDelayQuantity\":0.0,\"ipOfficeDayDelayQuantity\":0.0,\"patentTermAdjustmentHistoryDataBag\":[{\"eventDescriptionText\":\"PTA
+      36 Months\",\"eventSequenceNumber\":62.5,\"originatingEventSequenceNumber\":0.5,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2024-07-16\"},{\"eventDescriptionText\":\"Patent
+      Issue Date Used in PTA Calculation\",\"eventSequenceNumber\":62.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2024-07-16\"},{\"eventDescriptionText\":\"Export
+      to Final Data Capture\",\"eventSequenceNumber\":58.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2024-06-18\"},{\"eventDescriptionText\":\"Dispatch
+      to FDC\",\"eventSequenceNumber\":57.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2024-06-17\"},{\"eventDescriptionText\":\"Application
+      Is Considered Ready for Issue\",\"eventSequenceNumber\":56.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2024-06-17\"},{\"eventDescriptionText\":\"Issue
+      Fee Payment Verified\",\"eventSequenceNumber\":55.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2024-06-13\"},{\"eventDescriptionText\":\"Issue
+      Fee Payment Received\",\"eventSequenceNumber\":54.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2024-06-13\"},{\"eventDescriptionText\":\"Finished
+      Initial Data Capture\",\"eventSequenceNumber\":53.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2024-03-18\"},{\"eventDescriptionText\":\"Export
+      to Initial Data Capture\",\"eventSequenceNumber\":52.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2024-03-12\"},{\"eventDescriptionText\":\"Electronic
+      Review\",\"eventSequenceNumber\":51.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2024-03-13\"},{\"eventDescriptionText\":\"Electronic
+      Review\",\"eventSequenceNumber\":50.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2024-03-13\"},{\"eventDescriptionText\":\"Email
+      Notification\",\"eventSequenceNumber\":49.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2024-03-13\"},{\"eventDescriptionText\":\"Email
+      Notification\",\"eventSequenceNumber\":48.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2024-03-13\"},{\"eventDescriptionText\":\"Email
+      Notification\",\"eventSequenceNumber\":47.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2024-03-13\"},{\"eventDescriptionText\":\"Mail
+      Notice of Allowance\",\"eventSequenceNumber\":46.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2024-03-13\"},{\"eventDescriptionText\":\"Office
+      Action Review\",\"eventSequenceNumber\":45.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2024-03-11\"},{\"eventDescriptionText\":\"Office
+      Action Review\",\"eventSequenceNumber\":44.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2024-03-11\"},{\"eventDescriptionText\":\"Issue
+      Revision Completed\",\"eventSequenceNumber\":43.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2024-03-11\"},{\"eventDescriptionText\":\"Document
+      Verification\",\"eventSequenceNumber\":42.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2024-03-11\"},{\"eventDescriptionText\":\"Notice
+      of Allowance Data Verification Completed\",\"eventSequenceNumber\":41.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2024-03-11\"},{\"eventDescriptionText\":\"Office
+      Action Review\",\"eventSequenceNumber\":40.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2024-03-10\"},{\"eventDescriptionText\":\"Office
+      Action Review\",\"eventSequenceNumber\":39.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2024-03-10\"},{\"eventDescriptionText\":\"Reasons
+      for Allowance\",\"eventSequenceNumber\":38.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2024-02-29\"},{\"eventDescriptionText\":\"Allowability
+      Notice\",\"eventSequenceNumber\":37.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2024-02-29\"},{\"eventDescriptionText\":\"Date
+      Forwarded to Examiner\",\"eventSequenceNumber\":36.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2024-02-22\"},{\"applicantDayDelayQuantity\":92.0,\"eventDescriptionText\":\"Response
+      after Non-Final Action\",\"eventSequenceNumber\":35.0,\"originatingEventSequenceNumber\":27.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2024-02-20\"},{\"eventDescriptionText\":\"Request
+      for Extension of Time - Granted\",\"eventSequenceNumber\":34.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2024-02-20\"},{\"eventDescriptionText\":\"Email
+      Notification\",\"eventSequenceNumber\":33.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-10-12\"},{\"eventDescriptionText\":\"Application
+      ready for PDX access by participating foreign offices\",\"eventSequenceNumber\":32.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-10-12\"},{\"eventDescriptionText\":\"PG-Pub
+      Issue Notification\",\"eventSequenceNumber\":31.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-10-12\"},{\"eventDescriptionText\":\"Electronic
+      Review\",\"eventSequenceNumber\":30.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-08-18\"},{\"eventDescriptionText\":\"Electronic
+      Review\",\"eventSequenceNumber\":29.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-08-18\"},{\"eventDescriptionText\":\"Email
+      Notification\",\"eventSequenceNumber\":28.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-08-18\"},{\"eventDescriptionText\":\"Mail
+      Non-Final Rejection\",\"eventSequenceNumber\":27.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-08-18\"},{\"eventDescriptionText\":\"Non-Final
+      Rejection\",\"eventSequenceNumber\":26.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-08-15\"},{\"eventDescriptionText\":\"Case
+      Docketed to Examiner in GAU\",\"eventSequenceNumber\":25.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-08-05\"},{\"eventDescriptionText\":\"Case
+      Docketed to Examiner in GAU\",\"eventSequenceNumber\":24.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-07-09\"},{\"eventDescriptionText\":\"Application
+      Dispatched from OIPE\",\"eventSequenceNumber\":23.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-07-09\"},{\"eventDescriptionText\":\"Email
+      Notification\",\"eventSequenceNumber\":22.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-07-07\"},{\"eventDescriptionText\":\"Sent
+      to Classification Contractor\",\"eventSequenceNumber\":21.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-07-06\"},{\"eventDescriptionText\":\"FITF
+      set to YES - revise initial setting\",\"eventSequenceNumber\":20.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-07-06\"},{\"eventDescriptionText\":\"Patent
+      Term Adjustment - Ready for Examination\",\"eventSequenceNumber\":19.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-07-06\"},{\"eventDescriptionText\":\"Mail
+      Pre-Exam Notice\",\"eventSequenceNumber\":18.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-07-07\"},{\"eventDescriptionText\":\"Application
+      Is Now Complete\",\"eventSequenceNumber\":17.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-07-07\"},{\"eventDescriptionText\":\"Filing
+      Receipt - Updated\",\"eventSequenceNumber\":16.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-07-07\"},{\"eventDescriptionText\":\"Electronic
+      Review\",\"eventSequenceNumber\":15.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-03-01\"},{\"eventDescriptionText\":\"Email
+      Notification\",\"eventSequenceNumber\":14.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-03-01\"},{\"eventDescriptionText\":\"Email
+      Notification\",\"eventSequenceNumber\":13.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-03-01\"},{\"eventDescriptionText\":\"Email
+      Notification\",\"eventSequenceNumber\":12.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-03-01\"},{\"eventDescriptionText\":\"Notice
+      Mailed--Application Incomplete--Filing Date Assigned\",\"eventSequenceNumber\":11.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-03-01\"},{\"eventDescriptionText\":\"Mail
+      Pre-Exam Notice\",\"eventSequenceNumber\":10.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-03-01\"},{\"eventDescriptionText\":\"Notice
+      Mailed--Application Incomplete--Filing Date Assigned\",\"eventSequenceNumber\":9.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-03-01\"},{\"eventDescriptionText\":\"Filing
+      Receipt\",\"eventSequenceNumber\":8.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-03-01\"},{\"eventDescriptionText\":\"PTO/SB/69-Authorize
+      EPO Access to Search Results\",\"eventSequenceNumber\":7.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-01-31\"},{\"eventDescriptionText\":\"Applicants
+      have given acceptable permission for participating foreign\",\"eventSequenceNumber\":6.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-01-31\"},{\"eventDescriptionText\":\"Applicant
+      Has Filed a Verified Statement of Small Entity Status in Compliance with 37
+      CFR 1.27\",\"eventSequenceNumber\":5.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-02-28\"},{\"eventDescriptionText\":\"Cleared
+      by OIPE CSR\",\"eventSequenceNumber\":4.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-02-21\"},{\"eventDescriptionText\":\"IFW
+      Scan & PACR Auto Security Review\",\"eventSequenceNumber\":3.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-02-01\"},{\"eventDescriptionText\":\"Entity
+      Status Set To Undiscounted (Initial Default Setting or Status Change)\",\"eventSequenceNumber\":2.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-01-31\"},{\"eventDescriptionText\":\"Initial
+      Exam Team nn\",\"eventSequenceNumber\":1.0,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-01-31\"},{\"eventDescriptionText\":\"Filing
+      date\",\"eventSequenceNumber\":0.5,\"originatingEventSequenceNumber\":0.0,\"ptaPTECode\":\"PTA\",\"eventDate\":\"2023-01-31\"}]},\"pgpubDocumentMetaData\":{\"productIdentifier\":\"APPXML\",\"zipFileName\":\"ipa231012_r2.zip\",\"fileCreateDateTime\":\"2024-09-30T16:12:09\",\"xmlFileName\":\"18104229_20230323688.xml\",\"fileLocationURI\":\"https://beta-api.uspto.gov/api/v1/datasets/products/files/APPXML-SPLT/2023/ipa231012_r2/18104229_20230323688.xml\"},\"lastIngestionDateTime\":\"2025-02-10T23:46:04\",\"childContinuityBag\":[{\"childApplicationStatusDescriptionText\":\"Application
+      Undergoing Preexam Processing\",\"claimParentageTypeCode\":\"CON\",\"childApplicationStatusCode\":19,\"claimParentageTypeCodeDescriptionText\":\"is
+      a Continuation of\",\"parentApplicationNumberText\":\"18104229\",\"childApplicationFilingDate\":\"2024-07-16\",\"childApplicationNumberText\":\"18773618\"}],\"recordAttorney\":{\"attorneyBag\":[{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"JONATHAN\",\"lastName\":\"SPANGLER\",\"registrationNumber\":\"40182\",\"attorneyAddressBag\":[{\"cityName\":\"SAN
+      DIEGO\",\"geographicRegionName\":\"CALIFORNIA\",\"geographicRegionCode\":\"CA\",\"countryCode\":\"US\",\"postalCode\":\"92106\",\"nameLineOneText\":\"SPRANGLER
+      IP LAW\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"1570 WILLOW
+      STREET\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"858-243-0029\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"JAY\",\"lastName\":\"BELL\",\"registrationNumber\":\"58551\",\"attorneyAddressBag\":[{\"cityName\":\"SAN
+      DIEGO\",\"geographicRegionName\":\"CALIFORNIA\",\"geographicRegionCode\":\"CA\",\"countryCode\":\"US\",\"postalCode\":\"92131\",\"countryName\":\"UNITED
+      STATES\",\"addressLineOneText\":\"11737 MAYWIND COURT\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"858-220-0190\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"}]},\"applicationNumberText\":\"18104229\",\"correspondenceAddressBag\":[{\"cityName\":\"San
+      Diego\",\"geographicRegionName\":\"CALIFORNIA\",\"geographicRegionCode\":\"CA\",\"countryCode\":\"US\",\"postalCode\":\"92106\",\"nameLineOneText\":\"Jonathan
+      D. Spangler\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"1570
+      Willow Street\"}]},{\"eventDataBag\":[{\"eventCode\":\"LET.\",\"eventDescriptionText\":\"Miscellaneous
+      Incoming Letter\",\"eventDate\":\"2024-11-08\"},{\"eventCode\":\"EML_NTR\",\"eventDescriptionText\":\"Email
+      Notification\",\"eventDate\":\"2024-11-15\"},{\"eventCode\":\"FLRCPT.C\",\"eventDescriptionText\":\"Filing
+      Receipt - Corrected\",\"eventDate\":\"2024-11-15\"},{\"eventCode\":\"EML_NTR\",\"eventDescriptionText\":\"Email
+      Notification\",\"eventDate\":\"2024-10-02\"},{\"eventCode\":\"PA..\",\"eventDescriptionText\":\"Change
+      in Power of Attorney (May Include Associate POA)\",\"eventDate\":\"2024-10-02\"},{\"eventCode\":\"EML_NTR\",\"eventDescriptionText\":\"Email
+      Notification\",\"eventDate\":\"2024-10-01\"},{\"eventCode\":\"FLRCPT.R\",\"eventDescriptionText\":\"Filing
+      Receipt - Replacement\",\"eventDate\":\"2024-10-01\"},{\"eventCode\":\"ELC_RVW\",\"eventDescriptionText\":\"Electronic
+      Review\",\"eventDate\":\"2024-08-01\"},{\"eventCode\":\"EML_NTR\",\"eventDescriptionText\":\"Email
+      Notification\",\"eventDate\":\"2024-08-01\"},{\"eventCode\":\"PG-ISSUE\",\"eventDescriptionText\":\"PG-Pub
+      Issue Notification\",\"eventDate\":\"2024-08-01\"},{\"eventCode\":\"DOCK\",\"eventDescriptionText\":\"Case
+      Docketed to Examiner in GAU\",\"eventDate\":\"2023-07-26\"},{\"eventCode\":\"OIPE\",\"eventDescriptionText\":\"Application
+      Dispatched from OIPE\",\"eventDate\":\"2023-07-26\"},{\"eventCode\":\"ELC_RVW\",\"eventDescriptionText\":\"Electronic
+      Review\",\"eventDate\":\"2023-07-07\"},{\"eventCode\":\"ELC_RVW\",\"eventDescriptionText\":\"Electronic
+      Review\",\"eventDate\":\"2023-07-07\"},{\"eventCode\":\"EML_NTR\",\"eventDescriptionText\":\"Email
+      Notification\",\"eventDate\":\"2023-07-07\"},{\"eventCode\":\"PGPC\",\"eventDescriptionText\":\"Sent
+      to Classification Contractor\",\"eventDate\":\"2023-07-06\"},{\"eventCode\":\"FTFS\",\"eventDescriptionText\":\"FITF
+      set to YES - revise initial setting\",\"eventDate\":\"2023-07-06\"},{\"eventCode\":\"PTA.RFE\",\"eventDescriptionText\":\"Patent
+      Term Adjustment - Ready for Examination\",\"eventDate\":\"2023-07-06\"},{\"eventCode\":\"COMP\",\"eventDescriptionText\":\"Application
+      Is Now Complete\",\"eventDate\":\"2023-07-07\"},{\"eventCode\":\"MPEN\",\"eventDescriptionText\":\"Mail
+      Pre-Exam Notice\",\"eventDate\":\"2023-07-07\"},{\"eventCode\":\"MPEN\",\"eventDescriptionText\":\"Mail
+      Pre-Exam Notice\",\"eventDate\":\"2023-07-07\"},{\"eventCode\":\"COMP\",\"eventDescriptionText\":\"Application
+      Is Now Complete\",\"eventDate\":\"2023-07-07\"},{\"eventCode\":\"FLRCPT.U\",\"eventDescriptionText\":\"Filing
+      Receipt - Updated\",\"eventDate\":\"2023-07-07\"},{\"eventCode\":\"CRFL\",\"eventDescriptionText\":\"CRF
+      Disk Has Been Received by Preexam / Group / PCT\",\"eventDate\":\"2023-06-12\"},{\"eventCode\":\"CRFE\",\"eventDescriptionText\":\"CRF
+      Is Good Technically / Entered into Database\",\"eventDate\":\"2023-06-13\"},{\"eventCode\":\"PST_CRD\",\"eventDescriptionText\":\"Mail
+      Post Card\",\"eventDate\":\"2023-04-18\"},{\"eventCode\":\"EML_NTF\",\"eventDescriptionText\":\"Email
+      Notification\",\"eventDate\":\"2023-04-10\"},{\"eventCode\":\"EML_NTF\",\"eventDescriptionText\":\"Email
+      Notification\",\"eventDate\":\"2023-04-10\"},{\"eventCode\":\"EML_NTR\",\"eventDescriptionText\":\"Email
+      Notification\",\"eventDate\":\"2023-04-10\"},{\"eventCode\":\"SQPR\",\"eventDescriptionText\":\"SEQUENCE
+      ERRORS\",\"eventDate\":\"2023-04-10\"},{\"eventCode\":\"MPEN\",\"eventDescriptionText\":\"Mail
+      Pre-Exam Notice\",\"eventDate\":\"2023-04-10\"},{\"eventCode\":\"MPEN\",\"eventDescriptionText\":\"Mail
+      Pre-Exam Notice\",\"eventDate\":\"2023-04-10\"},{\"eventCode\":\"SQPR\",\"eventDescriptionText\":\"SEQUENCE
+      ERRORS\",\"eventDate\":\"2023-04-10\"},{\"eventCode\":\"FLRCPT.O\",\"eventDescriptionText\":\"Filing
+      Receipt\",\"eventDate\":\"2023-04-10\"},{\"eventCode\":\"SREXR141\",\"eventDescriptionText\":\"PTO/SB/69-Authorize
+      EPO Access to Search Results\",\"eventDate\":\"2023-01-31\"},{\"eventCode\":\"APPERMS\",\"eventDescriptionText\":\"Applicants
+      have given acceptable permission for participating foreign\",\"eventDate\":\"2023-01-31\"},{\"eventCode\":\"BIG.\",\"eventDescriptionText\":\"Entity
+      Status Set To Undiscounted (Initial Default Setting or Status Change)\",\"eventDate\":\"2023-01-31\"},{\"eventCode\":\"IEXX\",\"eventDescriptionText\":\"Initial
+      Exam Team nn\",\"eventDate\":\"2023-01-31\"}],\"applicationMetaData\":{\"firstInventorToFileIndicator\":\"Y\",\"applicationStatusCode\":30,\"applicationTypeCode\":\"UTL\",\"entityStatusData\":{\"smallEntityStatusIndicator\":false,\"businessEntityStatusCategory\":\"Regular
+      Undiscounted\"},\"filingDate\":\"2023-01-31\",\"uspcSymbolText\":\"435/91.5\",\"nationalStageIndicator\":false,\"firstInventorName\":\"Henrique
+      da Costa Oliveira\",\"cpcClassificationBag\":[\"C12N9/1264\",\"C12Y207/07031\",\"B01J19/0046\",\"C12P19/34\"],\"effectiveFilingDate\":\"2023-01-31\",\"publicationDateBag\":[\"2024-08-01\"],\"publicationSequenceNumberBag\":[\"0254532\"],\"earliestPublicationDate\":\"2024-08-01\",\"applicationTypeLabelName\":\"Utility\",\"applicationStatusDate\":\"2023-07-27\",\"class\":\"435\",\"applicationTypeCategory\":\"REGULAR\",\"inventorBag\":[{\"firstName\":\"Henrique\",\"lastName\":\"da
+      Costa Oliveira\",\"inventorNameText\":\"Henrique da Costa Oliveira\",\"correspondenceAddressBag\":[{\"cityName\":\"Sao
+      Paulo\",\"countryCode\":\"BR\",\"nameLineOneText\":\"Henrique da Costa Oliveira\",\"countryName\":\"BRAZIL\",\"postalAddressCategory\":\"residence\"},{\"cityName\":\"Sao
+      Paulo\",\"countryCode\":\"BR\",\"nameLineOneText\":\"Henrique da Costa Oliveira\",\"countryName\":\"BRAZIL\",\"postalAddressCategory\":\"postal\"}]},{\"firstName\":\"Jo\xE2o
+      Lucas\",\"lastName\":\"Maehara Said Dos Reis\",\"inventorNameText\":\"Jo\xE2o
+      Lucas Maehara Said Dos Reis\",\"correspondenceAddressBag\":[{\"cityName\":\"Sao
+      Paulo\",\"countryCode\":\"BR\",\"nameLineOneText\":\"Jo\xE2o Lucas Maehara Said
+      Dos Reis\",\"countryName\":\"BRAZIL\",\"postalAddressCategory\":\"residence\"},{\"nameLineOneText\":\"Jo\xE2o
+      Lucas Maehara Said Dos Reis\",\"postalAddressCategory\":\"postal\"}]},{\"firstName\":\"Jo\xE3o
+      Henrique\",\"lastName\":\"Diniz Brandao Gervasio\",\"inventorNameText\":\"Jo\xE3o
+      Henrique Diniz Brandao Gervasio\",\"correspondenceAddressBag\":[{\"cityName\":\"Sao
+      Paulo\",\"countryCode\":\"BR\",\"nameLineOneText\":\"Jo\xE3o Henrique Diniz
+      Brandao Gervasio\",\"countryName\":\"BRAZIL\",\"postalAddressCategory\":\"residence\"},{\"nameLineOneText\":\"Jo\xE3o
+      Henrique Diniz Brandao Gervasio\",\"postalAddressCategory\":\"postal\"}]},{\"firstName\":\"Jo\xE3o\",\"lastName\":\"Bosco
+      Pesquero\",\"inventorNameText\":\"Jo\xE3o Bosco Pesquero\",\"correspondenceAddressBag\":[{\"cityName\":\"Sao
+      Paulo\",\"countryCode\":\"BR\",\"nameLineOneText\":\"Jo\xE3o Bosco Pesquero\",\"countryName\":\"BRAZIL\",\"postalAddressCategory\":\"residence\"},{\"nameLineOneText\":\"Jo\xE3o
+      Bosco Pesquero\",\"postalAddressCategory\":\"postal\"}]},{\"firstName\":\"Natalia\",\"lastName\":\"Neto
+      Pereira Cerize\",\"inventorNameText\":\"Natalia Neto Pereira Cerize\",\"correspondenceAddressBag\":[{\"cityName\":\"Sao
+      Paulo\",\"countryCode\":\"BR\",\"nameLineOneText\":\"Natalia Neto Pereira Cerize\",\"countryName\":\"BRAZIL\",\"postalAddressCategory\":\"residence\"},{\"nameLineOneText\":\"Natalia
+      Neto Pereira Cerize\",\"postalAddressCategory\":\"postal\"}]}],\"applicationStatusDescriptionText\":\"Docketed
+      New Case - Ready for Examination\",\"applicantBag\":[{\"applicantNameText\":\"Lenovo
+      (Singapore) Pte. Ltd.\",\"correspondenceAddressBag\":[{\"cityName\":\"Singapore\",\"countryCode\":\"SG\",\"nameLineOneText\":\"Lenovo
+      (Singapore) Pte. Ltd.\",\"countryName\":\"SINGAPORE\",\"postalAddressCategory\":\"postal\"}]}],\"firstApplicantName\":\"Lenovo
+      (Singapore) Pte. Ltd.\",\"customerNumber\":76699,\"groupArtUnitNumber\":\"OPAP\",\"earliestPublicationNumber\":\"US20240254532A1\",\"inventionTitle\":\"INITIATOR
+      PARTICLE FOR DNA SYNTHESIS\",\"applicationConfirmationNumber\":7698,\"examinerNameText\":\"CENTRAL,
+      DOCKET\",\"subclass\":\"91.5\",\"publicationCategoryBag\":[\"Pre-Grant Publications
+      - PGPub\"],\"docketNumber\":\"RPS920220193-US-NP\"},\"pgpubDocumentMetaData\":{\"productIdentifier\":\"APPXML\",\"zipFileName\":\"ipa240801.zip\",\"fileCreateDateTime\":\"2024-09-30T11:45:25\",\"xmlFileName\":\"18162429_20240254532.xml\",\"fileLocationURI\":\"https://beta-api.uspto.gov/api/v1/datasets/products/files/APPXML-SPLT/2024/ipa240801/18162429_20240254532.xml\"},\"lastIngestionDateTime\":\"2025-02-10T23:46:04\",\"recordAttorney\":{\"attorneyBag\":[{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"MICHAEL\",\"lastName\":\"SCHWEGMAN\",\"registrationNumber\":\"25816\",\"attorneyAddressBag\":[{\"cityName\":\"MINNEAPOLIS\",\"geographicRegionName\":\"MINNESOTA\",\"geographicRegionCode\":\"MN\",\"countryCode\":\"US\",\"postalCode\":\"55402\",\"nameLineOneText\":\"SCHWEGMAN,
+      LUNDBERG & WOESSNER. P.A.\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"1600
+      TCF TOWER\",\"addressLineTwoText\":\"121 SOUTH 8TH STREET\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"612-373-6901\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"WARREN\",\"lastName\":\"WOESSNER\",\"registrationNumber\":\"30440\",\"attorneyAddressBag\":[{\"cityName\":\"MINNEAPOLIS\",\"geographicRegionName\":\"MINNESOTA\",\"geographicRegionCode\":\"MN\",\"countryCode\":\"US\",\"postalCode\":\"55402\",\"nameLineOneText\":\"SCHWEGMAN,
+      LUNDBERG & WOESSNER, P.A.\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"121
+      S. 8TH STREET (1600)\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"612-373-6903\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"STEVEN\",\"lastName\":\"LUNDBERG\",\"registrationNumber\":\"30568\",\"attorneyAddressBag\":[{\"cityName\":\"MINNEAPOLIS\",\"geographicRegionName\":\"MINNESOTA\",\"geographicRegionCode\":\"MN\",\"countryCode\":\"US\",\"postalCode\":\"55402\",\"nameLineOneText\":\"SCHWEGMAN,
+      LUNDBERG & WOESSNER, P.A.\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"1600
+      TCF TOWER\",\"addressLineTwoText\":\"121 SOUTH 8TH STREET\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"612-373-6900\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"BRADLEY\",\"lastName\":\"FORREST\",\"registrationNumber\":\"30837\",\"attorneyAddressBag\":[{\"cityName\":\"MINNEAPOLIS\",\"geographicRegionName\":\"MINNESOTA\",\"geographicRegionCode\":\"MN\",\"countryCode\":\"US\",\"postalCode\":\"55402\",\"nameLineOneText\":\"SCHWEGMAN,
+      LUNDBERG & WOESSNER, P.A.\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"1600
+      TCF TOWER\",\"addressLineTwoText\":\"121 SOUTH 8TH STREET\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"612-373-6900\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"MICHAEL\",\"lastName\":\"LYNCH\",\"registrationNumber\":\"30871\",\"attorneyAddressBag\":[{\"cityName\":\"AUSTIN\",\"geographicRegionName\":\"TEXAS\",\"geographicRegionCode\":\"TX\",\"countryCode\":\"US\",\"postalCode\":\"78759\",\"nameLineOneText\":\"SCHWEGMAN,
+      LUNDBERG, WOESSNER, P.A.\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"8911
+      N. CAPITAL OF TEXAS HIGHWAY\",\"addressLineTwoText\":\"SUITE 4150\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"512-628-9320\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"STEPHEN\",\"lastName\":\"DURANT\",\"registrationNumber\":\"31506\",\"attorneyAddressBag\":[{\"cityName\":\"SAN
+      JOSE\",\"geographicRegionName\":\"CALIFORNIA\",\"geographicRegionCode\":\"CA\",\"countryCode\":\"US\",\"postalCode\":\"95113\",\"nameLineOneText\":\"SCHWEGMAN
+      LUNDBERG WOESSNER P.A.\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"150
+      ALMADEN BOULEVARD\",\"addressLineTwoText\":\"SUITE 750\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"408-660-2976\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"DOUGLAS\",\"lastName\":\"ROBINSON\",\"registrationNumber\":\"32751\",\"attorneyAddressBag\":[{\"cityName\":\"MORRISVILLE\",\"geographicRegionName\":\"NORTH
+      CAROLINA\",\"geographicRegionCode\":\"NC\",\"countryCode\":\"US\",\"postalCode\":\"27560\",\"nameLineOneText\":\"LENOVO\",\"countryName\":\"UNITED
+      STATES\",\"addressLineOneText\":\"1009 THINK PLACE\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"919-294-5967\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"J\",\"lastName\":\"PARKER\",\"registrationNumber\":\"33024\",\"attorneyAddressBag\":[{\"cityName\":\"HIGHLAND
+      PARK\",\"geographicRegionName\":\"ILLINOIS\",\"geographicRegionCode\":\"IL\",\"countryCode\":\"US\",\"postalCode\":\"60035\",\"nameLineOneText\":\".\",\"countryName\":\"UNITED
+      STATES\",\"addressLineOneText\":\"551 GREEN BAY ROAD\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"847-432-7302\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"GARY\",\"lastName\":\"CUNNINGHAM\",\"registrationNumber\":\"33488\",\"attorneyAddressBag\":[{\"cityName\":\"LIBERTYVILLE\",\"geographicRegionName\":\"ILLINOIS\",\"geographicRegionCode\":\"IL\",\"countryCode\":\"US\",\"postalCode\":\"60048\",\"nameLineOneText\":\"MOTOROLA
+      MOBILITY, LLC\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"600
+      NORTH US HIGHWAY 45\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"708-525-4666\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"ERIC\",\"lastName\":\"GIFFORD\",\"registrationNumber\":\"33501\",\"attorneyAddressBag\":[{\"cityName\":\"TUCSON\",\"geographicRegionName\":\"ARIZONA\",\"geographicRegionCode\":\"AZ\",\"countryCode\":\"US\",\"postalCode\":\"85712\",\"countryName\":\"UNITED
+      STATES\",\"addressLineOneText\":\"1517 N WILMOT RD #319\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"520-760-1754\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"M\",\"lastName\":\"TSIRIGOTIS\",\"registrationNumber\":\"34127\",\"attorneyAddressBag\":[{\"cityName\":\"PHOENIX\",\"geographicRegionName\":\"ARIZONA\",\"geographicRegionCode\":\"AZ\",\"countryCode\":\"US\",\"postalCode\":\"85044\",\"countryName\":\"UNITED
+      STATES\",\"addressLineOneText\":\"14021 SOUTH 36TH PLACE\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"602-332-2889\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"PAMELA\",\"lastName\":\"HUFF\",\"registrationNumber\":\"35901\",\"attorneyAddressBag\":[{\"cityName\":\"SAN
+      ANTONIO\",\"geographicRegionName\":\"TEXAS\",\"geographicRegionCode\":\"TX\",\"countryCode\":\"US\",\"postalCode\":\"78248\",\"nameLineOneText\":\"SCHWEGMAN
+      LUNDBERG & WOESSNER, P.A.\",\"nameLineTwoText\":\"GOLD FINANCIAL BUILDING\",\"countryName\":\"UNITED
+      STATES\",\"addressLineOneText\":\"2822 NORTH LOOP 1604 WEST\",\"addressLineTwoText\":\"SUITE
+      112\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"512-492-4613\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"DAVID\",\"lastName\":\"D'ZURILLA\",\"registrationNumber\":\"36776\",\"attorneyAddressBag\":[{\"cityName\":\"MINNEAPOLIS\",\"geographicRegionName\":\"MINNESOTA\",\"geographicRegionCode\":\"MN\",\"countryCode\":\"US\",\"postalCode\":\"55402\",\"nameLineOneText\":\"SCHWEGMAN,
+      LUNDBERG & WOESSNER, P.A.\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"1600
+      TCF TOWER\",\"addressLineTwoText\":\"121 SOUTH 8TH STREET\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"612-373-6900\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"JANAL\",\"lastName\":\"KALIS\",\"registrationNumber\":\"37650\",\"attorneyAddressBag\":[{\"cityName\":\"MINNEAPOLIS\",\"geographicRegionName\":\"MINNESOTA\",\"geographicRegionCode\":\"MN\",\"countryCode\":\"US\",\"postalCode\":\"55403\",\"nameLineOneText\":\"SCHWEGMAN,
+      LUNDBERG & WOESSNER, P.A.\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"1600
+      TCF TOWER\",\"addressLineTwoText\":\"121 SOUTH 8TH STREET\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"612-373-6900\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"MARVIN\",\"lastName\":\"BEEKMAN\",\"registrationNumber\":\"38377\",\"attorneyAddressBag\":[{\"cityName\":\"MINNEAPOLIS\",\"geographicRegionName\":\"MINNESOTA\",\"geographicRegionCode\":\"MN\",\"countryCode\":\"US\",\"postalCode\":\"55402\",\"nameLineOneText\":\"SCHWEGMAN,
+      LUNDBERG & WOESSNER, P.A.\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"1600
+      TCF TOWER\",\"addressLineTwoText\":\"121 SOUTH 8TH STREET\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"612-373-6900\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"TIMOTHY\",\"lastName\":\"BIANCHI\",\"registrationNumber\":\"39610\",\"attorneyAddressBag\":[{\"cityName\":\"MINNEAPOLIS\",\"geographicRegionName\":\"MINNESOTA\",\"geographicRegionCode\":\"MN\",\"countryCode\":\"US\",\"postalCode\":\"55402\",\"nameLineOneText\":\"SCHWEGMAN,
+      LUNDBERG WOESSNER, P.A.\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"1600
+      TCF TOWER\",\"addressLineTwoText\":\"121 SOUTH 8TH STREET\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"612-373-6900\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"JANET\",\"lastName\":\"EMBRETSON\",\"registrationNumber\":\"39665\",\"attorneyAddressBag\":[{\"cityName\":\"DEEPHAVEN\",\"geographicRegionName\":\"MINNESOTA\",\"geographicRegionCode\":\"MN\",\"countryCode\":\"US\",\"postalCode\":\"55331\",\"nameLineOneText\":\"JANET
+      EMBRETSON\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"19720
+      VINE STREET\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"612-961-7503\",\"telecomTypeCode\":\"TEL\"}],\"middleName\":\"E\",\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"RUSSELL\",\"lastName\":\"SLIFER\",\"registrationNumber\":\"39838\",\"attorneyAddressBag\":[{\"cityName\":\"BOISE\",\"geographicRegionName\":\"IDAHO\",\"geographicRegionCode\":\"ID\",\"countryCode\":\"US\",\"postalCode\":\"83712\",\"countryName\":\"UNITED
+      STATES\",\"addressLineOneText\":\"2478 WARM SPRINGS AVENUE\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"208-794-3901\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"TYLER\",\"lastName\":\"NASIEDLAK\",\"registrationNumber\":\"40099\",\"attorneyAddressBag\":[{\"cityName\":\"MINNEAPOLIS\",\"geographicRegionName\":\"MINNESOTA\",\"geographicRegionCode\":\"MN\",\"countryCode\":\"US\",\"postalCode\":\"55042\",\"nameLineOneText\":\"SCHWEGMAN,
+      LUNDBERG, & WOESSNER, P.A.\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"121
+      SOUTH 8TH STREET\",\"addressLineTwoText\":\"1600 TCF TOWER\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"612-373-6920\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"ROBERT\",\"lastName\":\"RENKE\",\"registrationNumber\":\"40783\",\"attorneyAddressBag\":[{\"cityName\":\"MORRISVILLE\",\"geographicRegionName\":\"NORTH
+      CAROLINA\",\"geographicRegionCode\":\"NC\",\"countryCode\":\"US\",\"postalCode\":\"27560\",\"nameLineOneText\":\"LENOVO
+      US, INC.\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"1009 THINK
+      PLACE\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"919-908-5866\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"ANDREW\",\"lastName\":\"PERET\",\"registrationNumber\":\"41246\",\"attorneyAddressBag\":[{\"cityName\":\"MINNEAPOLIS\",\"geographicRegionName\":\"MINNESOTA\",\"geographicRegionCode\":\"MN\",\"countryCode\":\"US\",\"postalCode\":\"55402\",\"nameLineOneText\":\"SCHWEGMAN,
+      LUNDBERG & WOESSNER, P.A.\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"1600
+      TCF TOWER\",\"addressLineTwoText\":\"121 SOUTH 8TH STREET\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"262-646-7009\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"EPHRAIM\",\"lastName\":\"STARR\",\"registrationNumber\":\"41325\",\"attorneyAddressBag\":[{\"cityName\":\"LOVELAND\",\"geographicRegionName\":\"COLORADO\",\"geographicRegionCode\":\"CO\",\"countryCode\":\"US\",\"postalCode\":\"80538\",\"nameLineOneText\":\"DANAHER
+      WATER QUALITY GROUP\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"5600
+      LINDBERGH DRIVE\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"970-593-6459\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"SUSAN\",\"lastName\":\"YEE\",\"registrationNumber\":\"41388\",\"attorneyAddressBag\":[{\"cityName\":\"SAN
+      JOSE\",\"geographicRegionName\":\"CALIFORNIA\",\"geographicRegionCode\":\"CA\",\"countryCode\":\"US\",\"postalCode\":\"95113\",\"nameLineOneText\":\"SCHWEGMAN,
+      LUNDBERG & WOESSNER, P.A.\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"150
+      ALMADEN BOULEVARD\",\"addressLineTwoText\":\"SUITE 750\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"408-278-4057\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"SCOTT\",\"lastName\":\"REID\",\"registrationNumber\":\"42098\",\"attorneyAddressBag\":[{\"cityName\":\"MORRISVILLE\",\"geographicRegionName\":\"NORTH
+      CAROLINA\",\"geographicRegionCode\":\"NC\",\"countryCode\":\"US\",\"postalCode\":\"27560\",\"nameLineOneText\":\"LENOVO
+      (US) INC.\",\"nameLineTwoText\":\"BLDG-1, 4B26\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"1009
+      THINK PLACE\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"919-294-0693\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"SUNEEL\",\"lastName\":\"ARORA\",\"registrationNumber\":\"42267\",\"attorneyAddressBag\":[{\"cityName\":\"MINNEAPOLIS\",\"geographicRegionName\":\"MINNESOTA\",\"geographicRegionCode\":\"MN\",\"countryCode\":\"US\",\"postalCode\":\"55402\",\"nameLineOneText\":\"SCHWEGMAN,
+      LUNDBERG & WOESSNER, P.A.\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"1600
+      TCF TOWER\",\"addressLineTwoText\":\"121 SOUTH 8TH STREET\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"612-373-6900\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"DAVID\",\"lastName\":\"BLACK\",\"registrationNumber\":\"42331\",\"attorneyAddressBag\":[{\"cityName\":\"MINNEAPOLIS\",\"geographicRegionName\":\"MINNESOTA\",\"geographicRegionCode\":\"MN\",\"countryCode\":\"US\",\"postalCode\":\"55402\",\"nameLineOneText\":\"SCHWEGMAN,
+      LUNDBERG & WOESSNER, P.A.\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"1600
+      TCF TOWER\",\"addressLineTwoText\":\"121 SOUTH 8TH STREET\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"612-373-6900\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"FRANK\",\"lastName\":\"CIRE\",\"registrationNumber\":\"42419\",\"attorneyAddressBag\":[{\"cityName\":\"GLENDALE\",\"geographicRegionName\":\"CALIFORNIA\",\"geographicRegionCode\":\"CA\",\"countryCode\":\"US\",\"postalCode\":\"91203\",\"nameLineOneText\":\"GAMBLIT
+      GAMING, LLC\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"620
+      NORTH BRAND BLVD.\",\"addressLineTwoText\":\"5TH FLOOR\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"626-221-5465\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"AGENT\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"CRAIG\",\"lastName\":\"FISCHER\",\"registrationNumber\":\"42535\",\"attorneyAddressBag\":[{\"cityName\":\"CALABASAS\",\"geographicRegionName\":\"CALIFORNIA\",\"geographicRegionCode\":\"CA\",\"countryCode\":\"US\",\"postalCode\":\"91302\",\"nameLineOneText\":\"DTS,
+      INC.\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"5220 LAS VIRGENES
+      ROAD\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"818-436-1338\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"MARC\",\"lastName\":\"HANISH\",\"registrationNumber\":\"42626\",\"attorneyAddressBag\":[{\"cityName\":\"SAN
+      JOSE\",\"geographicRegionName\":\"CALIFORNIA\",\"geographicRegionCode\":\"CA\",\"countryCode\":\"US\",\"postalCode\":\"95113\",\"nameLineOneText\":\"SCHWEGMAN
+      LUNDBERG & WOESSNER\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"150
+      ALMADEN BOULEVARD\",\"addressLineTwoText\":\"SUITE 750\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"612-373-6900\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"PETER\",\"lastName\":\"MAKI\",\"registrationNumber\":\"42832\",\"attorneyAddressBag\":[{\"cityName\":\"MINNEAPOLIS\",\"geographicRegionName\":\"MINNESOTA\",\"geographicRegionCode\":\"MN\",\"countryCode\":\"US\",\"postalCode\":\"55402\",\"nameLineOneText\":\"SCHWEGMAN,
+      LUNDBERG & WOESSNER, P.A.\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"1600
+      TCF TOWER\",\"addressLineTwoText\":\"121 SOUTH 8TH STREET\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"612-373-6900\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"AGENT\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"MONIQUE\",\"lastName\":\"PERDOK\",\"registrationNumber\":\"42989\",\"attorneyAddressBag\":[{\"cityName\":\"MINNEAPOLIS\",\"geographicRegionName\":\"MINNESOTA\",\"geographicRegionCode\":\"MN\",\"countryCode\":\"US\",\"postalCode\":\"55402\",\"nameLineOneText\":\"SCHWEGMAN,
+      LUNDBERG & WOESSNER. P.A.\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"1600
+      TCF TOWER\",\"addressLineTwoText\":\"121 SOUTH 8TH STREET\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"612-373-6900\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"AARON\",\"lastName\":\"WININGER\",\"registrationNumber\":\"45229\",\"attorneyAddressBag\":[{\"cityName\":\"SAN
+      JOSE\",\"geographicRegionName\":\"CALIFORNIA\",\"geographicRegionCode\":\"CA\",\"countryCode\":\"US\",\"postalCode\":\"95113\",\"nameLineOneText\":\"SCHWEGMAN
+      LUNDBERG & WOESSNER, P.A.\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"111
+      WEST SAINT JOHN STREET\",\"addressLineTwoText\":\"SUITE 1100\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"408-278-4059\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"VIET\",\"lastName\":\"TONG\",\"registrationNumber\":\"45416\",\"attorneyAddressBag\":[{\"cityName\":\"MINNEAPOLIS\",\"geographicRegionName\":\"MINNESOTA\",\"geographicRegionCode\":\"MN\",\"countryCode\":\"US\",\"postalCode\":\"55402\",\"nameLineOneText\":\"SCHWEGMAN,
+      LUNDBERG & WOESSNER, P.A.\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"1600
+      TCF TOWER\",\"addressLineTwoText\":\"121 SOUTH 8TH STREET\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"612-373-6900\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"AGENT\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"JOSEPH\",\"lastName\":\"MEHRLE\",\"registrationNumber\":\"45535\",\"attorneyAddressBag\":[{\"cityName\":\"MINNEAPOLIS\",\"geographicRegionName\":\"MINNESOTA\",\"geographicRegionCode\":\"MN\",\"countryCode\":\"US\",\"postalCode\":\"55402\",\"nameLineOneText\":\"SCHWEGMAN,
+      LUNDBERG & WOESSNER, P.A.\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"1600
+      TCF TOWER\",\"addressLineTwoText\":\"121 SOUTH 8TH STREET\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"513-942-0224\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"ANTHONY\",\"lastName\":\"JOSEPHSON\",\"registrationNumber\":\"45742\",\"attorneyAddressBag\":[{\"cityName\":\"CARY\",\"geographicRegionName\":\"NORTH
+      CAROLINA\",\"geographicRegionCode\":\"NC\",\"countryCode\":\"US\",\"postalCode\":\"27511\",\"nameLineOneText\":\"WITHROW
+      & TERRANOVA, P.L.L.C.\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"106
+      PINEDALE SPRINGS WAY\"}],\"nameSuffix\":\"JR\",\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"919-238-2300\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"ANTHONY\",\"lastName\":\"CURTIS\",\"registrationNumber\":\"46193\",\"attorneyAddressBag\":[{\"cityName\":\"MINNEAPOLIS\",\"geographicRegionName\":\"MINNESOTA\",\"geographicRegionCode\":\"MN\",\"countryCode\":\"US\",\"postalCode\":\"55402\",\"nameLineOneText\":\"SCHWEGMAN
+      LUNDBERG & WOESSNER, P.A.\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"121
+      SOUTH 8TH STREET\",\"addressLineTwoText\":\"SUITE 1600\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"612-373-6900\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"DAVID\",\"lastName\":\"COCHRAN\",\"registrationNumber\":\"46632\",\"attorneyAddressBag\":[{\"cityName\":\"MINNEAPOLIS\",\"geographicRegionName\":\"MINNESOTA\",\"geographicRegionCode\":\"MN\",\"countryCode\":\"US\",\"postalCode\":\"55402\",\"nameLineOneText\":\"SCHWEGMAN,
+      LUNDBERG & WOESSNER, P.A.\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"1600
+      TCF TOWER\",\"addressLineTwoText\":\"121 SOUTH 8TH STREET\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"612-373-6900\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"BRADLEY\",\"lastName\":\"SCHEER\",\"registrationNumber\":\"47059\",\"attorneyAddressBag\":[{\"cityName\":\"SAN
+      JOSE\",\"geographicRegionName\":\"CALIFORNIA\",\"geographicRegionCode\":\"CA\",\"countryCode\":\"US\",\"postalCode\":\"95113\",\"nameLineOneText\":\"SCHWEGMAN,
+      LUNDBERG & WOESSNER\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"150
+      ALMADEN BLVD.\",\"addressLineTwoText\":\"SUITE 750\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"408-278-4040\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"DAVID\",\"lastName\":\"PETERSON\",\"registrationNumber\":\"47857\",\"attorneyAddressBag\":[{\"cityName\":\"MINNEAPOLIS\",\"geographicRegionName\":\"MINNESOTA\",\"geographicRegionCode\":\"MN\",\"countryCode\":\"US\",\"postalCode\":\"55402\",\"nameLineOneText\":\"SCHWEGMAN,
+      LUNDBERG & WOESSNER. P.A.\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"1600
+      TCF TOWER\",\"addressLineTwoText\":\"121 SOUTH 8TH STREET\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"612-373-6900\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"ANDRE\",\"lastName\":\"MARAIS\",\"registrationNumber\":\"48095\",\"attorneyAddressBag\":[{\"cityName\":\"SAN
+      JOSE\",\"geographicRegionName\":\"CALIFORNIA\",\"geographicRegionCode\":\"CA\",\"countryCode\":\"US\",\"postalCode\":\"95113\",\"nameLineOneText\":\"SCHWEGMAN,
+      LUNDBERG & WOESSNER, P.A.\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"150
+      ALMADEN BOULEVARD\",\"addressLineTwoText\":\"SUITE 901\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"408-278-4040\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"FRANCOIS\",\"lastName\":\"DEVILLIERS\",\"registrationNumber\":\"48200\",\"attorneyAddressBag\":[{\"cityName\":\"SAN
+      JOSE\",\"geographicRegionName\":\"CALIFORNIA\",\"geographicRegionCode\":\"CA\",\"countryCode\":\"US\",\"postalCode\":\"95126\",\"countryName\":\"UNITED
+      STATES\",\"addressLineOneText\":\"809 AUZERAIS AVE UNIT 335\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"831-419-9589\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"RICARDO\",\"lastName\":\"MORAN\",\"registrationNumber\":\"48735\",\"attorneyAddressBag\":[{\"cityName\":\"MINNEAPOLIS\",\"geographicRegionName\":\"MINNESOTA\",\"geographicRegionCode\":\"MN\",\"countryCode\":\"US\",\"postalCode\":\"55402\",\"nameLineOneText\":\"SCHWEGMAN
+      LUNDBERG & WOESSNER, P.A.\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"121
+      SOUTH 8TH STREET\",\"addressLineTwoText\":\"SUITE 1600\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"612-373-6900\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"THIERRY\",\"lastName\":\"LO\",\"registrationNumber\":\"49097\",\"attorneyAddressBag\":[{\"cityName\":\"IRVINE\",\"geographicRegionName\":\"CALIFORNIA\",\"geographicRegionCode\":\"CA\",\"countryCode\":\"US\",\"postalCode\":\"92618\",\"nameLineOneText\":\"SCHWEGMAN
+      LUNDBERG WOESSNER P.A.\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"96
+      DISCOVERY\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"949--35-4-0200\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"TIMOTHY\",\"lastName\":\"PAUL\",\"registrationNumber\":\"51203\",\"attorneyAddressBag\":[{\"cityName\":\"MINNEAPOLIS\",\"geographicRegionName\":\"MINNESOTA\",\"geographicRegionCode\":\"MN\",\"countryCode\":\"US\",\"postalCode\":\"55402\",\"nameLineOneText\":\"SCHWEGMAN,
+      LUNDBERG & WOESSNER\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"1600
+      TCF TOWER\",\"addressLineTwoText\":\"121 SOUTH EIGHTH STREET\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"612-373-6900\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"OGNYAN\",\"lastName\":\"BEREMSKI\",\"registrationNumber\":\"51458\",\"attorneyAddressBag\":[{\"cityName\":\"MINNEAPOLIS\",\"geographicRegionName\":\"MINNESOTA\",\"geographicRegionCode\":\"MN\",\"countryCode\":\"US\",\"postalCode\":\"55402\",\"nameLineOneText\":\"SCHWEGMAN
+      LUNDBERG & WOESSNER, P.A.\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"121
+      SOUTH 8TH STREET\",\"addressLineTwoText\":\"SUITE 1600\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"612-373-6900\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"MICHAEL\",\"lastName\":\"MISCHNICK\",\"registrationNumber\":\"52036\",\"attorneyAddressBag\":[{\"cityName\":\"MINNEAPOLIS\",\"geographicRegionName\":\"MINNESOTA\",\"geographicRegionCode\":\"MN\",\"countryCode\":\"US\",\"postalCode\":\"55402\",\"nameLineOneText\":\"SCHWEGMAN,
+      LUNDBERG & WOESSNER. P.A.\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"121
+      SOUTH 8TH STREET\",\"addressLineTwoText\":\"SUITE 1600\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"612-359-3270\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"MARK\",\"lastName\":\"VATUONE\",\"registrationNumber\":\"53719\",\"attorneyAddressBag\":[{\"cityName\":\"GILROY\",\"geographicRegionName\":\"CALIFORNIA\",\"geographicRegionCode\":\"CA\",\"countryCode\":\"US\",\"postalCode\":\"95020\",\"nameLineOneText\":\"SCHWEGMAN,
+      LUNDBERG, WOESSNER\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"66
+      NORTH FIRST STREET\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"408-846-8871\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"STEVEN\",\"lastName\":\"REID\",\"registrationNumber\":\"54393\",\"attorneyAddressBag\":[{\"cityName\":\"MINNEAPOLIS\",\"geographicRegionName\":\"MINNESOTA\",\"geographicRegionCode\":\"MN\",\"countryCode\":\"US\",\"postalCode\":\"55402-281\",\"nameLineOneText\":\"SCHWEGMAN,
+      LUNDBERG & WOESSNER, P.A.\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"1600
+      TCF TOWER\",\"addressLineTwoText\":\"121 SOUTH EIGHTH STREET\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"612-371-2185\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"JAMES\",\"lastName\":\"SHANDS\",\"registrationNumber\":\"54439\",\"attorneyAddressBag\":[{\"cityName\":\"MINNEAPOLIS\",\"geographicRegionName\":\"MINNESOTA\",\"geographicRegionCode\":\"MN\",\"countryCode\":\"US\",\"postalCode\":\"55402-281\",\"nameLineOneText\":\"SCHWEGMAN,
+      LUNDBERG, & WOESSNER, P.A.\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"1600
+      TCF TOWER\",\"addressLineTwoText\":\"121 SOUTH EIGHTH STREET\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"612-373-6900\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"TREVOR\",\"lastName\":\"LIND\",\"registrationNumber\":\"54785\",\"attorneyAddressBag\":[{\"cityName\":\"AUSTIN\",\"geographicRegionName\":\"TEXAS\",\"geographicRegionCode\":\"TX\",\"countryCode\":\"US\",\"postalCode\":\"78759\",\"nameLineOneText\":\"LEE
+      & HAYES\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"9011 MOUNTAIN
+      RIDGE DRIVE\",\"addressLineTwoText\":\"SUITE 150\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"512-456-5988\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"NATHAN\",\"lastName\":\"ELDER\",\"registrationNumber\":\"55150\",\"attorneyAddressBag\":[{\"cityName\":\"MINNEAPOLIS\",\"geographicRegionName\":\"MINNESOTA\",\"geographicRegionCode\":\"MN\",\"countryCode\":\"US\",\"postalCode\":\"55402\",\"nameLineOneText\":\"SCHWEGMAN,
+      LUNDBERG & WOESSNER, P.A.\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"1600
+      TCF TOWER\",\"addressLineTwoText\":\"121 SOUTH 8TH STREET\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"612-373-6900\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"THOMAS\",\"lastName\":\"OBERMARK\",\"registrationNumber\":\"55506\",\"attorneyAddressBag\":[{\"cityName\":\"MINNEAPOLIS\",\"geographicRegionName\":\"MINNESOTA\",\"geographicRegionCode\":\"MN\",\"countryCode\":\"US\",\"postalCode\":\"55402\",\"nameLineOneText\":\"SCHWEGMAN,
+      LUNDBERG & WOESSNER. P.A.\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"1600
+      TCF TOWER\",\"addressLineTwoText\":\"121 SOUTH 8TH STREET\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"612-373-6900\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"ZHENGNIAN\",\"lastName\":\"TANG\",\"registrationNumber\":\"55666\",\"attorneyAddressBag\":[{\"cityName\":\"MINNEAPOLIS\",\"geographicRegionName\":\"MINNESOTA\",\"geographicRegionCode\":\"MN\",\"countryCode\":\"US\",\"postalCode\":\"55402\",\"nameLineOneText\":\"SCHWEGMAN,
+      LUNDBERG & WOESSNER, P.A.\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"1600
+      TCF TOWER\",\"addressLineTwoText\":\"121 SOUTH 8TH STREET\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"612-373-6965\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"DANIEL\",\"lastName\":\"MERTES\",\"registrationNumber\":\"55842\",\"attorneyAddressBag\":[{\"cityName\":\"MINNEAPOLIS\",\"geographicRegionName\":\"MINNESOTA\",\"geographicRegionCode\":\"MN\",\"countryCode\":\"US\",\"postalCode\":\"55402\",\"nameLineOneText\":\"SCHWEGMAN
+      LUNDBERG & WOESSNER, P.A.\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"1600
+      TCF TOWER\",\"addressLineTwoText\":\"121 SOUTH EIGHTH ST.\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"612-359-3279\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"CHRISTOPHER\",\"lastName\":\"WOLFE\",\"registrationNumber\":\"56264\",\"attorneyAddressBag\":[{\"cityName\":\"MINNEAPOLIS\",\"geographicRegionName\":\"MINNESOTA\",\"geographicRegionCode\":\"MN\",\"countryCode\":\"US\",\"postalCode\":\"55402\",\"nameLineOneText\":\"SCHWEGMAN
+      LUNDBERG & WOESSNER, P.A.\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"121
+      SOUTH 8TH STREET\",\"addressLineTwoText\":\"SUITE 1600\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"30933006428\",\"telecomTypeCode\":\"FAX\"},{\"telecommunicationNumber\":\"612-373-6900\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"JOHN\",\"lastName\":\"MAGLUYAN\",\"registrationNumber\":\"56867\",\"attorneyAddressBag\":[{\"cityName\":\"IRVINE\",\"geographicRegionName\":\"CALIFORNIA\",\"geographicRegionCode\":\"CA\",\"countryCode\":\"US\",\"postalCode\":\"92612-710\",\"nameLineOneText\":\"MCDERMOTT
+      WILL & EMERY LLP\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"18191
+      VON KARMAN AVENUE\",\"addressLineTwoText\":\"SUITE 500\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"949-757-7124\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"AGENT\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"RONALD\",\"lastName\":\"GERBER\",\"registrationNumber\":\"57166\",\"attorneyAddressBag\":[{\"cityName\":\"MINNEAPOLIS\",\"geographicRegionName\":\"MINNESOTA\",\"geographicRegionCode\":\"MN\",\"countryCode\":\"US\",\"postalCode\":\"55402\",\"nameLineOneText\":\"SCHWEGMAN,
+      LUNDBERG, AND WOESSNER\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"1600
+      TCF TOWER\",\"addressLineTwoText\":\"121 SOUTH 8TH STREET\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"612-373-2198\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"AGENT\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"GARTH\",\"lastName\":\"VIVIER\",\"registrationNumber\":\"57313\",\"attorneyAddressBag\":[{\"cityName\":\"SAN
+      JOSE\",\"geographicRegionName\":\"CALIFORNIA\",\"geographicRegionCode\":\"CA\",\"countryCode\":\"US\",\"postalCode\":\"95113\",\"nameLineOneText\":\"SCHWEGMAN,
+      LUNDBERG & WOESSNER, P.A.\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"150
+      ALMADEN BOULEVARD\",\"addressLineTwoText\":\"SUITE 750\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"408-278-4041\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"ADINA\",\"lastName\":\"LOEWY\",\"registrationNumber\":\"57978\",\"attorneyAddressBag\":[{\"cityName\":\"FAIR
+      LAWN\",\"geographicRegionName\":\"NEW JERSEY\",\"geographicRegionCode\":\"NJ\",\"countryCode\":\"US\",\"postalCode\":\"07410\",\"countryName\":\"UNITED
+      STATES\",\"addressLineOneText\":\"4-50 LYNCREST AVENUE\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"201-794-1536\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"AGENT\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"GALL\",\"lastName\":\"GOTFRIED\",\"registrationNumber\":\"58333\",\"attorneyAddressBag\":[{\"cityName\":\"MINNEAPOLIS\",\"geographicRegionName\":\"NEW
+      YORK\",\"geographicRegionCode\":\"NY\",\"countryCode\":\"US\",\"postalCode\":\"55402\",\"nameLineOneText\":\"SCHWEGMAN
+      LUNDBERG WOESSNER LLP\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"121
+      SOUTH 8TH ST\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"917-475-6313\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"PAUL\",\"lastName\":\"URBANSKI\",\"registrationNumber\":\"58351\",\"attorneyAddressBag\":[{\"cityName\":\"MINNEAPOLIS\",\"geographicRegionName\":\"MINNESOTA\",\"geographicRegionCode\":\"MN\",\"countryCode\":\"US\",\"postalCode\":\"55402\",\"nameLineOneText\":\"SCHWEGMAN,
+      LUNDBERG & WOESSNER, P.A.\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"1600
+      TCF TOWER\",\"addressLineTwoText\":\"121 SOUTH 8TH STREET\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"612-373-6900\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"RAQUEL\",\"lastName\":\"PACHECO\",\"registrationNumber\":\"58401\",\"attorneyAddressBag\":[{\"cityName\":\"SAN
+      JOSE\",\"geographicRegionName\":\"CALIFORNIA\",\"geographicRegionCode\":\"CA\",\"countryCode\":\"US\",\"postalCode\":\"95113\",\"nameLineOneText\":\"SCHWEGMAN
+      LUNDBERG & WOESSNER, P.A.\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"150
+      ALMADEN BOULEVARD\",\"addressLineTwoText\":\"SUITE 750\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"612-373-6900\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"AGENT\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"ROBERT\",\"lastName\":\"HIRNING\",\"registrationNumber\":\"59215\",\"attorneyAddressBag\":[{\"cityName\":\"MINNEAPOLIS\",\"geographicRegionName\":\"MINNESOTA\",\"geographicRegionCode\":\"MN\",\"countryCode\":\"US\",\"postalCode\":\"55402\",\"nameLineOneText\":\"SCHWEGMAN,
+      LUNDBERG & WOESSNER\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"1600
+      TCF TOWER\",\"addressLineTwoText\":\"121 SOUTH 8TH STREET\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"612-371-2110\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"TIMOTHY\",\"lastName\":\"CHRISTMAN\",\"registrationNumber\":\"59481\",\"attorneyAddressBag\":[{\"cityName\":\"MINNEAPOLIS\",\"geographicRegionName\":\"MINNESOTA\",\"geographicRegionCode\":\"MN\",\"countryCode\":\"US\",\"postalCode\":\"55402\",\"nameLineOneText\":\"SCHWEGMAN,
+      LUNDBERG & WOESSNER, P.A.\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"1600
+      TCF TOWER\",\"addressLineTwoText\":\"121 SOUTH EIGHTH STREET\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"612-359-3274\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"DOUGLAS\",\"lastName\":\"PORTNOW\",\"registrationNumber\":\"59660\",\"attorneyAddressBag\":[{\"cityName\":\"SAN
+      JOSE\",\"geographicRegionName\":\"CALIFORNIA\",\"geographicRegionCode\":\"CA\",\"countryCode\":\"US\",\"postalCode\":\"95113\",\"nameLineOneText\":\"SCHWEGMAN,
+      LUNDBERG, WOESSNER\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"150
+      ALMADEN BOULEVARD, SUITE 750\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"408-660-2979\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"GREGORY\",\"lastName\":\"GRACE\",\"registrationNumber\":\"59733\",\"attorneyAddressBag\":[{\"cityName\":\"MINNEAPOLIS\",\"geographicRegionName\":\"MINNESOTA\",\"geographicRegionCode\":\"MN\",\"countryCode\":\"US\",\"postalCode\":\"55402\",\"nameLineOneText\":\"SCHWEGMAN
+      LUNDBERG & WOESSNER\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"121
+      SOUTH 8TH STREET\",\"addressLineTwoText\":\"SUITE1600\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"612-373-6900\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"JOSE\",\"lastName\":\"NUNEZ\",\"registrationNumber\":\"59979\",\"attorneyAddressBag\":[{\"cityName\":\"SAN
+      JOSE\",\"geographicRegionName\":\"CALIFORNIA\",\"geographicRegionCode\":\"CA\",\"countryCode\":\"US\",\"postalCode\":\"95113\",\"nameLineOneText\":\"SCHWEGMAN
+      LUNDBERG & WOESSNER P.A.\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"150
+      ALMADEN BOULEVARD\",\"addressLineTwoText\":\"SUITE 750\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"212-336-8001\",\"telecomTypeCode\":\"FAX\"},{\"telecommunicationNumber\":\"612-373-6900\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"ADAM\",\"lastName\":\"KIEDROWSKI\",\"registrationNumber\":\"60296\",\"attorneyAddressBag\":[{\"cityName\":\"MINNEAPOLIS\",\"geographicRegionName\":\"MINNESOTA\",\"geographicRegionCode\":\"MN\",\"countryCode\":\"US\",\"postalCode\":\"55402\",\"nameLineOneText\":\"SCHWEGMAN
+      LUNDBERG & WOESSNER\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"121
+      SOUTH 8TH STREET\",\"addressLineTwoText\":\"SUITE 1600\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"612-373-6900\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"STEPHEN\",\"lastName\":\"KOMAREC\",\"registrationNumber\":\"60817\",\"attorneyAddressBag\":[{\"cityName\":\"MINNEAPOLIS\",\"geographicRegionName\":\"MINNESOTA\",\"geographicRegionCode\":\"MN\",\"countryCode\":\"US\",\"postalCode\":\"55402\",\"nameLineOneText\":\"SCHWEGMAN,
+      LUNDBERG & WOESSNER, P.A.\",\"nameLineTwoText\":\"1600 TCF TOWER\",\"countryName\":\"UNITED
+      STATES\",\"addressLineOneText\":\"121 SOUTH EIGHTH STREET\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"612--37-3-6927\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"EDWARD\",\"lastName\":\"SANDOR\",\"registrationNumber\":\"60826\",\"attorneyAddressBag\":[{\"cityName\":\"MINNEAPOLIS\",\"geographicRegionName\":\"MINNESOTA\",\"geographicRegionCode\":\"MN\",\"countryCode\":\"US\",\"postalCode\":\"55402\",\"nameLineOneText\":\"SCHWEGMAN,
+      LUNDBERG & WOESSNER, P.A.\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"1600
+      TCF TOWER\",\"addressLineTwoText\":\"121 SOUTH 8TH STREET\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"612-373-6900\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"JOHN\",\"lastName\":\"FISCHER\",\"registrationNumber\":\"60900\",\"attorneyAddressBag\":[{\"cityName\":\"MINNEAPOLIS\",\"geographicRegionName\":\"MINNESOTA\",\"geographicRegionCode\":\"MN\",\"countryCode\":\"US\",\"postalCode\":\"55402\",\"nameLineOneText\":\"SCHWEGMAN,
+      LUNDBERG & WOESSNER, P.A.\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"1600
+      TCF TOWER\",\"addressLineTwoText\":\"121 SOUTH 8TH STREET\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"612-373-6900\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"NATHAN\",\"lastName\":\"WITZANY\",\"registrationNumber\":\"60948\",\"attorneyAddressBag\":[{\"cityName\":\"MINNEAPOLIS\",\"geographicRegionName\":\"MINNESOTA\",\"geographicRegionCode\":\"MN\",\"countryCode\":\"US\",\"postalCode\":\"55402\",\"nameLineOneText\":\"SCHWEGMAN
+      LUNDBERG & WOESSNER\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"1600
+      TCF TOWER\",\"addressLineTwoText\":\"121 SOUTH EIGHTH STREET\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"612-371-2184\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"JOSEPH\",\"lastName\":\"WANG\",\"registrationNumber\":\"61123\",\"attorneyAddressBag\":[{\"cityName\":\"MINNEAPOLIS\",\"geographicRegionName\":\"MINNESOTA\",\"geographicRegionCode\":\"MN\",\"countryCode\":\"US\",\"postalCode\":\"55402\",\"nameLineOneText\":\"SCHWEGMAN,
+      LUNDBERG & WOESSNER, P.A.\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"1600
+      TCF TOWER\",\"addressLineTwoText\":\"121 SOUTH 8TH STREET\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"415.362.2928\",\"telecomTypeCode\":\"FAX\"},{\"telecommunicationNumber\":\"612-373-6900\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"DAVID\",\"lastName\":\"BUCK\",\"registrationNumber\":\"62649\",\"attorneyAddressBag\":[{\"cityName\":\"MINNEAPOLIS\",\"geographicRegionName\":\"MINNESOTA\",\"geographicRegionCode\":\"MN\",\"countryCode\":\"US\",\"postalCode\":\"55402\",\"nameLineOneText\":\"SCHWEGMAN
+      LUNDBERG & WOESSNER\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"121
+      SOUTH 8TH STREET\",\"addressLineTwoText\":\"SUITE 1600\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"612-373-6900\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"JASON\",\"lastName\":\"FRIDAY\",\"registrationNumber\":\"62650\",\"attorneyAddressBag\":[{\"cityName\":\"MORRISVILLE\",\"geographicRegionName\":\"NORTH
+      CAROLINA\",\"geographicRegionCode\":\"NC\",\"countryCode\":\"US\",\"postalCode\":\"27560\",\"nameLineOneText\":\"LENOVO
+      US\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"1009 THINK PLACE\",\"addressLineTwoText\":\"BLDG
+      1, #4B8\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"919-284-2747\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"KIRT\",\"lastName\":\"IVERSON\",\"registrationNumber\":\"62660\",\"attorneyAddressBag\":[{\"cityName\":\"SAN
+      JOSE\",\"geographicRegionName\":\"CALIFORNIA\",\"geographicRegionCode\":\"CA\",\"countryCode\":\"US\",\"postalCode\":\"95113\",\"nameLineOneText\":\"SCHWEGMAN,
+      LUNDBERG & WOESSNER, P.A.\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"150
+      ALMADEN BOULEVARD, SUITE 750\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"408-660-2016\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"GREGORY\",\"lastName\":\"STARK\",\"registrationNumber\":\"62731\",\"attorneyAddressBag\":[{\"cityName\":\"MINNEAPOLIS\",\"geographicRegionName\":\"MINNESOTA\",\"geographicRegionCode\":\"MN\",\"countryCode\":\"US\",\"postalCode\":\"55402\",\"nameLineOneText\":\"SCHWEGMAN,
+      LUNDBERG & WOESSNER, P.A.\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"1600
+      TCF TOWER\",\"addressLineTwoText\":\"121 SOUTH EIGHTH STREET\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"407-841-2343\",\"telecomTypeCode\":\"FAX\"},{\"telecommunicationNumber\":\"612-373-6904\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"LAURIE\",\"lastName\":\"YOUNG\",\"registrationNumber\":\"63081\",\"attorneyAddressBag\":[{\"cityName\":\"MINNEAPOLIS\",\"geographicRegionName\":\"MINNESOTA\",\"geographicRegionCode\":\"MN\",\"countryCode\":\"US\",\"postalCode\":\"55402\",\"nameLineOneText\":\"SCHWEGMAN,
+      LUNDBERG AND WOESSNER\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"1600
+      TCF TOWER\",\"addressLineTwoText\":\"121 SOUTH EIGHTH STREET\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"612-568-6163\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"JAMES\",\"lastName\":\"HALLENBECK\",\"registrationNumber\":\"63561\",\"attorneyAddressBag\":[{\"cityName\":\"MINNEAPOLIS\",\"geographicRegionName\":\"MINNESOTA\",\"geographicRegionCode\":\"MN\",\"countryCode\":\"US\",\"postalCode\":\"55402\",\"nameLineOneText\":\"SCHWEGMAN,
+      LUNDBERG & WOESSNER, P.A.\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"1600
+      TCF TOWER, 121 SOUTH EIGHTH STREET\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"612-373-6938\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"NICHOLAS\",\"lastName\":\"LANZATELLA\",\"registrationNumber\":\"63803\",\"attorneyAddressBag\":[{\"cityName\":\"MINNEAPOLIS\",\"geographicRegionName\":\"MINNESOTA\",\"geographicRegionCode\":\"MN\",\"countryCode\":\"US\",\"postalCode\":\"55402\",\"nameLineOneText\":\"SCHWEGMAN,
+      LUNDBERG & WOESSNER\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"1600
+      TCF TOWER\",\"addressLineTwoText\":\"121 SOUTH EIGHTH STREET\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"651-349-9580\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"ERIC\",\"lastName\":\"ANDERSLAND\",\"registrationNumber\":\"63890\",\"attorneyAddressBag\":[{\"cityName\":\"MINNEAPOLIS\",\"geographicRegionName\":\"MINNESOTA\",\"geographicRegionCode\":\"MN\",\"countryCode\":\"US\",\"postalCode\":\"55402\",\"nameLineOneText\":\"SCHWEGMAN
+      LUNDBERG & WOESSNER, P.A.\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"1600
+      TCF TOWER\",\"addressLineTwoText\":\"121 SOUTH 8TH ST.\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"612-371-2128\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"JESSICA\",\"lastName\":\"MCDONALD\",\"registrationNumber\":\"64438\",\"attorneyAddressBag\":[{\"cityName\":\"UNIONDALE\",\"geographicRegionName\":\"NEW
+      YORK\",\"geographicRegionCode\":\"NY\",\"countryCode\":\"US\",\"postalCode\":\"11556\",\"nameLineOneText\":\"LOVE
+      LAW FIRM, PLLC\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"626
+      RXR PLAZA, SUITE 624\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"516-697-4828\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"BRETT\",\"lastName\":\"KLEIN\",\"registrationNumber\":\"64448\",\"attorneyAddressBag\":[{\"cityName\":\"MINNEAPOLIS\",\"geographicRegionName\":\"MINNESOTA\",\"geographicRegionCode\":\"MN\",\"countryCode\":\"US\",\"postalCode\":\"55402\",\"nameLineOneText\":\"WINTHROP
+      & WEINSTINE, P.A.\",\"nameLineTwoText\":\"CAPELLA TOWER, SUITE 3500\",\"countryName\":\"UNITED
+      STATES\",\"addressLineOneText\":\"225 S. 6TH STREET\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"612-604-6392\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"TRIET\",\"lastName\":\"NGUYEN\",\"registrationNumber\":\"64790\",\"attorneyAddressBag\":[{\"cityName\":\"SAN
+      JOSE\",\"geographicRegionName\":\"CALIFORNIA\",\"geographicRegionCode\":\"CA\",\"countryCode\":\"US\",\"postalCode\":\"95113\",\"nameLineOneText\":\"SCHWEGMAN
+      LUNDBERG & WOESSNER\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"111
+      WEST SAINT JOHN STREET, SUITE 1100\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"408-278-4040\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"ADEEL\",\"lastName\":\"HAROON\",\"registrationNumber\":\"64938\",\"attorneyAddressBag\":[{\"cityName\":\"MINNEAPOLIS\",\"geographicRegionName\":\"MINNESOTA\",\"geographicRegionCode\":\"MN\",\"countryCode\":\"US\",\"postalCode\":\"55402\",\"nameLineOneText\":\"1600
+      TCF TOWER\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"121 SOUTH
+      EIGHTH STREET\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"612-349-9597\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"ANUP\",\"lastName\":\"SURESH\",\"registrationNumber\":\"65338\",\"attorneyAddressBag\":[{\"cityName\":\"SAN
+      JOSE\",\"geographicRegionName\":\"CALIFORNIA\",\"geographicRegionCode\":\"CA\",\"countryCode\":\"US\",\"postalCode\":\"95113\",\"nameLineOneText\":\"SCHWEGMAN
+      LUNDBERG & WOESSNER, P.A.\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"111
+      WEST SAINT JOHN STREET, SUITE 1100\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"408-660-2977\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"NATHAN\",\"lastName\":\"ELLEFSON\",\"registrationNumber\":\"65481\",\"attorneyAddressBag\":[{\"cityName\":\"MINNEAPOLIS\",\"geographicRegionName\":\"MINNESOTA\",\"geographicRegionCode\":\"MN\",\"countryCode\":\"US\",\"postalCode\":\"55402\",\"nameLineOneText\":\"SCHWEGMAN
+      LUNDBERG & WOESSNER\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"121
+      SOUTH 8TH STREET\",\"addressLineTwoText\":\"SUITE 1600\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"612-373-6900\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"PHILIP\",\"lastName\":\"WEINSTEIN\",\"registrationNumber\":\"65832\",\"attorneyAddressBag\":[{\"cityName\":\"APEX\",\"geographicRegionName\":\"NORTH
+      CAROLINA\",\"geographicRegionCode\":\"NC\",\"countryCode\":\"US\",\"postalCode\":\"27502\",\"countryName\":\"UNITED
+      STATES\",\"addressLineOneText\":\"1400 WATERFORD GREEN DRIVE\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"919-264-0379\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"DOMENICO\",\"lastName\":\"IPPOLITO\",\"registrationNumber\":\"66058\",\"attorneyAddressBag\":[{\"cityName\":\"SAN
+      JOSE\",\"geographicRegionName\":\"CALIFORNIA\",\"geographicRegionCode\":\"CA\",\"countryCode\":\"US\",\"postalCode\":\"95113\",\"nameLineOneText\":\"SCHWEGMAN
+      LUNDBERG & WOESSNER LLP\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"150
+      ALMADEN BLVD.\",\"addressLineTwoText\":\"SUITE 750\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"408-278-4040\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"DENIS\",\"lastName\":\"STOLYAROV\",\"registrationNumber\":\"66404\",\"attorneyAddressBag\":[{\"cityName\":\"LIBERTYVILLE\",\"geographicRegionName\":\"ILLINOIS\",\"geographicRegionCode\":\"IL\",\"countryCode\":\"US\",\"postalCode\":\"60048\",\"nameLineOneText\":\"MOTOROLA
+      INC.\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"600 NORTH
+      US HIGHWAY 45\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"847-523-8775\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"AGENT\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"RIGEL\",\"lastName\":\"MENARD\",\"registrationNumber\":\"66520\",\"attorneyAddressBag\":[{\"cityName\":\"MINNEAPOLIS\",\"geographicRegionName\":\"MINNESOTA\",\"geographicRegionCode\":\"MN\",\"countryCode\":\"US\",\"postalCode\":\"55402\",\"nameLineOneText\":\"SCHWEGMAN,
+      LUNDBERG & WOESSNER, P.A.\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"1600
+      TCF TOWER\",\"addressLineTwoText\":\"121 SOUTH 8TH STREET\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"612-371-2136\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"SABINE\",\"lastName\":\"VOLKMER
+      WARD\",\"registrationNumber\":\"66559\",\"attorneyAddressBag\":[{\"cityName\":\"MINNEAPOLIS\",\"geographicRegionName\":\"MINNESOTA\",\"geographicRegionCode\":\"MN\",\"countryCode\":\"US\",\"postalCode\":\"55402\",\"nameLineOneText\":\"SCHWEGMAN
+      LUNDBERG & WOESSNER LLP\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"121
+      SOUTH 8TH STREET\",\"addressLineTwoText\":\"SUITE 1600\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"612-373-6900\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"TIMOTHY\",\"lastName\":\"GRATHWOL\",\"registrationNumber\":\"66685\",\"attorneyAddressBag\":[{\"cityName\":\"MINNEAPOLIS\",\"geographicRegionName\":\"MINNESOTA\",\"geographicRegionCode\":\"MN\",\"countryCode\":\"US\",\"postalCode\":\"55402\",\"nameLineOneText\":\"SCHWEGMAN
+      LUNDBERG & WOESSNER\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"121
+      SOUTH 8TH STREET\",\"addressLineTwoText\":\"SUITE 1600\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"612-373-6900\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"JUSTIN\",\"lastName\":\"MCCARTHY\",\"registrationNumber\":\"67101\",\"attorneyAddressBag\":[{\"cityName\":\"MINNEAPOLIS\",\"geographicRegionName\":\"MINNESOTA\",\"geographicRegionCode\":\"MN\",\"countryCode\":\"US\",\"postalCode\":\"55402\",\"nameLineOneText\":\"SCHWEGMAN,
+      LUNDBERG AND WOESSNER LLP\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"1600
+      TCF TOWER\",\"addressLineTwoText\":\"121 SOUTH EIGHTH STREET\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"612--35-9-3260\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"GARRETT\",\"lastName\":\"HALL\",\"registrationNumber\":\"67888\",\"attorneyAddressBag\":[{\"cityName\":\"SAN
+      JOSE\",\"geographicRegionName\":\"CALIFORNIA\",\"geographicRegionCode\":\"CA\",\"countryCode\":\"US\",\"postalCode\":\"95113\",\"nameLineOneText\":\"SCHWEGMAN,
+      LUNDBERG, & WOESSNER\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"150
+      ALMADEN BOULEVARD\",\"addressLineTwoText\":\"SUITE 750\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"408-679-0850\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"PIERS\",\"lastName\":\"BLEWETT\",\"registrationNumber\":\"68464\",\"attorneyAddressBag\":[{\"cityName\":\"SAN
+      JOSE\",\"geographicRegionName\":\"CALIFORNIA\",\"geographicRegionCode\":\"CA\",\"countryCode\":\"US\",\"postalCode\":\"95113\",\"nameLineOneText\":\"SCHWEGMAN
+      LUNDBERG WOESSNER P.A.\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"111
+      WEST SAINT JOHN STREET\",\"addressLineTwoText\":\"SUITE 1100\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"404-538-9552\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"KEITH\",\"lastName\":\"LIM\",\"registrationNumber\":\"68912\",\"attorneyAddressBag\":[{\"cityName\":\"GANG
+      NAM-GU SEOUL\",\"postalCode\":\"135-911\",\"nameLineOneText\":\"AJV KIM CHANG
+      & LEE LAW OFFICE\",\"addressLineOneText\":\"6TH FLOOR, HUBBAHUBBA BLDG\",\"addressLineTwoText\":\"648
+      YEOK SAM-DONG\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"822-301-6
+      5040\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"AGENT\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"ALEXIS\",\"lastName\":\"LIISTRO\",\"registrationNumber\":\"68948\",\"attorneyAddressBag\":[{\"cityName\":\"SEATTLE\",\"geographicRegionName\":\"WASHINGTON\",\"geographicRegionCode\":\"WA\",\"countryCode\":\"US\",\"postalCode\":\"98101-304\",\"nameLineOneText\":\"DAVIS
+      WRIGHT TREMAINE LLP\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"1201
+      THIRD AVENUE\",\"addressLineTwoText\":\"SUITE 2200\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"206-757-8025\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"JOSEPH\",\"lastName\":\"WILLIAMS\",\"registrationNumber\":\"69054\",\"attorneyAddressBag\":[{\"cityName\":\"MINNEAPOLIS\",\"geographicRegionName\":\"MINNESOTA\",\"geographicRegionCode\":\"MN\",\"countryCode\":\"US\",\"postalCode\":\"55402\",\"nameLineOneText\":\"SCHWEGMAN
+      LUNDBERG & WOESSNER\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"1600
+      TCF TOWER\",\"addressLineTwoText\":\"121 SOUTH 8TH STREET\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"612-373-6942\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"JEFFREY\",\"lastName\":\"COBIA\",\"registrationNumber\":\"69466\",\"attorneyAddressBag\":[{\"cityName\":\"MINNEAPOLIS\",\"geographicRegionName\":\"MINNESOTA\",\"geographicRegionCode\":\"MN\",\"countryCode\":\"US\",\"postalCode\":\"55402\",\"nameLineOneText\":\"SCHWEGMAN
+      LUNDBERG & WOESSNER\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"121
+      SOUTH 8TH STREET\",\"addressLineTwoText\":\"SUITE 1600\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"612-373-6900\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"CHRISTOPHER\",\"lastName\":\"PALMISANO\",\"registrationNumber\":\"69483\",\"attorneyAddressBag\":[{\"cityName\":\"MINNEAPOLIS\",\"geographicRegionName\":\"MINNESOTA\",\"geographicRegionCode\":\"MN\",\"countryCode\":\"US\",\"postalCode\":\"55402\",\"nameLineOneText\":\"SCHWEGMAN,
+      LUNDBERG AND WOESSNER, P.A.\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"121
+      SOUTH EIGHT STREET\",\"addressLineTwoText\":\"1600 TCF TOWER\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"612-373-6926\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"NATHAN\",\"lastName\":\"GALLUS\",\"registrationNumber\":\"69860\",\"attorneyAddressBag\":[{\"cityName\":\"MINNEAPOLIS\",\"geographicRegionName\":\"MINNESOTA\",\"geographicRegionCode\":\"MN\",\"countryCode\":\"US\",\"postalCode\":\"55402\",\"nameLineOneText\":\"SCHWEGMAN,
+      LUNDBERG, AND WOESSNER\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"121
+      SOUTH EIGHTH STREET\",\"addressLineTwoText\":\"1600\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"952-200-7132\",\"telecomTypeCode\":\"TEL\"}],\"middleName\":\"J.\",\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"JACOBUS\",\"lastName\":\"LOOCK\",\"registrationNumber\":\"70140\",\"attorneyAddressBag\":[{\"cityName\":\"AUSTIN\",\"geographicRegionName\":\"TEXAS\",\"geographicRegionCode\":\"TX\",\"countryCode\":\"US\",\"postalCode\":\"78759\",\"nameLineOneText\":\"SCHWEGMAN,
+      LUNDBERG & WOESSNER\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"8911
+      CAPITAL OF TEXAS HIGHWAY\",\"addressLineTwoText\":\"SUITE 4150\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"512-492-6410\",\"telecomTypeCode\":\"TEL\"}],\"middleName\":\"A\",\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"WILLIAM\",\"lastName\":\"KALWEIT\",\"registrationNumber\":\"70481\",\"attorneyAddressBag\":[{\"cityName\":\"MINNEAPOLIS\",\"geographicRegionName\":\"MINNESOTA\",\"geographicRegionCode\":\"MN\",\"countryCode\":\"US\",\"postalCode\":\"55402\",\"nameLineOneText\":\"SCHWEGMAN
+      LUNDBERG & WOESSNER, P.A.\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"1600
+      TCF TOWER, 121 SOUTH 8TH STREET\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"612-359-3266\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"RICARDO\",\"lastName\":\"YEPEZ\",\"registrationNumber\":\"70950\",\"attorneyAddressBag\":[{\"cityName\":\"MINNEAPOLIS\",\"geographicRegionName\":\"MINNESOTA\",\"geographicRegionCode\":\"MN\",\"countryCode\":\"US\",\"postalCode\":\"55402\",\"nameLineOneText\":\"SCHWEGMAN
+      LUNDBERG & WOESSNER, P.A.\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"1600
+      TCF TOWER\",\"addressLineTwoText\":\"121 SOUTH EIGHTH STREET\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"612-373-6900\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"ROBERT\",\"lastName\":\"WITTE\",\"registrationNumber\":\"71056\",\"attorneyAddressBag\":[{\"cityName\":\"PHOENIX\",\"geographicRegionName\":\"ARIZONA\",\"geographicRegionCode\":\"AZ\",\"countryCode\":\"US\",\"postalCode\":\"85044-2002\",\"countryName\":\"UNITED
+      STATES\",\"addressLineOneText\":\"12205 S. SHOSHONI DRIVE\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"847-854-1421\",\"telecomTypeCode\":\"TEL\"}],\"middleName\":\"S.\",\"registeredPractitionerCategory\":\"AGENT\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"LINH-HAN
+      HOANG\",\"lastName\":\"NGUYEN\",\"registrationNumber\":\"71874\",\"attorneyAddressBag\":[{\"cityName\":\"SAN
+      JOSE\",\"geographicRegionName\":\"CALIFORNIA\",\"geographicRegionCode\":\"CA\",\"countryCode\":\"US\",\"postalCode\":\"95113\",\"nameLineOneText\":\"SCHWEGMAN
+      LUNDBERG & WOESSNER PA\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"111
+      WEST SAINT JOHN STREET, SUITE 1100\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"612-373-6900\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"ARIS\",\"lastName\":\"GREGORIAN\",\"registrationNumber\":\"72357\",\"attorneyAddressBag\":[{\"cityName\":\"SAN
+      JOSE\",\"geographicRegionName\":\"CALIFORNIA\",\"geographicRegionCode\":\"CA\",\"countryCode\":\"US\",\"postalCode\":\"95113\",\"nameLineOneText\":\"SCHWEGMAN
+      LUNDBERG & WOESSNER, P.A.\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"150
+      ALMADEN BOULEVARD\",\"addressLineTwoText\":\"SUITE 750\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"612-373-6900\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"JENNIFER\",\"lastName\":\"BLOUNT\",\"registrationNumber\":\"72559\",\"attorneyAddressBag\":[{\"cityName\":\"BOSTON\",\"geographicRegionName\":\"MASSACHUSETTS\",\"geographicRegionCode\":\"MA\",\"countryCode\":\"US\",\"postalCode\":\"02210\",\"nameLineOneText\":\"FOLEY
+      HOAG\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"155 SEAPORT
+      BOULEVARD\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"617-832-1216\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"LUCAS\",\"lastName\":\"HJELLE\",\"registrationNumber\":\"72945\",\"attorneyAddressBag\":[{\"cityName\":\"MINNEAPOLIS\",\"geographicRegionName\":\"MINNESOTA\",\"geographicRegionCode\":\"MN\",\"countryCode\":\"US\",\"postalCode\":\"55402-281\",\"nameLineOneText\":\"SCHWEGMAN,
+      LUNDBERG & WOESSNER\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"1600
+      TCF TOWER\",\"addressLineTwoText\":\"121 SOUTH EIGHTH STREET\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"612-359-3269\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"JUSTIN\",\"lastName\":\"WANG\",\"registrationNumber\":\"73344\",\"attorneyAddressBag\":[{\"cityName\":\"HOUSTON\",\"geographicRegionName\":\"TEXAS\",\"geographicRegionCode\":\"TX\",\"countryCode\":\"US\",\"postalCode\":\"77082\",\"countryName\":\"UNITED
+      STATES\",\"addressLineOneText\":\"3023 ROYAL OAKS GROVE\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"832-868-8869\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"ERIC\",\"lastName\":\"BACHINSKI\",\"registrationNumber\":\"73684\",\"attorneyAddressBag\":[{\"cityName\":\"MINNEAPOLIS\",\"geographicRegionName\":\"MINNESOTA\",\"geographicRegionCode\":\"MN\",\"countryCode\":\"US\",\"postalCode\":\"55402\",\"nameLineOneText\":\"SCHWEGMAN,
+      LUNDBERG & WOESSNER, P.A.\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"1600
+      TCF TOWER\",\"addressLineTwoText\":\"121 SOUTH EIGHTH STREET\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"612-371-2171\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"ANTHONY\",\"lastName\":\"WILKIE\",\"registrationNumber\":\"74294\",\"attorneyAddressBag\":[{\"cityName\":\"MINNEAPOLIS\",\"geographicRegionName\":\"MINNESOTA\",\"geographicRegionCode\":\"MN\",\"countryCode\":\"US\",\"postalCode\":\"55402\",\"nameLineOneText\":\"SCHWEGMAN
+      LUNDBERG & WOESSNER\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"1600
+      TCF TOWER\",\"addressLineTwoText\":\"121 SOUTH 8TH STREET\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"952-221-3533\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"RYAN\",\"lastName\":\"CONNELL\",\"registrationNumber\":\"74611\",\"attorneyAddressBag\":[{\"cityName\":\"MINNEAPOLIS\",\"geographicRegionName\":\"MINNESOTA\",\"geographicRegionCode\":\"MN\",\"countryCode\":\"US\",\"postalCode\":\"55402\",\"nameLineOneText\":\"SCHWEGMAN
+      LUNDBERG & WOESSNER, P.A.\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"121
+      SOUTH 8TH STREET\",\"addressLineTwoText\":\"SUITE 1600\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"612-373-6900\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"DAN\",\"lastName\":\"LI\",\"registrationNumber\":\"75610\",\"attorneyAddressBag\":[{\"cityName\":\"LEXINGTON\",\"geographicRegionName\":\"MASSACHUSETTS\",\"geographicRegionCode\":\"MA\",\"countryCode\":\"US\",\"postalCode\":\"02420\",\"nameLineOneText\":\"SCHWEGMAN,
+      LUNDBERG & WOESSNER, P.A.\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"10
+      PRESTON ROAD\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"612-373-6945\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"MATTHEW\",\"lastName\":\"NORWOOD\",\"registrationNumber\":\"75730\",\"attorneyAddressBag\":[{\"cityName\":\"MINNEAPOLIS\",\"geographicRegionName\":\"MINNESOTA\",\"geographicRegionCode\":\"MN\",\"countryCode\":\"US\",\"postalCode\":\"55402-281\",\"nameLineOneText\":\"SCHWEGMAN
+      LUNDBERG & WOESSNER, P.A.\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"1600
+      TCF TOWER\",\"addressLineTwoText\":\"121 SOUTH EIGHTH STREET\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"612-373-6900\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"LEA\",\"lastName\":\"WESTMAN\",\"registrationNumber\":\"76380\",\"attorneyAddressBag\":[{\"cityName\":\"MINNEAPOLIS\",\"geographicRegionName\":\"MINNESOTA\",\"geographicRegionCode\":\"MN\",\"countryCode\":\"US\",\"postalCode\":\"55402\",\"nameLineOneText\":\"SCHWEGMAN,
+      LUNCBERG & WOESSNER\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"121
+      S 8TH ST\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"612-371-2115\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"MEGHA\",\"lastName\":\"ESWARAN\",\"registrationNumber\":\"76406\",\"attorneyAddressBag\":[{\"cityName\":\"SAN
+      JOSE\",\"geographicRegionName\":\"CALIFORNIA\",\"geographicRegionCode\":\"CA\",\"countryCode\":\"US\",\"postalCode\":\"95113\",\"countryName\":\"UNITED
+      STATES\",\"addressLineOneText\":\"111 WEST SAINT JOHN STREET\",\"addressLineTwoText\":\"SUITE
+      1100\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"408-278-4040\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"AGENT\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"PHILIP\",\"lastName\":\"ALFORD\",\"registrationNumber\":\"76612\",\"attorneyAddressBag\":[{\"cityName\":\"MINNEAPOLIS\",\"geographicRegionName\":\"MINNESOTA\",\"geographicRegionCode\":\"MN\",\"countryCode\":\"US\",\"postalCode\":\"55402\",\"nameLineOneText\":\"SCHWEGMAN
+      LUNDBERG & WOESSNER, P.A.\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"121
+      SOUTH 8TH STREET\",\"addressLineTwoText\":\"SUITE 1600\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"612-373-6900\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"YUHAO\",\"lastName\":\"LIANG\",\"registrationNumber\":\"77346\",\"attorneyAddressBag\":[{\"cityName\":\"SAN
+      JOSE\",\"geographicRegionName\":\"CALIFORNIA\",\"geographicRegionCode\":\"CA\",\"countryCode\":\"US\",\"postalCode\":\"95113\",\"nameLineOneText\":\"SCHWEGMAN
+      LUNDBERG & WOESSNER, P.A.\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"111
+      W SAINT JOHN ST\",\"addressLineTwoText\":\"STE 1100\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"408-660-2001\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"ANTHONY\",\"lastName\":\"SALMO\",\"registrationNumber\":\"77794\",\"attorneyAddressBag\":[{\"cityName\":\"MINNEAPOLIS\",\"geographicRegionName\":\"MINNESOTA\",\"geographicRegionCode\":\"MN\",\"countryCode\":\"US\",\"postalCode\":\"55402\",\"nameLineOneText\":\"SCHWEGMAN,
+      LUNDBERG, AND WOESSNER\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"1600
+      TCF TOWER\",\"addressLineTwoText\":\"121 SOUTH 8TH ST.\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"612-387-3538\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"CAROLYN\",\"lastName\":\"KEARNEY\",\"registrationNumber\":\"78476\",\"attorneyAddressBag\":[{\"cityName\":\"SAN
+      FRANCISCO\",\"geographicRegionName\":\"CALIFORNIA\",\"geographicRegionCode\":\"CA\",\"countryCode\":\"US\",\"postalCode\":\"94107\",\"nameLineOneText\":\"SCHWEGMAN,
+      LUNDBERG & WOESSNER, P.A.\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"1796B
+      18TH ST\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"732-379-8334\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"AGENT\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"JEROME\",\"lastName\":\"SUNDIN\",\"registrationNumber\":\"78632\",\"attorneyAddressBag\":[{\"cityName\":\"MINNEAPOLIS\",\"geographicRegionName\":\"MINNESOTA\",\"geographicRegionCode\":\"MN\",\"countryCode\":\"US\",\"postalCode\":\"55402\",\"nameLineOneText\":\"SCHWEGMAN,
+      LUNDBERG & WOESSNER\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"121
+      SOUTH 8TH STREET\",\"addressLineTwoText\":\"1600 TCF TOWER\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"612-359-3261\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"VANESSA\",\"lastName\":\"PESSOA\",\"registrationNumber\":\"800066\",\"attorneyAddressBag\":[{\"cityName\":\"MINNEAPOLIS\",\"geographicRegionName\":\"MINNESOTA\",\"geographicRegionCode\":\"MN\",\"countryCode\":\"US\",\"postalCode\":\"55402\",\"nameLineOneText\":\"SCHWEGMAN,
+      LUNDBERG, WOESSNER PA\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"121
+      SOUTH EIGHTH STREET\",\"addressLineTwoText\":\"SUITE 1600\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"612-373-6900\",\"telecomTypeCode\":\"TEL\"}],\"middleName\":\"SAMPAIO\",\"registeredPractitionerCategory\":\"LTDREC\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"ERIC\",\"lastName\":\"PHILLIPS\",\"registrationNumber\":\"80798\",\"attorneyAddressBag\":[{\"cityName\":\"MINNEAPOLIS\",\"geographicRegionName\":\"MINNESOTA\",\"geographicRegionCode\":\"MN\",\"countryCode\":\"US\",\"postalCode\":\"55402\",\"nameLineOneText\":\"SCHWEGMAN,
+      LUNDBERG, AND WOESSNER\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"121
+      SOUTH 8TH ST.\",\"addressLineTwoText\":\"SUITE 1600\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"612-371-2180\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"MARK\",\"lastName\":\"KALLEVIG\",\"registrationNumber\":\"81598\",\"attorneyAddressBag\":[{\"cityName\":\"MINNEAPOLIS\",\"geographicRegionName\":\"MINNESOTA\",\"geographicRegionCode\":\"MN\",\"countryCode\":\"US\",\"postalCode\":\"55402\",\"nameLineOneText\":\"SCHWEGMAN,
+      LUNDBERG & WOESSNER, P.A.\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"1600
+      TCF TOWER\",\"addressLineTwoText\":\"121 SOUTH 8TH STREET\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"320-630-4356\",\"telecomTypeCode\":\"TEL\"}],\"middleName\":\"D.\",\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"JOHN\",\"lastName\":\"SWART\",\"registrationNumber\":\"82094\",\"attorneyAddressBag\":[{\"cityName\":\"MINNEAPOLIS\",\"geographicRegionName\":\"MINNESOTA\",\"geographicRegionCode\":\"MN\",\"countryCode\":\"US\",\"postalCode\":\"55402\",\"nameLineOneText\":\"SCHWEGMAN
+      LUNDBERG WOESSNER\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"121
+      8TH STREET S\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"612-371-2147\",\"telecomTypeCode\":\"TEL\"}],\"middleName\":\"P.\",\"registeredPractitionerCategory\":\"ATTNY\"},{\"activeIndicator\":\"ACTIVE\",\"firstName\":\"JINGYUAN\",\"lastName\":\"NAN\",\"registrationNumber\":\"L1308\",\"attorneyAddressBag\":[{\"cityName\":\"SAN
+      JOSE\",\"geographicRegionName\":\"CALIFORNIA\",\"geographicRegionCode\":\"CA\",\"countryCode\":\"US\",\"postalCode\":\"95113\",\"nameLineOneText\":\"SCHWEGMAN
+      LUNDBERG & WOESSNER PA\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"111
+      WEST SAINT JOHN STREET\",\"addressLineTwoText\":\"SUITE 1100\"}],\"telecommunicationAddressBag\":[{\"telecommunicationNumber\":\"408-660-2986\",\"telecomTypeCode\":\"TEL\"}],\"registeredPractitionerCategory\":\"LTDREC\"}]},\"applicationNumberText\":\"18162429\",\"correspondenceAddressBag\":[{\"cityName\":\"MINNEAPOLIS\",\"geographicRegionName\":\"MINNESOTA\",\"geographicRegionCode\":\"MN\",\"countryCode\":\"US\",\"postalCode\":\"55402\",\"nameLineOneText\":\"SCHWEGMAN
+      LUNDBERG & WOESSNER / LENOVO\",\"countryName\":\"UNITED STATES\",\"addressLineOneText\":\"P.O.
+      BOX 2938\"}]}],\"requestIdentifier\":\"b1f0c352-b7d7-424e-8936-5ae599855903\"}"
+    headers:
+      access-control-allow-headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      access-control-allow-methods:
+      - OPTIONS,POST,GET
+      access-control-allow-origin:
+      - '*'
+      content-length:
+      - '167250'
+      content-type:
+      - application/json
+      date:
+      - Tue, 18 Feb 2025 17:33:32 GMT
+      x-amz-apigw-id:
+      - GMOg8Fa5IAMFjzg=
+      x-amzn-requestid:
+      - b1f0c352-b7d7-424e-8936-5ae599855903
+      x-amzn-trace-id:
+      - Root=1-67b4c46c-5e86a699324346fe715db5de;Parent=1a46b716f2001d15;Sampled=0;Lineage=1:9bd78c15:0
+    http_version: HTTP/2
+    status_code: 200
+version: 1

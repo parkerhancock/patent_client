@@ -17,11 +17,11 @@ interactions:
       host:
       - beta-api.uspto.gov
       user-agent:
-      - Mozilla/5.0 Python Patent Clientbot/5.0.14 (parkerhancock@users.noreply.github.com)
+      - Mozilla/5.0 Python Patent Clientbot/5.0.16 (parkerhancock@users.noreply.github.com)
     method: POST
     uri: https://beta-api.uspto.gov/api/v1/patent/applications/search
   response:
-    content: '{"count":1,"patentBag":[{"applicationNumberText":"16123456"}],"requestIdentifier":"27beff31-8dae-45bd-b87e-9c35f544fb21"}'
+    content: '{"count":1,"patentFileWrapperDataBag":[{"applicationNumberText":"16123456"}],"requestIdentifier":"bace2e3a-5d52-4251-9695-ec8cd581262f"}'
     headers:
       access-control-allow-headers:
       - Origin, X-Requested-With, Content-Type, Accept
@@ -30,17 +30,17 @@ interactions:
       access-control-allow-origin:
       - '*'
       content-length:
-      - '121'
+      - '136'
       content-type:
       - application/json
       date:
-      - Wed, 22 May 2024 16:19:31 GMT
+      - Mon, 17 Feb 2025 22:18:00 GMT
       x-amz-apigw-id:
-      - YLkrAEkjoAMFpaA=
+      - GJlP2F4CoAMFzpw=
       x-amzn-requestid:
-      - 27beff31-8dae-45bd-b87e-9c35f544fb21
+      - bace2e3a-5d52-4251-9695-ec8cd581262f
       x-amzn-trace-id:
-      - Root=1-664e1b12-26ac911a305381e95a832678;Parent=73806338f5ce239d;Sampled=0;lineage=33e8fdb8:0
+      - Root=1-67b3b598-27da899d378a51ea4b9e81fd;Parent=05ebe277e95e2326;Sampled=0;Lineage=1:9bd78c15:0
     http_version: HTTP/2
     status_code: 200
 - request:
@@ -66,22 +66,13 @@ interactions:
       host:
       - beta-api.uspto.gov
       user-agent:
-      - Mozilla/5.0 Python Patent Clientbot/5.0.14 (parkerhancock@users.noreply.github.com)
+      - Mozilla/5.0 Python Patent Clientbot/5.0.16 (parkerhancock@users.noreply.github.com)
     method: POST
     uri: https://beta-api.uspto.gov/api/v1/patent/applications/search
   response:
-    content: '{"count":1,"patentBag":[{"firstInventorToFileIndicator":"Y","filingDate":"2018-09-06","inventorBag":[{"firstName":"Shoji","lastName":"KANADA","inventorNameText":"Shoji
-      KANADA","correspondenceAddressBag":[{"cityName":"Tokyo","countryCode":"JP","nameLineOneText":"KANADA,
-      Shoji","countryName":"JAPAN","postalAddressCategory":"residence"},{"cityName":"Tokyo","countryCode":"JP","nameLineOneText":"Shoji  KANADA","countryName":"JAPAN","addressLineOneText":"c/o
-      FUJIFILM Corporation","addressLineTwoText":"7-3, Akasaka 9-chome, Minato-ku","postalAddressCategory":"postal"}]}],"businessEntityStatusCategory":"Regular
-      Undiscounted","firstApplicantName":"FUJIFILM Corporation","customerNumber":2292,"groupArtUnitNumber":"2641","applicationNumberText":"16123456","earliestPublicationNumber":"US
-      2019-0095759 A1","inventionTitle":"LEARNING ASSISTANCE DEVICE, METHOD OF OPERATING
-      LEARNING ASSISTANCE DEVICE, LEARNING ASSISTANCE PROGRAM, LEARNING ASSISTANCE
-      SYSTEM, AND TERMINAL DEVICE","correspondenceAddressBag":[{"cityName":"Falls
-      Church","geographicRegionName":"VIRGINIA","geographicRegionCode":"VA","countryCode":"US","postalCode":"22042-1248","nameLineOneText":"BIRCH
-      STEWART KOLASCH & BIRCH, LLP","countryName":"UNITED STATES","addressLineOneText":"8110
-      Gatehouse Road","addressLineTwoText":"Suite 100 East"}],"firstInventorName":"Shoji
-      KANADA","cpcClassificationBag":["G06N3/08","G16H30/20","G16H50/70","G16H30/40","G06N20/00","G06V10/7784","G06V10/774","G06F18/2178","G06N3/042","G06F18/217","G06F18/214","G06N3/045"],"applicationConfirmationNumber":7051,"docketNumber":"1982-1042PUS1"}],"requestIdentifier":"bd4eb4e9-1e1d-4b48-9553-148e662f93b6"}'
+    content: '{"count":1,"patentFileWrapperDataBag":[{"applicationNumberText":"16123456","correspondenceAddressBag":[{"cityName":"Vienna","geographicRegionName":"VIRGINIA","geographicRegionCode":"VA","countryCode":"US","postalCode":"22180-7371","nameLineOneText":"BIRCH
+      STEWART KOLASCH & BIRCH, LLP","countryName":"UNITED STATES","addressLineOneText":"2600
+      Park Tower Drive","addressLineTwoText":"Suite 600"}]}],"requestIdentifier":"fd81a68f-b4c5-4ac3-94a0-0b61cb50858d"}'
     headers:
       access-control-allow-headers:
       - Origin, X-Requested-With, Content-Type, Accept
@@ -90,17 +81,17 @@ interactions:
       access-control-allow-origin:
       - '*'
       content-length:
-      - '1644'
+      - '457'
       content-type:
       - application/json
       date:
-      - Wed, 22 May 2024 16:19:31 GMT
+      - Mon, 17 Feb 2025 22:18:00 GMT
       x-amz-apigw-id:
-      - YLkrCE4SoAMFv9w=
+      - GJlP3HAwoAMF79g=
       x-amzn-requestid:
-      - bd4eb4e9-1e1d-4b48-9553-148e662f93b6
+      - fd81a68f-b4c5-4ac3-94a0-0b61cb50858d
       x-amzn-trace-id:
-      - Root=1-664e1b13-42b535a13e2093af6232054e;Parent=0b18b27cafe18ccb;Sampled=0;lineage=33e8fdb8:0
+      - Root=1-67b3b598-5b24eea67c31575f67133277;Parent=7fa005b99bedc742;Sampled=0;Lineage=1:9bd78c15:0
     http_version: HTTP/2
     status_code: 200
 - request:
@@ -122,11 +113,11 @@ interactions:
       host:
       - beta-api.uspto.gov
       user-agent:
-      - Mozilla/5.0 Python Patent Clientbot/5.0.14 (parkerhancock@users.noreply.github.com)
+      - Mozilla/5.0 Python Patent Clientbot/5.0.16 (parkerhancock@users.noreply.github.com)
     method: POST
     uri: https://beta-api.uspto.gov/api/v1/patent/applications/search
   response:
-    content: '{"count":1,"patentBag":[{"applicationNumberText":"16123456"}],"requestIdentifier":"1f800576-0ac5-4584-b0df-663b73abc1c9"}'
+    content: '{"count":1,"patentFileWrapperDataBag":[{"applicationNumberText":"16123456"}],"requestIdentifier":"d477181c-53ca-4f8b-a9f1-16aeb4e29b78"}'
     headers:
       access-control-allow-headers:
       - Origin, X-Requested-With, Content-Type, Accept
@@ -135,77 +126,17 @@ interactions:
       access-control-allow-origin:
       - '*'
       content-length:
-      - '121'
+      - '136'
       content-type:
       - application/json
       date:
-      - Wed, 22 May 2024 16:19:31 GMT
+      - Mon, 17 Feb 2025 22:19:51 GMT
       x-amz-apigw-id:
-      - YLkrDEfIIAMFn3g=
+      - GJlhLHvzoAMFz1w=
       x-amzn-requestid:
-      - 1f800576-0ac5-4584-b0df-663b73abc1c9
+      - d477181c-53ca-4f8b-a9f1-16aeb4e29b78
       x-amzn-trace-id:
-      - Root=1-664e1b13-12ce68ec1bb7e39179f68f42;Parent=00bfb6fc6c44072e;Sampled=0;lineage=33e8fdb8:0
-    http_version: HTTP/2
-    status_code: 200
-- request:
-    body: '{"q": "applicationNumberText:(16123456)", "fields": ["firstInventorToFileIndicator",
-      "filingDate", "inventorBag", "customerNumber", "groupArtUnitNumber", "inventionTitle",
-      "correspondenceAddressBag", "applicationConfirmationNumber", "docketNumber",
-      "applicationNumberText", "firstInventorName", "firstApplicantName", "cpcClassificationBag",
-      "businessEntityStatusCategory", "earliestPublicationNumber"], "pagination":
-      {"offset": 0, "limit": 1}}'
-    headers:
-      X-API-KEY:
-      - REDACTED
-      accept:
-      - application/json
-      accept-encoding:
-      - gzip, deflate
-      connection:
-      - keep-alive
-      content-length:
-      - '443'
-      content-type:
-      - application/json
-      host:
-      - beta-api.uspto.gov
-      user-agent:
-      - Mozilla/5.0 Python Patent Clientbot/5.0.14 (parkerhancock@users.noreply.github.com)
-    method: POST
-    uri: https://beta-api.uspto.gov/api/v1/patent/applications/search
-  response:
-    content: '{"count":1,"patentBag":[{"firstInventorToFileIndicator":"Y","filingDate":"2018-09-06","inventorBag":[{"firstName":"Shoji","lastName":"KANADA","inventorNameText":"Shoji
-      KANADA","correspondenceAddressBag":[{"cityName":"Tokyo","countryCode":"JP","nameLineOneText":"KANADA,
-      Shoji","countryName":"JAPAN","postalAddressCategory":"residence"},{"cityName":"Tokyo","countryCode":"JP","nameLineOneText":"Shoji  KANADA","countryName":"JAPAN","addressLineOneText":"c/o
-      FUJIFILM Corporation","addressLineTwoText":"7-3, Akasaka 9-chome, Minato-ku","postalAddressCategory":"postal"}]}],"businessEntityStatusCategory":"Regular
-      Undiscounted","firstApplicantName":"FUJIFILM Corporation","customerNumber":2292,"groupArtUnitNumber":"2641","applicationNumberText":"16123456","earliestPublicationNumber":"US
-      2019-0095759 A1","inventionTitle":"LEARNING ASSISTANCE DEVICE, METHOD OF OPERATING
-      LEARNING ASSISTANCE DEVICE, LEARNING ASSISTANCE PROGRAM, LEARNING ASSISTANCE
-      SYSTEM, AND TERMINAL DEVICE","correspondenceAddressBag":[{"cityName":"Falls
-      Church","geographicRegionName":"VIRGINIA","geographicRegionCode":"VA","countryCode":"US","postalCode":"22042-1248","nameLineOneText":"BIRCH
-      STEWART KOLASCH & BIRCH, LLP","countryName":"UNITED STATES","addressLineOneText":"8110
-      Gatehouse Road","addressLineTwoText":"Suite 100 East"}],"firstInventorName":"Shoji
-      KANADA","cpcClassificationBag":["G06N3/08","G16H30/20","G16H50/70","G16H30/40","G06N20/00","G06V10/7784","G06V10/774","G06F18/2178","G06N3/042","G06F18/217","G06F18/214","G06N3/045"],"applicationConfirmationNumber":7051,"docketNumber":"1982-1042PUS1"}],"requestIdentifier":"50bf40bc-9e47-40f8-8bb8-3f676e637eba"}'
-    headers:
-      access-control-allow-headers:
-      - Origin, X-Requested-With, Content-Type, Accept
-      access-control-allow-methods:
-      - OPTIONS,POST,GET
-      access-control-allow-origin:
-      - '*'
-      content-length:
-      - '1644'
-      content-type:
-      - application/json
-      date:
-      - Wed, 22 May 2024 16:19:31 GMT
-      x-amz-apigw-id:
-      - YLkrEH-JIAMFmyA=
-      x-amzn-requestid:
-      - 50bf40bc-9e47-40f8-8bb8-3f676e637eba
-      x-amzn-trace-id:
-      - Root=1-664e1b13-35d079f84ea0811250295706;Parent=7bc248c7e40fd1bd;Sampled=0;lineage=33e8fdb8:0
+      - Root=1-67b3b607-0d63e705016e5b0a61a59aa6;Parent=58fdd418cb259844;Sampled=0;Lineage=1:9bd78c15:0
     http_version: HTTP/2
     status_code: 200
 version: 1

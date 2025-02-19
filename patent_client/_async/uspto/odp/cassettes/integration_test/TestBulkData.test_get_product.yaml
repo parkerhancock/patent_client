@@ -1,0 +1,48 @@
+interactions:
+- request:
+    body: ''
+    headers:
+      X-API-KEY:
+      - REDACTED
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - beta-api.uspto.gov
+      user-agent:
+      - Mozilla/5.0 Python Patent Clientbot/5.0.16 (parkerhancock@users.noreply.github.com)
+    method: GET
+    uri: https://beta-api.uspto.gov/api/v1/datasets/products/PTFWPRE?includeFiles=true&latest=true
+  response:
+    content: '{"count":1,"bulkDataProductBag":[{"productIdentifier":"PTFWPRE","productDescriptionText":"Bibliographic
+      and assignments static patent data compiled into file sets. The Weekly Datasets
+      (10-year increments) can be downloaded in bulk.","productTitleText":"Patent
+      File Wrapper (Bulk Datasets) - Weekly","productFrequencyText":"WEEKLY","daysOfWeekText":"SUNDAY","productLabelArrayText":["Patent"],"productDatasetArrayText":["Research"],"productDatasetCategoryArrayText":["Patent
+      file wrapper"],"productFromDate":"2001-01-01","productToDate":"2025-12-31","productTotalFileSize":54033601577,"productFileTotalQuantity":3,"lastModifiedDateTime":"2025-02-17
+      01:41:00","mimeTypeIdentifierArrayText":["JSON"],"productFileBag":{"count":1,"fileDataBag":[{"fileName":"2011-2020-patent-filewrapper-full-json.zip","fileSize":27890846828,"fileDataFromDate":"2011-01-01","fileDataToDate":"2020-12-31","fileTypeText":"Data","fileDownloadURI":"https://beta-api.uspto.gov/api/v1/datasets/products/files/PTFWPRE/2011-2020-patent-filewrapper-full-json.zip","fileReleaseDate":"2025-02-17
+      01:41:00","fileDate":"2025-02-16 00:00:00"}]}}]}'
+    headers:
+      access-control-allow-headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      access-control-allow-methods:
+      - OPTIONS,GET
+      access-control-allow-origin:
+      - '*'
+      content-length:
+      - '1111'
+      content-type:
+      - application/json
+      date:
+      - Tue, 18 Feb 2025 17:36:48 GMT
+      x-amz-apigw-id:
+      - GMO_nGm1oAMF7SA=
+      x-amzn-requestid:
+      - a761c22b-6630-4e66-9f0e-e6cf0367338e
+      x-amzn-trace-id:
+      - Root=1-67b4c530-314989e410454d6d1863f434;Parent=4f790f846627694b;Sampled=0;Lineage=1:d7dee2c6:0
+    http_version: HTTP/2
+    status_code: 200
+version: 1

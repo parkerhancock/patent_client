@@ -1,0 +1,50 @@
+interactions:
+- request:
+    body: ''
+    headers:
+      X-API-KEY:
+      - REDACTED
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - beta-api.uspto.gov
+      user-agent:
+      - Mozilla/5.0 Python Patent Clientbot/5.0.16 (parkerhancock@users.noreply.github.com)
+    method: GET
+    uri: https://beta-api.uspto.gov/api/v1/datasets/products/search?q=patent&offset=0&limit=1&facets=false&includeFiles=true&latest=true
+  response:
+    content: '{"count":1,"bulkDataProductBag":[{"productIdentifier":"APPDT","productDescriptionText":"Contains
+      the full text, images/drawings, and complex work units (tables, mathematical
+      expressions, chemical structures, and genetic sequence data) of each patent
+      application (non-provisional utility and plant) published weekly (Thursdays)
+      from March 15, 2001 to present.","productTitleText":"Patent Application Full
+      Text Data with Embedded TIFF Images (Application Red Book based on WIPO ST.36)","productFrequencyText":"WEEKLY","daysOfWeekText":"THURSDAY","productLabelArrayText":["Patent"],"productDatasetArrayText":["Authoritative"],"productDatasetCategoryArrayText":["Patent
+      Application"],"productFromDate":"2001-03-15","productToDate":"2025-02-13","productTotalFileSize":3788926555439,"productFileTotalQuantity":1869,"lastModifiedDateTime":"2025-02-13
+      00:02:00","mimeTypeIdentifierArrayText":["XML"],"productFileBag":{"count":1,"fileDataBag":[{"fileName":"I20250213.tar","fileSize":5473483264,"fileDataFromDate":"2025-02-13","fileDataToDate":"2025-02-13","fileTypeText":"Data","fileDownloadURI":"https://beta-api.uspto.gov/api/v1/datasets/products/files/APPDT/2025/I20250213.tar","fileReleaseDate":"2025-02-13
+      00:02:00","fileLastModifiedDateTime":"2025-02-17 17:02:00"}]}}]}'
+    headers:
+      access-control-allow-headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      access-control-allow-methods:
+      - OPTIONS,GET
+      access-control-allow-origin:
+      - '*'
+      content-length:
+      - '1266'
+      content-type:
+      - application/json
+      date:
+      - Mon, 17 Feb 2025 22:43:27 GMT
+      x-amz-apigw-id:
+      - GJo9THvnIAMFlEw=
+      x-amzn-requestid:
+      - f1026de5-da42-4b5b-9103-236402a698db
+      x-amzn-trace-id:
+      - Root=1-67b3bb87-4aea7fc810f24af67034b209;Parent=6a8abaf3b180d3d9;Sampled=0;Lineage=1:d7dee2c6:0
+    http_version: HTTP/2
+    status_code: 200
+version: 1

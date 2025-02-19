@@ -8,12 +8,13 @@ from .model import DocumentList, GlobalDossier
 
 @pytest.mark.asyncio
 async def test_get_file():
-    api = GlobalDossierApi()
-    doc_number = "16740760"
-    type_code = "application"
-    office_code = "US"
-    response = await api.get_file(doc_number, type_code, office_code)
-    assert isinstance(response, GlobalDossier)
+    with pytest.warns(DeprecationWarning):
+        api = GlobalDossierApi()
+        doc_number = "16740760"
+        type_code = "application"
+        office_code = "US"
+        response = await api.get_file(doc_number, type_code, office_code)
+        assert isinstance(response, GlobalDossier)
     assert response.country == "US"
     assert response.id == "16740760"
 

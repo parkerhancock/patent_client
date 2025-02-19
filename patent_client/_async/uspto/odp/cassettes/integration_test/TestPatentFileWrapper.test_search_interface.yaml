@@ -1,0 +1,274 @@
+interactions:
+- request:
+    body: '{"q": "applicationMetaData.applicationTypeLabelName:Utility", "fields":
+      ["applicationNumberText"], "pagination": {"offset": 0, "limit": 1}}'
+    headers:
+      X-API-KEY:
+      - REDACTED
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '139'
+      content-type:
+      - application/json
+      host:
+      - beta-api.uspto.gov
+      user-agent:
+      - Mozilla/5.0 Python Patent Clientbot/5.0.16 (parkerhancock@users.noreply.github.com)
+    method: POST
+    uri: https://beta-api.uspto.gov/api/v1/patent/applications/search
+  response:
+    content: '{"count":8554634,"patentFileWrapperDataBag":[{"applicationNumberText":"18727105"}],"requestIdentifier":"f2f3a022-875e-4b80-83c0-460ebe2d49b3"}'
+    headers:
+      access-control-allow-headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      access-control-allow-methods:
+      - OPTIONS,POST,GET
+      access-control-allow-origin:
+      - '*'
+      content-length:
+      - '142'
+      content-type:
+      - application/json
+      date:
+      - Tue, 18 Feb 2025 17:21:36 GMT
+      x-amz-apigw-id:
+      - GMMxKFZMIAMFtog=
+      x-amzn-requestid:
+      - f2f3a022-875e-4b80-83c0-460ebe2d49b3
+      x-amzn-trace-id:
+      - Root=1-67b4c1a0-08695929734b65a90447cf74;Parent=1e63d1cb3e9218a3;Sampled=0;Lineage=1:9bd78c15:0
+    http_version: HTTP/2
+    status_code: 200
+- request:
+    body: '{"q": "applicationMetaData.applicationTypeLabelName:Utility", "fields":
+      ["applicationNumberText"], "pagination": {"offset": 0, "limit": 5}}'
+    headers:
+      X-API-KEY:
+      - REDACTED
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '139'
+      content-type:
+      - application/json
+      host:
+      - beta-api.uspto.gov
+      user-agent:
+      - Mozilla/5.0 Python Patent Clientbot/5.0.16 (parkerhancock@users.noreply.github.com)
+    method: POST
+    uri: https://beta-api.uspto.gov/api/v1/patent/applications/search
+  response:
+    content: '{"count":8554634,"patentFileWrapperDataBag":[{"applicationNumberText":"18727105"},{"applicationNumberText":"18727121"},{"applicationNumberText":"18721311"},{"applicationNumberText":"18838050"},{"applicationNumberText":"18860460"}],"requestIdentifier":"b7987604-ca8e-47c1-a2d1-85543b7cca4c"}'
+    headers:
+      access-control-allow-headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      access-control-allow-methods:
+      - OPTIONS,POST,GET
+      access-control-allow-origin:
+      - '*'
+      content-length:
+      - '290'
+      content-type:
+      - application/json
+      date:
+      - Tue, 18 Feb 2025 17:21:36 GMT
+      x-amz-apigw-id:
+      - GMMxLGw3IAMFZhw=
+      x-amzn-requestid:
+      - b7987604-ca8e-47c1-a2d1-85543b7cca4c
+      x-amzn-trace-id:
+      - Root=1-67b4c1a0-69c92bd604178ad553e99e0c;Parent=0b98c5a2eb16a35d;Sampled=0;Lineage=1:9bd78c15:0
+    http_version: HTTP/2
+    status_code: 200
+- request:
+    body: '{"filters": [{"name": "applicationMetaData.applicationStatusDescriptionText",
+      "value": ["Patented Case"]}], "fields": ["applicationNumberText"], "pagination":
+      {"offset": 0, "limit": 1}}'
+    headers:
+      X-API-KEY:
+      - REDACTED
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '185'
+      content-type:
+      - application/json
+      host:
+      - beta-api.uspto.gov
+      user-agent:
+      - Mozilla/5.0 Python Patent Clientbot/5.0.16 (parkerhancock@users.noreply.github.com)
+    method: POST
+    uri: https://beta-api.uspto.gov/api/v1/patent/applications/search
+  response:
+    content: '{"count":4673980,"patentFileWrapperDataBag":[{"applicationNumberText":"29977557"}],"requestIdentifier":"3884df00-b8d0-4723-a74c-d33dfb54fa2d"}'
+    headers:
+      access-control-allow-headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      access-control-allow-methods:
+      - OPTIONS,POST,GET
+      access-control-allow-origin:
+      - '*'
+      content-length:
+      - '142'
+      content-type:
+      - application/json
+      date:
+      - Tue, 18 Feb 2025 17:21:36 GMT
+      x-amz-apigw-id:
+      - GMMxNEbvoAMFlKQ=
+      x-amzn-requestid:
+      - 3884df00-b8d0-4723-a74c-d33dfb54fa2d
+      x-amzn-trace-id:
+      - Root=1-67b4c1a0-31489edd0d9a4cb1592fcdb8;Parent=0ce36d7ee275204d;Sampled=0;Lineage=1:9bd78c15:0
+    http_version: HTTP/2
+    status_code: 200
+- request:
+    body: '{"filters": [{"name": "applicationMetaData.applicationStatusDescriptionText",
+      "value": ["Patented Case"]}], "fields": ["applicationNumberText"], "pagination":
+      {"offset": 0, "limit": 5}}'
+    headers:
+      X-API-KEY:
+      - REDACTED
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '185'
+      content-type:
+      - application/json
+      host:
+      - beta-api.uspto.gov
+      user-agent:
+      - Mozilla/5.0 Python Patent Clientbot/5.0.16 (parkerhancock@users.noreply.github.com)
+    method: POST
+    uri: https://beta-api.uspto.gov/api/v1/patent/applications/search
+  response:
+    content: '{"count":4673980,"patentFileWrapperDataBag":[{"applicationNumberText":"29977557"},{"applicationNumberText":"29977460"},{"applicationNumberText":"29977209"},{"applicationNumberText":"29976587"},{"applicationNumberText":"29976000"}],"requestIdentifier":"699049a9-a6ed-474e-83dc-ae52121c1c3f"}'
+    headers:
+      access-control-allow-headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      access-control-allow-methods:
+      - OPTIONS,POST,GET
+      access-control-allow-origin:
+      - '*'
+      content-length:
+      - '290'
+      content-type:
+      - application/json
+      date:
+      - Tue, 18 Feb 2025 17:21:37 GMT
+      x-amz-apigw-id:
+      - GMMxOEhpoAMFfrA=
+      x-amzn-requestid:
+      - 699049a9-a6ed-474e-83dc-ae52121c1c3f
+      x-amzn-trace-id:
+      - Root=1-67b4c1a1-16b965c24ae1de8247b1494c;Parent=630a2c2f9ffc1aaa;Sampled=0;Lineage=1:9bd78c15:0
+    http_version: HTTP/2
+    status_code: 200
+- request:
+    body: '{"sort": [{"field": "applicationMetaData.filingDate", "order": "Desc"}],
+      "fields": ["applicationNumberText"], "pagination": {"offset": 0, "limit": 1}}'
+    headers:
+      X-API-KEY:
+      - REDACTED
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '150'
+      content-type:
+      - application/json
+      host:
+      - beta-api.uspto.gov
+      user-agent:
+      - Mozilla/5.0 Python Patent Clientbot/5.0.16 (parkerhancock@users.noreply.github.com)
+    method: POST
+    uri: https://beta-api.uspto.gov/api/v1/patent/applications/search
+  response:
+    content: '{"count":11059305,"patentFileWrapperDataBag":[{"applicationNumberText":"29989499"}],"requestIdentifier":"15472015-fd94-4e24-b4f5-d77c2e62db34"}'
+    headers:
+      access-control-allow-headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      access-control-allow-methods:
+      - OPTIONS,POST,GET
+      access-control-allow-origin:
+      - '*'
+      content-length:
+      - '143'
+      content-type:
+      - application/json
+      date:
+      - Tue, 18 Feb 2025 17:21:37 GMT
+      x-amz-apigw-id:
+      - GMMxPGo7oAMFQ-Q=
+      x-amzn-requestid:
+      - 15472015-fd94-4e24-b4f5-d77c2e62db34
+      x-amzn-trace-id:
+      - Root=1-67b4c1a1-433882175472c120502b9955;Parent=5a22958e9bfc86bb;Sampled=0;Lineage=1:9bd78c15:0
+    http_version: HTTP/2
+    status_code: 200
+- request:
+    body: '{"sort": [{"field": "applicationMetaData.filingDate", "order": "Desc"}],
+      "fields": ["applicationNumberText"], "pagination": {"offset": 0, "limit": 5}}'
+    headers:
+      X-API-KEY:
+      - REDACTED
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '150'
+      content-type:
+      - application/json
+      host:
+      - beta-api.uspto.gov
+      user-agent:
+      - Mozilla/5.0 Python Patent Clientbot/5.0.16 (parkerhancock@users.noreply.github.com)
+    method: POST
+    uri: https://beta-api.uspto.gov/api/v1/patent/applications/search
+  response:
+    content: '{"count":11059305,"patentFileWrapperDataBag":[{"applicationNumberText":"29989499"},{"applicationNumberText":"29989558"},{"applicationNumberText":"18727105"},{"applicationNumberText":"19051130"},{"applicationNumberText":"90019846"}],"requestIdentifier":"5e970ab2-94a1-46b6-a58c-346b5a0b4d0f"}'
+    headers:
+      access-control-allow-headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      access-control-allow-methods:
+      - OPTIONS,POST,GET
+      access-control-allow-origin:
+      - '*'
+      content-length:
+      - '291'
+      content-type:
+      - application/json
+      date:
+      - Tue, 18 Feb 2025 17:21:37 GMT
+      x-amz-apigw-id:
+      - GMMxQE8KIAMFjzg=
+      x-amzn-requestid:
+      - 5e970ab2-94a1-46b6-a58c-346b5a0b4d0f
+      x-amzn-trace-id:
+      - Root=1-67b4c1a1-5e90f0e2243bacf03e378f3f;Parent=60cfae4295eddbe3;Sampled=0;Lineage=1:9bd78c15:0
+    http_version: HTTP/2
+    status_code: 200
+version: 1

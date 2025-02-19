@@ -1,0 +1,98 @@
+interactions:
+- request:
+    body: '{"rangeFilters": [{"field": "applicationMetaData.filingDate", "valueFrom":
+      "2023-01-01", "valueTo": "2023-12-31"}], "fields": ["applicationNumberText"],
+      "pagination": {"offset": 0, "limit": 1}, "facets": ["applicationMetaData.applicationTypeLabelName",
+      "applicationMetaData.applicationStatusCode"]}'
+    headers:
+      X-API-KEY:
+      - REDACTED
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '298'
+      content-type:
+      - application/json
+      host:
+      - beta-api.uspto.gov
+      user-agent:
+      - Mozilla/5.0 Python Patent Clientbot/5.0.16 (parkerhancock@users.noreply.github.com)
+    method: POST
+    uri: https://beta-api.uspto.gov/api/v1/patent/applications/search
+  response:
+    content: '{"count":483328,"patentFileWrapperDataBag":[{"applicationNumberText":"63616719"}],"facets":{"applicationMetaData.applicationStatusCode":[{"value":"30","count":231954},{"value":"150","count":99754},{"value":"159","count":50384},{"value":"41","count":35819},{"value":"93","count":15004},{"value":"71","count":13243},{"value":"61","count":10566},{"value":"161","count":7018},{"value":"95","count":3059},{"value":"19","count":3053},{"value":"140","count":2011},{"value":"90","count":1653},{"value":"40","count":1473},{"value":"83","count":1241},{"value":"160","count":1148},{"value":"164","count":688},{"value":"94","count":664},{"value":"168","count":616},{"value":"80","count":579},{"value":"60","count":568},{"value":"51","count":338},{"value":"120","count":305},{"value":"566","count":287},{"value":"98","count":243},{"value":"20","count":225},{"value":"454","count":211},{"value":"218","count":148},{"value":"77","count":118},{"value":"121","count":112},{"value":"82","count":109},{"value":"17","count":100},{"value":"124","count":96},{"value":"100","count":76},{"value":"31","count":66},{"value":"123","count":54},{"value":"167","count":50},{"value":"91","count":36},{"value":"18","count":28},{"value":"50","count":20},{"value":"436","count":19},{"value":"452","count":17},{"value":"424","count":12},{"value":"99","count":11},{"value":"37","count":10},{"value":"432","count":9},{"value":"670","count":9},{"value":"66","count":8},{"value":"275","count":8},{"value":"162","count":7},{"value":"416","count":7},{"value":"435","count":7},{"value":"122","count":6},{"value":"650","count":6},{"value":"12","count":5},{"value":"163","count":5},{"value":"414","count":5},{"value":"420","count":5},{"value":"423","count":5},{"value":"119","count":4},{"value":"425","count":4},{"value":"426","count":4},{"value":"428","count":4},{"value":"433","count":4},{"value":"127","count":3},{"value":"418","count":3},{"value":"652","count":3},{"value":"680","count":3},{"value":"116","count":2},{"value":"135","count":2},{"value":"437","count":2},{"value":"3","count":1},{"value":"38","count":1},{"value":"133","count":1},{"value":"271","count":1},{"value":"408","count":1},{"value":"412","count":1},{"value":"421","count":1},{"value":"427","count":1},{"value":"440","count":1},{"value":"450","count":1},{"value":"558","count":1},{"value":"569","count":1}],"applicationMetaData.applicationTypeLabelName":[{"value":"Utility","count":411130},{"value":"Provisional","count":50500},{"value":"Design","count":19552},{"value":"Plant","count":790},{"value":"Re-Issue","count":612},{"value":"PCT","count":447},{"value":"Re-Examination","count":285},{"value":"Supplemental
+      Examination","count":12}]},"requestIdentifier":"0eeb53b0-a9df-4437-bd9a-c4873d01cde9"}'
+    headers:
+      access-control-allow-headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      access-control-allow-methods:
+      - OPTIONS,POST,GET
+      access-control-allow-origin:
+      - '*'
+      content-length:
+      - '2731'
+      content-type:
+      - application/json
+      date:
+      - Tue, 18 Feb 2025 17:33:31 GMT
+      x-amz-apigw-id:
+      - GMOg1FkToAMFkTA=
+      x-amzn-requestid:
+      - 0eeb53b0-a9df-4437-bd9a-c4873d01cde9
+      x-amzn-trace-id:
+      - Root=1-67b4c46b-543067e27af387ff6aed81c9;Parent=537b5575d842fae7;Sampled=0;Lineage=1:9bd78c15:0
+    http_version: HTTP/2
+    status_code: 200
+- request:
+    body: '{"rangeFilters": [{"field": "applicationMetaData.filingDate", "valueFrom":
+      "2023-01-01", "valueTo": "2023-12-31"}], "fields": ["applicationNumberText"],
+      "pagination": {"offset": 0, "limit": 5}, "facets": ["applicationMetaData.applicationTypeLabelName",
+      "applicationMetaData.applicationStatusCode"]}'
+    headers:
+      X-API-KEY:
+      - REDACTED
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '298'
+      content-type:
+      - application/json
+      host:
+      - beta-api.uspto.gov
+      user-agent:
+      - Mozilla/5.0 Python Patent Clientbot/5.0.16 (parkerhancock@users.noreply.github.com)
+    method: POST
+    uri: https://beta-api.uspto.gov/api/v1/patent/applications/search
+  response:
+    content: '{"count":483328,"patentFileWrapperDataBag":[{"applicationNumberText":"63616719"},{"applicationNumberText":"18401534"},{"applicationNumberText":"18575853"},{"applicationNumberText":"18401617"},{"applicationNumberText":"18401544"}],"facets":{"applicationMetaData.applicationStatusCode":[{"value":"30","count":231954},{"value":"150","count":99754},{"value":"159","count":50384},{"value":"41","count":35819},{"value":"93","count":15004},{"value":"71","count":13243},{"value":"61","count":10566},{"value":"161","count":7018},{"value":"95","count":3059},{"value":"19","count":3053},{"value":"140","count":2011},{"value":"90","count":1653},{"value":"40","count":1473},{"value":"83","count":1241},{"value":"160","count":1148},{"value":"164","count":688},{"value":"94","count":664},{"value":"168","count":616},{"value":"80","count":579},{"value":"60","count":568},{"value":"51","count":338},{"value":"120","count":305},{"value":"566","count":287},{"value":"98","count":243},{"value":"20","count":225},{"value":"454","count":211},{"value":"218","count":148},{"value":"77","count":118},{"value":"121","count":112},{"value":"82","count":109},{"value":"17","count":100},{"value":"124","count":96},{"value":"100","count":76},{"value":"31","count":66},{"value":"123","count":54},{"value":"167","count":50},{"value":"91","count":36},{"value":"18","count":28},{"value":"50","count":20},{"value":"436","count":19},{"value":"452","count":17},{"value":"424","count":12},{"value":"99","count":11},{"value":"37","count":10},{"value":"432","count":9},{"value":"670","count":9},{"value":"66","count":8},{"value":"275","count":8},{"value":"162","count":7},{"value":"416","count":7},{"value":"435","count":7},{"value":"122","count":6},{"value":"650","count":6},{"value":"12","count":5},{"value":"163","count":5},{"value":"414","count":5},{"value":"420","count":5},{"value":"423","count":5},{"value":"119","count":4},{"value":"425","count":4},{"value":"426","count":4},{"value":"428","count":4},{"value":"433","count":4},{"value":"127","count":3},{"value":"418","count":3},{"value":"652","count":3},{"value":"680","count":3},{"value":"116","count":2},{"value":"135","count":2},{"value":"437","count":2},{"value":"3","count":1},{"value":"38","count":1},{"value":"133","count":1},{"value":"271","count":1},{"value":"408","count":1},{"value":"412","count":1},{"value":"421","count":1},{"value":"427","count":1},{"value":"440","count":1},{"value":"450","count":1},{"value":"558","count":1},{"value":"569","count":1}],"applicationMetaData.applicationTypeLabelName":[{"value":"Utility","count":411130},{"value":"Provisional","count":50500},{"value":"Design","count":19552},{"value":"Plant","count":790},{"value":"Re-Issue","count":612},{"value":"PCT","count":447},{"value":"Re-Examination","count":285},{"value":"Supplemental
+      Examination","count":12}]},"requestIdentifier":"c6ccfbee-7990-4e40-ad92-b067348ccee8"}'
+    headers:
+      access-control-allow-headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      access-control-allow-methods:
+      - OPTIONS,POST,GET
+      access-control-allow-origin:
+      - '*'
+      content-length:
+      - '2879'
+      content-type:
+      - application/json
+      date:
+      - Tue, 18 Feb 2025 17:33:31 GMT
+      x-amz-apigw-id:
+      - GMOg3Ew-oAMFW8w=
+      x-amzn-requestid:
+      - c6ccfbee-7990-4e40-ad92-b067348ccee8
+      x-amzn-trace-id:
+      - Root=1-67b4c46b-5a67748e3b357be15fa7885f;Parent=5828028268755a5a;Sampled=0;Lineage=1:9bd78c15:0
+    http_version: HTTP/2
+    status_code: 200
+version: 1

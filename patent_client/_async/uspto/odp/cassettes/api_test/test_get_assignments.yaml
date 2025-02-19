@@ -13,16 +13,16 @@ interactions:
       host:
       - beta-api.uspto.gov
       user-agent:
-      - Mozilla/5.0 Python Patent Clientbot/5.0.14 (parkerhancock@users.noreply.github.com)
+      - Mozilla/5.0 Python Patent Clientbot/5.0.16 (parkerhancock@users.noreply.github.com)
     method: GET
     uri: https://beta-api.uspto.gov/api/v1/patent/applications/15123456/assignment
   response:
-    content: '{"count":1,"patentBag":[{"assignmentBag":[{"assignmentReceivedDate":"2018-10-25","assignorBag":[{"executionDate":"2018-09-23","assignorName":"WANG,
-      MARVIN"}],"frameNumber":442,"pageNumber":4,"reelNumber/frameNumber":"047305/0442","assignmentRecordedDate":"2018-10-25","conveyanceText":"ASSIGNMENT
+    content: '{"count":1,"patentFileWrapperDataBag":[{"assignmentBag":[{"assignmentReceivedDate":"2018-10-25","assignorBag":[{"executionDate":"2018-09-23","assignorName":"WANG,
+      MARVIN"}],"reelAndFrameNumber":"047305/0442","frameNumber":442,"assignmentRecordedDate":"2018-10-25","conveyanceText":"ASSIGNMENT
       OF ASSIGNORS INTEREST (SEE DOCUMENT FOR DETAILS).","assigneeBag":[{"assigneeAddress":{"cityName":"BOSTON","geographicRegionCode":"MA","postalCode":"02114","addressLineOneText":"55
-      FRUIT STREET"},"assigneeNameText":"THE GENERAL HOSPITAL CORPORATION"}],"assignmentMailedDate":"2018-10-26","reelNumber":47305,"correspondenceAddress":[{"addressLineThreeText":"MINNEAPOLIS,
+      FRUIT STREET"},"assigneeNameText":"THE GENERAL HOSPITAL CORPORATION"}],"assignmentMailedDate":"2018-10-26","reelNumber":47305,"correspondenceAddressBag":[{"addressLineThreeText":"MINNEAPOLIS,
       MN 55440-1022","addressLineOneText":"FISH & RICHARDSON P.C.","correspondentNameText":"J.
-      P. FASSE","addressLineTwoText":"P.O.BOX 1022"}]}]}],"requestIdentifier":"b2200c72-527f-4ef6-9afb-9fe95e38f41e"}'
+      P. FASSE","addressLineTwoText":"P.O.BOX 1022"}],"assignmentDocumentLocationURI":"https://legacy-assignments.uspto.gov/assignments/assignment-pat-047305-0442.pdf"}],"applicationNumberText":"15123456"}],"requestIdentifier":"99fe2977-fcfd-4dcc-abd8-9eb68a451f53"}'
     headers:
       access-control-allow-headers:
       - Origin, X-Requested-With, Content-Type, Accept
@@ -31,17 +31,17 @@ interactions:
       access-control-allow-origin:
       - '*'
       content-length:
-      - '866'
+      - '1014'
       content-type:
       - application/json
       date:
-      - Wed, 22 May 2024 16:03:17 GMT
+      - Mon, 17 Feb 2025 22:17:57 GMT
       x-amz-apigw-id:
-      - YLiS9HlPoAMFgSA=
+      - GJlPeEq5IAMFuQA=
       x-amzn-requestid:
-      - b2200c72-527f-4ef6-9afb-9fe95e38f41e
+      - 99fe2977-fcfd-4dcc-abd8-9eb68a451f53
       x-amzn-trace-id:
-      - Root=1-664e1745-057357f8082163751e8021ea;Parent=3d2d44c18b3b66d7;Sampled=0;lineage=33e8fdb8:0
+      - Root=1-67b3b595-6ec5cc585a235ed0598cce02;Parent=35e655181f15459a;Sampled=0;Lineage=1:9bd78c15:0
     http_version: HTTP/2
     status_code: 200
 version: 1

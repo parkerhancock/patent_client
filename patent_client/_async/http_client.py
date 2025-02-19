@@ -12,6 +12,35 @@ from hishel._utils import normalized_url
 from patent_client import CACHE_DIR
 from patent_client.version import __version__
 
+import tenacity
+from functools import partial
+
+
+def get_retry_after(retry_state) -> float:
+    """Get retry delay from Retry-After header or use exponential backoff."""
+    exc = retry_state.outcome.exception()
+    if exc and hasattr(exc, 'response') and 'Retry-After' in exc.response.headers:
+        return float(exc.response.headers['Retry-After'])
+    # Default to exponential backoff
+    return tenacity.wait_exponential(multiplier=1, min=4, max=30)(retry_state)
+
+
+def is_rate_limit_error(exc):
+    """Check if the exception is due to rate limiting (HTTP 429)."""
+    return (
+        isinstance(exc, httpx.HTTPStatusError) and 
+        exc.response.status_code == 429
+    )
+
+
+retry_on_429 = partial(
+    tenacity.retry,
+    stop=tenacity.stop_after_attempt(5),
+    wait=get_retry_after,
+    retry=tenacity.retry_if_exception(is_rate_limit_error),
+    reraise=True,
+)
+
 filename_re = re.compile(r'filename="([^"]+)"')
 
 
@@ -60,6 +89,17 @@ class PatentClientSession(httpx.AsyncClient):
                 filename = url.split("/")[-1]
             path = path / filename if path else Path.cwd() / filename
         return path
+    
+    @retry_on_429
+    async def send(self, *args, **kwargs):
+        response = await super().send(*args, **kwargs)
+        if response.status_code == 429:
+            raise httpx.HTTPStatusError(
+                "Too Many Requests",
+                request=response.request,
+                response=response
+            )
+        return response
 
     async def download(
         self,

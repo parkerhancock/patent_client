@@ -13,20 +13,56 @@ interactions:
       host:
       - beta-api.uspto.gov
       user-agent:
-      - Mozilla/5.0 Python Patent Clientbot/5.0.14 (parkerhancock@users.noreply.github.com)
+      - Mozilla/5.0 Python Patent Clientbot/5.0.16 (parkerhancock@users.noreply.github.com)
     method: GET
     uri: https://beta-api.uspto.gov/api/v1/patent/applications/15123456/application-data
   response:
-    content: '{"count":1,"patentBag":[{"firstInventorToFileIndicator":"Y","filingDate":"2016-09-02","inventorBag":[{"firstName":"Marvin","lastName":"Wang","inventorNameText":"Marvin
+    content: '{"message":"Missing Authentication Token"}'
+    headers:
+      content-length:
+      - '42'
+      content-type:
+      - application/json
+      date:
+      - Mon, 17 Feb 2025 22:17:57 GMT
+      x-amz-apigw-id:
+      - GJlPdHSmoAMFQlw=
+      x-amzn-errortype:
+      - MissingAuthenticationTokenException
+      x-amzn-requestid:
+      - 950196ea-1745-4fe9-8f87-10c438cb3ff3
+    http_version: HTTP/2
+    status_code: 403
+- request:
+    body: ''
+    headers:
+      X-API-KEY:
+      - REDACTED
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - beta-api.uspto.gov
+      user-agent:
+      - Mozilla/5.0 Python Patent Clientbot/5.0.16 (parkerhancock@users.noreply.github.com)
+    method: GET
+    uri: https://beta-api.uspto.gov/api/v1/patent/applications/15123456/meta-data
+  response:
+    content: '{"count":1,"patentFileWrapperDataBag":[{"applicationMetaData":{"firstInventorToFileIndicator":"Y","applicationStatusCode":161,"applicationTypeCode":"UTL","entityStatusData":{"smallEntityStatusIndicator":false,"businessEntityStatusCategory":"Small"},"filingDate":"2016-09-02","uspcSymbolText":"600/240","nationalStageIndicator":true,"firstInventorName":"Marvin
+      Wang","cpcClassificationBag":["A61B2017/00814","A61B17/24","A61B17/02","A61B17/244","A61B13/00","A61B2017/320052"],"effectiveFilingDate":"2016-09-02","publicationDateBag":["2017-03-16"],"publicationSequenceNumberBag":["0071586"],"earliestPublicationDate":"2017-03-16","applicationTypeLabelName":"Utility","applicationStatusDate":"2018-10-02","class":"600","applicationTypeCategory":"REGULAR","inventorBag":[{"firstName":"Marvin","lastName":"Wang","inventorNameText":"Marvin
       Wang","correspondenceAddressBag":[{"cityName":"Boston","geographicRegionName":"MASSACHUSETTS","geographicRegionCode":"MA","countryCode":"US","nameLineOneText":"Marvin  Wang","countryName":"UNITED
-      STATES","postalAddressCategory":"residence"},{"cityName":"Boston","geographicRegionName":"MASSACHUSETTS","geographicRegionCode":"MA","countryCode":"US","postalCode":"02114","nameLineOneText":"Marvin  Wang","countryName":"UNITED
-      STATES","addressLineOneText":"Founders 442","postalAddressCategory":"postal"}]}],"applicationStatusDescriptionText":"Abandoned  --  Failure
-      to Respond to an Office Action","businessEntityStatusCategory":"Small","firstApplicantName":"The
-      General Hospital Corporation","customerNumber":26161,"groupArtUnitNumber":"3775","applicationNumberText":"15123456","earliestPublicationNumber":"US
-      2017-0071586 A1","inventionTitle":"TONGUE RETRACTORS FOR FRENOTOMIES","correspondenceAddressBag":[{"cityName":"MINNEAPOLIS","geographicRegionName":"MINNESOTA","geographicRegionCode":"MN","countryCode":"US","postalCode":"55440-1022","nameLineOneText":"FISH
-      & RICHARDSON P.C. (BO)","countryName":"UNITED STATES","addressLineOneText":"P.O.
-      BOX 1022"}],"firstInventorName":"Marvin Wang","cpcClassificationBag":["A61B13/00","A61B2017/320052","A61B17/02","A61B2017/00814","A61B17/24","A61B17/244"],"applicationConfirmationNumber":7229,"earliestPublicationDate":"2017-03-16","applicationTypeLabelName":"Utility","publicationCategoryBag":["Pre-Grant
-      Publications - PGPub"],"applicationStatusDate":"2018-10-02","docketNumber":"29539-0122US1"}],"requestIdentifier":"891b8dc3-11ea-495b-bea8-5b9e8a371183"}'
+      STATES","postalAddressCategory":"postal"},{"cityName":"Boston","geographicRegionName":"MASSACHUSETTS","geographicRegionCode":"MA","countryCode":"US","nameLineOneText":"Marvin  Wang","countryName":"UNITED
+      STATES","postalAddressCategory":"residence"}]}],"applicationStatusDescriptionText":"Abandoned  --  Failure
+      to Respond to an Office Action","applicantBag":[{"applicantNameText":"The General
+      Hospital Corporation","correspondenceAddressBag":[{"cityName":"Boston","geographicRegionName":"MASSACHUSETTS","geographicRegionCode":"MA","countryCode":"US","nameLineOneText":"The
+      General Hospital Corporation","countryName":"UNITED STATES","postalAddressCategory":"postal"}]}],"firstApplicantName":"The
+      General Hospital Corporation","customerNumber":26161,"groupArtUnitNumber":"3775","earliestPublicationNumber":"US20170071586A1","inventionTitle":"TONGUE
+      RETRACTORS FOR FRENOTOMIES","applicationConfirmationNumber":7229,"examinerNameText":"WEISS,
+      JESSICA","subclass":"240","publicationCategoryBag":["Pre-Grant Publications
+      - PGPub"],"docketNumber":"29539-0122US1"},"applicationNumberText":"15123456"}],"requestIdentifier":"65a87e3b-1e23-40d0-adbb-79877259cec7"}'
     headers:
       access-control-allow-headers:
       - Origin, X-Requested-With, Content-Type, Accept
@@ -35,17 +71,17 @@ interactions:
       access-control-allow-origin:
       - '*'
       content-length:
-      - '1771'
+      - '2184'
       content-type:
       - application/json
       date:
-      - Wed, 22 May 2024 16:03:17 GMT
+      - Mon, 17 Feb 2025 22:19:32 GMT
       x-amz-apigw-id:
-      - YLiS7GREoAMFvGQ=
+      - GJlePGt5oAMFz1w=
       x-amzn-requestid:
-      - 891b8dc3-11ea-495b-bea8-5b9e8a371183
+      - 65a87e3b-1e23-40d0-adbb-79877259cec7
       x-amzn-trace-id:
-      - Root=1-664e1745-69cddfec3219bbfc6c4d8caf;Parent=6604241afadd39c2;Sampled=0;lineage=33e8fdb8:0
+      - Root=1-67b3b5f4-3fcf473f3b346cdf60d86339;Parent=15f3a8f9a609ffca;Sampled=0;Lineage=1:9bd78c15:0
     http_version: HTTP/2
     status_code: 200
 version: 1

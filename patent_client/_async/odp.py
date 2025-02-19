@@ -1,5 +1,5 @@
 # A simple separate namespace for the USPTO's Open Data Portal.
 
-from patent_client._async.uspto.odp.model import USApplication, USApplicationBiblio
+from patent_client._async.uspto.odp.model import PatentFileWrapperDataBagItem
 
-__all__ = ["USApplication", "USApplicationBiblio"]
+__all__ = ["PatentFileWrapperDataBagItem"]

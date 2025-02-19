@@ -1,0 +1,52 @@
+interactions:
+- request:
+    body: ''
+    headers:
+      X-API-KEY:
+      - REDACTED
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - beta-api.uspto.gov
+      user-agent:
+      - Mozilla/5.0 Python Patent Clientbot/5.0.16 (parkerhancock@users.noreply.github.com)
+    method: GET
+    uri: https://beta-api.uspto.gov/api/v1/datasets/products/search?productTitle=Patent%20File%20Wrapper&offset=0&limit=5&facets=false&includeFiles=false&latest=false
+  response:
+    content: '{"count":2,"bulkDataProductBag":[{"productIdentifier":"PTFWPRD","productDescriptionText":"Bibliographic
+      and assignments static patent data compiled into file sets. The Delta Datasets
+      (daily increments) can be downloaded in bulk.","productTitleText":"Patent File
+      Wrapper (Bulk Datasets) - Daily","productFrequencyText":"DAILY","productLabelArrayText":["Patent"],"productDatasetArrayText":["Research"],"productDatasetCategoryArrayText":["Patent
+      file wrapper"],"productFromDate":"2025-02-11","productToDate":"2025-02-17","productTotalFileSize":55508446533,"productFileTotalQuantity":7,"lastModifiedDateTime":"2025-02-18
+      00:29:00","mimeTypeIdentifierArrayText":["JSON"]},{"productIdentifier":"PTFWPRE","productDescriptionText":"Bibliographic
+      and assignments static patent data compiled into file sets. The Weekly Datasets
+      (10-year increments) can be downloaded in bulk.","productTitleText":"Patent
+      File Wrapper (Bulk Datasets) - Weekly","productFrequencyText":"WEEKLY","daysOfWeekText":"SUNDAY","productLabelArrayText":["Patent"],"productDatasetArrayText":["Research"],"productDatasetCategoryArrayText":["Patent
+      file wrapper"],"productFromDate":"2001-01-01","productToDate":"2025-12-31","productTotalFileSize":54033601577,"productFileTotalQuantity":3,"lastModifiedDateTime":"2025-02-17
+      01:41:00","mimeTypeIdentifierArrayText":["JSON"]}]}'
+    headers:
+      access-control-allow-headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      access-control-allow-methods:
+      - OPTIONS,GET
+      access-control-allow-origin:
+      - '*'
+      content-length:
+      - '1333'
+      content-type:
+      - application/json
+      date:
+      - Tue, 18 Feb 2025 17:33:40 GMT
+      x-amz-apigw-id:
+      - GMOhEFCeIAMF2sw=
+      x-amzn-requestid:
+      - bcc1a978-35c0-4077-8f2f-54899d1acc79
+      x-amzn-trace-id:
+      - Root=1-67b4c46c-2deec4327edf95c40cdd4283;Parent=4130cf6cf3a681ba;Sampled=0;Lineage=1:d7dee2c6:0
+    http_version: HTTP/2
+    status_code: 200
+version: 1

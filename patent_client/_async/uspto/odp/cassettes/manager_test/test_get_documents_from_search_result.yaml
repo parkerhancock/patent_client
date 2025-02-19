@@ -17,11 +17,11 @@ interactions:
       host:
       - beta-api.uspto.gov
       user-agent:
-      - Mozilla/5.0 Python Patent Clientbot/5.0.14 (parkerhancock@users.noreply.github.com)
+      - Mozilla/5.0 Python Patent Clientbot/5.0.16 (parkerhancock@users.noreply.github.com)
     method: POST
     uri: https://beta-api.uspto.gov/api/v1/patent/applications/search
   response:
-    content: '{"count":1,"patentBag":[{"applicationNumberText":"16123456"}],"requestIdentifier":"0f677188-82af-4bd6-95f5-2343c6ed242b"}'
+    content: '{"count":1,"patentFileWrapperDataBag":[{"applicationNumberText":"16123456"}],"requestIdentifier":"7a231aba-8869-4ba3-9dd3-0958039992d9"}'
     headers:
       access-control-allow-headers:
       - Origin, X-Requested-With, Content-Type, Accept
@@ -30,17 +30,17 @@ interactions:
       access-control-allow-origin:
       - '*'
       content-length:
-      - '121'
+      - '136'
       content-type:
       - application/json
       date:
-      - Wed, 22 May 2024 16:19:31 GMT
+      - Mon, 17 Feb 2025 22:18:00 GMT
       x-amz-apigw-id:
-      - YLkrHGnPoAMF1Wg=
+      - GJlP9FXloAMFfZw=
       x-amzn-requestid:
-      - 0f677188-82af-4bd6-95f5-2343c6ed242b
+      - 7a231aba-8869-4ba3-9dd3-0958039992d9
       x-amzn-trace-id:
-      - Root=1-664e1b13-7ad827f660c7ffd43feee1f0;Parent=2fef62427bb4ee7c;Sampled=0;lineage=33e8fdb8:0
+      - Root=1-67b3b598-3e34279f7c3780df6877bd00;Parent=2ff8d165b1f691e2;Sampled=0;Lineage=1:9bd78c15:0
     http_version: HTTP/2
     status_code: 200
 - request:
@@ -66,22 +66,13 @@ interactions:
       host:
       - beta-api.uspto.gov
       user-agent:
-      - Mozilla/5.0 Python Patent Clientbot/5.0.14 (parkerhancock@users.noreply.github.com)
+      - Mozilla/5.0 Python Patent Clientbot/5.0.16 (parkerhancock@users.noreply.github.com)
     method: POST
     uri: https://beta-api.uspto.gov/api/v1/patent/applications/search
   response:
-    content: '{"count":1,"patentBag":[{"firstInventorToFileIndicator":"Y","filingDate":"2018-09-06","inventorBag":[{"firstName":"Shoji","lastName":"KANADA","inventorNameText":"Shoji
-      KANADA","correspondenceAddressBag":[{"cityName":"Tokyo","countryCode":"JP","nameLineOneText":"KANADA,
-      Shoji","countryName":"JAPAN","postalAddressCategory":"residence"},{"cityName":"Tokyo","countryCode":"JP","nameLineOneText":"Shoji  KANADA","countryName":"JAPAN","addressLineOneText":"c/o
-      FUJIFILM Corporation","addressLineTwoText":"7-3, Akasaka 9-chome, Minato-ku","postalAddressCategory":"postal"}]}],"businessEntityStatusCategory":"Regular
-      Undiscounted","firstApplicantName":"FUJIFILM Corporation","customerNumber":2292,"groupArtUnitNumber":"2641","applicationNumberText":"16123456","earliestPublicationNumber":"US
-      2019-0095759 A1","inventionTitle":"LEARNING ASSISTANCE DEVICE, METHOD OF OPERATING
-      LEARNING ASSISTANCE DEVICE, LEARNING ASSISTANCE PROGRAM, LEARNING ASSISTANCE
-      SYSTEM, AND TERMINAL DEVICE","correspondenceAddressBag":[{"cityName":"Falls
-      Church","geographicRegionName":"VIRGINIA","geographicRegionCode":"VA","countryCode":"US","postalCode":"22042-1248","nameLineOneText":"BIRCH
-      STEWART KOLASCH & BIRCH, LLP","countryName":"UNITED STATES","addressLineOneText":"8110
-      Gatehouse Road","addressLineTwoText":"Suite 100 East"}],"firstInventorName":"Shoji
-      KANADA","cpcClassificationBag":["G06N3/08","G16H30/20","G16H50/70","G16H30/40","G06N20/00","G06V10/7784","G06V10/774","G06F18/2178","G06N3/042","G06F18/217","G06F18/214","G06N3/045"],"applicationConfirmationNumber":7051,"docketNumber":"1982-1042PUS1"}],"requestIdentifier":"19485df6-7b77-4413-bfef-22d848e4ec73"}'
+    content: '{"count":1,"patentFileWrapperDataBag":[{"applicationNumberText":"16123456","correspondenceAddressBag":[{"cityName":"Vienna","geographicRegionName":"VIRGINIA","geographicRegionCode":"VA","countryCode":"US","postalCode":"22180-7371","nameLineOneText":"BIRCH
+      STEWART KOLASCH & BIRCH, LLP","countryName":"UNITED STATES","addressLineOneText":"2600
+      Park Tower Drive","addressLineTwoText":"Suite 600"}]}],"requestIdentifier":"25a21a4c-8299-4df0-9502-8e32fdcdc138"}'
     headers:
       access-control-allow-headers:
       - Origin, X-Requested-With, Content-Type, Accept
@@ -90,329 +81,17 @@ interactions:
       access-control-allow-origin:
       - '*'
       content-length:
-      - '1644'
+      - '457'
       content-type:
       - application/json
       date:
-      - Wed, 22 May 2024 16:19:31 GMT
+      - Mon, 17 Feb 2025 22:18:01 GMT
       x-amz-apigw-id:
-      - YLkrIEBqIAMFn_w=
+      - GJlP-GvZIAMFogw=
       x-amzn-requestid:
-      - 19485df6-7b77-4413-bfef-22d848e4ec73
+      - 25a21a4c-8299-4df0-9502-8e32fdcdc138
       x-amzn-trace-id:
-      - Root=1-664e1b13-682fcb7f60258d8712c7575d;Parent=71aca21457e420e5;Sampled=0;lineage=33e8fdb8:0
-    http_version: HTTP/2
-    status_code: 200
-- request:
-    body: ''
-    headers:
-      X-API-KEY:
-      - REDACTED
-      accept:
-      - '*/*'
-      accept-encoding:
-      - gzip, deflate
-      connection:
-      - keep-alive
-      host:
-      - beta-api.uspto.gov
-      user-agent:
-      - Mozilla/5.0 Python Patent Clientbot/5.0.14 (parkerhancock@users.noreply.github.com)
-    method: GET
-    uri: https://beta-api.uspto.gov/api/v1/patent/applications/16123456/documents
-  response:
-    content: '{"documentBag": [{"applicationNumberText": "16123456", "officialDate":
-      "2018-09-06T15:08:26.000-0400", "documentIdentifier": "JLQY2WZNRXEAPX4", "documentCode":
-      "ADS", "documentCodeDescriptionText": "Application Data Sheet", "directionCategory":
-      "INCOMING", "downloadOptionBag": [{"mimeTypeIdentifier": "PDF", "downloadUrl":
-      "https://beta-api.uspto.gov/api/v1/download/applications/16123456/JLQY2WZNRXEAPX4.pdf",
-      "pageTotalQuantity": 8}]}, {"applicationNumberText": "16123456", "officialDate":
-      "2018-09-06T15:08:25.000-0400", "documentIdentifier": "JLXS0Y2CLXEAPX3", "documentCode":
-      "TRNA", "documentCodeDescriptionText": "Transmittal of New Application", "directionCategory":
-      "INCOMING", "downloadOptionBag": [{"mimeTypeIdentifier": "PDF", "downloadUrl":
-      "https://beta-api.uspto.gov/api/v1/download/applications/16123456/JLXS0Y2CLXEAPX3.pdf",
-      "pageTotalQuantity": 2}]}, {"applicationNumberText": "16123456", "officialDate":
-      "2018-10-23T07:43:21.000-0400", "documentIdentifier": "JNLNVIHARXEAPX1", "documentCode":
-      "PD.FILED.E", "documentCodeDescriptionText": "Priority Documents electronically
-      retrieved by USPTO from a participating IP Office", "directionCategory": "INTERNAL",
-      "downloadOptionBag": [{"mimeTypeIdentifier": "PDF", "downloadUrl": "https://beta-api.uspto.gov/api/v1/download/applications/16123456/JNLNVIHARXEAPX1.pdf",
-      "pageTotalQuantity": 30}]}, {"applicationNumberText": "16123456", "officialDate":
-      "2020-10-05T17:19:17.000-0400", "documentIdentifier": "KFX1ELAULDFLYX7", "documentCode":
-      "TRAN.LET", "documentCodeDescriptionText": "Transmittal Letter", "directionCategory":
-      "INCOMING", "downloadOptionBag": [{"mimeTypeIdentifier": "PDF", "downloadUrl":
-      "https://beta-api.uspto.gov/api/v1/download/applications/16123456/KFX1ELAULDFLYX7.pdf",
-      "pageTotalQuantity": 1}]}, {"applicationNumberText": "16123456", "officialDate":
-      "2020-10-19T11:19:45.000-0400", "documentIdentifier": "KGAYYNY5LDFLYX5", "documentCode":
-      "1449", "documentCodeDescriptionText": "List of References cited by applicant
-      and considered by examiner", "directionCategory": "OUTGOING", "downloadOptionBag":
-      [{"mimeTypeIdentifier": "PDF", "downloadUrl": "https://beta-api.uspto.gov/api/v1/download/applications/16123456/KGAYYNY5LDFLYX5.pdf",
-      "pageTotalQuantity": 2}]}, {"applicationNumberText": "16123456", "officialDate":
-      "2020-10-05T17:19:17.000-0400", "documentIdentifier": "KFX1ELARLDFLYX7", "documentCode":
-      "N417", "documentCodeDescriptionText": "Electronic Filing System Acknowledgment
-      Receipt", "directionCategory": "OUTGOING", "downloadOptionBag": [{"mimeTypeIdentifier":
-      "PDF", "downloadUrl": "https://beta-api.uspto.gov/api/v1/download/applications/16123456/KFX1ELARLDFLYX7.pdf",
-      "pageTotalQuantity": 3}]}, {"applicationNumberText": "16123456", "officialDate":
-      "2018-10-12T17:34:10.000-0400", "documentIdentifier": "JN53P2IURXEAPX0", "documentCode":
-      "WFEE", "documentCodeDescriptionText": "Fee Worksheet (SB06)", "directionCategory":
-      "INTERNAL", "downloadOptionBag": [{"mimeTypeIdentifier": "PDF", "downloadUrl":
-      "https://beta-api.uspto.gov/api/v1/download/applications/16123456/JN53P2IURXEAPX0.pdf",
-      "pageTotalQuantity": 1}]}, {"applicationNumberText": "16123456", "officialDate":
-      "2018-09-06T15:08:26.000-0400", "documentIdentifier": "JLQY2WZPRXEAPX4", "documentCode":
-      "CLM", "documentCodeDescriptionText": "Claims", "directionCategory": "INCOMING",
-      "downloadOptionBag": [{"mimeTypeIdentifier": "PDF", "downloadUrl": "https://beta-api.uspto.gov/api/v1/download/applications/16123456/JLQY2WZPRXEAPX4.pdf",
-      "pageTotalQuantity": 5}, {"mimeTypeIdentifier": "XML", "downloadUrl": "https://beta-api.uspto.gov/api/v1/download/applications/16123456/JLQY2WZPRXEAPX4/xmlarchive"}]},
-      {"applicationNumberText": "16123456", "officialDate": "2020-03-27T08:15:37.000-0400",
-      "documentIdentifier": "K87AK41FRXEAPX5", "documentCode": "CTNF", "documentCodeDescriptionText":
-      "Non-Final Rejection", "directionCategory": "OUTGOING", "downloadOptionBag":
-      [{"mimeTypeIdentifier": "PDF", "downloadUrl": "https://beta-api.uspto.gov/api/v1/download/applications/16123456/K87AK41FRXEAPX5.pdf",
-      "pageTotalQuantity": 9}, {"mimeTypeIdentifier": "MS_WORD", "downloadUrl": "https://beta-api.uspto.gov/api/v1/download/applications/16123456/K87AK41FRXEAPX5/files/Non-Final%20Rejection.docx"},
-      {"mimeTypeIdentifier": "XML", "downloadUrl": "https://beta-api.uspto.gov/api/v1/download/applications/16123456/K87AK41FRXEAPX5/xmlarchive"}]},
-      {"applicationNumberText": "16123456", "officialDate": "2020-12-22T14:15:20.000-0500",
-      "documentIdentifier": "KJ0DBK1RLDFLYX5", "documentCode": "IFEE", "documentCodeDescriptionText":
-      "Issue Fee Payment (PTO-85B)", "directionCategory": "INCOMING", "downloadOptionBag":
-      [{"mimeTypeIdentifier": "PDF", "downloadUrl": "https://beta-api.uspto.gov/api/v1/download/applications/16123456/KJ0DBK1RLDFLYX5.pdf",
-      "pageTotalQuantity": 1}]}, {"applicationNumberText": "16123456", "officialDate":
-      "2018-09-06T15:08:25.000-0400", "documentIdentifier": "JLQY2TUORXEAPX0", "documentCode":
-      "TRAN.LET", "documentCodeDescriptionText": "Transmittal Letter", "directionCategory":
-      "INCOMING", "downloadOptionBag": [{"mimeTypeIdentifier": "PDF", "downloadUrl":
-      "https://beta-api.uspto.gov/api/v1/download/applications/16123456/JLQY2TUORXEAPX0.pdf",
-      "pageTotalQuantity": 5}]}, {"applicationNumberText": "16123456", "officialDate":
-      "2020-10-20T07:19:47.000-0400", "documentIdentifier": "KGC5TXUNLDFLYX9", "documentCode":
-      "1449", "documentCodeDescriptionText": "List of References cited by applicant
-      and considered by examiner", "directionCategory": "OUTGOING", "downloadOptionBag":
-      [{"mimeTypeIdentifier": "PDF", "downloadUrl": "https://beta-api.uspto.gov/api/v1/download/applications/16123456/KGC5TXUNLDFLYX9.pdf",
-      "pageTotalQuantity": 2}]}, {"applicationNumberText": "16123456", "officialDate":
-      "2020-06-26T07:39:52.000-0400", "documentIdentifier": "KC4PVGZURXEAPX2", "documentCode":
-      "WFEE", "documentCodeDescriptionText": "Fee Worksheet (SB06)", "directionCategory":
-      "INTERNAL", "downloadOptionBag": [{"mimeTypeIdentifier": "PDF", "downloadUrl":
-      "https://beta-api.uspto.gov/api/v1/download/applications/16123456/KC4PVGZURXEAPX2.pdf",
-      "pageTotalQuantity": 1}]}, {"applicationNumberText": "16123456", "officialDate":
-      "2020-09-23T10:47:08.000-0400", "documentIdentifier": "KFCN8CLBRXEAPX3", "documentCode":
-      "NOA", "documentCodeDescriptionText": "Notice of Allowance and Fees Due (PTOL-85)",
-      "directionCategory": "OUTGOING", "downloadOptionBag": [{"mimeTypeIdentifier":
-      "PDF", "downloadUrl": "https://beta-api.uspto.gov/api/v1/download/applications/16123456/KFCN8CLBRXEAPX3.pdf",
-      "pageTotalQuantity": 7}, {"mimeTypeIdentifier": "MS_WORD", "downloadUrl": "https://beta-api.uspto.gov/api/v1/download/applications/16123456/KFCN8CLBRXEAPX3/files/Examiner%20Amendments.docx"},
-      {"mimeTypeIdentifier": "XML", "downloadUrl": "https://beta-api.uspto.gov/api/v1/download/applications/16123456/KFCN8CLBRXEAPX3/xmlarchive"}]},
-      {"applicationNumberText": "16123456", "officialDate": "2018-09-06T15:08:26.000-0400",
-      "documentIdentifier": "JLQY2WZTRXEAPX4", "documentCode": "FOR", "documentCodeDescriptionText":
-      "Foreign Reference", "directionCategory": "INCOMING", "downloadOptionBag": [{"mimeTypeIdentifier":
-      "PDF", "downloadUrl": "https://beta-api.uspto.gov/api/v1/download/applications/16123456/JLQY2WZTRXEAPX4.pdf",
-      "pageTotalQuantity": 13}]}, {"applicationNumberText": "16123456", "officialDate":
-      "2020-10-05T17:19:17.000-0400", "documentIdentifier": "KFX1ELAQLDFLYX7", "documentCode":
-      "WFEE", "documentCodeDescriptionText": "Fee Worksheet (SB06)", "directionCategory":
-      "INTERNAL", "downloadOptionBag": [{"mimeTypeIdentifier": "PDF", "downloadUrl":
-      "https://beta-api.uspto.gov/api/v1/download/applications/16123456/KFX1ELAQLDFLYX7.pdf",
-      "pageTotalQuantity": 2}]}, {"applicationNumberText": "16123456", "officialDate":
-      "2018-09-06T15:08:26.000-0400", "documentIdentifier": "JLQY2WZKRXEAPX4", "documentCode":
-      "IDS", "documentCodeDescriptionText": "Information Disclosure Statement (IDS)
-      Form (SB08)", "directionCategory": "INCOMING", "downloadOptionBag": [{"mimeTypeIdentifier":
-      "PDF", "downloadUrl": "https://beta-api.uspto.gov/api/v1/download/applications/16123456/JLQY2WZKRXEAPX4.pdf",
-      "pageTotalQuantity": 1}, {"mimeTypeIdentifier": "XML", "downloadUrl": "https://beta-api.uspto.gov/api/v1/download/applications/16123456/JLQY2WZKRXEAPX4/xmlarchive"}]},
-      {"applicationNumberText": "16123456", "officialDate": "2020-09-23T10:47:08.000-0400",
-      "documentIdentifier": "KFCN8CLERXEAPX3", "documentCode": "SRFW", "documentCodeDescriptionText":
-      "Search information including classification, databases and other search related
-      notes", "directionCategory": "INTERNAL", "downloadOptionBag": [{"mimeTypeIdentifier":
-      "PDF", "downloadUrl": "https://beta-api.uspto.gov/api/v1/download/applications/16123456/KFCN8CLERXEAPX3.pdf",
-      "pageTotalQuantity": 1}]}, {"applicationNumberText": "16123456", "officialDate":
-      "2020-06-26T15:13:35.000-0400", "documentIdentifier": "KBWLFU3XRXEAPX2", "documentCode":
-      "TRAN.LET", "documentCodeDescriptionText": "Transmittal Letter", "directionCategory":
-      "INCOMING", "downloadOptionBag": [{"mimeTypeIdentifier": "PDF", "downloadUrl":
-      "https://beta-api.uspto.gov/api/v1/download/applications/16123456/KBWLFU3XRXEAPX2.pdf",
-      "pageTotalQuantity": 1}]}, {"applicationNumberText": "16123456", "officialDate":
-      "2020-09-23T10:47:08.000-0400", "documentIdentifier": "KFCN8CLFRXEAPX3", "documentCode":
-      "SRNT", "documentCodeDescriptionText": "Examiner''s search strategy and results",
-      "directionCategory": "INTERNAL", "downloadOptionBag": [{"mimeTypeIdentifier":
-      "PDF", "downloadUrl": "https://beta-api.uspto.gov/api/v1/download/applications/16123456/KFCN8CLFRXEAPX3.pdf",
-      "pageTotalQuantity": 1}]}, {"applicationNumberText": "16123456", "officialDate":
-      "2021-01-06T18:47:08.000-0500", "documentIdentifier": "KJM2MWIEDFLYX10", "documentCode":
-      "ISSUE.NTF", "documentCodeDescriptionText": "Issue Notification", "directionCategory":
-      "OUTGOING", "downloadOptionBag": [{"mimeTypeIdentifier": "PDF", "downloadUrl":
-      "https://beta-api.uspto.gov/api/v1/download/applications/16123456/KJM2MWIEDFLYX10.pdf",
-      "pageTotalQuantity": 1}]}, {"applicationNumberText": "16123456", "officialDate":
-      "2020-10-05T17:19:17.000-0400", "documentIdentifier": "KFX1ELASLDFLYX7", "documentCode":
-      "FOR", "documentCodeDescriptionText": "Foreign Reference", "directionCategory":
-      "INCOMING", "downloadOptionBag": [{"mimeTypeIdentifier": "PDF", "downloadUrl":
-      "https://beta-api.uspto.gov/api/v1/download/applications/16123456/KFX1ELASLDFLYX7.pdf",
-      "pageTotalQuantity": 6}]}, {"applicationNumberText": "16123456", "officialDate":
-      "2020-06-26T15:13:35.000-0400", "documentIdentifier": "KBWLFU3TRXEAPX2", "documentCode":
-      "A...", "documentCodeDescriptionText": "Amendment/Request for Reconsideration-After
-      Non-Final Rejection", "directionCategory": "INCOMING", "downloadOptionBag":
-      [{"mimeTypeIdentifier": "PDF", "downloadUrl": "https://beta-api.uspto.gov/api/v1/download/applications/16123456/KBWLFU3TRXEAPX2.pdf",
-      "pageTotalQuantity": 1}]}, {"applicationNumberText": "16123456", "officialDate":
-      "2020-06-09T01:28:00.000-0400", "documentIdentifier": "KB3753VDRXEAPX1", "documentCode":
-      "INTV.SUM.APP", "documentCodeDescriptionText": "Applicant Initiated Interview
-      Summary (PTOL-413)", "directionCategory": "OUTGOING", "downloadOptionBag": [{"mimeTypeIdentifier":
-      "PDF", "downloadUrl": "https://beta-api.uspto.gov/api/v1/download/applications/16123456/KB3753VDRXEAPX1.pdf",
-      "pageTotalQuantity": 3}]}, {"applicationNumberText": "16123456", "officialDate":
-      "2020-03-27T08:15:37.000-0400", "documentIdentifier": "K87AK41LRXEAPX5", "documentCode":
-      "BIB", "documentCodeDescriptionText": "Bibliographic Data Sheet", "directionCategory":
-      "INTERNAL", "downloadOptionBag": [{"mimeTypeIdentifier": "PDF", "downloadUrl":
-      "https://beta-api.uspto.gov/api/v1/download/applications/16123456/K87AK41LRXEAPX5.pdf",
-      "pageTotalQuantity": 1}]}, {"applicationNumberText": "16123456", "officialDate":
-      "2018-10-12T07:10:24.000-0400", "documentIdentifier": "JN4HEWH3RXEAPX5", "documentCode":
-      "APP.FILE.REC", "documentCodeDescriptionText": "Filing Receipt", "directionCategory":
-      "OUTGOING", "downloadOptionBag": [{"mimeTypeIdentifier": "PDF", "downloadUrl":
-      "https://beta-api.uspto.gov/api/v1/download/applications/16123456/JN4HEWH3RXEAPX5.pdf",
-      "pageTotalQuantity": 4}]}, {"applicationNumberText": "16123456", "officialDate":
-      "2018-09-06T15:08:26.000-0400", "documentIdentifier": "JLQY2WZQRXEAPX4", "documentCode":
-      "ABST", "documentCodeDescriptionText": "Abstract", "directionCategory": "INCOMING",
-      "downloadOptionBag": [{"mimeTypeIdentifier": "PDF", "downloadUrl": "https://beta-api.uspto.gov/api/v1/download/applications/16123456/JLQY2WZQRXEAPX4.pdf",
-      "pageTotalQuantity": 1}, {"mimeTypeIdentifier": "XML", "downloadUrl": "https://beta-api.uspto.gov/api/v1/download/applications/16123456/JLQY2WZQRXEAPX4/xmlarchive"}]},
-      {"applicationNumberText": "16123456", "officialDate": "2020-10-19T11:19:45.000-0400",
-      "documentIdentifier": "KGAYYNY3LDFLYX5", "documentCode": "M327", "documentCodeDescriptionText":
-      "Miscellaneous Communication to Applicant - No Action Count", "directionCategory":
-      "OUTGOING", "downloadOptionBag": [{"mimeTypeIdentifier": "PDF", "downloadUrl":
-      "https://beta-api.uspto.gov/api/v1/download/applications/16123456/KGAYYNY3LDFLYX5.pdf",
-      "pageTotalQuantity": 2}]}, {"applicationNumberText": "16123456", "officialDate":
-      "2020-03-27T08:15:37.000-0400", "documentIdentifier": "K87AK41KRXEAPX5", "documentCode":
-      "SRNT", "documentCodeDescriptionText": "Examiner''s search strategy and results",
-      "directionCategory": "INTERNAL", "downloadOptionBag": [{"mimeTypeIdentifier":
-      "PDF", "downloadUrl": "https://beta-api.uspto.gov/api/v1/download/applications/16123456/K87AK41KRXEAPX5.pdf",
-      "pageTotalQuantity": 2}]}, {"applicationNumberText": "16123456", "officialDate":
-      "2020-12-22T14:15:20.000-0500", "documentIdentifier": "KJ0DBK1SLDFLYX5", "documentCode":
-      "WFEE", "documentCodeDescriptionText": "Fee Worksheet (SB06)", "directionCategory":
-      "INTERNAL", "downloadOptionBag": [{"mimeTypeIdentifier": "PDF", "downloadUrl":
-      "https://beta-api.uspto.gov/api/v1/download/applications/16123456/KJ0DBK1SLDFLYX5.pdf",
-      "pageTotalQuantity": 2}]}, {"applicationNumberText": "16123456", "officialDate":
-      "2018-09-06T15:08:25.000-0400", "documentIdentifier": "JLQY2TS1RXEAPX0", "documentCode":
-      "TRNA", "documentCodeDescriptionText": "Transmittal of New Application", "directionCategory":
-      "INCOMING", "downloadOptionBag": [{"mimeTypeIdentifier": "PDF", "downloadUrl":
-      "https://beta-api.uspto.gov/api/v1/download/applications/16123456/JLQY2TS1RXEAPX0.pdf",
-      "pageTotalQuantity": 1}]}, {"applicationNumberText": "16123456", "officialDate":
-      "2020-06-26T15:13:35.000-0400", "documentIdentifier": "KBWLFU3URXEAPX2", "documentCode":
-      "CLM", "documentCodeDescriptionText": "Claims", "directionCategory": "INCOMING",
-      "downloadOptionBag": [{"mimeTypeIdentifier": "PDF", "downloadUrl": "https://beta-api.uspto.gov/api/v1/download/applications/16123456/KBWLFU3URXEAPX2.pdf",
-      "pageTotalQuantity": 7}, {"mimeTypeIdentifier": "XML", "downloadUrl": "https://beta-api.uspto.gov/api/v1/download/applications/16123456/KBWLFU3URXEAPX2/xmlarchive"}]},
-      {"applicationNumberText": "16123456", "officialDate": "2018-09-06T15:08:26.000-0400",
-      "documentIdentifier": "JLQY2WZORXEAPX4", "documentCode": "SPEC", "documentCodeDescriptionText":
-      "Specification", "directionCategory": "INCOMING", "downloadOptionBag": [{"mimeTypeIdentifier":
-      "PDF", "downloadUrl": "https://beta-api.uspto.gov/api/v1/download/applications/16123456/JLQY2WZORXEAPX4.pdf",
-      "pageTotalQuantity": 22}, {"mimeTypeIdentifier": "XML", "downloadUrl": "https://beta-api.uspto.gov/api/v1/download/applications/16123456/JLQY2WZORXEAPX4/xmlarchive"}]},
-      {"applicationNumberText": "16123456", "officialDate": "2018-09-06T15:08:26.000-0400",
-      "documentIdentifier": "JLQY2WZRRXEAPX4", "documentCode": "OATH", "documentCodeDescriptionText":
-      "Oath or Declaration filed", "directionCategory": "INCOMING", "downloadOptionBag":
-      [{"mimeTypeIdentifier": "PDF", "downloadUrl": "https://beta-api.uspto.gov/api/v1/download/applications/16123456/JLQY2WZRRXEAPX4.pdf",
-      "pageTotalQuantity": 2}]}, {"applicationNumberText": "16123456", "officialDate":
-      "2022-08-26T08:51:27.000-0400", "documentIdentifier": "L7AH385RGREENX5", "documentCode":
-      "SRNT", "documentCodeDescriptionText": "Examiner''s search strategy and results",
-      "directionCategory": "INTERNAL", "downloadOptionBag": [{"mimeTypeIdentifier":
-      "PDF", "downloadUrl": "https://beta-api.uspto.gov/api/v1/download/applications/16123456/L7AH385RGREENX5.pdf",
-      "pageTotalQuantity": 1}]}, {"applicationNumberText": "16123456", "officialDate":
-      "2020-10-20T07:19:47.000-0400", "documentIdentifier": "KGC5TXULLDFLYX9", "documentCode":
-      "NOA", "documentCodeDescriptionText": "Notice of Allowance and Fees Due (PTOL-85)",
-      "directionCategory": "OUTGOING", "downloadOptionBag": [{"mimeTypeIdentifier":
-      "PDF", "downloadUrl": "https://beta-api.uspto.gov/api/v1/download/applications/16123456/KGC5TXULLDFLYX9.pdf",
-      "pageTotalQuantity": 2}]}, {"applicationNumberText": "16123456", "officialDate":
-      "2020-03-27T08:15:37.000-0400", "documentIdentifier": "K87AK41HRXEAPX5", "documentCode":
-      "892", "documentCodeDescriptionText": "List of references cited by examiner",
-      "directionCategory": "OUTGOING", "downloadOptionBag": [{"mimeTypeIdentifier":
-      "PDF", "downloadUrl": "https://beta-api.uspto.gov/api/v1/download/applications/16123456/K87AK41HRXEAPX5.pdf",
-      "pageTotalQuantity": 1}]}, {"applicationNumberText": "16123456", "officialDate":
-      "2020-10-05T17:19:17.000-0400", "documentIdentifier": "KFX1ELAVLDFLYX7", "documentCode":
-      "TRAN.LET", "documentCodeDescriptionText": "Transmittal Letter", "directionCategory":
-      "INCOMING", "downloadOptionBag": [{"mimeTypeIdentifier": "PDF", "downloadUrl":
-      "https://beta-api.uspto.gov/api/v1/download/applications/16123456/KFX1ELAVLDFLYX7.pdf",
-      "pageTotalQuantity": 5}]}, {"applicationNumberText": "16123456", "officialDate":
-      "2019-03-28T09:59:47.000-0400", "documentIdentifier": "JTSPFUAFRXEAPX4", "documentCode":
-      "NTC.PUB", "documentCodeDescriptionText": "Notice of Publication", "directionCategory":
-      "OUTGOING", "downloadOptionBag": [{"mimeTypeIdentifier": "PDF", "downloadUrl":
-      "https://beta-api.uspto.gov/api/v1/download/applications/16123456/JTSPFUAFRXEAPX4.pdf",
-      "pageTotalQuantity": 1}]}, {"applicationNumberText": "16123456", "officialDate":
-      "2020-03-27T08:15:37.000-0400", "documentIdentifier": "K87AK41JRXEAPX5", "documentCode":
-      "FWCLM", "documentCodeDescriptionText": "Index of Claims", "directionCategory":
-      "INTERNAL", "downloadOptionBag": [{"mimeTypeIdentifier": "PDF", "downloadUrl":
-      "https://beta-api.uspto.gov/api/v1/download/applications/16123456/K87AK41JRXEAPX5.pdf",
-      "pageTotalQuantity": 1}]}, {"applicationNumberText": "16123456", "officialDate":
-      "2020-06-26T15:13:35.000-0400", "documentIdentifier": "KBWLFU3WRXEAPX2", "documentCode":
-      "N417", "documentCodeDescriptionText": "Electronic Filing System Acknowledgment
-      Receipt", "directionCategory": "OUTGOING", "downloadOptionBag": [{"mimeTypeIdentifier":
-      "PDF", "downloadUrl": "https://beta-api.uspto.gov/api/v1/download/applications/16123456/KBWLFU3WRXEAPX2.pdf",
-      "pageTotalQuantity": 2}]}, {"applicationNumberText": "16123456", "officialDate":
-      "2018-09-06T07:55:43.000-0400", "documentIdentifier": "JMT3ID42RXEAPX1", "documentCode":
-      "SCORE", "documentCodeDescriptionText": "Placeholder sheet indicating presence
-      of supplemental content in Supplemental Complex Repository for Examiners(SCORE)",
-      "directionCategory": "INTERNAL", "downloadOptionBag": [{"mimeTypeIdentifier":
-      "PDF", "downloadUrl": "https://beta-api.uspto.gov/api/v1/download/applications/16123456/JMT3ID42RXEAPX1.pdf",
-      "pageTotalQuantity": 1}]}, {"applicationNumberText": "16123456", "officialDate":
-      "2018-09-06T15:08:26.000-0400", "documentIdentifier": "JLQY2WZSRXEAPX4", "documentCode":
-      "DRW.NONBW", "documentCodeDescriptionText": "Drawings-other than black and white
-      line drawings", "directionCategory": "INCOMING", "downloadOptionBag": [{"mimeTypeIdentifier":
-      "PDF", "downloadUrl": "https://beta-api.uspto.gov/api/v1/download/applications/16123456/JLQY2WZSRXEAPX4.pdf",
-      "pageTotalQuantity": 9}]}, {"applicationNumberText": "16123456", "officialDate":
-      "2020-09-23T10:47:08.000-0400", "documentIdentifier": "KFCN8CLCRXEAPX3", "documentCode":
-      "IIFW", "documentCodeDescriptionText": "Issue Information including classification,
-      examiner, name, claim, renumbering, etc.", "directionCategory": "INTERNAL",
-      "downloadOptionBag": [{"mimeTypeIdentifier": "PDF", "downloadUrl": "https://beta-api.uspto.gov/api/v1/download/applications/16123456/KFCN8CLCRXEAPX3.pdf",
-      "pageTotalQuantity": 3}]}, {"applicationNumberText": "16123456", "officialDate":
-      "2020-10-05T17:19:17.000-0400", "documentIdentifier": "KFX1ELAPLDFLYX7", "documentCode":
-      "IDS", "documentCodeDescriptionText": "Information Disclosure Statement (IDS)
-      Form (SB08)", "directionCategory": "INCOMING", "downloadOptionBag": [{"mimeTypeIdentifier":
-      "PDF", "downloadUrl": "https://beta-api.uspto.gov/api/v1/download/applications/16123456/KFX1ELAPLDFLYX7.pdf",
-      "pageTotalQuantity": 2}, {"mimeTypeIdentifier": "XML", "downloadUrl": "https://beta-api.uspto.gov/api/v1/download/applications/16123456/KFX1ELAPLDFLYX7/xmlarchive"}]},
-      {"applicationNumberText": "16123456", "officialDate": "2020-06-26T15:13:35.000-0400",
-      "documentIdentifier": "KBWLFU3VRXEAPX2", "documentCode": "REM", "documentCodeDescriptionText":
-      "Applicant Arguments/Remarks Made in an Amendment", "directionCategory": "INCOMING",
-      "downloadOptionBag": [{"mimeTypeIdentifier": "PDF", "downloadUrl": "https://beta-api.uspto.gov/api/v1/download/applications/16123456/KBWLFU3VRXEAPX2.pdf",
-      "pageTotalQuantity": 6}, {"mimeTypeIdentifier": "XML", "downloadUrl": "https://beta-api.uspto.gov/api/v1/download/applications/16123456/KBWLFU3VRXEAPX2/xmlarchive"}]},
-      {"applicationNumberText": "16123456", "officialDate": "2020-03-27T08:15:37.000-0400",
-      "documentIdentifier": "K87AK41IRXEAPX5", "documentCode": "SRFW", "documentCodeDescriptionText":
-      "Search information including classification, databases and other search related
-      notes", "directionCategory": "INTERNAL", "downloadOptionBag": [{"mimeTypeIdentifier":
-      "PDF", "downloadUrl": "https://beta-api.uspto.gov/api/v1/download/applications/16123456/K87AK41IRXEAPX5.pdf",
-      "pageTotalQuantity": 1}]}, {"applicationNumberText": "16123456", "officialDate":
-      "2020-03-27T08:15:37.000-0400", "documentIdentifier": "K87AK41MRXEAPX5", "documentCode":
-      "1449", "documentCodeDescriptionText": "List of References cited by applicant
-      and considered by examiner", "directionCategory": "OUTGOING", "downloadOptionBag":
-      [{"mimeTypeIdentifier": "PDF", "downloadUrl": "https://beta-api.uspto.gov/api/v1/download/applications/16123456/K87AK41MRXEAPX5.pdf",
-      "pageTotalQuantity": 1}]}, {"applicationNumberText": "16123456", "officialDate":
-      "2018-09-06T15:08:25.000-0400", "documentIdentifier": "JLQY2TS2RXEAPX0", "documentCode":
-      "LET.", "documentCodeDescriptionText": "Miscellaneous Incoming Letter", "directionCategory":
-      "INCOMING", "downloadOptionBag": [{"mimeTypeIdentifier": "PDF", "downloadUrl":
-      "https://beta-api.uspto.gov/api/v1/download/applications/16123456/JLQY2TS2RXEAPX0.pdf",
-      "pageTotalQuantity": 1}]}, {"applicationNumberText": "16123456", "officialDate":
-      "2018-09-06T15:08:25.000-0400", "documentIdentifier": "JLQY2TUNRXEAPX0", "documentCode":
-      "PA..", "documentCodeDescriptionText": "Power of Attorney", "directionCategory":
-      "INCOMING", "downloadOptionBag": [{"mimeTypeIdentifier": "PDF", "downloadUrl":
-      "https://beta-api.uspto.gov/api/v1/download/applications/16123456/JLQY2TUNRXEAPX0.pdf",
-      "pageTotalQuantity": 2}]}, {"applicationNumberText": "16123456", "officialDate":
-      "2020-12-22T14:15:20.000-0500", "documentIdentifier": "KJ0DBK1TLDFLYX5", "documentCode":
-      "N417", "documentCodeDescriptionText": "Electronic Filing System Acknowledgment
-      Receipt", "directionCategory": "OUTGOING", "downloadOptionBag": [{"mimeTypeIdentifier":
-      "PDF", "downloadUrl": "https://beta-api.uspto.gov/api/v1/download/applications/16123456/KJ0DBK1TLDFLYX5.pdf",
-      "pageTotalQuantity": 2}]}, {"applicationNumberText": "16123456", "officialDate":
-      "2018-09-06T15:08:26.000-0400", "documentIdentifier": "JLQY2WZLRXEAPX4", "documentCode":
-      "WFEE", "documentCodeDescriptionText": "Fee Worksheet (SB06)", "directionCategory":
-      "INTERNAL", "downloadOptionBag": [{"mimeTypeIdentifier": "PDF", "downloadUrl":
-      "https://beta-api.uspto.gov/api/v1/download/applications/16123456/JLQY2WZLRXEAPX4.pdf",
-      "pageTotalQuantity": 2}]}, {"applicationNumberText": "16123456", "officialDate":
-      "2018-09-06T15:08:26.000-0400", "documentIdentifier": "JLQY2WZMRXEAPX4", "documentCode":
-      "N417", "documentCodeDescriptionText": "Electronic Filing System Acknowledgment
-      Receipt", "directionCategory": "OUTGOING", "downloadOptionBag": [{"mimeTypeIdentifier":
-      "PDF", "downloadUrl": "https://beta-api.uspto.gov/api/v1/download/applications/16123456/JLQY2WZMRXEAPX4.pdf",
-      "pageTotalQuantity": 3}]}, {"applicationNumberText": "16123456", "officialDate":
-      "2018-09-06T00:00:00.000-0400", "documentIdentifier": "09323b6782e30c1d", "documentCode":
-      "DRW.SUPP", "documentCodeDescriptionText": "Drawings-black and white line and/or
-      other drawings", "directionCategory": "INCOMING", "downloadOptionBag": [{"mimeTypeIdentifier":
-      "PDF", "downloadUrl": "https://beta-api.uspto.gov/api/v1/download/applications/16123456/09323b6782e30c1d/files/2018-09-06_Drawings-As-Filed_1982-1042PUS1.pdf"}]}]}'
-    headers:
-      access-control-allow-headers:
-      - '*'
-      access-control-allow-methods:
-      - GET, OPTIONS
-      access-control-allow-origin:
-      - '*'
-      content-length:
-      - '25364'
-      content-type:
-      - application/json
-      date:
-      - Wed, 22 May 2024 16:00:15 GMT
-      x-amz-apigw-id:
-      - YLh2YEpuIAMFdDA=
-      x-amzn-requestid:
-      - 3193bad4-56c4-4695-85af-fe31f24b057d
-      x-amzn-trace-id:
-      - Root=1-664e168e-61b052550ccbd5b7086bd232;Parent=65bcfb8630360260;Sampled=0;lineage=1430c078:0|53981e07:0
+      - Root=1-67b3b599-751fd40602d17db17cd901fc;Parent=7dfbc98ad0b60351;Sampled=0;Lineage=1:9bd78c15:0
     http_version: HTTP/2
     status_code: 200
 version: 1

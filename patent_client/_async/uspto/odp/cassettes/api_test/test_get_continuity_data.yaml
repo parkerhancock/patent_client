@@ -13,17 +13,17 @@ interactions:
       host:
       - beta-api.uspto.gov
       user-agent:
-      - Mozilla/5.0 Python Patent Clientbot/5.0.14 (parkerhancock@users.noreply.github.com)
+      - Mozilla/5.0 Python Patent Clientbot/5.0.16 (parkerhancock@users.noreply.github.com)
     method: GET
     uri: https://beta-api.uspto.gov/api/v1/patent/applications/15123456/continuity
   response:
-    content: '{"count":1,"patentBag":[{"continuityBag":{"parentContinuityBag":[{"parentApplicationStatusCode":161,"claimParentageTypeCode":"NST","claimParentageTypeCodeDescription":"is
+    content: '{"count":1,"patentFileWrapperDataBag":[{"parentContinuityBag":[{"parentApplicationStatusCode":161,"claimParentageTypeCode":"NST","claimParentageTypeCodeDescriptionText":"is
       a National Stage Entry of","parentApplicationStatusDescriptionText":"Abandoned  --  Failure
-      to Respond to an Office Action","parentApplicationNumberText":"PCT/US15/27322","parentApplicationFilingDate":"2015-04-23","childApplicationNumberText":"15123456"},{"parentApplicationStatusCode":159,"claimParentageTypeCode":"PRO","claimParentageTypeCodeDescription":"Claims
+      to Respond to an Office Action","parentApplicationNumberText":"PCTUS1527322","parentApplicationFilingDate":"2015-04-23","childApplicationNumberText":"15123456"},{"parentApplicationStatusCode":159,"claimParentageTypeCode":"PRO","claimParentageTypeCodeDescriptionText":"Claims
       priority from a provisional application","parentApplicationStatusDescriptionText":"Provisional
-      Application Expired","parentApplicationNumberText":"61983088","parentApplicationFilingDate":"2014-04-23","childApplicationNumberText":"PCT/US15/27322"}],"childContinuityBag":[{"childApplicationStatusDescriptionText":"Abandoned  --  Incomplete
-      Application (Pre-examination)","claimParentageTypeCode":"CON","childApplicationStatusCode":160,"claimParentageTypeCodeDescription":"is
-      a Continuation of","parentApplicationNumberText":"15123456","childApplicationFilingDate":"2018-09-14","childApplicationNumberText":"16132008"}]}}],"requestIdentifier":"c8456e73-afee-4021-802a-9607cbf02aaf"}'
+      Application Expired","parentApplicationNumberText":"61983088","parentApplicationFilingDate":"2014-04-23","childApplicationNumberText":"PCTUS1527322"}],"childContinuityBag":[{"childApplicationStatusDescriptionText":"Abandoned  --  Incomplete
+      Application (Pre-examination)","claimParentageTypeCode":"CON","childApplicationStatusCode":160,"claimParentageTypeCodeDescriptionText":"is
+      a Continuation of","parentApplicationNumberText":"15123456","childApplicationFilingDate":"2018-09-14","childApplicationNumberText":"16132008"}],"applicationNumberText":"15123456"}],"requestIdentifier":"64f74de6-40a3-460c-93eb-56a3131f8e35"}'
     headers:
       access-control-allow-headers:
       - Origin, X-Requested-With, Content-Type, Accept
@@ -32,17 +32,17 @@ interactions:
       access-control-allow-origin:
       - '*'
       content-length:
-      - '1215'
+      - '1255'
       content-type:
       - application/json
       date:
-      - Wed, 22 May 2024 16:03:18 GMT
+      - Mon, 17 Feb 2025 22:17:58 GMT
       x-amz-apigw-id:
-      - YLiTAGG7oAMFTVQ=
+      - GJlPiGHpIAMFkbQ=
       x-amzn-requestid:
-      - c8456e73-afee-4021-802a-9607cbf02aaf
+      - 64f74de6-40a3-460c-93eb-56a3131f8e35
       x-amzn-trace-id:
-      - Root=1-664e1746-4520d7831592ba3f1b2df383;Parent=121a3ce1a7948af9;Sampled=0;lineage=33e8fdb8:0
+      - Root=1-67b3b596-180a300b60382913318adad1;Parent=3b2bc8dcf7c55fe1;Sampled=0;Lineage=1:9bd78c15:0
     http_version: HTTP/2
     status_code: 200
 version: 1

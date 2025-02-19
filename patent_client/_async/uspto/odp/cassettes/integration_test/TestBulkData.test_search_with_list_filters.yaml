@@ -1,0 +1,84 @@
+interactions:
+- request:
+    body: ''
+    headers:
+      X-API-KEY:
+      - REDACTED
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - beta-api.uspto.gov
+      user-agent:
+      - Mozilla/5.0 Python Patent Clientbot/5.0.16 (parkerhancock@users.noreply.github.com)
+    method: GET
+    uri: https://beta-api.uspto.gov/api/v1/datasets/products/search?offset=0&limit=5&facets=false&includeFiles=false&latest=false&labels=PATENT%2CTRADEMARK&fileTypes=JSON%2CXML
+  response:
+    content: "{\"count\":5,\"bulkDataProductBag\":[{\"productIdentifier\":\"APPDT\",\"productDescriptionText\":\"Contains
+      the full text, images/drawings, and complex work units (tables, mathematical
+      expressions, chemical structures, and genetic sequence data) of each patent
+      application (non-provisional utility and plant) published weekly (Thursdays)
+      from March 15, 2001 to present.\",\"productTitleText\":\"Patent Application
+      Full Text Data with Embedded TIFF Images (Application Red Book based on WIPO
+      ST.36)\",\"productFrequencyText\":\"WEEKLY\",\"daysOfWeekText\":\"THURSDAY\",\"productLabelArrayText\":[\"Patent\"],\"productDatasetArrayText\":[\"Authoritative\"],\"productDatasetCategoryArrayText\":[\"Patent
+      Application\"],\"productFromDate\":\"2001-03-15\",\"productToDate\":\"2025-02-13\",\"productTotalFileSize\":3788926555439,\"productFileTotalQuantity\":1869,\"lastModifiedDateTime\":\"2025-02-18
+      12:02:00\",\"mimeTypeIdentifierArrayText\":[\"XML\"]},{\"productIdentifier\":\"PTGRAPS\",\"productDescriptionText\":\"Contains
+      the concatenated full-text of each patent grant document issued weekly (Tuesdays)
+      from January 1, 1976 to present (excludes images/drawings). This is the subset
+      of the Patent Grant Full Text Data with Embedded TIFF Images.\",\"productTitleText\":\"Patent
+      Grant Full-Text Data (No Images) - APS\",\"productFrequencyText\":\"YEARLY\",\"productLabelArrayText\":[\"Patent\"],\"productDatasetArrayText\":[\"Authoritative\"],\"productDatasetCategoryArrayText\":[\"Issued
+      patents (patent grants)\"],\"productFromDate\":\"1970-10-02\",\"productToDate\":\"2017-04-03\",\"productTotalFileSize\":25938442242,\"productFileTotalQuantity\":1382,\"lastModifiedDateTime\":\"2025-02-18
+      12:02:00\",\"mimeTypeIdentifierArrayText\":[\"ASCII\",\"XML\"]},{\"productIdentifier\":\"PTGRXML\",\"productDescriptionText\":\"Provides
+      the bulk zip files that contains the concatenated full-text of each patent grant
+      document issued weekly. This page provides an additional feature called \u201CView
+      Patent Records\u201D which allows user to find or discover the patent grants
+      that are bundled in the zip file. Even though the zip file may contain grants
+      that belong to the applications which were filed before 2001, ODP will only
+      show the grants that belong to the applications that were filed from 2001.\",\"productTitleText\":\"Patent
+      Grant Full-Text Data (No Images) - XML\",\"productFrequencyText\":\"WEEKLY\",\"daysOfWeekText\":\"TUESDAY\",\"productLabelArrayText\":[\"Patent\"],\"productDatasetArrayText\":[\"Authoritative\"],\"productDatasetCategoryArrayText\":[\"Issued
+      patents (patent grants)\"],\"productFromDate\":\"2002-01-01\",\"productToDate\":\"2025-02-18\",\"productTotalFileSize\":115580062700,\"productFileTotalQuantity\":1233,\"lastModifiedDateTime\":\"2025-02-18
+      12:01:00\",\"mimeTypeIdentifierArrayText\":[\"ASCII\",\"XML\"]},{\"productIdentifier\":\"APPXML\",\"productDescriptionText\":\"Provides
+      the bulk zip files that contain the concatenated full-text of each patent application
+      XML document (non-provisional utility and plant). This page provides an additional
+      feature called \u201CView Patent Records\u201D which allows user to find or
+      discover the patent applications that are bundled in the zip file. However,
+      in this zip file, there may be applications that are not available in ODP and
+      will not be included in the search results. Also, if there are revisions to
+      the applications, the file will only show the original application.\",\"productTitleText\":\"Patent
+      Application Full-Text Data (No Images)\",\"productFrequencyText\":\"WEEKLY\",\"daysOfWeekText\":\"THURSDAY\",\"productLabelArrayText\":[\"Patent\"],\"productDatasetArrayText\":[\"Authoritative\"],\"productDatasetCategoryArrayText\":[\"Patent
+      Application\"],\"productFromDate\":\"2001-03-15\",\"productToDate\":\"2025-02-13\",\"productTotalFileSize\":151758702915,\"productFileTotalQuantity\":1302,\"lastModifiedDateTime\":\"2025-02-18
+      12:01:00\",\"mimeTypeIdentifierArrayText\":[\"XML\"]},{\"productIdentifier\":\"APPBLXML\",\"productDescriptionText\":\"Contains
+      the concatenated bibliographic text (front page) of each patent application
+      XML document (non-provisional utility and plant) published weekly (Thursdays)
+      from March 15, 2001 to present (excludes images/drawings). Subset of the Patent
+      Application Full Text Data. Note: The concatenated file in its entirety is not
+      a valid XML document; it must be un-concatenated back to individual XML documents
+      for XML data processing.\",\"productTitleText\":\"Patent Application Bibliographic
+      (Front Page) Data\",\"productFrequencyText\":\"WEEKLY\",\"daysOfWeekText\":\"THURSDAY\",\"productLabelArrayText\":[\"Patent\"],\"productDatasetArrayText\":[\"Authoritative\"],\"productDatasetCategoryArrayText\":[\"Patent
+      Application\"],\"productFromDate\":\"2001-03-15\",\"productToDate\":\"2025-02-13\",\"productTotalFileSize\":4586523499,\"productFileTotalQuantity\":1302,\"lastModifiedDateTime\":\"2025-02-18
+      12:01:00\",\"mimeTypeIdentifierArrayText\":[\"XML\"]}]}"
+    headers:
+      access-control-allow-headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      access-control-allow-methods:
+      - OPTIONS,GET
+      access-control-allow-origin:
+      - '*'
+      content-length:
+      - '4719'
+      content-type:
+      - application/json
+      date:
+      - Tue, 18 Feb 2025 17:35:00 GMT
+      x-amz-apigw-id:
+      - GMOurGq_oAMFj8w=
+      x-amzn-requestid:
+      - 9addd117-dea3-4096-a358-3d2eaa73d9d7
+      x-amzn-trace-id:
+      - Root=1-67b4c4c3-18678eed7afa94aa0efc8bee;Parent=7c4c1cdbf91fc6f8;Sampled=0;Lineage=1:d7dee2c6:0
+    http_version: HTTP/2
+    status_code: 200
+version: 1

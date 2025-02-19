@@ -1,7 +1,7 @@
 interactions:
 - request:
     body: '{"q": "inventionTitle:(Hair Dryer)", "rangeFilters": [{"field": "filingDate",
-      "valueFrom": "2020-01-01", "valueTo": "2024-05-22"}], "fields": ["applicationNumberText"],
+      "valueFrom": "2020-01-01", "valueTo": "2025-02-17"}], "fields": ["applicationNumberText"],
       "pagination": {"offset": 0, "limit": 25}}'
     headers:
       X-API-KEY:
@@ -19,11 +19,12 @@ interactions:
       host:
       - beta-api.uspto.gov
       user-agent:
-      - Mozilla/5.0 Python Patent Clientbot/5.0.14 (parkerhancock@users.noreply.github.com)
+      - Mozilla/5.0 Python Patent Clientbot/5.0.16 (parkerhancock@users.noreply.github.com)
     method: POST
     uri: https://beta-api.uspto.gov/api/v1/patent/applications/search
   response:
-    content: '{"count":4080,"patentBag":[{"applicationNumberText":"18283924"},{"applicationNumberText":"18695537"},{"applicationNumberText":"29931489"},{"applicationNumberText":"29931490"},{"applicationNumberText":"29931488"},{"applicationNumberText":"18551286"},{"applicationNumberText":"35520490"},{"applicationNumberText":"29927368"},{"applicationNumberText":"29927366"},{"applicationNumberText":"29927367"},{"applicationNumberText":"18294305"},{"applicationNumberText":"18422701"},{"applicationNumberText":"18422684"},{"applicationNumberText":"29925080"},{"applicationNumberText":"18419319"},{"applicationNumberText":"18290788"},{"applicationNumberText":"18580936"},{"applicationNumberText":"29924549"},{"applicationNumberText":"35520235"},{"applicationNumberText":"35519938"},{"applicationNumberText":"35519933"},{"applicationNumberText":"18414179"},{"applicationNumberText":"18413787"},{"applicationNumberText":"29908133"},{"applicationNumberText":"18410892"}],"requestIdentifier":"faf8d791-91ec-47b7-9156-23ed0066c788"}'
+    content: '{"code":"404","message":"Not Found","detailedMessage":"No matching records
+      found, refine your search criteria and try again","requestIdentifier":"4ee84848-045f-47bd-a371-f5fa46e74c15"}'
     headers:
       access-control-allow-headers:
       - Origin, X-Requested-With, Content-Type, Accept
@@ -32,17 +33,19 @@ interactions:
       access-control-allow-origin:
       - '*'
       content-length:
-      - '1012'
+      - '184'
       content-type:
       - application/json
+      correlation-id:
+      - 4ee84848-045f-47bd-a371-f5fa46e74c15
       date:
-      - Wed, 22 May 2024 16:19:32 GMT
+      - Mon, 17 Feb 2025 22:18:01 GMT
       x-amz-apigw-id:
-      - YLkrKEJrIAMFe4w=
+      - GJlQCEW9oAMFglQ=
       x-amzn-requestid:
-      - faf8d791-91ec-47b7-9156-23ed0066c788
+      - 4ee84848-045f-47bd-a371-f5fa46e74c15
       x-amzn-trace-id:
-      - Root=1-664e1b13-3ef06d56017107c64e09529b;Parent=2d35b29790aa485b;Sampled=0;lineage=33e8fdb8:0
+      - Root=1-67b3b599-3389704304323d3959abfc02;Parent=2a45c7715809f8e0;Sampled=0;Lineage=1:9bd78c15:0
     http_version: HTTP/2
-    status_code: 200
+    status_code: 404
 version: 1

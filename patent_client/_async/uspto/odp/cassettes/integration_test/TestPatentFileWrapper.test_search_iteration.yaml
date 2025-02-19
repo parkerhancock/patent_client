@@ -1,0 +1,92 @@
+interactions:
+- request:
+    body: '{"fields": ["applicationNumberText"], "pagination": {"offset": 0, "limit":
+      1}}'
+    headers:
+      X-API-KEY:
+      - REDACTED
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '78'
+      content-type:
+      - application/json
+      host:
+      - beta-api.uspto.gov
+      user-agent:
+      - Mozilla/5.0 Python Patent Clientbot/5.0.16 (parkerhancock@users.noreply.github.com)
+    method: POST
+    uri: https://beta-api.uspto.gov/api/v1/patent/applications/search
+  response:
+    content: '{"count":11059305,"patentFileWrapperDataBag":[{"applicationNumberText":"29989499"}],"requestIdentifier":"e966ce7c-1294-47c4-8f27-82ba2253f27a"}'
+    headers:
+      access-control-allow-headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      access-control-allow-methods:
+      - OPTIONS,POST,GET
+      access-control-allow-origin:
+      - '*'
+      content-length:
+      - '143'
+      content-type:
+      - application/json
+      date:
+      - Tue, 18 Feb 2025 17:33:31 GMT
+      x-amz-apigw-id:
+      - GMOgyEvPoAMFUdg=
+      x-amzn-requestid:
+      - e966ce7c-1294-47c4-8f27-82ba2253f27a
+      x-amzn-trace-id:
+      - Root=1-67b4c46b-7d1a20d23c57b4742e178ae9;Parent=1d2e2533dc8eb333;Sampled=0;Lineage=1:9bd78c15:0
+    http_version: HTTP/2
+    status_code: 200
+- request:
+    body: '{"fields": ["applicationNumberText"], "pagination": {"offset": 0, "limit":
+      10}}'
+    headers:
+      X-API-KEY:
+      - REDACTED
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '79'
+      content-type:
+      - application/json
+      host:
+      - beta-api.uspto.gov
+      user-agent:
+      - Mozilla/5.0 Python Patent Clientbot/5.0.16 (parkerhancock@users.noreply.github.com)
+    method: POST
+    uri: https://beta-api.uspto.gov/api/v1/patent/applications/search
+  response:
+    content: '{"count":11059305,"patentFileWrapperDataBag":[{"applicationNumberText":"29989499"},{"applicationNumberText":"29989558"},{"applicationNumberText":"18727105"},{"applicationNumberText":"19051130"},{"applicationNumberText":"90019846"},{"applicationNumberText":"90019847"},{"applicationNumberText":"90019848"},{"applicationNumberText":"18727121"},{"applicationNumberText":"29989210"},{"applicationNumberText":"90019845"}],"requestIdentifier":"3faaed6b-e523-40e3-a230-78a0a12cbcea"}'
+    headers:
+      access-control-allow-headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      access-control-allow-methods:
+      - OPTIONS,POST,GET
+      access-control-allow-origin:
+      - '*'
+      content-length:
+      - '476'
+      content-type:
+      - application/json
+      date:
+      - Tue, 18 Feb 2025 17:33:31 GMT
+      x-amz-apigw-id:
+      - GMOgzH7yoAMFuSQ=
+      x-amzn-requestid:
+      - 3faaed6b-e523-40e3-a230-78a0a12cbcea
+      x-amzn-trace-id:
+      - Root=1-67b4c46b-3a08c0b70b219f1c0c505542;Parent=3a3419c220a19c62;Sampled=0;Lineage=1:9bd78c15:0
+    http_version: HTTP/2
+    status_code: 200
+version: 1

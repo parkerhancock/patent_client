@@ -13,15 +13,15 @@ interactions:
       host:
       - beta-api.uspto.gov
       user-agent:
-      - Mozilla/5.0 Python Patent Clientbot/5.0.14 (parkerhancock@users.noreply.github.com)
+      - Mozilla/5.0 Python Patent Clientbot/5.0.16 (parkerhancock@users.noreply.github.com)
     method: GET
     uri: https://beta-api.uspto.gov/api/v1/patent/applications/15123456/documents
   response:
-    content: '{"documentBag": [{"applicationNumberText": "15123456", "officialDate":
-      "2016-09-02T00:00:00.000-0400", "documentIdentifier": "ISM4MWZ8RXEAPX0", "documentCode":
-      "IDS", "documentCodeDescriptionText": "Information Disclosure Statement (IDS)
-      Form (SB08)", "directionCategory": "INCOMING", "downloadOptionBag": [{"mimeTypeIdentifier":
-      "PDF", "downloadUrl": "https://beta-api.uspto.gov/api/v1/download/applications/15123456/ISM4MWZ8RXEAPX0.pdf",
+    content: '{"count": 48, "documentBag": [{"applicationNumberText": "15123456",
+      "officialDate": "2016-09-02T00:00:00.000-0400", "documentIdentifier": "ISM4MWZ8RXEAPX0",
+      "documentCode": "IDS", "documentCodeDescriptionText": "Information Disclosure
+      Statement (IDS) Form (SB08)", "directionCategory": "INCOMING", "downloadOptionBag":
+      [{"mimeTypeIdentifier": "PDF", "downloadUrl": "https://beta-api.uspto.gov/api/v1/download/applications/15123456/ISM4MWZ8RXEAPX0.pdf",
       "pageTotalQuantity": 1}, {"mimeTypeIdentifier": "XML", "downloadUrl": "https://beta-api.uspto.gov/api/v1/download/applications/15123456/ISM4MWZ8RXEAPX0/xmlarchive"}]},
       {"applicationNumberText": "15123456", "officialDate": "2016-12-28T00:00:00.000-0500",
       "documentIdentifier": "IX9HSTX2RXEAPX4", "documentCode": "PEFR", "documentCodeDescriptionText":
@@ -43,11 +43,6 @@ interactions:
       "Electronic Filing System Acknowledgment Receipt", "directionCategory": "OUTGOING",
       "downloadOptionBag": [{"mimeTypeIdentifier": "PDF", "downloadUrl": "https://beta-api.uspto.gov/api/v1/download/applications/15123456/J9RG68NDRXEAPX2.pdf",
       "pageTotalQuantity": 2}]}, {"applicationNumberText": "15123456", "officialDate":
-      "2017-10-11T00:00:00.000-0400", "documentIdentifier": "J8NB3CFKRXEAPX1", "documentCode":
-      "DISQ", "documentCodeDescriptionText": "Terminal Disclaimer review decision",
-      "directionCategory": "INTERNAL", "downloadOptionBag": [{"mimeTypeIdentifier":
-      "PDF", "downloadUrl": "https://beta-api.uspto.gov/api/v1/download/applications/15123456/J8NB3CFKRXEAPX1.pdf",
-      "pageTotalQuantity": 1}]}, {"applicationNumberText": "15123456", "officialDate":
       "2016-09-02T00:00:00.000-0400", "documentIdentifier": "IVJ4ZA9GRXEAPX3", "documentCode":
       "FRPR", "documentCodeDescriptionText": "Certified Copy of Foreign Priority Application",
       "directionCategory": "INCOMING", "downloadOptionBag": [{"mimeTypeIdentifier":
@@ -221,8 +216,8 @@ interactions:
       "CTNF", "documentCodeDescriptionText": "Non-Final Rejection", "directionCategory":
       "OUTGOING", "downloadOptionBag": [{"mimeTypeIdentifier": "PDF", "downloadUrl":
       "https://beta-api.uspto.gov/api/v1/download/applications/15123456/JEO9U6O4RXEAPX4.pdf",
-      "pageTotalQuantity": 11}, {"mimeTypeIdentifier": "XML", "downloadUrl": "https://beta-api.uspto.gov/api/v1/download/applications/15123456/JEO9U6O4RXEAPX4/xmlarchive"},
-      {"mimeTypeIdentifier": "MS_WORD", "downloadUrl": "https://beta-api.uspto.gov/api/v1/download/applications/15123456/JEO9U6O4RXEAPX4/files/Non-Final%20Rejection.DOCM"}]},
+      "pageTotalQuantity": 11}, {"mimeTypeIdentifier": "MS_WORD", "downloadUrl": "https://beta-api.uspto.gov/api/v1/download/applications/15123456/JEO9U6O4RXEAPX4/files/Non-Final%20Rejection.DOCM"},
+      {"mimeTypeIdentifier": "XML", "downloadUrl": "https://beta-api.uspto.gov/api/v1/download/applications/15123456/JEO9U6O4RXEAPX4/xmlarchive"}]},
       {"applicationNumberText": "15123456", "officialDate": "2017-06-19T00:00:00.000-0400",
       "documentIdentifier": "J44MAOYLRXEAPX5", "documentCode": "REF.OTHER", "documentCodeDescriptionText":
       "Other reference-Patent/Application/Search Documents", "directionCategory":
@@ -272,17 +267,19 @@ interactions:
       access-control-allow-origin:
       - '*'
       content-length:
-      - '23291'
+      - '22868'
       content-type:
       - application/json
       date:
-      - Wed, 22 May 2024 16:03:19 GMT
+      - Mon, 17 Feb 2025 22:17:58 GMT
+      server-timing:
+      - intid;desc=cb1fde782e146ef5
       x-amz-apigw-id:
-      - YLiTEFkOIAMF2fQ=
+      - GJlPkFfzoAMF1gQ=
       x-amzn-requestid:
-      - 5e11542d-da90-47b7-b0d6-45e8abfc8257
+      - 026250f8-72cb-409c-a3cf-03b54a2334c9
       x-amzn-trace-id:
-      - Root=1-664e1746-0651358f3a3557035e384b28;Parent=1946b0a7d8b803a5;Sampled=0;lineage=1430c078:0|53981e07:0
+      - Root=1-67b3b596-181a2f0f0e8a8e42454d3703;Parent=1075b6c097f0d388;Sampled=0;Lineage=2:34ffa2f8:0
     http_version: HTTP/2
     status_code: 200
 version: 1
