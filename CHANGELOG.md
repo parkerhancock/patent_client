@@ -1,4 +1,7 @@
 # Changelog
+## 5.0.17 (2025-04-08)
+- Fix updated URL's in USPTO public search.
+
 ## 5.0.16 (2024-07-02)
 - Add `document_title` to PTAB model
 

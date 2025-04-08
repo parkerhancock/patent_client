@@ -53,13 +53,13 @@ interactions:
       content-type:
       - text/html
       date:
-      - Wed, 22 May 2024 16:20:10 GMT
+      - Tue, 08 Apr 2025 14:56:26 GMT
       etag:
-      - '"5b0-61069d5fcf800"'
+      - '"5b0-63130d093d10c"'
       last-modified:
-      - Fri, 02 Feb 2024 17:56:48 GMT
+      - Tue, 25 Mar 2025 20:46:27 GMT
       server:
-      - Apache/2.4.58 (Unix)
+      - Apache/2.4.63 (Unix)
     http_version: HTTP/2
     status_code: 200
 - request:
@@ -90,29 +90,25 @@ interactions:
       user-agent:
       - Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML,
         like Gecko) Chrome/114.0.0.0 Safari/537.36
-      x-access-token:
-      - 'null'
       x-requested-with:
       - XMLHttpRequest
     method: POST
-    uri: https://ppubs.uspto.gov/dirsearch-public/users/me/session
+    uri: https://ppubs.uspto.gov/api/users/me/session
   response:
-    content: '{"userSessionId":28623283,"ipAddress":null,"userCase":{"caseId":28623452,"userId":28623283,"caseName":"Untitled
-      Case","applicationNumber":null},"userPreferences":{},"versions":[{"product":"API","releaseNumber":"3.0.0.15","date":"03.02.2024
-      @ 08:07:10 UTC","commitId":"3ff94059","collectionName":""},{"product":"SOLR","releaseNumber":"7.6.0","date":"","commitId":"","collectionName":"us_patent_grant"}],"documentsLimitInQuery":1000,"sessionTimeOutTime":1800,"role":"ANONYMOUS_USER","sessionIdentifer":"042fd736-0a0f-45cb-8722-8781b98a9089"}'
+    content: '{"userSessionId":85524158,"ipAddress":null,"userCase":{"caseId":85524327,"userId":85524158,"caseName":"Untitled
+      Case","applicationNumber":null},"userPreferences":{},"versions":[{"product":"API","releaseNumber":"3.0.0.15","date":"07.03.2025
+      @ 15:29:54 UTC","commitId":"7d046504","collectionName":""},{"product":"SOLR","releaseNumber":"9.0.0","date":"","commitId":"","collectionName":"us_patent_collection"}],"documentsLimitInQuery":1000,"sessionTimeOutTime":1800,"featureFlags":{"MLTD":false,"SQM":false,"FIT":false,"QBRANCH_ANALYTICS":false},"role":"ANONYMOUS_USER","sessionIdentifer":"5664a366-4a58-4428-acb1-6d0510b01bb5"}'
     headers:
       content-type:
       - application/json
       date:
-      - Wed, 22 May 2024 16:20:12 GMT
-      server-timing:
-      - intid;desc=580d547a1fdfb67d
+      - Tue, 08 Apr 2025 14:56:28 GMT
       x-access-token:
-      - eyJzdWIiOiIwNDJmZDczNi0wYTBmLTQ1Y2ItODcyMi04NzgxYjk4YTkwODkiLCJ2ZXIiOiIxNGQ1YjExMS03NjU4LTRhMGItYmFhYy02YmJmMTE5OTJlMDMiLCJleHAiOjB9
+      - eyJzdWIiOiI1NjY0YTM2Ni00YTU4LTQ0MjgtYWNiMS02ZDA1MTBiMDFiYjUiLCJ2ZXIiOiI3M2Q1ZjhkZi03ZjFjLTQ1NjMtODk5Mi1jNzM4ZjY3M2M1MmYiLCJleHAiOjB9
     http_version: HTTP/2
     status_code: 200
 - request:
-    body: '{"caseId": 28623452, "hl_snippets": "2", "op": "OR", "q": "\"6103599\".PN.",
+    body: '{"caseId": 85524327, "hl_snippets": "2", "op": "OR", "q": "\"6103599\".PN.",
       "queryName": "\"6103599\".PN.", "highlights": "1", "qt": "brs", "spellCheck":
       false, "viewName": "tile", "plurals": true, "britishEquivalents": true, "databaseFilters":
       [{"databaseName": "US-PGPUB", "countryCodes": []}, {"databaseName": "USPAT",
@@ -145,22 +141,20 @@ interactions:
       - Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML,
         like Gecko) Chrome/114.0.0.0 Safari/537.36
       x-access-token:
-      - eyJzdWIiOiIwNDJmZDczNi0wYTBmLTQ1Y2ItODcyMi04NzgxYjk4YTkwODkiLCJ2ZXIiOiIxNGQ1YjExMS03NjU4LTRhMGItYmFhYy02YmJmMTE5OTJlMDMiLCJleHAiOjB9
+      - eyJzdWIiOiI1NjY0YTM2Ni00YTU4LTQ0MjgtYWNiMS02ZDA1MTBiMDFiYjUiLCJ2ZXIiOiI3M2Q1ZjhkZi03ZjFjLTQ1NjMtODk5Mi1jNzM4ZjY3M2M1MmYiLCJleHAiOjB9
       x-requested-with:
       - XMLHttpRequest
     method: POST
-    uri: https://ppubs.uspto.gov/dirsearch-public/searches/counts
+    uri: https://ppubs.uspto.gov/api/searches/counts
   response:
-    content: '{"id":null,"caseId":28623452,"userId":null,"numResults":1,"ignorePersist":true,"fq":null,"databaseFilters":[{"databaseName":"US-PGPUB","countryCodes":[]},{"databaseName":"USPAT","countryCodes":[]},{"databaseName":"USOCR","countryCodes":[]}],"q":"\"6103599\".PN.","queryName":"\"6103599\".PN.","userEnteredQuery":"\"6103599\".PN.","viewName":"tile","op":"OR","highlights":"1","plurals":true,"britishEquivalents":true,"searchType":1,"excludeResultsAfter":null,"dateCreated":null,"deleteIn":false,"expand":false,"expandSort":null,"expandRows":null,"expandTrackDocScores":false,"expandTrackMaxScore":false,"termGraph":{"termOrigin":[{"id":0,"name":null,"nodeType":"ROOT","parentId":null,"relation":null,"aliases":["default"],"aliasCategory":"OTHER"},{"id":1,"name":"\"6103599\"","nodeType":"TERM","parentId":0,"relation":"REGULAR","aliases":["pn"],"aliasCategory":"DOC_IDENTIFIER"}],"termRelationship":[]},"hl":false,"fl":null,"originalQuery":"\"6103599\".PN.","error":null,"terms":["\"6103599\""],"facets":[{"solrField":"document_type","count":1,"id":"USPAT"}],"pNumber":null,"hl_fl":null}'
+    content: '{"id":null,"caseId":85524327,"userId":null,"numResults":1,"ignorePersist":true,"fq":null,"databaseFilters":[{"databaseName":"US-PGPUB","countryCodes":[]},{"databaseName":"USPAT","countryCodes":[]},{"databaseName":"USOCR","countryCodes":[]}],"q":"\"6103599\".PN.","queryName":"\"6103599\".PN.","userEnteredQuery":"\"6103599\".PN.","viewName":"tile","op":"OR","highlights":"1","plurals":true,"britishEquivalents":true,"searchType":1,"excludeResultsAfter":null,"dateCreated":null,"deleteIn":false,"expand":false,"expandSort":null,"expandRows":null,"expandTrackDocScores":false,"expandTrackMaxScore":false,"termGraph":{"termOrigin":[{"id":0,"name":null,"nodeType":"ROOT","parentId":null,"relation":null,"aliases":["default"],"aliasCategory":"OTHER"},{"id":1,"name":"\"6103599\"","nodeType":"TERM","parentId":0,"relation":"REGULAR","aliases":["pn"],"aliasCategory":"DOC_IDENTIFIER"}],"termRelationship":[]},"hl":false,"fl":null,"originalQuery":"\"6103599\".PN.","error":null,"terms":["\"6103599\""],"facets":[{"solrField":"document_type","count":1,"id":"USPAT"}],"anchorDocIds":null,"querySource":null,"pNumber":null,"hl_fl":null}'
     headers:
       content-type:
       - application/json
       date:
-      - Wed, 22 May 2024 16:20:12 GMT
-      server-timing:
-      - intid;desc=cd4ea5289146b375
+      - Tue, 08 Apr 2025 14:56:28 GMT
       x-rate-limit-remaining:
-      - '59'
+      - '39'
     http_version: HTTP/2
     status_code: 200
 - request:
@@ -168,7 +162,7 @@ interactions:
       "familyIdFiltering", "searchType": 1, "familyIdEnglishOnly": true, "familyIdFirstPreferred":
       "US-PGPUB", "familyIdSecondPreferred": "USPAT", "familyIdThirdPreferred": "FPRS",
       "showDocPerFamilyPref": "showEnglish", "queryId": 0, "tagDocSearch": false,
-      "query": {"caseId": 28623452, "hl_snippets": "2", "op": "OR", "q": "\"6103599\".PN.",
+      "query": {"caseId": 85524327, "hl_snippets": "2", "op": "OR", "q": "\"6103599\".PN.",
       "queryName": "\"6103599\".PN.", "highlights": "1", "qt": "brs", "spellCheck":
       false, "viewName": "tile", "plurals": true, "britishEquivalents": true, "databaseFilters":
       [{"databaseName": "US-PGPUB", "countryCodes": []}, {"databaseName": "USPAT",
@@ -201,32 +195,30 @@ interactions:
       - Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML,
         like Gecko) Chrome/114.0.0.0 Safari/537.36
       x-access-token:
-      - eyJzdWIiOiIwNDJmZDczNi0wYTBmLTQ1Y2ItODcyMi04NzgxYjk4YTkwODkiLCJ2ZXIiOiIxNGQ1YjExMS03NjU4LTRhMGItYmFhYy02YmJmMTE5OTJlMDMiLCJleHAiOjB9
+      - eyJzdWIiOiI1NjY0YTM2Ni00YTU4LTQ0MjgtYWNiMS02ZDA1MTBiMDFiYjUiLCJ2ZXIiOiI3M2Q1ZjhkZi03ZjFjLTQ1NjMtODk5Mi1jNzM4ZjY3M2M1MmYiLCJleHAiOjB9
       x-requested-with:
       - XMLHttpRequest
     method: POST
-    uri: https://ppubs.uspto.gov/dirsearch-public/searches/searchWithBeFamily
+    uri: https://ppubs.uspto.gov/api/searches/searchWithBeFamily
   response:
-    content: '{"numFound":1,"perPage":500,"page":0,"totalPages":0,"hlSnippets":0,"sort":null,"query":{"id":null,"caseId":28623452,"userId":null,"numResults":1,"ignorePersist":true,"fq":null,"databaseFilters":[{"databaseName":"US-PGPUB","countryCodes":[]},{"databaseName":"USPAT","countryCodes":[]},{"databaseName":"USOCR","countryCodes":[]}],"q":"\"6103599\".PN.","queryName":"\"6103599\".PN.","userEnteredQuery":"\"6103599\".PN.","viewName":"tile","op":"OR","highlights":"1","plurals":true,"britishEquivalents":true,"searchType":1,"excludeResultsAfter":null,"dateCreated":null,"deleteIn":false,"expand":true,"expandSort":"group_sort_date
-      asc, id desc ","expandRows":"100","expandTrackDocScores":true,"expandTrackMaxScore":true,"termGraph":null,"hl":false,"fl":null,"originalQuery":"\"6103599\".PN.","error":null,"terms":["\"6103599\""],"facets":[],"pNumber":null,"hl_fl":null},"duration":17,"highlightingTime":0,"cursorMarker":"AoJwgOj0/eABNzI2NzMyMjIzIVVTLVVTLTA2MTAzNTk5","totalResults":1,"numberOfFamilies":1,"error":null,"patents":[{"guid":"US-6103599-A","publicationReferenceDocumentNumber":"6103599","compositeId":"26732223!US-US-06103599","publicationReferenceDocumentNumber1":"06103599","datePublishedKwicHits":null,"datePublished":"2000-08-15T00:00:00Z","inventionTitle":"Planarizing
+    content: '{"numFound":1,"perPage":500,"page":0,"totalPages":0,"hlSnippets":0,"sort":null,"query":{"id":null,"caseId":85524327,"userId":null,"numResults":1,"ignorePersist":true,"fq":null,"databaseFilters":[{"databaseName":"US-PGPUB","countryCodes":[]},{"databaseName":"USPAT","countryCodes":[]},{"databaseName":"USOCR","countryCodes":[]}],"q":"\"6103599\".PN.","queryName":"\"6103599\".PN.","userEnteredQuery":"\"6103599\".PN.","viewName":"tile","op":"OR","highlights":"1","plurals":true,"britishEquivalents":true,"searchType":1,"excludeResultsAfter":null,"dateCreated":null,"deleteIn":false,"expand":true,"expandSort":"group_sort_date
+      asc, id desc ","expandRows":"100","expandTrackDocScores":true,"expandTrackMaxScore":true,"termGraph":null,"hl":false,"fl":null,"originalQuery":"\"6103599\".PN.","error":null,"terms":["\"6103599\""],"facets":[],"anchorDocIds":null,"querySource":null,"pNumber":null,"hl_fl":null},"duration":40,"highlightingTime":0,"cursorMarker":"AoJwgOj0/eABNzI2NzMyMjIzIVVTLVVTLTA2MTAzNTk5","totalResults":1,"numberOfFamilies":1,"error":null,"patents":[{"guid":"US-6103599-A","publicationReferenceDocumentNumber":"6103599","compositeId":"26732223!US-US-06103599","publicationReferenceDocumentNumber1":"06103599","datePublishedKwicHits":null,"datePublished":"2000-08-15T00:00:00Z","inventionTitle":"Planarizing
       technique for multilayered substrates","type":"USPAT","mainClassificationCode":"438/459","applicantName":null,"assigneeName":["Silicon
       Genesis Corporation"],"uspcFullClassificationFlattened":"438/770;438/977;438/694;257/E21.568;438/458;257/E21.219","ipcCodeFlattened":"H01L21/70","cpcInventiveFlattened":"H01L21/30604;H01L21/76254","cpcAdditionalFlattened":"Y10S438/977","applicationFilingDate":["1998-06-03T00:00:00Z"],"applicationFilingDateKwicHits":null,"relatedApplFilingDate":null,"primaryExaminer":"Mulpuri;
       Savitri","assistantExaminer":null,"applicationNumber":"09/089931","frontPageStart":1,"frontPageEnd":2,"drawingsStart":3,"drawingsEnd":6,"specificationStart":7,"specificationEnd":10,"claimsStart":10,"claimsEnd":11,"abstractStart":1,"abstractEnd":2,"bibStart":1,"bibEnd":2,"certCorrectionStart":12,"certCorrectionEnd":12,"certReexaminationStart":0,"certReexaminationEnd":0,"supplementalStart":0,"supplementalEnd":0,"ptabStart":0,"ptabEnd":0,"amendStart":0,"amendEnd":0,"searchReportStart":0,"searchReportEnd":0,"pageCount":12,"pageCountDisplay":"12","previouslyViewed":false,"unused":false,"imageLocation":"uspat/US/06/103/599","imageFileName":"00000001.tif","cpcCodes":null,"queryId":null,"tags":null,"inventorsShort":"Henley;
       Francois J. et al.","familyIdentifierCur":26732223,"familyIdentifierCurStr":null,"languageIndicator":"EN","databaseName":"USPT","dwImageDoctypeList":null,"dwImageLocList":null,"dwPageCountList":null,"dwImageDocidList":null,"patentFamilyMembers":null,"patentFamilyCountry":null,"patentFamilySerialNumber":null,"documentIdWithDashesDw":null,"pfPublDate":null,"pfPublDateKwicHits":null,"priorityClaimsDate":null,"priorityClaimsDateKwicHits":null,"pfApplicationSerialNumber":null,"pfApplicationDescriptor":null,"pfLanguage":null,"pfApplicationDate":null,"pfApplicationDateKwicHits":null,"clippedUri":null,"source":null,"documentId":"US
-      6103599 A","derwentAccessionNumber":null,"documentSize":55787,"score":14.105844,"governmentInterest":null,"kindCode":["A"],"urpn":["4006340","4566403","4846928","4847792","4853250","4887005","4948458","4952273","4960073","4996077","5010579","5013563","5015353","5133826","5202095","5203960","5234529","5250328","5252178","5273610","5342472","5368710","5370765","5374564","5404079","5405480","5411592","5435880","5487785","5504328","5593622","5822987","5920764"],"urpnCode":["4006340","4566403","4846928","4847792","4853250","4887005","4948458","4952273","4960073","4996077","5010579","5013563","5015353","5133826","5202095","5203960","5234529","5250328","5252178","5273610","5342472","5368710","5370765","5374564","5404079","5405480","5411592","5435880","5487785","5504328","5593622","5822987","5920764"],"descriptionStart":7,"descriptionEnd":10,"publicationReferenceDocumentNumberOne":"06103599"}],"qtime":10}'
+      6103599 A","derwentAccessionNumber":null,"documentSize":55787,"score":6.4228373,"governmentInterest":null,"kindCode":["A"],"urpn":["4006340","4566403","4846928","4847792","4853250","4887005","4948458","4952273","4960073","4996077","5010579","5013563","5015353","5133826","5202095","5203960","5234529","5250328","5252178","5273610","5342472","5368710","5370765","5374564","5404079","5405480","5411592","5435880","5487785","5504328","5593622","5822987","5920764"],"urpnCode":["4006340","4566403","4846928","4847792","4853250","4887005","4948458","4952273","4960073","4996077","5010579","5013563","5015353","5133826","5202095","5203960","5234529","5250328","5252178","5273610","5342472","5368710","5370765","5374564","5404079","5405480","5411592","5435880","5487785","5504328","5593622","5822987","5920764"],"descriptionStart":7,"descriptionEnd":10,"publicationReferenceDocumentNumberOne":"06103599"}],"qtime":37}'
     headers:
       content-type:
       - application/json
       date:
-      - Wed, 22 May 2024 16:20:12 GMT
-      server-timing:
-      - intid;desc=c2d2713424d03123
+      - Tue, 08 Apr 2025 14:56:29 GMT
       x-rate-limit-remaining:
-      - '58'
+      - '38'
     http_version: HTTP/2
     status_code: 200
 - request:
-    body: '{"caseId": 28623452, "hl_snippets": "2", "op": "OR", "q": "\"6103599\".PN.",
+    body: '{"caseId": 85524327, "hl_snippets": "2", "op": "OR", "q": "\"6103599\".PN.",
       "queryName": "\"6103599\".PN.", "highlights": "1", "qt": "brs", "spellCheck":
       false, "viewName": "tile", "plurals": true, "britishEquivalents": true, "databaseFilters":
       [{"databaseName": "US-PGPUB", "countryCodes": []}, {"databaseName": "USPAT",
@@ -259,22 +251,20 @@ interactions:
       - Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML,
         like Gecko) Chrome/114.0.0.0 Safari/537.36
       x-access-token:
-      - eyJzdWIiOiIwNDJmZDczNi0wYTBmLTQ1Y2ItODcyMi04NzgxYjk4YTkwODkiLCJ2ZXIiOiIxNGQ1YjExMS03NjU4LTRhMGItYmFhYy02YmJmMTE5OTJlMDMiLCJleHAiOjB9
+      - eyJzdWIiOiI1NjY0YTM2Ni00YTU4LTQ0MjgtYWNiMS02ZDA1MTBiMDFiYjUiLCJ2ZXIiOiI3M2Q1ZjhkZi03ZjFjLTQ1NjMtODk5Mi1jNzM4ZjY3M2M1MmYiLCJleHAiOjB9
       x-requested-with:
       - XMLHttpRequest
     method: POST
-    uri: https://ppubs.uspto.gov/dirsearch-public/searches/counts
+    uri: https://ppubs.uspto.gov/api/searches/counts
   response:
-    content: '{"id":null,"caseId":28623452,"userId":null,"numResults":1,"ignorePersist":true,"fq":null,"databaseFilters":[{"databaseName":"US-PGPUB","countryCodes":[]},{"databaseName":"USPAT","countryCodes":[]},{"databaseName":"USOCR","countryCodes":[]}],"q":"\"6103599\".PN.","queryName":"\"6103599\".PN.","userEnteredQuery":"\"6103599\".PN.","viewName":"tile","op":"OR","highlights":"1","plurals":true,"britishEquivalents":true,"searchType":1,"excludeResultsAfter":null,"dateCreated":null,"deleteIn":false,"expand":false,"expandSort":null,"expandRows":null,"expandTrackDocScores":false,"expandTrackMaxScore":false,"termGraph":{"termOrigin":[{"id":0,"name":null,"nodeType":"ROOT","parentId":null,"relation":null,"aliases":["default"],"aliasCategory":"OTHER"},{"id":1,"name":"\"6103599\"","nodeType":"TERM","parentId":0,"relation":"REGULAR","aliases":["pn"],"aliasCategory":"DOC_IDENTIFIER"}],"termRelationship":[]},"hl":false,"fl":null,"originalQuery":"\"6103599\".PN.","error":null,"terms":["\"6103599\""],"facets":[{"solrField":"document_type","count":1,"id":"USPAT"}],"pNumber":null,"hl_fl":null}'
+    content: '{"id":null,"caseId":85524327,"userId":null,"numResults":1,"ignorePersist":true,"fq":null,"databaseFilters":[{"databaseName":"US-PGPUB","countryCodes":[]},{"databaseName":"USPAT","countryCodes":[]},{"databaseName":"USOCR","countryCodes":[]}],"q":"\"6103599\".PN.","queryName":"\"6103599\".PN.","userEnteredQuery":"\"6103599\".PN.","viewName":"tile","op":"OR","highlights":"1","plurals":true,"britishEquivalents":true,"searchType":1,"excludeResultsAfter":null,"dateCreated":null,"deleteIn":false,"expand":false,"expandSort":null,"expandRows":null,"expandTrackDocScores":false,"expandTrackMaxScore":false,"termGraph":{"termOrigin":[{"id":0,"name":null,"nodeType":"ROOT","parentId":null,"relation":null,"aliases":["default"],"aliasCategory":"OTHER"},{"id":1,"name":"\"6103599\"","nodeType":"TERM","parentId":0,"relation":"REGULAR","aliases":["pn"],"aliasCategory":"DOC_IDENTIFIER"}],"termRelationship":[]},"hl":false,"fl":null,"originalQuery":"\"6103599\".PN.","error":null,"terms":["\"6103599\""],"facets":[{"solrField":"document_type","count":1,"id":"USPAT"}],"anchorDocIds":null,"querySource":null,"pNumber":null,"hl_fl":null}'
     headers:
       content-type:
       - application/json
       date:
-      - Wed, 22 May 2024 16:20:12 GMT
-      server-timing:
-      - intid;desc=6c8f08dc10a0f799
+      - Tue, 08 Apr 2025 14:56:29 GMT
       x-rate-limit-remaining:
-      - '57'
+      - '37'
     http_version: HTTP/2
     status_code: 200
 - request:
@@ -282,7 +272,7 @@ interactions:
       "familyIdFiltering", "searchType": 1, "familyIdEnglishOnly": true, "familyIdFirstPreferred":
       "US-PGPUB", "familyIdSecondPreferred": "USPAT", "familyIdThirdPreferred": "FPRS",
       "showDocPerFamilyPref": "showEnglish", "queryId": 0, "tagDocSearch": false,
-      "query": {"caseId": 28623452, "hl_snippets": "2", "op": "OR", "q": "\"6103599\".PN.",
+      "query": {"caseId": 85524327, "hl_snippets": "2", "op": "OR", "q": "\"6103599\".PN.",
       "queryName": "\"6103599\".PN.", "highlights": "1", "qt": "brs", "spellCheck":
       false, "viewName": "tile", "plurals": true, "britishEquivalents": true, "databaseFilters":
       [{"databaseName": "US-PGPUB", "countryCodes": []}, {"databaseName": "USPAT",
@@ -315,32 +305,30 @@ interactions:
       - Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML,
         like Gecko) Chrome/114.0.0.0 Safari/537.36
       x-access-token:
-      - eyJzdWIiOiIwNDJmZDczNi0wYTBmLTQ1Y2ItODcyMi04NzgxYjk4YTkwODkiLCJ2ZXIiOiIxNGQ1YjExMS03NjU4LTRhMGItYmFhYy02YmJmMTE5OTJlMDMiLCJleHAiOjB9
+      - eyJzdWIiOiI1NjY0YTM2Ni00YTU4LTQ0MjgtYWNiMS02ZDA1MTBiMDFiYjUiLCJ2ZXIiOiI3M2Q1ZjhkZi03ZjFjLTQ1NjMtODk5Mi1jNzM4ZjY3M2M1MmYiLCJleHAiOjB9
       x-requested-with:
       - XMLHttpRequest
     method: POST
-    uri: https://ppubs.uspto.gov/dirsearch-public/searches/searchWithBeFamily
+    uri: https://ppubs.uspto.gov/api/searches/searchWithBeFamily
   response:
-    content: '{"numFound":1,"perPage":500,"page":0,"totalPages":0,"hlSnippets":0,"sort":null,"query":{"id":null,"caseId":28623452,"userId":null,"numResults":1,"ignorePersist":true,"fq":null,"databaseFilters":[{"databaseName":"US-PGPUB","countryCodes":[]},{"databaseName":"USPAT","countryCodes":[]},{"databaseName":"USOCR","countryCodes":[]}],"q":"\"6103599\".PN.","queryName":"\"6103599\".PN.","userEnteredQuery":"\"6103599\".PN.","viewName":"tile","op":"OR","highlights":"1","plurals":true,"britishEquivalents":true,"searchType":1,"excludeResultsAfter":null,"dateCreated":null,"deleteIn":false,"expand":true,"expandSort":"group_sort_date
-      asc, id desc ","expandRows":"100","expandTrackDocScores":true,"expandTrackMaxScore":true,"termGraph":null,"hl":false,"fl":null,"originalQuery":"\"6103599\".PN.","error":null,"terms":["\"6103599\""],"facets":[],"pNumber":null,"hl_fl":null},"duration":17,"highlightingTime":0,"cursorMarker":"AoJwgOj0/eABNzI2NzMyMjIzIVVTLVVTLTA2MTAzNTk5","totalResults":1,"numberOfFamilies":1,"error":null,"patents":[{"guid":"US-6103599-A","publicationReferenceDocumentNumber":"6103599","compositeId":"26732223!US-US-06103599","publicationReferenceDocumentNumber1":"06103599","datePublishedKwicHits":null,"datePublished":"2000-08-15T00:00:00Z","inventionTitle":"Planarizing
+    content: '{"numFound":1,"perPage":500,"page":0,"totalPages":0,"hlSnippets":0,"sort":null,"query":{"id":null,"caseId":85524327,"userId":null,"numResults":1,"ignorePersist":true,"fq":null,"databaseFilters":[{"databaseName":"US-PGPUB","countryCodes":[]},{"databaseName":"USPAT","countryCodes":[]},{"databaseName":"USOCR","countryCodes":[]}],"q":"\"6103599\".PN.","queryName":"\"6103599\".PN.","userEnteredQuery":"\"6103599\".PN.","viewName":"tile","op":"OR","highlights":"1","plurals":true,"britishEquivalents":true,"searchType":1,"excludeResultsAfter":null,"dateCreated":null,"deleteIn":false,"expand":true,"expandSort":"group_sort_date
+      asc, id desc ","expandRows":"100","expandTrackDocScores":true,"expandTrackMaxScore":true,"termGraph":null,"hl":false,"fl":null,"originalQuery":"\"6103599\".PN.","error":null,"terms":["\"6103599\""],"facets":[],"anchorDocIds":null,"querySource":null,"pNumber":null,"hl_fl":null},"duration":36,"highlightingTime":0,"cursorMarker":"AoJwgOj0/eABNzI2NzMyMjIzIVVTLVVTLTA2MTAzNTk5","totalResults":1,"numberOfFamilies":1,"error":null,"patents":[{"guid":"US-6103599-A","publicationReferenceDocumentNumber":"6103599","compositeId":"26732223!US-US-06103599","publicationReferenceDocumentNumber1":"06103599","datePublishedKwicHits":null,"datePublished":"2000-08-15T00:00:00Z","inventionTitle":"Planarizing
       technique for multilayered substrates","type":"USPAT","mainClassificationCode":"438/459","applicantName":null,"assigneeName":["Silicon
       Genesis Corporation"],"uspcFullClassificationFlattened":"438/770;438/977;438/694;257/E21.568;438/458;257/E21.219","ipcCodeFlattened":"H01L21/70","cpcInventiveFlattened":"H01L21/30604;H01L21/76254","cpcAdditionalFlattened":"Y10S438/977","applicationFilingDate":["1998-06-03T00:00:00Z"],"applicationFilingDateKwicHits":null,"relatedApplFilingDate":null,"primaryExaminer":"Mulpuri;
       Savitri","assistantExaminer":null,"applicationNumber":"09/089931","frontPageStart":1,"frontPageEnd":2,"drawingsStart":3,"drawingsEnd":6,"specificationStart":7,"specificationEnd":10,"claimsStart":10,"claimsEnd":11,"abstractStart":1,"abstractEnd":2,"bibStart":1,"bibEnd":2,"certCorrectionStart":12,"certCorrectionEnd":12,"certReexaminationStart":0,"certReexaminationEnd":0,"supplementalStart":0,"supplementalEnd":0,"ptabStart":0,"ptabEnd":0,"amendStart":0,"amendEnd":0,"searchReportStart":0,"searchReportEnd":0,"pageCount":12,"pageCountDisplay":"12","previouslyViewed":false,"unused":false,"imageLocation":"uspat/US/06/103/599","imageFileName":"00000001.tif","cpcCodes":null,"queryId":null,"tags":null,"inventorsShort":"Henley;
       Francois J. et al.","familyIdentifierCur":26732223,"familyIdentifierCurStr":null,"languageIndicator":"EN","databaseName":"USPT","dwImageDoctypeList":null,"dwImageLocList":null,"dwPageCountList":null,"dwImageDocidList":null,"patentFamilyMembers":null,"patentFamilyCountry":null,"patentFamilySerialNumber":null,"documentIdWithDashesDw":null,"pfPublDate":null,"pfPublDateKwicHits":null,"priorityClaimsDate":null,"priorityClaimsDateKwicHits":null,"pfApplicationSerialNumber":null,"pfApplicationDescriptor":null,"pfLanguage":null,"pfApplicationDate":null,"pfApplicationDateKwicHits":null,"clippedUri":null,"source":null,"documentId":"US
-      6103599 A","derwentAccessionNumber":null,"documentSize":55787,"score":14.100947,"governmentInterest":null,"kindCode":["A"],"urpn":["4006340","4566403","4846928","4847792","4853250","4887005","4948458","4952273","4960073","4996077","5010579","5013563","5015353","5133826","5202095","5203960","5234529","5250328","5252178","5273610","5342472","5368710","5370765","5374564","5404079","5405480","5411592","5435880","5487785","5504328","5593622","5822987","5920764"],"urpnCode":["4006340","4566403","4846928","4847792","4853250","4887005","4948458","4952273","4960073","4996077","5010579","5013563","5015353","5133826","5202095","5203960","5234529","5250328","5252178","5273610","5342472","5368710","5370765","5374564","5404079","5405480","5411592","5435880","5487785","5504328","5593622","5822987","5920764"],"descriptionStart":7,"descriptionEnd":10,"publicationReferenceDocumentNumberOne":"06103599"}],"qtime":12}'
+      6103599 A","derwentAccessionNumber":null,"documentSize":55787,"score":6.4228373,"governmentInterest":null,"kindCode":["A"],"urpn":["4006340","4566403","4846928","4847792","4853250","4887005","4948458","4952273","4960073","4996077","5010579","5013563","5015353","5133826","5202095","5203960","5234529","5250328","5252178","5273610","5342472","5368710","5370765","5374564","5404079","5405480","5411592","5435880","5487785","5504328","5593622","5822987","5920764"],"urpnCode":["4006340","4566403","4846928","4847792","4853250","4887005","4948458","4952273","4960073","4996077","5010579","5013563","5015353","5133826","5202095","5203960","5234529","5250328","5252178","5273610","5342472","5368710","5370765","5374564","5404079","5405480","5411592","5435880","5487785","5504328","5593622","5822987","5920764"],"descriptionStart":7,"descriptionEnd":10,"publicationReferenceDocumentNumberOne":"06103599"}],"qtime":34}'
     headers:
       content-type:
       - application/json
       date:
-      - Wed, 22 May 2024 16:20:12 GMT
-      server-timing:
-      - intid;desc=1b80279db1ff8fa3
+      - Tue, 08 Apr 2025 14:56:29 GMT
       x-rate-limit-remaining:
-      - '56'
+      - '36'
     http_version: HTTP/2
     status_code: 200
 - request:
-    body: '{"caseId": 28623452, "hl_snippets": "2", "op": "OR", "q": "\"6103599\".PN.",
+    body: '{"caseId": 85524327, "hl_snippets": "2", "op": "OR", "q": "\"6103599\".PN.",
       "queryName": "\"6103599\".PN.", "highlights": "1", "qt": "brs", "spellCheck":
       false, "viewName": "tile", "plurals": true, "britishEquivalents": true, "databaseFilters":
       [{"databaseName": "US-PGPUB", "countryCodes": []}, {"databaseName": "USPAT",
@@ -373,22 +361,20 @@ interactions:
       - Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML,
         like Gecko) Chrome/114.0.0.0 Safari/537.36
       x-access-token:
-      - eyJzdWIiOiIwNDJmZDczNi0wYTBmLTQ1Y2ItODcyMi04NzgxYjk4YTkwODkiLCJ2ZXIiOiIxNGQ1YjExMS03NjU4LTRhMGItYmFhYy02YmJmMTE5OTJlMDMiLCJleHAiOjB9
+      - eyJzdWIiOiI1NjY0YTM2Ni00YTU4LTQ0MjgtYWNiMS02ZDA1MTBiMDFiYjUiLCJ2ZXIiOiI3M2Q1ZjhkZi03ZjFjLTQ1NjMtODk5Mi1jNzM4ZjY3M2M1MmYiLCJleHAiOjB9
       x-requested-with:
       - XMLHttpRequest
     method: POST
-    uri: https://ppubs.uspto.gov/dirsearch-public/searches/counts
+    uri: https://ppubs.uspto.gov/api/searches/counts
   response:
-    content: '{"id":null,"caseId":28623452,"userId":null,"numResults":1,"ignorePersist":true,"fq":null,"databaseFilters":[{"databaseName":"US-PGPUB","countryCodes":[]},{"databaseName":"USPAT","countryCodes":[]},{"databaseName":"USOCR","countryCodes":[]}],"q":"\"6103599\".PN.","queryName":"\"6103599\".PN.","userEnteredQuery":"\"6103599\".PN.","viewName":"tile","op":"OR","highlights":"1","plurals":true,"britishEquivalents":true,"searchType":1,"excludeResultsAfter":null,"dateCreated":null,"deleteIn":false,"expand":false,"expandSort":null,"expandRows":null,"expandTrackDocScores":false,"expandTrackMaxScore":false,"termGraph":{"termOrigin":[{"id":0,"name":null,"nodeType":"ROOT","parentId":null,"relation":null,"aliases":["default"],"aliasCategory":"OTHER"},{"id":1,"name":"\"6103599\"","nodeType":"TERM","parentId":0,"relation":"REGULAR","aliases":["pn"],"aliasCategory":"DOC_IDENTIFIER"}],"termRelationship":[]},"hl":false,"fl":null,"originalQuery":"\"6103599\".PN.","error":null,"terms":["\"6103599\""],"facets":[{"solrField":"document_type","count":1,"id":"USPAT"}],"pNumber":null,"hl_fl":null}'
+    content: '{"id":null,"caseId":85524327,"userId":null,"numResults":1,"ignorePersist":true,"fq":null,"databaseFilters":[{"databaseName":"US-PGPUB","countryCodes":[]},{"databaseName":"USPAT","countryCodes":[]},{"databaseName":"USOCR","countryCodes":[]}],"q":"\"6103599\".PN.","queryName":"\"6103599\".PN.","userEnteredQuery":"\"6103599\".PN.","viewName":"tile","op":"OR","highlights":"1","plurals":true,"britishEquivalents":true,"searchType":1,"excludeResultsAfter":null,"dateCreated":null,"deleteIn":false,"expand":false,"expandSort":null,"expandRows":null,"expandTrackDocScores":false,"expandTrackMaxScore":false,"termGraph":{"termOrigin":[{"id":0,"name":null,"nodeType":"ROOT","parentId":null,"relation":null,"aliases":["default"],"aliasCategory":"OTHER"},{"id":1,"name":"\"6103599\"","nodeType":"TERM","parentId":0,"relation":"REGULAR","aliases":["pn"],"aliasCategory":"DOC_IDENTIFIER"}],"termRelationship":[]},"hl":false,"fl":null,"originalQuery":"\"6103599\".PN.","error":null,"terms":["\"6103599\""],"facets":[{"solrField":"document_type","count":1,"id":"USPAT"}],"anchorDocIds":null,"querySource":null,"pNumber":null,"hl_fl":null}'
     headers:
       content-type:
       - application/json
       date:
-      - Wed, 22 May 2024 16:20:12 GMT
-      server-timing:
-      - intid;desc=20309b7448293d35
+      - Tue, 08 Apr 2025 14:56:29 GMT
       x-rate-limit-remaining:
-      - '55'
+      - '35'
     http_version: HTTP/2
     status_code: 200
 - request:
@@ -396,7 +382,7 @@ interactions:
       "familyIdFiltering", "searchType": 1, "familyIdEnglishOnly": true, "familyIdFirstPreferred":
       "US-PGPUB", "familyIdSecondPreferred": "USPAT", "familyIdThirdPreferred": "FPRS",
       "showDocPerFamilyPref": "showEnglish", "queryId": 0, "tagDocSearch": false,
-      "query": {"caseId": 28623452, "hl_snippets": "2", "op": "OR", "q": "\"6103599\".PN.",
+      "query": {"caseId": 85524327, "hl_snippets": "2", "op": "OR", "q": "\"6103599\".PN.",
       "queryName": "\"6103599\".PN.", "highlights": "1", "qt": "brs", "spellCheck":
       false, "viewName": "tile", "plurals": true, "britishEquivalents": true, "databaseFilters":
       [{"databaseName": "US-PGPUB", "countryCodes": []}, {"databaseName": "USPAT",
@@ -429,28 +415,26 @@ interactions:
       - Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML,
         like Gecko) Chrome/114.0.0.0 Safari/537.36
       x-access-token:
-      - eyJzdWIiOiIwNDJmZDczNi0wYTBmLTQ1Y2ItODcyMi04NzgxYjk4YTkwODkiLCJ2ZXIiOiIxNGQ1YjExMS03NjU4LTRhMGItYmFhYy02YmJmMTE5OTJlMDMiLCJleHAiOjB9
+      - eyJzdWIiOiI1NjY0YTM2Ni00YTU4LTQ0MjgtYWNiMS02ZDA1MTBiMDFiYjUiLCJ2ZXIiOiI3M2Q1ZjhkZi03ZjFjLTQ1NjMtODk5Mi1jNzM4ZjY3M2M1MmYiLCJleHAiOjB9
       x-requested-with:
       - XMLHttpRequest
     method: POST
-    uri: https://ppubs.uspto.gov/dirsearch-public/searches/searchWithBeFamily
+    uri: https://ppubs.uspto.gov/api/searches/searchWithBeFamily
   response:
-    content: '{"numFound":1,"perPage":1,"page":0,"totalPages":0,"hlSnippets":0,"sort":null,"query":{"id":null,"caseId":28623452,"userId":null,"numResults":1,"ignorePersist":true,"fq":null,"databaseFilters":[{"databaseName":"US-PGPUB","countryCodes":[]},{"databaseName":"USPAT","countryCodes":[]},{"databaseName":"USOCR","countryCodes":[]}],"q":"\"6103599\".PN.","queryName":"\"6103599\".PN.","userEnteredQuery":"\"6103599\".PN.","viewName":"tile","op":"OR","highlights":"1","plurals":true,"britishEquivalents":true,"searchType":1,"excludeResultsAfter":null,"dateCreated":null,"deleteIn":false,"expand":true,"expandSort":"group_sort_date
-      asc, id desc ","expandRows":"100","expandTrackDocScores":true,"expandTrackMaxScore":true,"termGraph":null,"hl":false,"fl":null,"originalQuery":"\"6103599\".PN.","error":null,"terms":["\"6103599\""],"facets":[],"pNumber":null,"hl_fl":null},"duration":13,"highlightingTime":0,"cursorMarker":"AoJwgOj0/eABNzI2NzMyMjIzIVVTLVVTLTA2MTAzNTk5","totalResults":1,"numberOfFamilies":1,"error":null,"patents":[{"guid":"US-6103599-A","publicationReferenceDocumentNumber":"6103599","compositeId":"26732223!US-US-06103599","publicationReferenceDocumentNumber1":"06103599","datePublishedKwicHits":null,"datePublished":"2000-08-15T00:00:00Z","inventionTitle":"Planarizing
+    content: '{"numFound":1,"perPage":1,"page":0,"totalPages":0,"hlSnippets":0,"sort":null,"query":{"id":null,"caseId":85524327,"userId":null,"numResults":1,"ignorePersist":true,"fq":null,"databaseFilters":[{"databaseName":"US-PGPUB","countryCodes":[]},{"databaseName":"USPAT","countryCodes":[]},{"databaseName":"USOCR","countryCodes":[]}],"q":"\"6103599\".PN.","queryName":"\"6103599\".PN.","userEnteredQuery":"\"6103599\".PN.","viewName":"tile","op":"OR","highlights":"1","plurals":true,"britishEquivalents":true,"searchType":1,"excludeResultsAfter":null,"dateCreated":null,"deleteIn":false,"expand":true,"expandSort":"group_sort_date
+      asc, id desc ","expandRows":"100","expandTrackDocScores":true,"expandTrackMaxScore":true,"termGraph":null,"hl":false,"fl":null,"originalQuery":"\"6103599\".PN.","error":null,"terms":["\"6103599\""],"facets":[],"anchorDocIds":null,"querySource":null,"pNumber":null,"hl_fl":null},"duration":38,"highlightingTime":0,"cursorMarker":"AoJwgOj0/eABNzI2NzMyMjIzIVVTLVVTLTA2MTAzNTk5","totalResults":1,"numberOfFamilies":1,"error":null,"patents":[{"guid":"US-6103599-A","publicationReferenceDocumentNumber":"6103599","compositeId":"26732223!US-US-06103599","publicationReferenceDocumentNumber1":"06103599","datePublishedKwicHits":null,"datePublished":"2000-08-15T00:00:00Z","inventionTitle":"Planarizing
       technique for multilayered substrates","type":"USPAT","mainClassificationCode":"438/459","applicantName":null,"assigneeName":["Silicon
       Genesis Corporation"],"uspcFullClassificationFlattened":"438/770;438/977;438/694;257/E21.568;438/458;257/E21.219","ipcCodeFlattened":"H01L21/70","cpcInventiveFlattened":"H01L21/30604;H01L21/76254","cpcAdditionalFlattened":"Y10S438/977","applicationFilingDate":["1998-06-03T00:00:00Z"],"applicationFilingDateKwicHits":null,"relatedApplFilingDate":null,"primaryExaminer":"Mulpuri;
       Savitri","assistantExaminer":null,"applicationNumber":"09/089931","frontPageStart":1,"frontPageEnd":2,"drawingsStart":3,"drawingsEnd":6,"specificationStart":7,"specificationEnd":10,"claimsStart":10,"claimsEnd":11,"abstractStart":1,"abstractEnd":2,"bibStart":1,"bibEnd":2,"certCorrectionStart":12,"certCorrectionEnd":12,"certReexaminationStart":0,"certReexaminationEnd":0,"supplementalStart":0,"supplementalEnd":0,"ptabStart":0,"ptabEnd":0,"amendStart":0,"amendEnd":0,"searchReportStart":0,"searchReportEnd":0,"pageCount":12,"pageCountDisplay":"12","previouslyViewed":false,"unused":false,"imageLocation":"uspat/US/06/103/599","imageFileName":"00000001.tif","cpcCodes":null,"queryId":null,"tags":null,"inventorsShort":"Henley;
       Francois J. et al.","familyIdentifierCur":26732223,"familyIdentifierCurStr":null,"languageIndicator":"EN","databaseName":"USPT","dwImageDoctypeList":null,"dwImageLocList":null,"dwPageCountList":null,"dwImageDocidList":null,"patentFamilyMembers":null,"patentFamilyCountry":null,"patentFamilySerialNumber":null,"documentIdWithDashesDw":null,"pfPublDate":null,"pfPublDateKwicHits":null,"priorityClaimsDate":null,"priorityClaimsDateKwicHits":null,"pfApplicationSerialNumber":null,"pfApplicationDescriptor":null,"pfLanguage":null,"pfApplicationDate":null,"pfApplicationDateKwicHits":null,"clippedUri":null,"source":null,"documentId":"US
-      6103599 A","derwentAccessionNumber":null,"documentSize":55787,"score":14.100947,"governmentInterest":null,"kindCode":["A"],"urpn":["4006340","4566403","4846928","4847792","4853250","4887005","4948458","4952273","4960073","4996077","5010579","5013563","5015353","5133826","5202095","5203960","5234529","5250328","5252178","5273610","5342472","5368710","5370765","5374564","5404079","5405480","5411592","5435880","5487785","5504328","5593622","5822987","5920764"],"urpnCode":["4006340","4566403","4846928","4847792","4853250","4887005","4948458","4952273","4960073","4996077","5010579","5013563","5015353","5133826","5202095","5203960","5234529","5250328","5252178","5273610","5342472","5368710","5370765","5374564","5404079","5405480","5411592","5435880","5487785","5504328","5593622","5822987","5920764"],"publicationReferenceDocumentNumberOne":"06103599","descriptionStart":7,"descriptionEnd":10}],"qtime":7}'
+      6103599 A","derwentAccessionNumber":null,"documentSize":55787,"score":6.4228373,"governmentInterest":null,"kindCode":["A"],"urpn":["4006340","4566403","4846928","4847792","4853250","4887005","4948458","4952273","4960073","4996077","5010579","5013563","5015353","5133826","5202095","5203960","5234529","5250328","5252178","5273610","5342472","5368710","5370765","5374564","5404079","5405480","5411592","5435880","5487785","5504328","5593622","5822987","5920764"],"urpnCode":["4006340","4566403","4846928","4847792","4853250","4887005","4948458","4952273","4960073","4996077","5010579","5013563","5015353","5133826","5202095","5203960","5234529","5250328","5252178","5273610","5342472","5368710","5370765","5374564","5404079","5405480","5411592","5435880","5487785","5504328","5593622","5822987","5920764"],"descriptionStart":7,"descriptionEnd":10,"publicationReferenceDocumentNumberOne":"06103599"}],"qtime":35}'
     headers:
       content-type:
       - application/json
       date:
-      - Wed, 22 May 2024 16:20:12 GMT
-      server-timing:
-      - intid;desc=868ef49841a16b17
+      - Tue, 08 Apr 2025 14:56:29 GMT
       x-rate-limit-remaining:
-      - '54'
+      - '34'
     http_version: HTTP/2
     status_code: 200
 - request:
@@ -478,11 +462,11 @@ interactions:
       - Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML,
         like Gecko) Chrome/114.0.0.0 Safari/537.36
       x-access-token:
-      - eyJzdWIiOiIwNDJmZDczNi0wYTBmLTQ1Y2ItODcyMi04NzgxYjk4YTkwODkiLCJ2ZXIiOiIxNGQ1YjExMS03NjU4LTRhMGItYmFhYy02YmJmMTE5OTJlMDMiLCJleHAiOjB9
+      - eyJzdWIiOiI1NjY0YTM2Ni00YTU4LTQ0MjgtYWNiMS02ZDA1MTBiMDFiYjUiLCJ2ZXIiOiI3M2Q1ZjhkZi03ZjFjLTQ1NjMtODk5Mi1jNzM4ZjY3M2M1MmYiLCJleHAiOjB9
       x-requested-with:
       - XMLHttpRequest
     method: GET
-    uri: https://ppubs.uspto.gov/dirsearch-public/internal/patents/US-6103599-A/highlight?queryId=1&source=USPAT&includeSections=true&uniqueId=
+    uri: https://ppubs.uspto.gov/api/patents/highlight/US-6103599-A?queryId=1&source=USPAT&includeSections=true&uniqueId=
   response:
     content: '{"guid":"US-6103599-A","publicationReferenceDocumentNumber":"6103599","compositeId":"26732223!US-US-06103599","publicationReferenceDocumentNumber1":"06103599","datePublishedKwicHits":null,"datePublished":"2000-08-15T00:00:00Z","inventionTitle":"Planarizing
       technique for multilayered substrates","type":"USPAT","mainClassificationCode":"438/459","applicantName":null,"assigneeName":["Silicon
@@ -490,11 +474,11 @@ interactions:
       Savitri","assistantExaminer":null,"applicationNumber":"09/089931","frontPageStart":1,"frontPageEnd":2,"drawingsStart":3,"drawingsEnd":6,"specificationStart":7,"specificationEnd":10,"claimsStart":10,"claimsEnd":11,"abstractStart":1,"abstractEnd":2,"bibStart":1,"bibEnd":2,"certCorrectionStart":12,"certCorrectionEnd":12,"certReexaminationStart":0,"certReexaminationEnd":0,"supplementalStart":0,"supplementalEnd":0,"ptabStart":0,"ptabEnd":0,"amendStart":0,"amendEnd":0,"searchReportStart":0,"searchReportEnd":0,"pageCount":12,"pageCountDisplay":"12","previouslyViewed":false,"unused":false,"imageLocation":"uspat/US/06/103/599","imageFileName":"00000001.tif","cpcCodes":null,"queryId":1,"tags":null,"inventorsShort":"Henley;
       Francois J. et al.","familyIdentifierCur":26732223,"familyIdentifierCurStr":"26732223","languageIndicator":"EN","databaseName":"USPT","dwImageDoctypeList":null,"dwImageLocList":null,"dwPageCountList":null,"dwImageDocidList":null,"patentFamilyMembers":null,"patentFamilyCountry":null,"patentFamilySerialNumber":null,"documentIdWithDashesDw":null,"pfPublDate":null,"pfPublDateKwicHits":null,"priorityClaimsDate":null,"priorityClaimsDateKwicHits":null,"pfApplicationSerialNumber":null,"pfApplicationDescriptor":null,"pfLanguage":null,"pfApplicationDate":null,"pfApplicationDateKwicHits":null,"clippedUri":null,"source":null,"documentId":"<span
       term=\"us6103599a\" class=\"highlight18\">US 6103599 A</span>","derwentAccessionNumber":null,"documentSize":55787,"score":0.0,"governmentInterest":null,"kindCode":["A"],"urpn":["4006340","4566403","4846928","4847792","4853250","4887005","4948458","4952273","4960073","4996077","5010579","5013563","5015353","5133826","5202095","5203960","5234529","5250328","5252178","5273610","5342472","5368710","5370765","5374564","5404079","5405480","5411592","5435880","5487785","5504328","5593622","5822987","5920764"],"urpnCode":["4006340","4566403","4846928","4847792","4853250","4887005","4948458","4952273","4960073","4996077","5010579","5013563","5015353","5133826","5202095","5203960","5234529","5250328","5252178","5273610","5342472","5368710","5370765","5374564","5404079","5405480","5411592","5435880","5487785","5504328","5593622","5822987","5920764"],"abstractedPatentNumber":null,"assigneeCity":["Los
-      Gatos"],"assigneePostalCode":["N/A"],"assigneeState":["CA"],"assigneeTypeCode":["02"],"curIntlPatentClassificationPrimary":null,"curIntlPatentClassificationPrimaryDateKwicHits":null,"designatedStates":null,"examinerGroup":"282","issuedUsCrossRefClassification":["438/458","438/977","438/694","438/770"],"jpoFtermCurrent":null,"languageOfSpecification":null,"chosenDrawingsReference":null,"derwentClass":null,"inventionTitleHighlights":null,"cpcOrigInventiveClassificationHighlights":null,"cpcInventiveDateKwicHits":null,"cpcOrigAdditionalClassification":null,"cpcAdditionalDateKwicHits":null,"curIntlPatentClssficationSecHighlights":null,"fieldOfSearchClassSubclassHighlights":["438/528","438/459","438/974","438/977","438/766","438/770","438/697","438/745","438/756","438/723","438/513","438/455","438/458","438/406","438/4","438/694"],"cpcCombinationSetsCurHighlights":null,"applicantCountry":null,"applicantCity":null,"applicantState":null,"applicantZipCode":null,"applicantAuthorityType":null,"applicantDescriptiveText":null,"applicationSerialNumber":["089931"],"inventorCity":["Los
+      Gatos"],"assigneePostalCode":["N/A"],"assigneeState":["CA"],"assigneeTypeCode":["02"],"curIntlPatentClassificationPrimary":null,"curIntlPatentClassificationPrimaryDateKwicHits":null,"designatedStates":null,"examinerGroupHtml":["282"],"examinerGroup":282,"issuedUsCrossRefClassification":["438/458","438/977","438/694","438/770"],"jpoFtermCurrent":null,"languageOfSpecification":null,"chosenDrawingsReference":null,"derwentClass":null,"inventionTitleHighlights":null,"cpcOrigInventiveClassificationHighlights":null,"cpcInventiveDateKwicHits":null,"cpcOrigAdditionalClassification":null,"cpcAdditionalDateKwicHits":null,"curIntlPatentClassificationSecHighlights":null,"fieldOfSearchClassSubclassHighlights":["438/528","438/459","438/974","438/977","438/766","438/770","438/697","438/745","438/756","438/723","438/513","438/455","438/458","438/406","438/4","438/694"],"cpcCombinationSetsCurHighlights":null,"applicantCountry":null,"applicantCity":null,"applicantState":null,"applicantZipCode":null,"applicantAuthorityType":null,"applicantDescriptiveText":null,"applicationSerialNumber":["089931"],"inventorCity":["Los
       Gatos","Albany"],"inventorState":["CA","CA"],"inventorPostalCode":["N/A","N/A"],"standardTitleTermsHighlights":null,"primaryExaminerHighlights":"Mulpuri;
       Savitri","continuityData":["This application claims the benfit of U.S. Provisional
       Application No. 60/053,770, filed Jul. 25, 1997, the disclosure of which is
-      incorporated by reference.\n<br />"],"inventors":null,"uspcFullClassification":null,"uspcCodeFmtFlattened":null,"ipcCode":null,"applicationNumberHighlights":["09/089931"],"dateProduced":"2012-11-19T00:00:00Z","auxFamilyMembersGroupTempPlaceHolder":null,"priorityCountryCode":null,"cpcCurAdditionalClassification":null,"internationalClassificationMain":null,"internationalClassificationSecondary":null,"internationalClassificationInformational":null,"europeanClassification":null,"europeanClassificationMain":null,"europeanClassificationSecondary":null,"lanuageIndicator":null,"intlPubClassificationPrimary":null,"intlPubClassificationPrimaryDateKwicHits":null,"intlPubClassificationSecondary":null,"intlPubClassificationSecondaryDateKwicHits":null,"publicationDate":null,"derwentWeekInt":0,"derwentWeek":null,"currentUsOriginalClassification":"438/459","currentUsCrossReferenceClassification":["438/770","438/977","438/694","257/E21.568","438/458","257/E21.219"],"locarnoClassification":null,"equivalentAbstractText":null,"hagueIntlRegistrationNumber":null,"hagueIntlFilingDate":null,"hagueIntlFilingDateKwicHits":null,"hagueIntlRegistrationDate":null,"hagueIntlRegistrationDateKwicHits":null,"hagueIntlRegistrationPubDate":null,"hagueIntlRegistrationPubDateKwicHits":null,"curIntlPatentClassificationNoninvention":null,"curIntlPatentClassificationNoninventionDateKwicHits":null,"curIntlPatentClassificationSecondary":["H01L21/70
+      incorporated by reference.\n<br />"],"inventors":null,"uspcFullClassification":null,"uspcCodeFmtFlattened":null,"ipcCode":null,"applicationNumberHighlights":["09/089931"],"dateProduced":"2012-11-19T00:00:00Z","auxFamilyMembersGroupTempPlaceHolder":null,"priorityCountryCode":null,"cpcCurAdditionalClassification":null,"internationalClassificationMain":null,"internationalClassificationSecondary":null,"internationalClassificationInformational":null,"europeanClassification":null,"europeanClassificationMain":null,"europeanClassificationSecondary":null,"intlPubClassificationPrimary":null,"intlPubClassificationPrimaryDateKwicHits":null,"intlPubClassificationSecondary":null,"intlPubClassificationSecondaryDateKwicHits":null,"publicationDate":null,"derwentWeekInt":0,"derwentWeek":null,"currentUsOriginalClassification":"438/459","currentUsCrossReferenceClassification":["438/770","438/977","438/694","257/E21.568","438/458","257/E21.219"],"locarnoClassification":null,"equivalentAbstractText":null,"hagueIntlRegistrationNumber":null,"hagueIntlFilingDate":null,"hagueIntlFilingDateKwicHits":null,"hagueIntlRegistrationDate":null,"hagueIntlRegistrationDateKwicHits":null,"hagueIntlRegistrationPubDate":null,"hagueIntlRegistrationPubDateKwicHits":null,"curIntlPatentClassificationNoninvention":null,"curIntlPatentClassificationNoninventionDateKwicHits":null,"curIntlPatentClassificationSecondary":["H01L21/70
       20060101","H01L21/762 20060101","H01L21/02 20060101","H01L21/306 20060101"],"curIntlPatentClassificationSecondaryDateKwicHits":null,"abstractHtml":"The
       present invention provides a multilayered wafer 10 such as an SOI wafer having
       a novel implanted layer. This implanted layer is removable and provides a resulting
@@ -915,13 +899,14 @@ interactions:
       the present specification and more particularly below.<br />(18) These and other
       embodiments of the present invention, as well as other advantages and features
       are described in more detail in conjunction with the text below and attached
-      Figs.","backgroundTextHtml":null,"subHeadingM0Html":null,"subHeadingM1Html":null,"subHeadingM2Html":null,"subHeadingM3Html":null,"subHeadingM4Html":null,"subHeadingM5Html":null,"subHeadingM6Html":null,"usClassIssued":"438/459","issuedUsDigestRefClassifi":null,"datePublYear":"2000","applicationYear":"1998","pfDerwentWeekYear":null,"pfApplicationYear":null,"pfPublYear":null,"reissueApplNumber":null,"abstractHeader":null,"abstractedPublicationDerwent":null,"affidavit130BFlag":null,"affidavit130BText":null,"applicantGroup":null,"applicantHeader":null,"applicationFilingDateInt":19980603,"applicationFilingDateIntKwicHits":null,"applicationRefFilingType":null,"applicationReferenceGroup":null,"applicationSeriesAndNumber":null,"applicationSeriesCode":"09","assignee1":null,"assigneeDescriptiveText":["N/A"],"patentAssigneeTerms":null,"associateAttorneyName":null,"attorneyName":null,"biologicalDepositInformation":null,"applicationType":null,"unlinkedDerwentRegistryNumber":null,"unlinkedRingIndexNumbersRarerFragments":null,"claimStatement":"What
+      Figs.","backgroundTextHtml":null,"subHeadingM0Html":null,"subHeadingM1Html":null,"subHeadingM2Html":null,"subHeadingM3Html":null,"subHeadingM4Html":null,"subHeadingM5Html":null,"subHeadingM6Html":null,"usClassIssued":"438/459","issuedUsDigestRefClassifi":null,"datePublYear":"2000","applicationYear":"1998","pfDerwentWeekYear":null,"pfApplicationYear":null,"pfPublYear":null,"reissueApplNumber":null,"abstractHeader":null,"abstractedPublicationDerwent":null,"affidavit130BFlag":null,"affidavit130BText":null,"applicantGroup":null,"applicantHeader":null,"applicationFilingDateInt":19980603,"applicationFilingDateIntKwicHits":null,"applicationRefFilingType":null,"applicationReferenceGroup":null,"applicationSeriesAndNumber":null,"applicationSeriesCode":"09","assignee1":null,"assigneeDescriptiveText":["N/A\n<br
+      />"],"patentAssigneeTerms":null,"associateAttorneyName":null,"attorneyName":null,"biologicalDepositInformation":null,"applicationType":null,"unlinkedDerwentRegistryNumber":null,"unlinkedRingIndexNumbersRarerFragments":null,"claimStatement":"What
       is claimed is:","claimsTextAmended":null,"continuedProsecutionAppl":null,"cpcAdditionalLong":null,"cpcCisClassificationOrig":null,"cpcCombinationClassificationOrig":null,"cpcInventive":["H01L21/30604
       20130101","H01L21/76254 20130101"],"cpcInventiveCurrentDateKwicHits":null,"cpcAdditional":["Y10S438/977
       20130101"],"cpcAdditionalCurrentDateKwicHits":null,"cpcOrigClassificationGroup":null,"curIntlPatentClassificationGroup":null,"curUsClassificationUsPrimaryClass":null,"curUsClassificationUsSecondaryClass":null,"customerNumber":null,"depositAccessionNumber":null,"depositDescription":null,"derwentClassAlpha":null,"designatedstatesRouteGroup":null,"docAccessionNumber":null,"drawingDescription":null,"editionField":["07"],"exchangeWeek":null,"exemplaryClaimNumber":["1"],"familyIdentifierOrig":null,"fieldOfSearchCpcClassification":null,"fieldOfSearchCpcMainClass":null,"fieldOfSearchIpcMainClass":null,"fieldOfSearchIpcMainClassSubclass":null,"fieldOfSearchSubclasses":["528;459;974;977;766;770;697;745;756;723;513;455;458;406;4;694"],"foreignRefGroup":["0
       379 828 19891200 EP","0 459 177 19910500 EP","0193904 19841100 JP","2231197
       19900300 GB"],"foreignRefPubDate":["19891200","19910500","19841100","19900300"],"foreignRefPubDateKwicHits":["19891200","19910500","19841100","19900300"],"foreignRefCitationClassification":null,"foreignRefPatentNumber":["0
-      379 828","0 459 177","0193904","2231197"],"foreignRefCitationCpc":null,"foreignRefCountryCode":["EP","EP","JP","GB"],"iceXmlIndicator":null,"internationalClassificationHeader":null,"internationalClassificationInformationalGroup":null,"intlPubClassificationGroup":null,"intlPubClassificationNonInvention":null,"inventorCitizenship":null,"inventorCorrection":null,"inventorDeceased":null,"inventorStreetAddress":["N/A","N/A"],"inventorText":["N/A","N/A"],"jpoFiClassification":null,"legalRepresentativeCity":null,"legalRepresentativeCountry":"[]","legalRepresentativeName":null,"legalRepresentativePostcode":null,"legalRepresentativeState":null,"legalRepresentativeStreetAddress":null,"legalRepresentativeText":null,"messengerDocsFlag":null,"newRecordPatentDerwent":null,"numberOfClaims":"28","numberOfDrawingSheets":"4","numberOfFigures":"7","numberOfPagesInSpecification":null,"numberOfPagesOfSpecification":null,"objectContents":null,"objectDescription":null,"parentDocCountry":null,"parentGrantDocCountry":null,"patentBibliographicHeader":null,"pctOrRegionalPublishingSerial":null,"pfDerwentWeekNum":null,"principalAttorneyName":null,"priorityApplicationCountry":null,"priorityClaimsCountry":null,"priorityNumberDerived":null,"publicationIssueNumber":null,"refCitedPatentDocNumber":null,"refCitedPatentDocDate":null,"refCitedPatentDocKindCode":null,"referenceCitedCode":null,"referenceCitedGroup":null,"referenceCitedSearchPhase":null,"referenceCitedText":null,"registrationNumber":null,"reissueApplCountry":null,"reissueParentKind":null,"reissueParentNumber":null,"reissueParentPubCountry":null,"reissuePatentGroup":null,"reissuePatentParentStatus":null,"reissuedPatentApplCountry":null,"reissuedPatentApplKind":null,"reissuedPatentApplNumber":null,"relatedApplChildPatentCountry":null,"relatedApplChildPatentName":null,"relatedApplChildPatentNumber":null,"relatedApplCountryCode":null,"relatedApplParentGrantPatentKind":null,"relatedApplParentGrantPatentName":null,"relatedApplParentPatentKind":null,"relatedApplParentPatentName":null,"relatedApplParentPctDoc":null,"relatedApplParentStatusCode":null,"relatedApplPatentNumber":null,"relatedApplRelatedPub":null,"relatedApplTypeOfCorrection":null,"rule47Flag":null,"selectedDrawingCharacter":null,"selectedDrawingFigure":null,"statutoryInventionText":null,"termOfExtension":null,"termOfPatentGrant":null,"titleTermsData":null,"additionalIndexingTerm":null,"applicationYearSearch":"1998","pfApplicationYearSearch":null,"assigneeCountry":["N/A"],"certOfCorrectionFlag":"yes","citedPatentLiteratureAddressInformation":null,"citedPatentLiteratureClassificationIpc":null,"citedPatentLiteratureOrganizationName":null,"citedPatentLiteratureRefNumber":null,"crossReferenceNumber":null,"country":"US","cpiManualCodes":null,"cpiSecondaryAccessionNumber":null,"curIntlPatentAllClassificationLong":null,"currentUsOriginalClassificationLong":null,"datePublSearch":"2000-08-15T00:00:00.000+00:00","datePublYearSearch":"2000","epiManualCodes":null,"fieldOfSearchMainClassNational":["438"],"inventorCountry":["N/A","N/A"],"ipcAllMainClassification":["H01L"],"issuedUsClassificationFull":["438/770","438/459","438/694","438/977","438/458"],"issuedUsDigestRefClassification":["438/458","438/977","438/694","438/770"],"jpoFiCurrentAdditionalClassification":null,"jpoFiCurrentInventiveClassification":null,"legalFirmName":["Townsend
+      379 828","0 459 177","0193904","2231197"],"foreignRefCitationCpc":null,"foreignRefCountryCode":["EP","EP","JP","GB"],"iceXmlIndicator":null,"internationalClassificationHeader":null,"internationalClassificationInformationalGroup":null,"intlPubClassificationGroup":null,"intlPubClassificationNonInvention":null,"inventorCitizenship":null,"inventorCorrection":null,"inventorDeceased":null,"inventorStreetAddress":["N/A","N/A"],"inventorText":["N/A","N/A"],"jpoFiClassification":null,"legalRepresentativeCity":null,"legalRepresentativeCountry":"[]","legalRepresentativeName":null,"legalRepresentativePostcode":null,"legalRepresentativeState":null,"legalRepresentativeStreetAddress":null,"legalRepresentativeText":null,"messengerDocsFlag":null,"newRecordPatentDerwent":null,"numberOfClaims":"28","numberOfDrawingSheets":"4","numberOfFigures":"7","numberOfPagesInSpecification":null,"numberOfPagesOfSpecification":null,"objectContents":null,"objectDescription":null,"parentDocCountry":null,"parentGrantDocCountry":null,"patentBibliographicHeader":null,"pctOrRegionalPublishingSerial":null,"pfDerwentWeekNum":null,"principalAttorneyName":null,"priorityApplicationCountry":null,"priorityClaimsCountry":null,"priorityNumberDerived":null,"publicationIssueNumber":null,"refCitedPatentDocNumber":null,"refCitedPatentDocDate":null,"refCitedPatentDocKindCode":null,"referenceCitedCode":null,"referenceCitedGroup":null,"referenceCitedSearchPhase":null,"referenceCitedText":null,"registrationNumber":null,"reissueApplCountry":null,"reissueParentKind":null,"reissueParentNumber":null,"reissueParentPubCountry":null,"reissuePatentGroup":null,"reissuePatentParentStatus":null,"reissuedPatentApplCountry":null,"reissuedPatentApplKind":null,"reissuedPatentApplNumber":null,"relatedApplChildPatentCountry":null,"relatedApplChildPatentName":null,"relatedApplChildPatentNumber":null,"relatedApplCountryCode":null,"relatedApplParentGrantPatentKind":null,"relatedApplParentGrantPatentName":null,"relatedApplParentPatentKind":null,"relatedApplParentPatentName":null,"relatedApplParentPctDoc":null,"relatedApplParentStatusCode":null,"relatedApplPatentNumber":null,"relatedApplRelatedPub":null,"relatedApplTypeOfCorrection":null,"rule47Flag":null,"selectedDrawingCharacter":null,"selectedDrawingFigure":null,"statutoryInventionText":null,"termOfExtension":null,"termOfPatentGrant":null,"titleTermsData":null,"additionalIndexingTerm":null,"applicationYearSearch":"1998","pfApplicationYearSearch":null,"assigneeCountry":["N/A"],"certOfCorrectionFlag":"yes","citedPatentLiteratureAddressInformation":null,"citedPatentLiteratureClassificationIpc":null,"citedPatentLiteratureOrganizationName":null,"citedPatentLiteratureRefNumber":null,"crossReferenceNumber":null,"country":"US","cpiManualCodes":null,"cpiSecondaryAccessionNumber":null,"curIntlPatentAllClassificationLong":null,"currentUsOriginalClassificationLong":null,"datePublSearch":"2000-08-15T00:00:00.000+00:00","datePublYearSearch":"2000","epiManualCodes":null,"fieldOfSearchMainClassNational":["438"],"inventorCountry":["N/A","N/A"],"ipcAllMainClassification":["H01L"],"issuedIpcClassificationFull":["H01L021/00"],"issuedUsClassificationFull":["438/770","438/459","438/694","438/977","438/458"],"issuedUsDigestRefClassification":["438/458","438/977","438/694","438/770"],"jpoFiCurrentAdditionalClassification":null,"jpoFiCurrentInventiveClassification":null,"legalFirmName":["Townsend
       and Townsend and Crew LLP"],"locarnoMainClassification":["H01L021/00"],"nonCpiSecondaryAccessionNumber":null,"objectId":null,"otherRefPub":["Lee
       et al &quot;A Novel Pattern Transfer Process for Bonded SOI Giga-Bit DRAM&quot;,
       1996 IEEE International SOI Proceeding, Sep. 30-Oct. 3, 1996, pp. 114-115.\n<br
@@ -953,19 +938,17 @@ interactions:
       al.","Chen et al.","Dandl","Bruel","Ohkuni et al.","Benzing et al.","Ovshinsky
       et al.","Minato et al.","Horiike et al.","Bonser","Lee et al.","Srikrishnan","Hanson
       et al."],"volumeNumber":null,"correspondenceNameAddress":null,"correspondenceAddressCustomerNumber":null,"ibmtdbAccessionNumber":null,"inventorsName":["Henley;
-      Francois J.","Cheung; Nathan"],"applicationKindCode":"A","inventorNameDerived":null,"intlPubClassificationClass":null,"issuedUsOrigClassification":"438/459","curCpcSubclassFull":["Y10S","H01L"],"cpcCurAdditionalClass":["Y10S"],"cpcCurInventiveClass":["H01L","H01L"],"cpcCurClassificationGroup":["H
+      Francois J.","Cheung; Nathan"],"applicationKindCode":"A","inventorNameDerived":null,"intlPubClassificationClass":null,"issuedUsOrigClassification":"438/459","issuedCpcClassificationFull":null,"curCpcSubclassFull":["Y10S","H01L"],"cpcCurAdditionalClass":["Y10S"],"cpcCurInventiveClass":["H01L","H01L"],"cpcCurClassificationGroup":["H
       H01L H01L21/30604 20130101 F I B H 20190822 US","Y Y10S Y10S438/977 20130101
       L A B H 20191011 US","H H01L H01L21/76254 20130101 L I B H 20191011 US"],"curCpcClassificationFull":["Y10S438/977
-      20130101","H01L21/76254 20130101","H01L21/30604 20130101"],"cpcCombinationClassificationCur":null,"cpcCombinationTallyCur":null,"intlFurtherClassification":null,"currentUsPatentClass":["438","257"],"idWithoutSolrPartition":"US-US-06103599","curIntlPatentClassifictionPrimaryDateKwicHits":null,"curIntlPatentClssifSecHlights":null,"internationalClassificationInfom":null,"cpcOrigInventvClssifHlghts":null,"descriptionStart":7,"descriptionEnd":10,"publicationReferenceDocumentNumberOne":"06103599"}'
+      20130101","H01L21/76254 20130101","H01L21/30604 20130101"],"cpcCombinationClassificationCur":null,"cpcCombinationTallyCur":null,"intlFurtherClassification":null,"currentUsPatentClass":["438","257"],"idWithoutSolrPartition":"US-US-06103599","curIntlPatentClassifictionPrimaryDateKwicHits":null,"internationalClassificationInfom":null,"descriptionStart":7,"descriptionEnd":10,"publicationReferenceDocumentNumberOne":"06103599"}'
     headers:
       content-type:
       - application/json
       date:
-      - Wed, 22 May 2024 16:20:12 GMT
-      server-timing:
-      - intid;desc=7f4aba08c722e1fb
+      - Tue, 08 Apr 2025 14:56:29 GMT
       x-rate-limit-remaining:
-      - '53'
+      - '19'
     http_version: HTTP/2
     status_code: 200
 version: 1

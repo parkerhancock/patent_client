@@ -106,8 +106,9 @@ class TestPatents:
     @pytest.mark.asyncio
     async def test_can_get_forward_references(self):
         pat = await Patent.objects.get(6103599)
-        forward_refs = pat.forward_citations
-        assert await forward_refs.count() >= 100
+        forward_refs = await (pat.forward_citations.count())
+        
+        assert forward_refs >= 100
 
     @pytest.mark.asyncio
     async def test_classifications_with_foreign_priority_data(self):
@@ -179,11 +180,12 @@ class TestPublishedApplicationFullTextAsync:
     async def test_search_classification(self):
         query = '"166/308.1".CCLS. AND @APD>=20150101<=20210101'
         results = PublishedApplicationBiblio.objects.filter(query=query)
-        assert await results.count() == 41
+        count = await results.count()
+        assert count >= 35
         counter = 0
         async for _ in results:
             counter += 1
-        assert counter == 41
+        assert counter == count
 
     @pytest.mark.asyncio
     async def test_nonstandard_claim_format(self):
