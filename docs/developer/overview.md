@@ -2,7 +2,7 @@
 
 The goal of this project is to provide easy-to-use access to public patent data through a simple API.
 The general idea is to implement a subset of the
-[Django QuerySet API](https://docs.djangoproject.com/en/2.1/ref/models/querysets/). functionality for accessing
+[Django QuerySet API](https://docs.djangoproject.com/en/2.1/ref/models/querysets/) functionality for accessing
 the various sources of patent data. This is a form of the [Active Record](https://en.wikipedia.org/wiki/Active_record_pattern)
 pattern. To achieve this, the "record" is a Pydantic model, and it has a "manager" that is located at `.objects`.
 
