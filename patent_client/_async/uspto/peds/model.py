@@ -435,7 +435,7 @@ class Document(PEDSBaseModel):
         out_path = await client.download(full_url, path=path)
         return out_path
 
-    @computed_field
+    @computed_field(return_type=str)
     @async_property
     async def application(self) -> USApplication:
         return await self._get_model(".USApplication").objects.get(
