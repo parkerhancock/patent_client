@@ -76,22 +76,22 @@ class Property(AbstractAssignmentModel):
         try:
             appl_id = getattr(self, "appl_id", None)
             if appl_id is not None:
-                return self._get_model("patent_client.uspto.peds.model.USApplication").objects.get(
+                return self._get_model("patent_client.uspto.odp.model.USApplication").objects.get(
                     appl_id=appl_id
                 )
             appl_id = getattr(self, "pct_num", None)
             if appl_id is not None:
-                return self._get_model("patent_client.uspto.peds.model.USApplication").objects.get(
+                return self._get_model("patent_client.uspto.odp.model.USApplication").objects.get(
                     appl_id=appl_id
                 )
             pub_num = getattr(self, "publ_num", None)
             if pub_num is not None:
-                return self._get_model("patent_client.uspto.peds.model.USApplication").objects.get(
+                return self._get_model("patent_client.uspto.odp.model.USApplication").objects.get(
                     app_early_pub_number=pub_num
                 )
             pat_num = getattr(self, "pat_num", None)
             if pat_num is not None:
-                return self._get_model("patent_client.uspto.peds.model.USApplication").objects.get(
+                return self._get_model("patent_client.uspto.odp.model.USApplication").objects.get(
                     patent_number=pat_num
                 )
         except Exception:
@@ -112,7 +112,7 @@ class Property(AbstractAssignmentModel):
     ) -> "PublishedApplication":
         """The related US Publication, if any"""
         return self._get_model(
-            "patent_client.uspto.peds.fulltext.patent.model.PublishedApplication"
+            "patent_client.uspto.public_search.model.PublishedApplication"
         ).objects.get(publication_number=self.publ_num)
 
 

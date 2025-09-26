@@ -30,14 +30,14 @@ In version 5, like in version 3, you can just `from patent_client import [Model]
 of the model. No asynchronous methods or functionality at all. Or you can do `from patent_client._async import [Model]`
 and get an asynchronous version of the model.
 
-Version 5 also brings support for the USPTO's new [Open Data Portal](https://beta-data.uspto.gov/home), a system currently in beta that is scheduled to replace the current Patent Examination Data System in late 2024.
+Version 5 also brings support for the USPTO's new [Open Data Portal](https://beta-data.uspto.gov/home). As of March 2025 the USPTO has retired the legacy Patent Examination Data System (PEDS), so `USApplication` now relies on the Open Data Portal APIs by default.
 
 ## Coverage
 
 - [United States Patent & Trademark Office][USPTO]
 
-  - [Patent Examination Data][PEDS] - Full Support
-  - [Open Data Portal][ODP] - Full Support
+  - [Open Data Portal][ODP] - Full Support (default `USApplication` backend)
+  - [Patent Examination Data][PEDS] - Retired by USPTO (legacy docs only)
   - [Global Dossier][GD] - Full Support
   - [Patent Assignment Data][Assignment] - Lookup Support
   - [Patent Trial & Appeal Board API v2][PTAB] - Supports Proceedings, Decisions, and Documents
@@ -76,6 +76,8 @@ Version 5 also brings support for the USPTO's new [Open Data Portal](https://bet
 pip install patent_client
 ```
 
+The library supports CPython 3.10 through 3.13.
+
 If you only want access to USPTO resources, you're done!
 However, additional setup is necessary to access EPO Inpadoc and EPO Register resources. See the [Docs](http://patent-client.readthedocs.io).
 
@@ -107,6 +109,8 @@ True
 'AUTOMATIC FLUID DISPENSER'
 
 ```
+
+> **Note:** The USPTO Open Data Portal requires an API key. Set it via `PATENT_CLIENT_ODP_API_KEY` (see the [getting started guide](https://patent-client.readthedocs.io/en/latest/getting_started.html)) before calling `USApplication`.
 
 ## Async Quick Start
 
@@ -149,4 +153,3 @@ Pull requests welcome!
 - [Google Public Patent Data](https://github.com/google/patents-public-data)
 - [PatentsView API Wrapper](https://github.com/mikeym88/PatentsView-API-Wrapper)
 - [USPTO Scrapy Scraper](https://github.com/blazers08/USPTO)
-

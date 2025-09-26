@@ -131,7 +131,7 @@ class PtabProceeding(PtabBaseModel):
     def us_application(
         self,
     ) -> "list[USApplication]":
-        """The US Application provided by PEDS associated with the Proceeding"""
+        """The US Application provided by the USPTO Open Data Portal associated with the proceeding"""
         return self._get_model(".model.USApplication").objects.get(
             patent_number=self.respondent_patent_number
         )

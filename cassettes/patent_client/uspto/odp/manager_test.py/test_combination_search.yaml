@@ -1,0 +1,47 @@
+interactions:
+- request:
+    body: '{"q": "applicationMetaData.firstInventorName:\"Shoji KANADA\" AND applicationMetaData.customerNumber:2292",
+      "fields": ["applicationNumberText"]}'
+    headers:
+      X-API-KEY:
+      - REDACTED
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate, zstd
+      connection:
+      - keep-alive
+      content-length:
+      - '144'
+      content-type:
+      - application/json
+      host:
+      - api.uspto.gov
+      user-agent:
+      - Mozilla/5.0 Python Patent Clientbot/5.0.19 (parkerhancock@users.noreply.github.com)
+    method: POST
+    uri: https://api.uspto.gov/api/v1/patent/applications/search
+  response:
+    content: '{"count":8,"patentFileWrapperDataBag":[{"applicationNumberText":"17130468"},{"applicationNumberText":"16123456"},{"applicationNumberText":"15928596"},{"applicationNumberText":"15834895"},{"applicationNumberText":"15447871"},{"applicationNumberText":"15221900"},{"applicationNumberText":"15162932"},{"applicationNumberText":"15151728"}],"requestIdentifier":"cce0b038-4815-4d68-8fb5-da2f5202933d"}'
+    headers:
+      access-control-allow-headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      access-control-allow-methods:
+      - OPTIONS,POST,GET
+      access-control-allow-origin:
+      - '*'
+      content-length:
+      - '395'
+      content-type:
+      - application/json
+      date:
+      - Fri, 26 Sep 2025 19:37:46 GMT
+      x-amz-apigw-id:
+      - Rhm9sGhboAMF47A=
+      x-amzn-requestid:
+      - cce0b038-4815-4d68-8fb5-da2f5202933d
+      x-amzn-trace-id:
+      - Root=1-68d6eb8a-182d3e585946a19701325b99;Parent=08284a21f9641711;Sampled=0;Lineage=1:33e8fdb8:0
+    http_version: HTTP/2
+    status_code: 200
+version: 1

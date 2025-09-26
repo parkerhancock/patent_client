@@ -1,0 +1,46 @@
+interactions:
+- request:
+    body: '{"q": "applicationMetaData.customerNumber:2292", "fields": ["applicationNumberText"]}'
+    headers:
+      X-API-KEY:
+      - REDACTED
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate, zstd
+      connection:
+      - keep-alive
+      content-length:
+      - '85'
+      content-type:
+      - application/json
+      host:
+      - api.uspto.gov
+      user-agent:
+      - Mozilla/5.0 Python Patent Clientbot/5.0.19 (parkerhancock@users.noreply.github.com)
+    method: POST
+    uri: https://api.uspto.gov/api/v1/patent/applications/search
+  response:
+    content: '{"count":89377,"patentFileWrapperDataBag":[{"applicationNumberText":"18869697"},{"applicationNumberText":"18869712"},{"applicationNumberText":"18867303"},{"applicationNumberText":"19319333"},{"applicationNumberText":"18864046"},{"applicationNumberText":"18865046"},{"applicationNumberText":"18864031"},{"applicationNumberText":"19299178"},{"applicationNumberText":"18859457"},{"applicationNumberText":"19291444"},{"applicationNumberText":"18860312"},{"applicationNumberText":"18870801"},{"applicationNumberText":"35526045"},{"applicationNumberText":"18857274"},{"applicationNumberText":"19261774"},{"applicationNumberText":"18703266"},{"applicationNumberText":"18708075"},{"applicationNumberText":"19244960"},{"applicationNumberText":"35525922"},{"applicationNumberText":"18857531"},{"applicationNumberText":"18700654"},{"applicationNumberText":"18859304"},{"applicationNumberText":"19233613"},{"applicationNumberText":"19233634"},{"applicationNumberText":"19232101"}],"requestIdentifier":"d0119707-5b89-4faa-906b-e78f2ae064c5"}'
+    headers:
+      access-control-allow-headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      access-control-allow-methods:
+      - OPTIONS,POST,GET
+      access-control-allow-origin:
+      - '*'
+      content-length:
+      - '1028'
+      content-type:
+      - application/json
+      date:
+      - Fri, 26 Sep 2025 19:37:53 GMT
+      x-amz-apigw-id:
+      - Rhm9tEGGoAMFUWg=
+      x-amzn-requestid:
+      - d0119707-5b89-4faa-906b-e78f2ae064c5
+      x-amzn-trace-id:
+      - Root=1-68d6eb8a-6792c7c33b4afd015a32cf35;Parent=7aa69099b30e92a9;Sampled=0;Lineage=1:33e8fdb8:0
+    http_version: HTTP/2
+    status_code: 200
+version: 1

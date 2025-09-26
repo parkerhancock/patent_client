@@ -2,28 +2,15 @@
 
 Original API URL: <https://ped.uspto.gov/peds/>
 
-:::{warning}
-The PEDS interface will be DEPRECATED in late 2024 in favor of [Open Data Portal](../open_data_portal.md).
-See [the ODP FAQs](https://beta-data.uspto.gov/support/faq) for more information.
-
-I have also noticed that the USPTO is removing data from PEDS, and has currently removed
-Attorney, PTA/PTE, and Continuity information.
-:::
-
-:::{warning}
-The PEDS interface is under active development by the USPTO. Occasionally documented filtering
-and ordering criteria will fail. Failed filters return no results. Failed ordering critera just
-have no effect.
-:::
-
-:::{warning}
-Downloading file history documents currently doesn't work. The downloader now raises an appropriate
-error to indicate this problem. This warning will be removed when downloading works reliably again
+:::{danger}
+The USPTO retired the Patent Examination Data System (PEDS) on March 14, 2025. The service no longer resolves, so
+live requests will fail. This page is retained for historical reference only—use the [Open Data Portal](../open_data_portal.md)
+APIs for current `USApplication` access.
 :::
 
 
-
-Patent Client provides an interface to the USPTO Patent Examination Data System (PEDS).
+Patent Client previously provided an interface to the USPTO Patent Examination Data System (PEDS). The examples below
+capture the legacy usage but will no longer succeed against the USPTO endpoints.
 
 
 PEDS is a REST-ful API that contains all the publicly available data in Patent Center (formerly PAIR).

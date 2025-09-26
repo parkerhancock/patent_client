@@ -1,0 +1,47 @@
+interactions:
+- request:
+    body: ''
+    headers:
+      X-API-KEY:
+      - REDACTED
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate, zstd
+      connection:
+      - keep-alive
+      host:
+      - api.uspto.gov
+      user-agent:
+      - Mozilla/5.0 Python Patent Clientbot/5.0.19 (parkerhancock@users.noreply.github.com)
+    method: GET
+    uri: https://api.uspto.gov/api/v1/patent/applications/16123456/assignment
+  response:
+    content: '{"count":1,"patentFileWrapperDataBag":[{"assignmentBag":[{"assignmentReceivedDate":"2018-09-07","assignorBag":[{"executionDate":"2018-07-11","assignorName":"KANADA,
+      SHOJI"}],"reelAndFrameNumber":"046816/0108","frameNumber":108,"assignmentRecordedDate":"2018-09-07","conveyanceText":"ASSIGNMENT
+      OF ASSIGNORS INTEREST (SEE DOCUMENT FOR DETAILS).","pageTotalQuantity":3,"assigneeBag":[{"assigneeAddress":{"cityName":"TOKYO","geographicRegionCode":"JPX","postalCode":"106-8620","addressLineOneText":"26-30,
+      NISHIAZABU 2-CHOME, MINATO-KU"},"assigneeNameText":"FUJIFILM CORPORATION"}],"assignmentMailedDate":"2018-09-10","reelNumber":46816,"correspondenceAddressBag":[{"addressLineOneText":"8110
+      GATEHOUSE ROAD, SUITE 100E","correspondentNameText":"BIRCH, STEWART, KOLASCH
+      & BIRCH, LLP","addressLineTwoText":"FALLS CHURCH, VA 22042"}],"assignmentDocumentLocationURI":"https://legacy-assignments.uspto.gov/assignments/assignment-pat-046816-0108.pdf"}],"applicationNumberText":"16123456"}],"requestIdentifier":"8e824662-53f0-4084-9eb9-213178161944"}'
+    headers:
+      access-control-allow-headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      access-control-allow-methods:
+      - OPTIONS,POST,GET
+      access-control-allow-origin:
+      - '*'
+      content-length:
+      - '1041'
+      content-type:
+      - application/json
+      date:
+      - Fri, 26 Sep 2025 19:17:27 GMT
+      x-amz-apigw-id:
+      - Rhj_EGuxIAMF-pw=
+      x-amzn-requestid:
+      - 8e824662-53f0-4084-9eb9-213178161944
+      x-amzn-trace-id:
+      - Root=1-68d6e6c6-3b47274469806e4222eec571;Parent=0a57dac5d5e77925;Sampled=0;Lineage=1:33e8fdb8:0
+    http_version: HTTP/2
+    status_code: 200
+version: 1

@@ -1,5 +1,9 @@
 # USPTO Open Data Portal
 
+The Open Data Portal (ODP) is now the primary source for ``USApplication`` data within
+``patent_client``. Configure the ``PATENT_CLIENT_ODP_API_KEY`` environment variable before
+using any of the managers documented below.
+
 ## Synchronous
 
 ### Manager

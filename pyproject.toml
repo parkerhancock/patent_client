@@ -24,7 +24,7 @@ exclude = ["./**/cassettes/**/*",]
 
 
 [tool.poetry.dependencies]
-python = ">=3.9,<3.13"
+python = ">=3.10,<3.15"
 
 # Required Dependencies
 lxml = "^5.2.2"
@@ -129,4 +129,5 @@ doctest_optionflags= [
 asyncio_mode = "auto"
 markers = [
     "no_vcr: disable vcrpy recording",
+    "vcr: record HTTP interactions with USPTO endpoints",
 ]

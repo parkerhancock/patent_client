@@ -74,7 +74,7 @@ def test_document(fixture_dir):
         for download_option in document.download_option_bag:
             assert download_option["mimeTypeIdentifier"] in ["PDF", "XML", "MS_WORD"]
             assert download_option["downloadUrl"].startswith(
-                "https://beta-api.uspto.gov/api/v1/download/applications/16330077/"
+                "https://api.uspto.gov/api/v1/download/applications/16330077/"
             )
             assert isinstance(download_option["pageTotalQuantity"], int)
 

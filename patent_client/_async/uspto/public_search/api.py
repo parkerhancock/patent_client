@@ -2,9 +2,9 @@ import asyncio
 import json
 from copy import deepcopy
 from pathlib import Path
-import tenacity as tc
 
 import httpx
+import tenacity as tc
 
 from patent_client._async.http_client import PatentClientSession
 
@@ -120,7 +120,7 @@ class PublicSearchApi:
             url,
             json=-1,
             headers={
-                #"X-Access-Token": "null",
+                # "X-Access-Token": "null",
                 "referer": "https://ppubs.uspto.gov/pubwebapp/",
             },
         )  # json=str(random.randint(10000, 99999)))

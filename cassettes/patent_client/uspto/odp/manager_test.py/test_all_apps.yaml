@@ -1,0 +1,46 @@
+interactions:
+- request:
+    body: '{"fields": ["applicationNumberText"]}'
+    headers:
+      X-API-KEY:
+      - REDACTED
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate, zstd
+      connection:
+      - keep-alive
+      content-length:
+      - '37'
+      content-type:
+      - application/json
+      host:
+      - api.uspto.gov
+      user-agent:
+      - Mozilla/5.0 Python Patent Clientbot/5.0.19 (parkerhancock@users.noreply.github.com)
+    method: POST
+    uri: https://api.uspto.gov/api/v1/patent/applications/search
+  response:
+    content: '{"count":12453900,"patentFileWrapperDataBag":[{"applicationNumberText":"19337135"},{"applicationNumberText":"90015537"},{"applicationNumberText":"90015536"},{"applicationNumberText":"90015538"},{"applicationNumberText":"90015524"},{"applicationNumberText":"90015535"},{"applicationNumberText":"18247550"},{"applicationNumberText":"90015529"},{"applicationNumberText":"18874830"},{"applicationNumberText":"19335196"},{"applicationNumberText":"90015514"},{"applicationNumberText":"19333667"},{"applicationNumberText":"90015528"},{"applicationNumberText":"90015526"},{"applicationNumberText":"18876974"},{"applicationNumberText":"90015527"},{"applicationNumberText":"90015525"},{"applicationNumberText":"18868149"},{"applicationNumberText":"18865418"},{"applicationNumberText":"90015511"},{"applicationNumberText":"19332996"},{"applicationNumberText":"90015522"},{"applicationNumberText":"18721513"},{"applicationNumberText":"90015523"},{"applicationNumberText":"18868452"}],"requestIdentifier":"c7297584-fcc5-49a3-bcbe-4280173ff1cc"}'
+    headers:
+      access-control-allow-headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      access-control-allow-methods:
+      - OPTIONS,POST,GET
+      access-control-allow-origin:
+      - '*'
+      content-length:
+      - '1031'
+      content-type:
+      - application/json
+      date:
+      - Fri, 26 Sep 2025 19:37:44 GMT
+      x-amz-apigw-id:
+      - Rhm9aFonoAMFaOA=
+      x-amzn-requestid:
+      - c7297584-fcc5-49a3-bcbe-4280173ff1cc
+      x-amzn-trace-id:
+      - Root=1-68d6eb88-3e0c8e04571917d669969d03;Parent=49bd7d97905c2729;Sampled=0;Lineage=1:33e8fdb8:0
+    http_version: HTTP/2
+    status_code: 200
+version: 1

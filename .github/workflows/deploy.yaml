@@ -15,20 +15,20 @@ on:
         default: ''
 
 env:
-  LATEST_PY_VERSION: '3.10'
+  LATEST_PY_VERSION: '3.13'
   PYTEST_VERBOSE: 'true'
 
 jobs:
-  # Run tests for all supported requests versions and minimum supported python version
+  # Run tests for currently supported CPython versions
   test:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: [3.8]
-        # Run tests for most recent python versions
+        python-version: ['3.10']
         include:
-          - python-version: '3.10'
-            requests-version: latest
+          - python-version: '3.11'
+          - python-version: '3.12'
+          - python-version: '3.13'
       fail-fast: false
 
     steps:

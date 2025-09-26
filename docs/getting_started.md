@@ -8,7 +8,7 @@ To install
 pip install patent_client
 ```
 
-If you are only interested in using the USPTO API's (exlcuding the Open Data Portal), no further setup is necessary. Skip ahead to the next section.
+If you are using the USPTO Open Data Portal (which powers all `USApplication` functionality), you must configure an API key as described below. Other USPTO endpoints (Assignments, PTAB, etc.) do not require additional setup.
 
 If you want to take advantage of the European Patent Office's Open Patent Services,
 which supports Inpadoc and Epo Register documents, you will need to set up your API key:
@@ -47,6 +47,10 @@ representing the data you want. E.g.
 ```python
 from patent_client import USApplication
 ```
+
+:::{note}
+Ensure `PATENT_CLIENT_ODP_API_KEY` is set in your environment before making Open Data Portal requests.
+:::
 
 All of the models are accessible directly at patent_client. Further, all the API's used in this library are **Read Only**, so there is no way to add, delete, or modify records.
 

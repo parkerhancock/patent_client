@@ -1,0 +1,142 @@
+interactions:
+- request:
+    body: '{"q": "applicationNumberText:16123456", "fields": ["applicationNumberText"]}'
+    headers:
+      X-API-KEY:
+      - REDACTED
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate, zstd
+      connection:
+      - keep-alive
+      content-length:
+      - '76'
+      content-type:
+      - application/json
+      host:
+      - api.uspto.gov
+      user-agent:
+      - Mozilla/5.0 Python Patent Clientbot/5.0.19 (parkerhancock@users.noreply.github.com)
+    method: POST
+    uri: https://api.uspto.gov/api/v1/patent/applications/search
+  response:
+    content: '{"count":1,"patentFileWrapperDataBag":[{"applicationNumberText":"16123456"}],"requestIdentifier":"0e2881d9-c089-470c-ae56-2a8d9e4deae2"}'
+    headers:
+      access-control-allow-headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      access-control-allow-methods:
+      - OPTIONS,POST,GET
+      access-control-allow-origin:
+      - '*'
+      content-length:
+      - '136'
+      content-type:
+      - application/json
+      date:
+      - Fri, 26 Sep 2025 19:37:45 GMT
+      x-amz-apigw-id:
+      - Rhm9gE94oAMFWug=
+      x-amzn-requestid:
+      - 0e2881d9-c089-470c-ae56-2a8d9e4deae2
+      x-amzn-trace-id:
+      - Root=1-68d6eb89-26a7b08a495911c84741c0eb;Parent=0424280382393a72;Sampled=0;Lineage=1:33e8fdb8:0
+    http_version: HTTP/2
+    status_code: 200
+- request:
+    body: '{"q": "applicationNumberText:16123456", "fields": ["firstInventorToFileIndicator",
+      "filingDate", "inventorBag", "customerNumber", "groupArtUnitNumber", "inventionTitle",
+      "correspondenceAddressBag", "applicationConfirmationNumber", "docketNumber",
+      "applicationNumberText", "firstInventorName", "firstApplicantName", "cpcClassificationBag",
+      "businessEntityStatusCategory", "earliestPublicationNumber"], "pagination":
+      {"offset": 0, "limit": 1}}'
+    headers:
+      X-API-KEY:
+      - REDACTED
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate, zstd
+      connection:
+      - keep-alive
+      content-length:
+      - '441'
+      content-type:
+      - application/json
+      host:
+      - api.uspto.gov
+      user-agent:
+      - Mozilla/5.0 Python Patent Clientbot/5.0.19 (parkerhancock@users.noreply.github.com)
+    method: POST
+    uri: https://api.uspto.gov/api/v1/patent/applications/search
+  response:
+    content: '{"count":1,"patentFileWrapperDataBag":[{"applicationNumberText":"16123456","correspondenceAddressBag":[{"cityName":"Vienna","geographicRegionName":"VIRGINIA","geographicRegionCode":"VA","countryCode":"US","postalCode":"22180-7371","nameLineOneText":"BIRCH
+      STEWART KOLASCH & BIRCH, LLP","countryName":"UNITED STATES","addressLineOneText":"2600
+      Park Tower Drive","addressLineTwoText":"Suite 600"}]}],"requestIdentifier":"53539f19-3546-47f3-adeb-f65a63f50e70"}'
+    headers:
+      access-control-allow-headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      access-control-allow-methods:
+      - OPTIONS,POST,GET
+      access-control-allow-origin:
+      - '*'
+      content-length:
+      - '457'
+      content-type:
+      - application/json
+      date:
+      - Fri, 26 Sep 2025 19:37:45 GMT
+      x-amz-apigw-id:
+      - Rhm9iH6GIAMFqQw=
+      x-amzn-requestid:
+      - 53539f19-3546-47f3-adeb-f65a63f50e70
+      x-amzn-trace-id:
+      - Root=1-68d6eb89-412adc2827ae7aca13360f0e;Parent=14e0cb6ea468648c;Sampled=0;Lineage=1:33e8fdb8:0
+    http_version: HTTP/2
+    status_code: 200
+- request:
+    body: '{"q": "applicationNumberText:(16123456)", "fields": ["applicationNumberText"],
+      "pagination": {"offset": 0, "limit": 25}}'
+    headers:
+      X-API-KEY:
+      - REDACTED
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate, zstd
+      connection:
+      - keep-alive
+      content-length:
+      - '120'
+      content-type:
+      - application/json
+      host:
+      - api.uspto.gov
+      user-agent:
+      - Mozilla/5.0 Python Patent Clientbot/5.0.19 (parkerhancock@users.noreply.github.com)
+    method: POST
+    uri: https://api.uspto.gov/api/v1/patent/applications/search
+  response:
+    content: '{"message":"Too Many Requests"}'
+    headers:
+      access-control-allow-headers:
+      - Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token
+      access-control-allow-methods:
+      - GET,OPTIONS
+      access-control-allow-origin:
+      - '*'
+      content-length:
+      - '31'
+      content-type:
+      - application/json
+      date:
+      - Fri, 26 Sep 2025 19:37:45 GMT
+      x-amz-apigw-id:
+      - Rhm9jHEAoAMFqQA=
+      x-amzn-errortype:
+      - TooManyRequestsException
+      x-amzn-requestid:
+      - d9af5d6f-0b92-420c-a386-ddc60a4c0025
+    http_version: HTTP/2
+    status_code: 429
+version: 1

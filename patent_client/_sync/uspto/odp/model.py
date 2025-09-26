@@ -130,7 +130,7 @@ class Assignment(BaseODPModel):
     )
     frame_number: Optional[int] = Field(alias="frameNumber", default=None)
     page_number: Optional[int] = Field(alias="pageNumber", default=None)
-    reel_number_frame_number: Optional[str] = Field(alias="reelNumber/frameNumber", default=None)
+    reel_number_frame_number: Optional[str] = Field(alias="reelAndFrameNumber", default=None)
     assignment_recorded_date: Optional[datetime.date] = Field(
         alias="assignmentRecordedDate", default=None
     )
@@ -282,7 +282,7 @@ class USApplicationBiblio(BaseODPModel):
 
     @property
     def bibliographic_data(self) -> "USApplicationBiblio":
-        return self._get_model(".model.USApplicationBiblio").objects.get(appl_id=self.appl_id)
+        return self
 
     @property
     def application(self) -> "USApplication":

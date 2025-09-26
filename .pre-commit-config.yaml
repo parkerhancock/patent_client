@@ -23,14 +23,10 @@ repos:
     args: [ --fix ]
   # Run the formatter
   - id: ruff-format
--   repo: meta
-    hooks:
-    -   id: check-hooks-apply
-- repo: https://github.com/hadialqattan/pycln
-  rev: v2.4.0 # Possible releases: https://github.com/hadialqattan/pycln/releases
+
+- repo: meta
   hooks:
-    - id: pycln
-      args: [--config=pyproject.toml]
+    - id: check-hooks-apply
 
 - repo: https://github.com/pycqa/isort
   rev: 5.13.2

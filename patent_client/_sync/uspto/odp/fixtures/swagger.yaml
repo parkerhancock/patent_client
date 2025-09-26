@@ -2,7 +2,7 @@ openapi: 3.0.1
 info:
   title: Open Data Portal (ODP) API
   description: The Open Data Portal (ODP) API allows you to extract USPTO data at no cost – with several ways to do it. For more details and steps to generate api key visit to <a href="https://beta-data.uspto.gov/apis/getting-started" target="_blank">API Overview</a><br><br>
-    ODP API requires an API key in order to access resources. Once you have obtained an API key, you can pass the API key into a REST API call in the x-api-key header of the request. For example, the request to access patent data for an application might look like as below.<br><br><code>curl -X 'GET' 'https://beta-api.uspto.gov/api/v1/patent/applications/14412875' -H 'X-API-KEY:YOUR_API_KEY'</code><br><br></br><code>curl -X 'POST' 'https://beta-api.uspto.gov/api/v1/patent/applications/search' -H 'X-API-KEY:YOUR_API_KEY' -d '{"q":"applicationTypeLabelName:Utility"}'</br></code>
+    ODP API requires an API key in order to access resources. Once you have obtained an API key, you can pass the API key into a REST API call in the x-api-key header of the request. For example, the request to access patent data for an application might look like as below.<br><br><code>curl -X 'GET' 'https://api.uspto.gov/api/v1/patent/applications/14412875' -H 'X-API-KEY:YOUR_API_KEY'</code><br><br></br><code>curl -X 'POST' 'https://api.uspto.gov/api/v1/patent/applications/search' -H 'X-API-KEY:YOUR_API_KEY' -d '{"q":"applicationTypeLabelName:Utility"}'</br></code>
   contact:
     email: data@uspto.gov
     url: https://beta-data.uspto.gov/apis/getting-started
@@ -12,7 +12,7 @@ info:
   x-functionality: ["Search"]
   version: 1.0.0
 servers:
-  - url: https://beta-api.uspto.gov
+  - url: https://api.uspto.gov
 security:
   - ApiKeyAuth: []
 tags:
@@ -1885,7 +1885,7 @@ components:
                       example: PDF
                     downloadURI:
                       type: string
-                      example: https://beta-api.uspto.gov/api/v1/patent/application/documents/16123123/LDXBTPQ7XBLUEX3.pdf
+                      example: https://api.uspto.gov/api/v1/patent/application/documents/16123123/LDXBTPQ7XBLUEX3.pdf
                     pageTotalQuantity:
                       type: integer
                       example: 2

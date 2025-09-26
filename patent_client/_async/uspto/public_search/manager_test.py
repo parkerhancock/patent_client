@@ -106,8 +106,8 @@ class TestPatents:
     @pytest.mark.asyncio
     async def test_can_get_forward_references(self):
         pat = await Patent.objects.get(6103599)
-        forward_refs = await (pat.forward_citations.count())
-        
+        forward_refs = await pat.forward_citations.count()
+
         assert forward_refs >= 100
 
     @pytest.mark.asyncio

@@ -9,9 +9,9 @@ there may be errors in the data.
 **Also, please note that the ODP only covers applications filed on or after Jan 1, 2001.**
 :::
 
-Patent Client provides an interface to the USPTO's [Open Data Portal](https://beta-data.uspto.gov/home), which currently
-provides information on pending applications, similar to [PEDS](../peds.md). The USPTO expects to retire PEDS in late 2024,
-after which it will be fully replaced by the Open Data Portal.
+Patent Client provides an interface to the USPTO's [Open Data Portal](https://beta-data.uspto.gov/home), which exposes information on pending applications.
+The USPTO retired the legacy Patent Examination Data System (PEDS) on March 14, 2025, so the Open Data Portal is now the
+authoritative source for `USApplication` data in this library.
 
 The Open Data Portal currently only supports accessing US Application information, not patents or published applications.
 Nonetheless, it provides a wealth of information about applications, including bibliographic information, file history
@@ -24,11 +24,11 @@ The Open Data Portal requires a USPTO-issued API key. This key can be obtained a
 
 ## Basic Retrieval
 
-Because ODP will eventually replace PEDS, the current ODP implementations of USApplication can be found by
-prefixing the USApplicationManager with "odp". Here is an example of how to access the Open Data Portal:
+`USApplication` and `USApplicationBiblio` are available directly from the top-level `patent_client` namespace, and are also
+re-exported from `patent_client.odp` if you prefer to be explicit about the data source. Here is an example of how to access the Open Data Portal:
 
 ```python
-from patent_client.odp import USApplicationBiblio
+from patent_client import USApplicationBiblio
 
 app = USApplicationBiblio.objects.get("16123456") # The application itself
 app.biblio # The basic bibliographic information
@@ -62,6 +62,15 @@ This will download the first document in the application's file history, and sav
 
 Patent Client implements the full search API, documentation for which can be found [here](https://beta-data.uspto.gov/apis/api-guidelines).
 There are three basic ways to search the ODP using Patent Client, all through the USApplicationBiblio.objects.filter (or USApplication.objects.filter) interface. The specifics of the search are fully described in [this pdf](https://beta-data.uspto.gov/documents/documents/ODP-API-Query-Spec.pdf), which provides the available search fields.
+
+.. note::
+
+   The Open Data Portal expresses most queryable fields under ``applicationMetaData``. When
+   you use the raw ``q`` syntax you may need to prefix field names, for example
+   ``applicationMetaData.customerNumber:2292`` or
+   ``applicationMetaData.firstInventorName:"Shoji KANADA"``. Convenience helpers in
+   ``SearchRequest`` will build the correct payload when possible, but the raw syntax always
+   works with the documented field names.
 
 ### Method 1 - Basic Keyword Searches
 
@@ -124,4 +133,3 @@ USApplicationBiblio.objects.filter(query={
   ]})
 
 ```
-

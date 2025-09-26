@@ -1,0 +1,44 @@
+interactions:
+- request:
+    body: ''
+    headers:
+      X-API-KEY:
+      - REDACTED
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate, zstd
+      connection:
+      - keep-alive
+      host:
+      - api.uspto.gov
+      user-agent:
+      - Mozilla/5.0 Python Patent Clientbot/5.0.19 (parkerhancock@users.noreply.github.com)
+    method: GET
+    uri: https://api.uspto.gov/api/v1/patent/applications/16123456/continuity
+  response:
+    content: '{"count":1,"patentFileWrapperDataBag":[{"childContinuityBag":[{"firstInventorToFileIndicator":true,"childApplicationStatusDescriptionText":"Patented
+      Case","claimParentageTypeCode":"DIV","childApplicationStatusCode":150,"claimParentageTypeCodeDescriptionText":"is
+      a Division of","childPatentNumber":"11797846","parentApplicationNumberText":"16123456","childApplicationFilingDate":"2020-12-22","childApplicationNumberText":"17130468"}],"applicationNumberText":"16123456"}],"requestIdentifier":"ec850cca-48e6-4259-b805-036546406ac4"}'
+    headers:
+      access-control-allow-headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      access-control-allow-methods:
+      - OPTIONS,POST,GET
+      access-control-allow-origin:
+      - '*'
+      content-length:
+      - '530'
+      content-type:
+      - application/json
+      date:
+      - Fri, 26 Sep 2025 19:12:30 GMT
+      x-amz-apigw-id:
+      - RhjQyEkZoAMFi-Q=
+      x-amzn-requestid:
+      - ec850cca-48e6-4259-b805-036546406ac4
+      x-amzn-trace-id:
+      - Root=1-68d6e59e-0ef2e662061bca6d1bf14abd;Parent=69e8bf0ad4736498;Sampled=0;Lineage=1:33e8fdb8:0
+    http_version: HTTP/2
+    status_code: 200
+version: 1

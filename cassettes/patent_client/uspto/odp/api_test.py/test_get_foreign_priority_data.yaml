@@ -1,0 +1,42 @@
+interactions:
+- request:
+    body: ''
+    headers:
+      X-API-KEY:
+      - REDACTED
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate, zstd
+      connection:
+      - keep-alive
+      host:
+      - api.uspto.gov
+      user-agent:
+      - Mozilla/5.0 Python Patent Clientbot/5.0.19 (parkerhancock@users.noreply.github.com)
+    method: GET
+    uri: https://api.uspto.gov/api/v1/patent/applications/16123456/foreign-priority
+  response:
+    content: '{"count":1,"patentFileWrapperDataBag":[{"applicationNumberText":"16123456","foreignPriorityBag":[{"filingDate":"2017-09-27","applicationNumberText":"2017-187096","ipOfficeName":"JAPAN"}]}],"requestIdentifier":"9d571828-ac75-430b-80d0-f2def619ce3d"}'
+    headers:
+      access-control-allow-headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      access-control-allow-methods:
+      - OPTIONS,POST,GET
+      access-control-allow-origin:
+      - '*'
+      content-length:
+      - '248'
+      content-type:
+      - application/json
+      date:
+      - Fri, 26 Sep 2025 19:12:17 GMT
+      x-amz-apigw-id:
+      - RhjOtHR4IAMFy2Q=
+      x-amzn-requestid:
+      - 9d571828-ac75-430b-80d0-f2def619ce3d
+      x-amzn-trace-id:
+      - Root=1-68d6e590-236ea01f5e03821e2355aea1;Parent=3661e8c4c7d5302a;Sampled=0;Lineage=1:33e8fdb8:0
+    http_version: HTTP/2
+    status_code: 200
+version: 1

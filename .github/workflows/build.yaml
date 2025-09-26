@@ -2,13 +2,13 @@ name: Build
 
 on:
   push:
-    branches: [main]
+    branches: [main, master]
     tags: ['v*']
   pull_request:
-    branches: [main]
+    branches: [main, master]
   workflow_dispatch:
 env:
-  LATEST_PY_VERSION: '3.10'
+  LATEST_PY_VERSION: '3.13'
   PYTEST_VERBOSE: 'true'
 
 jobs:
@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: [3.8, 3.9, "3.10"]
+        python-version: ["3.10", "3.11", "3.12", "3.13"]
       fail-fast: false
 
     steps:
