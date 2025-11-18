@@ -45,4 +45,51 @@ interactions:
       - Root=1-664e1e4e-76f8101a1ba106983a84f6ff;Parent=5c2aded45708f83a;Sampled=0;lineage=33e8fdb8:0
     http_version: HTTP/2
     status_code: 200
+- request:
+    body: '{"q":"inventionTitle:(Hair Dryer)","rangeFilters":[{"field":"filingDate","valueFrom":"2020-01-01","valueTo":"2025-11-18"}],"fields":["applicationNumberText"],"pagination":{"offset":0,"limit":25}}'
+    headers:
+      X-API-KEY:
+      - REDACTED
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '195'
+      content-type:
+      - application/json
+      host:
+      - api.uspto.gov
+      user-agent:
+      - Mozilla/5.0 Python Patent Clientbot/5.0.19 (parkerhancock@users.noreply.github.com)
+    method: POST
+    uri: https://api.uspto.gov/api/v1/patent/applications/search
+  response:
+    content: '{"code":"404","message":"Not Found","detailedMessage":"No matching records
+      found, refine your search criteria and try again","requestIdentifier":"c8c2821b-2e56-408e-8172-97b15046bb52"}'
+    headers:
+      access-control-allow-headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      access-control-allow-methods:
+      - OPTIONS,POST,GET
+      access-control-allow-origin:
+      - '*'
+      content-length:
+      - '184'
+      content-type:
+      - application/json
+      correlation-id:
+      - c8c2821b-2e56-408e-8172-97b15046bb52
+      date:
+      - Tue, 18 Nov 2025 18:23:35 GMT
+      x-amz-apigw-id:
+      - UQHyRFuooAMFXNg=
+      x-amzn-requestid:
+      - c8c2821b-2e56-408e-8172-97b15046bb52
+      x-amzn-trace-id:
+      - Root=1-691cb9a7-2d3f312c150cf3f204a90d4d;Parent=3e1c054eb12d2c81;Sampled=0;Lineage=1:33e8fdb8:0
+    http_version: HTTP/2
+    status_code: 404
 version: 1

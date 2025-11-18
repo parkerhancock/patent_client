@@ -43,4 +43,48 @@ interactions:
       - Root=1-664e1e4d-758b28683b138da80b82cd59;Parent=1f6df8ce0eca6476;Sampled=0;lineage=33e8fdb8:0
     http_version: HTTP/2
     status_code: 200
+- request:
+    body: '{"fields":["applicationNumberText"]}'
+    headers:
+      X-API-KEY:
+      - REDACTED
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '36'
+      content-type:
+      - application/json
+      host:
+      - api.uspto.gov
+      user-agent:
+      - Mozilla/5.0 Python Patent Clientbot/5.0.19 (parkerhancock@users.noreply.github.com)
+    method: POST
+    uri: https://api.uspto.gov/api/v1/patent/applications/search
+  response:
+    content: '{"count":12545920,"patentFileWrapperDataBag":[{"applicationNumberText":"96050116"},{"applicationNumberText":"90015674"},{"applicationNumberText":"90015671"},{"applicationNumberText":"90015678"},{"applicationNumberText":"90015677"},{"applicationNumberText":"19386825"},{"applicationNumberText":"90015679"},{"applicationNumberText":"90015675"},{"applicationNumberText":"18974370"},{"applicationNumberText":"90015676"},{"applicationNumberText":"19385153"},{"applicationNumberText":"19115188"},{"applicationNumberText":"90015669"},{"applicationNumberText":"90015667"},{"applicationNumberText":"19383436"},{"applicationNumberText":"90015666"},{"applicationNumberText":"18876456"},{"applicationNumberText":"90015665"},{"applicationNumberText":"19380055"},{"applicationNumberText":"90015508"},{"applicationNumberText":"18862137"},{"applicationNumberText":"90015659"},{"applicationNumberText":"90015658"},{"applicationNumberText":"19133615"},{"applicationNumberText":"90015657"}],"requestIdentifier":"5baf9083-8c66-4089-b3ac-bdde228d2a3a"}'
+    headers:
+      access-control-allow-headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      access-control-allow-methods:
+      - OPTIONS,POST,GET
+      access-control-allow-origin:
+      - '*'
+      content-length:
+      - '1031'
+      content-type:
+      - application/json
+      date:
+      - Tue, 18 Nov 2025 18:23:34 GMT
+      x-amz-apigw-id:
+      - UQHyHHtBIAMFvDw=
+      x-amzn-requestid:
+      - 5baf9083-8c66-4089-b3ac-bdde228d2a3a
+      x-amzn-trace-id:
+      - Root=1-691cb9a6-717e34d23b5982ac289f5caa;Parent=6871800fb3b43429;Sampled=0;Lineage=1:33e8fdb8:0
+    http_version: HTTP/2
+    status_code: 200
 version: 1

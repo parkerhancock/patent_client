@@ -43,7 +43,7 @@ class USApplicationManager(Manager):
             page_query = query_obj.model_dump()
             page_query["pagination"] = {"offset": start, "limit": rows}
             page_query_obj = SearchRequest(**page_query)
-            for result in (api.post_search(page_query_obj))["patentBag"]:
+            for result in (api.post_search(page_query_obj))["patentFileWrapperDataBag"]:
                 app_id = result["applicationNumberText"]
                 app = api.get_application_data(app_id)
                 yield app
@@ -91,7 +91,7 @@ class USApplicationBiblioManager(USApplicationManager):
             page_query = query_obj.model_dump()
             page_query["pagination"] = {"offset": start, "limit": rows}
             page_query_obj = SearchRequest(**page_query)
-            for result in (api.post_search(page_query_obj))["patentBag"]:
+            for result in (api.post_search(page_query_obj))["patentFileWrapperDataBag"]:
                 yield self.response_model(**result)
 
     def get(self, *args, **kwargs):

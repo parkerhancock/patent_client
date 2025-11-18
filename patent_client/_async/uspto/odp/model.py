@@ -140,6 +140,13 @@ class Assignment(BaseODPModel):
         alias="correspondenceAddress", default_factory=list
     )
 
+    @model_validator(mode="before")
+    @classmethod
+    def _validate_correspondence_address(cls, v):
+        if "correspondenceAddress" in v and isinstance(v["correspondenceAddress"], dict):
+            v["correspondenceAddress"] = [v["correspondenceAddress"]]
+        return v
+
 
 # Foreign Priority
 

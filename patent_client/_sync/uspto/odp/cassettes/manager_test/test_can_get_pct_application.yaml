@@ -64,4 +64,67 @@ interactions:
       - Root=1-664e1690-3bfb7c0962cf498c3020f45c;Parent=6eceed343e9f7f67;Sampled=0;lineage=33e8fdb8:0
     http_version: HTTP/2
     status_code: 200
+- request:
+    body: ''
+    headers:
+      X-API-KEY:
+      - REDACTED
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - api.uspto.gov
+      user-agent:
+      - Mozilla/5.0 Python Patent Clientbot/5.0.19 (parkerhancock@users.noreply.github.com)
+    method: GET
+    uri: https://api.uspto.gov/api/v1/patent/applications/PCT%2FUS07%2F19317
+  response:
+    content: '{"count":1,"patentFileWrapperDataBag":[{"eventDataBag":[{"eventCode":"ROST","eventDescriptionText":"RO
+      complete, placed in storage","eventDate":"2017-01-01"},{"eventCode":"P105","eventDescriptionText":"Notification
+      of Intntl. Appl. Number and Intntl. Filing Date","eventDate":"2007-11-26"},{"eventCode":"P102","eventDescriptionText":"Notification
+      Concerning Payment of Fees","eventDate":"2007-11-26"},{"eventCode":"MLIB","eventDescriptionText":"Record
+      Copy Mailed","eventDate":"2007-11-26"},{"eventCode":"RCDT","eventDescriptionText":"Receipt
+      Date","eventDate":"2007-09-05"},{"eventCode":"IEXX","eventDescriptionText":"Initial
+      Exam Team nn","eventDate":"2007-09-10"}],"applicationMetaData":{"applicationStatusCode":218,"applicationTypeCode":"?","entityStatusData":{"smallEntityStatusIndicator":false,"businessEntityStatusCategory":"Regular
+      Undiscounted"},"filingDate":"2007-09-05","inventorBag":[{"firstName":"ALLEN","lastName":"SIEVERT","countryCode":"US","inventorNameText":"ALLEN
+      C. SIEVERT","middleName":"C.","correspondenceAddressBag":[{"cityName":"ELKTON","geographicRegionName":"MARYLAND","geographicRegionCode":"MD","countryCode":"US","nameLineOneText":"215
+      RHETT LANE","countryName":"UNITED STATES"}]}],"applicationStatusDescriptionText":"RO
+      PROCESSING COMPLETED-PLACED IN STORAGE","applicantBag":[{"applicantNameText":"E.
+      I. DU PONT DE NEMOURS AND COMPANY","correspondenceAddressBag":[{"cityName":"WILMINGTON","geographicRegionName":"DELAWARE","geographicRegionCode":"DE","countryCode":"US","nameLineOneText":"1007
+      MARKET STREET","countryName":"UNITED STATES","postalAddressCategory":"postal"}]}],"firstApplicantName":"E.
+      I. DU PONT DE NEMOURS AND COMPANY","customerNumber":23906,"groupArtUnitNumber":"1621","inventionTitle":"PROCESSES
+      FOR PRODUCING 1,2,3,3,3-PENTAFLUOROPROPENE AND PRECURSORS THEREOF","pctPublicationNumber":"WO2008030442","pctPublicationDate":"2008-03-13","firstInventorName":"ALLEN
+      C. SIEVERT","applicationConfirmationNumber":7383,"effectiveFilingDate":"2007-09-05","applicationTypeLabelName":"PCT","publicationCategoryBag":["Other"],"applicationStatusDate":"2019-02-08","class":"570","docketNumber":"FL1264PCT","applicationTypeCategory":"PCT"},"parentContinuityBag":[{"parentApplicationStatusCode":218,"claimParentageTypeCode":"PRO","claimParentageTypeCodeDescriptionText":"Claims
+      priority from a provisional application","parentApplicationStatusDescriptionText":"RO
+      PROCESSING COMPLETED-PLACED IN STORAGE","parentApplicationNumberText":"60842609","parentApplicationFilingDate":"2006-09-05","childApplicationNumberText":"PCTUS0719317"}],"lastIngestionDateTime":"2025-08-29T07:59:40","childContinuityBag":[{"firstInventorToFileIndicator":false,"childApplicationStatusDescriptionText":"Patent
+      Expired Due to NonPayment of Maintenance Fees Under 37 CFR 1.362","claimParentageTypeCode":"NST","childApplicationStatusCode":250,"claimParentageTypeCodeDescriptionText":"is
+      a National Stage Entry of","childPatentNumber":"8053613","parentApplicationNumberText":"PCTUS0719317","childApplicationFilingDate":"2009-02-17","childApplicationNumberText":"12377761"}],"recordAttorney":{"powerOfAttorneyBag":[{"activeIndicator":"ACTIVE","firstName":"DAVID","lastName":"HEISER","registrationNumber":"31366","attorneyAddressBag":[{"cityName":"SMYRNA","geographicRegionName":"DELAWARE","geographicRegionCode":"DE","countryCode":"US","postalCode":"19977","countryName":"UNITED
+      STATES","addressLineOneText":"116 PEBBLE CREEK DRIVE"}],"telecommunicationAddressBag":[{"telecommunicationNumber":"443-243-5472","telecomTypeCode":"TEL"}],"middleName":"E.","registeredPractitionerCategory":"ATTNY"}]},"applicationNumberText":"PCTUS0719317","correspondenceAddressBag":[{"cityName":"WILMINGTON","geographicRegionName":"DELAWARE","geographicRegionCode":"DE","countryCode":"US","postalCode":"19805","nameLineOneText":"DAVID
+      E. HEISER","nameLineTwoText":"E. I. DU PONT DE NEMOURS AND COMPANY","countryName":"UNITED
+      STATES","addressLineOneText":"LEGAL PATENT RECORDS CENTER","addressLineTwoText":"4417
+      LANCASTER PIKE"}],"foreignPriorityBag":[{"filingDate":"2006-09-05","applicationNumberText":"60842609","ipOfficeName":"US"}]}],"requestIdentifier":"8637bef7-838f-4067-a7d8-d6cac0dbe394"}'
+    headers:
+      access-control-allow-headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      access-control-allow-methods:
+      - OPTIONS,POST,GET
+      access-control-allow-origin:
+      - '*'
+      content-length:
+      - '4183'
+      content-type:
+      - application/json
+      date:
+      - Tue, 18 Nov 2025 18:23:36 GMT
+      x-amz-apigw-id:
+      - UQHyUHINoAMFYPA=
+      x-amzn-requestid:
+      - 8637bef7-838f-4067-a7d8-d6cac0dbe394
+      x-amzn-trace-id:
+      - Root=1-691cb9a8-0de3b4c827b3039f47a2a1d9;Parent=388a034cad29381d;Sampled=0;Lineage=1:33e8fdb8:0
+    http_version: HTTP/2
+    status_code: 200
 version: 1

@@ -45,4 +45,50 @@ interactions:
       - Root=1-664e1746-4520d7831592ba3f1b2df383;Parent=121a3ce1a7948af9;Sampled=0;lineage=33e8fdb8:0
     http_version: HTTP/2
     status_code: 200
+- request:
+    body: ''
+    headers:
+      X-API-KEY:
+      - REDACTED
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - api.uspto.gov
+      user-agent:
+      - Mozilla/5.0 Python Patent Clientbot/5.0.19 (parkerhancock@users.noreply.github.com)
+    method: GET
+    uri: https://api.uspto.gov/api/v1/patent/applications/15123456/continuity
+  response:
+    content: '{"count":1,"patentFileWrapperDataBag":[{"parentContinuityBag":[{"parentApplicationStatusCode":161,"claimParentageTypeCode":"NST","claimParentageTypeCodeDescriptionText":"is
+      a National Stage Entry of","parentApplicationStatusDescriptionText":"Abandoned  --  Failure
+      to Respond to an Office Action","parentApplicationNumberText":"PCTUS1527322","parentApplicationFilingDate":"2015-04-23","childApplicationNumberText":"15123456"},{"parentApplicationStatusCode":159,"claimParentageTypeCode":"PRO","claimParentageTypeCodeDescriptionText":"Claims
+      priority from a provisional application","parentApplicationStatusDescriptionText":"Provisional
+      Application Expired","parentApplicationNumberText":"61983088","parentApplicationFilingDate":"2014-04-23","childApplicationNumberText":"PCTUS1527322"}],"childContinuityBag":[{"childApplicationStatusDescriptionText":"Abandoned  --  Incomplete
+      Application (Pre-examination)","claimParentageTypeCode":"CON","childApplicationStatusCode":160,"claimParentageTypeCodeDescriptionText":"is
+      a Continuation of","parentApplicationNumberText":"15123456","childApplicationFilingDate":"2018-09-14","childApplicationNumberText":"16132008"}],"applicationNumberText":"15123456"}],"requestIdentifier":"9d290f7d-b665-4a63-96aa-5c53a4c9b49d"}'
+    headers:
+      access-control-allow-headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      access-control-allow-methods:
+      - OPTIONS,POST,GET
+      access-control-allow-origin:
+      - '*'
+      content-length:
+      - '1255'
+      content-type:
+      - application/json
+      date:
+      - Tue, 18 Nov 2025 18:23:33 GMT
+      x-amz-apigw-id:
+      - UQHx7E0boAMFfpw=
+      x-amzn-requestid:
+      - 9d290f7d-b665-4a63-96aa-5c53a4c9b49d
+      x-amzn-trace-id:
+      - Root=1-691cb9a5-4958391d6648dd3e2735af0c;Parent=7f79b9eae4c27b4f;Sampled=0;Lineage=1:33e8fdb8:0
+    http_version: HTTP/2
+    status_code: 200
 version: 1

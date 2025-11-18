@@ -208,4 +208,184 @@ interactions:
       - Root=1-664e1e4e-684898e040f9c3e878726e63;Parent=75efc69b0da91cde;Sampled=0;lineage=33e8fdb8:0
     http_version: HTTP/2
     status_code: 200
+- request:
+    body: '{"q":"applicationNumberText:16123456","fields":["applicationNumberText"]}'
+    headers:
+      X-API-KEY:
+      - REDACTED
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '73'
+      content-type:
+      - application/json
+      host:
+      - api.uspto.gov
+      user-agent:
+      - Mozilla/5.0 Python Patent Clientbot/5.0.19 (parkerhancock@users.noreply.github.com)
+    method: POST
+    uri: https://api.uspto.gov/api/v1/patent/applications/search
+  response:
+    content: '{"count":1,"patentFileWrapperDataBag":[{"applicationNumberText":"16123456"}],"requestIdentifier":"dd3c0e41-0d12-4b1e-93cb-3ee9d63c2b7f"}'
+    headers:
+      access-control-allow-headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      access-control-allow-methods:
+      - OPTIONS,POST,GET
+      access-control-allow-origin:
+      - '*'
+      content-length:
+      - '136'
+      content-type:
+      - application/json
+      date:
+      - Tue, 18 Nov 2025 18:23:35 GMT
+      x-amz-apigw-id:
+      - UQHyMFHYIAMFTNg=
+      x-amzn-requestid:
+      - dd3c0e41-0d12-4b1e-93cb-3ee9d63c2b7f
+      x-amzn-trace-id:
+      - Root=1-691cb9a7-1b039517121becf27e6c52a7;Parent=180546e428f23d64;Sampled=0;Lineage=1:33e8fdb8:0
+    http_version: HTTP/2
+    status_code: 200
+- request:
+    body: '{"q":"applicationNumberText:16123456","fields":["firstInventorToFileIndicator","filingDate","inventorBag","customerNumber","groupArtUnitNumber","inventionTitle","correspondenceAddressBag","applicationConfirmationNumber","docketNumber","applicationNumberText","firstInventorName","firstApplicantName","cpcClassificationBag","businessEntityStatusCategory","earliestPublicationNumber"],"pagination":{"offset":0,"limit":1}}'
+    headers:
+      X-API-KEY:
+      - REDACTED
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '419'
+      content-type:
+      - application/json
+      host:
+      - api.uspto.gov
+      user-agent:
+      - Mozilla/5.0 Python Patent Clientbot/5.0.19 (parkerhancock@users.noreply.github.com)
+    method: POST
+    uri: https://api.uspto.gov/api/v1/patent/applications/search
+  response:
+    content: '{"count":1,"patentFileWrapperDataBag":[{"applicationNumberText":"16123456","correspondenceAddressBag":[{"cityName":"Vienna","geographicRegionName":"VIRGINIA","geographicRegionCode":"VA","countryCode":"US","postalCode":"22180-7371","nameLineOneText":"BIRCH
+      STEWART KOLASCH & BIRCH, LLP","countryName":"UNITED STATES","addressLineOneText":"2600
+      Park Tower Drive","addressLineTwoText":"Suite 600"}]}],"requestIdentifier":"38829f76-1391-46a4-ada9-8101996a9358"}'
+    headers:
+      access-control-allow-headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      access-control-allow-methods:
+      - OPTIONS,POST,GET
+      access-control-allow-origin:
+      - '*'
+      content-length:
+      - '457'
+      content-type:
+      - application/json
+      date:
+      - Tue, 18 Nov 2025 18:23:49 GMT
+      x-amz-apigw-id:
+      - UQH0ZEmOoAMFtRg=
+      x-amzn-requestid:
+      - 38829f76-1391-46a4-ada9-8101996a9358
+      x-amzn-trace-id:
+      - Root=1-691cb9b5-259e6df438b18abb7857c1d4;Parent=1f7772f0fda268be;Sampled=0;Lineage=1:33e8fdb8:0
+    http_version: HTTP/2
+    status_code: 200
+- request:
+    body: '{"q":"applicationNumberText:(16123456)","fields":["applicationNumberText"],"pagination":{"offset":0,"limit":25}}'
+    headers:
+      X-API-KEY:
+      - REDACTED
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '112'
+      content-type:
+      - application/json
+      host:
+      - api.uspto.gov
+      user-agent:
+      - Mozilla/5.0 Python Patent Clientbot/5.0.19 (parkerhancock@users.noreply.github.com)
+    method: POST
+    uri: https://api.uspto.gov/api/v1/patent/applications/search
+  response:
+    content: '{"count":1,"patentFileWrapperDataBag":[{"applicationNumberText":"16123456"}],"requestIdentifier":"dd1b57d7-7313-42f2-980e-e43b76d3bed2"}'
+    headers:
+      access-control-allow-headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      access-control-allow-methods:
+      - OPTIONS,POST,GET
+      access-control-allow-origin:
+      - '*'
+      content-length:
+      - '136'
+      content-type:
+      - application/json
+      date:
+      - Tue, 18 Nov 2025 18:27:33 GMT
+      x-amz-apigw-id:
+      - UQIXVEbTIAMFZwQ=
+      x-amzn-requestid:
+      - dd1b57d7-7313-42f2-980e-e43b76d3bed2
+      x-amzn-trace-id:
+      - Root=1-691cba94-2289ea357a34341a27d09cb5;Parent=69db1349d74847e8;Sampled=0;Lineage=1:33e8fdb8:0
+    http_version: HTTP/2
+    status_code: 200
+- request:
+    body: '{"q":"applicationNumberText:(16123456)","fields":["firstInventorToFileIndicator","filingDate","inventorBag","customerNumber","groupArtUnitNumber","inventionTitle","correspondenceAddressBag","applicationConfirmationNumber","docketNumber","applicationNumberText","firstInventorName","firstApplicantName","cpcClassificationBag","businessEntityStatusCategory","earliestPublicationNumber"],"pagination":{"offset":0,"limit":1}}'
+    headers:
+      X-API-KEY:
+      - REDACTED
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '421'
+      content-type:
+      - application/json
+      host:
+      - api.uspto.gov
+      user-agent:
+      - Mozilla/5.0 Python Patent Clientbot/5.0.19 (parkerhancock@users.noreply.github.com)
+    method: POST
+    uri: https://api.uspto.gov/api/v1/patent/applications/search
+  response:
+    content: '{"count":1,"patentFileWrapperDataBag":[{"applicationNumberText":"16123456","correspondenceAddressBag":[{"cityName":"Vienna","geographicRegionName":"VIRGINIA","geographicRegionCode":"VA","countryCode":"US","postalCode":"22180-7371","nameLineOneText":"BIRCH
+      STEWART KOLASCH & BIRCH, LLP","countryName":"UNITED STATES","addressLineOneText":"2600
+      Park Tower Drive","addressLineTwoText":"Suite 600"}]}],"requestIdentifier":"82f12173-c940-4ea7-89d0-a9dfca2f68df"}'
+    headers:
+      access-control-allow-headers:
+      - Origin, X-Requested-With, Content-Type, Accept
+      access-control-allow-methods:
+      - OPTIONS,POST,GET
+      access-control-allow-origin:
+      - '*'
+      content-length:
+      - '457'
+      content-type:
+      - application/json
+      date:
+      - Tue, 18 Nov 2025 18:29:46 GMT
+      x-amz-apigw-id:
+      - UQIsPFOPoAMFWbA=
+      x-amzn-requestid:
+      - 82f12173-c940-4ea7-89d0-a9dfca2f68df
+      x-amzn-trace-id:
+      - Root=1-691cbb1a-2d85520c718d343c0446613e;Parent=5ef2412bc74bea71;Sampled=0;Lineage=1:33e8fdb8:0
+    http_version: HTTP/2
+    status_code: 200
 version: 1

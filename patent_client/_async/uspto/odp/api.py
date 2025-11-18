@@ -41,7 +41,7 @@ class ODPApi:
         if response.status_code == 404 and "No matching records found" in response.text:
             return {
                 "count": 0,
-                "patentBag": [],
+                "patentFileWrapperDataBag": [],
                 "requestIdentifier": response.json()["requestIdentifier"],
             }
         response.raise_for_status()
@@ -56,7 +56,7 @@ class ODPApi:
         if response.status_code == 404 and "No matching records found" in response.text:
             return {
                 "count": 0,
-                "patentBag": [],
+                "patentFileWrapperDataBag": [],
                 "requestIdentifier": response.json()["requestIdentifier"],
             }
         response.raise_for_status()
@@ -69,31 +69,31 @@ class ODPApi:
         url = self.base_url + f"/api/v1/patent/applications/{urlescape(application_id)}"
         response = await self.client.get(url)
         response.raise_for_status()
-        return USApplication(**response.json()["patentBag"][0])
+        return USApplication(**response.json()["patentFileWrapperDataBag"][0])
 
     async def get_application_biblio_data(self, application_id: str) -> USApplicationBiblio:
         """Patent application basic data by application id"""
         url = (
             self.base_url
-            + f"/api/v1/patent/applications/{urlescape(application_id)}/application-data"
+            + f"/api/v1/patent/applications/{urlescape(application_id)}"
         )
         response = await self.client.get(url)
         response.raise_for_status()
-        return USApplicationBiblio(**response.json()["patentBag"][0])
+        return USApplicationBiblio(**response.json()["patentFileWrapperDataBag"][0])
 
     async def get_patent_term_adjustment_data(self, application_id: str) -> TermAdjustment:
         """Patent application term adjustment data by application id"""
         url = self.base_url + f"/api/v1/patent/applications/{urlescape(application_id)}/adjustment"
         response = await self.client.get(url)
         response.raise_for_status()
-        return TermAdjustment(**response.json()["patentBag"][0]["patentTermAdjustmentData"])
+        return TermAdjustment(**response.json()["patentFileWrapperDataBag"][0]["patentTermAdjustmentData"])
 
     async def get_assignments(self, application_id: str) -> tp.List[Assignment]:
         """Patent application term adjustment data by application id"""
         url = self.base_url + f"/api/v1/patent/applications/{urlescape(application_id)}/assignment"
         response = await self.client.get(url)
         response.raise_for_status()
-        data = response.json()["patentBag"][0]["assignmentBag"]
+        data = response.json()["patentFileWrapperDataBag"][0]["assignmentBag"]
         return [Assignment(**assignment) for assignment in data]
 
     async def get_attorney_data(self, application_id: str) -> CustomerNumber:
@@ -101,7 +101,7 @@ class ODPApi:
         url = self.base_url + f"/api/v1/patent/applications/{urlescape(application_id)}/attorney"
         response = await self.client.get(url)
         response.raise_for_status()
-        return CustomerNumber(**response.json()["patentBag"][0]["recordAttorney"])
+        return CustomerNumber(**response.json()["patentFileWrapperDataBag"][0]["recordAttorney"])
 
     async def get_continuity_data(self, application_id: str) -> Continuity:
         """Patent application continuity data by application id"""
@@ -120,7 +120,7 @@ class ODPApi:
         response.raise_for_status()
         return [
             ForeignPriority(**foreign_priority)
-            for foreign_priority in response.json()["patentBag"][0]["foreignPriorityBag"]
+            for foreign_priority in response.json()["patentFileWrapperDataBag"][0]["foreignPriorityBag"]
         ]
 
     async def get_transactions(self, application_id: str) -> tp.List[Transaction]:
@@ -132,7 +132,7 @@ class ODPApi:
         response.raise_for_status()
         return [
             Transaction(**transaction)
-            for transaction in response.json()["patentBag"][0]["transactionContentBag"]
+            for transaction in response.json()["patentFileWrapperDataBag"][0]["eventDataBag"]
         ]
 
     async def get_documents(self, application_id: str) -> tp.List[Document]:
