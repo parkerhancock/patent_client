@@ -1,5 +1,32 @@
 [![patent_client_logo](https://raw.githubusercontent.com/parkerhancock/patent_client/master/docs/_static/patent_client_logo.svg)](https://patent-client.readthedocs.io)
 
+---
+
+## ⚠️ This Project Has Been Archived
+
+**patent_client** has been archived and is no longer actively maintained.
+
+### Why?
+
+This library was originally designed for human developers writing Python scripts. The landscape has changed—AI coding assistants are now the primary consumers of IP data libraries. The new **[ip_tools](https://github.com/parkerhancock/ip_tools)** library is purpose-built for this new paradigm:
+
+- **AI-First Design:** Optimized for use by AI agents like Claude Code
+- **Simplified API:** Async-first with straightforward function calls instead of ORM-style queries
+- **Modern Stack:** Built on Python 3.12+ with native type parameters
+- **Structured Responses:** Pydantic models designed for agent consumption
+
+### Migration
+
+For new projects, use **[ip_tools](https://github.com/parkerhancock/ip_tools)**:
+
+```bash
+pip install ip_tools
+```
+
+Existing patent_client users can continue using the library as-is—it will remain available on PyPI—but no new features or bug fixes will be added.
+
+---
+
 [![Build](https://github.com/parkerhancock/patent_client/actions/workflows/build.yaml/badge.svg)](https://github.com/parkerhancock/patent_client/actions/workflows/build.yaml)
 [![codecov](https://codecov.io/gh/parkerhancock/patent_client/branch/master/graph/badge.svg?token=pWsiQLHi6r)](https://codecov.io/gh/parkerhancock/patent_client)
 [![Documentation](https://img.shields.io/readthedocs/patent-client/stable)](https://patent-client.readthedocs.io/en/stable/)
