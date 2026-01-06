@@ -42,7 +42,7 @@ patent_client_transport = hishel.CacheTransport(
         retries=3,
     ),
     storage=hishel.FileStorage(base_path=CACHE_DIR),
-    controller=hishel.Controller(allow_heuristics=True),
+    controller=hishel.Controller(allow_heuristics=True, cacheable_status_codes=[200]),
 )
 
 
