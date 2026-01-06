@@ -30,8 +30,48 @@ def urlescape(s: str) -> str:
     return quote(s, safe="")
 
 
+def _merge_application_metadata(entry: tp.Dict[str, tp.Any]) -> tp.Dict[str, tp.Any]:
+    """Merge nested applicationMetaData into the top-level record."""
+    combined = dict(entry)
+    metadata_raw = combined.pop("applicationMetaData", {}) or {}
+    metadata = dict(metadata_raw) if isinstance(metadata_raw, dict) else {}
+    status_raw = metadata.pop("entityStatusData", {}) or {}
+    entity_status = dict(status_raw) if isinstance(status_raw, dict) else {}
+    if entity_status.get("businessEntityStatusCategory"):
+        combined.setdefault(
+            "businessEntityStatusCategory", entity_status.get("businessEntityStatusCategory")
+        )
+    if entity_status.get("smallEntityStatusIndicator") is not None:
+        combined.setdefault(
+            "smallEntityStatusIndicator", entity_status.get("smallEntityStatusIndicator")
+        )
+
+    parent = combined.pop("parentContinuityBag", None)
+    child = combined.pop("childContinuityBag", None)
+    if parent is not None or child is not None:
+        combined["continuityBag"] = {
+            "parentContinuityBag": parent or [],
+            "childContinuityBag": child or [],
+        }
+
+    for key, value in metadata.items():
+        combined.setdefault(str(key), value)
+
+    return combined
+
+
+def _normalize_patent_response(data: tp.Dict[str, tp.Any]) -> tp.Dict[str, tp.Any]:
+    """Normalize the ODP response structure from patentFileWrapperDataBag to patentBag."""
+    bag = [_merge_application_metadata(item) for item in data.get("patentFileWrapperDataBag", [])]
+    return {
+        "count": data.get("count", len(bag)),
+        "patentBag": bag,
+        "requestIdentifier": data.get("requestIdentifier"),
+    }
+
+
 class ODPApi:
-    base_url = "https://beta-api.uspto.gov"
+    base_url = "https://api.uspto.gov"
 
     def __init__(self):
         if SETTINGS.odp_api_key is None:
@@ -41,7 +81,9 @@ class ODPApi:
     def post_search(self, search_request: SearchRequest = SearchRequest()) -> tp.Dict:
         url = self.base_url + "/api/v1/patent/applications/search"
         search_data = prune(search_request.model_dump())
-        response = self.client.post(url, json=search_data, headers={"accept": "application/json"})
+        response = self.client.post(
+            url, json=search_data, headers={"accept": "application/json"}
+        )
         if response.status_code == 404 and "No matching records found" in response.text:
             return {
                 "count": 0,
@@ -49,7 +91,7 @@ class ODPApi:
                 "requestIdentifier": response.json()["requestIdentifier"],
             }
         response.raise_for_status()
-        return response.json()
+        return _normalize_patent_response(response.json())
 
     def get_search(self, search_request: SearchGetRequest = SearchGetRequest()) -> tp.Dict:
         """Patent application search by supplying query parameters
@@ -64,15 +106,17 @@ class ODPApi:
                 "requestIdentifier": response.json()["requestIdentifier"],
             }
         response.raise_for_status()
-        return response.json()
+        return _normalize_patent_response(response.json())
 
     # Data Attributes
+
     def get_application_data(self, application_id: str) -> USApplication:
         """Patent application data by application id"""
         url = self.base_url + f"/api/v1/patent/applications/{urlescape(application_id)}"
         response = self.client.get(url)
         response.raise_for_status()
-        return USApplication(**response.json()["patentBag"][0])
+        data = _normalize_patent_response(response.json())
+        return USApplication(**data["patentBag"][0])
 
     def get_application_biblio_data(self, application_id: str) -> USApplicationBiblio:
         """Patent application basic data by application id"""
@@ -82,36 +126,42 @@ class ODPApi:
         )
         response = self.client.get(url)
         response.raise_for_status()
-        return USApplicationBiblio(**response.json()["patentBag"][0])
+        data = _normalize_patent_response(response.json())
+        return USApplicationBiblio(**data["patentBag"][0])
 
     def get_patent_term_adjustment_data(self, application_id: str) -> TermAdjustment:
         """Patent application term adjustment data by application id"""
         url = self.base_url + f"/api/v1/patent/applications/{urlescape(application_id)}/adjustment"
         response = self.client.get(url)
         response.raise_for_status()
-        return TermAdjustment(**response.json()["patentBag"][0]["patentTermAdjustmentData"])
+        data = _normalize_patent_response(response.json())
+        return TermAdjustment(**data["patentBag"][0]["patentTermAdjustmentData"])
 
     def get_assignments(self, application_id: str) -> tp.List[Assignment]:
-        """Patent application term adjustment data by application id"""
+        """Patent application assignment data by application id"""
         url = self.base_url + f"/api/v1/patent/applications/{urlescape(application_id)}/assignment"
         response = self.client.get(url)
         response.raise_for_status()
-        data = response.json()["patentBag"][0]["assignmentBag"]
-        return [Assignment(**assignment) for assignment in data]
+        data = _normalize_patent_response(response.json())
+        assignments = data["patentBag"][0].get("assignmentBag", [])
+        return [Assignment(**assignment) for assignment in assignments]
 
     def get_attorney_data(self, application_id: str) -> CustomerNumber:
         """Patent application attorney data by application id"""
         url = self.base_url + f"/api/v1/patent/applications/{urlescape(application_id)}/attorney"
         response = self.client.get(url)
         response.raise_for_status()
-        return CustomerNumber(**response.json()["patentBag"][0]["recordAttorney"])
+        data = _normalize_patent_response(response.json())
+        return CustomerNumber(**data["patentBag"][0]["recordAttorney"])
 
     def get_continuity_data(self, application_id: str) -> Continuity:
         """Patent application continuity data by application id"""
         url = self.base_url + f"/api/v1/patent/applications/{urlescape(application_id)}/continuity"
         response = self.client.get(url)
         response.raise_for_status()
-        return Continuity(**response.json())
+        data = _normalize_patent_response(response.json())
+        # Continuity expects the normalized structure with patentBag
+        return Continuity(**{"patentBag": data["patentBag"]})
 
     def get_foreign_priority_data(self, application_id: str) -> tp.List[ForeignPriority]:
         """Patent application foreign priority data by application id"""
@@ -121,10 +171,9 @@ class ODPApi:
         )
         response = self.client.get(url)
         response.raise_for_status()
-        return [
-            ForeignPriority(**foreign_priority)
-            for foreign_priority in response.json()["patentBag"][0]["foreignPriorityBag"]
-        ]
+        data = _normalize_patent_response(response.json())
+        priorities = data["patentBag"][0].get("foreignPriorityBag", [])
+        return [ForeignPriority(**foreign_priority) for foreign_priority in priorities]
 
     def get_transactions(self, application_id: str) -> tp.List[Transaction]:
         """Patent application transactions by application id"""
@@ -133,14 +182,13 @@ class ODPApi:
         )
         response = self.client.get(url)
         response.raise_for_status()
-        return [
-            Transaction(**transaction)
-            for transaction in response.json()["patentBag"][0]["transactionContentBag"]
-        ]
+        data = _normalize_patent_response(response.json())
+        transactions = data["patentBag"][0].get("transactionContentBag", [])
+        return [Transaction(**transaction) for transaction in transactions]
 
     def get_documents(self, application_id: str) -> tp.List[Document]:
         """Patent application documents by application id"""
         url = self.base_url + f"/api/v1/patent/applications/{urlescape(application_id)}/documents"
         response = self.client.get(url)
         response.raise_for_status()
-        return [Document(**document) for document in response.json()["documentBag"]]
+        return [Document(**document) for document in response.json().get("documentBag", [])]

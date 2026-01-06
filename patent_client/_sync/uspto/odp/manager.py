@@ -26,7 +26,10 @@ if tp.TYPE_CHECKING:
         USApplication,
         USApplicationBiblio,
     )
-api = ODPApi()
+
+
+def get_api():
+    return ODPApi()
 
 
 class USApplicationManager(Manager):
@@ -35,7 +38,9 @@ class USApplicationManager(Manager):
     response_model = USApplication
 
     def count(self):
-        return (api.post_search(self._create_search_obj(fields=["applicationNumberText"])))["count"]
+        return (get_api().post_search(self._create_search_obj(fields=["applicationNumberText"])))[
+            "count"
+        ]
 
     def _get_results(self) -> tp.Iterator["SearchResult"]:
         query_obj = self._create_search_obj()
@@ -43,9 +48,9 @@ class USApplicationManager(Manager):
             page_query = query_obj.model_dump()
             page_query["pagination"] = {"offset": start, "limit": rows}
             page_query_obj = SearchRequest(**page_query)
-            for result in (api.post_search(page_query_obj))["patentBag"]:
+            for result in (get_api().post_search(page_query_obj))["patentBag"]:
                 app_id = result["applicationNumberText"]
-                app = api.get_application_data(app_id)
+                app = get_api().get_application_data(app_id)
                 yield app
 
     def _create_search_obj(self, fields: tp.Optional[tp.List[str]] = None):
@@ -60,7 +65,7 @@ class USApplicationManager(Manager):
 
     def get(self, *args, **kwargs):
         if len(args) == 1 and not kwargs:
-            return api.get_application_data(args[0])
+            return get_api().get_application_data(args[0])
         return super().get(*args, **kwargs)
 
 
@@ -91,12 +96,12 @@ class USApplicationBiblioManager(USApplicationManager):
             page_query = query_obj.model_dump()
             page_query["pagination"] = {"offset": start, "limit": rows}
             page_query_obj = SearchRequest(**page_query)
-            for result in (api.post_search(page_query_obj))["patentBag"]:
+            for result in (get_api().post_search(page_query_obj))["patentBag"]:
                 yield self.response_model(**result)
 
     def get(self, *args, **kwargs):
         if len(args) == 1 and not kwargs:
-            return api.get_application_biblio_data(args[0])
+            return get_api().get_application_biblio_data(args[0])
         return super().get(*args, **kwargs)
 
 
@@ -116,17 +121,17 @@ class AttributeManager(Manager):
 
 class ContinuityManager(AttributeManager):
     def get(self, appl_id: str) -> "Continuity":
-        return api.get_continuity_data(appl_id)
+        return get_api().get_continuity_data(appl_id)
 
 
 class DocumentManager(Manager):
     default_filter = "appl_id"
 
     def count(self):
-        return len(api.get_documents(self.config.filter["appl_id"][0]))
+        return len(get_api().get_documents(self.config.filter["appl_id"][0]))
 
     def _get_results(self) -> tp.Iterator["Document"]:
-        for doc in api.get_documents(self.config.filter["appl_id"][0]):
+        for doc in get_api().get_documents(self.config.filter["appl_id"][0]):
             yield doc
 
 
@@ -134,32 +139,32 @@ class TermAdjustmentManager(Manager):
     default_filter = "appl_id"
 
     def _get_results(self) -> "TermAdjustment":
-        return api.get_term_adjustments(self.config.filter["appl_id"][0])
+        return get_api().get_term_adjustments(self.config.filter["appl_id"][0])
 
 
 class AssignmentManager(Manager):
     default_filter = "appl_id"
 
     def _get_results(self) -> tp.Iterator["Assignment"]:
-        for doc in api.get_assignments(self.config.filter["appl_id"][0]):
+        for doc in get_api().get_assignments(self.config.filter["appl_id"][0]):
             yield doc
 
     def count(self):
-        return len(api.get_assignments(self.config.filter["appl_id"][0]))
+        return len(get_api().get_assignments(self.config.filter["appl_id"][0]))
 
 
 class CustomerNumberManager(Manager):
     default_filter = "appl_id"
 
     def _get_results(self) -> "CustomerNumber":
-        return api.get_customer_numbers(self.config.filter["appl_id"][0])
+        return get_api().get_customer_numbers(self.config.filter["appl_id"][0])
 
 
 class ForeignPriorityManager(Manager):
     default_filter = "appl_id"
 
     def _get_results(self) -> "ForeignPriority":
-        for doc in api.get_foreign_priority_data(self.config.filter["appl_id"][0]):
+        for doc in get_api().get_foreign_priority_data(self.config.filter["appl_id"][0]):
             yield doc
 
 
@@ -167,8 +172,8 @@ class TransactionManager(Manager):
     default_filter = "appl_id"
 
     def _get_results(self) -> tp.Iterator["Transaction"]:
-        for doc in api.get_transactions(self.config.filter["appl_id"][0]):
+        for doc in get_api().get_transactions(self.config.filter["appl_id"][0]):
             yield doc
 
     def count(self):
-        return len(api.get_transactions(self.config.filter["appl_id"][0]))
+        return len(get_api().get_transactions(self.config.filter["appl_id"][0]))

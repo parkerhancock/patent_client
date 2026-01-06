@@ -8,6 +8,7 @@ import datetime
 from enum import Enum
 from typing import Any, List, Optional
 
+
 from async_property.base import AsyncPropertyDescriptor
 from pydantic import AliasPath, BeforeValidator, ConfigDict, Field, model_validator
 from pydantic.alias_generators import to_camel
@@ -89,7 +90,7 @@ class Document(BaseODPModel):
     download_option_bag: list[dict] = Field(alias="downloadOptionBag", default_factory=list)
 
     def download(self, type="PDF", out_path=None):
-        from .manager import api
+        from .manager import get_api
 
         try:
             url = next(u for u in self.download_option_bag if u["mimeTypeIdentifier"] == type)[
@@ -101,7 +102,7 @@ class Document(BaseODPModel):
             out_path = f"{self.appl_id} - {self.mail_date.date()} - {self.document_code} - {self.document_code_description}.{type.lower()}".replace(
                 "/", "-"
             )
-        return api.client.download(url, "GET", path=out_path)
+        return get_api().client.download(url, "GET", path=out_path)
 
 
 # Assignment
@@ -124,6 +125,15 @@ class Assignee(BaseODPModel):
     assignee_name_text: Optional[str] = Field(alias="assigneeNameText", default=None)
 
 
+def ensure_list(v):
+    """Convert a single item to a list if needed."""
+    if v is None:
+        return []
+    if isinstance(v, list):
+        return v
+    return [v]
+
+
 class Assignment(BaseODPModel):
     assignment_received_date: Optional[datetime.date] = Field(
         alias="assignmentReceivedDate", default=None
@@ -141,7 +151,7 @@ class Assignment(BaseODPModel):
     reel_number: Optional[int] = Field(alias="reelNumber", default=None)
     assignor_bag: list[Assignor] = Field(alias="assignorBag", default_factory=list)
     assignee_bag: list[Assignee] = Field(alias="assigneeBag", default_factory=list)
-    correspondence_address: list[Address] = Field(
+    correspondence_address: Annotated[list[Address], BeforeValidator(ensure_list)] = Field(
         alias="correspondenceAddress", default_factory=list
     )
 
