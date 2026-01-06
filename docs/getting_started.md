@@ -24,7 +24,7 @@ register a new account (Free up to 4GB of data / month, which is usually more th
 
 ```console
 PATENT_CLIENT_EPO_API_KEY="<Consumer Key Here>"
-PATENT_CLIENT_EPO_SECRET="<Consumer Key Secret Here>"
+PATENT_CLIENT_EPO_API_SECRET="<Consumer Key Secret Here>"
 ```
 
 ### How to get a USPTO Open Data Portal API key

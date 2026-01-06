@@ -46,9 +46,9 @@ def convert_doc(doc):
         "publNum",
     ]
     output["properties"] = zip_lists(output, property_fields, "property")
-    # Delete the original fields
+    # Delete the original fields (use pop to handle missing keys)
     for key in assignor_fields + assignee_fields + property_fields:
-        del output[key]
+        output.pop(key, None)
     # Collect the correspondent into a dict
     corr_address_fields = ["corrAddress1", "corrAddress2", "corrAddress3"]
     correspondent_address = "\n".join(output[k] for k in corr_address_fields if k in output)
@@ -58,11 +58,12 @@ def convert_doc(doc):
         if key in output:
             del output[key]
     output["correspondent"] = {
-        "name": output["corrName"],
-        "address": output["corr_address"],
+        "name": output.get("corrName"),
+        "address": output.get("corr_address"),
     }
-    del output["corrName"]
-    del output["corr_address"]
+    output.pop("corrName", None)
+    output.pop("corr_address", None)
+
     # Collect the address for each assignee into a single string
     for assignee in output["assignees"]:
         address_lines = "\n".join(
@@ -83,12 +84,17 @@ def convert_doc(doc):
             "patAssigneeCountryName",
         ]:
             del assignee[key]
+
     return output
 
 
 def zip_lists(data, input_keys, output_key):
-    """Zip lists of data into a list of dicts"""
-    tuples = list(zip(*[data[key] for key in input_keys]))
+    """Zip lists of data into a list of dicts, handling missing keys gracefully"""
+    lists = [data.get(key, []) for key in input_keys]
+    # If any list is empty, zip will produce no tuples
+    if not all(lists):
+        return []
+    tuples = list(zip(*lists))
     dicts = [dict(zip(input_keys, t)) for t in tuples]
     return dicts
 

@@ -9,6 +9,21 @@ from ..util import html_to_text
 from .shared import DocumentStructureSchema
 
 
+def safe_parse_date(s):
+    """Parse YYYYMMDD format dates, returning None for invalid dates like 00000000."""
+    if not s or len(s) < 6:
+        return None
+    try:
+        year = int(s[:4])
+        month = int(s[4:6])
+    except (ValueError, TypeError):
+        return None
+    # Year 0 is invalid, and month must be 1-12
+    if year == 0 or month < 1 or month > 12:
+        return None
+    return datetime.datetime(year=year, month=month, day=1)
+
+
 def parse_claims(html):
     text = html_to_text(html)
     if text:
@@ -35,10 +50,7 @@ class UsReferenceSchema(ZipSchema):
     # us_class = f.String("usRefClassification")
     # cpc_class = f.String("usRefCpcClassification")
     # group = f.String("usRefGroup")
-    pub_month = f.Date(
-        "usRefIssueDate",
-        dt_converter=lambda s: datetime.datetime(year=int(s[:4]), month=int(s[4:6]), day=1),
-    )
+    pub_month = f.Date("usRefIssueDate", dt_converter=safe_parse_date)
     patentee_name = f.String("usRefPatenteeName")
     cited_by_examiner = f.Boolean("usRefGroup", true_func=lambda s: "examiner" in s)
 
@@ -49,10 +61,7 @@ class ForeignReferenceSchema(ZipSchema):
     country_code = f.String("foreignRefCountryCode")
     # group = f.String("foreignRefGroup")
     patent_number = f.String("foreignRefPatentNumber")
-    pub_month = f.Date(
-        "foreignRefPubDate",
-        dt_converter=lambda s: datetime.datetime(year=int(s[:4]), month=int(s[4:6]), day=1),
-    )
+    pub_month = f.Date("foreignRefPubDate", dt_converter=safe_parse_date)
     cited_by_examiner = f.Boolean("foreignRefGroup", true_func=lambda s: "examiner" in s)
 
 

@@ -15,6 +15,21 @@ from ..util import html_to_text
 from .shared import DocumentStructureSchema
 
 
+def safe_parse_date(s):
+    """Parse YYYYMMDD format dates, returning None for invalid dates like 00000000."""
+    if not s or len(s) < 6:
+        return None
+    try:
+        year = int(s[:4])
+        month = int(s[4:6])
+    except (ValueError, TypeError):
+        return None
+    # Year 0 is invalid, and month must be 1-12
+    if year == 0 or month < 1 or month > 12:
+        return None
+    return datetime.datetime(year=year, month=month, day=1)
+
+
 def parse_claims(html):
     text = html_to_text(html)
     if text:
@@ -41,10 +56,7 @@ class UsReferenceSchema(ZipSchema):
     # us_class = f.String("usRefClassification")
     # cpc_class = f.String("usRefCpcClassification")
     # group = f.String("usRefGroup")
-    pub_month = f.Date(
-        "usRefIssueDate",
-        dt_converter=lambda s: datetime.datetime(year=int(s[:4]), month=int(s[4:6]), day=1),
-    )
+    pub_month = f.Date("usRefIssueDate", dt_converter=safe_parse_date)
     patentee_name = f.String("usRefPatenteeName")
     cited_by_examiner = f.Boolean("usRefGroup", true_func=lambda s: "examiner" in s)
 
@@ -55,10 +67,7 @@ class ForeignReferenceSchema(ZipSchema):
     country_code = f.String("foreignRefCountryCode")
     # group = f.String("foreignRefGroup")
     patent_number = f.String("foreignRefPatentNumber")
-    pub_month = f.Date(
-        "foreignRefPubDate",
-        dt_converter=lambda s: datetime.datetime(year=int(s[:4]), month=int(s[4:6]), day=1),
-    )
+    pub_month = f.Date("foreignRefPubDate", dt_converter=safe_parse_date)
     cited_by_examiner = f.Boolean("foreignRefGroup", true_func=lambda s: "examiner" in s)
 
 
@@ -130,6 +139,7 @@ class PublicSearchDocumentSchema(Schema):
     guid = f.String("guid")
     publication_number = f.String("pubRefDocNumber")
     publication_date = f.Date("datePublished")
+
     appl_id = f.String("applicationNumber")
     patent_title = f.String("inventionTitle")
     app_filing_date = f.Date("applicationFilingDate.0")
@@ -138,37 +148,47 @@ class PublicSearchDocumentSchema(Schema):
     related_apps = RelatedApplicationSchema(data_key=False)
     foreign_priority = ForeignPriorityApplicationSchema(data_key=False)
     type = f.String("type")
+
     # Parties
     inventors = InventorSchema(data_key=False)
     inventors_short = f.String("inventorsShort")
     applicants = ApplicantSchema(data_key=False)
     assignees = AssigneeSchema(data_key=False)
+
     group_art_unit = f.String("examinerGroup")
     primary_examiner = f.String("primaryExaminer")
     assistant_examiner = f.List(f.String, "assistantExaminer")
     legal_firm_name = f.List(f.String, "legalFirmName")
     attorney_name = f.List(f.String, "attorneyName")
+
     # Text Data
     document = DocumentSchema(data_key=False)
     document_structure = DocumentStructureSchema(data_key=False)
+
     # Image Data
     image_file_name = f.String("imageFileName")
     image_location = f.String("imageLocation")
+
     # Metadata
     composite_id = f.String("compositeId")
     database_name = f.String("databaseName")
     derwent_week_int = f.Integer("derwentWeekInt")
+
     # References Cited
     us_references = UsReferenceSchema(data_key=False)
     foreign_references = ForeignReferenceSchema(data_key=False)
     npl_references = f.DelimitedString(NplReferenceSchema, "otherRefPub.0", delimeter="<br />")
+
     # Classifications
     cpc_inventive = f.List(CpcCodeSchema)
     cpc_additional = f.List(CpcCodeSchema)
+
     intl_class_issued = f.DelimitedString(f.String, "ipcCodeFlattened", delimeter=";")
     intl_class_current_primary = f.List(IntlCodeSchema, "curIntlPatentClassificationPrimary")
     intl_class_currrent_secondary = f.List(IntlCodeSchema, "curIntlPatentClassificationSecondary")
+
     us_class_current = f.DelimitedString(f.Str(), "uspcFullClassificationFlattened", delimeter=";")
     us_class_issued = f.List(f.Str, "issuedUsClassificationFull")
+
     field_of_search_us = f.List(f.Str(), "fieldOfSearchClassSubclassHighlights")
     field_of_search_cpc = f.List(f.Str(), "fieldOfSearchCpcClassification")
