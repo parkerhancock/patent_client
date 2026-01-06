@@ -91,7 +91,7 @@ class PublicSearchApi:
 
     async def make_request(self, method, url, **kwargs):
         response = await self.client.request(method, url, **kwargs)
-        if response.status_code == 403:
+        if response.status_code in (401, 403):
             await self.get_session()
             response = await self.client.request(method, url, **kwargs)
         if response.status_code == 429:

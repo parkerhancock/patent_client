@@ -6,6 +6,7 @@
 
 from typing import TYPE_CHECKING, List, Optional
 
+
 from async_property.base import AsyncPropertyDescriptor
 from pydantic import ConfigDict, computed_field, model_validator
 from yankee.xml.schema import Schema as XmlSchema
@@ -35,7 +36,7 @@ class EpoBaseModel(BaseModel):
     @classmethod
     def xml_convert(cls, values):
         if isinstance(values, (str, bytes)):
-            return cls.__schema__.load(values).to_dict()
+            return cls.__schema__().load(values).to_dict()
         return values
 
 
@@ -56,23 +57,23 @@ class InpadocModel(EpoBaseModel):
 
     @property
     def images(self) -> "Images":
-        return self._get_model(".published.model.Images", base_class=InpadocModel).objects.get(
-            self.docdb_number
-        )
+        return self._get_model(
+            ".published.model.Images", base_class=InpadocModel
+        ).objects.get(self.docdb_number)
 
     @property
     def description(self) -> Optional[str]:
         return (
-            self._get_model(".published.model.Description", base_class=InpadocModel).objects.get(
-                self.docdb_number
-            )
+            self._get_model(
+                ".published.model.Description", base_class=InpadocModel
+            ).objects.get(self.docdb_number)
         ).description
 
     @property
     def claims(self) -> "Claims":
-        return self._get_model(".published.model.Claims", base_class=InpadocModel).objects.get(
-            self.docdb_number
-        )
+        return self._get_model(
+            ".published.model.Claims", base_class=InpadocModel
+        ).objects.get(self.docdb_number)
 
     @property
     def legal(self) -> List["LegalEvent"]:

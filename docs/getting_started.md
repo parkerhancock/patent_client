@@ -29,7 +29,7 @@ PATENT_CLIENT_EPO_API_SECRET="<Consumer Key Secret Here>"
 
 ### How to get a USPTO Open Data Portal API key
 
-**Step 1:** Go to [ODP - My API Key](https://beta-data.uspto.gov/key/myapikey) and follow the instructions for obtaining an API key.
+**Step 1:** Go to [ODP - My API Key](https://data.uspto.gov/key/myapikey) and follow the instructions for obtaining an API key.
 
 **Step 2:** Set your environment variables as:
 
@@ -71,13 +71,13 @@ operations, including ordering, limits, and offsets - as .order_by, .limit, and 
 ```python
 microsoft_pats = (USApplication.objects
                 .filter(first_named_applicant='Microsoft')
-                .filter(app_status='Patented Case')
-                .order_by('patent_issue_date')
+                .filter(status='Patented Case')
+                .order_by('issue_date')
                 .limit(10)
                 )
 ```
 
-This manager returns the first 10 applications with Microsoft listed as the first applicant, that have issued as patents, and in order of their patent issue date (ascending order).
+This manager returns the first 10 applications with Microsoft listed as the first applicant, that have issued as patents, and in order of their issue date (ascending order).
 
 Once you have a manager, the results can be accessed in a few ways. Record objects can be obtained by slicing or iterating on the manager itself. Passing a single index returns
 a single specific object, as shown below:
@@ -87,8 +87,8 @@ a single specific object, as shown below:
 
 >>> microsoft_pats = (USApplication.objects
 ...             .filter(first_named_applicant='Microsoft')
-...             .filter(app_status='Patented Case')
-...             .order_by('patent_issue_date')
+...             .filter(status='Patented Case')
+...             .order_by('issue_date')
 ...             .limit(10)
 ...             )
 

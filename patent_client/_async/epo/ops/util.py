@@ -30,7 +30,7 @@ class EpoBaseModel(BaseModel):
     @classmethod
     def xml_convert(cls, values):
         if isinstance(values, (str, bytes)):
-            return cls.__schema__.load(values).to_dict()
+            return cls.__schema__().load(values).to_dict()
         return values
 
 

@@ -4,10 +4,11 @@
 # *         Source File: patent_client/_async/uspto/public_search/api.py         *
 # ********************************************************************************
 
-import json
 import time
+import json
 from copy import deepcopy
 from pathlib import Path
+import tenacity as tc
 
 import httpx
 
@@ -48,6 +49,7 @@ class PublicSearchApi:
         self.queries = dict()
         self.search_query = json.loads((Path(__file__).parent / "search_query.json").read_text())
 
+    @tc.retry(stop=tc.stop_after_attempt(3), wait=tc.wait_exponential(multiplier=1, min=4, max=15))
     def run_query(
         self,
         query,
@@ -61,6 +63,7 @@ class PublicSearchApi:
     ) -> "PublicSearchBiblioPage":
         if self.case_id is None:
             self.get_session()
+
         data = deepcopy(self.search_query)
         data["start"] = start
         data["pageCount"] = limit
@@ -75,13 +78,14 @@ class PublicSearchApi:
         ]
         data["query"]["plurals"] = expand_plurals
         data["query"]["britishEquivalents"] = british_equivalents
+
         counts = self.make_request(
             "POST",
-            "https://ppubs.uspto.gov/dirsearch-public/searches/counts",
+            "https://ppubs.uspto.gov/api/searches/counts",
             json=data["query"],
         )
         counts.raise_for_status()
-        search_url = "https://ppubs.uspto.gov/dirsearch-public/searches/searchWithBeFamily"
+        search_url = "https://ppubs.uspto.gov/api/searches/searchWithBeFamily"
         query_response = self.make_request("POST", search_url, json=data)
         query_response.raise_for_status()
         result = query_response.json()
@@ -93,7 +97,7 @@ class PublicSearchApi:
 
     def make_request(self, method, url, **kwargs):
         response = self.client.request(method, url, **kwargs)
-        if response.status_code == 403:
+        if response.status_code in (401, 403):
             self.get_session()
             response = self.client.request(method, url, **kwargs)
         if response.status_code == 429:
@@ -103,7 +107,7 @@ class PublicSearchApi:
         return response
 
     def get_document(self, bib) -> "PublicSearchDocument":
-        url = f"https://ppubs.uspto.gov/dirsearch-public/internal/patents/{bib.guid}/highlight"
+        url = f"https://ppubs.uspto.gov/api/patents/highlight/{bib.guid}"
         params = {
             "queryId": 1,
             "source": bib.type,
@@ -117,15 +121,16 @@ class PublicSearchApi:
     def get_session(self):
         self.client.cookies = httpx.Cookies()
         response = self.client.get("https://ppubs.uspto.gov/pubwebapp/")
-        url = "https://ppubs.uspto.gov/dirsearch-public/users/me/session"
+        url = "https://ppubs.uspto.gov/api/users/me/session"
         response = self.client.post(
             url,
             json=-1,
             headers={
-                "X-Access-Token": "null",
+                #"X-Access-Token": "null",
                 "referer": "https://ppubs.uspto.gov/pubwebapp/",
             },
         )  # json=str(random.randint(10000, 99999)))
+        response.raise_for_status()
         self.session = response.json()
         self.case_id = self.session["userCase"]["caseId"]
         self.access_token = response.headers["X-Access-Token"]
@@ -138,7 +143,7 @@ class PublicSearchApi:
             for i in range(1, obj.document_structure.page_count + 1)
         ]
         response = self.client.post(
-            "https://ppubs.uspto.gov/dirsearch-public/internal/print/imageviewer",
+            "https://ppubs.uspto.gov/api/print/imageviewer",
             json={
                 "caseId": self.case_id,
                 "pageKeys": page_keys,
@@ -164,7 +169,7 @@ class PublicSearchApi:
             print_job_id = self._request_save(obj)
         while True:
             response = self.client.post(
-                "https://ppubs.uspto.gov/dirsearch-public/internal/print/print-process",
+                "https://ppubs.uspto.gov/api/print/print-process",
                 json=[
                     print_job_id,
                 ],
@@ -179,7 +184,7 @@ class PublicSearchApi:
             try:
                 request = self.client.build_request(
                     "GET",
-                    f"https://ppubs.uspto.gov/dirsearch-public/internal/print/save/{pdf_name}",
+                    f"https://ppubs.uspto.gov/api/print/save/{pdf_name}",
                 )
                 response = self.client.send(request, stream=True)
                 response.raise_for_status()
