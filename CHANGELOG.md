@@ -4,6 +4,7 @@
 
 ## 5.0.17 (2024-09-24)
 - Update USPTO ODP to work with ODP versoion 1.0.0
+- Update config file to include a missing dependency
 
 ## 5.0.16 (2024-07-02)
 - Add `document_title` to PTAB model
