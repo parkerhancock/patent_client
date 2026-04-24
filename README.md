@@ -8,7 +8,7 @@
 
 ### Why?
 
-This library was originally designed for human developers writing Python scripts. The landscape has changed—AI coding assistants are now the primary consumers of IP data libraries. The new **[ip_tools](https://github.com/parkerhancock/ip_tools)** library is purpose-built for this new paradigm:
+This library was originally designed for human developers writing Python scripts. The landscape has changed—AI coding assistants are now the primary consumers of IP data libraries. The new **[patent-client-agents](https://github.com/parkerhancock/patent-client-agents)** library is purpose-built for this new paradigm:
 
 - **AI-First Design:** Optimized for use by AI agents like Claude Code
 - **Simplified API:** Async-first with straightforward function calls instead of ORM-style queries
@@ -17,10 +17,10 @@ This library was originally designed for human developers writing Python scripts
 
 ### Migration
 
-For new projects, use **[ip_tools](https://github.com/parkerhancock/ip_tools)**:
+For new projects, use **[patent-client-agents](https://github.com/parkerhancock/patent-client-agents)**:
 
 ```bash
-pip install ip_tools
+pip install patent-client-agents
 ```
 
 Existing patent_client users can continue using the library as-is—it will remain available on PyPI—but no new features or bug fixes will be added.
