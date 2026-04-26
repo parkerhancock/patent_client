@@ -54,6 +54,6 @@ class GlobalDossierApi:
         response.raise_for_status()
         return DocumentList.model_validate_json(response.content)
 
-    def get_document(self, country, doc_number, document_id, out_path):
-        url = f"{self.get_base_url()}/doc-content/svc/doccontent/{country}/{doc_number}/{document_id}/1/PDF"
+    def get_document(self, country, doc_number, document_id, page_number, out_path):
+        url = f"{self.get_base_url()}/doc-content/svc/doccontent/{country}/{doc_number}/{document_id}/{page_number}/PDF"
         return client.download(url, path=out_path)
